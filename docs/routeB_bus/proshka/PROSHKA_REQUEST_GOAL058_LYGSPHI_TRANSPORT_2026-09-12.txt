@@ -1,0 +1,53 @@
+REQUEST_ID: REQ-2026-09-12-LYGSPHI-TRANSPORT
+BOUNDARY_ID: GOAL058_ACTUAL_THETA_FERROMAGNETIC_REALIZATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c
+ACCEPTED_DELTA_COMMIT: f40db276e8f3c4c4d47adec755e5fb72691a4999
+RESULT_SCOPE: BYTE_EXACT_RETRANSMISSION_ONLY_NO_NEW_MATHEMATICAL_ATTEMPT
+DELIVERY: SAME_LIVING_MATGOAL_CHAT_6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+SOURCE_SIGN_NO_DELTA_COUNT: 2
+
+Только восстановление передачи уже завершённого ответа LYGSPHI.
+Нового математического опыта не начинать. Verdict, доказательство, исходный
+файл, источники и счётчик не менять. В браузере весь Markdown виден, но
+штатная загрузка не предоставляет Codex доступный локальный файл.
+
+Используй существующий файл:
+/mnt/data/PROSHKA_RESPONSE_GOAL058_LYGSPHI_2026-09-12.md
+Его объявленные байты: 56813; LF907; finalLF; CR0; SHA256
+630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4.
+
+Исполни этот технический код и верни его ВЕСЬ буквальный stdout в одном
+обычном fenced plaintext-блоке прямо в ответе, без ссылки и без вложения.
+Не сокращай base64 и не ставь многоточий. gzip нужен только для компактной
+передачи; Codex декодирует и сверит исходный SHA256 перед независимым чтением.
+Если файла нет или хеш не совпадает, сообщи это; не пересоздавай доказательство.
+
+```python
+from pathlib import Path
+import base64,gzip,hashlib,textwrap
+p=Path('/mnt/data/PROSHKA_RESPONSE_GOAL058_LYGSPHI_2026-09-12.md')
+b=p.read_bytes()
+assert len(b)==56813 and b.count(b'\n')==907 and b.count(b'\r')==0 and b.endswith(b'\n')
+assert hashlib.sha256(b).hexdigest()=='630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4'
+z=gzip.compress(b,mtime=0)
+e=base64.b64encode(z).decode('ascii')
+print('LYGSPHI_GZIP_BASE64_BEGIN')
+print('RAW_SHA256='+hashlib.sha256(b).hexdigest())
+print('RAW_BYTES='+str(len(b)))
+print('GZIP_BYTES='+str(len(z)))
+print('BASE64_CHARS='+str(len(e)))
+print(textwrap.fill(e,width=120))
+print('LYGSPHI_GZIP_BASE64_END')
+```
+
+Это техническая повторная передача того же ответа и не новый source-sign
+цикл. Полный независимый приём LYGSPHI ещё не завершён. RH не заявлена.

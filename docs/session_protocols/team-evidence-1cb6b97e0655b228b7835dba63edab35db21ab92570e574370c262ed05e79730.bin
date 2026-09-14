@@ -1,0 +1,10 @@
+MIRROR_PREPARED
+[rh_clean d762cdf5] [Codex][rh_clean][publication] Verify source repair in isolated local remote
+ 10 files changed, 1519 insertions(+), 47 deletions(-)
+{"status": "PUSH_RESERVED", "operation_id": "PUBLICATION_REPAIR_20260914:publication", "execute_once": true, "candidate_commit": "d762cdf57554636588917b4530bc1f4ef61882db"}
+To /home/chirurgie/.cache/q3-checkpoint-recovery-live-mirror-20260914/remote.git
+   1c81bfcb..d762cdf5  d762cdf57554636588917b4530bc1f4ef61882db -> rh_clean
+{"command": "team-confirm-effect", "exit_code": 0, "operation_id": "PUBLICATION_REPAIR_20260914:publication", "status": "OBSERVED"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 160, "sha256": "f53b333913ce78c687eb6270f9b44968ab98ff7dcab069a3847ce85f3ffa48ef", "status": "DRY_RUN"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 160, "sha256": "f53b333913ce78c687eb6270f9b44968ab98ff7dcab069a3847ce85f3ffa48ef", "status": "SAVED"}
+MIRROR_COMPLETE_REAL_STARTUP_COMMIT_PUSH_READBACK d762cdf57554636588917b4530bc1f4ef61882db

@@ -1,0 +1,342 @@
+{
+  "status": "SOURCE_VERIFIED_DISCOVERY_INDEPENDENTLY_REVIEWED",
+  "source_base": "4702d6d505dd6f497c73bb575d802f9486cbd678",
+  "brief_sha256": "31a69b8f8a8b657417478046fd197fd3ea513aac91b3c5ee4c8cbb321ad9ae20",
+  "source_pins": {
+    "docs/Codex/BRIEF_2026-09-13_RESIDUAL_COMPENSATION.md": "b45890155160eda8189a559459afd6cfb9d7818ad8d405c18244a5864895f60c",
+    "docs/Codex/REPORT_2026-09-13_RESIDUAL_COMPENSATION_HUNT.md": "7aaf8e43faa5bfd37954d6076db3acb1801325777bd9d989b25d75c9a9466c14",
+    "docs/Codex/REPORT_2026-09-13_NULL_AND_GROUND_STATE_TEST.md": "19ce3481523bfb3f3f9ba8be24f2c86dc2f1916d80f9535a451d010bceef0d95",
+    "docs/Codex/REPORT_2026-09-13_DEFORMED_SOURCE_ZERO_WITNESS.md": "70163ec5703ea516b8a191f705a26034cc9914d875f8e74cee7544a0b496bb4c"
+  },
+  "queries": [
+    {
+      "name": "physics",
+      "query": "Bogomolny energy square topological bound vortex critical coupling",
+      "exit_code": 2,
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics.shelf.txt",
+      "sha256": "77a79d8d47128c379f51a75a34346b0fcd5a2f219de0c7ba759c488a295c86e1",
+      "receipt": {
+        "boundary": "COMPLETE_REGISTERED_SHELF",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "7486042d4ccd2d07d63cf79c86f98ac51da7a4cf1524865c92eaff5e1a82f15f",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "safe_alpha_envelope_of_temple_residual_gap_bounds q3.lean.aristotle/Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean:15",
+            "metadata_sha256": "ed7b85bcc42b3e905e7db693c7cf38fad58f9dddd78b4b73c5f1251a5def8526",
+            "provider": "knowledge-db",
+            "provider_id": "23828b458c153d421dc64413a8640a4ec6ba9e8bbe728deb6227c135c68da308",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "title": "safe_alpha_envelope_of_temple_residual_gap_bounds q3.lean.aristotle/Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean:15",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+            "metadata_sha256": "6056a5b775383065023e81a219e47d0fa9e6a20fb6ca2767a4e30623ccc20a83",
+            "provider": "lean-index",
+            "provider_id": "f35d21786b67f24cadb1740e3429fb1232f3d4b2199a2e64423129fba9816211",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "title": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "AutocorrelationSquareRootCandidate Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+            "metadata_sha256": "0f0859f0edf256221250e20f5c65777276c1907afe379dcc7373d4bb8d4d9f4f",
+            "provider": "lean-index",
+            "provider_id": "c8f5b11e867dbe800701d76ff85dd5a2befc57e53b8c228a7ffdff51e03939b0",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "title": "AutocorrelationSquareRootCandidate Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "docs/Codex/BRIEF_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+            "metadata_sha256": "b5158a90ff9654bccd4ad0f69f6ab9a2a3eefb91a863fb028cc7fa46c3f5f6bf",
+            "provider": "specs-docs",
+            "provider_id": "0532b4bf329c3afc480dcad8e6382961f6073f38f2852112be7c29840309914d",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "title": "docs/Codex/BRIEF_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+            "url": "specs/maps"
+          }
+        ],
+        "external_lean": "EXECUTED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 4,
+            "provider": "local-shelves",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "Bogomolny energy square topological bound vortex critical coupling",
+            "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "Bogomolny energy square topological bound vortex critical coupling",
+        "query_sha256": "53bf0b17947bfea9156b312e65cdb5ea253de9850074e14eaedc46d26e77cf8a",
+        "schema": "q3_ask_local_receipt.v1"
+      },
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED"
+    },
+    {
+      "name": "probability",
+      "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+      "exit_code": 2,
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/probability.shelf.txt",
+      "sha256": "14ec64323486fee7714e755775ce6608c45c260065d48949c41f5683275485a0",
+      "receipt": {
+        "boundary": "COMPLETE_REGISTERED_SHELF",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "5d8f68e7df883cb9caa24b21cef53ba8086a086e39d2e33b0b444834e41864af",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "continued_window_identity_prolateCombination_v3Class q3.lean.aristotle/Q3/Proofs/RouteB/ProlateCombinationReceiver.lean:29",
+            "metadata_sha256": "730501d484a4471b2f3ccf9adebda9cdf9690019143329f6c95495dd77c518e5",
+            "provider": "knowledge-db",
+            "provider_id": "ebf153f7a801509851da4ea24b261f1d2d1251747753cd664fe4a26923baa184",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "title": "continued_window_identity_prolateCombination_v3Class q3.lean.aristotle/Q3/Proofs/RouteB/ProlateCombinationReceiver.lean:29",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "HeatKernel_approx_identity_uniform Q3/Proofs/A1_density.lean",
+            "metadata_sha256": "dcd31eb6dd963de105ec46c97c8751d5631a07a102bd6a66697733c1bebf744f",
+            "provider": "lean-index",
+            "provider_id": "dfe9f586ccad2598ad3e67a6b186728f60cf757ef72eb621d20ddd77f443147a",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "title": "HeatKernel_approx_identity_uniform Q3/Proofs/A1_density.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "T3_op_identity Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+            "metadata_sha256": "872f67a75e522dc152062d22382404e8a318129352896b788d646950eb7a1237",
+            "provider": "lean-index",
+            "provider_id": "b03ce233b2a0163b4d700b7df43bfde56534042b22500c968d96e407f415ddfc",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "title": "T3_op_identity Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "docs/Codex/BRIEF_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+            "metadata_sha256": "91c2e01a1d2839d1965729e9ab056ed48c25b7913b2a1ad5d09b3b2b757b25c5",
+            "provider": "specs-docs",
+            "provider_id": "0532b4bf329c3afc480dcad8e6382961f6073f38f2852112be7c29840309914d",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "title": "docs/Codex/BRIEF_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+            "url": "specs/maps"
+          }
+        ],
+        "external_lean": "EXECUTED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 4,
+            "provider": "local-shelves",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+            "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "Helffer Sjostrand covariance Brascamp Lieb deficit Hessian identity",
+        "query_sha256": "f27781593e8f5cce789507d4356eb34bd70f9ecdc8658263208bf2bbf8c3fac8",
+        "schema": "q3_ask_local_receipt.v1"
+      },
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED"
+    },
+    {
+      "name": "control",
+      "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+      "exit_code": 2,
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/control.shelf.txt",
+      "sha256": "430d03308450c1c67644449851009bc58739a012c9564e94978c1314c0d51951",
+      "receipt": {
+        "boundary": "COMPLETE_REGISTERED_SHELF",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "5cca4a430a07ff7e63911f5dc25102e812ff4239edcabea7733eb0c53e382da5",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "rh_iff_centeredXi_zeros_real q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:108",
+            "metadata_sha256": "52ab2a90d9b6f96f7fde44c497f9f6ca3ee161415c7331c96db547073538a01d",
+            "provider": "knowledge-db",
+            "provider_id": "9e44af62cd715adc83a81cbd9ec2913e3677ba23e6c67ceef1a50928127f962d",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "title": "rh_iff_centeredXi_zeros_real q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:108",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "A3_FLOOR_main Q3/Proofs/A3_bridge_v3_uniform.lean",
+            "metadata_sha256": "25bc64b18039e1b5af804af712a20ffc8d86acb8e7e129f83d8978939351d3d2",
+            "provider": "lean-index",
+            "provider_id": "698d899c5db0f27b9e7c68a1d07449e351eb52e7c667c649c787461807ba5b13",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "title": "A3_FLOOR_main Q3/Proofs/A3_bridge_v3_uniform.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+            "metadata_sha256": "2eb8707323ece3816c0adb25232acb3211e698f5a583f95b9157e1dbf908874b",
+            "provider": "lean-index",
+            "provider_id": "f35d21786b67f24cadb1740e3429fb1232f3d4b2199a2e64423129fba9816211",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "title": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "docs/Codex/BRIEF_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+            "metadata_sha256": "776f38aa1b30bd84b55e7c3b23d66ba7b79235a7d7ceefc40fbd7ca96c7a285b",
+            "provider": "specs-docs",
+            "provider_id": "0532b4bf329c3afc480dcad8e6382961f6073f38f2852112be7c29840309914d",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "title": "docs/Codex/BRIEF_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+            "url": "specs/maps"
+          }
+        ],
+        "external_lean": "EXECUTED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 4,
+            "provider": "local-shelves",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+            "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "Kalman Yakubovich Popov positive real lemma storage spectral factorization",
+        "query_sha256": "a788483e6c7294e9ccd79f65e0fa2478425bed31cdfb3e164a8dab9162051dbc",
+        "schema": "q3_ask_local_receipt.v1"
+      },
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED"
+    }
+  ],
+  "primary_sources": [
+    {
+      "name": "carlen",
+      "url": "https://arxiv.org/html/1106.0709v2",
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/carlen.html",
+      "bytes": 386635,
+      "sha256": "405baaafbc1dcc613cedd6995d1eae41abc7dd767636112f8cc26c42198bb127",
+      "text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/carlen.txt",
+      "text_sha256": "f723acd4ea36962632dcf2b357c1b4001a396500a04af78f3179f56d8ba2a106"
+    },
+    {
+      "name": "kyp",
+      "url": "https://web.mit.edu/6.241/ameg_www_fall2006/www/images/L06kyp.pdf",
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/kyp.pdf",
+      "bytes": 84191,
+      "sha256": "4c97e80ef0787e772dcf0bc4573f84abcb52e4216e35a61ad8d6c80537ad93af",
+      "text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/kyp.txt",
+      "text_sha256": "e9c00e577d5d2263b8698c0c52d691452afee7881880a1febb664f9f9f1c457f"
+    },
+    {
+      "name": "tong_vortices",
+      "url": "https://davidtong.org/pdfs/teaching/solitons/tasi3.pdf",
+      "path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics/tong_tasi3.pdf",
+      "bytes": 606139,
+      "sha256": "4912d156fed211f4a88bfe1549e4a7238f12e16705896130882c59b9d7a3d85c",
+      "text_path": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics/tong_tasi3.txt",
+      "text_sha256": "8d4044b8130e1d92562075d3cbd2d2425551dbceacae8fe2a8f4b295cf6cb093",
+      "rendered_formula_read": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/compensation-coupling-hunt/physics/tong_tasi3_page-04.png",
+      "scope": "Chapter 3 sections 3.1-3.2; physical BPS analogue only",
+      "author_index_url": "https://www.damtp.cam.ac.uk/user/dt281/tasi.html"
+    }
+  ],
+  "issues": [
+    {
+      "scope": "q3_docs retrieval",
+      "status": "INCOMPLETE",
+      "reason": "semantic-index freshness validation failed",
+      "repair_attempted": false
+    },
+    {
+      "scope": "mgrep external",
+      "status": "FAILED",
+      "reason": "Expired JWT; retained one failure, used web__run instead"
+    },
+    {
+      "scope": "MIT source typography",
+      "status": "SOURCE_TYPO_ISOLATED",
+      "reason": "Unnumbered matrix after 18.7 has plus instead of minus; use 18.5/18.7 and own algebra"
+    },
+    {
+      "scope": "Tong PDF extraction",
+      "status": "RESOLVED_BY_RENDER",
+      "reason": "OCR drops minus sign in commutator; rendered p73 has -iB3"
+    }
+  ],
+  "consumption": "INCOMPLETE_NO_CONSUMABLE_TARGET",
+  "index_refresh": false,
+  "canonical_writes": false,
+  "new_proshka_dispatch": false,
+  "source_sign_counter_change": 0,
+  "independent_review": {
+    "reviewer": "/root/sibling5_check",
+    "status": "CLEAN_DISCOVERY_AND_CONDITIONAL_PREFLIGHT_ONLY",
+    "reviewed_report_sha256": "21d03f81520183be637ab44c4aaa0b1edeb6ddf6f139a3f308cee14b7e3bb0ba",
+    "provenance_addendum_reviewed_sha256": "cd40a0a3520fff63984f1a8a056e37cdecc923462160210dba9a158b92b5cd6f"
+  },
+  "report_sha256": "250e638fc458e9f685c8c48944acb2e36c49c4365df146c734e0e7944e89a803",
+  "source_locator_correction": "Author actual fetch URL; same PDF bytes and SHA256; Cambridge direct mirror 403, web view readable."
+}

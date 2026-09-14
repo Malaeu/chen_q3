@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v2
-revision: 96
-observed_at: '2026-09-11T20:21:15.138640+00:00'
-previous_sha256: 2359b58bcad4ad057252213011e3a60e662b6770f91c72482b4b69390ae0794b
+revision: 176
+observed_at: '2026-09-14T12:22:16.005502+00:00'
+previous_sha256: ef9de12d2a9358ea59dddc1e45de16e9652bb7681c5322a703ffcf105bb45869
 owner_thread_id: &id002 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 66a91b3fced7bcbd5482691122c4a1fa7963e8d7
+  head: f37c5de40b4d5b7e76b89eabc28693bba1fae45a
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -69,44 +69,16 @@ stages:
 operation:
   kind: PUBLISH
   state: INTENT
-  id: TEAM_CANONICAL_20260911
+  id: MAC_WEEKEND_RECOVERY_PUBLICATION_20260914
   evidence:
-  - Source26 B9/B10,C1/C2,S1/S2; actual refresh0/fresh0/strict0 in frozen protocol.
+  - publication_incoming_commit:5987b887850eb8aa29cac9588668d66d16e6f1c1
   subject:
     kind: REPAIR
-    id: TEAM_CANONICAL_20260911
-    sha256: 7852b043dc093de67214b29628cb79eff1aacf9184b3c091aac5860bdadce636
-  command: workflow-team-bootstrap-publish
+    id: MAC_WEEKEND_RECOVERY_PUBLICATION_20260914
+    sha256: fffd05e0ff131911faa48d16d3ff8bb4701229fae40066b3f110959cec765f88
+  command: publication
   inputs:
-    docs/CHAT_DIGESTS.md: 2af1b1f22c50bf2bffa46b2ef6fda1ce6a12b42ba01e61e8bce6a83794ae077e
-    docs/CODEX_AS_SECOND_BODY.md: 0cd4aaa95d6dd63f57c61f7415b66b389e9e85ee4b4eded43de6835f64de40d0
-    docs/CODEX_CONTROL.md: 9a28b04e5d898550b39014cf6d28ca510940e0dbaba26461d1313f7ab8fbae00
-    docs/Codex/AGENTS_LEDGER.md: c0d88885acd9526d53db8977ed8864e14e52d37f5cc60a329a0b72ce86f333ae
-    docs/Codex/CARD_CROSS_HOST_Q3_WORKFLOW_AND_TOOL_INVENTORY.md: 76d9241dad8297e56f7fa26c0cc1d853de62bee04d2204a1ca44136fa92fba3f
-    docs/Codex/GOAL.md: a11554809e7af2e1bec6343d5c3a8605c13be0ae71512e31cbf3402e1e2c03ef
-    docs/Codex/REPORT_2026-09-11_CADENCE_STROJKA.md: 0156dc2b7e8fd0febfcac5260fa06ab393b5f19d75eb50de6b2585a86ecb7bcd
-    docs/Codex/REPORT_2026-09-11_WATCH_STROJKA.md: 84b97f461b745118941e4658b64eca7cccb745c7125911f1219f504b05c303f4
-    docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md: 342746ed3fbfec1c610f4e202116928832ecb7db6b81df83e831e7d6c5deece5
-    docs/INSTRUCTION_ISSUES.md: 7910ab4cb1bb69dc4df8b649486b677248e0a7c18ca5db8595f7865f8b8f4e94
-    docs/TOOLS.md: f47b046e127f9ba609ab42aad4903c62de8df1bdd63651765f1357dd5d2b5c7c
-    docs/cartographer/TOOLS.yaml: 5b328ac6f78badacb45d1468a09e92a05c5b2ef3a734003c727ba3118687f9cd
-    docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md: 52f42e95afa0baa29dbd6147b3bdea05e09df39e78f2530413085874658d8fee
-    docs/session_protocols/team-runtime-preparation-2026-09-11.log: 92e275e58400d66fdb27af8411c58c80596cc4545fa53bfcbe69c1147b442c90
-    orchestrator/CONDUCTOR.md: 1201eecdb48d15c6965cdafd75c25fba77715fdf34b49fa8e026e8f8715476e9
-    orchestrator/README.md: 10d2a027befb3407240326157cd77162c6d0155f6823b3c115e2bf0eda73fa36
-    orchestrator/bind_request.py: efdd4b597e242b7fe1780be8cf86b605ec63d1fcf1550d3ef4857f2ae83168a5
-    orchestrator/spine.py: f6be7dbc0f33faa1280b9e19ced211a7c3477f144406ad60a05b9d55a00a6e08
-    orchestrator/startup_runtime.py: cdb0cfeaaa6ba1ec1828fedf107887b31b5a2791feaffb61ddffa74f95fbfd49
-    orchestrator/team_records.py: 209921fd0f21b0297e2bfc09453f7d85f7dc1a0aa008fd9ad3b8bc38e01d6339
-    orchestrator/tests/test_bind_request.py: d2375a076d9dda57dca937af06299616fe794b508f064f9f98ca1f0babdf0f45
-    orchestrator/tests/test_channel_runtime_writer.py: a4ddc472a8667bd8b945b6a99e88d3a6d26ef9282cdb8d876e5bf0af84b25554
-    orchestrator/tests/test_session_close.py: 9e8c4270e65b6bf31ee2d6fc923e3a3077b1957820836286224e7608953a3762
-    orchestrator/tests/test_tool_manifest_memory_wiring.py: a785dbdf0f890e8ea1fe9832bb82988fb2784cb742ce0e8da707e1683c1670c6
-    orchestrator/tests/test_workflow_runtime.py: a9e5c5ac85237df61918e58b1ff0af8affb201cdb5b17030a0d7b00cad170df2
-    orchestrator/tools_census.py: 4ab0f520d7be52ad8a38b223aa7eecd1a69ef376a256acc15b3838ab78deea5d
-    orchestrator/workflow_runtime.py: 69bf0d9023fac19ee48fc9c7849083ce13a7d7c735c9cb839d86f143523a3347
-    q3.lean.aristotle/ACTIVE/SESSION_ENTRY.md: 3a400407b0ccf507eeb71c919a5eb7d8d6efe27b09b926308279f226047484ee
-    specs_docs/session_close.py: cac22f8b20611bc161d9449108fff8de489e375b17b937a86cc013921b2f90f9
+    docs/session_protocols/team-evidence-fffd05e0ff131911faa48d16d3ff8bb4701229fae40066b3f110959cec765f88.bin: fffd05e0ff131911faa48d16d3ff8bb4701229fae40066b3f110959cec765f88
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: *id001
@@ -122,23 +94,32 @@ ownership:
 # Current continuation — observations, not authority
 
 ## Mathematical frontier
-RH/SL20/DN20 unproved; production HOLD/PX_RH_CLAIM NOT_MADE.
+RH remains unproved; PX_RH_CLAIM NOT_MADE. Mac source5987b887 has102commits/127paths.
+PAPER raw two-shift positivity does not prove all-rank positivity or RH.
+The actual two-body residual mechanism is in the incoming SCHUR repeatability brief.
 
 ## Confirmed and candidate results
-SIBLING1–3 published1c1d23d4; reviews/parent checks done. SIBLING4 pending.
+Original publication repair f37c5de40b4d5b7e76b89eabc28693bba1fae45a pushed/read back;
+issue d9 FIX_PUSH_VERIFIED. Exact two-file checkpoint recovery5d546636 independently
+reviewed and now source-integrated. Prior220tests passed before final guard;
+new exact real-startup regression passed1/5.692s. TOOLS unchanged.
 
 ## Next action
-Publish exact committed candidate with team-bootstrap-publish, operation
-TEAM_CANONICAL_20260911, remote bed5d5c0/v1. Unknown receipt: reconcile-only.
+Publish reviewed recovery source and own runtime evidence together with true Mac merge.
+Merge preview: all127 incoming files equal exact Mac tip bytes, no conflicts.
+Then one registered derived and semantic refresh, verify fresh no-rebuild behavior.
 
 ## Existing work
-Owner/install/epoch unchanged. Source26 installed/reviewed. One refresh0;
-fresh no-rebuild0/strict0. Actual bridge/q3 wakes recorded. No math process.
+Current owner task01a084f4-7498-7021-bac2-91d184d58dc7, installation9afdf2bf, epoch1.
+Review TEAM_RECOVERY_INSTALL_CHECK_20260914 DONE; source receipt RECOVERY_SOURCE_CANONICAL_INSTALL_20260914 COMPLETE.
+Isolated candidate /home/chirurgie/.cache/q3-recovery-install-20260914 remains frozen.
 
 ## Do not repeat
-Installation, old tests, SIBLING, source intake, refresh and dispatch.
-Full scripts/receipts: SESSION_PROTOKOLL_2026-09-11_CODEX.md.
+Do not replay original source publication, Proshka requests, full mathematical history,
+or converged review. No force, blanket add, unreviewed proof admission or policy change.
 
 ## Integration remaining
-Exact remote confirmation, then cold/concurrent/issue acceptance. SIBLING4
-after boundary; Proshka0/1. Local Sonin thought in archived94 is unreviewed.
+Mac tip5987b887850eb8aa29cac9588668d66d16e6f1c1 still incoming until publication receipt.
+Six foreign literature paths and .codex/config.toml remain untouched and unstaged.
+Search is stale pending the final source merge. Existing wiring-test debt is recorded
+in q3-publication-baseline-wiring-20260914.log; do not claim that suite green.

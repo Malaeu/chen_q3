@@ -1,0 +1,16 @@
+{
+  "status": "FULL_CERTIFICATE_REPLAY_PASS_NOT_INDEPENDENT_ANALYTIC_REVIEW",
+  "accepted": false,
+  "precision": 90,
+  "leaves": 4158,
+  "nodes": 8259,
+  "max_depth": 16,
+  "area": "57",
+  "unpaid": 0,
+  "min_C": "0.0010018096113617325647367437279142145010776422875270291991326495068277627626549954938968071",
+  "min_T": "0.465692742542557578855742105341721952744922048104312973932132331235290597490500324300425892",
+  "certificate_sha256": "d8d8da5f902a122954c972bbc86f003b9f5fa91e7199b0e42ff4cdfbda179bdb",
+  "source_sha256": "f6c03177e0f91e52d1fb6080fcb63d4f71306d3da9d4a7de700a7dbf9268517a",
+  "bounds_audit_pass": true,
+  "RH_claim": false
+}

@@ -1,0 +1,18 @@
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 156, "sha256": "b69477698ce6b051ed62ec20628ced0d94f48e56efc616c234465a9838070980", "status": "DRY_RUN"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 156, "sha256": "b69477698ce6b051ed62ec20628ced0d94f48e56efc616c234465a9838070980", "status": "SAVED"}
+{"provider_result": "/root/publication_fix_check", "timestamp": "2026-09-14T11:36:23.634Z", "output_sha256": "eb09201966764704920e8e596712d87d7954106d7e00cd6b9261327cea144524", "provider_sha256": "41f7d93fc5475789ef7cbffdf37d09ea99c34b7f85653a062440751a4dc7ee41"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 157, "sha256": "ad3d95af0dbdb3e7e23a0ea0b767034df5de2349d4691371a42e5048ae733336", "status": "DRY_RUN"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 157, "sha256": "ad3d95af0dbdb3e7e23a0ea0b767034df5de2349d4691371a42e5048ae733336", "status": "SAVED"}
+{"command": "team-observe-remote", "exit_code": 0, "operation_id": "MIRROR_FIX_REVIEW_RESULT_20260914_INTAKE", "status": "OBSERVED"}
+{"command": "team-reserve-effect", "exit_code": 0, "execute_once": true, "operation_id": "MIRROR_FIX_REVIEW_RESULT_20260914_INTAKE", "status": "RESERVED"}
+{"command": "team-integrate-candidate", "exit_code": 0, "operation_id": "MIRROR_FIX_REVIEW_RESULT_20260914_INTAKE", "status": "INTEGRATED"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 158, "sha256": "385484db1caa414f7e22a5c19499a651ca751b7facaa38995116116f4ff689e0", "status": "DRY_RUN"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 158, "sha256": "385484db1caa414f7e22a5c19499a651ca751b7facaa38995116116f4ff689e0", "status": "SAVED"}
+{"command": "team-observe-native", "exit_code": 0, "assignment_id": "TEAM_PUBLICATION_FIX_CHECK_20260914", "phase": "RESULT", "status": "OBSERVED"}
+{"command": "team-record", "exit_code": 0, "assignment_id": "TEAM_PUBLICATION_FIX_CHECK_20260914", "event_id": "event-7ff040bf5a70ace14f228466427602e769eb1ede7b6b3d8be3e74f7d77e89134", "issue_id": "NONE", "report_id": "NONE", "status": "RECORDED"}
+{"command": "team-record", "exit_code": 0, "assignment_id": "NONE", "event_id": "event-66c2ea1fe845d6707955d519d8298c14f48a5a4ccf77d1d56d9a280d0025dfee", "issue_id": "issue-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e", "report_id": "report-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e", "status": "RECORDED"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 159, "sha256": "299b29f003208afcc4fa9bc133b94b0fd5901ce6e4f0be9124345b5802f7e33e", "status": "DRY_RUN"}
+{"command": "resume-checkpoint", "exit_code": 0, "revision": 159, "sha256": "299b29f003208afcc4fa9bc133b94b0fd5901ce6e4f0be9124345b5802f7e33e", "status": "SAVED"}
+{"command": "team-observe-remote", "exit_code": 0, "operation_id": "PUBLICATION_REPAIR_20260914:publication", "status": "OBSERVED"}
+{"command": "team-reserve-effect", "exit_code": 0, "execute_once": true, "operation_id": "PUBLICATION_REPAIR_20260914:publication", "status": "RESERVED"}
+MIRROR_RESERVED_READY

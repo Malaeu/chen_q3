@@ -1,0 +1,57 @@
+REQUEST_ID: REQ-2026-09-13-THETARF-RESUME
+BOUNDARY_ID: GOAL058_ACTUAL_THETA_SOURCE_PROPERTY_RELATIVE_BOUND
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+RESULT_SCOPE: SAME_THETARF_MATH_THEN_PUBLICATION
+DELIVERY: GITHUB_WITH_ONE_LINE_NOTICE_IN_CHAT_6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+Владелец прямо попросил повторно обратиться к тебе и продолжить работу.
+Это возобновление ТОГО ЖЕ THETARF, а не новая конструкция или новый опыт.
+Математическая постановка, все7 входов и кванторы остаются неизменными:
+https://github.com/Malaeu/chen_q3/blob/bc02022d75f61d08bc4508372b11f43d86b67799/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_THETARF_2026-09-13.txt
+13056 UTF-8 bytes /152 LF / SHA256
+25f9265100eb7b2dd4e9346481abe1482750d09e1860d05f6ad3050caf28da79.
+
+Исправление порядка работы: отсутствие записи в GitHub НЕ является
+математическим ответом и не должно прекращать решение прочитанной задачи.
+1. Прочитай точный исходный запрос и входы. Выполни математическую работу:
+найди и докажи свойство полного Phi и перенос к тому же RF либо дай честный
+RUN с точным остатком / строгий KILL именно RF. Не обещай доказательство.
+2. Сохрани полный самостоятельный UTF-8 отчёт в доступном рабочем файле.
+Если готовый полный отчёт уже существует, проверь и используй его;
+не восстанавливай якобы существовавшие доказательства или stdout по догадке.
+3. Публикация — следующий отдельный шаг. Используй реальную доступную
+операцию GitHub Contents API / create_file / create_or_update_file_contents,
+если она предоставлена твоей текущей сессии. Успешный git CLI не является
+предварительным условием для вызова GitHub-коннектора.
+
+Проверенная историческая зацепка: в чате Adjudicate bridge request
+6aa24f25-0934-83eb-9151-3565fc4b3379 ответ FLOW указал
+PUSH_STATUS: REMOTE_BRANCH_UPDATED_VIA_GITHUB_CONTENTS_API.
+Коммит cf34b947ba1570ab5c19ee2803ff71017f6c22b7 действительно существует
+и содержит единственный файл PROSHKA_VERDICT_GOAL058_FLOW_2026-09-10.md.
+Это свидетельство прошлого способа публикации, НЕ доказательство наличия
+write-инструмента сейчас и НЕ авторизация менять доступы или credentials.
+Проверь этот способ адресно; не трать математический запуск на повторный
+полный каталог инструментов или одинаковые git/DNS пробы.
+
+Единственная разрешённая публикация полного результата:
+Malaeu/chen_q3, branch codex_mac/math-proshka-20260912,
+docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_THETARF_2026-09-13.md.
+Если файл уже опубликован, верни фактический commit SHA и путь.
+Сохраняй чужие изменения; без force, правок очереди/runtime/реестров.
+При успехе: проверь чтением опубликованный файл, здесь только SHA и путь.
+Если запись действительно недоступна: сохрани математический отчёт,
+здесь дай лишь его локальный путь, SHA256 и конкретный недоступный шаг
+публикации. Это статус сохранения, не доставка и не математическая приёмка.
+Не присылай полный ответ, вложения или base64 в чат; полный результат
+по-прежнему должен быть получен из GitHub. Не меняй разрешения и настройки.
+Исторический счёт6 и completed-since-owner-resume0 сохраняются;
+технические повторы не считаются завершёнными математическими неудачами.

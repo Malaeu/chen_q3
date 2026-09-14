@@ -1,0 +1,197 @@
+# Q3 native contract audit — 2026-09-14
+
+## Scope and verdict
+
+This is a bounded, read-only audit of the exact four-file candidate named by
+the reviewed source manifest. The only file written by this audit is this
+report. No canonical file, frozen engine, test file, source copy, commit,
+push, refresh, or external submission was performed.
+
+Frozen engine: `/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80`, commit
+`b7be2fdda334278e2453e391ddeee0af4e7628d7`.
+
+Canonical base: `83d3cc95594e9c9847be987beb1a72ec6b0bebbd`.
+
+Source manifest: `/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-source.json`
+(`c5ca96cbd1ed3ffc2bfb157da03e055dee5e418f4df91fb5149bf40ba6021a1a`).
+Handoff: `/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-handoff.json`
+(`5a47b9ba25ee1a59255fe8bba6084c6cbd5dad4db244e7e28c2d1509031ae88a`).
+
+The frozen engine and receipts establish the launch/intake contract and the
+recovery/copy mechanics. They do not establish that the owner has performed
+the independent review, exact source integration, derived refresh, commit,
+or publication. Those remain owner-pending in the handoff.
+
+## Exact candidate
+
+| path | before SHA-256 | candidate SHA-256 |
+|---|---|---|
+| `docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md` | `342746ed3fbfec1c610f4e202116928832ecb7db6b81df83e831e7d6c5deece5` | `1c421071fe6af2ace1cd5a5366339624a9f01f03ab06f45f71c2a4c5bb42af32` |
+| `orchestrator/team_records.py` | `209921fd0f21b0297e2bfc09453f7d85f7dc1a0aa008fd9ad3b8bc38e01d6339` | `2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a` |
+| `orchestrator/tests/test_workflow_runtime.py` | `a9e5c5ac85237df61918e58b1ff0af8affb201cdb5b17030a0d7b00cad170df2` | `8da93664800a68654f39f108a4c528d5553d855ab61f1213fb9e51983eaff6e8` |
+| `orchestrator/workflow_runtime.py` | `69bf0d9023fac19ee48fc9c7849083ce13a7d7c735c9cb839d86f143523a3347` | `cacce23ba1628cbbf7a12a54a9b63f4482d9494bc825173da0dc41bee84e5ac1` |
+
+Manifest identity: schema `q3_team_integration.v1`, operation
+`TEAM_NATIVE_ORDER_SOURCE_20260914`, expected head
+`83d3cc95594e9c9847be987beb1a72ec6b0bebbd`, candidate commit
+`b7be2fdda334278e2453e391ddeee0af4e7628d7`, checker assignment
+`TEAM_NATIVE_ORDER_CHECK_20260914`.
+
+## Contract evidence
+
+### Parent-bound launch and intake
+
+In the frozen `workflow_runtime.py`:
+
+- `1840–1864` binds assignment, owner, source hashes, and HEAD to the launch.
+- `1867–1899` persists the reservation and adds `launch_binding` for an
+  `agent-launch`.
+- `2010–2069` accepts only the matching reservation/UNKNOWN operation and
+  exact native evidence; `2058–2063` requires the same actual agent, model,
+  and effort for launch and result.
+- `2112–2145` rejects generic `team-confirm-effect` for an `agent-launch`;
+  the registered recovery route is `resume-checkpoint`.
+
+Live receipts show one real native Luna launch/intake:
+
+- reservation: `/home/chirurgie/.cache/q3-native-order-live-20260914.TEAM_NATIVE_CONTRACT_LAUNCH_20260914-LAUNCH.json:1`, state `RUNNING`;
+- intake: `/home/chirurgie/.cache/q3-native-order-live-20260914.TEAM_NATIVE_CONTRACT_LAUNCH_20260914-intake.json:1`, mode `EVIDENCE_INTAKE`, `candidate_commit:null`, `checker_assignment:null`, expected head canonical base;
+- actual profile: `/home/chirurgie/.cache/q3-native-order-live-20260914.TEAM_NATIVE_CONTRACT_LAUNCH_20260914-profile.jsonl:2`, `model:gpt-5.6-luna`, `effort:max`;
+- provider receipt: `/home/chirurgie/.cache/q3-native-order-live-20260914.TEAM_NATIVE_CONTRACT_LAUNCH_20260914-provider.jsonl:1`.
+
+This proves live native launch/profile evidence, not source integration or
+the completion of the owner workflow.
+
+### Interrupted intake and UNKNOWN recovery
+
+Frozen `workflow_runtime.py:2360–2510` loads the private manifest by
+operation (`2368–2379`), validates engine identity, source/preimage bytes and
+the exact parent launch binding (`2431–2470`), persists the complete
+integration manifest before copying (`2481–2484`), then copies exact bytes,
+reads them back, and records `COMPLETE` (`2485–2510`).
+
+`resume_checkpoint` is `workflow_runtime.py:3319–3442`: it checks the exact
+predecessor (`3326–3330`), permits only identical candidate/predecessor replay
+(`3351–3363`), revalidates source/content binding (`3385–3399`), and uses
+append-only archive/history plus CAS replacement (`3412–3439`). The registered
+route is `docs/cartographer/TOOLS.yaml:820–832`.
+
+Relevant frozen unit tests (simulation evidence only):
+
+- `test_first_launch_unknown_checkpoint_and_interrupted_intake_recover_same_action` (`test_workflow_runtime.py:5592`)
+- `test_integration_crash_keeps_all_writers_held_before_mutable_control` (`:5775`)
+- `test_integration_crash_before_write_and_third_state_drift` (`:5804`)
+- `test_fresh_process_recovers_persisted_manifest_after_runtime_write_crash` (`:6147`)
+
+No live interruption was independently observed in this audit.
+
+### Actual model resolution
+
+Frozen `team_records.py` validates the resolution pair around `:672`,
+assignment fields at `:716–750`, native observations at `:846–940`, and
+paired launch/result identity at `:970–990`. One-way resolution updates are
+checked at `:1592–1626` and `:1946–2008`. The matching contract in
+`workflow_runtime.py:2058–2063` requires identical actual native agent,
+resolved model, and resolved effort.
+
+Relevant tests: `test_assignment_resolution_pair_and_status_requirements`
+(`:8966`), `test_assignment_resolution_update_is_one_way_and_full_hashes`
+(`:9009`), `test_native_observations_bind_actual_profile_before_assignment_resolution`
+(`:9076`), `test_assignment_resolution_refuses_profile_owner_source_and_provider_drift`
+(`:5661`), `test_unresolved_assignment_result_requires_same_actual_child_and_profile`
+(`:5700`), and `test_native_launch_and_result_share_agent_and_subject` (`:8492`).
+
+The live receipt resolves to Luna/max from the recorded profile; this is not
+inferred from requested fields.
+
+### Independent review and exact source copy
+
+Frozen `workflow_runtime.py:2301–2357` requires a distinct
+`independent-checker`, distinct assignee from producer and owner, the same
+base, permitted-path coverage, a candidate commit object and ancestry in the
+pinned engine, one completed native RESULT, and the exact
+`q3_team_integration_review.v1` artifact with `SOURCE_INTEGRATION_APPROVED`.
+
+The exact four-file copy and readback path is `workflow_runtime.py:2360–2510`.
+The following tests cover its negative and replay boundaries:
+
+- exact copy, foreign preservation, and replay (`:5717`);
+- raw intake without candidate/checker (`:5736`);
+- negative review does not approve (`:5747`);
+- changed preimage, owner, or epoch (`:5754`);
+- untracked collision and symlink rejection (`:5816`, `:6273`);
+- candidate commit object and ancestry (`:6293`);
+- changed-engine recovery rejection (`:6310`);
+- reviewed local bytes exclude foreign paths (`:8101`).
+
+The saved source and handoff receipts still state that the actual independent
+checker, exact source integration, and publication are pending. The 206-test
+log cannot be promoted to those live workflow claims.
+
+## Tests and evidence boundary
+
+Reused logs, not rerun here:
+
+- full suite: 206 tests, `87.291s`, `OK`,
+  `/home/chirurgie/.cache/q3-native-order-repair-2026-09-14-full-tests.log`;
+- targeted suite: 45 tests, `11.774s`, `OK`,
+  `/home/chirurgie/.cache/q3-native-order-repair-2026-09-14-tests.log`.
+
+The full log contains the expected CLI usage/error line for unsupported
+`--legacy-v9-maintenance`; the suite then passes. Unit-process simulations,
+saved receipts, and the live Luna profile are separate evidence classes.
+
+## Derived/index boundary
+
+The four candidate paths are not direct inputs to the selected-doc corpus in
+`scripts/q3_docs_corpus.py:19–56`, Route B inputs in
+`docs/cartographer/DERIVED_ARTIFACTS.yaml:3–26`, or the registered refresh
+families in `docs/cartographer/TOOLS.yaml:1426–1453`, `:1524–1563`, and
+`:1967–1979`. `docs/cartographer/inventory.py:26–31,74–103,121–180` does read
+documentation text for declaration-name coverage, but a base-versus-candidate
+comparison found five hits on each side and no added or removed declaration
+name. Therefore no `q3-docs-refresh`, semantic preflight, Route B
+inventory/atoms refresh, map coverage refresh, or observability refresh is
+required solely by this four-file source copy. If the owner requires a close
+recheck, use the registered close route; run semantic refresh only after an
+actual indexed corpus input changes.
+
+## Foreign dirty paths to preserve
+
+The audit started with unrelated dirty/untracked state. Preserve it and do
+not use `git add -A`:
+
+- `docs/Codex/AGENTS_LEDGER.md`
+- `docs/Codex/GOAL_HISTORY.md`
+- `docs/Codex/RESUME.md`
+- `docs/routeB_bus/litreview/REFERENCES.md`
+- `docs/routeB_bus/litreview/references.bib`
+- `docs/session_protocols/SESSION_PROTOKOLL_2026-09-11_CODEX.md`
+- untracked literature cards/PDFs under `docs/routeB_bus/litreview/`
+- existing `team-evidence-*.bin` and `team-record-event-*.json` under `docs/session_protocols/`
+
+## Protocol boundary and next owner route
+
+No registered path appends an audit result to an existing
+`SESSION_PROTOKOLL`. `team-record` creates a new typed receipt
+`docs/session_protocols/team-record-<event_id>.json`
+(`docs/cartographer/TOOLS.yaml:968–975`; frozen runtime `:3061–3075`).
+`close-session --protocol-out` uses atomic write
+(`specs_docs/session_close.py:154–164,204–207`) and has no append mode; do
+not pass the existing `SESSION_PROTOKOLL_2026-09-11_CODEX.md` as
+`--protocol-out`. `--semantic-refresh` explicitly forbids `--protocol-out`
+(`specs_docs/session_close.py:188–191`). This audit does not design a new
+writer or modify the existing protocol.
+
+The minimal owner route is: complete `team-integrate-candidate` with the
+exact reviewed manifest and readback; confirm the relevant observation through
+registered `resume-checkpoint` where required while preserving operation ID
+and predecessor hash; run `plan`, then registered `close-session` for named
+owned paths and derived-status verification; validate exact changed paths;
+commit only owned candidate paths plus explicitly generated typed receipts;
+pull with rebase and push the exact ordinary commit under the existing owner
+grant. `workflow-session-close` is session closure, not Git delivery
+(`docs/cartographer/TOOLS.yaml:1030–1042`).
+
+Audit status: **SOURCE_INTEGRATION_APPROVED not observed; publication not
+observed; owner action remains pending.**

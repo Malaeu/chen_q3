@@ -1,0 +1,46 @@
+Source: functions.exec -> exec_command/write_stdin terminal output, captured 2026-09-14.
+Command: python3 -m unittest orchestrator.tests.test_workflow_runtime
+Working directory: /home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80
+The terminal output below is the complete available output, concatenated in process order from the initial exec chunk and two subsequent polls:
+
+....................................................................................
+...................................
+......................F.........usage: workflow_runtime.py [-h] [--root ROOT]
+                           {team-local-init,team-bootstrap-publish,team-integrate-candidate,team-watch-intent,team-record,team-observe-remote,team-reserve-effect,team-observe-native,team-confirm-effect,plan,run,close-session,close-phase,resume-checkpoint,review-plan}
+                           ...
+workflow_runtime.py: error: unrecognized arguments: --legacy-v9-maintenance
+...............................................
+======================================================================
+FAIL: test_default_v10_cli_imports_no_legacy_runtime_modules (orchestrator.tests.test_workflow_runtime.WorkflowRuntimePlants.test_default_v10_cli_imports_no_legacy_runtime_modules)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/tests/test_workflow_runtime.py", line 2323, in test_default_v10_cli_imports_no_legacy_runtime_modules
+    self.assertIn(proc.returncode, {0, 2}, proc.stderr)
+AssertionError: 1 not found in {0, 2} : Traceback (most recent call last):
+  File "<string>", line 5, in <module>
+  File "<frozen runpy>", line 286, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/workflow_runtime.py", line 5771, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/workflow_runtime.py", line 5706, in main
+    plan = live_plan_v10(repo, owned_paths=args.owned_path)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/workflow_runtime.py", line 859, in live_plan_v10
+    continuation = _team_continuation(repo, snapshot, owned_paths)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/workflow_runtime.py", line 2663, in _team_continuation
+    data, body = _resume_document(raw)
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/workflow_runtime.py", line 3122, in _resume_document
+    _team_document(data)
+  File "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-01a08f80/orchestrator/workflow_runtime.py", line 1403, in _team_document
+    from orchestrator import spine
+ModuleNotFoundError: import of orchestrator.spine halted; None in sys.modules
+
+
+----------------------------------------------------------------------
+Ran 198 tests in 81.801s
+
+FAILED (failures=1)
+{"schema": "q3_search_evidence.v1", "status": "PASS", "observed_at": "2026-09-02T12:00:00+00:00"}

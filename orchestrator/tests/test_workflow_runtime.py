@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import fcntl
+import copy
 import hashlib
 import json
 import os
@@ -6647,7 +6648,7 @@ class TeamRuntimeTests(unittest.TestCase):
                 candidate=self.fixture.candidate, expected_sha256="a" * 64,
             )
 
-    def _fresh_process_integration_fixture(self, *, migrate_control=False):
+    def _fresh_process_integration_fixture(self, *, migrate_control=False, real_startup=False):
         """Build a real committed engine and an independent --root destination."""
         root_holder = tempfile.TemporaryDirectory(prefix="q3-team-fresh-integration-")
         self.addCleanup(root_holder.cleanup)
@@ -6686,6 +6687,15 @@ class TeamRuntimeTests(unittest.TestCase):
         destination = root / "destination"
         destination.mkdir()
         git(destination, "init", "-q")
+        if real_startup:
+            from orchestrator.tests.test_startup_runtime import StartupRuntimeTests
+            StartupRuntimeTests._control(destination, version=11)
+            StartupRuntimeTests._current(destination, "CLOSED")
+            StartupRuntimeTests._execution_state(destination, "", "")
+            (destination / "docs/routeB_bus").mkdir()
+            (destination / "docs/routeB_bus/README.md").write_text("Startup fixture\n")
+            shutil.copy2(source_root / "orchestrator/state/NODE_REGISTRY_V10.json",
+                         destination / "orchestrator/state/NODE_REGISTRY_V10.json")
         for relative in (
             "docs/CODEX_CONTROL.md",
             "docs/cartographer/TOOLS.yaml",
@@ -6754,6 +6764,10 @@ class TeamRuntimeTests(unittest.TestCase):
         if migrate_control:
             changes.insert(0, ("docs/CODEX_CONTROL.md",
                 (destination / "docs/CODEX_CONTROL.md").read_bytes(), full_control))
+        if real_startup:
+            before_tools = (destination / workflow_runtime.TOOLS).read_bytes()
+            changes.append((str(workflow_runtime.TOOLS), before_tools, before_tools + b"\n# reviewed tool update\n"))
+            changes.sort(key=lambda row: row[0])
         for path, before, after in changes:
             blob = git(engine, "hash-object", "-w", "--stdin", input=after)
             git(engine, "update-index", "--cacheinfo", "100644," + blob + "," + path,
@@ -6857,6 +6871,7 @@ class TeamRuntimeTests(unittest.TestCase):
             stage["source_sha256"] = source_manifest_sha
         data["operation"].update(
             id=manifest["operation_id"],
+            kind="COMPUTE",
             command="workflow-team-integrate-candidate",
             subject={
                 "kind": "REPAIR", "id": manifest["operation_id"],
@@ -6931,6 +6946,82 @@ class TeamRuntimeTests(unittest.TestCase):
         self.assertEqual(control.version, 11)
         self.assertEqual(control.team_runtime_version, 1)
         self.assertEqual(workflow_runtime.PRODUCTION_PLAN_MODE, "PRODUCTION_V10")
+
+    def test_completed_source_confirmation_uses_real_startup_and_exact_provenance(self):
+        fixture = self._fresh_process_integration_fixture(migrate_control=True, real_startup=True)
+        engine, destination = fixture["engine"], fixture["destination"]
+        result = subprocess.run([sys.executable, str(engine / "orchestrator/workflow_runtime.py"),
+            "--root", str(destination), "team-integrate-candidate", "--candidate", str(fixture["manifest_path"])],
+            cwd=engine, capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        raw, current, _ = workflow_runtime._team_current(destination)
+        proposed = copy.deepcopy(current)
+        proposed.update(revision=current["revision"] + 1, previous_sha256=workflow_runtime._resume_digest(raw))
+        proposed["operation"].update(state="CONFIRMED", evidence=[fixture["manifest"]["files"][0]["path"]])
+        candidate = fixture["root"] / "confirmation.md"
+        candidate.write_bytes(self.document(proposed))
+        # Restore the real function, not a fabricated HOLD from the shared fixture.
+        with mock.patch.object(workflow_runtime, "live_plan_v10", self.fixture.real_plan):
+            plan = workflow_runtime.live_plan_v10(destination, owned_paths=[])
+            self.assertEqual(plan["status"], "FATAL", plan)
+            self.assertEqual(set(plan["startup"]["fatal_errors"]), {
+                "STARTUP_CONTROL_BLOB_DRIFT", "STARTUP_DECLARED_SURFACE_BLOB_DRIFT:docs/cartographer/TOOLS.yaml",
+                "STARTUP_RELEVANT_DIRTY_PATHS:docs/CODEX_CONTROL.md,docs/cartographer/TOOLS.yaml"}, plan)
+            for field, value in (("control_version", 10), ("team_runtime_version", 0)):
+                old_control_plan = copy.deepcopy(plan)
+                old_control_plan["startup"][field] = value
+                self.assertFalse(workflow_runtime._resume_completed_source_recovery(
+                    destination, proposed, old_control_plan, None))
+            original_control = (destination / "docs/CODEX_CONTROL.md").read_bytes()
+            (destination / "docs/CODEX_CONTROL.md").write_bytes(original_control + b"\nforeign drift\n")
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESUME_STARTUP_FATAL"):
+                workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                    expected_sha256=proposed["previous_sha256"])
+            self.assertEqual((destination / workflow_runtime.RESUME_PATH).read_bytes(), raw)
+            (destination / "docs/CODEX_CONTROL.md").write_bytes(original_control)
+            for pin in ("head", "source_commit"):
+                bad = copy.deepcopy(proposed)
+                bad["pins"][pin] = "f" * 40
+                candidate.write_bytes(self.document(bad))
+                with self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                    workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                        expected_sha256=proposed["previous_sha256"])
+            candidate.write_bytes(self.document(proposed))
+            with mock.patch.dict(os.environ, {"Q3_OWNER_EPOCH": "2"}), self.assertRaises(
+                    workflow_runtime.WorkflowRuntimeError):
+                workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                    expected_sha256=proposed["previous_sha256"])
+            channel = destination / "orchestrator/state/CHANNEL_RUNTIME.json"
+            channel_before = channel.read_bytes()
+            channel.write_bytes(b"invalid channel state\n")
+            with self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                    expected_sha256=proposed["previous_sha256"])
+            channel.write_bytes(channel_before)
+            receipt = workflow_runtime._team_local_operation(destination, fixture["manifest"]["operation_id"])
+            review_output = destination / receipt["integration"]["review"]["result"]["output_locator"]
+            review_before = review_output.read_bytes()
+            review_output.write_bytes(review_before + b" ")
+            with self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                    expected_sha256=proposed["previous_sha256"])
+            review_output.write_bytes(review_before)
+            self.assertEqual((destination / workflow_runtime.RESUME_PATH).read_bytes(), raw)
+            for changes in ({"command": "agent-launch"}, {"id": "unbound-intake", "state": "INTENT"}):
+                bad = copy.deepcopy(proposed)
+                bad["operation"].update(changes)
+                candidate.write_bytes(self.document(bad))
+                with self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                    workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                        expected_sha256=proposed["previous_sha256"])
+                self.assertEqual((destination / workflow_runtime.RESUME_PATH).read_bytes(), raw)
+            candidate.write_bytes(self.document(proposed))
+            result = workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                expected_sha256=proposed["previous_sha256"])
+            self.assertEqual(result["status"], "SAVED")
+            self.assertEqual(workflow_runtime.resume_checkpoint(destination, candidate=candidate,
+                expected_sha256=proposed["previous_sha256"])["status"], "NOOP")
+            self.assertEqual(workflow_runtime.live_plan_v10(destination, owned_paths=[])["status"], "FATAL")
 
     def _assert_fresh_process_integration_recovery(self, fixture):
         engine = fixture["engine"]

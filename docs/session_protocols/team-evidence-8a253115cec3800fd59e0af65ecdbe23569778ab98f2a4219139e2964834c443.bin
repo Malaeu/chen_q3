@@ -1,0 +1,73 @@
+# Completed source integration checkpoint recovery
+
+Authorized continuation: owner requested repair of the Linux workflow, ordinary
+commits/pushes, and integration of the existing Mac branch. No new mathematical
+goal, claims, force, settings, deletion or foreign staging. Existing exact10
+candidate777 is integrated, COMPLETE/CONFIRMED private receipt, canonical HEAD1c81,
+RESUME155 remains the original integration INTENT. Frozen engine777 is unchanged.
+
+Outcome: complete observational checkpoints required to publish these already
+independently approved source bytes; then install the permanent recovery fix.
+Files: orchestrator/workflow_runtime.py, its existing test file, and one registered
+optional invocation in docs/cartographer/TOOLS.yaml, in a
+new independent clone based on777. No new command/schema/control-version.
+An optional --integration-candidate argument on resume-checkpoint supplies the
+already-prepared intake manifest for exact preflight binding, never an execution.
+
+Implementation: resume_checkpoint keeps full real live_plan_v10 preflight. Only
+when it reports FATAL caused exclusively by dirty CONTROL/TOOLS, validate a
+completed REVIEWED_SOURCE integration for exactly those paths. Revalidate the
+saved manifest/hash, original INTENT in durable history and checkpoint digest,
+owner/epoch/installation/base/current HEAD, canonical bytes/modes and Git candidate
+blobs from the saved immutable source engine, exact independent review artifact
+and its native provenance. Reuse existing validators. Reject other fatal errors,
+other relevant dirty paths, ambiguous source receipts, changed source bytes,
+missing state, wrong owner/epoch, changed history or unreviewed source.
+
+Exception permits only observational resume writes: preserve owner, mathematical
+pins/stages/source_manifest. pins.head remains unchanged for integration
+observations; only the new publication INTENT records actual unchanged BASE,
+as required by the existing publication protocol (current155 pins.head is stale
+83d3cc95 while manifest.expected_head and actual HEAD are1c81, so requiring both
+old pins.head and actual HEAD equality would reintroduce the deadlock).
+Operation commands are workflow-team-integrate-candidate (existing source
+confirmation or content-addressed evidence intake/confirmation) and repair-only
+publication (exact FIX_VERIFIED repair manifest equal to integrated files).
+For the original source operation, use its saved manifest and exact operation
+binding. For a new intake INTENT require --integration-candidate, exact id/subject
+digest and EVIDENCE_INTAKE mode, immutable producer assignment at the same BASE,
+already-running independent repair reviewer, and a typed repair-review output
+bound to the original issue/base/exact source candidate. Its CONFIRMED checkpoint
+uses the completed private intake manifest. No arbitrary integration INTENT.
+No dispatch/assignment/send/watcher/math operations and no generic publication.
+The later registered intake still validates the exact reserved manifest, producer
+assignment and content-addressed destination scope; recording INTENT grants no
+source-copy exception. Normal history/CAS/owner-transition checks still execute.
+Ordinary plan remains FATAL until native source commit resolves Git drift.
+
+E2 is independently reviewed and committed before use with --root canonical,
+without copying E2 into canonical. Use E2 to confirm155, intake already-produced
+independent repair review by the full non-parent sequence: integration INTENT ->
+team-observe-remote -> team-reserve-effect -> EVIDENCE_INTAKE integration ->
+private CONFIRMED receipt -> checkpoint CONFIRMED -> team-observe-native RESULT
+and assignment DONE. Then record FIX_VERIFIED for the original compact-publication
+issue, record exact source-only publication INTENT, then ordinary registered
+reserve/guard/commit/push/readback. Existing777 remains a partial repair with a
+separate checkpoint-recovery dependency; original issue closure does not assert
+all Linux bugs fixed. Once HEAD has exact777 source bytes, normal source integration
+can install this permanent three-file fix against the new BASE, reviewed anew.
+
+Proof: extend nearest integration fixture with real startup prerequisite files;
+run real live_plan_v10 and resume_checkpoint, no mock of either preflight. Prove
+normal plan FATAL, exact completion succeeds, evidence intake and repair-only
+publication INTENT reach existing reserve/prepare/commit/push/readback lifecycle.
+Negative tests: unrelated fatal/control bytes/mode/owner/history/provenance/base,
+mathematical pin/stage changes and other operation commands. Recheck live dry-run
+from committed E2 before canonical writes. Long tests background with log.
+
+Prior findings: source checker confirmed no existing local-commit-before-checkpoint
+route. A confirmation-only exception is insufficient because repair-review intake
+and publication INTENT also call checkpoint. Final reviewer777 confirms its exact
+original issue scope, not the newly discovered checkpoint transition. Existing
+219 green workflow tests masked this live edge with ResumeCheckpointTests startup
+mock; do not present those passes as proof of the new behavior.

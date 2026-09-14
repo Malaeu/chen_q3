@@ -1,0 +1,65 @@
+# Independent adversarial plan review — R5
+
+**Assignment:** `TEAM_PUBLICATION_PLAN_CHECK_20260914`  
+**Mode:** independent, read-only plan review; pass 1 only  
+**Plan reviewed:** `/home/chirurgie/.cache/q3-metadata-publication-plan-2026-09-14.md`  
+**Plan SHA-256:** `24924f4c0845eb1923263f62a5c7d0e6dcaad7f6d997ce6dccbe87b1773d9b86`  
+**Pinned baseline:** `1c81bfcb47517845dd485761f9cc8fa2729bac4c`
+
+## Result
+
+**HIGH — unresolved.** R5's compact BASE-blob strategy addresses the demonstrated
+metadata self-reference: intake changes the live checkpoint/history, while the
+map retains immutable BASE blob digests and reservation captures the later
+post-INTENT bytes. The plan also correctly requires a real intake-to-publication
+regression, preserves the incoming tip through an ordinary merge, and does not
+treat the helper diagnostic as an end-to-end run.
+
+However, R5 changes the live publication authorization semantics while proposing
+to retain `CONTROL_VERSION: 10`. This is not merely a compact representation
+correction. The current guard unconditionally holds any `publication` operation
+for every confirmed issue through `FIX_COMMITTED` (including `FIX_VERIFIED`),
+and R5 proposes a new condition under which the named repair publication may
+proceed. That is a new executable admission path through a previously mandatory
+hold.
+
+## Finding
+
+| Severity | Exact finding | Evidence | Minimal required repair |
+|---|---|---|---|
+| HIGH | `CONTROL_VERSION: 10` cannot be retained for the proposed verified-repair exception. The exception changes the outcome of the active `team_guard` issue gate for `workflow-team-*` publication, even if it is tightly bound to one issue, candidate, reviewer, owner, and path set. | R5 lines 45-63 expressly retains v10 while lines 144-160 add the exception. Current `team_guard` rejects the affected operation without exception at `orchestrator/workflow_runtime.py:2171-2180`. The active control says a confirmed issue holds its affected tool ID at `docs/CODEX_CONTROL.md:446-450` and mandates a control-version increment for changed semantic behavior at `docs/CODEX_CONTROL.md:546-549`. | Revise the plan to increment `CONTROL_VERSION` and include every necessary version-binding/validation fixture in the scoped implementation. State the new exception's exact semantics in the control and test that only the verified repair operation passes while every other affected publication remains held. If the owner requires v10 to remain fixed, remove the exception and provide a non-circular route that satisfies the existing hold; do not implement R5 as written. |
+
+## Checks supporting the remainder of the plan
+
+- The source confirms the self-reference premise: `_team_verify_paths` checks
+  live bytes (`orchestrator/workflow_runtime.py:1469-1473`), reserve checks both
+  source and operation inputs (`1867-1898`), guard repeats operation-input
+  checking (`2181-2193`), and checkpoint persistence appends history before
+  replacing `RESUME` (`3412-3438`).
+- Evidence intake is a real existing transport for a content-addressed evidence
+  file: `EVIDENCE_INTAKE` accepts only
+  `docs/session_protocols/team-evidence-<sha256>.bin`
+  (`orchestrator/workflow_runtime.py:2203-2256`) and its integration requires
+  the original launch/reservation (`2405-2428`). Therefore R5's required
+  regression must exercise that transition; its stated test requirement is
+  correctly stronger than a pre-existing-map fixture.
+- The current lifecycle already binds `FIX_PUSH_VERIFIED` to the local private
+  `<repair_subject_id>:publication` observation and exact candidate commit
+  (`orchestrator/workflow_runtime.py:3046-3060`). R5 correctly must preserve
+  this binding and must not mark the issue closed before local commit plus remote
+  readback.
+- `5987b887850eb8aa29cac9588668d66d16e6f1c1` exists; its checked delta from
+  `7653a350` has 102 commits and 127 changed paths. No contrary evidence was
+  found for R5's ordinary-merge requirement.
+
+## Convergence status
+
+This is an on-target pass with one unresolved substantive HIGH finding. It is
+not a clean Mode A iteration and does not count toward the two consecutive
+WORDING-only/no-finding passes. No implementation was performed.
+
+## Count by severity
+
+`CRITICAL: 0; HIGH: 1; MEDIUM: 0; LOW: 0; WORDING: 0; OFF-TARGET: 0; TOOL-FAILURE: 0.`
+
+Plan SHA-256: `24924f4c0845eb1923263f62a5c7d0e6dcaad7f6d997ce6dccbe87b1773d9b86`

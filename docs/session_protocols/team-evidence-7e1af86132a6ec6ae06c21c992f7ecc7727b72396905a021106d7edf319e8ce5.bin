@@ -1,0 +1,31 @@
+# Independent classification — TEAM_PUBLICATION_CHECK_20260914
+
+## Scope and identity
+
+- Issue: `issue-d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e`
+- Verdict: `CONFIRMED_BUG`
+- Immutable severity: `HIGH`
+- Canonical base and live `HEAD`: `1c81bfcb47517845dd485761f9cc8fa2729bac4c`.
+- Frozen prior candidate: `/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80` at `b7be2fdda334278e2453e391ddeee0af4e7628d7`; readback was clean and unchanged.
+- Owner report read in full: `/home/chirurgie/.cache/q3-native-order-live-20260914.publication-owner-report.json`.
+
+Before this classification, the five owner-pinned live inputs were checked byte-for-byte against the base. Their observed SHA-256 values equal the report: `docs/CODEX_CONTROL.md` `9a28b04e…8fbae00`; `docs/Codex/GOAL.md` `a1155480…e2c03ef`; `docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md` `1c421071…bb42af32`; `orchestrator/tests/test_workflow_runtime.py` `8da93664…eaff6e8`; and `orchestrator/workflow_runtime.py` `cacce23b…84e5ac1`. `git diff --exit-code <base> -- <those five paths>` returned 0.
+
+## Reproduction reasoning and locators
+
+1. `orchestrator/workflow_runtime.py:1469-1473` verifies every named input against the current filesystem. `team_reserve_effect` calls it for `source_manifest` and `operation.inputs` at `1867-1878`; `team_guard` repeats the relevant checks at `2144-2193`.
+2. A checkpoint save writes history before `RESUME` (`resume_checkpoint`, `3319-3438`; specifically the history CAS precedes the `RESUME` CAS). The candidate itself is archived into `GOAL_HISTORY.md`. Therefore an operation that hashes either of those post-save metadata bytes as a fixed input changes the bytes it later requires to match.
+3. `team_bootstrap_publish` is an initial-migration sender (`1691-1797`, CLI registration `5591-5596`): it requires owner epoch 1 and an old remote `q3_resume.v1` (`1573-1647`, `1705-1708`). Its relevant design is explicit: it rejects metadata in inputs with `TEAM_BOOTSTRAP_SELF_REFERENTIAL_INPUTS` (`1648-1650`), then adds `RESUME` and history automatically to the committed changed-path manifest (`1651-1688`). The executable regression assertion is `orchestrator/tests/test_workflow_runtime.py:6755-6762`.
+4. The checked remote is already v2, so bootstrap cannot be reused. Separately, the existing post-bootstrap source-only publication composition was actually executed: `TEAM_NATIVE_ORDER_SOURCE_PUBLICATION_20260914` bound checkpoint `5e0d6a33db24dd19f5a64983ce9340415afc8af0ecd6435e255511500c67ccdc`, committed exactly four source paths as `1c81bfcb47517845dd485761f9cc8fa2729bac4c`, and pushed that exact commit to `rh_clean`. Primary receipts are `/home/chirurgie/.cache/q3-native-order-live-20260914.source-publication-commit.json` and `/home/chirurgie/.cache/q3-native-order-live-20260914.source-publication-push.log`. It used the lawful sequence native publication INTENT → remote observation → effect reservation → owner lock → `team_guard(command='publication', paths=<exact four>, effect=True)` → named-path commit/push → fresh remote observation → `team-confirm-effect` → confirmed checkpoint.
+5. This successful composition disproves any claim that post-v2 source publication is unavailable. It does not close the reported case: its exact four source hashes exclude the changed checkpoint/history metadata, while a generic metadata INTENT that includes either post-save metadata byte stream becomes self-referential under points 1–2. `team-integrate-candidate` is also not a publication substitute: its own contract says “never publication” at `2360-2364`, and its receipt fixes `publication: false` at `2498-2501`. `run --through close-node` is a goal-close route with an attempt payload and owned-node gates (`4940-5069`), not a route that binds this generic metadata/Mac publication. No existing exact extension of the proven source-only composition was evidenced that binds the metadata without that self-reference.
+6. The checkpoint envelope hard limit is `RESUME_MAX_BYTES = 8 * 1024` (`1111-1113`) and is enforced before parsing at `3144-3151`. The Mac comparison `7653a350..5987b887850eb8aa29cac9588668d66d16e6f1c1` contains 102 commits and 127 changed paths. The path names alone occupy 7,883 newline-delimited bytes; a hash manifest has the unavoidable lower bound `7,883 + 127 × (64 digest characters + at least 4 YAML/JSON structural bytes) = 16,519` bytes, before the rest of the mandatory envelope. It cannot fit in 8,192 bytes.
+
+## Minimal justified repair boundary
+
+Extend the already proven post-bootstrap source-publication composition with the bootstrap's non-self-referential metadata treatment: freeze reviewed source inputs outside `RESUME`/history; save the exact checkpoint/history; bind them as automatically recorded metadata in a private reservation/manifest; then retain the existing single ordinary non-force publication with post-push readback. The representation for a large finite reviewed manifest must live outside the 8 KiB checkpoint (for example the existing private/durable manifest mechanism), while the checkpoint retains an exact content reference and bounded summary. Do not add a second generic publisher, hide paths, relax source checks, or disable the size guard.
+
+## Mac and uncertainty
+
+No operating-system-specific cause is supported. The detached Mac worktree is exactly `5987b887850eb8aa29cac9588668d66d16e6f1c1`; its 127-path/102-commit diff from `7653a350` leaves `workflow_runtime.py`, `CODEX_CONTROL.md`, `GOAL.md`, `GOAL_HISTORY.md`, and `RESUME.md` untouched. Its runtime SHA-256 is `69bf0d90…523a3347`, consistent with the source-era runtime recorded by the successful source publication. The defect is a platform-neutral metadata-binding and bounded-manifest gap: the same code would fail on Mac if it exercised the same metadata flow.
+
+The report is a static independent classification only. I did not create a canonical evidence file, mutate the repository, execute a publication, run tests, or attempt an invalid canonical INTENT. The planned repair still needs its exact candidate, independent plan/artifact review, and an isolated executable regression before integration.

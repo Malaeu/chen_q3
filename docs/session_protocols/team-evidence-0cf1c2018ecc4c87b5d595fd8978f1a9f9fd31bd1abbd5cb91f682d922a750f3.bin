@@ -1,0 +1,6 @@
+test_completed_source_confirmation_uses_real_startup_and_exact_provenance (orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_completed_source_confirmation_uses_real_startup_and_exact_provenance) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.601s
+
+OK

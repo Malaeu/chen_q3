@@ -1,0 +1,177 @@
+{
+  "adjacent_debt": "startup_runtime.py has duplicate _valid_phase_key definitions; final predicate is weaker. Observed and reported to owner, not changed in this candidate.",
+  "base_commit": "83d3cc95594e9c9847be987beb1a72ec6b0bebbd",
+  "candidate_commit": "b7be2fdda334278e2453e391ddeee0af4e7628d7",
+  "canonical_snapshot": {
+    "candidate_object_present": false,
+    "head": "83d3cc95594e9c9847be987beb1a72ec6b0bebbd",
+    "native_assignment_observations": [],
+    "observed_at": "2026-09-14T08:19:24.722676+00:00",
+    "resume_revision": 103,
+    "resume_sha256": "b4b01afa247310ca0434f5ea4f84ed2aa33bd977c7db3f2ee8af1d85f34b9c98",
+    "typed_assignment_ids": []
+  },
+  "canonical_writes_in_this_preparation": false,
+  "docs_only_final_commit": {
+    "code_and_test_hashes_unchanged": true,
+    "deletions": 4,
+    "insertions": 7,
+    "previous_medium": "Admission-preflight ambiguity",
+    "resolution": "Exact one-time empty-registry admission before first canonical assignment; preserve subsequent engine-produced records",
+    "subject": "[Codex][rh_clean][TEAM] clarify first assignment admission boundary"
+  },
+  "engine_root": "/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80",
+  "evidence": [
+    {
+      "bytes": 7885,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.reviews.jsonl",
+      "sha256": "2cfa9c9d121729ca30e48f758d102fb7df39e318911c670a8502c3d463ce36ef"
+    },
+    {
+      "bytes": 8817,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14-tests.log",
+      "sha256": "f5cce258ea0abfc57409bd98a11bfdd7b688584529e0d43e661c1461eebae81d"
+    },
+    {
+      "bytes": 826,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14-full-tests.log",
+      "sha256": "8e4baaa41fdaa21abc9497273205a8538bb12dde00f0334d4b6b8a9a37d7fd73"
+    },
+    {
+      "bytes": 3374,
+      "path": "/home/chirurgie/.cache/q3-native-assignment-2026-09-14-full-tests.log",
+      "sha256": "ae5475d1f64462cd54df8c9d04c8b4af284f36ae8fb792b4e246e8f4977f952a"
+    },
+    {
+      "bytes": 4711,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-reviews.jsonl",
+      "sha256": "6bf67e567e37c578ca244ae638e1605397a484d72ec680641b066fbefd359cd9"
+    },
+    {
+      "bytes": 7974,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.recipe-reviews.jsonl",
+      "sha256": "f694404d7b84591284a9b50311a076e20ea220d173682b0250e0aedb16ae1be0"
+    },
+    {
+      "bytes": 18571,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.first-admission.md",
+      "sha256": "10a95a93cd72cb7db1eae17586e1a198dd7d04f5d3549b7f897adb3cf9caabe0"
+    },
+    {
+      "bytes": 2609,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.first-assignment.json",
+      "sha256": "ba6c21810f3c80974a50afb79898dc5924db1ceb949e0bcdcadd0a1080fabef3"
+    },
+    {
+      "bytes": 1654,
+      "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-source.json",
+      "sha256": "c5ca96cbd1ed3ffc2bfb157da03e055dee5e418f4df91fb5149bf40ba6021a1a"
+    }
+  ],
+  "files": [
+    {
+      "before_sha256": "342746ed3fbfec1c610f4e202116928832ecb7db6b81df83e831e7d6c5deece5",
+      "path": "docs/Codex/TEAM_RUNTIME_REFACTOR_PLAN_2026-09-11.md",
+      "sha256": "1c421071fe6af2ace1cd5a5366339624a9f01f03ab06f45f71c2a4c5bb42af32"
+    },
+    {
+      "before_sha256": "209921fd0f21b0297e2bfc09453f7d85f7dc1a0aa008fd9ad3b8bc38e01d6339",
+      "path": "orchestrator/team_records.py",
+      "sha256": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a"
+    },
+    {
+      "before_sha256": "a9e5c5ac85237df61918e58b1ff0af8affb201cdb5b17030a0d7b00cad170df2",
+      "path": "orchestrator/tests/test_workflow_runtime.py",
+      "sha256": "8da93664800a68654f39f108a4c528d5553d855ab61f1213fb9e51983eaff6e8"
+    },
+    {
+      "before_sha256": "69bf0d9023fac19ee48fc9c7849083ce13a7d7c735c9cb839d86f143523a3347",
+      "path": "orchestrator/workflow_runtime.py",
+      "sha256": "cacce23ba1628cbbf7a12a54a9b63f4482d9494bc825173da0dc41bee84e5ac1"
+    }
+  ],
+  "first_assignment": {
+    "assignment_id": "TEAM_NATIVE_ORDER_OWNER_20260914",
+    "assignment_sha256": "70837723750f7b9ebd36ccd519e4b846573ec160417984f768e50ab2be351bbc",
+    "lifecycle": "Existing actual owner orchestrator acquires/integrates technical-task-authored candidate; PENDING/concrete actual Astra-xhigh -> DONE after real source copy; no retrospective native child observations",
+    "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.first-assignment.json",
+    "sha256": "ba6c21810f3c80974a50afb79898dc5924db1ceb949e0bcdcadd0a1080fabef3"
+  },
+  "native_review_source": "/home/chirurgie/.codex/sessions/2026/09/11/rollout-2026-09-11T10-06-27-01a08f80-f033-7a31-8f3a-3aef042a3fbc.jsonl",
+  "native_reviews": [
+    {
+      "author": "/root/native_order_review",
+      "line": 10612,
+      "message_id": "amsg_01a09ef1-0648-7c40-9524-442027bf36af",
+      "pass": "D1",
+      "sha256": "569d602bd24e8bbe293cd1c51b2ebb4229f4b50e4a6906a7c6a235731c41f9fc"
+    },
+    {
+      "author": "/root/native_final_d2",
+      "line": 10658,
+      "message_id": "amsg_01a09ef3-66bf-7ad3-9ba1-c5edebf9a981",
+      "pass": "D2",
+      "sha256": "a80718cb96e75fa4e960dc80f210c00142885805f4e8c09556922ea06486bdd5"
+    }
+  ],
+  "observed_at": "2026-09-14T08:21:03.325515+00:00",
+  "owner_native_effects_in_this_preparation": false,
+  "parent_commit": "bbbe29a83bcde37818e59eef4b64c76344519c67",
+  "prepared_payload_validation": "Strict helpers in memory: CREATE/PENDING and prospective UPDATE/DONE valid; manifest validates and exact four-file SHA/producer binding matches; not a live event",
+  "previous_artifact_patch_sha256": "cc7f62c94d7f2c3d852ef9b81d5c677018b8600e0f29f77dcda6c85481a01f4d",
+  "previous_handoff": {
+    "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.handoff.json",
+    "sha256": "00307d344877d2aac0b79ec69ab0a62a0496bb3598d6c36974ac3d1fff3baf6c"
+  },
+  "recipe": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.first-admission.md",
+  "recipe_review_status": "R1 MEDIUM confirmation-route corrected; R2 CLEAN and R3 CLEAN",
+  "recipe_reviews": [
+    {
+      "author": "/root/native_order_review",
+      "line": 10753,
+      "message_id": "amsg_01a09efd-371b-72e0-b354-5ac1deebe846",
+      "pass": "R1",
+      "sha256": "2a0b82b58f9985fcb649821c232063f88a4866ff00bef01e0f21ee32287f78b1"
+    },
+    {
+      "author": "/root/native_order_review",
+      "line": 10782,
+      "message_id": "amsg_01a09eff-14ea-7723-86dc-d3bfc18a7bfc",
+      "pass": "R2",
+      "sha256": "c93861a104b64348f2d9f1fef0a09f993ee32986fecfdea4dc67533e95e21981"
+    },
+    {
+      "author": "/root/native_order_review",
+      "line": 10811,
+      "message_id": "amsg_01a09f00-3fde-73e0-88f6-0060ec1e95c4",
+      "pass": "R3",
+      "sha256": "f5151e2e5ae208051620cf26bbd825008e4b8248d79fe6932e089f9f12fa7e72"
+    }
+  ],
+  "remaining": [
+    "Actual owner repeats first-admission owner/empty-registry/source/HEAD preflight, then writes the prepared owner metadata assignment through repaired frozen engine.",
+    "Actual owner launches two genuinely useful overlapping Luna assignments using exact reserved launch, parent-bound first intake and actual profile receipts.",
+    "Actual independent checker reviews exact source manifest and classifies genuine cold-entry report; preserve one completed RESULT and actual separate classification provider evidence.",
+    "The context-error pilot alone does not demonstrate typed CONFIRMED_BUG-to-FIX_PUSH_VERIFIED lifecycle; assess remaining acceptance honestly using real ordering-repair evidence, without inventing new authorship.",
+    "Actual owner performs exact four-file source integration, required derived refresh and normal named-path publication; records final receipts in existing 2026-09-11 protocol."
+  ],
+  "source_artifact_review_status": "D1 CLEAN and fresh independent D2 CLEAN",
+  "source_integration_manifest": {
+    "path": "/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-source.json",
+    "sha256": "c5ca96cbd1ed3ffc2bfb157da03e055dee5e418f4df91fb5149bf40ba6021a1a"
+  },
+  "status": "FINAL_REVIEWED_ENGINE_AND_RECIPE_READY_OWNER_PILOTS_PENDING",
+  "tests": {
+    "full": 206,
+    "full_seconds": 87.291,
+    "targeted": 45,
+    "targeted_seconds": 11.774
+  },
+  "tests_reused_without_rerun": true,
+  "unchanged": [
+    "GOAL including section 6",
+    "mathematical owner and task",
+    "native watches",
+    "mathematical claims"
+  ]
+}

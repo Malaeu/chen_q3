@@ -1,0 +1,83 @@
+# Independent adversarial plan review — R6, global pass 3
+
+**Assignment:** `TEAM_PUBLICATION_V11_PLAN_CHECK_20260914`  
+**Mode:** independent, read-only plan review; second consecutive clean R6 pass  
+**Plan reviewed:** `/home/chirurgie/.cache/q3-metadata-publication-plan-2026-09-14.md`  
+**Plan SHA-256:** `aa72b0e6e39b3f501dfc3f1d0addf6ca011fe6dc237adf8431125d4c9128d46f`  
+**Pinned baseline:** `1c81bfcb47517845dd485761f9cc8fa2729bac4c`
+
+## Result
+
+No unresolved substantive finding. R6 is executable through the required
+sequence: old-control source intake, revision-11 source-only verified-repair
+publication and fresh remote confirmation, `FIX_PUSH_VERIFIED`, then the
+separate compact ordinary Mac merge/publication.
+
+The old-to-new transition is bounded and recoverable. R6 lines 63-96 preserve
+control 10 for existing guarded source integration while adding exactly 11 for
+the new admission. Current integration persists its engine identity and a
+PENDING integration before copying files (`orchestrator/workflow_runtime.py:
+2431-2468`), and recovery verifies that same persisted engine identity before
+resuming (`2431-2435`). Thus an interrupted integration retains its original
+candidate engine and manifest; it does not need to execute new-11 publication
+semantics while the canonical control is still 10. After the copy, startup and
+spine use the planned typed identity path rather than the current literal-v10
+checks (`orchestrator/startup_runtime.py:524-542`, `2569-2584`; `spine.py:
+1175-1223`). The required migration test covers this exact boundary, including
+refusal of the new exception under 10.
+
+The source-only repair route is correctly non-circular. The current issue gate
+does block publication in `FIX_VERIFIED` and `FIX_COMMITTED`
+(`workflow_runtime.py:2171-2180`), while lifecycle transition order requires
+`FIX_VERIFIED -> FIX_COMMITTED -> FIX_PUSH_VERIFIED`
+(`team_records.py:1520-1534`). R6 lines 177-193 therefore limits the revision-11
+exception to the one exact reviewed repair publication, retains every other
+hold, and requires commit/remote proof before the later owner events. Its planned
+confirmation change supplies the actual observed post-push commit needed by the
+existing `FIX_PUSH_VERIFIED` validator (`workflow_runtime.py:3046-3060`), while
+keeping the public confirmation envelope unchanged (`2112-2141`).
+
+The compact second publication preserves the first intake chain and scope. R6
+lines 100-157 pin RESUME and GOAL_HISTORY to BASE Git blobs, then require the
+full history framing and contiguous checkpoint chain through intake and current
+INTENT before reservation. That directly addresses the current mutation order
+where history changes before RESUME (`workflow_runtime.py:3412-3438`) and the
+current live-byte checks (`1469-1473`, `1867-1878`, `2181-2193`). The map is
+separately content-addressed through the existing constrained evidence-intake
+path (`2203-2256`); reservation freezes map keys plus that declared map path.
+R6 requires final modes, Git tree, incoming ancestry, exact scope and private
+snapshot verification before the one ordinary push (lines 159-229). It neither
+copies the Mac tree nor permits unlisted/foreign paths, destructive recovery, a
+new sender/CLI/schema/service/selector, or mathematical admission.
+
+The two required independent artifact consumers remain distinct:
+`q3_team_integration_review.v1` is checked in
+`workflow_runtime.py:2301-2347`; `q3_repair_review.v1` is separately required
+for `FIX_VERIFIED` in `team_records.py:1074-1108`. R6 lines 301-317 require
+both with distinct assignments and provenance, without schema widening.
+
+## Prior-pass linkage
+
+| Pass | Artifact | SHA-256 | Outcome |
+|---|---|---|---|
+| R5 pass 1 | `/home/chirurgie/.cache/q3-publication-plan-20260914.review.md` | `dfce6fade14446c572bbd791fa370c6a67025d04009d3e4e65429513bd4ca4ee` | One immutable HIGH: v10 could not admit the exception. |
+| R6 global pass 2 | `/home/chirurgie/.cache/q3-native-order-live-20260914.publication-plan-pass2.md` | `8e72a6cfb543b68d19ed51806f34b8cfc0532027b75de5f5f807c36448f603a5` | Clean, on-target. |
+| R6 global pass 3 | This artifact | Written after rechecking unchanged plan bytes | Clean, on-target. |
+
+R6 lines 46-96 resolve the R5 HIGH with actual `CONTROL_VERSION: 11`, bounded
+10/11 validation, and the required tests. The current mandatory hold and the
+control-version rule remain evidenced at `orchestrator/workflow_runtime.py:
+2171-2180` and `docs/CODEX_CONTROL.md:546-549`.
+
+## Convergence status
+
+Two consecutive on-target R6 passes have zero substantive findings: global pass
+2 and this global pass 3. Mode A plan review is converged for these unchanged
+R6 bytes. This is plan convergence only; no implementation, tests, canonical
+write, integration, publication, remote effect, or mathematical claim occurred.
+
+## Count by severity
+
+`CRITICAL: 0; HIGH: 0; MEDIUM: 0; LOW: 0; WORDING: 0; OFF-TARGET: 0; TOOL-FAILURE: 0.`
+
+Plan SHA-256: `aa72b0e6e39b3f501dfc3f1d0addf6ca011fe6dc237adf8431125d4c9128d46f`

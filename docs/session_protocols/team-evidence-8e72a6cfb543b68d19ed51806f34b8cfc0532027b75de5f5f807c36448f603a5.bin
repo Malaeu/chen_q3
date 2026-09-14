@@ -1,0 +1,83 @@
+# Independent adversarial plan review — R6
+
+**Assignment:** `TEAM_PUBLICATION_V11_PLAN_CHECK_20260914`  
+**Mode:** independent, read-only plan review; global pass 2, R6 pass 1  
+**Plan reviewed:** `/home/chirurgie/.cache/q3-metadata-publication-plan-2026-09-14.md`  
+**Plan SHA-256:** `aa72b0e6e39b3f501dfc3f1d0addf6ca011fe6dc237adf8431125d4c9128d46f`  
+**Pinned baseline:** `1c81bfcb47517845dd485761f9cc8fa2729bac4c`
+
+## Result
+
+No unresolved substantive finding in this R6 pass. The R5 HIGH is addressed by
+an actual control revision and bounded consumers: R6 requires
+`CONTROL_VERSION: 11`, accepts exactly `{10, 11}` where legacy recovery must
+remain readable, makes the new repair/compact admission exclusive to 11, and
+requires the independent live spine gate to use that typed identity validation.
+This is executable rather than a documentary exception.
+
+The compact map strategy is non-circular. Current verification compares named
+inputs to live bytes (`orchestrator/workflow_runtime.py:1469-1473`,
+`1867-1878`, `2181-2193`), while checkpoint persistence changes history before
+RESUME (`3412-3438`). R6 instead pins the two map values to immutable blobs at
+BASE, validates the intact chain through intake and current INTENT, and records
+the later post-INTENT hashes privately. The external content-addressed intake
+route is already constrained to the intended evidence path
+(`2203-2256`, `2405-2428`), so the stated complete-path test is the necessary
+one rather than a mocked pre-existing-map test.
+
+R6 also keeps the verified technical repair distinct from broader publication.
+The current issue hold is unconditional at `2171-2180`; the plan narrows the
+replacement to the named verified repair publication and requires it to be
+published and lifecycle-closed first. The existing `FIX_PUSH_VERIFIED` route
+already requires the private `<repair_subject_id>:publication` observation to
+name the candidate commit (`3046-3060`); R6 correctly requires fresh remote
+readback to replace the pre-push base for that field. It preserves distinct
+existing artifact consumers: source-integration uses
+`q3_team_integration_review.v1` (`2301-2347`), while repair verification uses
+`q3_repair_review.v1` through `team_records.py:1074-1108`.
+
+The specified Mac tip is present locally. `5987b887850eb8aa29cac9588668d66d16e6f1c1`
+has parent chain from `7653a3503d20be4dba91a333ff96e5eea30c738c`; the checked
+delta is 102 commits and 127 paths. R6 therefore correctly requires an ordinary
+Git merge which preserves incoming ancestry, rather than a file copy.
+
+## R5 HIGH disposition
+
+| Severity | Disposition | Evidence |
+|---|---|---|
+| HIGH | Resolved in plan | R6 lines 46-96 increments the control and specifies the bounded 10/11 identity, startup, spine, admission, and migration tests. This fixes the R5 finding at `/home/chirurgie/.cache/q3-publication-plan-20260914.review.md:18-30`; the current mandatory hold and version-increment rule are at `orchestrator/workflow_runtime.py:2171-2180` and `docs/CODEX_CONTROL.md:546-549`. |
+
+## Scope and validation observations
+
+- The named tracked scope is ten existing paths (R6 lines 237-263). It includes
+  the only current live exact-v10 gates: startup identity validation
+  (`orchestrator/startup_runtime.py:524-542`, `2573-2584`) and spine's literal
+  token (`orchestrator/spine.py:95`, `1175-1223`). The remaining
+  `three_body_loop.py` v10 marker is not a new admission gate; R6 preserves its
+  v9 historical semantics and targets the existing negative fixture.
+- `team_confirm_effect` currently only accepts its fixed observation envelope
+  (`orchestrator/workflow_runtime.py:2112-2141`). R6 explicitly limits the
+  required remote-commit observation change to the compact and verified-repair
+  publication cases, retaining the existing external payload schema.
+- The map-source and recovery checks are properly fail-closed: changed HEAD,
+  unchained history, source/mode/path drift, missing private reservation, and
+  unknown post-reservation effects are all covered in R6 lines 114-229 and
+  explicit tests at lines 268-321. No new sender, CLI, public schema, service,
+  selector, proof mode, or mathematical admission is proposed.
+- R6 preserves the required bounds and immutable content: GOAL section 6,
+  GOAL's 12 KiB limit, RESUME's 8 KiB limit, foreign literature paths, and the
+  existing owner-only `PX_RH_CLAIM` / `CHALLENGER_NOT_RH` boundary.
+
+## Convergence status
+
+This is an on-target R6 pass with no substantive findings. It is the first R6
+pass only and does not itself establish Mode A convergence; one further
+independent on-target WORDING-only or empty pass is still required after this
+pass under the stated two-consecutive-pass rule. No implementation or tests
+were performed.
+
+## Count by severity
+
+`CRITICAL: 0; HIGH: 0; MEDIUM: 0; LOW: 0; WORDING: 0; OFF-TARGET: 0; TOOL-FAILURE: 0.`
+
+Plan SHA-256: `aa72b0e6e39b3f501dfc3f1d0addf6ca011fe6dc237adf8431125d4c9128d46f`

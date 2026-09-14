@@ -1,0 +1,198 @@
+{
+  "base_commit": "1c81bfcb47517845dd485761f9cc8fa2729bac4c",
+  "branch": "codex_linux_app/metadata-publication-2026-09-14",
+  "candidate_manifest": [
+    {
+      "path": "docs/CODEX_CONTROL.md",
+      "sha256": "d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5"
+    },
+    {
+      "path": "docs/Codex/GOAL.md",
+      "sha256": "043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0"
+    },
+    {
+      "path": "docs/cartographer/TOOLS.yaml",
+      "sha256": "cb32025db1549bd53d6915490c19d740b3fcb683ac035f2cb34ee65db7ad0017"
+    },
+    {
+      "path": "orchestrator/spine.py",
+      "sha256": "a6723bafaa5357ea509b25bcd94c9183f8f1b5f8e663d52f29105acaa7596adb"
+    },
+    {
+      "path": "orchestrator/startup_runtime.py",
+      "sha256": "42d69cefce23a76f7acba72cde08ff754cfec5fbf9f68438e7e48a6b40e6faf9"
+    },
+    {
+      "path": "orchestrator/tests/test_startup_runtime.py",
+      "sha256": "41c49dabc10e00b4f1aa5878fb8ef24a895e8620e4e16684b68811425df8349b"
+    },
+    {
+      "path": "orchestrator/tests/test_three_body_loop.py",
+      "sha256": "d1b2311aa9883bfa67e5b6d76e6447c34ef741a4b6eff9d7ac13cc95a463f263"
+    },
+    {
+      "path": "orchestrator/tests/test_tool_manifest_memory_wiring.py",
+      "sha256": "58c1d0a7a657b06c11aacfa1d1f4113710d295cb3ebfb46d439fd3bae219fa33"
+    },
+    {
+      "path": "orchestrator/tests/test_workflow_runtime.py",
+      "sha256": "1b8db6d322f9b611cb54d42555543acd5bfe7d46efa4868b9193936f974ea483"
+    },
+    {
+      "path": "orchestrator/workflow_runtime.py",
+      "sha256": "fb21fa9f92716148caab9810bce5b848a52d8036a77c73d0e0e362b9c8a331fa"
+    }
+  ],
+  "claims": {
+    "PX_RH_CLAIM": "NOT_MADE",
+    "canonical_publication": "NOT_CLAIMED",
+    "commit": "NOT_PERFORMED",
+    "deployment": "NOT_CLAIMED",
+    "mathematical_verification": "NOT_PERFORMED",
+    "push": "NOT_PERFORMED",
+    "source_integration_approval": "NOT_CLAIMED"
+  },
+  "diff_sha256": "3c6b52cfba508faffe0e628e3d75c3ff89e4da350a1f3eeaabb4ddcf26790091",
+  "git_blob_manifest": [
+    {
+      "git_blob_sha": "1778986fc1e65fb9a857bc7fc69aebe09bf1e27a",
+      "path": "docs/CODEX_CONTROL.md"
+    },
+    {
+      "git_blob_sha": "538952422f29787793a4fe6fe6fcab33fe4a9b67",
+      "path": "docs/Codex/GOAL.md"
+    },
+    {
+      "git_blob_sha": "68a37d02b88417eaa21d4720cea01be8afabbc88",
+      "path": "docs/cartographer/TOOLS.yaml"
+    },
+    {
+      "git_blob_sha": "25807b9b7ea27766a23a0f6a4a59ac66ad091c0c",
+      "path": "orchestrator/spine.py"
+    },
+    {
+      "git_blob_sha": "3921ffa8692f3701542fbfad403bce4dd308abc8",
+      "path": "orchestrator/startup_runtime.py"
+    },
+    {
+      "git_blob_sha": "fb5070abe68dcf5a44f93a547c0f20ac2cd47f0f",
+      "path": "orchestrator/tests/test_startup_runtime.py"
+    },
+    {
+      "git_blob_sha": "c4b7fa2b6ae91caa9d53742ba81773c1ce82ee0e",
+      "path": "orchestrator/tests/test_three_body_loop.py"
+    },
+    {
+      "git_blob_sha": "a192378d84e917cc0fd91416e7294a6ac5bfc57a",
+      "path": "orchestrator/tests/test_tool_manifest_memory_wiring.py"
+    },
+    {
+      "git_blob_sha": "16fcede598cbc8ed8e0da10071c49bfa63ced11f",
+      "path": "orchestrator/tests/test_workflow_runtime.py"
+    },
+    {
+      "git_blob_sha": "6b1a078793ee20565e7de50a241025591c87264f",
+      "path": "orchestrator/workflow_runtime.py"
+    }
+  ],
+  "packaging_boundary": {
+    "candidate_is_detached": true,
+    "candidate_self_hash_not_embedded": true,
+    "canonical_checkout": "/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean",
+    "canonical_integration": "NOT_PERFORMED",
+    "source_files_modified_by_packaging": false
+  },
+  "provenance": {
+    "attribution_boundary": "This attribution records authorship scope only; it does not assert canonical integration or approval.",
+    "root_agent": {
+      "basis": "Task handoff attribution: runtime, documentation, and full workflow-test changes belong to the root agent.",
+      "paths": [
+        "docs/CODEX_CONTROL.md",
+        "docs/Codex/GOAL.md",
+        "docs/cartographer/TOOLS.yaml",
+        "orchestrator/tests/test_workflow_runtime.py",
+        "orchestrator/workflow_runtime.py"
+      ],
+      "scope": "Publication runtime, documentation, manifest, and full workflow coverage."
+    },
+    "version_worker": {
+      "basis": "Task handoff attribution: five version-related changes belong to the version worker.",
+      "paths": [
+        "orchestrator/spine.py",
+        "orchestrator/startup_runtime.py",
+        "orchestrator/tests/test_startup_runtime.py",
+        "orchestrator/tests/test_three_body_loop.py",
+        "orchestrator/tests/test_tool_manifest_memory_wiring.py"
+      ],
+      "scope": "Control-version compatibility and its directly corresponding tests."
+    }
+  },
+  "schema": "q3_publication_candidate.v1",
+  "validation": {
+    "artifact_review": {
+      "note": "Read-only review; no canonical integration, push, deployment, or mathematical acceptance claim.",
+      "path": "/home/chirurgie/.cache/q3-publication-artifact-check-20260914.review.md",
+      "result": "Mode A: passes 2 and 3 on-target with only WORDING/no findings; zero unresolved substantive findings.",
+      "sha256": "05ccf56001728153cb03bf79e564e28fc7d98a8ad768129f90fda5cb37829632",
+      "status": "CONVERGED"
+    },
+    "baseline_wiring_reproduction": {
+      "note": "Retained as comparison evidence, not as a candidate-pass claim.",
+      "path": "/home/chirurgie/.cache/q3-publication-baseline-wiring-20260914.log",
+      "result": "exit 1; baseline wiring failures reproduced; not attributed to this candidate.",
+      "sha256": "c3a74f693c62796ee263d8cd877862430262b14a023968c70f28c3dff03ff0af",
+      "status": "EXPECTED_BASELINE_FAILURES"
+    },
+    "compact_scales": {
+      "path": "/home/chirurgie/.cache/q3-publication-compact-scales-20260914.log",
+      "result": "exit 0; 3 tests; OK",
+      "sha256": "77af46db30c9c01a2dfb476d13ec3ea6deb09feb430ef73d799a5cb1933b37d0",
+      "status": "PASS"
+    },
+    "full_workflow_r2": {
+      "command": "python3 -m unittest orchestrator.tests.test_workflow_runtime",
+      "path": "/home/chirurgie/.cache/q3-publication-full-workflow-r2-20260914.log",
+      "result": "exit 0; 219 tests in 208.589s; OK",
+      "sha256": "b1a3e83562ba0ea1235412e2cc85820b5f5898325ff58b901956542457858663",
+      "status": "PASS"
+    },
+    "git_diff_check": {
+      "command": "git diff --check",
+      "status": "PASS"
+    },
+    "provenance_targeted_r2": {
+      "path": "/home/chirurgie/.cache/q3-publication-provenance-r2-20260914.log",
+      "result": "exit 0; 1 test in 0.421s; OK",
+      "sha256": "c818880db444bafa559c01015ed0a2f58145364b958e34c55a5ed0591fdc71b5",
+      "status": "PASS"
+    },
+    "py_compile": {
+      "result": "Previously passed, as recorded in the task handoff; not rerun during packaging.",
+      "status": "PASS_REPORTED"
+    },
+    "recovery_r3": {
+      "path": "/home/chirurgie/.cache/q3-publication-recovery-r3-20260914.log",
+      "result": "exit 0; 4 tests; OK",
+      "sha256": "7c86a35ffcd13aac645cfedc2c53b2fc3dad9e614de94b1bfb29da65d4726dfa",
+      "status": "PASS"
+    },
+    "source_stability": {
+      "base_commit_stable": true,
+      "diff_sha256_stable": true,
+      "exact_manifest_match": true,
+      "exact_path_set": true,
+      "interval_seconds": 1.0,
+      "reads": 2,
+      "status": "PASS"
+    },
+    "startup_tests": {
+      "result": "65 tests OK, as recorded in the task handoff; not rerun during packaging.",
+      "status": "PASS_REPORTED"
+    },
+    "three_body_tests": {
+      "result": "Previously verified, as recorded in the task handoff; not rerun during packaging.",
+      "status": "PASS_REPORTED"
+    }
+  },
+  "worktree": "/home/chirurgie/.cache/q3-metadata-publication-20260914"
+}

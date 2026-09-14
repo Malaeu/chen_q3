@@ -2467,3 +2467,273 @@ notes: >-
   during generation and was never clicked. No Bus 010, Goal-055 release, route
   promotion, PX claim, or RH claim occurred.
 ```
+
+### 2026-09-12 — isolated mathematical ODD2 request
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_UNIFORM_ODD_TWO_NODE_MINOR
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-ODD2
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T10:28:30.541973+00:00
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI reported 23m34s natural reasoning; completion observed at scheduled check near 11:00 UTC"
+ui_reasoning_seconds: 1414
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: POINTWISE_OD1_INTEGRAND_PSD2_REFUTED
+status: ACCEPTED_SCOPED_PAPER_UNIFORM_ODD2_OPEN
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md
+notes: >-
+  Same living owner-directed mathematical chat, exact attached TXT and natural
+  final Markdown. Full46046bytes/772LF response hash matches producer; parent
+  and sole independent checker accepted only the exact integrand no-go.
+  Owner mathematical no-delta count0->1. No production admission or RH claim.
+```
+
+### 2026-09-12 — isolated ODDCURV and observed manual continuation
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_INTEGRATED_ODD_KERNEL_LOG_CURVATURE
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-ODDCURV
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T11:06:00+00:00
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI reported20m1s; completion observed at scheduled check near11:27UTC"
+ui_reasoning_seconds: 1201
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: INTEGRATED_CURVATURE_POSITIVE_WITH_ONE_NODE_ESCAPING_A_FIXED_COMPACT
+status: ACCEPT_SCOPED_INTEGRATED_CURVATURE_TAIL_ONLY
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDCURV_2026-09-12.md
+notes: >-
+  Exact52645bytes/831LF download and parent/sole-checker acceptance. Global
+  IC and ODD2 open; no-delta1->2. A subsequent manually sent full-sign
+  continuation was observed already reasoning; Codex did not duplicate it.
+```
+
+### 2026-09-12 — owner-direct regional ODD2 continuation
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_ODD2_REMAINING_DOMAIN
+front: GOAL058_SECOND_EXPRESSION
+transaction: MANUAL-ODDCURV-FULL-SIGN-20260912
+request_message_id: NOT_CAPTURED
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: NOT_CAPTURED_OWNER_SEND
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI31m16s; complete observed near12:03UTC"
+ui_reasoning_seconds: 1876
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: EXPLICIT_REGIONAL_ODD2_MIN4_GAP4
+status: ACCEPT_REGIONAL_ODD2_MIN4_GAP4_ONLY
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDCURV_OWNER_CONTINUATION_2026-09-12.md
+notes: >-
+  Owner confirmed manual send. Exact full download and parent/sole-checker
+  audit accepted a new actual consumer family, not global IC/O2 or RH.
+  Producer global-incomplete count3 is separate from owner stagnation;
+  parent counts the new verified region as mathematical progress.
+```
+
+### 2026-09-12 — owner-direct Hodge / Weil strategic review
+
+```yaml
+proof_address: GOAL058_SOURCE_SIGN_GEOMETRY_AND_NEGATIVE_WITNESS_EXCLUSION
+front: GOAL058_SECOND_EXPRESSION
+transaction: OBSERVED-HODGE-WEIL-CONTINUATION-20260912
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED_OWNER_SEND
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI22m12s; completion first observed near12:40:33UTC"
+ui_reasoning_seconds: 1332
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: TRY_SOURCE_PAIRWISE_NEGATIVE_WITNESS_EXCLUSION
+status: ACCEPT_SCOPED_HODGE_WEIL_STRATEGIC_REVIEW
+result_pointer: docs/routeB_bus/proshka/PROSHKA_HODGE_WEIL_NEGATIVE_WITNESS_REVIEW_2026-09-12.md
+notes: >-
+  Full38721bytes/507LF download, parent and sole checker acceptance.
+  Strategic/abstract content and exact signed-Gram identity only;
+  actual global IC/ODD2/Q signs remain open. No new Codex send.
+  Independently accepted source sign-family progress elsewhere keeps
+  the owner's consecutive no-progress count0; producer counter3 retained.
+```
+
+### 2026-09-12 — source TN infinity and exact convolution-transfer tests
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_SOURCE_STRUCTURE_AND_CONTRACTION_TRANSFER
+front: GOAL058_SECOND_EXPRESSION
+transaction: OBSERVED-SOURCE-CONTRACTION-CONTINUATION-20260912
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: NOT_CAPTURED_OWNER_SEND
+completed_at: NOT_CAPTURED
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI29m42s; complete response recovered after13:19UTC check and before13:23:28UTC"
+ui_reasoning_seconds: 1782
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: TRY_THETA_TN_INFINITY_SOURCE_GEOMETRY
+status: ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES
+result_pointer: docs/routeB_bus/proshka/PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md
+notes: >-
+  Full50632bytes/842LF download matches producer hash. Parent and sole
+  checker accepted actual r TN infinity and two exact transfer failures.
+  No new actual K witness, IC, ODD2 or full Q sign. Consumer no-delta0->1
+  after recent sign-family progress; historical producer3->4 retained.
+  One reload recovered the same final; no generation restart or new send.
+```
+
+### 2026-09-12 — complete min1 ODD2 strip
+
+```yaml
+proof_address: GOAL058_ACTUAL_THETA_ODD2_WHOLE_REMAINING_MIN1_STRIP
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-ODD2STRIP
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: 2026-09-12T15:53:33.922816+00:00
+completed_at: NOT_CAPTURED_EXACTLY
+wall_seconds: NOT_CONTINUOUSLY_MEASURED
+wall_human: "UI60m19s; completed answer first observed about17:05UTC"
+ui_reasoning_seconds: 3619
+answer_now_shown: NOT_OBSERVED
+answer_now_clicked: false
+primary: FULL_MIN1_ODD2_WHOLE_STRIP
+status: ACCEPT_ACTUAL_THETA_ODD2_MIN1_WHOLE_STRIP_ONLY
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2STRIP_2026-09-12.md
+notes: >-
+  Exact108317bytes/1808LF response; parent and sole checker full analytic
+  acceptance. Exact parent verify90 matches all648 output bytes, including
+  4158leaves,8259nodes,area57,unpaid0. All min>=1 ODD2 is now covered.
+  Global ODD2,IC,higher odd/even signs and RH remain open.
+```
+
+### 2026-09-12 — Actual-Phi ferromagnetic construction
+
+```yaml
+proof_address: RouteB.Goal058.ActualThetaFerromagneticRealization
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-LYGSPHI
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T19:56:02.330Z
+completed_at: NOT_CAPTURED_EXACTLY
+first_final_observed_at_utc: 2026-09-12T20:23:00Z
+first_final_observed_precision: minute
+ui_reasoning_seconds: 1585
+wall_seconds: null
+wall_human: "UI26m25s; natural final first observed20:23UTC"
+answer_now_shown: false
+answer_now_clicked: false
+primary: KILL_NAMED_PHI_SPIN_CONSTRUCTION
+status: ACCEPT_KILL_EXACT_THETA_ENTROPY_BINOMIAL_JOINT_LIFT
+result_pointer: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_2026-09-12.txt
+request_sha256: 32d75bc0235c8aaa48c326e240b5e1123d914d0caf8ea568a86402adb0ae2e71
+request_commit: d6cbfa02d9604f2aeba2e70b6daaebff80c0859a
+notes: >-
+  Parent and sole sibling5_check reviewed the exact packet and four complete
+  committed source frames. review-plan READY with no holds. Single TXT,
+  sent binder, natural Pro-Denkvorgang and Antwort stoppen observed in the
+  same owner-authorized mathematical phase chat. Source-sign counter stays2
+  until complete independent intake. Subsequent GitHub retrieval and full
+  parent/sole-checker acceptance moved2to3; exact joint-law scope only.
+  Raw response commit cdb3f2698e5e8bf494ecbddac54a319c6edd69ec.
+  No RH or canonical admission claim.
+```
+
+### 2026-09-12 — LYGSPHI byte retransmission only
+
+```yaml
+proof_address: RouteB.Goal058.ActualThetaFerromagneticRealization
+front: GOAL058_SECOND_EXPRESSION
+transaction: REQ-2026-09-12-LYGSPHI-TRANSPORT
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+request_message_id: NOT_CAPTURED
+sent_at: 2026-09-12T20:35:02.839Z
+completed_at: NOT_CAPTURED_EXACTLY
+first_final_observed_at_utc: 2026-09-12T20:42:00Z
+first_final_observed_precision: minute
+ui_reasoning_seconds: 338
+wall_seconds: null
+wall_human: "UI 5m38s; natural completion"
+answer_now_clicked: false
+primary: TECHNICAL_RETRANSMISSION_ONLY
+status: FINAL_OBSERVED_TRANSPORT_LENGTH_MISMATCH
+request_sha256: db5fa6552a25c1d2efb446488b8cf9c748bae5adf7abbad8a6e714a513bca902
+request_commit: 268e5ad9d0cde113268ef3950574b8293574966f
+result_pointer: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LYGSPHI_TRANSPORT_2026-09-12.txt
+notes: >-
+  One immutable completed raw response requested as literal gzip/base64 stdout.
+  Parent and sole sibling5_check accepted exact53LF technical request;
+  review-planREADY/holds[], singleTXT tile and binder observed in same chat,
+  natural Pro-Denkvorgang/Stop583. Final rendered base64 has 19996 characters
+  versus declared 27064; original raw SHA not recovered. Owner superseded
+  attachment/base64 transport with GitHub exchange; no retry.
+  No new mathematics, attempt or counter change.
+```
+
+### 2026-09-12 — Owner-directed GitHub publication
+
+```yaml
+proof_address: RouteB.Goal058.ActualThetaFerromagneticRealization
+front: GOAL058_SECOND_EXPRESSION
+transaction: LYGSPHI_GITHUB_PUBLICATION
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: 2026-09-12T20:55:18.980Z
+completed_at: NOT_CAPTURED_EXACTLY
+ui_reasoning_seconds: 344
+wall_seconds: null
+wall_human: "UI 5m44s; natural completion"
+answer_now_clicked: false
+primary: TECHNICAL_GITHUB_PUBLICATION_ONLY
+status: COMMITTED_FETCHED_RAW_SHA_VERIFIED
+task_commit: 2a931ada80f418f85ea2cfe00922a43cc6ac78c9
+result_commit: cdb3f2698e5e8bf494ecbddac54a319c6edd69ec
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_LYGSPHI_2026-09-12.md
+notes: >-
+  Owner changed task transport to GitHub files and one short chat link.
+  Sent link, cleared composer and natural reasoning were observed.
+  Final reply contained only commit and path. Fetch/fast-forward succeeded;
+  raw56813bytes/907LF/SHA630da77ed6a85d013e60078090be3135e737db0846194675b05af775cd238fb4
+  matched exactly. No repeated proof, attachment or additional math attempt.
+```
+
+### 2026-09-13 — NULLVAR exact integrated correction
+
+```yaml
+request_id: REQ-2026-09-13-NULLVAR
+boundary_id: GOAL058_FULL_THETA_VARIANCE_NULL_CORRECTION
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+sent_at: NOT_CAPTURED_EXACTLY
+reasoning_start_observed_at: 2026-09-13T21:01:15Z
+completed_at: 2026-09-13T21:15:58.254139+00:00
+ui_reasoning_seconds: null
+wall_seconds: 897.655139
+wall_time_source: app_read_thread_startedAt_completedAt
+answer_now_clicked: false
+status: ACCEPT_FULL_N1_N2_AND_CORRECTION_ACCOUNTING_ONLY
+request_commit: 46c1b471e4ddf7d5b2f27270a986cd8401e79711
+request_sha256: d2c8ebfdc0f3d779cb37520217443411188a003f585885cb355ae1f42a3c7671
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLVAR_2026-09-13.md
+notes: >-
+  Same living chat, owner-authorized GitHub-only exchange. Exact single link,
+  empty composer and natural Pro reasoning observed in Browser1/tab2.
+  Result c6694aba0a2f50b8f004e9e967ae0c63b14900be was fetched unchanged,
+  SHA256 4fa7909725d2fa10ccc52d3413580289692d3a1489ecae7bed88956f80980730.
+  Parent and sole independent reader accepted the full N1/N2 domain and
+  exact accounting. App read_thread confirms natural completion; UI reasoning
+  duration was not separately observed.
+  One bounded N1/N2 identity/domain task, not a repeated TARGET sign request.
+  Observation timestamp is not an exact send timestamp. No completed attempt
+  or RH/IC/ODD2 claim follows from delivery.
+```

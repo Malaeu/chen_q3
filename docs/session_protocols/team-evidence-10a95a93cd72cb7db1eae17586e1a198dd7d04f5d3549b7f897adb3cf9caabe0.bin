@@ -1,0 +1,291 @@
+# First native admission: existing owner, one frozen engine
+
+Prepared 2026-09-14. This is an owner execution recipe, not an executed pilot,
+an ownership transfer, a new runtime interface, or mathematical acceptance.
+
+## Exact candidate and first record
+
+- Canonical: `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean`, `rh_clean`.
+- Owner: `01a084f4-7498-7021-bac2-91d184d58dc7`, `local`, epoch 1.
+- Installation: `9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4`.
+- Frozen engine: `/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80`.
+- Engine/candidate commit: `b7be2fdda334278e2453e391ddeee0af4e7628d7`.
+- Base: `83d3cc95594e9c9847be987beb1a72ec6b0bebbd`.
+- First assignment: `/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.first-assignment.json`, SHA256 `ba6c21810f3c80974a50afb79898dc5924db1ceb949e0bcdcadd0a1080fabef3`.
+- Final source manifest: `/home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-source.json`, SHA256 `c5ca96cbd1ed3ffc2bfb157da03e055dee5e418f4df91fb5149bf40ba6021a1a`.
+
+The source manifest has exactly four paths and their base/candidate hashes. Its
+checker assignment ID is `TEAM_NATIVE_ORDER_CHECK_20260914`; that fresh checker
+has not run. Do not substitute earlier technical reviews for its native evidence.
+
+The first record is for the already running owner, role `orchestrator`, acquiring
+and integrating the candidate authored by technical task
+`01a08f80-f033-7a31-8f3a-3aef042a3fbc`. It makes no new authorship claim.
+Requested `gpt-6-astra/max` and observed `gpt-6-astra/xhigh` remain distinct.
+The actual pair was independently checked in the owner's original rollout
+`/home/chirurgie/.codex/sessions/2026/09/09/rollout-2026-09-09T08-56-48-01a084f4-7498-7021-bac2-91d184d58dc7.jsonl`,
+line 42377, timestamp `2026-09-14T07:47:32.276Z`, 4962 bytes, SHA256
+`83784dac5729a2af9f72a3de05878d3beff4ae71325ec87d6ea5e14300011782`.
+Check that observation still describes the actual executing owner before use.
+
+Lifecycle: CREATE/PENDING with that concrete observed pair; after actual source
+copy/readback, UPDATE/DONE with the same pair. No child LAUNCH or RESULT is
+invented for this owner record. If integration remains outstanding, keep the
+honest pending/blocked/unknown state. This avoids an unresolved nullable producer
+that cannot truthfully finish. Pure in-memory CREATE and terminal UPDATE schema
+validation passed; no corresponding canonical event was written by preparation.
+
+## Owner preflight and registration
+
+Run the canonical `plan`; reconcile current owner, sources, HEAD and incomplete
+operations. The preparation snapshot was RESUME revision 103, SHA256
+`b4b01afa247310ca0434f5ea4f84ed2aa33bd977c7db3f2ee8af1d85f34b9c98`,
+with empty typed assignments and empty native assignment observations. This is
+not a current-state guarantee. Preserve all foreign dirty/untracked files.
+
+Immediately before the FIRST canonical assignment write, check both registries
+are empty, using `w._team_assignments(canonical)` and the assignment observations
+in `w._team_local(canonical)["operations"]` from the frozen engine. Nonempty
+pre-existing bindings require a stop/rebaseline, never migration. Record the
+exact assignment-registry byte hash; the registered writer checks that preimage
+again under its own writer lock. Later engine-produced records remain history;
+do not require emptiness again at source integration.
+
+Only the actual owning task executes the following commands. Never set
+`CODEX_THREAD_ID` to impersonate it. Set `Q3_OWNER_EPOCH` from a fresh owner plan.
+
+```bash
+q3_engine=/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80
+q3_canonical=/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean
+test "$CODEX_THREAD_ID" = 01a084f4-7498-7021-bac2-91d184d58dc7 || exit 1
+export Q3_OWNER_EPOCH=1
+python3 "$q3_engine/orchestrator/workflow_runtime.py" --root "$q3_canonical" plan
+q3_ledger_hash=$(sha256sum -- "$q3_canonical/docs/Codex/AGENTS_LEDGER.md") || exit 1
+python3 "$q3_engine/orchestrator/workflow_runtime.py" --root "$q3_canonical" team-record --kind assignment --candidate /home/chirurgie/.cache/q3-native-order-repair-2026-09-14.first-assignment.json --expected-sha256 "${q3_ledger_hash%% *}"
+```
+
+The observed ledger hash at preparation was
+`c0d88885acd9526d53db8977ed8864e14e52d37f5cc60a329a0b72ce86f333ae`.
+An overdue `next_check` may be advanced before registration; it is excluded from
+the immutable binding. Revalidate candidate bytes after any such metadata edit.
+Do not change immutable producer fields without rebuilding the source manifest.
+
+## Two useful workers, without mathematical work
+
+Use native isolated `gpt-5.6-luna/max` children, no descendants, bounded read-only
+source work and detached outputs. They are not alone in the repository; no
+source/index/control changes, no reverting others' edits, no canonical effects.
+
+1. Worker A, assignment `TEAM_NATIVE_CONTEXT_REPORT_20260914`: independently
+   reconstruct the real cold-entry tool-status error from the original native
+   evidence. Separate a real writer-lock HOLD from the unsupported inference
+   that a completed outer JavaScript cell proves its shell process completed.
+   Return one exact `q3_issue_report.v1`, retaining uncertainty and original
+   evidence; do not decide its final disposition. Evidence already exists at
+   `/home/chirurgie/.cache/q3-team-cold-entry-during-refresh-2026-09-11.txt`,
+   SHA256 `01d76eb6f9c90c223419b9b0f78b24afe04bc6eee16332bcdec558bdac9bc0e3`.
+   Trace its cited calls back to primary native messages. Do not repeat the
+   mathematical launch or maintenance operation to reproduce the mistake.
+2. Worker B, assignment `TEAM_NATIVE_CONTRACT_AUDIT_20260914`: produce a concise
+   source/receipt matrix for this exact four-file candidate: first launch,
+   interrupted intake, UNKNOWN recovery, model resolution, exact review and
+   source copy. Identify which final paths are actually indexed and which
+   derived refresh is required. Inspect the saved 206-test log and relevant
+   existing tests; do not rerun the suite or run a canonical refresh. Report
+   concrete uncovered boundaries; do not manufacture an issue to fill a quota.
+
+Both assignments use current canonical base hashes in `input_hashes`, never
+candidate or uncommitted intake bytes disguised as Git baseline inputs. Include
+`docs/CODEX_CONTROL.md` at its base hash when it is a rule input. Detached
+candidate/cold-entry artifacts are separately named and hashed prerequisites.
+Copy the first-assignment shape; change ID, assignee to the intended native
+child's task name, role, subject, output locator and bounded prerequisites;
+requested pair is Luna/max, resolved fields are both null, CREATE/PENDING,
+both previous hashes ABSENT. Sort all path and prerequisite arrays and validate
+with `tr._validate_assignment` and `tr.prepare_assignment` before the writer.
+
+Launch B promptly after A's launch is actually confirmed, before waiting for A's
+result. Retain primary start/completion observations proving real overlap and
+each useful output. No artificial sleep, held-open finished agent or retrospective
+timestamp is overlap. If A finishes before B starts, report no observed overlap;
+do not mark the concurrency criterion passed. Keep the independent reviewer slot
+reserved; at most three active children of the owner.
+
+## Exact first-launch order (repeat for each fresh child)
+
+In the following snippets `w` is the frozen `orchestrator.workflow_runtime`,
+`tr` is its `orchestrator.team_records`, and `a` is the registered assignment.
+`tr.canonical_json` produces the existing canonical bytes (sorted keys, one LF).
+All observations must come from actual native provider output; test fixtures are
+schema examples only, never sources of live IDs, profiles or receipts.
+
+1. Save a new checkpoint operation with a fresh ID and unchanged mathematical
+   pins/stages/body: `kind=ASSIGN`, `state=INTENT`, `command=agent-launch`,
+   `subject={kind:ASSIGNMENT,id:a.assignment_id,sha256:tr._assignment_binding_sha(a)}`,
+   `inputs={row.path:row.sha256 for row in a.input_hashes}`, `evidence=[]`.
+   Read current RESUME bytes, increment revision/time and set its exact prior
+   SHA256; use `resume-checkpoint --dry-run`, then the same candidate without
+   `--dry-run`. Never replace an unresolved previous operation.
+2. Run `team-observe-remote --operation-id <launch-id>`, then
+   `team-reserve-effect --operation-id <launch-id>`. Proceed with one native
+   `collaboration.spawn_agent` only after its `execute_once:true` reservation.
+   The owner requests Luna/max explicitly with a fresh bounded context. If the
+   result is lost, inspect that same child/action; do not issue a new spawn.
+3. Save actual launch tool-response bytes, native child identity/parent binding
+   and its first actual model/effort observation in detached durable storage.
+   A requested profile or list of names is insufficient. If actual identity or
+   profile is unavailable, keep the launch unresolved and reconcile it.
+4. Intake those raw bytes inside the SAME reserved launch. Build the existing
+   `q3_team_integration.v1`: `mode=EVIDENCE_INTAKE`, `operation_id=<launch-id>`,
+   same owner/installation/epoch/base, `implementer_assignment=a.assignment_id`,
+   `assignment_sha256=SHA256(tr.canonical_json(tr._assignment_immutable_view(a)))`,
+   `checker_assignment=null`, `candidate_commit=null`. For each distinct raw
+   artifact, set `path=docs/session_protocols/team-evidence-<SHA256>.bin`,
+   `before_sha256=ABSENT`, `sha256=<SHA256>`, `content_base64=<exact bytes>`;
+   sort `files` by path. Include the separately identified historical cold-entry
+   bytes if worker A needs them durably. Run `team-integrate-candidate --candidate
+   <intake-manifest>` from this frozen engine against canonical. DO NOT replace
+   the launch INTENT with a new intake operation. Successful intake leaves the
+   parent RESERVED/UNKNOWN and is not a launch confirmation.
+5. Build the exact native observation below from verified actual bytes, then
+   `team-observe-native --candidate <observation> --expected-sha256 <its-byte-hash>`.
+6. Read the current assignment row and ledger anew. UPDATE/RUNNING with the actual
+   pair, `previous_assignment_sha256=tr._assignment_state_sha(row.assignment)`
+   and `previous_assignment_event_sha256=row.last_event_sha256`; keep immutable
+   fields unchanged. Use `team-record --kind assignment` with the current ledger
+   byte hash. Resolve the pair BEFORE recording the child's RESULT.
+7. Use `resume-checkpoint` (dry-run, then exact write) to set the SAME launch
+   operation's state from INTENT/UNKNOWN to CONFIRMED, preserving its
+   id/kind/subject/command/inputs and supplying nonempty durable provider evidence.
+   Increment revision/time and bind the current RESUME byte hash as usual.
+   `team-observe-native` already confirmed the local launch receipt; do not call
+   `team-confirm-effect`, which rejects CONFIRMED for agent-launch. Only after
+   this checkpoint save may a different launch/ordinary intake INTENT replace it.
+
+```python
+observation = {
+    "schema": "q3_team_assignment_observation.v1",
+    "assignment_id": a["assignment_id"], "phase": "LAUNCH",
+    "operation_id": launch_id,
+    "owner_task": a["owner_task"],
+    "owner_installation_ref": a["owner_installation_ref"],
+    "owner_epoch": a["owner_epoch"], "assignee": a["assignee"],
+    "native_agent_id": actual_child_id, "native_owner_task": actual_parent_task,
+    "requested_model": a["requested_model"], "requested_effort": a["requested_effort"],
+    "resolved_model": actual_model, "resolved_effort": actual_effort,
+    "subject": a["subject"], "state": "RUNNING",
+    "output_locator": output_path, "output_sha256": output_hash,
+    "provider_receipt_locator": provider_path, "provider_receipt_sha256": provider_hash,
+    "payload_sha256": tr._assignment_binding_sha(a),
+    "source_sha256": w._resume_digest(tr.canonical_json(a["input_hashes"])),
+    "evidence_sha256": w._resume_digest(tr.canonical_json([
+        {"locator": output_path, "sha256": output_hash},
+        {"locator": provider_path, "sha256": provider_hash},
+    ])),
+}
+tr._validate_native_observation(a, observation, phase="LAUNCH")
+```
+
+## Results, issue classification and independent source check
+
+After confirmed launch, completed output and actual provider completion receipt
+use a NEW ordinary evidence-intake operation. It has the same manifest schema,
+but a fresh intake ID and checkpoint `command=workflow-team-integrate-candidate`,
+`kind=COMPUTE`, `state=INTENT`,
+`subject={kind:REPAIR,id:intake_id,sha256:SHA256(exact manifest bytes)}`.
+Save intent, observe remote, reserve, intake and verify readback. Then use
+`resume-checkpoint` to confirm the same operation with unchanged
+id/kind/subject/command/inputs and nonempty durable evidence, using the current
+checkpoint preimage. Intake already confirmed its local receipt; do not call
+`team-confirm-effect` again.
+The native RESULT then gets ANOTHER unused operation ID (not its launch ID or
+the intake operation ID), `phase=RESULT`, `state=COMPLETED`, same actual child and
+profile, and hashes of the completed output/receipt in the observation shape
+above. Record it with `team-observe-native`; update the assignment to DONE after
+verified completion. A result arriving while launch B is unresolved stays in
+detached storage until B is reconciled; it never replaces B's INTENT.
+
+Worker A's returned report must be exact canonical `q3_issue_report.v1` bytes;
+the recorded RESULT output hash must equal the canonical report payload hash.
+Its fields are those in `tr.REPORT_REQUIRED_FIELDS`; report/issue IDs are derived,
+not supplied. `expected_rule_source` is exactly `{locator,sha256}`. Evidence
+locators name durable intake bytes; `input_paths` name actual base Git paths.
+Use actual registered tool IDs in `affected_operations`. Validate and record via
+`team-record --kind report`; retain the returned report/issue IDs. The owner
+records REPRODUCING using current per-issue event/state predecessors.
+
+Now create `TEAM_NATIVE_ORDER_CHECK_20260914`: independent-checker, fresh native
+Terra/medium, subject set to that actual issue ID, same base, permitted four
+source paths, and all baseline rule/source inputs needed for both checks.
+Its one bounded job is to check the exact final source manifest and independently
+classify the cold-entry report. It must preserve the candidate's real authorship.
+Use the same genuine launch/intake/resolution/result sequence. The checker
+provides its evidence-backed issue disposition in a separate native commentary
+message and, if approved, returns exactly this source-review object as its final
+output (preserve both messages in the actual provider receipt):
+
+```python
+review = {
+    "schema": "q3_team_integration_review.v1",
+    "manifest_sha256": w._resume_digest(exact_source_manifest_bytes),
+    "base_commit": manifest["expected_head"],
+    "candidate_commit": manifest["candidate_commit"],
+    "files": [{"path": x["path"], "sha256": x["sha256"]} for x in manifest["files"]],
+    "implementer_assignment": manifest["implementer_assignment"],
+    "checker_assignment": manifest["checker_assignment"],
+    "verdict": "SOURCE_INTEGRATION_APPROVED",
+}
+```
+
+The displayed positive object is a required shape, not a supplied verdict. A
+negative/unavailable check remains a negative/unavailable result and blocks copy.
+Record only ONE completed RESULT for this checker assignment: the exact review
+output plus provider receipt containing its independent classification. Do not
+create two completed RESULTs for two deliverables: source integration would
+otherwise encounter ambiguous observations. The issue transition includes that
+same completed output AND the actual classification provider bytes as evidence.
+The owner must read the independent classification; do not infer it from a
+positive source-review token. Use the checker's exact assignee/role, issue ID,
+current issue predecessors and the complete unchanged assignment source binding
+in `team-record --kind issue-event`. AGENT_CONTEXT_ERROR or EXPECTED_GUARD is an
+evidence-dependent terminal disposition, not a predetermined result or code fix.
+
+This live context-error pilot does not itself demonstrate a complete typed
+CONFIRMED_BUG-to-FIX_PUSH_VERIFIED repair lifecycle. Preserve that distinction
+when assessing remaining acceptance. The already repaired ordering defect and
+its test/commit evidence must not be attributed to a newly spawned implementer.
+
+## Final source copy and terminal owner record
+
+Verify the final four-path manifest, current base/preimages, exact positive
+checker output and producer/checker bindings again. Do not check registries for
+emptiness now. Save a separate source-copy INTENT with manifest ID
+`TEAM_NATIVE_ORDER_SOURCE_20260914`, command `workflow-team-integrate-candidate`,
+kind COMPUTE, the REPAIR subject bound to the exact manifest byte hash, and
+inputs bound to the four actual preimages. Observe remote and reserve. Execute:
+
+```bash
+python3 "$q3_engine/orchestrator/workflow_runtime.py" --root "$q3_canonical" team-integrate-candidate --candidate /home/chirurgie/.cache/q3-native-order-repair-2026-09-14.final-source.json
+```
+
+After actual readback, use `resume-checkpoint` to confirm that SAME copy operation:
+preserve id/kind/subject/command/inputs, set state CONFIRMED, retain nonempty durable
+evidence, and increment revision/time against current RESUME bytes. The copy
+command already confirmed the local receipt; do not call `team-confirm-effect`.
+Then UPDATE the owner producer to DONE using the fresh ledger and per-assignment
+predecessor hashes. Its actual
+concrete pair stays unchanged; no child result is needed or invented. Source
+integration is neither publication nor mathematical acceptance.
+
+During any interrupted copy, retain the same frozen engine and use only
+`team-integrate-candidate --recover-operation <original-id>`. The durable private
+manifest survives loss of the detached candidate file. No retrying native spawn,
+manifest swap, engine change or handoff may erase an unresolved operation.
+
+The owner then follows the existing named-path source/derived closure and
+ordinary publication route. Derive refresh requirements from actual indexed
+changes; do not blindly repeat 206 tests or silently refresh foreign work.
+Retain actual pilot/report/review/copy/publication evidence in the existing
+2026-09-11 session protocol. Existing mathematical work, GOAL section 6, ownership
+and watches remain unchanged. Canonical source installation, real overlap, issue
+disposition and publication are still outstanding until their receipts exist.

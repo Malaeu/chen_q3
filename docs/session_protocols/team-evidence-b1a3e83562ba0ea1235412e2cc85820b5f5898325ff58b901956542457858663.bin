@@ -1,0 +1,10 @@
+............................................................................................................................................................................usage: workflow_runtime.py [-h] [--root ROOT]
+                           {team-local-init,team-bootstrap-publish,team-integrate-candidate,team-watch-intent,team-record,team-observe-remote,team-reserve-effect,team-observe-native,team-confirm-effect,plan,run,close-session,close-phase,resume-checkpoint,review-plan}
+                           ...
+workflow_runtime.py: error: unrecognized arguments: --legacy-v9-maintenance
+...............................................
+----------------------------------------------------------------------
+Ran 219 tests in 208.589s
+
+OK
+{"schema": "q3_search_evidence.v1", "status": "PASS", "observed_at": "2026-09-02T12:00:00+00:00"}

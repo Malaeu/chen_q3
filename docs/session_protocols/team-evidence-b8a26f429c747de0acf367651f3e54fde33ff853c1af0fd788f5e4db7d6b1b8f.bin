@@ -1,0 +1,26 @@
+# Recovery install source-integration review
+
+Verdict: SOURCE_INTEGRATION_APPROVED
+
+## Provenance and scope
+
+- Candidate: `5d5466364486b92524afdfa7e72216e282d558ee`; parent/base: `f37c5de40b4d5b7e76b89eabc28693bba1fae45a`.
+- Candidate worktree is clean. Its exact diff contains only `orchestrator/workflow_runtime.py` and `orchestrator/tests/test_workflow_runtime.py` (270 insertions, 2 deletions).
+- Source manifest: `/home/chirurgie/.cache/q3-native-order-live-20260914.RECOVERY_SOURCE_INSTALL_20260914.json`, SHA-256 `a7ed10360e84b860bb39deac7efea44850292b5d56454befd92d49223359fbfd`.
+- Candidate content hashes match that manifest exactly:
+  - `orchestrator/tests/test_workflow_runtime.py`: `4b83e9c0b107ba950098dbe4d65838dfb7d14206ed36c053d2bf75859c41c9ec`.
+  - `orchestrator/workflow_runtime.py`: `e5cce600f39415d3e67b4504d9f9f5cc3b896b628773832549e08ea753c048c9`.
+- Both candidate files are byte-identical to `/home/chirurgie/.cache/q3-publication-checkpoint-recovery-20260914`.
+- `docs/cartographer/TOOLS.yaml` is unchanged: Git blob `68a37d02b88417eaa21d4720cea01be8afabbc88`, SHA-256 `cb32025db1549bd53d6915490c19d740b3fcb683ac035f2cb34ee65db7ad0017` at both base and candidate.
+
+## Contract review
+
+The recovery exception is gated inside `resume_checkpoint` and accepts only a prepared integration candidate for preflight. The argument parser declares `--integration-candidate`; no tool-catalogue update is needed because the existing optional-alternatives contract already covers it. `_team_integration_review` requires the exact typed review payload, a distinct independent checker, matching base, source manifest digest, candidate commit, and file hashes. No unresolved substantive finding was found in this ancestry-only admission delta. The prior Mode A convergence remains applicable because the candidate bytes match the prior reviewed checkpoint.
+
+## Verification
+
+`python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_completed_source_confirmation_uses_real_startup_and_exact_provenance`
+
+Result: pass (`Ran 1 test in 5.692s`, `OK`). Log: `/home/chirurgie/.cache/q3-recovery-install-review-test-20260914.log`, SHA-256 `3244abfc7e7be2256a5e6e33fd92beb3bc7e091b5f0c2968e6c04fa13d551dfc`.
+
+No math admission, canonical-state change, staging, commit, or push was performed by this review.

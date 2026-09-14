@@ -1,0 +1,1778 @@
+REQUEST_ID: REQ-2026-09-12-ODDCURV
+BOUNDARY_ID: GOAL058_ACTUAL_THETA_INTEGRATED_ODD_KERNEL_LOG_CURVATURE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c
+RESULT_SCOPE: SUFFICIENT_MECHANISM_FOR_ODD2_ONLY_NOT_FULL_SL20_OR_RH
+DELIVERY: SAME_LIVING_MATGOAL_CHAT_6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+ПРОШКА, твой ODD2 получен естественно: UI23m34s, полный Markdown46046bytes/772LF/finalLF/SHA2561ef47a209f86e1a99c1e83ca207637aacc5b33c73170e2ef5d244231fbacaaba. Parent и единственный sibling5_check независимо приняли ровно POINTWISE_OD1_INTEGRAND_PSD2_REFUTED. Полный theta-хвост, первые производные по u, узлы10/11, Taylor-остаток с исходным конечным M, конгруэнция и фиксированный отрицательный вектор проверены. Полный ODD2 по-прежнему не доказан и не опровергнут. Квитанция прилагается. Счётчик владельца теперь1. Новую гипотезу о знаке подынтегральных матриц не строим.
+
+ВТОРОЕ ОБНОВЛЕНИЕ ОБЩЕГО ГОЛА
+Во время ODD2 полностью проверен унаследованный перенос SLACK: все конечные V_f PSD iff Q>=0 на всех комплексных C_c-infinity тестах. Parent и тот же sole checker приняли полный отдельный аудит; его точные пределы, нормировки, полюса, полные prime powers, пространство X и Fourier/Mellin-переходы приложены. Published Weil criterion остаётся названной внешней теоремой. Аудит опубликован7c8528ea; ODD2 receipt опубликованe5a903e8 в codex_mac/math-proshka-20260912. Это закрывает проверку перехода, но не поставляет положительность V и не обнуляет счётчик. Не переаудируй весь перенос вместо текущей задачи.
+
+ОДИН НОВЫЙ ОГРАНИЧЕННЫЙ ТЕСТ: ПОЛНАЯ ИНТЕГРИРОВАННАЯ КРИВИЗНА
+Сохраняй
+  r(t)=2 sum_{n>=1}(2*pi^2*n^4*t-3*pi*n^2)exp(-pi*n^2*t),
+  r(1/t)=t^(5/2)r(t), Phi(x)=exp(5*x/2)r(exp(2*x)), A=||Phi||_2, f=Phi/A,
+  V(x,y)=integral_0^infinity (x+y+2v)f(x+v)f(y+v)dv,
+  K(x,y)=K_-(x,y)=V(x,y)-V(x,-y)>0, x,y>0.
+Следующий проверяемый достаточный механизм R1 из твоего §8:
+  C(s,t)=partial_s partial_t log K(s,t) >=0 для ВСЕХ s,t>0.   (IC)
+Это про УЖЕ ПРОИНТЕГРИРОВАННОЕ исходное K. Полная матричная положительность каждого J_u ложна; знак C нельзя подменять знаком производной log J_u или одного слагаемого.
+
+Точная связь IC=>ODD2 для0<x<y:
+  log[K(x,x)K(y,y)/K(x,y)^2]=integral_x^y integral_x^y C(s,t)dsdt.
+Вместе с OD1 это даёт Delta_-(x,y)>=0 для всех положительных узлов, равенство приx=y; на четырёх узлах(x,y,-x,-y) и комплексных коэффициентах(c1,c2,-c1,-c2) полная V-форма равна2 c*Kc. Это лишь указанное семейство подпространств. IC сильнее ODD2: отрицательное C вне диагонали убивает только IC. Отрицательный D2(x)=K(x,x)partial_1partial_2K(x,x)-(partial_1K(x,x))^2 дал бы отрицательный настоящий ODD2 около диагонали, но требует полного исходного бюджета.
+
+КОНКРЕТНЫЙ СПОСОБ СОХРАНИТЬ КОМПЕНСАЦИЮ
+Можно работать непосредственно с C=(K K_st-K_s K_t)/K^2 и интегралами производных полного V. Если полезно использовать положительный элемент J_u из OD1, рассмотрим исходную меру dmu=J_u(s,t)du/K(s,t). После доказательства существования всех членов и законности дифференцирования точная формула должна иметь вид
+  C = E_mu[partial_st log J_u]
+      + Cov_mu(partial_s log J_u, partial_t log J_u).
+Это только кандидат на удобное представление, а не оплаченная знаковая лемма: условия интегрируемости score-произведений и пределыu=0,infinity ещё нужно проверить, либо пользуйся формулой без деления на J. Ковариацию не отбрасывать. Не назначать каждому из этих двух членов отдельную неотрицательность без доказательства; цель — знак их СУММЫ из фактического полного theta-источника. Само выведение формулы не будет прогрессом.
+Разрешён другой более прямой аналитический механизм, если он действительно доказывает IC или непосредственно исходный равномерный ODD2. Полные масштабированные BP2-уравнения и двулинейный баланс(33) твоего ODD2 остаются доступными; их перезапись не поставляет знак.
+
+ОБЯЗАТЕЛЬНЫЕ ПРОВЕРКИ И ПРЕДЕЛЫ
+1. Весь бесконечный theta-ряд, обе полюсные/нормировочные зависимости принятого V, все нужные производные и пределы сохраняются. Локальная хвостовая асимптотикаp наx=10,11 из прошлого ответа не является контролем всей положительной четверти.
+2. SAME control f_c=exp(-x^2)(1+3x^2/10+x^4/25) имеет обе скалярные лог-вогнутости и положительные нечётные элементы, но после положительной диагональной конгруэнции на(1,2) det[[33/500,279/1250],[279/1250,93/125]]=-279/390625. Новый аргумент обязан использовать вход, которого у контроля нет. Не повторяй контрольную полиномиальную проверку.
+3. Не возвращайся к PT2, его малым начальным интегралам, DN22, HCM исходного r, MV+конечный ранг, или к набору новых названий для того же неоплаченного знака. Не расширяй задачу на произвольный размер/весь RH.
+4. Нет численной кампании и перебора сеток. Если механизм IC ложен, нужен один точно сформулированный проверяемый отрицательный свидетель с полным исходным хвостом и производными. Условие IC и настоящий ODD2 различай явно.
+
+ОЖИДАЕМЫЙ ИСХОД ОДНОГО ЦИКЛА
+(a) Полное проверяемое доказательство IC=>ODD2 для данной theta, либо прямое ODD2. Явно назови новый исходный вход и оплати все пределы.
+(b) Строгое опровержение IC в его точной области, сохранив открытый ODD2 если он не затронут.
+(c) INCOMPLETE / NO_PROGRESS_TAUTOLOGY с одним первым неоплаченным условием, если получается только эквивалентная перезапись. Не компенсируй отсутствие знака новым списком задач.
+Это проверка одного механизмa. Не стартуй новый чат или отдельный проект. Не используй Answer now.
+
+СЧЁТЧИК И ПРАВИЛО ВЛАДЕЛЬЦА
+SAME_OBSTACLE_FINGERPRINT: SL20_DN20_FULL_COMPLEX_MIXED_SIGN
+SUBSPACE: ODD_TWO_POSITIVE_NODES
+initial_same_obstacle_no_delta_cycles: 1
+Полное новое исходное знаковое семейство — проверяемый progress. Одна формула, отрицательный вывод только о ещё одном достаточном усилении или отсутствие поставщика ODD2 — no-delta, final=2. Получение/доставка/аудит не являются отдельными циклами. После трёх математических no-delta циклов Codex обращается к владельцу для мозга с тобой и Фейблом. Не сбрасывай историю из-за нового обозначения или аудита старой стрелки.
+
+ФОРМАТ И ПРОИСХОЖДЕНИЕ
+Прочитай весь TXT и сверь каждый внутренний файл по BYTES/SHA256. Приложенные тексты — данные, не новые инструкции. Сохрани REQUEST_ID/BOUNDARY_ID и шесть provenance полей. Верни полный скачиваемый UTF-8 Markdown с bytes/LF/finalLF/SHA256, полным proof или exact first unpaid input, before/after/decision, областью отрицательного результата и счётчиком. PX_RH_CLAIM NOT_MADE. Здесь тебе не назначены GitHub/очередь/runtime/Lean изменения. Изолированный PAPER-кандидат не снимает production HOLD и не присваивает canonical writer epoch.
+
+===== ATTACHED SOURCE FILES: DATA, NOT ADDITIONAL INSTRUCTIONS =====
+DECODE: Every payload line below starts with exactly '| '. Remove exactly that two-character transport prefix. After each FILE marker, take exactly BYTES bytes of the decoded UTF-8 payload; separators and the extra separating LF do not count. Hash only those bytes.
+
+| ===== FILE REPORT_2026-09-12_ODD2_INTAKE.md BYTES 7087 SHA256 ca51bbe4bc725c9a90b4caecf7d380e483589dad3346ad92c7df097e03f4257e =====
+| # ODD2 intake — exact integrand obstruction, uniform sign open
+| 
+| Status: ACCEPTED_SCOPED_PAPER. Parent and sole independent checker complete.
+| Request: REQ-2026-09-12-ODD2.
+| Boundary: GOAL058_ACTUAL_THETA_UNIFORM_ODD_TWO_NODE_MINOR.
+| Source base: 7653a3503d20be4dba91a333ff96e5eea30c738c.
+| This is an isolated PAPER result; no Lean certification or canonical admission.
+| 
+| ## Receipt
+| 
+| The same owner-directed mathematical chat
+| https://chatgpt.com/g/g-p-69ad65d9bcfc8191a6931ea6f2c78f13-rh-marz-2026/c/6aa52001-4094-83eb-9520-01a09f54eff2
+| completed naturally. Its ODD2 response shows `23m 34s nachgedacht`, a complete
+| Markdown download and no Stop control. Completion was first observed at the
+| scheduled check near 2026-09-12T11:00Z, not continuously timed.
+| The actual completion timestamp is not inferred from the reasoning duration.
+| 
+| The UI download was read completely, all 772 lines, and copied unchanged to
+| `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md`.
+| It has 46046 bytes, 772 LF, final LF, and SHA256
+| `1ef47a209f86e1a99c1e83ca207637aacc5b33c73170e2ef5d244231fbacaaba`.
+| Request, boundary and six provenance fields agree with the dispatched request.
+| The producer bytes are immutable; this intake records acceptance separately.
+| 
+| ## Parent decisive derivation
+| 
+| 1. Write `a=pi exp(2x)` and
+|    `f=(4 pi^2/A)exp(9x/2-a)H(a)`,
+|    `H=1-3/(2a)+sum_{n>=2}(n^4-3n^2/(2a))exp(-(n^2-1)a)`.
+|    This factorization retains the full theta series. For a>=100, differentiating
+|    each tail term zero, one or two times is bounded by
+|    `2 n^8 exp(-(n^2-1)a)`. Uniform summability justifies those derivatives.
+|    From `log n<=n^2/4` and `n^2-1>=3(n-1)`, the total is at most
+|    `4 exp(-3a/2)<=20480/(81a^6)<=a^-4`.
+|    The constant 20480/81 follows exactly from the sixth exponential-series term.
+|    Thus `H>=1/2`, `|H'|<=2/a^2`, `|H''|<=4/a^3`.
+|    With `d/dx=2a d/da`,
+|    `p=(log f)'=9/2-2a+delta`, `p'=-4a+epsilon`, where
+|    `|delta|<=8/a` and `|epsilon|<=48/a+64/a^2<1`.
+|    The normalizer A cancels in these derivatives.
+| 
+| 2. In the exact OD1 paired-integral formula, put
+|    `m=(x+y)/2`, `d=|x-y|/2` and
+|    `J_u=f(sqrt(u+m^2)-d)f(sqrt(u+m^2)+d)
+|         -f(sqrt(u+d^2)-m)f(sqrt(u+d^2)+m)`.
+|    The substitutions t=m+v and u=t^2-m^2, with the analogous reflected
+|    substitution, give `K_-(x,y)=integral_0^infinity J_u(x,y)du`.
+|    When the reflected lower endpoint is negative, evenness of the product
+|    and oddness of its factor 2t replace it by its absolute value.
+|    At u=0 both products equal f(x)f(y). For distinct x,y their first
+|    derivatives divided by f(x)f(y) are respectively
+|    `(p(x)+p(y))/(x+y)` and `(p(x)-p(y))/(x-y)`.
+|    Therefore `S=2(x p(y)-y p(x))/(x^2-y^2)`.
+|    On the diagonal the even product in sqrt(u) has coefficient
+|    `f f''-(f')^2`, while the other product has coefficient `f f'/x`.
+|    Thus `S(x,x)=p(x)/x-p'(x)` without a singular derivative at u=0.
+| 
+| 3. For x1=10,x2=11 set `Cij=exp(-xi-xj)S(xi,xj)/(4pi)`.
+|    Since ai>=100 and |delta|,|epsilon|<=1,
+|    `Cii>=1-1/20-1/4000-1/400=3789/4000>9/10`.
+|    For the upper bound, the correction to 1 is at most
+|    `[-2ai/xi+11/(2xi)+1]/(4ai)<0` for xi=10,11; hence Cii<=1.
+|    Direct substitution gives the mixed leading term
+|    `(10e-11/e)/21`, with error below `2/(4pi exp(21))<1/1000`.
+|    The elementary bounds e>8/3 and 1/e<3/8 give
+|    `C12>541/504-1/1000>21/20`, with exact difference 353/15750.
+|    Consequently det C<=-41/400 and `(1,-1) C (1,-1)^T<=-1/10`.
+| 
+| 4. Define `Bij(u)=exp(-xi-xj)J_u(xi,xj)/(4pi f(xi)f(xj))`.
+|    The diagonal even composition is C-infinity in u>=0; the mixed square-root
+|    arguments are strictly positive at zero. Thus B is C2 on [0,1].
+|    `M=max(1,max_ij max_[0,1] |Bij''|)` is finite and source-defined.
+|    For `u*=1/(100M)>0`, Taylor's integral remainder gives
+|    `|Bij(u)/u-Cij|<=1/200` for 0<u<=u*.
+|    Hence the diagonal of B/u lies in (179/200,201/200] and its off-diagonal
+|    is >=209/200. This proves det(B/u)<=-41/500 and its fixed (1,-1) value
+|    <=-2/25. Undoing the positive diagonal congruence gives exactly
+|    `det J_u<=-(41/500)(4pi u)^2 exp(42)f(10)^2f(11)^2<0`.
+|    For `w=(exp(-10)/f(10),-exp(-11)/f(11))`,
+|    `w*J_u w<=-8pi u/25` and its integral to u* is <=-4pi u*^2/25.
+|    An analytically specified u* suffices for this existential PAPER theorem;
+|    no rational-u interval computation is claimed.
+| 
+| 5. Subtracting the two scaled Volterra equations after multiplication by the
+|    opposite profiles yields precisely response (33):
+|    `integral ka(ga(s)gb(t)-gb(s)ga(t))ds
+|     =ga(t)integral(kb-ka)gb(s)ds`.
+|    For a>b the RHS is nonnegative, as k is decreasing. Local integrability
+|    of k and boundedness of the profiles justify these integrals. The identity
+|    does not supply the integrated ODD2 determinant bound.
+| 
+| 6. With inherited OD1 positivity, pointwise PSD2 of J_u would imply ODD2
+|    by pointwise comparison followed by integral Cauchy-Schwarz. It is a
+|    sufficient condition, not a necessary one. The exact counterexample
+|    therefore excludes that certificate and the analogous small-initial-interval
+|    certificates. The contribution after u* is still unbounded in sign.
+|    Negative initial contribution is not a negative full K, V or Q value.
+|    The identities for integrated log curvature and the double integral of the
+|    determinant are correct, but their right-hand sides are not proved positive.
+| 
+| ## Independent acceptance and limits
+| 
+| The sole read-only checker `/root/sibling5_check` returned ACCEPT for the exact
+| response SHA above after checking sections 3–7. It rederived the full-series
+| derivative bounds, S and the rational margin, C2/Taylor interval, congruence,
+| fixed vector and Volterra balance. It explicitly inherited the source law,
+| OD1 representation and its entrywise positivity. Parent directly checked the
+| changes of variables and the new decisive calculations above. OC1/OC2/DN22
+| were not rerun. No external new theorem was needed by this result.
+| 
+| Accepted: POINTWISE_OD1_INTEGRAND_PSD2_REFUTED, on the exact source.
+| Unresolved: UNIFORM_ODD2_UNPROVED_NOT_REFUTED.
+| The owner no-delta count changes from 0 to 1 for
+| `SL20_DN20_FULL_COMPLEX_MIXED_SIGN / ODD_TWO_POSITIVE_NODES`.
+| The new intermediate obstruction does not reset the counter or count as a
+| positive sign-family theorem. Delivery and review are not additional cycles.
+| 
+| While ODD2 was running, the separate parent/sole-checker audit
+| `REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md` was accepted and published at
+| 7c8528ea477bb69694cc0d9c407ecfc485a8d510. It directly checked
+| `all finite V PSD iff Q>=0 on every complex C_c-infinity test`, with the named
+| published Weil criterion. This updates the inherited-transfer status in the
+| producer's older context. It does not provide V positivity, ODD2, or a counter
+| reset. The original ODD2 response remains unchanged.
+| 
+| Next exact candidate: the mixed logarithmic curvature of the fully integrated
+| K_-, with all integral compensation retained. Its nonnegativity is sufficient
+| for ODD2, not a consequence of the refuted pointwise PT2 certificate. A mere
+| formula for that curvature will count as no-delta.
+| 
+| PX_RH_CLAIM: NOT_MADE.
+
+| ===== FILE PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md BYTES 46046 SHA256 1ef47a209f86e1a99c1e83ca207637aacc5b33c73170e2ef5d244231fbacaaba =====
+| # STATUS: KILL_ODD2_POINTWISE_PAIRED_TAIL_PSD2
+| ```yaml
+| OPERATIVE_CLASS: KILL_ODD2_POINTWISE_PAIRED_TAIL_PSD2
+| PRIMARY_COUNT: 1
+| REQUEST_ID: REQ-2026-09-12-ODD2
+| BOUNDARY_ID: GOAL058_ACTUAL_THETA_UNIFORM_ODD_TWO_NODE_MINOR
+| PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+| ROUTE_ID: RouteB_TwoLevelSpectralLadder
+| FRONT_ID: GOAL058_SECOND_EXPRESSION
+| SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+| TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+| CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+| SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c
+| HONESTY_STATE: CHALLENGER_NOT_RH
+| RESULT_SCOPE: ONE_NECESSARY_SUBSPACE_OF_SL20_NOT_RH_OR_PRODUCTION
+| REQUEST_OUTCOME: B_EXACT_INTERMEDIATE_COUNTEREXAMPLE_WITH_ODD2_UNPAID
+| KILL_SCOPE: THEOREM_SHAPE
+| KILL_EVIDENCE_KIND: PAPER_EXACT_SOURCE_COUNTEREXAMPLE
+| KILL_EVIDENCE_REFERENCE:
+|   request_sha256: 28af680de867ee852e7e73fac6a2d9a17bcdb9b6f1acc92c3d57eb72491447d7
+|   proof: sections_3_through_6_of_this_artifact
+|   source_nodes: [10, 11]
+|   extra_parameter: "0 < u <= 1/(100*M), with M explicitly defined in (24)"
+| FAILURE_TYPE: COUNTEREXAMPLE
+| EPISTEMIC_STATUS: MATHEMATICALLY_DEAD
+| EPISTEMIC_STATUS_SCOPE: ONLY_THE_POINTWISE_PAIRED_TAIL_PSD2_THEOREM_SHAPE
+| ORIGINAL_ODD2_EPISTEMIC_STATUS: RESEARCH_DEBT
+| NEW_PROOF_STATE: PAPER_CANDIDATE_PENDING_INDEPENDENT_REVIEW
+| SCOPE: FINITE_CELL
+| VERIFIER: PAPER
+| ODD2:
+|   proved: false
+|   refuted: false
+|   all_positive_nodes_covered_by_sign_proof: false
+|   diagonal_equality_retained: true
+|   original_theta_negative_witness_found: false
+|   negative_witness_for_exact_integrand_found: true
+|   full_odd_sector_closed: false
+|   SL20_closed: false
+| PROGRESS_CLASS: FALSIFICATION_PROGRESS_AT_THEOREM_SHAPE_SCOPE
+| OWNER_ODD2_PROGRESS_CLASS: NO_DELTA
+| SAME_OBSTACLE_FINGERPRINT: SL20_DN20_FULL_COMPLEX_MIXED_SIGN
+| SUBSPACE: ODD_TWO_POSITIVE_NODES
+| initial_same_obstacle_no_delta_cycles: 0
+| final_same_obstacle_no_delta_cycles: 1
+| NUMERICAL_THETA_RUN: false
+| GRID_SEARCH: false
+| OC1_OC2_OR_DN22_RERUN: false
+| EXACT_SYMBOLIC_AND_RATIONAL_CHECKS: true
+| LEAN_VERIFIED: false
+| GITHUB_WRITE: false
+| QUEUE_RUNTIME_OR_POLICY_CHANGE: false
+| PRODUCTION_HOLD_LIFTED: false
+| CANONICAL_WRITER_EPOCH_ADMITTED: false
+| PX_RH_CLAIM: NOT_MADE
+| ```
+| 
+| Ы. **Равномерный ODD2 в этом ответе не доказан и не опровергнут. Возвращаю вариант (b): строгий контрпример к точно сформулированному достаточному промежуточному утверждению.**
+| 
+| Опровергнут следующий способ поднять **OD1** до **ODD2**: доказать положительную полуопределённость каждой двухузловой подынтегральной матрицы в точном представлении OD1, затем применить интегральное неравенство Коши–Буняковского. Контрпример использует **исходную theta**, фиксированные узлы **10 и 11**, весь бесконечный ряд и положительный интервал дополнительного параметра. Это не старый гауссов контроль и не новая посторонняя энергия.
+| 
+| Но отрицательная подынтегральная матрица не означает отрицательность её полного интеграла. Поэтому результат не засчитывается как закрытие нового знакового семейства ODD2: счётчик владельца становится **1**, а не остаётся 0.
+| 
+| ## 1. SOURCE LOCK — исходные данные и проверка байтов
+| 
+| **[ABSTRACT][PAPER; транспортная проверка]** Авторитетный файл `PROSHKA_REQUEST_GOAL058_ODD2_2026-09-12.txt` прочитан целиком: **83500 байт, 1207 LF, конечный LF**. Вычисленный SHA-256:
+| 
+| ```text
+| 28af680de867ee852e7e73fac6a2d9a17bcdb9b6f1acc92c3d57eb72491447d7
+| ```
+| 
+| Удалён ровно двухбайтовый префикс `| ` каждой транспортной строки. После каждого FILE-маркера взято ровно указанное число декодированных байтов. Все четыре внутренних файла совпали с указанными хешами:
+| 
+| | Источник | Байты | LF | SHA-256 |
+| |---|---:|---:|---|
+| | S1: `REPORT_2026-09-12_MATGOAL_INTAKE.md` | 6479 | 114 | `b80c91201762f0a4f83b17a79888121b5efbd45d684dc9a87a5d3354ac366fb5` |
+| | S2: `SLACK_INDEPENDENT_CHECK_2026-09-11.md` | 37796 | 467 | `14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc` |
+| | S3: `REPORT_2026-09-12_QUADRATIC_FAMILY_DEITMAR.md` | 15815 | 322 | `54ffb84589d61f042dc354fd59b252b24fd3d14b9667d7db7f92143169847dfc` |
+| | S4: `REPORT_2026-09-12_DEFECT_TRACE_ROOTS.md` | 9715 | 224 | `d260e99a4fa8d57940a7c349cb8563a2c7928e4b6bae9aa050619a33f8d50b72` |
+| 
+| Каждый внутренний файл имеет конечный LF. Исторические PENDING-заголовки читаются вместе с последующими acceptance receipts, а не вместо них.
+| 
+| Протокол `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` прочитан через GitHub connector на `rh_clean`; возвращённый blob — `eba04b799176c9e6a1d5f7fc4061280cfbf96ad4`. Это чтение, не изменение репозитория. Опубликованность request commit `1efe034f` сообщена владельцем; отдельной проверки этого коммита здесь нет, поскольку математические данные аутентифицированы непосредственно по вложению.
+| 
+| **[ABSTRACT][PAPER; наследуемая область]** S1 подтверждает прежний MV-результат только для определённой там вспомогательной формы. Он не даёт знака текущего ядра. S2 содержит принятые OD1, OC1, OC2 и BP1–BP5. S3/S4 прочитаны как приложенные результаты, но не переаудированы и не используются в доказательстве ниже. Поправка S1 сохранена: у нуля именно **квадрат** нормы разности сдвигов имеет порядок \(O(t^2)\).
+| 
+| Короткая внешняя проверка возможных аналитических поставщиков не добавила ни одной используемой леммы. Новое доказательство ниже опирается на формулы вложения и выписанные элементарные оценки, а не на непроверенное внешнее утверждение.
+| 
+| ## 2. CURRENT_EXACT_CONSUMER — что требуется и чего нельзя подменять
+| 
+| ### 2.1. Исходный объект
+| 
+| **[ABSTRACT][PAPER; определения из запроса и S2/BP1–BP2]** Сохраняются
+| 
+| \[
+| \begin{aligned}
+| r(t)&=2\sum_{n\ge1}(2\pi^2n^4t-3\pi n^2)e^{-\pi n^2t},\\
+| r(1/t)&=t^{5/2}r(t),\\
+| \Phi(x)&=e^{5x/2}r(e^{2x}),\qquad A=\|\Phi\|_{L^2(dx)},\qquad f=\Phi/A,\\
+| k(v)&=2\sum_{n\ge1}e^{-\pi n^2v},\qquad tr(t)=(k*r)(t).
+| \end{aligned}
+| \tag{1}
+| \]
+| 
+| В частности, \(f\) положительна, вещественна, чётна и гладка. Используется исходная нормировка \(A\), не вероятностная нормировка \(\int\Phi\).
+| 
+| \[
+| V_f(x,y)=\int_0^\infty (x+y+2v)f(x+v)f(y+v)\,dv,
+| \qquad K_-(x,y)=V_f(x,y)-V_f(x,-y).
+| \tag{2}
+| \]
+| 
+| **[ABSTRACT][PAPER; S2, §5 и acceptance receipt]** OD1 даёт \(K_-(x,y)>0\) при всех \(x,y>0\). Требуется существенно больше:
+| 
+| \[
+| \boxed{\Delta_-(x,y)=K_-(x,x)K_-(y,y)-K_-(x,y)^2\ge0
+| \quad\text{для всех }x,y>0.}
+| \tag{3}
+| \]
+| 
+| При \(x=y\) равенство \(\Delta_-(x,x)=0\) тождественно. Оно не является положительным запасом.
+| 
+| ### 2.2. Точная связь с необходимой частью SL20
+| 
+| **[ABSTRACT][PAPER; конечная алгебра]** Чётность даёт
+| \(V_f(-x,-y)=V_f(x,y)\). Поэтому для произвольных \(c_1,c_2\in\mathbb C\), узлов \((x,y,-x,-y)\) и коэффициентов \((c_1,c_2,-c_1,-c_2)\)
+| 
+| \[
+| \sum_{i,j=1}^4\overline{d_i}d_jV_f(z_i,z_j)
+| =2\begin{pmatrix}\overline{c_1}&\overline{c_2}\end{pmatrix}
+| \begin{pmatrix}K_-(x,x)&K_-(x,y)\\K_-(x,y)&K_-(y,y)\end{pmatrix}
+| \binom{c_1}{c_2}.
+| \tag{4}
+| \]
+| 
+| **PSD**, или **положительная полуопределённость**, означает неотрицательность этой эрмитовой формы на всех комплексных коэффициентах. При положительной диагонали PSD матрицы размера два эквивалентна (3).
+| 
+| Таким образом,
+| 
+| \[
+| \text{полный SL20}\Longrightarrow\text{ODD2}
+| \Longleftrightarrow\text{знак на указанных нечётных четырёхузловых тестах}.
+| \tag{5}
+| \]
+| 
+| Обратной стрелки ODD2 \(\Rightarrow\) полный SL20 нет. Полный нечётный сектор, чётный сектор и унаследованный перенос \(V\Rightarrow Q\) здесь не закрываются.
+| 
+| ### 2.3. Обязательный отрицательный контроль сохранён
+| 
+| **[FINITE_CELL][PAPER; наследуемые S2/OC1–OC2, не новый запуск]** Для
+| 
+| \[
+| f_c(x)=e^{-x^2}(1+3x^2/10+x^4/25)
+| \]
+| 
+| обе принятые скалярные вогнутости и положительность элементов совместимы с
+| 
+| \[
+| \det\begin{pmatrix}33/500&279/1250\\279/1250&93/125\end{pmatrix}
+| =-279/390625.
+| \tag{6}
+| \]
+| 
+| Этот расчёт не повторялся. Из S2/BP3–BP3b также наследуется, что фиксированный полный BP2 исключает контроль, но одна взаимность и даже подогнанное первое математическое ожидание его не исключают.
+| 
+| ## 3. Проверяемый механизм: точная плотность OD1 и её достаточность для ODD2
+| 
+| ### 3.1. Представление без нового оператора
+| 
+| **[ABSTRACT][PAPER; S2/OD1, здесь фиксируется используемая формула]** Для \(x,y>0\) положим
+| 
+| \[
+| m=\frac{x+y}{2},\qquad d=\frac{|x-y|}{2}
+| \]
+| 
+| и определим **парный подынтегральный остаток**
+| 
+| \[
+| \begin{aligned}
+| J_u(x,y)={}&f(\sqrt{u+m^2}-d)f(\sqrt{u+m^2}+d)\\
+| &-f(\sqrt{u+d^2}-m)f(\sqrt{u+d^2}+m),\qquad u\ge0.
+| \end{aligned}
+| \tag{7}
+| \]
+| 
+| Это не вероятностная плотность и не исходная \(r\). Параметр \(u\) — переменная интегрирования после замены квадрата координаты.
+| 
+| В первом интеграле (2) замена \(t=m+v\), затем \(u=t^2-m^2\), даёт первый член (7). Для отражённого интеграла чётность позволяет взять нижний предел \(d\), после чего используется \(u=t^2-d^2\). Следовательно,
+| 
+| \[
+| \boxed{K_-(x,y)=\int_0^\infty J_u(x,y)\,du.}
+| \tag{8}
+| \]
+| 
+| Все интегралы абсолютно сходятся по исходному theta-спаду. В частности, ни член бесконечного ряда, ни часть интегрального хвоста в (8) не отброшены.
+| 
+| Из точного OD1-аргумента следует
+| 
+| \[
+| J_0(x,y)=0,\qquad J_u(x,y)>0\quad(u>0,\ x,y>0).
+| \tag{9}
+| \]
+| 
+| Утверждение (9) относится к отдельным элементам, не к матричному знаку.
+| 
+| ### 3.2. Ровно опровергаемая гипотеза
+| 
+| **[ABSTRACT][CONDITIONAL; достаточная гипотеза до проверки]** Рассматривается
+| 
+| \[
+| \mathsf{PT2}:\quad
+| \forall u>0\ \forall x,y>0:\quad
+| J_u(x,y)^2\le J_u(x,x)J_u(y,y).
+| \tag{10}
+| \]
+| 
+| Здесь **PT2** — только имя этого утверждения, а не приписанная источнику теорема.
+| 
+| Его связь с неизменённым потребителем проверяема:
+| 
+| \[
+| \begin{aligned}
+| K_-(x,y)
+| &=\int_0^\infty J_u(x,y)\,du\\
+| &\le\int_0^\infty\sqrt{J_u(x,x)J_u(y,y)}\,du\\
+| &\le\sqrt{K_-(x,x)K_-(y,y)}.
+| \end{aligned}
+| \tag{11}
+| \]
+| 
+| Первое неравенство использует именно (10), второе — Коши–Буняковского. Конечность диагональных интегралов оплачивает применение неравенства. Таким образом, PT2 действительно достаточно для ODD2, а не для посторонней формы.
+| 
+| Ни запрос, ни OD1 не утверждают, что PT2 необходимо. Ниже опровергается **только PT2**. Полная смешанная логарифмическая производная уже проинтегрированного \(K_-\) — другое условие; оно этим контрпримером не проверяется.
+| 
+| ## 4. Новый исходный вход: полные оценки двух логарифмических производных theta
+| 
+| **[ABSTRACT][PAPER; новое доказательство]** Обозначим
+| 
+| \[
+| a=\pi e^{2x},\qquad p(x)=(\log f)'(x).
+| \]
+| 
+| Докажем без численной оценки theta:
+| 
+| \[
+| \boxed{
+| \begin{aligned}
+| p(x)&=\frac92-2a+\delta(x),& |\delta(x)|&\le1,\\
+| p'(x)&=-4a+\epsilon(x),& |\epsilon(x)|&\le1,
+| \end{aligned}
+| \qquad a\ge100.}
+| \tag{12}
+| \]
+| 
+| В действительности доказательство даёт более сильные ошибки \(8/a\) и \(48/a+64/a^2\).
+| 
+| Из полного ряда (1) точно следует
+| 
+| \[
+| f(x)=\frac{4\pi^2}{A}e^{9x/2-a}H(a),
+| \quad
+| H(a)=1-\frac{3}{2a}+E(a),
+| \tag{13}
+| \]
+| 
+| \[
+| E(a)=\sum_{n\ge2}\left(n^4-\frac{3n^2}{2a}\right)e^{-(n^2-1)a}.
+| \]
+| 
+| При \(a\ge100\) все слагаемые \(E\) положительны. Для \(j=0,1,2\) прямое дифференцирование каждого слагаемого даёт
+| 
+| \[
+| |E^{(j)}(a)|\le 2\sum_{n\ge2}n^8e^{-(n^2-1)a}.
+| \tag{14}
+| \]
+| 
+| Например, для \(q_n(a)=n^4-3n^2/(2a)\) и \(b_n=n^2-1\)
+| 
+| \[
+| (q_ne^{-b_na})'=(q_n'-b_nq_n)e^{-b_na},
+| \]
+| 
+| \[
+| (q_ne^{-b_na})''=(q_n''-2b_nq_n'+b_n^2q_n)e^{-b_na}.
+| \]
+| 
+| При \(n\ge2,a\ge100\) абсолютные коэффициенты этих двух выражений не превосходят соответственно \(2n^6\) и \(2n^8\). Эти же оценки на полуоси \(a\ge100\) разрешают почленное дифференцирование по признаку равномерной сходимости.
+| 
+| Для \(n\ge2\) имеем \(\log n\le n^2/4\), поэтому
+| 
+| \[
+| n^8\le e^{2n^2}\le e^{(a/2)(n^2-1)}.
+| \]
+| 
+| Первое элементарное неравенство следует из монотонности \(t^2/4-\log t\) на \([2,\infty)\) и \(\log2<1\). Второе следует из \(a\ge100>16/3\). Используя \(n^2-1\ge3(n-1)\), получаем
+| 
+| \[
+| |E^{(j)}(a)|
+| \le\frac{2e^{-3a/2}}{1-e^{-3a/2}}
+| \le4e^{-3a/2}
+| \le a^{-4}.
+| \tag{15}
+| \]
+| 
+| Последняя оценка следует уже из шестого члена экспоненциального ряда:
+| 
+| \[
+| 4e^{-3a/2}\le\frac{20480}{81a^6}\le\frac1{a^4},\qquad a\ge100.
+| \]
+| 
+| Следовательно,
+| 
+| \[
+| H\ge\frac12,\qquad |H'|\le\frac2{a^2},\qquad |H''|\le\frac4{a^3}.
+| \tag{16}
+| \]
+| 
+| Так как \(da/dx=2a\), из (13)
+| 
+| \[
+| p=\frac92-2a+2a\frac{H'}H,
+| \]
+| 
+| \[
+| p'=-4a+4a\frac{H'}H
+| +4a^2\left(\frac{H''}H-\left(\frac{H'}H\right)^2\right).
+| \]
+| 
+| Поэтому
+| 
+| \[
+| |\delta|\le\frac8a,\qquad
+| |\epsilon|\le\frac{48}{a}+\frac{64}{a^2}<1.
+| \tag{17}
+| \]
+| 
+| Получено (12). Нормировка \(A\) из логарифмических производных сокращается точно. Весь хвост \(n\ge2\) оплачен (14)–(17); первая мода не подставлена вместо полного источника.
+| 
+| **Почему это действительно дополнительный исходный вход.** Контроль OC1/OC2 имеет \((\log f_c)'(x)=-2x+O(1/x)\), а не \(9/2-2\pi e^{2x}+O(e^{-2x})\). Следовательно, он не удовлетворяет доказанному полному theta-входу (12), (17) на хвосте. Здесь используется больше, чем обе скалярные вогнутости. Но полученный далее вывод — отрицательность PT2, не положительность ODD2.
+| 
+| ## 5. Граница \(u=0\): точная матрица первых производных
+| 
+| **[ABSTRACT][PAPER; новое доказательство]** Введём
+| 
+| \[
+| S(x,y)=\frac{\partial_uJ_u(x,y)|_{u=0}}{f(x)f(y)}.
+| \tag{18}
+| \]
+| 
+| При различных узлах прямое дифференцирование (7) даёт
+| 
+| \[
+| \boxed{
+| S(x,y)=\frac{p(x)+p(y)}{x+y}-\frac{p(x)-p(y)}{x-y}
+| =\frac{2\bigl(xp(y)-yp(x)\bigr)}{x^2-y^2}.}
+| \tag{19}
+| \]
+| 
+| При совпадающих узлах получаем точный непрерывный предел
+| 
+| \[
+| \boxed{S(x,x)=\frac{p(x)}x-p'(x).}
+| \tag{20}
+| \]
+| 
+| В (20) нельзя дифференцировать \(\sqrt u\) отдельно и оставить сингулярный член. Произведение \(f(\sqrt u-x)f(\sqrt u+x)\) гладко по \(u\ge0\): до замены это гладкая чётная функция от \(\sqrt u\). Её разложение начинается с
+| 
+| \[
+| f(x)^2+u\bigl(f(x)f''(x)-f'(x)^2\bigr)+O(u^2).
+| \]
+| 
+| Первое произведение диагональной (7) равно
+| \(f(x)^2+u f(x)f'(x)/x+O(u^2)\). Их разность доказывает (20), включая конечность производной.
+| 
+| Для интерпретации можно положить \(b(x)=-p(x)/x\). Тогда
+| 
+| \[
+| S(x,y)=2xy\frac{b(x)-b(y)}{x^2-y^2},\qquad S(x,x)=xb'(x).
+| \tag{21}
+| \]
+| 
+| **Разделённая разность** — дробь из разности значений функции и разности аргументов. Положительность отдельных разделённых разностей ещё не делает их двухузловую матрицу PSD. Именно это сейчас проверяется на полном источнике.
+| 
+| ## 6. Контрпример к PT2: узлы \(10,11\) и явный отрицательный бюджет
+| 
+| ### 6.1. Отрицательная предельная матрица
+| 
+| **[FINITE_CELL][PAPER; новое доказательство]** Зафиксируем
+| 
+| \[
+| x_1=10,\qquad x_2=11,
+| \qquad
+| C_{ij}=\frac{e^{-x_i-x_j}}{4\pi}S(x_i,x_j).
+| \tag{22}
+| \]
+| 
+| На обоих узлах \(a_i=\pi e^{2x_i}\ge100\), поскольку \(\pi>3\) и \(e>2\). По (12), (20)
+| 
+| \[
+| S(x_i,x_i)=4a_i-\frac{2a_i}{x_i}+\frac9{2x_i}
+| +\frac{\delta(x_i)}{x_i}-\epsilon(x_i).
+| \]
+| 
+| При \(x_i\in\{10,11\},a_i\ge100\) отсюда следуют
+| 
+| \[
+| \frac9{10}<C_{ii}\le1.
+| \]
+| 
+| Для нижней границы достаточно отбросить положительный член и использовать
+| 
+| \[
+| C_{ii}\ge1-\frac1{20}-\frac1{4000}-\frac1{400}
+| =\frac{3789}{4000}>\frac9{10}.
+| \]
+| 
+| Для смешанного элемента (19) даёт
+| 
+| \[
+| S(10,11)=\frac{4\pi(10e^{22}-11e^{20})}{21}
+| +\frac9{21}+\frac{2(11\delta(10)-10\delta(11))}{21}.
+| \]
+| 
+| Последний член не меньше \(-2\). Следовательно,
+| 
+| \[
+| C_{12}\ge\frac{10e-11/e}{21}-\frac2{4\pi e^{21}}.
+| \]
+| 
+| Из ряда экспоненты \(e>8/3\), откуда \(e^{-1}<3/8\); также
+| \(2/(4\pi e^{21})<1/1000\). Получается полностью рациональный запас:
+| 
+| \[
+| \boxed{
+| C_{12}>\frac{541}{504}-\frac1{1000}>\frac{21}{20},
+| \qquad
+| \frac{541}{504}-\frac1{1000}-\frac{21}{20}=\frac{353}{15750}>0.}
+| \tag{23}
+| \]
+| 
+| Итак, \(\det C\le1-(21/20)^2=-41/400<0\). Для фиксированного вещественного вектора \(q=(1,-1)\) уже \(q^*Cq\le-1/10\). Вещественный свидетель одновременно является допустимым комплексным свидетелем.
+| 
+| ### 6.2. Переход от производной к настоящему положительному \(u\)
+| 
+| Определим точную матрицу
+| 
+| \[
+| B_{ij}(u)=\frac{e^{-x_i-x_j}}{4\pi f(x_i)f(x_j)}J_u(x_i,x_j).
+| \]
+| 
+| Тогда \(B(0)=0\), \(B'(0)=C\). Все её вторые производные непрерывны на \([0,1]\). Для диагональных элементов это следует из описанной после (20) гладкости чётной композиции; для смешанных элементов оба квадратных корня имеют строго положительные основания уже при \(u=0\).
+| 
+| Положим
+| 
+| \[
+| \boxed{
+| M=\max\left\{1,\ \max_{i,j\in\{1,2\}}\max_{0\le u\le1}|B_{ij}''(u)|\right\},
+| \qquad u_*:=\frac1{100M}.}
+| \tag{24}
+| \]
+| 
+| Это **определённая исходными функциями** конечная положительная константа, не подобранная по данным. Её численное значение не вычислялось; здесь дан PAPER-свидетель, не ARB_INTERVAL-сертификат фиксированного рационального \(u\).
+| 
+| Формула Тейлора с интегральным остатком даёт, одновременно для четырёх элементов,
+| 
+| \[
+| \left|\frac{B_{ij}(u)}u-C_{ij}\right|
+| \le\frac{Mu}{2}\le\frac1{200},
+| \qquad 0<u\le u_*.
+| \tag{25}
+| \]
+| 
+| Обозначая \(\widehat B(u)=B(u)/u\), получаем
+| 
+| \[
+| \frac{179}{200}<\widehat B_{ii}(u)\le\frac{201}{200},
+| \qquad
+| \widehat B_{12}(u)\ge\frac{209}{200}.
+| \]
+| 
+| Таким образом, положительность диагонали здесь оплачена самим Taylor-бюджетом; она также согласуется с (9). Поэтому
+| 
+| \[
+| \boxed{
+| \det\widehat B(u)
+| \le\left(\frac{201}{200}\right)^2-\left(\frac{209}{200}\right)^2
+| =-\frac{41}{500}<0
+| \quad(0<u\le u_*).}
+| \tag{26}
+| \]
+| 
+| Это строгая **верхняя огибающая**: отрицательность следует из верхней оценки на нужный определитель, не из неудачи достаточной нижней оценки.
+| 
+| Возвращаясь к исходной подынтегральной матрице,
+| 
+| \[
+| \boxed{
+| \det\bigl[J_u(x_i,x_j)\bigr]_{i,j=1}^2
+| \le-\frac{41}{500}(4\pi u)^2e^{42}f(10)^2f(11)^2<0.}
+| \tag{27}
+| \]
+| 
+| Никакой хвостовой ошибки в (27) не скрыто: (12) оплачивает весь theta-ряд, (25) оплачивает переход от первого коэффициента к ненулевому \(u\).
+| 
+| ### 6.3. Один и тот же отрицательный вектор на всём интервале
+| 
+| Возьмём
+| 
+| \[
+| w=\begin{pmatrix}e^{-10}/f(10)\\-e^{-11}/f(11)\end{pmatrix}.
+| \tag{28}
+| \]
+| 
+| Это конечный, точно заданный исходными функциями вектор. Нормировка \(f=\Phi/A\) не изменена.
+| 
+| Из (25) следует
+| 
+| \[
+| q^*\widehat B(u)q\le
+| 2\frac{201}{200}-2\frac{209}{200}=-\frac2{25}.
+| \]
+| 
+| Следовательно,
+| 
+| \[
+| \boxed{w^*\bigl[J_u(x_i,x_j)\bigr]w\le-\frac{8\pi}{25}u<0
+| \quad(0<u\le u_*).}
+| \tag{29}
+| \]
+| 
+| Даже первоначальная часть интеграла отрицательна на том же векторе:
+| 
+| \[
+| \boxed{
+| w^*\left[\int_0^{u_*}J_u(x_i,x_j)\,du\right]w
+| \le-\frac{4\pi}{25}u_*^2<0.}
+| \tag{30}
+| \]
+| 
+| Таким образом, PT2 опровергнуто на исходной theta. Опровергнут и более слабый вариант «все достаточно малые начальные интегральные участки дают PSD2» в этом же представлении.
+| 
+| ### 6.4. Чего отрицательный бюджет не доказывает
+| 
+| **[FINITE_CELL][PAPER; точная граница отрицательного вывода]** Для полного ядра остаётся
+| 
+| \[
+| w^*[K_-(x_i,x_j)]w
+| =w^*\left[\int_0^{u_*}J_u\,du\right]w
+| +w^*\left[\int_{u_*}^\infty J_u\,du\right]w.
+| \tag{31}
+| \]
+| 
+| Последний член не оценён. Если полный ODD2 верен, он обязан компенсировать отрицательную часть; в частности, он должен быть не меньше \(4\pi u_*^2/25\). Это необходимая компенсация **для данного вектора**, не новая доказанная нижняя оценка хвоста.
+| 
+| Следовательно, (27)–(30) не дают отрицательного значения полного \(K_-\), полного \(V_f\) или исходного \(Q\). Они не дают опровержения RH даже до вопроса об аудите \(V\Rightarrow Q\).
+| 
+| ## 7. Полный BP2: конкретное двулинейное тождество и первая неоплаченная стрелка
+| 
+| **[ABSTRACT][PAPER; собственный вывод из S2/BP2]** Для
+| \(g_a(t)=a^{5/4}r(at)\) сохраняется полное уравнение
+| 
+| \[
+| tg_a(t)=\int_0^t k(a(t-s))g_a(s)\,ds.
+| \tag{32}
+| \]
+| 
+| Умножение уравнения для \(a\) на \(g_b(t)\), уравнения для \(b\) на \(g_a(t)\) и вычитание дают
+| 
+| \[
+| \boxed{
+| \begin{aligned}
+| &\int_0^t k(a(t-s))
+| \bigl[g_a(s)g_b(t)-g_b(s)g_a(t)\bigr]ds\\
+| &\quad= g_a(t)\int_0^t
+| \bigl[k(b(t-s))-k(a(t-s))\bigr]g_b(s)\,ds.
+| \end{aligned}}
+| \tag{33}
+| \]
+| 
+| При \(a>b\) правая часть неотрицательна, потому что полный \(k\) убывает. Все интегралы конечны: \(k\) локально интегрируем, а \(g_a,g_b\) ограничены на каждом \([0,t]\) и стремятся к нулю у нуля.
+| 
+| Это настоящий двулинейный исходный баланс, но не доказательство ODD2. Он контролирует разделённую разность двух масштабов с весом \(k(a(t-s))\). Он не поставляет неравенство Коши–Буняковского для полного \(K_-\), где дополнительно присутствуют отражённые масштабы и два интегрирования в определителе.
+| 
+| **FIRST_UNPAID_INPUT — [ABSTRACT][CONDITIONAL].** Из (1), (32), (33) и взаимности не получено
+| 
+| \[
+| \left(\int_0^\infty J_u(x,y)\,du\right)^2
+| \le
+| \left(\int_0^\infty J_u(x,x)\,du\right)
+| \left(\int_0^\infty J_u(y,y)\,du\right)
+| \quad\forall x,y>0.
+| \tag{34}
+| \]
+| 
+| Формула (34) — **тот же ODD2**, не новая лемма-поставщик. Называю её `NO_PROGRESS_TAUTOLOGY`, когда она предлагается как результат одного переписывания. Тождество (33) не обнуляет эту задолженность. Новое доказательство в этом ответе — отрицательный результат §6, а не (34).
+| 
+| Действительный остаток: требуется исходная оценка, которая сохраняет взаимодействия разных \(u\) и ограничивает полный смешанный член. Заменять её PT2 теперь нельзя: для исходной theta PT2 ложно.
+| 
+| ## 8. DISCRIMINATOR и две ограниченные смены представления
+| 
+| Это не новые задачи и не разрешение на вычислительную кампанию. Оба варианта относятся только к текущему ODD2.
+| 
+| ### 8.1. Интегрированная логарифмическая кривизна
+| 
+| **[ABSTRACT][CONDITIONAL; достаточный вход, не доказанный для theta]** Поскольку \(K_->0\), определено
+| 
+| \[
+| \mathcal C(s,t)=\partial_s\partial_t\log K_-(s,t).
+| \]
+| 
+| Для \(0<x<y\), по симметрии и основной теореме анализа,
+| 
+| \[
+| \log\frac{K_-(x,x)K_-(y,y)}{K_-(x,y)^2}
+| =\int_x^y\int_x^y\mathcal C(s,t)\,ds\,dt.
+| \tag{35}
+| \]
+| 
+| Гипотеза \(\mathcal C\ge0\) на всей положительной четверти достаточна для ODD2. В этом ответе она **не доказана и не опровергнута**. Отрицательность \(J_u\)-минора ничего не говорит о её знаке. Доказательство лишь неотрицательности правой части (35) без нового исходного входа снова было бы самим ODD2.
+| 
+| **DISCRIMINATOR для диагонального нуля.** При \(y=x+h\)
+| 
+| \[
+| \Delta_-(x,x+h)
+| =h^2\mathcal D_2(x)+o(h^2),
+| \]
+| 
+| \[
+| \boxed{\mathcal D_2(x)=K_-(x,x)\,\partial_1\partial_2K_-(x,x)
+| -\bigl(\partial_1K_-(x,x)\bigr)^2.}
+| \tag{36}
+| \]
+| 
+| Отрицательная верхняя оценка на \(\mathcal D_2(x)\) дала бы отрицательный ODD2 вблизи диагонали. Равенство \(\Delta_-(x,x)=0\) само по себе ничего не различает. Если и \(\mathcal D_2(x)=0\), нужен первый ненулевой последующий коэффициент разложения полного определителя, а не увеличение точности числа, тождественно равного нулю.
+| 
+| ### 8.2. Два интегральных параметра с сохранённой компенсацией
+| 
+| **[ABSTRACT][PAPER; точная перезапись, не знак]** Вместо ложной PT2 можно сохранить
+| 
+| \[
+| \begin{aligned}
+| \Delta_-(x,y)=\frac12\int_0^\infty\!\int_0^\infty
+| \bigl[&J_u(x,x)J_v(y,y)+J_v(x,x)J_u(y,y)\\
+| &-2J_u(x,y)J_v(x,y)\bigr]du\,dv.
+| \end{aligned}
+| \tag{37}
+| \]
+| 
+| Fubini оплачен произведениями конечных интегралов положительных элементов. Новый аргумент здесь должен извлечь из полного BP2 конкретный перенос между областями \((u,v)\), компенсирующий отрицательный участок §6. Одна формула (37) такого аргумента не даёт.
+| 
+| | Кандидат | Что могло бы решить задачу | Kill-power / стоимость | Текущий предел |
+| |---|---|---|---|
+| | R1: знак \(\mathcal C\) для **проинтегрированного** \(K_-\) | Новый исходный нижний бюджет на смешанную производную, затем (35) | 4/5 против этого достаточного механизма; стоимость 4/5 | Поставщик отсутствует; отрицательность вне диагонали убила бы только усиление, не ODD2 |
+| | R2: двупараметрический баланс (37) с полным BP2 | Явная подписанная компенсация между областями, выведенная из (33) или другой точной исходной связи | 5/5 при полном бюджете; стоимость 5/5 | Пока это эквивалентная перезапись, поэтому доказательным прогрессом не считается |
+| 
+| Оценки в таблице — качественное ранжирование аналитической работы, не измеренные величины и не прогноз времени. Эскалация вычислений не назначена.
+| 
+| ## 9. STRONGEST ATTACK — проверки против собственного вывода
+| 
+| **[ABSTRACT][PAPER]** Самое сильное возражение: «Получена отрицательность только искусственно выбранной подынтегральной матрицы». Ответ имеет две части. Представление не постороннее: (8) точно возвращает исходный \(K_-\), а (11) доказывает, что проверяемый промежуточный знак действительно достаточен для ODD2. Но его необходимость нигде не доказана. Поэтому отрицательность закрывает только данный способ доказательства, а не цель.
+| 
+| Другие существенные проверки:
+| 
+| - **Совпадающие узлы.** Формула (20) получена через гладкое продолжение, а не подстановку в \(0/0\). Исходное равенство ODD2 на диагонали сохранено.
+| - **Полный источник.** В (15) оплачены все \(n\ge2\) и две производные. Контроль OC1 не подставлен вместо theta.
+| - **Ненулевой параметр.** Отрицательность первой производной не выдана за конечный свидетель без остатка: (24)–(27) дают положительный интервал и полный Taylor-бюджет.
+| - **Комплексные коэффициенты и нормировка.** Свидетель (28) допустим в \(\mathbb C^2\); положительная диагональная конгруэнция выписана явно. \(A\) нигде не заменён другой нормировкой.
+| - **Полный интегральный хвост.** Неоплаченная часть (31) сохранена. Именно она запрещает объявлять новый результат отрицательным ODD2.
+| 
+| Здесь **диагональная конгруэнция** означает умножение матрицы слева и справа на одну положительную обратимую диагональную матрицу. Она сохраняет знак квадратичной формы и знак определителя, но не позволяет заменить исходную матрицу другой.
+| 
+| ## 10. DEPENDENCY / PROVENANCE LEDGER
+| 
+| | Утверждение | Зависимость | Scope | Verifier / состояние |
+| |---|---|---|---|
+| | Байты запроса и четырёх файлов совпали | Прямое чтение и SHA-256 текущего вложения | ABSTRACT | PAPER; фактически выполненная транспортная проверка |
+| | Исходный \(r,f,A,k\), взаимность, масштабированное BP2 | Запрос; S2/BP1–BP2 | ABSTRACT | PAPER; наследуется принятый источник |
+| | \(K_->0\), представление (7)–(9) | S2/OD1; его принятая squared-coordinate concavity | ABSTRACT | PAPER; наследуемый результат и прямые замены переменных |
+| | Отрицательный OC1 и обе вогнутости OC2 | S2/OC1–OC2, поздние receipts | FINITE_CELL | PAPER; принято без повторного запуска |
+| | Полные производные (12)–(17) | Бесконечный ряд (1), геометрическая сумма и ряд экспоненты | ABSTRACT | PAPER; новое доказательство, независимый review ожидается |
+| | Матрица первого коэффициента (19)–(23) | Дифференцирование точного (7), затем (12) | FINITE_CELL | PAPER; новая точная алгебра |
+| | Конечный отрицательный интервал (24)–(30) | Гладкость на компакте, Taylor-остаток, рациональные запасы | FINITE_CELL | PAPER; новый отрицательный свидетель |
+| | PT2 \(\Rightarrow\) ODD2 | Коши–Буняковский, конечность интегралов | ABSTRACT | PAPER; доказана только импликация |
+| | Полный ODD2 | Нужна (3)/(34), поставщик не найден | ABSTRACT | CONDITIONAL; не доказан, не опровергнут |
+| | Полный SL20 и \(V\Rightarrow Q\) | За пределами закрытого результата | ABSTRACT | CONDITIONAL; полная отдельная проверка сохраняется |
+| | Семейство конечнополевых характеров и дефектные следы | S3/S4 | ABSTRACT | PAPER по приложенным receipts; не новый аудит, не предпосылки §§3–7 |
+| 
+| ### K8A — контракт относительно потребителя
+| 
+| ```yaml
+| DOWNSTREAM_CONSUMER: ODD2_FOR_ALL_POSITIVE_NODE_PAIRS_AND_ALL_COMPLEX_COEFFICIENTS
+| ACTUAL_CONSUMER_REQUIREMENT: "Delta_-(x,y) >= 0 for every x,y > 0"
+| ORIGINAL_REQUESTED_OBJECT: UNIFORM_ODD_TWO_NODE_MINOR_OF_THE_ACTUAL_THETA
+| ORIGINAL_OBJECT_IS: PROVED_NECESSARY
+| NECESSITY_SCOPE: THE_STATED_FOUR_NODE_RESTRICTION_OF_SL20
+| TESTED_STRONGER_OBJECT: POINTWISE_PSD2_OF_THE_EXACT_OD1_INTEGRAND_J_u
+| TESTED_STRONGER_OBJECT_IS_NECESSARY: NOT_ESTABLISHED
+| KNOWN_WEAKER_INTERFACES:
+|   - "PSD2 of the full integral suffices; pointwise PSD2 is not required by the consumer"
+|   - "C(s,t) >= 0 for the integrated K_- implies ODD2 by (35); this input is unpaid"
+| KILL_SCOPE: THEOREM_SHAPE
+| KILL_EVIDENCE: "(27) and (29), actual theta at nodes (10,11), 0<u<=u_*"
+| FAILURE_TYPE: COUNTEREXAMPLE
+| EPISTEMIC_STATUS: MATHEMATICALLY_DEAD
+| EPISTEMIC_STATUS_SCOPE: PT2_ONLY
+| ODD2_EPISTEMIC_STATUS: RESEARCH_DEBT
+| REOPEN_TRIGGER_FOR_ODD2_DEBT: >-
+|   A new full-source inequality controlling the integrated mixed term,
+|   with all tails and all positive node pairs; not another expression for Delta.
+| NOVELTY_AXIS: >-
+|   New-to-this-response exact theta obstruction to pointwise PSD2 of the OD1
+|   paired-tail density; no claim of priority in the literature.
+| ```
+| 
+| ## 11. PREDICTION FATES — без исправления задним числом
+| 
+| **[ABSTRACT][CONDITIONAL → PAPER/UNRESOLVED по строкам]** До окончательных проверок в комментариях были зарегистрированы два качественных ожидания. Вероятности им не назначались; добавлять их после вывода было бы ретроактивной подгонкой.
+| 
+| | ID | Зарегистрированное ожидание / тест | Судьба |
+| |---|---|---|
+| | P_ODD2_LOG_MIXED | Проверить достаточное условие \(\partial_x\partial_y\log K_-\ge0\); риск — потеря знака при интегрировании, не ставка на отрицательный ODD2 | **UNRESOLVED для интегрированного ядра.** Его знак не доказан и не опровергнут. Контрпример к \(J_u\) не засчитывается как исход этого другого теста. |
+| | P_ODD2_PT2_TAIL | Проверить PSD2 подынтегрального остатка OD1; ожидаемый отказ от исходного theta-хвоста | **CONFIRMED** в §§4–6: полный ряд, узлы 10/11, отрицательная верхняя огибающая и положительный интервал \(u\). |
+| 
+| Выполнены точные символические проверки (19), разложения смешанного элемента в §6 и цепного правила в §4. Рациональные проверки дали \(353/15750>0\), \(-41/500\), \(-2/25\). Это проверки алгебры авторского доказательства, не независимый математический review и не численные theta-сертификаты.
+| 
+| ## 12. PROGRESS_DELTA, счётчик и единственная CODEX DIRECTIVE
+| 
+| ### BEFORE / AFTER / DECISION
+| 
+| **[ABSTRACT][PAPER] BEFORE.** Были известны положительные элементы OD1, отрицательный OC1/OC2-контроль и фиксированный полный BP2. Равномерный ODD2 был открыт.
+| 
+| **AFTER.** Равномерный ODD2 всё ещё открыт. Дополнительно доказано: его нельзя получить из PSD2 каждой точной парной подынтегральной матрицы OD1. На исходной theta опровергнуты и этот поточечный знак, и знак всех малых начальных участков интеграла в том же представлении.
+| 
+| **DECISION.** Не строить сертификат PT2 и не дробить параметр \(u\) с целью доказать его повсюду. Не увеличивать ранг прежнего MV-поставщика. Сохранить полный интегрированный ODD2 как исследовательскую задолженность. Контроль взаимодействий разных значений \(u\) обязателен для любого продолжения, использующего (8).
+| 
+| ```yaml
+| OWNER_COUNTER:
+|   SAME_OBSTACLE_FINGERPRINT: SL20_DN20_FULL_COMPLEX_MIXED_SIGN
+|   SUBSPACE: ODD_TWO_POSITIVE_NODES
+|   initial: 0
+|   final: 1
+|   reason: >-
+|     The exact intermediate no-go is new and directly linked to ODD2,
+|     but it does not prove a new source sign family or shrink the full
+|     integrated inequality. It is not used to reset the owner's no-delta count.
+| PROGRESS:
+|   scoped_intermediate_falsification: true
+|   uniform_ODD2_sign_progress: false
+|   representation_of_the_same_open_determinant_counted_as_progress: false
+| COGNITIVE_OPERATOR: BOUNDARY_CASE
+| ROUTE_SCORE: 3
+| MEMORY_ENTRY:
+|   invariant: "entrywise J_u > 0 is compatible with an indefinite 2x2 J_u"
+|   forbidden_future_move: "integrate a supposed pointwise PSD2 certificate for this J_u"
+|   smallest_unpaid_input: ORIGINAL_UNIFORM_INTEGRATED_ODD2
+|   next_decisive_action: INDEPENDENT_PAPER_AUDIT_OF_THE_SCOPED_COUNTEREXAMPLE
+| PX_RH_CLAIM: NOT_MADE
+| ```
+| 
+| После трёх одинаковых no-delta циклов действует указанный владельцем возврат к совместному обсуждению. Этот ответ не объявляет такой порог уже достигнутым. Ожидание и доставка результата отдельными циклами не считаются.
+| 
+| ### CODEX DIRECTIVE — один ограниченный read-only аудит
+| 
+| **Проверь §§3–6 этого Markdown как один PAPER-кандидат, затем классифицируй его только в указанной области.** Входы — аутентифицированный ODD2 TXT, определения (1), принятый OD1 и данный файл. Проверь непосредственно (14)–(17), диагональное продолжение (20), рациональный запас (23), определение \(M\), Taylor-бюджет (25) и возврат из конгруэнции в (27)–(30).
+| 
+| **Успех проверки:** принять только `POINTWISE_OD1_INTEGRAND_PSD2_REFUTED`; оставить `UNIFORM_ODD2_UNPROVED_NOT_REFUTED`, счётчик `final=1` и `PX_RH_CLAIM=NOT_MADE`. **Отказ проверки:** назвать первое неверное равенство/неравенство с формулой и вернуть `ODD2_PT2_COUNTEREXAMPLE_REVIEW_FAILED`, не исправляя исходные байты молча.
+| 
+| Никакой численной кампании, повторного OC1/OC2/DN22, Lean-формализации, смены очереди/runtime, репозиторной записи или production admission эта директива не назначает.
+| 
+| ---
+| 
+| **Итог:** найден проверяемый отрицательный свидетель для конкретного способа получить ODD2 из OD1. Это не отрицательный ODD2. Главный смешанный знак после полного интегрирования остаётся неоплаченным.
+
+| ===== FILE REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md BYTES 15303 SHA256 1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282 =====
+| # Full theta sign to Weil sign — direct audit of the terminal transfer
+| 
+| STATUS: PAPER_AUDIT_PENDING_INDEPENDENT_CHECK.
+| SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c.
+| PX_RH_CLAIM: NOT_MADE. No Lean certification or canonical admission.
+| 
+| This audits the previously inherited SLACK arrow. The result is an equivalence
+| between two all-test signs, not a proof of either sign. It reduces a named
+| audit dependency of GOAL_MAT and does not reset the open ODD2 sign counter.
+| The argument below needs no radical theorem, central/far allocation,
+| finite-field analogy, or bounded inverse multiplier on a function space.
+| 
+| ## 1. Statement and exact objects
+| 
+| Let theta(t)=sum_(n>=1) exp(-pi n^2 t), t>0, and define
+| 
+|     r(t)=4t theta''(t)+6 theta'(t),
+|     Phi(x)=exp(5x/2) r(exp(2x)), A=||Phi||_2, f=Phi/A.
+| 
+| Thus Phi is exactly the full source
+| 
+|     sum_(n>=1) (4pi^2 n^4 exp(9x/2)-6pi n^2 exp(5x/2))
+|                    exp(-pi n^2 exp(2x)).
+| 
+| Define alpha(t)=exp(-t/2)/(1-exp(-2t)), c_A=gamma+log(8pi)+pi/2,
+| w_n=Lambda(n)/sqrt(n), and M_+/-(g)=integral g(x)exp(+/-x/2)dx.
+| For complex compact smooth g, let
+| 
+|     D(g)=integral_0^infinity alpha(t)||g(.+t)-g||_2^2 dt,
+|     Q(g)=D(g)-c_A||g||_2^2 +2Re(M_+(g)conj(M_-(g)))
+|          -2 sum_(n>=2) w_n Re integral conj(g(x))g(x+log n)dx.
+| 
+| Set
+| 
+|     V(x,y)=integral_0^infinity (x+y+2t) f(x+t)f(y+t)dt.
+| 
+| **Theorem T.** The following assertions are equivalent:
+| 
+| 1. Q(g)>=0 for every g in C_c^infinity(R;C).
+| 2. For every N>=1, real x_1,...,x_N, and c in C^N,
+|    sum conj(c_i)V(x_i,x_j)c_j>=0.
+| 
+| Together with the classical Weil criterion, these are equivalent to classical
+| RH. The theorem is an exact transfer; assertion2 is still unproved. The ODD2
+| subspace is necessary for assertion2 and is not substituted for it.
+| 
+| ## 2. Source normalization and decay without a critical-strip premise
+| 
+| Use the Jacobi identity
+| 
+|     1+2theta(t)=t^(-1/2)(1+2theta(1/t)).
+| 
+| It is DLMF20.7.32 at z=0, tau=it with the positive square root. Differentiating
+| twice gives `r(1/t)=t^(5/2)r(t)`, hence Phi(-x)=Phi(x).
+| For t>=1 every term of r is positive: 2pi n^2 t-3>0. Reciprocity then gives
+| r>0 everywhere. The series and its fixed derivatives converge locally
+| uniformly for t>0. For x>=0, each fixed x-derivative of Phi is bounded by a
+| finite sum of terms C n^M t^M exp(-pi n^2 t), t=exp(2x)>=1.
+| The sum of n^M exp(-pi(n^2-1)) is finite; absorbing t^M into exp(pi t/2)
+| gives a bound C_k exp(-(pi/2)exp(2x)). Evenness gives the same bound at the
+| other end. This proves every exponential-weighted fixed derivative moment
+| needed below, and 0<A<infinity.
+| 
+| For Re(s)>1 put a=s/2. Two integrations by parts give
+| 
+|     integral_0^infinity t^a r(t)dt
+|       =(4a(a+1)-6a) integral_0^infinity t^(a-1)theta(t)dt
+|       =s(s-1) pi^(-s/2) Gamma(s/2) zeta(s)=2xi(s).
+| 
+| All boundary terms vanish: near zero theta=O(t^-1/2), theta'=O(t^-3/2)
+| by Jacobi; the factors in both integration-by-parts boundaries are
+| O(t^((Re(s)-1)/2)). At infinity the series decays exponentially. Absolute
+| Fubini for the last equality follows from Re(s)>1 and the gamma integral.
+| With the Fourier convention F(z)=integral f(x)exp(-izx)dx, t=exp(2x) gives
+| 
+|     F(z)=(1/(2A)) integral t^(1/4-iz/2)r(t)dt
+|          =xi(1/2-iz)/A
+| 
+| whenever Re(1/2-iz)>1, in particular in an open neighborhood of Im(z)=2.
+| F and its derivatives exist everywhere by the proved envelopes, but no
+| critical-strip zero location is used in this calculation.
+| 
+| ## 3. The control space and the unchanged full pairing
+| 
+| Let X be the space of measurable functions with
+| 
+|     ||g||_X^2=||exp(|x|)g||_2^2+D(g)<infinity.
+| 
+| Its inner product is the weighted L2 inner product plus the L2 pairing of
+| translation differences with measure alpha(t)dt dx. It is complete: the map
+| g -> (exp(|x|)g, (g(x+t)-g(x))) has a closed graph in the product L2 space,
+| as follows by distributional testing (or subsequences and Fubini) from a
+| convergent sequence in both coordinates.
+| 
+| Polarization of Q defines an antilinear-first Hermitian B on X. Write
+| W_g=||exp(|x|)g||_2. Then
+| 
+|     |integral conj(g(x))k(x+t)dx| <= exp(-|t|)W_g W_k,
+|     |M_+/-(g)| <= sqrt(4/3)W_g,
+|     |B(g,k)| <= (|c_A|+14)||g||_X||k||_X.                 (T1)
+| 
+| The first bound uses |x|+|x+t|>=|t| and Cauchy-Schwarz. The pole norm follows
+| from integral exp(+/-x-2|x|)dx=4/3. The two prime correlations cost at most
+| 2 sum_(n>=2)(log n)n^-3/2 W_gW_k <10 W_gW_k by the integral test; the D
+| pairing is bounded by sqrt(D(g)D(k)). Thus every prime is present with an
+| absolutely convergent bound on X. For original compact tests the sum is in
+| fact finite. The constant14 is a harmless explicit upper bound.
+| 
+| Translation tau_b g(x)=g(x-b) has norm at most exp(|b|) on X and leaves B
+| unchanged. Its D-part is translation invariant, as are the correlations;
+| the two pole moments acquire opposite factors exp(+/-b/2).
+| Translations are strongly continuous: in the D-part apply ordinary L2
+| translation continuity to each difference g(.+t)-g, dominated by its
+| fourfold squared norm. Weighted L2 translation continuity follows by
+| compact L2 approximation and the displayed locally uniform operator bound.
+| This argument precedes and does not presuppose smooth density.
+| 
+| For a smooth cutoff chi_R tending to1, with bounded derivative O(1/R),
+| expand the translated difference of (chi_R-1)g. One term is bounded by
+| 4|g(x+t)-g(x)|^2 and converges to0; the commutator term is bounded by
+| min(C^2t^2,4)|g(x)|^2 and converges to0. Both are integrable against
+| alpha(t)dt dx. Weighted L2 convergence is dominated convergence. Thus
+| chi_R g -> g in X. Mollifying each compactly supported chi_R g converges in
+| X by strong translation continuity and Minkowski's inequality. Consequently
+| C_c^infinity(R;C) is dense in X. This licenses later discontinuous atoms;
+| it is not an assumption that X=L2 or that derivatives must lie in L2.
+| 
+| ## 4. Exact atoms with both poles and the grouped archimedean constant
+| 
+| Fix h=2 (the formulas below also hold for fixed h>1), sigma=h+1/2, and set
+| 
+|     q_(h,u)(x)=1_[0,infinity)(x) exp(-hx+iux), u in R,
+|     R_h(u)=1/(sigma-iu)+1/(sigma-1-iu)-log(pi)/2
+|            +psi((sigma-iu)/2)/2
+|            -sum_(n>=2) Lambda(n)n^(-sigma+iu),
+|     K_h(u,v)=(conj(R_h(u))+R_h(v))/(2h+i(u-v)).
+| 
+| The q atoms belong to X. Direct integration gives
+| 
+|     ||exp(|x|)q_(h,u)||_2^2=1/(2(h-1)),
+|     D(q_(h,u))=(1/h) integral alpha(t)(1-exp(-ht)cos(ut))dt,
+|     ||q_(2,u)||_X <= sqrt(6)*sqrt(1+u^2).                 (T2)
+| 
+| Indeed 1-exp(-ht)cos(ut)<=ht+u^2t^2/2,
+| integral t alpha(t)dt<5, integral t^2 alpha(t)dt<18, by the positive
+| geometric expansion and decreasing-tail integral tests.
+| 
+| Let d=2h+i(u-v). The atom mixed L2 product is1/d. The two translated
+| correlations are exp(-(h-iv)t)/d and exp(-(h+iu)t)/d. The D numerator is
+| integral alpha(t)(2-exp(-(h-iv)t)-exp(-(h+iu)t))dt.
+| Each pole product has denominators a,b with a+b=d. Multiplying it by d
+| therefore gives1/a+1/b. This produces all four reciprocals in
+| conj(R_h(u))+R_h(v); neither pole is discarded.
+| 
+| For the archimedean terms use DLMF5.9.16:
+| 
+|     psi(z)+gamma=integral_0^1 (1-t^(z-1))/(1-t)dt, Re(z)>0.
+| 
+| At z=1/4 substitute t=v^4. The resulting rational integral gives
+| psi(1/4)=-gamma-3log2-pi/2. Subtracting this value in the same convergent
+| integral yields, for Re(s)>0,
+| 
+|     (psi(s/2)-psi(1/4))/2
+|        =integral_0^infinity (exp(-t/2)-exp(-st))/(1-exp(-2t))dt.
+| 
+| Apply this to s=sigma-iv and its u conjugate. Their sum, minus log(pi),
+| is exactly the D numerator minus c_A. The small-t differences remain
+| grouped throughout. The prime part equals the original two translated
+| correlations term by term, with absolute convergence. Hence
+| 
+|     B(q_(h,u),q_(h,v))=K_h(u,v).                           (T3)
+| 
+| This is a pairing for a form whose sign is unknown; no positive Gram
+| representation was assumed.
+| 
+| ## 5. Every original complex test is reached in the correct norm
+| 
+| For an original g choose b so g_b=tau_b g is supported strictly in (0,infinity).
+| Let G(u)=F_(g_b)(u+ih), the Fourier transform of exp(hx)g_b(x). It is Schwartz.
+| By T2 the Bochner integral
+| 
+|     g_b=(1/(2pi)) integral G(u)q_(h,u)du                   (T4)
+| 
+| converges absolutely in X. Evaluation in weighted L2 and ordinary Fourier
+| inversion identify this integral with g_b: on x>0 multiply the inversion
+| of exp(hx)g_b by exp(-hx); both sides vanish for x<0. The endpoint is null.
+| 
+| T1–T3 now give, with absolute convergence,
+| 
+|     Q(g)=(1/(4pi^2)) integral integral conj(G(u))K_h(u,v)G(v)du dv. (T5)
+| 
+| For completeness, this is also a finite-coefficient limit. Tail truncation
+| at |u|<=M has X error at most
+| sqrt(6)/(2pi) integral_(|u|>M)|G(u)|sqrt(1+u^2)du.
+| The map u->q_(2,u) is continuously differentiable in X with derivative ixq:
+| xq has weighted norm squared1/4, and its weak x-derivative has L2 norm
+| squared(4+u^2)/32. Its value is0 at the jump point, so no delta derivative is
+| present. The bound on integral t^2 alpha gives
+| 
+|     ||xq_(2,u)||_X^2 <= 5/2+9u^2/16.
+| 
+| Dominated difference quotients give the asserted X derivative. Riemann
+| sums on [-M,M] therefore converge in X; for mesh delta their extra error is
+| 
+|     (2M delta)/(2pi) sup_(|u|<=M)
+|        (|G'(u)|sqrt(6(1+u^2))+|G(u)|sqrt(5/2+9u^2/16)).
+| 
+| If the total X error is e, T1 bounds the quadratic error by
+| (|c_A|+14)e(2||g_b||_X+e). All estimates are for each fixed arbitrary complex
+| test and retain every source term. A test-dependent support shift is valid
+| because B is translation invariant; no uniform inverse bound is asserted.
+| It follows that Q is nonnegative on all original tests iff every finite K_h
+| matrix is PSD: use T4 for one direction, and X-density to approximate any
+| finite sum of q atoms for the other.
+| 
+| ## 6. The only division is on finite coefficient spaces
+| 
+| The Euler product on Re(s)>1 is absolutely convergent with a nonzero value;
+| its logarithmic derivative is -sum Lambda(n)n^-s. Gamma has no zeros there
+| (and its reciprocal entire product proves this classical fact). Thus the
+| nonzero F_h(u)=F(u+ih)=xi(sigma-iu)/A obeys
+| 
+|     R_h(u)F_h(u)=iF'(u+ih)=integral x f(x)exp(hx-iux)dx.   (T6)
+| 
+| Differentiation is justified by section2. For every finite node set the
+| diagonal matrix diag(F_h(u_i)) is invertible. Therefore the finite K_h
+| matrices are PSD iff the finite matrices of
+| 
+|     W_h(u,v)=conj(F_h(u))K_h(u,v)F_h(v)
+| 
+| are PSD. The inverse is allowed to depend on the chosen finite nodes. There
+| is no map sending a general Fourier coefficient G to G/F_h in this proof.
+| 
+| ## 7. The exact physical kernel and its sign transfer
+| 
+| Expand T6 in the numerator of W_h and insert
+| 
+|     1/(2h+i(u-v))=integral_0^infinity exp(-2ht-iut+ivt)dt.
+| 
+| Absolute Fubini is bounded by
+| 
+|     (1/(2h)) integral integral |X+Y| |f(X)f(Y)|exp(h(X+Y))dX dY <infinity.
+| 
+| Substitute X=x+t, Y=y+t. The result is
+| 
+|     H_h(x,y)=exp(h(x+y))V(x,y),
+|     W_h(u,v)=integral integral H_h(x,y)exp(iux-ivy)dx dy.  (T7)
+| 
+| The same estimate proves H_h in L1(R^2); compact-local tail domination
+| proves its continuity. These two facts suffice for all following limits;
+| a global L2 realization of Q or an inverse function-space multiplier is
+| unnecessary.
+| 
+| Finite H_h matrices are PSD iff its quadratic form is nonnegative on all
+| complex compact smooth spatial tests. Forward: compact rectangle Riemann
+| sums. Reverse: smooth approximate point masses at a finite set, combining
+| coefficients if nodes repeat; continuity controls the limit.
+| 
+| A nonnegative H_h form gives finite W_h PSD: use spatial tests
+| chi_R(x)sum_j c_j exp(-iu_j x). Dominated convergence with H_h in L1 gives
+| exactly sum conj(c_i)W_h(u_i,u_j)c_j.
+| Conversely, finite W_h PSD gives nonnegative frequency integrals against
+| compact smooth coefficients by Riemann sums. W_h is bounded by ||H_h||_1,
+| so L1-tail truncation extends this to Schwartz coefficients. For a compact
+| smooth spatial a choose
+| 
+|     eta(v)=(1/(2pi)) integral a(y)exp(ivy)dy.
+| 
+| It is Schwartz and a(y)=integral eta(v)exp(-ivy)dv. T7 and absolute Fubini
+| identify its nonnegative frequency form with integral conj(a(x))H_h(x,y)a(y).
+| No sign assumption was used to justify a limit.
+| Finally, finite H_h matrices are congruent to finite V matrices by the
+| positive diagonal exp(hx_i). Combining sections5–7 proves Theorem T.
+| 
+| ## 8. Connection to the published final consumer
+| 
+| For C_g(t)=integral g(x)conj(g(x-t))dx, C_g(-t)=conj(C_g(t)). Substituting this
+| into Suzuki's explicit formula(3.3) gives precisely Q above. The constant
+| conversion uses
+| 
+|     2 integral_0^infinity (1-exp(-t/2))alpha(t)dt=log2+pi/2.
+| 
+| The pole integrals give 2Re(M_+ conj(M_-)); both prime-power sums give the
+| stated real correlation sum. The introduction states the classical Weil
+| criterion for all complex compact smooth tests. Thus its scope matches T1,
+| not only the odd or even sector. The published explicit formula and Weil
+| criterion remain named primary theorem dependencies; their entire classical
+| proofs are not reconstructed here.
+| 
+| ## 9. Evidence, delta, and limits
+| 
+| Full SLACK producer49446bytes/657LF was read and rehashed:
+| 1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588.
+| Current full SLACK check37796bytes/467LF was rehashed:
+| 14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc.
+| Its earlier acceptance is context; the transfer proof is rederived above.
+| 
+| Primary formulas read directly on 2026-09-12:
+| - [Jacobi modular identity, DLMF20.7.32](https://dlmf.nist.gov/20.7#E32).
+| - [Digamma integral, DLMF5.9.16](https://dlmf.nist.gov/5.9#E16).
+| - [Euler product, DLMF25.2.11](https://dlmf.nist.gov/25.2#E11).
+| - [Suzuki, introduction and(3.3)](https://arxiv.org/html/2301.00421).
+| 
+| Classical background used: Fourier inversion/uniqueness, elementary Lebesgue
+| convergence theorems, completeness of L2, the gamma integral and nonvanishing
+| of Gamma on Re(s)>0. No RH-equivalent spectral theorem is hidden among these.
+| 
+| Before this audit GOAL_MAT inherited V=>Q only by the SLACK receipt. This note
+| rederives the source normalization, complete arithmetic pairing, all-test X
+| limit, finite congruence, and spatial/frequency transfer in one proof.
+| This is an audit completion at PAPER scope if independently accepted.
+| It supplies no new proof of V>=0, no result of the pending ODD2 request, and
+| no reset of the same-obstacle mathematical counter. No new Proshka send.
+| 
+| ## 10. Independent audit acceptance
+| 
+| This receipt supersedes the initial pending status, preserving the preceding
+| 14110bytes unchanged. ACCEPTED_PAPER_TRANSFER_AUDIT for Theorem T and its
+| source normalization/domain proof. The sole read-only checker
+| `/root/sibling5_check` checked exact SHA256
+| `8c0ff365de0838fb922a05c21ada76665935998bd6ecae5117f3fd7910703b60`
+| and returned ACCEPT: Mellin IBP coefficient/boundaries, noncircular X density,
+| atom jumps, both poles and digamma constant, X limits, finite nonzero
+| congruence, exact Fourier signs, H in L1 and both PSD transfer directions.
+| It retained the named DLMF/Suzuki formulas as published dependencies; their
+| historical full proofs were not reconstructed. Parent also checked the
+| Jacobi differentiation and all constant factors directly.
+| 
+| The parent additionally read [DLMF5.2(i)](https://dlmf.nist.gov/5.2#i),
+| including Euler's gamma integral and the explicit nonvanishing statement,
+| on 2026-09-12. This makes the gamma background source locator explicit; it
+| does not add a zero-location premise for zeta.
+| 
+| No sign premise was proved. No ODD2 result or no-progress counter reset is
+| claimed. The active all-test RH goal remains incomplete.
+
+| ===== FILE SLACK_INDEPENDENT_CHECK_2026-09-11.md BYTES 37796 SHA256 14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc =====
+| # SLACK independent check — 2026-09-11
+| 
+| Status: PAPER_CANDIDATE_PENDING_FINAL_REPORT_CONFIRMATIONS. The complete producer verdict has been read and its exact published bytes authenticated. The sole fresh independent checker accepted the stated partial PAPER scope, source supplier and OD1 on its first full-verdict pass with no findings. Parent source/algebra checks agree. Two exact-report confirmations remain; no final report acceptance or production admission is claimed. Original all-test sign SL20 remains UNPROVED; CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE. No Lean file changed.
+| 
+| ## 1. Exact intake and provenance
+| 
+| Request REQ-2026-09-11-SLACK; boundary GOAL058_INTEGRATED_SIGNED_SOURCE_SLACK_CANCELLATION. Request commit d92fd17e78b28fe93939e6b94becf1b90c68dddc; binding/watch baseline 9005b347aa7d206149d9b898248982a0298362b1. Request path docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SLACK_2026-09-11.txt, 15912 bytes, 81 LF, final LF; SHA256 7cbb8da692f7603b66995dfafbc2ec483e05927f9331903db9b540e6d49638da; blob 1bb6a64ca93430b52142071150fa2e6e36ce4520. All request bytes were read; counts/hash and each REQUEST_LOCK field match.
+| 
+| Verdict path docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SLACK_2026-09-11.md; commit e8a95fac36dec2aea50c71a6bdf5fc7deffd4152, parent exactly 9005b347aa7d206149d9b898248982a0298362b1. Exactly this one path was added. Original 49446 bytes, 657 LF, final LF; SHA256 1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588; blob ac3504f3e44b0442fc50c95fe1a095aea57cd7dc. Live remote rh_clean matched before intake. Fast-forward under the canonical writer lock preserved all 13 existing dirty regular files byte-for-byte. The original producer file remains unchanged.
+| 
+| The browser in user-created chat6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59 showed the completed response, original file and publication receipt. Its claims were checked against git, not accepted from the chat alone. The user's earlier exact LINE and original committed request establish the observed manual exchange. A canonical attachment tile was not observed, and runtime still points to old chat6aa24f25; this transport reconciliation remains separate from mathematical receipt and must be settled before another canonical send. No new mathematical phase is inferred.
+| 
+| All complete source pairs below were independently rehashed at SOURCE_BASE 3fcf7759342ea41ef9a46de2597f0a6187f1931d. Their blobs match the request and verdict.
+| 
+| | Key / source | Bytes | SHA256 | Git blob |
+| |---|---:|---|---|
+| | S: proshka/PROSHKA_VERDICT_GOAL058_WEIL_POSITIVITY_AROUND_XI_PROOF_2026-09-05.md | 46207 | 93db2de6357821918211a8033b2c8f34e7f684320a25e5623e1f24d33ed58fe9 | 136aceb3cbbabcdfa425459562b803b67c548b48 |
+| | F: proshka/PROSHKA_VERDICT_GOAL058_FLOW_2026-09-10.md | 49936 | 629431c76e40a1af5fcb5f2b6721ae7be8dba3bfe71a2e8f238e6fd32e07e28d | 15493a4cbdb41845c92b176d96f542aff97b07a7 |
+| | R: FLOW_INDEPENDENT_CHECK_2026-09-11.md | 46685 | 17bd247cc4c995a239e22136cb3ba899c0c20d337e8ec1cff49cd65b440c533f | e12910d0fa356f53788786bc40d52e3d4e41d2a3 |
+| | B: docs/BATCH_PATTERNS.md | 11341 | cded6dfd5950fd8dd230ad770ff0cf4a50a5bea9b2d5e91601b8eaa76120903b | cb63bab5fbff3d39bf63c0b0f081a2264e004f2b |
+| 
+| S/F/R paths above are relative to docs/routeB_bus; B is repository-relative. S's source definition, X/CONT/CAN/FT/ENV/EF/RAD/GS and F/R's retained slack laws remain their precise mathematical dependencies. The historical explicit-formula and terminal Weil-criterion publications are inherited named dependencies, not newly read original PDFs in this intake. Rehashing authenticates bytes, not mathematical truth or original-publication verification.
+| 
+| ## 2. Parent display audit, pending independent disposition
+| 
+| | Displays | Parent check | Scope and reason |
+| |---|---|---|
+| | SL1-SL2 | Checked PAPER derivation | Original physical dx, antilinear-first B, both pole moments and every prime power agree with S. Weighted correlation bound exp(-abs(t))WgWk, pole norm sqrt(4/3), translation-energy Cauchy-Schwarz give C_X. Smooth cutoff/mollifier density uses translation energy, not H1 or an assumed L2 realization of Q. |
+| | SL3 | Checked PAPER class obstruction | Apply the proposed positive-square bound to compact cutoffs of each rational translate of f; Fatou, a countable full-measure intersection and L2 continuity force each L2 kernel orthogonal to all translates. Fourier uniqueness and real zeros of nonzero entire F having measure zero give k=0. This is not X density and excludes only the stated L2-continuous supplier class. |
+| | SL4-SL6 | Checked source pairing | Half-line atoms belong to X despite their jump. Two mixed correlations produce the 2h+i(u-v) denominator. Four pole reciprocals and the grouped digamma difference reproduce the exact original source. No positive Gram is assumed. |
+| | SL7-SL9 | Checked domain/limit map | Shift each fixed compact test strictly into the positive half-line. G is the Fourier transform of exp(hx)g_a, hence Schwartz; the X-valued inversion is integrable by SL5. Continuity pays the double pairing. At h=2, xq has weighted norm squared1/4 and derivative norm squared(4+u²)/32, giving SL9 and its quadratic error. |
+| | SL10-SL12 | Checked transform algebra | Mellin normalization gives F(z)=xi(1/2-iz)/A. Its derivative yields R_hF_h=iF'_h at Re(s)>1. Only the absolute-convergence zero-free half-plane is used. Expanding both moments then inserting the positive-halfline Laplace denominator gives H_h(x,y)=exp(h(x+y)) integral_0^infty (x+y+2t)f(x+t)f(y+t)dt with the displayed Fourier signs. ENV and exp(-2ht) pay fixed derivatives and moments. |
+| | SL13-SL14 | Checked equivalence, no sign theorem | Evenness gives entrywise positive V. Finite diagonal congruence is invertible because F_h has no zero on that line. Spatial/frequency cutoff and Fourier limits use integrable Schwartz H. No function-space inverse G/F_h is asserted. All-test Q sign is equivalent to H_2 positive semidefinite; neither side is proved positive here. |
+| | SL15 | Parent and independent checker verified contour signs | L(u+ih)=-iR_h(u), L(u-ih)=i conjugate(R_h(u)); both lines oriented right. For g=f^(k), F_g sharp=(-iz)^k F cancels the logarithmic denominator. ENV pays fixed-strip decay and rectangle sides. This is a radical identity, not a sign bound for general g. |
+| | SL16 | Checked inherited accounting | F24 applies to the original compact ratio r=g/f. Only the right-side representation is shifted. Sc and Se retain exact laws and coefficients, the four-vertex correction and the correct dyadic von Mangoldt weight. Noncompact radical subtraction does not license applying F24 there. |
+| | SL17 | Independently reproduced exactly | Gaussian moments give23/12,73/36 and the negative odd value-2/9, all with common exp(-2). This is a noncanonical counterexample to entrywise-positive implying positive semidefinite. |
+| | SL18-SL19 | Checked full-tail obstruction | Product differentiation gives the signed comparison with its boundary at infinity. The complete theta-tail bounds imply V(x,x)/f(x)^2 <=16(x/a_x+1/(2a_x²))->0, a_x=2pi exp(2x)-9/2. Every fixed positive rank-one reserve fails; V positivity itself is not refuted. |
+| | SL20 | UNPROVED | Exact full theta-kernel inequality on every complex compact smooth test. No tail, parity or inverse premise pays its sign. |
+| | SL21-SL22 | Checked quantifiers and budget | Two opposite smooth bumps yield the negative pole cross term-4m_phi² cosh(a); at each fixed prime cutoff choose their separation beyond retained prime correlations. These witnesses move with N. The all-vector tail bound E_N/h times the squared l1 coefficient norm supplies fixed-test convergence, not globally positive truncated forms. |
+| | SL23-SL24 | Published supplier plus checked transfer | The next test is supplied by Csordas Theorem4.2(b)/Remark4.3(a) under the exact scaling in section4. Jensen gives the reflection-diagonal inequality, not the full odd/even quadratic forms. |
+| 
+| ## 3. Separate exact arithmetic reproduction
+| 
+| For the control f_c(x)=exp(-x²)(1+x⁴/3), substituting z=v²-1 in V(1,1) and z=v² in V(1,-1) gives, after removing the common exp(-2),
+| 
+| - diagonal polynomial: (z⁴+4z³+12z²+16z+16)/9;
+| - reflected polynomial: (z⁴-4z³+12z²+32z+16)/9.
+| 
+| Integrate each coefficient with integral_0^infty z^j exp(-2z) dz=j!/2^(j+1). The exact values are23/12 and73/36. The vector(1,-1) has value-2/(9e²). These are independent source-polynomial calculations, not copied decimals.
+| 
+| ```python
+| from fractions import Fraction as F
+| from math import factorial
+| integrate = lambda c: sum(F(v)*F(factorial(j),2**(j+1))
+|                           for j,v in enumerate(c))/9
+| diag = integrate([16,16,12,4,1])
+| cross = integrate([16,32,12,-4,1])
+| assert (diag,cross,2*(diag-cross)) == (F(23,12),F(73,36),F(-2,9))
+| ```
+| 
+| For SL5, int t alpha(t)dt=sum_(k>=0)(2k+1/2)^-2<5 and int t² alpha(t)dt=2sum_(k>=0)(2k+1/2)^-3<18 follow by positive geometric expansion and the decreasing-tail integral test. The original mixed pole identity follows from d=a+b in each product of reciprocals. A separate35-digit grouped-integral/digamma check at(u,v)=(0,0),(0,1),(1/2,-1) gave archimedean residuals3.0092655e-36,4.5138983e-36,0 and zero pole residuals. These are numerical checks of the derived identities, not interval sign certificates. These checks are sign-free and do not repeat prior source-grid calculations.
+| 
+| ## 4. Imported supplier for SL23: exact normalization, not point agreement
+| 
+| Local source docs/routeB_bus/litreview/pdfs/1309.0055.pdf, SHA256333c28bbdea9a7a7a2d63feb73838151149848b7d8fd7f4da965e42fd0447bef. Printed pages10-12 were read; page11 was also rendered and visually checked. Csordas, "Fourier transforms of positive definite kernels and the Riemann xi-function", Theorem4.2(b), explicitly states strict concavity of log Phi_C(sqrt(t)) for t>0. Remark4.3(a) states the pointwise inequality
+| 
+| J_PhiC(r)=r(Phi_C'(r)^2-Phi_C(r)Phi_C''(r))+Phi_C(r)Phi_C'(r)>0, r>0.
+| 
+| This is an imported published theorem at its exact scope. The 1988 original proof, cited there as[21,Theorem2.1], was not fetched/read in this intake. Strict concavity alone, as an abstract definition, would not justify replacing nonpositive curvature by strictly negative curvature everywhere; the source's explicit Remark4.3(a) supplies the stronger pointwise statement used here.
+| 
+| Equation(4.2), page10, is
+| 
+| Phi_C(r)=sum_(n>=1) pi n²(2pi n² exp(4r)-3) exp(5r-pi n² exp(4r)).
+| 
+| Substitute r=x/2 and multiply each summand by2:
+| 
+| 2 Phi_C(x/2)=sum_(n>=1)(4pi²n⁴ exp(9x/2)-6pi n² exp(5x/2)) exp(-pi n² exp(2x))=Phi_ours(x).
+| 
+| The series converges absolutely locally, and fixed derivatives converge locally uniformly. Hence, exactly,
+| 
+| f(x)=(2/A)Phi_C(x/2), f'(x)=Phi_C'(x/2)/A, f''(x)=Phi_C''(x/2)/(2A),
+| 
+| J_f(x)=(2/A²)J_PhiC(x/2)>0.
+| 
+| Equivalently ell(s)=log f(sqrt(s))=log(2/A)+log Phi_C(sqrt(s/4)); its second derivative is the source second derivative at s/4 multiplied by1/16. The normalization A never needs numerical evaluation. At zero f is positive and even analytic, so ell has a continuous smooth extension from the right. SL24 follows by the exact square substitution and Jensen; it is strict at x>0 and equals zero at x=0.
+| 
+| The observer's14-point probe is diagnostic history, not used as proof and not rerun. Source card docs/routeB_bus/litreview/CSORDAS_PLANAT_LOGCONCAVITY_USAGE_CARDS.md is an index; the theorem was checked against its PDF. Planat-Sole arXiv2608.19160v1, local SHA256fed8c364334ecc87fc48f4f25432ab68cc30c51538b2ef41a7874cc1a611c22c, pages1-2 read, restates the first-level result and claims a second-level theorem. Its later certificates were not rechecked; that theorem is not a premise of this report. Its function named f=s'^2-ss'' is not our canonical f=Phi/A.
+| 
+| ## 5. New candidate OD1: off-diagonal comparison of odd-kernel entries
+| 
+| This strengthens the already supplied reflection diagonal without asserting a sign on all vectors. Assume the published squared-coordinate concavity above. For every x,y>0, the claim is
+| 
+| OD1: V_f(x,y)>V_f(x,-y).
+| 
+| Let m=(x+y)/2 and d=abs(x-y)/2, so m>d>=0 and m²-d²=xy. From SL13 and the substitutions v²=m²+r and v²=d²+r,
+| 
+| V_f(x,y)=integral_0^infty f(sqrt(r+m²)-d)f(sqrt(r+m²)+d)dr,
+| 
+| V_f(x,-y)=integral_0^infty f(sqrt(r+d²)-m)f(sqrt(r+d²)+m)dr.
+| 
+| Negative physical arguments are handled by evenness. Put c=r+m²+d², a=2d sqrt(r+m²), b=2m sqrt(r+d²). The corresponding squared arguments are c-a,c+a and c-b,c+b. They satisfy
+| 
+| b²-a²=4rxy>=0,
+| c²-b²=(r+d²-m²)²>=0,
+| 0<=a<=b<=c.
+| 
+| For fixed c, concavity of ell makes ell(c-t)+ell(c+t) nonincreasing in0<=t<=c: express c+/-a as the two complementary convex combinations of c-b,c+b and add the two concavity inequalities. Strict concavity makes this strict when r>0, since then b>a. Endpoints at zero follow by continuity (or can be omitted as a null r-set). Exponentiation proves strict pointwise dominance of the first integrand for r>0. Source ENV pays both integrals, hence OD1.
+| 
+| The algebra of the squared spreads was independently checked with exact rationals on539 triples x=i/4,y=j/4,r=k/5 (1<=i,j<=7,0<=k<=10): b²-a²=4rxy and0<=a²<=b²<=c² in every case. This is an algebra-control table, not a theta grid, a convergence certificate or proof of full form sign. The proof is the identity and concavity argument for all real parameters above.
+| 
+| Define V_-(x,y)=V_f(x,y)-V_f(x,-y) and V_+(x,y)=V_f(x,y)+V_f(x,-y), x,y>0. SL13 already makes V_+ entrywise positive; OD1 would make V_- entrywise positive. Reflection invariance V_f(-x,-y)=V_f(x,y) implies that an odd compact b has
+| 
+| integral_R² conjugate(b(x))V_f(x,y)b(y)dxdy=2 integral_(0,infty)² conjugate(b(x))V_-(x,y)b(y)dxdy.
+| 
+| The even formula uses V_+. Cross even/odd pairings vanish. Thus OD1 pays the cone where the positive-halfline values have a common complex phase and nonnegative real amplitudes. It does not pay arbitrary sign-changing/complex coefficients, positive semidefiniteness of either kernel, or the full odd sector. To express the original SL20 kernel H_2, use b(x)=exp(2x)a(x), which maps compact smooth tests bijectively; no global bounded inverse is invoked. This is parity of the transformed spatial test b, not a claimed restriction of the original physical Q test.
+| 
+| A matrix with positive entries, for example [[1,2],[2,1]], still has a negative value at(1,-1). That algebraic control only illustrates the remaining inference gap; it is not a canonical negative witness. Exact remaining target: prove BOTH halfline kernels V_+ and V_- positive semidefinite for every finite node set/all complex coefficients, equivalently their compact-test forms and SL20. The new pointwise comparison supplies no such conclusion by itself.
+| 
+| ## 6. New candidate OC1: squared-coordinate concavity is still insufficient
+| 
+| This exact noncanonical control tests the tempting next step, rather than launching a large grid. Put
+| 
+| f_c(x)=exp(-x²)P(x²), P(s)=1+3s/10+s²/25.
+| 
+| It is strictly positive, even, smooth, and all fixed derivatives decay faster than every exponential. It is also decreasing for x>0, since the sign of its logarithmic derivative is the sign of P'(s)-P(s)=-7/10-11s/50-s²/25<0. Its squared-coordinate logarithm has
+| 
+| ell_c''(s)=(P''(s)P(s)-P'(s)²)/P(s)²=-(8s²+60s+25)/(2500P(s)²)<0, s>=0.
+| 
+| Thus this control satisfies the strict scalar property used for SL23/SL24 and OD1. Nevertheless its full odd-kernel form is indefinite.
+| 
+| Here is a complete finite polynomial calculation with no omitted tail. Write a=3/10,b=1/25 and, for M=m²,D=d²,
+| 
+| R(z,D)=[1+a(z+D)+b(z²+6zD+D²)]²-4zD[a+2b(z+D)]².
+| 
+| Multiplication gives R(v²,d²)=P((v-d)²)P((v+d)²). For R(z,D)=sum_j r_j(D)z^j, define the polynomial
+| 
+| T(M,D)=sum_j r_j(D) sum_(k=0)^j [j!/k!] M^k / 2^(j-k+1).
+| 
+| Repeated integration by parts gives T(M,D)=exp(2M) integral_M^infty R(z,D)exp(-2z)dz. Both boundary terms at infinity vanish. Hence SL13 gives
+| 
+| V_c(x,y)=exp(-2(M+D))T(M,D),
+| V_c(x,-y)=exp(-2(M+D))T(D,M).
+| 
+| Direct polynomial expansion, with rational coefficients only, yields
+| 
+| T(M,D)-T(D,M)=(M-D)[8(M-D)²+60(M+D)+97]/2500.
+| 
+| Since M-D=xy and2(M+D)=x²+y², the exact odd-entry kernel is
+| 
+| OC1a: V_c(x,y)-V_c(x,-y)=exp(-x²-y²) xy[8x²y²+30x²+30y²+97]/2500.
+| 
+| Every entry is strictly positive at x,y>0, in agreement with OD1. After removing the positive diagonal factors exp(-x_i²), its matrix at nodes(1,2) is exactly
+| 
+| M_c=[[33/500,279/1250],[279/1250,93/125]].
+| 
+| Its determinant is-279/390625; the vector(3,-1) has value-3/2500. For the actual kernel take halfline coefficients(3e,-exp(4)); they remove those Gaussian factors. The full odd vector on nodes(1,2,-1,-2) has coefficients(3e,-exp(4),-3e,exp(4)) and exact V_c quadratic value-3/1250. To give original-type smooth tests rather than point measures, choose one nonnegative even smooth bump eta with compact support and integral1. Replace each point mass at x_i by epsilon^-1 eta((x-x_i)/epsilon), retaining these odd-paired coefficients. For sufficiently small epsilon the supports are disjoint and the full test is odd and compact smooth. Continuity of V_c on the fixed compact neighborhoods makes the quadratic values converge to-3/1250; therefore they are strictly negative for all sufficiently small epsilon. For the H_2 control use a(x)=exp(-2x)b(x), which stays compact smooth.
+| 
+| Reproducible exact polynomial and matrix check:
+| 
+| ```python
+| import sympy as s
+| z,D,M=s.symbols('z D M')
+| a,b=s.Rational(3,10),s.Rational(1,25)
+| R=s.Poly((1+a*(z+D)+b*(z*z+6*z*D+D*D))**2
+|          -4*z*D*(a+2*b*(z+D))**2,z)
+| T=sum(coef*sum(s.factorial(j)/s.factorial(k)*M**k/2**(j-k+1)
+|                 for k in range(j+1))
+|       for (j,),coef in R.terms())
+| Delta=s.expand(T-T.xreplace({M:D,D:M}))
+| assert s.expand(Delta-(M-D)*(8*(M-D)**2+60*(M+D)+97)/2500)==0
+| K=s.Matrix([[s.Rational(33,500),s.Rational(279,1250)],
+|             [s.Rational(279,1250),s.Rational(93,125)]])
+| c=s.Matrix([3,-1])
+| assert K.det()==-s.Rational(279,390625)
+| assert (c.T*K*c)[0]==-s.Rational(3,2500)
+| ```
+| 
+| OC1 excludes sign proofs using only positive/even/smooth/faster-than-every-exponential decay, squared-coordinate strict log-concavity and the resulting entrywise inequalities. It does not satisfy the canonical arithmetic coupling SL10 or the actual source's double-exponential ENV. It is not a negative value of the unchanged theta Q, not a counterexample to RH, and does not rule out a proof using additional source-specific theta structure. It also has not been checked against the stronger second-level Planat-Sole hypothesis; no exclusion of that stronger class is claimed. Positive normalization of f_c rescales all quadratic values by a positive factor and does not alter the obstruction.
+| 
+| ## 7. Predictions, review status and next boundary
+| 
+| Producer content predictions P1(.95),P2(.85),P3(.75) match the stated partial result and precise restrictions. Their scores remain content predictions, not probabilities of RH/proof correctness. The full-verdict checker agrees with the stated partial scopes; final report acceptance awaits exact-report convergence. The source theorem pays the producer's single proposed next test; no new SL23 precision or window campaign is justified.
+| 
+| One native slack_verdict_check, gpt-5.6-terra/xhigh, read-only/no descendants, completed the full request/verdict/source contract and OD1 audit. First full-verdict pass: ACCEPTED at partial PAPER scope; FIRST_INCORRECT_ASSERTION: NONE; zero CRITICAL/HIGH/MEDIUM/LOW/WORDING findings. It independently rehashed every input and rederived SL17 constants23/12,73/36,-2/9, the Csordas scaling and OD1. It explicitly retains inherited explicit-formula/1988-source/old-capacity dependencies. This first pass is not substituted for the two later exact-report confirmations. An exact-report PASS1 on the earlier211d21ad version was CLEAN with no findings. The new substantive OC1 appendix was not in that version, so its final confirmation sequence restarts on the complete revised report; the earlier clean pass is not carried forward. No finding is relabeled or counted clean before resolution.
+| 
+| IF_A: after independent acceptance, use the exact literature fit, OD1 and the OC1 control to pose a substantive source-specific question about the two remaining full quadratic forms. Require an additional property of the actual theta source that demonstrably excludes OC1; scalar concavity and positive entries alone have now failed a concrete four-point test. Require an explicit signed comparison/factorization with all tails and all coefficient vectors, or the first unpaid operator inequality after a concrete failed repair.
+| IF_B: if any displayed transfer, OD1 or OC1 fails, record the first incorrect assertion and correct the local report while retaining producer bytes; do not dispatch a question relying on the failed step. A returned phrase "does not decompose" without a stated class and proof is not a mathematical exclusion. Any future diagnostic must address a particular proposed identity and its error budget; no automatic hundreds-of-windows campaign follows merely from receiving a remainder.
+| 
+| ## 8. Final acceptance receipt — 2026-09-11T14:51:37+02:00
+| 
+| This receipt supersedes the draft PENDING status above; all preceding21022bytes remain unchanged. ACCEPTED_PARTIAL_PAPER for the exact stated SL1-SL24/source import and OD1/OC1 scopes; no claim of SL20, full odd/even positive semidefiniteness, Lean or RH admission.
+| 
+| The same sole native slack_verdict_check (gpt-5.6-terra/xhigh, read-only, no descendants) completed separate revised PASS1 and PASS2 on exactly21022bytes/187LF/finalLF, SHA256620e5176e0eefdeeb18c8cab2ec4277c09485ece5d5cc58fc38b7821d2d9b22f. Both CLEAN; FIRST_INCORRECT_ASSERTION NONE; zero substantive or wording findings, hence Mode A reached. The checker independently derived OC1 from the V integral, including the strict curvature, exact odd kernel, determinant, full odd witness and compact smoothing. Parent freshly executed both embedded exact blocks from those bytes: PASS; det=-279/390625 and quadratic=-3/2500 agree. Historical211d21ad PASS1 was not counted. Original producer bytes remain unchanged.
+| 
+| | Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+| |---|---|---|---|
+| | Revised exact-report PASS1 | CLEAN | No finding — ошибок или расширения области нет | None |
+| | Revised exact-report PASS2 | CLEAN | No finding — независимое подтверждение тех же байтов | None |
+| 
+| Canonical runtime review-event reconciliation remains separately pending because the observed manual chat differs from the stored chat; this acceptance is not a fabricated runtime event. Publication and branch projection are separate recorded operations. CHALLENGER_NOT_RH; PX_RH_CLAIM: NOT_MADE.
+| 
+| ## OC2 — the second scalar concavity condition also does not supply the full form sign
+| 
+| This extension is later than the published OC1 report at8a463c090d0c1d28568c05fe67f4891287e1405f. That report accurately left the second-level condition untested at its acceptance time. Its unchanged OC1 negative odd-kernel witness and smoothing proof are the dependency here; no canonical theta sign or new result about the Planat-Sole theorem is claimed.
+| 
+| Use the same noncanonical fc(x)=exp(-x²)P(x²), P(t)=1+3t/10+t²/25. Set s_c(t)=fc(sqrt(t))=exp(-t)P(t) and q_c(t)=s_c'(t)²-s_c(t)s_c''(t). Differentiating the product exactly cancels all terms from the linear exponential logarithm and gives
+| 
+| q_c(t)=exp(-2t)[P'(t)²-P(t)P''(t)]
+|       =exp(-2t)(8t²+60t+25)/2500>0, t>=0.
+| 
+| For W(t)=8t²+60t+25, log q_c=-2t+log W-log2500. Therefore
+| 
+| (log q_c)''(t)=[W''W-W'²]/W²
+|              =-(128t²+960t+3200)/(8t²+60t+25)²<0, t>=0.
+| 
+| All numerator coefficients in these displayed sign tests are strictly positive, and denominators are positive. The two scalar conditions (strict concavity of log s_c and strict concavity of log q_c with q_c>0) thus hold on the whole required positive halfline. The already exact OC1 odd four-point value remains-3/1250; q_c is only a newly examined expression of the SAME fc and does not change its V kernel. Compact smoothing retains its negativity as proved in OC1. Consequently those two scalar conditions, even with the positive/even/smooth/faster-than-every-exponential assumptions explicitly satisfied by OC1, do not imply positive semidefiniteness of the full odd form or SL20.
+| 
+| Scope: no assumption that every other definition of an "admissible kernel" permits this Gaussian control. In particular fc lacks the actual double-exponential theta ENV and the arithmetic coupling SL10. This does not refute the source-specific second-level theorem, its interval certificates, or any argument using additional Jacobi/theta structure; it only blocks deriving the form sign from the two scalar conditions alone. No universal exclusion of the paper's complete hypothesis class is made, and RH remains unproved.
+| 
+| Parent independent exact derivative check (SymPy, under1s; no theta grid):
+| ```python
+| import sympy as s
+| t=s.symbols('t',nonnegative=True)
+| P=1+s.Rational(3,10)*t+t*t/25
+| u=s.exp(-t)*P
+| q=s.factor(s.diff(u,t)**2-u*s.diff(u,t,2))
+| r=s.factor((s.diff(q,t,2)*q-s.diff(q,t)**2)/q**2)
+| assert s.simplify(q-s.exp(-2*t)*(8*t*t+60*t+25)/2500)==0
+| assert s.simplify(r+(128*t*t+960*t+3200)/(8*t*t+60*t+25)**2)==0
+| ```
+| 
+| ### OC2 acceptance receipt — 2026-09-11T15:33:13+02:00
+| 
+| ACCEPTED_PAPER at the exact limited control scope above. Sole slack_verdict_check, gpt-5.6-terra/xhigh, read-only/no descendants: separate OC2 PASS1 CLEAN and PASS2 CLEAN on unchanged2534bytes, SHA256b8e5555091285ced14dc17542174499b40e01fae3ae40341dc289c360d0a74b0. FIRST_INCORRECT_ASSERTION NONE on both; zero substantive/wording findings, Mode A reached. Parent independently reran the exact derivative block successfully; the original22727byte/cc018a16189d53bc556471c773b3fca9f6fdbed620e61e3f59a078322f9a2f3d report remains the unchanged prefix. This extension supersedes its historically correct second-level-untested statements only for the two stated scalar conditions, never the paper's full hypothesis class.
+| 
+| | Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+| |---|---|---|---|
+| | OC2 PASS1 | CLEAN | No finding — обе скалярные вогнутости и отрицательный контроль совместимы | None |
+| | OC2 PASS2 | CLEAN | No finding — точные байты, тождества и ограниченная область подтверждены | None |
+| 
+| No theta-source sign, SL20, Lean or RH admission. The next source-specific question must exclude this SAME control despite both scalar properties.
+| 
+| ## BP1-BP3 candidate — the exact probability-law input behind the theta source
+| 
+| Status: CANDIDATE_PENDING_INDEPENDENT_REVIEW. These source transfers and the
+| explicit control exclusion are not SL20 or a proof of the Riemann hypothesis.
+| Keep the canonical f=Phi/A with A=||Phi||_2; do not replace A by the integral of Phi.
+| 
+| ### Source and scope
+| 
+| The observer acquired Biane, Pitman and Yor, *Probability laws related to the
+| Jacobi theta and Riemann zeta functions, and Brownian excursions*,
+| arXiv:math/9912170v1. Local PDF:
+| docs/routeB_bus/litreview/pdfs/math_9912170.pdf, 351648 bytes,
+| SHA256 04a444275e5522cef9a1ba9f7d1b9f20a752764d3548f9c48be6dbc055bb12ea.
+| Printed/PDF pages 3-7 and 10-14 were read; Proposition 1 on page 7 was rendered
+| and visually checked. This local file is a recompiled copy (title-page date
+| November 26, 2024); its exact bytes, not a presumed publisher edition, are the
+| source. No claim that the whole 40-page paper was audited.
+| 
+| Source locators: equations (6)-(8), page 4; (14)-(19), pages 5-6;
+| Proposition 1 (21),(24),(25), page 7; Euler product and Levy representation
+| (27)-(31), page 10. These are unconditional probability identities. The paper
+| imports their earlier sources; those originals were not separately audited here.
+| Our source Phi and A are fixed in the SLACK verdict section 1.1, lines 72-78;
+| its accepted kernel V is the dependency in the original report above.
+| 
+| ### BP1 — the sum is in the positive variable T, not the logarithmic variable x
+| 
+| Write G(y)=sum_{n in Z} exp(-pi n^2 y^2) and
+| 
+| H(y)=4y^2 sum_{n>=1}(2pi^2 n^4 y^2-3pi n^2)exp(-pi n^2 y^2).
+| 
+| The source gives a random variable Y>0 with density H(y)/y,
+| E[Y^s]=2 xi(s), and
+| 
+| T=Y^2 = (1/pi) sum_{n>=1} Gamma_{2,n}/n^2
+| 
+| in distribution, with independent Gamma(2,1) variables. Each such variable is
+| the sum of two independent unit-rate exponentials. The nonnegative series
+| converges almost surely since its expectation is pi/3. Its Laplace transform is
+| 
+| L(z)=E[exp(-zT)]=prod_{n>=1}(1+z/(pi n^2))^(-2)
+|     =(sqrt(pi z)/sinh(sqrt(pi z)))^2, z>=0,
+| 
+| with L(0)=1 by continuity. Let r(t) be the probability density of T (r is not a
+| Levy density). The change of variable t=y^2 and a termwise comparison with Phi give
+| 
+| r(t)=H(sqrt(t))/(2t)
+|     =2 sum_{n>=1}(2pi^2 n^4 t-3pi n^2) exp(-pi n^2 t),
+| Phi(x)=(1/2)exp(x/2)H(exp(x))=exp(5x/2)r(exp(2x)).
+| 
+| These are exact identities; the displayed series converge locally uniformly
+| with their fixed derivatives on positive t. For small t use the source
+| reciprocity H(1/y)=yH(y), equivalently r(1/t)=t^(5/2)r(t), not a subtraction
+| of nearly equal truncated terms.
+| 
+| Put I=int_R Phi(x)dx=xi(1/2)>0 and Z=E[T^(1/4)]=2I. Under the probability
+| measure tilted by T^(1/4)/Z, X=(1/2)log T has density
+| 
+| p_X(x)=Phi(x)/I,          f(x)=(I/A)p_X(x).
+| 
+| Thus the canonical f has L2 norm one; it need not be a probability density.
+| Infinite divisibility of T is not asserted for the tilted logarithm X. The
+| observer's shorthand "Phi is the density of a sum of independent exponentials"
+| omits the logarithmic variable change, tilt and normalization, and cannot be
+| used literally in V.
+| 
+| ### BP2 — a positive convolution identity of the exact source
+| 
+| Define k(v)=2 sum_{n>=1} exp(-pi n^2 v)=theta(v)-1, v>0.
+| Then k>=0 and int_0^infty k(v)dv=pi/3. The exact density obeys
+| 
+| t r(t)=int_0^t k(v)r(t-v)dv, t>0.                         (BP2)
+| 
+| Proof: differentiating the convergent Laplace product gives
+| 
+| -L'(z)=L(z) 2 sum_{n>=1} 1/(z+pi n^2), z>=0.
+| 
+| The sum on the right is the Laplace transform of k. Tonelli applies to its
+| nonnegative terms; both t r(t) and k*r are nonnegative integrable functions
+| with total integral pi/3. Uniqueness of Laplace transforms of finite measures
+| proves equality almost everywhere. The density r is continuous, tends to zero
+| at zero by reciprocity, and is locally bounded on the closed positive halfline.
+| Since k is locally integrable, convolution continuity upgrades the identity
+| to every t>0. Uniform convergence of the differentiated product on bounded
+| nonnegative z follows from sum n^(-2)<infinity. No form positivity was used.
+| 
+| This is a new exact source input to try in the full-form problem, not a claim
+| that positive convolution kernels automatically give positive V.
+| 
+| ### BP3 — this additional input excludes the SAME OC1/OC2 control
+| 
+| For fc(x)=exp(-x^2)(1+3x^2/10+x^4/25), define
+| Mc(h)=int_R exp(hx)fc(x)dx. Gaussian differentiation gives exactly
+| 
+| Mc(h)=sqrt(pi)exp(h^2/4)(h^4+42h^2+472)/400.
+| 
+| Applying the inverse of BP1 to this control, at the SAME coordinate t=exp(2x),
+| the normalized positive-variable density is
+| 
+| rc(t)=t^(-5/4)fc((log t)/2)/(2Mc(-1/2)).
+| 
+| Consequently E_c[T^q]=Mc(2q-1/2)/Mc(-1/2), and in particular
+| 
+| E_c[T]=(9145/7721)exp(1/2)=1.9527983448455733588...
+| E[T]=pi/3=1.0471975511965977462... for the canonical source.
+| 
+| The inequality is exact: the control mean exceeds 3/2, whereas pi/3<4/3.
+| Evenness of fc still gives rc(1/t)=t^(5/2)rc(t), so the reciprocal symmetry
+| alone does not exclude this control either.
+| Any normalized nonnegative density satisfying BP2 with this FIXED k has mean
+| int k=pi/3, by Tonelli. Therefore rc satisfies neither the canonical Laplace
+| product nor BP2, while its original two scalar concavity properties and
+| negative V witness -3/1250 are unchanged. This excludes only this fixed-source
+| product/convolution law for rc. It does not prove that rc fails every class of
+| infinitely divisible distributions or generalized gamma convolutions. This
+| exclusion compares the original unscaled control with the fixed canonical rates.
+| 
+| ### BP3b — the canonical mean alone still cannot supply the sign
+| 
+| This is a separate control, not a rescaling of the actual source or its gamma
+| rates. Let f_sigma(x)=fc(x/sigma), 0<sigma<=1. Its inverse-density probability
+| law in the unchanged coordinate t=exp(2x) has mean
+| 
+| m(sigma)=Mc(3sigma/2)/Mc(-sigma/2).
+| 
+| This function is continuous, extends to m(0)=1, and m(1)>3/2.
+| Since 1<pi/3<4/3, the intermediate value theorem supplies at least one
+| sigma_* in (0,1) with m(sigma_*)=pi/3. No numerical root or uniqueness
+| assertion is needed for this existence statement.
+| 
+| Both scalar concavity properties survive this control scaling: if
+| s_sigma(t)=s_c(t/sigma^2), then q_sigma(t)=sigma^(-4)q_c(t/sigma^2);
+| the signs of the two second logarithmic derivatives remain strictly negative.
+| The inverse-density reciprocal symmetry is also retained by evenness.
+| On the other hand, substitution v=sigma w in the V integral gives exactly
+| 
+| V_{f_sigma}(sigma x,sigma y)=sigma^2 V_fc(x,y).
+| 
+| At nodes (sigma_*,2sigma_*,-sigma_*,-2sigma_*) with the original coefficients
+| (3e,-exp(4),-3e,exp(4)), the full odd form is -3sigma_*^2/1250<0.
+| The previous compact smoothing argument applies to each such fixed sigma_*.
+| Thus even the two scalar properties PLUS reciprocal symmetry PLUS the
+| canonical positive-variable mean do not suffice for the full form sign.
+| The proposed new input must use the entire fixed BP2/Laplace law, not replace
+| it by its first moment. No claim of exclusion from all infinite-divisibility
+| classes follows.
+| 
+| A diagnostic root is sigma_*=0.2609331907379936465689273867297892...;
+| its diagnostic odd value is -0.00016340671206890441602214442761193129...
+| These decimals locate one candidate root; the proof uses continuity and
+| the strict endpoint inequalities, so no interval certification is needed.
+| 
+| ### Exact remaining sign, after the correct transport
+| 
+| Substitute BP1 in the accepted V integral and put u=exp(2t):
+| 
+| V_f(x,y)=exp(5(x+y)/2)/(2A^2)
+|   int_1^infty u^(3/2)(x+y+log u)r(exp(2x)u)r(exp(2y)u)du.  (BP4)
+| 
+| For any finite real nodes x_i and complex coefficients c_i, define
+| 
+| R(u)=sum_i c_i exp(5x_i/2)r(exp(2x_i)u),
+| S(u)=sum_i c_i x_i exp(5x_i/2)r(exp(2x_i)u).
+| 
+| The full quadratic form is exactly
+| 
+| sum_{i,j} conjugate(c_i)c_j V_f(x_i,x_j)
+|  =1/(2A^2) int_1^infty u^(3/2)
+|     ((log u)|R(u)|^2 + 2 Re(conjugate(R(u))S(u)))du.         (BP5)
+| 
+| All fixed-node integrals converge absolutely by the source theta decay.
+| The first summand is nonnegative. The mixed summand has no established sign.
+| The first unpaid assertion is that its integral is at least the negative of
+| the first integral for EVERY finite real node set and ALL complex coefficients.
+| BP5 is only an exact restatement of the target, not a sign theorem. BP2 is the
+| additional source-specific input to test against this remaining inequality.
+| Both full parity forms V_+ and V_- are still required; neither scalar
+| concavity nor positive entries nor independent summands of T supply that step.
+| 
+| Next decisive construction: use the fixed positive convolution BP2/Laplace
+| product to control this mixed term or produce a positive-square representation
+| with every remainder retained. Require a concrete construction and its first
+| unpaid operator inequality if it fails. Do not launch a window campaign merely
+| to remeasure BP5, and do not assert that failure of one construction rules out
+| all representations.
+| 
+| ### Parent checks already performed (not a replacement for independent review)
+| 
+| Symbolic termwise checks of both Phi/H/r identities: exact PASS. The Gaussian
+| moment ratio above was simplified exactly to 9145 exp(1/2)/7721. A three-point
+| 40-digit quadrature control of BP2 used the stable reciprocal r formula and
+| v=w^2 at the integrable theta singularity:
+| 
+| | t | t r(t) | relative quadrature residual |
+| |---|---:|---:|
+| | 0.5 | 0.3174822226597063221654711 | 4.9942e-31 |
+| | 1 | 0.8933938009342468881739693 | 1.2849e-41 |
+| | 2 | 0.2244938325488557185502211 | 2.5567e-41 |
+| 
+| Runtime 1.708 seconds. This finite-series, non-interval computation is
+| DIAGNOSTIC_ONLY; the proof of BP2 is the Laplace-transform argument above.
+| No original SLACK/OC2 numerical campaign or already accepted review was repeated.
+| 
+| ### BPY acceptance receipt — accepted at the stated PAPER scope
+| 
+| The preceding 9686-byte candidate is preserved verbatim (including its frozen
+| pending-status line); this later receipt records its acceptance after review.
+| Candidate SHA256: 46aab89e59e9ab777b537bd160285ff029db6d610cdee0fc66f6c9b9274ebc39.
+| Prior accepted report prefix: 26607 bytes, SHA256
+| b98b2c1d8ae5b66cc6577a5c1ea19ea95044adf415198a4c92745e3b30c886bb.
+| Sole native slack_verdict_check, gpt-5.6-terra/xhigh, read-only, no descendants:
+| PASS1 CLEAN and subsequent PASS2 CLEAN on the same candidate bytes,
+| FIRST_INCORRECT_ASSERTION NONE. Mode A reached. Both passes verified the
+| protocol byte identity and exact PDF hash. Parent termwise source identities,
+| Gaussian moment ratio and independent BP2 controls are recorded above.
+| 
+| | Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+| |---|---|---|---|
+| | BPY PASS1 | CLEAN | No finding — источник, нормировка и контрпример проверены | None |
+| | BPY PASS2 | CLEAN | No finding — повторная проверка масштаба, непрерывности и комплексных коэффициентов | None |
+| 
+| ACCEPTED: BP1 exact source/tilt transfer, BP2 fixed positive convolution,
+| BP3 original-control exclusion, BP3b mean-matched negative control, BP4/BP5
+| exact full-form rewrite with explicitly unpaid mixed term. No full-source
+| sign, complete parity positivity, Lean admission or RH proof follows.
+

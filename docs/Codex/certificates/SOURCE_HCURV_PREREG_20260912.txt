@@ -1,0 +1,12 @@
+Bounded source-property test, parent2026-09-12.
+Target: h''(u)<=-1/4 on0<=u<=1/16, h(u)=log Phi(sqrt(u)).
+Fixed source, whole interval; no point grid. Polynomial even Taylor degree32
+in xi=16u, full complex Cauchy tails via |Phi(z)|<=1050 on|z|<=1/2.
+Use already reviewed100-digit interval arithmetic,20theta modes,
+endpoint derivatives through64; no quadrature or new domain tuning.
+Consumer planned: combine with an analytic full-theta proof for x>=1/4
+and accepted x>=1 to obtain a uniform scalar concavity budget. Then prove
+an actual stronger small-node ODD2 tail; scalar property alone is not ODD2.
+Prediction: the full numerator a'^2-a a''-(1/1024)a² is positive on[0,1].
+A nonpositive enclosure is inconclusive, not a negative source witness.
+No success/failure counters reset by this intermediate property.

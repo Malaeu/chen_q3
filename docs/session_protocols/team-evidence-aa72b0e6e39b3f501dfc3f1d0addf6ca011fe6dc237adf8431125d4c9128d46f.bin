@@ -1,0 +1,327 @@
+# Repeatable publication — compact exact plan R6
+
+PLAN ONLY. No implementation, new agents or test runs. Baseline:
+`1c81bfcb47517845dd485761f9cc8fa2729bac4c`. Frozen engine
+`/home/chirurgie/.cache/q3-team-2026-09-11-01a08f80` stays at
+`b7be2fdda334278e2453e391ddeee0af4e7628d7`. After plan convergence only, use a
+separate isolated branch `codex_linux_app/metadata-publication-2026-09-14`
+from the baseline. Canonical integration/publication belongs to the actual owner.
+
+## Authoritative scope and evidence
+
+Repair the continuing work/home publication loop. Keep native owner Git; no new
+sender, CLI, public data-schema change, service, database or task selector. The
+control-policy revision does increment to 11 as specified below. Preserve
+incoming Mac commit history and pinned references through ordinary Git merge,
+not a 127-file copy. Preserve ownership, watches, Proshka/SIBLING, mathematical
+acceptance, foreign bytes and GOAL section 6 verbatim. This task does not audit or
+integrate the Mac mathematics. Standing named commit/ordinary push authority
+already exists; implementation still requires converged independent plan review.
+
+Owner report: `/home/chirurgie/.cache/q3-native-order-live-20260914.publication-owner-report.json`,
+issue/report `d9bd3c3531a44e164195740936da850cd50a8a627e696e875af2ea15c782d94e`,
+assignment `TEAM_PUBLICATION_REPAIR_OWNER_20260914`, severity HIGH. Parent supplies
+the independent classification and isolated helper reproduction to its checker.
+Reproduction path: `/home/chirurgie/.cache/q3-native-order-live-20260914.publication-selfref-diagnostic.json`,
+SHA256 `896c347774616c67f716cbef1b26ccd7d3f09fd2894660de04c18ad0c6c14de6`.
+This is not an end-to-end publication run. Commit 1c81bfcb was successful GENERIC
+SOURCE-ONLY publication, not bootstrap. Earlier drafting options were unreviewed;
+this R6 is the sole candidate. No proposal for a new publisher remains.
+
+R4 correction from parent inspection, before native review: existing map intake
+itself saves INTENT/CONFIRMED checkpoints. Its immediate pre-publication metadata
+preimages therefore cannot be embedded in the map before intake. R4 incorrectly
+treated intake as leaving those bytes unchanged. R5 anchors the map's two metadata
+hashes in the immutable, explicitly pinned local Git BASE commit instead; only
+the later reservation binds the live post-publication-INTENT metadata bytes.
+
+Root: workflow_runtime.py:1469-1473/1874-1878/2181-2193 validates current inputs;
+3421-3438 changes RESUME/HISTORY while saving INTENT. Their previous hashes then
+fail. Initial bootstrap has a special exception unavailable on an already-v2
+remote. Capacity: 45 record paths require >=7629 bytes for the inline hash map,
+127 Mac paths >=16773; observed RESUME is 6122 bytes with a fixed 8192-byte limit.
+Observed history is 1794787 bytes. Full lists belong outside RESUME; private
+receipts store hashes/identities, not complete source/history file bodies.
+
+## Pass 1 finding and actual control revision 11
+
+Full independent R5 pass 1: `/home/chirurgie/.cache/q3-publication-plan-20260914.review.md`,
+SHA256 `dfce6fade14446c572bbd791fa370c6a67025d04009d3e4e65429513bd4ca4ee`.
+Counts: HIGH 1, all other severities 0. It is not a clean iteration. The reviewer
+correctly found that the verified-repair exception changes executable admission
+through the current unconditional issue HOLD. R5's claim that control version 10
+could remain was wrong; the tight scope of an exception does not make it merely
+documentary. The owner chose an actual CONTROL_VERSION increment to 11 within
+the already requested repair, without a new proof mode or governance project.
+
+R6 fixes this HIGH by changing the canonical machine header to CONTROL_VERSION 11
+and explicitly documenting the exact admission change in sections 10-11. New
+compact-publication and verified-repair admission require observed control 11;
+running new Python code against control 10 does NOT activate those semantics.
+Retain all other owner/source/review/issue/proof boundaries and GOAL section 6.
+
+The bounded version binding changes, verified from primary consumers, are:
+
+- startup_runtime.py:524-542 and 2576-2584 accept exactly revisions {10,11}, not
+  arbitrary future versions. Preserve v10 recovery/current legacy behavior;
+  revision 11 requires the active Team Runtime contract. Keep the existing
+  validate_battle_v10_control function/interface and production proof-mode/schema
+  identities: these describe the existing proof/execution contract, while the
+  already explicit control_version field reports the actual revision (2779).
+  Existing status/honesty/owner-boundary validation remains mandatory.
+- spine.py:1175-1181 contains another live exact-v10 gate, reached by build/close
+  writers at 1654/2607/2641. Reuse the typed startup control identity validator
+  there instead of the conflicting literal-version token/constant. Preserve all
+  other spine required tokens and its existing failure-code behavior. This is
+  necessary for real close/refresh, not unrelated cleanup.
+- workflow_runtime.py:277 already copies the observed control_version. Do not
+  invent new snapshot, node-registry, resume or proof-mode schemas. Enforce the
+  new revision at the newly changed publication admission and pin observed
+  control identity in its reservation/recovery checks.
+- The remaining three_body_loop.py EXECUTOR_CONTROL_VERSION=10 marker has no live
+  consumers beyond its historical test. Its actual legacy quarantine checks,
+  and node_registry_v10 legacy interpretation, strictly concern version 9.
+  Preserve that historical data/compatibility surface; do not mechanically
+  replace every v9/v10 string in the repository.
+
+Required migration test: a pinned reviewed candidate engine handles canonical
+control 10 with its old permissions, performs the existing guarded source
+integration of this exact revision-11 candidate, and recovers an interrupted
+copy using that SAME pinned engine and saved manifest. After full integration,
+startup reports control_version 11 with unchanged proof-mode/schema and gates.
+The new exception is refused under 10 and admitted only under verified 11.
+Test 10/11, rejected 12/100/bool/inactive/bad honesty, and actual spine close
+validation. The old b7 engine stays intact as historical/pinned evidence; do not
+claim it can execute revision 11. This is the existing isolated-candidate route,
+not a new engine architecture or a new bootstrap publication.
+
+## Algorithm: compact intent, exact reservation, ordinary Git
+
+1. Read the actual local Git HEAD and pin that exact commit as BASE before map
+   construction/intake; never reuse a stale pins.head such as 83d3cc95 from an
+   earlier observation. Before publication INTENT, owner uses existing evidence
+   intake to save a canonical JSON
+   path-to-SHA256 map in `docs/session_protocols/team-evidence-<sha256>.bin`.
+   Reuse `_team_path_hashes`; no new envelope format. The map explicitly names
+   ALL intended final source/record paths AND RESUME and GOAL_HISTORY. Stable/
+   incoming source values are independently reviewed final hashes. The TWO named
+   checkpoint values are SHA256 of their exact file bytes in the pinned BASE
+   commit, read through Git objects, never hashes of current working-tree files
+   or predicted future intake/checkpoint bytes. Their final bytes are bound in
+   step 3. BASE must contain both verified checkpoint/history files. No omitted metadata, globs,
+   nested maps, inferred dirty files or self-hash inside the map.
+
+2. Save existing PUBLISH/INTENT, command publication, exact ID, subject
+   `{kind:REPAIR,id:<same>,sha256:<map hash>}` and one operation.inputs map-file
+   path/hash. The map file is thus explicitly declared, separate from its content.
+   pins.head binds that actual BASE commit, rechecked after map intake has reached
+   CONFIRMED and immediately before saving publication INTENT. Intake may advance
+   checkpoint revisions but must not silently change BASE. A changed HEAD requires
+   rereading/rebaselining before this intent, not substituting another BASE under
+   an existing map. Optional existing operation.evidence
+   strings `publication_incoming_commit:<40hex>` explicitly pin incoming tips;
+   these are INTENT parameters, not completion evidence. Validate/preserve them.
+   Recognize compact mode only for this exact publication subject and one matching
+   content-addressed map input containing both checkpoint paths. Existing ordinary
+   source-only inputs and non-publication effects retain their meaning.
+
+3. Extend existing team-reserve-effect. Under owner lock, after existing remote
+   observation, verify control, owner/installation/ACTIVE epoch, endpoint, pins,
+   original ID, map bytes and Git ancestry. Validate map[RESUME] and map[HISTORY]
+   against the exact Git blobs at the pinned BASE, not against the immediate
+   previous_sha256 or working-tree preimages. Require current history to extend
+   the exact BASE history bytes; validate its complete framing and contiguous
+   checkpoint hash chain from the BASE checkpoint through the existing intake
+   INTENT/CONFIRMED and current publication INTENT. Verify the exact current
+   RESUME belongs to that history. Reuse existing bootstrap history-validation
+   mechanics without its initial-migration/linear-Git restrictions. Ordinary
+   intervening intake/checkpoint revisions are preserved and allowed; missing,
+   corrupt, rewritten or unchained entries are rejected. Do not search for an
+   arbitrary pre-intake prefix or require metadata to survive intake unchanged.
+   Freeze full declared paths = map keys plus its separately declared input path.
+   Capture post-INTENT RESUME/HISTORY hashes and reviewed final source hashes,
+   modes, exact working/index/base preimages, map content/hash, owner/epoch,
+   checkpoint hash, local/observed-remote bases and incoming commit pins in the
+   existing private operation receipt, using _team_local_save.
+
+   Incoming paths may differ from their intended final bytes, but must currently
+   equal the base (or be absent at an absent base), with no unaccounted staged/
+   dirty overlap. Existing owned dirty records are admissible only at their exact
+   declared final bytes. Verify intended incoming sources against pinned Git/
+   reviewed candidate evidence. Reject undeclared changes, traversal, symlinks,
+   .git payload paths and deletions. Preserve modes; new records use 100644.
+   No publication may silently invalidate current mathematical source pins; such
+   overlap requires reconciliation/rebaseline before admission.
+
+   An existing reservation returns RECONCILE_ORIGINAL, never a fresh grant or
+   replacement map. Store hashes/Git identities and the map, not large file bodies.
+
+4. Extend native team_guard with two narrowly scoped internal checks, no CLI:
+   preparation checks saved preimages before native merge/commit; publication
+   checks final working bytes AND the committed final tree. Caller passes its
+   live writer epoch when a check persists the existing private receipt.
+   Owner uses ordinary Git under that lock, merging the pinned incoming branch
+   and preserving all parents/commits, then committing only exact owned records/
+   checkpoint paths. No squash, source-copy substitute, add -A or foreign staging.
+
+   Before push, guard verifies the declared full scope, final file hashes/modes,
+   current source pins, final local commit/tree and base/incoming ancestry.
+   Compare the final diff from the observed remote base: no unlisted changed
+   paths; explicitly named unchanged paths are allowed. Preserve explicitly
+   pinned incoming history; do not impose bootstrap's linear-history rules.
+   Freeze the exact resulting commit/tree and durably consume its one native
+   push attempt in the original private receipt. A competing/replayed guard
+   cannot consume it again. This is a snapshot plus one attempt marker, not a
+   second Git lifecycle engine.
+
+   Necessary repair-admission edge: the existing confirmed-issue gate also holds
+   publication at FIX_VERIFIED/FIX_COMMITTED, although FIX_PUSH_VERIFIED requires
+   the publication itself (2178-2180 and 3048-3060). Add an exact verified-repair
+   exception, not a global unhold: only the current issue's named repair subject,
+   its positive independent FIX_VERIFIED candidate/source binding, its matching
+   `<repair_subject_id>:publication` operation, actual owner and exact reviewed
+   paths/bytes may pass. Other affected operations and unrelated publication
+   remain held. Reuse existing repair-candidate/reviewer validators, checking
+   canonical committed bytes as well as the reviewed isolated candidate; do not
+   equate different commit IDs or invent a publication receipt. Publish the
+   reviewed technical fix separately if required before a broader Mac/metadata
+   publication. That does not split or copy the incoming mathematical history.
+   The new confirmation records the exact actual remote commit required by the
+   existing FIX_COMMITTED/FIX_PUSH_VERIFIED route. Those issue events follow
+   observed local commit and remote proof, never falsely precede them to unlock
+   publication. Extend lifecycle validation only if an actual mismatch with its
+   existing exact candidate binding is demonstrated by this required test.
+
+5. Release flock for the existing ordinary push of that EXACT recorded commit
+   to origin/rh_clean. No force/lease/config/hook changes. The durable pending
+   marker fences unrelated canonical writers during the network effect. The
+   native recipe uses the fresh reservation and guard result; after a crash it
+   inspects the original operation instead of executing merge/commit/push again.
+
+6. Extend existing team-confirm-effect for TWO exact publication cases: compact
+   publication and the tightly bound independently verified REPAIR source-only
+   publication admitted in step 4. The latter must work without putting metadata
+   into its independently reviewed repair-source manifest. For both, verify the
+   actual local candidate commit/tree, exact verified source/snapshot hashes and
+   fresh independently observed remote result. Keep its existing candidate/evidence contract; no
+   arbitrary success string and no new user-facing receipt schema. Record exact
+   local/remote commit/tree identities in its private observation. In particular,
+   the remote_commit consumed by the existing FIX_PUSH_VERIFIED validator must
+   identify the freshly observed published candidate, not the PRE-push base from
+   team-observe-remote. Preserve that original base observation in the private
+   publication evidence when recording the actual result; do not erase provenance
+   or falsely reinterpret it as a post-push receipt. Observe network
+   outside flock; recheck owner/epoch/snapshot before saving. Object-only fetch
+   permissions are declared in the existing tool entry as needed.
+   Exact confirmation is publication only, not mathematical acceptance or takeover.
+   Other generic source-only publications and non-publication effects retain
+   their existing confirmation behavior; this fix does not broaden that surface.
+
+7. Extend existing pending guard and bounded plan recovery card for this native
+   publication. Return the original operation/owner/snapshot/pinned commit when
+   known. Original read-only reconciliation and confirmation are allowed through
+   its fence; other writes/checkpoint replacements/launches stay held. A changed
+   control cannot disable an existing pending marker. A lost map after reservation
+   can be reconciled from the saved map/hash; missing/corrupt private state is a
+   recovery blocker. Preserve partial merge/index state, never reset/delete it.
+   Retry never repeats an unknown native action or creates another operation.
+   Observe exact local/remote history; otherwise retain UNKNOWN. Do not invent
+   NOT_EXECUTED or assume success after the remote advances.
+
+8. After verified publication, existing resume-checkpoint may save confirmation.
+   Publishing that later receipt recursively is not required: the published INTENT
+   plus exact Git result is recovery evidence. A pulled home clone stays observer-
+   only and reconciles original actions before new sends; existing release/claim/
+   watch rules alone transfer execution. The repair changes none of those rules.
+
+## Exact expected tracked files (10 existing paths)
+
+- orchestrator/workflow_runtime.py — compact input, full snapshot, native guard,
+  confirmation and existing pending recovery wiring; reuse _team_private_read,
+  _team_local_save, _execution_writer_epoch, _team_remote_checkpoint,
+  _team_bootstrap_endpoint, _team_integration_blob and checkpoint/history helpers.
+- orchestrator/tests/test_workflow_runtime.py — existing TeamRuntimeTests and local
+  bare-remote fixtures, including the ordinary native Git recipe. No new harness.
+- docs/cartographer/TOOLS.yaml — existing reserve/confirm/native publication
+  contracts and narrowly required write paths; no new tool ID or command.
+- docs/CODEX_CONTROL.md sections 10-11 — explicit preimage/final snapshot contract,
+  ordinary Git and recovery, plus actual CONTROL_VERSION 11 in the existing
+  machine header; preserve the runtime-is-not-a-delivery-engine rule.
+- docs/Codex/GOAL.md section 4 only — short compact publication/recovery pointer;
+  section 6 identical, GOAL <=12 KiB and RESUME <=8 KiB.
+- orchestrator/startup_runtime.py — exact supported control revisions 10/11,
+  truthful observed revision and unchanged production proof/schema contract.
+- orchestrator/tests/test_startup_runtime.py — typed revision admission/rejection
+  and snapshots, preserving explicit v10 historical/recovery fixtures.
+- orchestrator/spine.py — remove the conflicting live literal-v10 gate by
+  reusing the existing typed identity validator; preserve all other checks.
+- orchestrator/tests/test_three_body_loop.py — update the existing current-control
+  negative fixture at 991 (its literal 10-to-9 replacement would become a no-op),
+  cover spine revision handling without rewriting historical v9 data/markers.
+- orchestrator/tests/test_tool_manifest_memory_wiring.py — update current control
+  assertion at 450 to 11 and verify the existing manifest/control wiring; keep
+  historical version-9 fixtures and all unchanged tool identities.
+
+Parent maintains existing issue/protocol records. Required derived updates follow
+this actual file scope; no unrelated mathematical rebuild or silent expansion.
+
+## Required tests and delivery evidence
+
+- Real bare remote already at v2: two distinct successful native publications;
+  remote records/map/checkpoint/history and private commit/tree receipts match.
+  Completed retry is NOOP; mathematical stages and foreign files/index unchanged.
+- Required complete-path regression: construct the map from actual pinned Git
+  BASE blobs, run the EXISTING evidence intake(map) through its real INTENT and
+  CONFIRMED checkpoints, then save publication INTENT, reserve, perform guarded
+  ordinary merge/commit/push and confirm. No magically preexisting map or mocked
+  intake/checkpoint transition. Assert BASE metadata hashes stay immutable while
+  each live revision changes, all intermediate history survives, and the private
+  snapshot binds the final publication-INTENT bytes. A stale pins.head or a HEAD
+  change between map construction/intake and publication admission fails closed.
+- 45 records, 127 incoming files, and their combined case: external maps,
+  RESUME <=8192, full hashes covered. Use a REAL incoming branch and merge;
+  incoming tip/all ancestry remain ancestors of published commit, no copied tree.
+- Mismatch matrix: owner/epoch/base/endpoint, map/predecessor/history drift,
+  final bytes/Git blobs/modes, undeclared paths, dirty/staged overlap, lost private
+  state. Admission rejection changes no worktree/index/branch/remote; permitted
+  observation may fetch objects only, not refs/FETCH_HEAD.
+- Crash before reservation permits fresh retry. Crash after reservation, during
+  local merge/commit, after commit, after consumed push intent, or after server
+  acceptance yields original-operation inspection, not replay. Preserve partial
+  state when UNKNOWN. Two competing callers cannot consume the same push twice.
+- Real subprocess kill after a bare remote accepted the push; fresh-process
+  reconciliation confirms original pinned commit/tree with no additional push.
+  Pending marker fences unrelated writers even with changed mutable control.
+- Remote advancement/non-fast-forward, lost client output and endpoint drift
+  never force, renew, broaden scope or falsely confirm.
+- Regression: initial bootstrap v1-only behavior, generic source-only publication,
+  other native effects, launch/intake and checkpoint tests unchanged. Targeted
+  tests first; then affected workflow suite and tool-manifest wiring. No unrelated
+  Lean run or repetition of prior no-change acceptance work.
+- Actual issue lifecycle in the bare-remote fixture: confirmed HIGH publication
+  bug -> independently verified exact repair -> real named local commit -> real
+  ordinary remote publication/readback -> FIX_COMMITTED/FIX_PUSH_VERIFIED as
+  supported by existing event ordering. Publication cannot require falsely closing
+  this issue first. Wrong repair subject, candidate hash, review identity or extra
+  payload paths stay held; unrelated affected effects stay held throughout.
+  This test must FIRST publish and close the exact source-only technical repair,
+  with fresh actual remote_commit binding rather than the earlier observed base,
+  and ONLY THEN execute the broader compact Mac merge/metadata publication. It
+  must not hide the source-only confirmation bug by adding metadata to the
+  reviewed repair candidate or testing only the compact confirmation branch.
+- Integration acceptance and FIX_VERIFIED are two existing consumers, not one:
+  give _team_integration_review its exact q3_team_integration_review.v1 RESULT
+  and team_records.py1074-1109 its exact q3_repair_review.v1 RESULT, each with its
+  real independent assignment/source provenance. Parent arranges two sequential
+  bounded verification assignments. Do not reuse one success text for both or
+  widen their schemas. Exercise both artifacts in the actual repair lifecycle.
+- Revision migration/closure test described above is mandatory, including old-v10
+  interrupted integration recovery, new-v11 admission and the real spine version
+  gate. Keep legacy v9 data and production-v10 proof/schema identities unchanged;
+  their separate explicit control_version must truthfully be 11 after migration.
+- Parent's independent checker reviews this exact plan before implementation.
+  Mode A: no unresolved substantive findings and two on-target WORDING-only/empty
+  passes; immutable CRITICAL/HIGH/MEDIUM/LOW/WORDING/OFF-TARGET/TOOL-FAILURE labels.
+  Then exact final artifact review, actual owner integration/readback, only needed
+  derived refresh and named ordinary publication. Isolated tests alone never
+  claim canonical deployment or mathematical acceptance.

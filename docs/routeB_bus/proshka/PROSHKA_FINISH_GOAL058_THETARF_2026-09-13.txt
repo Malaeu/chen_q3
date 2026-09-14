@@ -1,0 +1,69 @@
+REQUEST_ID: REQ-2026-09-13-THETARF-FINISH
+BOUNDARY_ID: GOAL058_ACTUAL_THETA_SOURCE_PROPERTY_RELATIVE_BOUND
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+RESULT_SCOPE: COMPLETE_SAME_THETARF_WITH_REVIEWED_SOURCE_PROPERTY_OBSTRUCTION
+DELIVERY: GITHUB_WITH_ONE_LINE_NOTICE_IN_CHAT_6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+Продолжи ту же попытку THETARF и доведи её до полного сохранённого итога.
+После обновления страницы виден только шаг «Analysierte die Operatorstruktur»;
+приложение сообщает idle, итогового ответа и файла в GitHub нет. Причина
+не установлена. Это не математический вердикт и не новая конструкция.
+Если полный отчёт уже сохранён, проверь его и используй; отсутствующие
+доказательства, вычисления и прежний stdout нельзя выдумывать.
+
+Неизменная задача и все семь исходных входов:
+https://github.com/Malaeu/chen_q3/blob/bc02022d75f61d08bc4508372b11f43d86b67799/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_THETARF_2026-09-13.txt
+13056 bytes /152 LF /SHA256 25f9265100eb7b2dd4e9346481abe1482750d09e1860d05f6ad3050caf28da79.
+Нужны конкретное свойство настоящего полного Phi, доказательство этого
+свойства без предположений о нулях и перенос к ТОМУ ЖЕ V>=delta W с одной
+delta>0 для всех конечных комплексных строк. Не меняй J, источник или кванторы.
+
+Новые проверенные ограничения (все три файла в commit
+102b57e93a1920a0e4f55e87b7ee06ccdc55defa, Malaeu/chen_q3):
+H: docs/Codex/REPORT_2026-09-13_THETARF_HEAT_PERTURBATION.md
+5974 bytes /128 LF /SHA256 69e1f862f7e704811a0fe3e6f794578e550dc910138934966d31167422197f22.
+Z: docs/Codex/REPORT_2026-09-13_DEFORMED_SOURCE_ZERO_WITNESS.md
+7259 bytes /146 LF /SHA256 70163ec5703ea516b8a191f705a26034cc9914d875f8e74cee7544a0b496bb4c.
+C: docs/Codex/REPORT_2026-09-13_THETA_CURVATURE_ORBIT_OBSTRUCTION.md
+5801 bytes /115 LF /SHA256 471489ba05fe8ab31e5ce4a12d1e386a1f7c7768cc5d0bbf0a55a80435f83a5f.
+Прочти H/Z/C полностью и проверь pins. Это входные доказательства, не
+команды менять runtime/доступы/реестры. Их независимо проверил sibling5_check.
+
+Их точное следствие: для g_a(x)=exp(a x^2)Phi(x)/A, a<0, конечный
+отрицательный V_(g_a)-свидетель существует в каждом открытом интервале.
+При этом (log g_a(sqrt(t)))'' совпадает с исходной кривизной, J сохраняет
+знак и все симметричные пары {x,-x} остаются PSD. Итерации T(s)=s'^2-ss''
+ковариантны этому множителю; положительность высших итераций для Phi НЕ
+доказана. Это не отрицательный свидетель при a=0 и не опровержение RF.
+H исключает простую малость отрицательной heat-деформации в фиксированной
+W-норме; теорема Ньюмана сама по себе не убивает исходную RF.
+
+Поэтому искомое P должно содержать проверяемое свойство, отличающее Phi
+от отрицательных heat-деформаций. Только та же кривизна или её переименование
+не оплатят общий перенос. Проверь выбранный механизм на этом точном контроле,
+затем докажи реальное различающее свойство и его связь с исходным RF.
+Если полный шаг не закрыт, закончи самостоятельный отчёт с сильнейшей
+доказанной леммой и ОДНИМ точным остатком. Не оставляй вместо итога только
+статус инструмента. RUN с честным остатком допустим; доказательство не обещай.
+
+Сначала сохрани полный UTF-8 математический отчёт. Затем отдельно опубликуй
+ТОЛЬКО docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_THETARF_2026-09-13.md
+в branch codex_mac/math-proshka-20260912. Если файл уже существует, верни
+его фактический commit SHA и путь, не перезаписывай. Сохраняй чужие изменения.
+Используй предоставленную твоей сессии GitHub write/Contents API операцию,
+если она реально доступна. Не повторяй полный каталог и прежние DNS-пробы;
+наличие инструмента у другого агента не означает его доступность у тебя.
+Не меняй разрешения, credentials или настройки. Если запись недоступна,
+сохрани полный отчёт и верни лишь локальный путь, SHA256 и конкретный статус
+публикации. Эти метаданные не заменяют доставки полного результата через GitHub.
+В чате только SHA, путь и статус; без полного отчёта, вложений и base64.
+Исторический source-sign счёт6 и completed-since-owner-resume0 сохраняются;
+техническая остановка и продолжение не считаются математическими попытками.

@@ -1,0 +1,250 @@
+# Publication artifact review — pass 1
+
+Reviewer: native read-only artifact reviewer. Candidate:
+`/home/chirurgie/.cache/q3-metadata-publication-20260914`, baseline
+`1c81bfcb47517845dd485761f9cc8fa2729bac4c`.
+
+Plan reviewed: `/home/chirurgie/.cache/q3-metadata-publication-plan-2026-09-14.md`,
+SHA-256 `aa72b0e6e39b3f501dfc3f1d0addf6ca011fe6dc237adf8431125d4c9128d46f`.
+Current binary diff SHA-256: `d145e6ace0a7e6b70d6ae8c59510fd55f97c9a31582769242a00a4500a8e9129`.
+`git diff --check` succeeded. The changed path set is exactly the requested ten paths.
+
+| Pass | Severity | Finding — English term + русское объяснение | Fix applied |
+|---|---|---|---|
+| 1 | HIGH | **Lost valid private state replay** — структурно валидный `q3_team_local.v1` с `operations: {}` стирает след операции, но не вызывает private-state blocker. | Not applied; reviewer is read-only. |
+| 1 | HIGH | **Unproven EVIDENCE_INTAKE provenance** — content-addressed bytes и checkpoint-chain не доказывают, что карта была записана существующим intake-процессом. | Not applied; reviewer is read-only. |
+
+## HIGH — lost valid private state can regrant publication
+
+Locators: `orchestrator/workflow_runtime.py:1323-1368`, especially
+`:1326-1346`; `:2152-2188`; `:2219-2260`.
+
+The missing-file branch at `:1327-1345` correctly fails closed when the entire
+private file is absent and current RESUME contains compact publication INTENT.
+The existing-file branch only iterates the `operations` object. A syntactically
+valid, correctly permissioned private file with the same installation binding
+and `operations: {}` passes `:1347-1368` and returns no pending operation.
+
+`team_observe_remote` then sees no `prior` at `:2168-2187` and writes a fresh
+remote observation for the same publication ID. `team_reserve_effect` accepts
+that fresh observation and creates a fresh publication reservation at
+`:2229-2259`. Thus a crash/partial rollback that leaves a valid but truncated
+private object permits a new grant, contrary to R6 step 7 and its required
+"missing/corrupt private state is a recovery blocker" / "never repeats an
+unknown native action" behavior. This is not merely a malformed-receipt case:
+the current test at `orchestrator/tests/test_workflow_runtime.py:5684-5723`
+covers invalid JSON and absence, but not a valid object whose operation was
+lost.
+
+Concrete impact: after reservation and before a determinable network outcome,
+the stored `PUSH_RESERVED` or earlier receipt can be erased while the compact
+INTENT/history remains. The next run can create a replacement observation and
+reservation. Some later Git state may incidentally reject a replay, but the
+required durable fence has already been removed and the runtime no longer
+enforces original-operation-only reconciliation.
+
+Minimal fix: when a current compact/repair publication INTENT or UNKNOWN is
+detected, require a matching operation receipt in an otherwise valid private
+object as well as in the missing-file case. A missing matching receipt must
+raise `TEAM_PUBLICATION_PRIVATE_STATE_UNAVAILABLE`; do not let
+`team_observe_remote` construct it. Add the valid-empty-operations regression
+for both a reserved and `PUSH_RESERVED` snapshot, asserting no local/index/HEAD
+or remote mutation.
+
+## HIGH — compact map has no verified evidence-intake provenance
+
+Locators: `orchestrator/workflow_runtime.py:1971-2018`, especially
+`:1982-1993`; `:1941-1968`; `:2219-2259`.
+
+For compact mode, the only map checks are a name/hash convention, current file
+bytes, canonical payload decoding, path hashes, and the two metadata keys
+(`:1982-1993`). `_team_publication_history` validates only the RESUME/HISTORY
+byte chain and fixed ownership/pins (`:1941-1968`). Neither function verifies a
+saved `EVIDENCE_INTAKE` integration receipt/manifest, its exact candidate
+content, or a completed intake provenance bound to `map_path` and `map_sha`.
+`team_reserve_effect` therefore accepts a map placed at the expected
+content-addressed path followed by an otherwise valid publication INTENT
+without the required real intake transition.
+
+R6 requires existing evidence intake before publication INTENT and explicitly
+requires the complete-path test to exercise its real INTENT and CONFIRMED
+checkpoints. The fixture helper does perform intake
+(`orchestrator/tests/test_workflow_runtime.py:5451-5526`), but production
+admission never establishes that fact. This is a source-integrity acceptance
+gap, not a request for a new schema: the plan expressly requires reuse of
+existing private operation receipt and current intake/assignment evidence.
+
+Minimal fix: for compact admission, derive and verify the completed original
+`EVIDENCE_INTAKE` operation/receipt from existing local state and the existing
+checkpoint/history, binding its declared output path and SHA-256 exactly to
+`map_path`/`map_sha`; reject absent, incomplete, mismatched, or replayed intake
+state. Add a negative fixture that writes a byte-correct map and publication
+INTENT without intake, then asserts reserve fails without changing the
+worktree/index/branch/remote.
+
+## Verified scope and limits
+
+GOAL section 6 is unchanged in the diff; GOAL is 12,202 bytes and RESUME is
+7,552 bytes. Revision 11 binding, typed 10/11 admission, spine reuse, compact
+snapshot/history checks, foreign-state snapshots, source-only repair confirmation
+and fresh remote commit handling were inspected. They do not resolve the two
+HIGH findings above.
+
+The focused logs support compact-scale and revised recovery checks, including
+`/home/chirurgie/.cache/q3-publication-compact-scales-20260914.log` (3 tests,
+OK) and `/home/chirurgie/.cache/q3-publication-recovery-r3-20260914.log` (4
+tests, OK). After the source review completed, the owner reported the affected
+suite `python3 -m unittest orchestrator.tests.test_workflow_runtime` as exit 0:
+218 tests in 190.104 seconds; see
+`/home/chirurgie/.cache/q3-publication-full-workflow-20260914.log`. This does
+not cover either untested negative case above and does not establish canonical
+publication.
+
+## Hashes of exact ten paths
+
+```text
+46b4690aa8da2e2fd3ef1157b37f56324db3c976a23f216731dcfa5217d6ca5e  orchestrator/workflow_runtime.py
+eabbc61632e3bdc8c0d4f1acbacb273c830f1d69b44a23883046f0cc161f42fd  orchestrator/tests/test_workflow_runtime.py
+cb32025db1549bd53d6915490c19d740b3fcb683ac035f2cb34ee65db7ad0017  docs/cartographer/TOOLS.yaml
+8e58d7ff5d40b1031b6b27da385fe1942a1e3d9c5702717137bed77d8387f3ee  docs/CODEX_CONTROL.md
+043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0  docs/Codex/GOAL.md
+42d69cefce23a76f7acba72cde08ff754cfec5fbf9f68438e7e48a6b40e6faf9  orchestrator/startup_runtime.py
+41c49dabc10e00b4f1aa5878fb8ef24a895e8620e4e16684b68811425df8349b  orchestrator/tests/test_startup_runtime.py
+a6723bafaa5357ea509b25bcd94c9183f8f1b5f8e663d52f29105acaa7596adb  orchestrator/spine.py
+d1b2311aa9883bfa67e5b6d76e6447c34ef741a4b6eff9d7ac13cc95a463f263  orchestrator/tests/test_three_body_loop.py
+58c1d0a7a657b06c11aacfa1d1f4113710d295cb3ebfb46d439fd3bae219fa33  orchestrator/tests/test_tool_manifest_memory_wiring.py
+```
+
+Mode A result: not clean. Two unresolved HIGH findings; no shipment.
+
+---
+
+# Publication artifact review — pass 2
+
+Candidate remained frozen at
+`/home/chirurgie/.cache/q3-metadata-publication-20260914`, against baseline
+`1c81bfcb47517845dd485761f9cc8fa2729bac4c`. Plan SHA-256 remains
+`aa72b0e6e39b3f501dfc3f1d0addf6ca011fe6dc237adf8431125d4c9128d46f`.
+Current binary diff SHA-256: `3c6b52cfba508faffe0e628e3d75c3ff89e4da350a1f3eeaabb4ddcf26790091`.
+`git diff --check` succeeded; the changed path set remains exactly the requested
+ten paths.
+
+| Pass | Severity | Finding — English term + русское объяснение | Fix applied |
+|---|---|---|---|
+| 2 | WORDING | None. | Not applicable. |
+
+Pass-1 HIGH findings are fixed in the candidate.
+
+`_team_pending_publication` now recognizes compact maps through the shared
+`_team_publication_map` helper and, before a first remote observation, requires
+the existing intake anchor and the actual pinned BASE
+(`orchestrator/workflow_runtime.py:1351-1369`).
+`_team_publication_intake` validates one completed `EVIDENCE_INTAKE` manifest,
+its exact content-addressed output, installation/owner/epoch/BASE binding, and
+the preceding INTENT then CONFIRMED checkpoint history
+(`orchestrator/workflow_runtime.py:1906-1946`). It also reuses the existing
+integration validator rather than adding a receipt schema. The same helper is
+called at reservation (`:2055-2058`). A direct byte-correct map without intake
+is rejected before observation; test `:5865-5886` passed in
+`/home/chirurgie/.cache/q3-publication-provenance-r2-20260914.log`.
+
+For the valid-private-state loss case, a syntactically valid local file with
+`operations: {}` lacks the completed intake anchor and is rejected before it can
+mint a replacement remote observation or reservation. The regression covers
+both RESERVED and post-commit/PUSH_RESERVED state (`:5684-5738`). The required
+BASE check is executed through the same pending guard before registered
+observation as well as reserve (`orchestrator/workflow_runtime.py:1368-1369`).
+The retained selective rollback that preserves all pre-publication anchors while
+deleting only the publication receipt before local commit remains intrinsically
+indistinguishable under R6's single cooperative private record; it is not a new
+candidate regression or a basis for another schema.
+
+The initial five-test provenance run had one fixture setup error, not a runtime
+assertion failure: the negative fixture read a private file before creating it.
+The correction adds `self.local()` before publication INTENT; the exact negative
+rerun passed (1 test, 0.421 seconds). The first affected full suite had already
+passed pre-anchor (218 tests, 190.104 seconds). The post-anchor full affected
+suite was still running at this pass; it is not counted as green here.
+
+## Pass 2 hash10
+
+```text
+fb21fa9f92716148caab9810bce5b848a52d8036a77c73d0e0e362b9c8a331fa  orchestrator/workflow_runtime.py
+1b8db6d322f9b611cb54d42555543acd5bfe7d46efa4868b9193936f974ea483  orchestrator/tests/test_workflow_runtime.py
+cb32025db1549bd53d6915490c19d740b3fcb683ac035f2cb34ee65db7ad0017  docs/cartographer/TOOLS.yaml
+d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5  docs/CODEX_CONTROL.md
+043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0  docs/Codex/GOAL.md
+42d69cefce23a76f7acba72cde08ff754cfec5fbf9f68438e7e48a6b40e6faf9  orchestrator/startup_runtime.py
+41c49dabc10e00b4f1aa5878fb8ef24a895e8620e4e16684b68811425df8349b  orchestrator/tests/test_startup_runtime.py
+a6723bafaa5357ea509b25bcd94c9183f8f1b5f8e663d52f29105acaa7596adb  orchestrator/spine.py
+d1b2311aa9883bfa67e5b6d76e6447c34ef741a4b6eff9d7ac13cc95a463f263  orchestrator/tests/test_three_body_loop.py
+58c1d0a7a657b06c11aacfa1d1f4113710d295cb3ebfb46d439fd3bae219fa33  orchestrator/tests/test_tool_manifest_memory_wiring.py
+```
+
+Mode A pass-2 result: on-target with no unresolved CRITICAL/HIGH/MEDIUM/LOW
+findings. This is the first clean artifact iteration; it does not establish
+Mode A convergence by itself.
+
+---
+
+# Publication artifact review — pass 3
+
+Second independent on-target read of the identical frozen candidate. Binary diff
+SHA-256 is unchanged:
+`3c6b52cfba508faffe0e628e3d75c3ff89e4da350a1f3eeaabb4ddcf26790091`.
+`git diff --check` again succeeded.
+
+| Pass | Severity | Finding — English term + русское объяснение | Fix applied |
+|---|---|---|---|
+| 3 | WORDING | None. | Not applicable. |
+
+No unresolved CRITICAL/HIGH/MEDIUM/LOW findings.
+
+Focused confirmation:
+
+- First observe remains legitimate only after a completed exact map intake
+  (manifest/output/owner/installation/epoch/BASE, then historical INTENT and
+  CONFIRMED) at `orchestrator/workflow_runtime.py:1906-1946`; the check runs
+  through the pending guard before remote observation at `:1351-1369`.
+- A source-only repair remains narrow: `_team_publication_repair`
+  (`:1975-2010`) binds the current operation inputs to the exact repair
+  candidate, independently validated FIX_VERIFIED event, assignment provenance,
+  permitted paths and repair sources. The real lifecycle fixture preserves the
+  separate integration review and repair review, publishes the source-only
+  repair first, confirms the fresh remote commit, and only then proceeds to
+  compact incoming publication (`orchestrator/tests/test_workflow_runtime.py:5930-6060`).
+- A map-shaped publication that lacks its valid anchor can at most reach the
+  ordinary observation/reservation surface; it cannot pass
+  `_team_publication_snapshot` / native publication guard. The anchored compact
+  and exact repair routes remain the only publication snapshots. This preserves
+  the requested repair admission without expanding generic source-only behavior.
+- Pass-2 direct-map, empty-private-state (RESERVED and PUSH_RESERVED), and
+  pre-observe BASE-drift regression locators remain `:5684-5738` and
+  `:5855-5886`. No source, foreign-state, revision-10 compatibility, or pinned
+  engine recovery surface changed since pass 2.
+
+Post-anchor full-suite execution was owned by the parent and was still in
+progress during this pass; it is not represented as passed here. Pre-anchor
+full affected suite and post-anchor targeted provenance evidence remain as
+reported in pass 2. The known baseline wiring failures are not attributed to
+this candidate.
+
+## Pass 3 hash10
+
+```text
+fb21fa9f92716148caab9810bce5b848a52d8036a77c73d0e0e362b9c8a331fa  orchestrator/workflow_runtime.py
+1b8db6d322f9b611cb54d42555543acd5bfe7d46efa4868b9193936f974ea483  orchestrator/tests/test_workflow_runtime.py
+cb32025db1549bd53d6915490c19d740b3fcb683ac035f2cb34ee65db7ad0017  docs/cartographer/TOOLS.yaml
+d4392bf72010c2f48407cc7c5b1dd8d9549e9c734e50818682466b586f29f4e5  docs/CODEX_CONTROL.md
+043c082c3e4a42daee01fe4673ed8f755ac64e13b780a406b606d5e49b6577d0  docs/Codex/GOAL.md
+42d69cefce23a76f7acba72cde08ff754cfec5fbf9f68438e7e48a6b40e6faf9  orchestrator/startup_runtime.py
+41c49dabc10e00b4f1aa5878fb8ef24a895e8620e4e16684b68811425df8349b  orchestrator/tests/test_startup_runtime.py
+a6723bafaa5357ea509b25bcd94c9183f8f1b5f8e663d52f29105acaa7596adb  orchestrator/spine.py
+d1b2311aa9883bfa67e5b6d76e6447c34ef741a4b6eff9d7ac13cc95a463f263  orchestrator/tests/test_three_body_loop.py
+58c1d0a7a657b06c11aacfa1d1f4113710d295cb3ebfb46d439fd3bae219fa33  orchestrator/tests/test_tool_manifest_memory_wiring.py
+```
+
+Mode A result: two consecutive on-target passes (2 and 3) with only
+WORDING/no findings, and zero unresolved substantive findings. Artifact review
+converged. This verdict does not claim canonical integration, push, deployment,
+or mathematical acceptance.

@@ -1,0 +1,106 @@
+# Checkpoint-recovery repair — artifact review, Passes 2–4
+
+Review date: 2026-09-14
+
+## Scope and source identity
+
+The reviewed recovery-fix series is the clean E3 tip
+`fe214a4e53e4221fe072eaaa19b418398f73ca9a`, whose parent is E2
+`8ed3a2fa563eea18465966b77b7a98d0c910f1cb`
+(`[Codex][rh_clean][recovery] Test source checkpoint rejection boundaries`).
+E2's parent is `3a41793b390bdd09e673f275c454b2c03c1f3553`
+(`[Codex][rh_clean][recovery] Validate completed source checkpoints before publication`).
+The review baseline is
+`7772494ab382755f8b7a534520b46bed8d1246d0`.
+
+`git merge-base --is-ancestor 7772494a fe214a4e` exited 0, and
+`git diff --check 7772494a..fe214a4e` was clean. The range changes exactly:
+
+| Path | SHA-256 of bytes at E3 |
+| --- | --- |
+| `docs/cartographer/TOOLS.yaml` | `6e1b15c16f3d2e255eae2bea1f1c16cc59b55fd634c1b81362b8e67dff8d839e` |
+| `orchestrator/workflow_runtime.py` | `e5cce600f39415d3e67b4504d9f9f5cc3b896b628773832549e08ea753c048c9` |
+| `orchestrator/tests/test_workflow_runtime.py` | `4b83e9c0b107ba950098dbe4d65838dfb7d14206ed36c053d2bf75859c41c9ec` |
+
+The source change adds completed-source recovery validation, an exact intake binder
+for repair review, and optional `--integration-candidate` only for preflight
+binding. `TOOLS.yaml` registers the invocation and the existing test module
+extends coverage. It introduces no control/schema version or lifecycle.
+
+## Review history and convergence
+
+Plan Pass 1 found the `EVIDENCE_INTAKE` parent-launch concern and a missing
+reservation chain. The first finding was withdrawn after checking that the runtime
+permits non-parent intake; the second was fixed with an explicit reservation chain.
+Plan Pass 2 raised mutable `pins.head`; that concern was withdrawn because checkpoint
+155's pin `83d3…` is stale while actual `HEAD` is `1c81…`, and publication `INTENT`
+alone binds the current base. Plan Pass 3 found unbound integration; the repair added
+exact manifest/operation binding. Plan Pass 4 confirmed the resulting plan, SHA-256
+`8a253115cec3800fd59e0af65ecdbe23569778ab98f2a4219139e2964834c443`.
+
+Artifact Pass 1 found no substantive defect, but the full mirror lifecycle was then
+unfinished. Artifact Pass 2 rechecked the E2 range and completed the evidence below.
+It found the following HIGH finding:
+
+| Pass | Severity | Finding — English term + русское объяснение | Status |
+| --- | --- | --- | --- |
+| Artifact 2 | HIGH | **Control revision gate missing** — `_resume_completed_source_recovery` can bypass the startup-fatal guard before `resume_checkpoint` validates `control.version == 11` and `team_runtime_version == 1`; то есть старый control мог допустить recovery. | Fixed in E3: a three-line fail-closed helper guard checks both exact values before the bypass; two negative cases cover control 10 and runtime 0. |
+| Artifact 3 | None | **Revision guard validation** — точный E3 diff и целевые negative cases подтверждают, что bypass отвергает control 10 и runtime 0. | No finding. |
+| Artifact 4 | None | **Independent unchanged-tip confirmation** — независимый запуск real-startup regression на чистом E3 прошёл. | No finding. |
+
+Artifact Pass 3 verified E3's exact 8-line delta from E2, clean diff, the two negative
+cases, and the supplied targeted regression log. Artifact Pass 4 independently ran
+the same real-startup regression on unchanged clean E3:
+
+`python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_completed_source_confirmation_uses_real_startup_and_exact_provenance`
+
+It passed: 1 test in 5.598 s, `OK`. The existing isolated mirror uses control 11 and
+Team Runtime 1, so E3's restriction preserves that positive lifecycle evidence.
+There are no unresolved substantive findings in Passes 3–4; Mode A has converged for
+this recovery fix only. This is not approval of a broader publication or mathematical
+result.
+
+## Verification evidence
+
+The focused positive regression passed:
+
+| Evidence | Result | SHA-256 |
+| --- | --- | --- |
+| `/home/chirurgie/.cache/q3-checkpoint-recovery-third-20260914.log` | 1 test, 4.236 s, `OK` | `75ef5010c7765dfcc1e7884a3c854f6470f5f768966b4695b974e784f0eea491` |
+| `/home/chirurgie/.cache/q3-checkpoint-recovery-final-negatives-20260914.log` | 1 test, 5.589 s, `OK` | `1100854386f98d9760e72f9c3c0ee9d2703707634c825ea576a4f6688c30a0a2` |
+| `/home/chirurgie/.cache/q3-checkpoint-recovery-revision-guard-20260914.log` | 1 test, 5.601 s, `OK`; includes E3 control-10/runtime-0 negative cases | `0cf1c2018ecc4c87b5d595fd8978f1a9f9fd31bd1abbd5cb91f682d922a750f3` |
+
+The negative test covers pins, mathematical source, owner epoch, channel corruption,
+reviewer bytes, foreign control drift, and unbound operations.
+
+The unmocked isolated mirror lifecycle completed confirmation revision 156, intake
+revision 157, observe/reserve/integrate of `EVIDENCE_INTAKE`, confirmation revision
+158, native RESULT observation plus DONE recording, `FIX_VERIFIED`, then publication
+INTENT revision 159, observe/reserve/prepare, local commit
+`d762cdf57554636588917b4530bc1f4ef61882db`, push/readback, and saved checkpoint
+revision 160.
+
+| Evidence | SHA-256 |
+| --- | --- |
+| `/home/chirurgie/.cache/q3-checkpoint-recovery-live-mirror-20260914/lifecycle1.log` | `63fdc00165248a488b966ce794db7cab2131c82ebfdab643b5619f2448f2adfe` |
+| `/home/chirurgie/.cache/q3-checkpoint-recovery-live-mirror-20260914/lifecycle2.log` | `1cb6b97e0655b228b7835dba63edab35db21ab92570e574370c262ed05e79730` |
+
+The mirror remote is an isolated local `file://` bare repository. Its push is an
+execution and readback check, not a production remote push.
+
+Sixteen additional regressions were reported as passing in 7.713 s, but their output
+was not part of this artifact evidence. The full suite before E3 passed with exit 0:
+220 tests in 208.810 s, log
+`/home/chirurgie/.cache/q3-checkpoint-recovery-workflow-20260914.log`, SHA-256
+`1c46abe4d704c6dc7b563458357ad8cf506787d251bff816ffcb9e5d0829ac5f`.
+The after-E3 targeted guard regression and the independent real-startup regression
+above directly cover the added restriction; this report does not claim an after-E3
+full-suite run.
+
+## Boundary and verdict
+
+This is a separate checkpoint-recovery repair. It does not close original issue
+`d9` or approve candidate `777`; it only verifies the recovery-fix series relative
+to the `7772494a` baseline. It performs no deployment, canonical integration, or
+production push. It makes no mathematical acceptance claim; `PX_RH_CLAIM` remains
+`NOT_MADE`.

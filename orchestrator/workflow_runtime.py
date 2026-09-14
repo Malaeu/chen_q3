@@ -3836,9 +3836,182 @@ def _resume_sync(path: Path) -> None:
         os.close(directory)
 
 
+def _resume_completed_source_recovery(
+    repo: Path, proposed: dict[str, Any], plan: dict[str, Any],
+    integration_candidate: Path | None,
+) -> bool:
+    """Allow observations of an exact reviewed copy before its native Git commit.
+
+    This does not alter the startup plan or authorize an effect. Every ordinary
+    checkpoint/history/owner check below and every native effect gate still runs.
+    """
+    if (plan.get("startup", {}).get("control_version") != 11
+            or plan.get("startup", {}).get("team_runtime_version") != 1):
+        return False
+    fatal = set(plan.get("startup", {}).get("fatal_errors", []))
+    if not fatal or plan.get("startup", {}).get("fatal_errors_omitted", 0):
+        return False
+    if set(plan.get("holds", [])) - fatal - {"NODE_REGISTRY_EXACT_EDGE_REQUIRED"}:
+        return False
+    allowed_paths = {"docs/CODEX_CONTROL.md", str(TOOLS)}
+    dirty = set()
+    for error in fatal:
+        if error == "STARTUP_CONTROL_BLOB_DRIFT":
+            dirty.add("docs/CODEX_CONTROL.md")
+        elif error.startswith("STARTUP_DECLARED_SURFACE_BLOB_DRIFT:"):
+            dirty.add(error.split(":", 1)[1])
+        elif error.startswith("STARTUP_RELEVANT_DIRTY_PATHS:"):
+            dirty.update(error.split(":", 1)[1].split(","))
+        else:
+            return False
+    if not dirty or not dirty.issubset(allowed_paths):
+        return False
+    raw, current, _ = _team_current(repo)
+    if (proposed["schema"] != "q3_resume.v2"
+            or any(proposed[k] != current[k] for k in (
+                "owner_thread_id", "owner_host_id", "ownership", "source_manifest", "stages",
+                "reconciliation_pending", "recovery_from"))
+            or current["ownership"]["state"] != "ACTIVE" or current["reconciliation_pending"]):
+        return False
+    _team_actor(repo, current)
+    local = _team_local(repo)
+    if (os.environ.get("Q3_OWNER_EPOCH") != str(current["ownership"]["epoch"])
+            or local["epoch_floor"] > current["ownership"]["epoch"]):
+        return False
+    head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    operation = proposed["operation"]
+    expected_head_pin = (head if operation["command"] == "publication"
+                         and operation["state"] == "INTENT" else current["pins"]["head"])
+    if (any(proposed["pins"].get(k) != v for k, v in current["pins"].items() if k != "head")
+            or proposed["pins"]["head"] != expected_head_pin):
+        return False
+    if not ((operation["kind"] == "COMPUTE" and operation["command"] == "workflow-team-integrate-candidate")
+            or (operation["kind"] == "PUBLISH" and operation["command"] == "publication")):
+        return False
+    if operation["state"] not in {"INTENT", "CONFIRMED"}:
+        return False
+    history = _resume_history(_resume_file(repo, RESUME_HISTORY_PATH) or b"")
+    matches = []
+    for operation_id, receipt in local["operations"].items():
+        saved = receipt.get("integration", {})
+        manifest = saved.get("manifest", {})
+        if (manifest.get("mode") != "REVIEWED_SOURCE" or manifest.get("expected_head") != head
+                or not dirty.issubset({row.get("path") for row in manifest.get("files", [])})):
+            continue
+        payload = _team_json(manifest)
+        _team_integration_manifest(payload)
+        if (receipt.get("state") != "CONFIRMED" or saved.get("state") != "COMPLETE"
+                or saved.get("manifest_sha256") != _resume_digest(payload)
+                or manifest["operation_id"] != operation_id
+                or manifest["owner_task"] != current["owner_thread_id"]
+                or manifest["installation_ref"] != current["ownership"]["installation_ref"]
+                or manifest["epoch"] != current["ownership"]["epoch"]
+                or receipt.get("actor") != current["owner_thread_id"]
+                or receipt.get("epoch") != current["ownership"]["epoch"]
+                or receipt.get("remote_thread") != current["owner_thread_id"]
+                or receipt.get("remote_ownership") != current["ownership"]
+                or receipt.get("local_head") != head):
+            return False
+        intents = [value for kind, _, value in history.values() if kind == "intent"
+                   and _resume_digest(value) == receipt.get("checkpoint_sha256")]
+        if len(intents) != 1:
+            return False
+        original, _ = _resume_document(intents[0])
+        if (original["ownership"] != current["ownership"]
+                or original["owner_thread_id"] != current["owner_thread_id"]
+                or original["operation"]["id"] != operation_id
+                or original["operation"]["state"] != "INTENT"
+                or original["operation"]["command"] != "workflow-team-integrate-candidate"
+                or original["operation"]["subject"] != {
+                    "kind": "REPAIR", "id": operation_id, "sha256": _resume_digest(payload)}):
+            return False
+        engine = Path(saved["engine"]["root"])
+        if (_team_git(engine, "rev-parse", "HEAD").decode().strip() != saved["engine"]["commit"]
+                or _team_integration_review(repo, current, manifest, payload, engine=engine) != saved["review"]):
+            return False
+        _team_git(engine, "diff", "--no-ext-diff", "--quiet", "HEAD", "--")
+        for row in manifest["files"]:
+            before, _ = _team_integration_blob(repo, head, row["path"])
+            after, mode = _team_integration_blob(engine, manifest["candidate_commit"], row["path"])
+            if (after is None or _resume_digest(before) != row["before_sha256"]
+                    or _resume_digest(after) != row["sha256"]
+                    or _team_publication_file(repo, row["path"]) != {"sha256": row["sha256"], "mode": mode}):
+                return False
+        inputs = {row["path"]: row["sha256"] for row in manifest["files"]}
+        if operation["command"] == "publication" and (
+                operation["inputs"] != inputs or _team_publication_repair(repo, proposed, inputs) is None):
+            return False
+        if operation["command"] == "workflow-team-integrate-candidate":
+            if operation["id"] == operation_id:
+                if (operation["state"] != "CONFIRMED"
+                        or any(operation[k] != original["operation"][k]
+                               for k in ("kind", "id", "command", "subject", "inputs"))):
+                    return False
+            elif not _resume_repair_review_intake(repo, current, operation, inputs, head,
+                                                  integration_candidate):
+                return False
+        matches.append(operation_id)
+    return len(matches) == 1
+
+
+def _resume_repair_review_intake(repo: Path, current: dict[str, Any], operation: dict[str, Any],
+                                 sources: dict[str, str], head: str, candidate: Path | None) -> bool:
+    """Bind the only new recovery intent to an already-produced repair review."""
+    import base64
+    from orchestrator import team_records
+
+    receipt = _team_local_operation(repo, operation["id"]) or {}
+    saved = receipt.get("integration", {})
+    if operation["state"] == "CONFIRMED":
+        if receipt.get("state") != "CONFIRMED" or saved.get("state") != "COMPLETE":
+            return False
+        payload = _team_json(saved.get("manifest"))
+        if saved.get("manifest_sha256") != _resume_digest(payload):
+            return False
+    elif candidate is not None:
+        payload = candidate.read_bytes()
+    else:
+        return False
+    manifest = _team_integration_manifest(payload)
+    if (manifest["mode"] != "EVIDENCE_INTAKE" or manifest["operation_id"] != operation["id"]
+            or manifest["expected_head"] != head or manifest["owner_task"] != current["owner_thread_id"]
+            or manifest["installation_ref"] != current["ownership"]["installation_ref"]
+            or manifest["epoch"] != current["ownership"]["epoch"]
+            or operation["subject"] != {"kind": "REPAIR", "id": operation["id"], "sha256": _resume_digest(payload)}
+            or operation["inputs"]):
+        return False
+    _team_integration_review(repo, current, manifest, payload, engine=repo)
+    assignment = _team_assignments(repo)["assignments"][manifest["implementer_assignment"]]["assignment"]
+    if (assignment["role"] != "independent-checker" or assignment["assignee"] == current["owner_thread_id"]
+            or assignment["base_commit"] != head or assignment["status"] not in {"RUNNING", "DONE"}
+            or not set(sources).issubset(assignment["permitted_paths"])):
+        return False
+    issues = team_records.read_registry(_resume_file(repo, TEAM_ISSUES), "issues",
+        archive_loader=lambda path: _resume_file(repo, Path(path)))
+    matches = []
+    for row in manifest["files"]:
+        raw = base64.b64decode(row["content_base64"], validate=True)
+        if operation["state"] == "CONFIRMED" and _resume_file(repo, Path(row["path"])) != raw:
+            return False
+        try:
+            review = team_records._validate_repair_review(team_records.load_payload(raw))
+        except team_records.TeamRecordError:
+            continue  # Native provider trace is raw evidence, not the typed review.
+        issue = issues["issues"].get(review["issue_id"], {})
+        if (review["base_commit"] == head
+                and _team_candidate_manifest(review) == sources
+                and assignment["subject"] in {review["issue_id"], review["repair_subject_id"]}
+                and issue.get("repair_subject_id") == review["repair_subject_id"]
+                and issue.get("repair_subject_type") == review["repair_subject_type"]
+                and issue.get("state") == "FIX_CANDIDATE"):
+            matches.append(review)
+    return len(matches) == 1
+
+
 def resume_checkpoint(
     repo: Path, *, candidate: Path, expected_sha256: str,
     dry_run: bool = False, recover_from: str | None = None,
+    integration_candidate: Path | None = None,
 ) -> dict[str, Any]:
     """Persist observations only. No dispatch, selector, Git delivery or admission."""
     from orchestrator.startup_runtime import validate_battle_v10_control
@@ -3852,7 +4025,8 @@ def resume_checkpoint(
             repo, owned_paths=[str(RESUME_PATH), str(RESUME_HISTORY_PATH)],
             _writer_epoch=epoch,
         )
-        if plan.get("status") == "FATAL" or plan.get("startup", {}).get("fatal_errors"):
+        if ((plan.get("status") == "FATAL" or plan.get("startup", {}).get("fatal_errors"))
+                and not _resume_completed_source_recovery(repo, proposed, plan, integration_candidate)):
             raise WorkflowRuntimeError("RESUME_STARTUP_FATAL:" + str(plan.get("holds")))
         control = validate_battle_v10_control(repo)
         manifest = _resume_file(repo, TOOLS)
@@ -6165,6 +6339,8 @@ def main() -> int:
     resume_parser = subparsers.add_parser("resume-checkpoint")
     resume_parser.add_argument("--candidate", type=Path, required=True)
     resume_parser.add_argument("--expected-sha256", required=True)
+    resume_parser.add_argument("--integration-candidate", type=Path,
+        help="Read a prepared repair-review intake manifest for checkpoint preflight only; never execute intake")
     resume_mode = resume_parser.add_mutually_exclusive_group()
     resume_mode.add_argument("--dry-run", action="store_true")
     resume_mode.add_argument("--recover-from")
@@ -6211,6 +6387,7 @@ def main() -> int:
             result = resume_checkpoint(
                 repo, candidate=args.candidate, expected_sha256=args.expected_sha256,
                 dry_run=args.dry_run, recover_from=args.recover_from,
+                integration_candidate=args.integration_candidate,
             )
         except (WorkflowRuntimeError, StartupRuntimeError, OSError, subprocess.SubprocessError) as exc:
             result = {"status": "HOLD", "reason": str(exc),

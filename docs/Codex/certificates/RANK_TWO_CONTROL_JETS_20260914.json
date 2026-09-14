@@ -1,0 +1,132 @@
+{
+  "scope": "EXACT_RATIONAL_NON_THETA_CONTROL_ONLY",
+  "matrix": [
+    [
+      "1/18",
+      "-25/54"
+    ],
+    [
+      "-25/54",
+      "100/27"
+    ]
+  ],
+  "determinant": "-25/2916",
+  "coefficient_vector": [
+    "25/3",
+    "1"
+  ],
+  "jet_energy": "-25/162",
+  "third_difference_Taylor_moments_0_to_3": [
+    "0",
+    "0",
+    "0",
+    "1"
+  ],
+  "first_difference_Taylor_moments_0_to_1": [
+    "0",
+    "25/3"
+  ],
+  "finite_h_explicitly_certified": false,
+  "actual_theta_negative_witness": false,
+  "script_sha256": "a7a45f81c969ac8e0e786c71dc73d53f2cd9849a631f7adb18997b92ba91b95f",
+  "source_pdf": {
+    "url": "https://www.math.kent.edu/~varga/pub/paper_161.pdf",
+    "sha256": "fd43597072010242ef5b8a75480e263a1538df0aba47755c47e137b140cf01ce",
+    "pages": 24,
+    "read_scope": "Rendered printed pp175-178: equation1.2 and Theorem2.1; full proof in section3 not independently rederived."
+  },
+  "shelf": {
+    "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+    "exit": 2,
+    "raw_sha256": "8d903b534ff9d8ae19425c90687bed1a18d211026b5fb71c7e4f33607b431cce",
+    "receipt": {
+      "boundary": "COMPLETE_REGISTERED_SHELF",
+      "candidate_rows": [
+        {
+          "excerpt": "\u041f\u041e\u0421\u0422\u0410\u0412\u041b\u042f\u042e\u0422 (provides):",
+          "metadata_sha256": "38f369014d1de589c88bb458c625f3f96238473c2cda9d7f0ec30527d4595172",
+          "provider": "knowledge-db",
+          "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "title": "\u041f\u041e\u0421\u0422\u0410\u0412\u041b\u042f\u042e\u0422 (provides):",
+          "url": "capability/assembly/counterexample"
+        },
+        {
+          "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+          "metadata_sha256": "8b1987db5808e052ce37cd923c958009cac72c8c1711947ec5b406fd76b4e872",
+          "provider": "knowledge-db",
+          "provider_id": "2eb3496726b5c00c739fd0ad26943c2653270768a73e80017f93bbeb0f3b3e1c",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+          "url": "capability/assembly/counterexample"
+        },
+        {
+          "excerpt": "de_andrade_silva_10_5281_zenodo_20682834.pdf",
+          "metadata_sha256": "ed9e1d066656dd7d0d9f55001ad9d76ac21d374407c6189be2b2c408a63c0fe2",
+          "provider": "local-literature",
+          "provider_id": "1d80ed8b07da1ea6ed2a4877548e89f91691e3e1e54a1efced7f8a74b2b6b20e",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "title": "de_andrade_silva_10_5281_zenodo_20682834.pdf",
+          "url": "docs/routeB_bus/litreview"
+        },
+        {
+          "excerpt": "de_andrade_silva_10_5281_zenodo_20694588.pdf",
+          "metadata_sha256": "b691dfb6477947f707f1ec646d656096b4cb4a1129461bdda7fa8624293dee32",
+          "provider": "local-literature",
+          "provider_id": "62d385294034e09896c7021845c9e84a5f8e7be786f3076ad94dbdb6a7d299e8",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "title": "de_andrade_silva_10_5281_zenodo_20694588.pdf",
+          "url": "docs/routeB_bus/litreview"
+        },
+        {
+          "excerpt": "A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean",
+          "metadata_sha256": "de4ce2b079626dee4cad84dc0dc937f6eb0398d8994a7a179627a21ebbe2033e",
+          "provider": "lean-index",
+          "provider_id": "cefd21ef9557912847f9b774a90902ae612cd19ec2497848ea29089711441595",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "title": "A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean",
+          "url": "aristotle_proofs.db"
+        },
+        {
+          "excerpt": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+          "metadata_sha256": "02f75ba4c298518afc79d234a1c9396642f8d6aea896af88d9bedb7407562b14",
+          "provider": "lean-index",
+          "provider_id": "f35d21786b67f24cadb1740e3429fb1232f3d4b2199a2e64423129fba9816211",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "title": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+          "url": "aristotle_proofs.db"
+        }
+      ],
+      "external_lean": "EXECUTED",
+      "provider_rows": [
+        {
+          "failure_count": 1,
+          "hit_store_count": 4,
+          "provider": "local-shelves",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "status": "INCOMPLETE"
+        },
+        {
+          "candidate_count": 0,
+          "candidate_hashes": [],
+          "collection_identity": null,
+          "corpus_sha256": null,
+          "provider": "q3_docs",
+          "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+          "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+          "status": "INCOMPLETE"
+        }
+      ],
+      "query": "Csordas Varga squared coordinate log concavity full V two shifts",
+      "query_sha256": "a1ca79ab701bc2809e0699c2260441dfb3b4762788c0a361db56215bf902069a",
+      "schema": "q3_ask_local_receipt.v1"
+    }
+  }
+}
