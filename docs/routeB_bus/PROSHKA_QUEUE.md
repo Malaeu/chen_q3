@@ -3,7 +3,7 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-15-SUPPORTSTABILITY
-- STATUS: OPEN. Source-support hunt completed; next exact analytic request prepared, not yet sent. W1 realizes the actual source transfer in H_v for v>1/2; W2 unweighted boundedness remains unproved.
+- STATUS: IN_REVIEW. SENT_NATURAL_PRO_RUN_VERIFIED. One immutable request notice sent by 2026-09-15T08:00:32Z; same browser1/tab2 AX41 exact message, AX48 Pro-Denkvorgang, AX58 Stop. Request commit 1b9795c430a38dd812b1affbb207e80a54154465, review-plan READY/holds[]. W1 weighted realization accepted; W2 and full V remain open. No response yet.
 - Boundary: GOAL058_FULL_V_SOURCE_TRANSFER_UNWEIGHTED_STABILITY. Full goal remains V>=0 for all finite complex rows of the original theta source; no stronger positive energy fraction or simple-zero requirement.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SUPPORTSTABILITY_2026-09-15.txt; SHA256 47060b5c0ab6c62cb9b15888f87aeea029b765e29190c8ebe0acb96a76456fde; UTF-8, 7608 bytes, 98 LF, CR0, final LF. Source base d375efb4a755d5bcf3f65ae4392bdc6e40768310.
 - Same-commit report: docs/Codex/REPORT_2026-09-15_SOURCE_SUPPORT_HUNT.md; SHA256 9b059659b10948bed90d9df482cfe97e9cc229116e1db46b029bba81a22c4966. Independent mathematical review CLEAN by sibling5_check on exact bytes. Certificate records dispatch review separately.
