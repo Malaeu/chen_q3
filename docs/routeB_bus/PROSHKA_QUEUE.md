@@ -2,6 +2,14 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-15-NULLFIELD
+- STATUS: OPEN. Exact owner-requested construction; delivery not yet claimed. Main task: build one full-source field whose energy equals V including corrections and boundary; check the positive-constant interpretation without ending on the elementary scaling objection.
+- Boundary: GOAL058_FULL_THETA_NULL_FIELD_EXACT_ENERGY_TRANSFER. Same six-field phase as GAMMABRANCH; that audit is fully answered. Current app and browser readback show the living chat 6aa52001-4094-83eb-9520-01a09f54eff2 idle with that completed response and empty composer.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_NULLFIELD_2026-09-15.txt; SHA256 91a4f78502b1721bc90e1790f61423bea02151085ad31e7320911be67a42c96e; UTF-8, 12843 bytes, 154 LF, CR0, final LF. Source base39077dabfffb2709c251869cea0bfbe9980e7788.
+- Independent read-only review: sibling5_check CLEAN_DISPATCH on exact bytes; full-theta complex quantifiers, homogeneity, weighted field identities, generated corrections and boundary obligations checked. Receipt: docs/Codex/certificates/NULLFIELD_REQUEST_20260915.json.
+- Owner GitHub-only transport: publish exact request, then one immutable link notice in the same living chat. This supersedes inherited attachment transport; no new chat, canonical phase rebind, Answer now or duplicate send.
+- Assigned result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLFIELD_2026-09-15.md on codex_mac/gamma-reciprocity-20260914. No producer edits to queue, control or old reports. Preparation/delivery is not a mathematical result or counter reset. Full V/IC/ODD2/RH remain open.
+
 ## REQ-2026-09-14-GAMMABRANCH
 - STATUS: ANSWERED_ACCEPTED. Raw coauthor audit from 5189493584c0f56074eb42fd7b064f4b4346830a; SHA256 608a21053de04765e9c16d7ad3087be84b56716a59347ed9e36d39cd895e3a60; 53154 bytes/620 LF. Parent full reading and sole independent intake ACCEPT_B1_B8_COFINAL_OBSTRUCTION_ONLY. All N>=13 and fixed real Gaussian h excluded as all-real-zero suppliers. No actual theta negative witness or V/IC/ODD2/RH closure. The independent audit does not count as a second model attempt. Delivery lines below are historical.
 - STATUS: IN_REVIEW. SENT_NATURAL_RUN_VERIFIED. Registered review-plan READY/holds[] and exact independent dispatch CLEAN. Single immutable notice observed in browser1/tab2 AX42, active analytic audit AX49-56, empty composer AX62, Stop AX66 at 2026-09-14 18:58 UTC. No duplicate send. This audits B1-B8, not the already excluded scalar preserver.
