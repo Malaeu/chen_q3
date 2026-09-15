@@ -1,6 +1,6 @@
 {
   "request_id": "REQ-2026-09-15-SIZEBIASCOMP",
-  "status": "OPEN_PREPARED_REVIEWED_NOT_SENT",
+  "status": "IN_REVIEW_SENT_NATURAL_RUN_VERIFIED",
   "source_base": "0a0483582d37a6ba8d5cb2f836ecae63d0ecd6c7",
   "review_class": "ADVERSARIAL_READ_ONLY",
   "reviewer": "/root/sibling5_check",
@@ -35,9 +35,9 @@
   "context_full_and_untruncated": true,
   "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
   "chat_title": "Математическая цель и шаг",
-  "chat_observation": "Existing browser1/tab4 observed idle with completed CRITICALSTRIP 08b6b69c; no new request sent.",
-  "operational_authorization": "Active native full-V goal, standing own-branch named-path commit/push and same-chat GitHub-only one-line notice; no canonical/private-state takeover.",
-  "sent": false,
+  "chat_observation": "One exact immutable SIZEBIASCOMP notice at AX65; natural Pro reasoning started and ongoing at AX83/87, Stop at AX81. No duplicate send.",
+  "operational_authorization": "Standing explicit full-V research, named-path own-branch commit/push and same-chat GitHub-only notice. Historical native-goal observation is not a current control claim; no canonical/private-state takeover.",
+  "sent": true,
   "source_sign_progress": false,
   "RH_proved": false,
   "canonical_admission": false,
@@ -48,5 +48,35 @@
     "holds": [],
     "conversation_id_observed": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
     "phase_locator_note": "Inherited canonical locator is not the user-selected living mathematical chat. Standing explicit user-directed chat 6aa52001-4094-83eb-9520-01a09f54eff2 remains the destination, freshly observed idle. No canonical rebind."
+  },
+  "delivery": {
+    "request_id": "REQ-2026-09-15-SIZEBIASCOMP",
+    "status": "SENT_NATURAL_RUN_VERIFIED",
+    "observed_at": "2026-09-15T16:05:42.683222+00:00",
+    "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+    "chat_title": "Математическая цель и шаг",
+    "request_commit": "bea1abcd6baf5a171ceefa98b79548e528a2bf79",
+    "request_sha256": "a03063accc09e787d3de1ca296de940e0aafe4b8a22195b9b2d6bd51b9b7eafc",
+    "transport": "mcp__codex_app__send_message_to_thread; initial successful tool result, then same-chat UI readback",
+    "notice": "Прочти https://github.com/Malaeu/chen_q3/blob/bea1abcd6baf5a171ceefa98b79548e528a2bf79/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIZEBIASCOMP_2026-09-15.txt — перенеси доказанный исходный бюджет остатка с коэффициентом 1/15 на полную компенсацию V, сохранив сигналы, вес и границу. Полный ответ в GitHub; здесь SHA | путь | вердикт.",
+    "sent": true,
+    "send_count": 1,
+    "natural_reasoning_start_verified": true,
+    "ui_evidence": {
+      "browser_id": "1",
+      "tab_id": "4",
+      "notice_AX": 65,
+      "page_time_separator": "heute 17:59",
+      "initial_reasoning": "Pro-Denkvorgang",
+      "latest_reasoning_AX83": "Berechnete und verifizierte SIZEBIASCOMP- und Hyperbolic-Analysen",
+      "latest_reasoning_AX87": "Untersuchte die Faltungsstruktur und formalisierte den Ansatz",
+      "stop_control_AX81": "Antwort stoppen"
+    },
+    "reconciliation": "Initial app/browser snapshots were stale after successful send. One reload revealed the exact notice and natural run. No second send. Fresh post-compaction readback confirms the same notice and continuing reasoning.",
+    "expected_response_path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SIZEBIASCOMP_2026-09-15.md",
+    "mathematical_response_received": false,
+    "source_sign_progress": false,
+    "RH_proved": false,
+    "canonical_admission": false
   }
 }
