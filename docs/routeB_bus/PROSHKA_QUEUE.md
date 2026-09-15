@@ -3,11 +3,11 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-15-SIZEBIASCOMP
-- STATUS: IN_REVIEW. SENT_NATURAL_RUN_VERIFIED. One immutable notice at AX65 in browser1/tab4; natural Pro reasoning observed, current reasoning AX83/87 and Stop AX81. send_count=1; full mathematical response pending. Full-V research objective; one bounded transfer from the source-specific size-biased renewal law to the original weighted conditional form. Scalar squared tail factor 1/15 and full weighted scalar budget accepted; E_loss, V and RH remain open.
+- STATUS: ANSWERED. ACCEPT_FULL_FIELD_TRANSPORT_CONVERGENCE_AND_CUTOFF_RATE_OBSTRUCTION_ONLY. Raw f6cb4ba3279e61de944b954bff524875fed97932 / SHA256 784e16445c64c1b480cfb0fdc5740182ad59253a775bfc8ab7dc0c44a654eafd. Full-field convergence and sharp cutoff rate accepted after independent review; full V sign and RH remain open. Intake: docs/Codex/REPORT_2026-09-15_SIZEBIASCOMP_INTAKE.md. Original one-send receipt preserved in SIZEBIASCOMP_REQUEST_20260915.json; no duplicate dispatch.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIZEBIASCOMP_2026-09-15.txt; SHA256 a03063accc09e787d3de1ca296de940e0aafe4b8a22195b9b2d6bd51b9b7eafc.
 - Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_SIZEBIASCOMP_2026-09-15.md; SHA256 3641f9d98ed653f2d78cd2b44d1527fdfdb7d924786abba7be7ae4dfae8282ad; complete original conditional report.
 - Source report: docs/Codex/REPORT_2026-09-15_HYPERBOLIC_SOURCE_COMPENSATION.md; SHA256 feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21. Review certificates under docs/Codex/certificates/HYPERBOLIC_SOURCE_COMPENSATION_20260915.json and SIZEBIASCOMP_REQUEST_20260915.json; exact independent CLEAN_DISPATCH.
-- Boundary: GOAL058_SIZEBIASED_RENEWAL_TO_FULL_CONDITIONAL_COMPENSATION. Same six-field phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, observed idle after CRITICALSTRIP. GitHub carries full text; chat gets one immutable request pointer. No new goal/chat or canonical admission.
+- Boundary: GOAL058_SIZEBIASED_RENEWAL_TO_FULL_CONDITIONAL_COMPENSATION. Same six-field phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, originally observed idle after CRITICALSTRIP; SIZEBIASCOMP response now received and reviewed. GitHub carries full text; chat gets one immutable request pointer. No new goal/chat or canonical admission.
 - Assigned result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SIZEBIASCOMP_2026-09-15.md on codex_mac/gamma-reciprocity-20260914. No duplicate send; publication and receipt to be reconciled before continuation. Previous counters preserved.
 
 ## REQ-2026-09-15-CRITICALSTRIP
