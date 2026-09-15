@@ -49,7 +49,7 @@
     "CONVENTION_LOCK_ID": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED"
   },
   "transport": "Owner GitHub-only override; one immutable link notice; no attachment or canonical phase rebind.",
-  "delivery_status": "SENT_NATURAL_PRO_RUN_VERIFIED",
+  "delivery_status": "ANSWERED_ACCEPTED_INTERFACE_ONLY",
   "expected_response": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SUPPORTSTABILITY_2026-09-15.md",
   "full_V_sign": "OPEN",
   "source_sign_progress": false,
@@ -81,5 +81,28 @@
     "answer_now_clicked": false,
     "attachment_sent": false,
     "duplicate_send": false
-  }
+  },
+  "response": {
+    "commit": "8d0a2e64dab913895e7385ff4d7bf6f5195e0028",
+    "path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SUPPORTSTABILITY_2026-09-15.md",
+    "sha256": "60d603af4b1babf2618bc531bbd5365e770a1d608b0ddca63cdbbe4fd4b36be6",
+    "bytes": 60072,
+    "LF": 649,
+    "raw_preserved": true,
+    "parent_full_read": true,
+    "independent_review": {
+      "class": "ADVERSARIAL_READ_ONLY",
+      "reviewer": "/root/sibling5_check",
+      "verdict": "ACCEPT_FULL_SOURCE_RESOLVENT_AND_ONE_PROBE_CRITICAL_TAIL_INTERFACE_ONLY"
+    },
+    "started_at": "2026-09-15T08:00:31.226000+00:00",
+    "completed_at": "2026-09-15T08:30:31.072789+00:00",
+    "wall_seconds": 1799.846789,
+    "native_status": "idle; exact terminal SHA/path/verdict refreshed 2026-09-15T09:12Z",
+    "intake": "docs/Codex/REPORT_2026-09-15_SUPPORTSTABILITY_INTAKE.md",
+    "intake_sha256": "14f8e48fd325f41df7b46f1da84140e1ff56b16df95ee3c6b9c0000f9ae9e895",
+    "intake_review": "CLEAN exact bytes /root/sibling5_check",
+    "result": "Full signed source resolvent and J iff W2 iff SUPPORT iff full V>=0 accepted; unweighted energy J remains unproved."
+  },
+  "owner_return": "Return to the first weighted conditional remainder. Seek an independently source-built joint storage/energy estimate before further tail decomposition. No source-sign progress."
 }
