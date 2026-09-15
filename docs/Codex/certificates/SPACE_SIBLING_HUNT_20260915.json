@@ -1,0 +1,97 @@
+{
+  "schema": "q3_isolated_analytic_receipt.v1",
+  "date": "2026-09-15",
+  "source_base": "c394a7d5c08b41231938820878fb9e5b6360dc63",
+  "scope": "User-authorized mathematical-space sibling hunt and exact source reconstruction; no canonical integration",
+  "brief_sha256": "6197d49081d89c45e1afdbca6437a1290dabfcbce422c1196a9dfb191a47bb78",
+  "reports": {
+    "REPORT_2026-09-15_SPACE_SIBLING_HUNT.md": "cf4636f825869ef9bf4ea03486e3bfdd6433ace9155d7c8f96bc2ad3e87bb1e7",
+    "REPORT_2026-09-15_ARITHMETIC_RECIPROCITY.md": "b128c925d794693fdbc5b1e8257e5587060c92d60770a650f2f8d26ee6838f53"
+  },
+  "reviewer": "/root/sibling5_check",
+  "independent_reviews": {
+    "SPACE_SIBLING_REVIEW.md": {
+      "sha256": "3856609a4909af68f444450a11aa7469620c3de2ff0d58ce5d2a805180c15796",
+      "text": "# Independent review: mathematical-space siblings\n\nReviewed report: `REPORT_2026-09-15_SPACE_SIBLING_HUNT.md`  \nSHA256: `ba18632d45bb5ec424171e434685e73d2b5544a0df9908b2fbf444ffec87f726`\n\n## Verdict\n\n**ACCEPT_SCOPED_SOURCE_VERIFIED_DISCOVERY_AND_PREFLIGHT_ONLY.**\n\nThe Hall/Fock feature map has the correct Gaussian kernel and complex inner\nproduct convention; applied to the already-derived quartic layer it gives an\nexact common Gram family, including mixed terms.  It is correctly not\ntransferred to full theta layers.\n\nThe Shkalikov theorem is used only conditionally: it can yield a maximal\nnonnegative invariant graph under its stated dissipativity, domain,\nresolvent-closure, and compactness hypotheses, but supplies neither a\ntheta-built operator nor membership of the prescribed family.  The negative\ncontrol is used correctly to show why a generic graph theorem cannot force\nmembership.\n\nThe Ball et al. Schur/de Branges-Rovnyak mechanism is likewise a conditional\nexact realization interface.  The report does not confuse its positive-kernel\npremise with an actual construction.  A1/B1 and arithmetic-reciprocity\nfilters retain their already accepted narrow scopes.  No positive graph,\npositive source mixture, V sign, or RH conclusion is promoted.\n"
+    },
+    "ARITHMETIC_RECIPROCITY_REVIEW.md": {
+      "sha256": "a16e5a7be11138051c483bbd003003a68a90ef9bb7f4780c8cf5c09ba7ac2acc",
+      "text": "# Independent review: arithmetic reciprocal assembly\n\nReviewed candidate: `ARITHMETIC_RECIPROCITY_CANDIDATE.md`  \nSHA256: `e5f1477adc44d0b57a156c77db1e9492c477a9f623776ae6a6abcf86ce969795`\n\n## Verdict\n\n**ACCEPT_SCOPED_RECONSTRUCTION_AND_EVENTUAL_STRIP_LIMIT_ONLY.**\n\nThe simplex estimate has the stated constant and transfers from `r_M` to all\n`r_N`, `N>=M`, by convolution with a positive remainder.  It yields the\n`4M+1/2` logarithmic tail exponent for the reflected term.  Hence the\nweighted L1 convergence on every fixed strip and the normalization of the\nFourier limit are valid.\n\nThe finite functions are entire source assemblies but their defining Fourier\nintegrals have exactly the stated open strip; the boundary absolute-divergence\nclaim follows from the positive tail asymptotic.  The Mellin identity and the\n`N=1` formula have the correct factors.  This is distinct from the prior\ngeometric square-root construction; no prior source report found this same\nassembly.  It has no zero-location, V-sign, or RH consequence.\n\n## Final status-only readback\n\n`REPORT_2026-09-15_ARITHMETIC_RECIPROCITY.md` differs from the reviewed\ncandidate only by its `STATUS` line.  The mathematical body is byte-identical.\n\n**ACCEPT_FINAL_STATUS_ONLY_BYTES:**\n`3dc0f7de99d38f0bfd624bd2571bf2062a096f505d0ea8685b5516ae1dc30124`.\n"
+    },
+    "SOURCE_REBUILD_REVIEW.md": {
+      "sha256": "2ecab8f5b3f9506efd29f1a414bef97c796de02b13473473b72e45d5dc8a9603",
+      "text": "# Independent review: source rebuilding compatibility filters\n\nReviewed candidate: `SOURCE_REBUILD_PREFLIGHT.md`  \nSHA256: `a3c9584270b34f79e2a0258d64aa27cbd723e23d06e8bc44e7582fb61f6ff1ff`\n\n## Verdict\n\n**ACCEPT_SCOPED_ASSEMBLY_FILTERS_ONLY.**\n\nFor a positive finite Gaussian sum, differentiating the exact half-line\nkernel gives\n`J11=-f(0)^2+2 integral t f'(t)^2 dt`; expanding it yields exactly\n`-sum_{j,k} p_j p_k ((a_j-a_k)/(a_j+a_k))^2`.  The two-rate value is\n`-2/9`, and the indicated two-node difference quotient converges to this\nmixed derivative.  It correctly refutes preservation of the exact kernel\nunder positive direct source sums, while retaining the cross terms.\n\nFor the quartic mixture, finiteness at zero gives a finite positive measure;\na countable box has positive mass and supplies the polynomial-exponential\nlower bound.  That contradicts the actual double-exponential theta tail.\nThe stated exclusions are limited to positive mixtures in this fixed\ncoordinate and do not imply an actual theta counterexample, a V-sign result,\nor RH.\n"
+    },
+    "CRITICALSTRIP_INTAKE_REVIEW.md": {
+      "sha256": "51758d4b0208e4d124e0b91586bb7f9ee05842f742b0cf2f20952d9f619efc28",
+      "text": "# Independent review: CRITICALSTRIP intake\n\nReviewed intake: `REPORT_2026-09-15_CRITICALSTRIP_INTAKE.md`  \nSHA256: `f28495620937793b270bf28208019c0d3c6915cd4de00932fe48f351c37b6e21`\n\n## Verdict\n\n**ACCEPT_UNIFORM_GAMMA_ZERO_FREE_SLAB_INTAKE_ONLY.**\n\nThe intake faithfully records the accepted exact-gamma slab theorem:\n`|M_N(u+i v)| >= 1/256` for every finite `N`, `|u|<=5`, and real `v`,\nwith C6 only for `R<=5`.  It does not promote the result to arbitrary-R C6,\nV positivity, or RH.\n\nThe new arithmetic comparison is correct.  Its small-`t` expansion gives\n`log H_N(x)=const-(4N+1/2)x+O_N(e^{-2x})` with the stated derivative control,\nso `-(log H_N)'' -> 0` for each fixed N.  This identifies a lost curvature\nmechanism only; it neither kills the arithmetic route nor asserts a Fourier\nzero.\n\nReadback hashes for continuity-only updates:\n\n* `REPORT_2026-09-15_SPACE_SIBLING_HUNT.md`:\n  `cf4636f825869ef9bf4ea03486e3bfdd6433ace9155d7c8f96bc2ad3e87bb1e7`.\n  The accepted mechanism text is unchanged; the update records the completed\n  CRITICALSTRIP response and retains arbitrary-R C6 as open.\n* `REPORT_2026-09-15_ARITHMETIC_RECIPROCITY.md`:\n  `b128c925d794693fdbc5b1e8257e5587060c92d60770a650f2f8d26ee6838f53`.\n  Its mathematical body is unchanged from the accepted arithmetic candidate;\n  status and continuity wording were updated for the completed request.\n"
+    }
+  },
+  "primary_sources": [
+    {
+      "id": "Hall quant-ph/9912054v2",
+      "url": "https://arxiv.org/pdf/quant-ph/9912054v2",
+      "sha256": "648218cdd94c7005fe16e669e6f7701c18c89baca60da1b7b27fd29e9a648d4e",
+      "locators": "Definition3.3 pp9-10, Theorem3.4 p10; only cited sections read"
+    },
+    {
+      "id": "Shkalikov math/0701410v1",
+      "url": "https://arxiv.org/pdf/math/0701410v1",
+      "sha256": "64746704b3b811a36810bf22763586ae66e78e76979559f7eb1fdca8c8459194",
+      "locators": "Theorem2.1 pp4-5, Lemma2.2 p5; parent visually checked both pages"
+    },
+    {
+      "id": "Ball et al 0705.2042v3",
+      "url": "https://arxiv.org/pdf/0705.2042v3",
+      "sha256": "34b63b910628595af152f354d448c3da4837a18d2043174735b674f172e3eebc",
+      "locators": "Theorem1.1, Proposition1.2, proof pp1-3; prior local primary reused"
+    }
+  ],
+  "shelf_queries": [
+    {
+      "dictionary": "Fock coherent vectors",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+      "stdout_sha256": "14cd8de9e2c2742b830b79eb919248b404e435d5df20636a725b1402d975277f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "dictionary": "Krein invariant nonnegative graphs",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+      "stdout_sha256": "d4c098ce52df473b63e0fb255dca6ccb19682513b858f5b0fdf8973890b58fd7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "dictionary": "Schur defect and conservative realization",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+      "stdout_sha256": "750fcb3a4aedcd007d939bfe87f2073ad123a2a0ecf5489b8d08e8dfd1f3af4a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "source_verified_krein_note_sha256": "68662ecf728ab2774c53653c257e61147a952c476f67926a506179d534942bc2",
+  "evidence_directory": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/space-sibling-hunt-20260915",
+  "findings": [
+    "Fock exact map on the already proved quartic model, not theta layers",
+    "Krein existence gives some positive invariant graph, not target-family membership",
+    "Schur hidden-isometry realization requires a source-built exact transfer",
+    "Positive Gaussian-source sums do not preserve V positivity; explicit J11 and two-node control",
+    "Actual theta cannot be a positive mixture of quartic sources in the same coordinate",
+    "Arithmetic reciprocal gamma assembly is source-faithful, removes finite source square-root branches, and has expanding-strip convergence to normalized xi"
+  ],
+  "limits": {
+    "RH_proved": false,
+    "theta_V_sign_proved": false,
+    "actual_theta_negative_V": false,
+    "zero_location_proved": false,
+    "canonical_admission": false,
+    "new_Proshka_request": false,
+    "sign_counter_reset": false
+  },
+  "pending_request": null,
+  "publication_base": "08b6b69c5ff269297b04a87df128d8459ee3471b",
+  "criticalstrip_update": {
+    "status": "ANSWERED_INDEPENDENTLY_ACCEPTED_SCOPED",
+    "commit": "08b6b69c5ff269297b04a87df128d8459ee3471b",
+    "intake": "docs/Codex/REPORT_2026-09-15_CRITICALSTRIP_INTAKE.md",
+    "fourth_mechanism": "Prekopa marginal log concavity; actual gamma family uniform zero-free slab only"
+  }
+}
