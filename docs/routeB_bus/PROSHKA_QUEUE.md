@@ -2,6 +2,15 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-15-FULLVPOS
+- STATUS: OPEN. Exact owner-requested working goal and first shared analytic attempt prepared; not yet sent. Full V[c]>=0 for every finite family in original I and every complex coefficient vector. No extra strictness or uniform C E requirement.
+- Goal: docs/Codex/GOAL_2026-09-15_FULL_V_NONNEGATIVITY.md; SHA256 8bc8d5c011a99af6071954f08b5e180d1a2f07f7a66926e7f861b67135d408a2. Native new-goal creation was refused because old RH goal is unfinished; no false completion or canonical selector change.
+- Boundary: GOAL058_FULL_V_CANCELLATION_FIRST_POSITIVE_REPRESENTATION. First joint: source-defined cancellation before the square, retaining all mixed terms and boundaries. Accepted NULLFIELD excludes only its named positive-energy bound; full V remains open.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FULLVPOS_2026-09-15.txt; SHA256 85ca0b0e497322a2dd929fd063788a1b63569d6cb5285b07397802d6492254bb; UTF-8, 8935 bytes, 106 LF, CR0, final LF. Source base d319a1695ffb5447dcfff4fda74a88990c863ec3. Goal is pinned at same commit as this TXT.
+- Independent exact review: sibling5_check CLEAN_DISPATCH for both hashes. Certificate: docs/Codex/certificates/FULLVPOS_REQUEST_20260915.json.
+- Same six-field phase and idle living chat 6aa52001-4094-83eb-9520-01a09f54eff2. Owner GitHub-only transport: exact request in GitHub and one immutable link notice. No new chat or duplicate send.
+- Assigned new result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FULLVPOS_2026-09-15.md on codex_mac/gamma-reciprocity-20260914. Full proof requires independent review; dispatch, partial N and another excluded field do not close goal or reset counters. Full V/IC/ODD2/RH open.
+
 ## REQ-2026-09-15-NULLFIELD
 - STATUS: ANSWERED_ACCEPTED. Raw response 12529cdb71b1904282e624db390ea7debe120fb0, SHA256 8c00b9b1e92bfdc9d295be3718fdd18b877fc8f5e16461e182d25a9c33a682d0; 62943 bytes/685 LF read fully. Independent ACCEPT_TRACE_MATCHED_NULLFIELD_IDENTITY_AND_POSITIVE_SPLIT_OBSTRUCTION_ONLY. Exact field identity and no uniform positive E_k fraction accepted only for positive real-analytic k on all J; no actual negative V or rank bound. Intake: docs/Codex/REPORT_2026-09-15_NULLFIELD_INTAKE_AND_COUPLING.md. App idle with exact terminal SHA/path/verdict. Earlier IN_REVIEW and preparation text below is historical.
 - STATUS: IN_REVIEW. SENT_ACTIVE_RUN_VERIFIED. One immutable request notice sent at 2026-09-15T06:08:50Z; app active at 06:09:31Z, exact message and Stop control observed in the same browser chat. No new reasoning text independently observed; mathematical result pending. Registered review-plan READY/holds[]. Request commit 28f76ddb940a70cbf5e48e813ae146e5517ceaf7. Main task: build one full-source field whose energy equals V including corrections and boundary; check the positive-constant interpretation without ending on the elementary scaling objection.
