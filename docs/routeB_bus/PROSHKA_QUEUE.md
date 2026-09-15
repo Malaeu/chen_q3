@@ -3,13 +3,17 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-15-JOINTSOURCE-Y
-- STATUS: IN_REVIEW. SENT_NATURAL_RUN_VERIFIED. Single notice sent to exact living chat; browser AX57 shows request link, AX63 Pro-Denkvorgang, AX73 Stop. Request commit f5e1654b3d3179ca5c47f17171f47037fc1c8bae; full answer pending.
+- STATUS: ANSWERED_ACCEPTED_SCOPED. Natural run completed; exact raw response received and independently reviewed. The chosen dilation-averaged LP factor is excluded; general A+B and RH remain open. Request commit f5e1654b3d3179ca5c47f17171f47037fc1c8bae.
 - Preparation record: Explicit current user assignment: use additive TN infinity and exact reciprocal exponent 5/2 jointly; find and prove a fully sufficient Y mechanism before attempting its source proof. No hidden downstream assumptions; no presumption a third condition is necessary or sufficient.
 - Boundary: GOAL058_JOINT_SOURCE_PROPERTIES_CLOSED_SUFFICIENCY. Same six-field phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, freshly observed idle after completed SUPPORTSTABILITY.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_JOINTSOURCE_Y_2026-09-15.txt; SHA256 489b7efda64c594d1f98ffa89317261fc545a8a315b9e41b6f0aa31d711862dc; UTF-8, 16168 bytes, 187 LF, CR0, final LF.
 - Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_JOINTSOURCE_Y_2026-09-15.md; SHA256 ebd240e49b001802b7a40dd25c07bebb148b9b81a0daefd5cd006d43b0b8a961. Three full reports pinned to 82b1a89b753f996e6613649e42e5721376c5e329; historical instructions are not current assignments.
 - Delivery scope: GitHub request and one immutable link in the same chat. Current explicit user instruction authorizes this scoped request publication despite the inherited local workflow hold. That hold is not represented as repaired; private identity, canonical RESUME, policy and production admission are unchanged.
 - Output assignment only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_JOINTSOURCE_Y_2026-09-15.md on codex_mac/gamma-reciprocity-20260914. RH research remains unproved; V route remains parked; no replacement native goal or proof counter reset. This preparation entry is not a send receipt.
+
+- Response relay: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_JOINTSOURCE_Y_2026-09-15.md; SHA256 207d69460d0a9fc7a2089bfc71dfd915b60ba8e48f22c72d4be412fdeae5e388; 55575 bytes, UTF-8, 594 LF, final LF. Proshka could not publish; Mac relays unchanged bytes in the assigned own-branch scope.
+- Intake: docs/Codex/REPORT_2026-09-15_JOINTSOURCE_Y_INTAKE.md; SHA256 6444cdc4f76d52e0f3a89e6851568631d7e5f135c041446920fcc5315132a931; independent CLEAN_INTAKE by sibling5_check after full raw review.
+- Parallel bounded audit: docs/Codex/REPORT_2026-09-15_WEIL_ROSATI_TRANSFER_AUDIT.md; SHA256 11bcc8b0208ea8e992312c43f5428de602b10e4c200c99b86bfef34afc580754; independent ACCEPT_SCOPED. Only direct inversion/TN-to-Rosati identifications rejected. No negative V row, RH claim, new dispatch, goal change or canonical admission.
 
 ## REQ-2026-09-15-SOURCESTORAGE — prepared, not dispatched
 - STATUS: WITHHELD_AFTER_OWNER_RESERVOIR_PREFLIGHT. Draft passed internal dispatch review but was never committed or sent; send_count=0. Owner requested the Connes/reservoir precedent check first. Exact draft SHA256 77d2cf7be2867613fc81b19ba9f7ad0f8722bc6052d909a15e25509753cac3e5 preserved outside repo in ../reservoir-preflight-20260915/SOURCESTORAGE_REVIEWED_BUT_UNSENT.txt.
