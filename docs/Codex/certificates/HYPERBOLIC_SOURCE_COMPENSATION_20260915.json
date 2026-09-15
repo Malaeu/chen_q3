@@ -1,0 +1,35 @@
+{
+  "schema": "q3_isolated_analytic_receipt.v1",
+  "status": "ACCEPT_SCOPED_PHYSICAL_WEIGHTED_SCALAR_RENEWAL_BUDGET_ONLY",
+  "source_base": "0a0483582d37a6ba8d5cb2f836ecae63d0ecd6c7",
+  "report_sha256": "feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21",
+  "reviewer": "/root/sibling5_check",
+  "review": {
+    "sha256": "5592d33a8cef4a91258249a1f0ee21f35bdd2a7a4ded8806cc0c1a9b72bd70a9",
+    "text": "# Independent review: hyperbolic source ladder\n\nReviewed candidate: `HYPERBOLIC_LADDER_CANDIDATE.md`  \nSHA256: `9f812b4679496023fe9ce65dfb1875bf49d89b606c4fc1695b0e1ef6691aeea7`\n\n## Verdict\n\n**ACCEPT_SCOPED_FULL_GAMMA_LADDER_AND_AUXILIARY_NEGATIVE_ENERGY_ONLY.**\n\nThe Gamma-alpha product and its moment domain are correct.  Direct\ndifferentiation in `w=sqrt(pi s)` gives L2; Mellin integration by parts gives\nL3 with the stated shifted-moment term, and L4 follows at alpha two.  The\nendpoint conditions used for the transforms are sufficient.\n\nInverse Laplace transformation yields L5 with no origin distributions.  The\nlogarithmic-coordinate identities L6--L7 and the gauge calculation L8 have\nthe stated signs.  In particular L9 is valid: the Neumann boundary term\nvanishes and its right-hand side is strictly negative.  This is a genuine\nnegative test for that one forced scalar auxiliary form, not for V.\n\nL10 correctly retains every finite-row correction: `P_4`, the changed\ncoefficient column `P_-`, both endpoint traces, and the mixed target remain\nunpaid.  The report does not overstate the recurrence as a positivity or RH\nmechanism.\n\n## L6 extension readback\n\nReviewed extension in candidate SHA256\n`ee3969620395c35d6b1638368d09ec6c22226c1d55e970737db7d5d576826244`.\n\n**ACCEPT_SCOPED_COUPLED_FIELD_AND_RAW_ENERGY_FAILURE_ONLY.**\n\nConjugating the alpha ladder by `exp(-2k(X+x_i))` gives L11 with the\nstated constant coefficients and the `k+1` column.  The target identity\n`||Phi||_2^2 V[c]=-E_c'(0)/2` has the correct complex polarization and\nfactor.  All endpoint traces remain present.\n\nFor a one-node negative shift, the change `v=4k(u-x)` proves L13 and raw\n`E_x(k)` diverges as stated.  Hence L11--L12 do not justify raw all-k\nmonotonicity or an unweighted accumulated energy.  This does not rule out a\nseparately paid coupled weighted identity.\n\n## L7 source-specific renewal extension\n\nReviewed candidate SHA256:\n`f60fc9969efb3373968ed7028baae55ddbd100fffa19ad48e3bd352421e0ce9c`.\n\n**ACCEPT_SCOPED_SIZE_BIASED_SCALAR_RENEWAL_BUDGET_ONLY.**\n\nPitman--Yor Proposition 12(iv), equations (121)--(122), gives the stated\nlaw for `S_2`; multiplying every variable by `pi/2` gives L14 for `T` with\nthe same independent `H`.  Its density integrates to one and directly gives\n`E H^q=1/((2q+1)(q+1))`, hence `E H^2=1/15`.  Iteration gives the stated\nindependent renewal tail.  The cumulants yield\n`E(T^*)^2=E(T^3)/E(T)=4 pi^2/21`, so L16--L17 and the summed budget\n`10 pi^2/49` are correct.\n\nThe report preserves the necessary limitation: this is a scalar\nsize-biased-source coupling only.  The displayed likelihood has exponential\nlarge-`t` growth for every nonzero negative shift and is not globally\nLipschitz, so L17 neither identifies nor bounds `E_loss` or `V` without a\nseparately proved weighted conditional transfer.\n\n## L8 physical-measure mapping extension\n\nReviewed candidate SHA256:\n`feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21`.\n\n**ACCEPT_SCOPED_PHYSICAL_WEIGHTED_SCALAR_RENEWAL_BUDGET_ONLY.**\n\nThe density calculation is exact:\n`W(t) r^*(t) = 1_(t>=1) t^(3/2) r_2(t)^2/(2 A^2)`, so L18 is precisely\nthe earlier physical outer measure after the conditional `s` coordinate is\nintroduced.  The conditional likelihood normalization is also correct: the\nJacobian in the conditional convolution supplies the extra factor `a^(-1)`,\nso the `a^(9/4)` in `g_x` yields the stated `a^(5/4) r_2(at)/r_2(t)` mean.\nThus L19 retains the original target and its complex conditional projection.\n\nSince `W` is bounded, L20 follows pointwise from `W<=W_max` and L17; it uses\nno invalid independence.  It remains only a scalar carrier-tail estimate.\nThe explicit retained differences in `g_x`, `p_t`, the mixed-node term, and\nthe cutoff boundary correctly prevent promotion to an `E_loss` or `V` bound.\n"
+  },
+  "primary_source": {
+    "doi": "10.4153/CJM-2003-014-x",
+    "pdf_sha256": "302f232c65a647b3e8a69bddb18163d12157b0d2b26e499e4c47fdde50ab957b",
+    "locators": [
+      "Theorem 1(ii), Eq24, p298",
+      "Eq42, p301",
+      "Proposition12(iv), Eqs121-122, pp318-319"
+    ]
+  },
+  "scope": [
+    "Exact hyperbolic moment and coupled-field identities",
+    "Explicit negative scalar auxiliary energy and raw-k energy growth",
+    "Source-specific size-biased renewal law, squared tail factor 1/15 and sum 10pi^2/49",
+    "Exact original physical measure on size-biased carrier and bounded weighted scalar budget"
+  ],
+  "limits": {
+    "E_loss_controlled": false,
+    "V_sign_proved": false,
+    "C6_all_R_proved": false,
+    "RH_proved": false,
+    "canonical_admission": false,
+    "Lean_verified": false
+  },
+  "evidence_directory": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/hyperbolic-source-20260915"
+}

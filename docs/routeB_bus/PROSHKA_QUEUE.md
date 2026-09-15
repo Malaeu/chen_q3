@@ -2,6 +2,14 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-15-SIZEBIASCOMP
+- STATUS: PREPARED_REVIEWED_NOT_SENT. Active full-V goal; one bounded transfer from the source-specific size-biased renewal law to the original weighted conditional form. Scalar squared tail factor 1/15 and full weighted scalar budget accepted; E_loss, V and RH remain open.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIZEBIASCOMP_2026-09-15.txt; SHA256 a03063accc09e787d3de1ca296de940e0aafe4b8a22195b9b2d6bd51b9b7eafc.
+- Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_SIZEBIASCOMP_2026-09-15.md; SHA256 3641f9d98ed653f2d78cd2b44d1527fdfdb7d924786abba7be7ae4dfae8282ad; complete original conditional report.
+- Source report: docs/Codex/REPORT_2026-09-15_HYPERBOLIC_SOURCE_COMPENSATION.md; SHA256 feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21. Review certificates under docs/Codex/certificates/HYPERBOLIC_SOURCE_COMPENSATION_20260915.json and SIZEBIASCOMP_REQUEST_20260915.json; exact independent CLEAN_DISPATCH.
+- Boundary: GOAL058_SIZEBIASED_RENEWAL_TO_FULL_CONDITIONAL_COMPENSATION. Same six-field phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, observed idle after CRITICALSTRIP. GitHub carries full text; chat gets one immutable request pointer. No new goal/chat or canonical admission.
+- Assigned result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SIZEBIASCOMP_2026-09-15.md on codex_mac/gamma-reciprocity-20260914. No duplicate send; publication and receipt to be reconciled before continuation. Previous counters preserved.
+
 ## REQ-2026-09-15-CRITICALSTRIP
 - STATUS: ANSWERED. ACCEPT_UNIFORM_GAMMA_ZERO_FREE_SLAB_ONLY; raw commit 08b6b69c5ff269297b04a87df128d8459ee3471b, SHA256 c84d367a7d3a30fed8671c482380c9c754f67d356846e9f6806e2a4c327f706c. All N>=1, |u|<=5, all real v: |M_N(u+iv)|>=1/256; full C6 and RH remain open. Intake: docs/Codex/REPORT_2026-09-15_CRITICALSTRIP_INTAKE.md. Original delivery: SENT_NATURAL_RUN_VERIFIED: one immutable request notice observed in browser1/tab4 at AX69, natural Pro-Denkvorgang at AX75 and Stop at AX85. Request commit ff89fc4f2a418c65af980ac65be23e9125e6737e. Renewed user instruction to continue the analytic RH proof using existing results. Reopens only compact critical-strip exclusion for the fixed convergent gamma family; disproved full-plane real-zero preserver stays rejected.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CRITICALSTRIP_2026-09-15.txt; SHA256 6c12d0fde7e76fe0f52b3c434f10c7e066153ed3e1bee8c974534f72ccfa0c34; 11699 bytes,156 LF,CR0,final LF.
