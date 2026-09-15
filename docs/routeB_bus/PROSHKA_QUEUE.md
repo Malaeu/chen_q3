@@ -2,6 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-15-SOURCESTORAGE — prepared, not dispatched
+- STATUS: WITHHELD_AFTER_OWNER_RESERVOIR_PREFLIGHT. Draft passed internal dispatch review but was never committed or sent; send_count=0. Owner requested the Connes/reservoir precedent check first. Exact draft SHA256 77d2cf7be2867613fc81b19ba9f7ad0f8722bc6052d909a15e25509753cac3e5 preserved outside repo in ../reservoir-preflight-20260915/SOURCESTORAGE_REVIEWED_BUT_UNSENT.txt.
+- Preflight: docs/Codex/REPORT_2026-09-15_POSITIVE_RESERVOIR_PREFLIGHT.md, SHA256 bc97cc2ff3780eab8778b2724c3419b711d25ac4851b1ba10523063e39bbd508. Connes--Consani's reservoir phrase located in the primary PDF. Prior fixed-S minorant, bounded conservative coupling and collocated circle-heat output exclusions recovered. A new source fit must be specified before another request; storage inequality remains a possible unproved mechanism, not excluded by analogy.
+- Native full-V goal active after explicit owner renewal. Same living chat idle after completed SUPPORTSTABILITY; no new pending mathematical request and no source-sign counter reset.
+- Independent exact read-only review: sibling5_check CLEAN on report bc97cc2ff3780eab8778b2724c3419b711d25ac4851b1ba10523063e39bbd508 and updated goal c6b1946da519d2faa3305bb4c1d65ea85c9b9f229ad0f5b6560771c427ed66c2.
+
 ## REQ-2026-09-15-SUPPORTSTABILITY
 - STATUS: ANSWERED_ACCEPTED_INTERFACE_ONLY. Raw commit 8d0a2e64dab913895e7385ff4d7bf6f5195e0028, SHA256 60d603af4b1babf2618bc531bbd5365e770a1d608b0ddca63cdbbe4fd4b36be6; all 649 lines read and independently accepted. Intake docs/Codex/REPORT_2026-09-15_SUPPORTSTABILITY_INTAKE.md, SHA256 14f8e48fd325f41df7b46f1da84140e1ff56b16df95ee3c6b9c0000f9ae9e895, independently CLEAN. Full signed resolvent and one-response equivalence accepted; critical unweighted energy, W2, SUPPORT and full V remain open. Single run completed 2026-09-15T08:30:31Z; living chat idle, no request pending. Owner directs return to the first coupled remainder and a source-built uniform budget before another tail decomposition.
 - Boundary: GOAL058_FULL_V_SOURCE_TRANSFER_UNWEIGHTED_STABILITY. Full goal remains V>=0 for all finite complex rows of the original theta source; no stronger positive energy fraction or simple-zero requirement.
