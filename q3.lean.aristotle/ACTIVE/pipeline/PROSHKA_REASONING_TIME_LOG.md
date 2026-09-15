@@ -2776,11 +2776,13 @@ request_id: REQ-2026-09-15-FULLVPOS
 boundary_id: GOAL058_FULL_V_CANCELLATION_FIRST_POSITIVE_REPRESENTATION
 conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
 send_started_at: 2026-09-15T06:58:19Z
-completed_at: null
+completed_at: 2026-09-15T07:24:20.180461+00:00
 ui_reasoning_seconds: null
-wall_seconds: null
+wall_seconds: 1555.254460811615
+wall_time_source: app_read_thread_startedAt_completedAt
+native_started_at: 2026-09-15T06:58:24.926000+00:00
 answer_now_clicked: false
-status: SENT_NATURAL_RUN_VERIFIED_RESULT_PENDING
+status: ACCEPT_FULL_SOURCE_PHASE_CUTOFF_IDENTITY_AND_SUPPORT_EQUIVALENCE_ONLY
 request_commit: bf36fde15e53154ca3276acf509af662d51ba162
 request_sha256: 85ca0b0e497322a2dd929fd063788a1b63569d6cb5285b07397802d6492254bb
 result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FULLVPOS_2026-09-15.md
@@ -2789,5 +2791,7 @@ notes: >-
   One immutable GitHub notice delivered to the same verified idle living chat.
   Browser shows exact notice, Pro-Denkvorgang, empty composer, 6 Pro and Stop.
   Source reading is not independently observed. No duplicate or shortcut.
-  Full V target remains open; this record is delivery, not a proof result.
+  Completed response 66c0da89 received, fully read and independently accepted
+  only as exact representation/support equivalence. Actual theta SUPPORT and
+  full V remain open. Native completed turn and idle observed; no resend.
 ```
