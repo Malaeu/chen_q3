@@ -1,6 +1,6 @@
 {
   "request_id": "REQ-2026-09-15-SIZEBIASCOMP",
-  "status": "PREPARED_REVIEWED_NOT_SENT",
+  "status": "OPEN_PREPARED_REVIEWED_NOT_SENT",
   "source_base": "0a0483582d37a6ba8d5cb2f836ecae63d0ecd6c7",
   "review_class": "ADVERSARIAL_READ_ONLY",
   "reviewer": "/root/sibling5_check",
@@ -40,5 +40,13 @@
   "sent": false,
   "source_sign_progress": false,
   "RH_proved": false,
-  "canonical_admission": false
+  "canonical_admission": false,
+  "request_commit": "bea1abcd6baf5a171ceefa98b79548e528a2bf79",
+  "review_plan": {
+    "status": "REVIEW_DISPATCH_READY",
+    "sha256": "1f62998ada07f1a97affa4a5de0a4f7cdbee72f4d0c3b5d9f98d4b46f9fd62a4",
+    "holds": [],
+    "conversation_id_observed": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+    "phase_locator_note": "Inherited canonical locator is not the user-selected living mathematical chat. Standing explicit user-directed chat 6aa52001-4094-83eb-9520-01a09f54eff2 remains the destination, freshly observed idle. No canonical rebind."
+  }
 }

@@ -3,7 +3,7 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-15-SIZEBIASCOMP
-- STATUS: PREPARED_REVIEWED_NOT_SENT. Active full-V goal; one bounded transfer from the source-specific size-biased renewal law to the original weighted conditional form. Scalar squared tail factor 1/15 and full weighted scalar budget accepted; E_loss, V and RH remain open.
+- STATUS: OPEN. PREPARED_REVIEWED_NOT_SENT. Active full-V goal; one bounded transfer from the source-specific size-biased renewal law to the original weighted conditional form. Scalar squared tail factor 1/15 and full weighted scalar budget accepted; E_loss, V and RH remain open.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIZEBIASCOMP_2026-09-15.txt; SHA256 a03063accc09e787d3de1ca296de940e0aafe4b8a22195b9b2d6bd51b9b7eafc.
 - Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_SIZEBIASCOMP_2026-09-15.md; SHA256 3641f9d98ed653f2d78cd2b44d1527fdfdb7d924786abba7be7ae4dfae8282ad; complete original conditional report.
 - Source report: docs/Codex/REPORT_2026-09-15_HYPERBOLIC_SOURCE_COMPENSATION.md; SHA256 feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21. Review certificates under docs/Codex/certificates/HYPERBOLIC_SOURCE_COMPENSATION_20260915.json and SIZEBIASCOMP_REQUEST_20260915.json; exact independent CLEAN_DISPATCH.
