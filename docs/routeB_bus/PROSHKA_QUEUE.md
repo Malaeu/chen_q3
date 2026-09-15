@@ -3,7 +3,7 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-15-CRITICALSTRIP
-- STATUS: PREPARED_REVIEWED_NOT_SENT. Renewed user instruction to continue the analytic RH proof using existing results. Reopens only compact critical-strip exclusion for the fixed convergent gamma family; disproved full-plane real-zero preserver stays rejected.
+- STATUS: OPEN. Prepared, independently reviewed, not yet sent. Renewed user instruction to continue the analytic RH proof using existing results. Reopens only compact critical-strip exclusion for the fixed convergent gamma family; disproved full-plane real-zero preserver stays rejected.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_CRITICALSTRIP_2026-09-15.txt; SHA256 6c12d0fde7e76fe0f52b3c434f10c7e066153ed3e1bee8c974534f72ccfa0c34; 11699 bytes,156 LF,CR0,final LF.
 - Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_CRITICALSTRIP_2026-09-15.md; SHA256 87ee1824a66624588e1204c01784c59230a637ecc4791398c7e801d6e0769623; three complete source reports, exact copies independently verified.
 - Source: 5aba82c8108c19006c03d0fe207c38234ac0bbae; same-commit report docs/Codex/REPORT_2026-09-15_GAMMA_CRITICAL_STRIP_INTERFACE.md SHA256 97213adb97f5a5b8224ce1f4268e4afc186e15a125dd1f7b95cc57a4e0f8c5e0. Fixed-N band-count lemma and explicit convergence budget independently CLEAN_ANALYTIC_INTERFACE. C6 remains an unproved RH-equivalent source obligation.
