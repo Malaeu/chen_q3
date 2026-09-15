@@ -40,7 +40,7 @@
   "living_chat": "6aa52001-4094-83eb-9520-01a09f54eff2",
   "transport": "Owner-authorized GitHub exact payload; one short immutable link notice. No attachment or canonical phase rebind.",
   "idle_evidence": "Same browser1/tab2, completed NULLFIELD terminal AX49-50, empty composer AX61, 6 Pro AX63, voice/start controls and no Stop.",
-  "delivery_status": "PREPARED_NOT_SENT",
+  "delivery_status": "SENT_NATURAL_RUN_VERIFIED_RESULT_PENDING",
   "expected_response": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FULLVPOS_2026-09-15.md",
   "context_pack": {
     "generator": "scripts/build_proshka_brief.py",
@@ -53,5 +53,26 @@
   "canonical_admission": false,
   "RH_proved": false,
   "full_V_sign": "OPEN",
-  "counter_note": "Goal/request preparation does not complete a mathematical attempt or reset historical counters."
+  "counter_note": "Goal/request preparation does not complete a mathematical attempt or reset historical counters.",
+  "request_commit": "bf36fde15e53154ca3276acf509af662d51ba162",
+  "registered_review_plan": {
+    "status": "REVIEW_DISPATCH_READY",
+    "holds": [],
+    "evidence_sha256": "e02a7b74a84a9aee9f808d3daa61969bdf9188867b18d4632887639b1f493276",
+    "transport_note": "Inherited attachment/chat locator not rebound; explicit owner GitHub-only override selects same verified idle living chat."
+  },
+  "delivery": {
+    "send_started_at": "2026-09-15T06:58:19Z",
+    "send_count": 1,
+    "tool": "mcp__codex_app__send_message_to_thread",
+    "tool_result": "isError false; exact target threadId returned",
+    "notice": "Прочти https://github.com/Malaeu/chen_q3/blob/bf36fde15e53154ca3276acf509af662d51ba162/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FULLVPOS_2026-09-15.txt — общая цель: доказать полную V≥0; начни первый аналитический переход с учётом принятого NULLFIELD. Полный результат в GitHub, здесь SHA, путь и вердикт.",
+    "observed_by": "2026-09-15T06:59:39.697070+00:00",
+    "browser_evidence": "After one normal reload, browser1/tab2 exact living URL; AX40 exact FULLVPOS notice; AX46 Pro-Denkvorgang; AX52 empty composer; AX54 6 Pro; AX56 Antwort stoppen.",
+    "natural_reasoning_indicator_observed": true,
+    "source_reading_independently_verified": false,
+    "answer_now_clicked": false,
+    "duplicate_send": false,
+    "attachment_sent": false
+  }
 }

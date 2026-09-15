@@ -2767,3 +2767,27 @@ notes: >-
   identity and stronger-bound obstruction only. App idle and terminal notice
   observed. UI reasoning duration was not independently observed.
 ```
+
+
+## REQ-2026-09-15-FULLVPOS — shared full V goal
+
+```yaml
+request_id: REQ-2026-09-15-FULLVPOS
+boundary_id: GOAL058_FULL_V_CANCELLATION_FIRST_POSITIVE_REPRESENTATION
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+send_started_at: 2026-09-15T06:58:19Z
+completed_at: null
+ui_reasoning_seconds: null
+wall_seconds: null
+answer_now_clicked: false
+status: SENT_NATURAL_RUN_VERIFIED_RESULT_PENDING
+request_commit: bf36fde15e53154ca3276acf509af662d51ba162
+request_sha256: 85ca0b0e497322a2dd929fd063788a1b63569d6cb5285b07397802d6492254bb
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FULLVPOS_2026-09-15.md
+notes: >-
+  Exact reviewed request and owner working goal published together.
+  One immutable GitHub notice delivered to the same verified idle living chat.
+  Browser shows exact notice, Pro-Denkvorgang, empty composer, 6 Pro and Stop.
+  Source reading is not independently observed. No duplicate or shortcut.
+  Full V target remains open; this record is delivery, not a proof result.
+```
