@@ -2746,11 +2746,13 @@ boundary_id: GOAL058_FULL_THETA_NULL_FIELD_EXACT_ENERGY_TRANSFER
 conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
 send_started_at: 2026-09-15T06:08:50Z
 active_run_observed_at: 2026-09-15T06:09:31Z
-completed_at: PENDING
+completed_at: 2026-09-15T06:35:40.149118+00:00
 ui_reasoning_seconds: null
-wall_seconds: null
+wall_seconds: 1607.080118
+wall_time_source: app_read_thread_startedAt_completedAt
+native_started_at: 2026-09-15T06:08:53.069000+00:00
 answer_now_clicked: false
-status: SENT_ACTIVE_RUN_VERIFIED
+status: ACCEPT_TRACE_MATCHED_NULLFIELD_IDENTITY_AND_POSITIVE_SPLIT_OBSTRUCTION_ONLY
 request_commit: 28f76ddb940a70cbf5e48e813ae146e5517ceaf7
 request_sha256: 91a4f78502b1721bc90e1790f61423bea02151085ad31e7320911be67a42c96e
 result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLFIELD_2026-09-15.md
@@ -2760,4 +2762,8 @@ notes: >-
   app active. New reasoning text and source reading were not independently
   visible. No duplicate send, attachment, shortcut or mathematical result.
   Standing owner GitHub-only transport used; canonical phase not rebound.
+  Completed raw result fetched at 12529cdb71b1904282e624db390ea7debe120fb0;
+  full parent reading and exact independent intake accepted the named
+  identity and stronger-bound obstruction only. App idle and terminal notice
+  observed. UI reasoning duration was not independently observed.
 ```
