@@ -2,6 +2,14 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-15-SUPPORTSTABILITY
+- STATUS: OPEN. Source-support hunt completed; next exact analytic request prepared, not yet sent. W1 realizes the actual source transfer in H_v for v>1/2; W2 unweighted boundedness remains unproved.
+- Boundary: GOAL058_FULL_V_SOURCE_TRANSFER_UNWEIGHTED_STABILITY. Full goal remains V>=0 for all finite complex rows of the original theta source; no stronger positive energy fraction or simple-zero requirement.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SUPPORTSTABILITY_2026-09-15.txt; SHA256 47060b5c0ab6c62cb9b15888f87aeea029b765e29190c8ebe0acb96a76456fde; UTF-8, 7608 bytes, 98 LF, CR0, final LF. Source base d375efb4a755d5bcf3f65ae4392bdc6e40768310.
+- Same-commit report: docs/Codex/REPORT_2026-09-15_SOURCE_SUPPORT_HUNT.md; SHA256 9b059659b10948bed90d9df482cfe97e9cc229116e1db46b029bba81a22c4966. Independent mathematical review CLEAN by sibling5_check on exact bytes. Certificate records dispatch review separately.
+- Same six-field phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, observed idle with completed FULLVPOS. Owner GitHub-only transport: one immutable request link notice; no attachment, new chat or duplicate send.
+- Assigned new result only: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SUPPORTSTABILITY_2026-09-15.md on codex_mac/gamma-reciprocity-20260914. No producer edits to queue, goal, control or old reports. Full V/IC/ODD2/RH open; no canonical admission or source-sign counter reset.
+
 ## REQ-2026-09-15-FULLVPOS
 - STATUS: ANSWERED_ACCEPTED. Raw 66c0da89b5d5da291df694e7cfa1d319df1d2691, SHA256 3e51c432683640422e2052680e4c592fd39a8078f213b70ee5f1bb4c72d4a508, 63433 bytes/655 LF fully read and preserved. Sole independent ACCEPT_FULL_SOURCE_PHASE_CUTOFF_IDENTITY_AND_SUPPORT_EQUIVALENCE_ONLY. Exact source-phase map and V>=0 iff P+ U P-=0 accepted; the theta support condition, full V sign and RH remain open. Intake docs/Codex/REPORT_2026-09-15_FULLVPOS_INTAKE.md independently CLEAN. App completed 2026-09-15T07:24:20.180461+00:00, idle; no request pending. Earlier delivery/preparation lines below historical.
 - STATUS: IN_REVIEW. SENT_NATURAL_RUN_VERIFIED. One immutable request notice sent 2026-09-15T06:58:19Z; same browser chat shows exact message AX40, Pro-Denkvorgang AX46, empty composer AX52 and Stop AX56. Registered review-plan READY/holds[]. Request commit bf36fde15e53154ca3276acf509af662d51ba162. Mathematical response pending; earlier preparation line below is historical.

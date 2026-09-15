@@ -1,0 +1,61 @@
+{
+  "scope": "OWNER_AUTHORIZED_ISOLATED_ANALYTIC_HUNT_AND_STRATEGIC_REQUEST",
+  "source_base": "d375efb4a755d5bcf3f65ae4392bdc6e40768310",
+  "artifacts": {
+    "brief": {
+      "path": "docs/Codex/BRIEF_2026-09-15_SOURCE_SUPPORT_HUNT.md",
+      "sha256": "02500e10f1bd8763877f66e22901ae6faf823ea32f9eb898a41001d9edd46f7d",
+      "bytes": 3009,
+      "LF": 49,
+      "CR": 0,
+      "final_LF": true
+    },
+    "report": {
+      "path": "docs/Codex/REPORT_2026-09-15_SOURCE_SUPPORT_HUNT.md",
+      "sha256": "9b059659b10948bed90d9df482cfe97e9cc229116e1db46b029bba81a22c4966",
+      "bytes": 9870,
+      "LF": 191,
+      "CR": 0,
+      "final_LF": true
+    },
+    "request": {
+      "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SUPPORTSTABILITY_2026-09-15.txt",
+      "sha256": "47060b5c0ab6c62cb9b15888f87aeea029b765e29190c8ebe0acb96a76456fde",
+      "bytes": 7608,
+      "LF": 98,
+      "CR": 0,
+      "final_LF": true
+    }
+  },
+  "review": {
+    "class": "ADVERSARIAL_READ_ONLY",
+    "reviewer": "/root/sibling5_check",
+    "report_verdict": "CLEAN",
+    "report_sha256": "9b059659b10948bed90d9df482cfe97e9cc229116e1db46b029bba81a22c4966",
+    "request_verdict": "CLEAN_DISPATCH",
+    "request_sha256": "47060b5c0ab6c62cb9b15888f87aeea029b765e29190c8ebe0acb96a76456fde",
+    "report_result": "Exact xi normalization, shifted Schur multiplier, weighted T_v and conditional W2-to-SUPPORT implication accepted. W2 unproved. No source sign promotion.",
+    "request_result": "All finite complex rows, exact I/source pins, no RH/innerness/Pick/support premise, one assigned new response, GitHub-only same-chat transport."
+  },
+  "request_id": "REQ-2026-09-15-SUPPORTSTABILITY",
+  "boundary_id": "GOAL058_FULL_V_SOURCE_TRANSFER_UNWEIGHTED_STABILITY",
+  "living_chat": "6aa52001-4094-83eb-9520-01a09f54eff2",
+  "phase_key": {
+    "ROUTE_ID": "RouteB_TwoLevelSpectralLadder",
+    "FRONT_ID": "GOAL058_SECOND_EXPRESSION",
+    "SOURCE_OBJECT_FAMILY_ID": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
+    "TERMINAL_CONSUMER_ID": "published_Weil_criterion_on_all_complex_compact_smooth_tests",
+    "HONESTY_STATE": "CHALLENGER_NOT_RH",
+    "CONVENTION_LOCK_ID": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED"
+  },
+  "transport": "Owner GitHub-only override; one immutable link notice; no attachment or canonical phase rebind.",
+  "delivery_status": "NOT_SENT",
+  "expected_response": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SUPPORTSTABILITY_2026-09-15.md",
+  "full_V_sign": "OPEN",
+  "source_sign_progress": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "shelf_status": "Three INCOMPLETE freshness receipts reused, no index repair or absence claim",
+  "evidence_directory_outside_repo": "../source-support-hunt-20260915",
+  "counter_note": "One bounded hunt with exact source mapping and weighted transfer. No sign progress or historical counter reset; preparation/review/delivery are not additional mathematical attempts."
+}
