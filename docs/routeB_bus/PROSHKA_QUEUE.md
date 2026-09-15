@@ -3,7 +3,8 @@
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
 ## REQ-2026-09-15-JOINTSOURCE-Y
-- STATUS: OPEN. Explicit current user assignment: use additive TN infinity and exact reciprocal exponent 5/2 jointly; find and prove a fully sufficient Y mechanism before attempting its source proof. No hidden downstream assumptions; no presumption a third condition is necessary or sufficient.
+- STATUS: IN_REVIEW. SENT_NATURAL_RUN_VERIFIED. Single notice sent to exact living chat; browser AX57 shows request link, AX63 Pro-Denkvorgang, AX73 Stop. Request commit f5e1654b3d3179ca5c47f17171f47037fc1c8bae; full answer pending.
+- Preparation record: Explicit current user assignment: use additive TN infinity and exact reciprocal exponent 5/2 jointly; find and prove a fully sufficient Y mechanism before attempting its source proof. No hidden downstream assumptions; no presumption a third condition is necessary or sufficient.
 - Boundary: GOAL058_JOINT_SOURCE_PROPERTIES_CLOSED_SUFFICIENCY. Same six-field phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, freshly observed idle after completed SUPPORTSTABILITY.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_JOINTSOURCE_Y_2026-09-15.txt; SHA256 489b7efda64c594d1f98ffa89317261fc545a8a315b9e41b6f0aa31d711862dc; UTF-8, 16168 bytes, 187 LF, CR0, final LF.
 - Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_JOINTSOURCE_Y_2026-09-15.md; SHA256 ebd240e49b001802b7a40dd25c07bebb148b9b81a0daefd5cd006d43b0b8a961. Three full reports pinned to 82b1a89b753f996e6613649e42e5721376c5e329; historical instructions are not current assignments.
