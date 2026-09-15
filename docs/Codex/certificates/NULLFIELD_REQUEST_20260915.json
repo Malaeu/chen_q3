@@ -38,7 +38,7 @@
   "phase_relation": "Same six fields as completed GAMMABRANCH request, checked bytewise in parent preflight",
   "transport": "Owner-authorized GitHub exact payload; one short immutable link notice. No attachment; no canonical phase rebind.",
   "idle_evidence": "read_thread reports idle and completed GAMMABRANCH; browser1/tab2 same URL, terminal response AX52, empty composer AX63, Pro model AX65, no Stop control",
-  "delivery_status": "PREPARED_NOT_SENT",
+  "delivery_status": "SENT_ACTIVE_RUN_VERIFIED",
   "context_pack": {
     "generator": "scripts/build_proshka_brief.py",
     "scope": "two latest report snapshots, full lines, recent two-commit range, no defaults/diffs",
@@ -59,5 +59,28 @@
     "TERMINAL_CONSUMER_ID": "published_Weil_criterion_on_all_complex_compact_smooth_tests",
     "HONESTY_STATE": "CHALLENGER_NOT_RH",
     "CONVENTION_LOCK_ID": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED"
+  },
+  "request_commit": "28f76ddb940a70cbf5e48e813ae146e5517ceaf7",
+  "mathematical_result": "PENDING",
+  "registered_review_plan": {
+    "status": "REVIEW_DISPATCH_READY",
+    "holds": [],
+    "evidence_sha256": "8d48fc7bb40e7d3bbddb0bc37c7baf93f4d97b579101fd6208ce7439bc915dc0",
+    "transport_note": "Inherited canonical attachment/chat locator not rebound; standing owner GitHub-only instruction selects the same verified idle living chat."
+  },
+  "delivery": {
+    "send_started_at": "2026-09-15T06:08:50Z",
+    "send_count": 1,
+    "tool": "mcp__codex_app__send_message_to_thread",
+    "tool_result": "isError false; exact target threadId returned",
+    "notice": "Прочти https://github.com/Malaeu/chen_q3/blob/28f76ddb940a70cbf5e48e813ae146e5517ceaf7/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_NULLFIELD_2026-09-15.txt — проверь допустимую положительную константу и построй поле с энергией точно V, включая поправки и границу; полный результат в GitHub, здесь SHA, путь и RUN_/TRY_/KILL_.",
+    "app_status_observed_at": "2026-09-15T06:09:31Z",
+    "app_status": "active",
+    "browser_evidence": "After one normal reload, browser1/tab2 exact living chat URL; AX49 exact immutable NULLFIELD notice; AX55 empty composer; AX57 6 Pro; AX59 Antwort stoppen. Subsequent state unchanged.",
+    "natural_reasoning_text_observed": false,
+    "natural_reasoning_note": "Run is active; no new reasoning content or source reading independently observed. App turn summary still referred to the older completed request.",
+    "answer_now_clicked": false,
+    "duplicate_send": false,
+    "attachment_sent": false
   }
 }

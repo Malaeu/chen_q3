@@ -2737,3 +2737,27 @@ notes: >-
   Observation timestamp is not an exact send timestamp. No completed attempt
   or RH/IC/ODD2 claim follows from delivery.
 ```
+
+### 2026-09-15 — NULLFIELD exact source-built field request
+
+```yaml
+request_id: REQ-2026-09-15-NULLFIELD
+boundary_id: GOAL058_FULL_THETA_NULL_FIELD_EXACT_ENERGY_TRANSFER
+conversation_id: 6aa52001-4094-83eb-9520-01a09f54eff2
+send_started_at: 2026-09-15T06:08:50Z
+active_run_observed_at: 2026-09-15T06:09:31Z
+completed_at: PENDING
+ui_reasoning_seconds: null
+wall_seconds: null
+answer_now_clicked: false
+status: SENT_ACTIVE_RUN_VERIFIED
+request_commit: 28f76ddb940a70cbf5e48e813ae146e5517ceaf7
+request_sha256: 91a4f78502b1721bc90e1790f61423bea02151085ad31e7320911be67a42c96e
+result_pointer: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLFIELD_2026-09-15.md
+notes: >-
+  One immutable GitHub link sent to the same previously idle living chat.
+  Exact new notice, empty composer, Pro model and Stop control observed;
+  app active. New reasoning text and source reading were not independently
+  visible. No duplicate send, attachment, shortcut or mathematical result.
+  Standing owner GitHub-only transport used; canonical phase not rebound.
+```
