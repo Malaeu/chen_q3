@@ -1,0 +1,101 @@
+# Q3 history-limit repair — detached independent review
+
+Date: 2026-09-16
+
+## Scope and verdict
+
+Reviewed source-only repair from base `b6db6d587127de8d179c75975223a873745dffc7`
+to isolated candidate `d1a1c3d89daa04af8d40542a52168deeac3db1d0`.
+Only these tracked paths differ:
+
+- `orchestrator/workflow_runtime.py`
+- `orchestrator/tests/test_workflow_runtime.py`
+
+Two independent artifact passes found no unresolved substantive issue. The
+candidate is review-converged for the bounded history-reader defect. This is
+not a mathematical acceptance or proof claim, and the candidate is not
+installed in the canonical checkout.
+
+## Plan findings and implemented fixes
+
+| Original severity | Finding | Candidate fix |
+| --- | --- | --- |
+| HIGH | Compact publication still used the generic 4 MiB integration blob cap for `GOAL_HISTORY.md`. | `_team_integration_blob` uses the history-specific cap only for `RESUME_HISTORY_PATH`; ordinary integration blobs remain at 4 MiB. |
+| MEDIUM | History was read or concatenated before a history-specific capacity check. | `_resume_file` checks history size and uses a bounded `cap + 1` read; `resume_checkpoint` checks projected entry bytes before concatenation and before either dry-run or save writes. |
+| LOW | Bootstrap remote/candidate history was captured before a history size check. | `_team_bootstrap_manifest` uses `_team_integration_blob`, which runs `git cat-file -s` before blob loading. |
+
+The candidate adds `RESUME_HISTORY_MAX_BYTES = 64 * 1024 * 1024`. The generic
+`TEAM_READ_MAX = 4 * 1024 * 1024` remains the limit for private state and
+ordinary integration/evidence payloads. Archive format, byte preservation,
+owner/epoch checks, writer lock, CAS/readback, fsync, and proof gates are
+unchanged.
+
+## Exact provenance
+
+| Item | SHA-256 or Git ID |
+| --- | --- |
+| Base commit | `b6db6d587127de8d179c75975223a873745dffc7` |
+| Base tree | `f5418ad7c2cf55b95df6801068adb6cb782a2a8b` |
+| Candidate commit | `d1a1c3d89daa04af8d40542a52168deeac3db1d0` |
+| Candidate tree | `18d5531687f034d0ad353a24ada406f039d45e8e` |
+| Base `orchestrator/workflow_runtime.py` | `e5cce600f39415d3e67b4504d9f9f5cc3b896b628773832549e08ea753c048c9` |
+| Candidate `orchestrator/workflow_runtime.py` | `0c14fd2b64e53b9d7ea8b055676dac800f90109df35650ad4dc273ce8c8b3aa3` |
+| Base `orchestrator/tests/test_workflow_runtime.py` | `4b83e9c0b107ba950098dbe4d65838dfb7d14206ed36c053d2bf75859c41c9ec` |
+| Candidate `orchestrator/tests/test_workflow_runtime.py` | `7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a` |
+
+At review time the canonical checkout remained at the base commit. Its
+`docs/Codex/GOAL_HISTORY.md` was 4,210,145 bytes with SHA-256
+`039675f09f2020c341bfa43dedfe923f84ec6446c35a89814ff6685452d48119`; its
+`docs/Codex/RESUME.md` had SHA-256
+`4b97eef75fd4e72a718c5b625e4ac1380a33b8b37d1eced9ed31dc4d004d8c89`.
+
+## Independent checks
+
+The isolated checkout was at the candidate commit, had no uncommitted diff,
+and passed `git diff --check` for the base-to-candidate change.
+
+The following tests were run from the exact clean isolated candidate and all
+passed:
+
+```text
+python3 -m unittest -v \
+  orchestrator.tests.test_workflow_runtime.ResumeCheckpointTests.test_history_budget_rejects_before_writes_and_accepts_exact_limit \
+  orchestrator.tests.test_workflow_runtime.ResumeCheckpointTests.test_existing_over_budget_history_rejects_even_identical_replay \
+  orchestrator.tests.test_workflow_runtime.ResumeCheckpointTests.test_history_loader_checks_size_before_read_and_bounds_growth \
+  orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_large_history_current_next_checkpoint_and_publication_base \
+  orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_large_history_continuation_keeps_other_read_limits \
+  orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_bootstrap_history_budget_precedes_remote_and_candidate_blob_reads
+```
+
+Result: 6 tests passed in 3.093 seconds.
+
+```text
+python3 -m unittest -v \
+  orchestrator.tests.test_workflow_runtime.ResumeCheckpointTests.test_corrupt_recovery_exact_archive_preserves_bad_bytes_and_requires_reconcile \
+  orchestrator.tests.test_workflow_runtime.ResumeCheckpointTests.test_interruption_at_each_durable_stage_replays_exactly \
+  orchestrator.tests.test_workflow_runtime.ResumeCheckpointTests.test_writer_lock_collision_and_symlink_hold \
+  orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_compact_publication_intake_checkpoint_reserve_commit_push_confirm \
+  orchestrator.tests.test_workflow_runtime.TeamRuntimeTests.test_bootstrap_publish_first_v1_remote_succeeds_without_force_or_lease
+```
+
+Result: 5 tests passed in 18.968 seconds.
+
+The earlier 95-test log predates the candidate commit and was excluded as
+evidence for its committed bytes.
+
+Observed later, from the parent/implementer rather than this independent
+review: the full `ResumeCheckpointTests` plus `TeamRuntimeTests` run completed
+with 97 tests passing in 203.421 seconds. Its log was
+`/home/chirurgie/.cache/q3-history-limit-20260916.tests.log` with SHA-256
+`146c8c62520f61c7678cdb81f1f583531b6d0187a66c868e8ec359689ec38968`.
+
+## Review passes
+
+| Pass | Result |
+| --- | --- |
+| Plan 1 | HIGH compact-publication and MEDIUM early-cap findings required fixes. |
+| Plan 2 | Prior HIGH and MEDIUM fixed; LOW bootstrap pre-read fix required. |
+| Plan 3 | Clean plan pass. |
+| Plan 4 | Clean plan pass. |
+| Artifact 1 | Clean exact-candidate pass. |
+| Artifact 2 | Clean exact-candidate pass. |
