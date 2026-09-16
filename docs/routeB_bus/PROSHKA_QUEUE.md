@@ -2,6 +2,23 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-16-FINITEPREFIX · Fixed finite renewal prefixes · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FINITEPREFIX_2026-09-16.txt`
+- Boundary: `GOAL058_FIXED_FINITE_RENEWAL_PREFIX_SIGN_AUDIT`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: independently accepted full K2 obstruction and complete pinned SIZEBIASCOMP/A1/POINCARECOMP input. General m remains UNVERIFIED.
+- Registered prediction: one symbolic all-m recurrence may exclude every universally positive finite prefix; no conclusion about terminal V.
+- Delivery mode: explicit user-authorized same living chat and research branch; one immutable GitHub notice.
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `37e6a29aff33914966bbdb8f0b21c2e3517b4bbd` / `12310` / `155` /
+  `fa70d01c75259edb82cfb014220e673df6e168b82d8ba2afa649dc73eee931be` /
+  `d2b82acb3d67e3c512fe6cc20a14741ba1b86e84` / `LF`
+
+- STATUS: PREPARED_REVIEWED_NOT_SENT. CLEAN_DISPATCH in docs/Codex/certificates/FINITEPREFIX_REQUEST_20260916.json. Context docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_FINITEPREFIX_2026-09-16.md; SHA256 3d036ab0615469ec3fda0187b48079e9e5c68b9c14f1954959e060b2401df6ee.
+- Assigned response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FINITEPREFIX_2026-09-16.md. Scope: every fixed finite depth, all finite complex rows; no serial m=3,4 retries, no canonical changes, no RH claim.
+
 ## REQ-2026-09-16-POINCARECOMP · Conditional Poincare to signed full compensation · ANSWERED
 
 - `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
