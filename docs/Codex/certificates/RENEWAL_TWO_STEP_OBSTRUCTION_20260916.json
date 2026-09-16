@@ -1,0 +1,21 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "bb79d6b31b77ff7e341bd5cefa6a5ffe5cf9f528",
+  "reviewer": "/root/sibling5_check",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "numerical_source_checks": 0,
+  "verdict": "ACCEPT_TWO_STEP_ALL_ROW_POSITIVE_BLOCK_OBSTRUCTION_ONLY",
+  "report_path": "docs/Codex/REPORT_2026-09-16_RENEWAL_TWO_STEP_OBSTRUCTION.md",
+  "report_sha256": "7a3e0972ca8e2306de49f048a7b31c4eb10c4f0217c35837105eb3a9d8c55a90",
+  "candidate_sha256": "8016c6a8a1e449e8a29db56f3421ef6180a7d88cb218f2078e62f151b2d0f848",
+  "review_sha256": "7c4d7a1a65ee973451f2fa61feaaec1cf480684174334bce3a84489cc6921dbd",
+  "review_text": "# Independent review: two-step renewal block\n\nREVIEWED_CANDIDATE_SHA256: 8016c6a8a1e449e8a29db56f3421ef6180a7d88cb218f2078e62f151b2d0f848\nVERDICT: ACCEPT_TWO_STEP_ALL_ROW_POSITIVE_BLOCK_OBSTRUCTION_ONLY.\n\n## Source-pin readback\n\nThe four cited source hashes match the current files: plan f614fa...,\nSIZEBIASCOMP raw 784e16..., hyperbolic source feeb23..., and analytic\npropagation fb83c2.... No source drift was found.\n\n## Mathematical checks\n\n- The change from H to HT_2 gives the stated density v. After u=t+w, the\n  factor is sqrt(1+w/t)-1, yielding the global bound in (4) and the limit\n  t e^(pi t)v(t)->2. The convolution split then gives q_2/r~2 log t and the\n  logarithmic global majorant; the zero-end estimate is sufficient for the\n  convolution and no endpoint mass is omitted.\n- The diagonal rescaling has the correct a power, cutoff u>=a, and\n  log(t)+2x=log u. Its normalized dominated limit is valid. Reciprocity\n  changes the lower-half contribution to -u^(5/2)r(u)^2 log u, so J<0\n  exactly. Thus K_2(x,x)<0 for sufficiently negative x.\n- The full r series has the correct coefficient 4*pi^2 n^4 zeta-6*pi n^2;\n  it supplies the compact complex majorant for K_2 without dividing by a\n  complex r. A1 applies to the resulting quadratic, jointly holomorphic\n  kernel and returns a finite complex negative row inside I.\n\nThe conclusion is bounded exactly as stated: it rejects universal all-row\npositivity of the first-two-increment block. It neither identifies a rank-two\nrow, nor proves a negative terminal V row, nor creates a new full sign claim.\n",
+  "publication_difference": "Only STATUS changes after exact-payload review.",
+  "parent_check": "Independently derived density of H*T, tilted 2/t tail, q2/r~2log(t), global logarithmic majorant, diagonal a-log scaling, negative reciprocal Mellin moment, and joint holomorphic full-source bound before A1.",
+  "scope": "Some finite complex K2 row in every nonempty negative open interval is negative; no rank bound and no negative original V witness.",
+  "counter_effect": "One source-specific two-step-prefix candidate rejected. Analytic existence proof, source/domain repair and review are one construction package; historical counters not reset. General m remains unverified."
+}

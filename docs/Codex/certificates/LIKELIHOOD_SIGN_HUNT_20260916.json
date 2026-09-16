@@ -1,0 +1,255 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "bb79d6b31b77ff7e341bd5cefa6a5ffe5cf9f528",
+  "reviewer": "/root/sibling5_check",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "numerical_source_checks": 0,
+  "verdict": "ACCEPT_SOURCE_VERIFIED_PARTIAL_ANALOGUE_ONLY",
+  "report_path": "docs/Codex/REPORT_2026-09-16_LIKELIHOOD_SIGN_HUNT.md",
+  "report_sha256": "d19fe80a88f8fab8ffae766c2609c656383d97a84200c5d2f8c8d2a2950a013a",
+  "review_sha256": "a900ff7ce86b9815b6bc7390bf8b56d62ed7b6380c8f656c3872e216c4bf6586",
+  "review_text": "# Independent discovery-intake review: likelihood sign hunt\n\nRESULT_SHA256: d19fe80a88f8fab8ffae766c2609c656383d97a84200c5d2f8c8d2a2950a013a\nSHELF_RECEIPTS_SHA256: b05de4906daf0b5b96caf7f631aa4c47a7c4759640d14dfb00be0c9fb2608538\nDMS_HTML_SHA256: f0490bf5ccb49431fa4d13041f2c9038b07cdf1d39d915abc0a7b96514d73747\nDMS_HTML_BYTES: 573643\n\nVERDICT: ACCEPT_SOURCE_VERIFIED_PARTIAL_ANALOGUE_ONLY.\n\nThe DMS source identifies an abstract hypocoercive modified-energy mechanism\nunder H1--H4 and Theorem 2; the short quoted opening is faithful. The intake\ndoes not attribute its own map to DMS or claim that DMS supplies the required\nsource fit.\n\nFor H=L2(eta), Pi=C and L=C-I,\n  -Re <LG,G> = ||(I-C)G||^2\nis exact because C is an orthogonal conditional-expectation projection. This\nis only microscopic dissipation. It survives the Gaussian negative-V control,\nso cannot discriminate the actual theta target. No skew transport, operator\ndomain, macroscopic coercivity, boundary treatment, or identity with the\nactual signed V/micro term is constructed.\n\nAll three recorded shelf queries carry INCOMPLETE status from freshness\nvalidation; the report correctly treats this as neither a no-hit nor an\nabsence result. The return to the separately specified K2 test is a bounded\nplanning statement, not a claimed result. No theta sign supplier, V witness,\nor RH step is introduced.\n",
+  "shelf_receipts": [
+    {
+      "dictionary": "statistics",
+      "log": "statistics.log",
+      "log_sha256": "f36374e1d24bf4bf8631d7d5f5dbdf3cdfbd77294c548d37a45800a6c8df0922",
+      "exit_code": 2,
+      "receipt": {
+        "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "6a2873c2c2a59340b280a6bfcaeba2d5096d326786b9d89122a39ec48330f966",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+            "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "D0AnchorFloorFromUnprojectedMassNormRatio q3.lean.aristotle/Q3/Proofs/RouteB/D0AnchorFloor.lean:167",
+            "metadata_sha256": "b0a43d72fd9cc0aec1e3eea8cc144df94c3bf0799a185df02fca800a53c1918c",
+            "provider": "knowledge-db",
+            "provider_id": "49ebca1ed12f05ec9ab531fd11885f94c72b125134b6063ca507f1cb70fdb905",
+            "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+            "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+            "title": "D0AnchorFloorFromUnprojectedMassNormRatio q3.lean.aristotle/Q3/Proofs/RouteB/D0AnchorFloor.lean:167",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "CenteredTrialCriticalMomentRatio Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean",
+            "metadata_sha256": "6af5dd5e02179f46f0b67d5261b3f3ef16e1193e300b58396ce6094fb1c519cb",
+            "provider": "lean-index",
+            "provider_id": "b8648a6fa4aab160245a70bc2271959d53012da523adfa7bbb64ebafbed0ae05",
+            "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+            "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+            "title": "CenteredTrialCriticalMomentRatio Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "D0AnchorFloorFromUnprojectedMassNormRatio Q3/Proofs/RouteB/D0AnchorFloor.lean",
+            "metadata_sha256": "2d2770708d39062044d684c99083cf8feb5f81cf6d2dc4e2e08b3dbe88710e6f",
+            "provider": "lean-index",
+            "provider_id": "caa7fb8f4240831186369c7fdd10e087104b618e2dc7ac0bea41c8c0995114e0",
+            "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+            "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+            "title": "D0AnchorFloorFromUnprojectedMassNormRatio Q3/Proofs/RouteB/D0AnchorFloor.lean",
+            "url": "aristotle_proofs.db"
+          }
+        ],
+        "external_lean": "DEFERRED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 2,
+            "provider": "local-shelves",
+            "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+            "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+            "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "Blackwell sufficient statistic chi-square likelihood ratio covariance",
+        "query_sha256": "d01c46bdf3aea89e89b88bd5e07d001c784d4d36d2bc92a600329a0bebddda64",
+        "schema": "q3_ask_local_receipt.v1"
+      }
+    },
+    {
+      "dictionary": "operators",
+      "log": "operators.log",
+      "log_sha256": "f7b81b35d97d365704208eafca9960795abefe5f9a405a56f78df11e82d30a89",
+      "exit_code": 2,
+      "receipt": {
+        "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "4cf1b39e41e457eb733188d1b3779c5aba9c01fdab63d8e3233150bba60e2d3b",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+            "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "ambient_residual_eq_compressed_residual_add_leakage q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean:30",
+            "metadata_sha256": "90f89ebd06e0293d9a7d027d6a415d644d979b83fc07e3b670dbfa83e867983d",
+            "provider": "knowledge-db",
+            "provider_id": "decf9ea7429402509eceb26858e1f86bd611de1f8d57b9ba650eb02f94fd4a38",
+            "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+            "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+            "title": "ambient_residual_eq_compressed_residual_add_leakage q3.lean.aristotle/Q3/Proofs/RouteB/AmbientResidualSplit.lean:30",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "IsSourceArchimedeanShiftedWeightedGraphCore Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+            "metadata_sha256": "f48a3f188d0c241fdeb683dddf89ac23a11e9d521b98a379534003623060c2c4",
+            "provider": "lean-index",
+            "provider_id": "a2953bbb4792433428ef9a7086c217c52f71745a18c33e55a1b216483a5a2c80",
+            "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+            "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+            "title": "IsSourceArchimedeanShiftedWeightedGraphCore Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "SourceWeilGraphCarrier Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+            "metadata_sha256": "9f4bf7206be25344f2ab4a2093139acb8c265e6fbd28b739205be18c0b6d1693",
+            "provider": "lean-index",
+            "provider_id": "84d754e4e6bef0d7e6d0da90a95783bbbd0a6796a27f9c27baf0bd4857124fae",
+            "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+            "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+            "title": "SourceWeilGraphCarrier Q3/Proofs/RouteB/D0PstarSourceWeilOddTailGraphOperator.lean",
+            "url": "aristotle_proofs.db"
+          }
+        ],
+        "external_lean": "DEFERRED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 2,
+            "provider": "local-shelves",
+            "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+            "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+            "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "J-contraction Krein Riccati invariant graph compressed anticommutator",
+        "query_sha256": "9eb27282cc0782bdfd2c4b3cfc6359273061335b2b0130c23f010fdb8b209b6e",
+        "schema": "q3_ask_local_receipt.v1"
+      }
+    },
+    {
+      "dictionary": "analysis",
+      "log": "analysis.log",
+      "log_sha256": "7c6b19114cb78811b60d86792a9b2004788d26dfef5d9128e838944dc826fd3f",
+      "exit_code": 2,
+      "receipt": {
+        "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "5334b7d367df97c340798ce2df4ea9bea840ede965d6b54ff76a2f217084bbb1",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+            "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+            "metadata_sha256": "e2f5bdf74f3e56c9d4fac4cea933d9cc3d3d1f0ceaba0f8928b8cb7b4aa63d26",
+            "provider": "knowledge-db",
+            "provider_id": "2eb3496726b5c00c739fd0ad26943c2653270768a73e80017f93bbeb0f3b3e1c",
+            "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+            "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+            "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
+            "metadata_sha256": "274a12cc4125b01aa08f5d0ade153145ef97d96eecec58a3b39f734c4bf2026d",
+            "provider": "lean-index",
+            "provider_id": "bf4399aa946d2d0a27edccfe67824c037b3cb8b3c1b441d56913ca8e2b24b740",
+            "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+            "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+            "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "IsSimpleEvenGround Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+            "metadata_sha256": "a9257a4aecec8728216241a1c63d0946a18033269091732ed1034f27232234d7",
+            "provider": "lean-index",
+            "provider_id": "e54861a170c28d65e95ba9621ff4c1abe4c857db5bcb1bdb05e655e236b90069",
+            "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+            "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+            "title": "IsSimpleEvenGround Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean",
+            "url": "aristotle_proofs.db"
+          }
+        ],
+        "external_lean": "DEFERRED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 2,
+            "provider": "local-shelves",
+            "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+            "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+            "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "hypocoercivity intertwining commutator mixed Dirichlet ground state",
+        "query_sha256": "57e5d0e8adfc866cad3332c8bd56dbfeb89c18db144779d390a9d90368cf93bd",
+        "schema": "q3_ask_local_receipt.v1"
+      }
+    }
+  ],
+  "source": {
+    "url": "https://arxiv.org/html/1005.1495v1",
+    "sha256": "f0490bf5ccb49431fa4d13041f2c9038b07cdf1d39d915abc0a7b96514d73747",
+    "bytes": 573643,
+    "file": "DMS_1005.1495v1.html",
+    "locator": "section 1.3, assumptions H1-H4, Lemma 1, Theorem 2",
+    "retrieved": "2026-09-16T08:46:31.471947+00:00",
+    "use": "PARTIAL_ANALOGUE_ONLY; not a theta theorem"
+  },
+  "source_local_artifact": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/poincare-compensation-20260916/likelihood-sign-hunt/DMS_1005.1495v1.html",
+  "parent_check": "Read primary section1.3 H1-H4/Theorem2, checked exact quote and the L=C-I projection identity; no transport or V identification supplied. All shelf results incomplete.",
+  "workflow_issue": "Existing foreign q3_docs freshness failure retained; no index repair or absence claim. Blackwell DOI retrieval failed; lead excluded."
+}
