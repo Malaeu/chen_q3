@@ -1,0 +1,67 @@
+{
+  "schema": "q3_isolated_proshka_dispatch_review.v1",
+  "request_id": "REQ-2026-09-16-COUPLEDFLUX",
+  "boundary_id": "GOAL058_COUPLED_FULL_SOURCE_LOCAL_FLUX_COMPENSATION",
+  "status": "CLEAN_DISPATCH_NOT_SENT",
+  "source_base": "0146634bb0823f7411c79a6442479ebf0cd49db5",
+  "request_path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COUPLEDFLUX_2026-09-16.txt",
+  "request_sha256": "8ec6d3949d71ed4e9d3f3532903067f6006bbfe72508104ca94aa996fccc4ba3",
+  "request_bytes": 13005,
+  "request_LF": 163,
+  "context_path": "docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_COUPLEDFLUX_2026-09-16.md",
+  "context_sha256": "0c67497a303135b7636e2dcc1acf27fa60a93c0d3f9525724e7c4b4a7b7330d4",
+  "manifest": {
+    "source_base": "0146634bb0823f7411c79a6442479ebf0cd49db5",
+    "context_path": "docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_COUPLEDFLUX_2026-09-16.md",
+    "context_sha256": "0c67497a303135b7636e2dcc1acf27fa60a93c0d3f9525724e7c4b4a7b7330d4",
+    "context_bytes": 58963,
+    "context_LF": 1106,
+    "sources": [
+      {
+        "path": "docs/Codex/REPORT_2026-09-15_HYPERBOLIC_SOURCE_COMPENSATION.md",
+        "sha256": "feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21",
+        "bytes": 17381,
+        "LF": 228
+      },
+      {
+        "path": "docs/Codex/PLAN_2026-09-16_FIVE_FULL_V_CANDIDATES.md",
+        "sha256": "f614fa57901954d7fc1716965fe81250e6d8a02f6ad800face52823be8721cc2",
+        "bytes": 9889,
+        "LF": 174
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-16_FINITEPREFIX_INTAKE.md",
+        "sha256": "7a6e19ba1235fc51ea04450076e4b3f94e6fd024e4aa2d61dee4cd6ae5682586",
+        "bytes": 5583,
+        "LF": 127
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-16_K2_LEADING_COMPENSATION.md",
+        "sha256": "7c7a8bef3ba1a2f8a18d8482fab6075c915d907e5145593e9102a51c76a3a4ef",
+        "bytes": 13098,
+        "LF": 378
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-16_POINCARECOMP_INTAKE.md",
+        "sha256": "7204afc827b61abfc5683f507724cfa08e5fbd7accdc265474d34f6a7f2dc977",
+        "bytes": 6112,
+        "LF": 117
+      },
+      {
+        "path": "docs/Codex/certificates/HYPERBOLIC_SOURCE_COMPENSATION_20260915.json",
+        "sha256": "a1770f2de7ef6917e396709b86a95538e6c7b6ea3329bc0ac4cf76b9a35c6c5f",
+        "bytes": 5277,
+        "LF": 35
+      }
+    ]
+  },
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "3a39851c026d080260138382a76fbf1fad97e53438a6f67449647a700b78f038",
+  "review_text": "# Independent dispatch review — COUPLEDFLUX\n\n- **Request SHA-256:** `8ec6d3949d71ed4e9d3f3532903067f6006bbfe72508104ca94aa996fccc4ba3`\n- **Context SHA-256:** `0c67497a303135b7636e2dcc1acf27fa60a93c0d3f9525724e7c4b4a7b7330d4`\n- **Manifest SHA-256:** `4c644dcbf88008ac789f1e3ca9a9af5559119f9437c26d18df7e880d7f3faa40`\n\n**VERDICT: CLEAN_DISPATCH.**\n\nThe context contains exactly six complete framed records. Each decoded frame matches its declared path, byte count, LF count, and SHA-256 in the manifest.\n\nThe request retains the exact original class: arbitrary finite complex rows with nodes in `I=(-log(2)/2,0)`, the complete source, physical half-line, and physical endpoint traces. The specialized ladder identities are correct: for `alpha=2`, the coefficients are `6` and `2 pi`; for `alpha=4`, they are `20` and `8 pi`.\n\nIt correctly asks only for a source-derived coupled local-flux mechanism at `k=0`. It explicitly rejects raw all-`k` monotonicity, serial `alpha=6,8,...` exploration, an assumed positive root, and any inference from finite-prefix obstruction or leading compensation to terminal `V`. The possible positive decomposition is stated as a sufficient outcome to prove, not as a premise. No unproved success, terminal-V sign, or RH claim is advertised.\n",
+  "parent_check": "Read full L11/L12 source and its accepted certificate; reproduced alpha2/4 constants, distinguished local k flux from X boundary, preserved all source rows, known kills, and strict bounded stop on unpaid next channel.",
+  "full_V_proved": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+  "transport": "User-authorized GitHub full payload plus one same-chat immutable notice; no attachment or new chat."
+}
