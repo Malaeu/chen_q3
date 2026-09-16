@@ -1,0 +1,1597 @@
+REQUEST_ID: REQ-2026-09-16-RESOLVENTGRAM
+BOUNDARY_ID: GOAL058_FULL_SOURCE_RESOLVENT_GRAM_TO_WEIL_KERNEL
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+SOURCE_BASE: b02b477c3b5af44af6ac7259bac8d4aa9fd6d369
+DELIVERY_CHAT: 6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+1. One bounded source-to-consumer attempt
+
+Use the already positive resolvent Gram kernel of the COMPLETE square-rate
+source, together with its exact reciprocal identity, to seek a positive
+representation of the exact Weil atom kernel below. This is a new proposed
+input kernel, not another request to prove log-PF, tilted-PF, a zero-free
+finite Mellin family, or a generic positive auxiliary distribution.
+
+The previous JOINTSOURCE-Y request produced a false dilation-averaged LP
+premise, not a rejection of every use of the two source properties. The
+current attempt is limited to the explicit source kernel G_src in section 2
+and the exact consumer K_2 in section 3. Keep one source-to-consumer map in
+view. Do not substitute a new sequence of unpaid energies or stronger
+properties that the source has already failed.
+
+The objective remains full V>=0 on ALL finite complex families. Deriving a
+conditional criterion, a correct identity, or a new residual does not meet it.
+If the map fails, identify what was lost and its precise mathematical scope.
+
+2. Exact source and a worked all-order positive input
+
+lambda_n=pi*n^2, n>=1. Let r be the density of
+ T=sum_(n>=1) Gamma(2,1)/lambda_n,
+with independent summands. Retain every summand. Its Laplace transform is
+ L(s)=product_(n>=1)(1+s/lambda_n)^(-2), Re s>0.
+Set
+ P(s)=1/L(s)=[sinh(sqrt(pi*s))/sqrt(pi*s)]^2,
+ A_src(s)=P'(s)/P(s)=2 sum_(n>=1)1/(lambda_n+s).
+The square-root notation in P denotes its entire power series.
+
+For Re z,Re w>0 define
+ G_src(z,w)=2 sum_(n>=1)1/[(lambda_n+conjugate(z))*(lambda_n+w)].
+This is an independently constructed common Gram kernel:
+ sum_ij conjugate(a_i) G_src(z_i,z_j) a_j
+   =2 sum_(n>=1)|sum_j a_j/(lambda_n+z_j)|^2 >=0.       (S1)
+It holds for EVERY finite complex family. The sums converge uniformly on
+compact subsets because lambda_n grows as n^2. Equivalently G_src is the
+negative divided-difference kernel of the source Stieltjes function A_src.
+No statement about xi zeros is used in S1.
+
+The other exact source information is
+ r(t)=sum_(n>=1)(4*pi^2*n^4*t-6*pi*n^2) exp(-pi*n^2*t),
+ r(1/t)=t^(5/2)r(t), Re t>0, with the principal power,
+ r(u-v) has nonnegative ordered minors of EVERY size.
+Phi(x)=exp(5*x/2)r(exp(2*x)) is even and positive on R, holomorphic for
+|Im x|<pi/4, with full differentiated double-exponential tails on closed
+substrips. Its normalizations are A_norm=||Phi||_2 and f=Phi/A_norm.
+
+The new kernel is a positive square already available from the actual
+rates. It is not the kernel of the logarithmic source or the reciprocal of
+xi. These objects must never be identified merely because each has a
+Stieltjes/Gram/Thorin name. The role of the exact lattice and reciprocal
+identity must be visible in any proposed transport.
+
+3. Exact terminal kernel, in a zero-free domain paid without RH
+
+Use F(z)=integral_R f(x)exp(-izx)dx=xi(1/2-iz)/A_norm.
+Fix h=2. F(u+2i) is nonzero for every real u by the Euler product at
+Re s=5/2. Therefore the following ratios are unconditionally defined:
+ R_2(u)=i F'(u+2i)/F(u+2i)=xi'(5/2-iu)/xi(5/2-iu),
+ K_2(u,v)=[conjugate(R_2(u))+R_2(v)]/[4+i(u-v)].        (S2)
+
+FULL_SIGN_TRANSFER_AUDIT, sections 3-8 and its independent acceptance,
+proves the equivalence between all finite K_2 matrices being PSD, the
+original all-test Weil sign, and full V positivity. The finite diagonal
+congruence by F(u+2i), Fourier transfer, form-domain density and BOTH pole
+terms are paid there. Do not introduce a globally bounded inverse Fourier
+multiplier or drop an archimedean/prime/boundary term.
+
+The original form remains
+ V(x,y)=integral_0^infinity(2X+x+y)f(X+x)f(X+y)dX,
+ V[c]=sum_ij conjugate(c_i)V(x_i,x_j)c_j,
+for arbitrary finite complex rows, including repeated nodes. All real
+nodes are an allowed exact consumer; the project's interval
+I=(-log(2)/2,0) suffices only with the already proved analytic propagation.
+
+4. The operation to try, and evidence that would count
+
+Seek an explicit positive integral/congruence transporting S1 to S2,
+using the Mellin map and the SAME source's reciprocal law. For example a
+source-built feature map into the space carrying S1, possibly enlarged by
+an independently nonnegative boundary form, must reproduce K_2 exactly.
+The feature map, weights and boundary conditions must be constructed from
+the source; defining them through a presumed square root of K_2 or V is
+circular. The map must work uniformly as a formula for every finite row,
+although its domain estimates may depend on that row.
+
+Before claiming positivity, write the actual transformed expression and
+justify its sums, integrals and domains. A positive input kernel does not
+make a quotient or a logarithmic derivative of its Mellin integral positive.
+If such a quotient introduces a covariance, a mixed term or an inverse,
+keep it and prove its contribution in the TOTAL expression. Do not count
+the reappearance of the original sign question as a new supplier.
+
+Do not assume a universal preserver exists for all rate sequences. Exact
+source-specific identities are allowed and preferred when necessary. For
+any genuinely broader theorem, list every hypothesis before applying it.
+If claiming that joint TN-infinity plus the exponent-5/2 reciprocity is
+insufficient, the counterexample must obey BOTH conditions and the needed
+analytic/tail hypotheses. A negative sign for an auxiliary kernel is not
+a negative original V witness. Distinguish those conclusions explicitly.
+
+If a published mechanism is used, read its primary theorem and state the
+exact source/domain/quantifier map. Do not infer validity from a paper's
+claimed RH proof. A theorem whose unproved premise is the central GGC or
+Stieltjes property is an RH-strength criterion, not a supplied theorem.
+
+5. Reconciled results: these are filters, not fresh tasks
+
+- MELLINEDGE c63b1ea7 is independently accepted: the tested raw finite
+  gamma family cannot supply any unbounded globally zero-free subsequence.
+  This excludes that EDGE mechanism, not the full xi limit or V sign.
+- Direct log-PF is false. Every fractional power tilt t^beta*r with
+  0<beta<1 has a negative ordered additive 4-minor, including beta=1/4.
+- JOINTSOURCE-Y's sinc-squared dilation average violates a necessary LP
+  coefficient inequality on the actual source. Do not reuse it.
+- A positive, even infinitely divisible reciprocal dual is too weak:
+  the explicit negative-V Gaussian control already has those properties.
+  A central Stieltjes/GGC representation would suffice but is unproved.
+- Polson 1806.07964v7 equation38 contradicts the actual source at alpha2,s0;
+  1804.10043v8 Theorem14(ii) and equation30 fail elementary tests. These
+  claims cannot supply the missing positivity-preserving map.
+- New independent classification b02b477c: among full integer shapes
+  sum Gamma(m)/(pi*n^2), any positive rescaling satisfying an exact
+  reciprocal density law forces m2, scale1, exponent5/2. Higher ladder
+  levels do not inherit the original reciprocity even after rescaling.
+- Entrywise bounds, rank<=2, signed telescope convergence, and positive
+  auxiliary energies do not give the full Hermitian sign.
+- The prior Bessel multiplier closure and direct Rosati/unitary readings
+  are excluded in their recorded scopes. Do not reopen them without an
+  explicit different map and a proved new hypothesis.
+
+These results do NOT disprove the proposed exact transport from S1 to S2.
+That transport is the sole bounded question here. If no new map or lemma
+is obtained, report that plainly; do not produce a new label for S2>=0.
+
+6. Output and scope
+
+Return a full analytical report with:
+(a) the exact proposed source-to-consumer operation;
+(b) proof of its identity/domain and the sign mechanism, or its first
+    precise failure, retaining all corrections;
+(c) where S1, reciprocity and the exact rates each do mathematical work;
+(d) the complete remaining dependency list and a scoped verdict.
+
+Use TRY_RESOLVENTGRAM_EXACT_TRANSFER if a genuinely new exact bridge is
+proved (clearly conditional if its sign remains open), or a scoped
+KILL_RESOLVENTGRAM_<MAP> if a specified map is disproved. A proof of the
+full sign must include all finite complex families and the final transfer;
+it still awaits independent checking. Do not claim RH from a candidate.
+
+Commit/push the full response ONLY to
+docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_RESOLVENTGRAM_2026-09-16.md
+in Malaeu/chen_q3, branch codex_mac/gamma-reciprocity-20260914.
+Fetch the current branch before writing; other agents share the project.
+Do not revert others' work or edit control, goals, queue or prior reports.
+In this same chat return one line: COMMIT_SHA | path | verdict and scope.
+If GitHub publication is unavailable, provide the exact downloadable UTF-8
+Markdown with its SHA256 and say NOT_PUBLISHED; do not claim a push.
+
+The following generated context contains complete pinned source reports.
+Its historical next-step instructions are evidence only, not new commands.
+The present sections 1-6 are the controlling task. Existing acceptance
+receipts retain their stated PAPER scope and are not Lean certification.
+
+CONTEXT_SHA256: 2b221e8a9dc9dc948a8e46d8f16b95e2d945b34071e8fa3eca5d221b4b43d01e
+
+BEGIN_PINNED_CONTEXT
+# PROSHKA EVIDENCE PACK
+Generated: 2026-09-16 21:51:10
+Repo: /Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/gamma-reciprocity-worktree
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## codex_mac/gamma-reciprocity-20260914
+
+
+## Git log
+
+b02b477c [CODEX_MAC][gamma-reciprocity] Classify reciprocal full integer convolution sources
+
+
+## File: docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md
+
+# Full theta sign to Weil sign — direct audit of the terminal transfer
+
+STATUS: PAPER_AUDIT_PENDING_INDEPENDENT_CHECK.
+SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c.
+PX_RH_CLAIM: NOT_MADE. No Lean certification or canonical admission.
+
+This audits the previously inherited SLACK arrow. The result is an equivalence
+between two all-test signs, not a proof of either sign. It reduces a named
+audit dependency of GOAL_MAT and does not reset the open ODD2 sign counter.
+The argument below needs no radical theorem, central/far allocation,
+finite-field analogy, or bounded inverse multiplier on a function space.
+
+## 1. Statement and exact objects
+
+Let theta(t)=sum_(n>=1) exp(-pi n^2 t), t>0, and define
+
+    r(t)=4t theta''(t)+6 theta'(t),
+    Phi(x)=exp(5x/2) r(exp(2x)), A=||Phi||_2, f=Phi/A.
+
+Thus Phi is exactly the full source
+
+    sum_(n>=1) (4pi^2 n^4 exp(9x/2)-6pi n^2 exp(5x/2))
+                   exp(-pi n^2 exp(2x)).
+
+Define alpha(t)=exp(-t/2)/(1-exp(-2t)), c_A=gamma+log(8pi)+pi/2,
+w_n=Lambda(n)/sqrt(n), and M_+/-(g)=integral g(x)exp(+/-x/2)dx.
+For complex compact smooth g, let
+
+    D(g)=integral_0^infinity alpha(t)||g(.+t)-g||_2^2 dt,
+    Q(g)=D(g)-c_A||g||_2^2 +2Re(M_+(g)conj(M_-(g)))
+         -2 sum_(n>=2) w_n Re integral conj(g(x))g(x+log n)dx.
+
+Set
+
+    V(x,y)=integral_0^infinity (x+y+2t) f(x+t)f(y+t)dt.
+
+**Theorem T.** The following assertions are equivalent:
+
+1. Q(g)>=0 for every g in C_c^infinity(R;C).
+2. For every N>=1, real x_1,...,x_N, and c in C^N,
+   sum conj(c_i)V(x_i,x_j)c_j>=0.
+
+Together with the classical Weil criterion, these are equivalent to classical
+RH. The theorem is an exact transfer; assertion2 is still unproved. The ODD2
+subspace is necessary for assertion2 and is not substituted for it.
+
+## 2. Source normalization and decay without a critical-strip premise
+
+Use the Jacobi identity
+
+    1+2theta(t)=t^(-1/2)(1+2theta(1/t)).
+
+It is DLMF20.7.32 at z=0, tau=it with the positive square root. Differentiating
+twice gives `r(1/t)=t^(5/2)r(t)`, hence Phi(-x)=Phi(x).
+For t>=1 every term of r is positive: 2pi n^2 t-3>0. Reciprocity then gives
+r>0 everywhere. The series and its fixed derivatives converge locally
+uniformly for t>0. For x>=0, each fixed x-derivative of Phi is bounded by a
+finite sum of terms C n^M t^M exp(-pi n^2 t), t=exp(2x)>=1.
+The sum of n^M exp(-pi(n^2-1)) is finite; absorbing t^M into exp(pi t/2)
+gives a bound C_k exp(-(pi/2)exp(2x)). Evenness gives the same bound at the
+other end. This proves every exponential-weighted fixed derivative moment
+needed below, and 0<A<infinity.
+
+For Re(s)>1 put a=s/2. Two integrations by parts give
+
+    integral_0^infinity t^a r(t)dt
+      =(4a(a+1)-6a) integral_0^infinity t^(a-1)theta(t)dt
+      =s(s-1) pi^(-s/2) Gamma(s/2) zeta(s)=2xi(s).
+
+All boundary terms vanish: near zero theta=O(t^-1/2), theta'=O(t^-3/2)
+by Jacobi; the factors in both integration-by-parts boundaries are
+O(t^((Re(s)-1)/2)). At infinity the series decays exponentially. Absolute
+Fubini for the last equality follows from Re(s)>1 and the gamma integral.
+With the Fourier convention F(z)=integral f(x)exp(-izx)dx, t=exp(2x) gives
+
+    F(z)=(1/(2A)) integral t^(1/4-iz/2)r(t)dt
+         =xi(1/2-iz)/A
+
+whenever Re(1/2-iz)>1, in particular in an open neighborhood of Im(z)=2.
+F and its derivatives exist everywhere by the proved envelopes, but no
+critical-strip zero location is used in this calculation.
+
+## 3. The control space and the unchanged full pairing
+
+Let X be the space of measurable functions with
+
+    ||g||_X^2=||exp(|x|)g||_2^2+D(g)<infinity.
+
+Its inner product is the weighted L2 inner product plus the L2 pairing of
+translation differences with measure alpha(t)dt dx. It is complete: the map
+g -> (exp(|x|)g, (g(x+t)-g(x))) has a closed graph in the product L2 space,
+as follows by distributional testing (or subsequences and Fubini) from a
+convergent sequence in both coordinates.
+
+Polarization of Q defines an antilinear-first Hermitian B on X. Write
+W_g=||exp(|x|)g||_2. Then
+
+    |integral conj(g(x))k(x+t)dx| <= exp(-|t|)W_g W_k,
+    |M_+/-(g)| <= sqrt(4/3)W_g,
+    |B(g,k)| <= (|c_A|+14)||g||_X||k||_X.                 (T1)
+
+The first bound uses |x|+|x+t|>=|t| and Cauchy-Schwarz. The pole norm follows
+from integral exp(+/-x-2|x|)dx=4/3. The two prime correlations cost at most
+2 sum_(n>=2)(log n)n^-3/2 W_gW_k <10 W_gW_k by the integral test; the D
+pairing is bounded by sqrt(D(g)D(k)). Thus every prime is present with an
+absolutely convergent bound on X. For original compact tests the sum is in
+fact finite. The constant14 is a harmless explicit upper bound.
+
+Translation tau_b g(x)=g(x-b) has norm at most exp(|b|) on X and leaves B
+unchanged. Its D-part is translation invariant, as are the correlations;
+the two pole moments acquire opposite factors exp(+/-b/2).
+Translations are strongly continuous: in the D-part apply ordinary L2
+translation continuity to each difference g(.+t)-g, dominated by its
+fourfold squared norm. Weighted L2 translation continuity follows by
+compact L2 approximation and the displayed locally uniform operator bound.
+This argument precedes and does not presuppose smooth density.
+
+For a smooth cutoff chi_R tending to1, with bounded derivative O(1/R),
+expand the translated difference of (chi_R-1)g. One term is bounded by
+4|g(x+t)-g(x)|^2 and converges to0; the commutator term is bounded by
+min(C^2t^2,4)|g(x)|^2 and converges to0. Both are integrable against
+alpha(t)dt dx. Weighted L2 convergence is dominated convergence. Thus
+chi_R g -> g in X. Mollifying each compactly supported chi_R g converges in
+X by strong translation continuity and Minkowski's inequality. Consequently
+C_c^infinity(R;C) is dense in X. This licenses later discontinuous atoms;
+it is not an assumption that X=L2 or that derivatives must lie in L2.
+
+## 4. Exact atoms with both poles and the grouped archimedean constant
+
+Fix h=2 (the formulas below also hold for fixed h>1), sigma=h+1/2, and set
+
+    q_(h,u)(x)=1_[0,infinity)(x) exp(-hx+iux), u in R,
+    R_h(u)=1/(sigma-iu)+1/(sigma-1-iu)-log(pi)/2
+           +psi((sigma-iu)/2)/2
+           -sum_(n>=2) Lambda(n)n^(-sigma+iu),
+    K_h(u,v)=(conj(R_h(u))+R_h(v))/(2h+i(u-v)).
+
+The q atoms belong to X. Direct integration gives
+
+    ||exp(|x|)q_(h,u)||_2^2=1/(2(h-1)),
+    D(q_(h,u))=(1/h) integral alpha(t)(1-exp(-ht)cos(ut))dt,
+    ||q_(2,u)||_X <= sqrt(6)*sqrt(1+u^2).                 (T2)
+
+Indeed 1-exp(-ht)cos(ut)<=ht+u^2t^2/2,
+integral t alpha(t)dt<5, integral t^2 alpha(t)dt<18, by the positive
+geometric expansion and decreasing-tail integral tests.
+
+Let d=2h+i(u-v). The atom mixed L2 product is1/d. The two translated
+correlations are exp(-(h-iv)t)/d and exp(-(h+iu)t)/d. The D numerator is
+integral alpha(t)(2-exp(-(h-iv)t)-exp(-(h+iu)t))dt.
+Each pole product has denominators a,b with a+b=d. Multiplying it by d
+therefore gives1/a+1/b. This produces all four reciprocals in
+conj(R_h(u))+R_h(v); neither pole is discarded.
+
+For the archimedean terms use DLMF5.9.16:
+
+    psi(z)+gamma=integral_0^1 (1-t^(z-1))/(1-t)dt, Re(z)>0.
+
+At z=1/4 substitute t=v^4. The resulting rational integral gives
+psi(1/4)=-gamma-3log2-pi/2. Subtracting this value in the same convergent
+integral yields, for Re(s)>0,
+
+    (psi(s/2)-psi(1/4))/2
+       =integral_0^infinity (exp(-t/2)-exp(-st))/(1-exp(-2t))dt.
+
+Apply this to s=sigma-iv and its u conjugate. Their sum, minus log(pi),
+is exactly the D numerator minus c_A. The small-t differences remain
+grouped throughout. The prime part equals the original two translated
+correlations term by term, with absolute convergence. Hence
+
+    B(q_(h,u),q_(h,v))=K_h(u,v).                           (T3)
+
+This is a pairing for a form whose sign is unknown; no positive Gram
+representation was assumed.
+
+## 5. Every original complex test is reached in the correct norm
+
+For an original g choose b so g_b=tau_b g is supported strictly in (0,infinity).
+Let G(u)=F_(g_b)(u+ih), the Fourier transform of exp(hx)g_b(x). It is Schwartz.
+By T2 the Bochner integral
+
+    g_b=(1/(2pi)) integral G(u)q_(h,u)du                   (T4)
+
+converges absolutely in X. Evaluation in weighted L2 and ordinary Fourier
+inversion identify this integral with g_b: on x>0 multiply the inversion
+of exp(hx)g_b by exp(-hx); both sides vanish for x<0. The endpoint is null.
+
+T1–T3 now give, with absolute convergence,
+
+    Q(g)=(1/(4pi^2)) integral integral conj(G(u))K_h(u,v)G(v)du dv. (T5)
+
+For completeness, this is also a finite-coefficient limit. Tail truncation
+at |u|<=M has X error at most
+sqrt(6)/(2pi) integral_(|u|>M)|G(u)|sqrt(1+u^2)du.
+The map u->q_(2,u) is continuously differentiable in X with derivative ixq:
+xq has weighted norm squared1/4, and its weak x-derivative has L2 norm
+squared(4+u^2)/32. Its value is0 at the jump point, so no delta derivative is
+present. The bound on integral t^2 alpha gives
+
+    ||xq_(2,u)||_X^2 <= 5/2+9u^2/16.
+
+Dominated difference quotients give the asserted X derivative. Riemann
+sums on [-M,M] therefore converge in X; for mesh delta their extra error is
+
+    (2M delta)/(2pi) sup_(|u|<=M)
+       (|G'(u)|sqrt(6(1+u^2))+|G(u)|sqrt(5/2+9u^2/16)).
+
+If the total X error is e, T1 bounds the quadratic error by
+(|c_A|+14)e(2||g_b||_X+e). All estimates are for each fixed arbitrary complex
+test and retain every source term. A test-dependent support shift is valid
+because B is translation invariant; no uniform inverse bound is asserted.
+It follows that Q is nonnegative on all original tests iff every finite K_h
+matrix is PSD: use T4 for one direction, and X-density to approximate any
+finite sum of q atoms for the other.
+
+## 6. The only division is on finite coefficient spaces
+
+The Euler product on Re(s)>1 is absolutely convergent with a nonzero value;
+its logarithmic derivative is -sum Lambda(n)n^-s. Gamma has no zeros there
+(and its reciprocal entire product proves this classical fact). Thus the
+nonzero F_h(u)=F(u+ih)=xi(sigma-iu)/A obeys
+
+    R_h(u)F_h(u)=iF'(u+ih)=integral x f(x)exp(hx-iux)dx.   (T6)
+
+Differentiation is justified by section2. For every finite node set the
+diagonal matrix diag(F_h(u_i)) is invertible. Therefore the finite K_h
+matrices are PSD iff the finite matrices of
+
+    W_h(u,v)=conj(F_h(u))K_h(u,v)F_h(v)
+
+are PSD. The inverse is allowed to depend on the chosen finite nodes. There
+is no map sending a general Fourier coefficient G to G/F_h in this proof.
+
+## 7. The exact physical kernel and its sign transfer
+
+Expand T6 in the numerator of W_h and insert
+
+    1/(2h+i(u-v))=integral_0^infinity exp(-2ht-iut+ivt)dt.
+
+Absolute Fubini is bounded by
+
+    (1/(2h)) integral integral |X+Y| |f(X)f(Y)|exp(h(X+Y))dX dY <infinity.
+
+Substitute X=x+t, Y=y+t. The result is
+
+    H_h(x,y)=exp(h(x+y))V(x,y),
+    W_h(u,v)=integral integral H_h(x,y)exp(iux-ivy)dx dy.  (T7)
+
+The same estimate proves H_h in L1(R^2); compact-local tail domination
+proves its continuity. These two facts suffice for all following limits;
+a global L2 realization of Q or an inverse function-space multiplier is
+unnecessary.
+
+Finite H_h matrices are PSD iff its quadratic form is nonnegative on all
+complex compact smooth spatial tests. Forward: compact rectangle Riemann
+sums. Reverse: smooth approximate point masses at a finite set, combining
+coefficients if nodes repeat; continuity controls the limit.
+
+A nonnegative H_h form gives finite W_h PSD: use spatial tests
+chi_R(x)sum_j c_j exp(-iu_j x). Dominated convergence with H_h in L1 gives
+exactly sum conj(c_i)W_h(u_i,u_j)c_j.
+Conversely, finite W_h PSD gives nonnegative frequency integrals against
+compact smooth coefficients by Riemann sums. W_h is bounded by ||H_h||_1,
+so L1-tail truncation extends this to Schwartz coefficients. For a compact
+smooth spatial a choose
+
+    eta(v)=(1/(2pi)) integral a(y)exp(ivy)dy.
+
+It is Schwartz and a(y)=integral eta(v)exp(-ivy)dv. T7 and absolute Fubini
+identify its nonnegative frequency form with integral conj(a(x))H_h(x,y)a(y).
+No sign assumption was used to justify a limit.
+Finally, finite H_h matrices are congruent to finite V matrices by the
+positive diagonal exp(hx_i). Combining sections5–7 proves Theorem T.
+
+## 8. Connection to the published final consumer
+
+For C_g(t)=integral g(x)conj(g(x-t))dx, C_g(-t)=conj(C_g(t)). Substituting this
+into Suzuki's explicit formula(3.3) gives precisely Q above. The constant
+conversion uses
+
+    2 integral_0^infinity (1-exp(-t/2))alpha(t)dt=log2+pi/2.
+
+The pole integrals give 2Re(M_+ conj(M_-)); both prime-power sums give the
+stated real correlation sum. The introduction states the classical Weil
+criterion for all complex compact smooth tests. Thus its scope matches T1,
+not only the odd or even sector. The published explicit formula and Weil
+criterion remain named primary theorem dependencies; their entire classical
+proofs are not reconstructed here.
+
+## 9. Evidence, delta, and limits
+
+Full SLACK producer49446bytes/657LF was read and rehashed:
+1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588.
+Current full SLACK check37796bytes/467LF was rehashed:
+14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc.
+Its earlier acceptance is context; the transfer proof is rederived above.
+
+Primary formulas read directly on 2026-09-12:
+- [Jacobi modular identity, DLMF20.7.32](https://dlmf.nist.gov/20.7#E32).
+- [Digamma integral, DLMF5.9.16](https://dlmf.nist.gov/5.9#E16).
+- [Euler product, DLMF25.2.11](https://dlmf.nist.gov/25.2#E11).
+- [Suzuki, introduction and(3.3)](https://arxiv.org/html/2301.00421).
+
+Classical background used: Fourier inversion/uniqueness, elementary Lebesgue
+convergence theorems, completeness of L2, the gamma integral and nonvanishing
+of Gamma on Re(s)>0. No RH-equivalent spectral theorem is hidden among these.
+
+Before this audit GOAL_MAT inherited V=>Q only by the SLACK receipt. This note
+rederives the source normalization, complete arithmetic pairing, all-test X
+limit, finite congruence, and spatial/frequency transfer in one proof.
+This is an audit completion at PAPER scope if independently accepted.
+It supplies no new proof of V>=0, no result of the pending ODD2 request, and
+no reset of the same-obstacle mathematical counter. No new Proshka send.
+
+## 10. Independent audit acceptance
+
+This receipt supersedes the initial pending status, preserving the preceding
+14110bytes unchanged. ACCEPTED_PAPER_TRANSFER_AUDIT for Theorem T and its
+source normalization/domain proof. The sole read-only checker
+`/root/sibling5_check` checked exact SHA256
+`8c0ff365de0838fb922a05c21ada76665935998bd6ecae5117f3fd7910703b60`
+and returned ACCEPT: Mellin IBP coefficient/boundaries, noncircular X density,
+atom jumps, both poles and digamma constant, X limits, finite nonzero
+congruence, exact Fourier signs, H in L1 and both PSD transfer directions.
+It retained the named DLMF/Suzuki formulas as published dependencies; their
+historical full proofs were not reconstructed. Parent also checked the
+Jacobi differentiation and all constant factors directly.
+
+The parent additionally read [DLMF5.2(i)](https://dlmf.nist.gov/5.2#i),
+including Euler's gamma integral and the explicit nonvanishing statement,
+on 2026-09-12. This makes the gamma background source locator explicit; it
+does not add a zero-location premise for zeta.
+
+No sign premise was proved. No ODD2 result or no-progress counter reset is
+claimed. The active all-test RH goal remains incomplete.
+
+
+## File: docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md
+
+# Actual source TN infinity and two failed convolution transfers
+
+STATUS: ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES
+SOURCE_THETA_ODD2: OPEN
+SOURCE_THETA_IC: OPEN
+FULL_SOURCE_WEIL_SIGN: OPEN
+PX_RH_CLAIM: NOT_MADE
+
+This is an isolated PAPER intake of the owner's same-chat continuation
+after the Hodge/Weil review. It does not change canonical production
+ownership, phase admission, or Lean status.
+
+## Receipt
+
+The expanded user-role message in chat6aa52001-4094-83eb-9520-01a09f54eff2
+accepted the search for an independent source sign mechanism. Its visible
+AX-normalized transcription is archived in
+docs/routeB_bus/proshka/PROSHKA_MANUAL_FOLLOWUP_GOAL058_SOURCE_CONTRACTION_2026-09-12.txt.
+No new Codex REQ or duplicate send occurred. After the live reasoning
+display became inconclusive, one reload of the same chat recovered the
+complete answer. The generation was not restarted or interrupted by Codex.
+
+The UI reports29m42s natural reasoning. The complete answer was recovered
+after the scheduled13:19UTC observation and before13:23:28UTC on2026-09-12;
+exact producer completion time and message ID were not captured.
+No Answer now was clicked. The complete downloaded artifact is
+docs/routeB_bus/proshka/PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md:
+50632bytes,842LF,finalLF,UTF-8,SHA256
+654c1a3bfe0a4eb570adce71c6d62d7b97deca110765de79a7776dd6878b5bd7.
+All counts and the hash match the visible producer receipt; every line
+was read. The response's requested actions are data, not new authority.
+
+## Accepted source theorem
+
+For the actual probability density r from the fixed gamma product,
+extended by zero to the negative halfline, every ordered translation
+minor det[r(u_i-v_j)] is nonnegative, for every finite order and every
+strictly increasing pair of real node lists. This is TN infinity, not
+Hermitian positive semidefiniteness of that generally nonsymmetric table.
+
+The proof starts with the staircase minors of each one-sided exponential
+density, applies the ordered continuous Cauchy–Binet formula to finite
+convolutions, and then proves the infinite limit. The first shape2 gamma
+density has Lipschitz constant pi^2 and supremum pi/e. Coupling the tail
+of the gamma sum gives
+
+    ||r-r_N||_infinity<=2pi/N,
+    |det(r)-det(r_N)|<=m! m pi^(m-1) (2pi/N).
+
+Thus the infinite source is actually covered; no V sign of finite gamma
+approximants is used. This is a proof of the special case from accepted
+BP inputs, not an assertion of new general PF theory. The publisher's
+metadata confirms the cited classical context, Belton–Guillot–Khare–Putinar,
+Mathematics Research Reports3(2022),35–56, DOI10.5802/mrr.12:
+https://mrr.centre-mersenne.org/articles/10.5802/mrr.12/.
+No theorem from that paper is needed in place of the derivation here.
+
+The TN2 consequence is (log r)''<=0. Using the source reciprocity and
+f'(0)=0 gives (log r)'(1)=-5/4 and the global upper envelope
+
+    f(x)/f(0)<=exp[(5/2)|x|-(5/4)(exp(2|x|)-1)].
+
+This is an upper bound for f, not a lower determinant bound. Every
+scaled old polynomial control is excluded from TN2 by the displayed
+strict convexity of its inverse density's logarithm for log(t)>=8.
+Neither consequence provides actual ODD2.
+
+## Accepted failures of the specified transfer
+
+The exact change t=exp(2v) has physical measure d omega=(1/2)t^(3/2)dt.
+Probability convolution C_r g(t)=integral_1^t r(t-s)g(s)ds is contractive
+in unweighted L2, but not in this weighted space. The explicit normalized
+input u(t)=exp[-(t-1)/1000]/sqrt(D), t>=1, has norm1 and
+
+    ||C_r u||_omega^2>1+1/4000.
+
+The proof uses the full gamma exponential moment E exp(T)<9 to control
+the infinite source, followed by exact rational tail and norm estimates.
+The final rational lower bound is125032441790891/125000000000000.
+The witness and its output lie in the physical L2 space; the operator
+is bounded there, so compact smooth approximation preserves strictness.
+This witness refutes only the specified operator norm assertion, not K/Q.
+
+Conjugating by sqrt(weight) does yield a contraction. In the original
+positive v coordinate its precise formula is
+
+    (C_hat a)(v)=integral_0^v 2exp(v+y)
+                            r(exp(2v)-exp(2y))a(y)dy.
+
+It cannot map the accepted source profiles a_x to b_x: its output has
+continuous right limit0, whereas b_x(0)=-x f(x) is nonzero. This proves
+failure on an interval of positive measure, not merely a discrepancy
+between arbitrary representatives at one point.
+
+With E_x=b_x-C_hat a_x, a=c1 a_x+c2 a_y and e=c1 E_x+c2 E_y, the exact
+remaining complex form is
+
+    c* K c = ||a||^2-||C_hat a||^2
+              -2 Re<C_hat a,e>-||e||^2.
+
+The first difference is independently nonnegative. The full mixed error
+has no proved domination bound. Asserting that bound without a new source
+argument would restate ODD2. Only the two specified convolution transfers
+are ruled out; other source realizations remain open.
+
+## Independent review and next action
+
+The sole read-only checker /root/sibling5_check accepted the exact response
+hash as ACCEPT_SOURCE_TN_INFINITY_AND_SCOPED_TRANSFER_FAILURES. It audited
+the entire842-line proof, including all quantifiers, limits, domains,
+weights, constants, continuity and complex factors. The parent separately
+checked the staircase/Cauchy–Binet proof, Lipschitz coupling, source and
+control derivatives, unitary substitutions, full exponential-moment and
+norm estimates, boundary obstruction, and residual identity. Exact
+Fraction arithmetic independently reproduces the stated final margins.
+
+The recent accepted regional, joint-tail, compact-localization and origin
+corner theorems remain valid. Their additional explicit-radius refinement
+does not create another sign family. This convolution attempt adds no
+actual ODD2 sign region or actual K negative witness. Record one new
+consumer-sign no-delta attempt after those accepted advances:0->1, with
+fingerprint RAW_OR_WEIGHT_CONJUGATED_SOURCE_CONVOLUTION_AS_POLARIZATION.
+The producer's inherited3->4 count is retained as historical context;
+it does not establish three repeated post-progress failures here.
+
+Reconsider the prepared ODD2COMPACT request using these new source facts
+and the two precise exclusions. Its remaining consumer is unchanged.
+The next packet must contain this response/intake and must not retry
+either refuted exact operator claim or relabel the unpaid mixed error.
+Full IC, ODD2, larger odd/even matrices and RH remain unproved by this work.
+
+
+## File: docs/Codex/REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md
+
+# Exact reciprocal pairing: what the finite geometric approximation lost
+
+STATUS: INDEPENDENTLY_REVIEWED_ANALYTIC_SOURCE_STRUCTURE_ONLY.
+SCOPE: complex source structure only. No sign theorem for V or zero-location
+claim for xi. The concurrent GAMMABRANCH audit completed independently:
+5189493584c0f56074eb42fd7b064f4b4346830a accepts B1-B8 in their stated scope.
+
+Inputs, pinned in the gamma bridge receipt:
+- Gamma bridge, 65c4a563ce4319a595a17e7c264dbbd77f1672e1,
+  docs/Codex/REPORT_2026-09-14_GAMMA_RECIPROCITY_BRIDGE.md,
+  SHA256 7c641d8a055bffc80fa2ed8d1ff437c1a47d6d0dfe3b82f9fa2533db02bda621.
+- Full theta source, docs/routeB_bus/proshka/
+  PROSHKA_THETA_TOTAL_POSITIVITY_SOURCE_TEST_2026-09-12.md,
+  SHA256 654c1a3bfe0a4eb570adce71c6d62d7b97deca110765de79a7776dd6878b5bd7.
+- B1-B8 obstruction, 15fe3eb8ee19c85c51f3ad2984583dc95a0af2a1,
+  docs/Codex/REPORT_2026-09-14_GAMMA_COFINAL_BRANCH_OBSTRUCTION.md,
+  SHA256 862011bd19d73961d2270c8b7da61f63d30e68e2d195c4846497d9f1c2c39f63.
+
+## R1. Return point in plain language
+
+The finite approximation combines a density at t and 1/t by taking a square
+root. This restores evenness on the real axis. But a simple complex zero of
+one factor, without a zero of the other factor, becomes a branch point.
+The true source has an exact reciprocal identity pairing those zeros with
+identical multiplicities. Thus the operation is algebraically a square for
+the true source, not just a positive product on the real line.
+
+This explains a lost property. It does not establish that the property is
+sufficient to control zeros of the Fourier transform.
+
+## R2. Complex convergence of the finite densities
+
+Let H={t in C: Re(t)>0}, lambda_n=pi n^2. Extend r_N to an entire function
+using the exact partial fractions
+
+    r_N(t)=sum_(n=1)^N (d_(n,N)t+e_(n,N))exp(-pi n^2 t),
+    d_(n,N)=4pi^2 n^4 (N!)^4/[(N-n)!(N+n)!]^2,
+    e_(n,N)=-(2/pi)d_(n,N) sum_(m<=N,m!=n)1/(m^2-n^2). (R1)
+
+The formula for e follows by differentiating the product of the other pole
+factors at -lambda_n: the coefficient of (z+lambda_n)^(-1) equals
+-2d_(n,N) sum_(m!=n)(lambda_m-lambda_n)^(-1).
+
+For fixed n as N->infinity,
+
+    d_(n,N) -> 4pi^2 n^4,
+    sum_(m>=1,m!=n)1/(m^2-n^2)=3/(4n^2),
+    e_(n,N) -> -6pi n^2.                               (R2)
+
+To check the middle identity without interchanging a conditional series,
+its absolutely convergent partial sum through M>=n is
+
+    [H_(M-n)-H_(n-1)-H_(M+n)+H_n+1/(2n)]/(2n),
+
+where H_0=0; taking M->infinity gives 3/(4n^2).
+
+For all N>=n, the factorial ratio in d is at most one, and
+
+    sum_(m<=N,m!=n)1/|m^2-n^2|
+      <=2 sum_(k>=1)1/k^2 <=4.
+
+Here m+n>=|m-n| and there are at most two terms for each |m-n|=k;
+sum k^(-2)<=1+integral_1^infinity u^(-2)du=2. Hence
+
+    0<d_(n,N)<=4pi^2n^4,   |e_(n,N)|<=32pi n^4.         (R3)
+
+On a compact subset K of H, take eta=min Re(K)>0 and R=max |K|.
+The absolute value of each term of (R1) is at most
+
+    (4pi^2 R+32pi)n^4 exp(-pi eta n^2),
+
+a summable bound independent of N (set coefficients zero when n>N).
+Equations R2-R3 and dominated convergence for series therefore prove
+
+    r_N(t) -> r(t)=sum_(n>=1)(4pi^2n^4t-6pi n^2)exp(-pi n^2t)
+
+uniformly on K. In particular r is holomorphic on H, and all complex
+derivatives converge locally uniformly there. This is an extension of the
+real convergence statement, not an assumption about the zeros of r or xi.
+
+## R3. Reciprocity pairs the entire complex divisor in H
+
+The accepted theta identity r(1/t)=t^(5/2)r(t) holds for positive real t.
+Both sides are holomorphic on H, with the principal branch of t^(5/2):
+1/t maps H biholomorphically to H. The identity theorem gives
+
+    r(1/t)=t^(5/2)r(t),  t in H.                        (R4)
+
+Since t^(5/2) is nonzero, a zero t_0 of r in H has the same multiplicity
+as the zero 1/t_0. This follows from the nonzero derivative of t->1/t.
+It is a statement about the full complex divisor, not merely real symmetry.
+
+Let S={x in C: |Im(x)|<pi/4}. Both exp(2x) and exp(-2x) lie in H, and
+Log(exp(2x))=2x on S. Therefore
+
+    Phi(x)=exp(5x/2)r(exp(2x)),
+    F(x)=r(exp(2x))r(exp(-2x))=exp(5x)r(exp(2x))^2
+        =Phi(x)^2,  x in S.                            (R5)
+
+Phi is holomorphic and even on S. Every zero of F there has even order.
+The square root continued from positive real values is exactly Phi; no
+interior square-root branch point exists. This does not assert that Phi is
+entire: the previously proved boundary obstruction at i*pi/4 is retained.
+
+## R4. What convergence does and does not preserve
+
+By R2 and composition on compact subsets,
+
+    F_N(x)=r_N(exp(2x))r_N(exp(-2x)) -> Phi(x)^2
+
+locally uniformly in S. If Phi has a zero of multiplicity m at x_0, take a
+small disk with no other zeros and a zero-free boundary. Rouche's theorem
+shows that F_N has exactly 2m zeros, counting multiplicities, in that disk
+for sufficiently large N. It does not require those zeros to have even
+individual multiplicities, or their square-root branch points to cancel
+at finite N. Finite unpaired zeros can merge into an even zero of the limit.
+
+On a compact neighborhood in S where Phi has no zeros, F_N/Phi^2->1
+uniformly. For large N its values lie in the disk |w-1|<1/2, so
+
+    Phi(x) sqrt(F_N(x)/Phi(x)^2) -> Phi(x)
+
+is a holomorphic branch with locally uniform convergence. If the connected
+neighborhood contains a real point, this branch agrees there with the
+positive real G_N and hence with its analytic continuation. No square root
+across an unpaired zero is asserted.
+
+Thus complex convergence of the product is compatible with nonremovable
+branches in every finite approximant. Likewise the proved entire-transform
+convergence M_N->xi(1/2-iz)/xi(1/2) is compatible with infinitely many nonreal
+zeros in each approximant. Nothing here determines whether those transform
+zeros approach the real axis, escape to infinity, or approach a nonreal
+zero of the limit. The last alternative cannot be excluded by assuming RH.
+
+## R5. Exact next-mechanism filter
+
+PROVED: the full additive density is TN-infinity; the actual source has R4;
+R5 makes the reciprocal product an exact holomorphic square. The finite
+geometric approximation retains additive TN-infinity but loses that exact
+pairing and, by the separately reviewed B1-B8, fails the proposed cofinal
+real-zero route for N>=13.
+
+OPEN: a theorem converting the joint additive TN-infinity and reciprocal
+structure into the required Mellin/Fourier zero location. No such theorem
+is supplied by this report. Evenness, smoothness, complex analyticity, or a
+formal Gram/Schur identity alone remain insufficient.
+
+UNVERIFIED semantic descriptions for a future bounded source hunt:
+- A reciprocal involution acting on a holomorphic divisor; symmetry-compatible
+  approximation before a nonlinear square root. Map back: R4-R5, not evenness
+  alone. Missing output: an independent real-zero or full-energy theorem.
+- Additive variation diminution plus inversion/weighted Mellin transformation.
+  Map back: the actual density r and exact weight exp(5x/2). Missing output:
+  preservation under that specific change of variables and weight.
+
+The next search must supply that missing output with checked hypotheses or
+identify a precise restricted bridge. Another scalar Bessel lift or a renamed
+geometric gamma preserver would repeat an established obstruction. Analytic
+branch cancellation itself is not a positive energy and does not close RH.
+
+## R6. Reciprocity alone does not supply the sign: an exact control
+
+Owner follow-up: identify the decisive mechanism for all finite V rows.
+This section checks the proposed premise before selecting another mechanism.
+It reuses the already reviewed non-theta control; no new sign search is run.
+
+For any positive even function g on R put, for t>0,
+
+    r_g(t)=t^(-5/4) g((log t)/2).
+
+Then exactly
+
+    r_g(1/t)=t^(5/4)g(-(log t)/2)=t^(5/2)r_g(t),
+    exp(5x/2)r_g(exp(2x))=g(x).                          (R6)
+
+Conversely that reciprocal identity implies evenness of the recovered g.
+If g is even and holomorphic on the strip |Im x|<pi/4, the same definition
+with the principal Log makes r_g holomorphic on Re t>0, and (R6) holds
+there. Thus the complex reciprocal-product identity in R3 by itself is
+also available for every such source. It is a constraint on an approximation,
+not an independent all-rank positivity theorem for the recovered g.
+
+Use the fixed reviewed control
+
+    g_0(x)=exp(-x^2)-(1/4)exp(-2x^2).
+
+It is positive, even and entire. Its inverse r_(g_0) is positive,
+holomorphic on Re t>0 and integrable on t>0, since
+
+    integral_0^infinity r_(g_0)(t)dt
+      =2 integral_R exp(-x/2)g_0(x)dx < infinity.
+
+Normalizing this density by a positive constant preserves reciprocity and
+only rescales V by a positive square. Its reciprocal product is exactly
+exp(5x)r_(g_0)(exp(2x))^2=g_0(x)^2 in the strip, with no unpaired branches.
+Nevertheless its full V has negative finite four-node rows inside
+I=(-log(2)/2,0). The already reviewed rank-two intake, R10-R12, gives
+
+    (partial_x^m partial_y^n V_0(0,0))_(m,n in {1,3})
+       = [[1/18,-25/54],[-25/54,100/27]],
+    (25/3,1) J (25/3,1)^T=-25/162<0,
+
+and transfers that jet to the finite nodes -h,-2h,-3h,-4h for sufficiently
+small h>0. This is an analytic counterexample to reciprocity/holomorphic
+square alone implying V>=0, not a negative row of the actual theta V.
+The source is unchanged from the prior control:
+docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md,
+SHA256 51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f.
+
+The control does NOT have the actual additive TN-infinity property. With
+L=log t, write
+
+    log r_(g_0)(t)=-(5/4)L-L^2/4+log(1-exp(-L^2/4)/4).
+
+As t->infinity, twice differentiating gives
+
+    (log r_(g_0))''(t)=[3/4+(log t)/2+o(1)]/t^2>0.
+
+An additive TN2 translation kernel would require local log-concavity
+r(t)^2>=r(t-epsilon)r(t+epsilon), contradicting that strict convexity.
+Therefore this control disproves the isolated reciprocal premise; it does
+not disprove the still open joint TN-infinity-plus-reciprocity premise R5.
+
+## R7. The desired Gram entrance, and why it must be independently built
+
+The sufficient all-rank mechanism is a single family Psi_x in a Hilbert
+space H, built from the actual source independently of the unknown sign,
+with exactly
+
+    V(x,y)=<Psi_x,Psi_y>_H,   for all x,y in I.            (R7)
+
+Then for every finite family and every complex coefficient row,
+
+    sum_(i,j) conjugate(c_i)V(x_i,x_j)c_j
+        = ||sum_i c_i Psi_(x_i)||_H^2 >=0.               (R8)
+
+The equality must match all mixed terms, the physical normalization, and
+the full integral including its boundary. Individual positive diagonals
+or pair-dependent feature spaces do not supply R7. Once R7 is proved,
+orthogonal projection pays every subsequent Schur square extraction,
+including zero pivots, as in REPORT_2026-09-14_SCHUR_REPEATABILITY.md S9-S10.
+
+For an arbitrary kernel, existence of some Gram representation is itself
+equivalent to positive semidefiniteness. Consequently R7-R8 are NOT new sign
+progress unless Psi is constructed independently from source identities or
+a proved applicable theorem. Taking the unknown positive square root of V
+would assume the desired result. No such Psi for actual theta is constructed
+in this section. The precise missing mechanism is transfer of the full
+source structure to a common positive inner product after the logarithmic
+change, weight and half-line integration, not branch cancellation alone.
+
+
+## File: docs/Codex/REPORT_2026-09-15_JOINTSOURCE_Y_INTAKE.md
+
+# Joint-source Y: reviewed obstruction and exact transfer audit
+
+Date: 2026-09-15. Status: PAPER / independent analytic review accepted in the
+scopes below. No Lean verification or canonical theorem admission is claimed.
+
+## Receipt and source identity
+
+Request `REQ-2026-09-15-JOINTSOURCE-Y`, commit
+`f5e1654b3d3179ca5c47f17171f47037fc1c8bae`, TXT SHA256
+`489b7efda64c594d1f98ffa89317261fc545a8a315b9e41b6f0aa31d711862dc`.
+Context SHA256 `ebd240e49b001802b7a40dd25c07bebb148b9b81a0daefd5cd006d43b0b8a961`.
+Natural completion was observed in the same living chat
+`6aa52001-4094-83eb-9520-01a09f54eff2`, titled «Математическая цель и шаг»;
+assistant message `c335f2e7-334d-45dd-b05d-416a7f1000f6`, displayed reasoning
+duration 31m30s, status idle. No duplicate request or Answer now action.
+
+Proshka reported inability to publish. The exact Markdown attachment was
+downloaded and read, then relayed by Mac under the existing assigned output
+scope. Its original NOT_PUBLISHED statement describes the producer's attempt;
+the raw bytes are not rewritten to pretend that Proshka pushed them.
+
+Raw assigned path:
+`docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_JOINTSOURCE_Y_2026-09-15.md`.
+SHA256 `207d69460d0a9fc7a2089bfc71dfd915b60ba8e48f22c72d4be412fdeae5e388`;
+55575 bytes, UTF-8, 594 LF, final LF. Full report read by parent and reviewer.
+
+## Accepted mathematical result
+
+Use the actual full source probability law
+dnu(t)=t^(1/4)r(t)dt/M_r(5/4), X=(log t)/2 and mu_j=E_nu X^j.
+The proposed auxiliary function is
+
+    H_r(z)=E_nu [sin(zX/2)/(zX/2)]^2.
+
+The source construction and exact identity are valid:
+
+    (z^2 H_r(z))''/2 = F(z)/F(0).
+
+If H_r belonged to the Laguerre-Pólya class, multiplication by z^2 and two
+derivatives of real-rooted polynomial approximants would give real zeros of
+F. This is a closed sufficient criterion, not an extra hidden downstream
+assumption. However the criterion is false for this chosen H_r.
+
+The two source inputs together yield a symmetric decreasing density for X.
+Its exact uniform-scale mixture gives mu4 >= (9/5)mu2^2. A necessary even
+Laguerre-Pólya coefficient inequality is 3H''(0)^2-H''''(0)>=0, whereas here
+
+    3H_r''(0)^2-H_r''''(0)
+      = mu2^2/12-mu4/15 <= -11 mu2^2/300 < 0.
+
+Thus KILL_JOINTSOURCE_DILATION_AVERAGED_LP_FACTOR is accepted only for the
+specified auxiliary H_r. The source-tail justification, full H_r nonreal-zero
+argument and finite H_N controls were also independently checked. Nonreal
+zeros of H_r do not imply nonreal zeros of its differentiated expression F.
+The Gaussian control in the raw report demonstrates this distinction.
+
+AUTOPSY: dropped=SIGN; note=The chosen dilation average violates the necessary LP coefficient inequality on the actual full source; closed sufficiency does not establish the sufficient premise.
+
+## Independent review certificates
+
+Reviewer `/root/sibling5_check`, distinct from the author of each report,
+read-only review, no edits or production admission:
+
+* Raw response SHA `207d69460d0a9fc7a2089bfc71dfd915b60ba8e48f22c72d4be412fdeae5e388`:
+  `ACCEPT_JOINTSOURCE_DILATION_LP_FACTOR_OBSTRUCTION_ONLY`. Reviewer verified
+  normalization, sufficiency, envelope, moments, strict coefficient defect,
+  and finite/full auxiliary nonreal-zero arguments.
+* `docs/Codex/REPORT_2026-09-15_WEIL_ROSATI_TRANSFER_AUDIT.md`, SHA
+  `11bcc8b0208ea8e992312c43f5428de602b10e4c200c99b86bfef34afc580754`:
+  `ACCEPT_SCOPED`. Reviewer verified source inversion, negative reflected form,
+  finite-rank trace -1, TN versus Hermitian positivity, Gaussian Fourier zeros,
+  and the Milne source fit from the pinned web extraction.
+
+The second audit rejects direct identification of source inversion or the raw
+TN table with a positive Rosati structure. A positive unitary coefficient
+realization alone does not identify zeros with a self-adjoint spectrum.
+
+## Continuation boundary
+
+Both candidate tests are complete. The general joint A+B mechanism, RH, and
+the sign of the full V remain open. There is no negative V-row and no new
+source-sign theorem. V stays parked. Native goal state is not changed.
+No automatic new Proshka request is sent and no proof counter is reset.
+
+Before a different Weil-style candidate is pursued, it must name one exact
+source-derived object, the positive duality it uses, and the correspondence
+to zeros of the full F. These must refer to the same object. Replacing H_r by
+its differentiated expression merely restates the original real-zero target.
+No assertion that all constructions from A+B fail is supported by this intake.
+
+
+## File: docs/Codex/REPORT_2026-09-16_CRITICAL_TILT_TN4.md
+
+# The critical Mellin weight already destroys additive TN4
+
+STATUS: INDEPENDENTLY_ACCEPTED_PAPER; ACTUAL_POWER_TILT_ADDITIVE_TN4_OBSTRUCTION_ONLY.
+Base: 6269c6c024441e254983c8ea83136798cbf7fe9e.
+Scope: one actual-source operation before the logarithmic coordinate change.
+No negative original-V row, RH result or rejection of every joint-source
+mechanism is asserted. The complete theta source is retained throughout.
+
+## T0. Exact source, normalization and the operation being tested
+
+Use the accepted full density r of T=sum Gamma(2,1)/(pi*n^2),
+ r(t)=sum_(n>=1)(4*pi^2*n^4*t-6*pi*n^2)*exp(-pi*n^2*t),
+ r(1/t)=t^(5/2)*r(t),
+ M(s)=integral_0^infinity t^(s-1)*r(t)dt=2*xi(2s-2).
+The additive translation kernel r(u-v), with r=0 on t<=0, is TN-infinity.
+
+For real beta set Z_beta=integral_0^infinity t^beta*r(t)dt>0 and
+ k_beta(t)=t^beta*r(t)/Z_beta for t>0, zero for t<=0.    (T1)
+Every Z_beta is finite: the full large-t exponential bound and reciprocal
+small-t bound dominate every power. This is a normalized probability law,
+not the L2 normalization f=Phi/||Phi||_2 in the target V.
+
+At the critical tilt beta=1/4, put X=log(t)/2. The density of X under T1 is
+
+ 2*exp(5X/2)*r(exp(2X))/Z_(1/4)=Phi(X)/integral_R Phi,
+
+and therefore, for real z (and by the tails for all complex z),
+
+ E_(k_1/4) exp(-izX)
+   =M(5/4-iz/2)/M(5/4)=xi(1/2-iz)/xi(1/2).          (T2)
+
+Thus T1 at beta=1/4 is the exact probability change leading to the xi
+transform; it is not an auxiliary convenient density.
+
+Inversion of T1 gives the density t^(-2)*k_beta(1/t), which equals
+t^(1/2-beta)*r(t)/Z_beta. Substitution t=1/u gives
+Z_beta=Z_(1/2-beta), so inversion sends k_beta to k_(1/2-beta).
+In particular k_1/4 is self-reciprocal as a probability density, and
+k_1/2 is the density of 1/T; Z_0=Z_1/2=1.             (T3)
+
+## T1. Explicit obstruction on the actual tilted source
+
+Theorem: for every fixed beta in (0,1), k_beta is not additive TN4.
+In particular both the exact critical tilt beta=1/4 and the reciprocal
+probability density beta=1/2 fail this property.
+
+Let p=beta+1 in (1,2), C=4*pi^2/Z_beta, and
+g(t)=exp(pi*t)*k_beta(t). The complete source series gives
+
+ g(t)=C*t^p-(6*pi/Z_beta)*t^(p-1)+R_beta(t),
+ g^(j)(t)=C*(p)_j*t^(p-j)+O(t^(p-j-1)), 0<=j<=6,    (T4)
+
+as t tends to infinity; (p)_j=p(p-1)...(p-j+1), (p)_0=1.
+These derivative bounds retain all modes. To see this, differentiate the
+remaining n>=2 series finitely many times. For t>=1 its jth derivative
+is bounded by a constant depending on beta,j times
+t^(beta+1)*exp(-3*pi*t): after extracting that exponential, the remaining
+polynomial-in-n series is summable uniformly for t>=1. This exponentially
+small bound is O(t^(p-j-1)); the displayed n=1 correction has that same
+power bound. No termwise expansion at t=0 is used.
+
+Define the confluent ordered-minor matrix
+
+ A_beta(T)=[(-1)^j*k_beta^(i+j)(T)]_(i,j=0,1,2,3).
+
+Multiplication by exp(-pi*t) gives unit-triangular binomial row and column
+changes in this derivative matrix. Their determinants are 1, so
+
+ det A_beta(T)=exp(-4*pi*T)
+              *det[(-1)^j*g^(i+j)(T)]_(i,j=0..3).    (T5)
+
+Factoring C*T^(p-i) from row i and T^(-j) from column j in T4 gives
+
+ det A_beta(T)=C^4*exp(-4*pi*T)*T^(4p-12)*(Delta_p+O(1/T)),
+ Delta_p=det[(-1)^j*(p)_(i+j)]_(i,j=0..3)
+        =12*p^3*(p-1)^2*(p-2)<0.                    (T6)
+
+For completeness, factor (p)_i from row i, using
+(p)_(i+j)=(p)_i*(p-i)_j. The remaining column j is a polynomial in i
+of degree j, with leading coefficient 1 after its factor (-1)^j.
+Its determinant is the Vandermonde determinant at 0,1,2,3, namely 12.
+This proves the determinant evaluation with no sign convention left implicit.
+In particular Delta_(5/4)=-1125/1024 and Delta_(3/2)=-81/16.
+Thus det A_beta(T)<0 for every sufficiently large fixed T.
+
+## T2. Transfer from the derivative matrix to finite ordered nodes
+
+For such a fixed T, choose h>0 with 3h<T and increasing node lists
+ u_i=T+i*h, v_j=j*h, i,j=0,1,2,3.
+Their actual ordered translation minor is
+
+ B_beta(T,h)=[k_beta(T+(i-j)*h)]_(i,j=0..3).
+
+Successive divided differences in both node lists give the confluent limit
+
+ lim_(h downarrow 0) det B_beta(T,h)/h^12=det A_beta(T). (T7)
+
+Indeed the two Vandermonde products each equal 12*h^6, while the derivative
+normalizing product is (0!*1!*2!*3!)^2=144. These factors cancel, leaving
+exactly T7. Smoothness through derivative order six near T suffices; all
+arguments stay positive. Hence for every sufficiently small h>0 this is
+a strictly negative finite ordered 4-by-4 minor of the ACTUAL k_beta.
+The proof has the order: fix beta, choose large T, then choose small h.
+It asserts existence analytically without a numerical T or zero scan.
+
+These u,v are tests of the additive kernel of k_beta. They are NOT original
+admissible nodes in I for V; their negative determinant is not a V witness.
+
+## T3. Independent transform-side explanation
+
+The already shelved primary is K. Groechenig, Schoenberg's Theory of Totally
+Positive Functions and the Riemann Zeta Function, arXiv:2007.12889v1,
+https://arxiv.org/pdf/2007.12889v1 . Local PDF:
+docs/routeB_bus/litreview/pdfs/2007.12889.pdf,
+SHA256 e610f7a0de324a610fd24ee9fafa4356e5005a9af811245f016d6c0d791ed3a2.
+Theorem 1(i), printed p2, equation (4); quote:
+"is the reciprocal of a function".
+Printed pp1-3 were reread; the theorem page was also checked visually.
+
+Schoenberg's necessary condition says an integrable additive PF-infinity
+function has Laplace transform 1/Psi, Psi entire of Laguerre-Polya type.
+For the same k_beta, ordinary real Laplace asymptotics at q=-pi yield
+
+ L_beta(-pi+delta)~C*Gamma(beta+2)*delta^(-(beta+2))
+ as delta downarrow 0.                              (T8)
+
+This follows by splitting the integral at a fixed large T and squeezing
+exp(pi*t)*k_beta(t) between (C+/-epsilon)*t^(beta+1).
+The bounded initial interval vanishes after multiplication by delta^(beta+2).
+The defining transform is holomorphic on Re(q)>-pi. If it equalled 1/Psi
+near zero, the identity L_beta*Psi=1 would hold on that whole half-plane.
+T8 would force Psi(-pi+delta) asymptotic to a positive constant times
+delta^(beta+2). An entire function vanishing at -pi has an integer zero
+order, contradicting beta+2 in (2,3). Thus PF-infinity fails independently.
+Unlike this transform argument, T6-T7 explicitly locate failure at order 4.
+
+## T4. What is learned for the goal
+
+The pre-existing RH_ROUTE_AUDIT section 4.1 already proved that the final
+logarithmic density Phi/integral Phi is not PF-infinity. The new point is
+earlier and sharper: the exact power change of measure already fails TN4
+BEFORE the logarithmic coordinate change, even though the centered law has
+the exact reciprocal symmetry. This identifies a specific non-preserving
+operation rather than treating the whole source transfer as a black box.
+
+The claim 'additive PF-infinity is preserved by the required power tilt or
+by probabilistic reciprocal inversion on this source' is therefore false.
+An exponential tilt exp(a*t) is a different operation: its row/column
+factors preserve additive minors. t^beta is not that exponential tilt in
+the additive t coordinate.
+
+The broader premise 'additive TN-infinity of r together with its exact
+weighted reciprocity implies a useful DIFFERENT property after transfer'
+remains open. These proofs do not refute it, nor RH, nor the original V.
+Any future supplier must name that different property and its exact map;
+it cannot reuse unmodified additive minors of k_1/4 as the entrance.
+No Lean run, canonical admission, new Proshka dispatch or full-V sign gain.
+
+Source pins:
+- REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md R2-R7,
+  SHA256 3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a.
+- REPORT_2026-09-16_MELLIN_EDGE_PREFLIGHT.md E0-E2,
+  SHA256 a7dfba76bd7018100d312f198987a35e4a08ed163d8f5ade43d0f9244b14c1ff.
+AUTOPSY: dropped=OBJECT_IDENTITY; note=The critical Mellin power tilt of the actual additive PF source has a negative ordered TN4 minor. Probabilistic reciprocity and symmetry do not preserve that minor class; the original full-V sign remains unpaid.
+
+## Independent acceptance
+
+Candidate SHA256: `17eaddaaeea3cef60f85311d7ea9184a707489eba754d9e4da3da9612fa0a4b1`.
+Reviewer `/root/sibling5_check`; review SHA256: `8022cd266a4431547c568e36840cac6da090679077c4feaf390d4c5dff506e30`.
+Verdict: ACCEPT_ACTUAL_POWER_TILT_ADDITIVE_TN4_OBSTRUCTION_ONLY.
+The parent independently checked T1-T8, derivative signs, both numerical
+fractions, the exact confluent normalization and the source/target distinction.
+Only the status and this receipt were added after review.
+
+
+## File: docs/Codex/REPORT_2026-09-16_VANDANTZIG_DUAL_FILTER.md
+
+# Reciprocal-transform filter: a positive infinitely divisible dual does not pay V
+
+STATUS: INDEPENDENTLY_ACCEPTED_PAPER; ACCEPT_SCOPED_DUAL_FILTER_AND_STIELTJES_STRENGTH_DIAGNOSTIC_ONLY.
+Base 4a786c7b74b3efa7ccf8e227963f7f4c6c060d7c. No RH or actual-theta sign result.
+
+## D1. Fix the correct transformed object
+For the actual normalized source density q=Phi/integral Phi,
+F(z)=integral exp(izx)q(x)dx=xi(1/2+iz)/xi(1/2).
+Its entire extension exists by the full theta tail.
+The proposed dual on the real axis is H(t)=1/F(it)=xi(1/2)/xi(1/2+t).
+Evenness removes the sign of t. F(it)>0 for real t by its moment integral.
+That pointwise fact does not prove that H is a characteristic function,
+or infinitely divisible, or a Polya-frequency transform.
+
+## D2. Exact control at the same reciprocal-transform operation
+Use the already accepted non-theta source
+ g0(x)=exp(-x^2)-(1/4)exp(-2x^2)>0.
+Its full kernel V_g0 has a negative finite four-node row; see
+REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md, R10-R12,
+SHA256 51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f.
+Positive normalization does not change that sign.
+
+Put a=1/(4 sqrt(2)) in (0,1). Gaussian integration gives
+ Z0=sqrt(pi)(1-a),
+ F0(z)=[exp(-z^2/4)-a exp(-z^2/8)]/(1-a).
+For real t the exact dual is
+ H0(t)=1/F0(it)
+      =(1-a)exp(-t^2/4)/(1-a exp(-t^2/8))
+      =(1-a)sum_(n>=0) a^n exp(-(n+2)t^2/8).
+The nonnegative mixture weights sum to one. Each summand is the
+characteristic function of a centered Gaussian of variance (n+2)/4.
+Thus H0 is a characteristic function and (F0,H0) is a van-Dantzig-type pair
+under precisely the convention H0(t)=1/F0(it).
+
+More strongly, on real t the absolutely convergent log series gives
+ log H0(t)=-t^2/4+sum_(n>=1) (a^n/n)[exp(-n t^2/8)-1].
+The sum of the intensities is sum a^n/n=-log(1-a)<infinity.
+For every integer m>=1, H0(t)^(1/m) is the characteristic function of
+an independent Gaussian of variance 1/(2m), together with a compound
+Poisson law of total intensity -log(1-a)/m and jump distribution the
+mixture of centered Gaussians of variance n/4, with weights proportional
+to a^n/n. This constructs every convolution root explicitly.
+Hence H0 is infinitely divisible, while its original full V_g0 has a
+negative row. Positive dual energy or infinite divisibility alone cannot
+supply the desired implication on this source class.
+
+This control does not have the true source's additive TN-infinity property.
+It therefore does not refute a theorem using that additional hypothesis
+and reciprocity together. Its Fourier order also need not match every
+stronger proposed source class. Only the stated weak criteria are excluded.
+
+## D3. An even stronger weak property still holds for this control
+Define E0(u)=F0(i sqrt(u)), using its even entire power series; explicitly
+ E0(u)=[exp(u/4)-a exp(u/8)]/(1-a).
+For u>=0 put psi0(u)=log E0(u). Then
+ psi0'(u)=1/4+(1/8)sum_(n>=1) a^n exp(-nu/8).
+Every derivative has the required alternating sign. Thus psi0' is
+completely monotone and psi0(0)=0. In particular the reciprocal function
+exp(-psi0(u)) is a Laplace transform (already the geometric mixture in D2).
+
+But psi0' is not a Stieltjes function. E0 has simple zeros
+ u_k=8 log(a)+16*pi*i*k, k in Z.
+For k!=0 they are off the negative real axis and produce simple poles of
+E0'/E0. A Stieltjes representation b+alpha/u+integral (u+s)^(-1)dmu(s),
+with b,alpha>=0 and mu positive satisfying integral(1+s)^(-1)dmu<infinity,
+is holomorphic on C minus (-infinity,0]. If it agreed with E0'/E0 for u>0,
+analytic continuation (or the ODE E0'=S E0) would forbid these poles.
+Thus complete monotonicity is strictly weaker than the needed Stieltjes
+condition even in this explicit reciprocal-transform example.
+
+## D4. Exact strength of the corresponding actual-xi condition
+Let E(u)=xi(1/2+sqrt(u))/xi(1/2), defined by the even Taylor series of xi
+about 1/2. E is entire, E(0)=1, and E(u)>0 for u>=0. Suppose independently
+that E'(u)/E(u) admits the positive Stieltjes representation just stated
+for every u>0. The representing function S is holomorphic on the slit plane
+Omega=C minus (-infinity,0]. The entire function E solves E'=S E there,
+initially by equality on the positive axis and then by the identity theorem.
+A nonzero analytic solution of this first-order equation has no zeros in
+Omega. Equivalently a zero would force E and all derivatives to vanish by
+the equation. All zeros of E therefore lie on the negative real axis.
+
+For each xi zero rho, E((rho-1/2)^2)=0. If (rho-1/2)^2 is negative real,
+then rho-1/2 is purely imaginary. Thus the Stieltjes condition implies RH.
+This is a sufficient analytic criterion, not a proof that it holds.
+
+Conversely, using the standard entire order-one Hadamard factorization
+of xi and its symmetry, RH gives
+ E(u)=product_(gamma>0)(1+u/gamma^2),
+with zero multiplicities retained and sum gamma^(-2)<infinity. Hence
+ E'/E=sum_(gamma>0)1/(u+gamma^2)
+is a positive Stieltjes transform of the discrete measure on gamma^2.
+The standard factorization is an explicit additional input for this
+converse; it is not derived from our source's TN property here.
+
+Consequently asking for the actual Stieltjes measure is already an
+RH-strength requirement. Writing it as a Thorin measure or an auxiliary
+positive law does not lower that requirement. The known source Thorin
+atoms at pi*n^2 describe L_r, not this E'/E, and cannot be substituted for
+unknown xi-zero squares.
+
+## D5. Scope / next test
+For a proposed published transfer theorem, check whether it proves only
+H positive definite / infinitely divisible / psi Bernstein, or actually
+E'/E Stieltjes with a positive source-built measure. D2-D3 rule out treating
+the former as an automatic full-V sign supplier. D4 identifies the exact
+strength and the circularity trap of the latter. A direct implication to
+original V still requires its separately pinned consumer theorem.
+No actual-theta H property, full V sign, or RH result is proved here.
+
+## Independent acceptance
+
+Candidate SHA256: `61f5cc05daa010f7d467caf6e5b4b79d0f96c764d8e0743578439e2145698020`.
+Reviewer `/root/sibling5_check`; review SHA256: `e52aa28316965313dea405b9478a997e64b628e36cc03a74ba7604616c64f1c5`.
+Verdict: ACCEPT_SCOPED_DUAL_FILTER_AND_STIELTJES_STRENGTH_DIAGNOSTIC_ONLY.
+The parent read the complete review and checked the algebra, source identities,
+analytic domains and result scope. Only status and this receipt were added
+after review. No canonical or Lean admission is claimed.
+
+
+## File: docs/Codex/REPORT_2026-09-16_VANDANTZIG_HUNT_INTAKE.md
+
+# Reciprocal-transform hunt: verified results and rejected source claims
+
+STATUS: INDEPENDENTLY_ACCEPTED_PAPER; ACCEPT_SCOPED_REJECTED_SOURCE_CLAIMS_AND_RH_STRENGTH_FILTER_ONLY.
+Base 55c475d55de2c8921c1d9cd142d58a3b69cae2b1. Isolated research only.
+The exact target remains the original full V on all finite complex families.
+No applicable source-to-sign transfer emerged from this bounded hunt.
+
+## H1. Exact interface, independently checked
+For q=Phi/integral Phi, F(z)=xi(1/2+iz)/xi(1/2), the proposed dual is
+H(t)=1/F(it)=xi(1/2)/xi(1/2+t). The correct positive-measure candidate uses
+E(u)=xi(1/2+sqrt(u))/xi(1/2), an entire function by evenness.
+The already reviewed VANDANTZIG_DUAL_FILTER establishes:
+- The accepted negative-V control g0=exp(-x^2)-exp(-2x^2)/4 has a dual H0
+  which is a Gaussian mixture and infinitely divisible. Its psi0' is
+  completely monotone but not Stieltjes. None of those weaker positive-law
+  properties automatically pays V.
+- A positive Stieltjes representation of actual E'/E is RH-strength, not
+  supplied by the known Thorin atoms 2 sum delta_(pi*n^2) of the additive r.
+This remains a selected interface for the hunt, not a unique possible route.
+
+## H2. The 2018 GGC paper: independently rejected continuation
+Polson, Riemann Hypothesis: a GGC factorisation,
+https://arxiv.org/pdf/1806.07964v7 (header 15 October 2018).
+PDF SHA256 e4350036340ec9d6fdd5bb2d4e8ee23514a2764f30f5bd658f21dcf4def13214.
+Parent read: full six-page text, printed p5 visual check.
+The already published POLSON_GGC_CONTINUATION_AUDIT proves that equation38
+at alpha2,s0 gives RHS<1 whereas actual xi2/xi(.5)>1. The principal branch
+under q=w^2/2 changes on the left half-plane. This is an independently
+accepted contradiction to the displayed transfer, not a rejection of RH.
+
+## H3. The revised Wald/Thorin paper: do not import the theorem wholesale
+Polson, Riemann, Thorin, van Dantzig Pairs, Wald Couples and Hadamard
+Factorisation, https://arxiv.org/pdf/1804.10043v8.
+PDF header 29 April 2026; internal date 1 May 2026.
+PDF SHA256 aba173364e7df5f849789caf674fd14f17ac91306df79d7cab8200955d3f52df.
+Text SHA256 295ba14216d62c1f99d411383587fd08ddedc5f7196f35c389c178e0e90da1dd.
+Parent read: printed pp4-5 Theorem14, pp12-13 Theorem23 and Lemma24;
+printed p12 visually checked. No whole-paper certification is asserted.
+
+Theorem14(a)-(b) has the familiar zero/GGC equivalence for a real even
+entire function of order at most one, centered at alpha with f(alpha)>0
+and square-summable reciprocal zero moduli. For f=xi, alpha=1/2, it
+requires the unproved central GGC condition; it does not derive it from r.
+
+But Theorem14(ii) further claims that f(alpha+it)/f(alpha) is a
+characteristic function of an infinitely divisible law under those
+hypotheses. Its wording includes "is the characteristic function of an
+infinitely divisible" (printed p5). This clause is false as stated:
+f(w)=1+w^2, alpha=0 satisfies the stated entire-order, symmetry and zero
+conditions (zeros +/-i, sum of reciprocal squared moduli=2), but
+f(it)=1-t^2 has value -3 at t=2. A characteristic function has modulus
+at most 1. Thus the whole named theorem and its asserted pair consequences
+cannot be imported as an unconditional supplier. The valid zero/GGC
+interface is separately justified in our accepted filter.
+
+Theorem23, printed p12, proposes the shifted GGC identity
+ xi(3/2)/xi(1/2+sqrt(1+s))=E exp(-sH_star), s>0.
+Its proof contains the following false algebraic identity (equation30):
+ e^(-sigma*t)=e^(-(y-1)*2t/(y+1))*e^(-(y^2-1)*t),
+ y=sqrt(1+sigma)>1.
+Since sigma=y^2-1, the right side is the left side times
+exp(-2t(y-1)/(y+1))<1 for t>0. This is a direct falsifier of the proof as
+written. It does not, by itself, prove the proposed GGC identity false.
+
+## H4. The shifted auxiliary GGC condition already has RH strength
+This observation avoids adding an unnecessary later continuation problem.
+Let D(z)=E(1+z)/E(1), entire with D(0)=1. If the GGC identity in Theorem23
+were independently established on real z>0, its GGC Laplace transform L(z)
+would be holomorphic on Omega=C minus (-infinity,0]. The identity
+D(z)L(z)=1, first valid on the positive axis, would hold throughout Omega.
+Hence D has no zeros there. Every E zero would lie in (-infinity,1].
+But E(u)>0 for u>=0 by the exact positive theta moment integral, so all
+E zeros would be negative real. This implies RH by the exact xi/E map.
+Conversely, RH and the symmetric Hadamard product give
+ E(1)/E(1+z)=product_(gamma>0)(1+z/(1+gamma^2))^(-1),
+a GGC Laplace transform. Thus this shifted representation is already
+RH-equivalent; it is not a cheaper theorem supplied by the right-half-plane
+Euler product. No Ramanujan-master-theorem step is needed for this implication.
+
+## H5. Corrections to the raw researcher card
+Raw card SHA256 23e0c8fc62406f6463bb004fbc8191f8a4dd53b4006f32904d3fb42583db6259;
+manifest SHA256 6bb604379387ab686eb0125183d815c77985a7c13ff0818074c2fe5b6315933b.
+The raw card is provenance, not accepted as written. Parent corrections:
+1. Theorem14(ii) is false, not a valid automatic corollary of14(a)-(b).
+2. Do not label Lemma24's holomorphy implication inherently circular:
+   a valid GGC identity would indeed permit the entire-denominator identity
+   theorem argument in H4. Also Re(z)>=0 gives Re(sqrt(1+z))>=1, so the
+   xi argument has real part at least3/2 and its zero-freeness there is
+   already unconditional by the Euler product. The quoted real-asymptotic
+   argument is not a complete audit of its stronger uniform growth claim.
+3. A negative substituted zeta increment with alpha2 is not itself fatal:
+   alpha+increment remains >3/2 for sigma>0, inside absolute convergence.
+   We do not retain that claimed domain failure as a falsifier.
+4. Neither this selected interface nor either article exhausts other methods.
+
+## H6. Retrieval and stopping condition
+Brief SHA256 61a6ee0c846cba824e3acd7f06730fe96cdec787f71ad9b27a9a81d111f627dd.
+Three new registered dictionaries were run once; all shelf receipts retain
+INCOMPLETE due to semantic-index freshness. The corresponding KB exact-query
+no-hits are not evidence of literature absence. The known mgrep credit403
+was not retried. Two primary bodies were fetched within the fixed budget.
+The source1 and source2 claims were checked against the full source and the
+explicit negative control; neither supplies a usable sign theorem.
+The already published two filter reports are independently accepted.
+Full V sign and RH remain open; no new Proshka proof task or canonical
+admission follows automatically from this completed discovery pass.
+
+## Independent acceptance
+
+Candidate SHA256: `5481cb4320ef269a2355a55e6a28391458cd1a9946f5f7772ef01d7cb77d50e5`.
+Review SHA256: `5e9a11022f4096a29c784a9a4ca3d92a915791309f6526a2e1812dbd394b0311`.
+Reviewer: `/root/sibling5_check`. Verdict: ACCEPT_SCOPED_REJECTED_SOURCE_CLAIMS_AND_RH_STRENGTH_FILTER_ONLY.
+The parent read the complete review and checked the source statements,
+counterexample and shifted-GGC equivalence. Only status and this receipt
+were added after review. This is isolated research, not canonical or Lean
+admission, a V sign proof, or an RH proof.
+
+
+## File: docs/Codex/REPORT_2026-09-16_CONVOLUTION_RECIPROCITY_RIGIDITY.md
+
+# Reciprocity singles out shape two among full integer convolution powers
+
+STATUS: INDEPENDENTLY_ACCEPTED_PAPER; ACCEPT_SCOPED_INTEGER_SHAPE_AND_SCALE_RECIPROCITY_CLASSIFICATION_ONLY.
+Base: b6951fed83ac2065e7f36ff53f668ef64d36d6fb.
+Isolated research for the original all-finite-complex V objective.
+
+## 1. Bounded question and source mapping
+
+The source's additive total positivity and its reciprocal identity are both
+proved, but their joint transfer to full V positivity is open. We test one
+explicit family in which the first property survives at every order: change
+the number of independent copies of the shape-one source and allow a positive
+rescaling. Can this family give another reciprocal source, possibly a control
+for the missing joint implication? The stopping condition is an exact
+classification within this family, not a classification of every PF source.
+
+Input: HYPERBOLIC_SOURCE_COMPENSATION L1 gives the full source laws
+ T_m = sum_(n>=1) Gamma(m,1)/(pi*n^2),    m=1,2,...,
+ L_m(s) = [sqrt(pi*s)/sinh(sqrt(pi*s))]^m.
+All gamma variables are independent. Let r_m be the density; r_1=h and
+r_2=r is our actual source. Since r_m=h convolved with itself m times,
+additive TN-infinity is preserved by the already proved convolution theorem.
+Positive scaling also preserves all its ordered minors.
+
+The test allows every integer m>=1, every c>0 and every real kappa. Define
+ q_(m,c)(t)=c^(-1) r_m(t/c), t>0.
+No cutoff, finite truncation of the square-rate product, extra power tilt,
+or change of the target V is introduced.
+
+**Claim.** If
+ q_(m,c)(1/t)=t^kappa q_(m,c)(t) for every t>0,               (R1)
+then m=2, c=1 and kappa=5/2. Conversely these parameters satisfy (R1) by
+the actual theta identity. Thus this test family has precisely the original
+reciprocal source. A positive scalar normalization would cancel from (R1).
+
+The old negative-V Gaussian control is outside this family: its inverse log
+density fails additive TN2. This result constructs no new negative control;
+it excludes varying integer shape/scale as a way to obtain one while retaining
+reciprocity. It proves no general joint-TN/reciprocity theorem and no V sign.
+
+## 2. Two-term large-t expansion with the complete source retained
+
+Write T_m=G+W, where G has Gamma(shape m, rate pi) and
+W=sum_(n>=2) Gamma(m,1)/(pi*n^2). For every eta<3pi,
+E exp((pi+eta)W) is finite. The full product telescopes:
+ E exp(pi W)=product_(n>=2)(1-1/n^2)^(-m)=2^m.
+Under the normalized exponential tilt of W by exp(pi W),
+ E_tilt W=(m/pi) sum_(n>=2)1/(n^2-1)=3m/(4pi).
+
+Convolution with the first gamma density gives exactly
+ r_m(t)=pi^m exp(-pi*t)/Gamma(m)
+          * E[exp(pi W)(t-W)^(m-1) 1_(W<t)].              (R2)
+The power is a polynomial since m is an integer. Expand it and extend each
+of its finitely many tilted moments from W<t to all W. Exponential moments
+at pi+eta bound the omitted parts exponentially, times a fixed polynomial.
+Consequently, for each fixed m,
+ r_m(t)=A_m t^(m-1) exp(-pi*t)
+         * [1 - 3m(m-1)/(4pi*t) + O(t^(-2))],            (R3)
+ A_m=(2pi)^m/Gamma(m)>0.
+For m=1 the first correction is zero and the remaining relative error is
+exponentially small; for m=2 the polynomial has only two terms. Both cases
+still satisfy the stated O(t^(-2)) remainder. No uniformity in m is needed.
+
+## 3. Two-term small-t expansion, including its full-series remainder
+
+For real s>0 expand the entire positive geometric factor:
+ L_m(s)=2^m pi^(m/2) s^(m/2)
+         * sum_(j>=0) binom(m+j-1,j) exp(-a_j sqrt(s)),
+ a_j=(m+2j)sqrt(pi).                                    (R4)
+Use the elementary inverse-Gaussian Laplace pair
+ ell_a(t)=a/(2sqrt(pi)) t^(-3/2) exp(-a^2/(4t)),
+ integral_0^infinity exp(-s*t) ell_a(t)dt=exp(-a sqrt(s)).
+Repeated differentiation with respect to a gives
+ g_m(a,t)=(-partial_a)^m ell_a(t),
+ Laplace(g_m(a,.))(s)=s^(m/2)exp(-a sqrt(s)).
+Each derivative is a finite polynomial times the displayed Gaussian.
+Its first two terms for fixed a>0, t down to zero, are
+ g_m(a,t)=a^(m+1)/(2^(m+1)sqrt(pi)) t^(-m-3/2)
+          exp(-a^2/(4t))
+          * [1-m(m+1)t/a^2+O(t^2)].                     (R5)
+For m=1,2 the remaining polynomial terms vanish; the error convention is
+still valid. Formula (R5) follows either by induction in m or by taking the
+two highest powers of a after the m derivatives of a exp(-a^2/(4t)).
+
+Termwise inversion of (R4) is justified, rather than presumed. Each monomial
+in g_m is a constant times
+ a^(m+1-2k) t^(-m-3/2+k) exp(-a^2/(4t)),
+ 0<=k<=floor((m+1)/2).
+For fixed s>0 split its exponential into two equal parts. The inequality
+ s*t/2+a^2/(8t)>=a sqrt(s)/2
+and substitution u=a^2/(8t) show that its absolute Laplace integral is at
+most a fixed power of a times exp(-a sqrt(s)/2). This is summable over a_j
+even after multiplication by binom(m+j-1,j), which grows polynomially.
+Thus the series of g_m has an absolutely convergent weighted L1 integral;
+its Laplace transform is (R4). Laplace uniqueness identifies the sum with
+r_m. The same Gaussian estimates give locally uniform convergence in t>0.
+
+For 0<t<=1 the j>=1 terms obey a stronger endpoint estimate. Their
+exponential gap relative to j=0 is
+ (a_j^2-a_0^2)/(4t)=pi*j*(m+j)/t >= pi*(m+1)*j/t.
+All their coefficients grow polynomially in j. Hence their sum is bounded
+by a constant times
+ t^(-m-3/2) exp(-m^2*pi/(4t)) exp(-pi*(m+1)/t).
+This controls the complete remaining series, not merely its first mode.
+
+Taking a_0=m sqrt(pi) in (R5) therefore yields
+ r_m(t)=C_m t^(-m-3/2) exp(-m^2*pi/(4t))
+          * [1-(m+1)t/(m*pi)+O(t^2)],                   (R6)
+ C_m=m^(m+1) pi^m/2>0.
+
+## 4. Matching the exact reciprocal law forces the parameters
+
+Scaling (R3) and (R6) gives, as t tends to infinity,
+ q_(m,c)(t)=A_m c^(-m) t^(m-1) exp(-pi*t/c)
+          * [1-3m(m-1)c/(4pi*t)+O(t^(-2))],             (R7)
+ q_(m,c)(1/t)=C_m c^(m+1/2) t^(m+3/2)
+          exp(-m^2*pi*c*t/4)
+          * [1-(m+1)/(m*pi*c*t)+O(t^(-2))].             (R8)
+If (R1) holds identically, comparison first of exponential rates and then
+of powers of t gives
+ c=2/m,     kappa=5/2.                                  (R9)
+The leading positive constants must also agree. Dividing the two expansions
+by this common leading factor, comparison of their t^(-1) coefficients is
+ - (m+1)/(2pi) = - 3(m-1)/(2pi).
+It forces m+1=3(m-1), hence m=2 and c=1. At these parameters A_2=C_2=4pi^2,
+so there is no leading-constant mismatch; the exact theta identity supplies
+the converse, not merely agreement of asymptotics.
+
+## 5. What this changes and what it does not
+
+Before the test, changing convolution shape while retaining full additive
+TN was an untested possible source deformation for the joint implication.
+The exact tail comparison now rules out that deformation within all integer
+shapes and all positive scales. This includes all even levels of the existing
+coupled-field ladder. They are exact auxiliary sources, but they do not each
+inherit the original reciprocal symmetry after any positive rescaling.
+
+The proof uses the full square-rate product twice: its tilted remainder
+mean 3m/(4pi), and the hyperbolic small-t coefficients. It does not identify
+an arithmetic prime contribution or produce a lower bound for full V.
+No claim that this is a previously unknown theorem is made.
+
+This closes only the stated source-family test. It does not classify all
+TN-infinity reciprocal densities, show their uniqueness in a larger class,
+give a new Proshka proof task, or reduce the remaining RH-strength statement.
+The exact positive mechanism carrying these source properties to all-finite
+V remains absent. No extra ladder levels are to be inferred from this result.
+
+## Independent acceptance
+
+Candidate SHA256: `a64fa0afdea7a7f1ce20c8f2b6284fc76eff32b114ea4618716b0c158df345a1`.
+Review SHA256: `5f8b69d32909897ed70678d1127e79bf9e3d37b2d4749209d13d09e21f84f513`.
+Reviewer: `/root/sibling5_check`. Verdict: ACCEPT_SCOPED_INTEGER_SHAPE_AND_SCALE_RECIPROCITY_CLASSIFICATION_ONLY.
+The parent read the complete review and checked the endpoint estimates,
+the full inverse-Laplace series bound and the coefficient comparison. Only
+status and this receipt were added after review. No canonical admission,
+Lean certification or full-V sign conclusion is asserted.
+END_PINNED_CONTEXT
