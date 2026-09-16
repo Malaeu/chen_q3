@@ -2,6 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-16-MELLINEDGE · Raw finite-source cofinal Mellin edge · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MELLINEDGE_2026-09-16.txt`; boundary `GOAL058_RAW_FINITE_SOURCE_COFINAL_MELLIN_EDGE`; call class `DELEGATED_STRATEGIC_REVIEW`.
+- Request commit / bytes / lines / SHA256 / blob / final LF: `6ecf5f173cdf6c7273727c8eaa6a7a558ab0e1a2` / `12492` / `155` / `4f91d16d58e4914dffb41157512bb38393bda49e0d604f95ef63da1469a3adb8` / `361c86c73f67251ce4f16d3c210a7ebc53008bd9` / `LF`.
+- Full five-file context: `docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_MELLINEDGE_2026-09-16.md`; SHA256 `58c0dc298bc77c016934dc6806caadf25ad4bb286da551cf79aa73ad5113c6d2`. CLEAN_DISPATCH: `docs/Codex/certificates/MELLINEDGE_REQUEST_20260916.json`.
+- Scope: exact binomial and harmonic Mellin polynomial, one cofinal right-half-plane zero-free mechanism sufficient for original RH/V through proven limit; no serial finite-N campaign or sign claim.
+- Same user-authorized living chat and GitHub transport. Previous COUPLEDFLUX completed and independently accepted; nonlocal and raw Mellin preflights independently reviewed.
+- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_MELLINEDGE_2026-09-16.md`. No send yet.
+
 ## REQ-2026-09-16-COUPLEDFLUX · Coupled full-source local flux · ANSWERED
 
 - `STATUS: ANSWERED`
