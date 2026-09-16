@@ -1,0 +1,78 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "07cf0e5892ec9b0bf53a70701dffc0d85100df53",
+  "candidate_sha256": "e3881205c3c14814cee060b86e1773dc1701e6ea839213fef4bbb22bd5e65faf",
+  "report_path": "docs/Codex/REPORT_2026-09-17_RADIAL_CLOSED_OPERATOR_PREFLIGHT.md",
+  "report_sha256": "6882b5b56bed7bfd23ac5070b3d2efd59b06a3f595da08948b79f2d328cfea65",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-17_RADIAL_GRAM_DIVISOR_PREFLIGHT.md": "8fffcd6f46c4228fec6703864920e3e6121cee3c51a2d2025ec6b7b0a78652ad",
+    "docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f",
+    "docs/Codex/REPORT_2026-09-16_LOGVCURV_INTAKE.md": "074a6ee11edf58ed502f8a41454515c06b5d286605b53ff0fe9e889981a3b929"
+  },
+  "reviewer": "/root/pairzero_geometry_review",
+  "review_sha256": "e17fdc02e380b31e78f745e9fbcbbe076888e1e23c3e5f1e1f4cd4d26660b78c",
+  "review_text": "# Independent review: exact radial carrier and closed energy operators\n\nDate: 2026-09-17.\nReviewer: /root/pairzero_geometry_review.\nVerdict: ACCEPT_EXACT_RADIAL_CLOSED_OPERATOR_OBSTRUCTION_ONLY.\nDisposition: no mathematical correction required in C1--C7.\n\n## 1. Frozen candidate and scope\n\nReviewed complete candidate:\n`RADIAL_CLOSED_OPERATOR_PREFLIGHT.md`\nSHA256: `e3881205c3c14814cee060b86e1773dc1701e6ea839213fef4bbb22bd5e65faf`\nBytes: 8809. LF: 189.\nCandidate source base: `07cf0e5892ec9b0bf53a70701dffc0d85100df53`.\n\nThis review accepts an obstruction to one precise realization: a single\nclosed, or closable, complex-linear energy transform on the exact radial\ncarrier H=L2([0,infinity),ds), with g_z(s)=f(sqrt(s+z^2)). It also accepts\nthe corresponding obstruction to closed or closable nonnegative forms\non this same H. It does not establish either sign of the original V.\n\nThe review is analytic and source-bound. No numerical test, Lean proof,\nnew literature premise, search, descendant agent, repository mutation,\nPro dispatch, or RH claim forms part of it.\n\n## 2. Direct input bindings\n\nThe named inputs were read directly in the isolated worktree and their\nhashes rechecked against the candidate:\n\n- `REPORT_2026-09-17_RADIAL_GRAM_DIVISOR_PREFLIGHT.md`, Q2--Q3:\n  `8fffcd6f46c4228fec6703864920e3e6121cee3c51a2d2025ec6b7b0a78652ad`.\n- `REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md`, R3--R7:\n  `51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f`.\n- `REPORT_2026-09-16_LOGVCURV_INTAKE.md`, I1:\n  `074a6ee11edf58ed502f8a41454515c06b5d286605b53ff0fe9e889981a3b929`.\n\nThe previously independently reviewed quotient-continuation lemma is\nused only in its already accepted scope, specialized to denominator 1.\nIn particular, the current argument does not assume positivity of V as\nan unconditional source fact.\n\n## 3. C1--C2: exact carrier, strict interaction, conditional feature\n\nPASS. The even holomorphic source makes f(sqrt(s+z^2)) branch independent.\nThe earlier full-strip Hilbert-valued bounds provide the H-holomorphic\nmap g on S={|Im z|<pi/4}; the present proof uses that result without\naltering the carrier, tail, or measure. The identity g_z=g_(-z) is exact.\n\nThe source statements used about V are distinct from all-family PSD:\nV is jointly holomorphic on S times S, has the stated real symmetry,\nand satisfies, for every nonzero real a,\n\n    V(-a,-a)=V(a,a)>0,\n    0<V(a,-a)<V(a,a).\n\nIndeed, the prior strict two-node comparison gives V(a,-a)<G(a,-a),\nwhile g_a=g_(-a) gives G(a,-a)=G(a,a)=V(a,a). Strict squared-coordinate\nlog concavity supplies the strict inequality; evenness alone does not.\n\nHypothesizing C2 gives PSD of every finite matrix V(x_i,x_j) with x_i\nin I. The accepted Q3 lemma applies with N=V and D=1: its denominator\ncondition holds everywhere, and the strip is conjugation-stable and\nsimply connected. Thus the global holomorphic feature F satisfying\n<F(z),F(w)>=V(conj(z),w) is a conditional consequence of C2. It is not a\nproof that the actual source kernel is PSD on I or on the whole strip.\n\nThe conventions of holomorphy and inner products are consistent:\ninner products are conjugate-linear in the first argument, so a fixed\nfirst-slot vector defines a complex-linear scalar functional in the\nsecond slot.\n\n## 4. C3: same actual output Hilbert space\n\nPASS. The identification with the proposed operator's actual codomain\nis necessary and is proved, rather than presumed.\n\nLet E0 be the closed linear span of F(I). If e is perpendicular to E0,\nthen <e,F(z)> is holomorphic and vanishes on I. A real interval has\naccumulation points inside S, so the scalar identity theorem applies.\nIt follows that F(S) lies in E0.\n\nFor any finite coefficient row, C2 and C4 equate the squared norms of\nsum c_i F(x_i) and sum c_i T g_(x_i). Consequently a zero combination\non the feature side gives a zero combination in K. The stated map U\nis therefore well-defined and isometric. Its extension to E0 is bounded\nand complex linear, with range equal to the closed span of the actual\noperator outputs. The map F_tilde=UF is consequently holomorphic into\nthat fixed K, and F_tilde(x)=Tg_x for every x in the original interval.\n\nNo arbitrary gluing of different output spaces, surjectivity onto all\nof K, or assumption of boundedness of T on H is used.\n\n## 5. C4: analytic continuation through the closed graph\n\nPASS. This is the decisive step, and it handles the original negative\ninterval correctly.\n\nThe graph of a closed linear operator is a closed complex subspace of\nH direct-sum K, whether or not its domain is dense. Both components of\nPsi(z)=(g_z,F_tilde(z)) are holomorphic. For any b perpendicular to the\ngraph, <b,Psi(z)> is holomorphic and is zero on I. The identity theorem\nmakes it zero on the connected strip. Taking the double orthogonal\ncomplement yields Psi(S) contained in Graph(T).\n\nHence all the global domain assertions are conclusions:\n\n    g_z belongs to Dom(T), and T g_z=F_tilde(z), for every z in S.\n\nIn particular, positive shifts were not added to the original domain\nhypothesis. Although x and -x are not both in the original negative I,\nclosedness and analytic continuation force the operator relation across\nzero. This validates the subsequent use of the pair a,-a.\n\nSince g_a=g_(-a) and T is single-valued, F_tilde(a)=F_tilde(-a). The\npreserved Gram identity therefore forces V(a,-a)=V(a,a), contradicting\nthe independently established strict inequality for a nonzero real a.\nThe contradiction is valid for any nonempty real open starting interval.\nNo unbounded-operator interchange of T with an integral or derivative\nhas been performed.\n\n## 6. C5: closable operators and nonnegative forms\n\nPASS. If T is closable, its graph closure is the graph of a single-valued\nclosed linear operator extending T. The original identities are retained\non every g_x in I, so the same contradiction applies.\n\nFor a nonnegative complex sesquilinear form q, positivity gives Hermitian\nsymmetry by polarization, and Cauchy--Schwarz makes its null space the\nradical. Thus the quotient of the domain by null(q), completed in its\nenergy norm, is a legitimate Hilbert space K. The class map T is linear\nand satisfies <Tu,Tv>=q(u,v).\n\nThe candidate's direct graph argument is sound. If u_n tends to u in H\nand Tu_n tends to v in K, then\n\n    ||u_n-u_m||_H^2 + q(u_n-u_m,u_n-u_m) -> 0.\n\nCompleteness in the form norm supplies a limit u_* in the form domain.\nThe H limit identifies u_*=u, and the energy limit identifies Tu=v.\nThus T is closed without any density requirement or square-root theorem.\nThis reduces C7 to the already excluded operator realization.\n\nThe closable-form assertion has the same scope. Equivalently, the usual\nsequential closability criterion says that u_n->0 in H and an energy-\nCauchy sequence force q(u_n,u_n)->0. It makes the energy class map T\nclosable: a graph limit (0,v) must have v=0. Its closed operator extension\nis then excluded. This also verifies the conclusion without appealing\nto a densely defined self-adjoint representation of q.\n\n## 7. C6--C7: Gaussian control and exact no-go boundary\n\nPASS. For the control f_a(u)=exp(-a u^2), a>0,\n\n    d/dt exp(-a((t+x)^2+(t+y)^2))\n      = -2a(2t+x+y) exp(-a((t+x)^2+(t+y)^2)).\n\nThe full integral therefore equals exp(-a(x^2+y^2))/(2a). Directly,\nG_a integrates exp(-2as-a(x^2+y^2)) over s>=0 and has exactly the same\nvalue. The identity operator is a valid realization for that control.\nIts squared-coordinate logarithm is linear, so the strict source\ninequality needed for the contradiction is absent. The sanity check\ncorrectly demonstrates that the proof is not a generic objection to\nevenness or radial coordinates.\n\nThe resulting exclusion includes nonlocal or unbounded closed linear\noperators on this precise H; it is not limited to multiplication or\nbounded integral kernels. It does not exclude a carrier retaining shift\norientation, an enlarged input carrier with additional information,\nshift-dependent or nonlinear realizations, or purely algebraic\nnonclosable maps. The latter are outside the theorem, not certified\nalternatives.\n\nNo finite negative row of the original V is exhibited. No positive lower\nbound for V is proved. An abstract positive feature, if V were PSD, need\nnot be induced by a closed operator on this radial H; the obstruction\ntherefore does not refute PSD of V. Source properties and prior two-node\ncomparisons remain valid and useful within their stated scopes.\n\n## Final disposition\n\nACCEPT_EXACT_RADIAL_CLOSED_OPERATOR_OBSTRUCTION_ONLY, bound to the exact\ncandidate bytes and hashes above. No correction required. The new\nisometric identification and closed-graph continuation are valid; together\nthey rule out the specified exact radial-carrier energy realizations.\nFull V positivity and RH remain open. This acceptance is an analytic\nreview, not Lean validation, canonical admission, or a new proof dispatch.\n",
+  "verdict": "ACCEPT_EXACT_RADIAL_CLOSED_OPERATOR_OBSTRUCTION_ONLY",
+  "accepted": [
+    "C1--C4: no single closed linear operator from the exact radial L2 carrier to any Hilbert space can reproduce original V on I; unbounded and nondense-domain operators are included",
+    "C5: closable operators and nonnegative closed or closable energy forms on that fixed carrier are likewise excluded",
+    "C6: the Gaussian control admits identity transform, so target asymmetry rather than source evenness alone supplies the contradiction"
+  ],
+  "parent_checks": [
+    "conditional global feature construction rather than assumed RH",
+    "isometry well-defined on every finite complex row and extends to fixed actual codomain",
+    "closed Graph(T) membership propagates from negative I to all S by scalar identity",
+    "g_z=g_-z would force V(a,-a)=V(a,a), contradicting the independently accepted strict two-node inequality",
+    "closed energy form gives closed class-map operator by graph-norm completeness"
+  ],
+  "excluded_class": {
+    "carrier": "L2(ds), g_x(s)=f(sqrt(s+x^2))",
+    "transform": "one fixed complex linear closable operator",
+    "codomain": "any Hilbert space",
+    "identity": "V(x,y)=<Tg_x,Tg_y> on original I",
+    "closure_or_closedness": "essential"
+  },
+  "not_excluded": [
+    "enlarged or different carriers retaining shift orientation",
+    "shift-dependent maps",
+    "nonlinear or nonclosable constructions",
+    "original V positivity"
+  ],
+  "prior_parity_reconciliation": {
+    "status": "EXACT_OBJECT_RECONCILIATION_NOT_NEW_PROOF",
+    "source_base": "07cf0e5892ec9b0bf53a70701dffc0d85100df53",
+    "source_pins": {
+      "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2_2026-09-12.md": "1ef47a209f86e1a99c1e83ca207637aacc5b33c73170e2ef5d244231fbacaaba",
+      "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODDINFINITY_2026-09-12.md": "8ca45b2f8a37db52a883be395b3db5e8465883934b6337f70ee60457f6132b85",
+      "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_ODD2COMPACT_2026-09-12.md": "819511db9d46801e87b54e728faf7c55e7ce21e4e20e48d9d95d49a71b175e07"
+    },
+    "directly_read_ranges": {
+      "ODD2": "1-215",
+      "ODDINFINITY": "1-240 and 1130-1235",
+      "ODD2COMPACT": "1-100"
+    },
+    "entire_raw_artifacts_read_this_turn": false,
+    "facts": [
+      "ODD2 equations (2)-(5) define the identical odd target K_-(x,y)=V(x,y)-V(x,-y) and its finite four-node energy, with full all-row sign unpaid in the raw response.",
+      "ODDINFINITY section 1.3 identifies all H_n PSD with all finite odd K forms and RH, using its stated accepted S1 input. This current reconciliation does not independently reverify that equivalence or its acceptance.",
+      "ODDINFINITY exact first unpaid input is source pair-variance compensation H1; positive source pair measure does not imply positive universal integrand matrices.",
+      "ODD2COMPACT status and introductory paragraphs retain only two explicit boundary sign regions, not uniform ODD2 or all odd matrix sizes."
+    ],
+    "decision": "Do not present the even/odd shift split or all-odd Hankel representation as a new positive-energy mechanism. Before any return to that target, read its accepted supplier and latest compensation intake; do not redispatch the same unpaid sign request merely because radial-carrier symmetry failed."
+  },
+  "decision_effect": "Retire the same radial profiles as a fixed closed positive-energy carrier, beyond the already excluded PSD multiplier. Retain their pairwise comparison only. The existing even/odd and all-odd targets are not new mechanisms; do not redispatch their unpaid sign under a new name.",
+  "search": {
+    "coverage": "INCOMPLETE_NOT_NO_HITS",
+    "last_provider_error": "mgrep expired JWT; login required",
+    "new_external_premise": false,
+    "novelty_or_absence_claim": false
+  },
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "RH_refuted": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proof_request": false,
+  "consumption": "INCOMPLETE_NO_CONSUMABLE_TARGET"
+}
