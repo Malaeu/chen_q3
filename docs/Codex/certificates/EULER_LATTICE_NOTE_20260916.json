@@ -1,0 +1,18 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "2d61be8509a7f7fe84e6ffc62d2201d231d92df6",
+  "candidate_sha256": "2d9e364ddcb8602129cd7e6de2f08026e658d0fae4ccead4c431f1b32b5d9235",
+  "report": "docs/Codex/NOTE_2026-09-16_EULER_LATTICE_AND_PRIME_INVARIANT.md",
+  "report_sha256": "9b3814f24b5e6941c4bb8506c8a0eeb580c9b88012fa6875d7d8d9d3e219cd11",
+  "reviewer": "/root/sibling5_check",
+  "verdict": "ACCEPT_EXPLANATORY_EULER_LATTICE_NOTE_ONLY",
+  "review_sha256": "147aafdd4d42c1f629870f0064f0a983a4be615837725ba1f05530a6fcbbe4ba",
+  "review_text": "# Independent review: Euler lattice explanatory note\n\nReviewed candidate SHA256:\n`2d9e364ddcb8602129cd7e6de2f08026e658d0fae4ccead4c431f1b32b5d9235`\n\n## Verdict\n\n**ACCEPT_EXPLANATORY_EULER_LATTICE_NOTE_ONLY.**\n\nThe note correctly separates the sine zero lattice, Basel evaluation, and the\nEuler product for primes.  Its logarithmic-derivative formula is restricted\nto `Re s>1`, and it does not infer zero locations from positivity of that\natomic measure.\n\nThe Brownian normalization is exact: four bridge squares, multiplied by\n`pi/2`, produce independent `Gamma(2,1)/(pi n^2)` terms.  The stated\nPoincare criterion for complex `H_0^1(0,1)` functions is exactly\n`lambda<=pi^2`, with the first sine mode proving necessity.  It correctly\nwarns that Brownian paths are not finite-energy test functions and that no\nmap from the original V rows to this Dirichlet form has been supplied.\n\nPinned P1 SHA was independently matched to disk:\n`00b5e80a573bd3a31c28f21ffa4fcf11695746c7df56274d12c0a94370e225fa`.\n",
+  "publication_difference": "Only STATUS changed after exact-payload independent review.",
+  "parent_check": "Reproduced Gamma(2,1) normalization from four Gaussian squares and the sine-series Poincare criterion; checked original B1/B4 and primary source spectra.",
+  "source_sign_progress": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "counter_effect": "Explanatory audit of already known mechanisms; no new proof attempt or counter reset.",
+  "new_proshka_request": false
+}
