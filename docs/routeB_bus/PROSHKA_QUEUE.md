@@ -2,6 +2,17 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-16-RESOLVENTGRAM · Full-source resolvent Gram transfer · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_RESOLVENTGRAM_2026-09-16.txt`; boundary `GOAL058_FULL_SOURCE_RESOLVENT_GRAM_TO_WEIL_KERNEL`; call class `DELEGATED_STRATEGIC_REVIEW`.
+- Request commit / bytes / LF / SHA256 / blob / final LF: `5fb0c0693427a870409446cf24416790f06e69f2` / `79287` / `1597` / `f8014d60f15d8ab17d8ae2bc7a2fa4e25d680e94d20988fb5ce7d8a2867ef514` / `53214dd2ee4cf0ff5f5f0044c54886fb76da584d` / `LF`.
+- Eight full source reports embedded in the single TXT; context SHA256 `2b221e8a9dc9dc948a8e46d8f16b95e2d945b34071e8fa3eca5d221b4b43d01e`. Dispatch review: `docs/Codex/certificates/RESOLVENTGRAM_REQUEST_20260916.json`.
+- Scope: transport the explicit positive square-rate resolvent Gram through the full Mellin/reciprocal source to exact K_2; keep every finite complex row and all corrections. Source positivity is proved; target transfer is OPEN.
+- Distinct from completed JOINTSOURCE-Y, raw MellinEDGE and refuted Bessel/log-PF/tilted-PF constructions; no automatic RH claim.
+- Same user-directed living chat `6aa52001-4094-83eb-9520-01a09f54eff2`; previous informational acknowledgement completed, no proof request running.
+- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_RESOLVENTGRAM_2026-09-16.md`. Not sent at preparation.
+
 ## REQ-2026-09-16-MELLINEDGE · Raw finite-source cofinal Mellin edge · ANSWERED
 
 - `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
