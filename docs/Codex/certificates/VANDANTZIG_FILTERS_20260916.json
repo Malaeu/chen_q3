@@ -1,0 +1,78 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "4a786c7b74b3efa7ccf8e227963f7f4c6c060d7c",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f",
+    "docs/Codex/REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md": "3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a",
+    "docs/Codex/REPORT_2026-09-15_RH_ROUTE_AUDIT.md": "0978708a88fb2c4802ed3405b37b427ab6890b46a8ffa688edfe757c4a4fe4e3",
+    "docs/routeB_bus/litreview/pdfs/2007.12889.pdf": "e610f7a0de324a610fd24ee9fafa4356e5005a9af811245f016d6c0d791ed3a2"
+  },
+  "reviews": [
+    {
+      "candidate": "VANDANTZIG_DUAL_FILTER.md",
+      "candidate_sha256": "61f5cc05daa010f7d467caf6e5b4b79d0f96c764d8e0743578439e2145698020",
+      "report_path": "docs/Codex/REPORT_2026-09-16_VANDANTZIG_DUAL_FILTER.md",
+      "report_sha256": "4bfa4044261ebe67b95e44e04a3a1a445a572e8d5c9299c67579e6688e94a7b0",
+      "review_sha256": "e52aa28316965313dea405b9478a997e64b628e36cc03a74ba7604616c64f1c5",
+      "review_text": "# Independent review — van Dantzig dual filter\n\nReviewed candidate: \\`VANDANTZIG_DUAL_FILTER.md\\`  \nSHA256: \\`61f5cc05daa010f7d467caf6e5b4b79d0f96c764d8e0743578439e2145698020\\`.\n\n## Verdict\n\n**ACCEPT_SCOPED_DUAL_FILTER_AND_STIELTJES_STRENGTH_DIAGNOSTIC_ONLY.**\n\nNo implication to the actual full \\(V\\) form, its sign, or RH is established\nby the control construction. The stated actual-\\(\\xi\\) Stieltjes condition is\ncorrectly identified as RH-strength, not paid.\n\n## Checks\n\nFor \\(a=1/(4\\sqrt2)\\), direct Gaussian integration gives\n\\[\n F_0(z)=\\frac{e^{-z^2/4}-ae^{-z^2/8}}{1-a},\\qquad\n H_0(t)=\\frac{(1-a)e^{-t^2/4}}{1-ae^{-t^2/8}}\n       =(1-a)\\sum_{n\\ge0}a^n e^{-(n+2)t^2/8}.\n\\]\nThe summands are centered Gaussian characteristic functions with variance\n\\((n+2)/4\\), and the weights sum to one. The displayed logarithm is the\nLévy--Khintchine exponent of a Gaussian factor plus a finite-intensity compound\nPoisson mixture; consequently the explicit convolution-root claim and infinite\ndivisibility are valid.\n\nThe derivative\n\\[\n \\psi_0'(u)=\\frac14+\\frac18\\sum_{n\\ge1}a^n e^{-nu/8}\n\\]\nis completely monotone. Its poles inherited from\n\\(E_0(u)=0\\), at \\(8\\log a+16\\pi i k\\), preclude a Stieltjes continuation,\nsince a Stieltjes function is holomorphic off the negative real axis. Thus\nthe CM-versus-Stieltjes separation is correct.\n\nFor actual \\(E(u)=\\xi(1/2+\\sqrt u)/\\xi(1/2)\\), a positive Stieltjes\nrepresentation of \\(E'/E\\) forces zeros of \\(E\\) onto the negative real axis\nand hence RH. Conversely, under RH the standard symmetric Hadamard product\ngives \\(\\sum_{\\gamma>0}(u+\\gamma^2)^{-1}\\). The report explicitly retains\nthis standard factorization as an extra input and does not claim the\nrepresentation from TN, reciprocity, or \\(V\\).\n\nThe \\(g_0\\) negative-row control is used only to refute weak automatic\ndual-to-\\(V\\) implications. It is correctly distinguished from the actual\nsource, which has additional additive TN and reciprocal structure.\n\n",
+      "verdict": "ACCEPT_SCOPED_DUAL_FILTER_AND_STIELTJES_STRENGTH_DIAGNOSTIC_ONLY"
+    },
+    {
+      "candidate": "VANDANTZIG_POLSON_CONTINUATION_CHECK.md",
+      "candidate_sha256": "98b931423113ac699ffbb03ee16211d3e54b371264517ed585d1782a929672ee",
+      "report_path": "docs/Codex/REPORT_2026-09-16_POLSON_GGC_CONTINUATION_AUDIT.md",
+      "report_sha256": "811e21b8cb0347200f633273611446e7a6e1b6ff9538924bf8e5fd9ef62d4a6b",
+      "review_sha256": "659e33508100fb7b2ba3899f63364ad691a238086b69770412ab31d9ec242d62",
+      "review_text": "# Independent review — Polson GGC continuation check\n\nReviewed candidate: \\`VANDANTZIG_POLSON_CONTINUATION_CHECK.md\\`  \nSHA256: \\`98b931423113ac699ffbb03ee16211d3e54b371264517ed585d1782a929672ee\\`.\n\n## Verdict\n\n**ACCEPT_REJECTION_OF_THE_CLAIMED_EQUATION_38_CONTINUATION_ONLY.**\n\nThe conclusion is properly narrow: the displayed continuation in the cited\nversion cannot serve as a positive critical-line supplier. It says nothing\nagainst RH, the original \\(V\\) sign, or other possible GGC representations.\n\n## Source and calculation check\n\nI byte-verified the local v7 PDF:\n\\`e4350036340ec9d6fdd5bb2d4e8ee23514a2764f30f5bd658f21dcf4def13214\\`,\nand visually inspected printed p.5. Equations (33)--(38), the definitions\n(34)--(37), and\n\\[\n b_\\alpha=\\xi'(\\alpha)/\\xi(\\alpha)-1/(\\alpha-1)\n\\]\nmatch the candidate.\n\nAt \\(\\alpha=2\\), direct use of equation (19) gives\n\\[\n b_2=-\\tfrac12\\log\\pi+\\zeta'(2)/\\zeta(2)+\\tfrac12\\psi(2)<0.\n\\]\nFor \\(s=0\\), equation (38)'s printed right-hand side is consequently\n\\[\n \\exp\\{(3/2)b_2+\\int_0^\\infty(e^{-9t/8}-1)\\nu_2(t)\\,dt/t\\}<1.\n\\]\nThe three displayed components of \\(\\nu_2\\) are nonnegative, and\n\\(\\nu_2^0>0\\). The candidate's endpoint estimates make this integral finite\nand strictly negative. Conversely, the exact full-source even-moment identity\ngives\n\\(\\xi(2)/\\xi(1/2)=\\mathbb E[\\cosh(3X/2)]>1\\).\nThus (38) has a direct real-point contradiction. Excluding only \\(s=0\\)\ndoes not repair it because both sides have the stated local continuity.\n\nThe branch diagnosis is also correct. If the right-half-plane relation is\nwritten\n\\[\n \\xi(\\alpha)/\\xi(\\alpha+w)=e^{-b_\\alpha w}L_\\alpha(w^2/2),\n\\]\nthen on the left half-plane applying it at \\(-w\\) yields\n\\[\n e^{-b_\\alpha w}L_\\alpha(w^2/2)\n =e^{-2b_\\alpha w}\\xi(\\alpha)/\\xi(\\alpha-w),\n\\]\nnot the same \\(\\xi(\\alpha+w)\\) quotient. The pulled-back slit separates the\ntwo half-planes, so the source's asserted continuation cannot identify them\nwithout an additional argument.\n\n",
+      "verdict": "ACCEPT_REJECTION_OF_THE_CLAIMED_EQUATION_38_CONTINUATION_ONLY"
+    }
+  ],
+  "source_body": {
+    "url": "https://arxiv.org/pdf/1806.07964v7",
+    "sha256": "e4350036340ec9d6fdd5bb2d4e8ee23514a2764f30f5bd658f21dcf4def13214",
+    "parent_read_scope": "Full six-page text; printed p5 visually checked; independent reviewer also visually checked eq33-38.",
+    "rejected_step": "Equation38 at alpha2,s0 gives RHS<1, whereas exact full-theta xi2/xi(.5)>1; wrong square-root sheet."
+  },
+  "reused_primary": {
+    "url": "https://arxiv.org/pdf/2007.12889v1",
+    "read_scope": "Printed pp4-5; centered xi entire order and Theorems3-5. Earlier pp1-3 source read reused."
+  },
+  "dual_filter": "Explicit g0 with negative four-node V has an infinitely divisible dual H0 and completely monotone psi0 derivative, but a non-Stieltjes derivative. These weak properties do not automatically pay V.",
+  "actual_xi_stieltjes_condition": "RH_STRENGTH_NOT_PROVED",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proshka_request": false,
+  "source_hunt_state": "RESEARCHER_CARD_PENDING_AT_PREPARATION; these two independently accepted checks are complete independently of that card.",
+  "brief_sha256": "61a6ee0c846cba824e3acd7f06730fe96cdec787f71ad9b27a9a81d111f627dd",
+  "search_receipts": {
+    "VANDANTZIG_ask-1.stdout": {
+      "sha256": "6e2be3490fb110311abe418218246be4417745a8a080d8bf36d6baf344b9c524",
+      "bytes": 14155
+    },
+    "VANDANTZIG_ask-2.stdout": {
+      "sha256": "910ef95af520ebb38143e6078996b2e7fcb5ba9b56388bd8394a3715277f9e37",
+      "bytes": 12816
+    },
+    "VANDANTZIG_ask-3.stdout": {
+      "sha256": "4e88a5ac662ddba4eb8ddfc66de5ee3223b6b4b192545f5e9976c94d5b3c84f6",
+      "bytes": 13948
+    },
+    "VANDANTZIG_kb-1.stdout": {
+      "sha256": "2c9b69e73f3622aba69c28b9f44e0a5944275d69392a4a8800c837bac3a2ae6b",
+      "bytes": 94
+    },
+    "VANDANTZIG_kb-2.stdout": {
+      "sha256": "02cf97202d907288b6d5ba069288565def7770ceee49980c79bbb63b9b63286b",
+      "bytes": 83
+    },
+    "VANDANTZIG_kb-3.stdout": {
+      "sha256": "2766e82a35661cce5cf43d1ba790f1242c9f9cc67d89f0c59fda04a5c8ca7130",
+      "bytes": 94
+    }
+  },
+  "incomplete_search_not_absence": true,
+  "previous_MELLINEDGE": "c63b1ea7 response already independently accepted; user repeated same result; no duplicate dispatch."
+}
