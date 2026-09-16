@@ -1,0 +1,78 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "eeab3bfa164e7f77646a0947284be0aac423efd1",
+  "candidate_sha256": "ed0fb279a1949bbc0c39bff88fe0c48ebe95b5463f0798cff79dbcd91042ec6f",
+  "report_path": "docs/Codex/REPORT_2026-09-16_PAIRZERO_GEOMETRY.md",
+  "report_sha256": "c53ae234d3ad87728203b9e64439eb718a79e0b13c09d2f18d9e9a481f31bccd",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-16_LOGVCURV_INTAKE.md": "074a6ee11edf58ed502f8a41454515c06b5d286605b53ff0fe9e889981a3b929",
+    "docs/Codex/REPORT_2026-09-16_LOGVCURV_PREFLIGHT.md": "79755565b206eb578a3681b5ef68a0580776869c61703a62a63625b6fcb182a9",
+    "docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md": "fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190",
+    "docs/Codex/REPORT_2026-09-15_SPACE_SIBLING_HUNT.md": "cf4636f825869ef9bf4ea03486e3bfdd6433ace9155d7c8f96bc2ad3e87bb1e7",
+    "docs/Codex/REPORT_2026-09-15_SOURCE_SUPPORT_HUNT.md": "9b059659b10948bed90d9df482cfe97e9cc229116e1db46b029bba81a22c4966",
+    "docs/Codex/REPORT_2026-09-15_SUPPORTSTABILITY_INTAKE.md": "14f8e48fd325f41df7b46f1da84140e1ff56b16df95ee3c6b9c0000f9ae9e895"
+  },
+  "reviewer": "/root/pairzero_geometry_review",
+  "review_sha256": "97ba1dbe235b43dd5c3d62226956af5c0873d9b14866534401592f30c08ebf3c",
+  "review_text": "# Independent review: pair-zero-compatible geometry\n\nVerdict: ACCEPT_PAIRZERO_GEOMETRY_DICTIONARY_AND_CONTROLS_ONLY.\nFinal candidate: PAIRZERO_GEOMETRY.md, SHA256\n`ed0fb279a1949bbc0c39bff88fe0c48ebe95b5463f0798cff79dbcd91042ec6f`.\nInitial mathematical candidate: SHA256\n`d99cb0b01dc331149ab9e025dc90cbe32a09894f5677eebe4bedac1632bb5c91`.\nReviewer: /root/pairzero_geometry_review. Date: 2026-09-16.\nRevision disposition: CLEAN_SCOPE_ONLY_REVISION.\n\nThe complete initial and final candidates were read. P1--P13 have not\nchanged mathematically. No correction is required to the bounded claims.\nThis is exact dictionary/control acceptance, not sign progress for theta V,\ncanonical admission, Lean certification, or any proof/refutation of RH.\n\n## Direct evidence\n\nThe 920221-byte Loi--Zedda arXiv:1712.04298v1 PDF was independently hashed:\n`5e25d237b432f342f0402cae5c75a3b7c80baf3d15fb0818c3ae144f6d460215`.\nThe supplied extract has hash\n`73738f1dac67138bc3565b976374b8698cb7ad0c9e1b9661524c287a6cad9cdd`.\nRelevant text was independently regenerated from PDF pages 30--31:\nDefinition 2.2.2 and Theorem 2.2.4 are on printed page 24 and the proof\ncontinues on printed page 25. These locators are correct. Printed pages\n6--8 were also read directly for normalization and N<=infinity.\n\nThe following source inputs were fully read and their exact hashes checked:\n\n- LOGVCURV_INTAKE: `074a6ee11edf58ed502f8a41454515c06b5d286605b53ff0fe9e889981a3b929`.\n- LOGVCURV_PREFLIGHT: `79755565b206eb578a3681b5ef68a0580776869c61703a62a63625b6fcb182a9`.\n- SUPPORTSTABILITY_INTAKE: `14f8e48fd325f41df7b46f1da84140e1ff56b16df95ee3c6b9c0000f9ae9e895`.\n\nPreviously accepted theta holomorphy, P2, log-curvature obstruction and\nC(0,0)>0 are inputs here. This does not reprove all their earlier source\nestimates. The inherited f0 four-shift control is historical context; the\nnew independently checked controls are P10--P13.\n\nNo search, dispatch, repository mutation, or descendant was used. Canonical\nread-only plan remained HOLD with ACTIVE control and writes_performed=false.\nThe only output written by this reviewer is this assigned staging review.\n\n## Moving boundary and polarization: P3--P5\n\nThe substitution s=u^2-a^2 has ds=2u du and sends [|a|,infinity) to\n[0,infinity), proving P3 with the boundary intact. For s>0, u>0 and\n\n    partial_a H=(a/u) f'(u+ib), partial_b H=i f'(u+ib),\n    partial_s H=f'(u+ib)/(2u).\n\nUsing the two Wirtinger operators gives exactly\npartial_bar_z H=(a-u)partial_s H and\npartial_z H=(a+u)partial_s H, including both signs. Thus the direct field\nis generally nonholomorphic. No bounded generator or conclusion at\ns=a=0 follows from this pointwise calculation; the candidate does not\nclaim one.\n\nA holomorphic Hilbert feature with diagonal norm D gives a\nsesquiholomorphic kernel. Equality of its diagonal with V(conj(z),z)\nforces equality of all mixed Taylor coefficients and hence P5 locally.\nIndividual positive norms from P3 do not supply the required cross inner\nproducts or holomorphic feature.\n\n## Calabi mapping and normalization: P6--P8\n\nFor phi=log D, the anchored diastasis is\nphi(z)+phi(0)-phi(z,0)-phi(0,z), exactly H(conj(z),z).\nNonzero factors and a logarithm exist near (0,0), where d>0. The metric\ncoefficient at 0 is the paid C(0,0)>0; continuity yields a local Kahler\nmetric without a global scalar-metric hypothesis.\n\nThe definition's quote, with typographical normalization, is exact:\n\"if the matrix (sjk) is semipositive definite of rank N.\"\nSource (1.5), (2.2) and Theorem 2.2.4 give b=1, Fubini--Study curvature\n4, and potential log(1+sum |h_j|^2). Printed pages 6--8 explicitly allow\nN<=infinity. No missing b or 1/b factor affects the candidate.\n\nSubtracting 1 from R gives P7. Under the proposed Q factorization,\n\n    <Psi(z),Psi(w)>\n    = V(conj(z),0)V(0,w)/d * [1+Q(conj(z),w)]\n    = V(conj(z),w),\n\nso P8 is correctly normalized. Conversely orthogonal projection off the\nfeature at 0 gives S0; multiplication by sqrt(d)/V(0,z) gives Q.\nThis preserves every finite local family and arbitrary complex coefficients.\nAll finite Taylor coefficient matrices must be PSD. Analyticity and that\nall-order condition give convergent local Hilbert features; a finite\nlow-order check does not suffice.\n\nThe flat criterion uses H itself. Differentiating a PSD kernel by finite\ndifferences makes its mixed derivative PSD, which here would contradict\nthe accepted C obstruction. The projective condition exp(H)-1 is distinct\nand allows pair zeros. The example 1+zw verifies that distinction.\n\n## Conditional continuation in the same Hilbert space: P9\n\nP9 is valid. Within a feature domain, its derivative norms equal the\nmixed Taylor coefficients of the full kernel. A compact tube around the\npaired diagonal (conj(p),p) along a compact path in S lies in S x S.\nScalar Cauchy estimates yield common M,rho there and therefore\n\n    ||Psi^(n)(p)/n!|| <= sqrt(M) rho^(-n).\n\nThe vector Taylor series extends the SAME Hilbert-valued feature to a\ndisk of radius rho, potentially beyond its current domain. On overlap\nit agrees with the old feature, and its kernel identity extends by\nanalytic uniqueness. Repeating along the compact path uses no fresh\nPSD assumption at new points. Unique continuation and monodromy on the\nsimply connected strip give a single global feature and its full product\nkernel identity.\n\nPSD on a real interval yields initial local coefficient PSD by finite\ndifferences. A local Calabi feature at 0 conversely continues to I. This\nis an exact ordinary-PSD dictionary with no fractional root. Initial\nall-order coefficient positivity is still unpaid.\n\n## Polynomial metric and finite negative row: P10--P12\n\nFor r>=0, 1+r^4>=2r^2 and P(0)=1 imply P(r)>0. Direct radial\ndifferentiation gives\n\n    partial_z partial_bar_z log P\n      = [P P' + r P P'' - r(P')^2]/P^2.\n\nIndependent expansion gives numerator coefficients\n(1,-1,35/4,20,35/4,-1,1). The displayed decomposition is exact, with\n1-r+r^2>0, so the scalar metric is strictly positive everywhere.\nYet K(z,0)=1 and the anchored degree-two coefficient is -1/4; the\nrequired coefficient matrix is not PSD.\n\nThe finite row moments are exactly (0,0,2,-12h,50h^2). At h=1/100 its\nquadratic form is -1+144h^2+2500h^4=-39423/40000. The three nodes lie in\nI. These rational identities were independently checked with Fraction\narithmetic after the algebraic derivation. This is no numerical theta\nscan. It refutes the general transfer from positive diagonal and scalar\nmetric to Gram positivity, not the theta V target.\n\n## Multiplier cancellation: P13\n\nExact multiplication yields (1,2,3/4,3/4,2,1), all positive. The multiplier\nand product thus have explicit monomial Gram features, while K has the\nnegative row just checked. General multiplier cancellation is false.\nThe candidate properly invokes no unverified Quillen/Catlin theorem.\nA nonvanishing scalar congruence is invertible diagonal congruence on each\nfinite real family and preserves inertia; it cannot fix a negative row.\n\n## Scope-only revision and remaining status\n\nThe revised SUPPORTSTABILITY provenance is supported by its sections 4\nand 6, read directly: W2 was already reduced to p in unweighted L2, and\nthe user explicitly returned before another critical-tail expansion.\nThe revision correctly treats W2 as an inherited diagnostic and forbids\nredispatching that old equivalent target as new work. The holomorphic\ncapitalization correction is immaterial. P1--P13 remain unchanged.\n\nAccept the dictionary, CR defect, conditional continuation and explicit\nnegative controls only. Neither Calabi's criterion nor this audit gives\na theta coefficient factorization or a new lower bound for original V.\nNo new full-source hypothesis or proof request is selected by this review.\n\nFinal verdict: ACCEPT_PAIRZERO_GEOMETRY_DICTIONARY_AND_CONTROLS_ONLY.\nRevision disposition: CLEAN_SCOPE_ONLY_REVISION.\n",
+  "verdict": "ACCEPT_PAIRZERO_GEOMETRY_DICTIONARY_AND_CONTROLS_ONLY",
+  "external_source": {
+    "url": "https://arxiv.org/pdf/1712.04298v1",
+    "sha256": "5e25d237b432f342f0402cae5c75a3b7c80baf3d15fb0818c3ae144f6d460215",
+    "locators": "Definition 2.2.2 and Theorem 2.2.4, printed pp.24-25 / PDF pp.30-31",
+    "quote": "if the matrix (sjk) is semipositive definite of rank N.",
+    "mapping": "b=1; one complex variable; exp(theta diastasis)-1 equals normalized anchored Schur kernel; N may be infinite",
+    "strength": "verified dictionary, unpaid full coefficient PSD for theta"
+  },
+  "parent_exact_algebra": {
+    "control_polynomial_coefficients": [
+      "1",
+      "1",
+      "-1/4",
+      "1",
+      "1"
+    ],
+    "curvature_numerator": [
+      "1",
+      "-1",
+      "35/4",
+      "20",
+      "35/4",
+      "-1",
+      "1"
+    ],
+    "nodes": [
+      "-1/100",
+      "-2/100",
+      "-3/100"
+    ],
+    "coefficients": [
+      "10000",
+      "-20000",
+      "10000"
+    ],
+    "control_value": "-39423/40000",
+    "scope": "non-theta exact analytic control"
+  },
+  "search": {
+    "tool": "mgrep",
+    "query": "Calabi resolvability projective Kahler immersion Quillen Hermitian sums of squares positive kernels",
+    "exit_code": 1,
+    "error": "403 Your credits are depleted. Request more credits or upgrade your plan.",
+    "coverage": "INCOMPLETE_NOT_NO_HITS",
+    "known_source_direct_fetch": true,
+    "registered_ask_query": "NOT_RUN_HIGHER_PRIORITY_MANDATORY_SEARCH_TOOL",
+    "index_refresh": false,
+    "no_absence_claim": true
+  },
+  "decision_effect": "Retain projective/ordinary Gram dictionary; exclude automatic positive-diagonal/metric and positive-multiplier-removal transfers; do not redispatch the already audited W2 response-energy problem.",
+  "source_specific_positive_estimate": false,
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "RH_refuted": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proof_request": false,
+  "consumption": "INCOMPLETE_NO_CONSUMABLE_TARGET"
+}
