@@ -2,7 +2,7 @@
   "schema": "q3_isolated_proshka_dispatch_review.v1",
   "request_id": "REQ-2026-09-16-COUPLEDFLUX",
   "boundary_id": "GOAL058_COUPLED_FULL_SOURCE_LOCAL_FLUX_COMPENSATION",
-  "status": "CLEAN_DISPATCH_NOT_SENT",
+  "status": "SENT_NATURAL_RUN_VERIFIED",
   "source_base": "0146634bb0823f7411c79a6442479ebf0cd49db5",
   "request_path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COUPLEDFLUX_2026-09-16.txt",
   "request_sha256": "8ec6d3949d71ed4e9d3f3532903067f6006bbfe72508104ca94aa996fccc4ba3",
@@ -63,5 +63,20 @@
   "RH_proved": false,
   "canonical_admission": false,
   "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
-  "transport": "User-authorized GitHub full payload plus one same-chat immutable notice; no attachment or new chat."
+  "transport": "User-authorized GitHub full payload plus one same-chat immutable notice; no attachment or new chat.",
+  "delivery_receipt": {
+    "request_id": "REQ-2026-09-16-COUPLEDFLUX",
+    "state": "SENT_NATURAL_RUN_VERIFIED",
+    "time": "2026-09-16T09:46:16.474063+00:00",
+    "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+    "app_send_result": "isError=false; same threadId returned",
+    "notice": "Прочти https://github.com/Malaeu/chen_q3/blob/5b4a75973184495c4a33417f4aac8b664d3a9a34/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COUPLEDFLUX_2026-09-16.txt — проверь общий закон компенсации связанных полей полного источника, не наращивая уровни с новым неизвестным знаком; полный ответ в GitHub, здесь SHA | путь | вердикт.",
+    "request_commit": "5b4a75973184495c4a33417f4aac8b664d3a9a34",
+    "request_sha256": "8ec6d3949d71ed4e9d3f3532903067f6006bbfe72508104ca94aa996fccc4ba3",
+    "context_sha256": "0c67497a303135b7636e2dcc1acf27fa60a93c0d3f9525724e7c4b4a7b7330d4",
+    "send_count": 1,
+    "browser_evidence": "browser1/tab1 exact same chat, exact notice AX40; Pro-Denkvorgang AX46/47; Stop AX57; empty composer AX53/54. Intentional reload after app send, no Answer now.",
+    "review_plan_sha256": "12509472f5ad8f69d5869caa4508482aea5c42973a57f01f33678cfc77455cd6",
+    "phase_transport_override": "Same six phase fields; explicit user living-chat and GitHub-only directions override inherited other conversation locator and attachment transport. No canonical rebind."
+  }
 }
