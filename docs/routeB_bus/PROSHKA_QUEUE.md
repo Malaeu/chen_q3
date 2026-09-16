@@ -2,9 +2,9 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-16-MELLINEDGE · Raw finite-source cofinal Mellin edge · OPEN
+## REQ-2026-09-16-MELLINEDGE · Raw finite-source cofinal Mellin edge · ANSWERED
 
-- `STATUS: IN_REVIEW`
+- `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_MELLINEDGE_2026-09-16.txt`; boundary `GOAL058_RAW_FINITE_SOURCE_COFINAL_MELLIN_EDGE`; call class `DELEGATED_STRATEGIC_REVIEW`.
 - Request commit / bytes / lines / SHA256 / blob / final LF: `6ecf5f173cdf6c7273727c8eaa6a7a558ab0e1a2` / `12492` / `155` / `4f91d16d58e4914dffb41157512bb38393bda49e0d604f95ef63da1469a3adb8` / `361c86c73f67251ce4f16d3c210a7ebc53008bd9` / `LF`.
 - Full five-file context: `docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_MELLINEDGE_2026-09-16.md`; SHA256 `58c0dc298bc77c016934dc6806caadf25ad4bb286da551cf79aa73ad5113c6d2`. CLEAN_DISPATCH: `docs/Codex/certificates/MELLINEDGE_REQUEST_20260916.json`.
@@ -13,6 +13,9 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_MELLINEDGE_2026-09-16.md`. Sent once; natural Pro reasoning observed.
 
 - Delivery: exact TXT tile AX210-213, immutable notice AX216/217, natural Pro-Denkvorgang AX224 and Stop AX207. One attachment, one send, no Answer now. Same user-directed living chat 6aa52001-4094-83eb-9520-01a09f54eff2.
+
+- Accepted response: `c63b1ea7c75a4f1da0a74d29414ac4b758951dd0`; SHA256 `94f91b169de680aade287684c3ca61fbd070fc99aee801be1ef54cb1503feaf8`. Every sufficiently large raw finite M_N has infinitely many zeros in 11/8<Re(s)<2 at unbounded positive heights; this excludes every cofinal global-zero-free subsequence. All harmonic terms and prime-constrained composite phases retained. Intake: `docs/Codex/REPORT_2026-09-16_MELLINEDGE_INTAKE.md`; certificate: `docs/Codex/certificates/MELLINEDGE_INTAKE_20260916.json`. Original full V/RH remain open.
+- Completion: exact-path watch67270 exited successfully; same app chat idle, completed matching response, error null. One send only; no pending reply. The next source-return audit is not an automatic weakened EDGE request.
 
 ## REQ-2026-09-16-COUPLEDFLUX · Coupled full-source local flux · ANSWERED
 
