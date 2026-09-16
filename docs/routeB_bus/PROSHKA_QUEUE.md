@@ -2,13 +2,13 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-16-POINCARECOMP · Conditional Poincare to signed full compensation · OPEN
+## REQ-2026-09-16-POINCARECOMP · Conditional Poincare to signed full compensation · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt`
 - Boundary: `GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
-- Intake carried: independently reviewed user summary only; full report raw bytes still to be received.
+- Original dispatch carried the reviewed user summary. Full Euler and final POINCARECOMP reports are now received and independently accepted in their explicitly limited scopes.
 - Registered predictions: stronger derivative comparison may fail; signed compensation remains open.
 - Delivery mode: explicit user-authorized existing research branch and same living chat; GitHub locator
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
@@ -16,12 +16,14 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
   `9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832` /
   `0ac85514eb0b81defd4a962c9a395cb742ce6a5e` / `LF`
 
-- STATUS: SENT_NATURAL_RUN_VERIFIED. Exactly one GitHub notice observed in the same living chat at AX292, ongoing natural reasoning AX299/301/303/305 and Stop AX316. Explicit user-requested native goal remains active. Parent independent preflight now proves the fixed derivative-budget obstruction; full V sign remains open.
+- Historical delivery: SENT_NATURAL_RUN_VERIFIED. Exactly one GitHub notice observed in the same living chat at AX292, ongoing natural reasoning AX299/301/303/305 and Stop AX316. Explicit user-requested native goal remains active. Parent independent preflight now proves the fixed derivative-budget obstruction; full V sign remains open.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt; SHA256 9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832. Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_POINCARECOMP_2026-09-16.md; SHA256 e91d505f9cef009e1c11d9675ed77121a96d6ae540b585158e41bcda52ab4c22.
 - Pasted input: docs/routeB_bus/proshka/PROSHKA_PASTED_EULER_COMPARISON_2026-09-16.txt; unchanged user attachment, not the unavailable byte-exact full Markdown. Independent summary review and CLEAN_DISPATCH in docs/Codex/certificates/POINCARECOMP_REQUEST_20260916.json.
-- Scope: test whether the sufficient L_pi comparison is too strong on the actual source; then one source-specific signed compensation joint. Parent dilation argument is UNVERIFIED, not an accepted negative V witness.
+- Scope: test whether the sufficient L_pi comparison is too strong on the actual source; then one source-specific signed compensation joint. Parent dilation argument was UNVERIFIED at dispatch; it is now proved and independently corroborated. It is not a negative V witness.
 - Boundary: GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION; unchanged phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, observed idle after EULER comparison.
 - Assigned new response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_POINCARECOMP_2026-09-16.md; prior full Euler report may be published unchanged at the exact path named in the request. Same research branch, no canonical/private takeover.
+
+- Final response: 2dbd8191cfa515121c3c24c44ca61c2e5bc46acc; docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_POINCARECOMP_2026-09-16.md; SHA256 1920733be233ad33403c1c482b3db6c0d253db091ca646415fe84fd5b3a0bc6d. Parent and independent full reads accepted only the fixed-budget obstruction and exact reciprocal signed transport. Intake: docs/Codex/REPORT_2026-09-16_POINCARECOMP_INTAKE.md; certificate: docs/Codex/certificates/POINCARECOMP_INTAKE_20260916.json. No reply pending; no resend. Native full-V goal remains active.
 
 ## REQ-2026-09-15-SIZEBIASCOMP
 - STATUS: ANSWERED. ACCEPT_FULL_FIELD_TRANSPORT_CONVERGENCE_AND_CUTOFF_RATE_OBSTRUCTION_ONLY. Raw f6cb4ba3279e61de944b954bff524875fed97932 / SHA256 784e16445c64c1b480cfb0fdc5740182ad59253a775bfc8ab7dc0c44a654eafd. Full-field convergence and sharp cutoff rate accepted after independent review; full V sign and RH remain open. Intake: docs/Codex/REPORT_2026-09-15_SIZEBIASCOMP_INTAKE.md. Original one-send receipt preserved in SIZEBIASCOMP_REQUEST_20260915.json; no duplicate dispatch.
