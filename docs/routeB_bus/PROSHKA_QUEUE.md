@@ -2,13 +2,13 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-16-FINITEPREFIX · Fixed finite renewal prefixes · OPEN
+## REQ-2026-09-16-FINITEPREFIX · Fixed finite renewal prefixes · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FINITEPREFIX_2026-09-16.txt`
 - Boundary: `GOAL058_FIXED_FINITE_RENEWAL_PREFIX_SIGN_AUDIT`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
-- Intake carried: independently accepted full K2 obstruction and complete pinned SIZEBIASCOMP/A1/POINCARECOMP input. General m remains UNVERIFIED.
+- Intake carried: independently accepted full K2 obstruction and complete pinned SIZEBIASCOMP/A1/POINCARECOMP input. General fixed m is now independently accepted in the narrow obstruction scope.
 - Registered prediction: one symbolic all-m recurrence may exclude every universally positive finite prefix; no conclusion about terminal V.
 - Delivery mode: explicit user-authorized same living chat and research branch; one immutable GitHub notice.
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
@@ -16,8 +16,10 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
   `fa70d01c75259edb82cfb014220e673df6e168b82d8ba2afa649dc73eee931be` /
   `d2b82acb3d67e3c512fe6cc20a14741ba1b86e84` / `LF`
 
-- STATUS: SENT_NATURAL_RUN_VERIFIED. One immutable notice AX257, Pro-Denkvorgang AX263 and Stop AX273 in browser1/tab1; no duplicate send. CLEAN_DISPATCH in docs/Codex/certificates/FINITEPREFIX_REQUEST_20260916.json. Context docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_FINITEPREFIX_2026-09-16.md; SHA256 3d036ab0615469ec3fda0187b48079e9e5c68b9c14f1954959e060b2401df6ee.
+- Historical delivery: SENT_NATURAL_RUN_VERIFIED. One immutable notice AX257, Pro-Denkvorgang AX263 and Stop AX273 in browser1/tab1; no duplicate send. CLEAN_DISPATCH in docs/Codex/certificates/FINITEPREFIX_REQUEST_20260916.json. Context docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_FINITEPREFIX_2026-09-16.md; SHA256 3d036ab0615469ec3fda0187b48079e9e5c68b9c14f1954959e060b2401df6ee.
 - Assigned response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FINITEPREFIX_2026-09-16.md. Scope: every fixed finite depth, all finite complex rows; no serial m=3,4 retries, no canonical changes, no RH claim.
+
+- Accepted response: ff52205538b09b9c10a0993a9f660ddbe6af8845; docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FINITEPREFIX_2026-09-16.md; SHA256 75fd001c35880d185e5b2e14948f57ffe8fbd9e888613dce24cd8c091f8adb9c. All fixed finite initial prefixes fail universal all-row PSD; full V sign remains open. Intake docs/Codex/REPORT_2026-09-16_FINITEPREFIX_INTAKE.md; certificate docs/Codex/certificates/FINITEPREFIX_INTAKE_20260916.json. Existing path watch67728 completed; same chat observed idle with matching final SHA. No reply pending and no resend.
 
 ## REQ-2026-09-16-POINCARECOMP · Conditional Poincare to signed full compensation · ANSWERED
 
