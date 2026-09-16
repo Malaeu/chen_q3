@@ -1,0 +1,26 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "reviewer": "/root/sibling5_check",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "numerical_checks": 0,
+  "source_base": "345dfea4365498cfdff460e78620f4d717e49147",
+  "candidate_sha256": "91174e4bb7e7d90602ff8e0344d2a483175acdd75ea67bb7844a57bd1a5c32f1",
+  "report_path": "docs/Codex/REPORT_2026-09-16_RECIPROCAL_CONDITIONAL_FIELDS.md",
+  "report_sha256": "8e9d3176a27ae461a9330b232a7aec78a6cafc3642e59049d7f78faaaca8617b",
+  "verdict": "ACCEPT_RECIPROCAL_MEAN_IDENTITY_AND_SPECIFIED_ISOMETRIC_LIFT_OBSTRUCTION_ONLY",
+  "review_sha256": "deb506c9ae13088e64aa20f1a5b3c092a2c734c76f9a0dd95a70ce0001b7713d",
+  "review_text": "# Independent review: reciprocal conditional-fibre diagnostic\n\nREVIEWED_CANDIDATE_SHA256: 91174e4bb7e7d90602ff8e0344d2a483175acdd75ea67bb7844a57bd1a5c32f1\nVERDICT: ACCEPT_RECIPROCAL_MEAN_IDENTITY_AND_SPECIFIED_ISOMETRIC_LIFT_OBSTRUCTION_ONLY.\n\n## Findings\n\nR1 follows exactly from evenness of Phi. The normalizations in R2 are\ncorrect: g_a/F_a=p_(at)/p_t, so R_a is a genuine conditional likelihood\nratio and C_t is its covariance/chi-square Gram kernel.\n\nAt large t, monotonicity of chi gives 0<R_a<=aB(t)/B(at), whose limit is\none. Since E_t R_a=1, this proves C_t(a,a)->0 without replacing the varying\nmeasure by a limit.\n\nAt small t, the complete relative h asymptotic and the reciprocal r\nasymptotic give the prefactor 1/(16 sqrt(t)) and the exponential in R7.\nThe four-density calculation has lambda=1/a+1/b-1 and produces\n1/sqrt(ab lambda)=1/sqrt(a+b-ab). Thus R9 and its endpoint integrability\ncondition lambda>0 are correct.\n\nFor a in (1/2,1), the reciprocal target has limit\n a/sqrt(2a-1)-1>0,\nwhile C_t(a,a)->0. A linear isometry, or a contraction from L2(p_t) to\nL2(p_(1/t)) fixing 1 and taking the stated R_a to R_(1/a), would send\nR_a-1 to R_(1/a)-1 and violate the norm inequality. The direction is\ncorrectly limited; the opposite contraction, defect-bearing transports, and\nextra channels are untouched.\n\nThis is a diagnostic of one exact reciprocity lift. It makes no V, L_pi,\nor RH sign claim and does not treat the non-admissible reciprocal node as an\noriginal negative-shift witness.\n",
+  "publication_difference": "Only STATUS changed after independent exact-payload review.",
+  "parent_check": "Derived likelihood normalization and exact reciprocal mean, uniform four-density asymptotic, integrability condition, vanishing large-scale chi-square, and the directed norm contradiction.",
+  "claim": "Exact normalized fields are conditional likelihood ratios. Reciprocity preserves means but cannot have the specified forward mean-preserving isometric or contraction lift on all these fields.",
+  "not_excluded": [
+    "reverse contraction",
+    "defect-bearing or multichannel transport",
+    "original V nonnegativity"
+  ],
+  "counter_effect": "A bounded diagnostic inside ongoing signed-compensation study, not another full V attempt; no counters reset."
+}
