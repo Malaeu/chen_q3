@@ -1,0 +1,292 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "bd30dcdf922dc3a8de4b42a2f20e1c01d4455ec5",
+  "source_pins": {
+    "docs/Codex/BRIEF_2026-09-16_COUPLEDFLUX_NONLOCAL_HUNT.md": "7546cb16d6e907c109fee3ae49bbd65911ae9bb2f04c1e057b782340db4a6bb5",
+    "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_COUPLEDFLUX_2026-09-16.md": "258fe6d40ab6b92b4c7a5645fb75ad5dadecd7848a7567e18c0553a65b28b0c4",
+    "docs/Codex/REPORT_2026-09-16_COUPLEDFLUX_INTAKE.md": "79b56d8acadf8efcb4502cebd1d989d746c72b57aa0e57ed2f68c1a9ff0de45e"
+  },
+  "candidate_sha256": "3161cd840a02ab5109d6de7d065460e04aa90a5042562fa5471413db0e9d4710",
+  "report_path": "docs/Codex/REPORT_2026-09-16_NONLOCAL_TRANSMUTATION_AUDIT.md",
+  "report_sha256": "61f20be8bcf11b90a2027e1213143859f23437e9ec6ecff2e0090e7605b223e7",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "e3db7624b53bc547e1da3c8cc6bf9317ac66a239066fed91da89f9865d8b103f",
+  "review_text": "# Independent review — nonlocal transmutation audit\n\n- **Reviewed candidate SHA-256:** `3161cd840a02ab5109d6de7d065460e04aa90a5042562fa5471413db0e9d4710`\n- **Primary HTML SHA-256:** `b292563edfd58432859c43f1c835610e65c2414188e0237f69f8c009cf41634d`\n- **Accepted COUPLEDFLUX raw SHA-256:** `258fe6d40ab6b92b4c7a5645fb75ad5dadecd7848a7567e18c0553a65b28b0c4`\n\n**VERDICT: CLEAN_PARTIAL_ANALOGUE_AND_EXACT_NONLOCAL_TRANSFER_ONLY.**\n\n## Direct checks\n\n- The Volterra kernel `(3/2)e^(-X-t)1_(t>=X)` has Hilbert--Schmidt norm squared `9/32`. Direct differentiation gives `[A0,K]=6e^(-2X)`, with the stated orientation, hence `Ltilde T=T diag(A0,A0)` and N2 retains both actual forcing components.\n- N3 has the correct transformed boundary values. The compact-interior test demonstrates that the inverse transform does not preserve a usual zero boundary condition; it does not concern a negative `V` row.\n- N4--N5 exactly retain the physical weighted observation `PZ=Y2`, the coefficient-row dependence, and the `k` derivative. No endpoint was silently discarded.\n- For an actual one-shift source row, gauge covariance gives `Z_k=e^(-2kx)Z_0`; since `x<0`, the unweighted positive auxiliary flux is negative while the physical diagonal `V(x,x)` is positive. This correctly rejects only replacement of the physical energy by that auxiliary metric.\n\nThe cited Theorems 4.1--4.3 in the inspected primary do state a scalar finite-interval transmutation, its inverse, and the resulting intertwining under continuous scalar-potential, nonvanishing-solution, Goursat-kernel hypotheses. The candidate accurately labels it a partial analogue: none of its domain, norm, forcing, or endpoint conclusions applies to the present two-channel half-line block.\n\nThe three query receipts are accurately treated as `INCOMPLETE`, never as no-hit evidence. The candidate makes no theorem, absence, terminal-`V`, or RH claim and correctly stops after the nonlocal expression transfer.\n",
+  "verdict": "ACCEPT_EXACT_NONLOCAL_TRANSFER_AND_SCOPED_AUXILIARY_FLUX_OBSTRUCTION_ONLY",
+  "primary": {
+    "url": "https://arxiv.org/html/1412.5237v1",
+    "sha256": "b292563edfd58432859c43f1c835610e65c2414188e0237f69f8c009cf41634d",
+    "bytes": 561124,
+    "read_scope": "Section 2 hypotheses; section 4 Theorems 4.1-4.3, proof of 4.3, initial data through 4.5. The statements of 4.1-4.2 are attributed there to reference [11].",
+    "classification": "SOURCE_VERIFIED_PARTIAL_ANALOGUE_ONLY"
+  },
+  "shelf_receipts": [
+    {
+      "log_sha256": "08333eb7b0dc73db071695bdaed2b916dac3537d4c4ed7289c09e57202a84329",
+      "receipt_sha256": "d1824a2056d5ff7d8bfafaf2306fb2216a8c0dcf5f1ee2764a9328cf2982c1d5",
+      "receipt": {
+        "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+        "candidate_rows": [
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean:797:the subspace form of Sylvester inertia. The proof architecture was",
+            "metadata_sha256": "0504d29b6fcaff437f6a6d1dbe0b0e21d4eb6a722138cf01d765ab55344d8a04",
+            "provider": "lean-tree",
+            "provider_id": "95243d78762deec6132bd9a2641bde9b413a699f0d6bafd7df014de2a5a1bc2b",
+            "query": "Sylvester nonlocal symmetrizer",
+            "query_sha256": "1a8ea3652c5aab59b9e360a742aff7f61de62c17b98a650a6eb4044ceaba1a7c",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean:797:the subspace form of Sylvester inertia. The proof architecture was",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean:798:cross-checked against `Zeta23/LinAlg/Sylvester.lean` (Apache-2.0); no source",
+            "metadata_sha256": "b254d5c5755ab824619f819409ded41d91280579e5d3a47b2cab57ced8cc15f7",
+            "provider": "lean-tree",
+            "provider_id": "53528be076277fa3b3373e3010c4b76d23afbedd201bce3b4ea5b53cdf82ed5f",
+            "query": "Sylvester nonlocal symmetrizer",
+            "query_sha256": "1a8ea3652c5aab59b9e360a742aff7f61de62c17b98a650a6eb4044ceaba1a7c",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianNegativeCountStability.lean:798:cross-checked against `Zeta23/LinAlg/Sylvester.lean` (Apache-2.0); no source",
+            "url": "Q3/Proofs/RouteB"
+          }
+        ],
+        "external_lean": "DEFERRED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 1,
+            "provider": "local-shelves",
+            "query": "Sylvester nonlocal symmetrizer",
+            "query_sha256": "1a8ea3652c5aab59b9e360a742aff7f61de62c17b98a650a6eb4044ceaba1a7c",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "Sylvester nonlocal symmetrizer",
+            "query_sha256": "1a8ea3652c5aab59b9e360a742aff7f61de62c17b98a650a6eb4044ceaba1a7c",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "Sylvester nonlocal symmetrizer",
+        "query_sha256": "1a8ea3652c5aab59b9e360a742aff7f61de62c17b98a650a6eb4044ceaba1a7c",
+        "schema": "q3_ask_local_receipt.v1"
+      },
+      "exit_code": 2
+    },
+    {
+      "log_sha256": "51c0cfffc85739b6e5c93c7c827b3795656cdc35fa173e07350c2255ed3c1094",
+      "receipt_sha256": "9179d532a42137b28c6b9858e25f5f3a53c312186933a55c085b9e1186fea60c",
+      "receipt": {
+        "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "1315b08d5de891e204b27e9990fe23ab096a95b383052cecedb9121e6657bdbe",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "riemannBoundaryCellBridge_main q3.lean.aristotle/Q3/Proofs/RouteB/R6BoundaryCellBridge.lean:197",
+            "metadata_sha256": "84ff07334e85785a90d8b82c216372df5200ab233efef9bfef0cfd8848297776",
+            "provider": "knowledge-db",
+            "provider_id": "0477e89c730861fd06f0157d9764cf0584e2c1ed93aadd049e3db71c30258bf5",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "title": "riemannBoundaryCellBridge_main q3.lean.aristotle/Q3/Proofs/RouteB/R6BoundaryCellBridge.lean:197",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "goal058PolarizedVolterraClosed Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean",
+            "metadata_sha256": "ddcaa45cdf2311c3182f0472c64787ad65c7e20f39fc4a15fde6a48ad4c70cc6",
+            "provider": "lean-index",
+            "provider_id": "976c060b36e914ca8ea4a35223b372984c46d015dab9827a61e72d076b0c4aca",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "title": "goal058PolarizedVolterraClosed Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "goal058PolarizedVolterraIntegral Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean",
+            "metadata_sha256": "57a069424e6bf6a25ff47713e368c58b27fa6f45b6644d6298ac1e0d08ec5d64",
+            "provider": "lean-index",
+            "provider_id": "e2e1d65f21319655acdd54821ed0ca0e3b36d82636a9917c0ab9c6c7cbb68452",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "title": "goal058PolarizedVolterraIntegral Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean:27:def goal058VolterraAlpha",
+            "metadata_sha256": "4958e76b0db61af68e452ba471816a4eaf288c38e6c2225dd05b1d242d5bae05",
+            "provider": "lean-tree",
+            "provider_id": "f50a965245b22c5c7fafbbde5dbfba1ec104ad656b99849e77303e801c473907",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean:27:def goal058VolterraAlpha",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean:31:def goal058VolterraBeta (x q : ι → ℂ) (k : ι) : ℂ :=",
+            "metadata_sha256": "5620360d78c16f416baea5ae52c4383e71256be51cb4dc8e82ae0c793432cad0",
+            "provider": "lean-tree",
+            "provider_id": "f83fd153534f0a77916c9c75ee1e7efe1ca1a903e25bf2cd9dcf54b01ee34f66",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/Goal058PolarizedVolterra.lean:31:def goal058VolterraBeta (x q : ι → ℂ) (k : ι) : ℂ :=",
+            "url": "Q3/Proofs/RouteB"
+          }
+        ],
+        "external_lean": "DEFERRED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 3,
+            "provider": "local-shelves",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "Volterra transmutation boundary",
+            "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "Volterra transmutation boundary",
+        "query_sha256": "ee4c309eb65ef19aa1f108ddfcb011c9f09339d2179a539bb3ffc62c3da511eb",
+        "schema": "q3_ask_local_receipt.v1"
+      },
+      "exit_code": 2
+    },
+    {
+      "log_sha256": "d2a2316098e5d4eb06b99d32216e41c5300dfcca7d60922b5274c986116cc4c1",
+      "receipt_sha256": "171c66926f5da6b89743e6f30228da8f39d49a8bd5ffa4c5d6cf1373d6cff9b8",
+      "receipt": {
+        "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+        "candidate_rows": [
+          {
+            "excerpt": "ПОСТАВЛЯЮТ (provides):",
+            "metadata_sha256": "755710ff53dc5586f74fd1c28f134ee261055d7585f019a24d98cd8c78847f77",
+            "provider": "knowledge-db",
+            "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "title": "ПОСТАВЛЯЮТ (provides):",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "riemannBoundaryCellBridge_main q3.lean.aristotle/Q3/Proofs/RouteB/R6BoundaryCellBridge.lean:197",
+            "metadata_sha256": "4268b89b1fbd2fecacf3f5b305c2868d75ad062302d970ef075f653dd61515bc",
+            "provider": "knowledge-db",
+            "provider_id": "0477e89c730861fd06f0157d9764cf0584e2c1ed93aadd049e3db71c30258bf5",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "title": "riemannBoundaryCellBridge_main q3.lean.aristotle/Q3/Proofs/RouteB/R6BoundaryCellBridge.lean:197",
+            "url": "capability/assembly/counterexample"
+          },
+          {
+            "excerpt": "T1_coboundary Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+            "metadata_sha256": "f160c5efdc41289e7909f6026f1c43aecf600740f4c20c74121364d2e4d1f489",
+            "provider": "lean-index",
+            "provider_id": "e7705ce3d8d6800e9fb40ae80223c2d7b5d5ffad221c1c601efd8e4b33524131",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "title": "T1_coboundary Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "T1_coboundary_no_locality Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+            "metadata_sha256": "fd49fd6a1896787c3a2765e9e27a114d1013fb552593963653a72ba2125048bb",
+            "provider": "lean-index",
+            "provider_id": "acdc7f0f69188f3a9a092131a48c0c30ac2a45cc1c28baf4a903a4483b94ae78",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "title": "T1_coboundary_no_locality Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+            "url": "aristotle_proofs.db"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiMatchedNormalizedCoefficientRow.lean:3:import Q3.Proofs.RouteB.D0Mode4PSWFLegendreBoundaryFluxIdentification",
+            "metadata_sha256": "ea668309b727242ecc57c39d7e844a58cbc0a8d251bc5223308c2ef18d1eadbb",
+            "provider": "lean-tree",
+            "provider_id": "03af030ec9f085b0be7e93661c52456c62fe780a0367515d104a842744528e5a",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiMatchedNormalizedCoefficientRow.lean:3:import Q3.Proofs.RouteB.D0Mode4PSWFLegendreBoundaryFluxIdentification",
+            "url": "Q3/Proofs/RouteB"
+          },
+          {
+            "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiMatchedNormalizedCoefficientRow.lean:354:already committed boundary-flux consumer, with no added source premise.",
+            "metadata_sha256": "09dae896f39ca6c849352dcaa6ea4578609a74dd84060b9db396f5d21b76e603",
+            "provider": "lean-tree",
+            "provider_id": "a3b9360d33cbdb2451d4cee5cbccba8403c088aa2be904137eabb6263dc311c0",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiMatchedNormalizedCoefficientRow.lean:354:already committed boundary-flux consumer, with no added source premise.",
+            "url": "Q3/Proofs/RouteB"
+          }
+        ],
+        "external_lean": "DEFERRED",
+        "provider_rows": [
+          {
+            "failure_count": 1,
+            "hit_store_count": 3,
+            "provider": "local-shelves",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "status": "INCOMPLETE"
+          },
+          {
+            "candidate_count": 0,
+            "candidate_hashes": [],
+            "collection_identity": null,
+            "corpus_sha256": null,
+            "provider": "q3_docs",
+            "query": "boundary storage physical flux",
+            "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+            "status": "INCOMPLETE"
+          }
+        ],
+        "query": "boundary storage physical flux",
+        "query_sha256": "a03d666a950c44fa1e1bd48aa7988c5925f6558a45513e09bf14a77bbd76e6a5",
+        "schema": "q3_ask_local_receipt.v1"
+      },
+      "exit_code": 2
+    }
+  ],
+  "metadata_sha256": "542fe54a0dfdcca570c3bfb119fc7ded73d136daa0e27c0d0e02385b1448d02a",
+  "search_status": "INCOMPLETE_NO_CONSUMABLE_TARGET",
+  "search_errors_preserved": [
+    "q3_docs freshness failure, all three queries",
+    "arXiv batch time budget exhausted, queries 2 and 3",
+    "Crossref HTTP 429, query 2"
+  ],
+  "excluded_leads": "Other metadata-only article hits not body-verified; no absence claim.",
+  "local_extraction_repair": "HTML fetched once; optional bs4 unavailable after bytes were saved; extracted already-saved HTML with stdlib HTMLParser. No refetch or dependency installation.",
+  "accepted_claims": [
+    "N1 explicit commutator and bounded invertible triangular map",
+    "N2 both forcing components retained",
+    "N3 exact transformed endpoint",
+    "N4-N5 exact physical weighted observation and k derivative",
+    "N6 actual permitted one-shift obstruction to unweighted positive auxiliary flux"
+  ],
+  "closed_self_adjoint_domain_proved": false,
+  "physical_V_positive": false,
+  "negative_original_V_witness": false,
+  "all_nonlocal_methods_killed": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "no_new_proshka_dispatch": true,
+  "no_live_search_or_watch_sessions": true
+}
