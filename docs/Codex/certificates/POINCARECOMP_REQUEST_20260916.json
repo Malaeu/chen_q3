@@ -3,7 +3,7 @@
   "request_id": "REQ-2026-09-16-POINCARECOMP",
   "boundary_id": "GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION",
   "source_base": "338ab1d74115fabd05a7ee3af4e455ba74acfb73",
-  "status": "PREPARED_REVIEWED_NOT_SENT",
+  "status": "SENT_NATURAL_RUN_VERIFIED",
   "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
   "operational_authorization": "Explicit user request to create native goal and continue with Proshka; existing GitHub plus short same-chat notice protocol.",
   "reviewer": "/root/sibling5_check",
@@ -38,10 +38,78 @@
     }
   },
   "response_path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_POINCARECOMP_2026-09-16.md",
-  "sent": false,
-  "send_count": 0,
+  "sent": true,
+  "send_count": 1,
   "source_sign_progress": false,
   "canonical_admission": false,
   "RH_proved": false,
-  "parent_check": "Reproduced conditional Poincare coefficients and signed covariance accounting. Section4 is an explicitly unverified asymptotic/analytic-continuation test, not an accepted source theorem."
+  "parent_check": "Reproduced conditional Poincare coefficients and signed covariance accounting. Section4 is an explicitly unverified asymptotic/analytic-continuation test, not an accepted source theorem.",
+  "request_commit": "69cddb064f6d7f0504c0afe6de0360b510e965f8",
+  "queue_commit": "aa6e098bff869f00a554f8ca58cffb965af7a8d9",
+  "delivery": {
+    "request_id": "REQ-2026-09-16-POINCARECOMP",
+    "status": "SENT_NATURAL_RUN_VERIFIED",
+    "observed_at": "2026-09-16T07:58:54.262337+00:00",
+    "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+    "request_commit": "69cddb064f6d7f0504c0afe6de0360b510e965f8",
+    "request_sha256": "9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832",
+    "transport": "mcp__codex_app__send_message_to_thread then same-chat CUA readback",
+    "notice": "Прочти https://github.com/Malaeu/chen_q3/blob/69cddb064f6d7f0504c0afe6de0360b510e965f8/docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt — проверь сравнение с новым бюджетом и продолжи доказательство полной signed-компенсации V; полный ответ и прежний Euler-отчёт — в GitHub, здесь SHA | путь | вердикт.",
+    "sent": true,
+    "send_count": 1,
+    "natural_reasoning_start_verified": true,
+    "ui_evidence": {
+      "browser_id": "1",
+      "tab_id": "1",
+      "notice_AX": 292,
+      "reasoning_AX": [
+        299,
+        301,
+        303,
+        305
+      ],
+      "reasoning_text": "Analysiert und zusammengefasst: Proshka-System und Poincaré-Komponenten; Prüfen des Euler-Vergleichsberichts",
+      "stop_AX": 316
+    },
+    "expected_response_path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_POINCARECOMP_2026-09-16.md",
+    "mathematical_response_received": false,
+    "RH_proved": false,
+    "canonical_admission": false
+  },
+  "review_plan": {
+    "PX_RH_CLAIM": "NOT_MADE",
+    "attachment_manifest": {
+      "bytes": 13959,
+      "commit_blob": "0ac85514eb0b81defd4a962c9a395cb742ce6a5e",
+      "final_newline": "LF",
+      "git_blob": "0ac85514eb0b81defd4a962c9a395cb742ce6a5e",
+      "lines": 177,
+      "path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt",
+      "request_commit": "69cddb064f6d7f0504c0afe6de0360b510e965f8",
+      "sha256": "9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832"
+    },
+    "boundary_id": "GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION",
+    "call_class": "DELEGATED_STRATEGIC_REVIEW",
+    "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+    "eligibility_receipt": null,
+    "holds": [],
+    "packet_subtype": null,
+    "queue_status": "OPEN",
+    "request_id": "REQ-2026-09-16-POINCARECOMP",
+    "schema": "q3_review_dispatch_plan.v1",
+    "short_instruction": "Read the attached controlling request in full. Treat the .txt attachment as the authoritative byte-exact payload. Follow its required response schema and return exactly the requested verdict. Same living phase chat. Do not use Answer now.",
+    "status": "REVIEW_DISPATCH_READY",
+    "transport": {
+      "answer_now_forbidden": true,
+      "delivery_performed": false,
+      "delivery_receipt_required": true,
+      "host_safety_confirmation": "ENFORCED_BY_ACTIVE_UI_RUNTIME",
+      "owner": "CURRENT_CODEX_BODY",
+      "repository_owner_confirmation_required": false,
+      "same_living_chat_required": true,
+      "single_attachment_required": true
+    }
+  },
+  "phase_locator_note": "Inherited canonical locator differs from explicitly user-selected same living math chat. No canonical rebind.",
+  "summary_review_terminology_correction": "The new H/sqrt(p) primitive uses the direct s coordinate, not the quantile coordinate; exact dispatch review states the distinction correctly."
 }

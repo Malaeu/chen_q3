@@ -16,7 +16,7 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
   `9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832` /
   `0ac85514eb0b81defd4a962c9a395cb742ce6a5e` / `LF`
 
-- STATUS: PREPARED_REVIEWED_NOT_SENT. Explicit user-requested active native goal: full analytic V sign; this is its bounded Poincare-to-signed-compensation step.
+- STATUS: SENT_NATURAL_RUN_VERIFIED. Exactly one GitHub notice observed in the same living chat at AX292, ongoing natural reasoning AX299/301/303/305 and Stop AX316. Explicit user-requested native goal remains active. Parent independent preflight now proves the fixed derivative-budget obstruction; full V sign remains open.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt; SHA256 9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832. Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_POINCARECOMP_2026-09-16.md; SHA256 e91d505f9cef009e1c11d9675ed77121a96d6ae540b585158e41bcda52ab4c22.
 - Pasted input: docs/routeB_bus/proshka/PROSHKA_PASTED_EULER_COMPARISON_2026-09-16.txt; unchanged user attachment, not the unavailable byte-exact full Markdown. Independent summary review and CLEAN_DISPATCH in docs/Codex/certificates/POINCARECOMP_REQUEST_20260916.json.
 - Scope: test whether the sufficient L_pi comparison is too strong on the actual source; then one source-specific signed compensation joint. Parent dilation argument is UNVERIFIED, not an accepted negative V witness.

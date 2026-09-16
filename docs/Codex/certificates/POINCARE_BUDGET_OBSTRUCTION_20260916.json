@@ -1,0 +1,26 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "aa6e098bff869f00a554f8ca58cffb965af7a8d9",
+  "source_sha256": {
+    "docs/Codex/REPORT_2026-09-13_BROWNIAN_DILATION_CONDITIONAL.md": "8ea7ed0b70f57d271b09cb44f53156cd50b71aa6511bd1fd4077111ba5bef5ef",
+    "docs/Codex/REPORT_2026-09-13_ANALYTIC_POSITIVITY_PROPAGATION.md": "fb83c216aef4687425074732904f9d2f52aac77527a926e7556fb0067335e2bd",
+    "docs/Codex/REPORT_2026-09-13_RESIDUAL_COMPENSATION_HUNT.md": "7aaf8e43faa5bfd37954d6076db3acb1801325777bd9d989b25d75c9a9466c14"
+  },
+  "candidate_sha256": "5ee21c1f54b924221b66eaa1b63c49a2bc3296e9603ab73a849784e712e6d367",
+  "report_path": "docs/Codex/REPORT_2026-09-16_POINCARE_BUDGET_OBSTRUCTION.md",
+  "report_sha256": "9d40ebf61019dea3d530476d7fc15941e23f8599cf0822a2ca5f1b348de24b34",
+  "reviewer": "/root/sibling5_check",
+  "verdict": "ACCEPT_ACTUAL_THETA_FIXED_KAPPA_DERIVATIVE_BUDGET_OBSTRUCTION_ONLY",
+  "review_sha256": "3ac4c6ac8fd687d87c357fe3f196bde1e3036bb1526430fe6578f70160f90cc1",
+  "review_text": "# Independent review: dilation obstruction\n\nREVIEWED_CANDIDATE_SHA256: 5ee21c1f54b924221b66eaa1b63c49a2bc3296e9603ab73a849784e712e6d367\nVERDICT: ACCEPT.\nSCOPE: ACTUAL_THETA_FIXED_KAPPA_DERIVATIVE_BUDGET_OBSTRUCTION_ONLY.\n\nThe proof establishes: for every fixed kappa>0, some finite real-node,\ncomplex-coefficient row in I has M-kappa D_X<0. For kappa=1/(2*pi^2),\nL_pi<=M-kappa D_X gives an L_pi-negative row. It does not give a negative\nV row, a full-V sign result, or RH.\n\n## Checked points\n\n- D4 is the correct jointly holomorphic bilinear continuation: log(t)+z+w\n  is the polarization of 2(X+x) on the real diagonal, while log(t)/2 is X\n  in D_X. Thus no conjugation is incorrectly inserted into the holomorphic\n  variables.\n- For Omega, Re(a_z)>0 and Re(1/a_z)>1/sqrt(2). The small-u budget has\n  positive exponent Re(1/a_z)+Re(1/a_w)-1; the large-u budget combines\n  with r(u+v) to produce exp(-pi sigma(u+v)). Direct differentiation only\n  adds permitted polynomial and inverse-power factors. This supports local\n  uniform domination, including complex parameters and endpoint regions.\n- In D6, dt ds=dU dW/(aT). The resulting a T^(3/2) coefficient, D7's\n  M(x,x)=integral log(T)dnu_a, and D8's domination follow exactly from the\n  r tail and chi(U/a)>=chi(U). The stated bound is deliberately weaker than\n  the available exponential decay and is valid.\n- D1 makes the second term of Q_a exponentially small after a^{-1}; the\n  nonconstant log derivative supplies a fixed compact positive contribution.\n  Since X=(log T)/2-x and X>=0 off the rectangle, D_X grows as claimed.\n- A1 applies only after the newly supplied joint holomorphy for the\n  quadratic K_kappa. Its finite-row conclusion on I is used correctly;\n  far-negative nodes are only a contradiction device, never proposed as\n  admissible consumer nodes.\n\nNo missing signed-term claim was found: the conclusion rejects only the\nfixed global derivative lower comparison. It leaves the exact signed\ncovariance route and V itself unresolved.\n",
+  "publication_difference": "Only STATUS changed after exact-payload independent review.",
+  "parent_check": "Independently derived the full weighted measure change, common complex-domain endpoint and tail bounds, uniform micro bound and positive interior derivative contribution; applied the accepted all-rank analytic propagation lemma only to a quadratic kernel.",
+  "claim": "For each fixed kappa>0 there exists a finite actual-source row inside I with M-kappa D_X<0. Therefore the proposed L_pi lower envelope is not everywhere nonnegative.",
+  "negative_original_V_witness": false,
+  "full_V_sign_progress": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "numerical_checks": 0,
+  "no_progress_counter_effect": "One bounded rejection of a newly proposed sufficient comparison; previous goal/route counters preserved, no reset."
+}
