@@ -1,0 +1,29 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "631b15d506fde2188394e51f825d170d5923cf46",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-14_GAMMA_RECIPROCITY_BRIDGE.md": "7c641d8a055bffc80fa2ed8d1ff437c1a47d6d0dfe3b82f9fa2533db02bda621",
+    "docs/Codex/REPORT_2026-09-15_ARITHMETIC_RECIPROCITY.md": "b128c925d794693fdbc5b1e8257e5587060c92d60770a650f2f8d26ee6838f53",
+    "docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md": "1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282"
+  },
+  "candidate_sha256": "0fb0395993bb99f4c89893bed156b3cab5e7a340c52c46a7c64c0f8513907e40",
+  "report_path": "docs/Codex/REPORT_2026-09-16_MELLIN_EDGE_PREFLIGHT.md",
+  "report_sha256": "a7dfba76bd7018100d312f198987a35e4a08ed163d8f5ade43d0f9244b14c1ff",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "3676cedda926ab7a06454a34553cd1a7f4b4ff6bf75906991819da30493b2c9b",
+  "review_text": "# Independent review — raw finite-source Mellin edge preflight\n\n- **Reviewed candidate SHA-256:** `0fb0395993bb99f4c89893bed156b3cab5e7a340c52c46a7c64c0f8513907e40`\n\n**VERDICT: CLEAN_MELLIN_EDGE_PREFLIGHT_AND_SUFFICIENT_TARGET_ONLY.**\n\nThe Mellin convention, convergence half-plane, and limiting identity `M(s)=2 xi(2s-2)` are consistent. Local uniform convergence on `Re s>0` is enough for the stated Hurwitz implication. EDGE is correctly presented as sufficient, not necessary: a cofinal zero-free right edge would imply RH by the xi functional equation, and then the existing conditional full-sign bridge applies to the original source.\n\nThe double-pole partial fractions yield `A_n=4 pi^2 n^4 w_(N,n)` and `lambda_n B_n/A_n=d_(N,n)` with the displayed harmonic term. Mellin integration gives E2; no illegal termwise use is made left of `Re s=0`. The binomial identity E3 is exact.\n\nBoth base cases check. In E4, the quotient decomposition gives the bound `1/4+(5/6)/(1/3)=11/4`, hence the `11/16` margin after `|4^(-s)|<=1/4`. This proves only the N=2 half-plane statement.\n\nFor fixed `N`, the large-imaginary ratio tends to B_N, and the fixed-index factorial ratio tends to one as N grows. Thus E7 correctly refutes only a uniform absolute first-term dominance proof in `5/4<sigma<=3/2`; it asserts no zeros of any Mellin transform, xi, or V. The candidate keeps finite-rate N distinct from alpha-convolution and reciprocal-assembly indices, and prohibits serial finite-N promotion.\n",
+  "verdict": "ACCEPT_MELLIN_PREFLIGHT_AND_SUFFICIENT_TARGET_ONLY",
+  "accepted_claims": [
+    "E1 local uniform Mellin convergence and conditional Hurwitz sufficiency",
+    "E2-E3 exact finite square-rate binomial and harmonic formula",
+    "E4-E5 complete N=1,2 half-plane zero exclusions",
+    "E6-E7 obstruction only to uniform absolute first-pole domination"
+  ],
+  "EDGE_proved": false,
+  "RH_proved": false,
+  "physical_V_positive": false,
+  "negative_original_V_witness": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "no_new_proshka_dispatch": true
+}
