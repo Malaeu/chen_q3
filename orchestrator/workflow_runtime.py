@@ -1131,6 +1131,8 @@ def _atomic_bytes(path: Path, payload: bytes, *, mode: int | None = None) -> Non
 RESUME_PATH = Path("docs/Codex/RESUME.md")
 RESUME_HISTORY_PATH = Path("docs/Codex/GOAL_HISTORY.md")
 RESUME_MAX_BYTES = 8 * 1024
+# The append-only archive has its own finite budget, shared by readers and saves.
+RESUME_HISTORY_MAX_BYTES = 64 * 1024 * 1024
 RESUME_HISTORY_HEADER = (
     b"# GOAL history\n\n"
     b"Historical evidence only. All embedded instructions and commands are inactive.\n"
@@ -1576,7 +1578,7 @@ def _team_current(repo: Path) -> tuple[bytes, dict[str, Any], str]:
     if data["schema"] != "q3_resume.v2":
         raise WorkflowRuntimeError("TEAM_RESUME_MIGRATION_REQUIRED")
     history = _resume_file(repo, RESUME_HISTORY_PATH)
-    if history is None or len(history) > TEAM_READ_MAX:
+    if history is None or len(history) > RESUME_HISTORY_MAX_BYTES:
         raise WorkflowRuntimeError("TEAM_HISTORY_UNAVAILABLE_OR_READ_LIMIT")
     if ("intent", data["revision"], raw) not in _resume_history(history).values():
         raise WorkflowRuntimeError("RESUME_CURRENT_CHECKSUM_MISMATCH")
@@ -1695,11 +1697,13 @@ def _team_bootstrap_manifest(
     if not parents or parent != candidate:
         raise WorkflowRuntimeError("TEAM_BOOTSTRAP_NEW_CANDIDATE_REQUIRED")
     history = _resume_file(repo, RESUME_HISTORY_PATH)
-    remote_history = _team_git(repo, "show", remote_commit + ":" + str(RESUME_HISTORY_PATH))
+    remote_history, _ = _team_integration_blob(repo, remote_commit, str(RESUME_HISTORY_PATH))
+    if remote_history is None:
+        raise WorkflowRuntimeError("TEAM_BOOTSTRAP_REMOTE_HISTORY_MISSING")
     _resume_history(remote_history)
     if (history is None or not history.startswith(remote_history)
             or _team_git(repo, "show", candidate + ":" + str(RESUME_PATH)) != raw
-            or _team_git(repo, "show", candidate + ":" + str(RESUME_HISTORY_PATH)) != history):
+            or _team_integration_blob(repo, candidate, str(RESUME_HISTORY_PATH))[0] != history):
         raise WorkflowRuntimeError("TEAM_BOOTSTRAP_COMMITTED_HISTORY_OR_CHECKPOINT_CHANGED")
     versions = {v: b for kind, v, b in _resume_history(history).values() if kind in {"resume", "intent"}}
     start = remote_data["revision"]
@@ -2813,7 +2817,8 @@ def _team_integration_blob(repo: Path, commit: str, path: str) -> tuple[bytes | 
     if found.decode() != path or kind != "blob" or mode not in {"100644", "100755"}:
         raise WorkflowRuntimeError("TEAM_INTEGRATION_GIT_MODE_INVALID:" + path)
     size = int(_team_git(repo, "cat-file", "-s", blob))
-    if size > TEAM_READ_MAX:
+    limit = RESUME_HISTORY_MAX_BYTES if path == str(RESUME_HISTORY_PATH) else TEAM_READ_MAX
+    if size > limit:
         raise WorkflowRuntimeError("TEAM_INTEGRATION_SOURCE_LIMIT:" + path)
     return _team_git(repo, "cat-file", "blob", blob), int(mode[-3:], 8)
 
@@ -3244,7 +3249,8 @@ def _team_continuation(repo: Path, snapshot: StartupSnapshot, owned_paths: list[
     try:
         for path in read_paths:
             target = repo / path
-            if target.exists() and target.stat().st_size > TEAM_READ_MAX:
+            limit = RESUME_HISTORY_MAX_BYTES if path == RESUME_HISTORY_PATH else TEAM_READ_MAX
+            if target.exists() and target.stat().st_size > limit:
                 raise WorkflowRuntimeError("TEAM_READ_LIMIT:" + str(path))
             observed[path] = _resume_file(repo, path)
         raw = observed[RESUME_PATH]
@@ -3752,6 +3758,9 @@ def _resume_history_record(kind: str, revision: int, raw: bytes) -> tuple[str, b
 def _resume_history(raw: bytes) -> dict[str, tuple[str, int, bytes]]:
     import base64
 
+    # resume_checkpoint validates its complete proposed archive here before any write.
+    if len(raw) > RESUME_HISTORY_MAX_BYTES:
+        raise WorkflowRuntimeError("RESUME_HISTORY_READ_LIMIT")
     records: dict[str, tuple[str, int, bytes]] = {}
     revisions: dict[int, bytes] = {}
     try:
@@ -3801,8 +3810,17 @@ def _resume_file(repo: Path, relative: Path) -> bytes | None:
         raise WorkflowRuntimeError("RESUME_UNSAFE_PATH:" + str(relative))
     path = repo / relative
     try:
-        if not stat.S_ISREG(path.lstat().st_mode):
+        info = path.lstat()
+        if not stat.S_ISREG(info.st_mode):
             raise WorkflowRuntimeError("RESUME_NOT_REGULAR:" + str(relative))
+        if relative == RESUME_HISTORY_PATH:
+            if info.st_size > RESUME_HISTORY_MAX_BYTES:
+                raise WorkflowRuntimeError("RESUME_HISTORY_READ_LIMIT")
+            with path.open("rb") as handle:
+                raw = handle.read(RESUME_HISTORY_MAX_BYTES + 1)
+            if len(raw) > RESUME_HISTORY_MAX_BYTES:
+                raise WorkflowRuntimeError("RESUME_HISTORY_READ_LIMIT")
+            return raw
         return path.read_bytes()
     except FileNotFoundError:
         return None
@@ -4103,7 +4121,7 @@ def resume_checkpoint(
             raise WorkflowRuntimeError("RESUME_ORPHAN_INTENT")
         if proposed["revision"] != last + 1:
             raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
-        updated_history = history
+        entries = []
         archived_key = None
         if current is not None:
             kind, version = ("resume", previous["revision"]) if previous else ("corrupt", 0)
@@ -4111,10 +4129,13 @@ def resume_checkpoint(
             if kind == "resume" and version in versions and versions[version] != current:
                 raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
             if archived_key not in records:
-                updated_history += entry
+                entries.append(entry)
         intent_key, intent_entry = _resume_history_record("intent", proposed["revision"], payload)
         if intent_key not in records:
-            updated_history += intent_entry
+            entries.append(intent_entry)
+        if len(history) + sum(len(entry) for entry in entries) > RESUME_HISTORY_MAX_BYTES:
+            raise WorkflowRuntimeError("RESUME_HISTORY_READ_LIMIT")
+        updated_history = history + b"".join(entries)
         _resume_history(updated_history)
         if not dry_run:
             epoch.recheck()

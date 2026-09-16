@@ -5083,6 +5083,64 @@ class ResumeCheckpointTests(unittest.TestCase):
             self.save(second.replace(b"Observed evidence", b"Changed evidence"), expected)
         self.assertEqual(self.current.read_bytes(), second)
 
+    def test_history_budget_rejects_before_writes_and_accepts_exact_limit(self):
+        """A successful checkpoint must stay readable by every history reader."""
+        self.save()
+        first = self.current.read_bytes()
+        before = self.history.read_bytes()
+        expected = workflow_runtime._resume_digest(first)
+        second = self.document(2, expected)
+        _, archived = workflow_runtime._resume_history_record("resume", 1, first)
+        _, intent = workflow_runtime._resume_history_record("intent", 2, second)
+        projected = before + archived + intent
+        for dry_run in (True, False):
+            with self.subTest(dry_run=dry_run), mock.patch.object(
+                workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(projected) - 1,
+                create=True,
+            ), mock.patch.object(workflow_runtime, "_resume_cas_bytes") as replace:
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESUME_HISTORY_READ_LIMIT"):
+                    self.save(second, expected, dry_run=dry_run)
+                replace.assert_not_called()
+                self.assertEqual(self.current.read_bytes(), first)
+                self.assertEqual(self.history.read_bytes(), before)
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(projected), create=True):
+            self.assertEqual(self.save(second, expected, dry_run=True)["status"], "DRY_RUN")
+            self.assertEqual(self.save(second, expected)["status"], "SAVED")
+            self.assertEqual(self.history.read_bytes(), projected)
+            self.assertIn(("intent", 2, second), workflow_runtime._resume_history(projected).values())
+            self.assertEqual(self.save(second, expected)["status"], "NOOP")
+
+    def test_existing_over_budget_history_rejects_even_identical_replay(self):
+        self.save()
+        current, history = self.current.read_bytes(), self.history.read_bytes()
+        for dry_run in (True, False):
+            with self.subTest(dry_run=dry_run), mock.patch.object(
+                workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history) - 1,
+                create=True,
+            ), mock.patch.object(workflow_runtime, "_resume_sync") as sync:
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESUME_HISTORY_READ_LIMIT"):
+                    self.save(dry_run=dry_run)
+                sync.assert_not_called()
+                self.assertEqual(self.current.read_bytes(), current)
+                self.assertEqual(self.history.read_bytes(), history)
+
+    def test_history_loader_checks_size_before_read_and_bounds_growth(self):
+        history = self.history.read_bytes()
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history) - 1):
+            with mock.patch.object(Path, "open") as opened:
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESUME_HISTORY_READ_LIMIT"):
+                    workflow_runtime._resume_file(self.repo, workflow_runtime.RESUME_HISTORY_PATH)
+                opened.assert_not_called()
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESUME_HISTORY_READ_LIMIT"):
+                workflow_runtime._resume_history(history)
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history)):
+            self.assertEqual(workflow_runtime._resume_file(self.repo, workflow_runtime.RESUME_HISTORY_PATH), history)
+            # The file was within the limit at stat, but grew before reading.
+            with mock.patch.object(Path, "open", mock.mock_open(read_data=history + b"x" * 100)) as opened:
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RESUME_HISTORY_READ_LIMIT"):
+                    workflow_runtime._resume_file(self.repo, workflow_runtime.RESUME_HISTORY_PATH)
+                opened.return_value.read.assert_called_once_with(len(history) + 1)
+
     def test_stale_preimage_rejected_without_archive_change(self):
         self.save()
         before = self.history.read_bytes()
@@ -5314,6 +5372,84 @@ class TeamRuntimeTests(unittest.TestCase):
         _, intent = workflow_runtime._resume_history_record("intent", data["revision"], raw)
         self.fixture.history.write_bytes(self.fixture.history.read_bytes() + intent)
         return raw
+
+    def test_large_history_current_next_checkpoint_and_publication_base(self):
+        """Preserved archive bytes may exceed the unrelated 4 MiB payload cap."""
+        data = self.data()
+        first = self.install(data)
+        _, preserved = workflow_runtime._resume_history_record(
+            "corrupt", 0, b"x" * (workflow_runtime.TEAM_READ_MAX * 3 // 4))
+        history = self.fixture.history.read_bytes() + preserved
+        self.fixture.history.write_bytes(history)
+        self.assertGreater(len(history), workflow_runtime.TEAM_READ_MAX)
+        self.assertEqual(workflow_runtime._team_current(self.repo)[0], first)
+
+        env = {**os.environ, "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+               "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+        self.source.write_bytes(b"x" * len(history))
+        subprocess.run(["git", "add", str(workflow_runtime.RESUME_PATH),
+                        str(workflow_runtime.RESUME_HISTORY_PATH), "docs/source.md"], cwd=self.repo, check=True)
+        subprocess.run(["git", "commit", "-qm", "History budget fixture"], cwd=self.repo, env=env, check=True)
+        base = workflow_runtime._team_git(self.repo, "rev-parse", "HEAD").decode().strip()
+        self.source.write_bytes(b"exact source\n")
+        inputs = {str(workflow_runtime.RESUME_PATH): workflow_runtime._resume_digest(first),
+                  str(workflow_runtime.RESUME_HISTORY_PATH): workflow_runtime._resume_digest(history)}
+        workflow_runtime._team_publication_history(self.repo, data, first, base, inputs)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_INTEGRATION_SOURCE_LIMIT"):
+            workflow_runtime._team_integration_blob(self.repo, base, "docs/source.md")
+
+        data.update(revision=2, previous_sha256=workflow_runtime._resume_digest(first))
+        second = self.document(data)
+        self.assertEqual(self.fixture.save(second, data["previous_sha256"])["status"], "SAVED")
+        self.assertEqual(workflow_runtime._team_current(self.repo)[0], second)
+        self.assertTrue(self.fixture.history.read_bytes().startswith(history))
+        workflow_runtime._team_publication_history(self.repo, data, second, base, inputs)
+
+        current_history = self.fixture.history.read_bytes()
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(current_history), create=True):
+            self.assertEqual(workflow_runtime._team_current(self.repo)[0], second)
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(current_history) - 1, create=True):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "HISTORY.*READ_LIMIT"):
+                workflow_runtime._team_current(self.repo)
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history)):
+            self.assertEqual(workflow_runtime._team_integration_blob(
+                self.repo, base, str(workflow_runtime.RESUME_HISTORY_PATH))[0], history)
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history) - 1, create=True):
+            with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_INTEGRATION_SOURCE_LIMIT"):
+                workflow_runtime._team_integration_blob(self.repo, base, str(workflow_runtime.RESUME_HISTORY_PATH))
+
+    def test_large_history_continuation_keeps_other_read_limits(self):
+        data, _ = workflow_runtime._resume_document(self.fixture.document(
+            operation={"kind": "NONE", "state": "NONE", "id": "", "evidence": []}))
+        self.install(data)
+        _, preserved = workflow_runtime._resume_history_record(
+            "corrupt", 0, b"x" * (workflow_runtime.TEAM_READ_MAX * 3 // 4))
+        history = self.fixture.history.read_bytes() + preserved
+        self.fixture.history.write_bytes(history)
+        runtime = self.repo / "orchestrator/state/CHANNEL_RUNTIME.json"
+        runtime.parent.mkdir(parents=True, exist_ok=True)
+        runtime.write_text(json.dumps({"active_proshka_phase": {"phase_id": data["pins"]["phase_id"]}}))
+        queue = self.repo / "docs/routeB_bus/PROSHKA_QUEUE.md"
+        queue.parent.mkdir(parents=True, exist_ok=True)
+        queue.write_text("## " + data["pins"]["request_id"] + "\n")
+        snapshot = mock.Mock(selected_goal=data["pins"]["physical_goal"],
+                             exact_source_pin=data["pins"]["source_commit"])
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history), create=True):
+            card = workflow_runtime._team_continuation(self.repo, snapshot, [])
+            self.assertEqual(card["blockers"], [{"scope": "EXECUTION", "code": "TEAM_RESUME_MIGRATION_REQUIRED"}])
+            self.assertIn("whole_tree", card)
+        with mock.patch.object(workflow_runtime, "RESUME_HISTORY_MAX_BYTES", len(history) - 1, create=True):
+            card = workflow_runtime._team_continuation(self.repo, snapshot, [])
+            self.assertEqual(card["blockers"], [{"scope": "CONTINUATION",
+                              "code": "TEAM_READ_LIMIT:" + str(workflow_runtime.RESUME_HISTORY_PATH)}])
+        queue.write_bytes(b"x" * (workflow_runtime.TEAM_READ_MAX + 1))
+        card = workflow_runtime._team_continuation(self.repo, snapshot, [])
+        self.assertEqual(card["blockers"], [{"scope": "CONTINUATION", "code": "TEAM_READ_LIMIT:docs/routeB_bus/PROSHKA_QUEUE.md"}])
+        local_path = workflow_runtime._git_common_dir(self.repo) / workflow_runtime.TEAM_LOCAL
+        local_path.write_bytes(b"x" * (workflow_runtime.TEAM_READ_MAX + 1))
+        local_path.chmod(0o600)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_LOCAL_READ_LIMIT"):
+            workflow_runtime._team_private_read(self.repo, workflow_runtime.TEAM_LOCAL)
 
     def _publication_v11_base(self):
         """Create a v11 owner with a real v2 remote checkpoint at HEAD."""
@@ -7459,6 +7595,34 @@ class TeamRuntimeTests(unittest.TestCase):
             "publication_inputs": publication_inputs,
             "local_install_commit": local_commit,
         }
+
+    def test_bootstrap_history_budget_precedes_remote_and_candidate_blob_reads(self):
+        fixture = self._bootstrap_publication_fixture()
+        owner = fixture["owner"]
+        raw, remote_raw = fixture["publication_raw"], fixture["remote_raw"]
+        data, _ = workflow_runtime._resume_document(raw)
+        remote_data, _ = workflow_runtime._resume_document(remote_raw)
+        real_git = workflow_runtime._team_git
+        for commit in (fixture["remote_commit"], fixture["expected_head"]):
+            reference = commit + ":" + str(workflow_runtime.RESUME_HISTORY_PATH)
+            blob = real_git(owner, "rev-parse", reference).decode().strip()
+            checked = []
+
+            def oversized_git(repo, *args):
+                if args == ("cat-file", "-s", blob):
+                    checked.append(blob)
+                    return str(workflow_runtime.RESUME_HISTORY_MAX_BYTES + 1).encode()
+                if args in (("cat-file", "blob", blob), ("show", reference)):
+                    self.fail("oversized history was loaded before checking its size")
+                return real_git(repo, *args)
+
+            with self.subTest(commit=commit), mock.patch.object(
+                workflow_runtime, "_team_git", side_effect=oversized_git
+            ):
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "TEAM_INTEGRATION_SOURCE_LIMIT"):
+                    workflow_runtime._team_bootstrap_manifest(
+                        owner, raw, data, fixture["remote_commit"], remote_raw, remote_data, fixture["expected_head"])
+                self.assertEqual(checked, [blob])
 
     def _bootstrap_commit_tree(self, fixture, *, writes=(), deletes=(), modes=None, message):
         owner = fixture["owner"]
