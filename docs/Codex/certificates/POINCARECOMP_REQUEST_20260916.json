@@ -1,0 +1,47 @@
+{
+  "schema": "q3_isolated_request_review.v1",
+  "request_id": "REQ-2026-09-16-POINCARECOMP",
+  "boundary_id": "GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION",
+  "source_base": "338ab1d74115fabd05a7ee3af4e455ba74acfb73",
+  "status": "PREPARED_REVIEWED_NOT_SENT",
+  "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+  "operational_authorization": "Explicit user request to create native goal and continue with Proshka; existing GitHub plus short same-chat notice protocol.",
+  "reviewer": "/root/sibling5_check",
+  "dispatch_verdict": "CLEAN_DISPATCH",
+  "review_sha256": "b1ff7f60735bf71b5db34f264537762e9f8206f68d08ae890b0713610009ba16",
+  "review_text": "# Independent dispatch review: conditional Poincare compensation\n\nREVIEWED_REQUEST_SHA256: 9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832\nREVIEWED_CONTEXT_SHA256: e91d505f9cef009e1c11d9675ed77121a96d6ae540b585158e41bcda52ab4c22\nEXISTING_SOURCE_REPORT_SHA256: 8ea7ed0b70f57d271b09cb44f53156cd50b71aa6511bd1fd4077111ba5bef5ef\nVERDICT: CLEAN_DISPATCH.\n\n## Scope checked\n\nThe request correctly keeps the full source, cutoff, all-finite complex-row\nquantifier, and the signed mixed conditional covariance. It asks for a\nbounded test of a stated UNVERIFIED comparison, followed only by a\nsource-specific attempt that retains the complete signed form. It neither\nasserts V positivity nor treats a lower envelope as a negative V witness.\n\nFor a symmetric log-concave fibre density p and the direct primitive\nH(s)=integral_0^s p(q-E_p q), u=H/sqrt(p), the half-interval Dirichlet\nargument gives Var_p(q)<=D_s(q)/(4*pi^2), conditional on the stated endpoint\nand finite-energy facts. No quantile coordinate is part of this primitive.\nThe factors in the displayed loss budget are correct:\n\n  E_loss <= (D_X+sqrt(D_G D_B))/(2*pi^2),\n  L_pi=M-(D_X+sqrt(D_G D_B))/(2*pi^2) <= V.\n\nFor a single node, the change U=a t s, W=a t(1-s) has Jacobian 1/(aT) and\ntherefore gives exactly the displayed d nu_a with leading factor a T^(3/2).\nThe large-argument h and r asymptotics yield d nu_0 as stated. Also\nX+x=(log T)/2, hence M(x,x)=integral log(T) d nu_a; and the stated Q_a is the\nlogarithmic s derivative. Thus the proposed interior-rectangle argument,\nif its tail and nonvanishing details are paid, yields D_X(x,x)>=c(-x) while\nM remains bounded.\n\nThe implication is in the correct direction. If K_kappa=M-kappa D_X were\nPSD for all finite rows on I and had a jointly holomorphic extension through\na connected domain reaching the far-negative diagonal, A1 would contradict\nK_kappa(x,x)->-infinity. Therefore a finite negative K_kappa row on I would\nexist; at kappa=1/(2*pi^2), L_pi<=K_kappa makes that row L_pi-negative. This\nis not an assertion that L_pi is a quadratic form, nor a V-negative witness.\n\n## Required remaining proof, correctly assigned\n\nThe continuation step must prove common joint holomorphy of the actual\nM and D_X kernels, with the physical weight and cutoff retained. The old\nreal a>1/2 domain alone cannot do this. The proposed common domain noted in\nthe review discussion, Re z<0 and |Im z|<pi/8, is a plausible route but is\nnot relied on by this dispatch until its estimates are proved. No obvious\ncoefficient, sign, or logical defect requires removing the test.\n\nThe modulus/Cauchy budget discards the signed Re Cov_t(G,B) contribution and\ncross-fibre alignment; it does not control the remaining mean term. Section\n5 expressly retains these items, so it does not smuggle a Poincare-only\nconclusion into the full V target.\n",
+  "summary_review_sha256": "4e4243fbe0ca5efea618bd5b2e65ff4d3daa4d88df1ffa3d5dbf321312f33c4c",
+  "summary_review_text": "# Independent bounded review: conditional Poincare comparison\n\nReviewed user-pasted summary SHA256:\n`f4af86578fbb3add034ef8aee8fada23c64eb920d52f733afe65199dd2fa6ae4`\n\nReference conditional-source report SHA256:\n`8ea7ed0b70f57d271b09cb44f53156cd50b71aa6511bd1fd4077111ba5bef5ef`\n\n## Scope and verdict\n\n**ACCEPT_CONDITIONAL_POINCARE_COMPARISON_FROM_THE_PROVIDED_SUMMARY_ONLY.**\nNo byte-exact raw Proshka report was available in this review.\n\nFor a symmetric conditional signal, centering and the quantile coordinate\nmake its primitive vanish at `0`, `1/2`, and `1`.  On either half interval,\nwriting `H=sqrt(p) u` gives\n\n`int p|v|^2 = int (|u'|^2+(alpha^2-alpha')|u|^2)`,\n\nwhere `alpha=(log p)'/2`.  Log concavity makes the potential nonnegative,\nand the Dirichlet gap on length `1/2` is `4 pi^2`.  Combining this with\n`int p|v|^2=-int v' sqrt(p) conjugate(u)` and Cauchy yields exactly\n\n`Var_p(q) <= (4 pi^2)^(-1) int p|q'|^2`.\n\nThe primary Ferone--Nitsch--Trombetti theorem supports the underlying\nweighted Poincare principle for log-concave weights; the improved symmetric\nhalf-interval constant is the separate primitive/Dirichlet argument and\nmust not be attributed to the theorem alone.  The argument requires the\nclaimed endpoint limits for `H/sqrt(p)`; those limits are not independently\nbyte-audited here.\n\nThe constants in the full loss estimate are correct:\n\n`E_loss <= [D_X+sqrt(D_G D_B)]/(2 pi^2)`.\n\nThe factor two comes from the original definition of `E_loss`; the squared\ncovariance coefficient is `1/(16 pi^4)`.  The bound preserves the physical\nweight, cutoff, and `B`, but it loses the signed quantity\n`Re Cov_t(G,B)`: it replaces it by its modulus and then loses all\ncross-fibre alignment through Cauchy--Schwarz.  A negative mixed covariance\nwould help `V=M-E_loss` and is discarded by this upper bound.  The exact\nmean term `Re(conj(m) beta)` remains in `M`; it is not controlled by the\nPoincare estimate.\n\nNo result supplied here proves that the actual-source lower comparison\n`L_pi` is negative or nonnegative on every row.  The existing zero-shift\nlimit instead gives `L_pi -> V(0,0)>0` for a one-node row as `x -> 0`, since\nthe derivative budgets vanish there.  Negative Gaussian-deformed rows show\nonly that the generic conditional estimate cannot be a sufficient sign\ncriterion; they do not prove failure for the undeformed full theta source.\nThus testing an actual finite row away from that limit remains a concrete\nunpaid question, not a settled counterexample.\n",
+  "full_previous_report_raw_bytes_received": false,
+  "full_previous_report_read_scope": "Complete browser-rendered file, sections1-14; independent checker reviewed only pasted summary and existing source, with endpoint/domain scope conditional.",
+  "files": {
+    "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt": {
+      "sha256": "9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832",
+      "bytes": 13959,
+      "LF": 177,
+      "CR": 0,
+      "final_LF": true
+    },
+    "docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_POINCARECOMP_2026-09-16.md": {
+      "sha256": "e91d505f9cef009e1c11d9675ed77121a96d6ae540b585158e41bcda52ab4c22",
+      "bytes": 38071,
+      "LF": 772,
+      "CR": 0,
+      "final_LF": true
+    },
+    "docs/routeB_bus/proshka/PROSHKA_PASTED_EULER_COMPARISON_2026-09-16.txt": {
+      "sha256": "f4af86578fbb3add034ef8aee8fada23c64eb920d52f733afe65199dd2fa6ae4",
+      "bytes": 13794,
+      "LF": 355,
+      "CR": 0,
+      "final_LF": true
+    }
+  },
+  "response_path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_POINCARECOMP_2026-09-16.md",
+  "sent": false,
+  "send_count": 0,
+  "source_sign_progress": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "parent_check": "Reproduced conditional Poincare coefficients and signed covariance accounting. Section4 is an explicitly unverified asymptotic/analytic-continuation test, not an accepted source theorem."
+}

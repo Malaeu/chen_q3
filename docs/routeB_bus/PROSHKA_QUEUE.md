@@ -2,6 +2,14 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-16-POINCARECOMP
+- STATUS: PREPARED_REVIEWED_NOT_SENT. Explicit user-requested active native goal: full analytic V sign; this is its bounded Poincare-to-signed-compensation step.
+- Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt; SHA256 9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832. Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_POINCARECOMP_2026-09-16.md; SHA256 e91d505f9cef009e1c11d9675ed77121a96d6ae540b585158e41bcda52ab4c22.
+- Pasted input: docs/routeB_bus/proshka/PROSHKA_PASTED_EULER_COMPARISON_2026-09-16.txt; unchanged user attachment, not the unavailable byte-exact full Markdown. Independent summary review and CLEAN_DISPATCH in docs/Codex/certificates/POINCARECOMP_REQUEST_20260916.json.
+- Scope: test whether the sufficient L_pi comparison is too strong on the actual source; then one source-specific signed compensation joint. Parent dilation argument is UNVERIFIED, not an accepted negative V witness.
+- Boundary: GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION; unchanged phase and living chat 6aa52001-4094-83eb-9520-01a09f54eff2, observed idle after EULER comparison.
+- Assigned new response: docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_POINCARECOMP_2026-09-16.md; prior full Euler report may be published unchanged at the exact path named in the request. Same research branch, no canonical/private takeover.
+
 ## REQ-2026-09-15-SIZEBIASCOMP
 - STATUS: ANSWERED. ACCEPT_FULL_FIELD_TRANSPORT_CONVERGENCE_AND_CUTOFF_RATE_OBSTRUCTION_ONLY. Raw f6cb4ba3279e61de944b954bff524875fed97932 / SHA256 784e16445c64c1b480cfb0fdc5740182ad59253a775bfc8ab7dc0c44a654eafd. Full-field convergence and sharp cutoff rate accepted after independent review; full V sign and RH remain open. Intake: docs/Codex/REPORT_2026-09-15_SIZEBIASCOMP_INTAKE.md. Original one-send receipt preserved in SIZEBIASCOMP_REQUEST_20260915.json; no duplicate dispatch.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SIZEBIASCOMP_2026-09-15.txt; SHA256 a03063accc09e787d3de1ca296de940e0aafe4b8a22195b9b2d6bd51b9b7eafc.
