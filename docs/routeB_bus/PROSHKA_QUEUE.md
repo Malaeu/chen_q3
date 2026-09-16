@@ -4,7 +4,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 ## REQ-2026-09-16-COUPLEDFLUX · Coupled full-source local flux · OPEN
 
-- `STATUS: PREPARED_NOT_SENT`
+- `STATUS: OPEN`
+- Delivery state: PREPARED_NOT_SENT.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COUPLEDFLUX_2026-09-16.txt`; boundary `GOAL058_COUPLED_FULL_SOURCE_LOCAL_FLUX_COMPENSATION`; call class `DELEGATED_STRATEGIC_REVIEW`.
 - Request commit / bytes / lines / SHA256 / blob / final LF: `5b4a75973184495c4a33417f4aac8b664d3a9a34` / `13005` / `163` / `8ec6d3949d71ed4e9d3f3532903067f6006bbfe72508104ca94aa996fccc4ba3` / `f9ba51d9f907403369f8a82ba8d193b273b5d4fb` / `LF`.
 - Full six-file context: `docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_COUPLEDFLUX_2026-09-16.md`; SHA256 `0c67497a303135b7636e2dcc1acf27fa60a93c0d3f9525724e7c4b4a7b7330d4`. CLEAN_DISPATCH: `docs/Codex/certificates/COUPLEDFLUX_REQUEST_20260916.json`.
