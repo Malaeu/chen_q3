@@ -2,7 +2,20 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-16-POINCARECOMP
+## REQ-2026-09-16-POINCARECOMP · Conditional Poincare to signed full compensation · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt`
+- Boundary: `GOAL058_CONDITIONAL_POINCARE_TO_COMPLETE_SIGNED_COMPENSATION`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: independently reviewed user summary only; full report raw bytes still to be received.
+- Registered predictions: stronger derivative comparison may fail; signed compensation remains open.
+- Delivery mode: explicit user-authorized existing research branch and same living chat; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `69cddb064f6d7f0504c0afe6de0360b510e965f8` / `13959` / `177` /
+  `9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832` /
+  `0ac85514eb0b81defd4a962c9a395cb742ce6a5e` / `LF`
+
 - STATUS: PREPARED_REVIEWED_NOT_SENT. Explicit user-requested active native goal: full analytic V sign; this is its bounded Poincare-to-signed-compensation step.
 - Request: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_POINCARECOMP_2026-09-16.txt; SHA256 9a889fe8e19a0ea83402a893d3296b602e08ca703a5b84c56f03431e1cc63832. Context: docs/routeB_bus/proshka/PROSHKA_CONTEXT_GOAL058_POINCARECOMP_2026-09-16.md; SHA256 e91d505f9cef009e1c11d9675ed77121a96d6ae540b585158e41bcda52ab4c22.
 - Pasted input: docs/routeB_bus/proshka/PROSHKA_PASTED_EULER_COMPARISON_2026-09-16.txt; unchanged user attachment, not the unavailable byte-exact full Markdown. Independent summary review and CLEAN_DISPATCH in docs/Codex/certificates/POINCARECOMP_REQUEST_20260916.json.
