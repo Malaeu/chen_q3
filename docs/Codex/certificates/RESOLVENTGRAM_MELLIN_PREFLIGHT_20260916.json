@@ -1,0 +1,19 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "1bfb3e72aadbf86840750b13e3b7dd8369cc921e",
+  "candidate_sha256": "038cb8cf51ed7e8badfad0ab38848651642262361903476a288a8032dcadbf19",
+  "report_sha256": "ded92e32d79596b0292c6dac13c3ffb8dc26972f8cda81ecf88613867703deba",
+  "review_sha256": "b359e6946b2220e5677d13eba42d67059eafe742644fe141714458c0e998801b",
+  "review_text": "# Independent review — resolvent Gram Mellin preflight\n\nReviewed candidate: \\`RESOLVENTGRAM_MELLIN_PREFLIGHT.md\\`  \nSHA256: \\`038cb8cf51ed7e8badfad0ab38848651642262361903476a288a8032dcadbf19\\`.\n\n## Verdict\n\n**ACCEPT_EXACT_MELLIN_IDENTITY_AND_TERM_COMPONENT_FAILURE_ONLY.**\n\nThe report establishes an exact decomposition and rules out termwise\npositivity for that decomposition. It does not establish a sign for total\n\\(K_2\\), \\(V\\), or RH.\n\n## Checks\n\nProduct differentiation gives\n\\[\n L''(s)=\\mathbb E[T^2e^{-sT}]\n       =L(s)(A(s)^2+G(s,s)),\n\\]\nwith the stated positive source Gram.  Absolute Fubini for \\(\\Re a<2\\)\nthen gives\n\\[\n J(a)=\\int_0^\\infty s^{1-a}L''(s)\\,ds\n     =\\Gamma(2-a)\\mathbb E[T^a].\n\\]\nThe endpoints and logarithmic derivatives are adequately controlled on\ncompact subsets of that half-plane.\n\nWith \\(H(a)=2\\xi(2a)\\), logarithmic differentiation yields\n\\[\n \\frac{\\xi'(2a)}{\\xi(2a)}\n =\\frac12\\left[\\psi(2-a)+\\frac{J'(a)}{J(a)}\\right].\n\\]\nAt \\(a=5/4-iu/2\\) this is exactly the stated \\(R_2\\) normalization, and\nthe split of \\(K_2\\) into \\(K_{\\Gamma}+K_{\\log}\\) has the correct factors.\n\nFinally,\n\\[\n K_\\Gamma(0,0)=\\psi(3/4)/4<0,\n\\]\nbecause the trigamma series makes \\(\\psi\\) increasing and\n\\(\\psi(1)=-\\gamma\\le0\\).  Thus the positive \\(L''\\) integrand cannot justify\ncomponentwise PSD after the Mellin/logarithmic quotient.  The possible\ncompensation by \\(K_{\\log}\\) is retained, so this is not a total-sign or\nnegative-\\(V\\) conclusion.\n\n",
+  "verdict": "ACCEPT_EXACT_MELLIN_IDENTITY_AND_TERM_COMPONENT_FAILURE_ONLY",
+  "parent_check": "P1-P6 and full-source domains reconstructed; no claim that the exact rewriting reduces the full sign problem. Mandatory gamma component is negative at u=0, while the actual full singleton is positive.",
+  "decision_effect": "Reject termwise positivity for this specified Mellin/logarithmic-quotient split; retain total compensation. Other transports remain open.",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "proshka_request": "REQ-2026-09-16-RESOLVENTGRAM",
+  "proshka_request_already_sent": true,
+  "no_additional_message": true
+}

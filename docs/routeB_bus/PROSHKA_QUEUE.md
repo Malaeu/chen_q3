@@ -11,7 +11,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - Scope: transport the explicit positive square-rate resolvent Gram through the full Mellin/reciprocal source to exact K_2; keep every finite complex row and all corrections. Source positivity is proved; target transfer is OPEN.
 - Distinct from completed JOINTSOURCE-Y, raw MellinEDGE and refuted Bessel/log-PF/tilted-PF constructions; no automatic RH claim.
 - Same user-directed living chat `6aa52001-4094-83eb-9520-01a09f54eff2`; previous informational acknowledgement completed, no proof request running.
-- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_RESOLVENTGRAM_2026-09-16.md`. Not sent at preparation.
+- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_RESOLVENTGRAM_2026-09-16.md`. Sent once; exact file tile, message and natural Pro reasoning observed 2026-09-16T20:02Z; downloaded attachment SHA matched the request. Awaiting result.
+- Independently checked local transfer diagnostic: `docs/Codex/REPORT_2026-09-16_RESOLVENTGRAM_MELLIN_PREFLIGHT.md`; exact Mellin identity with a negative gamma component. This is not a total-sign result and not a substitute for the pending request.
 
 ## REQ-2026-09-16-MELLINEDGE · Raw finite-source cofinal Mellin edge · ANSWERED
 
