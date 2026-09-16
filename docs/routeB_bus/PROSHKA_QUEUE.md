@@ -2,16 +2,19 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-16-LOGVCURV · Full integrated V log-curvature test · OPEN
+## REQ-2026-09-16-LOGVCURV · Full integrated V log-curvature test · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LOGVCURV_2026-09-16.txt`; boundary `GOAL058_FULL_INTEGRATED_V_LOG_CURVATURE_ENTRANCE`; call class `DELEGATED_STRATEGIC_REVIEW`.
 - Request commit / bytes / LF / SHA256 / blob / final LF: `35d3fe676855fa9bed6c5b05106cea791c4a8d72` / `83412` / `1729` / `4646b45b430b95242e914196c9be4715f4693f984852daeae0113f4b7bc0a734` / `3ae0fcdb57146251254724ec1723fd1a6158ab54` / `LF`.
 - Six full source reports embedded in the single TXT; context SHA256 `a448e6ba5920b4e98f823718f2f4185f39b78c464273f4f1b830dc70e7276463`. Dispatch review: `docs/Codex/certificates/LOGVCURV_REQUEST_20260916.json`.
 - Scope: test C=partial_x partial_y log of the complete integrated V analytically on every finite complex row. Its PSD would supply the already proved exponential Gram bridge; this is a stronger sufficient entrance, not necessary for V positivity.
 - Distinct from layer curvature C_q, odd-sector curvature and the rejected normalized Mellin/Cauchy map. No numerical determinant campaign; no automatic RH claim.
-- Same user-directed living chat `6aa52001-4094-83eb-9520-01a09f54eff2`; previous informational acknowledgement completed, no proof request running.
-- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_LOGVCURV_2026-09-16.md`. Not sent at preparation.
+- Same user-directed living chat `6aa52001-4094-83eb-9520-01a09f54eff2`; request sent once and completed with the matching published response, error null; chat idle, no reply pending.
+- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_LOGVCURV_2026-09-16.md`. Sent once; exact attachment tile, short binder and natural reasoning observed at 2026-09-16T20:52:46Z. Native attachment readback matches all 83412 bytes and SHA256. No second send.
+
+- Accepted response: `6f4da4917734c92fba9459316494dd70ebbe77b5`; SHA256 `e33ee8eee31a36c6b2de2e590f8c4ce94a658ed20662f505df204d7592e364f5`. C_V has a negative finite real row in every real open interval; full-kernel infinite divisibility is excluded. No negative V row and no RH conclusion. Intake: `docs/Codex/REPORT_2026-09-16_LOGVCURV_INTAKE.md`; certificate: `docs/Codex/certificates/LOGVCURV_INTAKE_20260916.json`.
+- Local independently checked preflight: `docs/Codex/REPORT_2026-09-16_LOGVCURV_PREFLIGHT.md`; positive two-end curvature limit and fixed-family eventual positivity only. Its proposed uniform all-family exterior upgrade is now excluded by the separate response. Full V and RH remain open.
 
 ## REQ-2026-09-16-RESOLVENTGRAM · Full-source resolvent Gram transfer · ANSWERED
 
