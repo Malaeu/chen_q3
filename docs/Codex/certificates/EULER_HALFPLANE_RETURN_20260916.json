@@ -1,0 +1,28 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "c3533960373df6f59b43c6cb93eb99588330d6bd",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-16_MELLIN_EDGE_PREFLIGHT.md": "a7dfba76bd7018100d312f198987a35e4a08ed163d8f5ade43d0f9244b14c1ff",
+    "docs/Codex/REPORT_2026-09-16_MELLINEDGE_INTAKE.md": "c966f1d94717efab0c291b146a39870a7a1852e67d8acf44ccdc3bb6628d3efc",
+    "docs/Codex/REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md": "3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a",
+    "docs/Codex/NOTE_2026-09-16_EULER_LATTICE_AND_PRIME_INVARIANT.md": "9b3814f24b5e6941c4bb8506c8a0eeb580c9b88012fa6875d7d8d9d3e219cd11"
+  },
+  "candidate_sha256": "68d94cba49b7c5cfc49609f92ebc376f7238164dc8c0fbfb93ec6954b0685cf7",
+  "report_path": "docs/Codex/REPORT_2026-09-16_EULER_HALFPLANE_RETURN.md",
+  "report_sha256": "07adf2436da864e5be5257ebf928734ea7a4c5ae84066b20ae0219819da3755c",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "fc8ba2dfe89682ffab354c086281a18d54ce331afd9ebcc389c6d858c342d2f6",
+  "review_text": "# Independent review — Euler half-plane return\n\n- **Reviewed candidate SHA-256:** `68d94cba49b7c5cfc49609f92ebc376f7238164dc8c0fbfb93ec6954b0685cf7`\n\n**VERDICT: ACCEPT_UNIFORM_RAW_MELLIN_HALFPLANE_STABILITY_ONLY.**\n\nThe complete-source Mellin calculation S2 is valid on `Re s>3/2`; the Euler product and absolutely convergent reciprocal series give the stated all-height lower bound there. S4 correctly identifies failure of multiplicativity of the normalized finite coefficients without overextending it to arbitrary factorizations.\n\nFor every `epsilon>0`, S6 and S7 provide the needed dominated-convergence errors at `b=3/2+epsilon`. In particular the delta term is retained and uniformly dominated. S8 is the exact normalized comparison, and S9 supplies a positive lower bound independent of imaginary height. The resulting zero-free statement for every sufficiently large `N` on `Re s>=3/2+epsilon` follows by the displayed triangle inequality.\n\nThis is the classical Euler-product/summability half-plane translated to the raw finite approximants. It is compatible with the accepted escaping zeros to its left and gives no result in `5/4<Re s<=3/2`, no terminal-V sign, and no RH progress by itself.\n",
+  "verdict": "ACCEPT_UNIFORM_RAW_MELLIN_HALFPLANE_STABILITY_ONLY",
+  "parent_check": "Full square-rate Mellin integral with absolute Fubini domain; exact coprime coefficient defect; uniform domination of all harmonic corrections; all-height normalized comparison; reciprocal Euler-series modulus.",
+  "statement": "For every epsilon>0 there exists N_epsilon such that all N>=N_epsilon have raw M_N(s)!=0 for every Re(s)>=3/2+epsilon, with no bound on imaginary height.",
+  "primary_source": "https://dlmf.nist.gov/25.2.E11, formula and Re(z)>1 condition read; reciprocal-series bound derived directly.",
+  "region_inside_target_critical_strip": false,
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proshka_request": false,
+  "new_literature_hunt": false
+}
