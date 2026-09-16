@@ -1,0 +1,36 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "aeb9ec3081f4f38e0190786fbd67fbcf9f2516af",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-14_GAMMA_RECIPROCITY_BRIDGE.md": "7c641d8a055bffc80fa2ed8d1ff437c1a47d6d0dfe3b82f9fa2533db02bda621",
+    "docs/Codex/REPORT_2026-09-15_ARITHMETIC_RECIPROCITY.md": "b128c925d794693fdbc5b1e8257e5587060c92d60770a650f2f8d26ee6838f53",
+    "docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md": "1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282"
+  },
+  "candidate_sha256": "b56d0a2023e3b5c1d0ee730b282eb8c1802436150dd2327fe5651cf5e167aa8a",
+  "report_path": "docs/Codex/REPORT_2026-09-16_MELLINEDGE_COFINAL_OBSTRUCTION.md",
+  "report_sha256": "5748be3691ff3308ae700a9697046bbdd3ef4d688cb36cabd0d4c21836319129",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "df4dbb1186b486227133b1075ca6402f6c41cf0753b26cd9ba593efb6b1fe69d",
+  "review_text": "# Independent review — cofinal Mellin-edge obstruction\n\n- **Reviewed candidate SHA-256:** `b56d0a2023e3b5c1d0ee730b282eb8c1802436150dd2327fe5651cf5e167aa8a`\n\n**VERDICT: ACCEPT_COFINAL_RAW_MELLIN_EDGE_OBSTRUCTION_ONLY.**\n\n## Verified chain\n\n1. For each fixed `N`, rational independence of prime logarithms gives arbitrarily high positive times realizing any prescribed prime-torus neighborhood. The finite-sum convergence\n`D_N(s+i tau)/(i tau) -> P_z(s)` is locally uniform. Rouché then transfers every exact torus zero in `Re s>5/4` to actual high zeros of `D_N`; neither a quantitative recurrence rate nor simple torus zero is needed.\n\n2. The exact factorial weights have the stated Gaussian scale. At `sigma_0=11/8`, the `n^(-3/4)` mass is asymptotic to `C_a N^(1/8)`, with the Gaussian replacement and tail control valid at the stated scale.\n\n3. Taking `y=N^(2/7)`, the at-least-two-large-prime sector has exponentially negligible mass. The one-large-prime coefficient mass is asymptotic to\n`log(log sqrt(N)/log N^(2/7))=log(7/4)`, and no single prime coefficient has macroscopic mass. The estimates use only the unconditional prime-count asymptotic and elementary partial summation.\n\n4. Greedy partitioning of large-prime coefficients and `C^1` smallness of the multi-large-prime remainder give a genuine two-real-variable zero near the nondegenerate zero of\n`1-alpha+(alpha/2)(e^(iu)+e^(iv))`. This includes, rather than discards, the nonlinear remainder.\n\n5. Hence every sufficiently large fixed `N` has actual Mellin zeros at arbitrarily high imaginary height with real parts tending to `11/8`. This refutes EDGE itself, because no unbounded zero-free subsequence remains.\n\nThe proof has the correct quantifier order: first fix `N`, then use its torus recurrence. It is compatible with locally uniform finite-source convergence on fixed compact sets because the zeros escape vertically. It provides no xi off-line zero, terminal-`V` sign, or RH conclusion.\n",
+  "verdict": "ACCEPT_COFINAL_RAW_MELLIN_EDGE_OBSTRUCTION_ONLY",
+  "accepted_claims": [
+    "C1 exact prime-torus zero implies high actual finite Mellin zeros",
+    "C2 Gaussian-scale weight asymptotics",
+    "C3 large-prime linear mass log(7/4)>1/2 and C1-small nonlinear tail",
+    "C4 exact two-group torus zero for every sufficiently large N",
+    "C5 cofinal EDGE excluded only for raw finite-source family"
+  ],
+  "EDGE_proved": false,
+  "EDGE_refuted_for_raw_finite_family": true,
+  "effective_first_failing_N": null,
+  "primary_input": {
+    "url": "https://dlmf.nist.gov/27.12.E4",
+    "used": "Unconditional leading PNT only; interval reciprocal-prime sum derived in C10. No RH error estimate."
+  },
+  "RH_proved": false,
+  "physical_V_positive": false,
+  "negative_original_V_witness": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "proshka_request_already_running": "REQ-2026-09-16-MELLINEDGE; independent response still pending"
+}
