@@ -1,5 +1,5 @@
 {
-  "MAC_DISCRIMINATOR_GRID_2026-09-17.md": "3cbcf7ae470cf6bfcfd558eb00f8603f57104d88235cf84a2b2496677c5fd8f9",
+  "MAC_DISCRIMINATOR_GRID_2026-09-17.md": "ff952ac9aa91a386f390e10d6c78cc6486ac64dfd8744b91dd726e8180172ed2",
   "algebra_and_plants.json": "0300728ff31c7d60eac4b77ef2a60e3a1428b88d5398d8cb279b479ea3be6144",
   "check_T10_dps50.json": "9a5a3f4afdf192c642eba92da4d107c5388783f1373bb499bf7605c67bb89dd7",
   "check_T10_dps80.json": "236e8d4bc8c6fdebe36ff69a556cdd38153ccd3ed3a88aa7396d64e7c0bb3f1a",
@@ -9,7 +9,7 @@
   "check_contour.py": "ca9a2c7f9eb91721ca577bd50242596facb6d55b8120bef3eaacfca58e784776",
   "check_laguerre_xi.py": "144f79b4efa61f1b2a1c1df3a110dcb279c658c67aa2c8097af43ef380c45438",
   "closeout.json": "d6e1b8ee1737cae8a30e96ea3c84d93c1551f1ca52155c1ede411dee5c7f0ecd",
-  "closeout_adaptive.json": "82bac5749f9d03aee3c7d6f0b47000b0efa16c3c2ce9d1d7012bd455db3ac978",
+  "closeout_adaptive.json": "3e04a05666be1554a52f9aa06bd4c322a9a1793b11372ed5368876430a49b119",
   "closeout_grid.json": "a7e6133b64426188f85a29e87d7c19380c437b30ca6edbf8763e139f73b9f7aa",
   "grid_arb_dps80.json": "66eacd569b8c55dca2b1df8e0aa4a95fbbfd9a27d974d35ecf2f10be07965aac",
   "grid_arb_dps80_adaptive.json": "91b0723da161967c9324a99ece2fc545e79b25f89320a5113bec110d03d0fcf2",

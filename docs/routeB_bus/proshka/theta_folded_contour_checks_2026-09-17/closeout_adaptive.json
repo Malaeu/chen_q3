@@ -11,7 +11,7 @@
     "P_ADAPT_4": "REFUTED: order is E^(5.2) < E^(6.2) < E^(6.4) at every point, as (6.4) is derived as an upper bound of (6.2). h_N/E^(6.4) min 23 (T=4.5), below 1e6 at 474 points, >= 1e6 from T=25.75 on."
   },
   "decision_rule_outcome": "P_ADAPT_1 confirmed -> the paid adaptive budget (6.2) is not the wall on this strip; batch to Proshka = HEAD_SIGN of the finite explicit head, no numerical motivation for R2 here.",
-  "bound_4.2_status": "resolved and holding at 225 points (T<=13); unresolved at 1085 points (T>=13.25) solely because with M_r the bound B e^{-theta T} falls below the arb ball radius of |F-J_N| at dps 80 (bound <= 3.0e-81, radius >= 3.1e-81); zero genuine violations; the diagnostic-cutoff run verified (4.2) rigorously at all 1310 points.",
+  "bound_4.2_status": "resolved and holding at 225 points (all with T<=16.5); unresolved at 1085 points (T>=13.25, sigma-dependent) solely because with M_r the bound B e^{-theta T} falls below the arb ball radius of |F-J_N| at dps 80 (bound <= 3.0e-81, radius >= 3.1e-81); zero genuine violations; the diagnostic-cutoff run verified (4.2) rigorously at all 1310 points.",
   "incident": "first run had the cutoff unapplied in spawned workers; invalid file kept as grid_arb_dps80_adaptive_INVALID_cutoff_not_applied.json",
   "certificate_scope": "finite points only; the run certifies the representation, not the sign",
   "global_sign_proved": false,
