@@ -1,7 +1,7 @@
 {
- "MAC_A3_LONG_FLIP_SHADOWS_PAIR_DELTA_2026-09-18.md": "949dd3f5a339259ad3113db781c6ffa4cbe8b17ab63b449cbfccb18dce180d51",
+ "MAC_A3_LONG_FLIP_SHADOWS_PAIR_DELTA_2026-09-18.md": "87632cd10f3b7b19ab474f5ee2cab47c36c267430b382997c50af310c2013c1c",
  "dh_control/registration_v3.json": "fd7085a0d026440057a706d8725c0778f1b3d105892815622adba49e81864b12",
- "dh_control/closeout_v3.json": "494008b3c80eeb041a41c21e0ac7892350d5151222871b151d3db4a4c1f69f86",
+ "dh_control/closeout_v3.json": "70ff4051131d196056b5e81dc9a7227101c175314a4f769bb35c7abe3fe475e4",
  "dh_control/analyze_a3.py": "dd73e8f23362f60161c03912b38a2f48a0f0e873e4dd8b117f702bd55789e26c",
  "dh_control/check_pair_delta.py": "ff253ae45f63068c6a46696330ce9f7bd17b2a3bf39e65fb54906f90d30d0eb2",
  "dh_control/check_jn_dirichlet.py": "c4a1effe8bf9b3c971a43186338de8efea46ca32fb58f759b3fcc366f251ffa9",
@@ -16,5 +16,9 @@
  "dh_control/logs/dn_shadows_extra.log": "85042c5490f7b5958c39044fae511df1405b1f2ca996ba84c4410941116b5039",
  "dh_control/logs/pair_delta_spira.log": "f9200f85d613999459a4e42b38224b06785b4b68af6d1def63f6d40acad869d2",
  "dh_control/logs/pair_delta_spira_dps150.log": "d11c0cc136623dfd1ca10686e4f3da49259d7cd8b4cb6f7f6011968ee2021cee",
- "dh_control/logs/pair_delta_map.log": "cd403e7734a8601029e96eadf40e0ea2623726401c93955f4588ec0a19486954"
+ "dh_control/logs/pair_delta_map.log": "cd403e7734a8601029e96eadf40e0ea2623726401c93955f4588ec0a19486954",
+ "dh_control/long_flip_T14_low.json": "e4608502079683ba5c9f8d5030e7596ed46529a798b5e67264901c247c2ef0c2",
+ "dh_control/logs/long_flip_T14_low.log": "8d7cd40d5703dbdb72f3cb91c454dc3d079008d8506e5b9867719811bcc395ae",
+ "dh_control/check_weil_crosswalk.py": "fc09969524ae538e7db4dd7ace8f115abf239ef97aed9b40145624aa6ca55608",
+ "dh_control/weil_crosswalk_checks.json": "5cc3b07e3b01463895461dcb1ae0739ac8982ee102ddb8023eb4611f8d0433b0"
 }

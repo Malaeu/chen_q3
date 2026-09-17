@@ -1,9 +1,9 @@
 {
- "time_utc": "2026-09-17T22:20:42+00:00",
+ "time_utc": "2026-09-17T22:36:35+00:00",
  "task_id": "MAC_A3_LONG_FLIP_AND_DN_SHADOWS_2026-09-18",
  "fates": {
   "P_M3_1": "PENDING (long_flip_T14.json not yet written)",
-  "OPTION_2_SCAN_14_414": "NOT_A_TEST (AMEND_OPT2); PENDING as a regression",
+  "OPTION_2_SCAN_14_414": "NOT_A_TEST (fate fixed by AMEND_OPT2 before completion; decided by the budget): 0/8001 negative points, T_first_negative = None",
   "P_M3_2": "REFUTED: registered set |delta|/sqrt(N) max/min = 3.33 (limit 1.857), max |arg deviation| = 1.888 rad (limit 0.3), |delta| increasing: False; out-of-sample set: max/min = 2.786, max arg dev = 2.061 rad. First-principles delta_th = N^(1-rho)/((rho-1) zeta'(rho)): |delta|/|delta_th| in [0.64, 2.54] over the 13 N values (order of magnitude right), arg(delta/delta_th) in [-2.08, 0.22] rad (rotation direction right, residual beyond the registered tolerance)",
   "P_M3_2_old": "WITHDRAWN_BY_OWNER_AS_ERRONEOUS; on the data: REFUTED (delta_re changes sign in N and in gamma: 4 of 13 heights have the shadow left of the line)",
   "P_M3_9": "REFUTED: with the registered two-term EM numerator 2/13 heights within 0.05 (max 0.1156). Diagnosis CONFIRMED: with the exact numerator d_N(rho) the quadratic gives 12/13 within 0.05 (max 0.06917), and 0.00496..0.0506 over N = 10..150 at fixed height (first order there: 0.076..0.21) — the linearisation was the culprit and the numerator is now the binding limit. POST HOC, NOT REGISTERED: the three-term EM numerator (next term -rho N^-rho-1 over 12) cuts the numerator error to 0.0003..0.0034 at N = N(gamma) and reproduces the exact-numerator quadratic (12/13 within 0.05, max 0.069).",
@@ -679,8 +679,7 @@
   }
  },
  "pending": [
-  "P_M3_1",
-  "OPTION_2"
+  "P_M3_1"
  ],
  "scope": "finite points; DH NEGATIVE is not a witness against zeta; zeta POSITIVE is not evidence for RH; run certifies flip height, shadow offsets and pair-signal resolution, not sign"
 }
