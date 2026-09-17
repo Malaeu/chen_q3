@@ -4757,6 +4757,6 @@ K6: `P_ABS_GAP_COLLAPSES` p=0.80; `P_FUCHS_IDENTITY_NUMERICALLY_HOLDS` p=0.55.
   3-точечная ⇒ все размерности (модель e^{−w²−w⁴/8}); профильная лестница (Хадсон); якорная дисперсия как глобальный резерв; сырая диагональная сумма (расходится); мажоранты моментов ⇒ Фурье-знак.
 - Открыто: глобальное неравенство (3) = ℋ ≥ 0 на 0 < σ < ½, |τ| > √20 — это и есть RH; SUPPORT; знак V. Отрицательного свидетеля K_σ и V нет.
 - Сняты 15:43: NEXT_STEP_FULL_THETA_GRAM, FULL_THETA_THREE_POINT_CLOSURE, FULL_THETA_FOUR_POINT_AND_GLOBAL_BOUNDARY, FULL_MIXTURE_COMPENSATION_ATTEMPT + zip проверок
-  (`docs/routeB_bus/proshka/PROSHKA_*_2026-09-17.md`, checks перезапущены: PASS). Не снят: THETA_HB_PAIR_SQUARE_AUDIT (ход 2); коммит `3f3a5b49` (BOUNDARY_ENERGY_CAUSALITY_AUDIT) не на origin.
+  (`docs/routeB_bus/proshka/PROSHKA_*_2026-09-17.md`, checks перезапущены: PASS). THETA_HB_PAIR_SQUARE_AUDIT снят следом, все пять документов в шине; коммит `3f3a5b49` (BOUNDARY_ENERGY_CAUSALITY_AUDIT) не на origin.
 - Кандидат наблюдателя для следующего батча (p = 0.35): контурный сдвиг в (6) даёт нижнюю оценку остатка на |τ| > √20, но не знак на всём классе; самый дешёвый зонд —
   таблица K̂_σ(2τ) в arb на σ ∈ {0.05, 0.25, 0.45}, τ до 30, до любого вывода из формулы (DIAGNOSTIC_NEVER_A_PROOF).

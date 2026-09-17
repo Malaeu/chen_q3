@@ -28,8 +28,8 @@ SANDBOX_DOCUMENTS_FILED_2026-09-17_15:43 (owner download, observer copy, sha256 
   - PROSHKA_FULL_THETA_FOUR_POINT_AND_GLOBAL_BOUNDARY_2026-09-17.md
   - PROSHKA_FULL_MIXTURE_COMPENSATION_ATTEMPT_2026-09-17.md
   - theta_full_mixture_checks_2026-09-17/ (unzipped; check_final_algebra.py rerun by observer: status PASS)
-SANDBOX_DOCUMENTS_STILL_MISSING:
-  - theta_hb_audit/THETA_HB_PAIR_SQUARE_AUDIT_2026-09-17.md (round 2)
+  - PROSHKA_THETA_HB_PAIR_SQUARE_AUDIT_2026-09-17.md (round 2, filed 2026-09-17 later the same day)
+SANDBOX_DOCUMENTS_STILL_MISSING: none
 ```
 
 ---

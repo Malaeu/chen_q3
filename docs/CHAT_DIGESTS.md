@@ -2018,4 +2018,4 @@ ODD2EFFECTIVE, ODD2LOW INCOMPLETE, ODDINFINITY, LYGSPHI — отвечен за 
 может провалиться, ценность — техника, не kill-power (моя оценка, не Прошки); (г) день выполнил правила 18 и 15: знак переписан как B₀ − Σ C_n (★) и затем
 как смесь квадратов на конечных точках; новые объекты: K_σ, q = −(log Φ)'', лемма Хадсона как запрет профильной лестницы.
 Долги: из пяти документов Прошки четыре плюс zip проверок сняты владельцем 15:43 и лежат в `docs/routeB_bus/proshka/PROSHKA_*_2026-09-17.md`
-(check_final_algebra.py перезапущен наблюдателем: PASS); не снят THETA_HB_PAIR_SQUARE_AUDIT (ход 2); коммит `3f3a5b49` с BOUNDARY_ENERGY_CAUSALITY_AUDIT найти (Мак? рабочее дерево Прошки А?); индекс `q3_docs` протух (ask.sh INCOMPLETE).
+(check_final_algebra.py перезапущен наблюдателем: PASS); THETA_HB_PAIR_SQUARE_AUDIT (ход 2) снят следом, все пять в шине; коммит `3f3a5b49` с BOUNDARY_ENERGY_CAUSALITY_AUDIT найти (Мак? рабочее дерево Прошки А?); индекс `q3_docs` протух (ask.sh INCOMPLETE).
