@@ -1,0 +1,92 @@
+{
+  "time_utc": "2026-09-17T17:05:00+00:00",
+  "channel": "MAC (Apple M4 Max, python 3.13, mpmath 1.4.1, python-flint 0.9.0 / arb)",
+  "target": "FOLDED_CONTOUR_HEAD_SIGN_NEAR_SIGMA_ZERO_ON_ZETA_ZERO_HEIGHTS",
+  "extends": "registration.json (T in {10,20,40}, sigma=1/4) -> grid sigma x T incl. zero heights",
+  "script": "check_contour.py (extended in place; legacy --T/--dps path unchanged, regression-checked against check_T40_dps80.json byte-for-byte on Hn/H_reference/H_error_bound/observed_H_error)",
+  "grid": {
+    "sigma": [
+      "1/64",
+      "1/32",
+      "1/16",
+      "1/8",
+      "1/4"
+    ],
+    "T": "14.0 .. 60.0 step 0.25 (185 values) plus zeta-zero heights gamma_1..gamma_13 (<=60) with offsets -0.05, 0, +0.05 (39 values)",
+    "points": 1120,
+    "slopes_sigma_to_0": 224,
+    "cutoff": "theta=pi/4-1/(T+1), c=cos 2theta, M=ceil(sqrt(40/c)), N=M-1 (registered diagnostic cutoff, not (6.3))",
+    "error": "E_N = sigma*e_N, e_N = 28672 c^-5 M^3 exp(-pi c M^2 - 2 theta T) (round-8 audit (1.1) = (5.2))"
+  },
+  "passes": [
+    {
+      "id": "K2_DIAG_50",
+      "tool": "mpmath dps 50, derivatives by mp.diffs",
+      "role": "diagnostic"
+    },
+    {
+      "id": "K2_DIAG_80",
+      "tool": "mpmath dps 80",
+      "role": "diagnostic; agreement with K2_DIAG_50 is the coarse consistency gate"
+    },
+    {
+      "id": "K2_RIGOROUS_ARB80",
+      "tool": "python-flint acb.integral on both rays over [0,L] (integrand (2.5) with (t+i theta)^j resp. (-(t-i theta))^j), tail bounded analytically (u^3 majorant, exact partial integration) and added as a ball; e_N, E_N, L_N, U_N as arb balls",
+      "role": "sign certificate at the finite point only if the whole ball lies on one side of zero"
+    }
+  ],
+  "predictions": [
+    {
+      "id": "P_GRID_A",
+      "statement": "h_N > 0 at every grid point and h_N/E_N > 1e30 everywhere (sigma>=1/64, 14<=T<=60); the rigorous pass certifies L_N = h_N - E_N POSITIVE at all 1120 points.",
+      "confidence": 0.9,
+      "falsifier": "any point with certified L_N NEGATIVE or UNDECIDED, or diagnostic ratio < 1e30"
+    },
+    {
+      "id": "P_GRID_B",
+      "statement": "sigma->0 slope: L1[j](T) = j'^2 - j j'' > 0 at all 224 T (no sign change on [14,60]); 4 L1 / e_N > 1e30; certified POSITIVE. At zero heights L1 ~ j'^2 (j ~ 0), no dip below the generic level by more than a factor ~1e3.",
+      "confidence": 0.85,
+      "falsifier": "any T with certified L1 NEGATIVE, or 4L1 - e_N not POSITIVE"
+    },
+    {
+      "id": "P_GRID_C",
+      "statement": "dps 50 and dps 80 agree: max relative difference of h_N < 1e-20 and of L1 < 1e-20, zero sign mismatches.",
+      "confidence": 0.85,
+      "falsifier": "any sign mismatch or relative difference > 1e-20"
+    },
+    {
+      "id": "P_GRID_D",
+      "statement": "The paid bound (4.2) |F - J_N| <= B e^{-theta T} holds rigorously (arb, dps 80) at every grid point with F = xi(1/2+p) from acb zeta/gamma.",
+      "confidence": 0.9,
+      "falsifier": "any point where the ball of |F-J_N| is not strictly below the ball of the bound"
+    },
+    {
+      "id": "P_GRID_E",
+      "statement": "The diagnostic reference error |H - h_N| stays below E_N at all points (as in the T in {10,20,40} run), typically by >= 5 orders of magnitude.",
+      "confidence": 0.9,
+      "falsifier": "any point with |H - h_N| > E_N"
+    }
+  ],
+  "what_a_clean_result_means": "A finite set of rigorously certified points with L_N > 0; it does not certify the continuum in sigma or T and does not prove the global head sign (7.1). It answers the specific question whether the head h_N dips below the paid remainder near sigma -> 0 on zero heights for this cutoff.",
+  "what_a_negative_result_means": "A certified L_N < 0 refutes only the sufficient certificate at that point for this cutoff; a certified U_N < 0 would be a genuine negative witness for the full source and must be re-checked independently before being filed as such.",
+  "cost_estimate": "dps 50: ~4 s/point; dps 80: ~9 s/point; arb dps 80: ~1.5 s/point; 8+4 workers -> ~40 min wall total",
+  "amendments": [
+    {
+      "time_utc": "2026-09-17T17:31:44+00:00",
+      "id": "AMEND_1_K2_DIAG_80_REDUCED",
+      "what": "K2_DIAG_80 (mpmath dps 80) rerun on a reduced T grid: T step 1.0 instead of 0.25 (47 grid T instead of 185), all 13 zero heights with offsets -0.05/0/+0.05 kept, all 5 sigmas kept: 430 points + 86 slopes = 516 tasks instead of 1344.",
+      "why": "Measured cost 9-12 s/point at dps 80 with N up to 35 on 8 workers gave ETA 145 min for the full grid; the rigorous K2_RIGOROUS_ARB80 pass (the decisive one) had already completed clean on the full grid (1120 + 190 points). The dps 80 diagnostic only serves P_GRID_C (agreement with dps 50) and P_GRID_E (reference error below E_N); a 40% subgrid that keeps every zero-height point suffices for both.",
+      "affects": [
+        "P_GRID_C",
+        "P_GRID_E"
+      ],
+      "does_not_affect": [
+        "P_GRID_A",
+        "P_GRID_B",
+        "P_GRID_D"
+      ],
+      "full_run_state": "aborted at 202/1344 after 25 min; its log kept as logs/grid_mp_dps80_aborted_full.log; no results from it are used",
+      "made_before_seeing_any_dps80_result": true
+    }
+  ]
+}

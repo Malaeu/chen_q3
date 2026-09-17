@@ -1,0 +1,24 @@
+{
+  "time_utc": "2026-09-17T19:05:00+00:00",
+  "channel": "MAC",
+  "registration": "registration_grid.json (incl. AMEND_1)",
+  "prediction_fates": {
+    "P_GRID_A": "CONFIRMED_RIGOROUS_1310_OF_1310_L_N_POSITIVE_MIN_RATIO_3.09e44",
+    "P_GRID_B": "CONFIRMED_RIGOROUS_262_OF_262_SLOPES_POSITIVE_MIN_4L1_OVER_eN_3.09e44",
+    "P_GRID_C": "CONFIRMED_ON_REDUCED_DPS80_GRID_430_POINTS_0_MISMATCHES",
+    "P_GRID_D": "CONFIRMED_RIGOROUS_BOUND_4.2_AT_ALL_1310_POINTS_MAX_RATIO_6.1e-4",
+    "P_GRID_E": "FAILED_AT_DPS50_BY_DIAGNOSTIC_FLOOR_120_POINTS_MAX_928x / CONFIRMED_AT_DPS80_MAX_3.5e-8"
+  },
+  "extra": {
+    "laguerre_xi_arb": "262_OF_262_POSITIVE",
+    "L1_head_vs_L1_xi_max_rel_diff": "5.1e-47",
+    "lowT_extension_4.5_to_13.75": "190_OF_190_L_N_POSITIVE"
+  },
+  "queue_branch": "IF_A (L_N >= 0 on the whole finite grid; IF_B did not occur)",
+  "certificate_scope": "finite points only; sign of H on T<=60 already known from verified zeros via Hadamard; the run certifies the representation, not the sign",
+  "global_sign_proved": false,
+  "continuum_certified": false,
+  "lean_checked": false,
+  "rh_claim": false,
+  "independent_review": "PENDING"
+}

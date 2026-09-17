@@ -1,0 +1,547 @@
+grid: 1120 points (5 sigmas x 224 T incl. 39 zero-height T) + 224 sigma->0 slopes = 1344 tasks | mode=mp dps=80 workers=8
+[1/1344] 0% | ETA 998m05s | sigma=1/4 T=14.0 h/E=7.1855454892
+[2/1344] 0% | ETA 509m55s | sigma=1/64 T=14.0 h/E=7.1263930102
+[3/1344] 0% | ETA 340m01s | sigma=1/64 T=14.25 h/E=8.0005382713
+[4/1344] 0% | ETA 255m05s | sigma=1/32 T=14.25 h/E=8.0013432324
+[5/1344] 0% | ETA 203m56s | sigma=1/32 T=14.0 h/E=7.1270870368
+[6/1344] 0% | ETA 169m53s | sigma=1/16 T=14.0 h/E=7.1298635916
+[7/1344] 0% | ETA 145m46s | sigma=1/8 T=14.0 h/E=7.1409769835
+[8/1344] 0% | ETA 127m28s | sigma=1/16 T=14.25 h/E=8.0045636092
+[9/1344] 0% | ETA 222m16s | sigma=1/64 T=14.75 h/E=1.2484487899
+[10/1344] 0% | ETA 202m17s | sigma=1/32 T=14.5 h/E=9.6550398713
+[11/1344] 0% | ETA 184m01s | sigma=1/16 T=14.5 h/E=9.6590428994
+[12/1344] 0% | ETA 168m34s | sigma=1/8 T=14.25 h/E=8.0174536326
+[13/1344] 0% | ETA 157m03s | sigma=1/64 T=14.5 h/E=9.6540392834
+[14/1344] 1% | ETA 145m46s | sigma=1/4 T=14.25 h/E=8.0691501947
+[15/1344] 1% | ETA 136m07s | sigma=1/8 T=14.5 h/E=9.6750658448
+[16/1344] 1% | ETA 127m46s | sigma=1/4 T=14.5 h/E=9.7393312121
+[17/1344] 1% | ETA 174m42s | sigma=1/32 T=14.75 h/E=1.2485816575
+[18/1344] 1% | ETA 166m22s | sigma=1/16 T=14.75 h/E=1.2491132199
+[19/1344] 1% | ETA 157m40s | sigma=1/8 T=14.75 h/E=1.2512409406
+[20/1344] 1% | ETA 149m41s | sigma=1/4 T=14.75 h/E=1.2597754005
+[21/1344] 1% | ETA 142m36s | sigma=1/8 T=15.0 h/E=1.7292508889
+[22/1344] 1% | ETA 136m52s | sigma=1/16 T=15.0 h/E=1.7262416549
+[23/1344] 1% | ETA 131m47s | sigma=1/64 T=15.0 h/E=1.7253019672
+[24/1344] 1% | ETA 126m17s | sigma=1/32 T=15.0 h/E=1.7254898782
+[25/1344] 1% | ETA 155m37s | sigma=1/4 T=15.0 h/E=1.7413219130
+[26/1344] 1% | ETA 151m39s | sigma=1/16 T=15.25 h/E=3.4060171019
+[27/1344] 2% | ETA 146m09s | sigma=1/8 T=15.25 h/E=3.4120728686
+[28/1344] 2% | ETA 141m08s | sigma=1/64 T=15.5 h/E=4.2957275025
+[29/1344] 2% | ETA 136m19s | sigma=1/64 T=15.25 h/E=3.4041261099
+[30/1344] 2% | ETA 131m45s | sigma=1/4 T=15.25 h/E=3.4363660254
+[31/1344] 2% | ETA 127m29s | sigma=1/32 T=15.25 h/E=3.4045042537
+[32/1344] 2% | ETA 124m01s | sigma=1/32 T=15.5 h/E=4.2962126108
+[33/1344] 2% | ETA 146m34s | sigma=1/16 T=15.5 h/E=4.2981534018
+[34/1344] 2% | ETA 143m20s | sigma=1/64 T=15.75 h/E=5.7804619014
+[35/1344] 2% | ETA 139m18s | sigma=1/32 T=15.75 h/E=5.7811235599
+[36/1344] 2% | ETA 135m24s | sigma=1/16 T=15.75 h/E=5.7837706920
+[37/1344] 2% | ETA 131m46s | sigma=1/8 T=15.5 h/E=4.3059222951
+[38/1344] 2% | ETA 128m14s | sigma=1/8 T=15.75 h/E=5.7943671960
+[39/1344] 2% | ETA 124m59s | sigma=1/4 T=15.5 h/E=4.3370896896
+[40/1344] 2% | ETA 122m40s | sigma=1/4 T=15.75 h/E=5.8368810307
+[41/1344] 3% | ETA 139m36s | sigma=1/64 T=16.0 h/E=8.2680947085
+[42/1344] 3% | ETA 137m37s | sigma=1/64 T=16.25 h/E=1.2531075073
+[43/1344] 3% | ETA 134m29s | sigma=1/32 T=16.25 h/E=1.2532538615
+[44/1344] 3% | ETA 131m25s | sigma=1/32 T=16.0 h/E=8.2690516021
+[45/1344] 3% | ETA 128m33s | sigma=1/16 T=16.0 h/E=8.2728799114
+[46/1344] 3% | ETA 125m43s | sigma=1/8 T=16.0 h/E=8.2882049136
+[47/1344] 3% | ETA 123m06s | sigma=1/4 T=16.0 h/E=8.3496934801
+[48/1344] 3% | ETA 120m46s | sigma=1/16 T=16.25 h/E=1.2538393929
+[49/1344] 3% | ETA 135m01s | sigma=1/8 T=16.25 h/E=1.2561833530
+[50/1344] 3% | ETA 133m24s | sigma=1/4 T=16.25 h/E=1.2655885962
+[51/1344] 3% | ETA 130m48s | sigma=1/64 T=16.5 h/E=2.0060628440
+[52/1344] 3% | ETA 128m14s | sigma=1/32 T=16.5 h/E=2.0062989937
+[53/1344] 3% | ETA 125m51s | sigma=1/16 T=16.5 h/E=2.0072437806
+[54/1344] 4% | ETA 123m30s | sigma=1/8 T=16.5 h/E=2.0110259450
+[55/1344] 4% | ETA 121m15s | sigma=1/4 T=16.5 h/E=2.0262029506
+[56/1344] 4% | ETA 119m13s | sigma=1/64 T=16.75 h/E=3.3816635813
+[57/1344] 4% | ETA 131m42s | sigma=1/32 T=16.75 h/E=3.3820646202
+[58/1344] 4% | ETA 130m23s | sigma=1/16 T=16.75 h/E=3.3836691017
+[59/1344] 4% | ETA 128m10s | sigma=1/8 T=16.75 h/E=3.3900922462
+[60/1344] 4% | ETA 125m58s | sigma=1/4 T=16.75 h/E=3.4158684681
+[61/1344] 4% | ETA 123m52s | sigma=1/64 T=17.0 h/E=5.9846495237
+[62/1344] 4% | ETA 121m51s | sigma=1/32 T=17.0 h/E=5.9853647186
+[63/1344] 4% | ETA 119m55s | sigma=1/16 T=17.0 h/E=5.9882260905
+[64/1344] 4% | ETA 118m08s | sigma=1/8 T=17.0 h/E=5.9996810560
+[65/1344] 4% | ETA 128m57s | sigma=1/4 T=17.0 h/E=6.0456528398
+[66/1344] 4% | ETA 127m47s | sigma=1/64 T=17.25 h/E=6.2751516271
+[67/1344] 4% | ETA 125m51s | sigma=1/32 T=17.25 h/E=6.2759080747
+[68/1344] 5% | ETA 123m56s | sigma=1/16 T=17.25 h/E=6.2789345028
+[69/1344] 5% | ETA 122m07s | sigma=1/8 T=17.25 h/E=6.2910504231
+[70/1344] 5% | ETA 120m20s | sigma=1/4 T=17.25 h/E=6.3396777341
+[71/1344] 5% | ETA 118m36s | sigma=1/64 T=17.5 h/E=1.0132759534
+[72/1344] 5% | ETA 117m02s | sigma=1/32 T=17.5 h/E=1.0133993763
+[73/1344] 5% | ETA 126m39s | sigma=1/16 T=17.5 h/E=1.0138931737
+[74/1344] 5% | ETA 125m40s | sigma=1/8 T=17.5 h/E=1.0158700593
+[75/1344] 5% | ETA 123m57s | sigma=1/64 T=17.75 h/E=1.7117647170
+[76/1344] 5% | ETA 122m14s | sigma=1/4 T=17.5 h/E=1.0238047887
+[77/1344] 5% | ETA 120m39s | sigma=1/32 T=17.75 h/E=1.7119758946
+[78/1344] 5% | ETA 119m03s | sigma=1/16 T=17.75 h/E=1.7128207894
+[79/1344] 5% | ETA 117m28s | sigma=1/8 T=17.75 h/E=1.7162033240
+[80/1344] 5% | ETA 116m08s | sigma=1/4 T=17.75 h/E=1.7297808370
+[81/1344] 6% | ETA 124m51s | sigma=1/64 T=18.0 h/E=3.0174252870
+[82/1344] 6% | ETA 124m00s | sigma=1/32 T=18.0 h/E=3.0178034190
+[83/1344] 6% | ETA 122m27s | sigma=1/16 T=18.0 h/E=3.0193162840
+[84/1344] 6% | ETA 120m55s | sigma=1/8 T=18.0 h/E=3.0253731341
+[85/1344] 6% | ETA 119m29s | sigma=1/4 T=18.0 h/E=3.0496869478
+[86/1344] 6% | ETA 118m01s | sigma=1/64 T=18.25 h/E=5.5367103137
+[87/1344] 6% | ETA 116m36s | sigma=1/32 T=18.25 h/E=5.5374175052
+[88/1344] 6% | ETA 115m23s | sigma=1/16 T=18.25 h/E=5.5402469127
+[89/1344] 6% | ETA 123m04s | sigma=1/8 T=18.25 h/E=5.5515748161
+[90/1344] 6% | ETA 122m18s | sigma=1/4 T=18.25 h/E=5.5970511211
+[91/1344] 6% | ETA 120m52s | sigma=1/64 T=18.5 h/E=1.0551718714
+[92/1344] 6% | ETA 119m30s | sigma=1/32 T=18.5 h/E=1.0553097601
+[93/1344] 6% | ETA 118m11s | sigma=1/16 T=18.5 h/E=1.0558614427
+[94/1344] 6% | ETA 116m51s | sigma=1/8 T=18.5 h/E=1.0580702149
+[95/1344] 7% | ETA 115m34s | sigma=1/4 T=18.5 h/E=1.0669380428
+[96/1344] 7% | ETA 114m24s | sigma=1/64 T=18.75 h/E=2.0843637862
+[97/1344] 7% | ETA 121m29s | sigma=1/32 T=18.75 h/E=2.0846435981
+[98/1344] 7% | ETA 120m48s | sigma=1/16 T=18.75 h/E=2.0857631098
+[99/1344] 7% | ETA 119m29s | sigma=1/8 T=18.75 h/E=2.0902453838
+[100/1344] 7% | ETA 118m16s | sigma=1/4 T=18.75 h/E=2.1082422526
+[101/1344] 7% | ETA 117m03s | sigma=1/64 T=19.0 h/E=1.4140827116
+[102/1344] 7% | ETA 115m49s | sigma=1/32 T=19.0 h/E=1.4142785512
+[103/1344] 7% | ETA 114m40s | sigma=1/16 T=19.0 h/E=1.4150620983
+[104/1344] 7% | ETA 113m36s | sigma=1/8 T=19.0 h/E=1.4181993067
+[105/1344] 7% | ETA 196m04s | sigma=1/4 T=19.0 h/E=1.4307965596
+[106/1344] 7% | ETA 194m38s | sigma=1/64 T=19.25 h/E=2.5486260915
+[107/1344] 7% | ETA 192m39s | sigma=1/32 T=19.25 h/E=2.5489918052
+[108/1344] 8% | ETA 190m46s | sigma=1/16 T=19.25 h/E=2.5504550200
+[109/1344] 8% | ETA 188m54s | sigma=1/8 T=19.25 h/E=2.5563136397
+[110/1344] 8% | ETA 187m02s | sigma=1/4 T=19.25 h/E=2.5798404788
+[111/1344] 8% | ETA 185m15s | sigma=1/64 T=19.5 h/E=4.7569362686
+[112/1344] 8% | ETA 183m32s | sigma=1/32 T=19.5 h/E=4.7576465404
+[113/1344] 8% | ETA 186m02s | sigma=1/16 T=19.5 h/E=4.7604883419
+[114/1344] 8% | ETA 184m36s | sigma=1/4 T=19.5 h/E=4.8175649031
+[115/1344] 8% | ETA 182m51s | sigma=1/8 T=19.5 h/E=4.7718669828
+[116/1344] 8% | ETA 181m09s | sigma=1/64 T=19.75 h/E=9.1834006365
+[117/1344] 8% | ETA 179m28s | sigma=1/32 T=19.75 h/E=9.1848332549
+[118/1344] 8% | ETA 177m49s | sigma=1/16 T=19.75 h/E=9.1905652020
+[119/1344] 8% | ETA 176m12s | sigma=1/8 T=19.75 h/E=9.2135165818
+[120/1344] 8% | ETA 174m38s | sigma=1/4 T=19.75 h/E=9.3057003877
+[121/1344] 9% | ETA 177m00s | sigma=1/64 T=20.0 h/E=1.8319828019
+[122/1344] 9% | ETA 175m44s | sigma=1/32 T=20.0 h/E=1.8322825046
+[123/1344] 9% | ETA 174m10s | sigma=1/16 T=20.0 h/E=1.8334816312
+[124/1344] 9% | ETA 172m39s | sigma=1/8 T=20.0 h/E=1.8382831886
+[125/1344] 9% | ETA 171m08s | sigma=1/64 T=20.25 h/E=3.7739707554
+[126/1344] 9% | ETA 169m38s | sigma=1/4 T=20.0 h/E=1.8575704147
+[127/1344] 9% | ETA 168m12s | sigma=1/32 T=20.25 h/E=3.7746202681
+[128/1344] 9% | ETA 166m48s | sigma=1/16 T=20.25 h/E=3.7772190188
+[129/1344] 9% | ETA 169m02s | sigma=1/8 T=20.25 h/E=3.7876252306
+[130/1344] 9% | ETA 167m53s | sigma=1/4 T=20.25 h/E=3.8294298286
+[131/1344] 9% | ETA 166m29s | sigma=1/64 T=20.5 h/E=8.0258686160
+[132/1344] 9% | ETA 165m06s | sigma=1/32 T=20.5 h/E=8.0273252577
+[133/1344] 9% | ETA 163m44s | sigma=1/16 T=20.5 h/E=8.0331534327
+[134/1344] 9% | ETA 162m23s | sigma=1/8 T=20.5 h/E=8.0564918835
+[135/1344] 10% | ETA 161m05s | sigma=1/4 T=20.5 h/E=8.1502586452
+[136/1344] 10% | ETA 159m48s | sigma=1/64 T=20.75 h/E=1.7619907885
+[137/1344] 10% | ETA 162m03s | sigma=1/32 T=20.75 h/E=1.7623285149
+[138/1344] 10% | ETA 161m01s | sigma=1/16 T=20.75 h/E=1.7636798025
+[139/1344] 10% | ETA 159m45s | sigma=1/8 T=20.75 h/E=1.7690910702
+[140/1344] 10% | ETA 158m29s | sigma=1/64 T=21.0 h/E=3.9946384426
+[141/1344] 10% | ETA 157m14s | sigma=1/32 T=21.0 h/E=3.9954472544
+[142/1344] 10% | ETA 156m00s | sigma=1/4 T=20.75 h/E=1.7908342426
+[143/1344] 10% | ETA 154m49s | sigma=1/16 T=21.0 h/E=3.9986834390
+[144/1344] 10% | ETA 153m39s | sigma=1/8 T=21.0 h/E=4.0116431868
+[145/1344] 10% | ETA 155m42s | sigma=1/4 T=21.0 h/E=4.0637228988
+[146/1344] 10% | ETA 154m46s | sigma=1/64 T=21.25 h/E=1.5032180786
+[147/1344] 10% | ETA 153m37s | sigma=1/32 T=21.25 h/E=1.5035392219
+[148/1344] 11% | ETA 152m27s | sigma=1/16 T=21.25 h/E=1.5048241764
+[149/1344] 11% | ETA 151m19s | sigma=1/8 T=21.25 h/E=1.5099700988
+[150/1344] 11% | ETA 150m11s | sigma=1/4 T=21.25 h/E=1.5306516945
+[151/1344] 11% | ETA 149m05s | sigma=1/64 T=21.5 h/E=3.1840160417
+[152/1344] 11% | ETA 148m01s | sigma=1/32 T=21.5 h/E=3.1847318295
+[153/1344] 11% | ETA 149m59s | sigma=1/16 T=21.5 h/E=3.1875958510
+[154/1344] 11% | ETA 149m08s | sigma=1/8 T=21.5 h/E=3.1990658662
+[155/1344] 11% | ETA 148m04s | sigma=1/4 T=21.5 h/E=3.2451693438
+[156/1344] 11% | ETA 147m00s | sigma=1/64 T=21.75 h/E=7.0021292353
+[157/1344] 11% | ETA 145m57s | sigma=1/32 T=21.75 h/E=7.0037785512
+[158/1344] 11% | ETA 144m55s | sigma=1/16 T=21.75 h/E=7.0103778655
+[159/1344] 11% | ETA 143m54s | sigma=1/8 T=21.75 h/E=7.0368079555
+[160/1344] 11% | ETA 142m54s | sigma=1/4 T=21.75 h/E=7.1430549557
+[161/1344] 11% | ETA 144m47s | sigma=1/64 T=22.0 h/E=1.6000871756
+[162/1344] 12% | ETA 144m01s | sigma=1/32 T=22.0 h/E=1.6004797862
+[163/1344] 12% | ETA 143m02s | sigma=1/8 T=22.0 h/E=1.6083424781
+[164/1344] 12% | ETA 142m02s | sigma=1/16 T=22.0 h/E=1.6020507272
+[165/1344] 12% | ETA 141m04s | sigma=1/4 T=22.0 h/E=1.6336375930
+[166/1344] 12% | ETA 140m06s | sigma=1/64 T=22.25 h/E=3.8016882462
+[167/1344] 12% | ETA 139m10s | sigma=1/32 T=22.25 h/E=3.8026531342
+[168/1344] 12% | ETA 138m15s | sigma=1/16 T=22.25 h/E=3.8065139373
+[169/1344] 12% | ETA 140m03s | sigma=1/8 T=22.25 h/E=3.8219771806
+[170/1344] 12% | ETA 139m21s | sigma=1/4 T=22.25 h/E=3.8841514757
+[171/1344] 12% | ETA 138m26s | sigma=1/64 T=22.5 h/E=9.3933141670
+[172/1344] 12% | ETA 137m32s | sigma=1/32 T=22.5 h/E=9.3957608148
+[173/1344] 12% | ETA 136m37s | sigma=1/16 T=22.5 h/E=9.4055506386
+[174/1344] 12% | ETA 135m45s | sigma=1/8 T=22.5 h/E=9.4447616867
+[175/1344] 13% | ETA 134m52s | sigma=1/4 T=22.5 h/E=9.6024361005
+[176/1344] 13% | ETA 134m00s | sigma=1/64 T=22.75 h/E=2.4128885875
+[177/1344] 13% | ETA 135m50s | sigma=1/32 T=22.75 h/E=2.4135282697
+[178/1344] 13% | ETA 135m10s | sigma=1/16 T=22.75 h/E=2.4160878580
+[179/1344] 13% | ETA 134m19s | sigma=1/8 T=22.75 h/E=2.4263399741
+[180/1344] 13% | ETA 133m27s | sigma=1/64 T=23.0 h/E=6.4380839413
+[181/1344] 13% | ETA 132m37s | sigma=1/4 T=22.75 h/E=2.4675692301
+[182/1344] 13% | ETA 131m48s | sigma=1/32 T=23.0 h/E=6.4398072442
+[183/1344] 13% | ETA 130m58s | sigma=1/16 T=23.0 h/E=6.4467028070
+[184/1344] 13% | ETA 130m09s | sigma=1/8 T=23.0 h/E=6.4743226990
+[185/1344] 13% | ETA 134m03s | sigma=1/4 T=23.0 h/E=6.5854061514
+[186/1344] 13% | ETA 134m02s | sigma=1/4 T=23.25 h/E=1.8228052599
+[187/1344] 13% | ETA 133m19s | sigma=1/64 T=23.25 h/E=1.7819355667
+[188/1344] 13% | ETA 132m30s | sigma=1/16 T=23.25 h/E=1.7843264148
+[189/1344] 14% | ETA 131m44s | sigma=1/32 T=23.25 h/E=1.7824136042
+[190/1344] 14% | ETA 130m58s | sigma=1/8 T=23.25 h/E=1.7919882368
+[191/1344] 14% | ETA 130m15s | sigma=1/64 T=23.5 h/E=4.5358860518
+[192/1344] 14% | ETA 129m32s | sigma=1/32 T=23.5 h/E=4.5370977975
+[193/1344] 14% | ETA 139m52s | sigma=1/16 T=23.5 h/E=4.5419464740
+[194/1344] 14% | ETA 139m33s | sigma=1/4 T=23.5 h/E=4.6394906876
+[195/1344] 14% | ETA 138m55s | sigma=1/64 T=23.75 h/E=1.1960486172
+[196/1344] 14% | ETA 138m11s | sigma=1/8 T=23.5 h/E=4.5613682982
+[197/1344] 14% | ETA 137m26s | sigma=1/32 T=23.75 h/E=1.1963651310
+[198/1344] 14% | ETA 136m40s | sigma=1/16 T=23.75 h/E=1.1976316327
+[199/1344] 14% | ETA 135m59s | sigma=1/8 T=23.75 h/E=1.2027047885
+[200/1344] 14% | ETA 135m13s | sigma=1/4 T=23.75 h/E=1.2231121196
+[201/1344] 14% | ETA 145m21s | sigma=1/64 T=24.0 h/E=3.2600753260
+[202/1344] 15% | ETA 144m52s | sigma=1/16 T=24.0 h/E=3.2643321013
+[203/1344] 15% | ETA 144m15s | sigma=1/32 T=24.0 h/E=3.2609264392
+[204/1344] 15% | ETA 143m36s | sigma=1/8 T=24.0 h/E=3.2779741183
+[205/1344] 15% | ETA 142m49s | sigma=1/64 T=24.25 h/E=9.1663438027
+[206/1344] 15% | ETA 142m05s | sigma=1/4 T=24.0 h/E=3.3328529613
+[207/1344] 15% | ETA 141m25s | sigma=1/16 T=24.25 h/E=9.1781157823
+[208/1344] 15% | ETA 140m37s | sigma=1/32 T=24.25 h/E=9.1686975256
+Process SpawnPoolWorker-8:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-6:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-7:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-4:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-2:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-5:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-3:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-1:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/resource_tracker.py:276: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown: {'/mp-uhri6pik', '/mp-96bb_8xm', '/mp-bv43s3s6', '/mp-ebxedkzl', '/mp-o2gatmcq', '/mp-z4hi8s66'}
+  warnings.warn(
