@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v2
-revision: 312
-observed_at: '2026-09-16T03:42:54.759832+00:00'
-previous_sha256: b32ab3962b8e1e00cdc730757727557c651f0ea3f735ff744e94c875a23de1cb
+revision: 316
+observed_at: '2026-09-16T04:08:20.487785+00:00'
+previous_sha256: 408e1437b78c9b55c9cc97178c643f8277e693ca00b37f51d64dd1fe3d19b6aa
 owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 0e467afc02beb4ff71e15427da9663cfe0f937c8
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -67,17 +67,18 @@ stages:
   acceptance: *id006
   publication: *id006
 operation:
-  kind: PUBLISH
+  kind: ASSIGN
   state: INTENT
-  id: HISTORY_LIMIT_RECORDS_PUBLISH_20260916
+  id: ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916
   evidence: []
   subject:
-    kind: REPAIR
-    id: HISTORY_LIMIT_RECORDS_PUBLISH_20260916
-    sha256: 0740dc0242ee0ee1bae3283e5759b88fd4077714818262a935eace3ac8c73188
-  command: publication
+    kind: ASSIGNMENT
+    id: ASSIGNMENT_SELECTOR_PLAN2_20260916
+    sha256: cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19
+  command: agent-launch
   inputs:
-    docs/session_protocols/team-evidence-0740dc0242ee0ee1bae3283e5759b88fd4077714818262a935eace3ac8c73188.bin: 0740dc0242ee0ee1bae3283e5759b88fd4077714818262a935eace3ac8c73188
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
@@ -103,7 +104,7 @@ Analytic note020297dd and independent review42471b36 are published in85f6c570.
 History repair: exact two-file candidate d1a1c3d8 integrated and published at 0e467afc02beb4ff71e15427da9663cfe0f937c8. Both reviewed source hashes preserved;97 tests passed. Original4210145 history bytes remain intact. Earlier Linux/Mac/PR14/identity work is complete; do not replay.
 
 ## Next action
-History-limit repair0e467afc and native watch are confirmed. Publish remaining scoped records, then independently classify assignment-result-evidence-selection and implement the existing bounded two-file plan; no new math selector.
+History-limit repair0e467afc and repair records 785731347fdf8356cd2fca9e7fd45b73193d1bc5 are remotely confirmed. Continue only the recorded assignment-result-evidence-selection issue: independent native classification, minimal two-file candidate, exact review and publication. Existing technical peer01a08f80 has the plan and awaits registered implementation scope. No new mathematics selector.
 
 ## Existing work
 Owner01a084f4/install9afdf2bf/epoch1 ACTIVE. Native automation bridge updated and read back ACTIVE at10-minute cadence for this owner. Canonical plan first, addressed GOAL/RESUME reading, no timestamp-only checkpoints. No new mathematical work selected; preserve all seven foreign paths.
@@ -116,4 +117,4 @@ Do not truncate, delete or rewrite archived history. Confirmation-only checkpoin
 need no recursive publication. No timestamp-only checkpoint churn.
 
 ## Integration remaining
-History source issue is FIX_PUSH_VERIFIED. Same-actor/same-role assignment shadowing was reproduced and recorded as a separate MEDIUM owner report; native independent classification and source fix are still pending. Existing technical peer01a08f80 has the minimum plan. Preserve current evidence and require exact-result selection plus rejection tests before publication.
+History repair source and scoped records are published; native bridge settings readback ACTIVE10min is registered. The final confirmation-only checkpoint needs no recursive publication. Issue issue-3b9057bf351da4e6efb71b12f7d051d1ba504eeaf2615bf662e15a7e635d560a remains an unadjudicated MEDIUM report, not a completed fix. Preserve all original history and seven foreign files plus the two pre-existing unrelated evidence files.

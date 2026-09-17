@@ -1,0 +1,26 @@
+# Assignment-selector repair — adversarial plan review, pass 1
+
+## Evidence reviewed
+
+- Current base: `785731347fdf8356cd2fca9e7fd45b73193d1bc5`
+- Current report / issue: `ce0cf9748879a4f5af39e9c2be88f35d1684f32d0c2c60509721a373e053d528` / `issue-ce0cf9748879a4f5af39e9c2be88f35d1684f32d0c2c60509721a373e053d528`
+- Diagnostic: `/home/chirurgie/.cache/q3-history-limit-live-20260916.selector-diagnostic.json`, SHA-256 `779b7afd3e0c64071b1a9943d7b2e79347aa194c23aa39ba28cf8f797c205174`
+- Classification: `/home/chirurgie/.cache/q3-assignment-selector-classification-20260916.json`, SHA-256 `88cdb77fb2044664153e5590f2b9d375dae79737569a2aaf7d27db3fed1b0072`
+- Source pins: `orchestrator/team_records.py` `2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a`; `orchestrator/tests/test_workflow_runtime.py` `7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a`
+
+A bounded read-only replay built the actual filtered context: `HISTORY_LIMIT_CLASSIFY_20260916` retained only `LAUNCH`, while `HISTORY_LIMIT_FIX_CHECK_20260916` retained the exact completed `RESULT` locator-plus-hash pair in the event. The current lexical loop returned `NATIVE_OBSERVATION_MISSING: HISTORY_LIMIT_CLASSIFY_20260916` before considering that pair.
+
+## Pass 1 findings
+
+| Pass | Severity | Finding — English term + русское объяснение | Fix required |
+| --- | --- | --- | --- |
+| 1 | MEDIUM | Subject binding — точный subject должен выбираться внутри общего selector. Context содержит и issue, и repair subject; один actor/role и совпадающая evidence-пара не доказывают нужный subject. | Для repair transition требовать `repair_subject_id`, для independent disposition — `issue_id`; фильтровать `assignment.subject` в helper и добавить wrong-subject regression в обе ветви. |
+| 1 | MEDIUM | Cardinality before validation — сначала точная выборка по паре locator+SHA-256, затем полная валидация. | Собрать ровно одно matching assignment до `_validated_assignment_observation`; ноль, несколько или невалидное выбранное наблюдение должны завершаться ошибкой без first/last fallback. Сохранить tests на insertion order, ambiguous pair, malformed/missing/duplicate selected observation и negative artifact. |
+
+No CRITICAL or HIGH finding was identified. These two MEDIUM findings remain unresolved, so Mode A has not converged and this pass does not admit implementation.
+
+## Constrained revision required
+
+Use one pure helper in `orchestrator/team_records.py` from both implementer and independent branches. It must select the exact assignment by actor, permitted role, effective subject, and one evidence pair before full validation. Then preserve every existing validation on the selected assignment: owner, epoch, model/effort, source, payload, evidence, launch/result phases, completion, and for `FIX_VERIFIED` the repair artifact, base, and candidate manifest. Owner transitions remain unchanged.
+
+The revision stays within `orchestrator/team_records.py` and `orchestrator/tests/test_workflow_runtime.py`. No schema, command, role, policy, history-repair, source-integration, mathematical, commit, or publication change is reviewed or authorized here.

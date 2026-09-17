@@ -1,0 +1,32 @@
+# Exact-result assignment selection repair — plan v2
+
+## Scope
+Outcome: issue-event validation selects the exact independently observed result, independent of assignment naming or insertion order. Authorized source changes: orchestrator/team_records.py and orchestrator/tests/test_workflow_runtime.py only, from base785731347fdf8356cd2fca9e7fd45b73193d1bc5. No schema, command, role, policy, native receipt, owner/epoch, archive, or mathematical gate changes. The current issue is issue-ce0cf9748879a4f5af39e9c2be88f35d1684f32d0c2c60509721a373e053d528. Its original report is preserved with an explicit supersedes link.
+
+## Review findings and fixes
+| Pass | Severity | Finding — English term + Russian explanation | Fix applied |
+| --- | --- | --- | --- |
+| 1 | MEDIUM | Effective subject binding — назначение должно относиться именно к текущему объекту | Derive exactly one effective subject: repair_subject_id for FIX_CANDIDATE/FIX_VERIFIED; issue_id for independent classification/disposition. Require assignment.subject equality inside the shared selector. |
+| 1 | MEDIUM | Cardinality before validation — старое назначение не должно перехватить проверку | First collect evidence-matching assignments by exact RESULT locator and hash, require exactly one, then run the existing complete validation. Never try a fallback after validation failure. |
+
+## Selection algorithm
+1. Leave owner-transition handling, actor-role checks and implementer identity checks unchanged.
+2. For the independent/implementer paths, use one shared small selector because both require the same evidence binding. Independent roles must exactly match actor_role; keep the existing implementation/implementer role alias semantics.
+3. Derive the single effective subject above; wrong actor, role or subject cannot supply a result. Do not rely only on runtime context prefiltering.
+4. Inspect applicable observation containers and phase structure without invoking _validated_assignment_observation on every candidate. Collect assignment IDs containing a RESULT whose exact (output_locator, output_sha256) pair occurs in event evidence. Hash alone does not qualify.
+5. Require exactly one matching assignment. Zero is missing-result-evidence failure; multiple is explicit ambiguity, even with identical bytes. Do not choose first/last/sorted, silently deduplicate observations, catch validation failures to continue, or use unrelated assignments as fallback.
+6. Only after unique selection run unchanged _validate_assignment_owner, _validated_assignment_observation and _require_result_evidence; for FIX_VERIFIED retain unchanged _require_repair_review_artifact. Missing/duplicate phases, malformed selected observation, non-COMPLETED result, source/payload/evidence/profile/native-agent/owner mismatch or wrong/negative repair artifact fails.
+7. Return the existing provenance structure with the selected actual assignment ID. Existing runtime source/permitted-path and publication checks remain effective.
+
+## Necessary tests in existing file
+- Earlier filtered LAUNCH-only classifier cannot shadow exact later FIX result; test lexical and insertion order.
+- Equivalent implementer regression.
+- Exact subject mismatch rejected for both branches; classification uses issue, repair uses repair subject.
+- Wrong locator or hash, actor or role does not qualify.
+- Multiple matching assignments reject; selected malformed/missing/duplicate phases and negative review fail with no fallback.
+- Existing owner and single-assignment behavior remains valid.
+- Registered runtime issue-event path exercises _team_assignment_context RESULT filtering and confirms the later exact assignment; rejected ambiguity writes no registry state.
+- Retain the relevant source-only repair/publication test. Bind affected synthetic fixture subjects to the real fixture issue/repair; do not exempt them.
+
+## Verification and stop
+No source implementation until both MEDIUM findings are addressed and two consecutive on-target clean/WORDING plan passes converge. Then one isolated worker; exact diff review twice; new and affected TeamRecords tests plus the relevant runtime issue/publication tests. Do not rerun the unrelated97 history tests or alter source pins. The final candidate stays frozen for separate source-integration and repair-acceptance artifacts.
