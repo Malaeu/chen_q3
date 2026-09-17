@@ -2,15 +2,15 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-17-PICKVAR · Full-theta coupled logarithmic variance; one analytic diagnostic · OPEN
+## REQ-2026-09-17-PICKVAR · Full-theta coupled logarithmic variance; one analytic diagnostic · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_PICKVAR_2026-09-17.txt`
 - Boundary: `GOAL058_FULL_THETA_COUPLED_LOG_VARIANCE`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
 - Intake carried: Independently reviewed endpoint C1--C9, complete direct Pick bridge and mechanism/control report; original V/RH OPEN
 - Registered predictions: Full-source coupled variance difference lies in [0,1/u^2] for every u>0, or a strict analytic actual-source violation rejects this sufficient entrance; necessary filter only, no automatic derivative hierarchy
-- Delivery mode: explicit user-authorized GitHub full request and one short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; NOT YET SENT
+- Delivery mode: explicit user-authorized GitHub full request and one short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; sent exactly once; completed matching native reply and committed result independently reviewed
 - Isolated candidate ledger only; canonical queue/runtime unchanged; no source-sign counter reset
 - Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_PICKVAR_2026-09-17.md`
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
@@ -19,6 +19,9 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
   `e683c1858b8ec6fdf013bda405ce53d8818981ae` / `yes`
 
 ---
+
+- Terminal result: `f36545c687d045851e8970cb13d7d4e0fd37217b`; response SHA256 `3f7a04a92554c36da91c0df87b3ad9345baf9e5b13c029f03df8c1e3c18c5f7a`; native user turn `bba91ba8-d85a-43ed-9ae4-7e28099bee73`, reply `99886c38-785f-49b4-b622-441c0757a824`, idle/error null.
+- Accepted scope: `ACCEPT_FULL_SOURCE_EVENTUAL_PICKVAR_AND_ASYMPTOTIC_ONLY`; intake `docs/Codex/REPORT_2026-09-17_PICKVAR_INTAKE.md`. Both VAR bounds hold for every u>=U* with the explicit analytic threshold; 0<u<U*, global Pick, original full V and RH remain OPEN. No source-sign counter reset; no automatic new proof request.
 
 ## REQ-2026-09-17-KPSQUOTIENT · Forced full-theta KPS quotient; bounded analytic test · ANSWERED
 
