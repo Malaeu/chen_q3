@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "W4_normalized_lower": "143/216",
+  "full_interval_cover_cells": 2048,
+  "no_failed_cells": true,
+  "finite_exact_margin_thresholds": [
+    "13/20",
+    "35",
+    "54",
+    "120",
+    "38",
+    "862"
+  ],
+  "outer_positive": true,
+  "prior_three_point_check": "separately rerun; not a dependency of this four-point certificate",
+  "scope": "symbolic identities and complete rational interval scalar certificate, not Lean or independent analytic review"
+}

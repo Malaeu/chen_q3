@@ -1,0 +1,12 @@
+{
+  "created_utc": "2026-09-17T12:52:52.190443+00:00",
+  "basis_sha256": "fd45b05b1f0135881961fb4d9c6c92c61060dd7d764398af5cbae5453299cc75",
+  "task": "actual full-source mixture compensation, owner continuation",
+  "predictions_before_tests": {
+    "P_FIXED_ANCHOR_TRANSLATION": "variance correction tends to zero under common translation of every finite packet",
+    "P_UNFOLDED_DIAGONAL": "the integral of the raw theta diagonal series diverges; termwise whole-line regrouping is invalid",
+    "P_SOURCE_BAND": "the inherited q>18 envelope yields a full-mixture low-frequency lower bound independent of matrix dimension"
+  },
+  "global_sign_prediction": "UNRESOLVED; no prior conclusion assumed",
+  "do_not_promote": "neither a source lower bound on a subdomain nor a failed sufficient representation decides global RH"
+}

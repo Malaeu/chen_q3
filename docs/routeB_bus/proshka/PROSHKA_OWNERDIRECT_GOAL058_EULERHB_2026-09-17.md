@@ -22,13 +22,14 @@ NOTE: >
   export and NOT in the repository. They must be downloaded from the chat by
   the owner. The audit report REPORT_2026-09-17_BOUNDARY_ENERGY_CAUSALITY_AUDIT.md
   at commit 3f3a5b49 referenced in the first message is not on origin either.
-SANDBOX_DOCUMENTS_NOT_YET_FILED:
-  - theta_hb_audit/THETA_HB_PAIR_SQUARE_AUDIT_2026-09-17.md
-  - theta_hb_next_step/NEXT_STEP_FULL_THETA_GRAM_2026-09-17.md
-  - theta_hb_three_point/FULL_THETA_THREE_POINT_CLOSURE_2026-09-17.md
-  - theta_hb_global_attempt/FULL_THETA_FOUR_POINT_AND_GLOBAL_BOUNDARY_2026-09-17.md
-  - theta_full_mixture/FULL_MIXTURE_COMPENSATION_ATTEMPT_2026-09-17.md
-  - theta_full_mixture_checks_2026-09-17.zip
+SANDBOX_DOCUMENTS_FILED_2026-09-17_15:43 (owner download, observer copy, sha256 in commit):
+  - PROSHKA_NEXT_STEP_FULL_THETA_GRAM_2026-09-17.md
+  - PROSHKA_FULL_THETA_THREE_POINT_CLOSURE_2026-09-17.md
+  - PROSHKA_FULL_THETA_FOUR_POINT_AND_GLOBAL_BOUNDARY_2026-09-17.md
+  - PROSHKA_FULL_MIXTURE_COMPENSATION_ATTEMPT_2026-09-17.md
+  - theta_full_mixture_checks_2026-09-17/ (unzipped; check_final_algebra.py rerun by observer: status PASS)
+SANDBOX_DOCUMENTS_STILL_MISSING:
+  - theta_hb_audit/THETA_HB_PAIR_SQUARE_AUDIT_2026-09-17.md (round 2)
 ```
 
 ---
