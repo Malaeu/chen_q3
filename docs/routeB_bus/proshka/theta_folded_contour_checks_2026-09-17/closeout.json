@@ -1,0 +1,13 @@
+{
+  "prediction_fates": {
+    "P_CONTOUR_1": "PAPER_DERIVED_DIAGNOSTICS_CONSISTENT",
+    "P_CONTOUR_2": "ALGEBRAICALLY_PROVED_DIAGNOSTICS_CONSISTENT",
+    "P_CONTOUR_3": "GLOBAL_HEAD_SIGN_NOT_ESTABLISHED_NOT_A_NEGATION",
+    "P_SEAM_IDENTITY": "DIAGNOSTIC_PASS_EXACT_PROOF_IN_REPORT",
+    "P_WRONG_RAY_PLANT": "WRONG_FORMULA_REJECTED_DIAGNOSTICALLY"
+  },
+  "independent_review": "PENDING",
+  "lean_checked": false,
+  "global_sign_proved": false,
+  "numerical_sign_certificate": false
+}

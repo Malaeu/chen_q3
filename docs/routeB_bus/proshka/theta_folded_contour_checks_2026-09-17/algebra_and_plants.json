@@ -1,0 +1,22 @@
+{
+  "rational_constants": {
+    "D_rational_upper": "880625/221841",
+    "D_less_than_4": true,
+    "tail_factor": 448,
+    "H_factor": 28672,
+    "scheduled_H_factor": 229376,
+    "schedule_aux_factor": 1835008
+  },
+  "incomplete_gamma_majorant_antiderivatives": "EXACT_SYMBOLIC_PASS",
+  "seam_identity_diagnostic": {
+    "error": "5.8618187819913324848632e-67",
+    "defect_absolute_value": "0.000127957370761425743549456",
+    "omitting_defect_rejected": true
+  },
+  "wrong_ray_plant": {
+    "error": "2401493.83568072403323239",
+    "claimed_correct_formula_error_bound": "1.0334628731649061214999e-56",
+    "rejected": true
+  },
+  "warning": "mpmath controls are diagnostics, not interval certificates; zero printed errors are not proofs of equality."
+}

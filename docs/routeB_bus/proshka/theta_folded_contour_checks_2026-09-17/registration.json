@@ -1,0 +1,48 @@
+{
+  "time_utc": "2026-09-17T13:25:37.838571+00:00",
+  "target": "FOLDED_FULL_SOURCE_FREQUENCY_DECAY_WITH_SIGMA_VANISHING_ERROR",
+  "predictions": [
+    {
+      "id": "P_CONTOUR_1",
+      "statement": "A complex contour representation combined with full Jacobi reflection admits an explicit exponentially decaying Fourier tail bound; no zeros or RH are used.",
+      "fate": "UNTESTED"
+    },
+    {
+      "id": "P_CONTOUR_2",
+      "statement": "The reflected finite contour head has H_N(0+iT)=0 exactly, permitting an error proportional to sigma.",
+      "fate": "UNTESTED"
+    },
+    {
+      "id": "P_CONTOUR_3",
+      "statement": "The estimate alone does not supply nonnegativity of the finite coupled head uniformly in sigma,T; this must be demonstrated, not assumed.",
+      "fate": "UNTESTED"
+    }
+  ],
+  "numerical_test_plan": {
+    "T": [
+      10,
+      20,
+      40
+    ],
+    "sigma": "1/4",
+    "theta": "pi/4-1/(T+1)",
+    "M": "least integer>=sqrt(40/c)",
+    "N": "M-1",
+    "reference": "xi via independent zeta/gamma only as diagnostic, not sign input",
+    "gate": "analytic proof of bounds; interval finite-point checks do not certify a continuum"
+  },
+  "source_file": "/mnt/data/theta_full_mixture/FULL_MIXTURE_COMPENSATION_ATTEMPT_2026-09-17.md",
+  "source_sha256": "cf9cc8a7cfe8b3498c4e0a8a2dadc390c0dcad7ce69963b5ac7a0e7b7613909b",
+  "additional_pretest_controls": [
+    {
+      "id": "P_SEAM_IDENTITY",
+      "test": "At N=1, theta=1/4, p=1/4+10i: real-axis head minus paired-ray head equals the integral of the finite modular defect on [0,i theta].",
+      "expected": "agreement; omitting the defect produces a nonzero mismatch"
+    },
+    {
+      "id": "P_WRONG_RAY_PLANT",
+      "test": "At sigma=1/4,T=20 with registered cutoff, replace reflected -theta by +theta in the second ray.",
+      "expected": "independent xi reference and the paid error envelope reject the wrong formula"
+    }
+  ]
+}
