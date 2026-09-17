@@ -1,0 +1,375 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "bcf8ddaf77236ad8b7a1816c9ff08c2ca2cce442",
+  "candidate_sha256": "d30a25ed1ad904ecb0e45d14af81981cf399853c190ce1d5a8b2ce0a5d505852",
+  "report_path": "docs/Codex/REPORT_2026-09-17_SOURCE_SIBLINGS_AUDIT.md",
+  "report_sha256": "39845dc182e9699a226056000b859f96d2f03a96c1627b762f0cd880e4460525",
+  "source_pins": {
+    "project": {
+      "docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md": "ae39ab4cbbfae7ad8c04b61dfb9828c6e9efa0247a538da72e4bd3e748de3790",
+      "docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md": "1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282",
+      "docs/Codex/REPORT_2026-09-15_RH_ROUTE_AUDIT.md": "0978708a88fb2c4802ed3405b37b427ab6890b46a8ffa688edfe757c4a4fe4e3",
+      "docs/Codex/REPORT_2026-09-16_MELLINEDGE_INTAKE.md": "c966f1d94717efab0c291b146a39870a7a1852e67d8acf44ccdc3bb6628d3efc",
+      "docs/Codex/REPORT_2026-09-16_JOINT_TN_RECIP_HUNT.md": "19d36616dfd4d8996e2e9358410adedeb91605a94bdb5432109a0bf344879db2"
+    },
+    "primary_and_receipts": {
+      "2508.18229v1.html": "5a633292a613289ca6b54d2b1f584d75cdf2b463861387f96bc733a62931f9c1",
+      "1710.08794v4.html": "8f7e6b2119ee58ec31515c31dc8aa50769abdc0ce5654c437d756e76a642603b",
+      "CONSENSUS_RECEIPTS.json": "a97af848e3671f96adb6e4fd27f9e695b76058e2d62cb7943278edab17d34f63",
+      "ASK_RECEIPTS.json": "29618b17a77c9143fe67c74882017c78d808448fb3ae7199cb273911eb16c391"
+    }
+  },
+  "reviewer": "/root/pairzero_geometry_review",
+  "verdict": "ACCEPT_LIMITED_SOURCE_SIBLINGS_AND_PF_CONTROL",
+  "review_sha256": "9420dad86b455b6c861e5bcc44ece2268e7964dbaeb1db74ad27590da7edf602",
+  "review_text": "# Independent bounded review: source siblings and the smooth PF control\n\nDate: 2026-09-17.\nReviewer: /root/pairzero_geometry_review.\nVerdict: ACCEPT_LIMITED_SOURCE_SIBLINGS_AND_PF_CONTROL.\nDisposition: no mathematical correction required in S1--S3 or M1--M4.\nStatus: exploratory isolated PAPER review, not a canonical supplier.\nOriginal full V positivity and RH remain open.\n\n## 1. Frozen candidate, pins, and review scope\n\nCandidate: `SOURCE_SIBLINGS_AUDIT.md`.\nSHA256: `d30a25ed1ad904ecb0e45d14af81981cf399853c190ce1d5a8b2ce0a5d505852`.\nBytes: 15764. LF: 307.\nPin manifest: `SOURCE_PINS.json`.\nSHA256: `0a868ee4ff1b7d9e4c4a2c3a41625383c6be5b3260a7853c2cc1e3b4b94d341b`.\n\nI read the complete candidate, the specified primary HTML bodies at the\nlocators below, and the relevant named project sections. All manifest\nhashes were recomputed and matched. The parent check was not used as an\ninput to the mathematical verdict. This review writes only its assigned\nstaging file and performs no repository, control, queue, publication,\nexternal-send, descendant-agent, or search action.\n\nThe review verifies two exact source identifications and a bounded\nnegative control for an invalid general implication. It does not import\nthe general extra-factor Sheffer Theorem 1. It does not promote positive\nmatrix densities to the original V sign or to a theorem about xi zeros.\nThe received MELLINEDGE theorem is used as its pinned accepted input;\nits earlier prime-phase proof is not independently repeated here.\n\n## 2. Exact primary and project bindings\n\nPrimary A: Cheon--Forgacs--Tran, arXiv 2508.18229v1,\n`2508.18229v1.html`:\n`5a633292a613289ca6b54d2b1f584d75cdf2b463861387f96bc733a62931f9c1`.\nRead the complete Section 2, especially equations (2.7), (2.12),\n(2.18)--(2.23), and Theorems 5, 9, 11. The introductory quotation in the\ncandidate matches this primary HTML. The review concerns this exact v1;\nit makes no assertion about an unread journal version.\n\nPrimary B: Forster--Kieburg--Kosters, arXiv 1710.08794v4,\n`1710.08794v4.html`:\n`8f7e6b2119ee58ec31515c31dc8aa50769abdc0ce5654c437d756e76a642603b`.\nRead Section 2.1's distinction between G and M_0, Definitions 2.2--2.3\nand 2.7, Theorems 2.9--2.10, equation (2.27), and the proofs in Section\n4.2, including the derivative and boundary hypotheses. The candidate's\nshort quotation of Theorem 2.9(1) matches the primary statement.\n\nPinned project inputs, relative to the isolated worktree:\n\n- `docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md`:\n  `ae39ab4cbbfae7ad8c04b61dfb9828c6e9efa0247a538da72e4bd3e748de3790`.\n  Lines 33--66 supply actual additive PF infinity, including the full limit;\n  lines 68--104 distinguish it from the failed physical transfer.\n- `docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md`:\n  `1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282`.\n  Lines 15--23 and 47--81 fix r, Phi, normalization, reciprocity, endpoint\n  envelopes and the exact Mellin factor 2xi(s).\n- `docs/Codex/REPORT_2026-09-15_RH_ROUTE_AUDIT.md`:\n  `0978708a88fb2c4802ed3405b37b427ab6890b46a8ffa688edfe757c4a4fe4e3`.\n  Lines 127--164 distinguish additive Laplace and Mellin transforms;\n  lines 166--202 prove the stated failure of PF infinity for Phi.\n- `docs/Codex/REPORT_2026-09-16_MELLINEDGE_INTAKE.md`:\n  `c966f1d94717efab0c291b146a39870a7a1852e67d8acf44ccdc3bb6628d3efc`.\n  Lines 29--51 fix the raw T_N and the eventual zero theorem in\n  11/8<Re(s)<2, with no explicit numeric N or root supplied.\n- `docs/Codex/REPORT_2026-09-16_JOINT_TN_RECIP_HUNT.md`:\n  `19d36616dfd4d8996e2e9358410adedeb91605a94bdb5432109a0bf344879db2`.\n  Lines 9--28 fix the gamma Laplace product, weighted reciprocity,\n  Mellin normalization, full V and original negative interval.\n  Lines 36--75 retain the additive-versus-logarithmic PF distinction.\n\nReceipt hashes also match the manifest:\n`CONSENSUS_RECEIPTS.json`:\n`a97af848e3671f96adb6e4fd27f9e695b76058e2d62cb7943278edab17d34f63`;\n`ASK_RECEIPTS.json`:\n`29618b17a77c9143fe67c74882017c78d808448fb3ae7199cb273911eb16c391`.\nThey bind provenance; they are not mathematical proof inputs or evidence\nthat search coverage is complete. This review does not replay discovery\nor certify compliance with the shelf-first order; the candidate explicitly\nrecords that order was missed and retains INCOMPLETE coverage.\n\n## 3. S1--S3: exact Laguerre/Sheffer specialization and source recovery\n\nPASS; candidate lines 57--126.\n\nAt p=-1/2, p*=0, alpha_0=1 and N=0, primary A's (2.7) is exactly\n\n    sum q_j(u) w^j/j! = (1-w)^(u-1/2)(1+w)^(-u).\n\nThe Appell coefficients in (2.18) reduce to the identity because the\nfalling factorial (0)_k vanishes for positive k. The resulting Laguerre\nparameter is -p-1=-1/2, so phi_j(v)=j!L_j^(-1/2)(v)exp(-v/2) is exact.\nIn particular, there is no missing v^(-1/4) prefactor from the distinct\nLaguerre-function convention discussed earlier in the primary paper.\n\nThe ordinary Laguerre generating formula gives\n\n    sum phi_j(2v) w^j/j!\n      =(1-w)^(-1/2) exp[-v(1+w)/(1-w)].\n\nFor Re(u)>0 and w in a sufficiently small complex disk, the real part\nof (1+w)/(1-w) is positive uniformly on a smaller disk. This supplies\nan integrable bound at infinity; v^(Re(u)-1) supplies one at zero.\nIntegration and coefficient extraction are therefore justified and give\nGamma(u)q_j(u). Rescaling v=pi k^2 t and summing for Re(s)>1 gives the\nfactor pi^(-s/2) sum k^(-s)=pi^(-s/2)zeta(s), with no factor of two.\nFor each fixed j, the absolute Laguerre polynomial integral is finite,\nso the same k-series proves absolute interchange. No assertion about\nseparate improper integrals outside this half-plane is needed.\n\nDirect calculation gives\n\n    q_2(u)=4u^2-2u+3/4,\n    2!L_2^(-1/2)(v)=v^2-3v+3/4.\n\nSubstitution v=2pi k^2 t proves term by term, in convergent full series,\n\n    psi_2(t)-(3/4)psi_0(t)=t r(t).\n\nHence q_2(s/2)-3/4=s(s-1), and the Mellin integral of the combined\nsource is exactly 2xi(s). The combined integral converges for every s\nbecause the actual r decays exponentially at infinity and faster than\nany power at zero. Thus its entire continuation is legitimate. The\ncancellation in the combined integrand is not permission to treat the\nindividual psi integrals as entire improper integrals.\n\nThe recurrence follows directly from differentiating the generating\nfunction:\n\n    q_(j+1)=(1/2-2u)q_j+j(j-1/2)q_(j-1).\n\nAfter p_j(v)=i^j q_j(1/4+iv) and P_j=2^(-j)p_j, the recurrence becomes\n\n    P_(j+1)=v P_j-[j(j-1/2)/4]P_(j-1),\n    P_0=1, P_1=v.\n\nIts Jacobi matrix has adjacent entries sqrt(k(k-1/2))/2. These entries\nare real and strictly positive for k>=1. The matrix is real symmetric,\nand an eigenvector with zero first coordinate would vanish successively\nin all coordinates. Every eigenspace is therefore at most one dimensional;\nsymmetry gives diagonalizability, proving simple real eigenvalues. This\nproves the critical-line zero statement for the specialized q_j(s/2)\nwithout importing general Theorem 1 or its extra factors.\n\nA hypothetical off-line nontrivial zeta zero is still a zero of the\ncontinued product q_j(s/2)pi^(-s/2)Gamma(s/2)zeta(s): all other factors\nare finite there and the gamma factor is nonzero. The elementary logical\ncontrol and the report's factor-versus-product distinction are correct.\nS3 recovers xi itself, not a sequence whose zero location has been proved\nfor the complete transform.\n\n## 4. M1: smooth full source and normalized ensembles for every n\n\nPASS; candidate lines 128--150.\n\nThe full series gives, for each fixed derivative order at infinity,\npolynomial factors times an exponential exp(-pi t) bound (or a weaker\nfixed exponential bound sufficing equally). Differentiated reciprocity\nexpresses each derivative near zero as a finite sum of powers of t times\nr^(k)(1/t). Exponential decay at 1/t beats all of those powers. Every\nright derivative consequently tends to zero at zero. The zero extension\nis C infinity and Schwartz, with all absolute polynomial derivative\nmoments. It is nonnegative, nonzero, supported in [0,infinity), and has\nmass one by the accepted source law.\n\nTogether with the pinned full additive PF-infinity theorem, these facts\nverify Definition 2.3(1) for every fixed n. Theorem 2.9(1) applies in each\ndimension using the SAME source; no relation between dimension and a\nfinite theta or gamma cutoff is introduced.\n\nWith Delta_n(a)=det[a_k^(j-1)] and the candidate's derivative orientation,\nthe moment matrix is\n\n    M_ij=int a^(i-1)(-d/da)^(j-1)r(a) da.\n\nAll integration-by-parts boundary terms vanish. M_ij=0 for i<j and\nM_jj=(j-1)! since int r=1. Andreief's identity therefore gives the full\nR^n integral n! times product_(j=0)^(n-1)j!. The candidate C_n is correct\nfor the symmetric density on all eigenvalue configurations, as in the\nprimary definition. The primary theorem supplies nonnegativity.\n\nThis positive probability density is not [V(x_i,x_j)], and the candidate\nmakes no equality with V, variance identity, cross-dimensional coupling,\nor xi spectral assertion.\n\n## 5. M2: nu=0 gamma lift, Mellin zeros, and failed reciprocity\n\nPASS; candidate lines 152--187.\n\nTheorem 2.10 requires a nonzero nonnegative PF function of order n in the\nHermitian derivative class with support in [0,infinity). These conditions\nwere all verified for r. At nu=0, the factor 1/Gamma(nu+1) is one and the\npower (x/t)^nu is one; equation (2.27) is exactly M2. The theorem itself\nsupplies the output derivative and boundary conditions of Definition\n2.3(3). It concerns the additive M_0 setting, not multiplicative G.\nPrimary Section 2.1 explicitly separates these two operations even\nthough their matrix sets agree off a null set.\n\nConditional on T=t, TE with E exponential of rate one has density\nexp(-x/t)/t. Hence Omega is a normalized scalar probability density.\nFor sigma=Re(s)>0, absolute Fubini has value\nGamma(sigma)E[T^(sigma-1)]<infinity. It gives\n\n    M_Omega(s)=Gamma(s)M_r(s)=2Gamma(s)xi(2s-2).\n\nAll real moments of T exist from the full source endpoint bounds. Gamma\nis finite and zero-free on Re(s)>0, so zeros and their multiplicities are\npreserved exactly there. No equality of improper Mellin integrals on a\nlarger half-plane is claimed.\n\nAt zero, dominated convergence by r(t)/t gives the positive finite limit\nC=E[T^(-1)]. For any L>0, exp(-x/t)<=[sup z^L exp(-z)](t/x)^L gives\nOmega(x)<=C_L x^(-L)E[T^(L-1)]. If Omega(1/x)=x^kappa Omega(x) held for\nany fixed real kappa, choosing L>max(kappa,0) would force a positive\nlimit C on the left and zero on the right as x tends to infinity.\nThe claimed failure of every reciprocity of that power form is proved.\n\nFor the separate multiplicative theorem, omega(t)=t^(1/4)r(t) is smooth\nand has the required weighted derivative moments in every finite order.\nIts logarithmic input is exactly\n\n    omega(exp(-u))exp(-u)=exp(-5u/4)r(exp(-u))=Phi(-u/2).\n\nTheorem 2.9(2) requires the appropriate PF order of this input for each n;\nrequiring all n is PF infinity. Reflection and positive dilation preserve\nthat property, so the pinned failure for Phi excludes the proposed\nall-size multiplicative premise. This does not assert failure of every\nindividual finite order.\n\n## 6. M3--M4: one smooth PF source retains an off-edge Mellin zero\n\nPASS; candidate lines 189--243.\n\nThe pinned accepted theorem applies to the literal T_N with rates pi k^2\nand shape two. Choose one fixed sufficiently large N and one zero s_0\nin 11/8<Re(s)<2. The transform is holomorphic on this strip, is positive\nat real s>1, and is not identically zero. Its zeros are isolated, allowing\na disk D around s_0 lying in the strip with zero-free boundary. No simple\nzero or effective numerical root is required.\n\nEach r_N is a finite convolution of one-sided exponential densities;\ntherefore it is PF infinity even though it lacks unrestricted smoothness\nat zero. Scaling full r by epsilon>0 preserves PF infinity, and additive\nconvolution preserves it by the accepted continuous Cauchy--Binet argument.\nThus r_(N,epsilon) is PF infinity for every positive epsilon.\n\nThe full scaled r is Schwartz with flat zero extension. Differentiation\nof its convolution with r_N is valid to every order. More explicitly,\nweighted L1 bounds follow from\n\n    int (1+|x|)^k |(r_N*g)^(j)(x)|dx\n      <= [int (1+|y|)^k r_N(y)dy]\n         [int (1+|v|)^k |g^(j)(v)|dv],\n\nwhere g(t)=epsilon^(-1)r(t/epsilon). The analogous weighted sup bound\nfollows using the sup norm of the second factor. Finite moments of r_N\ntherefore give smoothness, all polynomial derivative moments, and even\nthe Schwartz bounds. Both factors have nonnegative support, so the\nsmooth zero extension is flat at zero.\n\nFor each fixed epsilon>0, T_(N,epsilon)>=epsilon T' gives every negative\nmoment; positive moments follow from the sum of variables with all\npositive moments. In particular, ONE fixed smoothed source meets M1 and\nM2 in every matrix dimension. No choice of epsilon depending on dimension\nis needed, and the finite regularity of r_N has not been mistaken for\ninfinite regularity.\n\nFor any compact K in Re(s)>1 and almost every realization T_N>0, the\nfunction (T_N+epsilon T')^(s-1) is jointly continuous on K times a small\nclosed epsilon interval. It converges uniformly in s on K as epsilon\napproaches zero. For epsilon<=1 the difference supremum is bounded by\n2[1+(T_N+T')^B], B=max(1,sup_K Re(s)-1), which is integrable. Dominated\nconvergence of that supremum gives the claimed locally uniform Mellin\nconvergence, not just pointwise convergence in s. Holomorphy on a\nneighborhood of D follows from the same power moments; logarithmic\nfactors are absorbed by a margin to Re(s)=1 and a higher positive moment.\n\nThe positive minimum of |M_N| on the boundary of D now pays Rouche's\ninequality for every sufficiently small epsilon. The smoothed transform\nhas the same positive number of zeros inside D, counting multiplicity.\nGamma has no zero or pole on D, so the gamma lift retains these zeros.\nThey lie strictly to the right of Re(s)=5/4.\n\nFinally, E[T]-E[T_N]>0, being the omitted positive gamma tail. Taking\nepsilon smaller also than (E[T]-E[T_N])/E[T] makes the new mean strictly\nless than the full source mean. This additional bound is compatible with\nthe Rouche-smallness condition and proves that the control is a different\nsource. There is no claimed explicit N, zero coordinate or epsilon bound.\n\nThe resulting counterexample refutes the generic implication from smooth\nadditive PF infinity and all-size positive ensembles ALONE to the stated\nMellin zero-free half-plane. No weighted reciprocity for this control was\nproved or used. It therefore does not refute a mechanism that really uses\nPF together with the original reciprocity, and it produces no negative\nrow of the original theta V.\n\n## 7. Final scope and acceptance\n\nACCEPT_LIMITED_SOURCE_SIBLINGS_AND_PF_CONTROL, bound to the exact candidate\nand source hashes above.\n\nThe Sheffer specialization recovers the full arithmetic transform but\nleaves its zeta factor uncontrolled. The Hermitian and nu=0 additive lifts\nare valid positive constructions in every dimension, with the stated\nnormalization and hypotheses. Their positivity has no established bridge\nto the original V. The gamma lift preserves rather than repairs Mellin\nzeros, loses weighted reciprocity, and the smooth PF control rigorously\nblocks a PF/ensemble-positivity-only inference.\n\nThese are limited exact identifications and rejection filters. They are\nnot a new positive source mechanism, an improved V bound, a spectral\nconstruction proving RH, or canonical admission. The candidate consistently\nretains that boundary and correctly records incomplete search coverage.\n",
+  "parent_check_sha256": "eff537af2b0dbf716d8d01e1f701854864a2cdaeec3ad7fcb3bec8036be36588",
+  "parent_check_text": "# Parent check of source sibling candidate\n\nCandidate d30a25ed1ad904ecb0e45d14af81981cf399853c190ce1d5a8b2ce0a5d505852.\nThe following are direct algebraic/analytic checks, not a numerical RH test.\n\n1. Read actual arXiv HTML theorem bodies and formulas, not Consensus abstracts.\nAt p*=0 the falling factorial (0)_(n-k) vanishes unless n=k. Thus the\npaper's umbral composition reduces precisely to n! L_n^(-1/2), with no\nunaccounted constant. Mellin integration of its generating function gives\nGamma(u)(1-w)^(u-1/2)(1+w)^(-u). The fixed-j theta sum is absolutely\nintegrable for Re(s)>1. q2(s/2)-3/4=s(s-1), and tr has the same coefficients\n4pi^2 k^4 t^2-6pi k^2t. Full normalization agrees with the reread transfer\naudit. No separate divergent integral is analytically continued as an\nimproper integral.\n\n2. Differentiation yields (1-w^2)Q_w=(1/2-2u+w/2)Q. Comparing exponential\ncoefficients gives q_(j+1)=(1/2-2u)q_j+j(j-1/2)q_(j-1). Multiplication by\ni^(j+1) at u=1/4+iv gives +2v and minus j(j-1/2). Dividing by 2^(j+1)\ngives the stated monic Jacobi recurrence with beta_j=j(j-1/2)/4>0.\nCharacteristic-polynomial recurrence and eigenvector recursion prove real\nsimple roots without a new external zero theorem. A finite entire\npolynomial cannot cancel a zero of zeta in its holomorphic critical strip.\n\n3. Both input spaces in source B were read. Additive r satisfies its\nfinite-n derivative/moment hypotheses by endpoint exponential bounds and\nreciprocity. Confluence of positive translation minors also directly gives\nthe nonnegative derivative determinant in M1 for ordered a_k: expand\nr(a_k-epsilon(j-1)) in the row variable, divide by the positive Vandermonde\nin epsilon(j-1), and let epsilon downarrow0. The resulting row derivatives\nare (-partial)^(j-1)r/(j-1)!. Thus the sign agrees with Delta_n. Repeated\nintegration by parts and Andreief give n! product j!, with no hidden\nnonpositive normalization. No covariance or spectral identity with V is\navailable from this calculation.\n\n4. For the nu=0 mixture, integral exp(-x/t)x^(s-1)dx/t equals\nGamma(s)t^(s-1). Absolute Fubini is licensed for every Re(s)>0. Omega has\npositive finite limit E(1/T) at zero, and faster than any inverse-power\ndecay at infinity. The proposed reciprocal identity would contradict\nthese two endpoint limits for every fixed real exponent. The direct GL\ncriterion concerns omega(exp(-u))exp(-u), which at critical omega is exactly\nPhi(-u/2), not r. Therefore only the additive positive-ensemble application\nhas satisfied hypotheses.\n\n5. The finite-source MELLINEDGE input was reread at its exact pinned\nintake: its s0 exists for any chosen sufficiently large fixed N, in the\nopen strip (11/8,2), at arbitrarily high positive imaginary heights. For\nM4 only one such zero and one disk are used. PF is preserved under the\nordinary convolution, while the scaled full source makes the extension\nsmooth with all derivative moments. Negative moments follow from the\nlower bound by epsilon T'. Uniform dominated convergence on compacts of\nRe(s)>1 uses positive real powers, not any possibly divergent inverse\nmoment of raw T_N. A small compact enlargement absorbs logs for\nholomorphy. Rouche preserves multiplicity count in the chosen disk; no\nsimple zero or explicit epsilon is required. This is one smooth PF source\nwith positive ensembles of every n but an off-edge Mellin zero. It is\nnot reciprocal by assumption and supplies no original-theta V witness.\n\n6. Search chronology honestly records the new shelf dictionaries running\nafter external discovery; INCOMPLETE freshness receipts remain incomplete.\nNo novelty, exhaustive coverage, full V sign, RH proof/refutation, Lean\nvalidation, canonical admission or sign-counter reset is certified.\n",
+  "accepted": [
+    "Full theta density tr is psi2-3psi0/4 in an explicitly normalized Sheffer/Laguerre theta family",
+    "Jacobi polynomial real zeros do not control the unchanged zeta factor",
+    "Actual additive PF infinity supplies positive Hermitian ensembles in every dimension",
+    "Specified gamma mixture supplies positive M0 ensembles, preserves Mellin zeros in Re(s)>0 and loses every power reciprocal identity",
+    "Smoothing one raw finite MELLINEDGE source by convolution with epsilon full source supplies a smooth PF infinity control with all-dimension positive ensembles and an off-edge Mellin zero"
+  ],
+  "scope_limits": [
+    "No source-specific positive representation of V",
+    "No claim on joint PF plus weighted reciprocity sufficiency",
+    "No actual theta negative V witness",
+    "No finite computational verification, numerical N0, explicit epsilon or root coordinates",
+    "General extra-factor Sheffer Theorem1 and journal version not used"
+  ],
+  "search": {
+    "coverage": "INCOMPLETE_NOT_NO_HITS",
+    "provider": "Consensus discovery and primary arXiv bodies",
+    "shelf_receipts": [
+      {
+        "query": "Sheffer Mellin Meixner zeros",
+        "exit": 2,
+        "sha256": "349f5bcd15ff4180ad95a698ad3bbf94426ba89e484429202fa8064abfd678eb",
+        "receipt": {
+          "boundary": "COMPLETE_REGISTERED_SHELF",
+          "candidate_rows": [
+            {
+              "excerpt": "ПОСТАВЛЯЮТ (provides):",
+              "metadata_sha256": "be3adf0ea44f9ecbba229e99045d3fe305f6cdf9dba4e3ce6501a848e0cb47aa",
+              "provider": "knowledge-db",
+              "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+              "query": "Sheffer Mellin Meixner zeros",
+              "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+              "title": "ПОСТАВЛЯЮТ (provides):",
+              "url": "capability/assembly/counterexample"
+            },
+            {
+              "excerpt": "rh_iff_centeredXi_zeros_real q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:108",
+              "metadata_sha256": "913f4bd060fd1ec111e7bfa22521a44e5b8ddb2a5ba98c3ee4bc7bcb51eb35cf",
+              "provider": "knowledge-db",
+              "provider_id": "9e44af62cd715adc83a81cbd9ec2913e3677ba23e6c67ceef1a50928127f962d",
+              "query": "Sheffer Mellin Meixner zeros",
+              "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+              "title": "rh_iff_centeredXi_zeros_real q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:108",
+              "url": "capability/assembly/counterexample"
+            },
+            {
+              "excerpt": "CenteredXiZerosReal Q3/Proofs/RouteB/ClassicalXiInterface.lean",
+              "metadata_sha256": "f1a33d23125d9d361719a301f6548b4626285a33201924f2cf9976283d02f6f6",
+              "provider": "lean-index",
+              "provider_id": "15f52c45e61203a500f08b39417df464b304033fbe8c804ecb03f04cb05e0b81",
+              "query": "Sheffer Mellin Meixner zeros",
+              "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+              "title": "CenteredXiZerosReal Q3/Proofs/RouteB/ClassicalXiInterface.lean",
+              "url": "aristotle_proofs.db"
+            },
+            {
+              "excerpt": "EStarMellinAbsolute Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean",
+              "metadata_sha256": "d228622b09167012c8758fdd99028d0c6069701f644e8f914224388eaa1f38f7",
+              "provider": "lean-index",
+              "provider_id": "895a022720400d643aa27baf15248eefd330225326fe0838ef1e8e4b14206bc2",
+              "query": "Sheffer Mellin Meixner zeros",
+              "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+              "title": "EStarMellinAbsolute Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean",
+              "url": "aristotle_proofs.db"
+            }
+          ],
+          "external_lean": "EXECUTED",
+          "provider_rows": [
+            {
+              "failure_count": 1,
+              "hit_store_count": 3,
+              "provider": "local-shelves",
+              "query": "Sheffer Mellin Meixner zeros",
+              "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+              "status": "INCOMPLETE"
+            },
+            {
+              "candidate_count": 0,
+              "candidate_hashes": [],
+              "collection_identity": null,
+              "corpus_sha256": null,
+              "provider": "q3_docs",
+              "query": "Sheffer Mellin Meixner zeros",
+              "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+              "status": "INCOMPLETE"
+            }
+          ],
+          "query": "Sheffer Mellin Meixner zeros",
+          "query_sha256": "c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca",
+          "schema": "q3_ask_local_receipt.v1"
+        },
+        "tail": [
+          "    },",
+          "    {",
+          "      \"base_id\": \"zeta23\",",
+          "      \"declaration_name\": null,",
+          "",
+          "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+          "ASK_RECEIPT_JSON: {\"boundary\":\"COMPLETE_REGISTERED_SHELF\",\"candidate_rows\":[{\"excerpt\":\"ПОСТАВЛЯЮТ (provides):\",\"metadata_sha256\":\"be3adf0ea44f9ecbba229e99045d3fe305f6cdf9dba4e3ce6501a848e0cb47aa\",\"provider\":\"knowledge-db\",\"provider_id\":\"862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c\",\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"title\":\"ПОСТАВЛЯЮТ (provides):\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"rh_iff_centeredXi_zeros_real q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:108\",\"metadata_sha256\":\"913f4bd060fd1ec111e7bfa22521a44e5b8ddb2a5ba98c3ee4bc7bcb51eb35cf\",\"provider\":\"knowledge-db\",\"provider_id\":\"9e44af62cd715adc83a81cbd9ec2913e3677ba23e6c67ceef1a50928127f962d\",\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"title\":\"rh_iff_centeredXi_zeros_real q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:108\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"CenteredXiZerosReal Q3/Proofs/RouteB/ClassicalXiInterface.lean\",\"metadata_sha256\":\"f1a33d23125d9d361719a301f6548b4626285a33201924f2cf9976283d02f6f6\",\"provider\":\"lean-index\",\"provider_id\":\"15f52c45e61203a500f08b39417df464b304033fbe8c804ecb03f04cb05e0b81\",\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"title\":\"CenteredXiZerosReal Q3/Proofs/RouteB/ClassicalXiInterface.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"EStarMellinAbsolute Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean\",\"metadata_sha256\":\"d228622b09167012c8758fdd99028d0c6069701f644e8f914224388eaa1f38f7\",\"provider\":\"lean-index\",\"provider_id\":\"895a022720400d643aa27baf15248eefd330225326fe0838ef1e8e4b14206bc2\",\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"title\":\"EStarMellinAbsolute Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean\",\"url\":\"aristotle_proofs.db\"}],\"external_lean\":\"EXECUTED\",\"provider_rows\":[{\"failure_count\":1,\"hit_store_count\":3,\"provider\":\"local-shelves\",\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"status\":\"INCOMPLETE\"},{\"candidate_count\":0,\"candidate_hashes\":[],\"collection_identity\":null,\"corpus_sha256\":null,\"provider\":\"q3_docs\",\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"status\":\"INCOMPLETE\"}],\"query\":\"Sheffer Mellin Meixner zeros\",\"query_sha256\":\"c1715f388f187d462337357feef1b9bd82a882d2f794fed375d192500d0da3ca\",\"schema\":\"q3_ask_local_receipt.v1\"}",
+          "ПОИСК НЕПОЛОН — отсутствие не установлено",
+          "",
+          "  · q3_docs: semantic-index freshness validation failed",
+          "",
+          "ASK_STATUS: INCOMPLETE"
+        ]
+      },
+      {
+        "query": "Polya polynomial ensembles derivative type Mellin",
+        "exit": 2,
+        "sha256": "55fc470c66e6b1e37d8a619099d9d0ec4f0910e93abb28f00d54bdf63104ee29",
+        "receipt": {
+          "boundary": "COMPLETE_REGISTERED_SHELF",
+          "candidate_rows": [
+            {
+              "excerpt": "ПОСТАВЛЯЮТ (provides):",
+              "metadata_sha256": "8260c2c7825b5cd82f7ef015177f0ab156b1ca775dfe26596b8bb8c90e607573",
+              "provider": "knowledge-db",
+              "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "title": "ПОСТАВЛЯЮТ (provides):",
+              "url": "capability/assembly/counterexample"
+            },
+            {
+              "excerpt": "mellin_E_star_eq_riemannZeta_mul q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean:472",
+              "metadata_sha256": "8bcf0bb9270d65f6bf8035262228e05c9ca47ab9b4c8e7d519a9aa3ddccc8de6",
+              "provider": "knowledge-db",
+              "provider_id": "d4e422afe3acf8c8f24688ad61cfc654ca7b05f8066b46bc83c4ab5022b73736",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "title": "mellin_E_star_eq_riemannZeta_mul q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean:472",
+              "url": "capability/assembly/counterexample"
+            },
+            {
+              "excerpt": "szego_orthogonal_polynomials_1939.pdf",
+              "metadata_sha256": "3da9f6a6fca461014548871fffdd578002f3326bfcf42d9f74498804c6351c7e",
+              "provider": "local-literature",
+              "provider_id": "cd2f798b3f8d2b07bc0e1a73f7b543d5adb45b031ad9dc94b4798a501a079c88",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "title": "szego_orthogonal_polynomials_1939.pdf",
+              "url": "docs/routeB_bus/litreview"
+            },
+            {
+              "excerpt": "A3_bridge_rayleigh_from_weight_sum_P_A full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge.lean",
+              "metadata_sha256": "daf186c14ff72a61fdbf5e48581747279ee6a4cb923ccac040ff447968d5cf10",
+              "provider": "lean-index",
+              "provider_id": "72c72eebd97beb343881ea9e745033da59eb1f83f5bd0d4cc794bfff7a27c9b9",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "title": "A3_bridge_rayleigh_from_weight_sum_P_A full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge.lean",
+              "url": "aristotle_proofs.db"
+            },
+            {
+              "excerpt": "ApproximationFamily Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+              "metadata_sha256": "72b89dd1013f98ff1d65f5dee53c5603f20b4bd5faa2725bafbb24379bb59a33",
+              "provider": "lean-index",
+              "provider_id": "30f999758c5309e50fdf6db35b9d6baa7e1fc248d1b07d2c88ec410461e251e1",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "title": "ApproximationFamily Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean",
+              "url": "aristotle_proofs.db"
+            }
+          ],
+          "external_lean": "EXECUTED",
+          "provider_rows": [
+            {
+              "failure_count": 1,
+              "hit_store_count": 4,
+              "provider": "local-shelves",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "status": "INCOMPLETE"
+            },
+            {
+              "candidate_count": 0,
+              "candidate_hashes": [],
+              "collection_identity": null,
+              "corpus_sha256": null,
+              "provider": "q3_docs",
+              "query": "Polya polynomial ensembles derivative type Mellin",
+              "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+              "status": "INCOMPLETE"
+            }
+          ],
+          "query": "Polya polynomial ensembles derivative type Mellin",
+          "query_sha256": "5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6",
+          "schema": "q3_ask_local_receipt.v1"
+        },
+        "tail": [
+          "    },",
+          "    {",
+          "      \"base_id\": \"zeta23\",",
+          "      \"declaration_name\": null,",
+          "",
+          "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+          "ASK_RECEIPT_JSON: {\"boundary\":\"COMPLETE_REGISTERED_SHELF\",\"candidate_rows\":[{\"excerpt\":\"ПОСТАВЛЯЮТ (provides):\",\"metadata_sha256\":\"8260c2c7825b5cd82f7ef015177f0ab156b1ca775dfe26596b8bb8c90e607573\",\"provider\":\"knowledge-db\",\"provider_id\":\"862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"title\":\"ПОСТАВЛЯЮТ (provides):\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"mellin_E_star_eq_riemannZeta_mul q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean:472\",\"metadata_sha256\":\"8bcf0bb9270d65f6bf8035262228e05c9ca47ab9b4c8e7d519a9aa3ddccc8de6\",\"provider\":\"knowledge-db\",\"provider_id\":\"d4e422afe3acf8c8f24688ad61cfc654ca7b05f8066b46bc83c4ab5022b73736\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"title\":\"mellin_E_star_eq_riemannZeta_mul q3.lean.aristotle/Q3/Proofs/RouteB/EStarWindowedMellinCrosswalk.lean:472\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"szego_orthogonal_polynomials_1939.pdf\",\"metadata_sha256\":\"3da9f6a6fca461014548871fffdd578002f3326bfcf42d9f74498804c6351c7e\",\"provider\":\"local-literature\",\"provider_id\":\"cd2f798b3f8d2b07bc0e1a73f7b543d5adb45b031ad9dc94b4798a501a079c88\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"title\":\"szego_orthogonal_polynomials_1939.pdf\",\"url\":\"docs/routeB_bus/litreview\"},{\"excerpt\":\"A3_bridge_rayleigh_from_weight_sum_P_A full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge.lean\",\"metadata_sha256\":\"daf186c14ff72a61fdbf5e48581747279ee6a4cb923ccac040ff447968d5cf10\",\"provider\":\"lean-index\",\"provider_id\":\"72c72eebd97beb343881ea9e745033da59eb1f83f5bd0d4cc794bfff7a27c9b9\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"title\":\"A3_bridge_rayleigh_from_weight_sum_P_A full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"ApproximationFamily Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean\",\"metadata_sha256\":\"72b89dd1013f98ff1d65f5dee53c5603f20b4bd5faa2725bafbb24379bb59a33\",\"provider\":\"lean-index\",\"provider_id\":\"30f999758c5309e50fdf6db35b9d6baa7e1fc248d1b07d2c88ec410461e251e1\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"title\":\"ApproximationFamily Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean\",\"url\":\"aristotle_proofs.db\"}],\"external_lean\":\"EXECUTED\",\"provider_rows\":[{\"failure_count\":1,\"hit_store_count\":4,\"provider\":\"local-shelves\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"status\":\"INCOMPLETE\"},{\"candidate_count\":0,\"candidate_hashes\":[],\"collection_identity\":null,\"corpus_sha256\":null,\"provider\":\"q3_docs\",\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"status\":\"INCOMPLETE\"}],\"query\":\"Polya polynomial ensembles derivative type Mellin\",\"query_sha256\":\"5eefa237e8be760a9411fcf60256e9eaa7ffb02342959423ea9f302db7163bc6\",\"schema\":\"q3_ask_local_receipt.v1\"}",
+          "ПОИСК НЕПОЛОН — отсутствие не установлено",
+          "",
+          "  · q3_docs: semantic-index freshness validation failed",
+          "",
+          "ASK_STATUS: INCOMPLETE"
+        ]
+      },
+      {
+        "query": "self reciprocal matrix gamma convolution",
+        "exit": 2,
+        "sha256": "89c00f8b12fea54be867fd2656de24e9170913fa45ded7e4d711e8b716ed6b70",
+        "receipt": {
+          "boundary": "COMPLETE_REGISTERED_SHELF",
+          "candidate_rows": [
+            {
+              "excerpt": "── JOURNAL (1) ──────────────────────────────────────",
+              "metadata_sha256": "4de5e8a9bd43ea39a413615424a569d0a0e56dcf2681b05f360ecfc746db9282",
+              "provider": "knowledge-db",
+              "provider_id": "d5a655c4043a3b8f0c60056af275ce939b8460b59a5c19b79535f181cc46d02d",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "── JOURNAL (1) ──────────────────────────────────────",
+              "url": "kb.py ask"
+            },
+            {
+              "excerpt": "2026-09-11 branch_decision Actual theta density fails hyperbolic complete monotonicity",
+              "metadata_sha256": "11c416acdf3f29eda6dd4596885a65f84e30cc0f95168b5a88567b5711434756",
+              "provider": "knowledge-db",
+              "provider_id": "7beb813e4d89106e13c1406e5713f3ceef3d547df8c6590d672f6c6233f53005",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "2026-09-11 branch_decision Actual theta density fails hyperbolic complete monotonicity",
+              "url": "kb.py ask"
+            },
+            {
+              "excerpt": "ПОСТАВЛЯЮТ (provides):",
+              "metadata_sha256": "0b1cb4af1df53b8e1bf8956865bcfbd04936c515c78bce9f9447227713b891c8",
+              "provider": "knowledge-db",
+              "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "ПОСТАВЛЯЮТ (provides):",
+              "url": "capability/assembly/counterexample"
+            },
+            {
+              "excerpt": "matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40",
+              "metadata_sha256": "aec7dc81f4ec31ef42b1a1cc8a3f35328e0548870a91b6c2d1382268a16f94b5",
+              "provider": "knowledge-db",
+              "provider_id": "dcfdb51240957d468a278acd9b712a1e17d80f7ec8e3043506284e5d7202f3a6",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40",
+              "url": "capability/assembly/counterexample"
+            },
+            {
+              "excerpt": "horn_johnson_matrix_analysis_2013.pdf",
+              "metadata_sha256": "d75a561d339113b0638c693e2ef70b28d23b798a83f73b2654c823f0fd2d4852",
+              "provider": "local-literature",
+              "provider_id": "cc4134b9eb04734332b06f0e96c26222036ad328e6e29f0dd847b3a6ed1aa58c",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "horn_johnson_matrix_analysis_2013.pdf",
+              "url": "docs/routeB_bus/litreview"
+            },
+            {
+              "excerpt": "T5a_triple_not_selfadjoint Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+              "metadata_sha256": "2f3fea82a2c74950c704e232d16d35c08a5d9e036ddd33c99d4eda7c6f062c08",
+              "provider": "lean-index",
+              "provider_id": "47a40de1a3e844cefb077fc55c3e8a80b0c94eece645695f3ed170dfafb9a66b",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "T5a_triple_not_selfadjoint Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean",
+              "url": "aristotle_proofs.db"
+            },
+            {
+              "excerpt": "ccmPrimeEntryN1_neg_self_eq_neg_zero Q3/Proofs/RouteB/CCMFiniteWeilCell13N2ClassCrosswalk.lean",
+              "metadata_sha256": "d5703019bba2173799b078f331ac81d167f66efe0b7272c9c4fc845144d84d44",
+              "provider": "lean-index",
+              "provider_id": "496c5fdaa92fa718852d5bd9ad2c76f7949265bd31edf28ea901ae4fac57d38e",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "ccmPrimeEntryN1_neg_self_eq_neg_zero Q3/Proofs/RouteB/CCMFiniteWeilCell13N2ClassCrosswalk.lean",
+              "url": "aristotle_proofs.db"
+            },
+            {
+              "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:35: Real.self_le_sinh_iff.mpr (by positivity)",
+              "metadata_sha256": "06ceb9e1a76e0e00598038876b6c2a2a13bef1e08d5e6fc0fba5b6b11e2e30a1",
+              "provider": "lean-tree",
+              "provider_id": "36a581337858b097d840c8cebfdb757b8aff739b6c18829426001cacd6ca9bd7",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:35: Real.self_le_sinh_iff.mpr (by positivity)",
+              "url": "Q3/Proofs/RouteB"
+            }
+          ],
+          "external_lean": "EXECUTED",
+          "provider_rows": [
+            {
+              "failure_count": 1,
+              "hit_store_count": 6,
+              "provider": "local-shelves",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "status": "INCOMPLETE"
+            },
+            {
+              "candidate_count": 0,
+              "candidate_hashes": [],
+              "collection_identity": null,
+              "corpus_sha256": null,
+              "provider": "q3_docs",
+              "query": "self reciprocal matrix gamma convolution",
+              "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+              "status": "INCOMPLETE"
+            }
+          ],
+          "query": "self reciprocal matrix gamma convolution",
+          "query_sha256": "e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b",
+          "schema": "q3_ask_local_receipt.v1"
+        },
+        "tail": [
+          "    },",
+          "    {",
+          "      \"base_id\": \"zeta23\",",
+          "      \"declaration_name\": null,",
+          "",
+          "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+          "ASK_RECEIPT_JSON: {\"boundary\":\"COMPLETE_REGISTERED_SHELF\",\"candidate_rows\":[{\"excerpt\":\"── JOURNAL (1) ──────────────────────────────────────\",\"metadata_sha256\":\"4de5e8a9bd43ea39a413615424a569d0a0e56dcf2681b05f360ecfc746db9282\",\"provider\":\"knowledge-db\",\"provider_id\":\"d5a655c4043a3b8f0c60056af275ce939b8460b59a5c19b79535f181cc46d02d\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"── JOURNAL (1) ──────────────────────────────────────\",\"url\":\"kb.py ask\"},{\"excerpt\":\"2026-09-11 branch_decision Actual theta density fails hyperbolic complete monotonicity\",\"metadata_sha256\":\"11c416acdf3f29eda6dd4596885a65f84e30cc0f95168b5a88567b5711434756\",\"provider\":\"knowledge-db\",\"provider_id\":\"7beb813e4d89106e13c1406e5713f3ceef3d547df8c6590d672f6c6233f53005\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"2026-09-11 branch_decision Actual theta density fails hyperbolic complete monotonicity\",\"url\":\"kb.py ask\"},{\"excerpt\":\"ПОСТАВЛЯЮТ (provides):\",\"metadata_sha256\":\"0b1cb4af1df53b8e1bf8956865bcfbd04936c515c78bce9f9447227713b891c8\",\"provider\":\"knowledge-db\",\"provider_id\":\"862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"ПОСТАВЛЯЮТ (provides):\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40\",\"metadata_sha256\":\"aec7dc81f4ec31ef42b1a1cc8a3f35328e0548870a91b6c2d1382268a16f94b5\",\"provider\":\"knowledge-db\",\"provider_id\":\"dcfdb51240957d468a278acd9b712a1e17d80f7ec8e3043506284e5d7202f3a6\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"horn_johnson_matrix_analysis_2013.pdf\",\"metadata_sha256\":\"d75a561d339113b0638c693e2ef70b28d23b798a83f73b2654c823f0fd2d4852\",\"provider\":\"local-literature\",\"provider_id\":\"cc4134b9eb04734332b06f0e96c26222036ad328e6e29f0dd847b3a6ed1aa58c\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"horn_johnson_matrix_analysis_2013.pdf\",\"url\":\"docs/routeB_bus/litreview\"},{\"excerpt\":\"T5a_triple_not_selfadjoint Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean\",\"metadata_sha256\":\"2f3fea82a2c74950c704e232d16d35c08a5d9e036ddd33c99d4eda7c6f062c08\",\"provider\":\"lean-index\",\"provider_id\":\"47a40de1a3e844cefb077fc55c3e8a80b0c94eece645695f3ed170dfafb9a66b\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"T5a_triple_not_selfadjoint Q3/Proofs/RouteB/AbstractCoboundaryLedger.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"ccmPrimeEntryN1_neg_self_eq_neg_zero Q3/Proofs/RouteB/CCMFiniteWeilCell13N2ClassCrosswalk.lean\",\"metadata_sha256\":\"d5703019bba2173799b078f331ac81d167f66efe0b7272c9c4fc845144d84d44\",\"provider\":\"lean-index\",\"provider_id\":\"496c5fdaa92fa718852d5bd9ad2c76f7949265bd31edf28ea901ae4fac57d38e\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"ccmPrimeEntryN1_neg_self_eq_neg_zero Q3/Proofs/RouteB/CCMFiniteWeilCell13N2ClassCrosswalk.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:35: Real.self_le_sinh_iff.mpr (by positivity)\",\"metadata_sha256\":\"06ceb9e1a76e0e00598038876b6c2a2a13bef1e08d5e6fc0fba5b6b11e2e30a1\",\"provider\":\"lean-tree\",\"provider_id\":\"36a581337858b097d840c8cebfdb757b8aff739b6c18829426001cacd6ca9bd7\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"title\":\"q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:35: Real.self_le_sinh_iff.mpr (by positivity)\",\"url\":\"Q3/Proofs/RouteB\"}],\"external_lean\":\"EXECUTED\",\"provider_rows\":[{\"failure_count\":1,\"hit_store_count\":6,\"provider\":\"local-shelves\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"status\":\"INCOMPLETE\"},{\"candidate_count\":0,\"candidate_hashes\":[],\"collection_identity\":null,\"corpus_sha256\":null,\"provider\":\"q3_docs\",\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"status\":\"INCOMPLETE\"}],\"query\":\"self reciprocal matrix gamma convolution\",\"query_sha256\":\"e0aca73fbe9f18cc0259d602c2e2e562c12f4164dfea6c56caf876111a63c42b\",\"schema\":\"q3_ask_local_receipt.v1\"}",
+          "ПОИСК НЕПОЛОН — отсутствие не установлено",
+          "",
+          "  · q3_docs: semantic-index freshness validation failed",
+          "",
+          "ASK_STATUS: INCOMPLETE"
+        ]
+      }
+    ],
+    "workflow_deviation": "New dictionary shelf queries ran after external discovery; preserved explicitly, no claim of shelf-first compliance",
+    "new_sources_registered": false,
+    "authentication_repair": false,
+    "novelty_claim": false
+  },
+  "full_V_sign_progress": false,
+  "RH_proved": false,
+  "RH_refuted": false,
+  "negative_original_V_witness": false,
+  "Lean_runs": 0,
+  "canonical_admission": false,
+  "counter_reset": false,
+  "new_proof_request": false,
+  "consumption": "INCOMPLETE_NO_CONSUMABLE_TARGET"
+}
