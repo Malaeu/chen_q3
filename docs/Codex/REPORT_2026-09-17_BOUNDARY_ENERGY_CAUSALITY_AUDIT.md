@@ -1,5 +1,7 @@
 # Boundary energy versus causal reconstruction: analytic audit
 
+Historical reconciliation: this is the SAME open FULLVPOS SUPPORT problem from September 15. R=(I+U_old*)/2 and P_-RP_+=B_old*/2. The source equation is unchanged. The generic source-support hunt was already registered; this audit and its extra control do not establish a new source mechanism. See the independently checked addendum below.
+
 Status: ACCEPTED_LIMITED_PAPER; independent review and parent check complete. No original V sign result. Root-owned
 private candidate after the Fourth return in the assigned global Pick hunt.
 Base 72a536a26517860edfb29ae5dfee941c4e18c811. No new Pro proof request.
@@ -212,3 +214,64 @@ Final candidate SHA256: d203e0437b1125b1603156c3dc3e3e8ccd59a2028513ca9869c175cb
 Complete review SHA256: 3587d9bbe39bc589023f487193f0958a1496065cbfb65461c71880cc97f5770d.
 Complete parent check SHA256: ca4d7adfba62a9848c47e8ec07a877dfc66c433f28da29ea6317a89a1e2aed6d.
 The parent read the complete review. The atomic control is explicitly limited to positive/even source measures and does not test smooth strict positivity or theta/PF structure. The exact cutoff criterion and the conditional Hardy transfer are accepted; no original V sign or original negative witness was obtained. Full source normalization is also bound to REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md, section 2, SHA256 1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282. The certificate embeds the independent and parent checks and source-search provenance.
+
+## Historical addendum: exact FULLVPOS crosswalk
+
+Independently accepted: ACCEPT_SAME_FULLVPOS_SUPPORT_CROSSWALK_ONLY. No new support proof.
+Base 3f3a5b496a01d10a3399313a27916a43f0f70183. Existing audit remains
+mathematically valid; this addendum corrects incomplete historical reconciliation.
+
+Pinned old inputs:
+- docs/Codex/REPORT_2026-09-15_FULLVPOS_INTAKE.md, SHA256 8f9abe3e60ce3188709ad5b6e91022980a78bc33f70635fcb4f3fe6abb77aad6, sections 2-4, full intake read.
+- docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_FULLVPOS_2026-09-15.md, SHA256 3e51c432683640422e2052680e4c592fd39a8078f213b70ee5f1bb4c72d4a508, formulas (9)-(13), (30), (37)-(39); complete raw acceptance is inherited from the pinned intake, not claimed re-audited here.
+- Current audit candidate d203e0437b1125b1603156c3dc3e3e8ccd59a2028513ca9869c175cbf2a38a09 and accepted report 6e6cb67d218498b5da275d87e527daf28acbbbaa0e8969fa9adba83b323e9339.
+
+In OLD FULLVPOS let S=(X-iX')/(X+iX') on the real line, with normalization
+of X cancelling from the quotient, U_old=Fourier_inverse M_S Fourier,
+B_old=P_+ U_old P_-, and k=Fourier^{-1}_nonunitary S. The old intake already
+accepts all finite original V>=0 iff B_old=0, and B_old=0 iff supp k lies
+in (-infinity,0]. Its actual source support condition remains OPEN.
+
+In CURRENT A0, m=X/(X-iX'), R=Fourier_inverse M_m Fourier,
+Y=Fourier^{-1}_nonunitary m. Since |S|=1 a.e., exactly
+
+ 2m-1=conjugate(S), R=(I+U_old^*)/2,
+ P_- R P_+ = (1/2)(P_+ U_old P_-)^*=(1/2)B_old^*.       (C1)
+
+Hence current causality at T=0 is exactly the OLD SUPPORT condition; all
+other cutoffs follow by translation invariance. Current all-cutoff work
+positivity is therefore equivalent to the old full V positivity, by the
+already accepted A2 and FULLVPOS equivalence. This is a crosswalk, not a
+new independent source-sign input.
+
+For k^sharp(t)=conjugate(k(-t)) in distributions, we also have
+
+ Y=(delta_0+k^sharp)/2.                                (C2)
+
+Thus support Y in [0,infinity) is equivalent to support k in (-infinity,0];
+the delta at zero cannot cancel a contribution on either open half-line.
+The reversal of support is explained by the ADJOINT, not a convention error.
+
+To compare full-source equations without square-root normalization clutter,
+put a0=(1+t)q, b0=(1-t)q. The old identity U_old a0=b0 gives
+U_old^* b0=a0. Therefore R b0=(b0+a0)/2=q, precisely the CURRENT
+((1-t)q)*Y=q. Scalar normalization from f to q and the old 1/sqrt(2)
+factor cancel; this is the same inversion question.
+
+Historical consequence: SOURCE_SUPPORT_HUNT from September 15 already
+registered Hardy/Wiener-Hopf, passive scattering and positive storage for
+this exact source-support problem. Current Fourth return should have
+reconciled that brief before its new generic primary searches. No current
+source-specific advance is claimed. The new elementary cumulative-work
+control is a bounded diagnostic only; even stronger smooth non-theta
+controls were already retained by FULLVPOS. Preserve both.
+
+Stop the generic support/passivity loop. Do not reissue this source inversion
+as a new research joint merely because the adjoint or Cayley average changes
+its name. Any further attempt needs a genuinely new verified property of the
+full source and must pass the already accepted smooth controls. No canonical
+admission, source-sign counter change, original negative V witness or RH claim.
+
+Crosswalk candidate SHA256: cd918cf965e9cba1205e7edb44fbc0a63b3caba20cfca10ed637645492187eac.
+Complete independent crosswalk review SHA256: 5bd8e1d79dcb4c5f5eb37aa113b6be0b4241cd3a2a7f801b6743aa7215d51de4.
+Parent crosswalk check SHA256: b574320cfb22b1f25448945e3592dfce8361f831b9193eaa2043b8accbfcf3f6.
