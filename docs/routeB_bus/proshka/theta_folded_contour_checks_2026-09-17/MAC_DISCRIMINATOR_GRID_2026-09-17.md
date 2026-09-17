@@ -17,6 +17,8 @@ SIGN_OF_H_ON_T_LE_60_ALREADY_KNOWN: true (verified zeros + Hadamard)
 RUN_CERTIFIES: REPRESENTATION_NOT_SIGN
 GLOBAL_HEAD_SIGN_PROVED: false
 CONTINUUM_CERTIFIED: false
+ADAPTIVE_CUTOFF_6.3_RUN: true (r=0, M_r 12..49; grid_arb_dps80_adaptive.json)
+MIN_RATIO_hN_OVER_E62_ON_GRID: 1.5e19 (T=5.25, sigma=1/64)
 RH_CLAIM: false
 ```
 
@@ -155,6 +157,32 @@ RH_CLAIM: false
   минимум h_N/ℰ_N монотонно падает с T (3.5e+51 при T≈15 → 3.1e+44 при T=60) из-за роста M и c^{−5};
   экстраполяция даёт запас > 10³⁰ до T ≈ 200 при том же срезе, но это не проверялось.
 
+## 6. Адаптивный срез (6.3), r = 0 — по директиве [→MAC] (регистрация `registration_adaptive.json`, closeout `closeout_adaptive.json`)
+
+Та же сетка (1310 точек + 262 наклона), arb dps 80, но M = M_r из (6.3): t = T+1, Λ = 32 + 20 ln t, M_r = ⌈√(tΛ/3)⌉,
+диапазон 12…49 (диагностический был 11…35; совпадают лишь в 10 точках). В одном JSON три бюджета на точку:
+(5.2) при M_r, универсальный адаптивный (6.2) и его верхняя оценка (6.4).
+
+| Прогноз (Ылша, до запуска) | Судьба |
+|---|---|
+| P_ADAPT_1: min h_N/ℰ^{(6.2)} ∈ [10⁶, 10²⁴] | **CONFIRMED**: min = 1.5·10¹⁹ (σ=1/64, T=5.25), у нулей min 1.4·10²⁷, max 3.9·10³⁹ (T=57.5). Оговорка: просадка против диагностической таблицы 34.7 порядка при T=5, но только 5.5 при T=60 — на высоких T диагностический срез и так был слабее адаптивного |
+| P_ADAPT_2: отношение к (5.2) при M_r растёт | **CONFIRMED** в каждой точке: min 4.0·10⁵² против 3.1·10⁴⁴ |
+| P_ADAPT_3: все сертификаты POSITIVE | **CONFIRMED**: 1310/1310 под (5.2), (6.2), (6.4); наклоны 262/262 под всеми тремя |
+| P_ADAPT_4: ℰ^{(5.2)} < ℰ^{(6.4)} < ℰ^{(6.2)} | **REFUTED**: везде ℰ^{(5.2)} < ℰ^{(6.2)} < ℰ^{(6.4)}, (6.4) выводится как верхняя оценка (6.2). h_N/ℰ^{(6.4)} min 23 (T=4.5), ниже 10⁶ в 474 точках, ≥ 10⁶ начиная с T = 25.75 |
+
+Решающее правило из регистрации: P_ADAPT_1 сбылся → оплаченный адаптивный бюджет (6.2) на этой полосе не стена,
+батч Прошке = **HEAD_SIGN** конечной явной головы; численной мотивации для R2 нет.
+
+Флаг `bound_4.2_holds_all: false` в этом прогоне — пол точности, не нарушение: при M_r оценка B e^{−ϑT} падает
+до 10⁻¹⁰⁰ и ниже, а радиус arb-шара |F − J_N| на dps 80 порядка 10⁻⁹¹; в 1085 точках (T ≥ 13.25) шар шире оценки,
+и сертификат честно не выдаётся, нарушений с нижним краем шара выше оценки — ноль. (4.2) строго проверена на всех
+1310 точках в прогоне с диагностическим срезом (§2.1).
+
+Инцидент исполнения: первый адаптивный прогон (2411 с) не применил срез в воркерах (spawn на macOS переимпортирует
+модуль, глобальный флаг терялся); обнаружено по столбцу M после прогона, файл переименован в
+`grid_arb_dps80_adaptive_INVALID_cutoff_not_applied.json` и оставлен как улика, срез передан внутрь задачи, прогон повторён.
+Записано в `registration_adaptive.json` → `execution_incidents`.
+
 ## 5. Файлы и воспроизведение
 
 ```
@@ -168,6 +196,9 @@ grid_mp_dps50.json               диагностика mpmath dps 50
 grid_mp_dps80.json               диагностика mpmath dps 80
 grid_compare_50_80.json          сверка двух диагностических проходов
 logs/                            полные логи прогонов с прогрессом
+registration_adaptive.json       директива + прогнозы Ылши (переписаны 19:48 UTC) + инцидент
+grid_arb_dps80_adaptive.json     адаптивный срез (6.3) r=0, три бюджета на точку, строго
+closeout_adaptive.json           судьбы P_ADAPT_1..4
 sha256_manifest_grid.json        хэши всего перечисленного
 ```
 
@@ -177,6 +208,7 @@ python check_contour.py --grid --arb --dps 80 --workers 4 --Tmin 4.5 --Tmax 13.7
 python check_laguerre_xi.py --Tmin 4.5 --Tmax 60 --Tstep 0.25 --zeros --dps 60 --workers 4 --out laguerre_xi_arb.json
 python check_contour.py --grid --dps 50 --workers 8 --out grid_mp_dps50.json
 python check_contour.py --grid --dps 80 --workers 8 --Tstep 1.0 --out grid_mp_dps80.json   # AMEND_1
+python check_contour.py --grid --arb --adaptive 0 --dps 80 --workers 8 --Tmin 4.5 --Tmax 60 --out grid_arb_dps80_adaptive.json
 python check_contour.py --compare grid_mp_dps50.json grid_mp_dps80.json --out grid_compare_50_80.json
 ```
 

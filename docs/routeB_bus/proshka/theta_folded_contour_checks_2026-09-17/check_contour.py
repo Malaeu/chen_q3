@@ -119,10 +119,17 @@ def build_grid(sigmas, Tmin, Tmax, Tstep, zero_offsets):
     slopes = [{"T": T, "kind": kind, "gamma": g} for kind, T, g in Ts]
     return points, slopes
 
+ADAPTIVE_R = None   # None: diagnostic cutoff M=ceil(sqrt(40/c)); r>=0: adaptive cutoff (6.3)
+
 def cutoff(T):
     theta = mp.pi/4 - 1/mp.mpf(T+1)
     c = mp.cos(2*theta)
-    M = int(mp.ceil(mp.sqrt(40/c)))
+    if ADAPTIVE_R is None:
+        M = int(mp.ceil(mp.sqrt(40/c)))
+    else:
+        t = mp.mpf(T) + 1
+        Lam = 32 + 2*(ADAPTIVE_R + 10)*mp.log(t)
+        M = int(mp.ceil(mp.sqrt(t*Lam/3)))
     return theta, c, M, M-1
 
 def e_N_of(T, theta, c, M):
@@ -220,8 +227,7 @@ def grid_point_arb(task):
     t1 = T + 1
     theta = arb.pi()/4 - 1/t1
     c = (2*theta).cos()
-    M = int(mp.ceil(mp.sqrt(40/float(c.mid()))))          # same integer cutoff rule as the mpmath pass
-    N = M - 1
+    _, _, M, N = cutoff(float(task["T"]))                 # same integer cutoff rule as the mpmath pass (diagnostic or (6.3))
     p = acb(sigma, T)
     t0 = time.time()
     # choose L so that the (n=1) tail bound is below 10^-(dps+8) * e^{-theta T}
@@ -247,6 +253,11 @@ def grid_point_arb(task):
         if x.lower() > 0: return "POSITIVE"
         if x.upper() < 0: return "NEGATIVE"
         return "UNDECIDED"
+    # adaptive-cutoff budgets (6.2) and (6.4), meaningful when M = M_r from (6.3)
+    rr = ADAPTIVE_R if ADAPTIVE_R is not None else 0
+    E62 = 229376*sigma*t1**5*arb(M)**3*(-3*arb(M)**2/t1).exp()*(-arb.pi()*T/2).exp()
+    E64 = sigma*t1**(-rr)*(-arb.pi()*T/2).exp()
+    LN62 = h - E62; LN64 = h - E64
     # rigorous reference F(p)=xi(1/2+p) via acb zeta/gamma; check (4.2) |F-J_N| <= B e^{-theta T}
     s = acb(arb(1)/2, 0) + p
     F0 = s*(s-1)*(arb.pi()**(-s/2))*(s/2).gamma()*s.zeta()/2
@@ -260,6 +271,9 @@ def grid_point_arb(task):
            "e_N": str(eN), "E_N": str(E), "L_N": str(LN), "U_N": str(UN),
            "ratio_hN_over_EN": str(h/E),
            "sign_certificate_h_N": cert(h), "sign_certificate_L_N": cert(LN), "sign_certificate_U_N": cert(UN),
+           "cutoff_rule": ("adaptive_6.3_r=%s" % ADAPTIVE_R) if ADAPTIVE_R is not None else "diagnostic_sqrt(40/c)",
+           "E_62": str(E62), "ratio_hN_over_E62": str(h/E62), "sign_certificate_L_N_62": cert(LN62),
+           "E_64": str(E64), "ratio_hN_over_E64": str(h/E64), "sign_certificate_L_N_64": cert(LN64),
            "F_reference_arb": str(F0), "abs_F_minus_J0": str(diff0), "bound_4.2": str(bound42),
            "bound_4.2_holds_rigorously": bool(diff0.upper() < bound42.lower()),
            "runtime_seconds": time.time()-t0,
@@ -272,7 +286,7 @@ def slope_point_arb(task):
     T = arb(task["T"]); t1 = T + 1
     theta = arb.pi()/4 - 1/t1
     c = (2*theta).cos()
-    M = int(mp.ceil(mp.sqrt(40/float(c.mid())))); N = M - 1
+    _, _, M, N = cutoff(float(task["T"]))
     p = acb(0, T)
     t0 = time.time()
     target = arb(10)**(-(dps+8)) * (-theta*T).exp()
@@ -295,6 +309,9 @@ def slope_point_arb(task):
     imag_leak = max(abs(J[0].imag).upper(), abs(jp_c.imag).upper(), abs(jpp_c.imag).upper(), abs(L1c.imag).upper())
     eN = 28672*c**-5*arb(M)**3*(-arb.pi()*c*M*M - 2*theta*T).exp()
     margin = 4*L1 - eN
+    rr = ADAPTIVE_R if ADAPTIVE_R is not None else 0
+    e62 = 229376*t1**5*arb(M)**3*(-3*arb(M)**2/t1).exp()*(-arb.pi()*T/2).exp()
+    e64 = t1**(-rr)*(-arb.pi()*T/2).exp()
     def cert(x):
         if x.lower() > 0: return "POSITIVE"
         if x.upper() < 0: return "NEGATIVE"
@@ -304,6 +321,9 @@ def slope_point_arb(task):
             "imag_leak_symmetry_3.6": str(imag_leak), "L1": str(L1), "e_N": str(eN),
             "four_L1_over_eN": str(4*L1/eN), "sign_certificate_L1": cert(L1),
             "sign_certificate_4L1_minus_eN": cert(margin),
+            "cutoff_rule": ("adaptive_6.3_r=%s" % ADAPTIVE_R) if ADAPTIVE_R is not None else "diagnostic_sqrt(40/c)",
+            "four_L1_over_e62": str(4*L1/e62), "sign_certificate_4L1_minus_e62": cert(4*L1 - e62),
+            "four_L1_over_e64": str(4*L1/e64), "sign_certificate_4L1_minus_e64": cert(4*L1 - e64),
             "runtime_seconds": time.time()-t0, "certificate_scope": "finite point only; no continuum claim"}
 
 # ----------------------------------------------------------------------------------
@@ -311,7 +331,9 @@ def slope_point_arb(task):
 # ----------------------------------------------------------------------------------
 
 def _worker(args):
+    global ADAPTIVE_R
     kind, task = args
+    ADAPTIVE_R = task.get("adaptive_r")      # macOS spawn: workers re-import the module, pass the cutoff choice explicitly
     fn = {"point_mp": grid_point_mp, "slope_mp": slope_point_mp,
           "point_arb": grid_point_arb, "slope_arb": slope_point_arb}[kind]
     try:
@@ -324,8 +346,8 @@ def run_grid(args):
     offsets = [float(x) for x in args.zero_offsets.split(",")]
     points, slopes = build_grid(sigmas, args.Tmin, args.Tmax, args.Tstep, offsets)
     mode = "arb" if args.arb else "mp"
-    tasks = [(f"point_{mode}", dict(pt, dps=args.dps)) for pt in points] + \
-            [(f"slope_{mode}", dict(sl, dps=args.dps)) for sl in slopes]
+    tasks = [(f"point_{mode}", dict(pt, dps=args.dps, adaptive_r=ADAPTIVE_R)) for pt in points] + \
+            [(f"slope_{mode}", dict(sl, dps=args.dps, adaptive_r=ADAPTIVE_R)) for sl in slopes]
     total = len(tasks)
     print(f"grid: {len(points)} points ({len(sigmas)} sigmas x {len(slopes)} T incl. {sum(1 for s in slopes if s['kind']=='zero')} zero-height T) "
           f"+ {len(slopes)} sigma->0 slopes = {total} tasks | mode={mode} dps={args.dps} workers={args.workers}", flush=True)
@@ -353,7 +375,7 @@ def run_grid(args):
     results["slopes"].sort(key=lambda r: float(r["T"]))
     results["meta"] = {"mode": mode, "dps": args.dps, "sigmas": [str(s) for s in sigmas],
                        "Tmin": args.Tmin, "Tmax": args.Tmax, "Tstep": args.Tstep, "zero_offsets": offsets,
-                       "cutoff_rule": "theta=pi/4-1/(T+1); c=cos 2theta; M=ceil(sqrt(40/c)); N=M-1",
+                       "cutoff_rule": ("theta=pi/4-1/(T+1); c=cos 2theta; adaptive (6.3): t=T+1, Lam=32+2(r+10)ln t, M=ceil(sqrt(t Lam/3)), N=M-1, r=%s" % ADAPTIVE_R) if ADAPTIVE_R is not None else "theta=pi/4-1/(T+1); c=cos 2theta; M=ceil(sqrt(40/c)); N=M-1",
                        "error_rule": "E_N = sigma*e_N, e_N = 28672 c^-5 M^3 exp(-pi c M^2 - 2 theta T)",
                        "runtime_seconds": time.time()-t0, "n_points": len(results["points"]),
                        "n_slopes": len(results["slopes"]), "n_failures": len(results["failures"]),
@@ -368,7 +390,12 @@ def run_grid(args):
             "bound_4.2_holds_all": all(r["bound_4.2_holds_rigorously"] for r in pts),
             "slope_4L1_minus_eN_positive": sum(1 for r in sl if r["sign_certificate_4L1_minus_eN"] == "POSITIVE"),
             "slope_4L1_minus_eN_negative": sum(1 for r in sl if r["sign_certificate_4L1_minus_eN"] == "NEGATIVE"),
-            "slope_undecided": sum(1 for r in sl if r["sign_certificate_4L1_minus_eN"] == "UNDECIDED")}
+            "slope_undecided": sum(1 for r in sl if r["sign_certificate_4L1_minus_eN"] == "UNDECIDED"),
+            "L_N_62_positive_certified": sum(1 for r in pts if r.get("sign_certificate_L_N_62") == "POSITIVE"),
+            "L_N_64_positive_certified": sum(1 for r in pts if r.get("sign_certificate_L_N_64") == "POSITIVE"),
+            "L_N_64_not_positive": sum(1 for r in pts if r.get("sign_certificate_L_N_64") not in (None, "POSITIVE")),
+            "slope_4L1_minus_e62_positive": sum(1 for r in sl if r.get("sign_certificate_4L1_minus_e62") == "POSITIVE"),
+            "slope_4L1_minus_e64_positive": sum(1 for r in sl if r.get("sign_certificate_4L1_minus_e64") == "POSITIVE")}
     else:
         pts = results["points"]; sl = results["slopes"]
         ratios = [mp.mpf(r["ratio_hN_over_EN"]) for r in pts]
@@ -419,6 +446,7 @@ if __name__=='__main__':
     ap.add_argument('--dps',type=int,default=50)
     ap.add_argument('--grid',action='store_true')
     ap.add_argument('--arb',action='store_true',help='rigorous python-flint/arb pass')
+    ap.add_argument('--adaptive',type=float,default=None,help='use adaptive cutoff (6.3) with this r (e.g. 0)')
     ap.add_argument('--sigmas',default='1/64,1/32,1/16,1/8,1/4')
     ap.add_argument('--Tmin',type=float,default=14.0)
     ap.add_argument('--Tmax',type=float,default=60.0)
@@ -430,6 +458,8 @@ if __name__=='__main__':
     args=ap.parse_args()
     if args.compare:
         args.out = args.out or 'grid_compare.json'; run_compare(args); sys.exit(0)
+    if args.adaptive is not None:
+        ADAPTIVE_R = args.adaptive
     if args.grid:
         args.out = args.out or (Path(__file__).parent/f"grid_{'arb' if args.arb else 'mp'}_dps{args.dps}.json")
         run_grid(args); sys.exit(0)

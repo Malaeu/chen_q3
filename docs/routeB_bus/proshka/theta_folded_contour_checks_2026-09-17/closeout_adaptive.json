@@ -1,0 +1,20 @@
+{
+  "time_utc": "2026-09-17T21:45:00+00:00",
+  "channel": "MAC",
+  "registration": "registration_adaptive.json (directive + owner predictions rewritten 19:48 UTC + INCIDENT_1)",
+  "run": "grid_arb_dps80_adaptive.json: adaptive cutoff (6.3) r=0, M_r 12..49, same 1310 points + 262 slopes, arb dps 80, 2399 s",
+  "key_number": "min over grid of h_N/E^(6.2) = 1.517e19 at sigma=1/64, T=5.25 (M_r=12); min at zero heights 1.379e27 (T=14.184725); max 3.925e39 (T=57.5)",
+  "prediction_fates": {
+    "P_ADAPT_1": "CONFIRMED by its falsifier: min h_N/E^(6.2) = 1.5e19 in [1e6, 1e24]. Sub-claim '20-38 orders drop' holds only for T <~ 45: drop vs the diagnostic table ranges 5.5 orders (T=60) to 34.7 (T=5); at high T the diagnostic cutoff was already the looser one.",
+    "P_ADAPT_2": "CONFIRMED: h_N/E^(5.2)(M_r) >= diagnostic-table ratio at every point (min 4.0e52 vs 3.1e44); M_r equals the diagnostic M at only 10 of 1310 points.",
+    "P_ADAPT_3": "CONFIRMED: 1310/1310 L_N POSITIVE under (5.2), (6.2) and (6.4); 262/262 slopes POSITIVE under all three.",
+    "P_ADAPT_4": "REFUTED: order is E^(5.2) < E^(6.2) < E^(6.4) at every point, as (6.4) is derived as an upper bound of (6.2). h_N/E^(6.4) min 23 (T=4.5), below 1e6 at 474 points, >= 1e6 from T=25.75 on."
+  },
+  "decision_rule_outcome": "P_ADAPT_1 confirmed -> the paid adaptive budget (6.2) is not the wall on this strip; batch to Proshka = HEAD_SIGN of the finite explicit head, no numerical motivation for R2 here.",
+  "bound_4.2_status": "resolved and holding at 225 points (T<=13); unresolved at 1085 points (T>=13.25) solely because with M_r the bound B e^{-theta T} falls below the arb ball radius of |F-J_N| at dps 80 (bound <= 3.0e-81, radius >= 3.1e-81); zero genuine violations; the diagnostic-cutoff run verified (4.2) rigorously at all 1310 points.",
+  "incident": "first run had the cutoff unapplied in spawned workers; invalid file kept as grid_arb_dps80_adaptive_INVALID_cutoff_not_applied.json",
+  "certificate_scope": "finite points only; the run certifies the representation, not the sign",
+  "global_sign_proved": false,
+  "continuum_certified": false,
+  "rh_claim": false
+}

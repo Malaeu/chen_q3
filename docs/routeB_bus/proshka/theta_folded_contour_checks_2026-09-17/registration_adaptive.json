@@ -1,0 +1,77 @@
+{
+  "time_utc": "2026-09-17T19:40:00+00:00",
+  "channel": "MAC",
+  "directive": "[->MAC] run adaptive cutoff (6.3) on the same grid; register prediction of a 20-35 order drop of the ratio while staying >= 1e6; file as grid_arb_dps80_adaptive.json",
+  "cutoff": "(6.3): t=T+1, Lambda_r=32+2(r+10) ln t, M_r=ceil(sqrt(t Lambda_r/3)), N=M_r-1, r=0",
+  "budgets_evaluated_per_point": {
+    "E_52": "28672 sigma c^-5 M^3 exp(-pi c M^2 - 2 theta T) with M=M_r (5.2)",
+    "E_62": "229376 sigma (T+1)^5 M^3 exp(-3M^2/(T+1)) exp(-pi T/2) with M=M_r (6.2)",
+    "E_64": "sigma (T+1)^-r exp(-pi T/2) (6.4), r=0"
+  },
+  "grid": "same as registration_grid.json: sigma in {1/64..1/4}, T = 4.5..60 step 0.25 plus 13 zero heights +-0.05 -> 1310 points + 262 slopes; rigorous arb dps 80",
+  "predictions": [
+    {
+      "id": "P_ADAPT_1",
+      "owner": "Ylsha directive",
+      "statement": "With the adaptive-cutoff budget (6.2), h_N/E_62 drops by 20-35 orders of magnitude relative to the diagnostic table (h_N/E_52 at M=ceil(sqrt(40/c))) and stays >= 1e6 at every point; L_N^(6.2) certified POSITIVE everywhere.",
+      "confidence": 0.7,
+      "falsifier": "any point with h_N/E_62 < 1e6, or a drop outside [20,35] orders at more than 10% of points, or any non-POSITIVE certificate"
+    },
+    {
+      "id": "P_ADAPT_2",
+      "owner": "MAC pre-run note from 3 smoke points",
+      "statement": "With the coarser universal bound (6.4) at r=0, h_N/E_64 is < 1e6 for T below roughly 40 (about 40 at T=5, about 3e4 at T=14), reaching ~1e7 only near T=60; still certified POSITIVE at all points.",
+      "confidence": 0.8,
+      "falsifier": "any non-POSITIVE L_N^(6.4), or h_N/E_64 >= 1e6 at T=5"
+    },
+    {
+      "id": "P_ADAPT_3",
+      "owner": "MAC",
+      "statement": "With (5.2) evaluated at M=M_r the ratio does not drop: M_r >= diagnostic M at every T, so h_N/E_52(M_r) >= the diagnostic-table ratio at every point.",
+      "confidence": 0.9,
+      "falsifier": "any point where h_N/E_52(M_r) is below the diagnostic-table ratio"
+    }
+  ],
+  "note": "The three budgets are three different sufficient certificates for the same h_N; (6.2) and (6.4) are the paid universal adaptive budgets of the source, (5.2) at M_r is the tighter direct evaluation. The prediction of the directive is attached to (6.2).",
+  "owner_predictions_rewritten": {
+    "time_utc": "2026-09-17T19:48:00+00:00",
+    "by": "Ylsha",
+    "visible_at_that_time": "three smoke points (sigma=1/64; T=5, 14, 60) from the pre-run check: h/E62 = 2.5e20, 4.0e27, 9.8e38; h/E64 = 41, 3.2e4, 1.2e7; h/E52(M_r) = 1.1e55, 7.5e70, 4.5e96. The remaining 1307 points and all slopes were not yet computed.",
+    "predictions": [
+      {
+        "id": "P_ADAPT_1",
+        "statement": "min over the grid of h_N/E^(6.2) lies in [1e6, 1e24]: a drop from ~1e44 by 20-38 orders, not to O(1).",
+        "confidence": 0.7,
+        "falsifier": "min below 1e6 or above 1e24"
+      },
+      {
+        "id": "P_ADAPT_2",
+        "statement": "h_N/E^(5.2) at M_r exceeds the diagnostic-table value 3.1e44 at every point (ratio grows).",
+        "confidence": 0.9,
+        "falsifier": "any point with h_N/E^(5.2)(M_r) <= diagnostic-table ratio at that point"
+      },
+      {
+        "id": "P_ADAPT_3",
+        "statement": "all 1310 L_N and 262 slopes remain POSITIVE under every budget (decided by known zeros, not evidence).",
+        "confidence": 0.99,
+        "falsifier": "any non-POSITIVE certificate"
+      },
+      {
+        "id": "P_ADAPT_4",
+        "statement": "E^(5.2) < E^(6.4) < E^(6.2) at every point.",
+        "confidence": 0.6,
+        "falsifier": "any point violating the order; MAC note before the run: (6.4) is derived as an upper bound of (6.2), and the three smoke points already show E^(6.2) < E^(6.4), so the expected order is E^(5.2) < E^(6.2) < E^(6.4)"
+      }
+    ],
+    "decision_rule": "P_ADAPT_1 confirmed -> budget is not the wall; batch to Proshka = HEAD_SIGN of the finite explicit head. min < 1e6 -> budget (6.2) is part of the wall; add a second line: directed (not absolute) estimate of the adaptive remainder, i.e. R2 returns with numerical motivation."
+  },
+  "execution_incidents": [
+    {
+      "time_utc": "2026-09-17T20:50:00+00:00",
+      "id": "INCIDENT_1_CUTOFF_NOT_APPLIED_IN_WORKERS",
+      "what": "First adaptive run (2411 s) used the diagnostic cutoff M=ceil(sqrt(40/c)) in all worker processes: ADAPTIVE_R was a module global set only in the parent; macOS multiprocessing spawn re-imports the module in workers, so M_r stayed unused (M range 11..35 instead of 11..49). Detected from the M column after the run.",
+      "consequence": "grid_arb_dps80_adaptive.json from that run is NOT an adaptive-cutoff table; renamed to grid_arb_dps80_adaptive_INVALID_cutoff_not_applied.json and kept only as evidence. Values of E_64 (independent of M) from it are consistent with the rerun but are not used.",
+      "fix": "cutoff choice passed inside each task (adaptive_r) and set in the worker; rerun with the same registration and predictions unchanged."
+    }
+  ]
+}
