@@ -10,7 +10,7 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
 - Intake carried: Independently reviewed Q1--Q5; same-commit report/certificate; full V and RH OPEN
 - Registered predictions: Actual phi_* belongs to B_P1 or a source-locked necessary condition fails; no finite-check promotion
-- Delivery mode: explicit user-authorized GitHub full request and short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; not yet sent
+- Delivery mode: explicit user-authorized GitHub full request and short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; sent exactly once; matching native message observed, same chat active
 - Isolated candidate ledger only; canonical queue/runtime unchanged
 - Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_KPSQUOTIENT_2026-09-17.md`
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
@@ -19,6 +19,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
   `5d9f3cbb2e0b91879572051cae53aebb12f89599` / `yes`
 
 ---
+
+- Native delivery readback: turn `572c1249-8d5c-4a9d-9c9a-3056d190e452`; exact message match; chat active at `2026-09-17T01:11:41.709162+00:00`. User-message completed status is not a proof result. Full response and independent intake pending.
 
 ## REQ-2026-09-16-LOGVCURV · Full integrated V log-curvature test · ANSWERED
 
