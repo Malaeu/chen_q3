@@ -2,6 +2,24 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-17-KPSQUOTIENT · Forced full-theta KPS quotient; bounded analytic test · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_KPSQUOTIENT_2026-09-17.txt`
+- Boundary: `GOAL058_FORCED_FULL_THETA_KPS_QUOTIENT`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Independently reviewed Q1--Q5; same-commit report/certificate; full V and RH OPEN
+- Registered predictions: Actual phi_* belongs to B_P1 or a source-locked necessary condition fails; no finite-check promotion
+- Delivery mode: explicit user-authorized GitHub full request and short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; not yet sent
+- Isolated candidate ledger only; canonical queue/runtime unchanged
+- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_KPSQUOTIENT_2026-09-17.md`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `4f3c9240ac577b2e5b46906918b94d70e6f792ed` / `41151` / `844` /
+  `75e60257ac1b08f1768d9fe93cfc84ed706d9be8ebf3c7d256f72d51105c3540` /
+  `5d9f3cbb2e0b91879572051cae53aebb12f89599` / `yes`
+
+---
+
 ## REQ-2026-09-16-LOGVCURV · Full integrated V log-curvature test · ANSWERED
 
 - `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
