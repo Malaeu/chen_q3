@@ -2,15 +2,15 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-09-17-KPSQUOTIENT · Forced full-theta KPS quotient; bounded analytic test · OPEN
+## REQ-2026-09-17-KPSQUOTIENT · Forced full-theta KPS quotient; bounded analytic test · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_KPSQUOTIENT_2026-09-17.txt`
 - Boundary: `GOAL058_FORCED_FULL_THETA_KPS_QUOTIENT`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
 - Intake carried: Independently reviewed Q1--Q5; same-commit report/certificate; full V and RH OPEN
 - Registered predictions: Actual phi_* belongs to B_P1 or a source-locked necessary condition fails; no finite-check promotion
-- Delivery mode: explicit user-authorized GitHub full request and short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; sent exactly once; matching native message observed, same chat active
+- Delivery mode: explicit user-authorized GitHub full request and short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; sent exactly once; matching terminal native reply and full Git response received, independently reviewed
 - Isolated candidate ledger only; canonical queue/runtime unchanged
 - Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_KPSQUOTIENT_2026-09-17.md`
 - Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
@@ -20,7 +20,10 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 ---
 
-- Native delivery readback: turn `572c1249-8d5c-4a9d-9c9a-3056d190e452`; exact message match; chat active at `2026-09-17T01:11:41.709162+00:00`. User-message completed status is not a proof result. Full response and independent intake pending.
+- Native delivery readback: turn `572c1249-8d5c-4a9d-9c9a-3056d190e452`; exact message match; chat active at `2026-09-17T01:11:41.709162+00:00`. User-message completed status is not a proof result. This historical observation preceded the terminal response.
+
+- Terminal result: `8d3a63ae28c1ac92f06f433cd7e1b8d4ec266679`; native reply `2da5f837-2339-4b51-9796-353caafb9635`, chat idle.
+- Accepted scope: `ACCEPT_KPSQUOTIENT_DENOMINATOR_FILTER_ONLY`; intake `docs/Codex/REPORT_2026-09-17_KPSQUOTIENT_INTAKE.md`; actual class membership and full V/RH remain OPEN. No source-sign counter reset.
 
 ## REQ-2026-09-16-LOGVCURV · Full integrated V log-curvature test · ANSWERED
 
