@@ -1,0 +1,89 @@
+{
+  "time_utc": "2026-09-17T22:35:00+00:00",
+  "task_id": "MAC_DH_CONTROL_AND_GN_SPECTRUM_2026-09-17",
+  "channel": "MAC",
+  "base_commit": "b8fe5613 (+42e69ad2, 3efebe31 adaptive table)",
+  "run_certifies": "DISCRIMINATOR_SENSITIVITY_NOT_SIGN",
+  "G_N_definition_fixed_before_compute": "G_N[j,k] = 2 Re( s_j' conj(s_k) + s_k' conj(s_j) ) on the summands s_n = I_n(p,th)+I_n(-p,-th), n<=N, s_n' = d/dp at fixed th,N; N x N real symmetric; h_N = 1^T G_N 1. Spectrum computed exactly through the rank-4 factorisation G_N = W C W^T, W=[Re u, Im u, Re v, Im v], C = 2*antidiag-pair matrix of signature (2,2); full mp.eigsy cross-check on the first 3 points of each run.",
+  "pre_run_structural_note": "By Sylvester's law of inertia G_N has exactly 2 negative and 2 positive eigenvalues and N-4 exact zeros wherever the four columns of W are linearly independent, independently of the sign of h_N. Hence the 'square in the ray basis' is expected invisible at every point for both zeta and DH; the numbers will confirm or refute this.",
+  "derivation_gate_passed": {
+    "file": "dh_selftest.json",
+    "closed_form_vs_Hurwitz_reference": "|H_DH - h_N^DH|/E_N^DH in [3.8e-7, 5.8e-5] at 4 test points (sigma=1/4 T=20,40; sigma=1/64 T=86; sigma=0.30 T=85.7)",
+    "functional_equation": "|F(p)-F(-p)| <= 2.4e-56 at 3 points; Im F(iT) ~ 1e-64",
+    "a_n": "(1, kappa, -kappa, -1, 0) verified",
+    "note": "direct mp.quad of the n=1 ray at T=86 differs from the closed form by 3e-6 relative: quadrature error on e^{86 i t}, not the formula (the closed form matches the independent Hurwitz reference)"
+  },
+  "reference_before_grid": {
+    "s0": "(0.80851718245663738555335196060684 + 85.699348485377592171929267708942j)",
+    "sigma0": "0.308517182456637385553351960607",
+    "T0": "85.6993484853775921719292677089",
+    "online_zeros_80_92": [
+      "80.3279470860903",
+      "81.925402391831",
+      "83.1088410847498",
+      "87.6474763325597",
+      "89.4391887988165",
+      "90.7245047744187"
+    ],
+    "nearest_online_zeros_to_T0": [
+      "87.6474763326",
+      "83.1088410847",
+      "89.4391887988",
+      "81.9254023918"
+    ],
+    "first_order_negative_window": {
+      "T_min": "85.40734849",
+      "T_max": "85.98834849",
+      "delta_minus": "0.292",
+      "delta_plus": "0.289",
+      "note": "near on-line zeros only (80..92); far zeros add a positive remainder, so the true window is not wider"
+    },
+    "slope_at_T0": "-20.383713",
+    "note": "no on-line zero between 83.11 and 87.65 (gap 4.5 at typical spacing ~0.75); first-order window delta ~ 0.29 on both sides"
+  },
+  "grids": {
+    "part_A_zeta": "sigma {1/64,1/32,1/16,1/8,1/4} x (T=14..60 step 0.25 + 13 zero heights +-0.05) = 1120 points, both cutoffs (diagnostic sqrt(40/c) and adaptive (6.3) r=0) = 2240 tasks, mpmath dps 50; arb Rayleigh sign at 20 points (13 zero heights sigma=1/64; T in {14,20,30,40,50,60,25.75} sigma=1/4)",
+    "part_B_dh": "control strip sigma {1/64,1/32,1/16,1/8,1/4,0.28,0.30,0.3085,0.32} x (T=80.0..92.0 step 0.1 + T0+-{0.005,0.01,0.02,0.05}) = 1161 points; zeta-like strip sigma {1/64,1/8,1/4} x T=14..60 step 1.0 = 141 points; adaptive cutoff (6.3) r=0 (M_r up to 60); arb dps 80 for h_N, E_N, L_N, U_N; reference H_DH by mpmath Hurwitz (diagnostic)",
+    "part_A_dh": "G_N^DH spectrum on the control strip (1161 points), mpmath dps 50"
+  },
+  "predictions": [
+    {
+      "id": "P_CAN_1",
+      "statement": "On the control strip there is a set of points with certificate U_N < 0 (NEGATIVE), including (sigma=0.30, T in T0+-0.05).",
+      "confidence": 0.9,
+      "falsifier": "no NEGATIVE certificate on the control strip => discriminator blind to the off-line zero => FATAL for the enclosure as judge"
+    },
+    {
+      "id": "P_CAN_2",
+      "statement": "On the zeta-like strip (T<=60) all L_N > 0.",
+      "confidence": 0.95,
+      "falsifier": "any non-POSITIVE L_N there"
+    },
+    {
+      "id": "P_CAN_3",
+      "statement": "The DH enclosure converges: |H_DH - h_N^DH| <= E_N^DH at all points (dps 80).",
+      "confidence": 0.85,
+      "falsifier": "any point violating it => derivation of (3.3)^DH or the budget wrong => return, do not file the grid"
+    },
+    {
+      "id": "P_CAN_4",
+      "statement": "Part A zeta: lambda_min(G_N) < 0 at more than 50% of points with sigma<=1/8; dominant negative directions are neighbouring pairs (n,n+1) with n in the upper third of [1,N].",
+      "confidence": 0.7,
+      "falsifier": "lambda_min>=0 at >=50% of those points, or dominant components not in the upper third"
+    },
+    {
+      "id": "P_CAN_5",
+      "statement": "Part A DH: at NEGATIVE-certificate points lambda_min(G_N^DH) < 0 with |lambda_min|/|J|^2 at least 2 orders larger than for zeta at the same (sigma,T) scale.",
+      "confidence": 0.6,
+      "falsifier": "ratio below 100 at the NEGATIVE points (comparison scale: lambda_min/|J_N|^2)"
+    },
+    {
+      "id": "P_CAN_6",
+      "statement": "For zeta on T<=60 there is a point with lambda_min < 0 and h_N > 0: head positive, square invisible in the ray basis.",
+      "confidence": 0.8,
+      "falsifier": "no such point"
+    }
+  ],
+  "comparison_scale_for_P_CAN_5": "lambda_min / |J_N(p)|^2 (dimensionless); zeta values taken from gn_spectrum_zeta.json at the nearest grid point in sigma; heights differ (zeta grid T<=60, DH control T~80-92), so the comparison is by normalised magnitude, as the directive allows",
+  "amendments": []
+}

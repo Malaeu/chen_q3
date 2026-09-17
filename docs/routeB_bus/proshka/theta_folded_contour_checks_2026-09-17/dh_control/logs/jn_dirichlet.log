@@ -1,0 +1,59 @@
+jn_dirichlet: 28 tasks (20 identity points, 8 zero windows), workers 8, seed 20260918
+[1/28] 3% | ETA 9m36s | identity T=5.868 sigma=1.2911 digits=50.9 E/J=0.029347473
+[2/28] 7% | ETA 8m18s | identity T=12.2893 sigma=0.9425 digits=49.8 E/J=0.021253304
+[3/28] 10% | ETA 5m55s | identity T=14.1168 sigma=1.281 digits=49.6 E/J=0.010428595
+[4/28] 14% | ETA 5m49s | identity T=20.3988 sigma=0.3374 digits=48.1 E/J=0.083925634
+[5/28] 17% | ETA 4m52s | identity T=7.1104 sigma=0.9692 digits=50.7 E/J=0.046300812
+[6/28] 21% | ETA 4m09s | identity T=7.1921 sigma=0.629 digits=50.7 E/J=0.097366999
+[7/28] 25% | ETA 3m36s | identity T=3.3482 sigma=0.8212 digits=50.3 E/J=0.23863065
+[8/28] 28% | ETA 3m23s | identity T=2.0785 sigma=0.7598 digits=50.4 E/J=0.44109455
+[9/28] 32% | ETA 2m57s | identity T=22.3032 sigma=0.0982 digits=47.1 E/J=0.12332211
+[10/28] 35% | ETA 2m33s | identity T=32.337 sigma=0.2359 digits=44.2 E/J=0.10916331
+[11/28] 39% | ETA 2m14s | identity T=33.2714 sigma=0.8851 digits=44.4 E/J=0.012546116
+[12/28] 42% | ETA 1m58s | identity T=7.4159 sigma=0.838 digits=50.4 E/J=0.063594664
+[13/28] 46% | ETA 1m43s | identity T=35.3419 sigma=0.9272 digits=44.8 E/J=0.0041973176
+[14/28] 50% | ETA 1m30s | d_N T0=14.0 N=20 zeros=1 re>1/2=1 re>1=0 maxstep=0.11037
+[15/28] 53% | ETA 1m22s | identity T=3.2641 sigma=0.9314 digits=49.9 E/J=0.16980698
+[16/28] 57% | ETA 1m11s | d_N T0=20.0 N=25 zeros=1 re>1/2=1 re>1=0 maxstep=0.66679
+[17/28] 60% | ETA 1m03s | identity T=39.9262 sigma=0.5288 digits=42.0 E/J=0.043242909
+[18/28] 64% | ETA 0m54s | d_N T0=30.0 N=32 zeros=1 re>1/2=1 re>1=0 maxstep=0.20495
+[19/28] 67% | ETA 0m54s | J_N T0=14.0 N=20 full=1 online=1 off=0 right=0
+[20/28] 71% | ETA 0m46s | d_N T0=40.0 N=38 zeros=1 re>1/2=1 re>1=0 maxstep=0.25672
+[21/28] 75% | ETA 0m39s | J_N T0=20.0 N=25 full=0 online=0 off=0 right=0
+[22/28] 78% | ETA 0m34s | identity T=13.2229 sigma=0.3685 digits=50.3 E/J=0.17213222
+[23/28] 82% | ETA 0m28s | identity T=21.9712 sigma=0.2069 digits=47.0 E/J=0.10349074
+[24/28] 85% | ETA 0m21s | J_N T0=30.0 N=32 full=1 online=1 off=0 right=0
+[25/28] 89% | ETA 0m16s | identity T=18.4712 sigma=0.6537 digits=49.3 E/J=0.02024313
+[26/28] 92% | ETA 0m11s | J_N T0=40.0 N=38 full=1 online=1 off=0 right=0
+[27/28] 96% | ETA 0m06s | identity T=32.3137 sigma=0.4482 digits=44.4 E/J=0.054808323
+[28/28] 100% | ETA 0m00s | identity T=39.8633 sigma=1.1331 digits=42.3 E/J=0.0027032551
+T=2.0785 sigma=0.7598 tau=1.4082 N=7 digits=50.4 |E|/|J|=0.44109455
+T=3.2641 sigma=0.9314 tau=3.0958 N=9 digits=49.9 |E|/|J|=0.16980698
+T=3.3482 sigma=0.8212 tau=2.8972 N=9 digits=50.3 |E|/|J|=0.23863065
+T=5.868 sigma=1.2911 tau=5.3034 N=12 digits=50.9 |E|/|J|=0.029347473
+T=7.1104 sigma=0.9692 tau=6.3686 N=14 digits=50.7 |E|/|J|=0.046300812
+T=7.1921 sigma=0.629 tau=6.948 N=14 digits=50.7 |E|/|J|=0.097366999
+T=7.4159 sigma=0.838 tau=6.4912 N=14 digits=50.4 |E|/|J|=0.063594664
+T=12.2893 sigma=0.9425 tau=11.7599 N=19 digits=49.8 |E|/|J|=0.021253304
+T=13.2229 sigma=0.3685 tau=13.1213 N=20 digits=50.3 |E|/|J|=0.17213222
+T=14.1168 sigma=1.281 tau=13.4812 N=20 digits=49.6 |E|/|J|=0.010428595
+T=18.4712 sigma=0.6537 tau=17.71 N=24 digits=49.3 |E|/|J|=0.02024313
+T=20.3988 sigma=0.3374 tau=19.9553 N=25 digits=48.1 |E|/|J|=0.083925634
+T=21.9712 sigma=0.2069 tau=22.4828 N=26 digits=47.0 |E|/|J|=0.10349074
+T=22.3032 sigma=0.0982 tau=23.2888 N=27 digits=47.1 |E|/|J|=0.12332211
+T=32.3137 sigma=0.4482 tau=31.9529 N=33 digits=44.4 |E|/|J|=0.054808323
+T=32.337 sigma=0.2359 tau=31.9876 N=33 digits=44.2 |E|/|J|=0.10916331
+T=33.2714 sigma=0.8851 tau=32.4905 N=34 digits=44.4 |E|/|J|=0.012546116
+T=35.3419 sigma=0.9272 tau=36.0784 N=35 digits=44.8 |E|/|J|=0.0041973176
+T=39.8633 sigma=1.1331 tau=39.7712 N=38 digits=42.3 |E|/|J|=0.0027032551
+T=39.9262 sigma=0.5288 tau=40.7578 N=38 digits=42.0 |E|/|J|=0.043242909
+d_N T0=14.0 zeros=1 re>1/2=1 re>1=0 zeros=['(0.7229249948483920521270149 + 14.07156020350109152410298j)']
+d_N T0=20.0 zeros=1 re>1/2=1 re>1=0 zeros=['(0.6439704734961323014190898 + 20.98565751603440547249861j)']
+d_N T0=30.0 zeros=1 re>1/2=1 re>1=0 zeros=['(0.6095141986353142157093467 + 30.4101508566711372947029j)']
+d_N T0=40.0 zeros=1 re>1/2=1 re>1=0 zeros=['(0.5846567388224207431828005 + 40.92076226757420611988544j)']
+J_N T0=14.0 full=1 online=1 off=0 right_of_eps=0
+J_N T0=20.0 full=0 online=0 off=0 right_of_eps=0
+J_N T0=30.0 full=1 online=1 off=0 right_of_eps=0
+J_N T0=40.0 full=1 online=1 off=0 right_of_eps=0
+written jn_dirichlet.json
+exit 0

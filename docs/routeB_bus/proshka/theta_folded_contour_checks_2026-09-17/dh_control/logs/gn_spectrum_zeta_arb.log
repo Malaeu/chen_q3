@@ -1,0 +1,23 @@
+rayleigh_point: 20 tasks, workers 4
+[1/20] 5% | ETA 0m15s | sigma=1/64 T=14.134725 sign_certificate_rayleigh=NEGATIVE
+[2/20] 10% | ETA 0m10s | sigma=1/64 T=21.02204 sign_certificate_rayleigh=NEGATIVE
+[3/20] 15% | ETA 0m07s | sigma=1/64 T=25.010858 sign_certificate_rayleigh=NEGATIVE
+[4/20] 20% | ETA 0m06s | sigma=1/64 T=30.424876 sign_certificate_rayleigh=NEGATIVE
+[5/20] 25% | ETA 0m07s | sigma=1/64 T=32.935062 sign_certificate_rayleigh=NEGATIVE
+[6/20] 30% | ETA 0m07s | sigma=1/64 T=37.586178 sign_certificate_rayleigh=NEGATIVE
+[7/20] 35% | ETA 0m06s | sigma=1/64 T=40.918719 sign_certificate_rayleigh=NEGATIVE
+[8/20] 40% | ETA 0m05s | sigma=1/64 T=43.327073 sign_certificate_rayleigh=NEGATIVE
+[9/20] 45% | ETA 0m06s | sigma=1/64 T=48.005151 sign_certificate_rayleigh=NEGATIVE
+[10/20] 50% | ETA 0m05s | sigma=1/64 T=49.773832 sign_certificate_rayleigh=NEGATIVE
+[11/20] 55% | ETA 0m05s | sigma=1/64 T=52.970321 sign_certificate_rayleigh=NEGATIVE
+[12/20] 60% | ETA 0m04s | sigma=1/4 T=14.0 sign_certificate_rayleigh=NEGATIVE
+[13/20] 65% | ETA 0m03s | sigma=1/64 T=56.446248 sign_certificate_rayleigh=NEGATIVE
+[14/20] 70% | ETA 0m03s | sigma=1/4 T=20.0 sign_certificate_rayleigh=NEGATIVE
+[15/20] 75% | ETA 0m02s | sigma=1/4 T=30.0 sign_certificate_rayleigh=NEGATIVE
+[16/20] 80% | ETA 0m02s | sigma=1/64 T=59.347044 sign_certificate_rayleigh=NEGATIVE
+[17/20] 85% | ETA 0m01s | sigma=1/4 T=40.0 sign_certificate_rayleigh=NEGATIVE
+[18/20] 90% | ETA 0m01s | sigma=1/4 T=25.75 sign_certificate_rayleigh=NEGATIVE
+[19/20] 95% | ETA 0m00s | sigma=1/4 T=50.0 sign_certificate_rayleigh=NEGATIVE
+[20/20] 100% | ETA 0m00s | sigma=1/4 T=60.0 sign_certificate_rayleigh=NEGATIVE
+written /Users/emalam/GitHub/rh_lean_01_2026/docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/dh_control/gn_spectrum_zeta_arb.json in 11s
+CHAIN_A_DONE

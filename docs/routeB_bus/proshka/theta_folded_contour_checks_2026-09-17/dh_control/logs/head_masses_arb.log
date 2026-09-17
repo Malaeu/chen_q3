@@ -1,0 +1,12 @@
+point_arb: 10 tasks, workers 4
+[1/10] 10% | ETA 0m07s | sigma=1/64 T=14.134725 q=[0.976786710 cert=POSITIVE
+[2/10] 20% | ETA 0m04s | sigma=1/64 T=21.02204 q=[0.964137558 cert=POSITIVE
+[3/10] 30% | ETA 0m03s | sigma=1/64 T=25.010858 q=[0.961129940 cert=POSITIVE
+[4/10] 40% | ETA 0m02s | sigma=1/64 T=30.424876 q=[0.957480198 cert=POSITIVE
+[5/10] 50% | ETA 0m01s | sigma=1/4 T=14.0 q=[0.684810245 cert=POSITIVE
+[6/10] 60% | ETA 0m01s | sigma=1/4 T=20.0 q=[0.582729878 cert=POSITIVE
+[7/10] 70% | ETA 0m01s | sigma=1/64 T=32.935062 q=[0.956966993 cert=POSITIVE
+[8/10] 80% | ETA 0m00s | sigma=1/4 T=30.0 q=[0.547018830 cert=POSITIVE
+[9/10] 90% | ETA 0m00s | sigma=1/4 T=40.0 q=[0.421403735 cert=POSITIVE
+[10/10] 100% | ETA 0m00s | sigma=1/4 T=60.0 q=[0.038326088 cert=POSITIVE
+written /Users/emalam/GitHub/rh_lean_01_2026/docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/dh_control/head_masses_arb.json in 6s

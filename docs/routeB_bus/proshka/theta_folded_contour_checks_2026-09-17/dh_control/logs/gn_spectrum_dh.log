@@ -1,0 +1,755 @@
+spectrum_point: 1161 tasks, workers 6
+[1/1161] 0% | ETA 46m28s | sigma=1/8 T=80.0 lambda_min=-3.32119287188
+[2/1161] 0% | ETA 23m23s | sigma=0.28 T=80.0 lambda_min=-7.11615742770
+[3/1161] 0% | ETA 15m45s | sigma=1/4 T=80.0 lambda_min=-6.41980101141
+[4/1161] 0% | ETA 15m11s | sigma=1/64 T=80.0 lambda_min=-4.20354844745
+[5/1161] 0% | ETA 12m18s | sigma=1/32 T=80.0 lambda_min=-8.40198014748
+[6/1161] 0% | ETA 10m26s | sigma=1/16 T=80.0 lambda_min=-1.67633504938
+[7/1161] 0% | ETA 13m00s | sigma=0.32 T=80.0 lambda_min=-8.01513049785
+[8/1161] 0% | ETA 11m22s | sigma=0.30 T=80.0 lambda_min=-7.56979889462
+[9/1161] 0% | ETA 10m10s | sigma=0.3085 T=80.0 lambda_min=-7.76006781363
+[10/1161] 0% | ETA 10m32s | sigma=1/64 T=80.1 lambda_min=-2.38326673957
+[11/1161] 0% | ETA 9m39s | sigma=1/32 T=80.1 lambda_min=-4.76467343003
+[12/1161] 1% | ETA 9m01s | sigma=1/16 T=80.1 lambda_min=-9.51460842799
+[13/1161] 1% | ETA 10m24s | sigma=1/8 T=80.1 lambda_min=-1.89157290349
+[14/1161] 1% | ETA 9m43s | sigma=0.28 T=80.1 lambda_min=-4.12459752986
+[15/1161] 1% | ETA 9m04s | sigma=1/4 T=80.1 lambda_min=-3.70508013812
+[16/1161] 1% | ETA 9m21s | sigma=0.30 T=80.1 lambda_min=-4.40097919582
+[17/1161] 1% | ETA 8m50s | sigma=0.3085 T=80.1 lambda_min=-4.51768044367
+[18/1161] 1% | ETA 8m24s | sigma=0.32 T=80.1 lambda_min=-4.67487910463
+[19/1161] 1% | ETA 9m26s | sigma=1/64 T=80.2 lambda_min=-1.33076607116
+[20/1161] 1% | ETA 9m01s | sigma=1/32 T=80.2 lambda_min=-2.66122058127
+[21/1161] 1% | ETA 8m35s | sigma=1/16 T=80.2 lambda_min=-5.31999289481
+[22/1161] 1% | ETA 8m48s | sigma=1/8 T=80.2 lambda_min=-1.06217759560
+[23/1161] 1% | ETA 8m29s | sigma=1/4 T=80.2 lambda_min=-2.11374808833
+[24/1161] 2% | ETA 8m08s | sigma=0.28 T=80.2 lambda_min=-2.36478989847
+[25/1161] 2% | ETA 8m55s | sigma=0.30 T=80.2 lambda_min=-2.53209583066
+[26/1161] 2% | ETA 8m37s | sigma=0.32 T=80.2 lambda_min=-2.69947230802
+[27/1161] 2% | ETA 8m18s | sigma=0.3085 T=80.2 lambda_min=-2.60321595337
+[28/1161] 2% | ETA 8m28s | sigma=1/64 T=80.3 lambda_min=-8.14237189501
+[29/1161] 2% | ETA 8m14s | sigma=1/32 T=80.3 lambda_min=-1.62863009002
+[30/1161] 2% | ETA 7m57s | sigma=1/16 T=80.3 lambda_min=-3.25851179776
+[31/1161] 2% | ETA 8m35s | sigma=1/8 T=80.3 lambda_min=-6.52722222962
+[32/1161] 2% | ETA 8m22s | sigma=0.28 T=80.3 lambda_min=-1.47536206156
+[33/1161] 2% | ETA 8m07s | sigma=1/4 T=80.3 lambda_min=-1.31415186791
+[34/1161] 2% | ETA 8m15s | sigma=0.30 T=80.3 lambda_min=-1.58355457989
+[35/1161] 3% | ETA 8m03s | sigma=0.32 T=80.3 lambda_min=-1.69238988116
+[36/1161] 3% | ETA 7m49s | sigma=0.3085 T=80.3 lambda_min=-1.62972757268
+[37/1161] 3% | ETA 8m21s | sigma=1/64 T=80.4 lambda_min=-6.44853428153
+[38/1161] 3% | ETA 8m11s | sigma=1/32 T=80.4 lambda_min=-1.28974800354
+[39/1161] 3% | ETA 8m00s | sigma=1/16 T=80.4 lambda_min=-2.57982963229
+[40/1161] 3% | ETA 8m06s | sigma=1/8 T=80.4 lambda_min=-5.16246693900
+[41/1161] 3% | ETA 7m55s | sigma=0.28 T=80.4 lambda_min=-1.16051238728
+[42/1161] 3% | ETA 7m45s | sigma=1/4 T=80.4 lambda_min=-1.03514229548
+[43/1161] 3% | ETA 8m10s | sigma=0.30 T=80.4 lambda_min=-1.24435268633
+[44/1161] 3% | ETA 8m02s | sigma=0.3085 T=80.4 lambda_min=-1.28005550174
+[45/1161] 3% | ETA 7m53s | sigma=0.32 T=80.4 lambda_min=-1.32843165835
+[46/1161] 3% | ETA 8m00s | sigma=1/64 T=80.5 lambda_min=-7.14410429274
+[47/1161] 4% | ETA 7m50s | sigma=1/32 T=80.5 lambda_min=-1.42834076640
+[48/1161] 4% | ETA 7m40s | sigma=1/16 T=80.5 lambda_min=-2.85287355290
+[49/1161] 4% | ETA 8m01s | sigma=1/8 T=80.5 lambda_min=-5.67629983224
+[50/1161] 4% | ETA 7m54s | sigma=1/4 T=80.5 lambda_min=-1.11459456841
+[51/1161] 4% | ETA 7m46s | sigma=0.28 T=80.5 lambda_min=-1.24151840679
+[52/1161] 4% | ETA 7m53s | sigma=0.30 T=80.5 lambda_min=-1.32516695352
+[53/1161] 4% | ETA 7m44s | sigma=0.3085 T=80.5 lambda_min=-1.36048706499
+[54/1161] 4% | ETA 7m35s | sigma=0.32 T=80.5 lambda_min=-1.40805808359
+[55/1161] 4% | ETA 7m54s | sigma=1/64 T=80.6 lambda_min=-9.68255492203
+[56/1161] 4% | ETA 7m49s | sigma=1/32 T=80.6 lambda_min=-1.93510871246
+[57/1161] 4% | ETA 7m42s | sigma=1/16 T=80.6 lambda_min=-3.85908454884
+[58/1161] 4% | ETA 7m48s | sigma=1/8 T=80.6 lambda_min=-7.63175838064
+[59/1161] 5% | ETA 7m40s | sigma=1/4 T=80.6 lambda_min=-1.46482110431
+[60/1161] 5% | ETA 7m32s | sigma=0.28 T=80.6 lambda_min=-1.61993215591
+[61/1161] 5% | ETA 7m49s | sigma=0.30 T=80.6 lambda_min=-1.72030021896
+[62/1161] 5% | ETA 7m44s | sigma=0.3085 T=80.6 lambda_min=-1.76222314565
+[63/1161] 5% | ETA 7m37s | sigma=0.32 T=80.6 lambda_min=-1.81825156559
+[64/1161] 5% | ETA 7m40s | sigma=1/64 T=80.7 lambda_min=-1.34046099886
+[65/1161] 5% | ETA 7m34s | sigma=1/32 T=80.7 lambda_min=-2.67839537411
+[66/1161] 5% | ETA 7m28s | sigma=1/16 T=80.7 lambda_min=-5.33671767588
+[67/1161] 5% | ETA 7m44s | sigma=1/8 T=80.7 lambda_min=-1.05172146241
+[68/1161] 5% | ETA 7m39s | sigma=1/4 T=80.7 lambda_min=-1.99110738486
+[69/1161] 5% | ETA 7m32s | sigma=0.28 T=80.7 lambda_min=-2.19192763205
+[70/1161] 6% | ETA 7m35s | sigma=0.30 T=80.7 lambda_min=-2.32009049800
+[71/1161] 6% | ETA 7m30s | sigma=0.3085 T=80.7 lambda_min=-2.37317208341
+[72/1161] 6% | ETA 7m24s | sigma=0.32 T=80.7 lambda_min=-2.44367613112
+[73/1161] 6% | ETA 7m37s | sigma=1/64 T=80.8 lambda_min=-1.70555393448
+[74/1161] 6% | ETA 7m33s | sigma=1/32 T=80.8 lambda_min=-3.40774016293
+[75/1161] 6% | ETA 7m28s | sigma=1/16 T=80.8 lambda_min=-6.78870553778
+[76/1161] 6% | ETA 7m31s | sigma=1/8 T=80.8 lambda_min=-1.33684324167
+[77/1161] 6% | ETA 7m26s | sigma=1/4 T=80.8 lambda_min=-2.52179256225
+[78/1161] 6% | ETA 7m20s | sigma=0.28 T=80.8 lambda_min=-2.77229595365
+[79/1161] 6% | ETA 7m32s | sigma=0.30 T=80.8 lambda_min=-2.93130601644
+[80/1161] 6% | ETA 7m29s | sigma=0.3085 T=80.8 lambda_min=-2.99693305260
+[81/1161] 6% | ETA 7m24s | sigma=0.32 T=80.8 lambda_min=-3.08386794260
+[82/1161] 7% | ETA 7m27s | sigma=1/64 T=80.9 lambda_min=-1.93456294087
+[83/1161] 7% | ETA 7m23s | sigma=1/16 T=80.9 lambda_min=-7.70182141162
+[84/1161] 7% | ETA 7m18s | sigma=1/32 T=80.9 lambda_min=-3.86546626225
+[85/1161] 7% | ETA 7m28s | sigma=1/8 T=80.9 lambda_min=-1.51759515609
+[86/1161] 7% | ETA 7m26s | sigma=1/4 T=80.9 lambda_min=-2.86837133479
+[87/1161] 7% | ETA 7m21s | sigma=0.28 T=80.9 lambda_min=-3.15485896001
+[88/1161] 7% | ETA 7m23s | sigma=0.30 T=80.9 lambda_min=-3.33684830526
+[89/1161] 7% | ETA 7m19s | sigma=0.3085 T=80.9 lambda_min=-3.41198365122
+[90/1161] 7% | ETA 7m14s | sigma=0.32 T=80.9 lambda_min=-3.51153005393
+[91/1161] 7% | ETA 7m24s | sigma=1/64 T=81.0 lambda_min=-1.96979298155
+[92/1161] 7% | ETA 7m22s | sigma=1/32 T=81.0 lambda_min=-3.93610231533
+[93/1161] 8% | ETA 7m18s | sigma=1/16 T=81.0 lambda_min=-7.84448540077
+[94/1161] 8% | ETA 7m19s | sigma=1/8 T=81.0 lambda_min=-1.54719213278
+[95/1161] 8% | ETA 7m16s | sigma=1/4 T=81.0 lambda_min=-2.93467670359
+[96/1161] 8% | ETA 7m12s | sigma=0.28 T=81.0 lambda_min=-3.23132883941
+[97/1161] 8% | ETA 7m20s | sigma=0.30 T=81.0 lambda_min=-3.42035994525
+[98/1161] 8% | ETA 7m18s | sigma=0.3085 T=81.0 lambda_min=-3.49854733016
+[99/1161] 8% | ETA 7m15s | sigma=0.32 T=81.0 lambda_min=-3.60227542671
+[100/1161] 8% | ETA 7m16s | sigma=1/64 T=81.1 lambda_min=-1.82443897878
+[101/1161] 8% | ETA 7m12s | sigma=1/32 T=81.1 lambda_min=-3.64585603513
+[102/1161] 8% | ETA 7m08s | sigma=1/16 T=81.1 lambda_min=-7.26766472528
+[103/1161] 8% | ETA 7m17s | sigma=1/8 T=81.1 lambda_min=-1.43469689801
+[104/1161] 8% | ETA 7m15s | sigma=1/4 T=81.1 lambda_min=-2.73062306010
+[105/1161] 9% | ETA 7m11s | sigma=0.28 T=81.1 lambda_min=-3.01000382813
+[106/1161] 9% | ETA 7m12s | sigma=0.30 T=81.1 lambda_min=-3.18863762772
+[107/1161] 9% | ETA 7m09s | sigma=0.3085 T=81.1 lambda_min=-3.26267981554
+[108/1161] 9% | ETA 7m05s | sigma=0.32 T=81.1 lambda_min=-3.36106026738
+[109/1161] 9% | ETA 7m14s | sigma=1/64 T=81.2 lambda_min=-1.54973441896
+[110/1161] 9% | ETA 7m12s | sigma=1/32 T=81.2 lambda_min=-3.09703902063
+[111/1161] 9% | ETA 7m08s | sigma=1/16 T=81.2 lambda_min=-6.17474402248
+[112/1161] 9% | ETA 7m09s | sigma=1/8 T=81.2 lambda_min=-1.21980957296
+[113/1161] 9% | ETA 7m06s | sigma=1/4 T=81.2 lambda_min=-2.32822813967
+[114/1161] 9% | ETA 7m03s | sigma=0.28 T=81.2 lambda_min=-2.56890634392
+[115/1161] 9% | ETA 7m11s | sigma=0.30 T=81.2 lambda_min=-2.72326952304
+[116/1161] 9% | ETA 7m08s | sigma=0.3085 T=81.2 lambda_min=-2.78737541600
+[117/1161] 10% | ETA 7m05s | sigma=0.32 T=81.2 lambda_min=-2.87267574881
+[118/1161] 10% | ETA 7m06s | sigma=1/64 T=81.3 lambda_min=-1.20783200400
+[119/1161] 10% | ETA 7m03s | sigma=1/32 T=81.3 lambda_min=-2.41384823515
+[120/1161] 10% | ETA 7m00s | sigma=1/16 T=81.3 lambda_min=-4.81325180182
+[121/1161] 10% | ETA 7m08s | sigma=1/8 T=81.3 lambda_min=-9.51350268971
+[122/1161] 10% | ETA 7m05s | sigma=1/4 T=81.3 lambda_min=-1.81986205465
+[123/1161] 10% | ETA 7m02s | sigma=0.28 T=81.3 lambda_min=-2.00957485287
+[124/1161] 10% | ETA 7m03s | sigma=0.30 T=81.3 lambda_min=-2.13157794758
+[125/1161] 10% | ETA 7m00s | sigma=0.3085 T=81.3 lambda_min=-2.18233169825
+[126/1161] 10% | ETA 6m57s | sigma=0.32 T=81.3 lambda_min=-2.24995239164
+[127/1161] 10% | ETA 7m04s | sigma=1/64 T=81.4 lambda_min=-8.55732766646
+[128/1161] 11% | ETA 7m01s | sigma=1/32 T=81.4 lambda_min=-1.71021594239
+[129/1161] 11% | ETA 6m59s | sigma=1/16 T=81.4 lambda_min=-3.41049527728
+[130/1161] 11% | ETA 6m59s | sigma=1/8 T=81.4 lambda_min=-6.74338138832
+[131/1161] 11% | ETA 6m56s | sigma=1/4 T=81.4 lambda_min=-1.29214207134
+[132/1161] 11% | ETA 6m54s | sigma=0.28 T=81.4 lambda_min=-1.42776964178
+[133/1161] 11% | ETA 7m00s | sigma=0.30 T=81.4 lambda_min=-1.51520200922
+[134/1161] 11% | ETA 6m58s | sigma=0.3085 T=81.4 lambda_min=-1.55163147835
+[135/1161] 11% | ETA 6m55s | sigma=0.32 T=81.4 lambda_min=-1.60022581976
+[136/1161] 11% | ETA 6m55s | sigma=1/64 T=81.5 lambda_min=-5.37484383550
+[137/1161] 11% | ETA 6m52s | sigma=1/32 T=81.5 lambda_min=-1.07419617570
+[138/1161] 11% | ETA 6m50s | sigma=1/16 T=81.5 lambda_min=-2.14225276824
+[139/1161] 11% | ETA 6m57s | sigma=1/8 T=81.5 lambda_min=-4.23667658411
+[140/1161] 12% | ETA 6m54s | sigma=1/4 T=81.5 lambda_min=-8.12851624201
+[141/1161] 12% | ETA 6m52s | sigma=0.28 T=81.5 lambda_min=-8.98680248452
+[142/1161] 12% | ETA 6m52s | sigma=0.30 T=81.5 lambda_min=-9.54144393523
+[143/1161] 12% | ETA 6m49s | sigma=0.3085 T=81.5 lambda_min=-9.77291714533
+[144/1161] 12% | ETA 6m47s | sigma=0.32 T=81.5 lambda_min=-1.00820775964
+[145/1161] 12% | ETA 6m53s | sigma=1/64 T=81.6 lambda_min=-2.82414299092
+[146/1161] 12% | ETA 6m51s | sigma=1/32 T=81.6 lambda_min=-5.64425705563
+[147/1161] 12% | ETA 6m49s | sigma=1/16 T=81.6 lambda_min=-1.12565351271
+[148/1161] 12% | ETA 6m49s | sigma=1/8 T=81.6 lambda_min=-2.22651248186
+[149/1161] 12% | ETA 6m46s | sigma=1/4 T=81.6 lambda_min=-4.27767395355
+[150/1161] 12% | ETA 6m44s | sigma=0.28 T=81.6 lambda_min=-4.73276076334
+[151/1161] 13% | ETA 6m50s | sigma=0.30 T=81.6 lambda_min=-5.02787004735
+[152/1161] 13% | ETA 6m47s | sigma=0.3085 T=81.6 lambda_min=-5.15132304750
+[153/1161] 13% | ETA 6m46s | sigma=0.32 T=81.6 lambda_min=-5.31651728550
+[154/1161] 13% | ETA 6m46s | sigma=1/64 T=81.7 lambda_min=-1.09990024532
+[155/1161] 13% | ETA 6m44s | sigma=1/32 T=81.7 lambda_min=-2.19841880823
+[156/1161] 13% | ETA 6m42s | sigma=1/16 T=81.7 lambda_min=-4.38590239773
+[157/1161] 13% | ETA 6m47s | sigma=1/8 T=81.7 lambda_min=-8.68799950403
+[158/1161] 13% | ETA 6m45s | sigma=1/4 T=81.7 lambda_min=-1.68109429759
+[159/1161] 13% | ETA 6m43s | sigma=0.28 T=81.7 lambda_min=-1.86512334833
+[160/1161] 13% | ETA 6m43s | sigma=0.30 T=81.7 lambda_min=-1.98564481500
+[161/1161] 13% | ETA 6m41s | sigma=0.3085 T=81.7 lambda_min=-2.03638216603
+[162/1161] 13% | ETA 6m39s | sigma=0.32 T=81.7 lambda_min=-2.10459867459
+[163/1161] 14% | ETA 6m44s | sigma=1/64 T=81.8 lambda_min=-4.03829995441
+[164/1161] 14% | ETA 6m42s | sigma=1/32 T=81.8 lambda_min=-8.07640885756
+[165/1161] 14% | ETA 6m41s | sigma=1/16 T=81.8 lambda_min=-1.61513250074
+[166/1161] 14% | ETA 6m40s | sigma=1/8 T=81.8 lambda_min=-3.22917970875
+[167/1161] 14% | ETA 6m38s | sigma=1/4 T=81.8 lambda_min=-6.45258631700
+[168/1161] 14% | ETA 6m36s | sigma=0.28 T=81.8 lambda_min=-7.22566009863
+[169/1161] 14% | ETA 6m41s | sigma=0.30 T=81.8 lambda_min=-7.74107849419
+[170/1161] 14% | ETA 6m39s | sigma=0.3085 T=81.8 lambda_min=-7.96015646201
+[171/1161] 14% | ETA 6m38s | sigma=0.32 T=81.8 lambda_min=-8.25659132130
+[172/1161] 14% | ETA 6m38s | sigma=1/64 T=81.9 lambda_min=-5.71233879808
+[173/1161] 14% | ETA 6m36s | sigma=1/32 T=81.9 lambda_min=-1.14220264000
+[174/1161] 14% | ETA 6m34s | sigma=1/16 T=81.9 lambda_min=-2.28231937332
+[175/1161] 15% | ETA 6m38s | sigma=1/8 T=81.9 lambda_min=-4.54903951171
+[176/1161] 15% | ETA 6m36s | sigma=1/4 T=81.9 lambda_min=-9.00434156319
+[177/1161] 15% | ETA 6m35s | sigma=0.28 T=81.9 lambda_min=-1.00603225357
+[178/1161] 15% | ETA 6m35s | sigma=0.30 T=81.9 lambda_min=-1.07630803236
+[179/1161] 15% | ETA 6m33s | sigma=0.3085 T=81.9 lambda_min=-1.10616623792
+[180/1161] 15% | ETA 6m31s | sigma=0.32 T=81.9 lambda_min=-1.14656933909
+[181/1161] 15% | ETA 6m35s | sigma=1/64 T=82.0 lambda_min=-1.01295908363
+[182/1161] 15% | ETA 6m34s | sigma=1/32 T=82.0 lambda_min=-2.02487324387
+[183/1161] 15% | ETA 6m32s | sigma=1/16 T=82.0 lambda_min=-4.04146226465
+[184/1161] 15% | ETA 6m32s | sigma=1/8 T=82.0 lambda_min=-8.01899382241
+[185/1161] 15% | ETA 6m30s | sigma=1/4 T=82.0 lambda_min=-1.55943318502
+[186/1161] 16% | ETA 6m28s | sigma=0.28 T=82.0 lambda_min=-1.73215715468
+[187/1161] 16% | ETA 6m32s | sigma=0.30 T=82.0 lambda_min=-1.84536514669
+[188/1161] 16% | ETA 6m31s | sigma=0.3085 T=82.0 lambda_min=-1.89302625770
+[189/1161] 16% | ETA 6m29s | sigma=0.32 T=82.0 lambda_min=-1.95709502612
+[190/1161] 16% | ETA 6m29s | sigma=1/64 T=82.1 lambda_min=-1.44659987891
+[191/1161] 16% | ETA 6m27s | sigma=1/32 T=82.1 lambda_min=-2.89131919975
+[192/1161] 16% | ETA 6m26s | sigma=1/16 T=82.1 lambda_min=-5.76770086482
+[193/1161] 16% | ETA 6m29s | sigma=1/8 T=82.1 lambda_min=-1.14192406908
+[194/1161] 16% | ETA 6m28s | sigma=1/4 T=82.1 lambda_min=-2.20064280450
+[195/1161] 16% | ETA 6m26s | sigma=0.28 T=82.1 lambda_min=-2.43664495150
+[196/1161] 16% | ETA 6m26s | sigma=0.30 T=82.1 lambda_min=-2.58982891084
+[197/1161] 16% | ETA 6m25s | sigma=0.3085 T=82.1 lambda_min=-2.65393080333
+[198/1161] 17% | ETA 6m23s | sigma=0.32 T=82.1 lambda_min=-2.73971474282
+[199/1161] 17% | ETA 6m26s | sigma=1/64 T=82.2 lambda_min=-1.76795293916
+[200/1161] 17% | ETA 6m25s | sigma=1/32 T=82.2 lambda_min=-3.53331084876
+[201/1161] 17% | ETA 6m23s | sigma=1/16 T=82.2 lambda_min=-7.04599231606
+[202/1161] 17% | ETA 6m24s | sigma=1/8 T=82.2 lambda_min=-1.39310409348
+[203/1161] 17% | ETA 6m22s | sigma=1/4 T=82.2 lambda_min=-2.66942002666
+[204/1161] 17% | ETA 6m20s | sigma=0.28 T=82.2 lambda_min=-2.94975516274
+[205/1161] 17% | ETA 6m23s | sigma=0.30 T=82.2 lambda_min=-3.13053538386
+[206/1161] 17% | ETA 6m22s | sigma=0.3085 T=82.2 lambda_min=-3.20587659496
+[207/1161] 17% | ETA 6m21s | sigma=0.32 T=82.2 lambda_min=-3.30639449401
+[208/1161] 17% | ETA 6m21s | sigma=1/32 T=82.3 lambda_min=-3.85802001245
+[209/1161] 18% | ETA 6m20s | sigma=1/64 T=82.3 lambda_min=-1.93054438366
+[210/1161] 18% | ETA 6m18s | sigma=1/16 T=82.3 lambda_min=-7.69163394326
+[211/1161] 18% | ETA 6m21s | sigma=1/8 T=82.3 lambda_min=-1.51925249045
+[212/1161] 18% | ETA 6m20s | sigma=1/4 T=82.3 lambda_min=-2.89913929888
+[213/1161] 18% | ETA 6m18s | sigma=0.28 T=82.3 lambda_min=-3.19894571808
+[214/1161] 18% | ETA 6m19s | sigma=0.30 T=82.3 lambda_min=-3.39135224312
+[215/1161] 18% | ETA 6m17s | sigma=0.3085 T=82.3 lambda_min=-3.47129481782
+[216/1161] 18% | ETA 6m15s | sigma=0.32 T=82.3 lambda_min=-3.57770892113
+[217/1161] 18% | ETA 6m18s | sigma=1/64 T=82.4 lambda_min=-1.92425801341
+[218/1161] 18% | ETA 6m17s | sigma=1/32 T=82.4 lambda_min=-3.84527071345
+[219/1161] 18% | ETA 6m15s | sigma=1/16 T=82.4 lambda_min=-7.66472465890
+[220/1161] 18% | ETA 6m16s | sigma=1/8 T=82.4 lambda_min=-1.51274802581
+[221/1161] 19% | ETA 6m14s | sigma=1/4 T=82.4 lambda_min=-2.87736317504
+[222/1161] 19% | ETA 6m12s | sigma=0.28 T=82.4 lambda_min=-3.17132071544
+[223/1161] 19% | ETA 6m15s | sigma=0.30 T=82.4 lambda_min=-3.35925888040
+[224/1161] 19% | ETA 6m14s | sigma=0.3085 T=82.4 lambda_min=-3.43715772620
+[225/1161] 19% | ETA 6m13s | sigma=0.32 T=82.4 lambda_min=-3.54066534853
+[226/1161] 19% | ETA 6m13s | sigma=1/64 T=82.5 lambda_min=-1.76873896272
+[227/1161] 19% | ETA 6m11s | sigma=1/32 T=82.5 lambda_min=-3.53434799148
+[228/1161] 19% | ETA 6m10s | sigma=1/16 T=82.5 lambda_min=-7.04379441718
+[229/1161] 19% | ETA 6m12s | sigma=1/8 T=82.5 lambda_min=-1.38926978860
+[230/1161] 19% | ETA 6m11s | sigma=1/4 T=82.5 lambda_min=-2.63537190172
+[231/1161] 19% | ETA 6m10s | sigma=0.28 T=82.5 lambda_min=-2.90192819742
+[232/1161] 19% | ETA 6m10s | sigma=0.30 T=82.5 lambda_min=-3.07182941178
+[233/1161] 20% | ETA 6m09s | sigma=0.3085 T=82.5 lambda_min=-3.14211730137
+[234/1161] 20% | ETA 6m07s | sigma=0.32 T=82.5 lambda_min=-3.23537865746
+[235/1161] 20% | ETA 6m09s | sigma=1/64 T=82.6 lambda_min=-1.50503975662
+[236/1161] 20% | ETA 6m09s | sigma=1/32 T=82.6 lambda_min=-3.00730843791
+[237/1161] 20% | ETA 6m08s | sigma=1/16 T=82.6 lambda_min=-5.99257104155
+[238/1161] 20% | ETA 6m08s | sigma=1/8 T=82.6 lambda_min=-1.18126223669
+[239/1161] 20% | ETA 6m06s | sigma=1/4 T=82.6 lambda_min=-2.23585075545
+[240/1161] 20% | ETA 6m05s | sigma=0.28 T=82.6 lambda_min=-2.46021135710
+[241/1161] 20% | ETA 6m07s | sigma=0.30 T=82.6 lambda_min=-2.60289159453
+[242/1161] 20% | ETA 6m06s | sigma=0.3085 T=82.6 lambda_min=-2.66183488500
+[243/1161] 20% | ETA 6m05s | sigma=0.32 T=82.6 lambda_min=-2.73996227402
+[244/1161] 21% | ETA 6m05s | sigma=1/64 T=82.7 lambda_min=-1.18526663391
+[245/1161] 21% | ETA 6m03s | sigma=1/32 T=82.7 lambda_min=-2.36829093029
+[246/1161] 21% | ETA 6m02s | sigma=1/16 T=82.7 lambda_min=-4.71874542776
+[247/1161] 21% | ETA 6m04s | sigma=1/8 T=82.7 lambda_min=-9.29800187842
+[248/1161] 21% | ETA 6m03s | sigma=1/4 T=82.7 lambda_min=-1.75742801212
+[249/1161] 21% | ETA 6m02s | sigma=0.28 T=82.7 lambda_min=-1.93296667847
+[250/1161] 21% | ETA 6m02s | sigma=0.30 T=82.7 lambda_min=-2.04447372951
+[251/1161] 21% | ETA 6m01s | sigma=0.3085 T=82.7 lambda_min=-2.09050856719
+[252/1161] 21% | ETA 5m59s | sigma=0.32 T=82.7 lambda_min=-2.15149774153
+[253/1161] 21% | ETA 6m02s | sigma=1/64 T=82.8 lambda_min=-8.62124720548
+[254/1161] 21% | ETA 6m01s | sigma=1/32 T=82.8 lambda_min=-1.72261671295
+[255/1161] 21% | ETA 6m00s | sigma=1/16 T=82.8 lambda_min=-3.43224967522
+[256/1161] 22% | ETA 6m00s | sigma=1/8 T=82.8 lambda_min=-6.76307119284
+[257/1161] 22% | ETA 5m59s | sigma=1/4 T=82.8 lambda_min=-1.27862005792
+[258/1161] 22% | ETA 5m57s | sigma=0.28 T=82.8 lambda_min=-1.40655757926
+[259/1161] 22% | ETA 6m00s | sigma=0.30 T=82.8 lambda_min=-1.48790076445
+[260/1161] 22% | ETA 5m58s | sigma=0.3085 T=82.8 lambda_min=-1.52150387723
+[261/1161] 22% | ETA 5m58s | sigma=0.32 T=82.8 lambda_min=-1.56604520119
+[262/1161] 22% | ETA 5m57s | sigma=1/64 T=82.9 lambda_min=-5.79370653246
+[263/1161] 22% | ETA 5m56s | sigma=1/32 T=82.9 lambda_min=-1.15770073749
+[264/1161] 22% | ETA 5m55s | sigma=1/16 T=82.9 lambda_min=-2.30712946334
+[265/1161] 22% | ETA 5m57s | sigma=1/8 T=82.9 lambda_min=-4.54972327415
+[266/1161] 22% | ETA 5m56s | sigma=1/4 T=82.9 lambda_min=-8.63088055169
+[267/1161] 22% | ETA 5m55s | sigma=0.28 T=82.9 lambda_min=-9.50589561622
+[268/1161] 23% | ETA 5m55s | sigma=0.30 T=82.9 lambda_min=-1.00645769929
+[269/1161] 23% | ETA 5m54s | sigma=0.3085 T=82.9 lambda_min=-1.02959868120
+[270/1161] 23% | ETA 5m52s | sigma=0.32 T=82.9 lambda_min=-1.06033374182
+[271/1161] 23% | ETA 5m55s | sigma=1/64 T=83.0 lambda_min=-3.63935556587
+[272/1161] 23% | ETA 5m54s | sigma=1/32 T=83.0 lambda_min=-7.27314537152
+[273/1161] 23% | ETA 5m53s | sigma=1/16 T=83.0 lambda_min=-1.45020590631
+[274/1161] 23% | ETA 5m52s | sigma=1/8 T=83.0 lambda_min=-2.86594393246
+[275/1161] 23% | ETA 5m51s | sigma=1/4 T=83.0 lambda_min=-5.48264873903
+[276/1161] 23% | ETA 5m50s | sigma=0.28 T=83.0 lambda_min=-6.05542186418
+[277/1161] 23% | ETA 5m52s | sigma=0.30 T=83.0 lambda_min=-6.42429241923
+[278/1161] 23% | ETA 5m51s | sigma=0.3085 T=83.0 lambda_min=-6.57789442613
+[279/1161] 24% | ETA 5m50s | sigma=0.32 T=83.0 lambda_min=-6.78269989790
+[280/1161] 24% | ETA 5m50s | sigma=1/64 T=83.1 lambda_min=-2.22431275784
+[281/1161] 24% | ETA 5m49s | sigma=1/32 T=83.1 lambda_min=-4.44632025322
+[282/1161] 24% | ETA 5m48s | sigma=1/16 T=83.1 lambda_min=-8.87432402198
+[283/1161] 24% | ETA 5m49s | sigma=1/8 T=83.1 lambda_min=-1.76060231694
+[284/1161] 24% | ETA 5m48s | sigma=1/4 T=83.1 lambda_min=-3.41831147122
+[285/1161] 24% | ETA 5m48s | sigma=0.28 T=83.1 lambda_min=-3.79342114188
+[286/1161] 24% | ETA 5m47s | sigma=0.30 T=83.1 lambda_min=-4.03815778062
+[287/1161] 24% | ETA 5m46s | sigma=0.3085 T=83.1 lambda_min=-4.14086823119
+[288/1161] 24% | ETA 5m45s | sigma=0.32 T=83.1 lambda_min=-4.27859197465
+[289/1161] 24% | ETA 5m46s | sigma=1/64 T=83.2 lambda_min=-1.45771351653
+[290/1161] 24% | ETA 5m46s | sigma=1/32 T=83.2 lambda_min=-2.91488881312
+[291/1161] 25% | ETA 5m45s | sigma=1/16 T=83.2 lambda_min=-5.82550285738
+[292/1161] 25% | ETA 5m44s | sigma=1/8 T=83.2 lambda_min=-1.16177698870
+[293/1161] 25% | ETA 5m43s | sigma=1/4 T=83.2 lambda_min=-2.29971068768
+[294/1161] 25% | ETA 5m42s | sigma=0.28 T=83.2 lambda_min=-2.56759290058
+[295/1161] 25% | ETA 5m44s | sigma=0.30 T=83.2 lambda_min=-2.74496655624
+[296/1161] 25% | ETA 5m43s | sigma=0.3085 T=83.2 lambda_min=-2.82005505274
+[297/1161] 25% | ETA 5m42s | sigma=0.32 T=83.2 lambda_min=-2.92136565852
+[298/1161] 25% | ETA 5m42s | sigma=1/64 T=83.3 lambda_min=-1.19818741955
+[299/1161] 25% | ETA 5m41s | sigma=1/32 T=83.3 lambda_min=-2.39648584611
+[300/1161] 25% | ETA 5m40s | sigma=1/16 T=83.3 lambda_min=-4.79386103081
+[301/1161] 25% | ETA 5m41s | sigma=1/8 T=83.3 lambda_min=-9.59487822091
+[302/1161] 26% | ETA 5m41s | sigma=1/4 T=83.3 lambda_min=-1.92483856670
+[303/1161] 26% | ETA 5m40s | sigma=0.28 T=83.3 lambda_min=-2.15810541345
+[304/1161] 26% | ETA 5m39s | sigma=0.30 T=83.3 lambda_min=-2.31406397854
+[305/1161] 26% | ETA 5m38s | sigma=0.3085 T=83.3 lambda_min=-2.38046422661
+[306/1161] 26% | ETA 5m37s | sigma=0.32 T=83.3 lambda_min=-2.47041817096
+[307/1161] 26% | ETA 5m39s | sigma=1/64 T=83.4 lambda_min=-1.33684952660
+[308/1161] 26% | ETA 5m38s | sigma=1/32 T=83.4 lambda_min=-2.67357998251
+[309/1161] 26% | ETA 5m37s | sigma=1/16 T=83.4 lambda_min=-5.34623141087
+[310/1161] 26% | ETA 5m37s | sigma=1/8 T=83.4 lambda_min=-1.06857815273
+[311/1161] 26% | ETA 5m36s | sigma=1/4 T=83.4 lambda_min=-2.13396090427
+[312/1161] 26% | ETA 5m35s | sigma=0.28 T=83.4 lambda_min=-2.38959453006
+[313/1161] 26% | ETA 5m36s | sigma=0.30 T=83.4 lambda_min=-2.56016918853
+[314/1161] 27% | ETA 5m35s | sigma=0.3085 T=83.4 lambda_min=-2.63271901176
+[315/1161] 27% | ETA 5m35s | sigma=0.32 T=83.4 lambda_min=-2.73094081166
+[316/1161] 27% | ETA 5m34s | sigma=1/64 T=83.5 lambda_min=-1.79545184617
+[317/1161] 27% | ETA 5m34s | sigma=1/32 T=83.5 lambda_min=-3.58972957536
+[318/1161] 27% | ETA 5m32s | sigma=1/16 T=83.5 lambda_min=-7.17015193569
+[319/1161] 27% | ETA 5m34s | sigma=1/8 T=83.5 lambda_min=-1.42685146979
+[320/1161] 27% | ETA 5m33s | sigma=1/4 T=83.5 lambda_min=-2.80395228894
+[321/1161] 27% | ETA 5m32s | sigma=0.28 T=83.5 lambda_min=-3.12428053693
+[322/1161] 27% | ETA 5m32s | sigma=0.30 T=83.5 lambda_min=-3.33565564061
+[323/1161] 27% | ETA 5m31s | sigma=0.3085 T=83.5 lambda_min=-3.42498209289
+[324/1161] 27% | ETA 5m30s | sigma=0.32 T=83.5 lambda_min=-3.54536993512
+[325/1161] 27% | ETA 5m31s | sigma=1/64 T=83.6 lambda_min=-2.44335933010
+[326/1161] 28% | ETA 5m31s | sigma=1/32 T=83.6 lambda_min=-4.88398406290
+[327/1161] 28% | ETA 5m30s | sigma=1/16 T=83.6 lambda_min=-9.74624812121
+[328/1161] 28% | ETA 5m29s | sigma=1/8 T=83.6 lambda_min=-1.93236315889
+[329/1161] 28% | ETA 5m29s | sigma=1/4 T=83.6 lambda_min=-3.74388001284
+[330/1161] 28% | ETA 5m28s | sigma=0.28 T=83.6 lambda_min=-4.15240790977
+[331/1161] 28% | ETA 5m29s | sigma=0.30 T=83.6 lambda_min=-4.41874712183
+[332/1161] 28% | ETA 5m28s | sigma=0.3085 T=83.6 lambda_min=-4.53049134180
+[333/1161] 28% | ETA 5m28s | sigma=0.32 T=83.6 lambda_min=-4.68031062753
+[334/1161] 28% | ETA 5m27s | sigma=1/64 T=83.7 lambda_min=-3.06488955401
+[335/1161] 28% | ETA 5m26s | sigma=1/32 T=83.7 lambda_min=-6.12564527361
+[336/1161] 28% | ETA 5m25s | sigma=1/16 T=83.7 lambda_min=-1.22184205660
+[337/1161] 29% | ETA 5m26s | sigma=1/8 T=83.7 lambda_min=-2.41801683399
+[338/1161] 29% | ETA 5m26s | sigma=1/4 T=83.7 lambda_min=-4.64921064792
+[339/1161] 29% | ETA 5m25s | sigma=0.28 T=83.7 lambda_min=-5.14295824773
+[340/1161] 29% | ETA 5m25s | sigma=0.30 T=83.7 lambda_min=-5.46227545899
+[341/1161] 29% | ETA 5m24s | sigma=0.3085 T=83.7 lambda_min=-5.59558050802
+[342/1161] 29% | ETA 5m23s | sigma=0.32 T=83.7 lambda_min=-5.77365076134
+[343/1161] 29% | ETA 5m24s | sigma=1/64 T=83.8 lambda_min=-3.46572030750
+[344/1161] 29% | ETA 5m23s | sigma=1/32 T=83.8 lambda_min=-6.92648099500
+[345/1161] 29% | ETA 5m23s | sigma=1/16 T=83.8 lambda_min=-1.38134972158
+[346/1161] 29% | ETA 5m22s | sigma=1/8 T=83.8 lambda_min=-2.73179401546
+[347/1161] 29% | ETA 5m21s | sigma=0.28 T=83.8 lambda_min=-5.78547000053
+[348/1161] 29% | ETA 5m20s | sigma=1/4 T=83.8 lambda_min=-5.23615678959
+[349/1161] 30% | ETA 5m21s | sigma=0.30 T=83.8 lambda_min=-6.13925711903
+[350/1161] 30% | ETA 5m21s | sigma=0.3085 T=83.8 lambda_min=-6.28656110536
+[351/1161] 30% | ETA 5m20s | sigma=0.32 T=83.8 lambda_min=-6.48293751321
+[352/1161] 30% | ETA 5m20s | sigma=1/64 T=83.9 lambda_min=-3.55743108581
+[353/1161] 30% | ETA 5m19s | sigma=1/16 T=83.9 lambda_min=-1.41780624289
+[354/1161] 30% | ETA 5m18s | sigma=1/32 T=83.9 lambda_min=-7.10967564199
+[355/1161] 30% | ETA 5m19s | sigma=1/8 T=83.9 lambda_min=-2.80322128015
+[356/1161] 30% | ETA 5m18s | sigma=1/4 T=83.9 lambda_min=-5.36646398767
+[357/1161] 30% | ETA 5m18s | sigma=0.28 T=83.9 lambda_min=-5.92645690305
+[358/1161] 30% | ETA 5m17s | sigma=0.30 T=83.9 lambda_min=-6.28639686939
+[359/1161] 30% | ETA 5m16s | sigma=0.3085 T=83.9 lambda_min=-6.43606385962
+[360/1161] 31% | ETA 5m15s | sigma=0.32 T=83.9 lambda_min=-6.63538690036
+[361/1161] 31% | ETA 5m16s | sigma=1/64 T=84.0 lambda_min=-3.34937250400
+[362/1161] 31% | ETA 5m16s | sigma=1/32 T=84.0 lambda_min=-6.69380029641
+[363/1161] 31% | ETA 5m15s | sigma=1/16 T=84.0 lambda_min=-1.33482280291
+[364/1161] 31% | ETA 5m15s | sigma=1/8 T=84.0 lambda_min=-2.63873060593
+[365/1161] 31% | ETA 5m14s | sigma=1/4 T=84.0 lambda_min=-5.04765872665
+[366/1161] 31% | ETA 5m13s | sigma=0.28 T=84.0 lambda_min=-5.57267741673
+[367/1161] 31% | ETA 5m14s | sigma=0.30 T=84.0 lambda_min=-5.90973784708
+[368/1161] 31% | ETA 5m14s | sigma=0.3085 T=84.0 lambda_min=-6.04978252177
+[369/1161] 31% | ETA 5m13s | sigma=0.32 T=84.0 lambda_min=-6.23617992329
+[370/1161] 31% | ETA 5m12s | sigma=1/64 T=84.1 lambda_min=-2.91012383840
+[371/1161] 31% | ETA 5m11s | sigma=1/32 T=84.1 lambda_min=-5.81587019251
+[372/1161] 32% | ETA 5m10s | sigma=1/16 T=84.1 lambda_min=-1.15968838863
+[373/1161] 32% | ETA 5m11s | sigma=1/8 T=84.1 lambda_min=-2.29200623653
+[374/1161] 32% | ETA 5m11s | sigma=1/4 T=84.1 lambda_min=-4.38052373872
+[375/1161] 32% | ETA 5m10s | sigma=0.28 T=84.1 lambda_min=-4.83471877176
+[376/1161] 32% | ETA 5m10s | sigma=0.30 T=84.1 lambda_min=-5.12604400253
+[377/1161] 32% | ETA 5m09s | sigma=0.3085 T=84.1 lambda_min=-5.24701776662
+[378/1161] 32% | ETA 5m08s | sigma=0.32 T=84.1 lambda_min=-5.40796497958
+[379/1161] 32% | ETA 5m09s | sigma=1/64 T=84.2 lambda_min=-2.33437670843
+[380/1161] 32% | ETA 5m09s | sigma=1/32 T=84.2 lambda_min=-4.66515300551
+[381/1161] 32% | ETA 5m08s | sigma=1/16 T=84.2 lambda_min=-9.30164279650
+[382/1161] 32% | ETA 5m07s | sigma=1/8 T=84.2 lambda_min=-1.83783896670
+[383/1161] 32% | ETA 5m07s | sigma=1/4 T=84.2 lambda_min=-3.50898890131
+[384/1161] 33% | ETA 5m06s | sigma=0.28 T=84.2 lambda_min=-3.87171755224
+[385/1161] 33% | ETA 5m07s | sigma=0.30 T=84.2 lambda_min=-4.10423260116
+[386/1161] 33% | ETA 5m06s | sigma=0.3085 T=84.2 lambda_min=-4.20075326310
+[387/1161] 33% | ETA 5m05s | sigma=0.32 T=84.2 lambda_min=-4.32913925429
+[388/1161] 33% | ETA 5m05s | sigma=1/64 T=84.3 lambda_min=-1.72050807682
+[389/1161] 33% | ETA 5m04s | sigma=1/32 T=84.3 lambda_min=-3.43831097437
+[390/1161] 33% | ETA 5m03s | sigma=1/16 T=84.3 lambda_min=-6.85509513662
+[391/1161] 33% | ETA 5m04s | sigma=1/8 T=84.3 lambda_min=-1.35415784873
+[392/1161] 33% | ETA 5m04s | sigma=1/4 T=84.3 lambda_min=-2.58416793070
+[393/1161] 33% | ETA 5m03s | sigma=0.28 T=84.3 lambda_min=-2.85111567122
+[394/1161] 33% | ETA 5m03s | sigma=0.30 T=84.3 lambda_min=-3.02229630560
+[395/1161] 34% | ETA 5m02s | sigma=0.3085 T=84.3 lambda_min=-3.09337940348
+[396/1161] 34% | ETA 5m01s | sigma=0.32 T=84.3 lambda_min=-3.18795774591
+[397/1161] 34% | ETA 5m02s | sigma=1/64 T=84.4 lambda_min=-1.15612358728
+[398/1161] 34% | ETA 5m01s | sigma=1/32 T=84.4 lambda_min=-2.31046296233
+[399/1161] 34% | ETA 5m01s | sigma=1/16 T=84.4 lambda_min=-4.60673765684
+[400/1161] 34% | ETA 5m00s | sigma=1/8 T=84.4 lambda_min=-9.10264728249
+[401/1161] 34% | ETA 4m59s | sigma=1/4 T=84.4 lambda_min=-1.73977322345
+[402/1161] 34% | ETA 4m59s | sigma=0.28 T=84.4 lambda_min=-1.92078488176
+[403/1161] 34% | ETA 4m59s | sigma=0.30 T=84.4 lambda_min=-2.03719039447
+[404/1161] 34% | ETA 4m59s | sigma=0.3085 T=84.4 lambda_min=-2.08561982226
+[405/1161] 34% | ETA 4m58s | sigma=0.32 T=84.4 lambda_min=-2.15015129037
+[406/1161] 34% | ETA 4m58s | sigma=1/64 T=84.5 lambda_min=-7.06385875536
+[407/1161] 35% | ETA 4m57s | sigma=1/32 T=84.5 lambda_min=-1.41180914081
+[408/1161] 35% | ETA 4m56s | sigma=1/16 T=84.5 lambda_min=-2.81597043513
+[409/1161] 35% | ETA 4m57s | sigma=1/8 T=84.5 lambda_min=-5.57241511136
+[410/1161] 35% | ETA 4m57s | sigma=1/4 T=84.5 lambda_min=-1.07169372607
+[411/1161] 35% | ETA 4m56s | sigma=0.28 T=84.5 lambda_min=-1.18579898539
+[412/1161] 35% | ETA 4m55s | sigma=0.30 T=84.5 lambda_min=-1.25970490684
+[413/1161] 35% | ETA 4m54s | sigma=0.3085 T=84.5 lambda_min=-1.29059098254
+[414/1161] 35% | ETA 4m54s | sigma=0.32 T=84.5 lambda_min=-1.33188363663
+[415/1161] 35% | ETA 4m55s | sigma=1/64 T=84.6 lambda_min=-3.99761893374
+[416/1161] 35% | ETA 4m54s | sigma=1/32 T=84.6 lambda_min=-7.99139782243
+[417/1161] 35% | ETA 4m53s | sigma=1/16 T=84.6 lambda_min=-1.59523205659
+[418/1161] 36% | ETA 4m53s | sigma=1/8 T=84.6 lambda_min=-3.16684842147
+[419/1161] 36% | ETA 4m52s | sigma=1/4 T=84.6 lambda_min=-6.16685351983
+[420/1161] 36% | ETA 4m52s | sigma=0.28 T=84.6 lambda_min=-6.85144353213
+[421/1161] 36% | ETA 4m52s | sigma=0.30 T=84.6 lambda_min=-7.29991651107
+[422/1161] 36% | ETA 4m52s | sigma=0.3085 T=84.6 lambda_min=-7.48862847319
+[423/1161] 36% | ETA 4m51s | sigma=0.32 T=84.6 lambda_min=-7.74218242167
+[424/1161] 36% | ETA 4m51s | sigma=1/64 T=84.7 lambda_min=-2.19796420191
+[425/1161] 36% | ETA 4m50s | sigma=1/32 T=84.7 lambda_min=-4.39500601016
+[426/1161] 36% | ETA 4m49s | sigma=1/16 T=84.7 lambda_min=-8.78271350401
+[427/1161] 36% | ETA 4m50s | sigma=1/8 T=84.7 lambda_min=-1.75095507024
+[428/1161] 36% | ETA 4m50s | sigma=1/4 T=84.7 lambda_min=-3.46445838285
+[429/1161] 36% | ETA 4m49s | sigma=0.28 T=84.7 lambda_min=-3.86857436180
+[430/1161] 37% | ETA 4m48s | sigma=0.30 T=84.7 lambda_min=-4.13661098311
+[431/1161] 37% | ETA 4m48s | sigma=0.3085 T=84.7 lambda_min=-4.25022439665
+[432/1161] 37% | ETA 4m47s | sigma=0.32 T=84.7 lambda_min=-4.40367371635
+[433/1161] 37% | ETA 4m47s | sigma=1/64 T=84.8 lambda_min=-1.24660272796
+[434/1161] 37% | ETA 4m47s | sigma=1/16 T=84.8 lambda_min=-4.98730317069
+[435/1161] 37% | ETA 4m46s | sigma=1/32 T=84.8 lambda_min=-2.49329286544
+[436/1161] 37% | ETA 4m46s | sigma=1/8 T=84.8 lambda_min=-9.98091254585
+[437/1161] 37% | ETA 4m45s | sigma=1/4 T=84.8 lambda_min=-2.00287342293
+[438/1161] 37% | ETA 4m44s | sigma=0.28 T=84.8 lambda_min=-2.24635765463
+[439/1161] 37% | ETA 4m45s | sigma=0.30 T=84.8 lambda_min=-2.40944893577
+[440/1161] 37% | ETA 4m45s | sigma=0.3085 T=84.8 lambda_min=-2.47897475276
+[441/1161] 37% | ETA 4m44s | sigma=0.32 T=84.8 lambda_min=-2.57325818303
+[442/1161] 38% | ETA 4m44s | sigma=1/64 T=84.9 lambda_min=-7.76202800838
+[443/1161] 38% | ETA 4m43s | sigma=1/32 T=84.9 lambda_min=-1.55265866486
+[444/1161] 38% | ETA 4m42s | sigma=1/16 T=84.9 lambda_min=-3.10734362831
+[445/1161] 38% | ETA 4m43s | sigma=1/8 T=84.9 lambda_min=-6.23095455117
+[446/1161] 38% | ETA 4m42s | sigma=1/4 T=84.9 lambda_min=-1.25938151101
+[447/1161] 38% | ETA 4m41s | sigma=0.28 T=84.9 lambda_min=-1.41558815423
+[448/1161] 38% | ETA 4m41s | sigma=0.30 T=84.9 lambda_min=-1.52069638042
+[449/1161] 38% | ETA 4m40s | sigma=0.3085 T=84.9 lambda_min=-1.56562088267
+[450/1161] 38% | ETA 4m39s | sigma=0.32 T=84.9 lambda_min=-1.62665393631
+[451/1161] 38% | ETA 4m40s | sigma=1/64 T=85.0 lambda_min=-5.73464056987
+[452/1161] 38% | ETA 4m40s | sigma=1/32 T=85.0 lambda_min=-1.14699695869
+[453/1161] 39% | ETA 4m39s | sigma=1/16 T=85.0 lambda_min=-2.29455048416
+[454/1161] 39% | ETA 4m39s | sigma=1/8 T=85.0 lambda_min=-4.59373474485
+[455/1161] 39% | ETA 4m38s | sigma=1/4 T=85.0 lambda_min=-9.22981343325
+[456/1161] 39% | ETA 4m37s | sigma=0.28 T=85.0 lambda_min=-1.03554012721
+[457/1161] 39% | ETA 4m38s | sigma=0.30 T=85.0 lambda_min=-1.11097450259
+[458/1161] 39% | ETA 4m38s | sigma=0.3085 T=85.0 lambda_min=-1.14314079471
+[459/1161] 39% | ETA 4m37s | sigma=0.32 T=85.0 lambda_min=-1.18676864364
+[460/1161] 39% | ETA 4m36s | sigma=1/64 T=85.1 lambda_min=-5.49871417351
+[461/1161] 39% | ETA 4m36s | sigma=1/32 T=85.1 lambda_min=-1.09929766556
+[462/1161] 39% | ETA 4m35s | sigma=1/16 T=85.1 lambda_min=-2.19507090838
+[463/1161] 39% | ETA 4m35s | sigma=1/8 T=85.1 lambda_min=-4.36308763431
+[464/1161] 39% | ETA 4m35s | sigma=1/4 T=85.1 lambda_min=-8.54172198181
+[465/1161] 40% | ETA 4m34s | sigma=0.28 T=85.1 lambda_min=-9.50777496928
+[466/1161] 40% | ETA 4m34s | sigma=0.30 T=85.1 lambda_min=-1.01440873093
+[467/1161] 40% | ETA 4m33s | sigma=0.3085 T=85.1 lambda_min=-1.04127296231
+[468/1161] 40% | ETA 4m32s | sigma=0.32 T=85.1 lambda_min=-1.07745524935
+[469/1161] 40% | ETA 4m33s | sigma=1/64 T=85.2 lambda_min=-7.16653037417
+[470/1161] 40% | ETA 4m33s | sigma=1/32 T=85.2 lambda_min=-1.43159381699
+[471/1161] 40% | ETA 4m32s | sigma=1/16 T=85.2 lambda_min=-2.84962510372
+[472/1161] 40% | ETA 4m31s | sigma=1/8 T=85.2 lambda_min=-5.59493313729
+[473/1161] 40% | ETA 4m31s | sigma=1/4 T=85.2 lambda_min=-1.04718279922
+[474/1161] 40% | ETA 4m30s | sigma=0.28 T=85.2 lambda_min=-1.14957653279
+[475/1161] 40% | ETA 4m31s | sigma=0.30 T=85.2 lambda_min=-1.21466460431
+[476/1161] 40% | ETA 4m30s | sigma=0.3085 T=85.2 lambda_min=-1.24157755287
+[477/1161] 41% | ETA 4m29s | sigma=0.32 T=85.2 lambda_min=-1.27729437434
+[478/1161] 41% | ETA 4m29s | sigma=1/64 T=85.3 lambda_min=-1.11333253558
+[479/1161] 41% | ETA 4m28s | sigma=1/16 T=85.3 lambda_min=-4.41681668751
+[480/1161] 41% | ETA 4m28s | sigma=1/32 T=85.3 lambda_min=-2.22299036449
+[481/1161] 41% | ETA 4m28s | sigma=1/8 T=85.3 lambda_min=-8.60761371294
+[482/1161] 41% | ETA 4m28s | sigma=1/4 T=85.3 lambda_min=-1.56186460526
+[483/1161] 41% | ETA 4m27s | sigma=0.28 T=85.3 lambda_min=-1.69626489086
+[484/1161] 41% | ETA 4m27s | sigma=0.30 T=85.3 lambda_min=-1.77829105079
+[485/1161] 41% | ETA 4m26s | sigma=0.3085 T=85.3 lambda_min=-1.81134438696
+[486/1161] 41% | ETA 4m25s | sigma=0.32 T=85.3 lambda_min=-1.85437552133
+[487/1161] 41% | ETA 4m26s | sigma=1/64 T=85.4 lambda_min=-1.55185502502
+[488/1161] 42% | ETA 4m25s | sigma=1/32 T=85.4 lambda_min=-3.09913598799
+[489/1161] 42% | ETA 4m25s | sigma=1/16 T=85.4 lambda_min=-6.16189640346
+[490/1161] 42% | ETA 4m25s | sigma=1/8 T=85.4 lambda_min=-1.20395960002
+[491/1161] 42% | ETA 4m24s | sigma=1/4 T=85.4 lambda_min=-2.20074531603
+[492/1161] 42% | ETA 4m23s | sigma=0.28 T=85.4 lambda_min=-2.39361761734
+[493/1161] 42% | ETA 4m23s | sigma=0.30 T=85.4 lambda_min=-2.51126022532
+[494/1161] 42% | ETA 4m23s | sigma=0.3085 T=85.4 lambda_min=-2.55858825524
+[495/1161] 42% | ETA 4m22s | sigma=0.32 T=85.4 lambda_min=-2.62008589992
+[496/1161] 42% | ETA 4m22s | sigma=1/64 T=85.5 lambda_min=-1.79115787586
+[497/1161] 42% | ETA 4m21s | sigma=1/32 T=85.5 lambda_min=-3.57797294416
+[498/1161] 42% | ETA 4m20s | sigma=1/16 T=85.5 lambda_min=-7.12138379365
+[499/1161] 42% | ETA 4m21s | sigma=1/8 T=85.5 lambda_min=-1.39719350792
+[500/1161] 43% | ETA 4m21s | sigma=1/4 T=85.5 lambda_min=-2.59455836026
+Process SpawnPoolWorker-6:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-3:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-1:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-2:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-5:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+Process SpawnPoolWorker-4:
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 131, in worker
+    put((job, i, result))
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/pool.py", line 136, in worker
+    put((job, i, (False, wrapped)))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/queues.py", line 397, in put
+    self._writer.send_bytes(obj)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 200, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 427, in _send_bytes
+    self._send(header + buf)
+    ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/connection.py", line 384, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
+/Users/emalam/.local/share/uv/python/cpython-3.13-macos-aarch64-none/lib/python3.13/multiprocessing/resource_tracker.py:276: UserWarning: resource_tracker: There appear to be 6 leaked semaphore objects to clean up at shutdown: {'/mp-p16431am', '/mp-mub7y__q', '/mp-xx76830o', '/mp-6hr3qvtj', '/mp-esi45ho_', '/mp-c_pmsl3z'}
+  warnings.warn(

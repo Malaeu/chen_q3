@@ -1,0 +1,92 @@
+{
+  "time_utc": "2026-09-17T23:55:00+00:00",
+  "task_id": "MAC_DH_CONTROL_AND_HEAD_MASSES_2026-09-17_v2",
+  "supersedes": "MAC_DH_CONTROL_AND_GN_SPECTRUM_2026-09-17 (v1)",
+  "channel": "MAC",
+  "run_certifies": "DISCRIMINATOR_SENSITIVITY_AND_HEAD_STRUCTURE_NOT_SIGN",
+  "v1_state_when_v2_arrived": "Part B (DH grid) finished clean and is reused unchanged; v1 Part A (G_N spectrum on summands, rank-4 signature (2,2) form) had already run (gn_spectrum_zeta.json, gn_spectrum_zeta_arb.json) before v2 arrived; it is retired as a judge per v2 §0 and kept only as diagnostic files; the v1 DH spectrum run was stopped and its partial output discarded.",
+  "retired": {
+    "P_CAN_4": "DECIDED_BY_PAPER_BEFORE_RUN (Proshka HEAD_SIGN adjudication: rank-2 ray form, one negative eigenvalue always)",
+    "P_CAN_6": "DECIDED_BY_PAPER_BEFORE_RUN"
+  },
+  "kept_from_v1": [
+    "P_CAN_1 (0.90)",
+    "P_CAN_2 (0.95)",
+    "P_CAN_3 (0.85)",
+    "P_CAN_5 (0.60) — evaluated on the v1 summand-form spectrum already computed (diagnostic), since the DH summand spectrum was not rerun; stated as such"
+  ],
+  "derivation_recorded_before_compute": "A e = 2(D conj u + J conj v); A^2 e = 4[conj u (D s + J V^2) + conj v (D U^2 + J conj s)]; P_+- e = alpha_+- conj u + beta_+- conj v with alpha_+- = (4Ds + 4JV^2 - 2 lambda_-+ D)/(lambda_+-(lambda_+- - lambda_-+)), beta_+- = (4DU^2 + 4J conj s - 2 lambda_-+ J)/(same); |alpha conj u + beta conj v|^2 = |alpha|^2 U^2 + |beta|^2 V^2 + 2 Re(conj(alpha) beta conj s); identity lambda_+|P_+e|^2 + lambda_-|P_-e|^2 = 4 Re(D conj J) = h_N checked to 24+ digits against grid_arb_dps80_adaptive.json at 3 points before the run",
+  "predictions": [
+    {
+      "id": "P_M2_1",
+      "statement": "max q = M_-/M_+ on the zeta grid < 1e-3; negative mass on the original vector negligible everywhere incl. zero heights at sigma=1/64.",
+      "confidence": 0.6,
+      "falsifier": "q > 1e-2 at any point",
+      "mac_note_before_run": "h_N = M_+ - M_- and h_N(iT) = 0 exactly (3.7), so at sigma=0 the masses are equal and q=1; MAC expects q = 1 - O(sigma) at small sigma and O(1) elsewhere (3 pre-run smoke points: q = 0.95, 0.42, 0.80). Expected fate: REFUTED."
+    },
+    {
+      "id": "P_M2_2",
+      "statement": "for each T0 in {14,20,30,40} the frozen head h_{N0} changes sign at some Delta T <= 40 for at least one sigma.",
+      "confidence": 0.7,
+      "falsifier": "no flip up to T0+40 (then adaptivity is needed more weakly than sqrt(T log T))"
+    },
+    {
+      "id": "P_M2_3",
+      "statement": "in the window where a flip happened, the zero count of J_{N0}(.;theta0) in the right half-strip is >= 1.",
+      "confidence": 0.9,
+      "conditional_on": "flip"
+    },
+    {
+      "id": "P_M2_4",
+      "statement": "Delta T grows with T0 (order N0^2/T0 or slower).",
+      "confidence": 0.5
+    },
+    {
+      "id": "P_M2_5",
+      "statement": "for DH on the control strip q > 1 at NEGATIVE-certificate points.",
+      "confidence": 0.8,
+      "mac_note_before_run": "q > 1 <=> M_- > M_+ <=> h_N < 0, and h_N < 0 at every U_N NEGATIVE point by definition; will be CONFIRMED but carries no independent information."
+    },
+    {
+      "id": "P_CAN_1",
+      "statement": "NEGATIVE certificates on the DH control strip incl. (0.30, T0+-0.05)",
+      "confidence": 0.9
+    },
+    {
+      "id": "P_CAN_2",
+      "statement": "all L_N > 0 on the DH zeta-like strip",
+      "confidence": 0.95
+    },
+    {
+      "id": "P_CAN_3",
+      "statement": "|H_DH - h_N^DH| <= E_N^DH everywhere",
+      "confidence": 0.85
+    },
+    {
+      "id": "P_CAN_5",
+      "statement": "|lambda_min|/|J|^2 at DH NEGATIVE points >= 100x zeta scale (summand-form spectrum, v1 object)",
+      "confidence": 0.6
+    },
+    {
+      "id": "P_M2_6",
+      "registered_utc": "2026-09-18T00:40:00+00:00",
+      "registered_by": "owner",
+      "statement": "in the windows s in [1/2,2] x [T0-1,T0+1], T0 in {14,20,30,40}, with N = M_0(T0)-1 and theta0 = theta(T0): the Dirichlet polynomial d_N(s) = sum_{n<=N} n^{-s} has zeros with Re s > 1/2, while J_N(p; theta0) (p = s - 1/2) has none off the line Re p = 0.",
+      "confidence": 0.85,
+      "falsifier": "either no zero of d_N with Re s > 1/2 in some window, or a zero of J_N with Re p > 0 in some window",
+      "companion_check": "identity (9) of PROSHKA_JN_ZERO_FREE_STRIP_ATTEMPT_2026-09-17: J_N(p;theta) = B(p) d_N(s) + E_N(p;theta), checked numerically at 20 random strip points to 30 digits (no prediction registered: an identity is PASS/FAIL)",
+      "mac_note_before_run": "zero counts by winding number of d_N on the s-rectangle boundary and of J_N on the p-rectangle [-3/2,3/2] x [T0-1,T0+1] (symmetric, (4)), on-line zeros of the real function J_N(i tau) counted separately by sign changes; off-line count = total - on-line. Partial sums d_N with N >= 19 are known to have zeros with Re s > 1 (Montgomery), so MAC expects d_N zeros in the windows for T0 >= 20 at least; for J_N MAC expects zero off-line count, consistent with the adaptive discriminator table."
+    }
+  ],
+  "method_notes": {
+    "fixed_N_flip": "scan T0..T0+40 step 0.05, sigma {1/64,1/8}, mpmath dps 50; arb ball at the first negative point and at the last positive point before it; zero count by winding number (phase unwrapping, step control < pi/2) on rectangles [0.01, 1/2] x [T0+10k, T0+10(k+1)] and mirrors [-1/2, -0.01] x ...; the sigma offset 0.01 is needed because J_{N0}(iT) is real and its on-line zeros lie on the sigma=0 side (irreducible phase jumps of pi); zeros with 0 < Re p < 0.01 are therefore not counted.",
+    "head_masses": "mpmath dps 50 on the adaptive-cutoff zeta grid (1120 points) and the DH control strip (1161 points); arb at 10 points (5 zero heights sigma=1/64, T in {14,20,30,40,60} sigma=1/4) for the sign of M_+ - M_- - E_N, regression against L_N of grid_arb_dps80_adaptive.json"
+  },
+  "amendments": [
+    {
+      "id": "REG_ADD_1",
+      "time_utc": "2026-09-18T00:40:00+00:00",
+      "what": "P_M2_6 appended before the corresponding computation (check_jn_dirichlet.py) was written or run; chains M (head masses) and F (fixed-N flip) were already running and are unaffected."
+    }
+  ]
+}

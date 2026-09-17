@@ -1,0 +1,211 @@
+fixed-N flip: 168 tasks (136 scan chunks, 32 rectangles), workers 6
+[1/168] 0% | ETA 208m35s | scan T0=14.0 sigma=1/64 up to T=28.95
+[2/168] 1% | ETA 104m11s | scan T0=14.0 sigma=1/64 up to T=26.45
+[3/168] 1% | ETA 70m09s | scan T0=14.0 sigma=1/64 up to T=21.45
+[4/168] 2% | ETA 52m20s | scan T0=14.0 sigma=1/64 up to T=23.95
+[5/168] 2% | ETA 41m46s | scan T0=14.0 sigma=1/64 up to T=16.45
+[6/168] 3% | ETA 34m41s | scan T0=14.0 sigma=1/64 up to T=18.95
+[7/168] 4% | ETA 57m07s | scan T0=14.0 sigma=1/64 up to T=33.95
+[8/168] 4% | ETA 49m48s | scan T0=14.0 sigma=1/64 up to T=31.45
+[9/168] 5% | ETA 44m14s | scan T0=14.0 sigma=1/64 up to T=36.45
+[10/168] 5% | ETA 39m36s | scan T0=14.0 sigma=1/64 up to T=38.95
+[11/168] 6% | ETA 35m50s | scan T0=14.0 sigma=1/64 up to T=41.45
+[12/168] 7% | ETA 32m39s | scan T0=14.0 sigma=1/64 up to T=43.95
+[13/168] 7% | ETA 30m17s | scan T0=14.0 sigma=1/64 up to T=54.0
+[14/168] 8% | ETA 41m12s | scan T0=14.0 sigma=1/64 up to T=46.45
+[15/168] 8% | ETA 38m33s | scan T0=14.0 sigma=1/64 up to T=48.95
+[16/168] 9% | ETA 36m30s | scan T0=14.0 sigma=1/8 up to T=16.45
+[17/168] 10% | ETA 34m23s | scan T0=14.0 sigma=1/8 up to T=18.95
+[18/168] 10% | ETA 33m12s | scan T0=14.0 sigma=1/64 up to T=53.95
+[19/168] 11% | ETA 31m15s | scan T0=14.0 sigma=1/64 up to T=51.45
+[20/168] 11% | ETA 37m25s | scan T0=14.0 sigma=1/8 up to T=21.45
+[21/168] 12% | ETA 35m33s | scan T0=14.0 sigma=1/8 up to T=23.95
+[22/168] 13% | ETA 34m07s | scan T0=14.0 sigma=1/8 up to T=26.45
+[23/168] 13% | ETA 32m26s | scan T0=14.0 sigma=1/8 up to T=28.95
+[24/168] 14% | ETA 31m25s | scan T0=14.0 sigma=1/8 up to T=33.95
+[25/168] 14% | ETA 30m01s | scan T0=14.0 sigma=1/8 up to T=31.45
+[26/168] 15% | ETA 34m36s | scan T0=14.0 sigma=1/8 up to T=36.45
+[27/168] 16% | ETA 33m12s | scan T0=14.0 sigma=1/8 up to T=38.95
+[28/168] 16% | ETA 32m05s | scan T0=14.0 sigma=1/8 up to T=41.45
+[29/168] 17% | ETA 30m45s | scan T0=14.0 sigma=1/8 up to T=43.95
+[30/168] 17% | ETA 29m39s | scan T0=14.0 sigma=1/8 up to T=54.0
+[31/168] 18% | ETA 28m47s | scan T0=14.0 sigma=1/8 up to T=46.45
+[32/168] 19% | ETA 27m49s | scan T0=14.0 sigma=1/8 up to T=48.95
+[33/168] 19% | ETA 27m23s | winding T0=14.0 rect=[0.01, 0.5, 14.0, 24.0] zeros=0 maxstep=1.45964
+[34/168] 20% | ETA 26m29s | winding T0=14.0 rect=[-0.5, -0.01, 14.0, 24.0] zeros=0 maxstep=1.45964
+[35/168] 20% | ETA 25m58s | winding T0=14.0 rect=[0.01, 0.5, 24.0, 34.0] zeros=0 maxstep=1.56715
+[36/168] 21% | ETA 25m12s | winding T0=14.0 rect=[-0.5, -0.01, 24.0, 34.0] zeros=0 maxstep=1.56715
+[37/168] 22% | ETA 24m52s | winding T0=14.0 rect=[0.01, 0.5, 34.0, 44.0] zeros=0 maxstep=1.52806
+[38/168] 22% | ETA 24m07s | winding T0=14.0 rect=[-0.5, -0.01, 34.0, 44.0] zeros=0 maxstep=1.52806
+[39/168] 23% | ETA 23m41s | winding T0=14.0 rect=[0.01, 0.5, 44.0, 54.0] zeros=0 maxstep=1.57035
+[40/168] 23% | ETA 23m02s | winding T0=14.0 rect=[-0.5, -0.01, 44.0, 54.0] zeros=0 maxstep=1.57035
+[41/168] 24% | ETA 24m14s | scan T0=14.0 sigma=1/8 up to T=51.45
+[42/168] 25% | ETA 23m34s | scan T0=14.0 sigma=1/8 up to T=53.95
+[43/168] 25% | ETA 24m11s | scan T0=20.0 sigma=1/64 up to T=22.45
+[44/168] 26% | ETA 23m31s | scan T0=20.0 sigma=1/64 up to T=24.95
+[45/168] 26% | ETA 23m06s | scan T0=20.0 sigma=1/64 up to T=27.45
+[46/168] 27% | ETA 22m32s | scan T0=20.0 sigma=1/64 up to T=29.95
+[47/168] 27% | ETA 23m29s | scan T0=20.0 sigma=1/64 up to T=32.45
+[48/168] 28% | ETA 22m54s | scan T0=20.0 sigma=1/64 up to T=34.95
+[49/168] 29% | ETA 23m22s | scan T0=20.0 sigma=1/64 up to T=37.45
+[50/168] 29% | ETA 22m46s | scan T0=20.0 sigma=1/64 up to T=39.95
+[51/168] 30% | ETA 22m23s | scan T0=20.0 sigma=1/64 up to T=42.45
+[52/168] 30% | ETA 21m51s | scan T0=20.0 sigma=1/64 up to T=44.95
+[53/168] 31% | ETA 22m39s | scan T0=20.0 sigma=1/64 up to T=47.45
+[54/168] 32% | ETA 22m06s | scan T0=20.0 sigma=1/64 up to T=60.0
+[55/168] 32% | ETA 21m48s | scan T0=20.0 sigma=1/64 up to T=49.95
+[56/168] 33% | ETA 22m22s | scan T0=20.0 sigma=1/64 up to T=52.45
+[57/168] 33% | ETA 21m48s | scan T0=20.0 sigma=1/64 up to T=54.95
+[58/168] 34% | ETA 21m21s | scan T0=20.0 sigma=1/64 up to T=57.45
+[59/168] 35% | ETA 20m53s | scan T0=20.0 sigma=1/64 up to T=59.95
+[60/168] 35% | ETA 21m18s | scan T0=20.0 sigma=1/8 up to T=22.45
+[61/168] 36% | ETA 21m00s | scan T0=20.0 sigma=1/8 up to T=24.95
+[62/168] 36% | ETA 21m27s | scan T0=20.0 sigma=1/8 up to T=27.45
+[63/168] 37% | ETA 20m56s | scan T0=20.0 sigma=1/8 up to T=29.95
+[64/168] 38% | ETA 20m31s | scan T0=20.0 sigma=1/8 up to T=32.45
+[65/168] 38% | ETA 20m04s | scan T0=20.0 sigma=1/8 up to T=34.95
+[66/168] 39% | ETA 20m19s | scan T0=20.0 sigma=1/8 up to T=37.45
+[67/168] 39% | ETA 20m00s | scan T0=20.0 sigma=1/8 up to T=39.95
+[68/168] 40% | ETA 20m15s | scan T0=20.0 sigma=1/8 up to T=42.45
+[69/168] 41% | ETA 19m47s | scan T0=20.0 sigma=1/8 up to T=44.95
+[70/168] 41% | ETA 19m22s | scan T0=20.0 sigma=1/8 up to T=47.45
+[71/168] 42% | ETA 18m56s | scan T0=20.0 sigma=1/8 up to T=60.0
+[72/168] 42% | ETA 18m38s | scan T0=20.0 sigma=1/8 up to T=49.95
+[73/168] 43% | ETA 18m25s | winding T0=20.0 rect=[0.01, 0.5, 20.0, 30.0] zeros=0 maxstep=1.56715
+[74/168] 44% | ETA 18m07s | winding T0=20.0 rect=[-0.5, -0.01, 20.0, 30.0] zeros=0 maxstep=1.56715
+[75/168] 44% | ETA 17m57s | winding T0=20.0 rect=[0.01, 0.5, 30.0, 40.0] zeros=0 maxstep=1.49794
+[76/168] 45% | ETA 17m34s | scan T0=20.0 sigma=1/8 up to T=52.45
+[77/168] 45% | ETA 17m15s | winding T0=20.0 rect=[-0.5, -0.01, 30.0, 40.0] zeros=0 maxstep=1.49794
+[78/168] 46% | ETA 16m54s | scan T0=20.0 sigma=1/8 up to T=54.95
+[79/168] 47% | ETA 16m40s | winding T0=20.0 rect=[0.01, 0.5, 40.0, 50.0] zeros=0 maxstep=1.52806
+[80/168] 47% | ETA 16m19s | winding T0=20.0 rect=[-0.5, -0.01, 40.0, 50.0] zeros=0 maxstep=1.52806
+[81/168] 48% | ETA 16m00s | winding T0=20.0 rect=[0.01, 0.5, 50.0, 60.0] zeros=0 maxstep=1.57035
+[82/168] 48% | ETA 15m41s | winding T0=20.0 rect=[-0.5, -0.01, 50.0, 60.0] zeros=0 maxstep=1.57035
+[83/168] 49% | ETA 15m30s | scan T0=20.0 sigma=1/8 up to T=57.45
+[84/168] 50% | ETA 15m08s | scan T0=20.0 sigma=1/8 up to T=59.95
+[85/168] 50% | ETA 15m33s | scan T0=30.0 sigma=1/64 up to T=32.45
+[86/168] 51% | ETA 15m13s | scan T0=30.0 sigma=1/64 up to T=34.95
+[87/168] 51% | ETA 14m55s | scan T0=30.0 sigma=1/64 up to T=37.45
+[88/168] 52% | ETA 14m37s | scan T0=30.0 sigma=1/64 up to T=39.95
+[89/168] 52% | ETA 14m26s | scan T0=30.0 sigma=1/64 up to T=42.45
+[90/168] 53% | ETA 14m06s | scan T0=30.0 sigma=1/64 up to T=44.95
+[91/168] 54% | ETA 14m26s | scan T0=30.0 sigma=1/64 up to T=47.45
+[92/168] 54% | ETA 14m13s | scan T0=30.0 sigma=1/64 up to T=49.95
+[93/168] 55% | ETA 14m00s | scan T0=30.0 sigma=1/64 up to T=52.45
+[94/168] 55% | ETA 13m42s | scan T0=30.0 sigma=1/64 up to T=54.95
+[95/168] 56% | ETA 13m31s | scan T0=30.0 sigma=1/64 up to T=59.95
+[96/168] 57% | ETA 13m11s | scan T0=30.0 sigma=1/64 up to T=57.45
+[97/168] 57% | ETA 12m54s | scan T0=30.0 sigma=1/64 up to T=70.0
+[98/168] 58% | ETA 13m07s | scan T0=30.0 sigma=1/64 up to T=62.45
+[99/168] 58% | ETA 12m55s | scan T0=30.0 sigma=1/64 up to T=64.95
+[100/168] 59% | ETA 12m42s | scan T0=30.0 sigma=1/64 up to T=67.45
+[101/168] 60% | ETA 12m25s | scan T0=30.0 sigma=1/8 up to T=32.45
+[102/168] 60% | ETA 12m07s | scan T0=30.0 sigma=1/64 up to T=69.95
+[103/168] 61% | ETA 11m49s | scan T0=30.0 sigma=1/8 up to T=34.95
+[104/168] 61% | ETA 12m00s | scan T0=30.0 sigma=1/8 up to T=37.45
+[105/168] 62% | ETA 11m47s | scan T0=30.0 sigma=1/8 up to T=39.95
+[106/168] 63% | ETA 11m35s | scan T0=30.0 sigma=1/8 up to T=42.45
+[107/168] 63% | ETA 11m18s | scan T0=30.0 sigma=1/8 up to T=44.95
+[108/168] 64% | ETA 11m01s | scan T0=30.0 sigma=1/8 up to T=47.45
+[109/168] 64% | ETA 10m49s | scan T0=30.0 sigma=1/8 up to T=49.95
+[110/168] 65% | ETA 10m58s | scan T0=30.0 sigma=1/8 up to T=52.45
+[111/168] 66% | ETA 10m46s | scan T0=30.0 sigma=1/8 up to T=54.95
+[112/168] 66% | ETA 10m34s | scan T0=30.0 sigma=1/8 up to T=57.45
+[113/168] 67% | ETA 10m18s | scan T0=30.0 sigma=1/8 up to T=62.45
+[114/168] 67% | ETA 10m01s | scan T0=30.0 sigma=1/8 up to T=59.95
+[115/168] 68% | ETA 9m45s | scan T0=30.0 sigma=1/8 up to T=70.0
+[116/168] 69% | ETA 9m33s | scan T0=30.0 sigma=1/8 up to T=64.95
+[117/168] 69% | ETA 9m22s | winding T0=30.0 rect=[0.01, 0.5, 30.0, 40.0] zeros=0 maxstep=1.49794
+[118/168] 70% | ETA 9m06s | winding T0=30.0 rect=[0.01, 0.5, 40.0, 50.0] zeros=0 maxstep=1.52806
+[119/168] 70% | ETA 8m51s | winding T0=30.0 rect=[-0.5, -0.01, 30.0, 40.0] zeros=0 maxstep=1.49794
+[120/168] 71% | ETA 8m39s | winding T0=30.0 rect=[-0.5, -0.01, 40.0, 50.0] zeros=0 maxstep=1.52806
+[121/168] 72% | ETA 8m28s | winding T0=30.0 rect=[0.01, 0.5, 50.0, 60.0] zeros=0 maxstep=1.57035
+[122/168] 72% | ETA 8m13s | winding T0=30.0 rect=[0.01, 0.5, 60.0, 70.0] zeros=0 maxstep=1.55512
+[123/168] 73% | ETA 7m58s | winding T0=30.0 rect=[-0.5, -0.01, 50.0, 60.0] zeros=0 maxstep=1.57035
+[124/168] 73% | ETA 7m47s | winding T0=30.0 rect=[-0.5, -0.01, 60.0, 70.0] zeros=0 maxstep=1.55512
+[125/168] 74% | ETA 7m36s | scan T0=30.0 sigma=1/8 up to T=67.45
+[126/168] 75% | ETA 7m25s | scan T0=30.0 sigma=1/8 up to T=69.95
+[127/168] 75% | ETA 7m23s | scan T0=40.0 sigma=1/64 up to T=47.45
+[128/168] 76% | ETA 7m09s | scan T0=40.0 sigma=1/64 up to T=44.95
+[129/168] 76% | ETA 6m55s | scan T0=40.0 sigma=1/64 up to T=42.45
+[130/168] 77% | ETA 6m45s | scan T0=40.0 sigma=1/64 up to T=49.95
+[131/168] 77% | ETA 6m36s | scan T0=40.0 sigma=1/64 up to T=52.45
+[132/168] 78% | ETA 6m25s | scan T0=40.0 sigma=1/64 up to T=54.95
+[133/168] 79% | ETA 6m21s | scan T0=40.0 sigma=1/64 up to T=62.45
+[134/168] 79% | ETA 6m07s | scan T0=40.0 sigma=1/64 up to T=59.95
+[135/168] 80% | ETA 5m54s | scan T0=40.0 sigma=1/64 up to T=57.45
+[136/168] 80% | ETA 5m44s | scan T0=40.0 sigma=1/64 up to T=64.95
+[137/168] 81% | ETA 5m34s | scan T0=40.0 sigma=1/64 up to T=67.45
+[138/168] 82% | ETA 5m21s | scan T0=40.0 sigma=1/64 up to T=80.0
+[139/168] 82% | ETA 5m10s | scan T0=40.0 sigma=1/64 up to T=69.95
+[140/168] 83% | ETA 5m04s | scan T0=40.0 sigma=1/64 up to T=72.45
+[141/168] 83% | ETA 4m51s | scan T0=40.0 sigma=1/64 up to T=74.95
+[142/168] 84% | ETA 4m39s | scan T0=40.0 sigma=1/64 up to T=77.45
+[143/168] 85% | ETA 4m29s | scan T0=40.0 sigma=1/64 up to T=79.95
+[144/168] 85% | ETA 4m17s | scan T0=40.0 sigma=1/8 up to T=42.45
+[145/168] 86% | ETA 4m06s | scan T0=40.0 sigma=1/8 up to T=44.95
+[146/168] 86% | ETA 3m59s | scan T0=40.0 sigma=1/8 up to T=47.45
+[147/168] 87% | ETA 3m47s | scan T0=40.0 sigma=1/8 up to T=49.95
+[148/168] 88% | ETA 3m36s | scan T0=40.0 sigma=1/8 up to T=52.45
+[149/168] 88% | ETA 3m25s | scan T0=40.0 sigma=1/8 up to T=54.95
+[150/168] 89% | ETA 3m14s | scan T0=40.0 sigma=1/8 up to T=57.45
+[151/168] 89% | ETA 3m03s | scan T0=40.0 sigma=1/8 up to T=59.95
+[152/168] 90% | ETA 2m55s | scan T0=40.0 sigma=1/8 up to T=62.45
+[153/168] 91% | ETA 2m43s | scan T0=40.0 sigma=1/8 up to T=64.95
+[154/168] 91% | ETA 2m32s | scan T0=40.0 sigma=1/8 up to T=67.45
+[155/168] 92% | ETA 2m20s | scan T0=40.0 sigma=1/8 up to T=80.0
+[156/168] 92% | ETA 2m09s | scan T0=40.0 sigma=1/8 up to T=69.95
+[157/168] 93% | ETA 1m58s | scan T0=40.0 sigma=1/8 up to T=72.45
+[158/168] 94% | ETA 1m47s | winding T0=40.0 rect=[0.01, 0.5, 40.0, 50.0] zeros=0 maxstep=1.52806
+[159/168] 94% | ETA 1m36s | scan T0=40.0 sigma=1/8 up to T=74.95
+[160/168] 95% | ETA 1m25s | winding T0=40.0 rect=[-0.5, -0.01, 40.0, 50.0] zeros=0 maxstep=1.52806
+[161/168] 95% | ETA 1m14s | winding T0=40.0 rect=[0.01, 0.5, 50.0, 60.0] zeros=0 maxstep=1.57035
+[162/168] 96% | ETA 1m03s | winding T0=40.0 rect=[-0.5, -0.01, 50.0, 60.0] zeros=0 maxstep=1.57035
+[163/168] 97% | ETA 0m52s | winding T0=40.0 rect=[0.01, 0.5, 60.0, 70.0] zeros=0 maxstep=1.55512
+[164/168] 97% | ETA 0m42s | winding T0=40.0 rect=[-0.5, -0.01, 60.0, 70.0] zeros=0 maxstep=1.55512
+[165/168] 98% | ETA 0m31s | winding T0=40.0 rect=[0.01, 0.5, 70.0, 80.0] zeros=0 maxstep=1.53051
+[166/168] 98% | ETA 0m20s | winding T0=40.0 rect=[-0.5, -0.01, 70.0, 80.0] zeros=0 maxstep=1.53051
+[167/168] 99% | ETA 0m10s | scan T0=40.0 sigma=1/8 up to T=77.45
+[168/168] 100% | ETA 0m00s | scan T0=40.0 sigma=1/8 up to T=79.95
+T0=14.0 sigma=1/64 N0=20 T_flip=None dT=None arb=None
+T0=14.0 sigma=1/8 N0=20 T_flip=None dT=None arb=None
+T0=20.0 sigma=1/64 N0=25 T_flip=None dT=None arb=None
+T0=20.0 sigma=1/8 N0=25 T_flip=None dT=None arb=None
+T0=30.0 sigma=1/64 N0=32 T_flip=None dT=None arb=None
+T0=30.0 sigma=1/8 N0=32 T_flip=None dT=None arb=None
+T0=40.0 sigma=1/64 N0=38 T_flip=None dT=None arb=None
+T0=40.0 sigma=1/8 N0=38 T_flip=None dT=None arb=None
+T0=14.0 rect=[-0.5, -0.01, 14.0, 24.0] zeros=0 residual=1.09779e-17 maxstep=1.45964
+T0=14.0 rect=[-0.5, -0.01, 24.0, 34.0] zeros=0 residual=1.92466e-18 maxstep=1.56715
+T0=14.0 rect=[-0.5, -0.01, 34.0, 44.0] zeros=0 residual=2.66281e-19 maxstep=1.52806
+T0=14.0 rect=[-0.5, -0.01, 44.0, 54.0] zeros=0 residual=1.13504e-18 maxstep=1.57035
+T0=14.0 rect=[0.01, 0.5, 14.0, 24.0] zeros=0 residual=1.92466e-18 maxstep=1.45964
+T0=14.0 rect=[0.01, 0.5, 24.0, 34.0] zeros=0 residual=2.66281e-19 maxstep=1.56715
+T0=14.0 rect=[0.01, 0.5, 34.0, 44.0] zeros=0 residual=1.13504e-18 maxstep=1.52806
+T0=14.0 rect=[0.01, 0.5, 44.0, 54.0] zeros=0 residual=5.86034e-20 maxstep=1.57035
+T0=20.0 rect=[-0.5, -0.01, 20.0, 30.0] zeros=0 residual=2.21293e-18 maxstep=1.56715
+T0=20.0 rect=[-0.5, -0.01, 30.0, 40.0] zeros=0 residual=4.41569e-18 maxstep=1.49794
+T0=20.0 rect=[-0.5, -0.01, 40.0, 50.0] zeros=0 residual=2.23232e-18 maxstep=1.52806
+T0=20.0 rect=[-0.5, -0.01, 50.0, 60.0] zeros=0 residual=5.34146e-18 maxstep=1.57035
+T0=20.0 rect=[0.01, 0.5, 20.0, 30.0] zeros=0 residual=4.41569e-18 maxstep=1.56715
+T0=20.0 rect=[0.01, 0.5, 30.0, 40.0] zeros=0 residual=2.23232e-18 maxstep=1.49794
+T0=20.0 rect=[0.01, 0.5, 40.0, 50.0] zeros=0 residual=5.34146e-18 maxstep=1.52806
+T0=20.0 rect=[0.01, 0.5, 50.0, 60.0] zeros=0 residual=4.02352e-19 maxstep=1.57035
+T0=30.0 rect=[-0.5, -0.01, 30.0, 40.0] zeros=0 residual=4.41569e-18 maxstep=1.49794
+T0=30.0 rect=[-0.5, -0.01, 40.0, 50.0] zeros=0 residual=2.23232e-18 maxstep=1.52806
+T0=30.0 rect=[-0.5, -0.01, 50.0, 60.0] zeros=0 residual=5.34146e-18 maxstep=1.57035
+T0=30.0 rect=[-0.5, -0.01, 60.0, 70.0] zeros=0 residual=4.02352e-19 maxstep=1.55512
+T0=30.0 rect=[0.01, 0.5, 30.0, 40.0] zeros=0 residual=2.23232e-18 maxstep=1.49794
+T0=30.0 rect=[0.01, 0.5, 40.0, 50.0] zeros=0 residual=5.34146e-18 maxstep=1.52806
+T0=30.0 rect=[0.01, 0.5, 50.0, 60.0] zeros=0 residual=4.02352e-19 maxstep=1.57035
+T0=30.0 rect=[0.01, 0.5, 60.0, 70.0] zeros=0 residual=1.79742e-18 maxstep=1.55512
+T0=40.0 rect=[-0.5, -0.01, 40.0, 50.0] zeros=0 residual=2.23232e-18 maxstep=1.52806
+T0=40.0 rect=[-0.5, -0.01, 50.0, 60.0] zeros=0 residual=5.34146e-18 maxstep=1.57035
+T0=40.0 rect=[-0.5, -0.01, 60.0, 70.0] zeros=0 residual=4.02352e-19 maxstep=1.55512
+T0=40.0 rect=[-0.5, -0.01, 70.0, 80.0] zeros=0 residual=1.79742e-18 maxstep=1.53051
+T0=40.0 rect=[0.01, 0.5, 40.0, 50.0] zeros=0 residual=5.34146e-18 maxstep=1.52806
+T0=40.0 rect=[0.01, 0.5, 50.0, 60.0] zeros=0 residual=4.02352e-19 maxstep=1.57035
+T0=40.0 rect=[0.01, 0.5, 60.0, 70.0] zeros=0 residual=1.79742e-18 maxstep=1.55512
+T0=40.0 rect=[0.01, 0.5, 70.0, 80.0] zeros=0 residual=1.05932e-18 maxstep=1.53051
+written /Users/emalam/GitHub/rh_lean_01_2026/docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/dh_control/fixed_n_flip.json
+CHAIN_F_DONE
