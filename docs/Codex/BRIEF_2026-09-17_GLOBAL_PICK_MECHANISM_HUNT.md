@@ -187,3 +187,86 @@ subdivision, derivative hierarchy or renamed full-Pick dispatch. Keep the
 same private staging area and existing assigned brief/report area.
 Status remains INCOMPLETE_NO_CONSUMABLE_TARGET for canonical admission.
 This return does not alter the goal, phase, source-sign counters or HOLD.
+
+
+## Third return: exact arithmetic scattering versus a positive spectral energy
+
+Base a9ec16240e8f87b3d97987e359d34db3d46af12e. Both C2 source convergence and
+its normalized positive Fourier-only escape are independently excluded and
+synced. No proof or sync job remains. The preceding return is completed and
+its dictionaries must not be repeated. Previous goal turn: PROGRESS for a
+method exclusion; no original source-sign progress or counter reset.
+
+The question now is whether a known positive geometric operator carries the
+EXACT same zeta function, instead of producing another source. Then locate
+precisely what its positive energy controls and whether the desired zeros
+are in that controlled spectrum. This returns to source matching and the
+boundary domain, rather than choosing another tunable seed.
+
+Target unchanged: q=Phi/xi(1/2),
+ F(z)=integral_R exp(izx)q(x)dx=xi(1/2+iz)/xi(1/2),
+ f=Phi/||Phi||_2,
+ V[c]=sum_(i,j) conjugate(c_i)c_j int_0^infinity
+                   (2X+x_i+x_j)f(X+x_i)f(X+x_j)dX>=0
+for every finite family x_i in I=(-log(2)/2,0), c_i complex.
+The full Weil/RH transfer remains the earlier accepted conditional theorem.
+No spectral function below is silently identified with the old Pick quotient
+4H(u-1)/H(u), or a geometric norm with the physical V.
+
+Reconciled local evidence: the positive-reservoir report identifies the
+Connes--Consani correction and our wrong-output heat model. Its query
+'Maass Selberg truncated energy original zeta source identity' already has
+an INCOMPLETE receipt; do not repeat it. The exact modular Eisenstein
+scattering coefficient and its cusp-residue domain were not established by
+that report. Actual r is already proved NOT HCM (queue HC1--HC4); the Bessel
+multiplier and hyperbolic-source forcing obstructions are also retained.
+Do not restart any of those tests.
+
+Two explicit search rewrites, presently UNVERIFIED:
+A. On PSL(2,Z)\H, use the Eisenstein constant term y^s+C(s)y^(1-s).
+The known candidate C(s)=sqrt(pi)Gamma(s-1/2)zeta(2s-1)/
+[Gamma(s)zeta(2s)] uses the actual zeta. Check exact primary conventions:
+completed zeta Lambda differs from our entire xi by s(s-1)/2. Determine
+which original zeros become poles, any cancellations, and their location
+relative to the self-adjoint L2 spectrum.
+B. Use the Maass--Selberg truncated norm including the complete cusp term.
+At a nonreal scattering pole, determine whether its outgoing residue is
+square-integrable and whether removing its divergent cusp contribution
+preserves positivity. A positive Laplacian does not by itself settle the
+location of poles of the continued response.
+
+Explicit proposed diagnostic control, independently check before accepting:
+H=-d^2/dx^2 on x>0 with u'(0)=a u(0), a>0. Its quadratic form is
+int|u'|^2+a|u(0)|^2>=0. The scattering response for incoming exp(-ikx)
+and outgoing R(k)exp(ikx) is R(k)=(ik+a)/(ik-a), with pole k=-ia;
+the outgoing profile exp(a x) is not in L2. This control targets the false
+generic inference 'positive self-adjoint energy forces every response pole
+to be a real eigenfrequency'. It is not an arithmetic-source realization,
+not an original V witness, and not a counterexample to RH.
+
+New shelf dictionaries, run each once:
+1. modular surface Eisenstein scattering zeta resonances
+2. Maass Selberg truncation residue cusp L2
+3. Robin half line positive operator resonance outgoing
+These cover the arithmetic object, the integral boundary interaction, and
+the operator-domain control. Reuse the old broad Maass--Selberg receipt.
+If shelf evidence is incomplete, allow one bounded external pass and one
+adaptive primary-source follow-up. Fetch at most three useful primary
+sources, bind bytes/hash, a short quote and exact locator, map their
+normalizations and hypotheses, and distinguish conditional from proved use.
+
+Desired result: an exact source map to a worked geometric mechanism and a
+bounded analytic domain/energy check that identifies whether it supplies any
+new constraint for our zeros. Stop if it merely identifies the missing
+resonance localization without proving it. Do not dispatch a restated RH
+problem as a 'positive operator' or 'reservoir' request. No admission,
+CLOSES/OPENS, phase change or new goal. Save evidence in existing private
+kps-forced-quotient staging; root owns the brief and reviewed report/certificate
+in this isolated branch. Status INCOMPLETE_NO_CONSUMABLE_TARGET.
+
+New source bindings:
+- docs/Codex/REPORT_2026-09-17_FOURIER_CLOSURE_OBSTRUCTION.md: 0e8911e1b96d7f7022fcd83f050038d8ffc0152a200a030a009a4dceec9882f3
+- docs/Codex/REPORT_2026-09-15_POSITIVE_RESERVOIR_PREFLIGHT.md: bc97cc2ff3780eab8778b2724c3419b711d25ac4851b1ba10523063e39bbd508
+- docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md: 1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282
+- docs/Codex/REPORT_2026-09-17_DIRECT_PICK_BRIDGE.md: f015fc2df3d0a5c1ab86937b2c077495fb104331d50a4153c34bfd8c4184d97d
+- orchestrator/state/CHANNEL_RUNTIME.json: f7bb8eed28bf9b67292f67bbbdde96cecb4baf42e758e0acbb4be34d5baa6418
