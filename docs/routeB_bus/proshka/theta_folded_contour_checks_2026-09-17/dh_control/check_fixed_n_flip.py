@@ -94,11 +94,66 @@ def _worker(args):
     try: return fn, globals()[fn](task), None
     except Exception as e: return fn, task, repr(e)
 
+def _scan_pool(T0, sigma, Ts, dps, workers, label, chunk=25):
+    tasks = [("scan_chunk", {"T0": T0, "sigma": sigma, "Ts": Ts[i:i+chunk], "dps": dps}) for i in range(0, len(Ts), chunk)]
+    rows = []; t0 = time.time(); total = len(tasks)
+    with Pool(workers) as pool:
+        for i, (fn, r, err) in enumerate(pool.imap_unordered(_worker, tasks, chunksize=1), 1):
+            if err: raise RuntimeError(err)
+            rows.extend(r["rows"]); el = time.time()-t0; eta = el/i*(total-i)
+            print(f"[{i}/{total}] {i*100//total}% | ETA {int(eta//60)}m{int(eta%60):02d}s | {label} up to T={r['rows'][-1]['T']} h={r['rows'][-1]['h'][:10]}", flush=True)
+    return sorted(rows, key=lambda r: r["T"])
+
+def long_scan(a):
+    """A''' (a): frozen N0 = M_0(T0)-1, theta0 = theta(T0); coarse scan [Tmin, Tmax] step a.step at sigma; fine scan step
+    a.fine_step on [T_first - hw, T_first + hw] around the first coarse negative; confirmation of the first fine negative and
+    the last positive before it by doubling the precision (mpmath dps a.confirm_dps; arb ray integrals are not used here:
+    the integrands e^{pt} oscillate ~T/2pi times on [0,4]). Cancellation between the two rays is ~50 digits at T=2000 and
+    ~75 digits at T=4000 (measured), so dps must exceed that by a margin: a.dps = 120 leaves >= 33 digits."""
+    T0 = a.T0; theta0, c0, M0, N0 = frozen(T0)
+    nT = int(round((a.Tmax - a.Tmin)/a.step)) + 1
+    Ts = [round(a.Tmin + k*a.step, 6) for k in range(nT)]
+    print(f"long scan: T0={T0} N0={N0} theta0={mp.nstr(mp.mpf(theta0), 12)} sigma={a.sigma} T={a.Tmin}..{a.Tmax} step {a.step} ({nT} points) dps {a.dps} workers {a.workers}", flush=True)
+    t0 = time.time()
+    coarse = _scan_pool(T0, a.sigma, Ts, a.dps, a.workers, "coarse")
+    neg = [r for r in coarse if mp.mpf(r["h"]) < 0]
+    out = {"meta": {"T0": T0, "N0": N0, "theta0": mp.nstr(mp.mpf(theta0), 25), "sigma": a.sigma, "Tmin": a.Tmin, "Tmax": a.Tmax, "step": a.step, "dps": a.dps,
+                    "fine_step": a.fine_step, "fine_halfwidth": a.fine_halfwidth, "confirm_dps": a.confirm_dps,
+                    "cutoff_frozen": "N0 = M_0(T0)-1 with (6.3) r=0, theta0 = pi/4 - 1/(T0+1)"},
+           "coarse": coarse, "n_coarse": len(coarse), "n_coarse_negative": len(neg), "T_first_negative_coarse": neg[0]["T"] if neg else None}
+    if neg:
+        Tf = neg[0]["T"]; lo = max(a.Tmin, Tf - a.fine_halfwidth); hi = Tf + a.fine_halfwidth
+        nF = int(round((hi - lo)/a.fine_step)) + 1
+        Tsf = [round(lo + k*a.fine_step, 6) for k in range(nF)]
+        fine = _scan_pool(T0, a.sigma, Tsf, a.dps, a.workers, "fine")
+        fneg = [r for r in fine if mp.mpf(r["h"]) < 0]
+        out["fine"] = fine; out["n_fine"] = len(fine); out["n_fine_negative"] = len(fneg)
+        if fneg:
+            ff = fneg[0]; idx = fine.index(ff); lastpos = fine[idx-1] if idx > 0 else None
+            out["T_flip"] = ff["T"]; out["Delta_T"] = round(ff["T"] - T0, 6); out["h_at_flip"] = ff["h"]
+            out["last_positive_before_flip"] = lastpos
+            conf = []
+            for r in ([lastpos] if lastpos else []) + [ff]:
+                mp.mp.dps = a.confirm_dps
+                p = mp.mpf(Fraction(a.sigma)) + 1j*mp.mpf(r["T"])
+                J = list(mp.diffs(lambda x: cc.head(x, mp.mpf(theta0), N0), p, 1)); h = 4*mp.re(J[1]*mp.conj(J[0]))
+                conf.append({"T": r["T"], "h_dps_scan": r["h"], "h_dps_confirm": mp.nstr(h, 25), "rel_diff": mp.nstr(abs(h - mp.mpf(r["h"]))/abs(h), 5), "sign_agrees": bool((h < 0) == (mp.mpf(r["h"]) < 0))})
+            out["confirmation_precision_doubling"] = conf
+    out["meta"]["runtime_seconds"] = time.time()-t0
+    Path(a.out).write_text(json.dumps(out, indent=1))
+    print(f"coarse negatives {len(neg)}; T_flip={out.get('T_flip')} Delta_T={out.get('Delta_T')}", flush=True)
+    print(f"written {a.out}", flush=True)
+
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--long-scan", action="store_true"); ap.add_argument("--T0", type=float, default=14.0)
+    ap.add_argument("--Tmin", type=float, default=2000.0); ap.add_argument("--Tmax", type=float, default=4000.0); ap.add_argument("--step", type=float, default=0.25)
+    ap.add_argument("--sigma", default="1/64"); ap.add_argument("--fine-step", type=float, default=0.05); ap.add_argument("--fine-halfwidth", type=float, default=2.0)
+    ap.add_argument("--confirm-dps", type=int, default=160)
     ap.add_argument("--dps", type=int, default=50); ap.add_argument("--wind-dps", type=int, default=30)
     ap.add_argument("--workers", type=int, default=max(1, os.cpu_count()//2)); ap.add_argument("--out", default=str(HERE/"fixed_n_flip.json"))
     a = ap.parse_args()
+    if a.long_scan: return long_scan(a)
     tasks = []
     nT = int(round(SPAN/STEP)) + 1
     for T0 in T0S:

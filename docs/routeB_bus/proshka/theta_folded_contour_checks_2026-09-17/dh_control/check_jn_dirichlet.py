@@ -200,6 +200,48 @@ def zeros_JN(task):
     if k_right > 0: res["localized_right"] = localize(f, rect_right, k_right)
     return res
 
+def shadow(task):
+    """A''' (b): the zero of d_N nearest (in Im) to a zeta-zero height gamma, in the box s in [0.01, 2] x [gamma-1, gamma+1];
+    offsets delta_re = Re s - 1/2, delta_im = Im s - gamma. All zeros in the box are listed (winding + quadtree + findroot)."""
+    mp.mp.dps = task["dps"]; gamma = mp.mpf(task["gamma"]); N = task["N"]; t0 = time.time()
+    rect = [0.01, 2.0, float(gamma) - 1, float(gamma) + 1]
+    f = lambda x, y: d_N(mp.mpc(x, y), N)
+    w, ms, nev = winding_rect(f, rect); k = int(mp.nint(w))
+    zs = localize(f, rect, k) if k > 0 else []
+    found = [z for z in zs if z.get("zero")]
+    res = {"gamma": task["gamma"], "N": N, "N_rule": task["N_rule"], "rect_s": rect, "zeros_in_box": k, "integer_residual": mp.nstr(abs(w-k), 4),
+           "max_phase_step": mp.nstr(ms, 5), "zeros": zs, "n_localized": len(found), "runtime_seconds": round(time.time()-t0, 1)}
+    if found:
+        near = min(found, key=lambda z: abs(z["im"] - float(gamma)))
+        z = mp.mpc(near["zero"]); dre = mp.re(z) - mp.mpf(1)/2; dim = mp.im(z) - gamma
+        res.update({"nearest_zero": near["zero"], "delta_re": mp.nstr(dre, 12), "delta_im": mp.nstr(dim, 12), "delta_re_times_N": mp.nstr(dre*N, 10),
+                    "delta_abs": mp.nstr(abs(z - (mp.mpf(1)/2 + 1j*gamma)), 12), "nearest_re_gt_half": bool(dre > 0)})
+    return res
+
+def run_shadows(a):
+    zs = cc.zeta_zero_heights(60.0)
+    cc.ADAPTIVE_R = 0.0
+    tasks = []
+    for g in zs:
+        _, _, M, N = cc.cutoff(float(g)); tasks.append(("shadow", {"gamma": round(float(g), 9), "N": N, "N_rule": "N(T)=M_0(gamma)-1", "dps": a.wind_dps}))
+    g40 = [g for g in zs if abs(g - 40.918719) < 1e-3][0]
+    for N in (10, 15, 20, 30, 40, 60):
+        tasks.append(("shadow", {"gamma": round(float(g40), 9), "N": N, "N_rule": "fixed height, N given", "dps": a.wind_dps}))
+    total = len(tasks); t0 = time.time(); res = []; fails = []
+    print(f"shadows: {total} boxes ({len(zs)} zero heights at N(T) + 6 values of N at gamma={g40:.6f}), workers {a.workers}", flush=True)
+    with Pool(a.workers) as pool:
+        for i, (fn, r, err) in enumerate(pool.imap_unordered(_worker, tasks, chunksize=1), 1):
+            if err: fails.append({"task": r, "error": err}); label = f"FAIL {err[:60]}"
+            else: res.append(r); label = f"gamma={r['gamma']} N={r['N']} zeros={r['zeros_in_box']} delta_re={r.get('delta_re','-')[:9]} delta_im={r.get('delta_im','-')[:9]} dre*N={r.get('delta_re_times_N','-')[:7]}"
+            el = time.time()-t0; eta = el/i*(total-i)
+            print(f"[{i}/{total}] {i*100//total}% | ETA {int(eta//60)}m{int(eta%60):02d}s | {label}", flush=True)
+    res.sort(key=lambda r: (r["N_rule"], float(r["gamma"]), r["N"]))
+    out = {"meta": {"dps": a.wind_dps, "box": "[0.01, 2] x [gamma-1, gamma+1]", "zero_heights": [round(float(g), 9) for g in zs], "fixed_height": round(float(g40), 9),
+                    "fixed_N_values": [10, 15, 20, 30, 40, 60], "runtime_seconds": round(time.time()-t0, 1), "n_failures": len(fails)}, "shadows": res, "failures": fails}
+    Path(a.out).write_text(json.dumps(out, indent=1))
+    for r in res: print(f"{r['N_rule']:22s} gamma={r['gamma']:<12} N={r['N']:<3} zeros={r['zeros_in_box']} delta_re={r.get('delta_re')} delta_im={r.get('delta_im')} dre*N={r.get('delta_re_times_N')}")
+    print(f"written {a.out}", flush=True)
+
 def _worker(args):
     fn, task = args
     try: return fn, globals()[fn](task), None
@@ -210,7 +252,9 @@ def main():
     ap.add_argument("--dps", type=int, default=50); ap.add_argument("--wind-dps", type=int, default=30)
     ap.add_argument("--seed", type=int, default=20260918); ap.add_argument("--workers", type=int, default=max(1, os.cpu_count()//2))
     ap.add_argument("--n-points", type=int, default=20); ap.add_argument("--out", default=str(HERE/"jn_dirichlet.json"))
+    ap.add_argument("--shadows", action="store_true")
     a = ap.parse_args()
+    if a.shadows: return run_shadows(a)
     rng = random.Random(a.seed)
     pts = []
     for _ in range(a.n_points):
