@@ -2,6 +2,24 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-17-PICKVAR · Full-theta coupled logarithmic variance; one analytic diagnostic · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_PICKVAR_2026-09-17.txt`
+- Boundary: `GOAL058_FULL_THETA_COUPLED_LOG_VARIANCE`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Independently reviewed endpoint C1--C9, complete direct Pick bridge and mechanism/control report; original V/RH OPEN
+- Registered predictions: Full-source coupled variance difference lies in [0,1/u^2] for every u>0, or a strict analytic actual-source violation rejects this sufficient entrance; necessary filter only, no automatic derivative hierarchy
+- Delivery mode: explicit user-authorized GitHub full request and one short notice in living chat 6aa52001-4094-83eb-9520-01a09f54eff2; NOT YET SENT
+- Isolated candidate ledger only; canonical queue/runtime unchanged; no source-sign counter reset
+- Assigned response: `docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_PICKVAR_2026-09-17.md`
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `5acb582bf195140b785e35da1d511a7195135709` / `36314` / `759` /
+  `e83b6701f8d5337556525ffb03f2919feec73186c234259a9fa0398995697958` /
+  `e683c1858b8ec6fdf013bda405ce53d8818981ae` / `yes`
+
+---
+
 ## REQ-2026-09-17-KPSQUOTIENT · Forced full-theta KPS quotient; bounded analytic test · ANSWERED
 
 - `STATUS: ANSWERED_ACCEPTED_SCOPED_PUBLISHED`
