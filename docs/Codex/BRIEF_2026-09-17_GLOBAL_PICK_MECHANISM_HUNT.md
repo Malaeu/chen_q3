@@ -120,3 +120,70 @@ is identified. Stop with the exact missing condition if nothing transfers.
 Do not represent a library of equivalent criteria as progress on the sign.
 Save evidence in the existing private kps-forced-quotient staging area;
 root may publish the reviewed brief/report within this isolated branch.
+
+
+## Second return after the completed PICKVAR attempt: source-preservation mechanisms
+
+Research base fd8db9472169d081170ecfddae995f5707e0aa93. PICKVAR is answered,
+independently accepted at eventual-variance scope, and same-chat intake sync
+is terminal. No proof or sync job is pending. The earlier brief and search
+receipts above are historical and retained; do not repeat their four queries.
+
+The complete theta tail now pays the necessary variance comparison for every
+u>=U_* with an explicit finite threshold. That proof uses the least decay
+rate and the gap to later modes, and does not give the global Pick property.
+Return to the change of coordinates itself: additive total positivity of r
+and its exact reciprocal identity have not been transported into a property
+that controls the complete transformed function.
+
+New source pin: REPORT_2026-09-17_PICKVAR_INTAKE.md SHA256
+ e0ea0c275b5157f6425935440f9a3b70a896a886be29ad0e607ba9ab8649ffb6.
+Producer PROSHKA_RESPONSE_GOAL058_PICKVAR_2026-09-17.md SHA256
+ 3f7a04a92554c36da91c0df87b3ad9345baf9e5b13c029f03df8c1e3c18c5f7a.
+Keep all source definitions, domains and quantifiers above. The precise
+interaction is
+ r(t) -> q(x)=exp(5x/2)r(exp(2x))/Z -> rho(s)=q(sqrt(s))
+ -> H(u)=Gamma(u+1/2)^(-1) integral s^(u-1/2)rho(s)ds,
+initially Re u>-1/2 and then the proved entire continuation. Additive PF
+means all minors det[r(t_i-v_j)] are nonnegative, extending r by zero to
+t<=0. Reciprocity is r(1/t)=t^(5/2)r(t), hence even q. Neither assertion
+is silently reinterpreted as translation total positivity of q or rho.
+
+A theorem that yields real negative zeros of the actual entire H could
+already use R1-R2 and the classical Laguerre consumer in DIRECT_PICK_BRIDGE;
+it need not prove the additional Pick quotient if it supplies that output
+directly. This is a possible weaker sufficient entrance, not a claimed
+source theorem, nor a new necessary condition for RH. Every proposed
+preserver must name its actual input class and show our r is in that class.
+
+Preserve the explicit q0 Gaussian-difference negative control and its exact
+reciprocal pullback from Q5 of KPS_FORCED_QUOTIENT (SHA256
+8b5cc3a609cf73ef977ee67c6036e5cfaef6294d496f9b0f78f6ba847558f1ff).
+It has reciprocity and squared-log concavity but fails additive PF2 and has
+nonreal Fourier zeros. The exp(-s-epsilon*s^3) control in the previous hunt
+also excludes deriving VAR or Pick from squared-log concavity alone.
+
+Own rewrites for discovery only, both UNVERIFIED:
+1. View the complete composite above as a Mellin/Gamma transform preserving
+   a zero or determinant class, with additive PF plus reciprocal symmetry as
+   input. Search total positivity, Mellin convolution and multiplier-sequence
+   preservation. Do not replace the transform by an arbitrary PF kernel.
+2. View normalized Mellin transforms of log-concave densities as a worked
+   partial bridge: determine exactly which signs are proved, and what extra
+   hypothesis upgrades them to an entire real-zero or Pick assertion.
+   A real-axis log-concavity theorem is not that upgrade.
+
+Three new registered shelf dictionaries, each run once:
+- Polya frequency Mellin transform reciprocal
+- multiplicative total positivity logarithmic change
+- normalized Mellin transform Laguerre multiplier sequence
+First inspect existing local Schoenberg/PF and reciprocal-source evidence.
+If insufficient, at most one external pass for these structural dictionaries
+and one adaptive primary-source follow-up. Seek at most three source-verified
+mechanisms with exact mapping and negative-control discrimination. Reuse the
+previous generic Pick/string/CBF search, not a new inverse-existence request.
+Stop at a missing preservation hypothesis; no automatic compact-interval
+subdivision, derivative hierarchy or renamed full-Pick dispatch. Keep the
+same private staging area and existing assigned brief/report area.
+Status remains INCOMPLETE_NO_CONSUMABLE_TARGET for canonical admission.
+This return does not alter the goal, phase, source-sign counters or HOLD.
