@@ -74,6 +74,17 @@
       "confidence": 0.7,
       "falsifier": "relative deviation > 0.3 anywhere",
       "mac_note_before_run": "delta_obs from dn_shadows.json (already computed); delta_pred computed after this registration by re-running the shadow boxes with the new field (numbers of delta_obs unchanged); the out-of-sample set N in {12,25,35,50,80,100,150} is reported as well but is not part of the registered statement. If the two-term numerator works here, the P_M3_2 failure is the same second EM term."
+    },
+    {
+      "id": "P_M3_9",
+      "registered_by": "MAC (proposed), owner (approved, confidence set by owner)",
+      "registered_utc": "2026-09-17T22:17:52+00:00",
+      "reserved_note": "P_M3_7 and P_M3_8 are reserved by the owner for W_N (primes-vs-zeros crosswalk and rank/Frobenius defect of PROSHKA_RAY_WEIL_COMPRESSION_CROSSWALK_2026-09-17); this is P_M3_9.",
+      "statement": "second-order shadow: solve d_N(rho) + d_N'(rho) delta + (1/2) d_N''(rho) delta^2 = 0 for the root nearest 0, with the two-term Euler-Maclaurin numerator in place of d_N(rho) (i.e. d_N(rho) -> -[N^{1-rho}/(rho-1) - N^{-rho}/2]) and d_N', d_N'' computed directly (d_N'' = sum_{n<=N} (log n)^2 n^{-rho}): |delta_pred2 - delta_obs|/|delta_obs| < 0.05 on all 13 zero heights at N = N(gamma).",
+      "confidence": 0.6,
+      "falsifier": "relative deviation >= 0.05 at any of the 13 heights",
+      "purpose": "test of the P_M3_6 diagnosis 'the linearisation is to blame': at N = N(gamma) the EM2 numerator matches d_N(rho) to 0.04-0.13 while the exact Newton step still misses by 0.06-0.20, so the residual should be the second-order term.",
+      "mac_note_before_run": "reported alongside, not part of the judged criterion: (i) the same quadratic with the EXACT numerator d_N(rho) — the pure linearisation diagnostic (if this one lands below 0.05 and the EM2 version does not, the numerator is the limit, not the linearisation); (ii) both quadratics on the fixed-height set N in {10,...,150} at gamma = 40.9187. Root choice: the root of the quadratic with the smaller modulus; if the discriminant makes both roots comparable the one nearer delta_obs is recorded together with a flag."
     }
   ],
   "companion_without_prediction": "option-2 scan from the v2 closeout: frozen N0=20, theta0=theta(14), sigma=1/64, T = 14..414 step 0.05 (8001 points, dps 50: cancellation <= ~10 digits there); expected by the budget: no flip",
@@ -115,6 +126,12 @@
       "time_utc": "2026-09-17T22:09:09+00:00",
       "by": "owner",
       "what": "P_M3_6 added (two-term shadow formula); report must show the P_M3_2 numbers (|delta|/sqrt N and arg delta by N) so that the failure mode (scale / rotation / both) is visible."
+    },
+    {
+      "id": "REG_ADD_6",
+      "time_utc": "2026-09-17T22:17:52+00:00",
+      "by": "owner",
+      "what": "P_M3_9 registered (second-order shadow); P_M3_7/P_M3_8 reserved by the owner for W_N. Report must carry in section 0 the line that |delta| stays in 0.08-0.15 for N = 10..150 at fixed height: the shadow of the Dirichlet partial sum does not converge to the axis as N grows; the return to the axis is entirely due to E_N, i.e. to the Gaussian suppression of the theta series, not to the arithmetic of d_N."
     }
   ]
 }

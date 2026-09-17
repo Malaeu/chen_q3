@@ -1,6 +1,6 @@
 shadows: 7 boxes (13 zero heights at N(T) + 6 values of N at gamma=40.918719), workers 2
-[1/7] 14% | ETA 0m04s | gamma=40.918719012 N=12 zeros=1 delta_re=-0.034543 delta_im=0.0953508 dre*N=-0.4145
-[2/7] 28% | ETA 0m03s | gamma=40.918719012 N=25 zeros=1 delta_re=-0.015836 delta_im=-0.093776 dre*N=-0.3959
+[1/7] 14% | ETA 0m03s | gamma=40.918719012 N=12 zeros=1 delta_re=-0.034543 delta_im=0.0953508 dre*N=-0.4145
+[2/7] 28% | ETA 0m02s | gamma=40.918719012 N=25 zeros=1 delta_re=-0.015836 delta_im=-0.093776 dre*N=-0.3959
 [3/7] 42% | ETA 0m02s | gamma=40.918719012 N=35 zeros=1 delta_re=-0.137656 delta_im=-0.052336 dre*N=-4.8179
 [4/7] 57% | ETA 0m02s | gamma=40.918719012 N=50 zeros=1 delta_re=0.0392297 delta_im=0.1002780 dre*N=1.96148
 [5/7] 71% | ETA 0m02s | gamma=40.918719012 N=80 zeros=1 delta_re=0.0699486 delta_im=0.0949163 dre*N=5.59589

@@ -1,11 +1,12 @@
 {
- "time_utc": "2026-09-17T22:10:37+00:00",
+ "time_utc": "2026-09-17T22:20:42+00:00",
  "task_id": "MAC_A3_LONG_FLIP_AND_DN_SHADOWS_2026-09-18",
  "fates": {
   "P_M3_1": "PENDING (long_flip_T14.json not yet written)",
   "OPTION_2_SCAN_14_414": "NOT_A_TEST (AMEND_OPT2); PENDING as a regression",
   "P_M3_2": "REFUTED: registered set |delta|/sqrt(N) max/min = 3.33 (limit 1.857), max |arg deviation| = 1.888 rad (limit 0.3), |delta| increasing: False; out-of-sample set: max/min = 2.786, max arg dev = 2.061 rad. First-principles delta_th = N^(1-rho)/((rho-1) zeta'(rho)): |delta|/|delta_th| in [0.64, 2.54] over the 13 N values (order of magnitude right), arg(delta/delta_th) in [-2.08, 0.22] rad (rotation direction right, residual beyond the registered tolerance)",
   "P_M3_2_old": "WITHDRAWN_BY_OWNER_AS_ERRONEOUS; on the data: REFUTED (delta_re changes sign in N and in gamma: 4 of 13 heights have the shadow left of the line)",
+  "P_M3_9": "REFUTED: with the registered two-term EM numerator 2/13 heights within 0.05 (max 0.1156). Diagnosis CONFIRMED: with the exact numerator d_N(rho) the quadratic gives 12/13 within 0.05 (max 0.06917), and 0.00496..0.0506 over N = 10..150 at fixed height (first order there: 0.076..0.21) — the linearisation was the culprit and the numerator is now the binding limit. POST HOC, NOT REGISTERED: the three-term EM numerator (next term -rho N^-rho-1 over 12) cuts the numerator error to 0.0003..0.0034 at N = N(gamma) and reproduces the exact-numerator quadratic (12/13 within 0.05, max 0.069).",
   "P_M3_6": "REFUTED: within 0.1 at 5/13 heights (max 0.1731) and 1/6 of the fixed-height N (max 0.9658); falsifier (> 0.3) hit at N = [10, 15]. Decomposition: the exact Newton step -d_N(rho)/d_N'(rho) itself deviates 0.0593..0.196 at the 13 heights (linearisation error: |delta| ~ 0.1 is not small on the scale of d_N), the two-term EM numerator matches d_N(rho) to 0.0407..0.127 at N = N(gamma) but only to 0.95 / 0.51 / 0.31 at N = 10 / 15 / 20 (gamma = 40.92): at fixed height the numerator fails for small N, at N(gamma) the linearisation fails",
   "P_M3_3": "Delta > 0 for all N in 10..60 — CONFIRMED (51/51). 'Grows with N' — REFUTED at the normalised level (AMEND_3_3): Delta_hat 0.64764814 -> 0.64759065 (monotone decreasing: True); raw Delta saturates from N ~ 25, increments decay geometrically (N=11: 1.87e-116, N=16: 6.38e-119, N=21: 1.31e-121, N=26: 8.31e-125, N=31: 1.42e-128, N=41: 6.55e-138, N=51: 1.08e-149, N=56: 1.63e-156); raw non-decrease is exact (Lagrange), zero increments exactly at N = 5k (a_5k = 0 in DH).",
   "P_M3_4": "CONFIRMED: Delta > 0 at 372/372 points; Delta_hat minimal at the smallest sigma and at gamma = 14 for every sigma; Delta_hat/sigma^2 in [0.515, 3.258] — no zone where the pair signal collapses; Delta_hat = O(sigma^2) as sigma -> 0 is structural (rows coincide at sigma = 0)",
@@ -438,6 +439,64 @@
    "| γ=40.92 | 40.9187 | 100 | (0.0600074783617166418 | (0.0828036331821671881 | 0.2110 | 0.2076 | 0.0138 |",
    "| γ=40.92 | 40.9187 | 150 | (0.1113245399251979421 | (0.1007685236765288788 | 0.1879 | 0.1923 | 0.0061 |"
   ],
+  "P_M3_9": {
+   "heights_13_em2_within_0.05": "2/13",
+   "heights_13_em2_max": "0.1156",
+   "heights_13_exact_numerator_within_0.05": "12/13",
+   "heights_13_exact_numerator_max": "0.06917",
+   "fixed_height_13N_exact_numerator_range": [
+    "0.00496",
+    "0.0506"
+   ],
+   "fixed_height_13N_em2_range": [
+    "0.0215",
+    "0.859"
+   ],
+   "roots_ever_comparable": false
+  },
+  "P_M3_9_table": [
+   "| набор | γ | N | 1-й пор. EM2 | 2-й пор. EM2 | 2-й пор. точный числ. | Ньютон |",
+   "|---|---|---|---|---|---|---|",
+   "| N(γ) | 14.1347 | 20 | 0.1731 | 0.1070 | 0.0691 | 0.1958 |",
+   "| N(γ) | 21.0220 | 26 | 0.1727 | 0.0322 | 0.0264 | 0.1637 |",
+   "| N(γ) | 25.0108 | 29 | 0.1293 | 0.0455 | 0.0173 | 0.1449 |",
+   "| N(γ) | 30.4248 | 32 | 0.0830 | 0.0960 | 0.0146 | 0.1145 |",
+   "| N(γ) | 32.9350 | 34 | 0.0523 | 0.0913 | 0.0125 | 0.1143 |",
+   "| N(γ) | 37.5861 | 36 | 0.0961 | 0.0802 | 0.0052 | 0.0817 |",
+   "| N(γ) | 40.9187 | 38 | 0.0518 | 0.1152 | 0.0090 | 0.0933 |",
+   "| N(γ) | 43.3270 | 39 | 0.1472 | 0.0867 | 0.0066 | 0.1026 |",
+   "| N(γ) | 48.0051 | 42 | 0.0522 | 0.1044 | 0.0063 | 0.0879 |",
+   "| N(γ) | 49.7738 | 43 | 0.1470 | 0.1033 | 0.0083 | 0.0965 |",
+   "| N(γ) | 52.9703 | 44 | 0.1648 | 0.1133 | 0.0022 | 0.0592 |",
+   "| N(γ) | 56.4462 | 46 | 0.1195 | 0.1147 | 0.0022 | 0.0601 |",
+   "| N(γ) | 59.3470 | 47 | 0.1373 | 0.1156 | 0.0064 | 0.0963 |",
+   "| γ=40.92 | 40.9187 | 10 | 0.9658 | 0.8593 | 0.0078 | 0.1214 |",
+   "| γ=40.92 | 40.9187 | 15 | 0.5076 | 0.5754 | 0.0049 | 0.0755 |",
+   "| γ=40.92 | 40.9187 | 20 | 0.2252 | 0.3391 | 0.0051 | 0.0762 |",
+   "| γ=40.92 | 40.9187 | 30 | 0.2238 | 0.1338 | 0.0050 | 0.0861 |",
+   "| γ=40.92 | 40.9187 | 40 | 0.2184 | 0.0810 | 0.0120 | 0.1317 |",
+   "| γ=40.92 | 40.9187 | 60 | 0.0819 | 0.0598 | 0.0156 | 0.1158 |",
+   "| γ=40.92 | 40.9187 | 12 | 0.6630 | 0.6695 | 0.0055 | 0.0920 |",
+   "| γ=40.92 | 40.9187 | 25 | 0.3143 | 0.1982 | 0.0064 | 0.0991 |",
+   "| γ=40.92 | 40.9187 | 35 | 0.1931 | 0.0987 | 0.0105 | 0.0941 |",
+   "| γ=40.92 | 40.9187 | 50 | 0.1053 | 0.0428 | 0.0131 | 0.1210 |",
+   "| γ=40.92 | 40.9187 | 80 | 0.1423 | 0.0214 | 0.0236 | 0.1530 |",
+   "| γ=40.92 | 40.9187 | 100 | 0.2110 | 0.0216 | 0.0343 | 0.2076 |",
+   "| γ=40.92 | 40.9187 | 150 | 0.1879 | 0.0533 | 0.0505 | 0.1923 |"
+  ],
+  "shadow_does_not_converge": {
+   "N_range": [
+    10,
+    150
+   ],
+   "abs_delta_min": "0.077",
+   "abs_delta_max": "0.1473",
+   "abs_over_sqrtN_first_last": [
+    "0.0416",
+    "0.0105"
+   ],
+   "statement": "the shadow of the Dirichlet partial sum does not converge to the axis as N grows; the return to the axis is entirely due to E_N, i.e. to the Gaussian suppression of the theta series, not to the arithmetic of d_N"
+  },
   "spira": {
    "N_range": [
     10,

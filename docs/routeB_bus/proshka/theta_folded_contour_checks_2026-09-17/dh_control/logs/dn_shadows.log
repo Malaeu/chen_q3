@@ -1,19 +1,19 @@
 shadows: 19 boxes (13 zero heights at N(T) + 6 values of N at gamma=40.918719), workers 2
-[1/19] 5% | ETA 0m18s | gamma=14.134725142 N=20 zeros=1 delta_re=0.2229249 delta_im=-0.063164 dre*N=4.45849
+[1/19] 5% | ETA 0m16s | gamma=14.134725142 N=20 zeros=1 delta_re=0.2229249 delta_im=-0.063164 dre*N=4.45849
 [2/19] 10% | ETA 0m10s | gamma=21.022039639 N=26 zeros=1 delta_re=0.1110791 delta_im=-0.120834 dre*N=2.88805
-[3/19] 15% | ETA 0m12s | gamma=25.01085758 N=29 zeros=1 delta_re=0.0634069 delta_im=0.1191153 dre*N=1.83880
+[3/19] 15% | ETA 0m11s | gamma=25.01085758 N=29 zeros=1 delta_re=0.0634069 delta_im=0.1191153 dre*N=1.83880
 [4/19] 21% | ETA 0m09s | gamma=30.424876126 N=32 zeros=1 delta_re=0.1095141 delta_im=-0.014725 dre*N=3.50445
 [5/19] 26% | ETA 0m10s | gamma=32.935061588 N=34 zeros=1 delta_re=0.0909410 delta_im=0.0487329 dre*N=3.09199
-[6/19] 31% | ETA 0m09s | gamma=37.586178159 N=36 zeros=1 delta_re=0.0062318 delta_im=0.0857398 dre*N=0.22434
+[6/19] 31% | ETA 0m08s | gamma=37.586178159 N=36 zeros=1 delta_re=0.0062318 delta_im=0.0857398 dre*N=0.22434
 [7/19] 36% | ETA 0m09s | gamma=40.918719012 N=38 zeros=1 delta_re=0.0846567 delta_im=0.0020432 dre*N=3.21695
-[8/19] 42% | ETA 0m08s | gamma=43.327073281 N=39 zeros=1 delta_re=-0.004636 delta_im=0.0820749 dre*N=-0.1808
-[9/19] 47% | ETA 0m08s | gamma=48.005150881 N=42 zeros=1 delta_re=0.0280833 delta_im=0.0832576 dre*N=1.17950
+[8/19] 42% | ETA 0m07s | gamma=43.327073281 N=39 zeros=1 delta_re=-0.004636 delta_im=0.0820749 dre*N=-0.1808
+[9/19] 47% | ETA 0m07s | gamma=48.005150881 N=42 zeros=1 delta_re=0.0280833 delta_im=0.0832576 dre*N=1.17950
 [10/19] 52% | ETA 0m06s | gamma=49.773832478 N=43 zeros=1 delta_re=0.0405800 delta_im=-0.081362 dre*N=1.74494
 [11/19] 57% | ETA 0m06s | gamma=52.970321478 N=44 zeros=1 delta_re=-0.005841 delta_im=-0.056066 dre*N=-0.2570
 [12/19] 63% | ETA 0m05s | gamma=56.446247697 N=46 zeros=1 delta_re=-0.013960 delta_im=0.0550530 dre*N=-0.6421
 [13/19] 68% | ETA 0m04s | gamma=40.918719012 N=10 zeros=1 delta_re=-0.126207 delta_im=0.0381284 dre*N=-1.2620
 [14/19] 73% | ETA 0m03s | gamma=40.918719012 N=15 zeros=1 delta_re=0.0711073 delta_im=-0.029551 dre*N=1.06660
-[15/19] 78% | ETA 0m03s | gamma=59.347044003 N=47 zeros=1 delta_re=-0.040202 delta_im=0.0950333 dre*N=-1.8895
+[15/19] 78% | ETA 0m02s | gamma=59.347044003 N=47 zeros=1 delta_re=-0.040202 delta_im=0.0950333 dre*N=-1.8895
 [16/19] 84% | ETA 0m02s | gamma=40.918719012 N=20 zeros=1 delta_re=0.0641696 delta_im=0.0432971 dre*N=1.28339
 [17/19] 89% | ETA 0m01s | gamma=40.918719012 N=30 zeros=1 delta_re=-0.130802 delta_im=-0.030736 dre*N=-3.9240
 [18/19] 94% | ETA 0m00s | gamma=40.918719012 N=40 zeros=1 delta_re=-0.017304 delta_im=-0.111991 dre*N=-0.6921

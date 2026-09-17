@@ -224,7 +224,19 @@ def shadow(task):
         num2 = mp.power(N, 1 - rho)/(rho - 1) - mp.power(N, -rho)/2
         dpred = num2/dNp
         dN_rho = d_N(rho, N)
-        res.update({"dN_prime_at_rho": mp.nstr(dNp, 15), "dN_at_rho": mp.nstr(dN_rho, 15), "em2_numerator_minus_dN": mp.nstr(-num2, 15),
+        # P_M3_9: second-order shadow, num + dNp*delta + dNpp*delta^2/2 = 0, root of smaller modulus
+        dNpp = mp.fsum(mp.log(n)**2*mp.power(n, -rho) for n in range(1, N+1))
+        def quad_root(num):
+            a = dNpp/2; b = dNp; c = num
+            if abs(a) < mp.mpf(10)**-40: return -c/b, False
+            disc = mp.sqrt(b*b - 4*a*c); r1 = (-b + disc)/(2*a); r2 = (-b - disc)/(2*a)
+            rts = sorted([r1, r2], key=lambda x: abs(x))
+            return rts[0], bool(abs(rts[1]) < 2*abs(rts[0]))
+        d2_em2, amb_em2 = quad_root(-num2); d2_exact, amb_ex = quad_root(dN_rho)
+        res.update({"dN_second_at_rho": mp.nstr(dNpp, 15),
+                    "delta_pred2_em2": mp.nstr(d2_em2, 20), "rel_dev_pred2_em2_vs_obs": mp.nstr(abs(d2_em2 - delta)/abs(delta), 6), "roots_comparable_em2": amb_em2,
+                    "delta_pred2_exact_numerator": mp.nstr(d2_exact, 20), "rel_dev_pred2_exact_vs_obs": mp.nstr(abs(d2_exact - delta)/abs(delta), 6), "roots_comparable_exact": amb_ex,
+                    "dN_prime_at_rho": mp.nstr(dNp, 15), "dN_at_rho": mp.nstr(dN_rho, 15), "em2_numerator_minus_dN": mp.nstr(-num2, 15),
                     "rel_err_em2_vs_dN_at_rho": mp.nstr(abs(dN_rho + num2)/abs(dN_rho), 6),
                     "delta_pred_em2": mp.nstr(dpred, 20), "rel_dev_pred_vs_obs": mp.nstr(abs(dpred - delta)/abs(delta), 6),
                     "delta_newton": mp.nstr(-dN_rho/dNp, 20), "rel_dev_newton_vs_obs": mp.nstr(abs(-dN_rho/dNp - delta)/abs(delta), 6)})

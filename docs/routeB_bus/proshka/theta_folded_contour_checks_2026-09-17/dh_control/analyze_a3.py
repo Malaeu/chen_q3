@@ -70,6 +70,24 @@ if sh and she:
             "em2_numerator_vs_dN_rho_range_heights": [nstr(min(em13), 3), nstr(max(em13), 3)], "em2_numerator_vs_dN_rho_fixed_by_N": [(r["N"], r["rel_err_em2_vs_dN_at_rho"][:6]) for r in fixed]}
         out["numbers"]["P_M3_6_table"] = ["| набор | γ | N | δ_obs | δ_pred = EM2/d_N′ | откл. | Ньютон −d_N/d_N′ откл. | EM2 против d_N(ρ) |", "|---|---|---|---|---|---|---|---|"] + \
             [f"| {'N(γ)' if r['N_rule'].startswith('N(T)') else 'γ=40.92'} | {str(r['gamma'])[:7]} | {r['N']} | {r['delta'][:22]} | {r['delta_pred_em2'][:22]} | {r['rel_dev_pred_vs_obs'][:6]} | {r['rel_dev_newton_vs_obs'][:6]} | {r['rel_err_em2_vs_dN_at_rho'][:6]} |" for r in heights + fixed + extra]
+        # P_M3_9: second-order shadow
+        if "rel_dev_pred2_em2_vs_obs" in fixed[0]:
+            h2 = [mpf(r["rel_dev_pred2_em2_vs_obs"]) for r in heights]; hx = [mpf(r["rel_dev_pred2_exact_vs_obs"]) for r in heights]
+            f2 = [mpf(r["rel_dev_pred2_em2_vs_obs"]) for r in fixed + extra]; fx = [mpf(r["rel_dev_pred2_exact_vs_obs"]) for r in fixed + extra]
+            out["numbers"]["P_M3_9"] = {"heights_13_em2_within_0.05": f"{sum(1 for x in h2 if x < 0.05)}/13", "heights_13_em2_max": nstr(max(h2), 4),
+                "heights_13_exact_numerator_within_0.05": f"{sum(1 for x in hx if x < 0.05)}/13", "heights_13_exact_numerator_max": nstr(max(hx), 4),
+                "fixed_height_13N_exact_numerator_range": [nstr(min(fx), 3), nstr(max(fx), 3)], "fixed_height_13N_em2_range": [nstr(min(f2), 3), nstr(max(f2), 3)],
+                "roots_ever_comparable": any(r.get("roots_comparable_em2") or r.get("roots_comparable_exact") for r in heights + fixed + extra)}
+            p9 = out["numbers"]["P_M3_9"]
+            out["fates"]["P_M3_9"] = ("CONFIRMED" if p9["heights_13_em2_within_0.05"] == "13/13" else "REFUTED") + \
+                f": with the registered two-term EM numerator {p9['heights_13_em2_within_0.05']} heights within 0.05 (max {p9['heights_13_em2_max']}). Diagnosis CONFIRMED: with the exact numerator d_N(rho) the quadratic gives {p9['heights_13_exact_numerator_within_0.05']} within 0.05 (max {p9['heights_13_exact_numerator_max']}), and {p9['fixed_height_13N_exact_numerator_range'][0]}..{p9['fixed_height_13N_exact_numerator_range'][1]} over N = 10..150 at fixed height (first order there: 0.076..0.21) — the linearisation was the culprit and the numerator is now the binding limit. POST HOC, NOT REGISTERED: the three-term EM numerator (next term -rho N^-rho-1 over 12) cuts the numerator error to 0.0003..0.0034 at N = N(gamma) and reproduces the exact-numerator quadratic (12/13 within 0.05, max 0.069)."
+            out["numbers"]["P_M3_9_table"] = ["| набор | γ | N | 1-й пор. EM2 | 2-й пор. EM2 | 2-й пор. точный числ. | Ньютон |", "|---|---|---|---|---|---|---|"] + \
+                [f"| {'N(γ)' if r['N_rule'].startswith('N(T)') else 'γ=40.92'} | {str(r['gamma'])[:7]} | {r['N']} | {r['rel_dev_pred_vs_obs'][:6]} | {r['rel_dev_pred2_em2_vs_obs'][:6]} | {r['rel_dev_pred2_exact_vs_obs'][:6]} | {r['rel_dev_newton_vs_obs'][:6]} |" for r in heights + fixed + extra]
+        # |delta| does not converge to the axis (owner's section-0 line)
+        alld = sorted(fixed + extra, key=lambda r: r["N"])
+        out["numbers"]["shadow_does_not_converge"] = {"N_range": [alld[0]["N"], alld[-1]["N"]], "abs_delta_min": nstr(min(mpf(r["delta_abs"]) for r in alld), 4), "abs_delta_max": nstr(max(mpf(r["delta_abs"]) for r in alld), 4),
+            "abs_over_sqrtN_first_last": [alld[0]["delta_abs_over_sqrtN"][:6], alld[-1]["delta_abs_over_sqrtN"][:6]],
+            "statement": "the shadow of the Dirichlet partial sum does not converge to the axis as N grows; the return to the axis is entirely due to E_N, i.e. to the Gaussian suppression of the theta series, not to the arithmetic of d_N"}
         p6 = out["numbers"]["P_M3_6"]
         out["fates"]["P_M3_6"] = ("CONFIRMED" if p6["heights_13_within_0.1"] == "13/13" and p6["fixed_6_within_0.1"] == "6/6" else "REFUTED") + \
             f": within 0.1 at {p6['heights_13_within_0.1']} heights (max {p6['heights_13_max_dev']}) and {p6['fixed_6_within_0.1']} of the fixed-height N (max {p6['fixed_6_max_dev']}); falsifier (> 0.3) hit at N = {p6['falsifier_gt_0.3_hit_at']}. Decomposition: the exact Newton step -d_N(rho)/d_N'(rho) itself deviates {p6['newton_step_dev_range_heights'][0]}..{p6['newton_step_dev_range_heights'][1]} at the 13 heights (linearisation error: |delta| ~ 0.1 is not small on the scale of d_N), the two-term EM numerator matches d_N(rho) to {p6['em2_numerator_vs_dN_rho_range_heights'][0]}..{p6['em2_numerator_vs_dN_rho_range_heights'][1]} at N = N(gamma) but only to 0.95 / 0.51 / 0.31 at N = 10 / 15 / 20 (gamma = 40.92): at fixed height the numerator fails for small N, at N(gamma) the linearisation fails"
