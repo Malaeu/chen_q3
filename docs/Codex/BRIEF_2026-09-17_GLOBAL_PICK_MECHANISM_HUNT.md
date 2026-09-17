@@ -270,3 +270,70 @@ New source bindings:
 - docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md: 1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282
 - docs/Codex/REPORT_2026-09-17_DIRECT_PICK_BRIDGE.md: f015fc2df3d0a5c1ab86937b2c077495fb104331d50a4153c34bfd8c4184d97d
 - orchestrator/state/CHANNEL_RUNTIME.json: f7bb8eed28bf9b67292f67bbbdde96cecb4baf42e758e0acbb4be34d5baa6418
+
+
+## Fourth return: causal reconstruction of the radical-compatible signed field
+
+Base 72a536a26517860edfb29ae5dfee941c4e18c811. Previous goal turn was PROGRESS
+for a verified certificate-class exclusion and terminal publication/sync, not
+for the original source sign; no canonical counter reset. The finite-path
+corollary does not provide a positive source mechanism. Reconciliation has
+now recovered the signed Suzuki field and its already accepted OPENSGN
+reduction. Do not rediscover either the negative-time repair or the Poisson
+reduction, and do not repeat the three completed earlier search dictionaries.
+
+For X(z)=xi(1/2-iz), F(p)=X(ip)=xi(1/2+p), define
+ omega(x)=X(x)^2/(X(x)^2+Xprime(x)^2),
+ eta(x)=X(x)Xprime(x)/(X(x)^2+Xprime(x)^2),
+ M(p)=F(p)/(F(p)+Fprime(p)),
+ Omega(p)=(1/pi) integral_R p omega(x)/(p^2+x^2) dx, Re p>0.
+Real-axis common zeros have removable multiplier values. Omega is already
+holomorphic with positive real part on Re p>0, while M is initially
+meromorphic. OPENSGN Lemma 7 proves that M(p)=Omega(p) for every real p>1/2
+would establish the signed-field norm identity on the full complex compact
+smooth test class and hence original Weil positivity. That identity is OPEN.
+Boundary M(iy)=omega(y)+i eta(y), positivity of F and Fprime on real p>0,
+and annihilation of the complete translated radical by the signed transform
+are already proved. None has paid interior analytic reconstruction.
+
+Exact source pins:
+- docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md: ffe6d8e38be778f0622eebd7654a55c5312114a49335e6af30a3587e8eadd840; Lemma 7 (27)-(29), section 5, plants.
+- docs/routeB_bus/OPENSGN_INDEPENDENT_CHECK_2026-09-06.md: 74d9410a3aad3c985025e7595a53b0d0192571cb1c76fdf78972348bfd7faa73; checks 1-4.
+- docs/Codex/REPORT_2026-09-17_FINITE_PATH_ALLOCATION_OBSTRUCTION.md: 6a107d49d4b8f2824f7390ff4422309e14caa36ff369808a73408658b03b1599; A0-A5.
+The actual-source scattering audit represents a DIFFERENT damped functional;
+its positive Poisson density is not the omega or M in this return.
+
+Negative control from the old OPENSGN plant: X0(z)=cos(4z)+2,
+F0(p)=cosh(4p)+2. It is even and real, has nonreal zeros, and F0,F0prime
+are positive for real p>0. Its boundary multipliers have the same elementary
+positivity/unitarity identities. A reconstruction rule accepting only those
+properties must fail this control. Its positive atomic inverse Fourier measure
+is not the complete theta source or a claim about additive PF infinity.
+
+Two discovery rewrites, both UNVERIFIED source mechanisms:
+1. Hardy/Wiener-Hopf language: M's boundary data may have an anti-causal
+component. Identify a worked support or factorization theorem that removes
+that component from source properties WITHOUT presupposing M analytic in
+Re p>0 or the full original energy positive.
+2. Passive-system/Herglotz language: a positive-real response requires more
+than a nonnegative real part on the boundary. Find the exact extra condition,
+its construction from coefficients or a source operator, and test whether
+our known theta/Euler identities supply it on the unchanged domain.
+
+Three new registered shelf queries, each once:
+- Hardy projection meromorphic positive real reconstruction
+- Wiener Hopf nonminimum phase boundary passivity
+- Herglotz passive system causality theorem
+First inspect the existing Suzuki/OPENSGN/local references. If insufficient,
+one bounded external primary-source pass and one adaptive follow-up are
+allowed; at most two source-verified mechanisms, each with byte hash, short
+quote, locator, full mapping and a negative-control check. Stop at the exact
+unpaid hypothesis if no theorem transfers. A theorem name, boundary sign or
+another RH-equivalent condition is not a positive source supplier.
+No new Pro proof job, original sign claim, canonical admission, goal or phase
+change. Save receipts in the existing private kps-forced-quotient area; root
+owns brief/report intake. INCOMPLETE_NO_CONSUMABLE_TARGET remains explicit.
+
+### Fourth-return outcome
+
+The three shelf queries and the bounded primary/adaptive passes are complete. Shelf receipts remain INCOMPLETE, not absence evidence. The independently accepted boundary-energy/causality audit is in docs/Codex/REPORT_2026-09-17_BOUNDARY_ENERGY_CAUSALITY_AUDIT.md. It proves an exact cutoff-block criterion and a non-theta smooth-input cumulative-work counterexample, and maps the causal case to the OLD OPENSGN identity. The full-source support premise remains OPEN. Do not repeat the generic Hardy/passivity hunt or treat the whole-line norm identity as Q/V. Reconcile prior one-sided inversion work on ((1-t)q)*Y=q before any further attempt, and require a specific full-source property that forces support; no restated-RH Pro proof job. Original sign counters, phase, production HOLD and INCOMPLETE_NO_CONSUMABLE_TARGET are unchanged.
