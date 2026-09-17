@@ -1,0 +1,120 @@
+{
+  "time_utc": "2026-09-17T21:44:36+00:00",
+  "task_id": "MAC_A3_LONG_FLIP_AND_DN_SHADOWS_2026-09-18",
+  "channel": "MAC",
+  "follows": "MAC_DH_CONTROL_AND_HEAD_MASSES_2026-09-17 (v2, commit 625b20c9)",
+  "run_certifies": "FROZEN_HEAD_FLIP_HEIGHT_AND_DN_SHADOW_OFFSETS_NOT_SIGN",
+  "pre_run_measurements": {
+    "cancellation_between_rays": "|J_{N0}| / |ray_1| = 1e-50 at T=2000, 1e-73 at T=3000, 1e-74 at T=4000 (N0=20, theta0=theta(14), sigma=1/64); mpmath dps 50 and dps 80 are therefore garbage there (dps 80 gave the wrong sign at T=3000); dps 120/160/200 agree to 33+ digits at all three T",
+    "three_probe_points_before_registration": "h/|J|^2 = +0.78 (T=2000), +5.6e-6 (T=3000), -5.7e-8 (T=4000) at dps 120/160/200 — these three points were computed while choosing the precision, before this registration; they are disclosed here and are not part of the scan",
+    "cost": "~9.5 s per point at dps 120 (three head evaluations per point via mp.diffs); the owner's step 0.05 on [2000,4000] = 40001 points = ~14 h on 8 workers; registered plan instead: coarse step 0.25 (8001 points, ~3 h) + fine step 0.05 on [T_first-2, T_first+2] + confirmation of the flip pair at dps 160; deviation from step 0.05 registered here, before the run, with this reason"
+  },
+  "predictions": [
+    {
+      "id": "P_M3_1",
+      "registered_by": "owner",
+      "statement": "frozen head h_{N0}(1/64 + iT; theta0), N0 = 20, theta0 = theta(14), first sign change at some T in [2500, 4000].",
+      "confidence": 0.7,
+      "falsifier": "no negative h on [2000, 4000], or the first negative below 2500",
+      "mac_note_before_run": "budget unity at T ~ 2762 (pi c M^2 (T0+1) = 184.18 * 15); the probe point T=4000 is already negative, T=3000 still positive, so the first flip lies in (3000, 4000] unless a narrower negative dip below 3000 is missed by the probes; expected fate CONFIRMED"
+    },
+    {
+      "id": "P_M3_2_old",
+      "registered_by": "owner",
+      "statement": "shadow offset delta(N) = Re s - 1/2 of the d_N zero nearest to the zeta-zero height: monotonically decreasing in N, and delta*N bounded above and below (delta ~ C/N).",
+      "confidence": 0.5,
+      "falsifier": "delta*N grows or decays without bound (over N in {10,15,20,30,40,60} at gamma = 40.918719, and over the 13 zero heights <= 60 at N = N(gamma))",
+      "mac_note_before_run": "v2 gave delta*N = 4.46, 3.60, 3.50, 3.22 for (N, gamma) = (20,14.13), (25,21.02), (32,30.42), (38,40.92) — bounded so far but drifting down; the fixed-height series at gamma=40.92 separates the N-dependence from the gamma-dependence",
+      "status": "WITHDRAWN_BY_OWNER_AS_ERRONEOUS (2026-09-17T21:52:51+00:00); fate on dn_shadows.json (computed before withdrawal): REFUTED — delta_re changes sign in N and in gamma, delta*N in [-3.9, 5.6]"
+    },
+    {
+      "id": "P_M3_3",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-17T21:47:30+00:00",
+      "statement": "Delta_{pair,N} = |u_N|^2 |v_N|^2 - |u_N^* v_N|^2 (RAY_BLOCK_WINDOW_INERTIA (9)) at the Spira point of Davenport-Heilbronn (pair p_+ = s_0 - 1/2 = 0.3085+85.699i, p_- = -0.3085+85.699i, DH rays r_n^DH, theta = theta(85.699)), for N = 10..60: Delta > 0 and increasing in N.",
+      "confidence": 0.9,
+      "falsifier": "Delta <= 0 for some N in 10..60, or Delta not monotonically increasing in N",
+      "mac_note_before_run": "object: u = conj(r_N(p_+)), v = conj(r_N(p_-)) in C^{2N} with r_{n,+}(p) = I_n^DH(p,theta), r_{n,-}(p) = I_n^DH(-p,-theta); Delta is the Gram determinant, invariant under conjugation; also recorded: the normalised Delta_hat = Delta/(|u|^2|v|^2) = sin^2(angle(u,v)) in [0,1], which removes the overall ray scale e^{-2 theta T}; monotonicity is judged on the raw Delta as the owner wrote it and reported for Delta_hat too. mpmath dps 50, N = 10,11,...,60 (every integer)."
+    },
+    {
+      "id": "P_M3_4",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-17T21:47:30+00:00",
+      "statement": "map Delta(sigma, gamma, N(gamma)) for the zeta rays on sigma in {1/64, 1/8, 1/4, 0.45}, gamma = 14..60 step 0.5, N = N(gamma) adaptive (6.3) r=0, pair p_+- = +-sigma + i gamma: Delta > 0 everywhere for sigma >= 1/64, minimum at small sigma.",
+      "confidence": 0.8,
+      "falsifier": "Delta ~ 0 in some zone: there an off-axis zero would be invisible to the pair pullback and the POSITIVE certificates carry nothing in that zone",
+      "mac_note_before_run": "at sigma = 0 the two rows coincide (p_+ = p_-), so Delta = 0 exactly and Delta_hat = O(sigma^2) as sigma -> 0: the 'minimum at small sigma' part is structural. Operational reading of 'Delta ~ 0' registered now: Delta_hat/sigma^2 falling >= 6 orders of magnitude below its median over gamma at the same sigma, or Delta_hat below 1e-40 at dps 50 (numerical zero). mpmath dps 50, 4 x 93 = 372 points."
+    },
+    {
+      "id": "P_M3_2",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-17T21:52:51+00:00",
+      "replaces": "P_M3_2_old",
+      "derivation_recorded": "approximate functional equation for N >~ t/2pi: zeta(s) ~ d_N(s) + N^{1-s}/(s-1); at a zero rho: d_N(rho) ~ -N^{1-rho}/(rho-1); shadow zero of d_N at rho + delta with delta ~ -d_N(rho)/d_N'(rho) ~ N^{1-rho}/((rho-1) zeta'(rho)); hence |delta| ~ sqrt(N)/(|rho-1| |zeta'(rho)|) (grows like sqrt N at fixed height) and arg delta ~ -gamma log N + const (rotates with N)",
+      "statement": "at gamma = 40.918719, N in {10, 15, 20, 30, 40, 60}: |delta(N)|/sqrt(N) is constant to within +-30%, and arg delta(N) changes as -gamma log N (mod 2pi) to within +-0.3 rad.",
+      "confidence": 0.7,
+      "falsifier": "|delta| decreasing in N, or arg not rotating",
+      "data_status": "dn_shadows.json (the six N values at gamma=40.9187 and the 13 zero heights) was computed on 2026-09-18 BEFORE this statement was registered; the owner had seen delta_re and delta_im per N when deriving the formula. Therefore MAC adds an out-of-sample set registered now and computed after: N in {12, 25, 35, 50, 80, 100, 150} at the same height, judged by the same criteria, plus the theoretical delta_th = N^{1-rho}/((rho-1) zeta'(rho)) stored next to each measured delta (complex, one field).",
+      "mac_note_before_run": "delta stored as a complex number in JSON; |delta|/sqrt(N) constancy judged as max/min of |delta|/sqrt(N) over the set <= 1.3/0.7; arg rotation judged by fitting the constant at the smallest N and checking |arg delta(N) - (-gamma log N + c)| mod 2pi <= 0.3 for all other N."
+    },
+    {
+      "id": "P_M3_5",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-17T21:52:51+00:00",
+      "statement": "E_N of identity (9) is the gamma factor times the Euler-Maclaurin remainder of the Dirichlet series: |E_N - B(p) N^{1/2-p}/(p-1/2)| / |E_N| < 0.2 at the identity-grid points with N >= t/pi (t = Im p).",
+      "confidence": 0.6,
+      "falsifier": "relative deviation >= 0.2 at some qualifying point",
+      "mac_note_before_run": "evaluated on jn_dirichlet.json (E_N stored to 35 digits) with B(p) recomputed; all 20 points have N >= tau/pi (N = M_0(T)-1 ~ sqrt(T log T) >> T/pi at T <= 40), so all 20 qualify; the next Euler-Maclaurin term is -B(p) N^{-1/2-p}/2, its relative size ~ 1/(2N) * |p-1/2| — at T=40, N=38 that is ~0.5, so MAC expects failures at the high-T points unless the second term is included; MAC records both the one-term and the two-term (with -N^{-s}/2) deviations."
+    },
+    {
+      "id": "P_M3_6",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-17T22:09:09+00:00",
+      "statement": "shadow of the zeta zero rho in d_N: delta_pred = [N^{1-rho}/(rho-1) - N^{-rho}/2] / d_N'(rho), with d_N'(rho) = -sum_{n<=N} (log n) n^{-rho} computed directly (numerator = the two-term Euler-Maclaurin remainder of P_M3_5, i.e. d_N(rho) ~ -[N^{1-rho}/(rho-1) - N^{-rho}/2] + O(N^{-1-rho}); this is NOT the Newton step -d_N(rho)/d_N'(rho), whose numerator would be computed exactly): |delta_pred - delta_obs|/|delta_obs| < 0.1 on all 13 shadows at N = N(gamma) and on N in {10,15,20,30,40,60} at gamma = 40.918719.",
+      "confidence": 0.7,
+      "falsifier": "relative deviation > 0.3 anywhere",
+      "mac_note_before_run": "delta_obs from dn_shadows.json (already computed); delta_pred computed after this registration by re-running the shadow boxes with the new field (numbers of delta_obs unchanged); the out-of-sample set N in {12,25,35,50,80,100,150} is reported as well but is not part of the registered statement. If the two-term numerator works here, the P_M3_2 failure is the same second EM term."
+    }
+  ],
+  "companion_without_prediction": "option-2 scan from the v2 closeout: frozen N0=20, theta0=theta(14), sigma=1/64, T = 14..414 step 0.05 (8001 points, dps 50: cancellation <= ~10 digits there); expected by the budget: no flip",
+  "method_notes": {
+    "long_scan": "check_fixed_n_flip.py --long-scan --T0 14 --Tmin 2000 --Tmax 4000 --step 0.25 --sigma 1/64 --dps 120 --fine-step 0.05 --fine-halfwidth 2 --confirm-dps 160; no arb certificate at the flip (acb ray integrals oscillate ~T/2pi times on [0,4]); confirmation = precision doubling at the flip and at the last positive point",
+    "shadows": "check_jn_dirichlet.py --shadows --wind-dps 30: box s in [0.01, 2] x [gamma-1, gamma+1], all d_N zeros in the box by winding + quadtree + findroot, nearest in Im to gamma; delta_re, delta_im, delta_re*N"
+  },
+  "amendments": [
+    {
+      "id": "REG_ADD_2",
+      "time_utc": "2026-09-17T21:47:30+00:00",
+      "what": "P_M3_3 and P_M3_4 appended (owner message of 2026-09-18) before check_pair_delta.py was written or run; the long scans (a) and the option-2 scan were already running and are unaffected."
+    },
+    {
+      "id": "REG_ADD_3",
+      "time_utc": "2026-09-17T21:52:51+00:00",
+      "what": "owner message 2026-09-18: P_M3_2 replaced (old statement withdrawn as erroneous), P_M3_5 added; numbering summary v3: P_M3_1 flip, P_M3_2 shadows sqrt(N)+rotation, P_M3_3 Delta at Spira, P_M3_4 Delta map, P_M3_5 E_N main term. P_M3_3 and P_M3_4 were already computed (pair_delta_*.json) when this amendment was written; P_M3_2 out-of-sample set and P_M3_5 evaluation follow this amendment."
+    },
+    {
+      "id": "AMEND_3_3",
+      "time_utc": "2026-09-17T21:55:37+00:00",
+      "by": "owner",
+      "what": "P_M3_3: growth in N is judged on the normalised Delta_hat = Delta/(|u|^2|v|^2) = sin^2 angle(u,v), not on the raw Delta (which carries the ray scale e^{-2 theta T}); fate to be written in two lines without softening: 'Delta > 0 for all N — CONFIRMED; growth with N — REFUTED at the normalised level'. Non-decrease of the raw Delta in N is an exact fact (Lagrange identity), to be stated as a lemma in the report; zero increments at N = 5k (a_{5k} = 0) are a structural check. Written after pair_delta_spira*.json existed; the raw-Delta monotonicity fate had already been reported to the owner."
+    },
+    {
+      "id": "AMEND_OPT2",
+      "time_utc": "2026-09-17T21:55:37+00:00",
+      "by": "owner",
+      "what": "companion scan T = 14..414 (option 2): fate fixed before it finishes: NOT_A_TEST — decided by the budget (unity at T ~ 2762), kept as a regression only; the real test is the long scan to 4000."
+    },
+    {
+      "id": "REG_ADD_4",
+      "time_utc": "2026-09-17T21:55:37+00:00",
+      "by": "owner",
+      "what": "report must state the judge's resolution bound: the smallest sigma at which the pair signal Delta_hat x (scale) exceeds the budget E_N, derived from the Delta map. MAC operationalisation (registered here, before computing it): pair signal S(sigma,gamma) := |lambda_-(B_{rho,N})|/m = U V - Re(u^* v) >= U V (1 - sqrt(1 - Delta_hat)) ~ U V Delta_hat / 2 (the magnitude of the negative eigenvalue of the pair block (6), units |r|^2 like |J|^2); S ~ sigma^2 while E_N = sigma e_N ~ sigma, so sigma_min(gamma) = sigma * E_N(sigma,gamma)/S(sigma,gamma) evaluated at sigma = 1/64 (checked at 1/8 for the sigma^2 law)."
+    },
+    {
+      "id": "REG_ADD_5",
+      "time_utc": "2026-09-17T22:09:09+00:00",
+      "by": "owner",
+      "what": "P_M3_6 added (two-term shadow formula); report must show the P_M3_2 numbers (|delta|/sqrt N and arg delta by N) so that the failure mode (scale / rotation / both) is visible."
+    }
+  ]
+}

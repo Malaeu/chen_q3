@@ -214,9 +214,48 @@ def shadow(task):
     if found:
         near = min(found, key=lambda z: abs(z["im"] - float(gamma)))
         z = mp.mpc(near["zero"]); dre = mp.re(z) - mp.mpf(1)/2; dim = mp.im(z) - gamma
-        res.update({"nearest_zero": near["zero"], "delta_re": mp.nstr(dre, 12), "delta_im": mp.nstr(dim, 12), "delta_re_times_N": mp.nstr(dre*N, 10),
-                    "delta_abs": mp.nstr(abs(z - (mp.mpf(1)/2 + 1j*gamma)), 12), "nearest_re_gt_half": bool(dre > 0)})
+        # exact zeta zero rho near 1/2 + i gamma (refined), and the first-principles shadow (P_M3_2):
+        # delta_th = N^{1-rho} / ((rho-1) zeta'(rho))
+        rho = mp.findroot(mp.zeta, mp.mpc(0.5, gamma)); zp = mp.zeta(rho, derivative=1)
+        dth = mp.power(N, 1 - rho)/((rho - 1)*zp)
+        delta = z - rho
+        # P_M3_6: two-term Euler-Maclaurin numerator over the directly computed d_N'(rho)
+        dNp = -mp.fsum(mp.log(n)*mp.power(n, -rho) for n in range(1, N+1))
+        num2 = mp.power(N, 1 - rho)/(rho - 1) - mp.power(N, -rho)/2
+        dpred = num2/dNp
+        dN_rho = d_N(rho, N)
+        res.update({"dN_prime_at_rho": mp.nstr(dNp, 15), "dN_at_rho": mp.nstr(dN_rho, 15), "em2_numerator_minus_dN": mp.nstr(-num2, 15),
+                    "rel_err_em2_vs_dN_at_rho": mp.nstr(abs(dN_rho + num2)/abs(dN_rho), 6),
+                    "delta_pred_em2": mp.nstr(dpred, 20), "rel_dev_pred_vs_obs": mp.nstr(abs(dpred - delta)/abs(delta), 6),
+                    "delta_newton": mp.nstr(-dN_rho/dNp, 20), "rel_dev_newton_vs_obs": mp.nstr(abs(-dN_rho/dNp - delta)/abs(delta), 6)})
+        res.update({"nearest_zero": near["zero"], "rho_refined": mp.nstr(rho, 25), "delta": mp.nstr(delta, 20), "delta_re": mp.nstr(mp.re(delta), 12), "delta_im": mp.nstr(mp.im(delta), 12),
+                    "delta_abs": mp.nstr(abs(delta), 12), "delta_arg": mp.nstr(mp.arg(delta), 12), "delta_abs_over_sqrtN": mp.nstr(abs(delta)/mp.sqrt(N), 12),
+                    "delta_re_times_N": mp.nstr(mp.re(delta)*N, 10), "nearest_re_gt_half": bool(mp.re(z) > 0.5),
+                    "delta_th": mp.nstr(dth, 20), "delta_th_abs": mp.nstr(abs(dth), 12), "delta_th_arg": mp.nstr(mp.arg(dth), 12),
+                    "abs_ratio_measured_over_th": mp.nstr(abs(delta)/abs(dth), 8), "arg_diff_measured_minus_th": mp.nstr(mp.arg(delta/dth), 8),
+                    "zeta_prime_at_rho": mp.nstr(zp, 15)})
     return res
+
+def en_main_term(a):
+    """P_M3_5: E_N of identity (9) against the Euler-Maclaurin main term B(p) N^{1/2-p}/(p-1/2) (one term) and with the
+    next term -B(p) N^{-1/2-p}/2 (two terms), on the identity points of jn_dirichlet.json."""
+    mp.mp.dps = 40
+    d = json.load(open(a.source)); rows = []
+    for r in d["identity_points"]:
+        p = mp.mpf(r["sigma"]) + 1j*mp.mpf(r["tau"]); N = r["N"]; E = mp.mpc(r["E_N"]); J = mp.mpc(r["J_N_closed_form"])
+        B = B_of(p); s = p + mp.mpf(1)/2
+        m1 = B*mp.power(N, mp.mpf(1)/2 - p)/(p - mp.mpf(1)/2)
+        m2 = m1 - B*mp.power(N, -s)/2
+        rows.append({"T": r["T"], "sigma": r["sigma"], "tau": r["tau"], "N": N, "qualifies_N_ge_tau_over_pi": bool(N >= float(r["tau"])/mp.pi),
+                     "E_N": r["E_N"][:40], "main_term_1": mp.nstr(m1, 20), "rel_dev_1term": mp.nstr(abs(E - m1)/abs(E), 6), "rel_dev_2terms": mp.nstr(abs(E - m2)/abs(E), 6),
+                     "abs_E_over_abs_J": r["abs_E_over_abs_J"], "pass_1term_0.2": bool(abs(E - m1)/abs(E) < mp.mpf("0.2")), "pass_2terms_0.2": bool(abs(E - m2)/abs(E) < mp.mpf("0.2"))})
+    q = [x for x in rows if x["qualifies_N_ge_tau_over_pi"]]
+    out = {"meta": {"source": a.source, "criterion": "|E_N - B(p) N^{1/2-p}/(p-1/2)| / |E_N| < 0.2 at points with N >= tau/pi", "n_points": len(rows), "n_qualifying": len(q),
+                    "n_pass_1term": sum(1 for x in q if x["pass_1term_0.2"]), "n_pass_2terms": sum(1 for x in q if x["pass_2terms_0.2"]),
+                    "max_rel_dev_1term": mp.nstr(max(mp.mpf(x["rel_dev_1term"]) for x in q), 5), "max_rel_dev_2terms": mp.nstr(max(mp.mpf(x["rel_dev_2terms"]) for x in q), 5)}, "points": rows}
+    Path(a.out).write_text(json.dumps(out, indent=1))
+    for x in rows: print(f"T={x['T']:<8} sigma={x['sigma']:<7} N={x['N']:<3} rel_dev 1 term={x['rel_dev_1term']:<10} 2 terms={x['rel_dev_2terms']}")
+    print(out["meta"]); print(f"written {a.out}", flush=True)
 
 def run_shadows(a):
     zs = cc.zeta_zero_heights(60.0)
@@ -225,8 +264,10 @@ def run_shadows(a):
     for g in zs:
         _, _, M, N = cc.cutoff(float(g)); tasks.append(("shadow", {"gamma": round(float(g), 9), "N": N, "N_rule": "N(T)=M_0(gamma)-1", "dps": a.wind_dps}))
     g40 = [g for g in zs if abs(g - 40.918719) < 1e-3][0]
-    for N in (10, 15, 20, 30, 40, 60):
+    Ns = [int(x) for x in a.shadow_N.split(",")]
+    for N in Ns:
         tasks.append(("shadow", {"gamma": round(float(g40), 9), "N": N, "N_rule": "fixed height, N given", "dps": a.wind_dps}))
+    if a.shadows_extra_only: tasks = [t for t in tasks if t[1]["N_rule"] == "fixed height, N given"]
     total = len(tasks); t0 = time.time(); res = []; fails = []
     print(f"shadows: {total} boxes ({len(zs)} zero heights at N(T) + 6 values of N at gamma={g40:.6f}), workers {a.workers}", flush=True)
     with Pool(a.workers) as pool:
@@ -237,7 +278,7 @@ def run_shadows(a):
             print(f"[{i}/{total}] {i*100//total}% | ETA {int(eta//60)}m{int(eta%60):02d}s | {label}", flush=True)
     res.sort(key=lambda r: (r["N_rule"], float(r["gamma"]), r["N"]))
     out = {"meta": {"dps": a.wind_dps, "box": "[0.01, 2] x [gamma-1, gamma+1]", "zero_heights": [round(float(g), 9) for g in zs], "fixed_height": round(float(g40), 9),
-                    "fixed_N_values": [10, 15, 20, 30, 40, 60], "runtime_seconds": round(time.time()-t0, 1), "n_failures": len(fails)}, "shadows": res, "failures": fails}
+                    "fixed_N_values": Ns, "runtime_seconds": round(time.time()-t0, 1), "n_failures": len(fails)}, "shadows": res, "failures": fails}
     Path(a.out).write_text(json.dumps(out, indent=1))
     for r in res: print(f"{r['N_rule']:22s} gamma={r['gamma']:<12} N={r['N']:<3} zeros={r['zeros_in_box']} delta_re={r.get('delta_re')} delta_im={r.get('delta_im')} dre*N={r.get('delta_re_times_N')}")
     print(f"written {a.out}", flush=True)
@@ -252,9 +293,11 @@ def main():
     ap.add_argument("--dps", type=int, default=50); ap.add_argument("--wind-dps", type=int, default=30)
     ap.add_argument("--seed", type=int, default=20260918); ap.add_argument("--workers", type=int, default=max(1, os.cpu_count()//2))
     ap.add_argument("--n-points", type=int, default=20); ap.add_argument("--out", default=str(HERE/"jn_dirichlet.json"))
-    ap.add_argument("--shadows", action="store_true")
+    ap.add_argument("--shadows", action="store_true"); ap.add_argument("--shadow-N", default="10,15,20,30,40,60"); ap.add_argument("--shadows-extra-only", action="store_true")
+    ap.add_argument("--en-main-term", action="store_true"); ap.add_argument("--source", default=str(HERE/"jn_dirichlet.json"))
     a = ap.parse_args()
     if a.shadows: return run_shadows(a)
+    if a.en_main_term: return en_main_term(a)
     rng = random.Random(a.seed)
     pts = []
     for _ in range(a.n_points):

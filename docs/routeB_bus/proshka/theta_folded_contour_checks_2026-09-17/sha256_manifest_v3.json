@@ -1,0 +1,20 @@
+{
+ "MAC_A3_LONG_FLIP_SHADOWS_PAIR_DELTA_2026-09-18.md": "2582e5b806750261604c2e651b7e968d64e08049895395274fbc1568317ff424",
+ "dh_control/registration_v3.json": "d9e069c14fa9bb20e61e31bbe373ee0bc86ca83e874f40d1ba6e1d5141ab1f13",
+ "dh_control/closeout_v3.json": "3c9b4687c089008902d5e2d9bae892a12ea52d46d6d2a446663855e5aba7584c",
+ "dh_control/analyze_a3.py": "905c2e11a54246ec192c5c20a12a906986547f38eb22c376341bf3113c6c50d4",
+ "dh_control/check_pair_delta.py": "ff253ae45f63068c6a46696330ce9f7bd17b2a3bf39e65fb54906f90d30d0eb2",
+ "dh_control/check_jn_dirichlet.py": "e70de36c897951c4d14c28f77afab5096b96289f108dda1b31139fd0e42858a3",
+ "dh_control/check_fixed_n_flip.py": "d8060ef430fc02fb9d1c76c960af6fa58fe88e08de8bab7a9966248b6cc86e87",
+ "dh_control/dn_shadows.json": "92d07ef5fcbb2aa89ccbef0ed38880c5d58adbaa30c4e4002c3ba864102a34bd",
+ "dh_control/dn_shadows_extra.json": "f07f05873254079ae1b7f1ceee859860a1ff195f7ba5df3cf80f9b1a2df1b001",
+ "dh_control/pair_delta_spira.json": "a36a112516b0d0caa08987d7f558df0d907411a443b8c9ccd1adceccbe114fd0",
+ "dh_control/pair_delta_spira_dps150.json": "93a8ff8e53a020ffee54625625682e8591bbc42cd4c2b7c4782e31bb1dd2d590",
+ "dh_control/pair_delta_map.json": "7fd3a70b48870cd8470547aef4c8aceaedb16cb91e292e2ef9007bcd395d2b58",
+ "dh_control/en_main_term.json": "67f551f9ebbca5a318897e74f68b39ea9aeb231c32839ef3206a69643027adfb",
+ "dh_control/logs/dn_shadows.log": "dfb3e87a99e7642033861f5668e6244c20cb295cb9b775fc77641eae3bb22166",
+ "dh_control/logs/dn_shadows_extra.log": "5196d16595d06c1c2ad89fd507500b4b9900da2fe36d939966b7c5c223bc99aa",
+ "dh_control/logs/pair_delta_spira.log": "f9200f85d613999459a4e42b38224b06785b4b68af6d1def63f6d40acad869d2",
+ "dh_control/logs/pair_delta_spira_dps150.log": "d11c0cc136623dfd1ca10686e4f3da49259d7cd8b4cb6f7f6011968ee2021cee",
+ "dh_control/logs/pair_delta_map.log": "cd403e7734a8601029e96eadf40e0ea2623726401c93955f4588ec0a19486954"
+}

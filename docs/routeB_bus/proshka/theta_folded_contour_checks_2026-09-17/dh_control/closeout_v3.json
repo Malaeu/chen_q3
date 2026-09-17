@@ -1,0 +1,627 @@
+{
+ "time_utc": "2026-09-17T22:10:37+00:00",
+ "task_id": "MAC_A3_LONG_FLIP_AND_DN_SHADOWS_2026-09-18",
+ "fates": {
+  "P_M3_1": "PENDING (long_flip_T14.json not yet written)",
+  "OPTION_2_SCAN_14_414": "NOT_A_TEST (AMEND_OPT2); PENDING as a regression",
+  "P_M3_2": "REFUTED: registered set |delta|/sqrt(N) max/min = 3.33 (limit 1.857), max |arg deviation| = 1.888 rad (limit 0.3), |delta| increasing: False; out-of-sample set: max/min = 2.786, max arg dev = 2.061 rad. First-principles delta_th = N^(1-rho)/((rho-1) zeta'(rho)): |delta|/|delta_th| in [0.64, 2.54] over the 13 N values (order of magnitude right), arg(delta/delta_th) in [-2.08, 0.22] rad (rotation direction right, residual beyond the registered tolerance)",
+  "P_M3_2_old": "WITHDRAWN_BY_OWNER_AS_ERRONEOUS; on the data: REFUTED (delta_re changes sign in N and in gamma: 4 of 13 heights have the shadow left of the line)",
+  "P_M3_6": "REFUTED: within 0.1 at 5/13 heights (max 0.1731) and 1/6 of the fixed-height N (max 0.9658); falsifier (> 0.3) hit at N = [10, 15]. Decomposition: the exact Newton step -d_N(rho)/d_N'(rho) itself deviates 0.0593..0.196 at the 13 heights (linearisation error: |delta| ~ 0.1 is not small on the scale of d_N), the two-term EM numerator matches d_N(rho) to 0.0407..0.127 at N = N(gamma) but only to 0.95 / 0.51 / 0.31 at N = 10 / 15 / 20 (gamma = 40.92): at fixed height the numerator fails for small N, at N(gamma) the linearisation fails",
+  "P_M3_3": "Delta > 0 for all N in 10..60 — CONFIRMED (51/51). 'Grows with N' — REFUTED at the normalised level (AMEND_3_3): Delta_hat 0.64764814 -> 0.64759065 (monotone decreasing: True); raw Delta saturates from N ~ 25, increments decay geometrically (N=11: 1.87e-116, N=16: 6.38e-119, N=21: 1.31e-121, N=26: 8.31e-125, N=31: 1.42e-128, N=41: 6.55e-138, N=51: 1.08e-149, N=56: 1.63e-156); raw non-decrease is exact (Lagrange), zero increments exactly at N = 5k (a_5k = 0 in DH).",
+  "P_M3_4": "CONFIRMED: Delta > 0 at 372/372 points; Delta_hat minimal at the smallest sigma and at gamma = 14 for every sigma; Delta_hat/sigma^2 in [0.515, 3.258] — no zone where the pair signal collapses; Delta_hat = O(sigma^2) as sigma -> 0 is structural (rows coincide at sigma = 0)",
+  "P_M3_5": "REFUTED: one-term |E_N - B N^(1/2-p)/(p-1/2)|/|E_N| < 0.2 at 3/20 qualifying points (max 0.51767, growing with T: 0.10 at T=2 to 0.52 at T=40); with the next Euler-Maclaurin term -B N^(-s)/2 (MAC note before run): 20/20 within 0.2, max 0.093314 — E_N is the gamma factor times the Euler-Maclaurin remainder, but the second term is not negligible at N ~ sqrt(T log T)"
+ },
+ "numbers": {
+  "shadows_registered_set": {
+   "N": [
+    10,
+    15,
+    20,
+    30,
+    40,
+    60
+   ],
+   "abs_delta": [
+    "0.13184",
+    "0.077004",
+    "0.077411",
+    "0.13437",
+    "0.11332",
+    "0.096994"
+   ],
+   "abs_delta_over_sqrtN": [
+    "0.04169",
+    "0.01988",
+    "0.01731",
+    "0.02453",
+    "0.01792",
+    "0.01252"
+   ],
+   "max_over_min": "3.33",
+   "arg_dev_from_minus_gamma_logN_rad": [
+    0.783,
+    0.975,
+    1.496,
+    1.888,
+    1.647
+   ],
+   "max_abs_arg_dev": 1.888,
+   "abs_increasing": false,
+   "abs_ratio_measured_over_first_principles": [
+    "2.5431",
+    "1.2127",
+    "1.0558",
+    "1.4963",
+    "1.0929",
+    "0.7638"
+   ],
+   "arg_measured_minus_first_principles": [
+    "-2.085",
+    "-1.302",
+    "-1.110",
+    "-0.589",
+    "-0.197",
+    "-0.438"
+   ],
+   "pass_pm30pct": false,
+   "pass_arg_pm0.3": false
+  },
+  "shadows_out_of_sample_set": {
+   "N": [
+    12,
+    25,
+    35,
+    50,
+    80,
+    100,
+    150
+   ],
+   "abs_delta": [
+    "0.10142",
+    "0.095104",
+    "0.14727",
+    "0.10768",
+    "0.11791",
+    "0.13159",
+    "0.1287"
+   ],
+   "abs_delta_over_sqrtN": [
+    "0.02928",
+    "0.01902",
+    "0.02489",
+    "0.01523",
+    "0.01318",
+    "0.01316",
+    "0.01051"
+   ],
+   "max_over_min": "2.786",
+   "arg_dev_from_minus_gamma_logN_rad": [
+    1.244,
+    1.405,
+    1.127,
+    1.247,
+    2.061,
+    1.426
+   ],
+   "max_abs_arg_dev": 2.061,
+   "abs_increasing": false,
+   "abs_ratio_measured_over_first_principles": [
+    "1.7857",
+    "1.1602",
+    "1.5184",
+    "0.9288",
+    "0.8041",
+    "0.8026",
+    "0.6409"
+   ],
+   "arg_measured_minus_first_principles": [
+    "-1.838",
+    "-0.594",
+    "-0.432",
+    "-0.711",
+    "-0.591",
+    "0.2232",
+    "-0.412"
+   ],
+   "pass_pm30pct": false,
+   "pass_arg_pm0.3": false
+  },
+  "shadows_all_13_N": {
+   "N": [
+    10,
+    12,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    50,
+    60,
+    80,
+    100,
+    150
+   ],
+   "abs_delta": [
+    "0.13184",
+    "0.10142",
+    "0.077004",
+    "0.077411",
+    "0.095104",
+    "0.13437",
+    "0.14727",
+    "0.11332",
+    "0.10768",
+    "0.096994",
+    "0.11791",
+    "0.13159",
+    "0.1287"
+   ],
+   "abs_delta_over_sqrtN": [
+    "0.04169",
+    "0.02928",
+    "0.01988",
+    "0.01731",
+    "0.01902",
+    "0.02453",
+    "0.02489",
+    "0.01792",
+    "0.01523",
+    "0.01252",
+    "0.01318",
+    "0.01316",
+    "0.01051"
+   ],
+   "max_over_min": "3.967",
+   "arg_dev_from_minus_gamma_logN_rad": [
+    0.247,
+    0.783,
+    0.975,
+    1.491,
+    1.496,
+    1.653,
+    1.888,
+    1.374,
+    1.647,
+    1.494,
+    2.309,
+    1.673
+   ],
+   "max_abs_arg_dev": 2.309,
+   "abs_increasing": false,
+   "abs_ratio_measured_over_first_principles": [
+    "2.5431",
+    "1.7857",
+    "1.2127",
+    "1.0558",
+    "1.1602",
+    "1.4963",
+    "1.5184",
+    "1.0929",
+    "0.9288",
+    "0.7638",
+    "0.8041",
+    "0.8026",
+    "0.6409"
+   ],
+   "arg_measured_minus_first_principles": [
+    "-2.085",
+    "-1.838",
+    "-1.302",
+    "-1.110",
+    "-0.594",
+    "-0.589",
+    "-0.432",
+    "-0.197",
+    "-0.711",
+    "-0.438",
+    "-0.591",
+    "0.2232",
+    "-0.412"
+   ],
+   "pass_pm30pct": false,
+   "pass_arg_pm0.3": false
+  },
+  "shadows_13_heights": [
+   {
+    "gamma": 14.134725142,
+    "N": 20,
+    "delta": "(0.22292499484839205213 - 0.06",
+    "abs": "0.231701",
+    "abs_over_th": "0.5812",
+    "arg_minus_th": "-0.150",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 21.022039639,
+    "N": 26,
+    "delta": "(0.11107915846547624553 - 0.12",
+    "abs": "0.164132",
+    "abs_over_th": "0.7694",
+    "arg_minus_th": "-0.076",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 25.01085758,
+    "N": 29,
+    "delta": "(0.063406933956886989219 + 0.1",
+    "abs": "0.134940",
+    "abs_over_th": "0.8598",
+    "arg_minus_th": "-0.738",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 30.424876126,
+    "N": 32,
+    "delta": "(0.10951419863531421571 - 0.01",
+    "abs": "0.110499",
+    "abs_over_th": "0.7750",
+    "arg_minus_th": "-0.453",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 32.935061588,
+    "N": 34,
+    "delta": "(0.090941083244323081655 + 0.0",
+    "abs": "0.103175",
+    "abs_over_th": "0.8055",
+    "arg_minus_th": "-0.587",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 37.586178159,
+    "N": 36,
+    "delta": "(0.0062318076523475757592 + 0.",
+    "abs": "0.085966",
+    "abs_over_th": "1.0429",
+    "arg_minus_th": "-0.750",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 40.918719012,
+    "N": 38,
+    "delta": "(0.084656738822420743183 + 0.0",
+    "abs": "0.084681",
+    "abs_over_th": "0.8379",
+    "arg_minus_th": "-0.548",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 43.327073281,
+    "N": 39,
+    "delta": "(-0.0046360655246503454316 + 0",
+    "abs": "0.082205",
+    "abs_over_th": "1.0457",
+    "arg_minus_th": "-0.775",
+    "re_gt_half": false
+   },
+   {
+    "gamma": 48.005150881,
+    "N": 42,
+    "delta": "(0.028083396682473087846 + 0.0",
+    "abs": "0.087866",
+    "abs_over_th": "1.0206",
+    "arg_minus_th": "-0.809",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 49.773832478,
+    "N": 43,
+    "delta": "(0.040580023000206086685 - 0.0",
+    "abs": "0.090921",
+    "abs_over_th": "0.9792",
+    "arg_minus_th": "-0.337",
+    "re_gt_half": true
+   },
+   {
+    "gamma": 52.970321478,
+    "N": 44,
+    "delta": "(-0.0058413070225003426908 - 0",
+    "abs": "0.056370",
+    "abs_over_th": "1.0923",
+    "arg_minus_th": "-0.446",
+    "re_gt_half": false
+   },
+   {
+    "gamma": 56.446247697,
+    "N": 46,
+    "delta": "(-0.013960090323326847004 + 0.",
+    "abs": "0.056795",
+    "abs_over_th": "1.1193",
+    "arg_minus_th": "-0.759",
+    "re_gt_half": false
+   },
+   {
+    "gamma": 59.347044003,
+    "N": 47,
+    "delta": "(-0.040202735943957866175 + 0.",
+    "abs": "0.103187",
+    "abs_over_th": "1.2432",
+    "arg_minus_th": "-0.871",
+    "re_gt_half": false
+   }
+  ],
+  "P_M3_2_table": [
+   "| N | δ_obs | \\|δ\\| | \\|δ\\|/√N | arg δ (рад) | arg δ_th (рад) | arg(δ/δ_th) | \\|δ\\|/\\|δ_th\\| |",
+   "|---|---|---|---|---|---|---|---|",
+   "| 10 | (-0.126207902210426778 | 0.13184 | 0.04169 | 2.84820 | -1.3494 | -2.0855 | 2.5431 |",
+   "| 12 | (-0.034543220896330834 | 0.10141 | 0.02927 | 1.91836 | -2.5266 | -1.8381 | 1.7857 |",
+   "| 15 | (0.0711073250539414244 | 0.07700 | 0.01988 | -0.3938 | 0.90898 | -1.3028 | 1.2127 |",
+   "| 20 | (0.0641696773813199188 | 0.07741 | 0.01730 | 0.59356 | 1.70377 | -1.1102 | 1.0558 |",
+   "| 25 | (-0.015836966121870263 | 0.09510 | 0.01902 | -1.7380 | -1.1437 | -0.5943 | 1.1602 |",
+   "| 30 | (-0.130802879388181270 | 0.13436 | 0.02453 | -2.9107 | -2.3209 | -0.5898 | 1.4963 |",
+   "| 35 | (-0.137656537544443554 | 0.14726 | 0.02489 | -2.7782 | -2.3454 | -0.4328 | 1.5184 |",
+   "| 40 | (-0.017304064924730001 | 0.11331 | 0.01791 | -1.7240 | -1.5261 | -0.1979 | 1.0929 |",
+   "| 50 | (0.0392297031319905232 | 0.10767 | 0.01522 | 1.19789 | 1.90944 | -0.7115 | 0.9288 |",
+   "| 60 | (0.0928279465029494111 | 0.09699 | 0.01252 | 0.29415 | 0.73226 | -0.4381 | 0.7638 |",
+   "| 80 | (0.0699486331186397041 | 0.11790 | 0.01318 | 0.93569 | 1.52705 | -0.5913 | 0.8041 |",
+   "| 100 | (0.0600074783617166418 | 0.13158 | 0.01315 | -1.0972 | -1.3205 | 0.22324 | 0.8026 |",
+   "| 150 | (0.1113245399251979421 | 0.12870 | 0.01050 | 0.52567 | 0.93793 | -0.4122 | 0.6409 |"
+  ],
+  "P_M3_6": {
+   "heights_13_within_0.1": "5/13",
+   "heights_13_max_dev": "0.1731",
+   "fixed_6_within_0.1": "1/6",
+   "fixed_6_max_dev": "0.9658",
+   "falsifier_gt_0.3_hit_at": [
+    10,
+    15
+   ],
+   "out_of_sample_7_within_0.1": "0/7",
+   "out_of_sample_max_dev": "0.6631",
+   "newton_step_dev_range_heights": [
+    "0.0593",
+    "0.196"
+   ],
+   "newton_step_dev_range_fixed": [
+    "0.0756",
+    "0.132"
+   ],
+   "em2_numerator_vs_dN_rho_range_heights": [
+    "0.0407",
+    "0.127"
+   ],
+   "em2_numerator_vs_dN_rho_fixed_by_N": [
+    [
+     10,
+     "0.9471"
+    ],
+    [
+     15,
+     "0.5149"
+    ],
+    [
+     20,
+     "0.3125"
+    ],
+    [
+     30,
+     "0.1471"
+    ],
+    [
+     40,
+     "0.0845"
+    ],
+    [
+     60,
+     "0.0381"
+    ]
+   ]
+  },
+  "P_M3_6_table": [
+   "| набор | γ | N | δ_obs | δ_pred = EM2/d_N′ | откл. | Ньютон −d_N/d_N′ откл. | EM2 против d_N(ρ) |",
+   "|---|---|---|---|---|---|---|---|",
+   "| N(γ) | 14.1347 | 20 | (0.2229249948483920521 | (0.1932148436087649853 | 0.1731 | 0.1958 | 0.0406 |",
+   "| N(γ) | 21.0220 | 26 | (0.1110791584654762455 | (0.1271462601364183937 | 0.1727 | 0.1637 | 0.0531 |",
+   "| N(γ) | 25.0108 | 29 | (0.0634069339568869892 | (0.0802950292655030371 | 0.1293 | 0.1449 | 0.0604 |",
+   "| N(γ) | 30.4248 | 32 | (0.1095141986353142157 | (0.1046714255164555186 | 0.0830 | 0.1145 | 0.0731 |",
+   "| N(γ) | 32.9350 | 34 | (0.0909410832443230816 | (0.0911035061833138701 | 0.0523 | 0.1143 | 0.0759 |",
+   "| N(γ) | 37.5861 | 36 | (0.0062318076523475757 | (0.0105503481899330834 | 0.0961 | 0.0817 | 0.0878 |",
+   "| N(γ) | 40.9187 | 38 | (0.0846567388224207431 | (0.0828186258376466544 | 0.0518 | 0.0933 | 0.0933 |",
+   "| N(γ) | 43.3270 | 39 | (-0.004636065524650345 | (-0.001621566514226110 | 0.1472 | 0.1026 | 0.0992 |",
+   "| N(γ) | 48.0051 | 42 | (0.0280833966824730878 | (0.0316855344029688418 | 0.0522 | 0.0879 | 0.1048 |",
+   "| N(γ) | 49.7738 | 43 | (0.0405800230002060866 | (0.0534836056351795881 | 0.1470 | 0.0965 | 0.1074 |",
+   "| N(γ) | 52.9703 | 44 | (-0.005841307022500342 | (0.0008566848369948795 | 0.1648 | 0.0592 | 0.1159 |",
+   "| N(γ) | 56.4462 | 46 | (-0.013960090323326847 | (-0.015953112501644497 | 0.1195 | 0.0601 | 0.1203 |",
+   "| N(γ) | 59.3470 | 47 | (-0.040202735943957866 | (-0.043035248334261367 | 0.1373 | 0.0963 | 0.1271 |",
+   "| γ=40.92 | 40.9187 | 10 | (-0.126207902210426778 | (-0.130242996905663350 | 0.9658 | 0.1214 | 0.9471 |",
+   "| γ=40.92 | 40.9187 | 15 | (0.0711073250539414244 | (0.0882118863355164522 | 0.5076 | 0.0755 | 0.5149 |",
+   "| γ=40.92 | 40.9187 | 20 | (0.0641696773813199188 | (0.0619510008858033968 | 0.2252 | 0.0762 | 0.3125 |",
+   "| γ=40.92 | 40.9187 | 30 | (-0.130802879388181270 | (-0.155929273600980502 | 0.2238 | 0.0861 | 0.1471 |",
+   "| γ=40.92 | 40.9187 | 40 | (-0.017304064924730001 | (-0.001504453881049884 | 0.2184 | 0.1317 | 0.0845 |",
+   "| γ=40.92 | 40.9187 | 60 | (0.0928279465029494111 | (0.0860824950827489380 | 0.0819 | 0.1158 | 0.0381 |",
+   "| γ=40.92 | 40.9187 | 12 | (-0.034543220896330834 | (-0.098626086324618419 | 0.6630 | 0.0920 | 0.7329 |",
+   "| γ=40.92 | 40.9187 | 25 | (-0.015836966121870263 | (0.0055828954775191477 | 0.3143 | 0.0991 | 0.2075 |",
+   "| γ=40.92 | 40.9187 | 35 | (-0.137656537544443554 | (-0.162250797146546448 | 0.1931 | 0.0941 | 0.1094 |",
+   "| γ=40.92 | 40.9187 | 50 | (0.0392297031319905232 | (0.0504410867375673288 | 0.1053 | 0.1210 | 0.0546 |",
+   "| γ=40.92 | 40.9187 | 80 | (0.0699486331186397041 | (0.0786843259718225949 | 0.1423 | 0.1530 | 0.0215 |",
+   "| γ=40.92 | 40.9187 | 100 | (0.0600074783617166418 | (0.0828036331821671881 | 0.2110 | 0.2076 | 0.0138 |",
+   "| γ=40.92 | 40.9187 | 150 | (0.1113245399251979421 | (0.1007685236765288788 | 0.1879 | 0.1923 | 0.0061 |"
+  ],
+  "spira": {
+   "N_range": [
+    10,
+    60
+   ],
+   "all_Delta_positive": true,
+   "Delta_N10": "1.33478034448e-112",
+   "Delta_N60": "1.33498002313e-112",
+   "Delta_hat_N10": "0.64764814",
+   "Delta_hat_N60": "0.64759065",
+   "Delta_hat_monotone_decreasing": true,
+   "raw_Delta_nondecreasing": true,
+   "zero_increments_at_N": [
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60
+   ],
+   "increments_sample": [
+    [
+     11,
+     "1.87e-116"
+    ],
+    [
+     16,
+     "6.38e-119"
+    ],
+    [
+     21,
+     "1.31e-121"
+    ],
+    [
+     26,
+     "8.31e-125"
+    ],
+    [
+     31,
+     "1.42e-128"
+    ],
+    [
+     41,
+     "6.55e-138"
+    ],
+    [
+     51,
+     "1.08e-149"
+    ],
+    [
+     56,
+     "1.63e-156"
+    ]
+   ],
+   "saturation_N": 46,
+   "dps": 150
+  },
+  "delta_map_table": [
+   "| σ | точек | Δ > 0 | Δ̂ min (γ) | Δ̂ max | Δ̂/σ² min | Δ̂/σ² max |",
+   "|---|---|---|---|---|---|---|",
+   "| 1/64 | 93 | 93/93 | 0.0001352 (14.0) | 0.0007955 | 0.5536 | 3.258 |",
+   "| 1/8 | 93 | 93/93 | 0.008602 (14.0) | 0.04935 | 0.5505 | 3.158 |",
+   "| 1/4 | 93 | 93/93 | 0.03383 (14.0) | 0.1802 | 0.5412 | 2.883 |",
+   "| 0.45 | 93 | 93/93 | 0.1043 (14.0) | 0.4573 | 0.515 | 2.258 |"
+  ],
+  "delta_hat_over_sigma2_range_all": [
+   "0.515",
+   "3.258"
+  ],
+  "blind_zone_points": 0,
+  "resolution_bound": {
+   "definition": "S(sigma,gamma) = U V (1 - sqrt(1 - Delta_hat)) (lower bound of |lambda_-| of the pair block (6) per unit multiplicity); sigma_min(gamma) = sigma * E_N(sigma,gamma) / S(sigma,gamma) at sigma = 1/64, E_N = sigma e_N with the adaptive cutoff",
+   "sigma_min_min": "1.817e-97 at gamma=57.5",
+   "sigma_min_max": "5.456e-71 at gamma=14.0",
+   "S_over_E_N_min": "2.864e+68",
+   "sigma2_law_check_range": [
+    "1.001",
+    "1.006"
+   ],
+   "per_gamma_every_4": [
+    {
+     "gamma": 16.0,
+     "N": 22,
+     "S_over_E_N_at_1/64": "1.397e+73",
+     "sigma_min": "1.119e-75",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.001"
+    },
+    {
+     "gamma": 20.0,
+     "N": 25,
+     "S_over_E_N_at_1/64": "1.113e+76",
+     "sigma_min": "1.404e-78",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.002"
+    },
+    {
+     "gamma": 24.0,
+     "N": 28,
+     "S_over_E_N_at_1/64": "8.102e+79",
+     "sigma_min": "1.929e-82",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.002"
+    },
+    {
+     "gamma": 28.0,
+     "N": 30,
+     "S_over_E_N_at_1/64": "3.048e+78",
+     "sigma_min": "5.126e-81",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.003"
+    },
+    {
+     "gamma": 32.0,
+     "N": 33,
+     "S_over_E_N_at_1/64": "3.428e+83",
+     "sigma_min": "4.558e-86",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.003"
+    },
+    {
+     "gamma": 36.0,
+     "N": 35,
+     "S_over_E_N_at_1/64": "2.861e+83",
+     "sigma_min": "5.461e-86",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.004"
+    },
+    {
+     "gamma": 40.0,
+     "N": 38,
+     "S_over_E_N_at_1/64": "9.972e+88",
+     "sigma_min": "1.567e-91",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.004"
+    },
+    {
+     "gamma": 44.0,
+     "N": 40,
+     "S_over_E_N_at_1/64": "4.306e+89",
+     "sigma_min": "3.629e-92",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.005"
+    },
+    {
+     "gamma": 48.0,
+     "N": 42,
+     "S_over_E_N_at_1/64": "3.977e+90",
+     "sigma_min": "3.929e-93",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.005"
+    },
+    {
+     "gamma": 52.0,
+     "N": 44,
+     "S_over_E_N_at_1/64": "6.626e+91",
+     "sigma_min": "2.358e-94",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.005"
+    },
+    {
+     "gamma": 56.0,
+     "N": 46,
+     "S_over_E_N_at_1/64": "1.763e+93",
+     "sigma_min": "8.861e-96",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.006"
+    },
+    {
+     "gamma": 60.0,
+     "N": 48,
+     "S_over_E_N_at_1/64": "6.85e+94",
+     "sigma_min": "2.281e-97",
+     "sigma2_law_check_S(1/8)/S(1/64)_over_64": "1.006"
+    }
+   ]
+  },
+  "en_main_term": {
+   "source": "/Users/emalam/GitHub/rh_lean_01_2026/docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/dh_control/jn_dirichlet.json",
+   "criterion": "|E_N - B(p) N^{1/2-p}/(p-1/2)| / |E_N| < 0.2 at points with N >= tau/pi",
+   "n_points": 20,
+   "n_qualifying": 20,
+   "n_pass_1term": 3,
+   "n_pass_2terms": 20,
+   "max_rel_dev_1term": "0.51767",
+   "max_rel_dev_2terms": "0.093314"
+  }
+ },
+ "pending": [
+  "P_M3_1",
+  "OPTION_2"
+ ],
+ "scope": "finite points; DH NEGATIVE is not a witness against zeta; zeta POSITIVE is not evidence for RH; run certifies flip height, shadow offsets and pair-signal resolution, not sign"
+}
