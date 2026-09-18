@@ -1,12 +1,18 @@
-# STATUS: EXACT_2N_LIFT_PHASE_TASK_OPEN
+# STATUS: SIGNED_COHERENT_DEFECT_SOURCE_BOUND_OPEN
 ```yaml
 OPERATIVE_CLASS: MASS_GAP_UNIFORM_QUARTER
 DATE: 2026-09-18
 EQUAL_TAU_2N: PAPER
-EXACT_M_PLUS_SQUARES: PAPER   # (4)-(5), verified = our spectral M+ at corner and on the 4-ray model
-PAIR_TO_SUM_TRANSFER: REFUTED # positive means + 40% first pair + exact RMS do not imply h>0
+EQUAL_TAU_THRESHOLD: 0.0667656963   # (1/2)log(8/7); 0.06695 was a Linux rounding error
+EXACT_M_PLUS_SQUARES: PAPER
+PAIR_TO_SUM_TRANSFER: REFUTED
+COHERENT_MEANS_AND_DOMINANCE_TRANSFER: REFUTED  # Proshka 4dd6fe34, analytic, whole (0,1/2]
+Q_FORMULA_SECTION_1_4: CORRECTED_MINUS          # plus as first written is false; masses_from does not use it
+SIGNED_COHERENT_DEFECT_SOURCE_BOUND: OPEN
+PROSHKA_ONE_FIFTH_E_COH_BUDGET: FAILS_ON_SOURCE # epsilon=0.2025 at (sqrt(20),1/64)
 GAMMAINC_USED: false
 RH_CLAIM: false
+PX_RH_CLAIM: NOT_MADE
 ```
 
 The compact `T ∈ [√20, 30] × σ ∈ [1/64, 1/2]` is paid: every arb ball of
@@ -15,7 +21,9 @@ The compact `T ∈ [√20, 30] × σ ∈ [1/64, 1/2]` is paid: every arb ball of
 (`dh_control/mass_gap_corner_arb.json`, commit `83eb3c8d`).
 
 The interval `(30, 80]` of the lemma is paid: 2800/2800 arb balls
-(`dh_control/tau_lemma_arb.json`, `9026598a`). What remains is `T > 80`.
+(`dh_control/tau_lemma_arb.json`, `9026598a`). The Laplace bound of §5
+covers `T>80` for `n=1,2`. What remains is the signed cluster correction
+`E_{\rm coh}` for varying `τ` (§10), not another mean-scan.
 
 ## 0. Objects, integral only
 
@@ -96,14 +104,31 @@ This is the identity advertised as `4√⟨τ²⟩`. It is the zero-limit, not a
 lower bound at finite `σ`.
 
 **1.4.** `M_+ = h_N/2 + Q/√{\mathrm{disc}}` with
-`Q = |D|^2 U^2 + |J|^2 V^2 + 2\Im(D\overline J)\,\Im s`. Hence
+
+\[
+Q = |D|^2 U^2 + |J|^2 V^2 - 2\Im(D\overline J)\,\Im s.
+\]
+
+The mixed term carries a **minus**. The plus written here first is false:
+the two-vector `u=(1,1)`, `v=(1+i/2,-1+i/2)` has `A=\mathrm{diag}(4,-4)`,
+true `M_+=4`; plus gives `8`, minus gives `4` (Proshka `4dd6fe34` §4,
+Linux recheck). `masses_from` never uses this `Q`: it uses the spectral
+projectors on `A`. The compact arb balls are independent of the typo.
+
+Hence
 
 \[
 G = \frac{4\Re(D\overline J)\,\sqrt{\mathrm{disc}}}
          {σ\bigl(2\Re(D\overline J)\,\sqrt{\mathrm{disc}} + Q\bigr)}.
 \]
 
-`G ≥ 1/4` is equivalent to `Re(D\overline J)\,√{\mathrm{disc}} ≥ σ Q / (2(8−σ))`.
+`G ≥ 1/4` is equivalent to `Re(D\overline J)\,√{\mathrm{disc}} ≥ σ Q / (2(8−σ))`,
+with this corrected `Q`. Equivalently `R ≥ 0` for
+
+\[
+R = 2(8-σ)\sqrt{\mathrm{disc}}\,\Re(D\overline J) - σ Q
+  = 4\sqrt{\mathrm{disc}}\Bigl(h_N - \tfracσ4 M_+\Bigr).
+\]
 
 ## 2. Two-ray identity [PAPER]
 
@@ -342,7 +367,8 @@ G \ \ge\ 2\bigl(1 − e^{-2τ}\bigr)
 \qquad (0 < σ \le 1/2).
 \]
 
-**`G ≥ 1/4` as soon as `τ ≥ \tfrac12\log(8/7) ≈ 0.06695`.**
+**`G ≥ 1/4` as soon as `τ ≥ \tfrac12\log(8/7) ≈ 0.0667657`.**
+(The value `0.06695` written here first is a rounding error.)
 
 If `τ` depends on `σ` but `Re τ(s) ≥ τ_*` for all `s ∈ [0, σ]`, the same
 bound holds with `τ_*` in place of `τ`, because
@@ -440,11 +466,16 @@ h_N − \mathcal E_N \ \le\ \mathscr H \ \le\ h_N + \mathcal E_N,
 
 If `G ≥ 1/4` then `h_N ≥ σ M_+/4`. The ratio `e_N / (M_+/4)` is
 `< 10^{-68}` on every computed cell, and the majorant (5.2) is
-`e_N ≤ 28672 c^{-5} M^3 \exp(-π c M^2 − 2ϑ T)` with `M` from (6.3),
-which is `o(M_+)` by the same exponential. Thus `ℋ ≥ h_N − ℰ_N > 0`
-for `0 < σ ≤ 1/2`, `T ≥ √20`. Together with `ℋ > 0` on `|T| ≤ √20`
-(mixture, PAPER) and evenness of `ξ`, there are no zeros off the
-critical line.
+`e_N ≤ 28672 c^{-5} M^3 \exp(-π c M^2 − 2ϑ T)` with `M` from (6.3).
+That majorant is an **absolute** bound on `e_N`. The phrase
+«`o(M_+)` by the same exponential» does **not** by itself prove the
+relative claim `e_N < M_+/4`: the exponential in the numerator does
+not supply a lower bound on `M_+` (Proshka `4dd6fe34` §6). On the
+certified compact the relative bound is a number from the arb balls,
+not this sentence. Thus, **if** `G ≥ 1/4` and `M_+ > 4 e_N` on the
+domain, `ℋ ≥ h_N − ℰ_N > 0` for `0 < σ ≤ 1/2`, `T ≥ √20`. Together
+with `ℋ > 0` on `|T| ≤ √20` (mixture, PAPER) and evenness of `ξ`,
+there are no zeros off the critical line.
 
 This implication is the route. It is not a claim: `G ≥ 1/4` on the
 continuum with varying `τ` is not yet a theorem, and the enclosure is
@@ -520,28 +551,138 @@ invisible to quadratic masses, present in the mixed terms.
 These are not incomplete-gamma rays. The gamma inequality is not
 refuted. The general transfer is.
 
-### 9.4 Next step
+### 9.4 Next step, superseded by §10
 
-Prove `B_0 + Σ C_n ≥ 0` for the actual incomplete-gamma `I_n^±`,
-with the global `(k, α)` of (9.1), or equivalently (9.2). The proof
-must use the concrete `(n, σ, T)`-dependence of those rays. Finite
-`N ≤ 32` does not close the compact by itself: the model above
-already changes sign at `N = 2`. The compact **certificate** is a
-direct `G`-count on those rays, not a transfer, and is untouched.
-
-The phase property to prove is not «`X` is not small». It is
-
-\[
-\text{`X` and `X_t` are not small together:}
-\quad
-\text{if } |X| \ll \sum |I_n^+|
-\text{ then } |X_t| \not\ll |X|.
-\tag{9.3}
-\]
-
-Equivalently, a near-cancellation of the plus-cluster does not occur
-at a critical point of that cluster (`Re(X_t/X)` stays large, as at
-`T = 50`). Proshka's model is the opposite arrangement (`P ≠ 0`,
-`P' = 0`). `M_+ > 0` is required for the strict `ℋ > 0` implication.
+`(9.3)` («`X` and `X_t` are not small together») is **not sufficient**.
+Proshka's second model (`4dd6fe34`, §10 below) has `|X| > (37/40)|I_1^+|`
+and `Re \barτ_{X,Y} > 0.15915` on the whole `(0,1/2]`, and still
+`h_N < 0`. The unpaid object is the signed cluster correction `E_{\rm coh}`,
+not a lower bound on `|X|`. The compact certificate is untouched.
+`M_+ > 0` is required for the strict `ℋ > 0` implication.
 Independent review of the enclosure remains open. `PX_RH_CLAIM` not
 made.
+
+## 10. Coherent means plus dominance do not give the sign; `E_{\rm coh}` is the unpaid remainder
+
+Proshka `4dd6fe34`, file
+`docs/routeB_bus/proshka/PROSHKA_VERDICT_COHERENT_MEANS_SIGN_TRANSFER_2026-09-18.md`.
+Linux checked the algebra (fractions and the two-vector for `Q`) and
+ran a diagnostic split on the actual `(2.5)` rays. None of this is a
+continuum proof. `DIAGNOSTIC_NUMERICS_ONLY_NEVER_A_PROOF` for the table.
+
+### 10.1 Stronger counterexample than §9.3 [PAPER for the model, not for our head]
+
+Two pairs, any real `ϑ`,
+
+\[
+a=\tfrac29,\quad k=\tfrac1{20},\quad
+I_1^\pm = e^{iϑσ}e^{\pm aσ},\quad
+I_2^\pm = -k\, e^{iϑσ}e^{\pm σ}.
+\]
+
+Reflection `I_n^-(σ)=\overline{I_n^+(-σ)}` and the derivative dictionary
+hold. Each pair has a real constant `τ` and passes the quarter of §7.1.
+Coherent means are real and
+
+\[
+\barτ_X,\barτ_Y > 53/333 > 0.15915,
+\quad
+|I_1^+|/|I_2^+| > 40/3 > 13.33,
+\quad
+|X| > (37/40)|I_1^+|
+\]
+
+on `0 ≤ σ ≤ 1/2`. Yet `h_N = 4 P D_0` with
+`P = f(σ)+f(-σ) > 37/20`,
+`D_0 = 2a\sinh(aσ)-2k\sinhσ < -\sinhσ/810`, so
+
+\[
+h_N < -\frac{37}{4050}\sinhσ < 0 \qquad (0<σ\le 1/2).
+\]
+
+Checked: `a^2-k=-1/1620`; at `σ=9\log(21/20)` one has `h≈-0.0144233`;
+at `σ=1/2`, `h≈-0.01995`. This kills the remaining Linux transfer
+«positive coherent means + first-ray dominance + `|X|` large `⇒ h_N≥0`».
+It is not a counterexample to the theta-head. Equal-`τ` 2N is not
+refuted. The extra structure of `(2.5)` not preserved here is the
+absence of a free minus on a higher-`τ` ray: the coefficients of
+`φ_n` are not free signs.
+
+### 10.2 Exact split [PAPER]
+
+On `XY ≠ 0`, `α=\barτ_X`, `β=\barτ_Y`, `m=(\Reα+\Reβ)/2`,
+
+\[
+\frac{h_N}{4}
+ = m\bigl(|X|^2-|Y|^2\bigr) + E_{\rm coh},
+\qquad
+E_{\rm coh}
+ = \frac{\Reα-\Reβ}{2}|X+Y|^2
+   -(\Imα+\Imβ)\Im(X\overline Y).
+\]
+
+Positive means control `|Y|^2/|X|^2=\exp(-4\int_0^σ m)` and nothing
+else. In the model of §10.1 the tilt term is **positive**
+(`|X|>|Y|`) and `E_{\rm coh}/\mathrm{tilt}=-1.087` flips the sign
+(`ε=0.657`). That is the mechanism.
+
+### 10.3 Diagnostic split on the actual gamma rays
+
+`mp.diffs` of `check_contour.ray` at `dps 20–30`, `ADAPTIVE_R=0`,
+identity `h/4 = \mathrm{tilt}+E_{\rm coh}` to `10^{-33}` at the corner.
+`G` at the corner matches the arb envelope `0.37589695`.
+
+| `T` | `σ` | `G` | `m` | `ε` | `κ` | `E_{\rm coh}/\mathrm{tilt}` | `arg(I_2^+/I_1^+)` |
+|---|---|---|---|---|---|---|---|
+| √20 | 1/2 | 0.3759 | 0.163 | 0.172 | 1.021 | **−0.309** | −2.875 |
+| √20 | 1/64 | 0.4116 | 0.163 | **0.203** | 1.081 | **−0.313** | −2.936 |
+| 8 | 1/2 | 0.825 | 0.236 | −0.154 | 1.099 | +0.205 | 2.511 |
+| 14.75 | 1/2 | 1.052 | 0.349 | 0.015 | 0.941 | −0.015 | 0.414 |
+| 30 | 1/2 | 1.402 | 0.624 | −0.212 | 1.176 | +0.147 | −1.849 |
+| 50 | 1/64 | 3.034 | 1.399 | −1.377 | **2.221** | +0.257 | 2.998 |
+| 80 | 1/2 | 1.615 | 0.732 | −0.163 | 1.053 | +0.106 | 1.103 |
+
+`ε = -E_{\rm coh}/(σ m |X|^2)`, `κ = M_+/(4 m |X|^2)`.
+Worst `E_{\rm coh}/\mathrm{tilt}` on the low-`T` scan
+`T∈[√20,12]×{1/64,1/2}` is **−0.313** at `(√20, 1/64)`, and it
+increases with `T` (already positive by `T=7`). Proshka's sufficient
+budget `m≥3/20`, `E_{\rm coh}≥−σ m |X|^2/5`, `κ≤6/5` **fails on
+source**: `ε=0.2025>1/5` at `(√20,1/64)`, and `κ=2.22` at the
+`T=50` cancellation. It is not a necessary budget; its failure does
+not kill `G≥1/4`. Do not use it as a theorem.
+
+At the corner, truncating to `n=1` gives `G=0.3337>1/4` and
+`E_{\rm coh}/\mathrm{tilt}=-0.392`; adding `n=2` raises `G` to
+`0.3764`; `n≥3` does not change the printed digits. The compact
+corner is a **two-ray source problem** of the actual `n=1,2`
+incomplete-gamma pair. Adding the second gamma ray **helps**. The
+model of §10.1 does the opposite.
+
+Near-`π` phase between `n=1` and `n=2` occurs both at the compact
+corner (`arg≈-2.88`) and at `T=50` (`arg≈3.00`). It is not a kill
+by itself: at `T=50` the defect *helps*.
+
+### 10.4 What to prove
+
+Source bound on `E_{\rm coh}` for the literal rays `(2.5)`, enough
+for `R≥0` or directly `h_N-ℰ_N>0`. A candidate that is **not**
+falsified by the scan (unlike `1/5`) is
+
+\[
+E_{\rm coh}/\mathrm{tilt} \ge -\tfrac12
+\qquad (T\ge\sqrt{20},\ 0<σ\le 1/2),
+\]
+
+together with a bound on `κ` that does not divide by a cancelled
+`X` (use `R`). Prior `0.7` that the inequality holds on the compact
+continuum (scan worst `-0.313`). This is a registered prediction,
+not a theorem.
+
+`IF_A` the `n=1,2` pair of `(2.5)` has an analytic `G≥1/4` at
+`T=√20` and the `n≥3` remainder is controlled by the modulus ratio
+`≥12`: the compact continuum is paid and the tail is the equal-`τ`
+lift plus the lemma already in §§4–7. `IF_B` some continuum cell has
+`E_{\rm coh}/\mathrm{tilt}<-1/2`: rewrite via `R` before adding rays.
+Do not send this to the judge (the gap is a source remainder).
+Do not grind a denser grid of the same means. Enclosure review
+still `PENDING`. `PX_RH_CLAIM` not made.
