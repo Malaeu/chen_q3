@@ -1,0 +1,42 @@
+coherent correction: 224 points, arb dps 80, workers 8
+[20/224] 8% | ETA 0m08s | sigma=1/64 T=5.222136 eps=0.15932235 kappa=1.110364 [mek]
+[40/224] 17% | ETA 0m06s | sigma=1/4 T=5.722136 eps=0.10482865 kappa=1.098270 [mek]
+[60/224] 26% | ETA 0m06s | sigma=1/8 T=6.472136 eps=0.02558779 kappa=1.118420 [mek]
+[80/224] 35% | ETA 0m05s | sigma=1/16 T=7.222136 eps=-0.0772833 kappa=1.106962 [mek]
+[100/224] 44% | ETA 0m05s | sigma=1/32 T=7.972136 eps=-0.1858969 kappa=1.070718 [mek]
+[120/224] 53% | ETA 0m04s | sigma=1/64 T=8.722136 eps=-0.2805895 kappa=1.019652 [mek]
+[140/224] 62% | ETA 0m03s | sigma=1/2 T=9.222136 eps=-0.2581198 kappa=1.067085 [mek]
+[160/224] 71% | ETA 0m02s | sigma=3/8 T=9.972136 eps=-0.3013649 kappa=1.012392 [mek]
+[180/224] 80% | ETA 0m02s | sigma=1/4 T=16.0 eps=-0.0179576 kappa=0.983677 [mek]
+[200/224] 89% | ETA 0m01s | sigma=1/8 T=30.0 eps=-0.2395600 kappa=1.166092 [mek]
+[220/224] 98% | ETA 0m00s | sigma=1/16 T=80.0 eps=-0.1409964 kappa=0.957381 [mek]
+[224/224] 100% | ETA 0m00s | sigma=1/2 T=80.0 eps=-0.1633447 kappa=1.052950 [mek]
+{
+ "m_ge_3/20": "224/224",
+ "epsilon_le_1/5": "222/224",
+ "kappa_le_6/5": "208/224",
+ "all_three": "206/224",
+ "E_coh_negative_at": "74/224",
+ "max_epsilon": {
+  "value": "0.2025139969970272",
+  "sigma": "1/64",
+  "T": 4.472136
+ },
+ "max_kappa": {
+  "value": "2.639135934473879",
+  "sigma": "1/2",
+  "T": 40.0
+ },
+ "min_m": {
+  "value": "0.1627292704372386",
+  "sigma": "1/64",
+  "T": 4.472136
+ },
+ "min_E_coh": {
+  "value": "-0.001122950575692005",
+  "sigma": "1/2",
+  "T": 4.472136
+ }
+}
+identity max residual: 0.0
+written coherent_correction_arb.json

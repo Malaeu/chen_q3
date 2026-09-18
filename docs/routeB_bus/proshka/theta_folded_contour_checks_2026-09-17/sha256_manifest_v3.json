@@ -46,5 +46,8 @@
  "dh_control/logs/mass_gap_corner.log": "fed447e1c1e7caf7140d9c6da4c562dcc6af2059ede349f3eb7f485de1e02566",
  "dh_control/check_tau_lemma.py": "537644279f49b37c7f95036dd72639c1cd89192aa8e9c48d18461fd81056f7c6",
  "dh_control/tau_lemma_arb.json": "37cdd97cb202f62f3b245846a908b50100758e2de7cf3c6c7b1c614de7d017b1",
- "dh_control/logs/tau_lemma.log": "5fce7ad8612ee5337e4af67541aa1da9d9f476ca50d4d13684f5d8662b6a44e2"
+ "dh_control/logs/tau_lemma.log": "5fce7ad8612ee5337e4af67541aa1da9d9f476ca50d4d13684f5d8662b6a44e2",
+ "dh_control/check_coherent_correction.py": "c938e840132144023e8d5780cc90afbfcfd2184f23a22516a7d14c8d6eb78c22",
+ "dh_control/coherent_correction_arb.json": "ca5570001f357313a6e62b5eee1599691017fbb35c77c87c30afeb65abaab33d",
+ "dh_control/logs/coherent_correction.log": "01fae9481e6cacca323f3015ba1ac27752fdb04c5199f36c9f039abf56647448"
 }
