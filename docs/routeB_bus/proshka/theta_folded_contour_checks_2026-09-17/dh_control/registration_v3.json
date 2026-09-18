@@ -114,6 +114,20 @@
       "protocol_note": "near-tautological, registered for the protocol",
       "falsifier": "rank <= 2, or defect < 10% of ||W||_F",
       "not_a_test": "n_-(W_N) = 0 is NOT_A_TEST: every zero used is on the line, so the truncated zero side is a sum of PSD blocks by construction."
+    },
+    {
+      "id": "P_M3_10",
+      "registered_by": "Linux observer (branching), MAC executes",
+      "registered_utc": "2026-09-18T09:09:47+00:00",
+      "context": "MAC's task statement of the mass gap quoted c ~ 1.24 on a domain (T >= sqrt(20), 0 < sigma <= 1/2) wider than the grid it came from (T in [14,60], sigma <= 1/4). Linux refuted that constant with a witness: sigma = 1/2, T = sqrt(20), N = 10 gives (1-q)/sigma = 0.375897. MAC's error, recorded as such.",
+      "statement": "rigorous arb lower envelope of (1 - M_-/M_+)/sigma on the compact corner T in [sqrt(20), 30] x sigma in {1/64, 1/32, 1/16, 1/8, 1/4, 3/8, 1/2}, adaptive cutoff (6.3) r = 0: the certified lower envelope is >= 1/4.",
+      "confidence": 0.7,
+      "branching": {
+        "IF_A": "envelope >= 1/4: the remaining work is the analytic tail T > 30 via 4 sqrt(<tau^2>) and the integral mean of t, not gammainc",
+        "IF_B": "some cell < 1/4: lower c to the measured envelope, or look for a multiple on-axis zero / Lehmer collapse"
+      },
+      "falsifier": "a certified arb ball whose lower edge is below 1/4 anywhere on the corner",
+      "mac_note_before_run": "each value is an arb ball from the ray integrals with the analytic tail; a cell counts only if the whole ball lies above the threshold. T grid: step 0.05 on [sqrt(20), 6], step 0.25 on (6, 30]. Note that the float scan says the ratio decreases with sigma, so sigma = 1/2 is expected to carry the minimum; Linux also measured 0.410 at sigma = 1/32, T = sqrt(20), so the corner is not a sigma -> 0 effect."
     }
   ],
   "companion_without_prediction": "option-2 scan from the v2 closeout: frozen N0=20, theta0=theta(14), sigma=1/64, T = 14..414 step 0.05 (8001 points, dps 50: cancellation <= ~10 digits there); expected by the budget: no flip",
@@ -173,6 +187,12 @@
       "time_utc": "2026-09-18T04:42:47+00:00",
       "by": "owner",
       "what": "P_M3_7a, P_M3_7b, P_M3_8 registered with AMEND_LEAK_1 in view (the norms are no longer blind; the statements are about the spectrum of the difference, its scaling in the number of zeros and in m_max, and the rank/defect). Order of work: P_M3_7a/b at N = 2 first (only the zero side needs to grow to 200 zeros), then parallelise the prime side over matrix entries and do N = 4; N >= 6 only if 7a holds at N = 4."
+    },
+    {
+      "id": "AMEND_QUANTIFIER_1",
+      "time_utc": "2026-09-18T09:09:47+00:00",
+      "by": "MAC (self-corrected after the Linux witness)",
+      "what": "MAC stated the mass-gap task with the quantifier T >= sqrt(20), 0 < sigma <= 1/2 while the supporting data covered only T in [14,60], sigma <= 1/4, and quoted the grid minimum 1.24 as if it were the infimum of the domain. Refuted by Linux at sigma = 1/2, T = sqrt(20): 0.375897. MAC also quoted h_N/E_N = 7.5e70 as a global margin when it is one point (1/64, 14); the grid minimum is 3.78e69. Both are MAC errors."
     }
   ]
 }

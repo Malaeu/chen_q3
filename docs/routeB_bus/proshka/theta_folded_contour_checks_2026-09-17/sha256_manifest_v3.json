@@ -1,6 +1,6 @@
 {
  "MAC_A3_LONG_FLIP_SHADOWS_PAIR_DELTA_2026-09-18.md": "78e9b7f373bbea135bbfae0f14d5f6d66c356f2dfab7fec6708e08ced56c0764",
- "dh_control/registration_v3.json": "a1bcc32a5d389a3b3cb687bc754a3795de66f78c65212b6b8322d309e414f60d",
+ "dh_control/registration_v3.json": "e1b25ca7dff4b2636809d3998720b61efd88663a137dc52d6dda668f6cdc2e31",
  "dh_control/closeout_v3.json": "02b1b8eb851019bb4427041c2f6b4d32b0d7f347ce1b738835ba308df3f6b0f9",
  "dh_control/analyze_a3.py": "dd73e8f23362f60161c03912b38a2f48a0f0e873e4dd8b117f702bd55789e26c",
  "dh_control/check_pair_delta.py": "ff253ae45f63068c6a46696330ce9f7bd17b2a3bf39e65fb54906f90d30d0eb2",
@@ -40,5 +40,8 @@
  "dh_control/logs/wn_mode_N4.log": "f3aae30b94ea357fee7759f9833b76dab5b97cb8900e1767d762bfbd3f54c481",
  "dh_control/wn_mode_N4_dps50.json": "a3e82a4f5f642ad9c840c78fc38014d6a9298e1da18ee97be816fd08f4df7bae",
  "dh_control/check_head_sign_claims.py": "4e856278e2eed15abb7d0353401a91a82990ad81d9e76262f0a7c573890d1fd6",
- "dh_control/head_sign_claims_check.json": "8a63213f80944cf648d3305aeb7e0893b6c583833f54d0dedee0093b42c20251"
+ "dh_control/head_sign_claims_check.json": "8a63213f80944cf648d3305aeb7e0893b6c583833f54d0dedee0093b42c20251",
+ "dh_control/check_mass_gap_corner.py": "182133384f470666548ec1fdd348cd894f1f49daf6cea3eecf8d1f644e894bb6",
+ "dh_control/mass_gap_corner_arb.json": "f42dd6f6ae625595bf1ec5d8eace78cdd7f9c599a0a2e5eedf79dea150df11ca",
+ "dh_control/logs/mass_gap_corner.log": "fed447e1c1e7caf7140d9c6da4c562dcc6af2059ede349f3eb7f485de1e02566"
 }
