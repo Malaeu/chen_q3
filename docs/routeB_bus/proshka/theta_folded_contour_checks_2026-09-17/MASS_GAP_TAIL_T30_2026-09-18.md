@@ -8,7 +8,8 @@ EXACT_M_PLUS_SQUARES: PAPER
 PAIR_TO_SUM_TRANSFER: REFUTED
 COHERENT_MEANS_AND_DOMINANCE_TRANSFER: REFUTED  # Proshka 4dd6fe34, analytic, whole (0,1/2]
 Q_FORMULA_SECTION_1_4: CORRECTED_MINUS          # plus as first written is false; masses_from does not use it
-SIGNED_COHERENT_DEFECT_SOURCE_BOUND: OPEN
+SIGNED_COHERENT_DEFECT_SOURCE_BOUND: OPEN          # continuum; the corner atom is enclosed
+CORNER_N10_FINITE_ENCLOSURE: G_in_[0.375856, 0.375938]  # (sqrt(20),1/2), remainder analytic
 PROSHKA_ONE_FIFTH_E_COH_BUDGET: FAILS_ON_SOURCE # epsilon=0.2025 at (sqrt(20),1/64)
 GAMMAINC_USED: false
 RH_CLAIM: false
@@ -688,11 +689,87 @@ shape: MAC's 224 cells already have `κ>2` with `ε<-2`. The identity
 modulus-ratio remainder. This is a registered prediction, not a
 theorem.
 
-`IF_A` that pair has analytic `R≥0` at `T=√20`: the compact
-continuum is paid and the tail is the equal-`τ` lift plus the lemma
-already in §§4–7. `IF_B` `R` dips on that pair: keep all `2N` in
-`R` and use the measured `ε`–`κ` coupling (large `κ` comes with
-large negative `ε`). Do not send this to the judge (the gap is a
-source remainder). Do not grind a denser grid of the same means.
-Do not bound `ε` and `κ` separately. Enclosure review still
-`PENDING`. `PX_RH_CLAIM` not made.
+`IF_A` of this paragraph is **partial**: the pair and the full `N=10`
+head at the single worst cell are enclosed above `1/3` by a finite
+integral certificate (§11). That does **not** pay the compact
+continuum. `IF_B` did not occur at the corner. Do not send this to
+the judge. Do not bound `ε` and `κ` separately. Enclosure review
+still `PENDING`. `PX_RH_CLAIM` not made.
+
+## 11. Finite certificate of the compact corner from (2.5)
+
+The empirically worst cell is `(T,σ)=(√20, 1/2)`, cutoff `N=10`.
+The integrand of (2.5) is entire. Split `I_n^±=∫_0^A + ∫_A^∞` with
+`A=3`.
+
+**Tail.** `u=e^{2t}`, `k=a_n\cos 2ϑ`. For `U=e^{6}` one has
+`kU ≫ 1` and
+
+\[
+\int_U^∞ u^α e^{-ku}\,du
+ < \frac{U^α e^{-kU}}{k}\frac1{1-α/(kU)}.
+\]
+
+At the corner this is `< 10^{-192}` for `n=1` and smaller for
+`n≥2`. Elementary, no incomplete gamma.
+
+**Body.** `N_{\mathrm{GL}}=6` Gauss–Legendre nodes on each of
+`≥40` panels of `[0,3]`. Remainder on a panel of width `w`
+
+\[
+|R|
+ = \frac{w^{2n+1}(n!)^4}{(2n+1)[(2n)!]^3}\,|f^{(2n)}(ξ)|,
+ \quad n=6,
+\]
+
+with `|f^{(12)}|≤ 12!\,M/r^{12}` and `M` the explicit strip
+majorant on the disk of radius `r=min(1/10, 1/(2(T+1)))` about the
+panel centre (so `2ϑ+2r<π/2` and `cos(2ϑ+2r)>0`):
+
+\[
+M_+
+ = \bigl(4a^2 e^{9x_+/2}+6a e^{5x_+/2}\bigr)
+   \exp\bigl(-a e^{2x_-}\cos(2ϑ+2r)\bigr)
+   \exp\bigl(σ x_+ - T(ϑ-r)\bigr),
+\]
+
+`x_±` the right/left edges of the disk. Same shape for the minus
+ray. Centers are `mpmath` at `dps 40`; Gauss nodes at `dps 60`.
+Rounding `~10^{-40}` sits under the Cauchy remainder `~10^{-7}`.
+
+**Propagation.** Disks on `(I_n^±, ∂_p I_n^±)` go through `h` and
+the corrected `Q` of §1.4 by the triangle inequality. If the
+discriminant ball misses zero, this is a genuine enclosure of `G`.
+
+**Results, corner `(√20, 1/2)`.**
+
+| truncation | `G` centre | enclosure | vs `1/4` |
+|---|---|---|---|
+| `n=1` | 0.33371882 | `[0.333696, 0.333742]` | above `1/3` |
+| `n=1,2` | 0.37639778 | `[0.376373, 0.376423]` | above `1/4` |
+| `N=10` (the cutoff) | **0.37589695** | **`[0.375856, 0.375938]`** | above `1/4` |
+
+The `N=10` centre matches the arb envelope `0.3758969538`
+(`83eb3c8d`) to nine digits. Independent method: integral (2.5),
+not the arb ray-machine. `|I_3^±|≈1.68·10^{-4}`, `|I_4^±|≈1.1·10^{-7}`;
+`n≥3` is a `10^{-3}` relative perturbation of `J`. The extra
+structure the model of §10.1 does not have: the first incomplete-gamma
+pair already has `G>1/3`, and the higher atoms decay as
+`e^{-π n^2 \cos 2ϑ}`.
+
+**Same `T`, other `σ`.** Enclosures at `σ∈{1/64,1/8,1/4,1/2}` for
+`N=10` all have `G_{\mathrm{lo}}>0.375`. Empirically `G` decreases
+in `σ` and the minimum sits at `σ=1/2`. At `(8,1/2)`, `N=15`:
+`G_{\mathrm{lo}}=0.81755`. For `T≥14` the strip radius must shrink
+as `1/(T+1)` and the panel count must grow; that cover is not run
+here.
+
+**What this is not.** It is not a continuum theorem on
+`T∈[√20,30]×σ∈(0,1/2]`. It is a finite certificate of the tightest
+atom, plus a handful of cells. The compact arb grid remains the
+only cover of that rectangle. Next: a Lipschitz bound on
+`∂_σ G` at `T=√20` from the second `p`-moment (enough:
+`|G'|≤0.08` plus `G(1/2)≥0.3758` would pay the `σ`-interval), then
+the same in `T`. Do not send a judge batch. `PX_RH_CLAIM` not made.
+
+Script: `dh_control/check_n1_corner_certificate.py`.
