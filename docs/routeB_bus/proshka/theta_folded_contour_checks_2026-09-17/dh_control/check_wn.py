@@ -129,7 +129,7 @@ def _entry_hybrid(task):
     return {"a": list(a), "b": list(b), "main": mp.nstr(main, 25), "pole": mp.nstr(pole, 25),
             "terms": {str(m): mp.nstr(v, 25) for m, v in terms.items()}}
 
-def W_prime_hybrid(N, theta, m_cuts, T_cut, n_split, dps, workers, progress=True):
+def W_prime_hybrid(N, theta, m_cuts, T_cut, n_split, dps, workers, progress=True, want_components=False):
     idx = index(N); d = len(idx); m_cuts = sorted(m_cuts)
     tasks = [{"a": list(a), "b": list(b), "theta": mp.nstr(theta, dps+5), "T_cut": T_cut, "n_split": n_split,
               "dps": dps, "m_max": m_cuts[-1]} for a in idx for b in idx]
@@ -152,7 +152,18 @@ def W_prime_hybrid(N, theta, m_cuts, T_cut, n_split, dps, workers, progress=True
                 Ws[cut][i][j] = base - run
             if (a, b) == (idx[0], idx[1]):
                 decay = {str(m): mp.nstr(abs(mp.mpc(r["terms"][str(m)])), 5) for m in ms}
-    return Ws, decay
+    if not want_components: return Ws, decay
+    comps = {k: [[mp.mpc(0) for _ in range(d)] for _ in range(d)] for k in ("main", "arith", "pole")}
+    for i, a in enumerate(idx):
+        for j, b in enumerate(idx):
+            r = res[(a, b)]
+            comps["main"][i][j] = mp.mpc(r["main"]); comps["pole"][i][j] = mp.mpc(r["pole"])
+            comps["arith"][i][j] = mp.fsum(mp.mpc(v) for v in r["terms"].values())
+    return Ws, decay, comps
+
+def quad_form(M, v):
+    d = len(M)
+    return mp.fsum(mp.conj(v[i])*M[i][j]*v[j] for i in range(d) for j in range(d))
 
 def W_prime_side_corr(N, theta, m_cuts, progress=True):
     """(9) with the correlation integrals; returns {m_cut: matrix}. No oscillatory tau-integration."""
@@ -289,6 +300,23 @@ def hygiene(a):
     print(json.dumps(out["zero_side_convergence"], indent=1)); print(json.dumps(out["prime_side_convergence"], indent=1))
     print(json.dumps(out["prime_side_tau_cut_stability"], indent=1)); print(f"written {a.out}", flush=True)
 
+def eig_hermitian_full(W):
+    """Eigenvalues and eigenvectors of the hermitian part; returns (ascending eigenvalues, matching column list)."""
+    d = len(W)
+    A = mp.matrix(d, d)
+    for i in range(d):
+        for j in range(d): A[i, j] = (W[i][j] + mp.conj(W[j][i]))/2
+    E, V = mp.eighe(A)
+    order = sorted(range(d), key=lambda k: mp.re(E[k]))
+    return [mp.re(E[k]) for k in order], [[V[i, k] for i in range(d)] for k in order]
+
+def mode_profile(vec, idx):
+    """Weight of each ray n in an eigenvector: |v_{n,+}|^2 + |v_{n,-}|^2, normalised to sum 1."""
+    w = {}
+    for c, (n, eps) in zip(vec, idx): w[n] = w.get(n, mp.mpf(0)) + abs(c)**2
+    tot = mp.fsum(w.values())
+    return {str(n): mp.nstr(w[n]/tot, 6) for n in sorted(w)}
+
 def eig_hermitian(W):
     """Eigenvalues of the hermitian part, ascending (mpmath eigsy on the 2d x 2d real embedding is avoided:
     use mp.eighe on the complex hermitian matrix)."""
@@ -317,7 +345,7 @@ def compare(a):
                     "registered": ["P_M3_7a", "P_M3_7b", "P_M3_8"], "leak": "AMEND_LEAK_1"}}
     t0 = time.time()
     cuts = sorted({8, 32, a.m_max})
-    Ws, decay = W_prime_hybrid(N, theta, cuts, a.T_cut, a.n_split, a.dps, a.workers)
+    Ws, decay, comps = W_prime_hybrid(N, theta, cuts, a.T_cut, a.n_split, a.dps, a.workers, want_components=True)
     Wp = Ws[a.m_max]
     out["prime_side"] = {"frobenius": mp.nstr(frob(Wp), 12), "hermiticity_defect": mp.nstr(herm_defect(Wp), 4),
                          "m_convergence": [{"m_max": m, "frobenius": mp.nstr(frob(Ws[m]), 12),
@@ -334,10 +362,28 @@ def compare(a):
     for k in counts:
         Wz = W_zero_side(N, theta, gam[:k])
         D = [[Wp[i][j] - Wz[i][j] for j in range(len(Wz))] for i in range(len(Wz))]
-        ev = eig_hermitian(D)
+        ev, vecs = eig_hermitian_full(D)
+        idx = index(N)
         rows.append({"zeros": k, "gamma_cut": mp.nstr(gam[k-1], 10), "frob_W_zeros": mp.nstr(frob(Wz), 12),
                      "frob_difference": mp.nstr(frob(D), 12), "lambda_min": mp.nstr(ev[0], 8), "lambda_max": mp.nstr(ev[-1], 8),
-                     "eigenvalues": [mp.nstr(x, 8) for x in ev]})
+                     "eigenvalues": [mp.nstr(x, 8) for x in ev],
+                     "min_mode_ray_profile": mode_profile(vecs[0], idx),
+                     "min_mode_vector": [mp.nstr(c, 8) for c in vecs[0]],
+                     "max_mode_ray_profile": mode_profile(vecs[-1], idx)})
+    # localise the negative mode: value of the quadratic form of each part of (11) and of the zero side on it
+    Wz_last = W_zero_side(N, theta, gam[:counts[-1]])
+    Dlast = [[Wp[i][j] - Wz_last[i][j] for j in range(len(Wz_last))] for i in range(len(Wz_last))]
+    ev_l, vec_l = eig_hermitian_full(Dlast); v = vec_l[0]
+    out["negative_mode_decomposition"] = {
+        "zeros_used": counts[-1], "lambda_min": mp.nstr(ev_l[0], 10),
+        "ray_profile": mode_profile(v, index(N)),
+        "v*_main_v": mp.nstr(mp.re(quad_form(comps["main"], v)), 12),
+        "v*_arith_v": mp.nstr(mp.re(quad_form(comps["arith"], v)), 12),
+        "v*_pole_v": mp.nstr(mp.re(quad_form(comps["pole"], v)), 12),
+        "v*_W_primes_v": mp.nstr(mp.re(quad_form(Wp, v)), 12),
+        "v*_W_zeros_v": mp.nstr(mp.re(quad_form(Wz_last, v)), 12),
+        "check_sum_equals_lambda_min": mp.nstr(mp.re(quad_form(Wp, v) - quad_form(Wz_last, v)), 12),
+        "note": "W_primes = main - arith + pole; W_zeros is a sum of PSD blocks so v* W_zeros v >= 0 always. Whichever part makes v* W_primes v fall below v* W_zeros v is the suspect."}
     out["difference"] = {"rows": rows, "valid_rows": [r["zeros"] for r in rows if mp.mpf(r["gamma_cut"]) < a.T_cut/3],
                          "note": "a row is a valid test only while gamma_cut is well inside the prime-side tau cutoff"}
     r100 = [r for r in rows if r["zeros"] == 100][0]; r200 = [r for r in rows if r["zeros"] == 200][0]
