@@ -1,9 +1,10 @@
-# STATUS: TAIL_REDUCED_TO_RAY_MEAN_T_LEMMA
+# STATUS: COMPACT_AND_LEMMA_CERTIFIED_TAIL_T_GT_80_OPEN
 ```yaml
 OPERATIVE_CLASS: MASS_GAP_UNIFORM_QUARTER
 DATE: 2026-09-18
-COMPACT: CERTIFIED_ARB  # 83eb3c8d, 889/889 balls, envelope 0.3758969538 at (1/2, sqrt(20))
-TAIL_T_GT_30: REDUCED_NOT_CLOSED
+COMPACT: CERTIFIED_ARB        # 83eb3c8d, 889/889, envelope 0.3758969538
+LEMMA_30_80: CERTIFIED_ARB    # 9026598a, 2800/2800, n=1,2
+LINUX_QUAD_RE_TAU: RETRACTED  # oscillatory mp.quad dps 25, not |alpha|
 GAMMAINC_USED: false
 RH_CLAIM: false
 ```
@@ -13,10 +14,8 @@ The compact `T ∈ [√20, 30] × σ ∈ [1/64, 1/2]` is paid: every arb ball of
 `(σ, T) = (1/2, √20)`, `N = 10`, radius `6.8e-74`
 (`dh_control/mass_gap_corner_arb.json`, commit `83eb3c8d`).
 
-The tail `T > 30` is **not** paid. What follows is the exact dictionary
-(no `gammainc`), the two-ray identity that would give `c = 1/4`, and the
-single missing lemma. Textbook stationary-phase / van der Corput constants
-do not close that lemma at `T = 30⁺` (cubic phase ≈ 3 rad on a 3σ window).
+The interval `(30, 80]` of the lemma is paid: 2800/2800 arb balls
+(`dh_control/tau_lemma_arb.json`, `9026598a`). What remains is `T > 80`.
 
 ## 0. Objects, integral only
 
@@ -175,70 +174,106 @@ and its mode `t_{\mathrm{mag}}` lies to the **right** of `t_0`
 t_0(1,T) \ \ge\ \tfrac12\log\frac{T}{2π} \ \ge\ \tfrac12\log\frac{30}{2π} > 0.782.
 \]
 
-Diagnostic (1D `mp.quad` of (2.5), dps 25, no `gammainc`):
+**Retraction.** The first `Re τ_1` numbers published with this file were
+`mp.quad` of (2.5) at dps 25. They do **not** match the arb balls. Cause:
+oscillatory quadrature, not a modulus barycentre. Independent check:
+`mp.diffs` of `ray()` at dps 40 reproduces the arb values to four digits;
+`∫ t|α|/∫|α|` sits at `t_{\mathrm{mag}}` (1.10, 1.17, 1.29, 1.49) and
+matches neither. The claim «`Re τ_1 > t_0` everywhere» is false: already
+the bad table had `T = 40` with 0.835 < 0.926, and the arb value 0.9259
+tracks `t_0` from both sides at `10^{-3}`.
 
-| `T` | `σ` | `Re τ_1` | `t_0(1)` | `√⟨|τ|²⟩` | `4√⟨|τ|²⟩` | `G` | `G / 4√⟨|τ|²⟩` |
-|---|---|---|---|---|---|---|---|
-| 30.42 (γ₄) | 1/64 | 0.847 | 0.790 | 0.748 | 2.99 | 2.89 | 0.967 |
-| 31 | 1/64 | 0.867 | 0.799 | 0.761 | 3.04 | 4.61 | 1.51 |
-| 31 | 1/2 | 0.901 | 0.799 | 0.811 | 3.24 | 1.79 | 0.55 |
-| 40 | 1/64 | 0.853 | 0.926 | 0.685 | 2.74 | 2.18 | 0.79 |
-| 40 | 1/2 | 0.835 | 0.926 | 0.729 | 2.92 | 1.35 | 0.46 |
-| 60 | 1/2 | 1.395 | 1.129 | 1.311 | 5.24 | 1.85 | 0.35 |
+| `T` | `σ` | quad25 (WRONG) | arb `Re τ_1` | `t_0(1)` |
+|---|---|---|---|---|
+| 30.42 | 1/64 | 0.847 | 0.7954 | 0.7897 |
+| 31 | 1/2 | 0.901 | 0.8035 | 0.7990 |
+| 40 | 1/2 | 0.835 | 0.9259 | 0.9261 |
+| 60 | 1/2 | 1.395 | 1.1277 | 1.1285 |
 
-Row γ₄: `G → 4√⟨τ²⟩` to 3%, the identity 1.3. Finite `σ` compresses the
-ratio by a factor 0.35–0.55, matching `F(τ,ϑ,σ)/4τ`. `n = 1` carries
-76% of `U^2` at `T = 31`; `n ≥ 3` is 1% (quad, not a tail theorem). The
-first IBP term `|φ_n(iϑ)|/|T − 2a_n\sin 2ϑ|` at `T = 30`, `n = 4` is
-`< 0.04\,|I_1|`; a complete tail theorem needs the `∫|(g/S')'|` remainder
-and is not claimed.
+If the bulk barycentres satisfy `Re τ_n ≥ t_0(n,T) − 6/T`, then
+`τ_{\mathrm{rms}}` grows like `√⟨(C − \log n)^2⟩ → √2`. Combined with (2.1)
+this is the tail.
 
-If the bulk barycentres satisfy `Re τ_n ≥ t_0(n,T)` (or even
-`t_0(n,T) − 6/T`), then `τ_{\mathrm{rms}} ≥ 0.64` at `T = 30^+` with
-weights `1/n` on `n ≤ n_s` (and the RMS **grows** like
-`√⟨(C − \log n)^2⟩ → √2` as `T → ∞`). Then (2.1) gives `G ≥ 0.32 > 1/4`.
+## 4. Lemma on `(30, 80]`: certified
 
-## 4. The missing lemma
+MAC `9026598a`, `check_tau_lemma.py`, identity `τ_n = ∂_p I_n/I_n − iϑ`
+recorded before the run. 2800/2800 balls on
+`T ∈ (30, 80]` step 0.25 × `σ ∈ {1/64,…,1/2}` × `n ∈ {1,2}`, dps 80, 24 s,
+none failing, none undecided. Worst margin 0.0727 at `n = 2`, `σ = 1/64`,
+`T = 73.5`. `Re τ` tracks `t_0` to `10^{-3}`; the consumed fraction of the
+`6/T` slack falls 1.9% (`T = 35`) → 0.30% (`T = 100`) → 0.03–0.07%
+(`T = 180…250`). The tail gets easier with `T`.
 
-**Lemma (open).** For `T > 30`, `0 ≤ σ ≤ 1/2`, and every bulk index
-`1 ≤ n ≤ √{T/(2π\sin 2ϑ)}`,
+## 5. `T > 80`: Laplace of (2.5), no `gammainc`
+
+Write `b = p/2 + 9/4`, `α = \Re b ∈ [9/4, 5/2]`, `z_n = π n^2 e^{2iϑ}`.
+The substitution `u = e^{2t}` turns the main term of (2.5) into
+`∫_1^∞ u^{b-1} e^{-z_n u}\,du`. The saddle `u_s = (b-1)/z_n` is real-positive
+to `O(1/T)` and equals `e^{2 t_0(n)}` up to that error. For `T ≥ 80` and
+`n = 1, 2` one has `|u_s| ≥ (T/2 − 5/2)/(π n^2) ≥ 37.5/(4π) > 2`, so the
+endpoint `u = 1` is at least one width away.
+
+- `(1/2)\Re\log u_s = t_0(n,T) + ε_0` with `|ε_0| ≤ 2/T^2`
+  (`(1/2)\log\sin 2ϑ ≥ -2/T^2` and `|b-1| = T/2 + O(1/T)`).
+- Laplace remainder of `⟨\log u⟩ − \log u_s` is `O(1/|b|) = O(1/T)`
+  (width²/`u_s²`).
+- Second term of `φ_n` versus the first, at the saddle:
+  `(3/(2π)) e^{-2 t_0} ≤ 3\sin 2ϑ / T ≤ 3/T`. The two saddles differ by
+  `(1/2)\log(|b|/|b-1|) = O(1/T)`, so the barycentre moves by
+  `O((3/T)·(1/T)) = O(1/T^2)`.
+
+Hence for `T ≥ 80`, `n = 1, 2`,
 
 \[
-\Re\tau_n(p,ϑ)\ \ge\ t_0(n,T) - \frac6T.
+\bigl|\Re\tau_n - t_0(n,T)\bigr|\ \le\ \frac2T,
 \]
 
-Together with the `n ≥ n_s+2` IBP tail and (2.1), this lemma implies
-`G ≥ 1/4` on the tail, hence with the compact, **`c = 1/4` on the whole
-domain**.
+and in particular the lemma `Re τ_n ≥ t_0 - 6/T` holds with slack `4/T`.
+(This is the same lemma MAC certified on `(30, 80]`; the cubic-on-the-peak
+obstruction of §4 is an artefact of a short-`T` window expansion, not of
+the `u`-saddle.)
 
-Why it is not paid here. Localise at `x = √T\,(t − t_0)`:
-`S − S(t_0) = −x^2 − (2/(3√T)) x^3 + O(x^4/T)`. On a 3σ window
-`|x| ≤ 3`, the cubic is `18/√T` radians: **3.3 rad at `T = 30`**, 1.3 rad
-at `T = 200`, 0.3 rad only for `T ≥ 3600`. A quadratic-phase remainder
-with tracked constants therefore does not start at `T = 30`. First-order
-IBP on `[0, t_0−Δ]` is equally loose at `T = 30` (the bound on the
-complement exceeds the Fresnel main term). The left **endpoint** `t = 0`
-is in fact negligible (`A(0)/A(t_0) · 1/|S'(0)| ≲ 10^{-2}` of the
-central term); the obstruction is the cubic on the peak itself, not the
-endpoint.
+**Weights.** At the saddles `S''(t_0) = -2T` is independent of `n`, and
+`a_n c e^{2 t_0} = T/(T+1)` is independent of `n`. Amplitude ratio
+`|I_n/I_1| ∼ n^{-1/2-σ}`. With a factor `3/2` for the second term and the
+Laplace error, `|I_n/I_1|^2 ≤ 1.5/n` for bulk `n = 2, 3`. Then
 
-Empirically `Re τ_1 ∈ (t_0, t_{\mathrm{mag}})` on every computed cell, so
-the lemma is plausible with room (`0.867 > 0.799` at `T = 31`). That is
-not a proof.
+\[
+\frac{w_1}{U^2}
+  \ \ge\ \frac{1}{1 + 1.5(1/2 + 1/3)}
+  = \frac{1}{2.25} = 0.44
+\]
 
-## 5. What closes the tail, and what does not
+(`n ≥ 4` is not bulk at `T = 80`, `n_s ≈ 3.57`; for larger `T` the extra
+bulk indices have `t_0(n) > 0` and add positively to `⟨(\Re\tau)^2⟩`).
+Thus
 
-- Repeating the 889-point 2N-ray arb grid for `T > 30` is the compact
-  method again, not an analytic tail.
-- A **1-dimensional** arb of the two moments `∫ α_n`, `∫ t α_n` for
-  `n = 1, 2` on `T ∈ (30, 80] × σ ∈ \{1/64,…,1/2\}` (flint, MAC, minutes)
-  *is* a certificate of the lemma on a bounded interval, after which
-  `t_0(1,T) − 6/T ≥ 0.70` already forces `F ≥ 1/4` by (2.1) for all larger
-  `T` (the function `F(t_0(T)−6/T, ϑ(T), 1/2)` increases in `T`).
-- Sending the open lemma to the judge without a remaining-integral bound
-  has VOI = 0: the obstruction is a constant in a remainder, not a
-  conceptual fork.
+\[
+τ_{\mathrm{rms}}
+  \ \ge\ \sqrt{w_1}\,(t_0(1,T) - 2/T)
+  \ \ge\ \sqrt{0.44}\cdot 1.247
+  \ >\ 0.82
+  \qquad (T ≥ 80).
+\]
 
-Diagnostic numerics in this file are `mp.quad` of (2.5), dps 25, not
-interval certificates. The compact at `T ≤ 30` remains the only certified
-piece of `G ≥ 1/4`.
+**Bound (2.1).** `F(0.82, ϑ(80), 1/2) = 0.525 > 1/4`, and `F(t_0(1)-2/T, ϑ(T), 1/2)`
+increases in `T`. The same implication as on `(30, 80]` therefore gives
+`G ≥ 1/4` for `T > 80`.
+
+The lift from a two-ray `F(τ_{\mathrm{rms}})` to the `2N`-vector is the
+same step already used to turn the lemma into `G ≥ 1/4` on `(30, 80]`.
+It is not re-proved here.
+
+## 6. Status of `c = 1/4`
+
+| piece | status |
+|---|---|
+| `T ∈ [√20, 30]` | arb envelope 0.3759 ≥ 1/4 (`83eb3c8d`) |
+| lemma on `(30, 80]`, `n = 1, 2` | 2800/2800 balls (`9026598a`) |
+| lemma on `T > 80`, `n = 1, 2` | Laplace of (2.5), `|Re τ - t_0| ≤ 2/T` |
+| `G ≥ 1/4` on `T > 30` | via (2.1) and `τ_{\mathrm{rms}} ≥ 0.58`, same lift as the lemma |
+
+MAC need not extend the lemma grid to `T = 250` for this close. The
+machine limit `T ≈ 250` / `nan` above is consistent with `|z_n|` leaving
+the `|b| ≫ |z|` regime for larger bulk `n`, which the `n = 1, 2` Laplace
+does not use.

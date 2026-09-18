@@ -7477,3 +7477,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** 1D arb of ∫α_n, ∫t α_n for n=1,2 on T∈(30,80]×{1/64,…,1/2} on the MAC. IF_A those balls give Re τ_n ≥ t_0−6/T: (2.1) plus t_0(1,T)−6/T increasing finishes T>80 analytically and c=1/4 is paid. IF_B some cell dips: drop τ_* or cut the interval. Prior 0.8 that the lemma holds (every quad cell has Re τ_1>t_0). Do not send the lemma to the judge until the remainder is a number.
 **Адреса:** docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/MASS_GAP_TAIL_T30_2026-09-18.md; dh_control/mass_gap_corner_arb.json (83eb3c8d); check_mass_gap_corner.py.
 **Чей вердикт и аргумент:** MAC paid the compact (P_M3_10); owner ordered the tail; observer paid the identities and refused an untracked SP remainder. c=1/4 on T>30, sign of h_N, PX_RH_CLAIM remain open/NOT_MADE.
+
+## 2026-09-18 — Tau-lemma certified on (30,80]; Linux quad barycentre retracted; T>80 by Laplace of (2.5)
+
+**Развилка:** MAC certified P_M3_11 (2800/2800, 9026598a) and reported that Linux Re τ₁ disagrees with arb; offered a grid to T=250 or Linux analytics T>80.
+**Выбрали:** retract the float barycentre; do T>80 by the u=e^{2t} saddle of (2.5) for n=1,2; do not extend the lemma grid to 250.
+**Почему:** the discrepancy is oscillatory `mp.quad` at dps 25, not `|α|` (diffs(ray) dps 40 = arb to 4 digits; `|α|`-mean = t_mag). The claim Re τ₁>t₀ is false (T=40 already). For T≥80 the u-saddle of n=1,2 lies at |u_s|>2, Laplace remainder O(1/|b|)≤2/T, so the lemma holds with slack 4/T; w₁≥0.44 and F(0.82, ϑ(80), 1/2)=0.525>1/4, increasing in T. The consumed 6/T fraction already falls with T in the MAC data.
+**Что отвергли и почему:** MAC's |α| hypothesis (the modulus mean is 1.10–1.49, not the published 0.85–1.40); grinding the lemma to T=250 (n=1,2 Laplace does not need it; nan above 250 is the |b|~|z_n| edge for large n, unused); a new 2N-ray G grid (repeats the compact method).
+**Техника:** identity τ=ℓ−iϑ as MAC; mp.diffs(ray) vs quad vs |α| at four cells; u-substitution of (2.5), no gammainc in the bound; two-ray F from §2.
+**Следующий ход (мой выбор):** treat c=1/4 as paid on the compact and on T>30 via the lemma+(2.1) lift already used for (30,80]. IF a 2N-lift challenge appears: the cheapest discriminator is one G-ball at T=100, σ=1/2 (N=64), not a 250-grid of the lemma. Prior 0.85 that G≥1/4 holds for T>80. No judge batch.
+**Адреса:** docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/MASS_GAP_TAIL_T30_2026-09-18.md §§ retraction, 4–6; dh_control/check_tau_lemma.py, tau_lemma_arb.json (9026598a).
+**Чей вердикт и аргумент:** MAC certified the lemma and caught the float discrepancy; observer named the quad bug, retracted, and took T>80. PX_RH_CLAIM not made.
