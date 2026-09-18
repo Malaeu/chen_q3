@@ -7510,3 +7510,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** analytic lower bound on Re τ̄_X at T≤6 (n=1 atom, no saddle, dominance ≥ 8) and the handover to t_0 for T>6. Enclosure independent review in parallel. Prior 0.85 the means stay ≥ 0.15. No judge batch.
 **Адреса:** MASS_GAP_TAIL §7.3 (corrected); PROSHKA_QUEUE lift+MAC check (18187339).
 **Чей вердикт и аргумент:** MAC caught the 0.72 mix-up and pinned hole #1 numerically; observer retracts 0.72/0.373. PX_RH_CLAIM not made.
+
+## 2026-09-18 — Third outcome: exact 2N lift without √N does not give the sign; pair-to-sum transfer refuted
+
+**Развилка:** owner supplied exact M± squares (4)–(5), surplus B_0+Σ C_n, and a 4-ray counterexample to transferring the one-pair quarter via positive means and 40% first-mode mass.
+**Выбрали:** accept the third outcome; verify (4)–(5)=our spectral M₊ (ratio 1 at the corner and on the model) and the counterexample (h'(0)=−224/25, h<0 on (0, 0.367)); record that equal-τ 2N is not refuted; next object is (19) for actual incomplete-gamma rays.
+**Почему:** Re(D/S) is a complex sum, not a positive-weight mean. Global k,α in B_0 change when rays are added, so the one-pair theorem does not prove that B_0. Relative phase π is invisible to ℓ²-masses.
+**Что отвергли и почему:** the fork «quarter or else √N» (incomplete); treating N≤32 as an automatic compact close (the model already flips at N=2); calling the 4-ray model a counterexample to our head (it is not).
+**Техника:** masses_from vs (4)–(5); P=2cosh 2σ−(12/5)cosh σ; G at σ=0.01 is −45.7 on the model, +1.06 at σ=1/2.
+**Следующий ход (мой выбор):** prove B_0+Σ C_n ≥ 0 for the gamma rays with the global (k,α), using the concrete I_n(n,σ,T). Cheap discriminator: the mixed term 2 Re(Z_2 conj Z_1) on n=1,2 of the actual head at the corner — if it is ≥ −B_0 already, the phase is not the model's π. IF_A the first two gamma pairs have C_2>−B_0: hunt a positivity of the Gram of {Z_n} with the incomplete-gamma phases. IF_B C_2 < −B_0: the corner lives on mixed terms too, rewrite (19) before adding n. Prior 0.7 the gamma phases are not π. Enclosure review still open. No PX_RH_CLAIM.
+**Адреса:** MASS_GAP_TAIL §9; owner note with (1)–(20).
+**Чей вердикт и аргумент:** owner wrote the exact lift, the surplus split, and the counterexample; observer verified the numbers and the identity with our M₊. PX_RH_CLAIM not made.

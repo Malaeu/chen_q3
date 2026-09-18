@@ -1,11 +1,10 @@
-# STATUS: EQUAL_TAU_2N_LIFT_PAPER_VARYING_TAU_OPEN
+# STATUS: EXACT_2N_LIFT_PHASE_TASK_OPEN
 ```yaml
 OPERATIVE_CLASS: MASS_GAP_UNIFORM_QUARTER
 DATE: 2026-09-18
-EQUAL_TAU_2N: PAPER           # G = (1-|Y|^2/|X|^2)/sigma, G>=1/4 iff tau >= log(8/7)/2
-COMPACT: CERTIFIED_ARB
-LEMMA_30_80: CERTIFIED_ARB
-LINUX_QUAD_RE_TAU: RETRACTED
+EQUAL_TAU_2N: PAPER
+EXACT_M_PLUS_SQUARES: PAPER   # (4)-(5), verified = our spectral M+ at corner and on the 4-ray model
+PAIR_TO_SUM_TRANSFER: REFUTED # positive means + 40% first pair + exact RMS do not imply h>0
 GAMMAINC_USED: false
 RH_CLAIM: false
 ```
@@ -434,3 +433,84 @@ critical line.
 This implication is the route. It is not a claim: `G ≥ 1/4` on the
 continuum with varying `τ` is not yet a theorem, and the enclosure is
 not independently reviewed. `PX_RH_CLAIM` stays not made.
+
+## 9. Exact 2N lift without `√N`, and why the sign still needs the gamma phases
+
+Third outcome, not in the fork «quarter or else `√N`»: **there is no
+dimensional loss, and mixed-phase terms can still make the head
+negative.** The equal-`τ` theorem of §7.1 is not refuted. What is
+refuted is the transfer «per-pair `G ≥ 1/4` + first pair ≥ 40% +
+`Re τ_n ≥ 1` ⇒ `h_N ≥ 0`».
+
+### 9.1 Exact squares for our spectral `M_±`
+
+Write `Ψ = (I^+, I^-)^T`, `Q = (τ^+ I^+, −τ^- I^-)^T`, `S = e^*Ψ`,
+`D = e^*Q` (this `D` is `X_t − Y_t`; the `iϑ S` piece of `∂_p` drops
+from `h_N`). Let `u = ‖Ψ‖²`, `v = ‖Q‖²`, `Ψ^*Q = a+ib`,
+`Δ = √(uv − b²)`. Then
+
+\[
+M_+ = \frac uΔ \Bigl|D + \frac{Δ-ib}u S\Bigr|^2,
+\qquad
+M_- = \frac uΔ \Bigl|D - \frac{Δ+ib}u S\Bigr|^2.
+\tag{9.1}
+\]
+
+Checked against `masses_from` (our spectral `A` on `e`): ratio `1`
+at the corner `(√20, 1/2)` and on the 4-ray model of §9.3. For `S ≠ 0`,
+
+\[
+w = \frac{u D/S − ib}{Δ},
+\qquad
+G = \frac{4 \operatorname{Re} w}{σ |1+w|^2},
+\tag{9.2}
+\]
+
+so `G ≥ 1/4` is `16 \operatorname{Re} w ≥ σ |1+w|^2`. The ratio
+`D/S` is a **complex** weighted sum, not a positive-weight mean of
+`Re τ_n`.
+
+### 9.2 Surplus as `B_0 + Σ C_n`
+
+Let `J_N = h_N − (σ/4) M_+`, `k = (Δ−ib)/u`, `α = σ u/(4Δ)`,
+`Z_n = D_n + k S_n` with `S_n = I_n^+ + I_n^-`,
+`D_n = τ_n^+ I_n^+ − τ_n^- I_n^-`. Then `J_N = B_0 + Σ_{n=2}^N C_n`
+exactly, with
+
+\[
+B_0 = 4\operatorname{Re}(D_1 \overline{S_1}) − α |Z_1|^2
+\]
+
+and `C_n` the cross terms of pair `n` against the partial sum `<n`.
+**`k, α` are global** (they depend on all `2N` rays). The one-pair
+theorem does **not** prove `B_0 ≥ 0` in this splitting.
+
+### 9.3 Four-ray counterexample to the transfer (not to our head)
+
+`ℓ_1 = 2`, `ℓ_2 = 1`, `c_1 = 1`, `c_2 = −6/5`,
+
+`I_n^+ = c_n e^{σ(ℓ_n − iϑ)}`, `I_n^- = c_n e^{−σ(ℓ_n + iϑ)}`.
+Then `Re τ_n^± = ℓ_n ≥ 1`. Each pair has
+`G_n = (1 − e^{−4 ℓ_n σ})/σ ≥ 2(1−e^{−2}) > 1/4` on `0 < σ ≤ 1/2`.
+First-pair `ℓ²`-share `≥ 25/61 > 2/5`. The RMS identity for `Δ` is
+equality. But `S = e^{−iϑσ} P` with
+`P = 2\cosh 2σ − (12/5)\cosh σ`, so `h = 4 P' P` and
+`h'(0) = −224/25 < 0`. Hence `h < 0` on
+`0 < σ < \operatorname{acosh}((3+√59)/10) ≈ 0.367`. Checked:
+`σ = 0.01`, `h = −0.0895`, `G = −45.7`; at `σ = 1/2` (past the root)
+`G = +1.06`. Cause: relative phase `π` between `c_1` and `c_2`,
+invisible to quadratic masses, present in the mixed terms.
+
+These are not incomplete-gamma rays. The gamma inequality is not
+refuted. The general transfer is.
+
+### 9.4 Next step
+
+Prove `B_0 + Σ C_n ≥ 0` for the actual incomplete-gamma `I_n^±`,
+with the global `(k, α)` of (9.1), or equivalently (9.2). The proof
+must use the concrete `(n, σ, T)`-dependence of those rays. Finite
+`N ≤ 32` does not close the compact by itself: the model above
+already changes sign at `N = 2`. `M_+ > 0` is required for the
+strict `ℋ > 0` implication (if `M_+ = h_N = 0` the quarter holds
+and gives no sign). Independent review of the enclosure remains
+open. `PX_RH_CLAIM` not made.
