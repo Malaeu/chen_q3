@@ -1,0 +1,97 @@
+{
+ "meta": {
+  "dps": 25,
+  "N": 2,
+  "theta": "0.71873149673078164295",
+  "T_for_theta": 14.0,
+  "note": "per-side hygiene only; no cross-side comparison and no defect (21) \u2014 those are the owner's P_M3_7 / P_M3_8",
+  "zeros_file": "/Users/emalam/Documents/Papers/Riehmann/zeta_zeros_100k.txt",
+  "zeros_loaded": 2000,
+  "gamma_max": "2515.28648292",
+  "runtime_seconds": 2983.4
+ },
+ "zero_side_convergence": {
+  "rows": [
+   {
+    "zeros_used": 10,
+    "gamma_cut": "49.77383248",
+    "frobenius": "46342.4278308",
+    "rel_change_vs_previous": null,
+    "hermiticity_defect": "0.0"
+   },
+   {
+    "zeros_used": 50,
+    "gamma_cut": "143.1118458",
+    "frobenius": "57229.2786518",
+    "rel_change_vs_previous": "0.1957",
+    "hermiticity_defect": "0.0"
+   },
+   {
+    "zeros_used": 200,
+    "gamma_cut": "396.3818542",
+    "frobenius": "57270.2129024",
+    "rel_change_vs_previous": "0.0026648",
+    "hermiticity_defect": "0.0"
+   },
+   {
+    "zeros_used": 1000,
+    "gamma_cut": "1419.422481",
+    "frobenius": "57290.7786196",
+    "rel_change_vs_previous": "0.001376",
+    "hermiticity_defect": "0.0"
+   },
+   {
+    "zeros_used": 2000,
+    "gamma_cut": "2515.286483",
+    "frobenius": "57295.0248241",
+    "rel_change_vs_previous": "0.00028314",
+    "hermiticity_defect": "0.0"
+   }
+  ],
+  "tail_law_expected": "|s|^2 ~ 1/gamma^2 with N(T) ~ T log T/2pi, so the tail beyond Y falls like log(Y)/Y",
+  "last_rel_change": "0.00028314"
+ },
+ "prime_side_convergence": {
+  "rows": [
+   {
+    "m_max": 2,
+    "frobenius": "48725.0882152",
+    "rel_change_vs_previous": null,
+    "hermiticity_defect": "6.41e-30"
+   },
+   {
+    "m_max": 8,
+    "frobenius": "55848.8483044",
+    "rel_change_vs_previous": "0.44117",
+    "hermiticity_defect": "5.593e-30"
+   },
+   {
+    "m_max": 32,
+    "frobenius": "57246.9351722",
+    "rel_change_vs_previous": "0.054105",
+    "hermiticity_defect": "5.456e-30"
+   }
+  ],
+  "T_cut": 200.0,
+  "n_split": 8,
+  "n_prime_powers": 18
+ },
+ "prime_side_tau_cut_stability": {
+  "rows": [
+   {
+    "T_cut": 100.0,
+    "frobenius": "55679.4416475"
+   },
+   {
+    "T_cut": 200.0,
+    "frobenius": "55848.8483044"
+   },
+   {
+    "T_cut": 400.0,
+    "frobenius": "55872.7432479"
+   }
+  ],
+  "m_max_used": 8,
+  "tail_estimate": "|H| (1+|tau|)^2 is bounded (checked: ~760-820 at tau = 200, 800 for the (1,+)x(1,-) entry), so the tail beyond T_cut falls like 1/T_cut"
+ }
+}

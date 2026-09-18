@@ -132,6 +132,12 @@
       "time_utc": "2026-09-17T22:17:52+00:00",
       "by": "owner",
       "what": "P_M3_9 registered (second-order shadow); P_M3_7/P_M3_8 reserved by the owner for W_N. Report must carry in section 0 the line that |delta| stays in 0.08-0.15 for N = 10..150 at fixed height: the shadow of the Dirichlet partial sum does not converge to the axis as N grows; the return to the axis is entirely due to E_N, i.e. to the Gaussian suppression of the theta series, not to the arithmetic of d_N."
+    },
+    {
+      "id": "AMEND_LEAK_1",
+      "time_utc": "2026-09-18T00:42:33+00:00",
+      "by": "MAC (self-disclosed)",
+      "what": "The per-side hygiene run for W_N (wn_hygiene.json, N = 2, theta = theta(14), dps 25) produced the Frobenius norm of each side and therefore partial information about P_M3_7 before its statement was registered: zero side (13) 57295.0 at 2000 zeros, prime side (11) 57246.9 at m_max = 32, T_cut = 200 — 0.08% apart. No matrix difference was computed and no defect (21) was computed. The owner must take this into account when phrasing P_M3_7: the comparison at the level of norms is no longer blind; what remains blind is the entrywise difference and its behaviour as m_max and the number of zeros grow. The compare mode of check_wn.py is guarded and refuses to run without an explicit flag stating that the statements are registered."
     }
   ]
 }

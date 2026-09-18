@@ -1,8 +1,8 @@
 {
- "time_utc": "2026-09-17T22:36:35+00:00",
+ "time_utc": "2026-09-18T00:42:33+00:00",
  "task_id": "MAC_A3_LONG_FLIP_AND_DN_SHADOWS_2026-09-18",
  "fates": {
-  "P_M3_1": "PENDING (long_flip_T14.json not yet written)",
+  "P_M3_1": "CONFIRMED: first sign change of the frozen head at T_flip = 2794.4 (Delta_T = 2780.4), inside [2500, 4000]; confirmed by precision doubling: [True, True]",
   "OPTION_2_SCAN_14_414": "NOT_A_TEST (fate fixed by AMEND_OPT2 before completion; decided by the budget): 0/8001 negative points, T_first_negative = None",
   "P_M3_2": "REFUTED: registered set |delta|/sqrt(N) max/min = 3.33 (limit 1.857), max |arg deviation| = 1.888 rad (limit 0.3), |delta| increasing: False; out-of-sample set: max/min = 2.786, max arg dev = 2.061 rad. First-principles delta_th = N^(1-rho)/((rho-1) zeta'(rho)): |delta|/|delta_th| in [0.64, 2.54] over the 13 N values (order of magnitude right), arg(delta/delta_th) in [-2.08, 0.22] rad (rotation direction right, residual beyond the registered tolerance)",
   "P_M3_2_old": "WITHDRAWN_BY_OWNER_AS_ERRONEOUS; on the data: REFUTED (delta_re changes sign in N and in gamma: 4 of 13 heights have the shadow left of the line)",
@@ -13,6 +13,125 @@
   "P_M3_5": "REFUTED: one-term |E_N - B N^(1/2-p)/(p-1/2)|/|E_N| < 0.2 at 3/20 qualifying points (max 0.51767, growing with T: 0.10 at T=2 to 0.52 at T=40); with the next Euler-Maclaurin term -B N^(-s)/2 (MAC note before run): 20/20 within 0.2, max 0.093314 — E_N is the gamma factor times the Euler-Maclaurin remainder, but the second term is not negligible at N ~ sqrt(T log T)"
  },
  "numbers": {
+  "long_scan": {
+   "T0": 14.0,
+   "N0": 20,
+   "sigma": "1/64",
+   "Tmin": 2000.0,
+   "Tmax": 4000.0,
+   "step": 0.25,
+   "dps": 120,
+   "fine_step": 0.05,
+   "confirm_dps": 160,
+   "n_coarse": 8001,
+   "n_coarse_negative": 3956,
+   "T_first_negative_coarse": 2794.5,
+   "T_flip": 2794.4,
+   "Delta_T": 2780.4,
+   "confirmation": [
+    {
+     "T": 2794.35,
+     "h_dps_scan": "1.922533922174875065514731e-1896",
+     "h_dps_confirm": "1.922533922174859538889056e-1896",
+     "rel_diff": "8.0761e-15",
+     "sign_agrees": true
+    },
+    {
+     "T": 2794.4,
+     "h_dps_scan": "-7.644912612228201307105913e-1897",
+     "h_dps_confirm": "-7.644912612228356832287633e-1897",
+     "rel_diff": "2.0344e-14",
+     "sign_agrees": true
+    }
+   ],
+   "runtime_seconds": 10505
+  },
+  "h_over_absJ2_every_100": [
+   [
+    2000.0,
+    "0.77879"
+   ],
+   [
+    2100.0,
+    "0.4274"
+   ],
+   [
+    2200.0,
+    "0.79651"
+   ],
+   [
+    2300.0,
+    "36.485"
+   ],
+   [
+    2400.0,
+    "2.9732"
+   ],
+   [
+    2500.0,
+    "3.5342"
+   ],
+   [
+    2600.0,
+    "4.4314"
+   ],
+   [
+    2700.0,
+    "17.511"
+   ],
+   [
+    2800.0,
+    "4.0377"
+   ],
+   [
+    2900.0,
+    "0.0063846"
+   ],
+   [
+    3000.0,
+    "5.6308e-6"
+   ],
+   [
+    3100.0,
+    "5.2867e-8"
+   ],
+   [
+    3200.0,
+    "-8.6817e-8"
+   ],
+   [
+    3300.0,
+    "-1.1918e-7"
+   ],
+   [
+    3400.0,
+    "-1.1989e-7"
+   ],
+   [
+    3500.0,
+    "-1.0999e-7"
+   ],
+   [
+    3600.0,
+    "-9.7487e-8"
+   ],
+   [
+    3700.0,
+    "-8.5308e-8"
+   ],
+   [
+    3800.0,
+    "-7.4404e-8"
+   ],
+   [
+    3900.0,
+    "-6.4971e-8"
+   ],
+   [
+    4000.0,
+    "-5.6922e-8"
+   ]
+  ],
   "shadows_registered_set": {
    "N": [
     10,
@@ -678,8 +797,6 @@
    "max_rel_dev_2terms": "0.093314"
   }
  },
- "pending": [
-  "P_M3_1"
- ],
+ "pending": [],
  "scope": "finite points; DH NEGATIVE is not a witness against zeta; zeta POSITIVE is not evidence for RH; run certifies flip height, shadow offsets and pair-signal resolution, not sign"
 }
