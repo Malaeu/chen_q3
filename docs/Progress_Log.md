@@ -7488,3 +7488,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** treat c=1/4 as paid on the compact and on T>30 via the lemma+(2.1) lift already used for (30,80]. IF a 2N-lift challenge appears: the cheapest discriminator is one G-ball at T=100, σ=1/2 (N=64), not a 250-grid of the lemma. Prior 0.85 that G≥1/4 holds for T>80. No judge batch.
 **Адреса:** docs/routeB_bus/proshka/theta_folded_contour_checks_2026-09-17/MASS_GAP_TAIL_T30_2026-09-18.md §§ retraction, 4–6; dh_control/check_tau_lemma.py, tau_lemma_arb.json (9026598a).
 **Чей вердикт и аргумент:** MAC certified the lemma and caught the float discrepancy; observer named the quad bug, retracted, and took T>80. PX_RH_CLAIM not made.
+
+## 2026-09-18 — Equal-τ lift to 2N is exact: G=(1-|Y|²/|X|²)/σ, threshold τ≥log(8/7)/2
+
+**Развилка:** owner said close RH, not a G-ball. Attack was the two-cluster lift, avoiding CS over N.
+**Выбрали:** compute Ae exactly for equal real τ in any dimension; prove M₊=4τ|X|² and h=4τ(|X|²-|Y|²); tilt ODE; threshold 0.06695. Do not send Proshka.
+**Почему:** CS over n_s kills 1/4 in the F-bound; the exact Ae expansion cancels U², θ and N. Two-ray was never special. Remaining object is the coherent mean τ̄_X=X_t/X, not τ_rms. Samples: Re τ̄_X ≥ 0.15 at the corner (n=1 modulus ratio 13.3) and ≥ 0.60 at T=80. Threshold 0.067.
+**Что отвергли и почему:** G-ball at (100,1/2) (owner: close RH); MAC grid to 250; F(τ,θ,σ) with 4θ² (those terms cancel in Ae); using τ_rms ≥ 0.58 as the 2N condition (too strong).
+**Техника:** Ae_j^+ = 4τ X conj(I_n^+), Ae_j^- = -4τ Y conj(I_n^-); identity M₊=(|Ae|²-λ₋ h)/(λ₊-λ₋); diffs(ray) at √20, 14.75, 30, 80.
+**Следующий ход (мой выбор):** lower bound Re τ̄_X, Re τ̄_Y ≥ 0.07 on the continuum. Compact T≤30: n=1 modulus dominance (|I₁|/rest ≥ 2). T>30: per-ray lemma plus a no-cancellation clause (if |X|<(1/2)|I₁| we are near a zero of X and G is the large 4τ_rms case). IF_A both means stay ≥ 0.07: G≥1/4 is a theorem in the equal-τ model and a 1/3-error away in samples. IF_B the coherent mean dips: write the error (τ̄_X-τ̄_Y)|J|²/2 and bound it. Then independent review of the enclosure. Prior 0.8 that the means stay above 0.07. No PX_RH_CLAIM.
+**Адреса:** MASS_GAP_TAIL_T30_2026-09-18.md §7–8.
+**Чей вердикт и аргумент:** owner ordered the RH path; observer proved the equal-τ 2N identities. Enclosure review PENDING. PX_RH_CLAIM not made.
