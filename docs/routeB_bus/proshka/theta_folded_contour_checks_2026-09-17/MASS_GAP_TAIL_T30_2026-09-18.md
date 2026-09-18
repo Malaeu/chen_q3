@@ -390,9 +390,26 @@ the corner `(√20, 1/2)`, factor 2.27 over the 0.07 threshold, and
 1.02. No gap between regimes: where dominance is strong the mean is
 `τ_1 ≈ 0.16`; where it fails at `T ≈ 80` the mean is already 0.86.
 
-The scheme «if `|X| ≥ ½|I_1^+|` then `τ̄_X` stays near `τ_1`» holds at
-the corner (dominance 13). It breaks at `T ≈ 80` (dominance 1), where
-the 0.07 threshold is already irrelevant.
+The scheme «if `|X| ≥ ½|I_1^+|` then `τ̄_X` stays near `τ_1`» **fails
+as a sufficient condition** and is not the danger. MAC (`8794fa40`):
+at `(T, σ) = (50, 1/64)`, `|X|/|I_1^+| = 0.489 < 1/2` and the coherence
+`|X|/Σ|I_n^+|` drops to 0.242 (strongest interference on the scan).
+`G` does not fall: it **jumps**. Same neighbourhood, `σ = 1/64`:
+
+| `T` | `Re τ̄_X` | `G` |
+|---|---|---|
+| 45 | 0.632 | 2.68 |
+| 48 | 0.892 | 3.23 |
+| 50 | **1.408** | 3.03 |
+| 52 | 0.867 | 4.56 |
+| 55 | 0.916 | 3.74 |
+
+When interference cancels `X`, `X_t` is not cancelled in proportion, so
+`X_t/X` grows. The danger is not «`X` small» but «`X` small with `X_t`
+proportionally smaller» — a near-zero of `X` itself. Proshka's model
+arranges exactly that: `P(0) = −2/5 ≠ 0` and `P'(0) = 0`. Our rays at
+`T = 50` do the opposite. The compact certificate never used the
+pair-to-sum transfer: it computed `G` from the actual gamma rays.
 
 **Corrected closing arithmetic.** Same-cell, corner, coherent means:
 `0.676 · 2(1 − e^{-2·0.159}) = 0.676 · 0.544 = 0.368`. Conservative mix
@@ -405,11 +422,10 @@ replacements of the envelope.
 What is **proved** in §7.1–7.2: equal real `τ ≥ \log(8/7)/2` implies
 `G ≥ 1/4` on the whole domain, any `N`. Hole #1 is **pinned on a scan,
 not a continuum theorem**: the coherent mean stays ≥ 0.15910 on the
-MAC grid, with the two regimes handing over. The remaining analytic
-object is still `Re τ̄_X, Re τ̄_Y ≥ 0.07` for all `T, σ` (dominance of
-`I_1` at low `T`; `t_0` once the saddle exists) plus a bound on
-`(τ̄_X − τ̄_Y)|J|^2`. The retracted factor 0.72 / product 0.373 must
-not be reused.
+MAC grid, with the two regimes handing over. The retracted factor
+0.72 / product 0.373 must not be reused. The retracted scheme
+`|X| ≥ ½|I_1^+|` must not be reused: the remaining analytic object
+is (9.3), not a lower bound on `|X|`.
 
 ## 8. From `G ≥ 1/4` to RH
 
@@ -510,7 +526,22 @@ Prove `B_0 + Σ C_n ≥ 0` for the actual incomplete-gamma `I_n^±`,
 with the global `(k, α)` of (9.1), or equivalently (9.2). The proof
 must use the concrete `(n, σ, T)`-dependence of those rays. Finite
 `N ≤ 32` does not close the compact by itself: the model above
-already changes sign at `N = 2`. `M_+ > 0` is required for the
-strict `ℋ > 0` implication (if `M_+ = h_N = 0` the quarter holds
-and gives no sign). Independent review of the enclosure remains
-open. `PX_RH_CLAIM` not made.
+already changes sign at `N = 2`. The compact **certificate** is a
+direct `G`-count on those rays, not a transfer, and is untouched.
+
+The phase property to prove is not «`X` is not small». It is
+
+\[
+\text{`X` and `X_t` are not small together:}
+\quad
+\text{if } |X| \ll \sum |I_n^+|
+\text{ then } |X_t| \not\ll |X|.
+\tag{9.3}
+\]
+
+Equivalently, a near-cancellation of the plus-cluster does not occur
+at a critical point of that cluster (`Re(X_t/X)` stays large, as at
+`T = 50`). Proshka's model is the opposite arrangement (`P ≠ 0`,
+`P' = 0`). `M_+ > 0` is required for the strict `ℋ > 0` implication.
+Independent review of the enclosure remains open. `PX_RH_CLAIM` not
+made.

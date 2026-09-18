@@ -7521,3 +7521,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** prove B_0+Σ C_n ≥ 0 for the gamma rays with the global (k,α), using the concrete I_n(n,σ,T). Cheap discriminator: the mixed term 2 Re(Z_2 conj Z_1) on n=1,2 of the actual head at the corner — if it is ≥ −B_0 already, the phase is not the model's π. IF_A the first two gamma pairs have C_2>−B_0: hunt a positivity of the Gram of {Z_n} with the incomplete-gamma phases. IF_B C_2 < −B_0: the corner lives on mixed terms too, rewrite (19) before adding n. Prior 0.7 the gamma phases are not π. Enclosure review still open. No PX_RH_CLAIM.
 **Адреса:** MASS_GAP_TAIL §9; owner note with (1)–(20).
 **Чей вердикт и аргумент:** owner wrote the exact lift, the surplus split, and the counterexample; observer verified the numbers and the identity with our M₊. PX_RH_CLAIM not made.
+
+## 2026-09-18 — Retract «X not small»; the danger is X and X_t small together
+
+**Развилка:** MAC verified Proshka's counterexample in full and showed the Linux condition |X|≥½|I₁⁺| fails at (50, 1/64) while G jumps to 3.03 because Re τ̄_X = 1.408.
+**Выбрали:** retract that sufficient condition; record that the compact never used the transfer; next object is (9.3): X and X_t are not small together.
+**Почему:** interference can cancel X down to a quarter of the modulus sum; if X_t is not cancelled, X_t/X grows and G grows. Proshka's model is P≠0, P′=0. Ours at T=50 is the opposite. The transfer is dead; the certificate is not.
+**Что отвергли и почему:** proving |X| is large (wrong danger); treating the 4-ray model as a threat to the compact G-count (it never used the transfer).
+**Техника:** MAC scan at T=45,48,50,52,55; |X|/Σ|Iₙ⁺|=0.242 at (50, 1/64).
+**Следующий ход (мой выбор):** prove (9.3) for the incomplete-gamma plus-cluster — a cancellation of X is not a critical point of X. Cheap probe already done (T=50). Analytic input: ∂_σ X = X_t + iϑ X, so Re(X_t/X)=0 iff ∂_σ log|X| = 0; forbid a horizontal tangent of |X|(σ) off a zero of X. IF_A |X|(σ) has no critical point in (0,1/2] unless X=0: the Proshka arrangement is excluded and (19) can use a one-sided tilt. IF_B such a tangent exists: compute G there before rewriting. Prior 0.75 the gamma cluster has no P′=0 with P≠0. Enclosure review still open.
+**Адреса:** MASS_GAP_TAIL §7.3, §9.4; MAC 8794fa40.
+**Чей вердикт и аргумент:** MAC named the structural opposite of Proshka's model; observer retracts the |X|-large scheme. PX_RH_CLAIM not made.
