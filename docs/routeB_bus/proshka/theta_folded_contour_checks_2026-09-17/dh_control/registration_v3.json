@@ -85,6 +85,35 @@
       "falsifier": "relative deviation >= 0.05 at any of the 13 heights",
       "purpose": "test of the P_M3_6 diagnosis 'the linearisation is to blame': at N = N(gamma) the EM2 numerator matches d_N(rho) to 0.04-0.13 while the exact Newton step still misses by 0.06-0.20, so the residual should be the second-order term.",
       "mac_note_before_run": "reported alongside, not part of the judged criterion: (i) the same quadratic with the EXACT numerator d_N(rho) — the pure linearisation diagnostic (if this one lands below 0.05 and the EM2 version does not, the numerator is the limit, not the linearisation); (ii) both quadratics on the fixed-height set N in {10,...,150} at gamma = 40.9187. Root choice: the root of the quadratic with the smaller modulus; if the discriminant makes both roots comparable the one nearer delta_obs is recorded together with a flag."
+    },
+    {
+      "id": "P_M3_7a",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-18T04:42:47+00:00",
+      "aware_of_leak": "AMEND_LEAK_1 (Frobenius norms of both sides already known, 0.08% apart); this statement is about the spectrum of the difference, which is blind",
+      "statement": "W_primes - W_zeros(gamma <= gamma_max) is positive semidefinite up to the error of the prime side. Ground: every omitted zero is verified on the critical line and contributes a block conj(s) s^T >= 0, so the omitted tail is a sum of PSD blocks.",
+      "confidence": 0.8,
+      "falsifier": "a negative eigenvalue of the difference exceeding the prime-side error estimate",
+      "mac_note_before_run": "MAC will report lambda_min(W_primes - W_zeros) together with an explicit prime-side error bar; the verdict is PSD only if lambda_min >= -(error bar). Both matrices are hermitian by construction (checked: zero side exactly, prime side 5.5e-30)."
+    },
+    {
+      "id": "P_M3_7b",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-18T04:42:47+00:00",
+      "statement": "doubling the number of zeros 100 -> 200 drops the Frobenius norm of the difference by a factor 1.8-2.2 (tail sum 1/gamma^2 ~ log gamma/gamma); raising m_max 1e4 -> 1e6 changes the prime side by < 1e-6 relative (Lambda(m)/m^3 converges).",
+      "confidence": 0.7,
+      "falsifier": "factor outside [1.8, 2.2], or relative change >= 1e-6 in m_max",
+      "mac_note_before_run": "MAC flags a numerical concern registered BEFORE computing: in the tau-integral form (11) the integral int cos(tau log m) H(tau) dtau is a Fourier transform of H at frequency log m, whose true value decays doubly exponentially in log m (the tests (5) decay like exp(-a_n e^{2x})), while the integrand itself is O(1e3-1e6) on [-T_cut, T_cut]. The 5% change between m_max 8 and 32 seen in wn_hygiene.json is therefore suspected to be quadrature cancellation error, not a real arithmetic contribution. Before judging the m_max part MAC will implement the correlation form (9)/(10) (C_alpha beta(t), non-oscillatory) and cross-check the two forms against each other by Parseval at small m; the m_max part of this prediction is judged on the form that passes that cross-check."
+    },
+    {
+      "id": "P_M3_8",
+      "registered_by": "owner",
+      "registered_utc": "2026-09-18T04:42:47+00:00",
+      "statement": "rank W_N > 2, and the defect (21) against A_N(1/4 + 14i) satisfies ||W_N - A_N||_F >= 0.1 ||W_N||_F.",
+      "confidence": 0.95,
+      "protocol_note": "near-tautological, registered for the protocol",
+      "falsifier": "rank <= 2, or defect < 10% of ||W||_F",
+      "not_a_test": "n_-(W_N) = 0 is NOT_A_TEST: every zero used is on the line, so the truncated zero side is a sum of PSD blocks by construction."
     }
   ],
   "companion_without_prediction": "option-2 scan from the v2 closeout: frozen N0=20, theta0=theta(14), sigma=1/64, T = 14..414 step 0.05 (8001 points, dps 50: cancellation <= ~10 digits there); expected by the budget: no flip",
@@ -138,6 +167,12 @@
       "time_utc": "2026-09-18T00:42:33+00:00",
       "by": "MAC (self-disclosed)",
       "what": "The per-side hygiene run for W_N (wn_hygiene.json, N = 2, theta = theta(14), dps 25) produced the Frobenius norm of each side and therefore partial information about P_M3_7 before its statement was registered: zero side (13) 57295.0 at 2000 zeros, prime side (11) 57246.9 at m_max = 32, T_cut = 200 — 0.08% apart. No matrix difference was computed and no defect (21) was computed. The owner must take this into account when phrasing P_M3_7: the comparison at the level of norms is no longer blind; what remains blind is the entrywise difference and its behaviour as m_max and the number of zeros grow. The compare mode of check_wn.py is guarded and refuses to run without an explicit flag stating that the statements are registered."
+    },
+    {
+      "id": "REG_ADD_7",
+      "time_utc": "2026-09-18T04:42:47+00:00",
+      "by": "owner",
+      "what": "P_M3_7a, P_M3_7b, P_M3_8 registered with AMEND_LEAK_1 in view (the norms are no longer blind; the statements are about the spectrum of the difference, its scaling in the number of zeros and in m_max, and the rank/defect). Order of work: P_M3_7a/b at N = 2 first (only the zero side needs to grow to 200 zeros), then parallelise the prime side over matrix entries and do N = 4; N >= 6 only if 7a holds at N = 4."
     }
   ]
 }

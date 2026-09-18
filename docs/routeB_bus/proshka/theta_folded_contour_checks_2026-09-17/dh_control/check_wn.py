@@ -81,6 +81,106 @@ def tau_integral(a, b, theta, weight, T_cut, splits):
     f = lambda t: weight(t)*H_entry(a, b, t, theta)
     return mp.quad(f, splits)
 
+# ---------------------------------------------------------------- prime side via the correlation form (9)/(10)
+# C_ab(t) = int_{eps x > 0, eta (x-t) > 0} conj(phi_n(eps x + i eps theta)) phi_l(eta (x-t) + i eta theta) dx
+# G = C(0);  D_ab = int_0^inf A_0(t) [2G - C(t) - C(-t)] dt,  A_0(t) = e^{-t/2}/(1 - e^{-2t});  c_A = gamma_E + log(8 pi) + pi/2
+# (9)  W_ab = D_ab - c_A G_ab - sum_m Lambda(m)/sqrt(m) [C_ab(log m) + C_ab(-log m)] + conj(b_+,a) b_-,b + conj(b_-,a) b_+,b
+# Parseval: (1/pi) int H_ab(tau) cos(tau t) dtau = C_ab(t) + C_ab(-t)   <- cross-check of the two forms
+CUT = 250.0   # |phi_n(z)| is below e^{-CUT} once a_n e^{2 Re z} > CUT
+
+def C_corr(a, b, t, theta):
+    (n, eps), (l, eta) = a, b
+    t = mp.mpf(t)
+    lo_a, hi_a = (mp.mpf(0), mp.inf) if eps > 0 else (-mp.inf, mp.mpf(0))
+    lo_b, hi_b = (t, mp.inf) if eta > 0 else (-mp.inf, t)
+    lo = max(lo_a, lo_b); hi = min(hi_a, hi_b)
+    if lo >= hi: return mp.mpc(0)
+    # the integrand decays doubly exponentially where either argument is large positive; cut there
+    an, al = mp.pi*n*n, mp.pi*l*l
+    if hi == mp.inf: hi = max(lo, (t if eta > 0 else mp.mpf(0))) + mp.log(CUT/min(an, al))/2 + 2
+    if lo == -mp.inf: lo = min(hi, (t if eta < 0 else mp.mpf(0))) - (mp.log(CUT/min(an, al))/2 + 2)
+    if lo >= hi: return mp.mpc(0)
+    f = lambda x: mp.conj(cc.source_atom(eps*x + 1j*eps*theta, n))*cc.source_atom(eta*(x - t) + 1j*eta*theta, l)
+    k = 12; pts = [lo + (hi - lo)*i/k for i in range(k+1)]
+    return mp.quad(f, pts)
+
+def A0(t): return mp.exp(-t/2)/(1 - mp.exp(-2*t))
+
+def D_energy(a, b, theta, G, Tmax=40.0):
+    """int_0^inf A_0(t)[2G - C(t) - C(-t)] dt; the bracket is O(t) at 0 against A_0 ~ 1/(2t), integrable."""
+    f = lambda t: A0(t)*(2*G - C_corr(a, b, t, theta) - C_corr(a, b, -t, theta))
+    pts = [mp.mpf(0), mp.mpf("0.01"), mp.mpf("0.1"), mp.mpf(1), mp.mpf(4), mp.mpf(12), mp.mpf(Tmax)]
+    return mp.quad(f, pts)
+
+def _entry_hybrid(task):
+    """One entry of (11)/(9) in the hybrid form: main term by the Omega tau-integral (no cancellation there, the
+    weight is smooth and positive-ish), arithmetic sum by the correlations C(+-log m) (no cancellation, doubly
+    exponential decay in log m), pole terms exact. The two forms of the arithmetic term agree by Parseval
+    (checked to 1e-5..1e-8), so the hybrid is the cheap route, not a different object."""
+    mp.mp.dps = task["dps"]; cc.ADAPTIVE_R = 0.0
+    theta = mp.mpf(task["theta"]); a = tuple(task["a"]); b = tuple(task["b"]); T_cut = task["T_cut"]
+    splits = [-T_cut + 2*T_cut*k/task["n_split"] for k in range(task["n_split"]+1)]
+    main = tau_integral(a, b, theta, Omega, T_cut, splits)/(2*mp.pi)
+    pole = pole_entry(a, b, theta)
+    terms = {}
+    for m, L in sorted(von_mangoldt_support(task["m_max"]).items()):
+        lm = mp.log(m)
+        terms[m] = L/mp.sqrt(m)*(C_corr(a, b, lm, theta) + C_corr(a, b, -lm, theta))
+    return {"a": list(a), "b": list(b), "main": mp.nstr(main, 25), "pole": mp.nstr(pole, 25),
+            "terms": {str(m): mp.nstr(v, 25) for m, v in terms.items()}}
+
+def W_prime_hybrid(N, theta, m_cuts, T_cut, n_split, dps, workers, progress=True):
+    idx = index(N); d = len(idx); m_cuts = sorted(m_cuts)
+    tasks = [{"a": list(a), "b": list(b), "theta": mp.nstr(theta, dps+5), "T_cut": T_cut, "n_split": n_split,
+              "dps": dps, "m_max": m_cuts[-1]} for a in idx for b in idx]
+    res = {}; t0 = time.time(); total = len(tasks)
+    from multiprocessing import Pool
+    with Pool(workers) as pool:
+        for i, r in enumerate(pool.imap_unordered(_entry_hybrid, tasks, chunksize=1), 1):
+            res[(tuple(r["a"]), tuple(r["b"]))] = r
+            if progress:
+                el = time.time()-t0; eta_ = el/i*(total-i)
+                print(f"[{i}/{total}] {i*100//total}% | ETA {int(eta_//60)}m{int(eta_%60):02d}s | entry {tuple(r['a'])}x{tuple(r['b'])}", flush=True)
+    Ws = {m: [[mp.mpc(0) for _ in range(d)] for _ in range(d)] for m in m_cuts}
+    decay = {}
+    for i, a in enumerate(idx):
+        for j, b in enumerate(idx):
+            r = res[(a, b)]; base = mp.mpc(r["main"]) + mp.mpc(r["pole"]); run = mp.mpc(0)
+            ms = sorted(int(k) for k in r["terms"])
+            for cut in m_cuts:
+                run = mp.fsum(mp.mpc(r["terms"][str(m)]) for m in ms if m <= cut)
+                Ws[cut][i][j] = base - run
+            if (a, b) == (idx[0], idx[1]):
+                decay = {str(m): mp.nstr(abs(mp.mpc(r["terms"][str(m)])), 5) for m in ms}
+    return Ws, decay
+
+def W_prime_side_corr(N, theta, m_cuts, progress=True):
+    """(9) with the correlation integrals; returns {m_cut: matrix}. No oscillatory tau-integration."""
+    idx = index(N); d = len(idx); m_cuts = sorted(m_cuts)
+    c_A = mp.euler + mp.log(8*mp.pi) + mp.pi/2
+    lam = von_mangoldt_support(m_cuts[-1])
+    Ws = {m: [[mp.mpc(0) for _ in range(d)] for _ in range(d)] for m in m_cuts}
+    t0 = time.time(); done = 0; total = d*d
+    for i, a in enumerate(idx):
+        for j, b in enumerate(idx):
+            G = C_corr(a, b, 0, theta); D = D_energy(a, b, theta, G); pole = pole_entry(a, b, theta)
+            base = D - c_A*G + pole
+            run = mp.mpc(0); it = iter(m_cuts); cut = next(it)
+            for m in sorted(lam):
+                while cut is not None and m > cut:
+                    Ws[cut][i][j] = base - run
+                    cut = next(it, None)
+                if cut is None: break
+                lm = mp.log(m)
+                run += lam[m]/mp.sqrt(m)*(C_corr(a, b, lm, theta) + C_corr(a, b, -lm, theta))
+            while cut is not None:
+                Ws[cut][i][j] = base - run; cut = next(it, None)
+            done += 1
+            if progress:
+                el = time.time()-t0; eta_ = el/done*(total-done)
+                print(f"[{done}/{total}] {done*100//total}% | ETA {int(eta_//60)}m{int(eta_%60):02d}s | corr entry {a}x{b}", flush=True)
+    return Ws
+
 def von_mangoldt_support(m_max):
     """{m: Lambda(m)} for 2 <= m <= m_max (prime powers only)."""
     lam = {}
@@ -189,9 +289,88 @@ def hygiene(a):
     print(json.dumps(out["zero_side_convergence"], indent=1)); print(json.dumps(out["prime_side_convergence"], indent=1))
     print(json.dumps(out["prime_side_tau_cut_stability"], indent=1)); print(f"written {a.out}", flush=True)
 
+def eig_hermitian(W):
+    """Eigenvalues of the hermitian part, ascending (mpmath eigsy on the 2d x 2d real embedding is avoided:
+    use mp.eighe on the complex hermitian matrix)."""
+    d = len(W)
+    A = mp.matrix(d, d)
+    for i in range(d):
+        for j in range(d): A[i, j] = (W[i][j] + mp.conj(W[j][i]))/2
+    E, _ = mp.eighe(A)
+    return sorted([mp.re(E[i]) for i in range(d)])
+
+def A_head(N, theta, p0):
+    """HEAD (1.2): A_N = 2(conj(u) v^T + conj(v) u^T), u = r(p0), v = r'(p0), in the same ray index order as index(N)."""
+    idx = index(N); u = []; v = []
+    for (n, eps) in idx:
+        f = (lambda x, n=n, eps=eps: cc.ray(n, x, theta) if eps > 0 else cc.ray(n, -x, -theta))
+        dd = list(mp.diffs(f, p0, 1)); u.append(dd[0]); v.append(dd[1])
+    d = len(idx)
+    return [[2*(mp.conj(u[i])*v[j] + mp.conj(v[i])*u[j]) for j in range(d)] for i in range(d)]
+
+def compare(a):
+    mp.mp.dps = a.dps; cc.ADAPTIVE_R = 0.0
+    theta, c, M, _ = cc.cutoff(a.T); theta = mp.mpf(theta); N = a.N
+    out = {"meta": {"dps": a.dps, "N": N, "theta": mp.nstr(theta, 20), "T_for_theta": a.T, "m_max": a.m_max,
+                    "T_cut": a.T_cut, "n_split": a.n_split, "zero_counts": [100, 200, a.zeros],
+                    "prime_side_form": "hybrid: Omega tau-integral for the main term, correlations C(+-log m) for the arithmetic sum (the two forms of the arithmetic term agree by Parseval to 1e-5..1e-8)",
+                    "registered": ["P_M3_7a", "P_M3_7b", "P_M3_8"], "leak": "AMEND_LEAK_1"}}
+    t0 = time.time()
+    cuts = sorted({8, 32, a.m_max})
+    Ws, decay = W_prime_hybrid(N, theta, cuts, a.T_cut, a.n_split, a.dps, a.workers)
+    Wp = Ws[a.m_max]
+    out["prime_side"] = {"frobenius": mp.nstr(frob(Wp), 12), "hermiticity_defect": mp.nstr(herm_defect(Wp), 4),
+                         "m_convergence": [{"m_max": m, "frobenius": mp.nstr(frob(Ws[m]), 12),
+                                            "rel_change": mp.nstr(diff_frob(Ws[m], Ws[cuts[k-1]])/frob(Ws[m]), 5) if k else None}
+                                           for k, m in enumerate(cuts)],
+                         "term_magnitude_by_m_sample_entry": decay}
+    gam = load_zeros(a.zeros)
+    rows = []
+    counts = [k for k in (100, 200, 400, 800, a.zeros) if k <= a.zeros]
+    out["meta"]["zero_counts"] = counts
+    out["meta"]["truncation_matching"] = ("the prime side integrates tau over [-T_cut, T_cut]; the zero side over gamma <= gamma_cut. "
+        "A comparison is only meaningful when T_cut >> gamma_cut, otherwise the zero side carries spectrum the prime side has cut away. "
+        f"Here T_cut = {a.T_cut}, gamma_cut at the largest zero count = {mp.nstr(gam[counts[-1]-1], 8)}.")
+    for k in counts:
+        Wz = W_zero_side(N, theta, gam[:k])
+        D = [[Wp[i][j] - Wz[i][j] for j in range(len(Wz))] for i in range(len(Wz))]
+        ev = eig_hermitian(D)
+        rows.append({"zeros": k, "gamma_cut": mp.nstr(gam[k-1], 10), "frob_W_zeros": mp.nstr(frob(Wz), 12),
+                     "frob_difference": mp.nstr(frob(D), 12), "lambda_min": mp.nstr(ev[0], 8), "lambda_max": mp.nstr(ev[-1], 8),
+                     "eigenvalues": [mp.nstr(x, 8) for x in ev]})
+    out["difference"] = {"rows": rows, "valid_rows": [r["zeros"] for r in rows if mp.mpf(r["gamma_cut"]) < a.T_cut/3],
+                         "note": "a row is a valid test only while gamma_cut is well inside the prime-side tau cutoff"}
+    r100 = [r for r in rows if r["zeros"] == 100][0]; r200 = [r for r in rows if r["zeros"] == 200][0]
+    ratio = mp.mpf(r100["frob_difference"])/mp.mpf(r200["frob_difference"])
+    ratios = [{"from": rows[i]["zeros"], "to": rows[i+1]["zeros"], "ratio": mp.nstr(mp.mpf(rows[i]["frob_difference"])/mp.mpf(rows[i+1]["frob_difference"]), 6),
+               "both_valid": bool(mp.mpf(rows[i+1]["gamma_cut"]) < a.T_cut/3)} for i in range(len(rows)-1)]
+    out["P_M3_7b"] = {"frob_ratio_100_over_200": mp.nstr(ratio, 6), "in_1.8_2.2": bool(mp.mpf("1.8") <= ratio <= mp.mpf("2.2")),
+                      "all_consecutive_ratios": ratios,
+                      "m_tail_argument": "terms of the arithmetic sum decay doubly exponentially in log m (see term_magnitude_by_m_sample_entry): the m_max 1e4 -> 1e6 part is judged by the measured decay, not by summing 78498 prime powers"}
+    last = rows[-1]
+    out["P_M3_7a"] = {"lambda_min_at_max_zeros": last["lambda_min"], "frob_difference": last["frob_difference"],
+                      "prime_side_error_bar": mp.nstr(mp.mpf(out["prime_side"]["m_convergence"][-1]["rel_change"] or 0)*frob(Wp), 5),
+                      "verdict_note": "PSD iff lambda_min >= -(prime-side error bar)"}
+    # P_M3_8: rank and defect against A_N(1/4 + 14i)
+    evW = eig_hermitian(Wp); nrm = frob(Wp)
+    thr = [mp.mpf(10)**-k for k in (6, 8, 10)]
+    p0 = mp.mpf(1)/4 + 1j*mp.mpf(14)
+    A = A_head(N, theta, p0)
+    out["P_M3_8"] = {"eigenvalues_W": [mp.nstr(x, 8) for x in evW],
+                     "rank_above_rel_threshold": {str(t): sum(1 for x in evW if abs(x) > t*abs(evW[-1])) for t in thr},
+                     "n_negative": sum(1 for x in evW if x < 0), "n_positive": sum(1 for x in evW if x > 0),
+                     "defect_frob": mp.nstr(diff_frob(Wp, A), 12), "frob_W": mp.nstr(nrm, 12), "frob_A": mp.nstr(frob(A), 12),
+                     "defect_over_frob_W": mp.nstr(diff_frob(Wp, A)/nrm, 6), "p0": "1/4 + 14i",
+                     "n_negative_is_NOT_A_TEST": "every zero used is on the line, so the truncated zero side is PSD by construction"}
+    out["meta"]["runtime_seconds"] = round(time.time()-t0, 1)
+    Path(a.out).write_text(json.dumps(out, indent=1))
+    print(json.dumps({k: v for k, v in out.items() if k != "meta"}, indent=1)[:4000])
+    print(f"written {a.out}", flush=True)
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--hygiene", action="store_true"); ap.add_argument("--compare", action="store_true")
+    ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--i-have-registered", action="store_true", help="required for --compare: P_M3_7 / P_M3_8 statements are registered in registration_v3.json")
     ap.add_argument("--N", type=int, default=4); ap.add_argument("--dps", type=int, default=30); ap.add_argument("--T", type=float, default=14.0)
     ap.add_argument("--zeros", type=int, default=2000); ap.add_argument("--m-max", type=int, default=64)
@@ -201,4 +380,5 @@ if __name__ == "__main__":
     if a.compare and not a.i_have_registered:
         raise SystemExit("refused: (11)-vs-(13) and the defect (21) are the owner's P_M3_7 / P_M3_8; register the statements first, then pass --i-have-registered")
     if a.hygiene: hygiene(a)
+    elif a.compare: compare(a)
     else: ap.print_help()

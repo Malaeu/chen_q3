@@ -1,0 +1,160 @@
+{
+ "meta": {
+  "dps": 25,
+  "N": 2,
+  "theta": "0.71873149673078164295",
+  "T_for_theta": 14.0,
+  "m_max": 100,
+  "T_cut": 400.0,
+  "n_split": 16,
+  "zero_counts": [
+   100,
+   200,
+   2000
+  ],
+  "prime_side_form": "hybrid: Omega tau-integral for the main term, correlations C(+-log m) for the arithmetic sum (the two forms of the arithmetic term agree by Parseval to 1e-5..1e-8)",
+  "registered": [
+   "P_M3_7a",
+   "P_M3_7b",
+   "P_M3_8"
+  ],
+  "leak": "AMEND_LEAK_1",
+  "runtime_seconds": 32.9
+ },
+ "prime_side": {
+  "frobenius": "57270.3714176",
+  "hermiticity_defect": "1.059e-26",
+  "m_convergence": [
+   {
+    "m_max": 8,
+    "frobenius": "55872.7579864",
+    "rel_change": null
+   },
+   {
+    "m_max": 32,
+    "frobenius": "57270.3714179",
+    "rel_change": "0.054083"
+   },
+   {
+    "m_max": 100,
+    "frobenius": "57270.3714176",
+    "rel_change": "8.5816e-10"
+   }
+  ],
+  "term_magnitude_by_m_sample_entry": {
+   "2": "1372.3",
+   "3": "3153.2",
+   "4": "2419.3",
+   "5": "5307.6",
+   "7": "3926.1",
+   "8": "968.86",
+   "9": "1006.7",
+   "11": "835.64",
+   "13": "302.11",
+   "16": "13.798",
+   "17": "30.256",
+   "19": "8.7367",
+   "23": "0.64333",
+   "25": "0.083213",
+   "27": "0.013995",
+   "29": "0.010367",
+   "31": "0.0025126",
+   "32": "0.00024586",
+   "37": "3.2703e-5",
+   "41": "1.7057e-6",
+   "43": "3.8404e-7",
+   "47": "1.9002e-8",
+   "49": "2.0909e-9",
+   "53": "1.9877e-10",
+   "59": "1.9793e-12",
+   "61": "4.2193e-13",
+   "64": "6.8687e-15",
+   "67": "3.9919e-15",
+   "71": "1.755e-16",
+   "73": "3.663e-17",
+   "79": "3.276e-19",
+   "81": "1.6915e-20",
+   "83": "1.3942e-20",
+   "89": "1.2042e-22",
+   "97": "2.0787e-25"
+  }
+ },
+ "difference": {
+  "rows": [
+   {
+    "zeros": 100,
+    "gamma_cut": "236.5242297",
+    "frob_W_zeros": "57253.9487105",
+    "frob_difference": "63.3004053061",
+    "lambda_min": "1.6864157e-5",
+    "lambda_max": "63.300404",
+    "eigenvalues": [
+     "1.6864157e-5",
+     "2.3741998e-5",
+     "0.012568044",
+     "63.300404"
+    ]
+   },
+   {
+    "zeros": 200,
+    "gamma_cut": "396.3818542",
+    "frob_W_zeros": "57270.2129024",
+    "frob_difference": "0.60937263433",
+    "lambda_min": "2.4775924e-7",
+    "lambda_max": "0.60937263",
+    "eigenvalues": [
+     "2.4775924e-7",
+     "2.8189425e-6",
+     "6.3604534e-5",
+     "0.60937263"
+    ]
+   },
+   {
+    "zeros": 2000,
+    "gamma_cut": "2515.286483",
+    "frob_W_zeros": "57295.0248241",
+    "frob_difference": "94.4426354033",
+    "lambda_min": "-94.442635",
+    "lambda_max": "2.8067541e-6",
+    "eigenvalues": [
+     "-94.442635",
+     "-0.0038341437",
+     "-1.0750315e-6",
+     "2.8067541e-6"
+    ]
+   }
+  ]
+ },
+ "P_M3_7b": {
+  "frob_ratio_100_over_200": "103.878",
+  "in_1.8_2.2": false,
+  "m_tail_argument": "terms of the arithmetic sum decay doubly exponentially in log m (see term_magnitude_by_m_sample_entry): the m_max 1e4 -> 1e6 part is judged by the measured decay, not by summing 78498 prime powers"
+ },
+ "P_M3_7a": {
+  "lambda_min_at_max_zeros": "-94.442635",
+  "frob_difference": "94.4426354033",
+  "prime_side_error_bar": "4.9147e-5",
+  "verdict_note": "PSD iff lambda_min >= -(prime-side error bar)"
+ },
+ "P_M3_8": {
+  "eigenvalues_W": [
+   "660.70305",
+   "13602.24",
+   "22435.652",
+   "50902.647"
+  ],
+  "rank_above_rel_threshold": {
+   "0.000001": 4,
+   "1.0e-8": 4,
+   "1.0e-10": 4
+  },
+  "n_negative": 0,
+  "n_positive": 4,
+  "defect_frob": "57270.3714163",
+  "frob_W": "57270.3714176",
+  "frob_A": "8.67584547611e-6",
+  "defect_over_frob_W": "1.0",
+  "p0": "1/4 + 14i",
+  "n_negative_is_NOT_A_TEST": "every zero used is on the line, so the truncated zero side is PSD by construction"
+ }
+}

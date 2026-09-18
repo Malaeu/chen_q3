@@ -1,5 +1,5 @@
 {
- "time_utc": "2026-09-18T00:42:33+00:00",
+ "time_utc": "2026-09-18T05:42:49+00:00",
  "task_id": "MAC_A3_LONG_FLIP_AND_DN_SHADOWS_2026-09-18",
  "fates": {
   "P_M3_1": "CONFIRMED: first sign change of the frozen head at T_flip = 2794.4 (Delta_T = 2780.4), inside [2500, 4000]; confirmed by precision doubling: [True, True]",

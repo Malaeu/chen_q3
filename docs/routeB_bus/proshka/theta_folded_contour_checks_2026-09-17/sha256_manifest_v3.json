@@ -1,7 +1,7 @@
 {
- "MAC_A3_LONG_FLIP_SHADOWS_PAIR_DELTA_2026-09-18.md": "d747ea432dcd84b834b575ef8733731cadaa987aa801fa4ebf2ba68fd5226ceb",
- "dh_control/registration_v3.json": "bb0dbcf67cf4549e052e1588acabd9f3d9df61b3d4f8812bea3e2438ae2c588d",
- "dh_control/closeout_v3.json": "254ba465c6c713e54eb38987a50bd799e23e4233214ec8b2db1ed6835ff3ca08",
+ "MAC_A3_LONG_FLIP_SHADOWS_PAIR_DELTA_2026-09-18.md": "b151618e16b6629406f1570205c597cb598c16040112ecce8c0c952a4dad2ba3",
+ "dh_control/registration_v3.json": "a1bcc32a5d389a3b3cb687bc754a3795de66f78c65212b6b8322d309e414f60d",
+ "dh_control/closeout_v3.json": "2fafafefc17737fe6f9f753a9c742139626339387620c5fa2abce26bfd8abee8",
  "dh_control/analyze_a3.py": "dd73e8f23362f60161c03912b38a2f48a0f0e873e4dd8b117f702bd55789e26c",
  "dh_control/check_pair_delta.py": "ff253ae45f63068c6a46696330ce9f7bd17b2a3bf39e65fb54906f90d30d0eb2",
  "dh_control/check_jn_dirichlet.py": "c4a1effe8bf9b3c971a43186338de8efea46ca32fb58f759b3fcc366f251ffa9",
@@ -23,7 +23,16 @@
  "dh_control/weil_crosswalk_checks.json": "5cc3b07e3b01463895461dcb1ae0739ac8982ee102ddb8023eb4611f8d0433b0",
  "dh_control/long_flip_T14.json": "2f5a83c2e4572439245138dbf5b8243a0525fd7cecb7f05569d07475e752fe25",
  "dh_control/logs/long_flip_T14.log": "e93c388ec600d94d38f25be54d586c1f2c02625a88a871eea95118096a72b6f9",
- "dh_control/check_wn.py": "d55f44cc3994df8dafcb35bd1fe215f287d54a167bf24bc2b28ec96b1c9e5d79",
+ "dh_control/check_wn.py": "7d0fda0c6dc6f51c6458c205e529092a0aacd58e96bdb4ba6c77f65df3b3f6a9",
  "dh_control/wn_hygiene.json": "4ce8b374acaa92f27331fa6047b13136d9a09fa5d0d549050931593f368f8ff6",
- "dh_control/logs/wn_hygiene.log": "f98d9736cefa88396a0feb874539599520d632be52dba69fda17ef7e8670e38e"
+ "dh_control/logs/wn_hygiene.log": "f98d9736cefa88396a0feb874539599520d632be52dba69fda17ef7e8670e38e",
+ "dh_control/wn_compare_N2.json": "fbbcf2cbcf408d51e48ea790b39532a6ea4d511a491856ff2dc811cbc8fc2c0c",
+ "dh_control/wn_compare_N2_Tcut1500.json": "4b29621519ce384c50882220c660b496d48c8f3f848b698c766593c1ba9258d4",
+ "dh_control/wn_compare_N2_Tcut4000.json": "b626ae648bc18a29103a1ae969c1e9661f33691e5116126bba35c943de838895",
+ "dh_control/wn_compare_N2_Tcut8000.json": "a46e5bb0a6bf3fe8da446d4d32b608f15f82c0b92e821592fdca31ab69b28004",
+ "dh_control/wn_compare_N4.json": "7fd4ef6f5b8ae985b7697011800ed220d05a13a2d966f9597864976f24a273c1",
+ "dh_control/wn_compare_N4_Tcut8000.json": "74ae4fb3a754ad2bd95be0f267657f8119c172d05e11e6d9ed3fd5bb7fe2e7e8",
+ "dh_control/wn_compare_N4_dense.json": "55de7f5aa5999867e8688cc49b3fa1d5d6e5438b7718fdb404ee89fed0590b99",
+ "dh_control/logs/main_term_check.log": "0ab1a804b5fde891160f7377da90b39529fa585b8c207410afc85bc27094ddfb",
+ "dh_control/logs/wn_compare_N4.log": "18ed6e0e3cf7ef12adf3bc2037838621f8f9537c292d5c25f387694ba40c3666"
 }
