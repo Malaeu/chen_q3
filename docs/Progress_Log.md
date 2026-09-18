@@ -7499,3 +7499,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** lower bound Re τ̄_X, Re τ̄_Y ≥ 0.07 on the continuum. Compact T≤30: n=1 modulus dominance (|I₁|/rest ≥ 2). T>30: per-ray lemma plus a no-cancellation clause (if |X|<(1/2)|I₁| we are near a zero of X and G is the large 4τ_rms case). IF_A both means stay ≥ 0.07: G≥1/4 is a theorem in the equal-τ model and a 1/3-error away in samples. IF_B the coherent mean dips: write the error (τ̄_X-τ̄_Y)|J|²/2 and bound it. Then independent review of the enclosure. Prior 0.8 that the means stay above 0.07. No PX_RH_CLAIM.
 **Адреса:** MASS_GAP_TAIL_T30_2026-09-18.md §7–8.
 **Чей вердикт и аргумент:** owner ordered the RH path; observer proved the equal-τ 2N identities. Enclosure review PENDING. PX_RH_CLAIM not made.
+
+## 2026-09-18 — Retract 0.72/0.373; hole #1 pinned at 0.15910 on the MAC scan
+
+**Развилка:** MAC verified the lift in arb (0.17 % at the corner on varying τ) and corrected the 0.72 factor; scanned coherent means on T∈[√20,80].
+**Выбрали:** accept the correction; replace 0.72/0.373 by 0.676/0.636 and 0.368/0.347; record the scan (min 0.15910 at the corner, relay of dominance vs t_0). Do not claim the continuum.
+**Почему:** 0.72 mixed per-ray τ_rms into a formula that uses coherent means. Same-cell product is 0.368; MAC's conservative mix is 0.347; both still above 1/4. The scan has no gap between low-T dominance and high-T t_0.
+**Что отвергли и почему:** keeping 0.72 (wrong object); treating the scan as a continuum proof of Re τ̄ ≥ 0.07 (it is a grid); PX_RH_CLAIM.
+**Техника:** MAC arb vs Linux table; identity M₊/(4 τ̄_X |X|²)=0.9983 at the corner.
+**Следующий ход (мой выбор):** analytic lower bound on Re τ̄_X at T≤6 (n=1 atom, no saddle, dominance ≥ 8) and the handover to t_0 for T>6. Enclosure independent review in parallel. Prior 0.85 the means stay ≥ 0.15. No judge batch.
+**Адреса:** MASS_GAP_TAIL §7.3 (corrected); PROSHKA_QUEUE lift+MAC check (18187339).
+**Чей вердикт и аргумент:** MAC caught the 0.72 mix-up and pinned hole #1 numerically; observer retracts 0.72/0.373. PX_RH_CLAIM not made.

@@ -365,47 +365,52 @@ When `τ̄_X = τ̄_Y = τ_*`, this is (7.1). The error is
 `(τ̄_X − τ̄_Y)|J|^2/2`. On `σ = 0`, conjugacy forces `τ̄_Y = \overline{τ̄_X}`
 and the error is purely imaginary, hence does not affect `h_N`.
 
-Numerically (diffs of (2.5), matching arb `τ`):
+Linux table (diffs of (2.5)) agrees with MAC arb to 3–4 digits
+(`18187339`). Last column of the old table used per-ray `τ_rms`; the
+formula of this subsection uses the coherent means. MAC correction:
+`G/G_{2ray}` on those means is **0.676 at the corner** and **0.636 at
+`(√20, 1/64)`**, not 0.72 (that 0.72 is `G` over the per-ray-`τ_rms`
+model). Identity `M_+ = 4 τ̄_X |X|^2` on the real varying `τ`: ratio
+**0.9983 at the corner** (0.17 %), and 1.0806 / 0.9092 / 1.0314 / 0.8975
+at the other four cells — the equal-`τ` assumption costs almost nothing
+where the constant matters.
 
-| `T` | `σ` | `Re τ̄_X` | `Re τ̄_Y` | `τ_{\mathrm{rms}}` | `G` | `(1-e^{-4τ_{\mathrm{rms}}σ})/σ` |
-|---|---|---|---|---|---|---|
-| √20 | 1/2 | 0.167 | 0.159 | 0.150 | 0.376 | 0.518 |
-| √20 | 1/64 | 0.163 | 0.163 | 0.149 | 0.412 | 0.594 |
-| 14.75 | 1/4 | — | — | 0.394 | 1.240 | 1.303 |
-| 30 | 1/2 | 0.712 | 0.536 | 0.711 | 1.402 | 1.517 |
-| 80 | 1/2 | 0.859 | 0.605 | 1.063 | 1.615 | 1.761 |
+| `T` | `σ` | `Re τ̄_X` (arb) | `Re τ̄_Y` | `G` (arb) | `G/G_{2ray}(τ̄)` |
+|---|---|---|---|---|---|
+| √20 | 1/2 | 0.1666 | 0.1591 | 0.3759 | **0.676** |
+| √20 | 1/64 | 0.1628 | 0.1626 | 0.4116 | **0.636** |
+| 30 | 1/2 | 0.7116 | 0.5364 | 1.4020 | 0.924 |
+| 80 | 1/2 | 0.8591 | 0.6053 | 1.6147 | 0.917 |
 
-At every cell `Re τ̄_X, Re τ̄_Y ≥ 0.15 > 0.067` and
-`G ≥ 0.72 · (1-e^{-4τ_{\mathrm{rms}}σ})/σ`. The corner is the minimum,
-as predicted: no interior saddle for `n = 1` when `T < 2π \sin 2ϑ ≈ 6`.
+Hole #1, MAC scan (`T` from √20 to 80, step 0.25 at the bottom,
+`σ ∈ {1/64, 1/2}`): `min(Re τ̄_X, Re τ̄_Y)` bottoms at **0.15910** at
+the corner `(√20, 1/2)`, factor 2.27 over the 0.07 threshold, and
+**grows** with `T`: 0.159 → 0.196 (`T = 5.97`) → 0.236 (8) → 0.268 (10)
+→ 0.349 (14.75) → 0.637 (30) → 0.727 (80). First-ray dominance
+`|I_1^+|/Σ_{n≥2}|I_n^+|` falls the other way: 8.3, 6.2, 5.4, 4.5, 2.0,
+1.02. No gap between regimes: where dominance is strong the mean is
+`τ_1 ≈ 0.16`; where it fails at `T ≈ 80` the mean is already 0.86.
 
-**Continuum threshold.** If `Re τ̄_X(s), Re τ̄_Y(s) ≥ 1/10` for all
-`s ∈ [0, σ]` and the relative error of (7.1) versus the varying-`τ`
-formula stays `≤ 1/3` (samples: `1 − G/G_{2ray} ∈ [0.05, 0.31]`), then
+The scheme «if `|X| ≥ ½|I_1^+|` then `τ̄_X` stays near `τ_1`» holds at
+the corner (dominance 13). It breaks at `T ≈ 80` (dominance 1), where
+the 0.07 threshold is already irrelevant.
 
-\[
-G \ \ge\ \tfrac23 · 2\bigl(1-e^{-1/5}\bigr)
-  = \tfrac43\bigl(1-e^{-0.2}\bigr)
-  > 0.24,
-\]
-
-which is short of `1/4` by `0.01` if one takes `τ_* = 1/10` and error `1/3`.
-With the measured corner values `τ_* = 0.15` and error `0.28`:
-
-\[
-G \ \ge\ 0.72 · 2(1-e^{-0.3}) = 0.72 · 0.518 = 0.373,
-\]
-
-matching the arb envelope `0.3759`.
+**Corrected closing arithmetic.** Same-cell, corner, coherent means:
+`0.676 · 2(1 − e^{-2·0.159}) = 0.676 · 0.544 = 0.368`. Conservative mix
+of the worse ratio 0.636 with the corner `G_{2ray}`: **0.347**. Both
+above `1/4`; the gap is thinner than the retracted 0.373 (which used
+per-ray `τ_rms = 0.150` and factor 0.72). The arb envelope remains
+0.3759 — the 0.347/0.368 are lower bounds from the model, not
+replacements of the envelope.
 
 What is **proved** in §7.1–7.2: equal real `τ ≥ \log(8/7)/2` implies
-`G ≥ 1/4` on the whole domain, any `N`. What remains to turn this into
-a continuum theorem with varying `τ` is a lower bound
-`Re τ̄_X, Re τ̄_Y ≥ 0.07` (coherent means, not just per-ray `τ_n`) and
-a bound on `(τ̄_X − τ̄_Y)|J|^2`. The per-ray lemma already gives
-`τ_n` for bulk `n` at `T > 30`; the coherent mean is the remaining
-object. At `T ∈ [√20, 6]` there is no saddle — `τ̄` is the mean `t` of
-the `n = 1` atom against a monotone phase, and the samples sit at `0.16`.
+`G ≥ 1/4` on the whole domain, any `N`. Hole #1 is **pinned on a scan,
+not a continuum theorem**: the coherent mean stays ≥ 0.15910 on the
+MAC grid, with the two regimes handing over. The remaining analytic
+object is still `Re τ̄_X, Re τ̄_Y ≥ 0.07` for all `T, σ` (dominance of
+`I_1` at low `T`; `t_0` once the saddle exists) plus a bound on
+`(τ̄_X − τ̄_Y)|J|^2`. The retracted factor 0.72 / product 0.373 must
+not be reused.
 
 ## 8. From `G ≥ 1/4` to RH
 
