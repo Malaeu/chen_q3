@@ -651,6 +651,19 @@ source**: `ε=0.2025>1/5` at `(√20,1/64)`, and `κ=2.22` at the
 `T=50` cancellation. It is not a necessary budget; its failure does
 not kill `G≥1/4`. Do not use it as a theorem.
 
+MAC `863d69dd`, arb dps 80, 224 cells
+`T∈[√20,80]×σ∈{1/64,…,1/2}`: identity residual `0` at all 224.
+`m≥3/20` holds 224/224 (min `0.1627292704` at `(1/64,√20)`);
+`ε≤1/5` holds 222/224 (max `0.2025139970`, same cell);
+`κ≤6/5` holds 208/224 (max `2.6391359345` at `(1/2,40)`);
+all three 206/224. Taken independently the worst triple gives
+`G≥0.1338<1/4`. Jointly `(g_0-ε)/κ≥1/4` at **224/224**, minimum
+`0.376082` at the corner against actual `G=0.375897` (0.05%).
+At large `κ` the correction is strongly negative (`T=40`:
+`κ=2.639` with `ε=-2.814`). A large positive mass arrives with a
+strongly negative `ε`. Separate bounds on `ε` and `κ` are the
+wrong shape; they have to stay together. `R` does that.
+
 At the corner, truncating to `n=1` gives `G=0.3337>1/4` and
 `E_{\rm coh}/\mathrm{tilt}=-0.392`; adding `n=2` raises `G` to
 `0.3764`; `n≥3` does not change the printed digits. The compact
@@ -664,25 +677,22 @@ by itself: at `T=50` the defect *helps*.
 
 ### 10.4 What to prove
 
-Source bound on `E_{\rm coh}` for the literal rays `(2.5)`, enough
-for `R≥0` or directly `h_N-ℰ_N>0`. A candidate that is **not**
-falsified by the scan (unlike `1/5`) is
+Source bound that keeps `ε` and `κ` **together**, enough for `R≥0`
+or directly `h_N-ℰ_N>0`. Separate floors (`ε≤1/5`, `κ≤6/5`, or
+even `E_{\rm coh}/\mathrm{tilt}≥-1/2` plus a `κ`-cap) are the wrong
+shape: MAC's 224 cells already have `κ>2` with `ε<-2`. The identity
+`G=(ĝ-ε)/κ` with `ĝ=(1-|Y|^2/|X|^2)/σ` is the joint object.
+`R=4δ(h_N-σ M_+/4)` is the same joint object without dividing by
+`X`. Prior `0.75` that a source estimate of `R` for the actual
+`n=1,2` pair of `(2.5)` at `T=√20` is positive, with `n≥3` a
+modulus-ratio remainder. This is a registered prediction, not a
+theorem.
 
-\[
-E_{\rm coh}/\mathrm{tilt} \ge -\tfrac12
-\qquad (T\ge\sqrt{20},\ 0<σ\le 1/2),
-\]
-
-together with a bound on `κ` that does not divide by a cancelled
-`X` (use `R`). Prior `0.7` that the inequality holds on the compact
-continuum (scan worst `-0.313`). This is a registered prediction,
-not a theorem.
-
-`IF_A` the `n=1,2` pair of `(2.5)` has an analytic `G≥1/4` at
-`T=√20` and the `n≥3` remainder is controlled by the modulus ratio
-`≥12`: the compact continuum is paid and the tail is the equal-`τ`
-lift plus the lemma already in §§4–7. `IF_B` some continuum cell has
-`E_{\rm coh}/\mathrm{tilt}<-1/2`: rewrite via `R` before adding rays.
-Do not send this to the judge (the gap is a source remainder).
-Do not grind a denser grid of the same means. Enclosure review
-still `PENDING`. `PX_RH_CLAIM` not made.
+`IF_A` that pair has analytic `R≥0` at `T=√20`: the compact
+continuum is paid and the tail is the equal-`τ` lift plus the lemma
+already in §§4–7. `IF_B` `R` dips on that pair: keep all `2N` in
+`R` and use the measured `ε`–`κ` coupling (large `κ` comes with
+large negative `ε`). Do not send this to the judge (the gap is a
+source remainder). Do not grind a denser grid of the same means.
+Do not bound `ε` and `κ` separately. Enclosure review still
+`PENDING`. `PX_RH_CLAIM` not made.
