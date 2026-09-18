@@ -35,6 +35,9 @@ sys.path.insert(0, str(HERE.parent)); sys.path.insert(0, str(HERE))
 import check_contour as cc
 
 ZEROS_FILE = Path.home()/"Documents/Papers/Riehmann/zeta_zeros_100k.txt"
+if not ZEROS_FILE.exists():   # Linux copy of the same Odlyzko table (sha256 3436c916...)
+    for cand in (Path("/mnt/hdd01/Soft/GitHub/HUS_R_check/data/zeta_zeros_100k.txt"),):
+        if cand.exists(): ZEROS_FILE = cand
 
 def s_of(n, eps, p, theta):
     r = cc.ray(n, p, theta) if eps > 0 else cc.ray(n, -p, -theta)
@@ -148,6 +151,73 @@ def frob(W):
 def diff_frob(A, B):
     return mp.sqrt(mp.fsum(abs(A[i][j] - B[i][j])**2 for i in range(len(A)) for j in range(len(A))))
 
+
+# ---------------------------------------------------------------- compare (P_M3_7 only: (11) vs (13); NO defect (21))
+def _prime_entry_worker(args):
+    """One (a,b) entry of (11) for all m-cuts; runs in a separate process (mpmath state re-initialised)."""
+    a, b, theta_s, dps, m_cuts, T_cut, n_split = args
+    mp.mp.dps = dps; cc.ADAPTIVE_R = 0.0; theta = mp.mpf(theta_s)
+    splits = [-T_cut + 2*T_cut*k/n_split for k in range(n_split+1)]
+    lam = von_mangoldt_support(max(m_cuts))
+    main = tau_integral(a, b, theta, Omega, T_cut, splits)/(2*mp.pi)
+    pole = pole_entry(a, b, theta)
+    run = mp.mpf(0); vals = {}; cuts = sorted(m_cuts); ci = 0
+    for m in sorted(lam):
+        while ci < len(cuts) and m > cuts[ci]:
+            vals[cuts[ci]] = main - run/mp.pi + pole; ci += 1
+        if ci >= len(cuts): break
+        run += lam[m]/mp.sqrt(m)*tau_integral(a, b, theta, lambda t, m=m: mp.cos(t*mp.log(m)), T_cut, splits)
+    while ci < len(cuts):
+        vals[cuts[ci]] = main - run/mp.pi + pole; ci += 1
+    return (a, b, {k: (mp.nstr(mp.re(v), dps), mp.nstr(mp.im(v), dps)) for k, v in vals.items()})
+
+def compare(a):
+    import multiprocessing as mproc
+    mp.mp.dps = a.dps; cc.ADAPTIVE_R = 0.0
+    theta, c, M, _ = cc.cutoff(a.T); theta = mp.mpf(theta); N = a.N
+    idx = index(N); d = len(idx)
+    m_cuts = sorted({32, 64, 128, a.m_max}); K_list = sorted({1000, 2000, a.zeros})
+    out = {"meta": {"mode": "compare_11_vs_13_only", "prediction": "P_M3_7", "defect_21_computed": False,
+                    "dps": a.dps, "N": N, "theta": mp.nstr(theta, 20), "T_for_theta": a.T, "T_cut": a.T_cut,
+                    "n_split": a.n_split, "m_cuts": m_cuts, "K_list": K_list, "zeros_file": str(ZEROS_FILE), "workers": a.workers}}
+    t0 = time.time()
+    gam = load_zeros(max(K_list)); out["meta"]["zeros_loaded"] = len(gam)
+    Wz = {K: W_zero_side(N, theta, gam[:K]) for K in K_list if K <= len(gam)}
+    print(f"zero side done in {time.time()-t0:.0f}s", flush=True)
+    jobs = [(A, B, mp.nstr(theta, a.dps+5), a.dps, m_cuts, a.T_cut, a.n_split) for A in idx for B in idx]
+    with mproc.Pool(min(a.workers, len(jobs))) as pool:
+        res = []
+        for k, r in enumerate(pool.imap_unordered(_prime_entry_worker, jobs), 1):
+            res.append(r); print(f"[{k}/{len(jobs)}] entry {r[0]}x{r[1]} done, {time.time()-t0:.0f}s", flush=True)
+    Wp = {m: [[mp.mpc(0) for _ in range(d)] for _ in range(d)] for m in m_cuts}
+    pos = {ab: i for i, ab in enumerate(idx)}
+    for A, B, vals in res:
+        for m, (re_, im_) in vals.items(): Wp[m][pos[A]][pos[B]] = mp.mpc(mp.mpf(re_), mp.mpf(im_))
+    rows = []
+    for K, Z in Wz.items():
+        fz = frob(Z)
+        for m in m_cuts:
+            P = Wp[m]; D = [[P[i][j] - Z[i][j] for j in range(d)] for i in range(d)]
+            maxrel = max(abs(D[i][j]) for i in range(d) for j in range(d))/fz
+            rows.append({"K_zeros": K, "gamma_cut": mp.nstr(gam[K-1], 10), "m_max": m,
+                         "frob_zero": mp.nstr(fz, 12), "frob_prime": mp.nstr(frob(P), 12),
+                         "rel_frob_diff": mp.nstr(diff_frob(P, Z)/fz, 6), "max_entry_rel_diff": mp.nstr(maxrel, 6),
+                         "diff_hermiticity_defect": mp.nstr(herm_defect(D), 4)})
+    out["rows"] = rows
+    Kmax = max(Wz); seq = [mp.mpf(r["rel_frob_diff"]) for r in rows if r["K_zeros"] == Kmax]
+    out["verdict_P_M3_7"] = {
+        "a_non_increasing_in_m_max_at_Kmax": all(seq[i+1] <= seq[i] for i in range(len(seq)-1)),
+        "b_D_at_max_cut_below_1e-2": bool(seq[-1] < mp.mpf("1e-2")), "D_at_max_cut": mp.nstr(seq[-1], 6),
+        "c_max_entry_rel_diff_below_1e-2": bool(mp.mpf(rows[-1]["max_entry_rel_diff"]) < mp.mpf("1e-2")),
+        "d_diff_hermitian_below_1e-2": bool(mp.mpf(rows[-1]["diff_hermiticity_defect"]) < mp.mpf("1e-2")),
+        "note": "finite truncations only; PASS here is a representation check of (11)=(13), not a sign statement and not the defect (21)"}
+    out["verdict_P_M3_7"]["PASS"] = all(out["verdict_P_M3_7"][k] for k in ("a_non_increasing_in_m_max_at_Kmax", "b_D_at_max_cut_below_1e-2", "c_max_entry_rel_diff_below_1e-2", "d_diff_hermitian_below_1e-2"))
+    out["matrices"] = {"zero_side_Kmax": [[(mp.nstr(mp.re(x), 15), mp.nstr(mp.im(x), 15)) for x in row] for row in Wz[Kmax]],
+                       "prime_side_mmax": [[(mp.nstr(mp.re(x), 15), mp.nstr(mp.im(x), 15)) for x in row] for row in Wp[m_cuts[-1]]]}
+    out["meta"]["runtime_seconds"] = round(time.time()-t0, 1)
+    Path(a.out).write_text(json.dumps(out, indent=1))
+    print(json.dumps(rows, indent=1)); print(json.dumps(out["verdict_P_M3_7"], indent=1)); print(f"written {a.out}", flush=True)
+
 # ---------------------------------------------------------------- hygiene
 def hygiene(a):
     mp.mp.dps = a.dps; cc.ADAPTIVE_R = 0.0
@@ -196,9 +266,10 @@ if __name__ == "__main__":
     ap.add_argument("--N", type=int, default=4); ap.add_argument("--dps", type=int, default=30); ap.add_argument("--T", type=float, default=14.0)
     ap.add_argument("--zeros", type=int, default=2000); ap.add_argument("--m-max", type=int, default=64)
     ap.add_argument("--T-cut", type=float, default=200.0); ap.add_argument("--n-split", type=int, default=8)
-    ap.add_argument("--out", default=str(HERE/"wn_hygiene.json"))
+    ap.add_argument("--out", default=str(HERE/"wn_hygiene.json")); ap.add_argument("--workers", type=int, default=16)
     a = ap.parse_args()
     if a.compare and not a.i_have_registered:
         raise SystemExit("refused: (11)-vs-(13) and the defect (21) are the owner's P_M3_7 / P_M3_8; register the statements first, then pass --i-have-registered")
     if a.hygiene: hygiene(a)
+    elif a.compare: compare(a)
     else: ap.print_help()
