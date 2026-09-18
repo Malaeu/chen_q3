@@ -128,6 +128,20 @@
       },
       "falsifier": "a certified arb ball whose lower edge is below 1/4 anywhere on the corner",
       "mac_note_before_run": "each value is an arb ball from the ray integrals with the analytic tail; a cell counts only if the whole ball lies above the threshold. T grid: step 0.05 on [sqrt(20), 6], step 0.25 on (6, 30]. Note that the float scan says the ratio decreases with sigma, so sigma = 1/2 is expected to carry the minimum; Linux also measured 0.410 at sigma = 1/32, T = sqrt(20), so the corner is not a sigma -> 0 effect."
+    },
+    {
+      "id": "P_M3_11",
+      "registered_by": "Linux observer (branching), MAC executes",
+      "registered_utc": "2026-09-18T09:53:49+00:00",
+      "context": "P_M3_10 IF_A closed the compact T in [sqrt(20), 30] with a certified envelope 0.3759 >= 1/4. The tail T > 30 is reduced to one lemma on the barycentre of t under the ray measure; stationary phase does not start at T = 30+ (the cubic term is 3.3 rad on the 3-sigma window, 0.3 rad only from T >= 3600).",
+      "statement": "rigorous arb balls for Re tau_n, tau_n = (int t alpha_n)/(int alpha_n) with alpha_n the integrand of (2.5), for n = 1, 2 on T in (30, 80] x sigma in {1/64, 1/32, 1/16, 1/8, 1/4, 3/8, 1/2}: Re tau_n >= t_0(n,T) - 6/T with t_0(n,T) = (1/2) log(T/(2 pi n^2 sin 2 theta)).",
+      "confidence": 0.8,
+      "branching": {
+        "IF_A": "balls give Re tau_n >= t_0 - 6/T: formula (2.1) and the growth of t_0(1,T) close T > 80 analytically, giving c = 1/4 on the whole domain",
+        "IF_B": "a cell fails: lower tau_* or cut the interval"
+      },
+      "falsifier": "a certified ball whose lower edge of Re tau_n is below t_0(n,T) - 6/T anywhere on the grid",
+      "mac_note_before_run": "identity used, recorded before the run: the p-derivative of the ray brings down (t + i theta), so d_p I_n = int (t + i theta) alpha_n and therefore tau_n = d_p I_n / I_n - i theta = l_n - i theta, whence Re tau_n = Re l_n. No separate moment integral is needed: the existing arb ray machinery (_ray_integrals_arb, orders 0 and 1, plus the analytic tail ball) already gives both. Cross-check against the Linux float diagnostics: Re tau_1 = 0.847 at (30.42, 1/64), 0.901 at (31, 1/2), 0.835 at (40, 1/2), 1.395 at (60, 1/2)."
     }
   ],
   "companion_without_prediction": "option-2 scan from the v2 closeout: frozen N0=20, theta0=theta(14), sigma=1/64, T = 14..414 step 0.05 (8001 points, dps 50: cancellation <= ~10 digits there); expected by the budget: no flip",
@@ -193,6 +207,12 @@
       "time_utc": "2026-09-18T09:09:47+00:00",
       "by": "MAC (self-corrected after the Linux witness)",
       "what": "MAC stated the mass-gap task with the quantifier T >= sqrt(20), 0 < sigma <= 1/2 while the supporting data covered only T in [14,60], sigma <= 1/4, and quoted the grid minimum 1.24 as if it were the infimum of the domain. Refuted by Linux at sigma = 1/2, T = sqrt(20): 0.375897. MAC also quoted h_N/E_N = 7.5e70 as a global margin when it is one point (1/64, 14); the grid minimum is 3.78e69. Both are MAC errors."
+    },
+    {
+      "id": "REG_ADD_8",
+      "time_utc": "2026-09-18T09:53:49+00:00",
+      "by": "Linux observer",
+      "what": "P_M3_11 registered: the tail lemma on Re tau_n, to be certified by arb balls on the Mac; Linux has no python-flint."
     }
   ]
 }
