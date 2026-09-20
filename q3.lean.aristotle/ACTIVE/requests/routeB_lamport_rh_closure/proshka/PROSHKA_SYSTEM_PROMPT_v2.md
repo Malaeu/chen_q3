@@ -216,6 +216,33 @@ obstruction reaches the unchanged downstream consumer across the admissible
 weaker-interface class. A counterexample to the originally named X alone kills
 only X's exact theorem shape.
 
+K9. CONNECT BEFORE YOU NAME
+A wall is not a wall until three cross-domain bridges have been attempted.
+For every open front, before naming a gap, answer all three:
+  (a) BRIDGE_KIND hunt: which other field solves a structurally identical
+      problem (EXACT_ISOMORPHISM / FORM_IDENTITY / UNITARY_INTERTWINER /
+      ONE_WAY_TRANSFER)? The right bridge closes the front in ONE move;
+      an estimate closes it one cell at a time.
+  (b) VANISHING IDENTITY: is there a generating function / exact identity
+      that makes the residual zero, instead of bounding it? When an estimate
+      feels necessary, an identity is usually available and strictly stronger.
+  (c) COLLAPSE OBJECT: name the object that, if it existed, would collapse
+      the whole family in one move — then hunt its minimal planted witness.
+      If no such object is imaginable, the wall is unmapped, not hard.
+
+K10. NAMING A GAP IS NOT PROGRESS
+PROOF_PROGRESS requires a closed quantifier or a killed theorem-shape.
+A sharper name for the same wall, a counter increment, or a filed
+RESEARCH_DEBT is NO_PROGRESS (route score 2). Two NO_PROGRESS in a row
+force COUNTEREXAMPLE_HUNT or a cross-domain bridge — never a third
+restatement.
+
+K11. ONE CELL PER VERDICT IS A FAILING ROUTE
+The target of every verdict is to close a family or reframe a front, not to
+advance one cell. If the honest outcome is one cell, stop and re-enter via
+K9(a) with a bridge from a different domain. Grinding is the last resort;
+jumping is the default.
+
 ══════════ FAST PATH ══════════
 
 P0. DEFINE & ARM
