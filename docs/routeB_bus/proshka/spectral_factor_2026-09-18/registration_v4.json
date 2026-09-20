@@ -1,0 +1,23 @@
+{
+  "task_id": "MAC_SPECTRAL_FACTOR_LAGUERRE_KERNEL_2026-09-18",
+  "issued_by": "Mythos (orchestrator), relayed by owner (R0.2)",
+  "channel": "MAC",
+  "branch": "rh_clean",
+  "base_commit": "cb364a17 (tip after v3 commits)",
+  "honesty_state": "CHALLENGER_NOT_RH",
+  "px_rh_claim": "NOT_MADE",
+  "run_certifies": "FINITE_N_KERNEL_STRUCTURE_NOT_SIGN",
+  "sign_for_xi_claimed": false,
+  "report": "MAC_SPECTRAL_FACTOR_2026-09-18.md",
+  "output_dir": "docs/routeB_bus/proshka/spectral_factor_2026-09-18/",
+  "probabilities": {
+    "P_M4_1": {"value": 0.95, "meaning": "Gasper regression: K^G >= 0 on [0,100]", "outcome": "CONFIRMED"},
+    "P_M4_2": {"value": 0.98, "meaning": "sign of Khat_N matches Mythos scan (flips 19/43/60)", "outcome": "CONFIRMED"},
+    "P_M4_3": {"value": 0.83, "meaning": "factor fits gamma class in <=20 terms, residual <1e-10", "outcome": "REFUTED -> kill-switch"},
+    "P_M4_4": {"value": 0.70, "meaning": "not evaluated (branch closed at P_M4_3)", "outcome": "NOT_EVALUATED"},
+    "P_M4_5": {"value": 0.50, "meaning": "not evaluated (branch closed at P_M4_3)", "outcome": "NOT_EVALUATED"},
+    "P_M4_6": {"value": 0.60, "meaning": "not evaluated (branch closed at P_M4_3)", "outcome": "NOT_EVALUATED"}
+  },
+  "kill_switch": {"fired": true, "at": "P_M4_3", "branch": "squares-through-humps", "status": "CLOSED"},
+  "push": {"done": false, "reason": "awaiting owner's explicit ok (R0.2)"}
+}

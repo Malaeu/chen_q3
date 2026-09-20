@@ -1,0 +1,17 @@
+{
+  "task_id": "MAC_SPECTRAL_FACTOR_LAGUERRE_KERNEL_2026-09-18",
+  "closeout": "FINITE_N_KERNEL_STRUCTURE_NOT_SIGN — branch closed at P_M4_3",
+  "kill_switch_first_line": "P_M4_3 = FAIL: K_N has no gamma-class square form at 20 terms; squares-through-humps branch CLOSED.",
+  "steps": {
+    "A": {"verdict": "PASS", "khat_G_min": -2.35e-72, "gasper_identity_max_abs_dev": 1.93e-31, "outer_factor_G_maxdev": 1.69e-21},
+    "B": {"verdict": "PASS", "flips": {"N1": 18.8, "N2": 42.75, "N3": 67.45}, "minima": {"N1": -1.471e-8, "N2": -3.168e-22, "N3": -6.019e-40}},
+    "B_band": {"verdict": "PASS", "strip_identity_max_abs_dev": {"N1": 2.1e-10, "N2": 4.4e-16, "N3": 1.4e-17}, "sigma0_rel": {"rel_K": 1.15e-5, "rel_H": 1.09e-5}, "sigma": [0.015625, 0.125]},
+    "C": {"verdict": "PASS", "outer_reconstruction_maxdev": {"N1": 2.776e-17, "N2": 2.082e-17, "N3": 2.082e-17}},
+    "D": {"verdict": "FAIL", "rel_residual_20terms": {"N1": 2.820e-4, "N2": 9.519e-8, "N3": 3.292e-9}, "rel_residual_full_basis": {"N1": 2.820e-4, "N2": 9.519e-8, "N3": 3.269e-9}, "tol": 1e-10},
+    "E": {"verdict": "COMPUTED", "Rhat_min": {"N1": -1.471e-8, "N2": -3.168e-22, "N3": -6.019e-40}}
+  },
+  "key_derivation": "J_n(tau) = a_n^(-1/4 - i tau/2) [2 Gamma(9/4 + i tau/2, a_n) - 3 Gamma(5/4 + i tau/2, a_n)], j_N(tau) = 2 Re(sum_{n<=N} J_n); verified vs numeric to 1e-28.",
+  "failure_reason": "Khat_N = 4 L_1[j_N] = 4[j_N'^2 - j_N j_N''] carries digamma terms (Gamma*psi), and the folded source lives on x in [1,inf) (upper incomplete gamma) rather than x in (0,inf) (complete gamma); hence not a finite complete-gamma combination.",
+  "push": "NOT_DONE — awaiting owner's explicit ok (R0.2). git fetch done: origin ahead by 5 commits (b0774ce4 verdict, 86b47ccb RT-scope + 3); do NOT file those.",
+  "manifest": "sha256_manifest_v4.json"
+}
