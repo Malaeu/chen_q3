@@ -1,0 +1,12 @@
+{
+  "registered_utc": "2026-09-20T10:59:29.181045+00:00",
+  "base_head": "6120768a1eef9ce6eef1b64c358b23b76d68948f",
+  "source_attachment_sha256": "71ac3564b8cabe6a5ff0596290dcba8d9a2327f5faf806c1c833c844e23624c8",
+  "predictions": {
+    "P1": "Exact complex-Hermitian completion and ground eigenvector identities vanish.",
+    "P2": "Planted wrong eigenvector sign and omission of Schur coupling are rejected.",
+    "P3": "The epsilon family has inverse-residual norm epsilon and worst-gap ratio epsilon^(-2).",
+    "P4": "Quantitative Schur lower floor and directional bound hold on exact rational controls.",
+    "P5": "Zero residual, arbitrary shift, and symmetry alone fail their overstrong ground/parity claims."
+  }
+}
