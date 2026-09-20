@@ -1,0 +1,151 @@
+{
+  "batch": "batch07",
+  "threads_analyzed": 12,
+  "materials": [
+    {
+      "thread": "2026-9-5 21-29-23-_______________________________________________.md",
+      "date": "2026-09-05",
+      "type": "math_goal_formalization",
+      "title": "Математическое описание деформации пространства (адаптивный контур / складка)",
+      "summary": "Геометрическая интуиция владельца (квадратное отверстие/круг/сгиб) переведена в точную лемму: симметричное окно с единственным нулём ⇒ нуль на линии сгиба; деформация окна работает через теорему Руше — сертификат Q(D,F)<1 вокруг произвольной внеосевой точки ⇒ RH. Доказана эквивалентность: произвольные локальные сертификаты повсюду ⇔ RH; для фиксированного спектрального семейства установлено только направление ⇒. Артефакт PROSHKA_ADAPTIVE_CONTOURS_2026-09-05.md.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_response_goal058_matgoal_2026-09-12.md; GIT try_adaptive_contour_formalization",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-6 21-23-23-Adjudicate_phase_proof.md",
+      "date": "2026-09-06",
+      "type": "adjudication_batch",
+      "title": "Adjudicate phase proof (PHASEPROOF/RESONANCE/SCALARFLOOR/INVARIANT/COMPENSATE/ALIGN)",
+      "summary": "Серия вердиктов: PHASEPROOF — знаковая ошибка в (8), q-ряд идентификация не проходит (не закоммичен); RESONANCE — закоммичен; SCALARFLOOR — закоммичен; INVARIANT — PARTIAL, точная 3/20 нижняя граница на трёхдольном классе + четырёхдольный контрпример, универсальный all-n механизм открыт; COMPENSATE — PARTIAL, floor 47/6000 при нулевых локальных средних; WIDTH supplement — расширение долей не улучшает floor; ALIGN — PARTIAL, star-ограничение ломается при перекрытии долей.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_{phase_class,reservoir_resonance,scalar_floor,signed_head_invariant,compensate,align}_2026-09-06..08.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-8 20-4-31-_______________________.md",
+      "date": "2026-09-08",
+      "type": "hodge_transplant",
+      "title": "Проверка аналога Ходжа (HODGE TRANSPLANT TEST / HYPERBOLICITY)",
+      "summary": "Таблица Hodge ingredient → RH analogue → status → missing lemma. Недостающий ингредиент — не норма/фактор/аналог звезды, а закон J=I на N^perp (запрет отрицательного действия звезды, primitive null rigidity). Suzuki-ловушки: предел (1.12) даёт R=ξ(½−iz)/(ξ+ξ′) с безусловным полюсом; свободный gauge даёт эквивалентность RH. RT-поток не даёт автоматической монотонности (контрпример P_t=z²−t/2). Наибольшее полнооконное доказанное окно a=0.8 (Xuefeng Zhu arXiv:2608.24827v2). Коммит cbbe980.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_screw_hyperbolicity_hodge_2026-09-08.md; proshka_verdict_hodge_transplant_primitive_sign_suzuki_2026-09-08.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-8 20-22-25-________.md",
+      "date": "2026-09-08",
+      "type": "adjudication",
+      "title": "Ходж тру (REQ-2026-09-08-HODGE)",
+      "summary": "Transport-находка: предоставленный commit не найден (pre-rebase хеш), blob найден по другому commit — transport-only finding; затем исправленная привязка. Q1 PROVED_ON_CLASS, Q2/Q3 PARTIAL; оставшаяся лемма Q(f,f)=0 ⇒ Af=0 на H явно недоказана. Коммит 58ee384b.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_hodge_2026-09-08.md; proshka_transport_finding_goal058_hodge_2026-09-08.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-9 11-14-56-_______________RH_____________________________________09_09_26_11_14.md",
+      "date": "2026-09-09",
+      "type": "chat_open",
+      "title": "Открытие рабочего чата (SCHUR не дублировать)",
+      "summary": "Только открытие чата и подтверждение готовности; REQ-2026-09-09-SCHUR явно не дублируется. Содержательной математики нет.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-9-9 7-30-15-Adjudicate_distance_request.md",
+      "date": "2026-09-09",
+      "type": "adjudication",
+      "title": "Adjudicate DISTANCE + Addendum SCHUR (point 5)",
+      "summary": "D24 лемма (Schur-отклик y_a=C_a^{-1}b_a в form domain); цель — нижняя оценка восстановленной энергии одним full-source исправлением. Ключевой guard: cofinal complement positivity — это substantive sign theorem, не рутинная bookkeeping (доказано contrapositive: компактный отрицательный свидетель ⇒ отрицательное complement направление на каждом большом окне). Арифметический вход (8): односторонняя взвешенная von-Mangoldt корреляция; source T²-оценка не доказана.",
+      "in_db": true,
+      "db_ref": "proshka_addendum_goal058_distance_schur_2026-09-09.md; proshka_supplement_goal058_distance_schur_point5_2026-09-09.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-10 8-33-9-Adjudicate_bridge_request.md",
+      "date": "2026-09-10",
+      "type": "adjudication_batch",
+      "title": "Adjudicate BRIDGE / SATURATION / CONTACT / COLLAR / BOUNDARY / FLOW",
+      "summary": "BRIDGE: IRREDUCIBLE_ATOM (S18b теряет 1/T(a), масштаб aT а не T²); SATURATION: PROOF_CANDIDATE_COMPLETE — Bessel–Poisson конструкция даёт |Q[f_a]|≤K e^{57a}T(a)², верхний T²-поставщик доказан на бумаге (нижний знак нет); CONTACT: PARTIAL — ненулевая локальная нулевая мода имеет ненулевой отклик в каждой внешней полосе (доказывает немедленное пересечение нуля, не запрет ядра); COLLAR: PARTIAL — графическая норма, λ_b=O_a(log^{-3}(1/(a−b))); BOUNDARY: PARTIAL — F*D^{-1}F = (d/c_d)Γ_d*Γ_d + O(d/log(1/d)); FLOW: PARTIAL — D_Y>2C_Y исключает continuous-only конечнопутевые аллокации.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_{bridge,saturation,contact,collar,boundary,flow}_2026-09-09..10.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-11 13-34-52-Adjudicate_Payload_Integrity.md",
+      "date": "2026-09-11",
+      "type": "adjudication",
+      "title": "Adjudicate SLACK / DENSITY",
+      "summary": "SLACK: PARTIAL — точные тождества и перенос сохранены, первое недоказанное неравенство SL20 (неотрицательность нового theta-ядра на всех тестах). DENSITY: PARTIAL — сдвинутая вероятностная rate-идентичность, бесконечное thinning-исправление с равномерной tail-границей; DN20 остаётся недоказанным.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_slack_2026-09-11.md; proshka_response_goal058_density_2026-09-11.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-12 11-48-49-_________________________.md",
+      "date": "2026-09-12",
+      "type": "living_phase_chat",
+      "title": "Living-phase chat: MATGOAL → ODD2-программа → Euler π²-решётка",
+      "summary": "Крупный сквозной чат (412KB). MATGOAL: KILL_VOLTERRA_SYMMETRIZATION_FINITE_RANK_REPAIR + точный физический вес и бесконечный отрицательный индекс. ODD2-программа (ODD2/ODDCURV/ODD2COMPACT/ODD2EFFECTIVE/ODD2STRIP/ODD2LOW/ODDINFINITY/LYGSPHI) — равномерный нечётный минор двух узлов theta; затем VILLAINPHI/BROWNIANHODGE/TWOCHANNEL/THETARF/SOURCEENERGY/BROWNIANJOINT/NULLVAR/GAMMARECIP/GAMMABRANCH/NULLFIELD/FULLVPOS/SUPPORTSTABILITY/JOINTSOURCE_Y/CRITICALSTRIP/SIZEBIASCOMP — почти все KILL_NAMED_* или scoped obstructions с точными отрицательными свидетелями. Знак полной V и RH всюду остаются открытыми. В конце — идея Euler π²-решётки как минимальной энергии.",
+      "in_db": true,
+      "db_ref": "proshka_response_goal058_{matgoal,odd2*,lygsphi,villainphi,brownianhodge,twochannel,thetarf,nullvar,gammarecip,gammabranch,nullfield,fullvpos,sizebiascomp}_2026-09-12..15.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-13 23-21-31-_________________________.md",
+      "date": "2026-09-13",
+      "type": "compensation_idea_check",
+      "title": "Проверка идеи компенсации (вихрь / замкнутая циркуляция)",
+      "summary": "Проверка идеи «замкнутой циркуляции» остатка: полный остаток L НЕ тождественный ноль (строго положителен на малых отрицательных одиночных сдвигах). V>0 на любом одиночном сдвиге (точное ядро). ГЛАВНЫЙ РЕЗУЛЬТАТ: исключены отрицательные семьи из 1–2 сдвигов — V[c1,c2]>0 доказано через логарифмическую вогнутость log f(√s) (теорема Csordas–Varga, Thm 4.2(b)). НО вогнутости недостаточно для ≥3 сдвигов: явный контрпример f_0(u)=e^{−u²}−¼e^{−2u²} с отрицательной четырёхсдвиговой семьёй (J-матрица, v^T J v=−25/162). Артефакт PROSHKA_FULL_V_RANK_TWO_EXCLUSION_2026-09-14.md.",
+      "in_db": false,
+      "db_ref": "nullvar частично есть (proshka_response_goal058_nullvar_2026-09-13.md), но rank-two V exclusion ОТСУТСТВУЕТ",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-17 9-15-19-___________________________.md",
+      "date": "2026-09-17",
+      "type": "causality_proof",
+      "title": "Доказательство причинности (boundary energy causality audit / Euler π²)",
+      "summary": "Фурье-множитель R с |m|²=Re m=ω∈[0,1] даёт Re⟨u,Ru⟩=‖Ru‖²≥0 безусловно; для отсечения P_T положительность накопленной работы W_T ⇔ причинность P_T R(I−P_T)=0 ⇔ supp Y⊆[0,∞). Критерий доказан; его выполнение для полного theta-источника открыто. «Дешёвый универсальный пассивизатор» KILLED_AS_INDEPENDENT_EASY_SUPPLIER (контрпример X_0=2+cos(4z): W_2<0 при W_∞≥0). Условный перенос возвращает к OPENSGN P (Lemma 7). Дискуссия Euler π² (решётка синуса vs произведение по простым).",
+      "in_db": true,
+      "db_ref": "OPENSGN (proshka_verdict_goal058_open_signed_time_kernel_identity_2026-09-06.md); GIT codex_mac/gamma-reciprocity: audit causal reconstruction and cutoff energy boundary",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-9-18 13-57-31-______________________________.md",
+      "date": "2026-09-18",
+      "type": "rh_closure_attempt",
+      "title": "Доказательство гипотезы Римана (MASS_GAP / head sign h_N ≥ ¼σM₊)",
+      "summary": "Попытка закрыть RH через ℋ>0 при 0<σ≤½: звенья (1) ℋ=2∂_σ|F|², (2) |T|≤√20 доказано, (3) h_N−ℰ_N≤ℋ≤h_N+ℰ_N, (4) знак головы h_N≥¼σM₊. Ключевые результаты: равный вещественный τ ⇒ размерность 2N сокращается (G=(1−|Y|²/|X|²)/σ), порог τ≥0.0669; coherent-means hole #1 — минимум когерентного среднего 0.159 против порога 0.07; RT (Rodgers–Tao) margin scope — знак с запасом невозможен, нужен знак по тождеству; kernel identity j′²−jj″; positive factorization / Epstein / Gasper–Viazovska precedents / Hankel minors — все scoped, RH НЕ заявлена (PX_RH_CLAIM не сделан).",
+      "in_db": true,
+      "db_ref": "proshka_verdict_{coherent_means_sign_transfer,rodgers_tao_margin_scope,two_step_rh_closure_audit,axis_strip_folded_kernel_increment,positive_factorization_source_primitives_and_square_defect,gasper_shift_weight_positivity_and_theta_pair_transfer,fourier_sign_precedents_gasper_viazovska,full_theta_hankel_m3_odd_minor,global_compensated_energy_representation}_2026-09-18..19.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    }
+  ],
+  "top_insights": [
+    "RT (Rodgers–Tao) назван как слепое no-go всей недели: любое доказательство знака с равномерным положительным запасом (масс-бюджет, почленная положительность, усечения) невозможно; знак с запасом ноль доказывают тождеством, не оценкой — это рефрейм всех неудач недели.",
+    "Руше-эквивалентность: произвольные локальные сертификаты Q(D,F)<1 вокруг каждой внеосевой точки ⇔ RH; для фиксированного спектрального семейства доказано только направление ⇒ (закон существования сертификата — достаточный механизм, но его существование не установлено).",
+    "Rank-two V exclusion: V>0 на 1–2 сдвигах (логарифмическая вогнутость Csordas–Varga Thm 4.2(b)), но вогнутость недостаточна для ≥3 сдвигов — явный контрпример f_0 с отрицательной четырёхсдвиговой семьёй; решающий объект — совместные взаимодействия (неравенство 1+2r12r13r23−r12²−r13²−r23²≥0), не попарные ограничения.",
+    "Hodge transplant: недостающий ингредиент — закон J=I на N^perp (primitive null rigidity: Q(f,f)=0 ⇒ Af=0), а не существование нормы/фактора/аналога звезды; Suzuki даёт положительность только сдвинутой метрики, а свободный голоморфный gauge тривиализует задачу до эквивалентности RH.",
+    "Устойчивый паттерн: каждый «дешёвый» поставщик знака (компенсация=0, пассивизатор, фиксированный конечный префикс, локальный симметризатор множителя, бесконечная делимость ядра) убивается KILL_* с точным отрицательным свидетелем, при этом знак полной V и lower sign остаются открытыми — это методичное сужение пространства атак, не тупик.",
+    "Coherent-means hole #1 (09-18): минимум когерентного среднего 0.159 против порога 0.07; equal-τ подъём точен до 0.17% в углу, размерность 2N сокращается при равном вещественном τ — остаётся varying-τ на континууме и независимый разбор enclosure."
+  ],
+  "gap_candidates": [
+    "PROSHKA_FULL_V_RANK_TWO_EXCLUSION_2026-09-14.md — доказательство положительности V на 1–2 сдвигах (Csordas–Varga) + контрпример f_0, показывающий недостаточность вогнутости для ≥3 сдвигов. В DB отсутствует (есть только nullvar и полюсный rank-two repair от 08-27).",
+    "9-17 boundary-energy causality audit: критерий причинности (P_T R(I−P_T)=0) доказан, но «дешёвый универсальный пассивизатор» KILLED_AS_INDEPENDENT_EASY_SUPPLIER и его точный контрпример X_0=2+cos(4z) не имеют отдельного doc в DB (зафиксированы лишь косвенно через opensgn и causal-audit git-записи gamma-reciprocity).",
+    "Сквозной трек «идея Эйлера π²» (решётка синуса vs произведение по простым, π² как минимальная энергия) размазан по 9-12/9-17/9-18 и не собран в единый метод-doc: связь спектра π²n² броуновских мостов с нижней границей вычитаемой части V зафиксирована как «первый пункт известен, второй не доказан»."
+  ]
+}

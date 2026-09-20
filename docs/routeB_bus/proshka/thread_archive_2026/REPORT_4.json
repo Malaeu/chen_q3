@@ -1,0 +1,242 @@
+{
+ "batch": "batch04",
+ "threads_analyzed": 20,
+ "materials": [
+  {
+   "thread": "2026-7-13 21-19-21-Branch___Teilgespr_ch___Zakrytie_RH_i_wag.md",
+   "date": "2026-07-13",
+   "type": "closure-plan/architecture",
+   "title": "Zakrytie RH i wag",
+   "summary": "Мастер-карта закрытия Route B: G04DefectGramBridge (Connes h0/h4 prolate-комбинация), словарь Гинана–Вейля, утечка PSWF ≤ C·poly(λ)·e^{-4πλ²}, HUMP(λ) ≤ C·λ²⁵·e^{-4πλ²}, NormalizedDefectMatrixPolynomialBound ||B_λ||_op ≤ Cλ^A (A≤16) через 2×2 матрицу B_λ (B00/B04/B44). RouteBClosureContract v1 объявлен FATAL (нет контроля нормы Dirichlet-полинома); вердикт: Route B остаётся CHALLENGER/NOT_RH, Bus 010 нет.",
+   "in_db": false,
+   "db_ref": "defectgram=0, hump=0, grambridge=0; Guinand/Groskin/Weil/prolate в DB есть, но сам DefectGramBridge+HUMP-синтез отсутствует",
+   "valuable": true,
+   "integrate_as": "doc"
+  },
+  {
+   "thread": "2026-7-14 10-9-40-______________________________________.md",
+   "date": "2026-07-14",
+   "type": "meta/research-direction",
+   "title": "Лемма о степени и теорема о бутерброде",
+   "summary": "Полиномиальный метод (Dvir degree-lemma, Guth–Katz ham-sandwich + polynomial partitioning, wave-packets, Kakeya). Идея 'нули ζ на малостепенном полиноме' — FATAL; исправленные аналогии: степень→конечный ранг/bandwidth, вещественнокорневой полином→charpoly Hermitian-оператора, cellular/algebraic split→структура. Мост к Hermitian/Schur-архитектуре Route B.",
+   "in_db": false,
+   "db_ref": "sandwich=0 (только поздний phaseproof), degree-lemma/polynomial-method отсутствуют",
+   "valuable": true,
+   "integrate_as": "memory"
+  },
+  {
+   "thread": "2026-7-26 22-42-32-_______________.md",
+   "date": "2026-07-26",
+   "type": "brief/analytic-route",
+   "title": "Бриф для прошки",
+   "summary": "Бриф Прошке: MASS-FORK залочен, Poisson-контрчлен-канал, dual evaluator формула, MELLIN-маршрут для A_σ. Ранняя репрезентация residual/Poisson/Mellin-машины, впоследствии перекрыта работами Goal056/057/058.",
+   "in_db": true,
+   "db_ref": "mellin(41), poisson(21), residual(88) — машина уже в DB в поздних записях",
+   "valuable": false,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-7-28 22-50-47-Huwak_produmaj.md",
+   "date": "2026-07-28",
+   "type": "route-lock/plan",
+   "title": "Huwak produmaj",
+   "summary": "Лок следующего шага Route B: 030_CoupledFullSumResponseCertificate, coupled sampled-response сумма S_r(z), гейты G1–G7, SourceMoment G5-таргет. Переход в собственно Route B.",
+   "in_db": false,
+   "db_ref": "sourcemoment=0, coupled_full=0, 030_=0; ccm/routeB состояние в DB есть, но 030/SourceMoment-контракт отсутствует",
+   "valuable": true,
+   "integrate_as": "queue"
+  },
+  {
+   "thread": "2026-7-30 14-10-45-Proshka_judge_Route_B.md",
+   "date": "2026-07-30",
+   "type": "proof-ratification",
+   "title": "Proshka-judge Route B",
+   "summary": "91 вердикт: M1/M2/M3 сварки (radical→quotient-posdef, quotient charpoly, Lagrange crosswalk) — PROVED; CCM N=1 source-конструктор; Leancert v4.26 spike fail-closed; Montel refinement. Ядро ратификации доказательств Route B.",
+   "in_db": true,
+   "db_ref": "m1(22), radical(36), charpoly(3), lagrange(7), riesz(7), ccm(89) — зеркалировано",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-2 22-49-27-_____________________.md",
+   "date": "2026-08-02",
+   "type": "task-decomposition",
+   "title": "Задачи для Аристотеля",
+   "summary": "Goal 050/051/052: Estar √u-оценка (0≤b), hRm, MellinConvergent(Estar h), EStarMellinAbsolute — декомпозиция на shared exact-class core + 3 тонких потребителя (A051 core+hRm, A052A payload, A052B consumer). Prolate Sturm–Liouville finite-Fourier intertwining.",
+   "in_db": true,
+   "db_ref": "aristotle(37), mellin(41), muntz_v3, EstarBoundedBySqrt — в DB",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-3 0-9-47-__________________Astra.md",
+   "date": "2026-08-03",
+   "type": "tooling/meta",
+   "title": "Сравнение комбо с Astra",
+   "summary": "Сравнение Sol Pro+Codex+Aristotle против Astra. Вывод: на подготовленном VME-RH Track B связка может обойти Astra (8.5–9.5/10), требуется Lean Kernel Gate и замкнутый оркестратор. Мета/тулинг, к доказательству прямого вклада нет.",
+   "in_db": false,
+   "db_ref": "нет аналога; операционная тема",
+   "valuable": false,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 0-42-5-Q3_Lean_Project_Review.md",
+   "date": "2026-08-05",
+   "type": "theorem-normal-form",
+   "title": "Q3 Lean Project Review (Bonami–Karoui)",
+   "summary": "Эндпоинты Bonami–Karoui (tildePhi), ENDPOINT_SIGNS_REDUCED, K=4m split, spectrum-to-Schur crosswalk. Проверка сигнатур на эндпоинтах.",
+   "in_db": true,
+   "db_ref": "bonami(2), karoui(2) — litreview/pswf dossier",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 1-51-49-Route_Architecture_Review.md",
+   "date": "2026-08-05",
+   "type": "architecture",
+   "title": "Route Architecture Review (Context Pack)",
+   "summary": "Proshka Context Pack: even-Legendre recurrence, mode-four Hermitian Schur determinant, PSWF Sturm–Liouville source dossier (source_chain_partial). Сборка контекстного пакета для судьи.",
+   "in_db": true,
+   "db_ref": "legendre(19), pswf(10), sturm(19), mode_four(1)",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 10-14-56-Q3_Lean_Project_Review.md",
+   "date": "2026-08-05",
+   "type": "theorem-normal-form",
+   "title": "Q3 Lean Project Review (post-W02)",
+   "summary": "Выбор следующего узла после W02; seven-class normal form (ccm w02).",
+   "in_db": true,
+   "db_ref": "w02(10), git 'prove ccm w02 seven-class normal form'",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 11-42-55-Post_Gate_Theorem_Adjudication.md",
+   "date": "2026-08-05",
+   "type": "theorem-adjudication",
+   "title": "Post-Gate Theorem Adjudication",
+   "summary": "Prime-kernel normal form ратифицирована; NonintegralConstant normal form выбрана; G6/S2 Müntz-window kill (PL2 суррогат); XW.8 certified mode supply.",
+   "in_db": true,
+   "db_ref": "nonintegral(2), git 'prime kernel normal form', muntz(17), xw(9)",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 2-26-6-Route_Architecture_Review.md",
+   "date": "2026-08-05",
+   "type": "architecture",
+   "title": "Route Architecture Review (G5 mode4)",
+   "summary": "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX — каноническая Hermitian tail-row и поток границы Шура для mode-4.",
+   "in_db": false,
+   "db_ref": "g5_mode=0, canonical_hermitian=0, tail_row=0, schur_boundary=0 (mode4 tail-split есть, сам контракт нет)",
+   "valuable": true,
+   "integrate_as": "queue"
+  },
+  {
+   "thread": "2026-8-5 3-28-34-Full_Prompt_Analysis_Request.md",
+   "date": "2026-08-05",
+   "type": "receiver",
+   "title": "Full Prompt Analysis Request (DLMF3085)",
+   "summary": "DLMF3085 weight-match receiver — сверка веса DLMF §30.85 с приёмником нормальной формы.",
+   "in_db": false,
+   "db_ref": "dlmf3085=0, 3085=0 (dlmf degree-four row в DB есть, но не 3085 weight-match)",
+   "valuable": true,
+   "integrate_as": "queue"
+  },
+  {
+   "thread": "2026-8-5 4-23-18-Full_Prompt_Analysis.md",
+   "date": "2026-08-05",
+   "type": "receiver",
+   "title": "Full Prompt Analysis (B_prime)",
+   "summary": "Root-to-normalized recurrence row (B_prime) — строка рекуррентности корень→нормированная.",
+   "in_db": false,
+   "db_ref": "b_prime=0",
+   "valuable": true,
+   "integrate_as": "queue"
+  },
+  {
+   "thread": "2026-8-5 5-16-26-Select_next_node.md",
+   "date": "2026-08-05",
+   "type": "node-selection",
+   "title": "Select next node (Legendre affine kernel)",
+   "summary": "Ordinary Legendre affine kernel — выбор следующего исполняемого узла.",
+   "in_db": true,
+   "db_ref": "git 'prove legendre affine kernel', 'select ferrers affine kernel'",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 6-7-37-Analyze_and_Respond_Prompt.md",
+   "date": "2026-08-05",
+   "type": "crosswalk",
+   "title": "Analyze and Respond (Legendre 3-term)",
+   "summary": "Legendre three-term recurrence crosswalk — сверка трёхчленной рекуррентности Лежандра.",
+   "in_db": true,
+   "db_ref": "legendre(19) — рекуррентность покрыта",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 7-27-49-Q3_Lean_Project_Review.md",
+   "date": "2026-08-05",
+   "type": "theorem-normal-form",
+   "title": "Q3 Lean Project Review (cell 13,2)",
+   "summary": "CCM cell (13,2) receiver v2; surrogate rejection; antipodal class crosswalk; Goal 055 hold.",
+   "in_db": true,
+   "db_ref": "antipodal(1) 'prove ccm antipodal class crosswalk', ccm(89)",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 8-22-30-Evidence_audit.md",
+   "date": "2026-08-05",
+   "type": "audit",
+   "title": "Evidence audit (seven-class layout)",
+   "summary": "Seven-class layout consumer — аудит доказательств раскладки семи классов.",
+   "in_db": true,
+   "db_ref": "w02 seven-class normal form (git)",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 9-3-28-Q3_Lean_Route_Review.md",
+   "date": "2026-08-05",
+   "type": "theorem-normal-form",
+   "title": "Q3 Lean Route Review (von Mangoldt)",
+   "summary": "Von Mangoldt weighted sum normal form — нормальная форма взвешенной суммы по фон Мангольдту.",
+   "in_db": true,
+   "db_ref": "git 'prove ccm von mangoldt weighted normal form'",
+   "valuable": true,
+   "integrate_as": "skip"
+  },
+  {
+   "thread": "2026-8-5 9-33-38-Q3_Lean_Route_Review.md",
+   "date": "2026-08-05",
+   "type": "route-review",
+   "title": "Q3 Lean Route Review (2МБ, unified one-spine)",
+   "summary": "Unified one-spine memory contour ратифицирован (KNOWLEDGE_SPINE.md + spine.py, C* канон 11/10, anti-orphan, call-meter); Goal 055/056/057; B3.0 finite Riesz operator source-bind; log-window measure transport; André–Oort synergy preflight (Pila/Zannier/Tsimerman).",
+   "in_db": true,
+   "db_ref": "one-spine(1) 'unified one-spine contour ratified', riesz(7), log-window(3); André–Oort preflight отсутствует (andoort=0)",
+   "valuable": true,
+   "integrate_as": "skip"
+  }
+ ],
+ "top_insights": [
+  "Batch04 — сердце Route B: 7-30 Proshka-judge ратифицирует сварки M1/M2/M3 (radical→quotient-posdef, quotient charpoly, Lagrange crosswalk), а цепочка 8-5 закрывает CCM normal-form гейты (w02 seven-class → prime-kernel → nonintegral-constant → von-Mangoldt-weighted); почти всё уже зеркалировано в DB/git.",
+  "Мастер-карта закрытия из 7-13 (G04DefectGramBridge → словарь Гинана–Вейля → HUMP(λ)≤Cλ²⁵e^{-4πλ²} → NormalizedDefectMatrixPolynomialBound ||B_λ||≤Cλ^A, A≤16) объявлена FATAL из-за недоказанного контроля нормы Dirichlet-полинома; Route B остаётся CHALLENGER/NOT_RH.",
+  "Тред 9-33-38 (2МБ) ратифицирует операционную архитектуру Q3: unified one-spine memory contour (spine.py + SPINE_STATE.json, C* канон, PROSHKA_BUDGET_LAW, call-meter) — базис Q3 Codex bootstrap.",
+  "André–Oort даёт сильную архитектуру доказательства, но не прямую RH-лемму (object-class mismatch: нули ζ не алгебраические special points); только условные импорты — Pila–Zannier bad-locus (4 гейта) и fixed-chamber ground-line transport.",
+  "Полиномиальный метод Guth/Kakeya переносится в Route B не буквально, а как сдвиг репрезентации: степень→конечный ранг/bandwidth, вещественнокорневой полином→charpoly Hermitian-оператора, cellular/algebraic split→'кластеризация = структура'."
+ ],
+ "gap_candidates": [
+  "G04DefectGramBridge + NormalizedDefectMatrixPolynomialBound + HUMP(λ)≤Cλ²⁵e^{-4πλ²} — мастер-контракт закрытия Route B (7-13); в DB только частные Guinand/Weil/prolate, сам синтез 2×2 B_λ отсутствует.",
+  "030_CoupledFullSumResponseCertificate + SourceMoment G5 + гейты G1–G7 (7-28 Huwak) — не зафиксированы в DB (sourcemoment/coupled_full=0).",
+  "Leancert v4.26 fail-closed spike + ARB certificate (7-30) — верификационный тулинг Proshka-judge, в DB отсутствует.",
+  "G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW_AND_SCHUR_BOUNDARY_FLUX (8-5 2-26-6) — контракт канонической Hermitian tail-row и потока границы Шура.",
+  "DLMF3085 weight-match receiver (8-5 3-28-34) и B_prime root-to-normalized recurrence row (8-5 4-23-18) — приёмники нормальных форм, в DB отсутствуют.",
+  "André–Oort synergy preflight (9-33-38): Pila/Zannier bad-locus, fixed-chamber ground-line transport, adelic Weil height — архитектурный импорт, не зеркалирован.",
+  "Полиномиальный метод как репрезентационный мост (7-14): степень→bandwidth, charpoly Hermitian — мета-инсайт для стратегии Route B."
+ ]
+}

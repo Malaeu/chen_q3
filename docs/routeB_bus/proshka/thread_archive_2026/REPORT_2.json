@@ -1,0 +1,154 @@
+{
+  "batch": "batch02",
+  "threads_analyzed": 15,
+  "materials": [
+    {
+      "thread": "2026-5-10 10-48-35-Failure_Atlas_RH.md",
+      "date": "2026-05-10",
+      "type": "meta-methodology",
+      "title": "Failure Atlas / Q3 Obstruction Atlas",
+      "summary": "Карта провалов чужих RH-программ и обходов Q3-маршрута: стены Hilbert-Polya, trace-class, scalar mirror, conjugation trap, prime-side, boundary, coordinate/matrix-ID (главная дыра = Step 32), finite-to-global, плюс добавленные Skeptic-режимом GUE, Selberg-Beurling extremal и социологическая. Hermitian square F(iγ)=|H(iγ)|² выделен как центральный positivity-engine, вокруг которого 4 оборонительных кольца. Переименован из Failure Atlas в Q3 Obstruction Atlas.",
+      "in_db": true,
+      "db_ref": "GIT: memory architecture audit (jan decision-cycle / june atlases / post-june contour); atlas cards 020/028/009; prime comb modularity atlas card",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-5-14 18-58-26-Codex__goal_RH_____________.md",
+      "date": "2026-05-14",
+      "type": "scaffolding",
+      "title": "Codex /goal + AGENTS.md для Step 32-35",
+      "summary": "Боевой /goal промпт для Codex: закрыть Step 32 (B-spline matrix identification A,P,Q = analytic WeilForm), затем 33-35 (DirectedFamily/exhaustion/global positivity/RH export). Критерии Lean-проверки (lake env lean, без sorry/admit/axiom), AGENTS.md-протокол, запрет brute-force. Главный gate = Step 32.",
+      "in_db": true,
+      "db_ref": "GIT: install step32 codex bootstrap; step32 centered b-spline matrix bridge; step32 r11/entry hbox blockers",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-19 13-49-56-________________________.md",
+      "date": "2026-05-19",
+      "type": "math-utility",
+      "title": "Числа Стирлинга / FallingFactorial utility-layer",
+      "summary": "Числа Стирлинга 1-го и 2-го рода как basis-conversion engine (powers ↔ falling factorials ↔ finite differences ↔ Pochhammer/Gamma-shifts) для Step 32 matrix identification и Pochhammer-collapse. Вердикт: не RH-ключ, а 'коробка передач'. Предложены файлы Q3/Combinatorics/Stirling.lean, FallingFactorial.lean, PochhammerCollapse.lean; первый кирпич Δ x^n = n·x^(n-1) и рекуррентности s(n,k), S(n,k).",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "queue"
+    },
+    {
+      "thread": "2026-5-22 3-31-12-Truth_First_Proof_Protocol.md",
+      "date": "2026-05-22",
+      "type": "meta-protocol",
+      "title": "Truth-First Proof Protocol (proof-gates)",
+      "summary": "Адаптация анти-поддакивающих правил в proof firewall: каждый шаг обязан назвать, какой proof-gate закрывает (normalization / identity / positivity / matrix identification / boundary-null / basis-invariance / finite-to-global / RH-export). Rejection-rules против scalar-mirror, fake positivity, численных сертификатов без моста. Эволюционировал в claude.md rules и batch_patterns.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-23 14-41-5-____________________.md",
+      "date": "2026-05-23",
+      "type": "scaffolding",
+      "title": "Настройка Codex: AGENTS.md + Q3_OBSTRUCTION_ATLAS + checker",
+      "summary": "Готовый пакет для Codex: AGENTS.md (Lean worker), Q3_OBSTRUCTION_ATLAS.md (Step32-35 gates + forbidden moves), .codex/config.toml, scripts/q3_check.sh, первый request step32f_arch_abs_sq (|E_{ell,k}(it)|² профиль B-spline). Зафиксирован реальный коммит: centeredBSplineArchPairing и PacketTranslationKernelData.ofPairing, check_axioms.sh 5 аксиом.",
+      "in_db": true,
+      "db_ref": "GIT: install step32 codex bootstrap; step32 centered b-spline matrix bridge",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-26 16-7-2-______________________________.md (+2 Branch-дубля)",
+      "date": "2026-05-26",
+      "type": "route-definition",
+      "title": "PSD-pd/Q3 маршрут, Step 32-35, Louise caveman rules",
+      "summary": "Уточнение статуса: не 'у нас уже есть доказательство RH', а 'есть RH-route, закрываем semantic bridge: finite certified PSD ⇒ real analytic Weil positivity on B-spline packet space'. Step 32-35 карта, основные тождества h_v=Σv_jψ_j, W(h_v)=vᵀ(A-P)v, Qv=(H_v(1/2),H_v(-1/2)). Louise/caveman rules для /goal. Два Branch-треда — огромные рабочие продолжения (Lean B-spline работа).",
+      "in_db": true,
+      "db_ref": "GIT: psd-pd step33; early q3 certificates (cone error, prime obstruction, psd-pd step33, track b lp); step32 centered b-spline matrix bridge",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-6-9 17-21-42-___________________________________.md",
+      "date": "2026-06-09",
+      "type": "meta-methodology",
+      "title": "Геометрический Ленглендс (Gaitsgory) — урок дисциплины",
+      "summary": "Из 5-работного доказательства Gaitsgory/Raskin берём не теоремы, а дисциплину: dictionary-first (точный словарь между мирами = наш matrix identification), functor/bridge вместо vibes, modular gates (Step32→35), equivalence of formulations. Вердикт: прямой shortcut к RH нет; не уходить в derived geometry/∞-categories.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-6-9 18-6-4-______________________.md",
+      "date": "2026-06-09",
+      "type": "analogy",
+      "title": "OpenAI unit-distance: projection/embedding принцип",
+      "summary": "Разбор публикации OpenAI 'Planar Point Sets with Many Unit Distances' (unramified tower, projections). Перенос: не 'нули рисуем линиями', а faithful projection / Hermitian Gram-probe P(z)=(H_j(z)), critical-line condition z=-conj(z), off-critical negative direction. Вердикт: side-atlas note, не двигать mainline.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-6-10 13-57-22-Projekt_i_synergie.md",
+      "date": "2026-06-10",
+      "type": "math-insight",
+      "title": "Step 34 = место, где живёт RH (margin m(K))",
+      "summary": "КЛЮЧЕВОЙ вердикт владельца, исправляющий переоценку документа: boundary-null конус убивает главный член (pole+prime-main), но флуктуация R не уменьшается — равномерный bound на R по K ⟺ RH (Теорема 4). Конус = правильная система координат, не решение. Hermitian square = формулировка (критерий Вейля), не доказательство. Finite→global требует равномерности запаса m(K)=λ_min((A-P)|ker Q) ≥ m₀>0. Предложен F2: строить кривую margin(K) немедленно.",
+      "in_db": true,
+      "db_ref": "GIT: dom_fm_zero_margin_and_tradeoff_lemma; full margin negative (-0.02); zero-margin facts; positivity margin; margin-density law",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-6-11 12-24-54-________________________.md",
+      "date": "2026-06-11",
+      "type": "math-empirical",
+      "title": "Прибор Вейля: два закона + мотор Какейи + selection vs density",
+      "summary": "Прибор = измеритель перевеса Вейля (A vs P на ker Q), впервые откалиброван (E0, falsifier 3/3, DPSS оптика). Два закона: насыщение (экспоненциальная цена e^{2W} видимости) и вершина (линейный top1 ≈ 2.09·W). Мотор Какейи = Wang-Zahl bootstrap ratchet m(2K) ≥ f(m(K)) как стратегия Step 34. Декомпозиция вершины: top1 = typical(плотность) + gain(селекция); 0.83+0.31 конвенционно-зависимо → MAGNITUDE_OPEN; нож = gain(lattice)=0, gain(CUE)≈gain(zeta).",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "queue"
+    },
+    {
+      "thread": "2026-6-12 13-48-8-_______uncertainty_tax.md",
+      "date": "2026-06-12",
+      "type": "math-verdict",
+      "title": "Track B (CLV) + uncertainty-tax",
+      "summary": "Track B: закрыть лемму E5' (edge defect [2K,4K]) через Carneiro-Littmann-Vaaler/Beurling-Selberg безусловную технологию. DAG B1(CLV-пара)→B2(пронести конус)→B3(бюджет K^{-c}). Вердикт Прошки: B2a (наивная односторонняя мажоранта) платит uncertainty-tax Ω(1/B_K) → FATAL; B2b (explicit-formula/Hermitian-square, PSD zero-side заменяет RH-условность CMS2019) выживает. Atlas-негативы: prime comb не Fourier quasicrystal (Kurasov-Sarnak), de Branges positivity падает (Sarnak 1998).",
+      "in_db": true,
+      "db_ref": "GIT: add b2 uncertainty tax preflight; track b receiver-primary clv schedule; clv edge-strip formula card",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-6-17 18-26-51-________________________________.md",
+      "date": "2026-06-17",
+      "type": "heuristic",
+      "title": "Тривиальные нули как скелет (n-мерное многообразие)",
+      "summary": "Эвристика: тривиальные нули (s=-2,-4,...) = фиксированный Γ-каркас, нетривиальные = резонансные разрезы, полюс s=1 = асимметрия, функциональное уравнение = зеркало. Кандидат-объект ξ'/ξ(s)=Σ1/(s-ρ)+архимедовы члены (все нули в одном месте). Вердикт: HEURISTIC, не THEOREM; связь с C=A-P (A=архимедов каркас, P=простые).",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    }
+  ],
+  "top_insights": [
+    "Step 34 — это и есть RH: boundary-null конус убивает главный член (pole+prime-main), но флуктуация R остаётся; равномерный bound на R по K ⟺ RH. Носитель гипотезы — равномерность запаса m(K)=λ_min((A-P)|ker Q) ≥ m₀>0; кривая margin(K) — самый информативный объект (владелец, 2026-06-10).",
+    "Hermitian square / off-critical negative direction — это корректная ФОРМУЛИРОВКА (критерий Вейля, направление ⇐), а не доказательство позитивности; путать их — главный риск переоценки маршрута.",
+    "Прибор Вейля дал два эмпирических закона: насыщение (экспоненциальная цена видимости ~e^{2W}) и вершина (линейный top1 ≈ 2.09·W); зазор между ними — численный портрет стены Step 34.",
+    "Стратегия Какейи/Wang-Zahl: не одна гигантская лемма RH-уровня, а bootstrap-храповик m(2K) ≥ f(m(K)) + индукция по масштабам — гипотеза, проверяемая диадикой F3.",
+    "Uncertainty-tax: наивный CLV/Beurling-Selberg односторонний мажорант кромочного дефекта платит неустранимый налог Ω(1/B_K) → B2a FATAL; выживает только B2b (explicit-formula/Hermitian-square, где PSD zero-side заменяет RH-условность схемы CMS2019).",
+    "Дисциплина proof-gates (Truth-First Protocol): каждый шаг обязан назвать, какой gate закрывает — normalization/identity/positivity/matrix-ID/boundary-null/basis-invariance/finite-to-global/RH-export; без этого красивая симметрия или численный сертификат выдаётся за доказательство.",
+    "Числа Стирлинга как basis-conversion engine (powers ↔ falling factorials ↔ finite differences ↔ Pochhammer) — не RH-ключ, а зубастый utility-layer для Step 32 matrix identification."
+  ],
+  "gap_candidates": [
+    "Stirling/FallingFactorial/Pochhammer utility-layer (Q3/Combinatorics/Stirling.lean, FallingFactorial.lean, PochhammerCollapse.lean) — предложен 2026-05-19, в индексе DB отсутствует.",
+    "Kakeya/Wang-Zahl bootstrap-храповик m(2K) ≥ f(m(K)) как стратегия атаки Step 34 — в DB не найден (нет 'kakeya', 'wang-zahl', 'ratchet').",
+    "Декомпозиция вершины top1 = typical(плотность) + gain(селекция); MAGNITUDE_OPEN, нож gain(lattice)=0 vs gain(CUE)≈gain(zeta) — в DB не найден.",
+    "Truth-First Proof Protocol / checklist proof-gates (8 ворот) — в DB не найден (эволюционировал в claude.md rules, но явного списка gates нет).",
+    "Эвристика 'тривиальные нули = Γ-скелет, нетривиальные = резонансы', объект ξ'/ξ — осталась HEURISTIC, в DB не зафиксирована как отдельный артефакт."
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "batch": "batch03",
+  "threads_analyzed": 11,
+  "materials": [
+    {
+      "thread": "2026-6-22 18-53-31-T___________________RV.md",
+      "date": "2026-06-22",
+      "type": "background-math",
+      "title": "Huber Probability Canon — RV geometry, L2, RKHS, Weil positivity",
+      "summary": "T-канон Huber'а (T1–T10: De Morgan, Bayes, SLLN, LOTUS, башенное свойство, Коши–Шварц, Пифагор, свёртка, ЦПТ) + геометрия сл.величин (ковариация = скалярное произведение, SD = норма, корреляция = косинус; shift-equivalence L² mod constants). Мост: covariance Gram → RKHS → Hermitian square f=h*h♯ → |H(iγ)|² на критической линии → Weil positivity. Поправка: L² (square-integrable), не L¹.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-6-24 13-40-3-RKHS_______________________.md",
+      "date": "2026-06-24",
+      "type": "falsification+spec",
+      "title": "RKHS и критическая поправка: Gate 0 закрыт, L²-компрессия не мост",
+      "summary": "Диагноз 95%: в Lemma 8.7/9.8 потерян множитель √(2M+1) (точечная оценка ⟨p,v_n^{(M)}⟩=p(ξ_n)/√(2M+1), не p(ξ_n)); point evaluation не ограничена на L²(T), поэтому нет M-uniform L² operator bound. Theorem 9.36 доказывает margin для T_M[P_A]−T_P^{Ray}, а Q* требует (2M+1)T_P^{Ray} — импликация к Q*≥0 отзывается. Закон инерции Сильвестра: G^{-1/2}H_raw G^{-1/2} сохраняет знаки, RKHS-метрика НЕ превращает индефинитную форму в PSD. Spec gate1_weil_rkhs.py: cone-faithful W_{jk}=B(g_k,g_j)=Q(g_k*g_j^∨), c*Wc=Q(g_c*g_c^∨); инварианты ker G ⊆ ker W и Ritz-монотонность λ_min(V_{N+1})≤λ_min(V_N). CP5 не nested (центры и σ меняются с N).",
+      "in_db": false,
+      "db_ref": "rkhs в DB только как litreview (paulsen-raghupathi); nested-schur audit (позже) пересекается",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-6-25 12-37-34-Polnyj_promt_zaprosa.md",
+      "date": "2026-06-25",
+      "type": "meta-protocol",
+      "title": "Полный промпт: K1–K8 ядро + FAST-PATH + META-LEARNING LOOP",
+      "summary": "Полный операционный протокол агента: K1 build judge before player, K2 cheapest decisive test first, K3 structure is cargo, K4 rename object until it computes, K5 propagate properties, K6 refutation is the product, K7 separation of powers (вычисления не занимают квантор), K8 compress the unknown. FAST-PATH P0–P5 и META-LEARNING LOOP M0–M5 (progress audit, loop detection, cognitive operators REPRESENTATION_SHIFT/DUALIZE/…, route score 0–5, session output). Internal triad THEORIST→BREAKERS→RESEARCH→CC-SHADOW.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-6-25 13-30-30-Postmortem_Codex_Goal.md",
+      "date": "2026-06-25",
+      "type": "meta-insight",
+      "title": "Postmortem Codex Goal (Step33A.1-A)",
+      "summary": "Goal не закрыт, застрял в Step33A.1-A. Причины: слишком широкий goal без stage-gates; receiver contract зафиксирован поздно; неверная factorwise-декомпозиция (теряла cancellation); нет раннего kill-rule. Loop = endless bisection (split→raise Taylor→sharpen→not spendable→split). NEXT: сначала минимальный receiver/cert schema, затем whole-expression pilot, C (route-kill) как kill-switch. TIME: Step33A.1-A 2–6 дней (оптимистично) до 1–3 недель; Step34 4–12 недель до 3–9+ месяцев; RH export 1–5 дней. Правило: «сначала дешёвый whole-expression falsifier, затем schema, затем generator».",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-6-25 20-59-58-___________________.md",
+      "date": "2026-06-25",
+      "type": "route-decision+kill",
+      "title": "Выбор подхода Вайля: broad-cone FATAL, точный класс = Hermitian squares",
+      "summary": "Атлас 50 подходов сжат до 5 семейств (explicit formula/positivity; Hilbert closure; real entire; arithmetic cancellation; spectral). Weil остаётся mainline не как «самый лёгкий», а как «самый формализуемый/фальсифицируемый». FATAL: broad-cone W_K (чётные Φ≥0, компактный носитель) ложен — узкий чётный bump Φ_ε у ξ₂=log2/2π даёт Prime(Φ_ε)=2log2/√2>0 при Arch=O(ε) ⇒ Q(Φ_ε)<0. Замена: W_K^sq={g*g^♯ : g∈C_c^∞, supp⊂[-K,K], ĝ(±i/2)=0}. Именованные gaps: WeilSquarePacketExhaustion, PacketSquareDensity, WeilFormContinuous, ExactWeilCriterion. Nyman–Beurling — dual-аудит, Connes — finite companion, Li — regression.",
+      "in_db": true,
+      "db_ref": "proshka_full_weil_sign_attempt_local_observables_2026-09-20.md; proshka_hodge_weil_negative_witness_review_2026-09-12.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-6-26 20-16-28-___________________________.md",
+      "date": "2026-06-26",
+      "type": "proof-attempt",
+      "title": "Route B TwoLevelSpectralLadder: ZEO условная крыша + локальные леммы",
+      "summary": "ZeroEscapeObstruction (ZEO) — условная крыша: Davis–Kahan лемма (η<Δ ⇒ мин. уровень прост, вектор чётен, близок к c·k) + CF-движок Connes–vS (все нули целой функции на вещ. прямой) + E3 strip-upgrade + Connes L7.3 ⇒ на каждом конечном этаже нули вещественны ⇒ strip-близость ⇒ противоречие с off-line нулём. Блочная лемма (T=T*, чётность, a1<a2, tail-условие). Лемма допустимости лестницы (Пуассон решает вопрос анти-Фурье ветки; показатели 1/9/17). Хвостовой аудит: ROGUE_STATE_BELOW_LADDER_CONFIRMED, затем ν-floor баг (float64 проекция, forced zero modes) — NUMERICAL_FLOOR_IN_NU, Route B not killed.",
+      "in_db": true,
+      "db_ref": "GIT: 'add direct ground zeroescape consumer'; 'close c0 and pin generic zeroescape frontier'",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-7-1 17-33-28-_________________.md",
+      "date": "2026-07-01",
+      "type": "kill+concept",
+      "title": "Кодирование нулей: OgusZeroCodec / AH_DiskZeroCodec",
+      "summary": "Кодировка нуля через Frobenius-character λ_p(ρ)=p^{ρ−1/2}; декодер D_p=1/2+log|λ|/log p; |λ_p|=1 ⇔ Re ρ=1/2 (критическая линия ↔ unit circle). AH-слой (Calegari–Dimitrov–Tang): двусторонняя unit-disc аналитичность F_{ρ,p,r}, F^∨ при r→1 даёт squeeze r·p^{|σ|}<1 ⇒ Re ρ=1/2. KILL: «Ogus⇒RH» — wrong-category move (нет объекта v_ρ/когомологии); «phase-only кодировка» выбрасывает Re ρ−1/2 (подделка). Gaps: UnitaryNormalizedPrimeShift / GlobalWeilPositivityBridge, ArithmetizedZeroCodeIntegrality, AH_DiskDualRadiusSqueeze (элементарно, Lean-able).",
+      "in_db": false,
+      "db_ref": "ogus/codec/frobenius — нет в DB",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-7-7 23-18-49-Mandates_and_Mathematical_Audits.md",
+      "date": "2026-07-07",
+      "type": "adversarial-audit",
+      "title": "Mandates: FarComb, LeftEdgeLeakage, HumpMassBound, exponent ledger",
+      "summary": "Adversarial mandates по PEN 3.1.3 FarComb-U/S и PEN 3.1.4a LeftEdgeLeakage. Ключевая находка: BFM Thm 3.1 (arXiv:2310.03949) RH-условна ⇒ S-ветка firewall критичнее арифметической специализации a_n=1; lucky-confirmation audit 0.63% (J=2000) — независимость подтверждена. HumpMassBound (Node 3.2) — главная стена; negative literature search подтверждён. Дисциплина exponent ledger: каждую степень poly(λ) доказывать поимённо, не прятать под O(λ^A); G3_NORMALIZED_DEFECT_MATRIX_POLY_BOUND_FATAL.",
+      "in_db": false,
+      "db_ref": "farcomb/humpmass — нет в DB; mandate-доки в DB относятся к августу (arsenal/glower)",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-7-10 10-14-47-Zakrytie_RH_i_wag.md",
+      "date": "2026-07-10",
+      "type": "kill",
+      "title": "Закрытие RH: contract v1 FATAL (safe = RH-repackaging)",
+      "summary": "G04DefectGramBridge: Connes prolate-комбо (h_0,h_4) + PSWF утечка ~poly(λ)e^{−4πλ²} + Groskin словарь. Детектор-«сейф» α/(μ₃−μ₁): DETECTOR_GAP_CORE («сейф упирается в щель» — гонка полиномиальных степеней). Contract v1 FATAL: (а) доказан SAFE_IS_RH_REPACKAGING («сейф» = RH в спектральном языке); (б) зонд r₁₃ противоречит обоим сценариям; (в) H1 нормализованная матрица растёт экспоненциально (G3_NORMALIZED_DEFECT_MATRIX_POLY_BOUND_FATAL). Резерв Route C «pair, don't multiply» + Cayley–Li Orbifold detector. ALPHA_DETECTOR_OBJECT_DICTIONARY_GAP (слот α пуст).",
+      "in_db": false,
+      "db_ref": "alpha/detector/leakage темы в DB, но SAFE_IS_RH_REPACKAGING и contract-v1-FATAL не индексированы",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-7-10 21-29-20-Teilgespr_ch___Zakrytie_RH_i_wag.md",
+      "date": "2026-07-10",
+      "type": "adjudication",
+      "title": "Teilgespräch: bus-протокол + CANONICALIZE_WEILOP",
+      "summary": "Продолжение: bus 005/006/007 (KEEP_005_006, MIDPOINT_POLE_LEDGER_REPAIR, SECOND_EDGE_CHANNEL_CONFIRMED), ROUTEB_PROVENANCE_GAP. PRIMARY VERDICT: CANONICALIZE_WEILOP (канонизация оператора Вейля); открытые D03G_SPECTRAL_PROVENANCE_COLLISION, D03H_GLOBAL_RANK_CROSSWALK_UNPROVED, D03I_STRICT_EVEN_GAP_UNPROVED. Route B остаётся CHALLENGER. Много оркестрационной бухгалтерии (STOP/READY), математически ценно только CANONICALIZE_WEILOP + D03*.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "queue"
+    },
+    {
+      "thread": "2026-7-11 8-33-29-___________________________PDF.md",
+      "date": "2026-07-11",
+      "type": "pdf-verification",
+      "title": "Проверка доказательства из PDF: условная крыша доказана, стены открыты",
+      "summary": "Построчная проверка §3: Лемма 1.4 (аффинная замена Re ρ=1/2−Im z), Лемма 3.1 (локально-равномерная сходимость), Теорема 3.2 (контур Руше: изолированность нулей → диск вне оси → m>0 → sup|F_j−Ξ|<m → нуль вне оси → противоречие H2). Corollary 3.3 (ZEO roof) — доказанная условная теорема (PO-11-math PROVED, PO-11-Lean OPEN). MASTER_GOAL — лэмпорт-компилятор (AND/OR/LEAF, assembly theorem, zoom-out). Поправки: коллизия имён H1–H4→M-H1…M-H4; H3c ослаблен (c_j→c≠0); D0 = обобщённый A-блок; H4c = TrueSpectralDistanceLowerBound (сильнее SafeGapLower). FINAL: CONDITIONAL_CLOSURE_PROVED, WITNESS_SUPPLY_OPEN, NEXT_MATH_NODE_D0, hardest wall M-H4c, NOT_RH. Bus 009 ожидается негативным (PLANT_SELF_REFERENTIAL).",
+      "in_db": false,
+      "db_ref": "zeroescape git покрывает только Cor 3.3 roof; MASTER_GOAL/D0/H4c не индексированы",
+      "valuable": true,
+      "integrate_as": "queue"
+    }
+  ],
+  "top_insights": [
+    "Weil — единственный mainline, но НЕ broad-cone: класс 'все чётные Φ≥0' FATAL (узкий bump Φ_ε у ξ₂=log2/2π даёт Q(Φ_ε)<0); точный класс = Hermitian squares W_K^sq={g*g^♯, ĝ(±i/2)=0}. Это краеугольный вывод всего batch.",
+    "Gate 0 закрыт как falsification: L²-компрессия не мост к Q (Lemma 8.7/9.8 теряет множитель √(2M+1), point evaluation неограничена на L²(T)); инерция Сильвестра: смена метрики/RKHS НЕ превращает индефинитную форму в PSD. Запрещено возрождать A−P whitening.",
+    "Условная 'крыша' RH (ZEO / Corollary 3.3) доказана математически (Davis–Kahan + CF-движок Connes + E3 + L7.3 → Руше), но НЕ RH: открыты поставка свидетелей D0/M-H1..H4 и H4c TrueSpectralDistanceLowerBound. Статус NOT_RH зафиксирован явно.",
+    "Детектор-«сейф» α/(μ₃−μ₁) = RH-переупаковка: contract v1 FATAL (SAFE_IS_RH_REPACKAGING; G3_NORMALIZED_DEFECT_MATRIX_POLY_BOUND_FATAL — экспоненциальный рост нормализованной матрицы). Резерв Route C 'pair, don't multiply'.",
+    "Ogus/arithmetic-holonomicity НЕ маршрут к RH (wrong-category: нет объекта-когомологии для p^{ρ−1/2}); только codec-blueprint. Кодирование ρ→p^{ρ−1/2}→unit circle точное и элементарно Lean-able (AH_DiskDualRadiusSqueeze), но не RH-шаг.",
+    "Дисциплина exponent ledger: каждая степень poly(λ) должна иметь отдельное доказательство, не прятаться под O(λ^A); BFM Thm 3.1 RH-условна ⇒ firewall на S-ветке FarComb обязателен. Числовой floor (ν ~ −1e-15 из float64 проекции) ≠ математический rogue state.",
+    "Мета-урок процесса: goal без stage-gates + поздний receiver contract + нет kill-rule = endless bisection (Postmortem Step33A.1-A). Порядок: дешёвый falsifier → schema → generator; МАСТЕР-луп (лэмпорт: минимальная лемма → siblings → assembly → zoom-out) принят как протокол."
+  ],
+  "gap_candidates": [
+    "WeilSquarePacketExhaustion / PacketSquareDensity / ExactWeilCriterion — плотность B-spline packet squares в точном Weil square-классе",
+    "D0.1 ExactHilbertSpaceAndNorm (+ D0.2..D0.9 ExactObjectFamily) — точное пространство/норма/оператор до любого 'красивого оператора'",
+    "M-H4c TrueSpectralDistanceLowerBound — истинный пол спектральной дистанции (сильнее модельного μ₃−μ₁)",
+    "G3_NORMALIZED_DEFECT_MATRIX_POLY_BOUND_FATAL — экспоненциальный рост нормализованной дефектной матрицы (H1)",
+    "UnitaryNormalizedPrimeShift / GlobalWeilPositivityBridge — унитарность нормированного prime-shift на zero-space",
+    "HumpMassBound (Node 3.2) — главная стена пера 3.x (negative search подтверждён)",
+    "CANONICALIZE_WEILOP + D03G_SPECTRAL_PROVENANCE_COLLISION / D03H_GLOBAL_RANK_CROSSWALK / D03I_STRICT_EVEN_GAP — канонизация оператора Вейля",
+    "Step33A.1-A exact gap: COMBINED_ORDER16_SCALED_REMAINDER_DIRECT_ROW_SOURCE_GAP (receiver/cert schema + whole-expression pilot)"
+  ]
+}

@@ -1,0 +1,207 @@
+{
+  "batch": "batch06",
+  "threads_analyzed": 16,
+  "materials": [
+    {
+      "thread": "2026-8-19 17-50-4-___________REQ.md",
+      "date": "2026-08-19",
+      "type": "verdict",
+      "title": "G2 NUMERIC ROPES removed from roof critical path (REQ-2026-08-20-B)",
+      "summary": "Первый живой тест автономного Linux-канала. Три NUMERIC-каната клетки (m,N)=(13,120) сняты с критического пути крыши: вердикт FATAL — FINITE_CELL != COFINAL_FAMILY. SlotH2a требует simple/even ground для КАЖДОГО элемента кофинальной семьи, а один 241x241-сертификат не переносится на всю семью. Нужен family-level theorem (SIEG_of_penalty или COFINAL_SIMPLE_EVEN_GROUND_SUPPLIER), а не формализация одной клетки.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_g2_numeric_ropes_critical_path_2026-08-20.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-23 20-17-11-__________________________________.md",
+      "date": "2026-08-23",
+      "type": "architecture",
+      "title": "Q3 Discovery Compiler — typed autonomous discovery loop (reject free-agent swarm)",
+      "summary": "Идея 'Autonomous Mathematical Discovery Loop' (Тополог/Археолог/Кузнец иголок/Инквизитор/Полка знаний) принята НЕ как рой агентов, а как типизированный компилятор открытий: Q3_DISCOVERY_COMPILER, form=TYPED_EVENT_DRIVEN_STATE_MACHINE, free_form_agent_swarm=REJECT. State machine GAP_LOCKED -> CAPABILITY_QUERIED -> ... -> KERNEL_VERIFIED -> SHELF_REGISTERED -> MAP_UPDATED, боковые выходы CANDIDATE_KILLED/QUARANTINED/OWNER_GATE_REQUIRED. Следующий тест Q3_AMDL_V0_SHADOW_BACKTEST (read-only).",
+      "in_db": true,
+      "db_ref": "arsenal_mandate_2026-08-23_modular_discovery_compiler_shadow.md; proshka_verdict_spec_011_typed_discovery_compiler_audit_2026-08-23.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-23 20-17-11-__________________________________.md",
+      "date": "2026-08-23",
+      "type": "taxonomy",
+      "title": "BRIDGE_KIND taxonomy — 'не называем всё изоморфизмом'",
+      "summary": "Жёсткая правка: связь 'квантовый хаос <-> аналитическая теория чисел' почти никогда сразу не изоморфизм. Введён enum BRIDGE_KIND: EXACT_ISOMORPHISM / UNITARY_INTERTWINER / FORM_IDENTITY / ONE_WAY_TRANSFER / ASYMPTOTIC_EQUIVALENCE / STRUCTURAL_ANALOGY / HEURISTIC_ANALOGY. Каждый кросс-доменный мост обязан нести поле BRIDGE_KIND с точным списком сохраняемых операций. В db_index НЕ найден.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-8-24 14-50-51-Proshka_W4_Review.md",
+      "date": "2026-08-24",
+      "type": "verdict",
+      "title": "W4 piecewise-AC derivative node + zero-endpoint jump-ledger repair",
+      "summary": "TRY_W4_PIECEWISE_AC_DERIVATIVE_INTEGRABILITY_LEMMA (глобальная AC отвергнута, piecewise AC на seam-free кусках + конечный jump ledger). Затем TRY_W4_ZERO_ENDPOINT_JUMP_LEDGER_REPAIR: x=0 одновременно нижняя граница zero-extension и seam n=k+2; frozen budget Finset.Icc 2 (k+1) не платил J_0; ремонт = заменить на Icc 2 (k+2), J_0 оплачивается отдельно. Затем TRY_W4_CREATE_FROZEN_FILE_WITH_PRIVATE_LOCAL_RECONSTRUCTION (absent-source private API repair). W2/W3 helpers private -> реконструкция из public suppliers.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_codex_req_2026_08_24_w4_piecewise_ac_authorization_2026-08-24.md; proshka_verdict_codex_req_2026_08_24_w4_zero_endpoint_jump_ledger_repair_2026-08-24.md; proshka_verdict_goal058_w4_absent_source_private_api_repair_2026-08-24.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-25 16-55-57-____________________.md",
+      "date": "2026-08-25",
+      "type": "math",
+      "title": "W5 signed E_star cancellation — ложный рост C_k~(k+2)^{1/4} REFUTED",
+      "summary": "Отмена ложного зонда: считалась sum|H(nu)| вместо |sum H(nu)|. Из-за zero-mass знаки гасятся почти полностью. L1 ~ 0.1243 через четыре порядка k. W5_L1_LOG_PACKET_MASS_RATE закрыт (commit 96bba130, gate 52e81399, 7916 jobs): L1_k <= B + A/sqrt(lambda_k), B=192 e^{-pi/2}(pi-1/2)^{-1}; механизм = E_star_explicitCCMLimitH_inv складывает половины окна, half-Gaussian -> чистая экспонента. W5_FULL_ENDPOINT_VALUE_RATE тоже закрыт (b4e20a83). Порядок: сначала CONSUMER RATE LOCK, потом DERIVATIVE C1.",
+      "in_db": true,
+      "db_ref": "proshka_addendum_goal058_w5_l1_log_packet_mass_rate_source_lock_2026-08-25.md; proshka_verdict_goal058_w5_l1_log_packet_mass_rate_2026-08-25.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-25 22-27-25-______________________________.md",
+      "date": "2026-08-25",
+      "type": "other",
+      "title": "Архитектура айсберга эзотерики (инфографика/мем)",
+      "summary": "Эзотерическая инфографика 'От Трансерфинга к 42' — The Secret, WOOP, Implementation Intentions, Deep Thought. К математике проекта не относится.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-25 23-11-40-Teilgespr_ch____________________Bedazzled.md",
+      "date": "2026-08-25",
+      "type": "other",
+      "title": "Bedazzled / prompt-engineering реальности (мета-обсуждение)",
+      "summary": "Фильм Bedazzled (2000) + генеалогия The Secret/New Thought/Трансерфинг. Ключевая мысль: 'формулируй желание так, чтобы у Вселенной не осталось легального способа исполнить его неправильно' — та же falsifier-first дисциплина, что в K1-K8. Мягкая мета-аналогия, нового мат-контента нет.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-26 0-12-16-__________________________________.md",
+      "date": "2026-08-26",
+      "type": "math",
+      "title": "STURM weighted energy = real global certificate candidate",
+      "summary": "Из prolate eigenrelation вышло точное операторное тождество (1/lambda^2)L_prol = L_cyl + (1/lambda^2)d/dx(x^2 d/dx). Дефект delta=phi-W наследует вырожденный вес (lambda^2-x^2), который ЗАНУЛЯЕТСЯ на границе -> boundary flux исчезает структурно. Universal positivity = coercive tail + finite exact certificate. Бриллиант: INT (lambda^2-x^2)|delta'|^2 <= lambda^{-2} (weighted energy), consumer переписан так, чтобы есть именно её. STURM_ENERGY_IS_A_REAL_GLOBAL_CERTIFICATE_CANDIDATE.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_sturm_weighted_energy_and_edge_consumer_2026-08-25.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-26 1-35-17-_________________________.md",
+      "date": "2026-08-26",
+      "type": "verdict",
+      "title": "Ратификация узлов: STURM node1 + COERCIVE_SPLIT_CERTIFICATE_RECEIVER + v2.1 shadow",
+      "summary": "Батч из 4 пунктов: (1) STURM node 1 ратифицирован — входы C_d,C_e,C_phi,D заморожены, структурный пакет (mu>0, cylinder eigenrelation, mode separation) отдельно; NODE3_WEIGHTED_CONSUMER_AUTHORIZED. (2) FINITE_CERTIFICATE_RECEIVER допущен как COERCIVE_SPLIT_CERTIFICATE_RECEIVER (mu||w||^2 + nu||v||^2, B^2<=nu*mu => Q>=0); guard: не заставлять все pillars выдавать скалярную тройку, сохранять Schur/Feshbach. (3) operator tokens -> crosswalk в PROSHKA_M2. (4) PROSHKA v2.1 -> вариант (a) shadow-бэктест на 12-checkpoint blinded dataset. Позже: interior (y<=lambda/2) companion <= 0.76 C_E закрыт, edge-band остаток флорит на sqrt(log) — три пейринга флорят.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_req_2026_08_26_a_sturm_certificate_registry_shadow_2026-08-26.md; proshka_verdict_req_2026_08_26_b_weighted_consumer_edge_band_rate_2026-08-26.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-27 18-24-37-__________________________.md",
+      "date": "2026-08-27",
+      "type": "representation",
+      "title": "Пересечения кривых в нулях — nodal grid / level curves (Speiser)",
+      "summary": "Идея 'геометризовать нули через сетку кривых' разложена на три версии: (1) буквальные параллельные прямые — FATAL (проективная геометрия); (2) пост-хок прямые через нули — KILLED_TRIVIAL_ENCODING; (3) канонические линии уровня Gamma_u/Gamma_v — VALID_REPRESENTATION, но локально не несут RH-информации. Speiser 1934: RH <-> производная дзеты без нулей левее критической прямой. Дальние нули = кинематический lattice-фактор, центральные = динамический спектральный фактор. Кандидаты R1 ZEROESCAPE_REAL_ROOTED_APPROXIMANTS, R2 CRITICAL_GRAPH_OF_LEVEL_CURVES, R3 HERMITE_BIEHLER_PHASE_FOLIATION.",
+      "in_db": true,
+      "db_ref": "GIT digest 'geometrize zeros via rigid level-curve families (speiser line)'; GIT 'nodal-grid test: visualization only (rolle)'",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-27 8-33-42-__________________.md",
+      "date": "2026-08-27",
+      "type": "audit",
+      "title": "Анализ репозитория — два фатальных legacy-слоя",
+      "summary": "Независимый аудит Malaeu/chen_q3@rh_clean (head 58b85da8). FATAL: (1) Q3.Main compiled RH export зависит от содержательных аксиом (Weil_criterion, prime_term_le_at_t_critical_axiom) -> VALID_LEAN_THEOREM_UNDER_AXIOMS, NOT unconditional; (2) T1.6 c_arch_pos приписывает T1.3 утверждение 'a_star(ξ)>0 ∀ξ', которое T1.3 явно отвергает при |ξ|>1 — прямая коллизия. Ремонт: namespace Q3.Conditional.LegacyBroadCone, карантин c_arch_pos/c_star_le_c_arch. Слои: legacy RH export / Hermitian-square mainline / Route B challenger. Route B — OPEN_COHERENT_RESEARCH_PROGRAM, near-term closure confidence low.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_repository_topology_semantic_quarantine_and_todo_2026-08-27.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-31 23-41-16-Proof_Loop_Admission_Check.md",
+      "date": "2026-08-31",
+      "type": "governance",
+      "title": "Proof Loop Admission — KERNEL_GREEN != SEMANTICALLY_ADMITTED; field-bound owner waiver",
+      "summary": "Различение трёх уровней: LEVEL1 mathematical correctness (Lean), LEVEL2 contract correctness (consumer fit), LEVEL3 route relevance. Semantic admission receipt = машиночитаемая квитанция интерфейса (object/space/quantifiers/normalization/hypotheses/output). OWNER_EXPLICIT_SEMANTIC_WAIVER — field-bound (entry_id, source_blob, theorem_ids, consumer, normalization), меняется любой существенный кусок -> waiver невалиден. Принцип: 'доказать' и 'встроить' — две разные операции.",
+      "in_db": true,
+      "db_ref": "множество proshka_verdict_*_semantic_admission_*.md (механизм уже каноничен)",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-9-1 0-9-6-____________________.md",
+      "date": "2026-09-01",
+      "type": "meta",
+      "title": "Аргументация теоремы — крыша/колонны/канаты, 69 канатов",
+      "summary": "Метафора стены->крыша->колонны->канаты. Крыша Hurwitz G1..G6 -> H; количество канатов диктует доказательство (consumer-first decomposition), а не эвристика. '51 из 69 закреплено' != '51/69 RH доказано' — это состояние assembly graph. Три происхождения свойств колонн: (A) hypotheses доказанной теоремы, (B) доказанный bridge, (C) research plan (опасно).",
+      "in_db": true,
+      "db_ref": "implicit in semantic_admission verdict graph",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-9-2 20-59-1-____________________RH.md",
+      "date": "2026-09-02",
+      "type": "verdict",
+      "title": "Kill-first план: Шаг 1 (характеризация Xi) и Шаг 2 (Rellich) убиты, Шаг 3 (gap) сохранён",
+      "summary": "Самый быстрый путь до RH = сначала убить всё нерабочее. STEP1 (порядок1+вещественные нули+ФУ+якорь идентифицируют Xi) — KILL контрпримером F_a(z)=A cos(az). STEP2 TRY_RELLICH_COFINAL — KILL_AS_STATED: нет source-locked аналитической lambda-семьи (ccmWeilMatFinite дискретна по (m,N), prime-entry меняется с mProject); Rellich не даёт cofinal simple-even. STEP3 (residual/gap/tail budget) — KEEP_WITH_REPAIR, target COFINAL_TRACKING_BUDGET: C_K(j)||r_j||/L_j + Tail_j + NormError_j -> 0. Chosen route COUPLED_FESHBACH_GROUND_GRAPH.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_mythos_three_stage_fastest_kill_plan_2026-09-03.md; proshka_verdict_unbound_three_stage_fastest_kill_plan_2026-09-03.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-9-3 21-49-39-Adjudicate_request_payload.md",
+      "date": "2026-09-03",
+      "type": "verdict",
+      "title": "Adjudicate ZEROPIN / LEAKAGE / WINDLOCK (byte-exact payloads)",
+      "summary": "Три адъюдикации byte-exact payload (SHA-256, blob, LF верифицированы). ZEROPIN: KILL_PARTIAL_REAL_ZERO_PINNING_AS_XI_IDENTIFICATION (real zeros + второй jet не идентифицируют Xi). LEAKAGE: TRY_P59_ANCHORED_LOG_DERIVATIVE_FIXED_COMPACT_DIVISOR_CONTROL — cutoff-free Weil zero-sum identity подтверждена на real-even sector, но её positivity как leakage energy работает только при RH. WINDLOCK: KILL_SINGLE_ENDPOINT_ATOM_AS_RECTANGLE_ROUCHE_CERTIFICATE контрпримером X=1, F=(1-z^2/a^2)(1-z^2/b^2) — e(R)<1 в одной точке не сертифицирует число нулей; нужен полный boundary Rouché margin.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_ground_transform_zero_pinning_and_real_zero_identification_2026-09-04.md; proshka_verdict_goal058_window_weil_identity_and_leakage_mechanism_2026-09-04.md; proshka_verdict_goal058_winding_lock_rectangle_results_and_endpoint_atom_2026-09-04.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-9-5 0-35-12-Verify_Proof_Verdict.md",
+      "date": "2026-09-05",
+      "type": "math",
+      "title": "WEILPROOF + попытка полного paper-proof: арифметическая факторизация и density-дефект",
+      "summary": "VERDICT TRY_WEIL_EXACT_TRANSLATION_GRAM_AND_SIGNED_ARITHMETIC_REMAINDER, RESULT PARTIAL_PROOF. Затем попытка полного доказательства: точное тождество суммы квадратов (фон Мангольдт): sum a_n|c_n|^2 - 2Re sum Lambda(d)/sqrt(d) c_n^* c_nd = sum Lambda(d)|c_nd - c_n/sqrt(d)|^2 >= 0; B(y)<=log y+4log2 без PNT; явная нижняя граница mu_M = 2logM - c_A - 3log2 - 1/(8M) - e^{eps}/(16 M^{5/2}). НО дефект доказан: пространства V_M (узкие пакеты) не приближают ни один фиксированный ненулевой тест (dist_L2 -> ||g||_2 > 0), поэтому переход к RH ложный. RH в этом проходе НЕ получен.",
+      "in_db": true,
+      "db_ref": "proshka_verdict_goal058_direct_weil_source_proof_2026-09-04.md; proshka_verdict_weilproof_continuation_arithmetic_packets_and_density_2026-09-05.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-9-5 20-40-1-Teilgespr_ch___Proverka_commitov_GitHub.md",
+      "date": "2026-09-05",
+      "type": "lean",
+      "title": "Same-family cofinal composition core theorem (записан в Lean)",
+      "summary": "Записан Q3.RouteB.sameFamilyGroundTrialCompositionCore (commit 9cc3e01b): если tracking/tail/normalization errors -> 0 локально равномерно на U, то finiteGroundTransform - ccmTrialTransform -> 0 локально равномерно. Один индекс/Filter/область/семьи — закрывает same-family firewall против подмены семей. Plant fixed_bound_without_vanishing_rate_not_uniform_zero (ограниченность != сходимость). KERNEL_VALIDATION PENDING (не PROVED). NEXT_GAP COFINAL_SOURCE_RESIDUAL_GAP_TRANSFORM_TAIL_BUDGET = C_K(m,N)||r_j||/Delta_j + Tail_j + NormError_j -> 0.",
+      "in_db": true,
+      "db_ref": "proshka_same_family_ground_trial_composition_core_2026-08-18.md",
+      "valuable": true,
+      "integrate_as": "skip"
+    }
+  ],
+  "top_insights": [
+    "Кванторная дисциплина — лейтмотив всего батча: FINITE_CELL != COFINAL_FAMILY (G2), FOR_ALL_K_ON_ONE_PARENT_PATH (SlotH2a), одна клетка (13,120) не переносится на семью. Почти все KILL'ы в этом окне — это подмена квантора или surrogate-объекта.",
+    "Правильное представление объекта уничтожает ложную стену: W5 signed E_star (|sum H|, а не sum|H|) гасит рост C_k~(k+2)^{1/4} через zero-mass cancellation; STURM weight (lambda^2-x^2) структурно зануляет boundary flux.",
+    "Крыша уже формально доказана (Hurwitz G1..G6->H), остаточная работа — только канаты (suppliers): '69 канатов' = dependency obligations, а '51 из 69' — состояние assembly graph, не процент доказательства RH.",
+    "Разделение доказательства и встраивания: KERNEL_GREEN (Lean, Level 1) != SEMANTICALLY_ADMITTED (contract fit, Level 2) != route relevance (Level 3). Field-bound OWNER_WAIVER — управляемое исключение, не --trust-me-bro.",
+    "Наиболее близкая попытка полного RH-доказательства (WEILPROOF) дала честный положительный результат (арифметическая сумма квадратов + явная нижняя граница mu_M) И доказанный дефект перехода: узкие пакеты V_M не приближают фиксированный тест, density-lift мёртв. Это образец того, как машина сама себя фальсифицирует до ложного RH-claim.",
+    "Kill-first методология сработала: Шаг 1 (характеризация Xi) убит контрпримером A·cos(az) за день, Шаг 2 (Rellich cofinal) убит отсутствием analytic family; остался единственный настоящий wall — COFINAL_SOURCE_RESIDUAL_GAP_TRANSFORM_TAIL_BUDGET.",
+    "Аудит репозитория вскрыл два фатальных legacy-слоя: Q3.Main RH export условен на аксиомах (Weil_criterion), а c_arch_pos приписывает T1.3 утверждение, которое T1.3 явно отвергает — опасность 'выглядит как готовый theorem RH' снаружи."
+  ],
+  "gap_candidates": [
+    "BRIDGE_KIND taxonomy (EXACT_ISOMORPHISM/UNITARY_INTERTWINER/FORM_IDENTITY/ONE_WAY_TRANSFER/ASYMPTOTIC_EQUIVALENCE/STRUCTURAL_ANALOGY/HEURISTIC_ANALOGY) из треда 2026-8-23 — в db_index НЕ найдена; кандидат на memory (классификация кросс-доменных мостов для representation-shift).",
+    "Арифметическая сумма квадратов (фон Мангольдт identity: sum Lambda(d)|c_nd - c_n/sqrt(d)|^2 >= 0) как самостоятельная reusable лемма — сейчас погребена внутри 'weilproof_continuation' как refuted density-lift; положительная часть заслуживает именованного supplier.",
+    "Порядок 'consumer rate lock ДО derivative C1' (W5) — reusable мета-урок sequencing: сначала выяснить минимально допустимую скорость C_k у downstream consumer, потом формулировать derivative theorem (может сэкономить всю C1-математику)."
+  ]
+}

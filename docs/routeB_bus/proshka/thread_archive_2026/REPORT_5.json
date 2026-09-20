@@ -1,0 +1,189 @@
+{
+  "batch": "batch05",
+  "threads_analyzed": 13,
+  "materials": [
+    {
+      "thread": "2026-8-6 19-30-18-______________________.md",
+      "date": "2026-08-06",
+      "type": "meta-insight / external precedent",
+      "title": "Connes–Consani–Moscovici «Zeta Spectral Triples» (arXiv 2511.22755) — параллельная программа RH, 1:1 маппинг на Route B",
+      "summary": "Владелец проверяет живьём: 23.06.2026 вышла статья Конна–Консани–Московичи — RH через спектральную реализацию нулей самосопряжёнными операторами D_log^(λ,N) (одноранговые возмущения оператора масштабирования). Их карта совпадает с Route B 1:1: E_N(λ) = наш modeSet {-N..N}; δ_N = воспроизводящее ядро; вещественность конечных нулей «даром» через сдвиг на дно (позитивность бесплатна по определению минимума); финал — Гурвиц. Их missing steps: простота+чётность ground-state + близость educated guess k_λ=E(h_λ) (пролат 0+4) к настоящему вейлевскому ground state ξ_λ. Вся RH у них сжата в одну строку ξ̂_{N,λ}→Ξ локально равномерно.",
+      "in_db": false,
+      "db_ref": "в DB только connes 2602.04022 (GIT litreview) и connes-marcolli NCG; статья 2511.22755 отсутствует",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-8-6 19-30-18-______________________.md",
+      "date": "2026-08-06",
+      "type": "mathematical method",
+      "title": "Prolate-to-Weil bridge: коэрцитивная PSD-оценка (условие C) закрывает оба missing steps Конна сразу",
+      "summary": "Построена количественная балка: residual r_λ,N = (W_λ,N − μ_λ,N·I)v_λ,N и коэрцитивность P_⊥(W−μI)P_⊥ ⪰ G_λ,N·P_⊥. Из одного условия (C) следуют: простота ground state (ε1−ε0 ≥ G), чётность (J-симметрия), и близость sin∠(v,ξ) ≤ ∥r∥/G — настоящий prolate-to-Weil bridge, а не график похожести. Перенос на Mellin–Fourier через M_η(λ). Это напрямую закрывает два препятствия, которые авторы называют главными оставшимися.",
+      "in_db": false,
+      "db_ref": "coercivity упоминается только в GIT-записях explicit even/odd tail coercivity; сам bridge-метод не оформлен",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-8-6 19-30-18-______________________.md",
+      "date": "2026-08-06",
+      "type": "artifact (negative verdict)",
+      "title": "PROSHKA_REQUEST_UNIFIED_CONDITIONAL_CHAIN (CCM+SUZUKI+Route B) → KILL_UNIFIED_CHAIN_AS_STATED_WRONG_FAMILY_SPLICE",
+      "summary": "Mythos запрашивает единую условную цепь (CCM+Suzuki+Route B) и Δ-probe ратификацию. Вердикт: KILL — сплайсинг семейств как заявлено некорректен (WRONG_FAMILY_SPLICE). Отрицательный результат: нельзя сшивать три семейства в одну цепь в исходной формулировке.",
+      "in_db": false,
+      "db_ref": "unified_conditional_chain / wrong_family_splice в индексе отсутствуют",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-8-6 19-30-18-______________________.md",
+      "date": "2026-08-06",
+      "type": "method",
+      "title": "H2A_SECTOR_GAP_FINITE_PROBE — зонд секторного зазора через обобщённую задачу с Gram",
+      "summary": "Дизайн конечного фальсификатора: точный эрмитов pencil Kv=λGv с положительно определённой Gram-метрикой (не сырой спектр — C10 Gram-риск), split на чётный/нечётный секторы. Измеряемая величина Δ_sec = min{λ1+, λ0−} − λ0+; pass-envelope: min{L(λ1+),L(λ0−)} − U(λ0+) > 0. Pre-commit клеток до запуска (C09). Явно: [FINITE_CELL][ARB_INTERVAL] ≠ [COFINAL_FAMILY][LEAN/PAPER].",
+      "in_db": false,
+      "db_ref": "sector / h2a / generalized_eigen / gram_pencil в индексе отсутствуют",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-8-6 19-30-18-______________________.md",
+      "date": "2026-08-06",
+      "type": "result",
+      "title": "V_n_m полнота — буквальный гильбертов базис закрыт (completeness wall убита)",
+      "summary": "Codex локально доказал vnmHilbertBasis (HilbertBasis ℤ ℂ (H_m i)) + буквальное равенство vnmHilbertBasis_apply = V_n_m, включая сюръективность лог-переноса. Для фиксированного m следует ∥f−P_{m,N}f∥→0. Но selected cofinal (m_k,N_k→∞) tail остаётся OPEN — нельзя продавать fixed-m Parseval как uniform decay.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_verdict_goal056_log_window_v_n_m_completeness_2026-08-06.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-7 20-19-0-_______________2026.md",
+      "date": "2026-08-07",
+      "type": "result / theorem",
+      "title": "Карта развилки: H2a_SimpleEvenGround_FromPenaltyCoercivity — найден gap-certifier, а не gap-bound",
+      "summary": "Обнаружено, что Lean-движок уже доказывает penalty-coercivity сертификат: K−βG+τ(Gq)(Gq)*⪰0 ⇒ lowest eigenvalue, simple ground eigenspace, J-even ground, явная щель μ−λ1 ≥ β−a. Это точный machine-checked сертификатор зазора (односторонняя формовя коэрцитивность), а не численный gap. Совпадает с открытым запросом CCM «simple + even lowest state» — то есть закрывает Connes missing step #1.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_verdict_ccm_penalty_crosswalk_2026-08-07.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-9 10-14-19-___________________________________.md",
+      "date": "2026-08-09",
+      "type": "meta-insight / postmortem",
+      "title": "proof_geometry V0 + spectral_cut postmortem: мультипликативный soft-штраф не выдерживает экспоненциального спада; доверие должно быть hard gate",
+      "summary": "Постмортемы PROSHKA_VERDICT_PROOF_GEOMETRY_V0_POSTMORTEM и SPECTRAL_CUT_POSTMORTEM_RAYLEIGH_DISCRIMINATOR: мультипликативный soft-штраф не выдерживает экспоненциального спада потенциала с глубиной — доверие должно быть hard gate, не множителем. Убитые ветки ложатся на дно (kill в top-3 только на вырожденном cp24). Rayleigh-дискриминатор как разделитель веток.",
+      "in_db": false,
+      "db_ref": "proof_geometry / spectral_cut в индексе отсутствуют",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-8-9 15-52-23-______________________________.md",
+      "date": "2026-08-09",
+      "type": "strategy package",
+      "title": "Сравнительная оценка маршрутов (Route comparison effort estimate) + addendum Mythos",
+      "summary": "Пакет для Mythos/Прошки — сравнительная оценка маршрутов (H3f гипотеза uniform-in-M, section coercivity Q_M ≥ c(a)I). Пересобран после разбора четырьмя агентами. Ревизия PROSHKA_ROUTE_COMPARISON_REVISED. Зафиксирован сравнительный effort по маршрутам.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_route_comparison_effort_estimate_2026-08-09.md; proshka_route_comparison_revised_2026-08-09.md; proshka_mythos_addendum_adjudication_2026-08-09.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-9 19-12-41-____________________________.md",
+      "date": "2026-08-09",
+      "type": "mandate / result",
+      "title": "G-LOWER contract mandate (kill-and-repair нижней границы) + RUN_DELTA_N480_AITKEN",
+      "summary": "G-LOWER: kill-and-repair последней живой стены gap-вопроса; R3 2026-08-09: question-5 dissolution interlacing, re-rank batch, rule N=480 fate. Численный прогон RUN_DELTA_N480_AITKEN (N=480, Phase 2B cell m=13) с Aitken-ускорением. Обходные пути: что реально закрывает L≥0 (верхний Ritz envelope). PROSHKA_VERDICT_GLOWER_* и ODD_TAIL_GRADED_RESOLVENT.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_glower_contract_mandate_2026-08-09.md; proshka_glower_exact_closure_2026-08-09.md; proshka_verdict_glower_full_residual_beta_moment_2026-08-10.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-11 12-40-15-_____________________________.md",
+      "date": "2026-08-11",
+      "type": "result",
+      "title": "CCM Lagrange→selected family crosswalk, P59 ground bridge, M1B→M1C parity repair (Rayleigh 0.00797 → 9.892e-5 STRONG)",
+      "summary": "P59_GROUND_LAGRANGE_ZEROSET_BRIDGE_PROVED (точный _normalized supplier, координата -L·z/(2π), без sorry). M1B классифицирован WEAK (sqrt(U_rayleigh)=0.00797); M1C разложение trial по чётности улучшило сертифицированную границу до 9.892×10⁻⁵ (STRONG), в 1.44× выше наблюдаемой дистанции 6.85×10⁻⁵, нечётная масса учтена честно (ω≈2.956×10⁻⁶⁰). Три точности 80/105/130 согласованы.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_request_ccm_lagrange_to_selected_family_crosswalk_2026-08-11.md; proshka_m1b_weak_commit_and_m1c_parity_repair_2026-08-12.md; proshka_m1c_strong_commit_verdict_2026-08-12.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-11 19-51-3-Branch________________________________.md",
+      "date": "2026-08-11",
+      "type": "meta-insight",
+      "title": "Гурвиц переносит сходимость, а НЕ вещественность нулей — bridge, переносящий вещественность, невозможен",
+      "summary": "В ветке сформулирован ключевой инсайт: «bridge переносит сходимость, а не вещественность нулей… почему нельзя сделать bridge, который бы переносил вещественность?». Ответ: свойство одной последовательности нельзя перенести на предел другой без theorem, связывающей эти последовательности; вещественность обязана жить на конечной стороне, а через предел идёт только сходимость (Гурвиц). RH closure требует одной невырожденной кофинальной последовательности, где finite real-rootedness и locally uniform convergence к Ξ доказаны одновременно.",
+      "in_db": false,
+      "db_ref": "hurwitz / zero_escape / locally_uniform в индексе отсутствуют; master_route есть как proshka_master_route_realzero_ground_diagonal_to_xi_2026-08-11.md",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-8-13 10-56-50-Codex_avtomatizacija.md",
+      "date": "2026-08-13",
+      "type": "process / automation",
+      "title": "Автономный Codex goal-runner (campaign → goal-phase → cycle), фаза ≠ goal",
+      "summary": "Запрос владельца: чтобы Codex работал автономно без ручного управления, по фазам (для него одна фаза = goal). Дизайн: детерминированный supervisor над codex exec, campaign → goal-phase → cycle; A5 оставляет выбор следующего шага ручным, B6 без machine-checkable phase completion. Терминология: mathematical phase = SIX_FIELD_PHASE_KEY, единица исполнения = GOAL_RUN. non-px-RH математика = Codex+Прошка; px-RH claim = только владелец.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_verdict_autonomous_goal_runner_2026-08-13.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-13 22-40-26-_______CCM_________.md",
+      "date": "2026-08-13",
+      "type": "result / source carrier",
+      "title": "Мост к CCM-матрицам: G1/G3 два минимальных source-носителя (DLMF zero-count + Slepian phase-order), Feshbach/Riccati связка",
+      "summary": "G3 достигает точного ODE-конструктора (mode-four Ferrers prolate), но требует упорядоченной PSWF/Fourier идентификации; G1 редуцируется к секторной простоте/порядку. Вердикт DECISION B: TWO_MINIMAL_SOURCE_CARRIERS_THEN_LOCAL_ASSEMBLY — DLMF zero-count закон (степень n−m=2j внутренних нулей) и Slepian–Pollak phase/order закон (κ4<κ0, фаза iⁿ) должны оставаться отдельными носителями (C04 same-coordinates/two-laws, C10). Feshbach/Riccati bridge может связать G1 и G3 в одну ground-line.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_brief_goal058_g1_g3_next_source_task_2026-08-13.md; proshka_goal058_actual_source_closure_verdict_2026-08-14.md; GIT pswf slepian-pollak source dossier",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-8-17 19-58-11-Branch__________________.md",
+      "date": "2026-08-17",
+      "type": "meta-insight / gap statement",
+      "title": "Route B полная схема до RH, но главный пролёт — PLACEHOLDER: FiniteGroundTransformToCCMTrialLocallyUniform + «иголка Зингера»",
+      "summary": "Владелец ловит противоречие: «полная цепочка» ранее звучала как построенный мост, но главный пролёт — только PLACEHOLDER/PROSE. Честный статус: dependency graph полный, но не каждое ребро доказано. Главная недостающая теорема — FiniteGroundTransformToCCMTrialLocallyUniform (same-family approximation bridge между finite ground и CCM trial); «exact ground equals trial» убито. Главная открытая формула («иголка Зингера»): c_j·G_j − T_j → 0, т.е. CK·Δj·∥rj∥ + Tailj(K) + NormalizationErrorj(K) → 0. Гурвиц-эндшпиль (F_j→Ξ локально равномерно ⇒ off-line нули Ξ невозможны) валиден.",
+      "in_db": false,
+      "db_ref": "same_family_ground_trial_composition_core_2026-08-18.md есть, но route_map_complete / finite_ground_transform / placeholder / иголка Зингера в индексе отсутствуют",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-8-18 9-48-45-Proverka_commitov__________.md",
+      "date": "2026-08-18",
+      "type": "process rule / result",
+      "title": "Проверка коммитов: GATE-результаты literal CCM cofinal floor + правило «СТОП НА РАСЩЕПЛЕНИЕ» + KILL Rayleigh proximity",
+      "summary": "Серия GATE RESULT: SameFamilyGroundTrialCompositionCore и CofinalSourceResidualGapTransformTailBudget НЕ КОМПИЛИРОВАЛИСЬ (sorryAx при совпавших побайтно SOURCE_LOCK — квитанции точные, ядро красное); LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail КРАСНЫЙ→ЗЕЛЁНЫЙ; LiteralCCMComplementFloorConstruction ЗЕЛЁНЫЙ (но редкая картина — plant-sorryAx). Правило «СТОП НА РАСЩЕПЛЕНИЕ»: узел, открывающий входов больше, чем закрывающий, НЕ пишется (CLOSES/OPENS обязательны). KILL_SOURCE_RAYLEIGH_PROXIMITY_FROM_MINIMUM_EIGENPAIR: hermitian min-eigenpair не даёт кофинальную Rayleigh proximity к фиксированному a*.",
+      "in_db": true,
+      "db_ref": "docs/routeb_bus/proshka/proshka_source_record_literal_ccm_cofinal_residual_floor_envelope_and_transform_tail_2026-08-18.md; proshka_kill_source_rayleigh_proximity_from_minimum_eigenpair_2026-08-19.md; proshka_same_family_ground_trial_composition_core_2026-08-18.md",
+      "valuable": false,
+      "integrate_as": "skip"
+    }
+  ],
+  "top_insights": [
+    "Внешний прецедент: Connes–Consani–Moscovici «Zeta Spectral Triples» (arXiv 2511.22755, 23.06.2026) — программа RH через спектральную реализацию нулей; их карта 1:1 совпадает с Route B (modeSet ↔ E_N, δ_N ↔ воспроизводящее ядро, вещественность конечных нулей «даром» через сдвиг на дно, финал — Гурвиц).",
+    "Оба missing steps Конна (простота+чётность ground state, k_λ≈ξ_λ) закрываются одной коэрцитивной PSD-оценкой (условие C) — настоящий prolate-to-Weil bridge; у нас уже есть penalty-coercivity сертификатор H2a_SimpleEvenGround_FromPenaltyCoercivity (gap-certifier, а не gap-bound).",
+    "M1C: разложение trial по чётности улучшило сертифицированную границу Рэлея с 0.00797 (WEAK) до 9.892×10⁻⁵ (STRONG), в 1.44× от наблюдаемой дистанции 6.85×10⁻⁵.",
+    "Главный открытый пролёт Route B — FiniteGroundTransformToCCMTrialLocallyUniform (PLACEHOLDER/PROSE); «exact ground equals trial» убито; «иголка Зингера» = c_j·G_j − T_j → 0 (CK·Δj·∥rj∥ + Tailj + NormalizationErrorj → 0).",
+    "Гурвиц (1889) переносит сходимость, а НЕ вещественность нулей — bridge, переносящий вещественность напрямую, невозможен; вещественность обязана жить на конечной стороне.",
+    "Правило «СТОП НА РАСЩЕПЛЕНИЕ»: узел, открывающий входов больше, чем закрывающий, не пишется; KILL_RAYLEIGH_PROXIMITY_FROM_MINIMUM_EIGENPAIR — min-eigenpair не даёт кофинальную Rayleigh proximity."
+  ],
+  "gap_candidates": [
+    "Connes–Consani–Moscovici «Zeta Spectral Triples» (arXiv 2511.22755) — статья и её 1:1 маппинг на Route B не в DB (в DB только connes 2602.04022 и connes-marcolli NCG).",
+    "Prolate-to-Weil coercivity bridge (условие C) и его связь с penalty-coercivity сертификатором H2a — метод не зафиксирован отдельным доком.",
+    "H2A_SECTOR_GAP_FINITE_PROBE (обобщённая задача с Gram, Δ_sec = min{λ1+,λ0−}−λ0+) — зонд секторного зазора не в DB.",
+    "«Иголка Зингера» — главная открытая формула (c_j·G_j − T_j → 0) и статус ROUTE_MAP_COMPLETE_BUT_SAME_FAMILY_SPAN_UNPROVED (PLACEHOLDER FiniteGroundTransformToCCMTrialLocallyUniform).",
+    "Инсайт «bridge переносит сходимость, а не вещественность» (Гурвиц / zero-escape endgame) — не оформлен как отдельный документ.",
+    "Правило «СТОП НА РАСЩЕПЛЕНИЕ» (OPENS>CLOSES не пишется) — процессное правило не в DB.",
+    "PROSHKA_VERDICT_PROOF_GEOMETRY_V0_POSTMORTEM + SPECTRAL_CUT_POSTMORTEM_RAYLEIGH_DISCRIMINATOR (hard gate вместо мультипликативного soft-штрафа) — постмортемы не в DB.",
+    "KILL_UNIFIED_CHAIN_AS_STATED_WRONG_FAMILY_SPLICE — отрицательный вердикт о недопустимости сплайсинга CCM+Suzuki+RouteB семейств."
+  ]
+}

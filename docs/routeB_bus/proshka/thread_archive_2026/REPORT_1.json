@@ -1,0 +1,196 @@
+{
+  "batch": "batch01",
+  "threads_analyzed": 6,
+  "materials": [
+    {
+      "thread": "2026-4-21 12-11-47-_________________2025_2026.md",
+      "date": "2026-04-21",
+      "type": "PROPOSAL",
+      "title": "Connes 2026 Letter to Riemann — Q3 bridge",
+      "summary": "Connes 2602.04022 extremizes Weil quadratic form on primes<13 (50 нулей); цепочка Q3 Weil_criterion_tau0 <= Q_nonneg_on_atoms <= T_M Rayleigh λ_min>=c*/4 — тот же skeleton. Реальный comparator — связка Connes-Consani 2020/21 -> Connes-van Suijlekom 2025 -> CCM 2025 -> Connes 2026, а не Bulyaki-Elliott/Georgieva (ResearchGate-only).",
+      "in_db": true,
+      "db_ref": "git: connes-2026 usage card + cvs 2511.23257 = h2b engine (q3 matrixbridge infra); connes rh 2602.04022",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-21 12-11-47-_________________2025_2026.md",
+      "date": "2026-04-21",
+      "type": "METHOD",
+      "title": "Basis-invariant positivity / Gram-corrected PSD (formal finite-cap companion)",
+      "summary": "Самый быстрый честный спин-офф: доказать basis-invariant statement (T_M представляет тот же compressed Weil form после Gram-correction), positivity — свойство формы, не таблицы коэффициентов; generalized eigenproblem Av=λGv; 'formalize the checker, not the numerics engine'.",
+      "in_db": true,
+      "db_ref": "git: cvs h2b formalization bridge (q3 mirrors cvs §5 finite route, posdef-self-adjoint => real spectrum)",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-25 10-15-32-Mathematical_Review_Riemann_Hypothesis.md",
+      "date": "2026-04-25",
+      "type": "VERDICT",
+      "title": "AbsoluteRowMassControl НЕ viable → log-loss bound",
+      "summary": "Oracle: exterior absolute A-mass = o(M_k|m_rho(xi_k)|) не доказуемо из Y_a + O(γ^-3) + classical zero-counting; замена — log-loss absolute row-mass bound + сильная pointwise mirror suppression, что даёт po3_endpoint_row_log_mass_mirror_control.",
+      "in_db": true,
+      "db_ref": "git: po3 log-loss finite count mass bridge + po3 log-loss mirror consumer",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-25 10-15-32-Mathematical_Review_Riemann_Hypothesis.md",
+      "date": "2026-04-25",
+      "type": "VERDICT",
+      "title": "RowClusterExhaustion → threshold-exhaustive variable packet",
+      "summary": "Fixed finite P_k не сработал; замена — threshold-exhaustive comparable packet P_k(δ_k), δ_k log(2+xi_k)->0, omitted A-mass = o(D_{k,rho}); живой blocker становится VariableComparablePacketCapture.",
+      "in_db": true,
+      "db_ref": "git: po3 variable packet capture consumer + po3 threshold omitted mass bridge",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-25 10-15-32-Mathematical_Review_Riemann_Hypothesis.md",
+      "date": "2026-04-25",
+      "type": "THEOREM",
+      "title": "po3_variable_comparable_packet_capture_of_stable_projection",
+      "summary": "Stable projection capture: из V q = epsilon и ||x - Proj x|| <= C||V x|| следует ||q - Proj q|| <= C||epsilon||; потребитель EndpointRowStableProjectionOrRouteKill (нужно C_k||epsilon_k||->0 либо route-kill).",
+      "in_db": true,
+      "db_ref": "git: po3 stable projection conditioning fork + po3 shifted row-error stable-projection consumer",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-25 10-15-32-Mathematical_Review_Riemann_Hypothesis.md",
+      "date": "2026-04-25",
+      "type": "THEOREM",
+      "title": "Bounded-separated product asymptotic m -> exp(-p t)",
+      "summary": "PO3EndpointRowProductAsymptoticCertificate: если local tube + Theta_{k,p}/Lambda_k -> alpha_p + S_{k,p}/|Lambda_k|^2 -> 0, то m_{k,p}(xi_k+t/Lambda_k)/m_{k,p}(xi_k) -> exp(-alpha_p t) равномерно. Growing packet — route-kill без отдельной singular-gap теоремы.",
+      "in_db": true,
+      "db_ref": "git: po3 bounded separated projection wrapper + po3 endpoint row product asymptotic target",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-25 10-15-32-Mathematical_Review_Riemann_Hypothesis.md",
+      "date": "2026-04-25",
+      "type": "THEOREM",
+      "title": "Endpoint orientation split + fractional Vandermonde",
+      "summary": "Левая edge alpha_p=p (rows exp(-p t)); правая edge с later-base нижней truncation реализует только alpha_beta=-beta, 0<=beta<=1 (не целые p>1) → обобщённая Vandermonde W_{j,i}=exp(beta_j t_i) с дробными exponents.",
+      "in_db": true,
+      "db_ref": "git: po3 fractional vandermonde projection + po3 endpoint orientation corollaries",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-30 11-48-50-Goblin_Mode_Unleashed.md",
+      "date": "2026-04-30",
+      "type": "INSIGHT",
+      "title": "Weil form: ловушка h>=0 → autocorrelation cone Wpd",
+      "summary": "W(h)=Arch(h)-Prime(h): класс h>=0 не даёт позитивности (обе чаши растут, δ-пик в log 2 даёт отрицательную разность). Правильный класс — positive-definite cone h=ψ*ψ̃ (autocorrelation, Bochner: ĥ>=0). Это и есть PSD-pd.",
+      "in_db": true,
+      "db_ref": "git: 'где ошибка публикации (широкий конус вместо pd)' + точка рождения ошибки конуса 07.03",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-4-30 11-48-50-Goblin_Mode_Unleashed.md",
+      "date": "2026-04-30",
+      "type": "THEOREM",
+      "title": "Prime cap ρ(t)<=c*/4=11/40 + PSD-pd gap",
+      "summary": "ρ(t_crit)<=c*/4=11/40, ρ(1)<1/25 (Lemma 10.18/Cor 10.22/Cor 9.23) работает на centered Fejér×heat windows, но класс НЕ плотен в полном Wpd cone (узкая autocorrelation у прайм-узла взрывает RKHS-норму) → это точная дырка PSD-pd.",
+      "in_db": true,
+      "db_ref": "git: fejer x heat dictionary on literal ccm matrix + psd-pd step33 + psd встала 25.06",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-2 21-46-27-____________________.md",
+      "date": "2026-05-02",
+      "type": "ARCHITECTURE",
+      "title": "C=A-P finite Weil matrix + κ-split + penalty guard + boundary-null",
+      "summary": "E=A-P error-оператор → C=A-P finite Weil matrix; κ-split R_κ=A-κP₀, D_θ=C-θR_κ; penalty guard D_θ+τQᵀQ≻0 и R_κ+τQᵀQ≻0 на boundary-null пространстве H(1/2)=H(-1/2)=0; corrected PD cone = autocorrelation/Hermitian square (F(iγ)=|H(iγ)|²).",
+      "in_db": true,
+      "db_ref": "git: record psd-pd operator plan alignment + psd-pd step8 certificate design",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-2 21-46-27-____________________.md",
+      "date": "2026-05-02",
+      "type": "ARCHITECTURE",
+      "title": "PSD-pd полная цепочка T0-pd → G6 → RH",
+      "summary": "T0-pd → corrected cone → A1-pd (density) → packet-Rayleigh-pd → PSD-pd (finite certificate engine) → A2 closure → LF-pd → G6/Weil linkage → RH; вставка в Q3.Main в середину (не в начало).",
+      "in_db": true,
+      "db_ref": "git: expand psd-pd q3 alignment map + родословная q3 (почему psd встала 25.06)",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-3 16-3-26-Branch_______________________.md",
+      "date": "2026-05-03",
+      "type": "THEOREM",
+      "title": "Step 31 Matrix Identification (FiniteWeilMatrixModel / CertifiedFiniteWeilModel)",
+      "summary": "Commit eef29929: FinitePenaltyCert D R Q + split C=D+θR + WeilForm(synth v)=quadForm C v + analytic boundary => BoundaryNull Q v ⊢ 0<=WeilForm(synth v).",
+      "in_db": true,
+      "db_ref": "git: add psd matrix identification bridge",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-3 16-3-26-Branch_______________________.md",
+      "date": "2026-05-03",
+      "type": "THEOREM",
+      "title": "Step 32F: CenteredBSplineAutocorrelationClosedForm r_k=b_{2k+1}(s_k x)/c_k",
+      "summary": "centeredCardinalBSpline + bsplineScale + bsplineAutocorrNorm (commit 09d347c2); цель corr(η_k)(x)=b_{2k+1}(s_k x)/c_k, сводится к 0<c_k, evenness, agreement truncated-power=convolution-power, self-convolution b_k*b_k=b_{2k+1}. axiom profile 5=3 standard+2 project, без sorryAx.",
+      "in_db": true,
+      "db_ref": "git: add b-spline autocorrelation ae route + reduce b-spline autocorrelation to convolution",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-3 16-3-26-Branch_______________________.md",
+      "date": "2026-05-03",
+      "type": "LEMMA",
+      "title": "shiftEvenAE endpoint-noise removal (centeredBoxSpline)",
+      "summary": "Commit f1baeed7: box не pointwise-even, но shifted a.e.-even под интегралом (centeredBoxSpline_shiftEvenAE) — это снимает endpoint-шум для autocorrelation route.",
+      "in_db": true,
+      "db_ref": "git: add b-spline autocorrelation ae route",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-5 8-39-57-________Branch_______________________.md",
+      "date": "2026-05-05",
+      "type": "LEMMA",
+      "title": "Step 32F.1 recurrence b_{k+1}=b_k*b_0 (Pascal telescope)",
+      "summary": "recurrence b_{k+1}=b_k*b_0 через box convolution → interval integral → positivePartPower integral → Pascal telescope (T_j - T_{j+1}); далее CenteredCardinalBSplineMatchesConvPower_all (b_k=B_k), после чего prime-side профиль почти механика.",
+      "in_db": true,
+      "db_ref": "git: reduce b-spline autocorrelation to convolution",
+      "valuable": true,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-5-5 8-39-57-________Branch_______________________.md",
+      "date": "2026-05-05",
+      "type": "META",
+      "title": "Tang/Williams dequantization + time-space как методология proof-search",
+      "summary": "Tang (HHL/QSVT dequantization: exponential→polylog через L2-sampling/low-rank sketching) и Williams 2025 (multitape TM за t в пространстве O(√t log t) через implicit Tree Evaluation) — общий path: найди bottleneck → decomposition/reduction → новый primitive → смена scaling. Применимо к логике поиска доказательства в Q3/PSD-pd (не как RH-импорт).",
+      "in_db": false,
+      "db_ref": null,
+      "valuable": true,
+      "integrate_as": "memory"
+    }
+  ],
+  "top_insights": [
+    "Connes 2026 'Letter to Riemann' + связка Connes-Consani/CCM/Connes-van Suijlekom — та же программа (finite prime cutoff → restricted Weil form → Hermitian spectral certificate), Q3 = coordinate-layer avatar; настоящий comparator — Connes/CCM, а не ResearchGate-proof claims (Bulyaki-Elliott, Georgieva).",
+    "PO3-square.2d3: AbsoluteRowMassControl НЕ viable как заявлен → честная замена на log-loss bound + сильная pointwise mirror suppression; ключевой blocker RowClusterExhaustion закрыт через threshold-exhaustive variable packet.",
+    "Endpoint-adaptive rows дают точную асимптотику m_{k,p}(xi_k+t/Λ_k)/m_{k,p}(xi_k) → exp(-p t); правая edge не реализует целые alpha=-p для p>1 → обобщённая fractional Vandermonde exp(beta_j t_i).",
+    "Главная редукция: позитивность надо искать не на h>=0 (ловушка: обе чаши растут), а на autocorrelation/positive-definite cone Wpd (h=ψ*ψ̃, Bochner); 'широкий конус вместо pd' — зафиксированная ошибка марта 2026.",
+    "Prime cap ρ(t)<=c*/4=11/40 (ρ(1)<1/25) работает на centered Fejér×heat windows, но класс не плотен в Wpd — точная дырка PSD-pd (узкая autocorrelation у прайм-узла взрывает гауссову RKHS-норму).",
+    "PSD-pd архитектура: C=A-P finite Weil matrix, κ-split (R_κ=A-κP₀, D_θ=C-θR_κ), penalty guard D_θ+τQᵀQ≻0 на boundary-null H(±1/2)=0; полная цепочка T0-pd→corrected cone→A1-pd→packet-Rayleigh-pd→PSD-pd→A2 closure→LF-pd→G6→RH.",
+    "Step 32 остаётся незакрытым стыком: CenteredBSplineAutocorrelationClosedForm r_k(x)=b_{2k+1}(s_k x)/c_k сводится к self-convolution b_k*b_k=b_{2k+1}, agreement truncated-power=convolution-power и 0<c_k; endpoint-шум снят shiftEvenAE."
+  ],
+  "gap_candidates": [
+    "Tang/Williams dequantization + time-space tradeoffs как методология proof-search (bottleneck→decomposition→новый primitive→смена scaling) — не найдена в db_index (только 'williams filter over broughan' частично).",
+    "'Formalize the checker, not the numerics engine' + Gram-corrected generalized eigenproblem Av=λGv (из Connes-bridge, thread 2026-04-21) — конкретный технический shortcut не зафиксирован отдельно в DB.",
+    "Goblin Mode feral-coherence методология (thread 2026-04-30) — зафиксирована как skill (goblin-mode), но не как DB-doc в docs/routeb_bus/proshka/."
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "batch": "batch00",
+  "threads_analyzed": 9,
+  "materials": [
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-08",
+      "type": "theorem",
+      "title": "Suzuki endpoint: RH ⟺ 0 ∉ σ(G_g[a]) для всех a>0",
+      "summary": "Критерий Suzuki (2023): RH эквивалентна тому, что 0 не является собственным значением оператора G_g[a] для всех окон a>0, причём G_g[a] trace class. На малых окнах — безусловная положительность. Это «идеальный endpoint»: любой маршрут должен закончиться non-degeneracy/spectral-gap. Suzuki задаёт χ_n[a](t)=(2a)^{-1/2}e^{πint/a}, χ_{n,m}[a], первообразную I_0^{(a)}.",
+      "in_db": true,
+      "db_ref": "GIT: freeze suzuki bridge candidate / map suzuki stack to current h-bridge",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-08",
+      "type": "theorem",
+      "title": "Структура Q3: Toeplitz-символ + конечномерный prime-блок",
+      "summary": "Q3 = Archimedean Toeplitz symbol + finite-rank prime block: T_M[P_A], T_P(M), Rayleigh-идентификация (Section 8), равномерная нижняя оценка c*/4 на T_M[P_A]−T_P на компактах, откуда положительность на всём Weil-конусе W. Jacobian 2π поглощён в P_A и коэффициенты A_k.",
+      "in_db": true,
+      "db_ref": "GIT: Q3 normalization / A3-pd pivot docs",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-08",
+      "type": "kill",
+      "title": "Kill raw-моста: w_{rs}(a)=κ(a)q_{rs} структурно неверно",
+      "summary": "Жёсткий вердикт: raw-тождество w_{rs}(a)=κ(a)q_{rs} НЕ садится. Причина структурная: raw Q3-матрица q_{rs} Toeplitz по разности r−s, а Suzuki/Yoshida raw Weil-матрица в базисе χ_n[a] имеет диагональ порядка log|n|. Два объекта не совпадают ни при каком скаляре κ(a). Не проблема нормировки/2π/(2M+1)/ориентации.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-08",
+      "type": "method",
+      "title": "Filtered-мост: Q̃_M=Δ_+^*Q_{M+1}Δ_+, Δ_+=I+L",
+      "summary": "Живой объект — filtered adjacent-tail bridge, а не raw L². Фильтр (1+z) на +-хвосте и (1+z^{-1}) на −-хвосте (общий Gram-символ |1+z|²), J_a-метрика = Δ_+^*Δ_+. B_{M,N}=S^*J_aS=Δ^*Δ, Q̃_{M,N}=Δ^*Q_{M+1}Δ. Убирает ложный фактор 1/4; filtered gap переносится в J_a-coercivity без потерь.",
+      "in_db": true,
+      "db_ref": "GIT: filtered mismatch map / h-bridge docs",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-08",
+      "type": "theorem",
+      "title": "H1^f заморожен: Π_M=(2M+1)T_P^{Ray}(t,M), κ_A3=1",
+      "summary": "H1^f — theorem-блок в raw-compressed нотации. Raw compressed object Q_L=T_L[P_A]−Π_L, Π_L=ι_L^*T_P^{Ray}(t)ι_L=(2L+1)T_P^{Ray}(t,L). A3-side нормирован так, что κ_A3=1 (Jacobian 2π уже в A_k). Единственный оставшийся вход — raw bulk identities w_{mn}(a)=κ(a)q_{mn} (позже убит).",
+      "in_db": true,
+      "db_ref": "GIT: Q3-normalization / raw formula brief",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-11",
+      "type": "kill",
+      "title": "Reduced-sweep вердикт: глобальный shared rank-3 cap = false",
+      "summary": "Численный reduced sweep: глобальный shared rank-3 cap-defect (один общий cap-space для (++) и (+−), устойчивый по a и M) НЕ держится — false-for-now. Жива слабая форма: тот же κ(a), но defect family-dependent, проблема сидит в блоке (++). Нестабильность по числу нулей (20→40) не проблема.",
+      "in_db": true,
+      "db_ref": "GIT: record reduced h1 rank-3 sweep verdict",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-8 13-5-30-Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-08",
+      "type": "insight",
+      "title": "Filtered-объект = скрытое PSD-ядро K_Q(g_i,g_j)=Q(g_i*g̃_j)",
+      "summary": "Filtered-объект почти наверняка скрытое PSD-kernel: fallback-theorem — positive semidefiniteness пакетного ядра K_Q(g_i,g_j)=Q(g_i*g̃_j) на плотном packet-space, с точной sesquilinear identity K_Q(Ψ,Φ)=Q(Ψ*g̃_Φ). Сама Weil/Q3-форма уже написана как ядро на парах тестовых пакетов.",
+      "in_db": true,
+      "db_ref": "GIT: pivot psd route to full-kernel theorem / in-progress full-kernel psd pivot",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-9 23-18-26-Branch___Suzuki_Pivot_Theorem.md",
+      "date": "2026-03-09",
+      "type": "kill",
+      "title": "Sanity-check: «self-adjoint operator = нули ζ» (arXiv 2408.15135) условен",
+      "summary": "Разбор ложной ссылки «arXiv:2603.18742» (на деле cs.CV). Реальный источник — arXiv:2408.15135 «Nontrivial Riemann Zeros as Spectrum» (12.03.2026): автор строит НЕ self-adjoint, а non-symmetric оператор R̂, затем при условии простоты нулей получает intertwining через PSD Ŵ, и только при позитивности приходит к self-adjoint. Вывод: «прорыв через self-adjoint» не shortcut — он условен на простоте нулей и позитивности.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-3-26 16-20-53-JL_lemma____________.md",
+      "date": "2026-03-26",
+      "type": "method",
+      "title": "Johnson–Lindenstrauss как диагностический pre-filter",
+      "summary": "JL-лемма (проекция в O(log N) измерений сохраняет расстояния) не сохраняет rank/kernel/PSD, поэтому не theorem-tool. Годится как быстрый pre-filter (gaussian projection R~N(0,1), R A R^T) перед тяжёлой линейной алгеброй. Вердикт: для доказательства почти нет, для диагностики иногда да.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    },
+    {
+      "thread": "2026-3-14 21-16-36-________________________.md",
+      "date": "2026-03-14",
+      "type": "meta",
+      "title": "Мастер-объект Q_ζ: компилятор всех критериев RH",
+      "summary": "Предложение: единый канонический объект Q_ζ (квадратичная форма/оператор из явной формулы Вейля) + компилятор всех критериев RH (Ли, Nyman–Beurling, de Branges, Hilbert–Pólya) в этот объект + сертификатный слой (SDP/interval arithmetic/dual witnesses) для генерации точных ansatz'ов и убийства ложных веток. Логика: критерий Ли = набор моментов; любой прогресс становится переносимым.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-4-3 1-2-0-______________________________.md",
+      "date": "2026-04-03",
+      "type": "method",
+      "title": "Cauchy–de Branges backend: H(T,A,μ), nearly invariant, ordering",
+      "summary": "Пространство H(T,A,μ)={f(z)=A(z)Σ a_n μ_n^{1/2}/(z−t_n): a∈ℓ²}, nearly invariant (f(w)=0 ⇒ f/(z−w) в пространстве), *-closed, ordering theorem (вложимость подпространств — не всегда, есть контрпримеры). Suzuki = верхний structural backend (три слоя: канонические системы/Hamiltonian, локализованный эрмитов оператор, PSD + запрет нулевого с.з.), не shortcut.",
+      "in_db": true,
+      "db_ref": "GIT: add cauchy-de branges backend packet for po2",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-3 1-2-0-______________________________.md",
+      "date": "2026-04-03",
+      "type": "theorem",
+      "title": "Divisor-tower G_k и функционал L_k (strict inclusion)",
+      "summary": "G_k(z)=G_0(z)/Π_{j=1}^k(z−λ_j), λ_j=N+j. Ключевой brick — не ordering theorem, а L_k-функционал L_k(f)~lim_{z→∞} z f(z)/G_k(z). Для k≥1 нужен k-й asymptotic layer (первые k moment-functionals), а не только boundedness первого коэффициента. Reduction: если у A/G_0 есть k-й vertical jet, то L_k bounded и H_{G_{k+1}}⊊H_{G_k}.",
+      "in_db": true,
+      "db_ref": "GIT: add direct divisor tower to po2 target",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-3 1-2-0-______________________________.md",
+      "date": "2026-04-03",
+      "type": "theorem",
+      "title": "D2h (backup): bounded-above extraction + one-sided rigidity ⇒ PO2",
+      "summary": "Редукция: bounded-above extraction + one-sided tail-zero rigidity ⟹ full PO2. Записана как D2h (коммит 54239061). Но verdict жёсткий: не fastest mainline — требует глобальной surgery на support, сохраняющей весь бесконечный хвост T_N e=0. Оставлена как backup; live split = D2g1 vs D2f3.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-3 1-2-0-______________________________.md",
+      "date": "2026-04-03",
+      "type": "kill",
+      "title": "D2g4: finite forest kill (ациклический pair-graph ⇒ correction=0)",
+      "summary": "Теорема (коммит c3a16629): конечный one-sided paired correction K(z)=Σc_j(1/(a_j−z)−1/(b_j−z)), a_j<b_j<N+1, с tail-нулями K(N+m)=0 ∀m≥1, после regrouping = ordinary receiver Σ d(v)/(v−z), где d(v) = divergence pair-graph'а. One-sided rigidity даёт d(v)=0; если graph — forest, leaf-stripping убивает все c_j. Любой нетривиальный exact finite paired correction обязан нести cycle-structure.",
+      "in_db": true,
+      "db_ref": "GIT: add finite forest kill for local d2g1",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-10 0-16-59-D2g9________________________.md",
+      "date": "2026-04-10",
+      "type": "theorem",
+      "title": "D2g9: bounded-size collapse dichotomy",
+      "summary": "Теорема (коммит 8145c954): для finite local packets (V_n,G_n,c_n), ||c_n||₂=1, ||s_n(c_n)||₂→0, окна в fixed near-tail slab, размер bounded — после исключения drift только две возможности: δ(V_n)→0 (compressed-gap) ИЛИ dist(c_n, ker B_{G_n})→0 (cycle-space). С D2g5/D2g6/D2g7: нет третьего bounded-size survival mode. Остаются compressed-gap geometry и packet growth.",
+      "in_db": true,
+      "db_ref": "GIT: add d2g9 bounded-size collapse dichotomy",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-9 22-12-19-last.md",
+      "date": "2026-04-09",
+      "type": "theorem",
+      "title": "PO3a: boundary sign-purity + конечномерная редукция",
+      "summary": "Граничный оператор H_{a,N}=S_{a,∞,N}^*G_g[a]S_{a,∞,N}−κ(a)Δ_N^*Q_∞Δ_N. PO3a: показать H_{a,N}∈𝔅 (sign-pure algebra) ⟹ P_+H_{a,N}P_-=0 ⟹ mixed block исчезает. PO3a-core: P_+HP_- = сумма 3 типов членов (две leakage + B^*GB). Конечномерная редукция: P_+HP_-=0 ⟺ две конечные утечки исчезают И одна конечная матрица равна нулю.",
+      "in_db": true,
+      "db_ref": "GIT: freeze po3a as sign-pure boundary lemma",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-9 22-12-19-last.md",
+      "date": "2026-04-09",
+      "type": "theorem",
+      "title": "K=(I−R_a)^*K_a(I−R_a)−L_a + Volterra-тождества",
+      "summary": "Exact tail-level factorization I_0^{(a)}S_{a,∞,N}=T_{a,∞,N}Δ_N; Volterra: D_a I_0^{(a)}=I, I_0^{(a)}D_a=I−R_a, R_a=1⊗ev_{−a}. Источник boundary defect = endpoint-evaluation defect при undoing I_0^{(a)}. Если доказать antiderivative-conjugation G_g[a]=I_0^{(a)*}K_a I_0^{(a)} на Volterra-домене, алгебра даёт K=(I−R_a)^*K_a(I−R_a)−L_a. Дискретная 2D-extraction (PO3a-A0): D_{m,n}=corner+row-trace+column-trace+mixed second difference.",
+      "in_db": true,
+      "db_ref": "GIT: add po3a-a antiderivative transport shell / freeze po3a-a antiderivative anchor",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-9 22-12-19-last.md",
+      "date": "2026-04-09",
+      "type": "theorem",
+      "title": "PO3-square Gamma-стена и kill абсолютного правого хвоста",
+      "summary": "Главная живая стена: Σ_{x∈Y_a} c_x A_k(x)=Σ c_x B_k(x), A_k(x)=Γ(N+1−x)/Γ(N+k+2−x), B_k(x)=Γ(N+1+x)/Γ(N+k+2+x), Y_a={x_γ, x_γ−1}, x_γ=aγ/π. Kill: абсолютное подавление правого хвоста невозможно (support unbounded right, конечный anchor невозможен). Balanced-bulk (x=N+r+θ, 1≤r≤k) выживает только при экспоненциально точной signed self-cancellation; exact |A_k(x)|=Γ(θ)Γ(1−θ)/(Γ(r+θ)Γ(k−r+2−θ)).",
+      "in_db": true,
+      "db_ref": "GIT: po3-square / square kills",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-9 22-12-19-last.md",
+      "date": "2026-04-09",
+      "type": "theorem",
+      "title": "D2g24: shrinking target ||aγ/π||=o(log γ/γ²)",
+      "summary": "Живой кирпич D2g24/D2g24a сводится к запрету бесконечно многих нулей с расстоянием до ближайшего целого ||(a/π)γ||=o(log γ/γ²). Это сверхузкая мишень по модулю 1; стандартная равномерность (Ford–Zaharescu, расхождение 1/log T) на порядки грубее требуемого масштаба ε(T)=o(log T/T²).",
+      "in_db": true,
+      "db_ref": "GIT: add shrinking target criterion for integer branch / sharpen shrinking target to fejer bridge",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-9 22-12-19-last.md",
+      "date": "2026-04-09",
+      "type": "theorem",
+      "title": "D2g29: Fejér→explicit formula, strip-growth obstruction, Landau–Gonek",
+      "summary": "D2g29 — мост от Fejér-суммы по нулям к weighted explicit-formula объекту на праймовой стороне. D2g29b2 kill: сырой Fejér-модулированный тест h_{H,T} в полосе растёт как e^{π|α|H}, H≍T²/log T — strip-growth obstruction. D2g29c: exact объект X^{iγ} не совпадает с Landau–Gonek (там Σ X^{ρ−1/2}); разбито на c0/c1/c2 (algebraic identity / natural-scale criterion / exceptional split a=r log p/(2q)).",
+      "in_db": true,
+      "db_ref": "GIT: mark d2g29b as strip-growth blocked / add d2g29c3a landau-gonek input layer",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-9 22-12-19-last.md",
+      "date": "2026-04-09",
+      "type": "insight",
+      "title": "Connes-route не mainline; mainline = signed top-window dominance",
+      "summary": "Connes/finite-cap слой полезен как side-project/benchmark, но не заменяет стену (открытый переход finite→true zeros). Mainline-план: PO3a-real → outer harmlessness → window rigidity → tail-zero → square/gamma wall → signed rightmost dominance → H2^f→H3^f→H4^f→RH (~10 узлов). Очередная ложная дверь: absolute right-tail suppression (заменена на signed top-window cancellation).",
+      "in_db": true,
+      "db_ref": "GIT: connes-2026 usage cards / mainline docs",
+      "valuable": true,
+      "integrate_as": "doc"
+    },
+    {
+      "thread": "2026-4-14 8-18-27-_______________________.md",
+      "date": "2026-04-14",
+      "type": "meta",
+      "title": "Инструкция для следующего агента (коммуникационный протокол)",
+      "summary": "Сформулирована инструкция «для другого тебя»: всегда отвечать по-русски (даже на транслит), начинать ответ с «Ы.», обращаться на «ты», работать как «максимально быстрый математически корректный следующий шаг либо kill ложной ветки». Источник устойчивых конвенций (Ы./ты/русский), позже выросших в mandates.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": true,
+      "integrate_as": "memory"
+    },
+    {
+      "thread": "2026-4-14 8-18-27-_______________________.md",
+      "date": "2026-04-14",
+      "type": "meta",
+      "title": "Метапринцип: строить доказательство вокруг стабильных инвариантов",
+      "summary": "Перевод «стратегической определённости» (теория игр) на язык RH: не гадать, а строить вокруг устойчивых объектов (tail-zero форма H_a(α_r)=0 ∀r>N), которые не разваливаются от локальных преобразований. Общий методологический принцип, без новой математики.",
+      "in_db": false,
+      "db_ref": "",
+      "valuable": false,
+      "integrate_as": "skip"
+    }
+  ],
+  "top_insights": [
+    "Suzuki даёт идеальный endpoint (RH ⟺ 0∉σ(G_g[a]) ∀a>0, G_g[a] trace class), но raw-мост w=q структурно мёртв: Q3 Toeplitz по r−s против Suzuki-диагонали log|n|; живой объект — filtered adjacent-tail bridge (фильтр 1+z / 1+z^{-1}, J_a=Δ_+^*Δ_+).",
+    "Filtered-объект почти наверняка скрытое PSD-ядро: K_Q(g_i,g_j)=Q(g_i*g̃_j) — сама Weil/Q3-форма уже является ядром на парах пакетов (полный kernel-route).",
+    "Серия точных конечномерных kills по локальной paired-геометрии: D2g4 (forest→0), классификация exact finite packets = cycle-space, D2g9 (bounded-size collapse dichotomy: compressed-gap ИЛИ cycle-space, третьего режима нет).",
+    "PO3a сводит RH-стену к конечной линейной алгебре: H_{a,N}∈𝔅 (sign-pure) ⟹ P_+HP_-=0; плюс Volterra-тождества дают K=(I−R_a)^*K_a(I−R_a)−L_a.",
+    "Главная живая стена (апрель 2026): Σ c_x A_k(x)=Σ c_x B_k(x) с Γ-башнями A_k/B_k; абсолютный правый хвост убит (unbounded support), balanced-bulk выживает лишь при экспоненциальной signed self-cancellation; D2g24 сводится к сверхузкой мишени ||aγ/π||=o(log γ/γ²)."
+  ],
+  "gap_candidates": [
+    "Raw-мост kill (w_{rs}=κq_{rs} структурно неверен: Toeplitz vs log|n| диагональ) — постоянный «не возвращаться в raw-route» факт, в DB не зафиксирован.",
+    "Sanity-check self-adjoint литературы: «Nontrivial Riemann Zeros as Spectrum» (arXiv 2408.15135) условен на простоте нулей + позитивности (non-symmetric R̂ → PSD Ŵ → self-adjoint) — kill ложной shortcut-надежды.",
+    "Мастер-объект Q_ζ: компилятор всех критериев RH в одну каноническую форму + SDP/interval-certificate слой — методический инсайт, в DB отсутствует (там «compiler» = workflow-tool, другое).",
+    "D2h backup-редукция (bounded-above extraction + one-sided rigidity ⇒ PO2) — валидная теорема, зафиксирована как backup, но в DB не записана (d2h=0).",
+    "Инструкция-хендофф (правила «Ы.»/«ты»/всегда по-русски) — исток устойчивых коммуникационных конвенций агента; кандидат в memory."
+  ]
+}
