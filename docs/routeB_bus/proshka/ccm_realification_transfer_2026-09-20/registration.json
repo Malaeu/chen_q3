@@ -1,0 +1,20 @@
+{
+  "registered_utc": "2026-09-20T20:36:38.423992+00:00",
+  "basis": "Paper-derived coarse caps before the upcoming exact Fraction certificate calculation. Prior source reading and exploratory arithmetic are not claimed preregistered.",
+  "base_head": "e3419c9c78e11c7a64d4d18f2ab891186fb828a3",
+  "predictions": {
+    "P_TRACE": "Literal diagonal formulas plus the existing full penalty certificate imply K <= 3000 I, with no new eigensolve.",
+    "P_CACHE": "The preserved complex decimal cache has complement lower floor at least 8e-58 using only the saved interval aggregates and seven exact real coefficients.",
+    "P_REALIFICATION": "For real symmetric K commuting with J, the real-even/real-odd/imaginary quadratic-form split is exact. Plants lacking realness or commutation must be rejected.",
+    "P_SCOPE": "This certifies the exact normalized decimal cache, not unbounded-error analytic prolate coefficients."
+  },
+  "fixed_caps": {
+    "gamma": "1e-56",
+    "tau": "1",
+    "a_hat_upper": "5e-59",
+    "K_upper": "3000",
+    "discarded_sq_upper": "3e-60",
+    "raw_norm_sq_lower": "99/100",
+    "target_floor": "8e-58"
+  }
+}

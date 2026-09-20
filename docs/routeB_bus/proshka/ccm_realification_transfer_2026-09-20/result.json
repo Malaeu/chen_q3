@@ -1,0 +1,59 @@
+{
+  "scope": "FINITE_CELL_PAPER_WITH_IMPORTED_ARB_CERTIFICATE",
+  "analytic_source_enclosure_proved": false,
+  "arb_rerun": false,
+  "lean_run": false,
+  "checks_passed": 27,
+  "registered_predictions": {
+    "P_TRACE": "CONFIRMED",
+    "P_CACHE": "CONFIRMED_CONDITIONAL_ON_IMPORTED_CERTIFICATE",
+    "P_REALIFICATION": "CONFIRMED",
+    "P_SCOPE": "CONFIRMED"
+  },
+  "raw_norm_sq_lower": {
+    "numerator": "99",
+    "denominator": "100",
+    "decimal_display_only": "0.99"
+  },
+  "discarded_mass_sq_upper": {
+    "numerator": "3",
+    "denominator": "1000000000000000000000000000000000000000000000000000000000000",
+    "decimal_display_only": "3E-60"
+  },
+  "delta_upper": {
+    "numerator": "1",
+    "denominator": "330000000000000000000000000000000000000000000000000000000000",
+    "decimal_display_only": "3.03030303030303030303030303030303030303030303E-60"
+  },
+  "a_cache_upper": {
+    "numerator": "2011",
+    "denominator": "220000000000000000000000000000000000000000000000000000000000",
+    "decimal_display_only": "9.14090909090909090909090909090909090909090909E-57"
+  },
+  "K_upper": {
+    "numerator": "3000",
+    "denominator": "1",
+    "decimal_display_only": "3000"
+  },
+  "transfer_lower": {
+    "numerator": "113",
+    "denominator": "132000000000000000000000000000000000000000000000000000000000",
+    "decimal_display_only": "8.56060606060606060606060606060606060606060606E-58"
+  },
+  "published_floor": {
+    "numerator": "1",
+    "denominator": "1250000000000000000000000000000000000000000000000000000000",
+    "decimal_display_only": "8E-58"
+  },
+  "trace_K_upper": {
+    "numerator": "14911",
+    "denominator": "5",
+    "decimal_display_only": "2982.2"
+  },
+  "prime_sum_certified_upper": {
+    "numerator": "8",
+    "denominator": "5",
+    "decimal_display_only": "1.6"
+  },
+  "source_extract_sha256": "6aa66c11aab52fd244dca930d3a949a8db7598671ebc2a2a35283c32f74e2a80"
+}
