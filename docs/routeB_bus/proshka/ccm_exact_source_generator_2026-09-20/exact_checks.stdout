@@ -1,0 +1,25 @@
+EXACT_PASS cache_central_imaginary_not_zero
+EXACT_PASS cache_no_common_phase_real_source
+EXACT_PASS phase_rotated_real_source_control_zero
+EXACT_PASS planted_conjugacy_violation_detected
+EXACT_PASS primitive_identity
+EXACT_PASS removable_2_0
+EXACT_PASS removable_2_2
+EXACT_PASS removable_2_4
+EXACT_PASS removable_3_0
+EXACT_PASS removable_3_2
+EXACT_PASS removable_3_4
+EXACT_PASS removable_5_0
+EXACT_PASS removable_5_2
+EXACT_PASS removable_5_4
+EXACT_PASS taylor_recurrence_low_orders
+EXACT_PASS finite_polynomial_top_residual
+EXACT_PASS zero_mass_packet_identity
+EXACT_PASS Ferrers_integral_is_2_a0
+EXACT_PASS Ferrers_packet_zero_mode_cancels
+EXACT_PASS individual_mode_norms_cancel_projectively
+EXACT_PASS public_generator_exact_original_u_integral
+DIAGNOSTIC_PASS 15 breakpoint quadratures; wrong-phase and wrong-support controls; NOT_INTERVAL_PROOF
+PHASE_INVARIANT -2.304002437911253809203196853177718804650E-112
+EXACT_CHECKS 21
+DONE; GENERATOR_IDENTITY_PAPER; CACHE_NOT_EQUAL_SOURCE; NO_LEAN; NO_RH

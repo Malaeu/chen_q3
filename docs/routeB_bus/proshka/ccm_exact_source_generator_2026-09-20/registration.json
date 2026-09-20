@@ -1,0 +1,23 @@
+{
+  "registered_utc": "2026-09-20T21:42:18.661873+00:00",
+  "source_pin": "431a3d39c1e09693c25e3e2a36aac38896c13d22",
+  "stage": "AFTER_READING_GENERATOR_BEFORE_TEST_EXECUTION",
+  "predictions": {
+    "P_GEN": {
+      "p": 0.9,
+      "prediction": "Finite Dirichlet-Mellin kernel exactly evaluates each polynomial source coefficient; planted phase/support errors fail."
+    },
+    "P_PHASE": {
+      "p": 0.9,
+      "prediction": "Phase-invariant reality obstruction computed from pinned cache modes -1,0,1 is exactly nonzero; a real-source control is exactly zero."
+    },
+    "P_TRUNC": {
+      "p": 0.99,
+      "prediction": "A nonzero finite polynomial cannot solve the nonzero-bandwidth angular prolate eigen-equation."
+    },
+    "P_NORMALIZATION": {
+      "p": 0.95,
+      "prediction": "Normalization over the finite Fourier row is required; full-source normalization does not replace it."
+    }
+  }
+}
