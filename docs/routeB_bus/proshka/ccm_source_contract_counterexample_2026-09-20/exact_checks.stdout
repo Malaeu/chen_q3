@@ -1,0 +1,23 @@
+SYMPY 1.14.0; EXACT_ARITHMETIC; PAPER_CONTROLS; NOT_LEAN
+PASS unit_rows_and_orthogonality
+PASS real_even_rows
+PASS complement_fixes_witness
+PASS negative_energy_identity
+PASS literal_compressed_energy
+PASS planted_trial_swap_reverses_sign
+PASS planted_nonorthogonal_witness_rejected
+PASS offdiagonal_endpoint_and_prime_zero
+PASS literal_W02_offdiagonal
+PASS decreasing_weight_derivative
+PASS sine_reflection
+PASS removable_integral_endpoint
+PASS rational_upper_envelope_negative
+PASS Mobius_divisor_controls_1_to_64
+PASS planted_unsigned_Mobius_rejected
+PASS finite_summation_inversion_control
+PASS N0_projection_nonzero
+PASS P59_central_value_nonzero
+PASS constant_h4_is_not_a_differential_eigenmode
+PASS constant_h4_center_integral_contract
+CHECK_GROUPS 20
+ALL_CHECKS_PASSED; UNIVERSAL_TYPE_ONLY_FLOOR_REFUTED_ON_PAPER; SELECTED_SPECTRAL_C_OPEN; LEAN_NOT_RUN

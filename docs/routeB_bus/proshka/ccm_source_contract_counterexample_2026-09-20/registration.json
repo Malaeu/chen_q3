@@ -1,0 +1,38 @@
+{
+  "registered_utc": "2026-09-20T12:08:38.000442+00:00",
+  "base_head": "e658f14dada334ff1b7df3dfded8dff9afaf3727",
+  "boundary": "PAPER_SOURCE_CONTRACT_FALSIFICATION_NOT_PRODUCTION_THEOREM_TRANSACTION",
+  "timing_note": "Analytic construction and sign argument devised before this registration; the following executable exact checks have not run. No retroactive preregistration of the discovery is claimed.",
+  "predictions": [
+    {
+      "id": "P_F1",
+      "expected": "Exact real-even unit rows q,y are orthogonal; the energy difference for a reflection-symmetric 3x3 matrix equals -2*sqrt(2)*K01.",
+      "probability": 0.99
+    },
+    {
+      "id": "P_F2",
+      "expected": "Literal m=2 offdiagonal W02 term and decreasing-weight sine integral are positive; the paper proof yields the rational upper envelope U=-32/6939.",
+      "probability": 0.9
+    },
+    {
+      "id": "P_F3",
+      "expected": "Finite divisor-sum controls reproduce Mobius inversion; omitting Mobius signs is rejected.",
+      "probability": 0.99
+    },
+    {
+      "id": "P_F4",
+      "expected": "A swapped plus/minus trial has opposite energy sign; a nonorthogonal planted vector fails the carrier check.",
+      "probability": 0.99
+    },
+    {
+      "id": "P_F5",
+      "expected": "Source-generated q has a nonzero central coefficient even at N=0; the P59 central value is nonzero on the explicit parent schedule.",
+      "probability": 0.99
+    }
+  ],
+  "not_claimed": [
+    "actual_selected_spectral_factory_counterexample",
+    "eventual_cofinal_route_failure",
+    "LEAN_PROVED"
+  ]
+}
