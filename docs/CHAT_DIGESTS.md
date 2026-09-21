@@ -2210,3 +2210,6 @@ ChatGPT: Jev как необязательный ранжировщик, не с
 
 ### 2026-09-21, Linux: ask.sh по генератору; Jev-пилот на одну карточку, сервис лежит
 Полка (Lean есть, q3_docs stale): `mode4FerrersSeries_hasSumUniformlyOn`, `sourcePositiveIndexFinset`, `windowedMellin_finiteEStarCore_eq_dirichlet_sum`, `c_n` в `D0KTrialStage3.lean:81`, `kTrial_m_N_coeFn_ae_eq_finiteLogFourierTrial_logWindow`, `TrialNonzero`, `integral_prolateCombination_eq_zero`. Нет на полке: Lean-G4 (Меллин `t^d`). Пилот Jev заморожен в `jev_lemma_ranker_one_card_2026-09-21/PILOT.md`, API не звали. Следующий шаг — формализовать G4, не ждать TypeSafe. PX_RH_CLAIM нет.
+
+### 2026-09-21, Linux: Lean G4 algebra — `m^{s_n}=√m` и носитель монома
+Файл `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMonomialMellinG4.lean`. Закрыто: `sourceSn_re`, `sourceSn_add_nat_ne_zero`, `cpow_m_sourceSn` (`m^{s_n}=√m`), `monomialMellinClosed` как бумажная G4, `monomialMellinClosed_eq_weighted_sum`, `monomialSource_windowFiniteSupport` на том же `sourcePositiveIndexFinset`. `q3_check` зелёный; аксиомы только `propext`, `Classical.choice`, `Quot.sound`. Не закрыто: `⟨V_n, E_star(t^d)⟩ = monomialMellinClosed` (замена переменной на окне D0). Это не равенство строки `c_n` и не CCM-сертификат. PX_RH_CLAIM нет.

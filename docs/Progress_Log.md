@@ -7564,3 +7564,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** CCM next node stays TRY_CCM_EXACT_FERRERS_MELLIN_SOURCE_IDENTITY, not a certificate poset. FiniteGroundTransform at large m is not refuted. No judge batch. No PX_RH_CLAIM.
 **Адреса:** docs/routeB_bus/proshka/ccm_n_extension_probe_2026-09-21/
 **Чей вердикт и аргумент:** owner ordered the probe; numbers are diagnostic. PX_RH_CLAIM not made.
+
+## 2026-09-21 — Lean G4 closed-form algebra, not the inner product
+
+**Развилка:** owner said go on Lean G4 (Mellin of `t^d`) then match existing `c_n` of the same `prolateCombination`.
+**Выбрали:** lock the paper closed form, prove `m^{s_n}=√m`, and give the monomial the existing `WindowFiniteSupport` certificate. Leave `⟨V_n, E_star(t^d)⟩ = monomialMellinClosed` open.
+**Почему:** the exponent identity is the only arithmetic step in the paper G4 proof (`70da2617` §4); the support certificate is the same finite-comb gate already used by `prolateCombination_windowFiniteSupport`. The inner product is a change of variables on the D0 window, a different supplier.
+**Что отвергли и почему:** proving the ratio form `(m/k)^{s_n}` in the same file (cpow of quotients, not needed for the boxed G4); claiming the `c_n` match (G4_INNER_EQUALS_CLOSED_FORM still open); waiting for TypeSafe/Jev.
+**Техника:** `q3_check.sh Q3/Proofs/RouteB/D0PstarMonomialMellinG4.lean`; `cpow_def` uses `log z * s`; `exp_int_mul_two_pi_mul_I` and `g4_exp_half_L` as in the W5 envelope.
+**Следующий ход (мой выбор):** prove the inner-product identity from `windowedMellin_finiteEStarCore_eq_dirichlet_sum` plus the monomial integral on `[0, log(m/k)]`. Then G5 (Legendre of even degree) and the `c_n` match. No judge batch. No PX_RH_CLAIM.
+**Адреса:** `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMonomialMellinG4.lean`; paper G4 in `docs/routeB_bus/proshka/ccm_exact_source_generator_2026-09-20/VERDICT.md` §4.
+**Чей вердикт и аргумент:** owner ordered Lean G4; observer closed algebra+support only. PX_RH_CLAIM not made.
