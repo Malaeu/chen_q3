@@ -58,3 +58,28 @@ Grok работал параллельно в этом же дереве (`syste
 - /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/ACTIVE/requests/routeB_twolevel_spectral_ladder/true_precision_packet_gate_v1.py:171
 - /home/chirurgie/.grok/AGENTS.md · /home/chirurgie/.grok/config.toml (+ .bak-2026-09-21) · /home/chirurgie/.bash_functions (функция grok)
 - /home/chirurgie/.claude/projects/-mnt-hdd01-Soft-GitHub-chen-q3-rh-clean/memory/ladder-bandwidth-c-2pi-m.md
+
+---
+
+# Nachtrag (вторая половина дня) — правила Grok, чистка диска
+
+## Erledigt (продолжение)
+9. **Правила для Grok** (по слову владельца «делаем оба»): `/home/chirurgie/.grok/AGENTS.md` — 7 пунктов «коммит только после проверки» (плантаж источника |⟨кэш,строка⟩|≈1 при m=13 N=13, параметры с локаторами, один токен вердикта, журнал = развилки, не коммитить за другое тело) + выжимка правил 1–20 из проектного CLAUDE.md (Grok видит только первые 10 000 знаков файла из 31 268). 6 439 знаков.
+10. `always-approve` выключен в `/home/chirurgie/.grok/config.toml` (бэкап `config.toml.bak-2026-09-21`); обёртка `grok()` в `/home/chirurgie/.bash_functions`: `--permission-mode acceptEdits`, allow-список рутины, `git commit`/`git push` спрашивают, `push --force`/`reset --hard`/`rm -rf` запрещены. Проверено в интерактивной оболочке; вживую с Grok не запускалось.
+11. **Чистка NVMe `/` 82 % → 51 %** (+137 ГБ). Отчёт Grok по диску: цифры верны, вывод «клоны — копии» ложный. Перед сносом спасено: 63 коммита Codex (TEAM/recovery/publication/alias-hunt, 11–16.09) из 8 клонов + 6 WIP-деревьев → `refs/heads/rescue/<клон>/<ветка>` (23 ветки, только HDD, на origin не пушены) + 2 патча в `.git/rescue/`. Проверка: 0 пропавших sha, 0 грязных, fsck чист. Снесены: `~/.cache/q3-*` (683 каталога, 90 ГБ), `~/.codex/worktrees` (18 ГБ), два лога (владелец, sudo), Lean v4.27.0-rc1/4.24/4.22 (default → v4.26.0), `uv cache prune` 3,5 ГБ, CUDA 12.6 (56 dpkg-пакетов, владелец; 12.9 работает, nvcc 12.9.86), flatpak SpeechNote-nvidia-аддон без приложения, две TrOCR-модели.
+12. Grok ошибся ещё дважды в отчёте по диску: «Lean только v4.28 актуальна» (в деле 4.26 chen_q3, 4.27 comparator, 4.28 comparator-4.28) и счёт клонов (17 больших + 667 фикстур).
+
+## Geprüft (продолжение)
+- Chrome 8 ГБ = две копии `OptGuideOnDeviceModel` (Gemini Nano); используется только фичей 15 = `MODEL_EXECUTION_FEATURE_SCAM_DETECTION` (Chromium `model_execution.proto`), сегодня 06:01 и 07:44. Владелец: оставить.
+- huggingface 5,5 ГБ — всё рабочее: whisper large-v3 + small = **voice-shim** (`~/.claude/bin/voice-shim/server.py`, 17.06), surya = marker-pdf, GOT-OCR. Мою ошибочную атрибуцию whisper → markitdown владелец поправил; записано в память.
+- ollama: моделей ноль, 2,1 ГБ — его библиотеки.
+
+## Offen (дополнение)
+- Rescue-ветки только на HDD; решение владельца — не пушить; через месяц без спроса можно удалить.
+- Логи `/var/log` растут до ГБ — источник спама (syslog 2,6 ГБ за неделю августа) не искали.
+- flatpak GL 24.08 (0,9 ГБ) держится чем-то — не трогали.
+
+## Dateien (дополнение)
+- /home/chirurgie/.grok/AGENTS.md · /home/chirurgie/.grok/config.toml(.bak-2026-09-21) · /home/chirurgie/.bash_functions (grok)
+- /mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/.git/rescue/ (2 патча) · `git for-each-ref refs/heads/rescue`
+- /home/chirurgie/.claude/projects/-mnt-hdd01-Soft-GitHub-chen-q3-rh-clean/memory/rescue-branches-from-cache-clones.md
