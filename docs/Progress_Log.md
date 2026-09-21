@@ -7554,3 +7554,13 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** Lipschitz |∂_σ G|≤0.08 at T=√20 from the second p-moment. Together with G(1/2)≥0.3758 that pays the σ-interval at the worst T. Then the same in T, with a thinner strip. IF_A the Lipschitz holds: compact continuum is an analytic cover of one interval times a T-argument. IF_B |G'| is larger: densify the σ-enclosure (the script already runs in seconds per cell). No judge batch. No PX_RH_CLAIM.
 **Адреса:** MASS_GAP_TAIL §11; dh_control/check_n1_corner_certificate.py; arb envelope 83eb3c8d.
 **Чей вердикт и аргумент:** owner ordered the source bound; observer enclosed the corner. Continuum open. PX_RH_CLAIM not made.
+
+## 2026-09-21 — Forcing N-extension killed at m=2
+**Развилка:** owner ordered the cheap test: fixed m, two N'<N, analytic q^source, compare ‖B^{-1}r‖.
+**Выбрали:** m=2, N=1,2,3; 0/4 Ferrers packet of the angular ODE at c^2=m; Mellin generator; K=W02−WR−Prime. No c-grid, no poset file.
+**Почему:** if η falls, enter FiniteGroundTransform; if not, kill the forcing analogy with one sequence.
+**Что отвергли и почему:** Boolean-valued models (cargo); raising N as a stronger certificate (η 0.952→1.400→1.687, β<0, Rayleigh grows).
+**Техника:** probe_n_extension.py, dps 40; plant K(2,1) matches Proshka a=0.725463, yE=−0.653264.
+**Следующий ход (мой выбор):** CCM next node stays TRY_CCM_EXACT_FERRERS_MELLIN_SOURCE_IDENTITY, not a certificate poset. FiniteGroundTransform at large m is not refuted. No judge batch. No PX_RH_CLAIM.
+**Адреса:** docs/routeB_bus/proshka/ccm_n_extension_probe_2026-09-21/
+**Чей вердикт и аргумент:** owner ordered the probe; numbers are diagnostic. PX_RH_CLAIM not made.
