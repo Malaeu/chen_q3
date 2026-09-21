@@ -2182,3 +2182,14 @@ Source-bound E_coh для (2.5); континуум компакта; незав
 Чтение «нам пригодится как знак косинусов». Теорема гарантирует **отрицательный** провал линейной суммы, наша цель — **положительность** квадратичной формы. Cayley λ_min=2∑cos не есть A_N.
 ### Что осталось открытым
 Зонд не запускать. Карточка arXiv — только если владелец велит `./paper.sh`. PX_RH_CLAIM нет.
+
+## 2026-09-21 · ChatGPT · forcing as finite→global architecture
+**Пин:** разбор, без запуска. **Артефакты:** K9–K11 в `PROSHKA_SYSTEM_PROMPT_v2.md` blob `e0127d49`; `FiniteGroundTransformToCCMTrialLocallyUniform`.
+### Откуда началось
+Предложение: poset конечных сертификатов, dense \(D_k\), extension lemma вместо клетки за клеткой.
+### Что нашли
+Буквальный forcing (Boolean-valued models, generic ultrafilter, CH) в доказательство не входит. Нужная форма уже названа: cofinal \(N(m)\) + `FiniteGroundTransformToCCMTrialLocallyUniform`. Генератор \(q^{\mathrm{source}}_{m,N}\) (`70da2617`) даёт совместимость уровней без кэша.
+### Что оказалось неверным
+Новый ярлык FORCING/FUSION PREFLIGHT. Это K10: имя стены ≠ прогресс. K9(a) требует мост, закрывающий фронт одним ходом; метафора «generic filter» — не EXACT_ISOMORPHISM.
+### Что осталось открытым
+Дешёвый тест без нового словаря: фиксированное \(m\), рост \(N\), монотонность/убывание \(\|B^{-1}r\|\) у аналитического \(q^{\mathrm{source}}\). Если нет — аналогия мертва. Следующий уже названный узел — Ferrers-identity к \(c_n\), не poset. PX_RH_CLAIM нет.
