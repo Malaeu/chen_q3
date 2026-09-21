@@ -60,4 +60,20 @@ e = a to the printed digits because λ₀ ~ 10⁻³¹, not because λ₀ = 0 in 
 
 G4 `c_n` (`D0KTrialStage3.lean:81`) is `inner V_n_m kTrial_m_N` in `hTrial_m`; it does not import the JSON cache. Identity node stays clean iff the inhabitant is `prolateCombination`.
 
-`DIAGNOSTIC_NEVER_A_PROOF`. Discriminator still running elsewhere: analytic Rayleigh at m=13 N=90 vs cache a ~ 5.5e−59.
+`DIAGNOSTIC_NEVER_A_PROOF`. Discriminator below: analytic Rayleigh at m=13 N=90.
+
+## 2026-09-21 addendum — IF_B: analytic source stays O(0.1) at N=90
+
+`n90_decider.py` (dps 80, one thread) was killed after ~50 min with SIGTERM 143, still on `building K`. Parallel rebuild (dps 40, 20 workers, 16471 upper-triangle entries) finished K in 179 s.
+
+| q at m=13 N=90, full block dps 40 | a = q*Kq | ‖r‖ |
+|---|---|---|
+| cache row (`portable_k_coeffs_lambda_sq_13_N_90.json`) | −5.480e−41 (floor; MAC even-block a = 5.533e−59) | 1.8368725e−30 |
+| analytic 0/4 Ferrers → Mellin, J=16 | **0.0842498998528** | 0.34271707 |
+| MAC even-block cache (dps 240) | 5.533e−59 | 1.837e−30 |
+
+Cache ‖r‖ matches the MAC audit to four digits: the matrix and the cache row are the same objects. Analytic Rayleigh is O(0.1), same order as m=2 and as m=13 N=13 (a=0.15456). It does not fall to 10⁻⁵⁹.
+
+Ferrers truncation is not the gap. At m=13 N=13, `j_convergence.py` froze a=0.154560525732 from J=12 through J=32; coefficient tail a_J/a_0 dropped from 8.5e−9 to 2e−71.
+
+Verdict token: coercivity at this cell is a property of the pinned cache row, not of the analytic Ferrers–Mellin source. G4 remains a true identity for that analytic object; it does not supply positivity. DIAGNOSTIC_NEVER_A_PROOF. PX_RH_CLAIM not made.

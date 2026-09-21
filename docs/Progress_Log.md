@@ -7586,3 +7586,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** wait for analytic a at N=90. IF_A it drops to cache order ~1e−59: m=2 was small-m, G4 identity is the right node. IF_B it stays O(0.1): coercivity is a cache property and the source question goes to a Proshka batch, not more Lean. G4 inner product can continue in parallel because `c_n` does not import the JSON. No PX_RH_CLAIM.
 **Адреса:** `docs/routeB_bus/proshka/ccm_n_extension_probe_2026-09-21/probe_n_extension.py`; MAC audit `docs/routeB_bus/phase5_scripts/out/CCM_DIRECTIONAL_RATE_AUDIT_2026-09-20.md` §3; `D0KTrialStage3.lean:81`.
 **Чей вердикт и аргумент:** observer named both defects and retracted the noise reading after dps 240; numbers re-checked from disk here. PX_RH_CLAIM not made.
+
+## 2026-09-21 — Analytic source at m=13 N=90 stays O(0.1); cache coercivity does not transfer
+
+**Развилка:** ЕСЛИ_A analytic a at N=90 drops to cache ~1e−59, or ЕСЛИ_B it stays O(0.1) like m=2.
+**Выбрали:** ЕСЛИ_B. Do not treat G4 as a positivity supplier. Do not grind more N on this packet.
+**Почему:** parallel K (dps 40, 20 workers) in 179 s. Cache ‖r‖=1.8368725e−30 matches MAC 1.837e−30. Analytic a=0.08425, ‖r‖=0.343. N=13 J-scan froze a=0.154560525732 for J=12..32. Single-thread dps-80 job died SIGTERM 143 still on `building K`.
+**Что отвергли и почему:** «dps 40 не видит решающее число» (analytic a is 0.08, not 1e−59); blaming Ferrers truncation (J-stable); FiniteGroundTransform from the N=13 FALLS token; more Lean G4 as the front.
+**Техника:** `n90_parallel.py` scratchpad; `j_convergence.py` at N=13; plant is cache ‖r‖ vs MAC.
+**Следующий ход (мой выбор):** one Proshka-batch question — is `selectedFerrers` a different object from this Mellin 0/4 packet, or is the exact source simply not coercive? G4 inner product may continue as identity work, not as a positivity path. No PX_RH_CLAIM.
+**Адреса:** scratchpad `n90_parallel` log `bui0yhqwc.output`; `j_convergence` log `b44xdqgf0.output`; MAC audit §3 N=90.
+**Чей вердикт и аргумент:** observer built the parallel probe; numbers read from disk here. PX_RH_CLAIM not made.
