@@ -40,3 +40,24 @@ The forcing-style claim «a larger truncation is a stronger condition in a poset
 `DIAGNOSTIC_NEVER_A_PROOF`. Next named CCM node remains the Ferrers identity to `c_n`, not a certificate poset.
 
 Script: `probe_n_extension.py`. Numbers: `result.json`.
+
+## 2026-09-21 addendum — m>2 defects, N=13 is not noise
+
+Two script bugs at m>2, found by the observer and re-checked from disk:
+
+1. Seeded `findroot` in `even_chi` collapsed the 0/4 pair at c²=13 to the same root 48.6737 (log: `probe_m13.log`, ZeroDivisionError). Replaced by the ordered even tridiagonal Legendre eigenproblem. At m=2 the patched packet reproduces `result.json` to the stored 12 digits (chi, plant, a, η, λ₀, gap, excess).
+2. Hardcoded DPS=40 printed a FALLS token on N=26 where λ₀ came out negative (−1.09e−40 vs MAC even-block 4.947e−45). `measures` now refuses when |λ₀| or the gap is under 10^(−dps+5).
+
+The first m=13 dps-40 table is **not** discarded at N=13. Independent reruns:
+
+| source | dps | N | a | λ₀ | gap |
+|---|---|---|---|---|---|
+| analytic full block | 40 | 13 | 0.154560525732 | 7.92103597312e−31 | 6.40881979904e−28 |
+| analytic full block | 240 | 13 | 0.154560525732 | 7.92103597375e−31 | 6.40881979904e−28 |
+| MAC even block cache | 240 | 13 | 4.226e−16 | 7.921e−31 | — |
+
+e = a to the printed digits because λ₀ ~ 10⁻³¹, not because λ₀ = 0 in working precision. Same K, different Rayleigh: analytic ~ 0.15, cache ~ 4e−16. Token FALLS at N=13 is a real non-coercive trial, not FiniteGroundTransform evidence. N=26 at dps 40 remains refused.
+
+G4 `c_n` (`D0KTrialStage3.lean:81`) is `inner V_n_m kTrial_m_N` in `hTrial_m`; it does not import the JSON cache. Identity node stays clean iff the inhabitant is `prolateCombination`.
+
+`DIAGNOSTIC_NEVER_A_PROOF`. Discriminator still running elsewhere: analytic Rayleigh at m=13 N=90 vs cache a ~ 5.5e−59.

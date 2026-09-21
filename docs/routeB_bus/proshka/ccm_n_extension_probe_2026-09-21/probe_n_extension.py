@@ -5,6 +5,22 @@ Analytic packet: even spheroidal 0/4 Ferrers jets of the angular ODE at c^2=m,
 mapped by the Mellin generator of exact_generator.py (no quadrature in q).
 Weil matrix: literal W02 - WR - Prime, mpmath, DIAGNOSTIC_NEVER_A_PROOF.
 
+Default DPS=40 is calibrated for m=2, where lam0 ~ 7.5e-3.  At larger m the
+bottom of K can sit far below that working precision: MAC audit 2026-09-20
+has even-block lam0 = 4.947e-45 at m=13 N=26 and 3.484e-59 at m=13 N=120.
+`measures` refuses when |lam0| or the gap falls under 10^(-dps+5) instead of
+printing a FALLS token on noise.
+
+N=13 at dps 40 is *not* that failure: lam0 = 7.921e-31 matches the MAC even
+block and a dps-240 rerun to 10 digits.  There e = a to the printed digits
+because a ~ 0.15 and lam0 ~ 10^{-31}, which is a real Rayleigh, not a zero
+eigenvalue.  N=26 at dps 40 *is* under the floor (lam0 came out negative).
+
+Sector warning: build_K is the FULL Fourier block, dim = 2N+1.  The MAC
+directional-rate audit measures the EVEN block, dim = N+1.  lam0 agrees
+at m=13 N=13; lam1 and the gap do not.  Do not compare e/Delta across
+those pipelines.
+
     python3 probe_n_extension.py
 """
 from __future__ import annotations
@@ -28,35 +44,54 @@ J_FERRERS = 12
 DPS = 40
 
 
+def _t2_alpha(r):
+    """t^2 P_r = alpha_r P_{r+2} + beta_r P_r + gamma_r P_{r-2}."""
+    return mp.mpf((r + 1) * (r + 2)) / ((2 * r + 1) * (2 * r + 3))
+
+
+def _t2_beta(r):
+    return mp.mpf(2 * r * r + 2 * r - 1) / ((2 * r - 1) * (2 * r + 3))
+
+
+def _t2_gamma(r):
+    if r < 2:
+        return mp.mpf(0)
+    return mp.mpf(r * (r - 1)) / ((2 * r - 1) * (2 * r + 1))
+
+
+def even_spheroidal(c2, K: int = 40):
+    """Ordered even characteristic values and Legendre rows of the angular ODE.
+
+    (1-t^2)S'' - 2t S' + (chi - c^2 t^2) S = 0 with S = sum_k d_{2k} P_{2k}
+    becomes a tridiagonal eigenproblem:
+        chi d_r = [r(r+1) + c^2 beta_r] d_r + c^2 alpha_{r-2} d_{r-2}
+                                            + c^2 gamma_{r+2} d_{r+2}
+    Mode order comes from sorting the spectrum.  No seeds, no truncation
+    root hunt, no quadrature.  Replaces the seeded findroot, which at
+    c^2=13 returned the same wrong root twice (both 48.6737 instead of
+    chi_0=2.7647313118 and chi_4=26.9048271341) and collapsed the pair
+    (ZeroDivisionError in q_source_row_legendre; probe_m13.log).
+    """
+    c2 = mp.mpf(c2)
+    A = mp.zeros(K, K)
+    for i in range(K):
+        r = 2 * i
+        A[i, i] = mp.mpf(r * (r + 1)) + c2 * _t2_beta(r)
+        if i > 0:
+            A[i, i - 1] = c2 * _t2_alpha(2 * (i - 1))
+        if i + 1 < K:
+            A[i, i + 1] = c2 * _t2_gamma(2 * (i + 1))
+    E, Q = mp.eig(A)
+    order = sorted(range(K), key=lambda k: mp.re(E[k]))
+    chis = [mp.re(E[k]) for k in order]
+    rows = [[mp.re(Q[i, k]) for i in range(K)] for k in order]
+    return chis, rows
+
+
 def even_chi(c2, n_even_index: int, terms: int):
     """Characteristic values of the even angular ODE; index 0,1,2 -> n=0,2,4."""
-
-    def u_last(chi):
-        u_prev = mp.mpf(0)
-        u = mp.mpf(1)
-        for j in range(terms - 1):
-            nxt = ((2 * j * (2 * j + 1) - chi) * u + c2 * u_prev) / (
-                (2 * j + 2) * (2 * j + 1)
-            )
-            u_prev, u = u, nxt
-        return u
-
-    # Even spheroidal chi starts near n(n+1) + c^2/2.
-    seeds = [n * (n + 1) + c2 / 2 for n in range(0, 12, 2)]
-    found = []
-    for seed in seeds:
-        try:
-            chi = mp.findroot(u_last, seed)
-        except Exception:
-            continue
-        if all(abs(chi - x) > mp.mpf("1e-8") for x in found):
-            found.append(chi)
-        if len(found) > n_even_index:
-            break
-    found.sort()
-    if len(found) <= n_even_index:
-        raise RuntimeError(f"not enough even chi: {found}")
-    return found[n_even_index]
+    chis, _rows = even_spheroidal(c2, max(40, terms + 8))
+    return chis[n_even_index]
 
 
 def taylor_to_ferrers(u, terms: int):
@@ -74,25 +109,20 @@ def taylor_to_ferrers(u, terms: int):
 
 
 def ferrers_packet(c2, terms: int):
-    chi0 = even_chi(c2, 0, terms + 2)
-    chi4 = even_chi(c2, 2, terms + 2)
-    u0, u4 = [mp.mpf(1)], [mp.mpf(1)]
-    # reuse recurrence
-    def jet(chi):
-        out = [mp.mpf(1)]
-        u_prev = mp.mpf(0)
-        u = mp.mpf(1)
-        for j in range(terms - 1):
-            nxt = ((2 * j * (2 * j + 1) - chi) * u + c2 * u_prev) / (
-                (2 * j + 2) * (2 * j + 1)
-            )
-            u_prev, u = u, nxt
-            out.append(u)
-        return out
+    """chi_0, chi_4 and Ferrers rows a_k = (-1)^k d_{2k}.
 
-    a0 = taylor_to_ferrers(jet(chi0), terms)
-    a4 = taylor_to_ferrers(jet(chi4), terms)
-    return chi0, chi4, a0, a4
+    Rows come from the eigenvectors of `even_spheroidal`, so the mode pair
+    cannot collapse.  At c^2=2 this matches the first-revision packet:
+    chi to 1.4e-23 / 8.9e-20 and a_k/a_0 to working precision.
+    """
+    chis, rows = even_spheroidal(c2, max(40, terms + 8))
+    out = []
+    for idx in (0, 2):
+        d = rows[idx]
+        pivot = max(range(len(d)), key=lambda i: abs(d[i]))
+        d = [z / d[pivot] for z in d]
+        out.append([((-1) ** k) * d[k] for k in range(terms)])
+    return chis[0], chis[2], out[0], out[1]
 
 
 def q_source_row(m: int, N: int, a0, a4):
@@ -289,6 +319,16 @@ def measures(K, q):
     lam0, lam1 = evK[0], evK[1]
     gap = lam1 - lam0
     excess = a - lam0
+    noise = mp.mpf(10) ** (-mp.mp.dps + 5)
+    if abs(gap) < noise or abs(lam0) < noise:
+        raise RuntimeError(
+            f"spectrum bottom under the noise floor: dps={mp.mp.dps} "
+            f"lam0={mp.nstr(lam0, 8)} gap={mp.nstr(gap, 8)}; raise DPS and "
+            "rerun. Agreement between DPS and 2*DPS is the precision check. "
+            "At m=13 N=13, lam0=7.921e-31 is above dps-40 (matches MAC and "
+            "dps 240). At m=13 N=26 even-block lam0=4.947e-45, so DPS=40 "
+            "cannot carry that cell."
+        )
     return dict(
         a=a,
         rnorm=rnorm,

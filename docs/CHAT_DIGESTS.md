@@ -2213,3 +2213,6 @@ ChatGPT: Jev как необязательный ранжировщик, не с
 
 ### 2026-09-21, Linux: Lean G4 algebra — `m^{s_n}=√m` и носитель монома
 Файл `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMonomialMellinG4.lean`. Закрыто: `sourceSn_re`, `sourceSn_add_nat_ne_zero`, `cpow_m_sourceSn` (`m^{s_n}=√m`), `monomialMellinClosed` как бумажная G4, `monomialMellinClosed_eq_weighted_sum`, `monomialSource_windowFiniteSupport` на том же `sourcePositiveIndexFinset`. `q3_check` зелёный; аксиомы только `propext`, `Classical.choice`, `Quot.sound`. Не закрыто: `⟨V_n, E_star(t^d)⟩ = monomialMellinClosed` (замена переменной на окне D0). Это не равенство строки `c_n` и не CCM-сертификат. PX_RH_CLAIM нет.
+
+### 2026-09-21, Linux: m=13 N=13 не шум; even_chi схлопывал моды
+Наблюдатель отозвал «dps 40 = шум»: dps 240 дал те же a=0.154560525732 и λ₀=7.921e−31, совпадение с MAC even-block λ₀. e=a потому что a~0.15, λ₀~10⁻³¹. Кэш на той же клетке: a=4.226e−16. Исходный `even_chi` при c²=13 оба корня 48.6737, ZeroDivisionError. Патч: трёхдиагональ Лежандра + отказ, если спектр ниже 10^(−dps+5). Регрессия m=2 побитово к `result.json`. N=26 при dps 40 теперь падает. G4 `c_n` абстрактен, кэш не импортирует. n90 (аналитический a при N=90) считает Клод, не дублирую. PX_RH_CLAIM нет.

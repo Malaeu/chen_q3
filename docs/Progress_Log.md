@@ -7575,3 +7575,14 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** prove the inner-product identity from `windowedMellin_finiteEStarCore_eq_dirichlet_sum` plus the monomial integral on `[0, log(m/k)]`. Then G5 (Legendre of even degree) and the `c_n` match. No judge batch. No PX_RH_CLAIM.
 **Адреса:** `q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarMonomialMellinG4.lean`; paper G4 in `docs/routeB_bus/proshka/ccm_exact_source_generator_2026-09-20/VERDICT.md` §4.
 **Чей вердикт и аргумент:** owner ordered Lean G4; observer closed algebra+support only. PX_RH_CLAIM not made.
+
+## 2026-09-21 — m=13 N=13 is a real Rayleigh, not dps noise; even_chi fixed
+
+**Развилка:** observer first discarded the m=13 dps-40 table as noise (e=a, gap 6.4e−28 vs MAC λ₀=3.484e−59 at N=120), then dps 240 returned the same a and λ₀.
+**Выбрали:** keep N=13; refuse N=26 at dps 40; replace seeded `findroot` by the even tridiagonal; do not treat FALLS as FiniteGroundTransform.
+**Почему:** N=13 λ₀=7.921e−31 matches MAC even-block λ₀ and the dps-240 rerun to 10 digits. e=a is a~0.15 versus λ₀~10⁻³¹. Cache Rayleigh at the same cell is 4.226e−16. Same K, different q. Original `even_chi` at c²=13 collapsed both modes to 48.6737 (`probe_m13.log`, ZeroDivisionError).
+**Что отвергли и почему:** «весь m=13 при dps 40 — шум» (false at N=13); comparing e/Δ to the MAC even block (full vs even, λ₁ disagrees); waiting on TypeSafe.
+**Техника:** patched `probe_n_extension.py`; m=2 regression bit-identical at 12 digits; N=26 dps 40 now raises. Observer's n90_decider (m=13 N=90 dps 80, dim 181) is already running — not duplicated.
+**Следующий ход (мой выбор):** wait for analytic a at N=90. IF_A it drops to cache order ~1e−59: m=2 was small-m, G4 identity is the right node. IF_B it stays O(0.1): coercivity is a cache property and the source question goes to a Proshka batch, not more Lean. G4 inner product can continue in parallel because `c_n` does not import the JSON. No PX_RH_CLAIM.
+**Адреса:** `docs/routeB_bus/proshka/ccm_n_extension_probe_2026-09-21/probe_n_extension.py`; MAC audit `docs/routeB_bus/phase5_scripts/out/CCM_DIRECTIONAL_RATE_AUDIT_2026-09-20.md` §3; `D0KTrialStage3.lean:81`.
+**Чей вердикт и аргумент:** observer named both defects and retracted the noise reading after dps 240; numbers re-checked from disk here. PX_RH_CLAIM not made.
