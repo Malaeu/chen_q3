@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Cheap VOI probe: does ||B^{-1} r|| fall as Fourier N grows, at fixed m?
 
-Analytic packet: even spheroidal 0/4 Ferrers jets of the angular ODE at c^2=m,
+Analytic packet: even spheroidal 0/4 Ferrers jets of the angular ODE at c = 2*pi*m
+(the ladder bandwidth; the first revision wrongly used c^2 = m),
 mapped by the Mellin generator of exact_generator.py (no quadrature in q).
 Weil matrix: literal W02 - WR - Prime, mpmath, DIAGNOSTIC_NEVER_A_PROOF.
 
@@ -360,7 +361,10 @@ def plant_K21():
 def main():
     mp.mp.dps = DPS
     m = M_FIXED
-    c2 = mp.mpf(m)
+    # Ladder bandwidth: g04 is built at c = 2*pi*LAMBDA_SQ
+    # (true_precision_packet_gate_v1.py:171); Proshka 70da2617 line 203: c = 2*pi*m.
+    # The first revision used c^2 = m, a different packet; see VERDICT.md correction.
+    c2 = (2 * mp.pi * m) ** 2
     print(f"DPS={DPS} m={m} J={J_FERRERS} DIAGNOSTIC_NEVER_A_PROOF")
     plant = plant_K21()
     print("PLANT K(2,1) b01=", plant["b01"])

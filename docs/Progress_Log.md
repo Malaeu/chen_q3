@@ -7597,3 +7597,29 @@ AUTOPSY: dropped=SIGN; note=the proposed central-frequency rank-one correction c
 **Следующий ход (мой выбор):** one Proshka-batch question — is `selectedFerrers` a different object from this Mellin 0/4 packet, or is the exact source simply not coercive? G4 inner product may continue as identity work, not as a positivity path. No PX_RH_CLAIM.
 **Адреса:** scratchpad `n90_parallel` log `bui0yhqwc.output`; `j_convergence` log `b44xdqgf0.output`; MAC audit §3 N=90.
 **Чей вердикт и аргумент:** observer built the parallel probe; numbers read from disk here. PX_RH_CLAIM not made.
+
+## 2026-09-21 — CORRECTION: forcing kill and IF_B stood on c^2=m; ladder bandwidth is c=2πm
+**Развилка:** two journal entries today (`3305959a` "Forcing N-extension killed at m=2", Progress_Log:7558;
+`f1bce92b` "Analytic source at m=13 N=90 stays O(0.1)", Progress_Log:7590; VERDICT.md:1,18,30,65) rest on a
+0/4 Ferrers packet built at `c2 = mp.mpf(m)` (probe_n_extension.py:363). The ladder packet g04 is built at
+`c = 2*pi*LAMBDA_SQ` (true_precision_packet_gate_v1.py:171), and Proshka's paper uses the same, VERDICT
+70da2617 line 203: "c=2πm". Different bandwidth, different functions, different rows.
+**Выбрали:** rerun both cells at c = 2πm; retract the two conclusions; keep the two script fixes.
+**Почему:** direction test showed the c^2=m row is not the cache row even approximately (|cos| = 0.30 at
+m=13, N=13), which no truncation or precision effect explains.
+**Что отвергли и почему:** "coercivity is a cache-row property, not the Mellin 0/4 source" — measured on the
+wrong-bandwidth packet; "raising N is a worse trial" — same. Both retracted. Not retracted: even_chi root
+collapse fix, DPS guard, sector warning (full block 2N+1 vs MAC even block N+1).
+**Техника (m=2, c=4π, c²=157.9, dps 40, K rebuilt per N):**
+  N=1  a=0.00867 η=0.0381 β=+0.1437 Δ−2e=+0.1425
+  N=3  a=0.00231 η=0.0154 β=+0.1106 Δ−2e=+0.1103
+  N=6  a=0.00163 η=0.0116 β=+0.0948 Δ−2e=+0.0947
+  N=12 a=0.00147 η=0.0105 β=+0.0846 Δ−2e=+0.0845
+  η STRICTLY_FALLING = True → the probe's own FALLS branch: enter FiniteGroundTransform.
+**Техника (m=13, c=2π·13, c²=6673.6):** 0/4 packet at c=2π·13 via the same Mellin kernel vs cache row at N=13: |cos| = 1−5.3e−63, real parts equal to all printed digits at every n, a = 4.22609145762e−16 for both, ‖r‖ = 1.9319573e−8 for both. Imaginary parts differ at 1e−33…1e−35 = Proshka's structural phase defect (his refutation of exact equality stands). The exact analytic source IS the cache row to that accuracy; MAC's coercivity at N=90,120 is therefore coercivity of the analytic 0/4 source.
+**Следующий ход (мой выбор):** FALLS branch is live at m=2, m=13 confirms one object; the forcing analogy is not dead
+and enters FiniteGroundTransform as the probe was designed to test. G4 second half (row = c_n of prolateCombination)
+is a positivity path again, not only an identity. No Proshka batch needed for this: the disagreement was ours.
+**Адреса:** scratchpad `m2_forcing_rerun.py`, `bandwidth_test.py`; patch `fix_even_chi_and_dps.patch`.
+**Чей вердикт и аргумент:** observer (Linux Claude). Bandwidth mismatch found by reading
+true_precision_packet_gate_v1.py:171 against probe_n_extension.py:363. DIAGNOSTIC_NEVER_A_PROOF. PX_RH_CLAIM not made.
