@@ -1324,3 +1324,22 @@ Current dependency oleans used; preexisting UnicodeBasic/style warnings and
 nonfatal tactic diagnostics remain. No production admission. The remaining
 operator-domain/spectral-projection/form-core/hmode steps are still separate.
 The Proshka packet is unchanged and unsent. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked actual Ferrers derivative bound from endpoint flux
+
+Isolated candidate: docs/session_protocols/ferrers_endpoint_flux_candidate_20260922.lean
+SHA256 55202772040283a6a4845619299a8b4a7f15c46d2521bd9a9dd4bd32922296a1.
+The two endpoint_flux_bound lemmas use the interior mean-value inequality and
+one-sided zero-flux limits. actual_ferrers_derivative_bounded applies them to
+F=(1-x^2)s', whose derivative (G*x^2-(Lambda+G))*s is bounded by closed-window
+continuity of the actual Ferrers source. On each half-interval the nearer
+endpoint factor cancels against 1-x^2, yielding a bounded actual derivative
+series throughout Ioo(-1,1). No derivative at an endpoint is assumed.
+
+Canonical q3_check exit0, standard axioms only; independent reviewer verified
+exact hash, signs, endpoint choice and source fields. Existing dependency
+oleans used, with nonfatal tactic/style warnings. The constant depends on the
+fixed solution S: no uniform-in-m estimate is claimed. Square integrability,
+weak identity, H1/form-domain and natural operator-domain membership are next
+steps, not conclusions of this candidate. No production admission or Proshka
+send. PX_RH_CLAIM NOT_MADE.

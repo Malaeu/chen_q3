@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 344
-observed_at: '2026-09-22T12:37:26.058528+00:00'
-previous_sha256: 2a7ab9872ed0b361af3998adabd58291fb46a890706362adb9b4edcd599cfc50
+revision: 345
+observed_at: '2026-09-22T12:45:06.445557+00:00'
+previous_sha256: 8c938a51e9930a65d283789489eee384538d762e78385bd82a01b43bef1cba8c
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-q3_check exit0 SHAd90e17f7192c98fc63d057eaeb9fe824d08c650667d7bf1677c94c3a7fb206a1. Polynomial-Gaussian square integrability established, whole-line constant fixed, set integral monotonicity yields exact physical_zero_l2_bound and physical_four_l2_bound. No unproved integrability premise or m-dependent constant; no hmode certification yet.
+Endpoint candidate SHA55202772040283a6a4845619299a8b4a7f15c46d2521bd9a9dd4bd32922296a1, q3_check exit0. Actual source continuous closed interval, differential equation and zero endpoint flux supply bounded derivative, no assumed endpoint differentiability or uniform-in-m constant. This is not yet H1/operator-domain or hmode certification.
 
 ## Next action
-Actual corrected mode residuals now satisfy Lean-checked sqrt integral-square bound C_n/m^2 on full Icc(-sqrt m,sqrt m), for all m>0, constants fixed and nonnegative. Next connect natural operator-domain/projection gap estimate to this certified residual; PAPER form-core/spectral convergence still needs Lean. Proshka packet remains unsent.
+Endpoint flux and actual source ODE now give a Lean-checked bounded first derivative on Ioo(-1,1), for each fixed Ferrers solution. Next prove square integrability and weak/form-domain identity, then natural operator-domain and spectral projection. Full-window residual C/m^2 already checked; spectral core/gap and hmode remain incomplete in Lean. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
