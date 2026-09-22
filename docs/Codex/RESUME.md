@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 353
-observed_at: '2026-09-22T13:07:59.994900+00:00'
-previous_sha256: e4d9d152438adfa6414efb1132f0c1d1e68d46a7a849be12ac52ef232498c90e
+revision: 354
+observed_at: '2026-09-22T13:12:07.244981+00:00'
+previous_sha256: 6dbffe50471ad14329003e4b0f8062facc74f17b8e72dd7b76d32a1861d4a8a3
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Live ls-remote confirmed remote82bd8329be545b18597119cb1da7eefb12b87cb3; git merge-base confirms ancestor, tracked tree clean. Selector bug still present in team_records.py validate_issue_event_actor loops and issue-ce0cf974 remains ASSIGNED. _team_publication_snapshot rejects publication while this issue remains unresolved. All latest mathematical candidates remain local, selected form approximation checked; no synchronization or RH completion claim.
+Reproducer succeeds CURRENT_ONLY Z_CURRENT_RESULT then fails WITH_UNRELATED_OLD_LAUNCH NATIVE_OBSERVATION_MISSING A_OLD_LAUNCH; checked by parent and independent reviewer. Plan corrected implementer role aliases and distinct assignment-ID uniqueness, passed two clean reviews. No canonical runtime implementation or issue-state/publication change. Mathematical candidates remain locally checked; full RouteB goal open.
 
 ## Next action
-Publication audit found origin/rh_clean still82bd8329 and local HEAD10c20237 ahead36, no divergence. Compact publication is held by existing ASSIGNED assignment-result-evidence-selection defect; current actor validation still selects first actor/role match before exact result evidence. Next reconcile the existing selector repair plan and reproduce the exact result-selection defect in isolation, then use its scoped repair path before publication; do not direct-push around registered gate. Proshka packet unsent.
+Selector defect reproduced on current code; corrected exact-result-first plan received two clean independent passes at SHAf2b9ccea5a23c677f1c93c5cee38ce044b4d90e19b9a2bacb501a2ec0c3549d4. Next implement isolated candidate for team_records.py plus existing test_workflow_runtime.py, keeping native/owner/source/completion/artifact checks, alias compatibility and ambiguity rejection; then independent source review and registered repair admission before publication.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

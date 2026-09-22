@@ -1510,3 +1510,24 @@ plan and reproduce the exact defect in isolation before the scoped repair
 workflow. Mathematical source approximation stays checked locally; natural
 form/operator/minmax, cofinal ground and hmode obligations remain open.
 PX_RH_CLAIM NOT_MADE.
+
+## Selector repair reproduction and two clean current-plan passes
+
+Current code reproduction saved in session_protocols/selector_reproduce_20260922.py
+and .log. It accepts current result alone, but an unrelated earlier assignment
+with only LAUNCH changes the outcome to NATIVE_OBSERVATION_MISSING for that
+old assignment. Independent reviewer reran and confirmed the failure.
+
+Plan session_protocols/selector_repair_plan_20260922.md SHA256
+f2b9ccea5a23c677f1c93c5cee38ce044b4d90e19b9a2bacb501a2ec0c3549d4.
+First review corrected implementation/implementer alias compatibility and
+uniqueness by assignment IDs rather than matching RESULT count. Revised frozen
+plan then received two clean independent passes. It selects exact output
+locator+hash before unchanged owner/native/source/completion/artifact checks,
+rejects ambiguity and never retries another candidate after validation failure.
+The prior remote plan output was not available; no historical pass is inferred.
+No canonical runtime edit, issue transition, reservation or push occurred.
+Next implement and test the isolated two-file repair candidate, then obtain
+independent source review and registered repair admission. This preparatory
+review itself does not clear publication or any mathematical hold.
+PX_RH_CLAIM NOT_MADE.
