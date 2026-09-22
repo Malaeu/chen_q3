@@ -1,14 +1,14 @@
 ---
 schema: q3_resume.v2
-revision: 356
-observed_at: '2026-09-22T13:21:30.245384+00:00'
-previous_sha256: 896307cbe8d0b07003e06cff050985ac09b739fa5691494d52a58255f473168f
+revision: 384
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 374e123ea1e82b0c6c241600cbe1545594f28a5620ddceb3c6c98c0bab0d0a28
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
 pins:
-  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  head: 95f6c628750eb6a39174e34232e2e7d51f1b23e9
   physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
   source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
   request_id: REQ-2026-09-11-DENSITY
@@ -67,16 +67,17 @@ stages:
   acceptance: *id006
   publication: *id006
 operation:
-  kind: NONE
-  state: NONE
-  id: ''
+  kind: PUBLISH
+  state: INTENT
+  id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
   evidence: []
   subject:
-    kind: ASSIGNMENT
-    id: ASSIGNMENT_SELECTOR_PLAN2_20260916
-    sha256: cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19
-  command: none
-  inputs: {}
+    kind: REPAIR
+    id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
+    sha256: 96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa.bin: 96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
@@ -95,10 +96,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+Control13 installed from independently reviewed eight-file candidate 27bd4017. 95 recovery tests pass; full237 retains baseline3failures1error. Registered native producer and nonauthor reviewer completed. Repair FIX_PUSH_VERIFIED at95f6c628 with fresh remote readback. No mathematical admission.
 
 ## Next action
-Selector repair committed in separate verification clone as62ebafa8566496d86cb1dc83b34a93f4b025202b on baselinea7d6780bbc7e8b7b2537c4ef7ca44f8952b2cac1; durable bundle preserved. Next register exact producer/checker assignments and fresh native review observation through existing reservation route before REVIEWED_SOURCE integration. Existing conversational review lacks registered launch/result binding and provider-confirmed resolved profile; do not invent it or bypass admission.
+Finish exact compact metadata publication; preserve limit16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
@@ -109,4 +110,4 @@ Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": []
 Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
 
 ## Integration remaining
-New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+Source repair and immutable40commit23path history are on origin/rh_clean at95f6c628. Compact metadata map intake/publication remains. No Proshka response pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.

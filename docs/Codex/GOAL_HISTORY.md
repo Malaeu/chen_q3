@@ -102566,3 +102566,6724 @@ New report remains research evidence, not Lean admission. Check final report rev
 ````
 <!-- /q3-history -->
 
+<!-- q3-history {"fence":"````","key":"resume-356-125f489d19de704385a79b244ef8d29ee85cdbb3179896b3786c3fb07a858116","kind":"resume","revision":356,"sha256":"125f489d19de704385a79b244ef8d29ee85cdbb3179896b3786c3fb07a858116","size":7109} -->
+````text
+---
+schema: q3_resume.v2
+revision: 356
+observed_at: '2026-09-22T13:21:30.245384+00:00'
+previous_sha256: 896307cbe8d0b07003e06cff050985ac09b739fa5691494d52a58255f473168f
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: NONE
+  state: NONE
+  id: ''
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: ASSIGNMENT_SELECTOR_PLAN2_20260916
+    sha256: cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19
+  command: none
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Selector repair committed in separate verification clone as62ebafa8566496d86cb1dc83b34a93f4b025202b on baselinea7d6780bbc7e8b7b2537c4ef7ca44f8952b2cac1; durable bundle preserved. Next register exact producer/checker assignments and fresh native review observation through existing reservation route before REVIEWED_SOURCE integration. Existing conversational review lacks registered launch/result binding and provider-confirmed resolved profile; do not invent it or bypass admission.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-357-a715321fe3abb8ddbb9267231901d1caa3f09b6a9bd7dc471971fe0936f6ca11","kind":"intent","revision":357,"sha256":"a715321fe3abb8ddbb9267231901d1caa3f09b6a9bd7dc471971fe0936f6ca11","size":7364} -->
+````text
+---
+schema: q3_resume.v2
+revision: 357
+observed_at: '2026-09-22T13:23:43.679816+00:00'
+previous_sha256: 125f489d19de704385a79b244ef8d29ee85cdbb3179896b3786c3fb07a858116
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_SOURCE_REVIEW_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_SOURCE_REVIEW_20260922
+    sha256: 39a2f939782e6dfa23339f77a1b6e43b0aa3335fe5c00a28e5649f7423d1ef77
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Selector repair committed in separate verification clone as62ebafa8566496d86cb1dc83b34a93f4b025202b on baselinea7d6780bbc7e8b7b2537c4ef7ca44f8952b2cac1; durable bundle preserved. Next register exact producer/checker assignments and fresh native review observation through existing reservation route before REVIEWED_SOURCE integration. Existing conversational review lacks registered launch/result binding and provider-confirmed resolved profile; do not invent it or bypass admission.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-357-a715321fe3abb8ddbb9267231901d1caa3f09b6a9bd7dc471971fe0936f6ca11","kind":"resume","revision":357,"sha256":"a715321fe3abb8ddbb9267231901d1caa3f09b6a9bd7dc471971fe0936f6ca11","size":7364} -->
+````text
+---
+schema: q3_resume.v2
+revision: 357
+observed_at: '2026-09-22T13:23:43.679816+00:00'
+previous_sha256: 125f489d19de704385a79b244ef8d29ee85cdbb3179896b3786c3fb07a858116
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_SOURCE_REVIEW_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_SOURCE_REVIEW_20260922
+    sha256: 39a2f939782e6dfa23339f77a1b6e43b0aa3335fe5c00a28e5649f7423d1ef77
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Selector repair committed in separate verification clone as62ebafa8566496d86cb1dc83b34a93f4b025202b on baselinea7d6780bbc7e8b7b2537c4ef7ca44f8952b2cac1; durable bundle preserved. Next register exact producer/checker assignments and fresh native review observation through existing reservation route before REVIEWED_SOURCE integration. Existing conversational review lacks registered launch/result binding and provider-confirmed resolved profile; do not invent it or bypass admission.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-358-1b85299b898261e70890a4841cc9e7f05901209b1126d43d14c42189181c8cd7","kind":"intent","revision":358,"sha256":"1b85299b898261e70890a4841cc9e7f05901209b1126d43d14c42189181c8cd7","size":7282} -->
+````text
+---
+schema: q3_resume.v2
+revision: 358
+observed_at: '2026-09-22T13:31:22.153318+00:00'
+previous_sha256: a715321fe3abb8ddbb9267231901d1caa3f09b6a9bd7dc471971fe0936f6ca11
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: SELECTOR_SOURCE_REVIEW_LAUNCH_20260922
+  evidence:
+  - docs/session_protocols/selector_native_launch_20260922.json
+  - docs/session_protocols/selector_native_result_20260922.json
+  - docs/session_protocols/selector_registered_review_20260922.json
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_SOURCE_REVIEW_20260922
+    sha256: 39a2f939782e6dfa23339f77a1b6e43b0aa3335fe5c00a28e5649f7423d1ef77
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Independent registered checker completed SOURCE_INTEGRATION_APPROVED. Integrate the exact two reviewed source files through the pinned candidate engine; then verify the issue and publish the scoped repair.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-358-1b85299b898261e70890a4841cc9e7f05901209b1126d43d14c42189181c8cd7","kind":"resume","revision":358,"sha256":"1b85299b898261e70890a4841cc9e7f05901209b1126d43d14c42189181c8cd7","size":7282} -->
+````text
+---
+schema: q3_resume.v2
+revision: 358
+observed_at: '2026-09-22T13:31:22.153318+00:00'
+previous_sha256: a715321fe3abb8ddbb9267231901d1caa3f09b6a9bd7dc471971fe0936f6ca11
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: SELECTOR_SOURCE_REVIEW_LAUNCH_20260922
+  evidence:
+  - docs/session_protocols/selector_native_launch_20260922.json
+  - docs/session_protocols/selector_native_result_20260922.json
+  - docs/session_protocols/selector_registered_review_20260922.json
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_SOURCE_REVIEW_20260922
+    sha256: 39a2f939782e6dfa23339f77a1b6e43b0aa3335fe5c00a28e5649f7423d1ef77
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Independent registered checker completed SOURCE_INTEGRATION_APPROVED. Integrate the exact two reviewed source files through the pinned candidate engine; then verify the issue and publish the scoped repair.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-359-28b40175bfc795beb4af396d3559629df40e044e7dc3bf808baccab236097fef","kind":"intent","revision":359,"sha256":"28b40175bfc795beb4af396d3559629df40e044e7dc3bf808baccab236097fef","size":7103} -->
+````text
+---
+schema: q3_resume.v2
+revision: 359
+observed_at: '2026-09-22T13:31:47.131334+00:00'
+previous_sha256: 1b85299b898261e70890a4841cc9e7f05901209b1126d43d14c42189181c8cd7
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: SELECTOR_SOURCE_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_SOURCE_INTEGRATE_20260922
+    sha256: 5daf5e811ed2277b4e6ee31fe285c7f783b9bd16d25ee7be030912252fa1a51d
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence: []
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Independent registered checker completed SOURCE_INTEGRATION_APPROVED. Integrate the exact two reviewed source files through the pinned candidate engine; then verify the issue and publish the scoped repair.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-359-28b40175bfc795beb4af396d3559629df40e044e7dc3bf808baccab236097fef","kind":"resume","revision":359,"sha256":"28b40175bfc795beb4af396d3559629df40e044e7dc3bf808baccab236097fef","size":7103} -->
+````text
+---
+schema: q3_resume.v2
+revision: 359
+observed_at: '2026-09-22T13:31:47.131334+00:00'
+previous_sha256: 1b85299b898261e70890a4841cc9e7f05901209b1126d43d14c42189181c8cd7
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: SELECTOR_SOURCE_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_SOURCE_INTEGRATE_20260922
+    sha256: 5daf5e811ed2277b4e6ee31fe285c7f783b9bd16d25ee7be030912252fa1a51d
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence: []
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Independent registered checker completed SOURCE_INTEGRATION_APPROVED. Integrate the exact two reviewed source files through the pinned candidate engine; then verify the issue and publish the scoped repair.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-360-57423b966c966dbdcc57f8252137c890afcade252ba37322f945f32250d12cbb","kind":"intent","revision":360,"sha256":"57423b966c966dbdcc57f8252137c890afcade252ba37322f945f32250d12cbb","size":7362} -->
+````text
+---
+schema: q3_resume.v2
+revision: 360
+observed_at: '2026-09-22T13:32:53.986314+00:00'
+previous_sha256: 28b40175bfc795beb4af396d3559629df40e044e7dc3bf808baccab236097fef
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: SELECTOR_SOURCE_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_SOURCE_INTEGRATE_20260922
+    sha256: 5daf5e811ed2277b4e6ee31fe285c7f783b9bd16d25ee7be030912252fa1a51d
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence: []
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-360-57423b966c966dbdcc57f8252137c890afcade252ba37322f945f32250d12cbb","kind":"resume","revision":360,"sha256":"57423b966c966dbdcc57f8252137c890afcade252ba37322f945f32250d12cbb","size":7362} -->
+````text
+---
+schema: q3_resume.v2
+revision: 360
+observed_at: '2026-09-22T13:32:53.986314+00:00'
+previous_sha256: 28b40175bfc795beb4af396d3559629df40e044e7dc3bf808baccab236097fef
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: SELECTOR_SOURCE_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_SOURCE_INTEGRATE_20260922
+    sha256: 5daf5e811ed2277b4e6ee31fe285c7f783b9bd16d25ee7be030912252fa1a51d
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence: []
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-361-d46f5fecb8dff1df15899aa84a44fece71c019238c14788d15e44f0f6795a14e","kind":"intent","revision":361,"sha256":"d46f5fecb8dff1df15899aa84a44fece71c019238c14788d15e44f0f6795a14e","size":7434} -->
+````text
+---
+schema: q3_resume.v2
+revision: 361
+observed_at: '2026-09-22T13:33:48.542956+00:00'
+previous_sha256: 57423b966c966dbdcc57f8252137c890afcade252ba37322f945f32250d12cbb
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: SELECTOR_SOURCE_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_SOURCE_INTEGRATE_20260922
+    sha256: 5daf5e811ed2277b4e6ee31fe285c7f783b9bd16d25ee7be030912252fa1a51d
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence:
+  - docs/session_protocols/selector_integration_rejection_20260922.json
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-361-d46f5fecb8dff1df15899aa84a44fece71c019238c14788d15e44f0f6795a14e","kind":"resume","revision":361,"sha256":"d46f5fecb8dff1df15899aa84a44fece71c019238c14788d15e44f0f6795a14e","size":7434} -->
+````text
+---
+schema: q3_resume.v2
+revision: 361
+observed_at: '2026-09-22T13:33:48.542956+00:00'
+previous_sha256: 57423b966c966dbdcc57f8252137c890afcade252ba37322f945f32250d12cbb
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: SELECTOR_SOURCE_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_SOURCE_INTEGRATE_20260922
+    sha256: 5daf5e811ed2277b4e6ee31fe285c7f783b9bd16d25ee7be030912252fa1a51d
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence:
+  - docs/session_protocols/selector_integration_rejection_20260922.json
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-362-ec50cbf9b0f9fc3abb0f3dcda60dc967a82759cf718df6ea8ded3564392cfbac","kind":"intent","revision":362,"sha256":"ec50cbf9b0f9fc3abb0f3dcda60dc967a82759cf718df6ea8ded3564392cfbac","size":7344} -->
+````text
+---
+schema: q3_resume.v2
+revision: 362
+observed_at: '2026-09-22T13:34:13.067528+00:00'
+previous_sha256: d46f5fecb8dff1df15899aa84a44fece71c019238c14788d15e44f0f6795a14e
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_CANONICAL_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_CANONICAL_REVIEW_20260922
+    sha256: 83b304870647340150d4d906a10f6121d1f89fbce6056591b6d973fb3948ae09
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-362-ec50cbf9b0f9fc3abb0f3dcda60dc967a82759cf718df6ea8ded3564392cfbac","kind":"resume","revision":362,"sha256":"ec50cbf9b0f9fc3abb0f3dcda60dc967a82759cf718df6ea8ded3564392cfbac","size":7344} -->
+````text
+---
+schema: q3_resume.v2
+revision: 362
+observed_at: '2026-09-22T13:34:13.067528+00:00'
+previous_sha256: d46f5fecb8dff1df15899aa84a44fece71c019238c14788d15e44f0f6795a14e
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_CANONICAL_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_CANONICAL_REVIEW_20260922
+    sha256: 83b304870647340150d4d906a10f6121d1f89fbce6056591b6d973fb3948ae09
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-363-d45912a73fd9b59964a1f5fbce5b1b9069d618d285da4e628fec278ea6d9e549","kind":"intent","revision":363,"sha256":"d45912a73fd9b59964a1f5fbce5b1b9069d618d285da4e628fec278ea6d9e549","size":7478} -->
+````text
+---
+schema: q3_resume.v2
+revision: 363
+observed_at: '2026-09-22T13:35:38.134938+00:00'
+previous_sha256: ec50cbf9b0f9fc3abb0f3dcda60dc967a82759cf718df6ea8ded3564392cfbac
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: SELECTOR_CANONICAL_LAUNCH_20260922
+  evidence:
+  - docs/session_protocols/selector_canonical_review_20260922.json
+  - docs/session_protocols/selector_canonical_result_20260922.json
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_CANONICAL_REVIEW_20260922
+    sha256: 83b304870647340150d4d906a10f6121d1f89fbce6056591b6d973fb3948ae09
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-363-d45912a73fd9b59964a1f5fbce5b1b9069d618d285da4e628fec278ea6d9e549","kind":"resume","revision":363,"sha256":"d45912a73fd9b59964a1f5fbce5b1b9069d618d285da4e628fec278ea6d9e549","size":7478} -->
+````text
+---
+schema: q3_resume.v2
+revision: 363
+observed_at: '2026-09-22T13:35:38.134938+00:00'
+previous_sha256: ec50cbf9b0f9fc3abb0f3dcda60dc967a82759cf718df6ea8ded3564392cfbac
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: SELECTOR_CANONICAL_LAUNCH_20260922
+  evidence:
+  - docs/session_protocols/selector_canonical_review_20260922.json
+  - docs/session_protocols/selector_canonical_result_20260922.json
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_CANONICAL_REVIEW_20260922
+    sha256: 83b304870647340150d4d906a10f6121d1f89fbce6056591b6d973fb3948ae09
+  command: agent-launch
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-364-e3b895b58007e6c7a856ae4e40a86e7060f80844305038df852175139e4301b6","kind":"intent","revision":364,"sha256":"e3b895b58007e6c7a856ae4e40a86e7060f80844305038df852175139e4301b6","size":7368} -->
+````text
+---
+schema: q3_resume.v2
+revision: 364
+observed_at: '2026-09-22T13:35:55.988586+00:00'
+previous_sha256: d45912a73fd9b59964a1f5fbce5b1b9069d618d285da4e628fec278ea6d9e549
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: SELECTOR_CANONICAL_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_CANONICAL_INTEGRATE_20260922
+    sha256: 51d7be3abd35785c91e891dd2e4582567e0131db2c1c7b80b4f0eb4ab2476ea2
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence: []
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-364-e3b895b58007e6c7a856ae4e40a86e7060f80844305038df852175139e4301b6","kind":"resume","revision":364,"sha256":"e3b895b58007e6c7a856ae4e40a86e7060f80844305038df852175139e4301b6","size":7368} -->
+````text
+---
+schema: q3_resume.v2
+revision: 364
+observed_at: '2026-09-22T13:35:55.988586+00:00'
+previous_sha256: d45912a73fd9b59964a1f5fbce5b1b9069d618d285da4e628fec278ea6d9e549
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: SELECTOR_CANONICAL_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_CANONICAL_INTEGRATE_20260922
+    sha256: 51d7be3abd35785c91e891dd2e4582567e0131db2c1c7b80b4f0eb4ab2476ea2
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence: []
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Registered reviewer RESULT completed and approved exact source hashes, but integration rejected NONCANONICAL_PAYLOAD before source copies: checker JSON key order differs from canonical_json. Preserve original receipt and observation. Obtain corrected canonical checker artifact through a fresh registered bounded assignment; do not overwrite prior hashed output or bypass integration. HEAD stays00c7cbf4426234abafd35faecba183edc9ce29ce; source preimages unchanged.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-365-d1547f6f2aee988040ccfa2b01b502173b8a3a77fc8f79af17c4a20060cd4a35","kind":"intent","revision":365,"sha256":"d1547f6f2aee988040ccfa2b01b502173b8a3a77fc8f79af17c4a20060cd4a35","size":7319} -->
+````text
+---
+schema: q3_resume.v2
+revision: 365
+observed_at: '2026-09-22T13:36:29.455092+00:00'
+previous_sha256: e3b895b58007e6c7a856ae4e40a86e7060f80844305038df852175139e4301b6
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: SELECTOR_CANONICAL_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_CANONICAL_INTEGRATE_20260922
+    sha256: 51d7be3abd35785c91e891dd2e4582567e0131db2c1c7b80b4f0eb4ab2476ea2
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence:
+  - docs/session_protocols/selector_integration_success_20260922.json
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Exact reviewed selector repair integrated successfully from pinned candidate95298cab. Canonical two source hashes equal approved bytes. Next registered implementer result and separate repair-review artifact, FIX_CANDIDATE/FIX_VERIFIED, then source-only publication. Prior noncanonical review preserved; failed integration confirmed NOT_EXECUTED.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-365-d1547f6f2aee988040ccfa2b01b502173b8a3a77fc8f79af17c4a20060cd4a35","kind":"resume","revision":365,"sha256":"d1547f6f2aee988040ccfa2b01b502173b8a3a77fc8f79af17c4a20060cd4a35","size":7319} -->
+````text
+---
+schema: q3_resume.v2
+revision: 365
+observed_at: '2026-09-22T13:36:29.455092+00:00'
+previous_sha256: e3b895b58007e6c7a856ae4e40a86e7060f80844305038df852175139e4301b6
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: SELECTOR_CANONICAL_INTEGRATE_20260922
+  command: workflow-team-integrate-candidate
+  subject:
+    kind: REPAIR
+    id: SELECTOR_CANONICAL_INTEGRATE_20260922
+    sha256: 51d7be3abd35785c91e891dd2e4582567e0131db2c1c7b80b4f0eb4ab2476ea2
+  inputs:
+    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
+    orchestrator/tests/test_workflow_runtime.py: 53850233a1a3907a242f1af84e601e66bd716f2d822edb8a0df446a737e0f685
+  evidence:
+  - docs/session_protocols/selector_integration_success_20260922.json
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Exact reviewed selector repair integrated successfully from pinned candidate95298cab. Canonical two source hashes equal approved bytes. Next registered implementer result and separate repair-review artifact, FIX_CANDIDATE/FIX_VERIFIED, then source-only publication. Prior noncanonical review preserved; failed integration confirmed NOT_EXECUTED.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-366-c36b7c3210b2d734b456358d883eb3d6bd275bc00844eeeb3906058b9f9c9834","kind":"intent","revision":366,"sha256":"c36b7c3210b2d734b456358d883eb3d6bd275bc00844eeeb3906058b9f9c9834","size":7146} -->
+````text
+---
+schema: q3_resume.v2
+revision: 366
+observed_at: '2026-09-22T13:37:22.839151+00:00'
+previous_sha256: d1547f6f2aee988040ccfa2b01b502173b8a3a77fc8f79af17c4a20060cd4a35
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Exact reviewed selector repair integrated successfully from pinned candidate95298cab. Canonical two source hashes equal approved bytes. Next registered implementer result and separate repair-review artifact, FIX_CANDIDATE/FIX_VERIFIED, then source-only publication. Prior noncanonical review preserved; failed integration confirmed NOT_EXECUTED.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-366-c36b7c3210b2d734b456358d883eb3d6bd275bc00844eeeb3906058b9f9c9834","kind":"resume","revision":366,"sha256":"c36b7c3210b2d734b456358d883eb3d6bd275bc00844eeeb3906058b9f9c9834","size":7146} -->
+````text
+---
+schema: q3_resume.v2
+revision: 366
+observed_at: '2026-09-22T13:37:22.839151+00:00'
+previous_sha256: d1547f6f2aee988040ccfa2b01b502173b8a3a77fc8f79af17c4a20060cd4a35
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Exact reviewed selector repair integrated successfully from pinned candidate95298cab. Canonical two source hashes equal approved bytes. Next registered implementer result and separate repair-review artifact, FIX_CANDIDATE/FIX_VERIFIED, then source-only publication. Prior noncanonical review preserved; failed integration confirmed NOT_EXECUTED.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-367-c8afa038969c947329f837395e91a7cc448862ccbcdcf7ab0c9ddb515297a2e9","kind":"intent","revision":367,"sha256":"c8afa038969c947329f837395e91a7cc448862ccbcdcf7ab0c9ddb515297a2e9","size":7446} -->
+````text
+---
+schema: q3_resume.v2
+revision: 367
+observed_at: '2026-09-22T13:39:25.040213+00:00'
+previous_sha256: c36b7c3210b2d734b456358d883eb3d6bd275bc00844eeeb3906058b9f9c9834
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Selector repair integrated; all27 canonical TeamRecordsTests pass. Delivery agent NOT launched: reservation rejected TEAM_AGENT_LAUNCH_BINDING_CHANGED. Local operation is OBSERVED without launch binding. Evidence: docs/session_protocols/selector_repair_launch_constraint_20260922.json. CONFIRMED checkpoint was rejected TEAM_OPERATION_CONFIRMATION_REQUIRED, so intent remains unresolved, not a running agent. Resolve original-report-base/current-HEAD repair-review incompatibility via supported recovery; no invented receipts. Publication unfinished. General weighted form-core/minmax and cofinal finite-ground bridge remain mathematically open.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-367-c8afa038969c947329f837395e91a7cc448862ccbcdcf7ab0c9ddb515297a2e9","kind":"resume","revision":367,"sha256":"c8afa038969c947329f837395e91a7cc448862ccbcdcf7ab0c9ddb515297a2e9","size":7446} -->
+````text
+---
+schema: q3_resume.v2
+revision: 367
+observed_at: '2026-09-22T13:39:25.040213+00:00'
+previous_sha256: c36b7c3210b2d734b456358d883eb3d6bd275bc00844eeeb3906058b9f9c9834
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Selector repair integrated; all27 canonical TeamRecordsTests pass. Delivery agent NOT launched: reservation rejected TEAM_AGENT_LAUNCH_BINDING_CHANGED. Local operation is OBSERVED without launch binding. Evidence: docs/session_protocols/selector_repair_launch_constraint_20260922.json. CONFIRMED checkpoint was rejected TEAM_OPERATION_CONFIRMATION_REQUIRED, so intent remains unresolved, not a running agent. Resolve original-report-base/current-HEAD repair-review incompatibility via supported recovery; no invented receipts. Publication unfinished. General weighted form-core/minmax and cofinal finite-ground bridge remain mathematically open.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-368-84494994fdec197d495a7d11c0815b5063104a8e0ecff039774b225d564063b9","kind":"intent","revision":368,"sha256":"84494994fdec197d495a7d11c0815b5063104a8e0ecff039774b225d564063b9","size":7416} -->
+````text
+---
+schema: q3_resume.v2
+revision: 368
+observed_at: '2026-09-22T13:42:21.641614+00:00'
+previous_sha256: c8afa038969c947329f837395e91a7cc448862ccbcdcf7ab0c9ddb515297a2e9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+New isolated Lean candidate /tmp/legendre_endpoint_decay_20260922.lean passed scripts/q3_check.sh: endpoint_log_weight_tendsto and clipped_endpoint_mass_tendsto, standard axioms only. This is the scalar endpoint clipping step; actual weighted Cauchy-Schwarz trace bound and full polynomial form-core density remain open. Not independently reviewed or integrated. Selector source repair integrated, 27 canonical tests pass; delivery launch never reserved or executed due original-report-base/current-HEAD incompatibility. No ownership change justified; source-only publication and Proshka delivery remain unfinished.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-368-84494994fdec197d495a7d11c0815b5063104a8e0ecff039774b225d564063b9","kind":"resume","revision":368,"sha256":"84494994fdec197d495a7d11c0815b5063104a8e0ecff039774b225d564063b9","size":7416} -->
+````text
+---
+schema: q3_resume.v2
+revision: 368
+observed_at: '2026-09-22T13:42:21.641614+00:00'
+previous_sha256: c8afa038969c947329f837395e91a7cc448862ccbcdcf7ab0c9ddb515297a2e9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+New isolated Lean candidate /tmp/legendre_endpoint_decay_20260922.lean passed scripts/q3_check.sh: endpoint_log_weight_tendsto and clipped_endpoint_mass_tendsto, standard axioms only. This is the scalar endpoint clipping step; actual weighted Cauchy-Schwarz trace bound and full polynomial form-core density remain open. Not independently reviewed or integrated. Selector source repair integrated, 27 canonical tests pass; delivery launch never reserved or executed due original-report-base/current-HEAD incompatibility. No ownership change justified; source-only publication and Proshka delivery remain unfinished.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-369-6fad35c93a1d3bccf61a74cc2113fb7545d9b8b6e93ac20171c5d5ef083718da","kind":"intent","revision":369,"sha256":"6fad35c93a1d3bccf61a74cc2113fb7545d9b8b6e93ac20171c5d5ef083718da","size":7559} -->
+````text
+---
+schema: q3_resume.v2
+revision: 369
+observed_at: '2026-09-22T13:49:34.121327+00:00'
+previous_sha256: 84494994fdec197d495a7d11c0815b5063104a8e0ecff039774b225d564063b9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Mathematical progress: /tmp/legendre_weighted_trace_20260922.lean SHA256 0ccd7adcc9310fe39c2c307dc7731ba2e49853ca33a0f2addc5ac4259ae59a97 passed q3_check (log /tmp/legendre_weighted_trace_20260922.log). It proves weighted integral CS, exact inverse-weight logarithmic integral, local trace estimate, local energy <= total, and endpoint mass decay from total energy. Explicit remaining inputs: local derivative integrability and local FTC identity; locally AC-to-FTC and full form-core density remain open. Standard axioms only; no independent review or canonical proof admission. Runtime delivery intent remains unresolved and NOT launched (reservation base mismatch); selector repair is integrated and 27 tests pass, publication/Proshka dispatch unfinished.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-369-6fad35c93a1d3bccf61a74cc2113fb7545d9b8b6e93ac20171c5d5ef083718da","kind":"resume","revision":369,"sha256":"6fad35c93a1d3bccf61a74cc2113fb7545d9b8b6e93ac20171c5d5ef083718da","size":7559} -->
+````text
+---
+schema: q3_resume.v2
+revision: 369
+observed_at: '2026-09-22T13:49:34.121327+00:00'
+previous_sha256: 84494994fdec197d495a7d11c0815b5063104a8e0ecff039774b225d564063b9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Mathematical progress: /tmp/legendre_weighted_trace_20260922.lean SHA256 0ccd7adcc9310fe39c2c307dc7731ba2e49853ca33a0f2addc5ac4259ae59a97 passed q3_check (log /tmp/legendre_weighted_trace_20260922.log). It proves weighted integral CS, exact inverse-weight logarithmic integral, local trace estimate, local energy <= total, and endpoint mass decay from total energy. Explicit remaining inputs: local derivative integrability and local FTC identity; locally AC-to-FTC and full form-core density remain open. Standard axioms only; no independent review or canonical proof admission. Runtime delivery intent remains unresolved and NOT launched (reservation base mismatch); selector repair is integrated and 27 tests pass, publication/Proshka dispatch unfinished.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-370-5fd0febe80b481ffbabe2e1963f15814bc0b52bf478aa70e0ef09910ac787205","kind":"intent","revision":370,"sha256":"5fd0febe80b481ffbabe2e1963f15814bc0b52bf478aa70e0ef09910ac787205","size":7501} -->
+````text
+---
+schema: q3_resume.v2
+revision: 370
+observed_at: '2026-09-22T13:53:16.704208+00:00'
+previous_sha256: 6fad35c93a1d3bccf61a74cc2113fb7545d9b8b6e93ac20171c5d5ef083718da
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Source audit identified a shorter exact-domain route: close even polynomial derivative graphs in L2xL2, preserving the existing finite Ritz carrier. /tmp/legendre_polynomial_closure_route_20260922.md records PAPER_CANDIDATE_UNREVIEWED proof and source hashes. Installed Submodule.orthogonal_closure and ContinuousMap.inner_toLp provide the weak-equation extension mechanism. Next source-specific L2 graph embedding/norm identities using already checked selected source form approximation; do not require maximal locally-AC domain equality first. Closability, spectral representation/minmax and finite CCM bridge remain open. Runtime intent still NOT launched; publication and Proshka send unfinished.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-370-5fd0febe80b481ffbabe2e1963f15814bc0b52bf478aa70e0ef09910ac787205","kind":"resume","revision":370,"sha256":"5fd0febe80b481ffbabe2e1963f15814bc0b52bf478aa70e0ef09910ac787205","size":7501} -->
+````text
+---
+schema: q3_resume.v2
+revision: 370
+observed_at: '2026-09-22T13:53:16.704208+00:00'
+previous_sha256: 6fad35c93a1d3bccf61a74cc2113fb7545d9b8b6e93ac20171c5d5ef083718da
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Source audit identified a shorter exact-domain route: close even polynomial derivative graphs in L2xL2, preserving the existing finite Ritz carrier. /tmp/legendre_polynomial_closure_route_20260922.md records PAPER_CANDIDATE_UNREVIEWED proof and source hashes. Installed Submodule.orthogonal_closure and ContinuousMap.inner_toLp provide the weak-equation extension mechanism. Next source-specific L2 graph embedding/norm identities using already checked selected source form approximation; do not require maximal locally-AC domain equality first. Closability, spectral representation/minmax and finite CCM bridge remain open. Runtime intent still NOT launched; publication and Proshka send unfinished.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-371-a808aaa6967455d123994d2170cddd0f305be438eba8054ec7d39d6af5e1da88","kind":"intent","revision":371,"sha256":"a808aaa6967455d123994d2170cddd0f305be438eba8054ec7d39d6af5e1da88","size":7681} -->
+````text
+---
+schema: q3_resume.v2
+revision: 371
+observed_at: '2026-09-22T14:03:38.438797+00:00'
+previous_sha256: 5fd0febe80b481ffbabe2e1963f15814bc0b52bf478aa70e0ef09910ac787205
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+New source-specific Lean progress: /tmp/legendre_actual_graph_20260922.lean passed q3_check, log /tmp/legendre_actual_graph_20260922.log. actual_polynomial_inner_zero identifies the unchanged Ferrers weak identity with L2xL2 inner product using sqrt(1-x^2) weighted derivative and exact interval measure. actual_weak_on_closed_even_graph extends it to the closed even-polynomial graph span; retains explicit weighted coefficient summability. No unweighted endpoint derivative continuity assumed. Standard axioms only; isolated combined candidate with dependency manifest /tmp/legendre_actual_graph_sources_20260922.json; not independently reviewed/admitted. Next prove actual source graph membership from existing sourcePolynomial form-error convergence, then selected0/4 specialization and spectral representation. Publication/Proshka pending; delivery intent was never launched.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-371-a808aaa6967455d123994d2170cddd0f305be438eba8054ec7d39d6af5e1da88","kind":"resume","revision":371,"sha256":"a808aaa6967455d123994d2170cddd0f305be438eba8054ec7d39d6af5e1da88","size":7681} -->
+````text
+---
+schema: q3_resume.v2
+revision: 371
+observed_at: '2026-09-22T14:03:38.438797+00:00'
+previous_sha256: 5fd0febe80b481ffbabe2e1963f15814bc0b52bf478aa70e0ef09910ac787205
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+New source-specific Lean progress: /tmp/legendre_actual_graph_20260922.lean passed q3_check, log /tmp/legendre_actual_graph_20260922.log. actual_polynomial_inner_zero identifies the unchanged Ferrers weak identity with L2xL2 inner product using sqrt(1-x^2) weighted derivative and exact interval measure. actual_weak_on_closed_even_graph extends it to the closed even-polynomial graph span; retains explicit weighted coefficient summability. No unweighted endpoint derivative continuity assumed. Standard axioms only; isolated combined candidate with dependency manifest /tmp/legendre_actual_graph_sources_20260922.json; not independently reviewed/admitted. Next prove actual source graph membership from existing sourcePolynomial form-error convergence, then selected0/4 specialization and spectral representation. Publication/Proshka pending; delivery intent was never launched.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-372-30f8edc71350e476ed1baba815bacf55e7281f9551417a51cb00bf1fa93137a9","kind":"intent","revision":372,"sha256":"30f8edc71350e476ed1baba815bacf55e7281f9551417a51cb00bf1fa93137a9","size":7697} -->
+````text
+---
+schema: q3_resume.v2
+revision: 372
+observed_at: '2026-09-22T14:07:23.403599+00:00'
+previous_sha256: a808aaa6967455d123994d2170cddd0f305be438eba8054ec7d39d6af5e1da88
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Kernel-checked next joint complete at isolated-candidate scope: /tmp/legendre_actual_graph_20260922.lean and its log. actual_graph_distance_eq_formError proves exact equality to the existing sourceFormError, actual_source_mem_closed_even_graph uses the same polynomial sequence to prove membership, selected_zero_four_closed_graph_package supplies membership AND weak equation for both actual selected0/4 sources for every k. Weighted summability discharged from existing selected separation/tail-splice and eigenvalue<20 facts; no new assumption in selected corollary. Standard axioms only, not independently reviewed/admitted. Next closability/injective projection of the closed derivative graph, associated operator, compactness/minmax and spectral gap; no cofinal hmode or finite CCM ground claim. Runtime publication/Proshka dispatch still pending; failed delivery intent was never launched.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-372-30f8edc71350e476ed1baba815bacf55e7281f9551417a51cb00bf1fa93137a9","kind":"resume","revision":372,"sha256":"30f8edc71350e476ed1baba815bacf55e7281f9551417a51cb00bf1fa93137a9","size":7697} -->
+````text
+---
+schema: q3_resume.v2
+revision: 372
+observed_at: '2026-09-22T14:07:23.403599+00:00'
+previous_sha256: a808aaa6967455d123994d2170cddd0f305be438eba8054ec7d39d6af5e1da88
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Kernel-checked next joint complete at isolated-candidate scope: /tmp/legendre_actual_graph_20260922.lean and its log. actual_graph_distance_eq_formError proves exact equality to the existing sourceFormError, actual_source_mem_closed_even_graph uses the same polynomial sequence to prove membership, selected_zero_four_closed_graph_package supplies membership AND weak equation for both actual selected0/4 sources for every k. Weighted summability discharged from existing selected separation/tail-splice and eigenvalue<20 facts; no new assumption in selected corollary. Standard axioms only, not independently reviewed/admitted. Next closability/injective projection of the closed derivative graph, associated operator, compactness/minmax and spectral gap; no cofinal hmode or finite CCM ground claim. Runtime publication/Proshka dispatch still pending; failed delivery intent was never launched.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-373-53dbd5046aa2068dccae4882a30674a6d96092f51caf355b8410bd8d48972b6b","kind":"intent","revision":373,"sha256":"53dbd5046aa2068dccae4882a30674a6d96092f51caf355b8410bd8d48972b6b","size":7740} -->
+````text
+---
+schema: q3_resume.v2
+revision: 373
+observed_at: '2026-09-22T14:11:54.777172+00:00'
+previous_sha256: 30f8edc71350e476ed1baba815bacf55e7281f9551417a51cb00bf1fa93137a9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Kernel progress in /tmp/legendre_actual_graph_20260922.lean: polynomial_flux_weak proves exact endpoint-cancelled polynomial integration by parts; polynomial_adjoint_on_closed_graph extends it to the closed graph; vertical_graph_orthogonal proves any zero-first-component graph vector is orthogonal to every sqrt(1-x^2)*p_prime test. q3_check exit0; standard axioms only. Closability is not yet proved: remaining exact target is density of these weighted polynomial derivatives in source L2. Installed polynomialFunctions.topologicalClosure and ContinuousMap.toLp_denseRange are available. Candidate completion: derivative surjectivity on polynomials, uniform polynomial approximation, and weighted continuous approximants sqrt(w)*f/(sqrt(w)+1/(n+1)); DCT uses endpoint-only zero set (measure zero), not bounded inverse weight. Independent review/integration/publication and Proshka send remain open; failed delivery intent never launched.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-373-53dbd5046aa2068dccae4882a30674a6d96092f51caf355b8410bd8d48972b6b","kind":"resume","revision":373,"sha256":"53dbd5046aa2068dccae4882a30674a6d96092f51caf355b8410bd8d48972b6b","size":7740} -->
+````text
+---
+schema: q3_resume.v2
+revision: 373
+observed_at: '2026-09-22T14:11:54.777172+00:00'
+previous_sha256: 30f8edc71350e476ed1baba815bacf55e7281f9551417a51cb00bf1fa93137a9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Kernel progress in /tmp/legendre_actual_graph_20260922.lean: polynomial_flux_weak proves exact endpoint-cancelled polynomial integration by parts; polynomial_adjoint_on_closed_graph extends it to the closed graph; vertical_graph_orthogonal proves any zero-first-component graph vector is orthogonal to every sqrt(1-x^2)*p_prime test. q3_check exit0; standard axioms only. Closability is not yet proved: remaining exact target is density of these weighted polynomial derivatives in source L2. Installed polynomialFunctions.topologicalClosure and ContinuousMap.toLp_denseRange are available. Candidate completion: derivative surjectivity on polynomials, uniform polynomial approximation, and weighted continuous approximants sqrt(w)*f/(sqrt(w)+1/(n+1)); DCT uses endpoint-only zero set (measure zero), not bounded inverse weight. Independent review/integration/publication and Proshka send remain open; failed delivery intent never launched.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-374-d95491621856728f1f65430bd3521fe89f38f7c29a5eed9bf9442bf92e6e6ce9","kind":"intent","revision":374,"sha256":"d95491621856728f1f65430bd3521fe89f38f7c29a5eed9bf9442bf92e6e6ce9","size":7034} -->
+````text
+---
+schema: q3_resume.v2
+revision: 374
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 53dbd5046aa2068dccae4882a30674a6d96092f51caf355b8410bd8d48972b6b
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-374-d95491621856728f1f65430bd3521fe89f38f7c29a5eed9bf9442bf92e6e6ce9","kind":"resume","revision":374,"sha256":"d95491621856728f1f65430bd3521fe89f38f7c29a5eed9bf9442bf92e6e6ce9","size":7034} -->
+````text
+---
+schema: q3_resume.v2
+revision: 374
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 53dbd5046aa2068dccae4882a30674a6d96092f51caf355b8410bd8d48972b6b
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-375-8422817d8b4b2f9589f6b95f113676c915efc40f74b186b7f26dae4cec8ac70d","kind":"intent","revision":375,"sha256":"8422817d8b4b2f9589f6b95f113676c915efc40f74b186b7f26dae4cec8ac70d","size":7166} -->
+````text
+---
+schema: q3_resume.v2
+revision: 375
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: d95491621856728f1f65430bd3521fe89f38f7c29a5eed9bf9442bf92e6e6ce9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence:
+  - control13_recovery:SELECTOR_DELIVERY_LAUNCH_20260922:control13:2c47669a39edcb38c6e37193f50b785f0d988333f1e081958004248d3f0e091e
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-375-8422817d8b4b2f9589f6b95f113676c915efc40f74b186b7f26dae4cec8ac70d","kind":"resume","revision":375,"sha256":"8422817d8b4b2f9589f6b95f113676c915efc40f74b186b7f26dae4cec8ac70d","size":7166} -->
+````text
+---
+schema: q3_resume.v2
+revision: 375
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: d95491621856728f1f65430bd3521fe89f38f7c29a5eed9bf9442bf92e6e6ce9
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: SELECTOR_DELIVERY_LAUNCH_20260922
+  evidence:
+  - control13_recovery:SELECTOR_DELIVERY_LAUNCH_20260922:control13:2c47669a39edcb38c6e37193f50b785f0d988333f1e081958004248d3f0e091e
+  subject:
+    kind: ASSIGNMENT
+    id: SELECTOR_REPAIR_DELIVERY_20260922
+    sha256: eb10c67d33051d3d27443dd5a841c1b827e020baca48f1a7b6152bbd3090b6b6
+  command: agent-launch
+  inputs:
+    docs/session_protocols/selector_integration_success_20260922.json: 67bfa77aa27d7c4786c3b22fa938568f7050fbc72c1b258e18984a05b65e51bd
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-376-04b0aa52a55ac1c5d64f82ed2e6b34b02552425e4d77eec2bb0ca13ec1076f2d","kind":"intent","revision":376,"sha256":"04b0aa52a55ac1c5d64f82ed2e6b34b02552425e4d77eec2bb0ca13ec1076f2d","size":6912} -->
+````text
+---
+schema: q3_resume.v2
+revision: 376
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 8422817d8b4b2f9589f6b95f113676c915efc40f74b186b7f26dae4cec8ac70d
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: CONTROL13_27bd401757fca1c7_producer:launch
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_producer
+    sha256: 5e90bcc4d83fbdde5a0e071e775164f8c3686d3280910a8fa52184e4a8d8b69c
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-376-04b0aa52a55ac1c5d64f82ed2e6b34b02552425e4d77eec2bb0ca13ec1076f2d","kind":"resume","revision":376,"sha256":"04b0aa52a55ac1c5d64f82ed2e6b34b02552425e4d77eec2bb0ca13ec1076f2d","size":6912} -->
+````text
+---
+schema: q3_resume.v2
+revision: 376
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 8422817d8b4b2f9589f6b95f113676c915efc40f74b186b7f26dae4cec8ac70d
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: CONTROL13_27bd401757fca1c7_producer:launch
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_producer
+    sha256: 5e90bcc4d83fbdde5a0e071e775164f8c3686d3280910a8fa52184e4a8d8b69c
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-377-0758cdb35838bd50ff3ef85027fc9eacdf8ac7d7eb0dc78afbb4308f3d5f54d8","kind":"intent","revision":377,"sha256":"0758cdb35838bd50ff3ef85027fc9eacdf8ac7d7eb0dc78afbb4308f3d5f54d8","size":7022} -->
+````text
+---
+schema: q3_resume.v2
+revision: 377
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 04b0aa52a55ac1c5d64f82ed2e6b34b02552425e4d77eec2bb0ca13ec1076f2d
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: CONTROL13_27bd401757fca1c7_producer:launch
+  evidence:
+  - docs/session_protocols/team-evidence-23a5297ff740b89c6038e48614c45757a8c2e13db05a17d4bf0e839eb333e19c.bin
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_producer
+    sha256: 5e90bcc4d83fbdde5a0e071e775164f8c3686d3280910a8fa52184e4a8d8b69c
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-377-0758cdb35838bd50ff3ef85027fc9eacdf8ac7d7eb0dc78afbb4308f3d5f54d8","kind":"resume","revision":377,"sha256":"0758cdb35838bd50ff3ef85027fc9eacdf8ac7d7eb0dc78afbb4308f3d5f54d8","size":7022} -->
+````text
+---
+schema: q3_resume.v2
+revision: 377
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 04b0aa52a55ac1c5d64f82ed2e6b34b02552425e4d77eec2bb0ca13ec1076f2d
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: CONTROL13_27bd401757fca1c7_producer:launch
+  evidence:
+  - docs/session_protocols/team-evidence-23a5297ff740b89c6038e48614c45757a8c2e13db05a17d4bf0e839eb333e19c.bin
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_producer
+    sha256: 5e90bcc4d83fbdde5a0e071e775164f8c3686d3280910a8fa52184e4a8d8b69c
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-378-8f16114e3c96aef0aef009d6dcd34bd0877949e5a2e26d894a632c53c6ceea99","kind":"intent","revision":378,"sha256":"8f16114e3c96aef0aef009d6dcd34bd0877949e5a2e26d894a632c53c6ceea99","size":6912} -->
+````text
+---
+schema: q3_resume.v2
+revision: 378
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 0758cdb35838bd50ff3ef85027fc9eacdf8ac7d7eb0dc78afbb4308f3d5f54d8
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: CONTROL13_27bd401757fca1c7_reviewer:launch
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_reviewer
+    sha256: 6875ef114b4f5142270939db326d8308ea0f83f50c32ef267e06eac24ce86ea5
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-378-8f16114e3c96aef0aef009d6dcd34bd0877949e5a2e26d894a632c53c6ceea99","kind":"resume","revision":378,"sha256":"8f16114e3c96aef0aef009d6dcd34bd0877949e5a2e26d894a632c53c6ceea99","size":6912} -->
+````text
+---
+schema: q3_resume.v2
+revision: 378
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 0758cdb35838bd50ff3ef85027fc9eacdf8ac7d7eb0dc78afbb4308f3d5f54d8
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: INTENT
+  id: CONTROL13_27bd401757fca1c7_reviewer:launch
+  evidence: []
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_reviewer
+    sha256: 6875ef114b4f5142270939db326d8308ea0f83f50c32ef267e06eac24ce86ea5
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-379-30f445f54d2e38ee0082b05119ca5628acba250a1dbc9acd02008ea627fb2af8","kind":"intent","revision":379,"sha256":"30f445f54d2e38ee0082b05119ca5628acba250a1dbc9acd02008ea627fb2af8","size":7022} -->
+````text
+---
+schema: q3_resume.v2
+revision: 379
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 8f16114e3c96aef0aef009d6dcd34bd0877949e5a2e26d894a632c53c6ceea99
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: CONTROL13_27bd401757fca1c7_reviewer:launch
+  evidence:
+  - docs/session_protocols/team-evidence-2cb19ffed9d82a386c5317859ff1a70a99f7e32c2959fd2d281b0119a2bb9caf.bin
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_reviewer
+    sha256: 6875ef114b4f5142270939db326d8308ea0f83f50c32ef267e06eac24ce86ea5
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-379-30f445f54d2e38ee0082b05119ca5628acba250a1dbc9acd02008ea627fb2af8","kind":"resume","revision":379,"sha256":"30f445f54d2e38ee0082b05119ca5628acba250a1dbc9acd02008ea627fb2af8","size":7022} -->
+````text
+---
+schema: q3_resume.v2
+revision: 379
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 8f16114e3c96aef0aef009d6dcd34bd0877949e5a2e26d894a632c53c6ceea99
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 785731347fdf8356cd2fca9e7fd45b73193d1bc5
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: ASSIGN
+  state: CONFIRMED
+  id: CONTROL13_27bd401757fca1c7_reviewer:launch
+  evidence:
+  - docs/session_protocols/team-evidence-2cb19ffed9d82a386c5317859ff1a70a99f7e32c2959fd2d281b0119a2bb9caf.bin
+  subject:
+    kind: ASSIGNMENT
+    id: CONTROL13_27bd401757fca1c7_reviewer
+    sha256: 6875ef114b4f5142270939db326d8308ea0f83f50c32ef267e06eac24ce86ea5
+  command: agent-launch
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-380-dabc57572aab5ebd9f6276ceb275707056ce77b52818872cbc08a89deaaf991a","kind":"intent","revision":380,"sha256":"dabc57572aab5ebd9f6276ceb275707056ce77b52818872cbc08a89deaaf991a","size":7740} -->
+````text
+---
+schema: q3_resume.v2
+revision: 380
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 30f445f54d2e38ee0082b05119ca5628acba250a1dbc9acd02008ea627fb2af8
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 00c7cbf4426234abafd35faecba183edc9ce29ce
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: ASSIGNMENT_SELECTOR_REPAIR_20260916:publication
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: ASSIGNMENT_SELECTOR_REPAIR_20260916
+    sha256: 99359b961af657c9c6f30a912ae1c2961e8fc32195ff64b0fc4451e6e4d902c9
+  command: publication
+  inputs:
+    docs/CODEX_CONTROL.md: 8535e6ed4ecf549f34c934c84f2754fd8af2e07a03637687731c106152e6b78c
+    docs/cartographer/TOOLS.yaml: 94cd1193c67bf4a89c2548cb4b124cb98e1672e6122a3849025121ee677a4754
+    orchestrator/control13_recovery.py: 407b392988f9bf369b40ff799ac91beafd4252cdaf86ecb401865f5e77b9d137
+    orchestrator/startup_runtime.py: d20d95305099eb71c9706616f4b057ed84128ac2b2b93d444a27555334cb9223
+    orchestrator/team_records.py: 71498cf1b42ba19534fa57b2b2840d31d4fa07b27b0aeba016002ea05cdbf9bd
+    orchestrator/tests/test_control13_recovery.py: 3e84fbc5fabbdb97948465b39d9c6fb683ae5e7fd4b04e537ab416817cfc71cc
+    orchestrator/tests/test_workflow_runtime.py: faee71b4cb47180e67513112bdc5b3038c07205b9cbab091397d9a63f48c78df
+    orchestrator/workflow_runtime.py: 778aaf00d536c12e23eca93017775dfecec83b1e69f0eae8f0b7b1329e1a3ce4
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-380-dabc57572aab5ebd9f6276ceb275707056ce77b52818872cbc08a89deaaf991a","kind":"resume","revision":380,"sha256":"dabc57572aab5ebd9f6276ceb275707056ce77b52818872cbc08a89deaaf991a","size":7740} -->
+````text
+---
+schema: q3_resume.v2
+revision: 380
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 30f445f54d2e38ee0082b05119ca5628acba250a1dbc9acd02008ea627fb2af8
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 00c7cbf4426234abafd35faecba183edc9ce29ce
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: ASSIGNMENT_SELECTOR_REPAIR_20260916:publication
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: ASSIGNMENT_SELECTOR_REPAIR_20260916
+    sha256: 99359b961af657c9c6f30a912ae1c2961e8fc32195ff64b0fc4451e6e4d902c9
+  command: publication
+  inputs:
+    docs/CODEX_CONTROL.md: 8535e6ed4ecf549f34c934c84f2754fd8af2e07a03637687731c106152e6b78c
+    docs/cartographer/TOOLS.yaml: 94cd1193c67bf4a89c2548cb4b124cb98e1672e6122a3849025121ee677a4754
+    orchestrator/control13_recovery.py: 407b392988f9bf369b40ff799ac91beafd4252cdaf86ecb401865f5e77b9d137
+    orchestrator/startup_runtime.py: d20d95305099eb71c9706616f4b057ed84128ac2b2b93d444a27555334cb9223
+    orchestrator/team_records.py: 71498cf1b42ba19534fa57b2b2840d31d4fa07b27b0aeba016002ea05cdbf9bd
+    orchestrator/tests/test_control13_recovery.py: 3e84fbc5fabbdb97948465b39d9c6fb683ae5e7fd4b04e537ab416817cfc71cc
+    orchestrator/tests/test_workflow_runtime.py: faee71b4cb47180e67513112bdc5b3038c07205b9cbab091397d9a63f48c78df
+    orchestrator/workflow_runtime.py: 778aaf00d536c12e23eca93017775dfecec83b1e69f0eae8f0b7b1329e1a3ce4
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-381-cbffbd00e39963459f5c4dccdec8dc60a098a05a11cd42cd1e31566220015a07","kind":"intent","revision":381,"sha256":"cbffbd00e39963459f5c4dccdec8dc60a098a05a11cd42cd1e31566220015a07","size":7792} -->
+````text
+---
+schema: q3_resume.v2
+revision: 381
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: dabc57572aab5ebd9f6276ceb275707056ce77b52818872cbc08a89deaaf991a
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 00c7cbf4426234abafd35faecba183edc9ce29ce
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: ASSIGNMENT_SELECTOR_REPAIR_20260916:publication
+  evidence:
+  - remote:95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  subject:
+    kind: REPAIR
+    id: ASSIGNMENT_SELECTOR_REPAIR_20260916
+    sha256: 99359b961af657c9c6f30a912ae1c2961e8fc32195ff64b0fc4451e6e4d902c9
+  command: publication
+  inputs:
+    docs/CODEX_CONTROL.md: 8535e6ed4ecf549f34c934c84f2754fd8af2e07a03637687731c106152e6b78c
+    docs/cartographer/TOOLS.yaml: 94cd1193c67bf4a89c2548cb4b124cb98e1672e6122a3849025121ee677a4754
+    orchestrator/control13_recovery.py: 407b392988f9bf369b40ff799ac91beafd4252cdaf86ecb401865f5e77b9d137
+    orchestrator/startup_runtime.py: d20d95305099eb71c9706616f4b057ed84128ac2b2b93d444a27555334cb9223
+    orchestrator/team_records.py: 71498cf1b42ba19534fa57b2b2840d31d4fa07b27b0aeba016002ea05cdbf9bd
+    orchestrator/tests/test_control13_recovery.py: 3e84fbc5fabbdb97948465b39d9c6fb683ae5e7fd4b04e537ab416817cfc71cc
+    orchestrator/tests/test_workflow_runtime.py: faee71b4cb47180e67513112bdc5b3038c07205b9cbab091397d9a63f48c78df
+    orchestrator/workflow_runtime.py: 778aaf00d536c12e23eca93017775dfecec83b1e69f0eae8f0b7b1329e1a3ce4
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-381-cbffbd00e39963459f5c4dccdec8dc60a098a05a11cd42cd1e31566220015a07","kind":"resume","revision":381,"sha256":"cbffbd00e39963459f5c4dccdec8dc60a098a05a11cd42cd1e31566220015a07","size":7792} -->
+````text
+---
+schema: q3_resume.v2
+revision: 381
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: dabc57572aab5ebd9f6276ceb275707056ce77b52818872cbc08a89deaaf991a
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 00c7cbf4426234abafd35faecba183edc9ce29ce
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: ASSIGNMENT_SELECTOR_REPAIR_20260916:publication
+  evidence:
+  - remote:95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  subject:
+    kind: REPAIR
+    id: ASSIGNMENT_SELECTOR_REPAIR_20260916
+    sha256: 99359b961af657c9c6f30a912ae1c2961e8fc32195ff64b0fc4451e6e4d902c9
+  command: publication
+  inputs:
+    docs/CODEX_CONTROL.md: 8535e6ed4ecf549f34c934c84f2754fd8af2e07a03637687731c106152e6b78c
+    docs/cartographer/TOOLS.yaml: 94cd1193c67bf4a89c2548cb4b124cb98e1672e6122a3849025121ee677a4754
+    orchestrator/control13_recovery.py: 407b392988f9bf369b40ff799ac91beafd4252cdaf86ecb401865f5e77b9d137
+    orchestrator/startup_runtime.py: d20d95305099eb71c9706616f4b057ed84128ac2b2b93d444a27555334cb9223
+    orchestrator/team_records.py: 71498cf1b42ba19534fa57b2b2840d31d4fa07b27b0aeba016002ea05cdbf9bd
+    orchestrator/tests/test_control13_recovery.py: 3e84fbc5fabbdb97948465b39d9c6fb683ae5e7fd4b04e537ab416817cfc71cc
+    orchestrator/tests/test_workflow_runtime.py: faee71b4cb47180e67513112bdc5b3038c07205b9cbab091397d9a63f48c78df
+    orchestrator/workflow_runtime.py: 778aaf00d536c12e23eca93017775dfecec83b1e69f0eae8f0b7b1329e1a3ce4
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
+
+## Next action
+Recover checkpoint; preserve limit 16384 and operation INTENT. Consumer UNBOUND; Lean candidate unfinished. Cancel only proven unreserved launch via reviewed repair, then independent review and scoped publication. No new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-382-c31ac44206884ae74d5a029403a6310d2cbade9b893ab9621669b6e320badbcb","kind":"intent","revision":382,"sha256":"c31ac44206884ae74d5a029403a6310d2cbade9b893ab9621669b6e320badbcb","size":6599} -->
+````text
+---
+schema: q3_resume.v2
+revision: 382
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: cbffbd00e39963459f5c4dccdec8dc60a098a05a11cd42cd1e31566220015a07
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: CONTROL13_METADATA_MAP_INTAKE_20260923
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: CONTROL13_METADATA_MAP_INTAKE_20260923
+    sha256: dc727ce2c30373f697f6972b87094af6e05abf0136062f8934fbb0782c59f684
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed from independently reviewed eight-file candidate 27bd4017. 95 recovery tests pass; full237 retains baseline3failures1error. Registered native producer and nonauthor reviewer completed. Repair FIX_PUSH_VERIFIED at95f6c628 with fresh remote readback. No mathematical admission.
+
+## Next action
+Finish exact compact metadata publication; preserve limit16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+Source repair and immutable40commit23path history are on origin/rh_clean at95f6c628. Compact metadata map intake/publication remains. No Proshka response pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-382-c31ac44206884ae74d5a029403a6310d2cbade9b893ab9621669b6e320badbcb","kind":"resume","revision":382,"sha256":"c31ac44206884ae74d5a029403a6310d2cbade9b893ab9621669b6e320badbcb","size":6599} -->
+````text
+---
+schema: q3_resume.v2
+revision: 382
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: cbffbd00e39963459f5c4dccdec8dc60a098a05a11cd42cd1e31566220015a07
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: INTENT
+  id: CONTROL13_METADATA_MAP_INTAKE_20260923
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: CONTROL13_METADATA_MAP_INTAKE_20260923
+    sha256: dc727ce2c30373f697f6972b87094af6e05abf0136062f8934fbb0782c59f684
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed from independently reviewed eight-file candidate 27bd4017. 95 recovery tests pass; full237 retains baseline3failures1error. Registered native producer and nonauthor reviewer completed. Repair FIX_PUSH_VERIFIED at95f6c628 with fresh remote readback. No mathematical admission.
+
+## Next action
+Finish exact compact metadata publication; preserve limit16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+Source repair and immutable40commit23path history are on origin/rh_clean at95f6c628. Compact metadata map intake/publication remains. No Proshka response pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-383-374e123ea1e82b0c6c241600cbe1545594f28a5620ddceb3c6c98c0bab0d0a28","kind":"intent","revision":383,"sha256":"374e123ea1e82b0c6c241600cbe1545594f28a5620ddceb3c6c98c0bab0d0a28","size":6709} -->
+````text
+---
+schema: q3_resume.v2
+revision: 383
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: c31ac44206884ae74d5a029403a6310d2cbade9b893ab9621669b6e320badbcb
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: CONTROL13_METADATA_MAP_INTAKE_20260923
+  evidence:
+  - docs/session_protocols/team-evidence-96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa.bin
+  subject:
+    kind: REPAIR
+    id: CONTROL13_METADATA_MAP_INTAKE_20260923
+    sha256: dc727ce2c30373f697f6972b87094af6e05abf0136062f8934fbb0782c59f684
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed from independently reviewed eight-file candidate 27bd4017. 95 recovery tests pass; full237 retains baseline3failures1error. Registered native producer and nonauthor reviewer completed. Repair FIX_PUSH_VERIFIED at95f6c628 with fresh remote readback. No mathematical admission.
+
+## Next action
+Finish exact compact metadata publication; preserve limit16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+Source repair and immutable40commit23path history are on origin/rh_clean at95f6c628. Compact metadata map intake/publication remains. No Proshka response pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"resume-383-374e123ea1e82b0c6c241600cbe1545594f28a5620ddceb3c6c98c0bab0d0a28","kind":"resume","revision":383,"sha256":"374e123ea1e82b0c6c241600cbe1545594f28a5620ddceb3c6c98c0bab0d0a28","size":6709} -->
+````text
+---
+schema: q3_resume.v2
+revision: 383
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: c31ac44206884ae74d5a029403a6310d2cbade9b893ab9621669b6e320badbcb
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: COMPUTE
+  state: CONFIRMED
+  id: CONTROL13_METADATA_MAP_INTAKE_20260923
+  evidence:
+  - docs/session_protocols/team-evidence-96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa.bin
+  subject:
+    kind: REPAIR
+    id: CONTROL13_METADATA_MAP_INTAKE_20260923
+    sha256: dc727ce2c30373f697f6972b87094af6e05abf0136062f8934fbb0782c59f684
+  command: workflow-team-integrate-candidate
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed from independently reviewed eight-file candidate 27bd4017. 95 recovery tests pass; full237 retains baseline3failures1error. Registered native producer and nonauthor reviewer completed. Repair FIX_PUSH_VERIFIED at95f6c628 with fresh remote readback. No mathematical admission.
+
+## Next action
+Finish exact compact metadata publication; preserve limit16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+Source repair and immutable40commit23path history are on origin/rh_clean at95f6c628. Compact metadata map intake/publication remains. No Proshka response pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-384-b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3","kind":"intent","revision":384,"sha256":"b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3","size":6768} -->
+````text
+---
+schema: q3_resume.v2
+revision: 384
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: 374e123ea1e82b0c6c241600cbe1545594f28a5620ddceb3c6c98c0bab0d0a28
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
+owner_host_id: local
+reconciliation_pending: false
+recovery_from: null
+pins:
+  head: 95f6c628750eb6a39174e34232e2e7d51f1b23e9
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
+  evidence: []
+  subject:
+    kind: REPAIR
+    id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
+    sha256: 96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa
+  command: publication
+  inputs:
+    docs/session_protocols/team-evidence-96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa.bin: 96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed from independently reviewed eight-file candidate 27bd4017. 95 recovery tests pass; full237 retains baseline3failures1error. Registered native producer and nonauthor reviewer completed. Repair FIX_PUSH_VERIFIED at95f6c628 with fresh remote readback. No mathematical admission.
+
+## Next action
+Finish exact compact metadata publication; preserve limit16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+
+## Existing work
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
+
+## Do not repeat
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
+
+## Integration remaining
+Source repair and immutable40commit23path history are on origin/rh_clean at95f6c628. Compact metadata map intake/publication remains. No Proshka response pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
