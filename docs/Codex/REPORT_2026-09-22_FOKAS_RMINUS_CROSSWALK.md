@@ -1361,3 +1361,22 @@ actual squares, not yet weak-derivative identification, formal H1 membership,
 weak operator identity or natural operator-domain membership. Those remain
 necessary before spectral projection can consume the certified residual.
 No production admission or Proshka send. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked natural weak identity for the actual Ferrers source
+
+Endpoint candidate SHA256 7da3a4ec3bedc80941a20be03f59796fa63f48299a7dd27699145ddde3c7a254.
+actualFlux=(1-x^2)*s' has zero values at both endpoints; the original source
+zero-flux limits and interior differentiability give continuousOn Icc.
+actual_flux_hasDerivAt supplies D=(G*x^2-(Lambda+G))*s on the interior.
+actual_ferrers_natural_weak_identity proves integral_{-1}^1(D*phi+F*phi')=0
+for every real global C1 test (explicit continuous phi, phi' and HasDerivAt).
+Test values at endpoints are unrestricted: the actual natural flux removes
+the boundary term. Thus this is the correctly signed source weak equation,
+not an identity obtained by assuming boundary-vanishing tests.
+
+Canonical q3_check exit0; standard axioms only. Independent frozen-hash review
+approved endpoint continuity, flux derivative sign, integrability and boundary
+elimination. Existing dependency oleans and nonfatal warnings remain. Extension
+to the complete natural closed-form domain and operator-domain membership
+remain open; no hmode, ground tracking, production admission or Proshka send.
+PX_RH_CLAIM NOT_MADE.

@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 346
-observed_at: '2026-09-22T12:47:19.983403+00:00'
-previous_sha256: c1586ee885fc6bda37426244fb3b10631bfbd3e9d0f23f8403b4fd69384812e7
+revision: 347
+observed_at: '2026-09-22T12:50:07.591444+00:00'
+previous_sha256: 37edacb9d3f373668c69cd8dcbd01c3b17030f64868b3d60f8a9092d6467a1b1
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Endpoint candidate SHAf85af72a12031dc82ea34e1b967bd075d0f8ae9832fb89cfad327188e8fbaad3, q3_check exit0. Derivative square integrability uses actual source interior differentiability, bounded derivative and finite measure; Ioo to Icc uses null singleton endpoints. Source square integrability follows closed continuity. Constants remain fixed-S, no uniform-in-m bound or operator-domain admission.
+Endpoint candidate SHA7da3a4ec3bedc80941a20be03f59796fa63f48299a7dd27699145ddde3c7a254, q3_check exit0. Actual flux has continuous extension on Icc with zero values; its actual derivative is (G*x^2-(Lambda+G))*s. Integration by parts yields integral(D*phi+F*phi_prime)=0 for C1 tests. Source and derivative squares already integrable. No full form-domain/operator-domain or hmode claim.
 
 ## Next action
-Actual Ferrers source and first-derivative series now have Lean-checked integrable squares on closed Icc(-1,1). Next establish the weak derivative/weak divergence-form identity and natural operator-domain connection; no Sobolev membership claim yet. Existing physical quasimode residual bound C/m^2 awaits spectral projection/core/gap formalization. Proshka packet remains unsent.
+Lean now proves actual Ferrers natural weak identity for arbitrary real globally C1 tests, with no vanishing-test endpoint restriction. Next extend this identity to the natural closed-form domain by density/continuity and connect operator-domain/spectral projection; form core and spectral gap remain PAPER. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

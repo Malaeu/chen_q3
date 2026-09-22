@@ -120,4 +120,64 @@ theorem actual_ferrers_squares_integrable_closed {m K : ℕ} {Λ : ℝ}
   · rw [integrableOn_Icc_iff_integrableOn_Ioo]
     exact actual_ferrers_derivative_square_integrable S
 #print axioms actual_ferrers_squares_integrable_closed
+
+
+def actualFlux {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ) (x : ℝ) :=
+  (1-x^2)*mode4FerrersFirstDerivativeSeries S.coefficients x
+
+def actualFluxDerivative {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ) (x : ℝ) :=
+  (mode4JacobiG m*x^2-(Λ+mode4JacobiG m))*mode4FerrersSeries S.coefficients x
+
+theorem actual_flux_hasDerivAt {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ) {x : ℝ} (hx : x ∈ Ioo (-1:ℝ) 1) :
+    HasDerivAt (actualFlux S) (actualFluxDerivative S x) x := by
+  have hp : HasDerivAt (fun y : ℝ => 1-y^2) (-2*x) x := by
+    convert (hasDerivAt_const x (1:ℝ)).sub ((hasDerivAt_id x).pow 2) using 1 <;> simp <;> ring
+  have h := hp.mul (S.firstDerivativeSeries_hasDerivAt_secondDerivativeSeries x hx)
+  apply h.congr_deriv
+  have he := S.prolateDifferentialEquation x hx
+  dsimp [actualFluxDerivative]
+  nlinarith
+
+theorem actual_flux_continuousOn {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ) :
+    ContinuousOn (actualFlux S) (Icc (-1:ℝ) 1) := by
+  intro x hx
+  by_cases ha : x = -1
+  · subst x
+    have h : ContinuousWithinAt (actualFlux S) (Ioi (-1)) (-1) := by
+      simpa [ContinuousWithinAt,actualFlux] using S.zeroFlux_at_endpoints.2
+    apply h.insert.mono
+    intro y hy
+    by_cases he : y = -1
+    · exact Or.inl he
+    · exact Or.inr (lt_of_le_of_ne hy.1 (Ne.symm he))
+  · by_cases hb : x = 1
+    · subst x
+      have h : ContinuousWithinAt (actualFlux S) (Iio 1) 1 := by
+        simpa [ContinuousWithinAt,actualFlux] using S.zeroFlux_at_endpoints.1
+      apply h.insert.mono
+      intro y hy
+      by_cases he : y = 1
+      · exact Or.inl he
+      · exact Or.inr (lt_of_le_of_ne hy.2 he)
+    · exact (actual_flux_hasDerivAt S ⟨lt_of_le_of_ne hx.1 (Ne.symm ha),lt_of_le_of_ne hx.2 hb⟩).continuousAt.continuousWithinAt
+
+theorem actual_ferrers_natural_weak_identity {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+    (φ φ' : ℝ → ℝ) (hc : Continuous φ) (hc' : Continuous φ')
+    (hd : ∀ x, HasDerivAt φ (φ' x) x) :
+    (∫ x in (-1:ℝ)..1, actualFluxDerivative S x * φ x + actualFlux S x * φ' x) = 0 := by
+  have hD : ContinuousOn (actualFluxDerivative S) (Icc (-1:ℝ) 1) :=
+    (by fun_prop : Continuous (fun x : ℝ => mode4JacobiG m*x^2-(Λ+mode4JacobiG m))).continuousOn.mul S.continuousOn_closed
+  have hu : ContinuousOn (actualFlux S) (uIcc (-1:ℝ) 1) := by
+    simpa [uIcc_of_le (by norm_num : (-1:ℝ) ≤ 1)] using actual_flux_continuousOn S
+  have hi : IntervalIntegrable (actualFluxDerivative S) volume (-1:ℝ) 1 := by
+    apply ContinuousOn.intervalIntegrable
+    simpa [uIcc_of_le (by norm_num : (-1:ℝ) ≤ 1)] using hD
+  have h := intervalIntegral.integral_deriv_mul_eq_sub_of_hasDerivAt hu hc.continuousOn
+    (fun x hx => actual_flux_hasDerivAt S (by simpa using hx))
+    (fun x _ => hd x) hi (hc'.intervalIntegrable _ _)
+  simpa [actualFlux] using h
+#print axioms actual_ferrers_natural_weak_identity
 end Q3EndpointFlux
