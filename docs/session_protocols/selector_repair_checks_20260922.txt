@@ -1,0 +1,377 @@
+FILE check.log
+test_archive_replay_after_interleaved_issue_updates (q3_candidate_tests.TeamRecordsTests.test_archive_replay_after_interleaved_issue_updates) ... ok
+test_archive_replay_uses_verified_immutable_bytes (q3_candidate_tests.TeamRecordsTests.test_archive_replay_uses_verified_immutable_bytes) ... ok
+test_assignment_create_update_retry_and_stale_preimage (q3_candidate_tests.TeamRecordsTests.test_assignment_create_update_retry_and_stale_preimage) ... ok
+test_assignment_resolution_pair_and_status_requirements (q3_candidate_tests.TeamRecordsTests.test_assignment_resolution_pair_and_status_requirements) ... ok
+test_assignment_resolution_update_is_one_way_and_full_hashes (q3_candidate_tests.TeamRecordsTests.test_assignment_resolution_update_is_one_way_and_full_hashes) ... ok
+test_canonical_json_and_duplicate_key_rejection (q3_candidate_tests.TeamRecordsTests.test_canonical_json_and_duplicate_key_rejection) ... ok
+test_changed_attempt_collision_and_stale_new_report (q3_candidate_tests.TeamRecordsTests.test_changed_attempt_collision_and_stale_new_report) ... ok
+test_correction_requires_new_attempt_and_supersedes_link (q3_candidate_tests.TeamRecordsTests.test_correction_requires_new_attempt_and_supersedes_link) ... ok
+test_corrupted_framing_and_legacy_prefix_are_fail_closed (q3_candidate_tests.TeamRecordsTests.test_corrupted_framing_and_legacy_prefix_are_fail_closed) ... ok
+test_exact_result_selection_does_not_bypass_native_validation (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_does_not_bypass_native_validation) ... ok
+test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) ... ok
+test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) ... ok
+test_fix_verified_binds_manifest_to_completed_review_artifact (q3_candidate_tests.TeamRecordsTests.test_fix_verified_binds_manifest_to_completed_review_artifact) ... ok
+test_global_chain_and_entity_predecessors_interleave (q3_candidate_tests.TeamRecordsTests.test_global_chain_and_entity_predecessors_interleave) ... ok
+test_independent_identity_and_source_binding_rejections (q3_candidate_tests.TeamRecordsTests.test_independent_identity_and_source_binding_rejections) ... ok
+test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent (q3_candidate_tests.TeamRecordsTests.test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent) ... ok
+test_legal_and_illegal_lifecycle_transitions (q3_candidate_tests.TeamRecordsTests.test_legal_and_illegal_lifecycle_transitions) ... ok
+test_native_launch_and_result_share_agent_and_subject (q3_candidate_tests.TeamRecordsTests.test_native_launch_and_result_share_agent_and_subject) ... ok
+test_native_observations_bind_actual_profile_before_assignment_resolution (q3_candidate_tests.TeamRecordsTests.test_native_observations_bind_actual_profile_before_assignment_resolution) ... ok
+test_repair_candidate_identity_is_required_and_stable (q3_candidate_tests.TeamRecordsTests.test_repair_candidate_identity_is_required_and_stable) ... ok
+test_repair_commit_cannot_change_verified_candidate (q3_candidate_tests.TeamRecordsTests.test_repair_commit_cannot_change_verified_candidate) ... ok
+test_report_provenance_accepts_running_native_receipts (q3_candidate_tests.TeamRecordsTests.test_report_provenance_accepts_running_native_receipts) ... ok
+test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch (q3_candidate_tests.TeamRecordsTests.test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch) ... ok
+test_report_provenance_rejects_unrelated_report_payload (q3_candidate_tests.TeamRecordsTests.test_report_provenance_rejects_unrelated_report_payload) ... ok
+test_report_provenance_survives_status_and_next_check_update (q3_candidate_tests.TeamRecordsTests.test_report_provenance_survives_status_and_next_check_update) ... ok
+test_report_replay_after_subsequent_event_and_receipt_recovery (q3_candidate_tests.TeamRecordsTests.test_report_replay_after_subsequent_event_and_receipt_recovery) ... ok
+test_running_observation_without_concrete_receipt_is_rejected (q3_candidate_tests.TeamRecordsTests.test_running_observation_without_concrete_receipt_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.086s
+
+OK
+
+FILE baseline.log
+test_archive_replay_after_interleaved_issue_updates (q3_candidate_tests.TeamRecordsTests.test_archive_replay_after_interleaved_issue_updates) ... ok
+test_archive_replay_uses_verified_immutable_bytes (q3_candidate_tests.TeamRecordsTests.test_archive_replay_uses_verified_immutable_bytes) ... ok
+test_assignment_create_update_retry_and_stale_preimage (q3_candidate_tests.TeamRecordsTests.test_assignment_create_update_retry_and_stale_preimage) ... ok
+test_assignment_resolution_pair_and_status_requirements (q3_candidate_tests.TeamRecordsTests.test_assignment_resolution_pair_and_status_requirements) ... ok
+test_assignment_resolution_update_is_one_way_and_full_hashes (q3_candidate_tests.TeamRecordsTests.test_assignment_resolution_update_is_one_way_and_full_hashes) ... ok
+test_canonical_json_and_duplicate_key_rejection (q3_candidate_tests.TeamRecordsTests.test_canonical_json_and_duplicate_key_rejection) ... ok
+test_changed_attempt_collision_and_stale_new_report (q3_candidate_tests.TeamRecordsTests.test_changed_attempt_collision_and_stale_new_report) ... ok
+test_correction_requires_new_attempt_and_supersedes_link (q3_candidate_tests.TeamRecordsTests.test_correction_requires_new_attempt_and_supersedes_link) ... ok
+test_corrupted_framing_and_legacy_prefix_are_fail_closed (q3_candidate_tests.TeamRecordsTests.test_corrupted_framing_and_legacy_prefix_are_fail_closed) ... ok
+test_exact_result_selection_does_not_bypass_native_validation (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_does_not_bypass_native_validation) ... FAIL
+test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) ...
+  test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='independent-checker', old_state='launch', old_id='A_OLD') ... ERROR
+  test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='independent-checker', old_state='completed', old_id='A_OLD') ... ERROR
+  test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementation', old_state='launch', old_id='A_OLD') ... ERROR
+  test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementation', old_state='completed', old_id='A_OLD') ... ERROR
+  test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementer', old_state='launch', old_id='A_OLD') ... ERROR
+  test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementer', old_state='completed', old_id='A_OLD') ... ERROR
+test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) ...
+  test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) (role='independent-checker', key='locator') ... FAIL
+  test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) (role='independent-checker', key='sha256') ... FAIL
+test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) ... FAIL
+test_fix_verified_binds_manifest_to_completed_review_artifact (q3_candidate_tests.TeamRecordsTests.test_fix_verified_binds_manifest_to_completed_review_artifact) ... ok
+test_global_chain_and_entity_predecessors_interleave (q3_candidate_tests.TeamRecordsTests.test_global_chain_and_entity_predecessors_interleave) ... ok
+test_independent_identity_and_source_binding_rejections (q3_candidate_tests.TeamRecordsTests.test_independent_identity_and_source_binding_rejections) ... ok
+test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent (q3_candidate_tests.TeamRecordsTests.test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent) ... ok
+test_legal_and_illegal_lifecycle_transitions (q3_candidate_tests.TeamRecordsTests.test_legal_and_illegal_lifecycle_transitions) ... ok
+test_native_launch_and_result_share_agent_and_subject (q3_candidate_tests.TeamRecordsTests.test_native_launch_and_result_share_agent_and_subject) ... ok
+test_native_observations_bind_actual_profile_before_assignment_resolution (q3_candidate_tests.TeamRecordsTests.test_native_observations_bind_actual_profile_before_assignment_resolution) ... ok
+test_repair_candidate_identity_is_required_and_stable (q3_candidate_tests.TeamRecordsTests.test_repair_candidate_identity_is_required_and_stable) ... ok
+test_repair_commit_cannot_change_verified_candidate (q3_candidate_tests.TeamRecordsTests.test_repair_commit_cannot_change_verified_candidate) ... ok
+test_report_provenance_accepts_running_native_receipts (q3_candidate_tests.TeamRecordsTests.test_report_provenance_accepts_running_native_receipts) ... ok
+test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch (q3_candidate_tests.TeamRecordsTests.test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch) ... ok
+test_report_provenance_rejects_unrelated_report_payload (q3_candidate_tests.TeamRecordsTests.test_report_provenance_rejects_unrelated_report_payload) ... ok
+test_report_provenance_survives_status_and_next_check_update (q3_candidate_tests.TeamRecordsTests.test_report_provenance_survives_status_and_next_check_update) ... ok
+test_report_replay_after_subsequent_event_and_receipt_recovery (q3_candidate_tests.TeamRecordsTests.test_report_replay_after_subsequent_event_and_receipt_recovery) ... ok
+test_running_observation_without_concrete_receipt_is_rejected (q3_candidate_tests.TeamRecordsTests.test_running_observation_without_concrete_receipt_is_rejected) ... ok
+
+======================================================================
+ERROR: test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='independent-checker', old_state='launch', old_id='A_OLD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9720, in test_exact_result_selection_ignores_unrelated_assignments
+    result = team_records.validate_issue_event_actor(event, rows, ctx)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1163, in validate_issue_event_actor
+    checked = _validated_assignment_observation(assignment, context)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 973, in _validated_assignment_observation
+    launch, result = _assignment_observations(context, assignment["assignment_id"])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 962, in _assignment_observations
+    _fail("NATIVE_OBSERVATION_MISSING", assignment_id)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 286, in _fail
+    raise TeamRecordError(code, detail)
+orchestrator.team_records.TeamRecordError: NATIVE_OBSERVATION_MISSING: A_OLD
+
+======================================================================
+ERROR: test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='independent-checker', old_state='completed', old_id='A_OLD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9720, in test_exact_result_selection_ignores_unrelated_assignments
+    result = team_records.validate_issue_event_actor(event, rows, ctx)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1164, in validate_issue_event_actor
+    _require_result_evidence(payload, checked[1])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1069, in _require_result_evidence
+    _fail("NATIVE_RESULT_EVIDENCE_REQUIRED", result["assignment_id"])
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 286, in _fail
+    raise TeamRecordError(code, detail)
+orchestrator.team_records.TeamRecordError: NATIVE_RESULT_EVIDENCE_REQUIRED: A_OLD
+
+======================================================================
+ERROR: test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementation', old_state='launch', old_id='A_OLD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9720, in test_exact_result_selection_ignores_unrelated_assignments
+    result = team_records.validate_issue_event_actor(event, rows, ctx)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1145, in validate_issue_event_actor
+    checked = _validated_assignment_observation(assignment, context)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 973, in _validated_assignment_observation
+    launch, result = _assignment_observations(context, assignment["assignment_id"])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 962, in _assignment_observations
+    _fail("NATIVE_OBSERVATION_MISSING", assignment_id)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 286, in _fail
+    raise TeamRecordError(code, detail)
+orchestrator.team_records.TeamRecordError: NATIVE_OBSERVATION_MISSING: A_OLD
+
+======================================================================
+ERROR: test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementation', old_state='completed', old_id='A_OLD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9720, in test_exact_result_selection_ignores_unrelated_assignments
+    result = team_records.validate_issue_event_actor(event, rows, ctx)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1146, in validate_issue_event_actor
+    _require_result_evidence(payload, checked[1])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1069, in _require_result_evidence
+    _fail("NATIVE_RESULT_EVIDENCE_REQUIRED", result["assignment_id"])
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 286, in _fail
+    raise TeamRecordError(code, detail)
+orchestrator.team_records.TeamRecordError: NATIVE_RESULT_EVIDENCE_REQUIRED: A_OLD
+
+======================================================================
+ERROR: test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementer', old_state='launch', old_id='A_OLD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9720, in test_exact_result_selection_ignores_unrelated_assignments
+    result = team_records.validate_issue_event_actor(event, rows, ctx)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1145, in validate_issue_event_actor
+    checked = _validated_assignment_observation(assignment, context)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 973, in _validated_assignment_observation
+    launch, result = _assignment_observations(context, assignment["assignment_id"])
+                     ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 962, in _assignment_observations
+    _fail("NATIVE_OBSERVATION_MISSING", assignment_id)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 286, in _fail
+    raise TeamRecordError(code, detail)
+orchestrator.team_records.TeamRecordError: NATIVE_OBSERVATION_MISSING: A_OLD
+
+======================================================================
+ERROR: test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) (role='implementer', old_state='completed', old_id='A_OLD')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9720, in test_exact_result_selection_ignores_unrelated_assignments
+    result = team_records.validate_issue_event_actor(event, rows, ctx)
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1146, in validate_issue_event_actor
+    _require_result_evidence(payload, checked[1])
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 1069, in _require_result_evidence
+    _fail("NATIVE_RESULT_EVIDENCE_REQUIRED", result["assignment_id"])
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/emalam/GitHub/rh_lean_01_2026/orchestrator/team_records.py", line 286, in _fail
+    raise TeamRecordError(code, detail)
+orchestrator.team_records.TeamRecordError: NATIVE_RESULT_EVIDENCE_REQUIRED: A_OLD
+
+======================================================================
+FAIL: test_exact_result_selection_does_not_bypass_native_validation (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_does_not_bypass_native_validation)
+----------------------------------------------------------------------
+orchestrator.team_records.TeamRecordError: NATIVE_OBSERVATION_MISSING: A_OLD
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9754, in test_exact_result_selection_does_not_bypass_native_validation
+    with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_OBSERVATION_DUPLICATE"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "NATIVE_OBSERVATION_DUPLICATE" does not match "NATIVE_OBSERVATION_MISSING: A_OLD"
+
+======================================================================
+FAIL: test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) (role='independent-checker', key='locator')
+----------------------------------------------------------------------
+orchestrator.team_records.TeamRecordError: NATIVE_OBSERVATION_MISSING: A_OLD
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9731, in test_exact_result_selection_rejects_no_match_and_ambiguity
+    with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_RESULT_EVIDENCE_REQUIRED"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "NATIVE_RESULT_EVIDENCE_REQUIRED" does not match "NATIVE_OBSERVATION_MISSING: A_OLD"
+
+======================================================================
+FAIL: test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) (role='independent-checker', key='sha256')
+----------------------------------------------------------------------
+orchestrator.team_records.TeamRecordError: NATIVE_OBSERVATION_MISSING: A_OLD
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9731, in test_exact_result_selection_rejects_no_match_and_ambiguity
+    with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_RESULT_EVIDENCE_REQUIRED"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "NATIVE_RESULT_EVIDENCE_REQUIRED" does not match "NATIVE_OBSERVATION_MISSING: A_OLD"
+
+======================================================================
+FAIL: test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 9734, in test_exact_result_selection_rejects_no_match_and_ambiguity
+    with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_RESULT_ASSIGNMENT_AMBIGUOUS"):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: TeamRecordError not raised
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.079s
+
+FAILED (failures=4, errors=6)
+
+FILE runtime.log
+test_archive_replay_after_interleaved_issue_updates (q3_candidate_tests.TeamRecordsTests.test_archive_replay_after_interleaved_issue_updates) ... ok
+test_archive_replay_uses_verified_immutable_bytes (q3_candidate_tests.TeamRecordsTests.test_archive_replay_uses_verified_immutable_bytes) ... ok
+test_assignment_create_update_retry_and_stale_preimage (q3_candidate_tests.TeamRecordsTests.test_assignment_create_update_retry_and_stale_preimage) ... ok
+test_assignment_resolution_pair_and_status_requirements (q3_candidate_tests.TeamRecordsTests.test_assignment_resolution_pair_and_status_requirements) ... ok
+test_assignment_resolution_update_is_one_way_and_full_hashes (q3_candidate_tests.TeamRecordsTests.test_assignment_resolution_update_is_one_way_and_full_hashes) ... ok
+test_canonical_json_and_duplicate_key_rejection (q3_candidate_tests.TeamRecordsTests.test_canonical_json_and_duplicate_key_rejection) ... ok
+test_changed_attempt_collision_and_stale_new_report (q3_candidate_tests.TeamRecordsTests.test_changed_attempt_collision_and_stale_new_report) ... ok
+test_correction_requires_new_attempt_and_supersedes_link (q3_candidate_tests.TeamRecordsTests.test_correction_requires_new_attempt_and_supersedes_link) ... ok
+test_corrupted_framing_and_legacy_prefix_are_fail_closed (q3_candidate_tests.TeamRecordsTests.test_corrupted_framing_and_legacy_prefix_are_fail_closed) ... ok
+test_exact_result_selection_does_not_bypass_native_validation (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_does_not_bypass_native_validation) ... ok
+test_exact_result_selection_ignores_unrelated_assignments (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_ignores_unrelated_assignments) ... ok
+test_exact_result_selection_rejects_no_match_and_ambiguity (q3_candidate_tests.TeamRecordsTests.test_exact_result_selection_rejects_no_match_and_ambiguity) ... ok
+test_fix_verified_binds_manifest_to_completed_review_artifact (q3_candidate_tests.TeamRecordsTests.test_fix_verified_binds_manifest_to_completed_review_artifact) ... ok
+test_global_chain_and_entity_predecessors_interleave (q3_candidate_tests.TeamRecordsTests.test_global_chain_and_entity_predecessors_interleave) ... ok
+test_independent_identity_and_source_binding_rejections (q3_candidate_tests.TeamRecordsTests.test_independent_identity_and_source_binding_rejections) ... ok
+test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent (q3_candidate_tests.TeamRecordsTests.test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent) ... ok
+test_legal_and_illegal_lifecycle_transitions (q3_candidate_tests.TeamRecordsTests.test_legal_and_illegal_lifecycle_transitions) ... ok
+test_native_launch_and_result_share_agent_and_subject (q3_candidate_tests.TeamRecordsTests.test_native_launch_and_result_share_agent_and_subject) ... ok
+test_native_observations_bind_actual_profile_before_assignment_resolution (q3_candidate_tests.TeamRecordsTests.test_native_observations_bind_actual_profile_before_assignment_resolution) ... ok
+test_repair_candidate_identity_is_required_and_stable (q3_candidate_tests.TeamRecordsTests.test_repair_candidate_identity_is_required_and_stable) ... ok
+test_repair_commit_cannot_change_verified_candidate (q3_candidate_tests.TeamRecordsTests.test_repair_commit_cannot_change_verified_candidate) ... ok
+test_report_provenance_accepts_running_native_receipts (q3_candidate_tests.TeamRecordsTests.test_report_provenance_accepts_running_native_receipts) ... ok
+test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch (q3_candidate_tests.TeamRecordsTests.test_report_provenance_rejects_unknown_assignment_and_reporter_mismatch) ... ok
+test_report_provenance_rejects_unrelated_report_payload (q3_candidate_tests.TeamRecordsTests.test_report_provenance_rejects_unrelated_report_payload) ... ok
+test_report_provenance_survives_status_and_next_check_update (q3_candidate_tests.TeamRecordsTests.test_report_provenance_survives_status_and_next_check_update) ... ok
+test_report_replay_after_subsequent_event_and_receipt_recovery (q3_candidate_tests.TeamRecordsTests.test_report_replay_after_subsequent_event_and_receipt_recovery) ... ok
+test_running_observation_without_concrete_receipt_is_rejected (q3_candidate_tests.TeamRecordsTests.test_running_observation_without_concrete_receipt_is_rejected) ... ok
+test_archive_writer_crash_boundaries_and_original_report_replay (q3_candidate_tests.TeamRuntimeTests.test_archive_writer_crash_boundaries_and_original_report_replay) ... ok
+test_assignment_resolution_refuses_profile_owner_source_and_provider_drift (q3_candidate_tests.TeamRuntimeTests.test_assignment_resolution_refuses_profile_owner_source_and_provider_drift) ... ok
+test_bootstrap_closed_manifest_negative_matrix (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_closed_manifest_negative_matrix) ... ok
+test_bootstrap_history_budget_precedes_remote_and_candidate_blob_reads (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_history_budget_precedes_remote_and_candidate_blob_reads) ... ok
+test_bootstrap_intermediate_ancestor_fast_forward_is_confirmed (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_intermediate_ancestor_fast_forward_is_confirmed) ... ok
+test_bootstrap_pending_fences_checkpoint_and_unrelated_writer_before_push (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_pending_fences_checkpoint_and_unrelated_writer_before_push) ... ok
+test_bootstrap_publish_after_server_push_before_confirmation_reconciles (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_publish_after_server_push_before_confirmation_reconciles) ... ok
+test_bootstrap_publish_before_push_unknown_reconciles_without_second_push (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_publish_before_push_unknown_reconciles_without_second_push) ... ok
+test_bootstrap_publish_first_v1_remote_succeeds_without_force_or_lease (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_publish_first_v1_remote_succeeds_without_force_or_lease) ... ok
+test_bootstrap_publish_interruption_before_reservation_retries_once (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_publish_interruption_before_reservation_retries_once) ... ok
+test_bootstrap_publish_subprocess_sigkill_after_remote_push_reconciles (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_publish_subprocess_sigkill_after_remote_push_reconciles) ... ok
+test_bootstrap_push_remote_nonancestor_returns_unknown_without_retry (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_push_remote_nonancestor_returns_unknown_without_retry) ... ok
+test_bootstrap_reconcile_only_without_saved_reservation_does_not_write (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_reconcile_only_without_saved_reservation_does_not_write) ... ok
+test_bootstrap_rejects_foreign_owner_and_changed_remote_pins_before_reservation (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_rejects_foreign_owner_and_changed_remote_pins_before_reservation) ... ok
+test_bootstrap_rejects_non_descendant_candidate_before_push (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_rejects_non_descendant_candidate_before_push) ... ok
+test_bootstrap_rejects_v2_remote_and_local_candidate_drift (q3_candidate_tests.TeamRuntimeTests.test_bootstrap_rejects_v2_remote_and_local_candidate_drift) ... ok
+test_close_child_keeps_writer_lock_after_parent_crash (q3_candidate_tests.TeamRuntimeTests.test_close_child_keeps_writer_lock_after_parent_crash) ... ok
+test_compact_publication_127_incoming_preserves_history (q3_candidate_tests.TeamRuntimeTests.test_compact_publication_127_incoming_preserves_history) ... ok
+test_compact_publication_45_records (q3_candidate_tests.TeamRuntimeTests.test_compact_publication_45_records) ... ok
+test_compact_publication_combined_records_and_incoming (q3_candidate_tests.TeamRuntimeTests.test_compact_publication_combined_records_and_incoming) ... ok
+test_compact_publication_intake_checkpoint_reserve_commit_push_confirm (q3_candidate_tests.TeamRuntimeTests.test_compact_publication_intake_checkpoint_reserve_commit_push_confirm) ... ok
+test_completed_source_confirmation_uses_real_startup_and_exact_provenance (q3_candidate_tests.TeamRuntimeTests.test_completed_source_confirmation_uses_real_startup_and_exact_provenance) ... ok
+test_confirmed_issue_holds_exact_operation_while_unrelated_work_proceeds (q3_candidate_tests.TeamRuntimeTests.test_confirmed_issue_holds_exact_operation_while_unrelated_work_proceeds) ... ok
+test_cross_clone_claim_abort_after_watch_creation_and_fresh_reclaim (q3_candidate_tests.TeamRuntimeTests.test_cross_clone_claim_abort_after_watch_creation_and_fresh_reclaim) ... ok
+test_first_launch_intake_rejects_wrong_scope_and_conflicting_replay (q3_candidate_tests.TeamRuntimeTests.test_first_launch_intake_rejects_wrong_scope_and_conflicting_replay) ... ok
+test_first_launch_intake_then_native_resolution_and_checkpoint_confirmation (q3_candidate_tests.TeamRuntimeTests.test_first_launch_intake_then_native_resolution_and_checkpoint_confirmation) ... ok
+test_first_launch_not_executed_keeps_completed_intake_without_confirming_launch (q3_candidate_tests.TeamRuntimeTests.test_first_launch_not_executed_keeps_completed_intake_without_confirming_launch) ... ok
+test_first_launch_unknown_checkpoint_and_interrupted_intake_recover_same_action (q3_candidate_tests.TeamRuntimeTests.test_first_launch_unknown_checkpoint_and_interrupted_intake_recover_same_action) ... ok
+test_foreign_observer_cannot_poison_remote_or_native_records (q3_candidate_tests.TeamRuntimeTests.test_foreign_observer_cannot_poison_remote_or_native_records) ... ok
+test_foreign_owner_and_retired_epoch_are_rejected (q3_candidate_tests.TeamRuntimeTests.test_foreign_owner_and_retired_epoch_are_rejected) ... ok
+test_fresh_process_recovers_persisted_manifest_after_runtime_write_crash (q3_candidate_tests.TeamRuntimeTests.test_fresh_process_recovers_persisted_manifest_after_runtime_write_crash) ... ok
+test_identity_mismatch_and_missing_identity_with_existing_bindings (q3_candidate_tests.TeamRuntimeTests.test_identity_mismatch_and_missing_identity_with_existing_bindings) ... ok
+test_incomplete_source_recheck_cannot_reuse_done_stages (q3_candidate_tests.TeamRuntimeTests.test_incomplete_source_recheck_cannot_reuse_done_stages) ... ok
+test_independent_stage_needs_exact_completed_assignment (q3_candidate_tests.TeamRuntimeTests.test_independent_stage_needs_exact_completed_assignment) ... ok
+test_initialization_private_replay_and_no_secret_receipt (q3_candidate_tests.TeamRuntimeTests.test_initialization_private_replay_and_no_secret_receipt) ... ok
+test_integration_changed_preimage_review_owner_and_epoch_refused_before_write (q3_candidate_tests.TeamRuntimeTests.test_integration_changed_preimage_review_owner_and_epoch_refused_before_write) ... ok
+test_integration_completed_negative_review_does_not_approve (q3_candidate_tests.TeamRuntimeTests.test_integration_completed_negative_review_does_not_approve) ... ok
+test_integration_copies_exact_bytes_preserves_foreign_and_replays (q3_candidate_tests.TeamRuntimeTests.test_integration_copies_exact_bytes_preserves_foreign_and_replays) ... ok
+test_integration_crash_before_write_and_third_state_drift (q3_candidate_tests.TeamRuntimeTests.test_integration_crash_before_write_and_third_state_drift) ... ok
+test_integration_crash_keeps_all_writers_held_before_mutable_control (q3_candidate_tests.TeamRuntimeTests.test_integration_crash_keeps_all_writers_held_before_mutable_control) ... ok
+test_integration_first_raw_evidence_needs_no_git_candidate_or_native_result (q3_candidate_tests.TeamRuntimeTests.test_integration_first_raw_evidence_needs_no_git_candidate_or_native_result) ... ok
+test_integration_recovers_persisted_manifest_but_rejects_changed_engine (q3_candidate_tests.TeamRuntimeTests.test_integration_recovers_persisted_manifest_but_rejects_changed_engine) ... ok
+test_integration_rejects_changed_assignment_immutable_input_and_scope (q3_candidate_tests.TeamRuntimeTests.test_integration_rejects_changed_assignment_immutable_input_and_scope) ... ok
+test_integration_requires_commit_object_and_producing_base_ancestry (q3_candidate_tests.TeamRuntimeTests.test_integration_requires_commit_object_and_producing_base_ancestry) ... ok
+test_integration_schema_rejects_raw_alias_symlink_and_untracked_collision (q3_candidate_tests.TeamRuntimeTests.test_integration_schema_rejects_raw_alias_symlink_and_untracked_collision) ... ok
+test_large_history_continuation_keeps_other_read_limits (q3_candidate_tests.TeamRuntimeTests.test_large_history_continuation_keeps_other_read_limits) ... ok
+test_large_history_current_next_checkpoint_and_publication_base (q3_candidate_tests.TeamRuntimeTests.test_large_history_current_next_checkpoint_and_publication_base)
+Preserved archive bytes may exceed the unrelated 4 MiB payload cap. ... ok
+test_legacy_v1_local_install_confirmation_precedes_fresh_v2_publish_intent (q3_candidate_tests.TeamRuntimeTests.test_legacy_v1_local_install_confirmation_precedes_fresh_v2_publish_intent)
+Old-control local confirmation survives migration before publication intent. ... ok
+test_local_identity_read_does_not_treat_access_time_as_a_write (q3_candidate_tests.TeamRuntimeTests.test_local_identity_read_does_not_treat_access_time_as_a_write) ... ok
+test_named_repair_commit_verifies_descendant_bytes_and_rejects_old_reachable_commit (q3_candidate_tests.TeamRuntimeTests.test_named_repair_commit_verifies_descendant_bytes_and_rejects_old_reachable_commit) ... ok
+test_native_watch_requires_integer_ten_twenty_cadence (q3_candidate_tests.TeamRuntimeTests.test_native_watch_requires_integer_ten_twenty_cadence) ... ok
+test_owner_recovery_archives_preserves_unknown_and_replays (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_archives_preserves_unknown_and_replays) ... ok
+test_owner_recovery_cannot_retire_uncertain_external_send (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_cannot_retire_uncertain_external_send) ... ok
+test_owner_recovery_crash_after_archive_reuses_intent (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_crash_after_archive_reuses_intent) ... ok
+test_owner_recovery_pending_effect_and_epoch_floor_fence (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_pending_effect_and_epoch_floor_fence) ... ok
+test_owner_recovery_rejects_stale_inputs_and_changed_proof_state (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_rejects_stale_inputs_and_changed_proof_state) ... ok
+test_owner_recovery_retires_only_agent_assignment_and_fences_replay (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_retires_only_agent_assignment_and_fences_replay) ... ok
+test_owner_recovery_v1_rejected_and_watch_needed_to_clear (q3_candidate_tests.TeamRuntimeTests.test_owner_recovery_v1_rejected_and_watch_needed_to_clear) ... ok
+test_pending_integration_blocks_real_public_writer_entrypoints (q3_candidate_tests.TeamRuntimeTests.test_pending_integration_blocks_real_public_writer_entrypoints) ... ok
+test_pinned_engine_recovers_control_10_to_11_migration (q3_candidate_tests.TeamRuntimeTests.test_pinned_engine_recovers_control_10_to_11_migration) ... FAIL
+test_publication_admission_drift_creates_no_reservation (q3_candidate_tests.TeamRuntimeTests.test_publication_admission_drift_creates_no_reservation) ... ok
+test_publication_base_changed_after_intake_requires_new_baseline (q3_candidate_tests.TeamRuntimeTests.test_publication_base_changed_after_intake_requires_new_baseline) ... ok
+test_publication_byte_correct_map_without_intake_cannot_observe (q3_candidate_tests.TeamRuntimeTests.test_publication_byte_correct_map_without_intake_cannot_observe) ... ok
+test_publication_killed_after_server_acceptance_confirms_in_fresh_process (q3_candidate_tests.TeamRuntimeTests.test_publication_killed_after_server_acceptance_confirms_in_fresh_process) ... ok
+test_publication_pending_fence_and_private_state_loss (q3_candidate_tests.TeamRuntimeTests.test_publication_pending_fence_and_private_state_loss) ... ok
+test_publication_prepared_and_committed_recovery_never_regrants (q3_candidate_tests.TeamRuntimeTests.test_publication_prepared_and_committed_recovery_never_regrants) ... ok
+test_publication_remote_advance_is_unknown_and_never_retried (q3_candidate_tests.TeamRuntimeTests.test_publication_remote_advance_is_unknown_and_never_retried) ... ok
+test_repair_source_set_rejects_extra_locator (q3_candidate_tests.TeamRuntimeTests.test_repair_source_set_rejects_extra_locator) ... ok
+test_report_intake_requires_native_output_and_recovers_lost_receipt (q3_candidate_tests.TeamRuntimeTests.test_report_intake_requires_native_output_and_recovers_lost_receipt) ... ok
+test_reservation_is_once_and_lost_confirmation_requires_inspection (q3_candidate_tests.TeamRuntimeTests.test_reservation_is_once_and_lost_confirmation_requires_inspection) ... ok
+test_retirement_malformed_history_returns_typed_hold (q3_candidate_tests.TeamRuntimeTests.test_retirement_malformed_history_returns_typed_hold) ... ok
+test_reviewed_local_bytes_commit_excludes_foreign_paths (q3_candidate_tests.TeamRuntimeTests.test_reviewed_local_bytes_commit_excludes_foreign_paths) ... ok
+test_reviewed_source_preserves_executable_git_source_mode (q3_candidate_tests.TeamRuntimeTests.test_reviewed_source_preserves_executable_git_source_mode) ... ok
+test_reviewed_source_rejects_new_untracked_destination_collision (q3_candidate_tests.TeamRuntimeTests.test_reviewed_source_rejects_new_untracked_destination_collision) ... ok
+test_same_installation_transfer_rejects_unsupported_retarget_before_epoch_advance (q3_candidate_tests.TeamRuntimeTests.test_same_installation_transfer_rejects_unsupported_retarget_before_epoch_advance) ... ok
+test_separate_source_engine_dirty_bytes_fail_before_canonical_copy (q3_candidate_tests.TeamRuntimeTests.test_separate_source_engine_dirty_bytes_fail_before_canonical_copy) ... ok
+test_source_drift_holds_affected_execution (q3_candidate_tests.TeamRuntimeTests.test_source_drift_holds_affected_execution) ... ok
+test_source_only_repair_lifecycle_before_compact_incoming_publication (q3_candidate_tests.TeamRuntimeTests.test_source_only_repair_lifecycle_before_compact_incoming_publication) ... ok
+test_stage_subject_and_prerequisites_prevent_false_acceptance (q3_candidate_tests.TeamRuntimeTests.test_stage_subject_and_prerequisites_prevent_false_acceptance) ... ok
+test_two_independent_clones_never_share_identity_and_only_one_claim_pushes (q3_candidate_tests.TeamRuntimeTests.test_two_independent_clones_never_share_identity_and_only_one_claim_pushes) ... ok
+test_typed_cross_clone_release_claim_wake_and_old_owner_rejection (q3_candidate_tests.TeamRuntimeTests.test_typed_cross_clone_release_claim_wake_and_old_owner_rejection) ... ok
+test_unknown_send_cannot_be_erased_or_changed_to_new_operation (q3_candidate_tests.TeamRuntimeTests.test_unknown_send_cannot_be_erased_or_changed_to_new_operation) ... ok
+test_unresolved_assignment_result_requires_same_actual_child_and_profile (q3_candidate_tests.TeamRuntimeTests.test_unresolved_assignment_result_requires_same_actual_child_and_profile) ... ok
+test_v1_archive_stays_readable_after_v2_migration (q3_candidate_tests.TeamRuntimeTests.test_v1_archive_stays_readable_after_v2_migration) ... ok
+test_v1_continuation_reports_migration_without_v2_ownership_error (q3_candidate_tests.TeamRuntimeTests.test_v1_continuation_reports_migration_without_v2_ownership_error)
+A legacy checkpoint needs migration, not an inapplicable owner lookup. ... ok
+test_v2_phase_key_keeps_closed_nonblank_schema_without_legacy_import (q3_candidate_tests.TeamRuntimeTests.test_v2_phase_key_keeps_closed_nonblank_schema_without_legacy_import) ... ok
+test_watch_intent_is_not_replayed_and_activation_requires_actual_wake (q3_candidate_tests.TeamRuntimeTests.test_watch_intent_is_not_replayed_and_activation_requires_actual_wake) ... ok
+test_writer_inventory_is_complete_and_legacy_direct_entry_is_refused (q3_candidate_tests.TeamRuntimeTests.test_writer_inventory_is_complete_and_legacy_direct_entry_is_refused) ... ok
+
+======================================================================
+FAIL: test_pinned_engine_recovers_control_10_to_11_migration (q3_candidate_tests.TeamRuntimeTests.test_pinned_engine_recovers_control_10_to_11_migration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 7212, in test_pinned_engine_recovers_control_10_to_11_migration
+    self.assertEqual(control.version, 11)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 12 != 11
+
+----------------------------------------------------------------------
+Ran 115 tests in 111.291s
+
+FAILED (failures=1)
+
+FILE migration-baseline.log
+test_pinned_engine_recovers_control_10_to_11_migration (q3_candidate_tests.TeamRuntimeTests.test_pinned_engine_recovers_control_10_to_11_migration) ... FAIL
+
+======================================================================
+FAIL: test_pinned_engine_recovers_control_10_to_11_migration (q3_candidate_tests.TeamRuntimeTests.test_pinned_engine_recovers_control_10_to_11_migration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/q3-selector-candidate/test_workflow_runtime.py", line 7212, in test_pinned_engine_recovers_control_10_to_11_migration
+    self.assertEqual(control.version, 11)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 12 != 11
+
+----------------------------------------------------------------------
+Ran 1 test in 1.301s
+
+FAILED (failures=1)

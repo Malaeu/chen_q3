@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 354
-observed_at: '2026-09-22T13:12:07.244981+00:00'
-previous_sha256: 6dbffe50471ad14329003e4b0f8062facc74f17b8e72dd7b76d32a1861d4a8a3
+revision: 355
+observed_at: '2026-09-22T13:18:23.662661+00:00'
+previous_sha256: a46ec70bd9974bc67a5b33d15020f0d033d2559d78b3c45b4887f9ad90e90bcd
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Reproducer succeeds CURRENT_ONLY Z_CURRENT_RESULT then fails WITH_UNRELATED_OLD_LAUNCH NATIVE_OBSERVATION_MISSING A_OLD_LAUNCH; checked by parent and independent reviewer. Plan corrected implementer role aliases and distinct assignment-ID uniqueness, passed two clean reviews. No canonical runtime implementation or issue-state/publication change. Mathematical candidates remain locally checked; full RouteB goal open.
+Source SHA8fe0e907d11e78f1631008652352f5e9bc71c640e3245db5979b62f354a0df16; tests SHA7a637b6b34985ae21bfe879c01b578b81c8ed2b7551ee55773322fe31281753f. 27 pure tests pass (independently rerun), baseline same tests4 failures6 errors. Broader115 runtime/record tests:114 pass; existing migration test expects control11 vs current12, identical failure reproduced on unchanged baseline. Initial relocated all-module harness failure is discarded and documented, not green evidence.
 
 ## Next action
-Selector defect reproduced on current code; corrected exact-result-first plan received two clean independent passes at SHAf2b9ccea5a23c677f1c93c5cee38ce044b4d90e19b9a2bacb501a2ec0c3549d4. Next implement isolated candidate for team_records.py plus existing test_workflow_runtime.py, keeping native/owner/source/completion/artifact checks, alias compatibility and ambiguity rejection; then independent source review and registered repair admission before publication.
+Isolated exact-result selector implementation and tests independently approved. Candidate under /tmp/q3-selector-candidate; durable two-file patch saved in session_protocols. Next create source-locked candidate commit and registered producer/checker integration artifacts, admit repair through exact issue lifecycle before publication. Canonical team_records.py remains unchanged; no gate cleared.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

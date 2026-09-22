@@ -1531,3 +1531,29 @@ Next implement and test the isolated two-file repair candidate, then obtain
 independent source review and registered repair admission. This preparatory
 review itself does not clear publication or any mathematical hold.
 PX_RH_CLAIM NOT_MADE.
+
+## Isolated selector implementation and checked regressions
+
+Durable two-file patch: session_protocols/selector_repair_candidate_20260922.patch.
+Candidate source SHA256 8fe0e907d11e78f1631008652352f5e9bc71c640e3245db5979b62f354a0df16;
+tests SHA256 7a637b6b34985ae21bfe879c01b578b81c8ed2b7551ee55773322fe31281753f.
+Exact result evidence selects one assignment ID before unchanged authorization
+and native checks. Ambiguous IDs reject; role aliases remain supported; owner
+transitions unchanged. Independent reviewer approved exact source/test hashes
+and reran all27 pure TeamRecordsTests successfully. The same tests against
+unchanged source fail4/errors6, confirming regression discrimination.
+
+Expanded TeamRuntimeTests+TeamRecordsTests:115 tests,114 passed. One migration
+test expects control version11 but receives current12. Isolated rerun of that
+test on unchanged baseline reproduces exactly12!=11; no fix to unrelated test
+was made. The initial full-module run from relocated test __file__ failed
+fixture resource lookup and unrelated macOS/strace checks; it is not counted
+as validation. The corrected runner preserves canonical fixture location and
+uses TMPDIR=/private/tmp while loading isolated source/test bytes. Logs and
+runner saved alongside patch; no all-green suite claim.
+
+Canonical runtime source remains unchanged. Independent review approves only
+candidate correctness, not registry acceptance or publication. Next source-
+locked candidate commit, exact integration review artifacts and issue repair
+lifecycle; publication hold remains. Mathematical goal stays open.
+PX_RH_CLAIM NOT_MADE.
