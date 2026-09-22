@@ -4,7 +4,7 @@ import Q3.Proofs.RouteB.G6N1CenterAnchorScalarLock
 import Q3.Proofs.RouteB.D0PstarExplicitCCMLimitFourier
 import Q3.Proofs.RouteB.G6N1SelectedFerrersW5RateAssembly
 open MeasureTheory Set
-open scoped FourierTransform
+open scoped FourierTransform ContDiff
 noncomputable section
 namespace Q3OverlapProbe
 private def B : ℝ →ₗ[ℝ] ℝ →ₗ[ℝ] ℝ := -(innerSL ℝ).toLinearMap₁₂
@@ -786,4 +786,155 @@ theorem theta_defect_bound_from_weak_pairing
   nlinarith
 
 #print axioms theta_defect_bound_from_weak_pairing
+def compactTest (n : ℕ) (x : ℝ) : ℝ :=
+  (1-x^2)^3 * parabolicCylinderD n (projectCylinderArgument x)
+
+theorem compactTest_contDiff (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    ContDiff ℝ ∞ (compactTest n) := by
+  rcases hn with rfl | rfl
+  · unfold compactTest
+    simp_rw [parabolicCylinderD_zero_projectArgument]
+    fun_prop
+  · unfold compactTest
+    simp_rw [parabolicCylinderD_four_projectArgument]
+    fun_prop
+
+theorem compactTest_hasDerivAt (n : ℕ) (hn : n = 0 ∨ n = 4) (x : ℝ) :
+    HasDerivAt (compactTest n)
+      ((-6*x*(1-x^2)^2)*parabolicCylinderD n (projectCylinderArgument x) +
+        (1-x^2)^3 * deriv (fun y => parabolicCylinderD n (projectCylinderArgument y)) x) x := by
+  have hw : HasDerivAt (fun y : ℝ => (1-y^2)^3) (-6*x*(1-x^2)^2) x := by
+    convert (((hasDerivAt_const x (1:ℝ)).sub ((hasDerivAt_id x).pow 2)).pow 3) using 1 <;> simp only [Pi.sub_apply, Pi.pow_apply, id_eq] <;> ring
+  have hd : Differentiable ℝ (fun y => parabolicCylinderD n (projectCylinderArgument y)) := by
+    rcases hn with rfl | rfl
+    · simp_rw [parabolicCylinderD_zero_projectArgument]
+      fun_prop
+    · simp_rw [parabolicCylinderD_four_projectArgument]
+      fun_prop
+  exact hw.mul (hd x).hasDerivAt
+
+theorem compactTest_boundary (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    compactTest n (-1) = 0 ∧ compactTest n 1 = 0 ∧
+    deriv (compactTest n) (-1) = 0 ∧ deriv (compactTest n) 1 = 0 := by
+  rw [(compactTest_hasDerivAt n hn (-1)).deriv, (compactTest_hasDerivAt n hn 1).deriv]
+  norm_num [compactTest]
+
+theorem compactTest_overlap_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    0 < ∫ x in (-1:ℝ)..1,
+      parabolicCylinderD n (projectCylinderArgument x)*compactTest n x := by
+  have hc : Continuous (fun x => parabolicCylinderD n (projectCylinderArgument x)) := by
+    rcases hn with rfl | rfl
+    · simp_rw [parabolicCylinderD_zero_projectArgument]
+      fun_prop
+    · simp_rw [parabolicCylinderD_four_projectArgument]
+      fun_prop
+  have hh := intervalIntegral.integral_lt_integral_of_continuousOn_of_le_of_exists_lt
+    (f := fun _ : ℝ => (0:ℝ)) (g := fun x =>
+      parabolicCylinderD n (projectCylinderArgument x)*compactTest n x)
+    (a := -1) (b := 1) (by norm_num) continuousOn_const
+    (hc.mul (compactTest_contDiff n hn).continuous).continuousOn
+    (by
+      intro x hx
+      have hw : 0 ≤ 1-x^2 := by nlinarith [hx.1, hx.2]
+      dsimp only
+      unfold compactTest
+      nlinarith [mul_nonneg (pow_nonneg hw 3)
+        (sq_nonneg (parabolicCylinderD n (projectCylinderArgument x)))])
+    (by
+      refine ⟨0, by norm_num, ?_⟩
+      rcases hn with rfl | rfl
+      · norm_num [compactTest, parabolicCylinderD_zero_projectArgument]
+      · norm_num [compactTest, parabolicCylinderD_four_projectArgument])
+  simpa using hh
+
+#print axioms compactTest_contDiff
+#print axioms compactTest_boundary
+#print axioms compactTest_overlap_positive
+theorem oscillator_test_orthogonality
+    (a b e : ℝ) (D φ V : ℝ → ℝ)
+    (hD : ContDiff ℝ ∞ D) (hφ : ContDiff ℝ ∞ φ)
+    (hode : ∀ x, -deriv (deriv D) x+V x*D x=e*D x)
+    (hφa : φ a=0) (hφb : φ b=0)
+    (hda : deriv φ a=0) (hdb : deriv φ b=0) :
+    (∫ x in a..b, D x*(-deriv (deriv φ) x+(V x-e)*φ x)) = 0 := by
+  have hDd := (contDiff_infty_iff_deriv.mp hD).2
+  have hφd := (contDiff_infty_iff_deriv.mp hφ).2
+  have hDdd := (contDiff_infty_iff_deriv.mp hDd).2
+  have hφdd := (contDiff_infty_iff_deriv.mp hφd).2
+  have h1 := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+    hφ.continuous.continuousOn hDd.continuous.continuousOn
+    (fun x _ => ((contDiff_infty_iff_deriv.mp hφ).1 x).hasDerivAt)
+    (fun x _ => ((contDiff_infty_iff_deriv.mp hDd).1 x).hasDerivAt)
+    (hφd.continuous.intervalIntegrable (μ := volume) a b)
+    (hDdd.continuous.intervalIntegrable (μ := volume) a b)
+  have h2 := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+    hD.continuous.continuousOn hφd.continuous.continuousOn
+    (fun x _ => ((contDiff_infty_iff_deriv.mp hD).1 x).hasDerivAt)
+    (fun x _ => ((contDiff_infty_iff_deriv.mp hφd).1 x).hasDerivAt)
+    (hDd.continuous.intervalIntegrable (μ := volume) a b)
+    (hφdd.continuous.intervalIntegrable (μ := volume) a b)
+  rw [hφa,hφb] at h1
+  rw [hda,hdb] at h2
+  simp only [zero_mul,mul_zero,sub_zero,zero_sub] at h1 h2
+  have hg : (∫ x in a..b, φ x*deriv (deriv D) x) =
+      ∫ x in a..b, D x*deriv (deriv φ) x := by
+    rw [h1,h2]
+    congr 1
+    apply intervalIntegral.integral_congr
+    intro x hx
+    dsimp only
+    ring
+  have heq : (fun x => D x*(-deriv (deriv φ) x+(V x-e)*φ x)) =
+      (fun x => φ x*deriv (deriv D) x-D x*deriv (deriv φ) x) := by
+    funext x
+    linear_combination φ x * hode x
+  rw [heq,intervalIntegral.integral_sub
+    ((hφ.continuous.mul hDdd.continuous).intervalIntegrable a b)
+    ((hD.continuous.mul hφdd.continuous).intervalIntegrable a b),hg,sub_self]
+
+#print axioms oscillator_test_orthogonality
+theorem compactTest_orthogonality (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    (∫ x in (-1:ℝ)..1, parabolicCylinderD n (projectCylinderArgument x) *
+      (-deriv (deriv (compactTest n)) x +
+        (4*Real.pi^2*x^2-2*Real.pi*(2*(n:ℝ)+1))*compactTest n x)) = 0 := by
+  have hD : ContDiff ℝ ∞ (fun x => parabolicCylinderD n (projectCylinderArgument x)) := by
+    rcases hn with rfl | rfl
+    · simp_rw [parabolicCylinderD_zero_projectArgument]
+      fun_prop
+    · simp_rw [parabolicCylinderD_four_projectArgument]
+      fun_prop
+  obtain ⟨ha,hb,hda,hdb⟩ := compactTest_boundary n hn
+  apply oscillator_test_orthogonality (-1) 1 (2*Real.pi*(2*(n:ℝ)+1)) _ _
+    (fun x => 4*Real.pi^2*x^2) hD (compactTest_contDiff n hn) _ ha hb hda hdb
+  intro x
+  rcases hn with rfl | rfl
+  · simpa using target_zero_oscillator x
+  · convert target_four_oscillator x using 1 <;> norm_num <;> ring <;> simp
+
+#print axioms compactTest_orthogonality
+theorem compactTest_complex_orthogonality (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    (∫ x in (-1:ℝ)..1, cylinderTarget n x *
+      (-((deriv (deriv (compactTest n)) x : ℝ) : ℂ) +
+        ((4*Real.pi^2*x^2-2*Real.pi*(2*(n:ℝ)+1) : ℝ) : ℂ) *
+          (compactTest n x : ℂ))) = 0 := by
+  have hc : (∫ x in (-1:ℝ)..1,
+      ((parabolicCylinderD n (projectCylinderArgument x) *
+        (-deriv (deriv (compactTest n)) x +
+          (4*Real.pi^2*x^2-2*Real.pi*(2*(n:ℝ)+1))*compactTest n x) : ℝ) : ℂ)) = 0 := by
+    rw [intervalIntegral.integral_ofReal, compactTest_orthogonality n hn]
+    norm_num
+  simpa only [cylinderTarget,Complex.ofReal_mul,Complex.ofReal_add,Complex.ofReal_neg] using hc
+
+theorem compactTest_complex_overlap_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    0 < ‖∫ x in (-1:ℝ)..1, cylinderTarget n x * (compactTest n x : ℂ)‖ := by
+  have heq : (∫ x in (-1:ℝ)..1, cylinderTarget n x * (compactTest n x : ℂ)) =
+      (((∫ x in (-1:ℝ)..1, parabolicCylinderD n (projectCylinderArgument x) *
+        compactTest n x) : ℝ) : ℂ) := by
+    simp only [cylinderTarget, ← Complex.ofReal_mul]
+    exact intervalIntegral.integral_ofReal
+  rw [heq,Complex.norm_real,Real.norm_eq_abs,abs_of_pos (compactTest_overlap_positive n hn)]
+  exact compactTest_overlap_positive n hn
+
+#print axioms compactTest_complex_orthogonality
+#print axioms compactTest_complex_overlap_positive
 end Q3OverlapProbe

@@ -713,3 +713,39 @@ ODE, instantiate the normalized selected-mode weak ODE, and derive the
 uniform numerator estimates/overlap floor from hmode. The eventual selected
 htheta statement is NOT yet proved. hmode, finite-ground connection and
 off-line zero-freeness remain open. PX_RH_CLAIM: NOT_MADE.
+
+## Concrete test: boundary cancellation, positive overlap and target orthogonality
+
+Candidate SHA256 ed5784b00c4d5cac76a8b3cfaffc1325ed42a9899b61d402851e0a50a6b16f25.
+compactTest n x=(1-x^2)^3*parabolicCylinderD n(projectCylinderArgument x).
+For n=0 or4, kernel-checked facts now include C-infinity smoothness, its exact
+first derivative, zero value and derivative at both -1 and1, and strictly
+positive integral of D_n*compactTest over [-1,1]. The test is defined globally
+as polynomial times Gaussian, NOT zero-extended or claimed compactly supported;
+the compact interval and endpoint zeros are sufficient for the two IBPs.
+
+The overlap integrand equals (1-x^2)^3 D_n^2, nonnegative on the interval and
+positive at zero, where D0=1 and D4=3. No constant sign of D4 is assumed.
+oscillator_test_orthogonality derives the signed test integral from two real
+IBPs and an exact oscillator equation. compactTest_orthogonality instantiates
+literal D0/D4 and e=2pi(2n+1), concluding
+
+ integral D_n*(-phi''+(4pi^2*x^2-e)*phi) = 0.
+
+Complex versions compactTest_complex_orthogonality and
+compactTest_complex_overlap_positive explicitly transport these real integrals
+using intervalIntegral.integral_ofReal. These discharge the target-side
+orthogonality and fixed nonzero overlap requirements without added assumptions.
+The overlap FLOOR for a varying source still must follow from hmode.
+
+Canonical q3_check exit0; all36 printed dependency lists standard only.
+Independent recovery_review checked endpoints, sign, correct degree4 behavior,
+C-infinity scope, and real-to-complex transport, approving the final hash.
+Current dependency oleans used; preexisting UnicodeBasic and style warnings
+remain. No fresh-clone validation or production admission.
+
+Next: normalize/scalar-transport actual selected-mode flux on [-1,1], obtain
+its weak identity through compact_flux_green, and derive uniform numerator
+bounds and the eventual overlap floor from hmode. This turn does NOT prove
+the selected htheta rate. hmode and finite-ground/off-line-zero-free bridges
+remain open. PX_RH_CLAIM: NOT_MADE.
