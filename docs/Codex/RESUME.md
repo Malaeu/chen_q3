@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 351
-observed_at: '2026-09-22T13:03:04.559883+00:00'
-previous_sha256: 7f6f21273c3d2bfe9966803213de5d92b60df77f5859524fa149f04856cb7c3f
+revision: 352
+observed_at: '2026-09-22T13:05:49.453585+00:00'
+previous_sha256: e15061edbda68bffeb1a8278a646e2c7e78f3137115f17ef99bbb054c5099e40
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Form approximation candidate SHA2c32bbfed42fe3624860db74e7bd74aff8057d892430015f63c4e594ee9f0bf4, q3_check exit0. Polynomial coefficients exactly (-1)^q*a_q, no normalization change. Both source and kinetic errors genuinely integrable and vanish in sum under absolute/weighted summability. Evenness and actual polynomial derivative identities checked; no full form-core or hmode admission.
+Form approximation candidate SHA5be4f1cb175e3aa53f62f1257a5896a1302c6a7781d5c246b9299c1053573b2f, q3_check exit0. selected_zero_four_form_approximation uses exact selected solutions (p=0 and p=2), m=k+2,K=5(k+2), existing separation and classical eigenvalue<20. No unproved weighted summability premise remains in this corollary. No source normalization change or full form-domain/hmode claim.
 
 ## Next action
-Lean identifies one explicit even sourcePolynomial whose eval and derivative are the approximating source sums, proves genuine source-error integrability and polynomial form-error convergence. Next specialize tail budgets to selected carriers and connect polynomial closure to natural form/operator domain; general form-core/minmax/gap remain open. Proshka packet remains unsent.
+Lean now proves polynomial form-error convergence for both actual selected preanchor Ferrers modes at every fixed k, discharging all tail/separation/eigenvalue budget premises. Next connect the polynomial closure to natural form/operator domain and minmax; n-to-infinity at fixed k is not the missing cofinal spectral/hmode rate. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

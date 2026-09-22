@@ -1466,3 +1466,21 @@ approved phases, degrees, derivative and integrability. Existing oleans used,
 preexisting UnicodeBasic warning retained. Selected-carrier budgets and
 natural closure/operator connection remain separate. No production admission,
 Proshka send or hmode claim. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked form approximation for both actual selected witnesses
+
+Form approximation candidate SHA256 5be4f1cb175e3aa53f62f1257a5896a1302c6a7781d5c246b9299c1053573b2f.
+selected_low_mode_form_approximation discharges the weighted tail budget at
+m=k+2,K=5*(k+2), for p<3 using selectedFerrersPreAnchorSeparation and the
+existing classical eigenvalue<20 theorem. selected_zero_four_form_approximation
+then applies to the exact selectedFerrersPreAnchorSolution0 and Solution4,
+with p=0 and p=2 respectively. No unproved coefficient-summability hypothesis
+remains in that corollary. Source coefficients and normalization are unchanged.
+
+The quantifiers are forall k, polynomial depth n tends to infinity; this is
+not a rate uniform in k and does not supply cofinal hmode. The polynomial
+closure/natural domain identification and operator/minmax connections remain
+separate. Canonical q3_check exit0, standard axioms; independent exact-hash
+review approved index, schedule, witness and quantifier mapping. Existing
+oleans and preexisting UnicodeBasic warning retained. No production admission
+or Proshka send. PX_RH_CLAIM NOT_MADE.

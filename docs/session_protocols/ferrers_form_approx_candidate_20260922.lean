@@ -1,4 +1,5 @@
 import Mathlib
+import Q3.Proofs.RouteB.G6N1SelectedFerrersPreAnchorDataInhabitant
 import Q3.Proofs.RouteB.D0Mode4FerrersRegularEvenProlateSolution
 open Set Filter
 open scoped Topology
@@ -201,4 +202,35 @@ theorem source_polynomial_form_error_tendsto (a : ℕ → ℝ)
   simpa only [sourcePolynomial_eval,sourcePolynomial_derivative_eval] using source_form_error_tendsto a ha ha1
 #print axioms source_polynomial_form_error_tendsto
 #print axioms sourcePolynomial_even
+
+
+open Q3.RouteB.D0Pstar
+
+def sourceFormError (a : ℕ → ℝ) (n : ℕ) : ℝ :=
+  (∫ x in (-1:ℝ)..1, ((sourcePolynomial a n).eval x-mode4FerrersSeries a x)^2) +
+  (∫ x in (-1:ℝ)..1, (1-x^2)*
+    ((sourcePolynomial a n).derivative.eval x-mode4FerrersFirstDerivativeSeries a x)^2)
+
+theorem selected_low_mode_form_approximation (k p : ℕ) (hp : p < 3)
+    (S : Mode4FerrersRegularEvenProlateSolution (k+2) (5*(k+2))
+      (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) p)) :
+    Tendsto (sourceFormError S.coefficients) atTop (𝓝 0) := by
+  have hG : 0 < mode4JacobiG (k+2) := by
+    rw [mode4JacobiG]
+    have : (0:ℝ) < ((k+2:ℕ):ℝ) := by positivity
+    positivity
+  have hΛ := (mode4ClassicalEvenEigenvalue_lt_twenty_of_lt_three
+    (mode4JacobiG (k+2)) hG p hp).le
+  have hw : Summable (fun q : ℕ => ((q+1:ℕ):ℝ)*|S.coefficients q|) := by
+    simpa using mode4RecurrenceRow_polynomiallyWeighted_abs_summable_of_tail_splice
+      (k+2) (5*(k+2)) _ (by omega) (by omega) (selectedFerrersPreAnchorSeparation k)
+      hΛ S.coefficients S.tail_splice 1
+  exact source_polynomial_form_error_tendsto S.coefficients S.coefficients_abs_summable hw
+
+theorem selected_zero_four_form_approximation (k : ℕ) :
+    Tendsto (sourceFormError (selectedFerrersPreAnchorSolution0 k).coefficients) atTop (𝓝 0) ∧
+    Tendsto (sourceFormError (selectedFerrersPreAnchorSolution4 k).coefficients) atTop (𝓝 0) := by
+  exact ⟨selected_low_mode_form_approximation k 0 (by omega) (selectedFerrersPreAnchorSolution0 k),
+    selected_low_mode_form_approximation k 2 (by omega) (selectedFerrersPreAnchorSolution4 k)⟩
+#print axioms selected_zero_four_form_approximation
 end Q3FerrersFormApprox
