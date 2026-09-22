@@ -1343,3 +1343,21 @@ fixed solution S: no uniform-in-m estimate is claimed. Square integrability,
 weak identity, H1/form-domain and natural operator-domain membership are next
 steps, not conclusions of this candidate. No production admission or Proshka
 send. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked square integrability of actual source and derivative
+
+Endpoint candidate SHA256 f85af72a12031dc82ea34e1b967bd075d0f8ae9832fb89cfad327188e8fbaad3.
+actual_ferrers_derivative_square_integrable uses continuity of the derivative
+series from the actual second-derivative field, the preceding derivative
+bound and finite interval measure. actual_ferrers_squares_integrable_closed
+also proves source-square integrability by closed continuity and transfers
+derivative-square integrability from Ioo to Icc using null singleton endpoints.
+No endpoint derivative identity is introduced by that measure-theoretic step.
+
+Canonical q3_check exit0, standard axioms only; independent exact-hash review
+approved measurability, bounds and endpoint transfer. Existing dependency
+oleans and nonfatal warnings remain. These statements are integrability of
+actual squares, not yet weak-derivative identification, formal H1 membership,
+weak operator identity or natural operator-domain membership. Those remain
+necessary before spectral projection can consume the certified residual.
+No production admission or Proshka send. PX_RH_CLAIM NOT_MADE.

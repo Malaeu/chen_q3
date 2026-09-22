@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 345
-observed_at: '2026-09-22T12:45:06.445557+00:00'
-previous_sha256: 8c938a51e9930a65d283789489eee384538d762e78385bd82a01b43bef1cba8c
+revision: 346
+observed_at: '2026-09-22T12:47:19.983403+00:00'
+previous_sha256: c1586ee885fc6bda37426244fb3b10631bfbd3e9d0f23f8403b4fd69384812e7
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Endpoint candidate SHA55202772040283a6a4845619299a8b4a7f15c46d2521bd9a9dd4bd32922296a1, q3_check exit0. Actual source continuous closed interval, differential equation and zero endpoint flux supply bounded derivative, no assumed endpoint differentiability or uniform-in-m constant. This is not yet H1/operator-domain or hmode certification.
+Endpoint candidate SHAf85af72a12031dc82ea34e1b967bd075d0f8ae9832fb89cfad327188e8fbaad3, q3_check exit0. Derivative square integrability uses actual source interior differentiability, bounded derivative and finite measure; Ioo to Icc uses null singleton endpoints. Source square integrability follows closed continuity. Constants remain fixed-S, no uniform-in-m bound or operator-domain admission.
 
 ## Next action
-Endpoint flux and actual source ODE now give a Lean-checked bounded first derivative on Ioo(-1,1), for each fixed Ferrers solution. Next prove square integrability and weak/form-domain identity, then natural operator-domain and spectral projection. Full-window residual C/m^2 already checked; spectral core/gap and hmode remain incomplete in Lean. Proshka packet remains unsent.
+Actual Ferrers source and first-derivative series now have Lean-checked integrable squares on closed Icc(-1,1). Next establish the weak derivative/weak divergence-form identity and natural operator-domain connection; no Sobolev membership claim yet. Existing physical quasimode residual bound C/m^2 awaits spectral projection/core/gap formalization. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

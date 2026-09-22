@@ -93,4 +93,31 @@ theorem actual_ferrers_derivative_bounded {m K : ℕ} {Λ : ℝ}
       _ ≤ M*(x- -1) := hb
       _ = (1+x)*M := by ring
 #print axioms actual_ferrers_derivative_bounded
+
+
+open MeasureTheory
+ theorem actual_ferrers_derivative_square_integrable {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ) :
+    IntegrableOn (fun x => (mode4FerrersFirstDerivativeSeries S.coefficients x)^2)
+      (Ioo (-1:ℝ) 1) := by
+  obtain ⟨M,hM,hb⟩ := actual_ferrers_derivative_bounded S
+  have hc : ContinuousOn (mode4FerrersFirstDerivativeSeries S.coefficients) (Ioo (-1:ℝ) 1) :=
+    fun x hx => (S.firstDerivativeSeries_hasDerivAt_secondDerivativeSeries x hx).continuousAt.continuousWithinAt
+  apply IntegrableOn.of_bound (by simp) ((hc.pow 2).aestronglyMeasurable measurableSet_Ioo) (M^2)
+  filter_upwards [self_mem_ae_restrict measurableSet_Ioo] with x hx
+  rw [norm_pow]
+  exact pow_le_pow_left₀ (norm_nonneg _) (hb x hx) 2
+#print axioms actual_ferrers_derivative_square_integrable
+
+
+theorem actual_ferrers_squares_integrable_closed {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ) :
+    IntegrableOn (fun x => (mode4FerrersSeries S.coefficients x)^2) (Icc (-1:ℝ) 1) ∧
+    IntegrableOn (fun x => (mode4FerrersFirstDerivativeSeries S.coefficients x)^2)
+      (Icc (-1:ℝ) 1) := by
+  constructor
+  · exact (S.continuousOn_closed.pow 2).integrableOn_compact isCompact_Icc
+  · rw [integrableOn_Icc_iff_integrableOn_Ioo]
+    exact actual_ferrers_derivative_square_integrable S
+#print axioms actual_ferrers_squares_integrable_closed
 end Q3EndpointFlux

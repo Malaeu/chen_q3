@@ -1,15 +1,17 @@
-lean /tmp/Q3EndpointFlux.lean
+lean /tmp/Q3EndpointL2.lean
 warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
 'Q3EndpointFlux.endpoint_flux_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3EndpointFlux.lean:68:92: warning: this tactic is never executed
+/tmp/Q3EndpointL2.lean:68:92: warning: this tactic is never executed
 
 Note: This linter can be disabled with `set_option linter.unreachableTactic false`
-/tmp/Q3EndpointFlux.lean:68:79: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3EndpointL2.lean:68:79: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/tmp/Q3EndpointFlux.lean:68:92: warning: 'ring' tactic does nothing
+/tmp/Q3EndpointL2.lean:68:92: warning: 'ring' tactic does nothing
 
 Note: This linter can be disabled with `set_option linter.unusedTactic false`
 'Q3EndpointFlux.actual_ferrers_derivative_bounded' depends on axioms: [propext, Classical.choice, Quot.sound]
-scan /tmp/Q3EndpointFlux.lean
+'Q3EndpointFlux.actual_ferrers_derivative_square_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3EndpointFlux.actual_ferrers_squares_integrable_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+scan /tmp/Q3EndpointL2.lean
 q3_check ok
