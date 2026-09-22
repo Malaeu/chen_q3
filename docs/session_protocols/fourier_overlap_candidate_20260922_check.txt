@@ -53,5 +53,8 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'Q3OverlapProbe.scheduled_chi_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.selected_chi_rate_of_mode_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.selected_projection_tail_of_mode_theta' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.compact_flux_green' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.target_zero_oscillator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.target_four_oscillator' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

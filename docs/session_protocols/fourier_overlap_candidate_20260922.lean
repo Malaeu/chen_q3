@@ -654,4 +654,69 @@ theorem selected_projection_tail_of_mode_theta
     S hFamily C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
 
 #print axioms selected_projection_tail_of_mode_theta
+theorem compact_flux_green
+    (a b : ℝ) (f df φ dφ p flux dflux testflux dtestflux : ℝ → ℂ)
+    (hf : ContinuousOn f (uIcc a b)) (hφ : ContinuousOn φ (uIcc a b))
+    (hflux : ContinuousOn flux (uIcc a b))
+    (htest : ContinuousOn testflux (uIcc a b))
+    (hdf : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt f (df x) x)
+    (hdφ : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt φ (dφ x) x)
+    (hdflux : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt flux (dflux x) x)
+    (hdtest : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt testflux (dtestflux x) x)
+    (hidf : IntervalIntegrable df volume a b)
+    (hidφ : IntervalIntegrable dφ volume a b)
+    (hidflux : IntervalIntegrable dflux volume a b)
+    (hidtest : IntervalIntegrable dtestflux volume a b)
+    (hfluxeq : ∀ x, flux x = p x * df x)
+    (htesteq : ∀ x, testflux x = p x * dφ x)
+    (hφa : φ a = 0) (hφb : φ b = 0)
+    (hta : testflux a = 0) (htb : testflux b = 0) :
+    (∫ x in a..b, φ x * dflux x) = ∫ x in a..b, f x * dtestflux x := by
+  have hleft := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+    hφ hflux hdφ hdflux hidφ hidflux
+  have hright := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+    hf htest hdf hdtest hidf hidtest
+  rw [hφa,hφb] at hleft
+  rw [hta,htb] at hright
+  simp only [zero_mul,mul_zero,sub_zero,zero_sub] at hleft hright
+  rw [hleft,hright]
+  congr 1
+  apply intervalIntegral.integral_congr
+  intro x hx
+  dsimp only
+  rw [hfluxeq,htesteq]
+  ring
+
+#print axioms compact_flux_green
+theorem target_zero_oscillator (x : ℝ) :
+    -deriv (deriv (fun y => parabolicCylinderD 0 (projectCylinderArgument y))) x +
+      4*Real.pi^2*x^2 * parabolicCylinderD 0 (projectCylinderArgument x) =
+      2*Real.pi * parabolicCylinderD 0 (projectCylinderArgument x) := by
+  have heq : (fun y => parabolicCylinderD 0 (projectCylinderArgument y)) = ctW0 := by
+    funext y
+    simp [parabolicCylinderD_zero_projectArgument, ctW0]
+  change -deriv (deriv (fun y => parabolicCylinderD 0 (projectCylinderArgument y))) x +
+      4*Real.pi^2*x^2 * (fun y => parabolicCylinderD 0 (projectCylinderArgument y)) x =
+      2*Real.pi * (fun y => parabolicCylinderD 0 (projectCylinderArgument y)) x
+  rw [heq, show deriv ctW0 = ctW0d from funext (fun y => (ctW0_hasDerivAt' y).deriv),
+    (ctW0d_hasDerivAt x).deriv]
+  exact ctW0_cylinder_eigenrelation x
+
+theorem target_four_oscillator (x : ℝ) :
+    -deriv (deriv (fun y => parabolicCylinderD 4 (projectCylinderArgument y))) x +
+      4*Real.pi^2*x^2 * parabolicCylinderD 4 (projectCylinderArgument x) =
+      18*Real.pi * parabolicCylinderD 4 (projectCylinderArgument x) := by
+  have heq : (fun y => parabolicCylinderD 4 (projectCylinderArgument y)) = ctW4 := by
+    funext y
+    simp [parabolicCylinderD_four_projectArgument, ctW4]
+    ring
+  change -deriv (deriv (fun y => parabolicCylinderD 4 (projectCylinderArgument y))) x +
+      4*Real.pi^2*x^2 * (fun y => parabolicCylinderD 4 (projectCylinderArgument y)) x =
+      18*Real.pi * (fun y => parabolicCylinderD 4 (projectCylinderArgument y)) x
+  rw [heq, show deriv ctW4 = ctW4d from funext (fun y => (ctW4_hasDerivAt' y).deriv),
+    (ctW4d_hasDerivAt x).deriv]
+  exact ctW4_cylinder_eigenrelation x
+
+#print axioms target_zero_oscillator
+#print axioms target_four_oscillator
 end Q3OverlapProbe

@@ -636,3 +636,45 @@ unproved; hmode->htheta is still PAPER. Next investigate the exact hmode donor
 or formalize the compact-test htheta reduction, without using either output
 circularly to prove hmode. Finite-ground matching and off-line zero-freeness
 remain separate open requirements. PX_RH_CLAIM: NOT_MADE.
+
+## Compact Green mechanism and literal target oscillator equations
+
+Candidate SHA256 d2225b8d0fdc8aa8c7c9e8c6b32ff6aa69d8c3e3fc788c56b5e3ee0a4757a2db.
+compact_flux_green derives integral(phi*dflux)=integral(f*dtestflux) on a
+compact oriented interval by two interval integration-by-parts applications.
+Explicit assumptions are continuity of f, phi, flux and testflux on uIcc;
+interior derivative formulas; integrability of the four derivatives;
+flux=p*df and testflux=p*dphi; zero phi and testflux at both endpoints.
+These are regularity/boundary premises, not error bounds on df-dD. The
+identity is bilinear over complex values and retains the same weight p.
+
+The literal parabolicCylinderD(projectCylinderArgument) targets now satisfy
+kernel-checked real oscillator equations via target_zero_oscillator and
+target_four_oscillator, e=2pi and18pi. They reuse public ctW0/ctW4 derivative
+and oscillator theorems from G6N1SturmWeightedEnergyIdentity, proving the
+exact function dictionary rather than relying on notation similarity.
+
+Source audit located actual-source suppliers:
+- D0Mode4FerrersNormalizedActualModeLocalFields.lean:122,
+  normalizedPhysicalMode_prolateWaveExpression_eigenrelation;
+- G6N1SturmDefectEnergyModePlumbing.lean:34,
+  sturm_mode_flux_hasDerivAt, with derivative
+  ((2pi*sqrt(m)*x)^2-(Lambda+mode4JacobiG m))*physicalMode.
+The latter assumes the Ferrers solution, m>=2 and an interior point, with no
+spectral-separation or derivative-error estimate. Normalization/scalar
+transport and compact-test instantiation remain. Existing
+sturm_weighted_energy_identity is quadratic/full-window, not this arbitrary
+bilinear compact-test identity; bounded independent source review found no
+ready equivalent in the inspected import chain (not a global absence claim).
+
+Canonical q3_check exit0; all27 printed dependency lists standard only.
+Independent recovery_review reviewed the final candidate scope and bytes.
+Current dependency oleans used; preexisting UnicodeBasic and style warnings
+remain. No fresh-clone production admission.
+
+Next exact joint: instantiate p=m-x^2 and a fixed test phi=(1-x^2)^3D on
+[-1,1], derive the signed theta defect identity before taking norms, then
+apply hmode to its overlap denominator and two numerator integrals.
+The selected hmode->htheta implication remains PAPER until this connection
+and quantitative estimates are checked. hmode itself, finite-ground matching
+and off-line zero-freeness remain open. PX_RH_CLAIM: NOT_MADE.
