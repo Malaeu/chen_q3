@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 342
-observed_at: '2026-09-22T12:30:06.856331+00:00'
-previous_sha256: 8e099ce3f64341af92f264749f0fca7fc10512b1dfb74f74aef4280935b3a65b
+revision: 343
+observed_at: '2026-09-22T12:33:42.837243+00:00'
+previous_sha256: a11e41d333d8915924674ab020f77dbadbe086086d5d0f2ecbb9bc81d90bbebc
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-q3_check exit0 on SHAa1bad29bb2ee98a33c1734732f2bf87b15b09c5f6196f8b17e84f699c93a4838. gaussianPoly_hasDerivAt, oscillator_conjugation, perturbation_conjugation, corrected_residual_zero/four all standard axioms. Real derivatives are linked to polynomials; physical scaling and norm bound not yet claimed.
+q3_check exit0 SHA973c0e8eb1e176ea8e0244ba8625a1e650d3d92b566da3231945e5d102da6d8a. Actual scaled Gaussian first/second derivatives, physical_rescaling and two physical_residual identities all standard axioms. Operator explicitly uses negative divergence of (1-x²/m)fprime and correct π spectral shift. L2 bound not yet Lean.
 
 ## Next action
-Lean now proves exact dimensionless differential quasimode residual eps^2*GaussianR for both modes, using proved first/second Gaussian derivatives. Next formalize physical scaling t=sqrt(pi)x and eps=1/(pi*m), then full-window L2 Gaussian bound. PAPER spectral/core/hmode remain not formalized; Proshka packet frozen unsent pending route reconciliation.
+Exact physical divergence-form residual now Lean-checked for both corrected modes: GaussianR(sqrt(pi)x)/(pi*m^2), m nonzero. Next establish integrability of squared Gaussian-polynomial residual and uniform full-window L2 bound. PAPER domain/core/projection/hmode still unformalized; prepared Proshka packet unchanged and unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

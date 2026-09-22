@@ -102,4 +102,74 @@ theorem corrected_residual_four (eps t : ℝ) :
   <;> ring
 #print axioms corrected_residual_zero
 #print axioms corrected_residual_four
+
+def scaledGaussian (p : ℝ[X]) (c x : ℝ) := gaussianPoly p (c*x)
+theorem scaledGaussian_hasDerivAt (p : ℝ[X]) (c x : ℝ) :
+    HasDerivAt (scaledGaussian p c) (c*scaledGaussian (gaussianDerivative p) c x) x := by
+  have h := (gaussianPoly_hasDerivAt p (c*x)).comp x ((hasDerivAt_id x).const_mul c)
+  convert h using 1 <;> simp [scaledGaussian] <;> ring
+
+theorem deriv_scaledGaussian (p : ℝ[X]) (c : ℝ) :
+    deriv (scaledGaussian p c) = fun x => c*scaledGaussian (gaussianDerivative p) c x := by
+  funext x
+  exact (scaledGaussian_hasDerivAt p c x).deriv
+
+theorem second_scaledGaussian (p : ℝ[X]) (c x : ℝ) :
+    deriv (deriv (scaledGaussian p c)) x =
+      c^2*scaledGaussian (gaussianDerivative (gaussianDerivative p)) c x := by
+  rw [deriv_scaledGaussian]
+  have h := (scaledGaussian_hasDerivAt (gaussianDerivative p) c x).const_mul c
+  convert h.deriv using 1 <;> ring
+
+def physicalResidual (n : ℕ) (m beta : ℝ) (f : ℝ → ℝ) (x : ℝ) :=
+  -deriv (fun y => (1-y^2/m)*deriv f y) x +
+    (4*Real.pi^2*x^2-(Real.pi*(4*(n:ℝ)+2)+beta/m))*f x
+
+theorem physical_rescaling (p : ℝ[X]) (n : ℕ) (m beta x : ℝ) (hm : m ≠ 0) :
+    physicalResidual n m beta (scaledGaussian p (Real.sqrt Real.pi)) x =
+      Real.pi*perturbedOscillator n (1/(Real.pi*m)) beta (gaussianPoly p)
+        (Real.sqrt Real.pi*x) := by
+  let c := Real.sqrt Real.pi
+  have hc : c^2=Real.pi := Real.sq_sqrt Real.pi_pos.le
+  have hd := (scaledGaussian_hasDerivAt (gaussianDerivative p) c x).const_mul c
+  have hw : HasDerivAt (fun y : ℝ => 1-y^2/m) (-2*x/m) x := by
+    convert (hasDerivAt_const x (1:ℝ)).sub (((hasDerivAt_id x).pow 2).div_const m) using 1 <;> simp <;> ring
+  have hflux := hw.mul hd
+  have heq : deriv (fun y => (1-y^2/m)*deriv (scaledGaussian p c) y) x =
+      (-2*x/m)*(c*scaledGaussian (gaussianDerivative p) c x)+
+      (1-x^2/m)*(c*(c*scaledGaussian (gaussianDerivative (gaussianDerivative p)) c x)) := by
+    rw [deriv_scaledGaussian]
+    exact hflux.deriv
+  unfold physicalResidual
+  change -deriv (fun y => (1-y^2/m)*deriv (scaledGaussian p c) y) x + _ = _
+  rw [heq]
+  unfold perturbedOscillator
+  rw [deriv_gaussianPoly,deriv_gaussianPoly]
+  have ht := perturbation_conjugation p (c*x)
+  rw [deriv_gaussianPoly] at ht
+  rw [ht]
+  simp [scaledGaussian,gaussianPoly,gaussianDerivative,T,derivative_mul]
+  field_simp
+  simp only [show Real.sqrt Real.pi = c from rfl]
+  rw [← hc]
+  ring
+#print axioms physical_rescaling
+
+theorem physical_residual_zero (m x : ℝ) (hm : m ≠ 0) :
+    physicalResidual 0 m (-(3/4))
+      (scaledGaussian (P0+C (1/(Real.pi*m))*Q0) (Real.sqrt Real.pi)) x =
+        gaussianPoly R0 (Real.sqrt Real.pi*x)/(Real.pi*m^2) := by
+  rw [physical_rescaling _ _ _ _ _ hm,corrected_residual_zero]
+  field_simp
+  <;> ring
+
+theorem physical_residual_four (m x : ℝ) (hm : m ≠ 0) :
+    physicalResidual 4 m (-(43/4))
+      (scaledGaussian (P4+C (1/(Real.pi*m))*Q4) (Real.sqrt Real.pi)) x =
+        gaussianPoly R4 (Real.sqrt Real.pi*x)/(Real.pi*m^2) := by
+  rw [physical_rescaling _ _ _ _ _ hm,corrected_residual_four]
+  field_simp
+  <;> ring
+#print axioms physical_residual_zero
+#print axioms physical_residual_four
 end Q3QuasimodeCorrection

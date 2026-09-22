@@ -1283,3 +1283,23 @@ Physical rescaling t=sqrt(pi)*x,eps=1/(pi*m), including the factor
 pi*eps^2=1/(pi*m^2), is NOT yet a Lean theorem here. Nor is the full-window
 L2 bound, spectral projection/core chain or actual hmode. The prepared Proshka
 packet is intentionally unchanged and still unsent. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked physical divergence-form quasimode residual
+
+Candidate SHA256 973c0e8eb1e176ea8e0244ba8625a1e650d3d92b566da3231945e5d102da6d8a.
+scaledGaussian_hasDerivAt and second_scaledGaussian establish actual chain-rule
+factors. physical_rescaling proves the link between the physical operator
+ -d_x((1-x^2/m)d_x f)+[4*pi^2*x^2-(pi*(4n+2)+beta/m)]f
+and pi times the dimensionless perturbedOscillator at t=sqrt(pi)*x,
+eps=1/(pi*m). physical_residual_zero/four specialize this to the actual
+corrected polynomials and prove exact residual GaussianPoly(R_n,sqrt(pi)*x)
+divided by pi*m^2. These pointwise identities require m!=0; the later spectral
+application requires m>0. No omitted flux-boundary premise is being used in a
+pointwise identity.
+
+Canonical q3_check exit0 and standard axioms only. Independent exact-hash
+review approved negative divergence, shift and scaling, including 1/(pi*m^2).
+Existing dependency oleans used; preexisting UnicodeBasic/style warnings remain.
+Full-window L2 bound, operator-domain/core/projection chain and hmode remain
+outside these Lean declarations. No production admission or new Proshka send.
+PX_RH_CLAIM NOT_MADE.

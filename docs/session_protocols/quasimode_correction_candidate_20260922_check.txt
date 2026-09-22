@@ -34,5 +34,35 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'Q3QuasimodeCorrection.corrected_residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3QuasimodeCorrection.corrected_residual_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+/tmp/Q3QuasimodeCorrection.lean:110:20: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:110:46: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:122:26: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:136:91: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:136:100: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Q3QuasimodeCorrection.physical_rescaling' depends on axioms: [propext, Classical.choice, Quot.sound]
+/tmp/Q3QuasimodeCorrection.lean:164:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/tmp/Q3QuasimodeCorrection.lean:164:6: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/tmp/Q3QuasimodeCorrection.lean:172:6: warning: this tactic is never executed
+
+Note: This linter can be disabled with `set_option linter.unreachableTactic false`
+/tmp/Q3QuasimodeCorrection.lean:172:6: warning: 'ring' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+'Q3QuasimodeCorrection.physical_residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.physical_residual_four' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3QuasimodeCorrection.lean
 q3_check ok
