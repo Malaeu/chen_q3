@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 350
-observed_at: '2026-09-22T13:00:10.421181+00:00'
-previous_sha256: bc99edc02b07936445ad356624111118630f4aabbe6631c85ed771c12a191947
+revision: 351
+observed_at: '2026-09-22T13:03:04.559883+00:00'
+previous_sha256: 7f6f21273c3d2bfe9966803213de5d92b60df77f5859524fa149f04856cb7c3f
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Form approximation candidate SHA44182c9760f705bdbaee2bc6019e9e8f7c076854135669fece51c0b79e831ffa, q3_check exit0. Uniform-square-error integral convergence proved quantitatively, weighted error integrability separately established by continuous weighted tsum. Source uniform convergence plus kinetic error yields genuine form-error convergence under explicit absolute and weighted coefficient summability; no operator-domain or hmode admission.
+Form approximation candidate SHA2c32bbfed42fe3624860db74e7bd74aff8057d892430015f63c4e594ee9f0bf4, q3_check exit0. Polynomial coefficients exactly (-1)^q*a_q, no normalization change. Both source and kinetic errors genuinely integrable and vanish in sum under absolute/weighted summability. Evenness and actual polynomial derivative identities checked; no full form-core or hmode admission.
 
 ## Next action
-Lean source_form_error_tendsto now proves source L2 error plus weighted derivative energy error tends to zero for Legendre term partial sums. Next identify these sums as evaluation/derivative of one actual even polynomial, specialize all tail assumptions to selected carriers, and connect the form closure. General natural form-core/minmax/gap remain open; Proshka packet unsent.
+Lean identifies one explicit even sourcePolynomial whose eval and derivative are the approximating source sums, proves genuine source-error integrability and polynomial form-error convergence. Next specialize tail budgets to selected carriers and connect polynomial closure to natural form/operator domain; general form-core/minmax/gap remain open. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

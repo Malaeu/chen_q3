@@ -1445,3 +1445,24 @@ Canonical q3_check exit0, standard axioms; independent exact-hash review
 approved with the generic-integral qualification above. Existing oleans and
 preexisting UnicodeBasic warning retained. No spectral/operator-domain or
 hmode admission; no Proshka send. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked even polynomial approximation in the source form error
+
+Form approximation candidate SHA256 2c32bbfed42fe3624860db74e7bd74aff8057d892430015f63c4e594ee9f0bf4.
+sourcePolynomial(a,n)=sum_{q<n} C((-1)^q*a_q)*P_{2q}. Its evaluation and
+actual polynomial derivative are exactly the previously approximated source
+and derivative term sums. sourcePolynomial_even proves evenness; no phase,
+normalization or similarity-scale factor changes the source.
+source_polynomial_error_integrable explicitly supplies genuine source-square
+error integrability. The previous weighted-error theorem supplies kinetic
+integrability through the polynomial derivative identity.
+source_polynomial_form_error_tendsto proves the sum of L2 and weighted
+kinetic errors tends to zero for this same polynomial sequence, retaining
+both coefficient summability hypotheses. This is source approximation,
+not general density of all natural form-domain functions or a cofinal rate.
+
+Canonical q3_check exit0, standard axioms; independent exact-hash review
+approved phases, degrees, derivative and integrability. Existing oleans used,
+preexisting UnicodeBasic warning retained. Selected-carrier budgets and
+natural closure/operator connection remain separate. No production admission,
+Proshka send or hmode claim. PX_RH_CLAIM NOT_MADE.

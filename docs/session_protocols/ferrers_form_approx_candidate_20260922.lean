@@ -163,4 +163,42 @@ theorem source_form_error_tendsto (a : ℕ → ℝ)
   simpa using (uniform_square_error_integral_tendsto _ _ (source_partial_sums_uniform a ha)).add
     (weighted_derivative_error_energy_tendsto a ha1)
 #print axioms source_form_error_tendsto
+
+
+def sourcePolynomial (a : ℕ → ℝ) (n : ℕ) : Polynomial ℝ :=
+  ∑ q ∈ Finset.range n, Polynomial.C ((-1:ℝ)^q*a q)*mode4OrdinaryLegendrePolynomial (2*q)
+
+theorem sourcePolynomial_eval (a : ℕ → ℝ) (n : ℕ) (x : ℝ) :
+    (sourcePolynomial a n).eval x = ∑ q ∈ Finset.range n, mode4FerrersTerm a q x := by
+  simp [sourcePolynomial,Polynomial.eval_finset_sum,mode4FerrersTerm,mode4OrdinaryLegendre]
+
+theorem sourcePolynomial_derivative_eval (a : ℕ → ℝ) (n : ℕ) (x : ℝ) :
+    (sourcePolynomial a n).derivative.eval x = ∑ q ∈ Finset.range n, mode4FerrersFirstDerivativeTerm a q x := by
+  simp only [sourcePolynomial,Polynomial.derivative_sum,Polynomial.derivative_C_mul,
+    Polynomial.eval_finset_sum,Polynomial.eval_mul,Polynomial.eval_C,mode4FerrersFirstDerivativeTerm]
+
+theorem sourcePolynomial_even (a : ℕ → ℝ) (n : ℕ) :
+    Function.Even (sourcePolynomial a n).eval := by
+  intro x
+  simp only [sourcePolynomial_eval,mode4FerrersTerm,mode4OrdinaryLegendre_even]
+
+theorem source_polynomial_error_integrable (a : ℕ → ℝ)
+    (ha : Summable (fun q => |a q|)) (n : ℕ) :
+    IntervalIntegrable (fun x => ((sourcePolynomial a n).eval x-mode4FerrersSeries a x)^2)
+      MeasureTheory.volume (-1:ℝ) 1 := by
+  apply ContinuousOn.intervalIntegrable
+  rw [uIcc_of_le (by norm_num : (-1:ℝ) ≤ 1)]
+  exact ((sourcePolynomial a n).continuous.continuousOn.sub (mode4FerrersSeries_continuousOn a ha)).pow 2
+
+theorem source_polynomial_form_error_tendsto (a : ℕ → ℝ)
+    (ha : Summable (fun q => |a q|))
+    (ha1 : Summable (fun q : ℕ => ((q+1:ℕ):ℝ)*|a q|)) :
+    Tendsto (fun n =>
+      (∫ x in (-1:ℝ)..1, ((sourcePolynomial a n).eval x-mode4FerrersSeries a x)^2) +
+      (∫ x in (-1:ℝ)..1, (1-x^2)*
+        ((sourcePolynomial a n).derivative.eval x-mode4FerrersFirstDerivativeSeries a x)^2))
+      atTop (𝓝 0) := by
+  simpa only [sourcePolynomial_eval,sourcePolynomial_derivative_eval] using source_form_error_tendsto a ha ha1
+#print axioms source_polynomial_form_error_tendsto
+#print axioms sourcePolynomial_even
 end Q3FerrersFormApprox
