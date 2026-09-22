@@ -1557,3 +1557,27 @@ candidate correctness, not registry acceptance or publication. Next source-
 locked candidate commit, exact integration review artifacts and issue repair
 lifecycle; publication hold remains. Mathematical goal stays open.
 PX_RH_CLAIM NOT_MADE.
+
+## Committed isolated selector repair and exact admission boundary
+
+Separate verification clone /tmp/q3-selector-verification-20260922 contains
+candidate commit62ebafa8566496d86cb1dc83b34a93f4b025202b with parent
+ a7d6780bbc7e8b7b2537c4ef7ca44f8952b2cac1. Only team_records.py and its existing
+test_workflow_runtime.py change. Independent reviewer checked both committed
+hashes equal the previously approved8fe0e907... and7a637b6b... bytes. Direct
+unittest execution from this clone passes27 TeamRecordsTests. Durable Git
+bundle selector_repair_62ebafa8.bundle verified, with the named parent required.
+
+REVIEWED_SOURCE integration requires exact registered producer/checker
+assignments, candidate commit, review manifest, and a completed native checker
+LAUNCH/RESULT pair. The present conversational reviewer result is real, but
+has no such registered launch binding. Both parent tool inventory/readback
+and checker report lack explicit provider-observed resolved model/effort.
+Those fields are required by _validate_native_observation and must not be
+inferred from requested configuration. No fabricated observation submitted.
+
+Next use a fresh correctly reserved registered review route with real provider
+metadata, preserving the existing checked candidate. Canonical runtime/source
+is unchanged; issue ASSIGNED and publication remains unfinished. This is an
+integration-record gap, not missing owner authority or mathematical rejection.
+PX_RH_CLAIM NOT_MADE.

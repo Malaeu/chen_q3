@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 355
-observed_at: '2026-09-22T13:18:23.662661+00:00'
-previous_sha256: a46ec70bd9974bc67a5b33d15020f0d033d2559d78b3c45b4887f9ad90e90bcd
+revision: 356
+observed_at: '2026-09-22T13:21:30.245384+00:00'
+previous_sha256: 896307cbe8d0b07003e06cff050985ac09b739fa5691494d52a58255f473168f
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Source SHA8fe0e907d11e78f1631008652352f5e9bc71c640e3245db5979b62f354a0df16; tests SHA7a637b6b34985ae21bfe879c01b578b81c8ed2b7551ee55773322fe31281753f. 27 pure tests pass (independently rerun), baseline same tests4 failures6 errors. Broader115 runtime/record tests:114 pass; existing migration test expects control11 vs current12, identical failure reproduced on unchanged baseline. Initial relocated all-module harness failure is discarded and documented, not green evidence.
+Verification clone /tmp/q3-selector-verification-20260922, distinct Git common dir, clean committed two-file diff and exact approved hashes. Direct python3 -m unittest orchestrator.tests.test_workflow_runtime.TeamRecordsTests -q passes27. Bundle verify succeeds. Canonical runtime untouched, issue ASSIGNED, remote publication and Proshka send not completed; mathematical goal remains open.
 
 ## Next action
-Isolated exact-result selector implementation and tests independently approved. Candidate under /tmp/q3-selector-candidate; durable two-file patch saved in session_protocols. Next create source-locked candidate commit and registered producer/checker integration artifacts, admit repair through exact issue lifecycle before publication. Canonical team_records.py remains unchanged; no gate cleared.
+Selector repair committed in separate verification clone as62ebafa8566496d86cb1dc83b34a93f4b025202b on baselinea7d6780bbc7e8b7b2537c4ef7ca44f8952b2cac1; durable bundle preserved. Next register exact producer/checker assignments and fresh native review observation through existing reservation route before REVIEWED_SOURCE integration. Existing conversational review lacks registered launch/result binding and provider-confirmed resolved profile; do not invent it or bypass admission.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
