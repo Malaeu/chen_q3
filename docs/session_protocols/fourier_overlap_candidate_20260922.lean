@@ -121,6 +121,136 @@ theorem chi_bound_of_overlap_floor (f D : ℝ → ℂ) (lam J : ℝ) (χ : ℂ)
   apply (le_div_iff₀ hJ).mpr
   nlinarith
 #print axioms chi_bound_of_overlap_floor
+
+theorem source_l1_of_window_error (f D : ℝ → ℂ) (lam ε : ℝ)
+    (hlam : 0 ≤ lam) (hf : Integrable f) (hD : Integrable D)
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ ε) :
+    (∫ x, ‖f x‖) ≤ (∫ x, ‖D x‖)+2*lam*ε := by
+  have hc : IntegrableOn (fun _ : ℝ => ε) (Icc (-lam) lam) := integrableOn_const (by rw [Real.volume_Icc]; exact ENNReal.ofReal_ne_top)
+  have hsize : (∫ _ : ℝ in Icc (-lam) lam, ε) = 2*lam*ε := by
+    rw [setIntegral_const, Real.volume_real_Icc, max_eq_left (by linarith : 0 ≤ lam - -lam)]
+    simp only [smul_eq_mul]
+    ring
+  calc
+    (∫ x, ‖f x‖) = ∫ x in Icc (-lam) lam, ‖f x‖ := by
+      symm
+      apply setIntegral_eq_integral_of_forall_compl_eq_zero
+      intro x hx
+      simp [hsupp x hx]
+    _ ≤ ∫ x in Icc (-lam) lam, (‖D x‖+ε) := by
+      apply setIntegral_mono_on hf.norm.integrableOn (hD.norm.integrableOn.add hc) measurableSet_Icc
+      intro x hx
+      change ‖f x‖ ≤ ‖D x‖ + ε
+      have he := herr x hx
+      have ht := norm_sub_norm_le (f x) (D x)
+      linarith
+    _ = (∫ x in Icc (-lam) lam, ‖D x‖)+2*lam*ε := by
+      rw [integral_add hD.norm.integrableOn hc, hsize]
+    _ ≤ _ := by
+      have h := setIntegral_le_integral (s := Icc (-lam) lam) hD.norm
+        (Filter.Eventually.of_forall (fun x => norm_nonneg _))
+      linarith
+#print axioms source_l1_of_window_error
+
+theorem source_l1_uniform (f D : ℝ → ℂ) (lam C : ℝ)
+    (hlam : 1 ≤ lam) (hC : 0 ≤ C) (hf : Integrable f) (hD : Integrable D)
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ C/lam^2) :
+    (∫ x, ‖f x‖) ≤ (∫ x, ‖D x‖)+2*C := by
+  have hp : 0 < lam := by linarith
+  have h := source_l1_of_window_error f D lam (C/lam^2) hp.le hf hD hsupp herr
+  have hb : 2*lam*(C/lam^2) ≤ 2*C := by
+    rw [← mul_div_assoc]
+    apply (div_le_iff₀ (sq_pos_of_pos hp)).mpr
+    have hg := mul_le_mul_of_nonneg_left (show lam ≤ lam^2 by nlinarith) hC
+    nlinarith
+  linarith
+#print axioms source_l1_uniform
+
+theorem source_product_integrable (f D : ℝ → ℂ) (lam ε : ℝ)
+    (hε : 0 ≤ ε) (hf : Integrable f) (hD : Integrable D)
+    (hDD : Integrable (fun x => D x * D x))
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ ε) :
+    Integrable (fun x => f x * D x) := by
+  apply (hDD.norm.add (hD.norm.const_mul ε)).mono'
+    (hf.aestronglyMeasurable.mul hD.aestronglyMeasurable)
+  filter_upwards [] with x
+  change ‖f x * D x‖ ≤ ‖D x * D x‖+ε*‖D x‖
+  by_cases hx : x ∈ Icc (-lam) lam
+  · have h1 := herr x hx
+    have h2 := norm_sub_norm_le (f x) (D x)
+    rw [norm_mul, norm_mul]
+    nlinarith [norm_nonneg (D x)]
+  · simp only [hsupp x hx, zero_mul, norm_zero]
+    positivity
+
+theorem overlap_error_bound (f D : ℝ → ℂ) (lam ε : ℝ)
+    (hlam : 0 < lam) (hε : 0 ≤ ε) (hf : Integrable f) (hD : Integrable D)
+    (hDD : Integrable (fun x => D x * D x))
+    (hQ : Integrable (fun x : ℝ => x^2 * ‖D x * D x‖))
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ ε) :
+    ‖(∫ x, f x*D x)-(∫ x, D x*D x)‖ ≤
+      ε*(∫ x, ‖D x‖)+(∫ x : ℝ, x^2*‖D x*D x‖)/lam^2 := by
+  have hp := source_product_integrable f D lam ε hε hf hD hDD hsupp herr
+  have hd := hp.sub hDD
+  have hi : ‖∫ x in Icc (-lam) lam, (f x*D x-D x*D x)‖ ≤ ε*(∫ x, ‖D x‖) := by
+    calc
+      _ ≤ ∫ x in Icc (-lam) lam, ‖f x*D x-D x*D x‖ := norm_integral_le_integral_norm _
+      _ ≤ ∫ x in Icc (-lam) lam, ε*‖D x‖ := by
+        apply setIntegral_mono_on hd.norm.integrableOn
+          (hD.norm.const_mul ε).integrableOn measurableSet_Icc
+        intro x hx
+        change ‖f x*D x-D x*D x‖ ≤ ε*‖D x‖
+        rw [← sub_mul, norm_mul]
+        exact mul_le_mul_of_nonneg_right (herr x hx) (norm_nonneg _)
+      _ = ε*(∫ x in Icc (-lam) lam, ‖D x‖) := integral_const_mul _ _
+      _ ≤ _ := mul_le_mul_of_nonneg_left (setIntegral_le_integral hD.norm
+        (Filter.Eventually.of_forall (fun x => norm_nonneg _))) hε
+  have ho : ‖∫ x in (Icc (-lam) lam)ᶜ, (f x*D x-D x*D x)‖ ≤
+      (∫ x : ℝ, x^2*‖D x*D x‖)/lam^2 := by
+    have heq : (∫ x in (Icc (-lam) lam)ᶜ, (f x*D x-D x*D x)) =
+        -(∫ x in (Icc (-lam) lam)ᶜ, D x*D x) := by
+      rw [← integral_neg]
+      apply setIntegral_congr_fun measurableSet_Icc.compl
+      intro x hx
+      simp [hsupp x hx]
+    rw [heq, norm_neg]
+    exact (norm_integral_le_integral_norm _).trans
+      (exterior_moment_bound (fun x => D x*D x) lam hlam hDD hQ)
+  have hsplit := integral_add_compl (s := Icc (-lam) lam) (f := fun x => f x*D x-D x*D x) measurableSet_Icc hd
+  rw [← integral_sub hp hDD, ← hsplit]
+  exact (norm_add_le _ _).trans (add_le_add hi ho)
+#print axioms overlap_error_bound
+
+theorem chi_bound_from_mode_error (f D : ℝ → ℂ) (lam C J : ℝ) (χ : ℂ)
+    (hlam : 1 ≤ lam) (hC : 0 ≤ C) (hJ : 0 < J)
+    (hJeq : J = ‖∫ x, D x*D x‖)
+    (hf : Integrable f) (hD : Integrable D)
+    (hDD : Integrable (fun x => D x*D x))
+    (hM : Integrable (fun x : ℝ => x^2*‖D x‖))
+    (hQ : Integrable (fun x : ℝ => x^2*‖D x*D x‖))
+    (hfixed : F D = D)
+    (heigen : ∀ x ∈ Icc (-lam) lam, F f x = χ*f x)
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ C/lam^2)
+    (hlarge : 2*(C*(∫ x, ‖D x‖)+(∫ x : ℝ, x^2*‖D x*D x‖)) ≤ J*lam^2) :
+    ‖1-χ‖ ≤ (2*((∫ x, ‖D x‖)+2*C)*(∫ x : ℝ, x^2*‖D x‖)/J)/lam^2 := by
+  have hp : 0 < lam := by linarith
+  have he := overlap_error_bound f D lam (C/lam^2) hp (by positivity) hf hD hDD hQ hsupp herr
+  have hsmall : (C/lam^2)*(∫ x, ‖D x‖)+(∫ x : ℝ, x^2*‖D x*D x‖)/lam^2 ≤ J/2 := by
+    rw [div_mul_eq_mul_div, ← add_div]
+    apply (div_le_iff₀ (sq_pos_of_pos hp)).mpr
+    nlinarith
+  have hr := norm_sub_norm_le (∫ x, D x*D x) (∫ x, f x*D x)
+  rw [norm_sub_rev, ← hJeq] at hr
+  have hfloor : J/2 ≤ ‖∫ x, f x*D x‖ := by linarith [he.trans hsmall]
+  have hb := chi_bound_of_overlap_floor f D lam J χ hp hJ hf hD hM hfixed heigen hsupp hfloor
+  have hL := source_l1_uniform f D lam C hlam hC hf hD hsupp herr
+  have hM0 : 0 ≤ ∫ x : ℝ, x^2*‖D x‖ := integral_nonneg (fun x => by positivity)
+  apply hb.trans
+  gcongr
+#print axioms chi_bound_from_mode_error
 end Q3OverlapProbe
-
-

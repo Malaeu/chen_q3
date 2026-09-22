@@ -495,3 +495,32 @@ derived from hmode in Lean. This is a pointwise quantitative inequality;
 it is not a claimed uniform asymptotic if those constants vary freely.
 Next: derive both missing bounds from the full-window C/lam² approximation
 and the fixed target moments, then instantiate actual selected Ferrers modes.
+
+
+## Lean generic mode-error to chi-rate theorem
+
+Final candidate SHA256:
+ef36d9bffc0a2df2ab5ea12e4775bf95ba4b2b7a37bd2cec3e0e6962c7305fa9.
+q3_check exit0; all eight printed dependencies contain standard axioms only.
+`source_l1_uniform` derives ||f||1≤||D||1+2C from support and full-window
+C/lam² error. `source_product_integrable` derives product integrability.
+`overlap_error_bound` derives
+
+    |integral(fD)−integral(D²)| ≤ (C L+Q2)/lam².
+
+`chi_bound_from_mode_error` combines these with Fourier reciprocity and
+moment tails. Inputs: lam≥1, C≥0, fixed D with finite L1, square and two
+weighted moments, self-Fourier D, integrable supported f, full-window
+Fourier-eigenrelation and approximation, J=|integral(D²)|>0, and explicit
+threshold 2(C L+Q2)≤J lam². Output:
+
+    |1−chi| ≤ [2(L+2C)M2/J]/lam².
+
+No independent overlap floor, uniform L1 source hypothesis, or assumed
+Fourier defect bound remains. The generic theorem is kernel-checked; an
+actual-source hchi instance still requires matching D0/D4 self-Fourier,
+nonzero square integrals, moments and selected Ferrers eigenrelations.
+The input hmode remains unproved; no claim of cofinal ground tracking.
+
+Independent recovery_review recompiled and approved final ef36d9bf bytes;
+no circular chi assumption; actual-source and production boundaries retained.

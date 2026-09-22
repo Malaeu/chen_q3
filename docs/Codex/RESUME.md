@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 324
-observed_at: '2026-09-22T10:50:49.969048+00:00'
-previous_sha256: 98383bcf186567eb8564226c241225eec776936a28bcf53bb6ad27ff7771d05c
+revision: 325
+observed_at: '2026-09-22T10:57:16.407562+00:00'
+previous_sha256: b2b40488ff5ebe1ecf843ed1572feeeaacbe109a8c9589f4b1f3f173a23a6c0b
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Updated Lean candidate SHA256 b2945659247fc54ffbd45ef5f40c4d48678bbd62204f446387518734fc2aba74, q3_check exit0, independent exact-byte review. Four lemmas print standard axioms only. New quantitative inequality ||1-chi||<=2||f||1 M2/(J lam²) retains overlap floor and family norm bounds explicitly. No uniform rate or source connection claimed.
+Lean candidate ef36d9bffc0a2df2ab5ea12e4775bf95ba4b2b7a37bd2cec3e0e6962c7305fa9 independently recompiled and approved. q3_check exit0; eight printed declarations standard axioms only. chi_bound_from_mode_error derives K/lam² from full-window mode approximation, support, Fourier relation and fixed target moments/nonzero square integral; no assumed chi rate, overlap floor or uniform source L1. Generic result only, actual-source family specialization outstanding.
 
 ## Next action
-Continue same isolated Fourier candidate: derive uniform L1 source bound and positive overlap floor from full-window hmode and fixed Gaussian target moments. exterior_moment_bound and chi_bound_of_overlap_floor now compile; do not repeat. Then assemble eventual hchi and exact-source instantiation. hmode itself, compact ODE bridge formalization, and production edge admission still open.
+Generic chi_bound_from_mode_error is kernel-checked. Next instantiate fixed targets D0,D4: plus-Fourier self-duality, finite moments, nonzero square integral, then transport selected Ferrers support/eigenrelations and hmode and discharge large-lambda condition on schedule. Do not reprove overlap floor or L1 bound: both now internal. hmode still unproved; htheta compact-test bridge only paper; production node/consumer still UNBOUND.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
