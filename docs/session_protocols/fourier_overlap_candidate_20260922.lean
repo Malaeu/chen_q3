@@ -402,4 +402,128 @@ theorem target_four_fixed : F (cylinderTarget 4) = cylinderTarget 4 := by
 #print axioms target_four_fixed
 #print axioms target_zero_fixed
 #print axioms target_zero_moment
+theorem target_four_moment (n : ℕ) :
+    Integrable (fun x : ℝ => x^n • cylinderTarget 4 x) := by
+  have h := (((target_zero_moment (n+4)).const_mul (16*(Real.pi : ℂ)^2)).sub
+    ((target_zero_moment (n+2)).const_mul (24*(Real.pi : ℂ)))).add
+    ((target_zero_moment n).const_mul 3)
+  convert h using 1
+  funext x
+  simp only [Pi.add_apply, Pi.sub_apply, Complex.real_smul]
+  unfold cylinderTarget
+  rw [parabolicCylinderD_four_projectArgument, parabolicCylinderD_zero_projectArgument]
+  push_cast
+  ring
+
+theorem target_four_weighted_norm :
+    Integrable (fun x : ℝ => x^2 * ‖cylinderTarget 4 x‖) := by
+  have h := (target_four_moment 2).norm
+  simpa [norm_smul, Real.norm_eq_abs, abs_sq] using h
+
+#print axioms target_four_moment
+#print axioms target_four_weighted_norm
+theorem double_gaussian_moment (n : ℕ) :
+    Integrable (fun x : ℝ => x^n * Real.exp (-(2*Real.pi)*x^2)) := by
+  simpa only [Real.rpow_natCast] using
+    (integrable_rpow_mul_exp_neg_mul_sq (mul_pos (by norm_num) Real.pi_pos)
+      (show (-1 : ℝ) < (n : ℝ) by
+        exact lt_of_lt_of_le (by norm_num) (Nat.cast_nonneg n)))
+
+theorem target_four_square_moment (n : ℕ) :
+    Integrable (fun x : ℝ => x^n *
+      (parabolicCylinderD 4 (projectCylinderArgument x))^2) := by
+  have h := (((((double_gaussian_moment (n+8)).const_mul (256*Real.pi^4)).sub
+    ((double_gaussian_moment (n+6)).const_mul (768*Real.pi^3))).add
+    ((double_gaussian_moment (n+4)).const_mul (672*Real.pi^2))).sub
+    ((double_gaussian_moment (n+2)).const_mul (144*Real.pi))).add
+    ((double_gaussian_moment n).const_mul 9)
+  convert h using 1
+  funext x
+  rw [parabolicCylinderD_four_projectArgument, mul_pow]
+  rw [show (Real.exp (-Real.pi*x^2))^2 = Real.exp (-(2*Real.pi)*x^2) by
+    rw [sq, ← Real.exp_add]; congr 1; ring]
+  simp only [Pi.add_apply, Pi.sub_apply]
+  ring
+
+theorem target_four_square_weighted_norm :
+    Integrable (fun x : ℝ => x^2 * ‖cylinderTarget 4 x * cylinderTarget 4 x‖) := by
+  convert target_four_square_moment 2 using 1
+  funext x
+  simp [cylinderTarget, ← Complex.ofReal_mul, Complex.norm_real,
+    Real.norm_eq_abs, ← sq, abs_sq]
+
+#print axioms target_four_square_moment
+#print axioms target_four_square_weighted_norm
+theorem target_zero_square_moment (n : ℕ) :
+    Integrable (fun x : ℝ => x^n *
+      (parabolicCylinderD 0 (projectCylinderArgument x))^2) := by
+  convert double_gaussian_moment n using 1
+  funext x
+  rw [parabolicCylinderD_zero_projectArgument, sq, ← Real.exp_add]
+  congr 2
+  ring
+
+theorem target_square_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    0 < ∫ x : ℝ, (parabolicCylinderD n (projectCylinderArgument x))^2 := by
+  have hi : Integrable (fun x : ℝ =>
+      (parabolicCylinderD n (projectCylinderArgument x))^2) := by
+    rcases hn with rfl | rfl
+    · simpa using target_zero_square_moment 0
+    · simpa using target_four_square_moment 0
+  apply integral_pos_of_integrable_nonneg_nonzero (x := (0 : ℝ)) _ hi
+      (fun x => sq_nonneg _) _
+  · rcases hn with rfl | rfl
+    · simp_rw [parabolicCylinderD_zero_projectArgument]
+      fun_prop
+    · simp_rw [parabolicCylinderD_four_projectArgument]
+      fun_prop
+  · rcases hn with rfl | rfl
+    · norm_num [parabolicCylinderD_zero_projectArgument]
+    · norm_num [parabolicCylinderD_four_projectArgument]
+
+#print axioms target_zero_square_moment
+#print axioms target_square_positive
+theorem target_analytic_inputs (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    Integrable (cylinderTarget n) ∧
+    Integrable (fun x => cylinderTarget n x * cylinderTarget n x) ∧
+    Integrable (fun x : ℝ => x^2 * ‖cylinderTarget n x‖) ∧
+    Integrable (fun x : ℝ => x^2 * ‖cylinderTarget n x * cylinderTarget n x‖) ∧
+    0 < ‖∫ x, cylinderTarget n x * cylinderTarget n x‖ := by
+  have hm (j : ℕ) : Integrable (fun x : ℝ => x^j • cylinderTarget n x) := by
+    rcases hn with rfl | rfl
+    · exact target_zero_moment j
+    · exact target_four_moment j
+  have hq (j : ℕ) : Integrable (fun x : ℝ => x^j *
+      (parabolicCylinderD n (projectCylinderArgument x))^2) := by
+    rcases hn with rfl | rfl
+    · exact target_zero_square_moment j
+    · exact target_four_square_moment j
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩
+  · simpa using hm 0
+  · have hr : Integrable (fun x : ℝ =>
+        (parabolicCylinderD n (projectCylinderArgument x))^2) := by simpa using hq 0
+    have hc : Integrable (fun x : ℝ =>
+        (((parabolicCylinderD n (projectCylinderArgument x))^2 : ℝ) : ℂ)) := hr.ofReal
+    simpa [cylinderTarget, sq] using hc
+  · simpa [norm_smul, Real.norm_eq_abs] using (hm 2).norm
+  · convert hq 2 using 1
+    funext x
+    simp [cylinderTarget, ← Complex.ofReal_mul, ← sq]
+  · have heq : (∫ x, cylinderTarget n x * cylinderTarget n x) =
+        (((∫ x : ℝ, (parabolicCylinderD n (projectCylinderArgument x))^2) : ℝ) : ℂ) := by
+      have ht := integral_complex_ofReal (μ := volume)
+        (f := fun x : ℝ => (parabolicCylinderD n (projectCylinderArgument x))^2)
+      simpa only [cylinderTarget, sq, Complex.ofReal_mul] using ht
+    rw [heq, Complex.norm_real, Real.norm_eq_abs,
+      abs_of_pos (target_square_positive n hn)]
+    exact target_square_positive n hn
+
+#print axioms target_analytic_inputs
+theorem selected_anchored_integrable (k : ℕ) :
+    Integrable (fun y => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 y) ∧
+    Integrable (fun y => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 y) := by
+  exact ⟨(selectedFerrersPreAnchorPair k).h0_integrable.const_mul _,
+    (selectedFerrersPreAnchorPair k).h4_integrable.const_mul _⟩
+
+#print axioms selected_anchored_integrable
 end Q3OverlapProbe

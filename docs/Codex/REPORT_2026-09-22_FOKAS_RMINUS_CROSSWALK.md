@@ -570,3 +570,33 @@ integrals; then source integrability, lambda dictionary and eventual selected
 family chi assembly. hmode remains unproved, htheta reduction PAPER only,
 finite-ground identification and off-line zero-freeness separate and open.
 PX_RH_CLAIM: NOT_MADE.
+
+## Actual target moment and nonzero-square inputs discharged
+
+Candidate SHA256 978b2d4ba64bd49edeb11f79a04a7c8f27193ffcd91ff3fd3cd3a447f03ce8d2.
+target_four_moment proves all natural polynomial moments of D4; square
+moments of D0 and D4 follow from the double Gaussian. D4 squared polynomial
+coefficients are 256pi^4, -768pi^3, 672pi^2, -144pi, 9 in degrees8,6,4,2,0.
+target_square_positive uses continuity, integrability, nonnegativity and
+D0(0)=1 / D4(0)=3 to prove strict positivity of the real square integral.
+
+The combined target_analytic_inputs theorem for n=0 or4 now supplies exactly
+hD, hDD, hM, hQ, hJ of chi_bound_from_mode_error: integrability of the complex
+target, its bilinear square, x^2 times the target norm, x^2 times square norm,
+and positive norm of the complex square integral. The real-to-complex
+integral equality is proved explicitly, not an additional hypothesis.
+selected_anchored_integrable also supplies integrability of both actual
+selected modes after the precommitted center scalars, from the pair fields.
+
+Canonical q3_check exit0; 21 printed dependency lists standard only.
+Independent recovery_review approved final source and hash. Existing dependency
+oleans were used, with the preexisting UnicodeBasic local-change warning;
+style-only linter warnings remain. No fresh-clone or production admission.
+
+Next is the actual eventual selected-family chi assembly using the exact
+lambda dictionary and hmode. Window dictionary pointers already exist:
+selectedFerrersPreAnchorPair_lambda_eq_paperLambda and
+selectedFerrersPreAnchorPair_lambda_eq. No new source integrability premise
+is needed. hmode remains unproved, htheta reduction remains PAPER, and
+finite-ground identification/off-line zero-freeness remain separate.
+PX_RH_CLAIM: NOT_MADE.

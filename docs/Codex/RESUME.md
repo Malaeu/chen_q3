@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 327
-observed_at: '2026-09-22T11:09:02.070290+00:00'
-previous_sha256: 0267652134b37e1507a99264627ca86fd79206ba72ed5c22c6628acaf91e9a59
+revision: 328
+observed_at: '2026-09-22T11:17:05.663553+00:00'
+previous_sha256: 224fcd5bcf716e288130d46d4655aa844ab2746befb3a44b8b28a92336c3aaa0
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Candidate extends exact selected anchored eigenrelations with actual cylinderTarget definitions, target_zero_fixed, target_four_fixed, target_zero_moment, exact D4=16 explicitCCMLimitH+3 D0 decomposition and ccm_integrable. q3_check passes; independent review source/sign/no circularity. No full selected hchi assembly or RH closure.
+target_analytic_inputs discharges hD,hDD,hM,hQ,hJ for actual cylinderTarget n with n=0 or4, without extra assumptions. All polynomial moments of D4 and real D0/D4 squares, plus square integral strict positivity and anchored actual source integrability, kernel-checked. No selected-family hchi assembly, finite-ground identification or RH closure claimed.
 
 ## Next action
-Continue concrete D0/D4 moments and positive square integral, source integrability and exact lambda dictionary, then eventual selected-family hchi from hmode. Both actual targets now have kernel-checked plus-phase self-Fourier and target0 all polynomial moments. hmode remains unproved; htheta bridge paper only; production exact edge UNBOUND.
+Concrete D0/D4 target obligations now checked: self-Fourier, integrability, weighted moments, squared weighted moments, positive bilinear square integral. Anchored actual source integrability also checked. Continue exact lambda dictionary, then eventual selected hchi rate from hmode using chi_bound_from_mode_error. hmode remains open; htheta bridge PAPER only; production exact edge UNBOUND.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
