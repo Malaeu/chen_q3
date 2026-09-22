@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 323
-observed_at: '2026-09-22T10:47:43.616069+00:00'
-previous_sha256: 5375fefb7680375201afcff80b2006f789ee38d28aeb7751d53db66228ec4769
+revision: 324
+observed_at: '2026-09-22T10:50:49.969048+00:00'
+previous_sha256: 98383bcf186567eb8564226c241225eec776936a28bcf53bb6ad27ff7771d05c
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Kernel-checked isolated Fourier candidate SHA256 cc6935a9e2993939fe791465c1f1864bd0bdd2f3d236cb1e699d61e81b15df8d, q3_check exit0; no sorry/new axioms; overlap and overlap_bound depend only on standard propext/Classical.choice/Quot.sound. Independent reviewer approved final exact bytes. Candidate and check log archived under docs/session_protocols, not imported into production. All consumer/source rate and RH boundaries remain open.
+Updated Lean candidate SHA256 b2945659247fc54ffbd45ef5f40c4d48678bbd62204f446387518734fc2aba74, q3_check exit0, independent exact-byte review. Four lemmas print standard axioms only. New quantitative inequality ||1-chi||<=2||f||1 M2/(J lam²) retains overlap floor and family norm bounds explicitly. No uniform rate or source connection claimed.
 
 ## Next action
-Continue isolated Lean candidate docs/session_protocols/fourier_overlap_candidate_20260922.lean: formalize exterior second-moment estimate and lower overlap bound from full-window hmode, then derive eventual hchi. Exact Fourier swap, product integrability, overlap identity, tail norm bound and plus-phase equality already compile; do not redo. Actual Ferrers specialization and production edge binding still needed. Paper htheta implication remains to formalize; hmode remains unproved.
+Continue same isolated Fourier candidate: derive uniform L1 source bound and positive overlap floor from full-window hmode and fixed Gaussian target moments. exterior_moment_bound and chi_bound_of_overlap_floor now compile; do not repeat. Then assemble eventual hchi and exact-source instantiation. hmode itself, compact ODE bridge formalization, and production edge admission still open.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

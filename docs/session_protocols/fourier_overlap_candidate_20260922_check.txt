@@ -2,5 +2,7 @@ lean /tmp/Q3FourierOverlap.lean
 warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
 'Q3OverlapProbe.overlap' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.overlap_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.exterior_moment_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.chi_bound_of_overlap_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

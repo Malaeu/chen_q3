@@ -476,3 +476,22 @@ candidate review tracked separately. Kernel success is not production admission.
 
 Final extended candidate approved by recovery_review on the exact SHA256 above;
 no mathematical changes requested. Scope is isolated helper evidence only.
+
+
+## Lean extension: second moment and conditional chi bound
+
+Candidate updated to SHA256
+b2945659247fc54ffbd45ef5f40c4d48678bbd62204f446387518734fc2aba74.
+`exterior_moment_bound` proves the exterior norm integral is at most the
+second absolute moment divided by lam². `chi_bound_of_overlap_floor`
+combines this with the exact overlap estimate and an explicit J/2 floor:
+
+    ||1−chi|| <= 2 ||f||_1 M2(D) / (J lam²).
+
+q3_check exit0, all four printed theorem dependencies standard only;
+independent recovery_review approved this exact hash. No production import.
+The overlap floor and uniform family L1 bound are STILL INPUTS, not yet
+derived from hmode in Lean. This is a pointwise quantitative inequality;
+it is not a claimed uniform asymptotic if those constants vary freely.
+Next: derive both missing bounds from the full-window C/lam² approximation
+and the fixed target moments, then instantiate actual selected Ferrers modes.

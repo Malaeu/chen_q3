@@ -79,4 +79,48 @@ theorem overlap_bound (f D : ℝ → ℂ) (s : Set ℝ) (χ : ℂ)
     _ = _ := integral_const_mul _ _
 #print axioms overlap
 #print axioms overlap_bound
+
+theorem exterior_moment_bound (D : ℝ → ℂ) (lam : ℝ) (hlam : 0 < lam)
+    (hD : Integrable D) (hM : Integrable (fun x : ℝ => x^2 * ‖D x‖)) :
+    (∫ x in (Icc (-lam) lam)ᶜ, ‖D x‖) ≤ (∫ x : ℝ, x^2 * ‖D x‖) / lam^2 := by
+  have hlam2 : 0 < lam^2 := sq_pos_of_pos hlam
+  apply (le_div_iff₀ hlam2).mpr
+  rw [← integral_mul_const]
+  calc
+    (∫ x in (Icc (-lam) lam)ᶜ, ‖D x‖ * lam^2) ≤
+        ∫ x in (Icc (-lam) lam)ᶜ, x^2 * ‖D x‖ := by
+      apply setIntegral_mono_on (hD.norm.mul_const _).integrableOn hM.integrableOn
+        measurableSet_Icc.compl
+      intro x hx
+      have hx' : x < -lam ∨ lam < x := by simpa only [mem_compl_iff, mem_Icc, not_and_or, not_le] using hx
+      have hs : lam^2 ≤ x^2 := by rcases hx' with h | h <;> nlinarith
+      nlinarith [norm_nonneg (D x)]
+    _ ≤ ∫ x : ℝ, x^2 * ‖D x‖ := by
+      exact setIntegral_le_integral hM (Filter.Eventually.of_forall (fun x => by positivity))
+#print axioms exterior_moment_bound
+
+theorem chi_bound_of_overlap_floor (f D : ℝ → ℂ) (lam J : ℝ) (χ : ℂ)
+    (hlam : 0 < lam) (hJ : 0 < J)
+    (hf : Integrable f) (hD : Integrable D)
+    (hM : Integrable (fun x : ℝ => x^2 * ‖D x‖))
+    (hfixed : F D = D)
+    (heigen : ∀ x ∈ Icc (-lam) lam, F f x = χ * f x)
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (hfloor : J/2 ≤ ‖∫ x, f x * D x‖) :
+    ‖1-χ‖ ≤ (2*(∫ x, ‖f x‖)*(∫ x : ℝ, x^2*‖D x‖)/J)/lam^2 := by
+  have hb := overlap_bound f D (Icc (-lam) lam) χ measurableSet_Icc hf hD hfixed heigen hsupp
+  have ht := exterior_moment_bound D lam hlam hD hM
+  have hL : 0 ≤ ∫ x, ‖f x‖ := integral_nonneg (fun x => norm_nonneg _)
+  have ha := mul_le_mul_of_nonneg_left hfloor (norm_nonneg (1-χ))
+  have hc := mul_le_mul_of_nonneg_left ht hL
+  have hx : ‖1-χ‖*(J/2) ≤ (∫ x, ‖f x‖)*((∫ x : ℝ, x^2*‖D x‖)/lam^2) :=
+    ha.trans (hb.trans hc)
+  rw [← mul_div_assoc (∫ x, ‖f x‖) (∫ x : ℝ, x^2*‖D x‖) (lam^2)] at hx
+  have hy := (le_div_iff₀ (sq_pos_of_pos hlam)).mp hx
+  apply (le_div_iff₀ (sq_pos_of_pos hlam)).mpr
+  apply (le_div_iff₀ hJ).mpr
+  nlinarith
+#print axioms chi_bound_of_overlap_floor
 end Q3OverlapProbe
+
+
