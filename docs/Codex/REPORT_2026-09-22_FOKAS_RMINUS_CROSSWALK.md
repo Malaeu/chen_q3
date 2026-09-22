@@ -192,9 +192,43 @@ Read at HEAD 6abd36e1cc1bc41af2016e785340ce46e9f2e58d; not rebuilt here:
   profile. Its derivative bound cannot be substituted for the actual
   selected Ferrers packet without a derivative-error transfer theorem.
 
-Next exact obstruction: for the SAME scaled selected Ferrers packet, obtain
+Optional Euler-remainder branch obstruction: for the SAME scaled selected Ferrers packet, obtain
 A_m and D_m estimates (or a sharper signed substitute) from its mode equations,
 then bound E_mN/Z. Pointwise convergence or C⁰ mode rates cannot silently be
 differentiated. Compare resulting bulk row with the exact Goal058 consumer
 before any claim of ground tracking. This strengthens the available paper
 estimate; it does not close any production node.
+
+
+## Stronger existing assembly found on continuation (corrects next-step choice)
+
+Source inspection at c2781655 found a stronger supplier than the first-order
+receiver cited above. The independent derivative budget is NOT a mandatory
+new premise of the existing projection-tail route:
+
+- `G6N1SelectedFerrersW5RateAssembly.lean:5640`,
+  `selectedProjectionTailDecay_of_selectedFerrersW5RateLedger`, assumes
+  hFamily plus hmode, hχ and hθ. It internally derives the required budget,
+  inverse source scale and bandwidth limit. No separate hD/hScale/hBandwidth
+  arguments remain. Quantitative export at line 6016 permits a growing
+  Fourier-decay budget O(m^(1/4) sqrt(log(m)+2)); uniform boundedness is not
+  necessary for that receiver.
+- `G6N1SelectedFerrersTrialNormalizerClosure.lean:1209`,
+  `selectedTrialNormalizerBounded_of_selectedFerrersW5RateLedger`, supplies
+  the bounded inverse projected norm under the same inputs and family match.
+  Its subsequent normalized Galerkin residual theorem uses this together
+  with projection-tail decay. This residual is a projection error, NOT
+  automatically (K−aI)q.
+- `G6N1SelectedFerrersN2CompactDecayAssembly.lean:1110`,
+  `selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates`,
+  already states locally uniform convergence on centeredCriticalStrip for
+  its explicitly constructed selectedFerrersCofinalShell, conditional on
+  hmode/hχ/hθ. It does not assert this family consists of finite ground states
+  or is zero-free off the critical line.
+
+Thus the next efficient route audit is to locate actual suppliers for the
+three shared rates and the exact production-family identification. Do not
+commission a new uniform second-derivative theorem merely to reproduce a
+projection-tail conclusion already available conditionally. The Euler/Fokas
+row estimate remains a valid optional mechanism, not an additional required
+axiom of Goal058. These files were read, not rebuilt or admitted in this turn.
