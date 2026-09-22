@@ -447,3 +447,32 @@ lemma with this explicit moment budget, followed by same-source instantiation.
 
 Independent recovery_review checked the Fourier-overlap identity, moment constants,
 phase negative control and full-window eigenrelation requirement; PAPER approval.
+
+
+## Lean candidate: exact overlap identity and tail bound
+
+Isolated candidate retained as research evidence, NOT imported into production:
+`docs/session_protocols/fourier_overlap_candidate_20260922.lean`.
+SHA256 cc6935a9e2993939fe791465c1f1864bd0bdd2f3d236cb1e699d61e81b15df8d.
+Canonical narrow check `scripts/q3_check.sh /tmp/Q3FourierOverlap.lean`
+finished exit0; archived exact check log beside candidate. Retained bytes
+match the checked temporary file. No sorry or new axiom; printed dependencies
+for overlap and overlap_bound are propext, Classical.choice, Quot.sound.
+
+`F_eq_inverse` fixes the plus phase by kernel-checked equality with Mathlib's
+inverse Fourier transform. `swap` supplies actual Fourier reciprocity;
+`product_integrable` discharges the integral splitting hypothesis. `overlap`
+proves (1-chi) integral(fD)=exterior integral(Ff D) for measurable window,
+integrable f,D, support, full-window eigenrelation and self-Fourier D.
+`overlap_bound` proves
+
+    |1-chi| |integral(fD)| <= ||f||_1 integral_outside |D|.
+
+No Fubini identity or product integrability is smuggled in as an assumption.
+Actual Ferrers instantiation, profile self-Fourier transport, moment estimates,
+overlap lower bound, and the eventual hchi theorem remain to formalize.
+Independent reviewer checked the exact identity candidate; final extended
+candidate review tracked separately. Kernel success is not production admission.
+
+Final extended candidate approved by recovery_review on the exact SHA256 above;
+no mathematical changes requested. Scope is isolated helper evidence only.

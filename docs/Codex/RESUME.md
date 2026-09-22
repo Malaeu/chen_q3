@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 322
-observed_at: '2026-09-22T10:42:48.695417+00:00'
-previous_sha256: 1e83ebfb3659aa5964370f3c39e4fe6bacdcfe50c35627fa087bdae9fe1e0754
+revision: 323
+observed_at: '2026-09-22T10:47:43.616069+00:00'
+previous_sha256: 5375fefb7680375201afcff80b2006f789ee38d28aeb7751d53db66228ec4769
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-New Fourier-overlap PAPER identity (1-chi) integral(fD)=exterior integral(Ff D) gives |1-chi|<=2(L+2C)M2/(J0 lambda²), with explicit denominator threshold and Gaussian moments. Independent recovery_review approved constants/phase/full-window condition. Combined with compact ODE test, hmode supplies both other W5/N2 rate inputs at PAPER scope. Neither hmode nor finite-ground matching has been proved. Report contains complete hypotheses and negative controls.
+Kernel-checked isolated Fourier candidate SHA256 cc6935a9e2993939fe791465c1f1864bd0bdd2f3d236cb1e699d61e81b15df8d, q3_check exit0; no sorry/new axioms; overlap and overlap_bound depend only on standard propext/Classical.choice/Quot.sound. Independent reviewer approved final exact bytes. Candidate and check log archived under docs/session_protocols, not imported into production. All consumer/source rate and RH boundaries remain open.
 
 ## Next action
-Formalize or source-locked review the generic Fourier-overlap moment lemma from the current report, then instantiate on same selected Ferrers modes. Full-window hmode now implies hchi by Fourier reciprocity and htheta by compact ODE testing at PAPER scope. Exact eigenrelations are in selectedFerrersPreAnchorPair_spec; D4=16 explicitCCMLimitH+3 Gaussian. Preserve phase via evenness if Fourier convention differs. Audit hmode donor circularity; raw Satz9 estimate remains open. Production node/consumer edge UNBOUND; no Lean admission yet.
+Continue isolated Lean candidate docs/session_protocols/fourier_overlap_candidate_20260922.lean: formalize exterior second-moment estimate and lower overlap bound from full-window hmode, then derive eventual hchi. Exact Fourier swap, product integrability, overlap identity, tail norm bound and plus-phase equality already compile; do not redo. Actual Ferrers specialization and production edge binding still needed. Paper htheta implication remains to formalize; hmode remains unproved.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
