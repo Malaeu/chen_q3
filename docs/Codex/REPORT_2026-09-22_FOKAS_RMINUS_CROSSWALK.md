@@ -1120,3 +1120,101 @@ admission. PX_RH_CLAIM: NOT_MADE.
 Final independent source audit additionally approved exact carrier equality,
 including both factor2 identities, synthesis bijectivity, ascending order,
 admissible dimensions and physical shift/scaling. PAPER eigenvalue match closed.
+## PAPER assembly: actual selected modes from corrected quasimodes
+
+### Actual Ferrers solution belongs to the natural operator domain
+
+Read D0Mode4FerrersRegularEvenProlateSolution.lean:46-85: the actual real series
+s is continuous on [-1,1], C2 on (-1,1), even, solves
+ -(p*s')'+G*z^2*s=E*s, p=1-z^2, E=Lambda+G,
+and has zero limiting flux p*s' at both endpoints. Since s is bounded, the
+flux derivative F'=(G*z^2-E)*s is bounded by some M at this FIXED parameter.
+Integrating F' to the endpoint using its prescribed zero limit gives
+ |F(z)|<=M*(1-z) near 1, hence |s'(z)|<=M/(1+z).
+At -1 the analogous bound is M/(1-z). Combined with interior regularity,
+s is H1(-1,1) and therefore in the natural form domain. No uniform-in-m bound
+on M is claimed or needed for domain membership. Integration by parts against
+polynomials has zero boundary term; the previously proved form core extends
+ q_G(s,v)=E*<s,v>
+to every form-domain test v. This is exactly the associated operator-domain
+criterion, so s is a natural eigenfunction at the actual project carrier.
+
+The even eigenspace is one-dimensional: every weak eigenfunction is C2 on
+interior compact intervals by the regular one-dimensional equation; its even
+representative has derivative zero at the ordinary point 0. Two such solutions
+are proportional by the initial-value uniqueness theorem at 0. A solution
+with value zero at 0 would have both initial data zero. This does not depend
+on hmode or on an asymptotic eigenfunction theorem.
+
+### Projection and Fourier upgrade without assuming hchi
+
+Fix n=0 or4, p_index=n/2, I_m=[-sqrt(m),sqrt(m)]. Let u_m denote the smooth
+corrected quasimode constructed above, restricted to I_m, and let P_m be the
+natural even spectral projection onto index p_index. Its smoothness and zero
+weighted endpoint flux put u_m in the operator domain as well. The proved
+PAPER carrier limit and >6*pi even-sector isolation imply
+ w_m=P_m u_m,  ||w_m-u_m||_L2(I_m)<=A_n/(6*pi*m^2).
+The residual uses center a_n=e_n+beta_n/m. Norm(u_m) tends to the positive
+norm of D_n, so w_m is nonzero eventually. Rank one and the preceding actual
+source domain argument identify w_m as a scalar multiple of the selected
+real Ferrers mode. Choose real representatives; no conjugation is hidden.
+
+Source D0Mode4FerrersPhysicalFourierNonzeroScalar.lean:206 gives that actual
+mode a nonzero real finite-Fourier eigenvalue chi_m. Scalar multiplication
+preserves this relation for w_m. Write F for the PLUS Fourier transform and
+extend w_m and u_m by zero outside I_m. D_n is whole-line self-Fourier for
+n=0,4. Set J_m=integral_I w_m*D_n. Since
+ ||w_m-D_n||_L2(I_m)=O(1/m)
+and Gaussian tails vanish, J_m=||D_n||_L2(R)^2+O(1/m), bounded away from zero.
+Fubini, bilinear symmetry of the Fourier kernel, and F D_n=D_n give EXACTLY
+
+ (chi_m-1)*J_m = -integral_I w_m*F(D_n*1_(R\I_m)).
+
+Therefore
+ |chi_m-1| <= ||w_m||_L1(I_m)*||D_n*1_(R\I_m)||_L1 / |J_m|.
+The first norm is O(m^(1/4)) by Cauchy-Schwarz and bounded L2 norm; the second
+is a fixed Gaussian-polynomial tail. Thus chi_m->1 and |chi_m|>=1/2 eventually,
+without assuming the hchi or htheta rates. Compact supports and Gaussian L1
+bounds justify Fubini. This argument needs the actual eigenrelation, not an
+incorrect claim that the quasimode itself is a Fourier eigenfunction.
+
+On I_m, the exact decomposition is
+ w_m-D_n = chi_m^(-1)*( F(w_m-u_m) + (F u_m-D_n)
+                                  +(1-chi_m)*D_n ).
+The projection error contributes at most
+ sqrt(2*sqrt(m))*||w_m-u_m||_2=O(m^(-7/4)) uniformly in Fourier argument.
+For the explicit fixed correction B_n(x)=exp(-pi*x^2)*Q_n(sqrt(pi)*x),
+ u_m=(D_n+B_n/(pi*m))*1_I,
+so ||F u_m-D_n||_infinity is bounded by
+ ||B_n||_1/(pi*m)+||D_n*1_out||_1+||B_n*1_out||_1/(pi*m).
+These are O(1/m). D_n is bounded, and the chi defect above is smaller than
+any inverse power of m. Consequently
+ sup_{x in I_m}|w_m(x)-D_n(x)|<=C_n/m eventually.
+
+### Exact center normalization
+
+Let d_n=D_n(0)=1 or3. The just-proved uniform estimate implies
+ |w_m(0)-d_n|<=C_n/m and |w_m(0)|>=d_n/2 eventually.
+If epsilon_m denotes that uniform error, then
+ sup_I |d_n*w_m/w_m(0)-D_n|
+ <=2*epsilon_m*(1+||D_n||_infinity/d_n).
+Because w_m is a nonzero scalar multiple of the selected mode, its normalized
+ratio w_m(x)/w_m(0) equals the selected mode's ratio. The precommitted anchors
+are precisely 1/h0(0) and 3/h4(0), as G6N1CenterAnchorScalarLock.lean:85-108
+states. Normalization is not fitted to the observed error.
+
+With m=k+2 and lambda_k^2=m, this is the exact eventual full-window hmode
+statement consumed by the previously Lean-checked W5/N2 candidate. The two
+constants may differ; both can be enlarged to be nonnegative. All preceding
+spectral, domain, core and quasimode steps are part of the dependency chain;
+none is replaced by an hmode, hchi or htheta assumption.
+
+Status: PAPER assembly, awaiting formalization of its new analytic steps and
+source-locked Proshka review. The isolated Lean implication hmode=>W5/N2 does
+not certify this PAPER supplier. Finite CCM ground matching/cofinal tracking
+and off-line zero-freeness remain distinct. PX_RH_CLAIM: NOT_MADE.
+
+Independent recovery_review checked the actual source fields, domain argument,
+real projection, bilinear Fourier identity/sign, loss exponents and exact center
+normalization. Verdict: coherent PAPER hmode proof chain given the preceding
+reviewed core/spectral arguments; no circularity found. Not Lean certification.

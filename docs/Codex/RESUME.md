@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 338
-observed_at: '2026-09-22T12:17:02.167018+00:00'
-previous_sha256: e2a634082f408ee582e38b039bef9ff2494e45464a7eec34a5b4e2a1cccbd9d6
+revision: 339
+observed_at: '2026-09-22T12:19:33.505166+00:00'
+previous_sha256: ea9329229916e941a4de98569fb59dfe9da6ce73f36fbddf502d46ae69e9e98c
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Independent source-locked reviewer approved PAPER equality lambda_p(q_G)=mode4ClassicalEvenEigenvalue(G,p)+G and physical division by m, using existing factor2 mass/energy identities and correct ascending/admissible finite infimum. Combined with PAPER compactness/minmax, actual carrier has fixed-index oscillator limit and eventual even isolation. No hmode or finite CCM ground proof yet.
+Actual source continuity/ODE/zero flux imply H1 and operator domain; projection is scalar selected mode. Bilinear Fourier identity gives chi->1 from Gaussian tail without assuming hchi. Explicit correction avoids m^1/4 loss and produces exact hmode after precommitted center normalization. Independent reviewer found no sign/scaling/circularity defect, conditional on preceding PAPER spectral/core proofs. PX_RH_CLAIM NOT_MADE.
 
 ## Next action
-PAPER endpoint clipping proves even polynomial form core; exact finite Gram/energy plus Ritz inf identify actual classical carrier with natural spectrum. Next verify selected Ferrers eigenfunction operator-domain membership and rank-one projection normalization before spending residual O(m^-2). Core/Ritz and spectral-limit steps still require Lean formalization; production edge unbound.
+PAPER hmode chain assembled and independently reviewed: actual Ferrers operator-domain membership, rank-one even projection, residual O(m^-2), Fourier overlap tail identity for chi and center normalization give exact full-window O(1/m). Next prepare source-locked Proshka challenge of entire new analytic supplier, then formalize weakest substantive analytic steps. New PAPER chain is not admitted Lean; finite CCM ground and zero-free remain open.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
