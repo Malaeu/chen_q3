@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 336
-observed_at: '2026-09-22T12:11:26.891394+00:00'
-previous_sha256: e3bee38e33bc79a9c834b88c067e6a76b238f44868fe0f62a00242fd4c8b71d2
+revision: 337
+observed_at: '2026-09-22T12:14:28.542601+00:00'
+previous_sha256: 19b12c4c2a042c0d6534ed745f3d16d5f2bf1d504ce8180c2cf743e236823f2c
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Primary MS1954 p243 rendered and read; raw gamma^-3/4 with gamma^1/4 prefactor matches normalized gamma^-1. Exact Fraction checker derives Q0,Q4 and residual R/(pi*m^2), beta0=-3/4,beta4=-43/4, Q(0)=0. Gaussian L2 residual bound and weighted endpoint flux confirmed independently as PAPER evidence. Prior isolated Lean hmode=>hchi,htheta=>W5/N2 remains conditional.
+Source audit: finite-limit carrier and monotonicity are proved; strict fixed-m ordering below20 does not provide cofinal scaled gap. Independent reviewer approved abstract spectral convergence proof with explicit natural/Legendre domain qualification and even-only >6*pi gap. Not Lean and not yet a theorem about project-selected carrier. hmode and finite CCM ground remain open.
 
 ## Next action
-Exact first quasimode correction for modes0/4 gives full-window L2 residual O(m^-2), independently PAPER-reviewed. Audit the analytic prolate self-adjoint domain and uniform scaled spectral isolation/selected-branch match; keep explicit correction separate in Fourier upgrade to avoid sqrt(lambda) loss. hmode remains unproved. No production edge or finite CCM ground identification.
+PAPER min-max/local compactness gives natural even prolate E_p(m)->2*pi*(4p+1) independently of hmode; first four levels imply >6*pi even-sector isolation of corrected quasimodes. Next prove Legendre form-core density and identify finite Galerkin infimum with natural spectrum using existing finite L2/energy identities, preserving factor2,+G,/m. Natural-domain and selected-family match still open.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

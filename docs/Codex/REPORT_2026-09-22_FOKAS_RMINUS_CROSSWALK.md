@@ -957,3 +957,86 @@ Independent recovery_review approved the exact algebra and residual bound,
 and explicitly retained operator-domain, spectral-branch, normalization and
 Fourier-defect obligations. The quasimode itself is not a Fourier eigenfunction.
 Checker SHA256: fa623ef35c66cd778b35400318bcdde502941c9b5b9090f64be09a7aebc8c1cf.
+## Spectral audit and an independent form-convergence mechanism
+
+Current source audit at 5cfe4970:
+- D0Mode4ClassicalCarrierFromFiniteLimit.lean:571 defines the carrier as the
+  infimum of finite, ordered, fixed-index DLMF eigenvalues; :612 proves their
+  fixed-G convergence, :795 proves monotonicity in the even index.
+- D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean:628 proves strict ordering below
+  20 with the explicit tail separator. This is not a cofinal quantitative gap.
+- D0Mode4ClassicalCarrierHeadUpper.lean:135 proves index2<20; its docstring
+  explicitly leaves the lower/cofinal separator analytic.
+- D0Mode4FiniteEvenLegendreQuadraticForm.lean:57 and :703 prove exact finite
+  L2 and differential-energy identities (both have the factor 2). They do not
+  prove form-core density or the infinite self-adjoint spectral correspondence.
+
+Required scaled eigenvalues are
+ E_p(m)=(mode4ClassicalEvenEigenvalue(G_m,p)+G_m)/m,
+ G_m=4*pi^2*m^2, p=0,2 for degrees n=0,4.
+Strict ordering for every m does NOT imply a uniform positive scaled gap.
+Negative control: an ordered pair 0,1/m is simple at every m and its gap vanishes.
+
+### PAPER argument independent of hmode and htheta
+
+On the EVEN sector of L2(I_m), I_m=(-sqrt(m),sqrt(m)), consider the natural
+closed form
+ q_m[u]=integral ((1-x^2/m)*|u'|^2+4*pi^2*x^2*|u|^2).
+The intended domain is the maximal locally-H1 finite-energy domain. For the
+spectral argument it must be identified with the closed Legendre form domain.
+Under unitary dilation x=sqrt(m)*t the form is
+ m^(-1)*integral(1-t^2)|v'|^2 + 4*pi^2*m*integral t^2|v|^2.
+The Legendre kinetic operator has discrete eigenvalues ell(ell+1)/m;
+the potential is bounded at fixed m, preserving compact resolvent.
+This domain identification is an explicit outstanding project bridge, not a
+consequence of merely writing the differential expression. The following
+argument concerns this natural realization, subject to that identification.
+
+Let E_p^nat(m) denote its ordered even eigenvalues. The limit form is the
+whole-line even harmonic oscillator q_inf[u]=integral |u'|^2+4*pi^2*x^2|u|^2,
+with eigenvalues e_p=2*pi*(4*p+1).
+
+Upper bound: take the span of the first p+1 even Hermite functions, approximate
+in oscillator form norm by smooth even compactly supported functions (even
+cutoffs), and use this finite-dimensional trial space for all large m.
+On its fixed support the kinetic coefficients converge uniformly to 1.
+The Rayleigh quotients converge uniformly on its unit sphere. First taking
+m to infinity, then removing the cutoff, yields limsup E_p^nat(m)<=e_p.
+
+Lower bound: choose a sequence realizing liminf E_p^nat(m), which is finite
+by the upper bound. Its first p+1 normalized eigenvectors have uniformly
+bounded energies M. For any fixed R and m>=2R^2,
+ integral_{|x|>R}|u|^2 <= M/(4*pi^2*R^2),
+ integral_{[-R,R]}|u'|^2 <= 2*M.
+Rellich compactness on fixed intervals and a joint diagonal subsequence give
+local strong L2 convergence of all p+1 eigenvectors. The tail bound upgrades
+this to strong whole-line L2 convergence of their zero extensions, retaining
+orthonormality and parity. Zero extension is NOT claimed to lie in global H1.
+For each fixed linear combination of this finite family, weak derivative
+lower semicontinuity on [-R,R], coefficient convergence there and R->infinity
+give
+ q_inf[sum c_j*u_j] <= liminf E_p^nat(m) * sum |c_j|^2.
+The oscillator min-max principle now yields e_p<=liminf E_p^nat(m).
+Thus E_p^nat(m)->2*pi*(4*p+1), without hmode, hchi or htheta.
+
+### The finite spectral information actually needed
+
+Only p=0,1,2,3 is needed. Eventually all four errors are <pi and
+|beta0|/m,|beta4|/m<pi. For the quasimode centers
+ a_n=e_(n/2)+beta_n/m, n=0,4,
+all OTHER even eigenvalues have distance >6*pi: adjacent limiting levels
+are 8*pi apart, two errors cost less than 2*pi, and ordering controls all
+more distant indices. This bound is for the even sector ONLY; odd levels
+intervene in the full spectrum. Combined with the corrected residual, it
+supplies the previously missing abstract even spectral isolation mechanism.
+
+Independent recovery_review approved the min-max/compactness reasoning and
+the >6*pi calculation, retaining the domain qualification and exact project
+correspondence. This is PAPER, not Lean or production admission.
+
+Next exact joint: use the finite Legendre L2/energy identities to prove
+form-core density and identify the finite Galerkin infimum with the natural
+form's ordered spectrum, preserving factor2, shift+G and division by m.
+The hmode proof cannot spend this argument on the selected Ferrers family
+until that correspondence is proved. Finite CCM ground is still a separate
+object. PX_RH_CLAIM: NOT_MADE.
