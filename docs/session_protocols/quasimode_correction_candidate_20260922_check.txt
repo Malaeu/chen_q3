@@ -17,5 +17,22 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'Q3QuasimodeCorrection.residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3QuasimodeCorrection.residual_four' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3QuasimodeCorrection.center_corrections' depends on axioms: [propext, Classical.choice, Quot.sound]
+/tmp/Q3QuasimodeCorrection.lean:53:20: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:53:64: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Q3QuasimodeCorrection.gaussianPoly_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.oscillator_conjugation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.perturbation_conjugation' depends on axioms: [propext, Classical.choice, Quot.sound]
+/tmp/Q3QuasimodeCorrection.lean:94:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:102:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Q3QuasimodeCorrection.corrected_residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.corrected_residual_four' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3QuasimodeCorrection.lean
 q3_check ok

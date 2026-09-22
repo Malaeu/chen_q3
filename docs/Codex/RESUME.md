@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 341
-observed_at: '2026-09-22T12:26:54.562687+00:00'
-previous_sha256: a42c97bc92e1a38a3e25c4f530f6202e345c989bef9ad9a4ceb26b9d0c709e60
+revision: 342
+observed_at: '2026-09-22T12:30:06.856331+00:00'
+previous_sha256: 8e099ce3f64341af92f264749f0fca7fc10512b1dfb74f74aef4280935b3a65b
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-q3_check exit0 for Q3QuasimodeCorrection SHA7a00745fa1a0ee6f9e5e8dcbc90f8951a0b2ada5268052f2d8cc7a18132221e0. Five real polynomial identities use standard axioms only. This kernel certifies algebra, not full differential residual/domain/spectral/core/hmode PAPER chain. Existing full request remains frozen and unsent.
+q3_check exit0 on SHAa1bad29bb2ee98a33c1734732f2bf87b15b09c5f6196f8b17e84f699c93a4838. gaussianPoly_hasDerivAt, oscillator_conjugation, perturbation_conjugation, corrected_residual_zero/four all standard axioms. Real derivatives are linked to polynomials; physical scaling and norm bound not yet claimed.
 
 ## Next action
-New isolated Lean quasimode polynomial identities checked (Q0,Q4,R0,R4,centers). Next formalize Gaussian differential conjugation connecting them to physical residual, then L2 bound. Prepared Proshka packet still unsent: only historical phase repair routes found, no valid generic transition used. Preserve canonical old phase rather than fake binding.
+Lean now proves exact dimensionless differential quasimode residual eps^2*GaussianR for both modes, using proved first/second Gaussian derivatives. Next formalize physical scaling t=sqrt(pi)x and eps=1/(pi*m), then full-window L2 Gaussian bound. PAPER spectral/core/hmode remain not formalized; Proshka packet frozen unsent pending route reconciliation.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

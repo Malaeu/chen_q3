@@ -1262,3 +1262,24 @@ this new packet. No generic phase transition was established by this bounded
 inspection, and no policy/state rewrite or new send occurred. Continue with
 substantive isolated formalization while preserving the frozen review packet.
 PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked Gaussian conjugation and differential residual
+
+Candidate SHA256 a1bad29bb2ee98a33c1734732f2bf87b15b09c5f6196f8b17e84f699c93a4838.
+GaussianPoly(P,t)=exp(-t^2)*P(t); its actual derivative is GaussianPoly(P'-2XP).
+oscillator_conjugation proves (-d_t^2+4t^2-(4n+2))GaussianPoly(P)=GaussianPoly(A_n P).
+perturbation_conjugation proves d_t(t^2*d_t GaussianPoly(P))=GaussianPoly(TP).
+Both are full real derivative identities, not assumed derivative dictionaries.
+
+corrected_residual_zero/four then prove for every real eps,t that
+ [(-d_t^2+4t^2-(4n+2))+eps*d_t(t^2*d_t)-eps*beta_n]
+   GaussianPoly(P_n+eps*Q_n,t) = eps^2*GaussianPoly(R_n,t),
+with beta0=-3/4,beta4=-43/4. These are exact differential residuals in the
+dimensionless coordinate. Canonical q3_check exit0, standard axioms only;
+independent source/hash review approved signs, constants and actual calculus.
+Current dependency oleans and preexisting UnicodeBasic/style warnings retained.
+
+Physical rescaling t=sqrt(pi)*x,eps=1/(pi*m), including the factor
+pi*eps^2=1/(pi*m^2), is NOT yet a Lean theorem here. Nor is the full-window
+L2 bound, spectral projection/core chain or actual hmode. The prepared Proshka
+packet is intentionally unchanged and still unsent. PX_RH_CLAIM NOT_MADE.
