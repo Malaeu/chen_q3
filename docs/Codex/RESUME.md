@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 347
-observed_at: '2026-09-22T12:50:07.591444+00:00'
-previous_sha256: 37edacb9d3f373668c69cd8dcbd01c3b17030f64868b3d60f8a9092d6467a1b1
+revision: 348
+observed_at: '2026-09-22T12:52:39.065656+00:00'
+previous_sha256: 3c2ca053316339d0d0c90f855eab0525f9b069e147872351fdef53665f0efacf
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Endpoint candidate SHA7da3a4ec3bedc80941a20be03f59796fa63f48299a7dd27699145ddde3c7a254, q3_check exit0. Actual flux has continuous extension on Icc with zero values; its actual derivative is (G*x^2-(Lambda+G))*s. Integration by parts yields integral(D*phi+F*phi_prime)=0 for C1 tests. Source and derivative squares already integrable. No full form-domain/operator-domain or hmode claim.
+Endpoint candidate SHA95adc76b3956df02f121bdddd5bec054ca785dc0a23b48a50e94e90b6a8fbb10, q3_check exit0. Actual derivative IntervalIntegrable established; self-test integration by parts uses continuous actual source/flux and their integrable interior derivatives. Zero flux removes endpoints. No operator-domain, minmax, spectral gap or hmode admission.
 
 ## Next action
-Lean now proves actual Ferrers natural weak identity for arbitrary real globally C1 tests, with no vanishing-test endpoint restriction. Next extend this identity to the natural closed-form domain by density/continuity and connect operator-domain/spectral projection; form core and spectral gap remain PAPER. Proshka packet remains unsent.
+Actual Ferrers source now has Lean-checked energy identity integral[(1-x^2)*s_prime^2+G*x^2*s^2-(Lambda+G)*s^2]=0. Next formalize natural weighted form core/closed-domain connection needed by minmax and spectral projection. Existing finite polynomial energy identity uses identical differential expression; equality of completions is not proved. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

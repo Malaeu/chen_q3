@@ -1380,3 +1380,22 @@ elimination. Existing dependency oleans and nonfatal warnings remain. Extension
 to the complete natural closed-form domain and operator-domain membership
 remain open; no hmode, ground tracking, production admission or Proshka send.
 PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked actual-source energy identity
+
+Endpoint candidate SHA256 95adc76b3956df02f121bdddd5bec054ca785dc0a23b48a50e94e90b6a8fbb10.
+actual_ferrers_derivative_intervalIntegrable establishes integrability of the
+actual first derivative. actual_ferrers_energy_identity tests the original
+source ODE against the source itself, using continuous source and flux and
+integrable interior derivatives in interval integration by parts. It proves
+integral[(1-x^2)*s_prime^2+G*x^2*s^2-(Lambda+G)*s^2]=0. Endpoint flux vanishes;
+no unproved endpoint derivative or zero boundary value of s is assumed.
+Integrability is genuine, not a default-value artifact of the total integral.
+
+Canonical q3_check exit0; standard axioms only. Independent exact-hash review
+approved integrability, actual derivative, kinetic sign and eigenvalue shift.
+Existing dependency oleans/nonfatal warnings remain. The differential energy
+expression matches D0Mode4FiniteEvenLegendreQuadraticForm.lean's finite-source
+energy expression, but equality of the natural completion with the Legendre
+form closure remains PAPER. No minmax, operator-domain or ground conclusion,
+production admission or Proshka send. PX_RH_CLAIM NOT_MADE.

@@ -180,4 +180,48 @@ theorem actual_ferrers_natural_weak_identity {m K : ℕ} {Λ : ℝ}
     (fun x _ => hd x) hi (hc'.intervalIntegrable _ _)
   simpa [actualFlux] using h
 #print axioms actual_ferrers_natural_weak_identity
+
+
+theorem actual_ferrers_derivative_intervalIntegrable {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ) :
+    IntervalIntegrable (mode4FerrersFirstDerivativeSeries S.coefficients) volume (-1:ℝ) 1 := by
+  obtain ⟨M,hM,hb⟩ := actual_ferrers_derivative_bounded S
+  have hc : ContinuousOn (mode4FerrersFirstDerivativeSeries S.coefficients) (Ioo (-1:ℝ) 1) :=
+    fun x hx => (S.firstDerivativeSeries_hasDerivAt_secondDerivativeSeries x hx).continuousAt.continuousWithinAt
+  have hi : IntegrableOn (mode4FerrersFirstDerivativeSeries S.coefficients) (Ioo (-1:ℝ) 1) := by
+    apply IntegrableOn.of_bound (by simp) (hc.aestronglyMeasurable measurableSet_Ioo) M
+    filter_upwards [self_mem_ae_restrict measurableSet_Ioo] with x hx
+    exact hb x hx
+  rw [intervalIntegrable_iff_integrableOn_Icc_of_le (by norm_num : (-1:ℝ) ≤ 1)]
+  rw [integrableOn_Icc_iff_integrableOn_Ioo]
+  exact hi
+
+theorem actual_ferrers_energy_identity {m K : ℕ} {Λ : ℝ}
+    (S : Mode4FerrersRegularEvenProlateSolution m K Λ) :
+    (∫ x in (-1:ℝ)..1,
+      (1-x^2)*(mode4FerrersFirstDerivativeSeries S.coefficients x)^2 +
+      mode4JacobiG m*x^2*(mode4FerrersSeries S.coefficients x)^2 -
+      (Λ+mode4JacobiG m)*(mode4FerrersSeries S.coefficients x)^2) = 0 := by
+  have hD : ContinuousOn (actualFluxDerivative S) (Icc (-1:ℝ) 1) :=
+    (by fun_prop : Continuous (fun x : ℝ => mode4JacobiG m*x^2-(Λ+mode4JacobiG m))).continuousOn.mul S.continuousOn_closed
+  have hu : ContinuousOn (actualFlux S) (uIcc (-1:ℝ) 1) := by
+    simpa [uIcc_of_le (by norm_num : (-1:ℝ) ≤ 1)] using actual_flux_continuousOn S
+  have hv : ContinuousOn (mode4FerrersSeries S.coefficients) (uIcc (-1:ℝ) 1) := by
+    simpa [uIcc_of_le (by norm_num : (-1:ℝ) ≤ 1)] using S.continuousOn_closed
+  have hi : IntervalIntegrable (actualFluxDerivative S) volume (-1:ℝ) 1 := by
+    apply ContinuousOn.intervalIntegrable
+    simpa [uIcc_of_le (by norm_num : (-1:ℝ) ≤ 1)] using hD
+  have h := intervalIntegral.integral_deriv_mul_eq_sub_of_hasDerivAt hu hv
+    (fun x hx => actual_flux_hasDerivAt S (by simpa using hx))
+    (fun x hx => S.ferrersSeries_hasDerivAt_firstDerivativeSeries x (by simpa using hx))
+    hi (actual_ferrers_derivative_intervalIntegrable S)
+  have hz : (∫ x in (-1:ℝ)..1, actualFluxDerivative S x * mode4FerrersSeries S.coefficients x +
+      actualFlux S x * mode4FerrersFirstDerivativeSeries S.coefficients x) = 0 := by
+    simpa [actualFlux] using h
+  rw [← hz]
+  apply intervalIntegral.integral_congr
+  intro x hx
+  dsimp [actualFlux,actualFluxDerivative]
+  ring
+#print axioms actual_ferrers_energy_identity
 end Q3EndpointFlux
