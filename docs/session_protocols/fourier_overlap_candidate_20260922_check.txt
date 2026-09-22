@@ -8,5 +8,7 @@ warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.
 'Q3OverlapProbe.source_l1_uniform' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.overlap_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.chi_bound_from_mode_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.F_eq_finiteFourierAction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.selected_anchored_eigen' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

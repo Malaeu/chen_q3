@@ -524,3 +524,24 @@ The input hmode remains unproved; no claim of cofinal ground tracking.
 
 Independent recovery_review recompiled and approved final ef36d9bf bytes;
 no circular chi assumption; actual-source and production boundaries retained.
+
+
+## Lean exact selected-mode Fourier connection
+
+Candidate SHA256
+344f7eacf946cf20cfc003880d9c6e8e123e0ca2d812c590c8dac5ea86c7d0e1.
+`F_eq_finiteFourierAction` expands the actual project kernel, fixes its plus
+phase and converts whole-line to window integral using support.
+`scaled_finite_eigen` proves scalar transport. `selected_anchored_eigen`
+instantiates the actual stored selected pair and precommitted center anchors:
+mode0 with chi0, mode4 with chi2. Full-window eigenrelations come from
+selectedFerrersPreAnchorPair_spec, support from the pair's fields; neither
+is a new hypothesis of the selected-mode theorem.
+
+q3_check exit0, ten printed theorem dependencies standard only, including
+the selected-source theorem. Independent recovery_review approved exact
+bytes. Builds use the repository's current available dependency oleans;
+this is a narrow candidate check, not a fresh-clone production admission.
+Remaining: target D0/D4 self-Fourier/moments/nonzero square integral,
+source integrability and exact window dictionary, eventual assembly, and
+actual hmode supplier. No complete selected-family chi rate claimed yet.

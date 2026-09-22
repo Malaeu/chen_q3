@@ -1,4 +1,6 @@
 import Mathlib
+import Q3.Proofs.RouteB.ProlateSourceRegularity
+import Q3.Proofs.RouteB.G6N1CenterAnchorScalarLock
 open MeasureTheory Set
 open scoped FourierTransform
 noncomputable section
@@ -253,4 +255,69 @@ theorem chi_bound_from_mode_error (f D : ℝ → ℂ) (lam C J : ℝ) (χ : ℂ)
   apply hb.trans
   gcongr
 #print axioms chi_bound_from_mode_error
+
+theorem F_eq_finiteFourierAction (f : ℝ → ℂ) (lam : ℝ)
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0) (x : ℝ) :
+    F f x = Q3.RouteB.D0Pstar.finiteFourierAction lam f x := by
+  have heq : F f x = ∫ y : ℝ, Q3.RouteB.D0Pstar.finiteFourierKernel x y * f y := by
+    unfold F VectorFourier.fourierIntegral B
+    simp only [LinearMap.neg_apply, ContinuousLinearMap.toLinearMap₁₂_apply,
+      innerSL_apply_apply, neg_neg, Circle.smul_def, Real.fourierChar_apply,
+      smul_eq_mul]
+    apply integral_congr_ae
+    filter_upwards [] with y
+    congr 1
+    unfold Q3.RouteB.D0Pstar.finiteFourierKernel
+    congr 1
+    have hinner : inner ℝ y x = x*y := rfl
+    rw [hinner]
+    push_cast
+    ring
+  rw [heq]
+  symm
+  apply setIntegral_eq_integral_of_forall_compl_eq_zero
+  intro y hy
+  simp [hsupp y hy]
+#print axioms F_eq_finiteFourierAction
+
+theorem scaled_finite_eigen (f : ℝ → ℂ) (lam : ℝ) (a χ : ℂ)
+    (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+    (heigen : ∀ x ∈ Icc (-lam) lam,
+      Q3.RouteB.D0Pstar.finiteFourierAction lam f x = χ*f x) :
+    ∀ x ∈ Icc (-lam) lam, F (fun y => a*f y) x = χ*(a*f x) := by
+  intro x hx
+  rw [F_eq_finiteFourierAction _ lam (fun y hy => by simp [hsupp y hy])]
+  have hs : Q3.RouteB.D0Pstar.finiteFourierAction lam (fun y => a*f y) x =
+      a * Q3.RouteB.D0Pstar.finiteFourierAction lam f x := by
+    unfold Q3.RouteB.D0Pstar.finiteFourierAction
+    rw [← integral_const_mul]
+    apply integral_congr_ae
+    filter_upwards [] with y
+    ring
+  rw [hs, heigen x hx]
+  ring
+
+open Q3.RouteB.D0Pstar in
+theorem selected_anchored_eigen (k : ℕ) :
+    (∀ x ∈ Icc (-(selectedFerrersPreAnchorPair k).pw.lambda)
+        (selectedFerrersPreAnchorPair k).pw.lambda,
+      F (fun y => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 y) x =
+        ((selectedFerrersPreAnchorPair k).chi0 : ℂ) *
+          (centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)) ∧
+    (∀ x ∈ Icc (-(selectedFerrersPreAnchorPair k).pw.lambda)
+        (selectedFerrersPreAnchorPair k).pw.lambda,
+      F (fun y => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 y) x =
+        ((selectedFerrersPreAnchorPair k).chi2 : ℂ) *
+          (centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)) := by
+  obtain ⟨_, _, _, _, _, _, _, h0, h4, _⟩ := selectedFerrersPreAnchorPair_spec k
+  constructor
+  · apply scaled_finite_eigen _ _ _ _ _ h0
+    intro x hx
+    by_contra hne
+    exact hx ((selectedFerrersPreAnchorPair k).h0_support hne)
+  · apply scaled_finite_eigen _ _ _ _ _ h4
+    intro x hx
+    by_contra hne
+    exact hx ((selectedFerrersPreAnchorPair k).h4_support hne)
+#print axioms selected_anchored_eigen
 end Q3OverlapProbe
