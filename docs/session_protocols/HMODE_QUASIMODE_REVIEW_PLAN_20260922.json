@@ -1,0 +1,41 @@
+{
+  "PX_RH_CLAIM": "NOT_MADE",
+  "attachment_manifest": {
+    "bytes": 121500,
+    "commit_blob": "1e929338e7a7bddd8a69f62559b16194836ff85c",
+    "final_newline": "LF",
+    "git_blob": "1e929338e7a7bddd8a69f62559b16194836ff85c",
+    "lines": 2253,
+    "path": "docs/session_protocols/PROSHKA_REQUEST_HMODE_QUASIMODE_20260922.txt",
+    "request_commit": "0e90d54d9e1d0b5d88742af6b1a53c5df179b417",
+    "sha256": "377af64b2e9df0689f8f55f8e3c64dc46bf00b5584df42ed2a725e6f1a311bb2"
+  },
+  "boundary_id": "SELECTED_FERRERS_FULL_WINDOW_MODE_RATE_PAPER_AUDIT",
+  "call_class": "DELEGATED_STRATEGIC_REVIEW",
+  "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+  "eligibility_receipt": null,
+  "holds": [
+    "PROSHKA_CONVENTION_LOCK_ID_MISMATCH",
+    "PROSHKA_FRONT_ID_MISMATCH",
+    "PROSHKA_PHASE_ID_MISMATCH",
+    "PROSHKA_REQUEST_NOT_OPEN:REQ-2026-09-22-HMODE-QUASIMODE:MISSING",
+    "PROSHKA_SOURCE_OBJECT_FAMILY_ID_MISMATCH",
+    "PROSHKA_TERMINAL_CONSUMER_ID_MISMATCH"
+  ],
+  "packet_subtype": null,
+  "queue_status": null,
+  "request_id": "REQ-2026-09-22-HMODE-QUASIMODE",
+  "schema": "q3_review_dispatch_plan.v1",
+  "short_instruction": "Read the attached controlling request in full. Treat the .txt attachment as the authoritative byte-exact payload. Follow its required response schema and return exactly the requested verdict. Same living phase chat. Do not use Answer now.",
+  "status": "HOLD",
+  "transport": {
+    "answer_now_forbidden": true,
+    "delivery_performed": false,
+    "delivery_receipt_required": true,
+    "host_safety_confirmation": "ENFORCED_BY_ACTIVE_UI_RUNTIME",
+    "owner": "CURRENT_CODEX_BODY",
+    "repository_owner_confirmation_required": false,
+    "same_living_chat_required": true,
+    "single_attachment_required": true
+  }
+}

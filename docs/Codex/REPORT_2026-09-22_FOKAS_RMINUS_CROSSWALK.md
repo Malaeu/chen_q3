@@ -1218,3 +1218,25 @@ Independent recovery_review checked the actual source fields, domain argument,
 real projection, bilinear Fourier identity/sign, loss exponents and exact center
 normalization. Verdict: coherent PAPER hmode proof chain given the preceding
 reviewed core/spectral arguments; no circularity found. Not Lean certification.
+
+## Prepared hmode challenge packet and observed transport mismatch
+
+Request candidate committed 0e90d54d9e1d0b5d88742af6b1a53c5df179b417:
+docs/session_protocols/PROSHKA_REQUEST_HMODE_QUASIMODE_20260922.txt.
+121500 bytes,2253LF,finalLF,SHA256
+377af64b2e9df0689f8f55f8e3c64dc46bf00b5584df42ed2a725e6f1a311bb2.
+Independent reviewer verified all eight SOURCE blocks against hashes and
+numbered excerpts, the entire approved1472-line Lean candidate and Fraction
+checker. Scope approved as PREPARED candidate only, not dispatch approval.
+
+Registered review-plan returned HOLD; exact receipt saved beside the request.
+Source/front/consumer/convention/phase differ from old registered signed-Weil
+phase; new request is not queued OPEN. No delivery occurred. Current browser
+observation confirms user-selected chat6aafb38a-a7a4-83eb-9940-84a574eae168
+shows completed original Fokas answer and empty composer; no new request or
+running reasoning. Runtime still points to6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59.
+This is a route/phase mismatch, not missing owner permission. No fresh chat,
+phase overwrite, queue claim, Answer now or duplicate request was made.
+Next: reconcile registered phase transition/close route with the authorized
+user-selected living chat before upload. Continue substantive isolated Lean
+work if this transport route remains unavailable. PX_RH_CLAIM NOT_MADE.
