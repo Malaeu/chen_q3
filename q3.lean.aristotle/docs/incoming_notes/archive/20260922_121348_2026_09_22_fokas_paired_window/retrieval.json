@@ -1,0 +1,42 @@
+[
+  {
+    "docid": "#e279d3",
+    "file": "qmd://q3_docs/q3-lean-aristotle/docs/reviewed-notes/2026-09-22-fokas-paired-window-review.md",
+    "score": 0.68,
+    "title": "Fokas\u2013Lenells: exact finite-window Mellin crosswalk",
+    "context": null,
+    "snippet": "@@ -1,3 @@ (0 before, 157 after)\n# Fokas\u2013Lenells: exact finite-window Mellin crosswalk\n\n- review status: `reviewed`"
+  },
+  {
+    "docid": "#4b6e85",
+    "file": "qmd://q3_docs/docs/routeb-bus/muntz-r6/result.md",
+    "score": 0.64,
+    "title": "RESULT",
+    "context": null,
+    "snippet": "@@ -1,2 @@ (0 before, 0 after)\nMELLIN_DSLOPE_ANALYTICITY_GAP\n"
+  },
+  {
+    "docid": "#4b6e85",
+    "file": "qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/muntz-r6/result.md",
+    "score": 0.64,
+    "title": "RESULT",
+    "context": null,
+    "snippet": "@@ -1,2 @@ (0 before, 0 after)\nMELLIN_DSLOPE_ANALYTICITY_GAP\n"
+  },
+  {
+    "docid": "#b65009",
+    "file": "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/muntzv3/unconditional.lean",
+    "score": 0.63,
+    "title": "Unconditional",
+    "context": null,
+    "snippet": "@@ -24,4 @@ (23 before, 60 after)\nwindow/tail layer of the contract. -/\ntheorem continued_window_identity_unconditional_mellin\n    (h : \u211d \u2192 \u2102) (b : \u211d) (K : NNReal)\n    (hmeas : Measurable h)"
+  },
+  {
+    "docid": "#ef6a5e",
+    "file": "qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0fixedwindowweightboundedness.lean",
+    "score": 0.63,
+    "title": "D0FixedWindowWeightBoundedness",
+    "context": null,
+    "snippet": "@@ -13,4 @@ (12 before, 79 after)\n/-!\n# At a fixed window the subcritical weight is bounded\n\nThe judge's primary G5 route (verdict `2794daa0`) turns on one sentence:"
+  }
+]

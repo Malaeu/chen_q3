@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 317
-observed_at: '2026-09-22T07:41:51.657872+00:00'
-previous_sha256: 5236620a2e1439dfc0f29fb14cfefee3f31c72ff247c27976526d5f1e920e3ec
+revision: 318
+observed_at: '2026-09-22T10:18:46.356149+00:00'
+previous_sha256: 167a789b2802fd0808588878cd53bb54574e6cad08022bbcd1175c6166d7d759
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -92,17 +92,13 @@ ownership:
 # Current continuation — observations, not authority
 
 ## Mathematical frontier
-RH unproved; PX_RH_CLAIM NOT_MADE. Exact theorem/consumer edge remains unbound.
-Source: docs/Codex/BRIEF_2026-09-14_SCHUR_REPEATABILITY.md.
-Checked S_a[c]/D_a = Var_mu(A_c)-E_mu|B_c|^2; comparison covariance is positive
-for distinct non-anchor theta nodes. Full residual sign and all-row A4 remain OPEN.
-Analytic note020297dd and independent review42471b36 are published in85f6c570.
+RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-History repair: exact two-file candidate d1a1c3d8 integrated and published at 0e467afc02beb4ff71e15427da9663cfe0f937c8. Both reviewed source hashes preserved;97 tests passed. Original4210145 history bytes remain intact. Earlier Linux/Mac/PR14/identity work is complete; do not replay.
+Owner-supplied Fokas review archived unchanged (raw SHA256 10b6446e51a48e43e1808d6d8fe1024b46063f8edea14ae8809dd52bc9f4e098). Reviewed note and search brief independently checked by /root/recovery_review; bounded measurability and s!=1 caveats included. q3_docs incremental refresh exit 0; vsearch finds reviewed note first. No proof node closed.
 
 ## Next action
-Owner-directed continuation on this Mac. The obsolete September 16 agent launch is retired with outcome UNKNOWN and must never be replayed. Reconcile current mathematical source pins against the September 21 bandwidth correction before selecting an exact theorem/consumer edge. No mathematical admission follows from recovery.
+Continue active native goal with Proshka. Use saved Fokas brief for registered exact shelf and three-dictionary semantic discovery on paired window remainder. Inspect returned MuntzV3/Unconditional.lean continued_window_identity_unconditional_mellin as candidate, not exact fit. Verify external contour theorem and pin weakest exact consumer before production dispatch. Recover original ZIP from existing chat without fabricating reported 18 controls. Prepare one source-locked .txt for same owner-identified living chat when bounded request is ready.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
@@ -110,11 +106,7 @@ Owner recovery instruction: "Я твой владелец, и я тебе гов
 Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
 
 ## Do not repeat
-No old repair replay, Mac merge, PR14 review/comment, search or index rebuild.
-Poisson remains a candidate only; analysis precedes tests/Lean.
-No mathematical admission follows from operational recovery or publication.
-Do not truncate, delete or rewrite archived history. Confirmation-only checkpoints
-need no recursive publication. No timestamp-only checkpoint churn.
+Do not replay prior owner recovery, retired September16 launch or old repairs. Do not repeat unchanged ingest or q3_docs refresh; reuse archived retrieval.json until corpus changes. Raw ZIP remains NOT_RETRIEVED. Do not confuse cache/source/ground; residual divides by valid separation. No RH promotion or discarded history.
 
 ## Integration remaining
-Local ownership recovery and bounded runtime repair. Old native result remains UNKNOWN; a late result requires fresh independent review. Automated continuation/watch is unverified; synchronous owner-directed work is permitted. Mathematical production still requires exact edge selection.
+Research intake is documentation only; original ZIP bytes and full contour-hypothesis audit remain open. Current user-identified chat: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6aafb38a-a7a4-83eb-9940-84a574eae168 . This observation does not rewrite historical request/phase pins. Native app goal ACTIVE; native watch still unverified. Continue synchronous owner-authorized work.
