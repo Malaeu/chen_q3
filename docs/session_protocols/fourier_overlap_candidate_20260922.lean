@@ -322,7 +322,7 @@ theorem selected_anchored_eigen (k : ℕ) :
     by_contra hne
     exact hx ((selectedFerrersPreAnchorPair k).h4_support hne)
 #print axioms selected_anchored_eigen
-open Q3.RouteB.D0Pstar
+open Q3.RouteB Q3.RouteB.D0Pstar
 
 def cylinderTarget (n : ℕ) (x : ℝ) : ℂ :=
   (parabolicCylinderD n (projectCylinderArgument x) : ℂ)
@@ -937,4 +937,228 @@ theorem compactTest_complex_overlap_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
 
 #print axioms compactTest_complex_orthogonality
 #print axioms compactTest_complex_overlap_positive
+def prolateFlux (lam : ℝ) (f : ℝ → ℂ) (x : ℝ) : ℂ :=
+  ((lam^2-x^2 : ℝ) : ℂ) * deriv f x
+
+theorem prolateFlux_contDiffOn (lam : ℝ) (f : ℝ → ℂ)
+    (hf : ContDiffOn ℝ 2 f (Ioo (-lam) lam)) :
+    ContDiffOn ℝ 1 (prolateFlux lam f) (Ioo (-lam) lam) := by
+  have hd : ContDiffOn ℝ 1 (deriv f) (Ioo (-lam) lam) :=
+    hf.deriv_of_isOpen isOpen_Ioo (by norm_num)
+  unfold prolateFlux
+  apply ContDiffOn.mul _ hd
+  have hw : ContDiff ℝ 1 (fun x : ℝ => lam^2-x^2) := by fun_prop
+  simpa only [Function.comp_apply,Complex.ofRealCLM_apply] using
+    (Complex.ofRealCLM.contDiff.comp hw).contDiffOn
+
+theorem prolateFlux_hasDerivAt (lam θ : ℝ) (f : ℝ → ℂ)
+    (hf : ContDiffOn ℝ 2 f (Ioo (-lam) lam))
+    (hode : ∀ x ∈ Ioo (-lam) lam, prolateWaveExpression lam f x = (θ:ℂ)*f x)
+    (x : ℝ) (hx : x ∈ Ioo (-lam) lam) :
+    HasDerivAt (prolateFlux lam f)
+      ((((2*Real.pi*lam*x)^2 : ℝ) : ℂ)*f x-(θ:ℂ)*f x) x := by
+  have hd := ((prolateFlux_contDiffOn lam f hf).differentiableOn (by norm_num)).differentiableAt
+    (isOpen_Ioo.mem_nhds hx)
+  apply hd.hasDerivAt.congr_deriv
+  have he := hode x hx
+  simp only [prolateWaveExpression, fderiv_deriv] at he
+  change -deriv (prolateFlux lam f) x +
+    (((2*Real.pi*lam*x)^2 : ℝ) : ℂ)*f x = (θ:ℂ)*f x at he
+  linear_combination -he
+
+theorem normalized_mode_flux_hasDerivAt
+    {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+    (hm : 2 ≤ m) (x : ℝ) (hx : x ∈ Ioo (-Real.sqrt m) (Real.sqrt m)) :
+    HasDerivAt (prolateFlux (Real.sqrt m) S.normalizedPhysicalMode)
+      (((((2*Real.pi*Real.sqrt m*x)^2 : ℝ) : ℂ) -
+        ((Λ+mode4JacobiG m : ℝ) : ℂ))*S.normalizedPhysicalMode x) x := by
+  have hh := prolateFlux_hasDerivAt (Real.sqrt m) (Λ+mode4JacobiG m)
+    S.normalizedPhysicalMode (normalizedPhysicalMode_contDiffOn_two_open S hm)
+    (fun y hy => normalizedPhysicalMode_prolateWaveExpression_eigenrelation S hm hy) x hx
+  convert hh using 1 <;> ring
+
+#print axioms prolateFlux_hasDerivAt
+#print axioms normalized_mode_flux_hasDerivAt
+theorem prolate_compact_weak (lam θ : ℝ) (f φ : ℝ → ℂ)
+    (hlam : 1 < lam) (hf : ContDiffOn ℝ 2 f (Ioo (-lam) lam))
+    (hode : ∀ x ∈ Ioo (-lam) lam, prolateWaveExpression lam f x = (θ:ℂ)*f x)
+    (hφ : ContDiff ℝ ∞ φ)
+    (hφa : φ (-1)=0) (hφb : φ 1=0)
+    (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+    (∫ x in (-1:ℝ)..1, φ x *
+      (((((2*Real.pi*lam*x)^2 : ℝ) : ℂ)-(θ:ℂ))*f x)) =
+    ∫ x in (-1:ℝ)..1, f x *
+      (((lam^2-x^2 : ℝ) : ℂ)*deriv (deriv φ) x - ((2*x:ℝ):ℂ)*deriv φ x) := by
+  have hsub : uIcc (-1:ℝ) 1 ⊆ Ioo (-lam) lam := by
+    rw [uIcc_of_le (by norm_num)]
+    intro x hx
+    constructor <;> linarith [hx.1,hx.2]
+  have hopen : Ioo (min (-1:ℝ) 1) (max (-1:ℝ) 1) ⊆ Ioo (-lam) lam := by
+    intro x hx
+    apply hsub
+    exact Ioo_subset_Icc_self hx
+  have hdfc := hf.continuousOn_deriv_of_isOpen isOpen_Ioo (by norm_num)
+  have hφd := (contDiff_infty_iff_deriv.mp hφ).2
+  have hφdd := (contDiff_infty_iff_deriv.mp hφd).2
+  have hp : Continuous (fun x : ℝ => ((lam^2-x^2 : ℝ):ℂ)) := by fun_prop
+  have htf : Continuous (fun x : ℝ => ((lam^2-x^2 : ℝ):ℂ)*deriv φ x) :=
+    hp.mul hφd.continuous
+  have hdtf : Continuous (fun x : ℝ => ((lam^2-x^2 : ℝ):ℂ)*deriv (deriv φ) x -
+      ((2*x:ℝ):ℂ)*deriv φ x) := by
+    exact (hp.mul hφdd.continuous).sub
+      ((show Continuous (fun x : ℝ => ((2*x:ℝ):ℂ)) by fun_prop).mul hφd.continuous)
+  apply compact_flux_green (-1) 1 f (deriv f) φ (deriv φ)
+    (fun x => ((lam^2-x^2 : ℝ):ℂ)) (prolateFlux lam f)
+    (fun x => (((((2*Real.pi*lam*x)^2 : ℝ):ℂ)-(θ:ℂ))*f x))
+    (fun x => ((lam^2-x^2 : ℝ):ℂ)*deriv φ x)
+    (fun x => ((lam^2-x^2 : ℝ):ℂ)*deriv (deriv φ) x - ((2*x:ℝ):ℂ)*deriv φ x)
+    (hf.continuousOn.mono hsub) hφ.continuous.continuousOn
+    ((prolateFlux_contDiffOn lam f hf).continuousOn.mono hsub) htf.continuousOn
+  · intro x hx
+    exact ((hf.differentiableOn (by norm_num)).differentiableAt
+      (isOpen_Ioo.mem_nhds (hopen hx))).hasDerivAt
+  · intro x hx
+    exact ((contDiff_infty_iff_deriv.mp hφ).1 x).hasDerivAt
+  · intro x hx
+    convert prolateFlux_hasDerivAt lam θ f hf hode x (hopen hx) using 1 <;> ring
+  · intro x hx
+    have hw : HasDerivAt (fun y : ℝ => ((lam^2-y^2 : ℝ):ℂ)) ((-2*x:ℝ):ℂ) x := by
+      convert (((hasDerivAt_const x (lam^2)).sub ((hasDerivAt_id x).pow 2)).ofReal_comp) using 1
+      simp only [id_eq]
+      push_cast
+      ring
+    convert hw.mul (((contDiff_infty_iff_deriv.mp hφd).1 x).hasDerivAt) using 1
+    push_cast
+    ring
+  · exact (hdfc.mono hsub).intervalIntegrable
+  · exact hφd.continuous.intervalIntegrable _ _
+  · have hc : ContinuousOn (fun x => (((((2*Real.pi*lam*x)^2 : ℝ):ℂ)-(θ:ℂ))*f x))
+        (uIcc (-1:ℝ) 1) := by
+      apply ContinuousOn.mul _ (hf.continuousOn.mono hsub)
+      fun_prop
+    exact hc.intervalIntegrable
+  · exact hdtf.intervalIntegrable _ _
+  · intro x; rfl
+  · intro x; rfl
+  · exact hφa
+  · exact hφb
+  · simp [hda]
+  · simp [hdb]
+
+#print axioms prolate_compact_weak
+theorem normalized_mode_compact_weak
+    {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+    (hm : 2 ≤ m) (α : ℂ) (φ : ℝ → ℂ) (hφ : ContDiff ℝ ∞ φ)
+    (hφa : φ (-1)=0) (hφb : φ 1=0)
+    (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+    (∫ x in (-1:ℝ)..1, φ x *
+      (((((2*Real.pi*Real.sqrt m*x)^2 : ℝ) : ℂ)-((Λ+mode4JacobiG m:ℝ):ℂ))*
+        (α*S.normalizedPhysicalMode x))) =
+    ∫ x in (-1:ℝ)..1, (α*S.normalizedPhysicalMode x) *
+      (((((Real.sqrt m)^2-x^2) : ℝ) : ℂ)*deriv (deriv φ) x - ((2*x:ℝ):ℂ)*deriv φ x) := by
+  have hlam : 1 < Real.sqrt (m:ℝ) := by
+    rw [show (1:ℝ)=Real.sqrt 1 by rw [Real.sqrt_one]]
+    apply Real.sqrt_lt_sqrt (by norm_num)
+    exact_mod_cast (show 1 < m by omega)
+  have hh := prolate_compact_weak (Real.sqrt m) (Λ+mode4JacobiG m)
+    S.normalizedPhysicalMode φ hlam (normalizedPhysicalMode_contDiffOn_two_open S hm)
+    (fun x hx => normalizedPhysicalMode_prolateWaveExpression_eigenrelation S hm hx)
+    hφ hφa hφb hda hdb
+  have he := congrArg (fun z : ℂ => α*z) hh
+  dsimp only at he
+  rw [← intervalIntegral.integral_const_mul, ← intervalIntegral.integral_const_mul] at he
+  convert he using 1 <;> apply intervalIntegral.integral_congr <;> intro x hx <;>
+    dsimp only <;> ring
+
+#print axioms normalized_mode_compact_weak
+def CompactWeakODE (m θ : ℝ) (f φ : ℝ → ℂ) : Prop :=
+  (∫ x in (-1:ℝ)..1, φ x * (((m*(4*Real.pi^2*x^2)-θ : ℝ):ℂ)*f x)) =
+    ∫ x in (-1:ℝ)..1, f x * ((m:ℂ)*deriv (deriv φ) x -
+      ((x^2:ℝ):ℂ)*deriv (deriv φ) x-((2*x:ℝ):ℂ)*deriv φ x)
+
+theorem normalized_mode_weak_ode
+    {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+    (hm : 2 ≤ m) (α : ℂ) (φ : ℝ → ℂ) (hφ : ContDiff ℝ ∞ φ)
+    (hφa : φ (-1)=0) (hφb : φ 1=0)
+    (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+    CompactWeakODE (m:ℝ) (Λ+mode4JacobiG m) (fun x => α*S.normalizedPhysicalMode x) φ := by
+  have hh := normalized_mode_compact_weak S hm α φ hφ hφa hφb hda hdb
+  have hp (x : ℝ) : (2*Real.pi*Real.sqrt m*x)^2 = (m:ℝ)*(4*Real.pi^2*x^2) := by
+    have hs := Real.sq_sqrt (Nat.cast_nonneg m : (0:ℝ) ≤ m)
+    calc
+      _ = 4*Real.pi^2*(Real.sqrt m)^2*x^2 := by ring
+      _ = _ := by rw [hs]; ring
+  simp only [hp,Real.sq_sqrt (Nat.cast_nonneg m : (0:ℝ) ≤ m)] at hh
+  unfold CompactWeakODE
+  convert hh using 1 <;> apply intervalIntegral.integral_congr <;> intro x hx <;>
+    dsimp only <;> push_cast <;> ring
+
+theorem selected_anchored_weak_ode (k : ℕ) (φ : ℝ → ℂ) (hφ : ContDiff ℝ ∞ φ)
+    (hφa : φ (-1)=0) (hφb : φ 1=0)
+    (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+    CompactWeakODE (k+2:ℕ)
+      (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2))
+      (fun x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x) φ ∧
+    CompactWeakODE (k+2:ℕ)
+      (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2))
+      (fun x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x) φ := by
+  constructor
+  · rw [selectedFerrersPreAnchorPair_h0_eq_selectedMode]
+    exact normalized_mode_weak_ode (selectedFerrersPreAnchorSolution0 k) (by omega)
+      (centerAnchorScalarZero k) φ hφ hφa hφb hda hdb
+  · rw [selectedFerrersPreAnchorPair_h4_eq_selectedMode]
+    exact normalized_mode_weak_ode (selectedFerrersPreAnchorSolution4 k) (by omega)
+      (centerAnchorScalarFour k) φ hφ hφa hφb hda hdb
+
+#print axioms normalized_mode_weak_ode
+#print axioms selected_anchored_weak_ode
+theorem complex_compactTest_regular (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    ContDiff ℝ ∞ (fun x => (compactTest n x : ℂ)) ∧
+    (compactTest n (-1) : ℂ) = 0 ∧ (compactTest n 1 : ℂ) = 0 ∧
+    deriv (fun x => (compactTest n x : ℂ)) (-1) = 0 ∧
+    deriv (fun x => (compactTest n x : ℂ)) 1 = 0 := by
+  have hd (x : ℝ) : deriv (fun y => (compactTest n y : ℂ)) x =
+      ((deriv (compactTest n) x : ℝ) : ℂ) :=
+    (((contDiff_infty_iff_deriv.mp (compactTest_contDiff n hn)).1 x).hasDerivAt.ofReal_comp).deriv
+  obtain ⟨ha,hb,hda,hdb⟩ := compactTest_boundary n hn
+  refine ⟨?_, ?_, ?_, ?_, ?_⟩
+  · simpa only [Function.comp_apply,Complex.ofRealCLM_apply] using
+      Complex.ofRealCLM.contDiff.comp (compactTest_contDiff n hn)
+  · simp [ha]
+  · simp [hb]
+  · rw [hd,hda]; norm_num
+  · rw [hd,hdb]; norm_num
+
+theorem selected_anchored_concrete_test_weak (k : ℕ) :
+    CompactWeakODE (k+2:ℕ)
+      (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2))
+      (fun x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)
+      (fun x => (compactTest 0 x : ℂ)) ∧
+    CompactWeakODE (k+2:ℕ)
+      (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2))
+      (fun x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)
+      (fun x => (compactTest 4 x : ℂ)) := by
+  obtain ⟨hc0,ha0,hb0,hda0,hdb0⟩ := complex_compactTest_regular 0 (Or.inl rfl)
+  obtain ⟨hc4,ha4,hb4,hda4,hdb4⟩ := complex_compactTest_regular 4 (Or.inr rfl)
+  exact ⟨(selected_anchored_weak_ode k _ hc0 ha0 hb0 hda0 hdb0).1,
+    (selected_anchored_weak_ode k _ hc4 ha4 hb4 hda4 hdb4).2⟩
+
+#print axioms selected_anchored_concrete_test_weak
+theorem complex_compactTest_derivatives (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    deriv (fun x => (compactTest n x : ℂ)) =
+      (fun x => ((deriv (compactTest n) x : ℝ):ℂ)) ∧
+    deriv (deriv (fun x => (compactTest n x : ℂ))) =
+      (fun x => ((deriv (deriv (compactTest n)) x : ℝ):ℂ)) := by
+  have hc := compactTest_contDiff n hn
+  have hd := (contDiff_infty_iff_deriv.mp hc).2
+  have hfirst : deriv (fun x => (compactTest n x : ℂ)) =
+      (fun x => ((deriv (compactTest n) x : ℝ):ℂ)) := by
+    funext x
+    exact (((contDiff_infty_iff_deriv.mp hc).1 x).hasDerivAt.ofReal_comp).deriv
+  refine ⟨hfirst, ?_⟩
+  rw [hfirst]
+  funext x
+  exact (((contDiff_infty_iff_deriv.mp hd).1 x).hasDerivAt.ofReal_comp).deriv
+
+#print axioms complex_compactTest_derivatives
 end Q3OverlapProbe

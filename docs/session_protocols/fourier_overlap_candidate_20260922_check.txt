@@ -86,5 +86,19 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'Q3OverlapProbe.compactTest_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.compactTest_complex_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.compactTest_complex_overlap_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+/tmp/Q3FourierOverlap.lean:978:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Q3OverlapProbe.prolateFlux_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.normalized_mode_flux_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
+/tmp/Q3FourierOverlap.lean:1023:72: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Q3OverlapProbe.prolate_compact_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.normalized_mode_compact_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.normalized_mode_weak_ode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.selected_anchored_weak_ode' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.selected_anchored_concrete_test_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.complex_compactTest_derivatives' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

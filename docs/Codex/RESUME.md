@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 332
-observed_at: '2026-09-22T11:41:07.745060+00:00'
-previous_sha256: dfc1ca3f3cc8fc7ae6ec840cd705d9d4bdaf8098619451bd0cf1d3faacece393
+revision: 333
+observed_at: '2026-09-22T11:52:18.552441+00:00'
+previous_sha256: cf0a68a112f2b69b1cf1e9edf910e835e245fd8c32fa2aa7d09471ce121683ca
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Concrete interval test discharges target orthogonality and fixed nonzero overlap without new assumptions. oscillator_test_orthogonality is derived by two IBPs and exact oscillator equation; actual n0/4 instantiated and lifted to complex integrals. q3_check/review passed. Actual-source weak pairing and eventual estimates still pending; htheta not yet proved. Production unbound.
+Kernel-checked local flux derivative and compact weak ODE from actual project ODE+C2; normalized/scalar transport; exact sqrt²=m dictionary; actual selected anchored weak equations with correct shifted eigenvalues; concrete test0/4 instantiation. No arbitrary weak-ODE assumption remains for those sources. Quantitative htheta estimates not yet proved; selected hmode->hchi and conditional W5 bridge remain checked.
 
 ## Next action
-Concrete test for D0/D4 is now checked: compactTest=(1-x^2)^3 D, smooth, value/derivative zero at +/-1, positive real and complex overlap, exact real/complex target orthogonality. Continue actual normalized selected-mode weak ODE on fixed [-1,1] and uniform numerator/floor estimates from hmode, then eventual htheta. No derivative-error bound needed; hmode open and ground separate.
+Actual selected anchored modes now satisfy CompactWeakODE with their own concrete complex compact tests, no hmode premise. Combine with target orthogonality and signed defect identity, first/second complex-test derivative dictionary is now checked; derive uniform integral estimates/overlap floor from hmode for eventual htheta. hmode remains open; finite-ground matching separate; production unbound.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

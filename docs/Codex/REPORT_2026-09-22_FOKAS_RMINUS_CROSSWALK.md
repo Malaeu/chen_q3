@@ -749,3 +749,45 @@ its weak identity through compact_flux_green, and derive uniform numerator
 bounds and the eventual overlap floor from hmode. This turn does NOT prove
 the selected htheta rate. hmode and finite-ground/off-line-zero-free bridges
 remain open. PX_RH_CLAIM: NOT_MADE.
+
+## Actual anchored selected modes supply the concrete weak ODE
+
+Candidate SHA256 ebb3cd2a325ba5a5174b09068bd56263720b03bf0b1fb3d59761226ee316103e.
+prolateFlux=(lambda^2-x^2)*deriv f is C1 on the open source window from
+ContDiffOn2 f; prolateFlux_hasDerivAt converts the literal project
+prolateWaveExpression to its exact flux derivative. The normalized Ferrers
+instance uses committed regularity and ODE, not a new source equation premise.
+
+prolate_compact_weak applies compact_flux_green on [-1,1]. lambda>1 places
+the entire closed test interval inside the regular source window, so no
+singular source endpoint estimates are needed. Test flux derivative is
+(lambda^2-x^2)*phi''-2*x*phi'; all required local integrability follows from
+continuity. Arbitrary constant complex alpha is transported through both
+integrals without division or nonzero assumptions.
+
+CompactWeakODE records exact potential m*(4pi^2*x^2)-theta and test flux
+m*phi''-x^2*phi''-2*x*phi'. normalized_mode_weak_ode proves this dictionary
+using sqrt(m)^2=m. selected_anchored_weak_ode instantiates the actual stored
+solutions0/4 and center scalars, with theta=classicalEigenvalue(index0/2)+g.
+The mode labels, normalization and shifted eigenvalue are not changed.
+
+selected_anchored_concrete_test_weak has only k as input: the mode0 equation
+uses complex compactTest0 and the mode4 equation uses complex compactTest4.
+Their smoothness and derivative boundary conditions are supplied internally.
+complex_compactTest_derivatives proves both first/second complex derivatives
+equal the corresponding cast real derivatives globally, closing the exact
+interface with compactTest_complex_orthogonality.
+
+Canonical q3_check exit0; all44 printed dependency lists standard only.
+Independent recovery_review checked domain inclusion, signs, source/scalar
+identity, specific test pairing, derivative transport and final hash.
+Current dependency oleans used; preexisting UnicodeBasic and style warnings
+remain. Saved log has trailing whitespace normalized; proof bytes unchanged.
+No fresh-clone validation or production admission.
+
+Next: combine this actual weak identity with target orthogonality and signed
+defect identity; bound its two numerator integrals and source overlap from
+hmode, uniformly in k, and conclude eventual htheta. No hmode or derivative-
+error premise was needed for the weak ODE itself. The selected htheta RATE
+is still unproved; hmode, finite-ground and off-line-zero-free bridges remain
+open. PX_RH_CLAIM: NOT_MADE.
