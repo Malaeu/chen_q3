@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 11
+CONTROL_VERSION: 12
 TEAM_RUNTIME_VERSION: 1
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
@@ -534,6 +534,47 @@ verified by its registered transport. Network observation and native evidence
 are separate subjects: a timestamp alone never proves a native wake or effect.
 Host differences may select an executor implementation but may not change the
 logical plan or authority.
+
+### Explicit owner recovery after relocation (revision 12)
+
+The human Owner may explicitly direct continuation on the current installation
+when the previous task or host is inaccessible. The executor handles recovery;
+it must not demand that the human recover a defunct agent's private identity.
+Use the existing `resume-checkpoint` writer with `--owner-recovery-instruction`,
+`--recovery-expected-head` and `--recovery-expected-epoch`, plus the exact
+checkpoint preimage. Record the instruction verbatim as a JSON string on an
+`Owner recovery instruction:` line under `Existing work`.
+
+This narrowly authorized transition binds the current local installation/task,
+increments the owner epoch exactly once, preserves the original checkpoint in
+history and keeps pins, source manifest and review stages unchanged. An unresolved
+INTENT becomes UNKNOWN with the same operation identity and inputs; it is never
+replayed or confirmed by recovery. The new owner is ACTIVE for reconciliation,
+with `reconciliation_pending: true`; this is not proof of watch activation or
+old-host quiescence. Pending local effects still fence recovery. Production
+mathematical holds remain in force. Exact replay uses the existing checkpoint
+NOOP contract and does not increment the epoch again.
+
+For an obsolete `ASSIGN/agent-launch` only, the same explicit recovery may use
+`--owner-recovery-retire-assignment`. Record the entire operation with outcome
+UNKNOWN as a JSON line `Retired assignment (outcome UNKNOWN):` in the checkpoint.
+The writer archives the exact predecessor, clears only the active operation slot,
+and allows synchronous owner-directed work without waiting for the inaccessible
+agent or a scheduler. The retired ID is permanently refused by effect reservation
+using the immutable checkpoint history. No completion/nonexecution is asserted;
+late results remain unadmitted candidates. Uncertain sends, computations and
+publications cannot use this exception. Watch state remains unverified and no
+watch is created or duplicated by recovery. Automated continuation still requires
+native watch reconciliation separately.
+
+Without that restricted retirement, the new owner reconciles outstanding effects
+and watch before dispatch. A recovery
+instruction does not authorize clearing UNKNOWN by assertion. Read-only work and
+owner-authorized scoped maintenance can continue. All agents must refresh canonical
+state before writing or publishing; an offline clone is not fenced by a local lock.
+Never claim global exclusion merely from a local epoch change. Ordinary non-force
+Git publication preserves competing remote history and requires reconciliation
+if another writer advanced it.
 
 ## 12. Threat model and fail-closed behavior
 

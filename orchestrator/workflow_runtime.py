@@ -2072,12 +2072,12 @@ def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
     if not compact and not repair_subject:
         return None
     control = validate_battle_v10_control(repo)
-    repair = _team_publication_repair(repo, data, inputs) if control.version == 11 and not compact else None
+    repair = _team_publication_repair(repo, data, inputs) if control.version >= 11 and not compact else None
     if not compact and repair is None:
         return None
     if os.environ.get("Q3_OWNER_EPOCH") != str(data["ownership"]["epoch"]):
         raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_CHANGED")
-    if (control.version != 11 or control.team_runtime_version != 1
+    if (control.version < 11 or control.team_runtime_version != 1
             or operation["kind"] != "PUBLISH" or operation["state"] != "INTENT"):
         raise WorkflowRuntimeError("TEAM_PUBLICATION_CONTROL_REVISION_REQUIRED")
     issues = team_records.read_registry(_resume_file(repo, TEAM_ISSUES), "issues",
@@ -2160,7 +2160,7 @@ def _team_publication_check(repo: Path, data: dict[str, Any], saved: dict[str, A
 
     snapshot = saved["snapshot"]
     control = validate_battle_v10_control(repo)
-    if (control.version != 11 or control.sha256 != snapshot["control_sha256"]
+    if (control.version < 11 or control.sha256 != snapshot["control_sha256"]
             or data["ownership"] != snapshot["ownership"] or data["owner_thread_id"] != snapshot["owner_task"]
             or data["operation"] != snapshot["operation"] or data["pins"] != snapshot["pins"]
             or data["source_manifest"] != snapshot["source_manifest"]
@@ -2300,6 +2300,26 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
         if data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]:
             raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
         operation = data["operation"]
+        # Retirement is durable in the append-only checkpoint history, including
+        # on another installation. Never renew an abandoned agent launch ID.
+        history = _resume_history(_resume_file(repo, RESUME_HISTORY_PATH) or b"")
+        for kind, _, archived in history.values():
+            if kind not in {"resume", "intent"}:
+                continue
+            _, archived_body = _resume_document(archived)
+            for line in archived_body.splitlines():
+                prefix = "Retired assignment (outcome UNKNOWN): "
+                if line.startswith(prefix):
+                    try:
+                        retired = json.loads(line[len(prefix):])
+                    except json.JSONDecodeError as exc:
+                        raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RETIREMENT_INVALID") from exc
+                    if (not isinstance(retired, dict) or retired.get("kind") != "ASSIGN"
+                            or retired.get("command") != "agent-launch" or retired.get("state") != "UNKNOWN"
+                            or not isinstance(retired.get("id"), str) or not retired["id"]):
+                        raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RETIREMENT_INVALID")
+                    if retired["id"] == operation_id:
+                        raise WorkflowRuntimeError("TEAM_RETIRED_ASSIGNMENT_CANNOT_REPLAY")
         if operation["id"] != operation_id or operation["state"] != "INTENT":
             raise WorkflowRuntimeError("TEAM_EXACT_EFFECT_INTENT_REQUIRED")
         prior = _team_local_operation(repo, operation_id)
@@ -2567,7 +2587,7 @@ def _team_confirm_publication(repo: Path, operation_id: str, record: dict[str, A
             raise WorkflowRuntimeError("TEAM_PUBLICATION_UNKNOWN_IS_NOT_NOT_EXECUTED")
         _team_verify_paths(repo, record["evidence"])
         control = validate_battle_v10_control(repo)
-        if (control.version != 11 or control.sha256 != snapshot["control_sha256"]
+        if (control.version < 11 or control.sha256 != snapshot["control_sha256"]
                 or data["ownership"] != snapshot["ownership"]
                 or data["operation"] != snapshot["operation"]
                 or data["pins"] != snapshot["pins"]
@@ -2618,7 +2638,7 @@ def team_confirm_effect(repo: Path, *, operation_id: str, candidate: Path, expec
     paths = ["GIT_COMMON_DIR/" + TEAM_LOCAL]
     registered_paths = load_tool_index(repo / TOOLS).get("workflow-team-confirm-effect", {}).get("write_paths")
     if registered_paths == paths + ["GIT_COMMON_DIR/objects/**"]:
-        if validate_battle_v10_control(repo).version != 11:
+        if validate_battle_v10_control(repo).version < 11:
             raise WorkflowRuntimeError("TEAM_PUBLICATION_CONTROL_REVISION_REQUIRED")
         paths = registered_paths
     _team_registered(repo, "team-confirm-effect", paths, publication_id=operation_id)
@@ -3090,6 +3110,17 @@ def _team_owner_transition(repo: Path, before: dict[str, Any], after: dict[str, 
     same_owner = (all(old[k] == new[k] for k in ("epoch", "state", "installation_ref"))
                   and before["owner_thread_id"] == after["owner_thread_id"])
     if same_owner:
+        if before["reconciliation_pending"] and not after["reconciliation_pending"]:
+            if before["operation"]["state"] in {"INTENT", "UNKNOWN"}:
+                raise WorkflowRuntimeError("TEAM_UNRESOLVED_OPERATION_CANNOT_CLEAR_RECONCILIATION")
+            from orchestrator.startup_runtime import validate_battle_v10_control
+            if validate_battle_v10_control(repo).version >= 12:
+                watch = _team_local(repo)["watch"]
+                if (not watch or watch.get("state") != "ACTIVE"
+                        or watch.get("target_thread") != after["owner_thread_id"]
+                        or watch.get("epoch") != new["epoch"]
+                        or not watch.get("scheduled_wake_at")):
+                    raise WorkflowRuntimeError("TEAM_WATCH_RECONCILIATION_REQUIRED")
         if old["transfer"] != new["transfer"]:
             prior, candidate = old["transfer"], new["transfer"]
             if (prior is None or candidate is None
@@ -3863,7 +3894,7 @@ def _resume_completed_source_recovery(
     This does not alter the startup plan or authorize an effect. Every ordinary
     checkpoint/history/owner check below and every native effect gate still runs.
     """
-    if (plan.get("startup", {}).get("control_version") != 11
+    if (plan.get("startup", {}).get("control_version") not in {11, 12}
             or plan.get("startup", {}).get("team_runtime_version") != 1):
         return False
     fatal = set(plan.get("startup", {}).get("fatal_errors", []))
@@ -4026,16 +4057,72 @@ def _resume_repair_review_intake(repo: Path, current: dict[str, Any], operation:
     return len(matches) == 1
 
 
+def _team_owner_recovery(
+    repo: Path, before: dict[str, Any], after: dict[str, Any], body: str, *,
+    instruction: str, expected_head: str | None, expected_epoch: int | None,
+    retire_assignment: bool = False,
+) -> None:
+    """Validate an explicit human relocation instruction, never impersonate the old task."""
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    if validate_battle_v10_control(repo).version < 12:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_REQUIRES_CONTROL_12")
+    if not instruction.strip() or len(instruction.encode()) > 4096:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_REQUIRED")
+    marker = "Owner recovery instruction: " + json.dumps(instruction, ensure_ascii=False)
+    if marker not in body.split("## Existing work\n", 1)[1].split("\n## ", 1)[0].splitlines():
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED")
+    if before["schema"] != "q3_resume.v2" or after["schema"] != "q3_resume.v2":
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_V2_REQUIRED")
+    if (not expected_head or _team_git(repo, "rev-parse", "HEAD").decode().strip() != expected_head
+            or before["ownership"]["epoch"] != expected_epoch):
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_PREIMAGE_CHANGED")
+    old, new = before["ownership"], after["ownership"]
+    if (new["epoch"] != old["epoch"] + 1 or new["state"] != "ACTIVE"
+            or new["transfer"] is not None or after["reconciliation_pending"] is not (not retire_assignment)
+            or after["recovery_from"] is not None
+            or (new["installation_ref"], after["owner_thread_id"])
+            == (old["installation_ref"], before["owner_thread_id"])):
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_TARGET_INVALID")
+    _team_actor(repo, after)
+    if any(before[key] != after[key] for key in ("pins", "stages", "source_manifest")):
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_CHANGED_MATHEMATICS")
+    operation = dict(before["operation"])
+    if operation["state"] == "INTENT":
+        operation["state"] = "UNKNOWN"
+    if retire_assignment:
+        if operation["kind"] != "ASSIGN" or operation["command"] != "agent-launch" or operation["state"] != "UNKNOWN":
+            raise WorkflowRuntimeError("TEAM_ONLY_ORPHANED_ASSIGNMENT_MAY_BE_RETIRED")
+        retirement = "Retired assignment (outcome UNKNOWN): " + json.dumps(operation, ensure_ascii=False, sort_keys=True)
+        if retirement not in body.splitlines():
+            raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RETIREMENT_NOT_RECORDED")
+        operation.update(kind="NONE", state="NONE", id="", evidence=[], command="none", inputs={})
+    if after["operation"] != operation:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_CHANGED_OPERATION")
+    local = _team_local(repo)
+    if new["epoch"] <= local["epoch_floor"]:
+        raise WorkflowRuntimeError("TEAM_RETIRED_EPOCH")
+    if any(item.get("state") in {"RESERVED", "UNKNOWN"} for item in local["operations"].values()):
+        raise WorkflowRuntimeError("TEAM_OUTSTANDING_EFFECT_RESERVATION")
+    _team_verify_paths(repo, after["source_manifest"])
+
+
 def resume_checkpoint(
     repo: Path, *, candidate: Path, expected_sha256: str,
     dry_run: bool = False, recover_from: str | None = None,
     integration_candidate: Path | None = None,
+    owner_recovery_instruction: str | None = None,
+    recovery_expected_head: str | None = None,
+    recovery_expected_epoch: int | None = None,
+    owner_recovery_retire_assignment: bool = False,
 ) -> dict[str, Any]:
     """Persist observations only. No dispatch, selector, Git delivery or admission."""
     from orchestrator.startup_runtime import validate_battle_v10_control
 
     payload = candidate.read_bytes()
     proposed, proposed_body = _resume_document(payload)
+    if owner_recovery_instruction is None and (recovery_expected_head is not None or recovery_expected_epoch is not None or owner_recovery_retire_assignment):
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_REQUIRED")
     if proposed["previous_sha256"] != expected_sha256:
         raise WorkflowRuntimeError("RESUME_EXPECTED_PREDECESSOR_MISMATCH")
     with _execution_writer_epoch(repo) as epoch:
@@ -4062,6 +4149,15 @@ def resume_checkpoint(
             raise WorkflowRuntimeError("RESUME_REVISION_CONFLICT")
         # A lost receipt is safely retryable only with the identical candidate and predecessor.
         if current == payload:
+            if owner_recovery_instruction is not None:
+                predecessors = [raw for kind, _, raw in records.values()
+                                if kind == "resume" and _resume_digest(raw) == expected_sha256]
+                if len(predecessors) != 1:
+                    raise WorkflowRuntimeError("RESUME_PREDECESSOR_ARCHIVE_MISSING")
+                prior, _ = _resume_document(predecessors[0])
+                _team_owner_recovery(repo, prior, proposed, proposed_body,
+                    instruction=owner_recovery_instruction, expected_head=recovery_expected_head,
+                    expected_epoch=recovery_expected_epoch, retire_assignment=owner_recovery_retire_assignment)
             if proposed["schema"] == "q3_resume.v2":
                 _team_actor(repo, proposed)
             if versions.get(proposed["revision"]) != payload:
@@ -4094,6 +4190,8 @@ def resume_checkpoint(
                 previous = None
                 if not recover_from:
                     raise WorkflowRuntimeError("RESUME_CORRUPT_REQUIRES_RECOVERY")
+        if owner_recovery_instruction is not None and previous is None:
+            raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_EXISTING_CHECKPOINT_REQUIRED")
         if recover_from:
             source = records.get(recover_from)
             if not source or source[0] not in {"resume", "intent"} or previous is not None:
@@ -4110,7 +4208,17 @@ def resume_checkpoint(
                 kind == "resume" for kind, _, _ in records.values())):
             raise WorkflowRuntimeError("RESUME_RECOVERY_REQUIRED")
         if previous is not None and (control.team_runtime_version == 1 or proposed["schema"] == "q3_resume.v2"):
-            _team_owner_transition(repo, previous, proposed)
+            if owner_recovery_instruction is not None:
+                if recover_from is not None:
+                    raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_NOT_CORRUPTION_RECOVERY")
+                _team_owner_recovery(
+                    repo, previous, proposed, proposed_body,
+                    instruction=owner_recovery_instruction,
+                    expected_head=recovery_expected_head, expected_epoch=recovery_expected_epoch,
+                    retire_assignment=owner_recovery_retire_assignment,
+                )
+            else:
+                _team_owner_transition(repo, previous, proposed)
         elif proposed["schema"] == "q3_resume.v2":
             _team_actor(repo, proposed)
             if proposed["ownership"]["epoch"] < _team_local(repo)["epoch_floor"]:
@@ -4139,6 +4247,8 @@ def resume_checkpoint(
         _resume_history(updated_history)
         if not dry_run:
             epoch.recheck()
+            if owner_recovery_instruction is not None and _team_git(repo, "rev-parse", "HEAD").decode().strip() != recovery_expected_head:
+                raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_PREIMAGE_CHANGED")
             if (validate_battle_v10_control(repo) != control
                     or _resume_file(repo, TOOLS) != manifest):
                 raise WorkflowRuntimeError("RESUME_AUTHORITY_CHANGED")
@@ -6360,6 +6470,10 @@ def main() -> int:
     resume_parser = subparsers.add_parser("resume-checkpoint")
     resume_parser.add_argument("--candidate", type=Path, required=True)
     resume_parser.add_argument("--expected-sha256", required=True)
+    resume_parser.add_argument("--owner-recovery-instruction")
+    resume_parser.add_argument("--recovery-expected-head")
+    resume_parser.add_argument("--recovery-expected-epoch", type=int)
+    resume_parser.add_argument("--owner-recovery-retire-assignment", action="store_true")
     resume_parser.add_argument("--integration-candidate", type=Path,
         help="Read a prepared repair-review intake manifest for checkpoint preflight only; never execute intake")
     resume_mode = resume_parser.add_mutually_exclusive_group()
@@ -6409,6 +6523,10 @@ def main() -> int:
                 repo, candidate=args.candidate, expected_sha256=args.expected_sha256,
                 dry_run=args.dry_run, recover_from=args.recover_from,
                 integration_candidate=args.integration_candidate,
+                owner_recovery_instruction=args.owner_recovery_instruction,
+                recovery_expected_head=args.recovery_expected_head,
+                recovery_expected_epoch=args.recovery_expected_epoch,
+                owner_recovery_retire_assignment=args.owner_recovery_retire_assignment,
             )
         except (WorkflowRuntimeError, StartupRuntimeError, OSError, subprocess.SubprocessError) as exc:
             result = {"status": "HOLD", "reason": str(exc),

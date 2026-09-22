@@ -5335,6 +5335,136 @@ class TeamRuntimeTests(unittest.TestCase):
         (self.repo / workflow_runtime.TEAM_ISSUES).write_bytes(b"# Fixture issues\n")
         (self.repo / workflow_runtime.TEAM_ASSIGNMENTS).write_bytes(b"# Fixture assignments\n")
 
+    def _owner_recovery_fixture(self, *, assignment=False):
+        control = self.repo / "docs/CODEX_CONTROL.md"
+        control.write_text(control.read_text().replace("CONTROL_VERSION: 10", "CONTROL_VERSION: 12\nTEAM_RUNTIME_VERSION: 1"))
+        data = self.data()
+        if assignment:
+            data["operation"].update(kind="ASSIGN", command="agent-launch")
+        data["ownership"]["installation_ref"] = "f" * 64  # unavailable prior host
+        first = self.install(data)
+        subprocess.run(["git", "-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+                        "commit", "--allow-empty", "-qm", "recovery base"], cwd=self.repo, check=True)
+        head = workflow_runtime._team_git(self.repo, "rev-parse", "HEAD").decode().strip()
+        new = copy.deepcopy(data)
+        new.update(revision=2, previous_sha256=workflow_runtime._resume_digest(first), reconciliation_pending=True)
+        new["ownership"].update(installation_ref=self.identity, epoch=2)
+        new["operation"]["state"] = "UNKNOWN"
+        instruction = "Continue here; recover ownership after my move."
+        marker = "Owner recovery instruction: " + json.dumps(instruction, ensure_ascii=False)
+        raw = self.document(new).replace(b"## Existing work\n", ("## Existing work\n" + marker + "\n").encode())
+        options = dict(owner_recovery_instruction=instruction, recovery_expected_head=head, recovery_expected_epoch=1)
+        return first, new, raw, options
+
+    def test_owner_recovery_archives_preserves_unknown_and_replays(self):
+        first, new, raw, options = self._owner_recovery_fixture()
+        history = self.fixture.history.read_bytes()
+        expected = workflow_runtime._resume_digest(first)
+        self.assertEqual(self.fixture.save(raw, expected, dry_run=True, **options)["status"], "DRY_RUN")
+        self.assertEqual(self.fixture.history.read_bytes(), history)
+        self.assertEqual(self.fixture.save(raw, expected, **options)["status"], "SAVED")
+        self.assertEqual(self.fixture.save(raw, expected, **options)["status"], "NOOP")
+        self.assertIn(("resume", 1, first), workflow_runtime._resume_history(self.fixture.history.read_bytes()).values())
+        current = workflow_runtime._team_current(self.repo)[1]
+        self.assertEqual(current, new)
+        old, _ = workflow_runtime._resume_document(first)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OBSERVER_ONLY"):
+            workflow_runtime._team_actor(self.repo, old)
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "CANNOT_CLEAR_RECONCILIATION"):
+            workflow_runtime._team_owner_transition(self.repo, current, {**current, "reconciliation_pending": False})
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RECONCILIATION_REQUIRED"):
+            workflow_runtime.team_reserve_effect(self.repo, operation_id=current["operation"]["id"])
+
+    def test_owner_recovery_rejects_stale_inputs_and_changed_proof_state(self):
+        first, new, raw, options = self._owner_recovery_fixture()
+        history = self.fixture.history.read_bytes()
+        expected = workflow_runtime._resume_digest(first)
+        mutations = [dict(recovery_expected_head="0" * 40), dict(recovery_expected_epoch=9),
+                     dict(owner_recovery_instruction=""), dict(owner_recovery_instruction="Unrecorded")]
+        for change in mutations:
+            with self.subTest(change=change), self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                self.fixture.save(raw, expected, **{**options, **change})
+        for key in ("pins", "source_manifest", "operation"):
+            changed = copy.deepcopy(new)
+            if key == "pins": changed[key]["head"] = "c" * 40
+            elif key == "source_manifest": changed[key]["docs/source.md"] = "c" * 64
+            else: changed[key]["id"] = "replacement"
+            changed_raw = raw.replace(workflow_runtime.yaml.safe_dump(new, sort_keys=False).encode(),
+                                      workflow_runtime.yaml.safe_dump(changed, sort_keys=False).encode())
+            with self.subTest(key=key), self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                self.fixture.save(changed_raw, expected, **options)
+        self.assertEqual(self.fixture.current.read_bytes(), first)
+        self.assertEqual(self.fixture.history.read_bytes(), history)
+
+    def test_owner_recovery_pending_effect_and_epoch_floor_fence(self):
+        first, new, raw, options = self._owner_recovery_fixture()
+        local = workflow_runtime._team_local(self.repo)
+        for changed in ({**local, "operations": {"unsettled": {"state": "UNKNOWN"}}},
+                        {**local, "epoch_floor": 3}):
+            with mock.patch.object(workflow_runtime, "_team_local", return_value=changed), \
+                 self.assertRaises(workflow_runtime.WorkflowRuntimeError):
+                self.fixture.save(raw, workflow_runtime._resume_digest(first), **options)
+        self.assertEqual(self.fixture.current.read_bytes(), first)
+
+    def test_owner_recovery_v1_rejected_and_watch_needed_to_clear(self):
+        first, new, raw, options = self._owner_recovery_fixture()
+        _, body = workflow_runtime._resume_document(raw)
+        v1, _ = workflow_runtime._resume_document(self.fixture.document())
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "V2_REQUIRED"):
+            workflow_runtime._team_owner_recovery(self.repo, v1, new, body,
+                instruction=options["owner_recovery_instruction"],
+                expected_head=options["recovery_expected_head"], expected_epoch=1)
+        new["operation"].update(state="CONFIRMED", evidence=["prior-observation"])
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "WATCH_RECONCILIATION_REQUIRED"):
+            workflow_runtime._team_owner_transition(self.repo, new, {**new, "reconciliation_pending": False})
+
+    def test_owner_recovery_crash_after_archive_reuses_intent(self):
+        first, new, raw, options = self._owner_recovery_fixture()
+        atomic = workflow_runtime._atomic_bytes
+        def crash(path, payload):
+            atomic(path, payload)
+            if path == self.fixture.history:
+                raise OSError("recovery power loss")
+        with mock.patch.object(workflow_runtime, "_atomic_bytes", side_effect=crash), self.assertRaises(OSError):
+            self.fixture.save(raw, workflow_runtime._resume_digest(first), **options)
+        self.assertEqual(self.fixture.current.read_bytes(), first)
+        self.assertEqual(self.fixture.save(raw, workflow_runtime._resume_digest(first), **options)["status"], "SAVED")
+
+    def test_owner_recovery_retires_only_agent_assignment_and_fences_replay(self):
+        first, new, raw, options = self._owner_recovery_fixture(assignment=True)
+        old_operation = copy.deepcopy(new["operation"])
+        new["operation"].update(kind="NONE", state="NONE", id="", evidence=[], command="none", inputs={})
+        new["reconciliation_pending"] = False
+        _, body = workflow_runtime._resume_document(raw)
+        body += "\nRetired assignment (outcome UNKNOWN): " + json.dumps(old_operation, ensure_ascii=False, sort_keys=True) + "\n"
+        retired = ("---\n" + workflow_runtime.yaml.safe_dump(new, sort_keys=False) + "---\n" + body).encode()
+        options["owner_recovery_retire_assignment"] = True
+        expected = workflow_runtime._resume_digest(first)
+        self.assertEqual(self.fixture.save(retired, expected, **options)["status"], "SAVED")
+        self.assertEqual(self.fixture.save(retired, expected, **options)["status"], "NOOP")
+        self.assertFalse(workflow_runtime._team_current(self.repo)[1]["reconciliation_pending"])
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RETIRED_ASSIGNMENT_CANNOT_REPLAY"):
+            workflow_runtime.team_reserve_effect(self.repo, operation_id=old_operation["id"])
+
+    def test_owner_recovery_cannot_retire_uncertain_external_send(self):
+        first, new, raw, options = self._owner_recovery_fixture()
+        new["reconciliation_pending"] = False
+        changed = raw.replace(b"reconciliation_pending: true", b"reconciliation_pending: false")
+        with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "ONLY_ORPHANED_ASSIGNMENT"):
+            self.fixture.save(changed, workflow_runtime._resume_digest(first),
+                owner_recovery_retire_assignment=True, **options)
+
+    def test_retirement_malformed_history_returns_typed_hold(self):
+        data = self.data()
+        history = self.fixture.history.read_bytes()
+        for value in ("not json", "[]", "null", "{}"):
+            raw = self.document(data) + ("\nRetired assignment (outcome UNKNOWN): " + value + "\n").encode()
+            self.fixture.current.write_bytes(raw)
+            _, entry = workflow_runtime._resume_history_record("intent", 1, raw)
+            self.fixture.history.write_bytes(history + entry)
+            with self.subTest(value=value), self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "RETIREMENT_INVALID"):
+                workflow_runtime.team_reserve_effect(self.repo, operation_id=data["operation"]["id"])
+
     def data(self):
         data, _ = workflow_runtime._resume_document(self.fixture.document())
         request = {"kind": "REQUEST", "id": "REQ-EXISTING", "sha256": "a" * 64}
@@ -5790,7 +5920,7 @@ class TeamRuntimeTests(unittest.TestCase):
             (str(workflow_runtime.RESUME_HISTORY_PATH), lambda b: b.replace(b"q3_resume", b"x3_resume", 1)),
             (str(workflow_runtime.RESUME_PATH), lambda b: b.replace(b"previous_sha256: ", b"previous_sha256: 0", 1)),
             (fixture["record"], lambda b: b + b"undeclared change\n"),
-            ("docs/CODEX_CONTROL.md", lambda b: b.replace(b"CONTROL_VERSION: 11", b"CONTROL_VERSION: 10")),
+            ("docs/CODEX_CONTROL.md", lambda b: b.replace(b"CONTROL_VERSION: 12", b"CONTROL_VERSION: 10").replace(b"CONTROL_VERSION: 11", b"CONTROL_VERSION: 10")),
         ):
             with self.subTest(path=relative):
                 path = self.repo / relative
@@ -6854,7 +6984,7 @@ class TeamRuntimeTests(unittest.TestCase):
         full_control = (destination / "docs/CODEX_CONTROL.md").read_bytes()
         if migrate_control:
             (destination / "docs/CODEX_CONTROL.md").write_bytes(full_control.replace(
-                b"CONTROL_VERSION: 11\n", b"CONTROL_VERSION: 10\n"))
+                b"CONTROL_VERSION: 12\n", b"CONTROL_VERSION: 10\n").replace(b"CONTROL_VERSION: 11\n", b"CONTROL_VERSION: 10\n"))
         git(destination, "add", ".")
         git(destination, "commit", "-qm", "Integration destination baseline")
         expected_head = git(destination, "rev-parse", "HEAD")
@@ -7396,7 +7526,7 @@ class TeamRuntimeTests(unittest.TestCase):
         seed, remote, owner = root / "seed", root / "remote.git", root / "owner"
         owner_id = "01a084f4-7498-7021-bac2-91d184d58dc7"
         full_control = (Path(__file__).resolve().parents[2] / "docs/CODEX_CONTROL.md").read_text()
-        old_control = full_control.replace("CONTROL_VERSION: 11\n", "CONTROL_VERSION: 10\n").replace(
+        old_control = full_control.replace("CONTROL_VERSION: 12\n", "CONTROL_VERSION: 10\n").replace("CONTROL_VERSION: 11\n", "CONTROL_VERSION: 10\n").replace(
             "TEAM_RUNTIME_VERSION: 1\n", "")
         full_tools = (Path(__file__).resolve().parents[2] / str(workflow_runtime.TOOLS)).read_bytes()
         old_tools = (

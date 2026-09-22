@@ -818,6 +818,7 @@ tool_families:
         last_verified: 2026-09-01
 
       - id: workflow-resume-checkpoint
+        owner_recovery: "Control v12: explicit human instruction, exact HEAD/checkpoint/epoch, preserved history and UNKNOWN operation; --owner-recovery-instruction --recovery-expected-head --recovery-expected-epoch; optional --owner-recovery-retire-assignment archives UNKNOWN agent launch and forbids replay"
         classification: AUTOMATIC
         status: ENABLED
         audience: [CODEX, HUMAN]
