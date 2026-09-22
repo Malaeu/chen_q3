@@ -232,3 +232,148 @@ commission a new uniform second-derivative theorem merely to reproduce a
 projection-tail conclusion already available conditionally. The Euler/Fokas
 row estimate remains a valid optional mechanism, not an additional required
 axiom of Goal058. These files were read, not rebuilt or admitted in this turn.
+
+
+## Audit of the shared rate inputs (HEAD 3e3a79cf)
+
+The inspected transfer declarations do not discharge their raw asymptotic
+premises. This is a statement audit, not a repository-wide absence theorem:
+
+- `G6N1SelectedFerrersDirectCylinderRate.lean:272` consumes two source
+  families at the selected project eigenvalues, nonzero scale functions,
+  and eventual FULL-window raw bounds hraw0/hraw4 by rawC/gamma. Its outputs
+  have constants 2 rawC0/pi and 94 rawC4/(3 pi) at lambda^(-2). These are
+  explicit transfer constants, not witnesses for hraw0/hraw4.
+- `G6N1FuchsSelectedEigenvalueDefectRate.lean:139` consumes positive mu0/mu4,
+  exact paper Fourier eigenrelations on the rescaled selected modes and
+  concentration defects |1-mu²/(2pi)|≤C/a². The proven output has Cchi=C0+C4.
+  Positive phase and raw defect estimates remain inputs.
+- `G6N1SelectedFerrersCenterIntegralRate.lean:49` derives integral rates
+  FROM hchi. Using that result to obtain hchi would be circular. Its header
+  explicitly records the lost power from integrating only a sup-error over
+  an expanding physical window.
+- `G6N1Satz9SourcePackageInterface.lean` states that a payload inhabitant
+  alone cannot enforce source provenance or supply Satz9 asymptotics.
+  A source-only theorem and separate eigenvalue identification are needed.
+
+The existing Meixner-Schaefke usage card records both a raw O(gamma^(-3/4))
+mode remainder (becoming O(gamma^(-1)) after the leading scale) and eigenvalue
+asymptotics. It is historical paper evidence, not newly verified book bytes
+or a Lean proof of the selected rates. Do not confuse these raw exponents.
+
+Decision: follow the exact raw Satz9 source theorem and its eigenvalue bind
+before adding another rate-composition wrapper. The Fokas Euler mechanism
+remains optional. The current browser still displayed the original Fokas
+VERDICT preview; no new request was sent and no new response was claimed.
+
+
+## Source-pinned exploratory alias brief: raw fixed-mode asymptotics
+
+Target: hraw0/hraw4 of G6N1SelectedFerrersDirectCylinderRate.lean:272
+at HEAD 3e3a79cf, read above. For each fixed degree n=0,4, lambda=√m,
+gamma=2pi m, need nonzero scale a_m and source solution p_m at the selected
+separation eigenvalue, with sup_{|x|≤lambda}|a_m p_m(x)−D_n(2√pi x)|≤C/gamma
+eventually, C independent of m. Source/project matching must precede spending
+this bound. Existing composition supplies its consequence, not this input.
+
+Negative control: same ODE and regularity alone allow arbitrary scalar
+multiples. Replacing a center-normalized degree-zero candidate f_m by 2f_m
+leaves a center error 1, incompatible with C/gamma→0. A theorem only on fixed
+physical compact sets is also insufficient for the expanding full window.
+
+Search dictionaries: (1) spheroidal wave, fixed degree, parabolic cylinder;
+(2) Sturm-Liouville, coalescing turning points, uniform error bounds;
+(3) semiclassical harmonic oscillator, low eigenstates, expanding interval.
+UNVERIFIED rewrites: harmonic-oscillator localization plus exterior decay;
+Weber uniform asymptotics with source normalization. Preserve both endpoint
+and center control. Worked existing mechanism: centerNormalizedSatz9Rate
+transfers an already-proved raw rate after a denominator guard; it cannot
+create the raw rate. Stop after inspecting one primary proof source and
+recording its domain, normalization, and exact unmatched hypotheses.
+Status INCOMPLETE_NO_CONSUMABLE_TARGET: production theorem/consumer edge is
+still unbound; this is bounded exploratory discovery, not supplier admission.
+
+
+## Alias result and a compact-test reduction of the theta input
+
+The registered shelf query `Satz9 spheroidal parabolic-cylinder` finished
+exit 2, INCOMPLETE (semantic freshness), with positive local Lean hits.
+No absence claim. An exact-name shelf pass found the already stored primary
+source Dunster, arXiv:1601.00699v3, "Asymptotics of Prolate Spheroidal Wave
+Functions": https://arxiv.org/abs/1601.00699v3 . Landing metadata verified live.
+
+Local source: docs/routeB_bus/litreview/pdfs/survey_2026-09-03_sources/
+pswf_asym_1601.00699.pdf; SHA256
+29dcb15d2b9d30ecd983e8fd2b835c6ab3e35224df5e7f0e56b0f5ac08144452.
+Extracted text SHA256
+1401c793807d9aa986a9c81016c9f4a840fc932cdb788b9cf77e7842c039f9e0.
+Read section 5, printed pp16–18, equations (5.2), (5.9)–(5.19).
+Precise domain quote after (5.19): "uniformly for 0 ≤ x ≤ 1 − δ0".
+
+Classification: source-verified PARTIAL mechanism, not exact hraw fit.
+Paper order m=0, fixed degree n=0 or4, gamma=2pi*m_project,
+paper x=y/sqrt(m_project). The fixed-mode expansion uses a perturbed Weber
+coordinate and O(gamma^(-1) log gamma) envelope error on a truncated interval.
+Thus endpoints, envelope-to-absolute conversion, parameter/coordinate shift,
+normalization and log loss prevent immediate use as the required full-window
+C/gamma bound. The paper's eigenvalue asymptotic also needs exact branch
+identification. Center-normalization is essential for the scalar negative
+control. Do not relabel (5.19) as Satz9's stronger raw statement.
+
+### New PAPER implication: compact mode rate implies eigenvalue defect bound
+
+This implication is independently derived from the physical ODE; it does not
+import Dunster's asymptotic theorem. Let m→∞, e∈R fixed. On (-sqrt(m),sqrt(m)),
+f_m∈C² solves
+
+    −((1−y²/m) f_m′)′ + 4pi² y² f_m = (theta_m/m) f_m.
+
+Let real D satisfy L∞D=eD, L∞=−d²/dy²+4pi²y². On a fixed [-R,R], assume
+sup |f_m−D|≤C/m eventually, C≥0. Even full-window mode rates are unnecessary
+for this implication. Choose fixed φ∈C_c²(−R,R) and J=∫Dφ≠0. Set
+
+    Tφ=(y²φ′)′=y²φ″+2yφ′,
+    A=||L∞φ−eφ||₁, B=||Tφ||₁, P=||φ||₁,
+    M=sup_supp(φ)|D|.
+
+All these constants are finite and independent of m. Twice integrating by
+parts, with φ and φ′ zero at the integration endpoints, gives the EXACT
+identity
+
+    (theta_m−em)∫f_mφ
+      = m∫(f_m−D)(L∞φ−eφ) + ∫f_m Tφ.
+
+Indeed L_mφ=L∞φ+Tφ/m, and self-adjoint integration for D gives
+∫D(L∞φ−eφ)=0. This uses bilinear complex integrals consistently; D and φ
+can be real in the actual application. It never differentiates f_m−D.
+
+For m≥1, m>R² and m≥2CP/|J|, with the mode bound valid,
+
+    |∫f_mφ| ≥ |J|−CP/m ≥ |J|/2,
+    |theta_m−em| ≤ (2/|J|)[C A+(M+C)B].
+
+For n=0,4 take D=D_n(2sqrt(pi)y), e=2pi(2n+1). One explicit admissible
+choice is φ(y)=(1−y²)^3 D(y) on [-1,1], zero outside, using any fixed R>1.
+This zero extension is C², J=∫_(−1)^1(1−y²)^3D(y)²dy>0 since D(0)=1 or3.
+No unspecified bump-function or nonzero-overlap hypothesis remains.
+
+The project's physical prolate equation has theta=Lambda+mode4JacobiG m
+and lambda²=m; division by m gives exactly the displayed equation. Multiplying
+a mode by its center-anchor scalar preserves it on the interior. Hence the
+two hmode bounds, once supplied for these actual modes, imply a common htheta
+by taking the maximum of the two finite constants. This is PAPER, not yet a
+Lean theorem. It does NOT supply hmode, hchi, ground identification or RH.
+
+Independent /root/recovery_review confirmed identity, constants, complex
+pairing and eventual thresholds. Parent independently checked both oscillator
+identities by exact integer polynomial arithmetic: for P0=1 and
+P4=16t^4−24t²+3, −P″+4tP′−4nP=0, t=sqrt(pi)y.
+An attempted optional SymPy check found the package unavailable; no install
+was made; the integer calculation provides the stated algebra check.
+
+Decision effect: htheta need not be commissioned as a separate asymptotic
+supplier if hmode is proved without assuming htheta. The remaining shared
+analytic entrances are then hmode and hchi; hFamily/finite-ground matching is
+still separate. Next: inspect hmode proof dependencies before formalizing this
+compact-test bridge, and seek a same-source hchi supplier. Do not use this
+implication to justify an hmode proof that already assumes htheta.
