@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 326
-observed_at: '2026-09-22T11:00:55.658143+00:00'
-previous_sha256: 3fc2ee85e6f83991a38c585fde02316bf0abe712c30448850678f3b96a784827
+revision: 327
+observed_at: '2026-09-22T11:09:02.070290+00:00'
+previous_sha256: 0267652134b37e1507a99264627ca86fd79206ba72ed5c22c6628acaf91e9a59
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Candidate 344f7eacf946cf20cfc003880d9c6e8e123e0ca2d812c590c8dac5ea86c7d0e1 q3_check exit0; independent exact-byte review. Selected anchored eigenrelations derived directly from selectedFerrersPreAnchorPair_spec and support fields; no new eigenrelation premise. All10 printed dependencies standard axioms only. Uses available dependency oleans, not fresh-clone admission. Generic hchi rate proved, actual target/moment/family assembly incomplete.
+Candidate extends exact selected anchored eigenrelations with actual cylinderTarget definitions, target_zero_fixed, target_four_fixed, target_zero_moment, exact D4=16 explicitCCMLimitH+3 D0 decomposition and ccm_integrable. q3_check passes; independent review source/sign/no circularity. No full selected hchi assembly or RH closure.
 
 ## Next action
-Continue candidate with concrete D0/D4 target self-Fourier, moments and nonzero square integral, plus integrability of anchored selected sources and lambda dictionary. F_eq_finiteFourierAction and selected_anchored_eigen now compile and bind exact actual mode0/4 chi0/chi2 with center anchors; do not redo. Then eventual hchi from hmode. hmode still open, htheta bridge paper only, production exact edge UNBOUND.
+Continue concrete D0/D4 moments and positive square integral, source integrability and exact lambda dictionary, then eventual selected-family hchi from hmode. Both actual targets now have kernel-checked plus-phase self-Fourier and target0 all polynomial moments. hmode remains unproved; htheta bridge paper only; production exact edge UNBOUND.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

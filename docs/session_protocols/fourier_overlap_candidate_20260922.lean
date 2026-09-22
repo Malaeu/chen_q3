@@ -1,6 +1,7 @@
 import Mathlib
 import Q3.Proofs.RouteB.ProlateSourceRegularity
 import Q3.Proofs.RouteB.G6N1CenterAnchorScalarLock
+import Q3.Proofs.RouteB.D0PstarExplicitCCMLimitFourier
 open MeasureTheory Set
 open scoped FourierTransform
 noncomputable section
@@ -320,4 +321,85 @@ theorem selected_anchored_eigen (k : ℕ) :
     by_contra hne
     exact hx ((selectedFerrersPreAnchorPair k).h4_support hne)
 #print axioms selected_anchored_eigen
+open Q3.RouteB.D0Pstar
+
+def cylinderTarget (n : ℕ) (x : ℝ) : ℂ :=
+  (parabolicCylinderD n (projectCylinderArgument x) : ℂ)
+
+theorem target_zero_gaussian (x : ℝ) :
+    cylinderTarget 0 x = Complex.exp (-Real.pi * (x : ℂ)^2) := by
+  unfold cylinderTarget
+  rw [parabolicCylinderD_zero_projectArgument, Complex.ofReal_exp]
+  congr 1
+  push_cast
+  ring
+
+theorem target_zero_fixed : F (cylinderTarget 0) = cylinderTarget 0 := by
+  have hfourier : 𝓕 (cylinderTarget 0) = cylinderTarget 0 := by
+    simp_rw [funext target_zero_gaussian]
+    simpa using (fourier_gaussian_pi (b := (1 : ℂ)) (by norm_num))
+  rw [F_eq_inverse]
+  funext x
+  rw [Real.fourierInv_eq_fourier_neg, hfourier]
+  simp [cylinderTarget, parabolicCylinderD_zero_projectArgument]
+
+theorem target_zero_moment (n : ℕ) :
+    Integrable (fun x : ℝ => x^n • cylinderTarget 0 x) := by
+  have hr : Integrable (fun x : ℝ => x^n * Real.exp (-Real.pi*x^2)) := by
+    simpa only [Real.rpow_natCast] using
+      (integrable_rpow_mul_exp_neg_mul_sq Real.pi_pos
+        (show (-1 : ℝ) < (n : ℝ) by
+          exact lt_of_lt_of_le (by norm_num) (Nat.cast_nonneg n)))
+  have hc : Integrable (fun x : ℝ => ((x^n * Real.exp (-Real.pi*x^2) : ℝ) : ℂ)) := hr.ofReal
+  convert hc using 1
+  funext x
+  simp [cylinderTarget, parabolicCylinderD_zero_projectArgument,
+    Complex.real_smul]
+
+theorem target_four_decomposition : cylinderTarget 4 =
+    fun x => (16 : ℂ) * explicitCCMLimitH x + 3 * cylinderTarget 0 x := by
+  funext x
+  rw [target_zero_gaussian]
+  unfold cylinderTarget explicitCCMLimitH
+  rw [parabolicCylinderD_four_projectArgument]
+  push_cast
+  ring
+
+theorem ccm_integrable : Integrable explicitCCMLimitH := by
+  have h := ((target_zero_moment 4).const_mul ((Real.pi : ℂ)^2)).sub
+    ((target_zero_moment 2).const_mul (3*(Real.pi : ℂ)/2))
+  convert h using 1
+  funext x
+  simp only [Pi.sub_apply, Complex.real_smul]
+  rw [target_zero_gaussian]
+  unfold explicitCCMLimitH
+  push_cast
+  ring
+
+theorem target_four_fixed : F (cylinderTarget 4) = cylinderTarget 4 := by
+  have h0 : Integrable (cylinderTarget 0) := by
+    simpa using target_zero_moment 0
+  have hsum : cylinderTarget 4 =
+      (16 : ℂ) • explicitCCMLimitH + (3 : ℂ) • cylinderTarget 0 := by
+    exact target_four_decomposition
+  have h0f : 𝓕 (cylinderTarget 0) = cylinderTarget 0 := by
+    simp_rw [funext target_zero_gaussian]
+    simpa using (fourier_gaussian_pi (b := (1 : ℂ)) (by norm_num))
+  have hadd {f g : ℝ → ℂ} (hf : Integrable f) (hg : Integrable g) :
+      𝓕 (f+g) = 𝓕 f + 𝓕 g :=
+    VectorFourier.fourierIntegral_add Real.continuous_fourierChar continuous_inner hf hg
+  have hsmul (c : ℂ) (f : ℝ → ℂ) : 𝓕 (c • f) = c • 𝓕 f :=
+    VectorFourier.fourierIntegral_const_smul _ _ _ _ _
+  have h4f : 𝓕 (cylinderTarget 4) = cylinderTarget 4 := by
+    rw [hsum, hadd (ccm_integrable.smul (16 : ℂ)) (h0.smul (3 : ℂ))]
+    rw [hsmul, hsmul, fourier_explicitCCMLimitH, h0f]
+  rw [F_eq_inverse]
+  funext x
+  rw [Real.fourierInv_eq_fourier_neg, h4f]
+  simp [cylinderTarget, parabolicCylinderD_four_projectArgument]
+  <;> ring
+
+#print axioms target_four_fixed
+#print axioms target_zero_fixed
+#print axioms target_zero_moment
 end Q3OverlapProbe

@@ -545,3 +545,28 @@ this is a narrow candidate check, not a fresh-clone production admission.
 Remaining: target D0/D4 self-Fourier/moments/nonzero square integral,
 source integrability and exact window dictionary, eventual assembly, and
 actual hmode supplier. No complete selected-family chi rate claimed yet.
+
+## Concrete cylinder target Fourier self-duality
+
+Candidate SHA256 ca7aa7a17f20cf51cc61345a9a835c4e98ae3970423d65d27cf4d96effa8f6fb.
+The candidate now defines cylinderTarget n using the actual parabolicCylinderD
+and projectCylinderArgument. target_zero_fixed and target_four_fixed prove
+Fplus D0=D0 and Fplus D4=D4. The minus-sign Mathlib transform is converted
+through fourierInv_eq_fourier_neg and evenness, explicitly.
+
+target_four_decomposition proves D4=16 explicitCCMLimitH+3 D0.
+target_zero_moment proves integrability of x^n smul D0 for every natural n;
+ccm_integrable follows from its degree2/4 moments. No self-Fourier premise
+or circular chi input was added.
+
+Canonical q3_check exit0; thirteen printed theorem dependencies standard only.
+Independent recovery_review compiled and approved the exact hash above.
+One unnecessarySeqFocus style warning remains; dependency UnicodeBasic had
+preexisting local changes. This uses current dependency oleans, not a fresh
+clone check or production admission.
+
+Remaining target obligations: D4 and squared weighted moments, nonzero square
+integrals; then source integrability, lambda dictionary and eventual selected
+family chi assembly. hmode remains unproved, htheta reduction PAPER only,
+finite-ground identification and off-line zero-freeness separate and open.
+PX_RH_CLAIM: NOT_MADE.
