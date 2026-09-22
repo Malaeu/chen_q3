@@ -1,0 +1,2253 @@
+REQUEST_ID: REQ-2026-09-22-HMODE-QUASIMODE
+BOUNDARY_ID: SELECTED_FERRERS_FULL_WINDOW_MODE_RATE_PAPER_AUDIT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: CANDIDATE_SELECTED_FERRERS_HMODE_20260922
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_ANALYTIC_TRIAL_LIMIT
+SOURCE_OBJECT_FAMILY_ID: SELECTED_CENTER_ANCHORED_FERRERS_MODES_0_4
+TERMINAL_CONSUMER_ID: selected_locally_uniform_xi_of_mode_rate
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: PLUS_FOURIER_LAMBDA_SQ_M_GAMMA_2PI_M_CENTER_1_3
+TRANSPORT_STATUS: PREPARED_NOT_SENT_PHASE_BINDING_UNRESOLVED
+
+Прошка, проверь всю новую PAPER-цепь до точного hmode, не RH.
+Эти заголовки описывают КАНДИДАТ фазового контракта; они не утверждают,
+что runtime уже переключён со старого signed-Weil-source чата.
+Нужен KILL_* с первым неверным переходом либо TRY_*/RUN_* с явным перечнем
+доказанных PAPER шагов и следующего формального узла. Никакого повышения
+до RH, production admission или Lean без соответствующей проверки.
+
+Точная цель: существуют C0,C4>=0, и для всех достаточно больших k,
+m=k+2, lambda=sqrt(m), одновременно на ВСЁМ [-lambda,lambda]
+|centerAnchorScalarZero*h0-D0(2sqrt(pi)x)|<=C0/m,
+|centerAnchorScalarFour*h4-D4(2sqrt(pi)x)|<=C4/m.
+Последующий isolated Lean consumer выводит hchi,htheta и аналитический
+локально-равномерный предел из ЭТОЙ гипотезы. Он не доказывает её.
+Finite CCM ground, cofinal tracking и zero-free остаются отдельными.
+
+Особенно атакуй:
+1. Плотность полиномов в вырожденной норме формы и endpoint clipping.
+2. Точный carrier: порядок, допустимые d, factor2, +G и /m.
+3. Совместную компактность первых p+1 векторов, liminf/minmax и EVEN gap.
+4. Область оператора выбранной Ferrers-моды и quasimode, rank-one.
+5. Точную поправку Q, знак beta и residual O(m^-2).
+6. Билинейное Fourier pairing с хвостом, отсутствие кругового hchi.
+7. Потерю m^(1/4), отдельный контроль явной поправки, заданный center anchor.
+8. Какие шаги требуют новых Lean теорем и не следуют из имеющихся imports.
+Отдельно различи новую прямую теорему о выбранных модах и импорт внешнего
+Satz9-source: здесь не заявляется независимый исторический источник ps_n.
+
+SOURCE_COMMIT: d2e7db44d679dcbedeb5ee4bdfb3747bee88eb00
+
+# PROSHKA EVIDENCE PACK
+Generated: 2026-09-22 14:21:24
+Repo: /Users/emalam/GitHub/rh_lean_01_2026
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## rh_clean...origin/rh_clean [ahead 22]
+?? 1653edc4-9853-46db-bd37-73595b48bfc8-aristotle.tar.gz
+?? orchestrator/state/knowledge.db
+?? q3.lean.aristotle/EnvDumpRun_niy6d214.lean
+
+
+## Git log
+
+d2e7db44 [mac rh_clean] assemble paper selected mode rate from spectral quasimodes
+6edaa411 [mac rh_clean] prove paper Legendre form core and exact carrier identification
+32510b9b [mac rh_clean] audit prolate gap and record independent spectral limit mechanism
+5cfe4970 [mac rh_clean] verify corrected prolate quasimode residuals for modes zero and four
+
+
+## File: docs/session_protocols/quasimode_first_correction_20260922.py
+
+from fractions import Fraction as F
+
+def add(a,b):
+ c=dict(a)
+ for k,v in b.items(): c[k]=c.get(k,F(0))+v
+ return {k:v for k,v in c.items() if v}
+def mul(a,b):
+ c={}
+ for i,x in a.items():
+  for j,y in b.items(): c[i+j]=c.get(i+j,F(0))+x*y
+ return {k:v for k,v in c.items() if v}
+def sc(a,c):return {k:v*c for k,v in a.items() if v*c}
+def der(a):return {k-1:k*v for k,v in a.items() if k}
+def A(p,n):return add(add(sc(der(der(p)),-1),mul({1:F(4)},der(p))),sc(p,-4*n))
+def T(p):return add(add(mul({2:F(1)},der(der(p))),mul({1:F(2),3:F(-4)},der(p))),mul({4:F(4),2:F(-6)},p))
+def solve(mat):
+ n=len(mat)
+ for j in range(n):
+  i=next(i for i in range(j,n) if mat[i][j])
+  mat[j],mat[i]=mat[i],mat[j];c=mat[j][j];mat[j]=[x/c for x in mat[j]]
+  for i in range(n):
+   if i!=j:
+    c=mat[i][j];mat[i]=[a-c*b for a,b in zip(mat[i],mat[j])]
+ return [row[-1] for row in mat]
+for n,p in [(0,{0:F(1)}),(4,{0:F(3),2:F(-24),4:F(16)})]:
+ beta=-F((2*n+1)**2+5,8)
+ powers=list(range(0,n+5,2));rhs=add(sc(p,beta),sc(T(p),-1))
+ # Free multiple of P fixed by Q(0)=0; omit highest identically-zero equation.
+ rows=[[A({d:F(1)},n).get(k,F(0)) for d in powers]+[rhs.get(k,F(0))] for k in powers[:-1]]
+ rows.append([F(d==0) for d in powers]+[F(0)])
+ q=dict(zip(powers,solve(rows)))
+ assert A(q,n)==rhs
+ residual=add(T(q),sc(q,-beta))
+ assert q[0]==0
+ print('n=',n,'beta=',beta,'P=',p,'Q=',q,'R=',residual)
+ print('EXACT: (L_m-(pi*(4*n+2)+beta/m)) exp(-t²)*(P+Q/(pi*m)) = exp(-t²)*R/(pi*m²)')
+
+AUTHORITATIVE PAPER ARGUMENT EXCERPT
+SOURCE docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md SHA256 159f03f376f87a0b7b568ee392c2745bb49e9a75eaf9af2bfc10e11de09e74ac
+## Source recheck and corrected quasimode route to the remaining hmode
+
+Primary source re-read locally: Meixner-Schaefke (1954),
+`docs/routeB_bus/litreview/pdfs/978-3-662-00941-3.pdf`, SHA256
+f56225d83e49ea439e28ab85c7f59942c3d3a3ddba913026ade59c8bfe85604d.
+Printed pp241-243, especially Satz9 on printed243/PDF255 (render inspected,
+not just OCR); mechanism reference §2.333, printed143-144. Precise short quote:
+"gleichmäßig in [-1, 1]".
+The rendered remainder is O(gamma^(-3/4)) with prefactor (4gamma/pi)^(1/4).
+Dividing by the leading scale produces O(gamma^(-1)), as CCM(7.10) reports.
+The older card's source-availability and unresolved-binding statements are
+historical: this PDF is present here, and current DirectCylinderRate already
+proves the conditional centered bind. It still assumes both raw rate inputs.
+
+The book's mechanism is more informative than its asymptotic statement:
+construct a finite Weber combination with high-order residual, use spectral
+separation to control the orthogonal error, then an integral eigenrelation
+upgrades the mean estimate to a uniform estimate. §2.333 uses bounded cosine
+kernels; its direct application to this prolate normalization is not assumed.
+No new unchanged semantic query was issued: prior registered query is still
+INCOMPLETE on freshness with positive hits, not a no-hit receipt.
+Classification remains exploratory INCOMPLETE_NO_CONSUMABLE_TARGET.
+
+### Exact first correction in the project's physical equation
+
+Let t=sqrt(pi)*x, m>0, and
+L_m = -d_x^2 + 4*pi^2*x^2 + m^(-1)*(x^2*d_x)' .
+For n=0,4, put e_n=pi*(4*n+2), beta_n=-((2*n+1)^2+5)/8,
+D_n(x)=exp(-t^2)*P_n(t), and
+u_nm(x)=exp(-t^2)*(P_n(t)+Q_n(t)/(pi*m)).
+The polynomials are
+
+ P0=1,
+ Q0=3*t^2/8-t^4/4,
+ P4=3-24*t^2+16*t^4,
+ Q4=129*t^2/8-183*t^4/4+28*t^6-4*t^8.
+
+Thus beta0=-3/4, beta4=-43/4, and both corrections vanish at the center.
+For T(P)=t^2*P''+(2*t-4*t^3)*P'+(4*t^4-6*t^2)*P,
+the exact identities are
+
+ -Q_n''+4*t*Q_n'-4*n*Q_n = beta_n*P_n-T(P_n),
+ (L_m-e_n-beta_n/m)u_nm = exp(-t^2)*R_n(t)/(pi*m^2),
+ R_n=T(Q_n)-beta_n*Q_n.
+
+R0=81*t^2/32-167*t^4/16+7*t^6-t^8.
+R4=8643*t^2/32-26121*t^4/16+2548*t^6-1354*t^8+264*t^10-16*t^12.
+The accompanying Fraction checker solves and verifies the exact polynomial
+identity for each n; no floating point, no fitted coefficients. This is PAPER
+algebra evidence, not Lean certification. Gaussian-polynomial integrability
+then bounds the L2 residual on every [-sqrt(m),sqrt(m)] by A_n/m^2, where A_n
+is pi^(-5/4)*||exp(-t^2)*R_n(t)||_L2(dt) on the whole line. The physical
+flux coefficient 1-x^2/m vanishes at both endpoints for this smooth function;
+membership in the project's particular spectral operator domain must still
+be established, not inferred solely from this flux observation.
+
+### Why the stronger residual matters, and the exact remaining entrance
+
+Suppose a separately proved spectral theorem supplies, on the same window,
+a rank-one spectral projection onto the intended selected even branch, and
+uniform distance delta>0 from e_n+beta_n/m to every OTHER eigenvalue of L_m.
+Projection of u_nm then has L2 error O(m^(-2)). This is a CONDITIONAL mechanism;
+the isolation and branch match are not proved here and may not be imported
+from htheta, which was itself derived from hmode.
+
+A naive Fourier upgrade of the O(m^(-1)) difference from D loses sqrt(lambda),
+where lambda=sqrt(m), and gives only O(m^(-3/4)). Instead split the projected
+function as u_nm plus its O(m^(-2)) projection error. The latter contributes
+O(m^(-7/4)) by Cauchy-Schwarz on a window of length 2*sqrt(m); the explicit
+Q_n correction contributes O(m^(-1)) because its whole-line L1 norm is finite.
+The omitted Gaussian-polynomial tails are exponentially small. A Fourier
+pairing with D_n, using its nonzero squared norm, gives chi=1+O(m^(-1)) from
+L2 closeness, so division by chi is eventually legal; it does not need hchi
+as an extra premise. Uniform control at the center then permits the existing
+center-normalization transfer. This is a proposed PAPER completion route,
+not an established hmode theorem.
+
+Negative controls: no spectral separation leaves the projection error
+uncontrolled; the wrong eigenvalue index does not identify our selected mode;
+an arbitrary scalar multiple violates the fixed center target. The corrected
+quasimode discriminates these issues but does not solve them.
+
+Next bounded joint: inspect existing classical even Jacobi/Ferrers spectral
+results for the uniform scaled isolation and branch identification, with the
+trial u_nm's operator-domain membership explicit. Do not add further wrappers
+that merely assume hmode. Finite CCM ground is a different object from this
+analytic prolate spectral branch. PX_RH_CLAIM: NOT_MADE.
+
+Independent recovery_review approved the exact algebra and residual bound,
+and explicitly retained operator-domain, spectral-branch, normalization and
+Fourier-defect obligations. The quasimode itself is not a Fourier eigenfunction.
+Checker SHA256: fa623ef35c66cd778b35400318bcdde502941c9b5b9090f64be09a7aebc8c1cf.
+## Spectral audit and an independent form-convergence mechanism
+
+Current source audit at 5cfe4970:
+- D0Mode4ClassicalCarrierFromFiniteLimit.lean:571 defines the carrier as the
+  infimum of finite, ordered, fixed-index DLMF eigenvalues; :612 proves their
+  fixed-G convergence, :795 proves monotonicity in the even index.
+- D0Mode4ClassicalCarrierToDLMF3035EvenL2.lean:628 proves strict ordering below
+  20 with the explicit tail separator. This is not a cofinal quantitative gap.
+- D0Mode4ClassicalCarrierHeadUpper.lean:135 proves index2<20; its docstring
+  explicitly leaves the lower/cofinal separator analytic.
+- D0Mode4FiniteEvenLegendreQuadraticForm.lean:57 and :703 prove exact finite
+  L2 and differential-energy identities (both have the factor 2). They do not
+  prove form-core density or the infinite self-adjoint spectral correspondence.
+
+Required scaled eigenvalues are
+ E_p(m)=(mode4ClassicalEvenEigenvalue(G_m,p)+G_m)/m,
+ G_m=4*pi^2*m^2, p=0,2 for degrees n=0,4.
+Strict ordering for every m does NOT imply a uniform positive scaled gap.
+Negative control: an ordered pair 0,1/m is simple at every m and its gap vanishes.
+
+### PAPER argument independent of hmode and htheta
+
+On the EVEN sector of L2(I_m), I_m=(-sqrt(m),sqrt(m)), consider the natural
+closed form
+ q_m[u]=integral ((1-x^2/m)*|u'|^2+4*pi^2*x^2*|u|^2).
+The intended domain is the maximal locally-H1 finite-energy domain. For the
+spectral argument it must be identified with the closed Legendre form domain.
+Under unitary dilation x=sqrt(m)*t the form is
+ m^(-1)*integral(1-t^2)|v'|^2 + 4*pi^2*m*integral t^2|v|^2.
+The Legendre kinetic operator has discrete eigenvalues ell(ell+1)/m;
+the potential is bounded at fixed m, preserving compact resolvent.
+This domain identification is an explicit outstanding project bridge, not a
+consequence of merely writing the differential expression. The following
+argument concerns this natural realization, subject to that identification.
+
+Let E_p^nat(m) denote its ordered even eigenvalues. The limit form is the
+whole-line even harmonic oscillator q_inf[u]=integral |u'|^2+4*pi^2*x^2|u|^2,
+with eigenvalues e_p=2*pi*(4*p+1).
+
+Upper bound: take the span of the first p+1 even Hermite functions, approximate
+in oscillator form norm by smooth even compactly supported functions (even
+cutoffs), and use this finite-dimensional trial space for all large m.
+On its fixed support the kinetic coefficients converge uniformly to 1.
+The Rayleigh quotients converge uniformly on its unit sphere. First taking
+m to infinity, then removing the cutoff, yields limsup E_p^nat(m)<=e_p.
+
+Lower bound: choose a sequence realizing liminf E_p^nat(m), which is finite
+by the upper bound. Its first p+1 normalized eigenvectors have uniformly
+bounded energies M. For any fixed R and m>=2R^2,
+ integral_{|x|>R}|u|^2 <= M/(4*pi^2*R^2),
+ integral_{[-R,R]}|u'|^2 <= 2*M.
+Rellich compactness on fixed intervals and a joint diagonal subsequence give
+local strong L2 convergence of all p+1 eigenvectors. The tail bound upgrades
+this to strong whole-line L2 convergence of their zero extensions, retaining
+orthonormality and parity. Zero extension is NOT claimed to lie in global H1.
+For each fixed linear combination of this finite family, weak derivative
+lower semicontinuity on [-R,R], coefficient convergence there and R->infinity
+give
+ q_inf[sum c_j*u_j] <= liminf E_p^nat(m) * sum |c_j|^2.
+The oscillator min-max principle now yields e_p<=liminf E_p^nat(m).
+Thus E_p^nat(m)->2*pi*(4*p+1), without hmode, hchi or htheta.
+
+### The finite spectral information actually needed
+
+Only p=0,1,2,3 is needed. Eventually all four errors are <pi and
+|beta0|/m,|beta4|/m<pi. For the quasimode centers
+ a_n=e_(n/2)+beta_n/m, n=0,4,
+all OTHER even eigenvalues have distance >6*pi: adjacent limiting levels
+are 8*pi apart, two errors cost less than 2*pi, and ordering controls all
+more distant indices. This bound is for the even sector ONLY; odd levels
+intervene in the full spectrum. Combined with the corrected residual, it
+supplies the previously missing abstract even spectral isolation mechanism.
+
+Independent recovery_review approved the min-max/compactness reasoning and
+the >6*pi calculation, retaining the domain qualification and exact project
+correspondence. This is PAPER, not Lean or production admission.
+
+Next exact joint: use the finite Legendre L2/energy identities to prove
+form-core density and identify the finite Galerkin infimum with the natural
+form's ordered spectrum, preserving factor2, shift+G and division by m.
+The hmode proof cannot spend this argument on the selected Ferrers family
+until that correspondence is proved. Finite CCM ground is still a separate
+object. PX_RH_CLAIM: NOT_MADE.
+## PAPER closure of the natural Legendre form core and Ritz correspondence
+
+Work at fixed G>0. Let V consist of even functions u in L2(-1,1) which have
+locally absolutely continuous representatives and finite energy
+ E[u]=integral (1-x^2)|u'(x)|^2.
+Equip V with ||u||_V^2=||u||_2^2+E[u]. Closedness follows by local H1 convergence
+of V-Cauchy sequences on compact subintervals and completeness of weighted
+L2 for derivatives; the local weak derivative agrees with the weighted limit.
+
+For 0<a<1, define u_a=u on [-a,a], with constant values u(a),u(-a) on the
+respective tails. Weighted Cauchy-Schwarz gives
+ |u(a)|^2 <= 2|u(0)|^2 + E[u]*log((1+a)/(1-a)).
+Thus (1-a)|u(a)|^2 tends to zero. Evenness gives the same estimate at -a.
+Furthermore
+ ||u_a-u||_2^2 <= 2*integral_{|x|>a}|u|^2 +4*(1-a)|u(a)|^2 ->0,
+ E[u_a-u]=integral_{|x|>a}(1-x^2)|u'|^2 ->0.
+The clipping matches values at the joining points; no delta derivative occurs.
+Each u_a belongs to unweighted H1(-1,1). Its derivative is odd almost everywhere.
+Approximate this derivative in L2 by odd polynomials r_j (symmetrize polynomial
+approximants). Set P_j(x)=u_a(0)+integral_0^x r_j(t)dt. These are even polynomials.
+Cauchy-Schwarz bounds the value error uniformly by the derivative L2 error,
+and the weighted derivative error by its unweighted counterpart. Therefore
+even polynomials are a form core for V. For complex functions apply the same
+argument to real and imaginary parts; real and complex spectra agree here.
+
+With normalized even Legendre coordinates, the existing Gram and derivative
+Gram identities on polynomials give
+ ||u||_V^2=sum_q (1+2q*(2q+1))*|c_q|^2
+by completion. This also identifies V with the closed Legendre form domain.
+Weights tend to infinity, so its unit ball has uniformly small L2 coefficient
+tails: the embedding is compact. Adding G*x^2, G>0, preserves this domain and
+gives an equivalent form norm, since the potential is bounded and nonnegative.
+This proves the missing domain qualification in the preceding PAPER argument.
+No claim of global H1 regularity of a general V member is needed.
+
+### Source-locked finite-to-infinite identification
+
+The exact existing finite identities are
+ D0Mode4FiniteEvenLegendreQuadraticForm.lean:57:
+  ||P_b||_2^2=2*b^T*b,
+ and :703 (at Lambda=0):
+  q_G[P_b]-G*||P_b||_2^2=2*b^T*A(G,0,d)*b.
+Here P_b includes the phase (-1)^q and the nonzero similarity scale; thus its
+range is exactly the even polynomials of degree <2d. The factor2 cancels in
+both numerator and denominator. The Ritz eigenvalues of q_G on that subspace
+are precisely mode4DLMFEvenFiniteEigenvalue(G,d,p)+G:
+D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean:188 defines the ascending spectrum
+of this very matrix A(G,0,d), not a merely similar unnamed operator.
+
+The nested even polynomial spaces form a core. Min-max gives Ritz values
+bounded below by the natural eigenvalues. Approximate a basis of the first
+p+1 natural eigenvectors in form norm in one sufficiently large polynomial
+space; its Gram and energy matrices converge, so the maximal Rayleigh quotient
+converges. This gives the reverse inequality for the infimum of Ritz values.
+D0Mode4ClassicalCarrierFromFiniteLimit.lean:571 takes its infimum over exactly
+{d:Nat // p<d}; hence undersized truncations do not contaminate the infimum.
+Consequently, at PAPER scope, for every fixed G>0 the natural even eigenvalue is
+
+ lambda_p(q_G)=mode4ClassicalEvenEigenvalue(G,p)+G.
+
+Unitary dilation x=sqrt(m)*z identifies the physical form with q_G/m for
+G=4*pi^2*m^2. The preceding independently derived natural spectral limit now
+transfers to the actual carrier at PAPER scope:
+
+ (mode4ClassicalEvenEigenvalue(G_m,p)+G_m)/m -> 2*pi*(4p+1).
+
+For p=0,1,2,3 this gives the even-sector quasimode isolation described above.
+This does not yet identify the normalized selected Ferrers eigenFUNCTION
+with the rank-one form eigenprojection: its operator-domain membership and
+normalization still need an exact check. It also does not supply a Lean proof
+of the form-core/min-max steps. Finite CCM ground remains separate.
+
+Independent recovery_review approved the endpoint clipping, polynomial core,
+closedness and compactness argument, including the positive-potential norm
+qualification. All new claims in this section are PAPER, not production
+admission. PX_RH_CLAIM: NOT_MADE.
+
+Final independent source audit additionally approved exact carrier equality,
+including both factor2 identities, synthesis bijectivity, ascending order,
+admissible dimensions and physical shift/scaling. PAPER eigenvalue match closed.
+## PAPER assembly: actual selected modes from corrected quasimodes
+
+### Actual Ferrers solution belongs to the natural operator domain
+
+Read D0Mode4FerrersRegularEvenProlateSolution.lean:46-85: the actual real series
+s is continuous on [-1,1], C2 on (-1,1), even, solves
+ -(p*s')'+G*z^2*s=E*s, p=1-z^2, E=Lambda+G,
+and has zero limiting flux p*s' at both endpoints. Since s is bounded, the
+flux derivative F'=(G*z^2-E)*s is bounded by some M at this FIXED parameter.
+Integrating F' to the endpoint using its prescribed zero limit gives
+ |F(z)|<=M*(1-z) near 1, hence |s'(z)|<=M/(1+z).
+At -1 the analogous bound is M/(1-z). Combined with interior regularity,
+s is H1(-1,1) and therefore in the natural form domain. No uniform-in-m bound
+on M is claimed or needed for domain membership. Integration by parts against
+polynomials has zero boundary term; the previously proved form core extends
+ q_G(s,v)=E*<s,v>
+to every form-domain test v. This is exactly the associated operator-domain
+criterion, so s is a natural eigenfunction at the actual project carrier.
+
+The even eigenspace is one-dimensional: every weak eigenfunction is C2 on
+interior compact intervals by the regular one-dimensional equation; its even
+representative has derivative zero at the ordinary point 0. Two such solutions
+are proportional by the initial-value uniqueness theorem at 0. A solution
+with value zero at 0 would have both initial data zero. This does not depend
+on hmode or on an asymptotic eigenfunction theorem.
+
+### Projection and Fourier upgrade without assuming hchi
+
+Fix n=0 or4, p_index=n/2, I_m=[-sqrt(m),sqrt(m)]. Let u_m denote the smooth
+corrected quasimode constructed above, restricted to I_m, and let P_m be the
+natural even spectral projection onto index p_index. Its smoothness and zero
+weighted endpoint flux put u_m in the operator domain as well. The proved
+PAPER carrier limit and >6*pi even-sector isolation imply
+ w_m=P_m u_m,  ||w_m-u_m||_L2(I_m)<=A_n/(6*pi*m^2).
+The residual uses center a_n=e_n+beta_n/m. Norm(u_m) tends to the positive
+norm of D_n, so w_m is nonzero eventually. Rank one and the preceding actual
+source domain argument identify w_m as a scalar multiple of the selected
+real Ferrers mode. Choose real representatives; no conjugation is hidden.
+
+Source D0Mode4FerrersPhysicalFourierNonzeroScalar.lean:206 gives that actual
+mode a nonzero real finite-Fourier eigenvalue chi_m. Scalar multiplication
+preserves this relation for w_m. Write F for the PLUS Fourier transform and
+extend w_m and u_m by zero outside I_m. D_n is whole-line self-Fourier for
+n=0,4. Set J_m=integral_I w_m*D_n. Since
+ ||w_m-D_n||_L2(I_m)=O(1/m)
+and Gaussian tails vanish, J_m=||D_n||_L2(R)^2+O(1/m), bounded away from zero.
+Fubini, bilinear symmetry of the Fourier kernel, and F D_n=D_n give EXACTLY
+
+ (chi_m-1)*J_m = -integral_I w_m*F(D_n*1_(R\I_m)).
+
+Therefore
+ |chi_m-1| <= ||w_m||_L1(I_m)*||D_n*1_(R\I_m)||_L1 / |J_m|.
+The first norm is O(m^(1/4)) by Cauchy-Schwarz and bounded L2 norm; the second
+is a fixed Gaussian-polynomial tail. Thus chi_m->1 and |chi_m|>=1/2 eventually,
+without assuming the hchi or htheta rates. Compact supports and Gaussian L1
+bounds justify Fubini. This argument needs the actual eigenrelation, not an
+incorrect claim that the quasimode itself is a Fourier eigenfunction.
+
+On I_m, the exact decomposition is
+ w_m-D_n = chi_m^(-1)*( F(w_m-u_m) + (F u_m-D_n)
+                                  +(1-chi_m)*D_n ).
+The projection error contributes at most
+ sqrt(2*sqrt(m))*||w_m-u_m||_2=O(m^(-7/4)) uniformly in Fourier argument.
+For the explicit fixed correction B_n(x)=exp(-pi*x^2)*Q_n(sqrt(pi)*x),
+ u_m=(D_n+B_n/(pi*m))*1_I,
+so ||F u_m-D_n||_infinity is bounded by
+ ||B_n||_1/(pi*m)+||D_n*1_out||_1+||B_n*1_out||_1/(pi*m).
+These are O(1/m). D_n is bounded, and the chi defect above is smaller than
+any inverse power of m. Consequently
+ sup_{x in I_m}|w_m(x)-D_n(x)|<=C_n/m eventually.
+
+### Exact center normalization
+
+Let d_n=D_n(0)=1 or3. The just-proved uniform estimate implies
+ |w_m(0)-d_n|<=C_n/m and |w_m(0)|>=d_n/2 eventually.
+If epsilon_m denotes that uniform error, then
+ sup_I |d_n*w_m/w_m(0)-D_n|
+ <=2*epsilon_m*(1+||D_n||_infinity/d_n).
+Because w_m is a nonzero scalar multiple of the selected mode, its normalized
+ratio w_m(x)/w_m(0) equals the selected mode's ratio. The precommitted anchors
+are precisely 1/h0(0) and 3/h4(0), as G6N1CenterAnchorScalarLock.lean:85-108
+states. Normalization is not fitted to the observed error.
+
+With m=k+2 and lambda_k^2=m, this is the exact eventual full-window hmode
+statement consumed by the previously Lean-checked W5/N2 candidate. The two
+constants may differ; both can be enlarged to be nonnegative. All preceding
+spectral, domain, core and quasimode steps are part of the dependency chain;
+none is replaced by an hmode, hchi or htheta assumption.
+
+Status: PAPER assembly, awaiting formalization of its new analytic steps and
+source-locked Proshka review. The isolated Lean implication hmode=>W5/N2 does
+not certify this PAPER supplier. Finite CCM ground matching/cofinal tracking
+and off-line zero-freeness remain distinct. PX_RH_CLAIM: NOT_MADE.
+
+Independent recovery_review checked the actual source fields, domain argument,
+real projection, bilinear Fourier identity/sign, loss exponents and exact center
+normalization. Verdict: coherent PAPER hmode proof chain given the preceding
+reviewed core/spectral arguments; no circularity found. Not Lean certification.
+
+SOURCE docs/session_protocols/fourier_overlap_candidate_20260922.lean SHA256 83a4bb5ee70b2b523aeccedf6f482a8b8887b7f95f30a3d4eb563be915adcfbd LINES 1-1472
+1: import Mathlib
+2: import Q3.Proofs.RouteB.ProlateSourceRegularity
+3: import Q3.Proofs.RouteB.G6N1CenterAnchorScalarLock
+4: import Q3.Proofs.RouteB.D0PstarExplicitCCMLimitFourier
+5: import Q3.Proofs.RouteB.G6N1SelectedFerrersW5RateAssembly
+6: import Q3.Proofs.RouteB.G6N1SelectedFerrersN2CompactDecayAssembly
+7: open MeasureTheory Set
+8: open scoped FourierTransform ContDiff
+9: noncomputable section
+10: namespace Q3OverlapProbe
+11: private def B : ℝ →ₗ[ℝ] ℝ →ₗ[ℝ] ℝ := -(innerSL ℝ).toLinearMap₁₂
+12: private theorem B_cont : Continuous (fun p : ℝ × ℝ => B p.1 p.2) := by
+13:   change Continuous (fun p : ℝ × ℝ => -(inner ℝ p.1 p.2))
+14:   fun_prop
+15: private theorem B_flip : B.flip = B := by
+16:   ext
+17:   simp [B]
+18: def F (f : ℝ → ℂ) : ℝ → ℂ :=
+19:   VectorFourier.fourierIntegral Real.fourierChar volume B f
+20: 
+21: theorem F_eq_inverse (f : ℝ → ℂ) : F f = 𝓕⁻ f := by
+22:   funext x
+23:   simp [F, B, VectorFourier.fourierIntegral, Real.fourierInv_eq]
+24: 
+25: theorem swap (f D : ℝ → ℂ) (hf : Integrable f) (hD : Integrable D) :
+26:     (∫ x, F f x * D x) = ∫ x, f x * F D x := by
+27:   have h := VectorFourier.integral_fourierIntegral_smul_eq_flip
+28:     (L := B) Real.continuous_fourierChar B_cont hf hD
+29:   simpa only [B_flip, smul_eq_mul] using h
+30: 
+31: theorem product_integrable (f D : ℝ → ℂ) (hf : Integrable f) (hD : Integrable D) :
+32:     Integrable (fun x => F f x * D x) := by
+33:   have hcont : Continuous (F f) :=
+34:     VectorFourier.fourierIntegral_continuous Real.continuous_fourierChar B_cont hf
+35:   apply (hD.norm.const_mul (∫ x, ‖f x‖)).mono'
+36:     (hcont.aestronglyMeasurable.mul hD.aestronglyMeasurable)
+37:   filter_upwards [] with x
+38:   change ‖F f x * D x‖ ≤ _
+39:   rw [norm_mul]
+40:   exact mul_le_mul_of_nonneg_right
+41:     (VectorFourier.norm_fourierIntegral_le_integral_norm _ _ _ _ _) (norm_nonneg _)
+42: 
+43: theorem overlap (f D : ℝ → ℂ) (s : Set ℝ) (χ : ℂ)
+44:     (hs : MeasurableSet s) (hf : Integrable f) (hD : Integrable D)
+45:     (hfixed : F D = D)
+46:     (heigen : ∀ x ∈ s, F f x = χ * f x)
+47:     (hsupp : ∀ x ∉ s, f x = 0) :
+48:     (1-χ) * (∫ x, f x * D x) = ∫ x in sᶜ, F f x * D x := by
+49:   have hsplit := integral_add_compl hs (product_integrable f D hf hD)
+50:   have hswap := swap f D hf hD
+51:   rw [hfixed] at hswap
+52:   have hin : (∫ x in s, F f x * D x) = χ * (∫ x, f x * D x) := by
+53:     calc
+54:       (∫ x in s, F f x * D x) = ∫ x in s, χ * (f x * D x) := by
+55:         apply setIntegral_congr_fun hs
+56:         intro x hx
+57:         change F f x * D x = χ * (f x * D x)
+58:         rw [heigen x hx, mul_assoc]
+59:       _ = χ * (∫ x in s, f x * D x) := integral_const_mul _ _
+60:       _ = χ * (∫ x, f x * D x) := by
+61:         rw [setIntegral_eq_integral_of_forall_compl_eq_zero (fun x hx => by simp [hsupp x hx])]
+62:   rw [hin, hswap] at hsplit
+63:   linear_combination -hsplit
+64: 
+65: theorem overlap_bound (f D : ℝ → ℂ) (s : Set ℝ) (χ : ℂ)
+66:     (hs : MeasurableSet s) (hf : Integrable f) (hD : Integrable D)
+67:     (hfixed : F D = D)
+68:     (heigen : ∀ x ∈ s, F f x = χ * f x)
+69:     (hsupp : ∀ x ∉ s, f x = 0) :
+70:     ‖1-χ‖ * ‖∫ x, f x * D x‖ ≤
+71:       (∫ x, ‖f x‖) * (∫ x in sᶜ, ‖D x‖) := by
+72:   rw [← norm_mul, overlap f D s χ hs hf hD hfixed heigen hsupp]
+73:   calc
+74:     ‖∫ x in sᶜ, F f x * D x‖ ≤ ∫ x in sᶜ, ‖F f x * D x‖ :=
+75:       norm_integral_le_integral_norm _
+76:     _ ≤ ∫ x in sᶜ, (∫ y, ‖f y‖) * ‖D x‖ := by
+77:       apply integral_mono_ae
+78:         ((product_integrable f D hf hD).norm.restrict)
+79:         ((hD.norm.const_mul _).restrict)
+80:       filter_upwards [] with x
+81:       rw [norm_mul]
+82:       exact mul_le_mul_of_nonneg_right
+83:         (VectorFourier.norm_fourierIntegral_le_integral_norm _ _ _ _ _) (norm_nonneg _)
+84:     _ = _ := integral_const_mul _ _
+85: #print axioms overlap
+86: #print axioms overlap_bound
+87: 
+88: theorem exterior_moment_bound (D : ℝ → ℂ) (lam : ℝ) (hlam : 0 < lam)
+89:     (hD : Integrable D) (hM : Integrable (fun x : ℝ => x^2 * ‖D x‖)) :
+90:     (∫ x in (Icc (-lam) lam)ᶜ, ‖D x‖) ≤ (∫ x : ℝ, x^2 * ‖D x‖) / lam^2 := by
+91:   have hlam2 : 0 < lam^2 := sq_pos_of_pos hlam
+92:   apply (le_div_iff₀ hlam2).mpr
+93:   rw [← integral_mul_const]
+94:   calc
+95:     (∫ x in (Icc (-lam) lam)ᶜ, ‖D x‖ * lam^2) ≤
+96:         ∫ x in (Icc (-lam) lam)ᶜ, x^2 * ‖D x‖ := by
+97:       apply setIntegral_mono_on (hD.norm.mul_const _).integrableOn hM.integrableOn
+98:         measurableSet_Icc.compl
+99:       intro x hx
+100:       have hx' : x < -lam ∨ lam < x := by simpa only [mem_compl_iff, mem_Icc, not_and_or, not_le] using hx
+101:       have hs : lam^2 ≤ x^2 := by rcases hx' with h | h <;> nlinarith
+102:       nlinarith [norm_nonneg (D x)]
+103:     _ ≤ ∫ x : ℝ, x^2 * ‖D x‖ := by
+104:       exact setIntegral_le_integral hM (Filter.Eventually.of_forall (fun x => by positivity))
+105: #print axioms exterior_moment_bound
+106: 
+107: theorem chi_bound_of_overlap_floor (f D : ℝ → ℂ) (lam J : ℝ) (χ : ℂ)
+108:     (hlam : 0 < lam) (hJ : 0 < J)
+109:     (hf : Integrable f) (hD : Integrable D)
+110:     (hM : Integrable (fun x : ℝ => x^2 * ‖D x‖))
+111:     (hfixed : F D = D)
+112:     (heigen : ∀ x ∈ Icc (-lam) lam, F f x = χ * f x)
+113:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+114:     (hfloor : J/2 ≤ ‖∫ x, f x * D x‖) :
+115:     ‖1-χ‖ ≤ (2*(∫ x, ‖f x‖)*(∫ x : ℝ, x^2*‖D x‖)/J)/lam^2 := by
+116:   have hb := overlap_bound f D (Icc (-lam) lam) χ measurableSet_Icc hf hD hfixed heigen hsupp
+117:   have ht := exterior_moment_bound D lam hlam hD hM
+118:   have hL : 0 ≤ ∫ x, ‖f x‖ := integral_nonneg (fun x => norm_nonneg _)
+119:   have ha := mul_le_mul_of_nonneg_left hfloor (norm_nonneg (1-χ))
+120:   have hc := mul_le_mul_of_nonneg_left ht hL
+121:   have hx : ‖1-χ‖*(J/2) ≤ (∫ x, ‖f x‖)*((∫ x : ℝ, x^2*‖D x‖)/lam^2) :=
+122:     ha.trans (hb.trans hc)
+123:   rw [← mul_div_assoc (∫ x, ‖f x‖) (∫ x : ℝ, x^2*‖D x‖) (lam^2)] at hx
+124:   have hy := (le_div_iff₀ (sq_pos_of_pos hlam)).mp hx
+125:   apply (le_div_iff₀ (sq_pos_of_pos hlam)).mpr
+126:   apply (le_div_iff₀ hJ).mpr
+127:   nlinarith
+128: #print axioms chi_bound_of_overlap_floor
+129: 
+130: theorem source_l1_of_window_error (f D : ℝ → ℂ) (lam ε : ℝ)
+131:     (hlam : 0 ≤ lam) (hf : Integrable f) (hD : Integrable D)
+132:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+133:     (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ ε) :
+134:     (∫ x, ‖f x‖) ≤ (∫ x, ‖D x‖)+2*lam*ε := by
+135:   have hc : IntegrableOn (fun _ : ℝ => ε) (Icc (-lam) lam) := integrableOn_const (by rw [Real.volume_Icc]; exact ENNReal.ofReal_ne_top)
+136:   have hsize : (∫ _ : ℝ in Icc (-lam) lam, ε) = 2*lam*ε := by
+137:     rw [setIntegral_const, Real.volume_real_Icc, max_eq_left (by linarith : 0 ≤ lam - -lam)]
+138:     simp only [smul_eq_mul]
+139:     ring
+140:   calc
+141:     (∫ x, ‖f x‖) = ∫ x in Icc (-lam) lam, ‖f x‖ := by
+142:       symm
+143:       apply setIntegral_eq_integral_of_forall_compl_eq_zero
+144:       intro x hx
+145:       simp [hsupp x hx]
+146:     _ ≤ ∫ x in Icc (-lam) lam, (‖D x‖+ε) := by
+147:       apply setIntegral_mono_on hf.norm.integrableOn (hD.norm.integrableOn.add hc) measurableSet_Icc
+148:       intro x hx
+149:       change ‖f x‖ ≤ ‖D x‖ + ε
+150:       have he := herr x hx
+151:       have ht := norm_sub_norm_le (f x) (D x)
+152:       linarith
+153:     _ = (∫ x in Icc (-lam) lam, ‖D x‖)+2*lam*ε := by
+154:       rw [integral_add hD.norm.integrableOn hc, hsize]
+155:     _ ≤ _ := by
+156:       have h := setIntegral_le_integral (s := Icc (-lam) lam) hD.norm
+157:         (Filter.Eventually.of_forall (fun x => norm_nonneg _))
+158:       linarith
+159: #print axioms source_l1_of_window_error
+160: 
+161: theorem source_l1_uniform (f D : ℝ → ℂ) (lam C : ℝ)
+162:     (hlam : 1 ≤ lam) (hC : 0 ≤ C) (hf : Integrable f) (hD : Integrable D)
+163:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+164:     (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ C/lam^2) :
+165:     (∫ x, ‖f x‖) ≤ (∫ x, ‖D x‖)+2*C := by
+166:   have hp : 0 < lam := by linarith
+167:   have h := source_l1_of_window_error f D lam (C/lam^2) hp.le hf hD hsupp herr
+168:   have hb : 2*lam*(C/lam^2) ≤ 2*C := by
+169:     rw [← mul_div_assoc]
+170:     apply (div_le_iff₀ (sq_pos_of_pos hp)).mpr
+171:     have hg := mul_le_mul_of_nonneg_left (show lam ≤ lam^2 by nlinarith) hC
+172:     nlinarith
+173:   linarith
+174: #print axioms source_l1_uniform
+175: 
+176: theorem source_product_integrable (f D : ℝ → ℂ) (lam ε : ℝ)
+177:     (hε : 0 ≤ ε) (hf : Integrable f) (hD : Integrable D)
+178:     (hDD : Integrable (fun x => D x * D x))
+179:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+180:     (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ ε) :
+181:     Integrable (fun x => f x * D x) := by
+182:   apply (hDD.norm.add (hD.norm.const_mul ε)).mono'
+183:     (hf.aestronglyMeasurable.mul hD.aestronglyMeasurable)
+184:   filter_upwards [] with x
+185:   change ‖f x * D x‖ ≤ ‖D x * D x‖+ε*‖D x‖
+186:   by_cases hx : x ∈ Icc (-lam) lam
+187:   · have h1 := herr x hx
+188:     have h2 := norm_sub_norm_le (f x) (D x)
+189:     rw [norm_mul, norm_mul]
+190:     nlinarith [norm_nonneg (D x)]
+191:   · simp only [hsupp x hx, zero_mul, norm_zero]
+192:     positivity
+193: 
+194: theorem overlap_error_bound (f D : ℝ → ℂ) (lam ε : ℝ)
+195:     (hlam : 0 < lam) (hε : 0 ≤ ε) (hf : Integrable f) (hD : Integrable D)
+196:     (hDD : Integrable (fun x => D x * D x))
+197:     (hQ : Integrable (fun x : ℝ => x^2 * ‖D x * D x‖))
+198:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+199:     (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ ε) :
+200:     ‖(∫ x, f x*D x)-(∫ x, D x*D x)‖ ≤
+201:       ε*(∫ x, ‖D x‖)+(∫ x : ℝ, x^2*‖D x*D x‖)/lam^2 := by
+202:   have hp := source_product_integrable f D lam ε hε hf hD hDD hsupp herr
+203:   have hd := hp.sub hDD
+204:   have hi : ‖∫ x in Icc (-lam) lam, (f x*D x-D x*D x)‖ ≤ ε*(∫ x, ‖D x‖) := by
+205:     calc
+206:       _ ≤ ∫ x in Icc (-lam) lam, ‖f x*D x-D x*D x‖ := norm_integral_le_integral_norm _
+207:       _ ≤ ∫ x in Icc (-lam) lam, ε*‖D x‖ := by
+208:         apply setIntegral_mono_on hd.norm.integrableOn
+209:           (hD.norm.const_mul ε).integrableOn measurableSet_Icc
+210:         intro x hx
+211:         change ‖f x*D x-D x*D x‖ ≤ ε*‖D x‖
+212:         rw [← sub_mul, norm_mul]
+213:         exact mul_le_mul_of_nonneg_right (herr x hx) (norm_nonneg _)
+214:       _ = ε*(∫ x in Icc (-lam) lam, ‖D x‖) := integral_const_mul _ _
+215:       _ ≤ _ := mul_le_mul_of_nonneg_left (setIntegral_le_integral hD.norm
+216:         (Filter.Eventually.of_forall (fun x => norm_nonneg _))) hε
+217:   have ho : ‖∫ x in (Icc (-lam) lam)ᶜ, (f x*D x-D x*D x)‖ ≤
+218:       (∫ x : ℝ, x^2*‖D x*D x‖)/lam^2 := by
+219:     have heq : (∫ x in (Icc (-lam) lam)ᶜ, (f x*D x-D x*D x)) =
+220:         -(∫ x in (Icc (-lam) lam)ᶜ, D x*D x) := by
+221:       rw [← integral_neg]
+222:       apply setIntegral_congr_fun measurableSet_Icc.compl
+223:       intro x hx
+224:       simp [hsupp x hx]
+225:     rw [heq, norm_neg]
+226:     exact (norm_integral_le_integral_norm _).trans
+227:       (exterior_moment_bound (fun x => D x*D x) lam hlam hDD hQ)
+228:   have hsplit := integral_add_compl (s := Icc (-lam) lam) (f := fun x => f x*D x-D x*D x) measurableSet_Icc hd
+229:   rw [← integral_sub hp hDD, ← hsplit]
+230:   exact (norm_add_le _ _).trans (add_le_add hi ho)
+231: #print axioms overlap_error_bound
+232: 
+233: theorem chi_bound_from_mode_error (f D : ℝ → ℂ) (lam C J : ℝ) (χ : ℂ)
+234:     (hlam : 1 ≤ lam) (hC : 0 ≤ C) (hJ : 0 < J)
+235:     (hJeq : J = ‖∫ x, D x*D x‖)
+236:     (hf : Integrable f) (hD : Integrable D)
+237:     (hDD : Integrable (fun x => D x*D x))
+238:     (hM : Integrable (fun x : ℝ => x^2*‖D x‖))
+239:     (hQ : Integrable (fun x : ℝ => x^2*‖D x*D x‖))
+240:     (hfixed : F D = D)
+241:     (heigen : ∀ x ∈ Icc (-lam) lam, F f x = χ*f x)
+242:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+243:     (herr : ∀ x ∈ Icc (-lam) lam, ‖f x-D x‖ ≤ C/lam^2)
+244:     (hlarge : 2*(C*(∫ x, ‖D x‖)+(∫ x : ℝ, x^2*‖D x*D x‖)) ≤ J*lam^2) :
+245:     ‖1-χ‖ ≤ (2*((∫ x, ‖D x‖)+2*C)*(∫ x : ℝ, x^2*‖D x‖)/J)/lam^2 := by
+246:   have hp : 0 < lam := by linarith
+247:   have he := overlap_error_bound f D lam (C/lam^2) hp (by positivity) hf hD hDD hQ hsupp herr
+248:   have hsmall : (C/lam^2)*(∫ x, ‖D x‖)+(∫ x : ℝ, x^2*‖D x*D x‖)/lam^2 ≤ J/2 := by
+249:     rw [div_mul_eq_mul_div, ← add_div]
+250:     apply (div_le_iff₀ (sq_pos_of_pos hp)).mpr
+251:     nlinarith
+252:   have hr := norm_sub_norm_le (∫ x, D x*D x) (∫ x, f x*D x)
+253:   rw [norm_sub_rev, ← hJeq] at hr
+254:   have hfloor : J/2 ≤ ‖∫ x, f x*D x‖ := by linarith [he.trans hsmall]
+255:   have hb := chi_bound_of_overlap_floor f D lam J χ hp hJ hf hD hM hfixed heigen hsupp hfloor
+256:   have hL := source_l1_uniform f D lam C hlam hC hf hD hsupp herr
+257:   have hM0 : 0 ≤ ∫ x : ℝ, x^2*‖D x‖ := integral_nonneg (fun x => by positivity)
+258:   apply hb.trans
+259:   gcongr
+260: #print axioms chi_bound_from_mode_error
+261: 
+262: theorem F_eq_finiteFourierAction (f : ℝ → ℂ) (lam : ℝ)
+263:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0) (x : ℝ) :
+264:     F f x = Q3.RouteB.D0Pstar.finiteFourierAction lam f x := by
+265:   have heq : F f x = ∫ y : ℝ, Q3.RouteB.D0Pstar.finiteFourierKernel x y * f y := by
+266:     unfold F VectorFourier.fourierIntegral B
+267:     simp only [LinearMap.neg_apply, ContinuousLinearMap.toLinearMap₁₂_apply,
+268:       innerSL_apply_apply, neg_neg, Circle.smul_def, Real.fourierChar_apply,
+269:       smul_eq_mul]
+270:     apply integral_congr_ae
+271:     filter_upwards [] with y
+272:     congr 1
+273:     unfold Q3.RouteB.D0Pstar.finiteFourierKernel
+274:     congr 1
+275:     have hinner : inner ℝ y x = x*y := rfl
+276:     rw [hinner]
+277:     push_cast
+278:     ring
+279:   rw [heq]
+280:   symm
+281:   apply setIntegral_eq_integral_of_forall_compl_eq_zero
+282:   intro y hy
+283:   simp [hsupp y hy]
+284: #print axioms F_eq_finiteFourierAction
+285: 
+286: theorem scaled_finite_eigen (f : ℝ → ℂ) (lam : ℝ) (a χ : ℂ)
+287:     (hsupp : ∀ x ∉ Icc (-lam) lam, f x = 0)
+288:     (heigen : ∀ x ∈ Icc (-lam) lam,
+289:       Q3.RouteB.D0Pstar.finiteFourierAction lam f x = χ*f x) :
+290:     ∀ x ∈ Icc (-lam) lam, F (fun y => a*f y) x = χ*(a*f x) := by
+291:   intro x hx
+292:   rw [F_eq_finiteFourierAction _ lam (fun y hy => by simp [hsupp y hy])]
+293:   have hs : Q3.RouteB.D0Pstar.finiteFourierAction lam (fun y => a*f y) x =
+294:       a * Q3.RouteB.D0Pstar.finiteFourierAction lam f x := by
+295:     unfold Q3.RouteB.D0Pstar.finiteFourierAction
+296:     rw [← integral_const_mul]
+297:     apply integral_congr_ae
+298:     filter_upwards [] with y
+299:     ring
+300:   rw [hs, heigen x hx]
+301:   ring
+302: 
+303: open Q3.RouteB.D0Pstar in
+304: theorem selected_anchored_eigen (k : ℕ) :
+305:     (∀ x ∈ Icc (-(selectedFerrersPreAnchorPair k).pw.lambda)
+306:         (selectedFerrersPreAnchorPair k).pw.lambda,
+307:       F (fun y => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 y) x =
+308:         ((selectedFerrersPreAnchorPair k).chi0 : ℂ) *
+309:           (centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)) ∧
+310:     (∀ x ∈ Icc (-(selectedFerrersPreAnchorPair k).pw.lambda)
+311:         (selectedFerrersPreAnchorPair k).pw.lambda,
+312:       F (fun y => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 y) x =
+313:         ((selectedFerrersPreAnchorPair k).chi2 : ℂ) *
+314:           (centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)) := by
+315:   obtain ⟨_, _, _, _, _, _, _, h0, h4, _⟩ := selectedFerrersPreAnchorPair_spec k
+316:   constructor
+317:   · apply scaled_finite_eigen _ _ _ _ _ h0
+318:     intro x hx
+319:     by_contra hne
+320:     exact hx ((selectedFerrersPreAnchorPair k).h0_support hne)
+321:   · apply scaled_finite_eigen _ _ _ _ _ h4
+322:     intro x hx
+323:     by_contra hne
+324:     exact hx ((selectedFerrersPreAnchorPair k).h4_support hne)
+325: #print axioms selected_anchored_eigen
+326: open Q3.RouteB Q3.RouteB.D0Pstar
+327: 
+328: def cylinderTarget (n : ℕ) (x : ℝ) : ℂ :=
+329:   (parabolicCylinderD n (projectCylinderArgument x) : ℂ)
+330: 
+331: theorem target_zero_gaussian (x : ℝ) :
+332:     cylinderTarget 0 x = Complex.exp (-Real.pi * (x : ℂ)^2) := by
+333:   unfold cylinderTarget
+334:   rw [parabolicCylinderD_zero_projectArgument, Complex.ofReal_exp]
+335:   congr 1
+336:   push_cast
+337:   ring
+338: 
+339: theorem target_zero_fixed : F (cylinderTarget 0) = cylinderTarget 0 := by
+340:   have hfourier : 𝓕 (cylinderTarget 0) = cylinderTarget 0 := by
+341:     simp_rw [funext target_zero_gaussian]
+342:     simpa using (fourier_gaussian_pi (b := (1 : ℂ)) (by norm_num))
+343:   rw [F_eq_inverse]
+344:   funext x
+345:   rw [Real.fourierInv_eq_fourier_neg, hfourier]
+346:   simp [cylinderTarget, parabolicCylinderD_zero_projectArgument]
+347: 
+348: theorem target_zero_moment (n : ℕ) :
+349:     Integrable (fun x : ℝ => x^n • cylinderTarget 0 x) := by
+350:   have hr : Integrable (fun x : ℝ => x^n * Real.exp (-Real.pi*x^2)) := by
+351:     simpa only [Real.rpow_natCast] using
+352:       (integrable_rpow_mul_exp_neg_mul_sq Real.pi_pos
+353:         (show (-1 : ℝ) < (n : ℝ) by
+354:           exact lt_of_lt_of_le (by norm_num) (Nat.cast_nonneg n)))
+355:   have hc : Integrable (fun x : ℝ => ((x^n * Real.exp (-Real.pi*x^2) : ℝ) : ℂ)) := hr.ofReal
+356:   convert hc using 1
+357:   funext x
+358:   simp [cylinderTarget, parabolicCylinderD_zero_projectArgument,
+359:     Complex.real_smul]
+360: 
+361: theorem target_four_decomposition : cylinderTarget 4 =
+362:     fun x => (16 : ℂ) * explicitCCMLimitH x + 3 * cylinderTarget 0 x := by
+363:   funext x
+364:   rw [target_zero_gaussian]
+365:   unfold cylinderTarget explicitCCMLimitH
+366:   rw [parabolicCylinderD_four_projectArgument]
+367:   push_cast
+368:   ring
+369: 
+370: theorem ccm_integrable : Integrable explicitCCMLimitH := by
+371:   have h := ((target_zero_moment 4).const_mul ((Real.pi : ℂ)^2)).sub
+372:     ((target_zero_moment 2).const_mul (3*(Real.pi : ℂ)/2))
+373:   convert h using 1
+374:   funext x
+375:   simp only [Pi.sub_apply, Complex.real_smul]
+376:   rw [target_zero_gaussian]
+377:   unfold explicitCCMLimitH
+378:   push_cast
+379:   ring
+380: 
+381: theorem target_four_fixed : F (cylinderTarget 4) = cylinderTarget 4 := by
+382:   have h0 : Integrable (cylinderTarget 0) := by
+383:     simpa using target_zero_moment 0
+384:   have hsum : cylinderTarget 4 =
+385:       (16 : ℂ) • explicitCCMLimitH + (3 : ℂ) • cylinderTarget 0 := by
+386:     exact target_four_decomposition
+387:   have h0f : 𝓕 (cylinderTarget 0) = cylinderTarget 0 := by
+388:     simp_rw [funext target_zero_gaussian]
+389:     simpa using (fourier_gaussian_pi (b := (1 : ℂ)) (by norm_num))
+390:   have hadd {f g : ℝ → ℂ} (hf : Integrable f) (hg : Integrable g) :
+391:       𝓕 (f+g) = 𝓕 f + 𝓕 g :=
+392:     VectorFourier.fourierIntegral_add Real.continuous_fourierChar continuous_inner hf hg
+393:   have hsmul (c : ℂ) (f : ℝ → ℂ) : 𝓕 (c • f) = c • 𝓕 f :=
+394:     VectorFourier.fourierIntegral_const_smul _ _ _ _ _
+395:   have h4f : 𝓕 (cylinderTarget 4) = cylinderTarget 4 := by
+396:     rw [hsum, hadd (ccm_integrable.smul (16 : ℂ)) (h0.smul (3 : ℂ))]
+397:     rw [hsmul, hsmul, fourier_explicitCCMLimitH, h0f]
+398:   rw [F_eq_inverse]
+399:   funext x
+400:   rw [Real.fourierInv_eq_fourier_neg, h4f]
+401:   simp [cylinderTarget, parabolicCylinderD_four_projectArgument]
+402:   <;> ring
+403: 
+404: #print axioms target_four_fixed
+405: #print axioms target_zero_fixed
+406: #print axioms target_zero_moment
+407: theorem target_four_moment (n : ℕ) :
+408:     Integrable (fun x : ℝ => x^n • cylinderTarget 4 x) := by
+409:   have h := (((target_zero_moment (n+4)).const_mul (16*(Real.pi : ℂ)^2)).sub
+410:     ((target_zero_moment (n+2)).const_mul (24*(Real.pi : ℂ)))).add
+411:     ((target_zero_moment n).const_mul 3)
+412:   convert h using 1
+413:   funext x
+414:   simp only [Pi.add_apply, Pi.sub_apply, Complex.real_smul]
+415:   unfold cylinderTarget
+416:   rw [parabolicCylinderD_four_projectArgument, parabolicCylinderD_zero_projectArgument]
+417:   push_cast
+418:   ring
+419: 
+420: theorem target_four_weighted_norm :
+421:     Integrable (fun x : ℝ => x^2 * ‖cylinderTarget 4 x‖) := by
+422:   have h := (target_four_moment 2).norm
+423:   simpa [norm_smul, Real.norm_eq_abs, abs_sq] using h
+424: 
+425: #print axioms target_four_moment
+426: #print axioms target_four_weighted_norm
+427: theorem double_gaussian_moment (n : ℕ) :
+428:     Integrable (fun x : ℝ => x^n * Real.exp (-(2*Real.pi)*x^2)) := by
+429:   simpa only [Real.rpow_natCast] using
+430:     (integrable_rpow_mul_exp_neg_mul_sq (mul_pos (by norm_num) Real.pi_pos)
+431:       (show (-1 : ℝ) < (n : ℝ) by
+432:         exact lt_of_lt_of_le (by norm_num) (Nat.cast_nonneg n)))
+433: 
+434: theorem target_four_square_moment (n : ℕ) :
+435:     Integrable (fun x : ℝ => x^n *
+436:       (parabolicCylinderD 4 (projectCylinderArgument x))^2) := by
+437:   have h := (((((double_gaussian_moment (n+8)).const_mul (256*Real.pi^4)).sub
+438:     ((double_gaussian_moment (n+6)).const_mul (768*Real.pi^3))).add
+439:     ((double_gaussian_moment (n+4)).const_mul (672*Real.pi^2))).sub
+440:     ((double_gaussian_moment (n+2)).const_mul (144*Real.pi))).add
+441:     ((double_gaussian_moment n).const_mul 9)
+442:   convert h using 1
+443:   funext x
+444:   rw [parabolicCylinderD_four_projectArgument, mul_pow]
+445:   rw [show (Real.exp (-Real.pi*x^2))^2 = Real.exp (-(2*Real.pi)*x^2) by
+446:     rw [sq, ← Real.exp_add]; congr 1; ring]
+447:   simp only [Pi.add_apply, Pi.sub_apply]
+448:   ring
+449: 
+450: theorem target_four_square_weighted_norm :
+451:     Integrable (fun x : ℝ => x^2 * ‖cylinderTarget 4 x * cylinderTarget 4 x‖) := by
+452:   convert target_four_square_moment 2 using 1
+453:   funext x
+454:   simp [cylinderTarget, ← Complex.ofReal_mul, Complex.norm_real,
+455:     Real.norm_eq_abs, ← sq, abs_sq]
+456: 
+457: #print axioms target_four_square_moment
+458: #print axioms target_four_square_weighted_norm
+459: theorem target_zero_square_moment (n : ℕ) :
+460:     Integrable (fun x : ℝ => x^n *
+461:       (parabolicCylinderD 0 (projectCylinderArgument x))^2) := by
+462:   convert double_gaussian_moment n using 1
+463:   funext x
+464:   rw [parabolicCylinderD_zero_projectArgument, sq, ← Real.exp_add]
+465:   congr 2
+466:   ring
+467: 
+468: theorem target_square_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
+469:     0 < ∫ x : ℝ, (parabolicCylinderD n (projectCylinderArgument x))^2 := by
+470:   have hi : Integrable (fun x : ℝ =>
+471:       (parabolicCylinderD n (projectCylinderArgument x))^2) := by
+472:     rcases hn with rfl | rfl
+473:     · simpa using target_zero_square_moment 0
+474:     · simpa using target_four_square_moment 0
+475:   apply integral_pos_of_integrable_nonneg_nonzero (x := (0 : ℝ)) _ hi
+476:       (fun x => sq_nonneg _) _
+477:   · rcases hn with rfl | rfl
+478:     · simp_rw [parabolicCylinderD_zero_projectArgument]
+479:       fun_prop
+480:     · simp_rw [parabolicCylinderD_four_projectArgument]
+481:       fun_prop
+482:   · rcases hn with rfl | rfl
+483:     · norm_num [parabolicCylinderD_zero_projectArgument]
+484:     · norm_num [parabolicCylinderD_four_projectArgument]
+485: 
+486: #print axioms target_zero_square_moment
+487: #print axioms target_square_positive
+488: theorem target_analytic_inputs (n : ℕ) (hn : n = 0 ∨ n = 4) :
+489:     Integrable (cylinderTarget n) ∧
+490:     Integrable (fun x => cylinderTarget n x * cylinderTarget n x) ∧
+491:     Integrable (fun x : ℝ => x^2 * ‖cylinderTarget n x‖) ∧
+492:     Integrable (fun x : ℝ => x^2 * ‖cylinderTarget n x * cylinderTarget n x‖) ∧
+493:     0 < ‖∫ x, cylinderTarget n x * cylinderTarget n x‖ := by
+494:   have hm (j : ℕ) : Integrable (fun x : ℝ => x^j • cylinderTarget n x) := by
+495:     rcases hn with rfl | rfl
+496:     · exact target_zero_moment j
+497:     · exact target_four_moment j
+498:   have hq (j : ℕ) : Integrable (fun x : ℝ => x^j *
+499:       (parabolicCylinderD n (projectCylinderArgument x))^2) := by
+500:     rcases hn with rfl | rfl
+501:     · exact target_zero_square_moment j
+502:     · exact target_four_square_moment j
+503:   refine ⟨?_, ?_, ?_, ?_, ?_⟩
+504:   · simpa using hm 0
+505:   · have hr : Integrable (fun x : ℝ =>
+506:         (parabolicCylinderD n (projectCylinderArgument x))^2) := by simpa using hq 0
+507:     have hc : Integrable (fun x : ℝ =>
+508:         (((parabolicCylinderD n (projectCylinderArgument x))^2 : ℝ) : ℂ)) := hr.ofReal
+509:     simpa [cylinderTarget, sq] using hc
+510:   · simpa [norm_smul, Real.norm_eq_abs] using (hm 2).norm
+511:   · convert hq 2 using 1
+512:     funext x
+513:     simp [cylinderTarget, ← Complex.ofReal_mul, ← sq]
+514:   · have heq : (∫ x, cylinderTarget n x * cylinderTarget n x) =
+515:         (((∫ x : ℝ, (parabolicCylinderD n (projectCylinderArgument x))^2) : ℝ) : ℂ) := by
+516:       have ht := integral_complex_ofReal (μ := volume)
+517:         (f := fun x : ℝ => (parabolicCylinderD n (projectCylinderArgument x))^2)
+518:       simpa only [cylinderTarget, sq, Complex.ofReal_mul] using ht
+519:     rw [heq, Complex.norm_real, Real.norm_eq_abs,
+520:       abs_of_pos (target_square_positive n hn)]
+521:     exact target_square_positive n hn
+522: 
+523: #print axioms target_analytic_inputs
+524: theorem selected_anchored_integrable (k : ℕ) :
+525:     Integrable (fun y => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 y) ∧
+526:     Integrable (fun y => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 y) := by
+527:   exact ⟨(selectedFerrersPreAnchorPair k).h0_integrable.const_mul _,
+528:     (selectedFerrersPreAnchorPair k).h4_integrable.const_mul _⟩
+529: 
+530: #print axioms selected_anchored_integrable
+531: theorem scheduled_chi_rate (n : ℕ) (hn : n = 0 ∨ n = 4)
+532:     (f : ℕ → ℝ → ℂ) (χ : ℕ → ℂ) (C : ℝ) (hC : 0 ≤ C)
+533:     (hf : ∀ k, Integrable (f k))
+534:     (heigen : ∀ k, ∀ x ∈ Icc (-(selectedFerrersPaperLambda k))
+535:         (selectedFerrersPaperLambda k), F (f k) x = χ k * f k x)
+536:     (hsupp : ∀ k, ∀ x ∉ Icc (-(selectedFerrersPaperLambda k))
+537:         (selectedFerrersPaperLambda k), f k x = 0)
+538:     (herr : ∀ᶠ k in Filter.atTop, ∀ x ∈ Icc (-(selectedFerrersPaperLambda k))
+539:         (selectedFerrersPaperLambda k), ‖f k x-cylinderTarget n x‖ ≤
+540:           C/(selectedFerrersPaperLambda k)^2) :
+541:     ∃ A : ℝ, 0 ≤ A ∧ ∀ᶠ k in Filter.atTop,
+542:       ‖1-χ k‖ ≤ A/(selectedFerrersPaperLambda k)^2 := by
+543:   obtain ⟨hD,hDD,hM,hQ,hJ⟩ := target_analytic_inputs n hn
+544:   let D := cylinderTarget n
+545:   let J := ‖∫ x, D x*D x‖
+546:   let L := ∫ x, ‖D x‖
+547:   let M := ∫ x : ℝ, x^2*‖D x‖
+548:   let Q := ∫ x : ℝ, x^2*‖D x*D x‖
+549:   have hJp : 0 < J := hJ
+550:   have hL : 0 ≤ L := integral_nonneg (fun x => norm_nonneg _)
+551:   have hMp : 0 ≤ M := integral_nonneg (fun x => by positivity)
+552:   refine ⟨2*(L+2*C)*M/J, by positivity, ?_⟩
+553:   obtain ⟨K,hK⟩ := exists_nat_ge (2*(C*L+Q)/J)
+554:   filter_upwards [herr, Filter.eventually_ge_atTop K] with k hk hkK
+555:   have hlam : 1 ≤ selectedFerrersPaperLambda k := by
+556:     rw [selectedFerrersPaperLambda,
+557:       show (1:ℝ) = Real.sqrt 1 by rw [Real.sqrt_one]]
+558:     apply Real.sqrt_le_sqrt
+559:     exact_mod_cast (show 1 ≤ k+2 by omega)
+560:   have hbig : 2*(C*L+Q) ≤ J*(selectedFerrersPaperLambda k)^2 := by
+561:     rw [mul_comm J]
+562:     apply (div_le_iff₀ hJp).mp
+563:     rw [selectedFerrersPaperLambda_sq]
+564:     exact hK.trans (by exact_mod_cast (show K ≤ k+2 by omega))
+565:   have hfixed : F D = D := by
+566:     rcases hn with rfl | rfl
+567:     · exact target_zero_fixed
+568:     · exact target_four_fixed
+569:   exact chi_bound_from_mode_error (f k) D _ C J (χ k) hlam hC hJp rfl
+570:     (hf k) hD hDD hM hQ hfixed (heigen k) (hsupp k) hk hbig
+571: 
+572: #print axioms scheduled_chi_rate
+573: theorem selected_chi_rate_of_mode_rate
+574:     (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+575:     (hmode : ∀ᶠ k in Filter.atTop,
+576:       ∀ x ∈ Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k),
+577:         ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x -
+578:           cylinderTarget 0 x‖ ≤ C0 / (selectedFerrersPaperLambda k)^2 ∧
+579:         ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x -
+580:           cylinderTarget 4 x‖ ≤ C4 / (selectedFerrersPaperLambda k)^2) :
+581:     ∃ Cχ : ℝ, 0 ≤ Cχ ∧ ∀ᶠ k in Filter.atTop,
+582:       |1-(selectedFerrersPreAnchorPair k).chi0| ≤ Cχ/(selectedFerrersPaperLambda k)^2 ∧
+583:       |1-(selectedFerrersPreAnchorPair k).chi2| ≤ Cχ/(selectedFerrersPaperLambda k)^2 := by
+584:   have hzero := scheduled_chi_rate 0 (Or.inl rfl)
+585:     (fun k x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)
+586:     (fun k => ((selectedFerrersPreAnchorPair k).chi0 : ℂ)) C0 hC0
+587:     (fun k => (selected_anchored_integrable k).1)
+588:     (fun k => by simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+589:       (selected_anchored_eigen k).1)
+590:     (fun k x hx => by
+591:       have hz : (selectedFerrersPreAnchorPair k).h0 x = 0 := by
+592:         by_contra hne
+593:         apply hx
+594:         simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+595:           (selectedFerrersPreAnchorPair k).h0_support hne
+596:       simp [hz])
+597:     (hmode.mono (fun k hk x hx => (hk x hx).1))
+598:   have hfour := scheduled_chi_rate 4 (Or.inr rfl)
+599:     (fun k x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)
+600:     (fun k => ((selectedFerrersPreAnchorPair k).chi2 : ℂ)) C4 hC4
+601:     (fun k => (selected_anchored_integrable k).2)
+602:     (fun k => by simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+603:       (selected_anchored_eigen k).2)
+604:     (fun k x hx => by
+605:       have hz : (selectedFerrersPreAnchorPair k).h4 x = 0 := by
+606:         by_contra hne
+607:         apply hx
+608:         simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+609:           (selectedFerrersPreAnchorPair k).h4_support hne
+610:       simp [hz])
+611:     (hmode.mono (fun k hk x hx => (hk x hx).2))
+612:   obtain ⟨A,hA,hAr⟩ := hzero
+613:   obtain ⟨B,hB,hBr⟩ := hfour
+614:   refine ⟨max A B, hA.trans (le_max_left _ _), ?_⟩
+615:   filter_upwards [hAr,hBr] with k hk0 hk4
+616:   have hden : 0 ≤ (selectedFerrersPaperLambda k)^2 := sq_nonneg _
+617:   constructor
+618:   · have hh : |1-(selectedFerrersPreAnchorPair k).chi0| ≤
+619:         A/(selectedFerrersPaperLambda k)^2 := by
+620:       simpa only [← Complex.ofReal_one, ← Complex.ofReal_sub,
+621:         Complex.norm_real, Real.norm_eq_abs] using hk0
+622:     exact hh.trans (div_le_div_of_nonneg_right (le_max_left _ _) hden)
+623:   · have hh : |1-(selectedFerrersPreAnchorPair k).chi2| ≤
+624:         B/(selectedFerrersPaperLambda k)^2 := by
+625:       simpa only [← Complex.ofReal_one, ← Complex.ofReal_sub,
+626:         Complex.norm_real, Real.norm_eq_abs] using hk4
+627:     exact hh.trans (div_le_div_of_nonneg_right (le_max_right _ _) hden)
+628: 
+629: #print axioms selected_chi_rate_of_mode_rate
+630: theorem selected_projection_tail_of_mode_theta
+631:     (S : ProlateCanonicalSourceData)
+632:     (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S)
+633:     (C0 C4 Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+634:     (hCθ : 0 ≤ Cθ)
+635:     (hmode : ∀ᶠ k in Filter.atTop,
+636:       ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+637:           (selectedFerrersPaperLambda k),
+638:         ‖centerAnchorScalarZero k *
+639:             (selectedFerrersPreAnchorPair k).h0 x -
+640:           ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+641:             C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+642:         ‖centerAnchorScalarFour k *
+643:             (selectedFerrersPreAnchorPair k).h4 x -
+644:           ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+645:             C4 / (selectedFerrersPaperLambda k) ^ 2)
+646:     (hθ : ∀ᶠ k in Filter.atTop,
+647:       |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+648:           mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+649:         |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+650:           mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+651:           Cθ) :
+652:     SelectedProjectionTailDecay S := by
+653:   obtain ⟨Cχ,hCχ,hχ⟩ := selected_chi_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+654:   exact selectedProjectionTailDecay_of_selectedFerrersW5RateLedger
+655:     S hFamily C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
+656: 
+657: #print axioms selected_projection_tail_of_mode_theta
+658: theorem compact_flux_green
+659:     (a b : ℝ) (f df φ dφ p flux dflux testflux dtestflux : ℝ → ℂ)
+660:     (hf : ContinuousOn f (uIcc a b)) (hφ : ContinuousOn φ (uIcc a b))
+661:     (hflux : ContinuousOn flux (uIcc a b))
+662:     (htest : ContinuousOn testflux (uIcc a b))
+663:     (hdf : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt f (df x) x)
+664:     (hdφ : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt φ (dφ x) x)
+665:     (hdflux : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt flux (dflux x) x)
+666:     (hdtest : ∀ x ∈ Ioo (min a b) (max a b), HasDerivAt testflux (dtestflux x) x)
+667:     (hidf : IntervalIntegrable df volume a b)
+668:     (hidφ : IntervalIntegrable dφ volume a b)
+669:     (hidflux : IntervalIntegrable dflux volume a b)
+670:     (hidtest : IntervalIntegrable dtestflux volume a b)
+671:     (hfluxeq : ∀ x, flux x = p x * df x)
+672:     (htesteq : ∀ x, testflux x = p x * dφ x)
+673:     (hφa : φ a = 0) (hφb : φ b = 0)
+674:     (hta : testflux a = 0) (htb : testflux b = 0) :
+675:     (∫ x in a..b, φ x * dflux x) = ∫ x in a..b, f x * dtestflux x := by
+676:   have hleft := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+677:     hφ hflux hdφ hdflux hidφ hidflux
+678:   have hright := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+679:     hf htest hdf hdtest hidf hidtest
+680:   rw [hφa,hφb] at hleft
+681:   rw [hta,htb] at hright
+682:   simp only [zero_mul,mul_zero,sub_zero,zero_sub] at hleft hright
+683:   rw [hleft,hright]
+684:   congr 1
+685:   apply intervalIntegral.integral_congr
+686:   intro x hx
+687:   dsimp only
+688:   rw [hfluxeq,htesteq]
+689:   ring
+690: 
+691: #print axioms compact_flux_green
+692: theorem target_zero_oscillator (x : ℝ) :
+693:     -deriv (deriv (fun y => parabolicCylinderD 0 (projectCylinderArgument y))) x +
+694:       4*Real.pi^2*x^2 * parabolicCylinderD 0 (projectCylinderArgument x) =
+695:       2*Real.pi * parabolicCylinderD 0 (projectCylinderArgument x) := by
+696:   have heq : (fun y => parabolicCylinderD 0 (projectCylinderArgument y)) = ctW0 := by
+697:     funext y
+698:     simp [parabolicCylinderD_zero_projectArgument, ctW0]
+699:   change -deriv (deriv (fun y => parabolicCylinderD 0 (projectCylinderArgument y))) x +
+700:       4*Real.pi^2*x^2 * (fun y => parabolicCylinderD 0 (projectCylinderArgument y)) x =
+701:       2*Real.pi * (fun y => parabolicCylinderD 0 (projectCylinderArgument y)) x
+702:   rw [heq, show deriv ctW0 = ctW0d from funext (fun y => (ctW0_hasDerivAt' y).deriv),
+703:     (ctW0d_hasDerivAt x).deriv]
+704:   exact ctW0_cylinder_eigenrelation x
+705: 
+706: theorem target_four_oscillator (x : ℝ) :
+707:     -deriv (deriv (fun y => parabolicCylinderD 4 (projectCylinderArgument y))) x +
+708:       4*Real.pi^2*x^2 * parabolicCylinderD 4 (projectCylinderArgument x) =
+709:       18*Real.pi * parabolicCylinderD 4 (projectCylinderArgument x) := by
+710:   have heq : (fun y => parabolicCylinderD 4 (projectCylinderArgument y)) = ctW4 := by
+711:     funext y
+712:     simp [parabolicCylinderD_four_projectArgument, ctW4]
+713:     ring
+714:   change -deriv (deriv (fun y => parabolicCylinderD 4 (projectCylinderArgument y))) x +
+715:       4*Real.pi^2*x^2 * (fun y => parabolicCylinderD 4 (projectCylinderArgument y)) x =
+716:       18*Real.pi * (fun y => parabolicCylinderD 4 (projectCylinderArgument y)) x
+717:   rw [heq, show deriv ctW4 = ctW4d from funext (fun y => (ctW4_hasDerivAt' y).deriv),
+718:     (ctW4d_hasDerivAt x).deriv]
+719:   exact ctW4_cylinder_eigenrelation x
+720: 
+721: #print axioms target_zero_oscillator
+722: #print axioms target_four_oscillator
+723: theorem compact_theta_defect_identity
+724:     (a b : ℝ) (m θ e : ℂ) (f D φ ddφ V T : ℝ → ℂ)
+725:     (hf : ContinuousOn f (uIcc a b)) (hD : ContinuousOn D (uIcc a b))
+726:     (hφ : ContinuousOn φ (uIcc a b)) (hddφ : ContinuousOn ddφ (uIcc a b))
+727:     (hV : ContinuousOn V (uIcc a b)) (hT : ContinuousOn T (uIcc a b))
+728:     (hweak : (∫ x in a..b, φ x * ((m*V x-θ)*f x)) =
+729:       ∫ x in a..b, f x*(m*ddφ x-T x))
+730:     (horth : (∫ x in a..b, D x*(-ddφ x+(V x-e)*φ x)) = 0) :
+731:     (θ-e*m)*(∫ x in a..b, f x*φ x) =
+732:       m*(∫ x in a..b, (f x-D x)*(-ddφ x+(V x-e)*φ x)) +
+733:       ∫ x in a..b, f x*T x := by
+734:   have hfp := (hf.mul hφ).intervalIntegrable (μ := volume)
+735:   have hfv := ((hf.mul hV).mul hφ).intervalIntegrable (μ := volume)
+736:   have hfd := (hf.mul hddφ).intervalIntegrable (μ := volume)
+737:   have hft := (hf.mul hT).intervalIntegrable (μ := volume)
+738:   have hA : ContinuousOn (fun x => -ddφ x+(V x-e)*φ x) (uIcc a b) :=
+739:     hddφ.neg.add ((hV.sub continuousOn_const).mul hφ)
+740:   have hfa := (hf.mul hA).intervalIntegrable (μ := volume)
+741:   have hda := (hD.mul hA).intervalIntegrable (μ := volume)
+742:   have hl : (fun x => φ x*((m*V x-θ)*f x)) =
+743:       (fun x => m*(f x*V x*φ x)-θ*(f x*φ x)) := by funext x; ring
+744:   have hr : (fun x => f x*(m*ddφ x-T x)) =
+745:       (fun x => m*(f x*ddφ x)-f x*T x) := by funext x; ring
+746:   rw [hl,hr,intervalIntegral.integral_sub (hfv.const_mul m) (hfp.const_mul θ),
+747:     intervalIntegral.integral_sub (hfd.const_mul m) hft,
+748:     intervalIntegral.integral_const_mul,intervalIntegral.integral_const_mul,
+749:     intervalIntegral.integral_const_mul] at hweak
+750:   have herr : (∫ x in a..b, (f x-D x)*(-ddφ x+(V x-e)*φ x)) =
+751:       -(∫ x in a..b, f x*ddφ x)+(∫ x in a..b, f x*V x*φ x)-
+752:         e*(∫ x in a..b, f x*φ x) := by
+753:     have hex : (fun x => (f x-D x)*(-ddφ x+(V x-e)*φ x)) =
+754:         (fun x => f x*(-ddφ x+(V x-e)*φ x)-D x*(-ddφ x+(V x-e)*φ x)) := by
+755:       funext x; ring
+756:     rw [hex,intervalIntegral.integral_sub hfa hda,horth,sub_zero]
+757:     have heq : (fun x => f x*(-ddφ x+(V x-e)*φ x)) =
+758:         (fun x => - (f x*ddφ x) + f x*V x*φ x-e*(f x*φ x)) := by
+759:       funext x; ring
+760:     have hneg : IntervalIntegrable (fun x => -(f x*ddφ x)) volume a b := hfd.neg
+761:     have hsum : IntervalIntegrable (fun x => -(f x*ddφ x)+f x*V x*φ x) volume a b :=
+762:       hneg.add hfv
+763:     rw [heq,intervalIntegral.integral_sub hsum (hfp.const_mul e),
+764:       intervalIntegral.integral_add hneg hfv,intervalIntegral.integral_neg,
+765:       intervalIntegral.integral_const_mul]
+766:   rw [herr]
+767:   linear_combination -hweak
+768: 
+769: #print axioms compact_theta_defect_identity
+770: theorem theta_defect_bound_from_weak_pairing
+771:     (m θ e J A B : ℝ) (I U V : ℂ)
+772:     (hm : 0 < m) (hJ : 0 < J)
+773:     (hidentity : (((θ-e*m : ℝ) : ℂ))*I = (m:ℂ)*U+V)
+774:     (hfloor : J/2 ≤ ‖I‖) (hU : ‖U‖ ≤ A/m) (hV : ‖V‖ ≤ B) :
+775:     |θ-e*m| ≤ 2*(A+B)/J := by
+776:   have hn : |θ-e*m| *‖I‖ ≤ A+B := calc
+777:     |θ-e*m| *‖I‖ = ‖(((θ-e*m : ℝ) : ℂ))*I‖ := by
+778:       rw [norm_mul,Complex.norm_real,Real.norm_eq_abs]
+779:     _ = ‖(m:ℂ)*U+V‖ := congrArg norm hidentity
+780:     _ ≤ ‖(m:ℂ)*U‖+‖V‖ := norm_add_le _ _
+781:     _ = m*‖U‖+‖V‖ := by
+782:       rw [norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_pos hm]
+783:     _ ≤ m*(A/m)+B := add_le_add (mul_le_mul_of_nonneg_left hU hm.le) hV
+784:     _ = A+B := by field_simp
+785:   apply (le_div_iff₀ hJ).mpr
+786:   have hh := mul_le_mul_of_nonneg_left hfloor (abs_nonneg (θ-e*m))
+787:   nlinarith
+788: 
+789: #print axioms theta_defect_bound_from_weak_pairing
+790: def compactTest (n : ℕ) (x : ℝ) : ℝ :=
+791:   (1-x^2)^3 * parabolicCylinderD n (projectCylinderArgument x)
+792: 
+793: theorem compactTest_contDiff (n : ℕ) (hn : n = 0 ∨ n = 4) :
+794:     ContDiff ℝ ∞ (compactTest n) := by
+795:   rcases hn with rfl | rfl
+796:   · unfold compactTest
+797:     simp_rw [parabolicCylinderD_zero_projectArgument]
+798:     fun_prop
+799:   · unfold compactTest
+800:     simp_rw [parabolicCylinderD_four_projectArgument]
+801:     fun_prop
+802: 
+803: theorem compactTest_hasDerivAt (n : ℕ) (hn : n = 0 ∨ n = 4) (x : ℝ) :
+804:     HasDerivAt (compactTest n)
+805:       ((-6*x*(1-x^2)^2)*parabolicCylinderD n (projectCylinderArgument x) +
+806:         (1-x^2)^3 * deriv (fun y => parabolicCylinderD n (projectCylinderArgument y)) x) x := by
+807:   have hw : HasDerivAt (fun y : ℝ => (1-y^2)^3) (-6*x*(1-x^2)^2) x := by
+808:     convert (((hasDerivAt_const x (1:ℝ)).sub ((hasDerivAt_id x).pow 2)).pow 3) using 1 <;> simp only [Pi.sub_apply, Pi.pow_apply, id_eq] <;> ring
+809:   have hd : Differentiable ℝ (fun y => parabolicCylinderD n (projectCylinderArgument y)) := by
+810:     rcases hn with rfl | rfl
+811:     · simp_rw [parabolicCylinderD_zero_projectArgument]
+812:       fun_prop
+813:     · simp_rw [parabolicCylinderD_four_projectArgument]
+814:       fun_prop
+815:   exact hw.mul (hd x).hasDerivAt
+816: 
+817: theorem compactTest_boundary (n : ℕ) (hn : n = 0 ∨ n = 4) :
+818:     compactTest n (-1) = 0 ∧ compactTest n 1 = 0 ∧
+819:     deriv (compactTest n) (-1) = 0 ∧ deriv (compactTest n) 1 = 0 := by
+820:   rw [(compactTest_hasDerivAt n hn (-1)).deriv, (compactTest_hasDerivAt n hn 1).deriv]
+821:   norm_num [compactTest]
+822: 
+823: theorem compactTest_overlap_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
+824:     0 < ∫ x in (-1:ℝ)..1,
+825:       parabolicCylinderD n (projectCylinderArgument x)*compactTest n x := by
+826:   have hc : Continuous (fun x => parabolicCylinderD n (projectCylinderArgument x)) := by
+827:     rcases hn with rfl | rfl
+828:     · simp_rw [parabolicCylinderD_zero_projectArgument]
+829:       fun_prop
+830:     · simp_rw [parabolicCylinderD_four_projectArgument]
+831:       fun_prop
+832:   have hh := intervalIntegral.integral_lt_integral_of_continuousOn_of_le_of_exists_lt
+833:     (f := fun _ : ℝ => (0:ℝ)) (g := fun x =>
+834:       parabolicCylinderD n (projectCylinderArgument x)*compactTest n x)
+835:     (a := -1) (b := 1) (by norm_num) continuousOn_const
+836:     (hc.mul (compactTest_contDiff n hn).continuous).continuousOn
+837:     (by
+838:       intro x hx
+839:       have hw : 0 ≤ 1-x^2 := by nlinarith [hx.1, hx.2]
+840:       dsimp only
+841:       unfold compactTest
+842:       nlinarith [mul_nonneg (pow_nonneg hw 3)
+843:         (sq_nonneg (parabolicCylinderD n (projectCylinderArgument x)))])
+844:     (by
+845:       refine ⟨0, by norm_num, ?_⟩
+846:       rcases hn with rfl | rfl
+847:       · norm_num [compactTest, parabolicCylinderD_zero_projectArgument]
+848:       · norm_num [compactTest, parabolicCylinderD_four_projectArgument])
+849:   simpa using hh
+850: 
+851: #print axioms compactTest_contDiff
+852: #print axioms compactTest_boundary
+853: #print axioms compactTest_overlap_positive
+854: theorem oscillator_test_orthogonality
+855:     (a b e : ℝ) (D φ V : ℝ → ℝ)
+856:     (hD : ContDiff ℝ ∞ D) (hφ : ContDiff ℝ ∞ φ)
+857:     (hode : ∀ x, -deriv (deriv D) x+V x*D x=e*D x)
+858:     (hφa : φ a=0) (hφb : φ b=0)
+859:     (hda : deriv φ a=0) (hdb : deriv φ b=0) :
+860:     (∫ x in a..b, D x*(-deriv (deriv φ) x+(V x-e)*φ x)) = 0 := by
+861:   have hDd := (contDiff_infty_iff_deriv.mp hD).2
+862:   have hφd := (contDiff_infty_iff_deriv.mp hφ).2
+863:   have hDdd := (contDiff_infty_iff_deriv.mp hDd).2
+864:   have hφdd := (contDiff_infty_iff_deriv.mp hφd).2
+865:   have h1 := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+866:     hφ.continuous.continuousOn hDd.continuous.continuousOn
+867:     (fun x _ => ((contDiff_infty_iff_deriv.mp hφ).1 x).hasDerivAt)
+868:     (fun x _ => ((contDiff_infty_iff_deriv.mp hDd).1 x).hasDerivAt)
+869:     (hφd.continuous.intervalIntegrable (μ := volume) a b)
+870:     (hDdd.continuous.intervalIntegrable (μ := volume) a b)
+871:   have h2 := intervalIntegral.integral_mul_deriv_eq_deriv_mul_of_hasDerivAt
+872:     hD.continuous.continuousOn hφd.continuous.continuousOn
+873:     (fun x _ => ((contDiff_infty_iff_deriv.mp hD).1 x).hasDerivAt)
+874:     (fun x _ => ((contDiff_infty_iff_deriv.mp hφd).1 x).hasDerivAt)
+875:     (hDd.continuous.intervalIntegrable (μ := volume) a b)
+876:     (hφdd.continuous.intervalIntegrable (μ := volume) a b)
+877:   rw [hφa,hφb] at h1
+878:   rw [hda,hdb] at h2
+879:   simp only [zero_mul,mul_zero,sub_zero,zero_sub] at h1 h2
+880:   have hg : (∫ x in a..b, φ x*deriv (deriv D) x) =
+881:       ∫ x in a..b, D x*deriv (deriv φ) x := by
+882:     rw [h1,h2]
+883:     congr 1
+884:     apply intervalIntegral.integral_congr
+885:     intro x hx
+886:     dsimp only
+887:     ring
+888:   have heq : (fun x => D x*(-deriv (deriv φ) x+(V x-e)*φ x)) =
+889:       (fun x => φ x*deriv (deriv D) x-D x*deriv (deriv φ) x) := by
+890:     funext x
+891:     linear_combination φ x * hode x
+892:   rw [heq,intervalIntegral.integral_sub
+893:     ((hφ.continuous.mul hDdd.continuous).intervalIntegrable a b)
+894:     ((hD.continuous.mul hφdd.continuous).intervalIntegrable a b),hg,sub_self]
+895: 
+896: #print axioms oscillator_test_orthogonality
+897: theorem compactTest_orthogonality (n : ℕ) (hn : n = 0 ∨ n = 4) :
+898:     (∫ x in (-1:ℝ)..1, parabolicCylinderD n (projectCylinderArgument x) *
+899:       (-deriv (deriv (compactTest n)) x +
+900:         (4*Real.pi^2*x^2-2*Real.pi*(2*(n:ℝ)+1))*compactTest n x)) = 0 := by
+901:   have hD : ContDiff ℝ ∞ (fun x => parabolicCylinderD n (projectCylinderArgument x)) := by
+902:     rcases hn with rfl | rfl
+903:     · simp_rw [parabolicCylinderD_zero_projectArgument]
+904:       fun_prop
+905:     · simp_rw [parabolicCylinderD_four_projectArgument]
+906:       fun_prop
+907:   obtain ⟨ha,hb,hda,hdb⟩ := compactTest_boundary n hn
+908:   apply oscillator_test_orthogonality (-1) 1 (2*Real.pi*(2*(n:ℝ)+1)) _ _
+909:     (fun x => 4*Real.pi^2*x^2) hD (compactTest_contDiff n hn) _ ha hb hda hdb
+910:   intro x
+911:   rcases hn with rfl | rfl
+912:   · simpa using target_zero_oscillator x
+913:   · convert target_four_oscillator x using 1 <;> norm_num <;> ring <;> simp
+914: 
+915: #print axioms compactTest_orthogonality
+916: theorem compactTest_complex_orthogonality (n : ℕ) (hn : n = 0 ∨ n = 4) :
+917:     (∫ x in (-1:ℝ)..1, cylinderTarget n x *
+918:       (-((deriv (deriv (compactTest n)) x : ℝ) : ℂ) +
+919:         ((4*Real.pi^2*x^2-2*Real.pi*(2*(n:ℝ)+1) : ℝ) : ℂ) *
+920:           (compactTest n x : ℂ))) = 0 := by
+921:   have hc : (∫ x in (-1:ℝ)..1,
+922:       ((parabolicCylinderD n (projectCylinderArgument x) *
+923:         (-deriv (deriv (compactTest n)) x +
+924:           (4*Real.pi^2*x^2-2*Real.pi*(2*(n:ℝ)+1))*compactTest n x) : ℝ) : ℂ)) = 0 := by
+925:     rw [intervalIntegral.integral_ofReal, compactTest_orthogonality n hn]
+926:     norm_num
+927:   simpa only [cylinderTarget,Complex.ofReal_mul,Complex.ofReal_add,Complex.ofReal_neg] using hc
+928: 
+929: theorem compactTest_complex_overlap_positive (n : ℕ) (hn : n = 0 ∨ n = 4) :
+930:     0 < ‖∫ x in (-1:ℝ)..1, cylinderTarget n x * (compactTest n x : ℂ)‖ := by
+931:   have heq : (∫ x in (-1:ℝ)..1, cylinderTarget n x * (compactTest n x : ℂ)) =
+932:       (((∫ x in (-1:ℝ)..1, parabolicCylinderD n (projectCylinderArgument x) *
+933:         compactTest n x) : ℝ) : ℂ) := by
+934:     simp only [cylinderTarget, ← Complex.ofReal_mul]
+935:     exact intervalIntegral.integral_ofReal
+936:   rw [heq,Complex.norm_real,Real.norm_eq_abs,abs_of_pos (compactTest_overlap_positive n hn)]
+937:   exact compactTest_overlap_positive n hn
+938: 
+939: #print axioms compactTest_complex_orthogonality
+940: #print axioms compactTest_complex_overlap_positive
+941: def prolateFlux (lam : ℝ) (f : ℝ → ℂ) (x : ℝ) : ℂ :=
+942:   ((lam^2-x^2 : ℝ) : ℂ) * deriv f x
+943: 
+944: theorem prolateFlux_contDiffOn (lam : ℝ) (f : ℝ → ℂ)
+945:     (hf : ContDiffOn ℝ 2 f (Ioo (-lam) lam)) :
+946:     ContDiffOn ℝ 1 (prolateFlux lam f) (Ioo (-lam) lam) := by
+947:   have hd : ContDiffOn ℝ 1 (deriv f) (Ioo (-lam) lam) :=
+948:     hf.deriv_of_isOpen isOpen_Ioo (by norm_num)
+949:   unfold prolateFlux
+950:   apply ContDiffOn.mul _ hd
+951:   have hw : ContDiff ℝ 1 (fun x : ℝ => lam^2-x^2) := by fun_prop
+952:   simpa only [Function.comp_apply,Complex.ofRealCLM_apply] using
+953:     (Complex.ofRealCLM.contDiff.comp hw).contDiffOn
+954: 
+955: theorem prolateFlux_hasDerivAt (lam θ : ℝ) (f : ℝ → ℂ)
+956:     (hf : ContDiffOn ℝ 2 f (Ioo (-lam) lam))
+957:     (hode : ∀ x ∈ Ioo (-lam) lam, prolateWaveExpression lam f x = (θ:ℂ)*f x)
+958:     (x : ℝ) (hx : x ∈ Ioo (-lam) lam) :
+959:     HasDerivAt (prolateFlux lam f)
+960:       ((((2*Real.pi*lam*x)^2 : ℝ) : ℂ)*f x-(θ:ℂ)*f x) x := by
+961:   have hd := ((prolateFlux_contDiffOn lam f hf).differentiableOn (by norm_num)).differentiableAt
+962:     (isOpen_Ioo.mem_nhds hx)
+963:   apply hd.hasDerivAt.congr_deriv
+964:   have he := hode x hx
+965:   simp only [prolateWaveExpression, fderiv_deriv] at he
+966:   change -deriv (prolateFlux lam f) x +
+967:     (((2*Real.pi*lam*x)^2 : ℝ) : ℂ)*f x = (θ:ℂ)*f x at he
+968:   linear_combination -he
+969: 
+970: theorem normalized_mode_flux_hasDerivAt
+971:     {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+972:     (hm : 2 ≤ m) (x : ℝ) (hx : x ∈ Ioo (-Real.sqrt m) (Real.sqrt m)) :
+973:     HasDerivAt (prolateFlux (Real.sqrt m) S.normalizedPhysicalMode)
+974:       (((((2*Real.pi*Real.sqrt m*x)^2 : ℝ) : ℂ) -
+975:         ((Λ+mode4JacobiG m : ℝ) : ℂ))*S.normalizedPhysicalMode x) x := by
+976:   have hh := prolateFlux_hasDerivAt (Real.sqrt m) (Λ+mode4JacobiG m)
+977:     S.normalizedPhysicalMode (normalizedPhysicalMode_contDiffOn_two_open S hm)
+978:     (fun y hy => normalizedPhysicalMode_prolateWaveExpression_eigenrelation S hm hy) x hx
+979:   convert hh using 1 <;> ring
+980: 
+981: #print axioms prolateFlux_hasDerivAt
+982: #print axioms normalized_mode_flux_hasDerivAt
+983: theorem prolate_compact_weak (lam θ : ℝ) (f φ : ℝ → ℂ)
+984:     (hlam : 1 < lam) (hf : ContDiffOn ℝ 2 f (Ioo (-lam) lam))
+985:     (hode : ∀ x ∈ Ioo (-lam) lam, prolateWaveExpression lam f x = (θ:ℂ)*f x)
+986:     (hφ : ContDiff ℝ ∞ φ)
+987:     (hφa : φ (-1)=0) (hφb : φ 1=0)
+988:     (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+989:     (∫ x in (-1:ℝ)..1, φ x *
+990:       (((((2*Real.pi*lam*x)^2 : ℝ) : ℂ)-(θ:ℂ))*f x)) =
+991:     ∫ x in (-1:ℝ)..1, f x *
+992:       (((lam^2-x^2 : ℝ) : ℂ)*deriv (deriv φ) x - ((2*x:ℝ):ℂ)*deriv φ x) := by
+993:   have hsub : uIcc (-1:ℝ) 1 ⊆ Ioo (-lam) lam := by
+994:     rw [uIcc_of_le (by norm_num)]
+995:     intro x hx
+996:     constructor <;> linarith [hx.1,hx.2]
+997:   have hopen : Ioo (min (-1:ℝ) 1) (max (-1:ℝ) 1) ⊆ Ioo (-lam) lam := by
+998:     intro x hx
+999:     apply hsub
+1000:     exact Ioo_subset_Icc_self hx
+1001:   have hdfc := hf.continuousOn_deriv_of_isOpen isOpen_Ioo (by norm_num)
+1002:   have hφd := (contDiff_infty_iff_deriv.mp hφ).2
+1003:   have hφdd := (contDiff_infty_iff_deriv.mp hφd).2
+1004:   have hp : Continuous (fun x : ℝ => ((lam^2-x^2 : ℝ):ℂ)) := by fun_prop
+1005:   have htf : Continuous (fun x : ℝ => ((lam^2-x^2 : ℝ):ℂ)*deriv φ x) :=
+1006:     hp.mul hφd.continuous
+1007:   have hdtf : Continuous (fun x : ℝ => ((lam^2-x^2 : ℝ):ℂ)*deriv (deriv φ) x -
+1008:       ((2*x:ℝ):ℂ)*deriv φ x) := by
+1009:     exact (hp.mul hφdd.continuous).sub
+1010:       ((show Continuous (fun x : ℝ => ((2*x:ℝ):ℂ)) by fun_prop).mul hφd.continuous)
+1011:   apply compact_flux_green (-1) 1 f (deriv f) φ (deriv φ)
+1012:     (fun x => ((lam^2-x^2 : ℝ):ℂ)) (prolateFlux lam f)
+1013:     (fun x => (((((2*Real.pi*lam*x)^2 : ℝ):ℂ)-(θ:ℂ))*f x))
+1014:     (fun x => ((lam^2-x^2 : ℝ):ℂ)*deriv φ x)
+1015:     (fun x => ((lam^2-x^2 : ℝ):ℂ)*deriv (deriv φ) x - ((2*x:ℝ):ℂ)*deriv φ x)
+1016:     (hf.continuousOn.mono hsub) hφ.continuous.continuousOn
+1017:     ((prolateFlux_contDiffOn lam f hf).continuousOn.mono hsub) htf.continuousOn
+1018:   · intro x hx
+1019:     exact ((hf.differentiableOn (by norm_num)).differentiableAt
+1020:       (isOpen_Ioo.mem_nhds (hopen hx))).hasDerivAt
+1021:   · intro x hx
+1022:     exact ((contDiff_infty_iff_deriv.mp hφ).1 x).hasDerivAt
+1023:   · intro x hx
+1024:     convert prolateFlux_hasDerivAt lam θ f hf hode x (hopen hx) using 1 <;> ring
+1025:   · intro x hx
+1026:     have hw : HasDerivAt (fun y : ℝ => ((lam^2-y^2 : ℝ):ℂ)) ((-2*x:ℝ):ℂ) x := by
+1027:       convert (((hasDerivAt_const x (lam^2)).sub ((hasDerivAt_id x).pow 2)).ofReal_comp) using 1
+1028:       simp only [id_eq]
+1029:       push_cast
+1030:       ring
+1031:     convert hw.mul (((contDiff_infty_iff_deriv.mp hφd).1 x).hasDerivAt) using 1
+1032:     push_cast
+1033:     ring
+1034:   · exact (hdfc.mono hsub).intervalIntegrable
+1035:   · exact hφd.continuous.intervalIntegrable _ _
+1036:   · have hc : ContinuousOn (fun x => (((((2*Real.pi*lam*x)^2 : ℝ):ℂ)-(θ:ℂ))*f x))
+1037:         (uIcc (-1:ℝ) 1) := by
+1038:       apply ContinuousOn.mul _ (hf.continuousOn.mono hsub)
+1039:       fun_prop
+1040:     exact hc.intervalIntegrable
+1041:   · exact hdtf.intervalIntegrable _ _
+1042:   · intro x; rfl
+1043:   · intro x; rfl
+1044:   · exact hφa
+1045:   · exact hφb
+1046:   · simp [hda]
+1047:   · simp [hdb]
+1048: 
+1049: #print axioms prolate_compact_weak
+1050: theorem normalized_mode_compact_weak
+1051:     {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+1052:     (hm : 2 ≤ m) (α : ℂ) (φ : ℝ → ℂ) (hφ : ContDiff ℝ ∞ φ)
+1053:     (hφa : φ (-1)=0) (hφb : φ 1=0)
+1054:     (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+1055:     (∫ x in (-1:ℝ)..1, φ x *
+1056:       (((((2*Real.pi*Real.sqrt m*x)^2 : ℝ) : ℂ)-((Λ+mode4JacobiG m:ℝ):ℂ))*
+1057:         (α*S.normalizedPhysicalMode x))) =
+1058:     ∫ x in (-1:ℝ)..1, (α*S.normalizedPhysicalMode x) *
+1059:       (((((Real.sqrt m)^2-x^2) : ℝ) : ℂ)*deriv (deriv φ) x - ((2*x:ℝ):ℂ)*deriv φ x) := by
+1060:   have hlam : 1 < Real.sqrt (m:ℝ) := by
+1061:     rw [show (1:ℝ)=Real.sqrt 1 by rw [Real.sqrt_one]]
+1062:     apply Real.sqrt_lt_sqrt (by norm_num)
+1063:     exact_mod_cast (show 1 < m by omega)
+1064:   have hh := prolate_compact_weak (Real.sqrt m) (Λ+mode4JacobiG m)
+1065:     S.normalizedPhysicalMode φ hlam (normalizedPhysicalMode_contDiffOn_two_open S hm)
+1066:     (fun x hx => normalizedPhysicalMode_prolateWaveExpression_eigenrelation S hm hx)
+1067:     hφ hφa hφb hda hdb
+1068:   have he := congrArg (fun z : ℂ => α*z) hh
+1069:   dsimp only at he
+1070:   rw [← intervalIntegral.integral_const_mul, ← intervalIntegral.integral_const_mul] at he
+1071:   convert he using 1 <;> apply intervalIntegral.integral_congr <;> intro x hx <;>
+1072:     dsimp only <;> ring
+1073: 
+1074: #print axioms normalized_mode_compact_weak
+1075: def CompactWeakODE (m θ : ℝ) (f φ : ℝ → ℂ) : Prop :=
+1076:   (∫ x in (-1:ℝ)..1, φ x * (((m*(4*Real.pi^2*x^2)-θ : ℝ):ℂ)*f x)) =
+1077:     ∫ x in (-1:ℝ)..1, f x * ((m:ℂ)*deriv (deriv φ) x -
+1078:       ((x^2:ℝ):ℂ)*deriv (deriv φ) x-((2*x:ℝ):ℂ)*deriv φ x)
+1079: 
+1080: theorem normalized_mode_weak_ode
+1081:     {m K : ℕ} {Λ : ℝ} (S : Mode4FerrersRegularEvenProlateSolution m K Λ)
+1082:     (hm : 2 ≤ m) (α : ℂ) (φ : ℝ → ℂ) (hφ : ContDiff ℝ ∞ φ)
+1083:     (hφa : φ (-1)=0) (hφb : φ 1=0)
+1084:     (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+1085:     CompactWeakODE (m:ℝ) (Λ+mode4JacobiG m) (fun x => α*S.normalizedPhysicalMode x) φ := by
+1086:   have hh := normalized_mode_compact_weak S hm α φ hφ hφa hφb hda hdb
+1087:   have hp (x : ℝ) : (2*Real.pi*Real.sqrt m*x)^2 = (m:ℝ)*(4*Real.pi^2*x^2) := by
+1088:     have hs := Real.sq_sqrt (Nat.cast_nonneg m : (0:ℝ) ≤ m)
+1089:     calc
+1090:       _ = 4*Real.pi^2*(Real.sqrt m)^2*x^2 := by ring
+1091:       _ = _ := by rw [hs]; ring
+1092:   simp only [hp,Real.sq_sqrt (Nat.cast_nonneg m : (0:ℝ) ≤ m)] at hh
+1093:   unfold CompactWeakODE
+1094:   convert hh using 1 <;> apply intervalIntegral.integral_congr <;> intro x hx <;>
+1095:     dsimp only <;> push_cast <;> ring
+1096: 
+1097: theorem selected_anchored_weak_ode (k : ℕ) (φ : ℝ → ℂ) (hφ : ContDiff ℝ ∞ φ)
+1098:     (hφa : φ (-1)=0) (hφb : φ 1=0)
+1099:     (hda : deriv φ (-1)=0) (hdb : deriv φ 1=0) :
+1100:     CompactWeakODE (k+2:ℕ)
+1101:       (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2))
+1102:       (fun x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x) φ ∧
+1103:     CompactWeakODE (k+2:ℕ)
+1104:       (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2))
+1105:       (fun x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x) φ := by
+1106:   constructor
+1107:   · rw [selectedFerrersPreAnchorPair_h0_eq_selectedMode]
+1108:     exact normalized_mode_weak_ode (selectedFerrersPreAnchorSolution0 k) (by omega)
+1109:       (centerAnchorScalarZero k) φ hφ hφa hφb hda hdb
+1110:   · rw [selectedFerrersPreAnchorPair_h4_eq_selectedMode]
+1111:     exact normalized_mode_weak_ode (selectedFerrersPreAnchorSolution4 k) (by omega)
+1112:       (centerAnchorScalarFour k) φ hφ hφa hφb hda hdb
+1113: 
+1114: #print axioms normalized_mode_weak_ode
+1115: #print axioms selected_anchored_weak_ode
+1116: theorem complex_compactTest_regular (n : ℕ) (hn : n = 0 ∨ n = 4) :
+1117:     ContDiff ℝ ∞ (fun x => (compactTest n x : ℂ)) ∧
+1118:     (compactTest n (-1) : ℂ) = 0 ∧ (compactTest n 1 : ℂ) = 0 ∧
+1119:     deriv (fun x => (compactTest n x : ℂ)) (-1) = 0 ∧
+1120:     deriv (fun x => (compactTest n x : ℂ)) 1 = 0 := by
+1121:   have hd (x : ℝ) : deriv (fun y => (compactTest n y : ℂ)) x =
+1122:       ((deriv (compactTest n) x : ℝ) : ℂ) :=
+1123:     (((contDiff_infty_iff_deriv.mp (compactTest_contDiff n hn)).1 x).hasDerivAt.ofReal_comp).deriv
+1124:   obtain ⟨ha,hb,hda,hdb⟩ := compactTest_boundary n hn
+1125:   refine ⟨?_, ?_, ?_, ?_, ?_⟩
+1126:   · simpa only [Function.comp_apply,Complex.ofRealCLM_apply] using
+1127:       Complex.ofRealCLM.contDiff.comp (compactTest_contDiff n hn)
+1128:   · simp [ha]
+1129:   · simp [hb]
+1130:   · rw [hd,hda]; norm_num
+1131:   · rw [hd,hdb]; norm_num
+1132: 
+1133: theorem selected_anchored_concrete_test_weak (k : ℕ) :
+1134:     CompactWeakODE (k+2:ℕ)
+1135:       (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2))
+1136:       (fun x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)
+1137:       (fun x => (compactTest 0 x : ℂ)) ∧
+1138:     CompactWeakODE (k+2:ℕ)
+1139:       (mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2))
+1140:       (fun x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)
+1141:       (fun x => (compactTest 4 x : ℂ)) := by
+1142:   obtain ⟨hc0,ha0,hb0,hda0,hdb0⟩ := complex_compactTest_regular 0 (Or.inl rfl)
+1143:   obtain ⟨hc4,ha4,hb4,hda4,hdb4⟩ := complex_compactTest_regular 4 (Or.inr rfl)
+1144:   exact ⟨(selected_anchored_weak_ode k _ hc0 ha0 hb0 hda0 hdb0).1,
+1145:     (selected_anchored_weak_ode k _ hc4 ha4 hb4 hda4 hdb4).2⟩
+1146: 
+1147: #print axioms selected_anchored_concrete_test_weak
+1148: theorem complex_compactTest_derivatives (n : ℕ) (hn : n = 0 ∨ n = 4) :
+1149:     deriv (fun x => (compactTest n x : ℂ)) =
+1150:       (fun x => ((deriv (compactTest n) x : ℝ):ℂ)) ∧
+1151:     deriv (deriv (fun x => (compactTest n x : ℂ))) =
+1152:       (fun x => ((deriv (deriv (compactTest n)) x : ℝ):ℂ)) := by
+1153:   have hc := compactTest_contDiff n hn
+1154:   have hd := (contDiff_infty_iff_deriv.mp hc).2
+1155:   have hfirst : deriv (fun x => (compactTest n x : ℂ)) =
+1156:       (fun x => ((deriv (compactTest n) x : ℝ):ℂ)) := by
+1157:     funext x
+1158:     exact (((contDiff_infty_iff_deriv.mp hc).1 x).hasDerivAt.ofReal_comp).deriv
+1159:   refine ⟨hfirst, ?_⟩
+1160:   rw [hfirst]
+1161:   funext x
+1162:   exact (((contDiff_infty_iff_deriv.mp hd).1 x).hasDerivAt.ofReal_comp).deriv
+1163: 
+1164: #print axioms complex_compactTest_derivatives
+1165: theorem compact_product_error_bound (f D g : ℝ → ℂ) (ε : ℝ)
+1166:     (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+1167:     (hg : ContinuousOn g (Icc (-1) 1))
+1168:     (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ ε) :
+1169:     ‖∫ x in (-1:ℝ)..1, (f x-D x)*g x‖ ≤ ε*(∫ x in (-1:ℝ)..1, ‖g x‖) := by
+1170:   have hab : (-1:ℝ) ≤ 1 := by norm_num
+1171:   apply (intervalIntegral.norm_integral_le_integral_norm hab).trans
+1172:   calc
+1173:     (∫ x in (-1:ℝ)..1, ‖(f x-D x)*g x‖) ≤ ∫ x in (-1:ℝ)..1, ε*‖g x‖ := by
+1174:       apply intervalIntegral.integral_mono_on hab
+1175:         (((hf.sub hD).mul hg).norm.intervalIntegrable_of_Icc hab)
+1176:         ((continuousOn_const.mul hg.norm).intervalIntegrable_of_Icc hab)
+1177:       intro x hx
+1178:       dsimp only
+1179:       rw [norm_mul]
+1180:       exact mul_le_mul_of_nonneg_right (herr x hx) (norm_nonneg _)
+1181:     _ = _ := intervalIntegral.integral_const_mul _ _
+1182: 
+1183: theorem compact_overlap_floor (f D φ : ℝ → ℂ) (ε J : ℝ)
+1184:     (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+1185:     (hφ : ContinuousOn φ (Icc (-1) 1))
+1186:     (hJ : J = ‖∫ x in (-1:ℝ)..1, D x*φ x‖)
+1187:     (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ ε)
+1188:     (hsmall : ε*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J/2) :
+1189:     J/2 ≤ ‖∫ x in (-1:ℝ)..1, f x*φ x‖ := by
+1190:   have hh := compact_product_error_bound f D φ ε hf hD hφ herr
+1191:   have heq : (∫ x in (-1:ℝ)..1, (f x-D x)*φ x) =
+1192:       (∫ x in (-1:ℝ)..1, f x*φ x)-(∫ x in (-1:ℝ)..1, D x*φ x) := by
+1193:     simp_rw [sub_mul]
+1194:     exact intervalIntegral.integral_sub
+1195:       ((hf.mul hφ).intervalIntegrable_of_Icc (by norm_num))
+1196:       ((hD.mul hφ).intervalIntegrable_of_Icc (by norm_num))
+1197:   rw [heq] at hh
+1198:   have hr := norm_sub_norm_le (∫ x in (-1:ℝ)..1, D x*φ x)
+1199:     (∫ x in (-1:ℝ)..1, f x*φ x)
+1200:   rw [norm_sub_rev, ← hJ] at hr
+1201:   linarith
+1202: 
+1203: theorem compact_source_pairing_bound (f D T : ℝ → ℂ) (ε : ℝ)
+1204:     (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+1205:     (hT : ContinuousOn T (Icc (-1) 1))
+1206:     (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ ε) :
+1207:     ‖∫ x in (-1:ℝ)..1, f x*T x‖ ≤
+1208:       ‖∫ x in (-1:ℝ)..1, D x*T x‖+ε*(∫ x in (-1:ℝ)..1, ‖T x‖) := by
+1209:   have hh := compact_product_error_bound f D T ε hf hD hT herr
+1210:   have heq : (∫ x in (-1:ℝ)..1, f x*T x) =
+1211:       (∫ x in (-1:ℝ)..1, D x*T x)+(∫ x in (-1:ℝ)..1, (f x-D x)*T x) := by
+1212:     rw [← intervalIntegral.integral_add
+1213:       ((hD.mul hT).intervalIntegrable_of_Icc (by norm_num))
+1214:       (((hf.sub hD).mul hT).intervalIntegrable_of_Icc (by norm_num))]
+1215:     apply intervalIntegral.integral_congr
+1216:     intro x hx
+1217:     dsimp only
+1218:     ring
+1219:   rw [heq]
+1220:   exact (norm_add_le _ _).trans (add_le_add le_rfl hh)
+1221: 
+1222: #print axioms compact_product_error_bound
+1223: #print axioms compact_overlap_floor
+1224: #print axioms compact_source_pairing_bound
+1225: theorem compact_theta_bound_of_mode_error
+1226:     (m θ e C J : ℝ) (f D φ A T : ℝ → ℂ)
+1227:     (hm : 1 ≤ m) (hC : 0 ≤ C) (hJ : 0 < J)
+1228:     (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+1229:     (hφ : ContinuousOn φ (Icc (-1) 1)) (hA : ContinuousOn A (Icc (-1) 1))
+1230:     (hT : ContinuousOn T (Icc (-1) 1))
+1231:     (hJeq : J = ‖∫ x in (-1:ℝ)..1, D x*φ x‖)
+1232:     (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ C/m)
+1233:     (hlarge : 2*C*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J*m)
+1234:     (hidentity : (((θ-e*m : ℝ):ℂ))*(∫ x in (-1:ℝ)..1, f x*φ x) =
+1235:       (m:ℂ)*(∫ x in (-1:ℝ)..1, (f x-D x)*A x) +
+1236:       ∫ x in (-1:ℝ)..1, f x*T x) :
+1237:     |θ-e*m| ≤ 2*(C*(∫ x in (-1:ℝ)..1, ‖A x‖) +
+1238:       (‖∫ x in (-1:ℝ)..1, D x*T x‖+C*(∫ x in (-1:ℝ)..1, ‖T x‖)))/J := by
+1239:   have hmp : 0 < m := by linarith
+1240:   have hsmall : (C/m)*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J/2 := by
+1241:     rw [div_mul_eq_mul_div]
+1242:     apply (div_le_iff₀ hmp).mpr
+1243:     nlinarith
+1244:   have hfloor := compact_overlap_floor f D φ (C/m) J hf hD hφ hJeq herr hsmall
+1245:   have hU := compact_product_error_bound f D A (C/m) hf hD hA herr
+1246:   rw [div_mul_eq_mul_div] at hU
+1247:   have hV := compact_source_pairing_bound f D T (C/m) hf hD hT herr
+1248:   have hP : 0 ≤ ∫ x in (-1:ℝ)..1, ‖T x‖ :=
+1249:     intervalIntegral.integral_nonneg_of_forall (by norm_num) (fun x => norm_nonneg _)
+1250:   have hVC : ‖∫ x in (-1:ℝ)..1, f x*T x‖ ≤
+1251:       ‖∫ x in (-1:ℝ)..1, D x*T x‖+C*(∫ x in (-1:ℝ)..1, ‖T x‖) :=
+1252:     hV.trans (add_le_add le_rfl (mul_le_mul_of_nonneg_right (div_le_self hC hm) hP))
+1253:   exact theta_defect_bound_from_weak_pairing m θ e J _ _ _ _ _ hmp hJ hidentity hfloor hU hVC
+1254: 
+1255: #print axioms compact_theta_bound_of_mode_error
+1256: theorem scheduled_theta_bound
+1257:     (θ : ℕ → ℝ) (f : ℕ → ℝ → ℂ) (e C J : ℝ) (D φ A T : ℝ → ℂ)
+1258:     (hC : 0 ≤ C) (hJ : 0 < J)
+1259:     (hf : ∀ k, ContinuousOn (f k) (Icc (-1) 1))
+1260:     (hD : ContinuousOn D (Icc (-1) 1)) (hφ : ContinuousOn φ (Icc (-1) 1))
+1261:     (hA : ContinuousOn A (Icc (-1) 1)) (hT : ContinuousOn T (Icc (-1) 1))
+1262:     (hJeq : J = ‖∫ x in (-1:ℝ)..1, D x*φ x‖)
+1263:     (herr : ∀ᶠ k in Filter.atTop, ∀ x ∈ Icc (-1:ℝ) 1,
+1264:       ‖f k x-D x‖ ≤ C/((k+2:ℕ):ℝ))
+1265:     (hidentity : ∀ᶠ k in Filter.atTop,
+1266:       (((θ k-e*((k+2:ℕ):ℝ) : ℝ):ℂ))*(∫ x in (-1:ℝ)..1, f k x*φ x) =
+1267:         (((k+2:ℕ):ℝ):ℂ)*(∫ x in (-1:ℝ)..1, (f k x-D x)*A x) +
+1268:           ∫ x in (-1:ℝ)..1, f k x*T x) :
+1269:     ∃ B : ℝ, 0 ≤ B ∧ ∀ᶠ k in Filter.atTop, |θ k-e*((k+2:ℕ):ℝ)| ≤ B := by
+1270:   let B := 2*(C*(∫ x in (-1:ℝ)..1, ‖A x‖) +
+1271:     (‖∫ x in (-1:ℝ)..1, D x*T x‖+C*(∫ x in (-1:ℝ)..1, ‖T x‖)))/J
+1272:   refine ⟨max 0 B, le_max_left _ _, ?_⟩
+1273:   obtain ⟨K,hK⟩ := exists_nat_ge (2*C*(∫ x in (-1:ℝ)..1, ‖φ x‖)/J)
+1274:   filter_upwards [herr,hidentity,Filter.eventually_ge_atTop K] with k hk hid hkK
+1275:   have hm : (1:ℝ) ≤ ((k+2:ℕ):ℝ) := by exact_mod_cast (show 1 ≤ k+2 by omega)
+1276:   have hlarge : 2*C*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J*((k+2:ℕ):ℝ) := by
+1277:     rw [mul_comm J]
+1278:     apply (div_le_iff₀ hJ).mp
+1279:     exact hK.trans (by exact_mod_cast (show K ≤ k+2 by omega))
+1280:   have hb := compact_theta_bound_of_mode_error ((k+2:ℕ):ℝ) (θ k) e C J
+1281:     (f k) D φ A T hm hC hJ (hf k) hD hφ hA hT hJeq hk hlarge hid
+1282:   exact hb.trans (le_max_right _ _)
+1283: 
+1284: #print axioms scheduled_theta_bound
+1285: def testPhi (n : ℕ) (x : ℝ) : ℂ := (compactTest n x : ℂ)
+1286: def testEigen (n : ℕ) : ℝ := 2*Real.pi*(2*(n:ℝ)+1)
+1287: def testA (n : ℕ) (x : ℝ) : ℂ :=
+1288:   -deriv (deriv (testPhi n)) x +
+1289:     (((4*Real.pi^2*x^2:ℝ):ℂ)-(testEigen n:ℂ))*testPhi n x
+1290: def testT (n : ℕ) (x : ℝ) : ℂ :=
+1291:   ((x^2:ℝ):ℂ)*deriv (deriv (testPhi n)) x + ((2*x:ℝ):ℂ)*deriv (testPhi n) x
+1292: 
+1293: theorem test_continuities (n : ℕ) (hn : n = 0 ∨ n = 4) :
+1294:     Continuous (cylinderTarget n) ∧ Continuous (testPhi n) ∧
+1295:     Continuous (deriv (deriv (testPhi n))) ∧ Continuous (testA n) ∧ Continuous (testT n) := by
+1296:   have hc : ContDiff ℝ ∞ (testPhi n) := (complex_compactTest_regular n hn).1
+1297:   have hd := (contDiff_infty_iff_deriv.mp hc).2
+1298:   have hdd := (contDiff_infty_iff_deriv.mp hd).2
+1299:   have hV : Continuous (fun x : ℝ => ((4*Real.pi^2*x^2:ℝ):ℂ)) := by fun_prop
+1300:   refine ⟨?_, hc.continuous, hdd.continuous, ?_, ?_⟩
+1301:   · rcases hn with rfl | rfl
+1302:     · unfold cylinderTarget
+1303:       simp_rw [parabolicCylinderD_zero_projectArgument]
+1304:       fun_prop
+1305:     · unfold cylinderTarget
+1306:       simp_rw [parabolicCylinderD_four_projectArgument]
+1307:       fun_prop
+1308:   · exact hdd.continuous.neg.add ((hV.sub continuous_const).mul hc.continuous)
+1309:   · exact ((show Continuous (fun x : ℝ => ((x^2:ℝ):ℂ)) by fun_prop).mul hdd.continuous).add
+1310:       ((show Continuous (fun x : ℝ => ((2*x:ℝ):ℂ)) by fun_prop).mul hd.continuous)
+1311: 
+1312: theorem testA_orthogonality (n : ℕ) (hn : n = 0 ∨ n = 4) :
+1313:     (∫ x in (-1:ℝ)..1, cylinderTarget n x * testA n x) = 0 := by
+1314:   unfold testA testPhi testEigen
+1315:   rw [(complex_compactTest_derivatives n hn).2]
+1316:   simpa only [Complex.ofReal_sub] using compactTest_complex_orthogonality n hn
+1317: 
+1318: theorem concrete_test_defect_identity (n : ℕ) (hn : n = 0 ∨ n = 4)
+1319:     (m θ : ℝ) (f : ℝ → ℂ) (hf : ContinuousOn f (Icc (-1) 1))
+1320:     (hw : CompactWeakODE m θ f (testPhi n)) :
+1321:     (((θ-testEigen n*m:ℝ):ℂ))*(∫ x in (-1:ℝ)..1, f x*testPhi n x) =
+1322:       (m:ℂ)*(∫ x in (-1:ℝ)..1, (f x-cylinderTarget n x)*testA n x) +
+1323:         ∫ x in (-1:ℝ)..1, f x*testT n x := by
+1324:   obtain ⟨hD,hφ,hdd,hA,hT⟩ := test_continuities n hn
+1325:   have hf' : ContinuousOn f (uIcc (-1:ℝ) 1) := by
+1326:     simpa only [uIcc_of_le (show (-1:ℝ) ≤ 1 by norm_num)] using hf
+1327:   have hh := compact_theta_defect_identity (-1) 1 (m:ℂ) (θ:ℂ) (testEigen n:ℂ)
+1328:     f (cylinderTarget n) (testPhi n) (deriv (deriv (testPhi n)))
+1329:     (fun x => ((4*Real.pi^2*x^2:ℝ):ℂ)) (testT n)
+1330:     hf' hD.continuousOn hφ.continuousOn hdd.continuousOn
+1331:     (by fun_prop) hT.continuousOn ?_ (testA_orthogonality n hn)
+1332:   · simpa only [Complex.ofReal_sub,Complex.ofReal_mul,testA] using hh
+1333:   · unfold CompactWeakODE at hw
+1334:     convert hw using 1 <;> apply intervalIntegral.integral_congr <;> intro x hx <;>
+1335:       dsimp only [testT] <;> push_cast <;> ring
+1336: 
+1337: #print axioms concrete_test_defect_identity
+1338: theorem selected_anchored_continuous (k : ℕ) :
+1339:     ContinuousOn (fun x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)
+1340:       (Icc (-1) 1) ∧
+1341:     ContinuousOn (fun x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)
+1342:       (Icc (-1) 1) := by
+1343:   have hsub : Icc (-1:ℝ) 1 ⊆ Ioo (-Real.sqrt (k+2:ℕ)) (Real.sqrt (k+2:ℕ)) := by
+1344:     have hl : 1 < Real.sqrt (k+2:ℕ) := by
+1345:       rw [show (1:ℝ)=Real.sqrt 1 by rw [Real.sqrt_one]]
+1346:       apply Real.sqrt_lt_sqrt (by norm_num)
+1347:       exact_mod_cast (show 1 < k+2 by omega)
+1348:     intro x hx
+1349:     constructor <;> linarith [hx.1,hx.2]
+1350:   rw [selectedFerrersPreAnchorPair_h0_eq_selectedMode,
+1351:     selectedFerrersPreAnchorPair_h4_eq_selectedMode]
+1352:   exact ⟨continuousOn_const.mul ((normalizedPhysicalMode_contDiffOn_two_open
+1353:       (selectedFerrersPreAnchorSolution0 k) (by omega)).continuousOn.mono hsub),
+1354:     continuousOn_const.mul ((normalizedPhysicalMode_contDiffOn_two_open
+1355:       (selectedFerrersPreAnchorSolution4 k) (by omega)).continuousOn.mono hsub)⟩
+1356: 
+1357: theorem concrete_scheduled_theta_bound (n : ℕ) (hn : n = 0 ∨ n = 4)
+1358:     (θ : ℕ → ℝ) (f : ℕ → ℝ → ℂ) (C : ℝ) (hC : 0 ≤ C)
+1359:     (hf : ∀ k, ContinuousOn (f k) (Icc (-1) 1))
+1360:     (hw : ∀ k, CompactWeakODE (k+2:ℕ) (θ k) (f k) (testPhi n))
+1361:     (herr : ∀ᶠ k in Filter.atTop, ∀ x ∈ Icc (-1:ℝ) 1,
+1362:       ‖f k x-cylinderTarget n x‖ ≤ C/((k+2:ℕ):ℝ)) :
+1363:     ∃ B : ℝ, 0 ≤ B ∧ ∀ᶠ k in Filter.atTop,
+1364:       |θ k-testEigen n*((k+2:ℕ):ℝ)| ≤ B := by
+1365:   obtain ⟨hD,hφ,hdd,hA,hT⟩ := test_continuities n hn
+1366:   apply scheduled_theta_bound θ f (testEigen n) C
+1367:     ‖∫ x in (-1:ℝ)..1, cylinderTarget n x*testPhi n x‖
+1368:     (cylinderTarget n) (testPhi n) (testA n) (testT n) hC
+1369:     (compactTest_complex_overlap_positive n hn) hf hD.continuousOn hφ.continuousOn
+1370:     hA.continuousOn hT.continuousOn rfl herr
+1371:   exact Filter.Eventually.of_forall (fun k =>
+1372:     concrete_test_defect_identity n hn (k+2:ℕ) (θ k) (f k) (hf k) (hw k))
+1373: 
+1374: #print axioms concrete_scheduled_theta_bound
+1375: theorem selected_theta_rate_of_mode_rate
+1376:     (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+1377:     (hmode : ∀ᶠ k in Filter.atTop,
+1378:       ∀ x ∈ Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k),
+1379:         ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x -
+1380:           cylinderTarget 0 x‖ ≤ C0 / (selectedFerrersPaperLambda k)^2 ∧
+1381:         ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x -
+1382:           cylinderTarget 4 x‖ ≤ C4 / (selectedFerrersPaperLambda k)^2) :
+1383:     ∃ Cθ : ℝ, 0 ≤ Cθ ∧ ∀ᶠ k in Filter.atTop,
+1384:       |mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2) -
+1385:         ((k+2:ℕ):ℝ)*(2*Real.pi)| ≤ Cθ ∧
+1386:       |mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2) -
+1387:         ((k+2:ℕ):ℝ)*(18*Real.pi)| ≤ Cθ := by
+1388:   have hsub (k : ℕ) : Icc (-1:ℝ) 1 ⊆
+1389:       Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k) := by
+1390:     have hl : 1 ≤ selectedFerrersPaperLambda k := by
+1391:       rw [selectedFerrersPaperLambda,show (1:ℝ)=Real.sqrt 1 by rw [Real.sqrt_one]]
+1392:       apply Real.sqrt_le_sqrt
+1393:       exact_mod_cast (show 1 ≤ k+2 by omega)
+1394:     intro x hx
+1395:     constructor <;> linarith [hx.1,hx.2]
+1396:   have hzero := concrete_scheduled_theta_bound 0 (Or.inl rfl)
+1397:     (fun k => mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2))
+1398:     (fun k x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x) C0 hC0
+1399:     (fun k => (selected_anchored_continuous k).1)
+1400:     (fun k => (selected_anchored_concrete_test_weak k).1)
+1401:     (hmode.mono (fun k hk x hx => by
+1402:       simpa only [selectedFerrersPaperLambda_sq] using (hk x (hsub k hx)).1))
+1403:   have hfour := concrete_scheduled_theta_bound 4 (Or.inr rfl)
+1404:     (fun k => mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2))
+1405:     (fun k x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x) C4 hC4
+1406:     (fun k => (selected_anchored_continuous k).2)
+1407:     (fun k => (selected_anchored_concrete_test_weak k).2)
+1408:     (hmode.mono (fun k hk x hx => by
+1409:       simpa only [selectedFerrersPaperLambda_sq] using (hk x (hsub k hx)).2))
+1410:   obtain ⟨A,hA,hAr⟩ := hzero
+1411:   obtain ⟨B,hB,hBr⟩ := hfour
+1412:   refine ⟨max A B, hA.trans (le_max_left _ _), ?_⟩
+1413:   filter_upwards [hAr,hBr] with k hk0 hk4
+1414:   have he0 : testEigen 0 = 2*Real.pi := by norm_num [testEigen]
+1415:   have he4 : testEigen 4 = 18*Real.pi := by norm_num [testEigen]; ring
+1416:   constructor
+1417:   · apply le_trans _ (le_max_left A B)
+1418:     simpa only [he0,mul_comm (2*Real.pi)] using hk0
+1419:   · apply le_trans _ (le_max_right A B)
+1420:     simpa only [he4,mul_comm (18*Real.pi)] using hk4
+1421: 
+1422: #print axioms selected_theta_rate_of_mode_rate
+1423: theorem selected_projection_tail_of_mode_rate
+1424:     (S : ProlateCanonicalSourceData)
+1425:     (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S)
+1426:     (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+1427:     (hmode : ∀ᶠ k in Filter.atTop,
+1428:       ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+1429:           (selectedFerrersPaperLambda k),
+1430:         ‖centerAnchorScalarZero k *
+1431:             (selectedFerrersPreAnchorPair k).h0 x -
+1432:           ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+1433:             C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+1434:         ‖centerAnchorScalarFour k *
+1435:             (selectedFerrersPreAnchorPair k).h4 x -
+1436:           ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+1437:             C4 / (selectedFerrersPaperLambda k) ^ 2)
+1438:     : SelectedProjectionTailDecay S := by
+1439:   obtain ⟨Cχ,hCχ,hχ⟩ := selected_chi_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+1440:   obtain ⟨Cθ,hCθ,hθ⟩ := selected_theta_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+1441:   exact selectedProjectionTailDecay_of_selectedFerrersW5RateLedger
+1442:     S hFamily C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
+1443: 
+1444: #print axioms selected_projection_tail_of_mode_rate
+1445: theorem selected_locally_uniform_xi_of_mode_rate
+1446:     (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+1447:     (hmode : ∀ᶠ k in Filter.atTop,
+1448:       ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+1449:           (selectedFerrersPaperLambda k),
+1450:         ‖centerAnchorScalarZero k *
+1451:             (selectedFerrersPreAnchorPair k).h0 x -
+1452:           ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+1453:             C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+1454:         ‖centerAnchorScalarFour k *
+1455:             (selectedFerrersPreAnchorPair k).h4 x -
+1456:           ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+1457:             C4 / (selectedFerrersPaperLambda k) ^ 2)
+1458:     : ∃ Cχ : ℝ, ∃ hCχ : 0 ≤ Cχ,
+1459:       ∃ hχ : ∀ᶠ k in Filter.atTop,
+1460:         |1-(selectedFerrersPreAnchorPair k).chi0| ≤ Cχ/(selectedFerrersPaperLambda k)^2 ∧
+1461:         |1-(selectedFerrersPreAnchorPair k).chi2| ≤ Cχ/(selectedFerrersPaperLambda k)^2,
+1462:       TendstoLocallyUniformlyOn
+1463:         ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar)
+1464:         centeredXi Filter.atTop centeredCriticalStrip := by
+1465:   obtain ⟨Cχ,hCχ,hχ⟩ := selected_chi_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+1466:   obtain ⟨Cθ,hCθ,hθ⟩ := selected_theta_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+1467:   exact ⟨Cχ,hCχ,hχ,
+1468:     selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates
+1469:       C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ⟩
+1470: 
+1471: #print axioms selected_locally_uniform_xi_of_mode_rate
+1472: end Q3OverlapProbe
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersRegularEvenProlateSolution.lean SHA256 4e0e09e10dc539af64daf772c16d70173da8e14b4bccb315a498e851fa356937 LINES 1-90
+1: import Q3.Proofs.RouteB.D0Mode4FerrersEndpointFlux
+2: 
+3: /-!
+4: # Goal 058 G3: regular even mode-four Ferrers solution assembly
+5: 
+6: This file packages the existing source-row conclusions into one public object.
+7: The object remains conditional on a zero of the committed matching function.
+8: It does not identify the series with the ordered degree-four PSWF, rescale it to
+9: the physical window, or supply a finite-Fourier eigenrelation.
+10: -/
+11: 
+12: namespace Q3.RouteB
+13: 
+14: /-- The exact properties currently constructed for the dimensionless
+15: mode-four Ferrers series.  Nontriviality is retained at the normalized
+16: coefficient-row boundary; no ordered-mode identification is part of this
+17: structure. -/
+18: structure Mode4FerrersRegularEvenProlateSolution
+19:     (mProject K : ℕ) (Λ : ℝ) where
+20:   coefficients : ℕ → ℝ
+21:   coefficient_zero_pos : 0 < coefficients 0
+22:   coefficients_ne_zero : coefficients ≠ 0
+23:   coefficients_abs_summable : Summable (fun q : ℕ => |coefficients q|)
+24:   coefficients_sq_summable : Summable (fun q : ℕ => (coefficients q) ^ 2)
+25:   normalized :
+26:     HasSum
+27:       (fun q : ℕ =>
+28:         (coefficients q) ^ 2 / (4 * (q : ℝ) + 1))
+29:       1
+30:   recurrence :
+31:     ∀ q : ℕ,
+32:       mode4PSWFLegendreSubdiagonal
+33:             (mode4JacobiG mProject) q * coefficients (q - 1) +
+34:         (mode4PSWFLegendreDiagonal
+35:               (mode4JacobiG mProject) q -
+36:             (Λ + mode4JacobiG mProject)) * coefficients q +
+37:         mode4PSWFLegendreSuperdiagonal
+38:             (mode4JacobiG mProject) q * coefficients (q + 1) = 0
+39:   splice_anchor_ne_zero : coefficients (K - 1) ≠ 0
+40:   tail_splice :
+41:     ∀ n : ℕ,
+42:       coefficients (K - 1 + n) =
+43:         coefficients (K - 1) *
+44:           mode4TailCoefficientRow mProject Λ K n
+45:   even : Function.Even (mode4FerrersSeries coefficients)
+46:   continuousOn_closed :
+47:     ContinuousOn
+48:       (mode4FerrersSeries coefficients)
+49:       (Set.Icc (-1 : ℝ) 1)
+50:   contDiffOn_two_open :
+51:     ContDiffOn ℝ 2
+52:       (mode4FerrersSeries coefficients)
+53:       (Set.Ioo (-1 : ℝ) 1)
+54:   ferrersSeries_hasDerivAt_firstDerivativeSeries :
+55:     ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+56:       HasDerivAt
+57:         (mode4FerrersSeries coefficients)
+58:         (mode4FerrersFirstDerivativeSeries coefficients x)
+59:         x
+60:   firstDerivativeSeries_hasDerivAt_secondDerivativeSeries :
+61:     ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+62:       HasDerivAt
+63:         (mode4FerrersFirstDerivativeSeries coefficients)
+64:         (mode4FerrersSecondDerivativeSeries coefficients x)
+65:         x
+66:   prolateDifferentialEquation :
+67:     ∀ x ∈ Set.Ioo (-1 : ℝ) 1,
+68:       -(1 - x ^ 2) *
+69:             mode4FerrersSecondDerivativeSeries coefficients x +
+70:           2 * x *
+71:             mode4FerrersFirstDerivativeSeries coefficients x +
+72:           mode4JacobiG mProject * x ^ 2 *
+73:             mode4FerrersSeries coefficients x =
+74:         (Λ + mode4JacobiG mProject) *
+75:           mode4FerrersSeries coefficients x
+76:   zeroFlux_at_endpoints :
+77:     Filter.Tendsto
+78:         (fun x : ℝ ↦
+79:           (1 - x ^ 2) *
+80:             mode4FerrersFirstDerivativeSeries coefficients x)
+81:         (nhdsWithin (1 : ℝ) (Set.Iio 1))
+82:         (nhds (0 : ℝ)) ∧
+83:       Filter.Tendsto
+84:         (fun x : ℝ ↦
+85:           (1 - x ^ 2) *
+86:             mode4FerrersFirstDerivativeSeries coefficients x)
+87:         (nhdsWithin (-1 : ℝ) (Set.Ioi (-1)))
+88:         (nhds (0 : ℝ))
+89: 
+90: /-- A matching root assembles the normalized nonzero coefficient row, even
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersPhysicalFourierNonzeroScalar.lean SHA256 523ee8c6f9d96b1e9b3f90c139691828501ddc18ffe61c8da135fe037fe532ee LINES 206-240
+206: theorem Mode4FerrersRegularEvenProlateSolution.exists_physicalFiniteFourierAction_eq_real_nonzero_scalar_mul
+207:     {mProject K : ℕ} {Λ : ℝ}
+208:     (S : Mode4FerrersRegularEvenProlateSolution mProject K Λ)
+209:     (hm : 2 ≤ mProject) :
+210:     ∃ chi : ℝ, chi ≠ 0 ∧
+211:       ∀ x ∈ Icc (-Real.sqrt mProject) (Real.sqrt mProject),
+212:         D0Pstar.finiteFourierAction (Real.sqrt mProject)
+213:             (mode4PhysicalFerrersSeriesComplex mProject S.coefficients) x =
+214:           (chi : ℂ) *
+215:             mode4PhysicalFerrersSeriesComplex mProject S.coefficients x := by
+216:   obtain ⟨chi, hchi⟩ :=
+217:     S.exists_physicalFiniteFourierAction_eq_real_scalar_mul hm
+218:   let lambda : ℝ := Real.sqrt mProject
+219:   let phi : ℝ → ℂ :=
+220:     mode4PhysicalFerrersSeriesComplex mProject S.coefficients
+221:   have hlambda : 0 < lambda := Real.sqrt_pos.2 (by positivity)
+222:   have hphi : ContinuousOn phi (Icc (-lambda) lambda) := by
+223:     simpa only [phi, lambda] using S.physicalComplex_continuousOn_closed hm
+224:   have hzeroMem : (0 : ℝ) ∈ Ioo (-lambda) lambda := by
+225:     constructor <;> linarith
+226:   have hphiZero : phi 0 ≠ 0 := by
+227:     have hcenter : (mode4FerrersSeries S.coefficients 0 : ℂ) ≠ 0 := by
+228:       exact_mod_cast S.center_value_ne_zero
+229:     simpa only [phi, mode4PhysicalFerrersSeriesComplex,
+230:       mode4PhysicalFerrersSeries, zero_div] using hcenter
+231:   have hchiZero : chi ≠ 0 := by
+232:     intro hzero
+233:     obtain ⟨x, hxmem, hxne⟩ :=
+234:       D0Pstar.exists_finiteFourierAction_ne_zero_on_Ioo
+235:         lambda phi 0 hlambda hphi hzeroMem hphiZero
+236:     have hxclosed : x ∈
+237:         Icc (-Real.sqrt mProject) (Real.sqrt mProject) := by
+238:       simpa only [lambda] using ⟨hxmem.1.le, hxmem.2.le⟩
+239:     have hxrel := hchi x hxclosed
+240:     rw [hzero, Complex.ofReal_zero, zero_mul] at hxrel
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean SHA256 118c8f81ed263e5a722ea4e56820fd92c211b0f5fc8fd115fdd596e4a0329266 LINES 30-65
+30: namespace Q3.RouteB
+31: 
+32: /-- The finite even ordinary-Legendre synthesis in the literal forward
+33: Hermitian coordinates. -/
+34: noncomputable def mode4FiniteEvenLegendrePolynomial
+35:     (G : ℝ) {d : ℕ} (b : Fin d → ℝ) : ℝ[X] :=
+36:   ∑ q : Fin d,
+37:     C (((-1 : ℝ) ^ q.val) *
+38:         mode4DLMFEvenSimilarityScale G q.val * b q) *
+39:       mode4OrdinaryLegendrePolynomial (2 * q.val)
+40: 
+41: private theorem mode4FiniteEvenLegendrePolynomial_eval
+42:     (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (x : ℝ) :
+43:     (mode4FiniteEvenLegendrePolynomial G b).eval x =
+44:       ∑ q : Fin d,
+45:         ((-1 : ℝ) ^ q.val) *
+46:           mode4DLMFEvenSimilarityScale G q.val * b q *
+47:             mode4OrdinaryLegendre (2 * q.val) x := by
+48:   classical
+49:   unfold mode4FiniteEvenLegendrePolynomial
+50:   rw [eval_finset_sum]
+51:   apply Finset.sum_congr rfl
+52:   intro q hq
+53:   simp [mode4OrdinaryLegendre]
+54: 
+55: /-- The finite synthesis is an exact `L²(-1,1)` isometry up to the source
+56: factor `2`. -/
+57: theorem mode4FiniteEvenLegendrePolynomial_l2
+58:     (G : ℝ) {d : ℕ} (b : Fin d → ℝ) (hG : 0 < G) :
+59:     (∫ x in (-1 : ℝ)..1,
+60:       (mode4FiniteEvenLegendrePolynomial G b).eval x ^ 2) =
+61:       2 * (b ⬝ᵥ b) := by
+62:   classical
+63:   simp_rw [mode4FiniteEvenLegendrePolynomial_eval, sq]
+64:   simp_rw [Finset.sum_mul, Finset.mul_sum]
+65:   rw [intervalIntegral.integral_finset_sum]
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FiniteEvenLegendreQuadraticForm.lean SHA256 118c8f81ed263e5a722ea4e56820fd92c211b0f5fc8fd115fdd596e4a0329266 LINES 699-720
+699:   ring
+700: 
+701: /-- The exact differential quadratic form of the finite synthesis is twice
+702: the literal forward-Hermitian matrix quadratic form. -/
+703: theorem mode4FiniteEvenLegendrePolynomial_energy
+704:     (G Λ : ℝ) {d : ℕ} (b : Fin d → ℝ) (hG : 0 < G) :
+705:     (∫ x in (-1 : ℝ)..1,
+706:       (1 - x ^ 2) *
+707:           ((mode4FiniteEvenLegendrePolynomial G b).derivative.eval x) ^ 2 +
+708:         G * x ^ 2 *
+709:           ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2 -
+710:         (Λ + G) *
+711:           ((mode4FiniteEvenLegendrePolynomial G b).eval x) ^ 2) =
+712:       2 *
+713:         (b ⬝ᵥ
+714:           ((mode4ForwardHermitianFiniteMatrix G Λ d) *ᵥ b)) := by
+715:   classical
+716:   rw [intervalIntegral.integral_congr
+717:     (fun x hx => mode4FiniteEvenLegendre_energy_pointwise G Λ b x)]
+718:   rw [intervalIntegral.integral_finset_sum]
+719:   · have hinner (q : Fin d) :
+720:         (∫ x in (-1 : ℝ)..1,
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean SHA256 0938a76ff07b6e0e0ff20cbc2d20b635e39027c65fab287b00869502151c0fd8 LINES 172-206
+172: 
+173: /-- The project parameter `Lambda` is a literal scalar shift of the unshifted
+174: finite Hermitian DLMF matrix. -/
+175: theorem mode4ForwardHermitianFiniteMatrix_eq_unshifted_sub_scalar
+176:     (G Λ : ℝ) (d : ℕ) :
+177:     mode4ForwardHermitianFiniteMatrix G Λ d =
+178:       mode4ForwardHermitianFiniteMatrix G 0 d - Matrix.scalar (Fin d) Λ := by
+179:   ext i j
+180:   by_cases hdiag : i = j
+181:   · subst j
+182:     simp [mode4ForwardHermitianFiniteMatrix, Matrix.scalar,
+183:       mode4JacobiCenter]
+184:   · simp [mode4ForwardHermitianFiniteMatrix, Matrix.scalar, hdiag]
+185: 
+186: /-- The `p`-th finite even DLMF eigenvalue in ascending value order, with
+187: zero-based Lean index `p`; DLMF's published selector is `p + 1`. -/
+188: noncomputable def mode4DLMFEvenFiniteEigenvalue
+189:     (G : ℝ) (d : ℕ) (p : Fin d) : ℝ :=
+190:   (mode4ForwardHermitianFiniteMatrix_isHermitian G 0 d).eigenvalues₀
+191:     (Fin.cast (Fintype.card_fin d).symm p.rev)
+192: 
+193: /-- The constructed finite DLMF eigenvalues are ordered increasingly by their
+194: zero-based Lean index. -/
+195: theorem mode4DLMFEvenFiniteEigenvalue_monotone
+196:     (G : ℝ) (d : ℕ) :
+197:     Monotone (mode4DLMFEvenFiniteEigenvalue G d) := by
+198:   intro p q hpq
+199:   unfold mode4DLMFEvenFiniteEigenvalue
+200:   have hrev : Fin.cast (Fintype.card_fin d).symm q.rev ≤
+201:       Fin.cast (Fintype.card_fin d).symm p.rev := by
+202:     simpa using (Fin.rev_le_rev.mpr hpq)
+203:   exact (mode4ForwardHermitianFiniteMatrix_isHermitian G 0 d).eigenvalues₀_antitone
+204:     hrev
+205: 
+206: /-- Positive diagonal similarity transports the characteristic polynomial of
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4ClassicalCarrierFromFiniteLimit.lean SHA256 0984da444ff14960657ce055928d314dd36754278b970afca0fa0ac5a46b5ef8 LINES 568-598
+568: 
+569: /-- Zero-based classical even spectral carrier.  DLMF's one-based selector is
+570: `p + 1`, corresponding to even degree `2 * p`. -/
+571: noncomputable def mode4ClassicalEvenEigenvalue
+572:     (G : ℝ) (p : ℕ) : ℝ :=
+573:   ⨅ d : {d : ℕ // p < d},
+574:     mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩
+575: 
+576: /-- The fixed-index finite DLMF family is uniformly bounded below. -/
+577: theorem mode4DLMFEvenFiniteEigenvalue_bddBelow
+578:     (G : ℝ) (p : ℕ) (hG : 0 < G) :
+579:     BddBelow (Set.range fun d : {d : ℕ // p < d} =>
+580:       mode4DLMFEvenFiniteEigenvalue G d.1 ⟨p, d.2⟩) := by
+581:   refine ⟨-3 * G, ?_⟩
+582:   rintro _ ⟨d, rfl⟩
+583:   exact mode4DLMFEvenFiniteEigenvalue_ge_neg_three_mul_G
+584:     G d.1 ⟨p, d.2⟩ hG
+585: 
+586: /-- The classical carrier inherits the same finite lower bound. -/
+587: theorem mode4ClassicalEvenEigenvalue_ge_neg_three_mul_G
+588:     (G : ℝ) (p : ℕ) (hG : 0 < G) :
+589:     -3 * G ≤ mode4ClassicalEvenEigenvalue G p := by
+590:   letI : Nonempty {d : ℕ // p < d} := ⟨⟨p + 1, Nat.lt_succ_self p⟩⟩
+591:   unfold mode4ClassicalEvenEigenvalue
+592:   apply le_ciInf
+593:   intro d
+594:   exact mode4DLMFEvenFiniteEigenvalue_ge_neg_three_mul_G
+595:     G d.1 ⟨p, d.2⟩ hG
+596: 
+597: /-- Generic monotone-convergence receiver retained for downstream reuse. -/
+598: theorem mode4ClassicalEvenEigenvalue_tendsto_of_antitone
+
+SOURCE q3.lean.aristotle/Q3/Proofs/RouteB/G6N1CenterAnchorScalarLock.lean SHA256 491a81328ad11e2b92a0c3df72a5a6625cadd619882f98a346f4faf0a9b89e26 LINES 53-110
+53: noncomputable def selectedFerrersCenterZero (k : ℕ) : ℂ :=
+54:   (selectedFerrersPreAnchorPair k).h0 0
+55: 
+56: /-- The mode-four center value of the selected pair at index `k`. -/
+57: noncomputable def selectedFerrersCenterFour (k : ℕ) : ℂ :=
+58:   (selectedFerrersPreAnchorPair k).h4 0
+59: 
+60: theorem selectedFerrersCenterZero_ne (k : ℕ) :
+61:     selectedFerrersCenterZero k ≠ 0 := by
+62:   rw [selectedFerrersCenterZero, (selectedFerrersPreAnchorPair_spec k).2.1]
+63:   exact normalizedPhysicalMode_zero_ne (selectedFerrersPreAnchorSolution0 k)
+64:     (by omega)
+65: 
+66: theorem selectedFerrersCenterFour_ne (k : ℕ) :
+67:     selectedFerrersCenterFour k ≠ 0 := by
+68:   rw [selectedFerrersCenterFour, (selectedFerrersPreAnchorPair_spec k).2.2.1]
+69:   exact normalizedPhysicalMode_zero_ne (selectedFerrersPreAnchorSolution4 k)
+70:     (by omega)
+71: 
+72: /-- Both center values are real: the selected modes are real-valued, so the
+73: anchoring scalars below are real too. -/
+74: theorem selectedFerrersCenterZero_im (k : ℕ) :
+75:     (selectedFerrersCenterZero k).im = 0 := by
+76:   rw [selectedFerrersCenterZero, (selectedFerrersPreAnchorPair_spec k).2.1]
+77:   exact normalizedPhysicalMode_im_eq_zero (selectedFerrersPreAnchorSolution0 k) 0
+78: 
+79: theorem selectedFerrersCenterFour_im (k : ℕ) :
+80:     (selectedFerrersCenterFour k).im = 0 := by
+81:   rw [selectedFerrersCenterFour, (selectedFerrersPreAnchorPair_spec k).2.2.1]
+82:   exact normalizedPhysicalMode_im_eq_zero (selectedFerrersPreAnchorSolution4 k) 0
+83: 
+84: /-- The mode-zero anchoring scalar, fixed by the target center `D_0(0) = 1`. -/
+85: noncomputable def centerAnchorScalarZero (k : ℕ) : ℂ :=
+86:   1 / selectedFerrersCenterZero k
+87: 
+88: /-- The mode-four anchoring scalar, fixed by the target center `D_4(0) = 3`. -/
+89: noncomputable def centerAnchorScalarFour (k : ℕ) : ℂ :=
+90:   3 / selectedFerrersCenterFour k
+91: 
+92: theorem centerAnchorScalarZero_ne (k : ℕ) :
+93:     centerAnchorScalarZero k ≠ 0 :=
+94:   div_ne_zero one_ne_zero (selectedFerrersCenterZero_ne k)
+95: 
+96: theorem centerAnchorScalarFour_ne (k : ℕ) :
+97:     centerAnchorScalarFour k ≠ 0 :=
+98:   div_ne_zero three_ne_zero (selectedFerrersCenterFour_ne k)
+99: 
+100: /-- The lock at mode zero: the anchored center hits the target center. -/
+101: theorem centerAnchorScalarZero_mul_center (k : ℕ) :
+102:     centerAnchorScalarZero k * selectedFerrersCenterZero k = 1 := by
+103:   rw [centerAnchorScalarZero, one_div,
+104:     inv_mul_cancel₀ (selectedFerrersCenterZero_ne k)]
+105: 
+106: /-- The lock at mode four: the anchored center hits the target center. -/
+107: theorem centerAnchorScalarFour_mul_center (k : ℕ) :
+108:     centerAnchorScalarFour k * selectedFerrersCenterFour k = 3 := by
+109:   rw [centerAnchorScalarFour, div_mul_cancel₀]
+110:   exact selectedFerrersCenterFour_ne k
