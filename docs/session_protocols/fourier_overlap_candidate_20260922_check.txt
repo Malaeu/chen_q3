@@ -10,7 +10,7 @@ warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.
 'Q3OverlapProbe.chi_bound_from_mode_error' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.F_eq_finiteFourierAction' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.selected_anchored_eigen' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3FourierOverlap.lean:401:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:402:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'Q3OverlapProbe.target_four_fixed' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -18,7 +18,7 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'Q3OverlapProbe.target_zero_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.target_four_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.target_four_weighted_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3FourierOverlap.lean:453:24: warning: This simp argument is unused:
+/tmp/Q3FourierOverlap.lean:454:24: warning: This simp argument is unused:
   ← Complex.ofReal_mul
 
 Hint: Omit it from the simp argument list.
@@ -27,7 +27,7 @@ Hint: Omit it from the simp argument list.
 Note: Simp arguments with `←` have the additional effect of removing the other direction from the simp set, even if the simp argument itself is unused. If the hint above does not work, try replacing `←` with `-` to only get that effect and silence this warning.
 
 Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
-/tmp/Q3FourierOverlap.lean:454:28: warning: This simp argument is unused:
+/tmp/Q3FourierOverlap.lean:455:28: warning: This simp argument is unused:
   abs_sq
 
 Hint: Omit it from the simp argument list.
@@ -39,7 +39,7 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'Q3OverlapProbe.target_four_square_weighted_norm' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.target_zero_square_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.target_square_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3FourierOverlap.lean:512:26: warning: This simp argument is unused:
+/tmp/Q3FourierOverlap.lean:513:26: warning: This simp argument is unused:
   ← Complex.ofReal_mul
 
 Hint: Omit it from the simp argument list.
@@ -58,10 +58,10 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'Q3OverlapProbe.target_four_oscillator' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.compact_theta_defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.theta_defect_bound_from_weak_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3FourierOverlap.lean:807:87: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:808:87: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/tmp/Q3FourierOverlap.lean:807:137: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:808:137: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'Q3OverlapProbe.compactTest_contDiff' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -74,24 +74,24 @@ Try this:
   The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
 
   Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
-/tmp/Q3FourierOverlap.lean:912:45: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:913:45: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/tmp/Q3FourierOverlap.lean:912:58: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:913:58: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
-/tmp/Q3FourierOverlap.lean:912:67: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:913:67: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'Q3OverlapProbe.compactTest_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.compactTest_complex_orthogonality' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.compactTest_complex_overlap_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3FourierOverlap.lean:978:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:979:21: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'Q3OverlapProbe.prolateFlux_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.normalized_mode_flux_hasDerivAt' depends on axioms: [propext, Classical.choice, Quot.sound]
-/tmp/Q3FourierOverlap.lean:1023:72: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+/tmp/Q3FourierOverlap.lean:1024:72: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
 
 Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
 'Q3OverlapProbe.prolate_compact_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -105,5 +105,10 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'Q3OverlapProbe.compact_source_pairing_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.compact_theta_bound_of_mode_error' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.scheduled_theta_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.concrete_test_defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.concrete_scheduled_theta_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.selected_theta_rate_of_mode_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.selected_projection_tail_of_mode_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.selected_locally_uniform_xi_of_mode_rate' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

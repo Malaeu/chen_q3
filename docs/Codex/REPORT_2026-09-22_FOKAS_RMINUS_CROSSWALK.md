@@ -831,3 +831,36 @@ dictionary; feed the fixed target/test inputs and hmode to scheduled_theta_bound
 then combine constants for the actual htheta port. This actual selected
 instantiation is NOT yet claimed. hmode, finite-ground matching and off-line
 zero-freeness remain open. PX_RH_CLAIM: NOT_MADE.
+
+## Actual selected theta rate and direct mode-only W5/N2 consumers
+
+Candidate SHA256: 83a4bb5ee70b2b523aeccedf6f482a8b8887b7f95f30a3d4eb563be915adcfbd.
+selected_theta_rate_of_mode_rate now derives the actual shared nonnegative
+eventual htheta constant from exactly the center-anchored full-window hmode
+used by the existing W5/N2 ports. The construction uses fixed compact tests,
+the proved actual weak ODE and target orthogonality, restricts hmode to [-1,1],
+and uses lambda_k^2=k+2. The spectral indices are 0 and 2, both with +g shift;
+the target coefficients are 2*pi and 18*pi. No derivative-error hypothesis.
+
+Together with selected_chi_rate_of_mode_rate, this removes two independent
+analytic rate premises. selected_projection_tail_of_mode_rate invokes the
+existing W5 rate assembly from hmode AND the explicit hFamily crosswalk.
+selected_locally_uniform_xi_of_mode_rate invokes the existing N2 assembly and
+returns local uniform convergence of the exact constructed
+selectedFerrersCofinalShell.centeredPstar to centeredXi on centeredCriticalStrip.
+It existentially supplies the actual Cchi/hCchi/hchi used to construct that shell.
+
+Validation: scripts/q3_check.sh /tmp/Q3FourierOverlap.lean, exit0, q3_check ok;
+all printed theorem dependencies are propext, Classical.choice, Quot.sound.
+Independent recovery_review audited actual indices, constants, quantifiers and
+consumer connections. Current dependency oleans used; preexisting UnicodeBasic
+and style warnings remain; no fresh-clone validation or production admission.
+
+This is a conditional theorem about the analytic selected family, NOT RH.
+hmode remains unproved. Full-window uniform O(1/(k+2)) approximation, with the
+exact selected branches and center anchoring, is now the one remaining rate
+supplier for these two analytic consumers. It is not the only remaining premise
+of Route B: production-family matching, finite-ground tracking/coercivity and
+off-line zero-freeness are separate. Production theorem/consumer binding remains
+unselected. Next work: exact hmode supplier audit/proof, without circularly
+assuming either derived spectral rate. PX_RH_CLAIM: NOT_MADE.

@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 334
-observed_at: '2026-09-22T11:58:32.850139+00:00'
-previous_sha256: 71e0e6f6ad1561bc013d0f38e0395dfdbf9dbd787acb1170060f91e33fe7e93a
+revision: 335
+observed_at: '2026-09-22T12:07:25.935812+00:00'
+previous_sha256: f601f014b3168f50ed1564db0cf438b38bad393d6582cc0afbc690f39cd82e86
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Kernel-checked compact_theta_bound_of_mode_error derives uniform explicit defect bound from sup error C/m, exact signed identity, fixed positive target overlap, and computable finite threshold; overlap floor not assumed separately. scheduled_theta_bound turns this into fixed-constant eventual family statement with explicit fixed inputs. No final selected htheta instantiation yet; actual weak source and target facts already checked.
+q3_check exit0 on SHA83a4bb5ee70b2b523aeccedf6f482a8b8887b7f95f30a3d4eb563be915adcfbd: selected_theta_rate_of_mode_rate derives actual shared htheta from hmode; selected_projection_tail_of_mode_rate invokes W5 with explicit hFamily; selected_locally_uniform_xi_of_mode_rate invokes N2 for the exact constructed analytic shell on centeredCriticalStrip. All conditional on unproved hmode. No production admission or RH claim.
 
 ## Next action
-Quantitative compact product, overlap floor and numerator bounds now checked; scheduled_theta_bound enforces fixed e,C,J,D,phi,A,T and discharges eventual threshold for m=k+2. Instantiate signed defect identity for actual selected test modes using checked CompactWeakODE/target orthogonality/derivative dictionary; apply scheduled_theta_bound and combine n0/4 constants to obtain actual htheta. hmode remains unproved, ground separate, production unbound.
+Actual hmode now implies hchi and htheta and directly feeds isolated W5/N2 consumers. Audit/prove the exact full-window center-anchored O(1/(k+2)) hmode supplier for selected branches, without circular spectral-rate assumptions. Dunster truncated logarithmic envelope is PARTIAL. Family crosswalk, finite-ground tracking and zero-freeness remain separate; production edge unbound.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

@@ -3,6 +3,7 @@ import Q3.Proofs.RouteB.ProlateSourceRegularity
 import Q3.Proofs.RouteB.G6N1CenterAnchorScalarLock
 import Q3.Proofs.RouteB.D0PstarExplicitCCMLimitFourier
 import Q3.Proofs.RouteB.G6N1SelectedFerrersW5RateAssembly
+import Q3.Proofs.RouteB.G6N1SelectedFerrersN2CompactDecayAssembly
 open MeasureTheory Set
 open scoped FourierTransform ContDiff
 noncomputable section
@@ -1281,4 +1282,191 @@ theorem scheduled_theta_bound
   exact hb.trans (le_max_right _ _)
 
 #print axioms scheduled_theta_bound
+def testPhi (n : ℕ) (x : ℝ) : ℂ := (compactTest n x : ℂ)
+def testEigen (n : ℕ) : ℝ := 2*Real.pi*(2*(n:ℝ)+1)
+def testA (n : ℕ) (x : ℝ) : ℂ :=
+  -deriv (deriv (testPhi n)) x +
+    (((4*Real.pi^2*x^2:ℝ):ℂ)-(testEigen n:ℂ))*testPhi n x
+def testT (n : ℕ) (x : ℝ) : ℂ :=
+  ((x^2:ℝ):ℂ)*deriv (deriv (testPhi n)) x + ((2*x:ℝ):ℂ)*deriv (testPhi n) x
+
+theorem test_continuities (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    Continuous (cylinderTarget n) ∧ Continuous (testPhi n) ∧
+    Continuous (deriv (deriv (testPhi n))) ∧ Continuous (testA n) ∧ Continuous (testT n) := by
+  have hc : ContDiff ℝ ∞ (testPhi n) := (complex_compactTest_regular n hn).1
+  have hd := (contDiff_infty_iff_deriv.mp hc).2
+  have hdd := (contDiff_infty_iff_deriv.mp hd).2
+  have hV : Continuous (fun x : ℝ => ((4*Real.pi^2*x^2:ℝ):ℂ)) := by fun_prop
+  refine ⟨?_, hc.continuous, hdd.continuous, ?_, ?_⟩
+  · rcases hn with rfl | rfl
+    · unfold cylinderTarget
+      simp_rw [parabolicCylinderD_zero_projectArgument]
+      fun_prop
+    · unfold cylinderTarget
+      simp_rw [parabolicCylinderD_four_projectArgument]
+      fun_prop
+  · exact hdd.continuous.neg.add ((hV.sub continuous_const).mul hc.continuous)
+  · exact ((show Continuous (fun x : ℝ => ((x^2:ℝ):ℂ)) by fun_prop).mul hdd.continuous).add
+      ((show Continuous (fun x : ℝ => ((2*x:ℝ):ℂ)) by fun_prop).mul hd.continuous)
+
+theorem testA_orthogonality (n : ℕ) (hn : n = 0 ∨ n = 4) :
+    (∫ x in (-1:ℝ)..1, cylinderTarget n x * testA n x) = 0 := by
+  unfold testA testPhi testEigen
+  rw [(complex_compactTest_derivatives n hn).2]
+  simpa only [Complex.ofReal_sub] using compactTest_complex_orthogonality n hn
+
+theorem concrete_test_defect_identity (n : ℕ) (hn : n = 0 ∨ n = 4)
+    (m θ : ℝ) (f : ℝ → ℂ) (hf : ContinuousOn f (Icc (-1) 1))
+    (hw : CompactWeakODE m θ f (testPhi n)) :
+    (((θ-testEigen n*m:ℝ):ℂ))*(∫ x in (-1:ℝ)..1, f x*testPhi n x) =
+      (m:ℂ)*(∫ x in (-1:ℝ)..1, (f x-cylinderTarget n x)*testA n x) +
+        ∫ x in (-1:ℝ)..1, f x*testT n x := by
+  obtain ⟨hD,hφ,hdd,hA,hT⟩ := test_continuities n hn
+  have hf' : ContinuousOn f (uIcc (-1:ℝ) 1) := by
+    simpa only [uIcc_of_le (show (-1:ℝ) ≤ 1 by norm_num)] using hf
+  have hh := compact_theta_defect_identity (-1) 1 (m:ℂ) (θ:ℂ) (testEigen n:ℂ)
+    f (cylinderTarget n) (testPhi n) (deriv (deriv (testPhi n)))
+    (fun x => ((4*Real.pi^2*x^2:ℝ):ℂ)) (testT n)
+    hf' hD.continuousOn hφ.continuousOn hdd.continuousOn
+    (by fun_prop) hT.continuousOn ?_ (testA_orthogonality n hn)
+  · simpa only [Complex.ofReal_sub,Complex.ofReal_mul,testA] using hh
+  · unfold CompactWeakODE at hw
+    convert hw using 1 <;> apply intervalIntegral.integral_congr <;> intro x hx <;>
+      dsimp only [testT] <;> push_cast <;> ring
+
+#print axioms concrete_test_defect_identity
+theorem selected_anchored_continuous (k : ℕ) :
+    ContinuousOn (fun x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)
+      (Icc (-1) 1) ∧
+    ContinuousOn (fun x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)
+      (Icc (-1) 1) := by
+  have hsub : Icc (-1:ℝ) 1 ⊆ Ioo (-Real.sqrt (k+2:ℕ)) (Real.sqrt (k+2:ℕ)) := by
+    have hl : 1 < Real.sqrt (k+2:ℕ) := by
+      rw [show (1:ℝ)=Real.sqrt 1 by rw [Real.sqrt_one]]
+      apply Real.sqrt_lt_sqrt (by norm_num)
+      exact_mod_cast (show 1 < k+2 by omega)
+    intro x hx
+    constructor <;> linarith [hx.1,hx.2]
+  rw [selectedFerrersPreAnchorPair_h0_eq_selectedMode,
+    selectedFerrersPreAnchorPair_h4_eq_selectedMode]
+  exact ⟨continuousOn_const.mul ((normalizedPhysicalMode_contDiffOn_two_open
+      (selectedFerrersPreAnchorSolution0 k) (by omega)).continuousOn.mono hsub),
+    continuousOn_const.mul ((normalizedPhysicalMode_contDiffOn_two_open
+      (selectedFerrersPreAnchorSolution4 k) (by omega)).continuousOn.mono hsub)⟩
+
+theorem concrete_scheduled_theta_bound (n : ℕ) (hn : n = 0 ∨ n = 4)
+    (θ : ℕ → ℝ) (f : ℕ → ℝ → ℂ) (C : ℝ) (hC : 0 ≤ C)
+    (hf : ∀ k, ContinuousOn (f k) (Icc (-1) 1))
+    (hw : ∀ k, CompactWeakODE (k+2:ℕ) (θ k) (f k) (testPhi n))
+    (herr : ∀ᶠ k in Filter.atTop, ∀ x ∈ Icc (-1:ℝ) 1,
+      ‖f k x-cylinderTarget n x‖ ≤ C/((k+2:ℕ):ℝ)) :
+    ∃ B : ℝ, 0 ≤ B ∧ ∀ᶠ k in Filter.atTop,
+      |θ k-testEigen n*((k+2:ℕ):ℝ)| ≤ B := by
+  obtain ⟨hD,hφ,hdd,hA,hT⟩ := test_continuities n hn
+  apply scheduled_theta_bound θ f (testEigen n) C
+    ‖∫ x in (-1:ℝ)..1, cylinderTarget n x*testPhi n x‖
+    (cylinderTarget n) (testPhi n) (testA n) (testT n) hC
+    (compactTest_complex_overlap_positive n hn) hf hD.continuousOn hφ.continuousOn
+    hA.continuousOn hT.continuousOn rfl herr
+  exact Filter.Eventually.of_forall (fun k =>
+    concrete_test_defect_identity n hn (k+2:ℕ) (θ k) (f k) (hf k) (hw k))
+
+#print axioms concrete_scheduled_theta_bound
+theorem selected_theta_rate_of_mode_rate
+    (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x -
+          cylinderTarget 0 x‖ ≤ C0 / (selectedFerrersPaperLambda k)^2 ∧
+        ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x -
+          cylinderTarget 4 x‖ ≤ C4 / (selectedFerrersPaperLambda k)^2) :
+    ∃ Cθ : ℝ, 0 ≤ Cθ ∧ ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2) -
+        ((k+2:ℕ):ℝ)*(2*Real.pi)| ≤ Cθ ∧
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2) -
+        ((k+2:ℕ):ℝ)*(18*Real.pi)| ≤ Cθ := by
+  have hsub (k : ℕ) : Icc (-1:ℝ) 1 ⊆
+      Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k) := by
+    have hl : 1 ≤ selectedFerrersPaperLambda k := by
+      rw [selectedFerrersPaperLambda,show (1:ℝ)=Real.sqrt 1 by rw [Real.sqrt_one]]
+      apply Real.sqrt_le_sqrt
+      exact_mod_cast (show 1 ≤ k+2 by omega)
+    intro x hx
+    constructor <;> linarith [hx.1,hx.2]
+  have hzero := concrete_scheduled_theta_bound 0 (Or.inl rfl)
+    (fun k => mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 0 + mode4JacobiG (k+2))
+    (fun k x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x) C0 hC0
+    (fun k => (selected_anchored_continuous k).1)
+    (fun k => (selected_anchored_concrete_test_weak k).1)
+    (hmode.mono (fun k hk x hx => by
+      simpa only [selectedFerrersPaperLambda_sq] using (hk x (hsub k hx)).1))
+  have hfour := concrete_scheduled_theta_bound 4 (Or.inr rfl)
+    (fun k => mode4ClassicalEvenEigenvalue (mode4JacobiG (k+2)) 2 + mode4JacobiG (k+2))
+    (fun k x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x) C4 hC4
+    (fun k => (selected_anchored_continuous k).2)
+    (fun k => (selected_anchored_concrete_test_weak k).2)
+    (hmode.mono (fun k hk x hx => by
+      simpa only [selectedFerrersPaperLambda_sq] using (hk x (hsub k hx)).2))
+  obtain ⟨A,hA,hAr⟩ := hzero
+  obtain ⟨B,hB,hBr⟩ := hfour
+  refine ⟨max A B, hA.trans (le_max_left _ _), ?_⟩
+  filter_upwards [hAr,hBr] with k hk0 hk4
+  have he0 : testEigen 0 = 2*Real.pi := by norm_num [testEigen]
+  have he4 : testEigen 4 = 18*Real.pi := by norm_num [testEigen]; ring
+  constructor
+  · apply le_trans _ (le_max_left A B)
+    simpa only [he0,mul_comm (2*Real.pi)] using hk0
+  · apply le_trans _ (le_max_right A B)
+    simpa only [he4,mul_comm (18*Real.pi)] using hk4
+
+#print axioms selected_theta_rate_of_mode_rate
+theorem selected_projection_tail_of_mode_rate
+    (S : ProlateCanonicalSourceData)
+    (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S)
+    (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    : SelectedProjectionTailDecay S := by
+  obtain ⟨Cχ,hCχ,hχ⟩ := selected_chi_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+  obtain ⟨Cθ,hCθ,hθ⟩ := selected_theta_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+  exact selectedProjectionTailDecay_of_selectedFerrersW5RateLedger
+    S hFamily C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
+
+#print axioms selected_projection_tail_of_mode_rate
+theorem selected_locally_uniform_xi_of_mode_rate
+    (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    : ∃ Cχ : ℝ, ∃ hCχ : 0 ≤ Cχ,
+      ∃ hχ : ∀ᶠ k in Filter.atTop,
+        |1-(selectedFerrersPreAnchorPair k).chi0| ≤ Cχ/(selectedFerrersPaperLambda k)^2 ∧
+        |1-(selectedFerrersPreAnchorPair k).chi2| ≤ Cχ/(selectedFerrersPaperLambda k)^2,
+      TendstoLocallyUniformlyOn
+        ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar)
+        centeredXi Filter.atTop centeredCriticalStrip := by
+  obtain ⟨Cχ,hCχ,hχ⟩ := selected_chi_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+  obtain ⟨Cθ,hCθ,hθ⟩ := selected_theta_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+  exact ⟨Cχ,hCχ,hχ,
+    selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates
+      C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ⟩
+
+#print axioms selected_locally_uniform_xi_of_mode_rate
 end Q3OverlapProbe
