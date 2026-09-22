@@ -2,6 +2,7 @@ import Mathlib
 import Q3.Proofs.RouteB.ProlateSourceRegularity
 import Q3.Proofs.RouteB.G6N1CenterAnchorScalarLock
 import Q3.Proofs.RouteB.D0PstarExplicitCCMLimitFourier
+import Q3.Proofs.RouteB.G6N1SelectedFerrersW5RateAssembly
 open MeasureTheory Set
 open scoped FourierTransform
 noncomputable section
@@ -526,4 +527,131 @@ theorem selected_anchored_integrable (k : ℕ) :
     (selectedFerrersPreAnchorPair k).h4_integrable.const_mul _⟩
 
 #print axioms selected_anchored_integrable
+theorem scheduled_chi_rate (n : ℕ) (hn : n = 0 ∨ n = 4)
+    (f : ℕ → ℝ → ℂ) (χ : ℕ → ℂ) (C : ℝ) (hC : 0 ≤ C)
+    (hf : ∀ k, Integrable (f k))
+    (heigen : ∀ k, ∀ x ∈ Icc (-(selectedFerrersPaperLambda k))
+        (selectedFerrersPaperLambda k), F (f k) x = χ k * f k x)
+    (hsupp : ∀ k, ∀ x ∉ Icc (-(selectedFerrersPaperLambda k))
+        (selectedFerrersPaperLambda k), f k x = 0)
+    (herr : ∀ᶠ k in Filter.atTop, ∀ x ∈ Icc (-(selectedFerrersPaperLambda k))
+        (selectedFerrersPaperLambda k), ‖f k x-cylinderTarget n x‖ ≤
+          C/(selectedFerrersPaperLambda k)^2) :
+    ∃ A : ℝ, 0 ≤ A ∧ ∀ᶠ k in Filter.atTop,
+      ‖1-χ k‖ ≤ A/(selectedFerrersPaperLambda k)^2 := by
+  obtain ⟨hD,hDD,hM,hQ,hJ⟩ := target_analytic_inputs n hn
+  let D := cylinderTarget n
+  let J := ‖∫ x, D x*D x‖
+  let L := ∫ x, ‖D x‖
+  let M := ∫ x : ℝ, x^2*‖D x‖
+  let Q := ∫ x : ℝ, x^2*‖D x*D x‖
+  have hJp : 0 < J := hJ
+  have hL : 0 ≤ L := integral_nonneg (fun x => norm_nonneg _)
+  have hMp : 0 ≤ M := integral_nonneg (fun x => by positivity)
+  refine ⟨2*(L+2*C)*M/J, by positivity, ?_⟩
+  obtain ⟨K,hK⟩ := exists_nat_ge (2*(C*L+Q)/J)
+  filter_upwards [herr, Filter.eventually_ge_atTop K] with k hk hkK
+  have hlam : 1 ≤ selectedFerrersPaperLambda k := by
+    rw [selectedFerrersPaperLambda,
+      show (1:ℝ) = Real.sqrt 1 by rw [Real.sqrt_one]]
+    apply Real.sqrt_le_sqrt
+    exact_mod_cast (show 1 ≤ k+2 by omega)
+  have hbig : 2*(C*L+Q) ≤ J*(selectedFerrersPaperLambda k)^2 := by
+    rw [mul_comm J]
+    apply (div_le_iff₀ hJp).mp
+    rw [selectedFerrersPaperLambda_sq]
+    exact hK.trans (by exact_mod_cast (show K ≤ k+2 by omega))
+  have hfixed : F D = D := by
+    rcases hn with rfl | rfl
+    · exact target_zero_fixed
+    · exact target_four_fixed
+  exact chi_bound_from_mode_error (f k) D _ C J (χ k) hlam hC hJp rfl
+    (hf k) hD hDD hM hQ hfixed (heigen k) (hsupp k) hk hbig
+
+#print axioms scheduled_chi_rate
+theorem selected_chi_rate_of_mode_rate
+    (C0 C4 : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Icc (-(selectedFerrersPaperLambda k)) (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x -
+          cylinderTarget 0 x‖ ≤ C0 / (selectedFerrersPaperLambda k)^2 ∧
+        ‖centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x -
+          cylinderTarget 4 x‖ ≤ C4 / (selectedFerrersPaperLambda k)^2) :
+    ∃ Cχ : ℝ, 0 ≤ Cχ ∧ ∀ᶠ k in Filter.atTop,
+      |1-(selectedFerrersPreAnchorPair k).chi0| ≤ Cχ/(selectedFerrersPaperLambda k)^2 ∧
+      |1-(selectedFerrersPreAnchorPair k).chi2| ≤ Cχ/(selectedFerrersPaperLambda k)^2 := by
+  have hzero := scheduled_chi_rate 0 (Or.inl rfl)
+    (fun k x => centerAnchorScalarZero k * (selectedFerrersPreAnchorPair k).h0 x)
+    (fun k => ((selectedFerrersPreAnchorPair k).chi0 : ℂ)) C0 hC0
+    (fun k => (selected_anchored_integrable k).1)
+    (fun k => by simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+      (selected_anchored_eigen k).1)
+    (fun k x hx => by
+      have hz : (selectedFerrersPreAnchorPair k).h0 x = 0 := by
+        by_contra hne
+        apply hx
+        simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+          (selectedFerrersPreAnchorPair k).h0_support hne
+      simp [hz])
+    (hmode.mono (fun k hk x hx => (hk x hx).1))
+  have hfour := scheduled_chi_rate 4 (Or.inr rfl)
+    (fun k x => centerAnchorScalarFour k * (selectedFerrersPreAnchorPair k).h4 x)
+    (fun k => ((selectedFerrersPreAnchorPair k).chi2 : ℂ)) C4 hC4
+    (fun k => (selected_anchored_integrable k).2)
+    (fun k => by simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+      (selected_anchored_eigen k).2)
+    (fun k x hx => by
+      have hz : (selectedFerrersPreAnchorPair k).h4 x = 0 := by
+        by_contra hne
+        apply hx
+        simpa only [selectedFerrersPreAnchorPair_lambda_eq_paperLambda] using
+          (selectedFerrersPreAnchorPair k).h4_support hne
+      simp [hz])
+    (hmode.mono (fun k hk x hx => (hk x hx).2))
+  obtain ⟨A,hA,hAr⟩ := hzero
+  obtain ⟨B,hB,hBr⟩ := hfour
+  refine ⟨max A B, hA.trans (le_max_left _ _), ?_⟩
+  filter_upwards [hAr,hBr] with k hk0 hk4
+  have hden : 0 ≤ (selectedFerrersPaperLambda k)^2 := sq_nonneg _
+  constructor
+  · have hh : |1-(selectedFerrersPreAnchorPair k).chi0| ≤
+        A/(selectedFerrersPaperLambda k)^2 := by
+      simpa only [← Complex.ofReal_one, ← Complex.ofReal_sub,
+        Complex.norm_real, Real.norm_eq_abs] using hk0
+    exact hh.trans (div_le_div_of_nonneg_right (le_max_left _ _) hden)
+  · have hh : |1-(selectedFerrersPreAnchorPair k).chi2| ≤
+        B/(selectedFerrersPaperLambda k)^2 := by
+      simpa only [← Complex.ofReal_one, ← Complex.ofReal_sub,
+        Complex.norm_real, Real.norm_eq_abs] using hk4
+    exact hh.trans (div_le_div_of_nonneg_right (le_max_right _ _) hden)
+
+#print axioms selected_chi_rate_of_mode_rate
+theorem selected_projection_tail_of_mode_theta
+    (S : ProlateCanonicalSourceData)
+    (hFamily : SelectedFerrersPreAnchorProductionFamilyCrosswalk S)
+    (C0 C4 Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4)
+    (hCθ : 0 ≤ Cθ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hθ : ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+        |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+          Cθ) :
+    SelectedProjectionTailDecay S := by
+  obtain ⟨Cχ,hCχ,hχ⟩ := selected_chi_rate_of_mode_rate C0 C4 hC0 hC4 hmode
+  exact selectedProjectionTailDecay_of_selectedFerrersW5RateLedger
+    S hFamily C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
+
+#print axioms selected_projection_tail_of_mode_theta
 end Q3OverlapProbe

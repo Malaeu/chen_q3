@@ -600,3 +600,39 @@ selectedFerrersPreAnchorPair_lambda_eq. No new source integrability premise
 is needed. hmode remains unproved, htheta reduction remains PAPER, and
 finite-ground identification/off-line zero-freeness remain separate.
 PX_RH_CLAIM: NOT_MADE.
+
+## Selected hchi derived and consumed in W5 without an independent hchi premise
+
+Candidate SHA256 6f5effebbe5b0a263c6cd10122a360135700737027647e50cd6fb0e1d44e4abc.
+scheduled_chi_rate combines the concrete target facts with the generic
+Fourier-overlap inequality. A fixed threshold follows from exists_nat_ge and
+lambda_k^2=k+2; the resulting constant is independent of k. No assumed
+overlap floor, concentration defect, source L1 bound or chi rate is added.
+
+selected_chi_rate_of_mode_rate uses the actual selected anchored mode0/h0
+and mode4/h4, their exact eigenrelations with chi0 and chi2, and the exact
+paper-window dictionary. It concludes existence of a single nonnegative Cchi
+with eventual real bounds |1-chi0|,|1-chi2| <= Cchi/lambda_k^2, assuming only
+the two nonnegative mode constants and the same eventual hmode statement
+consumed by the W5 theorem. The max of two fixed constants supplies Cchi.
+
+selected_projection_tail_of_mode_theta then calls the EXISTING
+selectedProjectionTailDecay_of_selectedFerrersW5RateLedger directly. This
+kernel-checked consumer bridge retains S, hFamily, C0,C4,Ctheta, their signs,
+hmode and htheta; its signature has no independent hchi argument. This is a
+conditional implication, not a proof of its remaining premises. It neither
+changes production source nor admits a Goal058 node.
+
+Canonical q3_check exit0; all 24 printed dependency lists standard only.
+Independent recovery_review checked exact hypothesis fit, finite threshold,
+real/complex conversion, common constant and direct consumer connection, and
+approved the final hash. Current dependency oleans used; preexisting
+UnicodeBasic warning and style-only linter warnings remain. Not fresh-clone
+production validation.
+
+The previous PAPER hmode->hchi reduction is now Lean-checked for the actual
+selected source family in this isolated candidate. hmode itself remains
+unproved; hmode->htheta is still PAPER. Next investigate the exact hmode donor
+or formalize the compact-test htheta reduction, without using either output
+circularly to prove hmode. Finite-ground matching and off-line zero-freeness
+remain separate open requirements. PX_RH_CLAIM: NOT_MADE.

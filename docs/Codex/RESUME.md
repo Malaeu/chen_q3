@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 328
-observed_at: '2026-09-22T11:17:05.663553+00:00'
-previous_sha256: 224fcd5bcf716e288130d46d4655aa844ab2746befb3a44b8b28a92336c3aaa0
+revision: 329
+observed_at: '2026-09-22T11:21:43.417598+00:00'
+previous_sha256: 6c9059ddb0ce4923abccd949dfb4c1dfb4f4717a7cc1cbeba7d4549b4881fd9e
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-target_analytic_inputs discharges hD,hDD,hM,hQ,hJ for actual cylinderTarget n with n=0 or4, without extra assumptions. All polynomial moments of D4 and real D0/D4 squares, plus square integral strict positivity and anchored actual source integrability, kernel-checked. No selected-family hchi assembly, finite-ground identification or RH closure claimed.
+scheduled_chi_rate proves eventual fixed-constant bound for actual lambda=sqrt(k+2). selected_chi_rate_of_mode_rate derives both real-abs chi0/chi2 bounds with one nonnegative constant from exact selected hmode; selected_projection_tail_of_mode_theta calls existing W5 consumer retaining only hFamily,hmode,htheta and their stated constants. q3_check and independent review passed. This is conditional candidate proof, not hmode, unconditional projection decay, finite ground or RH.
 
 ## Next action
-Concrete D0/D4 target obligations now checked: self-Fourier, integrability, weighted moments, squared weighted moments, positive bilinear square integral. Anchored actual source integrability also checked. Continue exact lambda dictionary, then eventual selected hchi rate from hmode using chi_bound_from_mode_error. hmode remains open; htheta bridge PAPER only; production exact edge UNBOUND.
+hmode implies actual selected hchi now kernel-checked, and existing W5 projection-tail consumer called without hchi premise. Continue htheta compact-test formalization or exact hmode supplier audit; hmode still open and must be noncircular. Keep hFamily/finite-ground identification separate, production edge UNBOUND.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
