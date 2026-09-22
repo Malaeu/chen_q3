@@ -64,5 +64,15 @@ Note: This linter can be disabled with `set_option linter.unreachableTactic fals
 Note: This linter can be disabled with `set_option linter.unusedTactic false`
 'Q3QuasimodeCorrection.physical_residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3QuasimodeCorrection.physical_residual_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+Try this:
+  [apply] ring_nf
+
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+'Q3QuasimodeCorrection.scaled_gaussian_square_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.residual_window_l2_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.physical_zero_l2_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.physical_four_l2_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3QuasimodeCorrection.lean
 q3_check ok

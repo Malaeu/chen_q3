@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 343
-observed_at: '2026-09-22T12:33:42.837243+00:00'
-previous_sha256: a11e41d333d8915924674ab020f77dbadbe086086d5d0f2ecbb9bc81d90bbebc
+revision: 344
+observed_at: '2026-09-22T12:37:26.058528+00:00'
+previous_sha256: 2a7ab9872ed0b361af3998adabd58291fb46a890706362adb9b4edcd599cfc50
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-q3_check exit0 SHA973c0e8eb1e176ea8e0244ba8625a1e650d3d92b566da3231945e5d102da6d8a. Actual scaled Gaussian first/second derivatives, physical_rescaling and two physical_residual identities all standard axioms. Operator explicitly uses negative divergence of (1-x²/m)fprime and correct π spectral shift. L2 bound not yet Lean.
+q3_check exit0 SHAd90e17f7192c98fc63d057eaeb9fe824d08c650667d7bf1677c94c3a7fb206a1. Polynomial-Gaussian square integrability established, whole-line constant fixed, set integral monotonicity yields exact physical_zero_l2_bound and physical_four_l2_bound. No unproved integrability premise or m-dependent constant; no hmode certification yet.
 
 ## Next action
-Exact physical divergence-form residual now Lean-checked for both corrected modes: GaussianR(sqrt(pi)x)/(pi*m^2), m nonzero. Next establish integrability of squared Gaussian-polynomial residual and uniform full-window L2 bound. PAPER domain/core/projection/hmode still unformalized; prepared Proshka packet unchanged and unsent.
+Actual corrected mode residuals now satisfy Lean-checked sqrt integral-square bound C_n/m^2 on full Icc(-sqrt m,sqrt m), for all m>0, constants fixed and nonnegative. Next connect natural operator-domain/projection gap estimate to this certified residual; PAPER form-core/spectral convergence still needs Lean. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

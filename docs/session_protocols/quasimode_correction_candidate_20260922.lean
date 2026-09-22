@@ -1,5 +1,5 @@
 import Mathlib
-open Polynomial
+open Polynomial MeasureTheory Set
 noncomputable section
 namespace Q3QuasimodeCorrection
 abbrev P0 : ℝ[X] := 1
@@ -172,4 +172,79 @@ theorem physical_residual_four (m x : ℝ) (hm : m ≠ 0) :
   <;> ring
 #print axioms physical_residual_zero
 #print axioms physical_residual_four
+
+theorem polynomial_gaussian_integrable (p : ℝ[X]) (b c : ℝ) (hb : 0 < b) :
+    Integrable (fun x : ℝ => p.eval (c*x)*Real.exp (-b*x^2)) := by
+  induction p using Polynomial.induction_on' with
+  | add p q hp hq =>
+    convert hp.add hq using 1
+    funext x
+    simp [add_mul]
+  | monomial n a =>
+    have h : Integrable (fun x : ℝ => x^n*Real.exp (-b*x^2)) := by
+      simpa only [Real.rpow_natCast] using
+        integrable_rpow_mul_exp_neg_mul_sq hb
+          (show (-1:ℝ)<(n:ℝ) by exact lt_of_lt_of_le (by norm_num) (Nat.cast_nonneg n))
+    convert h.const_mul (a*c^n) using 1
+    funext x
+    simp [eval_monomial,mul_pow]
+    ring
+
+theorem scaled_gaussian_square_integrable (p : ℝ[X]) :
+    Integrable (fun x : ℝ => (scaledGaussian p (Real.sqrt Real.pi) x)^2) := by
+  have h := polynomial_gaussian_integrable (p*p) (2*Real.pi) (Real.sqrt Real.pi)
+    (mul_pos (by norm_num) Real.pi_pos)
+  convert h using 1
+  funext x
+  simp only [scaledGaussian,gaussianPoly,mul_pow,eval_mul]
+  rw [Real.sq_sqrt Real.pi_pos.le]
+  rw [show (Real.exp (-(Real.pi*x^2)))^2 = Real.exp (-2*Real.pi*x^2) by
+    rw [sq,← Real.exp_add]
+    congr 1
+    nlinarith [Real.sq_sqrt Real.pi_pos.le]]
+  ring
+
+def residualL2Constant (p : ℝ[X]) : ℝ :=
+  Real.sqrt (∫ x : ℝ, (scaledGaussian p (Real.sqrt Real.pi) x)^2)/Real.pi
+
+theorem residual_window_l2_bound (p : ℝ[X]) (m : ℝ) (hm : 0 < m) :
+    Real.sqrt (∫ x in Icc (-Real.sqrt m) (Real.sqrt m),
+      (scaledGaussian p (Real.sqrt Real.pi) x/(Real.pi*m^2))^2) ≤
+        residualL2Constant p/m^2 := by
+  have hI := scaled_gaussian_square_integrable p
+  have hle : (∫ x in Icc (-Real.sqrt m) (Real.sqrt m),
+      (scaledGaussian p (Real.sqrt Real.pi) x)^2) ≤
+        ∫ x : ℝ, (scaledGaussian p (Real.sqrt Real.pi) x)^2 :=
+    setIntegral_le_integral hI (Filter.Eventually.of_forall (fun x => sq_nonneg _))
+  simp_rw [div_pow]
+  rw [integral_div,Real.sqrt_div,Real.sqrt_sq_eq_abs,
+    abs_of_pos (mul_pos Real.pi_pos (sq_pos_of_pos hm))]
+  unfold residualL2Constant
+  rw [div_div]
+  exact div_le_div_of_nonneg_right (Real.sqrt_le_sqrt hle) (by positivity)
+  all_goals exact integral_nonneg (fun x => sq_nonneg _)
+#print axioms scaled_gaussian_square_integrable
+#print axioms residual_window_l2_bound
+
+theorem residualL2Constant_nonneg (p : ℝ[X]) : 0 ≤ residualL2Constant p := by
+  unfold residualL2Constant
+  positivity
+
+theorem physical_zero_l2_bound (m : ℝ) (hm : 0 < m) :
+    Real.sqrt (∫ x in Icc (-Real.sqrt m) (Real.sqrt m),
+      (physicalResidual 0 m (-(3/4))
+        (scaledGaussian (P0+C (1/(Real.pi*m))*Q0) (Real.sqrt Real.pi)) x)^2) ≤
+          residualL2Constant R0/m^2 := by
+  simp_rw [physical_residual_zero m _ hm.ne']
+  exact residual_window_l2_bound R0 m hm
+
+theorem physical_four_l2_bound (m : ℝ) (hm : 0 < m) :
+    Real.sqrt (∫ x in Icc (-Real.sqrt m) (Real.sqrt m),
+      (physicalResidual 4 m (-(43/4))
+        (scaledGaussian (P4+C (1/(Real.pi*m))*Q4) (Real.sqrt Real.pi)) x)^2) ≤
+          residualL2Constant R4/m^2 := by
+  simp_rw [physical_residual_four m _ hm.ne']
+  exact residual_window_l2_bound R4 m hm
+#print axioms physical_zero_l2_bound
+#print axioms physical_four_l2_bound
 end Q3QuasimodeCorrection

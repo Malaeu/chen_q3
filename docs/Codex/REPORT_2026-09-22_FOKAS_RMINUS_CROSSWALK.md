@@ -1303,3 +1303,24 @@ Existing dependency oleans used; preexisting UnicodeBasic/style warnings remain.
 Full-window L2 bound, operator-domain/core/projection chain and hmode remain
 outside these Lean declarations. No production admission or new Proshka send.
 PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked uniform full-window residual L2 bounds
+
+Candidate SHA256 d90e17f7192c98fc63d057eaeb9fe824d08c650667d7bf1677c94c3a7fb206a1.
+Polynomial induction proves integrability of p(c*x)*exp(-b*x^2) for b>0;
+scaled_gaussian_square_integrable applies it to the square with b=2*pi.
+Thus residualL2Constant p=sqrt(integral_R scaledGaussian(p,sqrt(pi),x)^2)/pi
+is a genuine finite whole-line constant, with nonnegativity proved and no m
+in its definition. Window integral monotonicity and exact denominator algebra
+give residual_window_l2_bound on [-sqrt(m),sqrt(m)] for every m>0.
+physical_zero_l2_bound and physical_four_l2_bound substitute the certified
+physical divergence-form residuals and conclude sqrt(integral_I residual^2)
+<=residualL2Constant(R_n)/m^2. This is the explicit real L2 norm expression;
+no formal Lp-vector coercion is claimed.
+
+Canonical q3_check exit0, standard axioms only. Independent frozen-hash review
+checked real-square integrability, fixed constants and physical substitution.
+Current dependency oleans used; preexisting UnicodeBasic/style warnings and
+nonfatal tactic diagnostics remain. No production admission. The remaining
+operator-domain/spectral-projection/form-core/hmode steps are still separate.
+The Proshka packet is unchanged and unsent. PX_RH_CLAIM NOT_MADE.
