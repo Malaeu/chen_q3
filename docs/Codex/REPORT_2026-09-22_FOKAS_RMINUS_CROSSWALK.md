@@ -1040,3 +1040,83 @@ form's ordered spectrum, preserving factor2, shift+G and division by m.
 The hmode proof cannot spend this argument on the selected Ferrers family
 until that correspondence is proved. Finite CCM ground is still a separate
 object. PX_RH_CLAIM: NOT_MADE.
+## PAPER closure of the natural Legendre form core and Ritz correspondence
+
+Work at fixed G>0. Let V consist of even functions u in L2(-1,1) which have
+locally absolutely continuous representatives and finite energy
+ E[u]=integral (1-x^2)|u'(x)|^2.
+Equip V with ||u||_V^2=||u||_2^2+E[u]. Closedness follows by local H1 convergence
+of V-Cauchy sequences on compact subintervals and completeness of weighted
+L2 for derivatives; the local weak derivative agrees with the weighted limit.
+
+For 0<a<1, define u_a=u on [-a,a], with constant values u(a),u(-a) on the
+respective tails. Weighted Cauchy-Schwarz gives
+ |u(a)|^2 <= 2|u(0)|^2 + E[u]*log((1+a)/(1-a)).
+Thus (1-a)|u(a)|^2 tends to zero. Evenness gives the same estimate at -a.
+Furthermore
+ ||u_a-u||_2^2 <= 2*integral_{|x|>a}|u|^2 +4*(1-a)|u(a)|^2 ->0,
+ E[u_a-u]=integral_{|x|>a}(1-x^2)|u'|^2 ->0.
+The clipping matches values at the joining points; no delta derivative occurs.
+Each u_a belongs to unweighted H1(-1,1). Its derivative is odd almost everywhere.
+Approximate this derivative in L2 by odd polynomials r_j (symmetrize polynomial
+approximants). Set P_j(x)=u_a(0)+integral_0^x r_j(t)dt. These are even polynomials.
+Cauchy-Schwarz bounds the value error uniformly by the derivative L2 error,
+and the weighted derivative error by its unweighted counterpart. Therefore
+even polynomials are a form core for V. For complex functions apply the same
+argument to real and imaginary parts; real and complex spectra agree here.
+
+With normalized even Legendre coordinates, the existing Gram and derivative
+Gram identities on polynomials give
+ ||u||_V^2=sum_q (1+2q*(2q+1))*|c_q|^2
+by completion. This also identifies V with the closed Legendre form domain.
+Weights tend to infinity, so its unit ball has uniformly small L2 coefficient
+tails: the embedding is compact. Adding G*x^2, G>0, preserves this domain and
+gives an equivalent form norm, since the potential is bounded and nonnegative.
+This proves the missing domain qualification in the preceding PAPER argument.
+No claim of global H1 regularity of a general V member is needed.
+
+### Source-locked finite-to-infinite identification
+
+The exact existing finite identities are
+ D0Mode4FiniteEvenLegendreQuadraticForm.lean:57:
+  ||P_b||_2^2=2*b^T*b,
+ and :703 (at Lambda=0):
+  q_G[P_b]-G*||P_b||_2^2=2*b^T*A(G,0,d)*b.
+Here P_b includes the phase (-1)^q and the nonzero similarity scale; thus its
+range is exactly the even polynomials of degree <2d. The factor2 cancels in
+both numerator and denominator. The Ritz eigenvalues of q_G on that subspace
+are precisely mode4DLMFEvenFiniteEigenvalue(G,d,p)+G:
+D0Mode4DLMFFullFiniteSpectrumCrosswalk.lean:188 defines the ascending spectrum
+of this very matrix A(G,0,d), not a merely similar unnamed operator.
+
+The nested even polynomial spaces form a core. Min-max gives Ritz values
+bounded below by the natural eigenvalues. Approximate a basis of the first
+p+1 natural eigenvectors in form norm in one sufficiently large polynomial
+space; its Gram and energy matrices converge, so the maximal Rayleigh quotient
+converges. This gives the reverse inequality for the infimum of Ritz values.
+D0Mode4ClassicalCarrierFromFiniteLimit.lean:571 takes its infimum over exactly
+{d:Nat // p<d}; hence undersized truncations do not contaminate the infimum.
+Consequently, at PAPER scope, for every fixed G>0 the natural even eigenvalue is
+
+ lambda_p(q_G)=mode4ClassicalEvenEigenvalue(G,p)+G.
+
+Unitary dilation x=sqrt(m)*z identifies the physical form with q_G/m for
+G=4*pi^2*m^2. The preceding independently derived natural spectral limit now
+transfers to the actual carrier at PAPER scope:
+
+ (mode4ClassicalEvenEigenvalue(G_m,p)+G_m)/m -> 2*pi*(4p+1).
+
+For p=0,1,2,3 this gives the even-sector quasimode isolation described above.
+This does not yet identify the normalized selected Ferrers eigenFUNCTION
+with the rank-one form eigenprojection: its operator-domain membership and
+normalization still need an exact check. It also does not supply a Lean proof
+of the form-core/min-max steps. Finite CCM ground remains separate.
+
+Independent recovery_review approved the endpoint clipping, polynomial core,
+closedness and compactness argument, including the positive-potential norm
+qualification. All new claims in this section are PAPER, not production
+admission. PX_RH_CLAIM: NOT_MADE.
+
+Final independent source audit additionally approved exact carrier equality,
+including both factor2 identities, synthesis bijectivity, ascending order,
+admissible dimensions and physical shift/scaling. PAPER eigenvalue match closed.

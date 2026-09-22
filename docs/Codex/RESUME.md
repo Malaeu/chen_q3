@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 337
-observed_at: '2026-09-22T12:14:28.542601+00:00'
-previous_sha256: 19b12c4c2a042c0d6534ed745f3d16d5f2bf1d504ce8180c2cf743e236823f2c
+revision: 338
+observed_at: '2026-09-22T12:17:02.167018+00:00'
+previous_sha256: e2a634082f408ee582e38b039bef9ff2494e45464a7eec34a5b4e2a1cccbd9d6
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Source audit: finite-limit carrier and monotonicity are proved; strict fixed-m ordering below20 does not provide cofinal scaled gap. Independent reviewer approved abstract spectral convergence proof with explicit natural/Legendre domain qualification and even-only >6*pi gap. Not Lean and not yet a theorem about project-selected carrier. hmode and finite CCM ground remain open.
+Independent source-locked reviewer approved PAPER equality lambda_p(q_G)=mode4ClassicalEvenEigenvalue(G,p)+G and physical division by m, using existing factor2 mass/energy identities and correct ascending/admissible finite infimum. Combined with PAPER compactness/minmax, actual carrier has fixed-index oscillator limit and eventual even isolation. No hmode or finite CCM ground proof yet.
 
 ## Next action
-PAPER min-max/local compactness gives natural even prolate E_p(m)->2*pi*(4p+1) independently of hmode; first four levels imply >6*pi even-sector isolation of corrected quasimodes. Next prove Legendre form-core density and identify finite Galerkin infimum with natural spectrum using existing finite L2/energy identities, preserving factor2,+G,/m. Natural-domain and selected-family match still open.
+PAPER endpoint clipping proves even polynomial form core; exact finite Gram/energy plus Ritz inf identify actual classical carrier with natural spectrum. Next verify selected Ferrers eigenfunction operator-domain membership and rank-one projection normalization before spending residual O(m^-2). Core/Ritz and spectral-limit steps still require Lean formalization; production edge unbound.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
