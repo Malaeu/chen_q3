@@ -1,9 +1,9 @@
 ---
 schema: q3_resume.v2
-revision: 316
-observed_at: '2026-09-16T04:08:20.487785+00:00'
-previous_sha256: 408e1437b78c9b55c9cc97178c643f8277e693ca00b37f51d64dd1fe3d19b6aa
-owner_thread_id: 01a084f4-7498-7021-bac2-91d184d58dc7
+revision: 317
+observed_at: '2026-09-22T07:41:51.657872+00:00'
+previous_sha256: 5236620a2e1439dfc0f29fb14cfefee3f31c72ff247c27976526d5f1e920e3ec
+owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
 recovery_from: null
@@ -67,26 +67,24 @@ stages:
   acceptance: *id006
   publication: *id006
 operation:
-  kind: ASSIGN
-  state: INTENT
-  id: ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916
+  kind: NONE
+  state: NONE
+  id: ''
   evidence: []
   subject:
     kind: ASSIGNMENT
     id: ASSIGNMENT_SELECTOR_PLAN2_20260916
     sha256: cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19
-  command: agent-launch
-  inputs:
-    orchestrator/team_records.py: 2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a
-    orchestrator/tests/test_workflow_runtime.py: 7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a
+  command: none
+  inputs: {}
 source_manifest:
   docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
   docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
   docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
   docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
 ownership:
-  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
-  epoch: 1
+  installation_ref: 53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590
+  epoch: 2
   state: ACTIVE
   transfer: null
 ---
@@ -104,10 +102,12 @@ Analytic note020297dd and independent review42471b36 are published in85f6c570.
 History repair: exact two-file candidate d1a1c3d8 integrated and published at 0e467afc02beb4ff71e15427da9663cfe0f937c8. Both reviewed source hashes preserved;97 tests passed. Original4210145 history bytes remain intact. Earlier Linux/Mac/PR14/identity work is complete; do not replay.
 
 ## Next action
-History-limit repair0e467afc and repair records 785731347fdf8356cd2fca9e7fd45b73193d1bc5 are remotely confirmed. Continue only the recorded assignment-result-evidence-selection issue: independent native classification, minimal two-file candidate, exact review and publication. Existing technical peer01a08f80 has the plan and awaits registered implementation scope. No new mathematics selector.
+Owner-directed continuation on this Mac. The obsolete September 16 agent launch is retired with outcome UNKNOWN and must never be replayed. Reconcile current mathematical source pins against the September 21 bandwidth correction before selecting an exact theorem/consumer edge. No mathematical admission follows from recovery.
 
 ## Existing work
-Owner01a084f4/install9afdf2bf/epoch1 ACTIVE. Native automation bridge updated and read back ACTIVE at10-minute cadence for this owner. Canonical plan first, addressed GOAL/RESUME reading, no timestamp-only checkpoints. No new mathematical work selected; preserve all seven foreign paths.
+Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
+Owner recovery instruction: "Я твой владелец, и я тебе говорю: делай."
+Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
 
 ## Do not repeat
 No old repair replay, Mac merge, PR14 review/comment, search or index rebuild.
@@ -117,4 +117,4 @@ Do not truncate, delete or rewrite archived history. Confirmation-only checkpoin
 need no recursive publication. No timestamp-only checkpoint churn.
 
 ## Integration remaining
-History repair source and scoped records are published; native bridge settings readback ACTIVE10min is registered. The final confirmation-only checkpoint needs no recursive publication. Issue issue-3b9057bf351da4e6efb71b12f7d051d1ba504eeaf2615bf662e15a7e635d560a remains an unadjudicated MEDIUM report, not a completed fix. Preserve all original history and seven foreign files plus the two pre-existing unrelated evidence files.
+Local ownership recovery and bounded runtime repair. Old native result remains UNKNOWN; a late result requires fresh independent review. Automated continuation/watch is unverified; synchronous owner-directed work is permitted. Mathematical production still requires exact edge selection.
