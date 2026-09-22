@@ -377,3 +377,73 @@ analytic entrances are then hmode and hchi; hFamily/finite-ground matching is
 still separate. Next: inspect hmode proof dependencies before formalizing this
 compact-test bridge, and seek a same-source hchi supplier. Do not use this
 implication to justify an hmode proof that already assumes htheta.
+
+
+## New PAPER implication: full-window mode rate implies chi defect rate
+
+Let F use exp(+2pi ixy), exactly ProlateSourceRegularity.lean:18–27.
+Let f_lambda be integrable, supported on I=[−lambda,lambda], and satisfy
+F f_lambda=chi_lambda f_lambda on I. Let D be real, F D=D, and define
+
+    L=∫|D|, M2=∫x²|D(x)|, Q2=∫x²D(x)², J0=∫D(x)²>0.
+
+Assume all four numbers finite and, eventually,
+
+    sup_I |f_lambda−D| ≤ C/lambda², C≥0.
+
+No positivity of chi is assumed. With J_lambda=∫f_lambda D, absolute
+Fubini applies because ∫∫|f(y)D(x)|dxdy=||f||₁ L<∞. Kernel symmetry and
+self-Fourier D yield ∫(Ff)D=∫f(FD)=J_lambda. Split at I and use the
+Fourier eigenrelation only on I:
+
+    (1−chi_lambda) J_lambda = ∫_(outside I) (Ff_lambda)(x) D(x) dx.
+
+This is a bilinear pairing; it is intentional, with D real. Since |Ff|≤||f||₁,
+
+    ||f||₁ ≤ L+2C/lambda,
+    |J_lambda−J0| ≤ (C L+Q2)/lambda²,
+    |∫_(outside I)(Ff)D| ≤ (L+2C/lambda) M2/lambda².
+
+The last two inequalities use x²≥lambda² on the exterior. Therefore for
+lambda≥1 and lambda²≥2(C L+Q2)/J0,
+
+    |1−chi_lambda| ≤ [2(L+2C) M2/J0] / lambda².
+
+No derivative-error estimate, Plancherel theorem, or external Fuchs
+concentration asymptotic is needed. The denominator is a nonzero overlap,
+not the value of f at a point. The input is the full-window mode rate;
+a fixed-compact mode approximation alone would not supply ||f||₁ control.
+
+### Exact project correspondence
+
+Use f_lambda = centerAnchorScalarZero*h0 or centerAnchorScalarFour*h4,
+with lambda=selectedFerrersPaperLambda k. Scalar multiplication preserves
+the exact finite-Fourier eigenrelation, and zero extension makes finite and
+whole-line actions agree. Both eigenrelations and support are carried by
+selectedFerrersPreAnchorPair_spec (G6N1SelectedFerrersPreAnchorDataInhabitant,
+lines123–143) and its selected normalized modes. The same chi0/chi2 are used.
+
+D0=e^(−pi x²), D4=(16pi²x⁴−24pi x²+3)e^(−pi x²).
+All required moments are finite Gaussian moments and J0>0 because D0(0)=1,
+D4(0)=3. The identity D4=16*explicitCCMLimitH+3*D0 and the existing
+fourier_explicitCCMLimitH (D0PstarExplicitCCMLimitFourier.lean:253), together
+with the Gaussian transform, supply self-Fourier D4 at PAPER scope. If using
+Mathlib's minus-sign integral convention, explicitly apply evenness:
+Fplus D(x)=Fminus D(−x)=D(−x)=D(x). Do not infer the sign from a docstring.
+
+Negative control: for degree2, Fourier phase is −1. The same calculation
+would control |−1−chi|, not |1−chi|. Thus the mechanism retains the phase
+information lost by a squared concentration eigenvalue.
+
+Combined with the preceding compact-test ODE lemma, hmode implies BOTH
+hchi and htheta for the actual two selected modes, conditional on their
+exact stored ODE/Fourier relations. This reduces the independent analytic
+entrance of W5/N2 to hmode on PAPER; it does not prove hmode, construct a
+source-independent Satz9 theorem, identify finite ground states, establish
+off-line zero-freeness, or give Lean admission. Audit for circular dependence
+before spending this reduction: hmode must not be obtained using these same
+conclusions. Next concrete formal target is the generic Fourier-overlap
+lemma with this explicit moment budget, followed by same-source instantiation.
+
+Independent recovery_review checked the Fourier-overlap identity, moment constants,
+phase negative control and full-window eigenrelation requirement; PAPER approval.

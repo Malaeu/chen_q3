@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 321
-observed_at: '2026-09-22T10:40:02.653772+00:00'
-previous_sha256: 4f9a536f01be7d4820aa1ce033eae6afb662cb76ae136d4e54bfce8bd8ef58ec
+revision: 322
+observed_at: '2026-09-22T10:42:48.695417+00:00'
+previous_sha256: 1e83ebfb3659aa5964370f3c39e4fe6bacdcfe50c35627fa087bdae9fe1e0754
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Existing W5/N2 conditional suppliers located. New compact-test identity derives |theta-em| bounded from hmode and exact ODE, independently checked by recovery_review; exact integer checks for D0/D4 oscillator equations passed. PAPER only, not Lean admission. Source-pinned report includes full derivation, constants, explicit C2 test function, source hashes and alias outcome. Registered Satz9 shelf query exit2 freshness INCOMPLETE with positive hits. No RH node closed.
+New Fourier-overlap PAPER identity (1-chi) integral(fD)=exterior integral(Ff D) gives |1-chi|<=2(L+2C)M2/(J0 lambda²), with explicit denominator threshold and Gaussian moments. Independent recovery_review approved constants/phase/full-window condition. Combined with compact ODE test, hmode supplies both other W5/N2 rate inputs at PAPER scope. Neither hmode nor finite-ground matching has been proved. Report contains complete hypotheses and negative controls.
 
 ## Next action
-Use report compact-test PAPER lemma: exact physical ODE plus fixed-compact O(1/m) mode error implies htheta bounded; no derivative-error rate needed. Audit hmode donor for circular dependence on htheta, then formalize exact weak-test bridge or dispatch source-locked review. hmode and hchi remain actual analytic entrances; family/ground identification separate. Dunster1601.00699v3 section5 is PARTIAL: perturbed Weber coordinate, log loss, truncated domain, not exact full-window Satz9 input.
+Formalize or source-locked review the generic Fourier-overlap moment lemma from the current report, then instantiate on same selected Ferrers modes. Full-window hmode now implies hchi by Fourier reciprocity and htheta by compact ODE testing at PAPER scope. Exact eigenrelations are in selectedFerrersPreAnchorPair_spec; D4=16 explicitCCMLimitH+3 Gaussian. Preserve phase via evenness if Fourier convention differs. Audit hmode donor circularity; raw Satz9 estimate remains open. Production node/consumer edge UNBOUND; no Lean admission yet.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
