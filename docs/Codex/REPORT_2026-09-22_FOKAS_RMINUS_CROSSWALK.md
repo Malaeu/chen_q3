@@ -864,3 +864,96 @@ of Route B: production-family matching, finite-ground tracking/coercivity and
 off-line zero-freeness are separate. Production theorem/consumer binding remains
 unselected. Next work: exact hmode supplier audit/proof, without circularly
 assuming either derived spectral rate. PX_RH_CLAIM: NOT_MADE.
+
+## Source recheck and corrected quasimode route to the remaining hmode
+
+Primary source re-read locally: Meixner-Schaefke (1954),
+`docs/routeB_bus/litreview/pdfs/978-3-662-00941-3.pdf`, SHA256
+f56225d83e49ea439e28ab85c7f59942c3d3a3ddba913026ade59c8bfe85604d.
+Printed pp241-243, especially Satz9 on printed243/PDF255 (render inspected,
+not just OCR); mechanism reference §2.333, printed143-144. Precise short quote:
+"gleichmäßig in [-1, 1]".
+The rendered remainder is O(gamma^(-3/4)) with prefactor (4gamma/pi)^(1/4).
+Dividing by the leading scale produces O(gamma^(-1)), as CCM(7.10) reports.
+The older card's source-availability and unresolved-binding statements are
+historical: this PDF is present here, and current DirectCylinderRate already
+proves the conditional centered bind. It still assumes both raw rate inputs.
+
+The book's mechanism is more informative than its asymptotic statement:
+construct a finite Weber combination with high-order residual, use spectral
+separation to control the orthogonal error, then an integral eigenrelation
+upgrades the mean estimate to a uniform estimate. §2.333 uses bounded cosine
+kernels; its direct application to this prolate normalization is not assumed.
+No new unchanged semantic query was issued: prior registered query is still
+INCOMPLETE on freshness with positive hits, not a no-hit receipt.
+Classification remains exploratory INCOMPLETE_NO_CONSUMABLE_TARGET.
+
+### Exact first correction in the project's physical equation
+
+Let t=sqrt(pi)*x, m>0, and
+L_m = -d_x^2 + 4*pi^2*x^2 + m^(-1)*(x^2*d_x)' .
+For n=0,4, put e_n=pi*(4*n+2), beta_n=-((2*n+1)^2+5)/8,
+D_n(x)=exp(-t^2)*P_n(t), and
+u_nm(x)=exp(-t^2)*(P_n(t)+Q_n(t)/(pi*m)).
+The polynomials are
+
+ P0=1,
+ Q0=3*t^2/8-t^4/4,
+ P4=3-24*t^2+16*t^4,
+ Q4=129*t^2/8-183*t^4/4+28*t^6-4*t^8.
+
+Thus beta0=-3/4, beta4=-43/4, and both corrections vanish at the center.
+For T(P)=t^2*P''+(2*t-4*t^3)*P'+(4*t^4-6*t^2)*P,
+the exact identities are
+
+ -Q_n''+4*t*Q_n'-4*n*Q_n = beta_n*P_n-T(P_n),
+ (L_m-e_n-beta_n/m)u_nm = exp(-t^2)*R_n(t)/(pi*m^2),
+ R_n=T(Q_n)-beta_n*Q_n.
+
+R0=81*t^2/32-167*t^4/16+7*t^6-t^8.
+R4=8643*t^2/32-26121*t^4/16+2548*t^6-1354*t^8+264*t^10-16*t^12.
+The accompanying Fraction checker solves and verifies the exact polynomial
+identity for each n; no floating point, no fitted coefficients. This is PAPER
+algebra evidence, not Lean certification. Gaussian-polynomial integrability
+then bounds the L2 residual on every [-sqrt(m),sqrt(m)] by A_n/m^2, where A_n
+is pi^(-5/4)*||exp(-t^2)*R_n(t)||_L2(dt) on the whole line. The physical
+flux coefficient 1-x^2/m vanishes at both endpoints for this smooth function;
+membership in the project's particular spectral operator domain must still
+be established, not inferred solely from this flux observation.
+
+### Why the stronger residual matters, and the exact remaining entrance
+
+Suppose a separately proved spectral theorem supplies, on the same window,
+a rank-one spectral projection onto the intended selected even branch, and
+uniform distance delta>0 from e_n+beta_n/m to every OTHER eigenvalue of L_m.
+Projection of u_nm then has L2 error O(m^(-2)). This is a CONDITIONAL mechanism;
+the isolation and branch match are not proved here and may not be imported
+from htheta, which was itself derived from hmode.
+
+A naive Fourier upgrade of the O(m^(-1)) difference from D loses sqrt(lambda),
+where lambda=sqrt(m), and gives only O(m^(-3/4)). Instead split the projected
+function as u_nm plus its O(m^(-2)) projection error. The latter contributes
+O(m^(-7/4)) by Cauchy-Schwarz on a window of length 2*sqrt(m); the explicit
+Q_n correction contributes O(m^(-1)) because its whole-line L1 norm is finite.
+The omitted Gaussian-polynomial tails are exponentially small. A Fourier
+pairing with D_n, using its nonzero squared norm, gives chi=1+O(m^(-1)) from
+L2 closeness, so division by chi is eventually legal; it does not need hchi
+as an extra premise. Uniform control at the center then permits the existing
+center-normalization transfer. This is a proposed PAPER completion route,
+not an established hmode theorem.
+
+Negative controls: no spectral separation leaves the projection error
+uncontrolled; the wrong eigenvalue index does not identify our selected mode;
+an arbitrary scalar multiple violates the fixed center target. The corrected
+quasimode discriminates these issues but does not solve them.
+
+Next bounded joint: inspect existing classical even Jacobi/Ferrers spectral
+results for the uniform scaled isolation and branch identification, with the
+trial u_nm's operator-domain membership explicit. Do not add further wrappers
+that merely assume hmode. Finite CCM ground is a different object from this
+analytic prolate spectral branch. PX_RH_CLAIM: NOT_MADE.
+
+Independent recovery_review approved the exact algebra and residual bound,
+and explicitly retained operator-domain, spectral-branch, normalization and
+Fourier-defect obligations. The quasimode itself is not a Fourier eigenfunction.
+Checker SHA256: fa623ef35c66cd778b35400318bcdde502941c9b5b9090f64be09a7aebc8c1cf.

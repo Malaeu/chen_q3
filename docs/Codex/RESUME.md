@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 335
-observed_at: '2026-09-22T12:07:25.935812+00:00'
-previous_sha256: f601f014b3168f50ed1564db0cf438b38bad393d6582cc0afbc690f39cd82e86
+revision: 336
+observed_at: '2026-09-22T12:11:26.891394+00:00'
+previous_sha256: e3bee38e33bc79a9c834b88c067e6a76b238f44868fe0f62a00242fd4c8b71d2
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-q3_check exit0 on SHA83a4bb5ee70b2b523aeccedf6f482a8b8887b7f95f30a3d4eb563be915adcfbd: selected_theta_rate_of_mode_rate derives actual shared htheta from hmode; selected_projection_tail_of_mode_rate invokes W5 with explicit hFamily; selected_locally_uniform_xi_of_mode_rate invokes N2 for the exact constructed analytic shell on centeredCriticalStrip. All conditional on unproved hmode. No production admission or RH claim.
+Primary MS1954 p243 rendered and read; raw gamma^-3/4 with gamma^1/4 prefactor matches normalized gamma^-1. Exact Fraction checker derives Q0,Q4 and residual R/(pi*m^2), beta0=-3/4,beta4=-43/4, Q(0)=0. Gaussian L2 residual bound and weighted endpoint flux confirmed independently as PAPER evidence. Prior isolated Lean hmode=>hchi,htheta=>W5/N2 remains conditional.
 
 ## Next action
-Actual hmode now implies hchi and htheta and directly feeds isolated W5/N2 consumers. Audit/prove the exact full-window center-anchored O(1/(k+2)) hmode supplier for selected branches, without circular spectral-rate assumptions. Dunster truncated logarithmic envelope is PARTIAL. Family crosswalk, finite-ground tracking and zero-freeness remain separate; production edge unbound.
+Exact first quasimode correction for modes0/4 gives full-window L2 residual O(m^-2), independently PAPER-reviewed. Audit the analytic prolate self-adjoint domain and uniform scaled spectral isolation/selected-branch match; keep explicit correction separate in Fourier upgrade to avoid sqrt(lambda) loss. hmode remains unproved. No production edge or finite CCM ground identification.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
