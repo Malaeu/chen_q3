@@ -1422,3 +1422,26 @@ oleans used, preexisting UnicodeBasic warning retained. No uniform-in-m rate
 or general form-core density proved. Next: actual-source polynomial form-norm
 approximation, preserving the separate full form-core/spectral gap obligations.
 No production admission or Proshka send. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked convergence of source and kinetic form errors
+
+Form approximation candidate SHA256 44182c9760f705bdbaee2bc6019e9e8f7c076854135669fece51c0b79e831ffa.
+uniform_square_error_integral_tendsto proves a quantitative uniform-to-integral
+bound. Its generic version concerns totalized integrals; source applications
+must supply integrability separately. weighted_derivative_error_integrable
+explicitly proves continuity/integrability of each kinetic error using the
+continuous weighted tsum. The source error is also genuinely integrable:
+absolute coefficient summability gives continuous source series and finite
+term sums are continuous. A direct source-error integrability declaration
+remains useful for subsequent consumers.
+
+source_form_error_tendsto proves that the sum of the source L2 error and
+integral(1-x^2)*(partial derivative sum-actual derivative series)^2 tends to
+zero, retaining absolute and weighted coefficient summability. This is a
+fixed-source result; finite expressions are still term sums. Identification
+as evaluation and derivative of a single even polynomial, selected-carrier
+hypothesis specialization and full natural form-core density remain separate.
+Canonical q3_check exit0, standard axioms; independent exact-hash review
+approved with the generic-integral qualification above. Existing oleans and
+preexisting UnicodeBasic warning retained. No spectral/operator-domain or
+hmode admission; no Proshka send. PX_RH_CLAIM NOT_MADE.

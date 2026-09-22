@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 349
-observed_at: '2026-09-22T12:56:07.405470+00:00'
-previous_sha256: f0fa87e6d38b426aaa6f5324a9e85739b49982b8151545a163fa8a27f94ebae6
+revision: 350
+observed_at: '2026-09-22T13:00:10.421181+00:00'
+previous_sha256: bc99edc02b07936445ad356624111118630f4aabbe6631c85ed771c12a191947
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Form approximation candidate SHAf9198997da29173fe8d51161181cfc26c83d902a2b40de9fbd1fddd23ba887c4, q3_check exit0. Legendre energy gives weighted derivative term bound 4*(q+1)*abs(a_q); existing exact tail-splice theorem supplies summability, yielding uniform convergence on closed interval including endpoints. No uniform-in-m rate, general form-domain density, or hmode claim.
+Form approximation candidate SHA44182c9760f705bdbaee2bc6019e9e8f7c076854135669fece51c0b79e831ffa, q3_check exit0. Uniform-square-error integral convergence proved quantitatively, weighted error integrability separately established by continuous weighted tsum. Source uniform convergence plus kinetic error yields genuine form-error convergence under explicit absolute and weighted coefficient summability; no operator-domain or hmode admission.
 
 ## Next action
-Lean proves uniform convergence of sqrt(1-x^2)-weighted Legendre derivative partial sums for exact tail-spliced Ferrers source under explicit hm,hK,hsep,Lambda<=20. Next derive actual source form-norm polynomial approximation and map the hypotheses to selected carriers; full natural form-core/spectral projection remains open. Proshka packet remains unsent.
+Lean source_form_error_tendsto now proves source L2 error plus weighted derivative energy error tends to zero for Legendre term partial sums. Next identify these sums as evaluation/derivative of one actual even polynomial, specialize all tail assumptions to selected carriers, and connect the form closure. General natural form-core/minmax/gap remain open; Proshka packet unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

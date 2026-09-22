@@ -1,4 +1,4 @@
-lean /tmp/Q3FerrersFormApprox.lean
+lean /tmp/Q3FerrersFormEnergy.lean
 warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
 'Q3FerrersFormApprox.weighted_derivative_partial_sums_uniform' depends on axioms: [propext,
  Classical.choice,
@@ -6,5 +6,11 @@ warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.
 'Q3FerrersFormApprox.actual_source_weighted_derivative_partial_sums_uniform' depends on axioms: [propext,
  Classical.choice,
  Quot.sound]
-scan /tmp/Q3FerrersFormApprox.lean
+'Q3FerrersFormApprox.uniform_square_error_integral_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3FerrersFormApprox.weighted_derivative_error_energy_tendsto' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Q3FerrersFormApprox.weighted_derivative_error_integrable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3FerrersFormApprox.source_form_error_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]
+scan /tmp/Q3FerrersFormEnergy.lean
 q3_check ok
