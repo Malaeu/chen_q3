@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 318
-observed_at: '2026-09-22T10:18:46.356149+00:00'
-previous_sha256: 167a789b2802fd0808588878cd53bb54574e6cad08022bbcd1175c6166d7d759
+revision: 319
+observed_at: '2026-09-22T10:31:44.324017+00:00'
+previous_sha256: 022312ed160ec25c2d671db29ad6dbbdf4fc30d5389ab3564f650bd926e3a947
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Owner-supplied Fokas review archived unchanged (raw SHA256 10b6446e51a48e43e1808d6d8fe1024b46063f8edea14ae8809dd52bc9f4e098). Reviewed note and search brief independently checked by /root/recovery_review; bounded measurability and s!=1 caveats included. q3_docs incremental refresh exit 0; vsearch finds reviewed note first. No proof node closed.
+Fokas raw intake committed at 82bd8329. New PAPER report docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md derives exact R_m=lambda^(-s) Rminus(h,lambda,s-1/2), Lipschitz and stronger signed Euler-summation bounds. Independent recovery_review checked signs, endpoints, scaling; parent ran 888 exact Fraction polynomial checks. Whole-row bound E_mN and relative normalization requirement E_mN/Z recorded. These do not establish actual Ferrers family rates or ground tracking. No node closed.
 
 ## Next action
-Continue active native goal with Proshka. Use saved Fokas brief for registered exact shelf and three-dictionary semantic discovery on paired window remainder. Inspect returned MuntzV3/Unconditional.lean continued_window_identity_unconditional_mellin as candidate, not exact fit. Verify external contour theorem and pin weakest exact consumer before production dispatch. Recover original ZIP from existing chat without fabricating reported 18 controls. Prepare one source-locked .txt for same owner-identified living chat when bounded request is ready.
+Obtain actual scaled selected Ferrers packet endpoint A_m and second-derivative L1 budget D_m, or sharper signed substitute, from mode equations. Existing selectedProjectionTailDecay_of_selectedFerrersFirstOrderBudget requires mode/chi rates, log derivative budget, inverse scale and exact family crosswalk: conditional, not supplied. Pin same normalization and E_mN/Z before connecting bulk vector to Goal058 consumer. Bounded Proshka request should target this derivative/error transfer, not request the already derived Rminus identity again. Existing living chat remains user identified; review-plan/binding required before new dispatch.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
@@ -106,7 +106,7 @@ Owner recovery instruction: "Я твой владелец, и я тебе гов
 Retired assignment (outcome UNKNOWN): {"command": "agent-launch", "evidence": [], "id": "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916", "inputs": {"orchestrator/team_records.py": "2dfae6880df1e83b7722a9542cae4a6ff51c02d3f28f047255159c386f362a3a", "orchestrator/tests/test_workflow_runtime.py": "7e3e2ffcff6ee77e3444955ec114492b4d74a57fdf4af467e6ab69efea82ca8a"}, "kind": "ASSIGN", "state": "UNKNOWN", "subject": {"id": "ASSIGNMENT_SELECTOR_PLAN2_20260916", "kind": "ASSIGNMENT", "sha256": "cdfe7cad598604bff0354eee2d131f0375607e6bd74c8d2ea037606516bafa19"}}
 
 ## Do not repeat
-Do not replay prior owner recovery, retired September16 launch or old repairs. Do not repeat unchanged ingest or q3_docs refresh; reuse archived retrieval.json until corpus changes. Raw ZIP remains NOT_RETRIEVED. Do not confuse cache/source/ground; residual divides by valid separation. No RH promotion or discarded history.
+Do not replay owner recovery, old launch or previous ingest. Rminus scale crosswalk and Euler identity are already paper-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf returned INCOMPLETE on semantic freshness; not absence. Original ZIP NOT_RETRIEVED; historical request/phase pins unchanged.
 
 ## Integration remaining
-Research intake is documentation only; original ZIP bytes and full contour-hypothesis audit remain open. Current user-identified chat: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6aafb38a-a7a4-83eb-9940-84a574eae168 . This observation does not rewrite historical request/phase pins. Native app goal ACTIVE; native watch still unverified. Continue synchronous owner-authorized work.
+New report remains research evidence, not Lean admission. Check final report review, save named-path commit and publication through applicable guards. HEAD observed 6abd36e1 includes Hermes corrected ZINGER draft (not ours; do not overwrite). No new Proshka send. Production exact edge remains UNBOUND. Native goal ACTIVE; watch unverified. All RH premises remain subject to full proof audit.
