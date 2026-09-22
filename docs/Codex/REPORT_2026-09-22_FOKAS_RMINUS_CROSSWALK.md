@@ -678,3 +678,38 @@ apply hmode to its overlap denominator and two numerator integrals.
 The selected hmode->htheta implication remains PAPER until this connection
 and quantitative estimates are checked. hmode itself, finite-ground matching
 and off-line zero-freeness remain open. PX_RH_CLAIM: NOT_MADE.
+
+## Signed weak theta identity and quantitative pairing bound
+
+Candidate SHA256 42f590750f457d759c95c86f91952717d9964c93f1f4930a7aa9dcebc3edbccf.
+compact_theta_defect_identity proves, over complex bilinear interval integrals,
+
+  (theta-e*m) integral(f*phi)
+    = m integral((f-D)*(-ddphi+(V-e)*phi)) + integral(f*T).
+
+Its premises are continuous f,D,phi,ddphi,V,T on the compact interval, the
+weak ODE identity integral(phi*(m*V-theta)*f)=integral(f*(m*ddphi-T)),
+and target orthogonality integral(D*(-ddphi+(V-e)*phi))=0. Both signs and
+scaling are explicit; all integral linearity premises follow from continuity.
+ddphi is an arbitrary supplied function at this level, not silently declared
+to be a derivative. For p=m-x^2 the intended T is x^2*phi''+2*x*phi'.
+
+The separate theta_defect_bound_from_weak_pairing proves
+|theta-e*m| <= 2*(A+B)/J from m>0,J>0, the signed pairing identity,
+J/2<=norm(I), norm(U)<=A/m and norm(V)<=B. I,U,V may be complex;
+no real-phase assumption is made. A,B nonnegativity need not be extra
+premises because the norm upper bounds already imply it. The denominator
+floor remains explicit until obtained from hmode and the fixed test.
+
+Canonical q3_check exit0; all29 printed dependency lists standard only.
+Independent recovery_review approved signs/scaling, denominator conditions,
+absence of circular theta estimate, final source and hash. Current dependency
+oleans used; preexisting UnicodeBasic and style warnings remain. No production
+admission or fresh-clone proof claim.
+
+Remaining actual-source obligations: construct the fixed test, discharge its
+boundary/derivative facts and target orthogonality from Green and oscillator
+ODE, instantiate the normalized selected-mode weak ODE, and derive the
+uniform numerator estimates/overlap floor from hmode. The eventual selected
+htheta statement is NOT yet proved. hmode, finite-ground connection and
+off-line zero-freeness remain open. PX_RH_CLAIM: NOT_MADE.

@@ -719,4 +719,71 @@ theorem target_four_oscillator (x : ℝ) :
 
 #print axioms target_zero_oscillator
 #print axioms target_four_oscillator
+theorem compact_theta_defect_identity
+    (a b : ℝ) (m θ e : ℂ) (f D φ ddφ V T : ℝ → ℂ)
+    (hf : ContinuousOn f (uIcc a b)) (hD : ContinuousOn D (uIcc a b))
+    (hφ : ContinuousOn φ (uIcc a b)) (hddφ : ContinuousOn ddφ (uIcc a b))
+    (hV : ContinuousOn V (uIcc a b)) (hT : ContinuousOn T (uIcc a b))
+    (hweak : (∫ x in a..b, φ x * ((m*V x-θ)*f x)) =
+      ∫ x in a..b, f x*(m*ddφ x-T x))
+    (horth : (∫ x in a..b, D x*(-ddφ x+(V x-e)*φ x)) = 0) :
+    (θ-e*m)*(∫ x in a..b, f x*φ x) =
+      m*(∫ x in a..b, (f x-D x)*(-ddφ x+(V x-e)*φ x)) +
+      ∫ x in a..b, f x*T x := by
+  have hfp := (hf.mul hφ).intervalIntegrable (μ := volume)
+  have hfv := ((hf.mul hV).mul hφ).intervalIntegrable (μ := volume)
+  have hfd := (hf.mul hddφ).intervalIntegrable (μ := volume)
+  have hft := (hf.mul hT).intervalIntegrable (μ := volume)
+  have hA : ContinuousOn (fun x => -ddφ x+(V x-e)*φ x) (uIcc a b) :=
+    hddφ.neg.add ((hV.sub continuousOn_const).mul hφ)
+  have hfa := (hf.mul hA).intervalIntegrable (μ := volume)
+  have hda := (hD.mul hA).intervalIntegrable (μ := volume)
+  have hl : (fun x => φ x*((m*V x-θ)*f x)) =
+      (fun x => m*(f x*V x*φ x)-θ*(f x*φ x)) := by funext x; ring
+  have hr : (fun x => f x*(m*ddφ x-T x)) =
+      (fun x => m*(f x*ddφ x)-f x*T x) := by funext x; ring
+  rw [hl,hr,intervalIntegral.integral_sub (hfv.const_mul m) (hfp.const_mul θ),
+    intervalIntegral.integral_sub (hfd.const_mul m) hft,
+    intervalIntegral.integral_const_mul,intervalIntegral.integral_const_mul,
+    intervalIntegral.integral_const_mul] at hweak
+  have herr : (∫ x in a..b, (f x-D x)*(-ddφ x+(V x-e)*φ x)) =
+      -(∫ x in a..b, f x*ddφ x)+(∫ x in a..b, f x*V x*φ x)-
+        e*(∫ x in a..b, f x*φ x) := by
+    have hex : (fun x => (f x-D x)*(-ddφ x+(V x-e)*φ x)) =
+        (fun x => f x*(-ddφ x+(V x-e)*φ x)-D x*(-ddφ x+(V x-e)*φ x)) := by
+      funext x; ring
+    rw [hex,intervalIntegral.integral_sub hfa hda,horth,sub_zero]
+    have heq : (fun x => f x*(-ddφ x+(V x-e)*φ x)) =
+        (fun x => - (f x*ddφ x) + f x*V x*φ x-e*(f x*φ x)) := by
+      funext x; ring
+    have hneg : IntervalIntegrable (fun x => -(f x*ddφ x)) volume a b := hfd.neg
+    have hsum : IntervalIntegrable (fun x => -(f x*ddφ x)+f x*V x*φ x) volume a b :=
+      hneg.add hfv
+    rw [heq,intervalIntegral.integral_sub hsum (hfp.const_mul e),
+      intervalIntegral.integral_add hneg hfv,intervalIntegral.integral_neg,
+      intervalIntegral.integral_const_mul]
+  rw [herr]
+  linear_combination -hweak
+
+#print axioms compact_theta_defect_identity
+theorem theta_defect_bound_from_weak_pairing
+    (m θ e J A B : ℝ) (I U V : ℂ)
+    (hm : 0 < m) (hJ : 0 < J)
+    (hidentity : (((θ-e*m : ℝ) : ℂ))*I = (m:ℂ)*U+V)
+    (hfloor : J/2 ≤ ‖I‖) (hU : ‖U‖ ≤ A/m) (hV : ‖V‖ ≤ B) :
+    |θ-e*m| ≤ 2*(A+B)/J := by
+  have hn : |θ-e*m| *‖I‖ ≤ A+B := calc
+    |θ-e*m| *‖I‖ = ‖(((θ-e*m : ℝ) : ℂ))*I‖ := by
+      rw [norm_mul,Complex.norm_real,Real.norm_eq_abs]
+    _ = ‖(m:ℂ)*U+V‖ := congrArg norm hidentity
+    _ ≤ ‖(m:ℂ)*U‖+‖V‖ := norm_add_le _ _
+    _ = m*‖U‖+‖V‖ := by
+      rw [norm_mul,Complex.norm_real,Real.norm_eq_abs,abs_of_pos hm]
+    _ ≤ m*(A/m)+B := add_le_add (mul_le_mul_of_nonneg_left hU hm.le) hV
+    _ = A+B := by field_simp
+  apply (le_div_iff₀ hJ).mpr
+  have hh := mul_le_mul_of_nonneg_left hfloor (abs_nonneg (θ-e*m))
+  nlinarith
+
+#print axioms theta_defect_bound_from_weak_pairing
 end Q3OverlapProbe

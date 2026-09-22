@@ -56,5 +56,7 @@ Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
 'Q3OverlapProbe.compact_flux_green' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.target_zero_oscillator' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.target_four_oscillator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.compact_theta_defect_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.theta_defect_bound_from_weak_pairing' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

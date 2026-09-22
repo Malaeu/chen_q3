@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 330
-observed_at: '2026-09-22T11:26:42.503902+00:00'
-previous_sha256: b0621c916672ba4bd003abaf126a8bb0629e25e700c1d46759251962b6893bb3
+revision: 331
+observed_at: '2026-09-22T11:33:12.377679+00:00'
+previous_sha256: fa755052037d93ed3e16ae5ccb247eb73d14d6e34747d73e65e910a11c91b77f
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Existing actual ODE supplier needs only Ferrers solution, m>=2 and interior point; no derivative-error bound. New compact_flux_green proves bilinear interval reciprocity by two IBPs with explicit regularity and zero test boundary values. target_zero_oscillator/target_four_oscillator bind literal target functions to existing ctW derivatives/eigenrelations. q3_check/review passed for candidate. No actual selected htheta instance claimed; selected hmode->hchi and W5 reduction remain checked.
+Kernel-checked signed weak defect identity over complex bilinear interval integrals, with continuous inputs, explicit weak-ODE and orthogonality premises; quantitative real theta bound retains explicit overlap and numerator conditions. No selected htheta proved. Earlier selected hmode->hchi and direct W5 consumption without hchi remain checked. All changes isolated candidate, production unbound.
 
 ## Next action
-Continue hmode->htheta via compact test: compact_flux_green kernel-checked, actual target oscillator equations connected. Use actual-source normalizedPhysicalMode_prolateWaveExpression_eigenrelation or sturm_mode_flux_hasDerivAt; normalize/scalar-transport onto fixed compact and instantiate phi=(1-x^2)^3 D on [-1,1]. Derive exact weak identity then overlap lower bound and defect estimate. htheta still PAPER, hmode open, hFamily/ground separate.
+Continue actual-mode compact Green instantiation and concrete test phi=(1-x^2)^3 D. New signed compact_theta_defect_identity derives exact defect from weak ODE and target orthogonality; quantitative theta_defect_bound_from_weak_pairing gives bound once overlap floor/numerator estimates are supplied. Those source/estimate premises remain to discharge using hmode, not assume as htheta. hmode open, hFamily/ground separate.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
