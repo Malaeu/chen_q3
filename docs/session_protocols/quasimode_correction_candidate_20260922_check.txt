@@ -1,0 +1,21 @@
+lean /tmp/Q3QuasimodeCorrection.lean
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
+/tmp/Q3QuasimodeCorrection.lean:18:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:24:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:30:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/tmp/Q3QuasimodeCorrection.lean:36:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'Q3QuasimodeCorrection.correction_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.correction_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.residual_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.residual_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3QuasimodeCorrection.center_corrections' depends on axioms: [propext, Classical.choice, Quot.sound]
+scan /tmp/Q3QuasimodeCorrection.lean
+q3_check ok

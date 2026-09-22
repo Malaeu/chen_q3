@@ -1240,3 +1240,25 @@ phase overwrite, queue claim, Answer now or duplicate request was made.
 Next: reconcile registered phase transition/close route with the authorized
 user-selected living chat before upload. Continue substantive isolated Lean
 work if this transport route remains unavailable. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked polynomial quasimode corrections
+
+Isolated candidate: docs/session_protocols/quasimode_correction_candidate_20260922.lean
+SHA256 7a00745fa1a0ee6f9e5e8dcbc90f8951a0b2ada5268052f2d8cc7a18132221e0.
+Five real polynomial theorems certify the exact first-order cancellations,
+residual polynomials and center values previously checked with Fraction.
+A_n=-P''+4X P'-4nP and T=X^2 P''+(2X-4X^3)P'+(4X^4-6X^2)P.
+The positive3/4 and43/4 terms subtract the negative beta values correctly.
+Canonical q3_check exit0; only propext, Classical.choice, Quot.sound;
+independent reviewer matched coefficients and exact hash. Current dependency
+oleans used, preexisting UnicodeBasic/style warnings retained. No production
+admission. Gaussian derivative conjugation and the physical O(m^-2) residual
+remain PAPER until connected; this is not hmode certification.
+
+Transport audit: spine.record_observed_bridge_transition explicitly supports
+only the fixed historical2026-09-10 BRIDGE event, not future transitions.
+The separate SLACK repair is likewise historical. Neither was invoked for
+this new packet. No generic phase transition was established by this bounded
+inspection, and no policy/state rewrite or new send occurred. Continue with
+substantive isolated formalization while preserving the frozen review packet.
+PX_RH_CLAIM NOT_MADE.
