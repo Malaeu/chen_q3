@@ -1484,3 +1484,29 @@ separate. Canonical q3_check exit0, standard axioms; independent exact-hash
 review approved index, schedule, witness and quantifier mapping. Existing
 oleans and preexisting UnicodeBasic warning retained. No production admission
 or Proshka send. PX_RH_CLAIM NOT_MADE.
+
+## Live publication audit: remote unchanged, result-selection defect unresolved
+
+Observed at local HEAD10c20237: git ls-remote origin refs/heads/rh_clean returns
+82bd8329be545b18597119cb1da7eefb12b87cb3; local branch is36 commits ahead and
+remote is an ancestor. Tracked worktree/index are clean; three previously
+identified foreign untracked paths remain untouched. No pull/merge is needed
+to acquire newer remote commits at this observation. Local candidate commits
+have not been pushed; synchronization is not complete.
+
+Current CODEX_CONTROL section10 compact publication requires map intake,
+reservation, guarded publication and confirmation. The existing issue
+issue-ce0cf9748879a4f5af39e9c2be88f35d1684f32d0c2c60509721a373e053d528
+is still ASSIGNED and affects publication. _team_publication_snapshot rejects
+that state with TEAM_DEPENDENT_OPERATION_HELD; direct unregistered push would
+bypass the project gate. This is not an owner-permission deficiency.
+
+Live team_records.py validate_issue_event_actor still selects the first sorted
+actor/role assignment before validating exact supplied result evidence, in
+both implementer and independent branches. Independent read-only reviewer
+confirmed the issue/gate/code finding (parent alone checked remote counts).
+No repair, reservation or push attempted. Next reconcile the existing repair
+plan and reproduce the exact defect in isolation before the scoped repair
+workflow. Mathematical source approximation stays checked locally; natural
+form/operator/minmax, cofinal ground and hmode obligations remain open.
+PX_RH_CLAIM NOT_MADE.

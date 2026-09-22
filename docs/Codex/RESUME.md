@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 352
-observed_at: '2026-09-22T13:05:49.453585+00:00'
-previous_sha256: e15061edbda68bffeb1a8278a646e2c7e78f3137115f17ef99bbb054c5099e40
+revision: 353
+observed_at: '2026-09-22T13:07:59.994900+00:00'
+previous_sha256: e4d9d152438adfa6414efb1132f0c1d1e68d46a7a849be12ac52ef232498c90e
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Form approximation candidate SHA5be4f1cb175e3aa53f62f1257a5896a1302c6a7781d5c246b9299c1053573b2f, q3_check exit0. selected_zero_four_form_approximation uses exact selected solutions (p=0 and p=2), m=k+2,K=5(k+2), existing separation and classical eigenvalue<20. No unproved weighted summability premise remains in this corollary. No source normalization change or full form-domain/hmode claim.
+Live ls-remote confirmed remote82bd8329be545b18597119cb1da7eefb12b87cb3; git merge-base confirms ancestor, tracked tree clean. Selector bug still present in team_records.py validate_issue_event_actor loops and issue-ce0cf974 remains ASSIGNED. _team_publication_snapshot rejects publication while this issue remains unresolved. All latest mathematical candidates remain local, selected form approximation checked; no synchronization or RH completion claim.
 
 ## Next action
-Lean now proves polynomial form-error convergence for both actual selected preanchor Ferrers modes at every fixed k, discharging all tail/separation/eigenvalue budget premises. Next connect the polynomial closure to natural form/operator domain and minmax; n-to-infinity at fixed k is not the missing cofinal spectral/hmode rate. Proshka packet remains unsent.
+Publication audit found origin/rh_clean still82bd8329 and local HEAD10c20237 ahead36, no divergence. Compact publication is held by existing ASSIGNED assignment-result-evidence-selection defect; current actor validation still selects first actor/role match before exact result evidence. Next reconcile the existing selector repair plan and reproduce the exact result-selection defect in isolation, then use its scoped repair path before publication; do not direct-push around registered gate. Proshka packet unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.
