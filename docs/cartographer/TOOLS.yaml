@@ -29,6 +29,8 @@ team_runtime_writer_inventory:
     - workflow-team-watch-intent
     - workflow-team-integrate-candidate
     - workflow-team-bootstrap-publish
+    - workflow-team-recover-unreserved
+    - workflow-team-recovery-review
     - slack-manual-chat-reconciliation
   inherited_only:
     - atom-describe
@@ -994,6 +996,56 @@ tool_families:
         validation: test_workflow_runtime integration plants; exact assignment/review/base/preimage checks, durable readback and same-intent replay
         notes: Recovery uses --recover-operation <id> from the same pinned engine and the durable private manifest. Only pending copies may recover; completed replay verifies bytes and never reapplies them. No network, commit or push in this transaction.
         last_verified: 2026-09-11
+
+      - id: workflow-team-recover-unreserved
+        classification: MANUAL
+        status: ENABLED
+        audience: [HUMAN, CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 <committed-engine>/orchestrator/workflow_runtime.py --root <canonical> team-recover-unreserved --candidate <manifest.json> --expected-sha256 <hash>
+        trigger: Sole owner recovers one proven unreserved launch using an exact migration manifest.
+        writes: true
+        write_paths: [CONTROL13_RECOVERY_EXACT_FILES, GIT_COMMON_DIR/q3_team_local.v1, GIT_COMMON_DIR/objects/**]
+        approval: EXISTING_SCOPED_OWNER_GRANT_PLUS_NONAUTHOR_OPERATIONAL_REVIEW_OR_REAL_OWNER_SIGNOFF
+        authority: ONE_OPERATION_CONTROL12_TO13_RECOVERY_NOT_PROOF_OR_PUBLICATION
+        records_to: [exact migration destinations, private integration fence and recovery receipt]
+        last_verified: 2026-09-22
+        validation: python3 -m unittest orchestrator.tests.test_control13_recovery -v
+        notes: Default read-only. Execute binds the recorded scoped owner instruction and a non-author exact-candidate operational review, or an actually supplied exact owner signoff. No fabricated human manifest approval. Recovery uses the same saved authorization and engine; no network or Git delivery.
+
+      - id: workflow-team-recovery-review
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: WRITES_CANONICAL
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 <committed-engine>/orchestrator/workflow_runtime.py --root <canonical> team-recovery-review <prepare|reserve|launch-permit|observe>
+        trigger: Existing scoped owner instruction requires a distinct read-only reviewer before exact Control13 activation.
+        writes: true
+        write_paths: [GIT_COMMON_DIR/q3_team_local.v1, GIT_COMMON_DIR/objects/**]
+        approval: EXISTING_SCOPED_OWNER_GRANT_READ_ONLY_OPERATIONAL_REVIEW_NOT_FIX_VERIFIED
+        authority: ONE_REVIEW_SIDE_TRANSACTION_NO_REPLACEMENT_OF_OLD_INTENT
+        records_to: [private integration fence, exact native launch/result artifacts]
+        last_verified: 2026-09-22
+        validation: python3 -m unittest orchestrator.tests.test_control13_recovery -v
+        notes: Reserve and durably consume one launch permit; host calls real native read-only provider. Never replay unknown launch. No source writes, proof admission, old-operation replacement or push. Review output cannot satisfy native repair lifecycle.
+
+      - id: workflow-team-recovery-delivery-plan
+        classification: AUTOMATIC
+        status: ENABLED
+        audience: [CODEX, HUMAN]
+        mode: READ_ONLY
+        path: orchestrator/workflow_runtime.py
+        invoke: python3 orchestrator/workflow_runtime.py team-recovery-delivery-plan --candidate-commit <C> --implementer <I> --reviewer <V> --next-check <timestamp>
+        trigger: Completed named migration needs R2/H/C8 assignments and exact 23-path delivery prefix.
+        writes: false
+        approval: NONE
+        authority: READ_ONLY_EXACT_REQUEST_PLAN_NOT_NATIVE_EFFECT_OR_ADMISSION
+        records_to: [stdout only]
+        last_verified: 2026-09-22
+        validation: python3 -m unittest orchestrator.tests.test_control13_recovery -v
+        notes: Does not dispatch, grant publication or mark FIX_VERIFIED. Fresh registered remote observation remains mandatory.
 
       - id: workflow-close-node
         classification: AUTOMATIC

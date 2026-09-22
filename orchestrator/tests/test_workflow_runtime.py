@@ -5920,7 +5920,7 @@ class TeamRuntimeTests(unittest.TestCase):
             (str(workflow_runtime.RESUME_HISTORY_PATH), lambda b: b.replace(b"q3_resume", b"x3_resume", 1)),
             (str(workflow_runtime.RESUME_PATH), lambda b: b.replace(b"previous_sha256: ", b"previous_sha256: 0", 1)),
             (fixture["record"], lambda b: b + b"undeclared change\n"),
-            ("docs/CODEX_CONTROL.md", lambda b: b.replace(b"CONTROL_VERSION: 12", b"CONTROL_VERSION: 10").replace(b"CONTROL_VERSION: 11", b"CONTROL_VERSION: 10")),
+            ("docs/CODEX_CONTROL.md", lambda b: b.replace(b"CONTROL_VERSION: 13", b"CONTROL_VERSION: 12").replace(b"CONTROL_VERSION: 12", b"CONTROL_VERSION: 10").replace(b"CONTROL_VERSION: 11", b"CONTROL_VERSION: 10")),
         ):
             with self.subTest(path=relative):
                 path = self.repo / relative
@@ -6983,7 +6983,7 @@ class TeamRuntimeTests(unittest.TestCase):
         (destination / "zz-integration-target.txt").write_bytes(b"old target\n")
         full_control = (destination / "docs/CODEX_CONTROL.md").read_bytes()
         if migrate_control:
-            (destination / "docs/CODEX_CONTROL.md").write_bytes(full_control.replace(
+            (destination / "docs/CODEX_CONTROL.md").write_bytes(full_control.replace(b"CONTROL_VERSION: 13\n", b"CONTROL_VERSION: 12\n").replace(
                 b"CONTROL_VERSION: 12\n", b"CONTROL_VERSION: 10\n").replace(b"CONTROL_VERSION: 11\n", b"CONTROL_VERSION: 10\n"))
         git(destination, "add", ".")
         git(destination, "commit", "-qm", "Integration destination baseline")
@@ -7526,7 +7526,7 @@ class TeamRuntimeTests(unittest.TestCase):
         seed, remote, owner = root / "seed", root / "remote.git", root / "owner"
         owner_id = "01a084f4-7498-7021-bac2-91d184d58dc7"
         full_control = (Path(__file__).resolve().parents[2] / "docs/CODEX_CONTROL.md").read_text()
-        old_control = full_control.replace("CONTROL_VERSION: 12\n", "CONTROL_VERSION: 10\n").replace("CONTROL_VERSION: 11\n", "CONTROL_VERSION: 10\n").replace(
+        old_control = full_control.replace("CONTROL_VERSION: 13\n", "CONTROL_VERSION: 12\n").replace("CONTROL_VERSION: 12\n", "CONTROL_VERSION: 10\n").replace("CONTROL_VERSION: 11\n", "CONTROL_VERSION: 10\n").replace(
             "TEAM_RUNTIME_VERSION: 1\n", "")
         full_tools = (Path(__file__).resolve().parents[2] / str(workflow_runtime.TOOLS)).read_bytes()
         old_tools = (
@@ -9682,6 +9682,77 @@ class TeamRecordsTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_AGENT_BINDING_INVALID"):
             team_records.validate_report_provenance(self.report(), registry, broken)
+
+    def selector_fixture(self, role="independent-checker", old_id="A_OLD", current_id="Z_CURRENT", old_state="launch"):
+        from dataclasses import replace
+        current = self.provenance_assignment(role=role)
+        current["assignment_id"] = current_id
+        old = self.provenance_assignment(role=role)
+        old["assignment_id"] = old_id
+        raw = b"legacy assignments\n"
+        for assignment in (old, current):
+            raw, _ = team_records.prepare_assignment(raw, assignment, hashlib.sha256(raw).hexdigest())
+        rows = team_records.read_registry(raw, "assignments")
+        raw, _ = team_records.prepare_report(b"legacy issues\n", self.report(), hashlib.sha256(b"legacy issues\n").hexdigest())
+        issues = team_records.read_registry(raw, "issues")
+        ctx = self.provenance_context(current)
+        old_ctx = self.provenance_context(old, report=self.report(actual="different old output"))
+        old_obs = old_ctx.observations[old_id]
+        if old_state == "launch":
+            old_obs = old_obs[:1]
+        elif old_state == "matching":
+            old_obs = self.provenance_context(old).observations[old_id]
+        ctx = replace(ctx, observations={**ctx.observations, old_id: old_obs})
+        result = ctx.observations[current_id][1]
+        event = self.transition(issues, "CONFIRMED_BUG" if role == "independent-checker" else "FIX_CANDIDATE",
+            actor="reporter-task", actor_role=role,
+            evidence=[{"locator": result["output_locator"], "sha256": result["output_sha256"]}])
+        return rows, ctx, event, current_id
+
+    def test_exact_result_selection_ignores_unrelated_assignments(self):
+        for role in ("independent-checker", "implementation", "implementer"):
+            for old_state in ("launch", "completed"):
+                for old_id, current_id in (("A_OLD", "Z_CURRENT"), ("Z_OLD", "A_CURRENT")):
+                    with self.subTest(role=role, old_state=old_state, old_id=old_id):
+                        rows, ctx, event, current = self.selector_fixture(role, old_id, current_id, old_state)
+                        if role != "independent-checker":
+                            event["actor_role"] = "implementer" if role == "implementation" else "implementation"
+                        result = team_records.validate_issue_event_actor(event, rows, ctx)
+                        self.assertEqual(result["assignment_id"], current)
+
+    def test_exact_result_selection_rejects_no_match_and_ambiguity(self):
+        import copy
+        for role in ("independent-checker", "implementation"):
+            rows, ctx, event, _ = self.selector_fixture(role)
+            for key, value in (("locator", "wrong/path"), ("sha256", "b" * 64)):
+                with self.subTest(role=role, key=key):
+                    broken = copy.deepcopy(event)
+                    broken["evidence"][0][key] = value
+                    with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_RESULT_EVIDENCE_REQUIRED"):
+                        team_records.validate_issue_event_actor(broken, rows, ctx)
+            rows, ctx, event, _ = self.selector_fixture(role, old_state="matching")
+            with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_RESULT_ASSIGNMENT_AMBIGUOUS"):
+                team_records.validate_issue_event_actor(event, rows, ctx)
+
+    def test_exact_result_selection_does_not_bypass_native_validation(self):
+        import copy
+        from dataclasses import replace
+        mutations = [("owner_task", "wrong-owner"), ("native_agent_id", "wrong-agent"),
+                     ("source_sha256", "b" * 64), ("state", "RUNNING")]
+        for role in ("independent-checker", "implementation"):
+            for key, value in mutations:
+                with self.subTest(role=role, key=key):
+                    rows, ctx, event, current = self.selector_fixture(role)
+                    observations = copy.deepcopy(ctx.observations)
+                    observations[current][1][key] = value
+                    broken = replace(ctx, observations=observations)
+                    with self.assertRaises(team_records.TeamRecordError):
+                        team_records.validate_issue_event_actor(event, rows, broken)
+            rows, ctx, event, current = self.selector_fixture(role)
+            observations = copy.deepcopy(ctx.observations)
+            observations[current].append(copy.deepcopy(observations[current][1]))
+            with self.assertRaisesRegex(team_records.TeamRecordError, "NATIVE_OBSERVATION_DUPLICATE"):
+                team_records.validate_issue_event_actor(event, rows, replace(ctx, observations=observations))
 
     def test_issue_actor_provenance_rejects_spoofed_owner_and_accepts_independent(self):
         assignment = self.provenance_assignment()

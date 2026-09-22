@@ -521,7 +521,7 @@ def _control_identity(control_path: Path) -> ControlIdentity:
     )
 
 
-SUPPORTED_CONTROL_REVISIONS = frozenset({10, 11, 12})
+SUPPORTED_CONTROL_REVISIONS = frozenset({10, 11, 12, 13})
 
 
 def _validate_battle_v10_identity(identity: ControlIdentity) -> ControlIdentity:
@@ -533,7 +533,7 @@ def _validate_battle_v10_identity(identity: ControlIdentity) -> ControlIdentity:
     ):
         raise StartupRuntimeError(
             "BATTLE_V10_CONTROL_INVALID",
-            "expected ACTIVE v10/v11/v12 with CHALLENGER_NOT_RH and owner-only PX_RH_CLAIM",
+            "expected ACTIVE v10/v11/v12/v13 with CHALLENGER_NOT_RH and owner-only PX_RH_CLAIM",
         )
     if identity.version >= 11 and identity.team_runtime_version != 1:
         raise StartupRuntimeError(

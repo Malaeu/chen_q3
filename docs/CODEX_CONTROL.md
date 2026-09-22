@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 12
+CONTROL_VERSION: 13
 TEAM_RUNTIME_VERSION: 1
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
@@ -575,6 +575,91 @@ state before writing or publishing; an offline clone is not fenced by a local lo
 Never claim global exclusion merely from a local epoch change. Ordinary non-force
 Git publication preserves competing remote history and requires reconciliation
 if another writer advanced it.
+
+### Exact unreserved-launch activation and reviewed delivery (revision 13)
+
+This single bounded operational repair is authorized by the already-observed
+owner instruction. Record its actual text/source as a scoped grant; never invent
+human approval of a manifest or request a second blanket consent. The current
+combined candidate is coauthored by Proshka and the actual Codex owner task.
+Every further editor joins `author_ids`. A reviewer must be a distinct nonauthor;
+JSON identities are bindings, not authentication of the underlying native host.
+
+Migration v2 binds EIGHT before/after file rows, including the reviewed version
+fixtures in test_workflow_runtime.py. Preserve the existing TeamRecordsTests
+selector regression class. The old FILE hash is only a preimage, never the final
+target hash. Any candidate change requires a new committed engine and read-only
+prepare; no earlier unactivated candidate or stale review is presumed installed.
+
+For preactivation review only, the clean isolated engine may execute the named
+`team-recovery-review reserve` under the existing scoped grant. It verifies the
+unchanged original checkpoint/private preimage, sources, owner/epoch, fresh
+registered remote observation and one never-reserved old implementation launch.
+It creates a DISTINCT read-only operational-review reservation in the existing
+integration fence; old engines therefore hold all other registered writers.
+It does NOT overwrite the old checkpoint INTENT or register that implementation
+as a reviewer. `launch-permit` rechecks the snapshot and durably consumes exactly
+one native read-only launch attempt. The host uses the returned assignment and
+real provider. Lost/unknown effects reconcile, never relaunch. The prior capacity
+ceiling and reserved reviewer slot still apply; no new child pool or descendants.
+
+Only actual bound LAUNCH and COMPLETED RESULT bytes, the same native agent,
+exact candidate review and nonauthor identities can complete that reservation.
+Store provider/output bytes with their hashes; do not generate expected receipts
+and call them observations. The output is OPERATIONAL review, never FIX_VERIFIED.
+The original migration manifest excludes this one well-typed side transaction;
+activation reconstructs its original private preimage by omitting ONLY the
+fully checked completed review. It never writes that reconstruction back.
+
+`team-recover-unreserved --execute` then consumes scoped_activation.v2 or an
+actually supplied optional exact owner signoff. No new signoff is required.
+It saves PENDING before copying, installs control last, admits only exact
+before/after destination states, and completes installation and NOT_EXECUTED
+atomically. UNKNOWN/RESERVED old effects remain ineligible. Normal checkpoint
+CAS records reconciliation, not a successful launch. Old implementation may be
+append-only CANCELLED, not DONE and not relabelled independent.
+
+Before source commit, allow only the exact copied-source startup drift for the
+named recovery, fixed-candidate production, independent review, evidence intake
+and delivery checkpoints. All other fatal errors, foreign paths, epoch/operation
+fences and mathematical holds remain. Limit stays 16384 bytes.
+
+Version-1 assignments and version-2 review-only R/H/C semantics are unchanged.
+A NEW q3_assignment.v3, confined to this C8 scope, may name either a producer of
+an ALREADY FROZEN candidate or an independent-checker. It fixes R original inputs,
+H actual launch HEAD, C direct-child eight-file candidate, author_ids and an
+immutable delivery_prefix. It authorizes no editing of C. A producer must return
+a real native q3_control13_fixed_candidate_result.v1 before FIX_CANDIDATE. A
+separate nonauthor native q3_repair_review.v3 binds the same R/H/C, authors, eight
+final source hashes and the exact historical prefix before FIX_VERIFIED. Keep the
+original two repair_sources unchanged throughout. No operational-review output
+can enter this lifecycle. Do not mutate old assignment roles by UPDATE. After
+an actual COMPLETED native result, record that new assignment's execution DONE
+and observed resolution through the existing writer; DONE is not FIX_VERIFIED.
+
+The old source-only publication rule is specialized ONLY for this reviewed v3
+repair: source writes remain exactly C8, while an independently reviewed immutable
+O..H prefix may ride as unchanged committed evidence. It is NOT added to the staged
+source set. Pin the exact 23 paths from the controlling request, every commit and
+parent, endpoint blobs/modes, and all intermediate touched paths. Fresh registered
+remote observation must equal O and current BASE must equal H before reservation.
+Other affected issues still block. P has parent H and last diff EXACTLY C8; every
+historical H blob is unchanged in P and all H ancestors are retained. Check full
+remote-to-P scope against C8 plus that exact carried set, never a wildcard.
+Reject a missing v3/native prefix before saving this repair publication INTENT. Keep
+current dirty metadata and every foreign/index byte untouched by this first push.
+No reset, rebase, history rewrite, force push, extra source or transient hidden
+historical path is admitted. A changed remote returns HOLD/UNKNOWN as appropriate.
+
+Sequence: completed native producer -> FIX_CANDIDATE -> completed independent
+native review -> FIX_VERIFIED -> publication INTENT -> fresh remote observation
+-> reservation -> native guarded source commit P -> one non-force push -> fresh
+remote confirmation -> ordinary checkpoint reconciliation -> FIX_COMMITTED(P)
+-> FIX_PUSH_VERIFIED(P). The last two records follow actual effects and do not
+write during a pending publication fence. Only THEN use unchanged compact
+publication for the separately enumerated current metadata and owned receipts.
+Preserving historical math files is evidence delivery, not kernel acceptance,
+phase closure, a new mathematical target, or RH.
 
 ## 12. Threat model and fail-closed behavior
 

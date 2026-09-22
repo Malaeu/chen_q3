@@ -770,6 +770,12 @@ def live_plan_v10(
         pending = _team_pending_integration(repo)
         if pending is not None and lock_error is None:
             operation_id, integration = pending
+            if integration.get("schema") == "q3_control13_operational_dispatch.v1":
+                from orchestrator.control13_recovery import operational_review_plan
+                return operational_review_plan(repo, operation_id, integration)
+            if integration.get("manifest", {}).get("schema") == "q3_control13_recovery.v2":
+                from orchestrator.control13_recovery import recovery_plan
+                return recovery_plan(repo, operation_id, integration)
             saved = _team_integration_manifest(_team_json(integration["manifest"]))
             if (_resume_digest(_team_json(saved)) != integration["manifest_sha256"]
                     or saved["operation_id"] != operation_id):
@@ -1167,7 +1173,7 @@ TEAM_FENCED_CALLS = frozenset({
     "workflow-resume-checkpoint", "bind-request", "workflow-team-record", "workflow-team-local-init",
     "workflow-team-observe-remote", "workflow-team-reserve-effect", "workflow-team-confirm-effect",
     "workflow-team-watch-intent", "workflow-team-observe-native", "workflow-team-integrate-candidate",
-    "workflow-team-bootstrap-publish",
+    "workflow-team-bootstrap-publish", "workflow-team-recover-unreserved", "workflow-team-recovery-review",
     "slack-manual-chat-reconciliation", "bridge-observed-phase-repair",
 })
 TEAM_NATIVE_EFFECTS = frozenset({
@@ -2118,6 +2124,20 @@ def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
     declared = dict(inputs)
     if map_path is not None:
         declared[map_path] = operation["inputs"][map_path]
+    carried_prefix = None
+    if repair is not None and control.version >= 13:
+        from orchestrator.control13_recovery import reviewed_delivery_prefix
+        carried_prefix = reviewed_delivery_prefix(repo, data, inputs)
+    existing_changes = set(_team_git(repo, "diff", "--name-only", "--no-renames", "-z",
+                                    receipt["remote_commit"], base, "--").decode().split("\0")[:-1])
+    if carried_prefix is not None:
+        if (compact or incoming or carried_prefix["base_head"] != base
+                or carried_prefix["remote_base"] != receipt["remote_commit"]
+                or set(carried_prefix["files"]) != existing_changes
+                or set(carried_prefix["files"]).intersection(declared)):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_REVIEWED_PREFIX_CHANGED")
+    elif not existing_changes.issubset(declared):
+        raise WorkflowRuntimeError("TEAM_PUBLICATION_EXISTING_HISTORY_OUTSIDE_SCOPE")
     staged = set(_team_git(repo, "diff", "--cached", "--name-only", "-z", "--").decode().split("\0")[:-1])
     if staged.intersection(declared) or incoming and staged:
         raise WorkflowRuntimeError("TEAM_PUBLICATION_STAGED_PREIMAGE_REQUIRES_RECONCILIATION")
@@ -2152,7 +2172,8 @@ def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
             "origin_sha256": _team_bootstrap_endpoint(repo), "map_path": map_path,
             "inputs": inputs, "files": files, "preimages": preimages,
             "incoming": incoming, "repair_issue": repair,
-            "outside": _team_publication_outside(repo, set(files))}
+            "outside": _team_publication_outside(repo, set(files)),
+            **({"carried_prefix": carried_prefix} if carried_prefix is not None else {})}
 
 
 def _team_publication_check(repo: Path, data: dict[str, Any], saved: dict[str, Any], *, committed: bool) -> str:
@@ -2170,6 +2191,14 @@ def _team_publication_check(repo: Path, data: dict[str, Any], saved: dict[str, A
     _team_verify_paths(repo, data["source_manifest"])
     if snapshot["repair_issue"] and _team_publication_repair(repo, data, snapshot["inputs"]) != snapshot["repair_issue"]:
         raise WorkflowRuntimeError("TEAM_PUBLICATION_REPAIR_BINDING_CHANGED")
+    prefix = snapshot.get("carried_prefix")
+    if prefix is not None:
+        from orchestrator.control13_recovery import reviewed_delivery_prefix, validate_delivery_prefix
+        if (control.version < 13 or snapshot["mode"] != "REPAIR" or not snapshot["repair_issue"]
+                or reviewed_delivery_prefix(repo, data, snapshot["inputs"]) != prefix
+                or prefix["base_head"] != snapshot["base"] or prefix["remote_base"] != snapshot["remote_base"]):
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_REVIEWED_PREFIX_CHANGED")
+        validate_delivery_prefix(repo, prefix)
     head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
     if not committed and head != snapshot["base"]:
         raise WorkflowRuntimeError("TEAM_PUBLICATION_BASE_CHANGED")
@@ -2189,8 +2218,12 @@ def _team_publication_check(repo: Path, data: dict[str, Any], saved: dict[str, A
             _team_git(repo, "merge-base", "--is-ancestor", tip, head)
         changed = set(_team_git(repo, "diff", "--name-only", "--no-renames", "-z",
                                snapshot["remote_base"], head, "--").decode().split("\0")[:-1])
-        if not changed or not changed.issubset(snapshot["files"]):
+        carried = set(prefix["files"]) if prefix is not None else set()
+        if not changed or not changed.issubset(set(snapshot["files"]) | carried):
             raise WorkflowRuntimeError("TEAM_PUBLICATION_COMMITTED_SCOPE_CHANGED")
+        if prefix is not None:
+            from orchestrator.control13_recovery import check_carried_history
+            check_carried_history(repo, prefix, head)
         if snapshot["repair_issue"]:
             _team_validate_repair_candidate(repo, {"candidate_commit": head,
                 "candidate_manifest": [{"path": path, "sha256": item["sha256"]}
@@ -2227,6 +2260,8 @@ def _team_publication_guard(repo: Path, data: dict[str, Any], *, paths: list[str
 
 def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
     """Persist one operation-bound observation; retry never renews a spent grant."""
+    from orchestrator.control13_recovery import reject_recovered_launch
+    reject_recovered_launch(repo, operation_id)
     _team_registered(repo, "team-observe-remote", ["GIT_COMMON_DIR/" + TEAM_LOCAL, "GIT_COMMON_DIR/objects/**"])
     raw, data, _ = _team_current(repo)
     local = _team_local(repo)
@@ -2265,6 +2300,28 @@ def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
             "remote_resume_sha256": receipt["remote_resume_sha256"], "execution_acquired": False}
 
 
+def _team_review_input_commit(repo: Path, assignment: dict[str, Any]) -> str:
+    """H stays launch HEAD; original inputs stay at R, candidate files at C."""
+    from orchestrator import team_records
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    if assignment.get("schema") not in {team_records.REPAIR_ASSIGNMENT_SCHEMA, team_records.DELIVERY_ASSIGNMENT_SCHEMA}:
+        return assignment["base_commit"]
+    if validate_battle_v10_control(repo).version < 13:
+        raise WorkflowRuntimeError("TEAM_REPAIR_ASSIGNMENT_REQUIRES_CONTROL_13")
+    team_records._validate_assignment(assignment)
+    binding = assignment["review_binding"]
+    _team_git(repo, "cat-file", "-e", binding["report_base_commit"] + "^{commit}")
+    _team_git(repo, "cat-file", "-e", binding["candidate_commit"] + "^{commit}")
+    _team_git(repo, "merge-base", "--is-ancestor", binding["report_base_commit"], binding["candidate_commit"])
+    for row in binding["candidate_manifest"]:
+        _team_locator(repo, "git:" + binding["candidate_commit"] + ":" + row["path"], row["sha256"])
+    if assignment.get("schema") == team_records.DELIVERY_ASSIGNMENT_SCHEMA:
+        from orchestrator.control13_recovery import validate_combined_assignment
+        validate_combined_assignment(repo, assignment)
+    return binding["report_base_commit"]
+
+
 def _team_launch_binding(repo: Path, data: dict[str, Any]) -> dict[str, Any]:
     """Freeze the requested launch and its sources independently of checkpoint status."""
     from orchestrator import team_records
@@ -2285,7 +2342,13 @@ def _team_launch_binding(repo: Path, data: dict[str, Any]) -> dict[str, Any]:
         raise WorkflowRuntimeError("TEAM_AGENT_LAUNCH_BINDING_CHANGED")
     _team_verify_paths(repo, data["source_manifest"])
     _team_verify_paths(repo, operation["inputs"])
-    _team_verify_paths(repo, {row["path"]: row["sha256"] for row in assignment["input_hashes"]})
+    source_commit = _team_review_input_commit(repo, assignment)
+    if assignment.get("schema") in {"q3_assignment.v2", "q3_assignment.v3"}:
+        # Read immutable R inputs only; v3 implementation reproduces a fixed C8, not mutable source.
+        for row in assignment["input_hashes"]:
+            _team_locator(repo, "git:" + source_commit + ":" + row["path"], row["sha256"])
+    else:
+        _team_verify_paths(repo, {row["path"]: row["sha256"] for row in assignment["input_hashes"]})
     return {"operation": {key: operation[key] for key in ("id", "kind", "subject", "command", "inputs")},
             "owner_task": data["owner_thread_id"], "owner_host": data["owner_host_id"],
             "ownership": data["ownership"], "pins": data["pins"], "source_manifest": data["source_manifest"],
@@ -2293,6 +2356,8 @@ def _team_launch_binding(repo: Path, data: dict[str, Any]) -> dict[str, Any]:
 
 
 def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
+    from orchestrator.control13_recovery import reject_recovered_launch
+    reject_recovered_launch(repo, operation_id)
     _team_registered(repo, "team-reserve-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL], publication_id=operation_id)
     with _execution_writer_epoch(repo, publication_operation=operation_id) as epoch:
         raw, data, _ = _team_current(repo)
@@ -2340,6 +2405,8 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
                 or receipt["remote_thread"] != data["owner_thread_id"]
                 or receipt["local_head"] != _team_git(repo, "rev-parse", "HEAD").decode().strip()):
             raise WorkflowRuntimeError("TEAM_REMOTE_OWNERSHIP_OR_INPUT_DRIFT")
+        from orchestrator.control13_recovery import check_delivery_intent
+        check_delivery_intent(repo, data)
         reserved = {**receipt, "state": "RESERVED"}
         if operation["command"] == "agent-launch":
             reserved["launch_binding"] = _team_launch_binding(repo, data)
@@ -2441,6 +2508,8 @@ def _team_assignment_context(repo: Path, data: dict[str, Any], assignments: dict
         if row is None:
             raise WorkflowRuntimeError("TEAM_ASSIGNMENT_UNKNOWN:" + assignment_id)
         assignment = row["assignment"]
+        if assignment.get("schema") in {"q3_assignment.v2", "q3_assignment.v3"}:
+            _team_review_input_commit(repo, assignment)
         found = []
         for item in operations.values():
             observation = item.get("observation", {})
@@ -2461,7 +2530,12 @@ def _team_assignment_context(repo: Path, data: dict[str, Any], assignments: dict
     return team_records.TrustedTeamContext(
         owner_task=data["owner_thread_id"], owner_host=data["owner_host_id"],
         owner_installation_ref=data["ownership"]["installation_ref"], owner_epoch=data["ownership"]["epoch"],
-        actor_id=data["owner_thread_id"], observations=observations, output_artifacts=output_artifacts)
+        actor_id=data["owner_thread_id"], observations=observations, output_artifacts=output_artifacts,
+        # V1 recovery must not consult a possibly half-installed destination
+        # control. V2 assignments have already passed _team_review_input_commit,
+        # including the active control-version check, above.
+        repair_v2_allowed=any(assignments["assignments"][item]["assignment"].get("schema")
+                              in {"q3_assignment.v2", "q3_assignment.v3"} for item in assignment_ids))
 
 
 def _team_observe_assignment(repo: Path, evidence: dict[str, Any], payload: bytes) -> dict[str, Any]:
@@ -2607,6 +2681,9 @@ def _team_confirm_publication(repo: Path, operation_id: str, record: dict[str, A
             body, mode = _team_integration_blob(repo, observed["remote_commit"], path)
             if {"sha256": _resume_digest(body), "mode": mode} != expected:
                 raise WorkflowRuntimeError("TEAM_PUBLICATION_REMOTE_BYTES_CHANGED:" + path)
+        if snapshot.get("carried_prefix") is not None:
+            from orchestrator.control13_recovery import check_carried_history
+            check_carried_history(repo, snapshot["carried_prefix"], observed["remote_commit"])
         outcome = "CONFIRMED"
     with _execution_writer_epoch(repo, publication_operation=operation_id) as epoch:
         _, current, _ = _team_current(repo)
@@ -3149,11 +3226,22 @@ def _team_owner_transition(repo: Path, before: dict[str, Any], after: dict[str, 
                 raise WorkflowRuntimeError("TEAM_UNRESOLVED_OPERATION_CANNOT_BE_REPLACED")
             if next_op["state"] == "CONFIRMED":
                 observation = _team_local_operation(repo, prior_op["id"])
+                if observation is not None and observation.get("control13_recovery"):
+                    from orchestrator.control13_recovery import _saved_check, digest
+                    recovery_id = observation["control13_recovery"]
+                    saved = _team_local(repo)["operations"].get(recovery_id, {}).get("integration", {})
+                    manifest = _saved_check(saved, recovery_id)
+                    if (saved["state"] != "COMPLETE" or observation["state"] != "NOT_EXECUTED"
+                            or next_op["evidence"] != ["control13_recovery:" + recovery_id + ":" + digest(manifest)]):
+                        raise WorkflowRuntimeError("TEAM_RECOVERY_CHECKPOINT_EVIDENCE_REQUIRED")
                 if (not next_op["evidence"] or observation is None
                         or observation.get("state") not in {"CONFIRMED", "NOT_EXECUTED"}
                         or observation.get("actor") != before["owner_thread_id"]
                         or observation.get("epoch") != old["epoch"]):
                     raise WorkflowRuntimeError("TEAM_OPERATION_CONFIRMATION_REQUIRED")
+        if next_op["state"] == "INTENT" and prior_op["id"] != next_op["id"]:
+            from orchestrator.control13_recovery import check_delivery_intent
+            check_delivery_intent(repo, after)
         return
     if any(before[k] != after[k] for k in ("operation", "pins", "stages", "source_manifest")):
         raise WorkflowRuntimeError("TEAM_TRANSFER_CHANGED_MATHEMATICAL_STATE")
@@ -3549,8 +3637,9 @@ def team_record(repo: Path, *, kind: str, candidate: Path, expected_sha256: str)
                 if (payload["owner_task"] != actor["task"] or payload["owner_epoch"] != actor["epoch"]
                         or payload["owner_installation_ref"] != actor["installation_ref"]):
                     raise WorkflowRuntimeError("TEAM_ASSIGNMENT_OWNER_MISMATCH")
+                input_commit = _team_review_input_commit(repo, payload)
                 for row in payload["input_hashes"]:
-                    _team_locator(repo, "git:" + payload["base_commit"] + ":" + row["path"], row["sha256"])
+                    _team_locator(repo, "git:" + input_commit + ":" + row["path"], row["sha256"])
                 # CREATE is an intent, never a native agent launch receipt.
                 if payload["operation"] == "CREATE" and payload["status"] not in {"ASSIGNED", "PENDING"}:
                     raise WorkflowRuntimeError("TEAM_ASSIGNMENT_LAUNCH_OBSERVATION_REQUIRED")
@@ -3562,7 +3651,10 @@ def team_record(repo: Path, *, kind: str, candidate: Path, expected_sha256: str)
                         _, data, _ = _team_current(repo)
                         context = _team_assignment_context(repo, data, assignments, [payload["assignment_id"]], set())
                         team_records._validate_assignment_owner(previous, context)
-                        _team_verify_paths(repo, {row["path"]: row["sha256"] for row in previous["input_hashes"]})
+                        if previous.get("schema") in {"q3_assignment.v2", "q3_assignment.v3"}:
+                            _team_review_input_commit(repo, previous)
+                        else:
+                            _team_verify_paths(repo, {row["path"]: row["sha256"] for row in previous["input_hashes"]})
                         launch = context.observations[payload["assignment_id"]]
                         if (len(launch) != 1 or launch[0]["phase"] != "LAUNCH"
                                 or any(launch[0][key] != payload[key] for key in ("resolved_model", "resolved_effort"))):
@@ -3613,6 +3705,9 @@ def team_record(repo: Path, *, kind: str, candidate: Path, expected_sha256: str)
                         raise WorkflowRuntimeError("TEAM_REPAIR_REMOTE_OBSERVATION_REQUIRED")
                     if remote.get("remote_commit") != payload["candidate_commit"]:
                         raise WorkflowRuntimeError("TEAM_REPAIR_REMOTE_COMMIT_MISMATCH")
+                    if remote.get("publication", {}).get("snapshot", {}).get("carried_prefix") is not None and (
+                            remote.get("state") != "CONFIRMED" or remote["publication"].get("state") != "CONFIRMED"):
+                        raise WorkflowRuntimeError("TEAM_REPAIR_ACTUAL_REMOTE_CONFIRMATION_REQUIRED")
                     _team_git(repo, "merge-base", "--is-ancestor",
                               payload["candidate_commit"], remote["remote_commit"])
         stable_receipt = {**receipt, "status": "RECORDED"}
@@ -3894,7 +3989,10 @@ def _resume_completed_source_recovery(
     This does not alter the startup plan or authorize an effect. Every ordinary
     checkpoint/history/owner check below and every native effect gate still runs.
     """
-    if (plan.get("startup", {}).get("control_version") not in {11, 12}
+    from orchestrator.control13_recovery import completed_checkpoint_allowed
+    if completed_checkpoint_allowed(repo, proposed, plan, integration_candidate):
+        return True
+    if (plan.get("startup", {}).get("control_version") not in {11, 12, 13}
             or plan.get("startup", {}).get("team_runtime_version") != 1):
         return False
     fatal = set(plan.get("startup", {}).get("fatal_errors", []))
@@ -4047,7 +4145,16 @@ def _resume_repair_review_intake(repo: Path, current: dict[str, Any], operation:
         except team_records.TeamRecordError:
             continue  # Native provider trace is raw evidence, not the typed review.
         issue = issues["issues"].get(review["issue_id"], {})
-        if (review["base_commit"] == head
+        review_execution = review.get("execution_commit", review["base_commit"])
+        binding = assignment.get("review_binding")
+        if review.get("schema") in {"q3_repair_review.v2", "q3_repair_review.v3"} and (
+                assignment.get("schema") != ("q3_assignment.v3" if review["schema"] == "q3_repair_review.v3" else "q3_assignment.v2") or not isinstance(binding, dict)
+                or review["base_commit"] != binding["report_base_commit"]
+                or review["candidate_commit"] != binding["candidate_commit"]
+                or review["candidate_manifest"] != binding["candidate_manifest"]
+                or review["base_commit"] != issue.get("report", {}).get("base_commit")):
+            continue
+        if (review_execution == head
                 and _team_candidate_manifest(review) == sources
                 and assignment["subject"] in {review["issue_id"], review["repair_subject_id"]}
                 and issue.get("repair_subject_id") == review["repair_subject_id"]
@@ -6413,6 +6520,32 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=REPO)
     subparsers = parser.add_subparsers(dest="command", required=True)
     subparsers.add_parser("team-local-init")
+    recovery = subparsers.add_parser("team-recover-unreserved")
+    source = recovery.add_mutually_exclusive_group(required=True)
+    source.add_argument("--candidate", type=Path)
+    source.add_argument("--recover-operation")
+    source.add_argument("--prepare", action="store_true")
+    recovery.add_argument("--expected-sha256")
+    recovery.add_argument("--owner-signoff", type=Path)
+    recovery.add_argument("--owner-approved-signoff-sha256")
+    recovery.add_argument("--activation-record", type=Path)
+    recovery.add_argument("--expected-activation-sha256")
+    recovery.add_argument("--execute", action="store_true")
+    recovery.add_argument("--author-id", action="append", default=[])
+    recovery_review = subparsers.add_parser("team-recovery-review")
+    recovery_review.add_argument("action", choices=["prepare", "reserve", "launch-permit", "observe"])
+    recovery_review.add_argument("--candidate", type=Path)
+    recovery_review.add_argument("--expected-sha256")
+    recovery_review.add_argument("--operation-id")
+    recovery_review.add_argument("--grant", type=Path)
+    recovery_review.add_argument("--expected-grant-sha256")
+    recovery_review.add_argument("--reviewer-id")
+    recovery_review.add_argument("--next-check")
+    delivery_plan = subparsers.add_parser("team-recovery-delivery-plan")
+    delivery_plan.add_argument("--candidate-commit", required=True)
+    delivery_plan.add_argument("--implementer", required=True)
+    delivery_plan.add_argument("--reviewer", required=True)
+    delivery_plan.add_argument("--next-check", required=True)
     bootstrap = subparsers.add_parser("team-bootstrap-publish")
     bootstrap.add_argument("--operation-id", required=True)
     bootstrap.add_argument("--expected-head")
@@ -6491,7 +6624,55 @@ def main() -> int:
         if forwarded:
             parser.error("unrecognized arguments: " + " ".join(forwarded))
         try:
-            if args.command == "team-local-init":
+            if args.command == "team-recover-unreserved":
+                from orchestrator.control13_recovery import recover_unreserved, prepare_manifest, digest
+                if args.prepare:
+                    if args.execute or any(x is not None for x in (args.expected_sha256, args.owner_signoff,
+                                                                  args.owner_approved_signoff_sha256,
+                                                                  args.activation_record, args.expected_activation_sha256)):
+                        raise WorkflowRuntimeError("CONTROL13_RECOVERY_PREPARE_IS_READ_ONLY")
+                    manifest = prepare_manifest(repo, extra_authors=tuple(args.author_id))
+                    result = {"status": "CANDIDATE_PREPARED", "manifest": manifest,
+                              "manifest_sha256": digest(manifest), "writes_performed": False}
+                else:
+                    if args.author_id: raise WorkflowRuntimeError("RECOVERY_AUTHORS_ONLY_AT_PREPARE")
+                    result = recover_unreserved(repo, candidate=args.candidate,
+                    recover_operation=args.recover_operation, expected_sha256=args.expected_sha256,
+                    owner_signoff=args.owner_signoff,
+                    approved_signoff_sha256=args.owner_approved_signoff_sha256,
+                    activation_record=args.activation_record,
+                    expected_activation_sha256=args.expected_activation_sha256,
+                    execute=args.execute)
+            elif args.command == "team-recovery-review":
+                from orchestrator.control13_recovery import reserve_operational_review, observe_operational_review, operational_launch_permit
+                if args.action != "launch-permit" and (args.candidate is None or args.expected_sha256 is None):
+                    raise WorkflowRuntimeError("REVIEW_EXACT_INPUT_REQUIRED")
+                if args.action != "prepare" and any(x is not None for x in (args.grant,args.expected_grant_sha256,args.reviewer_id,args.next_check)):
+                    raise WorkflowRuntimeError("REVIEW_PREPARE_FIELDS_OUTSIDE_PREPARE")
+                if args.action == "prepare":
+                    from orchestrator.control13_recovery import _read_json, prepare_operational_review_request, digest
+                    if args.operation_id is not None or any(x is None for x in (args.grant,args.expected_grant_sha256,args.reviewer_id,args.next_check)):
+                        raise WorkflowRuntimeError("REVIEW_PREPARE_EXACT_INPUT_REQUIRED")
+                    _,m=_read_json(args.candidate,args.expected_sha256)
+                    _,grant=_read_json(args.grant,args.expected_grant_sha256)
+                    request=prepare_operational_review_request(repo,m,grant,reviewer_id=args.reviewer_id,next_check=args.next_check)
+                    result={"status":"PREPARED_NOT_DISPATCHED","request":request,"request_sha256":digest(request),"writes_performed":False}
+                elif args.action == "launch-permit":
+                    if not args.operation_id or args.candidate is not None or args.expected_sha256 is not None:
+                        raise WorkflowRuntimeError("REVIEW_LAUNCH_EXACT_ID_ONLY")
+                    result = operational_launch_permit(repo, operation_id=args.operation_id)
+                elif args.action == "reserve":
+                    if args.operation_id is not None: raise WorkflowRuntimeError("REVIEW_RESERVE_ID_DERIVED_FROM_MANIFEST")
+                    result = reserve_operational_review(repo, candidate=args.candidate, expected_sha256=args.expected_sha256)
+                else:
+                    if not args.operation_id: raise WorkflowRuntimeError("REVIEW_OPERATION_ID_REQUIRED")
+                    result = observe_operational_review(repo, operation_id=args.operation_id, candidate=args.candidate, expected_sha256=args.expected_sha256)
+            elif args.command == "team-recovery-delivery-plan":
+                from orchestrator.control13_recovery import combined_delivery_plan
+                result = combined_delivery_plan(repo, candidate_commit=args.candidate_commit, implementer=args.implementer,
+                                                reviewer=args.reviewer, next_check=args.next_check)
+                result["status"] = "PREPARED_NOT_DISPATCHED"
+            elif args.command == "team-local-init":
                 result = team_local_init(repo)
             elif args.command == "team-bootstrap-publish":
                 result = team_bootstrap_publish(repo, operation_id=args.operation_id, expected_head=args.expected_head,
@@ -6667,7 +6848,9 @@ def main() -> int:
             "PX_RH_CLAIM": "NOT_MADE",
         }
     if args.command == "plan":
-        print(render_plan_v10(result))
+        rendered = render_plan_v10(result)
+        print(rendered)
+        result = json.loads(rendered)  # exit status describes the emitted envelope
     else:
         print(json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True))
     if benchmark_timing:

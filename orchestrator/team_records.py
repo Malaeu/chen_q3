@@ -48,6 +48,8 @@ from typing import Any
 ISSUE_REPORT_SCHEMA = "q3_issue_report.v1"
 ISSUE_TRANSITION_SCHEMA = "q3_issue_transition.v1"
 ASSIGNMENT_SCHEMA = "q3_assignment.v1"
+REPAIR_ASSIGNMENT_SCHEMA = "q3_assignment.v2"
+DELIVERY_ASSIGNMENT_SCHEMA = "q3_assignment.v3"
 EVENT_SCHEMA = "q3_team_event.v1"
 BOUNDARY_SCHEMA = "q3_team_records_boundary.v1"
 ARCHIVE_SCHEMA = "q3_team_records_archive.v1"
@@ -118,6 +120,8 @@ ASSIGNMENT_RESOLUTION_REQUIRED_STATUSES = frozenset(
 )
 NATIVE_OBSERVATION_SCHEMA = "q3_team_assignment_observation.v1"
 REPAIR_REVIEW_SCHEMA = "q3_repair_review.v1"
+REPAIR_REVIEW_V2_SCHEMA = "q3_repair_review.v2"
+REPAIR_REVIEW_V3_SCHEMA = "q3_repair_review.v3"
 NATIVE_OBSERVATION_REQUIRED_FIELDS = frozenset(
     {
         "schema",
@@ -309,6 +313,7 @@ class TrustedTeamContext:
     actor_id: str
     observations: Mapping[str, Sequence[Mapping[str, Any]]]
     output_artifacts: Mapping[str, bytes] = field(default_factory=dict)
+    repair_v2_allowed: bool = False
 
 
 def _is_sha(value: object, *, allow_absent: bool = False) -> bool:
@@ -647,10 +652,50 @@ def _validate_transition(payload: Mapping[str, Any]) -> dict[str, Any]:
     return result
 
 
+def _validate_delivery_prefix_shape(prefix: Mapping[str, Any]) -> None:
+    if (not isinstance(prefix, Mapping) or set(prefix) != {"schema", "remote_base", "base_head", "commits", "files", "interpretation"}
+            or prefix["schema"] != "q3_control13_immutable_delivery_prefix.v1"
+            or prefix["interpretation"] != "UNCHANGED_COMMITTED_EVIDENCE_NOT_PROOF"):
+        _fail("DELIVERY_PREFIX_SCHEMA")
+    for key in ("remote_base", "base_head"):
+        _commit_field(prefix[key], key)
+    if not isinstance(prefix["commits"], list) or not 1 <= len(prefix["commits"]) <= 256:
+        _fail("DELIVERY_PREFIX_COMMIT_BOUND")
+    ids = set()
+    for row in prefix["commits"]:
+        if not isinstance(row, dict) or set(row) != {"commit", "parents"} or not isinstance(row["parents"], list) or not row["parents"]:
+            _fail("DELIVERY_PREFIX_COMMIT_SCHEMA")
+        _commit_field(row["commit"], "commit")
+        if row["commit"] in ids: _fail("DELIVERY_PREFIX_DUPLICATE_COMMIT")
+        ids.add(row["commit"])
+        for parent in row["parents"]: _commit_field(parent, "parent")
+    if not isinstance(prefix["files"], dict) or len(prefix["files"]) != 23:
+        _fail("DELIVERY_PREFIX_EXACT_COUNT")
+    for path,row in prefix["files"].items():
+        _relative_path(path, "prefix path")
+        if not isinstance(row, dict) or set(row) != {"sha256", "mode", "remote_sha256", "remote_mode"}:
+            _fail("DELIVERY_PREFIX_FILE_SCHEMA")
+        _sha_field(row["sha256"], "prefix hash")
+        _sha_field(row["remote_sha256"], "remote hash", allow_absent=True)
+        if (type(row["mode"]) is not int or row["mode"] not in {0o644,0o755}
+                or (row["remote_sha256"] == "ABSENT") != (row["remote_mode"] is None)
+                or row["remote_mode"] is not None and (type(row["remote_mode"]) is not int or row["remote_mode"] not in {0o644,0o755})):
+            _fail("DELIVERY_PREFIX_MODE")
+
+
 def _validate_repair_review(payload: Mapping[str, Any]) -> dict[str, Any]:
-    _require_closed(payload, REPAIR_REVIEW_REQUIRED_FIELDS)
-    if payload["schema"] != REPAIR_REVIEW_SCHEMA:
+    v3 = payload.get("schema") == REPAIR_REVIEW_V3_SCHEMA
+    v2 = payload.get("schema") == REPAIR_REVIEW_V2_SCHEMA or v3
+    extra = ({"execution_commit", "candidate_commit"} if v2 else set()) | ({"delivery_prefix", "author_ids"} if v3 else set())
+    _require_closed(payload, REPAIR_REVIEW_REQUIRED_FIELDS | extra)
+    if payload["schema"] not in {REPAIR_REVIEW_SCHEMA, REPAIR_REVIEW_V2_SCHEMA, REPAIR_REVIEW_V3_SCHEMA}:
         _fail("SCHEMA_UNSUPPORTED", "repair review")
+    if v2:
+        for key in ("execution_commit", "candidate_commit"):
+            _commit_field(payload[key], key)
+    if v3:
+        _validate_delivery_prefix_shape(payload["delivery_prefix"])
+        _string_list(payload["author_ids"], "author_ids")
     result = dict(payload)
     for field_name in ("issue_id",):
         if not isinstance(result[field_name], str) or re.fullmatch(
@@ -696,9 +741,33 @@ def _resolution_pair(
 
 
 def _validate_assignment(payload: Mapping[str, Any]) -> dict[str, Any]:
-    _require_closed(payload, ASSIGNMENT_REQUIRED_FIELDS)
-    if payload["schema"] != ASSIGNMENT_SCHEMA:
+    v3 = payload.get("schema") == DELIVERY_ASSIGNMENT_SCHEMA
+    v2 = payload.get("schema") == REPAIR_ASSIGNMENT_SCHEMA or v3
+    _require_closed(payload, ASSIGNMENT_REQUIRED_FIELDS | ({"review_binding"} if v2 else set()))
+    if payload["schema"] not in {ASSIGNMENT_SCHEMA, REPAIR_ASSIGNMENT_SCHEMA, DELIVERY_ASSIGNMENT_SCHEMA}:
         _fail("SCHEMA_UNSUPPORTED", "assignment")
+    if v2:
+        binding = payload["review_binding"]
+        allowed_roles = {"implementation", "independent-checker"} if v3 else {"independent-checker"}
+        extra = {"delivery_prefix", "author_ids"} if v3 else set()
+        if (payload["role"] not in allowed_roles
+                or not isinstance(binding, dict)
+                or set(binding) != {"report_base_commit", "candidate_commit", "candidate_manifest"} | extra):
+            _fail("REPAIR_ASSIGNMENT_REVIEW_ONLY", "v2 cannot label an implementation")
+        if v3:
+            _validate_delivery_prefix_shape(binding["delivery_prefix"])
+            authors = _string_list(binding["author_ids"], "author_ids")
+            if not {"Proshka", payload["owner_task"]}.issubset(authors):
+                _fail("DELIVERY_AUTHORS_INCOMPLETE")
+            if payload["role"] == "independent-checker" and payload["assignee"] in {*authors, "HUMAN_OWNER"}:
+                _fail("DELIVERY_AUTHOR_CANNOT_REVIEW")
+        for key in ("report_base_commit", "candidate_commit"):
+            _commit_field(binding[key], "review_binding." + key)
+        rows = _pair_list(binding["candidate_manifest"], "candidate_manifest", "path", path_key=True)
+        if not rows:
+            _fail("REPAIR_ASSIGNMENT_CANDIDATE_INPUTS_REQUIRED")
+        if not {row["path"] for row in rows}.issubset(payload["permitted_paths"]):
+            _fail("REPAIR_ASSIGNMENT_SCOPE_MISMATCH")
     result = dict(payload)
     for field in (
         "assignment_id",
@@ -1101,11 +1170,65 @@ def _require_repair_review_artifact(
         _fail("NATIVE_REVIEW_REPAIR_MISMATCH", payload["repair_subject_id"])
     if artifact["base_commit"] != expected_base_commit:
         _fail("NATIVE_REVIEW_BASE_MISMATCH", artifact["base_commit"])
-    if artifact["base_commit"] != assignment["base_commit"]:
+    v3 = artifact["schema"] == REPAIR_REVIEW_V3_SCHEMA
+    v2 = artifact["schema"] == REPAIR_REVIEW_V2_SCHEMA or v3
+    if v2:
+        binding = assignment.get("review_binding", {})
+        if (context.repair_v2_allowed is not True
+                or assignment.get("schema") != (DELIVERY_ASSIGNMENT_SCHEMA if v3 else REPAIR_ASSIGNMENT_SCHEMA)
+                or assignment.get("role") != "independent-checker"):
+            _fail("NATIVE_REVIEW_V2_NOT_ENABLED")
+        if (artifact["execution_commit"] != assignment["base_commit"]
+                or artifact["base_commit"] != binding.get("report_base_commit")
+                or artifact["candidate_commit"] != binding.get("candidate_commit")
+                or artifact["candidate_manifest"] != binding.get("candidate_manifest")):
+            _fail("NATIVE_REVIEW_RHC_BINDING_MISMATCH")
+        if v3 and (artifact["delivery_prefix"] != binding["delivery_prefix"]
+                   or artifact["author_ids"] != binding["author_ids"]
+                   or assignment["assignee"] in {*binding["author_ids"], "HUMAN_OWNER"}):
+            _fail("NATIVE_REVIEW_DELIVERY_BINDING_MISMATCH")
+    elif assignment.get("schema") in {REPAIR_ASSIGNMENT_SCHEMA, DELIVERY_ASSIGNMENT_SCHEMA}:
+        _fail("NATIVE_REVIEW_V2_ARTIFACT_REQUIRED")
+    elif artifact["base_commit"] != assignment["base_commit"]:
         _fail("NATIVE_REVIEW_ASSIGNMENT_BASE_MISMATCH", artifact["base_commit"])
     if artifact["candidate_manifest"] != payload["candidate_manifest"]:
         _fail("NATIVE_REVIEW_MANIFEST_MISMATCH", payload["issue_id"])
     return artifact
+
+
+def _issue_result_assignment(
+    payload: Mapping[str, Any], rows: Mapping[str, Any],
+    context: TrustedTeamContext, *, implementer: bool,
+) -> dict[str, Any]:
+    """Select by exact result evidence; authorization still happens afterwards."""
+    matches = []
+    eligible = False
+    for assignment_id in sorted(context.observations):
+        if assignment_id not in rows:
+            _fail("ASSIGNMENT_UNKNOWN", assignment_id)
+        assignment = _assignment_from_row(rows[assignment_id], assignment_id)
+        role_matches = (assignment["role"] in IMPLEMENTER_ASSIGNMENT_ROLES if implementer
+                        else assignment["role"] == payload["actor_role"])
+        if assignment["assignee"] != payload["actor_id"] or not role_matches:
+            continue
+        eligible = True
+        observations = context.observations[assignment_id]
+        if not isinstance(observations, Sequence) or isinstance(observations, (str, bytes, bytearray)):
+            continue
+        if any(isinstance(item, Mapping) and item.get("phase") == "RESULT"
+               and any(row["locator"] == item.get("output_locator")
+                       and row["sha256"] == item.get("output_sha256")
+                       for row in payload["evidence"])
+               for item in observations):
+            matches.append(assignment)
+    if len(matches) > 1:
+        _fail("NATIVE_RESULT_ASSIGNMENT_AMBIGUOUS", payload["actor_id"])
+    if not matches:
+        if eligible:
+            _fail("NATIVE_RESULT_EVIDENCE_REQUIRED", payload["actor_id"])
+        _fail("IMPLEMENTER_ASSIGNMENT_MISMATCH" if implementer else "INDEPENDENT_ACTOR_MISMATCH",
+              payload["actor_id"])
+    return matches[0]
 
 
 def validate_issue_event_actor(
@@ -1137,41 +1260,40 @@ def validate_issue_event_actor(
             _fail("ACTOR_ROLE_INVALID", "FIX_CANDIDATE requires implementer")
         if payload.get("implementer_id", actor_id) != actor_id:
             _fail("IMPLEMENTER_IDENTITY_INVALID", "candidate actor must equal implementer")
-        for assignment_id in sorted(context.observations):
-            assignment = _assignment_from_row(rows[assignment_id], assignment_id)
-            if assignment["assignee"] != actor_id or assignment["role"] not in IMPLEMENTER_ASSIGNMENT_ROLES:
-                continue
-            _validate_assignment_owner(assignment, context)
-            checked = _validated_assignment_observation(assignment, context)
-            _require_result_evidence(payload, checked[1])
-            return _provenance_result(assignment, checked, actor_class="implementer")
-        _fail("IMPLEMENTER_ASSIGNMENT_MISMATCH", actor_id)
+        assignment = _issue_result_assignment(payload, rows, context, implementer=True)
+        _validate_assignment_owner(assignment, context)
+        checked = _validated_assignment_observation(assignment, context)
+        _require_result_evidence(payload, checked[1])
+        if assignment.get("schema") == DELIVERY_ASSIGNMENT_SCHEMA:
+            binding = assignment["review_binding"]
+            body = context.output_artifacts.get(checked[1]["output_locator"])
+            if not isinstance(body, (bytes, bytearray, memoryview)):
+                _fail("FIXED_CANDIDATE_NATIVE_OUTPUT_REQUIRED")
+            output = load_payload(bytes(body))
+            if output != {"schema": "q3_control13_fixed_candidate_result.v1",
+                    "report_base_commit": binding["report_base_commit"],
+                    "execution_commit": assignment["base_commit"],
+                    "candidate_commit": binding["candidate_commit"],
+                    "candidate_manifest": binding["candidate_manifest"],
+                    "delivery_prefix": binding["delivery_prefix"], "author_ids": binding["author_ids"],
+                    "verdict": "CANDIDATE_READY_FOR_INDEPENDENT_REVIEW", "mathematical_acceptance": False}:
+                _fail("FIXED_CANDIDATE_NATIVE_OUTPUT_MISMATCH")
+        return _provenance_result(assignment, checked, actor_class="implementer")
 
     if transition not in INDEPENDENT_TRANSITIONS:
         _fail("ACTOR_ROLE_INVALID", f"unsupported transition {transition}")
     if actor_role not in INDEPENDENT_ACTOR_ROLES:
         _fail("ACTOR_ROLE_INVALID", f"independent transition {transition}")
-    for assignment_id in sorted(context.observations):
-        assignment = _assignment_from_row(rows[assignment_id], assignment_id)
-        if (
-            assignment["assignee"] != actor_id
-            or assignment["role"] != actor_role
-            or assignment["role"] not in INDEPENDENT_ACTOR_ROLES
-        ):
-            continue
-        _validate_assignment_owner(assignment, context)
-        checked = _validated_assignment_observation(assignment, context)
-        _require_result_evidence(payload, checked[1])
-        if transition == "FIX_VERIFIED":
-            _require_repair_review_artifact(
-                payload,
-                assignment,
-                checked[1],
-                context,
-                expected_base_commit=expected_base_commit,
-            )
-        return _provenance_result(assignment, checked, actor_class="independent")
-    _fail("INDEPENDENT_ACTOR_MISMATCH", actor_id)
+    assignment = _issue_result_assignment(payload, rows, context, implementer=False)
+    _validate_assignment_owner(assignment, context)
+    checked = _validated_assignment_observation(assignment, context)
+    _require_result_evidence(payload, checked[1])
+    if transition == "FIX_VERIFIED":
+        _require_repair_review_artifact(
+            payload, assignment, checked[1], context,
+            expected_base_commit=expected_base_commit,
+        )
+    return _provenance_result(assignment, checked, actor_class="independent")
 
 
 def _build_event(
