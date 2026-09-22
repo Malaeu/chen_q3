@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 333
-observed_at: '2026-09-22T11:52:18.552441+00:00'
-previous_sha256: cf0a68a112f2b69b1cf1e9edf910e835e245fd8c32fa2aa7d09471ce121683ca
+revision: 334
+observed_at: '2026-09-22T11:58:32.850139+00:00'
+previous_sha256: 71e0e6f6ad1561bc013d0f38e0395dfdbf9dbd787acb1170060f91e33fe7e93a
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Kernel-checked local flux derivative and compact weak ODE from actual project ODE+C2; normalized/scalar transport; exact sqrt²=m dictionary; actual selected anchored weak equations with correct shifted eigenvalues; concrete test0/4 instantiation. No arbitrary weak-ODE assumption remains for those sources. Quantitative htheta estimates not yet proved; selected hmode->hchi and conditional W5 bridge remain checked.
+Kernel-checked compact_theta_bound_of_mode_error derives uniform explicit defect bound from sup error C/m, exact signed identity, fixed positive target overlap, and computable finite threshold; overlap floor not assumed separately. scheduled_theta_bound turns this into fixed-constant eventual family statement with explicit fixed inputs. No final selected htheta instantiation yet; actual weak source and target facts already checked.
 
 ## Next action
-Actual selected anchored modes now satisfy CompactWeakODE with their own concrete complex compact tests, no hmode premise. Combine with target orthogonality and signed defect identity, first/second complex-test derivative dictionary is now checked; derive uniform integral estimates/overlap floor from hmode for eventual htheta. hmode remains open; finite-ground matching separate; production unbound.
+Quantitative compact product, overlap floor and numerator bounds now checked; scheduled_theta_bound enforces fixed e,C,J,D,phi,A,T and discharges eventual threshold for m=k+2. Instantiate signed defect identity for actual selected test modes using checked CompactWeakODE/target orthogonality/derivative dictionary; apply scheduled_theta_bound and combine n0/4 constants to obtain actual htheta. hmode remains unproved, ground separate, production unbound.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

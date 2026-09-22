@@ -100,5 +100,10 @@ Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus fa
 'Q3OverlapProbe.selected_anchored_weak_ode' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.selected_anchored_concrete_test_weak' depends on axioms: [propext, Classical.choice, Quot.sound]
 'Q3OverlapProbe.complex_compactTest_derivatives' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.compact_product_error_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.compact_overlap_floor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.compact_source_pairing_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.compact_theta_bound_of_mode_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Q3OverlapProbe.scheduled_theta_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 scan /tmp/Q3FourierOverlap.lean
 q3_check ok

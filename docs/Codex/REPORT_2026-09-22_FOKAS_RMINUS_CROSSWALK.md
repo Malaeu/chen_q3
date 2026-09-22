@@ -791,3 +791,43 @@ hmode, uniformly in k, and conclude eventual htheta. No hmode or derivative-
 error premise was needed for the weak ODE itself. The selected htheta RATE
 is still unproved; hmode, finite-ground and off-line-zero-free bridges remain
 open. PX_RH_CLAIM: NOT_MADE.
+
+## Compact quantitative estimates and uniform scheduled theta bound
+
+Candidate SHA256 5a2581b17a5e14100d20dbbbe87ecaa8bd5bf91780c806332841c88e966c245d.
+For continuous f,D,g on [-1,1], compact_product_error_bound proves
+norm(integral((f-D)*g)) <= epsilon*integral(norm g) from the sup error.
+compact_overlap_floor derives the actual source overlap floor J/2 when
+J=norm(integral(D*phi)) and epsilon*integral(norm phi)<=J/2.
+compact_source_pairing_bound controls integral(f*T) by the fixed target
+pairing plus epsilon*integral(norm T). No derivative-error estimates used.
+
+compact_theta_bound_of_mode_error combines these with the previously checked
+signed identity. For m>=1,C>=0,J>0, sup error<=C/m and
+2*C*integral(norm phi)<=J*m, its conclusion is
+
+ |theta-e*m| <= 2*(C*integral(norm A) + norm(integral(D*T))
+                    + C*integral(norm T))/J.
+
+The source-overlap floor is derived, not an independent premise. Continuity
+provides all compact integrability. The identity itself remains an explicit
+input until the actual-source/target lemmas are assembled.
+
+scheduled_theta_bound fixes e,C,J,D,phi,A,T BEFORE quantification over k.
+With m=k+2, eventual mode error and eventual signed identity imply existence
+of one nonnegative B bounding |theta_k-e*(k+2)| eventually. exists_nat_ge and
+J>0 discharge the finite overlap threshold; max(0,B) ensures output sign.
+Thus independence of k is part of the theorem signature, not prose.
+
+Canonical q3_check exit0; all49 printed dependency lists standard only.
+Independent recovery_review checked constants, denominator threshold and fixed
+family quantifiers, and approved final hash. Current dependency oleans used;
+preexisting UnicodeBasic/style warnings remain. Saved log whitespace normalized.
+No production admission or fresh-clone proof claim.
+
+Next exact joint: instantiate the signed identity for the actual anchored
+mode0/test0 and mode4/test4 from checked weak ODE, orthogonality and derivative
+dictionary; feed the fixed target/test inputs and hmode to scheduled_theta_bound,
+then combine constants for the actual htheta port. This actual selected
+instantiation is NOT yet claimed. hmode, finite-ground matching and off-line
+zero-freeness remain open. PX_RH_CLAIM: NOT_MADE.

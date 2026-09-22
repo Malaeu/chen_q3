@@ -1161,4 +1161,124 @@ theorem complex_compactTest_derivatives (n : ℕ) (hn : n = 0 ∨ n = 4) :
   exact (((contDiff_infty_iff_deriv.mp hd).1 x).hasDerivAt.ofReal_comp).deriv
 
 #print axioms complex_compactTest_derivatives
+theorem compact_product_error_bound (f D g : ℝ → ℂ) (ε : ℝ)
+    (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+    (hg : ContinuousOn g (Icc (-1) 1))
+    (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ ε) :
+    ‖∫ x in (-1:ℝ)..1, (f x-D x)*g x‖ ≤ ε*(∫ x in (-1:ℝ)..1, ‖g x‖) := by
+  have hab : (-1:ℝ) ≤ 1 := by norm_num
+  apply (intervalIntegral.norm_integral_le_integral_norm hab).trans
+  calc
+    (∫ x in (-1:ℝ)..1, ‖(f x-D x)*g x‖) ≤ ∫ x in (-1:ℝ)..1, ε*‖g x‖ := by
+      apply intervalIntegral.integral_mono_on hab
+        (((hf.sub hD).mul hg).norm.intervalIntegrable_of_Icc hab)
+        ((continuousOn_const.mul hg.norm).intervalIntegrable_of_Icc hab)
+      intro x hx
+      dsimp only
+      rw [norm_mul]
+      exact mul_le_mul_of_nonneg_right (herr x hx) (norm_nonneg _)
+    _ = _ := intervalIntegral.integral_const_mul _ _
+
+theorem compact_overlap_floor (f D φ : ℝ → ℂ) (ε J : ℝ)
+    (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+    (hφ : ContinuousOn φ (Icc (-1) 1))
+    (hJ : J = ‖∫ x in (-1:ℝ)..1, D x*φ x‖)
+    (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ ε)
+    (hsmall : ε*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J/2) :
+    J/2 ≤ ‖∫ x in (-1:ℝ)..1, f x*φ x‖ := by
+  have hh := compact_product_error_bound f D φ ε hf hD hφ herr
+  have heq : (∫ x in (-1:ℝ)..1, (f x-D x)*φ x) =
+      (∫ x in (-1:ℝ)..1, f x*φ x)-(∫ x in (-1:ℝ)..1, D x*φ x) := by
+    simp_rw [sub_mul]
+    exact intervalIntegral.integral_sub
+      ((hf.mul hφ).intervalIntegrable_of_Icc (by norm_num))
+      ((hD.mul hφ).intervalIntegrable_of_Icc (by norm_num))
+  rw [heq] at hh
+  have hr := norm_sub_norm_le (∫ x in (-1:ℝ)..1, D x*φ x)
+    (∫ x in (-1:ℝ)..1, f x*φ x)
+  rw [norm_sub_rev, ← hJ] at hr
+  linarith
+
+theorem compact_source_pairing_bound (f D T : ℝ → ℂ) (ε : ℝ)
+    (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+    (hT : ContinuousOn T (Icc (-1) 1))
+    (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ ε) :
+    ‖∫ x in (-1:ℝ)..1, f x*T x‖ ≤
+      ‖∫ x in (-1:ℝ)..1, D x*T x‖+ε*(∫ x in (-1:ℝ)..1, ‖T x‖) := by
+  have hh := compact_product_error_bound f D T ε hf hD hT herr
+  have heq : (∫ x in (-1:ℝ)..1, f x*T x) =
+      (∫ x in (-1:ℝ)..1, D x*T x)+(∫ x in (-1:ℝ)..1, (f x-D x)*T x) := by
+    rw [← intervalIntegral.integral_add
+      ((hD.mul hT).intervalIntegrable_of_Icc (by norm_num))
+      (((hf.sub hD).mul hT).intervalIntegrable_of_Icc (by norm_num))]
+    apply intervalIntegral.integral_congr
+    intro x hx
+    dsimp only
+    ring
+  rw [heq]
+  exact (norm_add_le _ _).trans (add_le_add le_rfl hh)
+
+#print axioms compact_product_error_bound
+#print axioms compact_overlap_floor
+#print axioms compact_source_pairing_bound
+theorem compact_theta_bound_of_mode_error
+    (m θ e C J : ℝ) (f D φ A T : ℝ → ℂ)
+    (hm : 1 ≤ m) (hC : 0 ≤ C) (hJ : 0 < J)
+    (hf : ContinuousOn f (Icc (-1) 1)) (hD : ContinuousOn D (Icc (-1) 1))
+    (hφ : ContinuousOn φ (Icc (-1) 1)) (hA : ContinuousOn A (Icc (-1) 1))
+    (hT : ContinuousOn T (Icc (-1) 1))
+    (hJeq : J = ‖∫ x in (-1:ℝ)..1, D x*φ x‖)
+    (herr : ∀ x ∈ Icc (-1:ℝ) 1, ‖f x-D x‖ ≤ C/m)
+    (hlarge : 2*C*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J*m)
+    (hidentity : (((θ-e*m : ℝ):ℂ))*(∫ x in (-1:ℝ)..1, f x*φ x) =
+      (m:ℂ)*(∫ x in (-1:ℝ)..1, (f x-D x)*A x) +
+      ∫ x in (-1:ℝ)..1, f x*T x) :
+    |θ-e*m| ≤ 2*(C*(∫ x in (-1:ℝ)..1, ‖A x‖) +
+      (‖∫ x in (-1:ℝ)..1, D x*T x‖+C*(∫ x in (-1:ℝ)..1, ‖T x‖)))/J := by
+  have hmp : 0 < m := by linarith
+  have hsmall : (C/m)*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J/2 := by
+    rw [div_mul_eq_mul_div]
+    apply (div_le_iff₀ hmp).mpr
+    nlinarith
+  have hfloor := compact_overlap_floor f D φ (C/m) J hf hD hφ hJeq herr hsmall
+  have hU := compact_product_error_bound f D A (C/m) hf hD hA herr
+  rw [div_mul_eq_mul_div] at hU
+  have hV := compact_source_pairing_bound f D T (C/m) hf hD hT herr
+  have hP : 0 ≤ ∫ x in (-1:ℝ)..1, ‖T x‖ :=
+    intervalIntegral.integral_nonneg_of_forall (by norm_num) (fun x => norm_nonneg _)
+  have hVC : ‖∫ x in (-1:ℝ)..1, f x*T x‖ ≤
+      ‖∫ x in (-1:ℝ)..1, D x*T x‖+C*(∫ x in (-1:ℝ)..1, ‖T x‖) :=
+    hV.trans (add_le_add le_rfl (mul_le_mul_of_nonneg_right (div_le_self hC hm) hP))
+  exact theta_defect_bound_from_weak_pairing m θ e J _ _ _ _ _ hmp hJ hidentity hfloor hU hVC
+
+#print axioms compact_theta_bound_of_mode_error
+theorem scheduled_theta_bound
+    (θ : ℕ → ℝ) (f : ℕ → ℝ → ℂ) (e C J : ℝ) (D φ A T : ℝ → ℂ)
+    (hC : 0 ≤ C) (hJ : 0 < J)
+    (hf : ∀ k, ContinuousOn (f k) (Icc (-1) 1))
+    (hD : ContinuousOn D (Icc (-1) 1)) (hφ : ContinuousOn φ (Icc (-1) 1))
+    (hA : ContinuousOn A (Icc (-1) 1)) (hT : ContinuousOn T (Icc (-1) 1))
+    (hJeq : J = ‖∫ x in (-1:ℝ)..1, D x*φ x‖)
+    (herr : ∀ᶠ k in Filter.atTop, ∀ x ∈ Icc (-1:ℝ) 1,
+      ‖f k x-D x‖ ≤ C/((k+2:ℕ):ℝ))
+    (hidentity : ∀ᶠ k in Filter.atTop,
+      (((θ k-e*((k+2:ℕ):ℝ) : ℝ):ℂ))*(∫ x in (-1:ℝ)..1, f k x*φ x) =
+        (((k+2:ℕ):ℝ):ℂ)*(∫ x in (-1:ℝ)..1, (f k x-D x)*A x) +
+          ∫ x in (-1:ℝ)..1, f k x*T x) :
+    ∃ B : ℝ, 0 ≤ B ∧ ∀ᶠ k in Filter.atTop, |θ k-e*((k+2:ℕ):ℝ)| ≤ B := by
+  let B := 2*(C*(∫ x in (-1:ℝ)..1, ‖A x‖) +
+    (‖∫ x in (-1:ℝ)..1, D x*T x‖+C*(∫ x in (-1:ℝ)..1, ‖T x‖)))/J
+  refine ⟨max 0 B, le_max_left _ _, ?_⟩
+  obtain ⟨K,hK⟩ := exists_nat_ge (2*C*(∫ x in (-1:ℝ)..1, ‖φ x‖)/J)
+  filter_upwards [herr,hidentity,Filter.eventually_ge_atTop K] with k hk hid hkK
+  have hm : (1:ℝ) ≤ ((k+2:ℕ):ℝ) := by exact_mod_cast (show 1 ≤ k+2 by omega)
+  have hlarge : 2*C*(∫ x in (-1:ℝ)..1, ‖φ x‖) ≤ J*((k+2:ℕ):ℝ) := by
+    rw [mul_comm J]
+    apply (div_le_iff₀ hJ).mp
+    exact hK.trans (by exact_mod_cast (show K ≤ k+2 by omega))
+  have hb := compact_theta_bound_of_mode_error ((k+2:ℕ):ℝ) (θ k) e C J
+    (f k) D φ A T hm hC hJ (hf k) hD hφ hA hT hJeq hk hlarge hid
+  exact hb.trans (le_max_right _ _)
+
+#print axioms scheduled_theta_bound
 end Q3OverlapProbe
