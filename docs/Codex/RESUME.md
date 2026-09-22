@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 348
-observed_at: '2026-09-22T12:52:39.065656+00:00'
-previous_sha256: 3c2ca053316339d0d0c90f855eab0525f9b069e147872351fdef53665f0efacf
+revision: 349
+observed_at: '2026-09-22T12:56:07.405470+00:00'
+previous_sha256: f0fa87e6d38b426aaa6f5324a9e85739b49982b8151545a163fa8a27f94ebae6
 owner_thread_id: 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0
 owner_host_id: local
 reconciliation_pending: false
@@ -95,10 +95,10 @@ ownership:
 RH unproved; PX_RH_CLAIM NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking OPEN. Paired-window Mellin identity checked at PAPER scope. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Endpoint candidate SHA95adc76b3956df02f121bdddd5bec054ca785dc0a23b48a50e94e90b6a8fbb10, q3_check exit0. Actual derivative IntervalIntegrable established; self-test integration by parts uses continuous actual source/flux and their integrable interior derivatives. Zero flux removes endpoints. No operator-domain, minmax, spectral gap or hmode admission.
+Form approximation candidate SHAf9198997da29173fe8d51161181cfc26c83d902a2b40de9fbd1fddd23ba887c4, q3_check exit0. Legendre energy gives weighted derivative term bound 4*(q+1)*abs(a_q); existing exact tail-splice theorem supplies summability, yielding uniform convergence on closed interval including endpoints. No uniform-in-m rate, general form-domain density, or hmode claim.
 
 ## Next action
-Actual Ferrers source now has Lean-checked energy identity integral[(1-x^2)*s_prime^2+G*x^2*s^2-(Lambda+G)*s^2]=0. Next formalize natural weighted form core/closed-domain connection needed by minmax and spectral projection. Existing finite polynomial energy identity uses identical differential expression; equality of completions is not proved. Proshka packet remains unsent.
+Lean proves uniform convergence of sqrt(1-x^2)-weighted Legendre derivative partial sums for exact tail-spliced Ferrers source under explicit hm,hK,hsep,Lambda<=20. Next derive actual source form-norm polynomial approximation and map the hypotheses to selected carriers; full natural form-core/spectral projection remains open. Proshka packet remains unsent.
 
 ## Existing work
 Human owner explicitly directed recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2. Prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including a concurrently appearing Proshka request.

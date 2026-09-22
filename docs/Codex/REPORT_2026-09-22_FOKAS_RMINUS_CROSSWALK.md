@@ -1399,3 +1399,26 @@ expression matches D0Mode4FiniteEvenLegendreQuadraticForm.lean's finite-source
 energy expression, but equality of the natural completion with the Legendre
 form closure remains PAPER. No minmax, operator-domain or ground conclusion,
 production admission or Proshka send. PX_RH_CLAIM NOT_MADE.
+
+## Kernel-checked uniform approximation of the energy-weighted derivative
+
+Candidate: docs/session_protocols/ferrers_form_approx_candidate_20260922.lean
+SHA256 f9198997da29173fe8d51161181cfc26c83d902a2b40de9fbd1fddd23ba887c4.
+weighted_derivative_term_bound uses the existing ordinary Legendre energy
+bound to prove norm(sqrt(1-x^2)*derivativeTerm(a,q,x))<=4*(q+1)*abs(a_q)
+on the entire closed source interval. Weighted coefficient summability gives
+uniform convergence of weighted derivative partial sums to the actual
+sqrt(1-x^2)*firstDerivativeSeries. This is the energy weight, not the weaker
+flux weight 1-x^2. Endpoint values vanish due to the weight; no convergence
+of the unweighted derivative series at endpoints is asserted.
+
+actual_source_weighted_derivative_partial_sums_uniform obtains summability
+from the existing exact tail-splice theorem. It explicitly retains m>=2,
+K>=3, tail separation hsep and Lambda<=20; these are not fields silently
+assumed for every S and still require mapping at each selected carrier.
+Canonical q3_check exit0, standard axioms; independent exact-hash review
+approved weights, endpoints, tsum and hypothesis preservation. Existing
+oleans used, preexisting UnicodeBasic warning retained. No uniform-in-m rate
+or general form-core density proved. Next: actual-source polynomial form-norm
+approximation, preserving the separate full form-core/spectral gap obligations.
+No production admission or Proshka send. PX_RH_CLAIM NOT_MADE.

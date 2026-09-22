@@ -1,0 +1,10 @@
+lean /tmp/Q3FerrersFormApprox.lean
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
+'Q3FerrersFormApprox.weighted_derivative_partial_sums_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Q3FerrersFormApprox.actual_source_weighted_derivative_partial_sums_uniform' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+scan /tmp/Q3FerrersFormApprox.lean
+q3_check ok
