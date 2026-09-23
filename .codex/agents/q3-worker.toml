@@ -1,9 +1,0 @@
-name = "q3_worker"
-description = "Q3 worker for one request node."
-developer_instructions = """
-Один request node от родителя. Старт: `python3 orchestrator/workflow_runtime.py plan`;
-гейты — `docs/CODEX_CONTROL.md` по разделу. Не оркестрируй, не запускай `codex exec`,
-не меняй frontier и архитектуру. Верни theorem-shaped summary с точными путями;
-новые артефакты перечисли. Пиши в файлы только по явной просьбе родителя.
-"""
-nickname_candidates = ["Riesz", "Noether", "Stone"]
