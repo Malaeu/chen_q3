@@ -1,23 +1,23 @@
 {
   "active_exploration": null,
   "active_proshka_phase": {
-    "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+    "conversation_id": "6aafb38a-a7a4-83eb-9940-84a574eae168",
     "full_context_uploads": 0,
-    "last_adjudicated_pin": "68e40ebd297b2cc0234fbf662f1200a5de6b2105",
-    "last_boundary_id": "GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN",
-    "opened_at": "2026-09-10T08:33:00+02:00",
-    "opening_pin": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
+    "last_adjudicated_pin": null,
+    "last_boundary_id": null,
+    "opened_at": "2026-09-23T00:36:09.394025+00:00",
+    "opening_pin": "5c0fa3a6fb5381f8a0c8a042c8bd5a003bcc7ef5",
     "owner_boundary_count": 0,
-    "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
+    "phase_id": "PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923",
     "phase_key": {
-      "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
-      "front_id": "GOAL058_SECOND_EXPRESSION",
+      "convention_lock_id": "GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z",
+      "front_id": "GOAL058_SELECTED_FERRERS_GROUND_TRACKING",
       "honesty_state": "CHALLENGER_NOT_RH",
       "route_id": "RouteB_TwoLevelSpectralLadder",
-      "source_object_family_id": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
-      "terminal_consumer_id": "published_Weil_criterion_on_all_complex_compact_smooth_tests"
+      "source_object_family_id": "SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM",
+      "terminal_consumer_id": "Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi"
     },
-    "proshka_calls": 8,
+    "proshka_calls": 0,
     "status": "ACTIVE"
   },
   "control_status": "ACTIVE",
@@ -31,7 +31,7 @@
     "fresh_chats_opened": 4,
     "mathematical_owner_deferral_violations": 0,
     "ordinary_goal_close_calls": 0,
-    "phases_opened": 3,
+    "phases_opened": 4,
     "px_rh_claim_requests": 0
   },
   "observed_manual_review_repairs": [
@@ -225,6 +225,75 @@
       },
       "recorded_at": "2026-09-10T09:21:40.775741+00:00",
       "successor_sha256": "c859dcf252489579c08f42877885543d362b0df7596c0876ba5d5d756d6c73f8"
+    },
+    {
+      "disposition": "REGISTRATION_REPLACED_NOT_MATHEMATICAL_CLOSURE",
+      "event": {
+        "expected_runtime_sha256": "f7bb8eed28bf9b67292f67bbbdde96cecb4baf42e758e0acbb4be34d5baa6418",
+        "receipt_pin": {
+          "blob": "5ea9b003e163e69e76ed34e0c43e5dda461221ca",
+          "commit": "5c0fa3a6fb5381f8a0c8a042c8bd5a003bcc7ef5",
+          "path": "docs/session_protocols/FOKAS_PHASE_RECONCILIATION_20260923.json",
+          "sha256": "2258fdd66ec35cf57674c0dba38eac6cf8cde72e1148e238efd660270e70fec7"
+        },
+        "transition_id": "GOAL058_FOKAS_EXISTING_CHAT_20260923"
+      },
+      "predecessor_meter": {
+        "delegated_strategic_review_calls": 53,
+        "exploration_review_calls": 0,
+        "fanout_violations": 0,
+        "forced_rollovers": 2,
+        "fresh_chats_opened": 4,
+        "mathematical_owner_deferral_violations": 0,
+        "ordinary_goal_close_calls": 0,
+        "phases_opened": 3,
+        "px_rh_claim_requests": 0
+      },
+      "predecessor_phase": {
+        "conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+        "full_context_uploads": 0,
+        "last_adjudicated_pin": "68e40ebd297b2cc0234fbf662f1200a5de6b2105",
+        "last_boundary_id": "GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN",
+        "opened_at": "2026-09-10T08:33:00+02:00",
+        "opening_pin": "b968f9443d5491778ab5e65c75c4ad7d64ba0b14",
+        "owner_boundary_count": 0,
+        "phase_id": "PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13",
+        "phase_key": {
+          "convention_lock_id": "GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED",
+          "front_id": "GOAL058_SECOND_EXPRESSION",
+          "honesty_state": "CHALLENGER_NOT_RH",
+          "route_id": "RouteB_TwoLevelSpectralLadder",
+          "source_object_family_id": "CANONICAL_TEST_SIGNED_DIRICHLET_FORM",
+          "terminal_consumer_id": "published_Weil_criterion_on_all_complex_compact_smooth_tests"
+        },
+        "proshka_calls": 8,
+        "status": "ACTIVE"
+      },
+      "preimage_sha256": "f7bb8eed28bf9b67292f67bbbdde96cecb4baf42e758e0acbb4be34d5baa6418",
+      "receipt": {
+        "authority": "Owner explicitly instructed continuing Goal058 with Proshka in this existing chat in this task; standing scoped grant docs/Codex/GOAL.md section1. No new owner consent asserted.",
+        "existing_conversation_id": "6aafb38a-a7a4-83eb-9940-84a574eae168",
+        "expected_runtime_sha256": "f7bb8eed28bf9b67292f67bbbdde96cecb4baf42e758e0acbb4be34d5baa6418",
+        "mathematical_status": "Candidate source/consumer routing only. All floors/rates remain conditional. No proof admission or RH claim.",
+        "new_chat_created": false,
+        "observation": "CUA read of existing IAB tab1 showed exact chat URL, completed TRY_CONTROL13_CHAIN_COMPLETION with patch9b3688d0449028f05caa1be58fd14a5e1175deab017a092ce79ea92d82edb1fe and empty composer. No new request sent. This is host-observed evidence, not a provider signature.",
+        "pending_mathematical_request": false,
+        "phase_id": "PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923",
+        "phase_key": {
+          "convention_lock_id": "GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z",
+          "front_id": "GOAL058_SELECTED_FERRERS_GROUND_TRACKING",
+          "honesty_state": "CHALLENGER_NOT_RH",
+          "route_id": "RouteB_TwoLevelSpectralLadder",
+          "source_object_family_id": "SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM",
+          "terminal_consumer_id": "Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi"
+        },
+        "registered_predecessor_conversation_id": "6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59",
+        "schema": "q3_fokas_phase_reconciliation_evidence.v1",
+        "source_commit": "3aeb6a2eb14b8b52513f62e7771eb6ec1f64bd74",
+        "transition_id": "GOAL058_FOKAS_EXISTING_CHAT_20260923"
+      },
+      "recorded_at": "2026-09-23T00:36:09.394025+00:00",
+      "successor_sha256": "a58b3d0da2f45577ef8a481cd7c0c9bd019e0df9cb9e37d4c535b4c87c049722"
     }
   ],
   "operational_action_pending": null,
