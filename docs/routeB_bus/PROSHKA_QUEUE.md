@@ -16,6 +16,22 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - НОВЫЕ ЗАПРОСЫ/РЕСИВЕРЫ (ранее не в очереди): Проверка PDF (CONDITIONAL_CLOSURE_PROVED, стена M-H4c); Числа Стирлинга utility-layer; Прибор Вейля (насыщение e^{2W}, вершина 2.09W, мотор Какейи); CANONICALIZE_WEILOP (D03G/H/I открыты); 030_CoupledFullSumResponseCertificate (G1-G7); G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW; DLMF3085 weight-match receiver; B_prime root-to-normalized row.
 - МЕТА (memory-extended): K1–K8 промпт; hard gate ≠ soft penalty; BRIDGE_KIND taxonomy (7 видов моста); Q_ζ compiler; Rodgers–Tao no-go (равномерно-положительный запас знака невозможен).
 
+## REQ-2026-09-23-FOKAS-MATRIX-DEFECT · Selected Ferrers joint matrix defect through Fokas paired windows · OPEN
+
+- `STATUS: OPEN`
+- Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`
+- Boundary: `GOAL058_SELECTED_FERRERS_JOINT_MATRIX_DEFECT`
+- Call class: `DELEGATED_STRATEGIC_REVIEW`
+- Intake carried: Exact source packet;18 source/log hashes revalidated;all analytic rates remain hypotheses
+- Registered predictions: Joint matrix-action cancellation or exact obstruction;no RH claim
+- Delivery mode: owner remote; GitHub locator
+- Request commit / bytes / lines / SHA-256 / Git blob / Final LF:
+  `1a3a02dee7b99ad9d87dcab4046729613daffa81` / `177681` / `3879` /
+  `368b62622519ab31098e85d463b33c8295c0897a47ffec9362d60bcd0e7a3087` /
+  `ef7e65d2da8598c65f4d2119e51a5a657fe59378` / `yes`
+
+---
+
 ## REQ-2026-09-13-NULLVAR
 - STATUS: ANSWERED. Full raw response fetched at c6694aba0a2f50b8f004e9e967ae0c63b14900be; 48806 B/699 LF/SHA256 4fa7909725d2fa10ccc52d3413580289692d3a1489ecae7bed88956f80980730. Parent full reading and sole independent reader accepted N1/N2 domains, boundary and exact correction accounting only. Original OPEN/pending lines below are historical delivery entries, superseded here. Intake and the owner-requested ground-state test: docs/Codex/REPORT_2026-09-13_NULL_AND_GROUND_STATE_TEST.md, SHA256 19ce3481523bfb3f3f9ba8be24f2c86dc2f1916d80f9535a451d010bceef0d95. No negative V or source-sign result. NULLVAR itself does not add a full sign attempt; the subsequent one fixed-k sufficient comparison is disproved for every k>0 and advances historical count 11 -> 12 once. No new Proshka dispatch.
 - Delivery verified 2026-09-13T21:01:15Z: request commit 46c1b471e4ddf7d5b2f27270a986cd8401e79711 equals observed remote. Registered review-plan READY/holds[], exact blob 2a12a68e0ea6ad4d74a3889cd3d6e80d10ad31ed. Its inherited canonical chat/attachment locator is not rebound; the explicit owner instruction selects GitHub-only and living chat 6aa52001. Fresh app read showed idle; one send_message_to_thread notice accepted. Browser1/tab2 shows the exact immutable notice AX68, natural Pro-Denkvorgang AX74, empty composer AX81 and Stop AX85. No duplicate send or Answer now. Mathematical result pending.
