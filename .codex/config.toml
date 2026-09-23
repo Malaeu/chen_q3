@@ -17,9 +17,7 @@ model = "gpt-6-astra"
 model_reasoning_effort = "low"
 model_reasoning_summary = "auto"
 
-# Safe interactive defaults. Change if your workflow needs otherwise.
-approval_policy = "on-request"
-sandbox_mode = "workspace-write"
+# approval_policy / sandbox_mode come from ~/.codex/config.toml (global).
 
 [agents]
 enabled = true
