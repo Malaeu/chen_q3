@@ -14,7 +14,7 @@
 
 # Root / orchestrator
 model = "gpt-6-astra"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "low"
 model_reasoning_summary = "auto"
 
 # Safe interactive defaults. Change if your workflow needs otherwise.
