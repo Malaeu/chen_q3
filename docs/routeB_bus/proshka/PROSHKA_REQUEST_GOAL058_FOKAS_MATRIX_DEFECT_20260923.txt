@@ -1,0 +1,3879 @@
+REQUEST_ID: REQ-2026-09-23-FOKAS-MATRIX-DEFECT
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_JOINT_MATRIX_DEFECT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PREPARED_STATUS: DELIVERY_REQUIRES_REVIEW_PLAN_AND_UI_RECEIPT
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+SOURCE_COMMIT: 3aeb6a2eb14b8b52513f62e7771eb6ec1f64bd74
+INTENDED_EXISTING_CHAT: 6aafb38a-a7a4-83eb-9940-84a574eae168
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, после технического восстановления возвращаемся к математике Фокаса.
+Нужен один ограниченный разбор механизма, а не ещё один условный roof.
+Контроль13 восстановлен и опубликован; математического продвижения это не даёт.
+Ни одна из оценок ниже не объявлена доказанной.
+
+1. Точные потребители и настоящая полная цепь
+
+В исходниках ниже есть выбранный Ferrers источник, а не произвольный S:
+selectedFerrersFiniteCCMRow P k, sourceCCMFiniteMatrix i_k,
+selectedFerrersFiniteCCMRayleigh P k, selectedFerrersFiniteCCMResidual P k.
+P пока условен: selectedFerrersCCMLemma73PreAnchorPort_of_modeAndChiRates
+требует hmode и hchi. selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates
+добавляет htheta и выдаёт сходимость центрированного trial к Xi.
+Эти гипотезы не считать поставленными. Выбранное исходное расписание m=N=k+2;
+у cofinal shell есть собственный доказанный сдвиг хвоста, не менять его.
+
+selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+выдаёт для ОДНОГО ground-преобразования вещественные нули и оценку расстояния
+до trial, при odd-floor, trial-complement-floor и residualEnergy/beta²<1.
+selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors
+проводит это на одном кофинальном хвосте; beta,beta0 там постоянные >0.
+Остаётся компактный взвешенный decay: нормировочный множитель * kernel L2 envelope
+* sqrt(residualEnergy/beta²) ->0 на каждом компакте полосы.
+Terminal: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi принимает ровно
+ОДНУ entire real-zero family со сходимостью к centeredXi. Никакой RH claim сейчас.
+
+2. Формула Фокаса — что именно проверить
+
+m>=2, L=log m, s_n=1/2-2pi*i*n/L, c=2pi*m; H_m — точный выбранный
+mode0/mode4 пакет, с его группированным Ferrers рядом.
+R_m(s;H)=zeta(s,m+1) int_0^1 H(v)v^(s-1)dv
+          +sum_{l=1}^m l^(-s) int_0^(l/m) H(v)v^(s-1)dv.
+На дискретной s_n решётке alpha=A(b-e),
+A=m^(1/4)/sqrt(L), b_n=zeta(s_n)Hhat(s_n), e_n=R_m(s_n;H),
+Z=||alpha||_2>0, q=alpha/Z, a=<Kq,q>, r=(K-aI)q.
+По конечной линейности:
+  r=(A/Z)[(K-aI)b-(K-aI)e].
+Это bookkeeping identity, НЕ оценка r. Малая e не оплачивает (K-aI)b,
+рост ||K||, малость Z или спектральный floor.
+
+Вопрос: дают ли точные уравнения выбранных мод и paired window representation
+контролируемое сокращение двух матричных действий ДО раздельных модулей?
+Выведи точное тождество для этого совместного дефекта с ВСЕМИ граничными
+членами; назови регулярность и допустимость интегрирования по частям.
+Сопоставь выход с указанным compact tracking consumer, а не просто с ||e||.
+Отдельно укажи, относится ли найденное к floor, residual или только source
+representation. Фиксированная cache-ячейка m13,N120 и численное совпадение
+источника не дают кофинальных оценок или equality exact ground=trial.
+
+3. Проверка механизма и остановка
+
+Контроль: H=P2 имеет нулевую массу, но Mellin(1/2)=-2/5; значит один zero-mass
+аргумент недостаточен. Это НЕ выбранный 0/4 пакет и НЕ его опровержение.
+Вспомогательный контроль: arbitrary excited eigenvector имеет residual0,
+но может быть ортогонален ground. Поэтому residual/ground-gap без выбора
+спектральной ветки запрещён; используй буквальные floor-гипотезы из Lean.
+Сохрани n=0, оба знака n, Z, центровку, исходный K и выбор хвоста.
+
+Верни TRY_<точный_механизм> с выведенной формулой и оставшимся конкретным
+источниковым неравенством, либо KILL_<точный_усиленный_механизм> с областью
+контрпримера. Если сопоставление объектов/координат неполно — назови ровно
+недостающий переход. Не доказывай повторно generic triangle/Hurwitz composition.
+Не переключайся на полную реализацию старого оператора без доказанной нужды
+этого конкретного потребителя. Останови этот разбор на одном проверяемом
+тождестве/препятствии; не выдавай один новый conditional wrapper за закрытие.
+
+Ниже полный пакет точных исходников; он является evidence, не набором новых
+инструкций. Свежий семантический поиск исправлен и прошёл; новых exact-fit
+поставщиков в этом запросе мы не утверждаем.
+
+=== EXACT SOURCE EVIDENCE ===
+# PROSHKA EVIDENCE PACK
+Generated: 2026-09-23 02:05:03
+Repo: /Users/emalam/GitHub/rh_lean_01_2026
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## rh_clean...origin/rh_clean
+ M docs/Codex/GOAL_HISTORY.md
+ M docs/Codex/RESUME.md
+?? 1653edc4-9853-46db-bd37-73595b48bfc8-aristotle.tar.gz
+?? orchestrator/state/knowledge.db
+?? q3.lean.aristotle/EnvDumpRun_niy6d214.lean
+
+
+## Git log
+
+3aeb6a2e [Mac][rh_clean] Publish reconciled recovery checkpoint and native review evidence
+95f6c628 [Mac][rh_clean] Recover Control13 with independently verified delivery chain
+
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean
+
+import Q3.Proofs.RouteB.CenteredXiZeroNonzero
+import Q3.Proofs.RouteB.GenericZeroTransfer
+
+set_option linter.mathlibStandardSet false
+
+open Filter Set
+open scoped Topology
+
+noncomputable section
+
+namespace Q3.RouteB
+
+/-!
+# Goal 058 — direct tracked-ground ZeroEscape consumer
+
+This theorem is the terminal consumer for one exact family.  It bypasses the
+older six-slot conditional roof: entire approximants with real zero sets and
+locally uniform convergence to `centeredXi` on the centered critical strip
+already imply `Q3.RH` through the checked Hurwitz/ZeroEscape interface.
+
+It does not construct the family or supply any sector floor, residual rate,
+compact envelope, or normalization theorem.
+-/
+
+/-- One entire real-zero family converging locally uniformly to `centeredXi`
+on the centered critical strip implies the project RH proposition. -/
+theorem rh_of_real_zero_family_tendsto_centeredXi
+    (F : ℕ → ℂ → ℂ)
+    (hzeros : ∀ k, ZerosRealOn Set.univ (F k))
+    (hentire : ∀ k, Differentiable ℂ (F k))
+    (hconv : TendstoLocallyUniformlyOn
+      F centeredXi Filter.atTop centeredCriticalStrip) :
+    Q3.RH := by
+  have hXi_ne : centeredXi ≠ 0 := by
+    intro hzero
+    exact centeredXi_zero_ne_zero (congrFun hzero 0)
+  have happroach :
+      ZerosApproachOn centeredCriticalStrip F centeredXi :=
+    zerosApproachOn_of_tendstoLocallyUniformlyOn
+      (isOpen_lt (continuous_abs.comp Complex.continuous_im) continuous_const)
+      (fun _ hz => hz) hentire
+      differentiable_centeredXi hconv hXi_ne
+  have hreal : ZerosRealOn centeredCriticalStrip centeredXi :=
+    zerosRealOn_of_zerosApproachOn
+      centeredCriticalStrip F centeredXi hzeros happroach
+  apply rh_iff_centeredXi_zeros_real.mpr
+  intro z hz hzstrip
+  exact hreal z hzstrip hz
+
+#print axioms rh_of_real_zero_family_tendsto_centeredXi
+
+end Q3.RouteB
+
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTailReindex.lean
+
+import Q3.Proofs.RouteB.G6N1SelectedFerrersTrackedGroundTransform
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 4000000
+
+open Matrix Filter
+open scoped BigOperators
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+/-!
+# Goal 058 — eventual floors to one precommitted tail reindex
+
+Verdict of 2026-08-27 (`f4243db5`).  The source supplies the complement
+floor, the odd-sector floor and `ratio < 1` only EVENTUALLY, while the tracked
+constructions need them at the cell in hand.  A global floor family may not be
+manufactured from an eventual one, and the finite prefix may not be dropped
+silently.
+
+This node closes exactly that API seam: it returns ONE precommitted additive
+shift and, at every shifted index, both decisive finite conclusions for the
+pointwise tracked transform.
+
+No second diagonal, no independently selected subsequence, no alternate shell:
+the index, pair and source scale are inherited from the same selected shell by
+definitional equality.
+-/
+
+/-- **The eventual-to-tail receipt.**  One additive shift `φ n = n + k₀`,
+strictly monotone and cofinal, along which every hypothesis of the pointwise
+tracked node holds, so that at each `φ n` the tracked transform has real zeros
+and satisfies the exact pointwise tracking bound. -/
+theorem selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta0 beta : ℝ) (hbeta0 : 0 < beta0) (hbeta : 0 < beta)
+    (hmN : ∀ᶠ j in atTop,
+      2 ≤ ((selectedFerrersCofinalSourceData P).index j).m ∧ 1 ≤ ((selectedFerrersCofinalSourceData P).index j).N)
+    (hfloorEv : ∀ᶠ j in atTop,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index j))
+        (selectedFerrersFiniteCCMRow P j)
+        ((selectedFerrersFiniteCCMRayleigh P j : ℝ) : ℂ) beta)
+    (hoddEv : ∀ᶠ j in atTop,
+      ∀ x : CCMModeFinite ((selectedFerrersCofinalSourceData P).index j).N → ℂ,
+        ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index j).N *ᵥ x = -x →
+        beta0 * (star x ⬝ᵥ x).re ≤
+          (star x ⬝ᵥ
+            ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index j) -
+              ((selectedFerrersFiniteCCMRayleigh P j : ℝ) : ℂ) •
+                (1 : Matrix (CCMModeFinite ((selectedFerrersCofinalSourceData P).index j).N)
+                  (CCMModeFinite ((selectedFerrersCofinalSourceData P).index j).N) ℂ)) *ᵥ x)).re)
+    (hratioEv : ∀ᶠ j in atTop,
+      selectedFerrersTrackedGroundResidualFloorRatio P beta j < 1) :
+    ∃ φ : ℕ → ℕ,
+      StrictMono φ ∧
+      Tendsto φ atTop atTop ∧
+      (∀ n, (selectedFerrersCofinalSourceData P).index (φ n) = (selectedFerrersCofinalSourceData P).index (φ n)) ∧
+      (∀ n, (selectedFerrersCofinalSourceData P).pair (φ n) =
+        (selectedFerrersCofinalSourceData P).pair (φ n)) ∧
+      (∀ n, (selectedFerrersCofinalSourceData P).sourceScale (φ n) =
+        (selectedFerrersCofinalSourceData P).sourceScale (φ n)) ∧
+      ∀ n,
+        ∃ hfloorAt :
+            complexTrialComplementFloor
+              (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index (φ n)))
+              (selectedFerrersFiniteCCMRow P (φ n))
+              ((selectedFerrersFiniteCCMRayleigh P (φ n) : ℝ) : ℂ) beta,
+          ZerosRealOn Set.univ
+            (selectedFerrersTrackedGroundTransformAt P (φ n) beta hfloorAt) ∧
+          ∀ z : ℂ,
+            ‖selectedFerrersTrackedGroundTransformAt P (φ n) beta hfloorAt z -
+                (selectedFerrersCofinalSourceData P).centeredPstar (φ n) z‖ ≤
+              ‖centeredXi 0 /
+                (selectedFerrersCofinalSourceData P).rawFplus (φ n) 0‖ *
+                sourceOrderedCCMKernelL2
+                  (logLength ((selectedFerrersCofinalSourceData P).index (φ n)))
+                  ((selectedFerrersCofinalSourceData P).index (φ n)).N z *
+                Real.sqrt
+                  (selectedFerrersTrackedGroundResidualFloorRatio P beta (φ n)) := by
+  classical
+  obtain ⟨a1, h1⟩ := eventually_atTop.1 hmN
+  obtain ⟨a2, h2⟩ := eventually_atTop.1 hfloorEv
+  obtain ⟨a3, h3⟩ := eventually_atTop.1 hoddEv
+  obtain ⟨a4, h4⟩ := eventually_atTop.1 hratioEv
+  set k0 : ℕ := max (max a1 a2) (max a3 a4) with hk0
+  refine ⟨fun n => n + k0, ?_, ?_, fun _ => rfl, fun _ => rfl, fun _ => rfl, ?_⟩
+  · intro p q hpq
+    exact Nat.add_lt_add_right hpq k0
+  · exact Filter.tendsto_atTop_mono (fun n => Nat.le_add_right n k0) tendsto_id
+  · intro n
+    have hge1 : a1 ≤ n + k0 := by
+      have : a1 ≤ k0 := le_trans (le_max_left a1 a2) (le_max_left _ _)
+      omega
+    have hge2 : a2 ≤ n + k0 := by
+      have : a2 ≤ k0 := le_trans (le_max_right a1 a2) (le_max_left _ _)
+      omega
+    have hge3 : a3 ≤ n + k0 := by
+      have : a3 ≤ k0 := le_trans (le_max_left a3 a4) (le_max_right _ _)
+      omega
+    have hge4 : a4 ≤ n + k0 := by
+      have : a4 ≤ k0 := le_trans (le_max_right a3 a4) (le_max_right _ _)
+      omega
+    obtain ⟨hm, hN⟩ := h1 (n + k0) hge1
+    refine ⟨h2 (n + k0) hge2, ?_⟩
+    exact
+      selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+        P (n + k0) beta0 beta hbeta0 hbeta hm hN
+        (h3 (n + k0) hge3) (h2 (n + k0) hge2) (h4 (n + k0) hge4)
+
+#print axioms selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors
+
+end Q3.RouteB.D0Pstar
+
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTransform.lean
+
+import Q3.Proofs.RouteB.G6N1SelectedFerrersGroundProposition59RealZeros
+import Q3.Proofs.RouteB.LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail
+import Q3.Proofs.RouteB.D0ZerosRealOnScalarTransfer
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 4000000
+
+open Matrix
+open scoped BigOperators
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+/-!
+# Goal 058 — the tracked ground transform: real zeros AND pointwise tracking
+
+Verdict `REQ-2026-08-26-N` closeout (same-witness lock).  One tracked ground
+transform carries BOTH decisive finite properties: reality of its zero set and
+the exact pointwise projective estimate against the selected shell's
+`centeredPstar`.
+
+The lock is genuine: the tracked complex ground vector and the real
+eta-normalized representative are proved to lie on the same one-dimensional
+ground line — no definitional equality is asserted, and no second ground row
+is chosen for the two conclusions.
+
+The reversed pole labels between `sourceOrderedCCMCoefficient` and
+`proposition59CCMCoefficient` are handled by reflection parity of the real
+representative; the production `-z` orientation stays explicit throughout.
+-/
+
+/-! ## Step 0: local extraction wrapper (the upstream copy is private) -/
+
+private theorem gtt_hermitian_quadratic_real
+    {ι : Type*} [Fintype ι]
+    (A : Matrix ι ι ℂ) (hA : A.IsHermitian) (x : ι → ℂ) :
+    ((star x ⬝ᵥ (A *ᵥ x)).re : ℂ) = star x ⬝ᵥ (A *ᵥ x) := by
+  have hconj : (starRingEnd ℂ) (star x ⬝ᵥ (A *ᵥ x)) =
+      star x ⬝ᵥ (A *ᵥ x) := by
+    calc (starRingEnd ℂ) (star x ⬝ᵥ (A *ᵥ x))
+        = star (star x ⬝ᵥ (A *ᵥ x)) := rfl
+      _ = star (A *ᵥ x) ⬝ᵥ star (star x) := by
+          simp [dotProduct, map_sum, mul_comm]
+      _ = star (A *ᵥ x) ⬝ᵥ x := by rw [star_star]
+      _ = star x ⬝ᵥ (A *ᵥ x) := by
+          rw [Matrix.star_mulVec, ← Matrix.dotProduct_mulVec, hA.eq]
+  exact (Complex.conj_eq_iff_re.mp hconj)
+
+private theorem gtt_ground_extraction
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloor :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ)
+        beta) :
+    ∃ (epsilon : ℝ) (xi0 : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ),
+      complexHermitianGroundGapAtLeast
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k)) epsilon beta xi0 ∧
+      1 - Complex.normSq
+          (star xi0 ⬝ᵥ selectedFerrersFiniteCCMRow P k) ≤
+        (star (selectedFerrersFiniteCCMResidual P k) ⬝ᵥ
+          selectedFerrersFiniteCCMResidual P k).re / beta ^ 2 := by
+  classical
+  haveI : Nonempty (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N) :=
+    ⟨ccmCenterFinite _⟩
+  refine hermitian_unit_trialLine_complementFloor_gives_ground_gap_tracking
+    (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+    (selectedFerrersFiniteCCMRow P k)
+    (selectedFerrersFiniteCCMResidual P k)
+    (selectedFerrersFiniteCCMRayleigh P k) beta
+    (sourceCCMFiniteMatrix_isHermitian _)
+    (selectedFerrersFiniteCCMRow_unit P k)
+    ?_ rfl hfloor
+  rw [selectedFerrersFiniteCCMRayleigh]
+  exact gtt_hermitian_quadratic_real _
+    (sourceCCMFiniteMatrix_isHermitian _) _
+
+/-! ## Step 1: the tracked ground objects on the selected shell -/
+
+/-- The tracked complex ground eigenvalue selected by the literal complement
+floor on the exact selected cell. -/
+def selectedFerrersTrackedGroundEigenvalue
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ)
+    (hfloor : ∀ k,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (k : ℕ) : ℝ :=
+  Classical.choose (gtt_ground_extraction P k beta (hfloor k))
+
+/-- The tracked complex unit ground vector from the same choice. -/
+def selectedFerrersTrackedGroundVector
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ)
+    (hfloor : ∀ k,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (k : ℕ) : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ :=
+  Classical.choose
+    (Classical.choose_spec (gtt_ground_extraction P k beta (hfloor k)))
+
+/-- Both fields of the tracked choice: the full ground-gap package and the
+exact projective residual/floor estimate. -/
+theorem selectedFerrersTrackedGroundVector_spec
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ)
+    (hfloor : ∀ k,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (k : ℕ) :
+    complexHermitianGroundGapAtLeast
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersTrackedGroundEigenvalue P beta hfloor k) beta
+        (selectedFerrersTrackedGroundVector P beta hfloor k) ∧
+      1 - Complex.normSq
+          (star (selectedFerrersTrackedGroundVector P beta hfloor k) ⬝ᵥ
+            selectedFerrersFiniteCCMRow P k) ≤
+        (star (selectedFerrersFiniteCCMResidual P k) ⬝ᵥ
+          selectedFerrersFiniteCCMResidual P k).re / beta ^ 2 :=
+  Classical.choose_spec
+    (Classical.choose_spec (gtt_ground_extraction P k beta (hfloor k)))
+
+/-- Exact projective overlap of the selected trial row on the tracked ground
+line. -/
+def selectedFerrersTrackedGroundOverlap
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ)
+    (hfloor : ∀ k,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (k : ℕ) : ℂ :=
+  star (selectedFerrersTrackedGroundVector P beta hfloor k) ⬝ᵥ
+    selectedFerrersFiniteCCMRow P k
+
+/-- Literal residual energy over the squared complement floor. -/
+def selectedFerrersTrackedGroundResidualFloorRatio
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ) (k : ℕ) : ℝ :=
+  (star (selectedFerrersFiniteCCMResidual P k) ⬝ᵥ
+    selectedFerrersFiniteCCMResidual P k).re / beta ^ 2
+
+/-- The exact nonzero scalar in front of the tracked ground transform. -/
+def selectedFerrersTrackedGroundScale
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ)
+    (hfloor : ∀ k,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (k : ℕ) : ℂ :=
+  centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+    selectedFerrersTrackedGroundOverlap P beta hfloor k
+
+/-- **The tracked ground transform.**  One named function; both finite
+conclusions below are proved for exactly this object. -/
+def selectedFerrersTrackedGroundTransform
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (beta : ℝ)
+    (hfloor : ∀ k,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (k : ℕ) (z : ℂ) : ℂ :=
+  selectedFerrersTrackedGroundScale P beta hfloor k *
+    sourceOrderedCCMRawTransform
+      (logLength ((selectedFerrersCofinalSourceData P).index k))
+      ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersTrackedGroundVector P beta hfloor k) z
+
+/-! ## Step 2: the same-witness lock -/
+
+/-- Two ground packages on the same matrix share the eigenvalue: each bottom
+bound tests the other's vector. -/
+private theorem gtt_eigenvalue_unique
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    {K : Matrix ι ι ℂ} {e1 e2 b1 b2 : ℝ} {x1 x2 : ι → ℂ}
+    (h1 : complexHermitianGroundGapAtLeast K e1 b1 x1)
+    (h2 : complexHermitianGroundGapAtLeast K e2 b2 x2) :
+    e1 = e2 := by
+  obtain ⟨hu1, he1, hb1, -⟩ := h1
+  obtain ⟨hu2, he2, hb2, -⟩ := h2
+  have hn1 : (star x1 ⬝ᵥ x1).re = 1 := by rw [hu1]; norm_num
+  have hn2 : (star x2 ⬝ᵥ x2).re = 1 := by rw [hu2]; norm_num
+  have hq1 : (star x1 ⬝ᵥ (K *ᵥ x1)).re = e1 := by
+    rw [he1, dotProduct_smul, smul_eq_mul, Complex.mul_re,
+      Complex.ofReal_re, Complex.ofReal_im, hu1]
+    norm_num
+  have hq2 : (star x2 ⬝ᵥ (K *ᵥ x2)).re = e2 := by
+    rw [he2, dotProduct_smul, smul_eq_mul, Complex.mul_re,
+      Complex.ofReal_re, Complex.ofReal_im, hu2]
+    norm_num
+  have hle1 := hb1 x2
+  have hle2 := hb2 x1
+  rw [hn2, mul_one, hq2] at hle1
+  rw [hn1, mul_one, hq1] at hle2
+  linarith
+
+/-- The positive ground gap drives every eigenvector at the ground level onto
+the ground line.  Local reconstruction: the upstream copy is private. -/
+private theorem gtt_ground_line
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    {K : Matrix ι ι ℂ} {epsilon beta : ℝ} (hbeta : 0 < beta)
+    {xi0 : ι → ℂ}
+    (hgap : complexHermitianGroundGapAtLeast K epsilon beta xi0)
+    {y : ι → ℂ} (hy : K *ᵥ y = (epsilon : ℂ) • y) :
+    y = (star xi0 ⬝ᵥ y) • xi0 := by
+  classical
+  obtain ⟨hunit, heig, hbottom, hcomp⟩ := hgap
+  set w : ι → ℂ := y - (star xi0 ⬝ᵥ y) • xi0 with hw
+  have hproj : star xi0 ⬝ᵥ w = 0 := by
+    rw [hw, dotProduct_sub, dotProduct_smul, smul_eq_mul, hunit, mul_one,
+      sub_self]
+  have hweig : K *ᵥ w = (epsilon : ℂ) • w := by
+    rw [hw, Matrix.mulVec_sub, hy, Matrix.mulVec_smul, heig, smul_comm,
+      smul_sub]
+  have hwzero : w = 0 := by
+    by_contra hne
+    have hpos : 0 < (star w ⬝ᵥ w).re := by
+      obtain ⟨j, hj⟩ := Function.ne_iff.mp hne
+      have hwj : w j ≠ 0 := by simpa using hj
+      have hjpos : 0 < Complex.normSq (w j) := Complex.normSq_pos.mpr hwj
+      simpa [Complex.normSq, dotProduct] using
+        (show 0 < ∑ i, Complex.normSq (w i) from
+          Finset.sum_pos' (fun i _ => Complex.normSq_nonneg (w i))
+            ⟨j, Finset.mem_univ j, hjpos⟩)
+    have hgapw := hcomp w hproj
+    have henergy : (star w ⬝ᵥ (K *ᵥ w)).re = epsilon * (star w ⬝ᵥ w).re := by
+      rw [hweig, dotProduct_smul, smul_eq_mul, Complex.mul_re,
+        Complex.ofReal_re, Complex.ofReal_im]
+      ring
+    rw [henergy] at hgapw
+    nlinarith [hgapw, hpos, hbeta]
+  have h0 : y - (star xi0 ⬝ᵥ y) • xi0 = 0 := by rw [← hw, hwzero]
+  exact sub_eq_zero.mp h0
+
+/-! ## Step 3: the reversed-label crosswalk for an even real row -/
+
+/-- For a reflection-even real row the source-ordered and Proposition-59
+coefficient families agree on the whole carrier: the reversed pole label is
+absorbed by parity. -/
+private theorem gtt_coefficient_crosswalk
+    (N : ℕ) (xiR : CCMModeFinite N → ℝ)
+    (heven : ∀ j, xiR (ccmNegFinite N j) = xiR j)
+    (n : ℤ) :
+    sourceOrderedCCMCoefficient N (fun j => ((xiR j : ℝ) : ℂ)) n =
+      proposition59CCMCoefficient N xiR n := by
+  classical
+  by_cases hn : n ∈ Finset.Icc (-(N : ℤ)) N
+  · rw [sourceOrderedCCMCoefficient, dif_pos hn,
+      proposition59CCMCoefficient, dif_pos hn]
+    have hcoe : ∀ i : CCMModeFinite N,
+        (((ccmModeFiniteEquivIcc N) i : {m : ℤ // m ∈ Finset.Icc (-(N : ℤ)) N})
+          : ℤ) = ccmModeFinite N i := fun i => rfl
+    have hneg :
+        (ccmModeFiniteEquivIcc N).symm ⟨-n, neg_mem_Icc_of_mem_Icc hn⟩ =
+          ccmNegFinite N ((ccmModeFiniteEquivIcc N).symm ⟨n, hn⟩) := by
+      apply (ccmModeFiniteEquivIcc N).injective
+      apply Subtype.ext
+      rw [Equiv.apply_symm_apply]
+      rw [hcoe, ccmModeFinite_neg]
+      have hback : ccmModeFinite N ((ccmModeFiniteEquivIcc N).symm ⟨n, hn⟩) = n := by
+        have := congrArg Subtype.val
+          ((ccmModeFiniteEquivIcc N).apply_symm_apply ⟨n, hn⟩)
+        rw [hcoe] at this
+        exact this
+      rw [hback]
+    rw [hneg, heven]
+  · rw [sourceOrderedCCMCoefficient, dif_neg hn,
+      proposition59CCMCoefficient, dif_neg hn]
+
+/-- Hence the two transforms of an even real row agree up to the production
+argument reflection. -/
+private theorem gtt_transform_crosswalk
+    (L : ℝ) (N : ℕ) (xiR : CCMModeFinite N → ℝ)
+    (heven : ∀ j, xiR (ccmNegFinite N j) = xiR j)
+    (z : ℂ) :
+    sourceOrderedCCMRawTransform L N (fun j => ((xiR j : ℝ) : ℂ)) z =
+      proposition59CCMTransform L N xiR (-z) := by
+  unfold sourceOrderedCCMRawTransform proposition59CCMTransform
+  unfold proposition59RawTransform
+  congr 1
+  apply Finset.sum_congr rfl
+  intro n _
+  rw [gtt_coefficient_crosswalk N xiR heven n]
+
+/-! ## Step 4: auxiliary transfers -/
+
+/-- Reality of the zero set is invariant under the production argument
+reflection. -/
+private theorem gtt_zerosRealOn_neg {f : ℂ → ℂ}
+    (hf : ZerosRealOn Set.univ f) :
+    ZerosRealOn Set.univ (fun z => f (-z)) := by
+  intro z _ hz
+  have h := hf (-z) (Set.mem_univ _) hz
+  simpa using h
+
+/-- Complexification of a real eigenvector of the real CCM matrix. -/
+private theorem gtt_complexify_eigen
+    (mProject N : ℕ) (epsilon : ℝ) (x : CCMModeFinite N → ℝ)
+    (hx : Matrix.mulVec (ccmWeilMatFinite mProject N) x = epsilon • x) :
+    (fun j l => ((ccmWeilMatFinite mProject N j l : ℝ) : ℂ)) *ᵥ
+        (fun j => ((x j : ℝ) : ℂ)) =
+      (epsilon : ℂ) • (fun j => ((x j : ℝ) : ℂ)) := by
+  funext l
+  have hl := congrFun hx l
+  simp only [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul]
+  have hsum : ∑ m, ((ccmWeilMatFinite mProject N l m : ℝ) : ℂ) *
+      (((x m : ℝ)) : ℂ) =
+      (((∑ m, ccmWeilMatFinite mProject N l m * x m : ℝ)) : ℂ) := by
+    push_cast
+    rfl
+  rw [hsum]
+  have hval : ∑ m, ccmWeilMatFinite mProject N l m * x m = epsilon * x l := by
+    simpa [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul] using hl
+  rw [hval]
+  push_cast
+  ring
+
+/-- Real and imaginary parts of a complexified-real eigenvector are real
+eigenvectors at the same eigenvalue. -/
+private theorem gtt_re_im_eigen
+    (mProject N : ℕ) (epsilon : ℝ) {xi : CCMModeFinite N → ℂ}
+    (heig : (fun j l => ((ccmWeilMatFinite mProject N j l : ℝ) : ℂ)) *ᵥ xi =
+      (epsilon : ℂ) • xi) :
+    Matrix.mulVec (ccmWeilMatFinite mProject N) (fun j => (xi j).re) =
+        epsilon • (fun j => (xi j).re) ∧
+      Matrix.mulVec (ccmWeilMatFinite mProject N) (fun j => (xi j).im) =
+        epsilon • (fun j => (xi j).im) := by
+  classical
+  have hcoord : ∀ j,
+      ∑ l, ((ccmWeilMatFinite mProject N j l : ℝ) : ℂ) * xi l =
+        (epsilon : ℂ) * xi j := by
+    intro j
+    have := congrFun heig j
+    simpa [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul] using this
+  constructor
+  · funext j
+    have h := congrArg Complex.re (hcoord j)
+    rw [Complex.re_sum] at h
+    have hleft : ∑ l, (((ccmWeilMatFinite mProject N j l : ℝ) : ℂ) * xi l).re =
+        ∑ l, ccmWeilMatFinite mProject N j l * (xi l).re := by
+      apply Finset.sum_congr rfl
+      intro l _
+      rw [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im]
+      ring
+    rw [hleft] at h
+    rw [Complex.mul_re, Complex.ofReal_re, Complex.ofReal_im] at h
+    simpa [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul] using h
+  · funext j
+    have h := congrArg Complex.im (hcoord j)
+    rw [Complex.im_sum] at h
+    have hleft : ∑ l, (((ccmWeilMatFinite mProject N j l : ℝ) : ℂ) * xi l).im =
+        ∑ l, ccmWeilMatFinite mProject N j l * (xi l).im := by
+      apply Finset.sum_congr rfl
+      intro l _
+      rw [Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im]
+      ring
+    rw [hleft] at h
+    rw [Complex.mul_im, Complex.ofReal_re, Complex.ofReal_im] at h
+    simpa [Matrix.mulVec, dotProduct, Pi.smul_apply, smul_eq_mul] using h
+
+/-- Real quadratic data of a complexified real vector. -/
+private theorem gtt_real_quadratic
+    (mProject N : ℕ) (x : CCMModeFinite N → ℝ) :
+    (star (fun j => ((x j : ℝ) : ℂ)) ⬝ᵥ (fun j => ((x j : ℝ) : ℂ))).re =
+        x ⬝ᵥ x ∧
+      (star (fun j => ((x j : ℝ) : ℂ)) ⬝ᵥ
+        ((fun j l => ((ccmWeilMatFinite mProject N j l : ℝ) : ℂ)) *ᵥ
+          (fun j => ((x j : ℝ) : ℂ)))).re =
+        x ⬝ᵥ Matrix.mulVec (ccmWeilMatFinite mProject N) x := by
+  constructor
+  · simp [dotProduct, Complex.mul_re]
+  · simp [dotProduct, Matrix.mulVec, Complex.mul_re, Complex.re_sum,
+      Finset.mul_sum]
+
+/-! ## Step 5: the public same-witness lock -/
+
+set_option maxHeartbeats 16000000 in
+/-- **The tracked ground transform carries both finite properties.**  One
+named function has an entirely real zero set AND the exact pointwise
+projective estimate against the selected shell's `centeredPstar`.
+
+The tracked complex ground vector and the real eta-normalized representative
+are proved to lie on the same one-dimensional ground line; no definitional
+equality is asserted, and no second ground row is chosen. -/
+theorem selectedFerrersTrackedGroundTransform_realZeros_and_pointwiseTracking_of_sectorFloors
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta0 beta : ℝ)
+    (hbeta0 : 0 < beta0) (hbeta : 0 < beta)
+    (hm : 2 ≤ ((selectedFerrersCofinalSourceData P).index k).m)
+    (hN : 1 ≤ ((selectedFerrersCofinalSourceData P).index k).N)
+    (hoddFloor :
+      ∀ x : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ,
+        ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = -x →
+        beta0 * (star x ⬝ᵥ x).re ≤
+          (star x ⬝ᵥ
+            ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) -
+              ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) •
+                (1 : Matrix (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N)
+                  (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N) ℂ)) *ᵥ x)).re)
+    (hfloor : ∀ j,
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index j))
+        (selectedFerrersFiniteCCMRow P j)
+        ((selectedFerrersFiniteCCMRayleigh P j : ℝ) : ℂ) beta)
+    (hratio : selectedFerrersTrackedGroundResidualFloorRatio P beta k < 1) :
+    ZerosRealOn Set.univ
+      (selectedFerrersTrackedGroundTransform P beta hfloor k) ∧
+    ∀ z : ℂ,
+      ‖selectedFerrersTrackedGroundTransform P beta hfloor k z -
+          (selectedFerrersCofinalSourceData P).centeredPstar k z‖ ≤
+        ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          sourceOrderedCCMKernelL2
+            (logLength ((selectedFerrersCofinalSourceData P).index k))
+            ((selectedFerrersCofinalSourceData P).index k).N z *
+          Real.sqrt
+            (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+  classical
+  obtain ⟨htgap, htdefect⟩ :=
+    selectedFerrersTrackedGroundVector_spec P beta hfloor k
+  have hxunit := htgap.1
+  have hxeig := htgap.2.1
+  have hxbottom := htgap.2.2.1
+  -- overlap nonvanishing from the strict ratio
+  have hov_ne :
+      selectedFerrersTrackedGroundOverlap P beta hfloor k ≠ 0 := by
+    intro hzero
+    rw [selectedFerrersTrackedGroundOverlap] at hzero
+    rw [hzero] at htdefect
+    simp only [map_zero, sub_zero] at htdefect
+    rw [selectedFerrersTrackedGroundResidualFloorRatio] at hratio
+    linarith
+  -- the ratified real ground representative with real P59 zeros
+  obtain ⟨eps2, xiC2, xiR, c2, hc2, hcast2, heig2, heven2, hnorm2, hbot2,
+      hsimple2, hzeros⟩ :=
+    selectedFerrersGround_exists_proposition59_zerosRealOn_of_sectorFloors
+      P k beta0 beta hbeta0 hbeta hm hN hoddFloor (hfloor k)
+  have hxiRc := gtt_complexify_eigen ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N eps2 xiR heig2
+  have hxiR_ne : (fun j => ((xiR j : ℝ) : ℂ)) ≠ 0 := by
+    intro hzero
+    have hall : ∀ j, xiR j = 0 := by
+      intro j
+      have h := congrFun hzero j
+      simp only [Pi.zero_apply] at h
+      exact_mod_cast h
+    have hsum : ccmEtaFinite ((selectedFerrersCofinalSourceData P).index k).N ⬝ᵥ xiR = 0 := by
+      rw [dotProduct]
+      exact Finset.sum_eq_zero fun j _ => by rw [hall j, mul_zero]
+    rw [hnorm2] at hsum
+    norm_num at hsum
+  -- the two independent choices share the eigenvalue
+  have heps : selectedFerrersTrackedGroundEigenvalue P beta hfloor k = eps2 := by
+    obtain ⟨hq1, hq2⟩ := gtt_real_quadratic ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N xiR
+    have hnormpos : 0 < xiR ⬝ᵥ xiR := by
+      by_contra hcon
+      push_neg at hcon
+      have hnn : (0:ℝ) ≤ xiR ⬝ᵥ xiR := by
+        rw [dotProduct]
+        exact Finset.sum_nonneg fun j _ => mul_self_nonneg _
+      have hzero : xiR ⬝ᵥ xiR = 0 := le_antisymm hcon hnn
+      have hall : ∀ j, xiR j = 0 := by
+        intro j
+        have := (Finset.sum_eq_zero_iff_of_nonneg
+          (fun i _ => mul_self_nonneg (xiR i))).mp (by rw [dotProduct] at hzero; exact hzero)
+          j (Finset.mem_univ j)
+        exact mul_self_eq_zero.mp this
+      exact hxiR_ne (funext fun j => by rw [hall j]; norm_num)
+    -- direction one: the tracked bottom tested on the real vector
+    have hdir1 : selectedFerrersTrackedGroundEigenvalue P beta hfloor k ≤ eps2 := by
+      have hb := hxbottom (fun j => ((xiR j : ℝ) : ℂ))
+      have henergy :
+          (star (fun j => ((xiR j : ℝ) : ℂ)) ⬝ᵥ
+            (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ
+              (fun j => ((xiR j : ℝ) : ℂ)))).re = eps2 * (xiR ⬝ᵥ xiR) := by
+        rw [show sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ
+              (fun j => ((xiR j : ℝ) : ℂ)) =
+            (eps2 : ℂ) • (fun j => ((xiR j : ℝ) : ℂ)) from hxiRc]
+        rw [dotProduct_smul, smul_eq_mul, Complex.mul_re, Complex.ofReal_re,
+          Complex.ofReal_im, hq1]
+        ring
+      rw [hq1, henergy] at hb
+      exact le_of_mul_le_mul_right (by linarith) hnormpos
+    -- direction two: the real bottom tested on a nonzero part of the tracked vector
+    have hxeigCast :
+        (fun j l => ((ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N j l : ℝ) : ℂ)) *ᵥ
+          selectedFerrersTrackedGroundVector P beta hfloor k =
+        ((selectedFerrersTrackedGroundEigenvalue P beta hfloor k : ℝ) : ℂ) •
+          selectedFerrersTrackedGroundVector P beta hfloor k := hxeig
+    obtain ⟨hRe, hIm⟩ := gtt_re_im_eigen ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N _ hxeigCast
+    have hxi_ne : selectedFerrersTrackedGroundVector P beta hfloor k ≠ 0 := by
+      intro hzero
+      rw [hzero] at hxunit
+      simp at hxunit
+    have hpart : ∃ v : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℝ, v ≠ 0 ∧
+        Matrix.mulVec (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N) v =
+          selectedFerrersTrackedGroundEigenvalue P beta hfloor k • v := by
+      by_cases hre :
+        (fun j => (selectedFerrersTrackedGroundVector P beta hfloor k j).re) = 0
+      · refine ⟨fun j =>
+          (selectedFerrersTrackedGroundVector P beta hfloor k j).im, ?_, hIm⟩
+        intro him
+        apply hxi_ne
+        funext j
+        have h1 : (selectedFerrersTrackedGroundVector P beta hfloor k j).re = 0 :=
+          congrFun hre j
+        have h2 : (selectedFerrersTrackedGroundVector P beta hfloor k j).im = 0 :=
+          congrFun him j
+        exact Complex.ext h1 h2
+      · exact ⟨_, hre, hRe⟩
+    obtain ⟨v, hv_ne, hveig⟩ := hpart
+    have hvnorm : 0 < v ⬝ᵥ v := by
+      by_contra hcon
+      push_neg at hcon
+      have hnn : (0:ℝ) ≤ v ⬝ᵥ v := by
+        rw [dotProduct]
+        exact Finset.sum_nonneg fun j _ => mul_self_nonneg _
+      have hzero : v ⬝ᵥ v = 0 := le_antisymm hcon hnn
+      apply hv_ne
+      funext j
+      have := (Finset.sum_eq_zero_iff_of_nonneg
+        (fun i _ => mul_self_nonneg (v i))).mp (by rw [dotProduct] at hzero; exact hzero)
+        j (Finset.mem_univ j)
+      exact mul_self_eq_zero.mp this
+    have hb2 := hbot2 v
+    have henergy2 : v ⬝ᵥ Matrix.mulVec
+        (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N) v =
+        selectedFerrersTrackedGroundEigenvalue P beta hfloor k * (v ⬝ᵥ v) := by
+      rw [hveig, dotProduct_smul, smul_eq_mul]
+    rw [henergy2] at hb2
+    have hdir2 : eps2 ≤ selectedFerrersTrackedGroundEigenvalue P beta hfloor k :=
+      le_of_mul_le_mul_right (by linarith) hvnorm
+    linarith
+  -- the real representative lies on the tracked ground line
+  have hline := gtt_ground_line hbeta htgap
+    (by rw [heps]; exact hxiRc :
+      sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ (fun j => ((xiR j : ℝ) : ℂ)) =
+        ((selectedFerrersTrackedGroundEigenvalue P beta hfloor k : ℝ) : ℂ) •
+          (fun j => ((xiR j : ℝ) : ℂ)))
+  set alpha : ℂ := star (selectedFerrersTrackedGroundVector P beta hfloor k) ⬝ᵥ
+    (fun j => ((xiR j : ℝ) : ℂ)) with halpha
+  have halpha_ne : alpha ≠ 0 := by
+    intro hzero
+    apply hxiR_ne
+    rw [hline, hzero, zero_smul]
+  -- the tracked transform is a nonzero multiple of the real P59 transform
+  have hrow_smul : ∀ z : ℂ,
+      sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (fun j => ((xiR j : ℝ) : ℂ)) z =
+        alpha * sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (selectedFerrersTrackedGroundVector P beta hfloor k) z := by
+    intro z
+    have hj : ∀ j, ((xiR j : ℝ) : ℂ) =
+        alpha * selectedFerrersTrackedGroundVector P beta hfloor k j := by
+      intro j
+      have h := congrFun hline j
+      simpa [Pi.smul_apply, smul_eq_mul] using h
+    have hsum :
+        (∑ j, ((xiR j : ℝ) : ℂ) *
+            proposition59PoleKernel (logLength ((selectedFerrersCofinalSourceData P).index k))
+              (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) (-z)) =
+          alpha * ∑ j, selectedFerrersTrackedGroundVector P beta hfloor k j *
+            proposition59PoleKernel (logLength ((selectedFerrersCofinalSourceData P).index k))
+              (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) (-z) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro j _
+      rw [hj j]
+      ring
+    rw [sourceOrderedCCMRawTransform_eq_mode_sum,
+      sourceOrderedCCMRawTransform_eq_mode_sum, hsum]
+    ring
+  have htracked_eq : ∀ z : ℂ,
+      selectedFerrersTrackedGroundTransform P beta hfloor k z =
+        ((centeredXi 0 /
+            (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+          selectedFerrersTrackedGroundOverlap P beta hfloor k) * alpha⁻¹) *
+          proposition59CCMTransform (ccmL ((selectedFerrersCofinalSourceData P).index k).m) ((selectedFerrersCofinalSourceData P).index k).N xiR (-z) := by
+    intro z
+    rw [selectedFerrersTrackedGroundTransform, selectedFerrersTrackedGroundScale]
+    have hinv : sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+        (selectedFerrersTrackedGroundVector P beta hfloor k) z =
+        alpha⁻¹ * sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (fun j => ((xiR j : ℝ) : ℂ)) z := by
+      rw [hrow_smul z, ← mul_assoc, inv_mul_cancel₀ halpha_ne, one_mul]
+    rw [hinv]
+    have hcross : sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k))
+        ((selectedFerrersCofinalSourceData P).index k).N (fun j => ((xiR j : ℝ) : ℂ)) z =
+        proposition59CCMTransform (ccmL ((selectedFerrersCofinalSourceData P).index k).m) ((selectedFerrersCofinalSourceData P).index k).N xiR (-z) :=
+      gtt_transform_crosswalk (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N xiR heven2 z
+    rw [hcross]
+    ring
+  have hscale_ne :
+      (centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+        selectedFerrersTrackedGroundOverlap P beta hfloor k) * alpha⁻¹ ≠ 0 := by
+    apply mul_ne_zero
+    · apply mul_ne_zero
+      · exact div_ne_zero centeredXi_zero_ne_zero
+          ((selectedFerrersCofinalSourceData P).rawZeroNonzero k)
+      · exact hov_ne
+    · exact inv_ne_zero halpha_ne
+  constructor
+  · -- reality of the zero set
+    refine Q3.RouteB.zerosRealOn_of_eq_smul hscale_ne (fun z _ => htracked_eq z) ?_
+    exact gtt_zerosRealOn_neg hzeros
+  · -- the pointwise projective estimate
+    intro z
+    have hproj := sourceOrderedCCMRawTransform_sub_projection_le
+      (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersTrackedGroundVector P beta hfloor k)
+      (selectedFerrersFiniteCCMRow P k)
+      hxunit (selectedFerrersFiniteCCMRow_unit P k) z
+    have hsqrt_le :
+        Real.sqrt (1 - Complex.normSq
+            (selectedFerrersTrackedGroundOverlap P beta hfloor k)) ≤
+          Real.sqrt (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+      apply Real.sqrt_le_sqrt
+      simpa [selectedFerrersTrackedGroundOverlap,
+        selectedFerrersTrackedGroundResidualFloorRatio] using htdefect
+    have hcenter :
+        (selectedFerrersCofinalSourceData P).centeredPstar k z =
+          centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+            sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+              (selectedFerrersFiniteCCMRow P k) z := by
+      rw [SelectedProlateCofinalSourceData.centeredPstar,
+        sourceOrderedCCMRawTransform_selectedFerrersFiniteCCMRow_eq_rawFplus]
+    rw [selectedFerrersTrackedGroundTransform, selectedFerrersTrackedGroundScale,
+      hcenter, mul_assoc, ← mul_sub, norm_mul, norm_sub_rev]
+    calc ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+        ‖sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+            (selectedFerrersFiniteCCMRow P k) z -
+          selectedFerrersTrackedGroundOverlap P beta hfloor k *
+            sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+              (selectedFerrersTrackedGroundVector P beta hfloor k) z‖ ≤
+        ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          (sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+            Real.sqrt (1 - Complex.normSq
+              (selectedFerrersTrackedGroundOverlap P beta hfloor k))) := by
+          apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+          simpa [selectedFerrersTrackedGroundOverlap] using hproj
+      _ ≤ ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          (sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+            Real.sqrt
+              (selectedFerrersTrackedGroundResidualFloorRatio P beta k)) := by
+          apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+          apply mul_le_mul_of_nonneg_left hsqrt_le
+          exact sourceOrderedCCMKernelL2_nonneg _ _ _
+      _ = ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+          Real.sqrt
+            (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+          ring
+
+#print axioms selectedFerrersTrackedGroundTransform_realZeros_and_pointwiseTracking_of_sectorFloors
+
+/-! ## Step 6: pointwise floor API (verdict of 2026-08-27, append-only)
+
+The declarations above take a global floor family.  The source supplier gives
+only an eventual floor, so the executable boundary needs constructions that
+consume the floor at the current cell alone.  Nothing above is modified. -/
+
+/-- Tracked ground eigenvalue from the floor at this cell only. -/
+def selectedFerrersTrackedGroundEigenvalueAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : ℝ :=
+  Classical.choose (gtt_ground_extraction P k beta hfloorAt)
+
+/-- Tracked ground vector from the floor at this cell only. -/
+def selectedFerrersTrackedGroundVectorAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) :
+    CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ :=
+  Classical.choose
+    (Classical.choose_spec (gtt_ground_extraction P k beta hfloorAt))
+
+/-- Both fields of the pointwise choice. -/
+theorem selectedFerrersTrackedGroundVectorAt_spec
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) :
+    complexHermitianGroundGapAtLeast
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt) beta
+        (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ∧
+      1 - Complex.normSq
+          (star (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ⬝ᵥ
+            selectedFerrersFiniteCCMRow P k) ≤
+        (star (selectedFerrersFiniteCCMResidual P k) ⬝ᵥ
+          selectedFerrersFiniteCCMResidual P k).re / beta ^ 2 :=
+  Classical.choose_spec
+    (Classical.choose_spec (gtt_ground_extraction P k beta hfloorAt))
+
+/-- Pointwise projective overlap. -/
+def selectedFerrersTrackedGroundOverlapAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : ℂ :=
+  star (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ⬝ᵥ
+    selectedFerrersFiniteCCMRow P k
+
+/-- Pointwise tracked scale. -/
+def selectedFerrersTrackedGroundScaleAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) : ℂ :=
+  centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+    selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt
+
+/-- **The pointwise tracked ground transform.**  Its construction consumes the
+floor at this cell only. -/
+def selectedFerrersTrackedGroundTransformAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (z : ℂ) : ℂ :=
+  selectedFerrersTrackedGroundScaleAt P k beta hfloorAt *
+    sourceOrderedCCMRawTransform
+      (logLength ((selectedFerrersCofinalSourceData P).index k))
+      ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z
+
+/-- The pointwise tracked ground transform is entire. -/
+theorem differentiable_selectedFerrersTrackedGroundTransformAt
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta : ℝ)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta) :
+    Differentiable ℂ
+      (selectedFerrersTrackedGroundTransformAt P k beta hfloorAt) := by
+  unfold selectedFerrersTrackedGroundTransformAt
+  exact
+    (differentiable_sourceOrderedCCMRawTransform _ _ _).const_mul _
+
+theorem selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (beta0 beta : ℝ)
+    (hbeta0 : 0 < beta0) (hbeta : 0 < beta)
+    (hm : 2 ≤ ((selectedFerrersCofinalSourceData P).index k).m)
+    (hN : 1 ≤ ((selectedFerrersCofinalSourceData P).index k).N)
+    (hoddFloor :
+      ∀ x : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ,
+        ccmComplexReflectionMatrix ((selectedFerrersCofinalSourceData P).index k).N *ᵥ x = -x →
+        beta0 * (star x ⬝ᵥ x).re ≤
+          (star x ⬝ᵥ
+            ((sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) -
+              ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) •
+                (1 : Matrix (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N)
+                  (CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N) ℂ)) *ᵥ x)).re)
+    (hfloorAt :
+      complexTrialComplementFloor
+        (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k))
+        (selectedFerrersFiniteCCMRow P k)
+        ((selectedFerrersFiniteCCMRayleigh P k : ℝ) : ℂ) beta)
+    (hratio : selectedFerrersTrackedGroundResidualFloorRatio P beta k < 1) :
+    ZerosRealOn Set.univ
+      (selectedFerrersTrackedGroundTransformAt P k beta hfloorAt) ∧
+    ∀ z : ℂ,
+      ‖selectedFerrersTrackedGroundTransformAt P k beta hfloorAt z -
+          (selectedFerrersCofinalSourceData P).centeredPstar k z‖ ≤
+        ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          sourceOrderedCCMKernelL2
+            (logLength ((selectedFerrersCofinalSourceData P).index k))
+            ((selectedFerrersCofinalSourceData P).index k).N z *
+          Real.sqrt
+            (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+  classical
+  obtain ⟨htgap, htdefect⟩ :=
+    selectedFerrersTrackedGroundVectorAt_spec P k beta hfloorAt
+  have hxunit := htgap.1
+  have hxeig := htgap.2.1
+  have hxbottom := htgap.2.2.1
+  -- overlap nonvanishing from the strict ratio
+  have hov_ne :
+      selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt ≠ 0 := by
+    intro hzero
+    rw [selectedFerrersTrackedGroundOverlapAt] at hzero
+    rw [hzero] at htdefect
+    simp only [map_zero, sub_zero] at htdefect
+    rw [selectedFerrersTrackedGroundResidualFloorRatio] at hratio
+    linarith
+  -- the ratified real ground representative with real P59 zeros
+  obtain ⟨eps2, xiC2, xiR, c2, hc2, hcast2, heig2, heven2, hnorm2, hbot2,
+      hsimple2, hzeros⟩ :=
+    selectedFerrersGround_exists_proposition59_zerosRealOn_of_sectorFloors
+      P k beta0 beta hbeta0 hbeta hm hN hoddFloor hfloorAt
+  have hxiRc := gtt_complexify_eigen ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N eps2 xiR heig2
+  have hxiR_ne : (fun j => ((xiR j : ℝ) : ℂ)) ≠ 0 := by
+    intro hzero
+    have hall : ∀ j, xiR j = 0 := by
+      intro j
+      have h := congrFun hzero j
+      simp only [Pi.zero_apply] at h
+      exact_mod_cast h
+    have hsum : ccmEtaFinite ((selectedFerrersCofinalSourceData P).index k).N ⬝ᵥ xiR = 0 := by
+      rw [dotProduct]
+      exact Finset.sum_eq_zero fun j _ => by rw [hall j, mul_zero]
+    rw [hnorm2] at hsum
+    norm_num at hsum
+  -- the two independent choices share the eigenvalue
+  have heps : selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt = eps2 := by
+    obtain ⟨hq1, hq2⟩ := gtt_real_quadratic ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N xiR
+    have hnormpos : 0 < xiR ⬝ᵥ xiR := by
+      by_contra hcon
+      push_neg at hcon
+      have hnn : (0:ℝ) ≤ xiR ⬝ᵥ xiR := by
+        rw [dotProduct]
+        exact Finset.sum_nonneg fun j _ => mul_self_nonneg _
+      have hzero : xiR ⬝ᵥ xiR = 0 := le_antisymm hcon hnn
+      have hall : ∀ j, xiR j = 0 := by
+        intro j
+        have := (Finset.sum_eq_zero_iff_of_nonneg
+          (fun i _ => mul_self_nonneg (xiR i))).mp (by rw [dotProduct] at hzero; exact hzero)
+          j (Finset.mem_univ j)
+        exact mul_self_eq_zero.mp this
+      exact hxiR_ne (funext fun j => by rw [hall j]; norm_num)
+    -- direction one: the tracked bottom tested on the real vector
+    have hdir1 : selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt ≤ eps2 := by
+      have hb := hxbottom (fun j => ((xiR j : ℝ) : ℂ))
+      have henergy :
+          (star (fun j => ((xiR j : ℝ) : ℂ)) ⬝ᵥ
+            (sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ
+              (fun j => ((xiR j : ℝ) : ℂ)))).re = eps2 * (xiR ⬝ᵥ xiR) := by
+        rw [show sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ
+              (fun j => ((xiR j : ℝ) : ℂ)) =
+            (eps2 : ℂ) • (fun j => ((xiR j : ℝ) : ℂ)) from hxiRc]
+        rw [dotProduct_smul, smul_eq_mul, Complex.mul_re, Complex.ofReal_re,
+          Complex.ofReal_im, hq1]
+        ring
+      rw [hq1, henergy] at hb
+      exact le_of_mul_le_mul_right (by linarith) hnormpos
+    -- direction two: the real bottom tested on a nonzero part of the tracked vector
+    have hxeigCast :
+        (fun j l => ((ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N j l : ℝ) : ℂ)) *ᵥ
+          selectedFerrersTrackedGroundVectorAt P k beta hfloorAt =
+        ((selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt : ℝ) : ℂ) •
+          selectedFerrersTrackedGroundVectorAt P k beta hfloorAt := hxeig
+    obtain ⟨hRe, hIm⟩ := gtt_re_im_eigen ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N _ hxeigCast
+    have hxi_ne : selectedFerrersTrackedGroundVectorAt P k beta hfloorAt ≠ 0 := by
+      intro hzero
+      rw [hzero] at hxunit
+      simp at hxunit
+    have hpart : ∃ v : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℝ, v ≠ 0 ∧
+        Matrix.mulVec (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N) v =
+          selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt • v := by
+      by_cases hre :
+        (fun j => (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).re) = 0
+      · refine ⟨fun j =>
+          (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).im, ?_, hIm⟩
+        intro him
+        apply hxi_ne
+        funext j
+        have h1 : (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).re = 0 :=
+          congrFun hre j
+        have h2 : (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j).im = 0 :=
+          congrFun him j
+        exact Complex.ext h1 h2
+      · exact ⟨_, hre, hRe⟩
+    obtain ⟨v, hv_ne, hveig⟩ := hpart
+    have hvnorm : 0 < v ⬝ᵥ v := by
+      by_contra hcon
+      push_neg at hcon
+      have hnn : (0:ℝ) ≤ v ⬝ᵥ v := by
+        rw [dotProduct]
+        exact Finset.sum_nonneg fun j _ => mul_self_nonneg _
+      have hzero : v ⬝ᵥ v = 0 := le_antisymm hcon hnn
+      apply hv_ne
+      funext j
+      have := (Finset.sum_eq_zero_iff_of_nonneg
+        (fun i _ => mul_self_nonneg (v i))).mp (by rw [dotProduct] at hzero; exact hzero)
+        j (Finset.mem_univ j)
+      exact mul_self_eq_zero.mp this
+    have hb2 := hbot2 v
+    have henergy2 : v ⬝ᵥ Matrix.mulVec
+        (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P).index k).m ((selectedFerrersCofinalSourceData P).index k).N) v =
+        selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt * (v ⬝ᵥ v) := by
+      rw [hveig, dotProduct_smul, smul_eq_mul]
+    rw [henergy2] at hb2
+    have hdir2 : eps2 ≤ selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt :=
+      le_of_mul_le_mul_right (by linarith) hvnorm
+    linarith
+  -- the real representative lies on the tracked ground line
+  have hline := gtt_ground_line hbeta htgap
+    (by rw [heps]; exact hxiRc :
+      sourceCCMFiniteMatrix ((selectedFerrersCofinalSourceData P).index k) *ᵥ (fun j => ((xiR j : ℝ) : ℂ)) =
+        ((selectedFerrersTrackedGroundEigenvalueAt P k beta hfloorAt : ℝ) : ℂ) •
+          (fun j => ((xiR j : ℝ) : ℂ)))
+  set alpha : ℂ := star (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) ⬝ᵥ
+    (fun j => ((xiR j : ℝ) : ℂ)) with halpha
+  have halpha_ne : alpha ≠ 0 := by
+    intro hzero
+    apply hxiR_ne
+    rw [hline, hzero, zero_smul]
+  -- the tracked transform is a nonzero multiple of the real P59 transform
+  have hrow_smul : ∀ z : ℂ,
+      sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (fun j => ((xiR j : ℝ) : ℂ)) z =
+        alpha * sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z := by
+    intro z
+    have hj : ∀ j, ((xiR j : ℝ) : ℂ) =
+        alpha * selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j := by
+      intro j
+      have h := congrFun hline j
+      simpa [Pi.smul_apply, smul_eq_mul] using h
+    have hsum :
+        (∑ j, ((xiR j : ℝ) : ℂ) *
+            proposition59PoleKernel (logLength ((selectedFerrersCofinalSourceData P).index k))
+              (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) (-z)) =
+          alpha * ∑ j, selectedFerrersTrackedGroundVectorAt P k beta hfloorAt j *
+            proposition59PoleKernel (logLength ((selectedFerrersCofinalSourceData P).index k))
+              (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) (-z) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro j _
+      rw [hj j]
+      ring
+    rw [sourceOrderedCCMRawTransform_eq_mode_sum,
+      sourceOrderedCCMRawTransform_eq_mode_sum, hsum]
+    ring
+  have htracked_eq : ∀ z : ℂ,
+      selectedFerrersTrackedGroundTransformAt P k beta hfloorAt z =
+        ((centeredXi 0 /
+            (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+          selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt) * alpha⁻¹) *
+          proposition59CCMTransform (ccmL ((selectedFerrersCofinalSourceData P).index k).m) ((selectedFerrersCofinalSourceData P).index k).N xiR (-z) := by
+    intro z
+    rw [selectedFerrersTrackedGroundTransformAt, selectedFerrersTrackedGroundScaleAt]
+    have hinv : sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+        (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z =
+        alpha⁻¹ * sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+          (fun j => ((xiR j : ℝ) : ℂ)) z := by
+      rw [hrow_smul z, ← mul_assoc, inv_mul_cancel₀ halpha_ne, one_mul]
+    rw [hinv]
+    have hcross : sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k))
+        ((selectedFerrersCofinalSourceData P).index k).N (fun j => ((xiR j : ℝ) : ℂ)) z =
+        proposition59CCMTransform (ccmL ((selectedFerrersCofinalSourceData P).index k).m) ((selectedFerrersCofinalSourceData P).index k).N xiR (-z) :=
+      gtt_transform_crosswalk (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N xiR heven2 z
+    rw [hcross]
+    ring
+  have hscale_ne :
+      (centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+        selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt) * alpha⁻¹ ≠ 0 := by
+    apply mul_ne_zero
+    · apply mul_ne_zero
+      · exact div_ne_zero centeredXi_zero_ne_zero
+          ((selectedFerrersCofinalSourceData P).rawZeroNonzero k)
+      · exact hov_ne
+    · exact inv_ne_zero halpha_ne
+  constructor
+  · -- reality of the zero set
+    refine Q3.RouteB.zerosRealOn_of_eq_smul hscale_ne (fun z _ => htracked_eq z) ?_
+    exact gtt_zerosRealOn_neg hzeros
+  · -- the pointwise projective estimate
+    intro z
+    have hproj := sourceOrderedCCMRawTransform_sub_projection_le
+      (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt)
+      (selectedFerrersFiniteCCMRow P k)
+      hxunit (selectedFerrersFiniteCCMRow_unit P k) z
+    have hsqrt_le :
+        Real.sqrt (1 - Complex.normSq
+            (selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt)) ≤
+          Real.sqrt (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+      apply Real.sqrt_le_sqrt
+      simpa [selectedFerrersTrackedGroundOverlapAt,
+        selectedFerrersTrackedGroundResidualFloorRatio] using htdefect
+    have hcenter :
+        (selectedFerrersCofinalSourceData P).centeredPstar k z =
+          centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0 *
+            sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+              (selectedFerrersFiniteCCMRow P k) z := by
+      rw [SelectedProlateCofinalSourceData.centeredPstar,
+        sourceOrderedCCMRawTransform_selectedFerrersFiniteCCMRow_eq_rawFplus]
+    rw [selectedFerrersTrackedGroundTransformAt, selectedFerrersTrackedGroundScaleAt,
+      hcenter, mul_assoc, ← mul_sub, norm_mul, norm_sub_rev]
+    calc ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+        ‖sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+            (selectedFerrersFiniteCCMRow P k) z -
+          selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt *
+            sourceOrderedCCMRawTransform (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N
+              (selectedFerrersTrackedGroundVectorAt P k beta hfloorAt) z‖ ≤
+        ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          (sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+            Real.sqrt (1 - Complex.normSq
+              (selectedFerrersTrackedGroundOverlapAt P k beta hfloorAt))) := by
+          apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+          simpa [selectedFerrersTrackedGroundOverlapAt] using hproj
+      _ ≤ ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          (sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+            Real.sqrt
+              (selectedFerrersTrackedGroundResidualFloorRatio P beta k)) := by
+          apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+          apply mul_le_mul_of_nonneg_left hsqrt_le
+          exact sourceOrderedCCMKernelL2_nonneg _ _ _
+      _ = ‖centeredXi 0 / (selectedFerrersCofinalSourceData P).rawFplus k 0‖ *
+          sourceOrderedCCMKernelL2 (logLength ((selectedFerrersCofinalSourceData P).index k)) ((selectedFerrersCofinalSourceData P).index k).N z *
+          Real.sqrt
+            (selectedFerrersTrackedGroundResidualFloorRatio P beta k) := by
+          ring
+
+#print axioms selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+#print axioms differentiable_selectedFerrersTrackedGroundTransformAt
+
+end Q3.RouteB.D0Pstar
+
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersCCMLemma73PreAnchorPort.lean
+
+import Q3.Proofs.RouteB.G6N1SelectedFerrersClosedSubstripMellinConvergence
+import Q3.Proofs.RouteB.D0CriticalStripCompactBound
+
+set_option linter.mathlibStandardSet false
+set_option relaxedAutoImplicit false
+set_option autoImplicit false
+
+open Set Filter Complex Topology
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+open Q3.RouteB
+
+/-!
+# L73.8 — the conditional selected Ferrers CCM Lemma 7.3 pre-anchor port
+
+Floor `L73_8_SELECTED_FERRERS_CCM_LEMMA73_PREANCHOR_PORT_CONDITIONAL` of
+verdict `6e10d992`.
+
+The **conditional port constructor**: given the exact existing mode and chi
+rate contracts, it produces an actual inhabitant of
+`CCMLemma73PreAnchorPort selectedFerrersPreAnchorData`.
+
+The declaration is deliberately conditional.  The source tree proves the
+selected closed-substrip convergence (L73.7) only from the explicit `hmode`
+and `hχ` rate inputs; an unqualified global port value would silently assert
+that the external Satz-9 and Fuchs inputs are already discharged.  A
+structure field is not a place to hide unresolved analytic hypotheses, so
+the weakest correct statement is this constructor: supply the rate
+contracts, receive the port.  No additional analytic assumption is
+introduced anywhere.
+
+The topological content is the compact-local promotion: every compact
+subset of the open centered critical strip lies inside one strict closed
+substrip (`D0CriticalStripCompactBound`), and on each such substrip the
+L73.7 uniform theorem applies.  The private plant records that no single
+fixed closed substrip contains the whole open strip, so the promotion is
+genuinely per-compact and cannot be collapsed to one `σ`.
+
+Deliberately NOT here: the cofinal source shell bind, Theorem 5.10, H2a,
+H2b, any roof.
+
+LEDGER:
+  CLOSES: [CCM_LEMMA_7_3_PREANCHOR_PORT_FROM_MODE_AND_CHI_RATES]
+  OPENS:  []
+-/
+
+/-! ## The mandatory plant -/
+
+/-- **The plant** (verbatim from the verdict).  For every fixed
+`0 ≤ σ < 1/2` the open centered strip contains a point strictly beyond the
+closed substrip `|z.im| ≤ σ`.  Compact-local promotion therefore cannot be
+replaced by one fixed closed substrip for the entire open strip. -/
+private theorem openStrip_not_contained_in_fixed_closedSubstrip_plant
+    (σ : ℝ) (hσ0 : 0 ≤ σ) (hσ : σ < 1 / 2) :
+    ∃ z : ℂ, z ∈ centeredCriticalStrip ∧ σ < |z.im| := by
+  let y : ℝ := (σ + 1 / 2) / 2
+  have hσy : σ < y := by
+    dsimp [y]
+    linarith
+  have hyhalf : y < 1 / 2 := by
+    dsimp [y]
+    linarith
+  have hy0 : 0 ≤ y := le_trans hσ0 hσy.le
+  refine ⟨(⟨0, y⟩ : ℂ), ?_, ?_⟩
+  · change |y| < 1 / 2
+    rw [abs_of_nonneg hy0]
+    exact hyhalf
+  · change σ < |y|
+    rw [abs_of_nonneg hy0]
+    exact hσy
+
+/-! ## The conditional port constructor -/
+
+/-- **L73.8.**  The conditional selected Ferrers pre-anchor port: from the
+exact existing mode and chi rate contracts, an inhabitant of
+`CCMLemma73PreAnchorPort selectedFerrersPreAnchorData`.  The source scale is
+the existing factor-four scale, its nonvanishing is the existing supplier,
+and the convergence field is the L73.7 closed-substrip theorem promoted to
+local uniform convergence through the compact-substrip helper.  The exact
+data record, schedule, pair, scale, coordinate and target are untouched. -/
+noncomputable def selectedFerrersCCMLemma73PreAnchorPort_of_modeAndChiRates
+    (C0 C4 Cχ : ℝ)
+    (hC0 : 0 ≤ C0)
+    (hC4 : 0 ≤ C4)
+    (hCχ : 0 ≤ Cχ)
+    (hmode :
+      ∀ᶠ k in Filter.atTop,
+        ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+            (selectedFerrersPaperLambda k),
+          ‖centerAnchorScalarZero k *
+              (selectedFerrersPreAnchorPair k).h0 x -
+            ((parabolicCylinderD 0
+              (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+          ‖centerAnchorScalarFour k *
+              (selectedFerrersPreAnchorPair k).h4 x -
+            ((parabolicCylinderD 4
+              (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+              C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ :
+      ∀ᶠ k in Filter.atTop,
+        |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+          |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+            Cχ / (selectedFerrersPaperLambda k) ^ 2) :
+    CCMLemma73PreAnchorPort selectedFerrersPreAnchorData where
+  sourceScale := selectedFerrersLemma73SourceScale
+  sourceScale_ne := selectedFerrersLemma73SourceScale_ne
+  convergence := by
+    rw [tendstoLocallyUniformlyOn_iff_forall_isCompact
+      CanonicalRHRoute.isOpen_centeredCriticalStrip]
+    intro K hKsub hK
+    obtain ⟨σ, hσ0, hσ, hKσ⟩ :=
+      compact_subset_centeredCriticalStrip_contained_in_closed_substrip
+        hK hKsub
+    have hclosed :=
+      selectedFerrers_closedSubstripMellinConvergence_of_modeAndChiRates
+        σ C0 C4 Cχ hσ0 hσ hC0 hC4 hCχ hmode hχ
+    have hKconv : TendstoUniformlyOn
+        (fun k z =>
+          selectedFerrersLemma73SourceScale k *
+            preAnchorGwinTransformCoordinate
+              (selectedFerrersPreAnchorIndex k)
+              (prolateCombination (selectedFerrersPreAnchorPair k)) z)
+        centeredXi Filter.atTop K := by
+      rw [Metric.tendstoUniformlyOn_iff] at hclosed ⊢
+      intro ε hε
+      filter_upwards [hclosed ε hε] with k hk
+      intro z hz
+      exact hk z (hKσ z hz)
+    simpa only [selectedFerrersPreAnchorData_index,
+      selectedFerrersPreAnchorData_pair] using hKconv
+
+#print axioms selectedFerrersCCMLemma73PreAnchorPort_of_modeAndChiRates
+
+end Q3.RouteB.D0Pstar
+
+end
+
+
+## File: q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFiniteCCMSourceRow.lean
+
+import Q3.Proofs.RouteB.G6N1SelectedFerrersCCMLemma73PreAnchorPort
+import Q3.Proofs.RouteB.LiteralCCMCofinalResidualFloorEnvelopeAndTransformTail
+
+set_option linter.mathlibStandardSet false
+set_option relaxedAutoImplicit false
+set_option autoImplicit false
+
+open Complex Filter Topology Matrix MeasureTheory
+open scoped BigOperators
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+open Q3.RouteB
+
+/-!
+# H2a phase zero — the selected Ferrers finite CCM source row lock
+
+Floor `H2A_0_SELECTED_FERRERS_FINITE_CCM_SOURCE_ROW_LOCK` of verdict
+`4df7b14a`.
+
+L73.8 lives on the selected-only Ferrers pre-anchor data and its
+theorem-generated tail shift, while the existing literal CCM residual/floor
+machinery is phrased for `ProlateCanonicalSourceData` on another interface.
+Same index and unit norm alone do not identify a source row.  This file
+closes the object-identity seam: it exposes, from the selected shell itself,
+
+* the specialized shell `selectedFerrersCofinalSourceData` (exposed only
+  because it is immediately consumed below — a shell-only alias transaction
+  is rejected by the verdict);
+* the exact finite coefficient row
+  `q_{k,j} = c_n(i_k, prolateCombination(P_k), j)` stored by that shell;
+* its exact application formula;
+* its unit normalization `q* ⬝ q = 1` (through the finite synthesis and
+  the exact `norm_kTrial_m_N` supplier); and
+* the literal Proposition-59 crosswalk: the source-ordered raw transform of
+  the row is exactly the shell's `rawFplus`.
+
+The private plant exhibits two distinct unit rows on `Fin 2`: unit
+normalization on a shared carrier does not identify the source row, so no
+future proof may substitute an arbitrary unit vector for the selected row.
+
+Deliberately NOT here: complement floor, penalty, residual spectral bounds,
+Theorem 5.10, and the cofinal simple even ground supplier.
+
+LEDGER:
+  CLOSES: [SELECTED_FERRERS_COFINAL_SOURCE_SHELL_EXPOSED,
+           SELECTED_FERRERS_FINITE_CCM_SOURCE_ROW_OBJECT_LOCK,
+           SELECTED_FERRERS_FINITE_ROW_TO_RAW_TRANSFORM_CROSSWALK]
+  OPENS:  []
+-/
+
+/-! ## The mandatory plant -/
+
+/-- **The plant.**  Two distinct unit rows on the same finite carrier: unit
+normalization does not identify the source row.  Any future proof that
+replaces the selected row by an arbitrary unit vector merely because both
+inhabit the same carrier with the same norm dies here. -/
+private theorem unit_rows_do_not_identify_source_row_plant :
+    ∃ q1 q2 : Fin 2 → ℂ,
+      star q1 ⬝ᵥ q1 = 1 ∧ star q2 ⬝ᵥ q2 = 1 ∧ q1 ≠ q2 := by
+  refine ⟨![1, 0], ![0, 1], ?_, ?_, ?_⟩
+  · simp [dotProduct, Fin.sum_univ_two]
+  · simp [dotProduct, Fin.sum_univ_two]
+  · intro h
+    have h0 := congrFun h 0
+    simp at h0
+
+/-! ## The selected shell, exposed for immediate consumption -/
+
+/-- The selected Ferrers cofinal source shell: the existing generic
+constructor applied to the exact selected pre-anchor data and a conditional
+L73.8 port.  Exposed here only because the finite CCM row below consumes
+it; a shell-only alias file is forbidden by the verdict. -/
+noncomputable def selectedFerrersCofinalSourceData
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData) :
+    SelectedProlateCofinalSourceData :=
+  selectedProlateCofinalSourceDataOfPreAnchorPort
+    selectedFerrersPreAnchorData P
+
+/-! ## The exact finite CCM source row -/
+
+/-- **The selected finite CCM source row**: the exact coefficient row
+`q_{k,j} = c_n(i_k, prolateCombination(P_k), j)` of the normalized projected
+trial stored by the selected shell, on the literal CCM carrier
+`-N, ..., N`. -/
+noncomputable def selectedFerrersFiniteCCMRow
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) :
+    CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N → ℂ :=
+  fun j =>
+    c_n ((selectedFerrersCofinalSourceData P).index k)
+      (prolateCombination ((selectedFerrersCofinalSourceData P).pair k))
+      ((selectedFerrersCofinalSourceData P).eStar_memLp k)
+      ((selectedFerrersCofinalSourceData P).trialNonzero k)
+      (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j)
+
+/-- Exact application formula of the selected row. -/
+theorem selectedFerrersFiniteCCMRow_apply
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ)
+    (j : CCMModeFinite ((selectedFerrersCofinalSourceData P).index k).N) :
+    selectedFerrersFiniteCCMRow P k j =
+      c_n ((selectedFerrersCofinalSourceData P).index k)
+        (prolateCombination ((selectedFerrersCofinalSourceData P).pair k))
+        ((selectedFerrersCofinalSourceData P).eStar_memLp k)
+        ((selectedFerrersCofinalSourceData P).trialNonzero k)
+        (ccmModeFinite ((selectedFerrersCofinalSourceData P).index k).N j) :=
+  rfl
+
+/-! ## Private carrier reindex and synthesis identities (upstream copies are
+private in their file and cannot be imported) -/
+
+private def selectedModeEquiv (i : PairIndex) :
+    CCMModeFinite i.N ≃ {n : ℤ // n ∈ modeSet i} := by
+  let toMode : CCMModeFinite i.N → {n : ℤ // n ∈ modeSet i} :=
+    fun j => ⟨ccmModeFinite i.N j, by
+      simpa [modeSet] using ccmModeFinite_range i.N j⟩
+  refine Equiv.ofBijective toMode ?_
+  constructor
+  · intro j k hjk
+    apply Fin.ext
+    have hval := congrArg Subtype.val hjk
+    change ccmModeFinite i.N j = ccmModeFinite i.N k at hval
+    simp only [ccmModeFinite] at hval
+    omega
+  · intro n
+    have hn : -(i.N : ℤ) ≤ n.1 ∧ n.1 ≤ i.N := by
+      have hnmem : n.1 ∈ Finset.Icc (-(i.N : ℤ)) (i.N : ℤ) := by
+        simpa only [modeSet] using n.2
+      exact Finset.mem_Icc.mp hnmem
+    have hnonneg : 0 ≤ n.1 + (i.N : ℤ) := by omega
+    have hlt : n.1 + (i.N : ℤ) < (2 * i.N + 1 : ℕ) := by omega
+    have hltNat : (n.1 + (i.N : ℤ)).toNat < 2 * i.N + 1 := by
+      exact (Int.toNat_lt_of_ne_zero (by omega)).2 hlt
+    let j : CCMModeFinite i.N :=
+      ⟨(n.1 + (i.N : ℤ)).toNat, hltNat⟩
+    refine ⟨j, ?_⟩
+    apply Subtype.ext
+    simp only [toMode, j, ccmModeFinite]
+    rw [Int.toNat_of_nonneg hnonneg]
+    omega
+
+private theorem selected_finite_sum_reindex
+    (i : PairIndex) (F : ℤ → H_m i) :
+    (∑ j : CCMModeFinite i.N, F (ccmModeFinite i.N j)) =
+      ∑ n ∈ modeSet i, F n := by
+  classical
+  let e := selectedModeEquiv i
+  calc
+    (∑ j : CCMModeFinite i.N, F (ccmModeFinite i.N j)) =
+        ∑ n : {n : ℤ // n ∈ modeSet i}, F n.1 := by
+      simpa [e, selectedModeEquiv] using
+        e.sum_comp (fun n : {n : ℤ // n ∈ modeSet i} => F n.1)
+    _ = ∑ n ∈ modeSet i, F n := by
+      simpa only [Finset.attach_eq_univ] using
+        (Finset.sum_attach (modeSet i) F)
+
+private theorem selected_finite_synthesis_inner_identity
+    (i : PairIndex)
+    (q : CCMModeFinite i.N → ℂ)
+    (f : H_m i) :
+    inner ℂ (ccmFiniteSynthesis i q) f =
+      star q ⬝ᵥ
+        (fun j => inner ℂ (V_n_m i (ccmModeFinite i.N j)) f) := by
+  classical
+  simp [ccmFiniteSynthesis, sum_inner, inner_smul_left, dotProduct]
+
+/-- The synthesis of the selected row reconstructs the normalized projected
+trial of the selected shell. -/
+private theorem ccmFiniteSynthesis_selectedFerrersFiniteCCMRow
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) :
+    ccmFiniteSynthesis ((selectedFerrersCofinalSourceData P).index k)
+      (selectedFerrersFiniteCCMRow P k) =
+      (kTrial_m_N
+        ((selectedFerrersCofinalSourceData P).index k)
+        (prolateCombination ((selectedFerrersCofinalSourceData P).pair k))
+        ((selectedFerrersCofinalSourceData P).eStar_memLp k)
+        ((selectedFerrersCofinalSourceData P).trialNonzero k) :
+        H_m ((selectedFerrersCofinalSourceData P).index k)) := by
+  classical
+  set i : PairIndex := (selectedFerrersCofinalSourceData P).index k with hi
+  letI : FiniteDimensional ℂ (E_m_N i) :=
+    FiniteDimensional.span_of_finite ℂ
+      ((modeSet i).finite_toSet.image (V_n_m i))
+  letI : CompleteSpace (E_m_N i) :=
+    FiniteDimensional.complete ℂ (E_m_N i)
+  let kE : E_m_N i :=
+    kTrial_m_N i
+      (prolateCombination ((selectedFerrersCofinalSourceData P).pair k))
+      ((selectedFerrersCofinalSourceData P).eStar_memLp k)
+      ((selectedFerrersCofinalSourceData P).trialNonzero k)
+  have hprojection : P_m_N i (kE : H_m i) = kE := by
+    rw [P_m_N]
+    exact Submodule.orthogonalProjection_mem_subspace_eq_self kE
+  have hreconstruction :=
+    coe_P_m_N_apply_eq_sum_inner_V_n_m_smul i (kE : H_m i)
+  rw [hprojection] at hreconstruction
+  calc
+    ccmFiniteSynthesis i (selectedFerrersFiniteCCMRow P k) =
+        ∑ j : CCMModeFinite i.N,
+          inner ℂ (V_n_m i (ccmModeFinite i.N j)) (kE : H_m i) •
+            V_n_m i (ccmModeFinite i.N j) := by
+      simp only [ccmFiniteSynthesis, LinearMap.coe_mk, AddHom.coe_mk,
+        selectedFerrersFiniteCCMRow_apply, c_n, kE]
+      rfl
+    _ = ∑ n ∈ modeSet i,
+          inner ℂ (V_n_m i n) (kE : H_m i) • V_n_m i n := by
+      exact selected_finite_sum_reindex i
+        (fun n => inner ℂ (V_n_m i n) (kE : H_m i) • V_n_m i n)
+    _ = (kE : H_m i) := hreconstruction.symm
+
+/-! ## Unit normalization -/
+
+/-- **The unit row theorem**: `q_k^* ⬝ q_k = 1` — the selected row is the
+coefficient row of a unit vector, via the exact `norm_kTrial_m_N`. -/
+theorem selectedFerrersFiniteCCMRow_unit
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) :
+    star (selectedFerrersFiniteCCMRow P k) ⬝ᵥ
+      selectedFerrersFiniteCCMRow P k = 1 := by
+  classical
+  set i : PairIndex := (selectedFerrersCofinalSourceData P).index k with hi
+  set x : H_m i :=
+    (kTrial_m_N i
+      (prolateCombination ((selectedFerrersCofinalSourceData P).pair k))
+      ((selectedFerrersCofinalSourceData P).eStar_memLp k)
+      ((selectedFerrersCofinalSourceData P).trialNonzero k) : H_m i)
+    with hx
+  have hsynthesis :
+      ccmFiniteSynthesis i (selectedFerrersFiniteCCMRow P k) = x :=
+    ccmFiniteSynthesis_selectedFerrersFiniteCCMRow P k
+  have hinner :=
+    selected_finite_synthesis_inner_identity i
+      (selectedFerrersFiniteCCMRow P k) x
+  have hcoeff :
+      (fun j : CCMModeFinite i.N =>
+        inner ℂ (V_n_m i (ccmModeFinite i.N j)) x) =
+        selectedFerrersFiniteCCMRow P k := by
+    funext j
+    rw [selectedFerrersFiniteCCMRow_apply, c_n]
+  rw [hcoeff, hsynthesis] at hinner
+  calc
+    star (selectedFerrersFiniteCCMRow P k) ⬝ᵥ
+        selectedFerrersFiniteCCMRow P k =
+        inner ℂ x x := hinner.symm
+    _ = (‖x‖ : ℂ) ^ 2 := inner_self_eq_norm_sq_to_K x
+    _ = 1 := by
+      rw [show ‖x‖ = 1 by
+        exact norm_kTrial_m_N i
+          (prolateCombination ((selectedFerrersCofinalSourceData P).pair k))
+          ((selectedFerrersCofinalSourceData P).eStar_memLp k)
+          ((selectedFerrersCofinalSourceData P).trialNonzero k)]
+      norm_num
+
+/-! ## The literal Proposition-59 raw-transform crosswalk -/
+
+/-- **The crosswalk**: the source-ordered Proposition-59 raw transform of
+the selected row is exactly the shell's `rawFplus`.  The two coefficient
+transports agree on the shared summation set `-N, ..., N`. -/
+theorem sourceOrderedCCMRawTransform_selectedFerrersFiniteCCMRow_eq_rawFplus
+    (P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData)
+    (k : ℕ) (z : ℂ) :
+    sourceOrderedCCMRawTransform
+      (logLength ((selectedFerrersCofinalSourceData P).index k))
+      ((selectedFerrersCofinalSourceData P).index k).N
+      (selectedFerrersFiniteCCMRow P k) z =
+      (selectedFerrersCofinalSourceData P).rawFplus k z := by
+  classical
+  set i : PairIndex := (selectedFerrersCofinalSourceData P).index k with hi
+  rw [SelectedProlateCofinalSourceData.rawFplus,
+    preAnchorRawTransformCoordinate, sourceOrderedCCMRawTransform]
+  unfold proposition59RawTransform
+  congr 1
+  apply Finset.sum_congr
+  · rfl
+  · intro n hn
+    congr 1
+    have hnmem : n ∈ Finset.Icc (-(i.N : ℤ)) (i.N : ℤ) := by
+      simpa only [modeSet] using hn
+    rw [sourceOrderedCCMCoefficient, dif_pos hnmem,
+      selectedFerrersFiniteCCMRow_apply]
+    congr 1
+    have happ := congrArg Subtype.val
+      ((ccmModeFiniteEquivIcc i.N).apply_symm_apply ⟨n, hnmem⟩)
+    exact happ
+
+#print axioms selectedFerrersFiniteCCMRow_apply
+#print axioms selectedFerrersFiniteCCMRow_unit
+#print axioms sourceOrderedCCMRawTransform_selectedFerrersFiniteCCMRow_eq_rawFplus
+
+end Q3.RouteB.D0Pstar
+
+end
+
+
+## File: q3.lean.aristotle/docs/reviewed_notes/2026_09_22_fokas_paired_window_review.md
+
+# Fokas–Lenells: exact finite-window Mellin crosswalk
+
+- review status: `reviewed`
+- safe for embeddings: `yes`
+- classification: `background route / source-pinned research candidate`
+- date: `2026-09-22`
+- live frontier changed: `no`
+- proof admission: `none`
+- Route B: `CHALLENGER_NOT_RH`; `PX_RH_CLAIM: NOT_MADE`
+
+## Provenance and retrieval status
+
+Owner supplied a new UTF-8 export of Proshka's Fokas review. The archived raw
+file is linked below after ingestion. Raw SHA-256:
+`10b6446e51a48e43e1808d6d8fe1024b46063f8edea14ae8809dd52bc9f4e098`.
+
+[Living source chat](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6aafb38a-a7a4-83eb-9940-84a574eae168).
+The full VERDICT.md preview was read in that chat on 2026-09-22. It declares
+`PROJECT_SOURCE_COMMIT: 70da2617592c5dc5d14215f23dc487f2004f58b7`,
+`PROJECT_SOURCE_BLOB: 51c54f58d8d091b70b545e09094157f0384c94b9`, and
+`PRODUCTION_REQUEST_BINDING: NO_REGISTERED_TXT_THIS_IS_LITERATURE_REVIEW_ONLY`.
+This review is imported research, not a registered production response.
+
+The pasted `sandbox:/mnt/data/fokas_routeb_2026-09-22/VERDICT.md` and
+`fokas_routeb_audit.zip` links are session-local, not repository paths. Browser
+clicks reported download start, but no local file bytes were obtained. The
+original ZIP, registration.json, identity_checks.py and result data therefore
+remain **NOT_RETRIEVED**. The claimed 18 controls and registration digest
+`97ed0b2870d0cc17d132aebdb0eb8f8ee0f0b1af8a9d8f98033dd8c533897fff`
+are Proshka-reported, not independently reproduced here. Do not manufacture
+those artifacts or index their numerical claims as verified results.
+
+## Checked source and exact object
+
+The pinned [Ferrers–Mellin generator](../../../docs/routeB_bus/proshka/ccm_exact_source_generator_2026-09-20/VERDICT.md)
+§4 G4–G7 is the primary project formula. Current intake base is
+`63c028ac17995e9abb57a6c4a95cefc92ec1c63f`.
+For integer m≥2, L=log m, λ=√m, n∈ℤ, put
+
+\[
+s_n=\tfrac12-2\pi i n/L,\qquad D_m(s)=\sum_{k=1}^m k^{-s}.
+\]
+
+For bounded measurable H on [−1,1], set h(x)=H(x/λ) on [−λ,λ], zero outside;
+E_*h(u)=√u Σ_{k≥1}h(ku), and
+V_{n,m}(u)=L^{-1/2} exp(2πin log(λu)/L).
+The unchanged coefficient is
+
+\[
+\alpha_{m,n}(H)=\int_{1/\lambda}^{\lambda}
+\overline{V_{n,m}(u)}E_*h(u)\,du/u.
+\]
+
+For the actual source use the selected mode0/mode4 Ferrers combination at
+c=2πm, retaining the grouped infinite Legendre series. It is not a finite
+polynomial or the stored decimal cache. Final finite row normalization is
+q_n=α_n/Z_{m,N}, Z²=Σ_{|n|≤N}|α_n|², with **Z>0 still required**.
+
+## Surviving paper identity: paired window remainder
+
+Define ℋ(s;x)=∫_0^x H(v)v^{s−1}dv and ℋ(s)=ℋ(s;1), Re s>0.
+A change of variable v=ku/λ in each of the finitely many nonzero summands gives
+
+\[
+\alpha_{m,n}(H)=\frac{m^{1/4}}{\sqrt L}
+\sum_{k=1}^m k^{-s_n}\int_{k/m}^1H(v)v^{s_n-1}\,dv.
+\]
+
+The factor uses m^{s_n}=√m. Off this lattice the corresponding analytic
+expression has prefactor m^{s−1/4}/√L; do not extend the lattice prefactor
+unchanged to arbitrary complex s. Split at zero and use
+D_m(s)=ζ(s)−ζ(s,m+1), with Hurwitz ζ continued analytically. Then exactly
+
+\[
+\alpha_{m,n}(H)=\frac{m^{1/4}}{\sqrt L}
+\left[\zeta(s_n)\mathcal H(s_n)-\mathcal R_m(s_n;H)\right],
+\]
+\[
+\mathcal R_m(s;H)=\zeta(s,m+1)\mathcal H(s)
++\sum_{k=1}^m k^{-s}\mathcal H(s;k/m).
+\]
+
+The separated ζ/Hurwitz formula is read at s≠1 in Re s>0; at s=1
+only its meromorphic combination has the removable-pole interpretation.
+The coefficient lattice Re s_n=1/2 never meets that pole.
+
+This derivation is checked algebraically against G4 (take H(v)=v^d).
+Bounded measurability gives integrability on Re s>0; the finite sum requires no infinite
+sum interchange. For the actual Ferrers expansion, absolute summability and
+|P_j|≤1 justify grouped integration; a global regrouping by monomial degree
+has not been justified. This is PAPER representation progress, not Lean
+admission, a bound on R_m, or positive Weil energy.
+
+## External primary-source links
+
+The following landing pages were independently opened on 2026-09-22. Versioned
+arXiv links replace ambiguous references. Full theorem-hypothesis verification
+for the contour import remains a separate discovery check.
+
+1. [Fokas–Lenells, Memoirs AMS 275(1351), 2022; arXiv:1201.2633v3](https://arxiv.org/abs/1201.2633v3).
+   [Versioned PDF](https://arxiv.org/pdf/1201.2633v3). Intended locator:
+   Theorem 2.1, equation (2.3), substituting s↦1−s. This is the exact
+   finite-Dirichlet-sum supplier, not a large-t bound for every mode.
+2. [Fokas–Lenells, Hankel/Bleistein, arXiv:2605.03466v1](https://arxiv.org/abs/2605.03466v1).
+   [HTML](https://arxiv.org/html/2605.03466v1).
+   [Reported journal DOI](https://doi.org/10.3390/math14122204).
+   The abstract preserves a special transition integral. Project phase/parameter
+   matching and a uniform source-family bound are OPEN.
+3. [Fokas, Atkinson/divisor error terms, Cambridge repository](https://www.repository.cam.ac.uk/items/cd8703ca-b07c-4503-ac42-483c587df3c3).
+   [DOI](https://doi.org/10.1098/rsos.250855).
+   Background lead only; no identified operator bridge to the project K.
+4. [Harvard CMSA seminar announcement](https://cmsa.fas.harvard.edu/event/fokas/).
+   Event metadata is not a theorem or a substitute for the announced manuscript.
+
+## What does not follow
+
+- R_m does not disappear from writing α as a zeta term minus R_m.
+- Zero mass does not annihilate Mellin moments: H=P₂=(3v²−1)/2 has
+  ∫_0^1H=0 but ℋ(1/2)=−2/5. This control is outside the actual selected pair;
+  it rejects only a mass-zero-only argument, not a special prolate identity.
+- T_{m,n}=2π|n|/log m is zero at n=0 and tends to zero for fixed n as m grows.
+  Large-T asymptotics alone cannot cover the whole row.
+- Fixed O(T^{-P}) does not automatically meet an exponentially small budget.
+- [Realification](../../../docs/routeB_bus/proshka/ccm_realification_transfer_2026-09-20/VERDICT.md)
+  certifies the unchanged complex cache only in its stated finite cell/class.
+  Analytic-source error, cofinal floor and transform budget remain OPEN.
+- Corrected bandwidth numerics are diagnostics, not equality of exact source
+  and cache or certified transfer of the floor. Phase-invariant failure of
+  cache=source is not a proof of ground≠trial.
+- The tracking budget is C_E(m_j,N_j)||r_j||/δ_j + Tail_j(E) + NormError_j(E),
+  not multiplication by δ_j. Ground selection and a valid spectral separation
+  must precede the residual estimate.
+
+## Consumer, search dictionaries, and next decisive test
+
+Downstream target: `FiniteGroundTransformToCCMTrialLocallyUniform`.
+Intermediate requirement: the **same exact source** with a proved family
+error bound and compatible ground selection, normalization and compact-domain
+transform budget. See [Goal 058](../../../docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md)
+and [bounded search brief](../../../docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md).
+The exact production theorem/consumer edge remains UNBOUND; discovery may yield
+candidates, not a consumed supplier or a closed node.
+
+Search dictionaries:
+- Mellin convolution, dilation sum, finite-window Mellin transform, incomplete Mellin transform;
+- Abel–Plana, Hurwitz zeta remainder, finite Dirichlet sum, Hankel contour;
+- prolate Sturm–Liouville, Lagrange identity, boundary concomitant, Green identity.
+
+`TRY_FOKAS_PAIRED_WINDOW_REMAINDER`: retain the two terms of R_m together;
+use the actual selected mode equations to derive exact boundary terms or
+cancellation, before absolute-value bounds. Preserve zero mode, both signs of n,
+c=2πm, grouped Ferrers expansion, support, phase, measure and Z>0.
+Return one exact identity with its domain and surviving boundary terms, or an
+explicit obstruction. No new spectral grid. No floor/limit claim without its
+own hypotheses and consumer mapping.
+
+## Archived original
+
+[Owner-supplied raw text](../incoming_notes/archive/20260922_121348_2026_09_22_fokas_paired_window/raw/2026_09_22_fokas_paired_window.txt); bytes preserved unchanged.
+
+
+## Additional exact source: q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersN2CompactDecayAssembly.lean
+SHA256: 190fed60932a6e748bab7e75b9309ac382924a62d5bbbf8d094e6792b81a6356
+
+```lean
+import Q3.Proofs.RouteB.G6N1PreAnchorLimitZeroModeAndSelectedShell
+import Q3.Proofs.RouteB.G6N1SelectedFerrersN2SourceScaledTailRate
+import Q3.Proofs.RouteB.G6N1SelectedFerrersCCMLemma73PreAnchorPort
+import Q3.Proofs.RouteB.D0PstarProjectedMellinCoordinate
+import Q3.Proofs.RouteB.CompactEvaluationRateTransfer
+
+set_option linter.mathlibStandardSet false
+set_option maxHeartbeats 4000000
+
+open Complex Filter Finset MeasureTheory Set
+open scoped Topology
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+/-!
+# Goal 058 — N2/N3/N4 selected-shell compact closure
+
+Verdict `REQ-2026-08-26-K`.  The ratified pre-anchor source-scaled tail rate
+is transported to the theorem-generated selected shell through the public
+cofinal reindex receipt, the exact center-normalizer cancellation is proved
+before any inequality, the moving-window Mellin kernel is bounded on every
+compact by the closed-substrip envelope, and the centered selected family
+converges locally uniformly to `centeredXi`.  SlotS2 follows with `c = 1`
+and gauge `1`.
+
+No compact-rate premise; no `S + hFamily`; no trial-normalizer premise; no
+new subsequence; `σ = 1/2` is never claimed.
+-/
+
+/-! ## Step 1: the pre-anchor projected Mellin coordinate equals the raw
+transform -/
+
+/-- The multiplicative Mellin coordinate of the literal normalized projected
+trial on the source-locked `dStar` window, in source-parametric form. -/
+noncomputable def preAnchorProjectedMellinCoordinate
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp)
+    (z : ℂ) : ℂ :=
+  ∫ u : ℝ,
+      (kTrial_m_N i h hLp hNonzero : H_m i) u *
+        (u : ℂ) ^ (-Complex.I * z)
+    ∂(dStar.restrict (I_m i))
+
+/-- An `H_m` representative times the selected Mellin kernel is integrable on
+the exact multiplicative window (parametric clone of the Phase-4G lemma). -/
+private theorem n2c_integrable_repr_mul_kernel
+    (i : PairIndex) (f : H_m i) (z : ℂ) :
+    Integrable
+      (fun u : ℝ => f u * (u : ℂ) ^ (-Complex.I * z))
+      (dStar.restrict (I_m i)) := by
+  have hm_real : (1 : ℝ) < i.m := by
+    exact_mod_cast (lt_of_lt_of_le (by norm_num : 1 < 2) i.hm)
+  have hlam_one : 1 < lambda_m i := by
+    simpa [lambda_m] using
+      (Real.sqrt_lt_sqrt (by norm_num : (0 : ℝ) ≤ 1) hm_real :
+        Real.sqrt 1 < Real.sqrt i.m)
+  have hlam_pos : 0 < lambda_m i := zero_lt_one.trans hlam_one
+  have hinv :
+      IntegrableOn (fun u : ℝ => u⁻¹) (I_m i) volume := by
+    apply ContinuousOn.integrableOn_Icc
+    apply continuousOn_id.inv₀
+    intro u hu
+    apply ne_of_gt
+    exact (inv_pos.mpr hlam_pos).trans_le hu.1
+  letI : IsFiniteMeasure (dStar.restrict (I_m i)) :=
+    ⟨by
+      rw [Measure.restrict_apply_univ, dStar, I_m,
+        withDensity_apply _ measurableSet_Icc]
+      simpa [I_m] using hinv.setLIntegral_lt_top⟩
+  have hf :
+      Integrable (fun u : ℝ => f u) (dStar.restrict (I_m i)) :=
+    (Lp.memLp f).integrable fact_one_le_two_ennreal.elim
+  have hkernel_cont :
+      ContinuousOn
+        (fun u : ℝ => (u : ℂ) ^ (-Complex.I * z))
+        (I_m i) := by
+    intro u hu
+    have hu_pos : 0 < u :=
+      (inv_pos.mpr hlam_pos).trans_le hu.1
+    exact
+      (Complex.continuousAt_ofReal_cpow_const
+        u (-Complex.I * z) (Or.inr hu_pos.ne')).continuousWithinAt
+  obtain ⟨C, hC⟩ :=
+    isCompact_Icc.bddAbove_image hkernel_cont.norm
+  have hkernel_meas :
+      AEStronglyMeasurable
+        (fun u : ℝ => (u : ℂ) ^ (-Complex.I * z))
+        (dStar.restrict (I_m i)) :=
+    hkernel_cont.aestronglyMeasurable_of_isCompact
+      isCompact_Icc measurableSet_Icc
+  have hkernel_bound :
+      ∀ᵐ u : ℝ ∂(dStar.restrict (I_m i)),
+        ‖(u : ℂ) ^ (-Complex.I * z)‖ ≤ C := by
+    filter_upwards [ae_restrict_mem measurableSet_Icc] with u hu
+    exact hC (mem_image_of_mem _ hu)
+  exact hf.mul_bdd hkernel_meas hkernel_bound
+
+set_option maxHeartbeats 8000000 in
+/-- **The pre-anchor Phase-4E engine.**  The Mellin coordinate of the literal
+normalized projection is the phase-centered finite raw integral of its exact
+coefficient row, in source-parametric form. -/
+private theorem n2c_projected_eq_finiteRaw
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp)
+    (z : ℂ) :
+    preAnchorProjectedMellinCoordinate i h hLp hNonzero z =
+      finiteRawCenteredIntegral (L_m i) (modeSet i)
+        (c_n i h hLp hNonzero) z := by
+  let c : ℤ → ℂ := c_n i h hLp hNonzero
+  let phase : ℂ :=
+    Complex.exp (Complex.I * z * (L_m i : ℂ) / 2)
+  have hlam_pos : 0 < lambda_m i := by
+    unfold lambda_m
+    apply Real.sqrt_pos.mpr
+    exact_mod_cast (lt_of_lt_of_le (by norm_num : 0 < 2) i.hm)
+  have hlog_lambda : Real.log (lambda_m i) = L_m i / 2 := by
+    rw [lambda_m, Real.log_sqrt]
+    · rfl
+    · positivity
+  have hmem :
+      ∀ᵐ u : ℝ ∂(dStar.restrict (I_m i)), u ∈ I_m i :=
+    ae_restrict_mem measurableSet_Icc
+  have hkernel :
+      (fun u : ℝ => (u : ℂ) ^ (-Complex.I * z))
+        =ᵐ[dStar.restrict (I_m i)]
+      (fun u : ℝ =>
+        phase *
+          Complex.exp
+            (-Complex.I * z *
+              (Real.log (lambda_m i * u) : ℂ))) := by
+    filter_upwards [hmem] with u hu
+    have hu_pos : 0 < u :=
+      (inv_pos.mpr hlam_pos).trans_le hu.1
+    have hlog_u :
+        Real.log u =
+          Real.log (lambda_m i * u) - L_m i / 2 := by
+      rw [Real.log_mul hlam_pos.ne' hu_pos.ne', hlog_lambda]
+      ring
+    rw [Complex.cpow_def_of_ne_zero
+      (Complex.ofReal_ne_zero.mpr hu_pos.ne')]
+    rw [← Complex.ofReal_log hu_pos.le]
+    rw [hlog_u]
+    unfold phase
+    rw [← Complex.exp_add]
+    congr 1
+    push_cast
+    ring
+  have hrep :=
+    kTrial_m_N_coeFn_ae_eq_finiteLogFourierTrial_logWindow
+      i h hLp hNonzero
+  have hintegrand :
+      (fun u : ℝ =>
+        (kTrial_m_N i h hLp hNonzero : H_m i) u *
+          (u : ℂ) ^ (-Complex.I * z))
+        =ᵐ[dStar.restrict (I_m i)]
+      (fun u : ℝ =>
+        phase *
+          (finiteLogFourierTrial
+              (L_m i) (modeSet i) c
+              (Real.log (lambda_m i * u)) *
+            Complex.exp
+              (-Complex.I * z *
+                (Real.log (lambda_m i * u) : ℂ)))) := by
+    filter_upwards [hrep, hkernel] with u hrep_u hkernel_u
+    rw [hrep_u, hkernel_u]
+    ring
+  have htransport :
+      (∫ u : ℝ,
+          finiteLogFourierTrial
+              (L_m i) (modeSet i) c
+              (Real.log (lambda_m i * u)) *
+            Complex.exp
+              (-Complex.I * z *
+                (Real.log (lambda_m i * u) : ℂ))
+        ∂(dStar.restrict (I_m i))) =
+      ∫ x : ℝ in Set.Icc 0 (L_m i),
+        finiteLogFourierTrial (L_m i) (modeSet i) c x *
+          Complex.exp (-Complex.I * z * (x : ℂ)) := by
+    simpa using
+      (integral_comp_logWindow_dStar i
+        (fun x : ℝ =>
+          finiteLogFourierTrial (L_m i) (modeSet i) c x *
+            Complex.exp (-Complex.I * z * (x : ℂ))))
+  have hcoordinate :
+      (∫ u : ℝ,
+          (kTrial_m_N i h hLp hNonzero : H_m i) u *
+            (u : ℂ) ^ (-Complex.I * z)
+        ∂(dStar.restrict (I_m i))) =
+      finiteRawCenteredIntegral (L_m i) (modeSet i) c z := by
+    calc
+      _ = ∫ u : ℝ,
+            phase *
+              (finiteLogFourierTrial
+                  (L_m i) (modeSet i) c
+                  (Real.log (lambda_m i * u)) *
+                Complex.exp
+                  (-Complex.I * z *
+                    (Real.log (lambda_m i * u) : ℂ)))
+          ∂(dStar.restrict (I_m i)) := integral_congr_ae hintegrand
+      _ = phase *
+          ∫ u : ℝ,
+            finiteLogFourierTrial
+                (L_m i) (modeSet i) c
+                (Real.log (lambda_m i * u)) *
+              Complex.exp
+                (-Complex.I * z *
+                  (Real.log (lambda_m i * u) : ℂ))
+            ∂(dStar.restrict (I_m i)) := by
+              rw [integral_const_mul]
+      _ = phase *
+          ∫ x : ℝ in Set.Icc 0 (L_m i),
+            finiteLogFourierTrial (L_m i) (modeSet i) c x *
+              Complex.exp (-Complex.I * z * (x : ℂ)) := by
+              rw [htransport]
+      _ = phase *
+          ∫ x : ℝ in 0..L_m i,
+            finiteLogFourierTrial (L_m i) (modeSet i) c x *
+              Complex.exp (-Complex.I * z * (x : ℂ)) := by
+              rw [MeasureTheory.integral_Icc_eq_integral_Ioc]
+              rw [← intervalIntegral.integral_of_le (logLength_pos i).le]
+      _ = finiteRawCenteredIntegral (L_m i) (modeSet i) c z := by
+              rfl
+  exact hcoordinate
+
+/-- **The pre-anchor Phase-4E identity, Fplus orientation.**  The raw
+transform is the Mellin coordinate of the normalized projection at the
+reflected spectral point. -/
+theorem preAnchorProjectedMellinCoordinate_neg_eq_rawTransformCoordinate
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp)
+    (z : ℂ) :
+    preAnchorProjectedMellinCoordinate i h hLp hNonzero (-z) =
+      preAnchorRawTransformCoordinate i h hLp hNonzero z := by
+  rw [n2c_projected_eq_finiteRaw i h hLp hNonzero (-z),
+    finiteRawCenteredIntegral_eq_proposition59RawTransform
+      (logLength_pos i).ne']
+  rfl
+
+/-- The raw transform is the finite normalizer times the Mellin coordinate of
+the unnormalized projection, at the reflected spectral point. -/
+theorem preAnchorRawTransformCoordinate_eq_normalizer_mul_projected
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp)
+    (z : ℂ) :
+    preAnchorRawTransformCoordinate i h hLp hNonzero z =
+      ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) *
+        ∫ u : ℝ,
+          ((gTrial_m_N i h hLp : E_m_N i) : H_m i) u *
+            (u : ℂ) ^ (-Complex.I * (-z))
+          ∂(dStar.restrict (I_m i)) := by
+  rw [← preAnchorProjectedMellinCoordinate_neg_eq_rawTransformCoordinate]
+  unfold preAnchorProjectedMellinCoordinate
+  have hsmul :
+      (fun u : ℝ => (kTrial_m_N i h hLp hNonzero : H_m i) u)
+        =ᵐ[dStar.restrict (I_m i)]
+      (fun u : ℝ =>
+        ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) *
+          ((gTrial_m_N i h hLp : E_m_N i) : H_m i) u) := by
+    have h1 := MeasureTheory.Lp.coeFn_smul
+      (((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ))
+      (((gTrial_m_N i h hLp : E_m_N i) : H_m i))
+    have h2 : (kTrial_m_N i h hLp hNonzero : H_m i) =
+        ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) •
+          ((gTrial_m_N i h hLp : E_m_N i) : H_m i) := by
+      unfold kTrial_m_N
+      rw [Submodule.coe_smul]
+    rw [h2]
+    filter_upwards [h1] with u hu
+    rw [hu]
+    simp [smul_eq_mul]
+  calc
+    (∫ u : ℝ,
+        (kTrial_m_N i h hLp hNonzero : H_m i) u *
+          (u : ℂ) ^ (-Complex.I * (-z))
+      ∂(dStar.restrict (I_m i))) =
+        ∫ u : ℝ,
+          ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) *
+            (((gTrial_m_N i h hLp : E_m_N i) : H_m i) u *
+              (u : ℂ) ^ (-Complex.I * (-z)))
+          ∂(dStar.restrict (I_m i)) := by
+        apply integral_congr_ae
+        filter_upwards [hsmul] with u hu
+        rw [hu]
+        ring
+    _ = ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) *
+        ∫ u : ℝ,
+          ((gTrial_m_N i h hLp : E_m_N i) : H_m i) u *
+            (u : ℂ) ^ (-Complex.I * (-z))
+          ∂(dStar.restrict (I_m i)) := by
+        rw [integral_const_mul]
+
+/-! ## Step 2: the moving-window Mellin kernel envelope -/
+
+/-- The `dStar` mass of the full window is exactly `L_m`. -/
+private theorem n2c_dStar_window_mass (i : PairIndex) :
+    dStar (I_m i) = ENNReal.ofReal (L_m i) := by
+  have hm_real : (1 : ℝ) < i.m := by
+    exact_mod_cast (lt_of_lt_of_le (by norm_num : 1 < 2) i.hm)
+  have hlam_one : 1 < lambda_m i := by
+    simpa [lambda_m] using
+      (Real.sqrt_lt_sqrt (by norm_num : (0 : ℝ) ≤ 1) hm_real :
+        Real.sqrt 1 < Real.sqrt i.m)
+  have hlam_pos : 0 < lambda_m i := zero_lt_one.trans hlam_one
+  have hinv_pos : 0 < (lambda_m i)⁻¹ := by positivity
+  have hinv :
+      IntegrableOn (fun u : ℝ => u⁻¹)
+        (Set.Icc (lambda_m i)⁻¹ (lambda_m i)) volume := by
+    apply ContinuousOn.integrableOn_Icc
+    apply continuousOn_id.inv₀
+    intro u hu
+    exact ne_of_gt (hinv_pos.trans_le hu.1)
+  have hnn : 0 ≤ᵐ[volume.restrict (Set.Icc (lambda_m i)⁻¹ (lambda_m i))]
+      (fun u : ℝ => u⁻¹) := by
+    filter_upwards [ae_restrict_mem measurableSet_Icc] with u hu
+    have hu0 : 0 < u := hinv_pos.trans_le hu.1
+    positivity
+  rw [dStar, I_m, withDensity_apply _ measurableSet_Icc]
+  rw [← MeasureTheory.ofReal_integral_eq_lintegral_ofReal hinv hnn]
+  congr 1
+  have hle : (lambda_m i)⁻¹ ≤ lambda_m i := by
+    have h1 : (lambda_m i)⁻¹ ≤ 1 := by
+      rw [inv_eq_one_div, div_le_one hlam_pos]
+      linarith
+    linarith
+  rw [MeasureTheory.integral_Icc_eq_integral_Ioc,
+    ← intervalIntegral.integral_of_le hle]
+  rw [integral_inv_of_pos hinv_pos hlam_pos]
+  have hdiv : lambda_m i / (lambda_m i)⁻¹ = lambda_m i * lambda_m i := by
+    field_simp
+  rw [hdiv, show lambda_m i * lambda_m i = (i.m : ℝ) from
+    Real.mul_self_sqrt (by positivity)]
+  rfl
+
+/-- Pointwise kernel bound on the window: `‖u^(-iw)‖ ≤ λ^σ` for
+`|Im w| ≤ σ`. -/
+private theorem n2c_kernel_norm_le
+    (i : PairIndex) {σ : ℝ} {w : ℂ} (hw : |w.im| ≤ σ)
+    {u : ℝ} (hu : u ∈ I_m i) :
+    ‖(u : ℂ) ^ (-Complex.I * w)‖ ≤ (lambda_m i) ^ σ := by
+  have hm_real : (1 : ℝ) < i.m := by
+    exact_mod_cast (lt_of_lt_of_le (by norm_num : 1 < 2) i.hm)
+  have hlam_one : 1 < lambda_m i := by
+    simpa [lambda_m] using
+      (Real.sqrt_lt_sqrt (by norm_num : (0 : ℝ) ≤ 1) hm_real :
+        Real.sqrt 1 < Real.sqrt i.m)
+  have hlam_pos : 0 < lambda_m i := zero_lt_one.trans hlam_one
+  have hu_pos : 0 < u := (by positivity :
+    (0:ℝ) < (lambda_m i)⁻¹).trans_le hu.1
+  rw [Complex.norm_cpow_eq_rpow_re_of_pos hu_pos]
+  rw [show (-Complex.I * w).re = w.im by simp [Complex.mul_re]]
+  rcases le_or_lt 0 w.im with hy | hy
+  · calc u ^ w.im ≤ (lambda_m i) ^ w.im :=
+        Real.rpow_le_rpow hu_pos.le hu.2 hy
+      _ ≤ (lambda_m i) ^ σ := by
+        apply Real.rpow_le_rpow_of_exponent_le hlam_one.le
+        rwa [abs_of_nonneg hy] at hw
+  · have h1 : u ^ w.im = (u⁻¹) ^ (-w.im) := by
+      rw [Real.inv_rpow hu_pos.le, Real.rpow_neg hu_pos.le, inv_inv]
+    have hinv_le : u⁻¹ ≤ lambda_m i := by
+      have h2 := one_div_le_one_div_of_le (by positivity :
+        (0:ℝ) < (lambda_m i)⁻¹) hu.1
+      simpa [one_div, inv_inv] using h2
+    calc u ^ w.im = (u⁻¹) ^ (-w.im) := h1
+      _ ≤ (lambda_m i) ^ (-w.im) :=
+        Real.rpow_le_rpow (by positivity) hinv_le (by linarith)
+      _ ≤ (lambda_m i) ^ σ := by
+        apply Real.rpow_le_rpow_of_exponent_le hlam_one.le
+        rw [abs_of_neg hy] at hw
+        linarith
+
+set_option maxHeartbeats 8000000 in
+/-- **The Cauchy–Schwarz coordinate envelope.**  For every `H_m` element `f`
+and every `w` in the closed substrip `|Im w| ≤ σ`, the Mellin coordinate is
+bounded by `λ^σ √L` times the `H_m` norm. -/
+private theorem n2c_coordinate_envelope
+    (i : PairIndex) (f : H_m i) {σ : ℝ} (hσ0 : 0 ≤ σ)
+    {w : ℂ} (hw : |w.im| ≤ σ) :
+    ‖∫ u : ℝ,
+        f u * (u : ℂ) ^ (-Complex.I * w)
+      ∂(dStar.restrict (I_m i))‖ ≤
+      (lambda_m i) ^ σ * Real.sqrt (L_m i) * ‖f‖ := by
+  have hL : 0 < L_m i := logLength_pos i
+  have hm_real : (1 : ℝ) < i.m := by
+    exact_mod_cast (lt_of_lt_of_le (by norm_num : 1 < 2) i.hm)
+  have hlam_one : 1 < lambda_m i := by
+    simpa [lambda_m] using
+      (Real.sqrt_lt_sqrt (by norm_num : (0 : ℝ) ≤ 1) hm_real :
+        Real.sqrt 1 < Real.sqrt i.m)
+  have hlam_pos : 0 < lambda_m i := zero_lt_one.trans hlam_one
+  have hlamσ : (0:ℝ) ≤ (lambda_m i) ^ σ :=
+    Real.rpow_nonneg hlam_pos.le σ
+  have hinv :
+      IntegrableOn (fun u : ℝ => u⁻¹) (I_m i) volume := by
+    apply ContinuousOn.integrableOn_Icc
+    apply continuousOn_id.inv₀
+    intro u hu
+    exact ne_of_gt ((by positivity :
+      (0:ℝ) < (lambda_m i)⁻¹).trans_le hu.1)
+  letI : IsFiniteMeasure (dStar.restrict (I_m i)) :=
+    ⟨by
+      rw [Measure.restrict_apply_univ, dStar, I_m,
+        withDensity_apply _ measurableSet_Icc]
+      simpa [I_m] using hinv.setLIntegral_lt_top⟩
+  have hkernel_cont :
+      ContinuousOn
+        (fun u : ℝ => (u : ℂ) ^ (-Complex.I * w))
+        (I_m i) := by
+    intro u hu
+    have hu_pos : 0 < u := (by positivity :
+      (0:ℝ) < (lambda_m i)⁻¹).trans_le hu.1
+    exact
+      (Complex.continuousAt_ofReal_cpow_const
+        u (-Complex.I * w) (Or.inr hu_pos.ne')).continuousWithinAt
+  have hmeas :
+      AEStronglyMeasurable
+        (fun u : ℝ => starRingEnd ℂ ((u : ℂ) ^ (-Complex.I * w)))
+        (dStar.restrict (I_m i)) :=
+    Complex.continuous_conj.comp_aestronglyMeasurable
+      (hkernel_cont.aestronglyMeasurable_of_isCompact
+        isCompact_Icc measurableSet_Icc)
+  have hbound_ae :
+      ∀ᵐ u : ℝ ∂(dStar.restrict (I_m i)),
+        ‖starRingEnd ℂ ((u : ℂ) ^ (-Complex.I * w))‖ ≤
+          (lambda_m i) ^ σ := by
+    filter_upwards [ae_restrict_mem measurableSet_Icc] with u hu
+    rw [RCLike.norm_conj]
+    exact n2c_kernel_norm_le i hw hu
+  have hkmem :
+      MemLp (fun u : ℝ =>
+        starRingEnd ℂ ((u : ℂ) ^ (-Complex.I * w))) 2
+        (dStar.restrict (I_m i)) :=
+    MemLp.of_bound hmeas _ hbound_ae
+  have hKcoe : (hkmem.toLp _ : ℝ → ℂ)
+      =ᵐ[dStar.restrict (I_m i)]
+      (fun u : ℝ => starRingEnd ℂ ((u : ℂ) ^ (-Complex.I * w))) :=
+    MemLp.coeFn_toLp _
+  have hinner : inner ℂ (hkmem.toLp _ : H_m i) f =
+      ∫ u : ℝ,
+        f u * (u : ℂ) ^ (-Complex.I * w)
+      ∂(dStar.restrict (I_m i)) := by
+    rw [MeasureTheory.L2.inner_def]
+    apply integral_congr_ae
+    filter_upwards [hKcoe] with u hu
+    rw [RCLike.inner_apply, hu, Complex.conj_conj]
+  have hCS : ‖(inner ℂ (hkmem.toLp _ : H_m i) f : ℂ)‖ ≤
+      ‖(hkmem.toLp _ : H_m i)‖ * ‖f‖ :=
+    norm_inner_le_norm _ _
+  rw [hinner] at hCS
+  have hKnorm : ‖(hkmem.toLp _ : H_m i)‖ ≤
+      (lambda_m i) ^ σ * Real.sqrt (L_m i) := by
+    rw [MeasureTheory.Lp.norm_toLp]
+    have h1 := eLpNorm_le_of_ae_bound (p := (2 : ENNReal))
+      (μ := dStar.restrict (I_m i)) hbound_ae
+    have hμ : (dStar.restrict (I_m i)) Set.univ =
+        ENNReal.ofReal (L_m i) := by
+      rw [Measure.restrict_apply_univ, n2c_dStar_window_mass]
+    rw [hμ] at h1
+    have htoReal2 : ((2 : ENNReal).toReal)⁻¹ = (1/2 : ℝ) := by norm_num
+    rw [htoReal2] at h1
+    have hval : ENNReal.ofReal (L_m i) ^ (1/2 : ℝ) *
+        ENNReal.ofReal ((lambda_m i) ^ σ) =
+        ENNReal.ofReal (Real.sqrt (L_m i) * (lambda_m i) ^ σ) := by
+      rw [ENNReal.ofReal_rpow_of_pos hL]
+      rw [← ENNReal.ofReal_mul (by positivity)]
+      congr 1
+      rw [← Real.sqrt_eq_rpow]
+    rw [hval] at h1
+    have h2 := ENNReal.toReal_mono ENNReal.ofReal_ne_top h1
+    rw [ENNReal.toReal_ofReal (by positivity)] at h2
+    calc (eLpNorm (fun u : ℝ =>
+          starRingEnd ℂ ((u : ℂ) ^ (-Complex.I * w))) 2
+          (dStar.restrict (I_m i))).toReal ≤
+        Real.sqrt (L_m i) * (lambda_m i) ^ σ := h2
+      _ = (lambda_m i) ^ σ * Real.sqrt (L_m i) := by ring
+  calc ‖∫ u : ℝ,
+        f u * (u : ℂ) ^ (-Complex.I * w)
+      ∂(dStar.restrict (I_m i))‖ ≤
+      ‖(hkmem.toLp _ : H_m i)‖ * ‖f‖ := hCS
+    _ ≤ (lambda_m i) ^ σ * Real.sqrt (L_m i) * ‖f‖ :=
+      mul_le_mul_of_nonneg_right hKnorm (norm_nonneg f)
+
+/-! ## Step 3: exact identities on the selected shell -/
+
+/-- The centered `Xi` is even: the functional equation
+`completedRiemannZeta₀ (1 - s) = completedRiemannZeta₀ s` centred at `1/2`. -/
+theorem centeredXi_neg (z : ℂ) : centeredXi (-z) = centeredXi z := by
+  unfold centeredXi riemannXi
+  have h := completedRiemannZeta₀_one_sub ((1 / 2 : ℂ) + Complex.I * z)
+  have harg : (1 : ℂ) - ((1 / 2 : ℂ) + Complex.I * z) =
+      (1 / 2 : ℂ) + Complex.I * (-z) := by ring
+  rw [harg] at h
+  rw [h]
+  ring
+
+/-- The positive finite normalizer is a nonzero complex scalar. -/
+private theorem n2c_sTrial_ne
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp) :
+    ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) ≠ 0 := by
+  have hpos : 0 < sTrial_m_N i h hLp hNonzero := by
+    unfold sTrial_m_N
+    exact inv_pos.mpr hNonzero
+  exact_mod_cast ne_of_gt hpos
+
+/-- Central `Gwin` nonvanishing extracted from the shell's raw-zero field. -/
+private theorem n2c_gwin_zero_ne
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) :
+    preAnchorGwinTransformCoordinate
+      (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 := by
+  intro hzero
+  apply D.rawZeroNonzero k
+  rw [preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero,
+    hzero, mul_zero]
+
+/-- **The exact center-normalizer cancellation.**  On the selected shell the
+centered finite family minus the `Gwin`-anchored main term is the anchored
+ratio times the Mellin coordinate of the literal unnormalized projection
+residual, at the reflected spectral point.  The finite trial normalizer
+cancels exactly before any inequality. -/
+private theorem n2c_centered_identity
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) :
+    D.centeredPstar k z -
+      centeredXi 0 /
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0 *
+        preAnchorGwinTransformCoordinate
+          (D.index k) (prolateCombination (D.pair k)) (-z) =
+      centeredXi 0 /
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0 *
+        ∫ u : ℝ,
+          (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : E_m_N (D.index k)) :
+              H_m (D.index k)) u -
+            (gTrial_m (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : H_m (D.index k)) u) *
+            (u : ℂ) ^ (-Complex.I * (-z))
+          ∂(dStar.restrict (I_m (D.index k))) := by
+  have hgwin0 := n2c_gwin_zero_ne D k
+  have hsT := n2c_sTrial_ne (D.index k) (prolateCombination (D.pair k))
+    (D.eStar_memLp k) (D.trialNonzero k)
+  have hraw0 := preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero
+    (D.index k) (prolateCombination (D.pair k))
+    (D.eStar_memLp k) (D.trialNonzero k)
+  have hrawz := preAnchorRawTransformCoordinate_eq_normalizer_mul_projected
+    (D.index k) (prolateCombination (D.pair k))
+    (D.eStar_memLp k) (D.trialNonzero k) z
+  have hfull := preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate
+    (D.index k) (prolateCombination (D.pair k)) (D.eStar_memLp k) (-z)
+  have hsub :
+      (∫ u : ℝ,
+        (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+            (D.eStar_memLp k) : E_m_N (D.index k)) :
+            H_m (D.index k)) u -
+          (gTrial_m (D.index k) (prolateCombination (D.pair k))
+            (D.eStar_memLp k) : H_m (D.index k)) u) *
+          (u : ℂ) ^ (-Complex.I * (-z))
+        ∂(dStar.restrict (I_m (D.index k)))) =
+      (∫ u : ℝ,
+        ((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+            (D.eStar_memLp k) : E_m_N (D.index k)) :
+            H_m (D.index k)) u *
+          (u : ℂ) ^ (-Complex.I * (-z))
+        ∂(dStar.restrict (I_m (D.index k)))) -
+      ∫ u : ℝ,
+        (gTrial_m (D.index k) (prolateCombination (D.pair k))
+            (D.eStar_memLp k) : H_m (D.index k)) u *
+          (u : ℂ) ^ (-Complex.I * (-z))
+        ∂(dStar.restrict (I_m (D.index k))) := by
+    rw [← integral_sub
+      (n2c_integrable_repr_mul_kernel (D.index k) _ (-z))
+      (n2c_integrable_repr_mul_kernel (D.index k) _ (-z))]
+    apply integral_congr_ae
+    filter_upwards [] with u
+    ring
+  rw [hsub]
+  have hproj :
+      (∫ u : ℝ,
+        ((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+            (D.eStar_memLp k) : E_m_N (D.index k)) :
+            H_m (D.index k)) u *
+          (u : ℂ) ^ (-Complex.I * (-z))
+        ∂(dStar.restrict (I_m (D.index k)))) =
+      preAnchorRawTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k))
+        (D.eStar_memLp k) (D.trialNonzero k) z /
+        ((sTrial_m_N (D.index k) (prolateCombination (D.pair k))
+          (D.eStar_memLp k) (D.trialNonzero k) : ℝ) : ℂ) := by
+    rw [hrawz]
+    field_simp
+  have hfullm :
+      (∫ u : ℝ,
+        (gTrial_m (D.index k) (prolateCombination (D.pair k))
+            (D.eStar_memLp k) : H_m (D.index k)) u *
+          (u : ℂ) ^ (-Complex.I * (-z))
+        ∂(dStar.restrict (I_m (D.index k)))) =
+      preAnchorGwinTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k)) (-z) := by
+    rw [← hfull]
+    rfl
+  rw [hproj, hfullm]
+  show centeredXi 0 /
+      preAnchorRawTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k))
+        (D.eStar_memLp k) (D.trialNonzero k) 0 *
+      preAnchorRawTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k))
+        (D.eStar_memLp k) (D.trialNonzero k) z - _ = _
+  rw [hraw0, hrawz]
+  field_simp
+
+/-! ## Step 4: the selected Ferrers cofinal shell and the transported rate -/
+
+/-- The theorem-generated selected Ferrers cofinal shell: the literal
+pre-anchor data through the L73.8 port. -/
+noncomputable def selectedFerrersCofinalShell
+    (C0 C4 Cχ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ : ∀ᶠ k in Filter.atTop,
+      |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+        |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2) :
+    SelectedProlateCofinalSourceData :=
+  selectedProlateCofinalSourceDataOfPreAnchorPort
+    selectedFerrersPreAnchorData
+    (selectedFerrersCCMLemma73PreAnchorPort_of_modeAndChiRates
+      C0 C4 Cχ hC0 hC4 hCχ hmode hχ)
+
+/-- Transport of the weighted scaled-residual term across exact index, pair
+and scale equalities. -/
+private theorem n2c_rate_term_transport
+    {i i' : PairIndex} (hii : i = i')
+    {P P' : ProlatePair} (hPP : P = P')
+    {a a' : ℂ} (haa : a = a')
+    (w : MemLp (E_star (prolateCombination P)) 2 (dStar.restrict (I_m i)))
+    (w' : MemLp (E_star (prolateCombination P')) 2 (dStar.restrict (I_m i')))
+    {σ : ℝ} :
+    Real.sqrt (L_m i) * lambda_m i ^ σ *
+      ‖a • (((gTrial_m_N i (prolateCombination P) w : E_m_N i) : H_m i) -
+        gTrial_m i (prolateCombination P) w)‖ =
+    Real.sqrt (L_m i') * lambda_m i' ^ σ *
+      ‖a' • (((gTrial_m_N i' (prolateCombination P') w' : E_m_N i') :
+          H_m i') -
+        gTrial_m i' (prolateCombination P') w')‖ := by
+  subst hii
+  subst hPP
+  subst haa
+  rfl
+
+set_option maxHeartbeats 8000000 in
+/-- **The transported N2 rate.**  The ratified pre-anchor source-scaled tail
+rate holds along the selected shell path, through the cofinal reindex
+receipt. -/
+private theorem n2c_shell_rate
+    (C0 C4 Cχ Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hCθ : 0 ≤ Cθ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ : ∀ᶠ k in Filter.atTop,
+      |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+        |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2)
+    (hθ : ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+        |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+          Cθ)
+    (σ : ℝ) (hσ0 : 0 ≤ σ) (hσ : σ < 1 / 2) :
+    Filter.Tendsto
+      (fun k : ℕ =>
+        Real.sqrt (L_m ((selectedFerrersCofinalShell
+            C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) *
+          lambda_m ((selectedFerrersCofinalShell
+            C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k) ^ σ *
+          ‖(selectedFerrersCofinalShell
+              C0 C4 Cχ hC0 hC4 hCχ hmode hχ).sourceScale k •
+            (((gTrial_m_N
+                ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+                (prolateCombination ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k))
+                ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k) :
+                E_m_N ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) :
+                H_m ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) -
+              gTrial_m
+                ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+                (prolateCombination ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k))
+                ((selectedFerrersCofinalShell
+                  C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k))‖)
+      Filter.atTop (nhds 0) := by
+  obtain ⟨φ, hφ, hle, hidx, hpair, hscale⟩ :=
+    selectedProlateCofinalSourceDataOfPreAnchorPort_exists_cofinal_reindex
+      selectedFerrersPreAnchorData
+      (selectedFerrersCCMLemma73PreAnchorPort_of_modeAndChiRates
+        C0 C4 Cχ hC0 hC4 hCχ hmode hχ)
+  have hbase :=
+    selectedFerrersPreAnchorSourceScaledMellinProjectionTailRate
+      C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ σ hσ0 hσ
+  have hcomp := hbase.comp hφ
+  apply hcomp.congr
+  intro k
+  simp only [Function.comp]
+  exact n2c_rate_term_transport
+    (by unfold selectedFerrersCofinalShell; rw [hidx k]; rfl)
+    (by unfold selectedFerrersCofinalShell; rw [hpair k]; rfl)
+    (by unfold selectedFerrersCofinalShell; rw [hscale k]; rfl)
+    (selectedFerrersPreAnchorPair_eStar_memLp (φ k))
+    ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k)
+
+/-- The anchored central ratio tends to one on any selected shell. -/
+private theorem n2c_ratio_tendsto_one
+    (D : SelectedProlateCofinalSourceData) :
+    Filter.Tendsto
+      (fun k : ℕ =>
+        centeredXi 0 /
+          (D.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0))
+      Filter.atTop (nhds 1) := by
+  have hzero_mem : (0 : ℂ) ∈ centeredCriticalStrip := by
+    show |(0 : ℂ).im| < 1 / 2
+    norm_num
+  have hpoint :
+      Filter.Tendsto
+        (fun k =>
+          D.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0)
+        Filter.atTop (nhds (centeredXi 0)) :=
+    D.muntzLimit.tendsto_at hzero_mem
+  have hdiv := Filter.Tendsto.div
+    (tendsto_const_nhds (x := centeredXi 0)) hpoint
+    centeredXi_zero_ne_zero
+  rw [div_self centeredXi_zero_ne_zero] at hdiv
+  exact hdiv
+
+set_option maxHeartbeats 8000000 in
+/-- **The per-index compact error budget.**  On the closed substrip the
+centered error is the anchored ratio times the source-scaled residual
+envelope. -/
+private theorem n2c_error_bound
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) {σ : ℝ} (hσ0 : 0 ≤ σ)
+    {z : ℂ} (hz : |z.im| ≤ σ) :
+    ‖D.centeredPstar k z -
+      centeredXi 0 /
+          (D.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0) *
+        (D.sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) (-z))‖ ≤
+      ‖centeredXi 0 /
+        (D.sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0)‖ *
+        (lambda_m (D.index k) ^ σ * Real.sqrt (L_m (D.index k)) *
+          ‖D.sourceScale k •
+            (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+                (D.eStar_memLp k) : E_m_N (D.index k)) :
+                H_m (D.index k)) -
+              gTrial_m (D.index k) (prolateCombination (D.pair k))
+                (D.eStar_memLp k))‖) := by
+  have hgwin0 := n2c_gwin_zero_ne D k
+  have hscale0 := D.sourceScale_ne k
+  -- rewrite the anchored term to the Gwin-anchored form of the identity
+  have hA :
+      centeredXi 0 /
+          (D.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0) *
+        (D.sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) (-z)) =
+      centeredXi 0 /
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0 *
+        preAnchorGwinTransformCoordinate
+          (D.index k) (prolateCombination (D.pair k)) (-z) := by
+    field_simp
+  rw [hA, n2c_centered_identity D k z]
+  -- pull the scale inside the residual integral
+  have hsmul_int :
+      D.sourceScale k *
+        ∫ u : ℝ,
+          (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : E_m_N (D.index k)) :
+              H_m (D.index k)) u -
+            (gTrial_m (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : H_m (D.index k)) u) *
+            (u : ℂ) ^ (-Complex.I * (-z))
+          ∂(dStar.restrict (I_m (D.index k))) =
+      ∫ u : ℝ,
+        (D.sourceScale k •
+          (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : E_m_N (D.index k)) :
+              H_m (D.index k)) -
+            gTrial_m (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k)) : H_m (D.index k)) u *
+          (u : ℂ) ^ (-Complex.I * (-z))
+        ∂(dStar.restrict (I_m (D.index k))) := by
+    rw [← integral_const_mul]
+    apply integral_congr_ae
+    have hcoe := MeasureTheory.Lp.coeFn_smul (D.sourceScale k)
+      (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+          (D.eStar_memLp k) : E_m_N (D.index k)) : H_m (D.index k)) -
+        gTrial_m (D.index k) (prolateCombination (D.pair k))
+          (D.eStar_memLp k))
+    have hcoesub := MeasureTheory.Lp.coeFn_sub
+      (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+          (D.eStar_memLp k) : E_m_N (D.index k)) : H_m (D.index k)))
+      (gTrial_m (D.index k) (prolateCombination (D.pair k))
+        (D.eStar_memLp k))
+    filter_upwards [hcoe, hcoesub] with u hu1 hu2
+    rw [hu1]
+    simp only [Pi.smul_apply, smul_eq_mul]
+    rw [hu2]
+    simp only [Pi.sub_apply]
+    ring
+  -- the split: ratio times scale times residual coordinate
+  have hsplit :
+      centeredXi 0 /
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0 *
+        ∫ u : ℝ,
+          (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : E_m_N (D.index k)) :
+              H_m (D.index k)) u -
+            (gTrial_m (D.index k) (prolateCombination (D.pair k))
+              (D.eStar_memLp k) : H_m (D.index k)) u) *
+            (u : ℂ) ^ (-Complex.I * (-z))
+          ∂(dStar.restrict (I_m (D.index k))) =
+      (centeredXi 0 /
+          (D.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0)) *
+        (D.sourceScale k *
+          ∫ u : ℝ,
+            (((gTrial_m_N (D.index k) (prolateCombination (D.pair k))
+                (D.eStar_memLp k) : E_m_N (D.index k)) :
+                H_m (D.index k)) u -
+              (gTrial_m (D.index k) (prolateCombination (D.pair k))
+                (D.eStar_memLp k) : H_m (D.index k)) u) *
+              (u : ℂ) ^ (-Complex.I * (-z))
+            ∂(dStar.restrict (I_m (D.index k)))) := by
+    field_simp
+  rw [hsplit, hsmul_int, norm_mul]
+  apply mul_le_mul_of_nonneg_left _ (norm_nonneg _)
+  have hzneg : |(-z).im| ≤ σ := by
+    rw [Complex.neg_im, abs_neg]
+    exact hz
+  exact n2c_coordinate_envelope (D.index k) _ hσ0 hzneg
+
+/-! ## Step 5: locally uniform compact decay, the centered limit and SlotS2 -/
+
+set_option maxHeartbeats 8000000 in
+/-- **N2 compact decay** (verdict `REQ-2026-08-26-K`, theorem 2).  On the
+selected Ferrers cofinal shell the centered finite family minus the
+`Müntz`-anchored main term tends to zero locally uniformly on the centered
+critical strip.  The anchored term is evaluated at the reflected spectral
+point: the shell's raw transform carries the paper `Fplus(z) = T(k)(-z)`
+orientation, so the exact cancellation pairs `centeredPstar` at `z` with the
+Müntz family at `-z`. -/
+theorem selectedFerrersCofinalCenteredFinite_sub_anchoredMuntz_tendsto_zero_of_modeChiThetaRates
+    (C0 C4 Cχ Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hCθ : 0 ≤ Cθ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ : ∀ᶠ k in Filter.atTop,
+      |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+        |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2)
+    (hθ : ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+        |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+          Cθ) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar k z -
+          centeredXi 0 /
+              (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k 0 *
+            (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k (-z))
+      (fun _ => 0) Filter.atTop centeredCriticalStrip := by
+  apply Q3.RouteB.tendstoLocallyUniformlyOn_zero_of_compact_envelopes _ _
+    CanonicalRHRoute.isOpen_centeredCriticalStrip
+  intro K hKU hK
+  obtain ⟨σ, hσ0, hσ, hKσ⟩ :=
+    compact_subset_centeredCriticalStrip_contained_in_closed_substrip hK hKU
+  refine ⟨fun k =>
+    ‖centeredXi 0 /
+      ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).sourceScale k *
+        preAnchorGwinTransformCoordinate
+          ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+          (prolateCombination ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k)) 0)‖ *
+      (lambda_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k) ^ σ *
+        Real.sqrt (L_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) *
+        ‖(selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).sourceScale k •
+          (((gTrial_m_N ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+              (prolateCombination ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k))
+              ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k) :
+              E_m_N ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) :
+              H_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) -
+            gTrial_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+              (prolateCombination ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k))
+              ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k))‖), ?_, ?_⟩
+  · have h1 := (n2c_ratio_tendsto_one (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ)).norm
+    rw [norm_one] at h1
+    have h2 := n2c_shell_rate C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ σ hσ0 hσ
+    have h2' : Filter.Tendsto
+        (fun k =>
+          lambda_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k) ^ σ *
+            Real.sqrt (L_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) *
+            ‖(selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).sourceScale k •
+              (((gTrial_m_N ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+                  (prolateCombination ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k))
+                  ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k) :
+                  E_m_N ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) :
+                  H_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)) -
+                gTrial_m ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).index k)
+                  (prolateCombination ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).pair k))
+                  ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).eStar_memLp k))‖)
+        Filter.atTop (nhds 0) := by
+      apply h2.congr
+      intro k
+      ring
+    have hmul := h1.mul h2'
+    rw [one_mul] at hmul
+    exact hmul
+  · filter_upwards [] with k
+    intro z hz
+    have hb := n2c_error_bound (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ) k hσ0 (hKσ z hz)
+    simpa only [SelectedProlateCofinalSourceData.muntzApproximation] using hb
+
+set_option maxHeartbeats 8000000 in
+/-- The Müntz-anchored family tends to `centeredXi` locally uniformly, on any
+selected shell: the anchored ratio tends to one, the Müntz family carries the
+Lemma-7.3 limit, and `centeredXi` is even. -/
+private theorem n2c_anchored_tendsto_xi
+    (D : SelectedProlateCofinalSourceData) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        centeredXi 0 / D.muntzApproximation k 0 *
+          D.muntzApproximation k (-z))
+      centeredXi Filter.atTop centeredCriticalStrip := by
+  rw [tendstoLocallyUniformlyOn_iff_forall_isCompact
+    CanonicalRHRoute.isOpen_centeredCriticalStrip]
+  intro K hKU hK
+  have hnegK : IsCompact (Neg.neg '' K) := hK.image continuous_neg
+  have hnegSub : (Neg.neg '' K) ⊆ centeredCriticalStrip := by
+    rintro w ⟨z, hz, rfl⟩
+    have hzs := hKU hz
+    show |(-z).im| < 1 / 2
+    rw [Complex.neg_im, abs_neg]
+    exact hzs
+  have hmuntzK := (tendstoLocallyUniformlyOn_iff_forall_isCompact
+    CanonicalRHRoute.isOpen_centeredCriticalStrip).mp
+    D.muntzLimit (Neg.neg '' K) hnegSub hnegK
+  obtain ⟨M, hM⟩ := hK.exists_bound_of_continuousOn
+    (differentiable_centeredXi.continuous.continuousOn)
+  have hM'pos : (0 : ℝ) < max M 0 + 1 := by
+    have := le_max_right M 0
+    linarith
+  have hM' : ∀ z ∈ K, ‖centeredXi z‖ ≤ max M 0 + 1 := by
+    intro z hz
+    have := hM z hz
+    have h2 := le_max_left M 0
+    linarith
+  have hratio := n2c_ratio_tendsto_one D
+  rw [Metric.tendstoUniformlyOn_iff] at hmuntzK ⊢
+  intro ε hε
+  have hc2 : ∀ᶠ k in Filter.atTop,
+      ‖centeredXi 0 /
+        (D.sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0)‖ < 2 := by
+    have hn := hratio.norm
+    rw [norm_one] at hn
+    exact hn.eventually_lt_const (by norm_num)
+  have hc1 : ∀ᶠ k in Filter.atTop,
+      ‖centeredXi 0 /
+        (D.sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0) - 1‖ <
+        ε / (2 * (max M 0 + 1)) := by
+    have hd := Metric.tendsto_nhds.mp hratio
+      (ε / (2 * (max M 0 + 1))) (by positivity)
+    apply hd.mono
+    intro k hk
+    rwa [dist_eq_norm] at hk
+  filter_upwards [hc2, hc1, hmuntzK (ε / 4) (by positivity)] with
+    k h2 h1 hmuk
+  intro z hz
+  have hmz := hmuk (-z) (Set.mem_image_of_mem _ hz)
+  rw [dist_eq_norm] at hmz ⊢
+  have hXin := centeredXi_neg z
+  have hkey :
+      centeredXi z -
+        centeredXi 0 / D.muntzApproximation k 0 *
+          D.muntzApproximation k (-z) =
+      -((centeredXi 0 / D.muntzApproximation k 0) *
+          (D.muntzApproximation k (-z) - centeredXi (-z))) -
+        ((centeredXi 0 / D.muntzApproximation k 0 - 1) *
+          centeredXi (-z)) := by
+    rw [hXin]
+    ring
+  have hratio_eq :
+      centeredXi 0 / D.muntzApproximation k 0 =
+        centeredXi 0 /
+          (D.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0) := rfl
+  rw [hkey]
+  have hb1 : ‖(centeredXi 0 / D.muntzApproximation k 0) *
+      (D.muntzApproximation k (-z) - centeredXi (-z))‖ < 2 * (ε / 4) := by
+    rw [norm_mul]
+    have hfac : ‖D.muntzApproximation k (-z) - centeredXi (-z)‖ =
+        ‖centeredXi (-z) - D.muntzApproximation k (-z)‖ := norm_sub_rev _ _
+    rw [hfac, hratio_eq]
+    rcases eq_or_ne ‖centeredXi (-z) - D.muntzApproximation k (-z)‖ 0 with
+      hzero | hne
+    · rw [hzero, mul_zero]
+      positivity
+    · apply mul_lt_mul' h2.le hmz (norm_nonneg _)
+      norm_num
+  have hb2 : ‖(centeredXi 0 / D.muntzApproximation k 0 - 1) *
+      centeredXi (-z)‖ ≤ ε / (2 * (max M 0 + 1)) * (max M 0 + 1) := by
+    rw [norm_mul]
+    apply mul_le_mul
+    · exact h1.le
+    · rw [hXin]
+      exact hM' z hz
+    · exact norm_nonneg _
+    · positivity
+  have hb2' : ε / (2 * (max M 0 + 1)) * (max M 0 + 1) = ε / 2 := by
+    field_simp
+  calc ‖-((centeredXi 0 / D.muntzApproximation k 0) *
+        (D.muntzApproximation k (-z) - centeredXi (-z))) -
+        ((centeredXi 0 / D.muntzApproximation k 0 - 1) *
+          centeredXi (-z))‖ ≤
+      ‖(centeredXi 0 / D.muntzApproximation k 0) *
+        (D.muntzApproximation k (-z) - centeredXi (-z))‖ +
+      ‖(centeredXi 0 / D.muntzApproximation k 0 - 1) *
+        centeredXi (-z)‖ := by
+        calc ‖_ - _‖ ≤ ‖-((centeredXi 0 / D.muntzApproximation k 0) *
+              (D.muntzApproximation k (-z) - centeredXi (-z)))‖ +
+            ‖(centeredXi 0 / D.muntzApproximation k 0 - 1) *
+              centeredXi (-z)‖ := norm_sub_le _ _
+          _ = _ := by rw [norm_neg]
+    _ < 2 * (ε / 4) + ε / 2 := by
+        have := hb2'.symm ▸ hb2
+        apply add_lt_add_of_lt_of_le hb1
+        rw [← hb2']
+        exact hb2
+    _ = ε := by ring
+
+set_option maxHeartbeats 8000000 in
+/-- **N2/N3: the centered selected family converges to `centeredXi`**
+(verdict `REQ-2026-08-26-K`, theorem 3), locally uniformly on the centered
+critical strip. -/
+theorem selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates
+    (C0 C4 Cχ Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hCθ : 0 ≤ Cθ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ : ∀ᶠ k in Filter.atTop,
+      |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+        |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2)
+    (hθ : ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+        |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+          Cθ) :
+    TendstoLocallyUniformlyOn
+      ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar)
+      centeredXi Filter.atTop centeredCriticalStrip := by
+  have h1 :=
+    selectedFerrersCofinalCenteredFinite_sub_anchoredMuntz_tendsto_zero_of_modeChiThetaRates
+      C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ
+  have h2 := n2c_anchored_tendsto_xi (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ)
+  rw [tendstoLocallyUniformlyOn_iff_forall_isCompact
+    CanonicalRHRoute.isOpen_centeredCriticalStrip] at h1 h2 ⊢
+  intro K hKU hK
+  have hu1 := h1 K hKU hK
+  have hu2 := h2 K hKU hK
+  rw [Metric.tendstoUniformlyOn_iff] at hu1 hu2 ⊢
+  intro ε hε
+  filter_upwards [hu1 (ε / 2) (by positivity),
+    hu2 (ε / 2) (by positivity)] with k g1 g2
+  intro z hz
+  have e1 := g1 z hz
+  have e2 := g2 z hz
+  rw [dist_eq_norm] at e1 e2 ⊢
+  have hdecomp :
+      centeredXi z - (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar k z =
+      (centeredXi z -
+        centeredXi 0 / (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k 0 *
+          (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k (-z)) -
+      ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar k z -
+        centeredXi 0 / (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k 0 *
+          (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k (-z)) := by
+    ring
+  rw [hdecomp]
+  calc ‖_ - _‖ ≤
+      ‖centeredXi z -
+        centeredXi 0 / (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k 0 *
+          (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k (-z)‖ +
+      ‖(selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar k z -
+        centeredXi 0 / (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k 0 *
+          (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).muntzApproximation k (-z)‖ := norm_sub_le _ _
+    _ < ε / 2 + ε / 2 := by
+        apply add_lt_add e2
+        have e1' := e1
+        rw [zero_sub] at e1'
+        rwa [norm_neg] at e1'
+    _ = ε := by ring
+
+/-- **N4: SlotS2 on the selected shell** (verdict `REQ-2026-08-26-K`,
+theorem 4), with `c = 1` and gauge `1`: every cluster limit of the selected
+family is `centeredXi` itself. -/
+theorem selectedFerrersCofinalSlotS2_of_modeChiThetaRates
+    (C0 C4 Cχ Cθ : ℝ) (hC0 : 0 ≤ C0) (hC4 : 0 ≤ C4) (hCχ : 0 ≤ Cχ)
+    (hCθ : 0 ≤ Cθ)
+    (hmode : ∀ᶠ k in Filter.atTop,
+      ∀ x ∈ Set.Icc (-(selectedFerrersPaperLambda k))
+          (selectedFerrersPaperLambda k),
+        ‖centerAnchorScalarZero k *
+            (selectedFerrersPreAnchorPair k).h0 x -
+          ((parabolicCylinderD 0 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C0 / (selectedFerrersPaperLambda k) ^ 2 ∧
+        ‖centerAnchorScalarFour k *
+            (selectedFerrersPreAnchorPair k).h4 x -
+          ((parabolicCylinderD 4 (projectCylinderArgument x) : ℝ) : ℂ)‖ ≤
+            C4 / (selectedFerrersPaperLambda k) ^ 2)
+    (hχ : ∀ᶠ k in Filter.atTop,
+      |1 - (selectedFerrersPreAnchorPair k).chi0| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2 ∧
+        |1 - (selectedFerrersPreAnchorPair k).chi2| ≤
+          Cχ / (selectedFerrersPaperLambda k) ^ 2)
+    (hθ : ∀ᶠ k in Filter.atTop,
+      |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 0 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (2 * Real.pi)| ≤ Cθ ∧
+        |mode4ClassicalEvenEigenvalue (mode4JacobiG (k + 2)) 2 +
+          mode4JacobiG (k + 2) - ((k + 2 : ℕ) : ℝ) * (18 * Real.pi)| ≤
+          Cθ) :
+    CanonicalRHRoute.SlotS2
+      ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).canonicalApproximation) := by
+  intro DC
+  refine ⟨1, fun _ => 1, one_ne_zero, fun z _ => one_ne_zero, ?_⟩
+  intro z hz
+  have hfam : CanonicalRHRoute.selectedFamily
+      ((selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).canonicalApproximation) =
+      (selectedFerrersCofinalShell C0 C4 Cχ hC0 hC4 hCχ hmode hχ).centeredPstar := rfl
+  have hlim1 := DC.convergence.tendsto_at hz
+  rw [hfam] at hlim1
+  have hlim2 :=
+    (selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates
+      C0 C4 Cχ Cθ hC0 hC4 hCχ hCθ hmode hχ hθ).tendsto_at hz
+  have heq := tendsto_nhds_unique hlim1 hlim2
+  rw [heq]
+  ring
+
+#print axioms selectedFerrersCofinalCenteredFinite_sub_anchoredMuntz_tendsto_zero_of_modeChiThetaRates
+#print axioms selectedFerrersCofinalCenteredPstar_tendsto_centeredXi_of_modeChiThetaRates
+#print axioms selectedFerrersCofinalSlotS2_of_modeChiThetaRates
+
+end Q3.RouteB.D0Pstar
+
+```
+
+
+## Additional exact source: q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean
+SHA256: 99199fcc04007e9f61bcac5f776f5da2e8dbb506635fa003b471bcf00f80cdef
+
+```lean
+import Q3.Proofs.RouteB.D0AnchorFloor
+import Q3.Proofs.RouteB.D0CenteredCriticalMoment
+import Q3.Proofs.RouteB.CenteredXiZeroNonzero
+import Q3.Proofs.RouteB.MuntzV3.Core
+import Q3.Proofs.RouteB.ProlateLayer
+
+set_option linter.mathlibStandardSet false
+set_option relaxedAutoImplicit false
+set_option autoImplicit false
+
+open Complex Filter Topology MeasureTheory Set
+open scoped ENNReal NNReal
+
+noncomputable section
+
+namespace Q3.RouteB.D0Pstar
+
+open CanonicalRHRoute
+
+/-!
+# G6/N1 pre-anchor limit, exact zero mode, and additive selected shell
+
+This module stays strictly before `ProlateCanonicalSourceData`.  The paper
+supplier is recorded by `CCMLemma73PreAnchorPort`; it normalizes the literal
+unprojected `Gwin` family and never divides by `rawFplus ... 0`.
+
+The Lean layer proves the exact zero-mode identity, derives finite projected
+nonvanishing, removes one finite prefix, and constructs a new terminal
+`CanonicalApproximation ℕ`.  The existing all-index D0Pstar source layer is
+not modified or duplicated.
+-/
+
+/-- The unnormalized pre-anchor Müntz coordinate in the production centered
+variable.  The paper transform coordinate is `s = -I*z`. -/
+noncomputable def preAnchorGwinTransformCoordinate
+    (i : PairIndex) (h : ℝ → ℂ) (z : ℂ) : ℂ :=
+  EStarMuntzZeroMassContinuation.Gwin h (lambda_m i) (-Complex.I * z)
+
+/-- The literal full multiplicative Mellin coordinate of the unprojected
+source packet. -/
+noncomputable def preAnchorFullMellinCoordinate
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (z : ℂ) : ℂ :=
+  ∫ u : ℝ,
+      (gTrial_m i h hLp : H_m i) u *
+        (u : ℂ) ^ (-Complex.I * z)
+    ∂(dStar.restrict (I_m i))
+
+/-- Exact pre-anchor full-Mellin/Gwin crosswalk.  This is the source-parametric
+form of the already-green selected crosswalk and uses neither `TrialNonzero`
+nor `CentralIndex`. -/
+theorem preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (z : ℂ) :
+    preAnchorFullMellinCoordinate i h hLp z =
+      preAnchorGwinTransformCoordinate i h z := by
+  have hm_real : (1 : ℝ) < i.m := by
+    exact_mod_cast (lt_of_lt_of_le (by norm_num : 1 < 2) i.hm)
+  have hlam_one : 1 < lambda_m i := by
+    simpa [lambda_m] using
+      (Real.sqrt_lt_sqrt (by norm_num : (0 : ℝ) ≤ 1) hm_real :
+        Real.sqrt 1 < Real.sqrt i.m)
+  have hlam_pos : 0 < lambda_m i := zero_lt_one.trans hlam_one
+  have hrep :
+      (fun u : ℝ => (gTrial_m i h hLp : H_m i) u)
+        =ᵐ[dStar.restrict (I_m i)]
+      E_star h := by
+    unfold gTrial_m
+    apply MemLp.coeFn_toLp
+  have hdensity_meas :
+      Measurable (fun u : ℝ => ENNReal.ofReal u⁻¹) :=
+    measurable_inv.ennreal_ofReal
+  have hdensity_top :
+      ∀ᵐ u : ℝ ∂(volume.restrict (I_m i)),
+        ENNReal.ofReal u⁻¹ < ⊤ := by
+    filter_upwards [] with u
+    exact ENNReal.ofReal_lt_top
+  calc
+    preAnchorFullMellinCoordinate i h hLp z =
+        ∫ u : ℝ,
+          (gTrial_m i h hLp : H_m i) u *
+            (u : ℂ) ^ (-Complex.I * z)
+          ∂(dStar.restrict (I_m i)) := by
+            rfl
+    _ = ∫ u : ℝ,
+          E_star h u * (u : ℂ) ^ (-Complex.I * z)
+          ∂(dStar.restrict (I_m i)) := by
+            apply integral_congr_ae
+            filter_upwards [hrep] with u hu
+            rw [hu]
+    _ = ∫ u : ℝ in I_m i,
+          u⁻¹ • (E_star h u * (u : ℂ) ^ (-Complex.I * z)) := by
+            rw [dStar]
+            rw [setIntegral_withDensity_eq_setIntegral_toReal_smul
+              hdensity_meas hdensity_top _ measurableSet_Icc]
+            apply setIntegral_congr_fun measurableSet_Icc
+            intro u hu
+            have hu_pos : 0 < u :=
+              (inv_pos.mpr hlam_pos).trans_le hu.1
+            change (ENNReal.ofReal u⁻¹).toReal •
+                (E_star h u * (u : ℂ) ^ (-Complex.I * z)) =
+              u⁻¹ • (E_star h u * (u : ℂ) ^ (-Complex.I * z))
+            rw [ENNReal.toReal_ofReal (inv_nonneg.mpr hu_pos.le)]
+    _ = ∫ u : ℝ in I_m i,
+          EStarMuntzZeroMassContinuation.Estar h u *
+            (u : ℂ) ^ ((-Complex.I * z) - 1) := by
+            apply setIntegral_congr_fun measurableSet_Icc
+            intro u hu
+            have hu_pos : 0 < u :=
+              (inv_pos.mpr hlam_pos).trans_le hu.1
+            have hu_ne : (u : ℂ) ≠ 0 :=
+              Complex.ofReal_ne_zero.mpr hu_pos.ne'
+            change u⁻¹ •
+                (E_star h u * (u : ℂ) ^ (-Complex.I * z)) =
+              EStarMuntzZeroMassContinuation.Estar h u *
+                (u : ℂ) ^ ((-Complex.I * z) - 1)
+            rw [Complex.cpow_sub _ _ hu_ne, Complex.cpow_one]
+            simp only [E_star,
+              EStarMuntzZeroMassContinuation.Estar]
+            rw [Complex.real_smul]
+            push_cast
+            rw [div_eq_mul_inv]
+            ring
+    _ = ∫ u : ℝ in Set.Ioo (lambda_m i)⁻¹ (lambda_m i),
+          EStarMuntzZeroMassContinuation.Estar h u *
+            (u : ℂ) ^ ((-Complex.I * z) - 1) := by
+            rw [I_m, MeasureTheory.integral_Icc_eq_integral_Ioo]
+    _ = preAnchorGwinTransformCoordinate i h z := by
+            rfl
+
+/-- At the central transform point the full Mellin coordinate is exactly the
+zero logarithmic Fourier overlap. -/
+theorem preAnchorFullMellinCoordinate_zero_eq_sqrtL_mul_innerV0
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) :
+    preAnchorFullMellinCoordinate i h hLp 0 =
+      (Real.sqrt (L_m i) : ℂ) *
+        inner ℂ (V_n_m i 0) (gTrial_m i h hLp) := by
+  have hsqrt : Real.sqrt (L_m i) ≠ 0 :=
+    (Real.sqrt_pos.mpr (logLength_pos i)).ne'
+  have hrep :
+      (fun u : ℝ => (gTrial_m i h hLp : H_m i) u)
+        =ᵐ[dStar.restrict (I_m i)]
+      E_star h := by
+    unfold gTrial_m
+    apply MemLp.coeFn_toLp
+  have hmode :
+      (fun u : ℝ => (V_n_m i 0) u)
+        =ᵐ[dStar.restrict (I_m i)]
+      (fun u : ℝ =>
+        ((Real.sqrt (L_m i))⁻¹ : ℂ) *
+          Complex.exp
+            (2 * Real.pi * Complex.I * (0 : ℤ) *
+              (Real.log (lambda_m i * u) / L_m i))) := by
+    unfold V_n_m
+    apply MemLp.coeFn_toLp
+  unfold preAnchorFullMellinCoordinate
+  rw [MeasureTheory.L2.inner_def, ← integral_const_mul]
+  apply integral_congr_ae
+  filter_upwards [hrep, hmode] with u hrep_u hmode_u
+  rw [hrep_u, hmode_u]
+  have hsqrtC : (Real.sqrt (L_m i) : ℂ) ≠ 0 := by
+    exact_mod_cast hsqrt
+  have hscale :
+      E_star h u =
+        (Real.sqrt (L_m i) : ℂ) *
+          (E_star h u * (Real.sqrt (L_m i) : ℂ)⁻¹) := by
+    field_simp [hsqrtC]
+  simpa using hscale
+
+/-- The exact source identity requested by the transaction:
+`Gwin(0) = sqrt(L_m) * <V0,gTrial_m>`. -/
+theorem preAnchorGwin_zero_eq_sqrtL_mul_innerV0
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i))) :
+    preAnchorGwinTransformCoordinate i h 0 =
+      (Real.sqrt (L_m i) : ℂ) *
+        inner ℂ (V_n_m i 0) (gTrial_m i h hLp) := by
+  rw [← preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate]
+  exact preAnchorFullMellinCoordinate_zero_eq_sqrtL_mul_innerV0 i h hLp
+
+/-- Exact preservation of the zero mode by Galerkin projection turns a nonzero
+pre-anchor central value into the legal `TrialNonzero` witness. -/
+theorem trialNonzero_of_preAnchorGwin_zero_ne
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hzero : preAnchorGwinTransformCoordinate i h 0 ≠ 0) :
+    TrialNonzero i h hLp := by
+  have hinner : inner ℂ (V_n_m i 0) (gTrial_m i h hLp) ≠ 0 := by
+    intro hinner_zero
+    apply hzero
+    rw [preAnchorGwin_zero_eq_sqrtL_mul_innerV0 i h hLp, hinner_zero, mul_zero]
+  have hprojected : gTrial_m_N i h hLp ≠ 0 := by
+    intro hprojected_zero
+    apply hinner
+    rw [← inner_V0_gTrial_m_N_eq i h hLp, hprojected_zero]
+    simp
+  exact norm_pos_iff.mpr hprojected
+
+/-- Literal path-local Proposition-59 raw transform of the normalized finite
+projection. -/
+noncomputable def preAnchorRawTransformCoordinate
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp)
+    (z : ℂ) : ℂ :=
+  proposition59RawTransform (logLength i) (modeSet i)
+    (c_n i h hLp hNonzero) (-z)
+
+/-- The central raw value is the constant normalized Fourier coefficient. -/
+theorem preAnchorRawTransformCoordinate_zero_eq_sqrt_mul_c0
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp) :
+    preAnchorRawTransformCoordinate i h hLp hNonzero 0 =
+      (Real.sqrt (L_m i) : ℂ) * c_n i h hLp hNonzero 0 := by
+  let D : CoefficientFamily :=
+    ⟨fun _ n => c_n i h hLp hNonzero n⟩
+  have hzero := rawFplus_zero_eq_sqrt_mul_c0 D i
+  simpa [preAnchorRawTransformCoordinate, rawFplus, D] using hzero
+
+/-- The normalized finite raw central value is the positive inverse projected
+norm times the pre-anchor `Gwin` value. -/
+theorem preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp) :
+    preAnchorRawTransformCoordinate i h hLp hNonzero 0 =
+      ((sTrial_m_N i h hLp hNonzero : ℝ) : ℂ) *
+        preAnchorGwinTransformCoordinate i h 0 := by
+  rw [preAnchorRawTransformCoordinate_zero_eq_sqrt_mul_c0 i h hLp hNonzero]
+  unfold c_n kTrial_m_N
+  rw [Submodule.coe_smul, inner_smul_right]
+  rw [inner_V0_gTrial_m_N_eq i h hLp]
+  rw [preAnchorGwin_zero_eq_sqrtL_mul_innerV0 i h hLp]
+  ring
+
+/-- Hence the exact normalized path-local raw value at zero is nonzero. -/
+theorem preAnchorRawTransformCoordinate_zero_ne
+    (i : PairIndex)
+    (h : ℝ → ℂ)
+    (hLp : MemLp (E_star h) 2 (dStar.restrict (I_m i)))
+    (hNonzero : TrialNonzero i h hLp)
+    (hGwin : preAnchorGwinTransformCoordinate i h 0 ≠ 0) :
+    preAnchorRawTransformCoordinate i h hLp hNonzero 0 ≠ 0 := by
+  rw [preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero]
+  apply mul_ne_zero
+  · exact_mod_cast (inv_ne_zero (ne_of_gt hNonzero))
+  · exact hGwin
+
+/-- The selected source objects needed before any anchor denominator exists. -/
+structure SelectedProlatePreAnchorData where
+  index : ℕ → PairIndex
+  pair : ℕ → ProlatePair
+  mCofinal : Tendsto (fun k => (index k).m) atTop atTop
+  nCofinal : Tendsto (fun k => (index k).N) atTop atTop
+  lambda_eq : ∀ k, (pair k).pw.lambda = lambda_m (index k)
+  eStar_memLp : ∀ k,
+    MemLp (E_star (prolateCombination (pair k))) 2
+      (dStar.restrict (I_m (index k)))
+
+/-- Exact project port of the already-ratified CCM Lemma 7.3 paper supplier.
+The normalizer is source-defined and the statement contains no finite raw
+anchor or `CentralIndex`. -/
+structure CCMLemma73PreAnchorPort
+    (D : SelectedProlatePreAnchorData) where
+  sourceScale : ℕ → ℂ
+  sourceScale_ne : ∀ k, sourceScale k ≠ 0
+  convergence :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) z)
+      centeredXi atTop centeredCriticalStrip
+
+/-- Lemma 7.3 at the nonzero central target gives eventual pre-anchor central
+nonvanishing without any finite normalization. -/
+theorem eventually_preAnchorGwin_zero_ne
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    ∀ᶠ k in atTop,
+      preAnchorGwinTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 := by
+  have hzero_mem : (0 : ℂ) ∈ centeredCriticalStrip := by
+    show |(0 : ℂ).im| < 1 / 2
+    norm_num
+  have hpoint :
+      Tendsto
+        (fun k =>
+          P.sourceScale k *
+            preAnchorGwinTransformCoordinate
+              (D.index k) (prolateCombination (D.pair k)) 0)
+        atTop (𝓝 (centeredXi 0)) :=
+    P.convergence.tendsto_at hzero_mem
+  have hproduct_ne :
+      ∀ᶠ k in atTop,
+        P.sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 :=
+    hpoint.eventually (eventually_ne_nhds centeredXi_zero_ne_zero)
+  filter_upwards [hproduct_ne] with k hk
+  intro hGwin
+  apply hk
+  rw [hGwin, mul_zero]
+
+/-- The final selected tail.  Every nonvanishing field is a theorem-generated
+consequence of the pre-anchor port, not an assumption. -/
+structure SelectedProlateCofinalSourceData where
+  index : ℕ → PairIndex
+  pair : ℕ → ProlatePair
+  mCofinal : Tendsto (fun k => (index k).m) atTop atTop
+  nCofinal : Tendsto (fun k => (index k).N) atTop atTop
+  lambda_eq : ∀ k, (pair k).pw.lambda = lambda_m (index k)
+  eStar_memLp : ∀ k,
+    MemLp (E_star (prolateCombination (pair k))) 2
+      (dStar.restrict (I_m (index k)))
+  trialNonzero : ∀ k,
+    TrialNonzero (index k) (prolateCombination (pair k)) (eStar_memLp k)
+  rawZeroNonzero : ∀ k,
+    preAnchorRawTransformCoordinate
+      (index k) (prolateCombination (pair k)) (eStar_memLp k)
+      (trialNonzero k) 0 ≠ 0
+  sourceScale : ℕ → ℂ
+  sourceScale_ne : ∀ k, sourceScale k ≠ 0
+  muntzLimit :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        sourceScale k *
+          preAnchorGwinTransformCoordinate
+            (index k) (prolateCombination (pair k)) z)
+      centeredXi atTop centeredCriticalStrip
+
+/-- First index of a tail on which the pre-anchor central value is nonzero. -/
+private noncomputable def preAnchorTailStart
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) : ℕ :=
+  Classical.choose
+    (eventually_atTop.1 (eventually_preAnchorGwin_zero_ne D P))
+
+/-- Every index at or beyond the selected start has nonzero pre-anchor center. -/
+private theorem preAnchorTailStart_spec
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    ∀ k ≥ preAnchorTailStart D P,
+      preAnchorGwinTransformCoordinate
+        (D.index k) (prolateCombination (D.pair k)) 0 ≠ 0 := by
+  simpa [preAnchorTailStart] using
+    (Classical.choose_spec
+      (eventually_atTop.1 (eventually_preAnchorGwin_zero_ne D P)))
+
+/-- The precommitted finite-prefix deletion. -/
+private noncomputable def preAnchorTailShift
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) : ℕ → ℕ :=
+  fun k => preAnchorTailStart D P + k
+
+/-- Arithmetic floor 1: the selected start is below every shifted index. -/
+private theorem preAnchorTailStart_le_shift
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorTailStart D P ≤ preAnchorTailShift D P k := by
+  unfold preAnchorTailShift
+  omega
+
+/-- Arithmetic floor 2: the shifted path dominates the original index. -/
+private theorem preAnchorTailIndex_le_shift
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    k ≤ preAnchorTailShift D P k := by
+  unfold preAnchorTailShift
+  omega
+
+/-- The precommitted finite-prefix deletion remains cofinal. -/
+private theorem preAnchorTailShift_tendsto
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    Tendsto (preAnchorTailShift D P) atTop atTop := by
+  refine tendsto_atTop.2 ?_
+  intro b
+  filter_upwards [eventually_ge_atTop b] with k hk
+  exact hk.trans (preAnchorTailIndex_le_shift D P k)
+
+/-- Exact selected tail index. -/
+private noncomputable def preAnchorTailIndex
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) : PairIndex :=
+  D.index (preAnchorTailShift D P k)
+
+/-- Exact selected tail prolate pair. -/
+private noncomputable def preAnchorTailPair
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) : ProlatePair :=
+  D.pair (preAnchorTailShift D P k)
+
+/-- The `m` coordinate remains cofinal after deleting the finite prefix. -/
+private theorem preAnchorTail_mCofinal
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    Tendsto (fun k => (preAnchorTailIndex D P k).m) atTop atTop := by
+  exact D.mCofinal.comp (preAnchorTailShift_tendsto D P)
+
+/-- The `N` coordinate remains cofinal after deleting the finite prefix. -/
+private theorem preAnchorTail_nCofinal
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    Tendsto (fun k => (preAnchorTailIndex D P k).N) atTop atTop := by
+  exact D.nCofinal.comp (preAnchorTailShift_tendsto D P)
+
+/-- The source bandwidth identity survives the finite-prefix deletion. -/
+private theorem preAnchorTail_lambda_eq
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    (preAnchorTailPair D P k).pw.lambda =
+      lambda_m (preAnchorTailIndex D P k) := by
+  simpa only [preAnchorTailPair, preAnchorTailIndex] using
+    D.lambda_eq (preAnchorTailShift D P k)
+
+/-- The exact `E_star` membership survives the finite-prefix deletion. -/
+private theorem preAnchorTail_eStar_memLp
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    MemLp (E_star (prolateCombination (preAnchorTailPair D P k))) 2
+      (dStar.restrict (I_m (preAnchorTailIndex D P k))) := by
+  simpa only [preAnchorTailPair, preAnchorTailIndex] using
+    D.eStar_memLp (preAnchorTailShift D P k)
+
+/-- The selected tail has a nonzero pre-anchor central value at every index. -/
+private theorem preAnchorTail_gwin_zero_ne
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorGwinTransformCoordinate
+      (preAnchorTailIndex D P k)
+      (prolateCombination (preAnchorTailPair D P k)) 0 ≠ 0 := by
+  have hsource :=
+    preAnchorTailStart_spec D P
+      (preAnchorTailShift D P k)
+      (preAnchorTailStart_le_shift D P k)
+  simpa only [preAnchorTailIndex, preAnchorTailPair] using hsource
+
+/-- Zero-mode preservation turns the selected pre-anchor center into
+`TrialNonzero`. -/
+private theorem preAnchorTail_trialNonzero
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    TrialNonzero
+      (preAnchorTailIndex D P k)
+      (prolateCombination (preAnchorTailPair D P k))
+      (preAnchorTail_eStar_memLp D P k) :=
+  trialNonzero_of_preAnchorGwin_zero_ne
+    (preAnchorTailIndex D P k)
+    (prolateCombination (preAnchorTailPair D P k))
+    (preAnchorTail_eStar_memLp D P k)
+    (preAnchorTail_gwin_zero_ne D P k)
+
+/-- The exact normalized finite raw transform is nonzero at the selected center. -/
+private theorem preAnchorTail_rawZeroNonzero
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorRawTransformCoordinate
+      (preAnchorTailIndex D P k)
+      (prolateCombination (preAnchorTailPair D P k))
+      (preAnchorTail_eStar_memLp D P k)
+      (preAnchorTail_trialNonzero D P k) 0 ≠ 0 :=
+  preAnchorRawTransformCoordinate_zero_ne
+    (preAnchorTailIndex D P k)
+    (prolateCombination (preAnchorTailPair D P k))
+    (preAnchorTail_eStar_memLp D P k)
+    (preAnchorTail_trialNonzero D P k)
+    (preAnchorTail_gwin_zero_ne D P k)
+
+/-- The source scale restricted to the selected tail. -/
+private noncomputable def preAnchorTailSourceScale
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) : ℂ :=
+  P.sourceScale (preAnchorTailShift D P k)
+
+/-- The selected tail source scale remains nonzero. -/
+private theorem preAnchorTailSourceScale_ne
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D)
+    (k : ℕ) :
+    preAnchorTailSourceScale D P k ≠ 0 := by
+  simpa only [preAnchorTailSourceScale] using
+    P.sourceScale_ne (preAnchorTailShift D P k)
+
+/-- Pulling a locally uniform sequence back along a cofinal map on
+`ℕ` preserves the same locally uniform limit.  This proof stays at the
+defining filter level and does not expand compact-local equivalences. -/
+private theorem tendstoLocallyUniformlyOn_atTop_precomp
+    {F : ℕ → ℂ → ℂ}
+    {f : ℂ → ℂ}
+    {s : Set ℂ}
+    (hF : TendstoLocallyUniformlyOn F f atTop s)
+    {shift : ℕ → ℕ}
+    (hshift : Tendsto shift atTop atTop) :
+    TendstoLocallyUniformlyOn
+      (fun k z => F (shift k) z) f atTop s := by
+  intro u hu x hx
+  obtain ⟨t, ht, hEventually⟩ := hF u hu x hx
+  exact ⟨t, ht, hshift hEventually⟩
+
+/-- First kernel floor: apply the generic precomposition theorem to the
+literal pre-anchor paper family and the precommitted tail shift. -/
+private theorem preAnchorTail_muntzLimit_shifted
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        P.sourceScale (preAnchorTailShift D P k) *
+          preAnchorGwinTransformCoordinate
+            (D.index (preAnchorTailShift D P k))
+            (prolateCombination
+              (D.pair (preAnchorTailShift D P k))) z)
+      centeredXi atTop centeredCriticalStrip := by
+  exact tendstoLocallyUniformlyOn_atTop_precomp
+    P.convergence (preAnchorTailShift_tendsto D P)
+
+/-- Second kernel floor: replace the raw shifted index and pair by the named
+tail objects. -/
+private theorem preAnchorTail_muntzLimit_indexed
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        P.sourceScale (preAnchorTailShift D P k) *
+          preAnchorGwinTransformCoordinate
+            (preAnchorTailIndex D P k)
+            (prolateCombination (preAnchorTailPair D P k)) z)
+      centeredXi atTop centeredCriticalStrip := by
+  simpa only [preAnchorTailIndex, preAnchorTailPair] using
+    preAnchorTail_muntzLimit_shifted D P
+
+/-- Final kernel floor: expose the selected tail scale required by the record
+field while reusing the already-certified indexed convergence theorem. -/
+private theorem preAnchorTail_muntzLimit
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    TendstoLocallyUniformlyOn
+      (fun k z =>
+        preAnchorTailSourceScale D P k *
+          preAnchorGwinTransformCoordinate
+            (preAnchorTailIndex D P k)
+            (prolateCombination (preAnchorTailPair D P k)) z)
+      centeredXi atTop centeredCriticalStrip := by
+  simpa only [preAnchorTailSourceScale] using
+    preAnchorTail_muntzLimit_indexed D P
+
+/-- Discarding the finite prefix selected by eventual central nonvanishing
+constructs the full source-locked selected shell.  Every dependent field is
+supplied by a separately kernel-checked theorem floor. -/
+noncomputable def selectedProlateCofinalSourceDataOfPreAnchorPort
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    SelectedProlateCofinalSourceData where
+  index := preAnchorTailIndex D P
+  pair := preAnchorTailPair D P
+  mCofinal := preAnchorTail_mCofinal D P
+  nCofinal := preAnchorTail_nCofinal D P
+  lambda_eq := preAnchorTail_lambda_eq D P
+  eStar_memLp := preAnchorTail_eStar_memLp D P
+  trialNonzero := preAnchorTail_trialNonzero D P
+  rawZeroNonzero := preAnchorTail_rawZeroNonzero D P
+  sourceScale := preAnchorTailSourceScale D P
+  sourceScale_ne := preAnchorTailSourceScale_ne D P
+  muntzLimit := preAnchorTail_muntzLimit D P
+
+namespace SelectedProlateCofinalSourceData
+
+/-- Literal selected finite raw family. -/
+noncomputable def rawFplus
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) : ℂ :=
+  preAnchorRawTransformCoordinate
+    (D.index k) (prolateCombination (D.pair k))
+    (D.eStar_memLp k) (D.trialNonzero k) z
+
+/-- Literal selected Müntz main family from the paper port. -/
+noncomputable def muntzApproximation
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) : ℂ :=
+  D.sourceScale k *
+    preAnchorGwinTransformCoordinate
+      (D.index k) (prolateCombination (D.pair k)) z
+
+/-- The centered finite selected family with a theorem-proved denominator. -/
+noncomputable def centeredPstar
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) (z : ℂ) : ℂ :=
+  centeredXi 0 / D.rawFplus k 0 * D.rawFplus k z
+
+@[simp] theorem centeredPstar_zero
+    (D : SelectedProlateCofinalSourceData) (k : ℕ) :
+    D.centeredPstar k 0 = centeredXi 0 := by
+  unfold centeredPstar
+  exact div_mul_cancel₀ (centeredXi 0) (D.rawZeroNonzero k)
+
+/-- The new terminal selected view.  The generic cofinal proposition records
+both literal source coordinates and `parent = extract = id`. -/
+noncomputable def canonicalApproximation
+    (D : SelectedProlateCofinalSourceData) :
+    CanonicalApproximation ℕ where
+  Pstar := ⟨D.centeredPstar⟩
+  parent := fun k => k
+  parentCofinal :=
+    Tendsto (fun k => (D.index k).m) atTop atTop ∧
+      Tendsto (fun k => (D.index k).N) atTop atTop
+  parentCofinalProof := ⟨D.mCofinal, D.nCofinal⟩
+  extract := fun k => k
+  extractStrictMono := fun _ _ h => h
+
+/-- The selected Müntz approximation carries the exact Lemma 7.3 limit. -/
+theorem muntzApproximation_tendsto_centeredXi
+    (D : SelectedProlateCofinalSourceData) :
+    TendstoLocallyUniformlyOn D.muntzApproximation centeredXi atTop
+      centeredCriticalStrip :=
+  D.muntzLimit
+
+/-- The additive selected shell has the production anchor. -/
+theorem canonicalApproximation_slotAnchor
+    (D : SelectedProlateCofinalSourceData) :
+    SlotAnchor D.canonicalApproximation 0 := by
+  intro k
+  exact D.centeredPstar_zero k
+
+end SelectedProlateCofinalSourceData
+
+/-- Plant: a zero target cannot force eventual central nonvanishing.  The
+proved fact `centeredXi 0 ≠ 0` is therefore load-bearing. -/
+theorem goalG6N1ZeroTarget_nonvanishing_not_free :
+    ¬ (∀ᶠ _k : ℕ in atTop, (0 : ℂ) ≠ 0) := by
+  intro h
+  obtain ⟨k, hk⟩ := eventually_atTop.1 h
+  exact (hk k le_rfl) rfl
+
+#print axioms preAnchorFullMellinCoordinate_eq_preAnchorGwinTransformCoordinate
+#print axioms preAnchorGwin_zero_eq_sqrtL_mul_innerV0
+#print axioms trialNonzero_of_preAnchorGwin_zero_ne
+#print axioms preAnchorRawTransformCoordinate_zero_eq_normalizer_mul_gwin_zero
+#print axioms eventually_preAnchorGwin_zero_ne
+#print axioms selectedProlateCofinalSourceDataOfPreAnchorPort
+#print axioms SelectedProlateCofinalSourceData.muntzApproximation_tendsto_centeredXi
+#print axioms SelectedProlateCofinalSourceData.canonicalApproximation_slotAnchor
+#print axioms goalG6N1ZeroTarget_nonvanishing_not_free
+
+/-! ### Public cofinal reindex receipt (verdict REQ-2026-08-26-K) -/
+
+/-- **The cofinal reindex receipt.**  The theorem-generated selected shell is
+the literal pre-anchor family along one explicit cofinal shift: one shift
+function, its cofinality, and exact equalities of the index, pair and source
+scale.  Every equality is definitional; nothing about the shell constructor
+changes. -/
+theorem selectedProlateCofinalSourceDataOfPreAnchorPort_exists_cofinal_reindex
+    (D : SelectedProlatePreAnchorData)
+    (P : CCMLemma73PreAnchorPort D) :
+    ∃ φ : ℕ → ℕ,
+      Tendsto φ atTop atTop ∧
+      (∀ k : ℕ, k ≤ φ k) ∧
+      (∀ k : ℕ,
+        (selectedProlateCofinalSourceDataOfPreAnchorPort D P).index k =
+          D.index (φ k)) ∧
+      (∀ k : ℕ,
+        (selectedProlateCofinalSourceDataOfPreAnchorPort D P).pair k =
+          D.pair (φ k)) ∧
+      (∀ k : ℕ,
+        (selectedProlateCofinalSourceDataOfPreAnchorPort D P).sourceScale k =
+          P.sourceScale (φ k)) := by
+  refine ⟨preAnchorTailShift D P, preAnchorTailShift_tendsto D P,
+    preAnchorTailIndex_le_shift D P, ?_, ?_, ?_⟩
+  · intro k
+    rfl
+  · intro k
+    rfl
+  · intro k
+    rfl
+
+#print axioms selectedProlateCofinalSourceDataOfPreAnchorPort_exists_cofinal_reindex
+
+end Q3.RouteB.D0Pstar
+
+```
+
