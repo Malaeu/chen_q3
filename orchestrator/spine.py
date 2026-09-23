@@ -2591,8 +2591,40 @@ def main() -> int:
         "--record-slack-manual-review", type=Path, metavar="EVENT_JSON",
         help="late-record only the verified 2026-09-11 owner-manual SLACK review",
     )
+    ap.add_argument("--record-fokas-transition", type=Path, metavar="EVENT_JSON",
+                    help="preflight the fixed existing-chat Fokas registration repair")
+    ap.add_argument("--execute-fokas-transition", action="store_true",
+                    help="execute only the fixed --record-fokas-transition under writer guards")
     args = ap.parse_args()
     try:
+        if args.execute_fokas_transition and args.record_fokas_transition is None:
+            _fail("FOKAS_PHASE_EVENT_REQUIRED")
+        if args.record_fokas_transition is not None:
+            if (args.record_review or args.record_bridge_transition is not None
+                    or args.record_slack_manual_review is not None or args.stdout
+                    or args.strict or args.refresh or args.attempt_payload is not None
+                    or args.insight_payload is not None):
+                _fail("FOKAS_PHASE_FLAGS_INVALID")
+            from orchestrator.fokas_phase_reconciliation import reconcile
+            from orchestrator.workflow_runtime import _execution_writer_epoch, team_guard
+            with _execution_writer_epoch(REPO) as epoch:
+                team_guard(REPO, command="fokas-observed-phase-repair",
+                           paths=["orchestrator/state/CHANNEL_RUNTIME.json"])
+                _validate_active_control()
+                raw = CHANNEL_RUNTIME.read_bytes()
+                event = json.loads(args.record_fokas_transition.read_text(encoding="utf-8"))
+                successor, changed = reconcile(raw, event, repo=REPO,
+                    recorded_at=_dt.datetime.now(_dt.timezone.utc).isoformat())
+                if changed and args.execute_fokas_transition:
+                    epoch.recheck()
+                    if CHANNEL_RUNTIME.read_bytes() != raw:
+                        _fail("FOKAS_PHASE_STALE_PREIMAGE")
+                    write_runtime_atomic(successor)
+            print(json.dumps({"status": "RECORDED" if changed and args.execute_fokas_transition
+                              else "DRY_RUN" if changed else "NOOP",
+                              "writes_performed": bool(changed and args.execute_fokas_transition),
+                              "PX_RH_CLAIM": "NOT_MADE"}))
+            return 0
         if args.record_bridge_transition is not None:
             if (
                 args.record_review or args.record_slack_manual_review is not None

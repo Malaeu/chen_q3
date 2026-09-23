@@ -15,6 +15,7 @@ team_runtime_writer_inventory:
   fenced:
     - bind-request
     - bridge-observed-phase-repair
+    - fokas-observed-phase-repair
     - workflow-close-node
     - workflow-phase-close
     - workflow-resume-checkpoint
@@ -433,6 +434,22 @@ tool_families:
         authority: EVENT_SCOPED_MIGRATION_AND_CONDITIONAL_SEMANTIC_REFRESH
         records_to: [knowledge.db, qmd://q3_docs/, q3.lean.aristotle/.qmd_cache/semantic_index_receipt.json]
         last_verified: 2026-08-13
+
+      - id: fokas-observed-phase-repair
+        classification: MANUAL
+        status: ENABLED
+        audience: [CODEX]
+        mode: WRITES_CANONICAL
+        path: orchestrator/spine.py
+        invoke: python3 orchestrator/spine.py --record-fokas-transition <event.json> --execute-fokas-transition
+        trigger: One-time reconciliation of the owner-selected existing Goal058 Fokas chat.
+        writes: true
+        approval: EXISTING_OWNER_GOAL058_PROSHKA_GRANT_ONLY
+        authority: FIXED_PREIMAGE_AND_REVIEWED_OBSERVATION_NOT_PROOF_ADMISSION
+        validation: test_fokas_phase_reconciliation + existing channel writer tests
+        records_to: orchestrator/state/CHANNEL_RUNTIME.json
+        note: Without execute performs guarded preflight only. Exact committed evidence and predecessor, owner epoch and pending fence, final byte CAS, full predecessor archive. No new chat, delivery, review or mathematical closure asserted.
+        last_verified: CANDIDATE_NOT_INSTALLED
 
       - id: bridge-observed-phase-repair
         classification: MANUAL

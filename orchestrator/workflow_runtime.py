@@ -1174,7 +1174,7 @@ TEAM_FENCED_CALLS = frozenset({
     "workflow-team-observe-remote", "workflow-team-reserve-effect", "workflow-team-confirm-effect",
     "workflow-team-watch-intent", "workflow-team-observe-native", "workflow-team-integrate-candidate",
     "workflow-team-bootstrap-publish", "workflow-team-recover-unreserved", "workflow-team-recovery-review",
-    "slack-manual-chat-reconciliation", "bridge-observed-phase-repair",
+    "slack-manual-chat-reconciliation", "bridge-observed-phase-repair", "fokas-observed-phase-repair",
 })
 TEAM_NATIVE_EFFECTS = frozenset({
     "dispatch-proshka", "agent-launch", "publication", "calculation",
