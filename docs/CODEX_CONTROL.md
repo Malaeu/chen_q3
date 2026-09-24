@@ -2,7 +2,7 @@
 
 ```yaml
 CONTROL_ID: Q3_EXECUTOR_CONTROL
-CONTROL_VERSION: 13
+CONTROL_VERSION: 14
 TEAM_RUNTIME_VERSION: 1
 STATUS: ACTIVE
 ROLE: CODEX_EXECUTOR
@@ -389,6 +389,7 @@ team-integrate-candidate --candidate <manifest.json>
 team-integrate-candidate --recover-operation <id>
 team-bootstrap-publish --operation-id <id> --expected-head <commit> --expected-remote-commit <commit> --expected-remote-resume-sha256 <hash>
 team-bootstrap-publish --operation-id <id> --reconcile-only
+team-recover-compact-publication --instruction <exact-owner-text> --expected-head <commit> --expected-epoch <epoch>
 ```
 
 Report intake is followed by independent classification; only a confirmed
@@ -660,6 +661,114 @@ write during a pending publication fence. Only THEN use unchanged compact
 publication for the separately enumerated current metadata and owned receipts.
 Preserving historical math files is evidence delivery, not kernel acceptance,
 phase closure, a new mathematical target, or RH.
+
+### Owner recovery for one compact publication (revision 14)
+
+Control 13's provider-bound recovery-review and delivery procedure above remains
+unchanged and applies only to its named revision-13 operation. It does not
+activate revision 14, and its provider receipts must not be synthesized,
+relabelled, or reused for this route.
+
+Activation from the current revision-13 source is a separate, fail-closed
+source transaction. This route is unavailable unless the committed executable
+activation procedure implements the complete contract below and its exact
+candidate has completed the required independent review. The candidate manifest
+contains exactly these six source paths:
+
+```text
+docs/CODEX_CONTROL.md
+orchestrator/control14_activation.py
+orchestrator/startup_runtime.py
+orchestrator/workflow_runtime.py
+orchestrator/tests/test_control14_activation.py
+orchestrator/tests/test_workflow_runtime.py
+```
+
+The preimage may be absent only for the two newly introduced paths
+`orchestrator/control14_activation.py` and
+`orchestrator/tests/test_control14_activation.py`; the other four paths must
+have exact existing preimage bytes and modes. The canonical manifest hash binds
+the base HEAD, candidate commit and all six before/after hashes and modes, the
+`rh_clean` branch and remote endpoint, the full local/remote checkpoint and
+history hashes, the exact candidate control digest, and the exact owner task,
+host, installation, operation, and epoch. Preparation is allowed only when a
+fresh remote read confirms the same HEAD, checkpoint, history, and owner as
+the local source. The current plan must have exactly one FATAL,
+`TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED`, with no other fatal or conflicting
+local RESERVED/UNKNOWN effect. Preserve the private `TEAM_LOCAL` snapshot
+unchanged, including historical assignment observations. In particular,
+`ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916` is a lower-epoch (`1`) RESERVED
+assignment while the bound owner checkpoint is at epoch `2`: it remains
+unresolved and non-dispatching; preserve its private RESERVED receipt unchanged
+and do not complete or replay it. A v14 recovery may exempt it from a blocking
+effect only because it is a different operation, not a publication,
+integration, or current-epoch effect, and its exact canonical
+`Retired assignment (outcome UNKNOWN):` marker appears in the current
+`docs/Codex/RESUME.md` or verified checkpoint history. The marker must identify
+the same operation with `kind: ASSIGN`, `state: UNKNOWN`, and matching `id` and
+`subject.id`. The current marker for this operation is in `docs/Codex/RESUME.md`.
+The private `TEAM_LOCAL` RESERVED receipt remains unchanged and pinned; the
+marker does not imply completion or authorize relaunch. Revalidate this same
+marker, receipt, and lower-epoch binding at every v14 gate: source activation,
+`OWNER_RECOVERY` preflight, the RESUME checkpoint compare-and-swap, and
+publication reservation. The exception permits only that same historical
+assignment to remain unresolved while the owner-recovery operation proceeds;
+it never rewrites or clears the assignment receipt. Apply the same narrow
+exception to other distinct lower-epoch historical assignment observations
+only when their exact canonical retirement marker is present. Without that
+marker, the lower-epoch RESERVED/UNKNOWN effect still blocks. Any current-epoch
+RESERVED/UNKNOWN effect, or any publication/integration
+RESERVED/UNKNOWN/PUSH_RESERVED effect, still blocks regardless of epoch. Other
+existing effect and watch guards are unchanged. Any changed pin blocks
+activation or recovery.
+
+Before launching reviewers, `prepare-review` must save a distinct private
+preactivation review intent bound to the exact manifest/hash, verbatim owner
+instruction, owner and epoch, remote/checkpoint preimage, sole FATAL, and two
+distinct nonauthor Astra reviewer IDs at low effort. This is a read-only review
+reservation, not a mutation or replacement of the old publication operation.
+`observe-review` stores each actual report verbatim with its hash and labels the
+provenance `ROOT_OBSERVED_NATIVE_REVIEW` with `provider_verified: false`. Do not
+claim a provider receipt or provider verification for these reports. A negative
+report is preserved as `REJECTED`; a retry creates a new attempt and retains
+the earlier report in history. Because this changes the active behavior
+control, require two consecutive on-target passes with no findings or
+wording-only findings before `REVIEW_CONFIRMED`; off-target and tool-failure
+passes do not count. Any change to the reviewed six-file candidate invalidates
+the review and manifest and requires a new intent and review.
+
+The activation fence blocks other registered writers from the saved intent
+through exact remote readback. Copy only the six manifest paths, with
+`docs/CODEX_CONTROL.md` last; accept only each recorded before-state or exact
+candidate after-state during crash recovery. Preserve the caller's index and
+foreign worktree bytes. Create one parent-preserving source commit using a
+scoped alternate index containing exactly the six paths, parented directly by
+the pinned base HEAD, then make at most one ordinary non-force push to
+`origin`'s `refs/heads/rh_clean`. Confirm the actual remote branch, commit, six
+blobs and modes, and unchanged checkpoint/history by fresh readback before
+releasing the fence. An uncertain push remains UNKNOWN and is reconciled by
+inspecting the remote; it is never blindly retried. No RESUME/HISTORY edit or
+commit is part of source activation.
+
+Only after that activation completes may
+`team-recover-compact-publication` handle an ACTIVE owner's compact
+`PUBLISH/publication` INTENT or UNKNOWN whose sole current FATAL is
+`TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED`. It records the exact owner
+instruction, retires the old publication as UNKNOWN, increments the owner epoch
+once, and creates a distinct `OWNER_RECOVERY` publication INTENT bound to the
+old operation and remote preimage. The old operation is never replayed or
+confirmed, and no missing intake receipt is fabricated. Exact command replay is
+a read-only NOOP; changed instruction, epoch, or HEAD is rejected. The narrow
+checkpoint-recovery write retains the ordinary publication fence for all other
+writers. A fresh remote observation and normal guarded publication path then
+publish only RESUME/HISTORY metadata through one ordinary non-force push and
+exact readback.
+
+The recovered checkpoint remains `reconciliation_pending: true`. Recovery does
+not create, activate, or claim a native watch. After publication is confirmed,
+reconcile the watch separately from actual provider evidence, then clear the
+pending flag through the existing checkpoint transition. This route does not
+clear unrelated mathematical or operational holds.
 
 ## 12. Threat model and fail-closed behavior
 

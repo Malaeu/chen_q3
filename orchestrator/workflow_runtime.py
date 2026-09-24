@@ -202,6 +202,7 @@ class _ExecutionWriterEpoch:
 def _execution_writer_epoch(
     repo: Path, *, integration_operation: str | None = None, bootstrap_operation: str | None = None,
     publication_operation: str | None = None,
+    compact_recovery_authority: dict[str, Any] | None = None,
 ) -> Iterator[_ExecutionWriterEpoch]:
     """Hold one non-blocking exclusive flock across the entire write transaction."""
 
@@ -229,8 +230,10 @@ def _execution_writer_epoch(
             raise WorkflowRuntimeError("WORKFLOW_WRITER_LOCK_COLLISION") from exc
         epoch = _ExecutionWriterEpoch(path=lock_path, handle=handle, identity=identity)
         epoch.recheck()
+        _team_control14_activation_guard(repo)
         _team_pending_guard(repo, operation_id=integration_operation, bootstrap_id=bootstrap_operation,
-                            publication_id=publication_operation)
+                            publication_id=publication_operation,
+                            compact_recovery_authority=compact_recovery_authority)
         yield epoch
         epoch.recheck()
     finally:
@@ -1190,6 +1193,15 @@ TEAM_OWNER_STATES = {
 }
 TEAM_READ_MAX = 4 * 1024 * 1024
 TEAM_PLAN_MAX_BYTES = 16 * 1024
+OWNER_RECOVERY_SCHEMA = "q3_compact_publication_recovery.v1"
+OWNER_RECOVERY_MARKER = "Compact publication recovery: "
+RETIRED_PUBLICATION_MARKER = "Retired compact publication (outcome UNKNOWN): "
+CONTROL14_ACTIVATION_RESERVATION = "q3-control14-activation.json"
+CONTROL14_ACTIVATION_SCHEMA = "q3_control14_activation.v1"
+CONTROL14_ACTIVATION_STATES = frozenset({
+    "REVIEW_PENDING", "REVIEW_CONFIRMED", "REJECTED", "PENDING", "PUSH_RESERVED",
+    "PUSH_ATTEMPTED", "CONFIRMED", "UNKNOWN",
+})
 
 
 def _team_hex(value: object, size: int = 64) -> bool:
@@ -1261,6 +1273,24 @@ def _team_private_read(repo: Path, name: str) -> dict[str, Any] | None:
             or path.read_bytes() != _team_json(result)):
         raise WorkflowRuntimeError("TEAM_LOCAL_CORRUPT_OR_CHANGED:" + name)
     return result
+
+
+def _team_control14_activation_guard(repo: Path) -> None:
+    """Fence ordinary writers while a v14 source activation is unresolved."""
+    try:
+        reservation = _team_private_read(repo, CONTROL14_ACTIVATION_RESERVATION)
+    except (WorkflowRuntimeError, StartupRuntimeError, OSError, ValueError, TypeError) as exc:
+        raise WorkflowRuntimeError("CONTROL14_ACTIVATION_RESERVATION_INVALID") from exc
+    if reservation is None:
+        return
+    state = reservation.get("state")
+    operation_id = reservation.get("operation_id")
+    if (reservation.get("schema") != CONTROL14_ACTIVATION_SCHEMA
+            or not isinstance(state, str) or state not in CONTROL14_ACTIVATION_STATES
+            or not isinstance(operation_id, str) or not operation_id):
+        raise WorkflowRuntimeError("CONTROL14_ACTIVATION_RESERVATION_INVALID")
+    if state != "CONFIRMED":
+        raise WorkflowRuntimeError("CONTROL14_ACTIVATION_NOT_CONFIRMED:" + state)
 
 
 def _team_pending_integration(repo: Path) -> tuple[str, dict[str, Any]] | None:
@@ -1399,16 +1429,154 @@ def _team_pending_publication(repo: Path) -> tuple[str, dict[str, Any]] | None:
 
 
 def _team_pending_guard(repo: Path, *, operation_id: str | None = None, bootstrap_id: str | None = None,
-                        publication_id: str | None = None) -> None:
+                        publication_id: str | None = None,
+                        compact_recovery_authority: dict[str, Any] | None = None) -> None:
     bootstrap = _team_pending_bootstrap(repo)
     if bootstrap is not None and bootstrap[0] != bootstrap_id:
         raise WorkflowRuntimeError("TEAM_BOOTSTRAP_PENDING:" + bootstrap[0])
     pending = _team_pending_integration(repo)
     if pending is not None and pending[0] != operation_id:
         raise WorkflowRuntimeError("TEAM_INTEGRATION_PENDING:" + pending[0])
-    publication = _team_pending_publication(repo)
-    if publication is not None and publication[0] != publication_id:
-        raise WorkflowRuntimeError("TEAM_PUBLICATION_PENDING:" + publication[0])
+    if compact_recovery_authority is None:
+        publication = _team_pending_publication(repo)
+        if publication is not None and publication[0] != publication_id:
+            raise WorkflowRuntimeError("TEAM_PUBLICATION_PENDING:" + publication[0])
+    else:
+        _team_validate_compact_recovery_preimage(repo, compact_recovery_authority)
+
+
+def _team_compact_recovery_retired_assignments(
+    repo: Path, data: dict[str, Any], local: dict[str, Any],
+) -> set[str]:
+    """Return only lower-epoch assignment receipts proven retired by RESUME history."""
+    current_raw = _resume_file(repo, RESUME_PATH)
+    history_raw = _resume_file(repo, RESUME_HISTORY_PATH)
+    if not isinstance(current_raw, bytes) or not isinstance(history_raw, bytes):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_HISTORY_REQUIRED")
+    checkpoints: list[tuple[dict[str, Any], str]] = []
+    for kind, _, archived in _resume_history(history_raw).values():
+        if kind in {"resume", "intent"}:
+            checkpoint, archived_body = _resume_document(archived)
+            checkpoints.append((checkpoint, archived_body))
+    current, current_body = _resume_document(current_raw)
+    checkpoints.append((current, current_body))
+
+    markers: dict[str, dict[str, Any]] = {}
+    for _, checkpoint_body in checkpoints:
+        for line in checkpoint_body.splitlines():
+            if not line.startswith("Retired assignment (outcome UNKNOWN): "):
+                continue
+            payload = line[len("Retired assignment (outcome UNKNOWN): "):]
+            try:
+                retired = json.loads(payload)
+            except json.JSONDecodeError as exc:
+                raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RETIREMENT_INVALID") from exc
+            if (not isinstance(retired, dict)
+                    or json.dumps(retired, ensure_ascii=False, sort_keys=True) != payload
+                    or retired.get("kind") != "ASSIGN"
+                    or retired.get("command") != "agent-launch"
+                    or retired.get("state") != "UNKNOWN"
+                    or not isinstance(retired.get("id"), str) or not retired["id"]
+                    or not isinstance(retired.get("subject"), dict)
+                    or retired["subject"].get("kind") != "ASSIGNMENT"
+                    or not isinstance(retired["subject"].get("id"), str)
+                    or not retired["subject"]["id"]):
+                raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RETIREMENT_INVALID")
+            prior = markers.get(retired["id"])
+            if prior is not None and prior != retired:
+                raise WorkflowRuntimeError("TEAM_ASSIGNMENT_RETIREMENT_CONFLICT")
+            markers[retired["id"]] = retired
+
+    exempt: set[str] = set()
+    for operation_id, receipt in local["operations"].items():
+        if (not isinstance(receipt, dict) or receipt.get("state") not in ("RESERVED", "UNKNOWN")
+                or type(receipt.get("epoch")) is not int
+                or receipt["epoch"] >= data["ownership"]["epoch"]
+                or receipt.get("publication") is not None or receipt.get("integration") is not None):
+            continue
+        retired = markers.get(operation_id)
+        binding = receipt.get("launch_binding")
+        if (retired is None or not isinstance(binding, dict)
+                or not isinstance(binding.get("ownership"), dict)):
+            continue
+        required_binding = {"operation", "owner_task", "owner_host", "ownership", "pins",
+                            "source_manifest", "head", "assignment_sha256"}
+        bound_operation = binding.get("operation")
+        if (set(binding) != required_binding
+                or receipt.get("schema") != "q3_team_remote_observation.v1"
+                or receipt.get("operation_id") != operation_id
+                or not isinstance(bound_operation, dict)
+                or set(bound_operation) != {"kind", "id", "command", "subject", "inputs"}
+                or {**bound_operation, "state": "UNKNOWN", "evidence": []} != retired
+                or not _team_hex(binding.get("assignment_sha256"))
+                or binding["assignment_sha256"] != retired["subject"].get("sha256")
+                or not _team_hex(binding.get("head"), 40)
+                or receipt.get("epoch") != binding.get("ownership", {}).get("epoch")):
+            continue
+        for checkpoint, _ in checkpoints:
+            archived_operation = checkpoint.get("operation", {})
+            if archived_operation.get("state") == "INTENT":
+                archived_operation = {**archived_operation, "state": "UNKNOWN"}
+            if (archived_operation != retired
+                    or checkpoint.get("owner_thread_id") != binding.get("owner_task")
+                    or checkpoint.get("owner_host_id") != binding.get("owner_host")
+                    or checkpoint.get("ownership") != binding.get("ownership")
+                    or checkpoint.get("pins") != binding.get("pins")
+                    or checkpoint.get("pins", {}).get("head") != binding.get("head")
+                    or checkpoint.get("source_manifest") != binding.get("source_manifest")):
+                continue
+            exempt.add(operation_id)
+            break
+    return exempt
+
+
+def _team_validate_compact_recovery_preimage(repo: Path, authority: dict[str, Any]) -> None:
+    """Allow the exact owner-recovery checkpoint through the old-intake fence."""
+    required = {"raw", "data", "history", "control", "head", "local", "old_operation_id",
+                "remote_commit", "remote_raw", "remote_data", "remote_history"}
+    if not isinstance(authority, dict) or set(authority) != required:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_AUTHORITY_INVALID")
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    raw, data, _ = _team_current(repo)
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    control = validate_battle_v10_control(repo)
+    local = _team_local(repo)
+    operation = data["operation"]
+    remote_history_ok = (
+        authority["remote_history"] == history
+        or (history == authority["history"]
+            and isinstance(authority["remote_history"], bytes)
+            and isinstance(history, bytes)
+            and history.startswith(authority["remote_history"]))
+    )
+    if (raw != authority["raw"] or data != authority["data"]
+            or history != authority["history"] or head != authority["head"]
+            or local != authority["local"] or control != authority["control"]
+            or control.version < 14 or control.team_runtime_version != 1
+            or data["reconciliation_pending"]
+            or data["ownership"]["state"] != "ACTIVE"
+            or data["ownership"]["transfer"] is not None
+            or data["pins"]["head"] == head
+            or operation["id"] != authority["old_operation_id"]
+            or operation["kind"] != "PUBLISH" or operation["state"] not in {"INTENT", "UNKNOWN"}
+            or operation["command"] != "publication" or operation["subject"]["kind"] != "REPAIR"
+            or _team_publication_map(operation) is None
+            or authority["remote_commit"] != head or authority["remote_raw"] != raw
+            or authority["remote_data"] != data or not remote_history_ok):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PREIMAGE_CHANGED")
+    expected_epoch = data["ownership"]["epoch"] + 1
+    actor = os.environ.get("CODEX_THREAD_ID", "")
+    retired_assignments = _team_compact_recovery_retired_assignments(repo, data, local)
+    if (os.environ.get("Q3_OWNER_EPOCH") != str(expected_epoch)
+            or not re.fullmatch(r"[0-9a-f-]{36}", actor)
+            or actor == data["owner_thread_id"]
+            or local["installation_ref"] == data["ownership"]["installation_ref"]
+            or local["epoch_floor"] >= expected_epoch
+            or any(isinstance(item, dict) and item.get("state") in {"RESERVED", "UNKNOWN"}
+                   and key not in retired_assignments for key, item in local["operations"].items())):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_AUTHORITY_INVALID")
 
 
 def _team_installation(repo: Path) -> dict[str, str]:
@@ -1469,7 +1637,8 @@ def team_local_init(repo: Path) -> dict[str, Any]:
 
 def _team_subject(subject: object) -> None:
     if (not isinstance(subject, dict) or set(subject) != {"kind", "id", "sha256"}
-            or subject["kind"] not in {"REQUEST", "VERDICT", "REPAIR", "TRANSFER", "WATCH", "ASSIGNMENT"}
+            or subject["kind"] not in {"REQUEST", "VERDICT", "REPAIR", "TRANSFER", "WATCH", "ASSIGNMENT",
+                                       "OWNER_RECOVERY"}
             or not isinstance(subject["id"], str) or not subject["id"]
             or not _team_hex(subject["sha256"])):
         raise ValueError("typed subject")
@@ -1913,6 +2082,154 @@ def _team_publication_map(operation: dict[str, Any]) -> tuple[str, str] | None:
     return None
 
 
+def _team_owner_recovery_markers(body: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    lines = body.splitlines()
+    recoveries = [line[len(OWNER_RECOVERY_MARKER):] for line in lines
+                  if line.startswith(OWNER_RECOVERY_MARKER)]
+    retired = [line[len(RETIRED_PUBLICATION_MARKER):] for line in lines
+               if line.startswith(RETIRED_PUBLICATION_MARKER)]
+    if len(recoveries) != 1 or len(retired) != 1:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_INVALID")
+    try:
+        recovery, old_operation = json.loads(recoveries[0]), json.loads(retired[0])
+    except json.JSONDecodeError as exc:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_INVALID") from exc
+    if (_team_json(recovery).decode().strip() != recoveries[0]
+            or _team_json(old_operation).decode().strip() != retired[0]):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_NONCANONICAL")
+    return recovery, old_operation
+
+
+def _team_compact_recovery_context(
+    repo: Path, data: dict[str, Any], body: str, *, old_raw: bytes | None = None,
+) -> tuple[dict[str, Any], dict[str, Any], bytes, dict[str, Any]] | None:
+    """Validate the closed recovery checkpoint and return its exact predecessor."""
+    operation = data.get("operation", {})
+    if operation.get("subject", {}).get("kind") != "OWNER_RECOVERY":
+        return None
+    recovery, retired = _team_owner_recovery_markers(body)
+    required = {
+        "schema", "old_operation_id", "old_checkpoint_sha256", "old_base",
+        "old_owner_task", "old_owner_host", "old_ownership", "old_pins_sha256",
+        "remote_commit", "remote_resume_sha256", "remote_history_sha256", "head",
+        "control_sha256", "new_operation_id", "new_owner_task", "new_owner_host",
+        "new_ownership", "instruction_sha256",
+    }
+    if set(recovery) != required or recovery.get("schema") != OWNER_RECOVERY_SCHEMA:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_SCHEMA_INVALID")
+    if old_raw is None:
+        history = _resume_file(repo, RESUME_HISTORY_PATH)
+        matches = {raw for kind, _, raw in _resume_history(history or b"").values()
+                   if kind in {"resume", "intent"}
+                   and _resume_digest(raw) == recovery["old_checkpoint_sha256"]}
+        if len(matches) != 1:
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PREDECESSOR_REQUIRED")
+        old_raw = next(iter(matches))
+    if _resume_digest(old_raw) != recovery["old_checkpoint_sha256"]:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PREDECESSOR_CHANGED")
+    old, _ = _resume_document(old_raw)
+    old_operation = old["operation"]
+    expected_retired = dict(old_operation)
+    if expected_retired["state"] == "INTENT":
+        expected_retired["state"] = "UNKNOWN"
+    if (expected_retired["state"] != "UNKNOWN" or retired != expected_retired
+            or old["schema"] != "q3_resume.v2"
+            or old_operation["kind"] != "PUBLISH"
+            or old_operation["command"] != "publication"
+            or old_operation["state"] not in {"INTENT", "UNKNOWN"}
+            or old_operation["subject"]["kind"] != "REPAIR"
+            or _team_publication_map(old_operation) is None):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_OLD_OPERATION_INVALID")
+    recovery_id_seed = "\0".join((old_operation["id"], recovery["old_checkpoint_sha256"],
+                                   recovery["new_owner_task"], recovery["new_ownership"]["installation_ref"],
+                                   str(recovery["new_ownership"]["epoch"]))).encode()
+    expected_new_id = "owner-recovery-" + _resume_digest(recovery_id_seed)[:24]
+    try:
+        from orchestrator.startup_runtime import validate_battle_v10_control
+        control = validate_battle_v10_control(repo)
+    except (StartupRuntimeError, OSError) as exc:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_CONTROL_INVALID") from exc
+    if (expected_new_id != recovery["new_operation_id"]
+            or recovery["old_operation_id"] != old_operation["id"]
+            or recovery["old_base"] != old["pins"]["head"]
+            or recovery["old_owner_task"] != old["owner_thread_id"]
+            or recovery["old_owner_host"] != old["owner_host_id"]
+            or recovery["old_ownership"] != old["ownership"]
+            or recovery["old_pins_sha256"] != _resume_digest(_team_json(old["pins"]))
+            or recovery["remote_commit"] != recovery["head"]
+            or recovery["remote_resume_sha256"] != recovery["old_checkpoint_sha256"]
+            or recovery["new_owner_task"] != data["owner_thread_id"]
+            or recovery["new_owner_host"] != data["owner_host_id"]
+            or recovery["new_ownership"] != data["ownership"]
+            or data["ownership"]["epoch"] != old["ownership"]["epoch"] + 1
+            or data["ownership"]["state"] != "ACTIVE"
+            or data["ownership"]["transfer"] is not None
+            or (data["owner_thread_id"], data["ownership"]["installation_ref"])
+               == (old["owner_thread_id"], old["ownership"]["installation_ref"])
+            or control.version < 14 or control.sha256 != recovery["control_sha256"]):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_BINDING_CHANGED")
+    if (data["revision"] != old["revision"] + 1
+            or data["previous_sha256"] != recovery["old_checkpoint_sha256"]
+            or data["pins"]["head"] != recovery["head"]
+            or {k: v for k, v in data["pins"].items() if k != "head"}
+            != {k: v for k, v in old["pins"].items() if k != "head"}
+            or data["source_manifest"] != old["source_manifest"]
+            or data["stages"] != old["stages"]
+            or data["reconciliation_pending"] is not True
+            or data["recovery_from"] is not None):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_CHANGED_SCOPE")
+    marker_sha = _resume_digest(_team_json(recovery))
+    if (operation != {"kind": "PUBLISH", "state": "INTENT", "id": expected_new_id,
+                     "evidence": [], "subject": {"kind": "OWNER_RECOVERY",
+                         "id": old_operation["id"], "sha256": marker_sha},
+                     "command": "publication", "inputs": {}}):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_INTENT_INVALID")
+    instruction_line = "Owner recovery instruction: "
+    instructions = [line[len(instruction_line):] for line in body.splitlines()
+                    if line.startswith(instruction_line)]
+    if len(instructions) != 1:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED")
+    try:
+        instruction = json.loads(instructions[0])
+    except json.JSONDecodeError as exc:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED") from exc
+    if (not isinstance(instruction, str) or not instruction.strip() or len(instruction.encode()) > 4096
+            or _resume_digest(instruction.encode()) != recovery["instruction_sha256"]):
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED")
+    return recovery, old, old_raw, old_operation
+
+
+def _team_validate_compact_recovery_remote(
+    repo: Path, data: dict[str, Any], remote_commit: str, remote_raw: bytes,
+    remote_data: dict[str, Any], remote_history: bytes | None,
+) -> dict[str, Any]:
+    _, _, body = _team_current(repo)
+    context = _team_compact_recovery_context(repo, data, body)
+    if context is None:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_REQUIRED")
+    recovery, old, old_raw, old_operation = context
+    if (remote_commit != recovery["remote_commit"]
+            or _resume_digest(remote_raw) != recovery["remote_resume_sha256"]
+            or remote_data["owner_thread_id"] != recovery["old_owner_task"]
+            or remote_data["owner_host_id"] != recovery["old_owner_host"]
+            or remote_data["ownership"] != recovery["old_ownership"]
+            or remote_data["operation"] != old_operation
+            or remote_data["pins"] != old["pins"]
+            or _resume_digest(remote_history) != recovery["remote_history_sha256"]):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REMOTE_CHANGED")
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    if history is None or not history.startswith(remote_history or b""):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_HISTORY_CHANGED")
+    _team_git(repo, "merge-base", "--is-ancestor", recovery["old_base"], remote_commit)
+    return {"schema": OWNER_RECOVERY_SCHEMA,
+            "marker_sha256": _resume_digest(_team_json(recovery)),
+            "remote_commit": remote_commit,
+            "remote_resume_sha256": _resume_digest(remote_raw),
+            "remote_history_sha256": _resume_digest(remote_history),
+            "remote_owner_task": remote_data["owner_thread_id"],
+            "remote_ownership": remote_data["ownership"]}
+
+
 def _team_publication_intake(repo: Path, data: dict[str, Any], path: str, digest: str,
                              *, local: dict[str, Any]) -> None:
     """Bind the map to its existing completed intake, before any new observation."""
@@ -2051,6 +2368,101 @@ def _team_publication_history(repo: Path, data: dict[str, Any], raw: bytes,
         previous = body
 
 
+def _team_owner_recovery_history(repo: Path, data: dict[str, Any], raw: bytes,
+                                 recovery: dict[str, Any], base: str) -> None:
+    base_raw, _ = _team_integration_blob(repo, base, str(RESUME_PATH))
+    base_history, _ = _team_integration_blob(repo, base, str(RESUME_HISTORY_PATH))
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    context = _team_compact_recovery_context(repo, data, _resume_document(raw)[1])
+    if context is None:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_REQUIRED")
+    marker, old, old_raw, _ = context
+    if (marker != recovery or base_raw != old_raw
+            or _resume_digest(base_raw) != recovery["old_checkpoint_sha256"]
+            or _resume_digest(base_history) != recovery["remote_history_sha256"]
+            or history is None or not history.startswith(base_history)):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_BASE_HISTORY_CHANGED")
+    base_records = _resume_history(base_history)
+    records = _resume_history(history)
+    versions = {revision: payload for kind, revision, payload in records.values()
+                if kind in {"resume", "intent"}}
+    if (versions.get(old["revision"]) != old_raw
+            or versions.get(data["revision"]) != raw
+            or data["revision"] != old["revision"] + 1
+            or data["previous_sha256"] != _resume_digest(old_raw)
+            or any(revision not in {old["revision"], data["revision"]}
+                   for revision in versions if revision > old["revision"])):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_HISTORY_CHAIN_CHANGED")
+    if not any(kind == "intent" and revision == old["revision"] and payload == old_raw
+               for kind, revision, payload in base_records.values()):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REMOTE_HISTORY_INVALID")
+
+
+def _team_owner_recovery_publication_snapshot(
+    repo: Path, raw: bytes, data: dict[str, Any], receipt: dict[str, Any], control: Any,
+) -> dict[str, Any]:
+    context = _team_compact_recovery_context(repo, data, _resume_document(raw)[1])
+    if context is None:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_REQUIRED")
+    recovery, old, old_raw, old_operation = context
+    remote_history, _ = _team_integration_blob(repo, receipt["remote_commit"], str(RESUME_HISTORY_PATH))
+    expected_binding = {
+        "schema": OWNER_RECOVERY_SCHEMA,
+        "marker_sha256": _resume_digest(_team_json(recovery)),
+        "remote_commit": recovery["remote_commit"],
+        "remote_resume_sha256": recovery["remote_resume_sha256"],
+        "remote_history_sha256": recovery["remote_history_sha256"],
+        "remote_owner_task": old["owner_thread_id"],
+        "remote_ownership": old["ownership"],
+    }
+    if (control.version < 14 or control.team_runtime_version != 1
+            or data["operation"]["id"] != recovery["new_operation_id"]
+            or receipt.get("recovery_binding") != expected_binding
+            or receipt.get("remote_commit") != recovery["remote_commit"]
+            or receipt.get("remote_resume_sha256") != recovery["remote_resume_sha256"]
+            or receipt.get("remote_thread") != recovery["old_owner_task"]
+            or receipt.get("remote_ownership") != recovery["old_ownership"]
+            or _resume_digest(remote_history) != recovery["remote_history_sha256"]
+            or data["reconciliation_pending"] is not True
+            or _team_git(repo, "rev-parse", "HEAD").decode().strip() != recovery["head"]
+            or data["pins"]["head"] != recovery["head"]
+            or old_operation["id"] != recovery["old_operation_id"]):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REMOTE_BINDING_REQUIRED")
+    _team_git(repo, "merge-base", "--is-ancestor", recovery["old_base"], recovery["head"])
+    _team_owner_recovery_history(repo, data, raw, recovery, recovery["head"])
+    metadata = {str(RESUME_PATH), str(RESUME_HISTORY_PATH)}
+    changes = set(_team_git(repo, "diff", "--name-only", "--no-renames", "-z",
+                            recovery["head"], "--").decode().split("\0")[:-1])
+    if changes != metadata:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PUBLICATION_SCOPE_CHANGED")
+    staged = set(_team_git(repo, "diff", "--cached", "--name-only", "-z", "--").decode().split("\0")[:-1])
+    if staged.intersection(metadata):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_STAGED_PREIMAGE_CHANGED")
+    files, preimages = {}, {}
+    for path in sorted(metadata):
+        before, before_mode = _team_integration_blob(repo, recovery["head"], path)
+        actual = _team_publication_file(repo, path)
+        if before is None or actual["mode"] != before_mode or actual["sha256"] == _resume_digest(before):
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_METADATA_PREIMAGE_INVALID:" + path)
+        preimages[path] = actual
+        files[path] = actual
+    _team_verify_paths(repo, data["source_manifest"])
+    return {
+        "operation_id": data["operation"]["id"], "mode": "OWNER_RECOVERY",
+        "operation": data["operation"], "base": recovery["head"],
+        "remote_base": recovery["remote_commit"],
+        "remote_base_resume_sha256": recovery["remote_resume_sha256"],
+        "control_sha256": control.sha256, "ownership": data["ownership"],
+        "owner_task": data["owner_thread_id"], "checkpoint_sha256": _resume_digest(raw),
+        "pins": data["pins"], "source_manifest": data["source_manifest"],
+        "origin_sha256": _team_bootstrap_endpoint(repo), "map_path": None,
+        "inputs": {}, "files": files, "preimages": preimages,
+        "incoming": [], "repair_issue": None,
+        "outside": _team_publication_outside(repo, metadata),
+        "recovery_binding": expected_binding,
+    }
+
+
 def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
                                receipt: dict[str, Any]) -> dict[str, Any] | None:
     from orchestrator import team_records
@@ -2059,6 +2471,13 @@ def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
     operation = data["operation"]
     if operation["command"] != "publication":
         return None
+    control = validate_battle_v10_control(repo)
+    if operation["subject"]["kind"] == "OWNER_RECOVERY":
+        if operation["kind"] != "PUBLISH" or operation["state"] != "INTENT":
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_INTENT_INVALID")
+        if os.environ.get("Q3_OWNER_EPOCH") != str(data["ownership"]["epoch"]):
+            raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_CHANGED")
+        return _team_owner_recovery_publication_snapshot(repo, raw, data, receipt, control)
     inputs = operation["inputs"]
     metadata = {str(RESUME_PATH), str(RESUME_HISTORY_PATH)}
     map_path = None
@@ -2077,7 +2496,6 @@ def _team_publication_snapshot(repo: Path, raw: bytes, data: dict[str, Any],
                       and operation["id"] == operation["subject"]["id"] + ":publication")
     if not compact and not repair_subject:
         return None
-    control = validate_battle_v10_control(repo)
     repair = _team_publication_repair(repo, data, inputs) if control.version >= 11 and not compact else None
     if not compact and repair is None:
         return None
@@ -2263,7 +2681,7 @@ def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
     from orchestrator.control13_recovery import reject_recovered_launch
     reject_recovered_launch(repo, operation_id)
     _team_registered(repo, "team-observe-remote", ["GIT_COMMON_DIR/" + TEAM_LOCAL, "GIT_COMMON_DIR/objects/**"])
-    raw, data, _ = _team_current(repo)
+    raw, data, body = _team_current(repo)
     local = _team_local(repo)
     if not operation_id or len(operation_id) > 160:
         raise WorkflowRuntimeError("TEAM_OPERATION_ID_INVALID")
@@ -2281,6 +2699,12 @@ def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
         return {"status": "NOOP", "operation_id": operation_id, "state": prior["state"],
                 "next": "inspect original operation; an existing observation is not renewed"}
     commit, remote_raw, remote_data = _team_remote(repo)
+    recovery_context = _team_compact_recovery_context(repo, data, body)
+    recovery_binding = None
+    if recovery_context is not None:
+        remote_history, _ = _team_integration_blob(repo, commit, str(RESUME_HISTORY_PATH))
+        recovery_binding = _team_validate_compact_recovery_remote(
+            repo, data, commit, remote_raw, remote_data, remote_history)
     receipt = {"schema": "q3_team_remote_observation.v1", "operation_id": operation_id,
                "state": "OBSERVED", "installation_ref": local["installation_ref"],
                "actor": os.environ.get("CODEX_THREAD_ID"), "epoch": data["ownership"]["epoch"],
@@ -2289,6 +2713,10 @@ def team_observe_remote(repo: Path, *, operation_id: str) -> dict[str, Any]:
                "remote_commit": commit, "remote_resume_sha256": _resume_digest(remote_raw),
                "remote_ownership": remote_data["ownership"],
                "remote_thread": remote_data["owner_thread_id"], "evidence": {}}
+    if recovery_binding is not None:
+        if operation_id != data["operation"]["id"]:
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_OPERATION_ID_MISMATCH")
+        receipt["recovery_binding"] = recovery_binding
     with _execution_writer_epoch(repo) as epoch:
         if _resume_file(repo, RESUME_PATH) != raw:
             raise WorkflowRuntimeError("TEAM_OBSERVATION_CHECKPOINT_CHANGED")
@@ -2360,11 +2788,27 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
     reject_recovered_launch(repo, operation_id)
     _team_registered(repo, "team-reserve-effect", ["GIT_COMMON_DIR/" + TEAM_LOCAL], publication_id=operation_id)
     with _execution_writer_epoch(repo, publication_operation=operation_id) as epoch:
-        raw, data, _ = _team_current(repo)
+        raw, data, body = _team_current(repo)
         _team_actor(repo, data)
-        if data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]:
-            raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
         operation = data["operation"]
+        recovery_context = _team_compact_recovery_context(repo, data, body)
+        is_recovered_publication = (
+            recovery_context is not None
+            and operation["subject"]["kind"] == "OWNER_RECOVERY"
+            and operation["id"] == recovery_context[0]["new_operation_id"]
+        )
+        if (data["ownership"]["state"] != "ACTIVE"
+                or data["reconciliation_pending"] and not is_recovered_publication):
+            raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
+        local = _team_local(repo)
+        retired_assignments = (_team_compact_recovery_retired_assignments(repo, data, local)
+                               if is_recovered_publication else set())
+        if is_recovered_publication and any(
+                key != operation_id and isinstance(item, dict)
+                and item.get("state") in {"RESERVED", "UNKNOWN"}
+                and key not in retired_assignments
+                for key, item in local["operations"].items()):
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_LOCAL_RESERVATION_PRESENT")
         # Retirement is durable in the append-only checkpoint history, including
         # on another installation. Never renew an abandoned agent launch ID.
         history = _resume_history(_resume_file(repo, RESUME_HISTORY_PATH) or b"")
@@ -2373,6 +2817,20 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
                 continue
             _, archived_body = _resume_document(archived)
             for line in archived_body.splitlines():
+                if line.startswith(RETIRED_PUBLICATION_MARKER):
+                    try:
+                        retired_publication = json.loads(line[len(RETIRED_PUBLICATION_MARKER):])
+                    except json.JSONDecodeError as exc:
+                        raise WorkflowRuntimeError("TEAM_PUBLICATION_RETIREMENT_INVALID") from exc
+                    if (_team_json(retired_publication).decode().strip()
+                            != line[len(RETIRED_PUBLICATION_MARKER):]
+                            or retired_publication.get("kind") != "PUBLISH"
+                            or retired_publication.get("command") != "publication"
+                            or retired_publication.get("state") != "UNKNOWN"
+                            or _team_publication_map(retired_publication) is None):
+                        raise WorkflowRuntimeError("TEAM_PUBLICATION_RETIREMENT_INVALID")
+                    if retired_publication["id"] == operation_id:
+                        raise WorkflowRuntimeError("TEAM_RETIRED_PUBLICATION_CANNOT_REPLAY")
                 prefix = "Retired assignment (outcome UNKNOWN): "
                 if line.startswith(prefix):
                     try:
@@ -2392,21 +2850,40 @@ def team_reserve_effect(repo: Path, *, operation_id: str) -> dict[str, Any]:
             return {"status": "RECONCILE_ORIGINAL", "operation_id": operation_id, "execute_once": False}
         _team_verify_paths(repo, data["source_manifest"])
         _team_verify_paths(repo, operation["inputs"])
-        local = _team_local(repo)
         receipt = local["operations"].get(operation_id)
         if not receipt:
             raise WorkflowRuntimeError("TEAM_REMOTE_OBSERVATION_REQUIRED")
+        recovery_binding = None
+        if recovery_context is not None:
+            marker, old, _, _ = recovery_context
+            recovery_binding = {
+                "schema": OWNER_RECOVERY_SCHEMA,
+                "marker_sha256": _resume_digest(_team_json(marker)),
+                "remote_commit": marker["remote_commit"],
+                "remote_resume_sha256": marker["remote_resume_sha256"],
+                "remote_history_sha256": marker["remote_history_sha256"],
+                "remote_owner_task": old["owner_thread_id"],
+                "remote_ownership": old["ownership"],
+            }
+            if (operation_id != marker["new_operation_id"]
+                    or receipt.get("recovery_binding") != recovery_binding
+                    or receipt.get("remote_commit") != marker["remote_commit"]
+                    or receipt.get("remote_resume_sha256") != marker["remote_resume_sha256"]
+                    or receipt.get("remote_ownership") != old["ownership"]
+                    or receipt.get("remote_thread") != old["owner_thread_id"]):
+                raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REMOTE_BINDING_REQUIRED")
         if receipt["state"] != "OBSERVED":
             return {"status": "RECONCILE_ORIGINAL", "operation_id": operation_id, "execute": False}
         if (receipt["checkpoint_sha256"] != _resume_digest(raw)
                 or receipt["actor"] != data["owner_thread_id"]
                 or receipt["epoch"] != data["ownership"]["epoch"]
-                or receipt["remote_ownership"] != data["ownership"]
-                or receipt["remote_thread"] != data["owner_thread_id"]
+                or (recovery_binding is None and (receipt["remote_ownership"] != data["ownership"]
+                    or receipt["remote_thread"] != data["owner_thread_id"]))
                 or receipt["local_head"] != _team_git(repo, "rev-parse", "HEAD").decode().strip()):
             raise WorkflowRuntimeError("TEAM_REMOTE_OWNERSHIP_OR_INPUT_DRIFT")
-        from orchestrator.control13_recovery import check_delivery_intent
-        check_delivery_intent(repo, data)
+        if recovery_binding is None:
+            from orchestrator.control13_recovery import check_delivery_intent
+            check_delivery_intent(repo, data)
         reserved = {**receipt, "state": "RESERVED"}
         if operation["command"] == "agent-launch":
             reserved["launch_binding"] = _team_launch_binding(repo, data)
@@ -2771,7 +3248,7 @@ def team_guard(repo: Path, *, command: str, paths: list[str], effect: bool = Fal
     if command not in TEAM_FENCED_CALLS | TEAM_NATIVE_EFFECTS:
         raise WorkflowRuntimeError("TEAM_UNFENCED_WRITER_FORBIDDEN:" + command)
     _team_writer_inventory(repo)
-    raw, data, _ = _team_current(repo)
+    raw, data, body = _team_current(repo)
     _team_actor(repo, data)
     if expected_epoch is None:
         value = os.environ.get("Q3_OWNER_EPOCH", "")
@@ -2782,7 +3259,22 @@ def team_guard(repo: Path, *, command: str, paths: list[str], effect: bool = Fal
         raise WorkflowRuntimeError("TEAM_CALLER_EPOCH_CHANGED")
     if data["ownership"]["epoch"] < _team_local(repo)["epoch_floor"]:
         raise WorkflowRuntimeError("TEAM_RETIRED_EPOCH")
-    if data["ownership"]["state"] != "ACTIVE" or data["reconciliation_pending"]:
+    operation = data["operation"]
+    is_recovered_publication = (
+        command == "publication" and publication_id == operation["id"]
+        and publication_stage in {"prepare", "publish"}
+        and operation["kind"] == "PUBLISH" and operation["command"] == "publication"
+        and operation["state"] == "INTENT"
+        and operation["subject"]["kind"] == "OWNER_RECOVERY"
+    )
+    if is_recovered_publication:
+        recovery_context = _team_compact_recovery_context(repo, data, body)
+        is_recovered_publication = (
+            recovery_context is not None
+            and operation["id"] == recovery_context[0]["new_operation_id"]
+        )
+    if (data["ownership"]["state"] != "ACTIVE"
+            or data["reconciliation_pending"] and not is_recovered_publication):
         raise WorkflowRuntimeError("TEAM_OWNER_RECONCILIATION_REQUIRED")
     _team_verify_paths(repo, data["source_manifest"])
     if command != "workflow-team-record":
@@ -3992,7 +4484,7 @@ def _resume_completed_source_recovery(
     from orchestrator.control13_recovery import completed_checkpoint_allowed
     if completed_checkpoint_allowed(repo, proposed, plan, integration_candidate):
         return True
-    if (plan.get("startup", {}).get("control_version") not in {11, 12, 13}
+    if (plan.get("startup", {}).get("control_version") not in {11, 12, 13, 14}
             or plan.get("startup", {}).get("team_runtime_version") != 1):
         return False
     fatal = set(plan.get("startup", {}).get("fatal_errors", []))
@@ -4214,32 +4706,329 @@ def _team_owner_recovery(
     _team_verify_paths(repo, after["source_manifest"])
 
 
+def _team_compact_publication_owner_recovery(
+    repo: Path, before: dict[str, Any], after: dict[str, Any], body: str, *,
+    instruction: str, expected_head: str | None, expected_epoch: int | None,
+    authority: dict[str, Any],
+) -> None:
+    if before["schema"] != "q3_resume.v2" or after["schema"] != "q3_resume.v2":
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_V2_REQUIRED")
+    context = _team_compact_recovery_context(repo, after, body, old_raw=authority["raw"])
+    if context is None:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_REQUIRED")
+    recovery, old, old_raw, old_operation = context
+    control = __import__("orchestrator.startup_runtime", fromlist=["validate_battle_v10_control"]).validate_battle_v10_control(repo)
+    head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    local = _team_local(repo)
+    if (old != before or old_raw != authority["raw"]
+            or _resume_file(repo, RESUME_PATH) != old_raw
+            or history != authority["history"]
+            or control.sha256 != authority["control"].sha256
+            or head != expected_head or head != authority["head"]
+            or expected_epoch != before["ownership"]["epoch"]
+            or local != authority["local"]
+            or recovery["remote_commit"] != authority["remote_commit"]
+            or recovery["remote_resume_sha256"] != _resume_digest(authority["remote_raw"])
+            or recovery["remote_history_sha256"] != _resume_digest(authority["remote_history"])):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PREIMAGE_CHANGED")
+    old_owner, new_owner = before["ownership"], after["ownership"]
+    if (new_owner["epoch"] != old_owner["epoch"] + 1
+            or new_owner["state"] != "ACTIVE" or new_owner["transfer"] is not None
+            or after["reconciliation_pending"] is not True
+            or after["recovery_from"] is not None
+            or (new_owner["installation_ref"], after["owner_thread_id"])
+               == (old_owner["installation_ref"], before["owner_thread_id"])
+            or after["owner_thread_id"] != os.environ.get("CODEX_THREAD_ID")
+            or os.environ.get("Q3_OWNER_EPOCH") != str(new_owner["epoch"])
+            or new_owner["installation_ref"] != local["installation_ref"]
+            or new_owner["epoch"] <= local["epoch_floor"]
+            or after["owner_host_id"] != before["owner_host_id"]
+            or any(after["pins"].get(key) != value for key, value in before["pins"].items()
+                   if key != "head")
+            or after["pins"]["head"] != head
+            or after["source_manifest"] != before["source_manifest"]
+            or after["stages"] != before["stages"]):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_TARGET_INVALID")
+    if (before["operation"]["id"] != old_operation["id"]
+            or before["operation"]["state"] not in {"INTENT", "UNKNOWN"}
+            or before["operation"]["command"] != "publication"
+            or before["operation"]["kind"] != "PUBLISH"
+            or recovery["instruction_sha256"] != _resume_digest(instruction.encode())):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_OLD_OPERATION_INVALID")
+    retired_assignments = _team_compact_recovery_retired_assignments(repo, after, local)
+    if any(item.get("state") in {"RESERVED", "UNKNOWN"} and key not in retired_assignments
+           for key, item in local["operations"].items() if isinstance(item, dict)):
+        raise WorkflowRuntimeError("TEAM_OUTSTANDING_EFFECT_RESERVATION")
+    if (local["operations"].get(old_operation["id"], {}).get("publication") is not None
+            or local["operations"].get(old_operation["id"], {}).get("state") in {"RESERVED", "UNKNOWN"}):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_LOCAL_RESERVATION_PRESENT")
+    try:
+        marker_instruction = "Owner recovery instruction: " + json.dumps(instruction, ensure_ascii=False)
+        work = body.split("## Existing work\n", 1)[1].split("\n## ", 1)[0]
+    except (IndexError, AttributeError) as exc:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED") from exc
+    if marker_instruction not in work.splitlines():
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED")
+    _team_actor(repo, after)
+    _team_verify_paths(repo, after["source_manifest"])
+
+
+def _team_compact_recovery_partial_intent(
+    repo: Path, *, raw: bytes, data: dict[str, Any], history: bytes,
+    remote_history: bytes | None, control: Any, local: dict[str, Any],
+    expected_head: str, expected_epoch: int, instruction: str,
+) -> bytes:
+    """Return the exact successor archived by a history-only partial CAS."""
+    if (not isinstance(remote_history, bytes) or not history.startswith(remote_history)
+            or history == remote_history):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PARTIAL_HISTORY_INVALID")
+    records = _resume_history(history)
+    candidates = [candidate for kind, revision, candidate in records.values()
+                  if kind == "intent" and revision == data["revision"] + 1]
+    if len(candidates) != 1:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PARTIAL_INTENT_INVALID")
+    candidate = candidates[0]
+    proposed, proposed_body = _resume_document(candidate)
+    context = _team_compact_recovery_context(repo, proposed, proposed_body, old_raw=raw)
+    if context is None:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PARTIAL_INTENT_INVALID")
+    recovery, old, _, _ = context
+    _, archived = _resume_history_record("resume", data["revision"], raw)
+    _, intent = _resume_history_record("intent", proposed["revision"], candidate)
+    if history != remote_history + archived + intent:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PARTIAL_HISTORY_INVALID")
+    if (old != data
+            or recovery["remote_commit"] != expected_head
+            or recovery["remote_resume_sha256"] != _resume_digest(raw)
+            or recovery["remote_history_sha256"] != _resume_digest(remote_history)
+            or recovery["head"] != expected_head
+            or recovery["control_sha256"] != control.sha256
+            or recovery["old_ownership"]["epoch"] != expected_epoch
+            or recovery["instruction_sha256"] != _resume_digest(instruction.encode())
+            or recovery["new_owner_task"] != os.environ.get("CODEX_THREAD_ID")
+            or recovery["new_ownership"]["installation_ref"] != local["installation_ref"]
+            or recovery["new_ownership"]["epoch"] != expected_epoch + 1):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PARTIAL_INTENT_MISMATCH")
+    return candidate
+
+
+def _team_compact_publication_preflight(
+    repo: Path, *, expected_head: str, expected_epoch: int, instruction: str,
+) -> dict[str, Any]:
+    """Capture the only preactivation state eligible for owner-directed recovery."""
+    from orchestrator.startup_runtime import validate_battle_v10_control
+
+    raw, data, _ = _team_current(repo)
+    history = _resume_file(repo, RESUME_HISTORY_PATH)
+    control = validate_battle_v10_control(repo)
+    head = _team_git(repo, "rev-parse", "HEAD").decode().strip()
+    operation = data["operation"]
+    if (control.version < 14 or control.team_runtime_version != 1
+            or expected_head != head or data["pins"]["head"] == head
+            or data["ownership"]["state"] != "ACTIVE"
+            or data["reconciliation_pending"]
+            or operation["kind"] != "PUBLISH" or operation["command"] != "publication"
+            or operation["state"] not in {"INTENT", "UNKNOWN"}
+            or operation["subject"]["kind"] != "REPAIR"
+            or _team_publication_map(operation) is None):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PREACTIVATION_SHAPE_REQUIRED")
+    if type(expected_epoch) is not int or data["ownership"]["epoch"] != expected_epoch:
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_EPOCH_CHANGED")
+    _team_git(repo, "merge-base", "--is-ancestor", data["pins"]["head"], head)
+    local = _team_local(repo)
+    prior = local["operations"].get(operation["id"])
+    retired_assignments = _team_compact_recovery_retired_assignments(repo, data, local)
+    if (prior is not None and (prior.get("publication") is not None
+            or prior.get("state") in {"RESERVED", "UNKNOWN"})
+            or any(isinstance(item, dict) and item.get("state") in {"RESERVED", "UNKNOWN"}
+                   and key not in retired_assignments for key, item in local["operations"].items())):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_LOCAL_RESERVATION_PRESENT")
+    new_task = os.environ.get("CODEX_THREAD_ID", "")
+    local_ref = local["installation_ref"]
+    new_epoch = expected_epoch + 1
+    if (not re.fullmatch(r"[0-9a-f-]{36}", new_task)
+            or os.environ.get("Q3_OWNER_EPOCH") != str(new_epoch)
+            or local_ref == data["ownership"]["installation_ref"]
+            or new_task == data["owner_thread_id"]
+            or local["epoch_floor"] >= new_epoch):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_NEW_OWNER_REQUIRED")
+    _team_verify_paths(repo, data["source_manifest"])
+    try:
+        live = live_plan_v10(repo, owned_paths=[])
+        if live.get("status") != "FATAL":
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REQUIRES_PREACTIVATION_FATAL")
+        holds = live.get("holds", [])
+        fatal = live.get("startup", {}).get("fatal_errors", [])
+        observed = fatal or holds
+        if observed != ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"]:
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_OTHER_FATAL_BLOCKED")
+    except WorkflowRuntimeError as exc:
+        if str(exc).split(":", 1)[0] != "TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED":
+            raise
+    remote_commit, remote_raw, remote_data = _team_remote_checkpoint(repo)
+    remote_history, _ = _team_integration_blob(repo, remote_commit, str(RESUME_HISTORY_PATH))
+    if (remote_commit != head or remote_raw != raw or remote_data != data
+            or not isinstance(history, bytes)
+            or _resume_digest(remote_raw) != _resume_digest(raw)):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REMOTE_PREIMAGE_CHANGED")
+    partial_payload = None
+    if remote_history != history:
+        partial_payload = _team_compact_recovery_partial_intent(
+            repo, raw=raw, data=data, history=history, remote_history=remote_history,
+            control=control, local=local, expected_head=expected_head,
+            expected_epoch=expected_epoch, instruction=instruction,
+        )
+    _team_git(repo, "merge-base", "--is-ancestor", data["pins"]["head"], remote_commit)
+    result = {"raw": raw, "data": data, "history": history, "control": control,
+              "head": head, "local": local, "remote_commit": remote_commit,
+              "old_operation_id": operation["id"], "remote_raw": remote_raw, "remote_data": remote_data,
+              "remote_history": remote_history}
+    if partial_payload is not None:
+        result["partial_recovery_payload"] = partial_payload
+    return result
+
+
+def team_recover_compact_publication(repo: Path, *, instruction: str,
+                                     expected_head: str, expected_epoch: int) -> dict[str, Any]:
+    """Record an owner-directed UNKNOWN retirement and a new publication intent."""
+    tool = load_tool_index(repo / TOOLS).get("workflow-resume-checkpoint", {})
+    if (tool.get("status") != "ENABLED" or tool.get("writes") is not True
+            or tool.get("write_paths") != [str(RESUME_PATH), str(RESUME_HISTORY_PATH)]):
+        raise WorkflowRuntimeError("TEAM_TOOL_NOT_REGISTERED:resume-checkpoint")
+    if not instruction.strip() or len(instruction.encode()) > 4096:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_REQUIRED")
+    _, current, body = _team_current(repo)
+    if current["operation"]["subject"]["kind"] == "OWNER_RECOVERY":
+        context = _team_compact_recovery_context(repo, current, body)
+        if (context is None or current["operation"]["id"] != context[0]["new_operation_id"]
+                or context[0]["instruction_sha256"] != _resume_digest(instruction.encode())
+                or expected_head != context[0]["head"]
+                or expected_epoch != context[0]["old_ownership"]["epoch"]):
+            raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REPLAY_MISMATCH")
+        return {"status": "NOOP", "operation_id": current["operation"]["id"],
+                "old_operation_id": context[0]["old_operation_id"], "writes_performed": False}
+    snapshot = _team_compact_publication_preflight(
+        repo, expected_head=expected_head, expected_epoch=expected_epoch,
+        instruction=instruction,
+    )
+    partial_payload = snapshot.pop("partial_recovery_payload", None)
+    if partial_payload is not None:
+        return resume_checkpoint(
+            repo, expected_sha256=_resume_digest(snapshot["raw"]),
+            _candidate_payload=partial_payload,
+            owner_recovery_instruction=instruction, recovery_expected_head=snapshot["head"],
+            recovery_expected_epoch=expected_epoch, _compact_recovery_authority=snapshot,
+        )
+    old_raw, old_data = snapshot["raw"], snapshot["data"]
+    old_operation = dict(old_data["operation"])
+    retired = dict(old_operation)
+    retired["state"] = "UNKNOWN"
+    new_epoch = expected_epoch + 1
+    new_ownership = {"installation_ref": snapshot["local"]["installation_ref"],
+                     "epoch": new_epoch, "state": "ACTIVE", "transfer": None}
+    new_task = os.environ["CODEX_THREAD_ID"]
+    seed = "\0".join((old_operation["id"], _resume_digest(old_raw), new_task,
+                      new_ownership["installation_ref"], str(new_epoch))).encode()
+    new_operation_id = "owner-recovery-" + _resume_digest(seed)[:24]
+    marker = {
+        "schema": OWNER_RECOVERY_SCHEMA,
+        "old_operation_id": old_operation["id"],
+        "old_checkpoint_sha256": _resume_digest(old_raw),
+        "old_base": old_data["pins"]["head"],
+        "old_owner_task": old_data["owner_thread_id"],
+        "old_owner_host": old_data["owner_host_id"],
+        "old_ownership": old_data["ownership"],
+        "old_pins_sha256": _resume_digest(_team_json(old_data["pins"])),
+        "remote_commit": snapshot["remote_commit"],
+        "remote_resume_sha256": _resume_digest(snapshot["remote_raw"]),
+        "remote_history_sha256": _resume_digest(snapshot["remote_history"]),
+        "head": snapshot["head"],
+        "control_sha256": snapshot["control"].sha256,
+        "new_operation_id": new_operation_id,
+        "new_owner_task": new_task,
+        "new_owner_host": old_data["owner_host_id"],
+        "new_ownership": new_ownership,
+        "instruction_sha256": _resume_digest(instruction.encode()),
+    }
+    marker_sha = _resume_digest(_team_json(marker))
+    proposed = json.loads(json.dumps(old_data))
+    proposed.update(revision=old_data["revision"] + 1,
+                    previous_sha256=_resume_digest(old_raw),
+                    owner_thread_id=new_task,
+                    owner_host_id=old_data["owner_host_id"],
+                    reconciliation_pending=True, recovery_from=None)
+    proposed["ownership"] = new_ownership
+    proposed["pins"]["head"] = snapshot["head"]
+    proposed["operation"] = {
+        "kind": "PUBLISH", "state": "INTENT", "id": new_operation_id,
+        "evidence": [],
+        "subject": {"kind": "OWNER_RECOVERY", "id": old_operation["id"], "sha256": marker_sha},
+        "command": "publication", "inputs": {},
+    }
+    marker_lines = [
+        "Owner recovery instruction: " + json.dumps(instruction, ensure_ascii=False),
+        RETIRED_PUBLICATION_MARKER + _team_json(retired).decode().strip(),
+        OWNER_RECOVERY_MARKER + _team_json(marker).decode().strip(),
+    ]
+    existing = body.split("## Existing work\n", 1)
+    if len(existing) != 2:
+        raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_NOT_RECORDED")
+    work, tail = existing[1].split("\n## ", 1)
+    if any(line in work.splitlines() for line in marker_lines):
+        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_MARKER_CONFLICT")
+    proposed_body = (existing[0] + "## Existing work\n" + work.rstrip() + "\n"
+                     + "\n".join(marker_lines) + "\n## " + tail)
+    payload = ("---\n" + yaml.safe_dump(proposed, sort_keys=False)
+               + "---\n" + proposed_body).encode("utf-8")
+    return resume_checkpoint(
+        repo, expected_sha256=_resume_digest(old_raw), _candidate_payload=payload,
+        owner_recovery_instruction=instruction, recovery_expected_head=snapshot["head"],
+        recovery_expected_epoch=expected_epoch, _compact_recovery_authority=snapshot,
+    )
+
+
 def resume_checkpoint(
-    repo: Path, *, candidate: Path, expected_sha256: str,
+    repo: Path, *, candidate: Path | None = None, expected_sha256: str,
+    _candidate_payload: bytes | None = None,
     dry_run: bool = False, recover_from: str | None = None,
     integration_candidate: Path | None = None,
     owner_recovery_instruction: str | None = None,
     recovery_expected_head: str | None = None,
     recovery_expected_epoch: int | None = None,
     owner_recovery_retire_assignment: bool = False,
+    _compact_recovery_authority: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Persist observations only. No dispatch, selector, Git delivery or admission."""
     from orchestrator.startup_runtime import validate_battle_v10_control
 
-    payload = candidate.read_bytes()
+    if (candidate is None) == (_candidate_payload is None):
+        raise WorkflowRuntimeError("RESUME_CANDIDATE_OR_PAYLOAD_REQUIRED")
+    payload = candidate.read_bytes() if candidate is not None else _candidate_payload
+    assert payload is not None
     proposed, proposed_body = _resume_document(payload)
     if owner_recovery_instruction is None and (recovery_expected_head is not None or recovery_expected_epoch is not None or owner_recovery_retire_assignment):
         raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_INSTRUCTION_REQUIRED")
     if proposed["previous_sha256"] != expected_sha256:
         raise WorkflowRuntimeError("RESUME_EXPECTED_PREDECESSOR_MISMATCH")
-    with _execution_writer_epoch(repo) as epoch:
-        plan = live_plan_v10(
-            repo, owned_paths=[str(RESUME_PATH), str(RESUME_HISTORY_PATH)],
-            _writer_epoch=epoch,
-        )
-        if ((plan.get("status") == "FATAL" or plan.get("startup", {}).get("fatal_errors"))
-                and not _resume_completed_source_recovery(repo, proposed, plan, integration_candidate)):
-            raise WorkflowRuntimeError("RESUME_STARTUP_FATAL:" + str(plan.get("holds")))
+    with _execution_writer_epoch(
+            repo, compact_recovery_authority=_compact_recovery_authority) as epoch:
+        try:
+            plan = live_plan_v10(
+                repo, owned_paths=[str(RESUME_PATH), str(RESUME_HISTORY_PATH)],
+                _writer_epoch=epoch,
+            )
+        except WorkflowRuntimeError as exc:
+            if (_compact_recovery_authority is None
+                    or str(exc).split(":", 1)[0] != "TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"):
+                raise
+            plan = {"status": "FATAL", "holds": ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"]}
+        if plan.get("status") == "FATAL" or plan.get("startup", {}).get("fatal_errors"):
+            holds = plan.get("startup", {}).get("fatal_errors") or plan.get("holds", [])
+            if (not _compact_recovery_authority
+                    or holds != ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"]):
+                if not _resume_completed_source_recovery(repo, proposed, plan, integration_candidate):
+                    raise WorkflowRuntimeError("RESUME_STARTUP_FATAL:" + str(plan.get("holds")))
         control = validate_battle_v10_control(repo)
         manifest = _resume_file(repo, TOOLS)
         tool = load_tool_index(repo / TOOLS).get("workflow-resume-checkpoint", {})
@@ -4262,9 +5051,17 @@ def resume_checkpoint(
                 if len(predecessors) != 1:
                     raise WorkflowRuntimeError("RESUME_PREDECESSOR_ARCHIVE_MISSING")
                 prior, _ = _resume_document(predecessors[0])
-                _team_owner_recovery(repo, prior, proposed, proposed_body,
-                    instruction=owner_recovery_instruction, expected_head=recovery_expected_head,
-                    expected_epoch=recovery_expected_epoch, retire_assignment=owner_recovery_retire_assignment)
+                if proposed["operation"]["subject"]["kind"] == "OWNER_RECOVERY":
+                    context = _team_compact_recovery_context(repo, proposed, proposed_body)
+                    if (context is None or recovery_expected_head != _team_git(repo, "rev-parse", "HEAD").decode().strip()
+                            or recovery_expected_epoch != context[1]["ownership"]["epoch"]
+                            or context[0]["instruction_sha256"] != _resume_digest(owner_recovery_instruction.encode())):
+                        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_REPLAY_MISMATCH")
+                    _team_actor(repo, proposed)
+                else:
+                    _team_owner_recovery(repo, prior, proposed, proposed_body,
+                        instruction=owner_recovery_instruction, expected_head=recovery_expected_head,
+                        expected_epoch=recovery_expected_epoch, retire_assignment=owner_recovery_retire_assignment)
             if proposed["schema"] == "q3_resume.v2":
                 _team_actor(repo, proposed)
             if versions.get(proposed["revision"]) != payload:
@@ -4318,12 +5115,22 @@ def resume_checkpoint(
             if owner_recovery_instruction is not None:
                 if recover_from is not None:
                     raise WorkflowRuntimeError("TEAM_OWNER_RECOVERY_NOT_CORRUPTION_RECOVERY")
-                _team_owner_recovery(
-                    repo, previous, proposed, proposed_body,
-                    instruction=owner_recovery_instruction,
-                    expected_head=recovery_expected_head, expected_epoch=recovery_expected_epoch,
-                    retire_assignment=owner_recovery_retire_assignment,
-                )
+                if proposed["operation"]["subject"]["kind"] == "OWNER_RECOVERY":
+                    if _compact_recovery_authority is None:
+                        raise WorkflowRuntimeError("TEAM_COMPACT_RECOVERY_PREACTIVATION_PATH_REQUIRED")
+                    _team_compact_publication_owner_recovery(
+                        repo, previous, proposed, proposed_body,
+                        instruction=owner_recovery_instruction,
+                        expected_head=recovery_expected_head, expected_epoch=recovery_expected_epoch,
+                        authority=_compact_recovery_authority,
+                    )
+                else:
+                    _team_owner_recovery(
+                        repo, previous, proposed, proposed_body,
+                        instruction=owner_recovery_instruction,
+                        expected_head=recovery_expected_head, expected_epoch=recovery_expected_epoch,
+                        retire_assignment=owner_recovery_retire_assignment,
+                    )
             else:
                 _team_owner_transition(repo, previous, proposed)
         elif proposed["schema"] == "q3_resume.v2":
@@ -6552,6 +7359,10 @@ def main() -> int:
     bootstrap.add_argument("--expected-remote-commit")
     bootstrap.add_argument("--expected-remote-resume-sha256")
     bootstrap.add_argument("--reconcile-only", action="store_true")
+    compact_recovery = subparsers.add_parser("team-recover-compact-publication")
+    compact_recovery.add_argument("--instruction", required=True)
+    compact_recovery.add_argument("--expected-head", required=True)
+    compact_recovery.add_argument("--expected-epoch", type=int, required=True)
     team_integration = subparsers.add_parser("team-integrate-candidate")
     team_integration_mode = team_integration.add_mutually_exclusive_group(required=True)
     team_integration_mode.add_argument("--candidate", type=Path)
@@ -6678,6 +7489,9 @@ def main() -> int:
                 result = team_bootstrap_publish(repo, operation_id=args.operation_id, expected_head=args.expected_head,
                     expected_remote_commit=args.expected_remote_commit,
                     expected_remote_resume_sha256=args.expected_remote_resume_sha256, reconcile_only=args.reconcile_only)
+            elif args.command == "team-recover-compact-publication":
+                result = team_recover_compact_publication(repo, instruction=args.instruction,
+                    expected_head=args.expected_head, expected_epoch=args.expected_epoch)
             elif args.command == "team-integrate-candidate":
                 result = team_integrate_candidate(repo, candidate=args.candidate, recover_operation=args.recover_operation)
             elif args.command == "team-watch-intent":

@@ -5,6 +5,7 @@ import copy
 import hashlib
 import json
 import os
+import re
 import shutil
 import signal
 import stat
@@ -14,6 +15,8 @@ import tempfile
 import time
 import unittest
 from contextlib import contextmanager
+from contextlib import redirect_stdout
+from io import StringIO
 from pathlib import Path
 from unittest import mock
 
@@ -21,6 +24,14 @@ from orchestrator import workflow_runtime
 from orchestrator import team_records
 from orchestrator.benchmarks import control_v10_benchmark as benchmark
 from orchestrator.startup_runtime import StartupSnapshot
+
+
+def _control_version_10(raw: bytes) -> bytes:
+    """Build a v10 legacy fixture from the currently active control revision."""
+    updated, count = re.subn(rb"(?m)^CONTROL_VERSION: \d+\n", b"CONTROL_VERSION: 10\n", raw, count=1)
+    if count != 1:
+        raise AssertionError("fixture control must contain one active CONTROL_VERSION")
+    return updated
 
 
 class _FakeEpochGuard:
@@ -2847,6 +2858,75 @@ print(json.dumps({{'schema':'q3_search_evidence_write.v1','status':'RECORDED','o
             finally:
                 contender.close()
 
+    def test_execution_writer_epoch_blocks_unconfirmed_control14_activation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            (repo / ".git/q3-three-body.writer.lock").write_text("", encoding="utf-8")
+            reservation_path = workflow_runtime._git_common_dir(repo) / workflow_runtime.CONTROL14_ACTIVATION_RESERVATION
+            for state in ("PENDING", "REJECTED"):
+                reservation_path.write_bytes(workflow_runtime._team_json({
+                    "schema": workflow_runtime.CONTROL14_ACTIVATION_SCHEMA,
+                    "operation_id": "control14-test",
+                    "state": state,
+                }))
+                reservation_path.chmod(0o600)
+                with self.subTest(state=state):
+                    with self.assertRaisesRegex(
+                        workflow_runtime.WorkflowRuntimeError,
+                        "CONTROL14_ACTIVATION_NOT_CONFIRMED:" + state,
+                    ):
+                        with workflow_runtime._execution_writer_epoch(repo):
+                            self.fail("unconfirmed activation reservation must fence writers")
+
+    def test_execution_writer_epoch_fails_closed_on_corrupt_control14_activation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            (repo / ".git/q3-three-body.writer.lock").write_text("", encoding="utf-8")
+            reservation_path = workflow_runtime._git_common_dir(repo) / workflow_runtime.CONTROL14_ACTIVATION_RESERVATION
+            reservation_path.write_bytes(b"")
+            reservation_path.chmod(0o600)
+            malformed = [
+                b'{"schema":"q3_control14_activation.v1",\n',
+                workflow_runtime._team_json({
+                    "schema": "wrong-schema", "operation_id": "control14-test", "state": "PENDING",
+                }),
+                workflow_runtime._team_json({
+                    "schema": workflow_runtime.CONTROL14_ACTIVATION_SCHEMA,
+                    "operation_id": "control14-test", "state": "UNRECOGNIZED",
+                }),
+                workflow_runtime._team_json({
+                    "schema": workflow_runtime.CONTROL14_ACTIVATION_SCHEMA,
+                    "operation_id": 14, "state": "PENDING",
+                }),
+            ]
+            for raw in malformed:
+                with self.subTest(reservation=raw):
+                    reservation_path.write_bytes(raw)
+                    with self.assertRaisesRegex(
+                        workflow_runtime.WorkflowRuntimeError,
+                        "CONTROL14_ACTIVATION_RESERVATION_INVALID",
+                    ):
+                        with workflow_runtime._execution_writer_epoch(repo):
+                            self.fail("malformed activation reservation must fence writers")
+
+    def test_execution_writer_epoch_allows_confirmed_control14_activation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+            (repo / ".git/q3-three-body.writer.lock").write_text("", encoding="utf-8")
+            reservation_path = workflow_runtime._git_common_dir(repo) / workflow_runtime.CONTROL14_ACTIVATION_RESERVATION
+            reservation_path.write_bytes(workflow_runtime._team_json({
+                "schema": workflow_runtime.CONTROL14_ACTIVATION_SCHEMA,
+                "operation_id": "control14-test",
+                "state": "CONFIRMED",
+            }))
+            reservation_path.chmod(0o600)
+
+            with workflow_runtime._execution_writer_epoch(repo) as epoch:
+                epoch.recheck()
+
     def test_execution_identity_recheck_detects_control_and_goal_toctou(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)
@@ -5647,6 +5727,417 @@ class TeamRuntimeTests(unittest.TestCase):
             ),
         }
 
+    def _compact_publication_recovery_fixture(self, *, retired_assignment=False, retirement_marker=True):
+        """Prepare an old-owner compact PUBLISH intent at a real remote HEAD."""
+        fixture = self._publication_v11_base()
+        with workflow_runtime._execution_writer_epoch(self.repo) as epoch:
+            local = workflow_runtime._team_local(self.repo)
+            workflow_runtime._team_local_save(self.repo, local, local, epoch)
+        old_raw = self.fixture.current.read_bytes()
+        old_data, _ = workflow_runtime._resume_document(old_raw)
+        old_history = (self.repo / workflow_runtime.RESUME_HISTORY_PATH).read_bytes()
+        old_data["ownership"].update(installation_ref="f" * 64, epoch=2 if retired_assignment else 1,
+                                     state="ACTIVE", transfer=None)
+        old_data["pins"]["head"] = fixture["base"]
+        retired_receipt = None
+        if retired_assignment:
+            assignment_id = "ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916"
+            assignment_data = copy.deepcopy(old_data)
+            assignment_data["ownership"]["epoch"] = 1
+            assignment_data["revision"] = old_data["revision"] + 1
+            assignment_data["previous_sha256"] = workflow_runtime._resume_digest(old_raw)
+            assignment_data["operation"] = {
+                "kind": "ASSIGN", "state": "INTENT", "id": assignment_id,
+                "evidence": [],
+                "subject": {"kind": "ASSIGNMENT", "id": assignment_id, "sha256": "a" * 64},
+                "command": "agent-launch", "inputs": assignment_data["source_manifest"],
+            }
+            assignment_intent = self.document(assignment_data)
+            assignment_unknown_data = copy.deepcopy(assignment_data)
+            assignment_unknown_data["revision"] += 1
+            assignment_unknown_data["previous_sha256"] = workflow_runtime._resume_digest(assignment_intent)
+            assignment_unknown_data["operation"]["state"] = "UNKNOWN"
+            assignment_unknown = self.document(assignment_unknown_data)
+            marker_operation = dict(assignment_unknown_data["operation"])
+            old_data["revision"] = assignment_unknown_data["revision"] + 1
+            old_data["previous_sha256"] = workflow_runtime._resume_digest(assignment_unknown)
+            old_data["operation"] = {
+                "kind": "PUBLISH", "state": "INTENT", "id": "TEST_OLD_COMPACT_PUBLICATION",
+                "evidence": [],
+                "subject": {"kind": "REPAIR", "id": "TEST_OLD_COMPACT_PUBLICATION", "sha256": "b" * 64},
+                "command": "publication", "inputs": {},
+            }
+            launch_binding = {
+                "operation": {key: assignment_data["operation"][key]
+                              for key in ("id", "kind", "subject", "command", "inputs")},
+                "owner_task": assignment_data["owner_thread_id"],
+                "owner_host": assignment_data["owner_host_id"],
+                "ownership": assignment_data["ownership"],
+                "pins": assignment_data["pins"],
+                "source_manifest": assignment_data["source_manifest"],
+                "head": fixture["base"],
+                "assignment_sha256": "a" * 64,
+            }
+            retired_receipt = {
+                "schema": "q3_team_remote_observation.v1", "operation_id": assignment_id,
+                "state": "RESERVED", "installation_ref": workflow_runtime._team_local(self.repo)["installation_ref"],
+                "actor": assignment_data["owner_thread_id"], "epoch": 1,
+                "checkpoint_sha256": workflow_runtime._resume_digest(assignment_intent),
+                "local_head": fixture["base"], "remote_commit": fixture["base"],
+                "remote_resume_sha256": workflow_runtime._resume_digest(assignment_intent),
+                "remote_ownership": assignment_data["ownership"],
+                "remote_thread": assignment_data["owner_thread_id"], "evidence": {},
+                "launch_binding": launch_binding,
+            }
+            local = workflow_runtime._team_local(self.repo)
+            with workflow_runtime._execution_writer_epoch(self.repo) as epoch:
+                workflow_runtime._team_local_save(
+                    self.repo, local,
+                    {**local, "operations": {**local["operations"], assignment_id: retired_receipt}},
+                    epoch,
+                )
+        old_operation_id = "TEST_OLD_COMPACT_PUBLICATION"
+        map_bytes = team_records.canonical_json({
+            str(workflow_runtime.RESUME_PATH): workflow_runtime._resume_digest(old_raw),
+            str(workflow_runtime.RESUME_HISTORY_PATH): workflow_runtime._resume_digest(old_history),
+        })
+        map_sha = workflow_runtime._resume_digest(map_bytes)
+        map_path = "docs/session_protocols/team-evidence-" + map_sha + ".bin"
+        if not retired_assignment:
+            old_data.update(revision=old_data["revision"] + 1,
+                            previous_sha256=workflow_runtime._resume_digest(old_raw))
+            old_data["operation"] = {
+                "kind": "PUBLISH", "state": "INTENT", "id": old_operation_id,
+                "evidence": [],
+                "subject": {"kind": "REPAIR", "id": old_operation_id, "sha256": map_sha},
+                "command": "publication", "inputs": {map_path: map_sha},
+            }
+        else:
+            old_data["operation"].update(
+                subject={"kind": "REPAIR", "id": old_operation_id, "sha256": map_sha},
+                inputs={map_path: map_sha},
+            )
+        intent_raw = self.document(old_data)
+        _, intent = workflow_runtime._resume_history_record("intent", old_data["revision"], intent_raw)
+        history = old_history
+        if retired_assignment:
+            _, assignment_intent_entry = workflow_runtime._resume_history_record(
+                "intent", assignment_data["revision"], assignment_intent
+            )
+            _, assignment_unknown_entry = workflow_runtime._resume_history_record(
+                "intent", assignment_unknown_data["revision"], assignment_unknown
+            )
+            # Keep the retirement evidence in the current canonical checkpoint.
+            if retirement_marker:
+                intent_raw += ("Retired assignment (outcome UNKNOWN): "
+                               + json.dumps(marker_operation, ensure_ascii=False, sort_keys=True) + "\n").encode()
+                _, intent = workflow_runtime._resume_history_record("intent", old_data["revision"], intent_raw)
+            history = old_history + assignment_intent_entry + assignment_unknown_entry + intent
+        else:
+            _, archived = workflow_runtime._resume_history_record("resume", old_data["revision"] - 1, old_raw)
+            history += archived + intent
+        workflow_runtime._resume_history(history)
+        self.fixture.current.write_bytes(intent_raw)
+        (self.repo / workflow_runtime.RESUME_HISTORY_PATH).write_bytes(history)
+        subprocess.run(["git", "add", "--", str(workflow_runtime.RESUME_PATH),
+                        str(workflow_runtime.RESUME_HISTORY_PATH)], cwd=self.repo,
+                       env=fixture["env"], check=True)
+        subprocess.run(["git", "commit", "-qm", "TEST old-owner publication intent"],
+                       cwd=self.repo, env=fixture["env"], check=True)
+        subprocess.run(["git", "push", "-q", "origin", "HEAD:refs/heads/rh_clean"],
+                       cwd=self.repo, env=fixture["env"], check=True)
+        head = workflow_runtime._team_git(self.repo, "rev-parse", "HEAD").decode().strip()
+        return {**fixture, "old_raw": intent_raw, "old_history": history, "old_data": old_data,
+                "old_operation_id": old_operation_id, "head": head,
+                "instruction": "Continue compact publication on this installation.",
+                "new_task": "01a084f4-7498-7021-bac2-91d184d58ee8",
+                "retired_assignment_id": ("ASSIGNMENT_SELECTOR_PLAN2_LAUNCH_20260916"
+                                          if retired_assignment else None),
+                "retired_assignment_receipt": retired_receipt}
+
+    def _recover_compact_publication(self, fixture):
+        result = workflow_runtime.team_recover_compact_publication(
+            self.repo, instruction=fixture["instruction"], expected_head=fixture["head"],
+            expected_epoch=fixture["old_data"]["ownership"]["epoch"])
+        return result
+
+    def test_compact_publication_recovery_keeps_watch_unverified_and_reserves_exact_successor(self):
+        fixture = self._compact_publication_recovery_fixture()
+        fatal_plan = {"status": "FATAL", "holds": ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"],
+                      "startup": {"fatal_errors": []}}
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "2"}), \
+                mock.patch.object(workflow_runtime, "live_plan_v10", return_value=fatal_plan):
+            recovered = self._recover_compact_publication(fixture)
+            self.assertEqual(recovered["status"], "SAVED")
+            raw, data, body = workflow_runtime._team_current(self.repo)
+            self.assertTrue(data["reconciliation_pending"])
+            self.assertEqual(data["ownership"]["state"], "ACTIVE")
+            self.assertEqual(data["operation"]["subject"]["kind"], "OWNER_RECOVERY")
+            self.assertEqual(data["operation"]["state"], "INTENT")
+            _, retired = workflow_runtime._team_owner_recovery_markers(body)
+            self.assertEqual(retired["id"], fixture["old_operation_id"])
+            self.assertEqual(retired["state"], "UNKNOWN")
+            self.assertIsNone(workflow_runtime._team_local(self.repo)["watch"])
+            with mock.patch.object(workflow_runtime, "live_plan_v10", side_effect=AssertionError("replay preflight")):
+                self.assertEqual(self._recover_compact_publication(fixture)["status"], "NOOP")
+                with self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "REPLAY_MISMATCH"):
+                    workflow_runtime.team_recover_compact_publication(
+                        self.repo, instruction="different instruction", expected_head=fixture["head"],
+                        expected_epoch=fixture["old_data"]["ownership"]["epoch"])
+            observed = workflow_runtime.team_observe_remote(self.repo, operation_id=data["operation"]["id"])
+            self.assertEqual(observed["status"], "OBSERVED")
+            reserved = workflow_runtime.team_reserve_effect(self.repo, operation_id=data["operation"]["id"])
+            self.assertEqual(reserved["status"], "RESERVED")
+            saved = workflow_runtime._team_local_operation(self.repo, data["operation"]["id"])
+            self.assertEqual(saved["publication"]["snapshot"]["mode"], "OWNER_RECOVERY")
+            self.assertTrue(workflow_runtime._team_current(self.repo)[1]["reconciliation_pending"])
+            self.assertIsNone(workflow_runtime._team_local(self.repo)["watch"])
+
+    def test_recovered_publication_guard_allows_exact_publish_and_blocks_unrelated_command(self):
+        fixture = self._compact_publication_recovery_fixture(retired_assignment=True)
+        fatal_plan = {"status": "FATAL", "holds": ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"],
+                      "startup": {"fatal_errors": []}}
+        assignment_id = fixture["retired_assignment_id"]
+        original_assignment_receipt = workflow_runtime._team_local_operation(self.repo, assignment_id)
+        original_assignment_bytes = workflow_runtime._team_json(original_assignment_receipt)
+        self.assertEqual(original_assignment_receipt["state"], "RESERVED")
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "3"}), \
+                mock.patch.object(workflow_runtime, "live_plan_v10", return_value=fatal_plan):
+            self.assertEqual(self._recover_compact_publication(fixture)["status"], "SAVED")
+            self.assertEqual(workflow_runtime._team_json(
+                workflow_runtime._team_local_operation(self.repo, assignment_id)), original_assignment_bytes)
+            _, data, _ = workflow_runtime._team_current(self.repo)
+            self.assertTrue(data["reconciliation_pending"])
+            operation_id = data["operation"]["id"]
+
+            with self.assertRaisesRegex(
+                workflow_runtime.WorkflowRuntimeError, "TEAM_OWNER_RECONCILIATION_REQUIRED"
+            ):
+                workflow_runtime.team_guard(
+                    self.repo, command="workflow-team-record", paths=[], expected_epoch=3
+            )
+
+            self.assertEqual(workflow_runtime.team_observe_remote(
+                self.repo, operation_id=operation_id)["status"], "OBSERVED")
+            self.assertEqual(workflow_runtime.team_reserve_effect(
+                self.repo, operation_id=operation_id)["status"], "RESERVED")
+            self.assertEqual(workflow_runtime._team_json(
+                workflow_runtime._team_local_operation(self.repo, assignment_id)), original_assignment_bytes)
+            saved = workflow_runtime._team_local_operation(self.repo, operation_id)
+            paths = sorted(saved["publication"]["snapshot"]["files"])
+            with workflow_runtime._execution_writer_epoch(
+                self.repo, publication_operation=operation_id
+            ) as epoch:
+                prepared = workflow_runtime.team_guard(
+                    self.repo, command="publication", paths=paths,
+                    publication_stage="prepare", writer_epoch=epoch,
+                )
+                self.assertEqual(prepared["status"], "PREPARED")
+                subprocess.run(["git", "add", "--", *paths], cwd=self.repo,
+                               env=fixture["env"], check=True)
+                subprocess.run(
+                    ["git", "commit", "-qm", "TEST owner recovery publication", "--only", "--", *paths],
+                    cwd=self.repo, env=fixture["env"], check=True,
+                )
+                published = workflow_runtime.team_guard(
+                    self.repo, command="publication", paths=paths,
+                    publication_stage="publish", writer_epoch=epoch,
+                )
+                self.assertEqual(published["status"], "PUSH_RESERVED")
+
+        saved = workflow_runtime._team_local_operation(self.repo, operation_id)
+        self.assertEqual(saved["publication"]["state"], "PUSH_RESERVED")
+        snapshot = saved["publication"]["snapshot"]
+        expected_metadata_paths = {
+            str(workflow_runtime.RESUME_PATH), str(workflow_runtime.RESUME_HISTORY_PATH),
+        }
+        self.assertEqual(set(snapshot["files"]), expected_metadata_paths)
+        self.assertEqual(published["candidate_commit"], workflow_runtime._team_git(
+            self.repo, "rev-parse", "HEAD"
+        ).decode().strip())
+        subprocess.run(
+            ["git", "push", "--porcelain", "origin",
+             published["candidate_commit"] + ":refs/heads/rh_clean"],
+            cwd=self.repo, env=fixture["env"], check=True, capture_output=True,
+        )
+
+        confirmation = {
+            "schema": "q3_team_effect_observation.v1",
+            "operation_id": operation_id,
+            "outcome": "CONFIRMED",
+            "evidence": {path: item["sha256"] for path, item in snapshot["files"].items()},
+        }
+        candidate = self.repo.parent / "owner-recovery-confirmation.json"
+        candidate.write_bytes(team_records.canonical_json(confirmation))
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "3"}):
+            confirmed = workflow_runtime.team_confirm_effect(
+                self.repo, operation_id=operation_id, candidate=candidate,
+                expected_sha256=workflow_runtime._resume_digest(candidate.read_bytes()),
+            )
+        self.assertEqual(workflow_runtime._team_json(
+            workflow_runtime._team_local_operation(self.repo, assignment_id)), original_assignment_bytes)
+        self.assertEqual(confirmed["outcome"], "CONFIRMED")
+        saved = workflow_runtime._team_local_operation(self.repo, operation_id)
+        self.assertEqual(saved["state"], "CONFIRMED")
+        self.assertEqual(saved["publication"]["state"], "CONFIRMED")
+        self.assertEqual(saved["remote_commit"], published["candidate_commit"])
+
+        remote_head = workflow_runtime._team_git(
+            self.repo, "ls-remote", "origin", "refs/heads/rh_clean"
+        ).decode().split()[0]
+        self.assertEqual(remote_head, published["candidate_commit"])
+        changed_paths = set(workflow_runtime._team_git(
+            self.repo, "diff", "--name-only", "--no-renames", "-z",
+            fixture["head"], published["candidate_commit"], "--",
+        ).decode().split("\0")[:-1])
+        self.assertEqual(changed_paths, expected_metadata_paths)
+        for path, expected in snapshot["files"].items():
+            remote_blob, remote_mode = workflow_runtime._team_integration_blob(
+                self.repo, published["candidate_commit"], path
+            )
+            self.assertEqual(workflow_runtime._resume_digest(remote_blob), expected["sha256"])
+            self.assertEqual(remote_mode, expected["mode"])
+
+    def test_compact_publication_recovery_without_retirement_marker_keeps_assignment_blocking(self):
+        fixture = self._compact_publication_recovery_fixture(
+            retired_assignment=True, retirement_marker=False,
+        )
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "3"}), \
+                self.assertRaisesRegex(
+                    workflow_runtime.WorkflowRuntimeError,
+                    "TEAM_COMPACT_RECOVERY_LOCAL_RESERVATION_PRESENT",
+                ):
+            workflow_runtime._team_compact_publication_preflight(
+                self.repo, expected_head=fixture["head"], expected_epoch=2,
+                instruction=fixture["instruction"],
+            )
+
+    def test_compact_retired_assignment_requires_exact_receipt_and_checkpoint_binding(self):
+        fixture = self._compact_publication_recovery_fixture(retired_assignment=True)
+        assignment_id = fixture["retired_assignment_id"]
+        data = fixture["old_data"]
+        local = workflow_runtime._team_local(self.repo)
+        receipt = local["operations"][assignment_id]
+        original_receipt = copy.deepcopy(receipt)
+        self.assertEqual(set(receipt["launch_binding"]["operation"]),
+                         {"id", "kind", "subject", "command", "inputs"})
+        self.assertEqual(workflow_runtime._team_compact_recovery_retired_assignments(
+            self.repo, data, local), {assignment_id})
+        self.assertEqual(workflow_runtime._team_local_operation(self.repo, assignment_id),
+                         original_receipt)
+
+        for field, value in (("assignment_sha256", "b" * 64), ("head", "0" * 40)):
+            changed = copy.deepcopy(local)
+            changed["operations"][assignment_id]["launch_binding"][field] = value
+            self.assertNotIn(assignment_id,
+                             workflow_runtime._team_compact_recovery_retired_assignments(
+                                 self.repo, data, changed), field)
+        changed = copy.deepcopy(local)
+        changed["operations"][assignment_id]["launch_binding"]["operation"]["subject"]["sha256"] = "b" * 64
+        self.assertNotIn(assignment_id,
+                         workflow_runtime._team_compact_recovery_retired_assignments(
+                             self.repo, data, changed))
+        changed = copy.deepcopy(local)
+        changed["operations"][assignment_id]["launch_binding"]["pins"]["head"] = "0" * 40
+        self.assertNotIn(assignment_id,
+                         workflow_runtime._team_compact_recovery_retired_assignments(
+                             self.repo, data, changed))
+        changed = copy.deepcopy(local)
+        changed["operations"][assignment_id]["epoch"] += 1
+        self.assertNotIn(assignment_id,
+                         workflow_runtime._team_compact_recovery_retired_assignments(
+                             self.repo, data, changed))
+
+    def test_compact_publication_recovery_retries_after_history_only_cas(self):
+        fixture = self._compact_publication_recovery_fixture()
+        fatal_plan = {"status": "FATAL", "holds": ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"],
+                      "startup": {"fatal_errors": []}}
+        original_cas = workflow_runtime._resume_cas_bytes
+
+        def fail_after_history_cas(repo, relative, before, after, epoch, **kwargs):
+            original_cas(repo, relative, before, after, epoch, **kwargs)
+            if relative == workflow_runtime.RESUME_HISTORY_PATH:
+                raise RuntimeError("injected failure after history CAS")
+
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "2"}), \
+                mock.patch.object(workflow_runtime, "live_plan_v10", return_value=fatal_plan), \
+                mock.patch.object(workflow_runtime, "_resume_cas_bytes", side_effect=fail_after_history_cas):
+            with self.assertRaisesRegex(RuntimeError, "after history CAS"):
+                self._recover_compact_publication(fixture)
+            self.assertEqual(self.fixture.current.read_bytes(), fixture["old_raw"])
+            partial_history = (self.repo / workflow_runtime.RESUME_HISTORY_PATH).read_bytes()
+            self.assertNotEqual(partial_history, fixture["old_history"])
+            result = self._recover_compact_publication(fixture)
+
+        self.assertEqual(result["status"], "SAVED")
+        _, recovered, body = workflow_runtime._team_current(self.repo)
+        self.assertEqual(recovered["operation"]["subject"]["kind"], "OWNER_RECOVERY")
+        self.assertTrue(recovered["reconciliation_pending"])
+        self.assertEqual((self.repo / workflow_runtime.RESUME_HISTORY_PATH).read_bytes(), partial_history)
+        self.assertEqual(len([line for line in body.splitlines()
+                              if line.startswith(workflow_runtime.OWNER_RECOVERY_MARKER)]), 1)
+        self.assertEqual(len([line for line in body.splitlines()
+                              if line.startswith(workflow_runtime.RETIRED_PUBLICATION_MARKER)]), 1)
+
+    def test_compact_publication_recovery_refuses_existing_local_reservation(self):
+        fixture = self._compact_publication_recovery_fixture()
+        local = workflow_runtime._team_local(self.repo)
+        local["operations"]["TEST_EXISTING"] = {"state": "RESERVED"}
+        fatal_plan = {"status": "FATAL", "holds": ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"],
+                      "startup": {"fatal_errors": []}}
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "2"}), \
+                mock.patch.object(workflow_runtime, "_team_local", return_value=local), \
+                mock.patch.object(workflow_runtime, "live_plan_v10", return_value=fatal_plan), \
+                self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "LOCAL_RESERVATION_PRESENT"):
+            self._recover_compact_publication(fixture)
+        self.assertEqual(self.fixture.current.read_bytes(), fixture["old_raw"])
+
+    def test_compact_publication_recovery_refuses_remote_drift(self):
+        fixture = self._compact_publication_recovery_fixture()
+        drift_root = tempfile.TemporaryDirectory(prefix="q3-remote-drift-test-")
+        self.addCleanup(drift_root.cleanup)
+        other = Path(drift_root.name) / "clone"
+        subprocess.run(["git", "clone", "-q", "--branch", "rh_clean", str(fixture["remote"]), str(other)],
+                       check=True, capture_output=True)
+        env = {**fixture["env"], "GIT_AUTHOR_NAME": "Fixture", "GIT_COMMITTER_NAME": "Fixture",
+               "GIT_AUTHOR_EMAIL": "fixture@example.invalid", "GIT_COMMITTER_EMAIL": "fixture@example.invalid"}
+        subprocess.run(["git", "commit", "--allow-empty", "-qm", "TEST remote drift"], cwd=other,
+                       env=env, check=True)
+        subprocess.run(["git", "push", "-q", "origin", "HEAD:refs/heads/rh_clean"], cwd=other,
+                       env=env, check=True)
+        fatal_plan = {"status": "FATAL", "holds": ["TEAM_PUBLICATION_INTAKE_RECEIPT_REQUIRED"],
+                      "startup": {"fatal_errors": []}}
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "2"}), \
+                mock.patch.object(workflow_runtime, "live_plan_v10", return_value=fatal_plan), \
+                self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "REMOTE_PREIMAGE_CHANGED"):
+            self._recover_compact_publication(fixture)
+        self.assertEqual(self.fixture.current.read_bytes(), fixture["old_raw"])
+
+    def test_compact_publication_recovery_does_not_bypass_other_fatal(self):
+        fixture = self._compact_publication_recovery_fixture()
+        fatal_plan = {"status": "FATAL", "holds": ["BAD_RUNTIME"],
+                      "startup": {"fatal_errors": ["BAD_RUNTIME"]}}
+        with mock.patch.dict(os.environ, {"CODEX_THREAD_ID": fixture["new_task"], "Q3_OWNER_EPOCH": "2"}), \
+                mock.patch.object(workflow_runtime, "live_plan_v10", return_value=fatal_plan), \
+                self.assertRaisesRegex(workflow_runtime.WorkflowRuntimeError, "OTHER_FATAL_BLOCKED"):
+            self._recover_compact_publication(fixture)
+        self.assertEqual(self.fixture.current.read_bytes(), fixture["old_raw"])
+
+    def test_compact_publication_recovery_cli_dispatch(self):
+        argv = ["workflow_runtime.py", "--root", str(self.repo),
+                "team-recover-compact-publication", "--instruction", "TEST exact owner instruction",
+                "--expected-head", "a" * 40, "--expected-epoch", "7"]
+        out = StringIO()
+        with mock.patch.object(sys, "argv", argv), \
+                mock.patch.object(workflow_runtime, "team_recover_compact_publication",
+                                  return_value={"status": "SAVED", "writes_performed": True}) as recover, \
+                redirect_stdout(out):
+            code = workflow_runtime.main()
+        self.assertEqual(code, 0)
+        recover.assert_called_once_with(self.repo, instruction="TEST exact owner instruction",
+                                        expected_head="a" * 40, expected_epoch=7)
+        self.assertEqual(json.loads(out.getvalue())["status"], "SAVED")
+
     def _publication_intent(self, fixture, operation):
         """Save one uncommitted publication intent after the v2 base commit."""
         current = self.fixture.current.read_bytes()
@@ -5920,7 +6411,7 @@ class TeamRuntimeTests(unittest.TestCase):
             (str(workflow_runtime.RESUME_HISTORY_PATH), lambda b: b.replace(b"q3_resume", b"x3_resume", 1)),
             (str(workflow_runtime.RESUME_PATH), lambda b: b.replace(b"previous_sha256: ", b"previous_sha256: 0", 1)),
             (fixture["record"], lambda b: b + b"undeclared change\n"),
-            ("docs/CODEX_CONTROL.md", lambda b: b.replace(b"CONTROL_VERSION: 13", b"CONTROL_VERSION: 12").replace(b"CONTROL_VERSION: 12", b"CONTROL_VERSION: 10").replace(b"CONTROL_VERSION: 11", b"CONTROL_VERSION: 10")),
+            ("docs/CODEX_CONTROL.md", _control_version_10),
         ):
             with self.subTest(path=relative):
                 path = self.repo / relative
@@ -6983,8 +7474,7 @@ class TeamRuntimeTests(unittest.TestCase):
         (destination / "zz-integration-target.txt").write_bytes(b"old target\n")
         full_control = (destination / "docs/CODEX_CONTROL.md").read_bytes()
         if migrate_control:
-            (destination / "docs/CODEX_CONTROL.md").write_bytes(full_control.replace(b"CONTROL_VERSION: 13\n", b"CONTROL_VERSION: 12\n").replace(
-                b"CONTROL_VERSION: 12\n", b"CONTROL_VERSION: 10\n").replace(b"CONTROL_VERSION: 11\n", b"CONTROL_VERSION: 10\n"))
+            (destination / "docs/CODEX_CONTROL.md").write_bytes(_control_version_10(full_control))
         git(destination, "add", ".")
         git(destination, "commit", "-qm", "Integration destination baseline")
         expected_head = git(destination, "rev-parse", "HEAD")
@@ -7526,7 +8016,7 @@ class TeamRuntimeTests(unittest.TestCase):
         seed, remote, owner = root / "seed", root / "remote.git", root / "owner"
         owner_id = "01a084f4-7498-7021-bac2-91d184d58dc7"
         full_control = (Path(__file__).resolve().parents[2] / "docs/CODEX_CONTROL.md").read_text()
-        old_control = full_control.replace("CONTROL_VERSION: 13\n", "CONTROL_VERSION: 12\n").replace("CONTROL_VERSION: 12\n", "CONTROL_VERSION: 10\n").replace("CONTROL_VERSION: 11\n", "CONTROL_VERSION: 10\n").replace(
+        old_control = _control_version_10(full_control.encode()).decode().replace(
             "TEAM_RUNTIME_VERSION: 1\n", "")
         full_tools = (Path(__file__).resolve().parents[2] / str(workflow_runtime.TOOLS)).read_bytes()
         old_tools = (
