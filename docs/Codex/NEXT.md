@@ -83,6 +83,9 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 Перед ней дописать в `docs/Progress_Log.md` запись `## <дата> — <что нашли>` с полями:
 Развилка · Выбрали · Почему · Что отвергли · Инсайты · Блокеры · Иглы Зингера · Следующий ход · Адреса · Чей вердикт.
 Без записи скрипт останавливается; обход владельца: `--no-log`.
+Литература: скрипт сам ищет arXiv/Crossref и X (посты, новости) по строкам `- lit:`.
+Агент (Claude Code) в конце фазы дополнительно прогоняет те же запросы через scite `search_literature`
+и Consensus `search` и сохраняет находки в `docs/literature/scan_<дата>_agent.md` (заголовок, DOI, цитата, зачем нам).
 Запросы для поиска литературы (правьте по текущему фронту):
 - lit: prolate spheroidal wave functions Riemann xi zeros
 - lit: Ferrers functions Sturm-Liouville eigenvalue asymptotics uniform

@@ -10,8 +10,10 @@
 #      Zinger needles, why we are here, next move). Template: docs/Codex/NEXT.md, «Конец фазы».
 #   1. q3_check on every changed/new Lean file under q3.lean.aristotle/Q3 (build + axioms).
 #   2. Shelf refresh (semantic index of the docs), non-fatal if qmd is unavailable.
-#   2b. Literature scan: queries from lines "- lit: ..." in NEXT.md → docs/literature/scan_<date>.json
-#       (arXiv + Crossref metadata only, read-only, non-fatal offline).
+#   2b. Literature scan: queries from lines "- lit: ..." in NEXT.md →
+#       docs/literature/scan_<date>.json (arXiv + Crossref) and docs/literature/x_<date>.json
+#       (X recent posts + news via xurl; community signal, never evidence). Non-fatal offline.
+#       scite and Consensus are MCP-only: the agent runs them (NEXT.md «Конец фазы»).
 #   3. Regenerate the AUTO-STATS block in docs/Codex/NEXT.md (roof ports, Goal058 gates,
 #      sorry/axiom count, open Proshka requests) and the "Updated:" line.
 #   4. git add (tracked changes, new Lean files, docs/Codex, docs/routeB_bus), commit, pull --rebase, push.
@@ -92,6 +94,28 @@ else
       "$PY" -c 'import json,sys; d=json.load(open(sys.argv[1])); c=d.get("candidates",[]); print(f"   {len(c)} candidates → {sys.argv[1]}"); [print("   -", x.get("title","")[:110]) for x in c[:8]]' "$OUTJ"
     else
       rm -f "$OUTJ.tmp"; echo "   WARN: literature scan failed (offline?) — non-fatal"
+    fi
+    if command -v xurl >/dev/null 2>&1; then
+      XJ="docs/literature/x_$TODAY.json"
+      "$PY" - "$XJ" "${LIT[@]}" <<'XPY' || echo "   WARN: X search failed — non-fatal"
+import json, subprocess, sys, urllib.parse
+out, queries = sys.argv[1], sys.argv[2:]
+rows = []
+for q in queries:
+    enc = urllib.parse.quote(q)
+    for kind, path in (("posts", f"/2/tweets/search/recent?query={urllib.parse.quote(q + ' -is:retweet')}&max_results=10&tweet.fields=created_at,author_id"),
+                       ("news", f"/2/news/search?query={enc}")):
+        r = subprocess.run(["xurl", path], capture_output=True, text=True, timeout=60)
+        try:
+            data = json.loads(r.stdout).get("data", [])
+        except json.JSONDecodeError:
+            data = []
+        for d in data:
+            rows.append({"query": q, "kind": kind, "id": d.get("id") or d.get("rest_id"),
+                         "created_at": d.get("created_at"), "text": (d.get("text") or d.get("name") or d.get("summary") or "")[:500]})
+json.dump({"boundary": "COMMUNITY_SIGNAL_NOT_EVIDENCE", "rows": rows}, open(out, "w"), ensure_ascii=False, indent=1)
+print(f"   X: {len(rows)} posts/news → {out}")
+XPY
     fi
   fi
 fi
