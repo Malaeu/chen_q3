@@ -90,3 +90,15 @@ The new answer also improves the same energy intervals to G/8*1050^(-2m) for m>=
 Bounded outcome: reviewed full-matrix reference certificate, a uniform auxiliary enclosure proof, and an exact source-specific obstruction to a named sufficient implementation. The full Goal058 sign/Schur/tracking chain is still OPEN. The next mathematical obligation is an actual signed family estimate of the complete central form with the repaired anchor budget, not another representation or finite grid.
 
 Sources: ../proshka/PROSHKA_VERDICT_GOAL058_TWO_ENERGY_FULL_QUARTIC_SIGN_2026-09-25.md and ../proshka/PROSHKA_GOAL058_TWO_ENERGY_FULL_QUARTIC_INDEPENDENT_AUDIT_2026-09-25.md.
+
+## Next discriminator: integrated signs must be retained
+
+[NORMALIZED_CORRELATION.md](NORMALIZED_CORRELATION.md) removes the scalar
+WR constant exactly and gives the full signed density plus prime samples.
+A separately reviewed Arb check proves this density has both signs on the
+m2 reference rectangle, although the full R3 is negative there. Pointwise
+positivity therefore fails in that reference cell. The m4 component diagnostic
+shows cancellation factor 758.841 between W02, -WR and -Prime. Neither finite
+result settles the family sign; they select joint integrated comparison as the
+remaining analytic mechanism and rule out treating the density as positive
+throughout these reference cells.

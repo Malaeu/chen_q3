@@ -26,3 +26,18 @@ Independent reviewer /root/sign_algebra_review reran the final100-dps certificat
 ## Incoming seventh-answer reconciliation
 
 Root rechecked the RAW_R6 obstruction's core(13)-(17): initial97/40, growth7/4, e_raw>(1/2)m^(3/4)8^m, and e_raw>=2R imply max(Dplus,Dminus)<=-4Gamma R^4. Exact Fraction checks confirm1050, A/Omega=8/25,19600/Omega=4/225 and(7/4)^5/2>8. Wider premises remain attributed to the existing two independent PAPER audits. Our eta uses actual center value plus derivative uncertainty, not rejected R6 value majorants. No claim that our finite test closes the incoming cofinal gap.
+
+## Normalized correlation discriminator, 2026-09-25
+
+Native read-only reviewer /root/sign_algebra_review independently derived
+W02 integral identity, scalar cancellation, the unique h sign crossing,
+and the endpoint formula for complex coefficients: no mathematical findings.
+It inspected and independently reran normalized_correlation_certificate.py
+SHA-256 8d9ad466de8a42ca69cdf4b4259c7350f5dfed4f3f626c62043be0f546e80686,
+with imported arb_m2_certificate.py SHA-256
+bcfff2a3b3e011390a354d3081ca3985974496abe966a37b0ac3cad560670ccb.
+Actual 100-digit output: endpoint [4.372467 +/-4.14e-7]>0;
+Delta(L/2)=[-1.222039 +/-3.78e-7]<0. Companion trace identities and both
+positive normalization denominators checked. No material findings.
+Scope is only the same m2 reference rectangle; no cofinal inference.
+Root observed native review; no external signed/provider verification claimed.

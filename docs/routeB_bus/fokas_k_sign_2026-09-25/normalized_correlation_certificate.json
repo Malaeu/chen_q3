@@ -1,0 +1,9 @@
+{
+  "scope": "m=2 full rational energy rectangle from frozen certificate",
+  "precision_dps": 100,
+  "endpoint_h_Delta_limit": "[4.372467 +/- 4.14e-7]",
+  "Delta_at_L_over_2": "[-1.222039 +/- 3.78e-7]",
+  "h_at_L_over_2_positive": "t=sqrt(2); t^3-t-1=sqrt(2)-1>0",
+  "verdict": "POINTWISE_DENSITY_POSITIVITY_FAILS_IN_REFERENCE_CELL",
+  "cofinal_conclusion": "NONE"
+}

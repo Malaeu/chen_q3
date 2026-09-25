@@ -18,3 +18,11 @@ Proof, code, exact source hashes, independent review and reproducible output:
 The seventh answer subsequently proved that RAW_R6 value-majorants force e_raw>(1/2)m^(3/4)8^m and kill both sufficient margins. Our center-value-plus-derivative anchor avoids exactly that failure. Its repaired family anchor decays; the family sign of the complete center is still open. Its1050^(-2m) energy-width bound supersedes our simpler bound for m>=10000.
 
 Next: source-specific family estimate for the complete signed center with the repaired anchor budget, preserving both boundaries and prime terms. Do not resend the answered seventh request or treat an extended grid as a proof.
+
+Further discriminator: normalization cancels the entire scalar WR constant.
+The full sign equals the integral of h(x)Delta(x) minus the literal prime
+samples; h has one crossing at log(t), t^3-t-1=0. Nevertheless, certified m2
+Delta(L/2)<0 where h>0 disproves pointwise positive density in the reference
+cell. m4 diagnostics leave only 0.13178% after W02/WR/Prime cancellation.
+The needed estimate must preserve integrated signs; finite evidence does not
+supply the cofinal quantifier. See packet NORMALIZED_CORRELATION.md and review.

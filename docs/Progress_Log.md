@@ -7654,3 +7654,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 **Следующий ход:** семейная оценка подписанного центра с исправленным anchor-budget(19); не новая сетка и не повтор отправки уже отвеченного запроса7.
 **Адреса:** docs/routeB_bus/fokas_k_sign_2026-09-25/REPORT.md; q3.lean.aristotle/docs/insights/fokas_full_matrix_sign_certificate_2026_09_25.md.
 **Чей вердикт и аргумент:** root-derived algebra/diagnostics; Luna реализовала Arb, независимый native reviewer проверил формулы/код и повторил сертификат. PAPER width проверена по точным indices4m..6m-1 и положительным denominators; kernel/Lean не запускались. PX_RH_CLAIM: NOT_MADE.
+
+## 2026-09-25 — Full-K normalized density discriminator (Mac)
+
+Развилка: получить знак полной центральной формы через положительность плотности или совместное интегральное сравнение.
+Выбрали: совместное сравнение с сохранением всех prime terms.
+Почему: точная нормировка сокращает скалярную WR-константу, но строгий Arb m2 тест даёт положительный вклад у нуля и отрицательный при L/2 на всей энергетической скобке. Полный знак при этом положителен.
+Что отвергли: pointwise positivity для этой reference-cell; это НЕ cofinal kill.
+Инсайты: вес h меняет знак при log(t), t^3-t-1=0; m4 диагностический остаток составляет лишь 0.13178% суммы модулей трёх вкладов.
+Блокеры: общий signed central estimate, затем Schur/complement floor и tracking остаются открыты.
+Иглы Зингера: отрицательная плотность совместима с положительной полной формой; абсолютные оценки теряют нужное сокращение.
+Следующий ход: источниковая интегральная оценка полного центра с repaired anchor; подготовленный запрос №8 не отправляли и не дублировали.
+Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/NORMALIZED_CORRELATION.md, normalized_correlation_certificate.py/json, quartic_components.py и precision outputs.
+Чей вердикт: root PAPER derivation; native independent read-only /root/sign_algebra_review проверил формулы и повторил строгий Arb script без замечаний; /root/rectangle_probe провёл компонентную диагностику, root повторил m4.
