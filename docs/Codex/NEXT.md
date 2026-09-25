@@ -71,6 +71,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   PAPER Robin-width усилен до `G/8*(16m-3)/(24m-3)*4^(-2m)` без смены склейки;
   строгий Arb m2 finite-algebra margin с уточнённым Frobenius budget положителен.
   Source applicability m2 и cofinal sign не закрыты; диагностики m4/8/13 — не доказательство хвоста.
+  Ответ №7 даёт более сильную скобку при m>=10000 и убивает только RAW_R6 value-anchor; наш центр+производная не подпадает под этот kill.
 - 2026-09-25: Fokas step 1 в Lean: положительность двух выбранных θ, общее
   Mellin–Green тождество с нижним краем и точный перенос выбранной строки
   через sTrial к Mellin/Gwin с фазой `(-1)^n` при существующем условном порте

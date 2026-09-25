@@ -75,3 +75,18 @@ The universal budget statement used here is: for any g>=||K||, the same perturba
 The midpoint discrepancy between the first numerical script and Arb was checked: Arb uses the exact rational input rectangle midpoint, whereas the diagnostic used the midpoint of the numerical Robin endpoint eigenvalues. At IDENTICAL rational midpoint inputs, mpmath and Arb agree on -26.1299554182981073906327160445285. No containment check uses the numerical reference.
 
 The m13 diagnostics were repeated at140/180 digits with all five decisive printed30-digit fields equal. No additional finite grid is treated as a substitute for the family estimate.
+
+
+## Reconciliation with the subsequently received seventh answer
+
+Before publication origin advanced to c56ec1d9 with the completed TWO_ENERGY_FULL_QUARTIC_SIGN response and two independent PAPER audits. It proves a narrow, uniform RAW_R6 failure, not a failure of the signed source or our finite certificate.
+
+RAW_R6 sets its tail input to q_m 2^-m (R^(0)_(0,5m-1)+R^(0)_(4,5m-1)). The source lower bounds give R^(0)_(i,1)>=97/40 and growth >=7/4 at every subsequent step; hence e_raw > (1/2)m^(3/4)8^m. On the explicitly specified Good(m) tail, e_raw>=2R. Then |p_c|<=4 Gamma R^4 whereas R^2 Bhat_raw>=8 Gamma R^4, so both sufficient margins are <=-4 Gamma R^4<0. Root independently checked this decisive implication and its rational constants. The broader energy/Good(m) premises were accepted by the linked two independent PAPER audits; root does not claim to have reproved all of those premises.
+
+Our scripts do NOT use that rejected anchor estimate: their eta uses |P_anchor(center)| plus half-width times an R6 DERIVATIVE bound. The finite Arb enclosure preserves the signed recurrence value. This is why a numerical/interval success here does not contradict the uniform RAW_R6 kill. The new answer repairs the family anchor analogously using the actual recessive value and FULL interval width times derivative, yielding equation(19) e_bd=C_P m^(3/2)210^-m+20 C_A m^(7/4)(2/225)^m ->0. Thus the exact identified obstruction is bypassable; a family sign of p_c remains absent.
+
+The new answer also improves the same energy intervals to G/8*1050^(-2m) for m>=10000, using a stronger energy bound. This supersedes our simpler4m-start bound on that large-m domain; our bound remains valid for all m>=2 and was derived independently before this answer arrived. The source splice remains5m in both arguments.
+
+Bounded outcome: reviewed full-matrix reference certificate, a uniform auxiliary enclosure proof, and an exact source-specific obstruction to a named sufficient implementation. The full Goal058 sign/Schur/tracking chain is still OPEN. The next mathematical obligation is an actual signed family estimate of the complete central form with the repaired anchor budget, not another representation or finite grid.
+
+Sources: ../proshka/PROSHKA_VERDICT_GOAL058_TWO_ENERGY_FULL_QUARTIC_SIGN_2026-09-25.md and ../proshka/PROSHKA_GOAL058_TWO_ENERGY_FULL_QUARTIC_INDEPENDENT_AUDIT_2026-09-25.md.

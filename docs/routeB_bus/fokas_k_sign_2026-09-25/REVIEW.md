@@ -22,3 +22,7 @@ The initial diagnostic used Gamma_F=||K||_F in the remainder bound. This sharpen
 
 Frozen arb_m2_certificate.py SHA-256: bcfff2a3b3e011390a354d3081ca3985974496abe966a37b0ac3cad560670ccb.
 Independent reviewer /root/sign_algebra_review reran the final100-dps certificate read-only: no material findings. Reviewed rational Sturm counts, F phases, full K analytic quadrature, Gaussian tail constants304/8952, geometric series bound, Q5 projection and all interval/sign operations. Whole-rectangle form [-26.1300 +/-5.19e-5]; sharpened margin [25.77492 +/-8.05e-6]; canonical margin [-28.1612 +/-5.29e-5]. Required y_lower>eta verified. Scope explicitly finite algebra, source implication conditional on applicable identities; no selected-tail membership/cofinal positivity/Lean admission. Root independently reran the same frozen bytes successfully.
+
+## Incoming seventh-answer reconciliation
+
+Root rechecked the RAW_R6 obstruction's core(13)-(17): initial97/40, growth7/4, e_raw>(1/2)m^(3/4)8^m, and e_raw>=2R imply max(Dplus,Dminus)<=-4Gamma R^4. Exact Fraction checks confirm1050, A/Omega=8/25,19600/Omega=4/225 and(7/4)^5/2>8. Wider premises remain attributed to the existing two independent PAPER audits. Our eta uses actual center value plus derivative uncertainty, not rejected R6 value majorants. No claim that our finite test closes the incoming cofinal gap.

@@ -15,4 +15,6 @@ The m2 source-tau implication remains conditional on source/tail applicability t
 Proof, code, exact source hashes, independent review and reproducible output:
 [packet](../../../docs/routeB_bus/fokas_k_sign_2026-09-25/REPORT.md).
 
-Next: source-specific family estimate for the complete signed center, preserving both boundaries and prime terms; compare with the already-pending seventh Proshka request. Do not duplicate its dispatch or treat an extended grid as a proof.
+The seventh answer subsequently proved that RAW_R6 value-majorants force e_raw>(1/2)m^(3/4)8^m and kill both sufficient margins. Our center-value-plus-derivative anchor avoids exactly that failure. Its repaired family anchor decays; the family sign of the complete center is still open. Its1050^(-2m) energy-width bound supersedes our simpler bound for m>=10000.
+
+Next: source-specific family estimate for the complete signed center with the repaired anchor budget, preserving both boundaries and prime terms. Do not resend the answered seventh request or treat an extended grid as a proof.
