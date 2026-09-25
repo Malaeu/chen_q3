@@ -1,8 +1,8 @@
 ---
 schema: q3_resume.v2
-revision: 385
-observed_at: '2026-09-22T17:33:03.928869+00:00'
-previous_sha256: b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3
+revision: 386
+observed_at: '2026-09-25T06:14:59.154415+00:00'
+previous_sha256: a8097dc3760e7f87405fbc674ac4ca9ec1f0ea5c578428b5c251fa3f5feccd77
 owner_thread_id: 01a0ce79-b29c-79e1-8d36-f95fec006ae5
 owner_host_id: local
 reconciliation_pending: true
@@ -68,9 +68,10 @@ stages:
   publication: *id006
 operation:
   kind: PUBLISH
-  state: INTENT
+  state: CONFIRMED
   id: owner-recovery-872c850853d8f8de43d59de4
-  evidence: []
+  evidence:
+  - origin/rh_clean@904fea9f4f44bf5aff1c3b2d4923fd40a43b1a2d
   subject:
     kind: OWNER_RECOVERY
     id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
@@ -95,13 +96,13 @@ ownership:
 RH unproved; PX_RH_CLAIM: NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking remain OPEN. Paired-window Mellin identity is PAPER-level. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
 
 ## Confirmed and candidate results
-Control13 installed from independently reviewed eight-file candidate 27bd4017. Recovery tests: 95 pass. Full237 retains baseline 3 failures/1 error. Registered native producer and non-author reviewer completed. Repair FIX_PUSH_VERIFIED at 95f6c628 with fresh remote readback; no mathematical admission.
+Control13 installed at 27bd4017; recovery tests 95 pass, full237 baseline 3 failures/1 error. Repair published at 95f6c628. No mathematical admission.
 
 ## Next action
-Complete exact compact metadata publication; keep limit 16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+Reconcile native watch for owner epoch 3; then bind one exact Route B consumer. Mathematical HOLD remains.
 
 ## Existing work
-Human owner explicitly authorized recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2; prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including the concurrently appearing Proshka request.
+Human owner authorized relocation recovery. Prior task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owned epoch 2; its predecessor was unreadable. Prior-host quiescence and native watch activation were not claimed. Four then-untracked paths, including the Proshka request, were preserved.
 Prior owner recovery instruction (historical): "Я твой владелец, и я тебе говорю: делай."
 The retired assignment outcome UNKNOWN and exact payload remain in the full v384 record in append-only GOAL_HISTORY history.
 
@@ -113,4 +114,4 @@ Compact publication recovery: {"control_sha256":"318f90104f5222f83daef5c5a2ba55a
 Do not replay owner recovery, old launch, or previous ingest. Rminus scale crosswalk and Euler identity are PAPER-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf: INCOMPLETE on semantic freshness, not absence. Original ZIP: NOT_RETRIEVED; request/phase pins unchanged.
 
 ## Integration remaining
-Source repair and immutable 40-commit/23-path history are on origin/rh_clean at 95f6c628. Compact metadata map intake/publication remains. No Proshka response is pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+Source repair and 40-commit/23-path history are at 95f6c628; owner recovery metadata published at 904fea9f. No Proshka response pending. Exact consumer UNBOUND; RH premises require proof audit.

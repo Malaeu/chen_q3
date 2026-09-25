@@ -109528,3 +109528,248 @@ Source repair and immutable 40-commit/23-path history are on origin/rh_clean at 
 ````
 <!-- /q3-history -->
 
+<!-- q3-history {"fence":"````","key":"resume-385-a8097dc3760e7f87405fbc674ac4ca9ec1f0ea5c578428b5c251fa3f5feccd77","kind":"resume","revision":385,"sha256":"a8097dc3760e7f87405fbc674ac4ca9ec1f0ea5c578428b5c251fa3f5feccd77","size":8118} -->
+````text
+---
+schema: q3_resume.v2
+revision: 385
+observed_at: '2026-09-22T17:33:03.928869+00:00'
+previous_sha256: b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3
+owner_thread_id: 01a0ce79-b29c-79e1-8d36-f95fec006ae5
+owner_host_id: local
+reconciliation_pending: true
+recovery_from: null
+pins:
+  head: cf07bc420f7dd1d864fb21cc5031b86c8e13dee7
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: INTENT
+  id: owner-recovery-872c850853d8f8de43d59de4
+  evidence: []
+  subject:
+    kind: OWNER_RECOVERY
+    id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
+    sha256: 27e509dfc000853b10c525326cde2266c8492a91472477943bde94202061d9c2
+  command: publication
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 3
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM: NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking remain OPEN. Paired-window Mellin identity is PAPER-level. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed from independently reviewed eight-file candidate 27bd4017. Recovery tests: 95 pass. Full237 retains baseline 3 failures/1 error. Registered native producer and non-author reviewer completed. Repair FIX_PUSH_VERIFIED at 95f6c628 with fresh remote readback; no mathematical admission.
+
+## Next action
+Complete exact compact metadata publication; keep limit 16384 and mathematical HOLD. Then bind one exact Route B consumer before new mathematics.
+
+## Existing work
+Human owner explicitly authorized recovery after moving between work and home. Current task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owns local epoch 2; prior task was not readable in the native app. No prior-host quiescence or native watch activation is claimed. Four unrelated untracked paths are preserved, including the concurrently appearing Proshka request.
+Prior owner recovery instruction (historical): "Я твой владелец, и я тебе говорю: делай."
+The retired assignment outcome UNKNOWN and exact payload remain in the full v384 record in append-only GOAL_HISTORY history.
+
+Owner recovery instruction: "naxuj???? piwem zanogo i wse !!!"
+Retired compact publication (outcome UNKNOWN): {"command":"publication","evidence":[],"id":"CONTROL13_COMPACT_METADATA_PUBLICATION_20260923","inputs":{"docs/session_protocols/team-evidence-96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa.bin":"96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa"},"kind":"PUBLISH","state":"UNKNOWN","subject":{"id":"CONTROL13_COMPACT_METADATA_PUBLICATION_20260923","kind":"REPAIR","sha256":"96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa"}}
+Compact publication recovery: {"control_sha256":"318f90104f5222f83daef5c5a2ba55a38afcc00796f20969a8019da9e14f351f","head":"cf07bc420f7dd1d864fb21cc5031b86c8e13dee7","instruction_sha256":"a3c805f88bc29abbffa52afc70efac7744d0418d59b273449a470e9fbac952d1","new_operation_id":"owner-recovery-872c850853d8f8de43d59de4","new_owner_host":"local","new_owner_task":"01a0ce79-b29c-79e1-8d36-f95fec006ae5","new_ownership":{"epoch":3,"installation_ref":"9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4","state":"ACTIVE","transfer":null},"old_base":"95f6c628750eb6a39174e34232e2e7d51f1b23e9","old_checkpoint_sha256":"b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3","old_operation_id":"CONTROL13_COMPACT_METADATA_PUBLICATION_20260923","old_owner_host":"local","old_owner_task":"01a0c7ff-2bc3-7e73-a39c-b86fda949bd0","old_ownership":{"epoch":2,"installation_ref":"53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590","state":"ACTIVE","transfer":null},"old_pins_sha256":"b7406b9570d3129be4500cb8a8d97c4bb9e96320bcfca9e179d8b6a9cca9f916","remote_commit":"cf07bc420f7dd1d864fb21cc5031b86c8e13dee7","remote_history_sha256":"b54c18a25b54f826f416ab5ebed3db912474bbf1f1f4084c4817cc2701134110","remote_resume_sha256":"b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3","schema":"q3_compact_publication_recovery.v1"}
+
+## Do not repeat
+Do not replay owner recovery, old launch, or previous ingest. Rminus scale crosswalk and Euler identity are PAPER-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf: INCOMPLETE on semantic freshness, not absence. Original ZIP: NOT_RETRIEVED; request/phase pins unchanged.
+
+## Integration remaining
+Source repair and immutable 40-commit/23-path history are on origin/rh_clean at 95f6c628. Compact metadata map intake/publication remains. No Proshka response is pending. Exact mathematical consumer remains UNBOUND; all RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
+<!-- q3-history {"fence":"````","key":"intent-386-1378db211d64f0a524572bdbfad3c838c2e6e22c31228a4348723662a8fd4a5d","kind":"intent","revision":386,"sha256":"1378db211d64f0a524572bdbfad3c838c2e6e22c31228a4348723662a8fd4a5d","size":7850} -->
+````text
+---
+schema: q3_resume.v2
+revision: 386
+observed_at: '2026-09-25T06:14:59.154415+00:00'
+previous_sha256: a8097dc3760e7f87405fbc674ac4ca9ec1f0ea5c578428b5c251fa3f5feccd77
+owner_thread_id: 01a0ce79-b29c-79e1-8d36-f95fec006ae5
+owner_host_id: local
+reconciliation_pending: true
+recovery_from: null
+pins:
+  head: cf07bc420f7dd1d864fb21cc5031b86c8e13dee7
+  physical_goal: docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md
+  source_commit: f82b09f8c24f0b74a62c5c48e5e4e9a3b2b36cc7
+  request_id: REQ-2026-09-11-DENSITY
+  phase_id: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  request:
+    path: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt
+    commit: 122076a3430251d8f1f9b0cd0577938456eaaed2
+    blob: ffeb152da44d1b1b89917f2921b287f80e3fb4a0
+    sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    boundary_id: GOAL058_THETA_PROBABILITY_DENSITY_FULL_FORM_SIGN
+    conversation_id: 6aa3e75b-cfac-83ed-a4e2-f7d3d81f5d59
+  phase_key:
+    convention_lock_id: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+    front_id: GOAL058_SECOND_EXPRESSION
+    honesty_state: CHALLENGER_NOT_RH
+    route_id: RouteB_TwoLevelSpectralLadder
+    source_object_family_id: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+    terminal_consumer_id: published_Weil_criterion_on_all_complex_compact_smooth_tests
+stages:
+  request_preparation: &id003
+    subject: &id001
+      kind: REQUEST
+      id: REQ-2026-09-11-DENSITY
+      sha256: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+    state: DONE
+    evidence: &id002
+      docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+      docs/routeB_bus/phase5_codex/out/density_dn22_20260911.log: 6d697f106534c52c49d6735980b5274d2969dd2b8bc308256e3b26591eb13bf1
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  request_review:
+    subject: *id001
+    state: DONE
+    evidence: *id002
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/slack_verdict_check
+  delivery: *id003
+  receipt: &id006
+    subject: &id004
+      kind: VERDICT
+      id: SIBLING3_PAPER_REFUTATION
+      sha256: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+    state: DONE
+    evidence: &id005
+      docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+      docs/routeB_bus/sibling/sibling_20260911.log: 1246a97d9a8af4594bd200e8e4b7610891fc746cb0cf1858d86762a83195a3e8
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: 01a084f4-7498-7021-bac2-91d184d58dc7
+  independent_review:
+    subject: *id004
+    state: DONE
+    evidence: *id005
+    source_sha256: e8d4266882cc3c20f7627a88a116b74a8355556d9864dd8e7cf135647cb8873f
+    checked_by: /root/density_verdict_check
+  parent_check: *id006
+  acceptance: *id006
+  publication: *id006
+operation:
+  kind: PUBLISH
+  state: CONFIRMED
+  id: owner-recovery-872c850853d8f8de43d59de4
+  evidence:
+  - origin/rh_clean@904fea9f4f44bf5aff1c3b2d4923fd40a43b1a2d
+  subject:
+    kind: OWNER_RECOVERY
+    id: CONTROL13_COMPACT_METADATA_PUBLICATION_20260923
+    sha256: 27e509dfc000853b10c525326cde2266c8492a91472477943bde94202061d9c2
+  command: publication
+  inputs: {}
+source_manifest:
+  docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md: 36da57f8cae1e8d5d8b79170895ca7f4e80eb74d3ec3b695610bf01d4aa81fd8
+  docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DENSITY_2026-09-11.txt: 09b95fe3c5f228df3bac4905259f60e2329e943fa9e78d1898129c5eff7311b2
+  docs/Codex/ADVICE_2026-09-11_SIBLING3.md: e5e64f1fc599884792f4636c735a79b6e208a8a0fc546497278e52694004b96c
+  docs/Codex/REPORT_2026-09-11_SIBLING3.md: 74d56d35cffdb42eb4c528528ad1b9c0c17cd4d91c755d3ee6acf1e0134f6c94
+ownership:
+  installation_ref: 9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4
+  epoch: 3
+  state: ACTIVE
+  transfer: null
+---
+
+# Current continuation — observations, not authority
+
+## Mathematical frontier
+RH unproved; PX_RH_CLAIM: NOT_MADE. Realification finite cache floor verified; exact analytic source transfer and cofinal tracking remain OPEN. Paired-window Mellin identity is PAPER-level. Production theorem/consumer edge remains UNBOUND. See docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md.
+
+## Confirmed and candidate results
+Control13 installed at 27bd4017; recovery tests 95 pass, full237 baseline 3 failures/1 error. Repair published at 95f6c628. No mathematical admission.
+
+## Next action
+Reconcile native watch for owner epoch 3; then bind one exact Route B consumer. Mathematical HOLD remains.
+
+## Existing work
+Human owner authorized relocation recovery. Prior task 01a0c7ff-2bc3-7e73-a39c-b86fda949bd0 owned epoch 2; its predecessor was unreadable. Prior-host quiescence and native watch activation were not claimed. Four then-untracked paths, including the Proshka request, were preserved.
+Prior owner recovery instruction (historical): "Я твой владелец, и я тебе говорю: делай."
+The retired assignment outcome UNKNOWN and exact payload remain in the full v384 record in append-only GOAL_HISTORY history.
+
+Owner recovery instruction: "naxuj???? piwem zanogo i wse !!!"
+Retired compact publication (outcome UNKNOWN): {"command":"publication","evidence":[],"id":"CONTROL13_COMPACT_METADATA_PUBLICATION_20260923","inputs":{"docs/session_protocols/team-evidence-96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa.bin":"96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa"},"kind":"PUBLISH","state":"UNKNOWN","subject":{"id":"CONTROL13_COMPACT_METADATA_PUBLICATION_20260923","kind":"REPAIR","sha256":"96deb95f373ceae84e42b66d8bde07952d0666ac2359bd60a400aaf14c49e2aa"}}
+Compact publication recovery: {"control_sha256":"318f90104f5222f83daef5c5a2ba55a38afcc00796f20969a8019da9e14f351f","head":"cf07bc420f7dd1d864fb21cc5031b86c8e13dee7","instruction_sha256":"a3c805f88bc29abbffa52afc70efac7744d0418d59b273449a470e9fbac952d1","new_operation_id":"owner-recovery-872c850853d8f8de43d59de4","new_owner_host":"local","new_owner_task":"01a0ce79-b29c-79e1-8d36-f95fec006ae5","new_ownership":{"epoch":3,"installation_ref":"9afdf2bf5dd820fab941871cb0d680b37875d0a900cc5230a4687be6bcbecde4","state":"ACTIVE","transfer":null},"old_base":"95f6c628750eb6a39174e34232e2e7d51f1b23e9","old_checkpoint_sha256":"b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3","old_operation_id":"CONTROL13_COMPACT_METADATA_PUBLICATION_20260923","old_owner_host":"local","old_owner_task":"01a0c7ff-2bc3-7e73-a39c-b86fda949bd0","old_ownership":{"epoch":2,"installation_ref":"53f353a3aa4d8f602f3bab71ef60995f781b66e559f71c9225316e0d00ade590","state":"ACTIVE","transfer":null},"old_pins_sha256":"b7406b9570d3129be4500cb8a8d97c4bb9e96320bcfca9e179d8b6a9cca9f916","remote_commit":"cf07bc420f7dd1d864fb21cc5031b86c8e13dee7","remote_history_sha256":"b54c18a25b54f826f416ab5ebed3db912474bbf1f1f4084c4817cc2701134110","remote_resume_sha256":"b7b9fcfd50b76e020652979c44dc120edfb2d33fb0467f536ad07b1bdfff59c3","schema":"q3_compact_publication_recovery.v1"}
+
+## Do not repeat
+Do not replay owner recovery, old launch, or previous ingest. Rminus scale crosswalk and Euler identity are PAPER-checked. Do not substitute explicit Gaussian limit derivative estimates for selected Ferrers packet estimates or differentiate C0 convergence. ask-shelf: INCOMPLETE on semantic freshness, not absence. Original ZIP: NOT_RETRIEVED; request/phase pins unchanged.
+
+## Integration remaining
+Source repair and 40-commit/23-path history are at 95f6c628; owner recovery metadata published at 904fea9f. No Proshka response pending. Exact consumer UNBOUND; RH premises require proof audit.
+
+````
+<!-- /q3-history -->
+
