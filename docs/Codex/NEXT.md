@@ -94,7 +94,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 ## Прошка
 - Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`.
 - Активный чат: [6ab6827b…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5); подтверждённых математических отправок в нём: **1/10**.
-  Ожидается ответ на [`REQ-2026-09-25-CELLWISE-COMPLEMENT-SIGN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor); отправка подтверждена 2026-09-25 16:17 Europe/Berlin, не дублировать.
+  [`REQ-2026-09-25-CELLWISE-COMPLEMENT-SIGN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) отвечен `OPEN_FIRST_SIGN`; полный текст сохранён и независимо сверен. Отправка подтверждена 2026-09-25 16:17 Europe/Berlin, не дублировать. Следующий бумажный тест — знак энергии утечки `ℓ_j* K_j ℓ_j` относительно `3ε_j` в разложении `τ_j=−ℓ_j* K_j ℓ_j+E_j` из `PAPER_CHAIN.md`, затем Schur-блок.
 - Прежний чат [6aafb38a…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aafb38a-a7a4-83eb-9940-84a574eae168) исчерпан для **новых** запросов: точное общее число подтверждённых отправок в нём не восстановлено. Незакрытые ответы проверять по адресам соответствующих строк очереди.
 - Подтверждённый запрос `REQ-2026-09-25-INDEPENDENT-COMPLEMENT-FLOOR` отвечен и
   независимо проверен; его строка и адрес сохранены в `docs/routeB_bus/PROSHKA_QUEUE.md`
