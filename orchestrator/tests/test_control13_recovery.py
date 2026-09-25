@@ -240,12 +240,10 @@ class RecoveryTests(unittest.TestCase):
         history={'a':('intent',1,self.f.origin),'b':('intent',2,b1),'c':('intent',3,b2)}
         with patch.object(w,'_resume_history',return_value=history),self.assertRaisesRegex(w.WorkflowRuntimeError,'HISTORY_MACHINE_DRIFT'):
             r._history_origin(self.f.repo,b2,d2,self.f.obs)
-    def test_21_output_budget_boundaries_keep_math_hold(self):
-        value={'schema':w.TEAM_PLAN_SCHEMA,'status':'HOLD','holds':['NODE_REGISTRY_EXACT_EDGE_REQUIRED'],'pad':''}
-        n=len(w.render_plan_v10(value).encode());value['pad']='x'*(16384-n)
-        self.assertEqual(len(w.render_plan_v10(value).encode()),16384)
-        value['pad']+='x';out=json.loads(w.render_plan_v10(value))
-        self.assertEqual(out['status'],'FATAL');self.assertFalse(out['run_authorized']);self.assertEqual(w.TEAM_PLAN_MAX_BYTES,16384)
+    def test_21_oversized_plan_is_rendered_unchanged(self):
+        value={'schema':w.TEAM_PLAN_SCHEMA,'status':'HOLD','holds':['NODE_REGISTRY_EXACT_EDGE_REQUIRED'],'pad':'x'*20000}
+        out=json.loads(w.render_plan_v10(value))
+        self.assertEqual(out['status'],'HOLD');self.assertEqual(out['holds'],['NODE_REGISTRY_EXACT_EDGE_REQUIRED'])
     def test_22_postinstall_checkpoint_only_known_drift(self):
         self.f.execute();data=w._team_current(self.f.repo)[1];proposed=copy.deepcopy(data)
         proposed['revision']+=1;proposed['previous_sha256']=w._resume_digest(self.f.raw)
@@ -459,13 +457,12 @@ class AdditionalBoundaryTests(unittest.TestCase):
         with patch.object(w,'_team_publication_repair',return_value='issue-fixture'),self.assertRaisesRegex(w.WorkflowRuntimeError,'EXISTING_HISTORY_OUTSIDE_SCOPE'):
             w._team_publication_snapshot(self.f.repo,self.f.raw,data,observed)
         self.assertEqual(self.f.current_local(),before)
-    def test_40_plan_printed_fatal_returns_two(self):
+    def test_40_oversized_plan_is_printed_not_fatal(self):
         import io, sys
         oversized={'schema':w.TEAM_PLAN_SCHEMA,'status':'READY','run_authorized':True,'padding':'x'*20000}
         with patch.object(w,'live_plan_v10',return_value=oversized),patch.object(sys,'argv',['workflow_runtime.py','--root',str(self.f.repo),'plan']),patch('sys.stdout',new_callable=io.StringIO) as out:
             code=w.main()
-        self.assertEqual(code,2);self.assertEqual(json.loads(out.getvalue())['status'],'FATAL')
-        self.assertLessEqual(len(out.getvalue().encode()),16384)
+        self.assertEqual(json.loads(out.getvalue())['status'],'READY');self.assertNotEqual(code,2)
     def test_41_actual_native_chain_v2_and_missing_native_refused(self):
         from dataclasses import replace
         self.f.execute()

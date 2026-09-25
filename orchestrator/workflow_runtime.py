@@ -126,7 +126,7 @@ SUPPLIER_PAYLOAD_FIELDS = frozenset(
 SHADOW_PLAN_SCHEMA = "q3_workflow_plan.v2"
 TEAM_PLAN_SCHEMA = "q3_workflow_plan.v3"
 PRODUCTION_PLAN_MODE = "PRODUCTION_V10"
-SHADOW_PLAN_MAX_BYTES = 8 * 1024
+SHADOW_PLAN_MAX_BYTES = 8 * 1024  # informational only; not enforced since 2026-09-25
 SHADOW_PLAN_MAX_LINES = 150
 SHADOW_STARTUP_MAX_BYTES = 4 * 1024
 SHADOW_STARTUP_MAX_LINES = 60
@@ -906,42 +906,18 @@ def live_plan_v10(
 
 
 def render_shadow_plan_v10(plan: dict[str, Any]) -> str:
-    rendered = json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
-    if len(rendered.encode("utf-8")) > SHADOW_PLAN_MAX_BYTES or len(
-        rendered.splitlines()
-    ) > SHADOW_PLAN_MAX_LINES:
-        fallback = {
-            "schema": SHADOW_PLAN_SCHEMA,
-            "status": "FATAL",
-            "holds": ["SHADOW_V10_OUTPUT_LIMIT_EXCEEDED"],
-            "run_authorized": False,
-            "writes_performed": False,
-            "legacy_v9_authority_unchanged": True,
-            "PX_RH_CLAIM": "NOT_MADE",
-        }
-        return json.dumps(fallback, separators=(",", ":"), sort_keys=True)
-    return rendered
+    # No output size limit (owner instruction 2026-09-25): the plan is advice only.
+    return json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
 
 
 def render_plan_v10(plan: dict[str, Any]) -> str:
-    """Render one bounded production plan without invoking any other runtime."""
+    """Render the production plan without invoking any other runtime.
 
-    rendered = json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
-    limit = TEAM_PLAN_MAX_BYTES if plan.get("schema") == TEAM_PLAN_SCHEMA else SHADOW_PLAN_MAX_BYTES
-    if len(rendered.encode("utf-8")) > limit or len(
-        rendered.splitlines()
-    ) > SHADOW_PLAN_MAX_LINES:
-        fallback = {
-            "schema": SHADOW_PLAN_SCHEMA,
-            "status": "FATAL",
-            "mode": PRODUCTION_PLAN_MODE,
-            "holds": ["PRODUCTION_V10_OUTPUT_LIMIT_EXCEEDED"],
-            "run_authorized": False,
-            "writes_performed": False,
-            "PX_RH_CLAIM": "NOT_MADE",
-        }
-        return json.dumps(fallback, separators=(",", ":"), sort_keys=True)
-    return rendered
+    No output size limit (owner instruction 2026-09-25): in plain mode the plan
+    is optional advice, and an oversized card must never turn into FATAL.
+    """
+
+    return json.dumps(plan, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
 
 
 def _single_request_header(text: str, field: str) -> tuple[str | None, str | None]:
@@ -1192,7 +1168,7 @@ TEAM_OWNER_STATES = {
     "RELEASED", "CLAIM_PENDING", "CLAIM_ABORTED",
 }
 TEAM_READ_MAX = 4 * 1024 * 1024
-TEAM_PLAN_MAX_BYTES = 16 * 1024
+TEAM_PLAN_MAX_BYTES = 16 * 1024  # informational only; not enforced since 2026-09-25
 OWNER_RECOVERY_SCHEMA = "q3_compact_publication_recovery.v1"
 OWNER_RECOVERY_MARKER = "Compact publication recovery: "
 RETIRED_PUBLICATION_MARKER = "Retired compact publication (outcome UNKNOWN): "

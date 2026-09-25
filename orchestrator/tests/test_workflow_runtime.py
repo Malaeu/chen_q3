@@ -4509,9 +4509,6 @@ class ControlV10BenchmarkPlants(unittest.TestCase):
             rendered = workflow_runtime.render_plan_v10(plan)
 
         payload = json.loads(rendered)
-        self.assertLessEqual(
-            len(rendered.encode("utf-8")), workflow_runtime.SHADOW_PLAN_MAX_BYTES
-        )
         self.assertEqual(payload["status"], "HOLD")
         self.assertEqual(
             payload["selected_goal"], benchmark.EXPECTED_GOAL
