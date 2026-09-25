@@ -93,10 +93,11 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 
 ## Прошка
 - Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`.
-- Активный чат: [6ab6827b…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5); подтверждённых математических отправок в нём: **3/10**.
+- Активный чат: [6ab6827b…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5); подтверждённых математических отправок в нём: **4/10**.
   [`REQ-2026-09-25-CELLWISE-COMPLEMENT-SIGN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) отвечен `OPEN_FIRST_SIGN`; полный текст сохранён и независимо сверен. Отправка подтверждена 2026-09-25 16:17 Europe/Berlin, не дублировать.
   [`REQ-2026-09-25-NULLPLANE-LEAKAGE-SIGN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) отвечен `OPEN_SIGNED_LEAKAGE`; полный Markdown сохранён, ключевое сокращение и ledger независимо проверены. Не дублировать. Поправка `1/m` остаётся в нулевой плоскости, а точная совместная энергия ошибок даёт `τ_j=−𝔏_m/ρ_m²`; знак `𝔏_m` и следующий Schur-блок открыты.
   [`REQ-2026-09-25-COUPLED-DEFECT-SIGN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) отвечен `OPEN_COUPLED_DEFECT_SIGN`. Полное вложение сохранено и побайтно сверено с SHA-256 из ответа; независимая PAPER-сверка подтвердила равномерный Ferrers-tail budget и алгебру `𝔏_m=T(m)+𝓡(m)`, `|𝓡|≤B`, но не знак. Следующий тест — одностороннее сравнение конечной source-формы (17) с бюджетом (18), при сохранении смешанного члена (MIX) и нижнего forcing (21). Не дублировать запрос.
+  [`REQ-2026-09-25-ADJOINT-GREEN-MIX`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) подтверждённо отправлен 2026-09-25 18:08 Europe/Berlin как № 4; ответ **PENDING**, не дублировать. Запрос проверяет дискретный adjoint-Green перенос смешанного члена, граничные условия/резонанс и односторонний margin полной формы (17), не повторяя tail budget.
 - Прежний чат [6aafb38a…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aafb38a-a7a4-83eb-9940-84a574eae168) исчерпан для **новых** запросов: точное общее число подтверждённых отправок в нём не восстановлено. Незакрытые ответы проверять по адресам соответствующих строк очереди.
 - Подтверждённый запрос `REQ-2026-09-25-INDEPENDENT-COMPLEMENT-FLOOR` отвечен и
   независимо проверен; его строка и адрес сохранены в `docs/routeB_bus/PROSHKA_QUEUE.md`
