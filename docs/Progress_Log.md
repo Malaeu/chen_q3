@@ -7719,3 +7719,18 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: источниковая конструкция mu_j через явно заданный улучшенный пробный вектор и оценка обратного действия на полный residual.
 Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/INDEPENDENT_ENERGY_SHIFT.md и m8_*certificate*.json.
 Чей вердикт: root PAPER/shifted certificate; Luna negative witness; независимый native reviewer проверил лемму/код и повторил 100 digits, root повторил shifted 140 digits. Lean не запускался; RH claim отсутствует.
+
+## 2026-09-26 — Reference-to-selected ground transfer without inverse-gap loss (Mac)
+
+Развилка: переносить маленький complement-floor на точную строку или переносить уже оценённую ground-проекцию при неизменном K.
+Выбрали: второй вариант, ||(I-P0)q|| <= (Z*alpha+E)/(Z-E), с точным центральным множителем.
+Почему: ортогональная проекция — сжатие; source-ошибка E входит аддитивно и не делится на спектральный зазор. Принятые энергетические и Ferrers-tail оценки экспоненциально малы; center-floor условно выведен из hmode/hchi.
+Что отвергли и почему: требование E меньше спектрального зазора для переноса floor здесь избыточно; численную ошибку одной ячейки нельзя считать семейной скоростью.
+Техника: PAPER T1–T7, точный kappa/phase crosswalk, finite Bessel, независимое read-only review; диагностический зонд m13 при 140/180 знаках.
+Дешёвый зонд: ошибка reference ground-проекции m4/m8/m13 = 0.03089/0.05534/0.06052; убывание не наблюдается. Это не counterexample выбранного хвоста; усиливать конечные сертификаты как доказательство скорости нельзя.
+Инсайт: разделять погрешность приближения source и ошибку самого центрального спектрального приближения. Первая оплачена условными экспоненциальными поставщиками, вторая остаётся главным долгом.
+Блокеры: семейные независимые mu_j, complement positivity для reference и m^(H/2)*sqrt(log m)*alpha_j -> 0. G1/G3 не закрыты.
+Следующий ход: аналитическая оценка центральной ground-проекции на реальном source-tail; если векторная норма слишком груба, проверить полный нормированный transform-дефект с сохранением сокращений.
+Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md и reference_tracking_diagnostic.json.
+Чей вердикт и аргумент: root выбрал перенос; независимый reviewer /root/sign_algebra_review: "The source error transfers additively through the fixed ground projection, without an inverse-gap factor." Принят только условный перенос, не его открытые спектральные посылки. Lean не запускался.
+Арифметический перенос: Arb Sturm ограничил весь Robin-прямоугольник m8; E_energy<1.900e-31. Условный E_tail<4.186e-21; коэффициент T2<0.09336 (не угол, ещё умножается на |Xi(0)|m^(H/2)). Source-tail гипотеза при m8 не заявляется.

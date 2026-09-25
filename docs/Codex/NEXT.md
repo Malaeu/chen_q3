@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-25 · by: Codex · baseline HEAD: 6e2a7cd7
+Updated: 2026-09-26 · by: Codex Mac · baseline HEAD: 362e5d9e
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -67,6 +67,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
    `orchestrator/roof_port_ledger.py` переведён на новую крышу: 3 порта hzeros/hentire/hconv, HEAD_LOCKED.)
 
 ## Последний доказанный результат
+- 2026-09-26 Mac: [source transfer](../routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md) проверен на PAPER: ошибка точной строки <=(Z*alpha+E)/(Z-E), без деления source-ошибки на gap. При принятых hmode/hchi и хвостовых оценках вклад E исчезает; семейная скорость центральной alpha открыта. Диагностика m4/m8/m13: 0.03089/0.05534/0.06052, не доказательство хвоста.
 - 2026-09-25 Mac: [независимый энергетический порог](../routeB_bus/fokas_k_sign_2026-09-25/INDEPENDENT_ENERGY_SHIFT.md): для рациональной reference-строки m8 Arb строго подтвердил отрицательный Rayleigh-complement, но при mu=10^-18 — ground ниже mu, всё q-perp выше mu с запасом 3*10^-17 и проекционную ошибку <0.05536. Также сертифицирован кластер четырёх нижних уровней. PAPER-лемма и код независимо проверены; это НЕ выбранный кофинальный source-пакет.
 - 2026-09-25 Mac: [полный K/sign-пакет](../routeB_bus/fokas_k_sign_2026-09-25/REPORT.md):
   [Аудит исходного Fokas-goal](../routeB_bus/fokas_k_sign_2026-09-25/GOAL_AUDIT.md): проверка завершена точным препятствием fixed-beta consumer; Goal058 и cellwise tracking открыты.
@@ -93,9 +94,9 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 1. `hmode` закрыт на бумаге. Постоянный `hfloorEv` для буквальной выбранной CCM-семьи
    опровергнут кофинальным свидетелем; независимая сверка в
    `docs/routeB_bus/proshka/PROSHKA_GOAL058_FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25.md`.
-2. Основное время: доказать или точно локализовать пробел для cellwise `δ_j>0` на том же
-   trial-complement и оценить полный `‖r_j‖/δ_j`; отдельно проверить, какой cellwise
-   consumer переносит это в tracking без подстановки в constant-β wrapper. Затем G3.
+2. Основное время: независимые пороги mu_j и reference ground-tracking rate; source-перенос
+   оплачивать по SOURCE_TRANSFER, не делением на gap. Открыта скорость
+   m_j^(H/2)*sqrt(log m_j)*alpha_j → 0 (достаточно для G3); finite m8 не даёт её.
 3. Параллельно: G4 crosswalk (h_λ ↔ hTrial_m, скаляр/фаза, C = 2πλ²) и projection tail (G3c).
 4. После оплаченных входов — сборка → hconv. Lean Fokas joint green отложено.
 

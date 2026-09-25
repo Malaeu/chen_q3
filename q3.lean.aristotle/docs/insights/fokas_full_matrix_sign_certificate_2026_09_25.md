@@ -47,3 +47,13 @@ lemma only needs lambda0<=mu and positivity above mu, not mu>=a. Hence the
 old stronger sufficient condition is not necessary for finite tracking.
 Actual selected energies, cofinal independent cuts and weighted decay remain
 OPEN. See packet INDEPENDENT_ENERGY_SHIFT.md and interval certificates.
+
+2026-09-26: source perturbations can be transferred through the SAME ground
+projection instead of perturbing its complement floor. For reference norm Z,
+reference projection error alpha, and source-row uncertainty E<Z, the selected
+projection error is <=(Z*alpha+E)/(Z-E). Existing energy/tail estimates pay E
+exponentially, without an inverse-gap factor, under their matched hypotheses.
+The center floor remains essential. The still-unproved sufficient rate is
+m^(H/2)*sqrt(log m)*alpha -> 0 for every fixed H. Numerical m4/m8/m13 angles
+0.03089/0.05534/0.06052 do not show decay, but do not refute the selected tail.
+See SOURCE_TRANSFER.md; independent PAPER review found no material issues.
