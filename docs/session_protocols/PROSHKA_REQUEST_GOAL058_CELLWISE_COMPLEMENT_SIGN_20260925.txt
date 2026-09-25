@@ -1,0 +1,41 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-CELLWISE-COMPLEMENT-SIGN
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_LITERAL_CCM_CELLWISE_COMPLEMENT_SIGN
+SOURCE_COMMIT: 01f50cf97c15a2b0483cd3a6bb9b8dbb7299b6db
+PREDECESSOR: REQ-2026-09-25-INDEPENDENT-COMPLEMENT-FLOOR
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, следующий узкий бумажный вопрос после проверенного KILL постоянного
+complement floor. Предыдущий запрос не повторяю: его полный ответ сохранён
+в docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_2026-09-25.md,
+независимый аудит — в PROSHKA_GOAL058_FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25.md.
+Контрпример доказал только невозможность одной beta>0 на всём хвосте.
+
+Фиксируй ТОТ ЖЕ P, i_j, m_j=N_j, q_j и полную Hermitian CCM-матрицу K_j,
+как в предыдущем запросе. a_j=Re(q_j* K_j q_j), r_j=(K_j-a_j I)q_j,
+Q_j=I-q_j q_j*. Все y комплексные. Вопрос только о первом новом знаке:
+
+  d_j := min_{||y||_2=1, q_j* y=0} Re[y*(K_j-a_j I)y].
+  Верно ли d_j>0 для всех достаточно больших j на выбранной cofinal семье?
+
+Не ищи fixed beta: из двух нулевых направлений и проверенного (N)/(S)
+уже следует d_j<=7 eps_j, eps_j=O(sqrt(log m_j/m_j)); если d_j>0,
+его масштаб обязан схлопываться. Не выдавай d_j<=o(1) за знак d_j.
+
+Верни ровно один источник-обоснованный исход:
+1. PROVED_PAPER: eventual d_j>0 с явной нижней функцией от m_j и полной
+   проверкой W02-WR-Prime, включая диагональ, все prime powers и края;
+2. KILL_CELLWISE: допустимые индексы j->infinity и единичные y_j perp q_j
+   с quotient<=0, с оценкой ПОЛНОЙ формы;
+3. OPEN_FIRST_SIGN: точное неравенство/Schur-блок, где знак не доказан,
+   область и один следующий дискриминирующий бумажный тест.
+
+Не предполагай RH, позитивность K_j, a_j->0, odd-sector floor, prolate 6pi
+gap или коммутативность Fourier-проекции с формой. Не меняй q_j, нормировку,
+индекс, окно или расписание. hmode используем только как уже проверенный
+PAPER-вход, а не как доказательство этого знака.
+
+Cellwise residual ratio и сборка consumer — последующие вопросы. Текущий
+pointwise Lean consumer принимает beta по одной ячейке; существующий eventual
+wrapper фиксирует beta. Никакого Lean/runtime, репозиторных записей или RH
+claim не требуется.
