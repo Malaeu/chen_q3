@@ -72,7 +72,7 @@ def assembly_snapshot(db_path: Path, *, chain: str | None = None) -> dict[str, A
     """Return read-only legacy assembly bookkeeping and open addresses.
 
     These row counts are never a proof percentage.  Exact roof closure lives in
-    ``roof_port_ledger`` and requires seven terms under one dependent context.
+    ``roof_port_ledger`` and requires three terms under one shared family ``F``.
     """
     empty = {
         "status": "UNAVAILABLE",
@@ -295,15 +295,15 @@ def compile_contract(
         },
         "cords": assembly,
         "roof_port_ledger": roof_ledger or {
-            "schema": "q3_roof_port_supplier_ledger.v1",
+            "schema": "q3_roof_port_supplier_ledger.v2",
             "integrity_status": "UNAVAILABLE",
-            "semantic_slot_count": 6,
-            "direct_proof_input_count": 7,
+            "semantic_slot_count": 3,
+            "direct_proof_input_count": 3,
             "port_summary": {
                 "jointly_bound": None,
                 "candidate_supplier_terms": None,
                 "without_exact_supplier": None,
-                "total": 7,
+                "total": 3,
                 "status": "UNAVAILABLE",
             },
             "proof_percentage_interpretation": "REJECTED",
@@ -350,14 +350,14 @@ def render_battle_brief(contract: dict[str, Any]) -> str:
         (
             "  roof ports: "
             f"{port_summary.get('jointly_bound') if port_summary.get('jointly_bound') is not None else '—'}/"
-            f"{port_summary.get('total', 7)} jointly bound · "
+            f"{port_summary.get('total', 3)} jointly bound · "
             f"{port_summary.get('candidate_supplier_terms') if port_summary.get('candidate_supplier_terms') is not None else '—'} candidate suppliers · "
             f"{port_summary.get('without_exact_supplier') if port_summary.get('without_exact_supplier') is not None else '—'} without exact supplier"
         ),
         (
             "  roof contract: "
             f"{roof.get('semantic_slot_count', 6)} semantic slots · "
-            f"{roof.get('direct_proof_input_count', 7)} direct proof inputs · "
+            f"{roof.get('direct_proof_input_count', 3)} direct proof inputs · "
             f"{roof.get('integrity_status', 'UNAVAILABLE')}"
         ),
         (

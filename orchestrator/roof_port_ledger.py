@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Current-HEAD reverse ledger for the conditional Route-B roof.
+"""Current-HEAD reverse ledger for the canonical Route-B roof.
+
+Canonical roof (owner decision 2026-09-25): the Goal058 consumer
+``Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi``.  It turns one entire
+real-zero family ``F`` converging locally uniformly to ``centeredXi`` on the
+centered critical strip into ``Q3.RH``.  The older 7-port canonical-slots
+roof is historical.
 
 The legacy ``assembly`` table is useful bookkeeping, but it is not a proof
-percentage and it does not encode Lean's dependent context.  This module reads
-the roof declaration, its audited axiom receipt, the active phase key, and the
-legacy assembly rows without mutating any of them.  It then exposes the seven
-formal roof inputs under the one shared ``CanonicalApproximation C`` binder.
+percentage.  This module reads the roof declaration, its axiom receipt, the
+active phase key, and the legacy assembly rows without mutating any of them.
+It exposes the three formal roof inputs under the one shared family ``F``.
 """
 
 from __future__ import annotations
@@ -21,166 +26,83 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA = "q3_roof_port_supplier_ledger.v1"
-ROOF_THEOREM = "Q3.RouteB.CanonicalRHRoute.rh_of_canonical_strip_slots"
-ROOF_SOURCE = Path("q3.lean.aristotle/Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean")
-AXIOM_RECEIPT = Path(
-    "docs/semantic_quarantine/PUBLIC_EXPORT_INDEX_AND_AXIOM_RECEIPT_v1.md"
-)
+SCHEMA = "q3_roof_port_supplier_ledger.v2"
+ROOF_THEOREM = "Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi"
+ROOF_SHORT_NAME = "rh_of_real_zero_family_tendsto_centeredXi"
+ROOF_SOURCE = Path("q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean")
+AXIOM_RECEIPT = Path("docs/semantic_quarantine/GOAL058_ROOF_AXIOM_RECEIPT.md")
 CHANNEL_RUNTIME = Path("orchestrator/state/CHANNEL_RUNTIME.json")
 EXPECTED_AXIOMS = ["propext", "Classical.choice", "Quot.sound"]
-SEMANTIC_SLOTS = ["H1", "H2a", "H2b/Theorem510", "Anchor", "S1", "S2"]
-BUNDLED_CONTEXT = [
-    "Pstar",
-    "parent",
-    "parentCofinal",
-    "parentCofinalProof",
-    "extract",
-    "extractStrictMono",
-]
+SEMANTIC_SLOTS = ["real zeros", "entire", "locally uniform convergence to centeredXi"]
+BUNDLED_CONTEXT = ["F : ℕ → ℂ → ℂ"]
+TAIL_REINDEX = "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTailReindex.lean"
+TRACKED_TRANSFORM = "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrackedGroundTransform.lean"
+TRACKED_FAMILY = "selectedFerrersTrackedGroundTransformAt P (φ n) beta hfloorAt"
+SHARED_UNIFIER = "F n = tracked ground transform at φ n"
+SOURCE_FAMILY = "SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM"
+NORMALIZATION = "GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z"
 
 
 PORT_SPECS: tuple[dict[str, Any], ...] = (
     {
-        "port": "hH1",
-        "semantic_role": "H1",
-        "exact_type": "SlotH1 C",
-        "downstream_consumer": f"{ROOF_THEOREM}.hH1",
-        "supplier_term": "Q3.RouteB.D0Pstar.canonicalApproximation_slotH1 D",
+        "port": "hzeros",
+        "semantic_role": "real zeros",
+        "exact_type": "∀ k, ZerosRealOn Set.univ (F k)",
+        "downstream_consumer": f"{ROOF_THEOREM}.hzeros",
+        "supplier_term": "Q3.RouteB.D0Pstar.selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors",
         "candidates": [
             (
-                "q3.lean.aristotle/Q3/Proofs/RouteB/D0CanonicalApproximation.lean",
-                "canonicalApproximation_slotH1",
-                "SlotH1 (canonicalApproximation D)",
+                TAIL_REINDEX,
+                "selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors",
+                "ZerosRealOn Set.univ",
             )
         ],
         "adapters": [],
-        "shared_unifier": "C = canonicalApproximation D",
-        "source_family": "D0Pstar.centeredPstarFamily D.kTrial",
-        "normalization": "centered at zero through centeredPstarFamily",
-        "scope": "entire on the whole complex plane for every family index",
-        "status": "CANDIDATE_EXACT_TYPE_SHARED_CONTEXT_UNBOUND",
-        "missing_obligation": "Bind the same concrete D/refinement used by every other roof port.",
-        "assembly_aliases": ["SlotH1"],
+        "shared_unifier": SHARED_UNIFIER,
+        "source_family": SOURCE_FAMILY,
+        "normalization": NORMALIZATION,
+        "scope": "tail φ n, given eventual floors",
+        "status": "CONDITIONAL_CANDIDATE_FLOORS_OPEN",
+        "missing_obligation": "G1 floors: hfloorEv, hoddEv, hratioEv.",
+        "assembly_aliases": ["hzeros"],
     },
     {
-        "port": "hH2a",
-        "semantic_role": "H2a",
-        "exact_type": "SlotH2a C H2aAt",
-        "downstream_consumer": f"{ROOF_THEOREM}.hH2a",
-        "supplier_term": None,
-        "candidates": [],
-        "adapters": [],
-        "shared_unifier": "same C, same H2aAt, same parent path",
-        "source_family": "active phase source family; concrete C is unbound",
-        "normalization": "exact H2aAt predicate is unbound",
-        "scope": "every index on C.parent",
-        "status": "OPEN_NO_EXACT_SUPPLIER",
-        "missing_obligation": "Construct a source-locked inhabitant of SlotH2a C H2aAt on the roof's C.parent path.",
-        "assembly_aliases": ["SlotH2a"],
-    },
-    {
-        "port": "hanchor",
-        "semantic_role": "Anchor",
-        "exact_type": "SlotAnchor C anchor",
-        "downstream_consumer": f"{ROOF_THEOREM}.hanchor",
-        "supplier_term": "Q3.RouteB.D0Pstar.canonicalApproximation_slotAnchor D",
+        "port": "hentire",
+        "semantic_role": "entire",
+        "exact_type": "∀ k, Differentiable ℂ (F k)",
+        "downstream_consumer": f"{ROOF_THEOREM}.hentire",
+        "supplier_term": "Q3.RouteB.D0Pstar.differentiable_selectedFerrersTrackedGroundTransformAt",
         "candidates": [
             (
-                "q3.lean.aristotle/Q3/Proofs/RouteB/D0CanonicalApproximation.lean",
-                "canonicalApproximation_slotAnchor",
-                "SlotAnchor (canonicalApproximation D) 0",
+                TRACKED_TRANSFORM,
+                "differentiable_selectedFerrersTrackedGroundTransformAt",
+                "Differentiable ℂ",
             )
         ],
         "adapters": [],
-        "shared_unifier": "C = canonicalApproximation D; anchor = 0",
-        "source_family": "D0Pstar.centeredPstarFamily D.kTrial",
-        "normalization": "Pstar i 0 = centeredXi 0",
-        "scope": "all indices of the fixed family at anchor zero",
-        "status": "CANDIDATE_EXACT_TYPE_SHARED_CONTEXT_UNBOUND",
-        "missing_obligation": "Bind anchor = 0 and the same concrete D/refinement used by every other roof port.",
-        "assembly_aliases": ["SlotAnchor"],
+        "shared_unifier": SHARED_UNIFIER,
+        "source_family": SOURCE_FAMILY,
+        "normalization": NORMALIZATION,
+        "scope": "every index and every floor witness",
+        "status": "SUPPLIER_PROVED_FAMILY_UNBOUND",
+        "missing_obligation": "Bind the same F.",
+        "assembly_aliases": ["hentire"],
     },
     {
-        "port": "hS1",
-        "semantic_role": "S1",
-        "exact_type": "SlotS1 C S1At",
-        "downstream_consumer": f"{ROOF_THEOREM}.hS1",
+        "port": "hconv",
+        "semantic_role": "locally uniform convergence to centeredXi",
+        "exact_type": "TendstoLocallyUniformlyOn F centeredXi Filter.atTop centeredCriticalStrip",
+        "downstream_consumer": f"{ROOF_THEOREM}.hconv",
         "supplier_term": None,
         "candidates": [],
         "adapters": [],
-        "shared_unifier": "same C, same S1At, same parent path as H2aAt",
-        "source_family": "active phase source family; concrete C is unbound",
-        "normalization": "exact S1At predicate is unbound",
-        "scope": "every index on C.parent",
-        "status": "OPEN_NO_EXACT_SUPPLIER",
-        "missing_obligation": "Construct a source-locked inhabitant of SlotS1 C S1At on the roof's C.parent path.",
-        "assembly_aliases": ["SlotS1"],
-    },
-    {
-        "port": "hMontel",
-        "semantic_role": "MONTEL_ASSEMBLY_BEAM_NOT_SEVENTH_SLOT",
-        "exact_type": "MontelAnchorGate C H2aAt S1At anchor",
-        "downstream_consumer": f"{ROOF_THEOREM}.hMontel",
-        "supplier_term": "exists_refined_montelAnchorGate_of_strip_bounds or exists_refined_montelAnchorGate_of_raw_bounds",
-        "candidates": [
-            (
-                "q3.lean.aristotle/Q3/Proofs/RouteB/D0StripMontelRefinement.lean",
-                "exists_refined_montelAnchorGate_of_strip_bounds",
-                "MontelAnchorGate",
-            ),
-            (
-                "q3.lean.aristotle/Q3/Proofs/RouteB/D0PostAnchorMontel.lean",
-                "exists_refined_montelAnchorGate_of_raw_bounds",
-                "MontelAnchorGate",
-            ),
-        ],
-        "adapters": ["choose the existential extraction e and proof he"],
-        "shared_unifier": "C = canonicalApproximation (montelRefinement D e he); anchor = 0",
-        "source_family": "selectedFamily of the same refined canonical approximation",
-        "normalization": "centeredXi 0 anchor normalization",
-        "scope": "centeredCriticalStrip on the selected nested subsequence",
-        "status": "CONDITIONAL_CANDIDATE_SHARED_CONTEXT_UNBOUND",
-        "missing_obligation": "Supply the strip/raw bounds and reuse the chosen refined C in all six semantic slots.",
-        "assembly_aliases": ["MontelAnchorGate"],
-    },
-    {
-        "port": "h510",
-        "semantic_role": "H2b/Theorem510",
-        "exact_type": "Theorem510RealZeroBridge C H2aAt",
-        "downstream_consumer": f"{ROOF_THEOREM}.h510",
-        "supplier_term": None,
-        "candidates": [],
-        "adapters": [],
-        "shared_unifier": "same C and same H2aAt as hH2a",
-        "source_family": "must be C.Pstar.family, not a neighbouring polynomial family",
-        "normalization": "zeros invariant only after an explicit nonzero-factor crosswalk",
-        "scope": "all indices; whole-plane real-zero statement",
-        "status": "OPEN_NO_EXACT_SUPPLIER",
-        "missing_obligation": "Close the exact canonical-Pstar/Theorem510 crosswalk; existing rows are supporting lemmas, not an inhabitant of this port.",
-        "assembly_aliases": ["Theorem510RealZeroBridge", "SlotH2b"],
-    },
-    {
-        "port": "hS2",
-        "semantic_role": "S2",
-        "exact_type": "SlotS2 C",
-        "downstream_consumer": f"{ROOF_THEOREM}.hS2",
-        "supplier_term": "Q3.RouteB.D0Pstar.selectedFerrersCofinalSlotS2_of_modeChiThetaRates ...",
-        "candidates": [
-            (
-                "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersN2CompactDecayAssembly.lean",
-                "selectedFerrersCofinalSlotS2_of_modeChiThetaRates",
-                "CanonicalRHRoute.SlotS2",
-            )
-        ],
-        "adapters": [],
-        "shared_unifier": "C = selectedFerrersCofinalShell(...).canonicalApproximation",
-        "source_family": "selected Ferrers cofinal shell",
-        "normalization": "c = 1 and gamma = 1 after mode/chi/theta rates",
-        "scope": "every ClusterData for that exact selected shell C",
-        "status": "CONDITIONAL_CANDIDATE_SHARED_CONTEXT_UNBOUND",
-        "missing_obligation": "Prove the rate hypotheses and unify this exact shell C with the C consumed by H2a, S1, Montel, and Theorem510.",
-        "assembly_aliases": ["SlotS2"],
+        "shared_unifier": SHARED_UNIFIER,
+        "source_family": SOURCE_FAMILY,
+        "normalization": NORMALIZATION,
+        "scope": "compact subsets of centeredCriticalStrip",
+        "status": "NO_SUPPLIER",
+        "missing_obligation": "G3 compact decay; G3c/G4 trial to Xi (hmode, hχ/hθ); assembly to hconv.",
+        "assembly_aliases": ["hconv"],
     },
 )
 
@@ -219,10 +141,8 @@ def _roof_source_contract(repo: Path) -> dict[str, Any]:
     source = path.read_text(encoding="utf-8") if path.is_file() else ""
     normalized = _normalized(source)
     required_fragments = [
-        "structure CanonicalApproximation (Index : Type*) where Pstar : ApproximationFamily Index parent : ℕ → Index parentCofinal : Prop parentCofinalProof : parentCofinal extract : ℕ → ℕ extractStrictMono : StrictMono extract",
-        "def selectedFamily {Index : Type*} (C : CanonicalApproximation Index) : ℕ → ℂ → ℂ := fun k => C.Pstar.family (C.parent (C.extract k))",
-        "theorem rh_of_canonical_strip_slots {Index : Type*} (C : CanonicalApproximation Index) (H2aAt S1At : Index → Prop) (anchor : ℂ) (hH1 : SlotH1 C) (hH2a : SlotH2a C H2aAt) (hanchor : SlotAnchor C anchor) (hS1 : SlotS1 C S1At) (hMontel : MontelAnchorGate C H2aAt S1At anchor) (h510 : Theorem510RealZeroBridge C H2aAt) (hS2 : SlotS2 C) : Q3.RH",
-        "#print axioms rh_of_canonical_strip_slots",
+        "theorem rh_of_real_zero_family_tendsto_centeredXi (F : ℕ → ℂ → ℂ) (hzeros : ∀ k, ZerosRealOn Set.univ (F k)) (hentire : ∀ k, Differentiable ℂ (F k)) (hconv : TendstoLocallyUniformlyOn F centeredXi Filter.atTop centeredCriticalStrip) : Q3.RH",
+        "#print axioms rh_of_real_zero_family_tendsto_centeredXi",
     ]
     missing = [
         fragment for fragment in required_fragments if fragment not in normalized
@@ -353,13 +273,13 @@ def _assembly_projection(db_path: Path) -> dict[str, Any]:
         supplied_by = str(record.get("supplied_by") or "")
         if (
             record["status"] in {"READY", "VALIDATION"}
-            and "rh_of_canonical_strip_slots" in supplied_by
+            and ROOF_SHORT_NAME in supplied_by
         ):
             quarantined.append(
                 {
                     "address": f"{record['chain']}:{record['step']}",
                     "legacy_status": record["status"],
-                    "reason": "CONDITIONAL_ROOF_WRAPPER_HAS_SEVEN_UNBOUND_DIRECT_PREMISES",
+                    "reason": "CONDITIONAL_ROOF_WRAPPER_HAS_UNBOUND_DIRECT_PREMISES",
                     "action": "EXCLUDED_FROM_ROOF_PORT_CLOSURE; LEGACY_ROW_PRESERVED",
                 }
             )
@@ -454,12 +374,12 @@ def build(repo: Path, db_path: Path) -> dict[str, Any]:
         "semantic_slot_count": len(SEMANTIC_SLOTS),
         "semantic_slots": list(SEMANTIC_SLOTS),
         "direct_proof_input_count": len(PORT_SPECS),
-        "assembly_beam": "hMontel / MontelAnchorGate",
+        "assembly_beam": "hconv / TendstoLocallyUniformlyOn F centeredXi",
         "shared_dependent_context": {
-            "binder": "CanonicalApproximation C",
+            "binder": "F : ℕ → ℂ → ℂ",
             "fields": list(BUNDLED_CONTEXT),
-            "selected_family": "C.Pstar.family (C.parent (C.extract k))",
-            "joint_binding_status": "UNBOUND_CONCRETE_C",
+            "selected_family": TRACKED_FAMILY,
+            "joint_binding_status": "UNBOUND_CONCRETE_F",
         },
         "roof_source": roof_binding,
         "axiom_receipt": receipt,
@@ -470,14 +390,14 @@ def build(repo: Path, db_path: Path) -> dict[str, Any]:
             "candidate_supplier_terms": candidate_count,
             "without_exact_supplier": no_supplier_count,
             "total": len(PORT_SPECS),
-            "status": "OPEN_SHARED_CONTEXT_UNBOUND",
+            "status": "OPEN_SHARED_FAMILY_UNBOUND",
         },
         "assembly_bookkeeping": {
             key: value for key, value in assembly.items() if key != "port_edges"
         },
         "proof_percentage_interpretation": "REJECTED",
         "closed_audit_gap": "EXACT_ROOF_PORT_TO_SUPPLIER_LEDGER_AT_CURRENT_HEAD",
-        "current_minimal_gap": "BIND_ONE_CONCRETE_CANONICAL_APPROXIMATION_ACROSS_ALL_SEVEN_ROOF_INPUTS",
+        "current_minimal_gap": "BIND_ONE_CONCRETE_FAMILY_F_ACROSS_ALL_THREE_ROOF_INPUTS",
         "PX_RH_CLAIM": "NOT_MADE",
     }
 

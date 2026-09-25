@@ -151,24 +151,24 @@ class SessionBriefingPlants(unittest.TestCase):
             rendered,
         )
         self.assertIn(
-            f"  roof ports: 0/7 jointly bound · "
+            f"  roof ports: 0/3 jointly bound · "
             f"{roof['port_summary']['candidate_supplier_terms']} candidate suppliers · "
             f"{roof['port_summary']['without_exact_supplier']} without exact supplier\n",
             rendered,
         )
-        self.assertEqual(roof["semantic_slot_count"], 6)
-        self.assertEqual(roof["direct_proof_input_count"], 7)
+        self.assertEqual(roof["semantic_slot_count"], 3)
+        self.assertEqual(roof["direct_proof_input_count"], 3)
         self.assertEqual(roof["proof_percentage_interpretation"], "REJECTED")
         self.assertEqual(roof["integrity_status"], "HEAD_LOCKED")
-        self.assertTrue(roof["assembly_bookkeeping"]["quarantined_edges"])
+        self.assertEqual(roof["assembly_bookkeeping"]["quarantined_edges"], [])
         self.assertIn(
-            "  roof quarantine: 1 legacy fixed edge(s) excluded from roof closure\n",
+            "  roof quarantine: 0 legacy fixed edge(s) excluded from roof closure\n",
             rendered,
         )
         self.assertIn(
-            "  candidate roof ports: hH1, hanchor, hMontel, hS2\n", rendered
+            "  candidate roof ports: hzeros, hentire\n", rendered
         )
-        self.assertIn("  no exact supplier: hH2a, hS1, h510\n", rendered)
+        self.assertIn("  no exact supplier: hconv\n", rendered)
         expected_port_fields = {
             "exact_type",
             "bundled_context",
@@ -185,13 +185,12 @@ class SessionBriefingPlants(unittest.TestCase):
             "unused_incoming_edges",
             "missing_obligation",
         }
-        self.assertEqual({row["port"] for row in roof["ports"]}, {
-            "hH1", "hH2a", "hanchor", "hS1", "hMontel", "h510", "hS2"
-        })
+        self.assertEqual({row["port"] for row in roof["ports"]}, {"hzeros", "hentire", "hconv"})
         for row in roof["ports"]:
             self.assertTrue(expected_port_fields.issubset(row))
-        montel = next(row for row in roof["ports"] if row["port"] == "hMontel")
-        self.assertEqual(montel["semantic_role"], "MONTEL_ASSEMBLY_BEAM_NOT_SEVENTH_SLOT")
+        conv = next(row for row in roof["ports"] if row["port"] == "hconv")
+        self.assertIsNone(conv["supplier_term"])
+        self.assertEqual(roof["roof_theorem"], roof_port_ledger.ROOF_THEOREM)
         self.assertEqual(
             roof["closed_audit_gap"],
             "EXACT_ROOF_PORT_TO_SUPPLIER_LEDGER_AT_CURRENT_HEAD",
@@ -322,7 +321,7 @@ class SessionBriefingPlants(unittest.TestCase):
             rendered = session_briefing.render_briefing(repo)
         self.assertIn("route blocker: ACTIVE_PHASE_TERMINAL_CONSUMER_MISMATCH", rendered)
         self.assertIn("next joint: BLOCKED", rendered)
-        self.assertIn("7 direct proof inputs · INVALID", rendered)
+        self.assertIn("3 direct proof inputs · INVALID", rendered)
         self.assertIn("active paper phase binding: NOT_BOUND_TO_THIS_ROOF", rendered)
         self.assertIn("terminal consumer: PAPER_CONSUMER", rendered)
         self.assertEqual(roof["integrity_status"], "INVALID")

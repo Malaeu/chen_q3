@@ -53,7 +53,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   - «ground = trial» — долг, не опровергнуто;
   (крыша решена 25.09: каноническая — `rh_of_real_zero_family_tendsto_centeredXi`;
    7-портовая `rh_of_canonical_slots` — история; `comparator/Solution.lean` и README приведены в соответствие.
-   `orchestrator/roof_port_ledger.py` всё ещё считает 7 портов — в простом режиме только советчик.)
+   `orchestrator/roof_port_ledger.py` переведён на новую крышу: 3 порта hzeros/hentire/hconv, HEAD_LOCKED.)
 
 ## Последний доказанный результат
 - 2026-09-25: четыре Lean-кандидата 22.09 побайтно перенесены в `Q3/Proofs/RouteB/Q3*Candidate20260922.lean`;
