@@ -7,7 +7,7 @@
 Updated: 2026-09-25 · by: Claude Code (owner order) · HEAD at update: c626f00d
 
 ## Цель
-Проверяемое доказательство RH в этом репо (Route B, Goal058). `CHALLENGER_NOT_RH`, `PX_RH_CLAIM: NOT_MADE`.
+Проверяемое доказательство RH в этом репо.
 
 ## Последний доказанный результат
 - 2026-09-22: Lean-кандидаты Ferrers/prolate, `q3_check ok`, аксиомы только propext/Classical.choice/Quot.sound:
