@@ -102,3 +102,13 @@ shows cancellation factor 758.841 between W02, -WR and -Prime. Neither finite
 result settles the family sign; they select joint integrated comparison as the
 remaining analytic mechanism and rule out treating the density as positive
 throughout these reference cells.
+
+## Original research-goal outcome
+
+See [GOAL_AUDIT.md](GOAL_AUDIT.md). The original proof-or-obstacle investigation
+reaches its exact-obstacle outcome: the same-source full Fokas formula is
+verified at PAPER level, while the old fixed-beta cofinal consumer is
+contradicted on the selected family under the accepted source inputs.
+This closes that investigation, not Goal058. The cellwise replacement,
+central sign and full tracking remain open; the finite certificates do not
+supply their quantifiers. Independent completion-evidence review agreed.

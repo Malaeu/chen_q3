@@ -7680,3 +7680,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: текущий запрос №8 по полному центральному знаку остаётся в другом чате; его не дублировать.
 Адреса: docs/routeB_bus/proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RECOVERY_2026-09-25.md и PROSHKA_FOKAS_MATRIX_DEFECT_RESPONSE_RENDERED_2026-09-23.txt.
 Чей вердикт: исторический TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2; provenance восстановлен root из текущего UI и существующих локальных байтов.
+
+## 2026-09-25 — Fokas mechanism goal: audited exact-obstacle outcome (Mac)
+
+Развилка: считать исследовательский goal завершённым по исходной альтернативе «доказательство звена либо точное препятствие» или неявно расширить его до полного ground tracking.
+Выбрали: закрыть исходную проверку механизма точным препятствием для fixed-beta consumer; Goal058 оставить открытым.
+Почему: source-matched полный дефект и сокращение нормировки проверены; кофинальный свидетель опровергает постоянный floor именно выбранной семьи при принятых source/hmode входах. Это не отсутствие найденной оценки и не экстраполяция m2.
+Что отвергли: вывод о невозможности всех Fokas-путей, доказанном cellwise знаке или Lean-допуске untracked кандидатов.
+Инсайты: исходный consumer, а не только размер остатка, является доказанным препятствием; точная Green-формула пригодна для будущего cellwise перехода.
+Блокеры дальнейшего Goal058: delta_j, новый consumer, weighted rate, central sign и Schur-floor.
+Иглы Зингера: завершение proof-or-obstacle исследования не равно завершению теоремы RH.
+Следующий ход общего проекта: запрос №8 и источник совместного центрального знака; повторных отправок не было.
+Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/GOAL_AUDIT.md.
+Чей вердикт: root requirements audit и независимый read-only /root/sign_algebra_review; границы результата совпали.
