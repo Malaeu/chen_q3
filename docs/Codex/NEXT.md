@@ -58,10 +58,11 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 ## Последний доказанный результат
 - 2026-09-25: Fokas step 1 в Lean: положительность двух выбранных θ, общее
   Mellin–Green тождество с нижним краем и точный перенос выбранной строки
-  через sTrial к непроецированному inner при существующем условном порте
-  `CCMLemma73PreAnchorPort`. `q3_check.sh` — ok; полный `lake build`
-  — 8218 jobs, exit 0. Это промежуточные леммы: selected row → paired-window и rank-2
-  residual identity в Lean ещё НЕ доказаны; decay и sector floors открыты.
+  через sTrial к Mellin/Gwin с фазой `(-1)^n` при существующем условном порте
+  `CCMLemma73PreAnchorPort`. Конечная paired-window формула также выведена
+  при явной `MellinConvergent` для каждого слагаемого; эту посылку для выбранного
+  источника ещё нужно закрыть. `q3_check.sh` — ok; полный `lake build` — 8219 jobs,
+  exit 0. Rank-2 residual identity, decay и sector floors открыты.
 - 2026-09-25: четыре Lean-кандидата 22.09 побайтно перенесены в `Q3/Proofs/RouteB/Q3*Candidate20260922.lean`;
   `scripts/q3_check.sh` — ok, полный `lake build` — 8215 jobs, exit 0. Только аксиомы
   propext/Classical.choice/Quot.sound. Теоремы остаются условными; `hmode` и RH не закрыты.
@@ -69,8 +70,9 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (`docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md`, `docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md`).
 
 ## Следующий шаг
-1. Завершить Lean Fokas rank-2 joint green: selected row → безразмерная paired-window
-   сумма со всеми фазами; применить Green к выбранному U, доказать решёточное
+1. Завершить Lean Fokas rank-2 joint green: закрыть конечную Mellin-сходимость
+   для выбранного источника, выписать безразмерную paired-window сумму с фактором
+   m^(1/4)/√log(m); применить Green к выбранному U, доказать решёточное
    сворачивание нижних краёв и точную формулу residual для каждого k,n.
    Затем нужны uniform joint-defect decay и оба sector floors. PAPER-контроль
    t−V = 3√2/4 подтверждает, что нижний край нельзя отбросить.
