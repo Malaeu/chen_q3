@@ -21,6 +21,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 export GIT_OPTIONAL_LOCKS=0
+export PATH="$HOME/.bun/bin:$PATH"  # qmd lives here; non-interactive shells miss it
 BRANCH="rh_clean"
 DRY=0
 NOLOG=0
@@ -70,7 +71,8 @@ echo "== 2/5 Shelf refresh"
 if [[ $DRY -eq 1 ]]; then
   echo "   skipped (dry run)"
 elif command -v qmd >/dev/null 2>&1; then
-  "$PY" q3.lean.aristotle/scripts/refresh_q3_docs.py || echo "   WARN: shelf refresh failed (non-fatal)"
+  "$PY" orchestrator/spine.py --refresh --reason semantic-index-refresh >/dev/null 2>&1 \
+    && echo "   OK: semantic shelf refreshed" || echo "   WARN: shelf refresh failed (non-fatal)"
 else
   echo "   WARN: qmd not installed on this machine — shelf not refreshed"
 fi

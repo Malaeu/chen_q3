@@ -12,7 +12,6 @@ This file is a thin bootstrap pointer. It contains no independent executor
 policy, and machine-local configuration cannot override the canonical control; the Owner's explicit instruction can.
 Runtime validation (`plan`, optional in plain mode) is described in `SESSION_ENTRY.md`.
 
-
 # Codex project instructions
 
 For complex coding tasks, use the `astra-orchestrator` skill when its trigger conditions match.
