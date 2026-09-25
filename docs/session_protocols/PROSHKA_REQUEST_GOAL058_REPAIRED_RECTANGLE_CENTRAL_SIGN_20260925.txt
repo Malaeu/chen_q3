@@ -1,0 +1,58 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-REPAIRED-RECTANGLE-CENTRAL-SIGN
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_REPAIRED_RECTANGLE_FULL_CENTER_SIGN
+SOURCE_COMMIT: c56ec1d92a2bce8fbd8e82a4c8d55ec1a6893bd2
+PREDECESSOR: REQ-2026-09-25-TWO-ENERGY-FULL-QUARTIC-SIGN
+PREDECESSOR_VERDICT_SHA256: e9502879d0690db71da6283e1b2cef5ee4271cd024182b549dcaf6174691ad2a
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5
+EXPECTED_ORDINAL_IF_CONFIRMED: 8
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, продолжи после узкого RECTANGLE_KILL. Полный ответ №7 и два
+независимых PAPER-прохода сохранены в
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_TWO_ENERGY_FULL_QUARTIC_SIGN_2026-09-25.md
+docs/routeB_bus/proshka/PROSHKA_GOAL058_TWO_ENERGY_FULL_QUARTIC_INDEPENDENT_AUDIT_2026-09-25.md
+с SHA-256 ответа выше. Проверен KILL только прямой RAW_R6-подстановки (2):
+она даёт max(D_+^raw,D_-^raw) <= -4 Gamma_m R^4. Это не знак tau_j.
+Исправленная source-matched оценка якоря (19) убывает и оставляет
+открытым конкретно знак полного центрального значения p_c.
+
+Выполни один PAPER-тест для той же выбранной cofinal семьи m=J_P+j+2,
+N=6m-1, одного P, исходной склейки 5m, обоих неизменённых интервалов
+I_0(m) x I_4(m), E_0<E_4 и полного F, K_j, U_j, Pi_U, theta=tr_U K_j.
+Используй x=kappa_m z(E_0,E_4), Q_m=kappa_m^4 P_m(E_0,E_4) из R3
+предшественника, исправленный e_*^bd из (19), уже оплаченный y_->0,
+точные первые производные центра и остаток R8/(12). Исходный B(m)
+не меняй. Не возвращайся к RAW_R6-value majorant для якоря.
+
+Требуется НОВЫЙ источниковый односторонний контроль полного p_c после
+совместного сложения смешанных, plane, Q6, диагонали, обоих физических
+краёв и всех prime powers. Явно покажи его масштаб и знак относительно
+D_m^rect + R^2 Bhat_*^bd, с квантором по выбранным m. Если прямое
+раскрытие p_c не даёт знака, проверь один конкретный структурный путь:
+выдели в полном полиноме R3 точный signed leading contribution
+источниковой Ferrers-рекурсии и оцени весь остаток без разделения
+когерентных нижних моментов Sigma_0^sharp, Sigma_1^sharp и без
+покомпонентного модуля основных смешанных членов. Допускается более
+точный совместный интервальный/Bernstein bound на тех же I_0 x I_4,
+но не конечная числовая сетка и не замена источниковой строки trial.
+
+Верни ровно один проверяемый исход:
+1. SIGN_BOUND: докажи p_c-D_rect-R^2 Bhat_bd>0 на явной неограниченной
+   выбранной подпоследовательности либо -p_c-D_rect-R^2 Bhat_bd>0 на
+   всём выбранном хвосте. Дай положительную zeta(m), знак tau_j и
+   явный семейный квантор; Schur-floor остаётся OPEN.
+2. REPAIRED_CERTIFICATE_KILL: для опровержения именно этих двух ветвей
+   докажи D_+^bd<=0 на всём выбранном хвосте И D_-^bd<=0 на явной
+   неограниченной выбранной подпоследовательности. Если установлена
+   только одна часть, назови другую ветвь OPEN, а не объявляй KILL.
+   Ограничь вывод этим достаточным сертификатом, не знаком Q_m.
+3. OPEN_REPAIRED_CENTRAL_SIGN: назови первый НЕоплаченный подписанный
+   член полного p_c с формулой, диапазоном k,n,r,m, оценкой масштаба и
+   объяснением, почему (3)-(19), hmode и tail budget его не контролируют.
+   Дай один дискриминирующий PAPER-тест для этого члена, а не перепиши
+   D_+ или D_- как цель.
+
+Не предполагай RH, positivity K/W, odd floor, prolate 6pi gap или
+fixed-frequency asymptotic. Не меняй источник, нормировку, carrier
+-m<=n<=m или расписание. Без Lean, project runtime, repo writes и RH claim.
