@@ -36,3 +36,14 @@ A material current limitation is that its constant-beta cofinal wrapper has a
 premise contradicted by the accepted constant-floor counterexample. Thus the
 identity is reusable, but the family supplier must change: cellwise floors and
 a compatible weighted-rate consumer remain unpaid.
+
+
+A later finite Arb check separates the Rayleigh-floor requirement from ground
+tracking: at the SAME fixed rational m8 reference row, q-perp has a negative
+direction relative to a=q*Kq, yet an independently certified cut mu=10^-18
+lies above the ground and below the whole complement with margin 3*10^-17.
+The inverse-residual projection error is rigorously <0.05536. The finite
+lemma only needs lambda0<=mu and positivity above mu, not mu>=a. Hence the
+old stronger sufficient condition is not necessary for finite tracking.
+Actual selected energies, cofinal independent cuts and weighted decay remain
+OPEN. See packet INDEPENDENT_ENERGY_SHIFT.md and interval certificates.

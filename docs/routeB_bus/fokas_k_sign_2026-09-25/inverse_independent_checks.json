@@ -1,0 +1,27 @@
+{
+  "status": "NONCERTIFIED_RECTANGLE_CENTER_DIAGNOSTIC",
+  "source_baseline": "04df81d0",
+  "shared_helpers": "rectangle_probe recurrence/F and full_center_probe matrix_K; independent ambient compression/inverse, no independent quadrature certification",
+  "checks": [
+    {
+      "m": 4,
+      "dps": 70,
+      "method": "ambient C=Q(K-aI)Q+qq*, without complement basis or Gaussian plane",
+      "d_min": "0.0000002234650930715243407179306205675100335804734671667388484361754482933782",
+      "negative_complement_eigenvalues": 0,
+      "residual_norm": "0.0000529022713651199550974503720444624006554154995284496975865384171022361",
+      "R_if_positive": "0.03099783528271346374394709240113634302300366891031244460482048079980192",
+      "actual_sin_angle": "0.03089072988486095790923697543695216322863965060031099168408873594281832"
+    },
+    {
+      "m": 8,
+      "dps": 90,
+      "method": "ambient C=Q(K-aI)Q+qq*, without complement basis or Gaussian plane",
+      "d_min": "-0.0000000000114002276171902634433757976684286422768331394406172837394557780048068500828979197405959788",
+      "negative_complement_eigenvalues": 3,
+      "residual_norm": "0.00000296815431257917847258817403216874223701151492923608396161903591921947838487564709242852349",
+      "R_if_positive": null,
+      "actual_sin_angle": "0.0553421606047694296888949385436017324539908095711639855084120039599774875602454221996715173"
+    }
+  ]
+}
