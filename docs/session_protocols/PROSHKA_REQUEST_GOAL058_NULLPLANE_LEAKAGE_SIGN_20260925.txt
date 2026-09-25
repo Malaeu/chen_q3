@@ -1,0 +1,54 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-NULLPLANE-LEAKAGE-SIGN
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_FULL_CCM_NULLPLANE_LEAKAGE_SIGN
+SOURCE_COMMIT: 388f070de85d9f93f69c37ee81e9536f2341d669
+PREDECESSOR: REQ-2026-09-25-CELLWISE-COMPLEMENT-SIGN
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, продолжение после твоего OPEN_FIRST_SIGN, не повтор прежнего вопроса.
+Источник: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CELLWISE_COMPLEMENT_SIGN_2026-09-25.md,
+SHA-256 970c8b37a7e70c7c2ce94c35779bd8f360dc8085cef4d88f03004e1db6f6b556.
+Независимый аудит: docs/routeB_bus/proshka/PROSHKA_GOAL058_CELLWISE_SIGN_INDEPENDENT_AUDIT_2026-09-25.md.
+Ищем первый ЗНАК, не ещё один эквивалент или o(1)-оценку.
+
+Та же буквальная выбранная cofinal семья: один P, J_P, m_j=N_j=J_P+j+2,
+K_j=полная Hermitian CCM-матрица W02-WR-Prime на -m_j..m_j,
+q_j=selectedFerrersFiniteCCMRow P j, a_j=q_j* K_j q_j.
+U_j=span_C{u_j,v_j} — два ортонормированных проецированных глобальных
+нулевых направления из проверенных (N)/(S),
+eps_j:=sup_{w in U_j, ||w||=1} ||K_j w|| = O(sqrt(log m_j/m_j)).
+alpha_j=q_j* u_j, gamma_j=q_j* v_j,
+z_j=(alpha_j v_j-gamma_j u_j)/sqrt(|alpha_j|²+|gamma_j|²) in U_j cap q_j^perp,
+tau_j=z_j* K_j z_j-a_j. hmode даёт |alpha_j|² -> 1.
+
+Новый проверенный бумажный стык: p_j=Pi_{U_j}q_j, ell_j=q_j-p_j,
+tau_j=-ell_j* K_j ell_j+E_j,
+E_j=z_j* K_j z_j-p_j* K_j p_j-2 Re(ell_j* K_j p_j),
+|E_j|<=3 eps_j, ||ell_j||² -> 0.
+ell_j — утечка СТРОКИ из U_j; не путай с ранее обозначенным
+spectral residual (K_j-a_j I)q_j. Нормовые входы сами знак tau не задают;
+это не контрпример к буквальной CCM-матрице.
+
+Задача: на ИМЕННО ЭТОЙ семье получить источниковую знаковую асимптотику
+для tau_j, начав с ell_j* K_j ell_j и полного E_j. Используй полную
+формулу твоего вердикта (7), включая диагональ, все prime powers и края.
+Явно проверь, можно ли получить на неограниченных выбранных j
+tau_j<=0 (тогда z_j убивает eventual cellwise positivity), либо eventual
+tau_j>0 с количественной нижней функцией (это закрывает только первый
+скалярный знак, не Schur-блок). Порог ell_j* K_j ell_j>=3 eps_j лишь
+достаточен и может быть грубым; если он не годится, удержи знаковые
+сокращения E_j вместо расщепления по модулю.
+
+Верни ровно один исход:
+1. KILL_NULLPLANE: cofinal subsequence и tau_j<=0 с полной оценкой;
+2. POSITIVE_NULLPLANE: eventual tau_j>0 с явной нижней функцией и полным
+   W02-WR-Prime ledger (Schur floor остаётся OPEN);
+3. OPEN_SIGNED_LEAKAGE: первый точный недоказанный ЗНАК после реального
+   раскрытия выбранных p_j,ell_j и prime/archimedean cancellation;
+   один проверяемый следующий тест. Не возвращай только исходное
+   tau_j=integral-prime, эквивалент (13), |tau_j|=o(1) или абстрактную
+   нормовую оценку без выбранных Ferrers-коэффициентов.
+
+Не предполагай RH, a_j->0, позитивность K_j, odd floor, prolate 6pi gap
+или коммутативность Fourier-проекции с формой. Не меняй P, q_j, U_j,
+нормировку, окно или расписание. Без Lean/runtime, repo write или RH claim.

@@ -89,7 +89,8 @@ on `U_j`, not its quadratic energy on the leakage component.
 
 The hypotheses alone allow both signs of `tau`: in `C³`, take
 `U=span(e1,e2)`, `q=sqrt(1-delta)e1+sqrt(delta)e3`, `z=e2`,
-`delta=epsilon²`, and `K_±=diag(0,0,±1)`. Then `K_± U=0`, the overlap tends
+`delta=t²` for an independent `t -> 0`, and `K_±=diag(0,0,±1)`.
+Then `K_± U=0` (its exact action norm is zero), the overlap tends
 to one, and `tau_±=∓delta`. These are abstract countermodels to a sign
 deduced solely from the plane and overlap bounds; they are not CCM
 counterexamples and do not assert opposite signs for the full `d_j`.
