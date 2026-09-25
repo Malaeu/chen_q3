@@ -88,8 +88,11 @@ message `f31e0cc4-f520-4aa5-84c5-fb0dc0c55e5b`. Независимая свер�
 Знак полного выражения после `−Wℝ−Prime`, сдвига и residual-поправки не доказан;
 это не контрпример к FLOOR. Имеющаяся high-mode оценка начинается за cutoff `R_j>N_j`
 (`D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:78`) и не покрывает эту конечную матрицу.
-Узкий запрос Прошке подготовлен в `docs/session_protocols/PROSHKA_REQUEST_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_20260925.txt`;
-он не отправлен. Lean и runtime для этой атаки не запускались.
+Узкий запрос Прошке отправлен одним вложением
+`docs/session_protocols/PROSHKA_REQUEST_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_20260925.txt`
+(SHA-256 `79207d2da49851bc31ff0899f1053aa0571955dac80f2395a11b7d255e6fbb1f`)
+в существующий чат 25.09 в 13:58; интерфейс показывает, что ответ ещё генерируется.
+Вердикт не получен. Lean и runtime для этой атаки не запускались.
 
 **G1 · hratioEv.** После выбора того же `β` нужна субкритическая оценка
 `residualEnergy/β²<1` eventually (DB:294-296). Нельзя заменять её оценкой одной части остатка.
