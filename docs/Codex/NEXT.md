@@ -7,7 +7,16 @@
 Updated: 2026-09-25 · by: Claude Code (owner order) · HEAD at update: c626f00d
 
 ## Цель
-Проверяемое доказательство RH в этом репо.
+Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
+Цель в Lean: `RiemannHypothesis.riemannHypothesis : RiemannHypothesis`
+(`q3.lean.aristotle/comparator/Challenge.lean`, Mathlib `RiemannHypothesis`).
+
+Claim делается, только когда он действительный — все условия сразу:
+1. Lean-доказательство цели собирается на чистом клоне, Comparator проходит.
+2. Ни одного `sorry`; `#print axioms` показывает только propext, Classical.choice, Quot.sound.
+3. Независимые проверки (разные модели и люди) раз за разом не находят ни одной ошибки.
+4. Владелец объявляет claim.
+До этого статус честный: RH ещё не доказана. Это состояние, а не цель.
 
 ## Последний доказанный результат
 - 2026-09-22: Lean-кандидаты Ferrers/prolate, `q3_check ok`, аксиомы только propext/Classical.choice/Quot.sound:
@@ -33,5 +42,6 @@ Updated: 2026-09-25 · by: Claude Code (owner order) · HEAD at update: c626f00d
 - Не отправлять повторно уже отправленные запросы Прошке.
 
 ## Жёсткие линии (не обсуждаются)
-Без `sorry`; аксиомы только три; `PX_RH_CLAIM` не делать; перед PROVED — независимый review;
+Без `sorry`; без собственных `axiom`; только три стандартные аксиомы Lean (см. Цель п.2);
+недоказанное не называть доказанным; claim — только по условиям из «Цели»;
 одновременно работает одна машина (какая — решает владелец).
