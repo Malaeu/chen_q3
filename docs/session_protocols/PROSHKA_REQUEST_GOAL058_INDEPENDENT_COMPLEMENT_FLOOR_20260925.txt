@@ -1,0 +1,85 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-INDEPENDENT-COMPLEMENT-FLOOR
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_LITERAL_CCM_COMPLEMENT_FLOOR
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_G1_SELECTED_GROUND
+SOURCE_OBJECT_FAMILY_ID: SELECTED_CENTER_ANCHORED_FERRERS_MODES_0_4
+HONESTY_STATE: CHALLENGER_NOT_RH
+SOURCE_COMMIT: 6b7f2d981adcb894a3186a6c698e7e0f12b6ffa7
+HMODE_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_HMODE_QUASIMODE_2026-09-25.md
+HMODE_VERDICT_SHA256: 2e1873e71a3d9e3950fc1834428dc423ed859eb67650a004b3f30d5e080aef63
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, hmode для выбранных Ferrers-мод 0/4 закрыт на PAPER-уровне твоим
+вердиктом. Проверь теперь ТОЛЬКО независимый источниковый (FLOOR), не Lean и
+не RH. Не используй нечётный sector floor, пролатный gap 6π, generic parity,
+не подменяй конечную CCM-матрицу другим оператором или расписанием.
+
+Зафиксируй один P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData.
+Пусть J_P = preAnchorTailStart(selectedFerrersPreAnchorData,P),
+φ_P(j)=J_P+j, i_j=(selectedFerrersCofinalSourceData P).index j
+= selectedFerrersPreAnchorIndex(φ_P(j)). Значит m_j=N_j=φ_P(j)+2,
+Ferrers cutoff = 5m_j. На carrier CCMModeFinite N_j с ν_u=u−N_j:
+
+  K_j(u,v) = ccmWeilTauN1 m_j ν_u ν_v ∈ ℝ ⊂ ℂ,
+  q_j = selectedFerrersFiniteCCMRow P j, q_j* q_j = 1,
+  a_j = selectedFerrersFiniteCCMRayleigh P j = Re(q_j* K_j q_j),
+  R_j = (K_j−a_j I)q_j, Q_j = I−q_j q_j*.
+
+Ортогональность: q_j* y = Σ_u conj(q_j(u)) y(u)=0, все y комплексные.
+Цель: ∃δ>0 ∀ᶠ j ∀y⊥q_j:
+
+  Re[y*(K_j−a_j I)y] ≥ δ‖y‖².                         (FLOOR)
+
+K_j — полная буквальная матрица W02−WR−Prime; Prime включает все
+ℓ=2,...,m_j с весом Λ(ℓ)/√ℓ. Не выбрасывай diagonal branch Q_L.
+
+Точная уже проверенная source-перепись: b_u=ccmBetaFinite m_j N_j u,
+H_uv=0 при u=v, иначе 1/(ν_u−ν_v). Тогда для любого y
+
+  Re[y*(K_j−a_j I)y]
+    = Σ_u (K_j(u,u)−a_j)|y_u|²
+      + 2Σ_u b_u Re(conj(y_u)(Hy)_u).                 (L)
+
+Это identity, не положительность. Невзвешенная Hilbert-сумма имеет нулевую
+total mass, но b_u меняется; диагональ остаётся. Первый неоплаченный знак:
+одна δ>0 для полной RHS (L) на q_j* y=0 вдоль того же tail shift.
+
+Быстрый необходимый фальсифицирующий тест: на одном из двух крайних мод
+u_j с ν=±N_j обязательно |q_j(u_j)|<1. Положи
+y_j=e_{u_j}−conj(q_j(u_j))q_j. Тогда y_j⊥q_j,
+‖y_j‖²=1−|q_j(u_j)|² и (FLOOR) требует
+
+  K_j(u_j,u_j)−a_j−2Re(conj(q_j(u_j))R_j(u_j))
+    ≥ δ(1−|q_j(u_j)|²).                              (E)
+
+На этом крае W02 сам по себе отрицателен:
+W02(L;N_j,N_j)=32L sinh²(L/4)(L²−16π²N_j²)/(L²+16π²N_j²)²<0,
+L=log m_j. Полный знак (E) с −WR−Prime и residual-поправкой не получен.
+Не выдавай этот отрицательный компонент за контрпример к полному FLOOR.
+
+Верни одно из:
+1. PROVED_PAPER: источниковая δ и доказательство полной (L) на всех
+   комплексных y⊥q_j, с одним порогом j₀ и тем же P/расписанием;
+2. KILL_FLOOR: точная кофинальная последовательность или неограниченная
+   подпоследовательность с допустимыми y_j⊥q_j и Rayleigh quotient ≤0
+   либо →0, с доказанными оценками полного W02−WR−Prime;
+3. OPEN_FIRST_SIGN: первый недоказанный знак с формулой, областью и
+   предложением одной следующей дискриминирующей оценки. Не называй
+   отсутствие достаточной оценки опровержением самого FLOOR.
+
+Не повторяй старую попытку через нечётный tail: её положительный cutoff
+лежит строго за N_j. Не возвращай условный Gram/Schur receiver как поставщика
+своих же предпосылок. hratioEv и полный G3-budget — отдельные задачи.
+
+SOURCE LOCATORS (at SOURCE_COMMIT):
+- q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersPreAnchorDataInhabitant.lean:24-47
+- q3.lean.aristotle/Q3/Proofs/RouteB/G6N1PreAnchorLimitZeroModeAndSelectedShell.lean:362-402,572-586
+- q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean:39-100
+- q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean:282-341
+- q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersHilbertPairing.lean:171-224
+- q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFiniteCCMSourceRow.lean:76-110,219
+- q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean:259-276
+- q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:78
+
+No Lean, runtime, route-state mutation, or RH claim is requested.

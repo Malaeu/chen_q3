@@ -59,6 +59,38 @@ message `f31e0cc4-f520-4aa5-84c5-fb0dc0c55e5b`. Независимая свер�
 уже требуют hoddEv: их обратная подстановка в мост ниже циклична. Ищем прямую коэрцитивность полного
 дополнения либо signed head-tail Feshbach с положительным Schur-запасом (DB:203-207).
 
+**Бумажная атака на FLOOR, остановка 25.09.** Фиксируем один
+`P : CCMLemma73PreAnchorPort selectedFerrersPreAnchorData` и его уже выбранный tail shift
+`φ_P(j)=preAnchorTailStart(P)+j`; тогда `i_j=(selectedFerrersCofinalSourceData P).index j`
+и `m_j=N_j=φ_P(j)+2`. На буквальном носителе `CCMModeFinite N_j` положим
+`K_j=sourceCCMFiniteMatrix i_j`, `q_j=selectedFerrersFiniteCCMRow P j` (`q_j* q_j=1`),
+`a_j=Re(q_j* K_j q_j)`, `r_j=(K_j−a_j I)q_j`. Условие `y⊥q_j` означает
+`q_j* y=Σ_u conj(q_j(u))y(u)=0`, со всеми комплексными коэффициентами.
+Для `ν_u=u−N_j`, `b_u=ccmBetaFinite m_j N_j u` и
+`H_uv=0` при `u=v`, иначе `1/(ν_u−ν_v)`, точная источниковая Loewner-формула даёт
+
+`Re[y*(K_j−a_j I)y] = Σ_u (K_j(u,u)−a_j)|y_u|² + 2Σ_u b_u Re(conj(y_u)(Hy)_u)`.
+
+Алгебра здесь закрыта (`CCMFiniteWeilSourceCommutator.lean:282-341`,
+`G6N1SelectedFerrersHilbertPairing.lean:171-224`). Первый **недоказанный знак** —
+единая eventual-нижняя граница этой полной правой части `≥βΣ|y_u|²` для всех `q_j* y=0`.
+Нулевая сумма невзвешенных Hilbert-весов не задаёт знак при переменных `b_u`;
+диагональный канал также нельзя выбросить. `hmode` относится к другому оператору и не даёт эту оценку.
+
+Конкретный необходимый краевой тест без sector floor: выбрать `u` с `ν_u=±N_j` и
+`|q_j(u)|<1` (хотя бы один из двух краёв годится), положить
+`y=e_u−conj(q_j(u))q_j`. Тогда `q_j*y=0`, `‖y‖²=1−|q_j(u)|²`, и FLOOR требует
+
+`K_j(u,u)−a_j−2Re(conj(q_j(u))r_j(u)) ≥ β(1−|q_j(u)|²)`.
+
+Вклад `W₀₂` в `K_j(u,u)` на `|ν_u|=N_j=m_j` строго отрицателен:
+`32L sinh²(L/4)(L²−16π²N_j²)/(L²+16π²N_j²)²<0`, `L=log m_j`.
+Знак полного выражения после `−Wℝ−Prime`, сдвига и residual-поправки не доказан;
+это не контрпример к FLOOR. Имеющаяся high-mode оценка начинается за cutoff `R_j>N_j`
+(`D0PstarSelectedFerrersEvenTailCutoffObstruction.lean:78`) и не покрывает эту конечную матрицу.
+Узкий запрос Прошке подготовлен в `docs/session_protocols/PROSHKA_REQUEST_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_20260925.txt`;
+он не отправлен. Lean и runtime для этой атаки не запускались.
+
 **G1 · hratioEv.** После выбора того же `β` нужна субкритическая оценка
 `residualEnergy/β²<1` eventually (DB:294-296). Нельзя заменять её оценкой одной части остатка.
 
