@@ -22,15 +22,15 @@ PROSHKA_ONLY (вердикт без перепроверки) · LEAN (дока�
 | G2b | перенос вещественности на Prop-5.9 transform той же строки | F | закрыто через Lean (контракты устарели) | LEAN `Proposition59GroundLagrangeZeroSetBridge.lean:231` |
 | hentire | каждая F k целая | F | закрыто через Lean | LEAN `G6N1SelectedFerrersTrackedGroundTransform.lean:761` |
 | G3 | та же F трекает projected trial: нормировка × kernelL2 × √ratio → 0 на компактах | F | **OPEN — главная стена, RH-уровень** (master:1278). Прогресс: paired-window тождество PAPER_OWN rev — только представление, не оценка (FN:91-92) | нет формулировки |
-| hmode | sup‖w_m − D_n‖ ≤ C_n/m, центр-нормировка 1/h0(0), 3/h4(0) | F | **PAPER_OWN, внутренний review «coherent, no circularity»** (RPT:1188-1220); пакет отправлен Прошке 25.09, ответ ожидается | hmode⇒W5/N2 в кандидате |
-| hχ / hθ | из hmode | F | hχ: Lean в кандидате (RPT:633); hθ: PAPER (RPT:635) | hχ кандидат |
+| hmode | sup‖w_m − D_n‖ ≤ C_n/m, центр-нормировка 1/h0(0), 3/h4(0) | F | **PAPER_OWN rev + PROSHKA PROVED_PAPER** для выбранных мод 0/4 и полного окна; независимая сверка пакета и цепи 25.09. Формальная реализация источника не сертифицирована. | hmode⇒W5/N2 в кандидате; сам hmode не Lean |
+| hχ / hθ | из hmode | F | **PAPER_OWN rev** как следствия проверенной hmode-цепи | hχ кандидат; формализация следствий не завершена |
 | G3c | projected trial → continuum trial (projection tail) | trial | **OPEN** («PROSE проекционный хвост», contracts:267,280) | нет |
 | G4 | CCM Lemma 7.3: преобразование k_λ → Ξ равномерно на полосах | trial | **PAPER_PUBLISHED** arXiv:2511.22755 §7, Lemma 7.3, p.31 (препринт); crosswalk h_λ ↔ hTrial_m OPEN (master:994-1004) | импорт отсутствует |
 | G5 | одна семья: вещественные нули + F → Ξ ⇒ RH (Гурвиц) | F | закрыто через Lean | LEAN `Goal058DirectGroundZeroEscape.lean:27`, аксиомы 3 (проверено 25.09) |
 | Сборка | tail reindex + G3 + G3c + G4 ⇒ hconv для той же F | F | **OPEN** | нет |
 
-Итого 14 звеньев: закрыто 5 (G2, G2b, hentire, G5 — Lean; G4 — статья), наполовину 2 (hmode — наш текст без
-внешней проверки; hχ/hθ), открыто 7 (G0 частично, hfloorEv и hratioEv плюс производный hoddEv в G1,
+Итого 14 звеньев: закрыто на бумаге 7 (G2, G2b, hentire, G5 — Lean; G4 — статья; hmode и hχ/hθ — проверенная бумага),
+открыто 7 (G0 частично, hfloorEv и hratioEv плюс производный hoddEv в G1,
 G3, G3c, сборка) + crosswalk для G4.
 
 ## Главное наблюдение
@@ -40,10 +40,16 @@ G3, G3c, сборка) + crosswalk для G4.
 Сопоставление с нашими объектами — вывод читателя, crosswalk матриц не записан. Значит: G1 и G3 — ядро RH,
 всё остальное — сантехника цепи.
 
-## Открытые звенья: что не хватает и следующий ход
+## Проверенный hmode, открытые звенья и следующий ход
 
-**hmode (дешёвый выигрыш).** Бумага есть (RPT:1188-1220), внешняя проверка Прошкой запрошена
-25.09 прямой отправкой подготовленного пакета в существующий чат (пакет и review-plan: RPT:1228-1235).
+**hmode (бумага закрыта).** Прошка проверила точный пакет
+`PROSHKA_REQUEST_HMODE_QUASIMODE_20260922.txt` (SHA-256 `377af64b2e9df0689f8f55f8e3c64dc46bf00b5584df42ed2a725e6f1a311bb2`)
+и дала `PROVED_PAPER` для полного окна выбранных Ferrers-мод 0/4; ответ в существующем
+[чате Прошки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aafb38a-a7a4-83eb-9940-84a574eae168),
+message `f31e0cc4-f520-4aa5-84c5-fb0dc0c55e5b`. Независимая сверка не нашла первого неверного
+перехода в form core → carrier → even gap → quasimode → Fourier upgrade → center anchor;
+спектральный зазор выведен до hχ, без круга. Исходная бумажная сборка: RPT:1120-1220.
+Это не Lean-подтверждение естественной спектральной реализации, не CCM-floor и не RH.
 
 **G4 crosswalk + G3c (сантехника, своими силами).** Нужно: h_λ ↔ hTrial_m, скаляр и фаза, C = 2πλ², координата
 преобразования (master:994-1004); отдельно доказать projection tail (master:1222). Своя попытка на бумаге.
@@ -71,7 +77,7 @@ joint defect r = (A/Z)[(K−aI)b − (K−aI)e] (RQ:52-54 — это тожде�
 
 **Сборка → hconv.** После G3/G3c/G4: одна теорема для той же F вдоль tail reindex.
 
-Порядок основного фронта: **hmode → независимый complement floor (hfloorEv) → hratioEv → G3**.
+Порядок основного фронта после бумажного hmode: **независимый complement floor (hfloorEv) → hratioEv → G3**.
 При выполненных условиях моста hoddEv выводится, а не ищется как отдельный источник.
 G4 crosswalk и G3c ведём параллельно; после закрытия этих входов — сборка одной семьи.
 Lean — после бумаги, кроме проверки, без которой математический шаг нельзя принять.
