@@ -1,0 +1,83 @@
+{
+  "status": "DIAGNOSTIC_ONLY_NOT_A_PROOF",
+  "m": 2,
+  "dps": 110,
+  "central_energy_midpoints": {
+    "E0": "11.799685000256796673593672210702001",
+    "E4": "100.85413101712497224783967573652809"
+  },
+  "norm_z": "2.3913276095992687883134815506840376",
+  "norm_Pi_z": "2.3910900754300768462862037894066963",
+  "projection_idempotence_error": "1.871846544e-111",
+  "gaussian_parity_error": "1.164285894e-110",
+  "gaussian_cutoff_terms": 17,
+  "W02_rank_two_factorization": {
+    "rank": 2,
+    "C": "0.67274283266344134989110674029197549",
+    "factorization_frobenius_residual": "0.0",
+    "formula": "C*(L^2*a*a^T - 16*pi^2*b*b^T), a_n=1/(L^2+16*pi^2*n^2), b_n=n/(L^2+16*pi^2*n^2)"
+  },
+  "signed_components": {
+    "W02": {
+      "quartic_R3_contribution": "27.541001191276779191753769764052456",
+      "normalized_tau_contribution": "-0.84238319439620936084313482579625165",
+      "share_of_total_tau_percent": "-105.4001078472499840210644908122126",
+      "theta_component": "1.399186950512437651019540336067261",
+      "qAq": "1.1202049840148799046441442412633427",
+      "vAv": "0.27782178961867054380100941546709104",
+      "quartic_identity_residual": "(0.0 + 0.0j)",
+      "max_imaginary_residual": "0.0"
+    },
+    "-WR": {
+      "quartic_R3_contribution": "-53.67095660952956719499151625775727",
+      "normalized_tau_contribution": "1.6416074187366858347673702932652035",
+      "share_of_total_tau_percent": "205.4001078472499840210644908122126",
+      "theta_component": "-0.59255531401279400713282785011705716",
+      "qAq": "-1.1167426155400343871024695144637694",
+      "vAv": "0.52486480319665144766490077880143413",
+      "quartic_identity_residual": "(-5.3224498e-110 + 0.0j)",
+      "max_imaginary_residual": "0.0"
+    },
+    "-Prime": {
+      "quartic_R3_contribution": "0.0",
+      "normalized_tau_contribution": "0.0",
+      "share_of_total_tau_percent": "0.0",
+      "theta_component": "0.0",
+      "qAq": "0.0",
+      "vAv": "0.0",
+      "quartic_identity_residual": "0.0",
+      "max_imaginary_residual": "0.0"
+    }
+  },
+  "total": {
+    "central_full_quartic_R3": "-26.129955418252788003237746493704815",
+    "normalized_tau": "0.79922422434047647392423546746895184",
+    "sum_of_signed_quartic_components": "-26.129955418252788003237746493704815",
+    "component_sum_residual": "-2.6612249e-110",
+    "quartic_normalization_identity_residual": "(-2.6612249e-110 + 0.0j)",
+    "gross_absolute_component_sum": "81.211957800806346386745286021809726",
+    "gross_to_net_cancellation_factor": "3.1080021569449996804212898162442519",
+    "net_as_percent_of_gross_absolute_sum": "32.175009845647811699365811046711864",
+    "positive_quartic_bucket": "27.541001191276779191753769764052456",
+    "negative_quartic_bucket_absolute": "53.67095660952956719499151625775727",
+    "q_v_orthogonality_residual": "(-5.827482732e-112 + 0.0j)",
+    "q_conjugate_symmetry_residual": "0.0",
+    "q_imaginary_modes": {
+      "-2": "-0.002723065921118821578322520850311206",
+      "-1": "-0.00012212971796645462283984645797960135",
+      "0": "0.0",
+      "1": "0.00012212971796645462283984645797960135",
+      "2": "0.002723065921118821578322520850311206"
+    },
+    "endpoint_hDelta_limit_at_x0": "4.3724672435841142130412423152742313",
+    "deltaQ_samples_t": {
+      "0.05": "-0.35313297308455253169602249150741929",
+      "0.1": "-0.76732271513353272453628189012970644",
+      "0.25": "-1.8142526688854269207045869819602029",
+      "0.5": "-1.2220388833621590031607434011238148",
+      "0.75": "0.60216026973319188217241625641644073",
+      "0.9": "0.53737048197573223667071597242615133"
+    }
+  },
+  "seconds": 1.370417833328247
+}

@@ -16,9 +16,10 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 - НОВЫЕ ЗАПРОСЫ/РЕСИВЕРЫ (ранее не в очереди): Проверка PDF (CONDITIONAL_CLOSURE_PROVED, стена M-H4c); Числа Стирлинга utility-layer; Прибор Вейля (насыщение e^{2W}, вершина 2.09W, мотор Какейи); CANONICALIZE_WEILOP (D03G/H/I открыты); 030_CoupledFullSumResponseCertificate (G1-G7); G5_MODE4_CANONICAL_HERMITIAN_TAIL_ROW; DLMF3085 weight-match receiver; B_prime root-to-normalized row.
 - МЕТА (memory-extended): K1–K8 промпт; hard gate ≠ soft penalty; BRIDGE_KIND taxonomy (7 видов моста); Q_ζ compiler; Rodgers–Tao no-go (равномерно-положительный запас знака невозможен).
 
-## REQ-2026-09-23-FOKAS-MATRIX-DEFECT · Selected Ferrers joint matrix defect through Fokas paired windows · OPEN
+## REQ-2026-09-23-FOKAS-MATRIX-DEFECT · Selected Ferrers joint matrix defect through Fokas paired windows · ANSWERED_RENDERED_RECOVERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED_RENDERED_RECOVERED`
+- Recovery 2026-09-25: unchanged historical UI-rendered response archived as `proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RESPONSE_RENDERED_2026-09-23.txt`, 28,732 bytes / 443 LF / SHA-256 `04b3eee29c83517886e2bf5e9d414c079e692d558022a7b23cadd8733b32c038`. Original downloadable Markdown bytes remain unverified. [Source recovery and current scope](proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RECOVERY_2026-09-25.md). Exact rank-two-boundary/full-residual representation only; weighted decay and floors not proved. The historical constant-beta wrapper is now excluded for this family by the separately audited floor kill. No resend, Lean admission or cofinal tracking claim.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`
 - Boundary: `GOAL058_SELECTED_FERRERS_JOINT_MATRIX_DEFECT`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`

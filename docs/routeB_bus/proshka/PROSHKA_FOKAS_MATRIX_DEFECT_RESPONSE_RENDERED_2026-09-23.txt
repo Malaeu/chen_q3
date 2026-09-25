@@ -1,0 +1,443 @@
+UI-RENDERED RESPONSE EXTRACT. Not original downloadable Markdown bytes.
+Source: PROSHKA_FOKAS_MATRIX_DEFECT_RESPONSE_UI_AX.txt. Full main response text and displayed LaTeX preserved; UI controls omitted.
+
+STATUS: TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2
+STATUS: TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2
+YAML
+OPERATIVE_CLASS: TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2
+REQUEST_ID: REQ-2026-09-23-FOKAS-MATRIX-DEFECT
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_JOINT_MATRIX_DEFECT
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+SOURCE_COMMIT: 3aeb6a2eb14b8b52513f62e7771eb6ec1f64bd74
+REQUEST_SHA256: 368b62622519ab31098e85d463b33c8295c0897a47ffec9362d60bcd0e7a3087
+BOOTSTRAP_BLOB: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+SCOPE: ABSTRACT
+VERIFIER: PAPER
+RESULT: EXACT_JOINT_MATRIX_DEFECT_WITH_RANK_TWO_WINDOW_BOUNDARY
+RESIDUAL_DECAY: NOT_PROVED
+SECTOR_FLOORS: NOT_PROVED
+MODE_CHI_THETA_RATES: NOT_SUPPLIED
+PROGRESS_CLASS: REPRESENTATION_PROGRESS
+COGNITIVE_OPERATOR: DUALIZE
+LEAN_EXECUTED: false
+REPOSITORY_WRITTEN: false
+ROUTE_PROMOTION: false
+Ы.  Совместный дефект допускает точное преобразование: все внутренние оконные граничные члены сворачиваются в два явных вектора. В центрированном tracking-бюджете конечная нормировка 
+Z
+ сокращается точно. Но убывание совместного остатка и положительные floors этим не доказаны.
+Выбранный механизм —  тождество Грина для того же двухмодового источника , с переносом дифференциального выражения на оконное ядро. Ниже новый бумажный вывод, а не утверждение о наличии готового Lean-supplier.
+Этот вердикт — Markdown
+1. Что закреплено и что остаётся условным
+1. Что закреплено и что остаётся условным
+Прочитан весь приложенный UTF-8 payload:  177681 байт, 3879 строк, конечный LF . SHA-256 выше вычислен по его буквальным байтам. Обе отдельно заявленные SHA-256 дополнительных Lean-исходников совпали. Новую проверку ядром Lean или проверку transport/UI receipt я не выполнял.
+[ABSTRACT | CONDITIONAL]  Непосредственный потребитель — 
+selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+; семейный переход — 
+selectedFerrersTrackedGroundTail_exists_cofinal_reindex_of_eventually_sectorFloors
+. У них сохраняются  тот же 
+q
+, тот же 
+K
+, Rayleigh-сдвиг 
+a
+, odd-floor, complement-floor и 
+residualEnergy/beta² < 1
+. В предоставленном tail API 
+beta0
+ и 
+beta
+ — постоянные положительные числа , не произвольно заменяемые функциями индекса. Terminal принимает одну entire real-zero family, а не две независимо выбранные последовательности. 
+PROSHKA_REQUEST_GOAL058_FOKAS_M… +1
+[COFINAL_FAMILY | CONDITIONAL]
+P
+ по-прежнему не поставлен без 
+hmode
+ и 
+hchi
+; сходимость центрированного trial из имеющейся сборки дополнительно требует 
+htheta
+. Этот разбор не закрывает ни одну из этих предпосылок. Сохраняется исходное 
+m=N=k+2
+, затем именно сдвиг выбранной shell, затем уже предусмотренный eventual-floor tail. Новой диагонали нет. 
+PROSHKA_REQUEST_GOAL058_FOKAS_M… +2
+2. Источниковое тождество, а не подмена Weil-оператора пролатным
+2. Источниковое тождество, а не подмена Weil-оператора пролатным
+[ABSTRACT | PAPER]  Зафиксируем одну ячейку выбранного семейства. Пусть
+\lambda=\sqrt m,\quad L=\log m,\quad c=2\pi m,\quad p(v)=1-v^2,\quad \mathcal L_c f=-(pf')'+c^2v^2f.
+Обозначим через 
+f_0(v)=h_0(\lambda v)
+, 
+f_4(v)=h_4(\lambda v)
+выбранные нормированные физические моды в безразмерной координате , на 
+[-1,1]
+. Нормировки остаются исходниковыми. Их уравнения:
+\mathcal L_cf_r=\theta_rf_r,\qquad \theta_0=\Lambda_0+c^2,\quad \theta_4=\Lambda_4+c^2.
+Здесь 
+\Lambda_0,\Lambda_4
+ — 
+mode4ClassicalEvenEigenvalue
+ с индексами  0 и 2 , соответственно. Это  не  Fourier-скаляры 
+chi0/chi2
+ и  не  собственные значения CCM-матрицы. Выбор мод и совпадение с 
+normalizedPhysicalMode
+ закреплены источником; регулярность и нулевой поток — полями Ferrers-solution.
+Положим
+\kappa_0=\frac{I_4}{\sqrt{I_0^2+I_4^2}},\qquad \kappa_4=-\frac{I_0}{\sqrt{I_0^2+I_4^2}},\qquad H=\kappa_0f_0+\kappa_4f_4.
+Это буквальная 
+prolateCombination
+ в координате 
+v
+, без нового фазового выбора.
+H
+ не объявляется собственной модой.  Наоборот,
+\mathcal L_cH=\theta_0H+(\theta_4-\theta_0)\kappa_4f_4.
+Вместо удаления второго слагаемого вводим явную комбинацию
+\boxed{ U=\frac{\kappa_0}{\theta_0}f_0+ \frac{\kappa_4}{\theta_4}f_4, \qquad \mathcal L_cU=H. } \tag{1}
+Это  обращение только на двух выбранных модах , не постулированный обратный оператор на всём 
+L^2
+ и не новая операторная реализация.
+Почему деление и интегрирование по частям законны
+Почему деление и интегрирование по частям законны
+Для каждой выбранной моды имеются 
+f\in C[-1,1]\cap C^2(-1,1)
+, чётность и 
+pf'\to0
+ на концах. Из
+(pf')'=(c^2v^2-\theta)f
+правая часть ограничена на 
+[0,1]
+. Если её модуль не превосходит 
+M
+, то
+|p(v)f'(v)|\le M(1-v),\qquad |f'(v)|\le\frac{M}{1+v}\quad(0\le v<1).
+Следовательно, функция и поток допускают нужное  абсолютно непрерывное продолжение ; энергетическое интегрирование законно. Чётность даёт 
+f'(0)=0
+, а естественный поток убирает верхний край:
+\theta\int_0^1f^2 =\int_0^1p(f')^2+c^2v^2f^2>0.
+Строгость следует из ненулевой непрерывной моды и 
+c>0
+. Поэтому 
+\theta_0,\theta_4>0
+. Это бумажное следствие источниковых свойств; семейную нижнюю оценку на 
+\theta_r
+ я не предполагаю.
+U
+ наследует эти свойства. Далее интегрирование проводится только на 
+[\ell/m,1]
+, где 
+\ell\ge1
+. Комплексные степенные тесты там гладкие. Бесконечный ряд Феррерса сохраняется сгруппированным: ни глобальная перегруппировка по мономам, ни дифференцирование одной только 
+C^0
+-сходимости не используются.
+3. Точное совместное матричное тождество
+3. Точное совместное матричное тождество
+[ABSTRACT | PAPER]  Для всех 
+|n|\le N
+ определим
+s_n=\frac12-\frac{2\pi i n}{L},\qquad \sigma_n=s_n-1,\qquad A=\frac{m^{1/4}}{\sqrt L},
+t_n=\sum_{\ell=1}^{m-1}\ell^{-s_n} \int_{\ell/m}^{1}H(v)v^{s_n-1}\,dv. \tag{2}
+Слагаемое 
+\ell=m
+ исходной суммы равно нулю; оно исключено явно, а не потеряно. Из принятой  paired-window формулы :
+\mathbf t=\mathbf b-\mathbf e,\qquad \alpha=A\mathbf t,\quad Z=\|\alpha\|_2>0,\quad q=\alpha/Z.
+Именно такой коэффициент и такая конечная нормировка указаны в источнике. 
+PROSHKA_REQUEST_GOAL058_FOKAS_M…
+Пусть 
+K=\texttt{sourceCCMFiniteMatrix}(i)
+, 
+a=q^*Kq
+ и 
+M=K-aI
+, с неизменёнными carrier и порядком мод. Введём  объёмный вектор  — интегралы после переноса дифференциального выражения:
+\boxed{ \begin{aligned} \mathcal V_n(U)=\sum_{\ell=1}^{m-1}\ell^{-s_n} \int_{\ell/m}^{1}U(v)\bigl[ &-(s_n-1)(s_n-2)v^{s_n-3}\\ &+s_n(s_n-1)v^{s_n-1} +c^2v^{s_n+1}\bigr]dv. \end{aligned}} \tag{3}
+И два  граничных скаляра :
+B^{(0)}=\sqrt m\sum_{\ell=1}^{m-1} \frac{p(\ell/m)U'(\ell/m)}{\ell}, \qquad B^{(1)}=m^{3/2}\sum_{\ell=1}^{m-1} \frac{p(\ell/m)U(\ell/m)}{\ell^2}. \tag{4}
+Тогда
+\boxed{\mathbf t=\mathcal V(U)+B^{(0)}\mathbf1-B^{(1)}\boldsymbol\sigma.} \tag{5}
+Следовательно,  искомый совместный дефект , до любых раздельных модулей, равен
+\boxed{ \begin{aligned} \mathcal D &=(K-aI)\mathbf b-(K-aI)\mathbf e\\ &=M\mathcal V(U)+B^{(0)}M\mathbf1-B^{(1)}M\boldsymbol\sigma, \qquad r=\frac A Z\mathcal D. \end{aligned}} \tag{6}
+Здесь 
+\mathbf1
+ —  строка из единиц , не единичный вектор нулевой моды. Все внутренние граничные поправки лежат в
+\operatorname{span}_{\mathbb C}\{M\mathbf1,M\boldsymbol\sigma\}.
+Ранг этой граничной части не превосходит двух независимо от 
+m,N
+.  Но это не утверждение о ранге всей невязки или её малости.
+Вывод и полный учёт границ
+Вывод и полный учёт границ
+Для комплексного теста 
+\phi
+ используем  билинейное тождество Грина :
+(\mathcal L_cU)\phi-U\mathcal L_c\phi =\frac d{dv}\{p(U\phi'-U'\phi)\}. \tag{7}
+Дополнительного сопряжения здесь нет: сопряжение Fourier-базиса уже учтено в 
+s_n
+. При 
+\phi=v^{s_n-1}
+:
+\mathcal L_c\phi =-(s_n-1)(s_n-2)v^{s_n-3} +s_n(s_n-1)v^{s_n-1}+c^2v^{s_n+1}.
+Поэтому каждый нижний край 
+t=\ell/m
+ даёт  ровно
+\ell^{-s_n}p(t) \bigl[U'(t)t^{s_n-1}-(s_n-1)U(t)t^{s_n-2}\bigr]. \tag{8}
+Верхний край 
+1
+ даёт ноль: отдельно 
+pU'\to0
+, 
+U
+ ограничена и 
+p\phi'\to0
+. При 
+\ell=m
+ интервал вырожден и вклад нулевой. Нижний край 
+1/m
+ и  все  внутренние 
+\ell/m
+, 
+1\le\ell<m
+, остаются в (8).
+На точной дискретной решётке
+\ell^{-s_n}(\ell/m)^{s_n-1}=\frac{\sqrt m}{\ell}, \qquad \ell^{-s_n}(\ell/m)^{s_n-2}=\frac{m^{3/2}}{\ell^2},
+поскольку 
+m^{s_n}=\sqrt m
+. Суммирование (8) даёт (4)–(5). Это источник  rank-two сокращения ; оно верно и для 
+n=0
+, и для обоих знаков 
+n
+.
+Границы 
+v=0
+ в этом вычислении нет:  объединённое окно тождественно отсутствует на 
+(0,1/m)
+. Граница 
+-1
+ не добавляется, поскольку исходный коэффициент интегрируется по положительному мультипликативному окну; удвоение интеграла было бы ошибкой.
+Нельзя сначала разнести формулу на полные  Mellin-моменты  и молча написать 
+\int_0^1U(v)v^{s_n-3}dv
+. При 
+\Re s_n=1/2
+ такой интеграл вообще может расходиться. В (3) он законен именно благодаря сохранённому нижнему краю. Нельзя также читать 
+v
+-сдвиг степени как замену исходного 
+n
+ или перенести lattice-префактор 
+A
+ на произвольное 
+s
+.
+4. Что именно получает compact tracking consumer
+4. Что именно получает compact tracking consumer
+[ABSTRACT | PAPER]  Нулевая Fourier-мода уже связана в источнике с центральным raw-transform:
+F^{raw}(0)=\sqrt L\,q_0 =\frac{\sqrt L\,A\,t_0}{Z}.
+На выбранной shell это число ненулевое, значит 
+t_0\ne0
+. Это не новое предположение о численном кэше. 
+PROSHKA_REQUEST_GOAL058_FOKAS_M… +1
+Обозначим буквальный 
+sourceOrderedCCMKernelL2(L,N,z)
+ через 
+\mathcal K_i(z)
+. При  той же 
+\beta>0
+ выражение справа в tracking theorem превращается  точно  в
+\boxed{ \left|\frac{\Xi(0)}{F^{raw}(0)}\right| \mathcal K_i(z)\sqrt{\frac{\|r\|_2^2}{\beta^2}} = \frac{|\Xi(0)|\mathcal K_i(z)} {\beta\sqrt L\,|t_0|}\,\|\mathcal D\|_2. } \tag{9}
+Z
+ и 
+A
+ сократились.  Это не удаление нормировки из задачи: исчезла конкретная пара взаимно обратных множителей. Вместо отдельной нижней оценки 
+Z
+ остаётся  центральное отношение , связанное с нулевой модой.
+Поэтому оставшееся  конкретное источниковое неравенство  для этой residual-ветки имеет вид:
+для каждого компакта 
+E\subset\texttt{centeredCriticalStrip}
+ и каждого 
+\varepsilon>0
+, на том же выбранном хвосте, при всех достаточно больших 
+j
+ и всех 
+z\in E
+,
+\boxed{ |\Xi(0)|\mathcal K_{i_j}(z) \left\| M_j\mathcal V(U_j) +B_j^{(0)}M_j\mathbf1 -B_j^{(1)}M_j\boldsymbol\sigma_j \right\|_2 \le \varepsilon\beta\sqrt{L_j}|t_{j,0}|. } \tag{10}
+Все интегралы и суммы в (10) раскрыты в (1)–(4).  Ни одна из трёх норм по отдельности здесь не требуется.  Возможное сокращение должно сохраняться внутри вектора.
+[COFINAL_FAMILY | CONDITIONAL]  Есть эквивалентная, удобная  source-scaled форма . Пусть 
+S_j
+ — 
+sourceScale
+ той же shell  и
+G_j(0)=\texttt{preAnchorGwinTransformCoordinate}(i_j,h_j,0) =\sqrt{L_j}A_jt_{j,0}.
+Имеющийся 
+P
+ обеспечивает 
+S_jG_j(0)\to\Xi(0)\ne0
+. Потому правая часть (9) равна
+\left|\frac{\Xi(0)}{S_jG_j(0)}\right| \frac{|S_j|A_j}{\beta}\, \mathcal K_{i_j}(z)\|\mathcal D_j\|_2,
+где первый множитель стремится к единице. Значит, (10) можно доказывать как  компактно-равномерное убывание
+\boxed{\frac{|S_j|A_j}{\beta}\mathcal K_{i_j}(z)\|\mathcal D_j\|_2\longrightarrow0.} \tag{11}
+Это использует условный 
+P
+, а не доказывает его. Соответствующее центральное отношение уже присутствует в переданной сборке. 
+PROSHKA_REQUEST_GOAL058_FOKAS_M…
+Отдельно сохраняется буквальный gate
+\frac{\|\mathcal D_j\|_2^2}{\beta^2\|\mathbf t_j\|_2^2}<1,
+а также оба floor-условия.  Ни (6), ни один маленький residual не поставляют выбор ground-ветви.  Центровка, production 
+-z
+ и  same-witness lock  потребителя не меняются; новый transform не определялся.
+5. Строгая граница результата и отрицательные контроли
+5. Строгая граница результата и отрицательные контроли
+[ABSTRACT | PAPER]  Самая сильная атака на этот результат:  (6) справедливо для любой фиксированной конечной матрицы 
+K
+. Следовательно, оно само не может заставить именно Weil-матрицу иметь положительный floor или почти собственный trial. Специальная арифметика 
+K
+ ещё должна доказать (10) либо (11). Множители 
+c^2
+, веса около 
+1/m
+ и 
+1/\theta_r
+ остаются внутри явного объекта; их цены не списаны.
+Таким образом, классификация выхода —  source representation + точная формула residual , но  не residual rate и не floor . Контролируемое сокращение с нужной скоростью для выбранного семейства пока не установлено.
+Отрицательный контроль граничного усиления.  При 
+m=2,n=0,c=1,U=1,H=\mathcal L_cU=v^2
+ прямой интеграл минус один только объёмный член равен
+\boxed{3\sqrt2/4\ne0.}
+Это точный свидетель против удаления нижней границы из тождества Грина. Он  не является выбранным 0/4 пакетом , не опровергает его возможное специальное сокращение и не опровергает Route B.
+Контроли из задания сохранены.  Для 
+H=P_2
+ нулевая масса сосуществует с 
+\widehat H(1/2)=-2/5
+. Для 
+K=\operatorname{diag}(0,1)
+, 
+q=(0,1)
+ невязка равна нулю, но на 
+q^\perp
+ у 
+K-aI
+ имеется значение 
+-1
+. Поэтому ни  zero-mass-only , ни  residual-only  аргумент не заменяют источниковые и floor-гипотезы. 
+PROSHKA_REQUEST_GOAL058_FOKAS_M…
+DISCRIMINATOR для предполагаемого точного зануления:  на настоящем источнике проверять вещественную или мнимую часть конкретной координаты 
+\mathcal D_j
+, причём bulk и boundary складываются до округления и абсолютной величины. Строгий интервал, отделённый от нуля, опровергнет 
+\mathcal D_j=0
+. Одна такая ячейка  не  опровергнет (10): для отрицания семейного decay нужен кофинальный нижний контроль ненулевого взвешенного дефекта.
+6. Проверки, альтернативы и dependency closeout
+6. Проверки, альтернативы и dependency closeout
+[ABSTRACT | PAPER]  Алгебраические контроли относятся к тождествам; численные — только к изготовленным конечным примерам, не к выбранной CCM-семье. Предсказания зарегистрированы до тестов; регистрация имеет SHA-256:
+a9816150cef07d11ec3b901dafef8827a4e28659c5db78e0bfed9b96af214c8e .
+Предсказание
+Результат
+P1:
+ lattice-границы имеют rank ≤ 2
+Подтверждено выводом (8), проверкой степеней и обоих знаков 
+n
+P2:
+ удалённая граница даёт 
+3*sqrt(2)/4
+ на planted source
+Подтверждено точной символьной арифметикой
+P3:
+A/Z
+ и 
+Z
+ сокращаются именно в centered budget
+Подтверждено точной алгеброй (9)
+P4:
+ joint bulk+boundary совпадает с прямым интегралом; мутации различимы
+Подтверждено на изготовленных контрольных источниках
+Выполнены  42 проверки: 13 алгебраических, 27 численных контрольных и 2 проверки исходниковых хешей . Численные случаи использовали 
+m=N=2,3,5
+, 65 десятичных знаков и  искусственные
+H=\mathcal L_cU
+, 
+K
+, не проектные CCM-матрицы и не вычисленные выбранные моды. Правильные формы согласовались до порядка 
+10^{-63}
+; пропущенная или перевёрнутая граница уверенно различалась. Эти измерения не заменяют приведённого бумажного доказательства и не являются  ARB_INTERVAL-сертификатом .
+Новые CCM-спектры, асимптотические фиты, Lean-сборка и repo writes не выполнялись. Предыдущие сообщения о тестах старого Fokas ZIP не использованы как независимое evidence текущего результата.
+Два допустимых представления оставшегося источникового долга:
+Представление
+Решающий объект
+Оценка силы/стоимости
+Выбранное: Green + 
+U
+ на двух модах
+Один bulk-вектор и два граничных скаляра, затем точное действие 
+M
+Низкая алгебраическая стоимость; сразу обнаруживает потерянные границы. Не гарантирует decay
+Резервное: отдельные mode-resolvents по 
+s_n
+Делители 
+\theta_r-s_n(s_n-1)
+ и возникающие коммутаторы с 
+K
+Более дорогой аудит; может сохранить частотное подавление. Нельзя считать 
+K
+ коммутирующей с диагональным фильтром
+Это оценки выбора следующего представления, не измеренное ускорение. Полная реализация старого 
+L^2
+-оператора не требуется для доказательства (6).
+YAML
+DOWNSTREAM_CONSUMER: selectedFerrersTrackedGroundTransformAt_realZeros_and_pointwiseTracking_of_sectorFloors
+ACTUAL_CONSUMER_REQUIREMENT: same_source_sector_floors_plus_compact_weighted_residual_tracking
+ORIGINAL_REQUESTED_OBJECT: selected_source_cancellation_of_two_matrix_actions
+ORIGINAL_OBJECT_IS: UNKNOWN
+KNOWN_WEAKER_INTERFACES:
+  - joint_centered_bound_10_equivalent_to_the_requested_tracking_envelope
+  - conditional_source_scaled_bound_11_using_the_existing_P_central_limit
+NOT_REQUIRED_BY_THIS_IDENTITY:
+  - separate_small_norm_of_e
+  - separate_bounds_on_Mb_and_Me
+  - an_independent_lower_bound_on_Z_in_the_centered_product
+FAILURE_TYPE: NO_DERIVATION
+EPISTEMIC_STATUS: RESEARCH_DEBT
+REOPEN_TRIGGER: proof_of_10_or_11_for_the_literal_selected_K_and_same_tail
+NOVELTY_AXIS: exact_rank_two_window_boundary_and_centered_normalizer_cancellation
+KILL_SCOPE: NONE
+MINIMAL_MISSING_IDENTITY_OR_INEQUALITY: source_scaled_joint_Green_defect_bound_11
+ROUTE_SCORE: 3
+Что стало меньше:  вместо двух неоплаченных матричных действий получен один явный Green-дефект; множество оконных границ сжато до двух скаляров; отдельный 
+Z
+-бюджет в центрированной оценке устранён тождеством.  Что не закрыто:  арифметическое сокращение bulk с boundary, оба floors, mode/chi/theta rates.  Что не повторять:  разносить paired-выражение на расходящиеся Mellin-моменты или выдавать rank-two за малую норму. Запись стратегии — в этом вердикте; проектная база памяти не изменялась.
+CODEX DIRECTIVE — TRY_GOAL058_SELECTED_JOINT_GREEN_IDENTITY
+CODEX DIRECTIVE — TRY_GOAL058_SELECTED_JOINT_GREEN_IDENTITY
+Один следующий target:
+selectedFerrersFiniteCCMResidual_eq_jointGreenBulk_rankTwoBoundary
+ — новое предлагаемое имя, не заявление о найденном supplier. Доказать (6) для буквальных 
+selectedFerrersFiniteCCMRow
+, Rayleigh и residual на существующей selected shell, используя (1)–(8). Формула должна быть для всех индексов этого семейства, а не для cache-ячейки.
+Использовать выбранные 
+selectedFerrersPreAnchorSolution0/4
+, их фактическую физическую нормировку и 
+pair_spec
+. Положительность 
+\theta
+ вывести из естественной энергии, не из желаемого Weil-floor. До формализации проверить точный shelf-fit; не создавать дубликат. Сначала сохранить все нижние края, затем выполнить lattice-сокращение в два вектора. Действие 
+K
+ не заменять действием пролатного выражения. Центральное равенство (9) проверить как буквальное применение уже имеющегося zero-mode supplier.
+Успех:  новый source-specific all-index identity компилируется; kernel/axiom audit не содержит  sorryAx ,  sorry ,  admit  или новых аксиом; carrier, 
+n=0
+, 
+\pm n
+, 
+Z
+, sourceScale, production  -z  и обе штатные хвостовые привязки сохранены; planted удаление границы отвергается. Записываем закрытие только этого тождества, не (10)/(11), floors или Goal058.
+Для предлагаемого файла 
+Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenMatrixDefect.lean
+ проверки после создания:
+WORKDIR: q3.lean.aristotle
+  lake env lean Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenMatrixDefect.lean
+  lake build Q3.Proofs.RouteB.G6N1SelectedFerrersJointGreenMatrixDefect
+WORKDIR: <repo root>
+  scripts/q3_check.sh Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenMatrixDefect.lean
+EXPECTED_AXIOMS: no axioms outside [propext, Classical.choice, Quot.sound]
+<repo root>
+ означает корень уже закреплённого рабочего checkout, например 
+/Users/emalam/GitHub/rh_lean_01_2026
+; это обозначение рабочей директории, не команда shell.
+Остановка:  обнаружено несоответствие определения 
+H
+, фазы, меры или Rayleigh; для завершения пришлось предположить само тождество/decay, удалить внутренние границы или сменить расписание; либо точный integration-by-parts API не закрывается имеющимися источниковыми свойствами. Вернуть первый конкретный тип недостающей леммы и лог. После зелёного identity остановиться перед (11): следующая аналитическая работа должна доказывать именно совместный источниковый bound, а не новый generic triangle/Hurwitz wrapper.  Лимиты и guards не повышать; RH не заявлять.

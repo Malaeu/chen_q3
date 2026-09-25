@@ -68,9 +68,11 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 
 ## Последний доказанный результат
 - 2026-09-25 Mac: [полный K/sign-пакет](../routeB_bus/fokas_k_sign_2026-09-25/REPORT.md):
+  [Аудит исходного Fokas-goal](../routeB_bus/fokas_k_sign_2026-09-25/GOAL_AUDIT.md): проверка завершена точным препятствием fixed-beta consumer; Goal058 и cellwise tracking открыты.
   PAPER Robin-width усилен до `G/8*(16m-3)/(24m-3)*4^(-2m)` без смены склейки;
   строгий Arb m2 finite-algebra margin с уточнённым Frobenius budget положителен.
   Source applicability m2 и cofinal sign не закрыты; диагностики m4/8/13 — не доказательство хвоста.
+  Дополнительно: [signed density test](../routeB_bus/fokas_k_sign_2026-09-25/NORMALIZED_CORRELATION.md) строго исключил pointwise positivity на reference m2; m4 cancellation factor ~759 — только диагностика.
   Ответ №7 даёт более сильную скобку при m>=10000 и убивает только RAW_R6 value-anchor; наш центр+производная не подпадает под этот kill.
 - 2026-09-25: Fokas step 1 в Lean: положительность двух выбранных θ, общее
   Mellin–Green тождество с нижним краем и точный перенос выбранной строки
@@ -113,7 +115,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (секция `2026-09-25 · selected complement floor`). Незакрытые строки других запросов
   остаются по своим прежним адресам; ответ нельзя переносить между чатами.
 - Fokas-запрос `PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`:
-  ответ виден в UI, но точный текст ещё не сохранён в bus; не повторять отправку.
+  исторический UI-rendered ответ восстановлен в bus: [источник и границы](../routeB_bus/proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RECOVERY_2026-09-25.md). Исходный Markdown не верифицирован. Точная формула есть; decay открыт, constant-beta wrapper неприменим. Не повторять отправку.
 
 ## Не повторять
 - Owner recovery, старые launch/ingest/publication (RESUME `Do not repeat`) — не переигрывать.

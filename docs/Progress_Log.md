@@ -7654,3 +7654,42 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 **Следующий ход:** семейная оценка подписанного центра с исправленным anchor-budget(19); не новая сетка и не повтор отправки уже отвеченного запроса7.
 **Адреса:** docs/routeB_bus/fokas_k_sign_2026-09-25/REPORT.md; q3.lean.aristotle/docs/insights/fokas_full_matrix_sign_certificate_2026_09_25.md.
 **Чей вердикт и аргумент:** root-derived algebra/diagnostics; Luna реализовала Arb, независимый native reviewer проверил формулы/код и повторил сертификат. PAPER width проверена по точным indices4m..6m-1 и положительным denominators; kernel/Lean не запускались. PX_RH_CLAIM: NOT_MADE.
+
+## 2026-09-25 — Full-K normalized density discriminator (Mac)
+
+Развилка: получить знак полной центральной формы через положительность плотности или совместное интегральное сравнение.
+Выбрали: совместное сравнение с сохранением всех prime terms.
+Почему: точная нормировка сокращает скалярную WR-константу, но строгий Arb m2 тест даёт положительный вклад у нуля и отрицательный при L/2 на всей энергетической скобке. Полный знак при этом положителен.
+Что отвергли: pointwise positivity для этой reference-cell; это НЕ cofinal kill.
+Инсайты: вес h меняет знак при log(t), t^3-t-1=0; m4 диагностический остаток составляет лишь 0.13178% суммы модулей трёх вкладов.
+Блокеры: общий signed central estimate, затем Schur/complement floor и tracking остаются открыты.
+Иглы Зингера: отрицательная плотность совместима с положительной полной формой; абсолютные оценки теряют нужное сокращение.
+Следующий ход: источниковая интегральная оценка полного центра с repaired anchor; подготовленный запрос №8 не отправляли и не дублировали.
+Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/NORMALIZED_CORRELATION.md, normalized_correlation_certificate.py/json, quartic_components.py и precision outputs.
+Чей вердикт: root PAPER derivation; native independent read-only /root/sign_algebra_review проверил формулы и повторил строгий Arb script без замечаний; /root/rectangle_probe провёл компонентную диагностику, root повторил m4.
+
+## 2026-09-25 — Recovered original Fokas matrix-defect response (Mac)
+
+Развилка: очередь считала старый Fokas-запрос OPEN; текущий UI указал уже существующий локальный архив ответа.
+Выбрали: восстановить неизменённый UI-rendered источник в bus и явно отделить его от оригинального Markdown.
+Почему: SHA-256 локального файла совпал с опубликованным в старом чате; формула полного дефекта и точный оставшийся tracking-bound теперь доступны обеим машинам.
+Что отвергли: повторную отправку, объявление rank-two малой нормой, перенос исторического constant-beta wrapper на cellwise delta без нового потребителя.
+Инсайты: theta0*theta4 в локальном Lean-кандидате — снятие знаменателей той же Green-формулы; оно сокращается с центральной координатой. Нужный совместный bound остаётся уравнением (10)/(11), не отдельной оценкой нормировки Z.
+Блокеры: source-weighted residual decay и cellwise complement/consumer. Исходный Markdown не получен; Lean-кандидаты остаются untracked и не допускаются этой записью.
+Иглы Зингера: восстановление ответа закрывает долг источника, а не математический долг скорости.
+Следующий ход: текущий запрос №8 по полному центральному знаку остаётся в другом чате; его не дублировать.
+Адреса: docs/routeB_bus/proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RECOVERY_2026-09-25.md и PROSHKA_FOKAS_MATRIX_DEFECT_RESPONSE_RENDERED_2026-09-23.txt.
+Чей вердикт: исторический TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2; provenance восстановлен root из текущего UI и существующих локальных байтов.
+
+## 2026-09-25 — Fokas mechanism goal: audited exact-obstacle outcome (Mac)
+
+Развилка: считать исследовательский goal завершённым по исходной альтернативе «доказательство звена либо точное препятствие» или неявно расширить его до полного ground tracking.
+Выбрали: закрыть исходную проверку механизма точным препятствием для fixed-beta consumer; Goal058 оставить открытым.
+Почему: source-matched полный дефект и сокращение нормировки проверены; кофинальный свидетель опровергает постоянный floor именно выбранной семьи при принятых source/hmode входах. Это не отсутствие найденной оценки и не экстраполяция m2.
+Что отвергли: вывод о невозможности всех Fokas-путей, доказанном cellwise знаке или Lean-допуске untracked кандидатов.
+Инсайты: исходный consumer, а не только размер остатка, является доказанным препятствием; точная Green-формула пригодна для будущего cellwise перехода.
+Блокеры дальнейшего Goal058: delta_j, новый consumer, weighted rate, central sign и Schur-floor.
+Иглы Зингера: завершение proof-or-obstacle исследования не равно завершению теоремы RH.
+Следующий ход общего проекта: запрос №8 и источник совместного центрального знака; повторных отправок не было.
+Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/GOAL_AUDIT.md.
+Чей вердикт: root requirements audit и независимый read-only /root/sign_algebra_review; границы результата совпали.
