@@ -1,0 +1,57 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-ADJOINT-GREEN-MIX
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_PREFIX_MIXED_TERM_ADJOINT_GREEN
+SOURCE_COMMIT: 56ce8d82
+PREDECESSOR: REQ-2026-09-25-COUPLED-DEFECT-SIGN
+PREDECESSOR_VERDICT_SHA256: d4ff0e570e53cfc51ed9311e4228725a7840e03a5ddf0e3889a0910f522c2818
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, узкий следующий бумажный тест после твоего OPEN_COUPLED_DEFECT_SIGN.
+Полный ответ и независимый аудит сохранены в
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COUPLED_DEFECT_SIGN_2026-09-25.md
+и PROSHKA_GOAL058_COUPLED_DEFECT_INDEPENDENT_AUDIT_2026-09-25.md.
+Равномерный хвостовой бюджет (5)–(13) принят как PAPER; знак (18) открыт.
+Не повторяй оценку геометрического хвоста или нормовое hmode.
+
+Сохрани ту же cofinal семью, K_j, U_j, m, s_n, исходную склейку 5m,
+полную W02–WR–Prime форму и Q6. Пусть N=6m−1, F_{nk}=m^(1/4)
+M_{m,k}(s_n)/sqrt(log m), x=Fc, d=coeff(T_m S_m),
+c_k=κ_m(-1)^k[P_k(E_0,m)−P_k(E_4,m)] из (16), 1≤k≤N.
+Положи b_k=(F* K_j d)_k, h_k=(-1)^k b_k. Тогда точный смешанный член
+(MIX) есть C_m=2 Re[κ_m Σ_{k=1}^N(P_k(E_0,m)−P_k(E_4,m))h_k−d* K_j d].
+Здесь κ_m — исходный действительный множитель (16), а h_k содержит
+комплексно сопряжённые неполные Mellin-моменты; фаза не заменяется модулем.
+
+Проверь конкретный adjoint-Green путь: для трёхчленной source-рекурсии
+J_m P(E)=E P(E),  ℓ_k P_{k−1}+d_k P_k+u_k P_{k+1}=E P_k,
+найди/исключи подходящее решение (J_m^T−E)φ^E=h на 1≤k≤N с корректными
+граничными данными. Если допустимы φ_0=φ_{N+1}=0, то суммирование по частям
+предсказывает
+  Σ_{k=1}^N P_k(E)h_k = −ℓ_1 φ^E_1 P_0(E) − u_N φ^E_N P_{N+1}(E).
+Независимо проверь знак, индексы и возможный resonance этой формулы,
+не постулируй обратимость конечного Jacobi-блока. При ином boundary
+condition выпиши точный исправленный Green-терм.
+
+Затем проверь, может ли разность E_0/E_4 этих граничных выражений вместе
+с оставшимися w*Kw, d*Kd и plane-членом в квартетной форме (17) дать
+односторонний margin (18) на выбранной семье. Обязательно удержи lower-edge
+forcing (20)–(21): на s_n-сетке r^{-s_n}(r/m)^{s_n}=m^{-1/2}, поэтому
+нельзя усреднять фазы как независимые. Диагональ, края и возвращённые
+prime powers не зануляй по отдельности.
+
+Верни один из трёх проверяемых исходов:
+1. SIGN_BOUND: точный Green-перенос плюс доказанный односторонний margin
+   для ПОЛНОЙ (17) относительно B(m), с диапазоном m и строгим выводом
+   лишь для первого скалярного знака τ_j; Schur-floor остаётся OPEN.
+2. ADJOINT_PATH_KILL: точная причина, почему этот Green-перенос не даёт
+   нужного знака на выбранных source-данных (например resonance или
+   несокращаемый boundary/forcing), с формулой и областью.
+3. OPEN_ADJOINT_GREEN_MIX: точная Green-формула, первый недоказанный
+   односторонний boundary/forcing знак с диапазоном k,n,r,m и один
+   дискриминирующий PAPER-тест. Не возвращай только прежнее (18),
+   абсолютную нормовую оценку или числовую сетку.
+
+Не предполагай RH, positivity K/W, odd floor, prolate 6π gap или
+fixed-frequency asymptotic. Не меняй источник, нормировку или расписание.
+Без Lean/runtime, repo writes и RH claim.
