@@ -1,0 +1,51 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-COUPLED-DEFECT-SIGN
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_COUPLED_DEFECT_SIGN
+SOURCE_COMMIT: 9c4b3dc9a95ffeaa098cbf0c97fe3307d0f7d902
+PREDECESSOR: REQ-2026-09-25-NULLPLANE-LEAKAGE-SIGN
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, выполняем ровно TEST_SELECTED_FERRERS_COUPLED_DEFECT_SIGN из §7
+твоего OPEN_SIGNED_LEAKAGE. Полный источник:
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_NULLPLANE_LEAKAGE_SIGN_2026-09-25.md,
+SHA-256 df41def262b2f320509e1630f88c1821f63b8c381720d5efc2c20ba5326f1dd7.
+Независимая проверка F1–F7, Q1–Q8, D1–D4, W1–W3 и SIGN не нашла
+материальной ошибки. Знак НЕ принят и запрос не повторяет прежний.
+
+Сохрани один P, m_j=N_j=J_P+j+2, s_n=1/2-2πin/log m_j,
+-m_j<=n<=m_j, Ferrers splice K=5m_j, q_j, z_j, rho_m,
+R_m, S_m, v_m=T_mR_m+(T_m-I)S_m и полный W02–WR–Prime ledger.
+Искомая величина ровно
+
+  L_m = W(v_m,v_m)-rho_m^2 W(delta_z,delta_z),
+  tau_j = -L_m/rho_m^2.
+
+Работай с выбранными коэффициентами (F2), сгруппированными неполными
+Mellin-моментами (F5) и полным (W1). Получи ОДИН равномерный сертификат
+
+  L_m = T(m)+R(m),  lower(m) <= R(m) <= upper(m)
+
+с T и границами из источниковой Ferrers recurrence, действительный
+на всём указанном растущем Fourier carrier, а не только при фиксированном n.
+Не разрывай смешанные члены в W(v_m,v_m), пока не проверишь их знак;
+сохрани граничный член Q6, диагональную константу W1, оба края и все
+возвращённые prime powers k>m. Допустима оценка геометрического Ferrers
+хвоста, но не замена исходной строки конечным Gaussian trial.
+
+Исходы строго:
+1. Если T+lower>0 на доказанно неограниченной выбранной
+   подпоследовательности, дай индексы и полный бюджет: tau<0,
+   KILL_NULLPLANE (не RH).
+2. Если T+upper<0 на всём выбранном хвосте, дай явную нижнюю функцию
+   для tau>0: POSITIVE_NULLPLANE; Schur-floor остаётся OPEN.
+3. Если разделить знак нельзя, верни OPEN_COUPLED_DEFECT_SIGN: первая
+   КОНКРЕТНАЯ недоказанная равномерная оценка для источниковых
+   коэффициентов/смешанного члена, точный диапазон n,k,m и почему
+   hmode и имеющиеся tail bounds её не дают. Не возвращай просто (SIGN),
+   равенство W1, O-норму или числовую сетку как доказательство.
+
+Не предполагай RH, положительность W или K, a_j->0, odd floor,
+prolate 6π gap, и не отбрасывай prime/archimedean cancellation.
+Не меняй источник, индекс, фазу, нормировку и расписание.
+Никакого Lean/runtime, записей в репозитории или RH claim.
