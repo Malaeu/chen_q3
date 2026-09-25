@@ -113,7 +113,11 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 - [`REQ-2026-09-25-ZERO-ORBIT-HEAD-MARGIN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) отправлен в [активный чат](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5) как № **10/10** к 2026-09-25 22:01:13 Europe/Berlin. [Точный intent](../session_protocols/PROSHKA_REQUEST_GOAL058_ZERO_ORBIT_HEAD_MARGIN_20260925.txt), SHA-256 `c25325cac3cfa330e129c1e51189e5c22e26cc1179676d4766ff29b65e899773`; ответ **OPEN_ZERO_ORBIT_HEAD_SIGN** получен, [полное вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ZERO_ORBIT_HEAD_MARGIN_2026-09-25.md), SHA-256 `6ed099360406437fc02b1ece2b52ebcc6e94d0884989c4a78126aff27bf20313`. В PAPER_CHAIN независимо проверены endpoint-фаза, оба скачка, арифметика zero-tail, quartet-поляризация и абстрактный барьер знака. Signed margin для выбранной пары и HEAD_TEST_KILL не доказаны; `τ_j` и Schur-floor OPEN. Не дублировать.
 - Прежний чат [6aafb38a…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aafb38a-a7a4-83eb-9940-84a574eae168) исчерпан для **новых** запросов: точное общее число подтверждённых отправок в нём не восстановлено. Незакрытые ответы проверять по адресам соответствующих строк очереди.
 - Подтверждённый запрос `REQ-2026-09-25-INDEPENDENT-COMPLEMENT-FLOOR` отвечен и
-  независимо проверен; его строка и адрес сохранены в `docs/routeB_bus/PROSHKA_QUEUE.md`
+  независимо проверен на уровне PAPER; [отдельное исходное вложение](../routeB_bus/proshka/PROSHKA_ATTACHMENT_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_2026-09-25.md)
+  (SHA-256 `e80a26c654928fad714b6cebf2dab347ff68a9eff6b5f0ff430447e5122aad15`)
+  не совпадает побайтно с текстом ответа, проверено отдельно в [аудите](../routeB_bus/proshka/PROSHKA_GOAL058_FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25.md).
+  Принято только опровержение одного фиксированного положительного floor; cellwise
+  `δ_j`, residual rate и RH открыты. Его строка и адрес сохранены в `docs/routeB_bus/PROSHKA_QUEUE.md`
   (секция `2026-09-25 · selected complement floor`). Незакрытые строки других запросов
   остаются по своим прежним адресам; ответ нельзя переносить между чатами.
 - Fokas-запрос `PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`:

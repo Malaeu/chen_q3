@@ -12,8 +12,14 @@ that browser answer is preserved as
 `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_2026-09-25.md`
 (29,275 bytes, 617 text lines, no final LF, SHA-256
 `08753f55fafaa044d802dc950c493cdf8a0027c9f42dea5e99a14ffdd71f5b41`).
-The attached `VERDICT.md` was visible in the answer but was not separately
-downloaded; byte identity between it and the copied response is not asserted.
+The attached `VERDICT.md` was downloaded from that answer's preview in Chrome
+on 2026-09-25 at approximately 22:37 Europe/Berlin and preserved as
+`docs/routeB_bus/proshka/PROSHKA_ATTACHMENT_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_2026-09-25.md`
+(34,744 bytes, 471 LF characters, SHA-256
+`e80a26c654928fad714b6cebf2dab347ff68a9eff6b5f0ff430447e5122aad15`).
+It is **not byte-identical** to the copied UI response: the latter includes
+the inline summary and attachment link, whereas the file adds source metadata
+and gives a fuller proof. Both sources are retained separately.
 The user-pasted extract at
 `/home/chirurgie/.codex/attachments/bd1f984d-b8de-476d-a219-92167a3d8b89/Eingefügter Text.txt`
 has SHA-256 `fb6e1eaf1affeb8c7872004128045d3cd575c64a5a43e9b17d5eebea624e41ca`
@@ -110,5 +116,34 @@ reading through physical line 616; the final paragraph is present on text
 line 617. The reviewer explicitly withdrew that LOW after checking the
 file tail. The source copy has 617 text lines, 616 LF characters, and no
 final LF. Its SHA-256 above is unchanged. The sole remaining suggestion was
-WORDING of that line-count description, applied here. Review did not run
-Lean or verify byte identity with the separate `VERDICT.md` attachment.
+WORDING of that line-count description, applied here. Those passes covered the
+copied UI answer, before the distinct attachment was downloaded. The attachment
+is reviewed separately below. No Lean or workflow runtime was run.
+
+## Exact attachment review, 2026-09-25
+
+The recovered attachment was checked on the source pin, not substituted for the
+copied response. In (C), the off-diagonal and diagonal correlations reproduce
+`ccmQKernel`; the Laplace factors reproduce `ccmW02Entry`; and integrating the
+archimedean tail beyond `L` gives precisely the `log(tanh(L/2))` term of
+`ccmWREntry`. The CCM paper's §3, equations (3.2), (3.10), and (3.13)–(3.16),
+was read from the local `docs/routeB_bus/litreview/pdfs/2511.22755.pdf`.
+
+For (N), two integrations by parts give the claimed `n^-2` Fourier coefficient
+bound, including the derivative jump. Parseval and absolute convergence give
+the three estimates (P). The interior mixed form retains every prime power up
+to `m` and both endpoint jumps. For the exterior tail,
+`|Q_(t_m,f)(x)| <= 2 sqrt(m) exp(-|x|) T_g(m)` follows from weighted
+Cauchy–Schwarz; summing with `Lambda(ell)/sqrt(ell)` uses the finite
+`sum_(ell>=2) log(ell)/ell^(3/2)`. The terms in (I) and (T) tend to zero.
+The overlap (A) uses the stated PAPER hmode only; the finite-dimensional
+B1/B2 split needs no limit of the Rayleigh shift. These checks support only the
+fixed-positive-floor theorem-shape counterexample, not a cellwise floor, a
+tracking rate, or RH. The attachment's claim of 35 algebraic checks was not
+independently reproduced here.
+
+Native adversarial attachment review: two consecutive on-target passes on the
+unchanged SHA-256 above, with no CRITICAL, HIGH, MEDIUM, or LOW findings. Pass 2
+also checked CCM §3 and §4 directly, including the zero-sum limit and the
+complex first factor. The reviewer did not re-prove the upstream PAPER hmode or
+run Lean. This is a PAPER acceptance of the fixed-constant obstruction only.
