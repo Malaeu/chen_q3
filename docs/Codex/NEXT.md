@@ -1,7 +1,8 @@
 # Q3 — где мы и что дальше
 
 Единственная точка продолжения на любой машине: `git pull` → прочитать этот файл → работать.
-Обновлять в каждом рабочем коммите (заменой, не дописыванием). Максимум ~40 строк.
+Обновлять в каждом рабочем коммите (заменой, не дописыванием). Максимум ~80 строк.
+При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
 Updated: 2026-09-25 · by: Claude Code (owner order) · HEAD at update: c626f00d
@@ -18,6 +19,41 @@ Claim делается, только когда он действительны�
 4. Владелец объявляет claim.
 До этого статус честный: RH ещё не доказана. Это состояние, а не цель.
 
+## Дорожная карта
+Маршрут: Route B → Goal058 (одна семья: вещественные нули + сходимость к Ξ).
+  Фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`.
+Всего маршрутов: 3 — Route B (активен); (i) PSD fallback (спит с 25.06); (ii) мост Судзуки/Йосиды (в Lean не начат).
+  Источник: `docs/GENEALOGY.md` §0, §2. 40 «route»-киллов в базе — строки леджера, не маршруты.
+
+Цепочка до цели — 8 ворот Goal058 (`docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md`, «Восемь ворот»):
+  G0 объект/нормировка ............ частично
+  G1 кофинальный ground-пакет ..... ОТКРЫТО (floors: hfloorEv, hoddEv, hratioEv)
+  G2 вещественные нули ............ готово
+  G2b перенос нулей на P5.9 ....... доказано
+  G3 та же семья трекает trial .... ОТКРЫТО — главная стена  ← МЫ ЗДЕСЬ (Fokas, компактный decay)
+  G3c projected → continuum trial . ОТКРЫТО
+  G4 CCM Lemma 7.3: trial → Ξ ..... ОТКРЫТО (в статье доказано, Lean-порт открыт)
+  G5 Гурвиц → Q3.RH ............... готово
+  затем `riemannHypothesis_of_rh` (доказано) → Comparator → claim.
+
+Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
+  (`q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean:27`), посылки hzeros, hentire, hconv.
+  В RouteB 0 `sorry`, 0 `axiom`.
+Осталось: 5 из 8 ворот. В Lean 7 открытых посылок:
+  1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (есть только L2-оценки);
+  2. hχ/hθ — сведены к hmode в кандидатах 22.09 (не интегрированы);
+  3. hfloorEv; 4. hoddEv (источника нет — нужна новая математика); 5. hratioEv
+     (`G6N1SelectedFerrersTrackedGroundTailReindex.lean`);
+  6. компактный decay: нормировка × kernelL2 × √ratio → 0 (Lean-формулировки ещё нет);
+  7. сборочная теорема → hconv → потребитель (отсутствует).
+  Соответствие ворот и посылок — оценка: G1 = 3–5, G3 = 6, G3c/G4 = 1–2, 7 — сборка.
+Открытые вилки:
+  - 6 кандидатов-поставщиков для G1, 6 для G3;
+  - Fokas: механизм 1 (Mellin/Abel–Plana) или 2 (граничный член Штурма–Лиувилля), BRIEF:44–51;
+  - «ground = trial» — долг, не опровергнуто;
+  - какая крыша каноническая: 3-посылочная Goal058 или 7-портовая `rh_of_canonical_slots`
+    (её ещё называет `comparator/Solution.lean`) — решить и привести Solution.lean в соответствие.
+
 ## Последний доказанный результат
 - 2026-09-22: Lean-кандидаты Ferrers/prolate, `q3_check ok`, аксиомы только propext/Classical.choice/Quot.sound:
   `docs/session_protocols/{ferrers_endpoint_flux,ferrers_form_approx,fourier_overlap,quasimode_correction}_candidate_20260922.lean`
@@ -33,8 +69,10 @@ Claim делается, только когда он действительны�
 
 ## Прошка
 - Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`, чат `6aafb38a-a7a4-83eb-9940-84a574eae168`.
-- Последний запрос: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt` — ответ получен
-  («убывание остатка не доказано / floors не доказаны»). Новый запрос — только по реальному глобальному блокеру.
+- Последний запрос: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`.
+  В `PROSHKA_QUEUE.md` статус OPEN, файла ответа в репо нет. Codex видел ответ в UI
+  («убывание остатка не доказано / floors не доказаны») — сохранить ответ в bus и закрыть запрос.
+  Новый запрос — только по реальному глобальному блокеру.
 
 ## Не повторять
 - Owner recovery, старые launch/ingest/publication (RESUME `Do not repeat`) — не переигрывать.
