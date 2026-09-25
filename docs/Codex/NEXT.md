@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-25 · by: Codex · HEAD at update: bfb9f0af
+Updated: 2026-09-25 · by: Codex · baseline HEAD: 6e2a7cd7
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -36,10 +36,10 @@ Claim делается, только когда он действительны�
 
 Цепочка до цели — 8 ворот Goal058 (`docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md`, «Восемь ворот»):
   G0 объект/нормировка ............ частично
-  G1 кофинальный ground-пакет ..... ОТКРЫТО (floors: hfloorEv, hoddEv, hratioEv)
+  G1 кофинальный ground-пакет ..... ОТКРЫТО (constant hfloorEv опровергнут для выбранной семьи; cellwise вариант не доказан)
   G2 вещественные нули ............ готово
   G2b перенос нулей на P5.9 ....... доказано
-  G3 та же семья трекает trial .... ОТКРЫТО — главная стена  ← МЫ ЗДЕСЬ (Fokas, компактный decay)
+  G3 та же семья трекает trial .... ОТКРЫТО — вместе с G1 главный математический фронт
   G3c projected → continuum trial . ОТКРЫТО
   G4 CCM Lemma 7.3: trial → Ξ ..... ОТКРЫТО (в статье доказано, Lean-порт открыт)
   G5 Гурвиц → Q3.RH ............... готово
@@ -49,10 +49,11 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (`q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean:27`), посылки hzeros, hentire, hconv.
   В RouteB 0 `sorry`, 0 `axiom`.
 Осталось: 5 из 8 ворот. В Lean 7 открытых посылок:
-  1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (в Lean только L2; на бумаге sup-норма есть:
-     REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md:1188-1220, без внешней проверки);
-  2. hχ/hθ — сведены к hmode в собранных модулях 22.09; hmode остаётся открытым;
-  3. hfloorEv; 4. hoddEv (источника нет — нужна новая математика); 5. hratioEv
+  1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (бумага проверена, Lean-вход открыт);
+  2. hχ/hθ — следствия hmode на бумаге; формализация не завершена;
+  3. hfloorEv (constant-β форма опровергнута для выбранной семьи; нужен иной интерфейс);
+  4. hoddEv (условный мост из constant hfloorEv здесь не поставщик);
+  5. hratioEv (текущий constant-β wrapper неприменим)
      (`G6N1SelectedFerrersTrackedGroundTailReindex.lean`);
   6. компактный decay: нормировка × kernelL2 × √ratio → 0 (Lean-формулировки ещё нет);
   7. сборочная теорема → hconv → потребитель (отсутствует).
@@ -81,18 +82,27 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 
 ## Следующий шаг (бумага)
 Полная бумажная цепь со статусами и источниками: `docs/Codex/PAPER_CHAIN.md`. Порядок оттуда:
-1. hmode: отправить уже подготовленный пакет Прошке на проверку (RPT:1228-1235) — без оркестратора.
-2. Параллельно своими силами: crosswalk для G4 (h_λ ↔ hTrial_m, скаляр/фаза, C = 2πλ²) и projection tail (G3c).
-3. Основное время: G1 · hoddEv (источника нет) → hfloorEv, hratioEv → G3 (равномерный decay joint defect).
-   По каждому: своя попытка → alias-hunt → запрос Прошке с точной формулировкой.
-4. Потом сборка → hconv. Lean Fokas joint green — отложено (см. «Стратегия»).
+1. `hmode` закрыт на бумаге. Постоянный `hfloorEv` для буквальной выбранной CCM-семьи
+   опровергнут кофинальным свидетелем; независимая сверка в
+   `docs/routeB_bus/proshka/PROSHKA_GOAL058_FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25.md`.
+2. Основное время: доказать или точно локализовать пробел для cellwise `δ_j>0` на том же
+   trial-complement и оценить полный `‖r_j‖/δ_j`; отдельно проверить, какой cellwise
+   consumer переносит это в tracking без подстановки в constant-β wrapper. Затем G3.
+3. Параллельно: G4 crosswalk (h_λ ↔ hTrial_m, скаляр/фаза, C = 2πλ²) и projection tail (G3c).
+4. После оплаченных входов — сборка → hconv. Lean Fokas joint green отложено.
 
 ## Прошка
-- Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`, чат `6aafb38a-a7a4-83eb-9940-84a574eae168`.
-- Последний запрос: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`.
-  В `PROSHKA_QUEUE.md` статус OPEN, файла ответа в репо нет. Codex видел ответ в UI
-  («убывание остатка не доказано / floors не доказаны») — сохранить ответ в bus и закрыть запрос.
-  Новый запрос — только по реальному глобальному блокеру.
+- Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`.
+- Адрес прежнего чата: [6aafb38a…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aafb38a-a7a4-83eb-9940-84a574eae168).
+  Точное общее число подтверждённых математических отправок в нём не восстановлено;
+  для **новых** запросов он исчерпан по правилу лимита 10. Новый активный чат в том же
+  проекте создать только с готовым новым запросом, тогда записать его реальный URL и счётчик `1`.
+- Подтверждённый запрос `REQ-2026-09-25-INDEPENDENT-COMPLEMENT-FLOOR` отвечен и
+  независимо проверен; его строка и адрес сохранены в `docs/routeB_bus/PROSHKA_QUEUE.md`
+  (секция `2026-09-25 · selected complement floor`). Незакрытые строки других запросов
+  остаются по своим прежним адресам; ответ нельзя переносить между чатами.
+- Fokas-запрос `PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`:
+  ответ виден в UI, но точный текст ещё не сохранён в bus; не повторять отправку.
 
 ## Не повторять
 - Owner recovery, старые launch/ingest/publication (RESUME `Do not repeat`) — не переигрывать.
