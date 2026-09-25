@@ -280,7 +280,11 @@ Robin-интервалы шириной не более `G_m 4^(−m)/8`. Пол
 `docs/session_protocols/PROSHKA_REQUEST_GOAL058_REPAIRED_RECTANGLE_CENTRAL_SIGN_20260925.txt`
 (SHA-256 `1994d06ae55f3c584b43267d127ffa959fa9621ecfe976984bce8dd3f3bcecb2`),
 адресован активному чату `6ab6827b-387c-83eb-a71d-865f68d835d5` как
-ожидаемая отправка № 8/10. Статус `PREPARED_NOT_SENT` до UI-подтверждения.
+подтверждённо отправлен как № 8/10 в этот чат к 2026-09-25 20:34:53
+Europe/Berlin; копия отправленного текста без конечного LF имеет SHA-256
+`a483d228af6c6fe603acfe4099f0c4723f72e62a9976fd0b2f0ba3805029ccee`.
+Ответ ожидается по адресу его строки в `docs/routeB_bus/PROSHKA_QUEUE.md`;
+знак остаётся OPEN до получения и независимой проверки.
 
 **G1 · hoddEv (условный мост ниже).** Если constant hfloorEv и odd mass `<1/2`
 на той же семье, бумажное неравенство ниже даёт `β₀=β`; hratioEv для самого этого вывода не нужен.
