@@ -300,6 +300,13 @@ Europe/Berlin; копия отправленного текста без кон�
 одностороннего сравнения с исправленным бюджетом. Следующий PAPER-тест —
 `TEST_SIGNED_CHEBYSHEV_PRIMITIVE_ON_CENTRAL_DEFECT`, включая скачок и
 совместный остаток. `τ_j`, cellwise floor и Schur-floor остаются OPEN.
+Точный следующий intent `REQ-2026-09-25-SIGNED-CHEBYSHEV-PRIMITIVE`
+подготовлен в
+`docs/session_protocols/PROSHKA_REQUEST_GOAL058_SIGNED_CHEBYSHEV_PRIMITIVE_20260925.txt`
+(SHA-256 `a7853753b606bc61831e8f1c881027db649861e52c718ec757d36ab1fdaedf5a`),
+адресован активному чату `6ab6827b-387c-83eb-a71d-865f68d835d5` как
+ожидаемый № 9/10; два независимых pre-send review-прохода без замечаний.
+Статус `PREPARED_NOT_SENT` до проверки фактической отправки.
 
 **G1 · hoddEv (условный мост ниже).** Если constant hfloorEv и odd mass `<1/2`
 на той же семье, бумажное неравенство ниже даёт `β₀=β`; hratioEv для самого этого вывода не нужен.

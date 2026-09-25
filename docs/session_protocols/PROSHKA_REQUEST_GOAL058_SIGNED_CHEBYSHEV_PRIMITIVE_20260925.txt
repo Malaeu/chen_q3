@@ -1,0 +1,67 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-25-SIGNED-CHEBYSHEV-PRIMITIVE
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_CENTRAL_DEFECT_ARITHMETIC_SIGN
+SOURCE_COMMIT: 892e4069f413a846384a2961013decfa078f35f8
+PREDECESSOR: REQ-2026-09-25-REPAIRED-RECTANGLE-CENTRAL-SIGN
+PREDECESSOR_VERDICT_SHA256: bf8963f7a453063cddebd77a84cf060303211243155cac095dd334688cb7ddc8
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5
+EXPECTED_ORDINAL_IF_CONFIRMED: 9
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, продолжи ровно после OPEN_REPAIRED_CENTRAL_SIGN. Полный ответ №8
+с указанным SHA-256 и два независимых PAPER-прохода сохранены в
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_REPAIRED_RECTANGLE_CENTRAL_SIGN_2026-09-25.md
+и docs/Codex/PAPER_CHAIN.md. Проверены только новые тождества при принятых
+PAPER-входах. Знак полного p_c, Q_m, tau_j и Schur-floor открыт.
+
+Выполни ОДИН тест TEST_SIGNED_CHEBYSHEV_PRIMITIVE_ON_CENTRAL_DEFECT для
+той же выбранной семьи: один P, m=J_P+j+2, N=6m-1, carrier -m<=n<=m,
+исходная склейка 5m, неизменённые E_0<E_4, I_0 x I_4, полный F и K_j,
+Q6, диагональ, оба физических края, все prime powers и исходный B(m).
+Не подменяй центральные e_0=f_0-g_0, e_1=f_1-g_1 произвольными ошибками
+или Gaussian jet. Сохрани kappa_m^4, полный p_c и исправленный e_*^bd.
+
+Проверенный старт: p_c=C_m-S_m+c_W Omega_0, где
+  C_m=int_1^infty [psi(v)-v] H_m(v) dv,
+  H_m(v)=v^(-3/2)[Omega_m'(log v)-Omega_m(log v)/2],
+  Omega_m(t)=A_c S_c [Q_{e_0}(t)-Q_{e_1}(t)].
+Точный primitive Psi_1(v)=int_1^v[psi(u)-u]du — (22) ответа №8.
+После второго суммирования по частям обязательно удержи (23):
+  C_m=-int_{(1,m)U(m,infty)} Psi_1(v) v^(-5/2)
+      [Omega_m''-2Omega_m'+3Omega_m/4](log v) dv
+      -Psi_1(m)m^(-3/2) J_m^L,
+  J_m^L=[Omega_m']_{log m}.
+Это равенство само по себе НЕ даёт знак.
+
+Выведи из буквальной Ferrers-рекурсии и полного W02-WR-Prime либо
+источниковую подписанную ведущую величину для ВСЕГО (23) с явной
+равномерной по выбранным m ошибкой, либо точное зануление/смену знака,
+которые убивают именно этот способ выделить ведущий член. В первом случае
+обязательно объедини её с -S_m+c_W Omega_0 и остатком H_m^bd =
+D_m^rect+R^2 Bhat_*^bd, прежде чем утверждать один из достаточных знаков:
+  p_c-H_m^bd>0 на явной неограниченной выбранной подпоследовательности;
+  или -p_c-H_m^bd>0 на всём выбранном хвосте.
+Дай положительный аналитический запас, Y>eta>0, rho>0 и только после них
+вывод о tau_j. Успех одного C_m без общего сравнения назови частичным.
+
+Для каждого интегрального и граничного вклада укажи диапазоны
+1<=k,k'<=6m-1, -m<=n,n'<=m, 1<=r,r'<=m, v>=1, nu>=2; оцени
+возвращённые nu>m и ОБА когерентных нижних момента совместно. Укажи
+константы и семейный порог или первый конкретный неподконтрольный член.
+Не заменяй подписанный расчёт модулем основных смешанных членов,
+оценкой |p_c|=O(m^2 log m), конечной сеткой, общей оценкой psi(v),
+которая тайно требует RH, либо повтором (11)/(23) без новой леммы.
+
+Верни ровно один исход:
+1. SIGN_BOUND: полное доказанное сравнение с H_m^bd, запасом, квантором
+   и знаком tau_j; Schur-floor OPEN.
+2. PRIMITIVE_LEADING_KILL: строгое source-свидетельство, что именно
+   proposed leading extraction of (23) cancels or changes sign on the
+   selected family; не KILL самого p_c или cellwise sign.
+3. OPEN_SIGNED_CHEBYSHEV_PRIMITIVE: точная первая невыведенная
+   подписанная оценка с формулой, диапазоном и причиной, почему hmode,
+   Robin-скобки, исправленный бюджет и точный primitive её не дают.
+   Предложи один проверяемый альтернативный PAPER-тест, не новое имя знака.
+
+Без RH claim, positivity K/W, odd floor, prolate 6pi gap,
+fixed-frequency asymptotic, Lean, project runtime или repo writes.
