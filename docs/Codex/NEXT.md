@@ -51,8 +51,9 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   - 6 кандидатов-поставщиков для G1, 6 для G3;
   - Fokas: механизм 1 (Mellin/Abel–Plana) или 2 (граничный член Штурма–Лиувилля), BRIEF:44–51;
   - «ground = trial» — долг, не опровергнуто;
-  - какая крыша каноническая: 3-посылочная Goal058 или 7-портовая `rh_of_canonical_slots`
-    (её ещё называет `comparator/Solution.lean`) — решить и привести Solution.lean в соответствие.
+  (крыша решена 25.09: каноническая — `rh_of_real_zero_family_tendsto_centeredXi`;
+   7-портовая `rh_of_canonical_slots` — история; `comparator/Solution.lean` и README приведены в соответствие.
+   `orchestrator/roof_port_ledger.py` всё ещё считает 7 портов — в простом режиме только советчик.)
 
 ## Последний доказанный результат
 - 2026-09-22: Lean-кандидаты Ferrers/prolate, `q3_check ok`, аксиомы только propext/Classical.choice/Quot.sound:

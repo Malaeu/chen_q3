@@ -22,7 +22,10 @@ What a skeptical reader has to trust: Mathlib's `riemannZeta` and `RiemannHypoth
 
 ## Why the bridge exists
 
-The roof `Q3.rh_of_canonical_slots` (`Q3/Proofs/RouteB/CanonicalRHRouteSkeleton.lean`) concludes
+The canonical roof (decided 2026-09-25) is `Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi`
+(`Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean`; premises `hzeros`, `hentire`, `hconv`;
+`#print axioms`: propext, Classical.choice, Quot.sound). The older 7-port roof
+`Q3.rh_of_canonical_slots` (`CanonicalRHRouteSkeleton.lean`) is historical. The roof concludes
 `Q3.RH`: every zero of `riemannZeta` with `0 < Re s < 1` has `Re s = 1/2`. The Clay/Mathlib statement
 quantifies over every zero that is neither trivial nor `s = 1`. The two are equivalent by two classical
 inputs, both in Mathlib: `riemannZeta_ne_zero_of_one_le_re` and the functional equation
