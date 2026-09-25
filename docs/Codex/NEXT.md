@@ -49,7 +49,8 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (`q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean:27`), посылки hzeros, hentire, hconv.
   В RouteB 0 `sorry`, 0 `axiom`.
 Осталось: 5 из 8 ворот. В Lean 7 открытых посылок:
-  1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (есть только L2-оценки);
+  1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (в Lean только L2; на бумаге sup-норма есть:
+     REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md:1188-1220, без внешней проверки);
   2. hχ/hθ — сведены к hmode в собранных модулях 22.09; hmode остаётся открытым;
   3. hfloorEv; 4. hoddEv (источника нет — нужна новая математика); 5. hratioEv
      (`G6N1SelectedFerrersTrackedGroundTailReindex.lean`);
@@ -79,16 +80,12 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (`docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md`, `docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md`).
 
 ## Следующий шаг (бумага)
-1. Собрать бумажную цепь до RH в одном файле `docs/Codex/PAPER_CHAIN.md`: каждое звено
-   (G0…G5, посылки hzeros/hentire/hconv и их подпосылки) — точная формулировка, статус
-   PAPER_PROVED (со ссылкой) / OPEN / Lean-only, и что ровно не хватает. Источники: Goal058,
-   BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW, вердикты Прошки, CCM Lemma 7.3.
-2. Открытые на бумаге звенья — в порядке «что блокирует больше всего»: hoddEv (источника нет),
-   равномерный decay joint defect / компактный decay (G3), hmode в sup-норме (G3c/G4), hfloorEv, hratioEv.
-   По каждому: своя попытка → при застревании alias-hunt → запрос Прошке с точной формулировкой.
-3. Lean Fokas rank-2 joint green (Mellin-сходимость, paired-window сумма, Green на выбранном U,
-   решёточное сворачивание краёв) — ОТЛОЖЕНО до закрытия бумаги, кроме шагов, без которых
-   бумажный аргумент не проверить. PAPER-контроль t−V = 3√2/4 остаётся в силе.
+Полная бумажная цепь со статусами и источниками: `docs/Codex/PAPER_CHAIN.md`. Порядок оттуда:
+1. hmode: отправить уже подготовленный пакет Прошке на проверку (RPT:1228-1235) — без оркестратора.
+2. Параллельно своими силами: crosswalk для G4 (h_λ ↔ hTrial_m, скаляр/фаза, C = 2πλ²) и projection tail (G3c).
+3. Основное время: G1 · hoddEv (источника нет) → hfloorEv, hratioEv → G3 (равномерный decay joint defect).
+   По каждому: своя попытка → alias-hunt → запрос Прошке с точной формулировкой.
+4. Потом сборка → hconv. Lean Fokas joint green — отложено (см. «Стратегия»).
 
 ## Прошка
 - Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`, чат `6aafb38a-a7a4-83eb-9940-84a574eae168`.
