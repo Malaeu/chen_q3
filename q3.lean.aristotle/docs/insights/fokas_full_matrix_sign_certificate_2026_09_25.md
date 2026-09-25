@@ -26,3 +26,13 @@ Delta(L/2)<0 where h>0 disproves pointwise positive density in the reference
 cell. m4 diagnostics leave only 0.13178% after W02/WR/Prime cancellation.
 The needed estimate must preserve integrated signs; finite evidence does not
 supply the cofinal quantifier. See packet NORMALIZED_CORRELATION.md and review.
+
+Recovered original Fokas response: the exact full defect is
+D=(K-aI)[V(U)+B0*1-B1*sigma]. Its centered envelope is
+|Xi(0)|*Kernel*||D||/(beta*sqrt(L)*|t0|); the finite normalizer Z cancels.
+The original response is now archived as a UI-rendered extraction, not original
+Markdown, in docs/routeB_bus/proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RESPONSE_RENDERED_2026-09-23.txt.
+A material current limitation is that its constant-beta cofinal wrapper has a
+premise contradicted by the accepted constant-floor counterexample. Thus the
+identity is reusable, but the family supplier must change: cellwise floors and
+a compatible weighted-rate consumer remain unpaid.

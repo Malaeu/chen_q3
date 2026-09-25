@@ -114,7 +114,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (секция `2026-09-25 · selected complement floor`). Незакрытые строки других запросов
   остаются по своим прежним адресам; ответ нельзя переносить между чатами.
 - Fokas-запрос `PROSHKA_REQUEST_GOAL058_FOKAS_MATRIX_DEFECT_20260923.txt`:
-  ответ виден в UI, но точный текст ещё не сохранён в bus; не повторять отправку.
+  исторический UI-rendered ответ восстановлен в bus: [источник и границы](../routeB_bus/proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RECOVERY_2026-09-25.md). Исходный Markdown не верифицирован. Точная формула есть; decay открыт, constant-beta wrapper неприменим. Не повторять отправку.
 
 ## Не повторять
 - Owner recovery, старые launch/ingest/publication (RESUME `Do not repeat`) — не переигрывать.

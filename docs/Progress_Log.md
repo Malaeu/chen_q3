@@ -7667,3 +7667,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: источниковая интегральная оценка полного центра с repaired anchor; подготовленный запрос №8 не отправляли и не дублировали.
 Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/NORMALIZED_CORRELATION.md, normalized_correlation_certificate.py/json, quartic_components.py и precision outputs.
 Чей вердикт: root PAPER derivation; native independent read-only /root/sign_algebra_review проверил формулы и повторил строгий Arb script без замечаний; /root/rectangle_probe провёл компонентную диагностику, root повторил m4.
+
+## 2026-09-25 — Recovered original Fokas matrix-defect response (Mac)
+
+Развилка: очередь считала старый Fokas-запрос OPEN; текущий UI указал уже существующий локальный архив ответа.
+Выбрали: восстановить неизменённый UI-rendered источник в bus и явно отделить его от оригинального Markdown.
+Почему: SHA-256 локального файла совпал с опубликованным в старом чате; формула полного дефекта и точный оставшийся tracking-bound теперь доступны обеим машинам.
+Что отвергли: повторную отправку, объявление rank-two малой нормой, перенос исторического constant-beta wrapper на cellwise delta без нового потребителя.
+Инсайты: theta0*theta4 в локальном Lean-кандидате — снятие знаменателей той же Green-формулы; оно сокращается с центральной координатой. Нужный совместный bound остаётся уравнением (10)/(11), не отдельной оценкой нормировки Z.
+Блокеры: source-weighted residual decay и cellwise complement/consumer. Исходный Markdown не получен; Lean-кандидаты остаются untracked и не допускаются этой записью.
+Иглы Зингера: восстановление ответа закрывает долг источника, а не математический долг скорости.
+Следующий ход: текущий запрос №8 по полному центральному знаку остаётся в другом чате; его не дублировать.
+Адреса: docs/routeB_bus/proshka/PROSHKA_FOKAS_MATRIX_DEFECT_RECOVERY_2026-09-25.md и PROSHKA_FOKAS_MATRIX_DEFECT_RESPONSE_RENDERED_2026-09-23.txt.
+Чей вердикт: исторический TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2; provenance восстановлен root из текущего UI и существующих локальных байтов.
