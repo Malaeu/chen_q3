@@ -7623,3 +7623,19 @@ is a positivity path again, not only an identity. No Proshka batch needed for th
 **Адреса:** scratchpad `m2_forcing_rerun.py`, `bandwidth_test.py`; patch `fix_even_chi_and_dps.patch`.
 **Чей вердикт и аргумент:** observer (Linux Claude). Bandwidth mismatch found by reading
 true_precision_packet_gate_v1.py:171 against probe_n_extension.py:363. DIAGNOSTIC_NEVER_A_PROOF. PX_RH_CLAIM not made.
+
+## 2026-09-25 — Plain mode; canonical roof = Goal058 consumer; Sept-22 candidates integrated
+**Развилка:** ~2 days lost on host-local orchestrator gates (`reconciliation_pending`, watch bound to an old
+thread, receipts outside git): 17 commits, 0 Lean lines after `10c20237`. Two roofs disagreed: 3-premise
+Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution.lean).
+**Выбрали:** plain mode (owner order): `git pull` → `docs/Codex/NEXT.md` → Lean → `q3_check` → `lake build` →
+`scripts/phase_end.sh`. Canonical roof `Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi`
+(axioms propext/Classical.choice/Quot.sound, lake env lean 2026-09-25); ledger switched to 3 ports.
+**Почему:** the active phase already targets that consumer; 7-port roof had 0/7 ports bound, ledger INVALID.
+**Что отвергли и почему:** a 100-line control patch through the orchestrator's own rules — more bureaucracy.
+**Инсайты:** gate state outside git orphans on every host/thread switch; owner override must be one sentence.
+**Блокеры (математика):** G1 floors (hfloorEv, hoddEv — no source, hratioEv); G3 compact decay; G3c/G4 hmode (sup-norm).
+**Иглы Зингера:** — (none new this phase).
+**Следующий ход:** hmode sup-norm bound or G3 compact decay; save the Fokas answer into the bus and close REQ-2026-09-23.
+**Адреса:** NEXT.md (roadmap), commits d2543c1d, be7c3b78, 47f4a698, 80602f6e, 0fbbed36, 523ba165; Codex bfa9c8f9.
+**Чей вердикт и аргумент:** observer (Linux Claude) on owner order. PX_RH_CLAIM not made.

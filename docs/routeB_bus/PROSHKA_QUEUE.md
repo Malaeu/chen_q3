@@ -601,9 +601,10 @@ Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named 
 
 ---
 
-## REQ-2026-09-09-DISTANCE · DISTANCE: window floor as the Q-distance of the theta tail; T^2 law · OPEN
+## REQ-2026-09-09-DISTANCE · DISTANCE: window floor as the Q-distance of the theta tail; T^2 law · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` (closed 2026-09-25, owner order)
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DISTANCE_2026-09-09.md`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_DISTANCE_2026-09-09.txt`
 - Boundary: `GOAL058_WINDOW_FLOOR_AS_Q_DISTANCE_OF_THE_THETA_TAIL`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -617,9 +618,10 @@ Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named 
 
 ---
 
-## REQ-2026-09-08-HODGE · HODGE — bound form of the owner's Hodge transplant test: strip one Hodge index proof to the minimal sign axioms, transplant table for (Q, H, pole plane, N), can Suzuki/de Branges realise the missing axiom (for Proshka A) · OPEN
+## REQ-2026-09-08-HODGE · HODGE — bound form of the owner's Hodge transplant test: strip one Hodge index proof to the minimal sign axioms, transplant table for (Q, H, pole plane, N), can Suzuki/de Branges realise the missing axiom (for Proshka A) · ANSWERED
 
-- `STATUS: OPEN`
+- `STATUS: ANSWERED` (closed 2026-09-25, owner order)
+- Verdict: `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_HODGE_2026-09-08.md`
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_HODGE_2026-09-08.txt`
 - Boundary: `GOAL058_HODGE_TRANSPLANT_TEST_MINIMAL_SIGN_LEMMA_AND_ITS_ARITHMETIC_ANALOGUE`
 - Call class: `DELEGATED_STRATEGIC_REVIEW`
@@ -633,7 +635,7 @@ Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named 
 
 ---
 
-## REQ-2026-09-08-SCREW · SCREW — is our quotient H/N Suzuki's H_W / de Branges space (signed extension after our erratum); the first prime a = 1/2 log 2 in the a -> inf limit (Cor. 1.6); the null family and lambda_a -> 0; DDF-type basis of the quotient from window real-zero bricks; one decisive computation · OPEN
+## REQ-2026-09-08-SCREW · SCREW — is our quotient H/N Suzuki's H_W / de Branges space (signed extension after our erratum); the first prime a = 1/2 log 2 in the a -> inf limit (Cor. 1.6); the null family and lambda_a -> 0; DDF-type basis of the quotient from window real-zero bricks; one decisive computation · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SCREW_2026-09-08.md`, commit `b1e76e52`, 760 lines; PARTIAL. Dictionary: H_W is conditional (defined under RH); our weighted quotient exists before the sign; conditional isometry of its √Q-completion with H_W (S8); unconditional Krein realisation (S6). Our 2301.00421 erratum CONFIRMED by an exact detector; repair (S12); v2 §7.7 misses 1/π. First prime: A_a − A_a^{(0)} = −w(C_a + C_a*), infinite rank, norm exactly w = log2/√2 (S15–S16); no kink theorem. λ_a nonincreasing; λ_∞ ≤ 0; DICHOTOMY λ_∞ = 0 (RH) / −∞ (¬RH) (S24). Shifted bricks positive for Q − σ‖·‖², not Q ((S28)–(S29)); no DDF basis in the three papers. Cor. 1.6's printed targets (v1 and v2) have genuine poles ⇒ literal all-plane holomorphic limit impossible. Q3: SOURCE_W_SHIFT_SENSITIVITY_AT_A1 (a = 1, θ = π, σ = −32/−33; toy control (S27) first). Predictions: SPACES refuted; KINK partial; LAMBDA not established; DDF partial; ONE_COMPUTATION confirmed. Addenda SIGNATURE/HYPERBOLICITY/CLOSURE were pasted by the owner AFTER the verdict; HYPERBOLICITY answered by supplement `PROSHKA_VERDICT_GOAL058_SCREW_HYPERBOLICITY_HODGE_2026-09-08.md` (cbbe980f): Hodge minimal ingredient = the star identity *η = −η (Kähler proof), analogue J = sgn A, missing law J = I on 𝒩^⊥ (H4); isotropy ⇒ radical ⟺ Q ≥ 0 (H6); free gauge on ℂ₊ makes W-convergence ⟺ RH (H11); flow monotonicity refuted as automatic (H13); largest proven window a = 0.8 (Zhu); NEW GAP: first-contact kernel rigidity (H17). SIGNATURE+CLOSURE answered by supplement `PROSHKA_SUPPLEMENT_GOAL058_SCREW_SIGNATURE_CLOSURE_2026-09-08.md` (d6243e9f): sig(Q̄) = (∞, r), r = distinct off-line j-orbits (multiplicity = weight); pole summand not an intrinsic Q-plane (Q[Φ] = 0, P[Φ] > 0); n₋(a) finite, nondecreasing, sup = r, visible on finite windows; anchored normality not automatic (SC22); under ¬RH the target identification fails (SC26). Check of the supplement DONE (`docs/routeB_bus/SCREW_SIGNATURE_CLOSURE_INDEPENDENT_CHECK_2026-09-08.md`): all of (SC1)–(SC26) correct; ξ(1) = 0.5 exactly (my hint 0.497 was ξ(½)); first asserted step = the window form-to-operator dictionary ⟨f,A_a f⟩ = Q[f] on C_c^∞(−a,a) (code SCREW_WINDOW_FORM_TO_OPERATOR_DICTIONARY_ASSERTED). Independent check of SCREW DONE (`docs/routeB_bus/SCREW_INDEPENDENT_CHECK_2026-09-08.md`): no defect in 8 items; ΔQ[f_±] = ∓w to 15 digits by a second channel; dichotomy stands; poles located (t_* = 15.586, s_* = −42.28); toy roots 0.967/1.166; v1/v2 targets confirmed from arXiv; three blemishes ((S16) needs L/2 < a ≤ L; «16» uses factor 2; §2.2 floor needs δ < 0.0856); CORRECTION: the pole obstruction refutes only the holomorphic-gauge reading of Cor. 1.6, since φ need only be ≠ ∞ — not «Cor. 1.6 as printed is vacuous».
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SCREW_2026-09-08.txt`
@@ -649,7 +651,7 @@ Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named 
 
 ---
 
-## REQ-2026-09-08-KERNEL · KERNEL — does a source-defined square X with ker X = the zero ideal exist (Connes adelic Sonin / CCM23 prolate / division), what is R, or is every such identity RH-equivalent (SOS road = coordinate change); the null family as discriminator of all project squares; consequence for (A14) · OPEN
+## REQ-2026-09-08-KERNEL · KERNEL — does a source-defined square X with ker X = the zero ideal exist (Connes adelic Sonin / CCM23 prolate / division), what is R, or is every such identity RH-equivalent (SOS road = coordinate change); the null family as discriminator of all project squares; consequence for (A14) · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_KERNEL_2026-09-08.md`, commit `a97ad1bf`, 725 lines; Q1/Q2 PROVED, Q3 PARTIAL. A source-defined square with exactly the pointwise zero ideal as kernel EXISTS without RH: Riesz representative A of Q in the explicit positive metric 𝒲 + 𝒟 on the pole-null completion ℋ, ‖A‖ ≤ 65/3, X = A/√22, R = ⟨f,(A − A²/22)f⟩; ker A = 𝒩_pt (K23) via separating tests with integral division; R ≥ 0 ⟺ Q ≥ 0 ⟺ RH (K12–K13): a coordinate change with an explicit kernel, not a payment. Killed: the impossibility framing; «any correct-kernel square has RH-equivalent remainder» (K5); fixed finite-S Sonin global minorant (strict compact witness (K30)); ordinary-L² detectors (translates of g₀ dense, (K25)). Q2: only the pole square and A²/22 vanish on 𝒩; all others (Sonin, HS D_S, CC20, Legendre, endpoint, prime differences) do not. Q3: route = signed head with proved complement; non-square footholds = Suzuki 2606.09096 Thms 1.1/1.3/1.4 (READ). First sources read with locators (Connes 1999, CC20 incl. App. C (155), CCM23, Connes 2026, Suzuki). Predictions: X_EXISTS confirmed; SQUARE_IDENTITY_IS_RH partial; CC20 confirmed; NO_SOURCE_FORM refuted; DIRECT_ROUTE confirmed. Independent check DONE (`docs/routeB_bus/KERNEL_INDEPENDENT_CHECK_2026-09-08.md`): ACCEPTED, no incorrect equation; CC20 App. C Prop. C.1 (155) READ (ALIGN's citation debt closed); (K16) to 34–41 digits; ker A = 𝒩_pt stands without RH; (K13) an equivalence, not a proof; tight: 65/3 vs 22 (1.5%).
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_KERNEL_2026-09-08.txt`
@@ -665,7 +667,7 @@ Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named 
 
 ---
 
-## REQ-2026-09-08-ALIGN · ALIGN — the prime-alignment cap on fixed-width prime-star classes as a theorem (mechanism: alignment costs archimedean gap), is rho_P -> 1 forced, do shifted prime-lattice classes exhaust the test space · OPEN
+## REQ-2026-09-08-ALIGN · ALIGN — the prime-alignment cap on fixed-width prime-star classes as a theorem (mechanism: alignment costs archimedean gap), is rho_P -> 1 forced, do shifted prime-lattice classes exhaust the test space · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ALIGN_2026-09-08.md`, commit `be442fbe`, 732 lines; PARTIAL; Q1c/Q3 PROVED_ON_CLASS. NEW: fixed-width prime-centred classes EXHAUST all compact pole-null tests up to translation (PNT log-gaps; explicit integer law (A19)); with CC20 Prop C.1: Q ≥ 0 on every 𝒞_P ⟺ Q ≥ 0 on H₀₀^c ⟺ RH (A21) — the class problem IS the atom in lobe coordinates. UNCONDITIONAL near-null family g_k = (∂²−¼)∂^kΦ, ∫Φe^{zx} = ξ(½+z): Q(g_k) = 0 by the signed explicit formula (transform vanishes at ALL zeros), cutoffs give Q/‖f‖² → 0 ⇒ no uniform positive floor on 𝒞_P; lim β_P ≤ 0, lim ρ_P ≥ 1; equality ⟺ sign. Π(g_k)/‖g_k‖² → ∞: bounded prime saturation refuted. Observer's alignment mechanism killed by (A8) (perfect alignment at constant energy); profile coordinates redundant after overlap. First unpaid: I − T_P ⪰ 0 (A14). COMPENSATE §4.2 domain sketch completed (§7). Predictions: LATTICE_CLASSES_EXHAUST CONFIRMED; the other four not achieved/unresolved. Independent check DONE (`docs/routeB_bus/ALIGN_INDEPENDENT_CHECK_2026-09-08.md`): ACCEPTED, no incorrect equation; (A23) to 7e−32 at 9 points; Q(g_k) = 0 by two independent channels (6.9e−16 relative); (A34) growth to k = 256 (passes 1.84 at k ≈ 48); cover m₀ = 79 (1% slack); only asserted step = the RH leg of (A21) via CC20 App. C Prop. 1; near-null family unconditional.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_ALIGN_2026-09-08.txt`
@@ -681,7 +683,7 @@ Finite Q1/Q2 and continuous restatement accepted in SIBLING reportS1-S23; named 
 
 ---
 
-## REQ-2026-09-07-COMPENSATE · COMPENSATE — compensation inequality on the first offset geometry {0,log2,log3,log5,log7,log11} at full width; the all-n rule as one source-defined inequality (rule 18); trace identity (32) prove or route around; repairs · OPEN
+## REQ-2026-09-07-COMPENSATE · COMPENSATE — compensation inequality on the first offset geometry {0,log2,log3,log5,log7,log11} at full width; the all-n rule as one source-defined inequality (rule 18); trace identity (32) prove or route around; repairs · ANSWERED
 
 - `STATUS: ANSWERED` — verdict `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COMPENSATE_2026-09-07.md`, commit `8868b50c`, 831 lines; PARTIAL_WITH_PRECISE_REMAINDER. NEW: all three offsets paid by the ENDPOINT energy Ω ≥ (9/10)V_∂ (Theorem 3, no mean/pole conditions); Theorem 4: Q ≥ (47/6000)H on the slice «all six ordinary means zero + total moments» at full width; exact head is 6-dim (constants + moment representers), remaining inequality = Schur (30) with residual certificate (31), coefficient 6000/41 at c = 1/1000. KILLED (theorem shape): overlap-fraction norm bound (‖𝕆‖ = √(w₂²+w₅²) = 0.871); product-norm coercivity from P = 31 (support collision); full-space scalar compensation with one δ (Theorem 6, two witnesses). Theorem 5: thin star width 1/(16P) has floor (2/15)log P + 209/240 (PNT) but does not exhaust tests. Q2: minimal missing inequality (42) 𝒩_n ≤ 𝒫_n on the harmonic lifts; positive series (40)–(41) with signed n-dependent base. Q3: (ii). Q4: repairs done. Observer hand checks: all ledger items hold (guards (22) at 0.3% and 0.14%; ‖w‖ = 1.4914 < 1.5). Machine on the Theorem 4 slice: 0.955 at six centres ≫ 47/6000. Independent check DONE (`docs/routeB_bus/COMPENSATE_INDEPENDENT_CHECK_2026-09-08.md`): Theorem 4 STANDS, no incorrect inequality; Lemma 1 min Ω/V_∂ = 1.0000094; ‖𝕆‖ = 0.8707954 reproduced; real-space assembly matches sc_build's Fourier blocks to 1e−7 (second instrument channel); slice floor 0.9553 (K=6) / 0.9546 (K=8); only asserted step = §4.2 closure sketch; tight: ‖w‖ < 3/2 (0.57%). Addendum WIDTH to be pasted by the owner.
 - Request: `docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_COMPENSATE_2026-09-07.txt`

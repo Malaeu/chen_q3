@@ -78,6 +78,17 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 - Не подменять оценки selected Ferrers packet явными гауссовыми пределами; не дифференцировать C0-сходимость.
 - Не отправлять повторно уже отправленные запросы Прошке.
 
+## Конец фазы
+Одна команда: `scripts/phase_end.sh "что сделано"` (журнал → Lean-проверка → полка → литература → статистика → commit → push → readback).
+Перед ней дописать в `docs/Progress_Log.md` запись `## <дата> — <что нашли>` с полями:
+Развилка · Выбрали · Почему · Что отвергли · Инсайты · Блокеры · Иглы Зингера · Следующий ход · Адреса · Чей вердикт.
+Без записи скрипт останавливается; обход владельца: `--no-log`.
+Запросы для поиска литературы (правьте по текущему фронту):
+- lit: prolate spheroidal wave functions Riemann xi zeros
+- lit: Ferrers functions Sturm-Liouville eigenvalue asymptotics uniform
+- lit: Fokas unified transform Riemann zeta
+- lit: Hurwitz theorem zeros real entire functions locally uniform limit
+
 ## Жёсткие линии (не обсуждаются)
 Без `sorry`; без собственных `axiom`; только три стандартные аксиомы Lean (см. Цель п.2);
 недоказанное не называть доказанным; claim — только по условиям из «Цели»;
