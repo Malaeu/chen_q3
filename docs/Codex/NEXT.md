@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-25 · by: Codex · HEAD at update: 80602f6e
+Updated: 2026-09-25 · by: Codex · HEAD at update: bfb9f0af
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -56,6 +56,12 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
    `orchestrator/roof_port_ledger.py` переведён на новую крышу: 3 порта hzeros/hentire/hconv, HEAD_LOCKED.)
 
 ## Последний доказанный результат
+- 2026-09-25: Fokas step 1 в Lean: положительность двух выбранных θ, общее
+  Mellin–Green тождество с нижним краем и точный перенос выбранной строки
+  через sTrial к непроецированному inner при существующем условном порте
+  `CCMLemma73PreAnchorPort`. `q3_check.sh` — ok; полный `lake build`
+  — 8218 jobs, exit 0. Это промежуточные леммы: selected row → paired-window и rank-2
+  residual identity в Lean ещё НЕ доказаны; decay и sector floors открыты.
 - 2026-09-25: четыре Lean-кандидата 22.09 побайтно перенесены в `Q3/Proofs/RouteB/Q3*Candidate20260922.lean`;
   `scripts/q3_check.sh` — ok, полный `lake build` — 8215 jobs, exit 0. Только аксиомы
   propext/Classical.choice/Quot.sound. Теоремы остаются условными; `hmode` и RH не закрыты.
@@ -63,8 +69,11 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   (`docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md`, `docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md`).
 
 ## Следующий шаг
-1. Fokas rank-2 joint green (TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2): тождество даёт точную формулу остатка;
-   НЕ доказаны равномерная оценка убывания дефекта и sector floors. Граничный контроль t−V = 3√2/4 воспроизведён.
+1. Завершить Lean Fokas rank-2 joint green: selected row → безразмерная paired-window
+   сумма со всеми фазами; применить Green к выбранному U, доказать решёточное
+   сворачивание нижних краёв и точную формулу residual для каждого k,n.
+   Затем нужны uniform joint-defect decay и оба sector floors. PAPER-контроль
+   t−V = 3√2/4 подтверждает, что нижний край нельзя отбросить.
 
 ## Прошка
 - Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`, чат `6aafb38a-a7a4-83eb-9940-84a574eae168`.
@@ -79,6 +88,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 - Не отправлять повторно уже отправленные запросы Прошке.
 
 ## Конец фазы
+конец фазы = scripts/phase_end.sh
 Одна команда: `scripts/phase_end.sh "что сделано"` (журнал → Lean-проверка → полка → литература → статистика → commit → push → readback).
 Перед ней дописать в `docs/Progress_Log.md` запись `## <дата> — <что нашли>` с полями:
 Развилка · Выбрали · Почему · Что отвергли · Инсайты · Блокеры · Иглы Зингера · Следующий ход · Адреса · Чей вердикт.
