@@ -7639,3 +7639,17 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 **Следующий ход:** hmode sup-norm bound or G3 compact decay; save the Fokas answer into the bus and close REQ-2026-09-23.
 **Адреса:** NEXT.md (roadmap), commits d2543c1d, be7c3b78, 47f4a698, 80602f6e, 0fbbed36, 523ba165; Codex bfa9c8f9.
 **Чей вердикт и аргумент:** observer (Linux Claude) on owner order. PX_RH_CLAIM not made.
+
+
+## 2026-09-25 — Mac: Fokas после K, усиление Robin-скобок и строгий конечный сертификат
+**Развилка:** после запроса владельца «пиши себе goal и доводи» проверить полный знак, а не повторять Mellin/Green-представление. Native goal ACTIVE; Route058 не заменён.
+**Выбрали:** выполнить полный R3/R8-тест и независимо проверить условия/арифметику. Подтянуты ee99aacc и b29b53e1; седьмой запрос Прошке уже отправлен Linux, не дублировался.
+**Почему:** совместная форма содержит K, оба края и prime powers; скалярный остаток Фокаса сам по себе spectral residual не оценивает.
+**Что отвергли и почему:** ещё один representation-only wrapper; знак отдельных Jacobi-весов; перенос конечной сетки на весь хвост.
+**Техника:** PAPER-скобка усилена с G*4^-m/8 до G/8*(16m-3)/(24m-3)*4^-2m, используя существующий tail start4m. Строгий Arb-сертификат m2: полная форма отрицательна на всём прямоугольнике энергий, уточнённый Frobenius margin [25.77492 +/-8.05e-6]>0 и y_lower>eta. Исходный аналитический бюджет при m2 тест не проходит. Диагностики m4,8,13 проходят исходный бюджет; m13 повторён140/180 цифр.
+**Инсайты:** меньшая доказанная норма K даёт НОВЫЙ корректный remainder budget, не тот же прежний B. Начало вспомогательного propagation4m не меняет физическую склейку5m. Отдельный insight-файл снова записан.
+**Блокеры:** общий знак центральной формы при неограниченном m, затем Schur-floor и tracking. m2-сертификат — конечная алгебра; source-tau требует применимости source/tail identities в этой ячейке, принадлежность выбранному хвосту не доказана.
+**Иглы Зингера:** новых нет.
+**Следующий ход:** сопоставить пакет с ответом на уже отправленный TWO-ENERGY-FULL-QUARTIC-SIGN; искать семейную оценку подписанного центра, не новую сетку.
+**Адреса:** docs/routeB_bus/fokas_k_sign_2026-09-25/REPORT.md; q3.lean.aristotle/docs/insights/fokas_full_matrix_sign_certificate_2026_09_25.md.
+**Чей вердикт и аргумент:** root-derived algebra/diagnostics; Luna реализовала Arb, независимый native reviewer проверил формулы/код и повторил сертификат. PAPER width проверена по точным indices4m..6m-1 и положительным denominators; kernel/Lean не запускались. PX_RH_CLAIM: NOT_MADE.

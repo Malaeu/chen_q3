@@ -67,6 +67,10 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
    `orchestrator/roof_port_ledger.py` переведён на новую крышу: 3 порта hzeros/hentire/hconv, HEAD_LOCKED.)
 
 ## Последний доказанный результат
+- 2026-09-25 Mac: [полный K/sign-пакет](../routeB_bus/fokas_k_sign_2026-09-25/REPORT.md):
+  PAPER Robin-width усилен до `G/8*(16m-3)/(24m-3)*4^(-2m)` без смены склейки;
+  строгий Arb m2 finite-algebra margin с уточнённым Frobenius budget положителен.
+  Source applicability m2 и cofinal sign не закрыты; диагностики m4/8/13 — не доказательство хвоста.
 - 2026-09-25: Fokas step 1 в Lean: положительность двух выбранных θ, общее
   Mellin–Green тождество с нижним краем и точный перенос выбранной строки
   через sTrial к Mellin/Gwin с фазой `(-1)^n` при существующем условном порте
