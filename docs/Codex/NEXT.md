@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-25 · by: Claude Code (owner order) · HEAD at update: c626f00d
+Updated: 2026-09-25 · by: Codex · HEAD at update: 80602f6e
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -41,7 +41,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
   В RouteB 0 `sorry`, 0 `axiom`.
 Осталось: 5 из 8 ворот. В Lean 7 открытых посылок:
   1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (есть только L2-оценки);
-  2. hχ/hθ — сведены к hmode в кандидатах 22.09 (не интегрированы);
+  2. hχ/hθ — сведены к hmode в собранных модулях 22.09; hmode остаётся открытым;
   3. hfloorEv; 4. hoddEv (источника нет — нужна новая математика); 5. hratioEv
      (`G6N1SelectedFerrersTrackedGroundTailReindex.lean`);
   6. компактный decay: нормировка × kernelL2 × √ratio → 0 (Lean-формулировки ещё нет);
@@ -56,16 +56,14 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
    `orchestrator/roof_port_ledger.py` всё ещё считает 7 портов — в простом режиме только советчик.)
 
 ## Последний доказанный результат
-- 2026-09-22: Lean-кандидаты Ferrers/prolate, `q3_check ok`, аксиомы только propext/Classical.choice/Quot.sound:
-  `docs/session_protocols/{ferrers_endpoint_flux,ferrers_form_approx,fourier_overlap,quasimode_correction}_candidate_20260922.lean`
-  (последний: `10c20237`, `selected_zero_four_form_approximation`). В `q3.lean.aristotle` ещё НЕ интегрированы.
+- 2026-09-25: четыре Lean-кандидата 22.09 побайтно перенесены в `Q3/Proofs/RouteB/Q3*Candidate20260922.lean`;
+  `scripts/q3_check.sh` — ok, полный `lake build` — 8215 jobs, exit 0. Только аксиомы
+  propext/Classical.choice/Quot.sound. Теоремы остаются условными; `hmode` и RH не закрыты.
 - Paired-window Mellin identity, Rminus crosswalk, Euler identity: PAPER-level
   (`docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md`, `docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md`).
 
 ## Следующий шаг
-1. Интегрировать 4 кандидата 22.09 в `q3.lean.aristotle/Q3/Proofs/RouteB/`, `scripts/q3_check.sh <file>`, `lake build`, commit, push.
-   (В рабочем дереве уже лежат неотслеженные `Q3*Candidate20260922.lean` от Codex — проверить, достроить, закоммитить.)
-2. Fokas rank-2 joint green (TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2): тождество даёт точную формулу остатка;
+1. Fokas rank-2 joint green (TRY_GOAL058_FOKAS_JOINT_GREEN_RANK2): тождество даёт точную формулу остатка;
    НЕ доказаны равномерная оценка убывания дефекта и sector floors. Граничный контроль t−V = 3√2/4 воспроизведён.
 
 ## Прошка
