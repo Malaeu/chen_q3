@@ -1,17 +1,16 @@
 # Q3 Codex bootstrap
 
-Canonical executor behavior: `docs/CODEX_CONTROL.md`. Entry: `SESSION_ENTRY.md`
-(one command, `python3 orchestrator/workflow_runtime.py plan`; the control is
-consulted by section when its gate fires, not re-read in full).
+Canonical executor behavior: `docs/CODEX_CONTROL.md`. Plain mode (owner instruction
+2026-09-25, ranks above the control per its §1): `git pull` → `docs/Codex/NEXT.md` →
+work; `plan` is optional advice, never a gate.
 
 If the control is missing, unreadable, non-`ACTIVE`, or duplicated, stop with:
 
 `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`
 
 This file is a thin bootstrap pointer. It contains no independent executor
-policy, and machine-local configuration cannot override the canonical control.
-Runtime validation is performed only by the canonical front door named in
-`SESSION_ENTRY.md`.
+policy, and machine-local configuration cannot override the canonical control; the Owner's explicit instruction can.
+Runtime validation (`plan`, optional in plain mode) is described in `SESSION_ENTRY.md`.
 
 
 # Codex project instructions

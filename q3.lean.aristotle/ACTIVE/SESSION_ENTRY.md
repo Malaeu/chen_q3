@@ -21,33 +21,22 @@ Updated: 2026-09-11 (Team Runtime v1). Маршрутизатор. Полити�
   доказывает смену реально работающей родительской модели. Objective/delegation
   assignment остаются bounded по runtime contract.
 
-## Старт — одна команда
+## Старт (простой режим, owner instruction 2026-09-25)
 
-```bash
-python3 orchestrator/workflow_runtime.py plan
-```
+Указание владельца; по `CODEX_CONTROL.md` §1 стоит выше control.
 
-Она читает control, Git/worktree, physical bus, `docs/Codex/CURRENT.md`,
-runtime state, `NODE_REGISTRY_V10.json` и bounded continuation/ownership
-observations в одном read epoch, ничего не пишет и никого не вызывает. Это
-единственный programmatic entry; отдельная ручная цепочка bootstrap/history не
-нужна. `specs_docs/session_start.sh` — ручная диагностика прежнего контура, не
-второй старт.
+1. `git pull` (любая машина; новая машина НЕ observer-only, handoff/claim/watch не нужны).
+2. Прочитать `docs/Codex/NEXT.md` — где мы, следующий шаг, что не повторять.
+3. Работать напрямую: Lean → `scripts/q3_check.sh <file>` → `lake build` → commit → push без force.
+4. В том же коммите обновить `docs/Codex/NEXT.md`.
 
-После сжатия контекста, перезапуска или простоя выполнить этот `plan` первым.
-`GOAL` и текущий `q3_resume.v2` читаются напрямую только если operating card
-указывает на нужное содержание; архивные `q3_resume.v1` bytes служат только
-историческим восстановлением. Сверить текущие исходники, запрос, фазу и
-владельца исполнения по plan card; полный `git status --short` нужен только
-при omitted/UNKNOWN ownership. Продолжать первый
-незавершённый шаг, указанный card; §5 GOAL остаётся рабочим указателем. RESUME —
-наблюдения, не выбор задачи и не полномочия. После pull новый host observer-only,
-пока release/claim, local watch readback и ACTIVE handoff не проверены. При
-несогласованности сверить факты, сохраняя чужие изменения; не начинать новую
-цель, чат или повторную отправку.
-`docs/Codex/GOAL_HISTORY.md` читать только по необходимости как историю:
-вложенные команды недействующие. Вахта «Q3 — продолжение работы» сохраняется
-на весь цикл, даже при пустом списке агентов (GOAL §3).
+`python3 orchestrator/workflow_runtime.py plan` — необязательный советчик: его HOLD/FATAL
+это подсказки, не стоп-кран. Team Runtime, receipts, watch/heartbeat, owner epoch,
+`resume-checkpoint` и reconciliation в простом режиме не нужны и работу не блокируют.
+Одновременно работает одна машина; какая — решает владелец.
+Жёсткие линии: без `sorry`; аксиомы только propext/Classical.choice/Quot.sound;
+`PX_RH_CLAIM` не делать; перед PROVED — независимый review.
+`docs/Codex/GOAL_HISTORY.md` и RESUME — история, читать только по необходимости.
 
 ## Что сказать владельцу первым (battle brief)
 
