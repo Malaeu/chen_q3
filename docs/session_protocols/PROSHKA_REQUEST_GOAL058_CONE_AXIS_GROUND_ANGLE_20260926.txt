@@ -1,0 +1,71 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-CONE-AXIS-GROUND-ANGLE
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CONE_AXIS_ANGLE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: ee77c97849ae0267e6e364c8d6cff572a71cfad8
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-GROUND-CENTERED-ABEL-DISCRIMINANT
+PREDECESSOR_VERDICT_SHA256: 1b4dff27d3bff6808a541db78ae1f205b2e8714f62c5123ff70f46cf8a2d56cb
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 2/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: one narrow PAPER-only killer for your unproved two-channel cone
+certificate (19)-(20), not another request to prove the full signed Abel
+margin. Your predecessor OPEN_SOURCE_DISCRIMINANT is preserved at
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_GROUND_CENTERED_ABEL_DISCRIMINANT_2026-09-26.md.
+
+Freeze the same selected cell m=J_P+j+2, N=6m-1, full x, K_j, Pi,
+theta=tr_{U_j} K_j, and source transform F*. Keep the predecessor's
+p_k>0, mu_k=(4k+1)^(-1), M, beta=S_N-1, V, a, d and
+vartheta_m=d/(a^2+d) in (0,1), with the original 5m splice and all
+complete W02-WR-prime entries. The two frozen source directions are
+u^(0)=(K_j-theta I)x+Pi K_j Pi x and u^(1)=Pi K_j Pi x.
+Set z_(alpha,k)=(-1)^k(F* u^(alpha))_k,
+c_alpha=Re sum_(k=1)^N p_k z_(alpha,k), and
+G_(alpha,beta)=Re sum_(k=1)^N conj(z_(alpha,k)) z_(beta,k)/mu_k.
+Use the exact incomplete-Mellin formulas (9)-(12) of your predecessor.
+
+Before attempting all three copositivity inequalities, test just the two
+AXIS necessities for any positive delta in (19)-(20). For alpha=0,1,
+
+    A_(alpha,alpha)(delta)
+      = (vartheta_m-delta(m)) M G_(alpha,alpha)-c_alpha^2 >= 0.
+
+If G_(alpha,alpha)>0, a positive delta(m) requires the strict source
+angle gap
+
+    q_alpha(m):=c_alpha^2/(M G_(alpha,alpha)) < vartheta_m.
+
+If G_(alpha,alpha)=0 then c_alpha=0 and that axis is vacuous.
+One exact source axis with q_alpha>=vartheta_m on arbitrarily large
+selected indices refutes the proposed WHOLE-CONE certificate on every
+tail, though it says nothing by itself about the actual fixed mixture.
+Conversely strict axis gaps alone do not pay the mixed condition or D.
+
+The task: determine whether either axis has a SOURCE-DERIVED eventual
+strict gap or a SOURCE-DERIVED unbounded obstruction, using the exact
+selected K_j, Pi, x and F* (not arbitrary forcing vectors). Test the
+plane axis alpha=1 first because it is the shortest possible killer;
+then alpha=0 only if the first axis does not settle whole-cone viability.
+For a gap, give an explicit positive lower bound
+vartheta_m-q_alpha(m)>=eta_alpha(m)>0 with all family quantifiers.
+For an obstruction, give a proved unbounded selected-index set and the
+inequality q_alpha>=vartheta_m there. If neither is derived, return
+OPEN_CONE_AXIS_ANGLE with the exact first unpaid source inequality and
+one distinct paper mechanism for it. Keep both coherent lower moments,
+MIX, Q6, both physical edges, the full prime-power sum, and complex
+conjugation. Do not infer a source sign from Gram positivity.
+
+Do not rerun the generic cone algebra, simply define delta by an unknown
+minimum, replace the source by Gaussian/numerical data, claim that a
+failed cone axis kills the actual D, invoke Lean/runtime, write to the
+repository, or claim RH. Any proved axis fact is at most PAPER progress
+on the moment-certificate test; first tau sign and Schur floor remain open.
