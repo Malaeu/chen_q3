@@ -1,0 +1,78 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-FIRST-OMITTED-COMPRESSION
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_FIRST_OMITTED_ERROR_COMPRESSION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: f597cd6afb69304951f9dd0f9fad3f3ed7000cde
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-PLANE-PROJECTIVE-DISPLACEMENT
+PREDECESSOR_VERDICT_SHA256: 78750ef46a881243dc68a15d61417cb480286cf50a886e13451f052531792737
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 4/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_FIRST_OMITTED_PAIR_COMPRESSION_DOMINANCE
+on PAPER for the unchanged selected Ferrers/CCM family. Your exact
+OPEN_PLANE_DIRECTION verdict is the predecessor at
+`docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PLANE_PROJECTIVE_DISPLACEMENT_2026-09-26.md`.
+Its algebra (14)-(20) has been independently checked as a representation;
+(21)-(23) have not been proved. Do not repeat a generic projective-ratio,
+cone-copositivity, or first-omitted-pair rotation calculation.
+
+Keep m=J_P+j+2, N=6m-1, original 5m splice, carrier -m..m, the full
+selected source x, B=(b,e), R=B*B, y=B*x and t_sel=R^(-1)y on the admitted
+rank-two tail. The unchanged K_j=W02-WR-Prime has its literal diagonal,
+archimedean subtraction, every prime power and both physical boundaries.
+For n*=m+1, Q5 gives e~_n=-omega_n^2 b~_n+epsilon_m with
+omega_n=2pi n/L, epsilon_m=2G'(L/2)/sqrt(L)>0. Put
+zeta*=(b~_n*,e~_n*), rho*=||zeta*||>0, nu=zeta*/rho*,
+nu_perp=(-e~_n*,b~_n*)/rho*. Let Delta_0=T_m G-G,
+Delta_1=T_m G''-G'', E_parallel=nu_0 Delta_0+nu_1 Delta_1,
+E_perp=nu_perp,0 Delta_0+nu_perp,1 Delta_1. The first omitted
+coefficients are -rho* and 0; the transverse coefficient for an omitted
+n is predecessor (19), with its numerator kept grouped. The exterior
+parts are -G and -G'', not zero. The finite-rank compression equals the
+full radical error form A_ab=Re W(Delta_a,Delta_b), using predecessor
+(25) with both physical tails, Gamma(0), diagonal/archimedean subtraction
+and all returned prime powers. Do not insert an L2 Fourier series
+termwise into W without a proved stronger convergence theorem.
+
+The decisive source quantities are
+alpha=W(E_parallel,E_parallel),
+beta=Re W(E_parallel,E_perp),
+gamma=W(E_perp,E_perp), and the actual t_sel.
+Seek source-derived explicit eventual bounds
+alpha != 0, |beta| <= delta_1(m)|alpha|,
+|gamma| <= delta_2(m)|alpha|,
+|nu^T t_sel| >= g*(m)||t_sel|| > 0,
+with ||R|| ||R^(-1)|| (2delta_1+delta_2)/g* < 1/2.
+Keep all signs, index ranges, constants and convergence justifications.
+The strict inequality is a sufficient dominance test, not an axiom or
+an invitation to define delta_i by the unknown ratios.
+
+Return exactly one:
+1. COMPRESSION_DOMINANCE_PAID: prove all the displayed estimates for
+   the selected tail, including nonzero activity of actual y, and then
+   give the resulting explicit projective neighborhood. Do not call it
+   PLANE_AXIS_GAP without the separate P_m-sector test.
+2. COMPRESSION_CERTIFICATE_KILL: prove a concrete selected unbounded
+   index set or structural identity incompatible with this specific
+   sufficient package; state which of alpha!=0, the relative bounds,
+   activity, or strict comparison fails and why. Do not infer failure
+   of the true axis gap or full route.
+3. OPEN_FIRST_OMITTED_COMPRESSION: isolate the earliest signed source
+   contraction or actual-source activity that cannot be paid. Give its
+   exact expression from the complete W form, the missing estimate,
+   and one distinct falsifiable PAPER next test, not another restatement
+   of (21)-(23). If an existing source estimate controls only a piece,
+   say which omitted modes, exterior tail, or prime-power range remains.
+
+No numerical diagnostics, Lean, mathematical runtime, repository writes,
+source replacement, arbitrary x, whole-plane positivity substitution,
+first tau-sign, Schur-floor, route promotion or RH claim.
