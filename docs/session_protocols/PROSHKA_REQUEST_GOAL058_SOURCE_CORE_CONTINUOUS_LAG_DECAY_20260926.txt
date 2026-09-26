@@ -1,0 +1,117 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-SOURCE-CORE-CONTINUOUS-LAG-DECAY
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_CONTINUOUS_LAG_DECAY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 2838c9482b1218cf1548ccd575f23520ab5796bd
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-INTERIOR-SQUARE-CORE-AFTER-ENDPOINT
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INTERIOR_SQUARE_CORE_AFTER_ENDPOINT_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 0e8280d2b5a739e56f07ae29f8c6f28ade7ba21a190edea8333dcbe06c659cf1
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 2
+INTENDED_ORDINAL_IF_CONFIRMED: 3/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_CONTINUOUS_LAG_DECAY on PAPER.
+Read the complete predecessor verdict at the exact SHA-256 above and
+its limited independent audit in docs/Codex/PAPER_CHAIN.md headed
+"interior square core test". Do not repeat the predecessor request.
+The new accepted result refutes ONLY a separate lower-order budget for
+the complete source-source block S_3. It is not a leading witness for
+the signed four-block core. The fixed candidate below remains OPEN.
+
+Fix the same selected P and admitted m=J_P+j+2 >= 65536. Keep
+L=log m, b=L/2, Q=sqrt(m), X_2=m^(1/4), omega_n=2 pi n/L,
+P_m={p prime: L<p<=X_2}, t_p=2 log p, a_p=b-t_p,
+w_p=(log p)/p. Use the original 5m splice and carrier -m<=n<=m.
+The exact even source and projection are
+h_*(x)=(24 pi x^2-16 pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)), g=G'',
+h=T_m g, f=h-g, E=E_11=||f||_2^2>0.
+The carrier is
+psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u).
+Set epsilon_m=2G'(b)/sqrt(L),
+d(u)=epsilon_m sum_{n=-m}^m psi_{n,L}(u), k=f-d.
+The denominator is the ORIGINAL E, including the physical exterior;
+do not replace it by ||k||_2^2.
+
+For every integer n, set
+e_n=int_{-b}^b g(u)conj(psi_{n,L}(u))du,
+c_{m,n}=epsilon_m for |n|<=m and c_{m,n}=e_n for |n|>m.
+The predecessor established exactly, in L^2([-b,b]),
+k=-sum_{n in Z}c_{m,n}psi_{n,L},
+E=2int_b^infty|g(u)|^2du+sum_{|n|>m}|e_n|^2.
+In particular k has the nonzero low block -epsilon_m; it is not a
+pure high-pass tail.
+
+For 0<=t<=b define
+A_m(t)=int_0^{b-t}k(u)k(u+t)du.
+The predecessor's exact finite-window Fourier representation is
+A_m(t)=lim_{N->infty}(1/L)Re sum_{|n|,|q|<=N}
+ conj(c_{m,n})c_{m,q}(-1)^(q-n)exp(i omega_q t)
+ J(omega_q-omega_n,b-t),
+J(kappa,a)=int_0^a exp(i kappa u)du, J(0,a)=a.
+The limit uses L^2 convergence, not absolute double convergence.
+Retain independent n,q, the literal diagonal and moving b-t.
+
+Test the FIXED candidate, with no fitted constant or threshold:
+
+  (1+t)|A_m(t)| <= 16 E
+  for EVERY admitted selected m>=65536 and EVERY real t with
+  2 log L <= t <= b.                         (TEST)
+
+This is stronger than the arithmetic-weighted prime-square target.
+It is not asserted to be necessary. A generic high-pass argument is
+insufficient: the predecessor's diagnostic q(u)=cos(2pi N u/L),
+N>m divisible by four, violates any such uniform statement as
+L grows, but q is not the fixed theta source. Use the actual e_n,
+epsilon_m or the equivalent differentiated projection kernel.
+
+Return exactly ONE of these outcomes:
+1. SOURCE_CORE_LAG_DECAY_PROVED: a complete source-derived PAPER proof
+   of (TEST) with all its quantifiers, including t at moving
+   endpoints. State every strip, contour, Fourier and exterior input.
+   Then, and only then, partial summation yields the conditional
+   transfer as an actual result:
+   |V_m^[0]|<=128(1+log L)E, C_int=134, C_2=146.
+2. FIXED_SOURCE_CORE_LAG_CANDIDATE_REFUTED: an exact source-based
+   permitted pair (m,t), or an explicitly proved selected sequence,
+   with (1+t)|A_m(t)|>16E. Give a rigorous signed margin and all
+   source-error budgets. This refutes only the fixed sufficient
+   candidate, NOT existence of another core saving constant.
+3. OPEN_SOURCE_CORE_LAG_DECAY: identify the first unpaid
+   source-specific comparison in the exact c_{m,n} correlation.
+   Give one narrower falsifiable PAPER lemma with an explicit
+   consumer, domain and discriminator; do not merely rename (TEST),
+   propose a numerical cutoff search, or infer a result from
+   coefficient support alone.
+
+The downstream arithmetic identity is
+V_m^[0]=4 sum_{p in P_m}w_p A_m(t_p).
+The predecessor proved
+sum_{p<=X_2}(log p)/(p(1+2log p))<=2(1+log L),
+so (TEST) implies |V_m^[0]|<=128(1+log L)E. Without (TEST),
+these constants remain CONDITIONAL. The exact paid transfer is
+U_m^(2)=V_m^[0]+R_{epsilon,m}+U_m,small^(2)
+       +X_m,large-L_m,large^(2),
+|R_{epsilon,m}|<6E,
+|U_m^(2)-V_m^[0]|<=[12(1+log L)+r_epsilon(m)]E.
+Keep the low-frequency subtraction negative.
+
+Do not split the complete source-source T_3 block into a supposed
+lower-order relative budget: its failure is independently checked.
+No source, selected family, carrier, Q, seed or denominator change.
+Do not infer a whole-square result from a subblock. The exponent-one
+prime block and prime/square compensation, opposite-side correlation,
+integrated symbol deviation, transfer, actual J_m sign, first tau_j
+sign, Schur-floor and RH remain OPEN. No mathematical runtime,
+numerical cutoff search, Lean, repository write, route promotion or
+RH claim. Return the full PAPER argument and one bounded CODEX
+DIRECTIVE.
