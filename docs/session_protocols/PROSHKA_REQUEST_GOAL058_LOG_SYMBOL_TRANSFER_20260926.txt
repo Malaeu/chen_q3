@@ -1,0 +1,83 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-LOG-SYMBOL-TRANSFER
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_LOG_SYMBOL_TRANSFER
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 7ef70edc4c67b4dce7b20947bca5a07c5cb281f0
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-COMPRESSION-SPECTRAL-SPREAD
+PREDECESSOR_VERDICT_SHA256: de75515ca7cc2372a9645ded33bd5792b249ebbc82d1b1521f3373af89fe8692
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 6/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_LOG_SYMBOL_TRANSFER_ON_FIXED_ERROR_COLUMNS
+on PAPER for the unchanged selected Ferrers/CCM source. The complete
+predecessor is docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COMPRESSION_SPECTRAL_SPREAD_2026-09-26.md.
+Its exact contractions (2)-(11), L2 error estimate (19), lower scale (20),
+and eventual kappa_R bound (22) were independently checked as PAPER.
+Its transfer condition (25) and the actual sign of J_m were NOT proved.
+Do not rederive the L2 estimate, silently identify it with Weil energy,
+or select another rank-one seed.
+
+Fix one P, selected m=J_P+j+2, original 5m splice and carrier -m..m.
+Use the exact source G=E h_*, b_L=(log m)/2, T_m the original L2
+projection, Delta_0=T_m G-G and Delta_1=T_m G''-G''. Keep the original
+column units. Let E_ab=<Delta_a,Delta_b>_{L2(R)} and
+ell_m=log((m+1)/log m). On the admitted rank-two tail put
+A_ab=Re W(Delta_a,Delta_b)=B* K_j B and N=A-ell_m E. In the global
+representation retain the full residual from predecessor (24):
+
+N_ab = Re integral_R [a(xi)-ell_m] conj(DeltaHat_a(xi))
+                  DeltaHat_b(xi) dxi
+       + integral_0^infty 2 cosh(t/2) Gamma_ab(t) dt
+       - sum_{nu=2}^infty Lambda(nu)/sqrt(nu) Gamma_ab(log nu),
+a(xi)=Re psi(1/4+i xi/2)-log pi,
+Gamma_ab(t)=Re integral_R conj(Delta_a(u))
+                    [Delta_b(u+t)+Delta_b(u-t)] du.
+
+The earliest unpaid transfer is the THREE compatible relative bounds,
+with all quantifiers on one selected tail:
+
+|N_00| <= (1/4) ell_m E_00,
+|N_11| <= (1/4) ell_m E_11,
+|N_01| <= (1/4) ell_m sqrt(E_00 E_11).                 (T)
+
+Adjudicate (T) from the exact source, beginning with the diagonal
+N_11 as the cheapest potential obstruction. If that bound fails on an
+unbounded selected-index set, do not spend effort proving the others:
+this kills (T) only. If it survives, test N_00 and N_01 compatibly.
+Separate archimedean multiplier deviation, pole, and complete prime
+correlations before estimating their JOINT total. Keep both physical
+exterior tails, both window jumps, endpoint subtraction, and all
+returned prime powers nu>m. A pointwise log-symbol approximation,
+bare absolute continuity budget, finite-cell check, or raising the
+carrier cutoff does not decide (T). Give explicit source-derived
+envelopes and a proved threshold, not a fitted asymptotic.
+
+Return exactly one:
+1. SOURCE_LOG_SYMBOL_TRANSFER_PASS: prove all three (T) on a specified
+   eventual selected tail, with constants and exact threshold. Then
+   predecessor (26)-(27) yields only an eventual positive NECESSARY
+   J_m test; alpha, dominance, actual-vector activity and axis gap
+   remain separate.
+2. SOURCE_LOG_SYMBOL_TRANSFER_KILL: prove at least one strict reverse
+   inequality in (T) on an unbounded selected-index set, identifying
+   the component and source contribution. This kills only the proposed
+   quarter-scale transfer certificate, not J_m>0 or the full rank-one
+   package; do not call it a spectral obstruction.
+3. OPEN_SOURCE_LOG_SYMBOL_TRANSFER: give the first exact unpaid source
+   correlation and its indexed formula, explain why the available
+   estimates cannot pay it, and give ONE distinct falsifiable PAPER
+   next test. Do not rename (T), rerun L2 geometry, or request a
+   numerical cutoff search.
+
+No Lean, mathematical runtime, numerical diagnostics, repository writes,
+source replacement, arbitrary selected x, first tau-sign, Schur-floor,
+route promotion, or RH claim.
