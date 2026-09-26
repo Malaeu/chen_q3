@@ -1,0 +1,105 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-PRIME-SQUARE-HIGH-FREQUENCY
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_PRIME_SQUARE_HIGH_FREQUENCY
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: d366554d34c2feaf31926381aa9649e1217b2025
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-SAME-SIDE-DILATION-HEAD
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SAME_SIDE_DILATION_HEAD_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 39b02d5663ff7c918f8e0875375bd152d05148fc1f3a80c887529a8f93fe9ca2
+PREDECESSOR_GIT_BLOB: dd39ad32a88511c0d6889c86feef9b95e82a806b
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 9/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_PRIME_SQUARE_HIGH_FREQUENCY_CORRELATION
+on PAPER. Read the complete predecessor Markdown at the exact hash above
+and docs/Codex/PAPER_CHAIN.md's limited independent audit of answer no. 9.
+The predecessor's low continuous-frequency estimate (19), exponent >=3
+prime-power bound (22), and reduction (24)-(25) were independently checked
+at their exact scope. Neither requested whole-head family quantifier was
+proved. Do not repeat the same-side head request or declare it killed.
+
+Fix the same selected P and admitted m=J_P+j+2, m>=16, L=log m,
+b=L/2, Q=sqrt(m), omega_n=2 pi n/L, original 5m splice, and fixed
+Fourier carrier n=-m..m. Keep the exact even theta source
+h_*(x)=(24 pi x^2-16 pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)), g=G'',
+h_m=T_m g, f_m=h_m-g, E_11=||f_m||_2^2>0,
+ell_m=log((m+1)/L). Keep the endpoint in every coefficient:
+
+psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u),
+b_n=(-1)^n/sqrt(L) integral_-b^b G(u)exp(-i omega_n u)du,
+epsilon_m=2G'(b)/sqrt(L),
+e_n=(-1)^n/sqrt(L) integral_-b^b g(u)exp(-i omega_n u)du
+   =-omega_n^2 b_n+epsilon_m,
+h_m=sum_{n=-m}^m e_n psi_{n,L}.
+
+Use exactly the half-line source density, not the full-line transform:
+s_xi=1/2-i xi,
+h_2(x)=(-64v^4+448v^3-660v^2+150v)exp(-v), v=pi x^2,
+H_2(s;a,c)=integral_a^c h_2(x)x^(s-1)dx,
+J(eta,a)=integral_0^a exp(i eta u)du, including J(0,a)=a,
+Phi_m(xi)=1/sqrt(2 pi) [
+  1/sqrt(L) sum_{n=-m}^m e_n(-1)^n J(omega_n-xi,b)
+  -sum_{r>=1}r^(-s_xi)H_2(s_xi;r,infinity)
+].
+The second term includes the full positive physical tail. The first
+contains the literal Q5/Q6 endpoint through epsilon_m.
+Plancherel gives integral_R |Phi_m|^2 dxi=E_11/2. It does not supply
+the signed prime-square correlation.
+
+The ONLY target is the signed high-frequency prime-square block,
+with every p prime and exactly p^2<=Q:
+
+U_m^(2)=4 Re sum_{p<=m^(1/4)} (log p)/p
+  integral_{|xi|>sqrt(m)} exp(2 i xi log p)|Phi_m(xi)|^2 dxi.   (SQ)
+
+The predecessor proved only
+|S_m^low|<=rho_low(m)E_11<=0.5(log m)m^(-1/4)E_11
+for |xi|<=sqrt(m), |S_m^(>=3)|<=C_3 E_11, C_3<48,
+and the earlier same-side dilation tail |S_m^{>Q}|<=r_side E_11.
+The exponent-one high-frequency prime block U_m^(1), the entire
+opposite-side correlation, integrated symbol deviation, transfer,
+actual J_m sign, axis gap and RH remain OPEN. Do not use the bounds
+outside their stated frequency/arithmetic domains.
+
+Preserve an equivalent physical derivation only if it keeps all four
+terms in predecessor (2) with nu=p^2, the n=q diagonal, both different
+mixed integration domains, the restricted divisor weight if collapsed,
+the moving nu<=y boundary, and the exact endpoint epsilon_m. Do not
+silently exchange prime-square weights with all divisors or primes.
+The physical square-head sum equals (SQ) only after subtracting its own
+low-frequency contribution, whose absolute value is bounded by
+rho_low(m)E_11.
+
+Return exactly one outcome for (SQ):
+
+1. PRIME_SQUARE_HIGH_FREQUENCY_SAVED: prove a source-derived finite C_2
+   and explicit selected threshold m_2 such that for every selected
+   m>=m_2, |U_m^(2)|<=C_2(1+log log m)E_11(m). Give the signed
+   cancellation, constants, and domain. Defining C_2 from the unknown
+   ratio or using only the coefficient sum (predecessor (28)) is not proof.
+2. PRIME_SQUARE_HIGH_FREQUENCY_LEADING: prove c_2>0 and an unbounded
+   selected index set with |U_m^(2)|>=c_2 ell_m E_11(m). Give the
+   source-derived lower estimate and quantifiers; positive coefficients
+   alone are not a witness. State explicitly why cancellation with
+   U_m^(1) could still preserve whole-head saving.
+3. OPEN_PRIME_SQUARE_HIGH_FREQUENCY: identify the first explicit
+   source-indexed signed comparison still unpaid in (SQ), prove why the
+   presently admitted estimates do not settle either quantifier, and
+   propose at most one strictly narrower falsifiable PAPER test.
+
+Even a saved square block leaves U_m^(1) open; a leading square block
+alone neither kills the whole head nor the complete arithmetic route.
+No numerical cutoff search, mathematical runtime, Lean, repository
+write, new seed, source/carrier/Q replacement, route promotion,
+transfer pass, actual J_m sign, compression dominance, vector
+activity, axis gap, first tau-sign, Schur-floor, or RH claim.
