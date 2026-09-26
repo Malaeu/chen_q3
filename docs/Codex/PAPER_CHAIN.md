@@ -817,6 +817,55 @@ read-only review-прохода `/root/log_symbol_paper_review` на точно�
 SHA-256 не нашли CRITICAL/HIGH/MEDIUM/LOW/WORDING-замечаний;
 прежние global error-form и form-domain входы не проверялись заново.
 
+**Ответ на divisor-collapsed correlation test № 8 (26.09, PAPER; OPEN_DIVISOR_CORRELATION).**
+[Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DIVISOR_COLLAPSED_PRIME_CORRELATION_2026-09-26.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443),
+ответ `32013b02-ddc6-4f71-8269-6fb68c61a39b` /
+`07bebc0a-145f-47b9-be1a-1dc58fd23db3`, завершён
+2026-09-26 17:51:20 UTC: 30,279 байт / 538 LF / SHA-256
+`2a02d6bc989b4a990f81ab5eff2d277897fd28657df5fff91e3df037a63292eb`,
+совпадает с хешем вложения в ответе. [Точный inline-текст](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_DIVISOR_COLLAPSED_PRIME_CORRELATION_2026-09-26.md):
+3,003 байта / SHA-256 `f9ae105ab5d3a7b2e5305268b5903454dacefe2c94cfdef548b7d19f93e49580`.
+
+Независимо проверены решающие новые стыки. Чётность фактического
+`g=G''` и замена `x²=vz` дают reciprocal-свёртку
+`𝔅₂(v)=Σ_{a,b}c_ac_b(πv)^{a+b}K_{a-b}(2πv)` в (8).
+Оценка абсолютных членов `≤C_Bv^{15/2}e^(−2πv)` при `v≥1`
+оправдывает Tonelli и точную divisor-сумму
+`2∫_ℝgZ_g=Σ_{v≥2}d(v)(log v)𝔅₂(v)` в (10).
+Mellin-производная `∫(log x)h₂(x)dx=−1/2` и
+Riemann-sum remainder дают
+`Z_g(u)=−e^(−u/2)/2−u g(u)+ρ(u)`, `|ρ(u)|≤V_qe^(u/2)`;
+поэтому `lim_{u→−∞}e^(u/2)Z_g(u)=−1/2` и
+**`Z_g∉L²(ℝ)`**. Это исключает только unweighted-`L²` интерфейс,
+не арифметическое сокращение полного `𝒫_m^all`.
+
+Разбиение чётной корреляции по физическим полупрямым имеет точные
+коэффициенты `4` (same-side) и `2` (opposite-side) в (13).
+Для same-side при `ν>√m` второй аргумент уже вне окна;
+прежний source-спад при `t≥b` и Cauchy–Schwarz дают (18)
+`|𝒮_m^{>√m}|≤r_side(m)E₁₁≤2(log m)m^(−1/4)E₁₁`
+для каждого выбранного `m≥16`. Проверены first-term allowance при
+нецелом `√m`, интегральный остаток и граница области применения.
+Эта оценка **не** переносится на opposite-side корреляцию:
+при `√m<ν<m` оба аргумента могут оставаться внутри окна.
+Четырёхчленное разложение same-side head (23), диагональ (24),
+ограниченный вес `L_Q(k)` (25) и подвижная граница (26) проверены
+как точные тождества, не как относительные оценки.
+
+Два последовательных независимых read-only review-прохода
+`/root/divisor_correlation_paper_review` на точном SHA-256 не нашли
+CRITICAL/HIGH/MEDIUM/LOW/WORDING-замечаний. Прежние source decay,
+чётность и form-domain входы использованы как явно принятые входы,
+не перепроверены заново. Ни
+`|𝒫_m^all|≤C_div(1+log log m)E₁₁`, ни ведущий свидетель на
+неограниченном выбранном множестве не получены. Полный `N₁₁`,
+остальные transfer-входы, знак фактического `𝔍_m`, осевой зазор,
+первый знак `τ_j`, Schur-floor и RH OPEN. Ближайший отдельный
+PAPER-тест — относительный порядок same-side head `2≤ν≤√m`
+с четырьмя точными членами (23); даже его закрытие оставит
+opposite-side часть отдельной.
+
 **G1 · hoddEv (условный мост ниже).** Если constant hfloorEv и odd mass `<1/2`
 на той же семье, бумажное неравенство ниже даёт `β₀=β`; hratioEv для самого этого вывода не нужен.
 Но его constant-hfloor предпосылка здесь опровергнута, поэтому этот мост не закрывает hoddEv для семьи.
