@@ -1,0 +1,84 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-DIVISOR-COLLAPSED-PRIME-CORRELATION
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_DIVISOR_COLLAPSED_PRIME_CORRELATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: a0e13520bd902cbdd1a9c0a7728176e1c34d241b
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-LOG-SYMBOL-TRANSFER
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_LOG_SYMBOL_TRANSFER_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 3e5e27a0b903abcb66e1f5beb027c23d25b0b92710674bf056769932c508d444
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 7/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_DIVISOR_COLLAPSED_PRIME_CORRELATION
+on PAPER for the same selected Ferrers/CCM family. Read the complete
+predecessor Markdown at the exact hash above. Its equations (8)-(16)
+were independently checked as a relative bound on the pole and all
+returned prime powers, and (20)-(22) as exact source identities.
+Neither the full N_11 quarter-scale bound nor any sign of the actual
+J_m was proved. Do not convert an identity into a relative estimate.
+
+Fix one P and the selected m=J_P+j+2, L=log m, b=L/2, original 5m
+splice and Fourier carrier -m..m. Keep the unchanged real even source
+G(u)=exp(u/2) sum_{r>=1} h_*(r exp u), with
+h_*(x)=(24 pi x^2-16 pi^2 x^4) exp(-pi x^2).
+Let g=G'', h_m=T_m g, f_m=h_m-g, E_11=||f_m||_2^2>0, and
+ell_m=log((m+1)/L). The projection T_m and Q5/Q6 edge coefficients
+are exactly those of predecessor equations (1)-(7).
+
+The complete arithmetic correlation, with every prime power, is
+
+P_m^all = sum_{nu>=2} Lambda(nu)/sqrt(nu) Gamma_m(log nu),
+Gamma_m(t)=Re integral_R conj(f_m(u))
+                    [f_m(u+t)+f_m(u-t)] du.
+
+The predecessor's exact divisor collapse uses
+h_2=(x d/dx+1/2)^2 h_*
+   =(-64v^4+448v^3-660v^2+150v) exp(-v), v=pi x^2,
+Z_g(u)=sum_{nu>=2} Lambda(nu)/sqrt(nu) g(u+log nu)
+      =exp(u/2) sum_{k>=1} (log k) h_2(k exp u).
+Writing Q_m(t) for the literal finite-window h_m,h_m correlation,
+including its separate diagonal and original e_n terms, equation
+(22) states exactly
+
+P_m^all = sum_{nu=2}^m Lambda(nu)/sqrt(nu) Q_m(log nu)
+          -4 integral_{-b}^b h_m(u) Z_g(u) du
+          +2 integral_R g(u) Z_g(u) du.                 (D)
+
+Only the h_m,h_m term truncates at m. Treat the two Z_g integrals as
+grouped expressions; justify any interchange of their pointwise
+series and whole-line integration. Retain both physical tails, the
+Q5/Q6 edge, and all prime powers. Do not replace this family or the
+carrier, or omit a signed term to obtain a convenient bound.
+
+Adjudicate the distinct lower-order-arithmetic mechanism. Return one:
+
+1. DIVISOR_CORRELATION_SAVED: prove a source-derived finite C_div and
+   selected threshold m_div such that for every selected m>=m_div,
+   |P_m^all| <= C_div(1+log log m) E_11(m). Give exact cancellation
+   and constants; defining C_div from the unknown ratio is not proof.
+2. DIVISOR_CORRELATION_KILLED: prove c>0 and an unbounded selected-index
+   set with |P_m^all| >= c ell_m E_11(m). This excludes the above
+   lower-order mechanism only. It does not kill the full transfer:
+   the integrated multiplier may cancel the arithmetic term.
+3. OPEN_DIVISOR_CORRELATION: identify the first explicit unpaid
+   source cancellation in (D), with its full indexed formula; explain
+   why available source estimates cannot pay either quantifier and
+   give exactly one narrower falsifiable PAPER next test. Do not
+   rename this request or ask for a numerical cutoff search.
+
+Keep the integrated archimedean symbol deviation, the pole term and
+the two other transfer entries N_00,N_01 separate. A saved arithmetic
+bound is only one supplier for N_11; it does not prove transfer (T),
+J_m>0, compression dominance, selected-vector activity, axis gap,
+first tau-sign, Schur-floor or RH. No Lean, mathematical runtime,
+numerical diagnostics, repository writes, new seed, cutoff escalation,
+route promotion or PX/RH claim.
