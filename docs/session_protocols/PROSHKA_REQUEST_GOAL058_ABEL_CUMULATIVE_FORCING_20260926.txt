@@ -1,0 +1,81 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-ABEL-CUMULATIVE-FORCING
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_FULL_FORCING_ABEL_SIGN
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 03531e2a5b150c50de0c140223d38fc081daada2
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-25-SIGNED-ROBIN-KERNEL
+PREDECESSOR_VERDICT_SHA256: 289c91921139f565f939867547582d8b606fc195f53c3c0f235d7b7771c735d6
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: NEW_PROJECT_CHAT_REQUIRED_PREVIOUS_6ab6827b_EXHAUSTED_10_OF_10
+PX_RH_CLAIM: NOT_MADE
+
+Прошка, один новый PAPER-тест на выбранной Ferrers/CCM-семье. Предыдущий
+OPEN_SIGNED_ROBIN_KERNEL доказал (при принятом PAPER-hmode) единственную
+смену знака весов, но не знак полной суммы. Его полная запись:
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SIGNED_ROBIN_KERNEL_2026-09-25.md.
+Не повторяй тест разбиения весов, Green-обратимость, Chebyshev-primitive
+или zero-orbit head из уже отвеченных запросов. Новый предмет — Абелево
+суммирование настоящего совместного forcing и односторонний запас.
+
+Сохрани один P, m=J_P+j+2, N=6m−1, исходную склейку 5m, Fourier carrier
+−m≤n≤m, тот же K_j, U_j, q_j, z_j, F, x=Fc, κ_m, B(m), E_0<E_4.
+Положи p_k=P_k(E_0,m)>0, v_k=P_k(E_4,m), r_k=v_k/p_k,
+W_k=p_k−v_k=p_k(1−r_k). Полный forcing фиксируется ОДИН раз по всему x:
+
+  g♯=Y²(K_j x−θx)+X²Π K_j Πx,
+  h♯_k=(−1)^k(F* g♯)_k,
+  X=||x||₂, Y=||Πx||₂, Π=Π_{U_j}, θ=tr_{U_j} K_j.
+
+Целевой скаляр 𝓠_m=κ_m D_m, D_m=Σ_{k=1}^N W_k h♯_k.
+Пусть C_j=Σ_{k=1}^j p_k h♯_k. Конечное тождество Абеля:
+
+  D_m=(1−r_N)C_N+Σ_{j=1}^{N−1}(r_{j+1}−r_j)C_j.               (A)
+
+Из source-Wronskian получается
+
+  r_{j+1}−r_j=−ΔE S_j/(A_j p_j p_{j+1}),
+  ΔE=E_4−E_0>0, S_j=Σ_{a=0}^j μ_a p_a v_a,
+  μ_a=(4a+1)^(−1), A_j=−μ_j u_j>0.                         (W)
+
+Сначала НЕ принимай (A), (W) на веру: проверь знаки, индексы, край N и
+ненулевые знаменатели по исходной рекурсии. Затем найди реальную
+одностороннюю оценку ВЗВЕШЕННОЙ совместной суммы справа в (A) — не
+обязательно знак каждого C_j. Разрешено переносить C_j в непрерывные
+интегралы или boundary identities, но сохраняй оба когерентных нижних
+момента Σ₀♯ и Σ₁♯, обе физические границы, MIX, plane-коррекцию,
+Q6, диагональ, полную W02–WR–Prime и все prime powers. Не пересчитывай
+g♯ отдельно на положительном и отрицательном блоках.
+
+Контроль против слишком сильной леммы: в reference-расчёте m=13,N=77
+при 140 и 180 десятичных знаках полный скаляр 𝓠_m
+≈−7.1275475940·10^(−11), но первые C_j уже имеют знаки
+−,+,−,+,−,+,+,−,... . При 50 знаках
+этот же расчёт численно развалился, поэтому никакой знак/асимптотику
+из этих чисел не выводи. Это конечная midpoint-диагностика, НЕ
+rigorous enclosure и НЕ cofinal source-сертификат. Она лишь требует
+избежать недоказанного условия «все C_j одного знака».
+
+Нужен один из трёх честных исходов:
+1. ABEL_SIGN_BOUND: source-uniform одностороннее неравенство с явными
+   кванторами и положительным ζ(m): либо 𝓠_m>Y²B(m)+ζ(m) на явно
+   неограниченных выбранных индексах, либо 𝓠_m<−Y²B(m)−ζ(m)
+   на всём выбранном хвосте. Покажи настоящий источник запаса, не
+   спрятанный в определении новой константы. Выводи только первый знак
+   τ_j; Schur-floor и RH остаются OPEN.
+2. ABEL_METHOD_KILL: точный source-свидетель, опровергающий конкретный
+   достаточный Abel-сертификат. Не объявляй KILL самого полного знака.
+3. OPEN_ABEL_FORCING_SIGN: проверенные (A),(W), точная формула первого
+   неподконтрольного совместного вклада (с диапазонами j,k,n,r,m),
+   почему прежние bounds не дают нужной стороны и ОДИН самый дешёвый
+   дискриминирующий PAPER-тест. Не возвращай просто «C_j меняет знак».
+
+Без подмены selected packet гауссовым reference, без RH, без positivity
+K/W, fixed β, odd-floor, prolate 6π gap и fixed-frequency asymptotic.
+Никакого Lean/runtime/repo write или RH claim.

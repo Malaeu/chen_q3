@@ -2,6 +2,14 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-26-ABEL-CUMULATIVE-FORCING · Full selected forcing after finite Abel summation · OPEN
+
+- `STATUS: OPEN` — `DELEGATED_STRATEGIC_REVIEW`; exact request: `docs/session_protocols/PROSHKA_REQUEST_GOAL058_ABEL_CUMULATIVE_FORCING_20260926.txt`.
+- `BOUNDARY_ID: GOAL058_SELECTED_FERRERS_FULL_FORCING_ABEL_SIGN`; same six-field Goal058 phase. The previous project chat `6ab6827b-387c-83eb-a71d-865f68d835d5` has 10/10 confirmed sends and is exhausted; the owner's current instruction to ask Proshka requires a new chat in `Sort_RH_März_2026`. No delivery or answer is claimed here.
+- Test: verify finite Abel/Wronskian identities, then obtain a source-uniform one-sided estimate for the **whole** weighted cumulative forcing relative to `±Y²B(m)`, preserving both boundary moments, MIX and the full CCM form. Finite m13 reference signs are a negative control for the stronger all-prefix-same-sign lemma, not a cofinal theorem.
+
+---
+
 ## MAC-2026-09-18-SPECTRAL_FACTOR
 - STATUS: ANSWERED → docs/routeB_bus/proshka/spectral_factor_2026-09-18/MAC_SPECTRAL_FACTOR_2026-09-18.md
 - TASK: MAC_SPECTRAL_FACTOR_LAGUERRE_KERNEL_2026-09-18. Reverse-engineer the sign function (Laguerre kernel K_N), RouteB_TwoLevelSpectralLadder. HONESTY_STATE CHALLENGER_NOT_RH, PX_RH_CLAIM NOT_MADE, RUN_CERTIFIES FINITE_N_KERNEL_STRUCTURE_NOT_SIGN.
