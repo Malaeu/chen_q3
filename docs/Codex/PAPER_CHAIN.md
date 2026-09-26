@@ -611,6 +611,15 @@ read-only pre-send review-прохода `/root/cone_axis_response_review` на
 неизменённых байтах не нашли замечаний. До отправки повторно сверить
 HEAD, очередь, адрес и число отправок; после сомнительного действия
 сначала проверить исходный чат, а не повторять отправку.
+Intent опубликован коммитом `32b2b76c`; перед отправкой повторно
+сверены HEAD, PAPER_CHAIN, NEXT, очередь и три предыдущих user-turn
+того же чата. Затем точный TXT прикреплён через штатный file chooser.
+К 2026-09-26 15:11:31 UTC в [адресованном чате](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443)
+виден новый user-turn с документом и точным коротким текстом, пустой
+composer и `ChatGPT antwortet` / `Stoppen`. Это подтверждённая отправка
+**№ 4/10**; [отдельная строка очереди](../routeB_bus/PROSHKA_QUEUE.md#req-2026-09-26-plane-projective-displacement--source-plane-projective-displacement--awaiting_response)
+сохраняет адрес и состояние `AWAITING_RESPONSE`. Сам факт отправки не
+доказывает искомой оценки.
 
 **G1 · hoddEv (условный мост ниже).** Если constant hfloorEv и odd mass `<1/2`
 на той же семье, бумажное неравенство ниже даёт `β₀=β`; hratioEv для самого этого вывода не нужен.
