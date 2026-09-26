@@ -1,0 +1,78 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-GROUND-CENTERED-ABEL-DISCRIMINANT
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_GROUND_CENTERED_ABEL_DISCRIMINANT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 760b641e6de390417c35298a7248eee74142a583
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-ABEL-CUMULATIVE-FORCING
+PREDECESSOR_VERDICT_SHA256: 116170b67660e98fbf72c1f391f5d46dcbe530df0572137bb309ed810313700c
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 1/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: one PAPER-only source test on the unchanged selected Ferrers/CCM
+family. Your completed predecessor response OPEN_ABEL_FORCING_SIGN is in this
+same chat and preserved at
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ABEL_CUMULATIVE_FORCING_2026-09-26.md.
+Do not rederive Abel (A), Wronskian (W), the weight partition, or the abstract
+Cauchy enclosure. The new task is to adjudicate its exact condition (24) for
+the once-fixed full selected forcing, not for arbitrary forcing vectors.
+
+Retain m=J_P+j+2, N=6m-1, the original 5m splice, Fourier carrier -m..m,
+p_k=P_k(E_0,m)>0, v_k=P_k(E_4,m), μ_k=(4k+1)^(-1), and ΔE>0. Let
+M=Σ_{k=1}^N μ_k p_k², β=Σ_{k=1}^N μ_k p_k v_k=S_N-1,
+V=Σ_{k=1}^N μ_k v_k², Δ_v=V-β²/M, a=1-β/M>1+1/M.
+Keep the ONE full source forcing
+g♯=Y²(K_j x-θx)+X²Π K_j Πx,
+h♯_k=(-1)^k(F* g♯)_k,
+C=Σ_{k=1}^N p_k h♯_k,
+H=Σ_{k=1}^N |h♯_k|²/μ_k,
+with X=||x||₂, Y=||Πx||₂, Π=Π_{U_j}, θ=tr_{U_j}K_j.
+The exact source quartic is 𝓠=κ_m Σ(p_k-v_k)h♯_k.
+
+Here is a normalization of (24) to check before use. If κ_m≠0 and H>0,
+put c_ε=ε sgn(κ_m) C/sqrt(M H), d=Δ_v/M, and
+b=Y²B(m)/(|κ_m|sqrt(M H))≥0, for ε=+1 or -1.
+Then (24) is equivalent to the single strict signed-alignment condition
+
+    a c_ε-b > sqrt(d(1-c_ε²)).                         (D)
+
+It demands c_ε>0 and b<a. The latter is only a feasibility filter,
+not a source-sign result. Handle κ_m=0 or H=0 separately: neither can
+produce the requested strict sign margin with B(m)≥0. Verify (D) directly;
+do not infer it from a squared inequality alone.
+
+Test (D) for the actual g♯ by deriving a source-specific one-sided bound
+for C and a compatible bound for H-C²/M. Preserve the full joint x,
+both coherent lower moments Σ₀♯ and Σ₁♯ in the predecessor's (14)-(20),
+both physical window boundaries, MIX, the plane correction and Q6,
+the diagonal branch, complete W02-WR-prime matrix and all prime powers.
+Do not recompute g♯ after splitting positive/negative weights; do not
+replace the selected packet by a Gaussian reference or a bare norm bound.
+Use the source recurrence moments M, β, V exactly, with β=S_N-1.
+
+Return exactly one of:
+1. SOURCE_DISCRIMINANT_PASS: explicit source-derived bounds A(m)>R(m)
+   yielding 𝓠>Y²B(m)+ζ(m) on a specified unbounded selected-index set,
+   or 𝓠<-Y²B(m)-ζ(m) on the entire selected tail. Give the positive ζ
+   and all quantifiers. This gives only the first τ sign; Schur-floor is
+   separate.
+2. SOURCE_DISCRIMINANT_KILL: an exact source argument showing that (D)
+   fails for both allowed quantifier patterns. A finite failed cell only
+   excludes that cell and is not such a kill. This kills only the moment
+   certificate, not the full Abel sign.
+3. OPEN_SOURCE_DISCRIMINANT: give the first exact unpaid source inequality,
+   its full indexed formula, why existing bounds cannot pay it, and ONE
+   genuinely discriminating next PAPER test. Do not merely restate (24)
+   or ask for the same signed margin under a new name.
+
+No Lean, runtime, numerical diagnostics, repository writes, RH claim,
+constant-β wrapper, common-prefix-sign assumption or unproved ground
+alignment. Distinguish a conditional identity from a selected-source proof.

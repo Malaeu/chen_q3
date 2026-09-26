@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-26 · by: Codex Mac · baseline HEAD: 362e5d9e
+Updated: 2026-09-26 · by: Codex Linux · baseline HEAD: 760b641e
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -102,6 +102,7 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 
 ## Прошка
 - 2026-09-26 Mac отправил `REQ-2026-09-26-ABEL-CUMULATIVE-FORCING` как № **1** в [новый чат того же проекта](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443). Ответ `OPEN_ABEL_FORCING_SIGN` получен; [точный текст](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_ABEL_CUMULATIVE_FORCING_2026-09-26.md) сохранён. [Независимая PAPER-сверка](PAPER_CHAIN.md) и два read-only review-прохода приняли (A), (W), центрированную формулу и Cauchy enclosure только в этом объёме. Source-uniform запас, первый знак `τ_j` и Schur-floor OPEN. Подтверждение и хеш — в [строке запроса](../routeB_bus/PROSHKA_QUEUE.md#req-2026-09-26-abel-cumulative-forcing--full-selected-forcing-after-finite-abel-summation--open). Следующий PAPER-тест — `TEST_SOURCE_GROUND_CENTERED_ABEL_DISCRIMINANT`; не дублировать запрос.
+- Для этого следующего теста [точный intent](../session_protocols/PROSHKA_REQUEST_GOAL058_GROUND_CENTERED_ABEL_DISCRIMINANT_20260926.txt) подготовлен и дважды read-only проверен, **ещё не отправлен**. Адрес и исходное 1/10 — в [PAPER_CHAIN](PAPER_CHAIN.md).
 - Активная фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`.
 - Активный чат: [6ab7b2af…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443); подтверждённых математических отправок в нём: **1/10**, незакрытых ответов по подтверждённой очереди нет. Предыдущий [6ab6827b…](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab6827b-387c-83eb-a71d-865f68d835d5) исчерпан **10/10**; все его подтверждённые запросы отвечены.
   [`REQ-2026-09-25-CELLWISE-COMPLEMENT-SIGN`](../routeB_bus/PROSHKA_QUEUE.md#2026-09-25--selected-complement-floor) отвечен `OPEN_FIRST_SIGN`; полный текст сохранён и независимо сверен. Отправка подтверждена 2026-09-25 16:17 Europe/Berlin, не дублировать.
