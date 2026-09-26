@@ -1,0 +1,109 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-SOURCE-CORE-LATTICE-VARIATION-WITNESS
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_LATTICE_VARIATION_WITNESS
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: a351ebed7cba25e98f2d0d67b318e1658b916e63
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-SOURCE-CORE-HALF-LINE-DENSITY-VARIATION
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_HALF_LINE_DENSITY_VARIATION_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 575b7b2a88916b4d245a9d030ed2abf0e87530c895f8f70cfb41baaa769ba170
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 4
+INTENDED_ORDINAL_IF_CONFIRMED: 5/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_LATTICE_VARIATION_WITNESS
+on PAPER. Read the full predecessor verdict at the SHA-256 above
+and its limited independent audit in docs/Codex/PAPER_CHAIN.md,
+headed "source core half-line density variation test". Do not repeat
+the predecessor request. Its new accepted bounds cover ONLY the
+proper central frequency region |xi|<=m/(log m)^2. In particular,
+the variation bound is E_11/sqrt(6), NOT E_11/6. Neither the full
+variation criterion SV nor a negative source witness is established.
+
+Fix the SAME P and admitted selected m=J_P+j+2 with L=log m>120,
+b=L/2, Q=sqrt(m), original 5m splice and carrier |n|<=m. The real
+even source and projection remain
+h_*(x)=(24pi x^2-16pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)), g=G'',
+h=T_m g, f=h-g, E=E_11=||f||^2_{L2(R)}>0.
+Use psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u),
+omega_n=2pi n/L, epsilon_m=2G'(b)/sqrt(L),
+d=epsilon_m sum_{|n|<=m}psi_{n,L}, k=f-d.
+The physical exterior E_O=2int_b^infty|g(u)|^2du remains in E.
+The carrier-edge low block of k is -epsilon_m, not zero.
+
+For every integer n,
+e_n=int_-b^b g(u)conj(psi_{n,L}(u))du,
+c_n=epsilon_m if |n|<=m, and c_n=e_n if |n|>m.
+On [-b,b], k=-sum_{n in Z}c_n psi_{n,L} in L2. The source
+formula, with ALL r>=1, is
+e_n=2(-1)^n/sqrt(L) sum_{r>=1}int_0^b exp(u/2)
+     P(pi r^2 exp(2u)) exp(-pi r^2 exp(2u)) cos(omega_n u)du,
+P(x)=-64x^4+448x^3-660x^2+150x.
+No arbitrary coefficient sequence may replace these actual c_n.
+
+Set v=1_[0,b]k, M=||v||_2^2=(E-E_O+D_d)/2,
+D_d=||d||_2^2=(2m+1)epsilon_m^2<3E/L.
+With the unitary Fourier transform, Psi=hat(v), rho=|Psi|^2,
+V=int_R|rho'(xi)|d xi. The sufficient variation interface is
+SV: Delta^var=16E-M-V>=0 for EVERY selected L>120.
+SV is stronger than the original continuous-lag statement. Its
+failure alone cannot refute that lag statement.
+
+Use the exact predecessor lattice identities. For every integer j,
+H_{m,j}=sum_{n-j odd} c_n/(n-j), an absolutely convergent sum,
+R_{m,j}=rho(omega_j)=L*c_j^2/(8pi)+L*H_{m,j}^2/(2pi^3).
+The literal diagonal, parity-restricted source cross terms, and
+finite epsilon_m block are all present. At zero H_{m,0}=0 and
+R_{m,0}=G'(b)^2/(2pi), independently checked from int_0^b k=-G'(b).
+
+Freeze BEFORE any evaluation the predecessor panel
+N_m=ceil(L), j_0=0, j_s=m+s for 1<=s<=N_m, and
+W_m=2[ |R_{m,m+1}-R_{m,0}|
+      +sum_{s=1}^{N_m-1}|R_{m,m+s+1}-R_{m,m+s}|
+      +R_{m,m+N_m} ].
+It is a lower bound on total variation: V>=W_m. Therefore
+Delta^var<=U_m^lattice:=16E-M-W_m.
+The last R term pays the descent to zero at infinity. Do not
+reverse this inequality or infer SV from U_m^lattice>=0.
+
+Seek exactly ONE source-specific PAPER decision for this fixed panel:
+1. SOURCE_LATTICE_VARIATION_WITNESS_PROVED: identify an admitted
+   selected cell with L>120, or a rigorously defined unbounded
+   admitted selected sequence, and prove U_m^lattice<=-gamma E
+   for explicit gamma>0 using the COMPLETE source formulas. This
+   refutes SV ONLY, not the lag statement or RH.
+2. FIXED_PANEL_WITNESS_EXCLUDED: prove for ALL admitted selected
+   L>120 that U_m^lattice>=0 from the actual source. This closes
+   only this finite-panel negative-witness route; it does NOT prove
+   SV, since variation between nodes remains uncontrolled.
+3. OPEN_SOURCE_LATTICE_WITNESS: identify the first exact unpaid
+   source comparison for U_m^lattice/E. Give ONE strictly narrower
+   falsifiable PAPER lemma, its consumer, discriminator and precise
+   outcomes. No numerical cutoff, frequency-grid or index search,
+   no fitted panel, and no generic energy bound pretending to decide
+   the actual source are accepted.
+
+Check the grid phases and factors using J_0(0,b)=b,
+J_0(2pi(n-j)/L,b)=0 for nonzero even n-j and iL/[pi(n-j)]
+for odd n-j. Keep independent n and q, all source r>=1, the
+physical exterior E_O in E, and the original selected-index
+quantifier. If the fixed panel is analytically powerless, say so
+precisely; do not silently choose a new panel or stronger interface.
+
+The exponent-one prime block, prime/square compensation,
+opposite-side correlation, integrated symbol deviation, transfer,
+actual J_m sign, first tau_j sign, Schur-floor and RH remain OPEN.
+The constants C_0=128, C_int=134 and C_2=146 remain conditional.
+No mathematical runtime, numerical search, Lean, repository write,
+new seed, source/carrier/Q/denominator replacement, route promotion
+or RH claim. Return the full PAPER argument and one bounded
+CODEX DIRECTIVE.
