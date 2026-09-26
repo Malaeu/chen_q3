@@ -1,0 +1,116 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-LARGE-PRIME-SQUARE-INTERIOR-OVERLAP
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_LARGE_PRIME_SQUARE_INTERIOR_OVERLAP
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 2eda2829d7c9edea40369cf494eee28ef70b9cac
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-PRIME-SQUARE-HIGH-FREQUENCY
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PRIME_SQUARE_HIGH_FREQUENCY_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: e248537c6ba25cc8dd628769093ed8e3c39112b9a29571234932d50b2b35b220
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: NEW_CHAT_IN_PROJECT_COMPOSER https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/project
+DESTINATION_CHAT_ID: ASSIGNED_BY_CHATGPT_ON_FIRST_SEND
+CONFIRMED_PRIOR_SENDS_IN_NEW_CHAT: 0
+PREVIOUS_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+PREVIOUS_CHAT_CONFIRMED_SENDS: 10/10_EXHAUSTED
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_LARGE_PRIME_SQUARE_INTERIOR_OVERLAP
+on PAPER. Read the entire predecessor Markdown at the exact hash above
+and the limited independent audit of answer no. 10 in
+docs/Codex/PAPER_CHAIN.md. The predecessor returned
+OPEN_PRIME_SQUARE_HIGH_FREQUENCY. It did not prove a saving or leading
+witness for the complete square block. Its exterior-translation Gram
+bound, square-frequency shoulder, and exact remainder (18)-(19) were
+independently checked only at their stated scopes. Do not repeat the
+predecessor request or treat its WORDING issue in section 7 as a
+mathematical result: for the leading conditional transfer, the
+initial inequality with ">" is eventually reversed to "<=".
+
+Fix the same selected P and admitted m=J_P+j+2. Work on the selected
+tail m>=65536, with L=log m, b=L/2, Q=sqrt(m), X_2=m^(1/4),
+omega_n=2 pi n/L, original 5m splice, and carrier n=-m..m.
+Keep the exact even theta source
+h_*(x)=(24 pi x^2-16 pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)), g=G'',
+h_m=T_m g, f_m=h_m-g, E_11=||f_m||_2^2>0,
+ell_m=log((m+1)/L). In particular the projection coefficients are
+e_n=(-1)^n/sqrt(L) integral_-b^b g(u)exp(-i omega_n u)du
+   =-omega_n^2 b_n+epsilon_m,
+b_n=(-1)^n/sqrt(L) integral_-b^b G(u)exp(-i omega_n u)du,
+epsilon_m=2G'(b)/sqrt(L),
+h_m=sum_{n=-m}^m e_n psi_{n,L},
+psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u).
+Do not drop the Q5/Q6 endpoint epsilon_m.
+
+The ONLY object to decide is the actual two-interior-argument overlap
+
+V_m=4 sum_{log m<p<=m^(1/4), p prime} (log p)/p
+    integral_0^(b-2log p) f_m(u) f_m(u+2log p) du.        (V)
+
+Retain p^2<=Q and the moving upper limit; a boundary with
+b-2log p=0 contributes zero to (V), not a vanished exterior strip.
+The predecessor proved the exact transfer identity
+
+U_m^(2)=V_m+U_m,small^(2)+X_m,large-L_m,large^(2),
+|U_m^(2)-V_m|<=12(1+log log m)E_11, m>=16.             (R)
+
+Here U_m^(2) is the original square contribution for
+|xi|>sqrt(m), not a changed cutoff. The low-frequency subtraction
+has the MINUS sign in (R). The exterior strips, small prime bases,
+and frequency shoulder have been bounded as proper contributions;
+their bounds do not decide (V). A saving for (V) would give the
+requested square saving with C_2=C_int+12. A leading witness for (V)
+would give a square witness only after subtracting the lower-order
+remainder; do not turn it into a whole-head kill.
+
+Use the full indexed source expression of predecessor (20)-(24).
+In compact notation with t_p=2log p and a_p=b-t_p, it is
+
+V_m=4 sum_{log m<p<=X_2} (log p)
+    [T0_tilde,p-T1_tilde,p-T2_tilde,p+T3_tilde,p].       (I)
+
+T0_tilde,p has independent n,q=-m..m, factor 1/(Lp), phase
+exp(2i omega_q log p), and J(omega_q-omega_n,a_p), with
+J(0,a_p)=a_p and a literal n=q diagonal. T1_tilde,p retains
+the forward mixed term and Mellin upper boundary rQ;
+T2_tilde,p retains the inverse-dilation mixed term and upper
+boundary rQ/p^2; T3_tilde,p retains the source-source integral
+from x=1 to Q/p^2. The source kernel is exactly
+h_2(x)=(-64v^4+448v^3-660v^2+150v)exp(-v), v=pi x^2.
+All source sums keep r,s>=1. Do not flatten the p^2<=y boundary
+in the reverse mixed term, replace restricted square weights by
+log k, drop either mixed term, or extend the exterior decay input
+inside [0,b]. The strips removed from the full physical square
+correlation are predecessor (23), already paid in (R), not zero.
+
+Return exactly one outcome for (V):
+
+1. INTERIOR_SQUARE_SAVED: prove explicit finite C_int and selected
+   threshold m_int such that for every admitted selected m>=m_int,
+   |V_m|<=C_int(1+log log m)E_11. Give the source-derived signed
+   cancellation, all constants and domains; then transfer via (R).
+2. INTERIOR_SQUARE_LEADING: prove c_int>0 and an explicitly proved
+   unbounded selected-index set on which
+   |V_m|>=c_int ell_m E_11. Give the source-derived lower estimate
+   and quantifiers, then subtract (R) before stating any square
+   conclusion. Prime/square cancellation at the whole-head level
+   remains possible.
+3. OPEN_INTERIOR_SQUARE: identify the first explicit source-indexed
+   signed comparison still unpaid in (I), explain why the admitted
+   bounds do not settle either quantifier, and propose at most one
+   strictly narrower falsifiable PAPER test with a genuine paid
+   remainder or a concrete obstruction. A mere new name or another
+   absolute coefficient-sum bound is not progress.
+
+Even a complete square result leaves the exponent-one prime block,
+opposite-side correlation, integrated symbol deviation, transfer,
+actual J_m sign, first tau_j sign, Schur-floor, and RH OPEN. No
+mathematical runtime, numerical cutoff search, Lean, repository write,
+new seed, source/carrier/Q replacement, route promotion, or RH claim.
