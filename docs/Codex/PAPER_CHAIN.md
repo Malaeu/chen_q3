@@ -602,6 +602,16 @@ SHA-256 `51312b0e7c883a74609e9ab074083b2b01644680624f5e01ffdd21ef34772445`
 Это `TEST_SOURCE_PLANE_PROJECTIVE_DIRECTION_BY_DISPLACEMENT`; первый
 знак `τ_j`, Schur-floor и RH остаются OPEN.
 
+**Подготовлен, ещё не отправлен узкий запрос на projective-direction test.**
+[Точный intent](../session_protocols/PROSHKA_REQUEST_GOAL058_PLANE_PROJECTIVE_DISPLACEMENT_20260926.txt),
+4,358 байт, SHA-256 `2d47a7afc44920ab5e67012fe28441dac8c31fe7c89180171d0dc154e0574e7a`,
+адресован [тому же активному проектному чату](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443),
+где перед отправкой подтверждены **3/10** запроса. Два последовательных
+read-only pre-send review-прохода `/root/cone_axis_response_review` на
+неизменённых байтах не нашли замечаний. До отправки повторно сверить
+HEAD, очередь, адрес и число отправок; после сомнительного действия
+сначала проверить исходный чат, а не повторять отправку.
+
 **G1 · hoddEv (условный мост ниже).** Если constant hfloorEv и odd mass `<1/2`
 на той же семье, бумажное неравенство ниже даёт `β₀=β`; hratioEv для самого этого вывода не нужен.
 Но его constant-hfloor предпосылка здесь опровергнута, поэтому этот мост не закрывает hoddEv для семьи.

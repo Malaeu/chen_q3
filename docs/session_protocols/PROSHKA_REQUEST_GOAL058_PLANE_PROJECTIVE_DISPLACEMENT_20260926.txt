@@ -1,0 +1,79 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-PLANE-PROJECTIVE-DISPLACEMENT
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_PLANE_PROJECTIVE_DIRECTION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: d9cbb345c015acc51326685efe5c978935464f4a
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-CONE-AXIS-GROUND-ANGLE
+PREDECESSOR_VERDICT_SHA256: 51312b0e7c883a74609e9ab074083b2b01644680624f5e01ffdd21ef34772445
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 3/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only the PAPER test
+TEST_SOURCE_PLANE_PROJECTIVE_DIRECTION_BY_DISPLACEMENT from your completed
+OPEN_CONE_AXIS_ANGLE verdict. Its exact Markdown is preserved at
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_CONE_AXIS_GROUND_ANGLE_2026-09-26.md.
+The result is independently checked only as a representation: plane parity,
+the full CCM displacement signs, Q5/Q6 edge and the separate diagonal.
+Neither an axis gap nor an obstruction has been established. Do not repeat
+the parity, cone copositivity or generic commutator derivations.
+
+Keep the unchanged selected cells m=J_P+j+2, N=6m-1, original 5m splice,
+Fourier carrier -m..m, full selected x and literal K_j=W02-WR-Prime with
+its diagonal branch and every prime power. The plane B=(b,e) is the finite
+projection of the same G,G'', with e_n=-(2pi n/L)^2 b_n+epsilon_m,
+epsilon_m=2G'(L/2)/sqrt(L). Let R=B*B, A=B*K_j B, y=B*x,
+r=R^(-1) A R^(-1)y. Work on the admitted tail where B has rank two;
+state separately what happens if r=0 or a proposed coordinate chart
+vanishes. The whole x, MIX and both physical boundaries stay fixed.
+
+The source displacement data are exactly predecessor (12)-(17):
+mathfrak_b_n=n K_(j,n0), chi_n=n mathfrak_b_n,
+K_(j,nn')=(mathfrak_b_n-mathfrak_b_n')/(n-n') for n!=n',
+and the separate literal diagonal d_n=K_(j,nn).
+Use the full sine-integral and prime-power terms in mathfrak_b_n;
+the commutator alone is diagonal-blind. In the derivative action keep
+K_j e=-(2pi/L)^2 D^2 K_j b
+ +(2pi/L)^2[chi(1^T b)-1(chi^T b)]+epsilon_m K_j 1.
+
+Test the ACTUAL homogeneous direction
+hat_r=adj(R) A adj(R)y=(det R)^2 r. The transformed-plane geometry is
+predecessor (19): Z_(ka)=(-1)^k sum_n I_(kn) B_(na),
+ell_a=Re sum_k p_k Z_(ka),
+S_(ab)=Re sum_k conj(Z_(ka)) Z_(kb)/mu_k,
+P_m=vartheta_m M S-ell ell^T, with mu_k=(4k+1)^(-1),
+M=sum mu_k p_k^2 and vartheta_m=d/(a^2+d). Keep conjugation and
+the complete incomplete-Mellin kernel I_(kn).
+
+The exact target is sign(r^T P_m r), NOT positivity of P_m on the
+whole plane. Seek a source-derived enclosure of the actual projective
+ratio hat_r_(G'')/hat_r_G when its denominator is proved nonzero;
+otherwise use the alternate chart or homogeneous coordinates. Include
+both the off-diagonal divided differences and literal diagonal in the
+direction estimate. Compare the entire directional sector with P_m,
+including an interior quadratic vertex where applicable.
+
+Return exactly one:
+1. PLANE_AXIS_GAP: an explicit paid eta_1(m)>0 and
+   vartheta_m M G_11-c_1^2 >= eta_1(m) M G_11 on the entire selected
+   tail, with G_11>0 and all source bounds and quantifiers.
+2. PLANE_AXIS_OBSTRUCTION: a proved unbounded selected-index set with
+   G_11>0 and vartheta_m M G_11-c_1^2 <= 0. This refutes only the
+   proposed strict whole-cone certificate, not the actual fixed mixture.
+3. OPEN_PLANE_DIRECTION: write the first exact signed source contraction
+   that blocks a directional enclosure, show its full finite indices and
+   why the current source bounds cannot pay it. Give one falsifiable
+   next PAPER test that is not merely the same ratio or cone inequality
+   under another name.
+
+No arbitrary plane direction, small-norm sign inference, source
+replacement, numerical diagnostics, Lean, mathematical runtime,
+repository writes, first tau-sign claim, Schur-floor claim or RH claim.
