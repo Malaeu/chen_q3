@@ -1,0 +1,96 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-SOURCE-CORE-FINITE-COEFFICIENT-PANEL-MARGIN
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FINITE_COEFFICIENT_PANEL_MARGIN
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 75edf041fd492e642e62382a8cd42076b2578d90
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-SOURCE-CORE-LATTICE-VARIATION-WITNESS
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_LATTICE_VARIATION_WITNESS_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 699879b62accfe76f0130e77224957bccf153510c266383cb39c65c73fd9cc13
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 5
+INTENDED_ORDINAL_IF_CONFIRMED: 6/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FINITE_COEFFICIENT_PANEL_MARGIN
+on PAPER. Read the full predecessor verdict at the exact SHA-256 above
+and its limited independent audit in docs/Codex/PAPER_CHAIN.md headed
+"source core lattice variation witness test". Do not resend or redo
+that request. We independently accepted its equations (9), (13),
+(18)-(30) after two ON-TARGET CLEAN review passes, but NOT a source
+sign, full SV, continuous lag, or RH. Your sole new task is the
+retained actual-source sign comparison below.
+
+Fix the SAME P and every admitted selected m=J_P+j+2 with L=log m>120,
+b=L/2, Q=sqrt(m), original 5m splice and carrier |n|<=m. Keep
+the real even source h_*(x)=(24pi x^2-16pi^2 x^4)e^(-pi x^2),
+G(u)=e^(u/2) sum_{r>=1} h_*(r e^u), g=G'', h=T_m g, f=h-g,
+E=E_11=||f||_2^2>0. Keep epsilon=2G'(b)/sqrt L,
+d=epsilon sum_{|n|<=m}psi_{n,L}, k=f-d,
+v=1_[0,b]k, M=||v||_2^2=(E-E_O+D_d)/2,
+E_O=2 int_b^infty |g(u)|^2du, D_d=(2m+1)epsilon^2.
+The denominator remains E, including the physical exterior.
+
+Use only the frozen nodes 0,m+1,...,m+N with N=ceil L, the
+analytical coefficient split K=N+ceil(L^4), and the predecessor's
+exact source coefficients
+e_n=2(-1)^n/sqrt L sum_{r>=1} int_0^b e^(u/2)
+  P(pi r^2 e^(2u))e^(-pi r^2 e^(2u))cos(2pi n u/L)du,
+P(x)=-64x^4+448x^3-660x^2+150x.
+No source r-index may be truncated without a proved remainder.
+For 1<=s<=N, retain the complete low block and both index signs:
+H_s^[K]=-epsilon sigma_{m,s}
+  +sum_{1<=q<=K, q-s odd} e_{m+q}
+    [1/(q-s)-1/(2m+q+s)],
+sigma_{m,s}=sum_{s<=nu<=2m+s, nu odd}1/nu,
+R_s^[K]=L e_{m+s}^2/(8pi)+L(H_s^[K])^2/(2pi^3),
+R_0=G'(b)^2/(2pi),
+W^[K]=2[|R_1^[K]-R_0|+sum_{s=1}^{N-1}
+  |R_{s+1}^[K]-R_s^[K]|+R_N^[K]],
+U^[K]=16E-M-W^[K].
+The cross terms in (H_s^[K])^2 are part of the target.
+The predecessor proves for every admitted selected L>120
+|U^lattice-U^[K]|<=eta_m E<E/48,
+eta_m=1/(4sqrt(2L))+1/(24L^2).
+It also proves the separate one-sided lower envelope
+C^[K]=16E_O+31S_K-D_d/2-W^[K]
+       -16 A_K lambda/(31-4lambda)<=U^lattice,
+S_K=sum_{q=1}^K e_{m+q}^2,
+A_K=L/(2pi^3)sum_{s=1}^N(H_s^[K])^2,
+lambda=LN/[2pi^3(K-N)].
+
+Seek exactly ONE source-specific PAPER decision:
+1. SOURCE_FINITE_PANEL_NEGATIVE_WITNESS: identify an admitted selected
+   cell or rigorously defined admitted sequence and prove from these
+   complete source formulas that U^[K]/E+eta_m<=-gamma, gamma>0
+   explicit. Then U^lattice<0 and only the sufficient SV is refuted.
+2. SOURCE_FINITE_PANEL_EXCLUSION: prove U^[K]/E-eta_m>=0 for ALL
+   admitted selected L>120, or prove C^[K]>=0 for all of them.
+   This excludes only the negative witness from this fixed panel;
+   it does not establish SV.
+3. OPEN_SOURCE_FINITE_PANEL_MARGIN: state the first precise unpaid
+   source inequality in the finite expression, why the available
+   source bounds do not decide it, and give ONE strictly narrower
+   falsifiable PAPER lemma with discriminator and both outcomes.
+
+Do not merely restate the predecessor's coefficient enclosure or
+offer a norm-only estimate that cannot decide the source sign.
+Preserve the coefficient interference, diagonal q=s, zero node,
+last descent, original E_O and selected-index quantifier. Check
+the direction Delta^var<=U^lattice and say precisely what a negative
+or nonnegative finite interval would prove. No numeric coefficient
+evaluation, search over m/cutoffs/grids, fitted panel, changed
+source/carrier/Q/denominator, Lean or mathematical runtime.
+No route promotion or RH claim. The exponent-one prime block,
+prime/square compensation, opposite-side, integrated symbol
+deviation, transfer, actual J_m sign, first tau_j sign and
+Schur-floor remain OPEN. C_0=128, C_int=134, C_2=146 remain
+conditional. Return the full PAPER argument and one bounded
+CODEX DIRECTIVE.
