@@ -1,0 +1,75 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-COMPRESSION-SPECTRAL-SPREAD
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_COMPRESSION_SPECTRAL_SPREAD
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 49bf42b6267c2ac1cf5a0571272318866834b104
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-FIRST-OMITTED-COMPRESSION
+PREDECESSOR_VERDICT_SHA256: 2e4c9122664351489d288bfe6eed3df630566a0e1474f3de6451562874e5912e
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 5/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_COMPRESSION_TWO_SINGULAR_VALUE_OBSTRUCTION
+on PAPER. The exact independently checked predecessor is
+`docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_FIRST_OMITTED_COMPRESSION_2026-09-26.md`.
+Its full-form convergence (10)-(23) and the abstract necessary implication
+(24)-(25) are accepted as PAPER algebra only. The selected-source sign of
+its J_m is OPEN. Do not repeat the first-omitted-pair rotation or propose
+another seed before testing this seed-independent obstruction.
+
+Keep one fixed P and selected indices m=J_P+j+2, N=6m-1, the original
+5m splice, Fourier carrier -m..m and the literal selected columns
+B=(b,e), including the Q5/Q6 physical edge epsilon_m>0. Put
+R=B*B on its admitted rank-two tail and A=B* K_j B. K_j is the full
+source W02-WR-Prime matrix with its separate literal diagonal,
+archimedean subtraction and every finite-source prime power. In any
+global error-form representation keep both exterior physical tails,
+endpoint subtraction and all returned prime powers. Do not replace K_j
+with a positive form or an off-diagonal commutator.
+
+Use the original Euclidean column units. Define
+kappa_R=||R||_2 ||R^(-1)||_2 >=1,
+T_A=tr(A^2)=A_00^2+2A_01^2+A_11^2,
+D_A=det(A)=A_00 A_11-A_01^2,
+J_m=2 kappa_R T_A-(4 kappa_R^2+1)|D_A|.
+The predecessor proved that its strict rank-one compression package
+requires J_m>0. This is necessary, not sufficient; a positive value
+does not prove alpha!=0, relative error suppression, actual-source
+activity, projective sector, or an axis gap.
+
+Adjudicate the actual source sign of J_m. Evaluate all three contractions
+A_ab=Re sum_{n,n'=-m}^m conj(B_na) K_(j,nn') B_(n'b), including the
+diagonal. For D_A you may use the exact two-row minor expansion over
+all ordered row pairs I,J, but no minor has a presumed sign. Control
+the two terms of J_m jointly; independent coarse upper bounds on T_A
+and |D_A| do not prove either orientation. If using the global form,
+its analytic truncation depth must not change m or the finite carrier.
+
+Return exactly one:
+1. SPECTRAL_SPREAD_OBSTRUCTION: source-derived h(m)>0 and a proved
+   unbounded set of selected indices with J_m <= -h(m). This excludes
+   this strict rank-one dominance package on every eventual tail,
+   for every unit seed satisfying its comparison, but says nothing
+   against the true plane-axis gap or fixed-mixture result.
+2. SPECTRAL_SPREAD_POSITIVE: a source-derived eventual positive lower
+   bound for J_m with exact index scope. This passes only the necessary
+   test. Identify the first separate unpaid obligation; do not call it
+   compression dominance.
+3. OPEN_SPECTRAL_SPREAD: give the earliest exact signed source
+   contraction or minor comparison that blocks either bound, with its
+   full finite index range and source terms. Give one distinct
+   falsifiable PAPER next test that does not simply rename J_m or
+   increase an unproved truncation depth.
+
+A finite cell or a zero-straddling bound is not a family obstruction.
+No numerical diagnostics, Lean, mathematical runtime, repository writes,
+arbitrary x, source replacement, first tau-sign, Schur-floor, route
+promotion or RH claim.
