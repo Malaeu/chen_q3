@@ -1,0 +1,96 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-SAME-SIDE-DILATION-HEAD
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SAME_SIDE_DILATION_HEAD
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: fa0bdcde32572eaddb4885153c6344fb605a5175
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-DIVISOR-COLLAPSED-PRIME-CORRELATION
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_DIVISOR_COLLAPSED_PRIME_CORRELATION_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 2a02d6bc989b4a990f81ab5eff2d277897fd28657df5fff91e3df037a63292eb
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 8/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_SAME_SIDE_DILATION_HEAD on PAPER.
+Read the complete predecessor Markdown at the exact hash above.
+Its reciprocal-source convergence, Z_g non-L2 result, and same-side
+prime-power tail bound (18) were independently checked at their stated
+scope. The complete arithmetic correlation, opposite-side part,
+integrated symbol deviation, transfer, and actual J_m sign are OPEN.
+Do not infer a full arithmetic result from one component.
+
+Fix the same selected P and m=J_P+j+2, L=log m, b=L/2,
+Q=sqrt(m)=exp(b), omega_n=2 pi n/L, carrier n=-m..m and
+original 5m splice. Keep the exact even theta source
+h_*(x)=(24 pi x^2-16 pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)),
+g=G'', h_m=T_m g, f_m=h_m-g, E_11=||f_m||_2^2>0,
+ell_m=log((m+1)/L). The exact projection coefficients are
+
+psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u),
+b_n=(-1)^n/sqrt(L) integral_-b^b G(u)exp(-i omega_n u)du,
+epsilon_m=2G'(b)/sqrt(L),
+e_n=(-1)^n/sqrt(L) integral_-b^b g(u)exp(-i omega_n u)du
+   =-omega_n^2 b_n+epsilon_m,
+h_m=sum_{n=-m}^m e_n psi_{n,L}.
+
+Do not drop epsilon_m or the Q5/Q6 endpoint contribution. Put
+
+h_2(x)=(-64v^4+448v^3-660v^2+150v)exp(-v), v=pi x^2,
+F_+(x)=sum_{r>=1}h_2(rx), x>=1,
+H_{m,+}(x)=1_[1,Q](x)/sqrt(L)
+  sum_{n=-m}^m e_n(-1)^n x^(-1/2+i omega_n),
+phi_m(x)=H_{m,+}(x)-F_+(x)=x^(-1/2)f_m(log x).
+
+The exact same-side head, including every prime power in its range, is
+
+S_m^head=4 sum_{2<=nu<=Q} Lambda(nu)
+  integral_1^infinity phi_m(x)phi_m(nu x)dx.              (H)
+
+The predecessor proved only
+|S_m^{>Q}|<=r_side(m) E_11<=2(log m)m^(-1/4)E_11
+for every admitted selected m>=16. This bound does not cover (H).
+The opposite-side product correlation remains a separate term in the
+full arithmetic identity P_m^all=S_m^head+S_m^{>Q}+H_m^opp.
+
+In (H), retain the literal four terms of predecessor (23):
+  integral_1^{Q/nu} H_{m,+}(x)H_{m,+}(nu x)dx
+ -integral_1^Q H_{m,+}(x)F_+(nu x)dx
+ -integral_1^{Q/nu} F_+(x)H_{m,+}(nu x)dx
+ +integral_1^infinity F_+(x)F_+(nu x)dx.
+The first term retains its separate n=q diagonal in predecessor (24).
+The forward source dilation has restricted divisor weight
+L_Q(k)=sum_{nu|k, 2<=nu<=Q}Lambda(nu), not log k in general;
+the reverse mixed term has the moving boundary nu<=y in (26).
+Preserve both physical tails and the original source signs.
+
+Adjudicate exactly this component-saving mechanism. Return one:
+
+1. SAME_SIDE_HEAD_SAVED: prove a source-derived finite C_side and
+   selected threshold m_side such that for every selected m>=m_side,
+   |S_m^head|<=C_side(1+log log m)E_11(m). Give exact cancellation,
+   constants and domain. A constant defined from the unknown ratio
+   is not proof. Combine only with the already paid >Q bound to
+   state what is known for the entire same-side component.
+2. SAME_SIDE_HEAD_LEADING: prove c_side>0 and an unbounded selected
+   index set with |S_m^head|>=c_side ell_m E_11(m). This excludes the
+   proposed lower-order bound for this component only. Analyze what
+   cancellation with S_m^{>Q} and H_m^opp would still be required;
+   do not call it DIVISOR_CORRELATION_KILLED.
+3. OPEN_SAME_SIDE_HEAD: give the first explicit unpaid indexed
+   cancellation among the four terms, justify why available source
+   estimates cannot pay either quantifier, and give exactly one
+   strictly narrower falsifiable PAPER next test.
+
+Do not replace this source, the carrier or Q by a convenient trial.
+No numerical cutoff search, mathematical runtime, Lean, repository
+write, new seed, route promotion, transfer pass, actual J_m sign,
+rank-one dominance, vector activity, axis gap, first tau-sign,
+Schur-floor, or RH claim.
