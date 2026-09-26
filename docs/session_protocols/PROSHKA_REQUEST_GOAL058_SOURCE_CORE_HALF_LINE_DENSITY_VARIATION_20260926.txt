@@ -1,0 +1,112 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-SOURCE-CORE-HALF-LINE-DENSITY-VARIATION
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_HALF_LINE_DENSITY_VARIATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 9111fada99b2f5ba024335ac396545c6eea73034
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-SOURCE-CORE-CONTINUOUS-LAG-DECAY
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_CONTINUOUS_LAG_DECAY_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: 32d338448f4305a4bdd2b627dd977aa86388268dfcd802acff1f947aaf4d6fce
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 3
+INTENDED_ORDINAL_IF_CONFIRMED: 4/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_HALF_LINE_DENSITY_VARIATION
+on PAPER. Read the full predecessor verdict at the exact SHA-256
+above and its limited independent audit in docs/Codex/PAPER_CHAIN.md
+headed "source core continuous lag decay test". Do not repeat the
+predecessor request. The accepted result is only the margin
+D_m(t)>=9E/80 for selected 65536<=m<=exp(120), plus the explicit
+lag regions (13)-(15). It does not prove the full selected tail.
+
+Fix the SAME selected P and m=J_P+j+2 with L=log m>120,
+b=L/2, Q=sqrt(m), the original 5m splice and carrier |n|<=m.
+The real even source and projection remain
+h_*(x)=(24pi x^2-16pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)), g=G'',
+h=T_m g, f=h-g, E=E_11=||f||^2_{L2(R)}>0.
+Use psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u),
+omega_n=2pi n/L, epsilon_m=2G'(b)/sqrt(L),
+d=epsilon_m sum_{|n|<=m}psi_{n,L}, k=f-d.
+The physical exterior E_O=2int_b^infty|g(u)|^2du remains in E.
+The carrier-edge low block of k is -epsilon_m, not zero.
+
+For every n, e_n=int_-b^b g(u)conj(psi_{n,L}(u))du and
+c_{m,n}=epsilon_m if |n|<=m, e_n if |n|>m. Then
+k=-sum_{n in Z}c_{m,n}psi_{n,L} on [-b,b] in L2.
+Set v_m=1_[0,b]k, M_m=||v_m||_2^2.
+The accepted exact identity and source-paid estimate are
+M_m=(E-E_O+D_d)/2,
+D_d=||d||_2^2=(2m+1)epsilon_m^2<3E/L.
+Do not replace the denominator E by M_m or ||k||^2.
+
+With the unitary Fourier convention define
+Psi_m(xi)=(2pi)^(-1/2)int_0^b k(u)exp(-i xi u)du,
+rho_m(xi)=|Psi_m(xi)|^2,
+V_m=int_R |rho_m'(xi)|d xi.
+The derivative is weak and rho_m is in W^{1,1}(R). The accepted
+identities are int_R rho_m=M_m and
+A_m(t)=int_R exp(i xi t)rho_m(xi)d xi
+       =int_0^{b-t}k(u)k(u+t)du, 0<=t<=b,
+so (1+t)|A_m(t)|<=M_m+V_m. This is the original half-line
+correlation, not the full-line Fourier density of k.
+
+Test exactly the source inequality
+
+  V_m <= 16E-M_m
+      = (31/2)E+(1/2)E_O-(1/2)D_d             (SV)
+
+for EVERY admitted selected m with log m>120. Constants and the
+threshold are fixed in advance. A proof of SV plus the audited
+L<=120 margin closes the predecessor's fixed continuous-lag TEST
+on every original selected m>=65536. SV is only SUFFICIENT, not
+necessary; its failure does not refute that lag TEST.
+
+Use the literal source-moment pairing, not a fitted density:
+J_0(lambda,b)=int_0^b exp(i lambda u)du,
+J_1(lambda,b)=int_0^b u exp(i lambda u)du,
+J_0(0,b)=b, J_1(0,b)=b^2/2. Set a=b/2 and
+S_{0,N}(xi)=sum_{|n|<=N}c_{m,n}(-1)^n
+            J_0(omega_n-xi,b),
+S_{1,N}(xi)=sum_{|n|<=N}c_{m,n}(-1)^n
+            [J_1(omega_n-xi,b)-a J_0(omega_n-xi,b)].
+The predecessor proved, by L2-to-L1 product convergence,
+V_m=lim_{N->infty}(1/(pi L))int_R
+    |Im(S_{1,N}(xi)conj(S_{0,N}(xi)))|d xi.  (PAIR)
+Keep the independent indices, low coefficients, all r>=1 in
+e_n, literal diagonal, and the absolute value AFTER pairing.
+Do not estimate each source block separately or infer a relative
+bound merely from e_n=O_m(n^-2).
+
+Return exactly ONE outcome:
+1. SOURCE_VARIATION_BUDGET_PROVED: derive a nonnegative lower
+   envelope for Delta_m^var=16E-M_m-V_m for all stated selected m
+   from the actual source. Give every inequality and domain.
+2. SOURCE_VARIATION_INTERFACE_REFUTED: derive a rigorously negative
+   upper envelope for Delta_m^var at an admitted selected m or an
+   explicitly proved selected sequence. This rejects only SV; do
+   not call the original lag TEST refuted without a permitted pair
+   (m,t) with D_m(t)<0.
+3. OPEN_SOURCE_VARIATION: identify the first unpaid source-specific
+   comparison in PAIR against the exact SV budget. Return ONE
+   narrower falsifiable PAPER lemma with its consumer and explicit
+   discriminator. A generic Cauchy-Schwarz bound V_m<=bM_m or an
+   abstract non-source diagnostic is not a result on this source.
+
+Even if SV is proved, the exponent-one prime block, prime/square
+compensation, opposite-side correlation, integrated symbol
+deviation, transfer, actual J_m sign, first tau_j sign, Schur-floor
+and RH remain OPEN. Only after a full source proof may the prior
+conditional C_0=128, C_int=134, C_2=146 be activated at their
+stated square-transfer scope. No mathematical runtime, numerical
+cutoff search, Lean, repository write, new seed, source/carrier/Q/
+denominator replacement, route promotion or RH claim. Return the
+full PAPER argument and one bounded CODEX DIRECTIVE.
