@@ -866,6 +866,49 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Ответ на interior square core test № 2 в новом чате (26.09, PAPER; OPEN_INTERIOR_SQUARE_CORE).**
+[Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INTERIOR_SQUARE_CORE_AFTER_ENDPOINT_2026-09-26.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
+user turn `469bbd2d-4b43-4898-a668-7c6c94f2f98e`, assistant item
+`cdc16173-4aad-4e95-b204-166732cc0cd7`, завершён 2026-09-26
+20:09:30 UTC: 29,578 байт / 640 LF / SHA-256
+`0e8280d2b5a739e56f07ae29f8c6f28ade7ba21a190edea8333dcbe06c659cf1`.
+Хеш скачанного из исходного чата вложения совпал с объявленным в
+[точном inline-ответе](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_INTERIOR_SQUARE_CORE_AFTER_ENDPOINT_2026-09-26.md)
+(1,720 байт / SHA-256 `4ebd51ca79077669ffa014111882ffbf3512dc897331839b999b3d39a0e1d129`);
+inline-файл посимвольно совпал с assistant item из `read_thread`. Запрос
+подтверждён как 2/10; повторять нельзя.
+
+Независимая PAPER-сверка проверила (6)–(26), (29)–(32) на указанном SHA;
+два последовательных on-target read-only review-прохода не нашли
+CRITICAL/HIGH/MEDIUM/LOW/WORDING. В (6) исходный `E₁₁` сохраняет физический
+exterior и низкий коэффициент `ε_m` у `k=f-d`; finite-window contour shift
+содержит обе вертикальные стороны. Из source strip majorant следует только
+верхняя оценка `E₁₁≤2^56 exp(−m/L)`. Для `p≥256` явный знак и полный
+хвостовой бюджет дают `I_g(p,a)≤0` при `a≥0` и
+`I_g(p,a)≤−C_g p^13 exp(−πp^4)` при `a≥p^(−4)`,
+`C_g=64π^4exp(−4π)`. Точная замена `I_g=p T̃₃,p` и выбранные
+`m(p)=ceil(exp(p/2))` для неограниченных простых `p` доказывают
+`|S₃,m(p)|/[(1+log L)E₁₁]→∞`. Это опровергает **только**
+отдельный lower-order budget для полного source-source блока `S₃`.
+Остальные три члена могут его сократить: ни saving, ни leading witness
+для их полной знаковой суммы `V_m^[0]` не получены.
+
+Первый неоплаченный стык остаётся
+`V_m^[0]=(S₀,m+S₃,m)−(S₁,m+S₂,m)` при исходном `E₁₁`.
+Точное Fourier-разложение (6)–(8) сохраняет низкий `ε_m`-блок и
+диагональ; из него не следует decay. Кандидат
+`(1+t)|A_m(t)|≤16E₁₁` для `2log L≤t≤L/2` и всех выбранных
+`m≥65536` **не доказан**; если его доказать, partial summation даёт
+условные `C₀=128`, `C_int=134`, `C₂=146`. Его провал опровергнет
+лишь эту достаточную форму, не исходный saving. Чётность, carrier,
+exterior decay и прежний endpoint/transfer использованы как ранее
+принятые входы. Полный квадратный блок, prime/square компенсация,
+opposite-side, transfer, фактический знак `𝔍_m`, первый `τ_j`,
+Schur-floor и RH OPEN. Ближайший узкий PAPER-тест —
+`TEST_SOURCE_CORE_CONTINUOUS_LAG_DECAY` для этой фиксированной
+source-специфической формы, без смены source или denominator.
+
 **Ответ на large-prime-square interior overlap test № 1 в новом чате (26.09, PAPER; OPEN_INTERIOR_SQUARE).**
 [Точный inline-ответ](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_LARGE_PRIME_SQUARE_INTERIOR_OVERLAP_2026-09-26.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
