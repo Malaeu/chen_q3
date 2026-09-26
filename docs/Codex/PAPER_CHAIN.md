@@ -866,6 +866,47 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Ответ на source core logarithmic moment peak test № 9 (27.09, PAPER; OPEN_SOURCE_LOG_MOMENT_PEAK).**
+[Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_LOGARITHMIC_MOMENT_PEAK_2026-09-27.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
+user turn `d5b6464f-4025-4d2d-ba66-1d406d3dd702`, assistant item
+`9fca1f92-11dc-4879-a6dd-16500871a403`, завершён 2026-09-26
+23:12:06 UTC: 32,062 байта / 592 LF / SHA-256
+`47bc3636eccbe16977658314dd1847816675c74e501fd55e3c5f091695d71f52`.
+Хеш скачанного файла совпадает с объявленным в [точном inline-ответе](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_SOURCE_CORE_LOGARITHMIC_MOMENT_PEAK_2026-09-27.md)
+(3,787 байт / SHA-256 `6823e8a9c81d1352495178f79fb78d36a60f749faf484e112baa96a2a24a95a3`).
+Отправленный TXT: 5,824 байта / 109 LF / SHA-256
+`bad0942930c18463556ef35f580a1032eb915ef9cfd5c9e29de8257d36e76833`.
+
+Независимая PAPER-сверка и два последовательных on-target CLEAN read-only
+review-прохода `/root/log_moment_verdict_review` приняли ограниченный результат.
+Для *парного* ядра ветвь `atanh(e^{iθ})` и ориентация прямоугольника дают
+точное `Z_m=Y_m+𝓔_m` (9)–(10): левая вертикаль имеет нулевой
+действительный вклад, правая не выброшена. Из полной Gaussian-суммы,
+`B²≤E_O/(πm)≤E/(πm)` и `L>120` проверено
+`|𝓔_m|≤256L(L+2)√(E/(πm))<√E/(64L²)` (11)–(14).
+Это оплачивает только граничную поправку, не знак `Y_m` или `Z_m`.
+
+Конечная тригонометрическая сумма даёт точную source-формулу (19) для
+`S_{m,R}=Σ_{ℓ=1}^R e_{m+2ℓ}`, `1≤R≤N=⌈L⌉`; оба endpoint-предела
+проверены. Summation by parts (20) сохраняет полный Cauchy-момент,
+а исходная энергия `E=E_O+2Σ_{q≥1}e_{m+q}²` даёт для всех `L>120`
+`|Z_m^far|≤√[L/(4(2N−1))]√E<√E/2` (21). Смешанный член остаётся
+в (22). Если бы фактический источник удовлетворял
+`L S_{m,R}²≤49 R E` для **каждой** выбранной ячейки и каждого
+`1≤R≤N`, телескопирование (24), хвост (21) и `π>3` дали бы
+`χ_m>827/240` (25)–(26) и исключили только узкий логарифмический
+сертификат. Эта префиксная source-оценка **не доказана**; отрицательный
+дискриминатор (27) опроверг бы лишь её, не дал бы peak.
+
+Ни исходный peak (16), ни всеобщая неотрицательность `χ_m` (17)
+не установлены. Ближайший PAPER-тест —
+`TEST_SOURCE_CORE_EVEN_PREFIX_CANCELLATION` на том же `E`, полном
+source-ряде и выбранной семье; исходные панель, `K`, оба Fourier-знака,
+диагональ, нулевой узел, последний спуск и физический exterior
+сохраняются. Full-panel exclusion, SV, lag, первый `τ_j`, Schur-floor
+и RH остаются OPEN.
+
 **Ответ на source core first-node peak test № 8 (27.09, PAPER; OPEN_SOURCE_FIRST_NODE_PEAK).**
 [Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIRST_NODE_PEAK_2026-09-27.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
