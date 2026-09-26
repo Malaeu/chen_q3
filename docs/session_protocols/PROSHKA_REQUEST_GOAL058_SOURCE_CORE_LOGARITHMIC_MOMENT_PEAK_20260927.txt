@@ -1,0 +1,109 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-LOGARITHMIC-MOMENT-PEAK
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_LOGARITHMIC_MOMENT_PEAK
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: f0428d2c62a8a65d4c4ac7023cabd1e4351d218e
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIRST-NODE-PEAK
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIRST_NODE_PEAK_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 4398b4aeb4674b7d0df9eee2efc88b44e84eb6238539d17daf1804962268e2d8
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0
+CONFIRMED_PRIOR_MATH_RELATED_SENDS_IN_DESTINATION_CHAT: 8
+INTENDED_ORDINAL_IF_CONFIRMED: 9/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_LOGARITHMIC_MOMENT_PEAK on
+PAPER. Read the complete predecessor verdict at the exact hash above
+and the limited independent audit headed "source core first-node peak
+test" in docs/Codex/PAPER_CHAIN.md at SOURCE_COMMIT. Do not repeat or
+resend that request. Two consecutive ON-TARGET CLEAN independent PAPER
+reviews accepted only its exact generating identity (9), exact
+correction (12)-(14), and E-relative estimate (17)-(19). They did NOT
+accept an actual-source sign, full panel, SV, continuous lag, or RH.
+
+Keep the same P and every admitted selected m=J_P+j+2 with
+L=log m>120, b=L/2, Q=sqrt(m), original 5m splice and carrier
+|n|<=m. Let h_*(x)=(24pi x^2-16pi^2 x^4)e^(-pi x^2),
+G(u)=e^(u/2)sum_{r>=1}h_*(r e^u), g=G'', h=T_m g,
+f=h-g, E=||f||_2^2>0, E_O=2int_b^infty|g|^2,
+B=G'(b), epsilon=2B/sqrt L, d=epsilon sum_{|n|<=m}psi_{n,L},
+k=f-d, M=||1_[0,b]k||_2^2=(E-E_O+D_d)/2,
+D_d=(2m+1)epsilon^2. The denominator is this actual E including
+physical exterior. Do not change the source, selected family or Q.
+
+The complete source coefficients are
+e_n=2(-1)^n/sqrt L sum_{r>=1}int_0^b e^(u/2)
+  P(pi r^2 e^(2u))e^(-pi r^2 e^(2u))cos(2pi n u/L)du,
+P(x)=-64x^4+448x^3-660x^2+150x.
+Let N=ceil L and retain the original analytical K=N+ceil(L^4).
+The first-node quantity is
+H=-epsilon sigma_m+sum_{2<=q<=K, q even}e_{m+q}
+  [1/(q-1)-1/(2m+q+1)],
+sigma_m=sum_{1<=nu<=2m+1, nu odd}1/nu,
+R_1^[K]=L e_{m+1}^2/(8pi)+L H^2/(2pi^3),
+R_0=B^2/(2pi), eta_m=1/(4sqrt(2L))+1/(24L^2).
+The accepted one-sided chain is
+Delta^var<=U^lattice<=U^[K]+eta_m E<=p_m E,
+p_m=16-M/E+2R_0/E-L e_{m+1}^2/(2pi E)
+    -2L H^2/(pi^3 E)+eta_m.
+Negative p_m refutes only the sufficient SV interface.
+
+The accepted exact paired source moment is
+Z_m=int_0^b g(u)[log cot(pi u/L)cos(omega_{m+1}u)
+                   -(pi/2)sin(omega_{m+1}u)]du,
+omega_n=2pi n/L.
+The cosine and sine MUST stay paired. The full forward Cauchy sum
+C_m^+=sum_{ell>=1}e_{m+2ell}/(2ell-1)=(-1)^m Z_m/sqrt L.
+The signed correction beta_m in predecessor (12) retains the entire
+low epsilon block, negative Fourier indices and every q>K offset:
+H=C_m^+-beta_m, |beta_m|<=alpha_m sqrt E,
+alpha_m<1/L^2,
+|p_m-p_m^log|<=delta_m=(2L/pi^3)alpha_m(2+alpha_m)<1/(6L),
+p_m^log=16-M/E+2R_0/E-L e_{m+1}^2/(2pi E)
+        -2 Z_m^2/(pi^3 E)+eta_m.
+The literal diagonal e_{m+1}^2 and all cross terms remain in p_m.
+
+Seek exactly ONE source-specific decision on the complete paired
+logarithmic moment, with the following outcomes:
+1. LOG_MOMENT_PEAK_PROVED: identify an explicitly admitted selected
+   cell or rigorously defined admitted sequence and prove from the
+   COMPLETE theta source that
+   (2/pi^3)Z_m^2 >= 16E-M+2R_0+E/24.
+   This gives chi_m<-7/360 and hence p_m<-7/360, a negative
+   first-node witness and only a refutation of the sufficient SV.
+   State every strictness and quantifier needed for that inference.
+2. LOG_MOMENT_CERTIFICATE_EXCLUDED: prove for EVERY admitted selected
+   L>120 that chi_m>=0, where
+   chi_m=16-M/E+2R_0/E-2 Z_m^2/(pi^3 E)+eta_m+delta_m.
+   This excludes only the narrower sufficient log-moment certificate,
+   NOT the original first-node certificate: the literal diagonal and
+   signed correction could still yield p_m<0. A mere failure of the
+   sufficient inequality in item 1 does not establish this outcome.
+3. OPEN_SOURCE_LOG_MOMENT_PEAK: identify the first exact unpaid
+   source inequality for Z_m^2 against 16E-M+2R_0, explain why the
+   accepted source bounds cannot decide it, and propose ONE strictly
+   narrower falsifiable PAPER lemma with exact discriminator, both
+   outcomes, and no restatement of the same condition in new symbols.
+
+Do not use arbitrary coefficient models, a norm-only estimate,
+numerical coefficient evaluation, selected-cell/grid search, a source
+r-truncation without a proved remainder, an endpoint deletion or
+separate absolute majorants of the two kernel pieces to claim a peak.
+Check the exact phase, Abel branch, endpoint cancellation, correction
+and inequality direction. Keep the frozen panel, original K, zero node,
+final descent, both Fourier-index signs, full source r-series,
+physical E_O in E, and every source cross term. No new panel, dual mask,
+carrier, source or denominator; no mathematical runtime, Lean,
+repository write, route promotion or RH claim. The exponent-one prime
+block, prime/square compensation, opposite-side correlation,
+integrated symbol deviation, transfer, actual J_m sign, first tau_j
+sign and Schur-floor remain OPEN. C_0=128, C_int=134, C_2=146 remain
+conditional. Return the full PAPER argument and one bounded
+CODEX DIRECTIVE.
