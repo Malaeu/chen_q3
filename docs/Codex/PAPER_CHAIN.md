@@ -866,6 +866,51 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Ответ на large-prime-square interior overlap test № 1 в новом чате (26.09, PAPER; OPEN_INTERIOR_SQUARE).**
+[Точный inline-ответ](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_LARGE_PRIME_SQUARE_INTERIOR_OVERLAP_2026-09-26.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
+user turn `f0df28a4-102b-46fa-9416-993c8b6080a1`, assistant item
+`5ff8d00d-7612-4c26-8e66-eabe962292fc`, завершён 2026-09-26
+19:37:56 UTC: 17,402 байта / 591 LF / SHA-256
+`f14ec30d19415ec331c48c6f0aa84ef496f55d0ba91fc9607ac1573c03f40188`.
+Сохранённый файл посимвольно совпадает с полным assistant item; `read_thread`
+показал только одно вложение этого turn — исходный TXT запроса, его SHA-256
+`7d64210b75199c2f421ac06289b2d646cbd22a6a9119dc1d38ffaf665f71f064`
+совпал с локальным. Нового вложения с ответом нет. Запрос отправлен как 1/10,
+повторять нельзя.
+
+Независимая PAPER-сверка проверила новый стык (3)–(27), (30), (34)–(39).
+При ранее принятом exterior input `F(u+s)≤exp(−πms)F(u)` лишь для `u≥b`
+получаем `B=G′(b)=∫_b^∞F`, `B²≤E₁₁/(πm)`; спад внутрь окна не
+переносится. Точное разложение `e_n=α_n+ε_m` с
+`α_n=−ω_n²b_n`, `ε_m=2B/√L`, `d=ε_mΣψ_n` даёт
+`𝒱_m=𝒱_m^[0]+R_{ε,m}`. В `R_{ε,m}` находятся оба смешанных
+члена и `−d(u)d(u+t_p)`; `𝒱_m^[0]` сохраняет обе Mellin-границы,
+независимые `n,q`, диагональ и все source-индексы.
+Для endpoint Dirichlet-профиля
+`|d(b−z)|≤B/max{L/[2(2m+1)],z}`; Gram-строка для сдвинутых
+`v_p(u)=1_[0,a_p](u)d(u+t_p)` ограничена `B²R_m`, где
+`R_m/m<5/L` при `m≥65536`. Из `5/π<2`, `Σw_p²<5` и
+`Σw_p≤L` следуют три оценки (23)–(25) и
+`|R_{ε,m}|≤[2L/√(πm log L)+4√(5/L)+4√15/L]E₁₁<6E₁₁`;
+коэффициент стремится к нулю. Два последовательных on-target
+read-only review-прохода по неизменному SHA-256 дали **CLEAN**, без
+CRITICAL/HIGH/MEDIUM/LOW/WORDING. Ранее принятые чётность,
+проекционная нормировка, exterior decay и predecessor remainder
+использованы как входы, заново от первоисточника не доказывались.
+
+Открыт только остаточный signed source comparison (28):
+`𝒱_m^[0]=4Σ_p(log p)[T̃₀,p[α]+T̃₃,p−T̃₁,p[α]−T̃₂,p[α]]`
+относительно исходного `E₁₁`. Ни `|𝒱_m^[0]|≤C₀(1+log L)E₁₁`
+на выбранном хвосте, ни `|𝒱_m^[0]|≥c₀ℓ_mE₁₁` на доказанном
+неограниченном выбранном множестве нет. Gram-оценка для `d` не
+применима к `f−d`. Точный перенос сохраняет
+`𝒰_m^(2)=𝒱_m^[0]+R_{ε,m}+𝒰_small^(2)+𝒳_large−𝓛_large^(2)`:
+низкочастотное вычитание остаётся отрицательным. Ближайший узкий
+PAPER-тест — `TEST_SOURCE_INTERIOR_SQUARE_CORE_AFTER_PAID_ENDPOINT`.
+Полный квадратный блок, prime/square компенсация, opposite-side,
+transfer, знак фактического `𝔍_m`, первый `τ_j`, Schur-floor и RH OPEN.
+
 **Ответ на prime-square high-frequency test № 10 (26.09, PAPER; OPEN_PRIME_SQUARE_HIGH_FREQUENCY).**
 [Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_PRIME_SQUARE_HIGH_FREQUENCY_2026-09-26.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443),
