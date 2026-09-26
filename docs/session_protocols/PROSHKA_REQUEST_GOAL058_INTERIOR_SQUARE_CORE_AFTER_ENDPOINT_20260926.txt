@@ -1,0 +1,134 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-26-INTERIOR-SQUARE-CORE-AFTER-ENDPOINT
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_INTERIOR_SQUARE_CORE_AFTER_PAID_ENDPOINT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 71e056baf76e907468c689204ecc5a0eb1e2876c
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+PREDECESSOR: REQ-2026-09-26-LARGE-PRIME-SQUARE-INTERIOR-OVERLAP
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_LARGE_PRIME_SQUARE_INTERIOR_OVERLAP_2026-09-26.md
+PREDECESSOR_VERDICT_SHA256: f14ec30d19415ec331c48c6f0aa84ef496f55d0ba91fc9607ac1573c03f40188
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0
+CONFIRMED_PRIOR_SENDS_IN_DESTINATION_CHAT: 1
+INTENDED_ORDINAL_IF_CONFIRMED: 2/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_INTERIOR_SQUARE_CORE_AFTER_PAID_ENDPOINT
+on PAPER. Read the complete predecessor verdict at the exact hash above,
+the independent limited audit in docs/Codex/PAPER_CHAIN.md headed
+"large-prime-square interior overlap test", and its exact source request.
+Do not repeat REQ-2026-09-26-LARGE-PRIME-SQUARE-INTERIOR-OVERLAP. Its
+OPEN_INTERIOR_SQUARE verdict paid only the joint endpoint-dependent
+correction. Two on-target independent PAPER review passes accepted that
+restricted result; no saving or leading witness for the interior square
+was accepted. Keep the source and all prior scopes unchanged.
+
+Fix the same selected P and admitted m=J_P+j+2, m>=65536. Let
+L=log m, b=L/2, Q=sqrt(m), X_2=m^(1/4), omega_n=2 pi n/L,
+t_p=2 log p, a_p=b-t_p, w_p=(log p)/p,
+P_m={p prime: L<p<=X_2}. Use the original 5m splice and Fourier
+carrier n=-m..m. The exact even theta source is
+h_*(x)=(24 pi x^2-16 pi^2 x^4)exp(-pi x^2),
+G(u)=exp(u/2)sum_{r>=1}h_*(r exp(u)), g=G'',
+h=T_m g, f=h-g, E=E_11=||f||_2^2>0,
+ell_m=log((m+1)/L). The original coefficients are
+psi_{n,L}(u)=L^(-1/2)exp(i omega_n(u+b))1_[-b,b](u),
+b_n=(-1)^n/sqrt(L) integral_-b^b G(u)exp(-i omega_n u)du,
+e_n=-omega_n^2 b_n+epsilon_m,
+epsilon_m=2G'(b)/sqrt(L). Set alpha_n=-omega_n^2 b_n and
+d(u)=epsilon_m sum_{n=-m}^m psi_{n,L}(u). Do not replace E by
+||f-d||_2^2 or assume projection orthogonality for f-d.
+
+The predecessor established the EXACT identity
+
+V_m=V_m^[0]+R_{epsilon,m},
+V_m=4 sum_{p in P_m} w_p integral_0^a_p f(u)f(u+t_p)du,
+V_m^[0]=4 sum_{p in P_m} w_p integral_0^a_p
+       (f-d)(u)(f-d)(u+t_p)du,
+R_{epsilon,m}=4 sum_{p in P_m} w_p integral_0^a_p
+       [d(u)f(u+t_p)+f(u)d(u+t_p)-d(u)d(u+t_p)]du.
+
+Its new paid bound, accepted only under the earlier admitted exterior
+source input F(u+s)<=exp(-pi m s)F(u) for u>=b, is
+
+|R_{epsilon,m}|<=r_epsilon(m)E<6E,
+r_epsilon(m)=2L/sqrt(pi m log L)+4sqrt(5/L)+4sqrt(15)/L -> 0.
+
+This Gram bound belongs ONLY to d's explicit endpoint Dirichlet
+profiles. It is not a bound on translates of f or f-d. The prior
+square transfer also remains exact:
+
+U_m^(2)=V_m^[0]+R_{epsilon,m}+U_m,small^(2)
+        +X_m,large-L_m,large^(2),
+|U_m^(2)-V_m^[0]|<=[12(1+log L)+r_epsilon(m)]E.
+
+Your ONLY target is the actual endpoint-independent source-indexed
+interior core V_m^[0]. Preserve the predecessor's complete four terms:
+
+V_m^[0]=4 sum_{p in P_m}(log p)
+  [T0_tilde,p[alpha]-T1_tilde,p[alpha]
+   -T2_tilde,p[alpha]+T3_tilde,p],
+
+T0_tilde,p[c]=(1/(Lp)) Re sum_{n,q=-m}^m
+  conj(c_n)c_q(-1)^(q-n)exp(i omega_q t_p)
+  J(omega_q-omega_n,a_p),
+J(kappa,a)=integral_0^a exp(i kappa u)du, J(0,a)=a,
+T1_tilde,p[c]=(1/sqrt(L)) Re sum_{n=-m}^m sum_{r>=1}
+  conj(c_n)(-1)^n(rp^2)^(-s_n) H_2(s_n;rp^2,rQ),
+T2_tilde,p[c]=(1/sqrt(L)) Re sum_{n=-m}^m sum_{r>=1}
+  conj(c_n)(-1)^n(p^2)^(s_n-1)r^(-s_n)
+  H_2(s_n;r,rQ/p^2),
+T3_tilde,p=sum_{r,s>=1} integral_1^(Q/p^2)
+  h_2(rx)h_2(sp^2x)dx,
+s_n=1/2-i omega_n,
+H_2(s;A,B)=integral_A^B h_2(x)x^(s-1)dx,
+h_2(x)=(-64v^4+448v^3-660v^2+150v)exp(-v), v=pi x^2.
+
+The n=q self diagonal in T0 is
+(a_p/(Lp))sum_{n=-m}^m omega_n^4|b_n|^2 cos(omega_n t_p).
+Keep independent n,q, both mixed terms, r,s>=1 and the two distinct
+Mellin upper boundaries. In the inverse-dilation term, p^2<=y is
+the moving restriction; never flatten it or substitute log k for
+the restricted square weight. At p^2=Q the interior integral is
+zero, while the earlier paid exterior strips remain in the transfer.
+
+Return exactly one outcome:
+
+1. INTERIOR_SQUARE_CORE_SAVED: an explicit finite C_0 and selected
+   threshold m_0 with |V_m^[0]|<=C_0(1+log L)E for EVERY admitted
+   selected m>=m_0. Prove the source-derived signed comparison at
+   the actual E scale and transfer with C_int=C_0+6,
+   C_2=C_0+18.
+2. INTERIOR_SQUARE_CORE_LEADING: explicit c_0>0 and an EXPLICITLY
+   PROVED unbounded selected-index set on which
+   |V_m^[0]|>=c_0 ell_m E. Subtract r_epsilon and the signed
+   remainder before any square lower conclusion. State the tail
+   condition r_epsilon+12(1+log L)<=c_0 ell_m/2, not its reverse.
+3. OPEN_INTERIOR_SQUARE_CORE: identify the first still unpaid
+   source-indexed signed comparison in the displayed four terms.
+   Give a concrete analytic obstruction or one narrower falsifiable
+   source-specific PAPER lemma whose proof would genuinely decide
+   one of the two quantified outcomes. Do not merely rename V_m^[0]
+   or offer another O(L E) norm bound.
+
+No individual bound on the endpoint-dependent indexed pieces is needed:
+their full joint sum, including epsilon_m^2 terms, is paid by
+R_{epsilon,m}. A source proof may use the
+explicit alpha_n and h_2, but must state every source identity,
+domain, sign and constant it uses. Do not claim a general matrix or
+multiplier sign from the positive arithmetic weights. If no source
+comparison closes, report OPEN without inventing a theorem kill.
+
+Even a complete square saving or witness leaves the exponent-one
+prime block and possible prime/square compensation separate.
+Opposite-side correlation, integrated symbol deviation, transfer,
+actual J_m sign, first tau_j sign, Schur-floor and RH remain OPEN.
+No mathematical runtime, numerical cutoff search, Lean, repository
+write, new seed, source/carrier/Q replacement, route promotion or RH
+claim. Return the full PAPER argument and one bounded CODEX DIRECTIVE.
