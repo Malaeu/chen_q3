@@ -866,6 +866,43 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Ответ на source core finite-coefficient panel margin test № 6 (26.09, PAPER; OPEN_SOURCE_FINITE_PANEL_MARGIN).**
+[Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FINITE_COEFFICIENT_PANEL_MARGIN_2026-09-26.md)
+из [чата подтверждённой отправки и восстановления TXT](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
+repair user turn `09a4211c-3437-47f6-953b-f6f3c0909023`, assistant item
+`ac201b9f-d522-4f6d-b3be-638909db0b98`, завершён 2026-09-26
+22:22:12 UTC: 27,332 байта / 455 LF / SHA-256
+`39124d4d4a5c17c577b8909e765ecac3c863203e2446d0d73333f3f2900750d4`.
+Хеш полного вложения совпал с объявленным в
+[точном inline-ответе](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_SOURCE_CORE_FINITE_COEFFICIENT_PANEL_MARGIN_2026-09-26.md)
+(3,678 байт / SHA-256 `4d8df7f1a85a64017f2147cfe84bb613eede09be826b93ebf836555003a5c2b7`);
+inline-файл посимвольно совпал с `read_thread`. Первоначальная отправка
+была 6/10 без вложения и получила только transport finding; исходный TXT
+затем побайтно подтверждённо прикреплён в том же чате с консервативным
+учётом как 7/10. Это продолжение одного запроса, не новый математический
+запрос; точные события в [очереди](../routeB_bus/PROSHKA_QUEUE.md).
+
+Независимая PAPER-сверка и два последовательных ON-TARGET CLEAN read-only
+review-прохода по неизменному SHA-256 приняли только точную геометрию
+той же фиксированной панели. Для `x₀=R₀`, `x_s=R_s^[K]≥0` и
+`𝒜_m=(x₀−x₁)_+ + Σ_{s=1}^{N−1}(x_{s+1}−x_s)_+≥0` полный путь с
+последним спуском даёт `W^[K]=4x₁−2x₀+4𝒜_m` (7)–(8). Следовательно
+`U^[K]=𝔉_m−4𝒜_m≤𝔉_m`, где `𝔉_m=16E−M+2R₀−4R₁^[K]`, и
+`Δ^var≤U^lattice≤𝔉_m+η_mE` (9)–(11). Dual-маска (12) даёт ту же
+одностороннюю границу. Проверены паритет `q` чётно при `s=1`, фаза
+`(−1)^m`, коэффициенты квадрата (19)–(22), исходный знаменатель с
+`E_O`, нулевой узел и финальный спуск. Условный source-вход
+`4R₁^[K]−2R₀≥16E−M+E/24` дал бы строго отрицательный запас
+`𝔭_m<−1/48`, но он **не доказан**.
+
+Ни отрицательный source-свидетель, ни всеобщее исключение панели не
+получены. Даже всеобщее `𝔭_m≥0` исключило бы только этот **достаточный
+first-node сертификат**, потому что поздние подъёмы `𝒜_m` могут сделать
+полный `U^[K]` отрицательным. Полный SV, исходный lag-тест, условные
+`C₀=128`, `C_int=134`, `C₂=146` и RH OPEN. Ближайший PAPER-шаг —
+`TEST_SOURCE_CORE_FIRST_NODE_PEAK` с буквальными source-моментами,
+без новой панели или численного поиска.
+
 **Ответ на source core lattice variation witness test № 5 (26.09, PAPER; OPEN_SOURCE_LATTICE_WITNESS).**
 [Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_LATTICE_VARIATION_WITNESS_2026-09-26.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
