@@ -7734,3 +7734,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Адреса: docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md и reference_tracking_diagnostic.json.
 Чей вердикт и аргумент: root выбрал перенос; независимый reviewer /root/sign_algebra_review: "The source error transfers additively through the fixed ground projection, without an inverse-gap factor." Принят только условный перенос, не его открытые спектральные посылки. Lean не запускался.
 Арифметический перенос: Arb Sturm ограничил весь Robin-прямоугольник m8; E_energy<1.900e-31. Условный E_tail<4.186e-21; коэффициент T2<0.09336 (не угол, ещё умножается на |Xi(0)|m^(H/2)). Source-tail гипотеза при m8 не заявляется.
+
+## 2026-09-27 — Signed-form geometry and effective resistance (Mac)
+
+Развилка: может ли тождество суммы квадратов дать знак при знаковых коэффициентах для всех направлений, как монотонность потока Риччи у Перельмана.
+Выбрали: источниково проверить signed-Laplacian/effective-resistance критерий и сопоставить его с полной Q3 difference-form.
+Почему: для одной отрицательной связи точное `w R_eff<1` оплачивает её положительной сетью сразу для всех векторов; для нескольких требуется совместная операторная норма, а не отдельные скалярные оценки.
+Что отвергли: прямой перенос Frank–Seiringer, которому нужен неотрицательный kernel; у Q3 непрерывный вес `b(t)` меняет знак. Не объявлять глобальное ground-state тождество положительной формой и не переносить графовый критерий на конечный selected-compression без endpoint/exterior/prime/shift поправок.
+Инсайты: точный графовый механизм имеет вид `L=L_+-D_-W_-D_-*`, `theta=||W_-^(1/2)D_-*L_+^(-1)D_-W_-^(1/2)||<1`; тогда полная форма положительна на `1^perp`. Для Q3 это только аналог.
+Блокеры: coercive positive sector на фактическом `q_j^perp`, source-exact factorization, joint negative-channel bound и кофинальный запас открыты; Proshka finite-coefficient-panel request — отдельный текущий тест.
+Иглы Зингера: квадрат даёт знак только после проверки знака его коэффициента либо оплаты отрицательного канала положительным; одна геометрия плоскости не контролирует полное ортогональное дополнение.
+Следующий ход: один selected-source тест точной positive/negative факторизации с полными поправками; остановить аналог, если положительная часть не coercive либо joint loss не меньше её запаса.
+Адреса: `docs/literature/signed_form_effective_resistance_2026-09-27.md`, `paper_weil/sections/groundstate.tex`.
+Чей вердикт: root прочёл PDF Zelazo–Buerger, Chen et al. и Frank–Seiringer, проверил графовую алгебру; независимого аудита нового Q3 crosswalk не было. `PARTIAL ANALOGUE / INCOMPLETE`, Lean не запускался, RH claim отсутствует.

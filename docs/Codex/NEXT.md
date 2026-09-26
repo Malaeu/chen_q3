@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-26 · by: Codex Linux · baseline HEAD: 2a3c207d
+Updated: 2026-09-27 · by: Codex Mac · baseline HEAD: 63ce5476
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -99,6 +99,8 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
    m_j^(H/2)*sqrt(log m_j)*alpha_j → 0 (достаточно для G3); finite m8 не даёт её.
 3. Параллельно: G4 crosswalk (h_λ ↔ hTrial_m, скаляр/фаза, C = 2πλ²) и projection tail (G3c).
 4. После оплаченных входов — сборка → hconv. Lean Fokas joint green отложено.
+
+Поиск литературы 2026-09-27: [signed-form/effective-resistance map](../literature/signed_form_effective_resistance_2026-09-27.md) даёт строгий графовый механизм `w R_eff<1` / совместный Schur-тест, но только `PARTIAL ANALOGUE` к selected Q3. Источниковая факторизация, coercivity положительной части и cofinal joint loss OPEN; текущий finite-coefficient-panel запрос Прошке не заменять.
 
 ## Прошка
 - 2026-09-26 Mac: [бумажная заметка о геометрии сжатия](REPORT_2026-09-26_CURVED_COMPRESSION_GEOMETRY.md) записывает точную метрику `R=B*B`, вторую вариацию нормированного Rayleigh-отношения и оценку поворота source-плоскости через Gram-ошибку. Это предложение для отдельного source-angle теста, не доказательство знака `A=B*K_jB` и не новый запрос Прошке; текущий запрос № 7 не менялся.
