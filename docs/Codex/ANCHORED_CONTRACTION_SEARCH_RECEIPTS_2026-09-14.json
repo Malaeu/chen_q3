@@ -1,0 +1,180 @@
+{
+  "status": "SOURCE_VERIFIED_PARTIAL_MECHANISM_ANALYTIC_REVIEW_CLEAN",
+  "consumption": "INCOMPLETE_NO_CONSUMABLE_TARGET",
+  "source_base": "fe1044cb45356fff684fc99c042a2354bfad17fd",
+  "branch": "codex_mac/anchored-contraction-20260914",
+  "created_at": "2026-09-14T17:31:30.214539+00:00",
+  "input_pins": [
+    {
+      "path": "docs/Codex/BRIEF_2026-09-14_ANCHORED_CONTRACTION_HUNT.md",
+      "sha256": "dcfd282039ce99e2fa2792f415186f61532c390377a91baa05ae11b22392409d"
+    },
+    {
+      "path": "docs/session_protocols/team-evidence-020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be.bin",
+      "sha256": "020297dd20f9184f6409055a6eff2c76ee257fbe7700fa81f9d81f165f0da3be"
+    },
+    {
+      "path": "docs/session_protocols/team-evidence-42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151.bin",
+      "sha256": "42471b36ca122801a9e516350618bd15a7e86679bbd21c25fbcdf9c6fddd4151"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md",
+      "sha256": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md",
+      "sha256": "fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-09-13_RESIDUAL_COMPENSATION_HUNT.md",
+      "sha256": "7aaf8e43faa5bfd37954d6076db3acb1801325777bd9d989b25d75c9a9466c14"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+      "sha256": "250e638fc458e9f685c8c48944acb2e36c49c4365df146c734e0e7944e89a803"
+    }
+  ],
+  "shelf_queries": [
+    {
+      "query": "Douglas factorization Hardy averaging innovation transform Markov contraction",
+      "exit_code": 2,
+      "stdout_sha256": "28b9b68bc2eabdb420fc25317d31dbe4e3b9c492429a4a3dd8a2950bde8c187f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "query_sha256": "a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS_VALIDATION_FAILED",
+      "raw_stdout": "\n── СТЫКОВКИ — входы и выходы ───────────────────────────────────\nПОСТАВЛЯЮТ (provides):\n  selectedFullMellinCoordinate_eq_selectedGwinTransformCoordinate  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFullMellinGwinCrosswalk.lean:41\n    -> две независимые конструкции представления совпадают\n  selectedProjectedMellinCoordinate_eq_selectedRawTransformCoordinate  q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarProjectedMellinCoordinate.lean:148\n    -> проекция ↔ исходное представление\n  rawFplus_eq_centeredTrialDensity_transform  q3.lean.aristotle/Q3/Proofs/RouteB/D0CriticalMomentStripBound.lean:72\n    -> точная формула: rawFplus есть преобразование Фурье центрированной пробной плотности на центрированном логарифм\n  proposition59RawTransform_eq_quotient_sum  q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean:102\n    -> вне конечной решётки полюсов устранимое определение преобразования совпадает с суммой явных частных — мост опр\n  proposition59RawTransform_eq_paper_formula  q3.lean.aristotle/Q3/Proofs/RouteB/Proposition59EntireTransform.lean:119\n    -> приводит преобразование к печатной форме Proposition 5.9: общий синус-числитель, вынесенный за сумму Коши\nШАГИ СБОРКИ (assembly):\n  [GAP] G3_CVS_PORT шаг 1: P1: GROUND_CANONICAL_PSTAR_VALUE_CROSSWALK — ground-значная CanonicalApproximation ЛИБО то\n\n── LEAN — объявления в metadata index ──────────────────────────\nA3_bridge_data   full/q3.lean.aristotle/Q3/Atoms_Positive.lean\nQ_nonneg_on_atoms   full/q3.lean.aristotle/Q3/AxiomsTheorems.lean\nRKHS_contraction   full/q3.lean.aristotle/Q3/AxiomsTheorems.lean\nRKHS_contraction_Q3   Q3/Proofs/RKHS_contraction_bridge.lean\nbareTransform   Q3/Proofs/RouteB/D0CanonicalApproximation.lean\ncofinalSourceResidualGapTransformTailBudget   Q3/Proofs/RouteB/CofinalSourceResidualGapTransformTailBudget.lean\nconstantModeNormalizedTransform   Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean\nconstantModeNormalizedTransform_off_zero   Q3/Proofs/RouteB/D0CenteredCriticalMoment.lean\n\n── ВНЕШНИЕ LEAN-БАЗЫ — точные/текстовые кандидаты ──────────────\n{\n  \"base_results\": [\n    {\n      \"base_id\": \"zeta23\",\n      \"canonical_root\": \"/Users/emalam/GitHub/zeta-23-lean\",\n      \"exact_candidate\": null,\n      \"identity_after\": {\n        \"canonical_root\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"git_head\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_head_object_id\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_root_relative_path\": \".\",\n        \"git_top_level\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"kind\": \"GIT_TREE_AND_CLEAN_LEAN\",\n        \"lean_manifest_sha256\": \"95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9\",\n        \"lean_status_clean\": true,\n        \"root_device\": 16777232,\n        \"root_inode\": 213937623,\n        \"searched_regular_source_count\": 329\n      },\n      \"identity_before\": {\n        \"canonical_root\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"git_head\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_head_object_id\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_root_relative_path\": \".\",\n        \"git_top_level\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"kind\": \"GIT_TREE_AND_CLEAN_LEAN\",\n        \"lean_manifest_sha256\": \"95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9\",\n        \"lean_status_clean\": true,\n        \"root_device\": 16777232,\n        \"root_inode\": 213937623,\n        \"searched_regular_source_count\": 329\n      },\n      \"searched_regular_source_count\": 329\n    }\n  ],\n  \"bases_queried\": [\n    \"zeta23\"\n  ],\n  \"boundary\": \"CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE\",\n  \"budget_seconds\": 3.0,\n  \"candidate\": null,\n  \"candidate_provenance\": null,\n  \"candidate_sha256\": null,\n  \"elapsed_seconds\": 0.218894,\n  \"enabled_bases\": [\n    \"zeta23\"\n  ],\n  \"errors\": [],\n  \"matches\": [\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 36,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Defs.lean\",\n      \"snippet\": \"Paper: \\\"Fourier transforms are f̂(τ) := ∫_ℝ f(u) e^{iτu} du, so that ∫ f ḡ = (1/2π) ∫ f̂ conj(ĝ)\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 42,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Defs.lean\",\n      \"snippet\": \"/-- Paper Fourier transform / h_f :  paperFT f z = ∫ u, f u * exp (I * z * u)  for complex z\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 23,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/ExplicitFormula.lean\",\n      \"snippet\": \"CONVENTIONS (paper [Notation]).  Paper Fourier transform:\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 36,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/ExplicitFormula.lean\",\n      \"snippet\": \"open scoped Real FourierTransform Convolution ComplexConjugate ArithmeticFunction\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 107,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/ExplicitFormula.lean\",\n      \"snippet\": \"/-! ## Dictionary with Mathlib's Fourier transform -/\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 23,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/ExplicitFormula/Bridge.lean\",\n      \"snippet\": \"open scoped Real FourierTransform ComplexConjugate\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nASK_RECEIPT_JSON: {\"boundary\":\"COMPLETE_REGISTERED_SHELF\",\"candidate_rows\":[{\"excerpt\":\"ПОСТАВЛЯЮТ (provides):\",\"metadata_sha256\":\"179296013e016653407983284c304bbb0896c9734d5c3c29784735fa9c9a9a51\",\"provider\":\"knowledge-db\",\"provider_id\":\"862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c\",\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"title\":\"ПОСТАВЛЯЮТ (provides):\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"selectedFullMellinCoordinate_eq_selectedGwinTransformCoordinate q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFullMellinGwinCrosswalk.lean:41\",\"metadata_sha256\":\"7a3270cbb54002d02d39375abae4e0026a61bcf9c01f9e29a2230fd58c50acae\",\"provider\":\"knowledge-db\",\"provider_id\":\"d3c0088edb14cbf4ef5f4c0651d29d11218c6a7adf0ea436dac75bf202af46c1\",\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"title\":\"selectedFullMellinCoordinate_eq_selectedGwinTransformCoordinate q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarFullMellinGwinCrosswalk.lean:41\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean\",\"metadata_sha256\":\"15b5f116d641b211aea2bfd9863cbdbab21ad630c5d3aa23dcb9f879dd630e66\",\"provider\":\"lean-index\",\"provider_id\":\"cefd21ef9557912847f9b774a90902ae612cd19ec2497848ea29089711441595\",\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"title\":\"A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"Q_nonneg_on_atoms full/q3.lean.aristotle/Q3/AxiomsTheorems.lean\",\"metadata_sha256\":\"c52b298865314442c2f42dd3c910de8acf3f2ebfb8649c0c090f03812a2da3df\",\"provider\":\"lean-index\",\"provider_id\":\"7b8220e1f3789b4aca5fcd8c4a09194e8ddc46969075ba9298eab09d93780806\",\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"title\":\"Q_nonneg_on_atoms full/q3.lean.aristotle/Q3/AxiomsTheorems.lean\",\"url\":\"aristotle_proofs.db\"}],\"external_lean\":\"EXECUTED\",\"provider_rows\":[{\"failure_count\":1,\"hit_store_count\":3,\"provider\":\"local-shelves\",\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"status\":\"INCOMPLETE\"},{\"candidate_count\":0,\"candidate_hashes\":[],\"collection_identity\":null,\"corpus_sha256\":null,\"provider\":\"q3_docs\",\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"status\":\"INCOMPLETE\"}],\"query\":\"Douglas factorization Hardy averaging innovation transform Markov contraction\",\"query_sha256\":\"a151f67d273f528a0b5c3059c3d5194b1aaacb74e8b33bb6f4b493f5a79b4426\",\"schema\":\"q3_ask_local_receipt.v1\"}\nПОИСК НЕПОЛОН — отсутствие не установлено\n\n  · q3_docs: semantic-index freshness validation failed\n\nASK_STATUS: INCOMPLETE\n",
+      "raw_stderr": ""
+    }
+  ],
+  "dictionary_passes": [
+    {
+      "names": [
+        "Douglas factorization",
+        "Gram domination",
+        "contractive interpolation"
+      ],
+      "route": "registered shelf query; direct finite-span preflight in H7.3; no new source-verified Douglas card"
+    },
+    {
+      "names": [
+        "Hardy averaging",
+        "innovation transform",
+        "Markov contraction",
+        "mean preservation"
+      ],
+      "route": "registered shelf query, local primary PDF text, exact H2-H6 mapping and H7.1"
+    },
+    {
+      "names": [
+        "Poisson equation",
+        "Bochner compensation",
+        "reflecting boundary flux"
+      ],
+      "route": "reuse source-verified prior COMPENSATION_COUPLING_HUNT section P; exact endpoint preflight H7.2"
+    }
+  ],
+  "candidate": {
+    "id": "HARDY_CANCELLATION",
+    "status": "SOURCE_VERIFIED_PARTIAL_MECHANISM",
+    "url": "https://arxiv.org/pdf/math/0103058v2",
+    "title": "A lower bound in an approximation problem involving the zeros of the Riemann zeta function",
+    "author": "Jean-Francois Burnol",
+    "version": "math/0103058v2 (2001); journal 2002",
+    "locator": "Section 3, printed page 7, first paragraph; local text lines 349-353",
+    "quote": "is thus unitary.",
+    "local_sources": [
+      {
+        "path": "docs/routeB_bus/litreview/pdfs/survey_2026-09-03_sources/burnol_2002.pdf",
+        "sha256": "999f05d5045fd909c3fb985677c4e40459f2a8b1e8b7d932f34b35bdc52d6e7d"
+      },
+      {
+        "path": "docs/routeB_bus/litreview/pdfs/survey_2026-09-03_sources/burnol_2002.txt",
+        "sha256": "8769bb3889126610ba2cdd5bd1ee7f56fe245a673dafde6e816c5c41f11aafed"
+      }
+    ],
+    "mapping": "z=mu([u,infinity)) transports tail averaging to M on (0,1); zero extension and global unitarity retain exactly the removed mean energy. Gaussian e=0; actual theta e/r tends to -tanh(x-a).",
+    "negative_control": "Hardy identity holds for f0=e^(-u^2)-e^(-2u^2)/4 too; known negative finite V0 row forces all-row error budget to fail.",
+    "target_strength": "No full-theta contraction or sign established.",
+    "quote_normalization": "PDF line wraps normalized to spaces; direct pdftotext extraction from page 7 also checked."
+  },
+  "web_verification": [
+    {
+      "url": "https://arxiv.org/abs/math/0103058",
+      "result": "OPEN_SUCCEEDED; author/title/v2 and journal publication confirmed"
+    },
+    {
+      "url": "https://arxiv.org/pdf/math/0103058v2",
+      "result": "TEXT_OPEN_SUCCEEDED; source is 17-page PDF"
+    },
+    {
+      "operation": "screenshot page index 6",
+      "url": "https://arxiv.org/pdf/math/0103058v2",
+      "result": "TimeoutError; not a mathematical failure; no repeated screenshot request"
+    }
+  ],
+  "mathematics": {
+    "report": "docs/Codex/REPORT_2026-09-14_ANCHORED_CONTRACTION_HUNT.md",
+    "report_sha256": "7aaac940da486d5f16195e30536f4ba26389d82f194ab1a7781312a3731585b4",
+    "all_finite_complex_families_retained": true,
+    "gaussian_fit": "EXACT",
+    "theta_direct_fit": "FALSE_FOR_EACH_NON_ANCHOR_NODE",
+    "actual_source_sign_progress": false,
+    "actual_theta_negative_witness": false,
+    "all_rank_V": "OPEN",
+    "IC": "OPEN",
+    "ODD2": "OPEN",
+    "RH": "OPEN",
+    "lean_verification": false,
+    "canonical_admission": false
+  },
+  "workflow": {
+    "new_source_downloads": false,
+    "index_refreshed": false,
+    "shelf_mutated": false,
+    "canonical_writes": false,
+    "new_proshka_request": false,
+    "review": "CLEAN_ADVERSARIAL_READ_ONLY; original mathematical review plus exact cross-reference clarification readback",
+    "issue": "Existing semantic-index freshness validation failure preserved; not repaired by this isolated mathematical task."
+  },
+  "independent_review": {
+    "reviewer": "/root/sibling5_check",
+    "class": "ADVERSARIAL_READ_ONLY",
+    "reviewed_draft_sha256": "32cfd32d7fbe9c94c6d6826f679452eafd33b2b14d6713d79f2e8b3cac1ea9ca",
+    "verdict": "CLEAN",
+    "findings": [],
+    "coverage": [
+      "Burnol source hashes and quoted unitarity",
+      "Hardy zero-extension norm identity",
+      "survival transport and L2 domains",
+      "exact B=WU+e and complex energy accounting",
+      "common Gaussian map for all finite families",
+      "full theta tail e/r -> -tanh(delta)",
+      "mean-preserving and C1 reflecting boundary preflights",
+      "negative control and no all-rank sign promotion"
+    ],
+    "post_review_changes": "Status/receipt wording, PDF line-wrap attribution and direct PDF text verification; formulas and mathematical claims unchanged.",
+    "final_report_sha256": "f2cb8467e04da0d66da8168471a1a455e890c136a88474ddc9b59f550a997f8c",
+    "final_reviewed_receipt_preimage_sha256": "f4965de7cb125ec725b86d8f744f4832d7035bc49c2182e6bc7a923cda88d750",
+    "final_verdict": "CLEAN; final report, receipt preimage and unchanged brief hashes checked",
+    "receipt_post_review_change": "This receipt now records the received final CLEAN and replaces the pending readback label; no source, map, formula or scope changed."
+  },
+  "validation": [
+    "Seven frozen input hashes and two primary-source hashes match",
+    "Raw registered query and stdout/stderr hashes match",
+    "Verbatim source words match after PDF line-wrap normalization",
+    "UTF-8, final newlines and exact report path checked",
+    "No numerical sign test or Lean claim"
+  ],
+  "review_clarification": {
+    "source": "https://github.com/Malaeu/chen_q3/pull/15#discussion_r4007934403",
+    "prior_report_sha256": "f2cb8467e04da0d66da8168471a1a455e890c136a88474ddc9b59f550a997f8c",
+    "current_report_sha256": "7aaac940da486d5f16195e30536f4ba26389d82f194ab1a7781312a3731585b4",
+    "change": "Disambiguate the hypothesis-table reference: equation (H8) in section H6 proves the nonzero defect; section H5 proves the Gaussian fit. No formula or mathematical claim changes.",
+    "independent_readback": "CLEAN /root/sibling5_check on exact current report and receipt preimage",
+    "reviewer": "/root/sibling5_check",
+    "review_class": "ADVERSARIAL_READ_ONLY",
+    "reviewed_report_sha256": "7aaac940da486d5f16195e30536f4ba26389d82f194ab1a7781312a3731585b4",
+    "reviewed_receipt_preimage_sha256": "2bc9033d2b0387f433ade2551ddcaae084caf686acbd4eb3fda87f1dd311687a",
+    "post_review_metadata": "Records the received CLEAN in this receipt; mathematical and report bytes unchanged."
+  }
+}
