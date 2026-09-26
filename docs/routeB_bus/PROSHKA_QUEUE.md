@@ -2,6 +2,10 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-09-26-GROUND-CENTERED-ABEL-DISCRIMINANT · Source ground-centered Abel discriminant · PENDING
+
+- `REQ-2026-09-26-GROUND-CENTERED-ABEL-DISCRIMINANT` | **CONFIRMED_SENT by 2026-09-26 12:35:23 UTC (14:35:23 Europe/Berlin)**: [project chat 6ab7b2af-b820-83eb-8290-1684c77ac443](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab7b2af-b820-83eb-8290-1684c77ac443) showed the new full user message, `ChatGPT is responding`, an empty composer and `Stop`; `send_message_to_thread` returned the same thread ID | ordinal of confirmed mathematical send in this chat: **2/10** (the chat history had exactly one earlier user turn) | exact intent: `docs/session_protocols/PROSHKA_REQUEST_GOAL058_GROUND_CENTERED_ABEL_DISCRIMINANT_20260926.txt`, 4,308 bytes, 78 LF, SHA-256 `161f56855c1df5647b5ec36a760168e18335025d9e145254913b77102b05c4ef`, prepared-intent commit `2a3c207dbea37518594cff3dd61efeb715fe85e0`; two consecutive read-only review passes found no material or wording issue | response: **PENDING** in this same chat. Do not resend. The source-discriminant test is PAPER only; no first `τ` sign, Schur floor or RH claim is implied by delivery.
+
 ## REQ-2026-09-26-ABEL-CUMULATIVE-FORCING · Full selected forcing after finite Abel summation · OPEN
 
 - `STATUS: ANSWERED; ACCEPTED_LIMITED_PAPER` — `DELEGATED_STRATEGIC_REVIEW`; exact request: `docs/session_protocols/PROSHKA_REQUEST_GOAL058_ABEL_CUMULATIVE_FORCING_20260926.txt`.
