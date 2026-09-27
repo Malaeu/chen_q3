@@ -7760,3 +7760,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: проверять только source-aware joint routing или нелокальный фактор с точной константой `1`; не запускать снова глобальный strict-effective-resistance тест. Selected finite-window gap может убывать и не исключён.
 Адреса: `docs/Codex/REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md`, `paper_weil/sections/groundstate.tex`, `paper_weil/sections/obstruction.tex`.
 Чей вердикт: root алгебра и source-проверка, независимые read-only explorer/researcher и reviewer; PAPER result, без Lean-запуска и RH claim.
+
+## 2026-09-27 — Prime bridge loses the endpoint weight (Mac)
+
+Развилка: доказывать острое `N_s≤P_s` переносом каждого длинного ребра на ближайший атом `log p` и короткий остаток либо проверить операторную цену такого переноса.
+Выбрали: проверить полный оператор на независимых положительных рёбрах с точными весами.
+Почему: если `t<log p`, коэффициент атомного ребра равен единице, но `f0(x+t)/f0(x+log p)` растёт как `exp(c exp(2x))` при `x→+∞`. Полная операторная норма этого прямого маршрута бесконечна.
+Что отвергли: nearest-prime bridge как contraction-сертификат на независимом edge space. Это не отвергает знак на согласованных градиентах `Δs`.
+Инсайты: точное телескопическое тождество само по себе не оплачивает норму; градиентные связи между атомным и коротким ребром нельзя отбросить. Абстрактный contraction только на gradient range эквивалентен искомому знаку и без явного source-оператора круговой.
+Блокеры: source-derived совместная оценка с коэффициентом `1`, prime jumps и endpoint-весами; selected C128/floor остаются отдельными открытыми воротами.
+Иглы Зингера: полное пространство независимых рёбер слишком широко — там есть направления, не соответствующие ни одному профилю `s`.
+Следующий ход: искать явное тождество или оператор, который сначала сохраняет gradient compatibility, затем оплачивает совместную норму; не повторять direct nearest-prime bridge.
+Адреса: `docs/Codex/REPORT_2026-09-27_PRIME_BRIDGE_ENDPOINT_KILL.md`, `paper_weil/sections/canonical.tex`, `paper_weil/sections/groundstate.tex`.
+Чей вердикт: root доказал из исходного theta-ряда; read-only mathematical subtask независимо проверил расходимость; PAPER-only, без Lean и RH claim.
