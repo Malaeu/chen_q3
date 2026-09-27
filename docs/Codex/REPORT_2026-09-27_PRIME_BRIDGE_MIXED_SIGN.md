@@ -74,6 +74,51 @@ finite `R` for each frequency. QED.
 This is an exact all-source sign test, not a numerical zero check. It
 uses only the positivity and integrability already proved for `f_0`.
 
+## Aggregating every routed band does not supply the sign
+
+For clarity, let `Omega` be any countable union of disjoint measurable bands in
+`(t_0,infty)`, with one fixed prime lag `ell_j=log p_j` assigned to
+each band `B_j`. No small-gap assumption is needed for the following
+algebra. Write `B_j^-={t in B_j:t<ell_j}` and
+`B_j^+={t in B_j:t>ell_j}`; the single point `t=ell_j` has zero
+continuous measure. On both parts use `A_j=s(x+ell_j)-s(x)` and the
+original `W=|b(t)|f_0(x)f_0(x+t)`. On `B_j^-` put
+`R_j^-=s(x+ell_j)-s(x+t)`; on `B_j^+` put
+`R_j^+=s(x+t)-s(x+ell_j)`, and let `R_j` denote the applicable one
+on each part. Define
+
+```
+S_j = ∫_{B_j}∫ W (|A_j|²+|R_j|²) dxdt,
+M_j = 2 Re ∫_{B_j^-}∫ W A_j conjugate(R_j^-) dxdt
+    - 2 Re ∫_{B_j^+}∫ W A_j conjugate(R_j^+) dxdt.
+```
+
+Here `P_s=∫_0^{t_0}b(t)E_s(t)dt+sum_{n>=2}w_nE_s(log n)` is the
+original full positive energy. The two orientations give
+`Delta_t s=A_j-R_j^-` on the left and
+`Delta_t s=A_j+R_j^+` on the right. Hence, with
+`N_out=∫_{(t_0,infty)\Omega}|b(t)|E_s(t)dt`,
+
+```
+N_s = N_out + sum_j (S_j-M_j),
+Q(f_0 s) = P_s-N_out-sum_j S_j+sum_j M_j.
+```
+
+All sums converge absolutely for compact smooth `s`: `|M_j|<=S_j`,
+`S_j<=8||s||_infty²∫_{B_j}|b(t)|C_0(t)dt`, and
+`∫_{t_0}^infty |b(t)|C_0(t)dt<infty` by `groundstate.tex`.
+Consequently the proposed aggregate payment
+
+```
+sum_j M_j >= N_out + sum_j S_j - P_s  for every compact smooth s
+```
+
+is **exactly equivalent** to the original `Q(f_0s)>=0`, not an
+independent estimate. The expansion locates the unpaid mixed term but
+does not establish its lower bound. An actual certificate must derive
+a new source-specific bound on the aggregate (or a different full-form
+identity) from independently checked inputs.
+
 ## Consequence and boundary
 
 When `M_I<0`, dropping the mixed term **underestimates** the long-edge
