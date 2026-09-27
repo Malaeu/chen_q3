@@ -866,6 +866,9 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Source fixed-128 prefix mass-gate № 2 нового чата (27.09; TRANSPORT_ONLY, без PAPER-результата).**
+К [подтверждённой отправке](../routeB_bus/PROSHKA_QUEUE.md#req-2026-09-27-source-core-fixed-128-prefix-mass-gate--source-fixed-128-prefix-mass-gate--transport_repair_prepared) был передан полный текст математического TXT inline, но сам авторитетный TXT не приложен. [Точный inline-ответ](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_SOURCE_CORE_FIXED_128_PREFIX_MASS_GATE_TRANSPORT_2026-09-27.md), SHA-256 `554b33864a5f0ad9f26de4e12de746fc49237acbf2caa7d65b3a74920ad97727`, завершён 2026-09-27 01:02:43 UTC (assistant item `722cb2ca-dc32-4a05-b0d8-a87d171168fc`) и сообщает `TRANSPORT_SOURCE_LOCK_FAILURE`, `MATHEMATICAL_OUTCOME: NOT_ISSUED`. В исходном чате единственный прикреплённый TXT — предыдущий coherence-запрос. Полное Markdown-вложение транспортного заключения просмотрено в UI, но скачивание отменено браузером: объявленный SHA-256 `66bee045cdd75ecdaca86ffb6abf844ff7350157704680160b11988dfa0acae2` по локальным байтам **не подтверждён**. Из этого ответа нельзя выводить ни знак `Λ*E−8𝓘_m`, ни новую лемму; `MG128`, полная C128 и PC остаются OPEN. Ближайший шаг — исправить транспорт того же запроса неизменным TXT, SHA-256 `94c48572eaa79a2ee375a0f6fb657f31ba3b2f2032bf03bb1d8f59239ff1dd5a`, в том же чате; точный intent до отправки записан в очереди.
+
 **Ответ на source core fixed-128 prefix coherence test № 1 нового чата (27.09, PAPER; OPEN_SOURCE_FIXED_128_COHERENCE).**
 [Точный полный inline-ответ](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_PREFIX_COHERENCE_2026-09-27.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1),
