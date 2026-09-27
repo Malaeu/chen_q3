@@ -1,0 +1,85 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PREFIX-COHERENCE
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_PREFIX_COHERENCE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: aa0a4283e5a3f136c08be1478e40b238805e5209
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-EVEN-PREFIX-CANCELLATION
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_EVEN_PREFIX_CANCELLATION_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 9229428322b1a957662d0e0e0c7c050797dfb3e975e2c5dcefd6f61a468a33cf
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: NEW_CHAT_IN_PROJECT_TO_BE_RECORDED_BEFORE_SEND
+INTENDED_ORDINAL_IF_CONFIRMED: 1/10_IN_NEW_CHAT
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_PREFIX_COHERENCE
+on PAPER. Read the complete predecessor verdict at the exact SHA-256
+above and its limited independent audit in docs/Codex/PAPER_CHAIN.md
+headed "source core even-prefix cancellation test" at SOURCE_COMMIT.
+Do not repeat its request. Two independent ON-TARGET CLEAN PAPER reviews
+accepted only its fixed-A source-truncation method refutation (6)-(16)
+and conditional C128 implication (23)-(25). They did not establish PC,
+the C128 source event, a logarithmic peak, first-node or panel sign,
+SV, lag, or RH. The fixed source cut is NOT an actual coefficient model.
+
+Fix the SAME P and admitted selected m=J_P+j+2 with L=log m>=128,
+b=L/2, Q=sqrt(m), original 5m splice, carrier |n|<=m,
+N=ceil L, K=N+ceil(L^4). Keep the exact complete theta source
+g(u)=sum_{a>=1} e^(u/2)P(pi a^2 e^(2u))exp(-pi a^2 e^(2u)),
+P(x)=-64x^4+448x^3-660x^2+150x, and
+e_n=2(-1)^n/sqrt L int_0^b g(u)cos(2pi n u/L)du.
+Keep E=E_O+2sum_{q>=1}e_{m+q}^2>0,
+E_O=2int_b^infty |g(u)|^2du. E includes the physical exterior
+and both Fourier-index signs and is the ONLY denominator.
+
+For the already permitted fixed prefix R=128 define the actual-source
+a_m=e_{m+2}, Jdisp_m=sum_{ell=1}^{128}(e_{m+2ell}-a_m)^2,
+S_{m,128}=sum_{ell=1}^{128}e_{m+2ell}, and
+D_pref(m,128)=49-L*S_{m,128}^2/(128E).
+The predecessor's proposed joint source event C128 is
+    E<=L*a_m^2 AND Jdisp_m<=8*a_m^2.
+Its exact discriminator, defined also when a_m=0, is
+    C_m=min{L*a_m^2/E-1, (8*a_m^2-Jdisp_m)/E}.
+If C_m>=0 at an explicitly admitted selected cell, the accepted
+abstract implication gives |S_{m,128}|>=96|a_m| and
+D_pref(m,128)<=-23. This refutes ONLY the earlier sufficient PC
+at one original (m,128), not a logarithmic peak, first-node witness,
+full-panel sign, SV failure, lag, or RH. If C_m<0 for all selected
+L>=128, it excludes ONLY C128, not all PC violations.
+
+Seek ONE source-specific PAPER decision from the complete g:
+1. SOURCE_FIXED_128_COHERENCE_WITNESS: prove C_m>=0 with a
+   strict or nonnegative lower envelope at one explicitly admitted
+   selected cell or a rigorously admitted sequence; state the source
+   quantifiers and thereby the negative original D_pref margin.
+2. SOURCE_FIXED_128_COHERENCE_EXCLUDED: prove a strictly negative
+   source upper envelope for C_m on EVERY admitted selected cell
+   with L>=128. State exactly why this excludes only C128.
+3. OPEN_SOURCE_FIXED_128_COHERENCE: isolate the first unpaid
+   complete-source comparison in C_m and give ONE narrower
+   falsifiable PAPER lemma on that source, with an exact discriminator
+   and both outcome scopes. Do not merely rename C128, split it into
+   unrelated generic norm bounds, or infer a source sign from a failed
+   bound.
+
+Check the complete-source difference kernel (24), endpoint phases,
+all source-index cross terms in Jdisp_m, the original E and conditional
+inequality (25). The fixed-A diagnostic lower bound concerns only
+the error of source truncation; never substitute it for |a_m| or Jdisp_m.
+No coefficient numerics, selected-cell/grid search, fitted cutoff,
+source-index deletion, new mask/panel, carrier/Q/denominator change,
+mathematical runtime, Lean, repository write, route promotion, or
+RH claim. Preserve the original K, panel 0,m+1,...,m+N, low epsilon
+block, literal diagonal, zero node, final descent, paired logarithmic
+kernel, signed beta_m correction, and full exterior. The exponent-one
+prime block, prime/square compensation, opposite-side correlation,
+integrated symbol deviation, transfer, actual J_m sign, first tau_j
+sign, and Schur-floor remain OPEN. C_0=128, C_int=134, C_2=146
+remain conditional. Return the complete PAPER argument and one
+bounded CODEX DIRECTIVE.
