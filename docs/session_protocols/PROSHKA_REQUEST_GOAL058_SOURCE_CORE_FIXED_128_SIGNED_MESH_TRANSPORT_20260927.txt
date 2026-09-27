@@ -1,0 +1,106 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-SIGNED-MESH-TRANSPORT
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_SIGNED_MESH_TRANSPORT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 19d31d3a9d04f63b053df29d43b40c7b35d8f55e
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PREFIX-MASS-GATE
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_PREFIX_MASS_GATE_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 07e67c78a2cc659882027472a9e076bc0b604d2dd52a386f5dba9903281fdeea
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 4/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_SIGNED_MESH_TRANSPORT
+on PAPER. Read the complete predecessor verdict at its exact SHA-256
+and the limited independent audit in docs/Codex/PAPER_CHAIN.md, headed
+"source core fixed-128 prefix mass gate", at SOURCE_COMMIT. Do not repeat
+the predecessor's MG128 request. Two independent ON-TARGET CLEAN
+PAPER reviews accepted only its complete-source energy envelopes,
+signed mesh identity, and cofinal DISJUNCTION; neither arm is selected.
+MG128, C128, PC, SV, lag and RH remain OPEN.
+
+Fix the SAME P and original selected m=J_P+j+2 with j>=1 and
+L_m=log m>=1536. This is the full consecutive admitted integer tail
+for the fixed P, not a new family. Preserve b_m=L_m/2, Q=sqrt(m),
+original 5m splice, carrier |n|<=m, N=ceil L_m,
+K=N+ceil(L_m^4), and the original panel.
+
+Use only the complete theta source
+  g(u)=sum_{alpha>=1}g_alpha(u),
+  g_alpha(u)=exp(u/2) Pcal(pi alpha^2 exp(2u))
+             exp(-pi alpha^2 exp(2u)),
+  Pcal(x)=-64x^4+448x^3-660x^2+150x,
+  e_n(lambda)=2(-1)^n/sqrt(lambda)
+              int_0^(lambda/2)g(u)cos(2pi n u/lambda)du.
+At an actual cell use lambda=L_m. Keep the original two-sign
+denominator, without source truncation:
+  E_m=E_O(m)+2sum_{n>m}e_n(L_m)^2>0,
+  E_O(m)=2int_(L_m/2)^infty |g(u)|^2du>0,
+  B_r(lambda)=2sum_{ell=1}^{128}e_(r+2ell)(lambda)^2,
+  B_m=B_m(L_m), B_(m-1)=B_(m-1)(L_(m-1)).
+Do NOT silently evaluate B_(m-1) at L_m.
+
+The predecessor's exact definitions and accepted identities are
+  Delta_m=E_(m+256)-E_m+B_m+B_(m-1),
+  T_m=L_m Delta_m+E_m+E_(m-1),
+  A_r(lambda)=e_0(lambda)^2+2sum_(n=1)^r e_n(lambda)^2,
+  E_s=G-A_s(L_s), G=2int_0^infty |g(u)|^2du,
+  A_(m+256)(lambda)-A_m(lambda)=B_m(lambda)+B_(m-1)(lambda),
+  Delta_m=-int_(L_m)^(L_(m+256))A_(m+256)'(lambda)dlambda
+          -int_(L_(m-1))^(L_m)B_(m-1)'(lambda)dlambda.
+The window derivative must retain its nonzero endpoint:
+  e_n'(lambda)=-e_n(lambda)/(2lambda)
+      +g(lambda/2)/sqrt(lambda)
+      +4pi n(-1)^n/lambda^(5/2)
+       int_0^(lambda/2)u g(u)sin(2pi n u/lambda)du.
+Here A_r'=2e_0e_0'+4sum_(n=1)^r e_ne_n' and
+B_r'=4sum_(ell=1)^128 e_(r+2ell)e_(r+2ell)'.
+All factors contain the complete source and source-index cross terms.
+
+Adjudicate exactly ONE source inequality:
+  MT128: T_m>=0 for EVERY admitted selected j>=1, L_m>=1536.
+Return exactly one scoped outcome:
+1. SOURCE_SIGNED_MESH_TRANSPORT_PROVED: a rigorous uniform
+   nonnegative lower bound for T_m on that entire domain, with the
+   signed coupled source terms and endpoints paid. The predecessor's
+   independently accepted cofinal disjunction then yields an
+   unbounded admitted sequence with Mfrak_m<-1 and refutes ONLY the
+   narrower MG128, not C128, PC, SV, lag, or RH.
+2. SOURCE_SIGNED_MESH_TRANSPORT_REFUTED: a rigorously admitted
+   actual source cell or sequence with T_m<0, with a strict sign
+   proof. This refutes ONLY uniform MT128. It does not decide the
+   original Mfrak_m sign or MG128.
+3. OPEN_SOURCE_SIGNED_MESH_TRANSPORT: identify the first unpaid
+   complete-source signed comparison in the displayed coupled
+   derivative expression, and ONE narrower falsifiable PAPER lemma
+   with exact quantifiers and both outcome scopes. Do not rename
+   MT128, use a frozen-mesh zero, or infer a sign from the small
+   logarithmic displacement alone.
+
+Check the two minus signs, the 256-index partition, factor two in
+E/B, the original physical exterior, both Fourier-index signs,
+absolute source convergence, finite-window Parseval, the endpoint
+g(lambda/2)/sqrt(lambda), and selected-family quantifiers.
+Do not discard or bound the two transport integrals separately
+unless the resulting bound is source-relative at the scale of E_m.
+If using the predecessor's conditional implication, verify its
+weighted summation boundary and two-sided E_m envelopes; do not
+treat the cofinal disjunction as a chosen MG128 witness.
+
+No coefficient numerics, selected-cell/grid search, fitted cutoff,
+source-index deletion, new mask or panel, mathematical runtime,
+Lean, repository write, activation of conditional square constants,
+route promotion, or RH claim. Preserve the low epsilon block,
+literal diagonal, zero node, final descent, paired logarithmic
+kernel, signed beta_m correction, exponent-one prime block,
+prime/square compensation, opposite-side correlation, transfer,
+Schur-floor, SV and lag. Return the complete PAPER argument and
+one bounded CODEX DIRECTIVE.
