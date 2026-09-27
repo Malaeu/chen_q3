@@ -1,0 +1,115 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-COUPLED-PROJECTED-DILATION-ACTION
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_COUPLED_PROJECTED_DILATION_ACTION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 5d466f50b4bdbe28606cce402268df972fad6547
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PROJECTED-MESH-INCREMENT-BUDGET
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_PROJECTED_MESH_INCREMENT_BUDGET_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: b43493e3bfe6ce83a440dde89e732f09882d7940feb4c831b9c4d812d6010b4b
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 6/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_COUPLED_PROJECTED_DILATION_ACTION
+on PAPER. Read the complete predecessor verdict at the exact SHA-256 above
+and the limited independent audit headed "source core fixed-128 projected mesh
+increment budget" in docs/Codex/PAPER_CHAIN.md at SOURCE_COMMIT. Two
+independent ON-TARGET CLEAN PAPER reviews accepted only (6)-(25), including
+endpoint cancellation, path variance, and the conditional implications.
+They did NOT prove PDA128, PIB128, MT128, MG128, C128, PC, or RH.
+
+Fix the SAME P and every original selected cell
+  m=J_P+j+2, j>=1, L=log m>=1536,
+  L_-=log(m-1), L_+=log(m+256),
+  delta_+=L_+-L, delta_-=L-L_-.
+All three are original source windows. The real paths between windows are
+parameters, not new selected cells. Preserve Q=sqrt(m), the 5m splice,
+carrier |n|<=m, N=ceil L, K=N+ceil(L^4), and original panel.
+
+Use only the complete theta source, never a finite source truncation:
+  g(u)=sum_(alpha>=1) exp(u/2) Pcal(pi alpha^2 exp(2u))
+                         exp(-pi alpha^2 exp(2u)),
+  Pcal(X)=-64X^4+448X^3-660X^2+150X,
+  h(u)=u g'(u)+g(u)/2,
+  e_n(lambda)=2(-1)^n/sqrt(lambda)
+              int_0^(lambda/2) g(u)cos(2pi n u/lambda)du,
+  d_n(lambda)=e_n'(lambda)
+      =2(-1)^n/lambda^(3/2)
+       int_0^(lambda/2)h(u)cos(2pi n u/lambda)du.
+The Leibniz endpoint and bulk in d_n are separately non-l2 on the
+existing infinite projected tail, both before and after forward-path
+integration; their sum is l2. Never estimate their separate tail norms.
+
+Keep the original two-sign energy and physical exterior:
+  E_s=E_O(s)+2sum_(n>s)e_n(L_s)^2,
+  E_O(s)=2int_(L_s/2)^infty |g(u)|^2du,
+  O_m=E_O(m)-E_O(m+256)>0,
+  S_m=E_m+E_(m-1),
+  B_r(lambda)=2sum_(ell=1)^128 e_(r+2ell)(lambda)^2,
+  B_m=B_m(L), B_(m-1)=B_(m-1)(L_-).
+In particular B_(m-1) is NOT evaluated at L.
+
+In H_m=l2({n>m+256}) direct-sum R^128, retain the actual forward tail
+and backward odd block with their different orientations:
+  z_m(t)=((sqrt(2)delta_+ d_n(L+t delta_+))_(n>m+256),
+          (-sqrt(2)delta_- d_(m+2ell-1)(L-t delta_-))_(ell=1)^128),
+          0<=t<=1,
+  v_m=int_0^1 z_m(t)dt,
+  W_m=||v_m||^2,
+  Ascr_m=int_0^1||z_m(t)||^2dt,
+  Vpath_m=Ascr_m-W_m>0.
+The exact source representation is
+  Ascr_m=8delta_+ int_L^(L_+) lambda^(-3)
+                 sum_(n>m+256) J_n(lambda)^2 dlambda
+         +8delta_- int_(L_-)^L lambda^(-3)
+                 sum_(ell=1)^128 J_(m+2ell-1)(lambda)^2 dlambda,
+  J_n(lambda)=int_0^(lambda/2)h(u)cos(2pi n u/lambda)du.
+Square only AFTER the complete alpha source sum, retaining every
+alpha,beta cross term and the infinite spectral tail. No new mask.
+
+Adjudicate exactly ONE source inequality over EVERY stated cell:
+  PDA128: 4L^2 Ascr_m+2L O_m <= S_m,
+  Rscr_m=S_m-4L^2 Ascr_m-2L O_m.
+Return exactly one scoped outcome:
+1. SOURCE_COUPLED_ACTION_BUDGET_PROVED: a rigorous source-relative lower
+   bound Rscr_m>=0 throughout this domain, with both projected blocks,
+   all cross terms and exterior paid. Then Qscr_m=Rscr_m+4L^2 Vpath_m>0,
+   then T_m>0 (hence MT128) and, through the preserved conditional
+   consumer, cofinal MG128 refutation follow.
+   Do not claim C128, PC, SV, lag, Schur-floor or RH.
+2. SOURCE_COUPLED_ACTION_BUDGET_REFUTED: an actual admitted cell or
+   rigorously admitted sequence with Rscr_m<0 and a strict sign proof.
+   This refutes only PDA128, not the original PIB128, because Vpath_m>0.
+   Return to Qscr_m=Rscr_m+4L^2 Vpath_m or the exact two-window Gram form;
+   do not infer Qscr_m<0 or T_m<0.
+3. OPEN_SOURCE_COUPLED_ACTION_BUDGET: identify the first unpaid
+   source-relative action comparison. Provide ONE narrower falsifiable
+   PAPER lemma on this same complete source, with exact quantifiers and
+   distinct success/failure scopes. Do not rename PDA128 or PIB128, or
+   automatically strengthen another norm estimate.
+
+Independently check factors 2 and 8, the backward minus orientation,
+endpoint cancellation, absolute source convergence, both Fourier signs,
+physical exterior, the strict variance proof, and the exact source
+quantifiers. A negative Rscr_m is not a PIB128 witness. If invoking the
+predecessor's conditional cofinal argument, preserve its delayed weighted
+boundary and both E envelopes; it refutes at most MG128 under its
+unproved antecedent. An attempted estimate or zero-consistent enclosure
+establishes neither outcome.
+
+No coefficient numerics, selected-cell/grid search, source-index
+deletion, fitted cutoff, mathematical runtime, Lean, repository write,
+activation of conditional square constants, route promotion, or RH claim.
+Preserve the low epsilon block, literal diagonal, zero node, final
+descent, paired logarithmic kernel, signed beta_m correction,
+exponent-one prime block, prime/square compensation, opposite-side
+correlation, transfer, Schur-floor, SV and lag. Return the complete
+PAPER argument and one bounded CODEX DIRECTIVE.
