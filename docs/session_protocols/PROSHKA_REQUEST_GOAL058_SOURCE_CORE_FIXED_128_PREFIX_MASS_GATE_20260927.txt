@@ -1,0 +1,96 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PREFIX-MASS-GATE
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_PREFIX_MASS_GATE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: e53f4a176d245dcee4787eb793c77d30856b220c
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PREFIX-COHERENCE
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_PREFIX_COHERENCE_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 68132ce7d0dc63acdb36ecedc1b6207d9365663e0dc73b396160d1b07346a089
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 2/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_PREFIX_MASS_GATE
+on PAPER. Read the complete predecessor verdict at its exact SHA-256
+and the limited independent audit in docs/Codex/PAPER_CHAIN.md,
+headed "source core fixed-128 prefix coherence test", at SOURCE_COMMIT.
+Do not repeat the predecessor request. Two independent ON-TARGET CLEAN
+PAPER reviews accepted only its strict C128 exclusion for any admitted
+selected cell with 128<=L=log m<=Lambda*=272-8 sqrt(254). Existence of
+such a cell was not asserted; full-domain C128 and PC remain OPEN.
+
+Fix the SAME P and admitted selected m=J_P+j+2, now only L>Lambda*,
+b=L/2, Q=sqrt(m), original 5m splice, carrier |n|<=m,
+N=ceil L, K=N+ceil(L^4), and the original panel. Keep the exact
+complete theta source
+  g(u)=sum_{alpha>=1} g_alpha(u),
+  g_alpha(u)=exp(u/2) Pcal(pi alpha^2 exp(2u))
+             exp(-pi alpha^2 exp(2u)),
+  Pcal(x)=-64x^4+448x^3-660x^2+150x,
+  e_n=2(-1)^n/sqrt(L) int_0^b g(u)cos(2pi n u/L)du.
+Keep the ONLY denominator
+  E=E_O+2sum_{q>=1}e_{m+q}^2>0,
+  E_O=2int_b^infty |g(u)|^2du>0.
+No source-index truncation or substitute coefficient model.
+
+For the already permitted R=128 define
+  B_m=2sum_{ell=1}^{128}e_{m+2ell}^2,
+  H_m=E-B_m>=E_O>0,
+  c_ell(u)=cos((m+2ell)2pi u/L),
+  Bscr_m(u,v)=sum_{ell=1}^{128}c_ell(u)c_ell(v),
+  I_m=int_0^b int_0^b g(u)g(v)Bscr_m(u,v)dudv,
+  B_m=(8/L)I_m,
+  Mfrak_m=Lambda*-(L B_m/E)=Lambda*-(8 I_m/E).
+The predecessor proved, with the actual anchor a=e_{m+2},
+dispersion Jdisp=sum_{ell=1}^{128}(e_{m+2ell}-a)^2, and
+C_m=min{L a^2/E-1,(8a^2-Jdisp)/E}, that
+  C_m <= -(Mfrak_m+L V_m/E)/(Lambda*+mu*L)
+      <= -Mfrak_m/(Lambda*+mu*L),
+where mu*=(sqrt(254)-4)/2 and V_m>=0. This implication is
+one-way. In particular, Mfrak_m<=0 is NOT a C128 witness.
+
+Adjudicate ONE complete-source inequality on every remaining admitted
+selected cell:
+  MG128: 8 I_m < Lambda* E,
+equivalently Mfrak_m>0. The exact Gram kernel must retain both the
+difference and reflected-sum phases:
+  Bscr_m(u,v)=1/2[F_m(2pi(u-v)/L)+F_m(2pi(u+v)/L)],
+  F_m(z)=sin(128z)/sin(z) cos((m+129)z),
+with removable endpoint values F_m(k pi)=128(-1)^(mk).
+Retain all alpha,beta source cross terms in I_m.
+
+Return exactly one of these scoped outcomes:
+1. SOURCE_PREFIX_MASS_GATE_PROVED: prove Mfrak_m>0 for EVERY admitted
+   selected cell with L>Lambda*, with a stated positive source lower
+   envelope or strict per-cell argument. Combined with the accepted
+   bounded-domain result this excludes only C128 over L>=128, not PC.
+2. SOURCE_PREFIX_MASS_GATE_REFUTED: give an explicitly admitted selected
+   cell, or rigorously admitted sequence, with Mfrak_m<=0; state the
+   exact negative/nonpositive sign proof. This refutes only MG128 and
+   does not establish C_m>=0, D_pref<0, PC violation, SV, or RH.
+3. OPEN_SOURCE_PREFIX_MASS_GATE: identify the first unpaid comparison
+   for Lambda*E-8I_m and ONE narrower falsifiable PAPER lemma on the
+   same complete source; do not rename MG128 or split it into generic
+   unrelated bounds. State both possible outcome scopes.
+
+Check factor two in E and B_m, the Gram phase, absolute source
+convergence, full physical exterior, and the selected-family
+quantifier. Do not turn an abstract coefficient vector or failed
+estimate into an actual source witness. No coefficient numerics,
+selected-cell/grid search, fitted cutoff, source-index deletion,
+new mask/panel, carrier/Q/denominator change, mathematical runtime,
+Lean, repository write, activation of conditional square constants,
+route promotion, or RH claim. Preserve the low epsilon block, literal
+diagonal, zero node, final descent, paired logarithmic kernel, signed
+beta_m correction, exponent-one prime block and square compensation.
+The actual first-node/panel signs, opposite-side correlation, transfer,
+Schur-floor, SV, lag, and RH remain OPEN. Return the complete PAPER
+argument and one bounded CODEX DIRECTIVE.
