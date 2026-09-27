@@ -1,0 +1,110 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PROJECTED-MESH-INCREMENT-BUDGET
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_PROJECTED_MESH_INCREMENT_BUDGET
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: edb8b92038bdb86b82196fbb649195b0fe1c74e4
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIXED-128-SIGNED-MESH-TRANSPORT
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_SIGNED_MESH_TRANSPORT_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 900736b1bd9a5963762debe290f7db3187a0a5db49daef6cb70d1383d8f16311
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 5/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_PROJECTED_MESH_INCREMENT_BUDGET
+on PAPER. Read the complete predecessor verdict at its exact SHA-256 and
+the limited independent audit in docs/Codex/PAPER_CHAIN.md, headed
+"source core fixed-128 signed mesh transport", at SOURCE_COMMIT. Do not
+repeat the predecessor MT128 request. Two independent ON-TARGET CLEAN
+PAPER reviews accepted only the exact projected-increment identities,
+the conditional PIB128=>T_m>0 bridge, and the obstruction to replacing
+the projection by a full source norm. PIB128, MT128, MG128, C128, PC,
+SV, lag and RH remain OPEN.
+
+Fix the SAME P and original selected consecutive family
+  m=J_P+j+2, j>=1, L=log m>=1536,
+  L_-=log(m-1), L_+=log(m+256), b_s=L_s/2.
+Keep Q=sqrt(m), original 5m splice, carrier |n|<=m,
+N=ceil L, K=N+ceil(L^4), and the original panel. No new family.
+Use only the complete theta source
+  g(u)=sum_{alpha>=1}g_alpha(u),
+  g_alpha(u)=exp(u/2) Pcal(pi alpha^2 exp(2u))
+             exp(-pi alpha^2 exp(2u)),
+  Pcal(x)=-64x^4+448x^3-660x^2+150x,
+  e_n(lambda)=2(-1)^n/sqrt(lambda)
+              int_0^(lambda/2)g(u)cos(2pi n u/lambda)du.
+At each actual cell retain the original two-sign energy and exterior:
+  E_s=E_O(s)+2sum_(n>s)e_n(L_s)^2>0,
+  E_O(s)=2int_(L_s/2)^infty |g(u)|^2du>0,
+  B_r(lambda)=2sum_(ell=1)^128 e_(r+2ell)(lambda)^2,
+  B_m=B_m(L), B_(m-1)=B_(m-1)(L_-).
+In particular B_(m-1) is NOT evaluated at L.
+
+The independently accepted predecessor defines two existing spectral
+blocks in H_m=ell^2({n>m+256}) direct-sum R^128:
+  u_m=((sqrt(2)e_n(L))_(n>m+256),
+       (sqrt(2)e_(m+2ell-1)(L))_(ell=1)^128),
+  v_m=((sqrt(2)[e_n(L_+)-e_n(L)])_(n>m+256),
+       (sqrt(2)[e_(m+2ell-1)(L_-)-e_(m+2ell-1)(L)])_(ell=1)^128),
+  W_m=||v_m||^2,
+  O_m=E_O(m)-E_O(m+256)>0,
+  S_m=E_m+E_(m-1),
+  Qscr_m=S_m-4L^2 W_m-2L O_m.
+Keep the two DIFFERENT increment orientations, both Fourier signs,
+the infinite projected tail, every alpha,beta source cross term and
+the physical exterior. Do not replace W_m by the unprojected norm:
+the predecessor proved that relaxation fails at the required relative
+scale for this actual complete source, but it did NOT bound W_m below.
+
+The accepted exact identities are
+  Delta_m=E_(m+256)-E_m+B_m+B_(m-1)
+         =-O_m+2<u_m,v_m>+W_m,
+  T_m=L Delta_m+S_m
+     =Qscr_m/2+(E_(m-1)+E_O(m)+B_m)/2
+      +L W_m+||u_m+2L v_m||^2/2.
+Thus Qscr_m>=0 at a cell implies T_m>0 there, but its converse is
+unknown. Universal PIB128 would imply MT128 and select only the
+cofinal MG128-refutation arm of the previously checked disjunction.
+
+Adjudicate exactly ONE source inequality on EVERY stated selected cell:
+  PIB128: 4L^2 W_m+2L O_m <= E_m+E_(m-1),
+equivalently Qscr_m>=0. Return exactly one scoped outcome:
+1. SOURCE_PROJECTED_MESH_INCREMENT_BUDGET_PROVED: a rigorous
+   source-relative lower bound Qscr_m>=0 on the entire stated domain,
+   with both projected blocks and exterior paid. Then T_m>0 and the
+   previously checked conditional consumer refutes ONLY MG128 on an
+   unbounded admitted sequence, not C128, PC, SV, lag, or RH.
+2. SOURCE_PROJECTED_MESH_INCREMENT_BUDGET_REFUTED: an actual admitted
+   selected cell or rigorously admitted sequence with Qscr_m<0 and a
+   strict sign proof. This refutes ONLY universal PIB128; it does NOT
+   imply T_m<0 or decide MG128.
+3. OPEN_SOURCE_PROJECTED_MESH_INCREMENT_BUDGET: identify the first
+   unpaid complete-source relative comparison for Qscr_m. Give ONE
+   narrower falsifiable PAPER lemma on the same source, including
+   exact quantifiers and both outcome scopes; do not rename PIB128.
+
+Check the factor two, parity partition of m+1,...,m+256, the window
+endpoint g(lambda/2)/sqrt(lambda) when differentiating, the two
+increment orientations, absolute source convergence, Parseval,
+physical exterior, and the original selected-family quantifiers.
+Do not infer a projected sign from the unprojected dilation estimate,
+an abstract coefficient vector, a failed proof attempt, or small
+logarithmic displacement. If invoking the predecessor's cofinal
+conditional, preserve its weighted-sum boundary and both E envelopes.
+
+No coefficient numerics, selected-cell/grid search, fitted cutoff,
+source-index deletion, new mask or panel, mathematical runtime,
+Lean, repository write, activation of conditional square constants,
+route promotion, or RH claim. Preserve the low epsilon block,
+literal diagonal, zero node, final descent, paired logarithmic
+kernel, signed beta_m correction, exponent-one prime block,
+prime/square compensation, opposite-side correlation, transfer,
+Schur-floor, SV and lag. Return the complete PAPER argument and one
+bounded CODEX DIRECTIVE.
