@@ -866,6 +866,46 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Ответ на source core even-prefix cancellation test № 10 (27.09, PAPER; OPEN_SOURCE_EVEN_PREFIX_CANCELLATION).**
+[Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_EVEN_PREFIX_CANCELLATION_2026-09-27.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
+user turn `36b951c7-24d1-4e27-ac8b-79065d48ab70`, assistant item
+`f0feb90d-cdb2-4eff-894f-d87562b7ce6c`, завершён 2026-09-26
+23:54:44 UTC: 33,778 байт / 561 LF / SHA-256
+`9229428322b1a957662d0e0e0c7c050797dfb3e975e2c5dcefd6f61a468a33cf`.
+Хеш скачанного файла совпал с объявленным в
+[inline-ответе](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_SOURCE_CORE_EVEN_PREFIX_CANCELLATION_2026-09-27.md)
+(локально сохранён; SHA-256 `f9fc4f2437bf9fe04fa91a50dedef1ec542472e4c7acf5de6f6cc9bb0b47f89c`).
+Отправленный TXT: 5,865 байт / 110 LF / SHA-256
+`40cc3ee15830da67d60186493449fed6f56594065d5765daf524597a0cd240cb`.
+
+Независимая PAPER-сверка и два последовательных on-target CLEAN read-only
+review-прохода `/root/even_prefix_verdict_review` и
+`/root/even_prefix_verdict_review2` приняли **только** диагностическое
+опровержение метода фиксированного source-усечения и условный C128-мост.
+Полная theta-сумма даёт чётный `g` и `g'(0)=0`, но для каждого
+фиксированного `A≥1` полином (6) положителен на `πa²≥4π>12`,
+так что `(g^[A])'(0)=-𝔡_A<0` (7). Четыре интегрирования по частям
+с обеими границами и физическим exterior дают
+`E≤C_*L⁷/m⁷` (8)–(11); поэтому ошибка частичной суммы удовлетворяет
+`L|ẽ^[A]_{m+2}-e_{m+2}|²/E≥c_A m³/L³→∞` (14)–(16)
+на исходной cofinal семье **при фиксированном A**. Это убивает лишь
+попытку объявить фиксированный source-tail малым относительно
+`√(E/L)`; к фактическому `e_{m+2}` нижняя оценка не относится.
+
+Формула разности косинусов (24) сохраняет полную source-сумму и обе
+нулевые endpoint-фазы. Для уже допустимого `R=128`, `L≥128`,
+если одновременно `E≤L e_{m+2}²` и
+`𝒥_m=Σ_{ℓ=1}^{128}(e_{m+2ℓ}-e_{m+2})²≤8e_{m+2}²`,
+то Cauchy даёт `|S_{m,128}|≥96|e_{m+2}|`, затем
+`D_pref(m,128)≤-23` (23)–(25). Обе source-предпосылки **OPEN**;
+этот условный мост не доказывает существование ячейки и не опровергает PC.
+Ближайший отдельный PAPER-тест —
+`TEST_SOURCE_CORE_FIXED_128_PREFIX_COHERENCE` по полному источнику и
+дискриминатору (26); его возможное исключение исключит лишь C128,
+а не все нарушения PC. Логарифмический peak, first-node, full-panel,
+SV, lag, знак `τ_j`, Schur-floor и RH остаются OPEN.
+
 **Ответ на source core logarithmic moment peak test № 9 (27.09, PAPER; OPEN_SOURCE_LOG_MOMENT_PEAK).**
 [Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_LOGARITHMIC_MOMENT_PEAK_2026-09-27.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
