@@ -1663,7 +1663,7 @@ CRITICAL/HIGH/MEDIUM/LOW/WORDING замечаний. Я отдельно пер�
 PC, SV, lag, Schur-floor и RH остаются OPEN; ни одна ветвь
 cofinal-дизъюнкции MG128 пока не выбрана. `PX_RH_CLAIM: NOT_MADE`.
 
-**Ответ на source core fixed-128 signed transport block № 8 активного чата (27.09, PAPER; independent review pending).**
+**Ответ на source core fixed-128 signed transport block № 8 активного чата (27.09, PAPER; limited acceptance after independent review).**
 [Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_SIGNED_TRANSPORT_BLOCK_2026-09-27.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1),
 user turn `3c620e4a-7165-4f16-b881-8fc93032a136`, assistant message
@@ -1677,15 +1677,22 @@ user turn `3c620e4a-7165-4f16-b881-8fc93032a136`, assistant message
 Исходный TXT остаётся SHA-256
 `72189a47c5d8a09e1903b0fa991faf36b4d5e0a7a01182c7a84187c6edc1b2a3`.
 
-Прошка заявила `BT_M=(4/π²+o(1))Mlog M>0` на каждом достаточно позднем
-целочисленном блоке при исходных весах. **Это пока утверждение источника,
-не принятый результат.** Новый решающий шаг — критическая квадратура
-Эйлера–Маклорена (30)–(35), превращающая непрерывные моменты `Z²` и
-производных в суммы на исходной сетке; затем она объявляет signed covariance
-`o(Mlog M)`. Я отдельно сверил с первоисточником
+Два последовательных независимых ON-TARGET CLEAN PAPER-аудита
+`/root/signed_block_audit` и `/root/signed_block_second_audit` не нашли
+CRITICAL/HIGH/MEDIUM/LOW/WORDING замечаний на тех же исходных байтах.
+Я отдельно сверил с первоисточником
 [Bui–Hall, arXiv:2304.05178v1, стр. 1, (1)](https://arxiv.org/pdf/2304.05178):
-безусловная формула действительно дана для каждой фиксированной пары
-производных одной чётности, включая равные порядки. Проверка коэффициента
-`α_r`, конечных окон, delayed энергии и всех переходов к дискретному блоку
-продолжается. До её завершения знак `T_m`/`BT_M` не принят; MT128, MG128,
-C128, PC, SV, lag, Schur-floor и RH OPEN, `PX_RH_CLAIM: NOT_MADE`.
+безусловная формула дана для каждого фиксированного равного порядка
+производных, с коэффициентом `1/[4^j(2j+1)]`. Аудиты сверили
+`α_r≤6/r`, коэффициент остатка Эйлера–Маклорена
+`2ζ(r)α_{r+k}/π²`, оплату обоих концов и дальнего хвоста,
+порядок пределов (фиксированный `r`, затем `M→∞`, затем чётный `r→∞`),
+оконные поправки, signed covariance с обратным знаком backward-блока
+и delayed энергию с тем же `w_m`.
+
+Принято только ограниченное PAPER-утверждение для того же фиксированного `P`:
+`BT_M=Σ_{M≤m<2M}w_mT_m=(4/π²+o(1))Mlog M`, поэтому
+`BT_M>2Mlog M/π²>0` для каждого достаточно большого целого `M`.
+Это не определяет знак каждой исходной `T_m` и не выбирает ветвь MG128.
+MT128, MG128, C128, PC, SV, lag, Schur-floor и RH OPEN;
+`PX_RH_CLAIM: NOT_MADE`.
