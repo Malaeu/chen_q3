@@ -7747,3 +7747,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: один selected-source тест точной positive/negative факторизации с полными поправками; остановить аналог, если положительная часть не coercive либо joint loss не меньше её запаса.
 Адреса: `docs/literature/signed_form_effective_resistance_2026-09-27.md`, `paper_weil/sections/groundstate.tex`.
 Чей вердикт: root прочёл PDF Zelazo–Buerger, Chen et al. и Frank–Seiringer, проверил графовую алгебру; независимого аудита нового Q3 crosswalk не было. `PARTIAL ANALOGUE / INCOMPLETE`, Lean не запускался, RH claim отсутствует.
+
+## 2026-09-27 — Critical ratio for global long-lag energy (Mac)
+
+Развилка: доказать `N_s≤P_s` сравнением длинных связей с короткими или найти точное ограничение такого переноса.
+Выбрали: разложили каждую длинную связь в конечную цепь коротких с исходным весом `f0(x)f0(x+t)` и проверили возможность фиксированного относительного запаса.
+Почему: атом `n=2` делает всякий `N_s≤(1−ε)P_s` при `ε>0` запрещённым двухточечным положительным минорантом `Q`; альтернативно cutoff-сдвиги радикала дают `N_s/P_s→1` при `Q→0`. Для прямой цепочки отношение endpoint-весов к весу короткой связи неограниченно.
+Что отвергли: глобальную постоянную процентную победу плюса и pointwise маршрут с равномерным отношением весов; это не опровержение острого `N_s≤P_s`.
+Инсайты: если полный знак верен, `sup_{s≠0}N_s/P_s=1` ровно; если неверен, supremum больше единицы. Для доказательства нужны совместные сокращения, а не запас `1−ε` на всей тестовой области.
+Блокеры: sharp all-profile sign, интегральный перенос длинных связей с точными весами, selected-cofinal Goal058 estimate OPEN.
+Иглы Зингера: бесконечность хвоста оплачена сходимостью, но не знаком; при перемене пути нельзя заменять endpoint-вес на удобный локальный вес.
+Следующий ход: проверять только source-aware joint routing или нелокальный фактор с точной константой `1`; не запускать снова глобальный strict-effective-resistance тест. Selected finite-window gap может убывать и не исключён.
+Адреса: `docs/Codex/REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md`, `paper_weil/sections/groundstate.tex`, `paper_weil/sections/obstruction.tex`.
+Чей вердикт: root алгебра и source-проверка, независимые read-only explorer/researcher и reviewer; PAPER result, без Lean-запуска и RH claim.

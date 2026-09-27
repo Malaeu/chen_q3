@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-09-27 · by: Codex Mac · baseline HEAD: 63ce5476
+Updated: 2026-09-27 · by: Codex Mac · baseline HEAD: c2a211e3
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -101,6 +101,8 @@ Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
 4. После оплаченных входов — сборка → hconv. Lean Fokas joint green отложено.
 
 Поиск литературы 2026-09-27: [signed-form/effective-resistance map](../literature/signed_form_effective_resistance_2026-09-27.md) даёт строгий графовый механизм `w R_eff<1` / совместный Schur-тест, но только `PARTIAL ANALOGUE` к selected Q3. Источниковая факторизация, coercivity положительной части и cofinal joint loss OPEN; текущий finite-coefficient-panel запрос Прошке не заменять.
+
+Геометрический контроль глобальной формы: [PAPER-разбор длинных связей](REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md) доказал, что `N_s≤(1−ε)P_s` с фиксированным `ε>0` для всех компактных профилей невозможно: атом `n=2` дал бы запрещённый положительный finite-stencil minorant. Точное разбиение длинной связи на короткие сохраняет endpoint-веса, но их pointwise отношение неограниченно. Это **не** опровергает острое `N_s≤P_s` и **не** решает selected Goal058 floor; нужен нелокальный совместный перенос с константой `1` либо другой source-механизм.
 
 ## Прошка
 - 2026-09-26 Mac: [бумажная заметка о геометрии сжатия](REPORT_2026-09-26_CURVED_COMPRESSION_GEOMETRY.md) записывает точную метрику `R=B*B`, вторую вариацию нормированного Rayleigh-отношения и оценку поворота source-плоскости через Gram-ошибку. Это предложение для отдельного source-angle теста, не доказательство знака `A=B*K_jB` и не новый запрос Прошке; текущий запрос № 7 не менялся.
