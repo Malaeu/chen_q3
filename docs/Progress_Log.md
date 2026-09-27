@@ -7773,3 +7773,16 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: искать явное тождество или оператор, который сначала сохраняет gradient compatibility, затем оплачивает совместную норму; не повторять direct nearest-prime bridge.
 Адреса: `docs/Codex/REPORT_2026-09-27_PRIME_BRIDGE_ENDPOINT_KILL.md`, `paper_weil/sections/canonical.tex`, `paper_weil/sections/groundstate.tex`.
 Чей вердикт: root доказал из исходного theta-ряда; read-only mathematical subtask независимо проверил расходимость; PAPER-only, без Lean и RH claim.
+
+## 2026-09-27 — Mixed prime-bridge term changes sign (Mac)
+
+Развилка: может ли сохранённый cross term при разложении длинной связи через `log p` всегда помогать знаку.
+Выбрали: проверить его на полной source-взвешенной полосе `t<log p` и допустимых компактных профилях.
+Почему: для отсечённых волн с частотами `π/(2log p)` и `3π/(2log p)` точное `Re(A conjugate(B))` имеет противоположные строгие знаки на одной узкой полосе. Предел при отсечении оправдан интегрируемым `|b(t)|C0(t)`.
+Что отвергли: отдельную гипотезу `cross≥0` и выбрасывание cross при верхней оценке отрицательной энергии; оба знака возможны даже у связанных градиентов.
+Инсайты: `|A−B|²` надо оценивать в полной signed сумме; положительный cross на одной полосе не является универсальным ресурсом. Существующий двухчастотный kernel и Chebyshev-discrepancy остаются точными глобальными представлениями.
+Блокеры: полная source-оценка с prime-power атомами, selected C128/floor, RH.
+Иглы Зингера: сохранение сокращений необходимо, но само по себе не определяет их знак.
+Следующий ход: тестировать только полный совместный weighted block либо вернуться к точному арифметическому discrepancy; не повторять bandwise positive-cross или independent-edge contraction.
+Адреса: `docs/Codex/REPORT_2026-09-27_PRIME_BRIDGE_MIXED_SIGN.md`, `paper_weil/sections/groundstate.tex`, `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL_2026-09-05.md`.
+Чей вердикт: root алгебра и cutoff-доказательство, независимые read-only mathematical/review проходы; PAPER-only, без Lean и RH claim.
