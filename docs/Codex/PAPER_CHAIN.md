@@ -866,6 +866,40 @@ PAPER-тест — относительный порядок same-side head `2�
 с четырьмя точными членами (23); даже его закрытие оставит
 opposite-side часть отдельной.
 
+**Ответ на source core fixed-128 prefix coherence test № 1 нового чата (27.09, PAPER; OPEN_SOURCE_FIXED_128_COHERENCE).**
+[Точный полный inline-ответ](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_PREFIX_COHERENCE_2026-09-27.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1),
+user turn `cf6b41fc-27b6-4edc-bb99-5442fedf06ed`, assistant item
+`9c734551-d112-42ff-b37b-d9328abf8013`, завершён 2026-09-27
+00:28:00 UTC: 17,385 байт / 503 LF / SHA-256
+`68132ce7d0dc63acdb36ecedc1b6207d9365663e0dc73b396160d1b07346a089`.
+`read_thread` повторно подтвердил завершение и точное совпадение сохранённого
+текста; нового вложения к ответу нет. Запрос: 4,835 байт / 85 LF /
+SHA-256 `54608557e3d8d380c6c1c029245b47d7042e3774799c2b87213c4ab5f8852cf7`.
+
+Независимая PAPER-сверка и два последовательных on-target CLEAN read-only
+review-прохода `/root/fixed128_verdict_review` и
+`/root/fixed128_verdict_review2` принимают **только** условное исключение
+C128 на поддомене `128≤L=log m≤Λ*=272−8√254`; существование выбранной
+ячейки там не утверждается. Для исходного `E=B_m+H_m` с
+`B_m=2Σ_{ℓ=1}^{128}e_{m+2ℓ}²` полный theta-источник даёт
+`H_m≥E_O>0`: при `u≥b` все члены `g_α(u)` отрицательны, поскольку
+`𝒫(x)=-64x³(x−7)−30x(22x−5)<0` для `x≥8`. Совместное
+дополнение квадрата (8)–(10), со 127 нетривиальными отклонениями,
+даёт `B_m+μ*𝒥=(Λ*+8μ*)a²+V_m`, `V_m≥0`,
+`μ*=(√254−4)/2`. Из положительно взвешенного минимума (13) и
+`Λ*−LB_m/E=Λ*−L+LH_m/E>0` при `L≤Λ*` строго следует `C_m<0`,
+включая endpoint. Проверены оба члена Gram-ядра (17), все
+source-index cross terms и множитель `B_m=(8/L)𝓘_m`.
+
+На `L>Λ*` знак `𝔐_m=Λ*−8𝓘_m/E` не установлен. Универсальное
+`𝔐_m>0` исключило бы лишь C128 на оставшейся семье; отдельная
+ячейка с `𝔐_m≤0` опровергла бы только этот более узкий mass gate,
+не дала бы C128 или PC-нарушение. Ближайший PAPER-тест —
+`TEST_SOURCE_CORE_FIXED_128_PREFIX_MASS_GATE` на полном источнике.
+Фактические C128, PC, source-знак первого узла и панели, SV, lag,
+Schur-floor и RH OPEN.
+
 **Ответ на source core even-prefix cancellation test № 10 (27.09, PAPER; OPEN_SOURCE_EVEN_PREFIX_CANCELLATION).**
 [Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_EVEN_PREFIX_CANCELLATION_2026-09-27.md)
 из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab81c1e-0f58-83eb-ab96-53048a5e82c0),
