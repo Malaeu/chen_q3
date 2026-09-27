@@ -1,0 +1,122 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PATH-VARIANCE-COMPENSATION
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_PATH_VARIANCE_COMPENSATION
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 1fd62ec9d2874f80941c5cf8b0d45092980dde12
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIXED-128-COUPLED-PROJECTED-DILATION-ACTION
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_COUPLED_PROJECTED_DILATION_ACTION_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 985de41a845deba4a534414ae93f7b43a3977f3aea2b31f07ebdfa93765b3cd9
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 7/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_PATH_VARIANCE_COMPENSATION
+on PAPER. Read the entire predecessor at its exact hash and the limited
+independent audit headed "source core fixed-128 coupled projected dilation
+action" in docs/Codex/PAPER_CHAIN.md at SOURCE_COMMIT. Two independent
+ON-TARGET CLEAN PAPER passes accepted only the cofinal refutation of the
+stronger PDA128. They did not prove or refute PIB128, MT128, MG128, C128, PC,
+SV, lag, Schur-floor, or RH.
+
+Fix the SAME P, D=256, and all original selected cells
+  m=J_P+j+2, j>=1, L_m=log m>=1536,
+  L_-=log(m-1), L_+=log(m+D),
+  delta_+=L_+-L_m, delta_-=L_m-L_-.
+All three are original source windows. Real path parameters are not new
+selected cells. Preserve Q=sqrt(m), the 5m splice, carrier |n|<=m,
+N=ceil L_m, K=N+ceil(L_m^4), original panel and Fourier normalization.
+
+Use the complete theta source g and its generator h=u g'+g/2, never a
+finite theta-index truncation. Retain the actual e_n(lambda), d_n=e_n',
+their combined finite-window cosine-tail corrections, and every source
+cross term. The separate Leibniz endpoint and bulk are not l2 on the
+infinite projected tail; do not estimate their separate norms.
+
+Keep the original Hilbert velocity and BOTH projection blocks:
+  z_m(t)=((sqrt(2)delta_+ d_n(L_m+t delta_+))_(n>m+D),
+          (-sqrt(2)delta_- d_(m+2ell-1)(L_m-t delta_-))_(ell=1)^128),
+          0<=t<=1.
+  v_m=int_0^1 z_m(t)dt,
+  W_m=||v_m||^2,
+  Ascr_m=int_0^1||z_m(t)||^2dt,
+  Vpath_m=Ascr_m-W_m=int_0^1||z_m(t)-v_m||^2dt>0.
+Write Ascr_m=Ascr_m^++Ascr_m^-, where the superscripts are the forward
+and backward blocks displayed in z_m.
+The original energies are E_s=E_O(s)+2sum_(n>s)e_n(log s)^2,
+S_m=E_m+E_(m-1), O_m=E_O(m)-E_O(m+D)>0. Keep B_(m-1) at L_-.
+
+The accepted predecessor proves, with the SAME positive weights
+  tau(m)=2pi m/log m,
+  a(t)=2t^2(t^2+1/4)pi^(-1/4)|Gamma(1/4+it/2)|,
+  w_m=a(tau(m))^(-2),
+that for every sufficiently large integer M,
+  sum_(M<=m<2M) w_m S_m < 4 M log M,
+  sum_(M<=m<2M) w_m 4 L_m^2 Ascr_m^+ > 12 M log M,
+so sum w_m Rscr_m < -8 M log M, where
+  Rscr_m=S_m-4L_m^2 Ascr_m-2L_m O_m.
+The exact original receiver is
+  Qscr_m=S_m-4L_m^2 W_m-2L_m O_m
+        =Rscr_m+4L_m^2 Vpath_m.
+The negative Rscr witnesses alone do NOT decide Qscr.
+
+Adjudicate ONE narrower source-relative PAPER lemma on the same weighted
+blocks, with M ranging over all sufficiently large integers:
+  VAVG128: sum_(M<=m<2M) w_m 4 L_m^2 Vpath_m = o(M log M)
+           as M->infinity.
+This is not a claim about every individual variance. If VAVG128 holds,
+the accepted strict block margin gives sum w_m Qscr_m<0 eventually and
+therefore an original admitted cell with Qscr_m<0 in every late block.
+That would refute only the universal/eventual sufficient PIB128
+inequality, not establish MT128, MG128, C128, PC, SV, lag, Schur-floor
+or RH. If VAVG128 is false, refute only VAVG128 with a source-based
+lower bound at its stated scale; the sign of Qscr remains undecided
+unless independently proved.
+
+A possible route, to test rather than assume: a valid Hilbert Poincare
+bound is Vpath_m <= int_0^1 ||z_m'(t)||^2 dt (the sharp interval
+constant is 1/pi^2), with
+  z_m'(t)=((sqrt(2)delta_+^2 e_n''(L_m+t delta_+))_(n>m+D),
+           (sqrt(2)delta_-^2 e_(m+2ell-1)''(L_m-t delta_-))_(ell=1)^128).
+For the full-line coefficients let t_n=2pi n/lambda, F(t)=4t^2
+xi(1/2+it)=-a(t)Z(t), U=Z'+(a'/a+1/(2t))Z. Direct differentiation
+suggests
+  e_n''(lambda)=(-1)^(n+1)lambda^(-5/2)a(t_n)t_n
+    [(5/2+t_n a'/a)U(t_n)+t_n U'(t_n)]
+    + finite-window correction.
+Verify this formula, its sign, both boundary derivatives and a
+source-uniform bound for the finite-window correction before use.
+If invoking new Hardy-Z derivative moments (orders 2 or 3), verify
+their exact unconditional primary theorem and constants; do not
+differentiate an error term. Pay any discrete sampling or interval
+coverage step separately for the forward and backward blocks.
+
+Return exactly one scoped outcome:
+1. SOURCE_PATH_VARIANCE_AVERAGE_PROVED: prove VAVG128 with a complete
+   source error budget and derive only the cofinal PIB128 theorem-shape
+   refutation through the accepted weighted margin.
+2. SOURCE_PATH_VARIANCE_AVERAGE_REFUTED: prove a strict failure of
+   VAVG128 on the unchanged source and quantify why this does not
+   alone decide Qscr or PIB128.
+3. OPEN_SOURCE_PATH_VARIANCE_AVERAGE: identify the first unpaid
+   source-to-variance estimate and supply ONE falsifiable next PAPER
+   test on the unchanged original receiver, not another stronger
+   norm-budget replacement.
+
+Do not substitute the action Ascr for W, invoke positivity of Vpath
+as a quantitative bound, remove the backward block, or average over
+nonselected cells. Preserve the low epsilon block, literal diagonal,
+zero node, final descent, paired logarithmic kernel, signed beta_m
+correction, exponent-one prime block, prime/square compensation,
+opposite-side correlation, transfer and Schur-floor. No coefficient
+numerics, selected-cell/grid search, source-index deletion, fitted
+cutoff, mathematical runtime, Lean, repository write, conditional
+square-constant activation, route promotion, or RH claim. Return a
+complete PAPER argument and one bounded CODEX DIRECTIVE.
