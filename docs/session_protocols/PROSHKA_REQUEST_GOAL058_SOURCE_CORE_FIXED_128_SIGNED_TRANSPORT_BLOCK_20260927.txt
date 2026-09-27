@@ -1,0 +1,121 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-SIGNED-TRANSPORT-BLOCK
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_SIGNED_TRANSPORT_BLOCK
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 5a71229b32d63860188261b3678d9badedebf7fc
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+PREDECESSOR: REQ-2026-09-27-SOURCE-CORE-FIXED-128-PATH-VARIANCE-COMPENSATION
+PREDECESSOR_VERDICT: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_PATH_VARIANCE_COMPENSATION_2026-09-27.md
+PREDECESSOR_VERDICT_SHA256: 17cf49ca3958c270da791562fc8000c5e9a246460327f99b598cf09c4761e431
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 8/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform only TEST_SOURCE_CORE_FIXED_128_SIGNED_TRANSPORT_BLOCK
+on PAPER. Read the complete predecessor verdict at its exact SHA-256 and
+the limited independent audit headed "source core fixed-128 path variance
+compensation" in docs/Codex/PAPER_CHAIN.md at SOURCE_COMMIT. Two
+independent ON-TARGET CLEAN PAPER passes accepted VAVG128 and only the
+cofinal refutation of universal/eventual PIB128. They did not decide
+the actual signed mesh T_m, MT128, MG128, C128, PC, SV, lag,
+Schur-floor, or RH. Do not repeat the old MT128 request or treat the
+negative Qscr_m as a negative T_m.
+
+Fix the SAME P, D=256, and original consecutive selected cells
+  m=J_P+j+2, j>=1, L=log m>=1536,
+  L_-=log(m-1), L_+=log(m+D).
+Use the complete theta source
+  g(u)=sum_(alpha>=1) exp(u/2) Pcal(pi alpha^2 exp(2u))
+                    exp(-pi alpha^2 exp(2u)),
+  Pcal(x)=-64x^4+448x^3-660x^2+150x,
+  e_n(lambda)=2(-1)^n/sqrt(lambda)
+              int_0^(lambda/2)g(u)cos(2pi n u/lambda)du.
+At the actual cell e_n means e_n(L), with both Fourier signs carried
+by the factor 2. Source-index cross terms must remain after squaring.
+No finite theta-index truncation is allowed.
+
+Use the unchanged original energies and exterior:
+  E_s=E_O(s)+2sum_(n>s)e_n(log s)^2,
+  E_O(s)=2int_((log s)/2)^infinity |g(u)|^2du,
+  S_m=E_m+E_(m-1)>0,
+  O_m=E_O(m)-E_O(m+D)>0,
+  B_r(lambda)=2sum_(ell=1)^128 e_(r+2ell)(lambda)^2.
+Keep B_(m-1) at L_-, never at L. The original signed mesh is
+  Delta_m=E_(m+D)-E_m+B_m(L)+B_(m-1)(L_-),
+  T_m=L Delta_m+S_m.
+Preserve the exact two-window transport
+  Delta_m=-int_(L)^(L_+) A_(m+D)'(lambda)dlambda
+          -int_(L_-)^(L) B_(m-1)'(lambda)dlambda,
+  A_r(lambda)=e_0(lambda)^2+2sum_(n=1)^r e_n(lambda)^2.
+Both minus signs, the nonzero moving endpoint g(lambda/2)/sqrt(lambda),
+and every source cross term are load-bearing.
+
+For a direct covariance representation use the actual fixed Hilbert
+space H_m=l2({n>m+D}) direct_sum R^128 and vectors
+  u_m=((sqrt(2)e_n(L))_(n>m+D),
+       (sqrt(2)e_(m+2ell-1)(L))_(ell=1)^128),
+  v_m=((sqrt(2)[e_n(L+)-e_n(L)])_(n>m+D),
+       (sqrt(2)[e_(m+2ell-1)(L-)-e_(m+2ell-1)(L)])_(ell=1)^128),
+  W_m=||v_m||^2.
+The backward increment points from L to L_-. The exact identity is
+  T_m=S_m-L O_m+2L<u_m,v_m>+L W_m.
+The predecessor accepted, on every sufficiently late integer block
+M<=m<2M with the SAME positive weights
+  tau(m)=2pi m/log m,
+  a(t)=2t^2(t^2+1/4)pi^(-1/4)|Gamma(1/4+it/2)|,
+  w_m=a(tau(m))^(-2),
+that sum w_m S_m<4M log M and sum w_m Qscr_m<-7M log M,
+where Qscr_m=S_m-4L^2W_m-2L O_m. It also proves
+sum w_m 4L^2 Vpath_m=O_D(M/log M). Qscr_m<0 in one original
+cell per sufficiently late block does NOT determine T_m; the square
+identity in the signed-mesh verdict retains positive terms.
+
+Adjudicate ONE new source question, distinct from the old pointwise
+MT128 request: the sign of the ORIGINAL weighted signed-transport
+block quantity
+  BT_M=sum_(M<=m<2M) w_m T_m,
+for all sufficiently large integer M, or along an explicit unbounded
+sequence of such blocks if a full eventual sign is unavailable.
+Calculate a rigorous leading term or a strict one-sided bound at the
+natural M log M scale. In particular pay the actual signed covariance
+sum 2L<u_m,v_m>, the positive L W_m, exterior L O_m, and delayed
+energy E_(m-1) with one common weight. Retain full finite-window
+corrections and both projected blocks. An average of Qscr_m is not
+an answer; neither action nor variance may replace the covariance.
+Do not infer individual-cell signs from a positive block average.
+
+Return exactly one scoped outcome:
+1. SOURCE_SIGNED_TRANSPORT_BLOCK_NEGATIVE: prove BT_M<0 on all late
+   blocks or an explicit unbounded sequence, with a quantified strict
+   margin. Positive weights then give original admitted T_m<0 cells
+   and refute ONLY universal MT128. This does not decide MG128.
+2. SOURCE_SIGNED_TRANSPORT_BLOCK_NONNEGATIVE: prove BT_M>=0 on all
+   sufficiently late blocks (or state precisely a weaker subsequence
+   result). This is a block-average fact ONLY: it does not prove MT128,
+   select the MG128 disjunction, or reverse the predecessor PIB128 kill.
+3. OPEN_SOURCE_SIGNED_TRANSPORT_BLOCK: identify the first unpaid
+   source-relative covariance or spectral sampling estimate and one
+   narrower falsifiable PAPER test. Do not present a guessed leading
+   coefficient or a numerical sample as a proof.
+
+If using Hardy-Z moments, identify and verify the unconditional primary
+theorem and exact normalization. A continuous moment is not a discrete
+sampling law; justify each window-to-frequency change and every end
+interval. Keep the infinite forward tail, finite odd backward block,
+full source cross terms and the exact physical exterior. Preserve
+Q=sqrt(m), the 5m splice, carrier |n|<=m, N=ceil L, K=N+ceil(L^4),
+original panel, low epsilon block, literal diagonal, zero node,
+final descent, paired logarithmic kernel, signed beta correction,
+exponent-one prime block, prime/square compensation, opposite-side
+correlation, transfer and Schur-floor. No coefficient or grid search,
+source deletion, fitted cutoff, new mask/panel, mathematical runtime,
+Lean, repository write, conditional-square activation, route promotion
+or RH claim. Return a complete PAPER argument and one bounded CODEX
+DIRECTIVE.
