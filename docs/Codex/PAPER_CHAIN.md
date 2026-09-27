@@ -1526,12 +1526,15 @@ user turn `fcaaf953-7c60-4566-a21d-185d081f0803`, assistant item
 [Точный inline-ответ](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_SOURCE_CORE_FIXED_128_PROJECTED_MESH_INCREMENT_BUDGET_2026-09-27.md):
 2,930 байт, SHA-256 `ed76d5f5dfefb8459c8528b5fbdc373b5e47a47efd76b8b7c3fdc1eeedfd5a96`.
 
-Независимая PAPER-сверка у `/root/projected_increment_verdict_review`
-нашла ноль CRITICAL/HIGH/MEDIUM/LOW замечаний по полному отображённому
-аргументу; байтовая привязка этого прохода была сделана отдельно уже после
-review. Второй native review не получен: два запуска read-only reviewer
-вернули `agent thread limit reached` (`TOOL-FAILURE`); это не второй
-чистый проход и не приёмка всего нового результата. В (6) дифференцирование
+Два последовательных независимых ON-TARGET CLEAN PAPER-прохода
+`/root/projected_increment_verdict_review` и
+`/root/even_prefix_verdict_review` нашли ноль
+CRITICAL/HIGH/MEDIUM/LOW/WORDING замечаний по (6)–(25). Первый
+проверял полный preview, байтовая привязка выполнена затем; второй
+проверил сохранённые 33,970 байт и их SHA-256. Прежний
+`TOOL-FAILURE` при запуске нового reviewer-треда устранён повторным
+заданием существующему независимому reviewer. Принят только следующий
+ограниченный результат. В (6) дифференцирование
 `f_λ(x)=√λ g(λx)` даёт генератор `h(u)=ug′(u)+g(u)/2`; интегрирование по
 частям возвращает необходимый endpoint `g(λ/2)/√λ` в (7). Два следующих
 интегрирования по частям при `h′(0)=0` дают (8) с `O_m(n⁻²)` равномерно
