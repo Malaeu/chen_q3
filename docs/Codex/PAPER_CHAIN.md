@@ -1662,3 +1662,30 @@ CRITICAL/HIGH/MEDIUM/LOW/WORDING замечаний. Я отдельно пер�
 это не Lean-проверка. Знак исходного signed mesh `T_m`, MG128, C128,
 PC, SV, lag, Schur-floor и RH остаются OPEN; ни одна ветвь
 cofinal-дизъюнкции MG128 пока не выбрана. `PX_RH_CLAIM: NOT_MADE`.
+
+**Ответ на source core fixed-128 signed transport block № 8 активного чата (27.09, PAPER; independent review pending).**
+[Полное Markdown-вложение](../routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_SIGNED_TRANSPORT_BLOCK_2026-09-27.md)
+из [чата подтверждённой отправки](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1),
+user turn `3c620e4a-7165-4f16-b881-8fc93032a136`, assistant message
+`d0a0ff32-019b-431f-a40b-e0ffd5879967`, завершение 2026-09-27
+05:14:38 UTC: 38,162 байта / 633 LF / SHA-256
+`4ff6bdeb6bc5d7aa2d76c8e19e6528f623436a8a395c54386e35fa75dfcea541`.
+Хеш вложения в UI совпал с локально вычисленным. [Точный inline-текст](../routeB_bus/proshka/PROSHKA_INLINE_GOAL058_SOURCE_CORE_FIXED_128_SIGNED_TRANSPORT_BLOCK_2026-09-27.md)
+получен через `read_thread` для этого assistant message с добавленным конечным LF:
+3,668 байт / 73 LF / SHA-256
+`3181fba478cd4a06fd603db04954f2ab63dcac6a9462103174d99a1e703d7ae6`.
+Исходный TXT остаётся SHA-256
+`72189a47c5d8a09e1903b0fa991faf36b4d5e0a7a01182c7a84187c6edc1b2a3`.
+
+Прошка заявила `BT_M=(4/π²+o(1))Mlog M>0` на каждом достаточно позднем
+целочисленном блоке при исходных весах. **Это пока утверждение источника,
+не принятый результат.** Новый решающий шаг — критическая квадратура
+Эйлера–Маклорена (30)–(35), превращающая непрерывные моменты `Z²` и
+производных в суммы на исходной сетке; затем она объявляет signed covariance
+`o(Mlog M)`. Я отдельно сверил с первоисточником
+[Bui–Hall, arXiv:2304.05178v1, стр. 1, (1)](https://arxiv.org/pdf/2304.05178):
+безусловная формула действительно дана для каждой фиксированной пары
+производных одной чётности, включая равные порядки. Проверка коэффициента
+`α_r`, конечных окон, delayed энергии и всех переходов к дискретному блоку
+продолжается. До её завершения знак `T_m`/`BT_M` не принят; MT128, MG128,
+C128, PC, SV, lag, Schur-floor и RH OPEN, `PX_RH_CLAIM: NOT_MADE`.
