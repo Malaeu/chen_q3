@@ -1,0 +1,99 @@
+STATUS: PREPARED_NOT_SENT
+REQUEST_ID: REQ-2026-09-27-SOURCE-CORE-FIXED-128-EVEN-PREFIX-GRAM
+BOUNDARY_ID: GOAL058_SELECTED_FERRERS_SOURCE_CORE_FIXED_128_EVEN_PREFIX_GRAM
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+SOURCE_COMMIT: 4b64767dccf52e2a19acee736d6b7203a69a5311
+SOURCE_PAPER_CHAIN_SHA256: 14b44c3f1425576057367ca7e39f752f280c74a5ded69f5ab9b1f73b27ade82c
+PHASE_ID: PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SELECTED_FERRERS_GROUND_TRACKING
+SOURCE_OBJECT_FAMILY_ID: SELECTED_FERRERS_MODE0_MODE4_COFINAL_CCM
+TERMINAL_CONSUMER_ID: Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi
+CONVENTION_LOCK_ID: GOAL058_SELECTED_FERRERS_C_2PI_M_SOURCE_ORDER_MINUS_Z
+HONESTY_STATE: CHALLENGER_NOT_RH
+DESTINATION_PROJECT: Sort_RH_März_2026
+DESTINATION_CHAT: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1
+INTENDED_ORDINAL_IF_CONFIRMED: 9/10
+PX_RH_CLAIM: NOT_MADE
+
+Proshka: perform one narrow PAPER test of the fixed even-prefix Gram
+matrix for the unchanged selected Goal058 source. Do not repeat the
+previous signed-transport-block question. Read the accepted limited
+PAPER record at SOURCE_COMMIT, especially the final two sections of
+docs/Codex/PAPER_CHAIN.md. The signed-block source is
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SOURCE_CORE_FIXED_128_SIGNED_TRANSPORT_BLOCK_2026-09-27.md,
+SHA-256 4ff6bdeb6bc5d7aa2d76c8e19e6528f623436a8a395c54386e35fa75dfcea541.
+Its accepted equations (8), (11)-(16), (19)-(20), (26)-(27),
+(30)-(36) prove the diagonal fixed-offset asymptotic. The new
+independent fixed-offset deduction gives, for EACH fixed even
+q=2,4,...,256 and H=log M,
+  sum_(M<=m<2M) w_m e_(m+q)(log m)^2 = M+o(M),
+where the superscript 2 squares e, not log m. It follows that the
+original B_m=2 sum_(ell=1)^128 e_(m+2ell)(log m)^2 has
+  sum w_m (log m) B_m=(256+o(1)) M H,
+and the original MG128 is cofinally refuted with an admitted cell
+Mfrak_m<-1 in every late block. The same q=2 asymptotic and accepted
+sum w_m E_m=(2/pi^2+o(1))M H give an admitted cell in every late
+block with the FIRST C128 gate (log m)a_m^2>E_m, where
+a_m=e_(m+2)(log m). Neither result settles the SECOND C128 gate.
+
+Keep the exact complete theta source, not a fixed theta truncation:
+  g(u)=sum_(alpha>=1) e^(u/2) P(pi alpha^2 e^(2u))
+       exp(-pi alpha^2 e^(2u)),
+  P(x)=-64x^4+448x^3-660x^2+150x,
+  e_n(lambda)=2(-1)^n/sqrt(lambda)
+       int_0^(lambda/2) g(u) cos(2pi n u/lambda) du.
+For fixed P, all sufficiently late integers m in [M,2M) are the
+original admitted m=J_P+j+2, j>=1, log m>=1536. Set
+  x_(ell,m)=e_(m+2ell)(log m), 1<=ell<=128,
+  a_m=x_(1,m),
+  Jdisp_m=sum_(ell=1)^128 (x_(ell,m)-a_m)^2,
+  D_M=sum_(M<=m<2M) w_m(8a_m^2-Jdisp_m),
+  w_m=a_Hardy(2pi m/log m)^(-2),
+  a_Hardy(t)=2t^2(t^2+1/4)pi^(-1/4)|Gamma(1/4+it/2)|.
+The exact expansion is
+  D_M=-sum_m w_m sum_(ell=1)^128 x_(ell,m)^2
+      -120 sum_m w_m a_m^2
+      +2 sum_m w_m a_m sum_(ell=1)^128 x_(ell,m).
+Therefore the ACCEPTED diagonals imply
+  D_M=-246M+2 C_M+o(M),
+  C_M=sum_(ell=2)^128 sum_(M<=m<2M) w_m a_m x_(ell,m).
+This is one scalar off-diagonal question, not a fresh C128 request.
+
+Determine the rigorous leading behavior of C_M/M, or a strict
+one-sided bound sufficient to decide whether D_M<0 for every late
+block. The conjectural diagonal Gram law
+  sum_(M<=m<2M) w_m x_(ell,m)x_(k,m)
+    =delta_(ell,k) M+o(M)
+for each fixed ell,k is a TEST, not an admitted input. In particular,
+the continuous Hardy moment cannot simply be substituted at the
+critical discrete mesh. If using a shifted Hardy second moment,
+state the exact source theorem, normalization and its uniformity at
+shift 4pi(k-ell)/log M; then prove the product sampling on the actual
+m mesh, including the two finite-window errors, endpoint terms and
+order of limits. The two coefficients share the same original m,
+window and positive weight; retain their cross product and all
+theta-source-index cross terms.
+
+Return exactly one scoped outcome:
+1. SOURCE_EVEN_PREFIX_GRAM_DIAGONAL: prove the fixed-pair Gram law
+   above and hence C_M=o(M), D_M=(-246+o(1))M<0. This proves only
+   that the SECOND C128 gate fails at some original admitted cell in
+   every sufficiently late block. It neither excludes existential
+   C128 nor decides whether that cell satisfies the first gate.
+2. SOURCE_EVEN_PREFIX_GRAM_NONDIAGONAL: prove a different explicit
+   main term or a strict bound for C_M/M, and give only the logically
+   warranted consequence for D_M. No independence heuristic.
+3. OPEN_SOURCE_EVEN_PREFIX_GRAM: isolate the first missing shifted
+   continuous moment, endpoint or critical sampling estimate and
+   state one narrower falsifiable test. No guessed constant.
+
+The original E_m includes E_O(m)>0 and both Fourier signs. Keep the
+same carrier, Q=sqrt(m), 5m splice, N,K, panel, literal diagonal,
+zero node, final descent, paired logarithmic kernel and signed
+correction. The broad C128 source event, PC, prime/square block,
+opposite-side correlation, transfer, first tau_j sign,
+Schur-floor and RH remain OPEN. Do not infer a C128 witness from
+diagonal averages or a C128 exclusion from negative D_M. No source
+truncation, fitted cutoff, numerical search, mathematical runtime,
+Lean, repository write, route promotion or RH claim.
