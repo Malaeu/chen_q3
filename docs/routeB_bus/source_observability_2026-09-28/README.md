@@ -12,8 +12,17 @@ From the repository root, using the existing environment:
 .venv/bin/python docs/routeB_bus/source_observability_2026-09-28/probe.py --m-list 8 12 16 --dps 70
 ```
 
-This recomputes the three samples. To refresh source hashes, provenance, and
-the direct theta-series endpoint checks in the saved result without rerunning
+This recomputes the three full even-sector samples.
+
+To augment the saved samples with the reference midpoint row from
+`SOURCE_TRANSFER.md` (without overwriting the eigenvalue/Rayleigh samples):
+
+```sh
+.venv/bin/python docs/routeB_bus/source_observability_2026-09-28/probe.py --augment-reference-rows --m-list 8 12 16 24 --dps 140
+```
+
+To refresh source hashes, provenance, and the direct theta-series endpoint
+checks in the saved result without rerunning
 the eigensolver or Fourier quadratures:
 
 ```sh
@@ -50,14 +59,78 @@ with `actual_lowest_full_K_eigenpair.lambda0` in
 with the third entry of `full_K_eigenvalues_below_a`. This is a comparison of
 two numerical diagnostics, not an Arb certificate.
 
+## Reference source row and the observability test
+
+The optional pass constructs precisely the finite midpoint row used in
+`schur_probe.py`: `zhat_m = F_m*((-1)^k(P_k(c0)-P_k(c4)))`, with Robin midpoint
+energies from `rectangle_probe.bracket(m)`. It uses the **same literal full**
+`K_m` to compute `Z_m=||zhat_m||` and
+`alpha_m=||(I-u_m u_m*) zhat_m/Z_m||`, where `u_m` is the lowest full-`K_m`
+eigenvector. These are reference-center diagnostics, not values for a selected
+exact-energy row or a proof that the lowest eigenvalue is simple for all `m`.
+
+| m | reference Z_m | reference alpha_m |
+|---:|---:|---:|
+| 8 | 4.341846776998 | 0.055342160605 |
+| 12 | 5.283815971540 | 0.059589624762 |
+| 16 | 6.082827707407 | 0.057575447710 |
+| 24 | 7.428231110414 | 0.053206801408 |
+
+The m=8 norm and angle agree with the separate 140-dps `schur_probe_m8_dps140.json`
+diagnostic. The four-point log-log slope of `alpha_m` is about `-0.0412`;
+four subthreshold cells cannot establish an eventual rate. `m=24` has only
+this reference-row pass; its five even eigenvalues and derivative Rayleigh
+quotients have not been computed.
+
+An independent 180-dps repeat of `run_reference_row(24,180)` changed the
+140-dps `Z_m` by relative `5.65e-50`, `alpha_m` by `2.26e-47`, and the lowest
+full-`K_m` eigenvalue by `1.92e-87`. The tiny source reflection difference
+changed from `1.14e-42` to `7.30e-63`, showing that this *difference* was
+roundoff-limited at 140 dps; the reported `Z_m` and `alpha_m` were stable.
+Reproduction without rewriting `results.json`:
+
+```sh
+.venv/bin/python -c 'import sys; sys.path.insert(0,"docs/routeB_bus/source_observability_2026-09-28"); import probe; x=probe.run_reference_row(24,180); print(x["Z_m_reference"],x["alpha_m_reference"])'
+```
+
+`SOURCE_TRANSFER.md` (T1)--(T4) uses one reference vector `zhat_m` and one
+selected vector `b_m`, but defines no multirow observation map `S_m` on the
+low eigenspace. If one takes the only source functional
+`v -> <zhat_m,v>`, its restriction to any `r`-dimensional space with `r>=2`
+has a nonzero kernel by rank-nullity. Thus its lower frame bound is exactly
+zero for structural reasons, not evidence that Route B dies. The convention
+for `sigma_min` of a wide rectangular matrix must also be specified: a
+software-reported smallest *listed* singular value need not include its
+nullspace. Even treating `zhat_m` and `b_m` as two observation rows leaves a
+kernel for `r>=3`. Adding `F_m*` or arbitrary derivative rows would define a new
+test; it does not follow from the transfer statement. The `gamma_mr` death
+criterion therefore remains undefined as written.
+
+For `E_m`, (T4) requires a uniform Robin-rectangle row error plus the
+selected infinite-tail bound. The existing separate m=8 Arb calculation has
+`E_energy<1.900e-31` and **conditional** `E_tail<4.186e-21`, giving a
+conditional `E/Z` of about `9.64e-22` at that finite reference center. Since
+m=8 is below the selected threshold, this is not a selected-family bound.
+Under the accepted hypotheses and eventual thresholds of (T5), direct
+division by its positive lower bound on Z gives
+
+```
+E/Z <= (2400 C_A/c_G) m^(11/4) (8/25)^m
+     + (16 C_P/c_G) m sqrt(log m) 210^(-m)
+     + (320 C_A/c_G) m^(5/4) sqrt(log m) (2/225)^m -> 0.
+```
+
+This excludes the `E/Z -> 1` death condition **under those matched
+hypotheses**; it does not settle the `alpha_m` rate or the undefined
+multirow-observability condition.
+
 ## Limits
 
-Only m=8, 12, and 16 were computed; m >= 24 was not run. The mpmath quadrature
-and eigensolver values are not interval enclosures. Small eigensolver residuals
-do not bound matrix quadrature or theta-tail error. No selected Ferrers
-reference row was built, so `Z_m` and `alpha_m` are not computed; `E_m` and
-`E_m/Z_m` need the selected full-row interval/sup error and tail bound. The
-multirow `S_m` required for `gamma_mr` is not defined by the cited
-`SOURCE_TRANSFER.md` input, so neither it nor `gamma_mr` is computed. Thus
-this run does not evaluate the selected-source observability criterion or
-decide whether Route B succeeds or fails.
+Only m=8, 12, and 16 have the full even-sector tower calculation; m>=24
+does not. The mpmath quadrature and eigensolver values are not interval
+enclosures. Small eigensolver residuals do not bound matrix quadrature or
+theta-tail error. The reference-row values above are not cofinal
+selected-family values. `E_m` and
+`E_m/Z_m` at m=12,16,24 still need selected full-row interval/sup error and
+tail bounds. No source-defined multirow `S_m` or `gamma_mr` has been computed.
+Thus this run does not decide whether Route B succeeds or fails.

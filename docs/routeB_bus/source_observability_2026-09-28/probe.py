@@ -4,11 +4,13 @@
 This is an observed-grid numerical calculation, not a certificate.  It imports
 full_center_probe.matrix_K unchanged and computes finite Fourier projections
 of the same truncated theta-G function used by full_center_probe.gaussian_plane.
-No S_m, gamma, Z, E, or alpha object is constructed.
+The optional reference-row pass computes finite-center Z and alpha diagnostics.
+No multirow S_m, gamma, or selected full-row E is constructed.
 """
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
@@ -23,16 +25,19 @@ SOURCE_DIR = REPO / "docs/routeB_bus/fokas_k_sign_2026-09-25"
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(SOURCE_DIR))
 import full_center_probe as fc  # noqa: E402
+import rectangle_probe as rp  # noqa: E402
 
 NEXT = REPO / "docs/Codex/NEXT.md"
 TRANSFER = SOURCE_DIR / "SOURCE_TRANSFER.md"
 MATRIX_SOURCE = SOURCE_DIR / "full_center_probe.py"
+REFERENCE_SOURCE = SOURCE_DIR / "rectangle_probe.py"
 M8_CROSSCHECK = SOURCE_DIR / "schur_probe_m8_dps140.json"
 OUTPUT = Path(__file__).with_name("results.json")
 EXPECTED_SHA256 = {
-    "docs/Codex/NEXT.md": "9ad49fd36446385ca3b320e1cdae58073d2d38050e68f39a764a25b6252a2229",
+    "docs/Codex/NEXT.md": "92154cf5f7b559b56213c431b027e804b8743817683c1eac40153d04a23b2753",
     "docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md": "b01d145b3ad3e83caf4d097da50150ec824f0876c731dde7bb0c74bb616acaa0",
     "docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
+    "docs/routeB_bus/fokas_k_sign_2026-09-25/rectangle_probe.py": "0e23ecd7252c0a52175c642ecc95a7527becf1ac7933f2f7ef939571ec4b0987",
     "docs/routeB_bus/fokas_k_sign_2026-09-25/schur_probe_m8_dps140.json": "86175f06cbc05861bef45818fc17861d5e7077d192155cdf05d2498c7d99cc03",
 }
 BASELINE_HEAD = "cbfa5254f03dd3f68f6091d3eebec49b96236c54"
@@ -47,6 +52,7 @@ def source_provenance() -> dict[str, object]:
         "docs/Codex/NEXT.md": NEXT,
         "docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md": TRANSFER,
         "docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py": MATRIX_SOURCE,
+        "docs/routeB_bus/fokas_k_sign_2026-09-25/rectangle_probe.py": REFERENCE_SOURCE,
         "docs/routeB_bus/fokas_k_sign_2026-09-25/schur_probe_m8_dps140.json": M8_CROSSCHECK,
     }
     hashes = {name: sha256(path) for name, path in paths.items()}
@@ -76,7 +82,7 @@ def source_provenance() -> dict[str, object]:
     }
 
 
-def not_computed_fields() -> dict[str, dict[str, str]]:
+def not_computed_fields(has_reference_rows: bool = False) -> dict[str, dict[str, str]]:
     return {
         "S_m": {
             "status": "NOT_COMPUTED",
@@ -93,10 +99,10 @@ def not_computed_fields() -> dict[str, dict[str, str]]:
             ),
         },
         "Z_m": {
-            "status": "NOT_COMPUTED",
+            "status": "REFERENCE_CENTER_DIAGNOSTIC_ONLY" if has_reference_rows else "NOT_COMPUTED",
             "reason": (
-                "SOURCE_TRANSFER.md defines Z=||zhat||, but this probe does not construct "
-                "or measure a selected literal reference Ferrers row zhat."
+                "The optional reference_rows section measures Z=||zhat|| for finite "
+                "Robin midpoint rows; this is not a cofinal selected-family result."
             ),
         },
         "E_m": {
@@ -110,16 +116,15 @@ def not_computed_fields() -> dict[str, dict[str, str]]:
         "E_m_over_Z_m": {
             "status": "NOT_COMPUTED",
             "reason": (
-                "The selected-row quantities E and Z are defined in SOURCE_TRANSFER.md, "
-                "but neither error budget nor reference-row norm is evaluated here."
+                "Finite midpoint Z values are available after augmentation, but the "
+                "matching selected full-row E bound is not evaluated on these cells."
             ),
         },
         "alpha_m": {
-            "status": "NOT_COMPUTED",
+            "status": "REFERENCE_CENTER_DIAGNOSTIC_ONLY" if has_reference_rows else "NOT_COMPUTED",
             "reason": (
-                "SOURCE_TRANSFER.md defines alpha=||(I-P0)qhat|| for a reference row and "
-                "same-K ground projection; this probe constructs neither the Ferrers row "
-                "nor its projection angle."
+                "The optional reference_rows section measures the finite same-K ground "
+                "angle for Robin midpoint rows; no eventual rate is established."
             ),
         },
     }
@@ -329,6 +334,61 @@ def run_one(m: int, dps: int) -> dict[str, object]:
     return result
 
 
+def run_reference_row(m: int, dps: int) -> dict[str, object]:
+    """Numerical center row z(c0,c4) and same-K ground angle from T4.
+
+    The Robin intervals and finite Mellin map are exactly the ones used by
+    schur_probe.run.  This does not construct the selected full row b or E.
+    """
+    mp.mp.dps = dps
+    if not hasattr(rp._mp_kernel, "cache_info"):
+        rp._mp_kernel = lru_cache(maxsize=None)(rp._mp_kernel)
+    t0 = time.monotonic()
+    print(f"m={m}: building reference Robin row at dps={dps}", flush=True)
+    intervals = rp.bracket(m)
+    c0 = mp.fsum(intervals[0]) / 2
+    c4 = mp.fsum(intervals[4]) / 2
+    p0 = rp.recurrence(m, c0)[0]
+    p4 = rp.recurrence(m, c4)[0]
+    F = rp.F_matrix(m)
+    coeff = mp.matrix([(-1)**k * (p0[k] - p4[k]) for k in range(1, 6*m)])
+    z = F * coeff
+    norm_sq = mp.re((z.H * z)[0])
+    if norm_sq <= 0:
+        raise ArithmeticError("reference row has nonpositive squared norm")
+    Z = mp.sqrt(norm_sq)
+    q = z / Z
+
+    print(f"m={m}: reference row ready; computing same literal K ground vector", flush=True)
+    K = fc.matrix_K(m)
+    eigvals, eigvecs = mp.eigsy(K)
+    u = mp.matrix([eigvecs[i, 0] for i in range(eigvecs.rows)])
+    overlap = (u.H * q)[0]
+    projection = u * overlap
+    alpha = mp.sqrt(mp.re(((q - projection).H * (q - projection))[0]))
+    residual = K*u - eigvals[0]*u
+    reflection_z = mp.matrix([z[2*m-i] for i in range(2*m+1)])
+    reflection_u = mp.matrix([u[2*m-i] for i in range(2*m+1)])
+    even_u_mass = mp.re((((u+reflection_u)/2).H * ((u+reflection_u)/2))[0])
+    return {
+        "m": m,
+        "dps": dps,
+        "definition": "zhat=F_m*((-1)^k(P_k(c0)-P_k(c4)))_{k=1}^{6m-1}; Z=||zhat||; alpha=||(I-uu*)zhat/Z||, u=lowest full-K eigenvector",
+        "center_energies": {"c0": mp_string(c0, dps), "c4": mp_string(c4, dps)},
+        "Z_m_reference": mp_string(Z, dps),
+        "alpha_m_reference": mp_string(alpha, dps),
+        "ground_eigenvalue_full_K": mp_string(eigvals[0], dps),
+        "ground_eigenvalue_gap_full_K": mp_string(eigvals[1]-eigvals[0], dps),
+        "source_even_reflection_difference_norm": mp_string(
+            mp.sqrt(mp.re(((z-reflection_z).H*(z-reflection_z))[0])), dps
+        ),
+        "ground_even_mass": mp_string(even_u_mass, dps),
+        "ground_eigenpair_residual_inf": mp_string(max_abs_vector(residual), dps),
+        "elapsed_seconds": time.monotonic()-t0,
+        "status": "REFERENCE_CENTER_NUMERICAL_DIAGNOSTIC_ONLY_NOT_SELECTED_FULL_ROW",
+    }
+
+
 def slope(xs: list[int], ys: list[mp.mpf], dps: int) -> dict[str, object]:
     if len(xs) < 3:
         return {"status": "NOT_MEANINGFUL", "reason": "fewer than three samples"}
@@ -376,7 +436,7 @@ def refresh_saved_metadata() -> None:
     record = json.loads(OUTPUT.read_text(encoding="utf-8"))
     record["provenance"] = source_provenance()
     record["observed_head"] = record["provenance"]["head_observed"]
-    record["not_computed"] = not_computed_fields()
+    record["not_computed"] = not_computed_fields(bool(record.get("reference_rows")))
     for sample in record["samples"]:
         sample.setdefault("validation", {})["theta_endpoint_evenness"] = theta_endpoint_evenness(
             int(sample["m"]), int(sample["dps"])
@@ -397,9 +457,22 @@ def main() -> None:
     parser.add_argument("--m-list", nargs="+", type=int, default=[8, 12, 16])
     parser.add_argument("--dps", type=int, default=70)
     parser.add_argument("--refresh-metadata", action="store_true")
+    parser.add_argument("--augment-reference-rows", action="store_true")
     args = parser.parse_args()
     if args.refresh_metadata:
         refresh_saved_metadata()
+        return
+    if args.augment_reference_rows:
+        if args.dps < 60:
+            raise SystemExit("--dps must be at least 60")
+        record = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        source_provenance()
+        reference_rows = record.setdefault("reference_rows", {})
+        for m in args.m_list:
+            reference_rows[str(m)] = run_reference_row(m, args.dps)
+            record["not_computed"] = not_computed_fields(True)
+            save_partial(record)
+            print(f"m={m}: reference row saved", flush=True)
         return
     if args.dps < 60:
         raise SystemExit("--dps must be at least 60")
