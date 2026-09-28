@@ -437,6 +437,14 @@ def refresh_saved_metadata() -> None:
     record["provenance"] = source_provenance()
     record["observed_head"] = record["provenance"]["head_observed"]
     record["not_computed"] = not_computed_fields(bool(record.get("reference_rows")))
+    record["method"]["completed_m_values"] = [int(s["m"]) for s in record["samples"]]
+    record["method"]["sample_dps_by_m"] = {
+        str(s["m"]): int(s["dps"]) for s in record["samples"]
+    }
+    record["limitations"] = [
+        item.replace("Three-cell log-log fits", "Four-cell log-log fits")
+        for item in record["limitations"]
+    ]
     for sample in record["samples"]:
         sample.setdefault("validation", {})["theta_endpoint_evenness"] = theta_endpoint_evenness(
             int(sample["m"]), int(sample["dps"])
@@ -458,6 +466,7 @@ def main() -> None:
     parser.add_argument("--dps", type=int, default=70)
     parser.add_argument("--refresh-metadata", action="store_true")
     parser.add_argument("--augment-reference-rows", action="store_true")
+    parser.add_argument("--append-samples", action="store_true")
     args = parser.parse_args()
     if args.refresh_metadata:
         refresh_saved_metadata()
@@ -473,6 +482,24 @@ def main() -> None:
             record["not_computed"] = not_computed_fields(True)
             save_partial(record)
             print(f"m={m}: reference row saved", flush=True)
+        return
+    if args.append_samples:
+        if args.dps < 60:
+            raise SystemExit("--dps must be at least 60")
+        if any(m < 1 for m in args.m_list):
+            raise SystemExit("all m must be positive")
+        record = json.loads(OUTPUT.read_text(encoding="utf-8"))
+        source_provenance()
+        existing = {int(sample["m"]) for sample in record["samples"]}
+        for m in args.m_list:
+            if m in existing:
+                raise SystemExit(f"m={m} already saved; refusing to overwrite")
+            record["samples"].append(run_one(m, args.dps))
+            existing.add(m)
+            record["samples"].sort(key=lambda sample: int(sample["m"]))
+            record["log_log_slopes"] = make_slope_table(record["samples"], args.dps)
+            save_partial(record)
+            print(f"m={m}: full even-sector sample appended", flush=True)
         return
     if args.dps < 60:
         raise SystemExit("--dps must be at least 60")

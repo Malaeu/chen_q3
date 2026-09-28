@@ -14,6 +14,14 @@ From the repository root, using the existing environment:
 
 This recomputes the three full even-sector samples.
 
+The fourth sample was appended without overwriting those rows:
+
+```sh
+.venv/bin/python docs/routeB_bus/source_observability_2026-09-28/probe.py --append-samples --m-list 24 --dps 100
+```
+
+Append mode rejects an `m` already saved in `results.json`.
+
 To augment the saved samples with the reference midpoint row from
 `SOURCE_TRANSFER.md` (without overwriting the eigenvalue/Rayleigh samples):
 
@@ -37,21 +45,24 @@ The script imports `full_center_probe.matrix_K` unchanged and forms
 eigenvalues of `B` and Rayleigh quotients of the even projections of
 `D^(2k)G`, `k=0,...,4`. The finite theta-G series and its cutoff match
 `full_center_probe.gaussian_plane`; derivatives use the polynomial
-recurrence in `probe.py`. Each sample uses 70 decimal digits. Cutoffs are
-26, 32, and 36 for m=8, 12, and 16, respectively.
+recurrence in `probe.py`. Samples m=8,12,16 use 70 decimal digits and cutoffs
+26,32,36; m=24 uses 100 digits and cutoff 49.
 
 | m | lambda_1 | lambda_2 - lambda_1 | lambda_3 - lambda_1 | elapsed sample time |
 |---:|---:|---:|---:|---:|
 | 8 | 1.0239258710e-19 | 6.3726260399e-15 | 1.0872106804e-10 | 54.85 s |
 | 12 | 6.7904267000e-29 | 1.6299412278e-23 | 9.6446924386e-19 | 97.33 s |
 | 16 | 5.4561380117e-38 | 4.7334130203e-32 | 7.3464888017e-27 | 145.68 s |
+| 24 | 2.6905128126e-54 | 4.2761989283e-48 | 9.9741981280e-43 | 611.30 s |
 
 The five derivative Rayleigh quotients for every m, all five eigenvalues,
-eigenpair residuals, Fourier projection residuals, and exploratory three-point
+eigenpair residuals, Fourier projection residuals, and exploratory four-point
 log-log fits are recorded in `results.json`. The fits have no asymptotic
-interpretation. Direct comparisons of the same truncated theta series at
+interpretation. The m=24 derivative Rayleigh quotients for `D^(0,2,4,6,8)G`
+are approximately `2.2483e-28, 4.4763e-24, 9.0875e-21, 7.4000e-18,
+2.6144e-15`. Direct comparisons of the same truncated theta series at
 `t = +/-log(m)/2` give maximum absolute discrepancies across `G` and `G''`
-of about `1.2e-69`, `7.1e-70`, and `1.3e-69` for the three samples.
+of about `1.2e-69`, `7.1e-70`, `1.3e-69`, and `2.2e-99` for the four samples.
 
 As a separate numerical cross-check, the m=8 even-sector `lambda_1` agrees
 with `actual_lowest_full_K_eigenpair.lambda0` in
@@ -77,10 +88,15 @@ exact-energy row or a proof that the lowest eigenvalue is simple for all `m`.
 | 24 | 7.428231110414 | 0.053206801408 |
 
 The m=8 norm and angle agree with the separate 140-dps `schur_probe_m8_dps140.json`
-diagnostic. The four-point log-log slope of `alpha_m` is about `-0.0412`;
-four subthreshold cells cannot establish an eventual rate. `m=24` has only
-this reference-row pass; its five even eigenvalues and derivative Rayleigh
-quotients have not been computed.
+diagnostic. The same-ground reference overlap `sqrt(1-alpha_m^2)` is
+approximately `0.998467448272`, `0.998222959374`, `0.998341158032`,
+`0.998583514927` at m=8,12,16,24. The four-point log-log slope of `alpha_m`
+is about `-0.0412`; four subthreshold cells cannot establish an eventual rate.
+For m=24 the new even-sector lowest eigenvalue agrees with the separately
+computed full-`K_m` ground eigenvalue to relative `7.3e-48`; the full ground
+vector has observed even mass 1 at displayed precision. This identifies the
+vectors only in this numerical cell, not on the cofinal selected family or as
+a simplicity proof.
 
 An independent 180-dps repeat of `run_reference_row(24,180)` changed the
 140-dps `Z_m` by relative `5.65e-50`, `alpha_m` by `2.26e-47`, and the lowest
@@ -126,7 +142,7 @@ multirow-observability condition.
 
 ## Limits
 
-Only m=8, 12, and 16 have the full even-sector tower calculation; m>=24
+Only m=8,12,16,24 have the full even-sector tower calculation; m>=32
 does not. The mpmath quadrature and eigensolver values are not interval
 enclosures. Small eigensolver residuals do not bound matrix quadrature or
 theta-tail error. The reference-row values above are not cofinal
