@@ -2,15 +2,15 @@
 
 Canonical executor behavior: `docs/CODEX_CONTROL.md`. Plain mode (owner instruction
 2026-09-25, ranks above the control per its §1): `git pull` → `docs/Codex/NEXT.md` →
-work; `plan` is optional advice, never a gate.
+work; `plan` is optional advice, never a gate. Working rules in NEXT.md «Правила работы»
+override `~/.codex/AGENTS.md` §§3, 5, 6, 9 for this repository (owner, 2026-09-28).
 
 If the control is missing, unreadable, non-`ACTIVE`, or duplicated, stop with:
 
 `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`
 
 This file is a thin bootstrap pointer. It contains no independent executor
-policy, and machine-local configuration cannot override the canonical control; the Owner's explicit instruction can.
-Runtime validation (`plan`, optional in plain mode) is described in `SESSION_ENTRY.md`.
+policy; machine-local configuration cannot override the control, the Owner's explicit instruction can.
 
 # Codex project instructions
 
