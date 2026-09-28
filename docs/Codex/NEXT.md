@@ -29,65 +29,10 @@ Claim делается, только когда он действительны�
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
 
 ## Дорожная карта
-Маршрут: Route B → Goal058 (одна семья: вещественные нули + сходимость к Ξ).
-  Фаза: `PHASE_GOAL058_SELECTED_FERRERS_GROUND_TRACKING_20260923`.
-Всего маршрутов: 3 — Route B (активен); (i) PSD fallback (спит с 25.06); (ii) мост Судзуки/Йосиды (в Lean не начат).
-  Источник: `docs/GENEALOGY.md` §0, §2. 40 «route»-киллов в базе — строки леджера, не маршруты.
-
-Цепочка до цели — 8 ворот Goal058 (`docs/routeB_bus/058_realzero_ground_diagonal_to_xi.goal.md`, «Восемь ворот»):
-  G0 объект/нормировка ............ частично
-  G1 кофинальный ground-пакет ..... ОТКРЫТО (constant hfloorEv опровергнут для выбранной семьи; cellwise вариант не доказан)
-  G2 вещественные нули ............ готово
-  G2b перенос нулей на P5.9 ....... доказано
-  G3 та же семья трекает trial .... ОТКРЫТО — вместе с G1 главный математический фронт
-  G3c projected → continuum trial . ОТКРЫТО
-  G4 CCM Lemma 7.3: trial → Ξ ..... ОТКРЫТО (в статье доказано, Lean-порт открыт)
-  G5 Гурвиц → Q3.RH ............... готово
-  затем `riemannHypothesis_of_rh` (доказано) → Comparator → claim.
-
-Lean-потребитель: `rh_of_real_zero_family_tendsto_centeredXi`
-  (`q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean:27`), посылки hzeros, hentire, hconv.
-  В RouteB 0 `sorry`, 0 `axiom`.
-Осталось: 5 из 8 ворот. В Lean 7 открытых посылок:
-  1. hmode — sup-норма близости Ferrers mode0/mode4 к D0/D4 (бумага проверена, Lean-вход открыт);
-  2. hχ/hθ — следствия hmode на бумаге; формализация не завершена;
-  3. hfloorEv (constant-β форма опровергнута для выбранной семьи; нужен иной интерфейс);
-  4. hoddEv (условный мост из constant hfloorEv здесь не поставщик);
-  5. hratioEv (текущий constant-β wrapper неприменим)
-     (`G6N1SelectedFerrersTrackedGroundTailReindex.lean`);
-  6. компактный decay: нормировка × kernelL2 × √ratio → 0 (Lean-формулировки ещё нет);
-  7. сборочная теорема → hconv → потребитель (отсутствует).
-  Соответствие ворот и посылок — оценка: G1 = 3–5, G3 = 6, G3c/G4 = 1–2, 7 — сборка.
-Открытые вилки:
-  - 6 кандидатов-поставщиков для G1, 6 для G3;
-  - Fokas: механизм 1 (Mellin/Abel–Plana) или 2 (граничный член Штурма–Лиувилля), BRIEF:44–51;
-  - «ground = trial» — долг, не опровергнуто;
-  (крыша решена 25.09: каноническая — `rh_of_real_zero_family_tendsto_centeredXi`;
-   7-портовая `rh_of_canonical_slots` — история; `comparator/Solution.lean` и README приведены в соответствие.
-   `orchestrator/roof_port_ledger.py` переведён на новую крышу: 3 порта hzeros/hentire/hconv, HEAD_LOCKED.)
-
-## Последний доказанный результат
-- 2026-09-26 Mac: [source transfer](../routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md) проверен на PAPER: ошибка точной строки <=(Z*alpha+E)/(Z-E), без деления source-ошибки на gap. При принятых hmode/hchi и хвостовых оценках вклад E исчезает; семейная скорость центральной alpha открыта. Диагностика m4/m8/m13: 0.03089/0.05534/0.06052, не доказательство хвоста.
-- 2026-09-25 Mac: [независимый энергетический порог](../routeB_bus/fokas_k_sign_2026-09-25/INDEPENDENT_ENERGY_SHIFT.md): для рациональной reference-строки m8 Arb строго подтвердил отрицательный Rayleigh-complement, но при mu=10^-18 — ground ниже mu, всё q-perp выше mu с запасом 3*10^-17 и проекционную ошибку <0.05536. Также сертифицирован кластер четырёх нижних уровней. PAPER-лемма и код независимо проверены; это НЕ выбранный кофинальный source-пакет.
-- 2026-09-25 Mac: [полный K/sign-пакет](../routeB_bus/fokas_k_sign_2026-09-25/REPORT.md):
-  [Аудит исходного Fokas-goal](../routeB_bus/fokas_k_sign_2026-09-25/GOAL_AUDIT.md): проверка завершена точным препятствием fixed-beta consumer; Goal058 и cellwise tracking открыты.
-  PAPER Robin-width усилен до `G/8*(16m-3)/(24m-3)*4^(-2m)` без смены склейки;
-  строгий Arb m2 finite-algebra margin с уточнённым Frobenius budget положителен.
-  Source applicability m2 и cofinal sign не закрыты; диагностики m4/8/13 — не доказательство хвоста.
-  Дополнительно: [signed density test](../routeB_bus/fokas_k_sign_2026-09-25/NORMALIZED_CORRELATION.md) строго исключил pointwise positivity на reference m2; m4 cancellation factor ~759 — только диагностика.
-  Ответ №7 даёт более сильную скобку при m>=10000 и убивает только RAW_R6 value-anchor; наш центр+производная не подпадает под этот kill.
-- 2026-09-25: Fokas step 1 в Lean: положительность двух выбранных θ, общее
-  Mellin–Green тождество с нижним краем и точный перенос выбранной строки
-  через sTrial к Mellin/Gwin с фазой `(-1)^n` при существующем условном порте
-  `CCMLemma73PreAnchorPort`. Конечная paired-window формула также выведена
-  при явной `MellinConvergent` для каждого слагаемого; эту посылку для выбранного
-  источника ещё нужно закрыть. `q3_check.sh` — ok; полный `lake build` — 8219 jobs,
-  exit 0. Rank-2 residual identity, decay и sector floors открыты.
-- 2026-09-25: четыре Lean-кандидата 22.09 побайтно перенесены в `Q3/Proofs/RouteB/Q3*Candidate20260922.lean`;
-  `scripts/q3_check.sh` — ok, полный `lake build` — 8215 jobs, exit 0. Только аксиомы
-  propext/Classical.choice/Quot.sound. Теоремы остаются условными; `hmode` и RH не закрыты.
-- Paired-window Mellin identity, Rminus crosswalk, Euler identity: PAPER-level
-  (`docs/Codex/BRIEF_2026-09-22_FOKAS_PAIRED_WINDOW.md`, `docs/Codex/REPORT_2026-09-22_FOKAS_RMINUS_CROSSWALK.md`).
+Маршрут: Route B → Goal058, крыша `rh_of_real_zero_family_tendsto_centeredXi` (одна семья F: вещественные нули + F → Ξ).
+Все звенья, статусы, последний доказанный результат и убитое — только в `docs/Codex/PAPER_CHAIN.md` (не дублировать здесь).
+Коротко: закрыто на бумаге 7 из 14 (G2, G2b, hentire, G5 — Lean; G4 — статья CCM; hmode, hχ/hθ — бумага);
+ядро открыто: G1 (простота/чётность основного состояния) и G3 (tracking), плюс G3c, crosswalk G4, сборка.
 
 ## Следующий шаг — единственная линия атаки (B), владелец 2026-09-28
 Решение по панели (`PANEL_2026-09-28_STRATEGY.md`): **перенос источника (Fokas/SOURCE_TRANSFER)**,
