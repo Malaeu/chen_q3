@@ -122,6 +122,34 @@ kernel for `r>=3`. Adding `F_m*` or arbitrary derivative rows would define a new
 test; it does not follow from the transfer statement. The `gamma_mr` death
 criterion therefore remains undefined as written.
 
+## Rayleigh cut `mu=a` on the actual source complement
+
+For `q=zhat_m/Z_m`, the probe now computes `a=<q,K_m q>` and diagonalizes the
+compression of the **full complex Hermitian** `K_m` to the actual `q`-orthogonal
+complement. Thus `delta_m = min_{v perpendicular to q, ||v||=1}
+<v,(K_m-aI)v>` directly tests the proposed cut `mu=a`. The three excited full-K
+modes with largest source weights are retained with their one-based full-K
+indices, eigenvalues, and fractions of `alpha_m^2`; all excited weights are
+summed internally to reconstruct `alpha_m`.
+
+| m | `a=<q,Kq>` | `alpha_m` | Three largest excited modes: index, eigenvalue, weight / `alpha_m^2` | `delta_m` |
+|---:|---:|---:|---|---:|
+| 8 | `1.14002610e-11` | `5.53421606e-2` | `3: 6.37272843e-15, 99.5991%`; `5: 1.08721068e-10, 0.398300%`; `7: 3.54575790e-7, 0.002582%` | `-1.14002276e-11` |
+| 12 | `6.31784632e-17` | `5.95896248e-2` | `3: 1.62994802e-23, 99.5399%`; `5: 9.64469424e-19, 0.457272%`; `7: 1.61940856e-14, 0.002743%` | `-6.31784632e-17` |
+| 16 | `7.35180327e-19` | `5.75754477e-2` | `3: 4.73341848e-32, 99.5724%`; `5: 7.34648880e-27, 0.425402%`; `7: 4.62977432e-22, 0.002196%` | `-7.35180327e-19` |
+| 24 | `1.33705780e-26` | `5.32068014e-2` | `3: 4.27620162e-48, 99.6556%`; `5: 9.97419813e-43, 0.343151%`; `7: 8.58410881e-38, 0.001233%` | `-1.33705780e-26` |
+
+The negative `delta_m` values show that `mu=a` fails to give positivity on
+`q^perp` for these four finite reference rows. The finite-precision reflection
+defects are precision-sensitive (the m=24 value changes substantially in the
+180-dps repeat recorded above), so exact parity is not assumed; the calculation
+uses the complex `q^perp` regardless. The absolute error in reconstructing
+`alpha_m^2` from all excited weights is at most `6.2e-142` at 140 dps.
+
+This remains a finite, subthreshold **non-interval diagnostic**. It tests the
+reference rows and the particular shift `mu=a`; it neither supplies an
+eventual selected-family counterexample nor rules out another source cut.
+
 For `E_m`, (T4) requires a uniform Robin-rectangle row error plus the
 selected infinite-tail bound. The existing separate m=8 Arb calculation has
 `E_energy<1.900e-31` and **conditional** `E_tail<4.186e-21`, giving a

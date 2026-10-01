@@ -34,7 +34,7 @@ REFERENCE_SOURCE = SOURCE_DIR / "rectangle_probe.py"
 M8_CROSSCHECK = SOURCE_DIR / "schur_probe_m8_dps140.json"
 OUTPUT = Path(__file__).with_name("results.json")
 EXPECTED_SHA256 = {
-    "docs/Codex/NEXT.md": "92154cf5f7b559b56213c431b027e804b8743817683c1eac40153d04a23b2753",
+    "docs/Codex/NEXT.md": "eb67d6db8be5380b824f5ff3b82127d6f0b125170db2f789333bbeb280db7b0b",
     "docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md": "b01d145b3ad3e83caf4d097da50150ec824f0876c731dde7bb0c74bb616acaa0",
     "docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
     "docs/routeB_bus/fokas_k_sign_2026-09-25/rectangle_probe.py": "0e23ecd7252c0a52175c642ecc95a7527becf1ac7933f2f7ef939571ec4b0987",
@@ -225,6 +225,29 @@ def mp_string(value: mp.mpf, digits: int) -> str:
     return mp.nstr(value, n=digits, strip_zeros=False)
 
 
+def orthogonal_complement_basis(q: mp.matrix) -> mp.matrix:
+    """Build an orthonormal basis of the complex complement of unit q."""
+    n = q.rows
+    e0 = mp.zeros(n, 1)
+    e0[0] = 1
+    phase = q[0] / abs(q[0]) if q[0] != 0 else mp.mpf(1)
+    householder_vector = q + phase * e0
+    denominator = mp.re((householder_vector.H * householder_vector)[0])
+    if denominator <= 0:
+        raise ArithmeticError("cannot form Householder complement basis")
+
+    # H maps e0 to -conj(phase)*q, so its remaining columns form an
+    # orthonormal basis perpendicular to the complex vector q.
+    basis = mp.zeros(n, n - 1)
+    for j in range(1, n):
+        column = mp.zeros(n, 1)
+        column[j] = 1
+        column -= 2 * householder_vector * mp.conj(householder_vector[j]) / denominator
+        for i in range(n):
+            basis[i, j - 1] = column[i]
+    return basis
+
+
 def run_one(m: int, dps: int) -> dict[str, object]:
     mp.mp.dps = dps
     t0 = time.monotonic()
@@ -365,7 +388,55 @@ def run_reference_row(m: int, dps: int) -> dict[str, object]:
     u = mp.matrix([eigvecs[i, 0] for i in range(eigvecs.rows)])
     overlap = (u.H * q)[0]
     projection = u * overlap
-    alpha = mp.sqrt(mp.re(((q - projection).H * (q - projection))[0]))
+    alpha_sq = mp.re(((q - projection).H * (q - projection))[0])
+    alpha = mp.sqrt(alpha_sq)
+    all_excited_weights = []
+    for j in range(1, eigvals.rows):
+        uj = mp.matrix([eigvecs[i, j] for i in range(eigvecs.rows)])
+        weight = abs((uj.H * q)[0]) ** 2
+        all_excited_weights.append({
+            "full_K_index": j + 1,
+            "eigenvalue": mp_string(eigvals[j], dps),
+            "weight": mp_string(weight, dps),
+            "fraction_of_alpha_squared": (
+                None if alpha_sq == 0 else mp_string(weight / alpha_sq, dps)
+            ),
+        })
+    spectral_alpha_sq = mp.fsum(
+        mp.mpf(mode["weight"]) for mode in all_excited_weights
+    )
+    spectral_alpha = mp.sqrt(spectral_alpha_sq)
+    dominant_mode = max(
+        zip((mp.mpf(mode["weight"]) for mode in all_excited_weights), all_excited_weights),
+        key=lambda item: item[0],
+    )[1]
+    three_largest_excited_weights = sorted(
+        all_excited_weights,
+        key=lambda mode: mp.mpf(mode["weight"]),
+        reverse=True,
+    )[:3]
+
+    # Test the proposed cut mu=a directly on q^perp.  This compression is built
+    # from q itself and does not rely on an exact parity assertion.
+    a = mp.re((q.H * K * q)[0])
+    q_perp = orthogonal_complement_basis(q)
+    compressed_K = q_perp.H * K * q_perp
+    q_perp_eigvals, q_perp_eigvecs = mp.eighe(compressed_K)
+    q_perp_minimum = q_perp_eigvals[0]
+    q_perp_minimizer = q_perp * mp.matrix(
+        [q_perp_eigvecs[i, 0] for i in range(q_perp_eigvecs.rows)]
+    )
+    cut_margin = q_perp_minimum - a
+    projected_cut_residual = q_perp.H * (
+        (K - a * mp.eye(K.rows)) * q_perp_minimizer
+        - cut_margin * q_perp_minimizer
+    )
+    q_perp_gram = q_perp.H * q_perp
+    q_perp_basis_orthogonality = max(
+        abs(q_perp_gram[i, j] - (1 if i == j else 0))
+        for i in range(q_perp_gram.rows)
+        for j in range(q_perp_gram.cols)
+    )
     residual = K*u - eigvals[0]*u
     reflection_z = mp.matrix([z[2*m-i] for i in range(2*m+1)])
     reflection_u = mp.matrix([u[2*m-i] for i in range(2*m+1)])
@@ -377,6 +448,35 @@ def run_reference_row(m: int, dps: int) -> dict[str, object]:
         "center_energies": {"c0": mp_string(c0, dps), "c4": mp_string(c4, dps)},
         "Z_m_reference": mp_string(Z, dps),
         "alpha_m_reference": mp_string(alpha, dps),
+        "reference_rayleigh_a_full_K": mp_string(a, dps),
+        "three_largest_excited_spectral_weights": three_largest_excited_weights,
+        "alpha_squared_from_all_excited_spectral_weights": mp_string(
+            spectral_alpha_sq, dps
+        ),
+        "alpha_from_all_excited_spectral_weights": mp_string(spectral_alpha, dps),
+        "alpha_squared_reconstruction_abs_error": mp_string(
+            abs(spectral_alpha_sq - alpha_sq), dps
+        ),
+        "dominant_excited_mode_fraction_of_alpha_squared": (
+            None if alpha_sq == 0 else mp_string(mp.mpf(dominant_mode["weight"]) / alpha_sq, dps)
+        ),
+        "cut_mu_equals_a_q_perp_test": {
+            "definition": "min_{v perpendicular to q, ||v||=1} <v,(K-aI)v>, a=<q,Kq>",
+            "a_full_K": mp_string(a, dps),
+            "q_perp_minimum_eigenvalue_of_K": mp_string(q_perp_minimum, dps),
+            "minimum_q_perp_value_of_K_minus_aI": mp_string(cut_margin, dps),
+            "minimizer_q_orthogonality_residual": mp_string(
+                abs((q.H * q_perp_minimizer)[0]), dps
+            ),
+            "q_perp_basis_q_orthogonality_inf": mp_string(
+                max(abs((q.H * q_perp)[j]) for j in range(q_perp.cols)), dps
+            ),
+            "compressed_eigenpair_projected_residual_inf": mp_string(
+                max_abs_vector(projected_cut_residual), dps
+            ),
+            "q_perp_basis_orthogonality_inf": mp_string(q_perp_basis_orthogonality, dps),
+            "status": "FINITE_DIMENSIONAL_NUMERICAL_DIAGNOSTIC_ONLY",
+        },
         "ground_eigenvalue_full_K": mp_string(eigvals[0], dps),
         "ground_eigenvalue_gap_full_K": mp_string(eigvals[1]-eigvals[0], dps),
         "source_even_reflection_difference_norm": mp_string(
