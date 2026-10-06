@@ -952,3 +952,148 @@ finite Hilbert cross term and moving Gram normalization also have no
 established map to this theorem. Excluded direct application only, not
 an impossibility claim. Three shelf queries were INCOMPLETE; they do not
 establish absence. No source-sign supplier found in this bounded check.
+
+
+### Signed source-band continuation question (5/10)
+
+Continue G1 in the same chat, question 5/10. Answer4's auxiliary prime-band and full-form error reduction has passed independent complementary audits and root checks; question+answer+checks are committed/pushed at f451d06f7cf754263a7bec82e1033e29bb882993, Malaeu/chen_q3 branch rh_clean. Exact answer: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_PRIME_BAND_INLINE_2026-10-06.md; conclusions: ODD_TRIAL_SIGN_2026-10-06.md. Preserve original m=m_j,N=m,L=log m, full G/G'', actual complex Gram and all prime powers.
+
+Two corrections to your text: Fourier envelope (4) inherits |omega|>=2 (satisfied eventually); section7 averaging requires w>=0 and sum w=1. Without normalization total weight100 on diag(2,-1) is a counterexample. Neither affects your main band estimate.
+
+NEW CHECKED REDUCTION, substantially weaker arithmetic target: Omega=2pi*m/L, T=Omega*(1+1/m). For beta=2k+1/2, a'(w)=4w sum beta/(beta²+w²)² >=1/(16w) for w>=8: at least w/8 beta lie in [w/2,w], each contributes >=1/(2w²). Thus Delta_cut=a(T)-a(Omega)>=1/(32m). With d= kappa-lambda(P,E), dsharp=d+Delta_cut, eventual M>0 forces exp(Cm/L)*(dsharp)_+ ->0 for EVERY C>0 by the already checked odd envelope and mass/exterior estimates. Your |d-dhat|<=tau with tau=o(1/m) means it is enough to prove
+  dhat_m=kappa_m-lambda_max(Phat_m,Ehat_m) >= -1/(128m)
+on an UNBOUNDED ORIGINAL subsequence. Then dsharp>=1/(64m) there eventually, refuting the prescribed U. Constant positive limsup is not needed. Alternatively your complete Qhat budget32 suffices.
+
+New finite diagnostic only: m8/m12/m16 dsharp≈.258366622/.011793946/.475647464; full H/E minima at m12≈.103590902, m16≈.586376076. m16 repeated 90 digits/order36 and100/order40, all stored48digits agree. No interval or asymptotic inference.
+
+Please attack the actual remaining signed sum (8)-(9) on b=S z, uniformly in z, now against kappa+1/(128m), on an unbounded original subsequence. Obtain source-specific cancellation, or a rigorous source counterargument to this attempted bound. The infinite tail, mass, phase, boundary correction, and metric errors are already paid: another truncation/relabeling is not the missing result. Our own absolute-operator/Hilbert estimates still give sqrt(m)log(m) instead of the needed log-frequency scale; abstract positive averages do not yield a common cell. A useful genuinely new step would be a proved estimate for the contracted source-weighted Hilbert cross term combined with its diagonal prime term, with an error small enough for this consumer.
+
+Bounded alias-hunt checked primary BCR arXiv1411.7764v1 Theorem1: theta<17/33 for a smooth continuous |zeta*A|² mean square does not directly cover prime length m at height m/log m, nor this lattice/Hilbert/Gram combination. Montgomery pair correlation assumes RH. Do not import either without proving the missing map; do not assume signs of off-line zeros. If the weaker inequality cannot be obtained, identify the exact first source correlation whose bound would settle it, and derive a nontrivial estimate for that correlation if possible, explicitly retaining any unpaid remainder. No Lean or repository writes. RH, G1 and G3 remain open; refuting this U is not refuting RH.
+
+The question5 send tool returned success for the existing chat. Immediate
+and 10-second connector readbacks still showed question4, with chat active.
+Delivery persistence remains to be reconciled; do not resend.
+
+Continuation readback confirms question5 user item
+cf4ca59c-2c2a-4ea8-aa44-58179b28bba2 with the exact sent text; chat active.
+No assistant answer5 yet. Delivery uncertainty resolved; do not resend.
+
+
+### Own source-plane commutator attempt while answer5 runs
+
+Let H_nk=1/(n^2-k^2) off diagonal, D=diag(n^2),
+u_n=sqrt(2/L)*(-1)^n*F(hn), p_n=z0-h^2*n^2*z2, b_n=p_n*u_n,
+sigma=sum u_n, and B_n=n*S_{m,n}. On m<n<=3m,
+[D,H]=11^*-I and H(Du)=D(Hu)-sigma*1+u. Thus exactly
+
+    (Hb)_n=p_n*(Hu)_n+h^2*z2*(sigma-u_n).
+
+Substitution into answer4 (9) reduces both source columns to one Hu
+and scalar weighted source moments; it does not change the exact Gram
+sum |p_n|^2*u_n^2 or remove the diagonal prime term.
+The full off-diagonal matrix is (2/pi)[H,diag(B)]. No improved arithmetic
+bound follows from this identity alone: scaling an unconstrained B
+preserves [D,H] while scaling that commutator. The actual source B is
+fixed, so this is a limitation of the algebraic implication, not a
+counterexample to the source claim. The still-unestimated moments retain
+S_{m,n} and C_{m,n}. Generic Loewner/displacement algebra was already
+closed in PAPER_CHAIN; this attempt does not reopen it as a sign supplier.
+Native /root/even_tail_identity_check derived the source-plane formula;
+root checked its sign and complex coefficient dependence. No new source
+sign or better asymptotic bound was obtained.
+
+
+### Continuum prime cancellation and failure of its crude discrepancy bound
+
+For even complex r supported in I, C_r is real/even and C_r(L)=0.
+Define the continuum prime term Pcont=2*integral_0^L exp(s/2)*C_r(s) ds.
+The exact kernel identity exp(|v|/2)=2*cosh(v/2)-exp(-|v|/2) gives
+
+    Pcont = pole_even(r)-Jgreen(r),
+    Jgreen=(1/(2*pi))*integral |rhat(omega)|^2/(omega^2+1/4) domega >=0.
+
+Thus W(r)=D(r)-c_ar*E(r)+Jgreen(r)-deltaP(r), where D is the FULL
+difference-energy form, including its even image correction, and
+
+    deltaP=2*integral_[1,m] x^(-1/2)*C_r(log x) d[psi(x)-(x-1)].
+
+Here psi(x)=sum_(q<=x) Lambda(q). Every original prime power is retained;
+the atom at m has zero overlap. With Dpsi=psi-(x-1), Dpsi(1)=0 and
+f(m)=m^(-1/2)C_r(L)=0, integration by parts has no boundary term:
+
+    deltaP=-2*integral_1^m Dpsi(x)*x^(-3/2)
+                    *[C_r'(log x)-C_r(log x)/2] dx.
+
+For the finite auxiliary band rho, Ehat=||rho||^2, W=hR and s=R-m,
+|C'|<=||rho||*||rho'||+||rho||_infinity^2<=(W+2s/L)*Ehat.
+Consequently the uniform derivative/absolute-value estimate gives
+
+    |deltaP|/Ehat <= 2*(1/2+W+2*(R-m)/L)*Bpsi(m),
+    Bpsi(m)=integral_1^m |Dpsi(x)|*x^(-3/2) dx.
+
+This particular upper certificate cannot prove the required asymptotic
+margin: Bpsi(m)>=integral_1^2(x-1)*x^(-3/2)dx=3*sqrt(2)-4>0.
+At R=3m its displayed right side is therefore at least a constant times
+m/log m, larger than kappa~log m. This does NOT lower-bound the actual
+discrepancy or refute its cancellation. Treating small x exactly removes
+that fixed-floor obstruction but supplies no signed source estimate for
+the remaining integral. A positive continuum model cannot be substituted
+for the actual prime form without paying this discrepancy.
+
+Root derived these identities and the quantitative failed certificate;
+/root/hardy_sampling_check independently verified complex parity,
+Fourier normalization, both endpoints and the constant 3*sqrt(2)-4.
+The shelf query was INCOMPLETE (semantic-index freshness failure), not
+an absence result. No new source sign or RH implication is asserted.
+
+### Answer 5: Type I endpoint reduction (PAPER checked)
+
+Complete inline answer: `PROSHKA_TYPE_I_ENDPOINT_INLINE_2026-10-06.md`,
+SHA256 `1c2b642a77a50025670ab1c969e6d1c56c6f2f214dede14915a58b01412804bb`.
+Chat `6aba5f5a-f804-83ed-a667-68147ee00f59`, assistant message
+`b01fac38-ecf2-42c8-9d22-3deab08928cf`; read_thread confirms idle.
+The linked supplement has not been retrieved; the inline derivation is
+the actual audit target. No signed source inequality is claimed.
+
+Root analytic cross-check: on A<=x<=B, L>=1, delta<=1/2, put
+q(x)=1/(exp(i*delta(x))-1). The elementary sine bound gives
+
+    |q| <= pi*x/t,
+    |q'| <= pi^2/t,
+    |q''| <= (2*pi^3+3*pi^2)/(t*x).
+
+Together with the amplitude bounds in (21), this gives constants
+5*pi+2*pi^2<36 for |F'| and
+10*pi+16*pi^2+4*pi^3<400 for |F''| in (22).
+For the endpoint estimate one may use the sharper
+|a|<=L/(sqrt(d)*sqrt(x)), since 0<=theta_1<=1 and 0<=log x<=L.
+Each endpoint is at most pi*L*sqrt(m)/(d*t), so their sum is
+at most L^2/(d*sqrt(m)), stronger than the stated constant 2.
+The variation of g_r=integral_(r-1)^r F'(x) dx is bounded by
+integral_A^B |F''|; together with |g_B| this gives 836 as stated.
+Empty ranges use endpoint zero by convention; eventually Q<m/2
+and m/d grows uniformly for d<=k^2, so all relevant ranges are nonempty.
+Native /root/hardy_sampling_check independently verified (15)-(22),
+including the tent-kernel bound for the total second-difference variation.
+The empty-range convention is a finite-index qualification; it does not
+alter the eventual theorem. Native /root/even_tail_identity_check independently
+verified the divisor identity, cutoffs, complex metric, error rate and
+conditional threshold implication. Both bounded audits found no substantive
+error. The matrices in (1) mean the Hermitian matrices associated to the
+displayed quadratic forms, pulled back through the same S_m.
+
+Root algebra cross-check: writing nu=nu_short+nu_long and
+Lambda=Lambda_short+Lambda_long, nu*1=epsilon and 1*Lambda=log imply
+Lambda=Lambda_short+nu_short*log-nu_short*Lambda_short*1
+       +nu_long*Lambda_long*1.
+For q>k the first term is zero, and the last two convolutions give
+exactly alpha_k and beta_k in (8). No prime powers are discarded.
+For n,ell in (m,3m], |n^2-ell^2|>=2(m+1)|n-ell|, so both absolute
+row and column sums of H are <=H_(2m)/(m+1). Schur's bound and
+max n<=3m give C_m in (27) for arbitrary complex b. Substituting
+b=S*z preserves ||b||^2=z*Ehat*z exactly, without inversion of Ehat.
+
+Accepted scope: Type I equals explicit endpoints up to eps=o(1/m).
+The lower range plus Type II plus endpoints remains unbounded at the
+required signed threshold. Neither eventual M>0 nor Psi>0 nor their
+cofinal refutation is obtained. G1, G3 and RH remain OPEN.

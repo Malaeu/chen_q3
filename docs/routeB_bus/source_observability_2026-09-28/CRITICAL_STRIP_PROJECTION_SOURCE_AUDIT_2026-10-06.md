@@ -171,3 +171,74 @@ in `G6N1SelectedFerrersTrackedGroundTransform.lean:153`; no independent
 ground-center denominator is introduced. Status: verified conditional
 PAPER consequence of (T1)-(T6). No source-node status is changed and no
 alpha estimate is claimed proved. Lean was not run.
+
+
+## Selected-shell G4 scalar and phase crosswalk (PAPER, 2026-10-06)
+
+Source reread at HEAD f451d06f7cf754263a7bec82e1033e29bb882993.
+This is a paper identification using the accepted HMODE/chi inputs,
+not a fresh Lean build or a claim about the ground eigenvector.
+
+Let A0=1/h0(0), A4=3/h4(0), d=sqrt(I0^2+I4^2),
+q=(I4*h0-I0*h4)/d. In ProlateLayer.lean:73--76,
+I0=integral h0=chi0*h0(0), I4=integral h4=chi2*h4(0).
+The identifier chi2 is carrier index 2, corresponding to full mode 4;
+it is not the Fourier eigenvalue of full mode 2.
+The selected-source nonzero centers and d>0 justify the divisions.
+
+With a72=-A0*A4*d/16, exact cancellation gives
+
+    a72*q=(chi0*A4*h4-3*chi2*A0*h0)/16.
+
+This is the source formula in G6N1SelectedFerrersZeroMassCylinderPacket.lean
+:129 and :156. Its integral vanishes EXACTLY at every source index;
+zero mass is not obtained by taking a limit. Accepted HMODE and chi->1
+then give the full-window O(lambda^-2) approximation to
+
+    (D4-D0*3)/16 = (pi/2)*x^2*(2*pi*x^2-3)*exp(-pi*x^2)
+                 = h_CCM(x).
+
+The target is literally CCM equation (7.1), and the selected packet is
+an admissible choice of its 'suitably normalized' h_lambda in Lemma
+7.2(ii). The paper does not fix an additional unique finite scalar:
+we identify a valid representative, not an unspecified independently
+normalized finite function. The source packet-rate theorem is at :182.
+
+Parameter dictionary is lambda=sqrt(k+2), m=N=k+2=lambda^2,
+c=2*pi*lambda^2, with Ferrers coordinate x/lambda and full modes 0/4.
+This agrees with CCM (7.5),(7.9). Primary paper locators are
+ccm.txt:1502--1587,1618--1632,1691--1709 in
+../litreview/pdfs/survey_2026-09-03_sources/.
+
+The production normalization is a DIFFERENT, explicitly recorded scale:
+a73=4*a72 (G6N1SelectedFerrersFactorFourPortRate.lean:50).
+It tends to 4*h_CCM, not to h_CCM. The exact source Mellin identity
+G6N1ExplicitCCMLimitMellinNormalization.lean:744 states
+
+    mellin(E_star h_CCM)(-i*z)=centeredXi(z)/4.
+
+Its factor-four corollary at :768 yields centeredXi itself.
+G6N1PreAnchorLimitZeroModeAndSelectedShell.lean:35 fixes the Mellin
+coordinate -i*z; the reflected Xi argument is removed by the functional
+equation in the displayed proof, not by changing the coordinate silently.
+The polynomial argument -L*z/(2*pi) is the separate finite-transform
+coordinate; it must not be confused with the Mellin variable -i*z.
+
+Root reread the scalar identity, ProlatePair integral/center equations,
+CCM equations and both Mellin-normalization theorems. Independent native
+/root/projection_bridge_audit found no substantive error and confirmed
+the selected parameter dictionary, with the representative-versus-unique
+normalization qualification above. It found no new analytic premise
+for this trial crosswalk beyond accepted mode/chi and the existing
+Mellin-port proof. No ground/trial identification is inferred.
+
+Conclusion: the selected-shell G4 scalar/phase/parameter correspondence
+is resolved on PAPER conditional on the accepted HMODE/chi suppliers.
+This does not assert the full arbitrary-production crosswalk, replace
+G3, provide G1, or certify a transitive Lean build/axiom check.
+
+A separate read-only reconciliation by /root/g3c_reconcile compared this
+section with the primary CCM text and current definitions and found no
+discrepancy. It confirmed that the paper leaves its finite scalar free,
+so the displayed a72*q is an admissible representative without an extra
+scalar hypothesis; the convergence estimate still consumes HMODE/chi.

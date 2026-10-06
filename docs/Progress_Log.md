@@ -7844,3 +7844,42 @@ sequence with Proshka; no further finite-table extrapolation.
 ODD_TRIAL_SIGN_2026-10-06.md and signed_tail_probe.py/json beside it.
 **Чей вердикт:** Proshka explicitly leaves the sign unproved; native checks
 and root accept only the auxiliary reduction. No Lean, no RH promotion.
+
+
+## 2026-10-06 — Selected-shell G4 normalization crosswalk
+**Развилка:** Main G1 question5 is delivered and active; check permitted G4 in parallel.
+**Выбрали:** Identify the exact selected zero-mass trial with an admissible
+CCM h_lambda normalization, preserving the production factor four.
+**Почему:** a72*q=(chi0*A4*h4-3*chi2*A0*h0)/16 exactly, with zero integral
+at every index, and its accepted HMODE/chi limit is h_CCM.
+**Что отвергли:** Claiming equality to an unspecified uniquely normalized
+paper h_lambda, or identifying this trial with the ground eigenvector.
+**Инсайты:** a73=4*a72 tends to 4*h_CCM because Mellin(E h_CCM)=Xi/4;
+the factor four occurs once. The original coordinate and schedule agree.
+**Проверка:** Root primary/source reread; independent projection_bridge_audit
+and separate g3c_reconcile read-only checks, no substantive discrepancy.
+**Блокеры:** G1, G3, full same-family assembly and later kernel verification.
+**Иглы Зингера:** Exact scalar cancellation, chi2-to-full-mode4 dictionary,
+quarter-Xi normalization and reflected Mellin coordinate.
+**Следующий ход:** Process Proshka answer5 on the actual signed arithmetic
+inequality. No Lean work before the paper chain is complete.
+**Адреса:** docs/routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md.
+**Чей вердикт:** Selected-shell G4 crosswalk is PAPER checked conditional
+on accepted HMODE/chi; no G1/G3/RH claim or new Lean validation.
+
+## 2026-10-06 — Type I endpoint cancellation independently checked
+**Развилка:** Answer5 offers arithmetic cancellation but no source sign.
+**Выбрали:** Verify exact divisor identity and all analytic constants.
+**Почему:** Its relative error is o(1/m), below the current threshold.
+**Что отвергли:** Dropping the explicit endpoint term or the low arithmetic range.
+**Инсайты:** Two discrete integrations by parts give the gain; the complex
+metric pullback has no condition-number loss.
+**Проверка:** Root derivations plus independent hardy_sampling_check and
+even_tail_identity_check; empty finite ranges require endpoint-zero convention.
+**Блокеры:** Low-range plus bilinear source correlation remains unsigned.
+**Иглы Зингера:** Preserve joint diagonal/Hilbert contraction and product cutoff.
+**Следующий ход:** Bound the retained source correlation at its same-cell
+threshold; no extra Fourier truncation or finite table substitutes for it.
+**Адреса:** source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md
+and PROSHKA_TYPE_I_ENDPOINT_INLINE_2026-10-06.md under docs/routeB_bus.
+**Чей вердикт:** Auxiliary PAPER result checked, G1/G3/RH still OPEN.

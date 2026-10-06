@@ -9,7 +9,7 @@ F = selected Ferrers tracked ground transform вдоль одного tail reind
 
 | Звено | Что утверждается | Бумага | Lean / локатор |
 |---|---|---|---|
-| G0 | объект, координата, нормировка, расписание m=N=k+2 | OPEN частично: нормировка «не закреплена» (contracts:64) | семья определена в TailReindex |
+| G0 | объект, координата, нормировка, расписание m=N=k+2 | OPEN частично: selected trial scale закреплён (G4, 06.10); итоговая same-family сборка не завершена | семья определена в TailReindex |
 | G1 · hfloorEv | одна постоянная β>0 для trial-complement floor | **KILLED(shape)** для буквальной выбранной семьи: единичные y_j⊥q_j с Re⟨y_j,(K_j−a_j)y_j⟩≤U_j→0 | `INDEPENDENT_COMPLEMENT_FLOOR_2026-09-25` + `FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25`; constant-β приёмник есть, вход невозможен |
 | G1 · hratioEv | residualEnergy/β² < 1 eventually | OPEN; constant-β wrapper неприменим, нужен cellwise ‖r_j‖/δ_j + новый потребитель | условный приёмник есть |
 | G1 · hoddEv | β₀‖x‖² ≤ Re⟨x,(K−a)x⟩ на нечётном секторе | OPEN; мост из hfloorEv верен условно (PAPER_OWN rev), но его вход убит | условный приёмник есть |
@@ -20,11 +20,11 @@ F = selected Ferrers tracked ground transform вдоль одного tail reind
 | hmode | sup‖w_m − D_n‖ ≤ C_n/m, центр 1/h0(0), 3/h4(0), моды 0/4, полное окно | PAPER_OWN rev + PROSHKA PROVED_PAPER (RPT:1120-1220) | hmode⇒W5/N2 в кандидате; сам hmode не Lean |
 | hχ / hθ | следствия hmode | PAPER_OWN rev | hχ кандидат; формализация не завершена |
 | G3c | projected trial → continuum trial (projection tail) | OPEN (contracts:267,280; master:1222) | нет |
-| G4 | CCM Lemma 7.3: k_λ → Ξ равномерно на полосах | PAPER_PUBLISHED arXiv:2511.22755 §7 L7.3 p.31 (препринт); crosswalk h_λ↔hTrial_m OPEN (master:994-1004) | импорт отсутствует |
+| G4 | CCM Lemma 7.3: k_λ → Ξ равномерно на полосах | PAPER_PUBLISHED arXiv:2511.22755 §7 L7.3 p.31; selected-shell scalar/phase crosswalk PAPER_OWN rev при принятом HMODE/chi (06.10) | импорт отсутствует |
 | G5 | одна семья: вещественные нули + F → Ξ ⇒ RH (Гурвиц) | LEAN (3 стандартные аксиомы) | `Goal058DirectGroundZeroEscape.lean:27` |
 | Сборка | tail reindex + G3 + G3c + G4 ⇒ hconv для той же F | OPEN | нет |
 
-**Итог:** 14 звеньев. Закрыто на бумаге 7: LEAN 4 (G2 — условно на G1, G2b, hentire, G5), PAPER_PUBLISHED 1 (G4 — сама лемма; crosswalk открыт), PAPER_OWN rev 2 (hmode, hχ/hθ). KILLED(shape) 1 (hfloorEv, constant-β). OPEN 6 (G0 частично, hratioEv, hoddEv, G3, G3c, Сборка). RH не доказана; `PX_RH_CLAIM: NOT_MADE`.
+**Итог:** 14 звеньев. Закрыто на бумаге 7: LEAN 4 (G2 — условно на G1, G2b, hentire, G5), PAPER_PUBLISHED 1 (G4; selected-shell crosswalk проверен при HMODE/chi), PAPER_OWN rev 2 (hmode, hχ/hθ). KILLED(shape) 1 (hfloorEv, constant-β). OPEN 6 (G0 частично, hratioEv, hoddEv, G3, G3c, Сборка). RH не доказана; `PX_RH_CLAIM: NOT_MADE`.
 
 ## Главное наблюдение
 CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недостающих шага своей программы:
@@ -37,8 +37,8 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 ## Открытые звенья
 
 ### G0 · нормировка
-- Открыто: закрепить нормировку F (contracts:64) и скаляр/фазу для crosswalk G4; координата s = −Lz/2π и расписание m=N=k+2 уже зафиксированы в TailReindex.
-- Следующий ход: закрыть вместе с G4 crosswalk (скаляр, фаза, C = 2πλ²).
+- Selected trial scalar/phase закреплены в G4 (06.10); координата конечного преобразования s = −Lz/2π и расписание m=N=k+2 заданы в TailReindex.
+- Открыто: довести итоговую сборку одной и той же ground-семьи F; trial crosswalk не заменяет G1/G3 и эту сборку.
 
 ### G1 · complement / cellwise floor (главный фронт)
 - Носитель: фиксированный `P : CCMLemma73PreAnchorPort`, i_j = cofinal index, m_j = N_j = φ_P(j)+2, K_j = sourceCCMFiniteMatrix i_j, q_j = selectedFerrersFiniteCCMRow P j, a_j = Re(q_j*K_jq_j), r_j = (K_j−a_j)q_j.
@@ -76,8 +76,8 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - Сверка 06.10: условный source bridge уже записан в `G6N1SelectedFerrersN2CompactDecayAssembly.lean:902`; candidate `selected_locally_uniform_xi_of_mode_rate` выводит trial→Ξ на |Im z|<1/2 из точного принятого PAPER HMODE. Нормировка и continuum port сверены независимо; свежая Lean-сборка не запускалась. Это projected trial, не ground F; same-family tracking остаётся G3. [Точные зависимости и границы проверки](../routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md).
 
 ### G4 · crosswalk
-- Лемма CCM 7.3 опубликована (препринт); открыто сопоставление h_λ ↔ hTrial_m: скаляр, фаза, C = 2πλ², координата преобразования (master:994-1004).
-- Следующий ход: своя бумажная попытка; Lean-импорт — после бумаги.
+- Selected-shell crosswalk проверен на PAPER (06.10): a72 q=(chi0 A4 h4−3 chi2 A0 h0)/16 реализует CCM «suitably normalized» h_λ, с точной нулевой массой и пределом h_CCM при HMODE/chi. λ=√(k+2), c=2πλ²; chi2 обозначает полную моду 4.
+- Production scale a73=4a72 даёт предел 4h_CCM, поскольку Mellin(E h_CCM)(−iz)=centeredXi(z)/4. Это не тождество trial=ground и не свежая Lean-сборка. [Формулы, первоисточник и независимая проверка](../routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md).
 
 ### Сборка → hconv
 - Открыто: одна теорема для той же F вдоль tail reindex из G3 + G3c + G4 ⇒ hconv ⇒ потребитель. Порядок: δ_j и масштаб → ‖r_j‖/δ_j + consumer → G3; G4/G3c параллельно; затем сборка; Lean после бумаги.
@@ -136,6 +136,8 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - Ответ 3/10 проверен на PAPER: точная чётная image-поправка, uniform mass `E_m≽μ_m diag(1,T_m^4)` и exterior error `R_m/μ_m→0`. Signed prime matrix остаётся OPEN. Для `d_m=κ_m−λmax(E_m^(−1/2)P_mE_m^(−1/2))` исходное M≻0 требует `d_m≤(C0 B_m+R_m)/μ_m→0`; знак d_m не установлен. [Ответ и проверка](../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md).
 
 - Ответ 4/10 проверен: signed prime/full form заменяются auxiliary полосой m<n≤3m с relative error o(exp(−c m/log m)), c<π²/2. Исходные K,U не меняются. Точный cutoff даёт Δ≥1/(32m); достаточно d_hat≥−1/(128m) на неограниченной исходной подпоследовательности, чтобы опровергнуть этот U. Эта арифметическая оценка OPEN; конечные m8/12/16 её не доказывают. [Вывод и аудит](../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md).
+
+- Ответ 5/10 проверен: точное разложение Vaughan даёт P_hat=P_low+V+End+Err, |Err|≤eps E_hat, eps=o(1/m), для комплексной исходной плоскости. End сохраняется явно; низкие аргументы и билинейная корреляция V не оценены. Достаточный совместный порог R≤(κ+1/(256m))E_hat на одной неограниченной исходной подпоследовательности остаётся OPEN. Это вспомогательная оценка, не знак и не закрытие G1.
 
 ## Заморожено: фронт 27.09 вечер
 - Глобальный трек (paper_weil, не selected Goal058): Q(f₀s) = P_s − N_s, DOM (N_s ≤ P_s для всех компактных гладких s) ≡ RH; ρ* = sup N_s/P_s ≥ 1 безусловно — сравнение критическое, нужна константа ровно 1 (REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md).
