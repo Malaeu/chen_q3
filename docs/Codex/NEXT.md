@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: 254f1c2d
+Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: df9e6fb3
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -60,7 +60,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **1/10 получен и проверен; 2/10 отправлен 21:17 Berlin**, Pro отвечает. Точный вопрос2 — `CAUSAL_DRESSING_AUDIT_2026-10-06.md` в той же bus-папке. Ждать и обработать; не пересылать.
+- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **2/10 получен и проверен; 3/10 отправлен 21:51 Berlin**, чат active. Перенос без I−R убит; scalar J_m good cells доказаны без RH и не дают full-carrier bound. Доказательство и точный вопрос3 — `ENDPOINT_FACTOR_AUDIT_2026-10-06.md` в той же bus-папке. Ждать и обработать; не пересылать.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)

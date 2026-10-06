@@ -7978,3 +7978,16 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Следующий ход: Pro вопрос2 отправлен в тот же чат, получение и активный ответ видны; ждать, не пересылать.
 - Адреса: CAUSAL_DRESSING_AUDIT_2026-10-06.md, NEGATIVE_GROWTH_SYMBOL_PREFLIGHT_2026-10-06.md; literature/polar_commutator_2026-10-06.
 - Чей вердикт: два непересекающихся bounded PAPER аудита плюс root crosswalk; SP/G1/G3/RH OPEN. Scoped commit сохраняет посторонние файлы; Lean не запускался.
+
+## 2026-10-06 — Endpoint factor обязателен; scalar good cells не различают RH
+- Развилка: answer2 предложил scalar J_m test после убийства переноса F→Z.
+- Выбрали: сохранить I−R и требовать общий full-carrier контроль на одной ячейке.
+- Почему: root Landau/Laplace argument доказывает предложенный scalar test без RH; независимый проход проверил H1 extension, normal convergence и integer rounding.
+- Что отвергли: удаление I−R (строгий signed two-mode counterexample); пересечение индивидуальных хороших подпоследовательностей без общей оценки.
+- Инсайты: signed scalar Laplace transform аналитичен около положительной оси; supremum по растущему carrier эту структуру не сохраняет. Polar target эквивалентен SP с O(log m) ошибкой.
+- Блокеры: общий upper bound для D_F−D_arch на всём V_m; SP/G1/G3/RH OPEN.
+- Иглы Зингера: Landau positive-real singularity; дано собственное короткое доказательство вместо неподтверждённого citation.
+- Следующий ход: вопрос3 в том же Pro-чате отправлен; дождаться, не дублировать.
+- Адреса: ENDPOINT_FACTOR_AUDIT_2026-10-06.md, PROSHKA_ENDPOINT_FACTOR_INLINE_2026-10-06.md, POLAR_TARGET_EQUIVALENCE_2026-10-06.md.
+- Чей вердикт: causal_algebra_audit по answer2, growth_symbol_attempt по собственной scalar лемме. Lean не запускался.
+- Сохранение: scoped commit вручную; phase_end.sh захватывает чужие untracked Lean и git add -u. Чужие файлы и скрипты сохранены.
