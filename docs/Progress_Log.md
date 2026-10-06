@@ -7966,3 +7966,15 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md и PROSHKA_NEGATIVE_GROWTH_PHASE_2026-10-06.md.
 - Чей вердикт: Pro answer10 плюс два ограниченных независимых Luna прохода по различным входам; RH не доказана, Lean не запускался.
 - Сохранение: scoped commit вручную; phase_end.sh собирает посторонние untracked Lean и git add -u, поэтому здесь несовместим с сохранением чужой работы. Политики/скрипты не менялись.
+
+## 2026-10-06 — Joint cancellation: сглаживание оплачено, возврат нормы убит
+- Развилка: answer1 нового чата нашёл uniform dressed bound, но он в норме прообраза.
+- Выбрали: снять лишний R и атаковать signed polar double commutator исходного F=(I−R)Z.
+- Почему: точный joint identity оставляет unitary position cost только 2log m; открыта конкретная верхняя форма D.
+- Что отвергли: carrier-wide inverse comparison для A даже с D_arch — строгий top-mode counterexample; positivity полярных факторов — абстрактный 2x2 negative control.
+- Инсайты: достаточно хорошей подпоследовательности для каждого eta; Fourier tail вне m^(3/2+epsilon) можно оплатить O(m^-epsilon), но внутренний знак этим не получен.
+- Блокеры: <f,Df>≤D_arch(f)+C_eta m^eta||f||² на всём исходном carrier одной ячейки.
+- Иглы Зингера: similarity numerical range / Heinz commutators / metric distortion; Bhatia–Kittaneh–Li Thm2.1 прочитан и неприменим; ошибка первоначальной транскрипции формулы исправлена по PDF.
+- Следующий ход: Pro вопрос2 отправлен в тот же чат, получение и активный ответ видны; ждать, не пересылать.
+- Адреса: CAUSAL_DRESSING_AUDIT_2026-10-06.md, NEGATIVE_GROWTH_SYMBOL_PREFLIGHT_2026-10-06.md; literature/polar_commutator_2026-10-06.
+- Чей вердикт: два непересекающихся bounded PAPER аудита плюс root crosswalk; SP/G1/G3/RH OPEN. Scoped commit сохраняет посторонние файлы; Lean не запускался.
