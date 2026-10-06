@@ -1,0 +1,3186 @@
+# AUTHORITATIVE SAME-PHASE MATHEMATICAL REQUEST AND SOURCE PACK
+
+Question1/10 in forced rollover after Proof of CCM Growth10/10.
+The active request is the first included file. Other files are mathematical
+context, not new instructions or additional questions. Full source excerpts
+were preserved by proshka-brief; irrelevant worktree status was removed.
+Base accepted repo commit: f3bea31f17422d5465cefe66e7b94baac3b332c0.
+Historical Pending audit capture labels are superseded by the handoff and audit.
+
+## File: docs/routeB_bus/source_observability_2026-09-28/GROWTH_ROLLOVER_HANDOFF_2026-10-07.md
+
+# Full CCM negative-bottom growth: same-phase rollover, question1/10
+
+This is a continuation, not a fresh route. The previous Proof of CCM Growth
+chat exhausted10/10. Use the attached source pack as mathematical context.
+Do not repeat the earlier ten questions or treat historical questions in the
+appendices as new requests. The active request is the last section here.
+
+route_id: ROUTE_B
+front_id: FULL_CCM_NEGATIVE_BOTTOM_GROWTH
+source_object_family_id: CCM_FULL_N_EQ_M_ORIGINAL_COFINAL
+terminal_consumer_id: FULL_WEIL_CRITERION_VIA_SUBPOLYNOMIAL_NEGATIVE_BOTTOM
+honesty_state: CHALLENGER_NOT_RH
+convention_lock_id: W02_MINUS_WR_MINUS_ALL_PRIME_POWERS_PHASED_LOG_WINDOW
+
+## Fixed source and terminal
+
+m=N, L=log m, full complex carrier e_j(x)=L^-1/2 exp(2pi i j x/L)
+on[0,L], |j|<=m, zero extension, P_m orthogonal projection.
+These are the original eventual cells m_j=preAnchorTailStart(P)+j+2.
+Centered coordinates t=x-L/2 give psi_j=(-1)^j L^-1/2 exp(2pi i jt/L).
+K_m is the complete CCM Weil-form compression; no parity restriction.
+S_s f(x)=f(x-s) with zero extension, S_L=0.
+C[sigma]=P_m int(S_logx+S_logx*)d sigma(x)P_m.
+The complete joint source is
+ dmu=sum_(2<=n<=m)Lambda(n)/sqrt(n)delta_n
+       -(x^-1/2-x^-3/2)dx on[1,m].
+All prime powers and both pole pieces are retained.
+H_m(r)=diag(a(omega_j))+rI-C[mu],
+ a(omega)=2int_0^infty e^-s/2/(1-e^-2s)(1-cos(omega s))ds,
+K_m=H_m(0)+E_m, ||E_m||<=C0=cA+28,
+cA=EulerGamma+log(8pi)+pi/2.
+
+Already proved with cutoff and Fourier error paid: ANY hypothetical actual
+off-critical zero .5+delta+i gamma, delta>0, forces
+ lambda_min(K_m)<=-c m^delta/(log m)^(2delta)
+on EVERY sufficiently late original cell. This does not assert such a zero.
+Sufficient OPEN target SP: for every eta>0, lambda_min(K_m)>=-C_eta m^eta
+eventually; an unbounded original good-cell set for each eta also suffices.
+This would exclude every off-critical zero. SP and RH remain OPEN.
+
+## What is retained / not to repeat
+
+Full-source floor is only -cA-C sqrt(m)L³ exp[-.001(L/log L)^(1/3)].
+Full signed zero Gram reduction has a polylog floor outside codim O(m/L^5).
+Repaired high-zero cutoff T=mL² has full norm tail<=3e6/sqrtL.
+The positive low Gram G_low contains all critical rows and all pair-sum rows;
+B contains pair-difference rows for delta>8logL/L, |gamma|<=T.
+R=ker B, E=R^perp. For epsilon=O(L^10 logL), actual regular block
+A_r=P_R H_m(r)|R >=(r-epsilon)I. For r>epsilon and v in E,
+ f=J_r v=v+y, y=-A_r^-1 B_r v, B_r=P_R H_m(r)|E.
+Schur=H_EE-B_r* A_r^-1 B_r; no bound ||J_r|| assumed.
+The attached high-zero answer defines these exact objects and constants.
+
+Killed only in recorded scopes: uniform causal undressing on whole carrier;
+removal of I-R pole cancellation; old endpoint jet majorant;
+fixed shifted-xi observation lift and gamma-neutralized positive kernel;
+sign-blind Cotlar / independently positive arithmetic-packet envelopes.
+Fixed-inner exceptional norm transfer is RH-strength and STALLED.
+Actual arithmetic packets DO have large negative distant correlations on
+middle modes, but these are not actual exceptional Schur witnesses.
+Do not replace the signed source by independent positive envelopes.
+
+Type-I was paid; centered long-alpha a>=A0=ceil sqrt(m) was paid at
+O(m^5/12 L^3/2 log(2L)) on the whole carrier. These are COMPONENT errors,
+not improved full bottom floors. Q10 paid wheel return and powers of two;
+parity-centered differencing STALLED at weighted EVEN-shift aggregate.
+The final Q10 source and its precise audit/own attempt are attached in full.
+Minor Q10 proof clarification: floor(K*)>=2K*/3 for K*>=2 establishes
+its intermediate constant214; replacing214by218 also leaves1024 unchanged.
+
+## Active request: execute the linear finite-convolution attempt
+
+The exact remaining pairing is Q10(14): R_*(v,J_r v), with weight F defined
+by Q10(13) and exact compensator Dtilde in Q10(4). All restrictions remain.
+H=rI-C_*+F10, ||F10||<=Delta10=O(m^5/12 L^3/2 log(2L)).
+Schur=r||v||²-Re R_*(v,J_r v)+Re<v,F10 J_r v>.
+This is the unresolved PAPER_CHAIN/SP consumer, not a proved floor.
+
+Own attempt is in PARITY_PRIME_AUDIT: exact Heath-Brown k=3 identity with
+z=ceil((m/U)^(1/3)), valid for every required b<=m/U without remainder,
+inserted LINEARLY into R_* before any prime-pair differencing.
+It gives j=1,2,3 sums with coefficients3,-3,1; products of j truncated
+Möbius factors and j free factors (one logarithmic), every factor odd.
+Subtract the exact -2 odd sum and keep Dcal; do not recenter for free.
+A long product does NOT ensure a long free factor: di=p nearz/3,
+n1=n2=1,u=3 gives a nonzero j3 representation with all free factors<=3.
+This individual tuple is not a lower bound for the aggregated source.
+
+Please EXECUTE this source-specific multilinear test. Separate sectors by
+an explicit free-factor scale, pay the free integer/log-factor quadrature
+with the exact product cutoffs and signed coefficients, and retain every
+sector whose long variables have Möbius weights. Seek a JOINT signed bound
+which advances the actual Schur pairing, using the actual regular equation
+if useful. Keep the whole original carrier or prove the faithful transfer
+from scalar primitives; no omitted cross modes, endpoint traces, compensator,
+prime powers, or ||J_r v||. Optimize a real parameter/range and show its cost.
+A smaller error for yet another piece is secondary: identify and attack the
+remaining signed coefficient-weighted sector at the same time.
+
+If this attempted supplier stalls, give the exact source-specific residual
+and a proved narrow reason its concrete estimate stalls, then the next
+mathematical supplier worth testing. Do not merely rename SP, request an
+unproved prime-pair asymptotic, quote a mean-value theorem as a uniform
+bound, or declare an abstract arbitrary-coefficient counterexample to be
+an obstruction for the actual Möbius source. No plan-only answer.
+Use primary literature only with exact hypotheses mapped to these sums.
+All-eta SP, original G1/G3 and RH are OPEN; paper first, Lean later.
+
+
+## File: docs/routeB_bus/source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md
+
+# Growth answer10: parity return paid, weighted even-shift estimate stalled
+
+Exact answer: PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md.
+Exact question10: ADDITIVE_CRT_AUDIT_2026-10-06.md.
+Same full complex CCM carrier and original eventual family. No RH assumption.
+Proof of CCM Growth has exhausted 10/10 questions. Forced same-phase rollover.
+
+## Accepted result and narrow stall
+
+Lambda=e_o+w2+p2, e_o=1_odd(Lambda-2), w2=2*1_odd,
+p2=log(2)*1_(powers of two), is exact with all prime powers.
+The discrete-wheel mean returns to the ORIGINAL continuous source via
+ Dtilde_U(x)=D_U(x)+x^(-1/2)M_U(x),
+ M_U(x)=int_(U<a<A0,a<x/U) d rho_U(a)/a, |M_U|<=1.
+Indeed the upper trace costs U/A, and the integral costs
+U int_U^A a^-2 da=1-U/A; rho_U(U)=0. Excluded upper uses left trace.
+The wheel error is controlled on the entire original carrier by 4M_wheel,
+ M_wheel=8192L h_U sqrt(A0)(Omega^(1/6)+1)
+          +57344 h_U m^(1/4) A0^(1/4),
+and powers of two cost Pi_m=24h_U sqrt(A0/U).
+All joint d,h entries and cross-frequency terms are paid.
+
+The residual R_*(v,f)=sum_(n>U) e_o(n)F_(v,f)(n)+Dcal(v,f), f=J_r v,
+retains both short-factor product cutoffs and the corrected vector.
+Odd-shift correlations vanish exactly. Even shifts contain
+ Lambda(n)Lambda(n+2k)-2Lambda(n)-2Lambda(n+2k)+4
+with the COMPLETE double-a weight. Both continuous mixed terms and all
+cross-box terms remain in the exact squared aggregate. They are unestimated.
+Using only |C_(ell,2k)|<=E_ell gives (N_ell+H-1)E_ell, minimized at H=1.
+The resulting absolute fallback 42h_U L² sqrt(m)||v|| ||J_r v|| is weaker
+than the accepted full-source bound. This is a limitation of this envelope,
+not a lower bound for the actual sum and not a kill of all parity methods.
+
+H_m(r)=rI-C_*+F10, ||F10||<=Delta10=Delta9+4M_wheel+Pi_m.
+The actual Schur form differs from r||v||²-Re R_*(v,J_r v) by at most
+Delta10||v|| ||J_r v||. The regular equation and all couplings are retained.
+Delta10=O(m^(5/12)L^(3/2)log(2L)) is only a COMPONENT-ERROR budget.
+No improved full bottom exponent, common good subsequence or SP follows.
+
+## One independent pass and numerical clarification
+
+growth_symbol_attempt checked §§1–2: parity/density signs, shifted-lattice
+quadrature including low and high frequencies, curvature, variation masses,
+dyadic constants, full-carrier map and powers-of-two budget. Pass with one
+minor intermediate proof clarification: for K_*>=2, floor(K_*)>=2K_*/3.
+Using this stronger floor inequality establishes the displayed 214 constant;
+the stated weaker K>=K_*/2 alone would give about217.02, hence218 suffices.
+The final quadrature constant1024 and all downstream budgets are unaffected.
+The exact answer capture is preserved unchanged.
+causal_algebra_audit checked §§3–6 and identity(28), conditional on §§1–2:
+weights, separate product domains, parity coefficients, full square expansion,
+optimized available envelope, actual Schur signs and cutoff z³. Pass.
+For clarity, the two integration domains in (18) are respectively
+ U<a<A0, Y0<=a(n+2k)<=m and U<a'<A0, Y0<=a'n<=m.
+No endpoint smoothness or ||J_r|| bound was assumed. No Lean run.
+
+## Own next attempt: exact finite convolution sectors
+
+Let z=ceil((m/U)^(1/3)), mu_z=mu*1_(n<=z) (pointwise cutoff).
+With Dirichlet convolution D_z=epsilon-mu_z*1, D_z(n)=0 for n<=z.
+Therefore D_z^{*3} vanishes for n<=(z+1)^3-1, in particular n<=z³.
+Convolving epsilon-D_z^{*3}=3(mu_z*1)-3(mu_z*1)^{*2}+(mu_z*1)^{*3}
+with Lambda proves the exact Heath-Brown k=3 identity for every b<=m/U:
+ Lambda(b)=3(mu_z*log)(b)-3(mu_z^{*2}*1*log)(b)
+            +(mu_z^{*3}*1^{*2}*log)(b).
+Consequently, writing c1=3,c2=-3,c3=1 and Q=d1...dj n1...n_(j-1)u,
+ R_*(v,f)=sum_(j=1..3)cj sum_(all factors odd,di<=z,U<Q<=m/U)
+ [mu(d1)...mu(dj)log(u)F_(v,f)(Q)]
+ -2 sum_(U<b<=m/U,b odd)F_(v,f)(b)+Dcal(v,f).
+The definition of F supplies every original a/product cutoff; no new domain
+or continuous replacement has been inserted. This is linear, before squaring.
+
+For any T>=1, the sector with ALL j free factors n_i,u<=T satisfies
+ Q<=z^j T^j. Thus Q>z^j T^j forces a free factor>T, but the j=3 term
+has no automatic such conclusion on Q<=m/U<=z³. Long total product does
+not imply a long FREE factor; the long variables can carry Möbius weights.
+Concrete individual tuple: choose an odd prime z/4<p<=z/2, set
+ d1=d2=d3=p, n1=n2=1,u=3. Its coefficient is -log3, Q=3p³,
+ 3z³/64<Q<=3z³/8<m/U eventually, while every free factor<=3.
+Bertrand supplies p eventually; the ceiling in z does not change the last
+strict inequality because (m/U)/z³ tends to1.
+This is an obstruction ONLY to the automatic-free-factor argument.
+It is not a nonzero lower bound for a full sector or the CCM source: different
+representations and j-terms can cancel. The actual F may also vanish.
+
+Next test: preserve those Möbius-weighted sectors and the exact compensator;
+execute a joint finite multilinear estimate, with explicit free-factor
+quadrature errors and the remaining coefficient-weighted sectors. A source
+bound must return through the same actual Schur identity. No shifted-prime
+conjecture or independent positive envelope is available.
+
+causal_algebra_audit independently checked this own sector lemma once:
+expansion, odd support, threshold, Bertrand tuple, ceiling asymptotic and
+Q>U eventually all pass. It checks only the stated structural obstruction;
+no full-sector lower bound or noncancellation is inferred.
+
+
+## File: docs/literature/linear_convolution_2026-10-07/README.md
+
+# Linear convolution alias return, 2026-10-07
+
+Obstruction: after exact parity return, the complete signed residual on
+(v,J_r v) has unestimated weighted even-prime correlations. The next linear
+rewrite is Heath-Brown k3 on b<=m/U; long total product need not have a long
+unweighted factor. Target and exact formula: PARITY_PRIME_AUDIT_2026-10-06.md,
+Own next attempt, and Q10(13),(14),(26) in the source_observability bus.
+
+Dictionaries searched: Heath-Brown identity; multilinear logarithmic phase;
+Type III Dirichlet polynomial. All three shelf queries returned
+ASK_STATUS: INCOMPLETE because semantic-index freshness validation failed.
+This does not establish shelf absence. The bounded primary lookup below
+checks the free-factor mechanism; it supplies no signed CCM closure.
+
+## Verified partial mechanism, already covered by the accepted Arias bound
+
+Olivier Robert, On van der Corput's k-th derivative test for exponential sums,
+author-hosted PDF, https://perso.univ-st-etienne.fr/rool6510/robert-2015-indag.pdf
+Local: robert-vdc-2015.pdf
+SHA-256: 755f6002a7daa97b6bf7531be69fcc6a69f8701a30c994ce9f57d101ed9acdea
+§3.1 Theorem1, printed p5; proof mechanism §3.2, p6.
+Quote (Remarks after theorem): "The result is trivial for λ2 ≥ 1."
+The theorem assumes a real C2 phase, lambda2<=|f''|<=alpha lambda2,
+and gives |sum e(f(n))|<=C(alpha)(M sqrt(lambda2)+lambda2^-1/2).
+
+Exact map: on a free factor x in[R,2R], f(x)=-t log(x)/(2pi), t!=0,
+ lambda2=|t|/(8pi R²), alpha=4, integer sum length M<=R+1.
+Its unweighted bound is O(sqrt(|t|)+R/sqrt(|t|)), plus endpoint constants.
+Multiplying by x^-1/2 log x is handled by Abel summation on each clipped
+subinterval, retaining endpoints and log loss; it does not admit arbitrary
+Möbius coefficients for free. Nor does it directly bound F_(v,J_rv).
+At |t| comparable to Omega~m/U and R<=z~(m/U)^(1/3), sqrt(|t|)>>R:
+the second-derivative envelope is trivial. This is an envelope limitation,
+not proof of absence of cancellation. At t=0 use a separate elementary
+sum-minus-integral estimate; this theorem has lambda2>0.
+
+Negative control outside the unit-amplitude class: weights c_n=e(-f(n))
+make the weighted sum equal its length. Thus a C2 phase alone cannot pay
+arbitrary weights. Actual Möbius weights are NOT arbitrary; this control
+does not kill their cancellation. Their arithmetic must be used explicitly.
+PROVED: phase derivative hypotheses and exact finite convolution identity.
+PARTIAL: free-factor estimate in its nontrivial parameter range.
+OPEN: all-free-short sectors, signed compensator and original-norm Schur bound.
+
+This is source-verified discovery evidence (root independently reread the
+stated theorem and proof sketch), not a new theorem beyond our existing
+Arias de Reyna Lemma5. No new claim about RH/SP follows.
+
+## Excluded lead
+
+Van der Corput, Verschärfung der Abschätzung beim Teilerproblem,
+Math. Ann.87 (1922),39–65, original volume PDF:
+https://gdz.sub.uni-goettingen.de/download/pdf/PPN235181684_0087/PPN235181684_0087.pdf
+SHA-256 45a828889ba0c690026a9cd7e7f3e9290ef1739205202c92bfc5a11429665e70.
+Researcher inspected printed pp42–43 (Satz1). Root has not independently
+reread the scanned theorem; excluded as an admitted supplier. The B-transform
+would require full stationary-phase/endpoint and coefficient transfer.
+No assertion that it controls the weighted CCM convolution is made.
+
+Next single test: explicit free-factor-sector decomposition plus actual
+coefficient-weighted remainder in the linear consumer. Stop the test when
+its full signed budget or a precise unsupplied estimate is established.
+
+
+## File: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md
+
+# Growth answer10 — exact inline capture
+
+Chat `6ac54396-d878-83eb-ae29-35d2bdd2262b`; question `2dbe9556-ff59-4978-a7f7-0481e80bf4ea`.
+Answer `94600296-a768-4be8-8ec6-64e5e0ef3fd4`; untruncated read_thread capture 2026-10-06 23:43 UTC. Pending audit.
+This chat has used all ten question slots; no new sends here.
+
+---
+
+Ы — **the parity-centered test stalls at a weighted even-shift aggregate. It does not give a new full bottom bound.** I can, however, pay the return from the two-wheel to the **original continuous compensator**, and remove the powers of two with an explicit original-norm error. After those corrections, the surviving arithmetic term and the precise limitation of the additive estimate are clear.
+
+**[COFINAL_FAMILY | PAPER]** On every sufficiently late original cell, the wheel correction costs
+\[
+O\!\left(m^{5/12}L^{5/6}\log(2L)\right),
+\]
+and the powers-of-two correction costs
+\[
+24h_U\sqrt{A_0/U},
+\qquad
+h_U=\sum_{d\le U}\frac1d,\quad
+U=\lceil L\rceil,\quad A_0=\lceil\sqrt m\rceil.
+\]
+These bounds hold on the **whole original complex carrier**. They apply to the actual \(J_rv\), with its norm and Schur correction retained.
+
+The remaining even-shift expression contains the prime–prime term, **both linear subtractions**, the residue-class baseline, and the mixed continuous terms. The proved parity information gives no power saving for that expression.
+
+:chatgpt-content-reference{index="2"}[Complete PAPER verdict and same-phase handoff](sandbox:/mnt/data/PROSHKA_VERDICT_FULL_CCM_NEGATIVE_BOTTOM_GROWTH_Q10.md)
+
+## 1. An exact parity split of the surviving source
+
+**[FINITE_CELL | PAPER]**
+
+Retain
+\[
+Y_0=A_0=\lceil\sqrt m\rceil,\qquad
+\Omega=\frac{2\pi m}{L},
+\]
+and the accepted centered divisor measure
+\[
+d\rho_U(a)
+=
+\sum_{n>U}\alpha_U(n)\delta_n(da)+A_U\,da,
+\qquad
+\rho_U(U)=0,\qquad |\rho_U|\le U.
+\]
+The surviving measure is
+\[
+\begin{aligned}
+\int G\,d\sigma_{\rm rem}
+={}&
+\sum_{b>U}\frac{\Lambda(b)}{\sqrt b}
+\int_{\substack{U<a<A_0\\Y_0\le ab\le m}}
+a^{-1/2}G(ab)\,d\rho_U(a)\\
+&+\int_{Y_0}^mD_U(x)G(x)\,dx,
+\end{aligned}
+\tag{1}
+\]
+where
+\[
+D_U(x)=
+[A_U(\log x-\psi_1(x/U))-B_U-1]x^{-1/2}+x^{-3/2}.
+\tag{2}
+\]
+
+Use the exact decomposition
+\[
+\boxed{
+\Lambda(n)=e_o(n)+w_2(n)+p_2(n),
+}
+\tag{3}
+\]
+with
+\[
+e_o(n)=1_{n\ {\rm odd}}(\Lambda(n)-2),\qquad
+w_2(n)=2\,1_{n\ {\rm odd}},\qquad
+p_2(n)=(\log2)1_{n=2^j,\ j\ge1}.
+\]
+
+All odd prime powers remain in \(e_o\). The powers of two will be **bounded, not dropped**.
+
+Replacing the discrete wheel by its Lebesgue mean adds the exact density
+\[
+x^{-1/2}M_U(x),\qquad
+M_U(x)=
+\int_{\substack{U<a<A_0\\a<x/U}}\frac{d\rho_U(a)}a.
+\]
+Thus define
+\[
+\boxed{
+\widetilde D_U(x)=D_U(x)+x^{-1/2}M_U(x).
+}
+\tag{4}
+\]
+This is an almost-everywhere density identity; the strict endpoints retain the product restrictions. Integration by parts against \(1/a\) gives
+\[
+|M_U(x)|\le1.
+\]
+**It gives no smallness or sign for \(\widetilde D_U\).**
+
+Let \(\sigma_*\) be (1) with \(\Lambda\) replaced by \(e_o\) and \(D_U\) replaced by \(\widetilde D_U\). Then
+\[
+\boxed{
+\sigma_{\rm rem}
+=\sigma_*+\sigma_{\rm wheel}+\sigma_2,
+}
+\tag{5}
+\]
+where \(\sigma_{\rm wheel}\) uses
+\[
+d\kappa_2(b)=
+\sum_{n>U}w_2(n)\delta_n(db)-1_{b>U}\,db
+\]
+in the inner \(b\)-variable, and \(\sigma_2\) uses \(p_2\).
+
+This is the exact return to the original continuous source. No assertion that \(\Lambda-w_2\) is small has entered.
+
+## 2. The wheel correction is paid in the original carrier norm
+
+**[FINITE_CELL | PAPER]**
+
+The needed quadrature estimate is: for \(B\ge64\), every interval \(I\subset[B,2B]\), either endpoint convention, and every real \(t\),
+\[
+\boxed{
+\left|
+2\sum_{\substack{n\in I\\n\ {\rm odd}}}n^{-1/2-it}
+-\int_Ix^{-1/2-it}\,dx
+\right|
+\le1024\bigl(|t|^{1/6}+B^{1/4}+1\bigr).
+}
+\tag{6}
+\]
+For \(|t|\le B/4\), the sharper bound \(64/\sqrt B\) holds.
+
+Here is the estimate, including its shift choice. Write \(n=2j+1\). At low frequency, Euler summation on this shifted lattice and the accepted sawtooth argument bound the **sum-minus-integral** before partial summation. The nonzero Fourier modes have phase derivative bounded below by \(5|k|\); their integrated bounds are summable. This covers \(t=0\) and all clipped intervals.
+
+At higher frequency, an additive shift of \(k\) in \(j\) produces the phase
+\[
+t\log\frac{n+2k}{n}.
+\]
+In the \(j\)-coordinate, its normalized second derivative lies between
+\[
+\lambda=\frac{|t|k}{\pi B^3},
+\qquad
+\Lambda=\frac{8|t|k}{\pi B^3}.
+\]
+The progression interval has length at most \(B/2\). Arias de Reyna’s Lemma 5 therefore bounds its exponential sum by
+\[
+2+8\sqrt{\frac{|t|k}{B}}
++16\frac{B^{3/2}}{\sqrt{|t|k}}.
+\]
+The real \(C^2\) phase, positive-curvature bounds and interval-length hypothesis are exactly those of the lemma; short intervals and endpoint changes are counted directly. :chatgpt-content-reference{index="0"}
+
+Finite shift averaging gives
+\[
+|S_{\rm odd}|^2
+\le
+\frac{2B^2}{K}+8B
++32\sqrt{B|t|K}
++128\frac{B^{5/2}}{\sqrt{|t|K}}.
+\tag{7}
+\]
+For \(|t|\ge16B\), choose
+\[
+K_*=\max\!\left(B|t|^{-1/3},\frac{B^2}{|t|}\right).
+\]
+When \(K_*\ge2\), take \(K=\lfloor K_*\rfloor\). Then \(K\le B/8\), \(K\ge K_*/2\), and
+\[
+|S_{\rm odd}|^2
+\le36B|t|^{1/3}+214B^{3/2}+8B.
+\]
+When \(K_*<2\), the trivial bound already fits (6). In the intervening range \(B/4<|t|<16B\), the direct second-derivative estimate suffices. Partial summation and the continuous integral complete (6).
+
+### Sum the correction over the actual short factor
+
+Divisor expansion gives
+\[
+\int_{U<a<A_0}a^{-1/2}|d\rho_U(a)|
+\le4h_U\sqrt{A_0},
+\]
+\[
+\int_{U<a<A_0}a^{-3/4}|d\rho_U(a)|
+\le8h_UA_0^{1/4}.
+\tag{8}
+\]
+For each \(a\), split the \(b\)-range dyadically. There are at most \(2L\) boxes, and their fourth roots sum to at most \(7(m/a)^{1/4}\). All product cutoffs are covered by (6). Therefore
+\[
+\sup_{\substack{|t|\le\Omega\\y\le m}}
+\left|
+\int_{[Y_0,y]}x^{-it}\,d\sigma_{\rm wheel}(x)
+\right|
+\le M_{\rm wheel},
+\tag{9}
+\]
+where
+\[
+\boxed{
+M_{\rm wheel}
+=
+8192Lh_U\sqrt{A_0}(\Omega^{1/6}+1)
++57344h_Um^{1/4}A_0^{1/4}.
+}
+\tag{10}
+\]
+
+Apply the accepted exact primitive-to-\((d,h)\) matrix map:
+\[
+\boxed{
+\|C[\sigma_{\rm wheel}]\|\le4M_{\rm wheel}.
+}
+\tag{11}
+\]
+This pays **all cross-frequency terms**, not just diagonal observations.
+
+For the powers of two,
+\[
+\sum_{2^j>U}\frac{\log2}{\sqrt{2^j}}<\frac3{\sqrt U}.
+\]
+Together with (8), this proves
+\[
+\boxed{
+\|C[\sigma_2]\|
+\le\Pi_m:=24h_U\sqrt{A_0/U}.
+}
+\tag{12}
+\]
+
+The atom at \(ab=m\) remains in these estimates; its compressed action is zero because \(S_L=0\). Included and excluded dyadic endpoints are handled with the appropriate right or left traces. No derivative of a cutoff endpoint profile is used.
+
+## 3. The actual corrected-vector weight
+
+**[FINITE_CELL | PAPER]**
+
+From this point onward, let
+\[
+f=J_rv
+\]
+be the unchanged actual Schur-corrected vector. Define
+\[
+\mathcal K_{v,f}(h)=
+\int_0^h
+\left[
+\overline{v(L-u)}f(h-u)
++\overline{v(h-u)}f(L-u)
+\right]du,
+\]
+and
+\[
+\boxed{
+F_{v,f}(b)=
+b^{-1/2}
+\int_{\substack{U<a<A_0\\Y_0\le ab\le m}}
+a^{-1/2}\mathcal K_{v,f}(L-\log(ab))\,d\rho_U(a).
+}
+\tag{13}
+\]
+Also put
+\[
+\mathcal D(v,f)=
+\int_{Y_0}^m
+\widetilde D_U(x)\mathcal K_{v,f}(L-\log x)\,dx.
+\]
+
+The remaining scalar is exactly
+\[
+\boxed{
+\mathcal R_*(v,f)
+=\langle v,C[\sigma_*]f\rangle
+=\sum_{n>U}e_o(n)F_{v,f}(n)+\mathcal D(v,f).
+}
+\tag{14}
+\]
+
+The endpoint restrictions in \(F\) still come from \(v,J_rv\). They have not become independent variables. Since all remaining shifts have length at least \(L/2\),
+\[
+|\mathcal K_{v,f}(h)|\le\|v\|\,\|f\|.
+\]
+Consequently,
+\[
+\boxed{
+|F_{v,f}(b)|
+\le
+4h_U
+\sqrt{\frac{\min(A_0,m/b)}b}\,
+\|v\|\,\|f\|.
+}
+\tag{15}
+\]
+This bound retains the product support. I make no smoothness assertion for \(F\) across product cutoffs.
+
+## 4. Execute additive differencing after the mandatory centering
+
+**[FINITE_CELL | PAPER]**
+
+Partition the integer \(b\)-range into dyadic boxes \(I_\ell=[B_\ell,2B_\ell)\), with exact clipping at the first and last cutoffs. Write
+\[
+z_n=e_o(n)F_{v,f}(n),\qquad
+S_\ell=\sum_{n\in I_\ell}z_n,\qquad
+E_\ell=\sum_{n\in I_\ell}|z_n|^2.
+\]
+
+Every odd-shift correlation is now **exactly zero**, even with these complex weights and sharp cutoffs: one factor has even argument. The powers-of-two exceptions were paid in (12).
+
+Index the odd integers of a box consecutively, padding missing endpoints with zeros. If its length is \(N_\ell\le B_\ell/2+1\), then for every \(1\le H\le N_\ell\),
+\[
+\boxed{
+|S_\ell|^2
+\le
+\frac{N_\ell+H-1}{H}
+\left[
+E_\ell+
+2\sum_{k=1}^{H-1}(1-k/H)\Re C_{\ell,2k}
+\right].
+}
+\tag{16}
+\]
+
+The surviving correlation is
+\[
+\boxed{
+\begin{aligned}
+C_{\ell,2k}
+={}&
+\sum_{\substack{n,n+2k\in I_\ell\\n\ {\rm odd}}}
+\bigl[
+\Lambda(n)\Lambda(n+2k)
+-2\Lambda(n)-2\Lambda(n+2k)+4
+\bigr]\\
+&\hspace{25mm}\cdot
+F_{v,f}(n+2k)\overline{F_{v,f}(n)}.
+\end{aligned}
+}
+\tag{17}
+\]
+
+The constant \(4\) is the exact two-wheel even-shift baseline. An upper bound for the positive \(\Lambda\Lambda\) term does **not** bound this centered signed expression.
+
+Moreover, the weight in (17) contains the complete double integral
+\[
+\begin{aligned}
+\frac1{\sqrt{n(n+2k)}}\iint
+&\frac{
+\mathcal K_{v,f}(L-\log(a(n+2k)))
+\overline{\mathcal K_{v,f}(L-\log(a'n))}
+}{\sqrt{aa'}}\\
+&\hspace{20mm}d\rho_U(a)\,d\rho_U(a'),
+\end{aligned}
+\tag{18}
+\]
+with both separate product constraints. Thus the short-factor correlations and all carrier cross terms remain. No identification of \(a\) with \(a'\) has been made.
+
+### Both continuous mixed terms remain
+
+The full residual square is
+\[
+\boxed{
+\begin{aligned}
+|\mathcal R_*|^2
+={}&|\mathcal D|^2
++2\Re\!\left(\overline{\mathcal D}\sum_\ell S_\ell\right)
++\sum_\ell|S_\ell|^2\\
+&+2\Re\sum_{\ell<j}S_\ell\overline{S_j}.
+\end{aligned}
+}
+\tag{19}
+\]
+The second term comprises **both mixed continuous terms**. The first is the continuous–continuous term. Equation (4) records their return to the original \(D_U\).
+
+Accordingly, the exact upper aggregate produced by this attempt is
+\[
+\begin{aligned}
+\mathcal A_{\boldsymbol H}(v,f)
+={}&|\mathcal D|^2
++2\Re\!\left(\overline{\mathcal D}\sum_\ell S_\ell\right)
++2\Re\sum_{\ell<j}S_\ell\overline{S_j}\\
+&+\sum_\ell
+\frac{N_\ell+H_\ell-1}{H_\ell}
+\left[
+E_\ell+
+2\sum_{k=1}^{H_\ell-1}(1-k/H_\ell)\Re C_{\ell,2k}
+\right].
+\end{aligned}
+\tag{20}
+\]
+We have proved
+\[
+|\mathcal R_*|^2\le\mathcal A_{\boldsymbol H}(v,f).
+\]
+**We have not proved that this signed aggregate is small.**
+
+The wheel and powers-of-two errors are carried linearly through (11)–(12), not silently discarded inside this square.
+
+## 5. The optimized parity-only envelope gives no power saving
+
+**[FINITE_CELL | PAPER]**
+
+Using only the currently available estimate
+\[
+|C_{\ell,2k}|\le E_\ell
+\]
+in (16) gives
+\[
+|S_\ell|^2\le(N_\ell+H-1)E_\ell.
+\]
+Therefore
+\[
+\boxed{
+\inf_{1\le H\le N_\ell}(N_\ell+H-1)E_\ell
+=N_\ell E_\ell.
+}
+\tag{21}
+\]
+
+The optimized shift range, with these inputs, is \(H=1\): **no nonzero shift**. This is a proved limitation of the derived envelope, not a lower bound for the actual source sum.
+
+Its original-norm scale is explicit. Put
+\[
+M=\|v\|\,\|J_rv\|,
+\qquad
+A_\ell=\min(A_0,m/B_\ell).
+\]
+From (15), the actual number of odd indices, and \(|\Lambda(n)-2|\le2L\),
+\[
+E_\ell\le64h_U^2L^2A_\ell M^2,
+\]
+so
+\[
+|S_\ell|\le8h_UL\sqrt{B_\ell A_\ell}\,M.
+\]
+Summing the dyadic boxes gives
+\[
+\boxed{
+\left|\sum_\ell S_\ell\right|
+\le32h_UL^2\sqrt m\,\|v\|\,\|J_rv\|.
+}
+\tag{22}
+\]
+For \(B_\ell\ge m/A_0\), the envelope has
+\[
+\sqrt{B_\ell A_\ell}=\sqrt m.
+\]
+The remaining endpoint strip contains such ranges.
+
+For comparison, elementary absolute estimates in (4) give
+\[
+|\mathcal D(v,J_rv)|
+\le10h_UL^2\sqrt m\,\|v\|\,\|J_rv\|.
+\]
+Thus the fully absolute fallback from this attempted differencing is
+\[
+42h_UL^2\sqrt m\,\|v\|\,\|J_rv\|,
+\]
+which is **weaker than the already accepted whole-source bound**.
+
+This identifies the narrow stall. The negative odd-shift term of the uncentered coefficient \(\Lambda-1\) belongs to the periodic component \(w_2-1\). Its Fejér average vanishes at even averaging lengths. After that component has been returned correctly to the continuous source, it is unavailable as an additional negative contribution to (17).
+
+The unestimated information is now the sign and magnitude of **weighted even-prime correlations together with their mixed terms**, not the parity identity.
+
+## 6. Return through the actual regular equation
+
+**[FINITE_CELL | PAPER]**
+
+Set
+\[
+C_*=C[\sigma_*],\qquad
+F_{10}=F_9-C[\sigma_{\rm wheel}]-C[\sigma_2],
+\]
+and
+\[
+\boxed{
+\Delta_{10}
+=\Delta_9+4M_{\rm wheel}+\Pi_m.
+}
+\tag{23}
+\]
+Then
+\[
+\boxed{
+\mathsf H_m(r)=rI-C_*+F_{10},
+\qquad
+\|F_{10}\|\le\Delta_{10}.
+}
+\tag{24}
+\]
+Including the accepted \(\Delta_9\), this remains an
+\[
+O\!\left(m^{5/12}L^{3/2}\log(2L)\right)
+\]
+**component-error budget**, not a bottom floor.
+
+Keep the unchanged repaired spaces and actual blocks:
+\[
+\mathcal R=\ker B,\qquad
+\mathcal E=\mathcal R^\perp,\qquad
+f=J_rv=v+y,\qquad
+y=-A_r^{-1}B_rv,\qquad r>\epsilon_m.
+\]
+The regular equation now reads
+\[
+\boxed{
+P_{\mathcal R}C_*f=ry+P_{\mathcal R}F_{10}f,
+\qquad
+\|P_{\mathcal R}C_*f-ry\|\le\Delta_{10}\|f\|.
+}
+\tag{25}
+\]
+
+Since \(\langle y,\mathsf H_m(r)f\rangle=0\),
+\[
+\boxed{
+\langle v,\mathfrak S_m(r)v\rangle
+=
+r\|v\|^2-\Re\mathcal R_*(v,J_rv)
++\Re\langle v,F_{10}J_rv\rangle.
+}
+\tag{26}
+\]
+Hence, with
+\[
+M_r(v)=r\|v\|^2-\Re\mathcal R_*(v,J_rv),
+\]
+the available discriminator is
+\[
+\boxed{
+\begin{aligned}
+M_r(v)-\Delta_{10}\|v\|\,\|J_rv\|
+&\le \langle v,\mathfrak S_m(r)v\rangle\\
+&\le M_r(v)+\Delta_{10}\|v\|\,\|J_rv\|.
+\end{aligned}
+}
+\tag{27}
+\]
+
+The complete \(B_r^*A_r^{-1}B_r\) correction is present through \(J_r\). No bound on \(\|J_r\|\) is presumed.
+
+The regular equation constrains the **linear projection of \(C_*f\)**. It has not supplied an estimate for the quadratic, even-shift aggregate (17)–(20). That is the first unsupplied source estimate in this construction.
+
+A negative upper endpoint in (27) certifies an actual negative Schur direction on that cell. A nonnegative lower envelope for every exceptional vector certifies the cell. A straddling interval does neither. The squared route (20) remains optional; a direct real-part estimate in (26) could be weaker and sufficient.
+
+## Same-phase handoff and next own attempt
+
+**Proved and retained:** the full \(m^{1/2-o(1)}\) floor; the polylogarithmic floor outside codimension \(O(m/L^5)\); the repaired small complete high-zero tail; the Type-I estimate; and the centered long-\(\alpha_U\) component estimate. This answer adds only the explicitly paid wheel correction (11) and powers-of-two correction (12). **No new full fixed exponent or common good subsequence has been obtained.**
+
+**Killed versus stalled:** the earlier norm-transfer, jet-majorant and blind-packet certificates remain killed only in their recorded scopes. The fixed-inner exceptional transfer is RH-strength and stalled, not an unconditional source counterexample. The present parity-centered signed test is **stalled, not killed**: its optimized proved envelope is (21), and the weighted even-shift aggregate remains unestimated. SP, G1/G3 and RH remain open.
+
+The next own attempt should avoid asking for a shifted-prime asymptotic. There is an exact **linear** alternative before squaring. Let
+\[
+z=\left\lceil(m/U)^{1/3}\right\rceil,\qquad
+\mu_z(n)=\mu_{\rm M}(n)1_{n\le z}.
+\]
+For Dirichlet convolution, put
+\[
+D_z=\varepsilon-\mu_z*1.
+\]
+Because \(D_z(n)=0\) for \(n\le z\), its third convolution power vanishes for \(n\le z^3\). Multiplying
+\[
+\varepsilon-D_z^{*3}
+=
+3(\varepsilon-D_z)
+-3(\varepsilon-D_z)^{*2}
++(\varepsilon-D_z)^{*3}
+\]
+by \(\Lambda\), and using \(1*\Lambda=\log\), proves for **every required \(b\le m/U\)**
+\[
+\boxed{
+\Lambda(b)
+=
+3(\mu_z*\log)(b)
+-3(\mu_z^{*2}*1*\log)(b)
++(\mu_z^{*3}*1^{*2}*\log)(b).
+}
+\tag{28}
+\]
+There is no truncation remainder in that range.
+
+**Next own mathematical attempt:** insert (28) into the linear residual (14), before prime-variable differencing, and test the unrestricted integer/logarithmic-factor sectors with their signed Möbius coefficients retained. Keep the odd support, \(F_{v,J_rv}\), the exact compensator (4), and every sector without a usable long factor explicit. This replaces the unestimated shifted-prime-pair input by a concrete finite convolution problem; it does not assert that the resulting sectors are already controlled.
+
+
+## File: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_ADDITIVE_CRT_INLINE_2026-10-06.md
+
+# Growth answer9 — exact inline capture
+
+Chat `6ac54396-d878-83eb-ae29-35d2bdd2262b`; question `4ee66e97-0dfd-43ff-afd1-323b686284c3`.
+Answer `9268fe73-068a-4b61-98c4-e25f0f2a0ce5`; untruncated read_thread capture 2026-10-06 23:16 UTC. Pending audit.
+
+---
+
+Ы — **additive differencing does pay a genuine part of the signed Type-II interaction at a fixed exponent below \(1/2\).**
+
+**[COFINAL_FAMILY | PAPER]** The entire **centered long-\(\alpha_U\) component**, defined below with its continuous mean retained, satisfies
+\[
+\boxed{
+\|C_{\mathrm{long}}\|
+\le 40000\,m^{5/12}L^{3/2}\log(2L)
+}
+\]
+on **every sufficiently late original cell**, simultaneously for all complex carrier vectors.
+
+This is not merely a high-frequency result: its low-frequency primitive has the stronger bound \(128UL\). The transfer includes every off-diagonal carrier interaction and applies directly to the actual \(J_rv\).
+
+**It is not a \(5/12\) negative-bottom floor.** The remaining **short-\(\alpha_U\), long-prime-variable flux and its exact compensator** are still unestimated in sign. The original Schur correction remains intact.
+
+:chatgpt-content-reference{index="2"}[Complete PAPER verdict and machine-readable ledger](sandbox:/mnt/data/PROSHKA_VERDICT_FULL_CCM_NEGATIVE_BOTTOM_GROWTH_Q09.md)
+
+## 1. Center the divisor flux without losing the compensator
+
+**[FINITE_CELL | PAPER]**
+
+Keep
+\[
+U=\lceil L\rceil,\qquad A_0=Y_0=\lceil\sqrt m\rceil,
+\qquad \Omega=\frac{2\pi m}{L},
+\qquad
+\mathfrak h=\sum_{d\le U}\frac1d.
+\]
+Here \(A_0\) cuts the **factor \(a\)**, not the carrier or its frequency range.
+
+Retain the accepted source coefficients
+\[
+\alpha_U(n)=-\sum_{\substack{d\le U\\d\mid n}}\mu_{\mathrm M}(d)
+\quad(n>U),
+\]
+\[
+A_U=\sum_{d\le U}\frac{\mu_{\mathrm M}(d)}d,\qquad
+B_U=\sum_{d\le U}\frac{\mu_{\mathrm M}(d)\log d}d.
+\]
+The right-continuous primitive
+\[
+\rho_U(u)=
+\sum_{d\le U}\mu_{\mathrm M}(d)
+\left(\{u/d\}-\{U/d\}\right)
+\]
+has the exact **signed Stieltjes measure**
+\[
+\boxed{
+d\rho_U(a)
+=\sum_{n>U}\alpha_U(n)\delta_n(da)+A_U\,da,
+\qquad a>U.
+}
+\tag{1}
+\]
+Thus the continuous term has a **plus sign**. It centers the divisor flux; it is not assumed small.
+
+Define the long-factor measure by its action on a test function \(G\):
+\[
+\boxed{
+\int G(x)\,d\sigma_{\mathrm{long}}(x)
+=
+\sum_{b>U}\frac{\Lambda(b)}{\sqrt b}
+\int_{\substack{a\ge A_0\\ab\le m}}
+a^{-1/2}G(ab)\,d\rho_U(a).
+}
+\tag{2}
+\]
+All prime powers in \(b\) remain. Its continuous density is
+\[
+A_Ux^{-1/2}
+\sum_{U<b\le x/A_0}\frac{\Lambda(b)}b.
+\]
+
+Write the accepted density (22) as
+\[
+D_U(x)=
+\left[A_U\bigl(\log x-\psi_1(x/U)\bigr)-B_U-1\right]x^{-1/2}
++x^{-3/2},
+\quad
+\psi_1(z)=\sum_{n\le z}\frac{\Lambda(n)}n.
+\tag{3}
+\]
+Its domain remains \(x\ge Y_0\ge4U^2\).
+
+The complementary measure is exactly
+\[
+\boxed{
+\begin{aligned}
+\int G\,d\sigma_{\mathrm{rem}}
+={}&
+\sum_{b>U}\frac{\Lambda(b)}{\sqrt b}
+\int_{\substack{U<a<A_0\\Y_0\le ab\le m}}
+a^{-1/2}G(ab)\,d\rho_U(a)\\
+&+\int_{Y_0}^mD_U(x)G(x)\,dx.
+\end{aligned}
+}
+\tag{4}
+\]
+Then
+\[
+d\sigma_{\mathrm{II}}
+=d\sigma_{\mathrm{long}}+d\sigma_{\mathrm{rem}}.
+\]
+
+To check the compensator, the full centered flux contributes
+\[
+A_Ux^{-1/2}\bigl(\psi_1(x/U)-C_U\bigr),
+\qquad C_U=\sum_{b\le U}\frac{\Lambda(b)}b.
+\]
+Adding (3) gives precisely
+\[
+-(1-\kappa_U(x))x^{-1/2}+x^{-3/2}.
+\]
+**The original flux and compensator have been repartitioned exactly, not separately bounded.**
+
+For any such measure, \(C[\sigma]\) continues to mean
+\[
+P_m\int(S_{\log x}+S_{\log x}^{*})\,d\sigma(x)\,P_m.
+\]
+In particular, \(C_{\mathrm{long}}\) is an operator on the unchanged original carrier.
+
+## 2. Estimate the actual CRT progression sums first
+
+**[FINITE_CELL | PAPER]**
+
+Let \(A\ge A_0\) be an integer, let \(I\subset[A,2A)\) be any interval arising from a product cutoff, and set
+\[
+S_I(t)=\sum_{n\in I}\alpha_U(n)n^{-it},\qquad \tau=|t|>0.
+\]
+The additive correlation is
+\[
+R_k(t)=
+\sum_{n,n+k\in I}
+\alpha_U(n+k)\alpha_U(n)
+e^{-it\log((n+k)/n)}.
+\]
+
+Your CRT expansion gives this **exactly** as a sum over the compatible classes
+\[
+n\equiv r_{d,e,k}\pmod{q},\qquad
+q=[d,e],\qquad (d,e)\mid k.
+\]
+I do not replace those progression sums by a main term plus a variation error.
+
+After conjugation when needed, use
+\[
+\theta(a)=\tau\log\frac{a+k}{a},
+\qquad
+\theta''(a)=2\tau\int_a^{a+k}u^{-3}\,du.
+\]
+Both arguments lie in \([A,2A]\), hence
+\[
+\frac{\tau k}{4A^3}
+\le\theta''(a)\le
+\frac{2\tau k}{A^3}.
+\]
+
+On \(a=r+qu\), the phase \(\theta/(2\pi)\) therefore satisfies
+\[
+\lambda=\frac{q^2\tau k}{8\pi A^3},
+\qquad
+\Lambda=\frac{q^2\tau k}{\pi A^3},
+\qquad
+\text{interval length}\le A/q.
+\]
+These are exactly the hypotheses of Arias de Reyna’s Lemma 5 for a real \(C^2\) phase with positive second derivative. Its constant is \(2.79368380731\ldots<3\). Progressions of length below one are counted directly. :chatgpt-content-reference{index="0"}
+
+Including endpoint changes, this gives
+\[
+\boxed{
+\left|
+\sum_{n\equiv r\ (q)}
+e^{-it\log((n+k)/n)}
+\right|
+\le
+2+5\sqrt{\frac{\tau k}{A}}
++31\frac{A^{3/2}}{q\sqrt{\tau k}}.
+}
+\tag{5}
+\]
+
+The modulus sum is paid by
+\[
+\sum_{d,e\le U}\frac1{[d,e]}
+\le
+\sum_{g\le U}\frac1g
+\left(\sum_{a\le U/g}\frac1a\right)^2
+\le\mathfrak h^3.
+\]
+Consequently,
+\[
+\boxed{
+|R_k(t)|
+\le
+2U^2+5U^2\sqrt{\frac{\tau k}{A}}
++31\mathfrak h^3\frac{A^{3/2}}{\sqrt{\tau k}}.
+}
+\tag{6}
+\]
+At zero shift, CRT counting separately gives
+\[
+\boxed{R_0\le A\mathfrak h^3+U^2.}
+\tag{7}
+\]
+
+No sign or smallness of the user’s \(R_U(k)\) is asserted. Its compatible progression sums have instead been estimated with their oscillation intact.
+
+## 3. Optimize the shift range with every error included
+
+**[FINITE_CELL | PAPER]**
+
+Extend the sequence by zero outside \(I\). The finite-shift Cauchy identity gives, for \(1\le K\le A\),
+\[
+|S_I(t)|^2
+\le
+\frac{A+K-1}{K}
+\left[
+R_0+
+2\sum_{k=1}^{K-1}(1-k/K)\Re R_k(t)
+\right].
+\]
+This identity applies to the actual coefficients \(\alpha_U\); no unit-coefficient theorem is being misapplied.
+
+Using (6)–(7) yields the complete envelope
+\[
+\boxed{
+|S_I(t)|^2
+\le
+\frac{2A^2\mathfrak h^3}{K}
++10AU^2
++20U^2\sqrt{A\tau K}
++248\mathfrak h^3\frac{A^{5/2}}{\sqrt{\tau K}}.
+}
+\tag{8}
+\]
+The \(10AU^2\) term includes the CRT endpoint errors.
+
+For \(\tau>A/U\), choose
+\[
+K_1=\frac{A\mathfrak h^2}{U^{4/3}\tau^{1/3}},
+\qquad
+K_2=\frac{A^2\mathfrak h^3}{U^2\tau},
+\qquad
+\boxed{K=\lfloor\max(K_1,K_2)\rfloor.}
+\tag{9}
+\]
+
+This is a two-term optimization, not just a choice favoring one error. \(K_1\) balances the \(K^{-1}\) term against the growing \(K^{1/2}\) term; \(K_2\) balances the \(K^{-1/2}\) term against it.
+
+Uniformly for
+\[
+A\ge A_0,\qquad A/U<\tau\le\Omega,
+\]
+eventually \(2\le K\le A/2\). Explicit sufficient conditions are
+\[
+\frac{\mathfrak h^3}{U}\le\frac14,\qquad
+\frac{\mathfrak h^2}{UA_0^{1/3}}\le\frac14,\qquad
+\frac{A_0\mathfrak h^2}{U^{4/3}\Omega^{1/3}}\ge4.
+\]
+All hold on every sufficiently late original cell.
+
+Thus \(K\ge K_i/2\) and \(K\le K_1+K_2\). Substitution into (8) gives
+\[
+|S_I(t)|^2
+\le
+24AU^{4/3}\mathfrak h\,\tau^{1/3}
++372U\mathfrak h^{3/2}A^{3/2}
++10AU^2,
+\]
+and therefore
+\[
+\boxed{
+|S_I(t)|
+\le20\left[
+U^{2/3}\mathfrak h^{1/2}\sqrt A\,\tau^{1/6}
++U^{1/2}\mathfrak h^{3/4}A^{3/4}
++U\sqrt A
+\right].
+}
+\tag{10}
+\]
+
+All clipped product intervals are covered. A short clipped interval does not invalidate the argument: the sequence is zero-extended within the fixed box \([A,2A)\).
+
+## 4. Restore the continuous mean—and cover zero frequency
+
+**[COFINAL_FAMILY | PAPER]**
+
+Partial summation against \(a^{-1/2}\), using the uniform subinterval estimate (10), costs at most \(2/\sqrt A\).
+
+The continuous contribution in (1) obeys
+\[
+\left|A_U\int_Ia^{-1/2-it}\,da\right|
+\le\frac{3\mathfrak h\sqrt A}{\tau}.
+\]
+When \(\tau>A/U\), this is at most \(3U\) eventually. Hence
+\[
+\left|\int_Ia^{-1/2-it}\,d\rho_U(a)\right|
+\le64\left[
+U^{2/3}\mathfrak h^{1/2}\tau^{1/6}
++U^{1/2}\mathfrak h^{3/4}A^{1/4}
++U
+\right].
+\tag{11}
+\]
+
+For \(\tau\le A/U\), **including \(t=0\)**, I use no curvature assertion. Expand \(\alpha_U\) exactly. For each \(d\le U\), the integer variable \(a/d\) has scale \(A/d\), and
+\[
+|t|\le A/U\le A/d.
+\]
+The accepted low-frequency sum-minus-integral estimate from Answer8, followed by partial summation, gives
+\[
+\boxed{
+\left|\int_Ia^{-1/2-it}\,d\rho_U(a)\right|
+\le\frac{32U}{\sqrt A},
+\qquad |t|\le A/U.
+}
+\tag{12}
+\]
+
+The subtracted integral is precisely the \(A_U\) term in (1). No Möbius mean estimate is inserted.
+
+Combining the two cases proves, for **every** \(|t|\le\Omega\),
+\[
+\boxed{
+\left|\int_Ia^{-1/2-it}\,d\rho_U(a)\right|
+\le64\left[
+U^{2/3}\mathfrak h^{1/2}\Omega^{1/6}
++U^{1/2}\mathfrak h^{3/4}A^{1/4}
++U
+\right].
+}
+\tag{13}
+\]
+
+Thus the result does not leave a low-frequency part of the long-\(\alpha_U\) operator uncontrolled.
+
+## 5. Sum the prime-weighted flux and reconstruct the whole carrier matrix
+
+**[COFINAL_FAMILY | PAPER]**
+
+Define the signed cumulative transform
+\[
+\Phi_{\mathrm{long}}(t;y)
+=
+\int_{[Y_0,y]}x^{-it}\,d\sigma_{\mathrm{long}}(x).
+\]
+Split \(a\ge A_0\) into \([A,2A)\), \(A=2^jA_0\). For fixed \(b\), the product condition clips the upper endpoint at \(y/b\), already covered by (13).
+
+Retain all prime powers and use only
+\[
+\sum_{U<b\le m/A}\frac{\Lambda(b)}{\sqrt b}
+\le2L\sqrt{m/A}.
+\]
+The geometric sums satisfy
+\[
+\sum_AA^{-1/2}\le4m^{-1/4},
+\qquad
+\sum_AA^{-1/4}\le7m^{-1/8}.
+\]
+It follows that
+\[
+\boxed{
+\begin{aligned}
+\sup_{\substack{|t|\le\Omega\\y\le m}}
+|\Phi_{\mathrm{long}}(t;y)|
+\le\mathcal M_m:={}&
+512Lm^{1/4}
+\left(U^{2/3}\mathfrak h^{1/2}\Omega^{1/6}+U\right)\\
+&+896LU^{1/2}\mathfrak h^{3/4}m^{3/8}.
+\end{aligned}
+}
+\tag{14}
+\]
+In particular,
+\[
+\mathcal M_m
+\le10000m^{5/12}L^{3/2}\log(2L)
+\]
+eventually.
+
+For \(|t|\le A_0/U\), using (12) throughout gives the sharper
+\[
+\boxed{
+\sup_{y\le m}|\Phi_{\mathrm{long}}(t;y)|
+\le128UL.
+}
+\tag{15}
+\]
+
+### All cross-frequency terms are paid
+
+Use the actual finite-window synthesis:
+\[
+h_j^{\mathrm{long}}
+=\Im\Phi_{\mathrm{long}}(\omega_j;m),
+\]
+\[
+d_j^{\mathrm{long}}
+=\frac2L\Re\int_0^L
+\Phi_{\mathrm{long}}(\omega_j;e^u)\,du.
+\]
+Then
+\[
+C_{\mathrm{long}}
+=
+\operatorname{diag}(d^{\mathrm{long}})
++\frac1\pi
+[\operatorname{diag}(h^{\mathrm{long}}),H_{\mathrm{discrete}}].
+\]
+Since \(\|H_{\mathrm{discrete}}\|\le\pi\),
+\[
+\boxed{
+\|C_{\mathrm{long}}\|
+\le4\mathcal M_m.
+}
+\tag{16}
+\]
+
+This is the **complete coherent matrix**, not its diagonal or a selected frequency block. Adjacent-frequency, opposite-frequency and low/high cross terms all occur in the exact divided difference. There is no hidden \(2m+1\) factor.
+
+The proof avoids a problematic mixed-phase step: it does not difference a general Fourier superposition and assume positive curvature for all its cross terms. Instead, it proves the signed primitive estimate uniformly and then reconstructs the full original matrix by the accepted exact bounded map.
+
+The product atom \(ab=m\) is counted in the sum estimates. Its compressed action is zero because \(S_L=0\). Dyadic endpoints are half-open; included lower endpoints use \(\rho_U(\ell^-)\), excluded ones use \(\rho_U(\ell)\), and upper cumulative values are right-continuous. No trace term is discarded.
+
+## 6. Spend the bound through the actual regular equation
+
+**[FINITE_CELL | PAPER]**
+
+Retain the accepted all-range identity
+\[
+\mathsf H_m(r)=rI-C_{\mathrm{II}}+F_8,
+\qquad
+\|F_8\|\le\Delta_8.
+\]
+The raw small-product range, Type-I terms and archimedean diagonal already paid in \(\Delta_8\) are unchanged.
+
+Because
+\[
+C_{\mathrm{II}}=C_{\mathrm{long}}+C_{\mathrm{rem}},
+\]
+set
+\[
+F_9=F_8-C_{\mathrm{long}},
+\qquad
+\Delta_9=\Delta_8+4\mathcal M_m.
+\]
+Then
+\[
+\boxed{
+\mathsf H_m(r)=rI-C_{\mathrm{rem}}+F_9,
+\qquad
+\|F_9\|\le\Delta_9.
+}
+\tag{17}
+\]
+
+Now keep the **actual** repaired regular space and its blocks:
+\[
+\mathcal R=\ker B,\qquad \mathcal E=\mathcal R^\perp,
+\]
+\[
+f=J_rv=v+y,\qquad
+y=-A_r^{-1}B_rv,\qquad r>\epsilon_m.
+\]
+Nothing has been recomputed for the split measure.
+
+The regular equation gives
+\[
+\boxed{
+\left\|
+P_{\mathcal R}C_{\mathrm{rem}}J_rv-r y
+\right\|
+\le\Delta_9\|J_rv\|.
+}
+\tag{18}
+\]
+
+Moreover,
+\[
+\langle y,\mathsf H_m(r)f\rangle=0,\qquad v\perp y.
+\]
+Therefore
+\[
+\boxed{
+\begin{aligned}
+&r\|v\|^2-\Re\langle v,C_{\mathrm{rem}}J_rv\rangle
+-\Delta_9\|v\|\,\|J_rv\|\\
+&\quad\le
+\langle v,\mathfrak S_m(r)v\rangle\\
+&\quad\le
+r\|v\|^2-\Re\langle v,C_{\mathrm{rem}}J_rv\rangle
++\Delta_9\|v\|\,\|J_rv\|.
+\end{aligned}
+}
+\tag{19}
+\]
+
+The full \(B_r^*A_r^{-1}B_r\) correction remains through \(J_r\). **No bound for \(\|J_r\|\), and no replacement of \(\|J_rv\|\) by \(\|v\|\), is asserted.**
+
+For the original Weil form, retaining its positive terms gives
+\[
+\boxed{
+\begin{aligned}
+W(f)\ge{}&
+D_{\mathrm{arch}}(f)
+-\bigl(c_A+\delta_8+4\mathcal M_m\bigr)\|f\|^2
++2\langle f,(R+R^*)f\rangle\\
+&-\langle f,C_{\mathrm{rem}}f\rangle,
+\end{aligned}
+}
+\tag{20}
+\]
+where \(\delta_8\) is the previously paid raw-small-range and Type-I error.
+
+This is a new one-sided source estimate with a controlled component. **The unestimated final term prevents it from being a new whole-matrix floor.**
+
+## 7. The exact remaining arithmetic correlation
+
+**[FINITE_CELL | PAPER]**
+
+For the two actual carrier vectors, retain
+\[
+\mathcal K_{v,f}(h)
+=
+\int_0^h
+\left[
+\overline{v(L-u)}f(h-u)
++\overline{v(h-u)}f(L-u)
+\right]du.
+\]
+The scalar still needed in (19) is exactly
+\[
+\boxed{
+\begin{aligned}
+\mathcal R_{U,m}(v,J_rv)
+={}&
+\sum_{b>U}\frac{\Lambda(b)}{\sqrt b}
+\int_{\substack{U<a<A_0\\Y_0\le ab\le m}}
+a^{-1/2}
+\mathcal K_{v,J_rv}(L-\log(ab))\,d\rho_U(a)\\
+&+\int_{Y_0}^m
+D_U(x)\mathcal K_{v,J_rv}(L-\log x)\,dx.
+\end{aligned}
+}
+\tag{21}
+\]
+
+The second integral is the **same compensator (22) from Answer8**. Expanding the first Stieltjes integral restores the prime-weighted flux and all lower trace terms. At \(ab=m\), \(\mathcal K(0)=0\).
+
+The two endpoint profiles still come from \(v,J_rv\). They have not become independent variables. The signed measure is still the full Type-II measure minus a component now proved small.
+
+### Why this optimized additive estimate does not finish the short-factor part
+
+For a short box \(A\asymp U\) at top frequencies \(\tau\asymp m/L\), both \(K_1\) and \(K_2\) in (9) tend to zero. The admissible choice \(K=1\) has no nonzero shifted correlation and reduces to the unsaved Cauchy estimate. For \(K\ge2\), the second-derivative envelope (5) is larger than the progression length in this regime.
+
+**Positive curvature is present; the resulting estimate is outside its useful scale.** This is a limitation of the proved envelope, not a lower bound for the actual sum and not a theorem-shape kill.
+
+The residual has nevertheless become more specific. On the original strip
+\[
+x\in[X,2X),\qquad X=\lfloor m/L^8\rfloor,
+\]
+the remaining terms satisfy
+\[
+U<a<A_0,\qquad
+b=x/a>X/A_0\gg\frac{\sqrt m}{L^8}.
+\]
+Thus the long factor there is now specifically the **prime-power variable \(b\)**. The CRT lemma for \(\alpha_U(a)\alpha_U(a+k)\) does not estimate the shifted \(\Lambda(b)\Lambda(b+k)\) correlations produced by differencing that variable.
+
+## Closeout
+
+The additive-shift test succeeds on a genuine portion of the formerly unestimated Type-II operator: **all centered terms with \(a\ge\sqrt m\), including low frequencies, are paid at exponent \(5/12\)**. The progression endpoints, product cutoffs, prime powers, continuous mean and full-carrier synthesis have explicit budgets.
+
+The remaining scalar is (21), subject to the actual regular constraint (18). Its Schur discriminator is
+\[
+M_r(v)-\Delta_9\|v\|\,\|J_rv\|
+\le
+\langle v,\mathfrak S_m(r)v\rangle
+\le
+M_r(v)+\Delta_9\|v\|\,\|J_rv\|,
+\]
+where
+\[
+M_r(v)=r\|v\|^2-\Re\mathcal R_{U,m}(v,J_rv).
+\]
+A negative upper endpoint certifies a violation on that cell; a nonnegative lower envelope for every exceptional vector certifies the cell. A straddling interval does neither.
+
+**SP, the actual exceptional Schur sign, G1/G3 and RH remain open. No common-cell subsequence or improved whole-matrix bottom exponent is supplied.**
+
+**Next mathematical step:** difference the remaining long prime-power variable in (21) on the original endpoint strip, keeping the resulting \(\Lambda(b)\Lambda(b+k)\) term and both mixed continuous terms together. The proved restriction \(b\gg\sqrt m/L^8\) now justifies that switch; its signed estimate must be tested on the actual \(J_rv\) against (19), not on independent endpoint profiles.
+
+
+## File: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_SMALL_DIVISOR_INLINE_2026-10-06.md
+
+# Growth answer8 — exact inline capture
+
+Chat `6ac54396-d878-83eb-ae29-35d2bdd2262b`; question `e6511959-8e16-478b-86ea-0788efd52251`.
+Answer `f63e6100-9d91-4e30-b5c5-fca1153e22fa`; untruncated read_thread capture. Claims pending audit.
+
+---
+
+Ы — **I obtained a signed small-divisor cancellation estimate on the original carrier. The remaining large-factor Hankel term is still unbounded at the required scale.**
+
+On the specified strip \(X=\lfloor m/L^8\rfloor\), the part estimated below costs at most
+\[
+\boxed{40000L^{11/2}\log(2L)}
+\]
+in the **original operator norm**, simultaneously for all complex carrier vectors. In particular, it applies to the **actual** \(J_rv\), without replacing its endpoint restrictions by independent functions.
+
+Accounting for all arithmetic ranges also gives an explicit
+\[
+O\!\left(m^{1/4}L^{3/2}\log(2L)\right)
+\]
+remainder after an exact divisor decomposition of the full matrix. **This quarter power is a remainder bound—not a negative-bottom bound.** Its unestimated complement remains signed and potentially large.
+
+The regular equation then leaves one explicit large-factor endpoint pairing, with the full Schur correction intact. I identify below why the particular oscillatory estimate that pays the small-divisor part does not estimate that remaining pairing.
+
+:chatgpt-content-reference{index="3"}[Complete PAPER verdict and machine-readable ledger](sandbox:/mnt/data/PROSHKA_VERDICT_FULL_CCM_NEGATIVE_BOTTOM_GROWTH_Q08.md)
+
+## 1. Split the actual signed measure, not its prime and pole norms
+
+**[FINITE_CELL | PAPER]**
+
+Write the supplied measure in the integer variable as
+\[
+d\boldsymbol\mu(x)=
+\sum_{2\le n\le m}\frac{\Lambda(n)}{\sqrt n}\delta_n(dx)
+-\left(x^{-1/2}-x^{-3/2}\right)dx.
+\]
+For a real signed measure \(\sigma\), define its original-carrier compression
+\[
+\mathcal C[\sigma]
+=
+P_m\left[\int(S_{\log x}+S_{\log x}^{*})\,d\sigma(x)\right]P_m.
+\]
+Thus
+\[
+\mathcal C[d\boldsymbol\mu]
+=\operatorname{compression}(\mathcal P-R_++R+\text{adjoint}),
+\]
+and the requested matrix is exactly
+\[
+\mathsf H_m(r):=\mathsf S(r)-\mathsf T
+=\operatorname{diag}(a(\omega_j))+rI-\mathcal C[d\boldsymbol\mu].
+\]
+
+Put
+\[
+U=\lceil L\rceil,\qquad \Omega=\frac{2\pi m}{L},
+\]
+and distinguish the **Möbius function** \(\mu_{\mathrm M}\) from the signed measure. Define
+\[
+\alpha_U(a)=\sum_{\substack{d\mid a\\d>U}}\mu_{\mathrm M}(d).
+\]
+It vanishes for \(a\le U\), while for \(a>U\),
+\[
+\alpha_U(a)=-\sum_{\substack{d\mid a\\d\le U}}\mu_{\mathrm M}(d).
+\]
+
+For every \(n>U\), the exact truncated convolution identity is
+\[
+\begin{aligned}
+\Lambda(n)&=\lambda_{\mathrm I}(n)+\lambda_{\mathrm{II}}(n),\\
+\lambda_{\mathrm I}(n)
+&=
+\sum_{\substack{d\le U\\d\mid n}}\mu_{\mathrm M}(d)\log(n/d)
+-
+\sum_{\substack{d,\ell\le U\\d\ell\mid n}}
+\mu_{\mathrm M}(d)\Lambda(\ell),\\
+\lambda_{\mathrm{II}}(n)
+&=
+\sum_{\substack{ab=n\\a>U,\ b>U}}
+\alpha_U(a)\Lambda(b).
+\end{aligned}
+\tag{1}
+\]
+This is **Vaughan’s identity**, in the form recorded as equation (18.2.1) in Kedlaya’s notes. Here it follows directly by splitting \(\mu_{\mathrm M}\) and \(\Lambda\) at \(U\), and using \(\log=1*\Lambda\) and \(\mu_{\mathrm M}*1=\varepsilon\). No distribution theorem is needed for the identity. :chatgpt-content-reference{index="0"}
+
+The prime-power check matters: for a prime \(p>U\),
+\[
+\lambda_{\mathrm I}(p^2)=2\log p,\qquad
+\lambda_{\mathrm{II}}(p^2)=-\log p,
+\]
+so their sum is the required \(\Lambda(p^2)=\log p\). For distinct primes \(p,q>U\), the two contributions at \(pq\) cancel. Neither composites nor higher powers may be dropped from this decomposition.
+
+Define the finite coefficients
+\[
+A_U=\sum_{d\le U}\frac{\mu_{\mathrm M}(d)}d,\qquad
+B_U=\sum_{d\le U}\frac{\mu_{\mathrm M}(d)\log d}d,\qquad
+C_U=\sum_{\ell\le U}\frac{\Lambda(\ell)}\ell,
+\]
+and
+\[
+\kappa_U(x)=A_U\log x-B_U-A_UC_U.
+\]
+
+On any interval contained in \((U,m]\), make the **exact signed split**
+\[
+\begin{aligned}
+d\boldsymbol\mu_{\mathrm I}(x)
+&=
+\sum_n\frac{\lambda_{\mathrm I}(n)}{\sqrt n}\delta_n(dx)
+-\kappa_U(x)x^{-1/2}\,dx,\\
+d\boldsymbol\mu_{\mathrm{II}}(x)
+&=
+\sum_n\frac{\lambda_{\mathrm{II}}(n)}{\sqrt n}\delta_n(dx)
+-(1-\kappa_U(x))x^{-1/2}\,dx+x^{-3/2}\,dx.
+\end{aligned}
+\tag{2}
+\]
+Their sum is the original measure.
+
+**No smallness of \(A_U\), \(B_U\), or \(1-\kappa_U\) is assumed.** In particular, the continuous compensator in the second line remains part of the unestimated signed interaction.
+
+## 2. The small-divisor quadrature has a uniform original-frequency bound
+
+**[FINITE_CELL | PAPER]**
+
+The concrete source lemma is the following. Suppose
+\[
+Y\ge4U^2,\qquad Y\le Z\le\min(2Y,m),\qquad |t|\le\Omega,\qquad q\le U^2.
+\]
+Then
+\[
+\begin{aligned}
+&\left|
+\sum_{Y\le qk<Z}(qk)^{-1/2-it}
+-\frac1q\int_Y^Zx^{-1/2-it}\,dx
+\right|
+\le \frac{100(1+\sqrt\Omega)}{\sqrt Y},\\
+&\left|
+\sum_{Y\le qk<Z}(qk)^{-1/2-it}\log k
+-\frac1q\int_Y^Zx^{-1/2-it}\log(x/q)\,dx
+\right|
+\le \frac{300L(1+\sqrt\Omega)}{\sqrt Y}.
+\end{aligned}
+\tag{3}
+\]
+These estimates include every intermediate cutoff. Changing inclusion of an endpoint changes at most two summands, already covered by the constants.
+
+### Small frequencies: subtract the integral before estimating
+
+Put \(N=Y/q\ge4\). On every subinterval of \([N,2N]\), for \(|t|\le N\),
+\[
+\left|\sum k^{-it}-\int u^{-it}\,du\right|\le10.
+\tag{4}
+\]
+
+For completeness, Euler summation leaves bounded endpoint terms and
+\[
+\int \bigl(\{u\}-\tfrac12\bigr)(-it/u)e^{-it\log u}\,du.
+\]
+In the Abel-regularized Fourier expansion of the sawtooth, the nonzero mode \(h\) has phase
+\[
+\phi_h(u)=2\pi hu-t\log u,\qquad
+|\phi_h'(u)|\ge5|h|.
+\]
+Integration by parts bounds that mode, before its sawtooth coefficient, by
+\[
+\frac{3}{5|h|}+\frac1{50h^2}.
+\]
+Multiplication by the Fourier coefficient \((2\pi h)^{-1}\) makes the bounds summable. The endpoint terms and this sum are less than \(10\). The case \(t=0\) is the ordinary counting discrepancy; negative \(t\) follows by conjugation.
+
+This step would be false at the stated scale for the uncentered sum. It is the **sum-minus-integral** estimate that is being proved.
+
+### Higher frequencies: integer aliases are paid
+
+For \(t>N\), take
+\[
+g(u)=-\frac{t}{2\pi}\log u.
+\]
+On \([N,2N]\),
+\[
+\frac{t}{8\pi N^2}\le g''(u)\le\frac{t}{2\pi N^2}.
+\]
+Arias de Reyna’s Lemma 5 gives, for a real \(C^2\) phase with \(0<\lambda\le g''\le\Lambda\), on an interval of length \(H\ge1\),
+\[
+\left|\sum e(g(k))\right|
+\le\frac{A}{\sqrt\lambda}(\Lambda H+2),
+\qquad A<3.
+\]
+These hypotheses apply exactly here, with \(H\le N\); intervals shorter than one are handled directly. :chatgpt-content-reference{index="1"}
+
+Consequently, the sum costs at most
+\[
+4+3\sqrt t+\frac{31N}{\sqrt t},
+\]
+while its integral costs at most \(4N/t\). Since \(t>N\), their discrepancy is at most \(50\sqrt t\).
+
+Finally, **partial summation** against \((qu)^{-1/2}\) costs \(Y^{-1/2}\). Against \((qu)^{-1/2}\log u\), the endpoint size plus variation is at most \(3L/\sqrt Y\). This proves (3).
+
+There is no assumption that the original top frequency lies below the sampling frequency. The second case explicitly covers that failure.
+
+## 3. Spend the estimate on the coherent \(d,h\) matrix
+
+**[COFINAL_FAMILY | PAPER]**
+
+Set
+\[
+M_{U,L}=3UL+U^2\log(2U).
+\]
+Summing (3) over the two small-divisor terms in (1), **with their corresponding continuous terms**, gives
+\[
+\sup_{\substack{|t|\le\Omega\\Y\le Z\le\min(2Y,m)}}
+\left|\int_{[Y,Z)}x^{-it}\,d\boldsymbol\mu_{\mathrm I}(x)\right|
+\le
+\frac{100M_{U,L}(1+\sqrt\Omega)}{\sqrt Y}.
+\tag{5}
+\]
+For the second term, only
+\[
+\sum_{\ell\le U}\Lambda(\ell)\le U\log U
+\]
+is used.
+
+Apply the accepted matrix identity to this **single signed primitive**. If its cumulative transform is bounded by \(M\), its diagonal costs at most \(2M\), and its discrete-Hilbert commutator costs at most \(2M\). Therefore
+\[
+\boxed{
+\|C_{\mathrm I,[Y,Z)}\|
+\le
+\frac{400M_{U,L}(1+\sqrt\Omega)}{\sqrt Y}.
+}
+\tag{6}
+\]
+
+The diagonal and divided differences are still generated from the same measure. The new input is the independently proved quadrature cancellation (3), **not another application of the old \(\mathcal R_m\) bound to the full prime source**.
+
+For \(X=\lfloor m/L^8\rfloor\), eventually
+\[
+M_{U,L}\le20L^2\log(2L),\qquad
+X\ge\frac{m}{2L^8},\qquad
+\frac{1+\sqrt\Omega}{\sqrt X}\le5L^{7/2}.
+\]
+Thus
+\[
+\boxed{
+\|C_{\mathrm I,X}\|
+\le40000L^{11/2}\log(2L).
+}
+\tag{7}
+\]
+
+In particular, for the **actual corrected vector**,
+\[
+\boxed{
+\begin{aligned}
+&\left|
+\langle v,C_XJ_rv\rangle
+-\langle v,C_{\mathrm{II},X}J_rv\rangle
+\right|\\
+&\qquad\le
+40000L^{11/2}\log(2L)\,
+\|v\|\,\|J_rv\|.
+\end{aligned}
+}
+\tag{8}
+\]
+The same estimate holds with both arguments equal to \(J_rv\).
+
+This is a direct bilinear-form estimate. All finite-carrier projections remain in the operators; there is no squaring step that discards the negative projection-loss term.
+
+## 4. Account for the rest of the source
+
+**[COFINAL_FAMILY | PAPER]**
+
+Choose
+\[
+Y_0=\lceil\sqrt m\rceil.
+\]
+For sufficiently large \(m\), \(Y_0\ge4U^2\).
+
+Keep the original source on \([1,Y_0)\) intact. Its norm is bounded by
+\[
+\|C_{<Y_0}\|
+\le8\sqrt{Y_0}(1+\log Y_0),
+\tag{9}
+\]
+using \(\Lambda(n)\le\log n\), the elementary sum of \(n^{-1/2}\), and the continuous mass.
+
+For the Type-I part on \([Y_0,m]\), sum (6) over dyadic intervals. The inverse square roots of their left endpoints sum to less than \(4/\sqrt{Y_0}\), so
+\[
+\|C_{\mathrm I,[Y_0,m]}\|
+\le
+\frac{1600M_{U,L}(1+\sqrt\Omega)}{\sqrt{Y_0}}.
+\tag{10}
+\]
+The final interval may be shorter. Its cutoffs were included in (3). The atom at \(m\) is retained and has zero compressed action because \(S_L=0\).
+
+Since \(0\le a(\omega_j)\le L+8\) eventually, define
+\[
+\boxed{
+\Delta_m=
+L+8+
+8\sqrt{Y_0}(1+\log Y_0)
++\frac{1600M_{U,L}(1+\sqrt\Omega)}{\sqrt{Y_0}}.
+}
+\tag{11}
+\]
+Then
+\[
+\boxed{
+\mathsf H_m(r)
+=rI-C_{\mathrm{II},[Y_0,m]}+F_m,
+\qquad
+\|F_m\|\le\Delta_m,
+}
+\tag{12}
+\]
+where the remainder is explicitly
+\[
+F_m=\operatorname{diag}a-C_{<Y_0}-C_{\mathrm I,[Y_0,m]}.
+\]
+In particular,
+\[
+\Delta_m\le10^6m^{1/4}L^{3/2}\log(2L)
+\]
+eventually.
+
+For the **original full Weil form**, retaining the archimedean form gives the stronger one-sided statement
+\[
+\boxed{
+\begin{aligned}
+W(f)\ge{}&
+D_{\rm arch}(f)
+-\bigl(c_A+\delta_m\bigr)\|f\|^2
++2\langle f,(R+R^*)f\rangle\\
+&-\langle f,C_{\mathrm{II},[Y_0,m]}f\rangle,
+\qquad
+\delta_m=\Delta_m-(L+8).
+\end{aligned}
+}
+\tag{13}
+\]
+This holds simultaneously for all original complex \(f\).
+
+**It is not a quarter-power floor.** The last signed form is unestimated, and its continuous compensator has not been declared small. The result pays specified source components at that scale; it does not pay their remaining complement.
+
+## 5. Use the actual regular equation
+
+**[FINITE_CELL | PAPER]**
+
+Retain the repaired source spaces
+\[
+\mathcal R=\ker B,\qquad \mathcal E=\mathcal R^\perp.
+\]
+Let \(A_r\) and \(B_r\) be the **actual** regular and regular–exceptional blocks of \(\mathsf H_m(r)\). For \(r>\epsilon_m\),
+\[
+A_r\succeq(r-\epsilon_m)I,
+\qquad
+f=J_rv=v+y,
+\qquad
+y=-A_r^{-1}B_rv.
+\]
+
+Insert (12) into the regular equation. It gives
+\[
+\boxed{
+P_{\mathcal R}C_{\mathrm{II},[Y_0,m]}f
+=ry+P_{\mathcal R}F_mf,
+}
+\]
+hence
+\[
+\boxed{
+\left\|
+P_{\mathcal R}C_{\mathrm{II},[Y_0,m]}f-ry
+\right\|
+\le\Delta_m\|f\|.
+}
+\tag{14}
+\]
+
+This is the regular component of the remaining arithmetic interaction, constrained with an explicit original-norm error.
+
+Now
+\[
+\langle y,\mathsf H_m(r)f\rangle=0.
+\]
+Therefore
+\[
+\langle v,\mathfrak S_m(r)v\rangle
+=\langle f,\mathsf H_m(r)f\rangle
+=\langle v,\mathsf H_m(r)f\rangle.
+\]
+Using (12) again,
+\[
+\boxed{
+\begin{aligned}
+&r\|v\|^2
+-\Re\langle v,C_{\mathrm{II},[Y_0,m]}J_rv\rangle
+-\Delta_m\|v\|\,\|J_rv\|\\
+&\qquad\le
+\langle v,\mathfrak S_m(r)v\rangle\\
+&\qquad\le
+r\|v\|^2
+-\Re\langle v,C_{\mathrm{II},[Y_0,m]}J_rv\rangle
++\Delta_m\|v\|\,\|J_rv\|.
+\end{aligned}
+}
+\tag{15}
+\]
+
+The correction \(B_r^*A_r^{-1}B_r\) remains fully present through \(J_r\). **There is no replacement of \(\|J_rv\|\) by \(\|v\|\).** Nor has the regular block been recomputed for the altered arithmetic decomposition.
+
+## 6. The surviving term is an explicit endpoint Hankel pairing
+
+**[FINITE_CELL | PAPER]**
+
+Put
+\[
+b_0=L-\log Y_0\le L/2.
+\]
+All remaining shifts run from \([0,b_0]\) to \([L-b_0,L]\).
+
+For actual carrier vectors \(v,f\), define
+\[
+\mathcal K_{v,f}(h)
+=
+\int_0^h
+\left[
+\overline{v(L-u)}f(h-u)
++\overline{v(h-u)}f(L-u)
+\right]du.
+\tag{16}
+\]
+Because the head and tail are disjoint,
+\[
+|\mathcal K_{v,f}(h)|\le\|v\|\,\|f\|.
+\]
+Differentiating while retaining the two endpoint terms also gives
+\[
+|\mathcal K'_{v,f}(h)|
+\le4\Omega\|v\|\,\|f\|.
+\tag{17}
+\]
+Here the actual bounds
+\[
+|f(t)|\le\sqrt{\frac{2m+1}{L}}\|f\|,
+\qquad
+\|f'\|\le\Omega\|f\|
+\]
+pay the endpoint and derivative costs. No vanishing trace is assumed.
+
+Push the residual measure forward by \(h=L-\log x\):
+\[
+\begin{aligned}
+d\nu_{\mathrm{II}}(h)
+={}&
+\sum_{\substack{a,b>U\\Y_0\le ab\le m}}
+\frac{\alpha_U(a)\Lambda(b)}{\sqrt{ab}}\,
+\delta_{L-\log(ab)}(dh)\\
+&-\left[
+(1-\kappa_U(me^{-h}))\sqrt m\,e^{-h/2}
+-m^{-1/2}e^{h/2}
+\right]dh,
+\quad 0\le h\le b_0.
+\end{aligned}
+\tag{18}
+\]
+Then the unestimated scalar in (15) is exactly
+\[
+\boxed{
+\mathcal B_{U,m}(v,J_rv)
+=
+\int_0^{b_0}\mathcal K_{v,J_rv}(h)\,d\nu_{\mathrm{II}}(h).
+}
+\tag{19}
+\]
+
+This retains the **prime-power variable \(b\)**, the signed finite-divisor coefficient \(\alpha_U(a)\), the hyperbolic constraint on \(ab\), and the continuous compensator.
+
+At \(ab=m\), \(h=0\) and \(\mathcal K_{v,f}(0)=0\). At the other cutoffs, atoms follow the original half-open convention. The original short strip is simply a subinterval of (18); its discrepancy is paid by (8), while (9)–(15) account for the other ranges.
+
+For \(v=f\), the kernel in (16) is the direct signed endpoint form. For the Schur calculation, it is evaluated on **\(v,J_rv\)**, not on independently chosen endpoint profiles.
+
+## 7. Where this construction stops
+
+There is a further **exact source lemma** for the coefficient \(\alpha_U\). For every real \(u\ge U\),
+\[
+\boxed{
+\begin{aligned}
+\sum_{U<a\le u}\alpha_U(a)
+&=-A_U(u-U)+\rho_U(u),\\
+\rho_U(u)
+&=
+\sum_{d\le U}\mu_{\mathrm M}(d)
+\left(\{u/d\}-\{U/d\}\right),\\
+|\rho_U(u)|&\le U.
+\end{aligned}
+}
+\tag{20}
+\]
+Indeed,
+\[
+\sum_{a\le u}\alpha_U(a)
+=
+1-\sum_{d\le U}\mu_{\mathrm M}(d)\lfloor u/d\rfloor,
+\]
+and the sum vanishes at \(u=U\).
+
+For fixed prime power \(b>U\), summation by parts against
+\[
+W_b(u)
+=
+u^{-1/2}\mathcal K_{v,J_rv}(L-\log(bu))
+\]
+leaves the signed flux
+\[
+\boxed{
+[\rho_U(u)W_b(u)]_{\mathrm{lower}}^{\mathrm{upper}}
+-
+\int \rho_U(u)W_b'(u)\,du,
+}
+\tag{21}
+\]
+multiplied by \(\Lambda(b)/\sqrt b\), with the exact restrictions
+\[
+u>U,\qquad Y_0\le bu\le m.
+\]
+The upper product endpoint vanishes when \(bu=m\). The lower endpoint generally does not.
+
+The main integrals from this summation by parts combine with the continuous compensator in (18). Writing
+\[
+\psi_1(x)=\sum_{n\le x}\frac{\Lambda(n)}n,
+\]
+their combined density in the integer variable is
+\[
+\boxed{
+\left[
+A_U\bigl(\log x-\psi_1(x/U)\bigr)-B_U-1
+\right]x^{-1/2}
++x^{-3/2}.
+}
+\tag{22}
+\]
+
+**The prime-weighted flux (21) and density (22) must remain together.** The bound \(|\rho_U|\le U\) is proved, but using it with the free derivative estimate (17) incurs the full factor \(\Omega\). That does not close an improved signed form bound. Equation (14) controls the regular projection of the complete operator, not this derivative or the signs of the \(b\)-sum.
+
+There is also a precise obstruction to continuing the successful small-divisor calculation by the same oscillatory argument. For a same-frequency term,
+\[
+e^{-i\omega\log(ab)}
+e^{i\omega\log(ab')}
+=
+e^{-i\omega\log(b/b')}.
+\tag{23}
+\]
+After bilinear Cauchy differencing, this phase has **zero curvature in \(a\)**. The positive-curvature hypothesis used in Section 2 is false there.
+
+This is not a counterexample to every Type-II estimate: cross-frequency terms can retain oscillation, and arithmetic cancellation in \(\alpha_U\) remains available. It identifies exactly why the tested integer quadrature lemma does not pay the surviving cross-factor interaction.
+
+## Verdict and next step
+
+The registered small-divisor prediction is confirmed. The proved estimates remove that explicit portion of the source at a **polylogarithmic cost on the requested strip**, and give an **all-range quarter-power remainder budget**. They apply to the original carrier and to the actual Schur-corrected vectors.
+
+The remaining sign is not supplied. In particular, if
+\[
+M_r(v)=r\|v\|^2-\Re\mathcal B_{U,m}(v,J_rv),
+\]
+then the available discriminator is precisely
+\[
+M_r(v)-\Delta_m\|v\|\,\|J_rv\|
+\le
+\langle v,\mathfrak S_m(r)v\rangle
+\le
+M_r(v)+\Delta_m\|v\|\,\|J_rv\|.
+\]
+A negative upper endpoint certifies a violation on that cell. A nonnegative lower envelope valid for every exceptional \(v\) would certify the cell. A straddling interval supplies neither conclusion.
+
+**No new whole-matrix bottom floor, common-cell SP subsequence, or RH claim follows.** The earlier regular-subspace theorem and repaired high-zero budget are unchanged.
+
+**Next mathematical step:** estimate the prime-weighted signed flux (21) together with its compensator (22) on \((v,J_rv)\), using the regular constraint (14) rather than the free endpoint derivative bound. The small-divisor sums now have a proved budget; the unresolved part is the cross-factor arithmetic sign.
+
+
+## File: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_HIGH_ZERO_TAIL_INLINE_2026-10-06.md
+
+# Proshka growth answer 5 — exact inline capture
+
+Chat: Proof of CCM Growth (`6ac54396-d878-83eb-ae29-35d2bdd2262b`).
+User message: `3cbb23c2-0144-4ff4-8147-ee1943995419`.
+Answer: `6364d8ef-221b-4d0b-8f28-7f2af0f51c6d`; completed 2026-10-06 21:14:33 UTC.
+Captured via read_thread; untruncated. Claims below require audit; RH remains OPEN.
+
+---
+
+Ы — **the endpoint-jet majorant really does obstruct the old sufficient \(Q\)-test, and that obstruction can be removed.**
+
+**[COFINAL_FAMILY | PAPER]** At the already selected cutoff \(T=m(\log m)^2\), the **complete signed high-zero contribution** satisfies
+\[
+\boxed{\|W_{>T}\|\le \frac{3\cdot10^6}{\sqrt{\log m}}.}
+\]
+This is an operator bound on the **entire original complex carrier**, including its endpoint action—not a bound after imposing vanishing jets.
+
+The old jet-majorized \(Q\)-comparison nevertheless fails on every sufficiently late original cell for every fixed shift \(r=Cm^\eta\), \(0<\eta<1/2\). I give an actual carrier witness below. On that same witness, the **actual shifted target form is positive** eventually. This separates the artificial obstruction from source negativity.
+
+The repair also proves positivity of the **endpoint-only block inside the actual previous Schur complement**, with its coupling retained. **The remaining low off-line-pair comparison, SP, and RH remain open.**
+
+:chatgpt-content-reference{index="3"}[Complete PAPER verdict with machine-readable header and claim ledger](sandbox:/mnt/data/PROSHKA_VERDICT_FULL_CCM_NEGATIVE_BOTTOM_GROWTH_Q05.md)
+
+## 1. A weighted zero count that pays magnitude, not just rank
+
+**[COFINAL_FAMILY | PAPER]**
+
+Write
+\[
+L=\log m,\qquad d=2m+1,\qquad w=\delta+i\gamma.
+\]
+
+The additional literature input is the **full Table 1** in Chourasiya–Simonič, not an extrapolation of the previously used \([.500,.625]\) display. Corollary 1 and Table 1 cover \(1/2\le\sigma\le1\), \(X\ge3\cdot10^{12}\). Taking the maxima \(46.06,9.461,167.8\), and using that the logarithmic exponent is at most \(3\), gives
+\[
+N(\sigma,X)
+\le224X^{3(1-\sigma)/(2-\sigma)}(\log X)^3.
+\tag{1}
+\]
+The table was checked directly. This is an unconditional density estimate, not an absence-of-zeros assumption. :chatgpt-content-reference{index="0"}
+
+HSW Corollary 1.2 also gives, very conservatively,
+\[
+N(X)\le X\log X\qquad(X\ge3\cdot10^{12}).
+\tag{2}
+\]
+Both counts include multiplicities. :chatgpt-content-reference{index="1"}
+
+I claim that, uniformly for \(X\ge m\ge3\cdot10^{12}\),
+\[
+\boxed{
+\mathcal N_m(X):=
+\sum_{|\gamma|\le X}r_wm^{|\delta|}
+\le2700X(\log X)^{5/2}.
+}
+\tag{3}
+\]
+
+### Proof
+
+Put \(v=\log X\), so \(L\le v\). For \(0\le u\le1/2\),
+\[
+p(u):=\frac{3/2-3u}{3/2-u}\le1-\frac43u.
+\]
+The **layer-cake identity**—integrating the level sets of \(m^{|\delta|}\)—and the zero symmetries give
+\[
+\mathcal N_m(X)
+\le2N(X)+4L\int_0^{1/2}e^{Lu}N(1/2+u,X)\,du.
+\tag{4}
+\]
+Thus
+\[
+N(1/2+u,X)
+\le
+\min\!\left\{Xv,\;224Xv^3e^{-4uv/3}\right\}.
+\]
+
+Split the integral at
+\[
+u_0=\frac{3\log v}{2v}.
+\]
+The part below \(u_0\) is at most
+\[
+4Xv(e^{Lu_0}-1)\le4Xv^{5/2}.
+\]
+For the remaining part, put \(a=4v/3-L\ge v/3\). Its contribution is at most
+\[
+896\frac{L}{a}Xv^3e^{-au_0}
+\le2688Xv^{5/2}.
+\]
+Adding \(2N(X)\le2Xv\) proves (3).
+
+Partial summation now yields
+\[
+\boxed{
+\sum_{|\gamma|>T}\frac{r_wm^{|\delta|}}{\gamma^2}
+\le10800\frac{(\log T)^{5/2}}{T},
+\qquad T\ge m.
+}
+\tag{5}
+\]
+Indeed, the lower boundary term has the favorable sign, and
+\[
+\int_T^\infty\frac{(\log u)^{5/2}}{u^2}\,du
+\le2\frac{(\log T)^{5/2}}T
+\]
+for \(\log T\ge5\).
+
+**The change from the previous tail estimate is the weight \(m^{|\delta|}\).** It is summed using the density theorem before being replaced by its worst value \(\sqrt m\).
+
+## 2. The entire high-zero operator is small
+
+**[FINITE_CELL | PAPER]**
+
+On the original centered carrier, retain the exact rows
+\[
+a_{w,j}:=M_{\psi_j}(w)
+=\frac{2\sinh(wL/2)}{\sqrt L\,(w+i\omega_j)},
+\qquad
+\omega_j=\frac{2\pi j}{L}.
+\tag{6}
+\]
+The numerator contains **both finite endpoints**. I use the already accepted extension of the signed zero formula to this carrier; no new \(H^1\) zero-extension assumption is made.
+
+Set
+\[
+\Omega=\frac{2\pi m}{L}.
+\]
+For \(|\gamma|>T\ge2\Omega\),
+\[
+|2\sinh(wL/2)|^2\le4m^{|\delta|},
+\qquad
+|w+i\omega_j|\ge|\gamma|/2.
+\]
+Therefore
+\[
+\boxed{
+\|a_w\|_2^2
+\le\frac{16d}{L}\frac{m^{|\delta|}}{\gamma^2}.
+}
+\tag{7}
+\]
+
+The dimension \(d=2m+1\) has not disappeared. It is paid explicitly.
+
+Define the positive high-zero **evaluation Gram matrix**
+\[
+\mathcal R_{>T}:=\sum_{|\gamma|>T}r_wa_w^*a_w.
+\]
+Equations (5)–(7) give
+\[
+\boxed{
+\operatorname{tr}\mathcal R_{>T}
+\le172800\frac dL\frac{(\log T)^{5/2}}T
+=:\tau(m,T).
+}
+\tag{8}
+\]
+
+For each off-line pair,
+\[
+\left|2\Re\!\left(M_f(w)\overline{M_f(w^\dagger)}\right)\right|
+\le |M_f(w)|^2+|M_f(w^\dagger)|^2.
+\]
+Critical-line rows are positive. Consequently the **complete signed tail** obeys
+\[
+-\mathcal R_{>T}\preceq W_{>T}\preceq\mathcal R_{>T},
+\qquad
+\|W_{>T}\|\le\tau(m,T).
+\tag{9}
+\]
+The high pair-sum and pair-difference Gram matrices are each dominated by \(\mathcal R_{>T}\) as well.
+
+At the original cutoff \(T=mL^2\),
+\[
+\boxed{
+\tau_m
+\le172800\frac{2m+1}{L}
+\frac{(L+2\log L)^{5/2}}{mL^2}
+\le3\cdot10^6L^{-1/2}.
+}
+\tag{10}
+\]
+Here \(d\le3m\) and \(\log T\le2L\).
+
+This holds simultaneously for all carrier vectors. Zeros at \(|\gamma|=T\) belong to the low part; every higher zero and multiplicity is included. No zero-free ordinate is selected.
+
+**Equation (10) does not say that the old jet majorant is small. It says that the actual high-zero action is small, so that majorant can be replaced.**
+
+## 3. The old jet-majorized \(Q\)-test has an actual source witness against it
+
+**[COFINAL_FAMILY | PAPER]**
+
+Take the normalized **endpoint Dirichlet vector**
+\[
+g_m=\frac1{\sqrt d}\sum_{j=-m}^{m}\psi_j.
+\tag{11}
+\]
+It uses the original carrier and has
+\[
+\|g_m\|_2=1,\qquad
+|g_m(L/2)|^2=|g_m(-L/2)|^2=\frac dL.
+\tag{12}
+\]
+
+I first prove that its true source Gram and Weil form have only polylogarithmic size:
+\[
+\boxed{
+\langle g_m,\mathcal G_mg_m\rangle\le B_g(m),
+\qquad
+|W(g_m)|\le B_g(m),
+\qquad
+B_g(m)=540000L^{11/2}.
+}
+\tag{13}
+\]
+
+### The true source estimate
+
+For any \(\gamma\), choose \(j_0\) nearest to \(-\gamma L/(2\pi)\) among the carrier indices. For \(j\ne j_0\),
+\[
+|\gamma+\omega_j|\ge\frac{\pi}{L}|j-j_0|.
+\]
+For the nearest mode use its defining integral, avoiding any removable quotient in (6). Summing the remaining modes gives
+\[
+\begin{aligned}
+|M_{g_m}(w)|
+&\le
+\sqrt{\frac Ld}\,m^{|\delta|/2}
+\left(1+\frac4\pi H_{2m}\right)\\
+&\le4\sqrt{\frac{L^3}{d}}\,m^{|\delta|/2}.
+\end{aligned}
+\tag{14}
+\]
+
+For \(|\gamma|\le m\), combine this with (3). The sum of squared evaluations is at most
+\[
+21600L^{11/2}.
+\]
+For \(|\gamma|>m\), use (8) with \(T=m\); here \(m\ge2\Omega\) in the stated range. This costs at most
+\[
+518400L^{3/2}.
+\]
+Their sum is bounded by (13). The positive pair-sum Gram and the absolute signed form are both bounded by this same evaluation sum.
+
+### The artificial jet penalty
+
+The accepted old parameters were
+\[
+J=\left\lceil\frac L{2\log L}\right\rceil,
+\qquad T=mL^2,
+\]
+and the old jet majorant was
+\[
+\mathcal J_m(f)=
+16C_ZJ\sqrt m\,\frac{\log(T+4)}T
+\sum_{k<J}\frac{|\eta_k(f)|^2}{T^{2k}}.
+\]
+Its zeroth term alone gives
+\[
+\boxed{
+\mathcal J_m(g_m)
+\ge16C_Z\frac{\sqrt m}{L\log L}.
+}
+\tag{15}
+\]
+
+Let
+\[
+Q_{\rm old}=\mathcal G_m+(r-\epsilon_m^{\rm old})I,
+\]
+where \(\epsilon_m^{\rm old}=O(L^{10}\log L)\). Because the old source rows contain the entire jet majorant,
+\[
+\boxed{
+\begin{aligned}
+&\langle g_m,
+(Q_{\rm old}-\mathcal L_{\rm old}^*\mathcal L_{\rm old})
+g_m\rangle\\
+&\quad\le
+540000L^{11/2}+Cm^\eta
+-16C_Z\frac{\sqrt m}{L\log L}
+=:U_m(C,\eta).
+\end{aligned}
+}
+\tag{16}
+\]
+For every fixed \(C>0\) and \(0<\eta<1/2\),
+\[
+U_m(C,\eta)<0
+\]
+on every sufficiently late original cell. Also \(r-\epsilon_m^{\rm old}>0\) eventually, so the \(Q\)-test is well-defined.
+
+This is a **negative upper envelope**, not merely a failed estimate.
+
+By contrast, write the accepted relation as
+\[
+K_m=\mathsf H_m(0)+\mathcal E_m,
+\qquad
+\mathsf H_m(r)=\mathsf S(r)-\mathsf T_m,
+\qquad
+\|\mathcal E_m\|\le C_0:=c_A+28.
+\]
+Then
+\[
+\boxed{
+\langle g_m,\mathsf H_m(Cm^\eta)g_m\rangle
+\ge Cm^\eta-B_g(m)-C_0>0
+}
+\tag{17}
+\]
+eventually.
+
+Thus the old sufficient comparison rejects this actual source direction while the true shifted target is positive on it.
+
+**KILL_SCOPE: THEOREM_SHAPE.** The killed shape is the original jet-majorized sufficient \(Q\)-comparison at subpolynomial shifts. Equation (17) proves positivity only on this witness—not positivity of the whole matrix. Nothing here kills the exact Schur target or SP.
+
+## 4. Replace the artificial rows by a controlled full-operator error
+
+**[COFINAL_FAMILY | PAPER]**
+
+Keep exactly the earlier tuning
+\[
+\alpha_m=\frac{8\log L}{L},
+\qquad T=mL^2.
+\]
+
+Let \(\mathcal G_{\le T}\) contain all critical-line rows and positive pair-sum rows below \(T\). Let \(\mathcal L_0\) contain precisely
+\[
+\sqrt{r_w}\,b_w,\qquad
+\Re w>\alpha_m,\quad |\Im w|\le T,
+\]
+where
+\[
+b_w(f)=\frac{M_f(w)-M_f(w^\dagger)}{\sqrt2}.
+\]
+**There are no jet rows in \(\mathcal L_0\).**
+
+Let \(N_{\rm near}\) denote the positive Gram of the negative rows with
+\[
+0<\Re w\le\alpha_m,\qquad |\Im w|\le T.
+\]
+The accepted near-line estimate supplies
+\[
+0\preceq N_{\rm near}\preceq\beta_mI,
+\qquad
+\beta_m=O(L^{10}\log L).
+\]
+
+The full source identity is now
+\[
+\boxed{
+K_m
+=\mathcal G_{\le T}
+-\mathcal L_0^*\mathcal L_0
+-N_{\rm near}
++W_{>T}.
+}
+\tag{18}
+\]
+Every signed zero contribution has been assigned to one part. Through the accepted full explicit formula, this retains the original poles, \(I-R\), all prime powers, and all cross terms.
+
+Put
+\[
+J_m=\mathcal G_{\le T}-\mathcal L_0^*\mathcal L_0,
+\qquad
+\kappa_m=C_0+\tau_m,
+\qquad
+\epsilon_m=\beta_m+\kappa_m.
+\]
+Then the **actual requested matrix** has the asymmetric sandwich
+\[
+\boxed{
+J_m+(r-\epsilon_m)I
+\preceq \mathsf H_m(r)
+\preceq J_m+(r+\kappa_m)I.
+}
+\tag{19}
+\]
+
+The lower comparison has a proved polylogarithmic loss. The upper comparison has a bounded loss. The large jet overestimate is absent from both.
+
+This is stronger than a sufficient minorant with an uncontrolled discrepancy: it gives a quantitative connection back to the actual sign.
+
+## 5. A positive block inside the actual previous Schur complement
+
+**[COFINAL_FAMILY | PAPER]**
+
+This repair can be spent directly on the Schur form you asked to estimate.
+
+Define
+\[
+\mathcal R_{\rm old}=\ker\mathcal L_{\rm old},
+\qquad
+\mathcal R_0=\ker\mathcal L_0.
+\]
+The old rows were the same low off-line rows plus the jets, so
+\[
+\mathcal R_{\rm old}\subseteq\mathcal R_0.
+\]
+Write
+\[
+\mathcal R_0
+=\mathcal R_{\rm old}\oplus\mathcal J_{\rm end},
+\qquad
+\dim\mathcal J_{\rm end}\le J.
+\tag{20}
+\]
+The space \(\mathcal J_{\rm end}\) consists of directions made exceptional **only by the old endpoint constraints**.
+
+For \(r>\epsilon_m\), (19) proves
+\[
+\boxed{
+\mathsf H_m(r)|_{\mathcal R_0}
+\succeq(r-\epsilon_m)I.
+}
+\tag{21}
+\]
+
+Now decompose the **actual old Schur complement** on
+\[
+\mathcal R_{\rm old}^{\perp}
+=
+\mathcal J_{\rm end}\oplus\mathcal R_0^\perp:
+\]
+\[
+\mathfrak S_{\rm old}(r)=
+\begin{pmatrix}
+D_{\rm end}&C_{\rm end}\\
+C_{\rm end}^*&E_0
+\end{pmatrix}.
+\]
+
+For \(v\in\mathcal J_{\rm end}\), its Schur quadratic form is
+\[
+\inf_{y\in\mathcal R_{\rm old}}
+\langle y+v,\mathsf H_m(r)(y+v)\rangle.
+\]
+Every \(y+v\) lies in \(\mathcal R_0\). Equation (21) therefore gives
+\[
+\boxed{
+D_{\rm end}\succeq(r-\epsilon_m)I,
+\qquad
+\|D_{\rm end}^{-1}\|\le(r-\epsilon_m)^{-1}.
+}
+\tag{22}
+\]
+
+Thus the endpoint-only block of the **actual** previous Schur form is now proved positive. Its full coupling is retained in
+\[
+\boxed{
+\mathfrak S_0(r)
+=
+E_0-C_{\rm end}^*D_{\rm end}^{-1}C_{\rm end}.
+}
+\tag{23}
+\]
+By Schur associativity, this is exactly what results from eliminating the entire \(\mathcal R_0\) directly from \(\mathsf H_m(r)\).
+
+The previous \(B^*A^{-1}B\) correction has not been dropped; it is already inside \(\mathfrak S_{\rm old}\). The additional correction in (23) remains as well.
+
+Dependent jet rows merely make \(\mathcal J_{\rm end}\) smaller. If it is zero-dimensional, the additional elimination is empty. No original diagonal \(q_j\) or zero jet pivot is divided by.
+
+**This is an actual Schur-block estimate.** It does not assert that a small perturbation of the full matrix automatically produces a small entrywise perturbation of its Schur complement.
+
+## 6. The remaining source comparison is now finite and quantitatively faithful
+
+**[FINITE_CELL | PAPER]**
+
+For \(s>0\), define
+\[
+Q_0(s)=\mathcal G_{\le T}+sI,
+\qquad
+Z_m(s)=\mathcal L_0Q_0(s)^{-1}\mathcal L_0^*.
+\]
+Only the explicit shift supplies positivity of \(Q_0(s)\). No sampling floor for \(\mathcal G_{\le T}\) is assumed.
+
+The conjugation identity gives
+\[
+J_m+sI\succeq0
+\quad\Longleftrightarrow\quad
+Z_m(s)\preceq I.
+\]
+Combining this with (19),
+\[
+\boxed{
+Z_m(r-\epsilon_m)\preceq I
+\ \Longrightarrow\
+\mathsf H_m(r)\succeq0
+\ \Longrightarrow\
+Z_m(r+\kappa_m)\preceq I,
+\qquad r>\epsilon_m.
+}
+\tag{24}
+\]
+
+Unlike the old jet-majorized test, this comparison has a **proved discrepancy** relative to the actual target. At the same numerical shift, the left test remains sufficient and the right test necessary; they are not silently identified.
+
+The first unsupplied family estimate is
+\[
+\boxed{
+\forall\eta>0\ \exists C_\eta>0\
+\exists\text{ unbounded original }\mathcal G_\eta:
+\qquad
+Z_m(C_\eta m^\eta)\preceq I
+\quad(m\in\mathcal G_\eta).
+}
+\tag{25}
+\]
+The shifts in (24) are absorbable at that scale, but **this equivalence is not the claimed progress**. The progress is the full high-zero magnitude bound, the source-specific failure of the old majorant, and the positive endpoint-only block of the actual Schur.
+
+The unresolved interaction is now solely between the finite low off-line **difference rows** and the retained finite critical-line and **pair-sum rows**. I do not have the required estimate for it.
+
+### A source-specific discriminator with an actual carrier witness
+
+Take a row-space vector \(z\), an original carrier coefficient vector \(y\), and \(s>0\). Put
+\[
+b=\mathcal L_0^*z,\qquad
+e=b-Q_0(s)y,
+\]
+\[
+F_s(z,y)
+=
+2\Re\langle b,y\rangle-\langle y,Q_0(s)y\rangle.
+\]
+Completion of the square gives
+\[
+\boxed{
+F_s(z,y)
+\le\langle z,Z_m(s)z\rangle
+\le F_s(z,y)+\frac{\|e\|^2}{s}.
+}
+\tag{26}
+\]
+
+More importantly,
+\[
+\boxed{
+\langle y,(J_m+sI)y\rangle
+=
+\|z\|^2-F_s(z,y)-\|\mathcal L_0y-z\|^2.
+}
+\tag{27}
+\]
+Therefore a certified strict inequality
+\[
+F_s(z,y)>\|z\|^2
+\]
+already produces a negative direction in the original carrier.
+
+At \(s=r+\kappa_m\), the upper inequality in (19) turns that into an **actual violation of \(\mathsf H_m(r)\succeq0\)**, rather than mere failure of a sufficient test. For a zero-consistent result, the residual budget \(\|e\|^2/s\) in (26) is the discriminator. Passing individual trials does not certify the whole row-space matrix.
+
+## Closeout
+
+The announced high-zero repair test closes: the complete tail has norm \(O(L^{-1/2})\), not the polynomial endpoint penalty imposed by the old majorant. The latter yields a genuine, source-specific theorem-shape kill, but the actual route survives that kill because (10) replaces the overestimate.
+
+The actual Schur now has an additional proved positive block. What remains is its low off-line-pair sign—not another endpoint budget, density count, or standalone inverse estimate. **No new whole-matrix bottom floor or common-cell SP subsequence is supplied.**
+
+**Next mathematical step:** establish (25) from the finite low critical-line and pair-sum rows, using the shifted variational margin (26)–(27) as the first sign discriminator. The endpoint rows must stay removed by the proved tail bound; reinstating their old majorant would reintroduce a certificate already refuted on the original source.
+
+
+## File: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_JOINT_HILBERT_INLINE_2026-10-06.md
+
+# Proshka answer3: exact inline source
+
+Chat Proof of CCM Growth, 6ac54396-d878-83eb-ae29-35d2bdd2262b.
+Question3: ENDPOINT_FACTOR_AUDIT_2026-10-06.md.
+Assistant item 34935966-4fcc-4d67-bd1b-8ac4789c5315. Complete answer retrieved 2026-10-06 around 20:14 UTC.
+Linked supplement download timed out; no attachment contents claimed.
+Inline citation placeholders require independent primary-source verification.
+
+Ы — I obtained a **uniform full-carrier improvement**, but not SP. The improvement holds on **every sufficiently late original cell**, simultaneously for **all complex vectors in \(\mathcal V_m\)**.
+
+**[COFINAL_FAMILY | PAPER]** With \(L=\log m\), there are absolute constants \(C,m_0\) such that
+\[
+\boxed{
+\lambda_{\min}(K_m)\ge
+-c_A-C\sqrt m\,L^3
+\exp\!\left[-c\left(\frac{L}{\log L}\right)^{1/3}\right],
+\qquad m\ge m_0,
+}
+\tag{1}
+\]
+where \(c=10^{-3}\) is admissible after enlarging \(m_0\).
+
+Consequently, for every fixed \(B>0\),
+\[
+\lambda_{\min}(K_m)\ge
+-c_A-C_B\frac{\sqrt m}{(\log m)^B}
+\]
+eventually. This improves the previous \(O(\sqrt m\log m)\) floor while paying the **entire growing matrix**, including its high modes and cross terms.
+
+A second calculation gives a genuine block estimate: the coupling between a **polylogarithmic low-frequency block** and the **top half of the carrier** tends to zero in operator norm. The intervening and neighboring bands remain unresolved.
+
+**The exponent in (1) still tends to \(1/2\). No common-cell subpolynomial subsequence is supplied.**
+
+:chatgpt-content-reference{index="6"}[Complete PAPER verdict with machine-readable header and claim ledger](sandbox:/mnt/data/PROSHKA_VERDICT_FULL_CCM_NEGATIVE_BOTTOM_GROWTH_Q03.md)
+
+## 1. The exact joint matrix has a dimension-free cross-term estimate
+
+**[FINITE_CELL | PAPER]**
+
+Use the supplied coordinate change to \([0,L]\):
+\[
+e_j(x)=L^{-1/2}e^{i\omega_jx},
+\qquad
+\omega_j=\frac{2\pi j}{L},
+\qquad -m\le j\le m.
+\]
+This is the CCM source identification in Proposition 3.2 and equation (3.19), with \(\lambda=\sqrt m\), \(N=m\). :chatgpt-content-reference{index="0"}
+
+Keep the **joint signed measure**
+\[
+d\nu_m(s)=
+\sum_{2\le n\le m}\frac{\Lambda(n)}{\sqrt n}\,
+\delta_{\log n}(ds)
+-\bigl(e^{s/2}-e^{-s/2}\bigr)\,ds,
+\qquad 0\le s\le L.
+\tag{2}
+\]
+Its causal operator is exactly
+\[
+T_\nu=\int S_s\,d\nu_m(s)
+=\mathcal P-R_++R
+=F^{-1}[X,F],
+\qquad F=(I-R)Z.
+\]
+In particular, **\(I-R\) remains present**.
+
+Define
+\[
+\begin{aligned}
+\Phi_m(\omega;y)
+={}&
+\sum_{n\le y}\frac{\Lambda(n)}{n^{1/2+i\omega}}
+-\frac{y^{1/2-i\omega}-1}{1/2-i\omega}
++\frac{1-y^{-1/2-i\omega}}{1/2+i\omega},\\
+\mathcal R_m
+={}&
+\sup_{\substack{|\omega|\le2\pi m/L\\1\le y\le m}}
+|\Phi_m(\omega;y)|.
+\end{aligned}
+\tag{3}
+\]
+Thus \(\Phi_m\) retains pole–prime cancellation **before** taking absolute values.
+
+Let \(\mathsf C_m\) be the compression of \(T_\nu+T_\nu^*\). Direct finite-window integration gives
+\[
+\langle e_j,S_se_k\rangle=
+\begin{cases}
+(1-s/L)e^{-i\omega_js},&j=k,\\[2mm]
+\displaystyle
+\frac{e^{-i\omega_ks}-e^{-i\omega_js}}
+{2\pi i(k-j)},&j\ne k.
+\end{cases}
+\tag{4}
+\]
+These are the same finite-window correlation factors appearing in CCM Lemma 2.3; in particular, the off-diagonal entries contain a **difference**, not two unrelated terms. :chatgpt-content-reference{index="1"}
+
+Set
+\[
+h_j=\Im\Phi_m(\omega_j;m),
+\qquad
+d_j=\frac2L\Re\int_0^L\Phi_m(\omega_j;e^u)\,du.
+\tag{5}
+\]
+Then
+\[
+(\mathsf C_m)_{jj}=d_j,
+\qquad
+(\mathsf C_m)_{jk}
+=\frac{h_j-h_k}{\pi(j-k)}
+\quad(j\ne k).
+\tag{6}
+\]
+
+Now introduce the **discrete Hilbert matrix**
+\[
+(\mathsf H_m^{\mathrm d})_{jk}
+=
+\begin{cases}
+(j-k)^{-1},&j\ne k,\\
+0,&j=k.
+\end{cases}
+\]
+It is a compression of the convolution operator on \(\ell^2(\mathbb Z)\) whose Fourier multiplier is, up to sign convention, \(i(\pi-\theta)\). Hence
+\[
+\|\mathsf H_m^{\mathrm d}\|\le\pi
+\]
+independently of \(2m+1\).
+
+Therefore
+\[
+\boxed{
+\mathsf C_m
+=\operatorname{diag}(d_j)
++\frac1\pi
+[\operatorname{diag}(h_j),\mathsf H_m^{\mathrm d}],
+\qquad
+\|\mathsf C_m\|\le4\mathcal R_m.
+}
+\tag{7}
+\]
+Indeed,
+\[
+\max_j|d_j|\le2\mathcal R_m,
+\qquad
+\left\|\frac1\pi[\operatorname{diag}(h_j),\mathsf H_m^{\mathrm d}]\right\|
+\le2\mathcal R_m.
+\]
+
+**This pays every cross term at once.** There is no multiplication by the carrier dimension and no row-sum logarithm.
+
+The endpoint \(n=m\) is also exact: at \(s=L\), both expressions in (4) vanish. Its contribution to \(\Phi_m(\omega_j;m)\) is real and independent of \(j\), so it changes neither \(h_j\) nor \(d_j\). It has not been deleted.
+
+## 2. Uniform arithmetic cancellation through the top frequency
+
+**[COFINAL_FAMILY | PAPER]**
+
+I prove
+\[
+\boxed{
+\mathcal R_m
+\le C\sqrt m\,L^3
+\exp\!\left[-c\left(\frac L{\log L}\right)^{1/3}\right].
+}
+\tag{8}
+\]
+
+The arithmetic input is the **unconditional shrinking zero-free region** of Mossinghoff–Trudgian–Yang, Theorem 1.1:
+\[
+\zeta(\sigma+it)\ne0
+\quad\text{if}\quad
+|t|\ge3,\qquad
+\sigma\ge
+1-\frac1{55.241(\log|t|)^{2/3}(\log\log|t|)^{1/3}}.
+\tag{9}
+\]
+This is not an assumed fixed zero-free half strip or RH. :chatgpt-content-reference{index="2"}
+
+We also use the unconditional zero-counting remainder
+\[
+N(T)=\frac{T}{2\pi}\log\frac{T}{2\pi e}+O(\log T),
+\]
+which gives \(O(\log(|t|+2))\) zeros, counted with multiplicity, in a unit-height interval. Hasanalizade–Shen–Wong give an explicit version of this estimate. :chatgpt-content-reference{index="3"}
+
+Put
+\[
+T=m^2,\qquad U=4m^2,
+\qquad
+\delta_m=
+\frac1{4\cdot55.241(\log U)^{2/3}(\log\log U)^{1/3}}.
+\tag{10}
+\]
+For sufficiently large \(m\), all zeros with \(|\Im\rho|\le U\) satisfy
+\[
+\Re\rho\le1-4\delta_m.
+\]
+For ordinates at least \(3\), this follows from (9). The remaining bounded-height zeros form a finite set strictly left of \(1\), so their fixed positive distance is absorbed into the eventual threshold.
+
+### The contour bound
+
+On the left and horizontal sides of the contour below,
+\[
+\left|\frac{\zeta'}{\zeta}(\sigma+it)\right|
+\ll\frac{\log U}{\delta_m}.
+\tag{11}
+\]
+
+Here is a direct justification. Subtract the Hadamard logarithmic derivatives at \(\sigma+it\) and \(2+it\). Zeros with \(|\gamma-t|\le1\) have \(O(\log U)\) total multiplicity and denominators at least \(3\delta_m\). For the other zeros, subtraction gives terms
+\[
+O\!\left(\frac1{|\gamma-t|^2}\right),
+\]
+whose sum is \(O(\log U)\). The pole at \(1\) costs at most \(\delta_m^{-1}\); the gamma-factor difference is bounded. Finally, \(\zeta'/\zeta(2+it)\) is bounded by its absolutely convergent series.
+
+### Sharp cutoff and its endpoint cost
+
+Fix any
+\[
+1\le y\le m,\qquad |\omega|\le\frac{2\pi m}{L}.
+\]
+Choose
+\[
+x=\lfloor y\rfloor+\frac12,
+\qquad
+c_0=\frac12+\frac1{\log(2m)}.
+\]
+The prime-power sum up to \(y\) equals the sum up to \(x\) exactly.
+
+**Truncated Perron inversion** applied to
+\[
+-\frac{\zeta'}{\zeta}\left(s+\frac12+i\omega\right)
+=
+\sum_{n\ge1}\frac{\Lambda(n)}{n^{s+1/2+i\omega}},
+\qquad \Re s>\frac12,
+\]
+gives
+\[
+\sum_{n\le y}\frac{\Lambda(n)}{n^{1/2+i\omega}}
+=
+\frac1{2\pi i}
+\int_{c_0-iT}^{c_0+iT}
+-\frac{\zeta'}{\zeta}\left(s+\frac12+i\omega\right)
+\frac{x^s}{s}\,ds
++
+O\!\left(\frac{\sqrt m\,L^2}{T}\right).
+\tag{12}
+\]
+
+The error is uniform in \(\omega\), since \(|n^{-i\omega}|=1\). More explicitly, the truncated-kernel error is bounded by
+\[
+\sum_{n\ge1}
+\frac{\Lambda(n)}{\sqrt n}(x/n)^{c_0}
+\min\!\left(1,\frac1{T|\log(x/n)|}\right).
+\]
+Outside \([x/2,2x]\), use the convergent \(n^{-1-1/\log(2m)}\) sum. Inside this interval, the half-integer choice gives \(|x-n|\ge1/2\), and the cost is
+\[
+\ll
+\frac{\sqrt x\log(2x)}T
+\sum_{x/2\le n\le2x}\frac1{|x-n|}
+\ll\frac{\sqrt m\,L^2}{T}.
+\]
+
+Shift the contour to \(\Re s=1/2-\delta_m\). The shifted zeta arguments have imaginary parts bounded by
+\[
+T+|\omega|<U-1.
+\]
+The only pole crossed is \(s=1/2-i\omega\), with residue
+\[
+\frac{x^{1/2-i\omega}}{1/2-i\omega}.
+\]
+No zeros are crossed.
+
+By (11), the new vertical integral costs
+\[
+O\!\left(x^{1/2-\delta_m}\frac{L^2}{\delta_m}\right),
+\]
+and the horizontal integrals cost
+\[
+O\!\left(\frac{\sqrt m\,L}{\delta_m T}\right).
+\]
+
+Now subtract the continuous growing-pole term in (3). The cutoff adjustment costs only
+\[
+\left|\int_y^x u^{-1/2-i\omega}\,du\right|\le1,
+\]
+**not** \(O(|\omega|)\). The lower integration endpoint costs at most \(2\), and the decaying-pole integral costs at most \(2\). Thus
+\[
+\boxed{
+\mathcal R_m
+\le
+5+C\frac{L^2}{\delta_m}
+\left[
+\left(m+\frac12\right)^{1/2-\delta_m}
++\frac{\sqrt m}{T}
+\right].
+}
+\tag{13}
+\]
+
+This is uniform over **every cutoff and every frequency required by the same full matrix**.
+
+For sufficiently large \(L\),
+\[
+\delta_m^{-1}\le CL,
+\qquad
+\delta_mL\ge
+\frac1{600}\left(\frac L{\log L}\right)^{1/3}.
+\]
+Equation (13) proves (8), conservatively with \(c=10^{-3}\).
+
+The distinction from the old Chebyshev-primitive estimate is substantive: **the oscillation enters the Dirichlet-series coefficients before contour displacement**. Neither the pole matching nor the sharp-cutoff error incurs the high-frequency factor \(m/L\).
+
+## 3. Return to \(D_F\) and the original full form
+
+**[COFINAL_FAMILY | PAPER]**
+
+Write \(H_0=R+R^*\). Its kernel is \(e^{-|x-y|/2}\), so
+\[
+H_0\ge0,\qquad \|H_0\|\le4.
+\]
+The exact source identity is
+\[
+W(f)=D_{\rm arch}(f)-c_A\|f\|^2
++2\langle f,H_0f\rangle
+-\langle f,\mathsf C_mf\rangle.
+\]
+Hence (7) gives
+\[
+\boxed{
+W(f)\ge
+D_{\rm arch}(f)-(c_A+4\mathcal R_m)\|f\|^2.
+}
+\tag{14}
+\]
+
+Likewise,
+\[
+D_F=(T_\nu+T_\nu^*)-2(Y-X),
+\qquad 0\le X,Y\le LI,
+\]
+so
+\[
+\boxed{
+\langle f,D_Ff\rangle
+\le(4\mathcal R_m+2L)\|f\|^2,
+\qquad f\in\mathcal V_m.
+}
+\tag{15}
+\]
+
+These inequalities are simultaneous over the original complex carrier. No inverse conditioning or scalar-good-cell intersection is involved.
+
+All zero-extension jumps remain inside the exact \(D_{\rm arch}\). No endpoint trace has been set to zero.
+
+## 4. The full archimedean matrix has a bounded off-diagonal/boundary budget
+
+**[COFINAL_FAMILY | PAPER]**
+
+Let \(\mathsf A_m\) be the exact \(D_{\rm arch}\) matrix, and define
+\[
+\begin{aligned}
+a(\omega)
+&=2\int_0^\infty J(s)(1-\cos\omega s)\,ds\\
+&=
+2\sum_{r\ge0}
+\frac{\omega^2}
+{(2r+\frac12)((2r+\frac12)^2+\omega^2)}
+\ge0.
+\end{aligned}
+\tag{16}
+\]
+Then
+\[
+\boxed{
+\left\|\mathsf A_m-
+\operatorname{diag}\bigl(a(\omega_j)\bigr)\right\|
+\le20,
+\qquad L\ge1.
+}
+\tag{17}
+\]
+
+The diagonal error is exactly
+\[
+\frac2L\int_0^L sJ(s)\cos(\omega_js)\,ds
++
+2\int_L^\infty J(s)\cos(\omega_js)\,ds.
+\]
+Set
+\[
+b_L=\int_L^\infty J(s)\,ds
+\le\frac{2e^{-L/2}}{1-e^{-2L}}.
+\]
+Since
+\[
+\int_0^\infty sJ(s)\,ds
+=\sum_{r\ge0}(2r+\tfrac12)^{-2}\le5,
+\]
+the diagonal error is at most \(10/L+2b_L\).
+
+The off-diagonal matrix is minus a discrete Hilbert commutator with parameter
+\[
+h_j^J=-\int_0^LJ(s)\sin(\omega_js)\,ds.
+\]
+The full sine transform satisfies
+\[
+\left|
+\int_0^\infty J(s)\sin(\omega s)\,ds
+\right|
+=
+\left|
+\sum_{r\ge0}
+\frac{\omega}{(2r+\frac12)^2+\omega^2}
+\right|
+\le1+\frac\pi4.
+\]
+The first summand is at most \(1\), and the remaining sum is bounded by its decreasing-function integral.
+
+Thus the off-diagonal norm is at most \(2+\pi/2+2b_L\). Altogether,
+\[
+2+\frac\pi2+\frac{10}L+4b_L<20
+\quad(L\ge1).
+\]
+
+This pays the finite-window triangle factor and the entire \(s>L\) tail. It is not a graph-norm repair of the previously killed dressing.
+
+## 5. A controlled block containing a growing number of directions
+
+**[COFINAL_FAMILY | PAPER]**
+
+Let
+\[
+I_q=\{j:|j|\le q\},
+\qquad
+J_Q=\{k:Q\le|k|\le m\},
+\qquad Q\ge q+2.
+\]
+From the exact divided differences,
+\[
+\|P_{I_q}\mathsf C_mP_{J_Q}\|
+\le
+\frac{2\mathcal R_m}{\pi}
+\sqrt{\frac{2(2q+1)}{Q-q-1}}.
+\tag{18}
+\]
+Indeed,
+\[
+\sum_{j\in I_q}\sum_{k\in J_Q}\frac1{(j-k)^2}
+\le
+2(2q+1)\sum_{k=Q}^\infty\frac1{(k-q)^2}
+\le
+\frac{2(2q+1)}{Q-q-1}.
+\]
+
+For the **full \(K_m\)**, its off-diagonal parameter is
+\[
+v_j=-h_j^J+2h_j^R-h_j,
+\qquad
+h_j^R=-\int_0^Le^{-s/2}\sin(\omega_js)\,ds.
+\]
+For \(L\ge1\),
+\[
+|h_j^J|<3.2,\qquad |h_j^R|\le2,
+\qquad |v_j|\le\mathcal R_m+8.
+\]
+Therefore
+\[
+\boxed{
+\|P_{I_q}K_mP_{J_Q}\|
+\le
+\frac{2(\mathcal R_m+8)}{\pi}
+\sqrt{\frac{2(2q+1)}{Q-q-1}}.
+}
+\tag{19}
+\]
+
+Taking
+\[
+q=\lfloor L^A\rfloor,\qquad Q=\lceil m/2\rceil
+\]
+gives, for every fixed \(A>0\),
+\[
+\boxed{
+\|P_{I_q}K_mP_{J_Q}\|
+\le
+C L^{3+A/2}
+e^{-c(L/\log L)^{1/3}}
+=o(1).
+}
+\tag{20}
+\]
+
+The growing dimensions are explicitly paid. For an arbitrary decomposition \(f=u+w+v\) into low, middle, and top components,
+\[
+2|\langle u,K_mv\rangle|
+\le
+\|P_{I_q}K_mP_{J_Q}\|
+(\|u\|^2+\|v\|^2)
+\le
+\|P_{I_q}K_mP_{J_Q}\|\,\|f\|^2.
+\]
+
+**The middle component is not discarded.** Its other cross terms are covered by the global bound (14), but not yet at subpolynomial scale.
+
+## 6. Where the mechanism stops
+
+The unconditional region used above has width
+\[
+\delta_m\asymp
+L^{-2/3}(\log L)^{-1/3};
+\]
+it therefore supplies \(m^{1/2-o(1)}\), not \(m^{o(1)}\). Improving its numerical constant does not change that exponent boundary. :chatgpt-content-reference{index="4"}
+
+The present proof loses the needed sign information specifically at
+\[
+\left\|
+\frac1\pi[\operatorname{diag}(h_j),\mathsf H_m^{\mathrm d}]
+\right\|
+\le2\max_j|h_j|.
+\]
+The explicit upper envelope in (8), divided by \(m^\eta\), diverges for every \(\eta<1/2\). That says this **estimate** cannot supply SP; it does not say the actual signed form fails.
+
+The remaining source inequality can now be stated without an unknown polar factor. Define
+\[
+\mathsf T_m
+=\frac1\pi[\operatorname{diag}(h_j),\mathsf H_m^{\mathrm d}],
+\qquad
+\mathsf S_m(r)
+=\operatorname{diag}\bigl(a(\omega_j)-d_j+r\bigr).
+\]
+The first unsupplied bound is
+\[
+\boxed{
+\forall\eta>0\ \exists C_\eta\
+\exists\text{ unbounded original }\mathcal G_\eta:
+\quad
+\mathsf S_m(C_\eta m^\eta)-\mathsf T_m\succeq0
+\quad(m\in\mathcal G_\eta).
+}
+\tag{21}
+\]
+It would imply
+\[
+K_m\succeq-(C_\eta m^\eta+c_A+20)I.
+\]
+
+Conversely, the difference between \(K_m\) and
+\[
+\operatorname{diag}(a(\omega_j)-d_j)-\mathsf T_m
+\]
+has norm at most \(c_A+28\). Thus (21) is equivalent to the consumer at subpolynomial scale. **That equivalence is not claimed as progress.** The progress is the proved full-carrier bound (8), the constant-\(20\) archimedean budget, and the separated-block estimate (19).
+
+### Cheapest source-specific discriminator
+
+For a proposed same-cell \(r\), put
+\[
+q_j=a(\omega_j)-d_j+r.
+\]
+Every certificate for (21) must satisfy, on that same cell,
+\[
+q_j\ge0,\qquad q_k\ge0,\qquad
+\boxed{
+q_jq_k\ge
+\frac{(h_j-h_k)^2}{\pi^2(j-k)^2}.
+}
+\tag{22}
+\]
+This is the exact **two-mode principal determinant**, with lower eigenvalue
+\[
+\frac{
+q_j+q_k-
+\sqrt{(q_j-q_k)^2+
+4(h_j-h_k)^2/[\pi^2(j-k)^2]}
+}{2}.
+\]
+A certified negative upper envelope refutes the proposed certificate. Passing all such pairs does not certify the full matrix or produce a common good subsequence.
+
+**Closeout:** the registered prediction of a dimension-free, every-logarithmic-power improvement is confirmed. SP, the common-cell subpolynomial subsequence, and RH remain open. No additional theorem-shape kill is claimed.
+
+**Next mathematical step:** estimate the **signed divided-difference commutator against the actual same-cell diagonal slack in (21)** on contiguous and neighboring frequency bands, with their cross terms retained. Equation (19) already pays the polylogarithmic head–top interaction; equation (22) is the first falsifier for a proposed weighted block estimate.

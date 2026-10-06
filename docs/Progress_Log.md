@@ -8087,3 +8087,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_ADDITIVE_CRT_INLINE и ADDITIVE_CRT_AUDIT (06.10) в source_observability bus.
 - Чей вердикт: growth_symbol_attempt §§2–4, causal_algebra_audit §§1,5–7, один проход; root parity/wheel lemma независимо проверена causal_algebra_audit. Dyadic excluded upper endpoint уточнён. Lean не запускался.
 - Доставка: scoped manual commit/push, phase_end.sh не применён из-за broad staging чужих untracked путей; чужие файлы сохранены.
+
+## 2026-10-07 — Parity return paid; finite linear convolution test
+
+- Развилка: parity-centered prime differencing оставляет weighted even-shift aggregate.
+- Выбрали: точное линейное Heath-Brown k3 разложение до возведения суммы в квадрат.
+- Почему: оно сохраняет исходный residual, но позволяет проверять свободные integer/log factors без prime-pair conjecture.
+- Что отвергли: вывод нового floor из component errors; автоматическое наличие длинного свободного множителя.
+- Инсайты: явный j3 tuple с тремя Möbius factors и free1,1,3 доказывает только узкую структурную преграду; signed sectors должны оставаться совместными.
+- Блокеры: weighted even-shift sign и полный Schur/SP OPEN; Delta10 не floor, ||J_r|| не оценена.
+- Иглы Зингера: finite convolution с точными product cutoffs, odd support, Dtilde и исходным нормированием.
+- Следующий ход: вопрос1 отправлен Pro в forced rollover той же шестиполевой фазы; старый чат10/10 исчерпан. Ждать, не дублировать.
+- Адреса: PARITY_PRIME_AUDIT, PROSHKA_PARITY_PRIME_INLINE, GROWTH_ROLLOVER_QUESTION1 и source pack в bus; literature/linear_convolution_2026-10-07.
+- Чей вердикт: growth_symbol_attempt §§1–2 (floor bound2/3 уточнён), causal_algebra_audit §§3–6 и own sector lemma, один проход каждого блока; mobius_source_audit bounded alias-hunt, root independently read Robert §3.1 Thm1/§3.2. Shelf incomplete не означает отсутствия источников. Lean не запускался.
+- Доставка: Pro UI подтвердил полный запрос/attachment и живую генерацию; attachment readback byte-exact. Manual scoped commit/push, phase_end.sh исключён из-за broad staging чужих untracked файлов; чужие файлы сохранены.
