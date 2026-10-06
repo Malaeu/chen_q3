@@ -7991,3 +7991,16 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: ENDPOINT_FACTOR_AUDIT_2026-10-06.md, PROSHKA_ENDPOINT_FACTOR_INLINE_2026-10-06.md, POLAR_TARGET_EQUIVALENCE_2026-10-06.md.
 - Чей вердикт: causal_algebra_audit по answer2, growth_symbol_attempt по собственной scalar лемме. Lean не запускался.
 - Сохранение: scoped commit вручную; phase_end.sh захватывает чужие untracked Lean и git add -u. Чужие файлы и скрипты сохранены.
+
+## 2026-10-06 — Полная joint-оценка с выигрышем любой степени log
+- Развилка: scalar good cells не дают общую ячейку; нужен полный carrier.
+- Выбрали: exact signed Hilbert commutator и actual diagonal slack на соседних блоках.
+- Почему: answer3 даёт uniform R_m≤C sqrt(m)L³ exp(−.001(L/log L)^(1/3)), без dimension loss; полный floor и arch remainder20 прошли независимые проверки.
+- Что отвергли: max-норма shrinking zero-free envelope как SP; Pick interpolation как готовый supplier (условие ровно та же PSD).
+- Инсайты: twisted Perron оплачивает oscillation до contour shift; separated low/top coupling=o(1), но средние блоки остаются. Blockwise centering не удаляет cross-block constants.
+- Блокеры: signed соседние и bulk blocks против той же диагонали; SP/G1/G3/RH OPEN.
+- Иглы Зингера: weighted Loewner / boundary Pick; Bolotnikov–Kheifets прочитан, upper derivative caps сохранены, источник не даёт arithmetic positivity. ASK_STATUS INCOMPLETE, не отсутствие.
+- Следующий ход: вопрос4 отправлен в тот же чат Proof of CCM Growth; ждать и проверить, не дублировать.
+- Адреса: JOINT_HILBERT_AUDIT_2026-10-06.md, PROSHKA_JOINT_HILBERT_INLINE_2026-10-06.md; literature/joint_hilbert_2026-10-06 и polar_boundary_pick_2026-10-06.
+- Чей вердикт: causal_algebra_audit — matrix; growth_symbol_attempt — Perron; root — primary theorem mapping; polar_commutator_alias — one bounded source. Lean не запускался.
+- Сохранение: scoped commit вручную, поскольку phase_end.sh захватывает чужие untracked Lean и git add -u. Политики и чужие файлы не менялись.
