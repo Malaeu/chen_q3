@@ -7953,3 +7953,16 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: обработать ответ10 о слабом overlap; не повторять multiplication attack и не отправлять 11-й вопрос в исчерпанный чат.
 Адреса: docs/routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md; PROSHKA_DIRECT_THETA_LOCALIZATION_INLINE_2026-10-06.md; LITERATURE_GROUND_OVERLAP_UPDATE_2026-10-06.md.
 Чей вердикт: два ограниченных независимых Luna прохода приняли signed variation и carrier counterexample; root проверил prime damping; отдельный ограниченный Luna проход принял superpolynomial operator residual и полный complex-test density/Weil consumer. Литературная сверка CCM/Andrade/Groskin не нашла поставщика в проверенных источниках. Lean не запускался; RH claim не сделан.
+
+## 2026-10-06 — От слабого overlap к скорости отрицательного дна
+- Развилка: ответ10 не дал lower rho; старый чат исчерпан10/10.
+- Выбрали: новый consumer SP на той же полной CCM: отрицательное дно растёт медленнее любой степени.
+- Почему: off-critical zero принуждает lambda_min≤−c m^delta/(log m)^(2delta); source pair, tails и original-carrier projection прошли независимый PAPER check.
+- Что отвергли: residual/resolvent/cyclicity как lower overlap; fixed-window semiboundedness как SP; повтор старой primitive identity как новый знак.
+- Инсайты: двойные экспоненциальные хвосты позволяют b=L/2−log L и почти полный показатель delta.
+- Блокеры: совместная signed pole/prime нижняя оценка отсутствует; раздельные нормы дают только sqrt(m)log m.
+- Иглы Зингера: Gauss weights=reciprocal Christoffel kernel — представление, не lower weight; PDE observability не переносится на один скалярный theta sensor.
+- Следующий ход: вопрос1 новой фазы отправлен в Pro; дождаться полного ответа и проверить новую оценку/обструкцию.
+- Адреса: source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md и PROSHKA_NEGATIVE_GROWTH_PHASE_2026-10-06.md.
+- Чей вердикт: Pro answer10 плюс два ограниченных независимых Luna прохода по различным входам; RH не доказана, Lean не запускался.
+- Сохранение: scoped commit вручную; phase_end.sh собирает посторонние untracked Lean и git add -u, поэтому здесь несовместим с сохранением чужой работы. Политики/скрипты не менялись.

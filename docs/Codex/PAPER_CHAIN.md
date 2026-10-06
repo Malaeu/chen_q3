@@ -40,7 +40,7 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - Selected trial scalar/phase закреплены в G4 (06.10); координата конечного преобразования s = −Lz/2π и расписание m=N=k+2 заданы в TailReindex.
 - Открыто: довести итоговую сборку одной и той же ground-семьи F; trial crosswalk не заменяет G1/G3 и эту сборку.
 
-### G1 · complement / cellwise floor (главный фронт)
+### G1 · complement / cellwise floor (прежняя программа, OPEN)
 - Носитель: фиксированный `P : CCMLemma73PreAnchorPort`, i_j = cofinal index, m_j = N_j = φ_P(j)+2, K_j = sourceCCMFiniteMatrix i_j, q_j = selectedFerrersFiniteCCMRow P j, a_j = Re(q_j*K_jq_j), r_j = (K_j−a_j)q_j.
 - Открытое утверждение: для всех y⊥q_j (комплексно) `Re[y*(K_j−a_j)y] = Σ_u (K_j(u,u)−a_j)|y_u|² + 2Σ_u b_u Re(conj(y_u)(Hy)_u) ≥ δ_j‖y‖²`, δ_j>0 на всех поздних ячейках; затем ‖r_j‖/δ_j → 0 (полный residual) и проверенный cellwise consumer. Loewner-алгебра закрыта (`CCMFiniteWeilSourceCommutator.lean:282-341`, `G6N1SelectedFerrersHilbertPairing.lean:171-224`).
 - Первый конкретный знак (CELLWISE_COMPLEMENT_SIGN, OPEN_FIRST_SIGN): единичный z_j⊥q_j с ‖K_jz_j‖≤ε_j→0; нужно τ_j = z_j*K_jz_j − q_j*K_jq_j > 0 и Schur `D_j − η_jη_j*/τ_j ≻ 0` на {q_j,z_j}⊥. Неположительный кофинальный свидетель τ_j убил бы cellwise positivity — не получен.
@@ -83,7 +83,15 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 ### Сборка → hconv
 - Открыто: одна теорема для той же F вдоль tail reindex из G3 + G3c + G4 ⇒ hconv ⇒ потребитель. Порядок: δ_j и масштаб → ‖r_j‖/δ_j + consumer → G3; G4/G3c параллельно; затем сборка; Lean после бумаги.
 
+## Текущий фронт 06.10: отрицательное дно полной CCM
+- Новый условный consumer, та же полная K_m и исходная последовательность; прежняя таблица G1/G3 остаётся OPEN.
+- PAPER_OWN rev: гипотетический ноль w=delta+i gamma, delta>0, через source pair и оплаченный cutoff/Fourier projection даёт lambda_min≤−c m^delta/(log m)^(2delta) на каждой поздней ячейке. Сам ноль не утверждается.
+- OPEN SP: для каждого eta>0 получить lambda_min≥−C_eta m^eta eventually. SP исключит каждый такой ноль; RH ещё не доказана.
+- Единственный следующий механизм: совместное pole/prime сокращение. Раздельная оценка −O(sqrt(m)log m) слишком слаба; точная Chebyshev-primitive запись наследуется, не считается новым знаком.
+- [Ответ10](../routeB_bus/source_observability_2026-09-28/PROSHKA_NEGATIVE_BOTTOM_NORMING_INLINE_2026-10-06.md), [аудит и своя попытка](../routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md), [вопрос1 новой фазы, ответ ожидается](../routeB_bus/source_observability_2026-09-28/PROSHKA_NEGATIVE_GROWTH_PHASE_2026-10-06.md).
+
 ## Убито / не повторять
+- Weak negative-bottom overlap STALLED после ответа10: residual upper и scalar resolvent не дают lower rho; norming-weight alias не поставщик. Условно при off-line zero rho сверхполиномиально мал; это не безусловное опровержение overlap. См. NEGATIVE_BOTTOM_GROWTH_AUDIT и WEAK_OVERLAP_SPECTRAL_MEASURE (06.10).
 - 06.10, ответ9: direct-theta multiplication P_m(Gf) STALLED на полном signed localization defect. На явных чётных source-null CARRIER-векторах L‖(1−P)Gf‖²→‖G‖²/2, относительная утечка→1/2: carrier-uniform O(m^(−1/4)log^A m) repair убит. Это не bottom-векторы, OS не опровергнута; [аудит](../routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md).
 - 06.10, ответ8: sign-definite полный Robin Green difference исключён на каждой reference-ячейке (минимум 2 положительных и 6m−4 отрицательных направлений). При matched HMODE/chi/T1–T6 dist(qhat,span{eta,beta})→1: full-carrier замена source-coordinate двумя boundary moments невозможна. Ни один вывод не решает bottom-restricted OS; [аудит](../routeB_bus/source_observability_2026-09-28/OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md).
 - 06.10, ответ 7: TERMWISE поточечный знак каждого boundary-return сдвига опровергнут на фактическом theta-источнике; знак суммарной плотности не решён. Möbius-forcing rewrite STALLED: после возврата дополнения остаётся исходная Type II self-correlation. U и SOURCE_TRANSFER не убиты; [аудит](../routeB_bus/source_observability_2026-09-28/BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md).
@@ -121,8 +129,8 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - F1 «коммутирует + простой ⇒ чётное основное», F2 «нечётный tail floor ⇒ complement floor», F3 (contracts:137-145); GLOWER без моста компрессии не поставщик (Goal058:149-157).
 - «⟨Kq,q⟩ мало ⇒ ‖(K−a)q‖ мало»; контроль P₂ (ℋ(1/2) = −2/5) — PAPER_CHAIN G3 (исх. стр. 1371-1376).
 
-## Текущий фронт (владелец, 2026-09-28): единственная линия — (B) перенос источника
-Шаги и критерий смерти — `NEXT.md`, «Следующий шаг». (A) двухплоскостный полиномиальный зазор отложен:
+## История фронта (B): перенос источника, теперь STALLED
+Прежние шаги и критерий смерти сохранены в истории NEXT (bd2d0834). (A) двухплоскостный полиномиальный зазор отложен:
 нулевая башня D^{2k}G ((G^{(k)})^ = (iz)^k·Ĝ) делает δ_j ≥ c·m^{−a}, вероятно, ложным (панель 28.09).
 Ниже — состояние 27.09, заморожено до записанного тупика (B).
 - Шаг 0 (28.09, диагностика): у опорных строк m=8,12,16,24 численные α≈0.05534,0.05959,0.05758,0.05321; полная чётная башня и пять Rayleigh-квот теперь досчитаны до m=24 (100 dps, λ₁≈2.69·10⁻⁵⁴, λ₂−λ₁≈4.28·10⁻⁴⁸). Это конечные mpmath-данные, не асимптотика или interval certificate; `source_observability_2026-09-28/README.md`.
@@ -149,7 +157,7 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 
 - Ответ8/10 проверен: точная F*–Robin Green формула и два Mellin jump-moments; indefiniteness полного Green difference; ‖Pi_span{eta,beta} qhat‖=O_P(m^(−1/4)) при matched source inputs. Это ограничения full-carrier методов, не OS. Полезное упрощение: ‖qhat−xi c_m(G)/‖c_m(G)‖‖=O_P(m^(−1/4)); это позволило атаковать OS с явным theta-источником для того же bottom space и оплаченный возврат к qhat. Радикальное W(G,f)=0 даёт лишь W(r_m,f_v)=−lambda0⟨g_m,v⟩, не нижнюю оценку overlap. [Ответ](../routeB_bus/source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md), [проверка, попытка и вопрос9](../routeB_bus/source_observability_2026-09-28/OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md).
 
-- После ответа9 проверен более слабый условный consumer на той же K: eps=‖Kg‖, rho=‖P_bottom g‖, |lambda_min|rho≤eps. Достаточная новая цель на отрицательных bottom-ячейках — rho>0 и eps/rho→0, например полиномиальный нижний overlap при уже выведенной сверхполиномиальной невязке. Ни нижний overlap, ни RH не доказаны. Full-carrier density→Weil мост и сверхполиномиальная operator residual проверены одним ограниченным независимым PAPER проходом; прежние G1/G3 не закрываются этим условным обходом. Вопрос10 отправлен, не пересылать; [точный текст и проверки](../routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md).
+- После ответа9 проверен более слабый условный consumer на той же K: eps=‖Kg‖, rho=‖P_bottom g‖, |lambda_min|rho≤eps. Достаточная новая цель на отрицательных bottom-ячейках — rho>0 и eps/rho→0, например полиномиальный нижний overlap при уже выведенной сверхполиномиальной невязке. Ни нижний overlap, ни RH не доказаны. Full-carrier density→Weil мост и сверхполиномиальная operator residual проверены одним ограниченным независимым PAPER проходом; прежние G1/G3 не закрываются этим условным обходом. Ответ10 обработан: нижнего overlap нет; [точный текст и проверки](../routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md).
 
 ## Заморожено: фронт 27.09 вечер
 - Глобальный трек (paper_weil, не selected Goal058): Q(f₀s) = P_s − N_s, DOM (N_s ≤ P_s для всех компактных гладких s) ≡ RH; ρ* = sup N_s/P_s ≥ 1 безусловно — сравнение критическое, нужна константа ровно 1 (REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md).
