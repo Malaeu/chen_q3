@@ -2,6 +2,8 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+- **Proof of CCM Growth 9/10 ANSWERED AND CHECKED; 10/10 SENT (last slot)**: [answer9](source_observability_2026-09-28/PROSHKA_ADDITIVE_CRT_INLINE_2026-10-06.md), [audit, own parity/wheel attempt, exact question10](source_observability_2026-09-28/ADDITIVE_CRT_AUDIT_2026-10-06.md). Centered long-alpha component paid at5/12; remaining prime-variable signed pairing and SP OPEN. Same chat, do not resend.
+
 - **Proof of CCM Growth 8/10 ANSWERED AND CHECKED; 9/10 SENT**: [answer8](source_observability_2026-09-28/PROSHKA_SMALL_DIVISOR_INLINE_2026-10-06.md), [audit, own CRT attempt, exact question9](source_observability_2026-09-28/SMALL_DIVISOR_AUDIT_2026-10-06.md). Type-I portion paid; all-range quarterpower remainder is NOT a floor. Signed Type-II/Schur/SP OPEN. Same chat, do not resend.
 
 - **Proof of CCM Growth 7/10 ANSWERED AND CHECKED; 8/10 SENT**: [answer7](source_observability_2026-09-28/PROSHKA_SIGNED_PACKETS_INLINE_2026-10-06.md), [audit, own endpoint attempt, exact question8](source_observability_2026-09-28/SIGNED_PACKETS_AUDIT_2026-10-06.md). Blind packet gluing killed; actual far negative correlation proved. Signed bound on Schur-corrected vectors and SP OPEN. Same living chat; do not resend.

@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: 5b16223c
+Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: 20b6a8bf
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -59,7 +59,8 @@ Claim делается, только когда он действительны�
    Своя проверка: exceptional-only Hardy defect уже RH-equivalent; norm-transfer STALLED.
    Ответ7: blind packet gluing убит; доказана отрицательная дальняя корреляция actual arithmetic packets.
    Ответ8: Type-I часть оплачена; остаток O(m^1/4 polylog) — не floor, Type-II signed pairing OPEN.
-   Вопрос9: additive shifts + exact CRT correlation вместо zero-curvature differencing.
+   Ответ9: centered long-alpha component оплачена O(m^5/12 polylog); short-alpha/long-prime OPEN.
+   Вопрос10: signed prime-variable correlation с точными parity/wheel и continuous поправками.
    Доказательства: `SHIFTED_XI_KERNEL_AUDIT_2026-10-06.md`, `HARDY_DEFECT_OWN_ATTEMPT_2026-10-06.md`.
 Доказательства, один независимый проход и решение о смене фазы:
 `../routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md`.
@@ -72,7 +73,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **8/10 получен и проверен; 9/10 отправлен**: signed Type-II endpoint pairing, additive shifts/CRT. SP OPEN. См. `SMALL_DIVISOR_AUDIT_2026-10-06.md` в той же bus-папке. Ждать ответ в том же чате, не пересылать.
+- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **9/10 получен и проверен; 10/10 отправлен**: remaining long-prime signed pairing; последний вопрос этого чата. SP OPEN. См. `ADDITIVE_CRT_AUDIT_2026-10-06.md` в той же bus-папке. Ждать ответ в том же чате, не пересылать.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)

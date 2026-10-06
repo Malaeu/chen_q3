@@ -8073,3 +8073,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_SMALL_DIVISOR_INLINE и SMALL_DIVISOR_AUDIT (06.10); literature/small_divisor_2026-10-06.
 - Чей вердикт: growth_symbol_attempt §§1–3, causal_algebra_audit §§4–7; root прочитал первичные Arias Lemma5/Kedlaya18.2.1. CRT own lemma независимо проверена growth_symbol_attempt. Lower atom convention уточнена в audit. Lean не запускался.
 - Доставка: scoped manual commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей; чужие файлы сохранены.
+
+## 2026-10-06 — Additive CRT оплачивает long-alpha component
+
+- Развилка: additive phase имела кривизну, но требовала CRT и полного shift-budget.
+- Выбрали: оценили compatible progression sums до вариационной нормы, оптимизировали K1/K2.
+- Почему: centered long-alpha operator теперь имеет bound O(m^5/12 polylog) на всём исходном carrier.
+- Что отвергли: перенос component exponent на full bottom; short-alpha top-frequency shift range слишком мал для этого envelope.
+- Инсайты: remaining long variable — prime power b; odd prime-pair shifts имеют лишь power-of-two exceptions, finite-wheel baseline обязателен.
+- Блокеры: remaining signed short-alpha flux плюс continuous D_U на actual J_r v OPEN; full Schur сохранён.
+- Иглы Зингера: контролировать prime-variable aggregate вместе с двумя mixed continuous terms и residue baseline.
+- Следующий ход: вопрос10 — последний в текущем Pro чате; никаких новых вопросов после него до forced rollover.
+- Адреса: PROSHKA_ADDITIVE_CRT_INLINE и ADDITIVE_CRT_AUDIT (06.10) в source_observability bus.
+- Чей вердикт: growth_symbol_attempt §§2–4, causal_algebra_audit §§1,5–7, один проход; root parity/wheel lemma независимо проверена causal_algebra_audit. Dyadic excluded upper endpoint уточнён. Lean не запускался.
+- Доставка: scoped manual commit/push, phase_end.sh не применён из-за broad staging чужих untracked путей; чужие файлы сохранены.
