@@ -7917,3 +7917,15 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: вопрос7 отправлен в тот же чат; искать source-specific signed gain, при математическом тупике выбрать одно следующее обязательство в SOURCE_TRANSFER с четверть-степенным G3-потребителем.
 Адреса: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_MOBIUS_SOURCE_RETURN_INLINE_2026-10-06.md и MOBIUS_PROJECTION_AUDIT_2026-10-06.md. Литература: Connes--Consani arXiv:2006.13771v1, Thm1 p3, только PARTIAL ANALOGUE.
 Чей вердикт: root, отдельные read-only Luna проверки (1)-(16) и (17)-(22), bounded alias-hunt; существенных замечаний нет. Проверены вспомогательные PAPER результаты, без Lean или RH claim.
+
+## 2026-10-06 — Boundary rewrite stalled; direct bottom-source stability (Mac)
+Развилка: продолжать переписывать неизвестную Type II форму или атаковать собственные уравнения нижнего пространства.
+Выбрали: внутри SOURCE_TRANSFER перейти к OS на прежнем qhat=z(c0,c4)/Z и полной K_m, с четверть-степенной скоростью на исходном eventual schedule.
+Почему: после точного возврата дополнения controlled whole-source forcing сокращается и остаётся исходная неизвестная self-correlation; signed gain не получен.
+Что отвергли: TERMWISE поточечную положительность — каждая ненулевая сдвиговая плотность неопределённа почти всюду на wrap-интервале. Это не опровергает знак суммы, интегральную оценку или U.
+Инсайты: OS для ВСЕГО нижнего пространства условно даёт простоту, затем чётность через selected center floor и достаточный tracking на открытой критической полосе. Оценка одного выбранного вектора недостаточна.
+Блокеры: OS не доказана; формальный адаптер от OS к текущей hfloor-based ground конструкции также ещё не написан. G1/G3/RH OPEN.
+Иглы Зингера: [D,K]=beta eta*−eta beta* даёт (K−lambda0)Dv=eta b−beta s и неотрицательный signed moment Re(conj(t)b−conj(u)s), но связи с qhat*v пока нет.
+Следующий ход: один source-specific proof attack на OS из буквальных собственных уравнений; не новый условный receiver и не возврат к глобальному inverse-gap bound.
+Адреса: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_BOUNDARY_SIGN_STRIP_RESPONSE_INLINE_2026-10-06.md и BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md.
+Чей вердикт: Прошка — “Combining that return with the Mobius forcing cancels the complementary-source terms exactly, but leaves the original band–band Type II correlation.” Независимая проверка приняла узкий termwise kill и условную OS-цепь; root сузил чрезмерное прочтение pointwise claim до каждого отдельного сдвига. Нового знака, Lean build или RH claim нет.

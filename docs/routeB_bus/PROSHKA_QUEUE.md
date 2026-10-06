@@ -12,7 +12,9 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - Continuation **5/10 ANSWERED AND CHECKED**: [exact answer](source_observability_2026-09-28/PROSHKA_TYPE_I_ENDPOINT_INLINE_2026-10-06.md), [audit](source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md). Type I endpoints plus o(1/m) metric error verified; low-range and bilinear signed bound OPEN. No G1/RH promotion.
 
-- Continuation **6/10 ANSWERED AND CHECKED**: [exact answer](source_observability_2026-09-28/PROSHKA_MOBIUS_SOURCE_RETURN_INLINE_2026-10-06.md), [audit and exact question7](source_observability_2026-09-28/MOBIUS_PROJECTION_AUDIT_2026-10-06.md). Local Mobius cancellation and whole-line return obstruction checked; finite-window signed bound OPEN. **7/10 sent 18:06 Berlin**, same chat active; do not resend.
+- Continuation **6/10 ANSWERED AND CHECKED**: [exact answer](source_observability_2026-09-28/PROSHKA_MOBIUS_SOURCE_RETURN_INLINE_2026-10-06.md), [audit and exact question7](source_observability_2026-09-28/MOBIUS_PROJECTION_AUDIT_2026-10-06.md). Local Mobius cancellation and whole-line return obstruction checked; finite-window signed bound OPEN. Question 7 answered below; do not resend.
+
+- Continuation **7/10 ANSWERED**: [complete inline](source_observability_2026-09-28/PROSHKA_BOUNDARY_SIGN_STRIP_RESPONSE_INLINE_2026-10-06.md), [audit](source_observability_2026-09-28/BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md). Only TERMWISE pointwise positivity refuted; integrated sign/U OPEN. Forcing-return mechanism STALLED. Next single obligation: all-bottom-space source stability OS at quarter-power rate. **8/10 sent 18:43 Berlin**, exact question in audit; do not resend.
 
 ## REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE · ANSWERED
 
