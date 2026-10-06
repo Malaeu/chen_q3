@@ -23,6 +23,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - **Proof of CCM Growth 3/10 ANSWERED AND CHECKED**: [answer](source_observability_2026-09-28/PROSHKA_JOINT_HILBERT_INLINE_2026-10-06.md), [audit and own preflight](source_observability_2026-09-28/JOINT_HILBERT_AUDIT_2026-10-06.md). Full-carrier inverse-log-power gain accepted; SP and neighboring-block signed slack OPEN. **4/10 sent**, same chat; exact question in audit. Do not resend.
 
+- **Proof of CCM Growth 4/10 ANSWERED AND CHECKED**: [answer](source_observability_2026-09-28/PROSHKA_EXCEPTIONAL_SCHUR_INLINE_2026-10-06.md), [audit and exact question5](source_observability_2026-09-28/EXCEPTIONAL_SCHUR_AUDIT_2026-10-06.md). Regular codimension O(m/L^5) and polylog floor accepted; actual exceptional Schur sign OPEN. **5/10 sent**, same chat; do not resend.
+
 ## REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE · ANSWERED
 
 - `REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE` | [confirmed new Sort_RH_März_2026 chat](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aba5f5a-f804-83ed-a667-68147ee00f59), user turn `eb1a1594-503d-465d-b308-d92f67290ba1`, sent by 2026-09-28 12:37:08 UTC, ordinal **1/10** | **ANSWERED** 12:48:43 UTC; [exact request](../session_protocols/PROSHKA_REQUEST_GOAL058_ROUTEB_ALPHA_T7_RATE_20260928.txt), [full response](proshka/PROSHKA_VERDICT_GOAL058_ROUTEB_ALPHA_T7_RATE_2026-09-28.md), [source and independent check](proshka/PROSHKA_GOAL058_ROUTEB_ALPHA_T7_RATE_SOURCE_AND_AUDIT_2026-09-28.md). Verdict C identifies missing cofinal M1–M3; G3 (T7) remains OPEN. Do not resend.

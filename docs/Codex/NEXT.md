@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: c0714bf0
+Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: e82b6049
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -50,7 +50,10 @@ Claim делается, только когда он действительны�
    Достаточно неограниченной подпоследовательности для каждого eta. Эта оценка OPEN.
    Ответ3 проверен: полный floor −cA−C sqrt(m)L³ exp(−.001(L/log L)^(1/3)), все моды и cross terms оплачены.
    Это выигрыш любой степени log, но exponent 1/2−o(1), не SP. Следующий шаг: signed Hilbert commutator против фактического diagonal slack.
-   Доказательства: `JOINT_HILBERT_AUDIT_2026-10-06.md` в той же bus-папке.
+4. Ответ4 проверен: на ker Lsrc (codim≤C m/L^5) floor −C L^10 log L; endpoint jets сохранены.
+   При r≥2epsilon точный regular block положителен; остаётся actual Schur размерности≤C m/L^5.
+   Его знак OPEN; малый rank не даёт SP. Своя Gram-resolvent попытка — только sufficient, не supplier.
+   Доказательства: `EXCEPTIONAL_SCHUR_AUDIT_2026-10-06.md` в той же bus-папке.
 Доказательства, один независимый проход и решение о смене фазы:
 `../routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md`.
 Никаких предположений RH, positivity, polynomial gap или missing overlap.
@@ -62,7 +65,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **3/10 получен и проверен**: uniform joint Hilbert/Perron bound и low/top block estimate приняты. Соседние и средние блоки OPEN. См. `JOINT_HILBERT_AUDIT_2026-10-06.md` в той же bus-папке; **4/10 отправлен** после своей попытки и alias-return. Ждать ответ в том же чате, не пересылать.
+- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **4/10 получен и проверен; 5/10 отправлен**: source-defined regular subspace и exact exceptional Schur приняты; знак исключительной части OPEN. См. `EXCEPTIONAL_SCHUR_AUDIT_2026-10-06.md` в той же bus-папке. Ждать ответ в том же чате, не пересылать.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)

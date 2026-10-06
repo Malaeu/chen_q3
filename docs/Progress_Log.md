@@ -8004,3 +8004,16 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: JOINT_HILBERT_AUDIT_2026-10-06.md, PROSHKA_JOINT_HILBERT_INLINE_2026-10-06.md; literature/joint_hilbert_2026-10-06 и polar_boundary_pick_2026-10-06.
 - Чей вердикт: causal_algebra_audit — matrix; growth_symbol_attempt — Perron; root — primary theorem mapping; polar_commutator_alias — one bounded source. Lean не запускался.
 - Сохранение: scoped commit вручную, поскольку phase_end.sh захватывает чужие untracked Lean и git add -u. Политики и чужие файлы не менялись.
+
+## 2026-10-06 — Общий regular block и точный exceptional Schur
+- Развилка: signed Hilbert block comparison не дал full-carrier SP; answer4 вернулся к source positive/negative zero rows.
+- Выбрали: actual exceptional Schur с regular correction B*A^-1B и endpoint rows.
+- Почему: uniform near-line/tail bounds и density дают codim≤C m/L^5, epsilon≤C L^10 logL; regular block и inverse bound проверены.
+- Что отвергли: rank-only closure; повтор density theorem на Schur без source map; считать sufficient Gram comparison эквивалентом actual Schur.
+- Инсайты: растущий derivative order безопасен через exact Omega^J для исходного trig polynomial; boundary jumps оплачены через явные jet rows, не H1 предположение.
+- Блокеры: magnitude/sign exceptional rows после coupling; SP/G1/G3/RH OPEN.
+- Иглы Зингера: Birman–Schwinger row norm Lsrc(G+tI)^-1Lsrc* — exact sufficient comparison, но необходимая source оценка отсутствует.
+- Следующий ход: вопрос5 отправлен в тот же Pro чат; оценить actual exceptional Schur, не только число плохих направлений.
+- Адреса: EXCEPTIONAL_SCHUR_AUDIT_2026-10-06.md, PROSHKA_EXCEPTIONAL_SCHUR_INLINE_2026-10-06.md; literature/exceptional_density_2026-10-06.
+- Чей вердикт: causal_algebra_audit — signed source/Schur; growth_symbol_attempt — near/tail/rank; root — uniform primary density map. Lean не запускался.
+- Сохранение: scoped commit вручную, phase_end.sh захватывает чужие untracked Lean и git add -u; чужая работа сохранена.
