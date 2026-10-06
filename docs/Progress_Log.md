@@ -7883,3 +7883,24 @@ threshold; no extra Fourier truncation or finite table substitutes for it.
 **Адреса:** source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md
 and PROSHKA_TYPE_I_ENDPOINT_INLINE_2026-10-06.md under docs/routeB_bus.
 **Чей вердикт:** Auxiliary PAPER result checked, G1/G3/RH still OPEN.
+
+## 2026-10-06 — Selected-shell G3c fixed-limit projection proof
+**Развилка:** While Proshka question6 runs, verify the permitted G3c projection bridge.
+**Выбрали:** Compare the actual scaled E_star trial to its fixed Gaussian limit
+before applying the same orthogonal Fourier projection.
+**Почему:** Full-window O(lambda^-2) packet error gives L² error O(m^-1/4).
+The fixed inversion-even target has a global L² logarithmic derivative,
+so its Fourier tail is O(log m/m) with zero boundary term.
+**Что отвергли:** Differentiating the HMODE C0 error, arbitrary-height strips,
+or substituting trial convergence for ground tracking.
+**Инсайты:** The exact final consumer only needs sigma<1/2, making the
+quarter-power residual sufficient. Constant-mode preservation pays the center.
+**Проверка:** Root source and Fourier-Gaussian calculation; proof author
+projection_bridge_audit; independent g3c_projection_independent_check
+verified all bounds and mapping. Initial Luna checker returned off-target
+Type I text and was not counted; Sol escalation supplied the actual check.
+**Блокеры:** G1, G3 and final same-family assembly remain open; no Lean run.
+**Иглы Зингера:** Fixed smooth target, matching endpoint values, exact du/u norm.
+**Следующий ход:** Same arithmetic source sign question6, active at Proshka.
+**Адреса:** docs/routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md.
+**Чей вердикт:** G3c for the selected shell PAPER_OWN rev given accepted HMODE/chi and G4; RH NOT_MADE.

@@ -19,12 +19,12 @@ F = selected Ferrers tracked ground transform вдоль одного tail reind
 | G3 | F трекает projected trial: нормировка × kernelL2 × √ratio → 0 на компактах | **OPEN — главная стена** (master:1278) | нет формулировки |
 | hmode | sup‖w_m − D_n‖ ≤ C_n/m, центр 1/h0(0), 3/h4(0), моды 0/4, полное окно | PAPER_OWN rev + PROSHKA PROVED_PAPER (RPT:1120-1220) | hmode⇒W5/N2 в кандидате; сам hmode не Lean |
 | hχ / hθ | следствия hmode | PAPER_OWN rev | hχ кандидат; формализация не завершена |
-| G3c | projected trial → continuum trial (projection tail) | OPEN (contracts:267,280; master:1222) | нет |
+| G3c | projected trial → continuum trial (projection tail) | PAPER_OWN rev для той же selected shell при HMODE/chi и G4: O(m^(-1/4)) residual достаточен на открытой критической полосе (06.10) | существующий условный receiver; свежей сборки нет |
 | G4 | CCM Lemma 7.3: k_λ → Ξ равномерно на полосах | PAPER_PUBLISHED arXiv:2511.22755 §7 L7.3 p.31; selected-shell scalar/phase crosswalk PAPER_OWN rev при принятом HMODE/chi (06.10) | импорт отсутствует |
 | G5 | одна семья: вещественные нули + F → Ξ ⇒ RH (Гурвиц) | LEAN (3 стандартные аксиомы) | `Goal058DirectGroundZeroEscape.lean:27` |
 | Сборка | tail reindex + G3 + G3c + G4 ⇒ hconv для той же F | OPEN | нет |
 
-**Итог:** 14 звеньев. Закрыто на бумаге 7: LEAN 4 (G2 — условно на G1, G2b, hentire, G5), PAPER_PUBLISHED 1 (G4; selected-shell crosswalk проверен при HMODE/chi), PAPER_OWN rev 2 (hmode, hχ/hθ). KILLED(shape) 1 (hfloorEv, constant-β). OPEN 6 (G0 частично, hratioEv, hoddEv, G3, G3c, Сборка). RH не доказана; `PX_RH_CLAIM: NOT_MADE`.
+**Итог:** 14 звеньев. Закрыто на бумаге 8: LEAN 4 (G2 — условно на G1, G2b, hentire, G5), PAPER_PUBLISHED 1 (G4; selected-shell crosswalk проверен при HMODE/chi), PAPER_OWN rev 3 (hmode, hχ/hθ, selected-shell G3c). KILLED(shape) 1 (hfloorEv, constant-β). OPEN 5 (G0 частично, hratioEv, hoddEv, G3, Сборка). RH не доказана; `PX_RH_CLAIM: NOT_MADE`.
 
 ## Главное наблюдение
 CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недостающих шага своей программы:
@@ -71,9 +71,10 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - Следующий ход: на исходной кофинальной семье построить независимые пороги μ_j с положительным B_{μ,j} на всём qhat_j⊥ и знаком Шура σ_j≤0; затем для тех же порогов доказать R_j²=r_j*B_{μ,j}^{−2}r_j=O_n(m_j^{−2n}) при каждом n. Это достаточный поставщик (T7), не установленный результат; точная форма и проверка — в текущем фронте.
 - Уточнение потребителя 06.10 (PAPER rev): для конечной крыши нужны только компакты |Im z|<1/2. При прежних согласованных (T1)–(T6) достаточно α_m=O(m^(−1/4)(log m)^A), фиксированное A≥0; all-height T7 сильнее необходимого. Эта оценка α не доказана. [Вывод и независимая проверка](../routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md).
 
-### G3c · projection tail
-- Открыто: projected trial → continuum trial, оценка projection tail (master:1222; contracts:267,280 «PROSE»).
-- Сверка 06.10: условный source bridge уже записан в `G6N1SelectedFerrersN2CompactDecayAssembly.lean:902`; candidate `selected_locally_uniform_xi_of_mode_rate` выводит trial→Ξ на |Im z|<1/2 из точного принятого PAPER HMODE. Нормировка и continuum port сверены независимо; свежая Lean-сборка не запускалась. Это projected trial, не ground F; same-family tracking остаётся G3. [Точные зависимости и границы проверки](../routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md).
+### G3c · selected-shell projection (PAPER checked, 06.10)
+- При принятом HMODE/chi и G4 исходный scaled trial h_m отличается от H=4h_CCM на всём окне на O(λ^-2). Точное E_star даёт ||f_m−K||=O(λ^-1/2), K=E_star(H), λ=√m.
+- Фиксированный K чётен в log u по Пуассону, его логарифмическая производная в L². Концы окна совпадают, поэтому Fourier tail ≤ L||K'||/(2π(N+1)). Контрактивность той же проекции даёт ||(I−P)f_m||=O(m^-1/4)+O(log m/m).
+- Множитель √log(m)m^(σ/2) оплачивается для каждого σ<1/2. Центр сохранён проекцией, его нормировка оплачена G4. Это selected trial, не ground F; произвольная production family всё ещё требует crosswalk в итоговой сборке. Независимый PAPER проход без существенных замечаний; Lean не запускался. [Вывод и источники](../routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md).
 
 ### G4 · crosswalk
 - Selected-shell crosswalk проверен на PAPER (06.10): a72 q=(chi0 A4 h4−3 chi2 A0 h0)/16 реализует CCM «suitably normalized» h_λ, с точной нулевой массой и пределом h_CCM при HMODE/chi. λ=√(k+2), c=2πλ²; chi2 обозначает полную моду 4.

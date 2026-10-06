@@ -1,6 +1,8 @@
 # Critical-strip projection: existing conditional source bridge
 
-Status: SOURCE_RECONCILIATION; no G1/G3/G3c promotion, no RH claim.
+Status: selected-shell G3c PAPER_OWN rev from accepted HMODE/chi and G4;
+no G1/G3 promotion, no fresh Lean check, no RH claim. Earlier reconciliation
+sections below retain their narrower historical scope.
 Source inspected: rh_clean, fc0b25a887feea95a4c7ee2191661184be0a53c7.
 Scope: the selected Ferrers trial and its original cofinal shell, not the
 new two-column plane span{c(G),c(G'')} and not the tracked ground vector.
@@ -114,6 +116,88 @@ Next bounded action: reconcile the accepted PAPER hmode result with the
 exact candidate hypothesis and audit the same-shell ground/trial join
 before deciding whether any G3c/G4 label can be updated. Do not reprove an arbitrary-height
 projection rate as a prerequisite to this strip-only consumer.
+
+## Direct fixed-limit projection estimate (PAPER checked)
+
+This argument concerns the SAME selected shell, not the ground family.
+Write m=N=k+2, lambda=sqrt(m), L=log(m), h_m=a73*q_m and
+H=4*h_CCM. The accepted full-window HMODE/chi packet estimate and
+the scalar crosswalk below give sup_(|x|<=lambda)|h_m(x)-H(x)|<=C/lambda^2.
+The literal selected h_m is zero outside this window. Put
+f_m=E_star(h_m) on [lambda^-1,lambda] and K=E_star(H) on (0,infinity).
+
+For u in the window, at most lambda/u summands satisfy n*u<=lambda,
+so their combined E_star error is at most C/(lambda*sqrt(u)).
+For the omitted fixed target, |H(x)|<=C_H*x^-4 for x>0, and
+sum_(n>r)n^-4<=C_4*r^-3 for r>=1. Consequently its contribution is
+at most C_H*C_4*lambda^-3*u^-1/2. Thus, with a fixed C0,
+
+    ||f_m-K||^2_(L2(window,du/u))
+    <= C0^2/lambda^2 * integral_(lambda^-1)^lambda u^-2 du
+    <= C0^2/lambda.
+
+Let kappa(t)=K(exp(t)). Exact Poisson inversion for H gives
+kappa(-t)=kappa(t). The explicit polynomial Gaussian and its derivative
+give |H(x)/2+x*H'(x)|<=C1*x^-4. Termwise differentiation is justified
+by locally uniform Gaussian domination, and for u>=1,
+
+    |kappa'(log u)|
+    = |sqrt(u)*sum_(n>=1)[H(nu)/2+nu*H'(nu)]| <= C2*u^-7/2.
+
+Inversion gives the negative-log tail as well. Hence
+D=||kappa'||_(L2(R)) is finite and independent of m.
+For completeness, the inversion has an elementary source check: under
+the exp(-2*pi*i*x*xi) Fourier convention, the transforms of
+x^2*exp(-pi*x^2) and x^4*exp(-pi*x^2) are respectively
+(1/(2*pi)-xi^2)*exp(-pi*xi^2) and
+(xi^4-3*xi^2/pi+3/(4*pi^2))*exp(-pi*xi^2).
+Thus h_CCM=(pi^2*x^4-3*pi*x^2/2)*exp(-pi*x^2) is Fourier invariant,
+and H(0)=integral H=0. Poisson summation for this Schwartz H gives
+sqrt(u)*sum_(n>=1)H(n*u)=sqrt(1/u)*sum_(n>=1)H(n/u), with no constant
+or mass correction. This is the exact inversion used above.
+The endpoint values at +/-L/2 agree. Integration by parts in the
+literal Fourier basis V_n_m therefore has zero boundary term;
+its shift log(lambda*u) contributes only the existing (-1)^n phase.
+Bessel and Parseval give for the SAME |n|<=N orthogonal projection P,
+
+    ||(I-P)K|| <= L*D/(2*pi*(N+1)).
+
+Orthogonal contraction and linearity now yield
+
+    ||a73*(P*gTrial-gTrial)|| = ||(I-P)f_m||
+      <= C0*m^-1/4 + D*log(m)/(2*pi*(m+1)).
+
+This proof differentiates only the FIXED explicit target K, never the
+HMODE error or a uniform C0 convergence assertion.
+For every fixed 0<=sigma<1/2, the compact Mellin kernel contributes
+at most sqrt(L)*lambda^sigma. The displayed residual becomes
+
+    O(sqrt(log m)*m^(sigma/2-1/4))
+      +O((log m)^(3/2)*m^(sigma/2-1)) -> 0.
+
+The centered finite-trial identity already cancels its Hilbert norm;
+the remaining ratio Xi(0)/(a73*Gwin_m(0)) tends to 1 by the accepted
+G4 continuum result and Xi(0)!=0. P preserves the constant mode, so
+there is no new independent central denominator. Production orientation
+-z is retained. The conclusion is projected-trial minus continuum-trial
+convergence on each compact of |Im z|<1/2 for the selected shell.
+
+Root checked D0KTrialStage1.lean:40,60 (measure, window and shifted basis),
+D0KTrialStage2.lean:24,41,56 (E_star and literal projection),
+D0PstarExplicitCCMLimitFourier.lean:29 (target), and the accepted G4
+full-window packet crosswalk. The elementary window bound also appears
+in G6N1SelectedFerrersOddMassDecay.lean:426. The independent author was
+/root/projection_bridge_audit. Independent /root/g3c_projection_independent_check
+verified the complete argument and source mapping without substantive findings.
+It checked PreAnchorDataInhabitant:45--47, FactorFourPortRate:50,84--91,
+D0KTrialStage1:126--141, D0PstarExplicitCCMLimitFourier:561--571 and
+N2CompactDecayAssembly:532--549,749--774. The first assigned Luna checker
+returned an off-target Type I answer; that was not counted. The Sol
+escalation performed the actual independent G3c check. Root reread the
+scalar/window/basis definitions and checked the elementary Fourier-Gaussian
+inversion above. Result: selected-shell G3c is PAPER_OWN rev conditional
+on the accepted HMODE/chi and G4 inputs.
+No fresh Lean compilation or arbitrary-production-family crosswalk is claimed.
 
 Shelf check: `./ask.sh 'centered critical strip quarter power tracking rate'`
 returned useful local declarations but ASK_STATUS: INCOMPLETE (semantic
