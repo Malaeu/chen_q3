@@ -8059,3 +8059,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_SIGNED_PACKETS_INLINE и SIGNED_PACKETS_AUDIT (2026-10-06) в source_observability bus.
 - Чей вердикт: growth_symbol_attempt §§1–3 и causal_algebra_audit §§4–6, по одному проходу; собственная endpoint identity отдельно проверена causal_algebra_audit. Primary Cotlar theorem прочитан root. Lean не запускался.
 - Доставка: manual scoped commit/push; phase_end.sh не применён из-за broad staging чужих untracked файлов; чужие файлы сохранены.
+
+## 2026-10-06 — Type-I cancellation и additive CRT для surviving Type-II
+
+- Развилка: оценивать полный endpoint Hankel через free derivative или использовать точную арифметику.
+- Выбрали: Vaughan split с общей continuous компенсацией; small-divisor quadrature доказана.
+- Почему: эта часть source оплачивается polylog на нужной полосе в исходной operator norm.
+- Что отвергли: выдачу quarterpower remainder за floor; same-frequency multiplicative differencing не имеет кривизны в a.
+- Инсайты: alpha_U(n)alpha_U(n+k) раскрывается точно через CRT; additive phase имеет положительную вторую производную.
+- Блокеры: signed Type-II flux плюс continuous density на (v,J_r v) OPEN; все Schur corrections сохранены.
+- Иглы Зингера: оценить CRT progression sums до вариационной нормы, затем совместить с prime weights/compensator.
+- Следующий ход: вопрос9 в том же Pro чате, без смены full source/phase.
+- Адреса: PROSHKA_SMALL_DIVISOR_INLINE и SMALL_DIVISOR_AUDIT (06.10); literature/small_divisor_2026-10-06.
+- Чей вердикт: growth_symbol_attempt §§1–3, causal_algebra_audit §§4–7; root прочитал первичные Arias Lemma5/Kedlaya18.2.1. CRT own lemma независимо проверена growth_symbol_attempt. Lower atom convention уточнена в audit. Lean не запускался.
+- Доставка: scoped manual commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей; чужие файлы сохранены.
