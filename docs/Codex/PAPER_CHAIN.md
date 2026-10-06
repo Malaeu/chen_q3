@@ -135,6 +135,8 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 
 - Ответ 3/10 проверен на PAPER: точная чётная image-поправка, uniform mass `E_m≽μ_m diag(1,T_m^4)` и exterior error `R_m/μ_m→0`. Signed prime matrix остаётся OPEN. Для `d_m=κ_m−λmax(E_m^(−1/2)P_mE_m^(−1/2))` исходное M≻0 требует `d_m≤(C0 B_m+R_m)/μ_m→0`; знак d_m не установлен. [Ответ и проверка](../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md).
 
+- Ответ 4/10 проверен: signed prime/full form заменяются auxiliary полосой m<n≤3m с relative error o(exp(−c m/log m)), c<π²/2. Исходные K,U не меняются. Точный cutoff даёт Δ≥1/(32m); достаточно d_hat≥−1/(128m) на неограниченной исходной подпоследовательности, чтобы опровергнуть этот U. Эта арифметическая оценка OPEN; конечные m8/12/16 её не доказывают. [Вывод и аудит](../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md).
+
 ## Заморожено: фронт 27.09 вечер
 - Глобальный трек (paper_weil, не selected Goal058): Q(f₀s) = P_s − N_s, DOM (N_s ≤ P_s для всех компактных гладких s) ≡ RH; ρ* = sup N_s/P_s ≥ 1 безусловно — сравнение критическое, нужна константа ровно 1 (REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md).
 - Разбиение по prime-полосам: N_s = N_out + Σ_j(S_j − M_j), Q = P − N_out − ΣS_j + ΣM_j; M_I двузнаков; агрегатное ΣM_j ≥ N_out + ΣS_j − P ≡ DOM ≡ RH (REPORT_2026-09-27_PRIME_BRIDGE_MIXED_SIGN.md). Нужна независимая source-оценка полной signed суммы с исходными весами и prime-power атомами, либо оператор, навязывающий градиентные связи до оценки нормы.

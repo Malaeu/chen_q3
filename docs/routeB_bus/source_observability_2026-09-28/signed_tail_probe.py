@@ -8,6 +8,9 @@ P through q<=m from physical overlap integrals. One mixed entry is checked
 against periodic correlation minus the reflected boundary term in equation
 (30) of PROSHKA_SIGNED_EVEN_TAIL_INLINE.
 
+Also compute H=V.T*K_m*V and G=V.T*V on the same original two-column plane.
+H is the finite source form W(f), not the exact physical-tail form W(r).
+
 The finite theta sum, quadrature, and eigensolve have no interval enclosure.
 No numerical outcome here proves an eventual inequality or a tail statement.
 """
@@ -85,9 +88,9 @@ def sample(m, dps, order):
     sqrtL = mp.sqrt(L)
     omega = lambda n: 2 * mp.pi * n / L
 
-    # Composite fixed Gauss-Legendre quadrature makes the many related Gram
-    # entries share cached physical residual evaluations. Max panel width .12
-    # keeps the highest retained Fourier phase below 3 radians per panel.
+    # Composite fixed Gauss-Legendre quadrature makes the related Gram entries
+    # share cached residual evaluations. The m-dependent panel width keeps the
+    # highest retained Fourier phase below 3 radians per panel.
     nodes0, weights0 = mp.gauss_quadrature(order, "legendre")
     nodes = [nodes0[i] for i in range(order)]
     weights = [weights0[i] for i in range(order)]
@@ -259,6 +262,23 @@ def sample(m, dps, order):
     # and use the Hermitian part for the generalized comparison.
     antisymmetry = max(abs(Praw[0, 1] - Praw[1, 0]), abs(Praw[1, 0] - Praw[0, 1]))
     P = (Praw + Praw.T) / 2
+
+    # Literal finite source form on the original coefficient plane. By the
+    # source radical identity H is W(f), related to W(r+o), not exactly W(r).
+    # No numerical exterior-correction bound R is asserted here.
+    K = fc.matrix_K(m)
+    H = plane_from_coefficients.T * K * plane_from_coefficients
+    Gmetric = plane_from_coefficients.T * plane_from_coefficients
+
+    def normalized_form(A, B):
+        Bchol_inv = mp.inverse(mp.cholesky(B))
+        M = Bchol_inv * A * Bchol_inv.T
+        M = (M + M.T) / 2
+        return M, mp.eigsy(M, eigvals_only=True)
+
+    H_over_E, H_over_E_eigenvalues = normalized_form(H, E)
+    H_over_G, U_eigenvalues = normalized_form(H, Gmetric)
+
     evals_E = mp.eigsy(E, eigvals_only=True)
     chol = mp.cholesky(E)
     chol_inv = mp.inverse(chol)
@@ -285,6 +305,14 @@ def sample(m, dps, order):
     threshold = kappa - 1
     max_eigenvalue = lambdas[1]
     d_gap = kappa - max_eigenvalue
+    # The residual has no Fourier modes |n|<=m, so its first possible mode is
+    # m+1. Monotonicity of a(omega) gives the sharper candidate lower factor.
+    Omega_sharp = 2 * mp.pi * (m + 1) / L
+    a_omega_sharp = mp.re(mp.digamma(mp.mpf(1) / 4 + 1j * Omega_sharp / 2)
+                          - mp.digamma(mp.mpf(1) / 4))
+    kappa_sharp = a_omega_sharp - c_ar
+    threshold_sharp = kappa_sharp - 1
+    d_sharp = kappa_sharp - max_eigenvalue
 
     result = {
         "m": m,
@@ -309,6 +337,19 @@ def sample(m, dps, order):
         "E_determinant": s(mp.det(E)),
         "P_full_prime_power_correlation_gram": [[s(P[i, j]) for j in range(2)] for i in range(2)],
         "P_raw_cross_antisymmetry_abs": s(antisymmetry),
+        "source_form_H_W_of_f": [[s(H[i, j]) for j in range(2)] for i in range(2)],
+        "retained_gram_G_VstarV": [[s(Gmetric[i, j]) for j in range(2)] for i in range(2)],
+        "source_form_semantics": {
+            "H_is_W_of_f": True,
+            "H_is_exact_W_of_r": False,
+            "identity": "The source radical identity relates W(f) to W(r+o); H is not silently identified with W(r).",
+            "exterior_correction_R_numerically_certified": False,
+        },
+        "normalized_signed_matrix_H_vs_E": [[s(H_over_E[i, j]) for j in range(2)] for i in range(2)],
+        "generalized_eigenvalues_H_vs_E": [s(x) for x in H_over_E_eigenvalues],
+        "generalized_eigenvalues_H_vs_G": [s(x) for x in U_eigenvalues],
+        "U_m_inf_H_over_G": s(U_eigenvalues[0]),
+        "H_positive_numerically_on_original_plane": bool(U_eigenvalues[0] > 0),
         "prime_power_terms_q_le_m": correlation_rows,
         "q_equals_m_zero_extension_correlation": {
             "q": m,
@@ -327,13 +368,27 @@ def sample(m, dps, order):
             "numerical_cell_test": "P <= (kappa-1)E" if max_eigenvalue <= threshold else "P <= (kappa-1)E FAILS AT THIS NUMERICAL CELL",
             "d_kappa_minus_largest_eigenvalue": s(d_gap),
             "weaker_finite_cell_test_P_le_kappa_E": "passes numerically at this cell" if d_gap >= 0 else "fails numerically at this cell",
+            "relation_to_full_H": "Compare d with lambda_min(H,E): H includes the literal finite source form on f, while kappa*E-P is only a crude residual lower comparison. H is not identified with W(r), and no numerical exterior budget R is supplied.",
             "scope": "Only the stronger sufficient criterion (33) at this finite m; says nothing about cofinal validity or the weaker budget-complete comparison (32).",
+        },
+        "criterion_33_sharp": {
+            "Omega_first_omitted_mode": s(Omega_sharp),
+            "a_Omega_sharp": s(a_omega_sharp),
+            "kappa_sharp": s(kappa_sharp),
+            "threshold_kappa_sharp_minus_1": s(threshold_sharp),
+            "largest_generalized_eigenvalue_P_vs_E": s(max_eigenvalue),
+            "d_sharp": s(d_sharp),
+            "margin_threshold_minus_largest_eigenvalue": s(threshold_sharp - max_eigenvalue),
+            "numerical_cell_test": "P <= (kappa_sharp-1)E" if max_eigenvalue <= threshold_sharp else "P <= (kappa_sharp-1)E FAILS AT THIS NUMERICAL CELL",
+            "cutoff_reason": "All residual Fourier modes satisfy |n|>=m+1; a(omega) is increasing in |omega|, so Omega_first_omitted_mode is the sharp minimum frequency in this diagonal lower bound.",
+            "scope": "A finite numerical discriminator only; no tail conclusion or full budget-(32) proof.",
         },
         "limitations": [
             "Finite theta cutoff is copied from full_center_probe.gaussian_plane and is not accompanied here by a certified tail enclosure.",
             "mpmath quadrature and eigenvalues are floating-point diagnostics, not Arb intervals or a proof.",
-            "Only m=8 is the requested initial cell; no asymptotic or cofinal conclusion follows.",
+            "This is one finite m supplied on the command line; no asymptotic or cofinal conclusion follows.",
             "The positive reflected-image and pole terms in A_m, and the full budget comparison (32), are not tested by criterion (33).",
+            "The exterior correction R is not numerically certified; H is W(f), not exact W(r).",
         ],
     }
     return result
@@ -359,11 +414,12 @@ def main():
     payload = {
         "status": "DIAGNOSTIC_ONLY_NEVER_A_TAIL_PROOF",
         "prediction_before_run": (
-            "At m=8 the full generalized spectrum P_m versus E_m can decide only whether the stronger finite-cell criterion (33) holds for every combination in the original span{G,G''}; its largest eigenvalue finds the most adverse mixed direction, which diagonal column checks can miss. The threshold is expected to be small, so the cell comparison is phase-sensitive. Failure at m=8 does not refute eventual (33), and passing m=8 does not establish it on an unbounded family."
+            "At each requested finite m, the full generalized spectrum P_m versus E_m compares the signed prime term on every combination in the original span{G,G''}; H_m versus E_m and H_m versus G_m show the literal finite source form on that same plane. No finite cell settles an eventual or cofinal claim."
         ),
         "definitions": {
             "E_m": "Gram matrix of r_j=1_[-L/2,L/2]g_j-f_j, where f_j is the actual finite Fourier synthesis of window coefficients and g=(G,G'').",
             "P_m": "2 sum_{q<=m} Lambda(q)/sqrt(q) times the Hermitian matrix of C_r(log q), including every prime power and the mixed terms.",
+            "H_m_and_G_m": "H=V.T*K_m*V is the literal source form W(f); G=V.T*V is the original retained Gram. H is not silently identified with W(r).",
             "correlation_method": "P uses direct physical overlap integrals of the actual zero-extended residual for every q<=m; one mixed entry is checked against equation (30), retaining its reflected boundary Hankel integral.",
             "comparison": "lambda_max(E_m^{-1/2} P_m E_m^{-1/2}) <= kappa_m-1, the stronger sufficient criterion (33).",
         },
@@ -378,8 +434,12 @@ def main():
             "E": run["E_actual_window_residual_gram"],
             "P": run["P_full_prime_power_correlation_gram"],
             "generalized_eigenvalues": run["generalized_eigenvalues_P_vs_E"],
+            "generalized_eigenvalues_H_vs_E": run["generalized_eigenvalues_H_vs_E"],
+            "U_m_inf_H_over_G": run["U_m_inf_H_over_G"],
             "threshold": run["criterion_33"]["threshold_kappa_minus_1"],
             "margin": run["criterion_33"]["finite_cell_margin_threshold_minus_largest_eigenvalue"],
+            "kappa_sharp": run["criterion_33_sharp"]["kappa_sharp"],
+            "d_sharp": run["criterion_33_sharp"]["d_sharp"],
             "direct_check_error": run["independent_direct_correlation_check"]["absolute_difference"],
         }, indent=2), flush=True)
 
@@ -403,6 +463,12 @@ def main():
                 "P_entries_match_to_stored_significant_digits": (
                     low["P_full_prime_power_correlation_gram"]
                     == high["P_full_prime_power_correlation_gram"]
+                ),
+                "H_entries_match_to_stored_significant_digits": (
+                    low["source_form_H_W_of_f"] == high["source_form_H_W_of_f"]
+                ),
+                "U_matches_to_stored_significant_digits": (
+                    low["U_m_inf_H_over_G"] == high["U_m_inf_H_over_G"]
                 ),
                 "meaning": "Comparisons use exact equality of the stored 48-significant-digit strings. Numerical stability only; neither is a certified quadrature or theta-tail enclosure.",
             })

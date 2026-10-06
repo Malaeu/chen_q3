@@ -8,6 +8,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - Continuation **3/10 ANSWERED**: [exact answer](source_observability_2026-09-28/PROSHKA_SIGNED_EVEN_TAIL_INLINE_2026-10-06.md), [full supplement](source_observability_2026-09-28/PROSHKA_G1_SIGNED_EVEN_TAIL_REDUCTION_2026-10-06.md), [independent checks](source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md). Even image identity, uniform two-column mass and exterior budget checked; signed prime comparison remains OPEN. No G1/RH promotion. Do not resend.
 
+- Continuation **4/10 ANSWERED AND CHECKED**: [exact answer](source_observability_2026-09-28/PROSHKA_PRIME_BAND_INLINE_2026-10-06.md), [audit and weaker target](source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md). Auxiliary band m<n<=3m has exponentially small relative error; source arithmetic sign remains OPEN. Inherited Fourier-domain and normalized-average qualifications retained. No G1/RH promotion.
+
 ## REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE · ANSWERED
 
 - `REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE` | [confirmed new Sort_RH_März_2026 chat](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aba5f5a-f804-83ed-a667-68147ee00f59), user turn `eb1a1594-503d-465d-b308-d92f67290ba1`, sent by 2026-09-28 12:37:08 UTC, ordinal **1/10** | **ANSWERED** 12:48:43 UTC; [exact request](../session_protocols/PROSHKA_REQUEST_GOAL058_ROUTEB_ALPHA_T7_RATE_20260928.txt), [full response](proshka/PROSHKA_VERDICT_GOAL058_ROUTEB_ALPHA_T7_RATE_2026-09-28.md), [source and independent check](proshka/PROSHKA_GOAL058_ROUTEB_ALPHA_T7_RATE_SOURCE_AND_AUDIT_2026-09-28.md). Verdict C identifies missing cofinal M1–M3; G3 (T7) remains OPEN. Do not resend.

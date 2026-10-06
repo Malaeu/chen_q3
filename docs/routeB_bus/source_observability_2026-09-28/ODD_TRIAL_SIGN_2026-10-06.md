@@ -691,3 +691,264 @@ integrand; they check the decomposition, not an independent certified
 integration method. Changing precision and quadrature order demonstrates
 numerical stability only. No Arb enclosure of these new matrices is claimed.
 The data, including root replay, are saved in `signed_tail_probe.json`.
+
+## Signed arithmetic continuation question (4/10, delivered)
+
+After commit d63cc16151f5270b637141007019bb97cc26ce34 was pushed and
+the remote hash verified, send_message_to_thread accepted the following
+working message for the same chat, returning its thread ID without error.
+Initial readback was stale and browser access reported debugger unattached.
+Subsequent connector readback confirmed the exact user message with ID
+`ec5e568a-4f17-4c3e-8bb4-1d7978a1269c`; chat is active and no final answer
+is present yet. Do not resend.
+The local text below is the exact attempted message. Commit after its answer.
+
+```text
+Continue the same G1 source-specific signed arithmetic comparison, answer 4/10 in this chat. Your answer 3/10 has now been downloaded, independently checked, committed and pushed to Malaeu/chen_q3 rh_clean at d63cc16151f5270b637141007019bb97cc26ce34. Exact answer, complete supplement, primary Bui-Hall PDF, independent audits and new diagnostic are in docs/routeB_bus/source_observability_2026-09-28/ (ODD_TRIAL_SIGN_2026-10-06.md, PROSHKA_G1_SIGNED_EVEN_TAIL_REDUCTION_2026-10-06.md, signed_tail_probe.py/json). We checked even-image identity, all exterior constants, complex slots, weighted moment sampling and actual-window error; no sign promotion.
+
+The next precise target is the complete signed two-column prime form (your (30)), retaining positive image/pole terms where needed. Define lambda_m=lambda_max(E_m^{-1/2} P_m E_m^{-1/2}), d_m=kappa_m-lambda_m. We independently proved: H>=d_m E-R I, hence if d_m>0 then U>=(d_m mu-R)/C0 once numerator positive. Eventual requested M=Aodd-U I>0 forces U<B by your odd envelope, so necessarily d_m <= (C0 B+R)/mu ->0 on the SAME original sequence. A positive limsup d_m would therefore refute this particular prescribed U; margin 1 in your (33) is unnecessary. This is a conditional discriminator, not its sign.
+
+Own new finite probe uses the actual physical residual and all prime powers/mixed terms: at m=8, lambda_min=.09784229895102427523, lambda_max=1.20670223127215800865, kappa=1.34727084352394087904, d=.14056861225178287039. Four precision/quadrature settings agree in 48 reported digits; the phase (-1)^n is included in coefficients AND synthesis, residual projections onto n=0,1,8 are checked. This is NOT an interval or cofinal result. The stronger fixed-margin (33) fails at this cell while the less wasteful discriminator has positive d. Absolute prime bounds still lose sqrt(m) against log(m); generic ellipticity or positive mass does not fix that.
+
+Please now obtain an actual source-specific signed estimate: prove positive limsup d_m, or directly prove your weaker budget-complete matrix comparison (32) on an unbounded original sequence; alternatively give a source argument showing why that attempted inequality is false. Work on the joint periodic-diagonal minus reflected-Hankel prime expression, not the already-paid mass or exterior. A block-averaged approach must justify a common cell for all coefficient directions: an averaged positive 2x2 matrix alone does NOT imply any summand is positive definite (alternating diag(2,-1),diag(-1,2) is the negative control). Preserve N=m,L=log m, original selected sequence and exact complex Gram metric. Do not assume off-line zero contributions nonnegative or omit them. If still unable to establish the sign, return a genuinely new bounded arithmetic estimate and the exact remaining inequality, with all retained terms and source hypotheses; do not merely rename the missing sign. No Lean or repository writes. RH remains unproved; this candidate can fail without refuting G1 or RH.
+```
+
+
+### Positive limsup is not required: exact necessary decay scale
+
+Further independent check `/root/even_tail_identity_check` confirms a
+weaker sufficient discriminator. Eventual M>0 forces
+`exp(C*m/L)*(d_m)_+ -> 0` for every fixed C>0, on the SAME original
+sequence. Indeed `(d_m)_+ <= (C0 B_m+R_m)/mu_m`. For the B term choose
+D>C+2pi² and use `exp(D*m/L) B_m ->0`, with
+`pi*T_m=2pi²(m+1)/L`. For R, the scaled exponent is
+`-pi*m/2+O_C(m/L)`, which tends to minus infinity faster than logarithms.
+The positive polynomial prefactor in mu introduces no obstruction.
+
+Thus even `d_m>=exp(-D0*m/L)` for one fixed D0>0 on an unbounded
+original subsequence refutes eventual M>0; a polynomial positive lower
+bound suffices as well. Positive limsup d_m was stronger than necessary.
+No such source lower bound is proved. This preserves the full goal and
+candidate, while lowering the sufficient positive-gap target.
+
+
+### m=12 continuation: the crude gap changes sign
+
+Native tester `/root/signed_tail_probe` ran m=12 at 70:28 and 90:36;
+root independently replayed 80:32 (80 digits, Gauss-Legendre order 32),
+using the same source script. The reported generalized eigenvalues agree
+in all 48 stored digits:
+`lambda_min(P,E)=-0.942114452411324178644081465275815380655252143301`,
+`lambda_max(P,E)=1.64288174990273987769674325452776271128150840954`.
+Here `kappa_12=1.574626290718991848583188506981945954591288395682`, so
+`d_12=-0.06825545918374802911355474754581675669022001386`.
+The root replay took 25.94 seconds; its q=2 mixed decomposition discrepancy
+is below 3.52e-88. Source orthogonality was checked at modes 0,1,12.
+Full observations are stored under additional_cells.m12 in signed_tail_probe.json.
+
+This is a stable finite numerical failure of the crude comparison P<=kappa E,
+not a cofinal refutation, not a proof of M>0, and not a sign claim for full
+H. It shows why the positive terms discarded in A>=kappa E may matter.
+The next bounded diagnostic retains full source K and the original trial
+Gram to measure H itself; H=W(f,f) must not be identified with W(r,r)
+without the already explicit exterior error.
+
+
+### Retaining the full source form at m=12
+
+The extended source probe now also computes `H=V.T*K_m*V`, `G=V.T*V`,
+and the generalized spectra (H,E), (H,G). This is the SAME actual
+finite synthesis f, with U=lambda_min(H,G); it is not a replacement trial.
+Worker 80:32 and root 90:36 runs agree in all 48 reported digits for H,
+G, both (H,E) eigenvalues and U. Root runtime was 41.34 seconds.
+The output records H=W(f), not exact W(r), and does not claim a numerical
+certificate for R. A caught variable-name typo was fixed before the
+successful executions. Python AST and JSON parsing pass.
+
+`lambda_min(H,E)=0.103590902329598417820569198638053452145825522376`,
+`lambda_max(H,E)=2.61910570519342552412329610070370426634168550802`,
+`U_12=4.94667921822709379679193540887829473792145361553e-21`.
+The last value reproduces the prior independent original-trial calculation.
+So the literal H is numerically positive at m=12 even though kappa E-P
+has a negative lower direction. The crude lower bound loses important
+positive contributions; no single omitted term is asserted to account
+for the difference without a separate decomposition. The full signed
+cofinal comparison and the error budget remain open.
+Saved data: signed_tail_probe.json, additional_cells.m12.full_form_extension.
+
+### Bounded alias return: available moments do not pay the arithmetic twist
+
+Native researcher `/root/prime_tail_moment_alias` checked two primary
+sources against the full P_m. Root independently reread the cited pages.
+Bui--Hall (saved PDF/hash above), p.2 Theorem 1, gives
+`meas{t in [T,2T]: Z(t) Z''(t)<0} >= (3/25+o(1))*T`.
+Together with p.1 equation (1), this gives continuous scalar moments/sign
+proportions. It supplies neither the Lambda(q)/sqrt(q) twist nor the
+windowed reflected integral nor a uniform two-column matrix bound.
+It remains a verified source for the mass argument, not the signed form.
+
+Montgomery, *The pair correlation of zeros of the zeta function*, p.181
+section 1: "We assume the Riemann Hypothesis (RH) throughout this paper".
+DOI https://doi.org/10.1090/pspum/024/9944; existing PDF
+`docs/routeB_bus/litreview/pdfs/montgomery_pair_correlation_1973.pdf`,
+SHA-256 `20451df07f65dae7fb40ef711b3ef278c55a2383c0246ce5c86c1f94de0d518d`.
+This is an excluded direct bridge: conditional zero-pair statistics do
+not supply an unconditional prime-tail quadratic-form estimate.
+
+The exact negative control is the positive average I/2 of
+`diag(2,-1)` and `diag(-1,2)`, neither of which is positive semidefinite.
+Thus an averaged matrix statement alone cannot produce one common cell
+positive in all coefficient directions. Three shelf queries returned
+ASK_STATUS: INCOMPLETE (semantic-index freshness failure); no absence
+claim is made. An unverified metadata lead from a failed PDF fetch is
+not used. No new source theorem or cofinal arithmetic saving was found
+in this bounded check.
+
+
+### Exact first omitted frequency sharpens the coarse archimedean floor
+
+The original floor used Omega=2pi*m/L, but every retained tail index
+satisfies |n|>=m+1. Set T=2pi*(m+1)/L (the same T already used in the
+mass estimate), `kappa_sharp=a(T)-c_ar`, and
+`d_sharp=kappa_sharp-lambda_max(P,E)`. Monotonicity of a gives exactly
+`A>=kappa_sharp E` on the same two-column window tail, with the same
+nonnegative image and pole terms. The carrier, phase, source and metric
+are unchanged. All earlier conditional inequalities and the necessary
+super-exponential positive-part decay transfer to d_sharp verbatim.
+Native independent check `/root/even_tail_identity_check` verified this
+Loewner step and independently recomputed the exact digamma correction.
+
+Using the stored finite numerical matrices, root obtains
+`d_sharp_8=0.258366621963851624585569460513820226408539191153`,
+`d_sharp_12=0.0117939456852581936459921474888095502279017558603`.
+The positive gains over the previous d values are respectively
+0.11779800971206875419 and 0.08004940486900622276.
+These retain the same finite diagnostic status; there is no cofinal
+conclusion and no interval certificate for P,E.
+
+Correction to root's earlier conversational interpretation: the negative
+crude gap at m=12 does NOT establish that image/pole terms are necessary
+to rescue that cell. Correcting the omitted-mode cutoff already restores
+a positive numerical lower gap. The actual full form still retains all
+these positive terms, but their individual necessity was not proved.
+
+
+### Checked m16 cell and a polynomial cutoff margin
+
+The native worker's m=16 run (90 digits, GL order 36) and root replay
+(100 digits, order 40) agree in all stored 48-digit entries of E, P, H,
+the generalized H/E eigenvalues, U, and the sharp discriminator.
+They give d_sharp=0.475647464369518750758568406100980305253731176038,
+lambda_min(H,E)=0.586376076320638220630718421975478368600937333276,
+and U=4.40397943372977966663311760663676454277805012634e-25.
+Both outputs are retained in signed_tail_probe.json. These are floating
+finite-cell diagnostics, with no certified exterior budget or tail claim.
+
+There is also an exact, uniform lower bound on the cutoff correction.
+Termwise differentiation is locally uniformly valid, since both series
+have O(beta_k^-3) tails on compact positive w intervals:
+
+    a'(w)=4w sum_k beta_k/(beta_k^2+w^2)^2.
+
+For w>=8, the interval [w/2,w] contains at least floor(w/4)>=w/8
+points beta_k=2k+1/2. Each selected summand in a'(w) is at least
+1/(2w^2), hence a'(w)>=1/(16w). With Omega=2pi*m/log(m), integration
+and log(1+1/m)>=1/(m+1)>=1/(2m) give, for Omega>=8,
+
+    Delta_m=a(Omega*(1+1/m))-a(Omega)>=1/(32m).
+
+Consequently the source-specific estimate d_m>=-1/(64m) on any
+unbounded original subsequence would imply d_sharp_m>=1/(64m).
+This contradicts the previously proved necessary decay
+exp(C*m/log(m))*(d_sharp_m)_+ -> 0 under eventual M_m positive definite.
+Thus even this slightly negative lower bound on the COARSE d would
+refute the prescribed trial candidate; positive limsup(d) is unnecessary.
+The source-specific bound d_m>=-1/(64m) itself remains OPEN.
+Native independent checker /root/even_tail_identity_check verified the
+series differentiation, lattice count, constants and subsequence logic.
+No G1, G3 or RH status changes follow from this conditional implication.
+
+
+### Answer 4/10 received: bounded arithmetic-band reduction (audit in progress)
+
+Exact connector answer is PROSHKA_PRIME_BAND_INLINE_2026-10-06.md,
+assistant item 4b145e73-8334-43f8-b11c-7082ed8467c7 in the same chat.
+The linked sandbox supplement has not been downloaded or independently
+read in this continuation; the complete inline derivation is the audit target.
+Proshka explicitly does not prove either required signed inequality.
+The new candidate approximation uses m<n<=3m only for the auxiliary
+discarded-frequency representation, leaving the original retained K and U
+unchanged. It claims relative errors tau and Delta with
+exp(c*m/log(m))*error -> 0 for every 0<c<pi^2/2.
+
+Root directly integrated the overlap at L=log(16), pairs (17,17),
+(17,18),(19,23), shifts L/7,L/2,L. Formula (6) agreed to absolute
+3.12e-60; the cosh(t/2) mode integrals in (24) agreed to 1.52e-64.
+These numerical controls check algebra, not a cofinal source sign.
+For the analytic constants in the full-form error, integral comparison
+also gives 2*sum beta^-3 <=16+2*(0.064+0.04)<18 and
+2*sum beta^-2 <=8+2*(0.16+0.2)<10. The positive image bound follows
+from I_L(v)<=2*||v||_infinity^2*sum(1-exp(-beta*L))/beta^2.
+Independent audits of the band kernel/full budget and of the window/
+far-frequency perturbation are pending; no status promotion yet.
+
+Root correction to the optional averaging remark (answer section 7):
+its weights must satisfy w_m>=0 and sum_m w_m=1. Then Jensen/Cauchy--Schwarz
+gives sum w*b <= sqrt(sum w*b^2), and a weighted average of (a-b)>delta
+forces one cell. Without normalization the printed condition is false:
+take every X=diag(2,-1), total weight 100 and delta=1; its left side is
+50 and the displayed square root is 15, yet every minimum eigenvalue is
+-1. The main band reduction does not use averaging; preserve the original
+answer verbatim and apply the explicit normalized-weight hypothesis locally.
+
+A second inherited-domain correction: answer (4) uses the prior Fourier
+envelope from PROSHKA_ODD_LEAKAGE_INLINE, equation (8), valid for
+|omega|>=2, not for arbitrary omega. All sufficiently late frequencies
+used in the band/tail argument meet this restriction; no extension to
+omega=0 is admitted.
+
+Conditional on the audited band error (22), tau_m=o(1/m). Therefore an
+unbounded-original-subsequence bound d_hat_m>=-1/(128m) would imply
+d_m>=-1/(64m) eventually on that subsequence, and the exact cutoff-margin
+argument above would refute eventual M_m positive definite for this U.
+This is a weaker source target than constant positive limsup(d_hat).
+It does not establish the required source inequality.
+
+
+### Answer 4/10 audit completed: accepted auxiliary reduction only
+
+Independent native checks /root/even_tail_identity_check (equations
+6--11,23--29) and /root/hardy_sampling_check (12--22,28, inherited
+Fourier envelope) found no material defect after the explicit domain
+and normalized-weight qualifications above. Root checked b0,b1 by
+Parseval, the elementary constants by integral comparison, and the
+physical overlaps independently. The undefined introductory lambda_m
+is read as the inherited lambda_max(E_m^(-1/2)P_m E_m^(-1/2)).
+
+Accepted PAPER content: exact prime-band atom, its Hilbert contraction,
+actual-window coefficient correction, relative Gram/prime perturbation,
+and full compensated-form budget. At R=3m the relative errors tau and
+Delta decay faster than exp(-c*m/log m) for every c<pi^2/2. The cosine
+source coefficient is sqrt(2) times the positive complex Fourier mode;
+both centered phases are retained. The q=m overlap is exactly zero.
+Zero-extension jumps are paid by the image identity. No positivity of
+the complete signed band matrix is inferred.
+
+The source-specific lower bound d_hat_m>=-1/(128m) on an unbounded
+original subsequence remains OPEN. It would refute this prescribed U,
+not RH or G1. G1/G3/RH remain OPEN; no Lean build was run.
+
+
+Bounded alias check: Bettin--Chandee--Radziwill, The mean square of the
+product of the Riemann zeta function with Dirichlet polynomials, Theorem 1,
+p.2, https://arxiv.org/pdf/1411.7764v1, DOI 10.1515/crelle-2014-0133.
+Primary PDF saved at docs/literature/bettin_chandee_radziwill_1411.7764v1.pdf,
+SHA-256 3b3116bb42c59bc0936a1a454a7a9505009ccf8b791dc83f364f55ca688f35fb.
+Root independently checked the hash and theorem text. It requires
+Dirichlet-polynomial length T^theta with theta<17/33, for a smooth
+continuous mean square |zeta*A|^2. Here T is of order m/log m and the
+prime sum length is m; m/T^(17/33) diverges. The discrete source sampling,
+finite Hilbert cross term and moving Gram normalization also have no
+established map to this theorem. Excluded direct application only, not
+an impossibility claim. Three shelf queries were INCOMPLETE; they do not
+establish absence. No source-sign supplier found in this bounded check.

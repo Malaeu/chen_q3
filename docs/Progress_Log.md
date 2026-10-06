@@ -7819,3 +7819,28 @@ CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md in the same directory.
 **Чей вердикт и аргумент:** Proshka answer 3/10: "Neither (32) nor (33) is
 established here." Independent native checks and root source rereading
 accept the auxiliary estimates, not the missing sign or RH.
+
+
+## 2026-10-06 — Bounded prime-band reduction and weaker signed target
+**Развилка:** Need source sign, not another tail-mass estimate.
+**Выбрали:** Checked Proshka answer 4/10: full prime correlation on an
+auxiliary m<n<=3m source band, with a paid relative error.
+**Почему:** The infinite discarded remainder costs o(exp(-c*m/log m))
+for every c<pi^2/2, while the retained matrix and trial U stay unchanged.
+**Что отвергли:** Finite positive diagnostics do not establish a cofinal
+sign; the optional averaging statement needs normalized positive weights.
+**Инсайты:** Exact omitted-mode cutoff gains at least 1/(32m). Thus the
+weaker band bound d_hat>=-1/(128m) on an unbounded original subsequence
+would already refute this prescribed U. That bound is still unproved.
+**Проверка:** Two native audits of complementary formula blocks; root
+Parseval/constants/overlap checks; m16 replay 90:36 versus 100:40 agrees
+in all 48 stored digits for E,P,H,U and sharp comparison. Floating only.
+**Блокеры:** Signed source-band cancellation and ground tracking G3.
+**Иглы Зингера:** Joint prime Hankel correction, finite Hilbert contraction,
+exact first omitted frequency, uniformly paid relative tail remainder.
+**Следующий ход:** Attack the weaker arithmetic estimate on the original
+sequence with Proshka; no further finite-table extrapolation.
+**Адреса:** docs/routeB_bus/source_observability_2026-09-28/PROSHKA_PRIME_BAND_INLINE_2026-10-06.md;
+ODD_TRIAL_SIGN_2026-10-06.md and signed_tail_probe.py/json beside it.
+**Чей вердикт:** Proshka explicitly leaves the sign unproved; native checks
+and root accept only the auxiliary reduction. No Lean, no RH promotion.
