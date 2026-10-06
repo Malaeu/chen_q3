@@ -1,0 +1,163 @@
+STATUS: PREPARED_NOT_REGISTERED
+DOCUMENT_ROLE: CANDIDATE_REQUEST_FOR_EXISTING_USER_SELECTED_TARGET
+PROPOSED_REQUEST_ID: REQ-2026-10-06-ODD-SECULAR-SOURCE-SIGN
+PROPOSED_BOUNDARY_ID: GOAL058_ODD_SECULAR_SOURCE_SIGN
+DATE: 2026-10-06
+REPOSITORY: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_PIN: 5ce1377cd5ad5b006dfa0cd67426ade38c6dfb57
+REGISTERED_REVIEW_PLAN: NOT_SUPPLIED
+CODEX_DISPATCH: NOT_PERFORMED
+PRODUCTION_REVIEW_ADMISSION: NOT_CLAIMED
+MATHEMATICAL_TARGET_STATUS: UNPROVED
+LEAN_WORK: NONE
+ROUTE_PROMOTION: false
+RH_CLAIM: false
+PX_RH_CLAIM: NOT_MADE
+
+CANONICAL-SHORT-INSTRUCTION CANDIDATE
+Derive a full-source formula and prove the eventual positive secular sign
+for the literal odd CCM block at the source-built even trial level defined
+below. First verify the proposed binding and register the review-plan;
+this prepared file does not claim that registration or dispatch occurred.
+
+1. SOURCE LOCKS READ DURING PREPARATION
+
+All paths are relative to the repository root at SOURCE_PIN.
+
+(a) q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean
+    Git blob: 960f1de9d00e9ca4b309a99fe98be48db40cdb31
+    Read: source lines 1-155, including the literal entry definitions.
+    Use: ccmQKernel, ccmW02Entry, ccmWREntry, ccmPrimeEntryN1,
+    ccmWeilTauN1 = W02 - WR - Prime. Do not replace its separate diagonal
+    branch by an unjustified divided-difference limit.
+(b) q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean
+    Git blob: 972223c3f3a93d1ccab750086de0eb467bb74efa
+    Read: source lines 1-100, including the general finite wrapper.
+    Use: ccmWeilMatFinite and the actual mode order -N,...,N.
+    This wrapper, not the N=1 pilot alone, defines the production matrix.
+(c) docs/routeB_bus/proshka/PROSHKA_GOAL058_FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25.md
+    Git blob: 3b91bbcd160d2fdda5ef88870aabc054a708dfca
+    Read: complete returned source text.
+    Use: full G/G'' definitions and coefficient conventions. Its old U_j
+    is a different upper envelope; do not identify it with U_j below.
+(d) docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md
+    Git blob: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
+    Use: request intake and evidence boundaries, not a mathematical premise.
+
+No Lean build, full dependency audit, or new numerical calculation was run.
+
+2. UNCHANGED FAMILY AND EXACT SECTORS
+
+Fix the originally matched port P; no uniformity over different ports is
+claimed. Keep
+    m_j = N_j = preAnchorTailStart(P) + j + 2,
+    L_j = log(m_j),
+    K_j = ccmWeilMatFinite(m_j, N_j).
+Use the standard complex Euclidean inner product and the ordered carrier
+-m_j,...,0,...,m_j.
+
+For n=1,...,m_j let Eminus have columns (e_n-e_{-n})/sqrt(2).
+Define
+    Kminus_j = Eminus* K_j Eminus,
+    Aminus_j = Eminus* (-WR_j-Prime_j) Eminus.
+For the pole vector use the normalization induced by ccmW02Entry:
+    (s_j)_n = 16*sqrt(2)*pi*n*sqrt(L_j)*sinh(L_j/4)
+              / (L_j^2 + 16*pi^2*n^2).
+Verify algebraically from the locked entries that
+    Kminus_j = Aminus_j - 2*s_j*s_j*.
+All prime powers, the full archimedean term, and all odd directions remain.
+
+3. PROPOSED DETERMINISTIC EVEN UPPER LEVEL
+
+This makes explicit the G/G'' trial-plane candidate already proposed in the
+conversation. It is a candidate for registration, not an accepted supplier
+of separation, and not the selected Ferrers row itself.
+
+Define the complete source, without truncating its r-sum,
+    hstar(x) = (24*pi*x^2 - 16*pi^2*x^4)*exp(-pi*x^2),
+    G(t) = exp(t/2)*sum_{r>=1} hstar(r*exp(t)).
+For g=G and g=G'', form the literal window coefficients
+    c_j(g)_n = (-1)^n/sqrt(L_j)
+        * integral_{-L_j/2}^{L_j/2} g(t)*exp(-2*pi*i*n*t/L_j) dt,
+    |n| <= m_j.
+Put V_j=[c_j(G),c_j(G'')]. Define
+    U_j = min_{z in C^2, V_j*z != 0}
+          ((V_j*z)* K_j (V_j*z)) / ||V_j*z||_2^2.
+First verify that the range of V_j is nonzero and even. If it has rank two,
+this is the smaller generalized eigenvalue of
+    H_j = V_j* K_j V_j,  Ggram_j = V_j* V_j.
+If the two columns are dependent, use their actual nonzero range; do not
+pretend Ggram_j is invertible. This prescription uses no unknown ground
+vector of K_j. It gives an even trial upper bound by the variational
+principle, but says nothing by itself about the odd bottom.
+
+Do not replace U_j by the true even ground energy, a fitted level, or a
+more favorable level after inspecting the sign. Any replacement must be
+recorded as a new candidate, not as completion of this request.
+
+4. EXACT REQUESTED CONCLUSION
+
+Put
+    M_j = Aminus_j - U_j*I,
+    Psi_j(U_j) = 1 - 2*s_j* M_j^{-1} s_j.
+Prove on the SAME original tail
+    exists J(P), for all j>=J(P): M_j is positive definite
+                                 and Psi_j(U_j)>0.
+A positive lower envelope for Psi may depend on j and may tend to zero.
+No fixed positive spectral gap or prescribed gap-decay rate is required.
+The positive-definiteness premise for M_j is an obligation, NOT supplied.
+
+5. CORRECT STRICTNESS AND LOGICAL GUARDS
+
+For M_j>0, the elementary rank-one identity gives
+    Kminus_j-U_j*I = M_j^(1/2) (I-2*w_j*w_j*) M_j^(1/2),
+    w_j = M_j^(-1/2)s_j,
+and
+    Psi_j(U_j) = det(Kminus_j-U_j*I)/det(M_j).
+This is a conditional identity, not the requested arithmetic sign proof.
+
+Correct strict inertia target:
+    N_negative(Kminus_j-U_j*I) = 0 AND
+    N_zero(Kminus_j-U_j*I) = 0.
+N_negative=0 alone gives only nonnegativity and does not exclude equality
+with the even upper level. Positive determinant alone is not a positivity
+certificate without the appropriate inertia/domain information.
+
+Do not classify all inverse-norm estimates as mathematically impossible.
+A certified sufficient bound may be used if it closes the actual budget;
+a failed bound refutes neither the target nor the full class of methods.
+Do not import a high-tail floor into modes below its certified cutoff.
+
+6. VALIDATION TASKS BEFORE A CLAIMED SIGN
+
+Register predictions before any new source experiment.
+Check the scalar detector on M=diag(2,3):
+    s=(1/2,0): Psi=3/4;
+    s=(1,0):   Psi=0;
+    s=(2,0):   Psi=-3.
+The equality case must not pass the strict target.
+Check N_negative=0 without strictness on diag(0,1).
+Check the false determinant-only implication on diag(-1,-1).
+These are abstract controls, not CCM counterexamples; no new executions
+of these tests are claimed by this prepared request.
+
+7. PROOF OUTPUT AND FAILURE BOUNDARY
+
+Return one PAPER verdict after lawful request admission, with scope and
+verifier tags for each ledger claim. Supply actual source inequalities
+and their quantifiers, not another determinant identity as a sign result.
+
+A positive conclusion requires both M_j>0 and Psi_j(U_j)>0 eventually.
+A negative source witness must have a proved negative upper enclosure,
+with its exact finite or cofinal scope. Failure of this particular trial
+plane is not failure of parity ordering for all admissible even trials.
+If unresolved, separate U-construction/domain failure from the remaining
+secular sign. Give two candidate representations with power/cost and an
+explicit discriminator for any zero-consistent result.
+Do not promote G3, Route B, or RH from the sector result alone.
+
+PREPARATION CLOSEOUT
+This file fixes a candidate object and corrects the strictness contract.
+It is not a registered review-plan, a proof of the target, or a claim that
+Codex has been launched. No prior verdict or route-state file is modified.
