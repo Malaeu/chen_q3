@@ -8045,3 +8045,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: SHIFTED_XI_KERNEL_AUDIT, HARDY_DEFECT_OWN_ATTEMPT, PROSHKA_SHIFTED_XI_KERNEL_INLINE (06.10), shifted_xi_diagonal_certificate_2026-10-06.py; literature/shifted_xi_kernel_2026-10-06.
 - Чей вердикт: answer6 independently audited by growth_symbol_attempt / causal_algebra_audit; root rational reproduction PASS and primary sources read; own Hardy proof independently checked once. Lean не запускался.
 - Доставка: scoped manual commit/push, phase_end.sh не применён из-за прежнего broad staging чужих файлов; чужие пути не менялись.
+
+## 2026-10-06 — Signed дальние корреляции и endpoint Hankel
+
+- Развилка: малая сумма квадратов arithmetic packets могла допустить Cotlar gluing.
+- Выбрали: сохранили signed дальние корреляции и точную конечную проекцию.
+- Почему: actual source требует отрицательной компенсации за пределами любого polylog packet-neighborhood.
+- Что отвергли: sign-blind Cotlar и independent positive envelopes этой декомпозиции; это не kill actual CCM.
+- Инсайты: длинные causal shifts связывают два endpoint strips; точная Hankel форма и отрицательный projection-loss член.
+- Блокеры: оценка на actual Schur-corrected J_r v остаётся OPEN; новый floor/SP не получен.
+- Иглы Зингера: использовать regular equation, не заменять endpoint traces независимыми векторами.
+- Следующий ход: вопрос8 отправлен тому же Pro, UI подтвердил полный текст, Pro, ChatGPT antwortet, Stoppen и пустой composer.
+- Адреса: PROSHKA_SIGNED_PACKETS_INLINE и SIGNED_PACKETS_AUDIT (2026-10-06) в source_observability bus.
+- Чей вердикт: growth_symbol_attempt §§1–3 и causal_algebra_audit §§4–6, по одному проходу; собственная endpoint identity отдельно проверена causal_algebra_audit. Primary Cotlar theorem прочитан root. Lean не запускался.
+- Доставка: manual scoped commit/push; phase_end.sh не применён из-за broad staging чужих untracked файлов; чужие файлы сохранены.

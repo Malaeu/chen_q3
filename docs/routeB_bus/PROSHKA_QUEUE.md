@@ -2,6 +2,8 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+- **Proof of CCM Growth 7/10 ANSWERED AND CHECKED; 8/10 SENT**: [answer7](source_observability_2026-09-28/PROSHKA_SIGNED_PACKETS_INLINE_2026-10-06.md), [audit, own endpoint attempt, exact question8](source_observability_2026-09-28/SIGNED_PACKETS_AUDIT_2026-10-06.md). Blind packet gluing killed; actual far negative correlation proved. Signed bound on Schur-corrected vectors and SP OPEN. Same living chat; do not resend.
+
 ## REQ-2026-10-06-ODD-SECULAR-SOURCE-SIGN · ANSWERED
 
 - Question **2/10** in the existing Missing T7 Lemma chat; [exact question, source checks and outcome](source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md), [exact inline answer](source_observability_2026-09-28/PROSHKA_ODD_LEAKAGE_INLINE_2026-10-06.md), [attachment budgets](source_observability_2026-09-28/PROSHKA_ODD_LEAKAGE_BUDGETS_2026-10-06.md). Finite m=8 separation fails rigorously; explicit cofinal odd upper envelope obtained, but signed comparison with prescribed U remains OPEN. No G1/RH promotion. Do not resend.
