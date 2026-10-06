@@ -14,7 +14,9 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - Continuation **6/10 ANSWERED AND CHECKED**: [exact answer](source_observability_2026-09-28/PROSHKA_MOBIUS_SOURCE_RETURN_INLINE_2026-10-06.md), [audit and exact question7](source_observability_2026-09-28/MOBIUS_PROJECTION_AUDIT_2026-10-06.md). Local Mobius cancellation and whole-line return obstruction checked; finite-window signed bound OPEN. Question 7 answered below; do not resend.
 
-- Continuation **7/10 ANSWERED**: [complete inline](source_observability_2026-09-28/PROSHKA_BOUNDARY_SIGN_STRIP_RESPONSE_INLINE_2026-10-06.md), [audit](source_observability_2026-09-28/BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md). Only TERMWISE pointwise positivity refuted; integrated sign/U OPEN. Forcing-return mechanism STALLED. Next single obligation: all-bottom-space source stability OS at quarter-power rate. **8/10 sent 18:43 Berlin**, exact question in audit; do not resend.
+- Continuation **7/10 ANSWERED**: [complete inline](source_observability_2026-09-28/PROSHKA_BOUNDARY_SIGN_STRIP_RESPONSE_INLINE_2026-10-06.md), [audit](source_observability_2026-09-28/BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md). Only TERMWISE pointwise positivity refuted; integrated sign/U OPEN. Forcing-return mechanism STALLED. Next single obligation: all-bottom-space source stability OS at quarter-power rate. Question8 answered below; do not resend.
+
+- Continuation **8/10 ANSWERED AND CHECKED**: [inline source](source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md), [audit and exact question9](source_observability_2026-09-28/OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md). Full Green sign and full-carrier boundary-span approximations blocked; OS OPEN. Paid qhat-to-theta reference comparison accepted conditionally. **9/10 sent 19:22 Berlin**, same chat; do not resend.
 
 ## REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE · ANSWERED
 

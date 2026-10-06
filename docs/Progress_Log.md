@@ -7929,3 +7929,15 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: один source-specific proof attack на OS из буквальных собственных уравнений; не новый условный receiver и не возврат к глобальному inverse-gap bound.
 Адреса: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_BOUNDARY_SIGN_STRIP_RESPONSE_INLINE_2026-10-06.md и BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md.
 Чей вердикт: Прошка — “Combining that return with the Mobius forcing cancels the complementary-source terms exactly, but leaves the original band–band Type II correlation.” Независимая проверка приняла узкий termwise kill и условную OS-цепь; root сузил чрезмерное прочтение pointwise claim до каждого отдельного сдвига. Нового знака, Lean build или RH claim нет.
+
+## 2026-10-06 — Actual Robin obstruction and paid theta-source reference (Mac)
+Развилка: искать положительность двухэнергетического Green operator или использовать уже оплаченное приближение qhat явным theta-источником.
+Выбрали: OS для normalized WINDOW Fourier row c_m(G) на том же полном bottom space, затем возврат к qhat с ошибкой O(m^(-1/4)). Исходная семья, K и расписание сохраняются.
+Почему: answer8 дал точную связь F* с Green response, но полный Green difference имеет оба знака; boundary span{eta,beta} асимптотически почти ортогонален qhat. Эти full-carrier факты не запрещают отдельную bottom-restricted оценку.
+Что отвергли: вывод знака первой строки или forcing из inertia оператора; замена qhat двумя boundary moments; потеря весов при смешении raw Jacobi B и symmetric H=SBS^-1.
+Инсайты: source comparison X_m≈−c_m(G)/4 непосредственно следует из accepted HMODE/chi и проекционного сжатия. Скорость совпадает с достаточной OS-скоростью; дополнительный inverse-gap расход не возникает.
+Блокеры: даже source-null bottom exclusion не доказано. Точное W(r_m,f_v)=−lambda0⟨g_m,v⟩ из radical identity само по себе не даёт нижней оценки перекрытия. G1/G3/RH OPEN.
+Иглы Зингера: оба Mellin jump moments, индекс2 для физической моды4, endpoint Fourier phases, сохранённый derivative boundary term, различение полного carrier и bottom solution space.
+Следующий ход: вопрос9 отправлен Прошке; нужен реальный source-specific overlap с G или его строгое опровержение, не условный wrapper.
+Адреса: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md и OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md.
+Чей вердикт: Прошка — “I did not prove OS or source-null bottom exclusion.” Два независимых ограниченных аудита приняли Green algebra/inertia и source boundary-span estimate с явными source hypotheses; root внёс уточнение raw/symmetric Jacobi conventions. Lean и заявлений RH нет.
