@@ -7904,3 +7904,16 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 **Следующий ход:** Same arithmetic source sign question6, active at Proshka.
 **Адреса:** docs/routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md.
 **Чей вердикт:** G3c for the selected shell PAPER_OWN rev given accepted HMODE/chi and G4; RH NOT_MADE.
+
+
+## 2026-10-06 — Mobius source return and finite-window boundary block (Mac)
+Развилка: переносить точное обращение источника на всю прямую или сохранить оконную проекцию.
+Выбрали: проверить ответ6 и оставить полный signed boundary-return block с low range и Type I endpoints.
+Почему: локальная ошибка экспоненциально мала, но два фиксированных критических нуля дают растущий L1-остаток слева вне окна; whole-line discard неверен.
+Что отвергли: вывод знака из малого локального остатка или общей нормы коммутатора; Connes--Consani archimedean-only theorem не оплачивает наши prime powers.
+Инсайты: полный симметричный Fourier projector коммутирует с циклическим сдвигом; смешанный блок равен граничному возврату. Ошибка rho→PX оплачена как o(1/m) в исходной метрике.
+Блокеры: signed C-F, G1, ground tracking G3 и итоговая same-family сборка OPEN.
+Иглы Зингера: точное обращение Мёбиуса до модулей; два zero evaluations контролируют обе колонки; cosine-only projector для сдвига недостаточен.
+Следующий ход: вопрос7 отправлен в тот же чат; искать source-specific signed gain, при математическом тупике выбрать одно следующее обязательство в SOURCE_TRANSFER с четверть-степенным G3-потребителем.
+Адреса: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_MOBIUS_SOURCE_RETURN_INLINE_2026-10-06.md и MOBIUS_PROJECTION_AUDIT_2026-10-06.md. Литература: Connes--Consani arXiv:2006.13771v1, Thm1 p3, только PARTIAL ANALOGUE.
+Чей вердикт: root, отдельные read-only Luna проверки (1)-(16) и (17)-(22), bounded alias-hunt; существенных замечаний нет. Проверены вспомогательные PAPER результаты, без Lean или RH claim.
