@@ -1,0 +1,683 @@
+{
+  "status": "DIAGNOSTIC_ONLY_NEVER_A_TAIL_PROOF",
+  "prediction_before_run": "At m=8 the full generalized spectrum P_m versus E_m can decide only whether the stronger finite-cell criterion (33) holds for every combination in the original span{G,G''}; its largest eigenvalue finds the most adverse mixed direction, which diagonal column checks can miss. The threshold is expected to be small, so the cell comparison is phase-sensitive. Failure at m=8 does not refute eventual (33), and passing m=8 does not establish it on an unbounded family.",
+  "definitions": {
+    "E_m": "Gram matrix of r_j=1_[-L/2,L/2]g_j-f_j, where f_j is the actual finite Fourier synthesis of window coefficients and g=(G,G'').",
+    "P_m": "2 sum_{q<=m} Lambda(q)/sqrt(q) times the Hermitian matrix of C_r(log q), including every prime power and the mixed terms.",
+    "correlation_method": "P uses direct physical overlap integrals of the actual zero-extended residual for every q<=m; one mixed entry is checked against equation (30), retaining its reflected boundary Hankel integral.",
+    "comparison": "lambda_max(E_m^{-1/2} P_m E_m^{-1/2}) <= kappa_m-1, the stronger sufficient criterion (33)."
+  },
+  "runs": [
+    {
+      "m": 8,
+      "dps": 60,
+      "status": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY_NOT_A_PROOF",
+      "elapsed_seconds": "5.872385613998631",
+      "theta_cutoff": 25,
+      "full_center_probe_cutoff": 25,
+      "source_G_sha256": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
+      "window": {
+        "L_log_m": "2.07944154167983592825169636437452970422650040308",
+        "b_L_over_2": "1.03972077083991796412584818218726485211325020154",
+        "Omega_2pi_m_over_L": "24.1725874230783669846809757104888896542499278279"
+      },
+      "source_and_convention_checks": {
+        "analytic_derivative_vs_mp_diff_max_abs": "2.24028550003001101457186305936084472661249078074e-59",
+        "coefficient_plane_projector_vs_full_center_probe_max_norm": "1.08117160129172071555086690765530952496396008841e-58",
+        "theta_endpoint_parity_error_from_full_center_probe": "4.63466180191838713691205967888164020890562860484e-61",
+        "coefficient_convention": "psi_n(t)=(-1)^n exp(i omega_n t)/sqrt(L); c_n=<psi_n,g>; synthesis=sum c_n psi_n",
+        "direct_projection_residuals_modes_0_1_m": {
+          "column_0_mode_0": "2.40769733021905453039632387836820404746969319627e-61",
+          "column_1_mode_0": "-6.77963364588160724861662984257353367214691891633e-61",
+          "column_0_mode_1": "-2.23685762045820636342061798810483079577925675456e-61",
+          "column_1_mode_1": "-1.30280736034150379576795606287807723467666366777e-61",
+          "column_0_mode_8": "3.14963219715613490459403207120160304493009394603e-62",
+          "column_1_mode_8": "3.11076944670360614044548906734028703198316531537e-57"
+        },
+        "max_direct_projection_residual_abs": "3.11076944670360614044548906734028703198316531537e-57",
+        "quadrature_order": 24
+      },
+      "E_actual_window_residual_gram": [
+        [
+          "0.00000000000408593031597420288593192199044154047198462581394",
+          "-0.00000000305574254786761020745820397770026573486639034343"
+        ],
+        [
+          "-0.00000000305574254786761020745820397770026573486639034343",
+          "0.00000228744474030171538073451060852794861497520819566"
+        ]
+      ],
+      "E_eigenvalues": [
+        "0.00000000000000383715324257738527518280263552427755103445659846",
+        "0.00000228744882239487811236001126526713642099140262925"
+      ],
+      "E_determinant": "8.77729166608232802082210202853346931342787544903e-21",
+      "P_full_prime_power_correlation_gram": [
+        [
+          "0.00000000000476115157995713654312053411347106559751193419729",
+          "-0.00000000354101415919508992159109731899122167268097328046"
+        ],
+        [
+          "-0.00000000354101415919508992159109731899122167268097328046",
+          "0.00000263377827177244649360025294094888679591019181161"
+        ]
+      ],
+      "P_raw_cross_antisymmetry_abs": "1.15498304334334807946179509624612709440852366709e-65",
+      "prime_power_terms_q_le_m": [
+        {
+          "q": 2,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.49012907173427359585695086181761669064573034955",
+          "C_00": "0.00000000000274045491493932798833873987093663853040821549126",
+          "C_01": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_10": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_11": "0.00000153132190497721045385265593521995288732384978783"
+        },
+        {
+          "q": 3,
+          "prime_base": 3,
+          "von_mangoldt_over_sqrt_q": "0.634284100597563977186387772544649055199536701929",
+          "C_00": "0.000000000000174910282618015031651968790398143308812141706263",
+          "C_01": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_10": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_11": "0.0000000770735594767493434811474130128867566201293391913"
+        },
+        {
+          "q": 4,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.34657359027997265470861606072908828403775006718",
+          "C_00": "0.0000000000013439064391975844563765055538277634312720122408",
+          "C_01": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_10": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_11": "0.000000754755229030871809463629740501907201118778446907"
+        },
+        {
+          "q": 5,
+          "prime_base": 5,
+          "von_mangoldt_over_sqrt_q": "0.719762515553600491218663073278403452678895782386",
+          "C_00": "0.000000000000903592881553367375097737207206439060588392074589",
+          "C_01": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_10": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_11": "0.000000507012654908368345455321551734350947557568183866"
+        },
+        {
+          "q": 7,
+          "prime_base": 7,
+          "von_mangoldt_over_sqrt_q": "0.735484904010998296298399975575215820289058547601",
+          "C_00": "-0.000000000000257895721540639710615730463242662682978055562971",
+          "C_01": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_10": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_11": "-0.000000148269140680714192329364749887683425452290891539"
+        },
+        {
+          "q": 8,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.245064535867136797928475430908808345322865174775",
+          "C_00": "0.0",
+          "C_01": "0.0",
+          "C_10": "0.0",
+          "C_11": "0.0"
+        }
+      ],
+      "independent_direct_correlation_check": {
+        "q": 2,
+        "entry": "01",
+        "direct_physical_integral": "-0.00000000204857329820968556735958514450108512392555391013",
+        "periodic_minus_reflected": "-0.00000000204857329820968556735958514450108512392555391013",
+        "absolute_difference": "1.45441450549220061992090463107090646231185997067e-66",
+        "interpretation": "Separate physical-overlap quadrature compared with the periodized/reflected identity; the periodized integral contains the same overlap region, so this is an algebraic consistency check, not an independent analytic method."
+      },
+      "generalized_eigenvalues_P_vs_E": [
+        {
+          "eigenvalue": "0.0978422989510242752311253973694408296845597090354",
+          "E_normalized_direction_z0_z2": [
+            "15735739.4297272986680128928322998392036239016852",
+            "21168.6466029513579854053637724306832453175342413"
+          ]
+        },
+        {
+          "eigenvalue": "1.20670223127215800865134417176946544741828070036",
+          "E_normalized_direction_z0_z2": [
+            "3604983.70508802931305424016950646186467703427205",
+            "4171.32031131980853437300268336531061966122359695"
+          ]
+        }
+      ],
+      "criterion_33": {
+        "a_Omega": "6.71945426274960646127784294809407469151513416689",
+        "c_ar": "5.37218341922566558223295749744974228901453925162",
+        "kappa": "1.34727084352394087904488545064433240250059491527",
+        "threshold_kappa_minus_1": "0.347270843523940879044885450644332402500594915266",
+        "largest_generalized_eigenvalue": "1.20670223127215800865134417176946544741828070036",
+        "finite_cell_margin_threshold_minus_largest_eigenvalue": "-0.859431387748217129606458721125133044917685785092",
+        "numerical_cell_test": "P <= (kappa-1)E FAILS AT THIS NUMERICAL CELL",
+        "scope": "Only the stronger sufficient criterion (33) at this finite m; says nothing about cofinal validity or the weaker budget-complete comparison (32).",
+        "d_kappa_minus_largest_eigenvalue": "0.140568612251782870393541278874866955082314214906",
+        "weaker_finite_cell_test_P_le_kappa_E": "passes numerically at this cell"
+      },
+      "limitations": [
+        "Finite theta cutoff is copied from full_center_probe.gaussian_plane and is not accompanied here by a certified tail enclosure.",
+        "mpmath quadrature and eigenvalues are floating-point diagnostics, not Arb intervals or a proof.",
+        "Only m=8 is the requested initial cell; no asymptotic or cofinal conclusion follows.",
+        "The positive reflected-image and pole terms in A_m, and the full budget comparison (32), are not tested by criterion (33)."
+      ],
+      "q_equals_m_zero_extension_correlation": {
+        "q": 8,
+        "C_00": "0.0",
+        "reason": "The overlap interval has zero length at shift log(m)=L; when m is a prime power this zero term is retained in the full sum."
+      }
+    },
+    {
+      "m": 8,
+      "dps": 60,
+      "status": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY_NOT_A_PROOF",
+      "elapsed_seconds": "7.442042488022707",
+      "theta_cutoff": 25,
+      "full_center_probe_cutoff": 25,
+      "source_G_sha256": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
+      "window": {
+        "L_log_m": "2.07944154167983592825169636437452970422650040308",
+        "b_L_over_2": "1.03972077083991796412584818218726485211325020154",
+        "Omega_2pi_m_over_L": "24.1725874230783669846809757104888896542499278279"
+      },
+      "source_and_convention_checks": {
+        "analytic_derivative_vs_mp_diff_max_abs": "2.24028550003001101457186305936084472661249078074e-59",
+        "coefficient_plane_projector_vs_full_center_probe_max_norm": "1.19113146693054421217129852734786642255847188686e-59",
+        "theta_endpoint_parity_error_from_full_center_probe": "4.63466180191838713691205967888164020890562860484e-61",
+        "coefficient_convention": "psi_n(t)=(-1)^n exp(i omega_n t)/sqrt(L); c_n=<psi_n,g>; synthesis=sum c_n psi_n",
+        "direct_projection_residuals_modes_0_1_m": {
+          "column_0_mode_0": "8.13152875137607461408020008143256106515144951981e-61",
+          "column_1_mode_0": "4.0048113880379363845392116922901340261862638369e-60",
+          "column_0_mode_1": "-6.19212620458685293524946169421054671207034711789e-61",
+          "column_1_mode_1": "-2.08017662521586401774161376769564907091221737777e-61",
+          "column_0_mode_8": "-2.31978468854777820613887406391718990056329323052e-61",
+          "column_1_mode_8": "1.34640386308179657687420258618148741775085081589e-58"
+        },
+        "max_direct_projection_residual_abs": "1.34640386308179657687420258618148741775085081589e-58",
+        "quadrature_order": 32
+      },
+      "E_actual_window_residual_gram": [
+        [
+          "0.00000000000408593031597420288593192199044154047198462581394",
+          "-0.00000000305574254786761020745820397770026573486639034343"
+        ],
+        [
+          "-0.00000000305574254786761020745820397770026573486639034343",
+          "0.00000228744474030171538073451060852794861497520819566"
+        ]
+      ],
+      "E_eigenvalues": [
+        "0.00000000000000383715324257738527518280263552427755103445659846",
+        "0.00000228744882239487811236001126526713642099140262925"
+      ],
+      "E_determinant": "8.77729166608232802082210202853346931342787544903e-21",
+      "P_full_prime_power_correlation_gram": [
+        [
+          "0.00000000000476115157995713654312053411347106559751193419729",
+          "-0.00000000354101415919508992159109731899122167268097328046"
+        ],
+        [
+          "-0.00000000354101415919508992159109731899122167268097328046",
+          "0.00000263377827177244649360025294094888679591019181161"
+        ]
+      ],
+      "P_raw_cross_antisymmetry_abs": "2.59968986086304646372472995143720184393149196431e-65",
+      "prime_power_terms_q_le_m": [
+        {
+          "q": 2,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.49012907173427359585695086181761669064573034955",
+          "C_00": "0.00000000000274045491493932798833873987093663853040821549126",
+          "C_01": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_10": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_11": "0.00000153132190497721045385265593521995288732384978783"
+        },
+        {
+          "q": 3,
+          "prime_base": 3,
+          "von_mangoldt_over_sqrt_q": "0.634284100597563977186387772544649055199536701929",
+          "C_00": "0.000000000000174910282618015031651968790398143308812141706263",
+          "C_01": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_10": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_11": "0.0000000770735594767493434811474130128867566201293391913"
+        },
+        {
+          "q": 4,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.34657359027997265470861606072908828403775006718",
+          "C_00": "0.0000000000013439064391975844563765055538277634312720122408",
+          "C_01": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_10": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_11": "0.000000754755229030871809463629740501907201118778446907"
+        },
+        {
+          "q": 5,
+          "prime_base": 5,
+          "von_mangoldt_over_sqrt_q": "0.719762515553600491218663073278403452678895782386",
+          "C_00": "0.000000000000903592881553367375097737207206439060588392074589",
+          "C_01": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_10": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_11": "0.000000507012654908368345455321551734350947557568183866"
+        },
+        {
+          "q": 7,
+          "prime_base": 7,
+          "von_mangoldt_over_sqrt_q": "0.735484904010998296298399975575215820289058547601",
+          "C_00": "-0.000000000000257895721540639710615730463242662682978055562971",
+          "C_01": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_10": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_11": "-0.000000148269140680714192329364749887683425452290891539"
+        },
+        {
+          "q": 8,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.245064535867136797928475430908808345322865174775",
+          "C_00": "0.0",
+          "C_01": "0.0",
+          "C_10": "0.0",
+          "C_11": "0.0"
+        }
+      ],
+      "independent_direct_correlation_check": {
+        "q": 2,
+        "entry": "01",
+        "direct_physical_integral": "-0.00000000204857329820968556735958514450108512392555391013",
+        "periodic_minus_reflected": "-0.00000000204857329820968556735958514450108512392555391013",
+        "absolute_difference": "1.29039804601649120552057946247434677758013796561e-66",
+        "interpretation": "Separate physical-overlap quadrature compared with the periodized/reflected identity; the periodized integral contains the same overlap region, so this is an algebraic consistency check, not an independent analytic method."
+      },
+      "generalized_eigenvalues_P_vs_E": [
+        {
+          "eigenvalue": "0.0978422989510242752311253973694408296845597090355",
+          "E_normalized_direction_z0_z2": [
+            "15735739.4297272986680128928322998392036239016852",
+            "21168.6466029513579854053637724306832453175342413"
+          ]
+        },
+        {
+          "eigenvalue": "1.20670223127215800865134417176946544741828070036",
+          "E_normalized_direction_z0_z2": [
+            "3604983.70508802931305424016950646186467703427205",
+            "4171.32031131980853437300268336531061966122359695"
+          ]
+        }
+      ],
+      "criterion_33": {
+        "a_Omega": "6.71945426274960646127784294809407469151513416689",
+        "c_ar": "5.37218341922566558223295749744974228901453925162",
+        "kappa": "1.34727084352394087904488545064433240250059491527",
+        "threshold_kappa_minus_1": "0.347270843523940879044885450644332402500594915266",
+        "largest_generalized_eigenvalue": "1.20670223127215800865134417176946544741828070036",
+        "finite_cell_margin_threshold_minus_largest_eigenvalue": "-0.859431387748217129606458721125133044917685785092",
+        "numerical_cell_test": "P <= (kappa-1)E FAILS AT THIS NUMERICAL CELL",
+        "scope": "Only the stronger sufficient criterion (33) at this finite m; says nothing about cofinal validity or the weaker budget-complete comparison (32).",
+        "d_kappa_minus_largest_eigenvalue": "0.140568612251782870393541278874866955082314214906",
+        "weaker_finite_cell_test_P_le_kappa_E": "passes numerically at this cell"
+      },
+      "limitations": [
+        "Finite theta cutoff is copied from full_center_probe.gaussian_plane and is not accompanied here by a certified tail enclosure.",
+        "mpmath quadrature and eigenvalues are floating-point diagnostics, not Arb intervals or a proof.",
+        "Only m=8 is the requested initial cell; no asymptotic or cofinal conclusion follows.",
+        "The positive reflected-image and pole terms in A_m, and the full budget comparison (32), are not tested by criterion (33)."
+      ],
+      "q_equals_m_zero_extension_correlation": {
+        "q": 8,
+        "C_00": "0.0",
+        "reason": "The overlap interval has zero length at shift log(m)=L; when m is a prime power this zero term is retained in the full sum."
+      }
+    },
+    {
+      "m": 8,
+      "dps": 90,
+      "status": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY_NOT_A_PROOF",
+      "elapsed_seconds": "11.14251638398855",
+      "theta_cutoff": 29,
+      "full_center_probe_cutoff": 29,
+      "source_G_sha256": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
+      "window": {
+        "L_log_m": "2.07944154167983592825169636437452970422650040308",
+        "b_L_over_2": "1.03972077083991796412584818218726485211325020154",
+        "Omega_2pi_m_over_L": "24.1725874230783669846809757104888896542499278279"
+      },
+      "source_and_convention_checks": {
+        "analytic_derivative_vs_mp_diff_max_abs": "3.92727477223818124247661756398902051438017241e-90",
+        "coefficient_plane_projector_vs_full_center_probe_max_norm": "3.26049161485084968788396492651965785636628684778e-81",
+        "theta_endpoint_parity_error_from_full_center_probe": "1.70926850847009817970621999972062118868492160525e-90",
+        "coefficient_convention": "psi_n(t)=(-1)^n exp(i omega_n t)/sqrt(L); c_n=<psi_n,g>; synthesis=sum c_n psi_n",
+        "direct_projection_residuals_modes_0_1_m": {
+          "column_0_mode_0": "9.64068430323752246094910171008822410588294445403e-91",
+          "column_1_mode_0": "4.66203298981826003015200531562789102033896416007e-86",
+          "column_0_mode_1": "-8.1133876938186664613226840460377469705749999043e-91",
+          "column_1_mode_1": "2.34966601057016519746413680689825721943696411884e-86",
+          "column_0_mode_8": "-8.72642560722039121065035561119018144894681929555e-92",
+          "column_1_mode_8": "4.3613165442383320828383367797355643817383502271e-79"
+        },
+        "max_direct_projection_residual_abs": "4.3613165442383320828383367797355643817383502271e-79",
+        "quadrature_order": 32
+      },
+      "E_actual_window_residual_gram": [
+        [
+          "0.00000000000408593031597420288593192199044154047198462581394",
+          "-0.00000000305574254786761020745820397770026573486639034343"
+        ],
+        [
+          "-0.00000000305574254786761020745820397770026573486639034343",
+          "0.00000228744474030171538073451060852794861497520819566"
+        ]
+      ],
+      "E_eigenvalues": [
+        "0.00000000000000383715324257738527518280263552427755103445659846",
+        "0.00000228744882239487811236001126526713642099140262925"
+      ],
+      "E_determinant": "8.77729166608232802082210202853346931342787544903e-21",
+      "P_full_prime_power_correlation_gram": [
+        [
+          "0.00000000000476115157995713654312053411347106559751193419729",
+          "-0.00000000354101415919508992159109731899122167268097328046"
+        ],
+        [
+          "-0.00000000354101415919508992159109731899122167268097328046",
+          "0.00000263377827177244649360025294094888679591019181161"
+        ]
+      ],
+      "P_raw_cross_antisymmetry_abs": "6.79254546891230376431195847086898025383081071723e-95",
+      "prime_power_terms_q_le_m": [
+        {
+          "q": 2,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.49012907173427359585695086181761669064573034955",
+          "C_00": "0.00000000000274045491493932798833873987093663853040821549126",
+          "C_01": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_10": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_11": "0.00000153132190497721045385265593521995288732384978783"
+        },
+        {
+          "q": 3,
+          "prime_base": 3,
+          "von_mangoldt_over_sqrt_q": "0.634284100597563977186387772544649055199536701929",
+          "C_00": "0.000000000000174910282618015031651968790398143308812141706263",
+          "C_01": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_10": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_11": "0.0000000770735594767493434811474130128867566201293391913"
+        },
+        {
+          "q": 4,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.34657359027997265470861606072908828403775006718",
+          "C_00": "0.0000000000013439064391975844563765055538277634312720122408",
+          "C_01": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_10": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_11": "0.000000754755229030871809463629740501907201118778446907"
+        },
+        {
+          "q": 5,
+          "prime_base": 5,
+          "von_mangoldt_over_sqrt_q": "0.719762515553600491218663073278403452678895782386",
+          "C_00": "0.000000000000903592881553367375097737207206439060588392074589",
+          "C_01": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_10": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_11": "0.000000507012654908368345455321551734350947557568183866"
+        },
+        {
+          "q": 7,
+          "prime_base": 7,
+          "von_mangoldt_over_sqrt_q": "0.735484904010998296298399975575215820289058547601",
+          "C_00": "-0.000000000000257895721540639710615730463242662682978055562971",
+          "C_01": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_10": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_11": "-0.000000148269140680714192329364749887683425452290891539"
+        },
+        {
+          "q": 8,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.245064535867136797928475430908808345322865174775",
+          "C_00": "0.0",
+          "C_01": "0.0",
+          "C_10": "0.0",
+          "C_11": "0.0"
+        }
+      ],
+      "independent_direct_correlation_check": {
+        "q": 2,
+        "entry": "01",
+        "direct_physical_integral": "-0.00000000204857329820968556735958514450108512392555391013",
+        "periodic_minus_reflected": "-0.00000000204857329820968556735958514450108512392555391013",
+        "absolute_difference": "6.4464488868320308996970192124421230113087723708e-97",
+        "interpretation": "Separate physical-overlap quadrature compared with the periodized/reflected identity; the periodized integral contains the same overlap region, so this is an algebraic consistency check, not an independent analytic method."
+      },
+      "generalized_eigenvalues_P_vs_E": [
+        {
+          "eigenvalue": "0.0978422989510242752311253973694408296845597090355",
+          "E_normalized_direction_z0_z2": [
+            "15735739.4297272986680128928322998392036239016852",
+            "21168.6466029513579854053637724306832453175342413"
+          ]
+        },
+        {
+          "eigenvalue": "1.20670223127215800865134417176946544741828070036",
+          "E_normalized_direction_z0_z2": [
+            "3604983.70508802931305424016950646186467703427205",
+            "4171.32031131980853437300268336531061966122359695"
+          ]
+        }
+      ],
+      "criterion_33": {
+        "a_Omega": "6.71945426274960646127784294809407469151513416689",
+        "c_ar": "5.37218341922566558223295749744974228901453925162",
+        "kappa": "1.34727084352394087904488545064433240250059491527",
+        "threshold_kappa_minus_1": "0.347270843523940879044885450644332402500594915266",
+        "largest_generalized_eigenvalue": "1.20670223127215800865134417176946544741828070036",
+        "finite_cell_margin_threshold_minus_largest_eigenvalue": "-0.859431387748217129606458721125133044917685785092",
+        "numerical_cell_test": "P <= (kappa-1)E FAILS AT THIS NUMERICAL CELL",
+        "scope": "Only the stronger sufficient criterion (33) at this finite m; says nothing about cofinal validity or the weaker budget-complete comparison (32).",
+        "d_kappa_minus_largest_eigenvalue": "0.140568612251782870393541278874866955082314214906",
+        "weaker_finite_cell_test_P_le_kappa_E": "passes numerically at this cell"
+      },
+      "limitations": [
+        "Finite theta cutoff is copied from full_center_probe.gaussian_plane and is not accompanied here by a certified tail enclosure.",
+        "mpmath quadrature and eigenvalues are floating-point diagnostics, not Arb intervals or a proof.",
+        "Only m=8 is the requested initial cell; no asymptotic or cofinal conclusion follows.",
+        "The positive reflected-image and pole terms in A_m, and the full budget comparison (32), are not tested by criterion (33)."
+      ],
+      "q_equals_m_zero_extension_correlation": {
+        "q": 8,
+        "C_00": "0.0",
+        "reason": "The overlap interval has zero length at shift log(m)=L; when m is a prime power this zero term is retained in the full sum."
+      }
+    }
+  ],
+  "convergence_comparisons": [
+    {
+      "settings": [
+        [
+          60,
+          24
+        ],
+        [
+          60,
+          32
+        ]
+      ],
+      "largest_generalized_eigenvalue_matches_to_stored_significant_digits": true,
+      "threshold_matches_to_stored_significant_digits": true,
+      "E_entries_match_to_stored_significant_digits": true,
+      "P_entries_match_to_stored_significant_digits": true,
+      "meaning": "Exact equality of stored 48-significant-digit strings checks numerical stability only, not a certified quadrature or theta-tail enclosure."
+    },
+    {
+      "settings": [
+        [
+          60,
+          32
+        ],
+        [
+          90,
+          32
+        ]
+      ],
+      "largest_generalized_eigenvalue_matches_to_stored_significant_digits": true,
+      "threshold_matches_to_stored_significant_digits": true,
+      "E_entries_match_to_stored_significant_digits": true,
+      "P_entries_match_to_stored_significant_digits": true,
+      "meaning": "Exact equality of stored 48-significant-digit strings checks numerical stability only, not a certified quadrature or theta-tail enclosure."
+    }
+  ],
+  "root_independent_replay": {
+    "command": "python3 docs/routeB_bus/source_observability_2026-09-28/signed_tail_probe.py --m 8 --settings 70:28 --output /tmp/q3_signed_tail_root_70_28.json",
+    "run": {
+      "m": 8,
+      "dps": 70,
+      "status": "FINITE_NUMERICAL_DIAGNOSTIC_ONLY_NOT_A_PROOF",
+      "elapsed_seconds": "8.239403180981753",
+      "theta_cutoff": 26,
+      "full_center_probe_cutoff": 26,
+      "source_G_sha256": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
+      "window": {
+        "L_log_m": "2.07944154167983592825169636437452970422650040308",
+        "b_L_over_2": "1.03972077083991796412584818218726485211325020154",
+        "Omega_2pi_m_over_L": "24.1725874230783669846809757104888896542499278279"
+      },
+      "source_and_convention_checks": {
+        "analytic_derivative_vs_mp_diff_max_abs": "1.73869038313472877456175090385045602189104599004e-69",
+        "coefficient_plane_projector_vs_full_center_probe_max_norm": "1.25541240595763072392270583683211721520490084585e-69",
+        "theta_endpoint_parity_error_from_full_center_probe": "3.02722752744870058009205253211556126126372049175e-71",
+        "coefficient_convention": "psi_n(t)=(-1)^n exp(i omega_n t)/sqrt(L); c_n=<psi_n,g>; synthesis=sum c_n psi_n",
+        "direct_projection_residuals_modes_0_1_m": {
+          "column_0_mode_0": "2.59234380307437579045223448040635886212687759154e-71",
+          "column_1_mode_0": "2.04781466387172008681788603084770004397436294947e-70",
+          "column_0_mode_1": "-3.20778149254820351451107116215974195952608575342e-71",
+          "column_1_mode_1": "4.85473894152465355874858463385303961785475666313e-70",
+          "column_0_mode_8": "-1.89469992719434064560675381317446620850311923803e-71",
+          "column_1_mode_8": "2.4237698295062074959248841303631049490727335364e-68"
+        },
+        "max_direct_projection_residual_abs": "2.4237698295062074959248841303631049490727335364e-68",
+        "quadrature_order": 28
+      },
+      "E_actual_window_residual_gram": [
+        [
+          "0.00000000000408593031597420288593192199044154047198462581394",
+          "-0.00000000305574254786761020745820397770026573486639034343"
+        ],
+        [
+          "-0.00000000305574254786761020745820397770026573486639034343",
+          "0.00000228744474030171538073451060852794861497520819566"
+        ]
+      ],
+      "E_eigenvalues": [
+        "0.00000000000000383715324257738527518280263552427755103445659846",
+        "0.00000228744882239487811236001126526713642099140262925"
+      ],
+      "E_determinant": "8.77729166608232802082210202853346931342787544903e-21",
+      "P_full_prime_power_correlation_gram": [
+        [
+          "0.00000000000476115157995713654312053411347106559751193419729",
+          "-0.00000000354101415919508992159109731899122167268097328046"
+        ],
+        [
+          "-0.00000000354101415919508992159109731899122167268097328046",
+          "0.00000263377827177244649360025294094888679591019181161"
+        ]
+      ],
+      "P_raw_cross_antisymmetry_abs": "1.38006648211077591867160261076289666427650179261e-75",
+      "prime_power_terms_q_le_m": [
+        {
+          "q": 2,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.49012907173427359585695086181761669064573034955",
+          "C_00": "0.00000000000274045491493932798833873987093663853040821549126",
+          "C_01": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_10": "-0.00000000204857329820968556735958514450108512392555391013",
+          "C_11": "0.00000153132190497721045385265593521995288732384978783"
+        },
+        {
+          "q": 3,
+          "prime_base": 3,
+          "von_mangoldt_over_sqrt_q": "0.634284100597563977186387772544649055199536701929",
+          "C_00": "0.000000000000174910282618015031651968790398143308812141706263",
+          "C_01": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_10": "-0.000000000116883113916009415983189260034704923065693150416",
+          "C_11": "0.0000000770735594767493434811474130128867566201293391913"
+        },
+        {
+          "q": 4,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.34657359027997265470861606072908828403775006718",
+          "C_00": "0.0000000000013439064391975844563765055538277634312720122408",
+          "C_01": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_10": "-0.00000000100719943997647693762485994161146491997198586336",
+          "C_11": "0.000000754755229030871809463629740501907201118778446907"
+        },
+        {
+          "q": 5,
+          "prime_base": 5,
+          "von_mangoldt_over_sqrt_q": "0.719762515553600491218663073278403452678895782386",
+          "C_00": "0.000000000000903592881553367375097737207206439060588392074589",
+          "C_01": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_10": "-0.000000000676967325439543766897860271475112339105861669941",
+          "C_11": "0.000000507012654908368345455321551734350947557568183866"
+        },
+        {
+          "q": 7,
+          "prime_base": 7,
+          "von_mangoldt_over_sqrt_q": "0.735484904010998296298399975575215820289058547601",
+          "C_00": "-0.000000000000257895721540639710615730463242662682978055562971",
+          "C_01": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_10": "0.000000000195816094361709495349591607240095798368145283673",
+          "C_11": "-0.000000148269140680714192329364749887683425452290891539"
+        },
+        {
+          "q": 8,
+          "prime_base": 2,
+          "von_mangoldt_over_sqrt_q": "0.245064535867136797928475430908808345322865174775",
+          "C_00": "0.0",
+          "C_01": "0.0",
+          "C_10": "0.0",
+          "C_11": "0.0"
+        }
+      ],
+      "q_equals_m_direct_overlap_is_zero_by_disjoint_support": "'0.0'",
+      "independent_direct_correlation_check": {
+        "q": 2,
+        "entry": "01",
+        "direct_physical_integral": "-0.00000000204857329820968556735958514450108512392555391013",
+        "periodic_minus_reflected": "-0.00000000204857329820968556735958514450108512392555391013",
+        "absolute_difference": "1.18177195567778706903089567228812811474908050299e-75",
+        "interpretation": "Separate physical-overlap quadrature compared with the periodized/reflected identity; the periodized integral contains the same overlap region, so this is an algebraic consistency check, not an independent analytic method."
+      },
+      "generalized_eigenvalues_P_vs_E": [
+        {
+          "eigenvalue": "0.0978422989510242752311253973694408296845597090355",
+          "E_normalized_direction_z0_z2": [
+            "15735739.4297272986680128928322998392036239016852",
+            "21168.6466029513579854053637724306832453175342413"
+          ]
+        },
+        {
+          "eigenvalue": "1.20670223127215800865134417176946544741828070036",
+          "E_normalized_direction_z0_z2": [
+            "3604983.70508802931305424016950646186467703427205",
+            "4171.32031131980853437300268336531061966122359695"
+          ]
+        }
+      ],
+      "criterion_33": {
+        "a_Omega": "6.71945426274960646127784294809407469151513416689",
+        "c_ar": "5.37218341922566558223295749744974228901453925162",
+        "kappa": "1.34727084352394087904488545064433240250059491527",
+        "threshold_kappa_minus_1": "0.347270843523940879044885450644332402500594915266",
+        "largest_generalized_eigenvalue": "1.20670223127215800865134417176946544741828070036",
+        "finite_cell_margin_threshold_minus_largest_eigenvalue": "-0.859431387748217129606458721125133044917685785092",
+        "numerical_cell_test": "P <= (kappa-1)E FAILS AT THIS NUMERICAL CELL",
+        "scope": "Only the stronger sufficient criterion (33) at this finite m; says nothing about cofinal validity or the weaker budget-complete comparison (32)."
+      },
+      "limitations": [
+        "Finite theta cutoff is copied from full_center_probe.gaussian_plane and is not accompanied here by a certified tail enclosure.",
+        "mpmath quadrature and eigenvalues are floating-point diagnostics, not Arb intervals or a proof.",
+        "Only m=8 is the requested initial cell; no asymptotic or cofinal conclusion follows.",
+        "The positive reflected-image and pole terms in A_m, and the full budget comparison (32), are not tested by criterion (33)."
+      ]
+    },
+    "reported_eigenvalue_digits_match": 48,
+    "scope": "Independent execution and root code review, not an independent certified quadrature method."
+  }
+}

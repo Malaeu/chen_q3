@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-06 · by: Codex Linux · baseline HEAD: c256c651
+Updated: 2026-10-06 · by: Codex Linux · baseline HEAD: fc0b25a8
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -69,7 +69,7 @@ Claim делается, только когда он действительны�
 Конечный сертификат не опровергает хвост. Прошка дал явный нечётный upper envelope B_m,
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
-- Активный чат: [6aba5f5a-f804-83ed-a667-68147ee00f59](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aba5f5a-f804-83ed-a667-68147ee00f59), подтверждённых отправок **2/10**; ответ на odd secular sign от 06.10 получен; итоговый знак OPEN, повторно не отправлять. Прежний чат `6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1` исчерпан 10/10; адрес каждого запроса — в [очереди](../routeB_bus/PROSHKA_QUEUE.md), ответы — в `docs/routeB_bus/proshka/`.
+- Активный чат: [6aba5f5a-f804-83ed-a667-68147ee00f59](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aba5f5a-f804-83ed-a667-68147ee00f59), подтверждённых отправок **3/10**; ответ 2/10 проверен; ответ 3/10 получен: проверены even-window identity, uniform two-column mass и exterior budget; signed prime inequality остаётся OPEN; finite m8 discriminator воспроизведён, хвостового вывода нет. Не отправлять повторно. Прежний чат `6ab8601d-f2d4-83eb-a4a6-5c68741cd8c1` исчерпан 10/10; адрес каждого запроса — в [очереди](../routeB_bus/PROSHKA_QUEUE.md), ответы — в `docs/routeB_bus/proshka/`.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)
@@ -87,6 +87,7 @@ e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на 
 6. Бухгалтерия, которая не меняет математику, — не делать. Сомневаешься — спроси владельца одной строкой.
 
 ## Не повторять
+- Сверка 06.10: мост projected trial→Ξ на |Im z|<1/2 уже записан условно на принятое PAPER HMODE; проверен source crosswalk, не свежая Lean-сборка. См. `../routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md`; ground tracking G3 остаётся открыт.
 - Owner recovery, старые launch/ingest/publication (RESUME `Do not repeat`) — не переигрывать.
 - Не подменять оценки selected Ferrers packet явными гауссовыми пределами; не дифференцировать C0-сходимость.
 - Не отправлять повторно уже отправленные запросы Прошке.

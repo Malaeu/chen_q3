@@ -7786,3 +7786,36 @@ Goal058 consumer vs 7-port `rh_of_canonical_slots` (named in comparator/Solution
 Следующий ход: тестировать только полный совместный weighted block либо вернуться к точному арифметическому discrepancy; не повторять bandwise positive-cross или independent-edge contraction.
 Адреса: `docs/Codex/REPORT_2026-09-27_PRIME_BRIDGE_MIXED_SIGN.md`, `paper_weil/sections/groundstate.tex`, `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_COUPLED_SIGNED_SQUARE_CERTIFICATE_FOR_THE_CANONICAL_KERNEL_2026-09-05.md`.
 Чей вердикт: root алгебра и cutoff-доказательство, независимые read-only mathematical/review проходы; PAPER-only, без Lean и RH claim.
+
+
+## 2026-10-06 — Even-window reduction isolates the unpaid prime comparison
+
+**Развилка:** Treat the projection error as a whole-line high-pass function,
+or retain the exact physical window and its boundary correction.
+**Выбрали:** The exact even periodization identity and a uniform two-column
+sampling lower bound; retain the signed prime correlations and their
+reflected boundary term.
+**Почему:** The image correction is positive for the actual even residual.
+The Hardy Z/Z-prime moment constants give a sampling ratio 1/sqrt(3)<1 on
+the original grid. Exterior error is negligible relative to the resulting
+mass scale; it does not establish the arithmetic sign.
+**Что отвергли и почему:** Direct Gårding semiboundedness does not prove
+unshifted positivity, and whole-line high-pass substitution loses the window.
+**Техника:** Independent source and algebra checks; primary Bui--Hall PDF
+and original CCM sign/normalization; exact mixed Gram matrix preserved.
+**Инсайты:** Eventual M>0 requires kappa-lambda_max(P,E) <= (C0 B+R)/mu ->0.
+A positive limsup would refute this trial candidate only. For the separate
+G3 consumer, critical-strip tracking needs only the checked sufficient
+quarter-power alpha rate; the rate itself remains open.
+**Блокеры:** The complete signed source prime comparison and actual G3
+tracking rate are unproved. G1/G3/RH remain OPEN.
+**Иглы Зингера:** Positive boundary image, derivative-moment sampling below
+its stability threshold, and source-specific signed arithmetic cancellation.
+**Следующий ход:** Evaluate the complete two-column prime/mass discriminator
+with the actual centered phase, then attack its cofinal signed bound.
+**Адреса:** docs/routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md;
+PROSHKA_G1_SIGNED_EVEN_TAIL_REDUCTION_2026-10-06.md and
+CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md in the same directory.
+**Чей вердикт и аргумент:** Proshka answer 3/10: "Neither (32) nor (33) is
+established here." Independent native checks and root source rereading
+accept the auxiliary estimates, not the missing sign or RH.

@@ -486,3 +486,208 @@ failure certified; auxiliary cofinal odd upper bound checked; the signed
 lower comparison and the originally requested eventual positive pair remain
 OPEN. No Lean build was run or needed for these PAPER and Arb checks.
 The two unrelated preexisting untracked files were left unchanged.
+
+## Bounded alias-hunt: Gårding does not supply the unshifted sign
+
+Researcher `/root/signed_source_hunt` fetched the primary paper
+L. Gårding, "Dirichlet's problem for linear elliptic partial differential
+equations" (1953), DOI https://doi.org/10.7146/math.scand.a-10364.
+Local source: `docs/literature/garding_dirichlet_elliptic_forms_1953.pdf`;
+SHA-256 `16ff729b8584ed629b62dcbcb0e561e6329a03cf114a072094480d0e72731975`.
+Root independently checked this hash and rendered/read printed pp. 60-61.
+
+Theorem 2.1 (p. 61): "If p(f,f) is any Dirichlet integral belonging to p
+then" `inf_{f in H} p(f,f)/(f,f) > -infinity`.
+Section 2 (p. 60) assumes a real homogeneous principal polynomial of degree
+2m, smooth uniformly continuous coefficients, and a uniformly positive
+lower bound on the unit sphere. The domain H consists of smooth compactly
+supported tests in S (p. 56). This is semiboundedness, not positivity of the
+unshifted form. The theorem itself permits a negative lower bound.
+
+Mapping attempted: its test f would be our full projection error e;
+its p(f,f) would have to be the complete W(e,e), including prime translates.
+These hypotheses are not supplied: W is nonlocal, the window grows, and e
+retains a nonzero exterior source tail. Window Fourier orthogonality does
+not make e a whole-line high-pass test. Thus the original theorem is an
+EXCLUDED DIRECT BRIDGE, not a refutation of the desired U bound and not
+an exclusion of every modern Gårding variant.
+
+Negative control for the broader shortcut "positive principal symbol
+implies positive energy": on (0,1),
+`Q(u)=integral(|u'|^2-2*pi^2*|u|^2)` has positive principal symbol, while
+smooth compactly supported approximations to sin(pi*x) have negative Q.
+This is not a counterexample to the quoted semiboundedness theorem.
+
+The first unpaid source estimate is still the joint archimedean/finite-prime
+comparison, uniformly in both trial coefficients. The earlier
+`PROSHKA_VERDICT_GOAL058_LOG_SYMBOL_TRANSFER_2026-09-26.md`, (17)-(22),
+already isolates the derivative diagonal and gives its exact divisor
+collapse; it does not supply this two-column signed lower bound.
+
+## Signed-lower continuation question (3/10)
+
+Exact text of the existing chat message `1eb8f937-da28-4fda-aa72-03c10bd981a0`,
+sent on 2026-10-06. The message is present in the chat; no duplicate was sent.
+The earlier browser showed an interrupted connection; on continuation the
+connector returned the completed final answer. Its verbatim inline text is
+saved in PROSHKA_SIGNED_EVEN_TAIL_INLINE_2026-10-06.md. Independent checks
+of the new periodization, mass and exterior-error claims are in progress.
+The signed prime comparison is explicitly left open in the answer.
+
+```text
+Continue G1 on the exact source and unchanged two-column U_m. The owner has now set an explicit continuing goal to close RH together, using all project work, alias-hunt and verified literature. This does not authorize assuming RH or promoting partial estimates. Your previous answer has been checked and integrated at fc0b25a887feea95a4c7ee2191661184be0a53c7 in Malaeu/chen_q3, branch rh_clean. Root and native independent review accepted the auxiliary convolution envelope, with explicit conjugation of the first slot added: conjugate(hhat(z_rho))=hhat(-conjugate(z_rho))=hhat(z_conjugate(rho))=0. We also rigorously certified finite m=8 using Arb: U8=6.02217142587316871739809e-15, exact rational odd Rayleigh=3.33898190666647286812302e-17. This is not eventual evidence.
+
+Please now attack the remaining actual SIGNED lower comparison in your equations (31)-(33), not rederive your odd construction. Preserve N=m,L=log m, the full K and original schedule; U_m remains min Rayleigh span{c_m(G),c_m(G'')}. Your explicit odd envelope B_m satisfies exp(Cm/log m)B_m ->0 for every fixed C; |U_m-U_tilde_m|<=Gamma_m=C_G m^(3/2)sqrt(log m) exp(-pi m/2).
+
+Our bounded own attempt: for real even g=aG+bG'', whole-line projection error e=Pi_m(g|I)-g, radical cancellation gives W(Pi g,Pi g)=W(e,e). The even pole contribution is nonnegative. Grouping the full archimedean term yields W(e,e)>=D(e)-c_ar||e||²-2 sum_{n>=2}Lambda(n)/sqrt(n)*|C_e(log n)|. Paying the last sum by 10||exp(|t|)e||² fails: there is no established domination by D(e). Also e is NOT a whole-line high-pass function, so a high-frequency multiplier lower bound cannot simply be applied. This is the exact obstruction; lower Fourier L2 mass alone is not signed energy. The generalized Gram metric must be retained uniformly in (a,b).
+
+Find a source-specific cancellation/oscillation estimate for this two-column error family proving U_tilde_m>B_m+Gamma_m on an unbounded original sequence, or a different genuinely signed estimate settling the prescribed candidate. Test alternate representations such as the explicit zero sum (retaining off-line paired terms), arithmetic-translation correlations, boundary layer of the analytic Fourier tail, or a valid Garding/oscillation theorem with its hypotheses proved for this source. We are running alias-hunt in parallel. Do not infer sign from residual smallness, finite numerics, generic displacement rank, or a positive model with unpaid correction. If the lower route is genuinely false, give a source counterargument; if it remains open, derive a new concrete paid reduction and identify its first missing inequality. No repository writes. Plain-mode working question, not another request-registration cycle.
+```
+
+
+## Answer 3/10: independent check of auxiliary even-tail estimates
+
+The completed inline response and downloaded supplemental Markdown are saved
+as `PROSHKA_SIGNED_EVEN_TAIL_INLINE_2026-10-06.md` and
+`PROSHKA_G1_SIGNED_EVEN_TAIL_REDUCTION_2026-10-06.md` in this directory.
+The supplement SHA-256 is
+`e4f7b1542f11a75136597e20fba8e5ab97d38ccaa4d060120ce2da1ba2b91177`.
+It explicitly leaves its signed inequalities (6.1)/(6.2) open.
+
+Native read-only check `/root/even_tail_identity_check` independently derived
+the even periodization identity, archimedean constant, exterior budget and
+boundary-prime identity. It found no mathematical defect in these estimates,
+conditional on the previously checked source envelopes/radical crosswalk.
+One exposition clarification: throughout use
+`C_vw(s)=integral conjugate(v(t))*w(t+s) dt`; evenness makes C_vv real.
+The author text is preserved unchanged.
+
+Root independently reread CCM (3.5)-(3.11) in
+`../litreview/pdfs/survey_2026-09-03_sources/ccm.txt:245-308`:
+`W=W_02-W_R-Prime`, `W_R=-W_infinity`, and
+`theta'(omega)=(a(omega)-c_ar)/2`. Thus the archimedean contribution is
+exactly `D-c_ar*||v||²`, with `c_ar=gamma+log(8*pi)+pi/2`.
+The image correction is positive for even functions and negative for odd
+ones; it is not transferred to the atomic prime kernel.
+
+Root also checked the Gram determinant `34/45`, trace `36/5` and lower
+constant `17/162` by exact rational arithmetic. Differentiating
+`2*omega²/[beta*(beta²+omega²)]` proves monotonic decrease in beta;
+integration over beta>=1/2 with lattice spacing 2 gives
+`a(omega)>=log(1+4*omega²)/2`. Direct 40-digit quadrature for cosine/sine
+on [-pi,pi], beta=1/2,5/2, agrees with the image formula within 1e-40
+(diagnostic algebra check, not a source-family certificate). The reflected
+cosine prime control is exactly `-L/4=-log(2)/2` at L=log(4).
+
+The exterior estimate retains both jumps and all prime powers. Short
+translations are bounded by the piecewise derivative plus two boundary
+strips, long translations by the norm. Since r and o have disjoint support,
+the ordinary norm cross term vanishes; D's cross term is paid by Cauchy,
+and weighted prime/pole bounds pay the remaining terms. The resulting
+`R_m=O_G(m exp(-pi*m/2))` is negligible relative to the proposed mass
+scale. None of this supplies the remaining signed prime comparison.
+
+
+### A sharper necessary arithmetic condition for the prescribed candidate
+
+Keep the supplement's E,P,A,H,G,mu,R,kappa and the accepted odd envelope B,
+on the same original cofinal sequence. On the eventual rank-two family,
+define `lambda_m=lambda_max(E_m^(-1/2) P_m E_m^(-1/2))` and
+`d_m=kappa_m-lambda_m`. These are arithmetic-tail quantities, not the
+previous convolution normalization also called d_m in the predecessor.
+Here `E>=mu I`, `G<=C0 I`, `A>=kappa E`, and
+`H>=A-P-R I>=d_m E-R I`.
+
+If d_m>0 and d_m*mu_m>R_m, it follows that
+`U_m >= (d_m*mu_m-R_m)/C0`.
+Consequently `d_m*mu_m>R_m+C0*B_m` supplies an odd witness below U_m.
+This keeps the generalized Gram metric and does not require the arbitrary
+constant margin 1 in the author's stronger inequality (33).
+
+Conversely the requested `M_m=A_m^- -U_m I>0` implies `U_m<B_m` by testing
+its normalized odd envelope vector. Choose a generalized U-minimizer z.
+If d_m>0, then
+`d_m*mu_m*||z||² <= z*H_m*z+R_m||z||²
+ < (B_m*C0+R_m)||z||²`.
+This uses U<B and B>=0, not an assumption U>=0. If d_m<=0 the same upper
+bound on d_m is automatic. Thus eventual M>0 requires
+
+`d_m <= (C0*B_m+R_m)/mu_m -> 0`,
+
+and in particular `limsup d_m<=0` along the original sequence.
+A strictly positive limsup d_m would refute the prescribed candidate,
+not RH or every possible even trial. No sign or limsup for d_m has been
+proved here; dropping positive image/pole terms can make this discriminator
+inconclusive. Native independent checker `/root/even_tail_identity_check`
+verified this deduction, its minimizer direction, and the same-sequence
+quantifiers. No source-node status changes.
+
+
+### Primary-source and sampling check
+
+Native researcher `/root/hardy_sampling_check` checked the unconditional
+Hardy moments, weighted two-column reduction, gamma factor and actual
+window error. Primary source: Bui--Hall, *On the derivatives of Hardy's
+function Z(t)*, arXiv:2304.05178v1, equation (1), p.1.
+URL: https://arxiv.org/pdf/2304.05178v1 . Saved source:
+`docs/literature/bui_hall_hardy_derivatives_2304.05178v1.pdf`, SHA-256
+`1dc6faff2be07aa4a9f55f0666679df7087c3b8d874972032b7bbdad0c3a7b14`.
+Root independently read p.1 and verified the saved hash. The displayed
+formula is `integral_0^T Z^(k) Z^(ell) = (-1)^d T Q_(2s+1)(log(T/(2pi)))/
+[4^s(2s+1)] + O(T^(3/4)(log T)^(2s+1/2))`, when k+ell=2s,
+|k-ell|=2d. Exact accompanying text: "where Q2s+1(x) is a monic polynomial
+of degree 2s + 1. This follows from [11; Theorem 3] by integration by parts."
+The equal-order specializations 0,1 give leading constants 1,1/12 and the
+weaker errors used in the answer; no RH assumption enters these moments.
+
+The researcher checked DLMF 5.11.9, https://dlmf.nist.gov/5.11#E9:
+`|Gamma(x+iy)| ~ sqrt(2*pi)|y|^(x-1/2)exp(-pi|y|/2)`.
+With x=1/4,y=t/2 this gives the required eventual lower envelope;
+no differentiated asymptotic is used. `ClassicalXiInterface.lean:45-62`
+and the already checked Ghat=-4xi identity give the factor A_G exactly.
+Production modes on [0,L] gain (-1)^n after centering; this phase is
+retained in both coefficients and reconstruction.
+
+Stieltjes integration against weights 1,x²,x⁴ gives the uniform matrix
+moment estimates, using the positive 2x2 Gram bound. On each grid cell,
+linear interpolation plus endpoint-zero Poincare bounds the error by
+(h/pi)||F'||. The resulting ratio tends to 1/sqrt(3)<2/3 on the actual
+h=2pi/log(m) grid. The source exterior integral supplies the actual
+coefficient error, with constant 8A0/pi² in (16). T=o(m) makes that
+error negligible uniformly in the two coefficients, including a
+coefficient combination cancelling near the first omitted node.
+This establishes only the auxiliary mass bound, not the sign of W.
+
+
+### Actual-window two-column diagnostic, m=8 only
+
+`signed_tail_probe.py` computes E and the entire prime-power matrix P from
+physical window residuals. Both mixed entries and q=m cancellation are
+retained. The initial adaptive implementation omitted (-1)^n from synthesis;
+root caught this before any result was accepted. That attempt was interrupted
+and discarded. The corrected implementation uses the same phase in coefficients
+and basis, and directly checks residual projections onto modes 0,1,m.
+
+Corrected runs: 60 decimal digits / Gauss-Legendre orders 24 and 32, and
+90 digits / order 32. Root independently replayed 70 digits / order 28:
+`python3 docs/routeB_bus/source_observability_2026-09-28/signed_tail_probe.py
+ --m 8 --settings 70:28 --output /tmp/q3_signed_tail_root_70_28.json`.
+The root run took 8.24 seconds and agrees in all 48 reported eigenvalue digits:
+
+`lambda_min(P,E)=0.0978422989510242752311253973694408296845597090355`,
+`lambda_max(P,E)=1.20670223127215800865134417176946544741828070036`,
+`kappa_8=1.34727084352394087904488545064433240250059491527`.
+
+Thus the stronger fixed-unit-margin test (33) fails numerically at this
+cell, but `d_8=kappa_8-lambda_max=0.140568612251782870393541278874866955...`
+is positive. This does not settle the actual budget with mu,R,B at m=8,
+nor any eventual sign. The previous independent Arb certificate already
+settled the original finite m=8 candidate comparison; this diagnostic
+investigates the new arithmetic mechanism, not a new tail claim.
+
+Root's mixed q=2 direct-overlap versus periodic-minus-reflected discrepancy
+is 1.19e-75 or less. These computations share quadrature and part of the
+integrand; they check the decomposition, not an independent certified
+integration method. Changing precision and quadrature order demonstrates
+numerical stability only. No Arb enclosure of these new matrices is claimed.
+The data, including root replay, are saved in `signed_tail_probe.json`.
