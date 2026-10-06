@@ -7941,3 +7941,15 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: вопрос9 отправлен Прошке; нужен реальный source-specific overlap с G или его строгое опровержение, не условный wrapper.
 Адреса: docs/routeB_bus/source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md и OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md.
 Чей вердикт: Прошка — “I did not prove OS or source-null bottom exclusion.” Два независимых ограниченных аудита приняли Green algebra/inertia и source boundary-span estimate с явными source hypotheses; root внёс уточнение raw/symmetric Jacobi conventions. Lean и заявлений RH нет.
+
+## 2026-10-06 — Direct theta localization stalled; weaker bottom overlap (Mac)
+Развилка: продолжать signed multiplication defect или проверить, нужна ли почти единичная близость к ground вообще.
+Выбрали: после проверки ответа9 исследовать eps/rho→0 для полного bottom projector той же K на отрицательных bottom-ячейках; последний вопрос10 отправлен в тот же чат.
+Почему: |lambda_min|rho≤eps точно; малой отрицательной нижней грани может хватить через full-carrier density и критерий Вейля, без простоты и векторного tracking. Сам нижний overlap не получен.
+Что отвергли: carrier-wide small multiplication leakage — явные чётные source-null векторы теряют половину нормы произведения. Они не собственные, поэтому OS не опровергнута.
+Инсайты: полная localization identity сохраняет pole, prime powers и четыре correction terms. Gaussian damping даёт равномерную норму M_G P_I M_G, но только для cross term; endpoint-G² terms и signed defect остаются.
+Блокеры: actual-source rho lower bound; новый full-carrier consumer проверен условно, без поставщика. G1/G3/RH OPEN.
+Иглы Зингера: различать carrier и bottom, P_carrier и P_bottom, собственную невязку и Rayleigh value, условный новый consumer и доказанную оценку.
+Следующий ход: обработать ответ10 о слабом overlap; не повторять multiplication attack и не отправлять 11-й вопрос в исчерпанный чат.
+Адреса: docs/routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md; PROSHKA_DIRECT_THETA_LOCALIZATION_INLINE_2026-10-06.md; LITERATURE_GROUND_OVERLAP_UPDATE_2026-10-06.md.
+Чей вердикт: два ограниченных независимых Luna прохода приняли signed variation и carrier counterexample; root проверил prime damping; отдельный ограниченный Luna проход принял superpolynomial operator residual и полный complex-test density/Weil consumer. Литературная сверка CCM/Andrade/Groskin не нашла поставщика в проверенных источниках. Lean не запускался; RH claim не сделан.

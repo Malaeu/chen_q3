@@ -16,7 +16,9 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - Continuation **7/10 ANSWERED**: [complete inline](source_observability_2026-09-28/PROSHKA_BOUNDARY_SIGN_STRIP_RESPONSE_INLINE_2026-10-06.md), [audit](source_observability_2026-09-28/BOUNDARY_STALL_SOURCE_OS_AUDIT_2026-10-06.md). Only TERMWISE pointwise positivity refuted; integrated sign/U OPEN. Forcing-return mechanism STALLED. Next single obligation: all-bottom-space source stability OS at quarter-power rate. Question8 answered below; do not resend.
 
-- Continuation **8/10 ANSWERED AND CHECKED**: [inline source](source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md), [audit and exact question9](source_observability_2026-09-28/OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md). Full Green sign and full-carrier boundary-span approximations blocked; OS OPEN. Paid qhat-to-theta reference comparison accepted conditionally. **9/10 sent 19:22 Berlin**, same chat; do not resend.
+- Continuation **8/10 ANSWERED AND CHECKED**: [inline source](source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md), [audit and exact question9](source_observability_2026-09-28/OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md). Full Green sign and full-carrier boundary-span approximations blocked; OS OPEN. Paid qhat-to-theta reference comparison accepted conditionally. Question9 answered below; do not resend.
+
+- Continuation **9/10 ANSWERED AND CHECKED**: [inline](source_observability_2026-09-28/PROSHKA_DIRECT_THETA_LOCALIZATION_INLINE_2026-10-06.md), [audit, own attempt and exact question10](source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md). Multiplication variation STALLED; only carrier-wide small leakage refuted, bottom OS OPEN. **10/10 sent about20:10 Berlin** and visible with active answer; weaker negative-bottom overlap explored on the same matrix. Wait, do not resend; no further new questions in this chat.
 
 ## REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE · ANSWERED
 
