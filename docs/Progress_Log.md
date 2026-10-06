@@ -8031,3 +8031,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: HIGH_ZERO_TAIL_AUDIT_2026-10-06.md и PROSHKA_HIGH_ZERO_TAIL_INLINE_2026-10-06.md в source_observability bus; full Table1 source map в literature/exceptional_density_2026-10-06/README.md.
 - Чей вердикт: Прошка answer5; один bounded pass по каждому непересекающемуся блоку growth_symbol_attempt / causal_algebra_audit, no findings; root прочитал full Table1 и HSW Cor1.2. Lean не запускался.
 - Доставка: scoped manual commit/push; phase_end.sh по-прежнему собирает чужие untracked Lean и broad docs, поэтому не применён. Чужие файлы сохранены.
+
+## 2026-10-06 — От fixed-positive norm transfer к signed arithmetic
+
+- Развилка: положительное shifted-xi пространство могло дать source cross-zero compensation через интерполяцию.
+- Выбрали: проверили точный source lift и нормализацию, затем самостоятельно разобрали предложенный exceptional-only Hardy defect.
+- Почему: fixed xi kernel экспоненциально мал на реальных observation heights; uniform lift сверхполиномиально дорог даже в positive source Gram norm.
+- Что отвергли: gamma-neutralized canonical kernel имеет отрицательную диагональ; zero-free entire multiplier не устраняет Blaschke-обструкцию. Это auxiliary theorem-shape kills, не CCM negativity.
+- Инсайты: для любого fixed inner Theta правый endpoint profile переживает Hardy defect; гипотетический off-zero даёт defect²≥c m^delta даже на ran B*. Предложенный all-eta тест уже RH-equivalent, а не более слабый supplier.
+- Блокеры: signed source compensation/SP OPEN. Suzuki local screw identity с полки не даёт знака и не новый supplier.
+- Иглы Зингера: точные совместные d,h одной prime-minus-pole Phi; direct relative-form estimate вместо positive-space norm transfer.
+- Следующий ход: вопрос7 отправлен тому же Pro; держать actual regular/exceptional Schur correction и все prime powers.
+- Адреса: SHIFTED_XI_KERNEL_AUDIT, HARDY_DEFECT_OWN_ATTEMPT, PROSHKA_SHIFTED_XI_KERNEL_INLINE (06.10), shifted_xi_diagonal_certificate_2026-10-06.py; literature/shifted_xi_kernel_2026-10-06.
+- Чей вердикт: answer6 independently audited by growth_symbol_attempt / causal_algebra_audit; root rational reproduction PASS and primary sources read; own Hardy proof independently checked once. Lean не запускался.
+- Доставка: scoped manual commit/push, phase_end.sh не применён из-за прежнего broad staging чужих файлов; чужие пути не менялись.

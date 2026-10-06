@@ -27,6 +27,8 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - **Proof of CCM Growth 5/10 ANSWERED AND CHECKED**: [answer](source_observability_2026-09-28/PROSHKA_HIGH_ZERO_TAIL_INLINE_2026-10-06.md), [audit, own attempt and exact question6](source_observability_2026-09-28/HIGH_ZERO_TAIL_AUDIT_2026-10-06.md). Full high-zero norm and actual endpoint Schur block accepted; old jet-majorized sufficient test killed. Cross-zero sign/SP OPEN. **6/10 sent**, same chat; do not resend.
 
+- **Proof of CCM Growth 6/10 ANSWERED AND CHECKED**: [answer](source_observability_2026-09-28/PROSHKA_SHIFTED_XI_KERNEL_INLINE_2026-10-06.md), [audit, own Hardy defect proof and exact question7](source_observability_2026-09-28/SHIFTED_XI_KERNEL_AUDIT_2026-10-06.md). Auxiliary xi lift/normalization obstructions accepted; fixed-positive norm transfer stalled, actual SP OPEN. **7/10 sent**, same chat; do not resend.
+
 ## REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE · ANSWERED
 
 - `REQ-2026-09-28-ROUTEB-ALPHA-T7-RATE` | [confirmed new Sort_RH_März_2026 chat](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6aba5f5a-f804-83ed-a667-68147ee00f59), user turn `eb1a1594-503d-465d-b308-d92f67290ba1`, sent by 2026-09-28 12:37:08 UTC, ordinal **1/10** | **ANSWERED** 12:48:43 UTC; [exact request](../session_protocols/PROSHKA_REQUEST_GOAL058_ROUTEB_ALPHA_T7_RATE_20260928.txt), [full response](proshka/PROSHKA_VERDICT_GOAL058_ROUTEB_ALPHA_T7_RATE_2026-09-28.md), [source and independent check](proshka/PROSHKA_GOAL058_ROUTEB_ALPHA_T7_RATE_SOURCE_AND_AUDIT_2026-09-28.md). Verdict C identifies missing cofinal M1–M3; G3 (T7) remains OPEN. Do not resend.

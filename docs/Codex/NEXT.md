@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: 9520531f
+Updated: 2026-10-06 · by: Codex Mac · baseline HEAD: 832ac341
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -55,7 +55,10 @@ Claim делается, только когда он действительны�
    Ответ5 проверен: полный high-zero tail при T=mL² имеет norm≤3e6/sqrtL; старый jet-majorant убит.
    Endpoint-only блок точного Schur положителен; его coupling сохранён. Остался знак low off-line rows.
    Двусторонний sandwich даёт faithful Z(s)=L0(G_low+sI)^-1 L0*; Z(C_eta m^eta)≤I OPEN.
-   Своя Woodbury-попытка оставляет cross-zero compensation OPEN; `HIGH_ZERO_TAIL_AUDIT_2026-10-06.md`.
+   Ответ6: fixed shifted-xi observation lift и gamma-neutralized positive kernel убиты в точной форме.
+   Своя проверка: exceptional-only Hardy defect уже RH-equivalent; norm-transfer STALLED.
+   Вопрос7: прямой signed relative-form estimate совместных d,h из одной Phi, с полным Schur coupling.
+   Доказательства: `SHIFTED_XI_KERNEL_AUDIT_2026-10-06.md`, `HARDY_DEFECT_OWN_ATTEMPT_2026-10-06.md`.
 Доказательства, один независимый проход и решение о смене фазы:
 `../routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md`.
 Никаких предположений RH, positivity, polynomial gap или missing overlap.
@@ -67,7 +70,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **5/10 получен и проверен; 6/10 отправлен**: полный high-zero tail и endpoint Schur block проверены; знак low cross-zero interaction OPEN. См. `HIGH_ZERO_TAIL_AUDIT_2026-10-06.md` в той же bus-папке. Ждать ответ в том же чате, не пересылать.
+- Новый [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **6/10 получен и проверен; 7/10 отправлен**: fixed-positive norm transfer STALLED; возврат к совместному signed d,h arithmetic estimate. SP OPEN. См. `SHIFTED_XI_KERNEL_AUDIT_2026-10-06.md` в той же bus-папке. Ждать ответ в том же чате, не пересылать.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)
