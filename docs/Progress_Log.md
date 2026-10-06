@@ -8017,3 +8017,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: EXCEPTIONAL_SCHUR_AUDIT_2026-10-06.md, PROSHKA_EXCEPTIONAL_SCHUR_INLINE_2026-10-06.md; literature/exceptional_density_2026-10-06.
 - Чей вердикт: causal_algebra_audit — signed source/Schur; growth_symbol_attempt — near/tail/rank; root — uniform primary density map. Lean не запускался.
 - Сохранение: scoped commit вручную, phase_end.sh захватывает чужие untracked Lean и git add -u; чужая работа сохранена.
+
+## 2026-10-06 — Полный high-zero tail вместо ложной endpoint-обструкции
+
+- Развилка: старый sufficient Gram test мог ошибочно отвергать source из-за jet-majorant.
+- Выбрали: суммировать m^|Re(w)| по full-strip density до worst-case bound; получили ||W_high||≤3e6/sqrt(log m) на всём carrier.
+- Почему: это оплачивает величину всех высоких нулей и endpoints, а не только их число.
+- Что отвергли: старый jet-majorized Q test кофинально отрицателен на исходном Dirichlet witness при eta<1/2; actual shifted H на нём положителен.
+- Инсайты: endpoint-only блок actual Schur теперь положителен; его coupling оплачен последовательным Schur. Двусторонний sandwich сохраняет связь finite low Gram с actual target.
+- Блокеры: low cross-zero compensation / SP OPEN; Woodbury identity сама оценки не даёт. RH не доказана.
+- Иглы Зингера: точный положительный correction в Woodbury-разности; generic Pick, rank и tanh contraction его не поставляют.
+- Следующий ход: вопрос6 отправлен в тот же Pro chat; проверить source-specific signed construction из xi/theta/Euler product.
+- Адреса: HIGH_ZERO_TAIL_AUDIT_2026-10-06.md и PROSHKA_HIGH_ZERO_TAIL_INLINE_2026-10-06.md в source_observability bus; full Table1 source map в literature/exceptional_density_2026-10-06/README.md.
+- Чей вердикт: Прошка answer5; один bounded pass по каждому непересекающемуся блоку growth_symbol_attempt / causal_algebra_audit, no findings; root прочитал full Table1 и HSW Cor1.2. Lean не запускался.
+- Доставка: scoped manual commit/push; phase_end.sh по-прежнему собирает чужие untracked Lean и broad docs, поэтому не применён. Чужие файлы сохранены.
