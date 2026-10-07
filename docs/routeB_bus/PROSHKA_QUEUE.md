@@ -2,7 +2,7 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-- **Execute Multilinear Source Test 1/10 SENT** (same-phase forced rollover): [exact request and chat](source_observability_2026-09-28/GROWTH_ROLLOVER_QUESTION1_2026-10-07.md), [authoritative source pack](source_observability_2026-09-28/PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt). Linear finite-convolution test; whole Schur/source residual OPEN. Pro working; await answer, do not resend.
+- **Execute Multilinear Source Test 1/10 CHECKED; 2/10 SENT**: [ответ1](source_observability_2026-09-28/PROSHKA_LINEAR_CONVOLUTION_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/LINEAR_CONVOLUTION_AUDIT_2026-10-07.md), [вопрос2](source_observability_2026-09-28/GROWTH_ROLLOVER_QUESTION2_2026-10-07.md). Long-free collapse/quadrature приняты; TV supplier убит; signed Mellin product в работе. Schur/SP OPEN, ждать ответ без повторной отправки.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.
 

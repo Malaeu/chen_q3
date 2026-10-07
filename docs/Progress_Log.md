@@ -8101,3 +8101,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PARITY_PRIME_AUDIT, PROSHKA_PARITY_PRIME_INLINE, GROWTH_ROLLOVER_QUESTION1 и source pack в bus; literature/linear_convolution_2026-10-07.
 - Чей вердикт: growth_symbol_attempt §§1–2 (floor bound2/3 уточнён), causal_algebra_audit §§3–6 и own sector lemma, один проход каждого блока; mobius_source_audit bounded alias-hunt, root independently read Robert §3.1 Thm1/§3.2. Shelf incomplete не означает отсутствия источников. Lean не запускался.
 - Доставка: Pro UI подтвердил полный запрос/attachment и живую генерацию; attachment readback byte-exact. Manual scoped commit/push, phase_end.sh исключён из-за broad staging чужих untracked файлов; чужие файлы сохранены.
+
+## 2026-10-07 — Long-free collapse and complete residual TV obstruction
+
+- Развилка: линейное Heath-Brown разложение сохраняет длинные Möbius sectors.
+- Выбрали: joint finite Mellin product beta_V с гиперболическим cutoff до нормы.
+- Почему: exact cofactor collapse и whole-carrier quadrature проверены, но complete tau_V имеет TV порядка не меньше sqrt(m)/polylog.
+- Что отвергли: subpolynomial TV certificate для всех V0≤V≤X; finite inversion/nilpotence alone не дают знак.
+- Инсайты: triple-prime atoms сохраняют все допустимые a-divisors и discrete -2; nilpotent auxiliary Q после проекции имеет leakage.
+- Блокеры: actual signed Schur/SP/G1/G3 OPEN; Delta10+E_V не является floor и не даёт всех eta.
+- Иглы Зингера: совместный Mellin product, непрерывный компенсатор и границы product cutoff до оценки нормы.
+- Следующий ход: вопрос2 в том же Execute Multilinear Source Test отправлен; UI подтвердил полный текст, Pro, пустой composer и Stoppen. Ждать без дубля.
+- Адреса: LINEAR_CONVOLUTION_AUDIT, PROSHKA_LINEAR_CONVOLUTION_INLINE, LINEAR_SECTOR_CANCELLATION_OWN, JOINT_MELLIN_OWN, GROWTH_ROLLOVER_QUESTION2 в bus.
+- Чей вердикт: growth_symbol_attempt quadrature, causal_algebra_audit algebra/Schur и own finite identity, root TV obstruction; один ограниченный проход каждого блока. Bounded alias lookup не нашёл нового verified supplier; shelf INCOMPLETE не означает отсутствия. Lean не запускался.
+- Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked файлов. Чужие файлы сохранены.
