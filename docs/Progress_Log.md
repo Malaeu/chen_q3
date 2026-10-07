@@ -8185,3 +8185,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_MOMENT_SOURCE_INLINE, MOMENT_SOURCE_AUDIT, SCHUR_MOMENT_SOURCE_CHECK, DISPLACEMENT_SOURCE_OWN, GROWTH_ROLLOVER_QUESTION7 в bus.
 - Чей вердикт: growth_symbol_attempt source constants и uniform scale; causal_algebra_audit projected words/displacement и own two actions; answer10_pair_audit residual/errors и own PSD source check; root fullpreview quarticerror/source return. Один bounded pass по блокам. Lean не запускался.
 - Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
+
+## 2026-10-07 — Displacement audit and mixed Gram alias return
+
+- Развилка: exact Cauchy actions получены, joint sign не оценен.
+- Выбрали: зафиксировать displacement STALLED и проверить clustered exponential literature.
+- Почему: same-pair cancellation не контролирует distinct ordinates, retained high rows и Pi feedback.
+- Что отвергли: entrywise bounds как operator error; stable basis с потерянным source weight.
+- Инсайты: C=D R сохраняет projector, но CC*=D RR* D*; cluster normalization не даёт знак.
+- Блокеры: actual mixed-zero Gram, uniform source hypotheses, Schur/SP/G1/G3/RH OPEN.
+- Иглы Зингера: rho endpoints prescribed; negative tail sign; |gamma|<=Omega/2 only; all four tails.
+- Следующий ход: source-specific weighted mixed block estimate; Q8 пока не отправлен.
+- Адреса: DISPLACEMENT_AUDIT, PROSHKA_DISPLACEMENT_INLINE в bus; literature/mixed_zero_gram_2026-10-07 PDF и source card.
+- Чей вердикт: growth_symbol_attempt §1; causal_algebra_audit §§2,4; answer10_pair_audit §3; root return/full preview и первоисточник Avdonin–Ivanov. Один ограниченный проход; Lean не нужен.
+- Доставка: manual scoped commit/push; phase_end.sh broad staging захватил бы чужие untracked файлы.
