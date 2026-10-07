@@ -1,3 +1,17 @@
+# Q5 processed — bounded audits passed, scoped delivery next
+
+Q5/10 sent2026-10-07 10:40UTC in SAME Execute Joint Probe Calculation chat:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac5dfb3-b068-83ed-810a-dc77fa77ebbd
+Observed exact attachment and sent message, selected Pro, ChatGPT antwortet and Stoppen; screenshot captured. Do not resend.
+
+PROSHKA_JOINT_CONTRACTION_Q05.txt:829808bytes,17318 newlines, final newline; SHA2566e520e516833752c40049e3717036f0be987832e8c4af03505aec4ee127489eb. Complete pinned OpenAI source embedded byte-exact, plus Q2/Q3/Q4 normalized mathematics, new weighted long-divisor bound and full outer triangle budget. Q4 scoped commit4abeb330ecc73ed426545894947aaf5e7b3911a6 confirmed on origin.
+
+Question: actual joint signed contraction with two long Mobius factors retained, selective Cauchy/completion and complementary-divisor correlation; calculate zero/nonzero terms and full dyadic budget. Bettin–Chandee mechanism is a partial analogue only, rational theorem not imported. Alias-return source/hypothesis map in TRILINEAR_DISPERSION_ALIAS_RETURN.md; local shelf3queries INCOMPLETE, notabsence.
+
+Q5 terminal Antwort abgeschlossen observed11:40UTC. Full rendered attachment read (308blocks,61583normalizedcharacters); PROSHKA_Q05_AUDIT_EXTRACT.md is manual normalization, not original answer bytes. Complete zero-mode budget1/6 and full-H upper-annulus Type-II7/12 passed independent bounded analytic audits. Root507exact local means and nine exponent controls PASS (diagnostics). Heartbeat remains active until one scoped request+answer+conclusion commit/push, then disable. No Answer now. Full consumer and RH/SP/Schur/G1/G3/scalar reserve OPEN.
+
+--- Historical Q4 closeout ---
+
 # Q4 processed — no pending Pro question
 
 Q4 independent bounded audits completed: completion/phase/parity(1)–(20) and incidence/tuple/polar/scope(21)–(29) PASS. Unit-exclusion prose corrected to include N~T. Full answer read; request, normalized extract and Q04_OWN_CONCLUSION.md are ready for the scoped closeout commit. Own long-divisor weighted cofactor bound and its full outer-triangle budget are checked: partial RMS Z^-1/8, but physical TII upper budget83/96 remains inadequate. No Q5 sent. Disable Q4 heartbeat after delivery; native RH goal remains active.
@@ -94,3 +108,19 @@ Final mathematical status: good-principal primal sector O_A(Z^-A) checked at sou
 09:51UTC scheduled live check: Q4 still Denke nach/Stoppen with intermediate source/phase/recursion work; no terminal answer or final attachment. Do not treat intermediate predictions as accepted mathematics. Next check around10:11UTC; heartbeat unchanged. No resend/skip.
 
 Root all-valuation extension while waiting: ALL_FREQUENCY_COFACTOR_BOUND.md independently checked. H=s k² yields the same short-polynomial all-row mean square when Q>=T². Primitive R_H>1 rows use convexity/critical-line shift; R_H=1 sixth-power rows are retained with O(Q1/6 log²T). Thus sumallH|B|² <<epsilon(q_mQNT)^epsilon[Q3/2/N logT+Q1/6 log²T]. No full weighted outer sum, complement, or high bound follows. No extra Pro send; next check10:11UTC.
+
+Root progress while Q5 pending: TWO_LONG_DIVISOR_COLLAPSE.md checked by squarefree_conductor_check. Same-product factorization d1d2=r s² has coefficient mu(r)c_T(r,s), no internal sign cancellation. Grouping both long divisors before the all-row weighted sieve improves the full-H upper-annulus TII triangle budget from83/96 to151/192; still insufficient for3/16. Norm-one rows and full H tails retained; Type I/complement untouched. No extra Pro message; next check11:00UTC.
+
+2026-10-07 10:59UTC: source-native arbitrary-row E_j norm-power corollary independently checked PASS; TWO_LONG_DIVISOR_COLLAPSE.md(6)–(8) improve weighted energy middle term to Q^(1/3)R^(4/3), and physical TII upper exponent to37/48. Finite ray orientation, original zeros, unit shells and outer theta2/3 sums retained. Still above3/16; no full probe/RH closure. Q5 remains sole pending question, no extra send.
+
+11:00UTC scheduled live check: Q5 still Denke nach/Stoppen, no terminal answer or final attachment. Intermediate reasoning independently mentions same-product mu(r) signs and covariance; not admitted as a terminal result. Next check around11:20UTC under existing20-minute heartbeat. No resend or skip.
+
+2026-10-07 11:07UTC: RECOMBINED_ANNULUS_SIEVE.md independently checked PASS. Exact -TI+TII=C[mu] on u>=cZ25/48 restores squarefree coefficients before the H norm. Keeping U~ZP/(aPg) in outer sums gives physical annular boundZ^(23/32+epsilon), exponents47/96,23/32,11/16. Full R_eta,theta and high continuation remain OPEN; this is not a new full-probe exponent. Q5 still sole pending request; next scheduled live check11:20UTC, no extra message.
+
+2026-10-07 11:14UTC: FULL_LOW_PAIRING_TARGET.md bounded source/scope/arithmetic audit PASS. Source full low3/16 already includes alln/all-s/Gaussian complement collectively; recent isolated23/32 and37/48 bounds do not improve it. Exact full A_m B^J_m pairing remains a same-mechanism target retaining completed rows. Conditional gain sigma_J would yield low3/16-min_J(d_J+sigma_J); critical-line low needs gain approaching3/8 and compatible high side. No such cancellation proved, no extra Pro send; compare with terminalQ5 before next question. Next live check11:20UTC.
+
+11:20UTC scheduled live Q5 check: Denke nach/Stoppen and service checking status remain visible; intermediate narrative advanced through Type-II bounds, complementary parametrization and CRT phases, but no terminal answer/attachment. No interim mathematics accepted; no resend/skip. Next check around11:40UTC. Full-pairing alias return is running independently while preserving the same joint signed mechanism.
+
+2026-10-07: bounded full-pairing alias return recorded in FULL_LOW_PAIRING_TARGET.md. Completion retains a moving quadratic twist/zero-mask family; Dunn fixed-cusp theorem still lacks a coefficient map. DFDH explicitly proposes, rather than proves, the uniform level-structure shifted correlation needed for that route; its proved cubic lower operator bound is not an upper supplier. Three shelf queries INCOMPLETE (freshness), not absence. No new full gain or Pro send.
+
+2026-10-07 11:32UTC: fixed-quadratic-core rewrite in FULL_LOW_PAIRING_TARGET.md(3)–(6) independently PASS. m=epsilon*kappa*h² turns the c-factor into cubic Gauss numeratorh², but retains n-h masks. Exact finite e-expansion changes markD toD/(D,e) andU toU/qe³; auxiliary unpunctured series is not sourceT without Euler denominators. D=p,h=p cancellation control and rescaled-geometry mismatch verified. No full pairing gain; no new Pro send. Next scheduledcheck11:40UTC.
