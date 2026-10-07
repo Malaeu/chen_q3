@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: 2138e29c
+Updated: 2026-10-07 · Linux corpus-search handoff on 9a0f8507; Mac retains main execution. Read `../literature/openai_math_2026-10-07/linux_needle_scan/REPORT.md`: order-independent moment mechanism, checked fixed-N prime derivative jump, missing compensation and N=m coupling. Research candidate only; no change to SP or the active route.
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
