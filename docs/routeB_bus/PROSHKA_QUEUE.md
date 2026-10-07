@@ -2,7 +2,7 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-- **Execute Multilinear Source Test 3/10 CHECKED; 4/10 SENT**: [ответ3](source_observability_2026-09-28/PROSHKA_ODD_POISSON_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/ODD_POISSON_AUDIT_2026-10-07.md), [вопрос4](source_observability_2026-09-28/GROWTH_ROLLOVER_QUESTION4_2026-10-07.md). Endpoint-safe tail оплачена; coefficientwise suppression убит с cutoff qualification. Second Poisson/product ratios в работе; actual Schur/SP OPEN.
+- **Execute Multilinear Source Test 4/10 CHECKED; 5/10 SENT**: [ответ4](source_observability_2026-09-28/PROSHKA_SECOND_POISSON_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/SECOND_POISSON_AUDIT_2026-10-07.md), [вопрос5](source_observability_2026-09-28/GROWTH_ROLLOVER_QUESTION5_2026-10-07.md). Second tail оплачена; complete g1/g3 coefficientwise suppression убит. Finite aspect integral в работе; actual Schur/SP OPEN.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.
 

@@ -8143,3 +8143,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: ODD_POISSON_AUDIT, PROSHKA_ODD_POISSON_INLINE, SECOND_POISSON_OWN, GROWTH_ROLLOVER_QUESTION4; literature/double_poisson_2026-10-07.
 - Чей вердикт: growth_symbol_attempt analytic §§1–2; causal_algebra_audit arithmetic §§3–5 и own second-transform algebra; root full-preview continuous density и Schur. Один ограниченный проход по блокам. MSTT Lemma3.5 прочитана root: conditional partial mechanism, missing correlation input не принят. Lean не запускался.
 - Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
+
+## 2026-10-07 — Second Poisson tail and complete product-ratio obstruction
+
+- Развилка: второй centered transform даёт coherent product ratios, но не знак.
+- Выбрали: finite hyperbolic aspect integral с полными Z/B/D и CQ signed.
+- Почему: второй analytic tail uniform <=2^24/m^5; g1/g3 complete coefficient сохраняется, coefficientwise completion STALLED.
+- Что отвергли: uniform o(1) normalized double-interior coefficients; это не lower bound полного integral или Schur witness.
+- Инсайты: Bernoulli resummation сохраняет internal actual-minus-midpoint correction без1/h; mu*mu не mu*1. Свои точные aspect endpoints и affine-log boundary-forced ODE проверены.
+- Блокеры: signed integrated estimate и SP/G1/G3/RH OPEN; Delta10 и normJ остаются.
+- Иглы Зингера: все четыре параметра witness — простые; moving endpoints нельзя дифференцировать как постоянные или расширять до full Bessel.
+- Следующий ход: вопрос5 отправлен в том же чате; UI readback показал полный текст, Pro, пустой composer и Stoppen, connection recovery wait. Не отправлять повторно.
+- Адреса: PROSHKA_SECOND_POISSON_INLINE, SECOND_POISSON_AUDIT, HYPERBOLIC_ASPECT_OWN, GROWTH_ROLLOVER_QUESTION5 в bus.
+- Чей вердикт: growth_symbol_attempt analytic §§1–2; causal_algebra_audit grouping/witness; root Schur/full-preview budgets; answer10_pair_audit собственные aspect formulas. Один ограниченный проход по блокам. Lean не нужен и не запускался.
+- Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
