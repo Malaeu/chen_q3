@@ -8269,3 +8269,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PRIME_PREFIX_ENERGY_OWN_2026-10-07.md в bus; literature/selberg_drift_2026-10-07/selberg1949.pdf.
 - Чей вердикт: growth_symbol_attempt exact energy/entropy PASS; causal_algebra_audit approximate-recursion test PASS; root primary mapping.
 - Доставка: scoped manual commit/push; чужие файлы сохранены, Lean не требуется.
+
+## 2026-10-07 — Exact Mobius quadrature correction changes sign
+
+- Развилка: сохранить lattice remainder до approximate Selberg O(x).
+- Выбрали: Lambda=mu*log, exact finite primitive H и whole Mobius quadrature defect.
+- Почему: проверить арифметическую информацию, теряемую при усреднении.
+- Что отвергли: generic favorable sign after Mobius convolution; finite signs do not decide eventual behavior.
+- Инсайты: |H-H0|<=2s/e по unimodality; whole defect <=8sqrt x/e; rational intervals certify opposite signs at 10 and 100.
+- Блокеры: joint signed estimate of main Mobius moments and correction; Psi/reserve/RH OPEN.
+- Иглы Зингера: T_K не Psi; точный floor и endpoints; не заменять main term на B.
+- Следующий ход: only quantitative joint arithmetic estimate; Q10 not sent for a mere rewrite.
+- Адреса: MOBIUS_QUADRATURE_OWN и mobius_kernel_interval_check_2026-10-07.py в bus.
+- Чей вердикт: growth_symbol_attempt bounded exploration; causal_algebra_audit PASS root bound and exact certificate; root integrated narrow scope.
+- Доставка: scoped manual commit/push, foreign files untouched; Lean not required for bounded diagnostic.
