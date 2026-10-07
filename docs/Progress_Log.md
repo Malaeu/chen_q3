@@ -8199,3 +8199,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: DISPLACEMENT_AUDIT, PROSHKA_DISPLACEMENT_INLINE в bus; literature/mixed_zero_gram_2026-10-07 PDF и source card.
 - Чей вердикт: growth_symbol_attempt §1; causal_algebra_audit §§2,4; answer10_pair_audit §3; root return/full preview и первоисточник Avdonin–Ivanov. Один ограниченный проход; Lean не нужен.
 - Доставка: manual scoped commit/push; phase_end.sh broad staging захватил бы чужие untracked файлы.
+
+## 2026-10-07 — Actual theta source rules out a carrier-wide frame shortcut
+
+- Развилка: mixed-Gram cancellation сама по себе направлена против нужного diagonal sign.
+- Выбрали: проверить quantitative lower sampling и его carrier-wide усиление на точном G.
+- Почему: q0+rN=||Pcal v||²-||C*v||²+<v,E0v>+r||v||²; regular Schur subtraction дополнительно неположителен.
+- Что отвергли: full-carrier polynomial lower frame для retained positive rows, через доказанный source witness. Burnol completeness не quantitative bound и относится к другой системе.
+- Инсайты: cutoff/Fourier G даёт positive и negative row energies O_A(m^-A); high negative-Gram projection <=energy/tau. Поэтому witness не убивает restricted-E target.
+- Блокеры: lower sampling только на actual E, signed E0 и regular-resolvent correction; SP/RH OPEN.
+- Иглы Зингера: fixed sequence independent of proof order; count multiplicities; generic cross-Gram использует ROW Gram; small Omega не помогает.
+- Следующий ход: только source-specific lower estimate/compensation на E; Q8 не отправлен без нового quantitative bridge.
+- Адреса: POSITIVE_ROW_FRAME_OBSTRUCTION в bus; literature/mixed_zero_gram_2026-10-07 Burnol PDF/source card.
+- Чей вердикт: growth_symbol_attempt независимо проверил source counterexample и threshold projection; answer10_pair_audit checked direction/partial isometry, root corrected row-Gram label; root прочитал Burnol Thm3.1/Prop6.1. Lean не требуется.
+- Доставка: scoped manual commit/push вместо broad phase_end staging чужих untracked файлов.
