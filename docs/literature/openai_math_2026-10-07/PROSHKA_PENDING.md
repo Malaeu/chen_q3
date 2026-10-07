@@ -1,3 +1,21 @@
+# Q4 processed — no pending Pro question
+
+Q4 independent bounded audits completed: completion/phase/parity(1)–(20) and incidence/tuple/polar/scope(21)–(29) PASS. Unit-exclusion prose corrected to include N~T. Full answer read; request, normalized extract and Q04_OWN_CONCLUSION.md are ready for the scoped closeout commit. Own long-divisor weighted cofactor bound and its full outer-triangle budget are checked: partial RMS Z^-1/8, but physical TII upper budget83/96 remains inadequate. No Q5 sent. Disable Q4 heartbeat after delivery; native RH goal remains active.
+
+2026-10-07 around10:11UTC terminal Antwort abgeschlossen observed in the SAME chat. Full rendered PROSHKA_VERDICT_SIGNED_DUAL_Q04.md read:227 blocks,47773 normalized characters. PROSHKA_Q04_AUDIT_EXTRACT.md is a manual normalized extract, not original attachment bytes. General double completion, phase/parity switch and restricted even covariance estimate27/16 await bounded independent audit. No full exponent gain or high extension claimed. Q5 not sent. After audit, request+answer+own conclusion belong in one scoped commit/push, then disable Q4 heartbeat.
+
+Root work while waiting has independently checked LONG_DIVISOR_COFACTOR_BOUND.md: actual beta=mu_gt*1 and all-row sextic sieve yield cofactor RMS Z^-1/8 for allN>=T, with weighted extension depending explicitly on R=q_(g P22 P11). This supersedes the earlier weaker convexity estimate for this subproblem. Outer sums and physical complement remain OPEN.
+
+Q4/10 sent 2026-10-07 09:31 UTC in SAME Execute Joint Probe Calculation chat:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac5dfb3-b068-83ed-810a-dc77fa77ebbd
+Observed exact submitted attachment/text, Pro model, ChatGPT antwortet and Stoppen. Do not resend.
+
+PROSHKA_SIGNED_DUAL_Q04.txt:945248 bytes,18829 newline characters, final newline; SHA25637cb10ded56e7fc731b63fe9d77f6ba4a2c7171a75baa3f70d4d6c1ace3ffd32. Complete pinned OpenAI source and DFDH2607.07911v2 source embedded byte-exact. Q3 processed0f066a12; own free-cofactor/source returnf092b424. New SIGNED_DUAL_MELLIN_ATTEMPT.md independently checked: exact D_f(s)M_T(1-s) on Re s>1; reciprocal-L replacement is unjustified without truncated-tail control. No new exponent gain.
+
+Question requests actual joint signed estimate and full second-transform mapping, with polar terms, all phases/masks and physical complement. +20min heartbeat q3-joint-low-probe ACTIVE; next check around09:51UTC. Read full response, audit status-changing result, one scoped request+answer+conclusion commit/push, then disable. No Answer now. RH/SP/Schur/G1/G3/scalar reserve OPEN.
+
+--- Historical Q3 closeout ---
+
 # Q3 processed — no pending Pro question
 
 Q3/10 terminal observed 2026-10-07 09:04 UTC in the SAME Execute Joint Probe Calculation chat. Full rendered attachment read (200 blocks). Request PROSHKA_SIGNED_CORRELATION_Q03.txt:790389 bytes; SHA2561f9423ac7c532176bfe8d945c933222adbc68a65c921388c80855c97d1d49958. Do not resend. Q2 baseline ee31a5d5.
@@ -70,3 +88,9 @@ Final mathematical status: good-principal primal sector O_A(Z^-A) checked at sou
 07:25 UTC root progress: sextic source audit completed bounded PASS (SEXTIC_SIEVE_BOUNDED_AUDIT.md). LOWER_Z_LOCAL_TEST.md independently PASS: angular extraction does not preserve the old selected local error on z=1/6; B_p+chi_p(u)^-1 has magnitude asymptotic P^(3-5a) on all unramified rows for .5<a<.6. No global signed-sum lower bound or exponent gain. Q2 is still the sole pending question; next live check remains around 07:39 UTC.
 
 08:25 UTC Q3 live check: Denke nach/Stoppen, no final answer. Intermediate reasoning reports extracting a squarefree Mobius variable before convolution, since common-coordinate valuation-two terms cannot be multiplied by mu(a); also checking sixth-power ratio diagonals. These are interim observations, not accepted results. Next scheduled check around08:45 UTC. No resend/skip.
+
+09:43UTC root continuation while Q4 pending: SHORT_MOBIUS_MEAN_SQUARE.md and FIXED_PROFILE_COFACTOR_BOUND.md independently checked. For H>1 squarefree,(H,m)=1, Q>=T², the actual cofactor B has sum_H|B|² <<epsilon (q_mQNT)^epsilon Q^(3/2)/N log(2T), with balanced H-dependent profile separated uniformly. At source scales ambient-normalized RMS gainsZ^-3/64; outside triangle budget181/192 remains insufficient. SECOND_TRANSFORM_RAY_OBSTRUCTION.md also independently checked: Q3(32) phase correct, but ratio mu alpha²G² cannot be absorbed by a fixed finite-ray function. No extra Pro message. Compare these with Q4 after the scheduled09:51UTC check.
+
+09:51UTC scheduled live check: Q4 still Denke nach/Stoppen with intermediate source/phase/recursion work; no terminal answer or final attachment. Do not treat intermediate predictions as accepted mathematics. Next check around10:11UTC; heartbeat unchanged. No resend/skip.
+
+Root all-valuation extension while waiting: ALL_FREQUENCY_COFACTOR_BOUND.md independently checked. H=s k² yields the same short-polynomial all-row mean square when Q>=T². Primitive R_H>1 rows use convexity/critical-line shift; R_H=1 sixth-power rows are retained with O(Q1/6 log²T). Thus sumallH|B|² <<epsilon(q_mQNT)^epsilon[Q3/2/N logT+Q1/6 log²T]. No full weighted outer sum, complement, or high bound follows. No extra Pro send; next check10:11UTC.
