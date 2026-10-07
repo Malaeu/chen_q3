@@ -8255,3 +8255,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: SELBERG_SCALAR_OWN, GROWTH_ROLLOVER_QUESTION9, PROSHKA_SELBERG_SCALAR_INLINE, SELBERG_SCALAR_AUDIT в bus.
 - Чей вердикт: causal_algebra_audit tail/return PASS; growth_symbol_attempt coefficient/correlation/Volterra PASS; root full preview.
 - Доставка: manual scoped commit/push вместо phase_end.sh broad staging чужих untracked файлов; Lean не требуется.
+
+## 2026-10-07 — Ordered prime-prefix energy return exposes no independent sign
+
+- Развилка: ordered-pair symmetrization / Selberg remainder recursion после Q9.
+- Выбрали: точный Stieltjes balance с полными jumps/endpoints и сверку primary Selberg1949.
+- Почему: видимый положительный квадрат нельзя тратить без остальных членов.
+- Что отвергли: новый знак из symmetrization; O(x) remainder equation как critical-scale discriminator.
+- Инсайты: net energy тождественно возвращает Q8 entropy; fixed actual prime weights в approximate recursion допускают добавление x^sigma cos(gamma log x), sigma<1.
+- Блокеры: exact source-specific signed drift; scalar reserve/RH OPEN.
+- Иглы Зингера: perturbation не actual theta; Q9 prime-only outer sum требует proper-power correction; не перепутать два R.
+- Следующий ход: exact arithmetic information beyond O(x) remainder; Q10 пока не отправлен.
+- Адреса: PRIME_PREFIX_ENERGY_OWN_2026-10-07.md в bus; literature/selberg_drift_2026-10-07/selberg1949.pdf.
+- Чей вердикт: growth_symbol_attempt exact energy/entropy PASS; causal_algebra_audit approximate-recursion test PASS; root primary mapping.
+- Доставка: scoped manual commit/push; чужие файлы сохранены, Lean не требуется.

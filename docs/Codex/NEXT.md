@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: 2c3358af
+Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: ccf80f7f
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -75,7 +75,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **10/10 получены и проверены; чат исчерпан**. SP OPEN. Forced rollover той же фазы; пакет `PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt`, аудит `PARITY_PRIME_AUDIT_2026-10-06.md` в bus. Новый [Execute Multilinear Source Test](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac58a1c-1568-83ed-95d0-857526e2b6cb): **9/10 получены и проверены; Q10 не отправлен**. Proper-power signed drift имеет vanishing tail; mixed product convolution точно сокращается с forcing. Остался net prime-prefix correlation с полной предысторией; следующая своя quantitative attempt после source/alias return.
+- [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **10/10 получены и проверены; чат исчерпан**. SP OPEN. Forced rollover той же фазы; пакет `PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt`, аудит `PARITY_PRIME_AUDIT_2026-10-06.md` в bus. Новый [Execute Multilinear Source Test](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac58a1c-1568-83ed-95d0-857526e2b6cb): **9/10 получены и проверены; Q10 не отправлен**. Proper-power signed drift имеет vanishing tail; mixed product convolution точно сокращается с forcing. Остался net prime-prefix correlation с полной предысторией; Stieltjes/approximate Selberg return проверен: нового знака нет. Дальше нужен exact signed arithmetic supplier, не PNT/magnitude rewrite.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)
