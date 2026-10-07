@@ -8129,3 +8129,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_JOINT_MELLIN_INLINE, JOINT_MELLIN_AUDIT, ODD_POISSON_OWN, GROWTH_ROLLOVER_QUESTION3 в bus.
 - Чей вердикт: causal_algebra_audit §§1–4 и own Poisson/DCT, growth_symbol_attempt §§5–6, root derivative kill; один ограниченный проход по блокам. Literature leads не приняты без exact source evidence. Lean не запускался.
 - Доставка: scoped manual commit/push; phase_end.sh не используется из-за broad staging чужих untracked путей.
+
+## 2026-10-07 — Endpoint-safe alias tail and complete rational coefficient
+
+- Развилка: first Poisson переводит арифметику в coherent rational aliases.
+- Выбрали: second Poisson centered a-flux и полную группировку product ratios k*ell/(d*h).
+- Почему: infinite analytic tail paid O(h_U L/sqrt m); complete stationary coefficient не исчезает после всех a-divisors/representations.
+- Что отвергли: uniform coefficientwise o(1)/q; ordinary K=m² сохраняет witness, Fejer требует w_K(n). Signed whole integral не опровергнут.
+- Инсайты: точный Q_K сохраняет boundary layer; clipped Fresnel endpoints нельзя заменять полными; continuous frequency density не имеет атома, но integral cancellation остаётся.
+- Блокеры: actual signed Schur/SP/G1/G3 OPEN; Delta10 и normJ сохранены.
+- Иглы Зингера: centered second-flux minus sign, interior1/h против endpoint no1/h; hyperbolic domain и first-boundary jumps.
+- Следующий ход: вопрос4 отправлен в том же living chat, без дубля.
+- Адреса: ODD_POISSON_AUDIT, PROSHKA_ODD_POISSON_INLINE, SECOND_POISSON_OWN, GROWTH_ROLLOVER_QUESTION4; literature/double_poisson_2026-10-07.
+- Чей вердикт: growth_symbol_attempt analytic §§1–2; causal_algebra_audit arithmetic §§3–5 и own second-transform algebra; root full-preview continuous density и Schur. Один ограниченный проход по блокам. MSTT Lemma3.5 прочитана root: conditional partial mechanism, missing correlation input не принят. Lean не запускался.
+- Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
