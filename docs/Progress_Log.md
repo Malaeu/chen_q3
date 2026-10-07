@@ -8115,3 +8115,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: LINEAR_CONVOLUTION_AUDIT, PROSHKA_LINEAR_CONVOLUTION_INLINE, LINEAR_SECTOR_CANCELLATION_OWN, JOINT_MELLIN_OWN, GROWTH_ROLLOVER_QUESTION2 в bus.
 - Чей вердикт: growth_symbol_attempt quadrature, causal_algebra_audit algebra/Schur и own finite identity, root TV obstruction; один ограниченный проход каждого блока. Bounded alias lookup не нашёл нового verified supplier; shelf INCOMPLETE не означает отсутствия. Lean не запускался.
 - Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked файлов. Чужие файлы сохранены.
+
+## 2026-10-07 — Joint Mellin returns the source; exact odd Poisson next
+
+- Развилка: finite convolution inverse сохраняется после исходного a-flux, но ещё не даёт знака.
+- Выбрали: complete odd-lattice Poisson–Mellin transform E_U,V вместе с Theta_U.
+- Почему: Euler cancellation возвращает prime-power staircase с coefficient1; norm completion STALLED.
+- Что отвергли: uniform derivative absorption через polylog arch energy; top original mode даёт кофинальный контрпример только этому интерфейсу.
+- Инсайты: actual a>U annihilates b>X tail; long/short means и wheel mean отменяются точно. Fejer representation сохраняет half-endpoints и допускает fixed-cell DCT через обе части a-flux.
+- Блокеры: signed stationary aliases, actual Schur/SP/G1/G3 OPEN; inherited Delta10 не floor.
+- Иглы Зингера: endpoint coincidences для atomic flux; stationary d3,k7 геометрически допустим, но не aggregate witness.
+- Следующий ход: вопрос3 отправлен в том же чате; await full answer, не повторять.
+- Адреса: PROSHKA_JOINT_MELLIN_INLINE, JOINT_MELLIN_AUDIT, ODD_POISSON_OWN, GROWTH_ROLLOVER_QUESTION3 в bus.
+- Чей вердикт: causal_algebra_audit §§1–4 и own Poisson/DCT, growth_symbol_attempt §§5–6, root derivative kill; один ограниченный проход по блокам. Literature leads не приняты без exact source evidence. Lean не запускался.
+- Доставка: scoped manual commit/push; phase_end.sh не используется из-за broad staging чужих untracked путей.
