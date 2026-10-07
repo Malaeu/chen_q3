@@ -8171,3 +8171,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_ASPECT_RETURN_INLINE, ASPECT_RETURN_AUDIT, SCHUR_MOMENTS_OWN, GROWTH_ROLLOVER_QUESTION6 в bus.
 - Чей вердикт: growth_symbol_attempt analytic/corners/radial; causal_algebra_audit physical return/continuous; root Schur; answer10_pair_audit own shift/moments. Один проход по блокам. Lean не нужен.
 - Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
+
+## 2026-10-07 — Actual source moments and displacement test
+
+- Развилка: actual moments дают source gap, но uniform sign лишь на прежнем масштабе.
+- Выбрали: один bounded displacement calculation на тех же paired negative rows.
+- Почему: exact T>=2cA I и mixed bound исключают nonzero degeneracy; covariance Gamma и exceptional diagonal не оценены совместно.
+- Что отвергли: norm-envelope moment completion как новый exponent; certificate не опровергнут.
+- Инсайты: все projector words в D4 обязательны; source covariance shift-free; small analytic tail усиливается в nonlinear moments.
+- Блокеры: joint anchor correlations, Schur/SP/G1/G3/RH OPEN.
+- Иглы Зингера: row conjugation требует z=conj(w)/(i*kappa); оба endpoint numerators; feedback U I C*U; b=0 diagonal отдельно.
+- Следующий ход: вопрос7 отправлен в тот же living chat, не дублировать.
+- Адреса: PROSHKA_MOMENT_SOURCE_INLINE, MOMENT_SOURCE_AUDIT, SCHUR_MOMENT_SOURCE_CHECK, DISPLACEMENT_SOURCE_OWN, GROWTH_ROLLOVER_QUESTION7 в bus.
+- Чей вердикт: growth_symbol_attempt source constants и uniform scale; causal_algebra_audit projected words/displacement и own two actions; answer10_pair_audit residual/errors и own PSD source check; root fullpreview quarticerror/source return. Один bounded pass по блокам. Lean не запускался.
+- Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.

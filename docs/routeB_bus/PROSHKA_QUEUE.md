@@ -2,7 +2,7 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-- **Execute Multilinear Source Test 5/10 CHECKED; 6/10 SENT**: [ответ5](source_observability_2026-09-28/PROSHKA_ASPECT_RETURN_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/ASPECT_RETURN_AUDIT_2026-10-07.md), [вопрос6](source_observability_2026-09-28/GROWTH_ROLLOVER_QUESTION6_2026-10-07.md). Physical return и continuous top block проверены; finite-aspect completion STALLED. Actual-source moments в работе; Schur/SP OPEN.
+- **Execute Multilinear Source Test 6/10 CHECKED; 7/10 SENT**: [ответ6](source_observability_2026-09-28/PROSHKA_MOMENT_SOURCE_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/MOMENT_SOURCE_AUDIT_2026-10-07.md), [вопрос7](source_observability_2026-09-28/GROWTH_ROLLOVER_QUESTION7_2026-10-07.md). Source gap и moment loss проверены, exponent прежний. Displacement source correlations в работе; Schur/SP OPEN.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.
 
