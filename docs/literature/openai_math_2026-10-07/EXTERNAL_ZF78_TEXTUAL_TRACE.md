@@ -13,3 +13,7 @@ Exact root-reread file hashes:
 - Detector/FinalAssemblyUnconditional.lean: 0f52159a2929e7b20646f8394589d25a1a637c2f78746ad9d1447871577af615
 - Energy/CertifiedExistence.lean: 2d48b75fdd14ba8eabb428f79f98e0a6e532c28083075bacf16e1d57f020d7a9
 - Hecke/ZeroSupremum.lean: 3b3ca749fb669e5a278a5d956a61eec73bab919e0369f7d46d2abae2e0f0011e
+
+## Linux handoff received after this calculation
+
+Linux commit9a0f8507, integrated through883a1fa8, supplies COMPARATOR_VERIFICATION.md reporting successful default-kernel Comparator validation of the exact zeta7/8 challenge with the three permitted axioms. It supersedes the earlier statement-inspection-only status, subject to that report's explicit trust boundary. Mac has read the committed report but has not accessed its Linux-local raw log or rerun the build. Dirichlet/Hecke/Siegel challenges remain outside that reported verification. Historical request/response bytes and their conditional labels are preserved. This changes the reported external-zeta verification status, not the still-open signed descent or RH.
