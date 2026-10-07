@@ -8157,3 +8157,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: PROSHKA_SECOND_POISSON_INLINE, SECOND_POISSON_AUDIT, HYPERBOLIC_ASPECT_OWN, GROWTH_ROLLOVER_QUESTION5 в bus.
 - Чей вердикт: growth_symbol_attempt analytic §§1–2; causal_algebra_audit grouping/witness; root Schur/full-preview budgets; answer10_pair_audit собственные aspect formulas. Один ограниченный проход по блокам. Lean не нужен и не запускался.
 - Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
+
+## 2026-10-07 — Finite aspect return and actual source moments
+
+- Развилка: finite aspect calculus вернул все physical faces, но signed atomic cancellation не оценена.
+- Выбрали: actual-source three-moment test на прежнем exceptional пространстве.
+- Почему: exact V seam cancels with CQ; continuous top block o(1), но low-top и atom не оплачены.
+- Что отвергли: uniform radial nonstationarity/homogeneous Bessel completion; interior saddle и forced currents сохраняются. Это не integral lower bound.
+- Инсайты: B не зависит от r; T=A_base+epsilon I>=0 даёт shift-free M,c,e и F_r=(gq-M)(gc+e)+c²; spectral residual gaps точны.
+- Блокеры: знак этой actual-source quartic не получен; Schur/SP/G1/G3/RH OPEN.
+- Иглы Зингера: continuous primitive=0 ниже Y0; два разных H_o не смешивать; gc+e=0 разобран отдельно; negative L3 не отрицательный Schur.
+- Следующий ход: вопрос6 отправлен в том же living chat, не дублировать.
+- Адреса: PROSHKA_ASPECT_RETURN_INLINE, ASPECT_RETURN_AUDIT, SCHUR_MOMENTS_OWN, GROWTH_ROLLOVER_QUESTION6 в bus.
+- Чей вердикт: growth_symbol_attempt analytic/corners/radial; causal_algebra_audit physical return/continuous; root Schur; answer10_pair_audit own shift/moments. Один проход по блокам. Lean не нужен.
+- Доставка: manual scoped commit/push; phase_end.sh исключён из-за broad staging чужих untracked путей.
