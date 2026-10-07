@@ -1,3 +1,13 @@
+# Q3 processed — no pending Pro question
+
+Q3/10 terminal observed 2026-10-07 09:04 UTC in the SAME Execute Joint Probe Calculation chat. Full rendered attachment read (200 blocks). Request PROSHKA_SIGNED_CORRELATION_Q03.txt:790389 bytes; SHA2561f9423ac7c532176bfe8d945c933222adbc68a65c921388c80855c97d1d49958. Do not resend. Q2 baseline ee31a5d5.
+
+PROSHKA_Q03_AUDIT_EXTRACT.md is manually normalized, not original answer bytes. Independent equations (2)–(23) audit PASS; root convolution controls and exact exponent arithmetic PASS. Independent cofactor/budget audit PASS, with the O(log T) versus power-decay wording corrected. Q03_OWN_CONCLUSION.md records the exact remaining signed estimate. Entry-only diagonal is invalid; full cross-cofactor terms remain. No Q4 sent.
+
+Q3 processing is complete; scoped request+answer+conclusion commit/push closes this question. Disable heartbeat q3-joint-low-probe after delivery. Native RH goal remains active. RH/SP/Schur/G1/G3/scalar reserve OPEN.
+
+--- Historical Q2 closeout ---
+
 # Q2 processed — next question not sent
 
 2026-10-07 07:39 UTC final response observed (Antwort abgeschlossen), full rendered attachment read. Root exact arithmetic plus independent bounded audit PASS. See PROSHKA_Q02_AUDIT_EXTRACT.md and Q02_OWN_CONCLUSION.md. Original answer download timed out; normalized extract only. One scoped request+answer+conclusion commit follows. Q3 not sent. Disable Q2 heartbeat after delivery. Full signed estimate and RH remain OPEN.
@@ -58,3 +68,5 @@ Final mathematical status: good-principal primal sector O_A(Z^-A) checked at sou
 07:19 UTC live Q2 check: still Denke nach / Stoppen, service says it is checking before answering. Intermediate narrative mentions a Mobius-weighted joint kernel and unchanged threshold; this is NOT a terminal verdict and is not admitted. No final attachment observed. No resend or skip. Next scheduled check around 07:39 UTC under the existing 20-minute heartbeat. Root source sextic-large-sieve audit is still running independently.
 
 07:25 UTC root progress: sextic source audit completed bounded PASS (SEXTIC_SIEVE_BOUNDED_AUDIT.md). LOWER_Z_LOCAL_TEST.md independently PASS: angular extraction does not preserve the old selected local error on z=1/6; B_p+chi_p(u)^-1 has magnitude asymptotic P^(3-5a) on all unramified rows for .5<a<.6. No global signed-sum lower bound or exponent gain. Q2 is still the sole pending question; next live check remains around 07:39 UTC.
+
+08:25 UTC Q3 live check: Denke nach/Stoppen, no final answer. Intermediate reasoning reports extracting a squarefree Mobius variable before convolution, since common-coordinate valuation-two terms cannot be multiplied by mu(a); also checking sixth-power ratio diagonals. These are interim observations, not accepted results. Next scheduled check around08:45 UTC. No resend/skip.
