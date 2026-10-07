@@ -8213,3 +8213,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: POSITIVE_ROW_FRAME_OBSTRUCTION в bus; literature/mixed_zero_gram_2026-10-07 Burnol PDF/source card.
 - Чей вердикт: growth_symbol_attempt независимо проверил source counterexample и threshold projection; answer10_pair_audit checked direction/partial isometry, root corrected row-Gram label; root прочитал Burnol Thm3.1/Prop6.1. Lean не требуется.
 - Доставка: scoped manual commit/push вместо broad phase_end staging чужих untracked файлов.
+
+## 2026-10-07 — Scalar reserve: complete loss paid, arithmetic sign remains open
+
+- Развилка: exact Suzuki scalar reserve вместо неоценённого mixed Gram.
+- Выбрали: проверить собственную формулу, получить Q8 и независимо проверить all-event bounds.
+- Почему: terminal consumer требует все поздние cells; signed margin нельзя заменить finite prefix.
+- Что отвергли: magnitude envelope и summable loss как доказательство знака; повтор loss-only работы.
+- Инсайты: весь loss tail <=(18logQ+24)/sqrtQ; instantaneous linear error сокращается; root clipped-minimum error O(q^-11/2).
+- Блокеры: actual signed prime-power drift lower barrier; scalar reserve/SP/G1/G3/RH OPEN.
+- Иглы Зингера: отрицательные derivative jumps, right/left values, non-effective constants, E<d versus E<=0.
+- Следующий ход: один новый arithmetic lower estimate после supplier check; Q9 пока не выбран и не отправлен.
+- Адреса: SCALAR_RESERVE_OWN, GROWTH_ROLLOVER_QUESTION8, PROSHKA_SCALAR_RESERVE_INLINE, SCALAR_RESERVE_AUDIT в bus.
+- Чей вердикт: causal_algebra_audit loss/cancellation/discriminator; growth_symbol_attempt semiconcavity/source/quartets; root full preview and source.
+- Доставка: manual scoped commit/push, поскольку phase_end.sh broad staging захватил бы чужие untracked файлы; Lean не нужен для бумажного вывода.

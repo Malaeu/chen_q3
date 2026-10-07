@@ -2,7 +2,7 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-- **Execute Multilinear Source Test 7/10 CHECKED; 8/10 UNSENT**: [ответ7](source_observability_2026-09-28/PROSHKA_DISPLACEMENT_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/DISPLACEMENT_AUDIT_2026-10-07.md). Displacement STALLED: local cancellations проверены, mixed-zero Schur sign OPEN. Alias-return к exponential systems; новый supplier не выбран.
+- **Execute Multilinear Source Test 8/10 CHECKED; 9/10 NOT SENT**: [ответ](source_observability_2026-09-28/PROSHKA_SCALAR_RESERVE_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/SCALAR_RESERVE_AUDIT_2026-10-07.md). Infinite loss paid; signed arithmetic lower barrier OPEN. Magnitude/convexity attempt STALLED; не повторять Q8.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.
 

@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: ba6825e4
+Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: 59a1c47a
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -62,7 +62,7 @@ Claim делается, только когда он действительны�
    Ответ9: centered long-alpha component оплачена O(m^5/12 polylog); short-alpha/long-prime OPEN.
    Ответ10: wheel/powers-of-two оплачены; weighted even-shift aggregate STALLED.
    Rollover1: long-free collapse и quadrature проверены; subpolynomial TV остатка убит.
-   Rollover7: joint mixed-zero sign OPEN. Theta-source убивает full-carrier polynomial frame; restricted sampling остаётся OPEN.
+   Rollover8 проверен: весь convexity-loss tail ≤(18logQ+24)/sqrtQ; signed prime drift OPEN. Magnitude/convexity route STALLED; нужен новый arithmetic lower bound.
    Доказательства: `SHIFTED_XI_KERNEL_AUDIT_2026-10-06.md`, `HARDY_DEFECT_OWN_ATTEMPT_2026-10-06.md`.
 Доказательства, один независимый проход и решение о смене фазы:
 `../routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md`.
@@ -75,7 +75,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **10/10 получены и проверены; чат исчерпан**. SP OPEN. Forced rollover той же фазы; пакет `PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt`, аудит `PARITY_PRIME_AUDIT_2026-10-06.md` в bus. Новый [Execute Multilinear Source Test](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac58a1c-1568-83ed-95d0-857526e2b6cb): **7/10 получены и проверены; 8/10 не отправлен**. Displacement STALLED; alias-hunt проверил необходимость LOWER sampling на actual E. Full-carrier frame убит; restricted sign OPEN.
+- [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **10/10 получены и проверены; чат исчерпан**. SP OPEN. Forced rollover той же фазы; пакет `PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt`, аудит `PARITY_PRIME_AUDIT_2026-10-06.md` в bus. Новый [Execute Multilinear Source Test](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac58a1c-1568-83ed-95d0-857526e2b6cb): **8/10 получены и проверены; 9/10 не отправлен**. Scalar reserve audit: loss paid, signed drift OPEN; не повторять magnitude/convexity attempt.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)
