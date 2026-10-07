@@ -8227,3 +8227,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: SCALAR_RESERVE_OWN, GROWTH_ROLLOVER_QUESTION8, PROSHKA_SCALAR_RESERVE_INLINE, SCALAR_RESERVE_AUDIT в bus.
 - Чей вердикт: causal_algebra_audit loss/cancellation/discriminator; growth_symbol_attempt semiconcavity/source/quartets; root full preview and source.
 - Доставка: manual scoped commit/push, поскольку phase_end.sh broad staging захватил бы чужие untracked файлы; Lean не нужен для бумажного вывода.
+
+## 2026-10-07 — Scalar alias return excludes count-only sign and fixed-height gain
+
+- Развилка: после Q8 нужен signed lower barrier, не ещё одна magnitude bound.
+- Выбрали: проверить abstract positive-arrival negative control и конкретный pinned prefix supplier.
+- Почему: совпадение асимптотик не сохраняет интегральный знак; finite-height coefficient остаётся положительным.
+- Что отвергли: positivity/count/loss как общий sign mechanism; asymptotic extra gain fixed H на q/x->1.
+- Инсайты: synthetic Psi имеет оба знака при сильном count error; pinned bound eventually равен front-loading в указанном режиме.
+- Блокеры: actual Lambda arithmetic lower bound; RH/SP/G1/G3 OPEN.
+- Иглы Зингера: finite-RH-through-T hypothesis, T>=1e7, x>max(T,1e9), omitted R' term in secondary eq75.
+- Следующий ход: искать source-dependent estimate; не отправлять Q9 как повтор уже проваленной magnitude оценки.
+- Адреса: SCALAR_DRIFT_ALIAS_RETURN в bus; docs/literature/scalar_drift_2026-10-07/.
+- Чей вердикт: causal_algebra_audit negative control; growth_symbol_attempt primary theorem and fixed-height consequence; root primary reread and mapping.
+- Доставка: manual scoped commit/push вместо phase_end.sh broad staging чужих untracked файлов; Lean не требуется.

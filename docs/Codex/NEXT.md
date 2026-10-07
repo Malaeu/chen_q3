@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: 59a1c47a
+Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: c2aa91b7
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -62,7 +62,7 @@ Claim делается, только когда он действительны�
    Ответ9: centered long-alpha component оплачена O(m^5/12 polylog); short-alpha/long-prime OPEN.
    Ответ10: wheel/powers-of-two оплачены; weighted even-shift aggregate STALLED.
    Rollover1: long-free collapse и quadrature проверены; subpolynomial TV остатка убит.
-   Rollover8 проверен: весь convexity-loss tail ≤(18logQ+24)/sqrtQ; signed prime drift OPEN. Magnitude/convexity route STALLED; нужен новый arithmetic lower bound.
+   Rollover8 проверен: весь convexity-loss tail ≤(18logQ+24)/sqrtQ; signed prime drift OPEN. Magnitude/convexity route STALLED; fixed-height pinning на shrinking windows не усиливает front-loading. Нужен source-specific lower bound.
    Доказательства: `SHIFTED_XI_KERNEL_AUDIT_2026-10-06.md`, `HARDY_DEFECT_OWN_ATTEMPT_2026-10-06.md`.
 Доказательства, один независимый проход и решение о смене фазы:
 `../routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md`.
