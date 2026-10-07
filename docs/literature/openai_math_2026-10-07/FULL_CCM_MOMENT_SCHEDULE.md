@@ -76,3 +76,37 @@ terms together. Q_p alone has no automatic local jump cancellation.
 Verification: root derivation plus read-only independent algebra audit by
 squarefree_conductor_check: schedule normalization/endpoints PASS; companion
 divided-difference identity PASS. No Lean formalization or SP admission claimed.
+
+
+## Followup: entrywise source moments are not spectral CCM moments
+
+Read after Q1 dispatch; NOT in the sent attachment. The external early.tex
+lines 864–875 defines averages of |E_ij/B_e|^p, not Tr(K_-^p).
+Its lines 50–52 set B_e=n^(.31a)/sqrt(l_0). The paper's eventual extraction
+is an entry bound; its other accounts/structural implications remain necessary.
+Pinned early.tex SHA256:
+8928edaaa0e10e65bbc443c11bac86263fb25f41e58785e403b66160acc6b1c4.
+
+For d=2m+1, positive b_m, p>=2 and
+F_p=d^(-2) sum_ij |K_ij/b_m|^p, finite Holder gives
+
+    ||K||op <= ||K||HS <= b_m d F_p^(1/p).
+
+Thus an entrywise estimate F_p<=C_p m^c yields exponent a+1+c/p if
+b_m=m^a. The dimension loss does not disappear with large p.
+Control outside CCM: K=-b_m J, J all ones, has F_p=1 and
+lambda_min=-b_m d. This saturates the estimate, including reflection
+symmetry. It rejects entry-moment-only transfer, not the actual CCM target.
+
+In contrast T_p=d^(-1)Tr((K_-/b_m)^p)<=C_p m^c implies
+
+    max(0,-lambda_min(K)) <= b_m (d C_p m^c)^(1/p).
+
+For b_m=m^a this leaves a+(c+1)/p; a fixed positive a cannot be removed
+by choosing p. For b_m=m^(o(1)), choose p after eta and absorb its finite
+constant/start index to obtain SP. Averaging dimension and normalization
+must both be restored before claiming a gain. The sent Q1 already asks for
+spectral moments and forbids a hidden m^(a*p) normalization; this adds an
+explicit discriminator for auditing its answer. No second message sent.
+Independent read-only check moment_compensation_map: PASS on these bounds
+and rank-one control. This is an import restriction, not a new SP estimate.
