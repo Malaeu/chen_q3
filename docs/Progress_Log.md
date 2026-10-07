@@ -8325,3 +8325,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: проверить параметрические low/high inequalities исходной геометрии; не оптимизировать только high-side polynomial.
 Адреса: docs/literature/openai_math_2026-10-07/SCALAR_COMPENSATION_TEST.md.
 Чей вердикт: root calculation; growth_symbol_attempt independently checked exact identity and Laplace discriminator.
+
+
+## 2026-10-07 — Parameter budget of the compensated probe
+
+Развилка: улучшить endpoint настройкой масштабов или менять оценку.
+Выбрали: выписать invariant threshold low exponent minus Mellin offset.
+Почему: это отделяет реальный выигрыш от перенормировки probe.
+Что отвергли: изменение asymmetry b само по себе; применение fixed-geometry theorem ко всем параметрам.
+Инсайты: conditional threshold=11/12-ell/4; literal every-subset Gram reuse требует ell<=1/3 и даёт threshold>=5/6. Полный unabsorbed Gram budget max(11/12-ell/4,2/3+2b/3) сохраняет tuple penalties.
+Блокеры: новые параметры не имеют доказанных low/high estimates; high Euler regions тоже привязаны к полосам. Это не универсальный no-go для metaplectic метода.
+Иглы Зингера: оптимизировать разность exponent-offset и сохранять rescaling penalty до оценки worst case.
+Следующий ход: joint signed row estimate вместо отдельного Cauchy product, либо другой balance с тем же reciprocal-L signal.
+Адреса: docs/literature/openai_math_2026-10-07/PARAMETER_BUDGET.md.
+Чей вердикт: root; independent growth_symbol_attempt verified threshold and uniform-reuse constraint, endpoint caveat retained.
