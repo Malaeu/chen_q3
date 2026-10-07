@@ -8353,3 +8353,61 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: собственная попытка по exact nonprincipal remainder; после неё Q2 в том же чате.
 Адреса: docs/literature/openai_math_2026-10-07/{PROSHKA_JOINT_LOW_PROBE_Q01.txt,PROSHKA_Q01_AUDIT_EXTRACT.md,Q01_OWN_CONCLUSION.md,JOINT_LOCAL_RESONANCE.md,RESONANCE_SUBTRACTION_PRINCIPAL_TEST.md,MASKED_LOW_INTERFACE.md,PARITY_REFLECTION_TEST.md,PARITY_REFLECTED_BRANCH.md,PARITY_TAIL_BUDGET.md}.
 Чей вердикт: Proshka Q1, полный rendered attachment прочитан; root source check и независимый mobius_source_audit PASS. Ответ сохранён как normalized mathematical extract, не оригинальные bytes; download timeout явно записан.
+
+
+## 2026-10-07 — Squarefree remainder conductor and termwise-budget test
+
+Развилка: переносить fixed-character Poisson на весь остаток или сохранять совместные c,s коэффициенты.
+Выбрали: точная проверка n=1,s squarefree, g=(c,s), conductor bstar*(c/g)*(s/g), отдельная zero mask at g.
+Почему: проверяется достаточная длина неполного усреднения без утраты CRT фаз.
+Что отвергли: long-average argument для верхнего c~T_D блока; termwise sqrt(Q) как достаточный полный low bound. Это не universal no-go.
+Инсайты: Q/(R*q_g)~X_J*q_g/q_c; даже максимальный g даёт <=Z^(-1/3-d) на верхнем блоке. Hypothetical sqrt(Q) + absolute c,s sum даёт Z^(7/12-d), хуже 3/16.
+Блокеры: actual joint c,s cancellation и все остальные n,s sectors; нового full exponent нет.
+Иглы Зингера: учитывать conductor и агрегированный бюджет до выбора character-sum theorem; не путать fixed cusp kernel с фактическим completed source.
+Следующий ход: Q2/10 отправлен в тот же чат; joint transformation с явными residues, phases и subsets.
+Адреса: docs/literature/openai_math_2026-10-07/SQUAREFREE_REMAINDER_ATTEMPT.md; PROSHKA_JOINT_REMAINDER_Q02.txt; PROSHKA_PENDING.md.
+Чей вердикт: root + independent squarefree_conductor_check PASS; Q2 сейчас отвечает, verdict ещё не получен.
+
+
+## 2026-10-07 — Theta-pair crosswalk and principal angular factor
+
+Развилка: применять fixed cusp bilinear theorem напрямую или сначала установить точную принадлежность коэффициентов и эйлеровы поправки.
+Выбрали: gamma1(s)=mu(s)alpha(s)G(s) conjugate(gamma2(s)); отдельный principal slice w=1,z=1/6.
+Почему: это сохраняет фактические Gauss/CRT фазы и показывает конкретный новый L-фактор.
+Что отвергли: вывод scalar cusp automorphy из удаления постоянного члена только на z=0; прямое применение Dunn без coefficient identity.
+Инсайты: H=L^S(6x-3,baralpha^6 eta^6)*Htilde; Htilde нормально сходится и ненулевой при Re x>1/2 после fixed cutoff. B≈−1 требует Re x>3/5. Полный principal selected slice ненулевой при Re x>2/3 и достаточно больших slot scales, positive masses.
+Блокеры: angular L zero-free между 3/5 и 2/3, slot control ниже 3/5; весь high error и low gain не получены. Это не изменение zero-free endpoint.
+Иглы Зингера: факторизовать препятствующую геометрическую прогрессию в конкретную угловую L-функцию; различать локальную сходимость, ненулевость и полный consumer.
+Следующий ход: дождаться Q2 exact joint remainder; использовать principal factor как проверку high-side совместимости, не отправлять второй вопрос.
+Адреса: docs/literature/openai_math_2026-10-07/THETA_PAIR_ALIAS_RETURN.md; PRINCIPAL_ANGULAR_FACTOR_ATTEMPT.md. Dunn primary source https://arxiv.org/html/2403.13151v2.
+Чей вердикт: root; squarefree_conductor_check independent literature crosswalk; causal_algebra_audit principal local algebra PASS with sufficiently-large-slot caveat retained.
+
+
+## 2026-10-07 — Angular extraction: neighborhood and all row indices
+
+Развилка: principal-срез или действительная комплексная окрестность с контролем u.
+Выбрали: вынести общий L^S(6x+6z-4,baralpha^6 eta^6) и оценить фактические Htilde_p отдельно при p|u и p∤u.
+Почему: явная J_j таблица сохраняет фазовые и ramified исключения без переноса D*W на нулевые characters.
+Что отвергли: ненулевость комплексных slot sums из положительных исходных весов; оценку полного H без оплаты вынесенного L.
+Инсайты: Htilde нормально сходится в открытой области около Re x>1/2,w=1,z=1/6 и имеет O_epsilon(q_u^epsilon) при fixed margins. Principal finite primes оплачены |Delta-1|<1, исходное S не меняется.
+Блокеры: full u sum, shifted contours, angular L bound/nonvanishing и новый low exponent.
+Иглы Зингера: отделить настоящий L-фактор от ошибки эйлерова произведения; конечные простые не удалять, а проверять.
+Следующий ход: сравнить с Q2 joint c,s estimate после полного ответа, без нового вопроса во время ожидания.
+Адреса: docs/literature/openai_math_2026-10-07/ANGULAR_FACTOR_NEIGHBORHOOD.md.
+Чей вердикт: root + independent causal_algebra_audit PASS, no RH/SP gate change.
+
+### 2026-10-07 — bounded sextic large-sieve source audit
+
+Root plus independent mobius_source_audit checked the explicit paired Poisson, gcd/Mobius norm reflection, sixth-power decomposition and exponent iteration in pinned OpenAI paper lines 4707–5180. Bounded PASS for the stated arbitrary-squarefree-coefficient K+D+(KD)^(2/3) bound, with upstream arithmetic/additive-sieve dependencies retained. BGL's ambient degree assumption is not a direct match, so its citation alone is insufficient; the explicit specialized proof is the audited object. See literature/openai_math_2026-10-07/SEXTIC_SIEVE_BOUNDED_AUDIT.md. No exponent gain or RH closure. Q2 still pending at 07:19 UTC; no second send.
+
+### 2026-10-07 — lower-z shortcut tested against selected local factors
+
+Развилка: angular extraction permits a larger Euler continuation domain; can it improve high estimates simply by lowering z? Выбрали: exact source local substitution before any contour move. At x=a,w=1-a,z=1/6 and every unramified prime, B_p+chi_p(u)^-1 ~ bar(eta)kappa P^(3-5a) for 1/2<a<3/5; a=.51 gives growth P^.45. Independent causal_algebra_audit PASS. Что отвергли: carrying the old P^-1/2 local slot-error payment unchanged to this boundary. The nearby termwise budget requires z>=.325 at a=.51; scalar zeta pole also needs separate treatment. This is no global signed-sum lower bound and no refutation of the original z=.34 proposition. Инсайт: convergence of the extracted Euler product does not control the selected replacement. Следующий ход: inspect Q2 joint remainder when terminal; no extra Pro send. Адрес: literature/openai_math_2026-10-07/LOWER_Z_LOCAL_TEST.md. RH OPEN.
+
+### 2026-10-07 — final continuation quantifiers checked
+
+Root and independent mobius_source_audit checked the source final contradiction conditional on its named analytic bounds. Supremum need not be attained; a common pretarget epsilon gives an actual zero past beta*-epsilon. Target-dependent height orders/thresholds are postponed, and no circular use of 7/8 was found in this bounded endgame. Full upstream moment/high/low estimates remain uncertified. See literature/openai_math_2026-10-07/FINAL_CONTINUATION_BOUNDED_AUDIT.md. This narrows verification to analytic inputs and does not establish 7/8 or RH. Q2 remains pending; no new Pro send.
+
+## 2026-10-07 — Q2 common-lattice remainder audited
+
+Развилка: estimate the actual joint remainder before absolute values. Выбрали: common coordinates a=Rc,b=Rs for every subset, preserving phases and profiles. Почему: they expose an exact selected table and one signed sum. Что отвергли: coefficientwise annihilation of the entire upper kernel, omission of valuation-two supports, and residue-free reflection of the isolated squarefree factor. Инсайты: D(1,1;H)=-1,0,-q_p at valuations0,1,>=2, but D(2,2)=-1 at valuation1. Entire tuple-summed double-residue integrand is nonzero at x=2; this is not a physical lower bound. Finite inverse-cube identity is exact, its absolute sum loses the shortening. Блокеры: signed common-lattice bound Z^(47/96-delta+eps), exact complementary sectors and high-side extension remain open. Иглы Зингера: common rescaling before subset recombination, while retaining the new square supports. Следующий ход: actual signed contraction against sixth-power/non-sixth-power rows with full complement; no new local nonvanishing test. Адреса: literature/openai_math_2026-10-07/PROSHKA_Q02_AUDIT_EXTRACT.md, Q02_OWN_CONCLUSION.md, check_q02_local.py. Чей вердикт: Pro PAPER derivation; root polynomial and1152 local/14400 two-slot exact checks PASS; independent mobius_source_audit bounded PASS including general gcd phase and residue normalization. Full source theorem not certified. RH/SP/Schur/G1/G3/scalar reserve OPEN.
