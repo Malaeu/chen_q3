@@ -93,3 +93,64 @@ Thus importing reflection or entireness from T into K requires handling these Eu
 Negative control: take a good p not dividing kappa, with nu(p) nonzero. Then D=p and h=p force C_D=0 identically, since the marking requires p|cn³ while the character vanishes there. In(5) the e=1 and e=p auxiliary terms cancel exactly; individually they need not vanish. Deleting that cancellation is invalid. Finally, q_m~Q gives q_h~sqrt(Q/q_kappa); the allowed sector q_kappa~Q has h bounded. Grouping by a fixed quadratic core therefore supplies no growing h-average in that sector. It does not prove a lower bound, but it identifies a remaining uniformity requirement rather than a free square-root saving.
 
 Independent squarefree_conductor_check bounded PASS for(3)–(6), Gauss orientation including noncoprime zeros, mark reduction, physical scale, D=p/h=p control, and the remaining fixed-cusp/geometry mismatch. Source anchors: sextic conventions628–644, completed marked rows8074–8110, cubic conversion1953–2002, and theta reflection1936–1984/2300–2365. No uniform pairing gain or lower bound was proved.
+
+## Full-s prime powers: local density does not alone save a power
+
+Own check while Q6 runs, directly from source paper.tex3881–3893. For s=p^j, q=q_p and normalized local G_j(m)=q^(-j/2)g_(chi_p^j)(p^j,-m), if 6 does not divide j the support is exactly v_p(m)=j-1. Its squared nonzero amplitude is q^(j-1). If 6 divides j, the original principal unit mask gives the Ramanujan expression q^j1_(v_p(m)>=j)-q^(j-1)1_(v_p(m)>=j-1), before normalization. Unit and CRT phases must be retained in the actual pairing.
+
+For every j>=1, finite Fourier Parseval gives the exact local average
+
+q^(-j)sum_(m modp^j)|G_j(m)|²=1-1/q.
+
+For 6∤j this is density(q-1)/q^j times q^(j-1); for 6|j the two boundary/deeper strata give the same answer. Thus merely counting the fewer allowed m when j grows cannot by itself justify a smaller A-factor norm: the amplitude compensates that sparsity. Root exact-fraction controls at q=7,13,19 and j=1..12 agree; the universal statement is the Parseval identity, not those finite tests.
+
+For j>=2, nonzero G_j forces p|m. In each literal B summand, chi_(cn³)(m) then forces p∤cn. This is an exact local coupling between the full-s Gauss polynomial and the completed row; it is not a license to remove all j>=2 terms. There is no new full pairing estimate or physical lower bound in this observation. The remaining opportunity is to use this coupling inside the signed sum rather than claim a gain from sparsity alone. No additional Pro message was sent.
+
+## Exact full-s interface on squarefree physical rows
+
+Own calculation, independently audited by squarefree_conductor_check on2026-10-07. This subsection restricts physical m=epsilon*kappa to squarefree primary kappa and a unit epsilon. It does NOT restrict s to squarefree. The local formula above forces every nonzero Gauss summand to have uniquely
+
+s=s0*d², d|kappa, s0 squarefree, (s0,kappa)=1; put r=kappa/d.
+
+Indeed v_p(m) is0 or1: the nonprincipal local formula allows only (v_p(s),v_p(m))=(1,0),(2,1), while a positive multiple-of-six exponent would require v_p(m)>=5. CRT and source reciprocity give the exact normalized identity
+
+q_s^(-1/2)g_(chi_s)(s,-epsilon*kappa)
+ =sqrt(q_d)gamma1(s0)gamma2(d)R(d,s0)chi_d(s0)^3
+  *bar chi_s0(-epsilon*r)*bar chi_d(epsilon*r)^2.
+
+Derivation: splitting s0 and d² contributes chi_s0(d)^2 chi_d(s0)^2. The s0 Gauss factor contributes bar chi_s0(-epsilon*d*r); the d² factor is q_d^(3/2)gamma2(d)bar chi_d(epsilon*r)^2 before its q_d normalization. Then chi_s0(d)bar chi_d(s0)=R(d,s0) leaves the displayed cubic factor. Only the d-factor loses its minus sign, since chi_d(-1)^2=1. Empty-product conventions cover d=1 and s0=1. Source anchors: gamma definition642, CRT1043, reciprocity1088–1089, local prime powers3881–3893.
+
+In A retain the original1/Y', chi_s(b*)/(tau*xi(s)), W1(q_s/Y'), (q_s/Y')^(-1/2+iv), and ray restriction s0*d² in sigma. The support is q_s0~Y'/q_d², hence q_d≲sqrt(Y'), including unit s0. The completed B row remains unchanged, with all n and the exact mask (cn,kappa)=1; c,n may share primes away from kappa. This supplies a precise cubic/quadratic correlation interface for these rows. It proves no norm or pairing gain, and the nonsquarefree-m sector remains to be handled. This note was added after Q6 dispatch and was not separately sent to Pro.
+
+## Full-pairing good-prime resonance is rapidly negligible
+
+Own derivation2026-10-07, independently audited by squarefree_conductor_check in two bounded passes. Here m is unrestricted; c is squarefree, s,n arbitrary good primary. Define
+
+F_(s,c,n)(m)=q_s^(-1/2)g_(chi_s)(s,-m)chi_(cn³)(m),
+L=lcm(s,rad(cn)).
+
+Its complete good-period mean q_L^(-1)sum_(m modL)F is nonzero exactly when s=c and n=h². In that case the exact function, not just its mean, is
+
+F_(c,c,h²)(m)=gamma1(c)bar chi_c(-1)1_(ch,m)=1,
+
+and the mean is gamma1(c)bar chi_c(-1)product_(p|ch)(1-1/q_p). Composite CRT phases are already in gamma1(c).
+
+Proof of the support assertion: at a prime put k=v_p(s), e=v_p(c) in{0,1}, l=v_p(n), a=e+3l. If k=0 and a>0, the local character mean survives only if a=0 mod6, forcing e=0 and l even. If k>0 and a=0, the Gauss mean is zero by additive orthogonality. If k>=2 and a>0, the character restricts m to units, where the prime-power Gauss factor vanishes pointwise. If k=1 and a>0, the remaining unit character has exponent a-1, so survival requires e=1 and l even. These statements include principal unit masks at exponents divisible by6; no exceptional prime-power term survives. Global Gauss scaling supplies the displayed surviving function without guessing local CRT phases. Source anchors:642,1043,3881–3893.
+
+This good-prime mean is NOT the constant coefficient of the full periodic summand. The original low pairing includes xi(m), primitive modulo fixed b* and nonprincipal at every S-prime (source3350–3365). Thus xi(m)F has period b*L and complete mean zero for every s,c,n by CRT. This alone gives no uniform saving when the period grows beyond the m-window.
+
+For the resonant sector s=c,n=h², however, the full period is M=b*rad(ch), and its norm is small enough. Write W_v(m)=Omega(q_m/Q)(q_m/Q)^(-iv). Smooth lattice Poisson, with the zero dual coefficient absent and all finite Fourier coefficients bounded by1, gives for every A>0
+
+|sum_m xi(m)1_(ch,m)=1 W_v(m)|
+ <<_A Q(1+|v|)^C_A (Q/q_M)^(-A), provided Q/q_M>=2.
+
+The annulus avoids m=0; dual lattice spacing is comparable to q_M^(-1/2), with fixed field constants. Increasing the Schwartz derivative order absorbs the sum over nonzero dual lattice points. The original Mellin weight What0(iv) absorbs the polynomial v-loss. No exact vanishing of this weighted sum is claimed.
+
+For each actual subset and fixed tuple, put U=Zq_D~Z^(7/6-d), Y'~Z^(23/48-d), Q~Z^(5/6-2d). The original s=c support gives q_c~Y', and the unchanged Gaussian in B is V_G(q_c q_h^6/U). Choose a fixed small eta in(0,7/96). For q_h<=Z^eta(U/Y')^(1/6),
+
+q_M<<Z^eta Y'^(5/6)U^(1/6)=Z^(19/32-d+eta),
+Q/q_M>>Z^(23/96-d-eta)>=Z^(7/96-eta).
+
+Beyond this cutoff the log-Gaussian is O_B(Z^(-B)) for every B, since its argument exceeds a fixed multiple of Z^(6eta). Absolute h-coefficients have q_h^(-2), whose ideal sum converges; c is annular and all tuple counts are polynomial. The same polynomial mass bound on the retained range lets arbitrarily high Poisson decay dominate every coefficient and outer physical factor. Hence the literal full resonant sector s=c,n=h² contributes O_B(Z^(-B)) for every B, uniformly over actual subsets after their sums and Mellin integral. Mark D|ch^6, ray restrictions on c and all original coefficients are retained; they do not depend on m and can only restrict these absolute mass bounds.
+
+Scope: this extends the earlier n=1 good-principal check to every square n in the full Gaussian row. It does not bound the nonresonant triples or their nonzero dual frequencies, does not improve the full3/16 estimate, and proves no RH claim. Q6 was already sent; no extra Pro message was sent for this calculation.
