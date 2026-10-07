@@ -8283,3 +8283,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: MOBIUS_QUADRATURE_OWN и mobius_kernel_interval_check_2026-10-07.py в bus.
 - Чей вердикт: growth_symbol_attempt bounded exploration; causal_algebra_audit PASS root bound and exact certificate; root integrated narrow scope.
 - Доставка: scoped manual commit/push, foreign files untouched; Lean not required for bounded diagnostic.
+
+## 2026-10-07 — Q10 exact joint floor pairing returns original discrepancy
+
+- Развилка: joint lattice cancellation до норм вместо отдельных Mobius bounds.
+- Выбрали: проверить полный ответ Q10 вместе с lower endpoints и reserve return.
+- Почему: только совместный расчёт показывает, остался ли независимый signed gain.
+- Что отвергли: тратить canceled terms как дополнительный резерв; не все arithmetic methods.
+- Инсайты: G_d(d)=G_d(x)=0; harmonic main cancels completely, half-sums vanish jointly; actual prime discrepancy возвращается с коэффициентом 1.
+- Блокеры: W+D_entropy upper bound либо прежний prime-prefix net sign; terminal margin не улучшен, RH OPEN.
+- Иглы Зингера: c+1,b+4; derivative is log-time; full H0 lower endpoints; R remains in Psi; every late cell.
+- Следующий ход: source-verified inequality after alias return; chat 10/10 exhausted, no new chat sent.
+- Адреса: GROWTH_ROLLOVER_QUESTION10, PROSHKA_JOINT_LATTICE_INLINE, JOINT_LATTICE_AUDIT в bus.
+- Чей вердикт: causal_algebra_audit joint cancellations PASS; growth_symbol_attempt source/reserve/budgets PASS; root full preview.
+- Доставка: one scoped Q10 commit, manual push/readback instead of broad phase_end staging; foreign work untouched; Lean deferred.
