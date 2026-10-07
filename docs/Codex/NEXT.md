@@ -5,7 +5,7 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: 63f57b4a
+Updated: 2026-10-07 · by: Codex Mac · baseline HEAD: 8e1f0296
 
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
@@ -75,7 +75,7 @@ Claim делается, только когда он действительны�
 e^(Cm/log m) B_m→0 для каждого C>0; сравнение U_m>B_m на неограниченной исходной семье OPEN.
 Пакет, воспроизводимый probe и точный незакрытый шаг: `../routeB_bus/source_observability_2026-09-28/ODD_TRIAL_SIGN_2026-10-06.md`.
 - Старый Missing T7 Lemma завершён **10/10**, новых вопросов туда нет. Нижний overlap не получен.
-- [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **10/10 получены и проверены; чат исчерпан**. SP OPEN. Forced rollover той же фазы; пакет `PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt`, аудит `PARITY_PRIME_AUDIT_2026-10-06.md` в bus. Новый [Execute Multilinear Source Test](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac58a1c-1568-83ed-95d0-857526e2b6cb): **10/10 получены и проверены; чат исчерпан**. Proper-power signed drift имеет vanishing tail; mixed product convolution точно сокращается с forcing. Остался net prime-prefix correlation с полной предысторией; Stieltjes/Selberg и exact Mobius quadrature проверены: нового знака нет; correction меняет знак. Q10 joint pairing точно вернул исходную prime discrepancy с коэффициентом 1; STALLED. Следующего вопроса/чата нет; нужен новый source inequality после alias return.
+- [Proof of CCM Growth](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac54396-d878-83eb-ae29-35d2bdd2262b): **10/10 получены и проверены; чат исчерпан**. SP OPEN. Forced rollover той же фазы; пакет `PROSHKA_GROWTH_ROLLOVER_PACK_2026-10-07.txt`, аудит `PARITY_PRIME_AUDIT_2026-10-06.md` в bus. Новый [Execute Multilinear Source Test](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac58a1c-1568-83ed-95d0-857526e2b6cb): **10/10 получены и проверены; чат исчерпан**. Proper-power signed drift имеет vanishing tail; mixed product convolution точно сокращается с forcing. Остался net prime-prefix correlation с полной предысторией; Stieltjes/Selberg и exact Mobius quadrature проверены: нового знака нет; correction меняет знак. Q10 joint pairing точно вернул исходную prime discrepancy с коэффициентом 1; STALLED. Следующего вопроса/чата нет. Alias-return OpenAI 722 manuscripts: `../literature/openai_math_2026-10-07/REPORT.md`; scalar compensation проверена: возвращает unselected source + boundary; fixed low estimate упирается в 7/8. Следующий тест — совместное изменение low/high геометрии. RH/SP OPEN; 7/8 не закрывает RH.
 - Открытые вопросы, убитое и текущий фронт — только в `PAPER_CHAIN.md` (здесь не дублировать).
 
 ## Правила работы (владелец, 2026-09-28)

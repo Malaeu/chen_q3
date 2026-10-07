@@ -1,0 +1,50 @@
+{
+  "commit": "adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+  "sources": {
+    "qrh78": {
+      "path": "preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/build/paper.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/build/paper.tex",
+      "sha256": "42a5ee0febca59fd1def55cfd6c6808c322ef4237d7726303ea52f711deac6a3"
+    },
+    "qrh1112": {
+      "path": "preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/build/paper2.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Quasi-Riemann-Hypothesis-October-5-2026/build/paper2.tex",
+      "sha256": "d9a8f15aa770cf883d0eabd2b775fad694ce20b44cba7928f5c0c9a6d8750d4d"
+    },
+    "graph": {
+      "path": "preprints/Ordinary-two-point-correlations-of-multiplicative-functions-September-24-2026/build/qualitative/graph-setup.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Ordinary-two-point-correlations-of-multiplicative-functions-September-24-2026/build/qualitative/graph-setup.tex",
+      "sha256": "a0288ebfcbffa2e40008b273815a132bb002493fbd224d2fea78cf9f1b404eb1"
+    },
+    "correlations": {
+      "path": "preprints/Ordinary-two-point-correlations-of-multiplicative-functions-September-24-2026/build/introduction.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Ordinary-two-point-correlations-of-multiplicative-functions-September-24-2026/build/introduction.tex",
+      "sha256": "05f8ea23cd4d2f423e9a46dfc583813d30907159fb5a667dc2850740b7d32903"
+    },
+    "dilation": {
+      "path": "preprints/Weighted-Dilation-Graphs-Smooth-Shifted-Primes-and-Totient-Fibers-September-24-2026/build/sections/05-type-ii.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Weighted-Dilation-Graphs-Smooth-Shifted-Primes-and-Totient-Fibers-September-24-2026/build/sections/05-type-ii.tex",
+      "sha256": "a96f81618b2ffa5f94d6eb45110b483161b286522c6b88936845ea72a58f26d3"
+    },
+    "lean_scope": {
+      "path": "lean/docs/003.md",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/lean/docs/003.md",
+      "sha256": "41e52ed718260e6feb1db218f8e97287e703cb63c6f16e6c36f5563e6e2395ce"
+    },
+    "disk": {
+      "path": "preprints/Disk-transfer-representations-and-confined-bridge-mass-September-26-2026/build/sections/analytic.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Disk-transfer-representations-and-confined-bridge-mass-September-26-2026/build/sections/analytic.tex",
+      "sha256": "69549e58a5960d0c43839b1c9ad5502efc59c945fc865f2e29b16d48a7cf01f8"
+    },
+    "entropy": {
+      "path": "preprints/A-sharp-entropy-bound-and-the-simplex-inequality-for-isotropic-constants-October-5-2026/build/manuscript/matrix.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/A-sharp-entropy-bound-and-the-simplex-inequality-for-isotropic-constants-October-5-2026/build/manuscript/matrix.tex",
+      "sha256": "4e57766d2d6324f0ab04ad3118f506f79db6511bdc0571ac9f0576aa70ac76a2"
+    },
+    "lattice": {
+      "path": "preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026/build/sections/06-gaussian-energy-transfer.tex",
+      "url": "https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026/build/sections/06-gaussian-energy-transfer.tex",
+      "sha256": "3f6e77be05e3fc9b67fc7d314bed2d916c697667783d9eaf6250932f2937a233"
+    }
+  }
+}

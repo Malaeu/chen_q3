@@ -8297,3 +8297,31 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: GROWTH_ROLLOVER_QUESTION10, PROSHKA_JOINT_LATTICE_INLINE, JOINT_LATTICE_AUDIT в bus.
 - Чей вердикт: causal_algebra_audit joint cancellations PASS; growth_symbol_attempt source/reserve/budgets PASS; root full preview.
 - Доставка: one scoped Q10 commit, manual push/readback instead of broad phase_end staging; foreign work untouched; Lean deferred.
+
+
+## 2026-10-07 — OpenAI 722 manuscripts: RH-first alias return
+
+Развилка: Q10 exact pairing вернул исходную discrepancy; владелец направил в свежий OpenAI corpus.
+Выбрали: whole-corpus text screen, обе quasi-RH статьи, арифметические graph/Type-II механизмы и все 10 reasoning summaries.
+Почему: prime-slot compensation сохраняет один probe и использует арифметику, которой не было в generic magnitude маршруте.
+Что отвергли: 7/8 как RH; log-power cancellation как SP; upper-frame bound как lower sampling; reasoning narrative как proof certificate.
+Инсайты: disjoint prime slots + marked/rescaled inclusion-exclusion; повторение сигнала в p^6 rows; centering before absolute values; asymmetric factor split pays diagonal.
+Блокеры: actual Q3 source map и равномерный остаток OPEN. Lean источники осмотрены, локальная сборка не запускалась.
+Иглы Зингера: три конкретных арифметических хода выше; cross-domain commutator-square и integrated Schur остаются частичными аналогами.
+Следующий ход: exact local compensation на полном prime-power scalar source; остановить перенос, если возвращается W с коэффициентом 1 или прежняя недоказанная оценка.
+Адреса: docs/literature/openai_math_2026-10-07/REPORT.md, sources.json, corpus_scan.json.
+Чей вердикт: root + пять bounded source researchers; новых закрытий/убийств математических звеньев не заявлено.
+
+
+## 2026-10-07 — Exact scalar compensation and the 7/8 low-side barrier
+
+Развилка: переносить операцию вычитания отдельно или весь character-bearing probe.
+Выбрали: exact finite marked/dilated calculation на полном Lambda source.
+Почему: это проверяет сохранение источника и граничного члена до любых оценок.
+Что отвергли: standalone scalar compensation как новый supplier; формальную замену sigma0 на 1/2 при прежнем low bound.
+Инсайты: product(M_p-T_p)F = signed shifted F_outside minus explicit boundary; offcritical poles survive for fixed slots. Available low exponent minus Mellin affine offset equals 7/8.
+Блокеры: новый low/high-compatible probe или улучшение оценки; SP/RH OPEN.
+Иглы Зингера: source-preserving compensation требует не только вычитания, но сохраняемого character signal и двух независимых оценок.
+Следующий ход: проверить параметрические low/high inequalities исходной геометрии; не оптимизировать только high-side polynomial.
+Адреса: docs/literature/openai_math_2026-10-07/SCALAR_COMPENSATION_TEST.md.
+Чей вердикт: root calculation; growth_symbol_attempt independently checked exact identity and Laplace discriminator.
