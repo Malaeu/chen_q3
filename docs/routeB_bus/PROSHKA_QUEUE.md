@@ -2,7 +2,7 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-- **Execute Multilinear Source Test 8/10 CHECKED; 9/10 NOT SENT**: [ответ](source_observability_2026-09-28/PROSHKA_SCALAR_RESERVE_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/SCALAR_RESERVE_AUDIT_2026-10-07.md). Infinite loss paid; signed arithmetic lower barrier OPEN. Magnitude/convexity attempt STALLED; не повторять Q8.
+- **Execute Multilinear Source Test 9/10 CHECKED; Q10 NOT SENT**: [ответ](source_observability_2026-09-28/PROSHKA_SELBERG_SCALAR_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/SELBERG_SCALAR_AUDIT_2026-10-07.md). Proper-power signed drift tail paid; net prime-prefix correlation OPEN. Local uncompensated convolution attempt STALLED; next own quantitative attempt/source return.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.
 

@@ -8241,3 +8241,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 - Адреса: SCALAR_DRIFT_ALIAS_RETURN в bus; docs/literature/scalar_drift_2026-10-07/.
 - Чей вердикт: causal_algebra_audit negative control; growth_symbol_attempt primary theorem and fixed-height consequence; root primary reread and mapping.
 - Доставка: manual scoped commit/push вместо phase_end.sh broad staging чужих untracked файлов; Lean не требуется.
+
+## 2026-10-07 — Q9 proper-power drift tail paid; prime-prefix sign open
+
+- Развилка: actual Selberg forcing против signed scalar drift.
+- Выбрали: выполнить factor sectors до оценок и отдельно оценить sparse proper-power events.
+- Почему: положительная convolution уже полностью содержится в forcing; двойная трата недопустима.
+- Что отвергли: uncompensated local restoring term; не все nonlocal multiplicative methods.
+- Инсайты: proper-power drift absolutely summable с uniform P(Q)->0; ordered prime-prefix C_Q-J_Q остаётся с полной предысторией.
+- Блокеры: signed upper estimate C_Q-J_Q enough for actual reserve; RH/SP/G1/G3 OPEN.
+- Иглы Зингера: strict pre-jump values; both factor orders; powers excluded only as events; non-effective Q8 constants.
+- Следующий ход: own quantitative attempt и source/alias return для residual; Q10 не отправлен.
+- Адреса: SELBERG_SCALAR_OWN, GROWTH_ROLLOVER_QUESTION9, PROSHKA_SELBERG_SCALAR_INLINE, SELBERG_SCALAR_AUDIT в bus.
+- Чей вердикт: causal_algebra_audit tail/return PASS; growth_symbol_attempt coefficient/correlation/Volterra PASS; root full preview.
+- Доставка: manual scoped commit/push вместо phase_end.sh broad staging чужих untracked файлов; Lean не требуется.
