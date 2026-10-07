@@ -8339,3 +8339,17 @@ Type I text and was not counted; Sol escalation supplied the actual check.
 Следующий ход: joint signed row estimate вместо отдельного Cauchy product, либо другой balance с тем же reciprocal-L signal.
 Адреса: docs/literature/openai_math_2026-10-07/PARAMETER_BUDGET.md.
 Чей вердикт: root; independent growth_symbol_attempt verified threshold and uniform-reuse constraint, endpoint caveat retained.
+
+
+## 2026-10-07 — Joint probe Q1: principal sector paid, exact remainder open
+
+Развилка: вычитать локальную маску или выделить весь главный сектор исходной signed суммы.
+Выбрали: точное разложение I_modified=N_eta+O_A(Z^-A) при исходных fixed data и scales.
+Почему: fixed primitive xi после локальной классификации даёт Poisson saving; минимальный scale/conductor запас Z^(1/96) сохраняется для всех subsets.
+Что отвергли: тождество root mask с nonprincipal complement; complete-period zero как оценку короткого coprime c,s блока; exact local slot annihilator.
+Инсайты: n=a²,s=cr⁶,(r,ca)=1 сохраняет xi(c)^(-2), все phases и masks; Gaussian tail superpolynomial. Root masked completion и reflected-tail identities checked, но absolute-value retained budget хуже исходного.
+Блокеры: signed nonprincipal N_eta, общий low exponent и high-compatible improvement OPEN; исходная статья целиком не проверена, threshold остаётся 7/8; Q3/SP/RH OPEN.
+Иглы Зингера: до Cauchy классифицировать весь сектор и сохранить fixed-character cancellation; удалять только оценённый объект, а не похожую локальную маску.
+Следующий ход: собственная попытка по exact nonprincipal remainder; после неё Q2 в том же чате.
+Адреса: docs/literature/openai_math_2026-10-07/{PROSHKA_JOINT_LOW_PROBE_Q01.txt,PROSHKA_Q01_AUDIT_EXTRACT.md,Q01_OWN_CONCLUSION.md,JOINT_LOCAL_RESONANCE.md,RESONANCE_SUBTRACTION_PRINCIPAL_TEST.md,MASKED_LOW_INTERFACE.md,PARITY_REFLECTION_TEST.md,PARITY_REFLECTED_BRANCH.md,PARITY_TAIL_BUDGET.md}.
+Чей вердикт: Proshka Q1, полный rendered attachment прочитан; root source check и независимый mobius_source_audit PASS. Ответ сохранён как normalized mathematical extract, не оригинальные bytes; download timeout явно записан.
