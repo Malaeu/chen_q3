@@ -10,6 +10,8 @@ The separate Landau–Siegel manuscript's Theorem1 states (1-beta)log q>=c>0 for
 
 Local declaration OAI.riemannZeta_ne_zero_of_seven_eighths_lt_re in lean/OAI/NumberTheory/DirichletL/Nonvanishing.lean has the intended unconditional statement and delegates to ProbeFinalAssemblyUnconditional.zeta_nonzero. This is statement inspection only. Local lean/formalization.yaml914–915 says scope Partial progress and1662–1663 review status unchecked. No fresh build, comparator or transitive axiom audit was performed here. The local snapshot log has Initial commit2026-10-06; this does not prove that nobody elsewhere has checked it. All deductions below are conditional on ZF78 until the external proof boundary is accepted or verified.
 
+Update 2026-10-07 15:20 (Linux): leanprover/comparator accepted the zeta challenge (`Your solution is okay!`, Lean default kernel, axioms ⊆ propext/Quot.sound/Classical.choice). The boundary above is closed for the zeta statement modulo Mathlib's `riemannZeta`, a single kernel and a best-effort sandbox; details and open items in COMPARATOR_VERIFICATION.md. Dirichlet/Hecke/Siegel challenges were not run.
+
 ## 1. Original full CCM: improved floor, exact kernel retained
 
 Use docs/routeB_bus/source_observability_2026-09-28/PROSHKA_JOINT_HILBERT_INLINE_2026-10-06.md, equations(2),(3),(12)–(15).
