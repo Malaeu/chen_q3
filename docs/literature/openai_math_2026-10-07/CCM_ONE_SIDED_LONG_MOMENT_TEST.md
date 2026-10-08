@@ -81,3 +81,43 @@ Verbatim quantifier boundary: “All graph parameters are fixed when X tends to 
 Mapping test: our m simultaneously changes the cutoff, Fourier grid and full source; our centering subtracts continuous densities in log n, not those prime-residue factors. No map from Pi Q(s) Pi against dnu to g_d, no fixed-parameter X-average return, and no discarded-complement estimate have been supplied. The theorem's hypotheses are therefore UNMAPPED, not implied by the existing second moment. Its precise statement is verified discovery evidence only; it is an excluded supplier for this target, not an audited proof of the manuscript. The coherent deterministic spike has no such residue-space structure, so the graph hypotheses appropriately exclude that control.
 
 Next bounded question: estimate the actual negative-density pairing (6), or the actual positive long moments, with one finite exponent independent of p. Stop and record failure if the calculation only invokes the generic envelopes falsified by (7), or replaces the signed source by the graph model without a complete map. No new consumer estimate follows from this alias return.
+
+
+## 2026-10-09 bounded return after the q-block test
+
+Baseline d39e8b0e. No new moment bound obtained. The exact original (6) means
+that a proposed Tr(WV)<=theta M+E, theta<1, must establish
+Tr(WU)<=-(1-theta)M+E for THIS W=S_-^(p-1). Merely knowing [W,S]=0
+or the short Schatten bound does not supply that signed arithmetic statement.
+The earlier CCM_SPECTRAL_COMMUTATION_ATTEMPT.md already retains the residual;
+CCM_NEGATIVE_SUBSPACE_L1_TEST.md already pays the unsuccessful sparse return.
+These are reused, not new results or new impossibility claims.
+
+Three shelf dictionaries (deterministic self-consistent negative spectral
+density; relative form/Mourre positive commutator arithmetic translations;
+signed transfer correlation spectral Gibbs negative projector) returned
+ASK_STATUS: INCOMPLETE due to q3_docs freshness. No absence conclusion follows.
+Researcher long_positive_alias returned no usable mapped supplier.
+
+One primary lead was checked by researcher and then independently reread by
+root as DISCOVERY evidence: Maurizio Laporta, On Ramanujan expansions and
+primes in arithmetic progressions, arXiv:2204.01581v1, Theorem1, PDF page3.
+URL: https://arxiv.org/pdf/2204.01581v1 . Local source:
+sources/laporta_2204_01581v1.pdf,186925bytes,SHA256
+f79ed7856dc9dd073d44c7ff6112a117e1bac34cb22322b1ab6d34e4bcad9608.
+The hypothesis on its Delange series (8) is: "be convergent for every
+sufficiently large N". Conditional on that, (9) bounds scalar Delta(N,h)
+by O_epsilon((N+h)^epsilon). Source page4 explicitly notes its connection
+to the Hardy-Littlewood prime-pair conjecture and the missing unconditional
+cancellation. This is not an unconditional prime-correlation theorem.
+
+Mapping status: source N is a scalar arithmetic cutoff, h an additive shift;
+our m also determines Fourier carrier and W. Neither the Delange convergence
+hypothesis nor a return from its scalar correlation to f_W(n), moving long
+cutoff and both continuous terms has been proved. The synthetic commuting
+spike has no corresponding arithmetic correlation or verified Delange series,
+so this theorem cannot exclude it through a mapped hypothesis. EXCLUDED
+CONDITIONAL LEAD; no theorem is admitted, and no arithmetic status changes.
+Do not send Pro the already-tested generic adaptive-weight question again.
+A next request needs a concrete additional source hypothesis and a worked
+check that distinguishes the actual matrix from the synthetic spike.
