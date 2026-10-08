@@ -2,7 +2,7 @@
 
 2026-10-08 21:56UTC: terminal Antwort abgeschlossen, final attachment and regenerate/voice controls observed in the same Derive CCM Drift chat. Complete835-line original downloaded/read; displayed hash matches. Independent read-only audit PASS for Q09-NF(21) on (8)-(9), standalone negative-frequency payment only. See CCM_MOMENT_Q09_CONCLUSION.md for source hashes, exact scope and verification. Both frequency parts are large on actual Pe0; the signed difference remains unpaid. C5, restricted arithmetic supplier, full-SP/RH OPEN. Auxiliary small-divisor calculations not independently admitted.
 
-Request+original answer+conclusion saved together for one scoped delivery. No Q10 sent; no response remains to await. Pause q3-joint-low-probe after confirmed push; native full RH goal ACTIVE. Next own attempt: retain the joint positive credit and test the actual long-Mobius signed pairing; H_mu is an unproved stronger candidate, not a supplier. Linux zeta Comparator remains report-only; no Hecke import or Mac rerun.
+Request+original answer+conclusion saved together for one scoped delivery. No Q10 sent; no response remains to await. Pause q3-joint-low-probe after confirmed push; native full RH goal ACTIVE. Own long-Mobius scalar test independently PASS and recorded in CCM_LONG_MOBIUS_PRIMITIVE_TEST.md: exact return H_mu=D_prime-E_short, bounded short error, quantified H_mu iff RH. This equivalence is not impossibility; a new source estimate is still absent. Next Q10 may ask the weaker one-sided actual joint pairing, preserving positive credits; Q10 not sent. Linux zeta Comparator remains report-only; no Hecke import or Mac rerun.
 
 --- Q8 processed history ---
 

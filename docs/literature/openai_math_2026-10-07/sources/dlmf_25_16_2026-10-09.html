@@ -1,0 +1,1019 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>DLMF: §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions</title>
+<link rel="shortcut icon" href="./style/DLMF-16.png" type="image/png">
+<script type="text/javascript"><!--
+	var PATH="DLMF:/25.16";
+	var ROOT="./";
+      //--></script>
+<script type="text/javascript" src="./style/jquery.js"><!-- non-empty so ie6 will accept it --></script>
+<script type="text/javascript" src="./style/jquery.leaveNotice.js"><!-- non-empty so ie6 will accept it --></script>
+<script type="text/javascript" src="./style/DLMF.js"><!-- non-empty so ie6 will accept it --></script>
+<script async="" type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=DOC&amp;subagency=NIST&amp;pua=UA-37115410-44&amp;yt=true&amp;exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"><!-- non-empty so ie6 will accept it --></script><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-BZB64W4M0L"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-BZB64W4M0L');
+      </script>
+<link rel="stylesheet" type="text/css" href="./style/LaTeXML.css">
+<link rel="stylesheet" type="text/css" href="./style/DLMF.css">
+<link rel="stylesheet" type="text/css" href="./style/print.css" media="print">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="top" href="./" title="DLMF">
+<link rel="copyright" href="./about/notices" title="Copyright">
+<link rel="search" href="./search/search" title="Search">
+<link rel="help" class="ltx_help" href="./help/" title="Help">
+<link rel="up" href="./25#PT4" title="Applications ‣ Chapter 25 Zeta and Related Functions">
+<link rel="up up" href="./25" title="Chapter 25 Zeta and Related Functions">
+<link rel="start" href="./" title="">
+<link rel="prev" href="./25.15" title="§25.15 Dirichlet 𝐿-functions ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions">
+<link rel="next" href="./25.17" title="§25.17 Physical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.2" title="§25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.3" title="§25.3 Graphics ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.4" title="§25.4 Reflection Formulas ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.5" title="§25.5 Integral Representations ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.6" title="§25.6 Integer Arguments ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.7" title="§25.7 Integrals ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.8" title="§25.8 Sums ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.9" title="§25.9 Asymptotic Approximations ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.10" title="§25.10 Zeros ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.11" title="§25.11 Hurwitz Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.12" title="§25.12 Polylogarithms ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.13" title="§25.13 Periodic Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.14" title="§25.14 Lerch’s Transcendent ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.15" title="§25.15 Dirichlet 𝐿-functions ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.17" title="§25.17 Physical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.18" title="§25.18 Methods of Computation ‣ Computation ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.19" title="§25.19 Tables ‣ Computation ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.20" title="§25.20 Approximations ‣ Computation ‣ Chapter 25 Zeta and Related Functions">
+<link rel="section" href="./25.21" title="§25.21 Software ‣ Computation ‣ Chapter 25 Zeta and Related Functions">
+<link rel="document" href="./front/foreword" title="Foreword">
+<link rel="document" href="./front/preface" title="Preface">
+<link rel="document" href="./front/introduction" title="Mathematical Introduction">
+<link rel="chapter" href="./1" title="Chapter 1 Algebraic and Analytic Methods">
+<link rel="chapter" href="./2" title="Chapter 2 Asymptotic Approximations">
+<link rel="chapter" href="./3" title="Chapter 3 Numerical Methods">
+<link rel="chapter" href="./4" title="Chapter 4 Elementary Functions">
+<link rel="chapter" href="./5" title="Chapter 5 Gamma Function">
+<link rel="chapter" href="./6" title="Chapter 6 Exponential, Logarithmic, Sine, and Cosine Integrals">
+<link rel="chapter" href="./7" title="Chapter 7 Error Functions, Dawson’s and Fresnel Integrals">
+<link rel="chapter" href="./8" title="Chapter 8 Incomplete Gamma and Related Functions">
+<link rel="chapter" href="./9" title="Chapter 9 Airy and Related Functions">
+<link rel="chapter" href="./10" title="Chapter 10 Bessel Functions">
+<link rel="chapter" href="./11" title="Chapter 11 Struve and Related Functions">
+<link rel="chapter" href="./12" title="Chapter 12 Parabolic Cylinder Functions">
+<link rel="chapter" href="./13" title="Chapter 13 Confluent Hypergeometric Functions">
+<link rel="chapter" href="./14" title="Chapter 14 Legendre and Related Functions">
+<link rel="chapter" href="./15" title="Chapter 15 Hypergeometric Function">
+<link rel="chapter" href="./16" title="Chapter 16 Generalized Hypergeometric Functions and Meijer 𝐺-Function">
+<link rel="chapter" href="./17" title="Chapter 17 𝑞-Hypergeometric and Related Functions">
+<link rel="chapter" href="./18" title="Chapter 18 Orthogonal Polynomials">
+<link rel="chapter" href="./19" title="Chapter 19 Elliptic Integrals">
+<link rel="chapter" href="./20" title="Chapter 20 Theta Functions">
+<link rel="chapter" href="./21" title="Chapter 21 Multidimensional Theta Functions">
+<link rel="chapter" href="./22" title="Chapter 22 Jacobian Elliptic Functions">
+<link rel="chapter" href="./23" title="Chapter 23 Weierstrass Elliptic and Modular Functions">
+<link rel="chapter" href="./24" title="Chapter 24 Bernoulli and Euler Polynomials">
+<link rel="chapter" href="./25" title="Chapter 25 Zeta and Related Functions">
+<link rel="chapter" href="./26" title="Chapter 26 Combinatorial Analysis">
+<link rel="chapter" href="./27" title="Chapter 27 Functions of Number Theory">
+<link rel="chapter" href="./28" title="Chapter 28 Mathieu Functions and Hill’s Equation">
+<link rel="chapter" href="./29" title="Chapter 29 Lamé Functions">
+<link rel="chapter" href="./30" title="Chapter 30 Spheroidal Wave Functions">
+<link rel="chapter" href="./31" title="Chapter 31 Heun Functions">
+<link rel="chapter" href="./32" title="Chapter 32 Painlevé Transcendents">
+<link rel="chapter" href="./33" title="Chapter 33 Coulomb Functions">
+<link rel="chapter" href="./34" title="Chapter 34 3⁢𝑗,6⁢𝑗,9⁢𝑗 Symbols">
+<link rel="chapter" href="./35" title="Chapter 35 Functions of Matrix Argument">
+<link rel="chapter" href="./36" title="Chapter 36 Integrals with Coalescing Saddles">
+<link rel="bibliography" href="./bib/" title="Bibliography">
+<link rel="index" href="./idx/" title="Index">
+<link rel="glossary" href="./not/" title="Notations">
+<link rel="document" href="./lof/" title="List of Figures">
+<link rel="document" href="./lot/" title="List of Tables">
+<link rel="document" href="./software/" title="Software Index">
+<link rel="document" href="./errata/" title="Errata">
+<link rel="document" href="./help/" title="Need Help?">
+<link rel="document" href="./search/" title="Advanced Search">
+<link rel="document" href="./about/" title="About the Project">
+<meta name="keywords" lang="en" content="Chebyshev , Euler sums, Riemann hypothesis, Riemann zeta function, applications, distribution, equivalent statement, equivalent statements, mathematical, prime number theorem, prime numbers, reciprocity law">
+</head>
+<body>
+<div class="ltx_page_navbar">
+<div class="ltx_page_navlogo"><a href="./" title="Digital Library of Mathematical Functions" class="DLMFLogo"><span>DLMF</span></a></div>
+<div id="navmenu" class="ltx_page_navitems">
+<button class="ltx_page_navbar_menubutton" onclick="toggleMenu(); return false;">Menu</button>
+<ul>
+<li><a class="ltx_navlink ltx_navindex" href="./idx/">Index</a></li>
+<li><a class="ltx_navlink ltx_navnotations" href="./not/">Notations</a></li>
+<li><small><form method="get" action="./search/search">
+<input type="text" name="q" value="" size="6" class="ltx_navsearch"><button type="submit" class="ltx_navlink ltx_navsearch">Search</button>
+</form></small></li>
+<li><a class="ltx_navlink ltx_help" href="./help/">Help?</a></li>
+<li><a class="ltx_navlink ltx_navciting" href="./help/cite">Citing</a></li>
+<li><a class="ltx_navlink ltx_customize" href="./help/customize">Customize</a></li>
+<li>
+<a class="ltx_navlink ltx_navshowinfo" id="showinfo" href="" onclick="showInfo(); return false;" title="Show Annotations">Annotate</a><a class="ltx_navlink ltx_navhideinfo" id="hideinfo" href="" onclick="hideInfo(); return false;">UnAnnotate</a>
+</li>
+<li><a class="ltx_navlink ltx_navabout" href="./about/">About the Project</a></li>
+</ul>
+</div>
+<div class="ltx_page_navbottom">
+</div>
+</div>
+<div class="ltx_page_main">
+<div class="ltx_page_header">
+<a href="./25" title="" class="ltx_ref" rel="up up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">25 </span>Zeta and Related Functions</span></a><a href="./25#PT4" title="In Chapter 25 Zeta and Related Functions" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title">Applications</span></a><a href="./25.15" title="In Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">25.15 </span>Dirichlet <math class="ltx_Math" altimg="m21.png" altimg-height="18px" altimg-valign="-2px" altimg-width="18px" alttext="L" display="inline"><mi href="./25.15#E1" title="Dirichlet 𝐿-function">L</mi></math>-functions</span></a><a href="./25.17" title="In Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">25.17 </span>Physical Applications</span></a>
+</div>
+<div class="ltx_page_content">
+<section class="ltx_section ltx_authors_multiline ltx_leqno">
+<h1 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">§25.16 </span>Mathematical Applications</h1>
+<div id="info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Riemann%20zeta%20function">Riemann zeta function</a>, <a class="ltx_keyword" href="./search/search?q=applications">applications</a>, <a class="ltx_keyword" href="./search/search?q=mathematical">mathematical</a>
+</dd>
+<dt>Notes:</dt>
+<dd>See <cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib115" title="Introduction to Analytic Number Theory" class="ltx_ref">1976</a>, Chapter 4)</cite>,
+<cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib121" title="A Centennial History of the Prime Number Theorem" class="ltx_ref">2000</a>)</cite>,
+<cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>)</cite>, and
+<cite class="ltx_cite ltx_citemacro_citet">Flajolet and Salvy (<a href="./bib/F#bib806" title="Euler sums and contour integral representations" class="ltx_ref">1998</a>)</cite>.</dd>
+<dt>Referenced by:</dt>
+<dd><a href="./25.1#t1.r8" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.1</span></a></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16" title="" class="ltx_ref">http://dlmf.nist.gov/25.16</a></dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+
+<h6>Contents</h6>
+<ol class="ltx_toclist ltx_toclist_section">
+<li class="ltx_tocentry"><a href="#i"><span class="ltx_tag ltx_tag_subsection">§25.16(i) </span>Distribution of Primes</a></li>
+<li class="ltx_tocentry"><a href="#ii"><span class="ltx_tag ltx_tag_subsection">§25.16(ii) </span>Euler Sums</a></li>
+</ol>
+<section id="i" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">§25.16(i) </span>Distribution of Primes</h2>
+<div id="i.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Chebyshev%20%CF%88-function">Chebyshev <math class="ltx_Math" altimg="m34.png" altimg-height="22px" altimg-valign="-6px" altimg-width="19px" alttext="\psi" display="inline"><mi>ψ</mi></math>-function</a>, <a class="ltx_keyword" href="./search/search?q=Riemann%20hypothesis">Riemann hypothesis</a>, <a class="ltx_keyword" href="./search/search?q=distribution">distribution</a>, <a class="ltx_keyword" href="./search/search?q=equivalent%20statement">equivalent statement</a>, <a class="ltx_keyword" href="./search/search?q=equivalent%20statements">equivalent statements</a>, <a class="ltx_keyword" href="./search/search?q=prime%20number%20theorem">prime number theorem</a>, <a class="ltx_keyword" href="./search/search?q=prime%20numbers">prime numbers</a>
+</dd>
+<dt>Notes:</dt>
+<dd>See <cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib115" title="Introduction to Analytic Number Theory" class="ltx_ref">1976</a>, Chapter 4)</cite> and
+<cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib121" title="A Centennial History of the Prime Number Theorem" class="ltx_ref">2000</a>)</cite>.</dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.i" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.i</a></dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="i.p1" class="ltx_para">
+<p class="ltx_p">In studying the distribution of primes <math class="ltx_Math" altimg="m54.png" altimg-height="21px" altimg-valign="-6px" altimg-width="54px" alttext="p\leq x" display="inline"><mrow><mi href="./25.1#t1.r2" title="prime number">p</mi><mo>≤</mo><mi href="./25.1#t1.r3" title="real variable">x</mi></mrow></math>, <cite class="ltx_cite ltx_citemacro_citet">Chebyshev (<a href="./bib/C#bib475" title="Sur la fonction qui détermine la totalité des nombres premiers inférieurs à une limite donnée" class="ltx_ref">1851</a>)</cite>
+introduced a function <math class="ltx_Math" altimg="m37.png" altimg-height="25px" altimg-valign="-7px" altimg-width="50px" alttext="\psi\left(x\right)" display="inline"><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></math> (not to be confused with the digamma
+function used elsewhere in this chapter), given by
+</p>
+<div class="ltx_equation_container">
+<table id="E1" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.1</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E1.png" altimg-height="76px" altimg-valign="-32px" altimg-width="256px" alttext="\psi\left(x\right)=\sum_{m=1}^{\infty}\sum_{p^{m}\leq x}\ln p," display="block"><mrow><mrow><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">m</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><munder><mo movablelimits="false">∑</mo><mrow><msup><mi href="./25.1#t1.r2" title="prime number">p</mi><mi href="./25.1#t1.r1" title="nonnegative integer">m</mi></msup><mo>≤</mo><mi href="./25.1#t1.r3" title="real variable">x</mi></mrow></munder><mrow><mi href="./4.2#E2" title="principal branch of logarithm function">ln</mi><mo lspace="0.167em">⁡</mo><mi href="./25.1#t1.r2" title="prime number">p</mi></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E1.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Defines:</dt>
+<dd><span class="ltx_text ltx_font_bold"><math class="ltx_Math" altimg="m35.png" altimg-height="25px" altimg-valign="-7px" altimg-width="50px" alttext="\psi\left(\NVar{x}\right)" display="inline"><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></math>: Chebyshev <math class="ltx_Math" altimg="m34.png" altimg-height="22px" altimg-valign="-6px" altimg-width="19px" alttext="\psi" display="inline"><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi></math>-function</span></dd>
+<dt>Symbols:</dt>
+<dd>
+<a href="./4.2#E2" title="(4.2.2) ‣ §4.2(i) The Logarithm ‣ §4.2 Definitions ‣ Logarithm, Exponential, Powers ‣ Chapter 4 Elementary Functions" class="ltx_ref"><math class="ltx_Math" altimg="m32.png" altimg-height="18px" altimg-valign="-2px" altimg-width="36px" alttext="\ln\NVar{z}" display="inline"><mrow><mi href="./4.2#E2" title="principal branch of logarithm function">ln</mi><mo lspace="0.167em">⁡</mo><mi class="ltx_nvar" href="./4.1#t1.r4" title="complex variable">z</mi></mrow></math>: principal branch of logarithm function</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m50.png" altimg-height="13px" altimg-valign="-2px" altimg-width="23px" alttext="m" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">m</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r2" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m53.png" altimg-height="17px" altimg-valign="-6px" altimg-width="15px" alttext="p" display="inline"><mi href="./25.1#t1.r2" title="prime number">p</mi></math>:  prime number</a> and
+<a href="./25.1#t1.r3" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi href="./25.1#t1.r3" title="real variable">x</mi></math>:  real variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=definition">definition</a>, <a class="ltx_keyword" href="./search/search?q=double%20series">double series</a>, <a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=series%20representation">series representation</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib115" title="Introduction to Analytic Number Theory" class="ltx_ref">1976</a>, p. 75)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E1" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E1</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E1.tex">TeX</a>, <a href="./25.16.E1.pmml">pMML</a>, <a href="./25.16.E1.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#i.info" title="§25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(i)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<p class="ltx_p">which is related to the Riemann zeta function by</p>
+<div class="ltx_equation_container">
+<table id="E2" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.2</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E2.png" altimg-height="105px" altimg-valign="-31px" altimg-width="329px" alttext="\psi\left(x\right)=x-\frac{\zeta'\left(0\right)}{\zeta\left(0\right)}-\sum_{%
+\rho}\frac{x^{\rho}}{\rho}+o\left(1\right)," display="block"><mrow><mrow><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>−</mo><mfrac><mrow><msup><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>′</mo></msup><mo>⁡</mo><mrow><mo>(</mo><mn>0</mn><mo>)</mo></mrow></mrow><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mn>0</mn><mo>)</mo></mrow></mrow></mfrac><mo rspace="0.055em">−</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>ρ</mi></munder><mfrac><msup><mi href="./25.1#t1.r3" title="real variable">x</mi><mi>ρ</mi></msup><mi>ρ</mi></mfrac></mrow></mrow><mo>+</mo><mrow><mi href="./2.1#E2" title="order less than">o</mi><mo>⁡</mo><mrow><mo>(</mo><mn>1</mn><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr class="ltx_eqn_row"><td class="ltx_eqn_cell ltx_align_right" colspan="4"><span class="ltx_constraint"><math class="ltx_Math" altimg="m59.png" altimg-height="13px" altimg-valign="-2px" altimg-width="69px" alttext="x\to\infty" display="inline"><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>,</span></td></tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E2.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#E1" title="(25.16.1) ‣ §25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m35.png" altimg-height="25px" altimg-valign="-7px" altimg-width="50px" alttext="\psi\left(\NVar{x}\right)" display="inline"><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></math>: Chebyshev <math class="ltx_Math" altimg="m34.png" altimg-height="22px" altimg-valign="-6px" altimg-width="19px" alttext="\psi" display="inline"><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi></math>-function</a>,
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a>,
+<a href="./2.1#E2" title="(2.1.2) ‣ §2.1(i) Asymptotic and Order Symbols ‣ §2.1 Definitions and Elementary Properties ‣ Areas ‣ Chapter 2 Asymptotic Approximations" class="ltx_ref"><math class="ltx_Math" altimg="m52.png" altimg-height="25px" altimg-valign="-7px" altimg-width="46px" alttext="o\left(\NVar{x}\right)" display="inline"><mrow><mi href="./2.1#E2" title="order less than">o</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar">x</mi><mo>)</mo></mrow></mrow></math>: order less than</a> and
+<a href="./25.1#t1.r3" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi href="./25.1#t1.r3" title="real variable">x</mi></math>:  real variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd><a class="ltx_keyword" href="./search/search?q=asymptotic%20approximation">asymptotic approximation</a></dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib121" title="A Centennial History of the Prime Number Theorem" class="ltx_ref">2000</a>, p. 9)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E2" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E2</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E2.tex">TeX</a>, <a href="./25.16.E2.pmml">pMML</a>, <a href="./25.16.E2.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#i.info" title="§25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(i)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<p class="ltx_p">where the sum is taken over the nontrivial zeros <math class="ltx_Math" altimg="m39.png" altimg-height="17px" altimg-valign="-6px" altimg-width="15px" alttext="\rho" display="inline"><mi>ρ</mi></math> of <math class="ltx_Math" altimg="m44.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(s\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="i.p2" class="ltx_para">
+<p class="ltx_p">The prime number theorem (<a href="./27.2#E3" title="(27.2.3) ‣ §27.2(i) Definitions ‣ §27.2 Functions ‣ Multiplicative Number Theory ‣ Chapter 27 Functions of Number Theory" class="ltx_ref"><span class="ltx_text ltx_ref_tag">27.2.3</span></a>) is equivalent to the statement
+</p>
+<div class="ltx_equation_container">
+<table id="E3" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.3</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E3.png" altimg-height="70px" altimg-valign="-7px" altimg-width="168px" alttext="\psi\left(x\right)=x+o\left(x\right)," display="block"><mrow><mrow><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>+</mo><mrow><mi href="./2.1#E2" title="order less than">o</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr class="ltx_eqn_row"><td class="ltx_eqn_cell ltx_align_right" colspan="4"><span class="ltx_constraint"><math class="ltx_Math" altimg="m59.png" altimg-height="13px" altimg-valign="-2px" altimg-width="69px" alttext="x\to\infty" display="inline"><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>.</span></td></tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E3.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#E1" title="(25.16.1) ‣ §25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m35.png" altimg-height="25px" altimg-valign="-7px" altimg-width="50px" alttext="\psi\left(\NVar{x}\right)" display="inline"><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></math>: Chebyshev <math class="ltx_Math" altimg="m34.png" altimg-height="22px" altimg-valign="-6px" altimg-width="19px" alttext="\psi" display="inline"><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi></math>-function</a>,
+<a href="./2.1#E1" title="(2.1.1) ‣ §2.1(i) Asymptotic and Order Symbols ‣ §2.1 Definitions and Elementary Properties ‣ Areas ‣ Chapter 2 Asymptotic Approximations" class="ltx_ref"><math class="ltx_Math" altimg="m40.png" altimg-height="11px" altimg-valign="-2px" altimg-width="20px" alttext="\sim" display="inline"><mo href="./2.1#E1" title="asymptotic equality">∼</mo></math>: asymptotic equality</a>,
+<a href="./2.1#E2" title="(2.1.2) ‣ §2.1(i) Asymptotic and Order Symbols ‣ §2.1 Definitions and Elementary Properties ‣ Areas ‣ Chapter 2 Asymptotic Approximations" class="ltx_ref"><math class="ltx_Math" altimg="m52.png" altimg-height="25px" altimg-valign="-7px" altimg-width="46px" alttext="o\left(\NVar{x}\right)" display="inline"><mrow><mi href="./2.1#E2" title="order less than">o</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar">x</mi><mo>)</mo></mrow></mrow></math>: order less than</a> and
+<a href="./25.1#t1.r3" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi href="./25.1#t1.r3" title="real variable">x</mi></math>:  real variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd><a class="ltx_keyword" href="./search/search?q=asymptotic%20approximation">asymptotic approximation</a></dd>
+<dt>Source:</dt>
+<dd>
+<cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib115" title="Introduction to Analytic Number Theory" class="ltx_ref">1976</a>, (10), p. 79)</cite>; since <math class="ltx_Math" altimg="m38.png" altimg-height="25px" altimg-valign="-7px" altimg-width="90px" alttext="\psi\left(x\right)\sim x" display="inline"><mrow><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><mo href="./2.1#E1" title="asymptotic equality">∼</mo><mi href="./25.1#t1.r3" title="real variable">x</mi></mrow></math> is
+equivalent to <math class="ltx_Math" altimg="m36.png" altimg-height="25px" altimg-valign="-7px" altimg-width="156px" alttext="\psi\left(x\right)=x+o\left(x\right)" display="inline"><mrow><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>+</mo><mrow><mi href="./2.1#E2" title="order less than">o</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></mrow></mrow></math>
+</dd>
+<dt>Referenced by:</dt>
+<dd><a href="./25.10#i.p1" title="§25.10(i) Distribution ‣ §25.10 Zeros ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.10(i)</span></a></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E3" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E3</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E3.tex">TeX</a>, <a href="./25.16.E3.pmml">pMML</a>, <a href="./25.16.E3.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#i.info" title="§25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(i)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="i.p3" class="ltx_para">
+<p class="ltx_p">The Riemann hypothesis is equivalent to the statement
+</p>
+<div class="ltx_equation_container">
+<table id="E4" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.4</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E4.png" altimg-height="84px" altimg-valign="-15px" altimg-width="216px" alttext="\psi\left(x\right)=x+O\left(x^{\frac{1}{2}+\epsilon}\right)," display="block"><mrow><mrow><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>+</mo><mrow><mi href="./2.1#E3" title="order not exceeding">O</mi><mo>⁡</mo><mrow><mo>(</mo><msup><mi href="./25.1#t1.r3" title="real variable">x</mi><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mi>ϵ</mi></mrow></msup><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr class="ltx_eqn_row"><td class="ltx_eqn_cell ltx_align_right" colspan="4"><span class="ltx_constraint"><math class="ltx_Math" altimg="m59.png" altimg-height="13px" altimg-valign="-2px" altimg-width="69px" alttext="x\to\infty" display="inline"><mrow><mi href="./25.1#t1.r3" title="real variable">x</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>,</span></td></tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E4.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./2.1#E3" title="(2.1.3) ‣ §2.1(i) Asymptotic and Order Symbols ‣ §2.1 Definitions and Elementary Properties ‣ Areas ‣ Chapter 2 Asymptotic Approximations" class="ltx_ref"><math class="ltx_Math" altimg="m22.png" altimg-height="25px" altimg-valign="-7px" altimg-width="52px" alttext="O\left(\NVar{x}\right)" display="inline"><mrow><mi href="./2.1#E3" title="order not exceeding">O</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar">x</mi><mo>)</mo></mrow></mrow></math>: order not exceeding</a>,
+<a href="./25.16#E1" title="(25.16.1) ‣ §25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m35.png" altimg-height="25px" altimg-valign="-7px" altimg-width="50px" alttext="\psi\left(\NVar{x}\right)" display="inline"><mrow><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow></math>: Chebyshev <math class="ltx_Math" altimg="m34.png" altimg-height="22px" altimg-valign="-6px" altimg-width="19px" alttext="\psi" display="inline"><mi href="./25.16#E1" title="Chebyshev 𝜓-function">ψ</mi></math>-function</a> and
+<a href="./25.1#t1.r3" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi href="./25.1#t1.r3" title="real variable">x</mi></math>:  real variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd><a class="ltx_keyword" href="./search/search?q=asymptotic%20approximation">asymptotic approximation</a></dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol (<a href="./bib/#bib121" title="A Centennial History of the Prime Number Theorem" class="ltx_ref">2000</a>, p. 9)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E4" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E4</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E4.tex">TeX</a>, <a href="./25.16.E4.pmml">pMML</a>, <a href="./25.16.E4.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#i.info" title="§25.16(i) Distribution of Primes ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(i)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<p class="ltx_p">for every <math class="ltx_Math" altimg="m27.png" altimg-height="18px" altimg-valign="-3px" altimg-width="51px" alttext="\epsilon&gt;0" display="inline"><mrow><mi>ϵ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</section>
+<section id="ii" class="ltx_subsection">
+<h2 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">§25.16(ii) </span>Euler Sums</h2>
+<div id="ii.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Defines:</dt>
+<dd>
+<span class="ltx_text ltx_font_bold"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</span> and
+<span class="ltx_text ltx_font_bold"><math class="ltx_Math" altimg="m13.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(\NVar{s},\NVar{z}\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi class="ltx_nvar" href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow></math>: generalized Euler sums</span>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Euler%20sums">Euler sums</a>, <a class="ltx_keyword" href="./search/search?q=Riemann%20zeta%20function">Riemann zeta function</a>, <a class="ltx_keyword" href="./search/search?q=reciprocity%20law">reciprocity law</a>
+</dd>
+<dt>Notes:</dt>
+<dd>See <cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>)</cite>
+and <cite class="ltx_cite ltx_citemacro_citet">Flajolet and Salvy (<a href="./bib/F#bib806" title="Euler sums and contour integral representations" class="ltx_ref">1998</a>)</cite>.</dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.ii" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.ii</a></dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="ii.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">Euler sums</em> have the form
+</p>
+<div class="ltx_equation_container">
+<table id="E5" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.5</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E5.png" altimg-height="73px" altimg-valign="-28px" altimg-width="211px" alttext="H\left(s\right)=\sum_{n=1}^{\infty}\frac{H_{n}}{n^{s}}," display="block"><mrow><mrow><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub><msup><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mi href="./25.1#t1.r5" title="complex variable">s</mi></msup></mfrac></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E5.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#ii.p1" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</a>,
+<a href="./25.11#E33" title="(25.11.33) ‣ §25.11(viii) Further Integral Representations ‣ §25.11 Hurwitz Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m19.png" altimg-height="21px" altimg-valign="-5px" altimg-width="33px" alttext="H_{\NVar{n}}" display="inline"><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi class="ltx_nvar" href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub></math>: harmonic number</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m51.png" altimg-height="13px" altimg-valign="-2px" altimg-width="17px" alttext="n" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r5" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m57.png" altimg-height="13px" altimg-valign="-2px" altimg-width="14px" alttext="s" display="inline"><mi href="./25.1#t1.r5" title="complex variable">s</mi></math>:  complex variable</a> and
+<a href="./25.11#viii.p1" title="§25.11(viii) Further Integral Representations ‣ §25.11 Hurwitz Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m48.png" altimg-height="25px" altimg-valign="-7px" altimg-width="45px" alttext="h(n)" display="inline"><mrow><mi href="./25.11#viii.p1" title="harmonic number">h</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo stretchy="false">)</mo></mrow></mrow></math>:  harmonic number</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Euler%20sum">Euler sum</a>, <a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=series%20representation">series representation</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, p. 85)</cite></dd>
+<dt>Referenced by:</dt>
+<dd><a href="./errata/#V1.1.4.I2.ix3.p1" title="In Other Changes ‣ Version 1.1.4 (January 15, 2022) ‣ Errata" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Erratum (V1.1.4) for  Notation</span></a></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E5" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E5</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E5.tex">TeX</a>, <a href="./25.16.E5.pmml">pMML</a>, <a href="./25.16.E5.png">png</a>
+</dd>
+<dt>Notation (effective with 1.1.4):</dt>
+<dd>
+The notation previously used for the harmonic number <math class="ltx_Math" altimg="m48.png" altimg-height="25px" altimg-valign="-7px" altimg-width="45px" alttext="h(n)" display="inline"><mrow><mi href="./25.11#viii.p1" title="harmonic number">h</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo stretchy="false">)</mo></mrow></mrow></math> has been
+replaced to be <math class="ltx_Math" altimg="m20.png" altimg-height="21px" altimg-valign="-5px" altimg-width="33px" alttext="H_{n}" display="inline"><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub></math>.
+
+<p><span class="ltx_font_italic">Suggested 2021-08-23 by Gergő Nemes</span></p>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<p class="ltx_p">where <math class="ltx_Math" altimg="m20.png" altimg-height="21px" altimg-valign="-5px" altimg-width="33px" alttext="H_{n}" display="inline"><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub></math> is given by (<a href="./25.11#E33" title="(25.11.33) ‣ §25.11(viii) Further Integral Representations ‣ §25.11 Hurwitz Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">25.11.33</span></a>).</p>
+</div>
+<div id="ii.p2" class="ltx_para">
+<p class="ltx_p"><math class="ltx_Math" altimg="m17.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(s\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math> is analytic for <math class="ltx_Math" altimg="m24.png" altimg-height="19px" altimg-valign="-3px" altimg-width="67px" alttext="\Re s&gt;1" display="inline"><mrow><mrow><mi href="./1.9#E2" mathvariant="normal" title="real part">ℜ</mi><mo lspace="0.167em">⁡</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi></mrow><mo>&gt;</mo><mn>1</mn></mrow></math>, and can be extended
+meromorphically into the half-plane <math class="ltx_Math" altimg="m23.png" altimg-height="20px" altimg-valign="-4px" altimg-width="95px" alttext="\Re s&gt;-2k" display="inline"><mrow><mrow><mi href="./1.9#E2" mathvariant="normal" title="real part">ℜ</mi><mo lspace="0.167em">⁡</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi></mrow><mo>&gt;</mo><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow></mrow></mrow></math> for every positive
+integer <math class="ltx_Math" altimg="m49.png" altimg-height="18px" altimg-valign="-2px" altimg-width="16px" alttext="k" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></math> by use of the relations</p>
+</div>
+<div id="ii.p3" class="ltx_para">
+<div class="ltx_equation_container">
+<table id="E6" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.6</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E6.png" altimg-height="284px" altimg-valign="-28px" altimg-width="406px" alttext="H\left(s\right)=-\zeta'\left(s\right)+\gamma\zeta\left(s\right)+\frac{1}{2}%
+\zeta\left(s+1\right)+\sum_{r=1}^{k}\zeta\left(1-2r\right)\zeta\left(s+2r%
+\right)+\sum_{n=1}^{\infty}\frac{1}{n^{s}}\int_{n}^{\infty}\frac{\widetilde{B}%
+_{2k+1}\left(x\right)}{x^{2k+2}}\,\mathrm{d}x," display="block"><mrow><mrow><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mrow><msup><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>′</mo></msup><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mi href="./5.2#E3" title="Euler’s constant">γ</mi><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow></mrow><mo rspace="0.055em">+</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></munderover><mrow><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo rspace="0.055em">+</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><mfrac><mn>1</mn><msup><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mi href="./25.1#t1.r5" title="complex variable">s</mi></msup></mfrac><mo>⁢</mo><mrow><msubsup><mo href="./1.4#iv" title="integral">∫</mo><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mi mathvariant="normal">∞</mi></msubsup><mrow><mfrac><mrow><msub><mover accent="true"><mi href="./24.2#iii" title="periodic Bernoulli functions">B</mi><mo href="./24.2#iii" title="periodic Bernoulli functions">~</mo></mover><mrow><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo>+</mo><mn>1</mn></mrow></msub><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><msup><mi href="./25.1#t1.r3" title="real variable">x</mi><mrow><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo>+</mo><mn>2</mn></mrow></msup></mfrac><mo lspace="0em">⁢</mo><mrow><mo href="./1.4#iv" rspace="0em" title="differential of 𝑥">d</mo><mi href="./25.1#t1.r3" title="real variable">x</mi></mrow></mrow></mrow></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E6.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./5.2#E3" title="(5.2.3) ‣ §5.2(ii) Euler’s Constant ‣ §5.2 Definitions ‣ Properties ‣ Chapter 5 Gamma Function" class="ltx_ref"><math class="ltx_Math" altimg="m28.png" altimg-height="17px" altimg-valign="-6px" altimg-width="16px" alttext="\gamma" display="inline"><mi href="./5.2#E3" title="Euler’s constant">γ</mi></math>: Euler’s constant</a>,
+<a href="./25.16#ii.p1" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</a>,
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a>,
+<a href="./1.4#iv" title="§1.4(iv) Indefinite Integrals ‣ §1.4 Calculus of One Variable ‣ Topics of Discussion ‣ Chapter 1 Algebraic and Analytic Methods" class="ltx_ref"><math class="ltx_Math" altimg="m33.png" altimg-height="18px" altimg-valign="-2px" altimg-width="28px" alttext="\,\mathrm{d}\NVar{x}" display="inline"><mrow><mo href="./1.4#iv" rspace="0em" title="differential of 𝑥">d</mo><mi class="ltx_nvar">x</mi></mrow></math>: differential of <math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi>x</mi></math></a>,
+<a href="./1.4#iv" title="§1.4(iv) Indefinite Integrals ‣ §1.4 Calculus of One Variable ‣ Topics of Discussion ‣ Chapter 1 Algebraic and Analytic Methods" class="ltx_ref"><math class="ltx_Math" altimg="m31.png" altimg-height="27px" altimg-valign="-8px" altimg-width="18px" alttext="\int" display="inline"><mo href="./1.4#iv" title="integral">∫</mo></math>: integral</a>,
+<a href="./24.2#iii" title="§24.2(iii) Periodic Bernoulli and Euler Functions ‣ §24.2 Definitions and Generating Functions ‣ Properties ‣ Chapter 24 Bernoulli and Euler Polynomials" class="ltx_ref"><math class="ltx_Math" altimg="m41.png" altimg-height="30px" altimg-valign="-7px" altimg-width="63px" alttext="\widetilde{B}_{\NVar{n}}\left(\NVar{x}\right)" display="inline"><mrow><msub><mover accent="true"><mi href="./24.2#iii" title="periodic Bernoulli functions">B</mi><mo href="./24.2#iii" title="periodic Bernoulli functions">~</mo></mover><mi class="ltx_nvar" href="./24.1#t1.r1" title="integer">n</mi></msub><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./24.1#t1.r2" title="real or complex">x</mi><mo>)</mo></mrow></mrow></math>: periodic Bernoulli functions</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m49.png" altimg-height="18px" altimg-valign="-2px" altimg-width="16px" alttext="k" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m51.png" altimg-height="13px" altimg-valign="-2px" altimg-width="17px" alttext="n" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r3" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi href="./25.1#t1.r3" title="real variable">x</mi></math>:  real variable</a> and
+<a href="./25.1#t1.r5" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m57.png" altimg-height="13px" altimg-valign="-2px" altimg-width="14px" alttext="s" display="inline"><mi href="./25.1#t1.r5" title="complex variable">s</mi></math>:  complex variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Euler%20sum">Euler sum</a>, <a class="ltx_keyword" href="./search/search?q=finite%20sum">finite sum</a>, <a class="ltx_keyword" href="./search/search?q=improper%20integral">improper integral</a>, <a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=integral%20representation">integral representation</a>, <a class="ltx_keyword" href="./search/search?q=series%20representation">series representation</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (3), p. 87)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E6" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E6</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E6.tex">TeX</a>, <a href="./25.16.E6.pmml">pMML</a>, <a href="./25.16.E6.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<div class="ltx_equation_container">
+<table id="E7" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.7</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_Math ltx_eqn_cell ltx_align_center"><math class="ltx_Math" alttext="H\left(s\right)=\frac{1}{2}\zeta\left(s+1\right)+\frac{\zeta\left(s\right)}{s-%
+1}-\sum_{r=1}^{k}\genfrac{(}{)}{0.0pt}{}{s+2r-2}{2r-1}\zeta\left(1-2r\right)%
+\zeta\left(s+2r\right)-\genfrac{(}{)}{0.0pt}{}{s+2k}{2k+1}\sum_{n=1}^{\infty}%
+\frac{1}{n}\int_{n}^{\infty}\frac{\widetilde{B}_{2k+1}\left(x\right)}{x^{s+2k+%
+1}}\,\mathrm{d}x." display="block"><mrow><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mtable align="baseline 1" columnalign="left" displaystyle="true"><mtr><mtd class="ltx_align_left"><mrow><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow></mrow><mo>+</mo><mfrac><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow><mo rspace="0.055em">−</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></munderover><mrow><mrow><mo href="./1.2#i" title="binomial coefficient">(</mo><mfrac linethickness="0.0pt"><mrow><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mn>2</mn></mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo>−</mo><mn>1</mn></mrow></mfrac><mo href="./1.2#i" title="binomial coefficient">)</mo></mrow><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left"><mspace style="width:2em;" width="2em"></mspace><mo>−</mo><mrow><mrow><mo href="./1.2#i" title="binomial coefficient">(</mo><mfrac linethickness="0.0pt"><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow></mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo>+</mo><mn>1</mn></mrow></mfrac><mo href="./1.2#i" title="binomial coefficient">)</mo></mrow><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><mfrac><mn>1</mn><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></mfrac><mo>⁢</mo><mrow><msubsup><mo href="./1.4#iv" title="integral">∫</mo><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mi mathvariant="normal">∞</mi></msubsup><mrow><mfrac><mrow><msub><mover accent="true"><mi href="./24.2#iii" title="periodic Bernoulli functions">B</mi><mo href="./24.2#iii" title="periodic Bernoulli functions">~</mo></mover><mrow><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo>+</mo><mn>1</mn></mrow></msub><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r3" title="real variable">x</mi><mo>)</mo></mrow></mrow><msup><mi href="./25.1#t1.r3" title="real variable">x</mi><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo>+</mo><mn>1</mn></mrow></msup></mfrac><mo lspace="0em">⁢</mo><mrow><mo href="./1.4#iv" rspace="0em" title="differential of 𝑥">d</mo><mi href="./25.1#t1.r3" title="real variable">x</mi></mrow></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E7.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#ii.p1" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</a>,
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a>,
+<a href="./1.2#i" title="§1.2(i) Binomial Coefficients ‣ §1.2 Elementary Algebra ‣ Topics of Discussion ‣ Chapter 1 Algebraic and Analytic Methods" class="ltx_ref"><math class="ltx_Math" altimg="m29.png" altimg-height="29px" altimg-valign="-9px" altimg-width="38px" alttext="\genfrac{(}{)}{0.0pt}{}{\NVar{m}}{\NVar{n}}" display="inline"><mrow><mo href="./1.2#i" title="binomial coefficient">(</mo><mfrac linethickness="0.0pt"><mi class="ltx_nvar" href="./1.1#t1.r5" title="nonnegative integer">m</mi><mi class="ltx_nvar" href="./1.1#t1.r5" title="nonnegative integer">n</mi></mfrac><mo href="./1.2#i" title="binomial coefficient">)</mo></mrow></math>: binomial coefficient</a>,
+<a href="./1.4#iv" title="§1.4(iv) Indefinite Integrals ‣ §1.4 Calculus of One Variable ‣ Topics of Discussion ‣ Chapter 1 Algebraic and Analytic Methods" class="ltx_ref"><math class="ltx_Math" altimg="m33.png" altimg-height="18px" altimg-valign="-2px" altimg-width="28px" alttext="\,\mathrm{d}\NVar{x}" display="inline"><mrow><mo href="./1.4#iv" rspace="0em" title="differential of 𝑥">d</mo><mi class="ltx_nvar">x</mi></mrow></math>: differential of <math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi>x</mi></math></a>,
+<a href="./1.4#iv" title="§1.4(iv) Indefinite Integrals ‣ §1.4 Calculus of One Variable ‣ Topics of Discussion ‣ Chapter 1 Algebraic and Analytic Methods" class="ltx_ref"><math class="ltx_Math" altimg="m31.png" altimg-height="27px" altimg-valign="-8px" altimg-width="18px" alttext="\int" display="inline"><mo href="./1.4#iv" title="integral">∫</mo></math>: integral</a>,
+<a href="./24.2#iii" title="§24.2(iii) Periodic Bernoulli and Euler Functions ‣ §24.2 Definitions and Generating Functions ‣ Properties ‣ Chapter 24 Bernoulli and Euler Polynomials" class="ltx_ref"><math class="ltx_Math" altimg="m41.png" altimg-height="30px" altimg-valign="-7px" altimg-width="63px" alttext="\widetilde{B}_{\NVar{n}}\left(\NVar{x}\right)" display="inline"><mrow><msub><mover accent="true"><mi href="./24.2#iii" title="periodic Bernoulli functions">B</mi><mo href="./24.2#iii" title="periodic Bernoulli functions">~</mo></mover><mi class="ltx_nvar" href="./24.1#t1.r1" title="integer">n</mi></msub><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./24.1#t1.r2" title="real or complex">x</mi><mo>)</mo></mrow></mrow></math>: periodic Bernoulli functions</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m49.png" altimg-height="18px" altimg-valign="-2px" altimg-width="16px" alttext="k" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m51.png" altimg-height="13px" altimg-valign="-2px" altimg-width="17px" alttext="n" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r3" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m58.png" altimg-height="13px" altimg-valign="-2px" altimg-width="16px" alttext="x" display="inline"><mi href="./25.1#t1.r3" title="real variable">x</mi></math>:  real variable</a> and
+<a href="./25.1#t1.r5" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m57.png" altimg-height="13px" altimg-valign="-2px" altimg-width="14px" alttext="s" display="inline"><mi href="./25.1#t1.r5" title="complex variable">s</mi></math>:  complex variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Euler%20sum">Euler sum</a>, <a class="ltx_keyword" href="./search/search?q=finite%20sum">finite sum</a>, <a class="ltx_keyword" href="./search/search?q=improper%20integral">improper integral</a>, <a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=integral%20representation">integral representation</a>, <a class="ltx_keyword" href="./search/search?q=series%20representation">series representation</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (6), p. 88)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E7" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E7</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E7.tex">TeX</a>, <a href="./25.16.E7.pmml">pMML</a>, <a href="./25.16.E7.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ii.p4" class="ltx_para">
+<p class="ltx_p">For integer <math class="ltx_Math" altimg="m57.png" altimg-height="13px" altimg-valign="-2px" altimg-width="14px" alttext="s" display="inline"><mi href="./25.1#t1.r5" title="complex variable">s</mi></math> (<math class="ltx_Math" altimg="m30.png" altimg-height="20px" altimg-valign="-5px" altimg-width="37px" alttext="\geq 2" display="inline"><mrow><mi></mi><mo>≥</mo><mn>2</mn></mrow></math>), <math class="ltx_Math" altimg="m17.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(s\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math> can be evaluated in terms of the
+zeta function:</p>
+<div class="ltx_equationgroup_container">
+<table id="E8" class="ltx_equationgroup ltx_eqn_table">
+<tbody>
+<tr id="Ex1" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="2" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equationgroup ltx_align_left">25.16.8</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math class="ltx_Math" altimg="m6.png" altimg-height="40px" altimg-valign="-7px" altimg-width="72px" alttext="\displaystyle H\left(2\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mn>2</mn><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math class="ltx_Math" altimg="m1.png" altimg-height="40px" altimg-valign="-7px" altimg-width="94px" alttext="\displaystyle=2\zeta\left(3\right)," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mn>3</mn><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr id="Ex2" class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math class="ltx_Math" altimg="m7.png" altimg-height="40px" altimg-valign="-7px" altimg-width="72px" alttext="\displaystyle H\left(3\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mn>3</mn><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math class="ltx_Math" altimg="m5.png" altimg-height="42px" altimg-valign="-9px" altimg-width="97px" alttext="\displaystyle=\tfrac{5}{4}\zeta\left(4\right)," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mfrac><mn>5</mn><mn>4</mn></mfrac><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mn>4</mn><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="5">
+<div id="E8.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#ii.p1" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</a> and
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a>
+</dd>
+<dt>Keywords:</dt>
+<dd><a class="ltx_keyword" href="./search/search?q=special%20value">special value</a></dd>
+<dt>Source:</dt>
+<dd>
+<cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, p. 92)</cite>; with (<a href="./25.16#E9" title="(25.16.9) ‣ §25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">25.16.9</span></a>), (<a href="./25.6#E1" title="(25.6.1) ‣ §25.6(i) Function Values ‣ §25.6 Integer Arguments ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">25.6.1</span></a>)</dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E8" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E8</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E8a.tex">TeX</a>, <a href="./25.16.E8b.tex">TeX</a>, <a href="./25.16.E8a.pmml">pMML</a>, <a href="./25.16.E8b.pmml">pMML</a>, <a href="./25.16.E8a.png">png</a>, <a href="./25.16.E8b.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<div class="ltx_equation_container">
+<table id="E9" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.9</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E9.png" altimg-height="185px" altimg-valign="-28px" altimg-width="216px" alttext="H\left(a\right)=\frac{a+2}{2}\zeta\left(a+1\right)-\frac{1}{2}\sum_{r=1}^{a-2}%
+\zeta\left(r+1\right)\zeta\left(a-r\right)," display="block"><mrow><mrow><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mfrac><mrow><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>+</mo><mn>2</mn></mrow><mn>2</mn></mfrac><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow></mrow><mo>−</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>−</mo><mn>2</mn></mrow></munderover><mrow><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi>r</mi><mo>+</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>−</mo><mi>r</mi></mrow><mo>)</mo></mrow></mrow></mrow></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr class="ltx_eqn_row"><td class="ltx_eqn_cell ltx_align_right" colspan="4"><span class="ltx_constraint"><math class="ltx_Math" altimg="m46.png" altimg-height="21px" altimg-valign="-6px" altimg-width="126px" alttext="a=2,3,4,\dots" display="inline"><mrow><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>=</mo><mrow><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.</span></td></tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E9.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#ii.p1" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</a>,
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a> and
+<a href="./25.1#t1.r4" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m47.png" altimg-height="13px" altimg-valign="-2px" altimg-width="15px" alttext="a" display="inline"><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi></math>:  real or complex parameter</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (12), p. 92)</cite></dd>
+<dt>Referenced by:</dt>
+<dd><a href="./25.16#E8.info" title="In §25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">(25.16.8)</span></a></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E9" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E9</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E9.tex">TeX</a>, <a href="./25.16.E9.pmml">pMML</a>, <a href="./25.16.E9.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ii.p5" class="ltx_para">
+<p class="ltx_p">Also,</p>
+<div class="ltx_equation_container">
+<table id="E10" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.10</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E10.png" altimg-height="89px" altimg-valign="-16px" altimg-width="302px" alttext="H\left(-2a\right)=\frac{1}{2}\zeta\left(1-2a\right)=-\frac{B_{2a}}{4a}," display="block"><mrow><mrow><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mfrac><msub><mi href="./24.2#i" title="Bernoulli numbers">B</mi><mrow><mn>2</mn><mo>⁢</mo><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi></mrow></msub><mrow><mn>4</mn><mo>⁢</mo><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi></mrow></mfrac></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr class="ltx_eqn_row"><td class="ltx_eqn_cell ltx_align_right" colspan="4"><span class="ltx_constraint"><math class="ltx_Math" altimg="m45.png" altimg-height="21px" altimg-valign="-6px" altimg-width="126px" alttext="a=1,2,3,\dots" display="inline"><mrow><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.</span></td></tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E10.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./24.2#i" title="§24.2(i) Bernoulli Numbers and Polynomials ‣ §24.2 Definitions and Generating Functions ‣ Properties ‣ Chapter 24 Bernoulli and Euler Polynomials" class="ltx_ref"><math class="ltx_Math" altimg="m12.png" altimg-height="21px" altimg-valign="-5px" altimg-width="31px" alttext="B_{\NVar{n}}" display="inline"><msub><mi href="./24.2#i" title="Bernoulli numbers">B</mi><mi class="ltx_nvar" href="./24.1#t1.r1" title="integer">n</mi></msub></math>: Bernoulli numbers</a>,
+<a href="./25.16#ii.p1" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m14.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Euler sums</a>,
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a> and
+<a href="./25.1#t1.r4" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m47.png" altimg-height="13px" altimg-valign="-2px" altimg-width="15px" alttext="a" display="inline"><mi href="./25.1#t1.r4" title="real or complex parameter">a</mi></math>:  real or complex parameter</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Euler%20sum">Euler sum</a>, <a class="ltx_keyword" href="./search/search?q=special%20value">special value</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (7), p. 88)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E10" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E10</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E10.tex">TeX</a>, <a href="./25.16.E10.pmml">pMML</a>, <a href="./25.16.E10.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ii.p6" class="ltx_para">
+<p class="ltx_p"><math class="ltx_Math" altimg="m17.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(s\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math> has a simple pole with residue
+<math class="ltx_Math" altimg="m42.png" altimg-height="25px" altimg-valign="-7px" altimg-width="91px" alttext="\zeta\left(1-2r\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>)</mo></mrow></mrow></math> (<math class="ltx_Math" altimg="m11.png" altimg-height="25px" altimg-valign="-7px" altimg-width="122px" alttext="=-B_{2r}/(2r)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>−</mo><mrow><msub><mi href="./24.2#i" title="Bernoulli numbers">B</mi><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></msub><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>) at each odd negative integer
+<math class="ltx_Math" altimg="m56.png" altimg-height="19px" altimg-valign="-4px" altimg-width="98px" alttext="s=1-2r" display="inline"><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>=</mo><mrow><mn>1</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>r</mi></mrow></mrow></mrow></math>, <math class="ltx_Math" altimg="m55.png" altimg-height="21px" altimg-valign="-6px" altimg-width="125px" alttext="r=1,2,3,\dots" display="inline"><mrow><mi>r</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.</p>
+</div>
+<div id="ii.p7" class="ltx_para">
+<p class="ltx_p"><math class="ltx_Math" altimg="m17.png" altimg-height="25px" altimg-valign="-7px" altimg-width="53px" alttext="H\left(s\right)" display="inline"><mrow><mi href="./25.16#ii.p1" title="Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math> is the special case <math class="ltx_Math" altimg="m15.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(s,1\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mn>1</mn><mo>)</mo></mrow></mrow></math> of the function
+</p>
+<div class="ltx_equation_container">
+<table id="E11" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.11</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E11.png" altimg-height="73px" altimg-valign="-28px" altimg-width="318px" alttext="H\left(s,z\right)=\sum_{n=1}^{\infty}\frac{1}{n^{s}}\sum_{m=1}^{n}\frac{1}{m^{%
+z}}," display="block"><mrow><mrow><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><mfrac><mn>1</mn><msup><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mi href="./25.1#t1.r5" title="complex variable">s</mi></msup></mfrac><mo>⁢</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">m</mi><mo>=</mo><mn>1</mn></mrow><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></munderover><mfrac><mn>1</mn><msup><mi href="./25.1#t1.r1" title="nonnegative integer">m</mi><mi href="./25.1#t1.r6" title="complex variable">z</mi></msup></mfrac></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr class="ltx_eqn_row"><td class="ltx_eqn_cell ltx_align_right" colspan="4"><span class="ltx_constraint"><math class="ltx_Math" altimg="m26.png" altimg-height="25px" altimg-valign="-7px" altimg-width="123px" alttext="\Re\left(s+z\right)&gt;1" display="inline"><mrow><mrow><mi href="./1.9#E2" mathvariant="normal" title="real part">ℜ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi></mrow><mo>)</mo></mrow></mrow><mo>&gt;</mo><mn>1</mn></mrow></math>,</span></td></tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E11.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.16#ii.p7" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m13.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(\NVar{s},\NVar{z}\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi class="ltx_nvar" href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow></math>: generalized Euler sums</a>,
+<a href="./1.9#E2" title="(1.9.2) ‣ Real and Imaginary Parts ‣ §1.9(i) Complex Numbers ‣ §1.9 Calculus of a Complex Variable ‣ Topics of Discussion ‣ Chapter 1 Algebraic and Analytic Methods" class="ltx_ref"><math class="ltx_Math" altimg="m25.png" altimg-height="18px" altimg-valign="-2px" altimg-width="19px" alttext="\Re" display="inline"><mrow><mi href="./1.9#E2" mathvariant="normal" title="real part">ℜ</mi><mo>⁡</mo></mrow></math>: real part</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m50.png" altimg-height="13px" altimg-valign="-2px" altimg-width="23px" alttext="m" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">m</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m51.png" altimg-height="13px" altimg-valign="-2px" altimg-width="17px" alttext="n" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></math>:  nonnegative integer</a>,
+<a href="./25.1#t1.r5" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m57.png" altimg-height="13px" altimg-valign="-2px" altimg-width="14px" alttext="s" display="inline"><mi href="./25.1#t1.r5" title="complex variable">s</mi></math>:  complex variable</a> and
+<a href="./25.1#t1.r6" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m60.png" altimg-height="13px" altimg-valign="-2px" altimg-width="15px" alttext="z" display="inline"><mi href="./25.1#t1.r6" title="complex variable">z</mi></math>:  complex variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=Euler%20sum">Euler sum</a>, <a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=series%20representation">series representation</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (1), p. 86)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E11" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E11</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E11.tex">TeX</a>, <a href="./25.16.E11.pmml">pMML</a>, <a href="./25.16.E11.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<p class="ltx_p">which satisfies the reciprocity law
+</p>
+<div class="ltx_equation_container">
+<table id="E12" class="ltx_equation ltx_eqn_table">
+
+<tbody>
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.12</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math class="ltx_Math" altimg="E12.png" altimg-height="157px" altimg-valign="-7px" altimg-width="134px" alttext="H\left(s,z\right)+H\left(z,s\right)=\zeta\left(s\right)\zeta\left(z\right)+%
+\zeta\left(s+z\right)," display="block"><mrow><mrow><mrow><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow><mo>+</mo><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>,</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>+</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="4">
+<div id="E12.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a>,
+<a href="./25.16#ii.p7" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m13.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(\NVar{s},\NVar{z}\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi class="ltx_nvar" href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow></math>: generalized Euler sums</a>,
+<a href="./25.1#t1.r5" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m57.png" altimg-height="13px" altimg-valign="-2px" altimg-width="14px" alttext="s" display="inline"><mi href="./25.1#t1.r5" title="complex variable">s</mi></math>:  complex variable</a> and
+<a href="./25.1#t1.r6" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m60.png" altimg-height="13px" altimg-valign="-2px" altimg-width="15px" alttext="z" display="inline"><mi href="./25.1#t1.r6" title="complex variable">z</mi></math>:  complex variable</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=addition%20formula">addition formula</a>, <a class="ltx_keyword" href="./search/search?q=connection%20formula">connection formula</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (11), p. 91)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E12" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E12</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E12.tex">TeX</a>, <a href="./25.16.E12.pmml">pMML</a>, <a href="./25.16.E12.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<p class="ltx_p">when both <math class="ltx_Math" altimg="m16.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(s,z\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow></math> and <math class="ltx_Math" altimg="m18.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(z,s\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>,</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math> are finite.</p>
+</div>
+<div id="ii.p8" class="ltx_para">
+<p class="ltx_p">For further properties of <math class="ltx_Math" altimg="m16.png" altimg-height="25px" altimg-valign="-7px" altimg-width="72px" alttext="H\left(s,z\right)" display="inline"><mrow><mi href="./25.16#ii.p7" title="generalized Euler sums">H</mi><mo>⁡</mo><mrow><mo>(</mo><mi href="./25.1#t1.r5" title="complex variable">s</mi><mo>,</mo><mi href="./25.1#t1.r6" title="complex variable">z</mi><mo>)</mo></mrow></mrow></math> see <cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>)</cite>.
+Related results are:</p>
+<div class="ltx_equationgroup_container">
+<table id="EGx1" class="ltx_equationgroup ltx_eqn_table">
+
+<tbody id="E13">
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.13</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math class="ltx_Math" altimg="m8.png" altimg-height="73px" altimg-valign="-28px" altimg-width="113px" alttext="\displaystyle\sum_{n=1}^{\infty}\left(\frac{H_{n}}{n}\right)^{2}" display="inline"><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover></mstyle><msup><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></mfrac></mstyle><mo>)</mo></mrow><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math class="ltx_Math" altimg="m2.png" altimg-height="54px" altimg-valign="-16px" altimg-width="110px" alttext="\displaystyle=\frac{17}{4}\zeta\left(4\right)," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mn>17</mn><mn>4</mn></mfrac></mstyle><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mn>4</mn><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="5">
+<div id="E13.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a>,
+<a href="./25.11#E33" title="(25.11.33) ‣ §25.11(viii) Further Integral Representations ‣ §25.11 Hurwitz Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m19.png" altimg-height="21px" altimg-valign="-5px" altimg-width="33px" alttext="H_{\NVar{n}}" display="inline"><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi class="ltx_nvar" href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub></math>: harmonic number</a>,
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m51.png" altimg-height="13px" altimg-valign="-2px" altimg-width="17px" alttext="n" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></math>:  nonnegative integer</a> and
+<a href="./25.11#viii.p1" title="§25.11(viii) Further Integral Representations ‣ §25.11 Hurwitz Zeta Function ‣ Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m48.png" altimg-height="25px" altimg-valign="-7px" altimg-width="45px" alttext="h(n)" display="inline"><mrow><mi href="./25.11#viii.p1" title="harmonic number">h</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo stretchy="false">)</mo></mrow></mrow></math>:  harmonic number</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=harmonic%20number">harmonic number</a>, <a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=special%20value">special value</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Flajolet and Salvy (<a href="./bib/F#bib806" title="Euler sums and contour integral representations" class="ltx_ref">1998</a>, (4-1), p. 24)</cite></dd>
+<dt>Referenced by:</dt>
+<dd><a href="./errata/#V1.1.4.I2.ix3.p1" title="In Other Changes ‣ Version 1.1.4 (January 15, 2022) ‣ Errata" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Erratum (V1.1.4) for  Notation</span></a></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E13" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E13</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E13.tex">TeX</a>, <a href="./25.16.E13.pmml">pMML</a>, <a href="./25.16.E13.png">png</a>
+</dd>
+<dt>Notation (effective with 1.1.4):</dt>
+<dd>
+The notation previously used for the harmonic number <math class="ltx_Math" altimg="m48.png" altimg-height="25px" altimg-valign="-7px" altimg-width="45px" alttext="h(n)" display="inline"><mrow><mi href="./25.11#viii.p1" title="harmonic number">h</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi><mo stretchy="false">)</mo></mrow></mrow></math> has been
+replaced to be <math class="ltx_Math" altimg="m20.png" altimg-height="21px" altimg-valign="-5px" altimg-width="33px" alttext="H_{n}" display="inline"><msub><mi href="./25.11#E33" title="harmonic number">H</mi><mi href="./25.1#t1.r1" title="nonnegative integer">n</mi></msub></math>.
+
+<p><span class="ltx_font_italic">Suggested 2021-08-23 by Gergő Nemes</span></p>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+<tbody id="E14">
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.14</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math class="ltx_Math" altimg="m10.png" altimg-height="68px" altimg-valign="-29px" altimg-width="172px" alttext="\displaystyle\sum_{r=1}^{\infty}\sum_{k=1}^{r}\frac{1}{rk(r+k)}" display="inline"><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover></mstyle><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover></mstyle><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><mi>r</mi><mo>⁢</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>+</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math class="ltx_Math" altimg="m4.png" altimg-height="54px" altimg-valign="-16px" altimg-width="99px" alttext="\displaystyle=\frac{5}{4}\zeta\left(3\right)," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mn>5</mn><mn>4</mn></mfrac></mstyle><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mn>3</mn><mo>)</mo></mrow></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="5">
+<div id="E14.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a> and
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m49.png" altimg-height="18px" altimg-valign="-2px" altimg-width="16px" alttext="k" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></math>:  nonnegative integer</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=special%20value">special value</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (14), p. 94)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E14" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E14</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E14.tex">TeX</a>, <a href="./25.16.E14.pmml">pMML</a>, <a href="./25.16.E14.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+<tbody id="E15">
+<tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_left"><span class="ltx_tag ltx_tag_equation ltx_align_left">25.16.15</span></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math class="ltx_Math" altimg="m9.png" altimg-height="68px" altimg-valign="-29px" altimg-width="169px" alttext="\displaystyle\sum_{r=1}^{\infty}\sum_{k=1}^{r}\frac{1}{r^{2}(r+k)}" display="inline"><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></munderover></mstyle><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover></mstyle><mstyle displaystyle="true"><mfrac><mn>1</mn><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>+</mo><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math class="ltx_Math" altimg="m3.png" altimg-height="54px" altimg-valign="-16px" altimg-width="99px" alttext="\displaystyle=\frac{3}{4}\zeta\left(3\right)." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac><mn>3</mn><mn>4</mn></mfrac></mstyle><mo>⁢</mo><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mn>3</mn><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr>
+<tr><td class="ltx_align_right" colspan="5">
+<div id="E15.info" class="ltx_metadata ltx_info">
+<span href="" class="ltx_infoicon ltx_icon" title="Show Annotations"><span class="ltx_font_bold">ⓘ</span></span>
+<div class="ltx_infocontent">
+<dl>
+<dt>Symbols:</dt>
+<dd>
+<a href="./25.2#E1" title="(25.2.1) ‣ §25.2(i) Definition ‣ §25.2 Definition and Expansions ‣ Riemann Zeta Function ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m43.png" altimg-height="25px" altimg-valign="-7px" altimg-width="44px" alttext="\zeta\left(\NVar{s}\right)" display="inline"><mrow><mi href="./25.2#E1" title="Riemann zeta function">ζ</mi><mo>⁡</mo><mrow><mo>(</mo><mi class="ltx_nvar" href="./25.1#t1.r5" title="complex variable">s</mi><mo>)</mo></mrow></mrow></math>: Riemann zeta function</a> and
+<a href="./25.1#t1.r1" title="§25.1 Special Notation ‣ Notation ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><math class="ltx_Math" altimg="m49.png" altimg-height="18px" altimg-valign="-2px" altimg-width="16px" alttext="k" display="inline"><mi href="./25.1#t1.r1" title="nonnegative integer">k</mi></math>:  nonnegative integer</a>
+</dd>
+<dt>Keywords:</dt>
+<dd>
+<a class="ltx_keyword" href="./search/search?q=infinite%20series">infinite series</a>, <a class="ltx_keyword" href="./search/search?q=special%20value">special value</a>
+</dd>
+<dt>Source:</dt>
+<dd><cite class="ltx_cite ltx_citemacro_citet">Apostol and Vu (<a href="./bib/#bib123" title="Dirichlet series related to the Riemann zeta function" class="ltx_ref">1984</a>, (15), p. 94)</cite></dd>
+<dt>Permalink:</dt>
+<dd><a href="./25.16.E15" title="" class="ltx_ref">http://dlmf.nist.gov/25.16.E15</a></dd>
+<dt>Encodings:</dt>
+<dd>
+<a href="./25.16.E15.tex">TeX</a>, <a href="./25.16.E15.pmml">pMML</a>, <a href="./25.16.E15.png">png</a>
+</dd>
+<dt>See also:</dt>
+<dd>Annotations for <a href="./25.16#ii.info" title="§25.16(ii) Euler Sums ‣ §25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16(ii)</span></a>,
+<a href="./25.16#info" title="§25.16 Mathematical Applications ‣ Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">§25.16</span></a> and
+<a href="./25#info" title="Chapter 25 Zeta and Related Functions" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Ch.25</span></a>
+</dd>
+</dl>
+</div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="ii.p9" class="ltx_para">
+<p class="ltx_p">For further generalizations, see <cite class="ltx_cite ltx_citemacro_citet">Flajolet and Salvy (<a href="./bib/F#bib806" title="Euler sums and contour integral representations" class="ltx_ref">1998</a>)</cite>.</p>
+</div>
+</section>
+</section>
+</div>
+<div class="ltx_page_footer">
+<div class="ltx_siblings">
+<a href="./25.15" title="In Related Functions ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">25.15 </span>Dirichlet <math class="ltx_Math" altimg="m21.png" altimg-height="18px" altimg-valign="-2px" altimg-width="18px" alttext="L" display="inline"><mi href="./25.15#E1" title="Dirichlet 𝐿-function">L</mi></math>-functions</span></a><a href="./25.17" title="In Applications ‣ Chapter 25 Zeta and Related Functions" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">25.17 </span>Physical Applications</span></a>
+</div>
+<div class="ltx_footer_links ltx_centering">
+<a href="./about/notices">© 2010–2026 NIST</a> / <a href="./about/notices#S2">Disclaimer</a> / <a href="/cdn-cgi/l/email-protection#d3979f9e95feb5b6b6b7b1b2b0b893bdbaa0a7fdb4bca5">Feedback</a>;
+ Version 1.2.8;
+Release date 2026-09-15.</div>
+<span id="pagesettings"></span>
+<div class="ltx_nist_links">
+<span class="ltx_nist_logo"><a href="http://www.nist.gov/" title="National Institute of Standards and Technology" class="NISTLogo"><span>NIST</span></a></span><p class="ltx_nist_extra ltx_align_right"><a href="https://www.nist.gov/privacy-policy">Site Privacy</a> <a href="https://www.nist.gov/oism/accessibility">Accessibility</a> <a href="https://www.nist.gov/privacy">Privacy Program</a> <a href="https://www.nist.gov/oism/copyrights">Copyrights</a> <a href="https://www.commerce.gov/vulnerability-disclosure-policy">Vulnerability Disclosure</a> <a href="https://www.nist.gov/no-fear-act-policy">No Fear Act Policy</a> <a href="https://www.nist.gov/foia">FOIA</a> <a href="https://www.nist.gov/environmental-policy-statement">Environmental Policy</a> <a href="https://www.nist.gov/summary-report-scientific-integrity">Scientific Integrity</a> <a href="https://www.nist.gov/nist-information-quality-standards">Information Quality Standards</a> <a href="https://www.commerce.gov/">Commerce.gov</a> <a href="http://www.science.gov/">Science.gov</a> <a href="http://www.usa.gov/">USA.gov</a></p>
+</div>
+</div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4786e5c9ce15e6d',t:'MTc5MTQ5Njk1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
