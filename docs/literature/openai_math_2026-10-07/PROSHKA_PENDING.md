@@ -1,3 +1,11 @@
+# CCM moment Q9 processed — no pending Pro question
+
+2026-10-08 21:56UTC: terminal Antwort abgeschlossen, final attachment and regenerate/voice controls observed in the same Derive CCM Drift chat. Complete835-line original downloaded/read; displayed hash matches. Independent read-only audit PASS for Q09-NF(21) on (8)-(9), standalone negative-frequency payment only. See CCM_MOMENT_Q09_CONCLUSION.md for source hashes, exact scope and verification. Both frequency parts are large on actual Pe0; the signed difference remains unpaid. C5, restricted arithmetic supplier, full-SP/RH OPEN. Auxiliary small-divisor calculations not independently admitted.
+
+Request+original answer+conclusion saved together for one scoped delivery. No Q10 sent; no response remains to await. Pause q3-joint-low-probe after confirmed push; native full RH goal ACTIVE. Next own attempt: retain the joint positive credit and test the actual long-Mobius signed pairing; H_mu is an unproved stronger candidate, not a supplier. Linux zeta Comparator remains report-only; no Hecke import or Mac rerun.
+
+--- Q8 processed history ---
+
 # CCM moment Q8 processed — no pending Pro question
 
 2026-10-08 around21:01–21:05UTC: terminal Antwort abgeschlossen observed after owner notification. Full1029-line original read; displayed checksum matched downloaded88280-byte file. Independent sparse_band_receiver audit PASS for Q08-D(7)–(14), complete price(13), accepted inputs(5)–(6). Joint return improves alpha+4beta to alpha+2beta; no separate prime/composite floor, C5/full-SP/RH remain OPEN. See CCM_MOMENT_Q08_CONCLUSION.md. Auxiliary sections4 onward retained as author-derived claims, not independently admitted in this closeout. No Q9 sent.
