@@ -1,6 +1,6 @@
 # CCM moment Q5 processed — no pending Pro question
 
-Q05-M(25) independently PASS with its explicit unbounded long-source remainder. Original fully read and hash verified; see CCM_MOMENT_Q05_CONCLUSION.md. Full moment exponent, SP and RH remain OPEN. No Q6 sent. Scoped request+answer+conclusion commit/push closes Q5; pause its heartbeat after delivery, keep full RH goal active. Next: own source-weighted negative-moment test before another question.
+Q05-M(25) independently PASS with its explicit unbounded long-source remainder. Original fully read and hash verified; see CCM_MOMENT_Q05_CONCLUSION.md. Full moment exponent, SP and RH remain OPEN. No Q6 sent. Scoped request+answer+conclusion commit/push closes Q5; pause its heartbeat after delivery, keep full RH goal active. Own CCM_ONE_SIDED_LONG_MOMENT_TEST.md independently PASS: source-preserving positive-long/negative-full moment comparison and synthetic fixed-floor countercontrol. Bounded alias return has no mapped supplier. Next question may address actual one-sided source estimate; Q6 not sent.
 
 --- Q5 historical processing record ---
 
