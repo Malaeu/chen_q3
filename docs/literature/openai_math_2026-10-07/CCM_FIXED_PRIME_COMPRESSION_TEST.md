@@ -64,3 +64,65 @@ This is an actual fixed-prime sparse-band geometric control. It is not a negativ
 A prime-factor square calculation must retain D_s and the physical endpoint projector, or prove a signed weighted return. Finite codimension of P and narrow relative bandwidth M/m do not alone make D_s polynomially small. Next source calculation must spend its positivity with the actual sign instead of replacing the compressed product by an exact shift product. Full-SP/RH remain OPEN; no new Pro question has been sent.
 
 AUTOPSY: dropped=THEOREM_SHAPE; note=actual fixed-prime Gram multiplicativity has a positive defect at least log(q)/(4pi²log m) even on each fixed sparse band; signed source-weighted return remains open.
+
+
+## Q-block continuation: exact precompression return (independent PASS)
+
+Read-only long_positive_alias verified Q1-Q3, endpoints and actual-weight trace.
+Reviewer report initially omitted B_1=1 for q>R; root corrected that report,
+reviewer confirmed the correction. Q1 itself retained the term throughout.
+
+Fix q and R with 2<=R<m. For each q-free integer r<=m set
+
+    ell_R(r)=sum_(e|r,e>R) mu(e)log(r/e),
+    A_r=sum_(e|r,e>R)mu(e),
+    B_r=sum_(e|r,R/q<e<=R)mu(e),
+    C_r=sum_(e|r,R/q<e<=R)mu(e)log(r/e).
+
+All endpoint inequalities are literal. On H define X=q^(-1/2)V_(log q),
+S=X(I-X)^(-1), J=X²(I-X)^(-2). The inverse is a FINITE polynomial:
+V_(a log q)=0 almost everywhere once a log q>=L. Consequently
+S=sum_(a>=1)X^a and J=sum_(a>=1)(a-1)X^a, with only finitely many
+nonzero terms. All operations in this paragraph precede E.
+
+Put
+
+    Z=sum_(r<=m,q does not divide r) r^(-1/2) V_(log r)
+       [ell_R(r)I+(log(q)A_r-C_r)S-log(q)B_r J].       (Q1)
+
+Then the actual compressed long-divisor matrix, identified on ran E, is
+
+    T_gtR=E(Z+Z*)E.                                  (Q2)
+
+Proof: unique n=q^a r, forward semigroup V_t V_u=V_(t+u), and paired
+coefficient ell_R(q^a r)=log(q)A_r-C_r-(a-1)log(q)B_r for a>=1.
+Terms q^a r>m vanish by physical support; q^a r=m also has Q(L)=0,
+matching the original endpoint. The a=0 term stays ell_R(r), not A_r. For r=1, B_1=1 when q>R
+and B_1=0 when q<=R; the former retains the pure-q block -log(q)J.
+Thus no tail, intermediate projection or weight substitution was dropped.
+For an actual coefficient weight W=PWP>=0 the physical weight is FWF*,
+and the original trace is exactly 2 Re Tr(FWF* Z).
+
+For comparison only, the contraction identity
+
+    I+S+S*=(I-X*)^(-1)(I-X*X)(I-X)^(-1)>=0             (Q3)
+
+follows by multiplying on the left by I-X* and right by I-X.
+Here X*X=q^(-1)1_[0,L-log q] keeps the physical endpoint. Q3 bounds
+S+S* from BELOW by -I. It does not directly bound Q2 from above:
+the r-dependent coefficient log(q)A_r-C_r has varying sign, the factor
+V_(log r) remains, and the J term has its own signed coefficient.
+For example q=2,R=3 gives this S coefficient -log(2) at r=5
+and +log(3) at r=9 (for m>18 both first-shift terms lie inside the window).
+These are coefficient checks, not signs of the corresponding operators.
+No sign of these full weighted sums has been established. The Gram defect
+D_s from F4 is absent in Q1-Q2 because no square or intermediate E was
+introduced; its positivity alone therefore supplies no termwise credit
+in this exact source representation.
+
+This completes the proposed one-prime regrouping as an identity only.
+The missing estimate is the upper bound on 2 Re Tr(FWF* Z) with the original
+weight and all r terms retained. Q1-Q3 are not a new arithmetic estimate,
+not a smaller exponent, and not evidence that every q-block approach fails.
+
+AUTOPSY: dropped=THEOREM_SHAPE; note=precompression q-resolvent is exact but positive-real contraction identity does not supply the signed shifted source upper estimate; regrouping-only shortcut stalled, arithmetic target open.
