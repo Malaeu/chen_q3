@@ -4,7 +4,7 @@
 
 Independent bounded audits PASS: kappa>=2/3 plain-moment proof adaptation (conditional on internal source estimates), complete low/high parameter frontier and localized gain transfer(44)→(45). Root exact rational checks PASS in Q07_FRONTIER_EXACT_CHECK.py. Fixed-b frontier after adaptation .87495715035054; relaxed free-b .87495701942010. Parameter iteration STALLED; no impossibility result for the actual physical probe and no unconditional new zero-free theorem.
 
-Next own attempt: retain sparse sixth-power amplifier image before positive extension, estimate actual signed off-diagonal(47) and all D/q_d, scale-supremum and rowwise-profile returns. Needed inverse moment gain(44) remains OPEN. Save request+unchanged original answer+conclusion in one scoped commit/push, then pause q3-joint-low-probe. Native RH goal remains ACTIVE. Linux zeta Comparator stays report-only, no Hecke import or Mac rerun. RH/SP OPEN.
+Next own attempt: retain sparse sixth-power amplifier image before positive extension, estimate actual signed off-diagonal(47) and all D/q_d, scale-supremum and rowwise-profile returns. Needed inverse moment gain(44) remains OPEN. Request+unchanged original answer+conclusion delivered as a9ffe611, remote verified; q3-joint-low-probe now PAUSED. Own SPARSE_AMPLIFIER_MASK_TEST.md A1–A4 independently PASS: sixth-power copies change only coprimality masks, not phases; rough-column control is not a lower bound for the full polynomial. Sparse supremum estimate A4 remains OPEN. Native RH goal remains ACTIVE. Linux zeta Comparator stays report-only, no Hecke import or Mac rerun. RH/SP OPEN.
 
 --- Historical CCM Q10 closeout ---
 
