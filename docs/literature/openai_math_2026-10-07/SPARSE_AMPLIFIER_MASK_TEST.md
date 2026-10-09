@@ -108,3 +108,43 @@ in A1 or a direct paid d-return, not another generic-coefficient sieve or
 an assumption that sparse density forces small energy. Stop the candidate
 test when it either supplies the full A4 interface or exposes its unpaid
 coefficient/mask/scale hypothesis. A4 remains OPEN.
+
+## Reverse column identity (own continuation after Q8 dispatch)
+
+Independent read-only q05_moment_audit PASS for A5–A6 and both directions,
+including normalization, ramified zeros, ideal units, scale suprema and
+fixed profile derivatives. This addition was NOT included in the sent Q8.
+For an allowed ideal a, let E(a) contain every ideal e supported on primes
+dividing a, with arbitrary nonnegative valuations. With the same psi_u and
+zero extensions, finite local convolution gives
+
+    M_(u*a^6)(D';W)
+      = sum_(e in E(a)) psi_u(e) q_e^-1/2 M_u(D'/q_e;W).      (A5)
+
+For each D' the sum is effectively finite by the compact annular support.
+At p|a, multiplication of (1-psi_u(p)T) by its geometric inverse removes
+that Euler factor; at p|u both factors are one. This proves the identity
+including ramified zeros. No smooth asymptotic or zero-free estimate is used.
+
+For every fixed epsilon>0,
+
+    sum_(e in E(a)) |psi_u(e)|/sqrt(q_e)
+       <= product_(p|a) (1-q_p^-1/2)^-1 <<_epsilon q_a^epsilon. (A6)
+
+For all sufficiently large prime norms each local factor is at most
+q_p^epsilon; the finitely many smaller primes contribute a fixed constant
+independent of a,u. Each prime occurs only once in this product.
+
+Let B(U,D;W)=sum_u sup_(0<D'<=D)|M_u(D';W)|^2 and let E_sup be the
+left side of A4, on exactly the same u and a families. A5–A6 and ideal
+counting give E_sup <<_epsilon P^(1+epsilon) B after relabeling losses.
+Conversely the source identity(46), valid at every D', gives
+B <<_epsilon P^(-1+epsilon) E_sup by averaging over at least c_S P ideals.
+The suprema are legitimate in both directions since q_d,q_e>=1 and the
+right-hand scales never exceed D. Both statements apply to each required
+fixed profile derivative; the same parameter Sobolev return remains needed.
+
+Thus, up to arbitrarily small powers of P, the sparse supremum energy is
+P times the original supremum energy. A4 is a genuine reformulation of the
+needed Mobius cancellation, not an automatic dilution by the larger row
+ball. This does NOT refute A4 or prohibit exploiting its exact kernel A1.
