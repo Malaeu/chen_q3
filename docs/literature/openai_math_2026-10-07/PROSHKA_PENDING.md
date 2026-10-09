@@ -1,3 +1,13 @@
+# Coefficient-faithful joint reflection Q9 processed — no pending Pro answer
+
+2026-10-09 13:36UTC terminal observed in SAME living chat Совместная арифметическая оценка. Full1346-line original downloaded unchanged and read. Root reproduced49 checks with exact AppendixD JSON match. Independent q05 CF5,CF10–13,CF17,CF20 and bounded CF8–9 PASS with one wording correction: signed N_k may vanish; its diagonal is retained, not asserted nonzero. See COEFFICIENT_REFLECTION_Q09_CONCLUSION.md for full provenance and scope.
+
+Paired coefficient fusion is exact but scalar reflection needs quotient symbols and q_v normalization; whole-index substitution adds false zeros. New incomplete cubic matrix bound is valid; full P sqrt(U) L^(3/2) envelope is insufficient. Actual CF20=QC18=JP20/MB34/SP/RH remain OPEN. No new inverse/high exponent. Source P/M/R/K/high conditional; Linux Comparator report-only, no Mac rerun/moving-Hecke import.
+
+Deliver request+original+conclusion+continuation pointers ONE scoped commit/push, then pause q3-joint-low-probe. No answer is still generating; no Q10 sent. Native goal ACTIVE. Next admissible target: source-faithful paired transform with quotient symbols/shared divisibility, or joint k/orientation dispersion before moduli; no accepted full bound.
+
+--- Processed Q8 ---
+
 # Poor-frequency Q8 processed — no pending Pro answer
 
 2026-10-09 12:19UTC terminal observed in SAME living chat Совместная арифметическая оценка. Full unchanged original PROSHKA_VERDICT_POOR_FREQUENCY_JOINT_Q08.md read (1292 lines); root reproduced all60 checks with exact JSON match. Independent q05_moment_audit QC1–QC18 PASS. See POOR_FREQUENCY_Q08_CONCLUSION.md for hashes, scope and costs.
