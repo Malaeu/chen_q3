@@ -6,7 +6,7 @@ Request PROSHKA_SPARSE_INVERSE_Q08.txt:872296bytes,17904LF,final newline,SHA2564
 
 Independent audits PASS: q05 checked moving-mask moment, exact gcd inversion, conditional G^-5/6 large-gcd gain, small-scale return and (32)->full consumer; long_positive checked exact sixthfree Poisson/CRT/Gauss kernel, tails, completion and limited reflection-scale test. See SOURCE_Q08_CONCLUSION.md. Q8(32), Q7(44), A4 and full high/RH remain OPEN. Own A5–A6 reverse identity already independently checked/pushed9a3d8bac agrees with Q8 mask equivalence; it was not sent after Q8. Next exact target is small-gcd top-band signed kernel(24), with every dual branch and common profile derivative retained. No Q9 sent.
 
-Save checked request+unchanged response+conclusion in one scoped commit/push and pause q3-joint-low-probe (currently ACTIVE20min). Preserve actual coefficients, original masks, all scale/profile returns and positive c cost. Linux zeta Comparator remains report only, no Hecke import or Mac rerun. Native RH goal ACTIVE.
+Q8 request+unchanged response+conclusion delivered as fac4bcde, remote verified; q3-joint-low-probe is PAUSED. Own Q08_DUAL_ROW_CANONICAL_TEST.md D1–D4 independently PASS: canonical Gauss moment fails its puncture-width condition at M=2r-1>N=r; k→k*f² insertion worsens the deficit. This rejects these imports only; joint centered-correlation supplier remains OPEN. Preserve actual coefficients, original masks, all scale/profile returns and positive c cost. Linux zeta Comparator remains report only, no Hecke import or Mac rerun. Native RH goal ACTIVE.
 
 --- Source Q7 closeout ---
 
