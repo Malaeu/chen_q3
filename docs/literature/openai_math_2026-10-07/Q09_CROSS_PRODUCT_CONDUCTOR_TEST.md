@@ -96,3 +96,15 @@ The first term dominates on the original upper band. Its minimum deficit versus 
 Q09_CROSS_PRODUCT_ALIAS_RECEIPTS.json preserves four actual local shelf queries, all INCOMPLETE due to freshness; external search was deferred in those receipts. These are not absence certificates. The primary Heath-Brown candidate above was inspected separately and is not admitted as a supplier.
 
 The next useful test must preserve the joint two-column arithmetic before Cauchy in m: that step incurs X in the squared norm and discards its phases. Removing this factor cannot be assumed, and arbitrary coefficient improvement is not the same as an estimate for the actual Mobius/Gauss coefficients. A next source-specific request must compare its complete return against the inherited stronger full-moment bound, not merely against this fallback. Q10 remains unsent.
+
+## S3. Optimistic removal of the Cauchy loss still insufficient
+
+Starting from Q09_CROSS_PRODUCT_CONDUCTOR_TEST.md S1, suppose the full factor X in the squared row bound could be removed while retaining the bracket V+X+(VX)^(2/3), all original coefficients, separated profiles and sectors. This assumption is NOT established. The amplitude improves by sqrt(X), before any outer sum.
+
+The three fixed-label returns become X²/L, sqrt(Y)X^(3/2)/L, and Y^(1/6)X²/L. Thus the same d,e,g,a sums give P[U^(1/6)L+sqrt(U L)] times declared losses, plus the already-paid linear tail. The third term is absorbed into the first up to logarithms. The first dominates since ell>2/3. The g powers are now 2,3/2,2, still summable with divisor losses.
+
+Relative to target H U^(-1/200), the leading exponent excess is ell-5p-5/6+1/200, p=(r(1+1/10000)-1)/6, r in [28/25,113/100], ell in [r-1/100,r]. Exact endpoint deficits are 6809/37500,1796/9375,219887/1200000,231887/1200000. Minimum 6809/37500 is positive. Therefore merely removing the m-Cauchy loss from this fallback would not prove the target. This is an upper-bound budget diagnostic, never a lower bound on the actual signed sum or a no-go for joint methods.
+
+Decision: do not ask Q10 solely to remove the factor X. A useful new estimate must retain further source-specific cancellation or alter the full return mechanism enough to beat the inherited moment bound. Every small-scale and external-label return remains part of that request.
+
+Independent q05_moment_audit PASS for this hypothetical implication and all four rational endpoints. No hypothetical inequality is admitted. This corrects any reading of the previous next-action sentence as claiming that the m-Cauchy loss is the sole obstruction.
