@@ -1,0 +1,209 @@
+[
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "dfb6e72f02e2124ee7d939ac3f1520bd2eeb6acdb6153778b6a59be9a1325e3d",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+        "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "normalized_error_le_of_reciprocal_b_control q3.lean.aristotle/Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean:105",
+        "metadata_sha256": "d5b10621bd5b945b2a47c09c23db363472c268c13e1dc9c4bc0938f16a0389c7",
+        "provider": "knowledge-db",
+        "provider_id": "9af3554bb16cb795a859d97995b5c5f182cd8fdccf00e3e696906d6e7b2f26f7",
+        "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+        "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+        "title": "normalized_error_le_of_reciprocal_b_control q3.lean.aristotle/Q3/Proofs/RouteB/TwoSidedNormalizedBControl.lean:105",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "CCMModeN1 Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
+        "metadata_sha256": "4aefd7df08f16dd052310273ea3f871f59b7b2ccf2aa74984b23f1f1c25982f1",
+        "provider": "lean-index",
+        "provider_id": "cb746469d98d22138bc030205635b4860c3205ffc85e9fe0e34c6bb69b9a0cf5",
+        "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+        "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+        "title": "CCMModeN1 Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "ccmNIC_plant_representative_label_integrity Q3/Proofs/RouteB/CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
+        "metadata_sha256": "45120a3ad084713dbc77c3286d41c3febde50edcc635b5de59b23ee6910a577a",
+        "provider": "lean-index",
+        "provider_id": "06cdabc5b2daf659e38e692dc77b03af77dff4b7a6580887faf82c6518126a69",
+        "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+        "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+        "title": "ccmNIC_plant_representative_label_integrity Q3/Proofs/RouteB/CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+        "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+        "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "conductor lowering multiplicative character artificial amplification reciprocal label",
+    "query_sha256": "5e8c856404affbf73d283914f30b78f54135dc77a73d2db576a58f5758eb61a0",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "a185ea8979ff521b457cf1b2a7519e428544faa9a233144969074ff42ce3879d",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+        "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "mode4HermitianTailCoefficientRow_pos q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean:155",
+        "metadata_sha256": "73d052da02b73e412a0362f843ae9994ad1fb9794f21718f2aec1a5ad8a2781c",
+        "provider": "knowledge-db",
+        "provider_id": "fd40382e26c54a8b32d055bc4aeaff32e588afe9e5df4f2dea8c7acc5bc03665",
+        "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+        "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+        "title": "mode4HermitianTailCoefficientRow_pos q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailRow.lean:155",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "CenteredStripPoint Q3/Proofs/RouteB/MontelCenteredCriticalStrip.lean",
+        "metadata_sha256": "13cd806eb37aae98c763713ce3a840633081c0ba478e1e7ba5e4e898bebf75a5",
+        "provider": "lean-index",
+        "provider_id": "dd99ec861774ade2072d92c81fe8da03b0bc3f96505140fba902a57dad5b9a8f",
+        "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+        "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+        "title": "CenteredStripPoint Q3/Proofs/RouteB/MontelCenteredCriticalStrip.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "OddTailInverseWeightedData Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+        "metadata_sha256": "49614c6ff22ef01eadf1cddd75aefd665601c0abf9729e73fddf63f1439665ad",
+        "provider": "lean-index",
+        "provider_id": "a8a669de525d4e9b83af36ced1e17b8acedbc23c0939bccc8472aeaa9c34b6b9",
+        "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+        "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+        "title": "OddTailInverseWeightedData Q3/Proofs/RouteB/D0PstarOddTailInverseWeightedCorrection.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+        "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+        "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "Burgess amplification multiplicative shifts common row inverse modulus",
+    "query_sha256": "dad801351984cbfb93254f2cdc757a4db99bd303b49275feb9edf31390c46a59",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "7089d3180be4ca6bdac08336bdb0d0e0c2a6ea4d2fed3324472a4c544de83ab2",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "metaplectic large sieve squarefree label fourth power frequency",
+        "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "ccmNIC_plant_representative_label_integrity q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean:49",
+        "metadata_sha256": "e884f960b05ddcf2e79283e4d0bfff67956c51917f40e3e01fc35538abc10430",
+        "provider": "knowledge-db",
+        "provider_id": "f1750a424ff179a46f5b650e8a4240c8b48ab0adc1b4d6b289a0e50ef67c9701",
+        "query": "metaplectic large sieve squarefree label fourth power frequency",
+        "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+        "title": "ccmNIC_plant_representative_label_integrity q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean:49",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "CCMModeN1 Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
+        "metadata_sha256": "a349506cfa03b42483f88b221ba0449ba8b44f8dde5debbdf04fbdec93362907",
+        "provider": "lean-index",
+        "provider_id": "cb746469d98d22138bc030205635b4860c3205ffc85e9fe0e34c6bb69b9a0cf5",
+        "query": "metaplectic large sieve squarefree label fourth power frequency",
+        "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+        "title": "CCMModeN1 Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "b3_0ak_one_fourth_le_norm_sourceArchimedeanArgument Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+        "metadata_sha256": "ea62e48777b5e4abe2356c6d3721b190bb7b0424026f2b61db0252b02aef7a43",
+        "provider": "lean-index",
+        "provider_id": "927b6faf52d1a48e4d5be459b1fcf4343553b357190a3b0629fce5cadb6c8869",
+        "query": "metaplectic large sieve squarefree label fourth power frequency",
+        "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+        "title": "b3_0ak_one_fourth_le_norm_sourceArchimedeanArgument Q3/Proofs/RouteB/D0PstarSourceArchHighFrequencyLowerBound.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "metaplectic large sieve squarefree label fourth power frequency",
+        "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "metaplectic large sieve squarefree label fourth power frequency",
+        "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "metaplectic large sieve squarefree label fourth power frequency",
+    "query_sha256": "277e26695a9496107e418adc3c14fae3d6be9e3c25f32a826da17cdc04ec3235",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+]
