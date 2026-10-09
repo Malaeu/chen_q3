@@ -1,3 +1,15 @@
+# Unit-invariant high values Q4 processed — no pending Pro question
+
+2026-10-09 06:52UTC sent PROSHKA_UNIT_INVARIANT_HIGH_VALUES_Q04.txt in SAME living chat **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Question4/10. Exact attached tile and sent short text, empty composer, model Pro, ChatGPT antwortet/Stoppen observed. Do not resend or Answer now.
+
+Request872227bytes,18115LF,final newline; SHA256be62349fab824671536f3548f9202226543bd76a363cf53868cfd86badafa954; baseline9e13549133686d96017b8a7d628690e455e802d0 remote verified. Five full embedded blocks byte-verified. Q3 processed70b5bfb9. Own threshold frontier conditional PASS and unit-orbit clipping exact PASS (q05 independent, explicit b-mask correction integrated). Full orbit energy equals original; no gain. Montgomery direct generic bound excluded, not a literature absence claim.
+
+Q4 targets actual HV22/HV27 or invariant O4: T_Q(V)<=T_J(V)<=6T_Q(V/6), levelV0/24; equal-unit-character off-diagonal correlations retained with exact w(b), all powers and zeros. Full consumer and inverse return remain required. Terminal answer observed07:32UTC. Full original1031LF read, unchanged download79940bytes SHA256ff18b53494d6003b20e7bcf84483d23ec78cd748b50224e4c7badd669691a306. Root and independent q05 reproduced865 exact diagnostics, code hash9b57538011aafd494ade9e9df2e2c55994532374b72d7b1a68d571ff7f533f21. Independent q05 radial/return and long_positive principal/Fourier audits PASS. SOURCE_ROLLOVER_Q04_CONCLUSION.md records scope: same-sixth-core principal pair block paid, free radial upper substitution falsified only in its exact shape; actual joint UI25 remains OPEN. Q5 not sent. Deliver request+original+code+conclusion in one scoped commit/push, then pause heartbeat. Source analytic premises conditional; Linux Comparator report-only, no Mac rerun or moving-Hecke import. RH/SP OPEN; native goal ACTIVE.
+
+2026-10-09 07:12UTC scheduled live check: Pro still running, Stoppen and service checking status visible; no final answer or attachment. Intermediate unit-character and nonradial-selector analysis is not admitted mathematics. No resend or skip. Next scheduled live check around07:32UTC.
+
+--- Previous Q3 closeout ---
+
 # Sparse high values rollover Q3 processed — no pending Pro question
 
 2026-10-09 05:57UTC sent PROSHKA_SPARSE_HIGH_VALUES_ROLLOVER_Q03.txt in same living chat **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Question3/10, same source phase. Exact submitted file/text, empty composer, Pro and ChatGPT antwortet/Stoppen observed. No resend/Answer now.
