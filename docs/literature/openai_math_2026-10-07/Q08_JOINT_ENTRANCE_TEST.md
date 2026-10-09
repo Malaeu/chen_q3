@@ -57,6 +57,14 @@ The same estimate holds for vectors in a fixed row Hilbert space: if A_u(b) acts
 
 This is a conditional transfer, not a bound for T. Source lines1750ff allow growth constants to depend on moving prime data, so the needed uniform completed estimate cannot be read off from entireness. Nor does D1 apply verbatim to the fixed-k constrained divisor vector: its n-divisors, complementary m coefficients and two profiles need an exact map to a full completed column series. Both issues remain open.
 
+## R1. Actual reflection mapping: common inverse, missing coefficient
+
+Independent source inspection by long_positive_alias, reread by root at source1676–1885 and10208–10213, identifies a precise partial alignment. For beta_m=chi_(k/m) conjugate(chi_m), the moving exponents are j_p=1 or5. Every beta_m cubed equals the same Q_k, including zeros. Therefore A_k(b)=conjugate(alpha(b))³ Q_k(b) is COMMON to all divisor orientations. D1 can invert the entire source-coefficient vector without splitting m first.
+
+But the actual QC18 frequency coefficient is beta_m(v), whereas the reflected source series has a0(v) beta_m(v)/sqrt(q_v). The norm power can be moved into a rescaled smooth profile where admissible. The a0(v) factor cannot simply be absorbed into a multiplicative twist: gamma_2(ab)=gamma_2(a)gamma_2(b)chi_b(a)^4 for coprime squarefree primary a,b (source10208–10213). The external Gamma_(n,m) is constant in v and cannot supply it. A coefficient-changing bridge is therefore still missing; D1 is not already a transform of QC18.
+
+Also the reflected local factor chi_p^(-j_p-2) is quadratic for j_p=1 but sextic chi_p^5 for j_p=5. Thus fixing k does not make all reflected local factors common; orientation-dependent phases remain. This is a direct mapping mismatch, not an impossibility theorem for a new bridge or an audit of the analytic reflection proof.
+
 ## Alias return and next test
 
 Three exact shelf dictionaries: common-conductor cubic divisor orthogonality; tensor-product character frames and restricted covariance; completed cubic reflection and inverse Euler factors. All three actual ask.sh runs returned INCOMPLETE (q3_docs freshness), external search deferred. No absence claim. Complete orthogonality and decompletion above are proved directly from their definitions, not inferred from a search hit.
