@@ -6,6 +6,8 @@ Request PROSHKA_CENTERED_GAUSS_Q09.txt:860793bytes,17820LF,final newline,SHA2568
 
 Independent read-only audits PASS: long_positive_alias exact formal diagonal, full phase-normalized double return and both inverse-cube cross terms; q05_moment_audit conditional long-divisor tail, finite Mellin representation and consumer. Formal diagonal exact zero, identity branch coefficient1 (no contraction); auxiliary tail paid conditionally on source sextic sieve. See SOURCE_Q09_CONCLUSION.md. Full Q8(32)/Q9(37), inverse gain and RH/SP OPEN. Next own attempt: coefficient-sensitive joint B_G sum Q9.33 or weaker real integral34; Q10 not sent. Request+original answer+conclusion one scoped commit/push, then pause response-wait heartbeat. RH goal ACTIVE. No new source/Hecke certification or Mac Comparator.
 
+Q9 request/answer/conclusion delivered67f3ff98, remote verified; response-wait heartbeat PAUSED. Own Q09_INTEGRATED_SIEVE_RETURN.md I1–I5 independently PASS: each extra t term vanishes after full inverse Poisson by compact support; shifted fixed-t integrals sum absolutely on0<sigma<5/6, giving exact reciprocal-zeta replacement under full integral. Pointwise and absolute-integral equivalence NOT claimed. Exact g local factors retained; independent contour diagnostic fails. Bounded alias found Gao–Zhao v3 single-index first moment (source saved), but no pair-weight map. Next joint coefficient-sensitive estimate of this Euler-corrected integral, Q10 not sent.
+
 --- Source Q8 closeout ---
 
 # Source inverse Q8 processed — no pending Pro question
