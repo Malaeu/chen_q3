@@ -1,0 +1,309 @@
+[
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "586501f38b3e2fc7fcefc84e44196e5063afdf7b60f0df68ccbecc661d34a483",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "simpleEvenGround_of_sector_order q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean:125",
+        "metadata_sha256": "18646333b0002032d6f1ecb7e2bf1b8eeb8621f74fa02774ea4386450af5fa7f",
+        "provider": "knowledge-db",
+        "provider_id": "b3df525cc72f1497b8e2d981a73558d68634b417f01d6958ed5b645dc446b644",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "simpleEvenGround_of_sector_order q3.lean.aristotle/Q3/Proofs/RouteB/SimpleEvenGroundSectorCriterion.lean:125",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "metadata_sha256": "85fce3217039129a254568ec3c114a14b6cb41b96a2761ee050abfa957e6bc15",
+        "provider": "local-literature",
+        "provider_id": "b9c8f2ba000372398d08ab1c4e97c48ce35a82f7e90e63e401bb235c15c7b134",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "919e39107c2a490041aa79475ad926759b50e46aad9b3db5c89a539cb04e682e",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "selectedFerrersAbelLogLowerRight_norm_shortcut_false_plant Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+        "metadata_sha256": "0000436db8195d7e09527412efc30ace5b9293f7ccabdef8deb5591248b85553",
+        "provider": "lean-index",
+        "provider_id": "8be7f338485ed17a57aa314144d7b2c02803e4d3ee4f8c4157f9069a38b02b32",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "selectedFerrersAbelLogLowerRight_norm_shortcut_false_plant Q3/Proofs/RouteB/G6N1SelectedFerrersPiecewiseACDerivativeIntegrability.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean",
+        "metadata_sha256": "ed6468369e9a8282e6f059acd5176f995986d8a031f2e3b5210c692ac01169ab",
+        "provider": "lean-index",
+        "provider_id": "cefd21ef9557912847f9b774a90902ae612cd19ec2497848ea29089711441595",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean:28:shortcut is used. -/",
+        "metadata_sha256": "5d49baa4b57d07b1923384733b3504ff00ce3e635aac0abce282aaba238f8c41",
+        "provider": "lean-tree",
+        "provider_id": "231fb69d3e808cd6872c064d308e8e5be924e1219b630c9e87a17a50f70fa1d9",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersCoefficientAbsoluteSummability.lean:28:shortcut is used. -/",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean:89:on a sufficiently short terminal interval; the left endpoint follows from",
+        "metadata_sha256": "3b1cc8f2c3b983bcff80df9d5fdf17cfcd3fcbb2d2899c434faa3f0726f60fd4",
+        "provider": "lean-tree",
+        "provider_id": "9af6c6b15e31ab32e780dd7f8c53cca945ca5b9db32ca29d1331ec2372d62ce1",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4FerrersSingularEndpointRegularity.lean:89:on a sufficiently short terminal interval; the left endpoint follows from",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+        "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "short interval second moment of Möbius sums twisted by primitive Hecke characters with conductor varying over an Eisenstein integer row family",
+    "query_sha256": "5aeb0056aedcb68add83d121a51a9b3cdfc4e074a185069fc680a50ce16cba63",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "4dcfbbd7d2ebf3399178149ab98e7c1396e62509ba5186266cfbe1ee796e57f8",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "sectorIsolationRadius_certificate q3.lean.aristotle/Q3/Proofs/RouteB/SectorIsolationRadius.lean:65",
+        "metadata_sha256": "940694713f7c4007c65a050fe60e960681d3df55fc3eb82688a57598f12f8f8e",
+        "provider": "knowledge-db",
+        "provider_id": "64a86a44608e1b1c24157f571f53a284f6b51edd9a44664f6cfe2636ce71e7fa",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "title": "sectorIsolationRadius_certificate q3.lean.aristotle/Q3/Proofs/RouteB/SectorIsolationRadius.lean:65",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "metadata_sha256": "8b1d1532d239782205de422c10c65fd18e5c7a83104f0fa9caa2f981563f3413",
+        "provider": "local-literature",
+        "provider_id": "b9c8f2ba000372398d08ab1c4e97c48ce35a82f7e90e63e401bb235c15c7b134",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "title": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "8e0791891d3c2fb54a8b3a62b6c892d89233809fa2e3f145888110fee0801ca0",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "A1_density_WK full/q3.lean.aristotle/Q3/AxiomsTheorems.lean",
+        "metadata_sha256": "c396940d168fd4261a998542b77253752672ee9a1b311ca122a6c484442b4144",
+        "provider": "lean-index",
+        "provider_id": "5aebdec0e29c9a04100b743820c2d5f8d67d46749ff82b5bc4969ec6d99dfe1f",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "title": "A1_density_WK full/q3.lean.aristotle/Q3/AxiomsTheorems.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "A1_density_WK_thm Q3/Proofs/A1_density.lean",
+        "metadata_sha256": "31864d022db709e6b3e1ee52e5f6254c24fbf7316a1a5734b36016f6b9535497",
+        "provider": "lean-index",
+        "provider_id": "339e18b76316c6b4088a7e10a3d52b952e0964102f65020d0f1e50cfdedf7ae7",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "title": "A1_density_WK_thm Q3/Proofs/A1_density.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 3,
+        "provider": "local-shelves",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+        "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "Selberg integral mean square for Möbius sums on short intervals over number field ideals with radial norm weights and uniform modulus",
+    "query_sha256": "4c675045312343292c3ca1c0dafa7f51805b024b6bb3f8fcf1a2fec213219aff",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "605b02edd54a1e390332a8c03e1ef3b802599e48f8773c240c772f33f7a75997",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+        "metadata_sha256": "8867dfb96a98ff0f5dc63569fba18bcf1f53eb998f194f61900a195646512d46",
+        "provider": "knowledge-db",
+        "provider_id": "2eb3496726b5c00c739fd0ad26943c2653270768a73e80017f93bbeb0f3b3e1c",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "metadata_sha256": "d96ae7e4266b6a2e20212e0be16dfd62bbfc875f912ef15a211ccbde3e86eb9e",
+        "provider": "local-literature",
+        "provider_id": "b9c8f2ba000372398d08ab1c4e97c48ce35a82f7e90e63e401bb235c15c7b134",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "9c7e068781ee9bf4030c9e99312472dda0b1d8fc83b82f9c9a20def77b972ae6",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "A1_density_WK full/q3.lean.aristotle/Q3/AxiomsTheorems.lean",
+        "metadata_sha256": "74805b59e71090fecbda77bc4a828763a77f3c4edea76e83f8cf36eda5aaa9a8",
+        "provider": "lean-index",
+        "provider_id": "5aebdec0e29c9a04100b743820c2d5f8d67d46749ff82b5bc4969ec6d99dfe1f",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "A1_density_WK full/q3.lean.aristotle/Q3/AxiomsTheorems.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "A1_density_WK_thm Q3/Proofs/A1_density.lean",
+        "metadata_sha256": "1bf671fe3849376c705dcb33dd5667c61d24227c373f2788d0cfc93439c8e062",
+        "provider": "lean-index",
+        "provider_id": "339e18b76316c6b4088a7e10a3d52b952e0964102f65020d0f1e50cfdedf7ae7",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "A1_density_WK_thm Q3/Proofs/A1_density.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeRealZeros.lean:13:/-- A symmetric matrix represents a symmetric bilinear form in the standard",
+        "metadata_sha256": "775030a2118d901665781696a1bee0e51f0b016f69bf00a38ad1b6c09b31514a",
+        "provider": "lean-tree",
+        "provider_id": "4849a74e3904cd3e9f40e6324cff20492935225f27534b8996c5b77234732a0e",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/RankOneCorrectionLagrangeRealZeros.lean:13:/-- A symmetric matrix represents a symmetric bilinear form in the standard",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:324: -- Expand `star z ⬝ᵥ (G *ᵥ z)` and `star z ⬝ᵥ (K *ᵥ z)` using bilinearity and the two ortho",
+        "metadata_sha256": "3a6e6b6e504469148e4360346d18e546eb1ad8f238678acaf33d0de883d09de1",
+        "provider": "lean-tree",
+        "provider_id": "858bcb640ee1e40ab3b6c5117e965091009d80ffb6b9ee9f1a4aadf3548fcbc0",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:324: -- Expand `star z ⬝ᵥ (G *ᵥ z)` and `star z ⬝ᵥ (K *ᵥ z)` using bilinearity and the two ortho",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+        "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "bilinear trace function sums with multiplicative Möbius coefficients over a lattice: short-box translations and uniform conductor large sieve",
+    "query_sha256": "6c7efc829e3a4667d148747c7d9d43e375d0c5d90044c5d429264145bf8c09d8",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+]
