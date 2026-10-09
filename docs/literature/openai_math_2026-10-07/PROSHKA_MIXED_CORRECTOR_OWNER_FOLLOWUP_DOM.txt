@@ -1,0 +1,1107 @@
+heading "Du hast gesagt:" [level=4]
+    - generic: Ок строим смешанный корректор, у которого остаток действительно положителен в нужном бюджете
+    - button "Nachricht kopieren":
+    - button "Prompt teilen":
+    - button "Versionen anzeigen":
+    - button "Nachricht bearbeiten":
+    - button "21m 20s nachgedacht"
+    - generic: 21m 20s nachgedacht
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph:
+      - text: Ы,
+      - button "Vorschau von PROSHKA_VERDICT_MIXED_PRIME_CORRECTOR_Q06.md öffnen":
+        - strong: полный результат одним Markdown-файлом
+      - text: .
+    - paragraph:
+      - strong: Конкретная смешанная поправка построена и проверена. Её положительный сертификат опровергнут; требуемый выигрыш для исходной энергии не доказан.
+    - paragraph:
+      - text: Выбран
+      - strong: двухпроходный корректор
+      - text: — два последовательных сокращения матрицы, использующие настоящий
+      - strong: Gram
+      - text: — матрицу корреляций — и
+      - strong: все хорошие простые
+      - text: вплоть до полной колоночной длины. После обоих проходов остаток раскрыт со всеми смешанными парами, повторными степенями, исходными весами и нулями.
+    - paragraph:
+      - strong: "Новый количественный результат:"
+      - text: для канонического выбора на допустимых масштабах, уходящих в бесконечность, найден явный неединичный вектор
+      - math:
+        - generic: e
+        - generic: q
+      - text: e
+      - generic: q
+      - text: ", на котором остаток предполагаемого сертификата удовлетворяет"
+    - math:
+      - generic: e
+      - generic: q
+      - generic: ∗
+      - generic: S
+      - generic: e
+      - generic: q
+      - generic: ≤
+      - generic: −
+      - generic: c
+      - generic: P
+      - generic: a
+      - generic: m
+      - generic: p
+      - generic: U
+      - generic: L
+      - generic: (
+      - generic: log
+      - generic: ⁡
+      - generic: L
+      - generic: )
+      - generic: "2"
+      - generic: <
+      - generic: "0."
+    - text: e
+    - generic: q
+    - generic: ∗
+    - text: S
+    - text: e
+    - generic: q
+    - text: ≤ −c
+    - text: L(
+    - generic: log
+    - text: L
+    - text: )
+    - generic: "2"
+    - text: P
+    - generic: amp
+    - text: U
+    - text: < 0.
+    - paragraph:
+      - text: Это
+      - strong: бумажное доказательство на исходном арифметическом семействе
+      - text: ", без моментных предпосылок"
+      - strong: P/M/R
+      - text: . Увеличение бюджета
+      - math:
+        - generic: B
+      - generic: B
+      - text: "не помогает: он расположен только в единичной координате и на этом векторе равен нулю."
+    - paragraph:
+      - text: Проверка оказалась сильнее одного неудачного выбора.
+      - strong: Точный двухкоординатный блок исключает весь рассмотренный двухпараметрический линейный класс корректоров
+      - text: ", включая произвольную настройку обоих скалярных коэффициентов. Здесь причина уже"
+      - strong: не в пропущенных больших простых
+      - text: ": они включены, но выбранная поправка оставляет положительную наблюдаемую энергию на неединичных координатах."
+    - paragraph:
+      - strong: "Граница опровержения:"
+      - text: исключён именно этот класс сертификатов. Другие матричные поправки, оплаченный неединичный мажорант и прямая
+      - strong: MB.34
+      - text: не опровергнуты. Диагностический вектор не подменяет настоящий Мёбиус.
+    - paragraph:
+      - strong: "Первый неоплаченный член — (MP.24):"
+      - text: полная совместная двухпростостепенная корреляция с первоначальным
+      - math:
+        - generic: w
+        - generic: P
+        - generic: (
+        - generic: "n"
+        - generic: m
+        - generic: d
+        - generic: e
+        - generic: )
+      - text: w
+      - generic: P
+      - text: (nmde)
+      - text: . Все сравнительные члены, диагонали, нижние масштабы, внешняя
+      - math:
+        - generic: g
+      - generic: g
+      - text: "-граница и профильные возвраты сохранены."
+    - paragraph:
+      - text: В файл включены
+      - strong: 9840 точных конечных проверок
+      - text: ", код и воспроизведённый вывод. Формальная специализация логарифмов в матричных тестах явно отделена от доказанного знака формул с настоящими логарифмами."
+      - strong: Нового полного обратного или высокого выигрыша нет; P/M/R и высокий перенос остаются условными, RH/SP/MB.34 — OPEN.
+      - button "Vorschau von PROSHKA_MIXED_PRIME_CORRECTOR_Q06.txt öffnen":
+        - generic: PROSHKA_MIXED_PRIME_CORRECTOR_Q…
+    - paragraph:
+      - text: Ы,
+      - strong: явный смешанный корректор построен. Но положительность именно в требуемом бюджете пока не доказана.
+      - text: "При построении обнаружилось важное уточнение: свободный подбор корректоров не упрощает последнюю арифметическую обязанность — он позволяет точно отделить её от всех остальных направлений."
+    - heading "1. Сначала пришлось исправить наш план с двумя простыми" [level=2]
+    - paragraph:
+      - text: Моё предложение «начнём со смешанного двухпростого корректора» было недостаточно проверено
+      - strong: для глобального сертификата положительности
+      - text: ", который я предложил."
+    - paragraph:
+      - text: У нас есть
+      - strong: аннуляторы
+      - text: "— операторы, обращающие настоящий коэффициент Мёбиуса в нуль:"
+    - math:
+      - generic: (
+      - generic: A
+      - generic: p
+      - generic: f
+      - generic: )
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: =
+      - generic: v
+      - generic: p
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: f
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: +
+      - generic: ∑
+      - generic: k
+      - generic: =
+      - generic: "1"
+      - generic: v
+      - generic: p
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: f
+      - generic: (
+      - generic: "n"
+      - generic: /
+      - generic: p
+      - generic: k
+      - generic: )
+      - generic: .
+    - text: (
+    - text: A
+    - generic: p
+    - text: f)(n) =
+    - text: v
+    - generic: p
+    - text: (n)f(n) +
+    - generic: k=1
+    - generic: ∑
+    - text: v
+    - generic: p
+    - text: (n)
+    - text: f(n/
+    - text: p
+    - generic: k
+    - text: ).
+    - paragraph:
+      - text: Полный набор этих ограничений выделяет именно Мёбиус. Но
+      - strong: два выбранных простых оставляют множество дополнительных решений
+      - text: . Прежняя записка доказывала одномерность ядра для полного набора, не для двух простых.
+      - button "Vorschau von PROSHKA_OPERATOR_RETHINK_Q05_FOLLOWUP.md öffnen":
+        - generic: PROSHKA_OPERATOR_RETHINK_Q05_FO…
+    - paragraph:
+      - text: Я построил явный свидетель. Берём пропущенный простой
+      - math:
+        - generic: r
+      - generic: r
+      - text: ", находящийся в верхней живой части исходного колоночного окна, и вектор"
+    - math:
+      - generic: f
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: =
+      - generic: "1"
+      - generic: r
+      - generic: ∣
+      - generic: "n"
+      - generic: μ
+      - generic: (
+      - generic: "n"
+      - generic: /
+      - generic: r
+      - generic: )
+      - generic: .
+    - text: f
+    - generic: (r)
+    - text: (n) =
+    - text: "1"
+    - generic: r∣n
+    - text: μ(n/r).
+    - paragraph:
+      - text: Он обнуляет все аннуляторы выбранных простых, не содержащих
+      - math:
+        - generic: r
+      - generic: r
+      - text: . Поэтому
+      - strong: любые смешанные поправки из этих ограничений на нём исчезают
+      - text: .
+    - paragraph: А настоящий остаток удовлетворяет
+    - math:
+      - generic: ⟨
+      - generic: f
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: ","
+      - generic: (
+      - generic: B
+      - generic: e
+      - generic: "1"
+      - generic: e
+      - generic: "1"
+      - generic: ∗
+      - generic: −
+      - generic: G
+      - generic: −
+      - generic: "N"
+      - generic: "Y"
+      - generic: )
+      - generic: f
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: ⟩
+      - generic: =
+      - generic: −
+      - generic: G
+      - generic: r
+      - generic: ","
+      - generic: r
+      - generic: <
+      - generic: "0."
+    - generic: ⟨
+    - text: f
+    - generic: (r)
+    - text: ","
+    - generic: (
+    - text: B
+    - text: e
+    - generic: "1"
+    - text: e
+    - generic: "1"
+    - generic: ∗
+    - text: − G −
+    - text: "N"
+    - generic: "Y"
+    - generic: )
+    - text: f
+    - generic: (r)
+    - generic: ⟩
+    - text: = −
+    - text: G
+    - generic: r,r
+    - text: < 0.
+    - paragraph:
+      - text: "Бюджет не помогает:"
+      - math:
+        - generic: f
+        - generic: (
+        - generic: r
+        - generic: )
+        - generic: (
+        - generic: "1"
+        - generic: )
+        - generic: =
+        - generic: "0"
+      - text: f
+      - generic: (r)
+      - text: (1) =
+      - generic: "0"
+      - text: ", поэтому его вклад равен нулю."
+    - paragraph:
+      - strong: Это опровергает весь такой неполный класс сертификатов, независимо от выбора множителей.
+      - text: Не исходную оценку и не операторный подход вообще. На полной конечной диагностической семье отрицательная величина получилась точно
+      - strong:
+        - math:
+          - generic: −
+          - generic: "4"
+          - generic: /
+          - generic: "13"
+        - generic: −4/13
+      - text: .
+    - paragraph:
+      - text: Следовательно, для продолжения я взял
+      - strong: полный набор простых
+      - text: ", сохранив все степени."
+    - heading "2. Координаты, в которых смешанный корректор вычисляется" [level=2]
+    - paragraph:
+      - text: Определим
+      - strong: делительное преобразование
+      - text: "— суммирование по всем делителям:"
+    - math:
+      - generic: (
+      - generic: Z
+      - generic: f
+      - generic: )
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: d
+      - generic: ∣
+      - generic: "n"
+      - generic: f
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: .
+    - generic: (Zf)(n) =
+    - generic: d∣n
+    - generic: ∑
+    - text: f(d).
+    - paragraph: "Его обратное преобразование известно явно:"
+    - math:
+      - generic: (
+      - generic: Z
+      - generic: −
+      - generic: "1"
+      - generic: g
+      - generic: )
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: d
+      - generic: ∣
+      - generic: "n"
+      - generic: μ
+      - generic: (
+      - generic: "n"
+      - generic: /
+      - generic: d
+      - generic: )
+      - generic: g
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: .
+    - text: (
+    - text: Z
+    - generic: −1
+    - text: g)(n) =
+    - generic: d∣n
+    - generic: ∑
+    - text: μ(n/d)g(d).
+    - paragraph: "Для нашего вектора:"
+    - math:
+      - generic: Z
+      - generic: μ
+      - generic: =
+      - generic: e
+      - generic: "1"
+      - generic: .
+    - text: Z
+    - generic: μ
+    - text: =
+    - text: e
+    - generic: "1"
+    - text: .
+    - paragraph: "И здесь получается решающее точное равенство:"
+    - math:
+      - generic: Z
+      - generic: A
+      - generic: p
+      - generic: =
+      - generic: D
+      - generic: p
+      - generic: Z
+      - generic: ","
+      - generic: D
+      - generic: p
+      - generic: =
+      - generic: diag
+      - generic: ⁡
+      - generic: (
+      - generic: v
+      - generic: p
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: )
+      - generic: .
+    - text: Z
+    - text: A
+    - generic: p
+    - text: =
+    - text: D
+    - generic: p
+    - text: Z,
+    - text: D
+    - generic: p
+    - text: =
+    - generic: diag
+    - generic: (
+    - text: v
+    - generic: p
+    - text: (n)
+    - generic: )
+    - text: .
+    - paragraph:
+      - text: То есть
+      - strong: все простые одновременно диагонализуются одной делительной матрицей
+      - text: . Их смешанное действие больше не нужно угадывать.
+    - paragraph:
+      - text: При этом исходная
+      - strong:
+        - text: матрица Грама
+        - math:
+          - generic: G
+        - generic: G
+      - text: — матрица корреляций настоящих колонок — не заменяется. В ней остаются все строки, усилители, профили, фазы и нули; исходная энергия по-прежнему равна
+    - math:
+      - generic: E
+      - generic: M
+      - generic: =
+      - generic: μ
+      - generic: ∗
+      - generic: G
+      - generic: μ
+      - generic: .
+    - text: E
+    - generic: M
+    - text: =
+    - generic: μ
+    - generic: ∗
+    - text: G
+    - generic: μ
+    - text: .
+    - paragraph:
+      - text: Именно такой
+      - math:
+        - generic: G
+      - generic: G
+      - text: был задан в предыдущем выводе.
+      - button "Vorschau von PROSHKA_OPERATOR_RETHINK_Q05_FOLLOWUP.md öffnen":
+        - generic: PROSHKA_OPERATOR_RETHINK_Q05_FO…
+    - heading "3. Вот сам построенный корректор" [level=2]
+    - paragraph: Обозначим
+    - math:
+      - generic: G
+      - generic: ^
+      - generic: =
+      - generic: Z
+      - generic: −
+      - generic: ∗
+      - generic: G
+      - generic: Z
+      - generic: −
+      - generic: "1"
+      - generic: ","
+      - generic: F
+      - generic: =
+      - generic: e
+      - generic: "1"
+      - generic: e
+      - generic: "1"
+      - generic: ∗
+      - generic: ","
+      - generic: K
+      - generic: =
+      - generic: I
+      - generic: −
+      - generic: F
+      - generic: .
+    - generic: G
+    - text: =
+    - text: Z
+    - generic: −∗
+    - text: G
+    - text: Z
+    - generic: −1
+    - text: ", F ="
+    - text: e
+    - generic: "1"
+    - text: e
+    - generic: "1"
+    - generic: ∗
+    - text: ", K ="
+    - generic: I −
+    - generic: F.
+    - paragraph:
+      - strong:
+        - math:
+          - generic: F
+        - generic: F
+      - text: выделяет единичную координату,
+      - strong:
+        - math:
+          - generic: K
+        - generic: K
+      - text: — все остальные.
+    - paragraph: Пусть
+    - math:
+      - generic: D
+      - generic: =
+      - generic: ∑
+      - generic: p
+      - generic: D
+      - generic: p
+      - generic: .
+    - generic: D =
+    - generic: p
+    - generic: ∑
+    - text: D
+    - generic: p
+    - text: .
+    - paragraph:
+      - text: У неё положительная диагональ на каждом неединичном идеале.
+      - strong:
+        - math:
+          - generic: D
+          - generic: †
+        - text: D
+        - generic: †
+      - text: означает обычное деление на эти ненулевые диагональные элементы; в единичной координате ставится нуль.
+    - paragraph:
+      - text: Для любого заранее выбранного
+      - math:
+        - generic: τ
+        - generic: ">"
+        - generic: "0"
+      - generic: τ >
+      - generic: "0"
+      - text: "задаём:"
+    - math:
+      - generic: "Y"
+      - generic: =
+      - generic: Z
+      - generic: ∗
+      - generic: D
+      - generic: †
+      - generic: (
+      - generic: −
+      - generic: "1"
+      - generic: "2"
+      - generic: K
+      - generic: G
+      - generic: ^
+      - generic: K
+      - generic: −
+      - generic: K
+      - generic: G
+      - generic: ^
+      - generic: F
+      - generic: −
+      - generic: τ
+      - generic: "2"
+      - generic: K
+      - generic: )
+      - generic: Z
+      - generic: .
+    - text: Y =
+    - text: Z
+    - generic: ∗
+    - text: D
+    - generic: †
+    - generic: (
+    - text: −
+    - generic: "2"
+    - generic: "1"
+    - text: K
+    - generic: G
+    - text: K − K
+    - generic: G
+    - text: F −
+    - generic: "2"
+    - generic: τ
+    - text: K
+    - generic: )
+    - text: Z.
+    - paragraph:
+      - text: Это
+      - strong: явная формула
+      - text: ", а не условие «найти подходящий"
+      - math:
+        - generic: "Y"
+      - generic: "Y"
+      - text: ».
+    - paragraph:
+      - text: Берём один такой
+      - math:
+        - generic: "Y"
+      - generic: "Y"
+      - text: у каждого простого и составляем
+    - math:
+      - generic: "N"
+      - generic: "Y"
+      - generic: =
+      - generic: ∑
+      - generic: p
+      - generic: (
+      - generic: A
+      - generic: p
+      - generic: ∗
+      - generic: "Y"
+      - generic: +
+      - generic: "Y"
+      - generic: ∗
+      - generic: A
+      - generic: p
+      - generic: )
+      - generic: .
+    - text: "N"
+    - generic: "Y"
+    - text: =
+    - generic: p
+    - generic: ∑
+    - generic: (
+    - text: A
+    - generic: p
+    - generic: ∗
+    - text: Y +
+    - text: "Y"
+    - generic: ∗
+    - text: A
+    - generic: p
+    - generic: )
+    - text: .
+    - paragraph:
+      - text: Множитель
+      - math:
+        - generic: "Y"
+      - generic: "Y"
+      - text: "недиагонален: он содержит"
+      - strong: смешанные корреляции обеих колонок и всех простых
+      - text: через полный
+      - math:
+        - generic: G
+        - generic: ^
+      - generic: G
+      - text: . Отдельные нормы по простым здесь не берутся.
+    - heading "4. Какой остаток получился" [level=2]
+    - paragraph: "После полного сокращения:"
+    - math:
+      - generic: B
+      - generic: e
+      - generic: "1"
+      - generic: e
+      - generic: "1"
+      - generic: ∗
+      - generic: −
+      - generic: G
+      - generic: −
+      - generic: "N"
+      - generic: "Y"
+      - generic: =
+      - generic: (
+      - generic: B
+      - generic: −
+      - generic: E
+      - generic: M
+      - generic: )
+      - generic: e
+      - generic: "1"
+      - generic: e
+      - generic: "1"
+      - generic: ∗
+      - generic: +
+      - generic: τ
+      - generic: Z
+      - generic: ∗
+      - generic: K
+      - generic: Z
+      - generic: .
+    - text: B
+    - text: e
+    - generic: "1"
+    - text: e
+    - generic: "1"
+    - generic: ∗
+    - text: − G −
+    - text: "N"
+    - generic: "Y"
+    - text: = (B −
+    - text: E
+    - generic: M
+    - text: )
+    - text: e
+    - generic: "1"
+    - text: e
+    - generic: "1"
+    - generic: ∗
+    - text: + τ
+    - text: Z
+    - generic: ∗
+    - text: KZ.
+    - paragraph:
+      - text: Иными словами, для любого вектора
+      - math:
+        - generic: x
+      - generic: x
+      - text: ":"
+    - math:
+      - generic: x
+      - generic: ∗
+      - generic: R
+      - generic: x
+      - generic: =
+      - generic: (
+      - generic: B
+      - generic: −
+      - generic: E
+      - generic: M
+      - generic: )
+      - generic: ∣
+      - generic: x
+      - generic: (
+      - generic: "1"
+      - generic: )
+      - generic: ∣
+      - generic: "2"
+      - generic: +
+      - generic: τ
+      - generic: ∑
+      - generic: "n"
+      - generic: ≠
+      - generic: "1"
+      - generic: ∣
+      - generic: ∑
+      - generic: d
+      - generic: ∣
+      - generic: "n"
+      - generic: x
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: ∣
+      - generic: "2"
+      - generic: .
+    - text: x
+    - generic: ∗
+    - text: Rx = (B −
+    - text: E
+    - generic: M
+    - text: )∣x(1)
+    - text: ∣
+    - generic: "2"
+    - text: + τ
+    - text: "n"
+    - generic: 
+    - text: =
+    - text: "1"
+    - generic: ∑
+    - generic: d∣n
+    - generic: ∑
+    - text: x(d)
+    - generic: "2"
+    - text: .
+    - paragraph:
+      - strong: Вторая часть действительно положительна.
+      - text: Это явная сумма квадратов, а не предполагаемый благоприятный знак.
+    - paragraph: Но на настоящем Мёбиусе
+    - math:
+      - generic: ∑
+      - generic: d
+      - generic: ∣
+      - generic: "n"
+      - generic: μ
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: =
+      - generic: "0"
+      - generic: (
+      - generic: "n"
+      - generic: ">"
+      - generic: "1"
+      - generic: )
+      - generic: ","
+    - generic: d∣n
+    - generic: ∑
+    - text: μ(d) =
+    - generic: 0 (n >
+    - generic: 1),
+    - paragraph: "поэтому все эти квадраты исчезают:"
+    - math:
+      - generic: μ
+      - generic: ∗
+      - generic: R
+      - generic: μ
+      - generic: =
+      - generic: B
+      - generic: −
+      - generic: E
+      - generic: M
+      - generic: .
+    - generic: μ
+    - generic: ∗
+    - text: R
+    - generic: μ
+    - text: = B −
+    - text: E
+    - generic: M
+    - text: .
+    - paragraph:
+      - text: "Вот точная граница конструкции:"
+      - strong: мы устранили все посторонние направления, но не получили право изменить значение на самом источнике.
+    - paragraph:
+      - text: Более того, я доказал это
+      - strong: для всего свободного класса корректоров
+      - text: ", не только для выбранной формулы:"
+    - math:
+      - generic: ∃
+      - generic: "Y"
+      - generic: p
+      - generic: ":"
+      - generic: B
+      - generic: e
+      - generic: "1"
+      - generic: e
+      - generic: "1"
+      - generic: ∗
+      - generic: −
+      - generic: G
+      - generic: −
+      - generic: "N"
+      - generic: "Y"
+      - generic: ⪰
+      - generic: "0"
+      - generic: ⟺
+      - generic: E
+      - generic: M
+      - generic: ≤
+      - generic: B
+      - generic: .
+    - text: ∃
+    - text: "Y"
+    - generic: p
+    - text: ":"
+    - text: B
+    - text: e
+    - generic: "1"
+    - text: e
+    - generic: "1"
+    - generic: ∗
+    - text: − G −
+    - text: "N"
+    - generic: "Y"
+    - text: ⪰ 0 ⟺
+    - text: E
+    - generic: M
+    - text: ≤ B.
+    - paragraph:
+      - text: Знак
+      - strong:
+        - math:
+          - generic: ⪰
+          - generic: "0"
+        - generic: ⪰
+        - generic: "0"
+      - text: означает неотрицательность квадратичной формы на всех векторах. Доказательство охватывает и граничный случай
+      - math:
+        - generic: B
+        - generic: =
+        - generic: E
+        - generic: M
+      - generic: B =
+      - text: E
+      - generic: M
+      - text: ; подобные задачи относятся к
+      - strong: устранению матричных переменных при линейных ограничениях
+      - text: .
+      - 'link "arXiv: https://arxiv.org/html/2403.10306v2, https://arxiv.org/html/2403.10306v2"':
+        - /url: https://arxiv.org/html/2403.10306v2
+        - generic: arXiv
+    - paragraph:
+      - text: Это
+      - strong: не означает, что корректор бесполезен
+      - text: . Он может быть формой настоящего доказательства. Но свободное существование такого корректора — не отдельный более лёгкий поставщик арифметического выигрыша.
+    - heading "5. Что получилось с нужным бюджетом" [level=2]
+    - paragraph: С прежним условным моментным входом положительность доказана при бюджете
+    - math:
+      - generic: B
+      - generic: o
+      - generic: l
+      - generic: d
+      - generic: ≍
+      - generic: P
+      - generic: (
+      - generic: U
+      - generic: +
+      - generic: U
+      - generic: "1"
+      - generic: /
+      - generic: "6"
+      - generic: L
+      - generic: "5"
+      - generic: /
+      - generic: "6"
+      - generic: )
+      - generic: U
+      - generic: ϵ
+      - generic: (
+      - generic: "1"
+      - generic: +
+      - generic: T
+      - generic: "1"
+      - generic: )
+      - generic: A
+      - generic: .
+    - text: B
+    - generic: old
+    - text: ≍
+    - text: P
+    - generic: (
+    - text: U +
+    - text: U
+    - generic: 1/6
+    - text: L
+    - generic: 5/6
+    - generic: )
+    - text: U
+    - generic: ϵ
+    - text: (1 +
+    - text: T
+    - generic: "1"
+    - text: )
+    - generic: A
+    - text: .
+    - paragraph: Но нужен
+    - math:
+      - generic: B
+      - generic: t
+      - generic: a
+      - generic: r
+      - generic: g
+      - generic: e
+      - generic: t
+      - generic: =
+      - generic: C
+      - generic: ∗
+      - generic: H
+      - generic: U
+      - generic: −
+      - generic: "1"
+      - generic: /
+      - generic: "200"
+      - generic: +
+      - generic: ϵ
+      - generic: (
+      - generic: "1"
+      - generic: +
+      - generic: T
+      - generic: "1"
+      - generic: )
+      - generic: A
+      - generic: .
+    - text: B
+    - generic: target
+    - text: =
+    - text: C
+    - generic: ∗
+    - text: H
+    - text: U
+    - generic: −1/200+ϵ
+    - text: (1 +
+    - text: T
+    - generic: "1"
+    - text: )
+    - generic: A
+    - text: .
+    - paragraph:
+      - text: На верхнем масштабе
+      - math:
+        - generic: L
+        - generic: =
+        - generic: D
+      - generic: L =
+      - generic: D
+      - text: прежнему конверту всё ещё недостаёт степени
+    - math:
+      - generic: "1"
+      - generic: "200"
+      - generic: −
+      - generic: "5"
+      - generic: r
+      - generic: c
+      - generic: "0"
+      - generic: "6"
+      - generic: .
+    - generic: "200"
+    - generic: "1"
+    - text: −
+    - generic: "6"
+    - text: 5r
+    - text: c
+    - generic: "0"
+    - text: .
+    - paragraph: На концах исходного диапазона это соответственно
+    - math:
+      - generic: "46"
+      - generic: "9375"
+      - generic: ","
+      - generic: "5887"
+      - generic: "1200000"
+      - generic: .
+    - generic: "9375"
+    - generic: "46"
+    - text: ","
+    - generic: "1200000"
+    - generic: "5887"
+    - text: .
+    - paragraph:
+      - strong: Смешанный корректор эту разницу не уменьшил.
+      - text: Увеличение
+      - math:
+        - generic: τ
+      - generic: τ
+      - text: "тоже ничего не меняет: оно усиливает только сумму квадратов, которая на Мёбиусе равна нулю. Прежние аналитические входы и обязательные возвраты остаются условными."
+      - button "Vorschau von PROSHKA_RATIONAL_HIGH_VALUES_Q05.txt öffnen":
+        - generic: PROSHKA_RATIONAL_HIGH_VALUES_Q05
+    - heading "Что теперь изменилось по существу" [level=3]
+    - paragraph:
+      - strong: Задача построения свободного корректора закрыта явной формулой. Задача арифметического выигрыша — нет.
+    - paragraph:
+      - text: Поэтому следующий шаг уже нельзя формулировать как «давай ещё сильнее смешаем аннуляторы». Все допустимые нулевые поправки этого класса уже охвачены. Нужна новая оценка
+      - strong:
+        - text: самой совместной арифметической корреляции внутри
+        - math:
+          - generic: G
+        - generic: G
+      - text: — до раздельных модулей, с настоящими коэффициентами и всеми строками. Корректор сможет оформить такую оценку в положительный остаток, но не создаст её из одного равенства
+      - math:
+        - generic: A
+        - generic: p
+        - generic: μ
+        - generic: =
+        - generic: "0"
+      - text: A
+      - generic: p
+      - text: μ =
+      - generic: "0"
+      - text: .
+    - paragraph:
+      - text: В файле — полные доказательства,
+      - strong: 474 точные проверки
+      - text: и код. Код, извлечённый обратно из готового Markdown, воспроизвёл тот же результат.
+      - strong: Нового обратного или высокого степенного выигрыша не зачислено; исходная цель не опровергнута.
+    - button "Vorschau von PROSHKA_VERDICT_MIXED_PRIME_CORRECTOR_Q06.md öffnen"
+    - generic "PROSHKA_VERDICT_MIXED_PRIME_CORRECTOR_Q06.md"
+    - generic: Dokument
+    - button "Datei herunterladen":
+    - button "Vorschau von PROSHKA_MIXED_CORRECTOR_CONSTRUCTION_Q05_FOLLOWUP.md öffnen"
+    - generic "PROSHKA_MIXED_CORRECTOR_CONSTRUCTION_Q05_FOLLOWUP.md"
+    - generic: Dokument
+    - button "Datei herunterladen":
+    - button "Kopieren":
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Vorlesen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - button "Quellen":
+    - generic: ChatGPT kann Fehler machen. Prüfe wichtige Infos.
+    - button "Nach unten scrollen":
+    - heading "Neueste Antwort" [level=4]
+    - status
+    - button "Dateien und mehr hinzufügen":
+    - textbox "ChatGPT fragen":
+      - paragraph: ChatGPT fragen
+    - button "ChatGPT-Modell auswählen":
+      - generic: Pro
+    - button "Diktieren":
+    - button "Sprachchat starten":
+- status
+- status
+- status
+- status
+- status
+- status: Antwort abgeschlossen
