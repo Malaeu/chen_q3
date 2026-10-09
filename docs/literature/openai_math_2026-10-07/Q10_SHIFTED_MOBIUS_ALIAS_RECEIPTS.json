@@ -1,0 +1,309 @@
+[
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "abd9da57e774771352d97e248e5de6b0da070e47d722a01729dd064254e8fa74",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "rayleigh_excess_le_two_mul_residual_sq_div_gap q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean:90",
+        "metadata_sha256": "fdea578ef944e8097ed7cb222d2b596899104c02817f7b61407fe1da57c2b3e4",
+        "provider": "knowledge-db",
+        "provider_id": "585425f917efbb57af638e19f9cc26f67f12778bb297b5e5547e5e9197bf078a",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "rayleigh_excess_le_two_mul_residual_sq_div_gap q3.lean.aristotle/Q3/Proofs/RouteB/WeightedSpectralTempleCore.lean:90",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "f01bbe16a44362eefe1939324bd3e0bec51928b27fabc112c1eac9ebd9210add",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "claude_2026_two_thirds_critical_line.pdf",
+        "metadata_sha256": "a6378a211fad5052672438c864e58ef7f828fdfc56409da27fdd03c6aefc453c",
+        "provider": "local-literature",
+        "provider_id": "4007bfb4aece1c56b33c20be55ecf2179669c14948d480bacd9040825fd6547d",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "claude_2026_two_thirds_critical_line.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "E_m_N_le_sourceArchimedeanShiftedFormDomain Q3/Proofs/RouteB/D0PstarShiftedArchFiniteModeDomain.lean",
+        "metadata_sha256": "7e440ae6cd855c4eb4738cb49f70ec7c1f13aafb069ed5f08ef59d5b0a4d2016",
+        "provider": "lean-index",
+        "provider_id": "d092a1e6f0935b734ce8e66eb8e7c77b81e61396f220d1f8ad3b3ba03cbf71be",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "E_m_N_le_sourceArchimedeanShiftedFormDomain Q3/Proofs/RouteB/D0PstarShiftedArchFiniteModeDomain.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "IsSourceArchimedeanShiftedWeightedGraphCore Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+        "metadata_sha256": "6799c285f10d66937e0e02734a7580371917181ca6aac802902af5f9d73021c2",
+        "provider": "lean-index",
+        "provider_id": "a2953bbb4792433428ef9a7086c217c52f71745a18c33e55a1b216483a5a2c80",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "IsSourceArchimedeanShiftedWeightedGraphCore Q3/Proofs/RouteB/D0PstarSourceWeilFormCoreTopology.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean:93:/-- **The row-shifted gap.** Any `Λ` within `C` of the `n`-th diagonal entry",
+        "metadata_sha256": "436db3a5bb401db6c0b3486df048b5e3469ab413552c5188388ca3fc255a4ab6",
+        "provider": "lean-tree",
+        "provider_id": "e9387f95a83f32e50f86a2efe257aa08e31a9bdeb15b538e94927f526e883865",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean:93:/-- **The row-shifted gap.** Any `Λ` within `C` of the `n`-th diagonal entry",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean:455:/-- Under the threshold, the shifted denominator keeps the full budget. -/",
+        "metadata_sha256": "075e9ee46c1df7a2017dba7c537e2b31922313c9743d2747ad69ffb006956300",
+        "provider": "lean-tree",
+        "provider_id": "d411e4ee82857a6f448dcd7c26cdad1ac50931339d90d52eb66c31d54e458244",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/SpheroidalSourceHighMode.lean:455:/-- Under the threshold, the shifted denominator keeps the full budget. -/",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+        "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "shifted Möbius autocorrelation: uniform mean bounds for μ(n+δ)μ(n) with two smooth radial norm windows over Eisenstein integers and short additive shifts",
+    "query_sha256": "3d7065bf44cce3103b5168dedd1d818d548ca5a0b8ecf533ebc91bead7722435",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "951913d84a1e768b580a924d929c548adfe158fe037a2c29aa3a876009d6f00e",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40",
+        "metadata_sha256": "0ebc4b5e84d7fdb9e9f2a3575689fde027589932dd85ee8c27a37fd1f0717248",
+        "provider": "knowledge-db",
+        "provider_id": "dcfdb51240957d468a278acd9b712a1e17d80f7ec8e3043506284e5d7202f3a6",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "title": "matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "metadata_sha256": "fbe78bfaad4ebd5b28e3d7158b4355cd30d4a47ee5742e1ca44e1feaed942e7d",
+        "provider": "local-literature",
+        "provider_id": "b9c8f2ba000372398d08ab1c4e97c48ce35a82f7e90e63e401bb235c15c7b134",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "title": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "8dcb3d0537695b9021443cf9fc56701d13742838ac1d9a9d44d87e689f56cef3",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "A3_bridge_axiom_from_uniform Q3/Proofs/A3_bridge_v3_uniform.lean",
+        "metadata_sha256": "7d879b7888244a482e5cacaead711b89518576138ac2737203a495809c2072ea",
+        "provider": "lean-index",
+        "provider_id": "ed84a81b2709320019a404ef597c7bb9e9f01b371c2cecd346d471577054db17",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "title": "A3_bridge_axiom_from_uniform Q3/Proofs/A3_bridge_v3_uniform.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean",
+        "metadata_sha256": "8f409f263e2c85df38cc3928b3b7fe1223ed41cf53e50763c350aa3737e7a8f9",
+        "provider": "lean-index",
+        "provider_id": "cefd21ef9557912847f9b774a90902ae612cd19ec2497848ea29089711441595",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "title": "A3_bridge_data full/q3.lean.aristotle/Q3/Atoms_Positive.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 3,
+        "provider": "local-shelves",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+        "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "dispersion method for μ(n+δ)μ(n) correlations twisted by primitive Hecke characters with varying conductor, averaging short shifts and actual coefficients",
+    "query_sha256": "ade81880bdf5ab16ffbe5286e8176ff7a62adafcc7005b75b9326e6b195925eb",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "9c87f602b1b85fef891cbc661fdb8ae11f81ed0614f3b2fb4bb361c7636df840",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+        "metadata_sha256": "aa6a357e4158476f448d4fecb560016fccd4571dfe169696f86657a98afe458d",
+        "provider": "knowledge-db",
+        "provider_id": "2eb3496726b5c00c739fd0ad26943c2653270768a73e80017f93bbeb0f3b3e1c",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "metadata_sha256": "c8241d6a4057d86625dbfd73f4ef9ba38eb5dbd70c76d3928036f80d0a3164ac",
+        "provider": "local-literature",
+        "provider_id": "b9c8f2ba000372398d08ab1c4e97c48ce35a82f7e90e63e401bb235c15c7b134",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "4af9d303f8f044c8d73d829520835f79add55f630bfb21575a9af333a4209547",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "po3_column_trace_packet q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean",
+        "metadata_sha256": "6c93c81741f772c099c5b04fab4fb3e2ad8b6573eaba3963cdb1c63fe44380df",
+        "provider": "lean-index",
+        "provider_id": "942ae0c76608627e1d88f35e2142232148f87d4a78e058a56f9baebc46fe1961",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "po3_column_trace_packet q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "po3_column_trace_packet Q3/Proofs/HBridge_PO3_Shell.lean",
+        "metadata_sha256": "88559502032ce38ffb3b957cb607f11850608d3c44614905471cbb6ce67d1797",
+        "provider": "lean-index",
+        "provider_id": "6ca3e14c40d4114a8a2dd5606ec19bfdf9b5ff736e0780f97f18990984093893",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "po3_column_trace_packet Q3/Proofs/HBridge_PO3_Shell.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean:22:derivative trace and no endpoint value is consumed anywhere.",
+        "metadata_sha256": "287576ec2d41456978fe353a36c4000d6c185890f1a2bc994179970111308c34",
+        "provider": "lean-tree",
+        "provider_id": "b0ecb7fdffed99dc838eb8c6fe095f69158893858f53f908dd6b6002cf02c795",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SturmWeightedEnergyIdentity.lean:22:derivative trace and no endpoint value is consumed anywhere.",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenCore.lean:76:flux. The lower trace follows from interior differentiability at t.",
+        "metadata_sha256": "e9feee84c943ab7b04c8b4e16a0c828ae1abf120817e1d98dd866b390b9c29a4",
+        "provider": "lean-tree",
+        "provider_id": "1a67ca7e2fbd1c0b7e2afbb4fe9c08b917ce84ad78c6b47a8e176ccd868d9596",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenCore.lean:76:flux. The lower trace follows from interior differentiability at t.",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+        "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "trace function correlation of shifted Möbius on a number field lattice: additive translate dispersion, complete character mean, off-zero coefficient variance",
+    "query_sha256": "a769ef47cbe0f7d2ea9a7707e95fee35a7cb7836b28f10c19a4d37fd0b514bb7",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+]
