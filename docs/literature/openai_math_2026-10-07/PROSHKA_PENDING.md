@@ -1,3 +1,15 @@
+# Source inverse Q8 processed — no pending Pro question
+
+2026-10-09 around01:16UTC: original chat displayed cloudflare_challenge and no final attachment. A page reload restored access to the already completed Q8, with final response, original downloadable attachment and regenerate/voice controls. No Retry, resend or Answer now was clicked. SAME Execute Joint Probe Calculation https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac5dfb3-b068-83ed-810a-dc77fa77ebbd . Full923-line original read. Source phase8/10; Q9 not sent.
+
+Request PROSHKA_SPARSE_INVERSE_Q08.txt:872296bytes,17904LF,final newline,SHA2564f0c5807842fe9d65bfafbfc5b48edf8b341a4089f5b516863822364b8fe883e, baselineafcd93b7. Original PROSHKA_VERDICT_SPARSE_INVERSE_Q08.md:78752bytes,923LF,SHA256faa172f1a15de4022c760a84a6517c149feffd1d98ae5c3ec2426e3a0c742ec8. Root ran supplied finite algebra controls:5285 PASS plus exact rational budgets; these do not certify analytic estimates.
+
+Independent audits PASS: q05 checked moving-mask moment, exact gcd inversion, conditional G^-5/6 large-gcd gain, small-scale return and (32)->full consumer; long_positive checked exact sixthfree Poisson/CRT/Gauss kernel, tails, completion and limited reflection-scale test. See SOURCE_Q08_CONCLUSION.md. Q8(32), Q7(44), A4 and full high/RH remain OPEN. Own A5–A6 reverse identity already independently checked/pushed9a3d8bac agrees with Q8 mask equivalence; it was not sent after Q8. Next exact target is small-gcd top-band signed kernel(24), with every dual branch and common profile derivative retained. No Q9 sent.
+
+Save checked request+unchanged response+conclusion in one scoped commit/push and pause q3-joint-low-probe (currently ACTIVE20min). Preserve actual coefficients, original masks, all scale/profile returns and positive c cost. Linux zeta Comparator remains report only, no Hecke import or Mac rerun. Native RH goal ACTIVE.
+
+--- Source Q7 closeout ---
+
 # Source-probe Q7 processed — no pending Pro question
 
 2026-10-09 around00:14–00:15UTC: terminal Antwort abgeschlossen and original attachment observed in SAME Execute Joint Probe Calculation chat https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac5dfb3-b068-83ed-810a-dc77fa77ebbd . Full971-line original downloaded and read. Request/answer hashes and independent audit details are in SOURCE_Q07_CONCLUSION.md. No resend or Answer now; source phase7/10, Q8 not sent.
