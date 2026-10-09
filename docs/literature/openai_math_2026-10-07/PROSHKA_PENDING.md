@@ -1,3 +1,17 @@
+# Short-box rollover Q1 processed — no pending Pro answer
+
+2026-10-09 15:26UTC sent ONCE in new chat Математическая попытка MB34:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac907a5-02f8-83eb-b0e6-fa066e88e743
+Forced rollover after previous formal10/10 closeout, unchanged six-field phase. Observed exact sent attachment/text, Pro, empty composer, ChatGPT antwortet and Stoppen. Terminal Antwort abgeschlossen observed16:26UTC; full1499-line original downloaded and read. No answer generating. Do not resend.
+
+Authoritative PROSHKA_SHORT_BOX_ROLLOVER_Q01.txt:1175922bytes,22216LF,final newline,SHA2563f79810f6d025dec4fd21a3db2bd70a2444255ec1427dafbc4afbb60b08f4b5a. All ten embedded blocks verified byte-for-byte. Baselinec083cfcd, git pull already up to date. Request remains uncommitted until response.
+
+Target: coefficient-sensitive actual short-box moment or weaker exact T_N−V_N, full original MB34 return and comparison with CF22. Existing sieve and mapped literature attempts insufficient; sigma1/1000,kappa1/12 is only a sufficient UNPROVED interface. Source P/M/R/K/high conditional. RH/SP/MB34 OPEN. Read complete original, own checks and one independent audit, then ONE scoped request+answer+conclusion commit/push and pause heartbeat. Existing20min heartbeat ACTIVE; 15:46UTC live check: SAME chat shows Denke nach/Stoppen and service checking, no terminal response. Interim factor-decomposition narrative is not an admitted result. 16:06UTC same live handle still Denke nach/Stoppen, no terminal answer. Interim exact-factor discussion is not accepted mathematics. Terminal16:26UTC. Original107857bytes SHA25651b670bcd381d9b57f72a74b3cad28a8551c9feb4866b2f0e4b22ce47a6e183c. Root reproduced36 checks with exact stdout/JSON match; stdoutSHA2569da07bce0caa31cf7e996d19299f0c09ee3bea8e56225f4d928845c16e2c9635. Native q05_moment_audit SB1–43 PASS for partial returns, with inherited source scope. SHORT_BOX_ROLLOVER_Q01_CONCLUSION.md records exact admission. Deliver request+original+conclusion in one scoped commit/push, then pause heartbeat. Q2 not sent.
+
+User-supplied prime-layer note processed while Q1 runs: PRIME_LAYER_USER_NOTE_CROSSWALK.md independently PASS. Exact actual Ramanujan coefficients identified for complete mean only; centered shifted correlation retains residue/orientation data. No gain, no additional Pro send. Preserve with next scoped delivery.
+
+--- Previous Q10 closeout ---
+
 # Q10 processed — no pending Pro answer
 
 2026-10-09 15:02UTC terminal Antwort abgeschlossen observed in SAME living chat Совместная арифметическая оценка. Original PROSHKA_VERDICT_ACTUAL_JOINT_DISPERSION_Q10.md downloaded unchanged:95593bytes,1327LF,SHA256d3b42fe78285077917aa2823855da4b2778704f49f163eaa28e6c5e6c5e92f7b. Root read every line and reproduced39 checks with exact AppendixD JSON AND stdout hash match. Code SHA2560c31a2626ecd3fe0e2c926945226b681e358978bc390d5aae4462037d8ae9009. /tmp/q10-root-check holds extracted diagnostics. Native q05_moment_audit returned conditional PASS for AD1–23, with common-profile-first and positive-energy Sobolev qualification. See ACTUAL_JOINT_DISPERSION_Q10_CONCLUSION.md. No answer is generating; no further send.
