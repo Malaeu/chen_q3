@@ -1,0 +1,249 @@
+[
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "5aa3242d8ca45abea309aba5d2389e656e9e309d711aa92623a8620b83bb8005",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40",
+        "metadata_sha256": "976d36b881bc401e87f25e18b692b1fcb18198b302c87c8603a255478e87c9ef",
+        "provider": "knowledge-db",
+        "provider_id": "dcfdb51240957d468a278acd9b712a1e17d80f7ec8e3043506284e5d7202f3a6",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "matrixBilinForm_ker_eq_span_singleton_of_finrank_one q3.lean.aristotle/Q3/Proofs/RouteB/MatrixBilinFormRadical.lean:40",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "horn_johnson_matrix_analysis_2013.pdf",
+        "metadata_sha256": "dae42a2cc6010ba925d462446f09f8e7f8dc1b505ac66e404e863076a2a6139b",
+        "provider": "local-literature",
+        "provider_id": "cc4134b9eb04734332b06f0e96c26222036ad328e6e29f0dd847b3a6ed1aa58c",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "horn_johnson_matrix_analysis_2013.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "goal058ConnectorPhasePlant_no_common_real_phase Q3/Proofs/RouteB/CCMProposition59ComplexHermitianConnector.lean",
+        "metadata_sha256": "d790429299a513ff4b635631e41703cc84c5a92146bc8c4654ecf6690203f103",
+        "provider": "lean-index",
+        "provider_id": "679dc5a474987702538e2c48be4ce76f6a3942abb96debf56e8ed12cb3cb6bf9",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "goal058ConnectorPhasePlant_no_common_real_phase Q3/Proofs/RouteB/CCMProposition59ComplexHermitianConnector.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+        "metadata_sha256": "486436a269db671b857434c68b43f427d9b9495ec547ea93e5043f769e74619e",
+        "provider": "lean-index",
+        "provider_id": "f35d21786b67f24cadb1740e3429fb1232f3d4b2199a2e64423129fba9816211",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean:30:proof uses only L2 convergence, extraction of a common almost-everywhere",
+        "metadata_sha256": "d9e026049d2fccdcce927c4a2ebecddcb12d0314e2d317479b875323377f232c",
+        "provider": "lean-tree",
+        "provider_id": "003af3e5f6b3d70d07873ed1363ad77d9bec2e0663d87823f03e72b4768afc6f",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarShiftedArchClosedForm.lean:30:proof uses only L2 convergence, extraction of a common almost-everywhere",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean:37:/-- The common explicit cutoff, exposed under an even-tail name. -/",
+        "metadata_sha256": "5af85c02161518eaceccb348134a6e7467540f42ee9cdea4f28c13d993936f3d",
+        "provider": "lean-tree",
+        "provider_id": "2ea7482fce312dace62f5772517919c678fb330c8a3f7f3e09b6ddb3e518823b",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilEvenTailExplicitCoercivity.lean:37:/-- The common explicit cutoff, exposed under an even-tail name. -/",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+        "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "common conductor cubic divisor characters orthogonality incomplete Gram matrix",
+    "query_sha256": "5116573abe4159c76015f7e344ae9dbcbedfcae1b35174d068d89bc1470cbb7b",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "abc64ee06bc67f5500298d5dd538f4c1a122f90580e18c28cec29b5211eb99f9",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "lowerProductB_tendsto_zero q3.lean.aristotle/Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean:33",
+        "metadata_sha256": "ccb6bfedc3724ddb095925fd21c8387a124bc824dd6a43a3b397ba58893c67e8",
+        "provider": "knowledge-db",
+        "provider_id": "14dc8966c2378fbfefe677055fc552413fddbabc02d11ea09d6f2b0f7158ea1c",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "title": "lowerProductB_tendsto_zero q3.lean.aristotle/Q3/Proofs/RouteB/SafeBridgeFalsifiers.lean:33",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "0ff97d9df7e626e38885de4efdfe676acf30be53d765496b6640785ca06577e7",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "GammaSeq_eq_product aristotle_output/d1524982_aristotle.lean",
+        "metadata_sha256": "48134590d915b92fc3f57d3b629ba9da0b9aa8042c876878a85ba362190cceb0",
+        "provider": "lean-index",
+        "provider_id": "2492dd00459b195a4d7fe983cdb79593402843c4af49405cb9cbad04a89ebc59",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "title": "GammaSeq_eq_product aristotle_output/d1524982_aristotle.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "GammaSeq_product_eq_exp_sum aristotle_output/d1524982_aristotle.lean",
+        "metadata_sha256": "776a54e70de8ef0280ac8a77fe9cbdd63774014d6f7166e4ba433591273b7233",
+        "provider": "lean-index",
+        "provider_id": "abf4dc80c645db0fbaf742ae905b85ad75e165a09e499ade4aac251d9eda7d66",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "title": "GammaSeq_product_eq_exp_sum aristotle_output/d1524982_aristotle.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 3,
+        "provider": "local-shelves",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "tensor product character frame restricted sampling covariance",
+        "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "tensor product character frame restricted sampling covariance",
+    "query_sha256": "de36cab55f98f1b381001de037874d74621c5784fc33e9db3ac60530365893ba",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "103345fc49d77fde46d1a9d629b1e8390861d3ed297ca42f93dd2fde87d4f66a",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+        "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "riemannXi_eq_completedRiemannZeta q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:47",
+        "metadata_sha256": "ad001893e862081065df07dc4491ec4f395b21e6b1fc9950ca98389e230cae46",
+        "provider": "knowledge-db",
+        "provider_id": "1c472998b41d036761d44dcfd6857d468e76603a8346077dfd611e7f053213ee",
+        "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+        "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+        "title": "riemannXi_eq_completedRiemannZeta q3.lean.aristotle/Q3/Proofs/RouteB/ClassicalXiInterface.lean:47",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "GammaSeq_exp_part_tendstoUniformlyOn aristotle_output/d1524982_aristotle.lean",
+        "metadata_sha256": "694540c11dd74580a707ca17e1795f9fa9f3220261d76cae285e466183d5d910",
+        "provider": "lean-index",
+        "provider_id": "46a8330edfcbb3522079da968f6a0149cf0300dc98d41d528b6c22e228a9602c",
+        "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+        "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+        "title": "GammaSeq_exp_part_tendstoUniformlyOn aristotle_output/d1524982_aristotle.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "GammaSeq_exp_part_tendstoUniformlyOn_v2 aristotle_output/d1524982_aristotle.lean",
+        "metadata_sha256": "000c21273da3d9aa036f87e50a9f2805d55e500744584e6d5f941789492b3588",
+        "provider": "lean-index",
+        "provider_id": "fba40c48756607227b796d007179d9c4efb5e270e4992689abbf699f02e6212c",
+        "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+        "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+        "title": "GammaSeq_exp_part_tendstoUniformlyOn_v2 aristotle_output/d1524982_aristotle.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+        "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+        "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "cubic reflection completed Dirichlet series deconvolution inverse Euler factor",
+    "query_sha256": "0bf0cc56d9a1029f4dad67f2c242c33d5774f2136d4b4d086404f6aff05c7a4f",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+]
