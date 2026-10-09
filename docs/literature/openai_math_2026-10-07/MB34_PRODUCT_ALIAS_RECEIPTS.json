@@ -1,0 +1,249 @@
+[
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "310b016b2f6b224def5dc450e39cb6b8f483b0029e0a464d033997089e7c60fd",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "PROSHKA_VERDICT_GOAL058_BOUNDARY_BROWSER_2026-09-10.md docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BOUNDARY_BROWSER_2026-09-10.md:None",
+        "metadata_sha256": "23ad6fc1910e0152a6d9b98460c33115d638506085ee0abca631bb867c76b62a",
+        "provider": "knowledge-db",
+        "provider_id": "b7e5dd7ad9ffe257c9d4e3f84c9eedb8ea0fb1eefcc17f89ead33d3071dead90",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "title": "PROSHKA_VERDICT_GOAL058_BOUNDARY_BROWSER_2026-09-10.md docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_BOUNDARY_BROWSER_2026-09-10.md:None",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "po3_capture_error_tends_to_zero_of_log_mirror_threshold_row_sup Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean",
+        "metadata_sha256": "d8b9824c757b8efad8f366be9639b52399550b5efd1e18c4c119a6961e1f9e10",
+        "provider": "lean-index",
+        "provider_id": "b85b587259ef565b218b2162eb7cbdeae793ae28ac94a72ff6dc46184b26c3e4",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "title": "po3_capture_error_tends_to_zero_of_log_mirror_threshold_row_sup Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "po3_capture_error_tends_to_zero_of_stable_projection_row_sup Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean",
+        "metadata_sha256": "64504d1df912ad8a73963790dfeb11876d897ecb626b3e1f86b57cea0611e832",
+        "provider": "lean-index",
+        "provider_id": "dd64c0dc4ee2faa2987aad38f612c2cc42dfe23d019cd461f4e1f625f6f7b8b9",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "title": "po3_capture_error_tends_to_zero_of_stable_projection_row_sup Q3/Proofs/PO3Cert/PO3SquareSignedDominanceCertificate_2026_04_21.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean:79:/-- The multiplicative square-root vector in the literal carrier. -/",
+        "metadata_sha256": "b9c004c74ed67ac35208222dcc6bf4b871e353dc0c3f7e7cd4bb96ed845ed25c",
+        "provider": "lean-tree",
+        "provider_id": "eb830947a0bceefec35ccf201a8eae7ac49ceb335c1e4a13cb49b262d6d06ca9",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersMidpointDeltaEnvelope.lean:79:/-- The multiplicative square-root vector in the literal carrier. -/",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrialNormalizerClosure.lean:10:multiplicative cell `[1, 9/8]`, where every active explicit-`H` summand is",
+        "metadata_sha256": "e9a674e02e4c0191b79047f191544776267284bfd942ef7cce8c5ce3375577e4",
+        "provider": "lean-tree",
+        "provider_id": "a14834a990dd7cc4f608263da1d54708bf2e0b9f7264ef0549671739472bc337",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersTrialNormalizerClosure.lean:10:multiplicative cell `[1, 9/8]`, where every active explicit-`H` summand is",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 3,
+        "provider": "local-shelves",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "multiplicative dispersion sparse perfect-power rows",
+        "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "multiplicative dispersion sparse perfect-power rows",
+    "query_sha256": "9755211e61df2e2131dda737cbf251b29c8cd9659fe2b7fd3857833ad02b7a77",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "975a54fd7d174a44490ee0bac9720e037daf8edd8db4e6bb7df1a80db8557e5f",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "mode4HermitianTail_sqSummable_solution_unique_up_to_scale q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean:67",
+        "metadata_sha256": "f0d192bd2e5d9377ed6cdcf12869828d66ea3d224f7cfb08503c08d764958df9",
+        "provider": "knowledge-db",
+        "provider_id": "818c2fa343b07a8bdee7467b55466f4e67a21f1193e30bf1d80ba94c62070887",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "title": "mode4HermitianTail_sqSummable_solution_unique_up_to_scale q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4JacobiHermitianTailUniqueness.lean:67",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "4ded2d3b9c0abaddce49548f6a4478fbd1f11b7d77c3c176e3f548a7f697e2af",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "montgomery_pair_correlation_1973.pdf",
+        "metadata_sha256": "0975f7317b1bd9694574a360e1819000a6f9faf13d97964a51d9f048c52aeae3",
+        "provider": "local-literature",
+        "provider_id": "5f32b80557c1145a9f5faf0fce9dc6530c446cccbc4c9c0e095fed68499a7fd8",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "title": "montgomery_pair_correlation_1973.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+        "metadata_sha256": "d677ac61e2f8c96c1bb228e3c4aaffeef9ed50ddef982c85100037a9867903f1",
+        "provider": "lean-index",
+        "provider_id": "f35d21786b67f24cadb1740e3429fb1232f3d4b2199a2e64423129fba9816211",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "title": "A3_bridge_rayleigh_from_weight_sum full/q3.lean.aristotle/Q3/Proofs/RKHS_cap_rayleigh.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "A3_bridge_rayleigh_from_weight_sum_P_A full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge.lean",
+        "metadata_sha256": "b5467f45fcf475fcb2bcf5b42a090c08d3bba90b8634d4d20e53e60987eb37b0",
+        "provider": "lean-index",
+        "provider_id": "72c72eebd97beb343881ea9e745033da59eb1f83f5bd0d4cc794bfff7a27c9b9",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "title": "A3_bridge_rayleigh_from_weight_sum_P_A full/q3.lean.aristotle/Q3/Proofs/P_A_Toeplitz_bridge.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 3,
+        "provider": "local-shelves",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+        "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "coprime Mobius pair product regrouping bilinear cubic character divisor sum",
+    "query_sha256": "a99f77605449be96378a46992a8b52d70f6e383d2183d610710175ca5b4f6f88",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "3f937f1be613c11f093f57d2810838889d626ff64f4668a2b85a374716e0a095",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "trace-function bilinear correlations",
+        "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "AutocorrelationSquareRootReconstruction q3.lean.aristotle/Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean:73",
+        "metadata_sha256": "493ec0ff000c18c875b28694c15855f83d153fcb35ddd3f7889d4e6dfdacc06a",
+        "provider": "knowledge-db",
+        "provider_id": "a4b570aee51803835e73e87407cb5230540abe9520dfcb31b8bb25151f74eadf",
+        "query": "trace-function bilinear correlations",
+        "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+        "title": "AutocorrelationSquareRootReconstruction q3.lean.aristotle/Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean:73",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "AutocorrelationSquareRootCandidate Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "metadata_sha256": "07fcfc83b6c3da66bfcc2ccfd6bcbed504c0146df77e7cce4ba4d668be225206",
+        "provider": "lean-index",
+        "provider_id": "c8f5b11e867dbe800701d76ff85dd5a2befc57e53b8c228a7ffdff51e03939b0",
+        "query": "trace-function bilinear correlations",
+        "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+        "title": "AutocorrelationSquareRootCandidate Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "AutocorrelationSquareRootReconstruction Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "metadata_sha256": "2201fd9a798bdb83bb3238f78a6da708e17b6c4a04829f10763c6572f7e07db0",
+        "provider": "lean-index",
+        "provider_id": "2914124f4d4024de6c4ab7e1f9b236ededaa2f94eed29cf7cfcae8bdf49076fa",
+        "query": "trace-function bilinear correlations",
+        "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+        "title": "AutocorrelationSquareRootReconstruction Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "trace-function bilinear correlations",
+        "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "trace-function bilinear correlations",
+        "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "trace-function bilinear correlations",
+    "query_sha256": "873ed6cefabf8c7c716c35f57e2edd1d140206dae4da85d35bf8266ad7183426",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+]
