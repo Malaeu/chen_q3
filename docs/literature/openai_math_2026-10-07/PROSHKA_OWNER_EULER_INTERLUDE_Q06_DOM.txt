@@ -1,0 +1,1132 @@
+Чувак, чё-то я не совсем понимаю, мы куда работаем. То есть мы... может быть нам нужно какое-то свойство, которое Эйлер бы видел бы в этом. Может быть надо умножить всю эту поебошь, вот этот V в квадрате, разделённое на какой-то там, блять, квадратичный хуетень. Может это надо умножить на какую-то другую поебошь, чтобы нижняя часть просто нахуй сократилась, блять, и остался просто V в квадрате. Может так это можно сделать. Там есть какое-то свойство, которое мы пока не видим, но оно есть. И его можно вывести именно из наблюдений Эйлера, Рахмаджуна и самого, блин, Римана вместе с ли критерием и критерием того чувака, с которым Рахмаджун вместе работал.
+    - button "Nachricht kopieren":
+    - button "Prompt teilen":
+    - button "Nachricht bearbeiten":
+    - button "8m 53s nachgedacht"
+    - generic: 8m 53s nachgedacht
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph: Ы, чувак, мне кажется, ты предлагаешь сменить сам принцип атаки — и это стоит проверить.
+    - paragraph: Ты хочешь найти такой арифметический множитель, который уничтожит знаменатель не формальным домножением, а благодаря свойствам самих простых чисел. Чтобы после сокращения остался объект, который мы уже умеем оценивать.
+    - paragraph: Вот это существенно отличается от наших последних пяти вопросов.
+    - paragraph: "Мы пока действовали примерно так:"
+    - math:
+      - generic: Сложная корреляция
+      - generic: ⟶
+      - generic: новое представление
+      - generic: ⟶
+      - generic: новый остаток
+      - generic: .
+    - generic: Сложная корреляция
+    - text: ⟶
+    - generic: новое представление
+    - text: ⟶
+    - generic: новый остаток
+    - text: .
+    - paragraph: И часто остаток оказывался почти столь же трудным, как исходная задача.
+    - paragraph: "Я бы сейчас проверил другую цепочку:"
+    - math:
+      - generic: Эйлеровы множители
+      - generic: ⟶
+      - generic: точное арифметическое сокращение
+      - generic: ⟶
+      - generic: совместная оценка
+      - generic: .
+    - generic: Эйлеровы множители
+    - text: ⟶
+    - generic: точное арифметическое сокращение
+    - text: ⟶
+    - generic: совместная оценка
+    - text: .
+    - paragraph: "Но есть принципиальное различие: алгебраически сократить знаменатель и доказать нужную оценку — не одно и то же."
+    - heading "1. Сначала — твой знаменатель" [level=2]
+    - paragraph: "В последнем результате у нас остался член примерно такого вида:"
+    - math:
+      - generic: "N"
+      - generic: "4"
+      - generic: =
+      - generic: ∑
+      - generic: b
+      - generic: ","
+      - generic: u
+      - generic: w
+      - generic: (
+      - generic: b
+      - generic: )
+      - generic: ρ
+      - generic: u
+      - generic: V
+      - generic: "2"
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: Π
+      - generic: b
+      - generic: (
+      - generic: u
+      - generic: )
+      - generic: )
+      - generic: "2"
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: Q
+      - generic: b
+      - generic: (
+      - generic: u
+      - generic: )
+      - generic: )
+      - generic: ⏟
+      - generic: рациональный вес
+      - generic: (
+      - generic: Q
+      - generic: b
+      - generic: (
+      - generic: u
+      - generic: )
+      - generic: −
+      - generic: Π
+      - generic: b
+      - generic: (
+      - generic: u
+      - generic: )
+      - generic: )
+      - generic: "2"
+      - generic: .
+    - text: "N"
+    - generic: "4"
+    - text: =
+    - generic: b,u
+    - generic: ∑
+    - text: w(b)
+    - text: ρ
+    - generic: u
+    - generic: рациональный вес
+    - text: (V +
+    - text: Π
+    - generic: b
+    - text: (u)
+    - text: )
+    - generic: "2"
+    - text: (V +
+    - text: Q
+    - generic: b
+    - text: (u))
+    - text: V
+    - generic: "2"
+    - generic: (
+    - text: Q
+    - generic: b
+    - text: (u) −
+    - text: Π
+    - generic: b
+    - text: (u)
+    - generic: )
+    - generic: "2"
+    - text: .
+    - paragraph:
+      - text: Здесь
+      - math:
+        - generic: Q
+        - generic: b
+      - text: Q
+      - generic: b
+      - text: — полная энергия нашего полинома,
+      - math:
+        - generic: Π
+        - generic: b
+      - text: Π
+      - generic: b
+      - text: — уже контролируемая главная часть, а их разность содержит трудную корреляцию различных шестистепенных ядер.
+    - paragraph: Если домножить на
+    - math:
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: Π
+      - generic: b
+      - generic: (
+      - generic: u
+      - generic: )
+      - generic: )
+      - generic: "2"
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: Q
+      - generic: b
+      - generic: (
+      - generic: u
+      - generic: )
+      - generic: )
+      - generic: ","
+    - generic: (V +
+    - text: Π
+    - generic: b
+    - text: (u)
+    - text: )
+    - generic: "2"
+    - text: (V +
+    - text: Q
+    - generic: b
+    - text: (u)),
+    - paragraph:
+      - text: знаменатель действительно исчезнет. Но множитель зависит от строки
+      - math:
+        - generic: u
+      - generic: u
+      - text: ", а его размер не ограничен нужной константой. Мы получим гораздо более тяжёлую четвёртую корреляцию."
+    - paragraph:
+      - text: Есть даже более показательная вещь. Когда
+      - math:
+        - generic: Q
+        - generic: b
+        - generic: ≫
+        - generic: V
+      - text: Q
+      - generic: b
+      - text: ≫
+      - generic: V
+      - text: ", а"
+      - math:
+        - generic: Π
+        - generic: b
+        - generic: ≪
+        - generic: V
+      - text: Π
+      - generic: b
+      - text: ≪
+      - generic: V
+      - text: ", наш остаток ведёт себя как"
+    - math:
+      - generic: V
+      - generic: "2"
+      - generic: (
+      - generic: Q
+      - generic: b
+      - generic: −
+      - generic: Π
+      - generic: b
+      - generic: )
+      - generic: "2"
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: Π
+      - generic: b
+      - generic: )
+      - generic: "2"
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: Q
+      - generic: b
+      - generic: )
+      - generic: ≈
+      - generic: Q
+      - generic: b
+      - generic: .
+    - text: (V +
+    - text: Π
+    - generic: b
+    - text: )
+    - generic: "2"
+    - text: (V +
+    - text: Q
+    - generic: b
+    - text: )
+    - text: V
+    - generic: "2"
+    - text: (
+    - text: Q
+    - generic: b
+    - text: −
+    - text: Π
+    - generic: b
+    - text: )
+    - generic: "2"
+    - text: ≈
+    - text: Q
+    - generic: b
+    - text: .
+    - paragraph: То есть знаменатель скрывает почти ту же большую энергию, которую мы пытаемся подавить.
+    - paragraph: Следовательно, нужен не произвольный множитель, а арифметический обратный оператор, который сокращает коэффициенты до взятия квадрата модуля.
+    - heading "2. И тут появляется вполне реальная связь с Рамануджаном" [level=2]
+    - paragraph:
+      - text: Ты, скорее всего, вспоминаешь
+      - button "Годфри Харольда Харди"
+      - text: — математика, работавшего с
+      - button "Сринивасой Рамануджаном"
+      - text: .
+    - paragraph: "Но рядом есть ещё и критерий Харди–Литлвуда, связанный именно с функцией Мёбиуса:"
+    - math:
+      - generic: ∑
+      - generic: "n"
+      - generic: =
+      - generic: "1"
+      - generic: ∞
+      - generic: μ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: e
+      - generic: −
+      - generic: x
+      - generic: /
+      - generic: "n"
+      - generic: "2"
+      - generic: =
+      - generic: O
+      - generic: ϵ
+      - generic: (
+      - generic: x
+      - generic: −
+      - generic: "1"
+      - generic: /
+      - generic: "4"
+      - generic: +
+      - generic: ϵ
+      - generic: )
+      - generic: .
+    - generic: n=1
+    - generic: ∑
+    - generic: ∞
+    - generic: "n"
+    - generic: μ(n)
+    - text: e
+    - text: −x/
+    - text: "n"
+    - generic: "2"
+    - text: =
+    - text: O
+    - generic: ϵ
+    - text: (
+    - text: x
+    - generic: −1/4+ϵ
+    - text: ).
+    - paragraph:
+      - text: Выполнение этой оценки для каждого
+      - math:
+        - generic: ϵ
+        - generic: ">"
+        - generic: "0"
+      - generic: ϵ >
+      - generic: "0"
+      - text: эквивалентно гипотезе Римана. Есть также обобщения для характеров Дирихле и дзета-функций числовых полей.
+      - button "arxiv.org +2":
+        - generic: arxiv.org
+        - generic: "+2"
+    - paragraph: "И ещё более конкретное совпадение: наши локальные значения конечного преобразования"
+    - math:
+      - generic: q
+      - generic: p
+      - generic: −
+      - generic: "1"
+      - generic: ","
+      - generic: −
+      - generic: "1"
+    - text: q
+    - generic: p
+    - text: −
+    - generic: 1, −1
+    - paragraph: "— это ровно простая сумма Рамануджана в кольце Эйзенштейна:"
+    - math:
+      - generic: c
+      - generic: p
+      - generic: (
+      - generic: k
+      - generic: )
+      - generic: =
+      - generic: q
+      - generic: p
+      - generic: "1"
+      - generic: p
+      - generic: ∣
+      - generic: k
+      - generic: −
+      - generic: "1."
+    - text: c
+    - generic: p
+    - text: (k) =
+    - text: q
+    - generic: p
+    - text: "1"
+    - generic: p∣k
+    - text: −
+    - generic: "1."
+    - paragraph:
+      - text: То есть здесь не просто историческая аналогия. В нашем настоящем преобразованном операторе уже присутствует арифметика сумм Рамануджана. Такие суммы выражаются через обращение Мёбиуса и обладают мультипликативностью.
+      - button "hrj.episciences.org +1":
+        - generic: hrj.episciences.org
+        - generic: "+1"
+    - heading "3. Вот какое свойство я бы попробовал вывести" [level=2]
+    - paragraph: "В нашей задаче есть точная свёртка Дирихле:"
+    - math:
+      - generic: μ
+      - generic: "2"
+      - generic: =
+      - generic: μ
+      - generic: ∗
+      - generic: μ
+      - generic: ","
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: =
+      - generic: μ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: −
+      - generic: ∑
+      - generic: d
+      - generic: ∣
+      - generic: "n"
+      - generic: q
+      - generic: d
+      - generic: ≤
+      - generic: C
+      - generic: μ
+      - generic: "2"
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: .
+    - text: μ
+    - generic: "2"
+    - text: =
+    - generic: μ ∗
+    - text: μ,
+    - text: j
+    - generic: C
+    - text: (n) =
+    - generic: μ(n) −
+    - generic: d∣n
+    - text: q
+    - generic: d
+    - text: ≤C
+    - generic: ∑
+    - text: μ
+    - generic: "2"
+    - text: (d).
+    - paragraph:
+      - text: Зафиксируем строку
+      - math:
+        - generic: u
+      - generic: u
+      - text: и исходную маску
+      - math:
+        - generic: b
+      - generic: b
+      - text: . Пусть
+    - math:
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: "n"
+      - generic: ψ
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: q
+      - generic: "n"
+      - generic: s
+      - generic: ","
+      - generic: A
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: q
+      - generic: d
+      - generic: ≤
+      - generic: C
+      - generic: μ
+      - generic: "2"
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: ψ
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: q
+      - generic: d
+      - generic: s
+      - generic: ","
+    - text: L
+    - generic: u,b
+    - text: (s) =
+    - generic: "n"
+    - generic: ∑
+    - text: q
+    - generic: "n"
+    - generic: s
+    - text: ψ
+    - generic: u,b
+    - text: (n)
+    - text: ","
+    - text: A
+    - generic: C;u,b
+    - text: (s) =
+    - text: q
+    - generic: d
+    - text: ≤C
+    - generic: ∑
+    - text: q
+    - generic: d
+    - generic: s
+    - text: μ
+    - generic: "2"
+    - text: (d)
+    - text: ψ
+    - generic: u,b
+    - text: (d)
+    - text: ","
+    - paragraph:
+      - text: где
+      - math:
+        - generic: ψ
+        - generic: u
+        - generic: ","
+        - generic: b
+        - generic: (
+        - generic: "n"
+        - generic: )
+      - text: ψ
+      - generic: u,b
+      - text: (n)
+      - text: сохраняет и характер, и все первоначальные нули.
+    - paragraph:
+      - text: Тогда в области абсолютной сходимости
+      - math:
+        - generic: ℜ
+        - generic: s
+        - generic: ">"
+        - generic: "1"
+      - generic: ℜs >
+      - generic: "1"
+      - text: "получаем точное равенство:"
+    - math:
+      - generic: J
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: =
+      - generic: "1"
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: −
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: A
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: .
+    - text: J
+    - generic: C;u,b
+    - text: (s) =
+    - text: L
+    - generic: u,b
+    - text: (s)
+    - generic: "1"
+    - text: −
+    - text: L
+    - generic: u,b
+    - text: (s)
+    - text: A
+    - generic: C;u,b
+    - text: (s).
+    - paragraph: "И вот твоё домножение, только на уровне арифметических коэффициентов:"
+    - math:
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: J
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: =
+      - generic: "1"
+      - generic: −
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: "2"
+      - generic: A
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: .
+    - text: L
+    - generic: u,b
+    - text: (s)
+    - text: J
+    - generic: C;u,b
+    - text: (s) = 1 −
+    - text: L
+    - generic: u,b
+    - text: (s
+    - text: )
+    - generic: "2"
+    - text: A
+    - generic: C;u,b
+    - text: (s).
+    - paragraph:
+      - text: Знаменатель обратной
+      - math:
+        - generic: L
+      - generic: L
+      - text: "-функции действительно сократился."
+    - paragraph:
+      - text: Но дальше возникает неожиданная особенность. Для двух разных простых
+      - math:
+        - generic: p
+        - generic: ","
+        - generic: q
+        - generic: ">"
+        - generic: C
+      - generic: p, q >
+      - generic: C
+      - text: ":"
+    - math:
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: p
+      - generic: )
+      - generic: =
+      - generic: −
+      - generic: "2"
+      - generic: ","
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: p
+      - generic: "2"
+      - generic: )
+      - generic: =
+      - generic: −
+      - generic: "1"
+      - generic: ","
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: p
+      - generic: q
+      - generic: )
+      - generic: =
+      - generic: "0."
+    - text: j
+    - generic: C
+    - text: (p) =
+    - text: −2,
+    - text: j
+    - generic: C
+    - text: (
+    - text: p
+    - generic: "2"
+    - text: ) =
+    - text: −1,
+    - text: j
+    - generic: C
+    - text: (pq) =
+    - generic: "0."
+    - paragraph: Следовательно,
+    - math:
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: p
+      - generic: q
+      - generic: )
+      - generic: ≠
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: p
+      - generic: )
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: q
+      - generic: )
+      - generic: .
+    - text: j
+    - generic: C
+    - text: (pq)
+    - generic: 
+    - text: =
+    - text: j
+    - generic: C
+    - text: (p)
+    - text: j
+    - generic: C
+    - text: (q).
+    - paragraph: "Это точный свидетель: наш длинный коэффициент немультипликативен. Его невозможно представить одним обычным скалярным эйлеровым произведением."
+    - paragraph:
+      - text: Зато для подсемейства, у которого все простые больше
+      - math:
+        - generic: C
+      - generic: C
+      - text: ", он представляется разностью двух эйлеровых произведений:"
+    - math:
+      - generic: J
+      - generic: r
+      - generic: o
+      - generic: u
+      - generic: g
+      - generic: h
+      - generic: (
+      - generic: s
+      - generic: )
+      - generic: =
+      - generic: ∏
+      - generic: q
+      - generic: p
+      - generic: ">"
+      - generic: C
+      - generic: (
+      - generic: "1"
+      - generic: −
+      - generic: z
+      - generic: p
+      - generic: )
+      - generic: −
+      - generic: ∏
+      - generic: q
+      - generic: p
+      - generic: ">"
+      - generic: C
+      - generic: (
+      - generic: "1"
+      - generic: −
+      - generic: z
+      - generic: p
+      - generic: )
+      - generic: −
+      - generic: "1"
+      - generic: ","
+      - generic: z
+      - generic: p
+      - generic: =
+      - generic: ψ
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: p
+      - generic: )
+      - generic: q
+      - generic: p
+      - generic: −
+      - generic: s
+      - generic: .
+    - text: J
+    - generic: rough
+    - text: (s) =
+    - text: q
+    - generic: p
+    - text: ">C"
+    - generic: ∏
+    - text: (1 −
+    - text: z
+    - generic: p
+    - text: ) −
+    - text: q
+    - generic: p
+    - text: ">C"
+    - generic: ∏
+    - text: (1 −
+    - text: z
+    - generic: p
+    - text: )
+    - generic: −1
+    - text: ","
+    - text: z
+    - generic: p
+    - text: =
+    - text: ψ
+    - generic: u,b
+    - text: (p)
+    - text: q
+    - generic: p
+    - generic: −s
+    - text: .
+    - paragraph: "Это уже другой механизм: двухканальный эйлеров оператор, в котором сокращение должно происходить между каналами до взятия квадратов."
+    - paragraph:
+      - text: Он точно сохраняет коэффициенты
+      - math:
+        - generic: −
+        - generic: "2"
+        - generic: ","
+        - generic: −
+        - generic: "1"
+        - generic: ","
+        - generic: "0"
+      - generic: −2, −1, 0
+      - text: на
+      - math:
+        - generic: p
+        - generic: ","
+        - generic: p
+        - generic: "2"
+        - generic: ","
+        - generic: p
+        - generic: q
+      - text: p,
+      - text: p
+      - generic: "2"
+      - text: ", pq"
+      - text: . Смешанная часть, где встречаются простые по обе стороны
+      - math:
+        - generic: C
+      - generic: C
+      - text: ", остаётся отдельным обязательством."
+    - heading "4. Где подключить Харди, Рамануджана и Ли" [level=2]
+    - paragraph:
+      - text: Есть ещё один точный мост. Для нашего настоящего
+      - math:
+        - generic: j
+        - generic: C
+      - text: j
+      - generic: C
+      - text: определим сглаженную сумму
+    - math:
+      - generic: H
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: x
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: "n"
+      - generic: j
+      - generic: C
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: ψ
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: q
+      - generic: "n"
+      - generic: (
+      - generic: e
+      - generic: −
+      - generic: x
+      - generic: /
+      - generic: q
+      - generic: "n"
+      - generic: "2"
+      - generic: −
+      - generic: "1"
+      - generic: )
+      - generic: .
+    - text: H
+    - generic: C;u,b
+    - text: (x) =
+    - generic: "n"
+    - generic: ∑
+    - text: q
+    - generic: "n"
+    - text: j
+    - generic: C
+    - text: (n)
+    - text: ψ
+    - generic: u,b
+    - text: (n)
+    - generic: (
+    - text: e
+    - text: −x/
+    - text: q
+    - generic: "n"
+    - generic: "2"
+    - text: − 1
+    - generic: )
+    - text: .
+    - paragraph: Раскрытие экспоненты даёт абсолютно сходящееся тождество
+    - math:
+      - generic: H
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: x
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: m
+      - generic: =
+      - generic: "1"
+      - generic: ∞
+      - generic: (
+      - generic: −
+      - generic: x
+      - generic: )
+      - generic: m
+      - generic: m
+      - generic: "!"
+      - generic: "["
+      - generic: "1"
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: "2"
+      - generic: m
+      - generic: +
+      - generic: "1"
+      - generic: )
+      - generic: −
+      - generic: L
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: "2"
+      - generic: m
+      - generic: +
+      - generic: "1"
+      - generic: )
+      - generic: A
+      - generic: C
+      - generic: ;
+      - generic: u
+      - generic: ","
+      - generic: b
+      - generic: (
+      - generic: "2"
+      - generic: m
+      - generic: +
+      - generic: "1"
+      - generic: )
+      - generic: "]"
+      - generic: .
+    - text: H
+    - generic: C;u,b
+    - text: (x) =
+    - generic: m=1
+    - generic: ∑
+    - generic: ∞
+    - generic: m!
+    - text: (−x
+    - text: )
+    - generic: m
+    - generic: "["
+    - text: L
+    - generic: u,b
+    - text: (2m + 1)
+    - generic: "1"
+    - text: −
+    - text: L
+    - generic: u,b
+    - text: (2m + 1)
+    - text: A
+    - generic: C;u,b
+    - text: (2m + 1)
+    - generic: "]"
+    - text: .
+    - paragraph:
+      - text: Все значения
+      - math:
+        - generic: L
+      - generic: L
+      - text: "-функций здесь лежат в области абсолютной сходимости. Никакого предположения RH для этого тождества не нужно."
+    - paragraph:
+      - text: Это уже реальный мост Харди–Литлвуда от наших коэффициентов к сглаживанию Мёбиуса. Но он пока не контролирует исходный компактный профиль
+      - math:
+        - generic: W
+        - generic: (
+        - generic: q
+        - generic: "n"
+        - generic: /
+        - generic: L
+        - generic: )
+      - text: W(
+      - text: q
+      - generic: "n"
+      - text: /L)
+      - text: . Обратный перенос сглаживания должен быть доказан с допустимой ценой, иначе весь выигрыш исчезнет.
+    - paragraph:
+      - text: А критерий Ли говорит о положительности коэффициентов, построенных из нулей завершённой
+      - math:
+        - generic: L
+      - generic: L
+      - text: "-функции. Лагариас доказал связь обобщённых коэффициентов Ли с квадратичным функционалом Вейля для автоморфных"
+      - math:
+        - generic: L
+      - generic: L
+      - text: "-функций."
+      - button "ScienceDirect +2":
+        - generic: ScienceDirect
+        - generic: "+2"
+    - paragraph: "Итак, возможна содержательная цепочка:"
+    - paragraph: Эйлер
+    - paragraph: Точная двухканальная факторизация коэффициентов
+    - paragraph: Рамануджан — Харди — Литлвуд
+    - paragraph:
+      - text: Конечные арифметические суммы и сглаживание обратных
+      - math:
+        - generic: L
+      - generic: L
+      - text: "-рядов"
+    - paragraph: Риман — Ли — Вейль
+    - paragraph: Функциональное уравнение, спектр нулей и критерии положительности
+    - paragraph: "Это гипотеза о полезной стыковке методов, не доказанная импликация. Критерии Ли и Харди–Литлвуда нельзя просто принять как вход: требуемая в них положительность или асимптотика уже содержит трудность RH."
+    - heading "5. Что я предлагаю делать вместо очередного преобразования знаменателя" [level=2]
+    - paragraph: "В следующей попытке я бы проверил ровно один механизм: сохраняет ли двухканальная эйлерова факторизация арифметическое сокращение после возврата к исходному семейству строк?"
+    - paragraph:
+      - text: Начать с необходимого случая
+      - math:
+        - generic: b
+        - generic: =
+        - generic: "1"
+      - generic: b =
+      - generic: "1"
+      - text: ", где нет дополнительной маски усилителя, но остаются все исходные шестистепенно-свободные строки и полный"
+      - math:
+        - generic: j
+        - generic: C
+      - text: j
+      - generic: C
+      - text: . Сначала проверить коэффициенты
+      - math:
+        - generic: p
+        - generic: ","
+        - generic: p
+        - generic: "2"
+        - generic: ","
+        - generic: p
+        - generic: q
+      - text: p,
+      - text: p
+      - generic: "2"
+      - text: ", pq"
+      - text: и все нулевые ветви. Затем проверить, может ли совместный двухканальный Gram-оператор — матрица корреляций этих двух каналов — дать количественную верхнюю оценку, сохраняя перекрёстные члены. И только после этого возвращать все
+      - math:
+        - generic: b
+      - generic: b
+      - text: ", точные"
+      - math:
+        - generic: w
+        - generic: (
+        - generic: b
+        - generic: )
+      - generic: w(b)
+      - text: ", профили и пороги."
+    - paragraph:
+      - text: "Решающая проверка: возникает ли реальный выигрыш"
+      - math:
+        - generic: U
+        - generic: −
+        - generic: η
+      - text: U
+      - generic: −η
+      - text: ", где после всех потерь"
+      - math:
+        - generic: η
+        - generic: ">"
+        - generic: "113"
+        - generic: /
+        - generic: "1200000"
+      - generic: η >
+      - generic: 113/1200000
+      - text: "? Или домножение опять возвращает исходную энергию с коэффициентом один, как уже произошло в Q10?"
+    - paragraph: Если второе — этот способ отбрасываем. Если первое — у нас будет конкретная лемма, способная изменить весь маршрут.
+    - paragraph: "И вот что мне особенно нравится в твоей идее: искать нужно не функцию, которая делает выражение красивее, а оператор, который заставляет настоящие коэффициенты сокращаться совместно. Мы уже видим точную двухканальную структуру. Теперь вопрос, несёт ли она количественную силу. Пока это открыто — но проверять стоит именно её, а не ещё один рациональный знаменатель."
+    - button "Kopieren" [active]:
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Vorlesen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - generic: ChatGPT kann Fehler machen. Prüfe wichtige Infos.
+    - button:
+    - heading "Neueste Antwort" [level=4]
+    - status
+    - button "Dateien und mehr hinzufügen":
+    - textbox "ChatGPT fragen":
+      - paragraph: ChatGPT fragen
+    - button "ChatGPT-Modell auswählen":
+      - generic: Pro
+    - button "Diktieren":
+    - button "Sprachchat starten":
+- status
+- status
+- status
+- status
+- status
+- status: Antwort abgeschlossen
+- tooltip "Antwort kopieren":
+  - generic: Antwort kopieren
