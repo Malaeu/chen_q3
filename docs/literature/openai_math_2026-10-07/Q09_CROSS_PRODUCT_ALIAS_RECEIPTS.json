@@ -1,0 +1,348 @@
+[
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "eb0d3281553307d5cdc8ee82d5bb7a4269ddda3a101c4e4d9c4665c232d9c8c0",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "Burgess number field ideal modulus character sums squarefree rows",
+        "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "PROSHKA_VERDICT_REQ_2026_08_22_V_SEMANTIC_ADMISSION_AND_CUTOFF_LOCAL_BIND_2026-08-22.md q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SpheroidalCrosswalkForward.lean:None",
+        "metadata_sha256": "c2cd1e7b8f1ab152c0f051b8c4bc8041e3b4763fc16b7941a43e36639cd4e8fb",
+        "provider": "knowledge-db",
+        "provider_id": "cd57354ce4aa987a7ea20c2e7a1c35846a3daec813731fc6e7e33d843a39cf92",
+        "query": "Burgess number field ideal modulus character sums squarefree rows",
+        "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+        "title": "PROSHKA_VERDICT_REQ_2026_08_22_V_SEMANTIC_ADMISSION_AND_CUTOFF_LOCAL_BIND_2026-08-22.md q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SpheroidalCrosswalkForward.lean:None",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "ambient_residual_envelope_of_component_envelopes Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+        "metadata_sha256": "806feafead104218da9d156420b40c68a6a24d342f67f8038321bcd1c5901727",
+        "provider": "lean-index",
+        "provider_id": "f8a6f3940f08eca6d65be9b0fff0c0cf05ff03582865f5b9615d665e20c30186",
+        "query": "Burgess number field ideal modulus character sums squarefree rows",
+        "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+        "title": "ambient_residual_envelope_of_component_envelopes Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "ambient_residual_envelope_of_leakage_envelope Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+        "metadata_sha256": "921b7dba07d531e83821410b97869b33228f744fa1e72e85954e30a765018319",
+        "provider": "lean-index",
+        "provider_id": "b01c0f082021df57e93d4b0ecc3d1c3231b26835122d3423d7d46c9bcb0bbad6",
+        "query": "Burgess number field ideal modulus character sums squarefree rows",
+        "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+        "title": "ambient_residual_envelope_of_leakage_envelope Q3/Proofs/RouteB/AmbientResidualEnvelopeTransfer.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "Burgess number field ideal modulus character sums squarefree rows",
+        "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "Burgess number field ideal modulus character sums squarefree rows",
+        "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "Burgess number field ideal modulus character sums squarefree rows",
+    "query_sha256": "e80df856540e102320ad24f18b2d41cff2c71d959bdda1cb2920cbc0b47838b2",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "667e346bf251206540098d82080cf763f49c6ae34b6cfbca37af892a9eaa15a9",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "mode4JacobiCoefficients_eq_pswfLegendre_evenCrosswalk q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreRecurrenceCrosswalk.lean:102",
+        "metadata_sha256": "86662436fe97336049e10b09fd37d2d6f5b1950d1737861866f5c273e88d2698",
+        "provider": "knowledge-db",
+        "provider_id": "d8422e87bc8ae294cf232ab3ff540208dfbad8b93090953c3816c9a74b4231c0",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "mode4JacobiCoefficients_eq_pswfLegendre_evenCrosswalk q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4PSWFLegendreRecurrenceCrosswalk.lean:102",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "b116fe7bb62c920f10b6d8a45d27efc294f9a997639dda6ea5fb3b0d8cc8911d",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "AutocorrelationSquareRootCandidate Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "metadata_sha256": "cc75262e75bdbacc36c51112dc850977afff6ae18f99f7d1411c47fcd5894e3a",
+        "provider": "lean-index",
+        "provider_id": "c8f5b11e867dbe800701d76ff85dd5a2befc57e53b8c228a7ffdff51e03939b0",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "AutocorrelationSquareRootCandidate Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "AutocorrelationSquareRootReconstruction Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "metadata_sha256": "ff0f35d06db24796f72da4ab5d548a6daafd9712d83bf4f6fa2ed89b845a8250",
+        "provider": "lean-index",
+        "provider_id": "2914124f4d4024de6c4ab7e1f9b236ededaa2f94eed29cf7cfcae8bdf49076fa",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "AutocorrelationSquareRootReconstruction Q3/Proofs/RouteB/AutocorrelationSquareRootReconstruction.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean:99:trial-complement floor. Unlike the older Gram checker, this theorem accepts",
+        "metadata_sha256": "39f1adf8bf966d1a776479518864931266edbedd4aeada5231ea9cd66a5c9f85",
+        "provider": "lean-tree",
+        "provider_id": "d0180a4085df7de5f143d4dfd1ad1c4e10eac4e15e23ffa0c192d0919b62d32a",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/CofinalFixedShiftLiteralComplementFloor.lean:99:trial-complement floor. Unlike the older Gram checker, this theorem accepts",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SpheroidalSourcePhysicalLift.lean:24:The load-bearing algebraic identity, checked once and for all here, is",
+        "metadata_sha256": "1cc33eb125ace1def920a6268926f001b67d6ab7378c32522f35659f99b80b54",
+        "provider": "lean-tree",
+        "provider_id": "0cb26184ad8a5e85d64654d7dd976598adde8d7cf9a7daf757d8f9f469b69bdf",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SpheroidalSourcePhysicalLift.lean:24:The load-bearing algebraic identity, checked once and for all here, is",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+        "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "Hecke large sieve cross product correlations varying squarefree conductors sextic character coefficients",
+    "query_sha256": "729beb45f920d64e715c471401be1dafb9bd9b7e939fb0b00a49d078e22bf2c7",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "6e12b07f738a8c6a9277f2a0ee31181ab3d662114e3029b4c61ca9267be51458",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+        "metadata_sha256": "19c30aa56fafe1cd4d5419ae9d9792977af277d7e2d8dd4f4d5283befe5eacfb",
+        "provider": "knowledge-db",
+        "provider_id": "2eb3496726b5c00c739fd0ad26943c2653270768a73e80017f93bbeb0f3b3e1c",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "H2a_SimpleEvenGround_FromPenaltyCoercivity q3.lean.aristotle/Q3/Proofs/RouteB/H2aPenaltyCoercivity.lean:395",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "metadata_sha256": "9150f65e93a4936be37292f71482e1e0274daa7fb813fc7422d07007e93430a5",
+        "provider": "local-literature",
+        "provider_id": "b9c8f2ba000372398d08ab1c4e97c48ce35a82f7e90e63e401bb235c15c7b134",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "Malamutmann_2025_OperatorMethodsWeilCriterion_Q3.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "andrews_ccm_reproduction_2026.pdf",
+        "metadata_sha256": "f54c5857cb9f17efc8be3f12a0bb74d04f54dc27729e788016ced1af0c26d8ea",
+        "provider": "local-literature",
+        "provider_id": "1032678e06cd96dae3032e5794bee540163bb9e431f42d1a37b030e74273265e",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "andrews_ccm_reproduction_2026.pdf",
+        "url": "docs/routeB_bus/litreview"
+      },
+      {
+        "excerpt": "po3_scalar_eq_of_shared_coordinate_profile q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean",
+        "metadata_sha256": "177fa71cd5d46500b1b9357e7cd33086cf27c5a700131559d64ae8d299256671",
+        "provider": "lean-index",
+        "provider_id": "bb9c74952f66f0f26da17efc1343a39df1ba5d1958af82f30fe08252e37703da",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "po3_scalar_eq_of_shared_coordinate_profile q3.lean.aristotle/Q3/Proofs/HBridge_PO3_Shell.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "po3_scalar_eq_of_shared_coordinate_profile Q3/Proofs/HBridge_PO3_Shell.lean",
+        "metadata_sha256": "a27610d96c782e18cf6fb5ee52bece0af6a026a90a125d3facdee4e713315299",
+        "provider": "lean-index",
+        "provider_id": "9bdd5d7d7fb205c73e39383cf79bd1cbadb6f84449b7cc138fac4a2a76c645f8",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "po3_scalar_eq_of_shared_coordinate_profile Q3/Proofs/HBridge_PO3_Shell.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean:45:The two plants: unit norm on a shared carrier does not determine",
+        "metadata_sha256": "6fa8243da26cedc4dc014d8f670703d65a6ed2c818b5cc3ce21de8627891cc44",
+        "provider": "lean-tree",
+        "provider_id": "683a8271a553d0e587c6f53d98866840f5019d8414695c1855d4d9f75d400583",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean:45:The two plants: unit norm on a shared carrier does not determine",
+        "url": "Q3/Proofs/RouteB"
+      },
+      {
+        "excerpt": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean:167:/-- **Plant 1.** Unit norm on a shared carrier does not determine",
+        "metadata_sha256": "58d072ae01471dfc8df642e3081c841b448dee95613aa9136aa85f1437dddfed",
+        "provider": "lean-tree",
+        "provider_id": "d549df7176855cef37f0349cb515d8cd73437ae1640975fd9dd54d5d794ad73c",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "title": "q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean:167:/-- **Plant 1.** Unit norm on a shared carrier does not determine",
+        "url": "Q3/Proofs/RouteB"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 4,
+        "provider": "local-shelves",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+        "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "shared prime gcd conductor lowering character correlation beta n m conjugate beta n prime m prime",
+    "query_sha256": "182e17cf901cd7940dea11d180425a23ba348d7c5e0a601c4e02e697c8c7f46c",
+    "schema": "q3_ask_local_receipt.v1"
+  },
+  {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "ПОСТАВЛЯЮТ (provides):",
+        "metadata_sha256": "05163f1ab33a18f2150189b53081d3fbf8d0caffdb08c8bb8d67f99e67f7548f",
+        "provider": "knowledge-db",
+        "provider_id": "862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c",
+        "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+        "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+        "title": "ПОСТАВЛЯЮТ (provides):",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "ccmPrime_plant_offdiag_orientation q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean:26",
+        "metadata_sha256": "3f394c13baa007c71f1b380c5d4e7ecba44f765c5610a321c2c4960103e4dba4",
+        "provider": "knowledge-db",
+        "provider_id": "ff87742864365585883c70ca7d713f972aa62da98d1b4dd7134d21a07aaced6d",
+        "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+        "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+        "title": "ccmPrime_plant_offdiag_orientation q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean:26",
+        "url": "capability/assembly/counterexample"
+      },
+      {
+        "excerpt": "ccmNIC_plant_subtraction_orientation Q3/Proofs/RouteB/CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
+        "metadata_sha256": "6f0b201b247363ce4bdbb8f90a0ade75a8602a03e558fa39c82b97dcdbac39d9",
+        "provider": "lean-index",
+        "provider_id": "d04d4631a435f13fa610b20dadabdfcb3a15be7cb8724fe2b7e130ae575ebda9",
+        "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+        "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+        "title": "ccmNIC_plant_subtraction_orientation Q3/Proofs/RouteB/CCMFiniteWeilCell13N2NonintegralConstantNormalForm.lean",
+        "url": "aristotle_proofs.db"
+      },
+      {
+        "excerpt": "ccmPrime_plant_offdiag_orientation Q3/Proofs/RouteB/CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean",
+        "metadata_sha256": "777a4de6c1f7ca0db21ea04eb57e403f12781659875d27e12c90fdcf4931cf89",
+        "provider": "lean-index",
+        "provider_id": "560267cd0a8b143eae026712f81fa5992347022bbd03b2fb1f5726022c7f60dc",
+        "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+        "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+        "title": "ccmPrime_plant_offdiag_orientation Q3/Proofs/RouteB/CCMFiniteWeilCell13N2PrimeKernelNormalForm.lean",
+        "url": "aristotle_proofs.db"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 1,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+        "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+        "status": "INCOMPLETE"
+      },
+      {
+        "candidate_count": 0,
+        "candidate_hashes": [],
+        "collection_identity": null,
+        "corpus_sha256": null,
+        "provider": "q3_docs",
+        "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+        "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+        "status": "INCOMPLETE"
+      }
+    ],
+    "query": "metaplectic cubic Gauss Hecke character bilinear dispersion varying modulus orientation",
+    "query_sha256": "3c1962212830dd84f033097171b15d6a338f3944b732cd9282c7cf35659b205b",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+]
