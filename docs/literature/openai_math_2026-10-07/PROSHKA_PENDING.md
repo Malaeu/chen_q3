@@ -1,3 +1,15 @@
+# Rational high values Q5 processed — no pending Pro question
+
+2026-10-09 07:41UTC sent PROSHKA_RATIONAL_HIGH_VALUES_Q05.txt in SAME living chat **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Question5/10. Exact file tile and sent text, empty composer, Pro and ChatGPT antwortet/Stoppen observed. No resend/Answer now.
+
+Request950620bytes,19252LF,final newline; SHA25604569d150a39475d0e16dcc5a08e61fda25e1b338d9b76cf5ce58c6424902581; baseline3fdd6607e361fd794b7c2bd3dbf397566ca3e22a remote verified. Six full embedded sources (including original MB34 fallback). Q4 processed61fd14e2. Own UI25_RATIONAL_CLIPPING.md independently PASS: sharp V/2 rational-majorant error, mass feeHU^-3/500; actual fractional-selector joint bound remains OPEN. No row regularity or gain inferred.
+
+Q5 targets actual E_rat/F_np^rat via denominator arithmetic, or direct original MB34. All original weights/masks/powers/profile and inverse returns required. Terminal observed08:21UTC; full original1089LF83575bytes read unchanged, SHA256c159b3ccc916550143032db58dbaeac2bbc3941dd8f1f71534d52c4d5dd531fe. Root and independent reviewers reproduced5054exact diagnostics, codeSHA84155819038ea00fa63f52ccf3b84340b47561c33f068a1ce4f2cccdd8e70822. Independent q05 resolvent/return and long_positive finite/quartet PASS. SOURCE_ROLLOVER_Q05_CONCLUSION.md: automatic convolution positivity refuted only in the exact tested shape; full correction budget paid but N4/RF27/MB34 remains OPEN. Return original two-column MB34 after bounded alias, not another scalar iteration. Q6 not sent. Deliver request+original+code+conclusion together, then pause heartbeat. RH/SP OPEN; source P/M/R conditional; Linux Comparator report-only, no Mac rerun or moving-Hecke import. Native goal ACTIVE.
+
+2026-10-09 08:01UTC scheduled live check: still running, Stoppen and service checking status visible. Intermediate Laplace/resolvent and four-column remarks are not a final result and not admitted. No final attachment. No resend/skip. Next scheduled live check around08:21UTC.
+
+--- Previous Q4 closeout ---
+
 # Unit-invariant high values Q4 processed — no pending Pro question
 
 2026-10-09 06:52UTC sent PROSHKA_UNIT_INVARIANT_HIGH_VALUES_Q04.txt in SAME living chat **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Question4/10. Exact attached tile and sent short text, empty composer, model Pro, ChatGPT antwortet/Stoppen observed. Do not resend or Answer now.
