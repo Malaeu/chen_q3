@@ -77,6 +77,30 @@ H P^(-5/2) L*loss. These are insufficient UPPER bounds, not lower bounds
 or counterexamples to small actual F_j or M. Finite binomial constants
 do not alter exponents. Plain P alone does not estimate the joint sector.
 
+## E4. Retaining two plain factors still has an unpaid coefficient cost
+
+Read-only mobius_short_transfer and root independently checked this extension,
+conditional on the same P and its profile uniformity. Fix the ORIGINAL
+amplifier a0<=P first: psi_(u a0^6)(b)=psi_u(b)1_((b,a0)=1).
+The same mask applies to both remaining plain factors, with no (u,a0)=1
+restriction. Dyadic separation of the two factor norms and Mellin inversion
+of W(qD qb1 qb2/L) express their sum as products of plain polynomials.
+Their common Mellin height is integrated against rapidly decaying transform
+coefficients; source polynomial height losses are absorbed by finitely many
+fixed W seminorms. Nonempty blocks have qD B1 B2 comparable to L,
+so normalization is qD^(-1/2) up to bounded block ratios.
+
+For j=3, summing three short factors has coefficient mass O(X^(3/2)).
+P in l2 on base rows u~U, followed by the a0 sum, therefore yields
+E_3<=PU X^3*loss=H U^(9/32-5p)*loss. The exponent remains positive.
+For j>=4, freeze j-3 plain factors with product C. Their coefficient
+mass is O(sqrt(L/qD) log(2L)^(j-4)); summing the short factors gives
+sqrt(L) times logarithms, hence E_j<=PU L*loss. Again insufficient.
+For j=2 the one remaining plain factor similarly gives PU X²*loss.
+These fixed-a0 estimates improve the coarse E3 entrance but do not supply
+the desired gain. Using all v<=H instead would not justify the PU base
+cost. All are upper budgets, with cross-j cancellation still unestimated.
+
 ## Bounded alias return and next test
 
 Three shelf dictionaries: dispersion/bilinear multiplicative characters;
