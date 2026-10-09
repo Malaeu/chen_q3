@@ -1,3 +1,13 @@
+# Poor-frequency Q8 processed — no pending Pro answer
+
+2026-10-09 12:19UTC terminal observed in SAME living chat Совместная арифметическая оценка. Full unchanged original PROSHKA_VERDICT_POOR_FREQUENCY_JOINT_Q08.md read (1292 lines); root reproduced all60 checks with exact JSON match. Independent q05_moment_audit QC1–QC18 PASS. See POOR_FREQUENCY_Q08_CONCLUSION.md for hashes, scope and costs.
+
+Exact joint sieve cancellation leaves lambda_F(1)=1, returning the original short correlator. Direct full envelope P(UL+L²U^-1/10) does not pay the target. QC18/JP20, MB34/SP/RH remain OPEN. No new K estimate or inverse/high gain. Source analytic premises conditional; Linux Comparator report-only, no Mac rerun/moving-Hecke import.
+
+Request+original+conclusion+continuation pointers form one scoped commit/push; pause q3-joint-low-probe after remote verification. Do not wait for Q8 or resend it. No Q9 sent. Native goal ACTIVE. Next research target: actual cubic divisor vector and common quadratic column before absolute values, with exact original coefficients and all costs.
+
+--- Processed Q7 ---
+
 # Joint product-pair Q7 processed — no pending Pro answer
 
 2026-10-09 11:24UTC terminal observed in SAME living chat Совместная арифметическая оценка https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Full original PROSHKA_VERDICT_JOINT_PRODUCT_PAIR_Q07.md downloaded unchanged and read completely (1252 LF). Root reproduced108 exact checks; independent q05_moment_audit JP8–JP20 and return PASS.
