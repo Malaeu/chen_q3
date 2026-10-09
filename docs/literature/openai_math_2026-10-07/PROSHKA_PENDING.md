@@ -1,3 +1,15 @@
+# Mobius fourth moment Q2 processed — no pending Pro question
+
+2026-10-09 05:03UTC sent PROSHKA_MOBIUS_FOURTH_ROLLOVER_Q02.txt in **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Question2/10, same source phase. Pro explicitly selected before send; submitted exact file tile/text, empty composer, Pro and ChatGPT antwortet/Stoppen observed. Do not resend or Answer now.
+
+Request950932bytes,19101LF,final newline; SHA256352f04210c80438631959c3b3fa5c3cd7d1b256494f94fbe625a6784ce96dc7f; baseline3bd97c95766007d3a6b487dba2da799fc8eb7394. Five embedded sources verified before upload. Own MB_SPARSE_HOLDER_TEST.md H1–H4 independently checked: sufficient raw-fourth excess kappa<6757/75000; old second+pointwise fails. Plain S fourth moment is not actual Mobius M, principal/raw rows retained. No new estimate proved.
+
+05:43UTC terminal Antwort abgeschlossen and original attachment observed. Original downloaded unchanged: PROSHKA_VERDICT_MOBIUS_FOURTH_ROLLOVER_Q02.md,105080bytes,1342LF,SHA256057cdd9f4c63865954d16ee5add481ed353f2ad9d44534c66e9a8dd2cc4b7a3a. Full1342-line read complete; root13032exact finite diagnostics PASS. Independent q05 and long_positive bounded audits PASS, conditional on named source premises. SOURCE_ROLLOVER_Q02_CONCLUSION.md records exact scope. MF.1 shared-divisor tail paid, automatic separate centered diagonal supplier rejected only in that shape; MF.38/MB.34/full gain OPEN. No Q3 sent. Deliver request+original+code+conclusion in one scoped commit/push, then pause heartbeat.
+
+Historical05:23UTC live check: Denke nach/Stoppen and service checking remain visible; no terminal Q2 answer or attachment. Interim short-divisor/coefficient-transfer narrative is not an admitted result. Next check around05:43UTC; existing q3-joint-low-probe heartbeat ACTIVE20min. Stay quiet while unchanged. Read full final response and original attachment; audit all rows/masks/common profiles/scale and Sobolev returns, or weaker actual MB.29/MB.34. One independent pass for status-changing mathematics. Request+answer+conclusion one scoped commit/push after response, then pause heartbeat. Linux Comparator report-only; no moving-Hecke import or Mac rerun. RH/SP OPEN; RH goal ACTIVE.
+
+--- Previous Q1 closeout ---
+
 # Mixed boundary rollover Q1 processed — no pending Pro question
 
 2026-10-09 ~04:50UTC terminal observed in **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Same source phase forced rollover1/10. Full original1213LF downloaded/read; no resend or Answer now. Project composer before send showed Pro; new-chat picker after send showed GPT-6 Mittel2/5, so actual Pro execution is NOT confirmed. Before the next substantive send explicitly select/verify Pro in this living chat.
