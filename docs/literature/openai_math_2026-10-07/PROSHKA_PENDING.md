@@ -1,3 +1,15 @@
+# Mixed boundary rollover Q1 processed — no pending Pro question
+
+2026-10-09 ~04:50UTC terminal observed in **Совместная арифметическая оценка** https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac86908-1f94-83eb-bcff-37c9bbe87118 . Same source phase forced rollover1/10. Full original1213LF downloaded/read; no resend or Answer now. Project composer before send showed Pro; new-chat picker after send showed GPT-6 Mittel2/5, so actual Pro execution is NOT confirmed. Before the next substantive send explicitly select/verify Pro in this living chat.
+
+Request PROSHKA_MIXED_BOUNDARY_ROLLOVER_Q01.txt:887282bytes,18282LF,SHA256368d51607ff6162b1b97201eb05c3e7ebfddb6c15cc0d4026d9aa98a864a52b5; baselinec9c6d54307c96233f91ca9b0cdfc3b22f12d8299. Original PROSHKA_VERDICT_MIXED_BOUNDARY_ROLLOVER_Q01.md:83102bytes,SHA25636c7f8f5a45e49587625f6373293da15355a107fffc076b01a9d50d18ee9257c. All7 embedded hashes verified; root2556exact finite checks PASS, not analytic certification.
+
+Independent bounded read-only audits PASS: q05 MB.7–23 complete mixed boundary, strict qg<G with K>G recombination and uniform prime removal/full budgets; long_positive MB.24–40 exact sixth-power injection, S/units, wP, separate raw comparison premise, masked diagonal and positive-energy Sobolev return. SOURCE_ROLLOVER_Q01_CONCLUSION.md records scope. Conditional full boundary B_delta=-E_delta+paid error has raw margin257/75000. This returns the original energy with coefficient1, not a gain. Centered two-column correlation MB.29/upper bound MB.34 remains OPEN, as do Q10(18), full inverse/high gain and RH/SP.
+
+Own Q11_TWO_PRIME_BOUNDARY.md T1–T4 independently checked/pushed86d9a9b5; not sent afterQ1. Next own attempt must estimate actual MB.29 jointly or map a quantitative supplier, not repeat a full-scale/window identity. Q2 not sent. Deliver request+unchanged original+code+conclusion in one scoped commit/push, then pause heartbeat. Linux Comparator report-only, no Mac rerun or moving-Hecke import. RH goal ACTIVE.
+
+--- Previous Q10 closeout ---
+
 # Source Euler-Mellin Q10 processed — no pending Pro question
 
 2026-10-09 around03:50UTC: terminal Antwort abgeschlossen, final attachment and regenerate/voice controls observed in SAME Execute Joint Probe Calculation https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184/c/6ac5dfb3-b068-83ed-810a-dc77fa77ebbd . Stale service-checking text coexisted with clear terminal controls. Full965-line original downloaded/read. No resend or Answer now. Source phase10/10 exhausted; no new question or rollover sent.
