@@ -1,3 +1,27 @@
+# Q4 processed — no pending Pro answer
+
+Q4 sent ONCE2026-10-10 03:13UTC; terminal observed04:33UTC in SAME living chat:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac907a5-02f8-83eb-b0e6-fa066e88e743
+Request PROSHKA_MOBIUS_JOINT_Q04.txt:1582529bytes,27526LF,
+SHA2562e3a3c9f86dcda29740f1f120e3f8252aeb31c3efc63878a779c292437b5da2b.
+Original PROSHKA_VERDICT_MOBIUS_JOINT_Q04.md:115483bytes,1426LF,
+SHA256d73a6d3cc732342c9b4ce5661c27ec8a4555ce4ccc78e1bba9f18fec8f1c2273.
+Full original read; root arithmetic stdout byte-exact; independent bounded audit PASS.
+MOBIUS_JOINT_Q04_CONCLUSION.md records full scope and classical source checks.
+
+New paper results: complete left-edge cross paid without M/R, minimum margin15737/18750;
+actual raw-versus-physical pole-order gap survives the original diagonal. This rejects
+only automatic pole erasure, not MB34 or the entire contour route. Full signed MQ35
+residue-plus-join estimate remains unpaid; CF22 unchanged. Original masks, all S-exponents,
+common profiles, projection cross, credits and full CF20 return retained.
+
+One scoped request+original+conclusion+pointers delivery; delete heartbeat rh-q4 after push.
+No Q5 sent; no response waiting, no resend/Answer now. Next own attempt must estimate
+whole MQ35 or direct original finite CF20 before another question. RH/SP/MB34/SB1 OPEN;
+P/M/R/K/high CONDITIONAL, LinuxComparator report-only, PX_RH_CLAIM NOT_MADE.
+
+--- Historical Q3 closeout ---
+
 # Q3 processed — no pending Pro answer
 
 2026-10-10 around02:47UTC SAME living chat Математическая попытка MB34 showed Antwort abgeschlossen and PROSHKA_VERDICT_SIGNED_INCIDENCE_Q03.md. Q3 sent once01:27UTC; no resend/Answer now/regeneration. Full1511-line original preserved,111117bytes,SHA25626f530cce925e84685bb428a11c777ff47af806cc13194b0839ad6fb88635e4f. Root full read and24-check byte-identical reproduction complete. Independent q03_signed_audit returned bounded CONDITIONAL PASS, with squarefree-support notation qualification recorded in SIGNED_INCIDENCE_Q03_CONCLUSION.md.
