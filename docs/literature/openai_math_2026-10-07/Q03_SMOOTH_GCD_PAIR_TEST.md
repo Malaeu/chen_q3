@@ -58,3 +58,56 @@ rows, whereas our rows are sixth-power-free; that bridge is not supplied.
 The remaining discriminator is a joint estimate retaining the above
 cutoff convolution and both orientations before absolute values.
 RH/SP/MB34 remain OPEN; CF22 unchanged. No new Pro request sent.
+
+## Paid replacement by the pure Mobius pair (conditional)
+
+Let M_d and R_d be the divisor-label vectors of M and R_sf, respectively,
+on the identical row Hilbert space and with the same common W. Define
+A(F)=sum_(d in D_Y) mu(d)||F_d||² and Q(F)=sum_d||F_d||².
+Inclusion-exclusion gives B_empty(F)=E_F+A(F), including the smooth
+sector. For the pure Mobius columns, exactly
+
+    M_d(a,u)=mu(d) 1_((a,d)=1) psi_u(d)/sqrt(qd)
+                 * M_u^[ad](L/qd;W).
+
+This retains every zero, the cofactor mask, and the original window.
+The identical M-old argument used in Q2 PLQ.23 bounds Q(M)<<PU*losses:
+qd>Y, L/qd<U^(93/100), all five tiers are subsets of ideals and their
+1/qd sum is logarithmic. Small scales have the inherited endpoint bound;
+ad has fixed polynomial norm. Q(R)<<PU*losses was already paid in Q2.
+Consequently, using E_M-E_R=J_sf from PLQ.17, exactly
+
+    B_empty(M)-B_empty(R)=J_sf+A(M)-A(R),
+    |B_empty(M)-B_empty(R)| <= |J_sf|+Q(M)+Q(R).
+
+Thus the full pair functional can use mu(n)mu(m) in place of rY(n)rY(m)
+only AFTER paying this explicit error, not by a pointwise substitution.
+The bound is P[U+U^(7/12)L^(5/12)]*losses. Relative to H U^(-1/200),
+the minimum power margins are 1783/18750 for PU and 1691/37500 for
+J_sf over the full source band. The latter retains the old 257/75000
+return reserve and a further 1/24. These are conditional on the SAME
+P/M-old inputs and profile uniformity, not new certified source theorems.
+
+Moreover C_Y=E_R-Q(R) gives the exact identity
+
+    C_Y = B_empty(M)-J_sf-A(M)-Q(R).
+
+Hence a target-sized upper bound for B_empty(M) would suffice with the
+paid errors. But B_empty(M)=E_M+A(M)=E_M+O(PU*losses), so this is an
+equivalent representation at the target scale, not a new moment gain.
+The pure-Mobius product coordinates in MB34_PRODUCT_PAIR_TEST.md P1
+can now be used for the off-diagonal with the additional smooth-g
+restriction and this full error budget. B_empty(M) also includes the
+smooth diagonal n=m=g (x=y=1); it is retained separately. Its absolute
+cost is O(PU): each squared column is bounded by ||W||_infty²/L,
+there are O(L) ideals in the fixed annulus, O(P) amplifiers, and total
+nonnegative row weight O(U). Restricting to smooth ideals only decreases
+this positive diagonal. Thus this is a separate paid term, not a deletion
+by P1. Its reciprocal-L contour argument is still not paid.
+Decision: do not ask for another cutoff-coefficient rearrangement alone;
+a useful next supplier must improve the actual pure-Mobius joint moment
+or its centered original return. RH/SP/MB34 and CF22 remain unchanged.
+
+Independent q03_pair_supplier_map checked the replacement algebra, masks,
+conditional trace bounds and margins. Its smooth-diagonal scope finding
+is resolved by the explicit O(PU) ideal-counting bound above.
