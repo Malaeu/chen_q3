@@ -1,3 +1,14 @@
+# Q6 processed — no pending Pro answer
+
+Q6 sent once2026-10-10 06:16UTC; terminal observed around07:17UTC in SAME living chat:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac907a5-02f8-83eb-b0e6-fa066e88e743
+Request PROSHKA_SIGNED_REFLECTED_GCD_Q06.txt:1864666bytes,30864LF,SHA256 b29158072703bcba55d69fec357158653a9a1f29ad42c4d85911e6f2747286d9.
+Original PROSHKA_VERDICT_SIGNED_REFLECTED_GCD_Q06.md:146983bytes,1861LF,SHA256 dce3f97b19ed1a72ca6325102bf026ba7344e5a56315d1afc65836539fa79124. Full original read,29 root diagnostics reproduced byte-exact. Independent q06_signed_return_audit bounded PASS; minor SG36/37 citation typo noted in SIGNED_REFLECTED_GCD_Q06_CONCLUSION.md.
+Joint s,b,b′ pooling retains exact divisor boundary, all ray/cusp cross and denominator q_Bq_C. Full-product shortcut outside interior rejected. Cusp-divisibility count checked, but complete reflected and direct envelopes are worse than CF22. Original one-sided SG27/QL49 remains OPEN. No full inverse/high gain or route impossibility.
+Request+original+conclusion+pointers delivered in one scoped commit/push; delete rh-q6 after delivery/readback. No Q7 sent, no pending response, no resend/Answer now. Next own attempt must address full cusp/ray pairing with the truncated kernel or exact two-scale inverse covariance before another question. RH/SP/MB34/SB1 OPEN, P/M/R/K/high CONDITIONAL; LinuxComparator report-only, PX_RH_CLAIM NOT_MADE.
+
+--- Historical Q5 closeout ---
+
 # Q5 processed — no pending Pro answer
 
 Q5 sent once2026-10-10 04:48UTC, terminal observed05:48UTC in SAME living chat:
