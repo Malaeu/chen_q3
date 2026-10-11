@@ -1,3 +1,14 @@
+# Q8 processed — no pending Pro answer
+
+Same living chat: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac907a5-02f8-83eb-b0e6-fa066e88e743
+Sent once2026-10-11 20:21UTC; terminal observed21:21UTC. No resend/Answer now/new chat.
+Request PROSHKA_SIGNED_CUBIC_PAIR_Q08.txt:2188315bytes,34864LF,SHA2563186a5a3d18ba6b07cb11c62b0e16020e74bb77710fbab016cb778ab7c3222a4;41 nested blocks verified.
+Original PROSHKA_VERDICT_SIGNED_CUBIC_PAIR_Q08.md:134703bytes,1666LF,SHA25671392dd5cc007a243baa9a2b084df0f61d0080582d758d0952c8409e7c1be773. Root full read;28 diagnostics reproduced byte-exact. Independent recovery q08_audit_recovery bounded CONDITIONAL PASS; earlier q08_signed_audit service failure is not a completed pass. See SIGNED_CUBIC_PAIR_Q08_CONCLUSION.md.
+Exact full-G cubic covariance and signed local pair preserve the complete finite boundary and all source phases/cross terms. Product-only power gain excluded; executed full variation P³U^(1/2)L⁷ is worse than CF22. SC37/CP34/MB34/RH/SP/SB1 OPEN; P/M/R/K/high/reflection/sieve CONDITIONAL; Linux Comparator report-only; no new inverse/high gain.
+Request+original+conclusion+pointers one scoped delivery; delete rh-q8 after push and remote readback. Next actual finite-domain joint SC17/19 including first-power Gauss phases, or direct original T_N−V_N. No Q9 sent; no pending Pro response. PX_RH_CLAIM NOT_MADE.
+
+--- Historical Q7 closeout ---
+
 # Q7 processed — no pending Pro answer
 
 Same living chat: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac907a5-02f8-83eb-b0e6-fa066e88e743

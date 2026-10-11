@@ -1,0 +1,25 @@
+# Q8 signed cubic pair — audit and consumer status
+
+Original: `PROSHKA_VERDICT_SIGNED_CUBIC_PAIR_Q08.md`, 134703 bytes, 1666 LF, SHA256 `71392dd5cc007a243baa9a2b084df0f61d0080582d758d0952c8409e7c1be773`.
+Request: `PROSHKA_SIGNED_CUBIC_PAIR_Q08.txt`, 2188315 bytes, 34864 LF, SHA256 `3186a5a3d18ba6b07cb11c62b0e16020e74bb77710fbab016cb778ab7c3222a4`; all 41 nested block hashes checked at dispatch.
+Sent once 2026-10-11 20:21 UTC in the same living MB34 chat; terminal observed 21:21 UTC. No resend, Answer now or new chat.
+
+## Result
+
+NO_DERIVATION: original CP34/MB34/RH/SP/SB1 remain OPEN. CF22 is still the best complete envelope. P/M/R/K/high and literal source reflection/sieve remain CONDITIONAL; no new inverse/high gain, Mac Comparator rerun or moving-Hecke uniformity.
+SC10–15 give source-specific full cubic covariance G_(q_p lambda)(p³xi)=conj(A_h(p))/q_p G_lambda(xi), including the three cusp families, zero branches, units, additive phases, active/inactive local factors and the fixed-ray Fourier permutation. The fixed ray cube is retained; this is conditional on the literal reflection input and the accepted CP20 lift compensation.
+SC16–19 simultaneously reduce B=bj,c=aj with (a,b)=(b,j)=1 but allowed (a,j)>1. The surviving factor is mu(j)/q_j², with every power, profile and cross term. The infinite a-sum comes from the existing dual cube support and converges with sum q_a^(-5/2), not an enlarged finite inverse range.
+SC20–26 give the exact three-state local matrix, one positive and one negative rank-one channel plus a zero channel, and the full finite-boundary correction. Two negative local channels can form a positive global term; the outer Fourier measure is signed. No automatic sign or positive operator estimate follows. CP27 cannot erase the new boundary after the changed regrouping; SC27 is only a pointwise witness, not a nonzero full functional or MB34 counterexample.
+SC28–29 rule out a power saving from the optional-cube product alone: its factors have a uniform strictly positive product lower bound. This is a narrow theorem-shape exclusion, not a lower bound for source energy or a no-go for joint cancellation.
+The executed total-variation return SC30–36 costs P³ U^(1/2)L⁷ times fixed profile/small-power losses, with minimum target excess225467/31250. It is worse than CF22. The first loss is taking absolute values of the signed Schur channels and separately paying the finite boundary; their joint actual-source cancellation is still unestimated.
+SC38–45 retain the original centered energy, masked diagonal, T_N−V_N, Q4 poles/joins, original powers/units/windows/selectors and all cross terms. Paid Type-I/projection/rich/low/tail components receive no second credit. The inverse threshold113/1200000 plus actual losses is unchanged; raw reserve5887/1200000 and post-theta reserve1087/1200000 apply only IF the full antecedent is proved.
+
+## Verification
+
+Root read all1666 lines and cross-checked pinned source cusp/support/overlap conventions1892–2013 and cross-prime phases2264–2279. The three embedded registration/code/stdout hashes match. Extracted standard-library Python diagnostic ran from `/tmp/q08-root-audit` with exit0 and empty stderr; all28 Boolean controls passed, stdout byte-identical to all3317 bytes of appendix D, SHA256 `8be1d4e51984d266b4863c87e5730a7ce3710498185af3ce1a42612e16af86da`. Cases:6 inert Gauss,4 split CRT,3888 cusp-cube,168 live first-power,25 fixed Fourier,36 matrix entries,256 two-prime kernels,1024 finite-boundary returns and64 cube bijections. These verify only the registered finite algebra, not full analytic reflection, a cofinal moment or RH.
+Independent read-only recovery audit `q08_audit_recovery`: bounded CONDITIONAL PASS, no material defect in SC1/10–26 or SC30–45. The first Luna audit terminated by service stream failure before a final verdict and is not counted as a PASS. Recovery checked the complete Fourier direction: h0 -> p^-3 h0 gives delta_F -> p³ delta_F, phi-hat(p^-3 h0)=phi(p)³ phi-hat(h0), kappa_F gains a cubic symbol cube1; accepted CP20 compensates lift changes. It also checked q_j^-2, allowed overlap, the finite domain, mixed profiles, convergence, full cost and original return. SC27 is a one-prime coefficient diagnostic, not evaluation of the full original P_Z functional. This is conditional algebra/return verification, not independent certification of the entire analytic reflection/sieve or P/M/R/K/high inputs.
+
+## Next exact target
+
+Estimate the actual SC17/19 finite-domain joint pairing, retaining first-power Gauss phases SC13 and both rescaled profiles, to prove SC37 (=CP34/MB34); alternatively the unchanged direct T_N−V_N target SC40. Do not discard the finite boundary, turn local indefinite channels into a global sign, or repeat a product-only/total-variation estimate as a gain. No Q9 has been sent.
+AUTOPSY: dropped=COUPLING; note=Exact cubic cancellation and signed local channels do not supply the required joint finite-domain estimate; the executed full absolute return is insufficient.
