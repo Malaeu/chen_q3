@@ -1,0 +1,28 @@
+{
+  "scope": "SAVED_PANEL_SIGNED_PAIR_DECOMPOSITION",
+  "source_commit": "f1993ec6a7933418c38c305a13a3221037b9447a",
+  "precision_bits": 192,
+  "absolute_interval_tolerance": "1e-30",
+  "configurations": 20,
+  "raw_disk_evaluations": 0,
+  "new_fits": 0,
+  "partition": [
+    "rough_rough",
+    "cross",
+    "affected_affected"
+  ],
+  "rough_definition": "all prime ideal divisors have norm > actual P",
+  "pair_convention": "unordered i<j, 2Re accounts for both orders, diagonal excluded",
+  "raw_inputs": {
+    "main.json": "5986f2f5fbd8cc87116befb1ac3d08222804ec3f79c1ceb4e0408182c943bdcb",
+    "heldout.json": "87b6ed649621fb428e71276fcc62701501140afc2a9bff320337ee54596c6cfe"
+  },
+  "request_sha256": "4e43cbda6acbc4c4588257386bb5abf6c33f8fdf85fc320319046d93b2d35e5b",
+  "acceptance": [
+    "all three signed groups sum back to saved C enclosure within tolerance",
+    "independent direct masked group energy reconstruction agrees with each group",
+    "all A_P inclusion-exclusion counts exact, all amplifier powers retained",
+    "full lcm period = primitive conductor times shared zero-mask ideal on squarefree source",
+    "no replacement of signed sums by sum of absolute values"
+  ]
+}

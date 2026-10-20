@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "input_sha256": {
+    "correlation/decomposition.json.gz": "74e888523228566fbb5140ed24dd8b9abbd33a07af9eba72519802dd18e9f38d",
+    "nonunit/main.json": "5986f2f5fbd8cc87116befb1ac3d08222804ec3f79c1ceb4e0408182c943bdcb",
+    "nonunit/heldout.json": "87b6ed649621fb428e71276fcc62701501140afc2a9bff320337ee54596c6cfe",
+    "evaluate.py": "06c48c3075335205aeb80cdc7a142d1b0868e82a7f2a1006391764222112faeb"
+  },
+  "checker_sha256": "8b623f32c21c050b7f767336985265ec9684b2941afc5df72984f3d9e2c5f9c4",
+  "old_mask_correction_matches": [
+    "U48_Pproduction_o1",
+    "U48_Pproduction_o-1",
+    "U48_P7_o1",
+    "U48_P7_o-1",
+    "U48_P13_o1",
+    "U48_P13_o-1",
+    "U64_Pproduction_o1",
+    "U64_Pproduction_o-1",
+    "U64_P7_o1",
+    "U64_P7_o-1",
+    "U64_P13_o1",
+    "U64_P13_o-1",
+    "U96_Pproduction_o1",
+    "U96_Pproduction_o-1",
+    "U96_P7_o1",
+    "U96_P7_o-1",
+    "U96_P13_o1",
+    "U96_P13_o-1",
+    "U48_P49_o1",
+    "U48_P49_o-1"
+  ],
+  "unit_cross_zero_checks": [
+    {
+      "id": "U48_P7_o1",
+      "cross_pairs": 80,
+      "all_unit_quotient_characters_nontrivial": true,
+      "all_saved_raw_pairs_exact_zero": true,
+      "structural_zero": "Full six-unit orbits with radial weights, sixthfree support and unit-invariant masks."
+    },
+    {
+      "id": "U48_P7_o-1",
+      "cross_pairs": 80,
+      "all_unit_quotient_characters_nontrivial": true,
+      "all_saved_raw_pairs_exact_zero": true,
+      "structural_zero": "Full six-unit orbits with radial weights, sixthfree support and unit-invariant masks."
+    },
+    {
+      "id": "U48_P13_o1",
+      "cross_pairs": 80,
+      "all_unit_quotient_characters_nontrivial": true,
+      "all_saved_raw_pairs_exact_zero": true,
+      "structural_zero": "Full six-unit orbits with radial weights, sixthfree support and unit-invariant masks."
+    },
+    {
+      "id": "U48_P13_o-1",
+      "cross_pairs": 80,
+      "all_unit_quotient_characters_nontrivial": true,
+      "all_saved_raw_pairs_exact_zero": true,
+      "structural_zero": "Full six-unit orbits with radial weights, sixthfree support and unit-invariant masks."
+    }
+  ]
+}

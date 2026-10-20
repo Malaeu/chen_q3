@@ -1,0 +1,12 @@
+Command run by root:
+/tmp/cf22-pysr-venv/bin/python -m unittest discover -s experiments/cf22_pysr/correlation -p 'test_*.py' -v
+
+PASS: test_coefficient_two_matches_direct_physical_energy_expansion
+PASS: test_pair_partition_is_exhaustive_and_disjoint
+PASS: test_saved_pair_sum_matches_existing_full_c_and_h49
+PASS: test_shared_prime_is_full_period_zero_mask_not_quotient_conductor
+Ran 4 tests in 0.170s; OK.
+
+Full output verification is recorded separately in verification.json:
+20 configurations, 460 interval comparisons, PASS.
+Additional old mask-return and unit-orbit checks: mask_return_checks.json.
