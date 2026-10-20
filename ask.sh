@@ -15,6 +15,15 @@
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")" || exit 2
 
+# Several shelves and the semantic freshness check import repo dependencies such
+# as PyYAML. Respect an explicitly selected interpreter; otherwise use the repo
+# environment when it provides that dependency for every Python invocation.
+ASK_PYTHON="${PYTHON:-python3}"
+if [ -z "${PYTHON:-}" ] && [ -x .venv/bin/python ] && \
+   .venv/bin/python -c 'import yaml' >/dev/null 2>&1; then
+  ASK_PYTHON=".venv/bin/python"
+fi
+
 if [ $# -eq 0 ]; then
   echo "usage: ./ask.sh [--deep] [--defer-external] [--external-receipt PATH] [--external-candidate NAME] [--external-candidate-provenance CLASS] <термин> [ещё термины]"
   echo "       ищет каскадом: knowledge.db · litreview · Lean · specs/docs · q3_docs · external Lean"
@@ -78,6 +87,7 @@ QMD_CANDIDATES_JSON="[]"
 QMD_CORPUS_SHA256=""
 QMD_COLLECTION_IDENTITY=""
 LOCAL_CANDIDATE_RECORDS=()
+LOCAL_CANDIDATE_RECORD_COUNT=0
 
 hdr() { printf '\n── %s %s\n' "$1" "$(printf '─%.0s' $(seq 1 $((60 - ${#1}))))"; }
 
@@ -85,7 +95,7 @@ hdr() { printf '\n── %s %s\n' "$1" "$(printf '─%.0s' $(seq 1 $((60 - ${#1}
 # UTF-8 locale.  A boundary through `ℝ` or another multibyte character makes
 # this script emit invalid UTF-8, which breaks the registered Python consumer.
 utf8_head_chars() {
-  python3 -c '
+  "$ASK_PYTHON" -c '
 import sys
 
 limit = int(sys.argv[1])
@@ -99,6 +109,7 @@ record_local_candidates() {
   while IFS= read -r line; do
     [ -n "$line" ] || continue
     LOCAL_CANDIDATE_RECORDS+=("${provider}"$'\x1f'"${provenance}"$'\x1f'"${line}")
+    LOCAL_CANDIDATE_RECORD_COUNT=$((LOCAL_CANDIDATE_RECORD_COUNT + 1))
     count=$((count + 1))
     [ "$count" -ge 2 ] && break
   done <<< "$text"
@@ -107,7 +118,7 @@ record_local_candidates() {
 # ── 1. База знаний: убитое, ходы, журнал, досье ───────────────────────────────
 SEARCHED+=("knowledge.db (kill/move/journal/dossier)")
 if [ -f "$KB" ]; then
-  OUT="$(./orchestrator/kb.py ask "$Q" 2>/dev/null)"
+  OUT="$("$ASK_PYTHON" ./orchestrator/kb.py ask "$Q" 2>/dev/null)"
   RC=$?
   [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("knowledge.db: kb.py ask failed (code $RC)")
   if ! printf '%s' "$OUT" | grep -q "^no hits"; then
@@ -123,7 +134,7 @@ fi
 # ── 2. Флаги поиска: где уже искали, что оказалось ложным другом ──────────────
 SEARCHED+=("search_session/search_term (kb.py flags)")
 if [ -f "$KB" ]; then
-  OUT="$(./orchestrator/kb.py flags "$Q" 2>/dev/null)"
+  OUT="$("$ASK_PYTHON" ./orchestrator/kb.py flags "$Q" 2>/dev/null)"
   RC=$?
   [ "$RC" -eq 0 ] || [ "$RC" -eq 1 ] || SEARCH_FAILURES+=("knowledge.db: kb.py flags failed (code $RC)")
   OUT="$(printf '%s\n' "$OUT" | head -20)"
@@ -140,7 +151,7 @@ fi
 # поставщика (sourceWeilOddTailAmbientCoercive_explicit, доказан 10.08).
 SEARCHED+=("capability (provides/requires — каталог стыковок)")
 if [ -f "$KB" ]; then
-  OUT="$(python3 - "$KB" "$Q" <<'PY'
+  OUT="$("$ASK_PYTHON" - "$KB" "$Q" <<'PY'
 import sqlite3, sys
 
 db, query = sys.argv[1:]
@@ -234,7 +245,7 @@ fi
 # ── 4. Lean: что уже объявлено (metadata index, не kernel verdict) ────────────
 SEARCHED+=("aristotle_proofs.db (Lean-декларации)")
 if [ -f "$PROOFS" ]; then
-  OUT="$(python3 - "$PROOFS" "$Q" <<'PY'
+  OUT="$("$ASK_PYTHON" - "$PROOFS" "$Q" <<'PY'
 import sqlite3, sys
 
 db, query = sys.argv[1:]
@@ -316,7 +327,7 @@ fi
 # ── 6. Семантический индекс: один search; в deep ещё один vsearch ────────────
 SEARCHED+=("q3_docs (bounded qmd search через research_oracle.py)")
 ORACLE_PY="scripts/research_oracle.py"
-QMD_IDENTITY_JSON="$(python3 -c '
+QMD_IDENTITY_JSON="$("$ASK_PYTHON" -c '
 import json
 from orchestrator.spine import validate_semantic_index
 value = validate_semantic_index()
@@ -329,15 +340,15 @@ RC=$?
 if [ "$RC" -ne 0 ]; then
   SEARCH_FAILURES+=("q3_docs: semantic-index freshness validation failed")
 else
-  QMD_CORPUS_SHA256="$(printf '%s' "$QMD_IDENTITY_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["corpus_sha256"])')"
-  QMD_COLLECTION_IDENTITY="$(printf '%s' "$QMD_IDENTITY_JSON" | python3 -c 'import json,sys; print(json.load(sys.stdin)["collection_identity"])')"
-  OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode search --budget-seconds 3 2>&1)"
+  QMD_CORPUS_SHA256="$(printf '%s' "$QMD_IDENTITY_JSON" | "$ASK_PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["corpus_sha256"])')"
+  QMD_COLLECTION_IDENTITY="$(printf '%s' "$QMD_IDENTITY_JSON" | "$ASK_PYTHON" -c 'import json,sys; print(json.load(sys.stdin)["collection_identity"])')"
+  OUT="$("$ASK_PYTHON" "$ORACLE_PY" query "$Q" -c q3_docs --mode search --min-score 0 --budget-seconds 3 2>&1)"
   RC=$?
   if [ "$RC" -ne 0 ]; then
     SEARCH_FAILURES+=("q3_docs: qmd search failed (code $RC)")
   elif printf '%s' "$OUT" | grep -q '"file"'; then
     QMD_SEARCH_STATUS="CANDIDATES"
-    QMD_CANDIDATES_JSON="$(printf '%s' "$OUT" | python3 -c '
+    QMD_CANDIDATES_JSON="$(printf '%s' "$OUT" | "$ASK_PYTHON" -c '
 import json, sys
 try:
     rows = json.load(sys.stdin)
@@ -355,7 +366,7 @@ fi
 
 if [ "$DEEP" -eq 1 ] && [ -n "$QMD_COLLECTION_IDENTITY" ]; then
   SEARCHED+=("q3_docs (bounded qmd vsearch через research_oracle.py)")
-  OUT="$(python3 "$ORACLE_PY" query "$Q" -c q3_docs --mode vsearch --budget-seconds 15 2>&1)"
+  OUT="$("$ASK_PYTHON" "$ORACLE_PY" query "$Q" -c q3_docs --mode vsearch --budget-seconds 15 2>&1)"
   RC=$?
   if [ "$RC" -ne 0 ]; then
     SEARCH_FAILURES+=("q3_docs: qmd vsearch failed (code $RC)")
@@ -366,7 +377,7 @@ if [ "$DEEP" -eq 1 ] && [ -n "$QMD_COLLECTION_IDENTITY" ]; then
   fi
 
   # Read-only validation only. Never refresh or write the index from ask.sh.
-  FRESHNESS="$(python3 -c 'from orchestrator.spine import validate_semantic_index; validate_semantic_index(); print("PASS")' 2>&1)"
+  FRESHNESS="$("$ASK_PYTHON" -c 'from orchestrator.spine import validate_semantic_index; validate_semantic_index(); print("PASS")' 2>&1)"
   RC=$?
   if [ "$RC" -ne 0 ] || [ "$FRESHNESS" != "PASS" ]; then
     SEARCH_FAILURES+=("q3_docs: semantic-index freshness validation failed")
@@ -381,19 +392,22 @@ fi
 if [ "$DEFER_EXTERNAL" -eq 1 ]; then
   SEARCHED+=("all enabled external Lean bases (DEFERRED_BY_CALLER)")
 elif [ -n "$EXTERNAL_RECEIPT" ]; then
-  EXTERNAL_VALIDATE=(python3 scripts/research_oracle.py validate-external-receipt "$Q" "$EXTERNAL_RECEIPT")
+  EXTERNAL_VALIDATE=(
+    "$ASK_PYTHON" scripts/research_oracle.py
+    validate-external-receipt "$Q" "$EXTERNAL_RECEIPT"
+  )
   [ -n "$EXTERNAL_CANDIDATE" ] && EXTERNAL_VALIDATE+=(--candidate "$EXTERNAL_CANDIDATE")
   [ -n "$EXTERNAL_CANDIDATE_PROVENANCE" ] && EXTERNAL_VALIDATE+=(--candidate-provenance "$EXTERNAL_CANDIDATE_PROVENANCE")
   OUT="$("${EXTERNAL_VALIDATE[@]}" 2>&1)"
 else
   EXTERNAL_BUDGET=3
   [ "$DEEP" -eq 1 ] && EXTERNAL_BUDGET=15
-  OUT="$(python3 scripts/search_external_lean.py "$Q" --budget-seconds "$EXTERNAL_BUDGET" 2>&1)"
+  OUT="$("$ASK_PYTHON" scripts/search_external_lean.py "$Q" --budget-seconds "$EXTERNAL_BUDGET" 2>&1)"
 fi
 RC=$?
 if [ "$RC" -ne 0 ]; then
   SEARCHED+=("all enabled external Lean bases (INCOMPLETE registered search)")
-  EXTERNAL_ERRORS="$(printf '%s' "$OUT" | python3 -c '
+  EXTERNAL_ERRORS="$(printf '%s' "$OUT" | "$ASK_PYTHON" -c '
 import json, sys
 text = sys.stdin.read()
 start = text.find("{")
@@ -402,7 +416,7 @@ if start >= 0:
 ' 2>/dev/null)"
   SEARCH_FAILURES+=("external Lean bases: registry query failed (code $RC): ${EXTERNAL_ERRORS:-unparsed registry error}")
 else
-  QUERIED_BASES="$(printf '%s' "$OUT" | python3 -c '
+  QUERIED_BASES="$(printf '%s' "$OUT" | "$ASK_PYTHON" -c '
 import json, sys
 text = sys.stdin.read()
 start = text.find("{")
@@ -410,7 +424,7 @@ data = json.loads(text[start:])
 print(",".join(data.get("bases_queried", [])))
 ' 2>/dev/null)"
   SEARCHED+=("all enabled external Lean bases (${QUERIED_BASES:-none}; registered read-only search)")
-  EXTERNAL_MATCH_COUNT="$(printf '%s' "$OUT" | python3 -c '
+  EXTERNAL_MATCH_COUNT="$(printf '%s' "$OUT" | "$ASK_PYTHON" -c '
 import json, sys
 text = sys.stdin.read()
 start = text.find("{")
@@ -431,7 +445,15 @@ if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
 elif [ "$HITS" -eq 0 ]; then
   ASK_LOCAL_STATUS="LOCAL_ZERO"
 fi
-ASK_RECEIPT="$(python3 -c '
+ASK_RECEIPT_ARGS=(
+  "$Q" "$ASK_LOCAL_STATUS" "$HITS" "${#SEARCH_FAILURES[@]}"
+  "$DEFER_EXTERNAL" "$QMD_SEARCH_STATUS" "$QMD_CORPUS_SHA256"
+  "$QMD_COLLECTION_IDENTITY" "$QMD_CANDIDATES_JSON"
+)
+if [ "$LOCAL_CANDIDATE_RECORD_COUNT" -gt 0 ]; then
+  ASK_RECEIPT_ARGS+=("${LOCAL_CANDIDATE_RECORDS[@]}")
+fi
+ASK_RECEIPT="$("$ASK_PYTHON" -c '
 import hashlib, json, sys
 query, status, hits, failures, deferred, qmd_status, qmd_corpus, qmd_identity, qmd_candidates = sys.argv[1:10]
 local_records = sys.argv[10:]
@@ -511,7 +533,7 @@ row = {
     "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE" if deferred == "1" else "COMPLETE_REGISTERED_SHELF",
 }
 print(json.dumps(row, ensure_ascii=False, sort_keys=True, separators=(",", ":")))
-' "$Q" "$ASK_LOCAL_STATUS" "$HITS" "${#SEARCH_FAILURES[@]}" "$DEFER_EXTERNAL" "$QMD_SEARCH_STATUS" "$QMD_CORPUS_SHA256" "$QMD_COLLECTION_IDENTITY" "$QMD_CANDIDATES_JSON" "${LOCAL_CANDIDATE_RECORDS[@]}")"
+' "${ASK_RECEIPT_ARGS[@]}")"
 printf 'ASK_RECEIPT_JSON: %s\n' "$ASK_RECEIPT"
 if [ "${#SEARCH_FAILURES[@]}" -gt 0 ]; then
   echo "ПОИСК НЕПОЛОН — отсутствие не установлено"
@@ -542,7 +564,7 @@ else
   for s in "${SEARCHED[@]}"; do echo "  · $s"; done
   echo
   echo "Совпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:"
-  echo "  python3 scripts/supplier_preflight.py --query '$Q' --candidate <имя> --target <имя>"
+  echo "  $ASK_PYTHON scripts/supplier_preflight.py --query '$Q' --candidate <имя> --target <имя>"
   echo "ASK_STATUS: HITS"
   exit 0
 fi

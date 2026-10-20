@@ -1,0 +1,134 @@
+{
+  "boundary": "TOOL_RUNTIME_NOT_PROOF",
+  "tests": "----------------------------------------------------------------------\nRan 34 tests in 1.746s\n\nOK\n",
+  "live_ask_tests": "----------------------------------------------------------------------\nRan 3 tests in 4.329s\n\nOK\n",
+  "refresh": "SPINE_REFRESH_COMPLETE reason=semantic-index-refresh",
+  "ask": {
+    "boundary": "LOCAL_RECEIPT_FOREIGN_INCOMPLETE",
+    "candidate_rows": [
+      {
+        "excerpt": "docs/GENEALOGY.md",
+        "metadata_sha256": "8c0402cebc82b4aa54cad8f959cb5c4cd9d921e9155a4859b414e5d8f0acef86",
+        "provider": "specs-docs",
+        "provider_id": "0544784a146253cc8c2d831f52051a27b0d2d90551790627029a417154f5d619",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "docs/GENEALOGY.md",
+        "url": "specs/maps"
+      },
+      {
+        "excerpt": "docs/Progress_Log.md",
+        "metadata_sha256": "b68a1758478a907403bed871c101117f1e5381764f88b0b892d48b37783b22c2",
+        "provider": "specs-docs",
+        "provider_id": "6aa93d137191fceb3301885234558349572f7d2e1647b8cfe91769c8dfbab39f",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "docs/Progress_Log.md",
+        "url": "specs/maps"
+      },
+      {
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "excerpt": "@@ -1,3 @@ (0 before, 90 after)\n# CF22: отложенная исследовательская ветка, 20 октября 2026\n\nSTATUS: PARKED_REOPENABLE",
+        "metadata_sha256": "acfaf8a83d5a8aeb2fc8a5edb4e37c66bddf6983b1899d5032b9b7bd4e8e0e0e",
+        "provider": "q3_docs",
+        "provider_id": "#8d8607",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "CF22: отложенная исследовательская ветка, 20 октября 2026",
+        "url": "qmd://q3_docs/experiments/cf22-pysr/archive-2026-10-20.md"
+      },
+      {
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "excerpt": "@@ -1,3 @@ (0 before, 79 after)\n# CF22 PySR pilot — 2026-10-20\n\n**Executed. Three generated upper-envelope candidates were refuted.**",
+        "metadata_sha256": "15dc86f0b611fadced880f25861800b41d741503ed6d18effee5e6bf9beaacbf",
+        "provider": "q3_docs",
+        "provider_id": "#7e628d",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "CF22 PySR pilot — 2026-10-20",
+        "url": "qmd://q3_docs/experiments/cf22-pysr/result.md"
+      },
+      {
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "excerpt": "@@ -72,4 @@ (71 before, 25 after)\nможет сохранять отрицательный вклад. J_G — диагностический показатель,\nа не новая мажоранта с улучшенным CF22-показателем.\n\n## Следующий математический вопрос",
+        "metadata_sha256": "6583af89fe80467630e0fc0e8034fa18b9ee5a757218cdd584920a91ae95281f",
+        "provider": "q3_docs",
+        "provider_id": "#1e20fc",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "Полная C: разбиение по общему идеальному делителю",
+        "url": "qmd://q3_docs/experiments/cf22-pysr/gcd-split/result.md"
+      },
+      {
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "excerpt": "@@ -3,4 @@ (2 before, 90 after)\n2026-10-20. FINITE_FEATURE_INSUFFICIENCY. PySR fits:0.\nОбласть: сохранённая полная панель, не асимптотическая CF22.\n\n## Выбранный блок",
+        "metadata_sha256": "835fed807266e027070bccfa474a84da68f887092184c1ef19b7bed6f4b751cb",
+        "provider": "q3_docs",
+        "provider_id": "#a4d87b",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "Локальный блок для PySR: признаки не определяют ответ",
+        "url": "qmd://q3_docs/experiments/cf22-pysr/local-block/result.md"
+      },
+      {
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "excerpt": "@@ -2,4 @@ (1 before, 92 after)\n\n2026-10-20. Один fit выполнен. Нового тождества и выигрыша CF22 не получено.\n\n## Какой признак добавили",
+        "metadata_sha256": "0167b6c6e5bc07479ed2a4fd92c66a8193d45c2830b1414e5f76addc8d857407",
+        "provider": "q3_docs",
+        "provider_id": "#3af083",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "Арифметический признак найден на панели; ограниченный PySR выполнен",
+        "url": "qmd://q3_docs/experiments/cf22-pysr/character-features/result.md"
+      },
+      {
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "excerpt": "@@ -1,3 @@ (0 before, 132 after)\n# Реакция полного CF22-источника на неединичные маски\n\n**Эксперимент выполнен 20.10.2026.** Простая аддитивность масок опровергнута:",
+        "metadata_sha256": "9c10bad84e5a24126aae77f7042c5f919c71a2c9e5aa3fff3c97f36910762ddc",
+        "provider": "q3_docs",
+        "provider_id": "#4678e2",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "title": "Реакция полного CF22-источника на неединичные маски",
+        "url": "qmd://q3_docs/experiments/cf22-pysr/nonunit/result.md"
+      }
+    ],
+    "external_lean": "DEFERRED",
+    "provider_rows": [
+      {
+        "failure_count": 0,
+        "hit_store_count": 2,
+        "provider": "local-shelves",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "status": "HITS"
+      },
+      {
+        "candidate_count": 6,
+        "candidate_hashes": [
+          "acfaf8a83d5a8aeb2fc8a5edb4e37c66bddf6983b1899d5032b9b7bd4e8e0e0e",
+          "15dc86f0b611fadced880f25861800b41d741503ed6d18effee5e6bf9beaacbf",
+          "6583af89fe80467630e0fc0e8034fa18b9ee5a757218cdd584920a91ae95281f",
+          "835fed807266e027070bccfa474a84da68f887092184c1ef19b7bed6f4b751cb",
+          "0167b6c6e5bc07479ed2a4fd92c66a8193d45c2830b1414e5f76addc8d857407",
+          "9c10bad84e5a24126aae77f7042c5f919c71a2c9e5aa3fff3c97f36910762ddc"
+        ],
+        "collection_identity": "55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1",
+        "corpus_sha256": "eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277",
+        "provider": "q3_docs",
+        "query": "CF22",
+        "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+        "status": "CANDIDATES"
+      }
+    ],
+    "query": "CF22",
+    "query_sha256": "1cbb23e700920b2ee330347262eefa44b42bf97c2469c47803e4f34b212819e8",
+    "schema": "q3_ask_local_receipt.v1"
+  }
+}

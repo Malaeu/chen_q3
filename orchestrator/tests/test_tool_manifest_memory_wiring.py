@@ -6,6 +6,7 @@ import argparse
 import contextlib
 import importlib.util
 import io
+import json
 import os
 import re
 import sqlite3
@@ -427,6 +428,129 @@ class ToolManifestMemoryPlants(unittest.TestCase):
         self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
         self.assertIn("ASK_STATUS: INCOMPLETE_FAST_REQUIRES_DEEP", proc.stdout)
         self.assertNotIn("НЕ НАЙДЕНО НИГДЕ", proc.stdout)
+
+    def test_ask_empty_receipt_and_external_python_selection(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            script = repo / "ask.sh"
+            script.write_bytes((REPO / "ask.sh").read_bytes())
+            script.chmod(0o755)
+
+            system_bin = repo / "system-bin"
+            system_bin.mkdir()
+            system_python = system_bin / "python3"
+            system_python.write_text(
+                "#!/bin/sh\n"
+                'printf "%s\\n" "$*" >> "$ASK_TEST_SYSTEM_CALLS"\n'
+                "exit 97\n",
+                encoding="utf-8",
+            )
+            system_python.chmod(0o755)
+
+            venv_python = repo / ".venv/bin/python"
+            venv_python.parent.mkdir(parents=True)
+            venv_python.write_text(
+                "#!/bin/sh\n"
+                'printf "%s\\n" "$*" >> "$ASK_TEST_VENV_CALLS"\n'
+                'if [ "${1:-}" = "-c" ]; then\n'
+                '  case "$2" in\n'
+                '    "import yaml") exit 0 ;;\n'
+                '    *validate_semantic_index*)\n'
+                '      case "$2" in\n'
+                '        *corpus_sha256*) printf \'%s\\n\' \'{"corpus_sha256":"fixture-corpus","collection_identity":"fixture-collection"}\' ;;\n'
+                '        *) printf \'%s\\n\' PASS ;;\n'
+                '      esac\n'
+                '      exit 0\n'
+                '      ;;\n'
+                '    *) exec "$ASK_TEST_REAL_PYTHON" "$@" ;;\n'
+                '  esac\n'
+                'fi\n'
+                'if [ "${1:-}" = "scripts/research_oracle.py" ]; then printf \'%s\\n\' \'[]\'; exit 0; fi\n'
+                'if [ "${1:-}" = "scripts/search_external_lean.py" ]; then\n'
+                '  printf \'%s\\n\' \'{"bases_queried":[],"errors":[],"matches":[]}\'\n'
+                "  exit 0\n"
+                "fi\n"
+                'exec "$ASK_TEST_REAL_PYTHON" "$@"\n',
+                encoding="utf-8",
+            )
+            venv_python.chmod(0o755)
+
+            explicit_python = repo / "configured-python"
+            explicit_python.write_text(
+                "#!/bin/sh\n"
+                'printf "%s\\n" "$*" >> "$ASK_TEST_EXPLICIT_CALLS"\n'
+                'exec "$ASK_TEST_VENV_PYTHON" "$@"\n',
+                encoding="utf-8",
+            )
+            explicit_python.chmod(0o755)
+
+            venv_calls = repo / "venv-calls.txt"
+            explicit_calls = repo / "explicit-calls.txt"
+            system_calls = repo / "system-calls.txt"
+
+            def run_ask(*, configured: bool) -> subprocess.CompletedProcess[str]:
+                env = dict(os.environ)
+                env.pop("PYTHON", None)
+                env["PATH"] = f"{system_bin}:{env['PATH']}"
+                env["ASK_TEST_VENV_CALLS"] = str(venv_calls)
+                env["ASK_TEST_EXPLICIT_CALLS"] = str(explicit_calls)
+                env["ASK_TEST_SYSTEM_CALLS"] = str(system_calls)
+                env["ASK_TEST_VENV_PYTHON"] = str(venv_python)
+                env["ASK_TEST_REAL_PYTHON"] = sys.executable
+                if configured:
+                    env["PYTHON"] = str(explicit_python)
+                return subprocess.run(
+                    [
+                        "/bin/bash",
+                        str(script),
+                        "--deep",
+                        "empty_candidate_regression_20261020",
+                    ],
+                    cwd=repo,
+                    env=env,
+                    capture_output=True,
+                    text=True,
+                    timeout=20,
+                )
+
+            automatic = run_ask(configured=False)
+            self.assertIn("scripts/search_external_lean.py", venv_calls.read_text())
+            auto_calls = venv_calls.read_text()
+            self.assertIn("validate_semantic_index", auto_calls)
+            self.assertIn("scripts/research_oracle.py query", auto_calls)
+            self.assertIn("q3_ask_local_receipt.v1", auto_calls)
+            qmd_query_calls = [
+                line
+                for line in auto_calls.splitlines()
+                if "scripts/research_oracle.py query" in line
+            ]
+            search_call = next(line for line in qmd_query_calls if "--mode search" in line)
+            vsearch_call = next(line for line in qmd_query_calls if "--mode vsearch" in line)
+            self.assertIn("--min-score 0", search_call)
+            self.assertNotIn("--min-score 0", vsearch_call)
+            self.assertFalse(
+                system_calls.exists(), "ask.sh must not fall back to system python3"
+            )
+            receipt_line = next(
+                line
+                for line in automatic.stdout.splitlines()
+                if line.startswith("ASK_RECEIPT_JSON: ")
+            )
+            receipt = json.loads(receipt_line.partition(": ")[2])
+            self.assertEqual(receipt["candidate_rows"], [])
+            self.assertIn("\nASK_STATUS: INCOMPLETE\n", automatic.stdout)
+
+            configured = run_ask(configured=True)
+            self.assertIn(
+                "scripts/search_external_lean.py", explicit_calls.read_text()
+            )
+            self.assertIn("validate_semantic_index", explicit_calls.read_text())
+            self.assertTrue(
+                any(
+                    line.startswith("ASK_RECEIPT_JSON: ")
+                    for line in configured.stdout.splitlines()
+                )
+            )
 
     def test_spine_view_exposes_recent_branch_decisions(self) -> None:
         validated_gate = {

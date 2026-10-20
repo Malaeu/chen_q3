@@ -1,0 +1,2 @@
+Shortest path (1 hops):
+  Goal058DirectGroundZeroEscape.lean --imports_module [EXTRACTED]--> GenericZeroTransfer.lean

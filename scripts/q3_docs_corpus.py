@@ -19,6 +19,9 @@ MAX_SEMANTIC_LEAN_BYTES = 20_000
 DIRECT_FILES = (
     "SESSION_ENTRY.md",
     "IMPLEMENTATION_PLAN.md",
+    "docs/Codex/NEXT.md",
+    "docs/Codex/PAPER_CHAIN.md",
+    "docs/Codex/TOOL_REPAIR_GRAPH_2026-10-20.md",
     "docs/CODEX_CONTROL.md",
     "docs/GENEALOGY.md",
     "docs/Progress_Log.md",
@@ -26,6 +29,10 @@ DIRECT_FILES = (
     "docs/RECORDING_RULES.md",
     "docs/GLOSSARY.md",
     "docs/cartographer/TOOLS.yaml",
+    "docs/literature/openai_math_2026-10-07/CCM_COMPOSITE_SIGN_TARGET.md",
+    "docs/literature/openai_math_2026-10-07/CCM_FIXED_PRIME_COMPRESSION_TEST.md",
+    "docs/literature/openai_math_2026-10-07/DIRECT_Q3_THEOREM_TRANSFER.md",
+    "experiments/cf22_pysr/ARCHIVE_2026-10-20.md",
     "orchestrator/KNOWLEDGE_SPINE.md",
     "orchestrator/AUTOPSY_SCHEMA.md",
     "orchestrator/SENSOR_CONTRACTS.md",
@@ -47,6 +54,8 @@ DIRECT_FILES = (
 
 GLOB_PATTERNS = (
     "docs/routeB_bus/**/*.md",
+    "docs/literature/**/*CONCLUSION.md",
+    "experiments/cf22_pysr/**/RESULT.md",
     "q3.lean.aristotle/docs/insights/**/*.md",
     "q3.lean.aristotle/docs/reviewed_notes/**/*.md",
     "q3.lean.aristotle/ACTIVE/**/*.md",

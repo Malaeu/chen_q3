@@ -187,6 +187,37 @@ class ContextualRigidDependencyPlants(unittest.TestCase):
                 selected,
             )
 
+    def test_collect_sources_includes_live_frontier_and_reopenable_research(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            included = [
+                "docs/Codex/NEXT.md",
+                "docs/Codex/PAPER_CHAIN.md",
+                "docs/literature/openai_math_2026-10-07/CCM_COMPOSITE_SIGN_TARGET.md",
+                "docs/literature/openai_math_2026-10-07/CCM_FIXED_PRIME_COMPRESSION_TEST.md",
+                "docs/literature/openai_math_2026-10-07/DIRECT_Q3_THEOREM_TRANSFER.md",
+                "docs/literature/openai_math_2026-10-07/CCM_MOMENT_Q10_CONCLUSION.md",
+                "experiments/cf22_pysr/ARCHIVE_2026-10-20.md",
+                "experiments/cf22_pysr/RESULT.md",
+                "experiments/cf22_pysr/correlation/RESULT.md",
+            ]
+            excluded = [
+                "docs/literature/openai_math_2026-10-07/PROSHKA_VERDICT_FULL_CCM_Q10.md",
+                "docs/literature/openai_math_2026-10-07/PROSHKA_Q10.txt",
+                "experiments/cf22_pysr/correlation/PROSHKA_VERDICT_FULL.md",
+            ]
+            for rel in included + excluded:
+                path = repo / rel
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("fixture\n", encoding="utf-8")
+
+            selected = {
+                path.relative_to(repo).as_posix()
+                for path in q3_docs_corpus.collect_sources(repo)
+            }
+            self.assertTrue(set(included) <= selected)
+            self.assertTrue(set(excluded).isdisjoint(selected))
+
     def test_gate_rejects_actual_leaked_corpus_member(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             repo = Path(tmp)

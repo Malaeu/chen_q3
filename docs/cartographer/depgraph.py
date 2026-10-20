@@ -14,8 +14,8 @@
   КОНУС КРЫШИ   что реально нужно `rh_of_canonical_strip_slots` (обратный обход)
   ГЛУБИНА       длина самой длинной цепи внутри конуса
   РАЗРЕЗЫ       точки сочленения конуса: узлы, чьё удаление рвёт связь с крышей.
-                Это ОПОРЫ, вычисленные из ядра, а не объявленные нами
-  СИРОТЫ        доказанное, до чего крыше нет дела
+                Это лексические опоры графа, не вывод ядра Lean
+  ВНЕ КОНУСА    объявления вне этого лексического обхода; полезность не установлена
 
 Ограничения, названные прямо:
   * рёбра лексические: имя в теле = ребро. Совпадение имён с Mathlib или
@@ -50,8 +50,8 @@ COMMENT_BLOCK = re.compile(r"/-.*?-/", re.S)
 
 def strip_comments(text: str) -> str:
     """Комментарии выкидываем: упоминание имени в доке — не зависимость."""
-    text = COMMENT_BLOCK.sub(" ", text)
-    return COMMENT_LINE.sub(" ", text)
+    text = COMMENT_BLOCK.sub(lambda m: "".join("\n" if c == "\n" else " " for c in m.group()), text)
+    return COMMENT_LINE.sub(lambda m: " " * len(m.group()), text)
 
 
 def collect(root: Path):
@@ -62,7 +62,7 @@ def collect(root: Path):
             continue
         raw = path.read_text(encoding="utf-8", errors="replace")
         clean = strip_comments(raw)
-        marks = [(m.start(), m.group(2)) for m in DECL.finditer(clean)]
+        marks = [(m.start(2), m.group(2)) for m in DECL.finditer(clean)]
         for i, (pos, name) in enumerate(marks):
             end = marks[i + 1][0] if i + 1 < len(marks) else len(clean)
             line = raw.count("\n", 0, pos) + 1
@@ -183,6 +183,7 @@ def main():
     uses = build_edges(decls, bodies, min_name=a.min_name)
     edges = sum(len(v) for v in uses.values())
 
+    print("BOUNDARY: lexical name references, not kernel dependencies or supplied hypotheses")
     print(f"объявлений в дереве:  {len(decls)}  (имена короче {a.min_name} как ЦЕЛИ рёбер отброшены)")
     print(f"рёбер (A упоминает B): {edges}")
     print(f"узлов с исходящими:    {len(uses)}")
@@ -200,7 +201,7 @@ def main():
     print(f"  глубина самой длинной цепи: {d}")
 
     orphans = set(decls) - inside
-    print(f"\nСИРОТЫ (доказано, но крыше не нужно): {len(orphans)}")
+    print(f"\nВНЕ ЛЕКСИЧЕСКОГО КОНУСА (не вывод о доказанности или полезности): {len(orphans)}")
 
     cuts = cut_vertices(a.target, uses, inside)
     print(f"\nРАЗРЕЗЫ — узлы, чьё удаление отрывает часть конуса ({len(cuts)}):")
@@ -213,6 +214,7 @@ def main():
 
     if a.json:
         Path(a.json).write_text(json.dumps({
+            "boundary": "LEXICAL_NAME_REFERENCES_NOT_KERNEL_DEPENDENCIES",
             "target": a.target,
             "declarations": len(decls),
             "edges": edges,

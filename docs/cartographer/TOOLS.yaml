@@ -77,6 +77,7 @@ team_runtime_writer_inventory:
     - six-centre-assembly
     - slope-split
     - three-lobe-preflight
+    - q3-graphify-source
     - task-specific-generators
     - tool-census
     - xi-row-zeros
@@ -1905,6 +1906,25 @@ tool_families:
         authority: HEURISTIC_QUEUE_NOT_PROOF
         records_to: stdout
         last_verified: 2026-08-10
+
+      - id: q3-graphify-source
+        classification: MANUAL
+        status: AVAILABLE
+        audience: [CODEX, CLAUDE_CODE, HUMAN]
+        mode: WRITES_DERIVED
+        path: scripts/q3_graphify_source.py
+        invoke: python3 scripts/q3_graphify_source.py --out <new-output-directory>
+        trigger: Explicit proof source-reference graph audit or refresh.
+        writes: true
+        approval: TASK_SCOPE_ISOLATED_DERIVED_OUTPUT
+        authority: SOURCE_REFERENCE_GRAPH_NOT_PROOF_DEPENDENCY_GRAPH
+        records_to: isolated graph.json and coverage.json
+        last_verified: 2026-10-20 local source graph and Graphify 0.9.92 cluster-only smoke; proof semantics excluded
+        note: >-
+          Local tracked Lean imports, TeX includes, and Markdown references.
+          Use installed Graphify cluster-only with --graph, --no-label and
+          --no-viz for local analysis; never implicitly invoke paid semantic
+          extraction. Does not certify theorem hypotheses or mathematical edges.
 
       - id: depgraph-roof-cone
         classification: MANUAL

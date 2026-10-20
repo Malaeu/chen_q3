@@ -1,0 +1,5 @@
+lean Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
+'Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi' depends on axioms: [propext, Classical.choice, Quot.sound]
+scan Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean
+q3_check ok
