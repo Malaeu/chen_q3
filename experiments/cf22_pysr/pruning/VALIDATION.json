@@ -1,0 +1,15 @@
+{
+  "scope": "FINITE_PANEL_ONLY",
+  "tests_passed": 8,
+  "review": "Independent read-only review: no material findings",
+  "sha256": {
+    "prune.py": "e3c7cc4cb4a89a5856f091875a993dd1cfa990baa7d497cc25fe18c7a514c542",
+    "test_prune.py": "09ecb70bd269d3ce618b4c73e9cc64edd5ed9b829335f5f04e7506c3a094b742",
+    "verify_rational.py": "0aed3e26fda8ac6d0a9d7eafee5773ef5820cbb28a3642c66c73fad5a5493980",
+    "result.json": "3f78f87c8f06caee8df22971501c878d44d6048fb790450f3db8295b7dc64524",
+    "rational_verification.json": "d2caabc34af4c25051bb0ffc49ab054388de5fc1b0d4e01316adda683b55d0a9",
+    "evaluate.py": "06c48c3075335205aeb80cdc7a142d1b0868e82a7f2a1006391764222112faeb"
+  },
+  "initial_output_archived": "/tmp/cf22-pruning-root-initial-result.json",
+  "final_output": "result.json"
+}

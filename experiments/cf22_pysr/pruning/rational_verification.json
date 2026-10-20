@@ -1,0 +1,81 @@
+{
+  "scope": "FINITE_SAVED_PANEL_ONLY_NOT_CF22",
+  "source_commit": "f9c298bbcd7aa4ac4a1be3e689baf1bd0554a65d",
+  "source_sha256": {
+    "experiments/cf22_pysr/nonunit/main.json": "5986f2f5fbd8cc87116befb1ac3d08222804ec3f79c1ceb4e0408182c943bdcb",
+    "experiments/cf22_pysr/nonunit/heldout.json": "87b6ed649621fb428e71276fcc62701501140afc2a9bff320337ee54596c6cfe",
+    "experiments/cf22_pysr/correlation/summary.json": "c534463e782c637bf7aa467800dd571997da95e855d8443aa6f9acc47ca18ef5"
+  },
+  "all_20_full_C_group_checks": [
+    "U48_Pproduction_o1",
+    "U48_Pproduction_o-1",
+    "U48_P7_o1",
+    "U48_P7_o-1",
+    "U48_P13_o1",
+    "U48_P13_o-1",
+    "U64_Pproduction_o1",
+    "U64_Pproduction_o-1",
+    "U64_P7_o1",
+    "U64_P7_o-1",
+    "U64_P13_o1",
+    "U64_P13_o-1",
+    "U96_Pproduction_o1",
+    "U96_Pproduction_o-1",
+    "U96_P7_o1",
+    "U96_P7_o-1",
+    "U96_P13_o1",
+    "U96_P13_o-1",
+    "U48_P49_o1",
+    "U48_P49_o-1"
+  ],
+  "boxes": [
+    {
+      "name": "whole_panel",
+      "alpha": [
+        "0",
+        "1/100"
+      ],
+      "kappa": [
+        "0",
+        "19/1000"
+      ],
+      "delta": [
+        "0",
+        "1/100"
+      ],
+      "status": "EXCLUDED_ON_FINITE_PANEL",
+      "witness": "U64_Pproduction_o1",
+      "C_lower": "2838486049900786127707722405046477296322230873681771153/1000000000000000000000000000000000000000000000000000000",
+      "S_upper": "1099049844176718818566671851351976342617032070756336619814623/10000000000000000000000000000000000000000000000000000000000",
+      "envelope_upper": "27885975300878379084349207215568700313512475044505767424477837/10000000000000000000000000000000000000000000000000000000000000",
+      "strict_margin_lower": "498885198129482192728016834896072649709833692311944105522163/10000000000000000000000000000000000000000000000000000000000000",
+      "margin_decimal_for_display_only": 0.04988851981294822,
+      "without_cross_upper_diagnostic_only": "1419243024950393063853861202523238648161115436840885583/500000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "name": "nonunit_mixed",
+      "alpha": [
+        "0",
+        "1/100"
+      ],
+      "kappa": [
+        "0",
+        "3/1000"
+      ],
+      "delta": [
+        "0",
+        "1/100"
+      ],
+      "status": "EXCLUDED_ON_FINITE_PANEL",
+      "witness": "U64_P13_o1",
+      "C_lower": "62406208087303017017407457404553129431159527687167323/5000000000000000000000000000000000000000000000000000",
+      "S_upper": "261109589/200000",
+      "envelope_upper": "2447328767/200000000",
+      "strict_margin_lower": "1222988912303017017407457404553129431159527687167323/5000000000000000000000000000000000000000000000000000",
+      "margin_decimal_for_display_only": 0.2445977824606034,
+      "without_cross_upper_diagnostic_only": "21109580383377611745937837700256861091333355160563602511/10000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "method": "Exact Fraction arithmetic; rational sixth-root upper bound; U^-delta<=1",
+  "checker_sha256": "0aed3e26fda8ac6d0a9d7eafee5773ef5820cbb28a3642c66c73fad5a5493980"
+}
