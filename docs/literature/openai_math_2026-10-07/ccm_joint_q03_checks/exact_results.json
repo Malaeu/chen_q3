@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "counts": {
+    "full_mu_log_to_mangoldt": 192,
+    "short_long_all_atom_returns": 960,
+    "proper_power_and_cutoff_controls": 2,
+    "reflected_pair_lower_bound_and_return": 1125,
+    "critical_pair_sign_controls": 225,
+    "false_modulus_square_rejected": 1,
+    "allpass_pair_invariance": 27,
+    "returned_exponent_comparisons": 4
+  },
+  "total_checks": 2536,
+  "scope": "finite exact coefficient and signed-pair algebra; no CCM sign certificate",
+  "ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "script_sha256": "ed4d4baf57e0e4a2a1efcc16003f5db8e6bb1747f6dccb4693d45261bff4f2df"
+}

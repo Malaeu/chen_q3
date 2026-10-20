@@ -1,0 +1,101 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_INTERVAL",
+  "cases": 9,
+  "precision": "binary64",
+  "scope": "transform conventions on original constrained profiles at legal schedules; no primes, zeta zeros or CCM spectra evaluated",
+  "prior_attempt": "A 70-digit, 9-case mpmath quadrature exceeded the 45s execution limit and produced no completed result; not counted as PASS.",
+  "max_error": 2.788417451505779e-15,
+  "rows": [
+    {
+      "m": "2^64",
+      "epsilon": "1/64",
+      "M=R": 2,
+      "profile": "odd",
+      "Laplace_abs_error": 8.542522420166516e-18,
+      "scaled_pair_abs_error": 6.505213034913027e-19,
+      "removable_resonance_abs_error": 1.7772560954180848e-15,
+      "moment_coefficient_abs_error": 0.0
+    },
+    {
+      "m": "2^64",
+      "epsilon": "1/64",
+      "M=R": 2,
+      "profile": "even",
+      "Laplace_abs_error": 1.6869015159370132e-17,
+      "scaled_pair_abs_error": 6.3527471044072525e-21,
+      "removable_resonance_abs_error": 1.9684273928930824e-16,
+      "moment_coefficient_abs_error": 1.6668921920349325e-17
+    },
+    {
+      "m": "2^64",
+      "epsilon": "1/64",
+      "M=R": 2,
+      "profile": "mixed",
+      "Laplace_abs_error": 1.2212564154686428e-17,
+      "scaled_pair_abs_error": 8.470329472543003e-21,
+      "removable_resonance_abs_error": 2.9712694009999903e-16,
+      "moment_coefficient_abs_error": 2.6355879703905836e-17
+    },
+    {
+      "m": "2^128",
+      "epsilon": "1/64",
+      "M=R": 4,
+      "profile": "odd",
+      "Laplace_abs_error": 3.0357660829594124e-18,
+      "scaled_pair_abs_error": 1.1858461261560205e-20,
+      "removable_resonance_abs_error": 8.882886626320501e-16,
+      "moment_coefficient_abs_error": 0.0
+    },
+    {
+      "m": "2^128",
+      "epsilon": "1/64",
+      "M=R": 4,
+      "profile": "even",
+      "Laplace_abs_error": 1.3535223084367396e-17,
+      "scaled_pair_abs_error": 1.1911400820763599e-22,
+      "removable_resonance_abs_error": 3.557925793735828e-16,
+      "moment_coefficient_abs_error": 5.893353862474048e-18
+    },
+    {
+      "m": "2^128",
+      "epsilon": "1/64",
+      "M=R": 4,
+      "profile": "mixed",
+      "Laplace_abs_error": 1.0979922614496599e-17,
+      "scaled_pair_abs_error": 5.293955920339377e-22,
+      "removable_resonance_abs_error": 9.342629177225617e-16,
+      "moment_coefficient_abs_error": 6.074730116030579e-18
+    },
+    {
+      "m": "2^192",
+      "epsilon": "1/64",
+      "M=R": 8,
+      "profile": "odd",
+      "Laplace_abs_error": 1.9733670934228314e-17,
+      "scaled_pair_abs_error": 1.0587911840678754e-22,
+      "removable_resonance_abs_error": 9.492423198367192e-16,
+      "moment_coefficient_abs_error": 2.4059516394536344e-18
+    },
+    {
+      "m": "2^192",
+      "epsilon": "1/64",
+      "M=R": 8,
+      "profile": "even",
+      "Laplace_abs_error": 6.43919148510068e-18,
+      "scaled_pair_abs_error": 1.1166938269465874e-23,
+      "removable_resonance_abs_error": 2.788417451505779e-15,
+      "moment_coefficient_abs_error": 4.811903278907269e-18
+    },
+    {
+      "m": "2^192",
+      "epsilon": "1/64",
+      "M=R": 8,
+      "profile": "mixed",
+      "Laplace_abs_error": 1.9554117641523165e-17,
+      "scaled_pair_abs_error": 4.48331892003741e-22,
+      "removable_resonance_abs_error": 6.89305347993075e-16,
+      "moment_coefficient_abs_error": 4.959996369797656e-18
+    }
+  ],
+  "script_sha256": "b4fabc9d88102e5944bbaea7dde663dd8c9d098509f0d10022f45b29a80fdcb5"
+}
