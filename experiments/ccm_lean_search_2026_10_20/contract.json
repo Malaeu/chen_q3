@@ -1,0 +1,18 @@
+{
+  "head": "65b51c162b823fb239217d532467113cc1b3744f",
+  "source_sha256": {
+    "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean": "282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89",
+    "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean": "f2f9d248a6f2ad703428c624ccbaf5a75b340655e4b4ebbbe3f1d77355523815",
+    "docs/literature/openai_math_2026-10-07/FULL_CCM_MOMENT_SCHEDULE.md": "ff817028f38bd3ca79d816a9aef29ef9a91313eb9c0da656008267f274dfb347",
+    "docs/literature/openai_math_2026-10-07/CCM_FIXED_PRIME_COMPRESSION_TEST.md": "833d2d3ff218c16e62a3c0f179f847e264e54536b11e5cff3b9eeec1fb687d09",
+    "q3.lean.aristotle/lean-toolchain": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8",
+    "q3.lean.aristotle/lake-manifest.json": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a"
+  },
+  "scope": "full CCM N=m L=log(m), real quadratic form, fixed exponent 1/4",
+  "no_assumed_floor": true,
+  "limits": {
+    "attempts": 4,
+    "seconds_each": 45,
+    "maxHeartbeats": 200000
+  }
+}

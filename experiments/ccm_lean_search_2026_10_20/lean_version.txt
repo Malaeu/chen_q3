@@ -1,0 +1,2 @@
+Lean (version 4.26.0, arm64-apple-darwin24.6.0, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes

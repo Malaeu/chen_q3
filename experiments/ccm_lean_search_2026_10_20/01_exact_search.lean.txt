@@ -1,0 +1,20 @@
+import Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix
+
+open Matrix
+open scoped BigOperators
+namespace Q3.RouteB
+
+set_option maxHeartbeats 200000
+
+def CCMQuarterFloorCandidate : Prop :=
+  ∃ C : ℝ, 0 < C ∧ ∃ m0 : ℕ,
+    ∀ m : ℕ, max 2 m0 ≤ m →
+      ∀ c : CCMModeFinite m → ℝ,
+        -C * (m : ℝ) ^ ((1 : ℝ) / 4) * (∑ i, c i ^ 2) ≤
+          ∑ i, ∑ j, c i * ccmWeilMatFinite m m i j * c j
+
+theorem attempt : CCMQuarterFloorCandidate := by
+  exact?
+
+
+end Q3.RouteB

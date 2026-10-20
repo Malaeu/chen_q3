@@ -1,0 +1,243 @@
+{
+  "boundary": "TEXT_OR_SEMANTIC_MATCHES_ARE_CANDIDATES;_ONLY_DIRECT_LEAN_TYPECHECK_WITH_STANDARD_AXIOMS_ESTABLISHES_EXACT_FIT",
+  "candidate": null,
+  "candidate_provenance": null,
+  "candidate_requested": null,
+  "comparison": null,
+  "environment": null,
+  "external_lean": {
+    "base_results": [
+      {
+        "base_id": "zeta23",
+        "canonical_root": "/Users/emalam/GitHub/zeta-23-lean",
+        "exact_candidate": null,
+        "identity_after": {
+          "canonical_root": "/Users/emalam/GitHub/zeta-23-lean",
+          "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+          "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+          "git_root_relative_path": ".",
+          "git_top_level": "/Users/emalam/GitHub/zeta-23-lean",
+          "kind": "GIT_TREE_AND_CLEAN_LEAN",
+          "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+          "lean_status_clean": true,
+          "root_device": 16777231,
+          "root_inode": 213937623,
+          "searched_regular_source_count": 329
+        },
+        "identity_before": {
+          "canonical_root": "/Users/emalam/GitHub/zeta-23-lean",
+          "git_head": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+          "git_head_object_id": "3635e74826a4c1fcece7d1cd2b6fa75e43a00510",
+          "git_root_relative_path": ".",
+          "git_top_level": "/Users/emalam/GitHub/zeta-23-lean",
+          "kind": "GIT_TREE_AND_CLEAN_LEAN",
+          "lean_manifest_sha256": "95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9",
+          "lean_status_clean": true,
+          "root_device": 16777231,
+          "root_inode": 213937623,
+          "searched_regular_source_count": 329
+        },
+        "searched_regular_source_count": 329
+      }
+    ],
+    "bases_queried": [
+      "zeta23"
+    ],
+    "boundary": "CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE",
+    "budget_seconds": 15.0,
+    "candidate": null,
+    "candidate_provenance": null,
+    "candidate_sha256": null,
+    "elapsed_seconds": 0.223916,
+    "enabled_bases": [
+      "zeta23"
+    ],
+    "errors": [],
+    "matches": [
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 12,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Analytic/RectangleLogDeriv.lean",
+        "snippet": "  f − A p/(s − p) bounded near each p ∈ S  ⟹  RectangleIntegral' f z w = Σ_{p∈S} A p."
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 12,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Analytic/Stirling.lean",
+        "snippet": "    the trigamma series for the μ′ bound;"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 51,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Analytic/Stirling.lean",
+        "snippet": "/-- Trigamma termwise series (used in Zeta23/GammaFacts/Mu.lean, deriv_bound)."
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 129,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Analytic/Stirling.lean",
+        "snippet": "    refine Summable.of_norm_bounded_eventually"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 16,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "import Zeta23.TracesBoundsE"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 19,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "import Mathlib.Analysis.Complex.ExponentialBounds"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 20,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "import Mathlib.Analysis.Real.Pi.Bounds"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 33,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "  `TracesBounds`; Riemann–von Mangoldt and the local count — `Hypotheses.lean`; taper facts —"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 147,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "Here the `O(·)` is made explicit: with `B ≥ 0` any common bound for `|tr Ê|` and `‖Ê‖_F`"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 201,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "/-- **[eq:nplus-lower]** (proof of `thm:B` in the paper): lem:CS (`RHLinalg.cauchySchwarz_count`)"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": "nplus_lower",
+        "line": 206,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "theorem nplus_lower {Gt : Matrix n n 𝕜} (hGt : Gt.IsHermitian) {θ : ℝ} (hθ : 0 ≤ θ)"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 279,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "/-- Lipschitz bound for `F` on `[0,1]`: `F(y) − F(x) ≤ y − x` for `0 ≤ x ≤ y ≤ 1`"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 321,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "`frAh = ‖Â‖_F²`, `B` = the prop:tail bound for `|tr Ê|` and `‖Ê‖_F` (`≤ 2θ₀/L`). -/"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": "N0star_lower_explicit",
+        "line": 330,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "theorem N0star_lower_explicit"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": "N0star_lower_H",
+        "line": 342,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "theorem N0star_lower_H"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": "eps_form_of_isLittleO",
+        "line": 488,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "theorem eps_form_of_isLittleO {H₀ : ℝ} {N lower err : ℝ → ℝ}"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 489,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "    (hmain : ∀ᶠ T in atTop, H₀ * N T - err T ≤ lower T)"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 491,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "    ∀ ε > 0, ∃ T₀, ∀ T ≥ T₀, (H₀ - ε) * N T ≤ lower T := by"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 501,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "/-- E1. The explicit error term of `N0star_lower_H` is `o(N)`, given:"
+      },
+      {
+        "base_id": "zeta23",
+        "declaration_name": null,
+        "line": 515,
+        "match_kind": "TEXT_CANDIDATE",
+        "path": "Zeta23/Assembly.lean",
+        "snippet": "    refine IsBigO.of_bound (7 + 2 * K) ?_"
+      }
+    ],
+    "max_matches": 20,
+    "query": "ccmWeilMatFinite lower bound",
+    "query_sha256": "185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63",
+    "registry_sha256": "ca3d155334814ef8fd61e5bcd610efe273ca2e7455c0465e1c94fbe751bc6670",
+    "schema": "q3_external_lean_search.v2",
+    "terms": [
+      "ccmWeilMatFinite",
+      "lower",
+      "bound"
+    ]
+  },
+  "foreign_candidate": [],
+  "prose_candidates_present": false,
+  "query": "ccmWeilMatFinite lower bound",
+  "reason": "search produced recall candidates; no precise candidate supplied",
+  "schema": "q3_supplier_preflight.v1",
+  "shelf": {
+    "returncode": 0,
+    "status": "HITS",
+    "transcript": "\n── СТЫКОВКИ — входы и выходы ───────────────────────────────────\nПОСТАВЛЯЮТ (provides):\n  true_gap_lower_of_abs_endpoint_perturbations  q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean:25\n    -> явная нижняя граница floor ≤ trueHigh − trueLow\n  true_gap_lower_of_endpoint_perturbation_budget  q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean:16\n    -> нижняя граница зазора floor ≤ trueHigh − trueLow\n  safe_alpha_envelope_of_temple_residual_gap_bounds  q3.lean.aristotle/Q3/Proofs/RouteB/TempleResidualGapEnvelopeTransfer.lean:15\n    -> масштабируемая граница alpha через степенной масштаб\n  riemannBoundaryCellBridge_main  q3.lean.aristotle/Q3/Proofs/RouteB/R6BoundaryCellBridge.lean:197\n    -> partial\n  mode4HermitianSchur_det_pos_of_finiteLeft_lowerEnvelope_pos  q3.lean.aristotle/Q3/Proofs/RouteB/D0Mode4HermitianSchurTailEnvelopes.lean:111\n    -> определитель эрмитовой матрицы Шура строго положителен: 0 < det\nТРЕБУЮТ (requires):\n  D0AnchorFloorFromUnprojectedCentralMass  <-  a>0, C>0, оценка массы hmass, граница нормы hbound\n  lowerProductB_tendsto_zero  <-  явная формула lowerProductB\n  selectedFamily_locallyBounded_of_raw_bound_and_central_floor  <-  SelectedRawLocallyBounded + SelectedCentralFloor (конечные покомпактные оценки)\n  exists_refined_clusterData_of_raw_bounds  <-  centeredXi 0≠0 + SelectedRawLocallyBounded + SelectedCentralFloor\n  detector_decay_does_not_imply_relative_decay  <-  Tendsto lowerProductB → 0 (абсолютная сходимость к нулю уже установлена)\nШАГИ СБОРКИ (assembly):\n  [OWNER_DATA] GOAL057_CONTINUUM_NUMERATOR_BRIDGE шаг 13: равномерная нижняя оценка нормы пробной функции (даёт SelectedTrialNormalizerBounded)\nКОНТРПРИМЕРЫ (что охраняют):\n  one_envelope_residual_gap_bounds_do_not_force_safe_alpha: охраняет safe_alpha_envelope_of_temple_residual_gap_bounds · ломает все Temple/half-gap и lower-gap условия выполнены, но при од\n\n── LEAN — объявления в metadata index ──────────────────────────\nccmWeilMatFinite   Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean\nccmWeilMatFinite_13_2_eq_seven_class_layout   Q3/Proofs/RouteB/CCMFiniteWeilCell13N2SevenClassLayout.lean\nccmWeilMatFinite_apply   Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean\nccmWeilMatFinite_centrosymmetric   Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean\nccmWeilMatFinite_commutator   Q3/Proofs/RouteB/CCMFiniteWeilSourceCommutator.lean\nccmWeilMatFinite_commutator_complex   Q3/Proofs/RouteB/G6N1SelectedFerrersFiniteAssetBank.lean\nccmWeilMatFinite_full_trialLine_four_block_identity   Q3/Proofs/RouteB/CCMProposition59SourceTrialFeshbachPreflight.lean\nccmWeilMatFinite_one_eq   Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean\n\n── LEAN — на диске сейчас ──────────────────────────────────────\nq3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean:165:      Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi)\nq3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean:196:      Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi)\nq3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersGroundProposition59RealZeros.lean:59:        Matrix.mulVec (ccmWeilMatFinite ((selectedFerrersCofinalSourc\nq3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersGroundProposition59RealZeros.lean:66:              (ccmWeilMatFinite ((selectedFerrersCofinalSourceData P)\nq3.lean.aristotle/Q3/Proofs/RouteB/D0PstarSourceWeilFiniteFourierLedger.lean:182:          (Q3.RouteB.ccmWeilMatFinite i.m i.N j k : ℂ) *\nq3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersH2aSourceQuantities.lean:128:      ccmWeilMatFinite i.m i.N (ccmNegFinite i.N a) (ccmNegFinite i.N b) =\n\n── СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — search-кандидаты ─────────────\n[\n  {\n    \"docid\": \"#d58258\",\n    \"file\": \"qmd://q3_docs/docs/routeb-bus/proshka-h2a-lean-native-probe-adjudication-2026-08-11.md\",\n    \"score\": 0.12,\n    \"title\": \"STATUS: OPEN \\u2014 REPAIRED LEAN-NATIVE PROBE AUTHORIZED; ORIGINAL THREE-PROBE PLAN REJECTED\",\n    \"context\": null,\n    \"snippet\": \"@@ -255,4 @@ (254 before, 652 after)\\n\\n\\u0415\\u0441\\u043b\\u0438 `epsilon` \\u043e\\u043f\\u0440\\u0435\\u0434\\u0435\\u043b\\u0451\\u043d \\u043a\\u0430\\u043a `iInf`, lower-bound \\u044f\\u0432\\u043b\\u044f\\u0435\\u0442\\u0441\\u044f order fact.\\n\\n\\u0415\\u0441\\u043b\\u0438 `epsilon` \\u043f\\u0440\\u0438\\u0448\\u0451\\u043b \\u0438\\u0437 certificate, Mathlib Rayleigh \\u043d\\u0435 \\u0441\\u043e\\u0437\\u0434\\u0430\\u0451\\u0442 certificate.\"\n  },\n  {\n    \"docid\": \"#4468d0\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmfiniteweilbottomspectral.lean\",\n    \"score\": 0.13,\n    \"title\": \"CCMFiniteWeilBottomSpectral\",\n    \"context\": null,\n    \"snippet\": \"@@ -39,4 @@ (38 before, 73 after)\\n\\n/-- A global Rayleigh lower bound at epsilon makes the exact epsilon-shifted\\nCCM source matrix positive semidefinite. -/\\ntheorem ccmShiftedWeilMatFinite_posSemidef_of_bottomRayleigh\"\n  },\n  {\n    \"docid\": \"#61ab33\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-g1-cofinal-complement-floor-mythos-verdict-2026-08-14.md\",\n    \"score\": 0.13,\n    \"title\": \"Goal 058 G1 cofinal complement floor \\u2014 Mythos verdict\",\n    \"context\": null,\n    \"snippet\": \"@@ -39,4 @@ (38 before, 44 after)\\n\\nOne bonus corollary of the receiver in file 6, worth recording: once the floor holds and defect = 1 \\u2212 |\\u27e8\\u03be0, q\\u27e9|\\u00b2 \\u2264 \\u2016r\\u2016\\u00b2/\\u03b2\\u00b2 < 1, simplicity forces \\u03be0 to have definite parity, and an odd \\u03be0 would be orthogonal to the even q (defect = 1, contradiction). So evenness of the ground is a downstream cor...\"\n  },\n  {\n    \"docid\": \"#14eb3f\",\n    \"file\": \"qmd://q3_docs/docs/routeb-bus/proshka-054-1-next-split-adjudication-2026-08-05.md\",\n    \"score\": 0.13,\n    \"title\": \"PROSHKA_054_1_NEXT_SPLIT_ADJUDICATION_2026-08-05\",\n    \"context\": null,\n    \"snippet\": \"@@ -72,4 @@ (71 before, 445 after)\\n\\nccmWeilMatFinite_apply reduces each finite matrix entry to the literal scalar ccmWeilTauN1.\\n\\nccmWeilTauN1_symm supplies transpose symmetry.\"\n  },\n  {\n    \"docid\": \"#14eb3f\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/proshka-054-1-next-split-adjudication-2026-08-05.md\",\n    \"score\": 0.13,\n    \"title\": \"PROSHKA_054_1_NEXT_SPLIT_ADJUDICATION_2026-08-05\",\n    \"context\": null,\n    \"snippet\": \"@@ -72,4 @@ (71 before, 445 after)\\n\\nccmWeilMatFinite_apply reduces each finite matrix entry to the literal scalar ccmWeilTauN1.\\n\\nccmWeilTauN1_symm supplies transpose symmetry.\"\n  },\n  {\n    \"docid\": \"#dfc0a7\",\n    \"file\": \"qmd://q3_docs/docs/routeb-bus/proshka/proshka-verdict-goal058-g1-g3-source-envelope-discriminator-2026-08-13.md\",\n    \"score\": 0.14,\n    \"title\": \"STATUS: OPEN \\u2014 PHASE CHANGE RATIFIED; SOURCE-ENVELOPE DISCRIMINATOR SELECTED\",\n    \"context\": null,\n    \"snippet\": \"@@ -166,4 @@ (165 before, 679 after)\\n\\nThe phrase **\\u201cLandau\\u2013Widom class\\u201d** classifies a possible mechanism. It is not a lower-envelope theorem for the exact `ccmWeilMatFinite` even-sector gap.\\n\\nM1C is explicitly finite-cell evidence. It proves neither an all-large-\\\\(j\\\\) floor nor a scaling law. \\ue200filecite\\ue202turn187file12\\ue201\"\n  },\n  {\n    \"docid\": \"#22a4a4\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/active/requests/routeb-lamport-rh-closure/goal058-sector-envelope-source-discriminator-report-2026-08-13.md\",\n    \"score\": 0.14,\n    \"title\": \"Goal 058 sector-envelope source discriminator\",\n    \"context\": null,\n    \"snippet\": \"@@ -18,4 @@ (17 before, 363 after)\\nGoal 058. This does **not** say that the parity-sector theorem is false. It says\\nthat the present source tree supplies no exact lower envelope for the even gap,\\nno exact upper envelope for the source-trial even excess, and no exact upper\\nenvelope for the same source trial's odd mass on one precom...\"\n  },\n  {\n    \"docid\": \"#48d105\",\n    \"file\": \"qmd://q3_docs/docs/routeb-bus/proshka/proshka-next-after-8c3aec96-goal058-2026-08-12.md\",\n\n── СЕМАНТИЧЕСКИЙ ИНДЕКС q3_docs — vsearch-кандидаты ────────────\n[\n  {\n    \"docid\": \"#65ca4b\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/weilgramminusshift.lean\",\n    \"score\": 0.68,\n    \"title\": \"WeilGramMinusShift\",\n    \"context\": null,\n    \"snippet\": \"@@ -28,4 @@ (27 before, 365 after)\\n  holds unconditionally once `\\u0393 \\u2ab0 0`, because that sum **is** `\\u0393`.\\n* `weilShiftMatrix_re_lower_bound` \\u2014 part (c): the Cauchy\\u2013Schwarz corollary\\n  `c*Kc \\u2265 \\u2212(c_L + 2\\u2016\\u03b2\\u2016\\u00b2)\\u2016c\\u2016\\u00b2`, i.e. a lower bound on the bottom of the spectrum.\\n* `weilShiftMatrix_plant_*` \\u2014 part (d): the judge's plant `\\u0393 = diag(0,2)`,\"\n  },\n  {\n    \"docid\": \"#4468d0\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmfiniteweilbottomspectral.lean\",\n    \"score\": 0.68,\n    \"title\": \"CCMFiniteWeilBottomSpectral\",\n    \"context\": null,\n    \"snippet\": \"@@ -39,4 @@ (38 before, 73 after)\\n\\n/-- A global Rayleigh lower bound at epsilon makes the exact epsilon-shifted\\nCCM source matrix positive semidefinite. -/\\ntheorem ccmShiftedWeilMatFinite_posSemidef_of_bottomRayleigh\"\n  },\n  {\n    \"docid\": \"#d2373d\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmfiniteweilrealzeros.lean\",\n    \"score\": 0.68,\n    \"title\": \"CCMFiniteWeilRealZeros\",\n    \"context\": null,\n    \"snippet\": \"@@ -30,4 @@ (29 before, 45 after)\\n    (heig :\\n      Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon \\u2022 xi)\\n    (hxiEven : \\u2200 i, xi (ccmNegFinite N i) = xi i)\\n    (hnormalized : ccmEtaFinite N \\u2b1d\\u1d65 xi = 1)\"\n  },\n  {\n    \"docid\": \"#a79c30\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmfiniteweilparity.lean\",\n    \"score\": 0.67,\n    \"title\": \"CCMFiniteWeilParity\",\n    \"context\": null,\n    \"snippet\": \"@@ -6,4 @@ (5 before, 188 after)\\n/-\\nSource boundary:\\n- exact reflection action on the finite CCM source modes\\n- exact centrosymmetry plus a simple eigenspace and nonzero eta-normalization\"\n  },\n  {\n    \"docid\": \"#a7106c\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmfiniteweilshiftedrankone.lean\",\n    \"score\": 0.67,\n    \"title\": \"CCMFiniteWeilShiftedRankOne\",\n    \"context\": null,\n    \"snippet\": \"@@ -25,4 @@ (24 before, 166 after)\\n    Matrix (CCMModeFinite N) (CCMModeFinite N) \\u211d :=\\n  ccmWeilMatFinite mProject N -\\n    epsilon \\u2022 (1 : Matrix (CCMModeFinite N) (CCMModeFinite N) \\u211d)\\n\"\n  },\n  {\n    \"docid\": \"#fd405f\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/d0pstarsourceweilsesquilinearform.lean\",\n    \"score\": 0.67,\n    \"title\": \"D0PstarSourceWeilSesquilinearForm\",\n    \"context\": null,\n    \"snippet\": \"@@ -136,4 @@ (135 before, 61 after)\\n\\n/-- Explicit lower-bound constant supplied by the B3.0N archimedean shift\\nand the operator norms of the two bounded perturbations. -/\\nnoncomputable def sourceWeilLowerBoundConstant (i : PairIndex) : \\u211d :=\"\n  },\n  {\n    \"docid\": \"#9612fa\",\n    \"file\": \"qmd://q3_docs/full/sections/ind-ab/md-2-3-constants.tex\",\n    \"score\": 0.66,\n    \"title\": \"MD_2_3_constants\",\n    \"context\": null,\n    \"snippet\": \"@@ -4,4 @@ (3 before, 78 after)\\n\\n\\\\subsection{Lower bound for \\\\texorpdfstring{$m_r$}{m\\\\_r}}\\nDefine $a(\\\\xi)=\\\\log\\\\pi-\\\\Re\\\\psi(\\\\tfrac14+i\\\\pi\\\\xi)$. For $r\\\\in(0,1]$ set\\n\\\\begin{equation}\\\\label{eq:MD_2_3_constants-formula-11}\"\n  },\n  {\n    \"docid\": \"#8a98b0\",\n    \"file\": \"qmd://q3_docs/q3-lean-aristotle/q3/proofs/psd-matrixidentification.lean\",\n\n── ВНЕШНИЕ LEAN-БАЗЫ — точные/текстовые кандидаты ──────────────\n{\n  \"base_results\": [\n    {\n      \"base_id\": \"zeta23\",\n      \"canonical_root\": \"/Users/emalam/GitHub/zeta-23-lean\",\n      \"exact_candidate\": null,\n      \"identity_after\": {\n        \"canonical_root\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"git_head\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_head_object_id\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_root_relative_path\": \".\",\n        \"git_top_level\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"kind\": \"GIT_TREE_AND_CLEAN_LEAN\",\n        \"lean_manifest_sha256\": \"95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9\",\n        \"lean_status_clean\": true,\n        \"root_device\": 16777231,\n        \"root_inode\": 213937623,\n        \"searched_regular_source_count\": 329\n      },\n      \"identity_before\": {\n        \"canonical_root\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"git_head\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_head_object_id\": \"3635e74826a4c1fcece7d1cd2b6fa75e43a00510\",\n        \"git_root_relative_path\": \".\",\n        \"git_top_level\": \"/Users/emalam/GitHub/zeta-23-lean\",\n        \"kind\": \"GIT_TREE_AND_CLEAN_LEAN\",\n        \"lean_manifest_sha256\": \"95b12a0955cd6a5b630bbc784430ec76b1d7b676825c7ac4a8b59217166fb5e9\",\n        \"lean_status_clean\": true,\n        \"root_device\": 16777231,\n        \"root_inode\": 213937623,\n        \"searched_regular_source_count\": 329\n      },\n      \"searched_regular_source_count\": 329\n    }\n  ],\n  \"bases_queried\": [\n    \"zeta23\"\n  ],\n  \"boundary\": \"CANDIDATE_MATCH_NOT_LEAN_PROOF_OR_INTERFACE_EQUIVALENCE\",\n  \"budget_seconds\": 15.0,\n  \"candidate\": null,\n  \"candidate_provenance\": null,\n  \"candidate_sha256\": null,\n  \"elapsed_seconds\": 0.223916,\n  \"enabled_bases\": [\n    \"zeta23\"\n  ],\n  \"errors\": [],\n  \"matches\": [\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 12,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Analytic/RectangleLogDeriv.lean\",\n      \"snippet\": \"  f − A p/(s − p) bounded near each p ∈ S  ⟹  RectangleIntegral' f z w = Σ_{p∈S} A p.\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 12,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Analytic/Stirling.lean\",\n      \"snippet\": \"    the trigamma series for the μ′ bound;\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 51,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Analytic/Stirling.lean\",\n      \"snippet\": \"/-- Trigamma termwise series (used in Zeta23/GammaFacts/Mu.lean, deriv_bound).\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 129,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Analytic/Stirling.lean\",\n      \"snippet\": \"    refine Summable.of_norm_bounded_eventually\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 16,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Assembly.lean\",\n      \"snippet\": \"import Zeta23.TracesBoundsE\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n      \"line\": 19,\n      \"match_kind\": \"TEXT_CANDIDATE\",\n      \"path\": \"Zeta23/Assembly.lean\",\n      \"snippet\": \"import Mathlib.Analysis.Complex.ExponentialBounds\"\n    },\n    {\n      \"base_id\": \"zeta23\",\n      \"declaration_name\": null,\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nASK_RECEIPT_JSON: {\"boundary\":\"COMPLETE_REGISTERED_SHELF\",\"candidate_rows\":[{\"excerpt\":\"ПОСТАВЛЯЮТ (provides):\",\"metadata_sha256\":\"fb630b17b90e37234a9bf42bc0d09594afcf56646d489ac601708deca27d16b8\",\"provider\":\"knowledge-db\",\"provider_id\":\"862e2790c29e0e8d61bbdf472fa8f0cc720a045bfe5f5a5958961f61d215678c\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"ПОСТАВЛЯЮТ (provides):\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"true_gap_lower_of_abs_endpoint_perturbations q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean:25\",\"metadata_sha256\":\"84ea2616becad97a4aa0ce6ed7d288c57e3f32459cb6b5bce497401ee1d5aae5\",\"provider\":\"knowledge-db\",\"provider_id\":\"886c35340641e1f44f7faa331336ae24a15ed16b11a6953bb201727c3a735cbc\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"true_gap_lower_of_abs_endpoint_perturbations q3.lean.aristotle/Q3/Proofs/RouteB/PerturbativeTrueGapLower.lean:25\",\"url\":\"capability/assembly/counterexample\"},{\"excerpt\":\"ccmWeilMatFinite Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean\",\"metadata_sha256\":\"6aad59fd2b6a8f22e6347f2a8585c7bfe7f9f335e45b5cfe0b20b1d4ab21b5e1\",\"provider\":\"lean-index\",\"provider_id\":\"08ec13d2919e670f0bff32b4c3937edfcbd9f846a712f639764ae0019b51ea78\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"ccmWeilMatFinite Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"ccmWeilMatFinite_13_2_eq_seven_class_layout Q3/Proofs/RouteB/CCMFiniteWeilCell13N2SevenClassLayout.lean\",\"metadata_sha256\":\"5fe438d5b0e62dc5f69288c8a8240fede52f0b982c125cca921c05f292f5b8d3\",\"provider\":\"lean-index\",\"provider_id\":\"1fad1b5b8f0092c17a3217f7b277621c7f1a99341e7b7a86c5cccf188ec10884\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"ccmWeilMatFinite_13_2_eq_seven_class_layout Q3/Proofs/RouteB/CCMFiniteWeilCell13N2SevenClassLayout.lean\",\"url\":\"aristotle_proofs.db\"},{\"excerpt\":\"q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean:165: Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi)\",\"metadata_sha256\":\"d14d26ea3747c3eb2db123507cdd071c71963f51d2c50c29e711af743ba84f82\",\"provider\":\"lean-tree\",\"provider_id\":\"a1ba91b7233547220503125f2d926ef5dd45720b1aea16e15eae0d4322b7bcb4\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean:165: Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi)\",\"url\":\"Q3/Proofs/RouteB\"},{\"excerpt\":\"q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean:196: Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi)\",\"metadata_sha256\":\"fa1e49497982ba7ce696dd006c9aee80ed7c1d7058d95399ae3141d52d7e5bed\",\"provider\":\"lean-tree\",\"provider_id\":\"b82678f1580ae606d3f8a06f97993bc20df7e6f747e67c910dc5b76cf93a0029\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilEtaNonzero.lean:196: Matrix.mulVec (ccmWeilMatFinite mProject N) xi = epsilon • xi)\",\"url\":\"Q3/Proofs/RouteB\"},{\"collection_identity\":\"55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1\",\"corpus_sha256\":\"eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277\",\"excerpt\":\"@@ -255,4 @@ (254 before, 652 after)\\n\\nЕсли `epsilon` определён как `iInf`, lower-bound является order fact.\\n\\nЕсли `epsilon` пришёл из certificate, Mathlib Rayleigh не создаёт certificate.\",\"metadata_sha256\":\"0282e9cfd9874205156a4ee61aaeca46d0de72935f81b365ca9986cfcc58b8ee\",\"provider\":\"q3_docs\",\"provider_id\":\"#d58258\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"STATUS: OPEN — REPAIRED LEAN-NATIVE PROBE AUTHORIZED; ORIGINAL THREE-PROBE PLAN REJECTED\",\"url\":\"qmd://q3_docs/docs/routeb-bus/proshka-h2a-lean-native-probe-adjudication-2026-08-11.md\"},{\"collection_identity\":\"55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1\",\"corpus_sha256\":\"eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277\",\"excerpt\":\"@@ -39,4 @@ (38 before, 73 after)\\n\\n/-- A global Rayleigh lower bound at epsilon makes the exact epsilon-shifted\\nCCM source matrix positive semidefinite. -/\\ntheorem ccmShiftedWeilMatFinite_posSemidef_of_bottomRayleigh\",\"metadata_sha256\":\"8ac34314286f3a8b1bd0d58f319326ab6a0ab2c5455ba6cef9e4fb92c9e71a8f\",\"provider\":\"q3_docs\",\"provider_id\":\"#4468d0\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"title\":\"CCMFiniteWeilBottomSpectral\",\"url\":\"qmd://q3_docs/q3-lean-aristotle/q3/proofs/routeb/ccmfiniteweilbottomspectral.lean\"}],\"external_lean\":\"EXECUTED\",\"provider_rows\":[{\"failure_count\":0,\"hit_store_count\":6,\"provider\":\"local-shelves\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"status\":\"HITS\"},{\"candidate_count\":2,\"candidate_hashes\":[\"0282e9cfd9874205156a4ee61aaeca46d0de72935f81b365ca9986cfcc58b8ee\",\"8ac34314286f3a8b1bd0d58f319326ab6a0ab2c5455ba6cef9e4fb92c9e71a8f\"],\"collection_identity\":\"55ba37b9366fe040f7ef2476c809c77825b1149bb33a6b3a969faa3a2ecfc3b1\",\"corpus_sha256\":\"eaead3736a1a5c81029a9580b778f2e9ae864fcfeda59cd36e910be114bf1277\",\"provider\":\"q3_docs\",\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"status\":\"CANDIDATES\"}],\"query\":\"ccmWeilMatFinite lower bound\",\"query_sha256\":\"185ab1f1a8f4ccb081d76d9cc352d29244fd7dfc074c5666a54922a4afe41e63\",\"schema\":\"q3_ask_local_receipt.v1\"}\nНайдено в 6 хранилищах из 11.\n\nПросмотрены хранилища:\n  · knowledge.db (kill/move/journal/dossier)\n  · search_session/search_term (kb.py flags)\n  · capability (provides/requires — каталог стыковок)\n  · litreview (REFERENCES.md · *_CARDS.md · references.bib · pdfs/)\n  · aristotle_proofs.db (Lean-декларации)\n  · Q3/Proofs/RouteB/*.lean (живое дерево)\n  · specs/maps + GENEALOGY/Progress_Log/RECORDING_RULES/GLOSSARY/TOOLS\n  · q3_docs (bounded qmd search через research_oracle.py)\n  · q3_docs (bounded qmd vsearch через research_oracle.py)\n  · q3_docs semantic-index receipt/corpus/machine/live identity (fresh)\n  · all enabled external Lean bases (zeta23; registered read-only search)\n\nСовпадения — кандидаты. Для вопроса «подходит ли теорема точной цели» запусти:\n  .venv/bin/python scripts/supplier_preflight.py --query 'ccmWeilMatFinite lower bound' --candidate <имя> --target <имя>\nASK_STATUS: HITS"
+  },
+  "source_absence_scope": null,
+  "source_candidates": [],
+  "status": "CANDIDATE_ONLY",
+  "target_requested": "ccmFullQuarterFloor"
+}

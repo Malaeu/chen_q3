@@ -1,0 +1,2 @@
+/tmp/ccm-lean-search-20261020/lake_project_run/03_simp.lean:17:2: error: `simp` made no progress
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes

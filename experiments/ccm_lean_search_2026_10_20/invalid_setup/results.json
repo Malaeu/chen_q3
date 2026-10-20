@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "repo": "/Users/emalam/GitHub/rh_lean_01_2026",
+    "branch": "rh_clean",
+    "head": "65b51c162b823fb239217d532467113cc1b3744f",
+    "source_file": "q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
+    "source_sha256": "282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89",
+    "target_sha256": "f7bf4155a54dc66bfb671216c9d43b1b4d81ed786225990004a7b42fc8871e49",
+    "target_statement": "def CCMQuarterFloorCandidate : Prop :=\n  \u2203 C : \u211d, 0 < C \u2227 \u2203 m0 : \u2115,\n    \u2200 m : \u2115, max 2 m0 \u2264 m \u2192\n      \u2200 c : CCMModeFinite m \u2192 \u211d,\n        -C * (m : \u211d) ^ ((1 : \u211d) / 4) * (\u2211 i, c i ^ 2) \u2264\n          \u2211 i, \u2211 j, c i * ccmWeilMatFinite m m i j * c j\n",
+    "manifest_sha256": null,
+    "attempts": [
+      "01_exact_search",
+      "02_aesop",
+      "03_simp",
+      "04_unfold_full_entry_then_aesop"
+    ],
+    "timeout_seconds_per_attempt": 45,
+    "maxHeartbeats": 200000,
+    "no_user_premises_added": true
+  },
+  "lean_version": "Lean (version 4.26.0, arm64-apple-darwin24.6.0, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)\n",
+  "runs": [
+    {
+      "phase": "target_declaration_and_positive_control",
+      "input": "target_and_control.lean",
+      "timeout_seconds": 45,
+      "status": "DECLARATION_OR_CONTROL_ERROR",
+      "returncode": 1,
+      "elapsed_seconds": 0.58,
+      "log": "target_and_control.log"
+    },
+    {
+      "name": "01_exact_search",
+      "status": "IMPORT_OR_PARSE_ERROR",
+      "returncode": 1,
+      "elapsed_seconds": 0.127,
+      "timed_out": false,
+      "log": "01_exact_search.log"
+    },
+    {
+      "name": "02_aesop",
+      "status": "IMPORT_OR_PARSE_ERROR",
+      "returncode": 1,
+      "elapsed_seconds": 0.126,
+      "timed_out": false,
+      "log": "02_aesop.log"
+    },
+    {
+      "name": "03_simp",
+      "status": "IMPORT_OR_PARSE_ERROR",
+      "returncode": 1,
+      "elapsed_seconds": 0.125,
+      "timed_out": false,
+      "log": "03_simp.log"
+    },
+    {
+      "name": "04_unfold_full_entry_then_aesop",
+      "status": "IMPORT_OR_PARSE_ERROR",
+      "returncode": 1,
+      "elapsed_seconds": 0.129,
+      "timed_out": false,
+      "log": "04_unfold_full_entry_then_aesop.log"
+    }
+  ]
+}

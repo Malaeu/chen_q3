@@ -8571,3 +8571,15 @@ Exact a_T(r s²)=mu(r)c_T(r,s), all ordered factorizations share the same sign; 
 Следующий ход: точный исходный потребитель из NEXT, shelf-first; для графа повторять новый изолированный snapshot.
 Адреса: docs/Codex/TOOL_REPAIR_GRAPH_2026-10-20.md; docs/cartographer/graph_audit_2026-10-20/; scripts/q3_graphify_source.py.
 Чей вердикт: Codex runtime checks + независимый reviewer; математического закрытия нет.
+
+## 2026-10-20 — Ограниченный Lean-поиск полной CCM quarter-floor
+Развилка: удобный условный переход или настоящая оценка полного источника.
+Выбрали: ∃C>0,m0, eventually quadratic(ccmWeilMatFinite m m,c)≥−C m^(1/4)||c||² для всех вещественных c.
+Почему: фиксированный показатель даёт конкретное усиление исходного floor без смены матрицы; C,m0 должны быть заключением.
+Что отвергли: подложенную hbound; sparse surrogate; библиотечные endpoint/gap wrappers без их предпосылок.
+Инсайты: формулировка и существующая симметрия проходят Lean; exact?, aesop, simp, unfold+aesop не закрыли цель, тайм-аутов нет. Это небольшой automation probe, не поиск всех математических механизмов.
+Блокеры: арифметическая оценка остаётся OPEN; первый неверный cwd не считался proof attempt; зависимости не пересобирались, UnicodeBasic dirty disclosed.
+Иглы Зингера: зелёный контроль симметрии не поставляет асимптотическую нижнюю границу; один exponent не full SP.
+Следующий ход: исходная оценка 2 Re Tr(F W F* Z), точный перенос и новая арифметическая подлемма, не повтор раскрытия полной матрицы.
+Адреса: experiments/ccm_lean_search_2026_10_20/RESULT.md; contract.json; results.json; supplier_preflight.json.
+Чей вердикт: реальные Lean runs; independent read-only ccm_search_review без существенных замечаний; математического gain нет.

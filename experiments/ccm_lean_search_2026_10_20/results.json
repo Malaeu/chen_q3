@@ -1,0 +1,71 @@
+{
+  "metadata": {
+    "repo": "/Users/emalam/GitHub/rh_lean_01_2026",
+    "lean_project": "/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle",
+    "branch": "rh_clean",
+    "head": "65b51c162b823fb239217d532467113cc1b3744f",
+    "source_file": "Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean",
+    "source_sha256": "282dc31c9bc558aefe8ab0b105fe844da017defdaaec4c2048d147327b72df89",
+    "lean_manifest_sha256": "f59bc3a30bdefd46a07325a01743cb6f48b9f725f45e292b70d21ca4fc86226a",
+    "target_sha256": "f7bf4155a54dc66bfb671216c9d43b1b4d81ed786225990004a7b42fc8871e49",
+    "target_statement": "def CCMQuarterFloorCandidate : Prop :=\n  \u2203 C : \u211d, 0 < C \u2227 \u2203 m0 : \u2115,\n    \u2200 m : \u2115, max 2 m0 \u2264 m \u2192\n      \u2200 c : CCMModeFinite m \u2192 \u211d,\n        -C * (m : \u211d) ^ ((1 : \u211d) / 4) * (\u2211 i, c i ^ 2) \u2264\n          \u2211 i, \u2211 j, c i * ccmWeilMatFinite m m i j * c j\n",
+    "attempts": [
+      "01_exact_search",
+      "02_aesop",
+      "03_simp",
+      "04_unfold_full_entry_then_aesop"
+    ],
+    "timeout_seconds_per_attempt": 45,
+    "maxHeartbeats": 200000,
+    "preflight_note": "An initial run from the repository root failed before Lean search because Q3 module path was unavailable; that run is retained in sibling root logs and is not counted as a proof attempt.",
+    "no_user_premises_added": true
+  },
+  "lean_version": "Lean (version 4.26.0, arm64-apple-darwin24.6.0, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)\nwarning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes\n",
+  "runs": [
+    {
+      "phase": "target declaration and positive control",
+      "name": "target_and_control",
+      "status": "PASS",
+      "returncode": 0,
+      "elapsed_seconds": 29.516,
+      "timed_out": false,
+      "log": "target_and_control.log"
+    },
+    {
+      "phase": "proof attempt",
+      "name": "01_exact_search",
+      "status": "TACTIC_DID_NOT_CLOSE",
+      "returncode": 1,
+      "elapsed_seconds": 9.086,
+      "timed_out": false,
+      "log": "01_exact_search.log"
+    },
+    {
+      "phase": "proof attempt",
+      "name": "02_aesop",
+      "status": "TACTIC_DID_NOT_CLOSE",
+      "returncode": 1,
+      "elapsed_seconds": 4.551,
+      "timed_out": false,
+      "log": "02_aesop.log"
+    },
+    {
+      "phase": "proof attempt",
+      "name": "03_simp",
+      "status": "TACTIC_DID_NOT_CLOSE",
+      "returncode": 1,
+      "elapsed_seconds": 4.497,
+      "timed_out": false,
+      "log": "03_simp.log"
+    },
+    {
+      "phase": "proof attempt",
+      "name": "04_unfold_full_entry_then_aesop",
+      "status": "TACTIC_DID_NOT_CLOSE",
+      "returncode": 1,
+      "elapsed_seconds": 7.56,
+      "timed_out": false,
+      "log": "04_unfold_full_entry_then_aesop.log"
+    }
+  ]
+}

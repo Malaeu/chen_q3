@@ -1,0 +1,27 @@
+/tmp/ccm-lean-search-20261020/lake_project_run/04_unfold_full_entry_then_aesop.lean:18:2: warning: aesop: failed to prove the goal after exhaustive search.
+/tmp/ccm-lean-search-20261020/lake_project_run/04_unfold_full_entry_then_aesop.lean:16:46: error: unsolved goals
+⊢ ∃ C,
+    0 < C ∧
+      ∃ m0,
+        ∀ (m : ℕ),
+          2 ≤ m →
+            m0 ≤ m →
+              ∀ (c : CCMModeFinite m → ℝ),
+                -(C * ↑m ^ 4⁻¹ * ∑ i, c i ^ 2) ≤
+                  ∑ i,
+                    ∑ j,
+                      c i *
+                          (32 * ccmL m * Real.sinh (ccmL m / 4) ^ 2 *
+                                  (ccmL m ^ 2 - 16 * Real.pi ^ 2 * ↑(ccmModeFinite m j) * ↑(ccmModeFinite m i)) /
+                                ((ccmL m ^ 2 + 16 * Real.pi ^ 2 * ↑(ccmModeFinite m j) ^ 2) *
+                                  (ccmL m ^ 2 + 16 * Real.pi ^ 2 * ↑(ccmModeFinite m i) ^ 2)) -
+                              (ccmQKernel (ccmL m) (ccmModeFinite m i) (ccmModeFinite m j) 0 / 2 *
+                                  (Real.eulerMascheroniConstant +
+                                    Real.log (4 * Real.pi * ((Real.exp (ccmL m) - 1) / (Real.exp (ccmL m) + 1)))) +
+                                ∫ (x : ℝ) in Set.Ioc 0 (ccmL m),
+                                  ccmWRIntegrand (ccmL m) (ccmModeFinite m i) (ccmModeFinite m j) x) -
+                            ∑ k ∈ Finset.Icc 2 m,
+                              ArithmeticFunction.vonMangoldt k * (√↑k)⁻¹ *
+                                ccmQKernel (ccmL m) (ccmModeFinite m i) (ccmModeFinite m j) (Real.log ↑k)) *
+                        c j
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes

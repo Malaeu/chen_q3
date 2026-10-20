@@ -1,0 +1,23 @@
+import Q3.Proofs.RouteB.CCMFiniteWeilSourceMatrix
+
+open Matrix
+open scoped BigOperators
+namespace Q3.RouteB
+
+set_option maxHeartbeats 200000
+
+def CCMQuarterFloorCandidate : Prop :=
+  ∃ C : ℝ, 0 < C ∧ ∃ m0 : ℕ,
+    ∀ m : ℕ, max 2 m0 ≤ m →
+      ∀ c : CCMModeFinite m → ℝ,
+        -C * (m : ℝ) ^ ((1 : ℝ) / 4) * (∑ i, c i ^ 2) ≤
+          ∑ i, ∑ j, c i * ccmWeilMatFinite m m i j * c j
+
+#print CCMQuarterFloorCandidate
+
+theorem source_full_matrix_symmetry_positive_control (m : ℕ) (hm : 2 ≤ m) :
+    (ccmWeilMatFinite m m).transpose = ccmWeilMatFinite m m := by
+  exact ccmWeilMatFinite_transpose_eq m m hm (by omega)
+
+#print axioms source_full_matrix_symmetry_positive_control
+end Q3.RouteB

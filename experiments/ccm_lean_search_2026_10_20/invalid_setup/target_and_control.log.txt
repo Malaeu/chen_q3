@@ -1,0 +1,5 @@
+/tmp/ccm-lean-search-20261020/target_and_control.lean:1:0: error: unknown module prefix 'Q3'
+
+No directory 'Q3' or file 'Q3.olean' in the search path entries:
+/Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/lib/lean
+/Users/emalam/.elan/toolchains/leanprover--lean4---v4.26.0/lib/lean

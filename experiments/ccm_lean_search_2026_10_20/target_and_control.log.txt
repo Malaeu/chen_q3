@@ -1,0 +1,9 @@
+def Q3.RouteB.CCMQuarterFloorCandidate : Prop :=
+∃ C,
+  0 < C ∧
+    ∃ m0,
+      ∀ (m : ℕ),
+        max 2 m0 ≤ m →
+          ∀ (c : CCMModeFinite m → ℝ), -C * ↑m ^ (1 / 4) * ∑ i, c i ^ 2 ≤ ∑ i, ∑ j, c i * ccmWeilMatFinite m m i j * c j
+'Q3.RouteB.source_full_matrix_symmetry_positive_control' depends on axioms: [propext, Classical.choice, Quot.sound]
+warning: UnicodeBasic: repository '/Users/emalam/GitHub/rh_lean_01_2026/q3.lean.aristotle/.lake/packages/UnicodeBasic' has local changes
