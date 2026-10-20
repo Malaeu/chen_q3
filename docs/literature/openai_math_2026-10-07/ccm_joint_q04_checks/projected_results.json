@@ -1,0 +1,192 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_INTERVAL",
+  "pair_cases": 9,
+  "damped_sign_cases": 6,
+  "precision": "binary64",
+  "source": "original projected modes; auxiliary single-pair geometry and sigma8 damped source only",
+  "actual_zero_claim": false,
+  "full_prime_sums_evaluated": false,
+  "actual_Km_spectral_runs": 0,
+  "pair_rows": [
+    {
+      "m": "2^512",
+      "epsilon": "1/64",
+      "M": 256,
+      "delta": 0.125,
+      "gamma": 1.0,
+      "scaled_negative_eigenvalue": -3.03199326992831,
+      "predicted_limit": -3.2808988764044944,
+      "limit_difference": 0.24890560647618454,
+      "projected_overlap_abs": 0.08371832467268056,
+      "qr_formula_error": 1.7763568394002505e-15,
+      "constraint_residual": 4.873100694404389e-16
+    },
+    {
+      "m": "2^512",
+      "epsilon": "1/64",
+      "M": 256,
+      "delta": 0.25,
+      "gamma": 14.0,
+      "scaled_negative_eigenvalue": -5.2430147582429185e-05,
+      "predicted_limit": -1.994912559618442,
+      "limit_difference": 1.9948601294708597,
+      "projected_overlap_abs": 0.0002042668484024477,
+      "qr_formula_error": 3.9302328752599536e-19,
+      "constraint_residual": 6.391968568432495e-17
+    },
+    {
+      "m": "2^512",
+      "epsilon": "1/64",
+      "M": 256,
+      "delta": 0.375,
+      "gamma": 0.75,
+      "scaled_negative_eigenvalue": -0.44513925361938206,
+      "predicted_limit": -0.580392156862745,
+      "limit_difference": 0.13525290324336298,
+      "projected_overlap_abs": 0.037972833609533616,
+      "qr_formula_error": 1.1102230246251565e-16,
+      "constraint_residual": 6.083839160171021e-16
+    },
+    {
+      "m": "2^768",
+      "epsilon": "1/64",
+      "M": 4096,
+      "delta": 0.125,
+      "gamma": 1.0,
+      "scaled_negative_eigenvalue": -3.269943189933318,
+      "predicted_limit": -3.2808988764044944,
+      "limit_difference": 0.010955686471176396,
+      "projected_overlap_abs": 0.00789331844524819,
+      "qr_formula_error": 5.329070518200751e-15,
+      "constraint_residual": 1.7055999826830952e-15
+    },
+    {
+      "m": "2^768",
+      "epsilon": "1/64",
+      "M": 4096,
+      "delta": 0.25,
+      "gamma": 14.0,
+      "scaled_negative_eigenvalue": -1.9805377132856852,
+      "predicted_limit": -1.994912559618442,
+      "limit_difference": 0.014374846332756874,
+      "projected_overlap_abs": 0.010344976456956818,
+      "qr_formula_error": 3.552713678800501e-15,
+      "constraint_residual": 2.5226334041267835e-16
+    },
+    {
+      "m": "2^768",
+      "epsilon": "1/64",
+      "M": 4096,
+      "delta": 0.375,
+      "gamma": 0.75,
+      "scaled_negative_eigenvalue": -0.5731683198206179,
+      "predicted_limit": -0.580392156862745,
+      "limit_difference": 0.007223837042127146,
+      "projected_overlap_abs": 0.00414152697925576,
+      "qr_formula_error": 4.440892098500626e-16,
+      "constraint_residual": 2.131581355628458e-15
+    },
+    {
+      "m": "2^1024",
+      "epsilon": "1/64",
+      "M": 65536,
+      "delta": 0.125,
+      "gamma": 1.0,
+      "scaled_negative_eigenvalue": -3.279309207772163,
+      "predicted_limit": -3.2808988764044944,
+      "limit_difference": 0.0015896686323313425,
+      "projected_overlap_abs": 0.0006601529142448255,
+      "qr_formula_error": 7.549516567451064e-15,
+      "constraint_residual": 5.607456132291008e-15
+    },
+    {
+      "m": "2^1024",
+      "epsilon": "1/64",
+      "M": 65536,
+      "delta": 0.25,
+      "gamma": 14.0,
+      "scaled_negative_eigenvalue": -1.992225549007555,
+      "predicted_limit": -1.994912559618442,
+      "limit_difference": 0.002687010610886942,
+      "projected_overlap_abs": 0.0008028579195255291,
+      "qr_formula_error": 1.5543122344752192e-15,
+      "constraint_residual": 5.925096913187626e-16
+    },
+    {
+      "m": "2^1024",
+      "epsilon": "1/64",
+      "M": 65536,
+      "delta": 0.375,
+      "gamma": 0.75,
+      "scaled_negative_eigenvalue": -0.5798963900487725,
+      "predicted_limit": -0.580392156862745,
+      "limit_difference": 0.0004957668139725646,
+      "projected_overlap_abs": 0.0003500199822054011,
+      "qr_formula_error": 5.662137425588298e-15,
+      "constraint_residual": 5.886454070543032e-15
+    }
+  ],
+  "damped_sign_rows": [
+    {
+      "m": "2^512",
+      "epsilon": "1/64",
+      "M": 256,
+      "direction": "positive",
+      "j": 0,
+      "distance_to_original_mode": 0.15739407597724075,
+      "sigma8_form_lower_budget": 0.0028103805430019693,
+      "sigma8_form_upper_budget": 0.007998890980012314
+    },
+    {
+      "m": "2^512",
+      "epsilon": "1/64",
+      "M": 256,
+      "direction": "negative",
+      "j": 256,
+      "distance_to_original_mode": 0.05455202369276643,
+      "sigma8_form_lower_budget": -0.006885067877137599,
+      "sigma8_form_upper_budget": -0.003924203645876685
+    },
+    {
+      "m": "2^768",
+      "epsilon": "1/64",
+      "M": 4096,
+      "direction": "positive",
+      "j": 0,
+      "distance_to_original_mode": 0.12332358439554197,
+      "sigma8_form_lower_budget": 0.0031829039653142243,
+      "sigma8_form_upper_budget": 0.007633418615445012
+    },
+    {
+      "m": "2^768",
+      "epsilon": "1/64",
+      "M": 4096,
+      "direction": "negative",
+      "j": 384,
+      "distance_to_original_mode": 0.01741387457642437,
+      "sigma8_form_lower_budget": -0.0064863714786474605,
+      "sigma8_form_upper_budget": -0.004329951102111777
+    },
+    {
+      "m": "2^1024",
+      "epsilon": "1/64",
+      "M": 65536,
+      "direction": "positive",
+      "j": 0,
+      "distance_to_original_mode": 0.10635163880531798,
+      "sigma8_form_lower_budget": 0.003368480108414222,
+      "sigma8_form_upper_budget": 0.007451368001217492
+    },
+    {
+      "m": "2^1024",
+      "epsilon": "1/64",
+      "M": 65536,
+      "direction": "negative",
+      "j": 512,
+      "distance_to_original_mode": 0.011956528350714188,
+      "sigma8_form_lower_budget": -0.006429028865744785,
+      "sigma8_form_upper_budget": -0.004390819243886929
+    }
+  ],
+  "script_sha256": "ccdd45c99aaf13b081eb6ec13f5850250524898d5754fa93cd75b4082d5639db"
+}

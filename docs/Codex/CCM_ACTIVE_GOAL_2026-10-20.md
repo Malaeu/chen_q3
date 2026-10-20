@@ -98,3 +98,27 @@ bounded PAPER PASS and 2536 exact+9 binary64 checks reproduced. Conditional
 full m^(3/8)L fee improves logarithms only; ZF78 and eta->0 remain OPEN.
 Next debt is actual signed reflected-map coupling. Owner geometric question
 is already live in same chat; no Q04, no interruption. Goal remains ACTIVE.
+
+## Q04 dispatched after three own tests
+
+SHIFT_SQUARE_PRICE, WEIGHTED_SQUARE_FAMILY, CENTERED_SECOND_PRIMITIVE checked;
+no full exponent gain. Q04 same chat sent once, live responding/Stop observed.
+See PROSHKA_PENDING.md for hash and next observation. Do not resend/interrupt.
+Next required evidence is natural full original plus independent audit.
+
+Q04 waiting refinement independently checked: OPERATOR_BALANCE_OBSTRUCTION
+extends the scalar family exclusion to independent positive per-prime returns,
+including bounded invertible positive operator weights. It constrains the error
+E only, not fullK; no new full exponent. Held for Q04, not sent separately.
+
+## Q04 natural completion and bounded acceptance
+
+Full original received/read, two independent PAPER passes and620exact+15
+binary64 controls reproduced. See CCM_JOINT_Q04_CONCLUSION.md. Cheap
+Z_half input norm3+6Omega accepted; source signed derivative still OPEN.
+Critical credit is polylog, one fixed reflected pair keeps its negative power;
+this is not fullK. Sigma8 both-sign test rejects metric monotonicity only.
+No new full exponent; inherited3/8 remains conditional on ZF78. No Q05 or
+pending Pro process. Next own work: actual Mobius correlation before norms,
+local shelf/source theorem budget first. Do not repeat equivalent metric
+identities as improvement. Native goal ACTIVE.

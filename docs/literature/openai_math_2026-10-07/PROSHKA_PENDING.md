@@ -1,3 +1,47 @@
+# Q04 received, audited — no pending Pro calculation
+
+2026-10-20 around21:16UTC terminal Response complete observed in the SAME
+AI Mathematik Morgenbrief chat. Full84942-byte original downloaded/read.
+See CCM_JOINT_Q04_CONCLUSION.md: two bounded independent PAPER passes,
+620 exact controls and15 binary64 diagnostics reproduced.
+Constrained inverse norm<=3+6Omega accepted; full exponent unchanged.
+Pair+critical and sigma8 derivative obstructions have their stated narrow scope.
+No Q05 sent; no calculation remains to await. Native CCM goal ACTIVE.
+Deliver request+original+conclusion+checks in one scoped commit. Next own
+work returns to actual Mobius correlation before independent norms, using
+local shelves and full-budget preflight. Do not repeat a metric identity loop.
+
+--- Q04 observation history ---
+
+# Q04 SENT ONCE — live reasoning verified
+
+2026-10-20 20:36 UTC. Same AI Mathematik Morgenbrief chat, Chrome tab1618256734.
+Original uploaded TXT PROSHKA_CCM_JOINT_POSITIVE_CREDIT_Q04_2026-10-20.txt:
+98922 bytes,1582 LF,final newline,SHA256
+8710494286ae0910d3c9a524eaf2739bfbbfca1fd13ecc53e4fdc57ca23509e7.
+Source HEAD8fc3db2248246a29833c90e1ff91c12f43197b97, new notes included explicitly.
+Pro selected. Send click timed out, but readback confirms exact user message,
+file tile, empty composer, ChatGPT is responding and Stop. DO NOT RESEND.
+Natural completion required. Screenshot /tmp/ccm-q04-sent-20261020.png.
+Next observation around21:16UTC; can work independently.
+Three own tests retained; weighted family and centered primitive checked.
+Receive full original, independently audit, reproduce relevant checks before
+one scoped request/answer/conclusion commit. Goal ACTIVE, no full exponent gain.
+
+Waiting result (not sent separately): CCM_Q04_OPERATOR_BALANCE_OBSTRUCTION.md
+independently PAPER PASS. All independent positive per-prime returns, including
+bounded positive invertible operator balances, force E>=c sqrt(m)/log^9(m)
+on the actual witness (Rayleigh sense), minus50L+8. No full-source obstruction.
+Use to assess Q04; do not send another prompt. Next check around21:16UTC.
+
+2026-10-20 around20:56UTC: same Q04 live; DOM shows Working for19m48s,
+Stop and systems-thinking status, no terminal response. Preliminary author
+progress says reflected-pair calculation gives no new exponent and is pricing
+the missing Mobius-operator rollback term. This is NOT an accepted result.
+Do not interrupt/resend. Next observation around21:16UTC.
+
+--- Historical observations ---
+
 # No pending Pro calculation: geometry original received and read
 
 2026-10-20: full original geometry source-map downloaded (25367 bytes), read,

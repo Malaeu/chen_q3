@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "counts": {
+    "mobius_inverse_atoms": 256,
+    "differentiated_inverse_mangoldt_atoms": 256,
+    "finite_full_inverse_matrices": 10,
+    "formal_log_prime_gram_returns": 32,
+    "discarded_mixed_gram_terms_detected": 1,
+    "rank_two_characteristic_polynomial": 40,
+    "projected_endpoint_limit_constants": 20,
+    "sigma8_tail_rational_control": 1,
+    "returned_power_comparisons": 4
+  },
+  "total_checks": 620,
+  "scope": "exact finite coefficient and matrix identities; not an actual CCM positivity certificate",
+  "script_sha256": "a80482620d6d483e3f3839fd43a8883185e39859f06b974e1726fc1b76fca544",
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "actual_ccm_spectral_runs": 0
+}

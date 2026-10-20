@@ -8634,3 +8634,8 @@ Gallagher: сохраняет полные локальные корреляци
 2026-10-20 CCM Q03: full original received; independent bounded PAPER PASS. Conditional ZF78 complete fee improved from m^(3/8)L^2 log(3L) to O_epsilon(m^(3/8)L), no exponent gain. Reproduced 2536 exact and 9 binary64 checks; original source retained. Three own no-gain attempts and actual raw prime-block obstruction archived. Owner geometric turn live; no Q04 or interruption. Goal ACTIVE. See CCM_JOINT_Q03_CONCLUSION.md.
 
 2026-10-20 CCM geometry intake: full original read; existing Connes-Consani partial analogue rechecked, exact dilation preserves every prime term. New causal prime-shift-square construction has full E>=sqrt(m)/8-O(log m), independent bounded PAPER PASS. Excludes this discard-positive-part shortcut only; no full exponent gain. Q04 not sent; own attempt count1. See CCM_GEOMETRIC_TRANSFER_AUDIT.md.
+
+
+## 2026-10-20 — CCM Q04 bounded audit; signed full power remains OPEN
+
+Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-byte original archived unchanged (SHA2562c5af92f75c73e798a51bc5e8a13fdb0217addeef6eb3d066fa26a8f6a371eeb). Two independent bounded PAPER passes accept critical sampling polylog, exact original projected pair asymptotics, full causal Mobius metric, constrained inverse norm<=3+6Omega and sigma8 scoped sign obstruction. Root reproduced620exact+15binary64 controls. Joint signed derivative still unpaid; full3/8 remains conditional on ZF78. No Q05, Lean, Arb, full prime spectrum or RH claim. Native goal ACTIVE; next source work returns before independent norms, not another metric identity loop.

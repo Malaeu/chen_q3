@@ -1,0 +1,8 @@
+{
+  "python": "3.13.0 (main, Oct 16 2024, 08:05:40) [Clang 18.1.8 ]",
+  "numpy": "2.3.5",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "max_qr_formula_error": 7.549516567451064e-15,
+  "max_constraint_residual": 5.886454070543032e-15,
+  "note": "Binary64 diagnostics only; no actual full CCM spectrum, actual-zero assertion, Lean or Arb."
+}
