@@ -1,0 +1,13 @@
+{
+  "status": "FROZEN_BEFORE_HELDOUT_EXECUTION",
+  "timestamp_utc": "2026-10-20T09:51:37.271210+00:00",
+  "baseline_changes_since_plan": false,
+  "fits_executed": 0,
+  "sha256": {
+    "plan.json": "8fcaad6f072b58a1be182767ec0c85ca4a2a42c4856d641c5099a4bc3c3b5fb8",
+    "main.json": "5986f2f5fbd8cc87116befb1ac3d08222804ec3f79c1ceb4e0408182c943bdcb",
+    "evaluate_nonunit.py": "2301e93504c485b0669f6e1706f8fcfde74905b1982545deda4809c02ced5868",
+    "periodic.py": "4a1352dbf045ce6f15b8fe79e2e67c460deacb74a7549ca34d6d73caca9001eb",
+    "periodic_counter.cpp": "531e33b99d665092ac20c4cb332493aa909cf3e60f542e4491f4c6a11423fc38"
+  }
+}

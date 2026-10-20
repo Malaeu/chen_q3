@@ -1,0 +1,14 @@
+test_all_good_ideal_pairs_small_disks (test_nonunit.NonunitIntegrationTests.test_all_good_ideal_pairs_small_disks) ... ok
+test_amplifier_counts_include_powers (test_nonunit.NonunitIntegrationTests.test_amplifier_counts_include_powers) ... ok
+test_full_C_production_matches_direct_enumeration (test_nonunit.NonunitIntegrationTests.test_full_C_production_matches_direct_enumeration) ... ok
+test_all_six_unit_translates_and_exact_unit_cancellation (test_periodic.PeriodicCharacterTests.test_all_six_unit_translates_and_exact_unit_cancellation) ... ok
+test_explicit_radius_and_period_limits_fail_without_truncation (test_periodic.PeriodicCharacterTests.test_explicit_radius_and_period_limits_fail_without_truncation) ... ok
+test_hnf_shift_and_negative_y_disk_rows (test_periodic.PeriodicCharacterTests.test_hnf_shift_and_negative_y_disk_rows) ... ok
+test_inert_square_uses_full_hnf_period (test_periodic.PeriodicCharacterTests.test_inert_square_uses_full_hnf_period) ... ok
+test_shared_prime_zero_mask_differs_from_conductor_one (test_periodic.PeriodicCharacterTests.test_shared_prime_zero_mask_differs_from_conductor_one) ... ok
+test_weighted_energy_uses_diagonal_half_and_upper_triangle (test_periodic.PeriodicCharacterTests.test_weighted_energy_uses_diagonal_half_and_upper_triangle) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.669s
+
+OK

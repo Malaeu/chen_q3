@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "input_sha256": {
+    "main.json": "5986f2f5fbd8cc87116befb1ac3d08222804ec3f79c1ceb4e0408182c943bdcb",
+    "heldout.json": "87b6ed649621fb428e71276fcc62701501140afc2a9bff320337ee54596c6cfe"
+  },
+  "rows": 20,
+  "independent_disk_counts": {
+    "158": 582,
+    "11294304": 40971336,
+    "463373664": 1680934392,
+    "219": 804,
+    "15059072": 54628296,
+    "617831552": 2241244956,
+    "347": 1260,
+    "22588608": 81942228,
+    "926747328": 3361866816,
+    "1328763571296": 4820221041606
+  },
+  "method": "6 sum_d chi_-3(d) floor(B/d), quotient grouping",
+  "checks": [
+    "frozen input hashes",
+    "all exact norm disk counts",
+    "matrix symmetry",
+    "three C reconstructions",
+    "C width tolerance",
+    "orientation conjugacy"
+  ],
+  "verifier_sha256": "6c455094ec9308402c7eb02cfe3b56c60bf1f64d6f04ee83398a169df123009f"
+}

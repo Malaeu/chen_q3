@@ -1,0 +1,222 @@
+{
+  "schema": "cf22-nonunit-plan-v1",
+  "scope": "OFF_SCHEDULE_MASK_DIAGNOSTIC",
+  "status": "BASELINES_FROZEN_BEFORE_NEW_EVALUATIONS",
+  "source_commit": "580bd4dd68549a034ad0c0287524e714f1570b71",
+  "owner_request_sha256": "19a510f73d13d3bcdd97c3c868d28c48d626cae47617302fb610d14e6289ef33",
+  "precision_bits": 192,
+  "absolute_C_tolerance": "1e-30",
+  "profiles": {
+    "rho": "exp(1-1/(1-(2*y-2)^2)) on 1/2<y<3/2, zero elsewhere",
+    "W": "same as rho",
+    "C_H": 2,
+    "S": "prime ideals above 6",
+    "nu": "1 on good ideals, zero extension"
+  },
+  "configs": [
+    {
+      "id": "U48_Pproduction_o1",
+      "U": 48,
+      "P": "production",
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "main"
+    },
+    {
+      "id": "U48_Pproduction_o-1",
+      "U": 48,
+      "P": "production",
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "main"
+    },
+    {
+      "id": "U48_P7_o1",
+      "U": 48,
+      "P": 7,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "main"
+    },
+    {
+      "id": "U48_P7_o-1",
+      "U": 48,
+      "P": 7,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "main"
+    },
+    {
+      "id": "U48_P13_o1",
+      "U": 48,
+      "P": 13,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "main"
+    },
+    {
+      "id": "U48_P13_o-1",
+      "U": 48,
+      "P": 13,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "main"
+    },
+    {
+      "id": "U64_Pproduction_o1",
+      "U": 64,
+      "P": "production",
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "main"
+    },
+    {
+      "id": "U64_Pproduction_o-1",
+      "U": 64,
+      "P": "production",
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "main"
+    },
+    {
+      "id": "U64_P7_o1",
+      "U": 64,
+      "P": 7,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "main"
+    },
+    {
+      "id": "U64_P7_o-1",
+      "U": 64,
+      "P": 7,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "main"
+    },
+    {
+      "id": "U64_P13_o1",
+      "U": 64,
+      "P": 13,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "main"
+    },
+    {
+      "id": "U64_P13_o-1",
+      "U": 64,
+      "P": 13,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "main"
+    },
+    {
+      "id": "U96_Pproduction_o1",
+      "U": 96,
+      "P": "production",
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U96_Pproduction_o-1",
+      "U": 96,
+      "P": "production",
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U96_P7_o1",
+      "U": 96,
+      "P": 7,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U96_P7_o-1",
+      "U": 96,
+      "P": 7,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U96_P13_o1",
+      "U": 96,
+      "P": 13,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U96_P13_o-1",
+      "U": 96,
+      "P": 13,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U48_P49_o1",
+      "U": 48,
+      "P": 49,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": 1,
+      "stage": "heldout"
+    },
+    {
+      "id": "U48_P49_o-1",
+      "U": 48,
+      "P": 49,
+      "r": "113/100",
+      "ell": "113/100",
+      "orientation": -1,
+      "stage": "heldout"
+    }
+  ],
+  "baselines": {
+    "zero": {
+      "formula": "C_zero=A(P)*S_rho*(F(1)-G_H)",
+      "A_response_prediction": "0",
+      "allowed_error": "0"
+    },
+    "additive": {
+      "formula": "C_add=S_rho*(A(P)*(F(1)-G_H)+sum_{prime ideals p,qp<=P} A(P/qp)*h(p))",
+      "mixed_h_prediction": "0 for squarefree d with at least two distinct prime ideal factors",
+      "allowed_error": "0",
+      "qualification": "Singleton h and F(1),G_H retained exactly on each configuration; this tests mixed interactions, not an independent prediction of all C."
+    }
+  },
+  "holdout_policy": "No new fitted formula. Baselines above fixed before any new evaluation. U96 and U48P49 evaluated only after main and software validation. Prior attachment already discloses approximate U48/U64 h7 and h49; these coefficients are not blind evidence. U48P49 is a full-return holdout, not a blind coefficient discovery.",
+  "negative_controls": [
+    "exact periodic versus direct lattice sums on small disks",
+    "full lcm with shared-prime zero masks versus conductor-only planted omission",
+    "A(7)=3,A(13)=5,A(49)=17 including distinct same-norm ideals",
+    "old P0 source comparison at U48,U64",
+    "H and raw radius recomputed for every P"
+  ],
+  "no_pysr_fit": true,
+  "CF22": "UNCHANGED_CONDITIONAL",
+  "RH": "NOT_PROVED"
+}
