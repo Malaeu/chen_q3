@@ -1,0 +1,646 @@
+{
+  "feature_names": [
+    "U",
+    "P",
+    "r",
+    "ell",
+    "orientation",
+    "norm_low",
+    "mu_low",
+    "norm_high",
+    "mu_high",
+    "gcd_norm",
+    "conductor_norm",
+    "period_Q",
+    "A_exact",
+    "A_P_exact",
+    "chi_00_zero",
+    "chi_00_real2",
+    "chi_00_imag_unit",
+    "chi_01_zero",
+    "chi_01_real2",
+    "chi_01_imag_unit",
+    "chi_02_zero",
+    "chi_02_real2",
+    "chi_02_imag_unit",
+    "chi_03_zero",
+    "chi_03_real2",
+    "chi_03_imag_unit",
+    "chi_04_zero",
+    "chi_04_real2",
+    "chi_04_imag_unit",
+    "chi_05_zero",
+    "chi_05_real2",
+    "chi_05_imag_unit",
+    "chi_06_zero",
+    "chi_06_real2",
+    "chi_06_imag_unit",
+    "chi_07_zero",
+    "chi_07_real2",
+    "chi_07_imag_unit",
+    "chi_08_zero",
+    "chi_08_real2",
+    "chi_08_imag_unit"
+  ],
+  "metadata": {
+    "collision_audit": {
+      "admission": "READY_FOR_BOUNDED_PYSR_ON_FINITE_PANEL",
+      "exact_final_numeric_feature_vector": {
+        "disjoint_target_groups": 0,
+        "distinct_keys": 13380,
+        "largest_separation_witness": null,
+        "no_disjoint_target_collision": true,
+        "pairs_in_repeated_key_groups": 108,
+        "repeated_key_groups": 54
+      },
+      "limitations": "No collision on this saved finite panel is not a universal identity, proof, or justification for asymptotic extrapolation.",
+      "strong_prior_features_plus_character_prefixes": {
+        "1": {
+          "disjoint_target_groups": 322,
+          "distinct_keys": 2968,
+          "largest_separation_witness": {
+            "lower": {
+              "configuration_id": "U48_P49_o1",
+              "group": "rough_rough",
+              "i": 3,
+              "j": 16,
+              "phase_codes": [
+                0
+              ],
+              "target": {
+                "lower": "-1859535084025811557838582808954537701398189286616610709/250000000000000000000000000000000000000000000000000000",
+                "upper": "-464883771006452889459645702238634425349547321654152677/62500000000000000000000000000000000000000000000000000"
+              }
+            },
+            "separation_exact": "185586693432578829985682420338581083253026612672372658747/25000000000000000000000000000000000000000000000000000000",
+            "upper": {
+              "configuration_id": "U48_P49_o1",
+              "group": "rough_rough",
+              "i": 4,
+              "j": 16,
+              "phase_codes": [
+                0
+              ],
+              "target": {
+                "lower": "-366814970002325798175860556872686886792315989288412053/25000000000000000000000000000000000000000000000000000000",
+                "upper": "-733629940004651596351721113745373773584631978576824099/50000000000000000000000000000000000000000000000000000000"
+              }
+            }
+          },
+          "no_disjoint_target_collision": false,
+          "pairs_in_repeated_key_groups": 13196,
+          "repeated_key_groups": 2730
+        },
+        "3": {
+          "disjoint_target_groups": 202,
+          "distinct_keys": 6180,
+          "largest_separation_witness": {
+            "lower": {
+              "configuration_id": "U48_P49_o1",
+              "group": "rough_rough",
+              "i": 7,
+              "j": 19,
+              "phase_codes": [
+                0,
+                0,
+                1
+              ],
+              "target": {
+                "lower": "-3954700451868671724688168421751522575673549635553498077/1000000000000000000000000000000000000000000000000000000",
+                "upper": "-3954700451868671724688168421751522575673549635553498073/1000000000000000000000000000000000000000000000000000000"
+              }
+            },
+            "separation_exact": "20110176327186926615053946201154308028571959736002714357/5000000000000000000000000000000000000000000000000000000",
+            "upper": {
+              "configuration_id": "U48_P49_o1",
+              "group": "rough_rough",
+              "i": 8,
+              "j": 19,
+              "phase_codes": [
+                0,
+                0,
+                1
+              ],
+              "target": {
+                "lower": "42084258480445998951638011549586893775526444779402999/625000000000000000000000000000000000000000000000000000",
+                "upper": "168337033921783995806552046198347575102105779117611997/2500000000000000000000000000000000000000000000000000000"
+              }
+            }
+          },
+          "no_disjoint_target_collision": false,
+          "pairs_in_repeated_key_groups": 11712,
+          "repeated_key_groups": 4458
+        },
+        "5": {
+          "disjoint_target_groups": 12,
+          "distinct_keys": 13166,
+          "largest_separation_witness": {
+            "lower": {
+              "configuration_id": "U96_P13_o1",
+              "group": "cross",
+              "i": 1,
+              "j": 23,
+              "phase_codes": [
+                0,
+                0,
+                2,
+                1,
+                -1
+              ],
+              "target": {
+                "lower": "-647467691341206720246070658731988759704809744397654161/10000000000000000000000000000000000000000000000000000000000",
+                "upper": "-647467691341206720246070658731988759704809744397654157/10000000000000000000000000000000000000000000000000000000000"
+              }
+            },
+            "separation_exact": "1077320914185930300212210612234575100359874168013989413/100000000000000000000000000000000000000000000000000000000000",
+            "upper": {
+              "configuration_id": "U96_P13_o1",
+              "group": "cross",
+              "i": 0,
+              "j": 23,
+              "phase_codes": [
+                0,
+                0,
+                2,
+                1,
+                -1
+              ],
+              "target": {
+                "lower": "-5397355999226136902248495975085312496688223275962552157/100000000000000000000000000000000000000000000000000000000000",
+                "upper": "-5397355999226136902248495975085312496688223275962552141/100000000000000000000000000000000000000000000000000000000000"
+              }
+            }
+          },
+          "no_disjoint_target_collision": false,
+          "pairs_in_repeated_key_groups": 530,
+          "repeated_key_groups": 262
+        },
+        "9": {
+          "disjoint_target_groups": 0,
+          "distinct_keys": 13380,
+          "largest_separation_witness": null,
+          "no_disjoint_target_collision": true,
+          "pairs_in_repeated_key_groups": 108,
+          "repeated_key_groups": 54
+        }
+      }
+    },
+    "fingerprint": {
+      "numeric_encoding": "zero flag, 2*cos(pi*k/3), sin(pi*k/3)/(sqrt(3)/2); all stored values are exact integers",
+      "pair_code": "-1 if either column character is zero, else (k_left-k_right) mod 6",
+      "pair_swap_canonicalization": "lexicographic min(vector, global conjugate); zero sentinel -1 is fixed",
+      "row_or_ideal_identifiers_as_features": false,
+      "source_operation": "evaluate.phase_index(factors,z,orientation), exact sixth-root index mod 6",
+      "target_independent": true
+    },
+    "forbidden_as_features": [
+      "C_signed_contribution",
+      "physical_signed_contribution",
+      "raw_signed_contribution",
+      "T_physical_2re",
+      "T_raw_2re",
+      "pair_group",
+      "pair indices",
+      "ideal generators"
+    ],
+    "probes": [
+      {
+        "a": 1,
+        "b": 0,
+        "norm": 1
+      },
+      {
+        "a": 0,
+        "b": 1,
+        "norm": 1
+      },
+      {
+        "a": 2,
+        "b": 0,
+        "norm": 4
+      },
+      {
+        "a": 2,
+        "b": 1,
+        "norm": 3
+      },
+      {
+        "a": 3,
+        "b": 1,
+        "norm": 7
+      },
+      {
+        "a": 1,
+        "b": 3,
+        "norm": 7
+      },
+      {
+        "a": 3,
+        "b": 2,
+        "norm": 7
+      },
+      {
+        "a": 4,
+        "b": 1,
+        "norm": 13
+      },
+      {
+        "a": 1,
+        "b": 4,
+        "norm": 13
+      }
+    ],
+    "resolved_prior_witness": {
+      "configuration_id": "U96_P13_o1",
+      "differing_probe_indices_zero_based": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "pairs": [
+        {
+          "base_numeric_features": [
+            96.0,
+            13.0,
+            1.13,
+            1.13,
+            1.0,
+            181.0,
+            -1.0,
+            217.0,
+            1.0,
+            1.0,
+            39277.0,
+            39277.0,
+            5.0,
+            4.0
+          ],
+          "columns": [
+            {
+              "factors": [
+                {
+                  "exponent": 1,
+                  "prime_generator": [
+                    -11,
+                    -15
+                  ],
+                  "prime_ideal_norm": 181
+                }
+              ],
+              "mu": -1,
+              "norm": 181
+            },
+            {
+              "factors": [
+                {
+                  "exponent": 1,
+                  "prime_generator": [
+                    -5,
+                    -6
+                  ],
+                  "prime_ideal_norm": 31
+                },
+                {
+                  "exponent": 1,
+                  "prime_generator": [
+                    1,
+                    3
+                  ],
+                  "prime_ideal_norm": 7
+                }
+              ],
+              "mu": 1,
+              "norm": 217
+            }
+          ],
+          "id": "U96_P13_o1:28:37",
+          "phase_codes": [
+            0,
+            0,
+            3,
+            2,
+            3,
+            -1,
+            -1,
+            4,
+            0
+          ],
+          "strong_prior_feature_key": [
+            [
+              "A_P_exact",
+              4
+            ],
+            [
+              "A_exact",
+              5
+            ],
+            [
+              "P_label",
+              "13"
+            ],
+            [
+              "U",
+              96
+            ],
+            [
+              "columns_norm_mu_sorted",
+              [
+                [
+                  181,
+                  -1
+                ],
+                [
+                  217,
+                  1
+                ]
+              ]
+            ],
+            [
+              "columns_prime_norm_exponent_shapes",
+              [
+                [
+                  [
+                    "factors",
+                    [
+                      [
+                        181,
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "mu",
+                    -1
+                  ],
+                  [
+                    "norm",
+                    181
+                  ]
+                ],
+                [
+                  [
+                    "factors",
+                    [
+                      [
+                        7,
+                        1
+                      ],
+                      [
+                        31,
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "mu",
+                    1
+                  ],
+                  [
+                    "norm",
+                    217
+                  ]
+                ]
+              ]
+            ],
+            [
+              "conductor_norm",
+              39277
+            ],
+            [
+              "ell",
+              "113/100"
+            ],
+            [
+              "full_period_Q",
+              39277
+            ],
+            [
+              "gcd_norm",
+              1
+            ],
+            [
+              "orientation",
+              1
+            ],
+            [
+              "pair_group",
+              "cross"
+            ],
+            [
+              "r",
+              "113/100"
+            ]
+          ],
+          "target": {
+            "lower": "1504010525896685385471774107433893084961010293277126519/1000000000000000000000000000000000000000000000000000000",
+            "upper": "1504010525896685385471774107433893084961010293277126523/1000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        {
+          "base_numeric_features": [
+            96.0,
+            13.0,
+            1.13,
+            1.13,
+            1.0,
+            181.0,
+            -1.0,
+            217.0,
+            1.0,
+            1.0,
+            39277.0,
+            39277.0,
+            5.0,
+            4.0
+          ],
+          "columns": [
+            {
+              "factors": [
+                {
+                  "exponent": 1,
+                  "prime_generator": [
+                    -11,
+                    -15
+                  ],
+                  "prime_ideal_norm": 181
+                }
+              ],
+              "mu": -1,
+              "norm": 181
+            },
+            {
+              "factors": [
+                {
+                  "exponent": 1,
+                  "prime_generator": [
+                    -2,
+                    -3
+                  ],
+                  "prime_ideal_norm": 7
+                },
+                {
+                  "exponent": 1,
+                  "prime_generator": [
+                    1,
+                    6
+                  ],
+                  "prime_ideal_norm": 31
+                }
+              ],
+              "mu": 1,
+              "norm": 217
+            }
+          ],
+          "id": "U96_P13_o1:28:38",
+          "phase_codes": [
+            0,
+            0,
+            1,
+            0,
+            -1,
+            0,
+            0,
+            4,
+            2
+          ],
+          "strong_prior_feature_key": [
+            [
+              "A_P_exact",
+              4
+            ],
+            [
+              "A_exact",
+              5
+            ],
+            [
+              "P_label",
+              "13"
+            ],
+            [
+              "U",
+              96
+            ],
+            [
+              "columns_norm_mu_sorted",
+              [
+                [
+                  181,
+                  -1
+                ],
+                [
+                  217,
+                  1
+                ]
+              ]
+            ],
+            [
+              "columns_prime_norm_exponent_shapes",
+              [
+                [
+                  [
+                    "factors",
+                    [
+                      [
+                        181,
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "mu",
+                    -1
+                  ],
+                  [
+                    "norm",
+                    181
+                  ]
+                ],
+                [
+                  [
+                    "factors",
+                    [
+                      [
+                        7,
+                        1
+                      ],
+                      [
+                        31,
+                        1
+                      ]
+                    ]
+                  ],
+                  [
+                    "mu",
+                    1
+                  ],
+                  [
+                    "norm",
+                    217
+                  ]
+                ]
+              ]
+            ],
+            [
+              "conductor_norm",
+              39277
+            ],
+            [
+              "ell",
+              "113/100"
+            ],
+            [
+              "full_period_Q",
+              39277
+            ],
+            [
+              "gcd_norm",
+              1
+            ],
+            [
+              "orientation",
+              1
+            ],
+            [
+              "pair_group",
+              "cross"
+            ],
+            [
+              "r",
+              "113/100"
+            ]
+          ],
+          "target": {
+            "lower": "-2574065153053816864441913545467814200953749847818755423/5000000000000000000000000000000000000000000000000000000",
+            "upper": "-2574065153053816864441913545467814200953749847818755421/5000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "same_base_numeric_features": true,
+      "same_previous_strong_key": true
+    },
+    "source": {
+      "configurations": 20,
+      "decomposition_schema": "cf22-nonunit-pair-decomposition-v1",
+      "decomposition_sha256": "74e888523228566fbb5140ed24dd8b9abbd33a07af9eba72519802dd18e9f38d",
+      "full_C_reassembly_interval_checked": true,
+      "group_counts": {
+        "affected_affected": 1006,
+        "cross": 4038,
+        "rough_rough": 8390
+      },
+      "pairs": 13434,
+      "phase_evaluator_sha256": "06c48c3075335205aeb80cdc7a142d1b0868e82a7f2a1006391764222112faeb",
+      "physical_minus_raw_target_interval_checked": true,
+      "pinned_source_commit": "f1993ec6a7933418c38c305a13a3221037b9447a"
+    },
+    "split": {
+      "rule": "test all U=96 rows and U=48,P=49 rows; train the remaining saved rows",
+      "selection_scope": "full panel was used for feature-collision audit; test designation is not an untouched feature-selection set",
+      "test_pairs": 9006,
+      "train_pairs": 4428
+    }
+  }
+}

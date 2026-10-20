@@ -1,0 +1,6 @@
+Complexity,Loss,Equation
+1,0.047747580392639516,"-0.005149436188903844"
+3,0.04709847940849959,"gcd_norm / conductor_norm"
+5,0.04697839154986759,"(gcd_norm / conductor_norm) * chi_04_zero"
+9,0.046821014121522384,"P / (((conductor_norm + 13.289689874853384) - 88.52841147867743) + conductor_norm)"
+11,0.04682101412152158,"P / (conductor_norm + (conductor_norm + ((P - P) - 75.23870739535568)))"

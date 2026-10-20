@@ -1,0 +1,213 @@
+{
+  "scope": "FINITE_PANEL_CONJECTURE_SEARCH_NOT_CF22",
+  "model_fits": 1,
+  "candidates": [
+    {
+      "index": 0,
+      "complexity": 1,
+      "training_loss": 0.0477475803926395,
+      "expression": "-0.005149436188903844",
+      "literal_constants_policy": "SymPy printed decimal constants fixed as exact rational literals",
+      "splits": {
+        "train": {
+          "refuted_points": 4428,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 2.6641146419820636,
+          "first_refutation": {
+            "id": "U48_Pproduction_o1:0:1",
+            "target": {
+              "lower": "-1792233896450525303718784079261138627537002678373550197/100000000000000000000000000000000000000000000000000000000000",
+              "upper": "-1792233896450525303718784079261138627537002678373550191/100000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[-0.00514943618890384400000000000000000000000000000000000000000 +/- 1.65e-60]",
+            "error_interval": "[-0.0051315138499393387469628121592073886137246299732162644981 +/- 7.41e-59]"
+          }
+        },
+        "test": {
+          "refuted_points": 9006,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 8.348676994051633,
+          "first_refutation": {
+            "id": "U96_Pproduction_o1:0:1",
+            "target": {
+              "lower": "2811208990083296371459705650699919503071407481707778849/5000000000000000000000000000000000000000000000000000000000000000",
+              "upper": "562241798016659274291941130139983900614281496341555773/1000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[-0.00514943618890384400000000000000000000000000000000000000000 +/- 1.65e-60]",
+            "error_interval": "[-0.00514943675114564201665927429194113013998390061428149634156 +/- 7.30e-60]"
+          }
+        }
+      },
+      "status": "REFUTED_AS_LITERAL_IDENTITY"
+    },
+    {
+      "index": 1,
+      "complexity": 3,
+      "training_loss": 0.0470984794084995,
+      "expression": "gcd_norm/conductor_norm",
+      "literal_constants_policy": "SymPy printed decimal constants fixed as exact rational literals",
+      "splits": {
+        "train": {
+          "refuted_points": 4428,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 2.658870946202246,
+          "first_refutation": {
+            "id": "U48_Pproduction_o1:0:1",
+            "target": {
+              "lower": "-1792233896450525303718784079261138627537002678373550197/100000000000000000000000000000000000000000000000000000000000",
+              "upper": "-1792233896450525303718784079261138627537002678373550191/100000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.000540832882639264467279610600324499729583558680367766360195 +/- 4.58e-61]",
+            "error_interval": "[0.0005587552216037697203167984411171111158589287071515018621 +/- 6.50e-59]"
+          }
+        },
+        "test": {
+          "refuted_points": 9006,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 8.354014082708167,
+          "first_refutation": {
+            "id": "U96_Pproduction_o1:0:1",
+            "target": {
+              "lower": "2811208990083296371459705650699919503071407481707778849/5000000000000000000000000000000000000000000000000000000000000000",
+              "upper": "562241798016659274291941130139983900614281496341555773/1000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.0414201183431952662721893491124260355029585798816568047337 +/- 3.46e-59]",
+            "error_interval": "[0.0414201177809534682555300748204849053629746792673753083922 +/- 7.71e-59]"
+          }
+        }
+      },
+      "status": "REFUTED_AS_LITERAL_IDENTITY"
+    },
+    {
+      "index": 2,
+      "complexity": 5,
+      "training_loss": 0.0469783915498675,
+      "expression": "chi_04_zero*gcd_norm/conductor_norm",
+      "literal_constants_policy": "SymPy printed decimal constants fixed as exact rational literals",
+      "splits": {
+        "train": {
+          "refuted_points": 1584,
+          "overlapping_intervals": 2844,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 2.6589652057931596,
+          "first_refutation": {
+            "id": "U48_Pproduction_o1:0:1",
+            "target": {
+              "lower": "-1792233896450525303718784079261138627537002678373550197/100000000000000000000000000000000000000000000000000000000000",
+              "upper": "-1792233896450525303718784079261138627537002678373550191/100000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "0",
+            "error_interval": "[1.79223389645052530371878407926113862753700267837355019e-5 +/- 7.01e-59]"
+          }
+        },
+        "test": {
+          "refuted_points": 3740,
+          "overlapping_intervals": 5266,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 8.353826430240536,
+          "first_refutation": {
+            "id": "U96_Pproduction_o1:0:1",
+            "target": {
+              "lower": "2811208990083296371459705650699919503071407481707778849/5000000000000000000000000000000000000000000000000000000000000000",
+              "upper": "562241798016659274291941130139983900614281496341555773/1000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.0414201183431952662721893491124260355029585798816568047337 +/- 3.46e-59]",
+            "error_interval": "[0.0414201177809534682555300748204849053629746792673753083922 +/- 7.71e-59]"
+          }
+        }
+      },
+      "status": "REFUTED_AS_LITERAL_IDENTITY"
+    },
+    {
+      "index": 3,
+      "complexity": 9,
+      "training_loss": 0.0468210141215223,
+      "expression": "P/(conductor_norm + conductor_norm - 1*88.52841147867743 + 13.289689874853384)",
+      "literal_constants_policy": "SymPy printed decimal constants fixed as exact rational literals",
+      "splits": {
+        "train": {
+          "refuted_points": 4428,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 2.658350338140405,
+          "first_refutation": {
+            "id": "U48_Pproduction_o1:0:1",
+            "target": {
+              "lower": "-1792233896450525303718784079261138627537002678373550197/100000000000000000000000000000000000000000000000000000000000",
+              "upper": "-1792233896450525303718784079261138627537002678373550191/100000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.000300205634852431089732155659039915986909233836531939105 +/- 9.52e-58]",
+            "error_interval": "[0.00031812797381693634276934349983252737318460386331567461 +/- 4.05e-57]"
+          }
+        },
+        "test": {
+          "refuted_points": 9006,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 8.358456601772426,
+          "first_refutation": {
+            "id": "U96_Pproduction_o1:0:1",
+            "target": {
+              "lower": "2811208990083296371459705650699919503071407481707778849/5000000000000000000000000000000000000000000000000000000000000000",
+              "upper": "562241798016659274291941130139983900614281496341555773/1000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.0042017013156110863020893107371571793093253939619536067 +/- 3.24e-56]",
+            "error_interval": "[0.0042017007533692882854300364452160491693414933476721103 +/- 4.14e-56]"
+          }
+        }
+      },
+      "status": "REFUTED_AS_LITERAL_IDENTITY"
+    },
+    {
+      "index": 4,
+      "complexity": 11,
+      "training_loss": 0.0468210141215215,
+      "expression": "P/(-P + P + conductor_norm + conductor_norm - 1*75.23870739535568)",
+      "literal_constants_policy": "SymPy printed decimal constants fixed as exact rational literals",
+      "splits": {
+        "train": {
+          "refuted_points": 4428,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 2.6583503381408184,
+          "first_refutation": {
+            "id": "U48_Pproduction_o1:0:1",
+            "target": {
+              "lower": "-1792233896450525303718784079261138627537002678373550197/100000000000000000000000000000000000000000000000000000000000",
+              "upper": "-1792233896450525303718784079261138627537002678373550191/100000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.000300205633675024707809324256685170277457423614134014766 +/- 5.69e-58]",
+            "error_interval": "[0.000318127972639529960846512097477781663732793640917750268 +/- 6.27e-58]"
+          }
+        },
+        "test": {
+          "refuted_points": 9006,
+          "overlapping_intervals": 0,
+          "undefined_points": 0,
+          "max_absolute_error_upper_display": 8.358456601766209,
+          "first_refutation": {
+            "id": "U96_Pproduction_o1:0:1",
+            "target": {
+              "lower": "2811208990083296371459705650699919503071407481707778849/5000000000000000000000000000000000000000000000000000000000000000",
+              "upper": "562241798016659274291941130139983900614281496341555773/1000000000000000000000000000000000000000000000000000000000000000"
+            },
+            "prediction_interval": "[0.0042017010884096608772795929377900321594640747096043929 +/- 5.15e-56]",
+            "error_interval": "[0.0042017005261678628606203186458489020194801740953228966 +/- 9.90e-57]"
+          }
+        }
+      },
+      "status": "REFUTED_AS_LITERAL_IDENTITY"
+    }
+  ],
+  "versions": {
+    "pysr": "2.7.2",
+    "sympy": "1.14.0",
+    "numpy": "2.5.4",
+    "python-flint": "0.9.0"
+  },
+  "manifest_sha256": "69e707dd4dcd370392cef0b94db147f9c013460d03418aa9fcd0dfe2ee51c17f"
+}

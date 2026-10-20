@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "tests": 6,
+  "model_fits": 1,
+  "literal_candidates_refuted": 5,
+  "review": "Independent read-only review and rational witness replay passed",
+  "julia_metadata": "Saved current project/manifest after run; Julia version recorded in manifest, not queried from live process",
+  "sha256": {
+    "features.py": "9f71115fa4bc1d892d352685e63691d658078a3eea88771fe4bd18b1dc919f00",
+    "search.py": "60b4595991e92a83e747329d0250a151afaaa2e98f8362eb0344ae37455caa35",
+    "verify_candidates.py": "22c3cae350db43e0e6b74f48a406f5e73b27e42d741e5f15803909d5ca103d4f",
+    "test_features.py": "75fecb6daa51eee78f5bb1ca77d210da6c98f893b43eea284286e47707a4112e",
+    "test_search_gate.py": "a7437c56475d60c3b7e91c212042f40c74e52dc851a4819299aa9029cba748c7",
+    "dataset.json.gz": "c09b7c9cf39fce4b0f9add205644495913e5927521f87c7601a8c19d1472636f",
+    "audit.json": "3c77798b2e4efd4a111d3f0cb2c7d0a8cdbc9d68d529e725adf85bec02d05d05",
+    "candidate_verification.json": "4f8694b9bac49dee98fd4355b53ce29f28f8809b047ac6eb69ef7a7d58e109bc",
+    "search_run/result.json": "c6c1919b563476b0c40546e6f0ae28f4f075024149fe3ec1c30e7d02ee994ea1",
+    "search_run/manifest.json": "69e707dd4dcd370392cef0b94db147f9c013460d03418aa9fcd0dfe2ee51c17f",
+    "search_run/Julia_Manifest.toml": "8cb026bfbf476dd2b61b424b67c7e38b5f7409ba008319f409bee55d5e4a7281",
+    "search_run/Julia_Project.toml": "51bcf51dcc11e384f926769741b4469c371e6d90cccd661bc59cb36fddd6a1f2"
+  }
+}
