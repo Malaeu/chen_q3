@@ -8604,3 +8604,14 @@ Exact a_T(r s²)=mu(r)c_T(r,s), all ordered factorizations share the same sign; 
 Следующий ход: нужен совместный знаковый контроль исходной prime-only суммы; настройка R и одна W5 его не поставляют.
 Проверка: независимый PAPER разбор без существенных замечаний; Lean не запускался. Локальные ask/preflight INCOMPLETE, не отсутствие поставщика. C5/full-SP/RH OPEN.
 Артефакт: docs/literature/openai_math_2026-10-07/CCM_C5_SIGNED_SUBLEMMA_ATTEMPT.md.
+
+## 2026-10-20 — C5: полка и первичные источники сокращения по простым
+Выбрали: alias-hunt по точному Pi и проверка степени после полного матричного возврата.
+Источники: Tao PNT/zero-free, Gallagher–Coppola–Laporta, additive Type-II и logarithmic-phase derivative test; оригиналы и SHA сохранены.
+Результат: PNT/Vinogradov–Korobov через полный Abel даёт верхний бюджет m^(1/2+alpha−o(1)), недостаточный для c(alpha+beta). Это не оптимальная граница и не no-go.
+Инсайт: (uv)^it разделяется; generic additive Type-II сокращение по второй переменной автоматически не переносится. Actual coefficients этим не опровергнуты.
+Gallagher: сохраняет полные локальные корреляции, но их нужная оценка и возврат к адаптивной матрице не поставлены. Уже был на полке Q06.
+Ограничение поиска: три ask INCOMPLETE из-за freshness; глобального отсутствия не заявляем. C5/full-SP/RH OPEN; новых Lean runs нет.
+Проверка: независимый разбор собственного Abel-return и separability без существенных дефектов; root прочитал первоисточники.
+Следующий фильтр: источник обязан оценить centered correlations вместе с actual spectral weight и вернуть показатель, стремящийся к нулю с alpha,beta; иначе не запускать тяжёлый scan.
+Артефакт: docs/literature/openai_math_2026-10-07/CCM_C5_CANCELLATION_LITERATURE_AUDIT.md.

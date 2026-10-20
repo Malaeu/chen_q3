@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-20",
+  "status": "DISCOVERY_EVIDENCE_NOT_C5_PROOF",
+  "sources": [
+    {
+      "path": "sources/c5_gallagher_1411.1739v1.pdf",
+      "url": "https://arxiv.org/pdf/1411.1739",
+      "sha256": "9551081b48e9de583b49f160e9708701cc91691458ceef0339ab0f2fd94a1ffe"
+    },
+    {
+      "path": "sources/c5_tao_pnt_2021.html",
+      "url": "https://terrytao.wordpress.com/2021/02/12/246b-notes-4-the-riemann-zeta-function-and-the-prime-number-theorem/",
+      "sha256": "688bb535eb9df2f04a1c710f5f6489b469c77c925352a4840b4266aec63c2d97"
+    },
+    {
+      "path": "sources/c5_tao_minor_arcs_2015.html",
+      "url": "https://terrytao.wordpress.com/2015/03/30/254a-notes-8-the-hardy-littlewood-circle-method-and-vinogradovs-theorem/",
+      "sha256": "5c793ff73572a7bf518b5f08bada9e07ed75f901830d462b88aee3b553dfcc53"
+    },
+    {
+      "path": "sources/c5_tao_log_phase_2015.html",
+      "url": "https://terrytao.wordpress.com/2015/02/07/254a-notes-5-bounding-exponential-sums-and-the-zeta-function/",
+      "sha256": "c5ca709722e6037908c7befbdce9dde415336882dd67a850640964771f3b709e"
+    }
+  ]
+}
