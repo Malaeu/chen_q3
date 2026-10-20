@@ -8583,3 +8583,15 @@ Exact a_T(r s²)=mu(r)c_T(r,s), all ordered factorizations share the same sign; 
 Следующий ход: исходная оценка 2 Re Tr(F W F* Z), точный перенос и новая арифметическая подлемма, не повтор раскрытия полной матрицы.
 Адреса: experiments/ccm_lean_search_2026_10_20/RESULT.md; contract.json; results.json; supplier_preflight.json.
 Чей вердикт: реальные Lean runs; independent read-only ccm_search_review без существенных замечаний; математического gain нет.
+
+## 2026-10-20 — Арифметическая weighted-LCM подлемма и меньшая цена возврата
+Развилка: снова атаковать целую SP тактикой или доказать конкретную оценку исходных коэффициентов.
+Выбрали: sum_l |g_R(l)|/sqrt(l)≤324R(1+logR)^2 и полный Abel return с min(1,t/l).
+Почему: поздняя первая кратная точка уменьшает цену большого l; старый единый bound терял это преимущество.
+Что отвергли: новая запись тождества как gain; выдача малого A+C_comp за знак каждого слагаемого; sparse estimate как full-SP.
+Инсайты: tau²≤d4 даёт универсальную арифметическую оценку; E_R≤3888R(1+D)(1+logR)^2(1+2logR), alpha+beta вместо alpha+2beta с логарифмами. Все края и смешанные члены сохранены.
+Блокеры: при полном M=m цена не даёт m^(1/4); C5 и signed q-block остаются OPEN. Результат только вспомогательный.
+Иглы Зингера: bound B_l≤min(1,t/l) сохраняет скачок t=l и l>m; C_R^-2 уже внутри g_R.
+Следующий ход: центральная знаковая арифметическая оценка, используя меньший оплаченный return; не объявлять closure из одного этого fee.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_WEIGHTED_LCM_RETURN_CONCLUSION.md; CCM_WEIGHTED_LCM_CHECK.py/json; CCM_WEIGHTED_LCM_PROVENANCE.json.
+Чей вердикт: root PAPER proof; independent ccm_lcm_review без существенных дефектов; 515 точных конечных identities и 7 negative controls только diagnostics; Lean не запускался.

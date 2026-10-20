@@ -1,0 +1,15 @@
+{
+  "base_commit": "fd347a13f4ef3055e8d84d5b395c5dc446304da0",
+  "status": "PAPER_REVIEWED_AUXILIARY_BOUND",
+  "universal_verifier": "written mathematical proof plus independent read-only review",
+  "finite_diagnostics": "not universal certificate",
+  "source_sha256": {
+    "CCM_WEIGHTED_LCM_RETURN_CONCLUSION.md": "061e5cd247b450789338e4408a157479a4a110732bcb6dbc98edc10b176e2ce6",
+    "CCM_WEIGHTED_LCM_CHECK.py": "3ef9b4853aca12932c13db5ca033c7319a3e74f4d3e0de73ec60d952c5bc736a",
+    "CCM_WEIGHTED_LCM_CHECK.json": "01203fb93c567a3c4e80e741da4ad328e78cfb6a69c38591227ddc02d1d7544c",
+    "CCM_MOMENT_Q08_CONCLUSION.md": "1fd2ebdade052f55ab7e5093b62d2768ffff0009f952a5eff9791f90cdf9a7a8",
+    "PROSHKA_VERDICT_FULL_CCM_RAMANUJAN_Q08.md": "e77e96f8cecc9c3d5babacb424fe87d8a8f9ff56800583f7c1bab93b263a3c87",
+    "CCM_FULL_RAMANUJAN_RETURN.md": "b6a859615fb68d7e452878147f43078e1271bc63c4f7181d94b1b9e7f1df7bab",
+    "CCM_COMPOSITE_SIGN_TARGET.md": "88d8edad11dd6006ad6dbdd04ae65edad8c2479b8b204e8bb28933aa017e6c7e"
+  }
+}

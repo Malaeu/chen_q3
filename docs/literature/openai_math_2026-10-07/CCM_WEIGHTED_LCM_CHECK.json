@@ -1,0 +1,75 @@
+{
+  "boundary": "FINITE_DIAGNOSTIC_NOT_UNIVERSAL_PROOF",
+  "rows": [
+    {
+      "R": 2,
+      "C_R_exact": "2",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 5,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 1.7071067811865475,
+      "W1_bound_float": 1857.6522990246838,
+      "ratio_float": 0.0009189592595357179
+    },
+    {
+      "R": 4,
+      "C_R_exact": "5/2",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 9,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 2.5557150949036798,
+      "W1_bound_float": 7379.943408174713,
+      "ratio_float": 0.0003463055139518728
+    },
+    {
+      "R": 8,
+      "C_R_exact": "41/12",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 17,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 4.061181733792331,
+      "W1_bound_float": 24579.832860752067,
+      "ratio_float": 0.00016522413951304923
+    },
+    {
+      "R": 16,
+      "C_R_exact": "497/120",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 33,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 5.973465105007916,
+      "W1_bound_float": 73780.89465861335,
+      "ratio_float": 8.096222108239995e-05
+    },
+    {
+      "R": 32,
+      "C_R_exact": "264221/55440",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 65,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 9.051562561463367,
+      "W1_bound_float": 206766.920888053,
+      "ratio_float": 4.377664726343742e-05
+    },
+    {
+      "R": 64,
+      "C_R_exact": "1746811873/320480160",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 129,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 13.947485935019754,
+      "W1_bound_float": 551869.4523109739,
+      "ratio_float": 2.527316175340769e-05
+    },
+    {
+      "R": 128,
+      "C_R_exact": "939475577991787/152213883307200",
+      "coefficient_mean_identity": true,
+      "divisor_square_checks": 257,
+      "mixed_terms_negative_control": "REJECTED",
+      "weighted_l1_float_diagnostic": 22.484180174940683,
+      "W1_bound_float": 1420260.8204781152,
+      "ratio_float": 1.5831021915658864e-05
+    }
+  ]
+}
