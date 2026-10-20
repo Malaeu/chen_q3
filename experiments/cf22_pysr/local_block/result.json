@@ -1,0 +1,785 @@
+{
+  "epistemic_limit": "A collision is a finite-panel falsifier of single-valued dependence on the listed features. No collision on this finite panel is not proof of an identity or law on the full CF22 domain.",
+  "forbidden_as_features": [
+    "T_physical_2re",
+    "T_raw_2re",
+    "physical_signed_contribution",
+    "raw_signed_contribution",
+    "C_signed_contribution",
+    "full_C"
+  ],
+  "profiles": {
+    "base_proposed_features": {
+      "disjoint_target_groups": 322,
+      "distinct_feature_keys": 2968,
+      "feature_names": [
+        "U",
+        "P_label",
+        "r",
+        "ell",
+        "orientation",
+        "columns_norm_mu_sorted",
+        "gcd_norm",
+        "conductor_norm",
+        "full_period_Q",
+        "A_exact",
+        "A_P_exact"
+      ],
+      "interpretation": "Same listed features have disjoint certified full signed pair intervals; at least one omitted arithmetic feature matters on this panel.",
+      "largest_cross_positive_negative_gap": {
+        "features": {
+          "A_P_exact": 4,
+          "A_exact": 5,
+          "P_label": "13",
+          "U": 96,
+          "columns_norm_mu_sorted": [
+            [
+              181,
+              -1
+            ],
+            [
+              217,
+              1
+            ]
+          ],
+          "conductor_norm": 39277,
+          "ell": "113/100",
+          "full_period_Q": 39277,
+          "gcd_norm": 1,
+          "orientation": 1,
+          "r": "113/100"
+        },
+        "lower_target_pair": {
+          "configuration_id": "U96_P13_o1",
+          "group": "cross",
+          "i": 28,
+          "j": 38,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              }
+            ],
+            "norm": 181
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -2,
+                  -3
+                ],
+                "prime_ideal_norm": 7
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  6
+                ],
+                "prime_ideal_norm": 31
+              }
+            ],
+            "norm": 39277
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -2,
+                  -3
+                ],
+                "prime_ideal_norm": 7
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  6
+                ],
+                "prime_ideal_norm": 31
+              }
+            ],
+            "norm": 217
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "-2574065153053816864441913545467814200953749847818755423/5000000000000000000000000000000000000000000000000000000",
+            "upper": "-2574065153053816864441913545467814200953749847818755421/5000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        "separation_decimal": "2.018823556507449",
+        "separation_exact": "630882361408577736987549005164829976609925082137774251/312500000000000000000000000000000000000000000000000000",
+        "upper_target_pair": {
+          "configuration_id": "U96_P13_o1",
+          "group": "cross",
+          "i": 28,
+          "j": 37,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              }
+            ],
+            "norm": 181
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -6
+                ],
+                "prime_ideal_norm": 31
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  3
+                ],
+                "prime_ideal_norm": 7
+              }
+            ],
+            "norm": 39277
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -6
+                ],
+                "prime_ideal_norm": 31
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  3
+                ],
+                "prime_ideal_norm": 7
+              }
+            ],
+            "norm": 217
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "1504010525896685385471774107433893084961010293277126519/1000000000000000000000000000000000000000000000000000000",
+            "upper": "1504010525896685385471774107433893084961010293277126523/1000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "largest_disjoint_target_gap": {
+        "features": {
+          "A_P_exact": 17,
+          "A_exact": 17,
+          "P_label": "49",
+          "U": 48,
+          "columns_norm_mu_sorted": [
+            [
+              61,
+              -1
+            ],
+            [
+              97,
+              -1
+            ]
+          ],
+          "conductor_norm": 5917,
+          "ell": "113/100",
+          "full_period_Q": 5917,
+          "gcd_norm": 1,
+          "orientation": 1,
+          "r": "113/100"
+        },
+        "lower_target_pair": {
+          "configuration_id": "U48_P49_o1",
+          "group": "rough_rough",
+          "i": 3,
+          "j": 16,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 61
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 5917
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              }
+            ],
+            "norm": 97
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "-1859535084025811557838582808954537701398189286616610709/250000000000000000000000000000000000000000000000000000",
+            "upper": "-464883771006452889459645702238634425349547321654152677/62500000000000000000000000000000000000000000000000000"
+          }
+        },
+        "separation_decimal": "7.423467737303153",
+        "separation_exact": "185586693432578829985682420338581083253026612672372658747/25000000000000000000000000000000000000000000000000000000",
+        "upper_target_pair": {
+          "configuration_id": "U48_P49_o1",
+          "group": "rough_rough",
+          "i": 4,
+          "j": 16,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  4,
+                  9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 61
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  4,
+                  9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 5917
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              }
+            ],
+            "norm": 97
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "-366814970002325798175860556872686886792315989288412053/25000000000000000000000000000000000000000000000000000000",
+            "upper": "-733629940004651596351721113745373773584631978576824099/50000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "no_certified_collision_on_panel": false,
+      "pair_count": 13434,
+      "pairs_in_repeated_groups": 13196,
+      "repeated_feature_groups": 2730,
+      "status": "COLLISION_FOUND"
+    },
+    "stronger_factor_shape_features": {
+      "disjoint_target_groups": 322,
+      "distinct_feature_keys": 2968,
+      "feature_names": [
+        "U",
+        "P_label",
+        "r",
+        "ell",
+        "orientation",
+        "columns_norm_mu_sorted",
+        "gcd_norm",
+        "conductor_norm",
+        "full_period_Q",
+        "A_exact",
+        "A_P_exact",
+        "pair_group",
+        "columns_prime_norm_exponent_shapes"
+      ],
+      "interpretation": "Same listed features have disjoint certified full signed pair intervals; at least one omitted arithmetic feature matters on this panel.",
+      "largest_cross_positive_negative_gap": {
+        "features": {
+          "A_P_exact": 4,
+          "A_exact": 5,
+          "P_label": "13",
+          "U": 96,
+          "columns_norm_mu_sorted": [
+            [
+              181,
+              -1
+            ],
+            [
+              217,
+              1
+            ]
+          ],
+          "columns_prime_norm_exponent_shapes": [
+            {
+              "factors": [
+                [
+                  181,
+                  1
+                ]
+              ],
+              "mu": -1,
+              "norm": 181
+            },
+            {
+              "factors": [
+                [
+                  7,
+                  1
+                ],
+                [
+                  31,
+                  1
+                ]
+              ],
+              "mu": 1,
+              "norm": 217
+            }
+          ],
+          "conductor_norm": 39277,
+          "ell": "113/100",
+          "full_period_Q": 39277,
+          "gcd_norm": 1,
+          "orientation": 1,
+          "pair_group": "cross",
+          "r": "113/100"
+        },
+        "lower_target_pair": {
+          "configuration_id": "U96_P13_o1",
+          "group": "cross",
+          "i": 28,
+          "j": 38,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              }
+            ],
+            "norm": 181
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -2,
+                  -3
+                ],
+                "prime_ideal_norm": 7
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  6
+                ],
+                "prime_ideal_norm": 31
+              }
+            ],
+            "norm": 39277
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -2,
+                  -3
+                ],
+                "prime_ideal_norm": 7
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  6
+                ],
+                "prime_ideal_norm": 31
+              }
+            ],
+            "norm": 217
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "-2574065153053816864441913545467814200953749847818755423/5000000000000000000000000000000000000000000000000000000",
+            "upper": "-2574065153053816864441913545467814200953749847818755421/5000000000000000000000000000000000000000000000000000000"
+          }
+        },
+        "separation_decimal": "2.018823556507449",
+        "separation_exact": "630882361408577736987549005164829976609925082137774251/312500000000000000000000000000000000000000000000000000",
+        "upper_target_pair": {
+          "configuration_id": "U96_P13_o1",
+          "group": "cross",
+          "i": 28,
+          "j": 37,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              }
+            ],
+            "norm": 181
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -11,
+                  -15
+                ],
+                "prime_ideal_norm": 181
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -6
+                ],
+                "prime_ideal_norm": 31
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  3
+                ],
+                "prime_ideal_norm": 7
+              }
+            ],
+            "norm": 39277
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -6
+                ],
+                "prime_ideal_norm": 31
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  1,
+                  3
+                ],
+                "prime_ideal_norm": 7
+              }
+            ],
+            "norm": 217
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "1504010525896685385471774107433893084961010293277126519/1000000000000000000000000000000000000000000000000000000",
+            "upper": "1504010525896685385471774107433893084961010293277126523/1000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "largest_disjoint_target_gap": {
+        "features": {
+          "A_P_exact": 17,
+          "A_exact": 17,
+          "P_label": "49",
+          "U": 48,
+          "columns_norm_mu_sorted": [
+            [
+              61,
+              -1
+            ],
+            [
+              97,
+              -1
+            ]
+          ],
+          "columns_prime_norm_exponent_shapes": [
+            {
+              "factors": [
+                [
+                  61,
+                  1
+                ]
+              ],
+              "mu": -1,
+              "norm": 61
+            },
+            {
+              "factors": [
+                [
+                  97,
+                  1
+                ]
+              ],
+              "mu": -1,
+              "norm": 97
+            }
+          ],
+          "conductor_norm": 5917,
+          "ell": "113/100",
+          "full_period_Q": 5917,
+          "gcd_norm": 1,
+          "orientation": 1,
+          "pair_group": "rough_rough",
+          "r": "113/100"
+        },
+        "lower_target_pair": {
+          "configuration_id": "U48_P49_o1",
+          "group": "rough_rough",
+          "i": 3,
+          "j": 16,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 61
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -5,
+                  -9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 5917
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              }
+            ],
+            "norm": 97
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "-1859535084025811557838582808954537701398189286616610709/250000000000000000000000000000000000000000000000000000",
+            "upper": "-464883771006452889459645702238634425349547321654152677/62500000000000000000000000000000000000000000000000000"
+          }
+        },
+        "separation_decimal": "7.423467737303153",
+        "separation_exact": "185586693432578829985682420338581083253026612672372658747/25000000000000000000000000000000000000000000000000000000",
+        "upper_target_pair": {
+          "configuration_id": "U48_P49_o1",
+          "group": "rough_rough",
+          "i": 4,
+          "j": 16,
+          "left_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  4,
+                  9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 61
+          },
+          "primitive_quotient_conductor_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              },
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  4,
+                  9
+                ],
+                "prime_ideal_norm": 61
+              }
+            ],
+            "norm": 5917
+          },
+          "right_ideal_with_generators": {
+            "factors": [
+              {
+                "exponent": 1,
+                "prime_generator": [
+                  -8,
+                  3
+                ],
+                "prime_ideal_norm": 97
+              }
+            ],
+            "norm": 97
+          },
+          "shared_zero_mask_gcd_with_generators": {
+            "factors": [],
+            "norm": 1
+          },
+          "target_interval": {
+            "lower": "-366814970002325798175860556872686886792315989288412053/25000000000000000000000000000000000000000000000000000000",
+            "upper": "-733629940004651596351721113745373773584631978576824099/50000000000000000000000000000000000000000000000000000000"
+          }
+        }
+      },
+      "no_certified_collision_on_panel": false,
+      "pair_count": 13434,
+      "pairs_in_repeated_groups": 13196,
+      "repeated_feature_groups": 2730,
+      "status": "COLLISION_FOUND"
+    }
+  },
+  "pysr_admission": "HOLD_FEATURES_COLLIDE",
+  "schema": "cf22-local-pair-feature-audit-v1",
+  "scope": "FINITE_SAVED_PANEL_ONLY",
+  "source": {
+    "all_pair_groups_included": [
+      "affected_affected",
+      "cross",
+      "rough_rough"
+    ],
+    "configuration_count": 20,
+    "decomposition_schema": "cf22-nonunit-pair-decomposition-v1",
+    "full_C_reassembly_interval_checked": true,
+    "physical_minus_raw_target_interval_checked": true,
+    "pinned_source_commit": "f1993ec6a7933418c38c305a13a3221037b9447a",
+    "sha256": "74e888523228566fbb5140ed24dd8b9abbd33a07af9eba72519802dd18e9f38d",
+    "unordered_full_signed_pairs": 13434
+  },
+  "target": "C_signed_contribution = complete unordered pair contribution to C, physical masks minus raw mean"
+}

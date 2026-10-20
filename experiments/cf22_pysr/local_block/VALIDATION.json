@@ -1,0 +1,13 @@
+{
+  "tests_passed": 5,
+  "model_fits": 0,
+  "decision": "FEATURE_COLLISION_HOLD",
+  "sha256": {
+    "audit.py": "71b8fd960a3130f7603f63cef24a59c555c17b80a0ceea1ed50c956999e8dc71",
+    "test_audit.py": "afe6168af8c5b77e90c70af993262b91dbcf02690aedfac29c1345fe8fe46798",
+    "verify_witnesses.py": "3272f65c12fe2b6dbc11b81c2dbdb5c7e6cb4cbcb3ad6cf1fb3d18fdbc06f392",
+    "result.json": "ebff2e06e009347effe137b179db9e8b6c3e695cf055868e098a34da87e7b6ef",
+    "witness_verification.json": "86f18716f29288ef97c9f3308f68b384f28df79414c3cccef2103c30b70b70ad"
+  },
+  "review": "Independent read-only review: no remaining material findings"
+}
