@@ -5,10 +5,10 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-20 · by: scripts/phase_end.sh · HEAD at update: b41c9a3a
+Updated: 2026-10-20 · by: scripts/phase_end.sh · HEAD at update: 51998786
 
 ## Решение владельца 20.10: возврат к исходной Q3
-Q03 получен: [ограниченный PAPER-аудит и воспроизведение](../literature/openai_math_2026-10-07/CCM_JOINT_Q03_CONCLUSION.md). Полная условная цена улучшена до O_epsilon(m^(3/8) log m), но ZF78 остаётся условием, степень не улучшена. 2536 exact + 9 binary64 проверок. В том же чате уже идёт отдельный вопрос владельца о геометрии; Q04 не отправлять до его завершения. Goal ACTIVE.
+Q03 получен: [ограниченный PAPER-аудит и воспроизведение](../literature/openai_math_2026-10-07/CCM_JOINT_Q03_CONCLUSION.md). Полная условная цена улучшена до O_epsilon(m^(3/8) log m), но ZF78 остаётся условием, степень не улучшена. 2536 exact + 9 binary64 проверок. Геометрический ответ получен полностью: [аудит переноса](../literature/openai_math_2026-10-07/CCM_GEOMETRIC_TRANSFER_AUDIT.md). Первая собственная попытка после Q03: literal shift-squares оставляют ошибку >=sqrt(m)/8-O(log m), независимо проверено. Следующий ход — совместная оценка положительного кредита и возврата; Q04 ещё не отправлен. Goal ACTIVE.
 
 Активный [goal совместной CCM-атаки](CCM_ACTIVE_GOAL_2026-10-20.md): eta(epsilon)→0 на исходной sparse band; собственные попытки → Прошка после трёх без улучшения/конкретного тупика → проверка → продолжение либо документированный откат. Q01 получен и ограниченно проверен: full-k диагональ оплачена, смешанная корреляция и AV OPEN; [вывод](../literature/openai_math_2026-10-07/CCM_ACTUAL_MOBIUS_Q01_CONCLUSION.md). Свои Abel/floor попытки не дали полного выигрыша; Q02 принят ограниченно PAPER: fast-sector/Fourier-tail оплачены, ||T−V||=O_epsilon(m^epsilon log m), V=C+E_slow OPEN. [Вывод и аудит](../literature/openai_math_2026-10-07/CCM_RECIPROCAL_Q02_CONCLUSION.md); 1580 exact+6 неинтервальных проверок воспроизведены. Следующий ход — совместный V до раздельных модулей; нового полного показателя нет, После трёх собственных no-gain тестов Q03 получен и проверен; статус и следующий живой вопрос владельца указаны выше. Состояние: `../literature/openai_math_2026-10-07/PROSHKA_PENDING.md`.
 CF22/PySR — **PARKED_REOPENABLE**, не основной следующий шаг. [Архив, инсайты, результаты и условия возврата](../../experiments/cf22_pysr/ARCHIVE_2026-10-20.md). Все данные и смешанные вклады сохранены; CF22/MB34/SP/RH не закрыты.
@@ -40,7 +40,7 @@ Claim делается, только когда он действительны�
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
 
 <!-- AUTO-STATS:BEGIN (scripts/phase_end.sh — не править руками) -->
-Статистика на 2026-10-20, HEAD b41c9a3a:
+Статистика на 2026-10-20, HEAD 51998786:
 - Goal058 (текстовая метка READY/PROVED): 3/8 (G2, G2b, G5); без метки: G0, G1, G3, G3c, G4
 - Крыша (статусы ledger): 0/3 портов со статусом jointly_bound; hzeros=CONDITIONAL_CANDIDATE_FLOORS_OPEN, hentire=SUPPLIER_PROVED_FAMILY_UNBOUND, hconv=NO_SUPPLIER
 - RouteB Lean (текстовый поиск, не kernel-аудит): sorry=0, строк axiom=0
