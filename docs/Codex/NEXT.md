@@ -7,6 +7,8 @@
 
 Updated: 2026-10-07 · Codex Mac after Linux handoff883a1fa8. Read `../literature/openai_math_2026-10-07/COMPARATOR_VERIFICATION.md` (Linux ZF78 check report) and `../literature/openai_math_2026-10-07/linux_needle_scan/REPORT.md` (moment candidate, no SP gain). Mac retains main execution; Direct Shift Q1 processed.
 
+Owner pilot 2026-10-20: `../../experiments/cf22_pysr/RESULT.md` — полный конечный C для фиксированных ν=1, S над6 и гладкого профиля; 48 интервальных строк, один PySR fit, все3 кандидата опровергнуты на U64. 11 тестов и независимый обзор кода пройдены. Усилитель во всех строках единичный; общего CF22-выигрыша нет. Данные и кандидаты заморожены; не подгонять их задним числом.
+
 ## Цель
 Дойти до `PX_RH_CLAIM` — заявления «RH доказана». Всё направлено на него.
 Цель в Lean: `RiemannHypothesis.riemannHypothesis : RiemannHypothesis`

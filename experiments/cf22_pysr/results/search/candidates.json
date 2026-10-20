@@ -1,0 +1,149 @@
+{
+  "candidate_constants": "exact decimal literals in frozen equation, potentially rounded vs Julia search constants",
+  "candidate_scope": "finite heldout interval checks only; no universal claim",
+  "candidates": [
+    {
+      "candidate_id": "hof-000",
+      "complexity": 1,
+      "equation": "0.008393425576270878",
+      "loss": 0.0005877707769976,
+      "rational_constant_decimals": [
+        {
+          "decimal_lower": "0.008393425576270878",
+          "decimal_upper": "0.008393425576270878",
+          "sympy_rational": "4196712788135439/500000000000000000"
+        }
+      ],
+      "score": 0.0,
+      "sympy_expression": "4196712788135439/500000000000000000"
+    },
+    {
+      "candidate_id": "hof-001",
+      "complexity": 3,
+      "equation": "0.020864296433712338 / logU",
+      "loss": 0.0005441681117836,
+      "rational_constant_decimals": [
+        {
+          "decimal_lower": "0.020864296433712338",
+          "decimal_upper": "0.020864296433712338",
+          "sympy_rational": "10432148216856169/500000000000000000"
+        }
+      ],
+      "score": 0.038539404362408505,
+      "sympy_expression": "10432148216856169/(500000000000000000*logU)"
+    },
+    {
+      "candidate_id": "hof-002",
+      "complexity": 7,
+      "equation": "(ell * (0.046712812821380935 / logU)) / logU",
+      "loss": 0.0005256931890017,
+      "rational_constant_decimals": [
+        {
+          "decimal_lower": "0.046712812821380935",
+          "decimal_upper": "0.046712812821380935",
+          "sympy_rational": "9342562564276187/200000000000000000"
+        }
+      ],
+      "score": 0.008635119111041338,
+      "sympy_expression": "ell*(9342562564276187/200000000000000000)/(logU*logU)"
+    }
+  ],
+  "dataset_sha256": "276f5d60eca837e0d03be590ddcd2299fa912b9465a8d421875158d02839d211",
+  "environment": {
+    "julia": {
+      "active_project": "/private/tmp/cf22-pysr-venv/julia_env/Project.toml",
+      "available": true,
+      "bindir": "/private/tmp/cf22-pysr-venv/julia_env/pyjuliapkg/install/bin",
+      "manifest_path": "/private/tmp/cf22-pysr-venv/julia_env/Manifest.toml",
+      "manifest_sha256": "8cb026bfbf476dd2b61b424b67c7e38b5f7409ba008319f409bee55d5e4a7281",
+      "version": "1.13.2"
+    },
+    "packages": {
+      "juliacall": "0.9.36",
+      "numpy": "2.5.4",
+      "pysr": "2.7.2",
+      "python-flint": "0.9.0",
+      "sympy": "1.14.0"
+    },
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "python": "3.12.15 (main, Sep 30 2026, 22:04:19) [Clang 21.0.0 (clang-2100.3.34.2)]"
+  },
+  "fit_config": {
+    "batching": false,
+    "binary_operators": [
+      "+",
+      "-",
+      "*",
+      "/"
+    ],
+    "deterministic": true,
+    "maxsize": 12,
+    "ncycles_per_iteration": 50,
+    "niterations": 20,
+    "parallelism": "serial",
+    "parsimony": 0.001,
+    "population_size": 20,
+    "populations": 2,
+    "precision": 64,
+    "seed": 20261020,
+    "target": "q_upper",
+    "timeout_in_seconds": 60,
+    "unary_operators": [],
+    "warm_start": false
+  },
+  "loss_source": "function loss(tree, dataset::Dataset{T,L}, options)::L where {T,L}\n    prediction, complete = eval_tree_array(tree, dataset.X, options)\n    complete || return L(Inf)\n    all(isfinite, prediction) || return L(Inf)\n    y = dataset.y\n    underprediction = max(maximum(y .- prediction), zero(L))\n    overprediction = max.(prediction .- y, zero(L))\n    return L(1000) * underprediction^2 + sum(overprediction .^2) / length(y)\nend",
+  "loss_source_sha256": "0203ac3c7c2c1f7fc510eca56514a554a61f1ca2262c7d40898442d97681f7c3",
+  "provenance": {
+    "absolute_q_tolerance": "1/100000000000000000000000000000000000",
+    "evaluator_sha256": "06c48c3075335205aeb80cdc7a142d1b0868e82a7f2a1006391764222112faeb",
+    "plan_sha256": "34e4829e9c2dc5516669b3b3629ed26338875226c64156f6928a2fd8f9c4a0b2",
+    "precision_bits": 192,
+    "scope": "FINITE_SOURCE_SPECIALIZATION",
+    "source_commit": "5c5c03181faf704fb1d00bf6021001071622fe4d",
+    "source_sha256": {
+      "full_cusp_pair_q07": "f6cf8ea9957a6b39f896bc66e20d0830c03a9bbd1a5672438660d15c2f258076",
+      "signed_incidence_q03": "26f530cce925e84685bb428a11c777ff47af806cc13194b0839ad6fb88635e4f"
+    },
+    "source_specialization": {
+      "S": "prime ideals above 6",
+      "nu": "1 on good ideals, zero extension",
+      "orientation": "per configuration; both signs are conjugate computations",
+      "rho_W": "exp(1-1/(1-(2*y-2)^2)) on 1/2<y<3/2, zero elsewhere"
+    }
+  },
+  "schema": "cf22_pysr_candidates.v1",
+  "train_row_ids": [
+    "U8_r28-25_lower_o1",
+    "U8_r28-25_lower_o-1",
+    "U8_r28-25_upper_o1",
+    "U8_r28-25_upper_o-1",
+    "U8_r113-100_lower_o1",
+    "U8_r113-100_lower_o-1",
+    "U8_r113-100_upper_o1",
+    "U8_r113-100_upper_o-1",
+    "U12_r28-25_lower_o1",
+    "U12_r28-25_lower_o-1",
+    "U12_r28-25_upper_o1",
+    "U12_r28-25_upper_o-1",
+    "U12_r113-100_lower_o1",
+    "U12_r113-100_lower_o-1",
+    "U12_r113-100_upper_o1",
+    "U12_r113-100_upper_o-1",
+    "U20_r28-25_lower_o1",
+    "U20_r28-25_lower_o-1",
+    "U20_r28-25_upper_o1",
+    "U20_r28-25_upper_o-1",
+    "U20_r113-100_lower_o1",
+    "U20_r113-100_lower_o-1",
+    "U20_r113-100_upper_o1",
+    "U20_r113-100_upper_o-1",
+    "U32_r28-25_lower_o1",
+    "U32_r28-25_lower_o-1",
+    "U32_r28-25_upper_o1",
+    "U32_r28-25_upper_o-1",
+    "U32_r113-100_lower_o1",
+    "U32_r113-100_lower_o-1",
+    "U32_r113-100_upper_o1",
+    "U32_r113-100_upper_o-1"
+  ]
+}
