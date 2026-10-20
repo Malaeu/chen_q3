@@ -1,5 +1,7 @@
 # Full centered CF22: bounded numerical pilot
 
+**PARKED_REOPENABLE (2026-10-20).** See [archive and reopening conditions](ARCHIVE_2026-10-20.md). This is not the default Q3 continuation. Saved artifacts remain in place.
+
 This experiment computes the finite source
 `C = E_M - lambda R_H - D_diag`, then searches for a short upper envelope
 of `q = C / (P U^(1/6) L^(5/6))`. A finite passing candidate is not a

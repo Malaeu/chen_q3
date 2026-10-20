@@ -8545,3 +8545,17 @@ Exact a_T(r s²)=mu(r)c_T(r,s), all ordered factorizations share the same sign; 
 2026-10-08 Q7 waiting own path test independently PASS: original Pi Fourier-compressed R_s² survives two same-sign shifts on actual n=2^k,m=2^k+1, despite vanishing physical-window-only path. Taylor remainder explicit, weighted leakage order1/(mL6) small; kills exact window substitution only, not a paid approximation or full moment target. Not sent to Pro; save with Q7 closeout.
 
 2026-10-08 Q7 closeout: terminal19:48UTC, original69381bytes/832lines fully read and checksum verified; independent Q07-P(24)–(26) PASS. Corrected zero mode forces actual projected atom moment m^(p/2)/polylog; exact-balance subtraction retains same power. All intermediate E kept. Joint signed Z_E and actual-W contraction OPEN, no full floor/SP/RH gain. Root exact rational half-window detector verified; own cofinal window-return control included. No Q8; scoped delivery then pause heartbeat. Next target must keep atomic-continuous cancellation before norms.
+
+
+## 2026-10-20 — CF22 архивирована как боковая ветка; возврат к исходной CCM
+
+**Развилка:** продолжать локальный PySR внутри CF22 или вернуться к исходному потребителю Q3.
+**Выбрали:** PARKED_REOPENABLE для CF22; полная исходная CCM и SP/отдельный sparse-band receiver снова основной контекст.
+**Почему:** точные численные разложения не дали общего выигрыша; локальное тождество не обязательный вход нужной оценки; автоматического CF22 -> G1/G3/SP нет.
+**Что отвергли и почему:** очередной fit без нового механизма и бюджета возврата; архив не означает математический kill.
+**Техника / инсайты:** сохранение RR/RA/AA необходимо; сборка не равна оценке; отсутствие коллизий не равно универсальной достаточности; наблюдаемые проверки инструментов отдельно от статуса ENABLED.
+**Блокеры / иглы Зингера:** действительный signed arithmetic bound открыт; Q1–Q3 уже выполнены, D_s в них отсутствует и не даёт кредита.
+**Следующий ход:** исходный source-specific односторонний возврат после чтения CCM Q10 и FIXED_PRIME_COMPRESSION_TEST; сперва существующая полка и точный consumer.
+**Адреса:** experiments/cf22_pysr/ARCHIVE_2026-10-20.md; docs/Codex/TOOL_AUDIT_2026-10-20.md; baseline514185dc.
+**Чей вердикт и аргумент:** владелец после аудита PDF и истории: «Поэтому и сделай это, прямо вот так вот всё заархивируй ... запиши наши инсайды ... могли потом вернуться». Причина аудита: CF22 — поздняя боковая ветка, не исходная стена Q3.
+**Дешёвый зонд:** чтение PDF, исходных контрактов и git history до смены указателя; готовый доказанный мост изменил бы решение, он не предъявлен.

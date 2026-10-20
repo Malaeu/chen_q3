@@ -1,4 +1,6 @@
 # Бумажная цепь до RH — леджер доказательств (сжатая версия, состояние 2026-09-27 вечер)
+
+**Решение владельца 20.10:** CF22 и PySR отложены как PARKED_REOPENABLE; [архив](../../experiments/cf22_pysr/ARCHIVE_2026-10-20.md). Основной потребитель — исходная CCM/SP или явно отдельный sparse-band receiver. Исторические «next» внешней source-ветки ниже не выбирают работу; G1/G3/SP остаются OPEN. Текущий следующий шаг и инструменты — в NEXT.md.
 Полная версия до сжатия (1859 строк, с происхождением вердиктов): `git show 43e31284:docs/Codex/PAPER_CHAIN.md`.
 
 Крыша: `Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi` (`Goal058DirectGroundZeroEscape.lean:27`) — одна семья F с hzeros, hentire, hconv ⇒ RH.
@@ -184,7 +186,6 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - Ответ8/10 проверен: точная F*–Robin Green формула и два Mellin jump-moments; indefiniteness полного Green difference; ‖Pi_span{eta,beta} qhat‖=O_P(m^(−1/4)) при matched source inputs. Это ограничения full-carrier методов, не OS. Полезное упрощение: ‖qhat−xi c_m(G)/‖c_m(G)‖‖=O_P(m^(−1/4)); это позволило атаковать OS с явным theta-источником для того же bottom space и оплаченный возврат к qhat. Радикальное W(G,f)=0 даёт лишь W(r_m,f_v)=−lambda0⟨g_m,v⟩, не нижнюю оценку overlap. [Ответ](../routeB_bus/source_observability_2026-09-28/PROSHKA_OS_ROBIN_SOURCE_INLINE_2026-10-06.md), [проверка, попытка и вопрос9](../routeB_bus/source_observability_2026-09-28/OS_ROBIN_BOUNDARY_AUDIT_2026-10-06.md).
 
 - После ответа9 проверен более слабый условный consumer на той же K: eps=‖Kg‖, rho=‖P_bottom g‖, |lambda_min|rho≤eps. Достаточная новая цель на отрицательных bottom-ячейках — rho>0 и eps/rho→0, например полиномиальный нижний overlap при уже выведенной сверхполиномиальной невязке. Ни нижний overlap, ни RH не доказаны. Full-carrier density→Weil мост и сверхполиномиальная operator residual проверены одним ограниченным независимым PAPER проходом; прежние G1/G3 не закрываются этим условным обходом. Ответ10 обработан: нижнего overlap нет; [точный текст и проверки](../routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md).
-
 ## Заморожено: фронт 27.09 вечер
 - Глобальный трек (paper_weil, не selected Goal058): Q(f₀s) = P_s − N_s, DOM (N_s ≤ P_s для всех компактных гладких s) ≡ RH; ρ* = sup N_s/P_s ≥ 1 безусловно — сравнение критическое, нужна константа ровно 1 (REPORT_2026-09-27_LONG_LAG_CRITICAL_RATIO.md).
 - Разбиение по prime-полосам: N_s = N_out + Σ_j(S_j − M_j), Q = P − N_out − ΣS_j + ΣM_j; M_I двузнаков; агрегатное ΣM_j ≥ N_out + ΣS_j − P ≡ DOM ≡ RH (REPORT_2026-09-27_PRIME_BRIDGE_MIXED_SIGN.md). Нужна независимая source-оценка полной signed суммы с исходными весами и prime-power атомами, либо оператор, навязывающий градиентные связи до оценки нормы.
@@ -196,5 +197,4 @@ CCM в §8 arXiv:2511.22755 (p.32) называют ровно два недос
 - Открыто: C128 на одной ячейке (или её исключение), индивидуальный знак T_m (MT128), PC, SV, lag, Schur-floor, RH.
 - Fokas transfer без потерь на обратный gap (Mac, 03531e2a): SOURCE_TRANSFER принят на PAPER; открыта семейная скорость α_j (см. G3).
 - Литература 27.09: signed-form / effective-resistance (w·R_eff < 1, совместный Schur-тест) — только PARTIAL ANALOGUE к selected Q3.
-
 Происхождение вердиктов (SHA, ID ходов, ревью) — в файлах docs/routeB_bus/proshka/ и PROSHKA_QUEUE.md; сюда не копировать.

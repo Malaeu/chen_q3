@@ -1,0 +1,103 @@
+{
+  "boundary": "UNVERIFIED_METADATA_CANDIDATES_NOT_PROOF_OR_SEMANTIC_EQUIVALENCE",
+  "candidates": [
+    {
+      "excerpt": "We define a super version of the Connes-Moscovici Hopf algebra, $\\mathcal{H}_1$. For that, we consider the supergroup $G^s=Diff^+(\\mathbb{R}^{1,1})$ of orientation preserving diffeomorphisms of the superline $\\mathbb{R}^{1,1}$ and define two (super) subgroups $G^s_1$ and $G^s_2$ of $G^s$ where $G^s_1$ is the supergroup of affine transformations. The super Hopf algebra $\\mathcal{H} ^s_1$ is defined as a certain bicrossproduct super Hopf algebra of the super Hopf algebras attached to $G^s_1$ and $G^s_2$. We also give an explicit description of $\\mathcal{H} ^s_1$ in terms of generators and relations.",
+      "metadata_sha256": "f775a6a65d53bd456afbc2098b8c2ac3a0c8352b88bbe9e7dc9c86b85a73e019",
+      "provider": "arxiv",
+      "provider_id": "1011.2550v1",
+      "published": "2010-11-11T03:22:29Z",
+      "query": "Weil quadratic form negative spectrum Connes Consani Moscovici",
+      "query_sha256": "677dd8749fd9dd82fd3393a3e5a1381d2948cd62fc56347d1480fcd75e29163b",
+      "title": "A Super Version of the Connes-Moscovici Hopf Algebra",
+      "url": "http://arxiv.org/abs/1011.2550v1"
+    },
+    {
+      "excerpt": "This paper explores analogies between the Weil proof of the Riemann hypothesis for function fields and the geometry of the adeles class space, which is the noncommutative space underlying Connes' spectral realization of the zeros of the Riemann zeta function. We consider the cyclic homology of the cokernel (in the abelian category of cyclic modules) of the ``restriction map'' defined by the inclusion of the ideles class group of a global field in the noncommutative adeles class space. Weil's explicit formula can then be formulated as a Lefschetz trace formula for the induced action of the ideles class group on this cohomology. In this formulation the Riemann hypothesis becomes equivalent to the positivity of the relevant trace pairing. This result suggests a possible dictionary between the steps in the Weil proof and corresponding notions involving the noncommutative geometry of the adeles class space, with good working notions of correspondences, degree and codegree etc. In particular, we construct an analog for number fields of the algebraic points of the curve for function fields, realized here as classical points (low temperature KMS states) of quantum statistical mechanical sy",
+      "metadata_sha256": "71dac993c2bc0187e61c57ebf17529dd72af454243b6774fc7794edb62332c81",
+      "provider": "arxiv",
+      "provider_id": "0703392v1",
+      "published": "2007-03-13T19:21:53Z",
+      "query": "Weil quadratic form negative spectrum Connes Consani Moscovici",
+      "query_sha256": "677dd8749fd9dd82fd3393a3e5a1381d2948cd62fc56347d1480fcd75e29163b",
+      "title": "The Weil proof and the geometry of the adeles class space",
+      "url": "http://arxiv.org/abs/math/0703392v1"
+    },
+    {
+      "excerpt": "",
+      "metadata_sha256": "3c0f366f5d55da08b378033afa5d54c53a676664ed39769a01977ede7206e823",
+      "provider": "crossref",
+      "provider_id": "10.1007/978-3-030-29597-4",
+      "published": "{'date-parts': [[2019]]}",
+      "query": "Weil quadratic form negative spectrum Connes Consani Moscovici",
+      "query_sha256": "677dd8749fd9dd82fd3393a3e5a1381d2948cd62fc56347d1480fcd75e29163b",
+      "title": "Advances in Noncommutative Geometry",
+      "url": "https://doi.org/10.1007/978-3-030-29597-4"
+    },
+    {
+      "excerpt": "",
+      "metadata_sha256": "04d3cbb0df24608ce54dd9e1b645d6d98676299812a4583e499c3e9e97454f18",
+      "provider": "crossref",
+      "provider_id": "10.1007/s43034-024-00388-z",
+      "published": "{'date-parts': [[2024, 9, 18]]}",
+      "query": "Weil quadratic form negative spectrum Connes Consani Moscovici",
+      "query_sha256": "677dd8749fd9dd82fd3393a3e5a1381d2948cd62fc56347d1480fcd75e29163b",
+      "title": "Zeta zeros and prolate wave operators",
+      "url": "https://doi.org/10.1007/s43034-024-00388-z"
+    }
+  ],
+  "elapsed_seconds": 0.673675,
+  "errors": [],
+  "limits": {
+    "max_excerpt_chars": 1200,
+    "max_global_candidates": 24,
+    "max_queries": 8,
+    "max_response_bytes": 524288,
+    "max_results_per_pair": 2,
+    "max_title_chars": 300,
+    "timeout_seconds": 8.0
+  },
+  "observed_at": "2026-10-20T14:17:41.260515+00:00",
+  "provider_rows": [
+    {
+      "candidate_count": 2,
+      "candidate_hashes": [
+        "f775a6a65d53bd456afbc2098b8c2ac3a0c8352b88bbe9e7dc9c86b85a73e019",
+        "71dac993c2bc0187e61c57ebf17529dd72af454243b6774fc7794edb62332c81"
+      ],
+      "duplicate_count": 0,
+      "elapsed_seconds": 0.671714,
+      "errors": [],
+      "observed_at": "2026-10-20T14:17:41.260515+00:00",
+      "provider": "arxiv",
+      "query": "Weil quadratic form negative spectrum Connes Consani Moscovici",
+      "query_sha256": "677dd8749fd9dd82fd3393a3e5a1381d2948cd62fc56347d1480fcd75e29163b",
+      "status": "CANDIDATES"
+    },
+    {
+      "candidate_count": 2,
+      "candidate_hashes": [
+        "3c0f366f5d55da08b378033afa5d54c53a676664ed39769a01977ede7206e823",
+        "04d3cbb0df24608ce54dd9e1b645d6d98676299812a4583e499c3e9e97454f18"
+      ],
+      "duplicate_count": 0,
+      "elapsed_seconds": 0.469885,
+      "errors": [],
+      "observed_at": "2026-10-20T14:17:41.260515+00:00",
+      "provider": "crossref",
+      "query": "Weil quadratic form negative spectrum Connes Consani Moscovici",
+      "query_sha256": "677dd8749fd9dd82fd3393a3e5a1381d2948cd62fc56347d1480fcd75e29163b",
+      "status": "CANDIDATES"
+    }
+  ],
+  "providers": [
+    "arxiv",
+    "crossref"
+  ],
+  "queries": [
+    "Weil quadratic form negative spectrum Connes Consani Moscovici"
+  ],
+  "query_family_sha256": "958247e0cf5edccbe1f2ab41fa4065aa768113436775abd57bc5d76b3595e112",
+  "schema": "q3_literature_discovery.v1",
+  "status": "CANDIDATES"
+}
