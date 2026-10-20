@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "candidate": "VERIFIED_OPTIMAL",
+  "bad_candidate": "REFUTED",
+  "families": [
+    "INFEASIBLE",
+    "CANNOT_IMPROVE"
+  ],
+  "scope": "fixed even-quartic contract on [-1,1]; no CF22 claim",
+  "input_sha256": "19358c64546d574a0ab8853a7db81a67fce43dab355d5ffcba308fe94ba1a874",
+  "checker_sha256": "c742ef6c6ce13bcd7cc3a34281c35f9de42ab21e3d252ad47da9e9ee0e35c794"
+}

@@ -1,0 +1,132 @@
+{
+  "bad_candidate": {
+    "coefficients": {
+      "a": "1",
+      "b": "-19/25",
+      "c": "13/50"
+    },
+    "verification": {
+      "bernstein_coefficients": [
+        "6/25",
+        "-1/50"
+      ],
+      "contacts": {
+        "p(-1)": "1/2",
+        "p(0)": "1",
+        "p(1)": "1/2",
+        "valid": true
+      },
+      "counterexample": {
+        "gap_p_minus_target": "-288328887/1531562500000",
+        "x": "49/50"
+      },
+      "factorization": "p-1/(1+x^2)=t(1-t)(1/2-c-c*t)/(1+t), t=x^2",
+      "factorization_verified": true,
+      "objective": "599/375",
+      "optimality": {
+        "candidate_is_optimal": false,
+        "status": "NOT_ESTABLISHED"
+      },
+      "shape": "even_quartic",
+      "status": "REFUTED",
+      "upper_bound": false
+    }
+  },
+  "candidate": {
+    "coefficients": {
+      "a": "1",
+      "b": "-3/4",
+      "c": "1/4"
+    },
+    "verification": {
+      "bernstein_coefficients": [
+        "1/4",
+        "0"
+      ],
+      "contacts": {
+        "p(-1)": "1/2",
+        "p(0)": "1",
+        "p(1)": "1/2",
+        "valid": true
+      },
+      "factorization": "p-1/(1+x^2)=t(1-t)(1/2-c-c*t)/(1+t), t=x^2",
+      "factorization_verified": true,
+      "objective": "8/5",
+      "optimality": {
+        "candidate_is_optimal": true,
+        "identity": "integral(p)-8/5=(1-4*c)/15",
+        "identity_value": "0",
+        "identity_verified": true,
+        "objective_lower_bound": "8/5",
+        "status": "VERIFIED"
+      },
+      "shape": "even_quartic",
+      "status": "VERIFIED",
+      "upper_bound": true
+    }
+  },
+  "contract": {
+    "contacts": {
+      "-1": "1/2",
+      "0": "1",
+      "1": "1/2"
+    },
+    "domain": [
+      "-1",
+      "1"
+    ],
+    "family": "even_quartic",
+    "objective": "integral_-1^1_p",
+    "target": "1/(1+x^2)"
+  },
+  "families": [
+    {
+      "certificate": {
+        "argument": "gap(c,x)=gap(lower,x)+(c-lower)*slope",
+        "gap_at_lower": "-288328887/1531562500000",
+        "gap_slope_in_c": "-237699/6250000",
+        "uniform_x": "49/50"
+      },
+      "lower": "13/50",
+      "name": "high_c_infeasible",
+      "parameter": "c",
+      "status": "INFEASIBLE",
+      "upper": "1/2"
+    },
+    {
+      "certificate": {
+        "bernstein_coefficients_at_upper": [
+          "3/10",
+          "1/10"
+        ],
+        "incumbent_objective": "8/5",
+        "objective_lower_bound": "121/75",
+        "objective_slope": "-4/15",
+        "strictly_above_incumbent": true
+      },
+      "lower": "0",
+      "name": "low_c_cannot_improve",
+      "parameter": "c",
+      "status": "CANNOT_IMPROVE",
+      "upper": "1/5"
+    }
+  ],
+  "numerical_proposal": {
+    "coefficients_float": {
+      "a": 1.0,
+      "b": -0.75,
+      "c": 0.25
+    },
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective_float": 1.6,
+    "role": "candidate generation only; not a certificate",
+    "solver": "scipy.optimize.linprog",
+    "success": true
+  },
+  "runtime": {
+    "python": "3.12.15",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0"
+  },
+  "source_sha256": "8c1d2c95f2c70bb932ea7cc50d248d5aa528443af787c14f0489f8f599090d48"
+}
