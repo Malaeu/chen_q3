@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "scope": "finite exact algebra; synthetic smooth kernels and actual integer mu; not CCM sign certificates",
+  "counts": {
+    "endpoint_contracts": 68,
+    "euler_centered_bernoulli_equalities": 68,
+    "lower_boundary_nonoscillatory_controls": 23,
+    "actual_mu_signed_euler_reassemblies": 15,
+    "exact_k2_shell": 349,
+    "empty_full_k_shell": 1047,
+    "projected_upper_derivative_controls": 6,
+    "fourier_tail_constant_algebra": 3,
+    "delete_continuous_term_rejected": 1
+  },
+  "total_checks": 1580,
+  "wrong_euler_sign_detected_cases": 63,
+  "signed_reassembly_samples": [
+    {
+      "m": 6,
+      "R": 1,
+      "B": "-1/27",
+      "C": "-97/1620",
+      "E": "37/1620"
+    },
+    {
+      "m": 6,
+      "R": 2,
+      "B": "0",
+      "C": "-17/1620",
+      "E": "17/1620"
+    },
+    {
+      "m": 6,
+      "R": 3,
+      "B": "0",
+      "C": "-1/12960",
+      "E": "1/12960"
+    }
+  ],
+  "new_ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "script_sha256": "51b72bf2a6f278e9be86003105105fb0afd8798e9af9ffe426a6dd935d3bab2d"
+}
