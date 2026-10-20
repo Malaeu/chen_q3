@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "counts": {
+    "atom_reassemblies": 588,
+    "mu_gcd_checks": 6400,
+    "window_sum_checks": 9,
+    "matrix_fejer_identities": 9,
+    "matrix_cs_psd_controls": 9,
+    "planted_failures_detected": 2,
+    "proper_power_control": 1,
+    "conditional_exponent_controls": 3
+  },
+  "total_checks": 7021,
+  "generic_mu_constant_weight_first_positive": [],
+  "generic_mu_constant_weight_first_negative": [
+    3,
+    "-4/3"
+  ],
+  "not_ccm_sign_certificates": true,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "exploratory_constant_weight_note": "No positive off-diagonal was found for D=2..79; a first run wrongly asserted both signs and stopped. That unsupported assertion is removed, not counted as a theorem or test.",
+  "script_sha256": "23d4939d6a9d37be05cd033482c772e1d97bb8c435341a02760f365ab7db5f20"
+}

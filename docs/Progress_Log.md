@@ -8615,3 +8615,16 @@ Gallagher: сохраняет полные локальные корреляци
 Проверка: независимый разбор собственного Abel-return и separability без существенных дефектов; root прочитал первоисточники.
 Следующий фильтр: источник обязан оценить centered correlations вместе с actual spectral weight и вернуть показатель, стремящийся к нулю с alpha,beta; иначе не запускать тяжёлый scan.
 Артефакт: docs/literature/openai_math_2026-10-07/CCM_C5_CANCELLATION_LITERATURE_AUDIT.md.
+
+## 2026-10-20 — Actual-Mobius Q01: full-k diagonal paid, signed target open
+
+Развилка: full signed CCM sparse band versus stronger squared certificate.
+Выбрали: accept bounded Q01 A-C and return before Cauchy in d.
+Почему: all-k summation pays diagonal with parameter-proportional exponent.
+Что отвергли: promoting AV implication or7021 finite checks to a full estimate.
+Инсайты: retain all k before squaring; one positive trace average can control all vectors on a selected scale only with AV supplied.
+Блокеры: actual signed off-diagonal AV unproved; full exponent unchanged.
+Иглы Зингера: explicit weighted cross/gcd controls; no Lean/Arb certificates.
+Следующий ход: direct signed summation-by-parts and variation budget, before another Pro question.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_ACTUAL_MOBIUS_Q01_CONCLUSION.md.
+Чей вердикт: Pro original plus root exact replay and independent bounded ccm_q01_return_review PASS within inherited inputs. Native goal ACTIVE; RH OPEN.

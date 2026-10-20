@@ -1,3 +1,16 @@
+# CCM actual-Mobius Q01 processed — no pending response
+
+Same owner living chat: AI Mathematik Morgenbrief,
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d
+Sent once 20 October about18:23UTC; completed naturally about18:43UTC.
+Original saved; bounded independent PAPER acceptance; root reproduced7021
+exact controls. See CCM_ACTUAL_MOBIUS_Q01_CONCLUSION.md for provenance and scope.
+Full-k diagonal paid; actual signed off-diagonal and AV OPEN. No full exponent
+improvement. Goal ACTIVE. Next own attempt returns before Cauchy in d.
+No Q02 sent. Do not repeat Q01, interrupt Pro, or reopen CF22 by inertia.
+
+--- Historical source-branch state below; CF22/PySR PARKED_REOPENABLE ---
+
 # Q8 processed — no pending Pro answer
 
 Same living chat: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ac907a5-02f8-83eb-b0e6-fa066e88e743

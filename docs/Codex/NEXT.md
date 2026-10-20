@@ -5,9 +5,10 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-20 · owner-directed CF22 archive and original-Q3 continuation. Linux ZF78 verification retains its reported zeta-only scope; no new verification here.
+Updated: 2026-10-20 · by: scripts/phase_end.sh · HEAD at update: c6f9d2b7
 
 ## Решение владельца 20.10: возврат к исходной Q3
+Активный [goal совместной CCM-атаки](CCM_ACTIVE_GOAL_2026-10-20.md): eta(epsilon)→0 на исходной sparse band; собственные попытки → Прошка после трёх без улучшения/конкретного тупика → проверка → продолжение либо документированный откат. Q01 получен и ограниченно проверен: full-k диагональ оплачена, смешанная корреляция и AV OPEN; [вывод](../literature/openai_math_2026-10-07/CCM_ACTUAL_MOBIUS_Q01_CONCLUSION.md). Следующая своя попытка — прямой возврат до Cauchy по d; Q02 не отправлен. Состояние: `../literature/openai_math_2026-10-07/PROSHKA_PENDING.md`.
 CF22/PySR — **PARKED_REOPENABLE**, не основной следующий шаг. [Архив, инсайты, результаты и условия возврата](../../experiments/cf22_pysr/ARCHIVE_2026-10-20.md). Все данные и смешанные вклады сохранены; CF22/MB34/SP/RH не закрыты.
 Основной объект — исходная полная CCM K_m, m=N, L=log m. Потребитель — SP либо отдельно обозначенный достаточный sparse-band receiver; не смешивать их и не объявлять G1/G3 закрытыми.
 Следующий математический ход — исходная односторонняя оценка `2 Re Tr(F W F* Z)` с фактическим W и всеми r в Q1–Q3 файла `../literature/openai_math_2026-10-07/CCM_FIXED_PRIME_COMPRESSION_TEST.md`. Точное q-разбиение уже выполнено и само по себе не даёт выигрыш; Q10 и расходы возврата сохраняются. D_s отсутствует в этом precompression-представлении и не даёт бесплатного положительного кредита; при введении сжатых квадратов его надо вернуть. Новая попытка должна улучшить оценку, а не повторить тождество. Успех обязан оплатить C5/заявленный исходный потребитель.
@@ -35,6 +36,14 @@ Claim делается, только когда он действительны�
    То, что уже можно формализовать, но не блокирует бумагу, — откладываем.
 3. Когда вся цепь закрыта на бумаге — формализация в Lean, Comparator, проверки, claim.
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
+
+<!-- AUTO-STATS:BEGIN (scripts/phase_end.sh — не править руками) -->
+Статистика на 2026-10-20, HEAD c6f9d2b7:
+- Goal058 (текстовая метка READY/PROVED): 3/8 (G2, G2b, G5); без метки: G0, G1, G3, G3c, G4
+- Крыша (статусы ledger): 0/3 портов со статусом jointly_bound; hzeros=CONDITIONAL_CANDIDATE_FLOORS_OPEN, hentire=SUPPLIER_PROVED_FAMILY_UNBOUND, hconv=NO_SUPPLIER
+- RouteB Lean (текстовый поиск, не kernel-аудит): sorry=0, строк axiom=0
+- Открытые запросы Прошке: 1 (REQ-2026-09-26-ABEL-CUMULATIVE-FORCING)
+<!-- AUTO-STATS:END -->
 
 ## Дорожная карта
 Прежняя программа: Route B → Goal058, крыша `rh_of_real_zero_family_tendsto_centeredXi` (одна семья F: вещественные нули + F → Ξ).
