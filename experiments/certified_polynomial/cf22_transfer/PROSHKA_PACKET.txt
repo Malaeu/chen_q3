@@ -1,0 +1,1454 @@
+OPERATIVE_CLASS: TRY_CF22_CERTIFIED_FAMILY_PRUNING_DESIGN
+DATE: 2026-10-20
+SOURCE_COMMIT: 2732bb2421eba36877122b1b97431cadc0e791cd
+ARTIFACT_KIND: OWNER_HANDOFF_REQUEST_WITH_EVIDENCE
+DELIVERY_STATUS: PREPARED_NOT_SENT
+CF22: UNCHANGED_CONDITIONAL
+RH: NOT_PROVED
+
+Прошка, мы реализовали минимальный конструктор с проверяемым отсечением.
+Теперь нужен один конкретный перенос на нашу полную C: выбери математически
+содержательное семейство кандидатов и выведи правило, позволяющее отсекать
+целую область его параметров, сохраняя RR, RA, AA и все масочные взаимодействия.
+Нужен следующий арифметический шаг, а не новый обзор инструментов.
+
+1. Что действительно выполнено
+
+В чётном семействе p=a+bx²+cx⁴ с p(0)=1,p(±1)=1/2 построена мажоранта
+1/(1+x²) на [-1,1] с минимальным интегралом: p=1−3x²/4+x⁴/4, интеграл8/5.
+SciPy предложил коэффициенты; отдельный проверяющий без SciPy/SymPy подтвердил
+их точными дробями. Полиномиальная факторизация доказывает результат на всём
+интервале. Условия контакта дают a=1,b=−1/2−c; допустимость ровно c≤1/4.
+Плохой вариант c=13/50 отвергнут точным контрпримером x=49/50.
+Целый диапазон c∈[13/50,1/2] опровергнут одним общим свидетелем;
+c∈[0,1/5] допустим, но доказанно не улучшает8/5. Эти статусы разделены.
+8 тестов, включая7 подмен сертификатов, прошли; независимый обзор без замечаний.
+Алгебра отсечения задана человеком, не открыта оптимизатором. Это учебный
+результат, не CF22 и не Lean-проверка. Исходники и результаты приложены ниже.
+
+2. Настоящий объект, который менять нельзя
+
+В обозначениях твоего предыдущего ответа:
+C=A(P) S_rho Re sum_(n≠m) c_n conjugate(c_m) K(n,m),
+K(n,m)=A_P(nm)/A(P) T_rho(n,m)−T_H(n,m),
+c_n=mu(n)W(q_n/L)/sqrt(L).
+A_P учитывает все усилители, включая степени; нули характеров, полный сырой
+шар, исходные профили и единственное удаление диагонали сохраняются.
+Для бесквадратных колонок g=gcd(n,m), D=(n/g)(m/g), Q=lcm(n,m)=gD.
+Сокращение фазы на g не разрешает удалить её общий нулевой фактор.
+
+§6 выполнен на сохранённых20 конфигурациях: RR+RA+AA возвращает полную C,
+460 независимых интервальных сравнений PASS. При U64/P13:
+RR=+2.289643268113, RA=+10.370283579123, AA=−0.178685229776,
+C=+12.481241617461 (числа здесь округлены, исходные интервалы приложены ссылками).
+Масочный отклик RR тождественно нулевой, но сам RR ненулевой.
+Отдельная малость каждого блока не требуется: важна их совместная сумма.
+
+3. Первый конкретный кандидат на перенос: отсекать параметры конверта
+
+Предлагаем начать с семейства верхних границ ВСЕЙ C, а не менять исходную C:
+S=P U^(1/6) L^(5/6)>0, q=C/S, v=(U/L)^(5/6),
+g_(alpha,kappa,delta)=alpha*v+kappa*U^(−delta).
+alpha,kappa≥0 — коэффициенты конверта, НЕ число усилителей A(P).
+Пусть Theta=[alpha_-,alpha_+]×[kappa_-,kappa_+]×[delta_-,delta_+].
+При U>1 верхний край всего семейства в одной конфигурации z равен
+G_Theta(z)=alpha_+ v(z)+kappa_+ U(z)^(−delta_-).
+Если сертифицировано q^-(z)>G_Theta^+(z), ВСЕ параметры Theta опровергнуты
+в z. q вычисляется из полной C; никакой модуль пар или удаление RA не нужны.
+Это элементарное правило отсечения семейства, не доказательство наличия
+полезного конверта. Оно не исполнено на CF22 в этой работе.
+
+При фиксированном delta каждая допустимая конфигурация задаёт необходимое
+линейное условие alpha*v+kappa*U^(−delta)≥q^-. Несколько таких условий могут
+исключить целую область коэффициентов. Для принятия на конечной таблице нужно
+более сильное интервальное сравнение g^-≥q^+ в каждой строке. Для принятия на
+бесконечной области нужна отдельная арифметическая оценка. Не путать эти шаги.
+
+Проблема содержательности: неограниченные alpha,kappa позволяют пережить любую
+конечную таблицу. Поэтому границы параметров, допустимые потери и начало области
+нельзя придумывать после результата. Их нужно получить из потребителя или
+явно зафиксировать как ограниченный эксперимент; отсечение такого бокса не
+опровергает все положительные delta или существование констант вообще.
+
+4. Область действия — обязательная часть сертификата
+
+Исходное расписание: r∈[28/25,113/100], c0=10^−4,
+p(r)=((1+c0)r−1)/6, P=U^p(r), H=UP^6,
+U^(r−1/100)≤L≤U^r. Вернуть все профильные/высотные потери и R_ret.
+Неединичные строки P=7,13,49 были диагностикой с независимым P:
+H/Q≥168.3682 в панели, тогда как трудный режим на исходном расписании — длинные
+периоды. Эти строки не являются контрпримером утверждению только на расписании.
+20 конфигураций —10 числовых сценариев с двумя сопряжёнными ориентациями.
+
+Даже строка на расписании не опровергает eventual-оценку с неизвестным U0,
+если она может находиться ниже U0. Зафиксировать U≥U0 и константы либо дать
+арифметическое семейство свидетелей при неограниченно растущем U. Не переносить
+провал усиленного конечного контракта на исходную асимптотическую цель.
+Пока мы НЕ объявляем ни один бокс параметров CF22 математически отсечённым.
+
+5. Какой ответ нужен от тебя
+
+Возьми предложенное семейство или замени его ОДНИМ более содержательным
+семейством представлений K=Khat_theta+E_theta. В последнем случае нужны
+совместные знаковые оценки Q_c(Khat_theta)≤B_theta, Q_c(E_theta)≤R_theta,
+где Q_c(K)=Re sum_(n≠m)c_n conjugate(c_m)K(n,m), и полный бюджет B+R.
+Определение E как разности без оценки не является новым механизмом.
+
+Дай конкретно:
+1) Формулу семейства, параметры и область, что фиксировано и что разрешено
+   выбирать. Нужна конечномерная первая задача, сохраняющая настоящий источник.
+2) Одно НЕОБХОДИМОЕ условие на параметры или общий свидетель нарушения,
+   отсекающий весь диапазон; докажи направление вывода и область применения.
+   Достаточное условие мажорирования не выдавать за необходимое для отсечения.
+3) Что из сохранённых данных законно используется, чего не хватает в исходном
+   режиме, и какой один новый расчёт/аналитический шаг поставит этот вход.
+4) Точный следующий арифметический тезис: предпосылки, кванторы, остаток,
+   полный бюджет и перевод к PU+S U^(−delta) с положительным чистым выигрышем.
+   Если пока нет доказательства — обозначь одну открытую лемму, не скрывай её
+   под словом «сертификат» и не возвращай только всю исходную цель новым именем.
+5) Для CANNOT_IMPROVE отдельно задай цель сравнения и уже доказанный допустимый
+   эталон. У CF22 пока нет аналога проверенного оптимума8/5; конечный fit им не
+   является. Уникальность или оптимальность среди всех функций не предполагаем.
+
+Желаемый итог: один небольшой контракт для следующей реализации Codex и один
+чёткий математический долг. Не новый PySR fit, не универсальная платформа,
+не оптимизация весов RR/RA/AA с изменением C. Если наша простая параметризация
+даёт только тривиальные ограничения, объясни это и предложи одно точное
+структурное ограничение из арифметики, которое сделает отсечение полезным.
+
+Приложенные материалы — проверяемая база результата, не заявление о новом
+арифметическом выигрыше. Пакет подготовлен для владельца; отправка не выполнена.
+
+
+=== SOURCE HASHES (commit 2732bb2421eba36877122b1b97431cadc0e791cd) ===
+{
+  "experiments/certified_polynomial/RESULT.md": {
+    "sha256": "70719d4fa9976ab34899278497fd6f0c18f2422cb013a631b2cfadc76f81ffa3",
+    "bytes": 4226
+  },
+  "experiments/certified_polynomial/README.md": {
+    "sha256": "d1576a5bfb99eaf928f07abd5a41a235299eb5bab216e2b87b8c0e52dcdf8f00",
+    "bytes": 4433
+  },
+  "experiments/certified_polynomial/constructor.py": {
+    "sha256": "8c1d2c95f2c70bb932ea7cc50d248d5aa528443af787c14f0489f8f599090d48",
+    "bytes": 9770
+  },
+  "experiments/certified_polynomial/verify_certificate.py": {
+    "sha256": "c742ef6c6ce13bcd7cc3a34281c35f9de42ab21e3d252ad47da9e9ee0e35c794",
+    "bytes": 4967
+  },
+  "experiments/certified_polynomial/result.json": {
+    "sha256": "19358c64546d574a0ab8853a7db81a67fce43dab355d5ffcba308fe94ba1a874",
+    "bytes": 3145
+  },
+  "experiments/certified_polynomial/verification.json": {
+    "sha256": "929b80ff42490203b381d454d349cd3af6fe9cd9a668a5c5bf71c73ef46ec1a4",
+    "bytes": 389
+  },
+  "experiments/cf22_pysr/correlation/RESULT.md": {
+    "sha256": "485392e42c98c04cd222dd27df5fb50bc7f324d2d2b76f8f668e3b08e6a5f173",
+    "bytes": 12925
+  },
+  "experiments/cf22_pysr/correlation/README.md": {
+    "sha256": "08ebce1569f5d0bec21cc03dbe9c8e7956427ba51dc9013f6745d01dfb3699bc",
+    "bytes": 5572
+  },
+  "experiments/cf22_pysr/correlation/OWNER_REQUEST.txt": {
+    "sha256": "4e43cbda6acbc4c4588257386bb5abf6c33f8fdf85fc320319046d93b2d35e5b",
+    "bytes": 15290
+  },
+  "experiments/cf22_pysr/correlation/summary.json": {
+    "sha256": "c534463e782c637bf7aa467800dd571997da95e855d8443aa6f9acc47ca18ef5",
+    "bytes": 197278
+  },
+  "experiments/cf22_pysr/correlation/verification.json": {
+    "sha256": "0f8bbc0efcf9b3d5bb8bbf985c9a52819e5259efec3aac7952b2ab876783eeb6",
+    "bytes": 310155
+  },
+  "experiments/cf22_pysr/correlation/decomposition.json.gz": {
+    "sha256": "74e888523228566fbb5140ed24dd8b9abbd33a07af9eba72519802dd18e9f38d",
+    "bytes": 7802237
+  }
+}
+
+=== EVIDENCE APPENDIX ===
+# PROSHKA EVIDENCE PACK
+Generated: 2026-10-20 13:37:29
+Repo: /Users/emalam/GitHub/rh_lean_01_2026
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+Unrelated working-tree status omitted. All included source files match the pinned commit.
+
+## Git log
+
+2732bb24 [Mac rh_clean] Add polynomial constructor with exact family pruning
+
+
+## File: experiments/certified_polynomial/RESULT.md
+
+# Минимальный конструктор: выполненный результат
+
+Дата: 2026-10-20. Статус: точный сертификат для заданного семейства.
+
+Конструктор действительно запущен. SciPy предложил коэффициенты; после
+рационализации независимый проверяющий на стандартном Python повторил проверку
+точными дробями. Итог `PASS`, 8 тестов пройдены, включая 7 вариантов подмены
+сертификатов. Установка зависимостей не потребовалась.
+
+## Найденная функция и границы результата
+
+Ищем чётные полиномы степени не выше четырёх с p(0)=1, p(±1)=1/2,
+мажорирующие 1/(1+x²) на всём [-1,1], с минимальным интегралом.
+
+Найдено p(x)=1−3x²/4+x⁴/4, интеграл 8/5.
+Тождество (1+x²)p(x)−1=x²(1−x²)²/4 доказывает мажорирование всюду.
+Контакты оставляют один параметр: p_c(x)=1−(1/2+c)x²+cx⁴.
+Допустимость эквивалентна c≤1/4; интеграл равен 5/3−4c/15.
+Поэтому оптимум в этом семействе единственный: c=1/4.
+Полное элементарное доказательство, включая необходимость, — в README.md.
+
+## Плохая функция отвергнута
+
+p_bad(x)=1−19x²/25+13x⁴/50 удовлетворяет контактам и имеет меньший
+интеграл 599/375. Но в x=49/50 её разность с 1/(1+x²) точно равна
+−288328887/1531562500000. Это настоящий контрпример внутри области.
+
+## Два доказанных отсечения
+
+- c∈[13/50,1/2]: INFEASIBLE. Точка x=49/50 нарушает условие для
+  **каждого** полинома диапазона. Разность уже отрицательна на левом краю
+  и убывает по c со скоростью −x²(1−x²). Перебор точек параметра не нужен.
+- c∈[0,1/5]: CANNOT_IMPROVE. Все эти полиномы допустимы, но интеграл
+  каждого не меньше 121/75 > 8/5. Они не могут улучшить проверенный ответ.
+  Это не утверждение, что семейство недопустимо.
+
+Так отбрасывается непрерывное множество вариантов одним доказательством.
+Алгебраический механизм отсечения задан нами; программа его применяет и
+проверяет. Автоматического открытия новых механизмов здесь пока нет.
+
+## Артефакты
+
+- constructor.py: численное предложение, точная проверка и правила отсечения.
+- verify_certificate.py: отдельный проверяющий без SciPy/SymPy и без импорта конструктора.
+- result.json: коэффициенты, точные свидетели, бюджеты, версии, SHA256 исходника.
+- verification.json: результат независимого повторения и контрольные суммы.
+- test_constructor.py, test_certificate.py: границы применимости и отбраковка подмен.
+- README.md: вывод и команды воспроизведения.
+
+Проверено семейство одной учебной задачи на всём интервале. Это не улучшение
+CF22, не вычисление её исходной C и не Lean-сертификат. Для CF22 потребуется
+свой доказанный механизм, сохраняющий полную знаковую сумму и её остаток.
+
+
+## File: experiments/certified_polynomial/README.md
+
+# Minimal polynomial constructor with certified pruning
+
+This is a narrow, reproducible demonstration, not a general function-synthesis
+library and not a CF22 result. The admissible family is
+
+```
+p(x) = a + b*x^2 + c*x^4,
+x in [-1,1], p(0)=1, p(-1)=p(1)=1/2,
+p(x) >= 1/(1+x^2) everywhere on the interval.
+```
+
+The objective is the exact integral of p on [-1,1]. A numerical linear program
+proposes coefficients; rational reconstruction produces a new exact candidate.
+A separate exact checker decides its mathematical status. A solver success
+flag, sample grid or reconstruction tolerance is never a universal certificate.
+
+## Algebraic certificate for the whole family
+
+Contacts force a=1, b=-1/2-c. Set t=x^2, so t runs over [0,1]. Then
+
+```
+(1+t)*p(sqrt(t))-1 = t*(1-t)*(1/2-c-c*t).
+```
+
+The denominator 1+t is positive. The last linear factor has Bernstein
+coefficients 1/2-c and 1/2-2c. Nonnegative coefficients prove the inequality
+on the entire interval, including the endpoints: c<=1/4 suffices.
+
+This condition is also necessary in this special family. If c>1/4, choose
+t=1/(4c), which lies strictly between 0 and 1. The last factor becomes
+1/4-c<0. Hence there is a point x=sqrt(t) in the stated domain where the
+upper-bound requirement fails. Thus the exact feasible set is c<=1/4.
+Bernstein positivity is not claimed to be necessary for arbitrary polynomials.
+
+The integral is I(c)=5/3-4c/15. On the full feasible family,
+
+```
+I(c)-8/5 = (1-4c)/15 >= 0.
+```
+
+Equality holds exactly at c=1/4. Thus the certified optimum in this family is
+p=1-3x^2/4+x^4/4, with I=8/5. This is a known elementary result reproduced by
+the program; the algebraic reduction is supplied, not discovered by SciPy.
+
+## Two different reasons to prune
+
+1. INFEASIBLE: c in [13/50,1/2]. At x=49/50, the gap decreases with c and is
+   already -288328887/1531562500000 at c=13/50. This one point refutes every
+   member of the continuous family, not just a finite sample.
+2. CANNOT_IMPROVE: c in [0,1/5]. Every member is feasible, but its integral is
+   at least 121/75, strictly greater than the verified incumbent 8/5.
+   Discarding this branch in minimization does not mean it has no solutions.
+
+The bad candidate a=1,b=-19/25,c=13/50 satisfies the contacts and has a smaller
+integral 599/375, yet fails the universal inequality at the exact point above.
+The branch crossing c=1/4 must not be declared infeasible: it contains the
+optimal feasible candidate. Endpoint and tampering tests protect these limits.
+
+## Numerical engine
+
+The implementation uses SciPy `linprog` with explicit free coefficient bounds;
+its default nonnegative-variable bounds would incorrectly exclude negative b.
+See the [official linprog documentation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.linprog.html).
+The recorded environment already contains Python 3.12, SciPy 1.18.1 and SymPy
+1.14.0. No dependencies were installed for this demonstration.
+
+The exact certificate applies only to the stated family, contacts, target and
+domain. It does not certify arbitrary rational functions, detect all possible
+poles, or establish any arithmetic estimate for the CF22 source.
+
+## Replay
+
+Recorded run: Python 3.12.15, SciPy 1.18.1, SymPy 1.14.0. The existing local
+interpreter was `/tmp/cf22-pysr-venv/bin/python`. For another machine, use a
+Python environment with those package versions. No solver dependencies are
+needed for the standalone certificate replay (`verify_certificate.py`).
+
+From the repository root (output paths must not already exist):
+
+```sh
+/tmp/cf22-pysr-venv/bin/python -m unittest discover -s experiments/certified_polynomial -v
+/tmp/cf22-pysr-venv/bin/python experiments/certified_polynomial/constructor.py --output /tmp/polynomial-new-result.json
+python3 experiments/certified_polynomial/verify_certificate.py --input /tmp/polynomial-new-result.json --output /tmp/polynomial-new-verification.json
+```
+
+`result.json` records the actual run; `verification.json` binds the standalone
+replay to its input and checker SHA256 hashes. The checker independently
+recomputes exact statements; it does not trust the numerical solver, import
+the constructor, or use floating-point arithmetic. Its fixed algebraic rules
+and Python runtime are part of the trusted base; this is not a Lean proof.
+Eight tests pass, including seven certificate-tampering cases. Intervals
+crossing the optimum remain unresolved by the simple pruning rules.
+
+
+## File: experiments/certified_polynomial/constructor.py
+
+#!/usr/bin/env python3
+"""Numerical candidate search with an independent exact certificate."""
+
+from __future__ import annotations
+
+import argparse
+from fractions import Fraction
+import hashlib
+import json
+from pathlib import Path
+import sys
+
+import scipy
+from scipy.optimize import linprog
+import sympy as sp
+
+
+CONTRACT = {
+    "family": "even_quartic",
+    "domain": ["-1", "1"],
+    "target": "1/(1+x^2)",
+    "contacts": {"0": "1", "-1": "1/2", "1": "1/2"},
+    "objective": "integral_-1^1_p",
+}
+INCUMBENT = Fraction(8, 5)
+
+
+def _q(value: Fraction | int | str) -> Fraction:
+    """Accept exact rational inputs only; floats must pass reconstruction first."""
+    if isinstance(value, Fraction):
+        return value
+    if isinstance(value, int):
+        return Fraction(value)
+    if isinstance(value, str):
+        return Fraction(value)
+    raise TypeError("exact rational input required")
+
+
+def _s(value: Fraction) -> str:
+    return str(value)
+
+
+def _sym(value: Fraction) -> sp.Rational:
+    return sp.Rational(value.numerator, value.denominator)
+
+
+def _objective(a: Fraction, b: Fraction, c: Fraction) -> Fraction:
+    return 2 * a + Fraction(2, 3) * b + Fraction(2, 5) * c
+
+
+def _gap(a: Fraction, b: Fraction, c: Fraction, x: Fraction) -> Fraction:
+    t = x * x
+    return a + b * t + c * t * t - Fraction(1, 1) / (1 + t)
+
+
+def _witness_x(c: Fraction) -> Fraction:
+    """Find rational x in (0,1) where a contact-constrained c>1/4 fails."""
+    margin = 2 * c - Fraction(1, 2)
+    if margin <= 0:
+        raise ValueError("no strict violation when c <= 1/4")
+    n = (2 * c // margin) + 1
+    n = max(int(n), 2)
+    return Fraction(n - 1, n)
+
+
+def verify_coefficients(
+    a: Fraction | int | str,
+    b: Fraction | int | str,
+    c: Fraction | int | str,
+    *,
+    counterexample_x: Fraction | int | str | None = None,
+) -> dict:
+    """Check contacts and the majorant claim using exact rational arithmetic."""
+    a, b, c = _q(a), _q(b), _q(c)
+    contacts = {
+        "p(0)": _s(a),
+        "p(-1)": _s(a + b + c),
+        "p(1)": _s(a + b + c),
+        "valid": a == 1 and a + b + c == Fraction(1, 2),
+    }
+    result = {
+        "status": "REFUTED" if not contacts["valid"] else "VERIFIED",
+        "shape": "even_quartic",
+        "contacts": contacts,
+        "upper_bound": None,
+        "objective": _s(_objective(a, b, c)),
+        "optimality": {"status": "NOT_ESTABLISHED", "candidate_is_optimal": False},
+    }
+    if not contacts["valid"]:
+        result["reason"] = "required contacts do not hold"
+        return result
+
+    t = sp.symbols("t")
+    gap = _sym(a) + _sym(b) * t + _sym(c) * t**2 - 1 / (1 + t)
+    factor = t * (1 - t) * (sp.Rational(1, 2) - _sym(c) - _sym(c) * t) / (1 + t)
+    factor_identity = sp.factor(gap - factor) == 0
+    bernstein = (Fraction(1, 2) - c, Fraction(1, 2) - 2 * c)
+    feasible = factor_identity and all(coefficient >= 0 for coefficient in bernstein)
+    result.update({
+        "factorization": "p-1/(1+x^2)=t(1-t)(1/2-c-c*t)/(1+t), t=x^2",
+        "factorization_verified": factor_identity,
+        "bernstein_coefficients": [_s(value) for value in bernstein],
+        "upper_bound": feasible,
+    })
+    if not feasible:
+        x = _q(counterexample_x) if counterexample_x is not None else _witness_x(c)
+        violation = _gap(a, b, c, x)
+        if not 0 <= x < 1 or violation >= 0:
+            raise ValueError("counterexample does not refute the majorant claim")
+        result["status"] = "REFUTED"
+        result["counterexample"] = {"x": _s(x), "gap_p_minus_target": _s(violation)}
+        return result
+
+    objective = _objective(a, b, c)
+    identity_lhs = objective - INCUMBENT
+    identity_rhs = (1 - 4 * c) / 15
+    identity_verified = identity_lhs == identity_rhs
+    result["optimality"] = {
+        "status": "VERIFIED" if identity_verified else "REFUTED",
+        "objective_lower_bound": _s(INCUMBENT),
+        "identity": "integral(p)-8/5=(1-4*c)/15",
+        "identity_value": _s(identity_lhs),
+        "identity_verified": identity_verified,
+        "candidate_is_optimal": identity_verified and objective == INCUMBENT,
+    }
+    if not identity_verified:
+        result["status"] = "REFUTED"
+    return result
+
+
+def certify_family(
+    lower: Fraction | int | str,
+    upper: Fraction | int | str,
+    *,
+    name: str,
+    counterexample_x: Fraction | int | str | None = None,
+) -> dict:
+    """Certify a whole contact-constrained c interval or leave it unresolved."""
+    lower, upper = _q(lower), _q(upper)
+    if lower > upper:
+        raise ValueError("family lower endpoint exceeds upper endpoint")
+    item = {"name": name, "parameter": "c", "lower": _s(lower), "upper": _s(upper)}
+    if lower > Fraction(1, 4):
+        x = _q(counterexample_x) if counterexample_x is not None else _witness_x(lower)
+        gap_at_lower = _gap(Fraction(1), -Fraction(1, 2) - lower, lower, x)
+        slope = -(x * x) * (1 - x * x)
+        if gap_at_lower < 0 and slope <= 0:
+            item.update({
+                "status": "INFEASIBLE",
+                "certificate": {
+                    "uniform_x": _s(x),
+                    "gap_at_lower": _s(gap_at_lower),
+                    "gap_slope_in_c": _s(slope),
+                    "argument": "gap(c,x)=gap(lower,x)+(c-lower)*slope",
+                },
+            })
+            return item
+    if upper <= Fraction(1, 4):
+        bernstein_at_upper = (Fraction(1, 2) - upper, Fraction(1, 2) - 2 * upper)
+        objective_lower = Fraction(5, 3) - Fraction(4, 15) * upper
+        if all(x >= 0 for x in bernstein_at_upper) and objective_lower > INCUMBENT:
+            item.update({
+                "status": "CANNOT_IMPROVE",
+                "certificate": {
+                    "bernstein_coefficients_at_upper": [_s(x) for x in bernstein_at_upper],
+                    "objective_slope": "-4/15",
+                    "objective_lower_bound": _s(objective_lower),
+                    "incumbent_objective": _s(INCUMBENT),
+                    "strictly_above_incumbent": True,
+                },
+            })
+            return item
+    item.update({"status": "UNRESOLVED", "certificate": {"reason": "interval not discharged by exact family rules"}})
+    return item
+
+
+def _rationalize(value: float, *, max_denominator: int = 100_000) -> Fraction:
+    candidate = Fraction(str(float(value))).limit_denominator(max_denominator)
+    if abs(float(candidate) - float(value)) > 1e-9:
+        raise ValueError(f"numeric value {value!r} did not reconstruct rationally")
+    return candidate
+
+
+def solve_numerical_proposal() -> dict:
+    """Use LP only to propose coefficients; no solver status is a certificate."""
+    result = linprog(
+        c=[2.0, 2.0 / 3.0, 2.0 / 5.0],
+        A_ub=[[0.0, 0.0, 1.0], [0.0, 0.0, 2.0]],
+        b_ub=[0.5, 0.5],
+        A_eq=[[1.0, 0.0, 0.0], [1.0, 1.0, 1.0]],
+        b_eq=[1.0, 0.5],
+        bounds=[(None, None)] * 3,
+        method="highs",
+    )
+    proposal = {
+        "solver": "scipy.optimize.linprog",
+        "success": bool(result.success),
+        "message": str(result.message),
+        "coefficients_float": None,
+        "objective_float": None,
+        "role": "candidate generation only; not a certificate",
+    }
+    if result.success:
+        proposal["coefficients_float"] = {k: float(v) for k, v in zip(("a", "b", "c"), result.x)}
+        proposal["objective_float"] = float(result.fun)
+    return proposal
+
+
+def build_report() -> dict:
+    proposal = solve_numerical_proposal()
+    candidate: dict
+    if proposal["success"]:
+        try:
+            coeff = {key: _rationalize(value) for key, value in proposal["coefficients_float"].items()}
+        except (ValueError, OverflowError) as exc:
+            candidate = {
+                "coefficients": None,
+                "verification": {"status": "UNKNOWN", "reason": str(exc)},
+            }
+        else:
+            candidate = {
+                "coefficients": {key: _s(value) for key, value in coeff.items()},
+                "verification": verify_coefficients(**coeff),
+            }
+    else:
+        candidate = {
+            "coefficients": None,
+            "verification": {"status": "UNKNOWN", "reason": "LP produced no numerical candidate"},
+        }
+
+    bad_coeff = {"a": Fraction(1), "b": Fraction(-19, 25), "c": Fraction(13, 50)}
+    bad = {
+        "coefficients": {key: _s(value) for key, value in bad_coeff.items()},
+        "verification": verify_coefficients(**bad_coeff, counterexample_x=Fraction(49, 50)),
+    }
+    families = [
+        certify_family(Fraction(13, 50), Fraction(1, 2), name="high_c_infeasible", counterexample_x=Fraction(49, 50)),
+        certify_family(0, Fraction(1, 5), name="low_c_cannot_improve"),
+    ]
+    return {
+        "contract": CONTRACT,
+        "numerical_proposal": proposal,
+        "candidate": candidate,
+        "bad_candidate": bad,
+        "families": families,
+        "runtime": {"python": sys.version.split()[0], "scipy": scipy.__version__, "sympy": sp.__version__},
+        "source_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, help="create JSON report at this path (must not exist)")
+    args = parser.parse_args(argv)
+    payload = json.dumps(build_report(), indent=2, sort_keys=True) + "\n"
+    if args.output is None:
+        sys.stdout.write(payload)
+    else:
+        try:
+            with args.output.open("x", encoding="utf-8") as stream:
+                stream.write(payload)
+        except FileExistsError:
+            parser.error(f"refusing to overwrite existing output: {args.output}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
+
+
+## File: experiments/certified_polynomial/verify_certificate.py
+
+#!/usr/bin/env python3
+"""Replay this fixed polynomial contract using only exact standard-library arithmetic."""
+import argparse
+from fractions import Fraction as Q
+import hashlib
+import json
+from pathlib import Path
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def rational(value):
+    require(isinstance(value, str), 'certificate rationals must be strings')
+    return Q(value)
+
+
+def gap(a, b, c, x):
+    return a + b*x*x + c*x**4 - 1/(1+x*x)
+
+
+def coefficients(item):
+    a, b, c = (rational(item['coefficients'][k]) for k in ('a', 'b', 'c'))
+    require(a == 1 and a+b+c == Q(1, 2), 'contacts fail')
+    return a, b, c
+
+
+def verify(report):
+    require(report['contract'] == {
+        'family': 'even_quartic', 'domain': ['-1', '1'],
+        'target': '1/(1+x^2)', 'contacts': {'0':'1', '-1':'1/2', '1':'1/2'},
+        'objective': 'integral_-1^1_p'}, 'unsupported contract')
+    # Coefficient identity in t=x^2, checked for arbitrary c by coefficients in c.
+    # (1+t)(1+(-1/2-c)t+ct^2)-1 = t(1-t)(1/2-c-ct).
+    # Both sides have coefficients [0, 1/2-c, -1/2, c].
+    for c in (Q(0), Q(1)):  # both expressions are affine in c
+        left = [Q(0), Q(1,2)-c, Q(-1,2), c]
+        h0, h1 = Q(1,2)-c, -c
+        right = [Q(0), h0, h1-h0, -h1]
+        require(left == right, 'factor identity fails')
+    # The last linear factor is nonnegative on [0,1] iff c<=1/4.
+    # Necessity: for c>1/4, t=1/(4c) lies in (0,1) and gives 1/4-c<0.
+    a,b,c = coefficients(report['candidate'])
+    v = report['candidate']['verification']
+    require(c <= Q(1,4), 'candidate violates universal bound')
+    objective = 2*a+Q(2,3)*b+Q(2,5)*c
+    require(objective-Q(8,5) == (1-4*c)/15 == 0, 'candidate is not optimal')
+    require(v['status'] == 'VERIFIED' and v['upper_bound'] is True, 'candidate status')
+    require(rational(v['objective']) == objective, 'candidate objective')
+    require(list(map(rational,v['bernstein_coefficients'])) == [Q(1,2)-c,Q(1,2)-2*c], 'candidate Bernstein coefficients')
+    require(v['optimality']['candidate_is_optimal'] is True, 'optimality status')
+    require(rational(v['optimality']['objective_lower_bound']) == objective, 'optimality bound')
+    a,b,c = coefficients(report['bad_candidate'])
+    v = report['bad_candidate']['verification']
+    x = rational(v['counterexample']['x'])
+    require(-1 <= x <= 1, 'counterexample outside domain')
+    value = gap(a,b,c,x)
+    require(value < 0 and rational(v['counterexample']['gap_p_minus_target']) == value, 'bad candidate not refuted')
+    require(v['status'] == 'REFUTED', 'bad status')
+    statuses = []
+    for family in report['families']:
+        require(family['parameter'] == 'c', 'unsupported parameter')
+        lo, hi = rational(family['lower']), rational(family['upper'])
+        require(lo <= hi, 'reversed family')
+        cert, status = family['certificate'], family['status']
+        if status == 'INFEASIBLE':
+            x = rational(cert['uniform_x'])
+            require(-1 <= x <= 1, 'family witness outside domain')
+            value = gap(Q(1),-Q(1,2)-lo,lo,x)
+            slope = x**4-x*x
+            require(value < 0 and slope <= 0, 'family not uniformly refuted')
+            require(rational(cert['gap_at_lower']) == value and rational(cert['gap_slope_in_c']) == slope, 'family gap mismatch')
+        elif status == 'CANNOT_IMPROVE':
+            require(hi <= Q(1,4), 'family feasibility not established')
+            bound = Q(5,3)-Q(4,15)*hi
+            require(bound > objective, 'family can improve incumbent')
+            require(rational(cert['objective_lower_bound']) == bound and rational(cert['incumbent_objective']) == objective, 'family objective mismatch')
+            require(rational(cert['objective_slope']) == -Q(4,15), 'objective slope')
+            require(list(map(rational,cert['bernstein_coefficients_at_upper'])) == [Q(1,2)-hi,Q(1,2)-2*hi], 'family Bernstein coefficients')
+        else:
+            raise ValueError('uncertified family status')
+        statuses.append(status)
+    require(sorted(statuses) == ['CANNOT_IMPROVE','INFEASIBLE'], 'expected two pruning demonstrations')
+    return {'status':'PASS', 'candidate':'VERIFIED_OPTIMAL', 'bad_candidate':'REFUTED',
+            'families':statuses, 'scope':'fixed even-quartic contract on [-1,1]; no CF22 claim'}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--input', type=Path, required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+    raw = args.input.read_bytes()
+    result = verify(json.loads(raw))
+    result['input_sha256'] = hashlib.sha256(raw).hexdigest()
+    result['checker_sha256'] = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    with args.output.open('x') as stream:
+        json.dump(result, stream, indent=2)
+        stream.write('\n')
+    print(json.dumps(result))
+
+
+if __name__ == '__main__':
+    main()
+
+
+## File: experiments/certified_polynomial/result.json
+
+{
+  "bad_candidate": {
+    "coefficients": {
+      "a": "1",
+      "b": "-19/25",
+      "c": "13/50"
+    },
+    "verification": {
+      "bernstein_coefficients": [
+        "6/25",
+        "-1/50"
+      ],
+      "contacts": {
+        "p(-1)": "1/2",
+        "p(0)": "1",
+        "p(1)": "1/2",
+        "valid": true
+      },
+      "counterexample": {
+        "gap_p_minus_target": "-288328887/1531562500000",
+        "x": "49/50"
+      },
+      "factorization": "p-1/(1+x^2)=t(1-t)(1/2-c-c*t)/(1+t), t=x^2",
+      "factorization_verified": true,
+      "objective": "599/375",
+      "optimality": {
+        "candidate_is_optimal": false,
+        "status": "NOT_ESTABLISHED"
+      },
+      "shape": "even_quartic",
+      "status": "REFUTED",
+      "upper_bound": false
+    }
+  },
+  "candidate": {
+    "coefficients": {
+      "a": "1",
+      "b": "-3/4",
+      "c": "1/4"
+    },
+    "verification": {
+      "bernstein_coefficients": [
+        "1/4",
+        "0"
+      ],
+      "contacts": {
+        "p(-1)": "1/2",
+        "p(0)": "1",
+        "p(1)": "1/2",
+        "valid": true
+      },
+      "factorization": "p-1/(1+x^2)=t(1-t)(1/2-c-c*t)/(1+t), t=x^2",
+      "factorization_verified": true,
+      "objective": "8/5",
+      "optimality": {
+        "candidate_is_optimal": true,
+        "identity": "integral(p)-8/5=(1-4*c)/15",
+        "identity_value": "0",
+        "identity_verified": true,
+        "objective_lower_bound": "8/5",
+        "status": "VERIFIED"
+      },
+      "shape": "even_quartic",
+      "status": "VERIFIED",
+      "upper_bound": true
+    }
+  },
+  "contract": {
+    "contacts": {
+      "-1": "1/2",
+      "0": "1",
+      "1": "1/2"
+    },
+    "domain": [
+      "-1",
+      "1"
+    ],
+    "family": "even_quartic",
+    "objective": "integral_-1^1_p",
+    "target": "1/(1+x^2)"
+  },
+  "families": [
+    {
+      "certificate": {
+        "argument": "gap(c,x)=gap(lower,x)+(c-lower)*slope",
+        "gap_at_lower": "-288328887/1531562500000",
+        "gap_slope_in_c": "-237699/6250000",
+        "uniform_x": "49/50"
+      },
+      "lower": "13/50",
+      "name": "high_c_infeasible",
+      "parameter": "c",
+      "status": "INFEASIBLE",
+      "upper": "1/2"
+    },
+    {
+      "certificate": {
+        "bernstein_coefficients_at_upper": [
+          "3/10",
+          "1/10"
+        ],
+        "incumbent_objective": "8/5",
+        "objective_lower_bound": "121/75",
+        "objective_slope": "-4/15",
+        "strictly_above_incumbent": true
+      },
+      "lower": "0",
+      "name": "low_c_cannot_improve",
+      "parameter": "c",
+      "status": "CANNOT_IMPROVE",
+      "upper": "1/5"
+    }
+  ],
+  "numerical_proposal": {
+    "coefficients_float": {
+      "a": 1.0,
+      "b": -0.75,
+      "c": 0.25
+    },
+    "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+    "objective_float": 1.6,
+    "role": "candidate generation only; not a certificate",
+    "solver": "scipy.optimize.linprog",
+    "success": true
+  },
+  "runtime": {
+    "python": "3.12.15",
+    "scipy": "1.18.1",
+    "sympy": "1.14.0"
+  },
+  "source_sha256": "8c1d2c95f2c70bb932ea7cc50d248d5aa528443af787c14f0489f8f599090d48"
+}
+
+
+## File: experiments/certified_polynomial/verification.json
+
+{
+  "status": "PASS",
+  "candidate": "VERIFIED_OPTIMAL",
+  "bad_candidate": "REFUTED",
+  "families": [
+    "INFEASIBLE",
+    "CANNOT_IMPROVE"
+  ],
+  "scope": "fixed even-quartic contract on [-1,1]; no CF22 claim",
+  "input_sha256": "19358c64546d574a0ab8853a7db81a67fce43dab355d5ffcba308fe94ba1a874",
+  "checker_sha256": "c742ef6c6ce13bcd7cc3a34281c35f9de42ab21e3d252ad47da9e9ee0e35c794"
+}
+
+
+## File: experiments/cf22_pysr/correlation/RESULT.md
+
+# §6 выполнен: три подписанных вклада сохранённой C
+
+Дата: 2026-10-20. Источник: `f1993ec6a7933418c38c305a13a3221037b9447a`.
+**FINITE_SIGNED_DECOMPOSITION — 20 конфигураций, обратная сборка проверена.**
+Новых сырых сумм: **0**. Новых PySR fits: **0**. CF22 не улучшена; RH не доказана.
+
+## Результат для Прошки
+
+Разбор подтверждает, что масочный отклик не описывает всю C. Нетронутые
+колонки дают ненулевой вклад, а перекрёстный вклад может быть главным
+положительным слагаемым. Например, при **U64,P13**:
+
+```
+нетронутые / нетронутые       +2.289643268113
+нетронутые / затронутые      +10.370283579123
+затронутые / затронутые       -0.178685229776
+                            ----------------
+полная C                    +12.481241617461
+```
+
+Это три статьи одного подписанного баланса. Отрицательный вклад последней
+группы не перекрывает две положительные. Отбрасывание перекрёстной группы
+потеряло бы основной положительный вклад именно в этой конфигурации.
+
+В отличие от предыдущего масочного разбора, теперь сохранены вклады каждой
+пары, её полный период, примитивный проводник и общий нулевой фактор.
+
+## Определение групп и таблица
+
+RR: обе колонки P-грубые, то есть не имеют простого идеального делителя нормы
+<=P. RA: ровно одна такая колонка; обе ориентации упорядоченной пары уже
+включены множителем 2Re. AA: обе колонки затронуты масками. Исходная диагональ
+исключена ровно один раз. Все значения ниже округлены из наружных Arb-интервалов.
+
+| U | P | Колонки R/A | C_RR | C_RA | C_AA | Сумма = прежняя C |
+|---:|:---|:---:|---:|---:|---:|---:|
+|48|P0|21/0|-3.043293550251|0|0|-3.043293550251|
+|48|7|16/5|-10.461646059497|0*|-1.678903857534|-12.140549917030|
+|48|13|16/5|-17.435270146014|0*|-0.708129128359|-18.143399274373|
+|64|P0|33/0|+2.838486049901|0|0|+2.838486049901|
+|64|7|25/8|+1.374306151769|+6.000890690801|-0.768533197845|+6.606663644725|
+|64|13|25/8|+2.289643268113|+10.370283579123|-0.178685229776|+12.481241617461|
+|96|P0|54/0|+4.401724968931|0|0|+4.401724968931|
+|96|7|36/18|+4.377460618073|+4.123193960253|-0.864401294512|+7.636253283814|
+|96|13|31/23|+6.685097714725|+6.564219540547|-1.404153857881|+11.845163397391|
+|48|49|14/7|-59.264796414489|-0.014195765056|-8.502664093661|-67.781656273206|
+
+Обе ориентации вычислены: это 20 конфигураций, но 10 различных числовых
+сценариев, поскольку вещественные энергии сопряжённых ориентаций совпадают.
+Суммы округлённых чисел могут отличаться в последнем знаке; проверки используют
+полные интервалы.
+
+`0*` — структурный ноль, а не обнуление малого интервала. В каждой из этих
+конфигураций все 80 перекрёстных пар имеют различные характеры на группе шести
+единиц. Полные единичные орбиты сокращаются точно: rho радиален, шестистепенная
+свобода и маски сохраняются при умножении на единицу. Сохранённые сырые пары
+равны нулю как целые числа. Для остальных интервалов сам факт включения нуля
+не объявляется тождеством. При P0 группы RA/AA пусты.
+
+## Что именно меняют маски
+
+Дополнительно для каждой группы вычислена разность относительно A(P) копий
+физической суммы без масок **при тех же P и H**. Это не разность между новой
+конфигурацией и P0: при изменении P меняется и исходное среднее.
+
+На RR эта поправка тождественно нулевая, поскольку A_P(nm)=A(P), хотя сама
+C_RR почти всегда ненулевая. При U64,P13:
+
+| Изменение от масок | Вклад в полную поправку |
+|:---|---:|
+| RR | 0, тождественно |
+| RA | -4.631264893832 |
+| AA | +2.676406300057 |
+| Сумма | -1.954858593774 |
+
+Маски здесь уменьшают положительный перекрёстный вклад, но не устраняют его.
+Затронутая группа одновременно получает положительную поправку, хотя её
+окончательный вклад C_AA остаётся отрицательным. Это разные величины.
+
+При U48,P49 полная масочная поправка +4.493758340844 раскладывается на
++0.000887235296 в RA и +4.492871105548 в AA. Прежний смешанный член
++0.150013200881 сохранён внутри полного расчёта. Через парную формулу также
+воспроизведён прежний h(p*pbar). Все 20 полных масочных поправок совпали с
+сохранёнными ранее значениями; никакие взаимодействия не отброшены.
+
+## Периоды: какой режим охвачен
+
+Для каждой пары сохранены факторизации и нормы:
+
+```
+g = gcd(n,m)                         общий нулевой фактор
+D = (n/g)(m/g)                       примитивный проводник фазы
+Q = lcm(n,m) = g D                   полный период с нулевыми масками
+```
+
+Это утверждение для наших хороших бесквадратных колонок с mu!=0. Локальные
+показатели фазы +eps и -eps также сохранены. Общие простые исчезают из фазы,
+но не из условия зануления. Для произвольных степеней эта формула проводника
+не утверждается.
+
+Фактические отношения H/Q по всем ненулевым колонкам и всем их различным
+парам, включая пары с нулевым вкладом:
+
+| Часть панели | Минимум H/Q | Максимум H/Q |
+|:---|---:|---:|
+| Исходное P0, единичный усилитель | 0.002591737 | 0.2729299 |
+| Независимые P=7,13,49 | 168.3682 | 1.042986e9 |
+
+Это подтверждает различие режимов на сохранённой панели. Разбиение не создало
+конфигураций, одновременно сочетающих неединичный усилитель и трудный
+производственный режим длинных периодов. Общая асимптотическая граница для
+T_H из приложения здесь заново не доказывалась и не использовалась для замены
+сохранённых сырых сумм.
+
+## Точное равенство и проверка
+
+Пусть V_ij=sum_u rho*2Re(chi_i conjugate chi_j), а R_ij — сохранённый
+целочисленный `pair_2re[i][j]`. Для i<j вычисляли
+
+```
+C_ij = mu_i mu_j W_i W_j/L * [A_P(n_i n_j) V_ij - A(P) S_rho R_ij/N_H].
+```
+
+A_P считали по всем хорошим усилителям, включая степени. Для каждой пары
+целочисленно проверено включение–исключение; при P49 сохранены все 17
+усилителей. Для RR точно проверено A_P=A. Суммы RR, RA, AA возвращают полную C.
+
+Сохранены **13 434 неупорядоченные пары по всем 20 конфигурациям**. Это число
+включает повторные пары разных конфигураций и ориентаций, не число независимых
+арифметических наблюдений. Артефакт gzip содержит все пары без усечения.
+
+Проверки:
+
+- Все 20 парных сумм и их три группы совпали с прежней полной C; отдельно
+  совпали физическая и вычитаемая сырая внедиагональные части.
+- Наибольшая ширина остатка обратной сборки — **4.23834e-52** (округлено вверх).
+- Независимый вычислитель собрал энергии групп напрямую через квадраты сумм
+  колонок и их перекрёстный член, затем вычел сохранённые сырые части.
+  **460 интервальных сравнений пройдены**, максимальная ширина их остатков
+  меньше **9.884e-52**, при допуске 1e-30 и 192 битах Arb.
+- 4 целевых автоматических теста пройдены; независимый обзор без оставшихся
+  существенных замечаний. Отдельно проверены 20 масочных возвратов и четыре
+  структурных перекрёстных нуля.
+- Исходные код и данные закреплены по Git blobs и SHA-256; старые файлы не
+  изменялись. Сырые парные матрицы переиспользованы, сырые шары не пересчитывались.
+
+Совпадение означает перекрытие сертифицированных интервалов с узким остатком,
+содержащим ноль, а не обязательное вложение нового интервала внутрь старого.
+Суммы модулей пар сохранены отдельно как диагностика; они не подставляются
+вместо исходного подписанного выражения. Lean-проверка не выполнялась.
+
+## Вывод для следующего математического шага
+
+§6 дал различающий результат: одного закона для затронутых колонок
+недостаточно, а перекрёстный член нельзя считать малым автоматически.
+На U64/P13 он существенно больше каждой из двух остальных подписанных частей.
+При U48/P49, наоборот, основная отрицательная часть находится в RR.
+Универсальное доминирование одной группы эта панель не устанавливает.
+
+Дальнейшая оценка должна контролировать полный подписанный баланс в исходном
+режиме, сохраняя RR и RA вместе с AA. Отдельная малость каждой группы не
+объявляется необходимой. Лемма (3) из ответа Прошки остаётся недоказанной;
+положительного чистого степенного выигрыша не получено.
+
+Всё готово для передачи Прошке. Автоматическая отправка не выполнялась.
+Воспроизведение: README.md. Данные: decomposition.json.gz и summary.json.
+Независимая проверка: verification.json; дополнительные сверки:
+mask_return_checks.json; обзор: REVIEW.md.
+
+
+## File: experiments/cf22_pysr/correlation/README.md
+
+# Full signed pair decomposition of the saved nonunit panel
+
+Scope: owner-requested §6 of `OWNER_REQUEST.txt`. Reuse all 20 saved
+configurations in `../nonunit/main.json` and `../nonunit/heldout.json` at
+`f1993ec6a7933418c38c305a13a3221037b9447a`. No new raw disk summation or fit.
+Only the small physical sums are recomputed. Old files remain unchanged.
+
+## Definition and exact return
+
+All source columns are good squarefree ideals with nonzero Möbius coefficient
+in the same strict W support. Column order is reconstructed from the pinned
+source enumerator and checked against the saved raw matrix dimensions.
+Let c_i=mu(n_i)W(q_i/L)/sqrt(L), with the real fixed profile used in the pilot.
+For each **unordered** pair i<j compute
+
+```
+V_ij = sum_(sixthfree u) rho(q_u/U) * 2 Re(chi_i(u) conjugate(chi_j(u)))
+R_ij = saved pair_2re[i][j]
+a_ij = #{good a: q_a<=P and (a,n_i*n_j)=1}
+D_ij = c_i*c_j * [a_ij V_ij - A(P)*S_rho*R_ij/N_H].
+```
+
+The factor 2 accounts for the two ordered off-diagonal terms. The diagonal
+has already been removed and is not added back. The sum of D_ij is the original
+C: expanding each masked energy gives coefficient a_ij on its physical pair,
+and the original raw mean has coefficient A(P). Every amplifier, including
+prime powers, is counted separately. Inclusion-exclusion independently gives
+`a_ij = sum_(d|rad(n_i*n_j)) mu(d) A(P/q_d)`.
+
+A column is P-rough exactly when it has no prime ideal divisor of norm <=P.
+The partition consists of rough/rough (RR), exactly one rough (RA, both orders
+already included), and neither rough (AA). These disjoint classes exhaust all
+unordered pairs. If a column is rough, all allowed amplifiers are coprime to it.
+Hence a_ij=A on RR pairs. Their mask-induced physical correction
+`c_i*c_j*(a_ij-A)*V_ij` is identically zero, but D_ij need not vanish.
+The correction is measured at the same P,H; it is not a difference against P0,
+which changes the raw radius and mean.
+
+Each group's physical term, subtracted raw term, signed D and mask correction
+are retained. Absolute pair sums are optional diagnostics, not replacements for
+C and not claims about its asymptotic upper bound. Verification requires interval
+overlap with the saved C and with its physical/raw off-diagonal components;
+residual intervals must contain zero and meet the stated precision tolerance.
+This is numerical agreement of certified enclosures, not an assertion that the
+new enclosure must be a subset of an older narrower enclosure.
+
+## Period, primitive conductor and shared zero factor
+
+For these squarefree columns put g=gcd(n_i,n_j). The full zero-extended period
+is lcm(n_i,n_j), norm Q=q_i*q_j/q_g. The primitive quotient character has local
+exponent +1 on n_i/g, -1 on n_j/g (reversed for the other orientation), and zero
+on g. Each remaining local character is nontrivial modulo a good prime ideal,
+so its primitive conductor is (n_i/g)*(n_j/g), norm q_i*q_j/q_g^2.
+The canceled common primes still impose the zero factor g. Thus
+`Q = norm(primitive conductor) * norm(shared zero factor)`.
+
+This conductor description is restricted to the squarefree source used here;
+it is not a formula for arbitrary higher exponents. Distinct columns imply a
+nontrivial quotient conductor. The primitive character must not replace the
+full zero-extended pair in a sum. Each saved pair retains the three ideal
+factorizations, not just their norms.
+
+H/Q is recorded for each pair using the actual H of its configuration. A
+large H/Q diagnostic and a production configuration with small H/Q are distinct
+regimes; decomposing this panel does not create a sample with both nonunit
+amplification and production-scale long periods. CF22 remains unproved.
+
+## Reproduce and inspect
+
+Use the existing Python 3.12 / python-flint 0.9.0 environment. From repo root:
+
+```sh
+PY=/tmp/cf22-pysr-venv/bin/python
+$PY -m unittest discover -s experiments/cf22_pysr/correlation -p 'test_*.py' -v
+$PY experiments/cf22_pysr/correlation/decompose.py --output /tmp/cf22-pair-replay.json.gz
+$PY experiments/cf22_pysr/correlation/verify_groups.py --decomposition /tmp/cf22-pair-replay.json.gz --output /tmp/cf22-pair-verification-replay.json
+```
+
+Output files must not already exist. The historical source/data pin is checked
+against Git blobs; execution HEAD may be later. Input and implementation hashes
+are checked for changes during calculation. No Julia, PySR, clang or native raw
+counter execution is needed. `decomposition.json.gz` is deterministic compressed
+JSON containing every pair, not a sample. `summary.json` provides compact group
+intervals without per-pair expansion; `RESULT.md` provides the Russian report.
+
+`verify_groups.py` independently computes masked group energies: |R|² and |A|²
+minus their respective diagonals, and |R+A|²-|R|²-|A|² for the cross term.
+It does not reuse the producer's physical pair assembly. It then subtracts each
+group's saved raw contribution. `verification.json` retains every comparison.
+`check_mask_return.py` compares the full correction against the old mask result
+and checks the exact unit-phase distinction behind the U48/P7,P13 cross zeros.
+`summarize.py` creates the compact summary. Derived-output scripts refuse to
+replace existing files; preserve the shipped outputs when replaying.
+
+The owner attachment is preserved verbatim, including its original Markdown
+spacing and links. The linked sandbox-only full analysis was not available in
+this local task. This implementation follows §6 of the supplied text and the
+pinned source; it does not claim an independent audit of that full attachment.
+
+
+## File: experiments/cf22_pysr/correlation/OWNER_REQUEST.txt
+
+Ы. **Результат полезный: теперь нельзя прятать смешанные маски в ноль. Но следующий ход — не подбирать ещё один коэффициент взаимодействия. Нужно оценивать все маски одновременно, вместе с исходным средним.**
+
+Я сверил отчёт, описание вычислителя, обзор и сводные данные на коммите **`f1993ec6a7933418c38c305a13a3221037b9447a`**. Панель заново не пересчитывал. Есть два конкретных вывода: **все порядки масочных взаимодействий можно собрать точно**, а **новый эксперимент пока не охватывает тот режим периодов, который труден на исходном расписании CF22**.
+
+## 1. Что именно установил эксперимент
+
+При \(U=48,\ P=49\):
+
+\[
+\mathcal C-\mathcal C_{\rm add}
+=
+0.1500132008811086\ldots>0.
+\]
+
+Поэтому **аддитивная формула с нулевой ошибкой не является верхней границей** в этой конфигурации. Но это не запрещает использовать её как приближение с отдельно доказанным остатком. И не опровергает саму целевую оценку: здесь полная \(\mathcal C\approx-67.7817\), то есть она отрицательна. 
+
+Главный урок — не «смешанные члены всегда мешают». Их знак меняется. **Нельзя назначать знак или малость до совместного подсчёта.** В отчёте это корректно отделено от асимптотического утверждения. 
+
+## 2. Не нужно искать отдельный закон для каждого порядка масок
+
+Вот точное сокращение всей этой иерархии.
+
+Обозначим через
+
+\[
+A(P)=\#\{a:\ a\text{ хороший},\ q_a\le P\}
+\]
+
+**число усилителей**, а через
+
+\[
+A_P(N)=\#\{a:\ a\text{ хороший},\ q_a\le P,\ (a,N)=1\}
+\]
+
+— число усилителей, **взаимно простых** с \(N\). Все степени простых в \(a\) считаются отдельно.
+
+Для настоящих коэффициентов
+
+\[
+c_n=\frac{\mu(n)}{\sqrt L}W(q_n/L)
+\]
+
+введём два средних одной и той же парной фазы:
+
+\[
+T_\rho(n,m)=
+\frac1{S_\rho}
+\sum_{u^{(6)}}\rho(q_u/U)
+\chi_n(u)^{\varepsilon_\chi}
+\overline{\chi_m(u)^{\varepsilon_\chi}},
+\]
+
+\[
+T_H(n,m)=
+\frac1{N_H}
+\sum_{0<q_w\le2H}
+\chi_n(w)^{\varepsilon_\chi}
+\overline{\chi_m(w)^{\varepsilon_\chi}}.
+\]
+
+Здесь **\(S_\rho\)** — масса физических строк, **\(N_H\)** — число всех сырых строк. Это именно два усреднения из вашего вычислителя. Нули характеров сохраняются. 
+
+Тогда для любой бесквадратной маски \(d\):
+
+\[
+\boxed{
+h(d)=
+\mu(d)
+\sum_{\substack{n\ne m\\d\mid\operatorname{rad}(nm)}}
+c_n\overline{c_m}\,T_\rho(n,m).
+}
+\tag{1}
+\]
+
+**Почему:** коэффициент одной пары в обращении Мёбиуса равен
+
+\[
+\sum_{e\mid d}\mu(d/e)\mathbf1_{(nm,e)=1}
+=
+\prod_{\mathfrak p\mid d}
+\left(\mathbf1_{\mathfrak p\nmid nm}-1\right)
+=
+\mu(d)\mathbf1_{d\mid\operatorname{rad}(nm)}.
+\]
+
+Это конечное **включение–исключение**, а не статистическая гипотеза. Общая формула обращения Мёбиуса стандартна; здесь её применение к простым идеалам видно непосредственно из произведения. [DLMF](https://dlmf.nist.gov/27.5?utm_source=chatgpt.com)
+
+Теперь суммируем **все** порядки:
+
+\[
+\sum_{d\mid\operatorname{rad}(N)}
+\mu(d)A(P/q_d)=A_P(N).
+\]
+
+Следовательно, полная исходная величина равна
+
+\[
+\boxed{
+\frac{\mathcal C}{A(P)S_\rho}
+=
+\Re\sum_{n\ne m}
+c_n\overline{c_m}
+\left[
+\frac{A_P(nm)}{A(P)}T_\rho(n,m)-T_H(n,m)
+\right].
+}
+\tag{2}
+\]
+
+**Всё смешанное взаимодействие уже внутри точного счётчика \(A_P(nm)\).** В том числе ваши \(+0.1500132009\). Среднее не потеряно, исходная диагональ уже удалена ровно один раз.
+
+Цена преобразования — **ноль**: только конечные равенства.
+
+Но важно: **(2) не уменьшает сумму. Она убирает необходимость придумывать самостоятельный закон для каждого порядка масок.**
+
+## 3. Какое свойство теперь действительно нужно доказать
+
+**Нужна количественная компенсация настоящих коэффициентов в разности двух усреднений из (2).** Не отрицательность каждого \(h(d)\), не независимость простых и не маленькая сумма модулей отдельных пар.
+
+Конкретная достаточная лемма выглядит так:
+
+\[
+\boxed{
+\begin{aligned}
+\Re\sum_{n\ne m}c_n\overline{c_m}
+\left[
+\frac{A_P(nm)}{A(P)}T_\rho(n,m)-T_H(n,m)
+\right]
+\le
+C_\epsilon
+\left[
+1+
+\left(\frac LU\right)^{5/6}U^{-\delta}
+\right]\mathscr L ,
+\end{aligned}
+}
+\tag{3 — не доказано}
+\]
+
+для некоторого **\(\delta>0\)**, который требуется **получить из арифметики**, а не назначить по таблице. **\(\mathscr L\)** содержит разрешённые малые степенные и высотные потери с контролируемыми константами.
+
+Почему это именно нужное свойство? У нас \(A(P)\ll P\), \(S_\rho\ll U\). Умножение (3) возвращает
+
+\[
+\boxed{
+\mathcal C
+\ll
+\left[
+PU+
+P\,U^{1/6}L^{5/6}U^{-\delta}
+\right]\mathscr L.
+}
+\tag{4}
+\]
+
+**Это уже арифметическое улучшение длинного члена CF22.** При переходе к прежнему \(\mathfrak R_{09}\) отдельно возвращается исходный \(R_{\rm ret}\), без повторного кредита.
+
+Обрати внимание: **мы даже не требуем, чтобы два нормированных средних стремились друг к другу.** Правая сторона (3) допускает определённый рост. Требование «полной независимости» было бы сильнее необходимого.
+
+Однако **(3) сейчас — формулировка недостающего знания, не его доказательство**. По существу главный разрыв остался прежним: совместная арифметическая оценка.
+
+## 4. Есть часть задачи, которую масочные поправки вообще не видят
+
+Назовём колонку **\(P\)-грубой**, если у её индекса нет простого идеального делителя нормы \(\le P\).
+
+Если обе колонки \(n,m\) такие, то каждый допустимый усилитель взаимно прост с ними:
+
+\[
+\boxed{A_P(nm)=A(P).}
+\]
+
+Их вклад в каждое \(h(d)\) с \(1<q_d\le P\) равен нулю — это сразу следует из (1).
+
+Но в полной \(\mathcal C\) эти пары остаются:
+
+\[
+\boxed{
+\mathcal C_{\rm rough}
+=
+A(P)S_\rho
+\Re\sum_{\substack{n\ne m\\n,m\ P\text{-грубые}}}
+c_n\overline{c_m}
+[T_\rho(n,m)-T_H(n,m)].
+}
+\tag{5}
+\]
+
+**Значит, даже идеальное знание всех масочных поправок не поставляет автоматически оценку всей \(\mathcal C\).** Нужно также учитывать нетронутые колонки и их взаимодействия с затронутыми.
+
+Это не требование оценивать (5) отдельно. Перекрёстные члены могут его компенсировать — их тоже нельзя выбрасывать.
+
+## 5. Самая важная поправка к дальнейшим экспериментам: сейчас исследован другой режим периодов
+
+**Полный период** парного характера — идеал \(\operatorname{lcm}(n,m)\), включая нулевые маски. Его норма
+
+\[
+Q_{nm}=\frac{q_nq_m}{q_{(n,m)}}.
+\]
+
+Ваш вычислитель правильно использует именно этот период, а не только сокращённый проводник. 
+
+На поддержке вашего окна \(q_n,q_m<3L/2\), поэтому
+
+\[
+Q_{nm}\le\frac94L^2.
+\]
+
+Я посчитал отношение масштабов:
+
+\[
+\begin{array}{c|c}
+(U,P)&H/L^2\\ \hline
+(48,7)&895.827\ldots\\
+(96,7)&374.047\ldots\\
+(48,49)&105393183.038\ldots
+\end{array}
+\]
+
+Во **всех новых неединичных конфигурациях**
+
+\[
+\boxed{\frac H{Q_{nm}}>166\quad\text{для каждой пары колонок}.}
+\]
+
+То есть сырой шар существенно больше полного периода любой пары.
+
+А на исходном расписании CF22:
+
+\[
+\frac H{L^2}=U^{r(1+10^{-4})-2\ell},
+\]
+
+и на всей заданной полосе
+
+\[
+\boxed{
+-1.129887
+\le r(1+10^{-4})-2\ell
+\le-1.099888.
+}
+\]
+
+**Отношение стремится к нулю, а не к бесконечности.** Для пар с малым общим делителем это означает: период значительно больше области суммирования.
+
+Это принципиальная разница. Полные периоды неглавного характера сокращаются точно; короткий фрагмент периода не обязан сокращаться так же. В полном файле я доказал элементарную границу
+
+\[
+|T_H(n,m)|
+\ll
+\min\left\{
+1,\sqrt{\frac{Q_{nm}}H}+\frac{Q_{nm}}H
+\right\}.
+\]
+
+Она объясняет, почему при фиксированных колонках увеличение сырого шара помогает, но **не даёт нужного выигрыша в противоположном режиме**.
+
+В данных при \(U=48\) это различие заметно:
+
+\[
+G_{H(P_0)}\approx-0.011398,
+\qquad
+G_{H(7)}\approx1.52\cdot10^{-6},
+\qquad
+G_{H(49)}\approx2.97\cdot10^{-10}.
+\]
+
+Это сохранённые значения, не новые вычисления исходных сумм.  
+
+**Таким образом, две панели проверили разные стороны: первая — малые сырые области с единичным усилителем, вторая — неединичные усилители с большими сырыми областями. Их сочетание ещё не проверяет совместный трудный режим.**
+
+## 6. Что выбираем дальше
+
+**Не новый PySR и не добавление третьего порядка к аддитивной формуле. Выбираем полную подписанную парную корреляцию (2).**
+
+Ближайшая полезная диагностика — **повторно собрать уже сохранённую панель в трёх частях**:
+
+\[
+\mathcal C
+=
+\mathcal C_{\rm грубые/грубые}
++
+\mathcal C_{\rm перекрёстные}
++
+\mathcal C_{\rm остальные}.
+\]
+
+Одновременно отметить для каждой пары полный период, примитивный проводник и общий нулевой фактор. **Сырые парные матрицы уже сохранены**, поэтому повторно обходить триллионы элементов не требуется. При необходимости пересчитываются только малые физические суммы. 
+
+Это ответит на конкретный вопрос:
+
+> **Какую часть полной \(\mathcal C\) реально меняют маски, а какая живёт в нетронутых колонках и компенсируется только перекрёстными вкладами?**
+
+Подписанные части суммируются обратно в прежний Arb-интервал \(\mathcal C\). Суммы модулей можно показать рядом как диагностику, **но не подставлять вместо исходного выражения**.
+
+Этот разбор способен отвергнуть неверный выбор механизма. **Он сам не даст асимптотического выигрыша.** Для математического продвижения после него нужна оценка вроде (3) в режиме длинных периодов, на настоящих коэффициентах и исходном расписании.
+
+---
+
+**Итак: нужное свойство — не аддитивность масок, а ограниченное согласование настоящих Мёбиусовых знаков с разностью физического и сырого усреднения.** Все порядки масок в этой задаче уже можно учесть точно.
+
+**CF22 пока не улучшена.** Новое в этом разборе — точное выделение части, невидимой масочному отклику, и доказанная проверка того, какой режим периодов пока отсутствует в эксперименте. Это позволяет не запускать ещё один поиск по данным, которые не различают требуемый механизм.
+
+:chatgpt-content-reference{index="9"}[Полный разбор: свёртка всех масок, достаточная лемма, цена возврата, проверка масштабов и одна следующая задача](sandbox:/mnt/data/PROSHKA_CF22_NONUNIT_FULL_CORRELATION_AND_REGIME_AUDIT_2026-10-20.md)

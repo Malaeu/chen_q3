@@ -1,0 +1,57 @@
+{
+  "source_commit": "2732bb2421eba36877122b1b97431cadc0e791cd",
+  "packet_sha256": "5ceace1cd9a8e0f426e84f125d41325ad77e0c8982b29d0340c466b344851155",
+  "packet_bytes": 75289,
+  "packet_lines": 1454,
+  "delivery": "PREPARED_NOT_SENT",
+  "sources": {
+    "experiments/certified_polynomial/RESULT.md": {
+      "sha256": "70719d4fa9976ab34899278497fd6f0c18f2422cb013a631b2cfadc76f81ffa3",
+      "bytes": 4226
+    },
+    "experiments/certified_polynomial/README.md": {
+      "sha256": "d1576a5bfb99eaf928f07abd5a41a235299eb5bab216e2b87b8c0e52dcdf8f00",
+      "bytes": 4433
+    },
+    "experiments/certified_polynomial/constructor.py": {
+      "sha256": "8c1d2c95f2c70bb932ea7cc50d248d5aa528443af787c14f0489f8f599090d48",
+      "bytes": 9770
+    },
+    "experiments/certified_polynomial/verify_certificate.py": {
+      "sha256": "c742ef6c6ce13bcd7cc3a34281c35f9de42ab21e3d252ad47da9e9ee0e35c794",
+      "bytes": 4967
+    },
+    "experiments/certified_polynomial/result.json": {
+      "sha256": "19358c64546d574a0ab8853a7db81a67fce43dab355d5ffcba308fe94ba1a874",
+      "bytes": 3145
+    },
+    "experiments/certified_polynomial/verification.json": {
+      "sha256": "929b80ff42490203b381d454d349cd3af6fe9cd9a668a5c5bf71c73ef46ec1a4",
+      "bytes": 389
+    },
+    "experiments/cf22_pysr/correlation/RESULT.md": {
+      "sha256": "485392e42c98c04cd222dd27df5fb50bc7f324d2d2b76f8f668e3b08e6a5f173",
+      "bytes": 12925
+    },
+    "experiments/cf22_pysr/correlation/README.md": {
+      "sha256": "08ebce1569f5d0bec21cc03dbe9c8e7956427ba51dc9013f6745d01dfb3699bc",
+      "bytes": 5572
+    },
+    "experiments/cf22_pysr/correlation/OWNER_REQUEST.txt": {
+      "sha256": "4e43cbda6acbc4c4588257386bb5abf6c33f8fdf85fc320319046d93b2d35e5b",
+      "bytes": 15290
+    },
+    "experiments/cf22_pysr/correlation/summary.json": {
+      "sha256": "c534463e782c637bf7aa467800dd571997da95e855d8443aa6f9acc47ca18ef5",
+      "bytes": 197278
+    },
+    "experiments/cf22_pysr/correlation/verification.json": {
+      "sha256": "0f8bbc0efcf9b3d5bb8bbf985c9a52819e5259efec3aac7952b2ab876783eeb6",
+      "bytes": 310155
+    },
+    "experiments/cf22_pysr/correlation/decomposition.json.gz": {
+      "sha256": "74e888523228566fbb5140ed24dd8b9abbd33a07af9eba72519802dd18e9f38d",
+      "bytes": 7802237
+    }
+  }
+}
