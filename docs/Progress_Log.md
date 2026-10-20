@@ -8595,3 +8595,12 @@ Exact a_T(r s²)=mu(r)c_T(r,s), all ordered factorizations share the same sign; 
 Следующий ход: центральная знаковая арифметическая оценка, используя меньший оплаченный return; не объявлять closure из одного этого fee.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_WEIGHTED_LCM_RETURN_CONCLUSION.md; CCM_WEIGHTED_LCM_CHECK.py/json; CCM_WEIGHTED_LCM_PROVENANCE.json.
 Чей вердикт: root PAPER proof; independent ccm_lcm_review без существенных дефектов; 515 точных конечных identities и 7 negative controls только diagnostics; Lean не запускался.
+
+## 2026-10-20 — C5: попытка знаковой оценки составного ядра
+Выбрали: убрать лишь оплачиваемую делительную поправку и атаковать B=sum_composite log(n)H_n на исходном P.
+Результат: двустороннее сравнение C_comp−B оплачено W5 и Q08; условие на знак B эквивалентно семейству C5 с изменённой абсолютной константой показателя.
+Попытка: Abel для всех целых минус простые. Удаление простых сидит при g_R(1)=1; малая LCM-плата его не подавляет. Треугольная оценка O(sqrt(m)log(m)) недостаточна.
+Отвергли: объявлять упрощение коэффициентов новым выигрышем или считать неудачу метода опровержением C5.
+Следующий ход: нужен совместный знаковый контроль исходной prime-only суммы; настройка R и одна W5 его не поставляют.
+Проверка: независимый PAPER разбор без существенных замечаний; Lean не запускался. Локальные ask/preflight INCOMPLETE, не отсутствие поставщика. C5/full-SP/RH OPEN.
+Артефакт: docs/literature/openai_math_2026-10-07/CCM_C5_SIGNED_SUBLEMMA_ATTEMPT.md.
