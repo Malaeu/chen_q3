@@ -122,3 +122,37 @@ No new full exponent; inherited3/8 remains conditional on ZF78. No Q05 or
 pending Pro process. Next own work: actual Mobius correlation before norms,
 local shelf/source theorem budget first. Do not repeat equivalent metric
 identities as improvement. Native goal ACTIVE.
+
+## Q05 own attempt1: log-correlation supplier preflight
+
+CCM_Q05_LOG_CORRELATION_PREFLIGHT.md independently bounded PASS. Pinned
+Tao1509.05422v4 pp5–6 is a partial analogue, not a weighted growing-shift
+polynomial supplier. Even hypothetical actual-weight D^(-kappa) per-shift
+control returns epsilon+(1-kappa)/2; beating3/8 needs kappa>1/4+2epsilon.
+Qualitative o(1) does not imply this even cofinally. Three shelf queries
+INCOMPLETE(freshness), not absence. No new full gain or Q05 send. Next own
+work must address signed aggregate of shifts or bypass this squared return.
+
+Q05 own attempt2: SHORT_WINDOW_RETURN independently PAPER PASS. H<D
+needs exact reconstruction factor(D+H-1)/H. Under hypothetical weighted
+per-shift D^(-kappa), H=D^theta returns epsilon+max(1-theta,1-kappa)/2.
+Thus this squared-window budget needs both theta,kappa->1 for eta->0.
+No actual lower bound/no-go; direct signed aggregate still OPEN. Two own
+preflights since Q04; no Q05 send. Next attempt must change the mechanism,
+not shorten windows or rebrand qualitative cancellation.
+
+## Q05 dispatched at concrete supplier impasse
+
+Two independent preflights gave no new full power. Q05 sent ONCE in same
+living chat; live responding/Stop and exact attachment observed. No resend
+or interruption. PROSHKA_PENDING.md holds request hash and next observation
+around21:55UTC. Await natural answer, audit full return; native goal ACTIVE.
+
+## 2026-10-21 resumed: Q05 accepted within scope
+
+Original received after unlock, full read,187 exact controls reproduced,
+independent q05_audit bounded PAPER PASS. No new full power: Davenport plus
+actual variation costs1/2+2epsilon. Generic log-to-power inference refuted,
+actual CCM still OPEN. No pending Pro calculation or Q06. Continue source
+work before sup-times-variation after prior-fork review. User resumed work;
+native goal tool last reports blocked and has no resume operation.

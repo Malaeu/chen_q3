@@ -1,3 +1,50 @@
+# Q05 received and independently audited — no pending calculation
+
+2026-10-21 owner resumed after Mac unlock. Full64150-byte original received,
+read and archived. See CCM_JOINT_Q05_CONCLUSION.md. Root reproduced187 exact
+controls with matching hashes; independent q05_audit bounded PAPER PASS.
+Actual B variation and full joint Fourier transfer valid; exponent1/2+2epsilon
+is insufficient. Generic log-to-power implication rejected only for its relaxed
+class, not actual Mobius. No Q06 sent. Continue before sup-times-variation;
+check earlier one-sided source forks before another question. Native goal tool
+still reported blocked at resume; user explicitly authorized continued work.
+No current retrieval blocker remains. Deliver Q05 request+answer+conclusion.
+
+--- Previous retrieval checkpoint ---
+
+# Q05 COMPLETE — original download awaiting Mac unlock
+
+2026-10-20 21:55UTC scheduled SAME-chat observation: terminal Response complete,
+Start Voice, Q05 verdict attachment, no Stop. Natural completion around21:52UTC.
+Rendered final reports no new power;187 exact local checks are author claims,
+not independently reproduced. Original file NOT yet received/read/audited.
+Clicked final Download file once. Native Chrome tool reports Mac locked and
+cannot unlock; no matching file in Downloads. Owner asked to unlock manually.
+Do not resend question, regenerate, or mark proof accepted. After unlock inspect
+existing save dialog before another download; save full original and audit.
+This is a temporary local retrieval blocker, not a mathematical no-go.
+Native goal ACTIVE. Same tab retained. No Q06 sent.
+
+--- Q05 dispatch ---
+
+# Q05 SENT ONCE — live reasoning verified
+
+2026-10-20 around21:35UTC, same AI Mathematik Morgenbrief chat, tab1618256734.
+PROSHKA_CCM_JOINT_CORRELATION_Q05_2026-10-20.txt:175378bytes,2741LF,
+SHA256 b893da00379ad6e45c14836686a9c7a3103590f639ac7c9b582a2090e3b95024.
+All six source bodies included completely and verified. Pro selected; exact
+message+attachment readback, empty composer, responding/Stop observed.
+Send action timed out but succeeded; DO NOT RESEND OR INTERRUPT.
+Screenshot /tmp/ccm-q05-sent-20261020.png. Next observation around21:55UTC.
+Two independently checked own preflights; escalation at genuine supplier
+impasse per owner's earlier-impasse rule, not an invented third attempt.
+Question: actual joint signed correlation aggregate before h moduli, or
+justified backtrack before squared certificate, with full exponent return.
+Receive natural full original, read, bounded independent audit and checks,
+then one scoped request+answer+conclusion commit/push. Goal ACTIVE.
+
+--- Prior completed cycle ---
+
 # Q04 received, audited — no pending Pro calculation
 
 2026-10-20 around21:16UTC terminal Response complete observed in the SAME
@@ -10,6 +57,14 @@ No Q05 sent; no calculation remains to await. Native CCM goal ACTIVE.
 Deliver request+original+conclusion+checks in one scoped commit. Next own
 work returns to actual Mobius correlation before independent norms, using
 local shelves and full-budget preflight. Do not repeat a metric identity loop.
+
+Q05 own attempt1 completed: LOG_CORRELATION_PREFLIGHT independently PASS.
+Pinned Tao logarithmic correlation result does not supply growing-shift
+actual-weight power; exact deficit recorded. No Q05 sent. Goal ACTIVE.
+
+Q05 own attempt2 also independently PASS: SHORT_WINDOW_RETURN retains
+(D+H-1)/H; short shifts alone do not remove half-power in this budget.
+Two own no-full-gain preflights since Q04; no new Pro request.
 
 --- Q04 observation history ---
 

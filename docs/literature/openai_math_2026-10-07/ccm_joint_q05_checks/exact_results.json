@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "counts": {
+    "ordered_Fejer_Fourier_window_identity": 17,
+    "all_shift_anticommutator_return": 17,
+    "operator_Parseval_diagonal": 17,
+    "exact_window_reconstruction_inequality": 17,
+    "matrix_Abel_with_actual_mu": 34,
+    "discarding_mixed_products_detected": 1,
+    "intermediate_projection_deletion_detected": 1,
+    "endpoint_exact_Euler_derivative_return": 24,
+    "wrong_Euler_sign_detected": 1,
+    "C1_cutoff_and_planted_endpoint_failures": 9,
+    "variation_constant_arithmetic": 12,
+    "coherent_block_Fejer_formula": 33,
+    "complete_power_and_cofinal_deficit": 4
+  },
+  "total_checks": 187,
+  "scope": "Finite exact transfer algebra and deliberately distinct control models; not a universal CCM bound.",
+  "actual_ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "independent_review": "NOT_RUN",
+  "registration_sha256": "87b97b43fae931b6fdefb30d1fef9ba8e3e26250a6c2f11e0e383176f33d803f",
+  "script_sha256": "fb5629b05981289090dbac451153177b7d34b0a141364b5f4c598f786c514fa8"
+}

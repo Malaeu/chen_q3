@@ -1,0 +1,14 @@
+{
+  "request": "PROSHKA_CCM_JOINT_CORRELATION_Q05_2026-10-20.txt",
+  "request_sha256": "b893da00379ad6e45c14836686a9c7a3103590f639ac7c9b582a2090e3b95024",
+  "mechanism": "Full noncommutative Fejer Fourier aggregate with genuine Mobius exponential sums and a proved variation return for the literal full-k matrix weight",
+  "registration_boundary": "After paper derivation and source check, before the new executable algebraic tests. The elementary model and candidate constants were derived before registration and are not claimed as advance discoveries.",
+  "predictions": [
+    "The Laurent-coefficient Fourier integral equals the complete window Gram, with ordered intermediate-projector products retained.",
+    "The exact Euler sign and both vanishing upper endpoint values are necessary for the stated C1 matrix-weight variation transfer.",
+    "Davenport's uniform logarithmic bound is applicable only after paying the true weight variation; its full returned budget does not beat the inherited conditional three-eighths power.",
+    "A slowly decaying positive control satisfies all fixed logarithmic Fourier bounds and a smooth weight envelope, yet its joint Fejer energy has power one; this refutes only an inference from those bounds, not actual Mobius cancellation.",
+    "Deleting mixed products, a reconstruction factor, or a causal endpoint must be detected by the exact controls."
+  ],
+  "not_claimed": ["New full arithmetic power", "New cofinal estimate", "Actual CCM spectral certificate", "Arb", "Lean", "Independent review", "RH"]
+}

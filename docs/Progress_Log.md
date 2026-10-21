@@ -8639,3 +8639,16 @@ Gallagher: сохраняет полные локальные корреляци
 ## 2026-10-20 — CCM Q04 bounded audit; signed full power remains OPEN
 
 Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-byte original archived unchanged (SHA2562c5af92f75c73e798a51bc5e8a13fdb0217addeef6eb3d066fa26a8f6a371eeb). Two independent bounded PAPER passes accept critical sampling polylog, exact original projected pair asymptotics, full causal Mobius metric, constrained inverse norm<=3+6Omega and sigma8 scoped sign obstruction. Root reproduced620exact+15binary64 controls. Joint signed derivative still unpaid; full3/8 remains conditional on ZF78. No Q05, Lean, Arb, full prime spectrum or RH claim. Native goal ACTIVE; next source work returns before independent norms, not another metric identity loop.
+
+## 2026-10-21 — CCM Q05 joint Fourier transfer audited, full power open
+
+Развилка: actual signed CCM versus scalar Fourier-majorant transfer.
+Выбрали: bounded acceptance of full Q05 and return before sup-times-variation.
+Почему: exact B derivative pays endpoints, but full exponent1/2+2epsilon fails.
+Что отвергли: all-fixed-log savings imply polynomial gain; only generic inference killed.
+Инсайты: joint h aggregation alone does not preserve arithmetic weight coupling through Abel majorization.
+Блокеры: actual source one-sided cancellation remains unpaid; native goal resume must be user/system controlled.
+Иглы Зингера: both endpoint zeros and intermediate P retained,187 exact controls reproduced.
+Следующий ход: inspect earlier direct one-sided source fork before new question.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_JOINT_Q05_CONCLUSION.md.
+Чей вердикт: unchanged Pro original plus independent q05_audit bounded PAPER PASS and root reproduction. RH OPEN; no Q06.
