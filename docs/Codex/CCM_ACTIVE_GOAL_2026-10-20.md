@@ -161,3 +161,24 @@ Post-Q05 own bounded supplier preflight: reciprocal prefix import is already
 tested in Q02§6.2. Explicit El Marraki logarithmic input does not improve
 full power or pay joint C+E_slow. See CCM_Q06_RECIPROCAL_SUPPLIER_PREFLIGHT.md.
 No Q06 sent, no pending reviewer, no source route killed.
+
+## Q06 live, 2026-10-21
+
+Own uniform endpoint-shell upper bound checked independently: E1–E3 in
+CCM_Q06_ONE_SIDED_EDGE_BUDGET.md. h0=m^(-1/12-epsilon) pays the thin shell
+with o(1) upper budget; bulk and full exponent unchanged. Prior continuous,
+reciprocal-prefix and cofinal-criterion duplicates rejected. Q06 sent once
+10:29UTC to same chat: sparse moving-P signed drift with full old-atom and
+new-mode costs. Actual responding/Stop observed. Next check10:49UTC; no
+interruption or duplicate. Commit request+response+conclusion after audit.
+
+## Q06 received, fixed-cell rollback selected
+
+Full1105-line original read,211 exact and3 diagnostics reproduced identically.
+See CCM_DRIFT_Q06_CONCLUSION.md. Independent bounded PAPER audit PASS.
+No full power; norm-based drift returns1/2+epsilon. Joint continuous drift
+cost24/L; actual raw old-shell obstruction has scope only separate payment.
+Return to fixed-cell full centered S before extra variation/mode obligations.
+Next local shelf preflight must identify an actual joint upper comparison,
+not repackage PNT variation, positive per-prime balances or Davenport logs.
+No Q07 sent, no pending Pro response. Native goal ACTIVE; RH OPEN.

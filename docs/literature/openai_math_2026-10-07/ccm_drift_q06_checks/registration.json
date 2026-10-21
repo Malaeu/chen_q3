@@ -1,0 +1,22 @@
+{
+  "request": "PROSHKA_CCM_SPARSE_SIGNED_DRIFT_Q06_2026-10-21.txt",
+  "sha256": "2fa16377373107e9984eb9060b514d9ab7b2f4629691dd05e0f01c66f5061cb7",
+  "bytes": 116360,
+  "lf": 1851,
+  "registration_boundary": "After full source reading and paper derivation, before executable checks. No successful new exponent predicted.",
+  "predictions": [
+    "Kato compression drift retains both projector-motion cross terms; the exact transport has no prime-event value or first-derivative jump after the original constraints.",
+    "At fixed L the old constrained band embeds isometrically into the next constrained band, leaving exactly two new constrained directions eventually; pinching credit is nonnegative for positive spectral moments.",
+    "For the source even vector supported on modes 0,+/-1,+/-2, the moving-projector covariant derivative of an atom at logarithmic age h in [1/4,1/2] has leading positive coefficient proportional to L^-9.",
+    "The source prime shell covariant drift therefore has positive upper-direction size at least c sqrt(m)/log(m)^9; this refutes only separate subpower payment of this old shell, not the full signed drift or the CCM target.",
+    "Full norm-based smooth-drift and mode-addition payment retains power 1/2+epsilon and does not improve inherited conditional3/8."
+  ],
+  "not_claimed": [
+    "Full arithmetic gain",
+    "New cofinal floor",
+    "Actual CCM spectral run",
+    "RH",
+    "Lean/Arb",
+    "Independent audit"
+  ]
+}

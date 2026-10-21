@@ -8665,3 +8665,16 @@ Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-by
 Следующий ход: actual joint signed mechanism before separate norms; no duplicate Q06.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q06_RECIPROCAL_SUPPLIER_PREFLIGHT.md.
 Чей вердикт: bounded researcher source mapping plus root source/budget readback; no new arithmetic gain.
+
+## 2026-10-21 — CCM Q06 full drift audit and fixed-cell rollback
+
+Развилка: moving-domain drift versus direct fixed-cell full centered CCM.
+Выбрали: archive full Q06 and return before drift/mode-variation requirements.
+Почему: complete norm drift costs1/2+epsilon, no full arithmetic gain.
+Что отвергли: independent subpower payment of every old raw shell; not full signed cancellation.
+Инсайты: P motion<=2/L and joint continuous drift<=24/L are paid; actual old-shell covariant drift has positive sqrt(m)/L⁹ direction.
+Блокеры: source-specific joint discrepancy/top-spectrum bound remains OPEN; semantic shelf freshness INCOMPLETE, not absence.
+Иглы Зингера: full1105-line original;211 exact plus3 diagnostics reproduced JSON-identically; all original mixed/mode terms retained.
+Следующий ход: fixed-cell source comparison before norms; local prior-mechanism map first; no Q07 sent.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_DRIFT_Q06_CONCLUSION.md and ccm_drift_q06_checks/.
+Чей вердикт: Pro original plus root reproduction; independent q06_verdict_audit bounded PAPER PASS. No Lean/Arb/full-spectrum/RH claim; native goal ACTIVE.

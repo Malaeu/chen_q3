@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "counts": {
+    "source_projector": 15,
+    "moving_projector_tangent": 15,
+    "literal_even_three_constraints": 15,
+    "normal_derivative_not_frozen": 15,
+    "full_covariant_drift": 15,
+    "Kato_generator_orientation": 15,
+    "nested_source_bands_rank_two_addition": 15,
+    "fixed_age_overlap_polynomial": 4,
+    "strictly_positive_age_derivative_control": 4,
+    "source_norm_and_exponential_contacts": 3,
+    "rank_one_pinching_positive_cost": 9,
+    "all_prime_power_mobius_log_atoms": 80,
+    "complete_edge_and_drift_power_budget": 4,
+    "frozen_projector_failure_detected": 1,
+    "one_sided_edge_square_completion": 1
+  },
+  "total_checks": 211,
+  "scope": "Exact finite algebra and independent analytic-budget controls; not a full CCM spectral calculation.",
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "independent_review": "NOT_RUN",
+  "script_sha256": "0c665735939951106b7d51fc93cd8b6d5ca178ec74c3364acf344e51ca391ff3",
+  "registration_sha256": "c0de293d2ff6b074083cac629486721ad48ae84ccc0598dbd426e7606065c2ec"
+}
