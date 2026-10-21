@@ -8652,3 +8652,16 @@ Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-by
 Следующий ход: inspect earlier direct one-sided source fork before new question.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_JOINT_Q05_CONCLUSION.md.
 Чей вердикт: unchanged Pro original plus independent q05_audit bounded PAPER PASS and root reproduction. RH OPEN; no Q06.
+
+## 2026-10-21 — reciprocal supplier preflight rejects a repeated prefix route
+
+Развилка: direct joint C/E versus reciprocal prefix estimate.
+Выбрали: stop the latter after exact prior-source check and explicit supplier budget.
+Почему: Q02 already proves equivalence with Mobius prefixes; logarithmic improvement leaves half-power.
+Что отвергли: describing this prefix route as untried or adequate.
+Инсайты: exact lowrange equivalence is the decisive reusable filter.
+Блокеры: joint one-sided C+E_slow remains OPEN.
+Иглы Зингера: original half-open endpoints, h range and1/h fee retained.
+Следующий ход: actual joint signed mechanism before separate norms; no duplicate Q06.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q06_RECIPROCAL_SUPPLIER_PREFLIGHT.md.
+Чей вердикт: bounded researcher source mapping plus root source/budget readback; no new arithmetic gain.

@@ -156,3 +156,8 @@ actual variation costs1/2+2epsilon. Generic log-to-power inference refuted,
 actual CCM still OPEN. No pending Pro calculation or Q06. Continue source
 work before sup-times-variation after prior-fork review. User resumed work;
 native goal tool last reports blocked and has no resume operation.
+
+Post-Q05 own bounded supplier preflight: reciprocal prefix import is already
+tested in Q02§6.2. Explicit El Marraki logarithmic input does not improve
+full power or pay joint C+E_slow. See CCM_Q06_RECIPROCAL_SUPPLIER_PREFLIGHT.md.
+No Q06 sent, no pending reviewer, no source route killed.
