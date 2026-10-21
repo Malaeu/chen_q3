@@ -234,3 +234,13 @@ only. Full exponent unchanged. Independent bounded PAPER audit PASS.
 No pending Pro calculation or Q09. Rollback before scalar coefficient
 majorization to original fixed-cell joint pairing with E*E if used.
 Native goal ACTIVE; no full source/RH claim.
+
+## Post-Q08 own attempt1: autocorrelation preflight
+
+CCM_Q09_AUTOCORRELATION_PREFLIGHT.md independent bounded PAPER PASS.
+Exact full multiplier preserves all mixed terms and powers; positive Fourier
+density alone supplies no cheap upper bound. Uncentered nonnegative Sobolev
+envelope costs at least(4+o(1))sqrt(m); exact centering fixes that obstruction
+but PNT fallback returns1/2+epsilon-o(1). One substantive no-gain attempt.
+Q09 not sent. Next: joint frequency comparison preserving exact P; do not
+repeat scalar absolute majorants. Native goal ACTIVE.
