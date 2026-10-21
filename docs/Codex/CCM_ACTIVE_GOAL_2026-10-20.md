@@ -244,3 +244,25 @@ envelope costs at least(4+o(1))sqrt(m); exact centering fixes that obstruction
 but PNT fallback returns1/2+epsilon-o(1). One substantive no-gain attempt.
 Q09 not sent. Next: joint frequency comparison preserving exact P; do not
 repeat scalar absolute majorants. Native goal ACTIVE.
+
+## Post-Q08 own attempt2 and Q09 live
+
+Exact attainable density and full tail return independently PAPER PASS;
+CCM_Q09_ATTAINABLE_DENSITY.md. Joint interior bound remains unpaid. Bounded
+shelf old Carleson theorem has wrong heat operator; old prime-fluctuation
+split retains target as premise. Search INCOMPLETE, not global absence.
+At concrete arithmetic impasse Q09 sent ONCE13:19UTC in same living chat.
+Exact attachment/message/responding/Stop verified. Next13:39UTC; do not
+interrupt/resend. Full natural original/audit before scoped cycle commit.
+Native goal ACTIVE; full exponent unchanged.
+
+## Q09 received, root reproduction complete
+
+Natural completion observed14:19UTC. Full81006-byte1196-line original read;
+334exact and3kernel+3transform mpmath55 diagnostics JSON-identical. All14
+request-slice hashes match. CCM_DENSITY_Q09_CONCLUSION.md records root audit.
+Independent q09_verdict_audit bounded PAPER PASS. Exact coupled grids and Green balance
+preserved; globally capped optimized budget has half power. This is only
+certificate-family obstruction, not actual CCM lower bound. Far peaks may
+lie beyond a paid small-mass tail. No full gain or Q10. Rollback before
+losing u=Uc; new quantitative source mechanism remains open. Goal ACTIVE.

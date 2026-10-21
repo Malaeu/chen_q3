@@ -8712,3 +8712,28 @@ Full Q08 original obtained after natural completion, SHA256 b1b1f25c6fb9715da110
 ## 2026-10-21 — post-Q08 autocorrelation preflight
 
 One own no-gain attempt, independently bounded PAPER PASS. Exact full prime multiplier and centered return retained. Uncentered A+Bxi² envelope with B>=0 costs >=(4+o(1))sqrt(m); centered PNT return costs1/2+epsilon-o(1). No eta gain, no source route killed, no Q09 sent. See CCM_Q09_AUTOCORRELATION_PREFLIGHT.md. Native goal ACTIVE.
+
+## 2026-10-21 — Q09: two coupled grids and the optimized-cap obstruction
+
+Развилка: точная достижимая плотность против ослабления до отдельных потолков.
+Выбрали: один bounded аудит естественно завершённого Q09; original81006bytes/1196LF
+сохранён byte-exact, все14 source-slice hashes совпали. Почему: отрицательная
+нижняя цена сертификата могла быть ошибочно перенесена на настоящий спектр.
+Что отвергли: глобальные two-grid caps даже с оптимальным общим Green-моментом;
+их liminf budget/sqrt(m)>=2, limsup<=4. Не отвергли исходную CCM, конечное
+частотное окно с оплаченным хвостом или возможность source cancellation.
+Инсайты: обе сетки и общий момент точны; первая потеря — разрыв u=Uc.
+Настоящие дальние prime-symbol пики существуют, но достижимая плотность
+не обязана нести на них массу. Все prime powers/mixed terms/P сохранены.
+Блокеры: полного eta(epsilon)->0 нет; прежний3/8 условен на ZF78.
+Иглы Зингера: upper atom Q(L)=0, norm/Green balance, exact u=Uc, tail K^-3;
+не переносить линейную квадратуру на b² или b_+ без нового alias-return.
+Следующий ход: откат до scalar caps; отдельный количественный механизм
+перед новым запросом, не автоматический Q10 с тем же неоплаченным долгом.
+Адреса: CCM_DENSITY_Q09_CONCLUSION.md, полный Q09 original, request и
+ccm_constrained_density_q09_checks/ в docs/literature/openai_math_2026-10-07/.
+Проверки:334exact+3kernel+3transform mpmath55, оба JSON идентичны оригиналу;
+без Lean/Arb/full spectrum. Root PAPER аудит и независимый bounded audit.
+Чей вердикт: Pro source claim отдельно от root reproduction и независимого
+q09_verdict_audit; окончательный результат review записан в conclusion.
+Goal ACTIVE; RH OPEN; PX_RH_CLAIM NOT_MADE.

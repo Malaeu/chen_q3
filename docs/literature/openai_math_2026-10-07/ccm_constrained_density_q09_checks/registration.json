@@ -1,0 +1,28 @@
+{
+  "request_file": "PROSHKA_CCM_CONSTRAINED_DENSITY_Q09_2026-10-21.txt",
+  "bytes": 146816,
+  "lf": 2463,
+  "sha256": "09b6f847a760e45fde0f744f28b94cb4cc73dff4cb4884d668baaa215e456b01",
+  "source_head": "17fb1176390e11484e7ff14ae33e7c436d47fb94",
+  "boundary": "Complete packet and bootstrap read; preliminary paper derivation completed; before new executable algebra/diagnostic checks. Not a preregistration of mathematical discovery.",
+  "chosen_mechanism": "Exact interlaced Parseval quadrature on the attainable density, balanced by the shared Green-resolvent moment; actual-arithmetic test of the best global two-cap certificate.",
+  "predictions": [
+    "Quadrature on original plus half-shifted Fourier grids is exact; original grid alone fails at the actual endpoint atom.",
+    "The two sets of coefficients are related by one unitary half-grid transform; norm and resolvent moments agree on the original constrained class.",
+    "Exact Mobius-log recombination and all proper prime powers are retained in every sampled source value.",
+    "Unique factorization permits arbitrarily high half-grid peaks for the actual centered finite prime symbol; no effective frequency cutoff is inferred.",
+    "Even after optimizing the single exact Green-moment balance, the chosen global constant-cap certificate has half-power cost, not a new CCM exponent.",
+    "The same two-grid system gives a bounded negative answer for the exact continuous source; this distinguishes arithmetic sampling from a normalization failure.",
+    "Tail truncation can avoid the global-cap obstruction, but the present proof does not control the remaining joint finite sum by a new power."
+  ],
+  "not_claimed": [
+    "A lower bound for original S",
+    "Failure of all signed embeddings",
+    "RH",
+    "New full CCM power",
+    "Lean",
+    "Arb",
+    "Independent review",
+    "Numerical verification of equidistribution or PNT"
+  ]
+}

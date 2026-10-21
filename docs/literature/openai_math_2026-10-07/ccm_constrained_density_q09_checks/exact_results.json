@@ -1,0 +1,33 @@
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS",
+  "total_checks": 334,
+  "counts": {
+    "actual_mu_log_coefficients": 128,
+    "proper_powers_not_removed": 1,
+    "endpoint_contact": 9,
+    "real_exponential_contact": 9,
+    "imaginary_exponential_contact": 9,
+    "exact_partial_fraction_division": 69,
+    "full_attainable_density_factor": 9,
+    "rational_density_partial_fraction_return": 27,
+    "half_grid_endpoint_cancellation": 18,
+    "half_grid_tail_Cauchy_price": 18,
+    "deleting_half_grid_mixed_terms_detected": 1,
+    "original_upper_atom_zero_return": 3,
+    "original_grid_only_alias_failure_detected": 3,
+    "zero_shift_normalization": 3,
+    "balanced_dual_certificate_all_parameter_signs": 15,
+    "balance_parameter_cancels_exactly": 3,
+    "continuous_Green_credit_not_lost": 3,
+    "complete_discrete_tail_exponent": 3,
+    "source_return_exponents": 3
+  },
+  "scope": "Finite rational coefficient/density/tail/dual-certificate controls. They do not prove PNT, equidistribution, asymptotic source bounds, or a CCM spectrum.",
+  "large_prime_sums": 0,
+  "full_ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "independent_review": "NOT_RUN",
+  "registration_sha256": "a1e40718f450a1601dcad628c10fc802349a9f6013904403860b9f9794a80d53",
+  "script_sha256": "03ac6574d66bcd0aa97f2bd21445950df7c003c967886ac817885610502528fb"
+}

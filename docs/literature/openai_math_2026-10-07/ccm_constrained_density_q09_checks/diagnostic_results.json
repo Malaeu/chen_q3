@@ -1,0 +1,46 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_INTERVAL",
+  "decimal_digits": 55,
+  "source_cell": "m=2^192,epsilon=1/64,M=R=8,N=m,L=192log(2)",
+  "half_grid_cutoff_K": 2048,
+  "kernel_cases": 3,
+  "half_coefficient_integral_cases": 3,
+  "unitarity_truncation_defect": "4.402487392707368656745754126785002374583182584971894042e-18",
+  "green_moment_truncation_defect": "2.825654730411066844150262269625197833031027741686690883e-22",
+  "green_tail_envelope": "0.000000000003658626906735443478009122618346012867561981118902852311",
+  "coefficient_integral_errors": [
+    "2.30998327114205580169187657676318211810710160502929724e-57",
+    "2.409551515587834069006181601623664105956545639728835914e-57",
+    "3.186183822264904554057760795535423611182209110385237572e-57"
+  ],
+  "kernel_rows": [
+    {
+      "s_over_L": "0.15",
+      "source_kernel_form": "(-0.006368422361509924256929382146975820473217889258215638865 + 0.0j)",
+      "truncated_two_grid_form": "-0.006368422361509924250176310369951499009912956454900451802",
+      "difference": "6.753071777024321463304932803315187062608855969108304315e-21",
+      "proved_absolute_tail_envelope_not_interval": "0.00000003422220790226741859408122051885465505469042399382971387"
+    },
+    {
+      "s_over_L": "0.37",
+      "source_kernel_form": "(0.00919029089693092058667114620889610520548013568856767388 + 0.0j)",
+      "truncated_two_grid_form": "0.009190290896930920583163292242320626755214173256122504267",
+      "difference": "3.507853966575478450265962432445169613512227321756786185e-21",
+      "proved_absolute_tail_envelope_not_interval": "0.00000003422220790226741859408122051885465505469042399382971387"
+    },
+    {
+      "s_over_L": "1.0",
+      "source_kernel_form": "(1.539839804568602154299750562215428872405948384525381949e-56 + 0.0j)",
+      "truncated_two_grid_form": "4.402487392707368656745754126785002374572986796740646347e-18",
+      "difference": "4.402487392707368656745754126785002374557588398694960326e-18",
+      "proved_absolute_tail_envelope_not_interval": "0.00000003422220790226741859408122051885465505469042399382971387"
+    }
+  ],
+  "scope": "Original finite-band kernel and transform normalization. All bounds are PAPER bounds evaluated with noninterval mpmath; no spectral or asymptotic certificate.",
+  "large_prime_sums": 0,
+  "full_ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "independent_review": "NOT_RUN",
+  "script_sha256": "36a72cd0bc0028db9366c4b3ff14a746c33fb40ca7a94e7f116c7ce15c27a5b3"
+}
