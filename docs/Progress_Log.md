@@ -8755,3 +8755,26 @@ quadratic penalty v*xi², сохраняя все mixed terms исходного
 Чей вердикт: root derivation, independent q10_second_moment_review; найденная
 ошибка коэффициента3/2 исправлена на1, показатель не менялся. Без запуска
 оптимизатора, Lean, Arb или спектра. Q10 не отправлен; Goal ACTIVE, RH OPEN.
+
+## 2026-10-21 — post-Q09: price the averaged prime-discrepancy bridge
+
+Развилка: cumulative L2 error или short-interval variance как поставщик
+полной исходной signed CCM. Выбрали: сначала точный возврат и показатели,
+с проверкой полки/одного первоисточника, до любого тяжёлого расчёта.
+Почему: усреднение само не обеспечивает uniform bound по исходным векторам.
+Инсайты: cumulative J_E(X)<=X^(2+o(1)) в нужном покванторном смысле уже
+RH-equivalent через Mellin continuation; это не готовый более лёгкий вход.
+Короткоинтервальное усреднение w_h возвращается точно с полной ценой
+h(1+Omega)/sqrt(X), включая все вышедшие за m атомы и исходные края.
+Даже hypothetical J_h<=hX log²X даёт в этом first-order бюджете только
+1/6+epsilon/3. Это ограничение бюджета метода, не lower bound настоящей CCM.
+Что отвергли: бесплатный перенос усреднённой оценки и выдачу conditional
+variance за unconditional supplier. Высшие порядки/совместный знак не убиты.
+Блокеры: нет доказанного входа и возврата с eta(epsilon)->0.
+Иглы Зингера: E(x+h)-E(x) не E(x); original cutoff/mixed terms сохранять;
+variance constants и все масштабы не заменять избранными успешными m.
+Следующий ход: учитывать этот второй post-Q09 no-gain bridge при выборе
+нового количественного механизма; Q10 ещё не отправлен.
+Адрес: CCM_Q10_MEAN_SQUARE_RETURN.md в docs/literature/openai_math_2026-10-07/.
+Чей вердикт: root derivation и bounded q10_average_supplier source/bridge check,
+точный исход независимой проверки записан в документе. Goal ACTIVE, RH OPEN.

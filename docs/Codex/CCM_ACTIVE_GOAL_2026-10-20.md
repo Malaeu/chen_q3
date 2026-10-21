@@ -275,3 +275,13 @@ Q09's distant-recurrence argument, but available PNT input returns only
 D_m(1+Omega)+4 after optimizing v, power1/2+epsilon-o(1). Independent check
 caught and corrected a factor in the intermediate scalar budget; no changed
 exponent or new gain. Stronger family not killed. Q10 not sent. Goal ACTIVE.
+
+## Post-Q09 own attempt2: mean-square and short-interval return
+
+CCM_Q10_MEAN_SQUARE_RETURN.md independently bounded PASS: exact cumulative
+L2 bridge needs an RH-equivalent family; verified Brent/Platt/Trudgian
+upper is conditional on RH. First-order local smoothing retains all source
+edges and costs h(1+Omega)/sqrt(X). Even hypothetical J_h<=hX log²X leaves
+power1/6+epsilon/3 in this budget. No actual lower bound, no full gain.
+Two substantive post-Q09 attempts; Q10 not sent. Check existing endpoint
+work before considering a higher-order return. Goal ACTIVE, RH OPEN.
