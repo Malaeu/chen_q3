@@ -10,6 +10,11 @@ Next own discriminator: original-weight slow-Mellin pairing and exact P constrai
 first check existing rank-two/receiver analyses. No automatic Q11.
 Goal ACTIVE; same live chat retained; no interruption/resend.
 
+Post-Q10 own attempt1 completed: projected Mellin discriminator independently
+PAPER PASS; explicit smooth source survives original P with positive power.
+Not an actual source lower bound. See CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md.
+Next: source-specific arithmetic; one no-gain attempt, no Q11 send.
+
 --- Historical Q10 sending and observation ---
 
 # Q10 SENT ONCE — responding verified

@@ -8790,3 +8790,15 @@ actual степень1/2 не улучшена; conditional3/8ZF78 без изм
 pairing с исходным P после проверки существующих тождеств. Q11 не отправлен.
 Адрес: docs/literature/openai_math_2026-10-07/CCM_HIGH_ORDER_Q10_CONCLUSION.md.
 Goal ACTIVE; CF22 parked; RH OPEN.
+
+
+## 2026-10-21 — CCM post-Q10: исходный P не убирает медленные Mellin-моды
+
+Первая собственная попытка: прежний Q03 вектор даёт для контрольной
+E_z=x^z-1 полную положительную форму c_a*m^a/L^9-O_a(1), a=z-1/2.
+Оригинальные три ограничения и mixed terms сохранены. Root и независимый
+q11_mellin_probe_review bounded PAPER PASS;56exact+2noninterval checks PASS.
+Это не нижняя оценка настоящей Lambda/CCM и не новый показатель.
+Отсечено автоматическое сокращение только от P; следующий аргумент должен
+использовать фактическую арифметику. Q11 не отправлен; goal ACTIVE.
+Адрес: docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md.

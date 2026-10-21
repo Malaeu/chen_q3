@@ -305,3 +305,14 @@ conditional Q03 3/8 unchanged. See CCM_HIGH_ORDER_Q10_CONCLUSION.md.
 Rollback before source-weight Cauchy. Next own discriminator is exact
 slow-Mellin pairing on original P, checking existing rank-two/receiver work
 first. No Q11 sent. Goal ACTIVE, RH OPEN.
+
+## Post-Q10 own attempt1: projected slow-Mellin discriminator
+
+CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md independently bounded PAPER PASS.
+Existing Q03 probe, not invented anew: fixed-a growing kernel has positive
+normalized form >=c_a m^a/L^9-2/a despite original three P constraints.
+CONTROL source only, not actual Lambda/mu/zero contribution.56 exact controls
+and2 noninterval matrix normalization checks PASS. No actual power gain.
+Projection-only shortcut excluded in this explicit family; next candidate
+must use actual source arithmetic before Cauchy. One post-Q10 no-gain attempt.
+No Q11 send; same Pro chat retained; goal ACTIVE.
