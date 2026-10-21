@@ -1,0 +1,27 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_INTERVAL",
+  "cases": 3,
+  "decimal_digits": 60,
+  "rows": [
+    {
+      "tau": "0.0",
+      "filter_identity_error": "4.54119625026914810249586552377228971972413066503297056880176e-68",
+      "convolution_laplace_error": "1.10157808154387542594564681614004543116112650759763546507178e-67",
+      "normalized_continuous_cross_coefficient": "-2.27603926404356398431492537822135266460756003700672908718809e-65"
+    },
+    {
+      "tau": "0.1",
+      "filter_identity_error": "4.74778387287989937373662113478097857711048291680997248313989e-66",
+      "convolution_laplace_error": "1.10254832207755742500725442620393994090882916384456111682333e-67",
+      "normalized_continuous_cross_coefficient": "0.00000117959109205871576521366508166420556826148723559334034091009"
+    },
+    {
+      "tau": "0.3",
+      "filter_identity_error": "0.0",
+      "convolution_laplace_error": "1.10427753352387729822202615169652079829016342125159528628251e-67",
+      "normalized_continuous_cross_coefficient": "0.0000114364294976416035092645358245355669589156209656675048280582"
+    }
+  ],
+  "scope": "Explicit compact profile transforms only; no prime sums, CCM spectra, or asymptotic verification.",
+  "script_sha256": "67eb957c6b4a2e97ecfc1b57f955f9c82e72c14a3688f24ca5775e1131ba322d"
+}

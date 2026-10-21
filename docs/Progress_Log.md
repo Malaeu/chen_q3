@@ -8678,3 +8678,16 @@ Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-by
 Следующий ход: fixed-cell source comparison before norms; local prior-mechanism map first; no Q07 sent.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_DRIFT_Q06_CONCLUSION.md and ccm_drift_q06_checks/.
 Чей вердикт: Pro original plus root reproduction; independent q06_verdict_audit bounded PAPER PASS. No Lean/Arb/full-spectrum/RH claim; native goal ACTIVE.
+
+## 2026-10-21 — CCM Q07: phase-uniform return obstruction
+
+- Развилка: fixed-cell source versus generic multiplicative phase moments.
+- Выбрали: audit full Q07 and retain only its scoped auxiliary-family obstruction.
+- Почему: true source exponential contacts kill the leading term at identity.
+- Что отвергли: free phase-mean-to-source transfer; no original CCM kill.
+- Инсайты: phase-invariant moments lose the distinguished real exponential contacts.
+- Блокеры: full identity-phase signed estimate and eta(epsilon)->0 still OPEN.
+- Иглы Зингера: fixed nontrivial twist yields actual full positive sqrt(m) on same P.
+- Следующий ход: source annihilation before averaging, checked against primitive-cone debt; no automatic Q08.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_PHASE_Q07_CONCLUSION.md; ccm_phase_q07_checks/.
+- Чей вердикт: root replay242exact+3diagnostics identical; q07_phase_audit bounded PAPER PASS.

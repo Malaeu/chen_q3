@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "total_checks": 242,
+  "counts": {
+    "actual_twisted_mobius_log_atoms": 128,
+    "proper_power_8_remains_log2_not_log8": 1,
+    "ordered_laurent_covariance": 6,
+    "whole_phase_mean_is_zero": 6,
+    "all_phase_evaluation_reconstruction": 12,
+    "full_fourth_moment_with_same_prime_resonances": 6,
+    "noncommuting_model_present": 1,
+    "independent_prime_power_phase_error_detected": 1,
+    "mean_to_point_free_return_failure": 3,
+    "chebyshev_binomial_prime_power_cover": 64,
+    "compact_filter_endpoint_derivatives": 4,
+    "g_endpoint_regularities": 2,
+    "filter_norm_and_moment_factorization": 1,
+    "both_original_exponential_moments": 2,
+    "nonzero_shifted_moment_lower_constant": 1,
+    "twist_is_not_unmodified_source_control": 1,
+    "returned_exponent_and_phase_choice_scope": 3
+  },
+  "compact_filter_L2_norm_squared": "3041/628320",
+  "shifted_asymptotic_Rayleigh_constant_lower_bound": "6478241/11546296875000",
+  "scope": "Exact finite arithmetic and noncommutative Laurent algebra; the rational matrices are NOT actual CCM matrices. The compact-filter constants are exact. No asymptotic theorem is inferred from these tests.",
+  "full_ccm_spectral_runs": 0,
+  "actual_large_prime_sums": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "independent_review": "NOT_RUN",
+  "registration_sha256": "1e9e0f31f05f6704d13bac57f390ae340c8381556edb2f54d220a5ee7a9a94fe",
+  "script_sha256": "ce88650d12e4b82a9bf455be752e1ea93b6b3028be8e8c0647628132ebc7801f"
+}

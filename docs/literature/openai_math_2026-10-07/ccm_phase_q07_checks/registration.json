@@ -1,0 +1,16 @@
+{
+  "request": "PROSHKA_CCM_FIXED_CELL_BACKTRACK_Q07_2026-10-21.txt",
+  "request_sha256": "25d27618a4c22748dc60d2683ffb2d45454f6c70288274c4f329c69b97976b84",
+  "request_bytes": 208469,
+  "request_lf": 2960,
+  "boundary": "After complete packet reading and preliminary paper derivation; before new executable algebra and transform checks. This is not a preregistration of discovering the paper argument.",
+  "mechanism": "Finite multiplicative-character lift of the complete prime matrix, exact joint phase moments, and full point-evaluation return at the identity phase.",
+  "predictions": [
+    "Complete multiplicativity preserves the actual mu*log coefficients, including proper prime powers and cutoff atoms.",
+    "The constant Laurent coefficient of the entire matrix square is exactly sum a_n^2(C_n C_n^*+C_n^*C_n), with every intermediate projection retained.",
+    "Point evaluation paid by finite Cauchy costs the number of nonzero Laurent coefficients. No source exponent gain is expected from the phase mean alone.",
+    "An explicit compact polynomial filter has zero original exponential moments and a nonzero shifted Laplace moment. Its endpoint-pair construction detects a positive square-root contribution for a FIXED NONTRIVIAL auxiliary twist, not for the original source.",
+    "Discarded proper powers, averaging-before-positive-moment, and identifying a phase average with the identity-phase value must be detected."
+  ],
+  "not_claimed": ["RH", "New full CCM exponent", "Source failure at the identity phase", "Lean or Arb proof", "Independent audit", "Large prime or full CCM numerical calculation"]
+}
