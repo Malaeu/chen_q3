@@ -8691,3 +8691,16 @@ Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-by
 - Следующий ход: source annihilation before averaging, checked against primitive-cone debt; no automatic Q08.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_PHASE_Q07_CONCLUSION.md; ccm_phase_q07_checks/.
 - Чей вердикт: root replay242exact+3diagnostics identical; q07_phase_audit bounded PAPER PASS.
+
+## 2026-10-21 — CCM same-band annihilator preflight
+
+- Развилка: exact real exponential contacts before phase averaging.
+- Выбрали: invert B=D²-1/4 on the actual source band and retain the full discrepancy.
+- Почему: distinguishes source contacts without introducing auxiliary phases.
+- Что отвергли: pole annihilation alone implies arithmetic power saving.
+- Инсайты: contacts become a triple endpoint zero in the SAME Fourier band; no free sign follows.
+- Блокеры: full filtered prime-discrepancy pairing remains OPEN.
+- Иглы Зингера: B²exp(zs) retains every nonroot exponent; zero delta return paid exactly.
+- Следующий ход: third-difference basis reconstruction fee, before a local-block claim.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q08_ANNIHILATOR_PREFLIGHT.md.
+- Чей вердикт: q08_annihilator_audit bounded PAPER PASS; root integration; no Lean or new exponent.

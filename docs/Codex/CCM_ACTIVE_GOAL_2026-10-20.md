@@ -203,3 +203,14 @@ CCM. No full gain. No pending Pro process, no Q08. Next own rollback tests
 original real-exponential annihilation before averaging against the existing
 primitive-cone obstruction. Do not rename the unpaid identity-phase bound.
 Native goal ACTIVE; RH OPEN.
+
+## Post-Q07 own attempt1: annihilator preflight
+
+CCM_Q08_ANNIHILATOR_PREFLIGHT.md bounded independent PAPER PASS. Exact
+same-band inverse f=(D²-1/4)h makes three contacts h=hprime=hsecond=0
+at the periodic endpoint; h=z^-M(z-1)^3G. Full distributional source
+return retains all prime powers and mixed terms, with negative continuous
+credit -||hprime||²-||h||²/4. No new sign for filtered actual discrepancy,
+no full exponent gain. Forward filter already on shelf, no novelty claim.
+Next bounded test: third-difference basis reconstruction cost before claiming
+an entrywise/local-block supplier. Q08 not sent; native goal ACTIVE.
