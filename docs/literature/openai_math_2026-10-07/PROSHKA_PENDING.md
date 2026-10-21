@@ -1,3 +1,43 @@
+# Q08 received — no pending Pro calculation
+
+Natural completion observed2026-10-21 12:59UTC. Original downloaded and
+read in full:77920bytes1163LF,SHA256
+b1b1f25c6fb9715da11080648c19a111f908cdbcdc971991856e2d7f04530139.
+3733exact+3mpmath65 results JSON-identical. Root PAPER audit complete;
+independent bounded audit PASS. See CCM_LOCAL_BLOCK_Q08_CONCLUSION.md.
+No full exponent gain. No Q09 sent; do not rename unpaid correction.
+Native goal ACTIVE; next independent source-pairing mechanism after audit.
+
+--- Historical send observations ---
+
+# Q08 SENT ONCE — responding verified
+
+2026-10-21 around12:19UTC, same living AI Mathematik Morgenbrief chat,
+tab1618256734. Pro selected. Exact file tile, sent message, empty composer,
+ChatGPT is responding and Stop verified after click timeout. DO NOT RESEND.
+Request PROSHKA_CCM_LOCAL_BLOCK_Q08_2026-10-21.txt,211630bytes,2919LF,
+final newline,SHA256000040328ef6b386c52250c826d2c30ade9fa290e5f67a4799db8212f1eddb47.
+All12 source bodies checked complete. Native picker used; no permissions
+changed. Screenshot /tmp/ccm-q08-sent-20261021.png.
+
+Two own preflights independently checked: exact same-band annihilator and
+full third-difference reconstruction cost O(M^7). No full arithmetic gain.
+Q08 asks an actual coefficient mechanism for joint local blocks, with metric
+and all mixed/source returns retained, or a justified earlier rollback.
+Concrete arithmetic impasse, no invented third own attempt. One scoped
+request+answer+conclusion commit AFTER complete natural answer/audit.
+Next observation12:39UTC; do not interrupt, no Q09. Native goal ACTIVE.
+
+2026-10-21 12:39UTC live check: Working19m41s and Stop, no final response.
+Author interim route is all-small-prime inclusion-exclusion; not accepted
+result. Root waiting discriminator CCM_Q08_SMALL_PRIME_DISCRIMINATOR.md
+retains all powers and mixed small/rough factors; independent bounded PAPER
+PASS including cheap smooth-sector bound from Q01. This is an audit
+discriminator, not a second send or full exponent gain.
+Next observation12:59UTC, same handle. No interruption or duplicate.
+
+--- Completed cycle observations ---
+
 # Q07 received and audited — no pending Pro calculation
 
 2026-10-21 natural completion observed12:03UTC. Full86778-byte,1185-line

@@ -1,0 +1,38 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_INTERVAL",
+  "cases": 3,
+  "decimal_digits": 65,
+  "source_cell": "m=2^512,epsilon=1/64,M=R=256,L=512log(2)",
+  "scope": "Only individual mixed kernels and original contacts. No prime spectra or asymptotic validation.",
+  "rows": [
+    {
+      "left_start_mode": -2,
+      "right_start_mode": 1,
+      "s_over_L": "0.21",
+      "mixed_entry": "-0.030980518874822940555070618730121805061141942169107517471571111786",
+      "overlap_error": "2.2255236904134494629202710787091017137532311623860769434659702329e-67",
+      "normalized_constraint_residual": "2.9675967368793833994415247333807767180105537315060926770823734871e-66"
+    },
+    {
+      "left_start_mode": -3,
+      "right_start_mode": -1,
+      "s_over_L": "0.5",
+      "mixed_entry": "-0.00047047042314597761833149854246421069327934312193663456710740821334",
+      "overlap_error": "5.4073270915490149421705471726161498492082596820139412371385601009e-67",
+      "normalized_constraint_residual": "2.3750507805101627096250068378407045409981473084135654502866765477e-66"
+    },
+    {
+      "left_start_mode": 0,
+      "right_start_mode": 2,
+      "s_over_L": "0.91",
+      "mixed_entry": "-0.00000061897118269772812784267204998674221700246887472829638782022080414",
+      "overlap_error": "7.987108947525160335852000701063062218921991127761221019560229262e-68",
+      "normalized_constraint_residual": "2.3750507805101627096250068378407045409981473084135654502866765477e-66"
+    }
+  ],
+  "actual_large_prime_sums": 0,
+  "full_ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "script_sha256": "a5f343631c0a87d3706044a3223b80ff1377f59f9ddd3ff939f3f17fb878c37a"
+}

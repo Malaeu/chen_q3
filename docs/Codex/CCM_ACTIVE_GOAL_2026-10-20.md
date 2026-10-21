@@ -214,3 +214,23 @@ credit -||hprime||²-||h||²/4. No new sign for filtered actual discrepancy,
 no full exponent gain. Forward filter already on shelf, no novelty claim.
 Next bounded test: third-difference basis reconstruction cost before claiming
 an entrywise/local-block supplier. Q08 not sent; native goal ACTIVE.
+
+## Post-Q07 own attempt2 and Q08 live
+
+CCM_Q08_LOCAL_BASIS_RETURN.md independent bounded PAPER PASS. Reconstruction
+cost16 binom(n+2,3)^2 for row bound or O(M^7) for entrywise bound; full mixed
+terms and metric retained. Existing norm fallback1/2+11epsilon, no gain.
+At concrete arithmetic impasse Q08 sent ONCE12:19UTC in same chat, Pro;
+attachment/responding/Stop verified. See PROSHKA_PENDING.md. Next12:39UTC;
+no resend/interruption. Full answer/audit before question-cycle commit.
+
+## Q08 received, root reproduction complete
+
+Natural completion12:59UTC. Full77920-byte1163-line original read; exact
+3733 and3 mpmath65 diagnostics reproduced JSON-identically. See
+CCM_LOCAL_BLOCK_Q08_CONCLUSION.md. Auxiliary smooth-divisor sector
+power5epsilon/4; actual full correction indefinite but inverse-log signal
+only. Full exponent unchanged. Independent bounded PAPER audit PASS.
+No pending Pro calculation or Q09. Rollback before scalar coefficient
+majorization to original fixed-cell joint pairing with E*E if used.
+Native goal ACTIVE; no full source/RH claim.

@@ -1,0 +1,29 @@
+{
+  "request": "PROSHKA_CCM_LOCAL_BLOCK_Q08_2026-10-21.txt",
+  "bytes": 211630,
+  "lf": 2919,
+  "sha256": "000040328ef6b386c52250c826d2c30ade9fa290e5f67a4799db8212f1eddb47",
+  "boundary": "After complete reading and preliminary paper derivation; before new executable controls. Not a preregistration of the discovery of the argument.",
+  "mechanism": "Simultaneous small-prime Mobius inclusion-exclusion on full four-mode mixed entries, exact rough-composite correction and same-source operator-order test.",
+  "predictions": [
+    "The small-prime divisor sieve gives Lambda_y >= Lambda coefficientwise but not Loewner order after the original P.",
+    "Each individual full-k divisor matrix is already affordable; the whole squarefree smooth-divisor sector has price b_m product_(p<=y)(1+p^(-1/2)).",
+    "At y=(epsilon log m /8)^2, this auxiliary sector has power 5epsilon/4 up to logarithms; it is not a full-source estimate.",
+    "The exact residual has its first nonzero atom at n0=2q, q the first prime larger than y, with weight log 2; translated constrained profiles give both signs.",
+    "Keeping the full residual but estimating it by elementary absolute mass returns power 1/2, not an improvement over conditional 3/8."
+  ],
+  "not_claimed": [
+    "New full CCM exponent",
+    "Counterexample to RH or the original CCM goal",
+    "Arb or Lean certification",
+    "Independent review",
+    "Large prime computations"
+  ],
+  "checks_expected": [
+    "Formal-prime-log arithmetic for the sieve and rough convolution",
+    "All sixteen terms of local four-mode matrices and nonidentity metric",
+    "Explicit cutoff and first-composite controls",
+    "Exact contacts of compact polynomial profiles",
+    "Numerical overlap checks labelled noninterval"
+  ]
+}

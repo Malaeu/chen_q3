@@ -8704,3 +8704,7 @@ Q04 completed naturally in the same AI Mathematik Morgenbrief chat; full84942-by
 - Следующий ход: third-difference basis reconstruction fee, before a local-block claim.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q08_ANNIHILATOR_PREFLIGHT.md.
 - Чей вердикт: q08_annihilator_audit bounded PAPER PASS; root integration; no Lean or new exponent.
+
+## 2026-10-21 — CCM Q08 local-block sieve audited
+
+Full Q08 original obtained after natural completion, SHA256 b1b1f25c6fb9715da11080648c19a111f908cdbcdc971991856e2d7f04530139. 3733 exact and3 mpmath65 diagnostics reproduced JSON-identically; independent q08_verdict_audit bounded PAPER PASS. Entire smooth-divisor auxiliary sector has power5epsilon/4 with E*E metric. Actual correction has both signs after complete original-P return; only free coefficient-order to Loewner-order transfer excluded. Full exponent unchanged, conditional3/8 remains conditional. Rollback to original fixed-cell signed pairing before scalar domination. No Q09, no Lean/Arb/full spectra. Goal ACTIVE, RH OPEN. See CCM_LOCAL_BLOCK_Q08_CONCLUSION.md.
