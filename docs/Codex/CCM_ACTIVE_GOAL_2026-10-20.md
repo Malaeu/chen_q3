@@ -285,3 +285,23 @@ edges and costs h(1+Omega)/sqrt(X). Even hypothetical J_h<=hX log²X leaves
 power1/6+epsilon/3 in this budget. No actual lower bound, no full gain.
 Two substantive post-Q09 attempts; Q10 not sent. Check existing endpoint
 work before considering a higher-order return. Goal ACTIVE, RH OPEN.
+
+## Post-Q09 attempt3 and live Q10
+
+Signed Richardson interior repair independently bounded PASS, source cubic
+endpoint prevents uncorrected high-order extension. Geometric-distance shell
+repair is a candidate only. Strong shortinterval variance is not supplied.
+Q10 sent ONCE14:52UTC, same live chat/tab1618256734, responding/Stop verified.
+Exact manifest/bytes in PROSHKA_PENDING.md. Next observation15:12UTC;
+natural completion -> full original -> audit -> scoped cycle delivery.
+No interruption/resend/Q11. Goal ACTIVE, no full arithmetic gain.
+
+## Q10 completed and audited
+
+Full original archived,783 exact controls reproduced JSON-identically,9 source
+hashes match. Independent q10_verdict_audit bounded PAPER PASS. Complete
+geometric return paid, but joint SV not supplied; unconditional power1/2,
+conditional Q03 3/8 unchanged. See CCM_HIGH_ORDER_Q10_CONCLUSION.md.
+Rollback before source-weight Cauchy. Next own discriminator is exact
+slow-Mellin pairing on original P, checking existing rank-two/receiver work
+first. No Q11 sent. Goal ACTIVE, RH OPEN.

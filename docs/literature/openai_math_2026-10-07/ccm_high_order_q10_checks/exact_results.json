@@ -1,0 +1,101 @@
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS",
+  "total_checks": 783,
+  "counts": {
+    "Richardson_constant_reproduced": 12,
+    "first_uncancelled_moment": 12,
+    "signed_kernel_L2_coefficient_positive": 12,
+    "slow_source_derivative_is_retained_not_annihilated": 78,
+    "cancelled_weight_moments": 66,
+    "cutoff_normalization": 8,
+    "all_required_cutoff_endpoint_jets": 72,
+    "planted_global_fourth_order_extension_failure": 1,
+    "cubic_crossing_error_scales_as_h_cubed": 4,
+    "signed_kernel_is_not_positive_average": 1,
+    "signed_kernel_shift_covariance_has_negative_lobe": 1,
+    "shell_onset_inequalities": 3,
+    "all_widths_and_support_margins": 69,
+    "no_future_or_lower_boundary_atoms": 69,
+    "length_over_radius_smoothing_budget": 69,
+    "at_least_one_scale_is_coarse": 69,
+    "number_of_active_shells_is_logarithmic": 3,
+    "full_partition_low_interior_edge": 90,
+    "actual_Mobius_log_full_recombination": 96,
+    "full_actual_joint_interval_covariance": 8,
+    "planted_deleted_arithmetic_cross_terms_detected": 1,
+    "planted_deleted_centering_detected": 1,
+    "unsafe_smoothing_activates_real_future_prime": 1,
+    "future_atom_cancels_in_complete_return": 1,
+    "continuous_cubic_edge_exponent": 3,
+    "discrete_fifth_order_edge_exponent": 3,
+    "discrete_edge_integer_endpoint_exponent": 3,
+    "optimized_full_conditional_power": 12,
+    "all_selected_shell_scales_are_admissible": 12,
+    "fixed_order_after_epsilon_allows_logarithmic_slack": 3
+  },
+  "cubic_crossing_constant_k4": "-71/768",
+  "geometric_control_panels": [
+    {
+      "k": 2,
+      "active_pieces": 25
+    },
+    {
+      "k": 3,
+      "active_pieces": 23
+    },
+    {
+      "k": 4,
+      "active_pieces": 21
+    }
+  ],
+  "covariance_controls": [
+    {
+      "k": 1,
+      "h": "1",
+      "atoms_with_nonzero_Lambda": 10
+    },
+    {
+      "k": 1,
+      "h": "3/2",
+      "atoms_with_nonzero_Lambda": 11
+    },
+    {
+      "k": 2,
+      "h": "1",
+      "atoms_with_nonzero_Lambda": 11
+    },
+    {
+      "k": 2,
+      "h": "3/2",
+      "atoms_with_nonzero_Lambda": 11
+    },
+    {
+      "k": 3,
+      "h": "1",
+      "atoms_with_nonzero_Lambda": 11
+    },
+    {
+      "k": 3,
+      "h": "3/2",
+      "atoms_with_nonzero_Lambda": 12
+    },
+    {
+      "k": 4,
+      "h": "1",
+      "atoms_with_nonzero_Lambda": 12
+    },
+    {
+      "k": 4,
+      "h": "3/2",
+      "atoms_with_nonzero_Lambda": 12
+    }
+  ],
+  "scope": "Exact finite identities, cutoffs, supports, signed covariance and power arithmetic. Not an arithmetic variance theorem or a CCM spectral certificate.",
+  "large_prime_sum_runs": 0,
+  "full_ccm_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "independent_review": "NOT_RUN",
+  "registration_sha256": "cec6c20f04c48023f8d77b38246fd0121a2abbb5dbef996e0e0f45cf8ec9d494",
+  "script_sha256": "44650a99ef6b1582c41c7eb442135936e83f0a3b0513716bb6ff81709d002f05"
+}

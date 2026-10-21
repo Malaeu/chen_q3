@@ -8778,3 +8778,15 @@ variance constants и все масштабы не заменять избран
 Адрес: CCM_Q10_MEAN_SQUARE_RETURN.md в docs/literature/openai_math_2026-10-07/.
 Чей вердикт: root derivation и bounded q10_average_supplier source/bridge check,
 точный исход независимой проверки записан в документе. Goal ACTIVE, RH OPEN.
+
+
+## 2026-10-21 — CCM Q10: полный геометрический возврат проверен
+
+Оригинал83808байт/1309LF сохранён;9 source hashes;783exact PASS JSON-identical.
+Root и независимый q10_verdict_audit bounded PAPER PASS. Полный higher-order
+возврат оплачивает отсечки, нижний блок и оба верхних края. SV OPEN;
+actual степень1/2 не улучшена; conditional3/8ZF78 без изменений.
+Откат перед source-weight Cauchy; next own discriminator: slow-Mellin
+pairing с исходным P после проверки существующих тождеств. Q11 не отправлен.
+Адрес: docs/literature/openai_math_2026-10-07/CCM_HIGH_ORDER_Q10_CONCLUSION.md.
+Goal ACTIVE; CF22 parked; RH OPEN.

@@ -1,0 +1,25 @@
+{
+  "request_file": "PROSHKA_CCM_HIGH_ORDER_SIGNED_RETURN_Q10_2026-10-21.txt",
+  "bytes": 130591,
+  "lf": 1977,
+  "sha256": "c21a6aa6a157024bf8d74a8926f71700ca48bcbec4b717610fc737a5e575cc71",
+  "source_head": "3da452b9eb71dedf524e39add302cf4b1010ef85",
+  "stage": "Complete reading and preliminary paper derivation; before new executable mathematical controls; not a prediction of an unperformed discovery",
+  "mechanism": "Source-fixed high-order signed Richardson return, Whitney/geometric distance shells and separate actual arithmetic audit",
+  "registered_checks": [
+    "Binomial moments reproduce constants and annihilate degrees 1 through k-1, not the leading derivative of a slow source",
+    "The uncut cubic zero extension does not have a uniform fourth-order return; a planted crossing-boundary omission must be detected",
+    "Smooth product partition has exact total mass with low and edge pieces; all Richardson supports stay strictly below m for prescribed h",
+    "The full optimized conditional power remains (1+2*k*epsilon)/(4*k+2), with both continuous and discrete edge fees paid",
+    "The exact joint interval covariance retains both arithmetic products and mean subtraction; actual diagonal cost is X log X/h but not the full variance",
+    "No unconditional new CCM power is predicted"
+  ],
+  "not_claimed": [
+    "RH",
+    "A new unconditional arithmetic cancellation",
+    "Lean",
+    "Arb",
+    "Independent reviewer",
+    "Full CCM spectral computations"
+  ]
+}
