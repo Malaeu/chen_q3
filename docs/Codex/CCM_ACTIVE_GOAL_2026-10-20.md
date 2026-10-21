@@ -266,3 +266,12 @@ preserved; globally capped optimized budget has half power. This is only
 certificate-family obstruction, not actual CCM lower bound. Far peaks may
 lie beyond a paid small-mass tail. No full gain or Q10. Rollback before
 losing u=Uc; new quantitative source mechanism remains open. Goal ACTIVE.
+
+## Post-Q09 own attempt1: second-frequency moment
+
+CCM_Q10_SECOND_MOMENT_PREFLIGHT.md: exact H1/Parseval moment cancellation
+permits opposite quadratic penalties on the two coupled grids. This avoids
+Q09's distant-recurrence argument, but available PNT input returns only
+D_m(1+Omega)+4 after optimizing v, power1/2+epsilon-o(1). Independent check
+caught and corrected a factor in the intermediate scalar budget; no changed
+exponent or new gain. Stronger family not killed. Q10 not sent. Goal ACTIVE.

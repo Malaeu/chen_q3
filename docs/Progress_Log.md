@@ -8737,3 +8737,21 @@ ccm_constrained_density_q09_checks/ в docs/literature/openai_math_2026-10-07/.
 Чей вердикт: Pro source claim отдельно от root reproduction и независимого
 q09_verdict_audit; окончательный результат review записан в conclusion.
 Goal ACTIVE; RH OPEN; PX_RH_CLAIM NOT_MADE.
+
+## 2026-10-21 — post-Q09: second-frequency moment does not improve the available input
+
+Развилка: Q09 потерял полную связь сеток; можно ли вернуть существенную часть
+через точный второй момент? Выбрали: H1/Parseval equality и противоположный
+quadratic penalty v*xi², сохраняя все mixed terms исходного u=Uc.
+Почему: старый дальний peak больше не оплачивается свободной массой.
+Что отвергли: запуск оптимизации только с прежним PNT-конвертом — после
+оптимизации возвращается D_m(1+Omega)+4, power1/2+epsilon-o(1).
+Инсайты: препятствие Q09 не переносится на v>0; усиленное семейство НЕ убито.
+Блокеры: нового source-specific арифметического входа нет, eta→0 OPEN.
+Иглы Зингера: H1 достаточно; не требовать H2 и нули endpoint derivatives;
+два моментных равенства всё ещё не равны полной достижимости u=Uc.
+Следующий ход: другой количественный источник сокращения до запроса Прошке.
+Адрес: docs/literature/openai_math_2026-10-07/CCM_Q10_SECOND_MOMENT_PREFLIGHT.md.
+Чей вердикт: root derivation, independent q10_second_moment_review; найденная
+ошибка коэффициента3/2 исправлена на1, показатель не менялся. Без запуска
+оптимизатора, Lean, Arb или спектра. Q10 не отправлен; Goal ACTIVE, RH OPEN.
