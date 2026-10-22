@@ -1,0 +1,28 @@
+{
+  "request_file": "PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_2026-10-22.txt",
+  "bytes": 155127,
+  "lf": 2513,
+  "sha256": "195b50976e9683815d0e98e6f3719efdd91218ef77c951a6f790057a6b34fcda",
+  "stage": "All nine source bodies read and hashes verified; preliminary paper design, before new executable mathematical controls. No prediction of a full source improvement.",
+  "chosen_mechanism": "Hilbert-valued divisibility-energy theorem applied to an exact isometric logarithmic translation-orbit lift; retain full physical zero extension and quantify all edge-correlation defects.",
+  "predictions": [
+    "The Hilbert-valued lift preserves the physical L2 norm exactly and multiplies edge d by a seed autocorrelation kappa_d, with no sampling Jacobian.",
+    "All missing original coefficients are returned by one explicit signed residual, including every proper prime power and the upper endpoint.",
+    "Divisibility and Cauchy give sum_d Lambda(d)|kappa_d|^2 <= log(auxiliary N) for normalized finite seeds; edge matching cannot be treated as free.",
+    "Discarding the positive graph energy and paying the complete coefficient defect by contraction norms cannot beat half-power; this does not bound actual CCM from below.",
+    "A more general t-dependent partition-of-unity lift has an exact functional-norm identity but requires a separately computed overlap/diagonal budget; no success of this repair is assumed."
+  ],
+  "negative_controls": [
+    "Deleting the factor kappa_d must fail a finite source coefficient identity.",
+    "Dropping a proper prime power or an edge across auxiliary support must fail the energy expansion.",
+    "Replacing a Gram product after original Fourier projection by an uncompressed shift product is not used.",
+    "A cheap seed supported at n=1 must have zero graph contribution and leave the full source as residual."
+  ],
+  "not_claimed": [
+    "New full CCM exponent",
+    "RH",
+    "Lean run",
+    "Arb certification",
+    "Independent audit"
+  ]
+}
