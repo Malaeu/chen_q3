@@ -24,3 +24,31 @@ With kind regards,
 
 Eugen Malamutmann
 University of Duisburg-Essen
+
+---
+
+## REPLY RECEIVED 2026-09-06 09:37 UTC (found 2026-10-22; the message sat UNREAD in Gmail for six weeks, Progress_Log said "unanswered")
+
+From: Masatoshi Suzuki <msuzuki@math.titech.ac.jp>, Gmail message id 1a07614303ba0446, thread 1a0757fbffc2d59f.
+
+> Thank you very much for your careful reading of my paper. You are right that a correction is needed.
+> Equation (3.2) should define P_t(z) for all real t, rather than only for nonnegative t. To be consistent with this, the definition on p. 4, S_t(z):=S_{-t}(z), should be replaced by P_t(z):=\overline{P_{-t}(\bar z)}. In addition, I noticed that the i in (1.5) should be -i.
+> Thank you again for pointing out these errors.
+
+**Consequences to check (not yet checked):**
+1. Suzuki's stated extension is `P_t(z) := conj(P_{-t}(conj z))`, NOT the letter's proposal `P_{-t}(z) = P_t(-z)`. The two coincide only where P has the relevant reflection symmetry; every place in paper_weil / Route B that imported "the signed extension" must be re-read against Suzuki's form.
+2. New error not in the letter: sign of `i` in (1.5) is `-i`. SECONDEXPR-B re-derived c_A from (3.3) under the printed (1.5); re-derivation needed.
+3. Status line of this file and Progress_Log entry 2026-09-06 ("sent/unanswered") are superseded by this reply.
+
+## CHECK 2026-10-22 — the two extensions coincide (consequence 1 above is CLOSED)
+
+With (3.2) P_t(z) = Σ m_γ (e^{-iγt}-1)/(γ(z-γ)) for t ≥ 0:
+- letter's P_{-τ}(z) := P_τ(-z) equals "(3.2) at t = -τ" iff Γ is closed under γ ↦ -γ;
+- Suzuki's P_{-τ}(z) := conj(P_τ(conj z)) equals "(3.2) at t = -τ" iff Γ is closed under γ ↦ conj γ;
+- Γ has both symmetries with equal multiplicities (paper, §3.1), so all three agree unconditionally, no RH used.
+Numerics (scripts/suzuki_extension_check_2026-10-22.py, fake off-line zeros): both symmetries → |A-B| = |A-C| = 0;
+only γ→-γ → |B-C| = 3.9e-3; only γ→conj → |A-C| = 1.4e-2. The SECONDEXPR-B "signed unconditional expansion" is exactly C.
+
+Consequence 2 (i → -i in (1.5)): a global factor -1 on 𝔖_t. Every object used downstream is quadratic in 𝔖 or in P̂
+(⟨𝔖_t,𝔖_u⟩, (4.4)–(4.6), (1.9), Lemma 2, c_A, Volterra Gram), hence unchanged. Only a *linear* use of 𝔖_t or P̂_φ would flip sign;
+paper_weil sections grep: see count below at time of writing. Status: no recomputation needed unless a linear use is found.
