@@ -1,0 +1,16 @@
+{
+  "original_bytes": 109957,
+  "original_lf": 1693,
+  "original_sha256": "9489bd181f7b644d0274b9330aca8a685e680a6930d7115d0eb72b97a8f224b1",
+  "source_manifest_current_matches": 11,
+  "exact_checks": 449,
+  "exact_json_matches": true,
+  "diagnostic_cases": 6,
+  "diagnostic_json_matches": true,
+  "diagnostic_is_interval": false,
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "exact_command": "uv run --offline --with sympy==1.14.0 --no-project python check_q12.py",
+  "diagnostic_command": ".venv/bin/python diagnostic_q12.py",
+  "initial_exact_import_failure": "repository .venv and system Python lack sympy; no tests executed in those failed invocations"
+}

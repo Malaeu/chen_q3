@@ -1,0 +1,50 @@
+{
+  "status": "PASS_DIAGNOSTIC_NOT_INTERVAL",
+  "dps": 40,
+  "m": 64,
+  "M": 2,
+  "schedule_scope": "local finite-band identity test, not the asymptotic production M=floor(m^epsilon)",
+  "results": [
+    {
+      "r_over_T": "-0.75",
+      "pole_residual": "1.4349296e-42",
+      "arch_residual": "6.4172004e-42",
+      "full_residual": "6.0905326e-42"
+    },
+    {
+      "r_over_T": "-0.5",
+      "pole_residual": "0.0",
+      "arch_residual": "3.5177732e-41",
+      "full_residual": "3.7351262e-41"
+    },
+    {
+      "r_over_T": "-0.25",
+      "pole_residual": "1.8654085e-41",
+      "arch_residual": "6.3721216e-41",
+      "full_residual": "7.461979e-41"
+    },
+    {
+      "r_over_T": "0.25",
+      "pole_residual": "2.1523944e-41",
+      "arch_residual": "8.2180263e-41",
+      "full_residual": "7.4161581e-41"
+    },
+    {
+      "r_over_T": "0.5",
+      "pole_residual": "2.5828733e-41",
+      "arch_residual": "5.9717903e-41",
+      "full_residual": "3.1860608e-41"
+    },
+    {
+      "r_over_T": "0.75",
+      "pole_residual": "1.2914367e-41",
+      "arch_residual": "2.5868562e-41",
+      "full_residual": "1.6463629e-41"
+    }
+  ],
+  "contacts": [
+    "5.1741098e-43",
+    "5.1742415e-43"
+  ],
+  "script_sha256": "079bc382a84a9ffc64a2d9994a311e71f468563b64ca832d6124746d156f3a2a"
+}

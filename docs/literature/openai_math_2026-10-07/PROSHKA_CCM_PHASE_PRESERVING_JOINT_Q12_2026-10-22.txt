@@ -1,0 +1,2025 @@
+Q12 — совместная фазовая компенсация после проверенного radial-energy препятствия
+SOURCE_HEAD: 943e0fc15e37b171dcc88d6ac99a877472b8acac
+Это продолжение прежней фазы, тот же чат. Звено PAPER_CHAIN: исходная CCM / отрицательное дно, отдельно достаточный sparse-band receiver; SP/RH OPEN.
+
+Q11 полностью получен, прочитан и независимо проверен (bounded PAPER §§2–9 PASS);3027 exact controls воспроизведены. Оригинал приложен полностью. Норма whole-function lift точна; минимум cap+absolute-return цены2W~4sqrt(m) верен только для этого семейства сертификатов. Не объявляем неудачу всей CCM.
+
+Владелец поручил проверить совместную энергию и остаток на исходном P, а при тупике откатиться и обратиться к тебе. Выполнена ОДНА новая содержательная попытка, независимо PAPER PASS: оставили reverse-triangle radial часть энергии вместо её полного отбрасывания, разрешили все измеримые Hilbert-valued position-dependent v_n(t), и оплатили весь остаток pointwise modulus. Получили B_v>=S_abs, а прежний actual-prime-block five-mode probe в исходном P даёт B_v>=c sqrt(m)/log^9(m) eventually, равномерно по любому конечному graph N и профилю. Это новый scope отсечения сертификатов, не новый raw-block результат. Все обе диагонали d>=m и mixed modes сохранены в тождестве до указанной потери фаз.
+
+Точно S=B_v-C_v-J_v, где C_v=E_v-E_rad>=0, J_v=R_abs-R_v>=0. Но нижняя оценка C_v+J_v>=B_v-нужный бюджет есть переименование исходной задачи, не поставщик. Никакого source-specific quantitative контроля этой компенсации у меня пока нет. Это реальный тупик; не выдумываю ещё две попытки ради счётчика. Полка сверена по файлам; ask semantic freshness INCOMPLETE, не отсутствие результата во всём репозитории.
+
+ОДНО ПОРУЧЕНИЕ: выбери и испытай один конкретный фазосохраняющий механизм для совместной D_v-E_v+R_v на исходном P; если divisor lift не создаёт независимого рычага, обоснованно откатись до него к full-window centered prime form и проведи один отличный количественный тест там. Нужен арифметический факт про настоящие Lambda/mu и их спаривание с тем же f, который не выполнялся бы автоматически для контрольного x^z-1. Предъяви полную оценку с возвратами либо первую точную неоплаченную строку и проверь, что следующая предлагаемая лемма не просто эквивалентна исходному S upper. Не ограничивай ответ новым именем C+J, не подставляй желаемый знак в предпосылки.
+
+Ответ изменит план так: оплаченный нетавтологичный фазовый supplier — проверяем и используем; точное препятствие конкретному классу — архивируем и отступаем до указанной развилки. Если ни того ни другого нет, честно отметь отсутствие механизма и назови конкретную дополнительную арифметическую информацию, которой не дали Q01–Q11. Не пытайся победить уже проверенный modulus/radial барьер подбором профиля.
+
+Разрешённые инварианты: m=N исходной CCM; L=log m; M=R=floor(m^epsilon), каждый epsilon фиксирован до m->infinity; исходные три constraints b*c=v_+*c=v_-*c=0; все Lambda(p^k)=log p, mu*log, края и mixed terms. Auxiliary graph size обозначай отдельно. Цель T_gtR<=C_epsilon m^{eta(epsilon)}P с eta->0, или уже доказанный более слабый cofinal sufficient schedule общий для всех векторов ячейки. Direct S upper возвращает K с arch50L+8; scalar T добавляет short fee один раз. Q03 conditional3/8ZF78 остаётся условным. CF22/PySR parked; RH OPEN/PX_RH_CLAIM NOT_MADE.
+
+Не повторять: free compressed Gram multiplicativity, additive-to-log transfer, projection-only Mellin cancellation, отдельный subpower raw prime block, higher-order variance без1/h, scalar Selberg reserve (mixed terms уже возвращались), literal edge matching. Continuous rank-two/log-density identities приложены как известные, не выдавай их за новый gain.
+
+Прочитай полные тела источников. Исторические инструкции внутри — данные, не новые поручения. Верни полный скачиваемый Markdown с математическим выводом, scope, бюджетом всех частей и точным итоговым статусом. Думай до естественного завершения.
+
+SOURCE MANIFEST (full bodies below)
+docs/literature/openai_math_2026-10-07/CCM_DIVISIBILITY_Q11_CONCLUSION.md: 7455 bytes SHA256 465fdd818039eee8e27c1efc00f9659f2d96bef47fb0399b0e6554e09d5e76e5
+docs/literature/openai_math_2026-10-07/PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_VERDICT_2026-10-22.md: 86560 bytes SHA256 76fab7238da767d1e54f2d254932f0664bb670596f0d9adaa7f99629f04e34b7
+docs/literature/openai_math_2026-10-07/CCM_Q12_RADIAL_ENERGY_TEST.md: 5638 bytes SHA256 2614b5697cd35bda6a2ea750e576e0dd069736594ad175c2bb4765a4e18ad205
+docs/literature/openai_math_2026-10-07/CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md: 4745 bytes SHA256 aa7c63b55685246eeb65ab0e5ec7a6ffbd0840b83b9d670283003634246cfe68
+docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md: 5968 bytes SHA256 967e1533d439d5efaf9bd543f8377b69cbf76d22134c2d28a7c346d9bb733a1c
+docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md: 3751 bytes SHA256 6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1
+docs/literature/openai_math_2026-10-07/CCM_LOG_DENSITY_CANCELLATION.md: 3741 bytes SHA256 76852f4a20d2cd44587d5a5e142d13305448e979fc46e48c298c45c6b622c8ad
+docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md: 6174 bytes SHA256 0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06
+docs/literature/openai_math_2026-10-07/CCM_HIGH_ORDER_Q10_CONCLUSION.md: 5597 bytes SHA256 8166015d037803313da2afea542bebeaa11ba2e85ea5de79f9167c1ba33c5f9d
+
+# PROSHKA EVIDENCE PACK
+Generated: 2026-10-22 22:09:21
+Repo: /Users/emalam/GitHub/rh_lean_01_2026
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## rh_clean...origin/rh_clean
+ M CLAUDE.md
+ M docs/Codex/PAPER_CHAIN.md
+ M docs/Progress_Log.md
+ M paper_weil/ERRATUM_NOTE_SUZUKI_DRAFT.md
+?? 1653edc4-9853-46db-bd37-73595b48bfc8-aristotle.tar.gz
+?? docs/literature/openai_math_2026-10-07/CCM_Q01_VERDICT_DOM_TEXT_2026-10-20.txt
+?? docs/literature/openai_math_2026-10-07/CCM_Q01_VERDICT_RENDERED_CAPTURE_2026-10-20.txt
+?? docs/literature/openai_math_2026-10-07/CCM_Q12_RADIAL_ENERGY_TEST.md
+?? docs/literature/openai_math_2026-10-07/RH_PROPERTY_COMBINATION_SCREEN_2026-10-08.md
+?? docs/literature/openai_math_2026-10-07/RH_PROPERTY_COMBINATION_SOURCES_2026-10-08.json
+?? docs/session_protocols/team-record-event-055ee7e4e26f127ab67b8a0f47f4d5e885b6928ac1bea330ce6f55aef109b6e3.json
+?? docs/session_protocols/team-record-event-1d97444ac486c060a38d50b3b5d33b42c3f4ae19595735f937f25eb14b46662d.json
+?? docs/session_protocols/team-record-event-389a5c4f89ec6da4ce0270c7bd2a7316fead82658605fa04b0fb6ab739f46a37.json
+?? docs/session_protocols/team-record-event-3e06872f472fe0700f175339568ad62c2d6556707707da3735cc09974dee086c.json
+?? docs/session_protocols/team-record-event-41914a46be214ce2bb0e621f31853f60fd1036ce47aa8790de172d4cd180311d.json
+?? docs/session_protocols/team-record-event-490334702230f961527794a8ffaa16f196cf293159a07c94ac27a83fd4bc23fd.json
+?? docs/session_protocols/team-record-event-4f4162246f609dbe887bde745ee81a8f77a48f3fdaf2af820968e322f5137771.json
+?? docs/session_protocols/team-record-event-67d5d6dedf97a160c314e8376b066c8e85d9635f5687d37e9a2165ed18b7f4f6.json
+?? docs/session_protocols/team-record-event-79510168fa1b50f96f6893f9fd6954a5adf851894909486dbb9d29ca5a0cdb81.json
+?? docs/session_protocols/team-record-event-bd3b02662ea9bd9345db19bed21eca207ed6f59840bded472da73eba43c83b76.json
+?? docs/session_protocols/team-record-event-da0a4ed616968a741f8fa49910a7259786301f6e92082fb16e71780bb8c76e07.json
+?? docs/session_protocols/team-record-event-db7c63bd1405028e90f0f7e757d7af65f66314f3e921cfbfc8c553dba0c81784.json
+?? docs/session_protocols/team-record-event-f32345579a30293d8f5d124ea149151ce196234e32df11f97f68fbc843e451e4.json
+?? graphify-out/
+?? orchestrator/state/knowledge.db
+?? paper_weil/REPLY_TO_SUZUKI_DRAFT_2026-10-22.md
+?? q3.lean.aristotle/EnvDumpRun_niy6d214.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersCutoffGreen.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasCenteredResidual.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasGreenSourceBridge.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasGreenTrackingBudget.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasTrackingBudget.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasWindowResidual.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenMatrixDefect.lean
+?? train-preview.png
+
+
+## Git log
+
+943e0fc1 mac(rh_clean): audit full Q11 divisibility transfer and certificate obstruction
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_DIVISIBILITY_Q11_CONCLUSION.md
+
+# Q11: точный перенос построен; семейство раздельных бюджетов отсечено
+
+2026-10-22. Исходная полная CCM; bounded PAPER audit, не Lean.
+
+## Получение и воспроизведение
+
+После одного явно разрешённого владельцем повтора Q11 завершился естественно:
+Worked for36m29s, Response complete, 19:35UTC. Stop не нажимался.
+Полный оригинал PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_VERDICT_2026-10-22.md
+прочитан и побайтно совпадает с Downloads: 86560bytes,1217LF,
+SHA256 76fab7238da767d1e54f2d254932f0664bb670596f0d9adaa7f99629f04e34b7.
+Запрос:155127bytes,2513LF,
+SHA256 195b50976e9683815d0e98e6f3719efdd91218ef77c951a6f790057a6b34fcda,
+SOURCE_HEAD e008fc963e751c0b9ddb7054066b039597642e0c; все9 тел/хешей совпали.
+
+Root извлёк неизменённые Python/registration/expected JSON и воспроизвёл
+3027 точных контролей в ccm_divisibility_q11_checks. exact_results.json
+семантически совпадает с expected_results.json, включая хеши кода и регистрации.
+Исходное independent_review=NOT_RUN сохранено: это статус авторского запуска.
+Последующий независимый readonly q11_verdict_audit: bounded PAPER PASS §§2–9,
+существенных дефектов не найдено. Проверены целые m, край d=m, uniform fixed
+ epsilon/A, обе диагонали невидимых рёбер, constant144 и исходный P.
+Уточнение §9: поля v_n продолжить нулём вне [0,L]; f там нуль, активная форма
+не меняется. Оригинальный файл не исправлялся. Upstream receiver принят как
+вход, не переаудирован целиком. Lean/Arb/спектр полной CCM: новых запусков0.
+
+## Проверенная математика и точный scope
+
+Для a_d=Lambda(d)/sqrt(d), W=sum_{2<=d<m}a_d и r_f(h)=integral conj(f(t))f(t+h):
+
+ S[f]=2 Re sum a_d r_f(log d).
+
+Whole-function lift (J_v f)_n(u)=v_n f(u+log n), sum||v_n||²=1,
+сохраняет физическую L2-норму точно. Это не старый sampling lift.
+При kappa_d=sum_n <v_n,v_nd> исходный оператор возвращается полностью:
+
+ S[f]=delta_v||f||²-E_v[f]+R_v[f], E_v>=0,
+ |R_v[f]|<=r_m(v)||f||², r_m(v)=2 sum a_d|1-kappa_d|.
+
+Все простые степени и смешанные члены сохранены. При d>=m нет физического
+перекрытия, но обе графовые диагонали остаются в E_v и delta_v.
+Ключевой результат — точная цена всего семейства сертификатов:
+
+ delta_v+r_m(v)-2W
+ = E_{<m}(v)+D_{>=m}(v)
+   +2 sum a_d(|1-kappa_d|+Re(kappa_d)-1) >= 0.
+
+При N=1 достигается равенство. Поэтому inf_{N,v}(delta_v+r_m(v))=2W,
+асимптотически 4sqrt(m) по PNT. Увеличение графа и подбор постоянного профиля
+не улучшают степень этого способа: отбросить E_v и отдельно оплатить |R_v|.
+Это НЕ нижняя граница S, T_{>R} или спектра CCM и НЕ запрет всех переносов.
+
+Совместная делительная обязанность sum Lambda(d)|kappa_d|²<=sum log(n)||v_n||²
+верна и для Hilbert-valued профилей. Полный divisor box действительно даёт
+r_m<=144 при K=ceil(sqrt(m)), но delta_v имеет порядок m^(3/2).
+Следовательно малая ошибка сама по себе ничего не оплачивает.
+На исходном P полный остаток имеет оба знака при N<=m^A: сигнал >=c/log²N.
+Это исключает бесплатное объявление остатка неположительным, но не subpower
+upper bound. Позиционно зависимые поля также сохраняют норму; incoming
+inequality верна a.e. Буквальное восстановление всех рёбер снова дорого;
+aggregate one-sided comparisons этим не исключены.
+
+Полный безусловный возврат остаётся S<=2W P<=12sqrt(m)P.
+T_{>R} получает малоделительный возврат один раз; K получает arch fee.
+Q03 conditional3/8 на ZF78 не улучшен и не стал безусловным.
+eta(epsilon)->0, SP, G1/G3, RH: OPEN. CF22/PySR: PARKED_REOPENABLE.
+
+## Откат и продолжение goal
+
+Откат до раздельной оплаты R_v и отбрасывания E_v, а также до требования
+точного совпадения каждого ребра. Не оптимизировать N,v в исключённом
+семействе и не отправлять автоматический Q12 с переименованным R_v-E_v.
+Условие R_v-E_v<=нужный бюджет само эквивалентно прежней трудности.
+
+Следующий bounded discriminator: прежде чем выбирать новый перенос,
+проверить, может ли зависимость профиля от положения менять именно
+сжатую совместную форму на исходном P без требования kappa_d(t)=1
+порёберно. Вход — полная identity §9; стоимость обеих диагоналей и всего
+остатка обязательна. Успех — количественная оценка совместной формы,
+не новая запись identity; неудача — точное препятствие выбранному классу.
+Сначала проверена полка: ask.sh --defer-external 'CCM divisibility energy
+aggregate projection' вернул INCOMPLETE (q3_docs freshness failure),
+kb.py search divisibility — no hits. Это не отсутствие поставщика во всём
+репозитории; индекс не ремонтировался в этом цикле. Перед выбором класса
+нужна адресная сверка уже имеющихся projected Mellin и rank-two тестов,
+чтобы не повторить projection-only shortcut. Новая оценка не объявлена.
+
+CLOSES: Q11 response intake/reproduction/audit; cap-plus-absolute-return
+certificate family excluded as a source of sub-half-power improvement.
+OPENS: source-aware aggregate comparison on original P; quantitative input absent.
+AUTOPSY: dropped=COUPLING; note=Discarding graph energy and separately bounding the full defect restores the old half-power budget.
+Native goal last observed blocked; API has no resume operation. Owner explicitly
+resumed scoped work; mathematical objective remains unachieved, not complete.
+No Q12 sent. Full original, controls and local sampling discriminator retained.
+
+
+## File: docs/literature/openai_math_2026-10-07/PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_VERDICT_2026-10-22.md
+
+# STATUS: TRY_CCM_DIVISIBILITY_TRANSLATION_LIFT_Q11
+```yaml
+OPERATIVE_CLASS: TRY_CCM_DIVISIBILITY_TRANSLATION_LIFT_Q11
+VERDICT_CODE: EXACT_ISOMETRIC_DIVISIBILITY_LIFT_PAID_CONSTANT_PROFILE_CAP_RETURN_RETAINS_HALF_POWER
+DATE: '2026-10-22'
+RESUMED_ONCE: true
+PREVIOUS_RUN: STOPPED_THINKING_WITHOUT_RESULT
+REQUEST_FILE: PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_2026-10-22.txt
+REQUEST_BYTES_OBSERVED: 155127
+REQUEST_LF_OBSERVED: 2513
+REQUEST_SHA256_OBSERVED: 195b50976e9683815d0e98e6f3719efdd91218ef77c951a6f790057a6b34fcda
+EXPECTED_WHOLE_REQUEST_HASH_IN_USER_MESSAGE: NOT_GIVEN
+REQUEST_READ: COMPLETE_TOP_REQUEST_AND_ALL_NINE_EMBEDDED_SOURCE_BODIES
+EMBEDDED_MANIFEST: ALL_NINE_BYTE_COUNTS_AND_SHA256_MATCH
+SOURCE_HEAD_AS_SUPPLIED: e008fc963e751c0b9ddb7054066b039597642e0c
+BOOTSTRAP_REPOSITORY: Malaeu/chen_q3
+BOOTSTRAP_BRANCH: rh_clean
+BOOTSTRAP_BLOB: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
+SOURCE_OBJECT: ORIGINAL_FULL_CCM_ORIGINAL_THREE_CONSTRAINT_SPARSE_BAND
+SCHEDULE: N=m; L=log(m); M=R=floor(m^epsilon); fixed 0<epsilon<1/32
+AUXILIARY_GRAPH_CUTOFF: Ncal; never identified with the production N=m
+CHOSEN_MECHANISM: Hilbert-valued divisibility energy on an isometric lift by complete logarithmic translates of the zero-extended original function
+ACTUAL_GRAPH_INPUT: MangoldtDivisibilityEnergy.primeForm_le_log and its full energy identity, read from the attached Lean source
+INPUT_VERIFICATION: PAPER_STATEMENT_AND_PROOF_INSPECTION_ONLY_NO_NEW_LEAN_BUILD_OR_AXIOM_AUDIT
+NORM_RETURN: EXACT_PHYSICAL_L2_ISOMETRY
+COEFFICIENT_RETURN: EXACT_SIGNED_RESIDUAL_FOR_EVERY_ORIGINAL_PRIME_POWER
+SOURCE_PROJECTOR: UNCHANGED_IN_ALL_SOURCE_FORMS
+MAIN_NEW_RESULTS:
+  - Exact Hilbert-valued non-sampling lift with explicit full residual and both graph diagonals
+  - Joint divisor-coherence bound sum Lambda(d)*abs(kappa_d)^2 <= sum log(n)*norm(v_n)^2
+  - For the selected diagonal-cap plus contraction-return certificate the optimal budget is exactly 2*W_active
+  - A full divisor-box lift can make the coefficient-return norm <=144, but its graph diagonal then costs order m^(3/2)
+  - For polynomial-size auxiliary carriers the complete returned error has both signs on the actual original P, at inverse-logarithmic scale
+  - Position-dependent normalized lifts obey an incoming-divisibility necessary condition; pointwise edge matching costs log(Ncal) >= psi(exp(u))
+COMPLETE_NEW_SOURCE_POWER: ONE_HALF_NOT_IMPROVED
+BEST_INHERITED_COMPLETE_CONDITIONAL_BOUND: Q03 O_epsilon(m^(3/8)*log(m)), conditional on unchanged ZF78
+ZF78_USE: COMPARISON_ONLY
+NEW_ETA_EPSILON_TENDING_TO_ZERO: NOT_OBTAINED
+NEW_COFINAL_SOURCE_GAIN: NOT_OBTAINED
+FIRST_UNPAID_STEP: A directed bound on the complete source-projected graph-energy/error combination; it is not implied by the graph cap or the isometry
+FIRST_LOSS_IN_COMPLETED_BOUND: Discarding the nonnegative pulled-back graph energy and replacing the complete coefficient-return error by its contraction norm
+SCOPED_OBSTRUCTION: Constant-profile translation-orbit lifts with the specified diagonal-cap and absolute coefficient-return budget
+SCOPED_KILL_SCOPE: THEOREM_SHAPE
+SCOPED_KILL_EVIDENCE: Section 6 exact lower identity for the entire certificate family; section 8 original-P witnesses for the full return error
+ACTUAL_ROUTE_KILL_SCOPE: NONE
+PROGRESS_CLASS: FALSIFICATION_PROGRESS
+PROGRESS_SCOPE: TRANSFER_CERTIFICATE_ONLY_WITH_EXACT_NORM_AND_ERROR_LEDGER
+CONSUMER_POWER_PROGRESS: NONE
+COGNITIVE_OPERATOR: COUNTEREXAMPLE_HUNT
+MAIN_FAILURE_TYPE: NO_DERIVATION
+MAIN_EPISTEMIC_STATUS: RESEARCH_DEBT
+CF22_PYSR: PARKED_REOPENABLE
+FULL_SP_G1_G3_RH: OPEN_NOT_CLAIMED
+PX_RH_CLAIM: NOT_MADE
+REPOSITORY_WRITES: NONE
+LEAN_RUNS: 0
+ARB_RUNS: 0
+FULL_CCM_SPECTRAL_RUNS: 0
+LARGE_PRIME_SUM_RUNS: 0
+EXACT_LOCAL_CONTROLS: 3027
+INDEPENDENT_REVIEW_OF_NEW_OUTPUT: NOT_RUN
+```
+
+Ы. **Построен настоящий недиагональный по физической переменной изометрический подъём: он переносит целые сдвинутые исходные функции, а не их значения в целых точках. Норма сохраняется точно; все коэффициенты возвращаются явной ошибкой. Но логарифмическая графовая оценка после полной оплаты этой ошибки не даёт нового показателя.**
+
+Главный результат — не очередная достаточная гипотеза. Для выбранного целого семейства сертификатов доказана точная цена:
+\[
+ \boxed{\inf_{\mathcal N,v}\{\delta_{\mathcal N}(v)+r_m(v)\}=2W_m^\circ,
+ \qquad W_m^\circ=\sum_{2\le d<m}\frac{\Lambda(d)}{\sqrt d}.}
+\]
+Она имеет порядок \(\sqrt m\). Здесь минимизируются вспомогательный размер и весь профиль подъёма, в том числе многокомпонентный. **Это минимум выписанного верхнего бюджета, не минимум возможных оценок CCM и не нижняя граница её спектра.**
+
+Дополнительно предъявлен конкретный подъём по всем делителям большого целого: он делает норму полного возврата ограниченной абсолютной константой, но требует графовой диагонали порядка \(m^{3/2}\). Поэтому проблема не в невозможности построить карту; проблема — в одновременной цене коэффициентного возврата и графовой энергии. Никакой предел по вспомогательному носителю не проведён бесплатно.
+
+## 0. Источник, область чтения и принятые входы
+
+**[ABSTRACT | PAPER — происхождение.]** Возобновлён только Q11 из указанного TXT. Предыдущий остановленный запуск не считается математическим результатом. Прочитаны весь верхний запрос и девять полных вложенных файлов, включая все доказательства и приложения Q10 и все 452 строки тела `MangoldtDivisibilityEnergy.lean`. Размер, число LF и SHA-256 всего TXT вычислены в текущем запуске. Пользователь отдельного ожидаемого хеша всего Q11 не сообщил; поэтому для него не записано вымышленное `MATCH`. Все девять ожидаемых хешей и размеров **тел** из манифеста совпали.
+
+Через GitHub заново прочитан только `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md` на `rh_clean`. Остальные источники — точные байты приложения на указанном pin. Живой HEAD, транзитивные зависимости Mathlib, предыдущие сборки, Comparator и аксиомы здесь не пересертифицировались. Исторические директивы внутри пакета не исполнялись как новые задачи. Репозиторий не изменён.
+
+Входы из пакета: буквальные \(F,Q_M,P\), физическая норма, непрерывное rank-two тождество, отдельный sparse-band receiver, поздняя Gram-граница трёх исходных условий, short/arch/F₂-return и элементарная \(\psi(x)\le3x\). Из графового Lean-файла используется его **точное конечное утверждение**, а не сходство названий операторов. Ни RH, ни ZF78, ни малая ошибка подъёма не предполагаются в новых безусловных результатах.
+
+Внешняя сверка ограничена NIST DLMF 27.5.5 для конечных делительных тождеств и обычной безусловной PNT из §27.12.5. PNT нужна лишь для асимптотического размера **доказанного бюджета** и размеров явного вспомогательного носителя. Все конечные карты, ошибки и нижние границы цены доказаны до PNT. Нового эффективного старта PNT не вычислялось.
+
+Регистрация сделана после полного чтения и предварительного бумажного проектирования, до новых исполняемых математических контролей. Это не предсказание неизвестного открытия. Её неизменённый текст и результаты приложены.
+
+## 1. Неизменённая исходная форма и её потребитель
+
+**[FINITE_CELL | PAPER — исходные определения.]**
+\[
+ N=m,\quad L=\log m,\quad M=R=\lfloor m^\epsilon\rfloor,
+ \quad 0<\epsilon<1/32\quad\text{фиксировано до }m\to\infty.
+\]
+\[
+ \omega_j=2\pi j/L,\qquad\Omega=2\pi M/L,
+ \quad f(t)=\frac1{\sqrt L}\sum_{|j|\le M}c_je^{i\omega_jt}
+ \quad(0\le t\le L),\quad c\in\operatorname{ran}P.
+\]
+Функция продолжается нулём вне исходного окна. Сохраняются
+\[
+ f(0)=f(L)=0,\qquad
+ \int_0^L e^{t/2}f(t)dt=\int_0^L e^{-t/2}f(t)dt=0,
+ \qquad\|f\|_2=\|c\|_2.
+\tag{1.1}
+\]
+
+Пусть \(\mathcal I:\operatorname{ran}P\to L^2(\mathbb R)\) — этот изометрический синтез с нулевым продолжением, а \((U_sf)(t)=f(t+s)\) — полный унитарный сдвиг. Введём
+\[
+ C_d=\mathcal I^*U_{\log d}\mathcal I,
+ \quad r_f(s)=\int_{\mathbb R}\overline{f(t)}f(t+s)dt,
+ \quad a_d=\Lambda(d)/\sqrt d.
+\]
+Тогда
+\[
+ C_d+C_d^*=P Q_M(\log d)P\quad(1\le d\le m),
+ \quad C_d=0\quad(d\ge m),
+\]
+\[
+ \boxed{S_m[f]=2\Re\sum_{2\le d\le m}a_d r_f(\log d).}
+\tag{1.2}
+\]
+При \(d=m\) пересечение поддержек имеет меру нуль. Верхний атом не удаляется по оценке: его исходный оператор точно нулевой. Поэтому в ценах ниже допустимо использовать активную массу
+\[
+ W_m^\circ=\sum_{2\le d<m}a_d\le6\sqrt m.
+\tag{1.3}
+\]
+Точная арифметика всюду
+\[
+ \Lambda(d)=\sum_{ab=d}\mu(a)\log b,\qquad
+ \Lambda(p^k)=\log p.
+\tag{1.4}
+\]
+Нет независимой рандомизации степеней простых, смены \(P\), частот или нормы.
+
+Для любого доказанного \(S_m\preceq s_mP\) исходный возврат равен
+\[
+ \boxed{T_{>R}\preceq s_mP-T_{\le R},\qquad
+ PK_mP\succeq D_m-s_mP,\quad\|D_m\|\le50L+8.}
+\tag{1.5}
+\]
+Скалярный верх для \(T_{>R}\) добавляет ровно один раз
+\[
+ b_{\rm small}=(56+32\Omega)\sqrt R+12(1+\log R)^2.
+\tag{1.6}
+\]
+Для прямого \(K_m\) эта цена не нужна: короткая часть уже вошла в полный \(S_m\). Отдельный sparse receiver требует \(\eta(\epsilon)\to0\); полный SP, G1/G3 не подменяются этим потребителем.
+
+## 2. Что именно поставляет `primeForm_le_log`
+
+### 2.1. Буквальное конечное утверждение
+
+**[FINITE_CELL | PAPER — прикреплённый Lean-source, без нового kernel-run.]** Во всём этом разделе \(\mathcal N\) — **вспомогательный** размер графа, не исходный \(N=m\). Для \(z_1,\ldots,z_{\mathcal N}\in\mathbb C\) положим
+\[
+ \mathcal G_{\mathcal N}(z)
+ =2\Re\sum_{nd\le\mathcal N,\ d\ge2}
+       \frac{\Lambda(d)}{\sqrt d}\overline{z_n}z_{nd},
+\]
+\[
+ b_{\mathcal N}(n)=\sum_{2\le d\le\mathcal N/n}\frac{\Lambda(d)}d,
+ \qquad d_{\mathcal N}(n)=\log n+b_{\mathcal N}(n).
+\]
+Исходный файл доказывает
+\[
+ \boxed{\sum_{n\le\mathcal N}d_{\mathcal N}(n)|z_n|^2
+       -\mathcal G_{\mathcal N}(z)
+ =\sum_{nd\le\mathcal N}\Lambda(d)
+       |z_{nd}-z_n/\sqrt d|^2\ge0,}
+\tag{2.1}
+\]
+\[
+ d_{\mathcal N}(n)\le\log\mathcal N+c_0,
+ \qquad c_0=\log4+4,
+\]
+\[
+ \boxed{\mathcal G_{\mathcal N}(z)
+ \le(\log\mathcal N+c_0)\sum|z_n|^2.}
+\tag{2.2}
+\]
+
+Входящая диагональ в (2.1) равна \(\log n\) именно благодаря
+\(\sum_{d\mid n}\Lambda(d)=\log n\). Исходящая — \(b_{\mathcal N}(n)\). Обе обязательны. Например, замена веса \(\Lambda(d)\) в энергии на \(\Lambda(d)\sqrt d\) меняет **обе**, а не только исходящую диагональ. Такой замены в данной попытке нет.
+
+### 2.2. Законное недиагональное расширение на гильбертовы значения
+
+**Лемма 1 [ABSTRACT | PAPER].** Формулы (2.1)–(2.2) верны для векторов \(z_n\) в произвольном комплексном гильбертовом пространстве, с \(\overline{z_n}z_{nd}\) заменённым на \(\langle z_n,z_{nd}\rangle\).
+
+**Доказательство.** Скалярное тождество квадрата заменяется точным
+\[
+ \|z_{nd}-z_n/\sqrt d\|^2
+ =\|z_{nd}\|^2+\|z_n\|^2/d
+  -2\Re\langle z_n,z_{nd}\rangle/\sqrt d.
+\]
+Суммирование по тем же конечным парам и делительная перегруппировка исходного файла дают (2.1). Неотрицательность каждого веса и исходная диагональная оценка дают (2.2). Альтернативно достаточно разложить конечный span всех \(z_n\) в ортонормированном базисе и сложить скалярные теоремы. Бесконечномерное продолжение или неучтённая размерность не нужны. ∎
+
+Это расширение не является переносом на CCM, пока не предъявлены сами \(z_n\), их норма и все коэффициенты после возвращения.
+
+## 3. Один выбранный подъём: целые логарифмические сдвиги вместо sampling
+
+Выберем конечные векторы \(v_n\in\mathfrak h\), \(1\le n\le\mathcal N\), так что
+\[
+ \sum_{n\le\mathcal N}\|v_n\|^2=1.
+\tag{3.1}
+\]
+Они могут зависеть от \(m,\epsilon\), но одна и та же система используется для **всех** исходных \(c\) данной ячейки. Вне носителя \(v_n=0\). Разрешены комплексные и многокомпонентные профили.
+
+Определим
+\[
+ \boxed{(\mathcal J_v f)_n(u)=v_n f(u+\log n),\qquad u\in\mathbb R.}
+\tag{3.2}
+\]
+Это линейная карта в \(\ell^2(\{1,\ldots,\mathcal N\};L^2(\mathbb R;\mathfrak h))\). Каждый канал переносит **целую функцию**, с её исходной конечной поддержкой. Это не семейство \(n^{-\theta}f(\log(n/X))\) из preflight и не новый тестовый класс.
+
+### 3.1. Норма совпадает точно
+
+**Лемма 2 [ABSTRACT | PAPER].**
+\[
+ \boxed{\|\mathcal J_v f\|^2
+ =\sum_n\|v_n\|^2\int|f(u+\log n)|^2du
+ =\|f\|_2^2.}
+\tag{3.3}
+\]
+Замена переменной — аддитивный сдвиг \(t=u+\log n\), с Jacobian один. Ни \(e^t\), ни \(d^{-1/2}\) от sampling здесь не возникают. Исходное \(P\) не заменяется: на вход подаётся ровно \(f=\mathcal I c\).
+
+### 3.2. Коэффициенты после подъёма — точный расчёт, не объявленное совпадение
+
+Пусть
+\[
+ \boxed{\kappa_d(v)=\sum_{n\le\mathcal N/d}\langle v_n,v_{nd}\rangle,}
+ \qquad \kappa_d=0\quad(d>\mathcal N).
+\tag{3.4}
+\]
+С тем же Jacobian:
+\[
+ \sum_{n\le\mathcal N/d}
+ \langle(\mathcal J_v f)_n,(\mathcal J_v f)_{nd}\rangle
+ =\kappa_d(v)r_f(\log d).
+\]
+Поэтому **весь графовый образ** равен
+\[
+ \boxed{\Gamma_v[f]
+ :=\mathcal G_{\mathcal N}(\mathcal J_v f)
+ =2\Re\sum_{2\le d<m}\frac{\Lambda(d)}{\sqrt d}
+                   \kappa_d(v)r_f(\log d).}
+\tag{3.5}
+\]
+Все степени одного простого получают свою настоящую \(\kappa_{p^a}\); не предполагается \(\kappa_{p^a}=\kappa_p^a\).
+
+Если \(\mathcal N<m\), недостающие графовые рёбра имеют \(\kappa_d=0\) и будут возвращены. Если \(\mathcal N\ge m\), рёбра с \(d\ge m\) дают нулевой **смешанный** физический overlap. Их квадраты и диагонали в полной графовой энергии не равны по отдельности нулю и пока сохраняются.
+
+Определим
+\[
+ \delta_v=\sum_{n\le\mathcal N}d_{\mathcal N}(n)\|v_n\|^2
+ \le\log\mathcal N+c_0,
+\]
+\[
+ \mathcal E_v[f]=\sum_{nd\le\mathcal N}\Lambda(d)
+ \int_{\mathbb R}\left\|
+ v_{nd}f(u+\log(nd))-\frac{v_n}{\sqrt d}f(u+\log n)
+ \right\|^2du.
+\]
+Полный перенос самой энергии:
+\[
+ \boxed{\Gamma_v[f]=\delta_v\|f\|^2-\mathcal E_v[f],
+ \qquad\mathcal E_v[f]\ge0.}
+\tag{3.6}
+\]
+В этих квадратах сохранены все межмодовые члены исходного \(f\). Никакой Gram-мультипликативности сжатых \(C_d\) не требуется и не утверждается. Промежуточное \(P\) не удалялось из произведений: произведение сжатых сдвигов здесь вообще не используется.
+
+## 4. Полная ошибка и действительно доказанный верх
+
+**[FINITE_CELL | PAPER].** Исходная форма восстановлена точно:
+\[
+ \boxed{S_m[f]=\delta_v\|f\|^2-\mathcal E_v[f]+\mathcal R_v[f],}
+\tag{4.1}
+\]
+\[
+ \boxed{\mathcal R_v[f]
+ =2\Re\sum_{2\le d<m}\frac{\Lambda(d)}{\sqrt d}
+             (1-\kappa_d(v))r_f(\log d).}
+\tag{4.2}
+\]
+В частности, её буквальное возвращение к Мёбиусу:
+\[
+ \mathcal R_v[f]
+ =2\Re\sum_{ab\le m}\frac{\mu(a)\log b}{\sqrt{ab}}
+       (1-\kappa_{ab}(v))r_f(\log(ab)).
+\tag{4.3}
+\]
+Член \(ab=m\) сохраняется с нулевым overlap, \(b=1\) — с нулевым логарифмом. Нет прямоугольного расширения гиперболы, замены настоящих знаков или скрытого простого-префикса.
+
+Из Cauchy \(|\kappa_d|\le1\), а у сдвига \(|r_f(s)|\le\|f\|^2\). Следовательно,
+\[
+ \boxed{\|\mathcal R_v\|\le r_m(v)
+ :=2\sum_{2\le d<m}\frac{\Lambda(d)}{\sqrt d}|1-\kappa_d(v)|
+ \le4W_m^\circ\le24\sqrt m.}
+\tag{4.4}
+\]
+Это консервативная двусторонняя цена, из которой следует законный односторонний верх. Она не называется точной нормой ошибки.
+
+Теперь получено полностью доказанное
+\[
+ \boxed{S_m\preceq[\delta_v+r_m(v)]P
+ \preceq[\log\mathcal N+c_0+r_m(v)]P.}
+\tag{4.5}
+\]
+**Первая потеря знаковой информации** — отбросить \(-\mathcal E_v[f]\) в (4.1), затем независимо оплатить (4.2) по (4.4). До этих двух неравенств подъём полностью точен.
+
+Следующие разделы проверяют цену (4.5) для всего семейства, а не только для одного плохо выбранного профиля.
+
+## 5. Реальное делительное ограничение на восстановление рёбер
+
+### 5.1. Совместная энергия коэффициентов подъёма
+
+**Теорема 3 [FINITE_CELL | PAPER].** Для любого профиля (3.1), в том числе многокомпонентного,
+\[
+ \boxed{\sum_{d=2}^{\mathcal N}\Lambda(d)|\kappa_d(v)|^2
+ \le\sum_{n\le\mathcal N}\log n\,\|v_n\|^2
+ =:\ell_v\le\log\mathcal N.}
+\tag{5.1}
+\]
+
+**Доказательство.** Для каждого \(d\):
+\[
+ |\kappa_d|^2
+ \le\left(\sum_{n\le\mathcal N/d}\|v_n\|^2\right)
+       \left(\sum_{n\le\mathcal N/d}\|v_{nd}\|^2\right)
+ \le\sum_{d\mid j}\|v_j\|^2.
+\]
+Умножение на настоящую неотрицательную \(\Lambda(d)\), конечное суммирование и
+\(\sum_{d\mid j}\Lambda(d)=\log j\) дают (5.1). Все степени простых необходимы для последнего равенства. ∎
+
+Это новая для данной попытки **проверка стоимости носителя**, использующая настоящую арифметику; у произвольного набора положительных весов справа нет автоматически \(\log n\).
+
+### 5.2. Малый полный коэффициентный возврат требует большого графового бюджета
+
+Обозначим
+\[
+ B_m^\circ=\sum_{2\le d<m}\frac{\Lambda(d)}d
+ \le\log m+c_0.
+\]
+Ещё один Cauchy, теперь с точно оплаченным входом (5.1), даёт
+\[
+ \left|\sum_{2\le d<m}\frac{\Lambda(d)}{\sqrt d}\kappa_d\right|
+ \le\sqrt{B_m^\circ\ell_v}.
+\]
+Сравнивая с \(W_m^\circ\):
+\[
+ \boxed{r_m(v)\ge2[W_m^\circ-\sqrt{B_m^\circ\ell_v}]_+.}
+\tag{5.2}
+\]
+Если доказанная цена ошибки \(r_m(v)\) не больше \(\rho\), то обязательно
+\[
+ \boxed{\delta_v\ge\ell_v\ge
+ \frac{[W_m^\circ-\rho/2]_+^2}{B_m^\circ}.}
+\tag{5.3}
+\]
+Например, при \(\rho=o(\sqrt m)\), PNT-следствие \(W_m^\circ=(2+o(1))\sqrt m\) показывает
+\[
+ \delta_v\ge(4-o(1))\frac{m}{\log m+c_0}.
+\tag{5.4}
+\]
+Здесь достаточно верхней оценки \(B_m^\circ\le\log m+c_0\); асимптотика \(B_m^\circ\) не предполагается.
+
+В частности, если \(\mathcal N\le m^A\) при фиксированном \(A\), то
+\[
+ r_m(v)\ge2W_m^\circ-2\sqrt{A L(L+c_0)}.
+\tag{5.5}
+\]
+Логарифмически дешёвый вспомогательный граф в этом классе оставляет почти всю абсолютную массу исходных рёбер в возврате.
+
+**Граница:** (5.2)–(5.5) относятся к выписанной коэффициентной цене \(r_m\), не к минимальной односторонней цене настоящего оператора \(\mathcal R_v\). Отрицательные и положительные его вклады на исходном \(P\) могут компенсироваться.
+
+## 6. Точная оптимальность выбранного полного сертификата
+
+**Теорема 4 [FINITE_CELL | PAPER].** Для всех \(\mathcal N\ge1\) и всех нормированных профилей (3.1):
+\[
+ \boxed{\delta_v+r_m(v)\ge2W_m^\circ.}
+\tag{6.1}
+\]
+Более того,
+\[
+ \boxed{\inf_{\mathcal N,v}[\delta_v+r_m(v)]=2W_m^\circ.}
+\tag{6.2}
+\]
+
+**Доказательство, включая все невидимые физически графовые рёбра.** Разделим пары графа на \(d<m\) и \(d\ge m\). Обозначим скалярно-векторную энергию профиля на первой части через
+\[
+ E_{<m}(v)=\sum_{nd\le\mathcal N,\ 2\le d<m}\Lambda(d)
+                 \|v_{nd}-v_n/\sqrt d\|^2\ge0,
+\]
+а **обе диагонали** второй части — через
+\[
+ D_{\ge m}(v)=\sum_{nd\le\mathcal N,\ d\ge m}\Lambda(d)
+       (\|v_{nd}\|^2+\|v_n\|^2/d)\ge0.
+\]
+Частичное квадратное тождество — не удаление signed-рёбер по Loewner-порядку — даёт
+\[
+ \delta_v-2\Re\sum_{2\le d<m}a_d\kappa_d
+ =E_{<m}(v)+D_{\ge m}(v).
+\]
+Следовательно, **точно**
+\[
+ \boxed{\begin{aligned}
+ \delta_v+r_m(v)-2W_m^\circ
+ ={}&E_{<m}(v)+D_{\ge m}(v)\\
+ &+2\sum_{2\le d<m}a_d
+   [\,|1-\kappa_d|+\Re\kappa_d-1\,]\ge0.
+ \end{aligned}}
+\tag{6.3}
+\]
+Последняя скобка неотрицательна по \(|z|\ge\Re z\), с \(z=1-\kappa_d\). Для \(\mathcal N=1,v_1=1\) имеем \(\delta_v=0\), все активные \(\kappa_d=0\), и равенство в (6.1). Это доказывает (6.2). ∎
+
+Минимизация допускает \(\mathcal N,v\), зависящие от \(m\), любое число вспомогательных компонент и их комплексные фазы. Поэтому нельзя спасать (4.5) очередной оптимизацией скалярного профиля.
+
+### 6.1. Полная степень и точный знак опровержения сертификата
+
+Обычная безусловная PNT даёт \(\psi(x)\sim x\). Частичное суммирование:
+\[
+ \sum_{n\le m}\frac{\Lambda(n)}{\sqrt n}
+ =\frac{\psi(m)}{\sqrt m}
+   +\frac12\int_1^m\psi(t)t^{-3/2}dt
+ =(2+o(1))\sqrt m.
+\]
+Удаление **нулевого физического** верхнего атома меняет эту массу не больше чем на \(\log m/\sqrt m\). Поэтому
+\[
+ \boxed{2W_m^\circ=(4+o(1))\sqrt m.}
+\tag{6.4}
+\]
+Если заявлен допустимый бюджет \(b_m=C_\epsilon m^\eta\) с фиксированным \(\eta<1/2\), его запас против выбранного сертификата имеет строго отрицательную верхнюю границу:
+\[
+ b_m-(\delta_v+r_m(v))\le b_m-2W_m^\circ<0
+\]
+на каждой достаточно поздней исходной ячейке. Это законный **scoped falsifier** семейства (4.5), в том числе на любой неограниченной подпоследовательности.
+
+**Не доказано:** \(S_m\succeq c\sqrt m\,P\), большой положительный спектр исходной CCM, невозможность всех lifts или невозможность односторонней компенсации \(\mathcal R_v-\mathcal E_v\). Ни один из этих выводов не следует из нижней границы **цены**.
+
+### 6.2. Удержание элементарной части энергии не создаёт скрытого улучшения
+
+Для вещественного неотрицательного скалярного профиля \(0\le\kappa_d\le1\). В физическом pullback рёбра \(d\ge m\) имеют энергию, равную обеим их диагоналям; они сокращаются точно. На оставшихся рёбрах
+\[
+ \mathcal E_{v,<m}[f]-E_{<m}(v)\|f\|^2
+ =2\sum_{2\le d<m}a_d\kappa_d
+     (\|f\|^2-\Re r_f(\log d))\ge0.
+\]
+Это позволяет вернуть полезную часть графовой энергии и ограничить \(\Gamma_v\) величиной \(2\sum a_d\kappa_d\), а не огромной \(\delta_v\). Но вместе с
+\(r_m=2\sum a_d(1-\kappa_d)\) результат снова ровно
+\[
+ S_m\preceq2W_m^\circ P.
+\]
+Таким образом, огромный диагональный бюджет можно убрать этой элементарной поправкой, но не получить новую степень. Для прогресса нужна **более сильная совместная** информация об исходном \(r_f\), которой ни изометрия, ни (2.2) не поставляют.
+
+## 7. Явная арифметическая реализация: малая ошибка действительно достижима, но не бесплатно
+
+**[FINITE_CELL | PAPER].** Возьмём все простые \(p<m\), целое \(K\ge2\) и множество
+\[
+ \mathcal B_{m,K}
+ =\left\{\prod_{p<m}p^{e_p}:0\le e_p<K\right\},
+ \quad B=|\mathcal B_{m,K}|=K^{\pi(m-1)},
+\]
+\[
+ \mathcal N=\prod_{p<m}p^{K-1},\qquad
+ v_n=B^{-1/2}\mathbf1_{\mathcal B_{m,K}}(n).
+\tag{7.1}
+\]
+Это конечное определение; не предлагается вычислять такой гигантский граф. Норма (3.3) точна при любом размере.
+
+Единственность факторизации даёт
+\[
+ \boxed{\kappa_d=
+ \prod_{p<m}\left(1-\frac{v_p(d)}K\right)_+,
+ \qquad\kappa_{p^a}=(1-a/K)_+.}
+\tag{7.2}
+\]
+Если в \(d\) есть простой вне набора, корреляция равна нулю. Все активные простые степени уже находятся внутри набора. Разные простые связаны одной общей нормировкой; степени одного простого не независимы.
+
+По (4.4):
+\[
+ r_m(v)=2\sum_{p^a<m}\frac{\log p}{p^{a/2}}\min(a/K,1)
+ \le\frac{24W_m^\circ}{K}\le\frac{144\sqrt m}{K}.
+\tag{7.3}
+\]
+Для оценки использовано
+\(\sum_{a\ge1}a r^a=r/(1-r)^2\le12r\) при \(r=p^{-1/2}\le2^{-1/2}\). Это положительное верхнее продолжение только бюджета, не добавление новых исходных атомов.
+
+При \(K=\lceil\sqrt m\rceil\):
+\[
+ \boxed{\|\mathcal R_v\|\le144.}
+\tag{7.4}
+\]
+Но
+\[
+ \log\mathcal N=(K-1)\vartheta(m-1),\qquad
+ \ell_v=\frac{K-1}{2}\vartheta(m-1),
+\tag{7.5}
+\]
+где \(\vartheta(x)=\sum_{p\le x}\log p\). Поэтому
+\[
+ \frac{K-1}{2}\vartheta(m-1)
+ \le\delta_v\le(K-1)\vartheta(m-1)+c_0.
+\tag{7.6}
+\]
+При указанном K нижняя и верхняя цены имеют порядок \(m^{3/2}\). Верх без PNT следует из принятой \(\vartheta\le\psi\le3m\); PNT лишь подтверждает порядок снизу.
+
+**Это конкретно выполненный перенос:** физическая норма сохранена точно, исходные коэффициенты восстановлены с ограниченной ошибкой, но графовая цена недопустима. Увеличивать \(\mathcal N\) при фиксированном \(m\), а затем оставить справа \(\log m\) вместо \(\log\mathcal N\) нельзя.
+
+Ниже ошибка рассматривается не только по модулям: проверяется, можно ли хотя бы бесплатно дать ей благоприятный односторонний знак на исходном \(P\).
+
+## 8. Полная ошибка подъёма имеет оба знака на исходном P
+
+### 8.1. Конечный делительный носитель не даёт \(\kappa_2=1\)
+
+**Лемма 5 [FINITE_CELL | PAPER].** Пусть
+\[
+ J_{\mathcal N}=\lfloor\log_2\mathcal N\rfloor+1.
+\]
+Тогда для любого профиля (3.1)
+\[
+ \boxed{1-\Re\kappa_2\ge J_{\mathcal N}^{-2}>0.}
+\tag{8.1}
+\]
+
+**Доказательство.** На \(\ell^2(\mathbb N;\mathfrak h)\) пусть \((Tv)_j=v_{j/2}\) при чётном j и ноль иначе. Это изометрия. У \(T^{J_{\mathcal N}}v\) поддержка выше \(\mathcal N\), поэтому она ортогональна v. Значит,
+\[
+ 2=\|v-T^{J_{\mathcal N}}v\|^2
+ \le J_{\mathcal N}^2\|v-Tv\|^2
+ =2J_{\mathcal N}^2(1-\Re\kappa_2).
+\]
+Средняя оценка — телескопирование и треугольник; никакая асимптотика не нужна. ∎
+
+### 8.2. Настоящие два профиля, изолирующие простой 2
+
+**Теорема 6 [COFINAL_FAMILY | PAPER].** Для каждого фиксированного \(0<\epsilon<1/32\) и каждого фиксированного \(A>0\) существуют поздний старт и два исходных единичных вектора \(c_m^+,c_m^-\in\operatorname{ran}P\), не зависящие от профиля v, такие, что для всех \(\mathcal N\le m^A\) и всех (3.1):
+\[
+ \boxed{
+ (c_m^+)^*\mathcal R_v c_m^+
+ \ge\frac{\log2}{2\sqrt2\,J_{\mathcal N}^2},\qquad
+ (c_m^-)^*\mathcal R_v c_m^-
+ \le-\frac{\log2}{2\sqrt2\,J_{\mathcal N}^2}.}
+\tag{8.2}
+\]
+Это весь остаток (4.2), не один искусственно выделенный атом после проекции.
+
+**Построение до Fourier-проекции.** Фиксируем \(\ell=1/16\), целое
+\(q=\lceil1/\epsilon\rceil+3\). Берём вещественный полиномиальный bump
+\(h(t)=b((t-1)/\ell)\), где
+\(b(x)=x^{q+4}(1-x)^{q+4}\) на \([0,1]\), ноль вне. Положим
+\[
+ g=(\partial_t^2-1/4)h,\qquad u=g/\|g\|_2.
+\]
+Интегрирование по частям даёт оба точных контакта
+\(\int e^{\pm t/2}u(t)dt=0\). Норма ненулевая, в частности
+\[
+ \|g\|_2^2
+ =\ell^{-3}\|b''\|_2^2+\tfrac12\ell^{-1}\|b'\|_2^2
+   +\tfrac1{16}\ell\|b\|_2^2>0.
+\]
+Определим
+\[
+ f_\pm(t)=\frac{u(t)\pm u(t-\log2)}{\sqrt2}.
+\tag{8.3}
+\]
+Их поддержки не пересекаются, лежат внутри исходного окна позднее; норма равна единице и все три исходных условия выполнены.
+
+Самоперекрытия поддержаны при \(|s|\le\ell<\log2\). Положительное перекрёстное перекрытие поддержано при \(|s-\log2|\le\ell\). В этой полосе единственный целочисленный логарифм — \(\log2\):
+\[
+ 2e^\ell\le\frac2{1-\ell}<3,\qquad
+ 2e^{-\ell}\ge2(1-\ell)>1.
+\]
+Следовательно, **до проекции вся арифметика**, включая все остальные простые степени, подсчитана точно:
+\[
+ S_m[f_\pm]=\pm\frac{\log2}{\sqrt2},\qquad
+ \Gamma_v[f_\pm]=\pm\frac{\log2}{\sqrt2}\Re\kappa_2,
+\]
+\[
+ \boxed{\mathcal R_v[f_\pm]
+ =\pm\frac{\log2}{\sqrt2}(1-\Re\kappa_2).}
+\tag{8.4}
+\]
+
+**Возврат в первоначальную конечную полосу.** Эти компактные функции не подменяют исходный тестовый класс. q интегрирований по частям дают для исходных Fourier-коэффициентов
+\[
+ |\widehat c_j|\le C_qL^{q-1/2}|j|^{-q},
+\]
+\[
+ \rho_m:=\|f_\pm-Fc_{M,\pm}\|_2
+ \le C_qL^{q-1/2}M^{1/2-q}.
+\tag{8.5}
+\]
+Нормированный endpoint-residual имеет ту же цену: абсолютная сумма хвоста делится на \(\sqrt{2M+1}\). Для двух экспоненциальных residual используем их точные полные нули и ограниченность отношения полных и усечённых норм исходных \(v_\pm\). Поздняя Gram-оценка \(\ge I_3/2\) из sparse receiver даёт исправление тем же \(P\) с ценой \(C_q\rho_m\). После нормировки получаются единичные \(c_m^\pm\) с
+\[
+ \|\mathcal I c_m^\pm-f_\pm\|_2\le C_q\rho_m.
+\tag{8.6}
+\]
+
+После этой операции компактность корреляции не предполагается. Все вновь активированные атомы и mixed terms оплачивает **полная** норма (4.4):
+\[
+ |(c_m^\pm)^*\mathcal R_vc_m^\pm-\mathcal R_v[f_\pm]|
+ \le C_q\sqrt m\,L^{q-1/2}M^{1/2-q}.
+\tag{8.7}
+\]
+Это равномерно по \(v,\mathcal N\). При \(\mathcal N\le m^A\),
+\(J_{\mathcal N}\le1+AL/\log2\). Выбранное фиксированное q удовлетворяет
+\(1/2-\epsilon(q-1/2)<0\); поэтому (8.7) есть \(o(L^{-2})\) и меньше половины сигнала (8.4),(8.1). Получена (8.2). ∎
+
+**Область отрицательного контроля.** Полная ошибка не является автоматически ни положительной, ни отрицательной на исходном \(P\). Но размер (8.2) лишь обратнологарифмический. Он не исключает допустимой ошибки \(O_\epsilon(m^{\eta(\epsilon)})\). Он также не утверждает отрицательность полной формы Вейля или внепрямой нуль. Приём компактного профиля использован как проверяющий инструмент с оплаченным возвратом, а не как новый production-класс.
+
+## 9. Что меняется у действительно пространственно-зависимого подъёма
+
+Этот раздел — **контроль границы сделанного вывода и точка отката**, а не вторая объявленная успешная попытка.
+
+Разрешим измеримые векторные поля \(v_n(t)\) на \([0,L]\), удовлетворяющие
+\[
+ \sum_{n\le\mathcal N}\|v_n(t)\|^2=1
+ \quad\text{почти всюду}.
+\tag{9.1}
+\]
+Определим ту же карту, теперь с полем:
+\[
+ (\mathcal Jf)_n(u)=v_n(u+\log n)f(u+\log n).
+\tag{9.2}
+\]
+Она по-прежнему точно изометрична, но коэффициент каждого исходного overlap становится **функцией физической точки**:
+\[
+ \kappa_d(t)=\sum_{n\le\mathcal N/d}
+             \langle v_n(t),v_{nd}(t+\log d)\rangle.
+\tag{9.3}
+\]
+Это сохраняет больше информации, чем один \(\kappa_d\). Диагональ после переноса тоже не скалярна:
+\[
+ d_v(t)=\sum_n d_{\mathcal N}(n)\|v_n(t)\|^2
+ \le\log\mathcal N+c_0.
+\]
+Графовая энергия, этот полный диагональный вес и ошибка
+\[
+ 2\Re\sum_{2\le d<m}a_d\int_0^{L-\log d}
+    (1-\kappa_d(t))\overline{f(t)}f(t+\log d)dt
+\tag{9.4}
+\]
+должны сохраняться совместно. Никакая малость (9.4) здесь не получена.
+
+### Новый дешёвый discriminator для такого отката
+
+**Лемма 7 [FINITE_CELL | PAPER].** Для почти каждого \(u\in[0,L]\):
+\[
+ \boxed{\sum_{2\le d\le e^u}\Lambda(d)
+   |\kappa_d(u-\log d)|^2
+ \le\sum_{n\le\mathcal N}\log n\,\|v_n(u)\|^2
+ \le\log\mathcal N.}
+\tag{9.5}
+\]
+
+**Доказательство.** Cauchy в (9.3), с \(t=u-\log d\), даёт
+\[
+ |\kappa_d(u-\log d)|^2
+ \le\sum_{d\mid n}\|v_n(u)\|^2,
+\]
+поскольку норма нижнего векторного набора не больше одного. Суммирование по настоящим \(\Lambda(d)\) и делительная формула дают (9.5). Конечное число сдвигов при фиксированном m позволяет выбрать общее множество полной меры. ∎
+
+Если предлагается точное **поатомное** восстановление \(\kappa_d(t)=1\) на всех допустимых физических парах, то
+\[
+ \boxed{\log\mathcal N\ge\psi(e^u)}
+\tag{9.6}
+\]
+внутри окна. Уже при \(u\asymp L-1\) PNT даёт цену порядка m, а не \(\log m\). Для приближения \(|1-\kappa_d|\le\zeta<1\) на этих парах цена не меньше \((1-\zeta)^2\psi(e^u)\).
+
+При точном равенстве это видно ещё конкретнее: равенство Cauchy вынуждает всю верхнюю массу при u находиться на индексах, делящихся на каждую простую степень \(d\le e^u\). Любой ненулевой такой индекс кратен
+\(\operatorname{lcm}(1,\ldots,\lfloor e^u\rfloor)\), чей логарифм равен \(\psi(e^u)\). Значит, поля тоже не получают коэффициентную точность бесплатно.
+
+**Граница:** точное или равномерно точное поатомное согласование — более сильное требование, чем односторонняя ошибка на исходном \(P\). Лемма не исключает неравномерную знаковую компенсацию (9.4), операторные lifts, не имеющие вида (9.2), или иной aggregate-return. Она даёт конкретный независимый входной тест для следующей карты, а не ещё одно имя исходной цели.
+
+## 10. Полный возврат и проверка всех показателей
+
+С реально выведенным бюджетом
+\[
+ s_m(v)=\delta_v+r_m(v)
+\]
+получаем исходные (1.5)–(1.6). Оптимизация этого **достаточного бюджета** по всему проверенному семейству даёт прежнее
+\[
+ \boxed{S_m\preceq2W_m^\circ P\preceq12\sqrt m\,P.}
+\tag{10.1}
+\]
+Соответственно,
+\[
+ \boxed{T_{>R}\preceq2W_m^\circ P-T_{\le R},}
+\]
+\[
+ T_{>R}\preceq[2W_m^\circ+b_{\rm small}]P,
+\]
+\[
+ \boxed{PK_mP\succeq D_m-2W_m^\circ P
+ \succeq-[12\sqrt m+50L+8]P.}
+\tag{10.2}
+\]
+Все оценки едины по исходным векторам и, взятием следа, по всем \(W=PWP\succeq0\), \(\operatorname{Tr}W=1\). Вспомогательный профиль не подбирается отдельно для каждого худшего вектора.
+
+Для отдельного объекта \(V=C+E_{\rm slow}\) можно использовать только принятый Q02:
+\[
+ T_{>R}=V+\Delta_2,\qquad\|\Delta_2\|\le F_2,
+\]
+\[
+ V\preceq[2W_m^\circ+F_2]P-T_{\le R}.
+\]
+Здесь
+\[
+ F_2=32(1+D_1)N_D(1+2L)+\frac{\mathfrak K_2}{\pi^2m^{3/2}},
+\]
+\[
+ D_1=2/L+4\Omega,\quad D_2=4\Omega/L+4\Omega^2,
+ \quad\mathfrak K_2=16/3+20D_1/9+4D_2/9,
+ \quad N_D=\lceil\log_2(m/R)\rceil.
+\]
+Это \(O_\epsilon(m^\epsilon L)\), но оно не оценивает сам V и не начисляется прямому \(S/K\)-возврату второй раз.
+
+| Объект / способ оплаты | Полная цена | Область вывода |
+|---|---|---|
+| Норма \(\mathcal J_v\) | Ровно 1 | Все исходные векторы, конечный lift |
+| Общий графовый upper | \(\delta_v\le\log\mathcal N+c_0\) | Настоящий graph-energy theorem, Hilbert-расширение доказано |
+| Полный коэффициентный возврат | \(r_m(v)=2\sum a_d|1-\kappa_d|\) | Норма остатка сверху, не его точное значение |
+| Оптимальный cap-plus-return | Ровно \(2W_m^\circ\) как инфимум цены | Степень \(1/2\), не lower bound CCM |
+| Явный глубокий divisor-box, \(K=\lceil\sqrt m\rceil\) | Ошибка \(\le144\), диагональная цена \(\asymp m^{3/2}\) | Малость ошибки не спасает общий бюджет |
+| Полный контрпример свободному знаку ошибки | Оба знака, размер \(\ge\log2/(2\sqrt2J_{\mathcal N}^2)\) | Исходное P, \(\mathcal N\le m^A\), не препятствие subpower-error |
+| Scalar \(T\)-return | Short \(b_{\rm small}\) один раз | Степень \(3\epsilon/2\), не доминирует над \(1/2\) |
+| Direct \(K\)-return | Только \(50L+8\) сверх full-S | Никакой повторной short-платы |
+| Лучший принятый Q03 | \(O_\epsilon(m^{3/8}L)\) | Условно на ту же ZF78; здесь не улучшен |
+
+Нового общего кофинального m с малой исходной спектральной ценой не выделено. Ограничение цены (6.4) само действует на всех поздних ячейках, так что **этот** сертификат не спасается отбором подпоследовательности. Это не утверждение об отсутствии другого кофинального механизма.
+
+## 11. Первая неоплаченная строка и один содержательный откат
+
+### 11.1. Что именно не доказано
+
+До потери информации имеем точное
+\[
+ S_m[f]=\delta_v\|f\|^2-\mathcal E_v[f]+\mathcal R_v[f].
+\]
+Чтобы получить малую полную степень этим путём, надо было бы доказать нужный направленный верх **совместно** для \(\mathcal R_v[f]-\mathcal E_v[f]\), после исходного P. Графовая теорема даёт только \(\mathcal E_v\ge0\). Изометрия не добавляет арифметического знака, а (8.2) исключает бесплатное отбрасывание \(\mathcal R_v\) как неположительного.
+
+Однако запись
+\[
+ \mathcal R_v[f]-\mathcal E_v[f]\le(s_m-\delta_v)\|f\|^2
+\]
+в этой конструкции **эквивалентна исходной оценке** по (4.1). Она не поставлена, не называется новым supplier и не выдаётся за уменьшение арифметического долга. Даже без слова «эквивалентность» нужно было бы указать независимый источник новой оценки; его в Q11 не найдено.
+
+### 11.2. Обоснованный откат
+
+**Отказываемся от универсального логарифмического cap как достаточного входа после постоянного-профиля подъёма и абсолютной оплаты коэффициентов.** Новая оптимизация того же \(v\) не может улучшить (6.2).
+
+Возврат — к более ранней развилке **до требования воспроизвести все рёбра отдельно** и до выбрасывания графовой энергии: исходное фиксированное \(P\) должно участвовать в направленном сравнении *полного* дефекта, а не только во входном обозначении f. Это не возврат к Q10-variance и не повтор parity/Q08.
+
+Два проверяемых представления **этой одной точки отката**, не две новые кампании:
+
+| Представление | Что сохраняется | Различающий тест / цена |
+|---|---|---|
+| Полное физическое \(\delta_vI-\mathcal E_v+\mathcal R_v\) | Graph-energy credit, исходная норма, все реальные сдвиги и mixed terms | Высокая сила против пропажи ошибки; малый exact-тест на двух исходных packet-векторах (8.4), затем оплаченный P-return. Новая арифметическая цена не известна |
+| Пространственно-зависимая изометрическая карта (9.1)–(9.4), если предъявлена явно | Корреляция положения, номера делителя и source function до скалярного cap | Высокая сила против фиктивной точности коэффициентов: (9.5) и lcm/\(\psi\)-цена; конечная делительная проверка дешёвая. Полная directed-error оценка не поставлена |
+
+**Конкретный discriminator, отличный от прежнего sampling-Jacobian:** для предполагаемой новой карты посчитать входящую нормовую массу при одном физическом верхнем конце u. Если заявлены \(\kappa_d(u-\log d)\approx1\) и дешёвый \(\log\mathcal N\), проверить (9.5). Уже точное сохранение всех prime-power edges заставляет \(\log\mathcal N\ge\psi(e^u)\). Нарушение этой необходимой арифметической цены — ошибка карты, обнаружимая до оценивания CCM.
+
+Если карта не требует поатомной точности, (9.5) её не убивает: тогда она обязана показать законное совместное действие оставшегося дефекта на исходном классе. Не следует молча возвращаться к \(\Lambda\)-coefficient domination или объявлять нужную оценку аксиомой.
+
+## 12. Сильнейшая атака на вывод и границы ответа
+
+**Возражение:** «Ты проверил удобное семейство lifts и слишком грубую оплату ошибки, а может существовать другое неравенство с той же картой или другой картой». **Верно.** Теорема 4 относится к точно указанному бюджету, а не ко всем использующим графовую энергию доказательствам. Теорема 6 исключает нулевой односторонний остаток, но не допустимый малый положительный. Лемма 7 исключает лишь бесплатный поатомно-точный finite lift малого бюджета, не aggregate-sign transfer.
+
+**Что здесь всё же не является переименованием:** карта (3.2) построена и её норма точно посчитана; ошибка (4.2) возвращает каждое ребро; (5.1) — конкретная делительная нормовая обязанность; (6.3) — точный сертификат нижней цены *всего выбранного семейства*; (7.4) — явная ограниченная ошибка с полностью выставленным дорогим carrier; (8.2) — источникозависимый контроль знака полной ошибки на прежнем P. Ни один из этих пунктов не предполагал желаемую оценку CCM.
+
+**Чего нет:** нового полного арифметического показателя, доказанной subpower-error с одновременно subpower graph-price, нового cutoff-free сравнения с полной CCM, доказательства SP/G1/G3/RH. Из количества построенных тождеств или проверок такой результат не выводится.
+
+## 13. Проверки, регистрация и отрицательные контроли
+
+**[FINITE_CELL | PAPER — exact controls, не асимптотическая сертификация.]** Выполнено **3027** точных локальных проверок стандартной библиотекой Python. В них используются рациональные векторные координаты и формальные \(\log p\), чтобы проверить настоящие \(\mu\), \(\Lambda\), все простые степени, обе диагонали и знаки энергии без округления.
+
+В координатах \(v_n=x_n/\sqrt n\) graph-energy квадрат равен
+\(\Lambda(d)\|x_{nd}-x_n\|^2/(nd)\). Поэтому вся проверка исходного квадратного тождества рациональна по коэффициентам каждого \(\log p\). Комплексные смешанные члены проверяются гауссовыми рациональными числами. Нормовая корреляция \(|\kappa_d|^2\) также рациональна в этих координатах.
+
+Отдельные тесты переводов используют конечные функции на целочисленной группе с аддитивными длинами простых. Это **алгебраические модели для проверки lift identity**, не log-grid исходной CCM и не проверка её спектра. Теоремы о реальном \(L^2\)-окне доказываются заменой переменной и source projection return, не этими тестами.
+
+Проверяющий намеренно обнаруживает: удвоенное ребро с верхним отрицательным запасом \(-\log2\); потерю высшей степени простого во входящей диагонали; свободную подстановку \(\kappa_d=1\); неправильное удаление обеих диагоналей невидимых физических рёбер. Компактные профили проверяются точными полиномиальными первообразными для обоих экспоненциальных контактов.
+
+**Не выполнены:** Lean/build/axiom audit, Arb-интервалы, полный prime sum или полный спектр больших CCM, независимая проверка новых PAPER-лемм. Старые проверки Q10 прочитаны как источник, не объявлены новым запуском. Новых нулей дзета или значений за пределами исходной арифметики не вычислялось.
+
+После сборки итогового Markdown его Python-блок и регистрация извлечены повторно в отдельный каталог. Проверяющий запущен заново: все 3027 контролей прошли; JSON семантически совпал и с первым запуском, и с встроенным результатом, включая хеши скрипта и регистрации. Этот повтор не увеличивает число независимых проверок и не является независимым аудитом.
+
+### Судьба зарегистрированных ожиданий
+
+1. Точная физическая изометрия без sampling-Jacobian — подтверждена §3 и локальными контролями.
+2. Полный коэффициентный возврат — подтверждён §§3–4, включая верхний нуль и недостающие графовые рёбра.
+3. Совместная incoming-divisibility цена — доказана в §5, конечные контроли согласовались.
+4. Отсутствие меньшей степени у cap-plus-contraction-return — доказано для семейства в §6; это не прогноз невозможности CCM.
+5. Более общая position-dependent карта сохраняет норму, но не получает бесплатную точность — доказано в §9. Полной арифметической оценки для неё не предсказывалось.
+
+Регистрация не исправлялась после запуска. Дополнительные теоремы о точном минимуме и uniform residual-sign изложены как результаты бумажного вывода, не как заранее предсказанные числа.
+
+### DISCRIMINATOR для нулесодержащего численного результата
+
+Для закреплённой ячейки, карты и бюджета надо проверять
+\(sP-S_m\) либо *весь* \(\mathcal R_v\) на прежнем P, не отдельную корреляцию \(\kappa_d\). Нижний интервальный конверт \(\ge0\) принимает лишь эту finite-cell оценку. Верхний отрицательный Rayleigh-конверт отвергает лишь указанный контракт. При интервале, содержащем ноль, увеличить точность **полной** формы или использовать аналитические packet-свидетели (8.2), когда применима их область; округление не создаёт ни нуля, ни знака.
+
+## 14. Ledger и зависимости
+
+| ID | Утверждение | Scope | Verifier | Статус |
+|---|---|---|---|---|
+| SRC | Буквальные CCM/P, возвращения и sparse receiver | COFINAL_FAMILY | PAPER | Принятые входы пакета, не новый аудит |
+| DIV | Прикреплённый graph identity и logarithmic cap | FINITE_CELL | PAPER | Прочитан полный Lean-source; kernel в этой сессии не запускался |
+| HILB | Hilbert-valued extension (2.1)–(2.2) | ABSTRACT | PAPER | Доказано конечным раскрытием квадрата |
+| LIFT | (3.2)–(4.3), точная норма и весь source return | FINITE_CELL | PAPER | Построено; неизвестная ошибка не занулена |
+| COH | (5.1)–(5.5), совместная цена коэффициентов | FINITE_CELL | PAPER | Доказано на настоящей делительной структуре |
+| PRICE | (6.1)–(6.4), оптимальный бюджет выбранного семейства | COFINAL_FAMILY | PAPER | Половинная степень цены; не lower bound источника |
+| BOX | (7.1)–(7.6), полный явный finite lift | COFINAL_FAMILY | PAPER | Ограниченная ошибка при дорогом carrier, не full gain |
+| SIGN | (8.2), оба знака полного остатка на исходном P | COFINAL_FAMILY | PAPER | Uniform по \(\mathcal N\le m^A\) и профилям; сигнал inverse-log |
+| FIELD | (9.5)–(9.6), физически переменная норма/делимость | FINITE_CELL | PAPER | Необходимое условие точности, не решение aggregate target |
+| FULL | (10.1)–(10.2) | COFINAL_FAMILY | PAPER | Прежняя безусловная степень \(1/2\), без улучшения |
+| BEST | Прежний Q03 \(3/8\) | COFINAL_FAMILY | CONDITIONAL | Неизменённая ZF78 |
+| GOAL | Новый показатель, \(\eta\to0\), общий cofinal | COFINAL_FAMILY | CONDITIONAL | OPEN, нигде не принят как вход |
+
+**DOWNSTREAM_CONSUMER:** отдельный sparse-band off-critical witness receiver исходной полной CCM.
+
+**ACTUAL_CONSUMER_REQUIREMENT:** единый directed upper для full S/T либо lower floor PKP, с \(\eta(\epsilon)\to0\), на всех поздних ячейках или общей законной кофинальной подпоследовательности.
+
+**ORIGINAL_REQUESTED_OBJECT:** количественный перенос `primeForm_le_log` с нормой, настоящими весами и полной ошибкой. **ORIGINAL_OBJECT_IS:** NOT_NECESSARY для consumer — именно этот lift/cap является достаточным механизмом, не обязательным путём.
+
+**KNOWN_WEAKER_INTERFACES:** aggregate one-sided comparison после P без поатомной точности; полный source-weight pairing до Cauchy; прямой S-upper без повторного short; V только с F₂. Ни один более слабый интерфейс не считается поставленным после одной записи.
+
+**FAILURE_TYPE:** NO_DERIVATION для нового арифметического показателя; COUNTEREXAMPLE / proved budget incompatibility только для указанных free-transfer форм.
+
+**EPISTEMIC_STATUS:** RESEARCH_DEBT для полной цели. **REOPEN_TRIGGER:** конкретная source-aware карта или сравнение, которое проходит нормовую и incoming-divisibility проверку и независимо оплачивает направленный aggregate error; не ещё один профиль в (3.1) с тем же (4.4).
+
+**SCOPED_KILL_SCOPE:** THEOREM_SHAPE. **KILL_EVIDENCE_KIND:** точная положительная правая сторона (6.3), превращающая заявленный sub-half-power запас в отрицательный верх; source-P witnesses (8.2) для free-sign переноса. **ACTUAL_ROUTE_KILL_SCOPE:** NONE. Никакой `MATHEMATICALLY_DEAD` для CCM/RH не заявлен.
+
+**NOVELTY_AXIS:** для данной попытки — нормосохраняющий Hilbert-valued lift, полный коэффициентный возврат, его совместная делительная цена и оптимальный бюджет, а не историческая новизна tensorization или Cauchy.
+
+## 15. Одно следующее действие
+
+**CODEX DIRECTIVE — один bounded PAPER-аудит Q11 и остановка theorem-only переноса.** На точных байтах этого файла проверить (2.1)–(4.5), комплексные сопряжения в \(\kappa_d\), различие исходного N=m и вспомогательного \(\mathcal N\), все диагонали рёбер \(d\ge m\), joint-coherence (5.1), точную decomposition (6.3), all-prime-power box (7.2) и константу144. Затем проверить uniform source-P возврат §8 и область леммы §9: не выдать pointwise edge recovery за необходимое условие любой направленной оценки. Воспроизвести exact checker из приложения; его controls не повышать до asymptotic/Lean сертификата.
+
+При дефекте вернуть первую неверную строку и исправленный бюджет. При приёмке сохранить только карту, цены и scoped obstruction. Не объявлять новую степень и не отправлять автоматически Q12 с \(\mathcal R_v-\mathcal E_v\) как новым именем того же долга. Для следующей реально иной карты сначала применить discriminator (9.5), затем доказывать её полный signed return на исходном P.
+
+### Closeout
+
+**Что стало точнее:** неопределённое «возможно, graph energy переносится» заменено конкретной изометрией с полным остатком; дешёвая норма перестала маскировать коэффициентную и carrier-цену.
+
+**Что исключено:** всё указанное семейство cap-plus-absolute-return сертификатов на постоянных профилях; бесплатный знак полного остатка; бесплатное поатомное совпадение нормированных полей на малом carrier.
+
+**Что не улучшилось:** полный арифметический показатель исходной CCM. Результат по-прежнему \(1/2\) без дополнительной арифметики; принятый условный \(3/8\) не улучшен.
+
+```yaml
+MEMORY_ENTRY:
+  iteration: CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_2026_10_22
+  target: ORIGINAL_ONE_SIDED_SPARSE_CCM_POWER
+  status: OPEN
+  cognitive_operator_used: COUNTEREXAMPLE_HUNT
+  actual_map: Complete logarithmic translates in a Hilbert-valued divisibility graph; exact physical norm
+  complete_return: Original coefficient equals lifted coefficient plus explicit (1-kappa_d) residual
+  new_invariant: Sum Lambda(d)|kappa_d|^2 cannot exceed the incoming logarithmic carrier energy
+  certificate_price: inf(delta_v+r_m(v))=2W_active; half-power
+  bounded_error_example: Uniform divisor box with depth ceil(sqrt(m)); error<=144 but diagonal order m^(3/2)
+  source_sign_control: Complete residual has both signs after original P, inverse-logarithmic magnitude for polynomial auxiliary carrier
+  forbidden_future_move: Optimize a constant lift seed while treating edge recovery or auxiliary log(Ncal) as free
+  rollback: Before edgewise recovery and before discarding graph energy; keep actual source-dependent signed comparison
+  next_decisive_test: Incoming-divisibility inequality at a common physical upper endpoint, plus full P-return of a proposed aggregate map
+  consumer_power_progress: NONE
+  full_SP_G1_G3_RH: OPEN
+```
+
+## 16. Источники и внешние границы
+
+**[S1]** Авторитетный Q11 TXT, вычисленный общий SHA-256 в заголовке; исходный pin `e008fc963e751c0b9ddb7054066b039597642e0c`. Верхние строки 1–24 — действующее задание; девять исходных тел и их raw-диапазоны в приложении A. Полные исходники прочитаны, но старые приёмки остаются входами в своих областях.
+
+**[S2]** `MangoldtDivisibilityEnergy.lean`, прикреплённое тело SHA-256 `b88e05747c7152129420ef69299adc87562394e58c9cb1c0b9b530079f650141`. Использованы definitions `divPairs`, `B`, `diagWeight`, `primeForm`, `energy`; theorem `mangoldt_divisibility_energy_identity`; lemma `diagWeight_le`; theorem `primeForm_le_log`. Новый Hilbert-valued перенос доказан в §2, не приписан Lean-файлу.
+
+**[S3]** `CCM_Q11_DIVISIBILITY_LIFT_PREFLIGHT.md`: power-weight sampling уже проверен, не повторён как новая попытка. `CCM_FIXED_PRIME_COMPRESSION_TEST.md`: исходная Gram-мультипликативность не предполагается. `CCM_SPARSE_BAND_RECEIVER.md`: исходные norm/Gram/Fourier-return обязательства для §8 и unchanged consumer. Все полные тела входят в [S1].
+
+**[W1]** NIST DLMF §27.5, Eq.27.5.5: \(\sum_{d\mid n}\Lambda(d)=\log n\) и Möbius inversion. Это нормировка конечной арифметики. Её последствия (5.1),(9.5) доказаны здесь.
+
+**[W2]** NIST DLMF §27.12, Eq.27.12.5: обычная безусловная PNT. Только следствия \(\vartheta(x)\sim x\), \(\psi(x)\sim x\) используются для размеров цен. Они следуют из \(\pi(x)\sim x/\log x\) частичным суммированием; разность \(\psi-\vartheta\) не больше \(\sqrt x(\log x)^2/\log2=o(x)\), если грубо посчитать все proper powers. Никакой RH-ошибки или нового zero-free strip не импортировано.
+
+```text
+https://dlmf.nist.gov/27.5#E5
+https://dlmf.nist.gov/27.12#E5
+```
+
+**[S4]** Bootstrap `PROSHKA_SYSTEM_PROMPT_v2.md`, GitHub blob `e0127d491799f7764e4f50e1ae4ed4cfcaf73c13`. Это протокол аудита, не арифметический источник.
+
+
+## Приложение A. Побайтно проверенные тела девяти источников
+
+| Путь | Raw lines тела | Байт | SHA-256 |
+|---|---:|---:|---|
+| `docs/literature/openai_math_2026-10-07/CCM_HIGH_ORDER_Q10_CONCLUSION.md` | 88–152 | 5597 | `8166015d037803313da2afea542bebeaa11ba2e85ea5de79f9167c1ba33c5f9d` |
+| `docs/literature/openai_math_2026-10-07/PROSHKA_CCM_HIGH_ORDER_SIGNED_RETURN_Q10_VERDICT_2026-10-21.md` | 157–1465 | 83808 | `13d8f3a7bab5def121d04c3575018c50918e29ce8950aad80c6a82ce6c18db28` |
+| `docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md` | 1470–1594 | 5968 | `967e1533d439d5efaf9bd543f8377b69cbf76d22134c2d28a7c346d9bb733a1c` |
+| `docs/literature/openai_math_2026-10-07/CCM_Q11_DIVISIBILITY_LIFT_PREFLIGHT.md` | 1599–1701 | 5418 | `cacb6a5f2c69b0e6b8e1d07114c64eee734515513d642002ee572e4883727453` |
+| `docs/literature/openai_math_2026-10-07/CCM_Q11_MOBIUS_PAIR_RETURN.md` | 1706–1795 | 4597 | `0401fbcbb5da07991907d781ac7d9c73246e48739b74d611254304a60812c75d` |
+| `docs/literature/openai_math_2026-10-07/CCM_FIXED_PRIME_COMPRESSION_TEST.md` | 1800–1927 | 8318 | `833d2d3ff218c16e62a3c0f179f847e264e54536b11e5cff3b9eeec1fb687d09` |
+| `docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md` | 1932–2000 | 6174 | `0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06` |
+| `docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md` | 2005–2057 | 3751 | `6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1` |
+| `q3.lean.aristotle/Q3/Proofs/RouteB/MangoldtDivisibilityEnergy.lean` | 2062–2513 | 19935 | `b88e05747c7152129420ef69299adc87562394e58c9cb1c0b9b530079f650141` |
+
+## Приложение B. Неизменённая регистрация до исполняемых контролей
+
+```json
+{
+  "request_file": "PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_2026-10-22.txt",
+  "bytes": 155127,
+  "lf": 2513,
+  "sha256": "195b50976e9683815d0e98e6f3719efdd91218ef77c951a6f790057a6b34fcda",
+  "stage": "All nine source bodies read and hashes verified; preliminary paper design, before new executable mathematical controls. No prediction of a full source improvement.",
+  "chosen_mechanism": "Hilbert-valued divisibility-energy theorem applied to an exact isometric logarithmic translation-orbit lift; retain full physical zero extension and quantify all edge-correlation defects.",
+  "predictions": [
+    "The Hilbert-valued lift preserves the physical L2 norm exactly and multiplies edge d by a seed autocorrelation kappa_d, with no sampling Jacobian.",
+    "All missing original coefficients are returned by one explicit signed residual, including every proper prime power and the upper endpoint.",
+    "Divisibility and Cauchy give sum_d Lambda(d)|kappa_d|^2 <= log(auxiliary N) for normalized finite seeds; edge matching cannot be treated as free.",
+    "Discarding the positive graph energy and paying the complete coefficient defect by contraction norms cannot beat half-power; this does not bound actual CCM from below.",
+    "A more general t-dependent partition-of-unity lift has an exact functional-norm identity but requires a separately computed overlap/diagonal budget; no success of this repair is assumed."
+  ],
+  "negative_controls": [
+    "Deleting the factor kappa_d must fail a finite source coefficient identity.",
+    "Dropping a proper prime power or an edge across auxiliary support must fail the energy expansion.",
+    "Replacing a Gram product after original Fourier projection by an uncompressed shift product is not used.",
+    "A cheap seed supported at n=1 must have zero graph contribution and leave the full source as residual."
+  ],
+  "not_claimed": [
+    "New full CCM exponent",
+    "RH",
+    "Lean run",
+    "Arb certification",
+    "Independent audit"
+  ]
+}
+```
+
+## Приложение C. Полный точный проверяющий
+
+Сохрани блок как `check_q11.py`, JSON приложения B — как `registration.json` рядом. На Linux/macOS запуск: `python3 check_q11.py`. Подстановок переменных или путей нет. Нужна только стандартная библиотека Python.
+
+```python
+"""Q11 exact finite algebra controls; not a CCM spectral/asymptotic certificate.
+Run on Linux/macOS: python3 check_q11.py
+Put registration.json beside this file. No variable/path substitution is needed.
+Only the Python standard library is used.
+"""
+from fractions import Fraction as F
+from collections import Counter
+from itertools import product
+from pathlib import Path
+from math import comb
+import json, hashlib
+
+C = Counter()
+def ck(v, name):
+    if not v:
+        raise AssertionError(name)
+    C[name] += 1
+
+def fac(n):
+    ans = {}; p = 2
+    while p*p <= n:
+        while n % p == 0:
+            ans[p] = ans.get(p, 0) + 1; n //= p
+        p += 1
+    if n > 1: ans[n] = ans.get(n, 0) + 1
+    return ans
+
+def lam_prime(n):
+    z = fac(n)
+    return next(iter(z)) if len(z) == 1 else None
+
+def mu(n):
+    z = fac(n)
+    return 0 if any(e > 1 for e in z.values()) else (-1)**len(z)
+
+def fadd(a, b, scale=F(1)):
+    out = a.copy()
+    for p, x in b.items(): out[p] = out.get(p, F(0)) + scale*x
+    return {p: x for p, x in out.items() if x}
+
+def term(p, x): return {} if p is None or not x else {p: F(x)}
+
+# Gaussian rationals, and finite vectors thereof.
+def zadd(a, b): return (a[0]+b[0], a[1]+b[1])
+def zsub(a, b): return (a[0]-b[0], a[1]-b[1])
+def zscale(a, x): return (a[0]*x, a[1]*x)
+def zinner(a, b): return (a[0]*b[0]+a[1]*b[1], a[0]*b[1]-a[1]*b[0])
+def inner(a, b):
+    z=(F(0), F(0))
+    for x,y in zip(a,b): z=zadd(z,zinner(x,y))
+    return z
+
+def norm(a): return inner(a,a)[0]
+def sub(a,b): return [zsub(x,y) for x,y in zip(a,b)]
+
+# Exact graph identity in coordinates v_n=x_n/sqrt(n).
+# Every coefficient below is rational times a formal log(p).
+def data(N, kind):
+    x={}
+    for n in range(1,N+1):
+        if kind == 0:
+            x[n]=[(F(1),F(0)),(F(n%3,3),F(0))]
+        elif kind == 1:
+            x[n]=[(F((-1)**n,n+1),F(n%3-1,5)),(F(2-n%4,7),F((-1)**n,3))]
+        else:
+            x[n]=[(F(n%5,4),F(1-n%3,6)),(F(n%2,3),F(2-n%5,9))]
+    return x
+
+def graph_parts(N,x,ratio_cap=None):
+    inc={};out={};g={};energy={}
+    for n in range(1,N+1):
+        for d in range(2,N//n+1):
+            if ratio_cap is not None and d > ratio_cap: continue
+            p=lam_prime(d)
+            if p is None: continue
+            den=F(1,n*d)
+            inc=fadd(inc,term(p,den*norm(x[n*d])))
+            out=fadd(out,term(p,den*norm(x[n])))
+            g=fadd(g,term(p,2*den*inner(x[n],x[n*d])[0]))
+            energy=fadd(energy,term(p,den*norm(sub(x[n*d],x[n]))))
+    return inc,out,g,energy
+
+for n in range(1,97):
+    z={}
+    for d in range(1,n+1):
+        if n%d == 0:
+            z=fadd(z,{p:F(e*mu(d)) for p,e in fac(n//d).items()})
+    ck(z==term(lam_prime(n),1),'actual_Mobius_log_identity_including_powers')
+
+for N in range(1,33):
+    for kind in range(3):
+        x=data(N,kind); mass=sum(norm(x[n])/n for n in x)
+        ck(mass>0,'nonzero_exact_seed_mass')
+        inc,out,g,en=graph_parts(N,x)
+        logdiag={}
+        for n in x:
+            logdiag=fadd(logdiag,{p:F(e)*norm(x[n])/n for p,e in fac(n).items()})
+        ck(inc==logdiag,'incoming_divisor_diagonal_equals_log_n')
+        ck(fadd(fadd(inc,out),g,-1)==en,'full_Hilbert_graph_energy_identity')
+        ck(all(v>=0 for v in en.values()),'energy_positive_in_each_formal_prime_log')
+        coherent={}
+        for d in range(2,N+1):
+            t=(F(0),F(0))
+            for n in range(1,N//d+1):
+                t=zadd(t,zscale(inner(x[n],x[n*d]),F(1,n)))
+            k2=(t[0]*t[0]+t[1]*t[1])/(d*mass*mass)
+            multiples=sum(norm(x[j])/j for j in range(d,N+1,d))/mass
+            ck(k2<=multiples<=1,'edge_coherence_paid_by_incoming_divisibility_mass')
+            coherent=fadd(coherent,term(lam_prime(d),k2))
+        upper={p:v/mass for p,v in logdiag.items()}
+        ck(all(coherent.get(p,F(0))<=upper.get(p,F(0)) for p in set(coherent)|set(upper)),
+           'joint_Mangoldt_coherence_energy_bound')
+        # No square roots needed for the p=2 real-part gap test.
+        t2=F(0)
+        for n in range(1,N//2+1):t2+=inner(x[n],x[2*n])[0]/n
+        K=N.bit_length() # 2^K>N, exactly floor(log_2 N)+1
+        ck(t2<=0 or t2*t2<=2*mass*mass*(1-F(1,K*K))**2,
+           'finite_support_fixed_prime_coherence_gap')
+        for cap in (1,2,5,11):
+            ai,ao,ag,ae=graph_parts(N,x,cap)
+            extra=fadd(fadd(inc,out),fadd(ai,ao),-1)
+            ck(fadd(fadd(inc,out),ag,-1)==fadd(ae,extra),
+               'truncated_source_graph_retains_both_extra_diagonals')
+            ck(all(v>=0 for v in extra.values()),'extra_graph_edges_have_paid_diagonals')
+
+# Deliberate coefficient errors: proper powers and doubled edge.
+x={1:[(F(1),F(0))],2:[(F(1),F(0))]}
+i,o,g,en=graph_parts(2,x)
+ck(en=={} and g=={2:F(1)},'source_Lean_calibration_energy_zero')
+ck(fadd(fadd(i,o),g,-2)=={2:F(-1)},'doubled_edge_has_strict_negative_log2_margin')
+x=data(16,1);i,o,g,en=graph_parts(16,x)
+wrong_inc={}
+for n in x:
+    # Wrong: count only prime divisors once, omit p^2,p^3,...
+    wrong_inc=fadd(wrong_inc,{p:norm(x[n])/n for p in fac(n)})
+ck(i!=wrong_inc,'omitted_proper_prime_power_detected')
+
+# A literal finite translation representation for algebra checks only.
+# Multiplicative primes have additive integer lengths; this is not a physical CCM cell.
+def length(n): return sum((p-1)*e for p,e in fac(n).items())
+def shift(f,s): return {t-s:v for t,v in f.items()}
+def fi(f,g): return sum(f.get(t,F(0))*g.get(t,F(0)) for t in set(f)|set(g))
+def fnorm(f):return fi(f,f)
+def fdiff(f,g):return {t:f.get(t,F(0))-g.get(t,F(0)) for t in set(f)|set(g)}
+for N in (2,4,8,12):
+    for f in ({0:F(1),1:F(-2),3:F(1)}, {0:F(1,2),2:F(1),5:F(-1,3)}):
+        a={n:F(n%3+1,n+1) for n in range(1,N+1)}
+        mass=sum(a[n]**2/n for n in a)
+        lifted={n:{t:a[n]*v for t,v in shift(f,length(n)).items()} for n in a}
+        ck(sum(fnorm(lifted[n])/n for n in a)==mass*fnorm(f),
+           'translated_source_lift_preserves_norm_exactly')
+        direct={};compressed={};en={};diag={}
+        for n in a:
+            for d in range(2,N//n+1):
+                p=lam_prime(d)
+                if p is None:continue
+                direct=fadd(direct,term(p,2*fi(lifted[n],lifted[n*d])/(n*d)))
+                compressed=fadd(compressed,term(p,2*a[n]*a[n*d]*fi(f,shift(f,length(d)))/(n*d)))
+                en=fadd(en,term(p,fnorm(fdiff(lifted[n*d],lifted[n]))/(n*d)))
+                diag=fadd(diag,term(p,(fnorm(lifted[n*d])+fnorm(lifted[n]))/(n*d)))
+        ck(direct==compressed,'all_edge_correlations_match_the_nondiagonal_lift')
+        ck(fadd(diag,direct,-1)==en,'complete_lifted_energy_keeps_physical_mixed_terms')
+        if N==4:
+            wrong={}
+            for d in range(2,N+1):
+                p=lam_prime(d)
+                if p is not None:
+                    # Free factor kappa_d=1 cannot be substituted; rational comparison
+                    # uses deliberately incorrect copied graph overlaps instead.
+                    wrong=fadd(wrong,term(p,2*mass*fi(f,shift(f,length(d)))/d))
+            ck(wrong!=direct,'free_edge_recovery_detected')
+
+# Complete multiplicative boxes, including prime powers above the depth.
+primes=(2,3,5)
+for K in (2,3,4,5):
+    box={tuple(e) for e in product(range(K), repeat=3)}
+    q=F(len(box))
+    ck(len(box)==K**3,'divisor_box_exact_normalization')
+    for i in range(3):
+        ck(sum(F(e[i]) for e in box)/q==F(K-1,2),'divisor_box_incoming_log_budget')
+    for a in range(K+2):
+        e=(a,0,0)
+        got=sum(tuple(n[j]+e[j] for j in range(3)) in box for n in box)/q
+        ck(got==max(F(0),1-F(a,K)),'all_prime_powers_share_one_box_coordinate')
+    for e in ((1,1,0),(1,2,1),(2,0,2),(K,1,0)):
+        got=sum(tuple(n[j]+e[j] for j in range(3)) in box for n in box)/q
+        expected=F(1)
+        for a in e:expected*=max(F(0),1-F(a,K))
+        ck(got==expected,'mixed_prime_box_intersections_retained')
+
+# Compact physical profile: exponential contacts verified by exact primitives.
+def padd(a,b):
+    z=[F(0)]*max(len(a),len(b))
+    for i,x in enumerate(a):z[i]+=x
+    for i,x in enumerate(b):z[i]+=x
+    return z
+
+def scale(a,x):return [x*v for v in a]
+def deriv(a):return [i*a[i] for i in range(1,len(a))] or [F(0)]
+def val(a,x):return sum(c*x**i for i,c in enumerate(a))
+def mul(a,b):
+    z=[F(0)]*(len(a)+len(b)-1)
+    for i,x in enumerate(a):
+        for j,y in enumerate(b):z[i+j]+=x*y
+    return z
+
+def integ(a):return sum(c/F(i+1) for i,c in enumerate(a))
+for r in (4,7,10):
+    h=[F(0)]*r+[F((-1)**j*comb(r,j)) for j in range(r+1)]
+    ell=F(1,16); hp=deriv(h);hpp=deriv(hp)
+    g=padd(scale(hpp,ell**-2),scale(h,-F(1,4)))
+    n=ell*integ(mul(g,g))
+    ck(n>0,'compact_constraint_profile_nonzero_norm')
+    for a in (F(1,2),-F(1,2)):
+        u=padd(scale(hp,1/ell),scale(h,-a))
+        ck(padd(scale(deriv(u),1/ell),scale(u,a))==g and val(u,0)==val(u,1)==0,
+           'both_original_exponential_moments_exact')
+    ck(val(g,0)==val(g,1)==0,'physical_endpoint_contact_exact')
+ck(2/(1-F(1,16))<3 and 2*(1-F(1,16))>1 and 1/(1-F(1,16))<2,
+   'two_packet_overlap_isolates_only_actual_prime2')
+for eps in (F(1,64),F(1,128),F(1,257)):
+    r=(eps.denominator+eps.numerator-1)//eps.numerator+3
+    ck(F(1,2)-eps*(F(r)-F(1,2))<0,
+       'full_source_projection_error_smaller_than_any_log_gap')
+
+out={'status':'PASS_EXACT_LOCAL_CONTROLS','total_checks':sum(C.values()),'counts':dict(C),
+     'scope':'Finite Hilbert/divisor identities, actual formal prime logs and powers, lift norms, edge-correlation prices, multiplicative boxes and compact-profile contacts. Not a full CCM sign, asymptotic or RH certificate.',
+     'lean_runs':0,'arb_runs':0,'full_ccm_spectral_runs':0,'large_prime_sum_runs':0,
+     'independent_review':'NOT_RUN',
+     'registration_sha256':hashlib.sha256(Path(__file__).with_name('registration.json').read_bytes()).hexdigest(),
+     'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+Path(__file__).with_name('exact_results.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(out,ensure_ascii=False,indent=2))
+```
+
+### Фактический результат текущего запуска
+
+```json
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS",
+  "total_checks": 3027,
+  "counts": {
+    "actual_Mobius_log_identity_including_powers": 96,
+    "nonzero_exact_seed_mass": 96,
+    "incoming_divisor_diagonal_equals_log_n": 96,
+    "full_Hilbert_graph_energy_identity": 96,
+    "energy_positive_in_each_formal_prime_log": 96,
+    "joint_Mangoldt_coherence_energy_bound": 96,
+    "finite_support_fixed_prime_coherence_gap": 96,
+    "truncated_source_graph_retains_both_extra_diagonals": 384,
+    "extra_graph_edges_have_paid_diagonals": 384,
+    "edge_coherence_paid_by_incoming_divisibility_mass": 1488,
+    "source_Lean_calibration_energy_zero": 1,
+    "doubled_edge_has_strict_negative_log2_margin": 1,
+    "omitted_proper_prime_power_detected": 1,
+    "translated_source_lift_preserves_norm_exactly": 8,
+    "all_edge_correlations_match_the_nondiagonal_lift": 8,
+    "complete_lifted_energy_keeps_physical_mixed_terms": 8,
+    "free_edge_recovery_detected": 2,
+    "divisor_box_exact_normalization": 4,
+    "divisor_box_incoming_log_budget": 12,
+    "all_prime_powers_share_one_box_coordinate": 22,
+    "mixed_prime_box_intersections_retained": 16,
+    "compact_constraint_profile_nonzero_norm": 3,
+    "both_original_exponential_moments_exact": 6,
+    "physical_endpoint_contact_exact": 3,
+    "two_packet_overlap_isolates_only_actual_prime2": 1,
+    "full_source_projection_error_smaller_than_any_log_gap": 3
+  },
+  "scope": "Finite Hilbert/divisor identities, actual formal prime logs and powers, lift norms, edge-correlation prices, multiplicative boxes and compact-profile contacts. Not a full CCM sign, asymptotic or RH certificate.",
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "full_ccm_spectral_runs": 0,
+  "large_prime_sum_runs": 0,
+  "independent_review": "NOT_RUN",
+  "registration_sha256": "696e4fb2fe324773355099d5d42a3083e95018595801a9ad8dc14cad75bfccfa",
+  "script_sha256": "91e66992b2ba290db7c19921c294f42a6d44af95b534a2a6ede633fd9492bfe2"
+}
+```
+
+**Конечная граница:** точная изометрия, полная ошибка и ограничение цены конкретного семейства доказаны на бумаге и прошли указанные локальные контроли. Новая полная степень CCM и независимая проверка нового PAPER-вывода не получены.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_Q12_RADIAL_ENERGY_TEST.md
+
+# Post-Q11 test: retaining radial graph energy still loses the original phase
+
+2026-10-22. Root derivation; independent read-only q12_radial_audit bounded PAPER PASS.
+Original integer m, L=log m, M=floor(m^epsilon), fixed epsilon>0,
+f=Fc with c in the original three-constraint ran(P). No new source.
+
+## Proposed repair under test
+
+Do not discard the entire Q11 graph energy. Instead use the reverse-triangle
+lower bound on each graph square, keeping its radial variation exactly, and
+pay the full residual by its pointwise modulus. Allow every measurable
+position-dependent Hilbert-valued field v_n(t), sum_n||v_n(t)||²=1 a.e.
+This is stronger than Q11's constant-profile cap plus error, but still loses
+relative phases. Fields extend by zero outside [0,L]; f is zero-extended too.
+Let N be any finite auxiliary graph size, not necessarily polynomial in m.
+
+Write a_d=Lambda(d)/sqrt(d), h=log d, v_n=0 for n>N, and
+
+ kappa_d(t)=sum_(nd<=N) <v_n(t),v_nd(t+h)>,
+ sigma_d(t)=sum_(nd<=N) ||v_n(t)|| ||v_nd(t+h)||.
+
+Then |kappa_d(t)|<=sigma_d(t)<=1 on active overlaps. Missing graph edges
+have both coefficients zero. D_v[f]=integral sum_n d_N(n)||v_n(t)||² |f(t)|².
+Here d_N(n)=log n+sum_(2<=d<=N/n) Lambda(d)/d.
+The full original Q11 identity remains S[f]=D_v[f]-E_v[f]+R_v[f].
+
+Define the radial energy over ALL graph edges, including d>=m:
+
+ E_rad[v,f]=sum_(nd<=N) Lambda(d) integral_R
+  (||v_nd(u+log(nd))|| |f(u+log(nd))|
+   -||v_n(u+log n)|| |f(u+log n)|/sqrt(d))² du.
+
+Reverse triangle gives E_v>=E_rad. Expand this scalar square, without
+removing either diagonal, to get exactly
+
+ D_v[f]-E_rad[v,f]
+ =2 sum_(2<=d<m) a_d integral_0^(L-h) sigma_d(t)|f(t)||f(t+h)|dt.
+
+The residual is bounded by
+
+ R_v[f]<=R_abs[v,f]
+ =2 sum_(2<=d<m) a_d integral_0^(L-h) |1-kappa_d(t)| |f(t)||f(t+h)|dt.
+
+Thus S[f]<=B_v[f]:=D_v[f]-E_rad[v,f]+R_abs[v,f]. But pointwise
+
+ sigma_d+|1-kappa_d| >= |kappa_d|+|1-kappa_d| >=1,
+
+so for EVERY field, graph size and original admissible f,
+
+ B_v[f]>=S_abs[f]:=2 sum_(2<=d<m) a_d integral |f(t)||f(t+h)|dt. (A)
+
+This is a statement about the derived majorant B_v, not a lower bound on S.
+The modulus function need not belong to ran P; it is only evaluated as a
+nonlinear majorant of an original f. No substitute source is introduced.
+
+## Genuine obstruction on original P, using actual primes
+
+Use exactly the already audited Q03 five-mode unit probe f_e/||f_e||:
+
+ f_e(t)=-3/4+(1+4w²)cos(wt)-(1/4+4w²)cos(2wt), w=2pi/L.
+
+It satisfies endpoint and both exp(+-t/2) constraints. For L>=2pi, the
+existing CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md proves uniformly
+
+ 2 integral f_e(t)f_e(t+log n)dt / ||f_e||² >= kappa L^-9
+
+when exp(-1/2)m<n<=exp(-1/4)m. Absolute products dominate these real products.
+All terms of S_abs are nonnegative. Hence that same fixed-width prime block
+and unconditional PNT imply, for all sufficiently large integers m,
+
+ B_v[f_e/||f_e||]>=S_abs[f_e/||f_e||]>=c sqrt(m)/L^9. (B)
+
+Constants/threshold independent of field and graph N. Fixed epsilon ensures
+M>=2 eventually. Thus no choice of these fields can make THIS radial-energy
+plus pointwise-absolute-defect certificate sub-half-power, even on original P
+or a cofinal subsequence. This does NOT prove a lower bound on full CCM,
+T_gtR, or S. Negative inter-block/phase contributions were lost in B_v.
+
+The PNT input pi(x)~x/log x was freshly checked in NIST DLMF27.12.5:
+https://dlmf.nist.gov/27.12#E5 . No RH assumption or short-interval PNT.
+
+## Exact surviving credit and actual impasse
+
+There is an exact nonnegative phase credit C_v=E_v-E_rad and defect credit
+J_v=R_abs-R_v. Therefore S=B_v-C_v-J_v. Explicitly on each active overlap,
+with z=conj(f(t))*f(t+h),
+
+ C_v=2 sum a_d integral (sigma_d |z|-Re(kappa_d z)),
+ J_v=2 sum a_d integral (|1-kappa_d| |z|-Re((1-kappa_d)z)).
+
+Both integrands are nonnegative. Their sum is
+2 sum a_d integral[(sigma_d+|1-kappa_d|)|z|-Re z], exactly B_v-S.
+Estimating this credit from below by B_v minus the desired budget is the
+original hard inequality, not a new supplier. All mixed mode products remain
+in z until the precisely identified radial/modulus step.
+
+Outcome: reject this particular phase-blind joint repair. One substantive
+post-Q11 attempt; the credit identity is its diagnosis, not a second attempt.
+Rollback before replacing vector squares by radial squares and before taking
+absolute defect. A successful new mechanism must exploit relative phases
+across actual prime powers/blocks on original P; merely optimizing fields or
+requiring the restated lower credit is not progress. No full exponent gain.
+
+## Audit and decision
+
+Independent readonly q12_radial_audit PASS: all edge diagonals, reverse
+triangle, full defect, original-P probe, fixed-ratio PNT, uniformity in
+fields/N and cofinal scope checked. Requested explicit d_N added above.
+No numerical, Lean or Arb run; no new actual source table.
+Shelf q12_shelf_joint identified the prior raw-block and cap no-go and
+projection-only Mellin test; this extends the certificate obstruction to
+position-dependent fields retaining radial energy. It is not a new proof
+of the already known raw-block lower bound. ask.sh phase-credit query
+returned INCOMPLETE (semantic freshness), not global absence.
+Actual impasse: no source-specific lower estimate for combined phase credit.
+Owner scenario permits Pro review at this impasse, without fabricating three
+attempts. Ask for a quantitatively distinct phase-sensitive mechanism or
+a justified rollback, not a renamed credit hypothesis.
+AUTOPSY: dropped=COUPLING; note=Radial graph squares and absolute defect lose relative phases and dominate the actual positive modulus form.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md
+
+# Q03 waiting result: an actual prime block cannot have a subpower upper bound
+
+2026-10-20. Root derivation; independent bounded PAPER review by
+ccm_q01_return_review: PASS (factorization, normalization, PNT transfer, scope).
+Pro Q03 is running; this note has NOT been sent as a second prompt.
+
+## Statement with original source preserved
+
+Let L=log m>=2pi, w=2pi/L and M>=2. Use the original three-constraint
+projector P on the original modes |j|<=M, with N=m. Put
+alpha=exp(-1/2), beta=exp(-1/4), and define the literal uncentered block
+
+    B_m=sum_(alpha*m<n<=beta*m) Lambda(n)/sqrt(n) P Q_M(log n)P.
+
+All prime powers in this interval are included. There is an absolute c>0
+such that for every sufficiently large integer m,
+
+    lambda_max(B_m|ran P) >= c sqrt(m)/(log m)^9.              (1)
+
+Consequently this BLOCK does not admit B_m<=K m^eta P eventually, for any
+fixed finite K and eta<1/2. In particular it cannot be independently paid
+with eta(epsilon)->0 along M=floor(m^epsilon), for small fixed epsilon.
+The statement also excludes a cofinal such block bound, since (1) is eventual.
+
+THIS IS NOT A LOWER BOUND FOR THE COMPLETE A_prime, T_gtR OR V.
+
+## Exact admissible vector and uniform log interval
+
+Take the even real Fourier polynomial from CCM_Q03_ENDPOINT_SIGN_TEST.md:
+
+    f(t)=-3/4+(1+4w^2)cos(wt)-(1/4+4w^2)cos(2wt).
+
+Its endpoint value and both exponential moments vanish exactly, so its
+coefficient vector belongs to the ORIGINAL ran(P). Let Fc=f/||f||_2.
+The exact factorization is
+
+    f(t)=(1-cos wt)[12w^2-(1/2+8w^2)(1-cos wt)].
+
+For |t|<=1/2 and 0<w<=1, elementary cosine bounds give
+
+    w^2 t^2/3 <= 1-cos(wt) <= w^2 t^2/2,
+    (1/2+8w^2)(1-cos wt) <=17w^2/16,
+    f(t)>=(10/3)w^4 t^2.
+
+The lower cosine bound follows, for example, from
+1-cos x>=x^2/2-x^4/24>=x^2/3 for |x|<=1/2.
+For h in [1/4,1/2], periodicity and evenness therefore yield
+
+ q_f(L-h)=2 integral_0^h f(t-h)f(t)dt
+          >=(200/9)w^8 integral_0^h t^2(h-t)^2dt
+          =(20/27)w^8 h^5.
+
+Orthogonality gives
+
+ ||f||_2^2=L[9/16+((1+4w^2)^2+(1/4+4w^2)^2)/2]
+           <=(707/32)L <23L.
+
+Thus for the same UNIT vector c at this cell, uniformly in h in [1/4,1/2],
+
+ c*Q_M(L-h)c >= kappa L^(-9),
+ kappa=20(2pi)^8/(621*4^5)>0.                              (2)
+
+Unlike the earlier Taylor sign test, (2) has a fixed log-width and explicit
+normalization; no unknown L-dependent small neighborhood is used.
+All mixed Fourier terms are retained through the exact overlap formula.
+
+## Actual primes, not a synthetic signed source
+
+Every n in (alpha*m,beta*m] has h=log(m/n) in [1/4,1/2), so (2) applies.
+All Lambda(n) are nonnegative, and every summand has positive quadratic form
+on c. Retaining just primes gives a legitimate lower bound for this block.
+Unconditional PNT pi(x)~x/log x implies, for these fixed alpha,beta,
+
+    pi(beta*m)-pi(alpha*m) >= (beta-alpha)m/(2L)
+
+for every sufficiently large m. Each retained prime has log p>=L/2 and
+p^(-1/2)>=m^(-1/2). Hence
+
+ c*B_m c >= kappa L^(-9) * (L/2)/sqrt(m)
+                     * (beta-alpha)m/(2L)
+          =kappa(beta-alpha)sqrt(m)/(4L^9).
+
+Rayleigh's principle proves (1) with c=kappa(beta-alpha)/4.
+For eta<1/2, m^(1/2-eta)/L^9 diverges, proving the stated exclusion.
+No numerical threshold for eventual PNT is claimed, and no RH-strength
+error term is used.
+
+PNT source live-read by root: NIST DLMF 27.12.5,
+https://dlmf.nist.gov/27.12#E5 (20 October 2026). Its unconditional
+pi(x)-li(x)=O(x exp(-c sqrt(log x))) implies the elementary asymptotic used
+above. Independent reviewer checked the transfer; root checked the source.
+
+## What this forces, and what it does not
+
+A proof that separately upper-bounds EVERY raw prime block by subpower
+cannot work for this partition. Some genuine signed comparison across blocks,
+or centering BEFORE estimating them, is essential for such an approach.
+This is stronger than an arbitrary-coefficient counterexample: the block
+uses the actual von Mangoldt weights and actual original projected modes.
+
+It does not contradict the target full CCM estimate. On this same vector,
+other blocks can be negative; summing them is not a Loewner monotone operation
+because Q_M(s) is not positive semidefinite. In fact the existing full-window
+continuous identities already show cancellation of large smooth pieces.
+Do not infer any lower bound for T_gtR by restricting the global short-divisor
+return: that return was paid globally, not blockwise. No term of the production
+source has been removed and no new source has replaced it.
+
+No new full exponent, SP/RH result, or forbidden actual-cancellation claim.
+Use (1) as a discriminator for the eventual Q03 answer, not a new demand that
+it prove a false independent-block lemma. No additional Pro message sent.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md
+
+# Post-Q10 own attempt 1: the original projector does not remove slow Mellin modes
+
+2026-10-21. Original sparse CCM carrier, N=m,L=log m,
+M=floor(m^epsilon), all three original constraints. Root derivation and bounded independent
+q11_mellin_probe_review PAPER PASS. This is a control-source obstruction, NOT a result
+about actual Lambda, mu, zeros or the full CCM spectrum.
+
+## Scope and shelf
+
+Q10 paid geometric reconstruction but left the signed source-weight pairing
+unbounded. Test the possible shortcut that original P itself kills the slow
+source term, before another arithmetic assumption is introduced.
+
+Local ask.sh query `CCM Mellin exponential projection` returned INCOMPLETE
+(semantic freshness); kb.py found old normalization warnings, not a supplier.
+No absence claim. Direct reads of CCM_CONTINUOUS_RANK_TWO_TEST.md,
+CCM_SPARSE_BAND_RECEIVER.md, CCM_Q03_ENDPOINT_SIGN_TEST.md and
+CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md identify an existing exact probe.
+The probe is reused, not claimed as newly discovered. The new calculation is
+its response to a whole fixed-a family of Mellin source modes.
+
+## Same original vector, no additional constraints
+
+Let omega=2pi/L and
+
+    g(t)=(1-cos(omega*t))^2,
+    f(t)=(D^2-1/4)g(t)
+        =-3/8+2(omega^2+1/4)cos(omega*t)
+                    -(4omega^2+1/4)cos(2omega*t)/2.
+
+This is exactly half the Q03 even endpoint probe. It uses only modes |j|<=2,
+so belongs to every fixed-epsilon sparse band eventually. No frequency scale
+or source schedule changed. Its original Fourier coefficients are padded by
+zero outside these modes.
+
+Since g=g'=g''=0 at both endpoints, f(0)=f(L)=0. Integrating twice by parts,
+
+    integral exp(bt) f(t)dt=(b^2-1/4) integral exp(bt)g(t)dt.
+
+Thus both moments at b=+/-1/2 vanish exactly. The endpoint equation b*c=0
+also holds. Consequently f/||f|| is in ran(original P).
+Orthogonality of the real Fourier modes gives
+
+    ||f||^2=L D(omega),
+    D(omega)=35/128+(5/4)omega^2+4omega^4>0.                 (1)
+
+All mixed terms of the eventual translation form remain in f.
+
+## Exact full-weight response, before Cauchy
+
+Fix a in (0,1/2) before m grows. Define G_a as the original finite Fourier
+compression of kernel exp(a|t-u|), equivalently integral_0^L exp(as)Q(s)ds.
+The same algebra as the existing continuous rank-two test gives
+
+    exp(a|t-u|)=exp(at)exp(-au)+exp(-at)exp(au)-exp(-a|t-u|).
+
+The decaying kernel H_a is positive and has norm at most2/a. For example,
+exp(-a|t-u|)=2a integral_{-infinity}^{min(t,u)}
+exp(-a(t-v))exp(-a(u-v))dv is a Gram representation; Schur row mass is<=2/a.
+These facts survive finite Fourier compression.
+
+Put I_-=integral exp(-at)f(t)dt. Direct cosine integration yields
+
+    I_-=(a^2-1/4) 6omega^4(1-exp(-aL))
+                       /[a(a^2+omega^2)(a^2+4omega^2)].     (2)
+
+f(L-t)=f(t), so I_+=exp(aL)I_-. Hence for the original UNIT coefficient
+vector c representing f/||f||, the exact signed identity is
+
+    c*G_a c=2m^a I_-^2/(L D(omega))-c*H_a c,               (3)
+    0<=c*H_a c<=2/a.
+
+For fixed a, I_-/omega^4 tends to6(a^2-1/4)/a^5, a nonzero constant;
+D tends to35/128. Therefore there is c_a>0 and a late threshold such that
+
+    c*P G_a P c >= c_a m^a/L^9-2/a.                       (4)
+
+At a=1/2 the factor in (2) vanishes, recovering the old negative decaying
+kernel exactly. That special cancellation does not extend to (0,1/2).
+The constants/threshold in (4) depend on fixed a; no uniform limit a->0 or
+changing-a-with-m claim is made.
+
+## Consequence and exact limitation
+
+For the CONTROL source E_z(x)=x^z-1, z=a+1/2, and the literal matrix weight
+H_m(x)=x^(-1/2)P Q(log x)P, substitution x=exp(s) gives
+
+    integral_1^m H_m(x)dE_z(x)=z P G_a P.                  (5)
+
+Thus the complete source-weight pairing, retaining the exact original P,
+can have positive size at least a fixed multiple of m^a/L^9. This already
+occurs in five original modes. It excludes an automatic subpower bound
+from the three constraints and narrow mode count alone, even for this
+explicit smooth power-source family.
+It is stronger than merely observing the leading derivative in Q10 §8.3:
+that derivative survives the actual complete projected pairing as well.
+
+This control is NOT actual Lambda or an actual zero contribution (whose
+coefficient and complex phase cannot be changed). It is not a lower bound
+for S_m, T_{>R}, or K_m. It does not exclude arithmetic cancellation or a
+source-specific directed argument. Richardson reconstruction of the same
+model cannot change (5); any separately estimated pieces must sum back to it.
+
+Decision: do not pursue projection-only cancellation as a supplier. This is
+one post-Q10 no-gain discriminator, not an arithmetic improvement. The next
+candidate must identify an actual Lambda/mu relation unavailable to E_z, or
+use a different already-proved source-specific sufficient interface.
+Goal ACTIVE; RH OPEN; no new Pro message.
+
+## Verification
+
+56 rational exact controls check the Fourier normalization, endpoint,
+Laplace coefficient identity and both zero moments at four rational omega
+values and six rational a values. They are local algebra controls, not proof
+of the continuous/asymptotic claims. Script: ccm_projected_mellin_q11_checks.py.
+No SymPy dependency was installed (repository venv lacks it); the executed
+checker uses only Python Fraction. No Lean, Arb or actual CCM spectra.
+Independent readonly q11_mellin_probe_review PAPER PASS on this payload:
+verified all constraints, kernel sign, Jacobian, exact coefficients, asymptotic
+and control-only scope. No material finding. Wording about generic smoothness
+was narrowed to this explicit power-source family, as the reviewer requested.
+Two additional mpmath45 noninterval quadratures of the original5x5 Q matrix
+checked the full growing+decaying identity, at(L,a)=(40,1/4),(80,1/8).
+Relative residuals4.64e-44 and2.82e-44; not interval certificates or actual
+prime sums. They check normalization only, not the asymptotic theorem.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md
+
+# Actual continuous kernel: rank-two reduction and unpaid return
+
+2026-10-08. Root calculation independently checked by negative_moment_transfer for the kernel and short/long norms. Restricted moment corollary independently PASS in the same bounded audit. Not sent to Pro during Q6. RH/SP OPEN.
+
+Use the original Q05 Fourier synthesis phi_j(t)=L^(-1/2)exp(2pi i j t/L) on [0,L], zero outside, j=-m,...,m, L=log m. For translation T_s f(t)=f(t-s), direct integration gives Q_jk(s)=<phi_j,(T_s+T_s*)phi_k>, including the original diagonal and offdiagonal. Thus G_a=int_0^L exp(as)Q(s)ds is the finite Fourier compression of the kernel exp(a|t-u|), with no additional factor.
+
+The exact kernel identity is
+
+    exp(a|t-u|)=exp(at)exp(-au)+exp(-at)exp(au)-exp(-a|t-u|).
+
+Let v_+,v_- be the Fourier coefficient vectors of exp(±t/2). With omega_j=2pi j/L,
+
+    (v_+)_j=(sqrt(m)-1)/(sqrt(L)(1/2-i omega_j)),
+    (v_-)_j=(1-m^(-1/2))/(sqrt(L)(1/2+i omega_j)).
+
+Let H_full be the compressed decaying kernel exp(-|t-u|/2). Then
+
+    G_full=v_+v_-*+v_-v_+*-H_full,    0<=H_full, ||H_full||<=4. (1)
+
+Positivity follows, for example, from the integral Gram representation of exp(-a|t-u|); the norm follows from the Schur row integral<=2/a. Finite Fourier compression contracts the norm.
+
+Let b=ones/sqrt(2m+1), Pi=I-bb*, and P be the orthogonal projection onto span{b,v_+,v_-}^perp. Its removed dimension is at most3, with no Gram inverse assumption. P Pi=P and P G_full P=-P H_full P. This only controls that restricted subspace, not the full matrix.
+
+For Q05's fixed even p>=4, x=m^(1/(p-1)), split at s0=log x. From ||Q(s)||<=2,
+
+    ||G_short||<=4(sqrt(x)-1),
+    ||P G_long P||<=4sqrt(x),
+    ||H_long||<=4.                                             (2)
+
+Both continuous pieces have been retained with their actual signs. For the literal long prime-power adjacency
+
+    A_long=sum_(x<n<=m) Lambda(n)/sqrt(n) Q(log n),
+    V=Pi(A_long-G_long+H_long)Pi,
+
+we get the exact restricted identity
+
+    P V P=P A_long P+E,
+    E=P H_full P+P G_short P+P H_long P,
+    ||E||<=4sqrt(x)+4<=8sqrt(x).                               (3)
+
+Consequently
+
+    Tr|E|^p<=3*8^p m^(1+p/(2(p-1)))<=3*8^p m^(5/3).            (4)
+
+The previously checked positive-part Schatten norm comparison applies in both directions. A common-exponent positive-moment bound for P V P is thus equivalent to one for P A_long P, up to exponent max(A,5/3). This pays a restricted continuous return, not the actual full long-source moment.
+
+## What remains unpaid
+
+Removing the directions has NOT been justified for the original full spectral consumer. The full growing-continuous rank-two term can have size of order sqrt(m), and the prime couplings to these directions may cancel or reinforce it. The generic full-source second moment does not pay a subpolynomial Schur/low-rank return. Rank at most3 alone does not control the most negative eigenvalue.
+
+Alternatively, one could prove directly that every off-critical zero forces the same negative growth already in the P-restricted source. That requires a separate same-family receiver, not supplied by (1)–(4). The subsequent CCM_RESTRICTED_PRIME_RECEIVER.md provides an independently checked conditional construction; its prime spectral supplier is still OPEN. Naively applying a fullband second derivative to impose Laplace moment constraints costs m² and is not an acceptable return.
+
+The prime adjacency in (3) has deterministic shifts log n and original Fourier projections. It is not the OpenAI residue/divisor graph: no stochastic independence, conditional centering or path contraction has been imported. Estimating its nontrivial positive spectrum is still a source-specific arithmetic problem. No full floor or RH gain is claimed.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_LOG_DENSITY_CANCELLATION.md
+
+# Full-window logarithmic density cancellation under the original constraints
+
+2026-10-08. Root derivation; independent read-only sparse_band_receiver audit PASS for L1-L5, signs, endpoints and the positivity consequence below. Same original K_m, N=m and L=log m. This is a full-window continuous identity, not a prime estimate or a claimed full Ramanujan quadrature return.
+
+Let F be the original Fourier isometry into L2([0,L]), and Q(s)=F*(T_s+T_s*)F. Let P be either the full-band constraint projection or its sparse-band counterpart, padded into the original carrier. Both satisfy P v_+=P v_-=0 for v_±=F*exp(±t/2). The extra b constraint is retained but not needed for this identity.
+
+For real a>0 write G_a=F*[kernel exp(a|t-u|)]F and H_a=F*[kernel exp(-a|t-u|)]F. The accepted identity is
+
+    G_a = v_+(a)v_-(a)*+v_-(a)v_+(a)*-H_a,
+    G_a = integral_0^L exp(as) Q(s) ds.
+
+Here v_±(a)=F*exp(±at). Differentiate in a on the finite interval, with F and P held FIXED. Each derivative of the rank-two term has at least one undifferentiated v_+(a) or v_-(a). At a=1/2 it is killed by two-sided P compression. Consequently, with J=F*[kernel |t-u| exp(-|t-u|/2)]F,
+
+    P G'_(1/2) P = P J P,       ||J||<=8.                 (L1)
+
+The sign is positive here because dH_a/da is the negative of the |t-u| decaying kernel. The norm bound follows from the Schur row integral over the whole line, 2 integral_0^infinity s exp(-s/2)ds=8. Positivity of J as an operator is NOT asserted. No parameter-dependent projection is differentiated.
+
+Set A(t)=P Q(log t)P/sqrt(t), 1<=t<=m. Changing variables s=log t gives exactly
+
+    integral_1^m log(t) A(t)dt = P J P.                    (L2)
+
+Also the accepted rank-two identity gives
+
+    integral_1^m (1-1/t) A(t)dt = -2 P H_(1/2) P,
+    ||H_(1/2)||<=4.                                       (L3)
+
+For every fixed cutoff R>=1, its positive C_R is a scalar independent of t. Therefore the full smooth density term from the Ramanujan model has
+
+    integral_1^m [log(t)/C_R-1+1/t] A(t)dt
+       =P[J/C_R+2H_(1/2)]P,
+    norm <=8/C_R+8.                                       (L4)
+
+This remains true if R depends on m, since no derivative in m or R is used. It holds on the same sparse band as the conditional witness. Large smooth upper blocks need not be small individually; the full-window identity retains their mutual cancellation.
+
+The full combination in L4 is also positive semidefinite for C_R>=1. With Fourier variable xi, the whole-line multiplier of J/C+2H is
+
+    2[(1+1/C)/4+(1-1/C)xi^2]/(1/4+xi^2)^2 >=0.
+
+Zero-extension and compression preserve this positivity. This does not imply J alone is positive, nor any sign for the arithmetic discrepancy.
+
+## Exact unpaid arithmetic return
+
+Define b_R(n)=log(n)lambda_R(n)^2/C_R^2 as in CCM_DENSITY_PAIRING_TEST.md, and set b_R(1)=Lambda(1)=0. Define the FULL (not yet bounded) quadrature discrepancy
+
+    E_R = sum_(1<=n<=m) b_R(n) A(n)
+             -integral_1^m [log(t)/C_R] A(t)dt,
+    D_R = sum_(1<=n<=m) [Lambda(n)-b_R(n)] A(n).
+
+Then the full projected prime matrix satisfies
+
+    P Aprime P = P J P/C_R + E_R + D_R.                   (L5)
+
+Hence a subpolynomial upper bound for E_R+D_R would meet the prime receiver, since J/C_R has bounded norm (C_R>=1). The sparse smooth upper-block quadrature result does not yet bound E_R: all lower blocks and endpoints must be included, and small primes <=R can contribute to D_R. No term is omitted or given a favorable sign without proof.
+
+L4 supplies a bounded FULL smooth term, strengthening the earlier scalar observation that log(t)/C_R tends to 1/beta on upper blocks. It does not prove the combined arithmetic estimate in L5. The ongoing full-SP phase is unchanged; Q8 has not been sent.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md
+
+# Conditional off-critical witness on a sparse band of the original CCM matrix
+
+2026-10-08. Root derivation, independent read-only sparse_band_receiver audit PASS on the complete payload. The production matrix is still literal K_m with N=m,L=log m. Only a test subspace is restricted. No prime spectral bound or RH is proved; the active full-SP phase is not silently changed.
+
+## Claim and source
+
+Fix any alpha in (0,1), M=floor(m^alpha), and let H_(m,alpha) be the subspace of the ORIGINAL coefficient carrier supported on |j|<=M. Let P_(m,alpha) project onto its subspace satisfying the original three equations b*c=v_+*c=v_-*c=0. Original b has 2m+1 coordinates and v_± are the original Fourier coefficients of exp(±t/2) on [0,L]. Padding by zero identifies the equations with the corresponding truncated vectors, with the constant vector rescaled to unit norm. This does not create a new production matrix or change the m schedule.
+
+Conditional on a fixed zero xi(1/2+w)=0, w=delta+i gamma, delta>0, there are c_(w,alpha)>0 and a starting m such that EVERY later original cell has
+
+    lambda_min(K_m restricted to ran P_(m,alpha))
+            <=-c_(w,alpha) m^delta L^(-2delta).                (1)
+
+All constants may depend on fixed w,alpha and selected fixed derivative order. They do not depend on m. No uniform assertion as alpha tends to zero, nor any polylogarithmic-band assertion, is made.
+
+Use the already checked normalized derivative-filtered source pair in CCM_RESTRICTED_PRIME_RECEIVER.md: its two Laplace moments vanish, its full Weil value is -2r m^delta L^(-2delta), and its L2 norm stays bounded. Cut off inside [-L/2,L/2] with the same fixed-width smooth transition and translations h=L/2-log L. Every FIXED derivative L1 norm stays bounded; cutoff-form error is O(m exp(-cL²)). Both zero-extension strips remain part of the projection estimate below.
+
+## Sparse Fourier projection: actual form norm
+
+The general fixed-q estimate in PROSHKA_NEGATIVE_BOTTOM_NORMING_INLINE_2026-10-06.md equations(2),(3), inherited by NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md, applies with Omega_M=2pi M/L. Let e=f-f_M be the Fourier tail of the cutoff source, q>=2 a FIXED integer. It gives
+
+    ||e||_E <=C_q[sqrt(m)Omega_M^(1/2-q)
+                   +Omega_M^(3/2-q)+Omega_M^(1-q)] =: E_q.    (2)
+
+Indeed the L2, derivative-L2 and endpoint sup bounds are respectively proportional to Omega_M^(1/2-q), Omega_M^(3/2-q), Omega_M^(1-q); insert them into ||e||_E²<=(m+16)a0²+2a1²+8ainfinity². The m factor comes from the original window weight exp(|t|), not from the number of retained modes. Endpoint jumps are paid; no whole-line H1 claim is used.
+
+The cutoff source has ||f||_E<=C sqrt(m). Full Weil continuity therefore gives
+
+    |W(f_M)-W(f)|
+      <=C_q[m Omega_M^(1/2-q)+sqrt(m)Omega_M^(3/2-q)
+                +sqrt(m)Omega_M^(1-q)+E_q²].                 (3)
+
+Choose once and for all an integer q>1/alpha+2. The three displayed powers of m are 1+alpha(1/2-q), 1/2+alpha(3/2-q), and 1/2+alpha(1-q), all strictly negative. Their fixed logarithmic factors do not change convergence. E_q² also tends to zero. Thus (3) is o(1). The exact same centered-window form equals the quadratic form of the padded vector in K_m; translation to [0,L] preserves the full Weil form.
+
+## Sparse-band correction of the three constraints
+
+Let v_(±,M) be the original v_± truncated to |j|<=M and b_M the normalized constant vector on that band. The explicit exponential coefficients give
+
+    ||v_(+,M)||²=m(1+O(L/M)),
+    ||v_(-,M)||²=1+O(L/M),
+    |<vhat_(+,M),vhat_(-,M)>|=O(L/sqrt(m)+L/M),
+    |<b_M,vhat_(±,M)>|=O(sqrt(L/M)).                          (4)
+
+Terms O(1/m) in the norms can be absorbed because M<m. For the cross term, full inner product is L and the omitted tail product is O(sqrt(m)L/M); division by normalized scales gives (4). The b_M estimates follow by pairing conjugate denominators and sum (1/2)/(1/4+omega_j²)=O(L). Since M/L tends to infinity, the normalized three-vector Gram matrix tends to I and is >=I/2 eventually.
+
+With q as above, repeated integration by parts gives full Fourier coefficients |c_j|<=C_q L^(q-1/2)|j|^(-q). The truncated L2 tail has size O(L^(q-1/2)M^(1/2-q)). Endpoint value zero implies sum of all coefficients zero, so the normalized b_M constraint residual has that same order. The zero Laplace moments before cutoff, the super-small cutoff remainder, and Cauchy-Schwarz against the omitted exponential coefficients give the same order for both normalized v constraints; the ratio of full to truncated exponential norms stays bounded by (4).
+
+Therefore, if c_M is the padded Fourier vector and z=P_(m,alpha)c_M,
+
+    ||z-c_M||<=C_q L^(q-1/2)M^(1/2-q)
+                                      +m^C exp(-cL²).        (5)
+
+The full original ||K_m||<=40sqrt(m)L and bounded ||c_M|| pay its quadratic-form correction by
+
+    C_q sqrt(m)L^(q+1/2)M^(1/2-q)
+                                      +m^C exp(-cL²)=o(1).   (6)
+
+The unchanged source pair's negative signal diverges as m^delta/L^(2delta). Combining (3),(6) and cutoff cost leaves that signal intact; ||z||² stays bounded, and its negative form ensures z is nonzero. Normalizing proves (1).
+
+## Exact remaining arithmetic consumer
+
+The two exponential equations still annihilate the original growing rank-two kernel, and the endpoint equation still uses the original b. Consequently
+
+    P_(m,alpha) K_m P_(m,alpha)
+       =P_(m,alpha)(Aarch-cA I-Aprime)P_(m,alpha).             (7)
+
+Here Aprime=sum_(2<=n<=m) Lambda(n)Q(log n)/sqrt(n) retains every prime power and the original Q; Aarch is the original archimedean compression. The inherited bound ||Aarch-cA I||<=50L+8 is equation(12) of CCM_RESTRICTED_PRIME_RECEIVER.md; its equation(11) gives the cancellation used above.
+
+Thus a subpolynomial upper bound for the actual prime matrix on this smaller space would suffice to exclude every fixed off-critical zero. Such a bound is OPEN. Membership in a smaller band supplies neither independent primes nor a sign. Old full SP/G1/G3 are not thereby proved. A fixed alpha is enough for this conditional receiver; alpha cannot be tuned with m inside this theorem.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_HIGH_ORDER_Q10_CONCLUSION.md
+
+# Q10: полный аналитический возврат принят; арифметический выигрыш OPEN
+
+Дата: 2026-10-21. Scope: исходная полная CCM, sparse receiver; PAPER, не Lean.
+
+## Provenance и проверка
+
+Q10 завершился естественно, terminal observed около15:32UTC. Запрос отправлен
+один раз14:52UTC в прежний чат. Без прерывания/повторной отправки.
+Оригинал PROSHKA_CCM_HIGH_ORDER_SIGNED_RETURN_Q10_VERDICT_2026-10-21.md:
+83808байт,1309LF, SHA256
+13d8f3a7bab5def121d04c3575018c50918e29ce8950aad80c6a82ce6c18db28.
+Копия репозитория побайтно совпадает с Downloads. Полный текст прочитан.
+Все9 исходных тел сверены с манифестом по размеру и SHA256.
+
+Root воспроизвёл check_q10.py стандартной библиотекой Python:783 PASS,
+exact_results.json семантически идентичен приложенному JSON, включая
+хеши самого скрипта и регистрации. Исходные блоки извлечены без изменения.
+Поле independent_review=NOT_RUN в исходном результате сохранено: оно
+описывает запуск автора. Последующий независимый аудит записан здесь.
+Независимый readonly Luna q10_verdict_audit: bounded PAPER PASS,
+существенных дефектов в проверенном объёме не найдено.
+Это не независимая пересертификация upstream sparse witness и не
+численное вычисление спектра CCM. Lean/Arb:0.
+
+## Что принято
+
+1. Исходное нулевое продолжение имеет кубический край, поэтому глобальный
+Taylor порядка4 незаконен. Геометрическое покрытие и гладкие отсечки
+устраняют этот дефект без изменения исходного объекта.
+2. Все cutoff-производные, нижний блок, дискретный и непрерывный верхний
+край оплачены. Для k фиксированного до m ширины h>=1 и kh<=min(X,d)/8
+оставляют сглаживание строго внутри m. Fubini/Richardson возврат точен.
+3. Условная полная цена eta0=(1+2*k*epsilon)/(4*k+2), при явной SV.
+При k=ceil(1/epsilon) direct S/K имеет цену m^epsilon после логарифмов.
+Scalar T добавляет short fee ровно один раз, показатель3epsilon/2.
+4. Полная variance действительно включает все смешанные ширины,
+пары простых степеней, оба центрирующих члена и фактическую mu*log.
+Диагональ имеет X log(X)/h, но не равна полной variance.
+5. Реально выведено лишь J<=66*(2^k-1)^2*X*log(5X), без1/h.
+Полная безусловная степень остаётся1/2; прежний12sqrt(m) сильнее.
+Q03 conditional3/8 на ZF78 не улучшен и не стал безусловным.
+6. Широкая fixed-step variance гипотеза влечёт zero-free область
+Re(s)>max((1+q)/2,1-kq) через локально равномерный Mellin-return.
+Семейство q->0 с подходящими фиксированными k влечёт RH.
+Это проверка силы гипотезы, не доказательство её истинности/ложности.
+Минимальная SV не объявляется эквивалентной широкой гипотезе.
+
+## Точка отката и следующий самостоятельный тест
+
+Откатываемся до Cauchy в §6.2: сохраняем одну совместную
+sum_ij integral w_ij(x) R_{k,h_ij}E(x) dx, исходный P и знак.
+Не отправлять Q11 с переименованной SV. Порядок сглаживания сам не
+даёт арифметического сокращения: R E_z=z*x^(z-1)+O(h^k X^(Re(z)-k-1)).
+
+Следующая bounded собственная попытка: вывести точное спаривание этой
+медленной Mellin-моды с исходным весом до Cauchy и проверить, какие
+члены действительно обнуляются тремя ограничениями P. Любой аргумент
+о сокращении должен указать строку, использующую настоящую mu/Lambda,
+которой нет у контрольной модели. Это discriminator, не новый supplier.
+Не повторять уже имеющееся непрерывное rank-two тождество как выигрыш.
+После трёх содержательных no-gain попыток или реального тупика — прежняя
+Прошка с сохранёнными неудачами и конкретным новым вопросом.
+
+Goal ACTIVE. Actual arithmetic power progress NONE. Аналитический краевой
+долг уменьшен. CF22/PySR PARKED_REOPENABLE; RH/SP/G1/G3 OPEN.

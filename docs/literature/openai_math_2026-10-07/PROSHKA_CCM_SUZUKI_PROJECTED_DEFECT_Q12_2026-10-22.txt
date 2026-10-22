@@ -1,0 +1,2607 @@
+Q12 — односторонняя ошибка исправленного Suzuki Gram на исходном P
+Дата: 2026-10-22. Это единственный обновлённый Q12. Предыдущий фазовый draft НЕ отправлялся.
+Звено PAPER_CHAIN: полная исходная CCM, достаточный sparse-band receiver с eta(epsilon)->0. RH OPEN.
+
+Владелец поручил вернуться к письму Сузуки и сентябрьской работе, затем отправить тебе этот вопрос. Письмо проверено напрямую; пересылаем только математическое содержание без частных заголовков. Suzuki подтверждает: (3.2) определяет P_t для всех real t; отрицательное время P_{-t}(z)=overline{P_t(bar z)}; prefactor i в (1.5) заменяется на -i. По безусловным симметриям xi это РОВНО P_{-t}(z)=P_t(-z), наше signed repair. При уже исправленном P смена prefactor даёт общий минус, Gram сохраняется; combined correction относительно старого EVEN объекта не просто общий минус. c_A и исходная CCM из explicit formula не меняются. PDF2301.00421v3 и bounded dependency/math review проверены, но полной свежей сертификации всей статьи не заявляем.
+
+Сентябрьская полка приложена ПОЛНОСТЬЮ: parent SecondExpr и последующий OPENSGN. Там уже вычислены обе Laplace time quadrants, defects r_p/h_pq, и записана эквивалентность полного signed kernel identity скалярной Poisson формуле(P). Она НЕ ДОКАЗАНА. Не повторяй её как новое открытие. Старое исключение literal EVEN не распространяется на corrected signed object. Исторические фразы 'not author-confirmed' теперь устарели; сам текст сохраняем как provenance. Independent September review был ограничен; не принимай все аналитические переходы лишь по статусной метке.
+
+Перед вопросом своя попытка сделана: joint radial graph energy + absolute defect на original P независимо проверена и не даёт subpower, B>=c sqrt(m)/log^9m (certificate, не CCM lower bound). Это настоящий тупик modulus-пути и основание отката, не счётчик выдуманных трёх попыток. Затем отдельно проверили corrected Suzuki return: из OPENSGN(31), T0=L/2, получается |Delta[f]|<=C sqrt(m) M² L ||f||²; exponent1/2+2epsilon не стремится к0. Sign, H_0^1 extension и scaling независимо проверены. Старый Q11 + новый radial no-go не запрещают signed cancellation.
+
+ОДНО ПОРУЧЕНИЕ
+Испытай конкретный механизм односторонней оценки ПОЛНОГО corrected Suzuki defect на исходном P, начиная с уже вычисленных OPENSGN r_p,h_pq и обеих signed quadrants. Не обязательно доказывать full identity на всех тестах. Точно:
+ D=K_N-K_A (здесь N в K_N означает norm kernel, НЕ производственный N=m),
+ mathfrak R=partial_t partial_u D,
+ Delta[f]=mathfrak R[psi tensor bar psi], psi(t)=f(t+L/2), zero extension,
+ Q(f)=pi^{-1}||P_hat_{D psi}||²-Delta[f].
+Здесь D psi в P_hat означает производную теста, не kernel D; различи обозначения в своём ответе.
+Нужно Delta[f]<=C_epsilon m^{eta(epsilon)}||f||², eta->0, ДЛЯ ВСЕХ f в одном исходном constrained sparse space, либо иной доказанный достаточный joint bound того же full Q, с полностью посчитанным возвратом. Это достаточный supplier, не заранее более лёгкая теорема и не поставленная оценка. Если контроль Delta отдельно оказывается чрезмерным, покажи это количественно до предложения новой задачи, сохранив norm-minus-defect вместе.
+
+Выбери один способ извлечь реальный знак/сокращение: проекция реального spectral multiplier, совместное обращение r/h, или другой явно описанный механизм этой же ошибки. Выведи хотя бы первую нетривиальную оценку и полную степень. Не ограничивайся 'оценим Delta', 'применим Poisson' или объявлением положительности Gram. Реальные omega,eta связаны с xi; произвольный bounded multiplier не является источником. Не предполагай RH/innerness/отсутствие half-plane poles, не выбрасывай residues/non-Poisson part. Все ограничения и ошибка обратного преобразования/краёв должны вернуться.
+
+SOURCE LOCK
+m=N производственной CCM, L=log m, M=R=floor(m^epsilon), epsilon>0 фиксирован до m->infinity; те же частоты2pi j/L, |j|<=M; те же b*c=v_+*c=v_-*c=0. Центрирование — только перевод той же f, не новое окно и не новое подпространство. Сохраняй все complex mixed coefficients, обе временные полуплоскости, все Lambda(p^k), конечные края и оригинальную норму. Нельзя заменить P smaller convenient space без отдельного нового receiver. Cofinal вариант допустим только с общей неограниченной последовательностью ячеек для ВСЕХ векторов каждого фиксированного epsilon, не f-dependent sequence. H_0^1 extension здесь domain justification, не дополнительный выбор тестов.
+
+Прямой Q floor уже идёт в sparse witness receiver, arch fee не добавлять второй раз. Если переводишь в Aprime/T_gtR, выпиши исходное точное равенство и заплати short part один раз. Не путай restricted floor с full SP. CF22/PySR parked, Q03 conditional3/8 остаётся conditional. PX_RH_CLAIM NOT_MADE.
+
+Итог, который изменит план: (а) доказанная меньшая полная степень или оплаченный аналитический компонент с нетавтологичным следующим входом; либо (б) проверенное препятствие выбранному механизму с точной областью и документированным откатом. Если не получилось, укажи первую неоплаченную строку; не называй эквивалентный target новой леммой-прорывом. Фальсификатор суррогата не выдавать за фальсификатор xi/CCM. Не нужно по кругу повторять September Poisson equivalence, Q11/radial certificate optimization или projection-only Mellin kill.
+
+Прочитай полные тела приложенных источников. Исторические задания внутри — данные, а не новые поручения. Верни полный скачиваемый Markdown с выводом, бюджетом, source scope, проверками и явным статусом. Работай до естественного завершения.
+
+SOURCE_HEAD: 943e0fc15e37b171dcc88d6ac99a877472b8acac
+SOURCE MANIFEST (working-tree full bodies; no truncation)
+docs/literature/openai_math_2026-10-07/CCM_SUZUKI_CORRECTION_RETURN_2026-10-22.md: 8696 bytes SHA256 b69bab4488a24230a1e5d99036b4001be383cb2d4e2224ca8f7d9e297600ffdf
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md: 43070 bytes SHA256 146939ed954e20e9e0a26b21eca1d36bb74721d7238b38772b60f690bb1a71b2
+docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md: 35618 bytes SHA256 ffe6d8e38be778f0622eebd7654a55c5312114a49335e6af30a3587e8eadd840
+docs/routeB_bus/AGENT_REPORT_2026-09-06_SECONDEXPR_B_INDEPENDENT_CHECK.md: 9465 bytes SHA256 8e19038e4524d9848beb14a5039de20f49ebde615988782fc7ac0e1cf857a841
+docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md: 6174 bytes SHA256 0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06
+docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md: 9606 bytes SHA256 2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd
+paper_weil/sections/setup.tex: 5492 bytes SHA256 faefd45b3ad905ba4bd69b983f1a52b70479fd72dbdf47aecb5061dfb9c5ad33
+docs/literature/openai_math_2026-10-07/CCM_DIVISIBILITY_Q11_CONCLUSION.md: 7455 bytes SHA256 465fdd818039eee8e27c1efc00f9659f2d96bef47fb0399b0e6554e09d5e76e5
+docs/literature/openai_math_2026-10-07/CCM_Q12_RADIAL_ENERGY_TEST.md: 5638 bytes SHA256 2614b5697cd35bda6a2ea750e576e0dd069736594ad175c2bb4765a4e18ad205
+docs/literature/openai_math_2026-10-07/CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md: 4745 bytes SHA256 aa7c63b55685246eeb65ab0e5ec7a6ffbd0840b83b9d670283003634246cfe68
+docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md: 5968 bytes SHA256 967e1533d439d5efaf9bd543f8377b69cbf76d22134c2d28a7c346d9bb733a1c
+
+# PROSHKA EVIDENCE PACK
+Generated: 2026-10-22 22:22:08
+Repo: /Users/emalam/GitHub/rh_lean_01_2026
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## rh_clean...origin/rh_clean
+ M CLAUDE.md
+ M docs/Codex/CCM_ACTIVE_GOAL_2026-10-20.md
+ M docs/Codex/NEXT.md
+ M docs/Codex/PAPER_CHAIN.md
+ M docs/Progress_Log.md
+ M docs/literature/openai_math_2026-10-07/PROSHKA_PENDING.md
+ M paper_weil/ERRATUM_NOTE_SUZUKI_DRAFT.md
+?? 1653edc4-9853-46db-bd37-73595b48bfc8-aristotle.tar.gz
+?? docs/literature/openai_math_2026-10-07/CCM_Q01_VERDICT_DOM_TEXT_2026-10-20.txt
+?? docs/literature/openai_math_2026-10-07/CCM_Q01_VERDICT_RENDERED_CAPTURE_2026-10-20.txt
+?? docs/literature/openai_math_2026-10-07/CCM_Q12_RADIAL_ENERGY_TEST.md
+?? docs/literature/openai_math_2026-10-07/CCM_SUZUKI_CORRECTION_RETURN_2026-10-22.md
+?? docs/literature/openai_math_2026-10-07/PROSHKA_CCM_PHASE_PRESERVING_JOINT_Q12_2026-10-22.txt
+?? docs/literature/openai_math_2026-10-07/RH_PROPERTY_COMBINATION_SCREEN_2026-10-08.md
+?? docs/literature/openai_math_2026-10-07/RH_PROPERTY_COMBINATION_SOURCES_2026-10-08.json
+?? docs/session_protocols/team-record-event-055ee7e4e26f127ab67b8a0f47f4d5e885b6928ac1bea330ce6f55aef109b6e3.json
+?? docs/session_protocols/team-record-event-1d97444ac486c060a38d50b3b5d33b42c3f4ae19595735f937f25eb14b46662d.json
+?? docs/session_protocols/team-record-event-389a5c4f89ec6da4ce0270c7bd2a7316fead82658605fa04b0fb6ab739f46a37.json
+?? docs/session_protocols/team-record-event-3e06872f472fe0700f175339568ad62c2d6556707707da3735cc09974dee086c.json
+?? docs/session_protocols/team-record-event-41914a46be214ce2bb0e621f31853f60fd1036ce47aa8790de172d4cd180311d.json
+?? docs/session_protocols/team-record-event-490334702230f961527794a8ffaa16f196cf293159a07c94ac27a83fd4bc23fd.json
+?? docs/session_protocols/team-record-event-4f4162246f609dbe887bde745ee81a8f77a48f3fdaf2af820968e322f5137771.json
+?? docs/session_protocols/team-record-event-67d5d6dedf97a160c314e8376b066c8e85d9635f5687d37e9a2165ed18b7f4f6.json
+?? docs/session_protocols/team-record-event-79510168fa1b50f96f6893f9fd6954a5adf851894909486dbb9d29ca5a0cdb81.json
+?? docs/session_protocols/team-record-event-bd3b02662ea9bd9345db19bed21eca207ed6f59840bded472da73eba43c83b76.json
+?? docs/session_protocols/team-record-event-da0a4ed616968a741f8fa49910a7259786301f6e92082fb16e71780bb8c76e07.json
+?? docs/session_protocols/team-record-event-db7c63bd1405028e90f0f7e757d7af65f66314f3e921cfbfc8c553dba0c81784.json
+?? docs/session_protocols/team-record-event-f32345579a30293d8f5d124ea149151ce196234e32df11f97f68fbc843e451e4.json
+?? full/ZENODO_STATUS_NOTE_2026-10-22.md
+?? graphify-out/
+?? orchestrator/state/knowledge.db
+?? paper_weil/REPLY_TO_SUZUKI_DRAFT_2026-10-22.md
+?? paper_weil/scripts/suzuki_extension_check_2026-10-22.py
+?? q3.lean.aristotle/EnvDumpRun_niy6d214.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersCutoffGreen.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasCenteredResidual.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasGreenSourceBridge.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasGreenTrackingBudget.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasTrackingBudget.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersFokasWindowResidual.lean
+?? q3.lean.aristotle/Q3/Proofs/RouteB/G6N1SelectedFerrersJointGreenMatrixDefect.lean
+?? train-preview.png
+
+
+## Git log
+
+943e0fc1 mac(rh_clean): audit full Q11 divisibility transfer and certificate obstruction
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_SUZUKI_CORRECTION_RETURN_2026-10-22.md
+
+# Suzuki correction: source repair and return to original CCM
+
+Date: 2026-10-22. Status: BOUNDED_PAPER_AUDIT; RH OPEN; no exponent gain.
+Source checkout: rh_clean, 943e0fc15e37b171dcc88d6ac99a877472b8acac.
+Owner supplied a draft/transcript and requested the actual mathematical consequences.
+The underlying author email was read directly in Gmail (dated 2026-09-06),
+not inferred from the draft. No email was sent. Private headers are omitted.
+
+## Sources and scope
+
+- Suzuki, arXiv:2301.00421v3, https://arxiv.org/abs/2301.00421v3 .
+  Local PDF: `docs/routeB_bus/litreview/pdfs/2301.00421.pdf`, SHA256
+  `e4100e529d74cdc4dfa855aa24bcf34a88562d9facebefd70de6e529f9a1ce2e`.
+  PDF pp.3,7 visually inspected; relevant subsequent sections read as extracted text.
+- Author correction: (3.2) is to define P_t for all real t;
+  negative times use P_{-t}(z)=overline{P_t(bar z)} for t>0;
+  prefactor i in (1.5) is replaced by -i.
+- September parent audit:
+  `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md`, §§3,4,8.
+- Further September calculation, not to be rediscovered:
+  `docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md`, §§4–5, (24)–(31).
+- Existing independent algebra review:
+  `docs/routeB_bus/AGENT_REPORT_2026-09-06_SECONDEXPR_B_INDEPENDENT_CHECK.md`.
+  Its bounded algebra review is not a new certification of all convergence arguments.
+- Current consumer: `CCM_SPARSE_BAND_RECEIVER.md`; source definition:
+  `paper_weil/sections/setup.tex`.
+
+## 1. The author's continuation equals the proposed signed repair
+
+Let X(z)=xi(1/2-iz). Its zero multiset Gamma is invariant, with multiplicities,
+under gamma -> -gamma and gamma -> bar gamma, without RH. For fixed real t,
+
+    P_t(z) = sum_gamma m_gamma (exp(-i gamma t)-1)/(gamma(z-gamma)).
+
+The series is absolutely locally uniformly convergent off Gamma: |Im gamma|<1/2
+and sum m_gamma/|gamma|²<infinity control its tail. Reindexing first by -gamma
+and then by bar gamma proves the meromorphic identities
+
+    P_{-t}(z) = P_t(-z) = overline{P_t(bar z)}.
+
+Thus the suggestion that Suzuki rejected our reflection continuation is incorrect.
+His rule confirms the signed-time repair of September §8. That document's phrase
+“not an author-confirmed correction” is historical and is superseded here.
+This does NOT identify the correction with the printed even-time rule.
+
+## 2. What changes, and what does not
+
+With the corrected signed P held fixed, i -> -i multiplies every S_t and its
+linear integral transform by -1. Squared norms and Gram pairings are unchanged.
+Linear expansions must be made phase-consistent. The combined negative-time
+repair is NOT merely a global sign change relative to the old EVEN object:
+its mixed positive/negative-time products change.
+
+The constant c_A does not come from this prefactor. From the Weil explicit
+formula (3.3), with a(t)=exp(t/2)/(exp(t)-exp(-t)),
+
+    integral_0^infinity a(t)(1-exp(-t/2)) dt = (log 2)/2 + pi/4,
+    c_A = gamma_E + log(4pi) + 2 integral = gamma_E + log(8pi) + pi/2
+        = log pi - digamma(1/4).
+
+The active setup.tex also checks this independently via the digamma multiplier.
+Its direct form and the sparse receiver's
+
+    P K_m P = P(A_arch - c_A I - A_prime)P
+
+have no dependence on the S_t phase convention. Every prime power, original
+frequency and mixed coefficient remains. This is a bounded dependency audit of
+the named files, not an assertion about every historical Suzuki consumer.
+
+Theorem 1.4 remains an RH-equivalent norm identity, not an unconditional proof
+of it. The correction repairs a definition; it does not supply the identity.
+
+## 3. The actual shelf already goes beyond the repair
+
+The September OPENSGN note evaluates both signed time integrations and reduces
+the full corrected Gram identity to the still-unproved Poisson identity
+
+    (1/pi) integral_R p X(x)^2 / ((p²+x²)(X(x)^2+X'(x)^2)) dx
+      = xi(1/2+p)/(xi(1/2+p)+xi'(1/2+p)),  p>1/2.
+
+This is the shelf's stated equivalence, not an independently re-proved theorem
+in this audit. Its explicit defects r_p and h_pq determine both Laplace sign
+quadrants. Boundary values alone do not justify the required reconstruction:
+possible half-plane poles/non-Poisson terms cannot be discarded.
+Therefore asking Pro merely to correct time, recompute the same kernel, or
+rename this integral would repeat work already recorded in September.
+
+## 4. Concrete original-P budget test
+
+Use the September continuous kernels K_N (corrected norm Gram) and K_A
+(arithmetic anchored kernel). Define D=K_N-K_A, and
+mathfrak R=partial_t partial_u D, with THIS sign convention. For compact tests,
+
+    Q(psi) = (1/pi)||P_hat_{D psi}||² - mathfrak R[psi tensor bar psi].
+
+Complex conjugation may be placed in the other tensor factor by the real
+symmetric kernel convention. The entire tensor is retained; it includes every
+mixed Fourier coefficient. A sufficient original-P supplier is an UPPER bound
+
+    mathfrak R[psi tensor bar psi]
+      <= C_epsilon m^{eta(epsilon)} ||psi||², eta(epsilon)->0,
+
+on the centered images of the original constrained sparse space. No full
+identity on all tests is required for this sufficient receiver. This is an
+UNPROVED supplier, not evidence that this representation makes it easier.
+
+Check the existing absolute budget before choosing it as a route. Put L=log m,
+T0=L/2, M=floor(m^epsilon), Omega_M=2pi M/L, and center the original zero-endpoint
+f on [-L/2,L/2]. September (31) gives
+
+    |mathfrak R[zeta]| <= [N(T0)^2/pi + 4G(2T0)] ||partial_t partial_u zeta||_1.
+
+The explicit g' bound gives G(L)<=C(1+L)exp(L/2) and
+N(L/2)^2<=C(1+L)^2 exp(L/2). Further,
+
+    ||partial_t partial_u (psi tensor bar psi)||_1
+       = ||psi'||_1² <= L ||psi'||_2² <= L Omega_M² ||psi||_2².
+
+Consequently, for L>=1, the available bound returns only
+
+    |mathfrak R[psi tensor bar psi]| <= C sqrt(m) M² L ||psi||².
+
+Its exponent is 1/2+2epsilon, up to logarithms, and does not tend to zero.
+This is a weak upper estimate, NOT a lower bound on the true defect and NOT
+an impossibility theorem for the corrected representation.
+
+The endpoint-zero condition matters: zero extension lies in H_0^1, with no
+boundary jump in its first weak derivative. The continuous primitive D defines
+the tensor pairing by integration against psi'(t)bar psi'(u). Smooth compact
+approximations converge in H_0^1; the bounded Bochner construction and anchored
+arithmetic kernel give the same extension. Approximation is only for the
+identity/domain extension, not a replacement of the original P or its three
+constraints. No extra Fourier modes are inserted into the claimed estimate.
+
+## 5. Research decision and concrete next question
+
+Q11 remains audited with no exponent gain. The new radial-energy test
+`CCM_Q12_RADIAL_ENERGY_TEST.md` excludes the radial-energy plus absolute-defect
+certificate on original P, not the source. Both results motivate a rollback
+before absolute values. The corrected Suzuki object is a legitimate candidate
+for that rollback, but the crude budget above fails immediately.
+
+Question for Pro, after supplying the September OPENSGN source and this audit:
+
+> Can the explicit signed Gram defect, compressed to the ORIGINAL three-condition
+> P with N=m, L=log m and fixed M=floor(m^epsilon), be bounded above with an
+> exponent eta(epsilon)->0 without first proving the full Poisson identity?
+> Start with the already computed r_p/h_pq defect, preserve both time quadrants
+> and all mixed terms, and exhibit a quantitative mechanism plus the full inverse
+> transform/window return. The existing absolute return costs sqrt(m)M²log m.
+> If projection supplies no gain, locate the exact unpaid signed term and give
+> a bounded discriminator; do not repeat the September identity as new progress.
+
+This is a prepared question, NOT a sent request or a claim that a mechanism exists.
+The earlier phase-preserving Q12 attachment is held unsent and must not be sent
+unchanged after this steering. No author correspondence was sent or copied into
+an external research request. No Lean, Arb or numerical proof run occurred.
+
+Validation: root source/math checks plus independent read-only correction and
+active-dependency audits; the quantified return is separately checked below.
+
+Independent bounded return review: PASS (suzuki_correction_math). The sign,
+sqrt(m)M²L scale, and H_0^1 extension check out. The proposed improved bound must
+hold for EVERY vector of original P; it would give its restricted floor, not a
+full-carrier floor. Neither root nor reviewer claims a fresh audit/proof of the
+entire September Poisson equivalence. No files were changed by reviewers.
+
+
+## File: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md
+
+# STATUS: KILL_LITERAL_EVEN_TIME_SUZUKI_KERNEL_IDENTITY
+```yaml
+PRIMARY: KILL_LITERAL_EVEN_TIME_SUZUKI_KERNEL_IDENTITY
+PRIMARY_COUNT: 1
+OPERATIVE_CLASS: KILL_LITERAL_EVEN_TIME_SUZUKI_KERNEL_IDENTITY
+RESULT: ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE
+REQUEST_ID: REQ-2026-09-06-SECONDEXPR-B
+BOUNDARY_ID: GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY
+REQUEST_LOCK:
+  COMMIT: 4599fba36d77dc7e3b12f743e3142ffeb813baa4
+  PATH: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.txt
+  GIT_BLOB: 65017079f9ca6893da94298f4b9f72c20b6a5616
+  SHA256: 098eeae0c7fa924098b668d5dfa365727db929fe0ebb0df3a20d85adf94be2ec
+  BYTES: 8846
+  LINES: 86
+  FINAL_LF: true
+  SHA256_AND_GIT_BLOB_INDEPENDENTLY_RECOMPUTED: true
+SOURCE_BASE: 93171b35
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SECOND_EXPRESSION_SUZUKI_KERNEL_IDENTITY_2026-09-06.md
+CLOSES: [REQ-2026-09-06-SECONDEXPR-B]
+CLOSES_ANALYTIC_RH_SUPPLIERS: []
+OPENS: []
+KILL_SCOPE: LITERAL_ALL_REAL_TIME_DEFINITION_AND_IDENTITY
+KILLED_ASSERTION: printed_even_time_S_satisfies_SE_on_all_real_t_u
+UNIVERSAL_NO_ZEROS_FREE_METHOD_THEOREM: NOT_PROVED
+INTENDED_SIGNED_TIME_REPAIR:
+  STATUS: PROPOSED_EXPLICITLY_NOT_SILENTLY_SUBSTITUTED
+  AUTHOR_CONFIRMED_ERRATUM: false
+  GLOBAL_KERNEL_IDENTITY: OPEN
+  RADICAL_CUTOFF_CHECK: PAPER_PROVED_FOR_REPAIRED_OBJECT
+SOURCE_FINDINGS:
+  EVEN_TIME_RULE_IN_ARXIV_V3_PDF: VERIFIED
+  EVEN_TIME_RULE_IN_JOURNAL_HTML: VERIFIED
+  LITERAL_TRANSFORM_ANNIHILATES_ALL_EVEN_TESTS: PAPER_PROVED
+  STRICT_POSITIVE_SHORT_SUPPORT_COUNTEREXAMPLE: PAPER_PROVED
+  LITERAL_F2_FOR_ALL_TRANSLATES: REFUTED_ON_PAPER
+DIRECT_CALCULATION:
+  VOLTERRA_IDENTITY: PAPER_PROVED_WITHOUT_ZERO_SUMS
+  L2_EXISTENCE_AND_LOCAL_UNIFORM_BOUND: PAPER_PROVED_WITHOUT_RH
+  GRAM_INTEGRAL_REDUCTION: PAPER_PROVED_WITHOUT_ZERO_SUMS
+  PRIME_ATOMS_FROM_THE_GRAM_REMAINDER: NOT_PROVED
+  EXACT_DISTRIBUTIONAL_REMAINDER: EXHIBITED_WITH_LOCAL_BUDGET
+SCOPE: ABSTRACT
+VERIFIER: PAPER
+INDEPENDENT_KERNEL_VERIFICATION: false
+LEAN_EDIT_PERFORMED: false
+NUMERICAL_RUN_PERFORMED: false
+ARISTOTLE_SUBMISSION: false
+REPOSITORY_WRITE_SCOPE: EXPECTED_VERDICT_DOCUMENT_ONLY
+QUEUE_OR_SHARED_STATE_EDIT: false
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+ROUTE_PROMOTION: false
+PX_RH_CLAIM: NOT_MADE
+RH_CLAIM: false
+NEGATION_OF_RH_CLAIM: false
+```
+
+## 0. Verdict, source boundary and corrections to the request
+
+The identity requested for **all real times**, with the functions literally defined in the pinned paper, is false. The obstruction is not the difficulty of RH: the printed extension to negative time makes the transform vanish on every even compact test. There are explicit such tests with strictly positive Weil form, proved below without any assertion about zeta zeros.
+
+This is a source-definition defect, not a refutation of RH, not a refutation of every intended Suzuki construction, and not a theorem that a zero-free direct calculation is impossible. The request's parenthetical description of the third RESULT is stronger than what is proved: **the exact-counterexample RESULT is used for the literal identity, not for that methodological impossibility claim**.
+
+The calculation does not stop at the defect. Sections 3–5 derive a root-free Volterra formula, compute the norm kernel down to bounded Fourier multipliers, and give its exact distributional remainder. Section 8 specifies a signed-time repair and proves its canonical radical-cutoff check. The repaired global identity remains open; it is not substituted into the request without notice.
+
+I retract my earlier living-chat endorsement of (1.9)/(4.4) as a consistent all-real-time package without first checking this extension.
+
+### Sources actually used
+
+**[S1]** M. Suzuki, *On the Hilbert space derived from the Weil distribution*, arXiv:2301.00421v3, equations (1.1)–(1.9), (2.1), (3.2)–(3.9), Sections 4.1–4.3. The PDF's printed pages 3, 10–12 were inspected, including the negative-time sentence and (4.4)–(4.6).
+
+**[S1J]** The published article, *Canadian Journal of Mathematics*, online 3 November 2025, DOI **10.4153/S0008414X25101739**. Its HTML independently repeats the same negative-time rule after (1.6), and the even extension of P after (3.2). This rules out treating the finding as merely a missing symbol in arXiv's HTML. The published article is CC BY 4.0; source formulas reproduced below are attributed to Suzuki. This audit is not an author-issued erratum.
+
+**[S2]** Suzuki, *Weil's quadratic form via the screw function*, arXiv:2606.09096v2, §2.5, for the distributional convention. We work in distributions on compactly supported tests; no assertion that a merely continuous, potentially exponentially growing function is tempered is needed.
+
+**[R1]** `paper_weil/sections/setup.tex` at `93171b35`, blob `8637e3d973ba689c0cfd5d09a10e2dec3edd3caa`: literal Q, its polarization, c_A, and Fourier conventions.
+
+**[R2]** `paper_weil/sections/groundstate.tex` at that pin, blob `1337eda8882f5e20f649878e3e71262776dff06d`: DOM and its domain.
+
+**[R3]** `paper_weil/sections/canonical.tex` at that pin, blob `fd0c7512e742f504fd3b64736aad5dbaec99ab1f`: f_0, its Fourier identity, cutoff envelopes and radical proof.
+
+**[R4]** `docs/WHY_NOT_YET.md` at that pin, blob `013f210a16af420940f074e3a4e4cd3c31a9f7b7`: admission filter, treated as a research policy to audit, not a mathematical premise.
+
+Other shelf entries and diagnostic numbers are not dependencies of the proof below. Their kernel validation or numerical reproduction is not claimed. All new mathematical results in this verdict are PAPER results, not Lean results and not claims of worldwide novelty. Request bytes alone received the stated independent byte/hash verification; no claim is made to have independently hashed every shelf file.
+
+### Two errors in the request that must not become premises
+
+1. Failure of a proposed RH criterion would not contradict a finite list of verified zeros. Finite numerical evidence cannot establish the universal conclusion. Here the more immediate problem is that the printed criterion and printed definitions are inconsistent.
+2. Formula (3.6) is not itself an RH-dependent orthonormal basis theorem. The meromorphic functions and the intended coefficient expansion are introduced in §3. Orthonormality is asserted in **Proposition 4.1**, and it is used in (4.5) and (4.9). The distinction matters below.
+
+## 1. Exact objects and the first decisive counterexample
+
+Use Suzuki's Fourier convention
+\[
+ \mathsf F_+\psi(z)=\int_{\mathbb R}\psi(t)e^{izt}\,dt,
+ \qquad D\psi=i\psi',\qquad
+ \langle F,G\rangle_2=\int F(x)\overline{G(x)}\,dx.
+\]
+Thus inner products are linear in their first argument. Put
+\[
+ X(z)=\xi(1/2-iz)=\Xi(z),\quad E=X+iX',\quad
+ E^\sharp=X-iX',\quad\Theta=E^\sharp/E.
+\]
+For t >= 0 the source defines
+\[
+ S_t(z)=\frac{iX(z)}{X(z)-iX'(z)}P_t(z).                 \tag{1}
+\]
+The pinned PDF then explicitly prescribes, for negative t,
+\[
+                  S_t(z):=S_{-t}(z).                   \tag{EVEN}
+\]
+Throughout Sections 1–7, S means this **literal even-time object**. In particular, it does not mean the signed exponential continuation used later in the paper's proof.
+
+The transform in (1.7) is
+\[
+ \widehat{\mathcal P}_{\phi}(x)=\int_{\mathbb R}
+                  \overline{S_t(x)}\phi(t)\,dt.         \tag{2}
+\]
+Its integrals are well-defined as Bochner integrals for compact smooth phi; Section 3 supplies an independent bound.
+
+### Lemma 1 — parity annihilation [ABSTRACT][PAPER]
+
+For every even psi in C_c^infinity(R;C),
+\[
+                 \widehat{\mathcal P}_{D\psi}=0.        \tag{3}
+\]
+**Proof.** The L2-valued function S_t is even in t and psi' is odd. Their product in (2) is integrable and odd. Its integral is zero. No property of the zeros is used. QED.
+
+### Lemma 2 — a strict positive test in an arbitrarily short window [ABSTRACT][PAPER]
+
+Let
+\[
+ c_A=\gamma_{\!E}+\log(8\pi)+\pi/2,\qquad
+ L=\exp[-2(c_A+2)]<\log2,
+\]
+and define the explicit real even smooth bump
+\[
+ \psi_L(t)=
+ \begin{cases}
+ \exp\{-1/[1-(2t/L)^2]\},& |t|<L/2,\\
+ 0,& |t|\ge L/2.
+ \end{cases}                                          \tag{4}
+\]
+Then
+\[
+             Q(\psi_L)\ge2\|\psi_L\|_2^2>0.            \tag{5}
+\]
+**Proof.** In the exact form [R1], all prime correlations vanish: their shifts are >= log2 > L, the diameter of the support. Evenness gives A_+=A_-, so the pole term is nonnegative. For a(t)=e^{-t/2}/(1-e^{-2t}), disjoint supports at t >= L give
+\[
+ D(\psi_L)\ge2\|\psi_L\|_2^2\int_L^\infty a(t)dt.
+\]
+For 0<t<=1, 1-e^{-2t}<=2t and e^{-t/2}>1/2, hence a(t)>=1/(4t). Consequently
+\[
+ 2\int_L^\infty a(t)dt\ge\tfrac12\log(1/L)=c_A+2.
+\]
+Subtracting c_A times the norm proves (5). Smoothness at the boundary is the usual flat exponential-bump calculation. QED.
+
+Combining the two lemmas yields a strict, source-specific discrepancy:
+\[
+ \boxed{\|\widehat{\mathcal P}_{D\psi_L}\|_2^2
+        -\pi Q(\psi_L)\le-2\pi\|\psi_L\|_2^2<0.}        \tag{KILL}
+\]
+This refutes the literal (1.9), hence the literal all-real (4.4) and (SE'). It also contradicts the claim in Lemma 3.2 that (3.9), with the printed definitions, is a norm on all compact tests.
+
+A second check uses only kernel symmetry. Set R=K_ar-K_norm. By (EVEN), K_norm(t,t)=K_norm(t,-t). Since g is even and g(0)=0,
+\[
+                    R(t,t)-R(t,-t)=-g(2t).             \tag{6}
+\]
+The explicit g below is not zero: near zero it equals (1/2)|t|log|t|+O(|t|). Therefore R cannot vanish. The argument is independent of any norm calculation or RH.
+
+**Interpretation:** this diagnoses the mathematical incompatibility of a particular printed extension with the later formulas. It is not a deduction of not-RH from a valid equivalence. The disputed equivalence is precisely what cannot be imported with these literal definitions.
+
+## 2. Requested audit of every RH-dependent stage in Sections 3–4
+
+Equation numbers refer to [S1]/[S1J]. This table distinguishes the intended signed-time argument from the literal source defect.
+
+| Location | Actual use of RH | Classification and audit |
+|---|---|---|
+| §3.1, (3.2)–(3.4), Prop. 3.1 | None for t>=0 | Unconditional explicit-formula identity; the zero expansion is not a claim of real zeros. The even extension preserves that identity only with folded time. |
+| §3.2, Prop. 1.2 proof | None | Existence in ordinary L2 and local-in-t bounds. Cancellation of real-axis poles is local algebra, not RH. A root-free alternative is proved in §3 below. |
+| §3.3, (3.5) | None | Defines meromorphic F_gamma, not an orthonormal family without RH. |
+| (3.6) | No reality is needed for an appropriately indexed meromorphic expansion | It is incompatible with (EVEN) when interpreted with signed t. With the prefactor i in (1.5), direct conjugation also requires a common minus sign and conjugated zero index; see (19). These are definition/algebra issues, not RH gaps. |
+| (3.7), (3.8) | Intended to be unconditional Fourier identities | They integrate signed exponentials. For the printed even-time S they are false: (3) is a counterexample. RH cannot repair this parity mismatch. |
+| (3.9), Lemma 3.2 | Intended unconditional nondegeneracy | Literal version fails by (3). A corrected signed transform needs its own proof; no H_0 norm completion is imported here. The closure of any image in ordinary L2 still exists. |
+| §4.1, Prop. 4.1 | RH supplies Hermite–Biehler E, inner Theta, and the model-space spectral theorem | Existence of the indicated model/de Branges structure, and **orthonormality/completeness** of F_gamma in that space. This is the substantive geometric input. |
+| (4.1), (4.2) | Algebra at a real zero is local and does not assert all zeros real | The formulas Theta'(gamma)/2=-i/m_gamma and F_gamma(gamma)=1/sqrt(pi m_gamma) do not independently give cross-inner-products or completeness. |
+| §4.2, (4.3) | None | Defines g by arithmetic. Calling it a screw function on the whole real line, or choosing its positive representing measure tau_xi, does use RH. |
+| Coefficient estimate before (4.5) | Real gamma gives bounded exponentials; summability itself does not require RH | Correct RH bound has **4 pi**, not pi, since abs(e^{-i gamma t}-1)<=2. Without RH the bound is pi(e^{abs(t)/2}+1)^2 sum m_gamma/abs(gamma)^2. Neither scalar bound grants orthonormality. |
+| (4.5) | Prop. 4.1 removes all cross terms; real gamma makes translations multiply by unit phases | Identity and Hilbert-space convergence. This is the exact step to replace in a corrected proof. Also impossible for literal folded time. |
+| (4.6) | None for the convergent paired complex-zero expression on compact t,u sets | An explicit-formula kernel identity; off-axis terms are not modulus squares. Treating it as positive is an additional use of RH. |
+| (4.4), Thm. 4.2 | Inherits (4.5) | Intended Gram/arithmetic equality. Its printed all-real version conflicts with (EVEN). |
+| (4.7), Cor. 4.3 | Forward direction uses the RH identity; converse uses the cited criterion from the earlier screw-function paper | Diagonal half-line statement, not a way to infer the all-real folded identity. This audit does not refute the independent intended positive-time diagonal criterion. |
+| (4.8), (4.9), Thm. 4.4 forward | Orthonormal Parseval from Prop. 4.1 plus the signed coefficient expansion | **The norm becomes a sum of squares here.** This cannot be assumed in a direct arithmetic evaluation. |
+| Thm. 4.4 converse | Assumes the proposed equality, then uses a nonreal-zero test to reach contradiction | Conditional implication, not an independent positive-form input. |
+| (4.10) | None | Integration by parts relating the derivative kernel form and Weil form; valid independently of Gram equality. |
+| Theorem 1.4 proof | D identifies compact smooth tests with compact smooth zero-integral tests; then uses Thm. 4.4 | D's bijection is unconditional. The equality it transports is not. |
+| Cor. 1.5 proof, (1.10) | Uses real-zero sampling and the norm identity to identify the form of the output representative | Plancherel supplies factor 2, not preservation of the Weil form. The displayed final chain also confuses input and output norms; the correct chain is in §5. |
+| (4.11), Thm. 4.5; Cor. 4.6 | Reuse (1.9) and the stated zero/Li test criterion | No new independent evaluation of the L2 norm. |
+
+This answers §1(a),(b). Since (3.6) uses conjugated basis functions, the corresponding conjugate model space must also be tracked; conjugation preserves the ordinary L2 norm but does not supply orthogonality. No conditional orthonormal basis is used in the following direct calculation. Here “root-free” means no sum over zeros and no assumption about their reality, not an assumption that X has no zeros.
+
+## 3. Explicit S and a direct Volterra/Parseval calculation
+
+### 3.1 Source formula, without zeros
+
+Let psi_d=Gamma'/Gamma and Phi denote the Hurwitz–Lerch function. For t>0, the source's P is
+\[
+\begin{aligned}
+P_t(z)={}&\frac{4(e^{t/2}-1)}{1+2iz}+\frac{4(e^{-t/2}-1)}{1-2iz}\\
+&+\frac{e^{-izt}-1}{iz}\frac{\zeta'}{\zeta}(1/2-iz)
++\sum_{n\le e^t}w_n\frac{e^{-iz(t-\log n)}-1}{iz}\\
+&-\frac{\psi_d(1/4-iz/2)-\psi_d(1/4)}{2iz}\\
+&-\frac{e^{-t/2}}{2iz}
+ [\Phi(e^{-2t},1,1/4-iz/2)-\Phi(e^{-2t},1,1/4)].
+\end{aligned}                                                        \tag{7}
+\]
+Removable values are filled by limits. Define g on t>=0 by its literal (4.3):
+\[
+\begin{aligned}
+g(t)={}&-4(e^{t/2}+e^{-t/2}-2)+\sum_{n\le e^t}w_n(t-\log n)
++\frac{c_A t}{2}\\
+&-\frac14[\Phi(1,2,1/4)-e^{-t/2}\Phi(e^{-2t},2,1/4)],
+\end{aligned}                                                        \tag{8}
+\]
+and extend g evenly. It is continuous with g(0)=0. Away from prime hinges,
+\[
+ g'(t)=-4\sinh(t/2)+\sum_{n\le e^t}w_n+\frac{c_A}{2}
+       -\frac12e^{-t/2}\Phi(e^{-2t},1,1/4).              \tag{9}
+\]
+In particular g' belongs to L2 on every compact interval: at zero it grows only logarithmically; at a prime hinge it has a finite jump. For t>=1 the elementary estimate Lambda(n)<=log n gives
+\[
+ |g'(t)|\le C(1+t)e^{t/2}.                              \tag{10}
+\]
+No prime-number asymptotic is used.
+
+### Lemma 3 — first-order Volterra identity [ABSTRACT][PAPER]
+
+With h(z)=X'(z)/X(z), for t>=0,
+\[
+ P_t(z)=h(z)\frac{e^{-izt}-1}{z}
+             -\int_0^t e^{-iz(t-r)}g'(r)dr.             \tag{11}
+\]
+This is an identity of meromorphic functions, with removable values respected.
+
+**Proof.** Apply partial_t+iz to (7). The two pole terms give
+`4 sinh(t/2)-1/s-1/(s-1)`, where s=1/2-iz. The zeta term gives `-zeta'/zeta(s)`. Each prime hinge gives `-w_n` after it enters the sum; the boundary term at entry is zero because its numerator vanishes. The digamma and Lerch terms give
+`-psi_d(s/2)/2+psi_d(1/4)/2+e^{-t/2}Phi(e^{-2t},1,1/4)/2`.
+
+Using
+\[
+ ih(z)=\frac1s+\frac1{s-1}-\frac12\log\pi
+       +\frac12\psi_d(s/2)+\frac{\zeta'}{\zeta}(s),
+\quad \psi_d(1/4)=-\gamma_E-\pi/2-3\log2,
+\]
+the sum is exactly `-g'(t)-ih(z)`. These differentiations are justified on compact positive-t intervals by the uniformly convergent Lerch series and the locally finite prime sum. Thus
+\[
+        (\partial_t+iz)P_t=-g'-ih,\qquad P_0=0.
+\]
+The equation holds almost everywhere in t, across the continuous prime hinges, and g' is integrable at zero. Its integrating-factor solution is (11). Initially avoid the isolated poles in z; meromorphic continuation supplies the full stated identity. QED.
+
+### Lemma 4 — bounded-multiplier L2 representation [ABSTRACT][PAPER]
+
+For real x set
+\[
+ v(x)=\frac{X(x)}{X(x)-iX'(x)},\qquad
+ u(x)=\frac{X'(x)}{X(x)-iX'(x)}.
+\]
+Both have removable values at common real zeros. Local factorization at a zero of any multiplicity shows v tends to 0 and u tends to i. Hence
+\[
+              |u|^2+|v|^2=1.                          \tag{12}
+\]
+For r>=0 put
+\[
+ a_r(s)=\mathbf1_{(0,r)}(s),\qquad
+ b_r(s)=g'(r-s)\mathbf1_{(0,r)}(s),
+\quad A_r=\mathsf F_-a_r,\quad B_r=\mathsf F_-b_r.
+\]
+Here F_- uses exp(-ixs), independently of the plus convention for the original test transform. Then (1),(11) imply
+\[
+                     S_r=uA_r-ivB_r.                 \tag{13}
+\]
+Consequently
+\[
+ \|S_r\|_2\le N(r):=\sqrt{2\pi}
+       \left(\sqrt r+\|g'\|_{L^2(0,r)}\right).           \tag{14}
+\]
+**Proof.** The identity `(e^{-ixr}-1)/x=-i A_r(x)` gives (13). Equation (12), the triangle inequality and Plancherel give (14). Strong L2 continuity of a_r and b_r follows from translation continuity and g' in L2_loc, including their endpoint indicators. Thus S_r is strongly continuous and its norm is bounded uniformly for r in a compact interval. The literal even extension inherits these properties. This proves both L2 existence and the Bochner-integrability needed in (2), without a zero sum or RH. QED.
+
+In addition (10) gives N(r)<=C(1+r)e^{r/2} for r>=1, which will control noncompact canonical tests.
+
+### Lemma 5 — direct evaluation down to explicit Fourier multipliers [ABSTRACT][PAPER]
+
+Define real bounded functions
+\[
+ \omega=\frac{X^2}{X^2+X'^2}=|v|^2\in[0,1],\qquad
+ \eta=\frac{XX'}{X^2+X'^2}=u\bar v\in[-1/2,1/2]
+\]
+with removable values as above, and for r,s>=0 define
+\[
+V(r,s)=\frac1\pi\int_{\mathbb R}
+ \left[\omega(B_r\overline{B_s}-A_r\overline{A_s})
+   +i\eta(A_r\overline{B_s}-B_r\overline{A_s})\right]dx.    \tag{15}
+\]
+Every product is L1 by Cauchy–Schwarz. Then the **literal** kernel is exactly
+\[
+        K_{\rm norm}(t,u)=2\min(|t|,|u|)+V(|t|,|u|).     \tag{16}
+\]
+**Proof.** Multiply (13) by its conjugate at the other time. Replace |u|^2 by 1-omega, and note u bar(v)=eta is real. The resulting integrand is `A_r bar(A_s)` plus (15). Plancherel computes its first integral as `2pi min(r,s)`. Divide by pi and apply (EVEN). QED.
+
+This is the requested direct evaluation attempt. It uses explicit arithmetic g and X, bounded real-axis multipliers and Parseval, with no zeros or RH-dependent basis. It does **not** pretend to have computed the remaining weighted Fourier integrals to the desired translation-invariant kernel.
+
+## 4. Exact distributional remainder, including its nonzero witness
+
+All distributions below belong to D'(R) or D'(R^2), with compact smooth test functions. Fix the finite-part scale by
+\[
+ \langle\operatorname{Pf}(1/|t|),\varphi\rangle
+ =\lim_{\epsilon\downarrow0}
+ \left[\int_{|t|>\epsilon}\frac{\varphi(t)}{|t|}dt
+             +2\log\epsilon\,\varphi(0)\right].
+\]
+Directly differentiating (8), with its cusp treated in this convention, gives
+\[
+\boxed{
+ T:=-g''=-\tfrac12\operatorname{Pf}(1/|t|)
+ -(\gamma_E+\log(2\pi))\delta_0
+ -\sum_{n\ge2}w_n(\delta_{\log n}+\delta_{-\log n})
+ +r_*(t)dt,
+}                                                                  \tag{17}
+\]
+where
+\[
+ r_*(t)=2\cosh(t/2)-a(|t|)+\frac1{2|t|}\quad(t\ne0),
+ \qquad r_*(0)=7/4.
+\]
+The prime sum is locally finite; r_* is locally integrable. Notice the **minus** sign before the finite part and before the prime atoms in T. Their positive sign in DOM is a different, radical-subtracted representation.
+
+**Verification of the delta constant.** The exact explicit-formula archimedean action is
+\[
+ -c_0\varphi(0)-\int_0^\infty a(t)
+ [\varphi(t)+\varphi(-t)-2e^{-t/2}\varphi(0)]dt,
+ \quad c_0=\gamma_E+\log(4\pi).
+\]
+Since
+\[
+ -2\int_\epsilon^\infty a(t)e^{-t/2}dt
+       =\log\tanh(\epsilon/2),
+\]
+conversion to the displayed finite part leaves coefficient `log2-c_0=-gamma_E-log(2pi)`. Expanding a(t)=1/(2t)+1/4+O(t) gives r_*(0)=7/4. This verifies (17) independently of a verbal sign convention. [S2 §2.5; PAPER calculation here.]
+
+By (16) and
+\[
+ 2\min(|t|,|u|)=2|t|+2|u|-|t-u|-|t+u|,
+\]
+the precise discrepancy in (SE') is
+\[
+\boxed{
+ \mathcal R:=T(t-u)-\partial_t\partial_uK_{\rm norm}
+ =T(t-u)-2\delta(t-u)+2\delta(t+u)
+       -\partial_t\partial_u V(|t|,|u|).
+}                                                                  \tag{18}
+\]
+This is an explicit distribution: V is the absolutely defined bounded-multiplier integral (15), not an unspecified error. No unjustified differentiation under the L2 integral has occurred; derivatives are taken distributionally after constructing a continuous kernel.
+
+For a test zeta supported in [-T0,T0]^2 put
+`G(2T0)=max_{|r|<=2T0}|g(r)|`. Equations (14) and the anchored arithmetic kernel give the rigorous local budget
+\[
+ |\langle\mathcal R,\zeta\rangle|
+ \le\left(4G(2T_0)+N(T_0)^2/\pi\right)
+                \|\partial_t\partial_u\zeta\|_{L^1}.
+\]
+Both constants are given by the explicit arithmetic functions (8),(9). There is no assumed vanishing rate.
+
+For the particular test `zeta(t,u)=psi_L(t)psi_L(u)`, integration by parts and Lemmas 1–2 give
+\[
+          \langle\mathcal R,\zeta\rangle
+          =Q(\psi_L)-\pi^{-1}\|\widehat{\mathcal P}_{D\psi_L}\|^2
+          \ge2\|\psi_L\|^2>0.
+\]
+Thus the remainder is demonstrably **nonzero**, not merely unestimated. We have computed the folded free-kernel contribution including its anti-diagonal delta. We have not reproduced the target prime atoms from V; writing them explicitly on the target side of (18) does not count as doing so.
+
+## 5. F1, F4, F5 — admission, short windows, exact constants
+
+**F1: ACCEPT the search shape, REJECT the literal identity.** An explicit L2 transform can be a legitimate independent second-expression candidate even when the desired equality is RH-equivalent. The transform's existence is not its isometry. Equivalence alone is not circularity. Here the literal source fails for the separate parity reason proved above. The filter in [R4] cannot overrule this distinction or turn an equivalence into an impossibility theorem.
+
+**F4: NO.** Lemma 2 proves short-window positivity directly, with an explicit lower bound; Lemma 1 proves its literal Suzuki norm is zero. Consequently known positivity on small windows does not establish this particular norm identity. For a separately repaired transform, positivity still only ensures that *some* Gram representation of the restricted form exists, not that this previously fixed transform is isometric. No unconditional repaired short-support isometry has been proved here.
+
+**F5: the dictionary is as follows.**
+
+| Object | Exact relation |
+|---|---|
+| Centered xi | X(z)=xi(1/2-iz)=xi(1/2+iz)=Xi(z), by the functional equation. |
+| Test Fourier transform | Suzuki F_+; project F_-. They are related by z -> -z. The complete zero multiset is symmetric, so diagonal Weil forms agree. |
+| Polarization | Suzuki is linear first; project B is antilinear first. Suzuki <psi,v>_W = project B(v,psi). On the diagonal Suzuki <psi,psi>_W = Q(psi). |
+| Kernel scale | K_norm=(1/pi)<S_t,S_u>. Thus an actual identity would give norm(P_hat(Dpsi))^2=pi Q(psi), not Q/pi. |
+| Prime weights | Each atom of T at +/-log n has weight -Lambda(n)/sqrt(n). The quadratic form has -2w_n C_psi(log n). DOM has +w_n E_s(log n), after subtraction against the radical vector. |
+| Archimedean constants | c_0=gamma_E+log(4pi) in the regularized correlation integral; c_A=gamma_E+log(8pi)+pi/2 in the difference energy; delta coefficient in (17) is -(gamma_E+log(2pi)). These are not interchangeable. |
+| Mean-prime regrouping | d_A=c_A-4 belongs to the distinct mean-density regrouping in WEILPROOF. It is not the finite-part delta constant or a multiplicative adjustment to (4.4). |
+| Compass | (X'+iX)/(X'-iX)=-Theta, by multiplying numerator/denominator by i. Correct but not a norm-identity proof. |
+
+For completeness, if the **corrected** transform identity and its sampling-preservation statement were proved, and `h=F_+^{-1} P_hat(Dpsi_0)`, the legitimate Corollary 1.5 chain would be
+\[
+ Q(h)=Q(\psi_0)=\pi^{-1}\|\widehat{\mathcal P}_{D\psi_0}\|_2^2
+             =\pi^{-1}\|\mathsf F_+h\|_2^2=2\|h\|_2^2.
+\]
+The first equality requires preservation of the full Weil pairing at the relevant samples; Plancherel supplies only the last equality. The printed proof's substitution of the Fourier norm of the input psi_0 for the output norm is not a valid justification. No scalar factor can repair (KILL), since its left norm is exactly zero.
+
+## 6. F2 — the canonical radical test, with its actual limit
+
+This section separates a direct Bochner-limit proof from an auxiliary zero-expansion audit. **Neither assumes RH.** The latter explicitly uses the entire zero multiset and is not advertised as a zero-free evaluation.
+
+Let f=f_0 from [R3], normalized by F_+f=X/A with A>0. Fix q and the even smooth chi_R of that source. The derivative envelopes give
+\[
+ |f^{(j)}(t-q)|\le M_j e^{-a_qe^{2|t|}},\quad j=0,1,2,
+ \qquad a_q=(\pi/2)e^{-2|q|}.
+\]
+By (14), the literal output on psi_R=chi_R U_qf converges in L2 to
+\[
+ L_q(x):=\int_{\mathbb R}\overline{S_{|t|}(x)}\,i f'(t-q)dt.
+\]
+The exact sufficient error budget is
+\[
+ \|\widehat{\mathcal P}_{D\psi_R}-L_q\|_2
+ \le(M_1+2M_0)\int_{|t|\ge R}
+        N(|t|)e^{-a_qe^{2|t|}}dt\longrightarrow0.        \tag{19}
+\]
+**Proof.** Differentiate chi_R f(t-q), subtract f'(t-q), use abs(chi'_R)<=2, then Minkowski and (14). The integrand is integrable by (10) and the double-exponential envelope. Dominated convergence gives the limit. QED.
+
+For q=0 the output is identically zero by parity. That check is vacuous: every even test passes it, not just the canonical radical vector.
+
+### Lemma 6 — some translated radical cutoffs fail F2 for literal S [ABSTRACT][PAPER]
+
+There exists a real q for which `||L_q||_2>0`. Thus F2 as quantified over all translates is false for the printed even-time object.
+
+**Proof.** We may use the unconditional positive-time identity of Prop. 3.1,
+\[
+ P_r(z)=\sum_\gamma m_\gamma
+           \frac{e^{-i\gamma r}-1}{\gamma(z-\gamma)},\quad r\ge0,
+ \qquad\sum_\gamma m_\gamma/|\gamma|^2<\infty,
+\]
+with all zeros, not assumed real. For fixed real x away from zeros and x!=0, put
+\[
+ j_\gamma(q)=\int\sin(\gamma|t|)f(t-q)dt.
+\]
+The cosine part and the constant part vanish when integrated against f'(t-q), because F_+f(gamma)=0. Therefore the literal definition gives
+\[
+ L_q(x)=-\frac{iX(x)}{E(x)}
+       \sum_\gamma\frac{m_\gamma j_\gamma'(q)}{\gamma(x-\gamma)}.
+                                                               \tag{20}
+\]
+The following estimates justify the calculation and the Fourier transform in q. Since abs(Im gamma)<1/2, abs(sin(gamma t))<=e^{|t|/2}. For q>=0, vanishing of the full exponential samples gives
+`j_gamma(q)=-2 int_{t<0} sin(gamma t) f(t-q)dt`; for q<=0 use the other half-line. The same formula differentiated in q bounds j_gamma' by a double-exponential tail, uniformly in gamma, in L1(dq). The coefficients in (20) are bounded by a constant times m_gamma/|gamma|^2 apart from finitely many terms. Hence all indicated interchanges are absolutely justified.
+
+Distributionally,
+\[
+ j_\gamma''+\gamma^2 j_\gamma=2\gamma f,
+ \quad
+ \mathsf F_qj_\gamma(r)=\frac{2\gamma X(r)}{A(\gamma^2-r^2)}.
+\]
+At real zeros the quotient is removable. Pairing gamma and -gamma in the logarithmic derivative of the even order-one function X gives
+\[
+ \sum_\gamma\frac{m_\gamma}{(\gamma^2-r^2)(x-\gamma)}
+ =\frac{h(x)-x h(r)/r}{x^2-r^2},\qquad h=X'/X.
+\]
+Thus the Fourier transform of (20), initially off the removable exceptional points, is
+\[
+ \boxed{\mathsf F_q L_{\bullet}(x)(r)
+ =\frac{2X(x)}{A E(x)}
+       \frac{xX'(r)-r h(x)X(r)}{x^2-r^2}.}              \tag{21}
+\]
+This cannot vanish identically in r. Otherwise
+`xX'(r)=r h(x)X(r)`, and the differential equation implies
+`X(r)=X(0) exp(h(x)r^2/(2x))` everywhere by analyticity. This contradicts X being nonconstant of order one: a nonzero quadratic exponential has order two, and a zero coefficient gives a constant.
+
+A source-defined allowed x is
+\[
+ x_0=\tfrac12\sqrt{\frac{\int f(t)dt}{\int t^2f(t)dt}}>0.
+\]
+The inequality cos u>=1-u^2/2 proves X(x_0)>=7X(0)/8>0. Hence (21) is a nonzero Fourier transform for x=x_0, so L_q(x_0)!=0 for at least one q. The uniform convergence of (20) on a real x-neighborhood away from zeros gives continuity there. Therefore L_q is nonzero on a set of positive measure and has positive L2 norm. Equation (19) proves failure of the required zero limit for that q. QED.
+
+This is not a contradiction with the project radical theorem: that theorem concerns Q, whereas literal P_hat is not isometric for Q. Section 8 proves the radical check for an explicitly different, signed-time repair; these two objects must not be merged.
+
+## 7. F3 — exact nonreal-zero plants and the step they prohibit
+
+One cannot replace X by an arbitrary H while keeping the old zeta prime formula unchanged. That would compare unrelated objects. For these explicit even order-one plants, with known zeros gamma in a bounded horizontal strip, use the consistent definitions
+\[
+ g_H(t)=\sum_\gamma m_\gamma\frac{\cos(\gamma t)-1}{\gamma^2},\quad
+ P^H_t(z)=\sum_\gamma m_\gamma\frac{e^{-i\gamma t}-1}{\gamma(z-\gamma)},\quad
+ S^H_t=\frac{iH}{H-iH'}P^H_t,
+\]
+with paired sums where required, and
+\[
+ Q_H(v)=\sum_\gamma m_\gamma\widehat v(\gamma)
+                              \overline{\widehat v(\bar\gamma)}.
+\]
+The sums for g_H and P^H converge locally, since sum m_gamma/abs(gamma)^2 is finite. These definitions use the explicit zeros of the plants, not hypothetical locations of zeta zeros. If a proposed L2 norm is undefined, the analogy already fails at existence; whenever it is defined, the following negative values exclude isometry. This is sufficient to test the asserted identity, without falsely assigning zeta's prime terms to another function.
+
+### A compact interpolation lemma [ABSTRACT][PAPER]
+
+If H is the plus Fourier transform of h in C_c^infinity and H(alpha)=0, then H(z)/(z-alpha) is also the transform of a compact smooth function. An explicit inverse is
+\[
+ u(t)=-i e^{-i\alpha t}\int_{-\infty}^t e^{i\alpha s}h(s)ds.
+\]
+It is compact because the total integral H(alpha) is zero. Direct differentiation gives `(i partial_t-alpha)u=h`. This proves the claim without an unproved localization assumption.
+
+**Plant 1.** Take H_1(z)=(1+16z^2)cos(8z), delta=i/4, and any nonzero even nonnegative compact smooth bump b with B=F_+b. Then B(delta)>0. The function Z=H_1 B is the transform of a compact smooth function: polynomial factors give derivatives and exponentials give shifts. Define
+\[
+ V(z)=Z(z)\left[
+ \frac{1}{Z'(\delta)(z-\delta)}
+ -\frac{1}{Z'(\bar\delta)(z-\bar\delta)}\right].          \tag{22}
+\]
+The preceding lemma proves V=F_+v for a compact smooth v. It has V(delta)=1, V(bar(delta))=-1 and vanishes at every other zero of H_1. Consequently its canonical full zero-side Hermitian form is exactly
+\[
+                  Q_{H_1}(v)=-2.                     \tag{23}
+\]
+All terms except the conjugate pair vanish, so no tail estimate is needed.
+
+**Plant 2.** One explicit admissible choice in H_2=B(z)(2+cos4z) is
+\[
+ B(z)=\prod_{j=1}^\infty\operatorname{sinc}(2^{-j}z).
+\]
+This is the Fourier transform of the probability distribution of the sum of independent uniform variables on [-2^{-j},2^{-j}]. The distribution is supported in [-1,1]. The product converges locally uniformly, and on the real line its first k factors bound it by C_k(1+|x|)^{-k} for every k. Fourier inversion therefore gives an even nonnegative C_c^infinity density. The product has only real zeros, since each factor does and uniform convergence plus the nonzero value at zero prevents extra nonreal zeros.
+
+Now delta=(pi+i arcosh2)/4 is a simple nonreal zero of H_2 in the strip, and B(delta)!=0. H_2 itself is a compact smooth Fourier transform. Taking Z=H_2 in (22) produces a compact test with
+\[
+                  Q_{H_2}(v)=-2.                     \tag{24}
+\]
+Thus no positive L2 Gram representation can equal these canonical pairings on all tests.
+
+**The exact obstructed step:** on evaluations at delta and bar(delta), the Weil pairing has matrix `[[0,1],[1,0]]`; vector (1,-1) has value -2. An ordinary Gram matrix is positive semidefinite. Replacing the crossed conjugate-zero pairing by the diagonal Parseval metric is precisely the forbidden step behind (4.5)/(4.9) without the real-zero geometry. This is an explicit plant, not a theorem that every contour or arithmetic proof must mention zeros.
+
+The literal even-time construction has the additional defect of failing a true positive short-support test (Lemma 2). It therefore fails *before* it can serve as an RH-sensitive discriminator. The plant obstruction and the parity defect are distinct.
+
+## 8. Explicit repair, what it proves, and the remaining computation
+
+The smallest natural repair compatible with the positive-time source and signed exponential expansion is, for t>0,
+\[
+ P^{\rm sgn}_{-t}(z)=P_t(-z),\qquad
+ S^{\rm sgn}_t(z)=\frac{iX(z)}{X(z)-iX'(z)}P^{\rm sgn}_t(z).
+                                                               \tag{25}
+\]
+Equivalently `S^{sgn}_{-t}(z)=Theta^sharp(z) S_t(-z)`. Set P^{sgn}_t=P_t for t>=0; positive times are unchanged. **This is a proposed repair, not the literal source and not an author-confirmed correction.**
+
+It agrees for every signed t with
+`P^{sgn}_t(z)=sum_gamma m_gamma(e^{-i gamma t}-1)/(gamma(z-gamma))`, by the unconditional positive-time identity and the symmetry gamma -> -gamma. With the source's prefactor i, the correctly conjugated (3.6)-type expansion is
+\[
+ S_t^{\rm sgn}(z)=-\sum_\gamma\sqrt{\pi m_\gamma}
+          \frac{e^{-i\bar\gamma t}-1}{\bar\gamma}F_\gamma^\sharp(z).
+                                                               \tag{26}
+\]
+The common minus sign has no effect on Gram norms; the time orientation and conjugation do. None of this asserts orthogonality of F_gamma.
+
+### Repaired radical check [ABSTRACT][PAPER]
+
+The estimate (19) applies to the repaired transform as well: its negative-time Volterra representation has the same N(abs(t)). For a fixed real x away from the discrete exceptional set, the unconditional exponential series may be integrated against f'(t-q), by the exponential coefficient bound and the double-exponential envelope. Every term is zero because
+\[
+ \int(e^{i\gamma t}-1)f'(t-q)dt
+   =-i\gamma e^{i\gamma q}X(\gamma)/A=0.
+\]
+The Bochner integral is thus zero almost everywhere in x. Therefore
+\[
+ \boxed{\|\widehat{\mathcal P}^{\rm sgn}_{D(\chi_R U_qf_0)}\|_2
+ \le\epsilon_{q,R}\longrightarrow0\quad\text{for every fixed q},}
+                                                               \tag{27}
+\]
+where epsilon_{q,R} is exactly the right side of (19).
+
+This proves a genuinely unconditional necessary check for the **repaired** object. It uses the unconditional zero expansion and the exact canonical Fourier identity, with no reality assumption and no RH basis. It is not the requested zero-free computation of the whole Gram kernel, and it is not counted retrospectively as success of literal F2.
+
+### Root-free remainder for the repaired object
+
+There is also a signed Volterra representation not involving zeros. In (13) use
+\[
+ a_t(r)=\operatorname{sgn}(t)\mathbf1_{(\min(0,t),\max(0,t))}(r),
+ \quad b_t(r)=g'(t-r)a_t(r),
+\]
+with zero functions at t=0. Formula (11), interpreted with oriented integration, proves it directly. Define A_t,B_t and V_sgn by (15) with these signed functions. Plancherel now gives
+\[
+ K_{\rm norm}^{\rm sgn}(t,u)
+       =|t|+|u|-|t-u|+V_{\rm sgn}(t,u),
+\]
+so the remaining mixed-derivative target is exactly
+\[
+ \boxed{\partial_t\partial_u V_{\rm sgn}(t,u)
+                =T(t-u)-2\delta(t-u)\quad\text{in D'(R^2)}.}      \tag{OPEN}
+\]
+All quantities on both sides are explicitly defined above; V_sgn has the same local distributional budget as in §4. The spurious anti-diagonal delta from folded time is gone.
+
+The unproved step is to evaluate the omega- and eta-weighted Fourier products in V_sgn to **all** the finite-part, prime and regular terms on the right. Positivity of the Gram expression alone does not do this. A contour closure using analyticity/contractivity of Theta in an entire half-plane would reintroduce the missing real-zero input unless independently established.
+
+No partial reproduction of the prime-atom component from V_sgn has been proved here. The positive-time Volterra identity, the free Gram part and (27) are proved; (OPEN) remains the precise analytic remainder, not a new assumed supplier. An exact second-expression mechanism remains worth investigating, but (25) must first be acknowledged as a source repair.
+
+## 9. Prediction scoring, independent checks and scope closeout
+
+The registered probabilities and event wording are not changed. Batch non-achievement is not described as a mathematical impossibility.
+
+| Registered event | p | Fate | Reason |
+|---|---:|---|---|
+| P_SEB_COMPLETE: (SE') proved without RH | 0.02 | REFUTED_AS_BATCH_OUTCOME | Literal (SE') is contradicted by (KILL). The repaired version is not proved. |
+| P_SEB_PRIME_ATOMS_REPRODUCED: prime atoms obtained from the norm kernel | 0.35 | NOT_ESTABLISHED | The target atoms in (17) are computed, not obtained from the weighted Gram remainder. |
+| P_SEB_RADICAL_CHECK_PROVED: F2 proved from P_hat | 0.55 | REFUTED_FOR_LITERAL_OBJECT | q=0 is a parity zero; Lemma 6 proves failure for some translated cutoffs. Equation (27) belongs to the explicitly repaired object. |
+| P_SEB_YOSHIDA_SUBCLASS_THEOREM: F4 yields the stated short-support isometry | 0.30 | REFUTED | The strictly positive short-support bump has literal norm zero. Positivity survives; isometry does not. |
+| P_SEB_RH_STEP_LOCATED | 0.85 | CONFIRMED | Prop. 4.1 -> (4.5)/(4.9), with existence, convergence and identity roles separated in §2. |
+| P_SEB_RESULT_REFUTED: theorem that direct computation cannot avoid zeros | 0.25 | NOT_ESTABLISHED | No such methodological impossibility is proved. Literal refutation is a different event and is not credited to this prediction. |
+
+Before any independent check of the present derivations, register:
+```yaml
+P_SEB_INDEPENDENT_PARITY_WITNESS:
+  probability: 0.98
+  event: literal_even_time_rule_and_short_support_witness_survive_independent_check
+  fate: PENDING
+P_SEB_INDEPENDENT_VOLTERRA_GRAM_SIGNS:
+  probability: 0.82
+  event: equations_11_13_16_18_require_no_change_of_constants_or_signs
+  fate: PENDING
+P_SEB_INDEPENDENT_TRANSLATED_RADICAL_REPAIR:
+  probability: 0.75
+  event: equations_21_and_27_survive_independent_check_with_their_distinct_time_rules
+  fate: PENDING
+```
+These are predictions for future checking, not claims that checks have occurred. No numerical experiment or Lean compilation was run in this adjudication.
+
+### One bounded directive
+
+Independently check the **negative-time convention** against the pinned PDF and journal, then check Lemmas 1–2 and the signed repair (25). Do not import Theorem 1.4/(4.4) as an all-real-time theorem until the convention is repaired. If proceeding with the repaired object, retain the exact (OPEN) target and the cutoff check (27); do not reinstate the even extension, a positive Gram assumption on the Weil form, or the RH orthonormal basis. This directive proposes a read-only mathematical verification, not a paid call, Lean edit, new queue entry or communication to the paper's author.
+
+### Closeout
+
+- **What was refuted:** the literal even-time all-real kernel identity, with a strict analytic witness.
+- **What was computed:** the root-free first-order equation and Volterra solution; bounded-multiplier L2 representation; free Gram kernel and the exact local distributional remainder.
+- **What was repaired explicitly:** signed negative times, with unconditional annihilation of canonical translated cutoffs for that different object.
+- **What remains open:** (OPEN), the exact weighted Fourier calculation for the signed-time object. No universal no-method theorem and no RH conclusion is claimed.
+- **What must not recur:** quote a theorem number while overlooking an incompatible definition; identify positivity with a prescribed isometry; claim finite verified zeros refute the possibility of not-RH; score a different event as the frozen prediction's success.
+- **Repository action:** only this verdict at EXPECTED_VERDICT_PATH. The request, paper, Lean files, skills, prior verdicts and shared state remain untouched. The commit and file digest are returned separately after readback; the file cannot contain its own commit identifier recursively.
+
+## 10. Readback clarification — 2026-09-06 (append-only)
+
+Two local clarifications to the first committed text, without changing its source finding, counterexample, or prediction fates:
+
+1. In the §2 table, the cross-reference in the (3.6) row should point to equation **(26)**, not (19).
+2. In §8, the phrase about the same distributional budget as §4 applies to the **full signed discrepancy**
+   `R_sgn = T(t-u) - partial_t partial_u K_norm^{sgn}`.
+   Precisely, for zeta supported in [-T0,T0]^2,
+   \[
+   |\langle R_{\rm sgn},\zeta\rangle|
+   \le(4G(2T_0)+N(T_0)^2/\pi)\|\partial_t\partial_u\zeta\|_1.
+   \]
+   For the derivative of V_sgn alone the directly justified budget is instead
+   \[
+   |\langle\partial_t\partial_u V_{\rm sgn},\zeta\rangle|
+   \le(N(T_0)^2/\pi+2T_0)\|\partial_t\partial_u\zeta\|_1,
+   \]
+   because `0 <= |t|+|u|-|t-u| <= 2T0` on that square. No bound for V_sgn alone by the former constant is asserted. The proof of (27) and the unproved identity (OPEN) are unchanged.
+
+
+## File: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md
+
+# STATUS: TRY_OPENSGN_EXACT_LAPLACE_EVALUATION_WITH_POISSON_REMAINDER
+```yaml
+PRIMARY: TRY_OPENSGN_EXACT_LAPLACE_EVALUATION_WITH_POISSON_REMAINDER
+PRIMARY_COUNT: 1
+OPERATIVE_CLASS: TRY_OPENSGN_EXACT_LAPLACE_EVALUATION_WITH_POISSON_REMAINDER
+RESULT: PARTIAL_WITH_PRECISE_REMAINDER
+PARTIAL_SCOPE: exact_evaluation_and_remainder_reduction_not_arithmetic_coefficient_closure
+REQUEST_ID: REQ-2026-09-06-OPENSGN
+BOUNDARY_ID: GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY
+REQUEST_LOCK:
+  COMMIT: 90aaa56a0dbfdd1e86887329dc97f75ae2aa12fc
+  PATH: docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.txt
+  GIT_BLOB: 0d4143ec66be997ad0dbdf550f3d65e4e59c28bf
+  SHA256: d01fd4bf054a73c9ace3d9db63a8a33cbd78189fd51227d8fced57a64754bc5f
+  BYTES: 6882
+  LINES: 71
+  FINAL_LF: true
+  FETCHED_UTF8_REENCODING_HASHES_INDEPENDENTLY_RECOMPUTED: true
+PARENT_LOCK:
+  GIT_BLOB: ec3d34b7fc711077ea5473aa705390b1c676bcea
+  SHA256: 146939ed954e20e9e0a26b21eca1d36bb74721d7238b38772b60f690bb1a71b2
+  MOUNTED_BYTES_MATCH_PINNED_GITHUB_BLOB: true
+EXPECTED_VERDICT_PATH: docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md
+PHASE_KEY:
+  PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+  ROUTE_ID: RouteB_TwoLevelSpectralLadder
+  FRONT_ID: GOAL058_SECOND_EXPRESSION
+  SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+  TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+  CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+  CHANGED: false
+CLOSES: [REQ-2026-09-06-OPENSGN]
+CLOSES_ANALYTIC_RH_SUPPLIERS: []
+OPENS: []
+MAIN_OPEN_IDENTITY_PROVED: false
+NEW_TARGET_COEFFICIENTS_REPRODUCED_FROM_V:
+  ARCHIMEDEAN_FINITE_PART: false
+  ARCHIMEDEAN_DELTA_CONSTANT: false
+  COMPLETE_PRIME_ATOMS_WITH_COEFFICIENT_ONE: false
+PROVED_HERE:
+  - signed_Volterra_derivative_without_the_nonexistent_gprime_at_zero
+  - distributional_three_term_evaluation_and_explicit_prime_shift_operators
+  - exact_double_Laplace_formulas_in_both_sign_quadrants
+  - exact_vanishing_of_the_eta_part_on_equal_positive_Laplace_parameters
+  - full_signed_identity_equivalent_to_one_explicit_Poisson_integral_identity
+  - exact_scalar_transform_description_of_the_full_distributional_remainder
+  - planted_failures_at_the_Poisson_reconstruction_step
+  - quantitative_consistency_with_the_signed_radical_cutoff_check
+SCOPED_REJECTIONS:
+  - finite_gprime_zero_boundary_term
+  - negative_prime_sign_in_gsecond_rather_than_in_minus_gsecond
+  - eta_part_alone_equals_the_target_prime_distribution
+  - known_boundary_unitarity_automatically_implies_Poisson_reconstruction
+CURRENT_UNEVALUATED_INTEGRAL: >-
+  (1/pi) integral_R p*X(x)^2/((p^2+x^2)*(X(x)^2+Xprime(x)^2)) dx
+  = xi(1/2+p)/(xi(1/2+p)+xi_prime(1/2+p)), for every p>1/2.
+THIS_IS_NOT_A_WEAKER_RH_PREMISE: true
+SIGNED_OBJECT_CHANGED: false
+PRINTED_EVEN_OBJECT_REINTRODUCED: false
+EXTERNAL_RH_BASIS_USED: false
+DIRECT_EVALUATION_USES_ZERO_SUMS: false
+AUXILIARY_RADICAL_AND_PLANTS_USE_UNCONDITIONAL_ZERO_FORMULAS: true
+SCOPE: ABSTRACT
+VERIFIER: PAPER
+INDEPENDENT_LEAN_VERIFICATION: false
+NOVELTY_IN_THE_LITERATURE: not_claimed
+LEAN_EDIT_PERFORMED: false
+NUMERICAL_RUN_PERFORMED: false
+ARISTOTLE_SUBMISSION: false
+REPOSITORY_WRITE_SCOPE: EXPECTED_VERDICT_DOCUMENT_ONLY
+ROUTE_PROMOTION: false
+ROUTE: CHALLENGER_NOT_RH
+BUS_010: VOID
+PX_RH_CLAIM: NOT_MADE
+RH_CLAIM: false
+NEGATION_OF_RH_CLAIM: false
+```
+
+## 0. Verdict and evidence boundary
+
+The signed object is retained exactly. The full identity (OPEN) is not proved. The calculation below evaluates its two time integrations, rather than assuming an RH-dependent spectral resolution. It leaves one explicitly specified real-axis Poisson integral unevaluated. Its defect, together with an explicit phase-dispersion defect, determines the full distributional remainder by formulas (L++) and (L+-).
+
+A substantive falsifier emerges: the **entire eta contribution has zero double Laplace transform when both positive-time parameters are equal**. The target prime distribution does not. Thus the suggested allocation “omega supplies the archimedean part; eta transports the prime atoms” cannot be an exact allocation of those distributions. All arithmetic, including the primes, must already be present in the omega average on that diagonal.
+
+No new finite-part or prime coefficient has been separately reproduced from V. This is a partial **evaluation** with a reduced, quantified remainder, not the stronger partial coefficient-closure illustrated in the request. In particular, writing down the target prime series is not credited as extracting it from the norm integral.
+
+### Sources used
+
+[R] The fetched request at the commit above. Its decoded UTF-8 content was re-encoded locally; SHA-256, Git object SHA-1, bytes, line count and final LF all match. No Unicode normalization was applied.
+
+[P] The complete SECONDEXPR-B verdict, including append-only section 10, blob `ec3d34b7fc711077ea5473aa705390b1c676bcea`, read at the request commit and compared with the mounted 43,070-byte file. Sections 3, 5, 7 and 8 supply the definitions, not a hypothesis that the signed identity holds.
+
+[Q] `paper_weil/sections/setup.tex` at the request commit, blob `8637e3d973ba689c0cfd5d09a10e2dec3edd3caa`. It fixes the full complex test class, Fourier conventions, Weil criterion and the control-space bound. The canonical test and cutoff data are those identified in [P], with Fourier transform X/A.
+
+[S] M. Suzuki, *On the Hilbert space derived from the Weil distribution*, arXiv:2301.00421v3, equations (1.5)-(1.9), (4.3)-(4.10). PDF pages 3, 11 and 12 were inspected. Only the positive-time source formula is used; the previously disputed even-time extension is not imported.
+
+[T] Suzuki, *Weil's quadratic form via the screw function*, arXiv:2606.09096v2, section 2.5, together with the independently checked finite-part convention in [P]. Global temperedness of g or T is not inferred from continuity; the arithmetic distributions act on compact smooth tests.
+
+All new derivations below are PAPER, with no claim of priority or kernel verification. Historical diagnostics, other agent results, and the finite-stencil theorem are not mathematical premises of this computation.
+
+## 1. Exact definitions, endpoint repair, and weak derivatives — 1(a), 1(f)
+
+Write g=g_xi, X(z)=xi(1/2-iz)=Xi(z), and use
+
+\[
+\mathsf F_-f(x)=\int f(r)e^{-ixr}dr,
+\qquad \langle F,G\rangle_2=\int F\overline G.
+\]
+
+Set
+
+\[
+\alpha(x)=\frac{X'(x)}{X(x)-iX'(x)},\qquad
+\beta(x)=\frac{X(x)}{X(x)-iX'(x)},
+\]
+
+with removable values at real zeros. Then
+
+\[
+|\alpha|^2=1-\omega,\quad |\beta|^2=\omega,
+\quad\alpha\overline\beta=\eta\in\mathbb R,
+\quad0\le\omega\le1,\quad |\eta|\le\tfrac12.
+\tag{1}
+\]
+
+The signed a_t,b_t,A_t,B_t in [R] give, for every real t,
+
+\[
+A_t(x)=\int_0^t e^{-ixr}dr,\quad
+B_t(x)=\int_0^t e^{-ix(t-r)}g'(r)dr,
+\qquad S_t=\alpha A_t-i\beta B_t.
+\tag{2}
+\]
+
+Both integrals are oriented integrals; at t=0 they vanish. These equations are precisely the signed repair, not the printed even object.
+
+### Lemma 1: the correct differentiated data [ABSTRACT][PAPER]
+
+For every fixed real x, locally in t in the distributional and almost-everywhere senses,
+
+\[
+\partial_t A_t=e^{-ixt}=:e_t(x),\qquad
+\partial_t B_t=g'(t)-ixB_t=:C_t(x).
+\tag{3}
+\]
+
+There is **no finite boundary value g'(0+)** to substitute. In the stated finite-part scale,
+
+\[
+g'(t)=\tfrac12\log t+\tfrac12(\gamma_E+\log(2\pi))+O(t)
+\quad(t\downarrow0).
+\tag{4}
+\]
+
+**Proof.** The first identity is differentiation of an oriented integral, valid on both half-lines. The second follows by differentiating the integrating-factor formula in (2); g' is locally integrable, in fact locally square-integrable. The explicit source derivative is, for t>0 away from prime hinges,
+
+\[
+g'(t)=-4\sinh(t/2)+\sum_{n\le e^t}w_n+\frac{c_A}{2}
+-\frac12 e^{-t/2}\Phi(e^{-2t},1,1/4),
+\tag{5}
+\]
+
+where c_A=gamma_E+log(8pi)+pi/2. Its logarithmic endpoint expansion is (4), also obtained by integrating the pinned T=-g'' near zero. Formula (3) therefore includes the endpoint correctly without separating two divergent terms. B_t is continuous through zero and every prime hinge, so its first derivative contains no extra point mass in t. QED.
+
+The sign in request 1(c) also needs a local correction: **g'' has +w_n atoms**, whereas T=-g'' has -w_n atoms. The task's displayed definition of T is retained; its prose sentence assigning minus atoms to g'' is not used.
+
+### Lemma 2: each differentiated Gram term is a well-defined distribution [ABSTRACT][PAPER]
+
+For epsilon>0 multiply the spectral integrands by exp(-epsilon*x^2). Then
+
+\[
+\begin{split}
+\partial_t\partial_u V_\epsilon(t,u)=\frac1\pi\int e^{-\epsilon x^2}
+\bigl[&\omega(C_t\overline{C_u}-e_t\overline{e_u})\\
+&+i\eta(e_t\overline{C_u}-C_t\overline{e_u})\bigr]dx.
+\end{split}
+\tag{6}
+\]
+
+The limit of (6) as epsilon decreases to zero exists in D'(R^2) and equals partial_t partial_u V_sgn. Thus (6), with this limit, is an explicit answer to 1(a), not an unjustified ordinary integral of differentiated L2 functions.
+
+**Proof.** On every finite time interval g' is L2; at fixed epsilon, the polynomial-in-x bounds from (3) are integrable with the Gaussian, so weak differentiation and Fubini are legitimate. The families a_t,b_t are continuous and bounded in L2 on compact time intervals. Consequently their Fourier transforms form compact subsets of L2. Strong convergence of the Gaussian multipliers to identity is uniform on these compact subsets. Cauchy-Schwarz gives locally uniform convergence V_epsilon -> V_sgn, hence distributional convergence of their derivatives. QED.
+
+An equivalent formula avoiding spectral regularization on separable tests is useful. For f supported in [-T0,T0], define the actual compactly supported L2 function
+
+\[
+(\mathcal Bf)(r)=-\int b_t(r)f'(t)dt
+=\begin{cases}
+-\int_0^\infty g'(s)f'(r+s)ds,&r>0,\\
+-\int_0^\infty g'(s)f'(r-s)ds,&r<0.
+\end{cases}
+\tag{7}
+\]
+
+Its value at zero is immaterial. Minkowski gives
+
+\[
+\|\mathcal Bf\|_2\le G_2(T_0)\|f'\|_1,
+\qquad G_2(T_0)=\|g'\|_{L^2(0,T_0)}.
+\tag{8}
+\]
+
+With F_f=F_-f and L_f=F_-(Bf), formula (6) paired with f(t)conj(h(u)) becomes the absolutely convergent integral
+
+\[
+\frac1\pi\int\bigl[
+\omega(L_f\overline{L_h}-F_f\overline{F_h})
++i\eta(F_f\overline{L_h}-L_f\overline{F_h})\bigr]dx.
+\tag{9}
+\]
+
+Indeed -integral A_t f'(t)dt=F_-f and -integral B_t f'(t)dt=F_-(Bf), first as Bochner integrals and then by Plancherel. A bound for (9) is
+
+\[
+2\|\mathcal Bf\|_2\|\mathcal Bh\|_2+2\|f\|_2\|h\|_2
++\|f\|_2\|\mathcal Bh\|_2+\|\mathcal Bf\|_2\|h\|_2.
+\tag{10}
+\]
+
+No value at a spectral zero or at the temporal logarithmic endpoint has been suppressed.
+
+## 2. Translation-invariant and prime pieces actually obtained — 1(b), 1(c)
+
+The -omega*A_t*conj(A_u) term in V has differentiated kernel
+
+\[
+-W(t-u),\qquad
+W(v)=\frac1\pi\mathcal F_{x\to v}^{(-)}\omega
+      =\frac1\pi\int\omega(x)e^{-ixv}dx
+\quad\text{in }\mathcal S'.
+\tag{11}
+\]
+
+This is translation-invariant. The C_t*conj(C_u) and eta terms in (6) include anchored Volterra data and are not separately shown to depend only on t-u. Their required cancellation is not automatic.
+
+In particular (11) by itself cannot equal a nonzero multiple of Pf(1/|v|) plus a locally integrable function and a locally finite measure. Every compact smooth localization of W has bounded Fourier transform, because it is a convolution of bounded omega with a Schwartz function. A localization of Pf(1/|v|) equal to it near zero has Fourier growth -2 log|x|+O(1); localized L1 functions and finite measures have bounded transforms. This proves that the missing archimedean singularity cannot simply be assigned to the -AA term. It may emerge only after the other terms are evaluated.
+
+### Lemma 3: the exact prime operators in the differentiated Volterra data [ABSTRACT][PAPER]
+
+Let ell_n=log n. The contribution of the nth prime power to B_t is
+
+\[
+B_t^{[n]}(x)=w_n\,\operatorname{sgn}(t)
+\mathbf1_{|t|>\ell_n}\,A_{t-\operatorname{sgn}(t)\ell_n}(x),
+\]
+
+and its derivative is
+
+\[
+C_t^{[n]}(x)=w_n\,\operatorname{sgn}(t)
+\mathbf1_{|t|>\ell_n}\,e^{-ix(t-\operatorname{sgn}(t)\ell_n)}.
+\tag{12}
+\]
+
+Equivalently, in (7),
+
+\[
+\mathcal B=\mathcal B_0+\sum_{\ell_n<T_0}w_nJ_n,
+\quad
+(J_nf)(r)=\mathbf1_{r>0}f(r+\ell_n)
+          -\mathbf1_{r<0}f(r-\ell_n),
+\tag{13}
+\]
+
+where B_0 is obtained by deleting the prime-step sum in (5). This is a finite sum for the specified tests. Each J_n has L2 norm at most one.
+
+**Proof.** Insert the step w_n*1_(s>ell_n) in g'(s) for positive s and its odd extension for negative s into (2). The resulting oriented integral is (12)'s antiderivative. At activation A_0=0, so differentiation introduces a step, not an additional delta. In (7), integrate f' over the indicated half-line; its endpoints give the two shifted evaluations in (13). The norm assertion follows from their disjoint supports and a change of variable. QED.
+
+For clarity the extra multipliers can now be written before evaluation. Let L_f^0=F_-(B_0 f), Z_n f=F_-(J_n f). The prime-dependent part of (9) is exactly
+
+\[
+\begin{split}
+\frac1\pi\int \biggl\{\omega\biggl[&\sum_n w_n
+ (Z_nf\,\overline{L_h^0}+L_f^0\overline{Z_nh})
+ +\sum_{n,m}w_nw_m Z_nf\,\overline{Z_mh}\biggr]\\
+&+i\eta\sum_n w_n(F_f\overline{Z_nh}-Z_nf\overline{F_h})\biggr\}dx.
+\end{split}
+\tag{14}
+\]
+
+These are compressed multiplier pairings and cross-prime products, not scalar atoms already known to have coefficient one. Moreover omega and eta themselves contain the full arithmetic X; B_0 is prime-free only as a temporal expression, not as a claim about the full integrand.
+
+There is a decisive support check. Near (t,u)=(log(2)/2,-log(2)/2), both |t| and |u| are smaller than log 2. Neither B_t nor B_u contains any prime step, yet T(t-u) has its -w_2 delta on t-u=log 2 through that neighborhood. Thus the missing atom cannot be produced there just by differentiating an explicit prime hinge of B. The spectral multipliers must participate. This does not refute (OPEN); it refutes that local hinge-only derivation of it.
+
+## 3. Direct evaluation of both time integrations
+
+The following computation is the main new reduction. It leaves spectral integrals but evaluates the Volterra convolutions and all time integrations. Exponential test factors below are used only to transform continuous kernels of established exponential growth, not as unauthorized tests in Weil's criterion.
+
+For p>1/2 set
+
+\[
+\kappa_p=p\int_0^\infty e^{-pt}g'(t)dt,
+\qquad
+\Omega_p=\frac1\pi\int_{\mathbb R}\frac{p\omega(x)}{p^2+x^2}dx,
+\]
+
+\[
+J_{pq}=\frac1\pi\int_{\mathbb R}x\eta(x)
+\left(\frac1{p^2+x^2}-\frac1{q^2+x^2}\right)dx.
+\tag{15}
+\]
+
+The difference in J_pq must stay inside the integral: no convergence of the two individually unsubtracted Hilbert integrals is assumed. We have
+
+\[
+0<\Omega_p<1,\qquad
+|J_{pq}|\le\frac{|\log(q/p)|}{\pi}.
+\tag{16}
+\]
+
+### Lemma 4: the Laplace input is explicitly arithmetic [ABSTRACT][PAPER]
+
+For s=p+1/2>1,
+
+\[
+\boxed{
+\kappa_p=-\frac1{p-1/2}-\frac1{p+1/2}
++\frac12\log\pi-\frac12\psi_{\rm d}(s/2)
++\sum_{n\ge2}\frac{\Lambda(n)}{n^s}
+=-\frac{\xi'(s)}{\xi(s)}.}
+\tag{16a}
+\]
+
+**Proof.** Integrate (5). The pole term gives -2p/(p^2-1/4); each prime step gives w_n*exp(-p ell_n). The Lerch integral is an absolutely convergent positive series. With alpha=1/4 and beta=1/4+p/2,
+
+\[
+\sum_{j\ge0}\frac1{(j+\alpha)(p+1/2+2j)}
+=\frac{\psi_{\rm d}(\beta)-\psi_{\rm d}(\alpha)}p.
+\]
+
+Thus its contribution is -[psi_d(beta)-psi_d(alpha)]/2. Use psi_d(1/4)=-gamma_E-pi/2-3log2 and c_A+psi_d(1/4)=log pi. The Euler product logarithmic derivative is absolutely convergent at s>1 and yields the final equality. This calculation involves no zeta zeros. QED.
+
+The strict bounds in (16) follow from (1) and nonconstancy of X. The J bound follows by |eta|<=1/2 and
+
+\[
+\int_0^\infty x\left|\frac1{p^2+x^2}-\frac1{q^2+x^2}\right|dx
+=|\log(q/p)|.
+\]
+
+### Lemma 5: exact double-Laplace Gram formulas [ABSTRACT][PAPER]
+
+Define, for K_N=K_norm^sgn,
+
+\[
+\mathcal L_{++}K(p,q)=\int_0^\infty\!\int_0^\infty
+ e^{-pt-qu}K(t,u)\,dt\,du,
+\]
+
+and L_+- by K(t,-u) in the same integral. Write a=kappa_p and b=kappa_q only in the next formulas. Then
+
+\[
+\boxed{
+\mathcal L_{++}K_N=
+\frac{2+(ab-1)(\Omega_p+\Omega_q)+(b-a)J_{pq}}
+ {pq(p+q)}.}
+\tag{17}
+\]
+
+For p!=q,
+
+\[
+\boxed{
+\mathcal L_{+-}K_N=
+\frac{(1+ab)(\Omega_p-\Omega_q)+(a+b)J_{pq}}
+ {pq(q-p)}.}
+\tag{18}
+\]
+
+All diagonal p=q limits are continuous limits, not omitted parameters.
+
+**Proof.** The existing bound
+
+\[
+\|S_t\|_2\le N(|t|),\quad
+N(T)=\sqrt{2\pi}\bigl(\sqrt T+\|g'\|_{L^2(0,T)}\bigr)
+\le C(1+T)e^{T/2}
+\tag{19}
+\]
+
+makes the time integrals Bochner-integrable for p>1/2. Their exact values are
+
+\[
+\int_0^\infty e^{-pt}S_t(x)dt
+ =\frac{\alpha(x)-i\kappa_p\beta(x)}{p(p+ix)},
+\quad
+\int_0^\infty e^{-pt}S_{-t}(x)dt
+ =\frac{-\alpha(x)-i\kappa_p\beta(x)}{p(p-ix)}.
+\tag{20}
+\]
+
+These follow directly by integrating (2). Products of these L2 functions are L1, so Fubini is justified. For ++ their numerator is
+`1+(ab-1)omega+i(b-a)eta`; for +- it is `-1+(1+ab)omega+i(a+b)eta`.
+Use
+
+\[
+\frac1{(p+ix)(q-ix)}=
+\frac1{p+q}\left(\frac1{p+ix}+\frac1{q-ix}\right),
+\]
+
+and the analogous difference with denominator q-p for (p+ix)(q+ix). Evenness of omega and oddness of eta give precisely (15); the free integrals are 2pi/(p+q) and zero, respectively. The subtracted eta integrals are absolutely convergent before partial fractions; symmetric truncation preserves their cancellation. This proves (17)-(18). QED.
+
+### Lemma 6: comparison with the full arithmetic target [ABSTRACT][PAPER]
+
+For K_A(t,u)=g(t-u)-g(t)-g(u),
+
+\[
+\mathcal L_{++}K_A=-\frac{a+b}{pq(p+q)},\qquad
+\mathcal L_{+-}K_A=\frac{a-b}{pq(q-p)}.
+\tag{21}
+\]
+
+**Proof.** Integration by parts gives integral_0^infinity exp(-pt)g(t)dt=kappa_p/p^2. Split the ++ integral at t=u; for +- put r=t+u. The resulting geometric integrals give (21), including the anchored subtractions. QED.
+
+In particular, **the eta term in (17) is zero at p=q**. For the omega contribution to V alone, its double Laplace value is
+
+\[
+\mathcal L_{++}V_\omega(p,p)
+=\frac{(\kappa_p^2-1)\Omega_p}{p^3},
+\qquad \mathcal L_{++}V_\eta(p,p)=0.
+\tag{22}
+\]
+
+The causal mixed derivative therefore has equal-parameter Laplace value
+`(kappa_p^2-1)Omega_p/p`. The requested right side T(t-u)-2delta(t-u) has value `-(kappa_p+1)/p`. Boundary axes cause no extra terms: V vanishes on both axes, and these derivatives can equivalently be defined after extending the continuous kernel by zero to the positive quadrant.
+
+The target prime part alone has transform
+
+\[
+-\frac1p\sum_{n\ge2}\frac{\Lambda(n)}{n^{p+1/2}}<0.
+\tag{23}
+\]
+
+Consequently V_eta cannot, by itself, have mixed derivative equal to that prime distribution. This is an exact analytic failure of the proposed allocation, not a numerical test and not a refutation of the combined signed identity.
+
+## 4. The exact remainder and the remaining scalar integral
+
+For zeta define
+
+\[
+r_p=\Omega_p-\frac1{1-\kappa_p},\qquad
+h_{pq}=J_{pq}+\Omega_p-\Omega_q.
+\tag{24}
+\]
+
+The denominators are legitimate. The canonical positive even theta density represents F(p)=X(ip)=xi(1/2+p) as an exponential moment. Thus F>0, F'>0 for p>0 and
+
+\[
+\kappa_p=-F'(p)/F(p)<0,\qquad
+\kappa_p'=-\operatorname{Var}_p(t)<0.
+\tag{25}
+\]
+
+Here the probability density is the normalized positive theta density times exp(pt). Its nonzero variance follows from its positive support on intervals. This uses no assertion about zeros.
+
+Let D=K_N-K_A. Subtraction and elementary algebra in (17)-(21) give the **fully explicit transforms of the continuous kernel remainder**:
+
+\[
+\boxed{
+\mathcal L_{++}D=
+\frac{(a-1)(b+1)r_p+(b-1)(a+1)r_q+(b-a)h_{pq}}
+ {pq(p+q)}.}
+\tag{L++}
+\]
+
+\[
+\boxed{
+\mathcal L_{+-}D=
+\frac{(1-a)(1-b)(r_p-r_q)+(a+b)h_{pq}}
+ {pq(q-p)}.}
+\tag{L+-}
+\]
+
+Both have their limiting values at p=q. For real spectral x, A_(-t)=-conjugate(A_t), B_(-t)=conjugate(B_t), while omega is even and eta is odd in x. Substitution in the Gram integral proves K_N is real symmetric and K_N(-t,-u)=K_N(t,u); the same holds for K_A. Thus these two transforms determine all four quadrants. Uniqueness of the double Laplace transform applies, by (19) and the analogous bound on g.
+
+This is not a free error function: a,b are the absolutely specified arithmetic values (16a), and r,h are the absolutely convergent real-axis integrals (15),(24). In particular
+
+\[
+|r_p|\le1,\qquad |h_{pq}|\le1+\frac{|\log(q/p)|}{\pi}.
+\tag{26}
+\]
+
+These are existence bounds, not vanishing estimates.
+
+### Lemma 7: the full signed identity reduces exactly to one scalar Poisson calculation [ABSTRACT][PAPER]
+
+The following are equivalent for the objects fixed here:
+
+1. (OPEN) in D'(R^2).
+2. K_N=K_A on R^2.
+3. For every p>1/2,
+
+\[
+\boxed{
+\frac1\pi\int_{\mathbb R}
+\frac{p\,X(x)^2}{(p^2+x^2)(X(x)^2+X'(x)^2)}dx
+=\frac{\xi(1/2+p)}{\xi(1/2+p)+\xi'(1/2+p)}.}
+\tag{P}
+\]
+
+**Proof.** For 1 <=> 2, D has zero mixed derivative exactly when it is a sum of a distribution in t and a distribution in u. Since D is continuous and zero on both axes, it is zero. This can also be proved by mollification and integration over rectangles.
+
+For 2 => 3, put p=q in (17),(21). We obtain
+
+\[
+(\kappa_p^2-1)\Omega_p=-(\kappa_p+1).
+\]
+
+Away from kappa_p=-1 this gives Omega_p=1/(1-kappa_p). By (25) the exceptional value occurs at most once, and continuity supplies it too. This proves (P).
+
+For 3 => 2, it remains to justify h_pq=0, not assume it. For Re p>0 the same integral
+
+\[
+\Omega(p)=\frac1\pi\int_{\mathbb R}
+\frac{p\omega(x)}{p^2+x^2}dx
+\tag{27}
+\]
+
+is holomorphic; the symmetrized integrand is O(x^-2) locally uniformly in p. If (P) holds on the positive ray, analytic continuation gives
+
+\[
+(F+F')\Omega=F\quad\text{on Re }p>0.
+\tag{28}
+\]
+
+This is continuation of an analytic identity, not a contour closure through unknown poles. On the boundary p=iy, the quotient F/(F+F') equals
+`X(y)/(X(y)-iX'(y))=omega(y)+i eta(y)`; common real zeros are removable. On the other hand the Cauchy integral (27), with the symmetric tail prescription justified by evenness of omega, has boundary value
+
+\[
+\omega(y)-i\mathcal H\omega(y),\qquad
+\mathcal H\omega(y)=\frac1\pi\operatorname{PV}\int
+                   \frac{\omega(x)}{y-x}dx.
+\]
+
+Local existence follows from the smooth removable real-axis multipliers; pairing x and -x makes the tail O(x^-2). Hence eta=-H omega.
+
+Let P_p(x)=p/[pi(p^2+x^2)] and Q_p(x)=x/[pi(p^2+x^2)]. Direct Fourier transformation, or a rational contour integral, gives H Q_p=-P_p. Skew-adjointness of H then gives
+
+\[
+J_{pq}=\langle-\mathcal H\omega,Q_p-Q_q\rangle
+       =\langle\omega,-P_p+P_q\rangle
+       =\Omega_q-\Omega_p.
+\tag{29}
+\]
+
+This use of Hilbert duality is legitimate by symmetric regularization: Q_p-Q_q=O(x^-3), H(Q_p-Q_q)=-P_p+P_q=O(x^-2), omega is bounded, and the boundary identity has made H omega=-eta bounded. Thus both pairings converge and cutoff boundary terms vanish. Consequently h_pq=0. Now (L++),(L+-) vanish, and Laplace uniqueness gives D=0. QED.
+
+**Status of the lemma:** the equivalence is proved; (P) is NOT proved. It is the remaining literal integral evaluation, not a new weaker premise or a claimed independent supplier. Equations (17)-(29) are mathematical work beyond the parent remainder; they do not supply its missing zero value.
+
+### Exact distribution and local budget
+
+The unreproduced distribution, with the sign matching LHS minus RHS of (OPEN), is
+
+\[
+\begin{split}
+\mathfrak R={}&\partial_t\partial_u V_{\rm sgn}-T(t-u)+2\delta(t-u)\\
+={}&\partial_t\partial_u V_{\rm sgn}
++\tfrac12\operatorname{Pf}\frac1{|t-u|}
++(\gamma_E+\log(2\pi)+2)\delta(t-u)\\
+&+\sum_{n\ge2}w_n[\delta(t-u-\ell_n)+\delta(t-u+\ell_n)]
+-r_*(t-u)\,dt\,du
+=\partial_t\partial_u D.
+\end{split}
+\tag{30}
+\]
+
+The pullbacks under t-u are understood distributionally. For zeta_test in C_c^infinity((-T0,T0)^2),
+
+\[
+|\langle\mathfrak R,\zeta_{\rm test}\rangle|
+\le\left(\frac{N(T_0)^2}\pi+4G(2T_0)\right)
+       \|\partial_t\partial_u\zeta_{\rm test}\|_1,
+\quad G(R)=\max_{|r|\le R}|g(r)|.
+\tag{31}
+\]
+
+This follows by boundedness of the continuous primitive D, not by an assumed Fourier decay of T. The derivative of V alone has bound
+`(N(T0)^2/pi+2T0)||partial_t partial_u zeta_test||_1`, as clarified in the parent readback. Equations (L++),(L+-) specify this same remainder by scalar integrals; (31) supplies its local distributional budget. None of the singular target terms in (30) is declared absent from the remainder.
+
+## 5. Where direct evaluation stalls; why this is not an averaging trick
+
+The scalar integrand in (P) is nonnegative and absolutely integrable. Its integral is an ordinary Poisson average of omega, while the asserted right side is the value of a particular meromorphic continuation. Boundary reality/unitarity alone does not identify those two objects.
+
+Concretely, (P) says that the analytic function (27) agrees with F/(F+F'). Setting the real boundary values of that quotient equal to omega is insufficient: poles or a non-Poisson analytic contribution inside the half-plane must be excluded. Dropping such a contribution in a contour computation is the unproved step. It cannot be justified here by saying Theta is inner, or by Proposition 4.1's orthonormal basis.
+
+There is an exact check of the strength of this missing calculation. For Re p>0,
+
+\[
+\Re\frac{p}{p^2+x^2}
+=\tfrac12\Re\left(\frac1{p-ix}+\frac1{p+ix}\right)>0,
+\]
+
+so Re Omega(p)>0. If (28) held and F had a zero p0 in that half-plane, write F=(p-p0)^m h, h(p0)!=0. Dividing (28) by (p-p0)^(m-1) and evaluating at p0 yields `m h(p0)Omega(p0)=0`, impossible. Thus a proof of (P) would exclude all nonreal upper zeros of X. This is a consequence of the attempted integral calculation, not an assumption used to evaluate it.
+
+We did not stop because this consequence is RH. We computed the time integrals, the arithmetic Laplace input, both sign quadrants and the dispersion relation. The actual stall is the unevaluated integral (P). Neither its value nor vanishing of (30) follows from the estimates obtained here.
+
+## 6. Exact plants — 1(d)
+
+Use H1,H2 with their own g_H, P^H and real-axis multipliers as fixed in [P, section 7]; do not retain zeta's prime formula after replacing X. Their signed constructions have the same Volterra algebra. Their explicit zero descriptions give g_H' in L2_loc with exponential growth below exp(t/2), so the local Gram construction and the p>1/2 transforms exist. For H2's sinc product, the individual real-lattice contributions to g_H' have bounds proportional to 2^-j, a summable series; the displaced cos-lattice adds a locally bounded exponential term.
+
+**H1=(1+16z^2)cos(8z).** Put F_H(p)=H1(ip). It has a simple zero p0=1/4 in Re p>0. Its Poisson integral Omega_H, formed from H1^2/(H1^2+H1'^2) on the real axis, has strictly positive real part there. Consequently the analogue of (28) cannot hold. In particular, the analogue of (P) cannot hold for every real p>1/2. This localizes the failing step without a numerical evaluation.
+
+**H2=B(z)(2+cos4z).** Use the explicit B from [P], the product of sinc(2^-j z). At
+
+\[
+\delta=(\pi+i\operatorname{arcosh}2)/4,
+\qquad p_0=-i\delta,
+\]
+
+we have Re p0>0, a simple zero of F_H and no zero of B there. The same positive-real-part argument refutes (28) and hence (P) for this plant.
+
+These are not statements that a root-free proof for arithmetic X is impossible. They show why the Poisson reconstruction step must distinguish the actual arithmetic function from the plants.
+
+For completeness the source's exact compact tests still give a quantitative witness for the full distributional identity. If Z is a compact smooth Fourier transform, with Z(delta)=Z(bar(delta))=0 and both simple, set
+
+\[
+V(z)=Z(z)\left[\frac1{Z'(\delta)(z-\delta)}
+              -\frac1{Z'(\bar\delta)(z-\bar\delta)}\right].
+\tag{32}
+\]
+
+For H1 choose Z=H1 times the transform of an even nonnegative smooth bump; for H2 take Z=H2. Division by each vanishing linear factor preserves a compact smooth inverse transform: solve `(i partial_t-alpha)u=h` by
+`u(t)=-i exp(-i alpha t) integral_(-infinity)^t exp(i alpha s)h(s)ds`; the vanishing full integral ensures compact support. Thus V is the transform of an actual compact smooth v. Its values at the selected pair are 1,-1 and at all other zeros of H are zero. Therefore
+
+\[
+Q_H(v)=-2,\qquad
+\langle\mathfrak R_H,v(t)\overline{v(u)}\rangle
+=\pi^{-1}\|\widehat{\mathcal P}^{H,\rm sgn}_{Dv}\|_2^2+2\ge2.
+\tag{33}
+\]
+
+The matching of the kernel norm with this tensor pairing uses the real-axis symmetry of S; it is not an RH-dependent Parseval expansion. The two-dimensional conjugate-zero form is indefinite, while the constructed Gram form is positive. In the direct computation that mismatch is precisely the failure of (P)/(28), not a removable overall factor.
+
+## 7. Radical consistency — 1(e)
+
+Let f0, chi_R and a_q be the exact canonical objects of the parent, psi_R=chi_R U_q f0, and e_R=(1-chi_R)U_q f0. Define
+
+\[
+\epsilon_{q,R}=(M_1+2M_0)\int_{|t|\ge R}
+ N(|t|)\exp(-a_qe^{2|t|})dt\longrightarrow0.
+\]
+
+The signed zero-expansion check [P, (26)-(27)] gives
+
+\[
+\|\widehat{\mathcal P}^{\rm sgn}_{D\psi_R}\|_2
+\le\epsilon_{q,R}.
+\tag{34}
+\]
+
+Its proof uses the unconditional all-zero expansion and the exact canonical Fourier identity, not the reality of any zero: the integral of every term is a multiple of X(gamma)=0. The double-exponential envelope and sum m_gamma/|gamma|^2 justify the interchange at each nonexceptional real spectral point; the Bochner bound (19) then gives (34). This auxiliary confirmation is not labelled a zero-sum-free proof of the main norm identity.
+
+By radical membership and the source control-space bound,
+
+\[
+|Q(\psi_R)|=|Q(e_R)|\le C_{\mathcal X}\|e_R\|_{\mathcal X}^2.
+\]
+
+Our remainder therefore satisfies the explicit consistency estimate
+
+\[
+\boxed{
+|\langle\mathfrak R,\psi_R(t)\overline{\psi_R(u)}\rangle|
+\le\epsilon_{q,R}^2/\pi+C_{\mathcal X}\|e_R\|_{\mathcal X}^2
+\longrightarrow0.}
+\tag{35}
+\]
+
+Thus the calculation preserves the required radical check. It does not infer global equality from convergence on these special tests.
+
+## 8. Constants and the unproved final assembly — 1(f)
+
+The convention ledger is unchanged:
+
+| Quantity | Exact meaning |
+|---|---|
+| 1/pi | K_N=(1/pi) integral S_t conjugate(S_u) dx. |
+| 2 delta(t-u) | Mixed derivative of |t|+|u|-|t-u|; no anti-diagonal delta for signed time. |
+| c_0=gamma_E+log(4pi) | Constant in the regularized archimedean correlation formula. |
+| c_A=gamma_E+log(8pi)+pi/2 | Constant in the positive difference-energy formula for the Weil form. |
+| -(gamma_E+log(2pi))delta_0 | Delta coefficient of T in the finite-part scale fixed below. |
+| -w_n at each +/-log n | Atom of T; g'' has +w_n, Q has -2w_n C_psi(log n), DOM has +w_n E_s(log n). |
+| d_A=c_A-4 | Constant of the separate mean-density regrouping; not a replacement for the delta coefficient. |
+
+The finite part means
+
+\[
+\langle\operatorname{Pf}(1/|t|),\varphi\rangle
+=\lim_{\varepsilon\downarrow0}
+\left[\int_{|t|>\varepsilon}\frac{\varphi(t)}{|t|}dt
++2\log\varepsilon\,\varphi(0)\right].
+\]
+
+Changing this scale changes the delta term and is not allowed silently. The coefficient in (16a) was checked by the same digamma value that fixes c_A; no fitted constant is used.
+
+If (P) were independently proved, Lemma 7 would give (OPEN), then K_N=K_A. For every complex compact smooth psi, justified integration by parts and the bounded Bochner construction would give
+
+\[
+Q(\psi)=\langle T(t-u),\psi(t)\overline{\psi(u)}\rangle
+=\pi^{-1}\|\widehat{\mathcal P}^{\rm sgn}_{D\psi}\|_2^2\ge0.
+\]
+
+The published Weil criterion then gives RH. On psi=f0*s this is exactly DOM=||Tcal s||^2 with Tcal=pi^(-1/2)P_hat^sgn D M_f0. Smooth positivity of f0 makes this substitution cover every compact smooth test. These are conditional concluding steps. Their sole unevaluated identity (P) remains unevaluated; no conclusion about RH or its negation is made.
+
+## 9. Frozen prediction scoring and independent checks
+
+| Registered event, unchanged | p | Fate | Evidence and scope |
+|---|---:|---|---|
+| P_OPEN_COMPLETE | 0.02 | REFUTED_AS_BATCH_OUTCOME | No proof of (P) or (OPEN) is obtained. This is not a proof the identity is false. |
+| P_OPEN_FINITE_PART_REPRODUCED | 0.45 | NOT_ESTABLISHED | Formula (11) and the other omega term are computed, but their sum has not been evaluated to the finite part and delta constant. |
+| P_OPEN_PRIME_ATOMS_REPRODUCED | 0.25 | NOT_ESTABLISHED | (12)-(14) identify the actual shift operators, not coefficient-one target atoms; (23) is a target transform, not its extraction from V. |
+| P_OPEN_EXTRA_MULTIPLIER_IS_THE_REMAINDER | 0.55 | NOT_ESTABLISHED_AS_STATED | The exact defects affect the whole arithmetic response. The narrower eta-to-primes allocation is refuted by (22)-(23), but that narrower statement is not substituted for the frozen prediction. |
+| P_OPEN_PLANT_NAMES_THE_STEP | 0.80 | CONFIRMED | (28), the Poisson reconstruction, fails at the explicit right-half-plane plant zeros; (33) supplies strict compact-test discrepancies. |
+
+Before independent checking of this document, register:
+
+```yaml
+P_OPENSGN_LAPLACE_FORMULAS_INDEPENDENT:
+  probability: 0.88
+  event: equations_17_18_Lplusplus_Lplusminus_survive_without_sign_or_factor_change
+  fate: PENDING
+P_OPENSGN_POISSON_DISPERSION_REDUCTION_INDEPENDENT:
+  probability: 0.82
+  event: Lemma_7_including_the_Hilbert_boundary_argument_needs_no_extra_hypothesis
+  fate: PENDING
+P_OPENSGN_WEAK_ENDPOINT_DERIVATIVE_INDEPENDENT:
+  probability: 0.95
+  event: equations_3_6_7_hold_for_both_time_signs_and_the_logarithmic_endpoint
+  fate: PENDING
+```
+
+These are future verification predictions, not retrospective scoring of the algebra already performed. No numerical experiment, Lean run or Aristotle call occurred.
+
+## 10. One bounded directive and closeout
+
+Independently check (17)-(18), the p=q eta cancellation, and the boundary/Hilbert step (27)-(29). The known real-zero calibration may be the elementary function X(z)=z, for which omega=x^2/(x^2+1), eta=x/(x^2+1), kappa_p=-1/p, Omega_p=p/(p+1), and J_pq=1/(p+1)-1/(q+1); these rational integrals can be checked exactly, not fitted. This is a proposed read-only check, not an executed test or a new source substitution for zeta.
+
+If the check passes, the next mathematical computation is the left side of (P), with exactly those X, X' and Lorentzian weight. Any contour derivation must retain contributions of the meromorphic quotient F/(F+F') until their absence or cancellation is independently proved. Boundary modulus one is not that proof. No new queue item, external paid request or experiment is authorized by this directive.
+
+What became smaller: both time integrations and the signed-quadrant bookkeeping have been evaluated; a single explicit scalar integral identity determines the full kernel. What was rejected: the finite g'(0+) substitution and the literal eta-only prime assignment. What was not proved: any new target finite-part/delta/prime coefficient or the remaining scalar identity. The number of independent RH suppliers has not decreased.
+
+This document contains a mathematical partial calculation, not a claim that locating an equivalent scalar target proves progress toward RH by itself. The definite progress is the evaluated transform formulas, strict allocation falsifier, bounded explicit remainder and preservation of the radical tests. Only the expected verdict document is written; prior verdicts, source definitions, Lean, skills, request text, queue and shared state remain unchanged.
+
+
+## File: docs/routeB_bus/AGENT_REPORT_2026-09-06_SECONDEXPR_B_INDEPENDENT_CHECK.md
+
+# SEBCHECK — independent check of PROSHKA_VERDICT_GOAL058_..._SUZUKI_KERNEL_IDENTITY_2026-09-06
+
+Sources opened: arXiv:2301.00421v3 (`suzuki.pdf`, sha256 e4100e52…, "Version of November 10, 2025")
+and the verdict. Nothing else in the repo — in particular **[R1] was not opened**; the project's Q
+and c_A are re-derived below from the paper's own explicit formula (3.3).
+Scripts: c1 (constants), c2 (Lemma 2), c3 (Volterra), c4 ((1.6) vs (3.2)), c5 (g). mpmath, dps 20–30.
+pdftotext drops overlines; they are restored where the paper's own text fixes them.
+
+## 1. SOURCE CONVENTION — **CORRECT**
+Verbatim, p.3 after (1.6): "for a nonnegative real number t and a complex number z, where Λ(n) is the
+von Mangoldt function … **For negative t, we set St(z) := S−t(z).** The definition of Pt(z) is quite
+complicated." Verbatim, §3.1 after (3.2): "for nonnegative t. **For negative t, we set Pt(z) := P−t(z).**
+The series on the right-hand side of (3.2) converges absolutely and uniformly…".
+(1.7)/Prop.1.3: "P̂ϕ(z) := ∫_{−∞}^{∞} S♯t(z) ϕ(t) dt = ∫_{−∞}^{∞} \overline{St(z̄)} ϕ(t) dt", with
+"F♯(z) := \overline{F(z̄)}" (p.1) and (1.8) "(Dψ)(t) := iψ′(t)".
+CONFIRMED: P̂_{Dψ} ≡ 0 for every even ψ ∈ C_c^∞. Exactly three parity facts:
+(i) ψ even ⇒ ψ′ odd ⇒ Dψ odd; (ii) the printed rule makes t ↦ S_t even as an L²-valued map, and ♯
+acts pointwise in z, so t ↦ S♯_t(x) is even too; (iii) Prop.1.2+1.3 (L² membership, local-uniform norm
+bound) make the Bochner integral of the odd L²-valued integrand exist and vanish. No zero property used.
+Hence printed (1.9) forces ⟨ψ,ψ⟩_W = 0 for all even ψ — false already under RH (positive definiteness,
+stated p.1); item 2 makes it unconditional.
+Independent second witness (verdict's (6)): K_ar(t,u)=G_g(t,u), g even, g(0)=0 ⇒ K_ar(t,t)=−2g(t),
+K_ar(t,−t)=g(2t)−2g(t), while (EVEN) forces K_norm(t,t)=K_norm(t,−t); so R(t,t)−R(t,−t)=−g(2t).
+Computed g: g(0)=0, g(.001)=−2.747e−3, g(.1)=−5.313e−2, g(1)=−4.401e−2, g(2)=−5.334e−2 — never 0;
+g(t)=½t log t+O(t) near 0 confirmed. So (4.4) fails inside the paper already for t>0>u.
+This is a definition defect, not RH.
+
+## 2. LEMMA 2 — **CORRECT** (Q form and c_A also verified against the paper)
+From (3.3) with φ=ψ∗ψ̃, φ(0)=‖ψ‖², a(x)=e^{x/2}/(e^x−e^{−x})=e^{−x/2}/(1−e^{−2x}) (= verdict's a), and
+φ(x)+φ(−x)−2φ(0)=−‖ψ(·+x)−ψ‖²:
+Q(ψ)=D(ψ)+2Re(A₊Ā₋)−2Σw_n Re C_ψ(log n)−[γ+log4π+2∫₀^∞a(x)(1−e^{−x/2})dx]‖ψ‖², A_±=∫ψe^{±t/2}.
+Analytically ∫₀^∞a(1−e^{−x/2})dx = ½log2+π/4 (u=e^{−x}, then u=w², giving ∫₀¹2dw/((1+w)(1+w²))),
+so the bracket = γ+log8π+π/2 = c_A **exactly**. Numerics: 2∫ = 2.2639435073548419286 = log2+π/2 (29 d.p.);
+c_A = 5.3721834192256655822. The verdict's Q, a(t) and c_A are the paper's own objects.
+Each inequality: a(t)≥1/(4t) on (0,1] (1−e^{−2t}≤2t, e^{−t/2}≥0.6065>½) ✓; disjoint supports for t≥L
+(supp = [−L/2,L/2], diameter L) ⇒ ‖Δ_tψ‖²=2‖ψ‖² ✓; 2∫_L^∞a ≥ ½log(1/L) = c_A+2 at L=e^{−2(c_A+2)} ✓;
+pole term 2Re(A₊Ā₋)=2A₊²≥0 for real even ψ ✓; L*=3.9500522730e−7 < log2 so all C_ψ(log n)=0 ✓.
+At L* the true value 2∫_{L*}^∞a = 17.7015, so Q/‖ψ‖² ≥ 17.7015−5.3722 = 12.33 (chain lossy but valid).
+Mechanism at moderate L (exact quadrature, primes still absent):
+| L | D/‖ψ‖² | pole/‖ψ‖² | **Q/‖ψ‖²** |
+|---|---|---|---|
+| 0.3 | 5.2587 | 0.4448 | **0.3312** |
+| 0.05 | 7.0964 | 0.0741 | **1.7982** |
+| 0.001 | 11.0174 | 0.0015 | **5.6467** |
+Q>0 already at L=0.3; the bound ≥2 needs L≲0.04, so L* is amply sufficient. (KILL) holds
+unconditionally: left norm exactly 0, right side ≥ 2π‖ψ_L‖² > 0.
+
+## 3. VOLTERRA (11) — **CORRECT**, residual ~1e−25 relative
+P_t(z) implemented literally from (1.6)/(7) (mpmath.lerchphi, zeta(s,derivative=1), digamma,
+w_n=Λ(n)/√n over n≤e^t); g′ from (9); ∫₀^t e^{−iz(t−r)}g′(r)dr split at the hinges r=log2, log3 and at
+the integrable log singularity at 0. h(z)=X′/X analytic (−i ξ′/ξ(s)) vs mp.diff: both −0.140710380083223.
+| t | z | P_t(z) from (7) | \|LHS−RHS\| | rel |
+|---|---|---|---|---|
+|0.5|3|0.0405416605074+0.00101153279036i|1.1e−26|2.8e−25|
+|0.5|10|0.0462709558325+0.00763197423071i|5.8e−27|1.2e−25|
+|0.5|0.7|0.0401827159122+0.000222980146i|3.5e−26|8.8e−25|
+|1.2|3|0.0442972298094−0.00234274631941i|2.2e−26|5.0e−25|
+|1.2|10|0.0580930398541−0.0143978973443i|6.7e−27|1.1e−25|
+|1.2|0.7|0.0436046096702−0.000524672745i|5.2e−26|1.2e−24|
+ψ_d(1/4) = −4.2274535333762654081 = −γ−π/2−3log2 (29 d.p.) ✓. i·h(z) = 1/s+1/(s−1)−½logπ+½ψ_d(s/2)
++ζ′/ζ(s), s=1/2−iz, is d/ds log ξ combined with d/dz log X = −i(ξ′/ξ)(s) ✓.
+Verdict's (8) is verbatim the paper's (4.3): its linear coefficient −½[ψ_d(1/4)−logπ] = c_A/2 exactly —
+that is where c_A enters the paper. (9)=d(8)/dt verified term by term.
+Transcription cross-check of (1.6) against (3.2) (400 zero pairs, t=0.5, z=3): 0.03788+0.0010115i vs
+0.040542+0.0010115i; the real gap 2.66e−3 matches the analytic tail 2∫_{693}^∞(log(x/2π)/2π)x^{−2}dx
+= 2.62e−3. Prop. 3.1 consistent.
+
+## 4. (12) and (16) — **CORRECT**, one notational defect in the verdict
+(12): for real x, X and X′=dX/dz are real, so (X′²+X²)/(X²+X′²)=1.
+**Defect (presentational):** the verdict writes "E=X+iX′, E♯=X−iX′", but the paper's dash is d/ds
+((1.3): "the dash … means differentiation of ξ(s) with respect to s"), giving E=X+X′, E♯=X−X′ (its own
+(3.1)). The two agree only via ξ′(1/2−iz)=i·dX/dz; the verdict silently uses X′=dX/dz throughout
+(h, u, v, (11), (21)) and never says so. With the paper's dash, X−iX′ is not real on R and (12) fails.
+Its (1) is nonetheless right: (1+Θ♯)/2 = A/E♯ = X/(X−i dX/dz), since A=ξ(1/2−iz)=X.
+(16): S_r=uA_r−ivB_r from (1)+(11) with A_r(x)=i(e^{−ixr}−1)/x, B_r(x)=∫₀^r g′(ρ)e^{−ix(r−ρ)}dρ.
+Expanding S_r conj(S_s) with |u|²=1−ω and u v̄ = v ū = η real yields A_rĀ_s + πV(r,s) with V exactly (15).
+Plancherel constant checked directly: Re∫(e^{−ixr}−1)(e^{ixs}−1)x^{−2}dx = π(r+s−|s−r|) = 2π min(r,s)
+via ∫(1−cos ax)/x²=π|a|; odd part vanishes in p.v. Divide by π ⇒ 2min(r,s)+V ✓.
+Also ∂_t∂_u[2min(|t|,|u|)] = 2δ(t−u)−2δ(t+u), so (18) is right; for the signed kernel |t|+|u|−|t−u|
+the anti-diagonal delta is genuinely absent, so (OPEN) is the correct remaining target.
+
+## 5. (17) — **CORRECT**
+From (8): for t>0 off hinges g″ = −2cosh(t/2)+a(t) (using d/dt[e^{−t/2}Φ(e^{−2t},1,¼)] = −2a(t)),
+plus jumps +w_n in g′ at log n. Regularising −a(|t|) ~ −1/(2|t|) in the stated Pf convention:
+−∫_{|t|>ε}a(|t|)φ + 2φ(0)∫_ε^∞ae^{−t/2} = −½⟨Pf(1/|t|),φ⟩ − ∫(a(|t|)−1/(2|t|))φ + (log2−c₀)φ(0)+o(1),
+c₀=γ+log4π ⇒ δ₀ coefficient = log2−γ−log4π = **−(γ+log2π)** ✓.
+The stated integral is exact: ∫_ε^∞a e^{−t/2}dt = artanh(e^{−ε}), so −2∫ = log tanh(ε/2); numerically
+ε=0.3: −1.90458085728337379834886104937 both sides; ε=0.01: −5.29832569983275924138357081715 both sides.
+Its expansion −logε+log2+O(ε²) is what cancels the +logε of Pf.
+r_*(0): a(t)=1/(2t)+1/4−t/24+O(t²) ⇒ 2−1/4 = 7/4; numerically r_*(1e−5)=1.7500002083614583,
+r_*(1e−7)=1.7500000020833361 ✓. Signs (minus before finite part and before prime atoms) correct.
+
+## 6. (25)/(27) — **CORRECT** (algebra); convergence machinery UNVERIFIED
+For t=−τ<0: P_τ(−z)=Σm_γ(e^{−iγτ}−1)/(γ(−z−γ)); reindex γ↦−γ, legal because the paper states Γ is
+symmetric with m_γ=m_{−γ} ("if γ belongs to Γ, then both −γ and γ̄ also belong to Γ with the same
+multiplicity"); result Σm_γ(e^{iγτ}−1)/(γ(z−γ)) = the signed unconditional expansion ✓. No reality used.
+This is exactly the extension (4.5)/(4.6) silently assume (they carry e^{−iγt}, e^{iγu} for both signs).
+With F₊f=X/A and F₊ψ(z)=∫ψ(t)e^{izt}dt: ∫(e^{iγt}−1)f′(t−q)dt = −iγ∫e^{iγt}f(t−q)dt =
+−iγe^{iγq}(F₊f)(γ) = −iγe^{iγq}X(γ)/A, and X(γ)=0 on Γ ✓ (boundary terms killed by the
+double-exponential envelope). The conjugated transform meets γ̄, and X(γ̄)=0 since Γ is
+conjugation-symmetric ✓.
+UNVERIFIABLE here without substantial extra work: the Σ_γ ↔ ∫dq interchange and the L² convergence
+behind (19)/(20)/(21), and Lemma 6's nonvanishing endgame. Shapes are plausible; not reconstructed.
+
+## Minor
+* The paper prints "≤ π Σ m_γ/|γ|²" before (4.5); with |e^{−iγt}−1|≤2 it should be 4π Σ m_γ/|γ|².
+  The verdict's remark is right and the conclusion (finiteness) is unaffected.
+* Verdict §5 "an actual identity would give ‖P̂(Dψ)‖² = πQ(ψ)" matches printed (1.9) ✓.
+
+## Overall
+Items 1, 2, 3, 5 and the checkable parts of 4 and 6 reproduce **CORRECT**, with Q and c_A derived from
+the paper rather than from the verdict's own shelf. One presentational defect (undeclared change of the
+meaning of the dash, item 4). This check confirms P_SEB_INDEPENDENT_PARITY_WITNESS and
+P_SEB_INDEPENDENT_VOLTERRA_GRAM_SIGNS; P_SEB_INDEPENDENT_TRANSLATED_RADICAL_REPAIR is confirmed for
+(27) and its algebra, and stays PENDING for (21)'s convergence machinery.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md
+
+# Conditional off-critical witness on a sparse band of the original CCM matrix
+
+2026-10-08. Root derivation, independent read-only sparse_band_receiver audit PASS on the complete payload. The production matrix is still literal K_m with N=m,L=log m. Only a test subspace is restricted. No prime spectral bound or RH is proved; the active full-SP phase is not silently changed.
+
+## Claim and source
+
+Fix any alpha in (0,1), M=floor(m^alpha), and let H_(m,alpha) be the subspace of the ORIGINAL coefficient carrier supported on |j|<=M. Let P_(m,alpha) project onto its subspace satisfying the original three equations b*c=v_+*c=v_-*c=0. Original b has 2m+1 coordinates and v_± are the original Fourier coefficients of exp(±t/2) on [0,L]. Padding by zero identifies the equations with the corresponding truncated vectors, with the constant vector rescaled to unit norm. This does not create a new production matrix or change the m schedule.
+
+Conditional on a fixed zero xi(1/2+w)=0, w=delta+i gamma, delta>0, there are c_(w,alpha)>0 and a starting m such that EVERY later original cell has
+
+    lambda_min(K_m restricted to ran P_(m,alpha))
+            <=-c_(w,alpha) m^delta L^(-2delta).                (1)
+
+All constants may depend on fixed w,alpha and selected fixed derivative order. They do not depend on m. No uniform assertion as alpha tends to zero, nor any polylogarithmic-band assertion, is made.
+
+Use the already checked normalized derivative-filtered source pair in CCM_RESTRICTED_PRIME_RECEIVER.md: its two Laplace moments vanish, its full Weil value is -2r m^delta L^(-2delta), and its L2 norm stays bounded. Cut off inside [-L/2,L/2] with the same fixed-width smooth transition and translations h=L/2-log L. Every FIXED derivative L1 norm stays bounded; cutoff-form error is O(m exp(-cL²)). Both zero-extension strips remain part of the projection estimate below.
+
+## Sparse Fourier projection: actual form norm
+
+The general fixed-q estimate in PROSHKA_NEGATIVE_BOTTOM_NORMING_INLINE_2026-10-06.md equations(2),(3), inherited by NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md, applies with Omega_M=2pi M/L. Let e=f-f_M be the Fourier tail of the cutoff source, q>=2 a FIXED integer. It gives
+
+    ||e||_E <=C_q[sqrt(m)Omega_M^(1/2-q)
+                   +Omega_M^(3/2-q)+Omega_M^(1-q)] =: E_q.    (2)
+
+Indeed the L2, derivative-L2 and endpoint sup bounds are respectively proportional to Omega_M^(1/2-q), Omega_M^(3/2-q), Omega_M^(1-q); insert them into ||e||_E²<=(m+16)a0²+2a1²+8ainfinity². The m factor comes from the original window weight exp(|t|), not from the number of retained modes. Endpoint jumps are paid; no whole-line H1 claim is used.
+
+The cutoff source has ||f||_E<=C sqrt(m). Full Weil continuity therefore gives
+
+    |W(f_M)-W(f)|
+      <=C_q[m Omega_M^(1/2-q)+sqrt(m)Omega_M^(3/2-q)
+                +sqrt(m)Omega_M^(1-q)+E_q²].                 (3)
+
+Choose once and for all an integer q>1/alpha+2. The three displayed powers of m are 1+alpha(1/2-q), 1/2+alpha(3/2-q), and 1/2+alpha(1-q), all strictly negative. Their fixed logarithmic factors do not change convergence. E_q² also tends to zero. Thus (3) is o(1). The exact same centered-window form equals the quadratic form of the padded vector in K_m; translation to [0,L] preserves the full Weil form.
+
+## Sparse-band correction of the three constraints
+
+Let v_(±,M) be the original v_± truncated to |j|<=M and b_M the normalized constant vector on that band. The explicit exponential coefficients give
+
+    ||v_(+,M)||²=m(1+O(L/M)),
+    ||v_(-,M)||²=1+O(L/M),
+    |<vhat_(+,M),vhat_(-,M)>|=O(L/sqrt(m)+L/M),
+    |<b_M,vhat_(±,M)>|=O(sqrt(L/M)).                          (4)
+
+Terms O(1/m) in the norms can be absorbed because M<m. For the cross term, full inner product is L and the omitted tail product is O(sqrt(m)L/M); division by normalized scales gives (4). The b_M estimates follow by pairing conjugate denominators and sum (1/2)/(1/4+omega_j²)=O(L). Since M/L tends to infinity, the normalized three-vector Gram matrix tends to I and is >=I/2 eventually.
+
+With q as above, repeated integration by parts gives full Fourier coefficients |c_j|<=C_q L^(q-1/2)|j|^(-q). The truncated L2 tail has size O(L^(q-1/2)M^(1/2-q)). Endpoint value zero implies sum of all coefficients zero, so the normalized b_M constraint residual has that same order. The zero Laplace moments before cutoff, the super-small cutoff remainder, and Cauchy-Schwarz against the omitted exponential coefficients give the same order for both normalized v constraints; the ratio of full to truncated exponential norms stays bounded by (4).
+
+Therefore, if c_M is the padded Fourier vector and z=P_(m,alpha)c_M,
+
+    ||z-c_M||<=C_q L^(q-1/2)M^(1/2-q)
+                                      +m^C exp(-cL²).        (5)
+
+The full original ||K_m||<=40sqrt(m)L and bounded ||c_M|| pay its quadratic-form correction by
+
+    C_q sqrt(m)L^(q+1/2)M^(1/2-q)
+                                      +m^C exp(-cL²)=o(1).   (6)
+
+The unchanged source pair's negative signal diverges as m^delta/L^(2delta). Combining (3),(6) and cutoff cost leaves that signal intact; ||z||² stays bounded, and its negative form ensures z is nonzero. Normalizing proves (1).
+
+## Exact remaining arithmetic consumer
+
+The two exponential equations still annihilate the original growing rank-two kernel, and the endpoint equation still uses the original b. Consequently
+
+    P_(m,alpha) K_m P_(m,alpha)
+       =P_(m,alpha)(Aarch-cA I-Aprime)P_(m,alpha).             (7)
+
+Here Aprime=sum_(2<=n<=m) Lambda(n)Q(log n)/sqrt(n) retains every prime power and the original Q; Aarch is the original archimedean compression. The inherited bound ||Aarch-cA I||<=50L+8 is equation(12) of CCM_RESTRICTED_PRIME_RECEIVER.md; its equation(11) gives the cancellation used above.
+
+Thus a subpolynomial upper bound for the actual prime matrix on this smaller space would suffice to exclude every fixed off-critical zero. Such a bound is OPEN. Membership in a smaller band supplies neither independent primes nor a sign. Old full SP/G1/G3 are not thereby proved. A fixed alpha is enough for this conditional receiver; alpha cannot be tuned with m inside this theorem.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md
+
+# Restricted prime-operator receiver on the same full CCM family
+
+2026-10-08. Root derivation and independent read-only ccm_window_transport PASS on the complete written theorem, including inherited E return, finite Gram correction and exact source cancellation. Conditional adverse alternative only. No off-critical zero is asserted. No prime spectral bound, SP or RH is proved. Not sent while Q6 is pending.
+
+## Objects and theorem
+
+Keep the original full carrier j=-m,...,m, L=log m, d=2m+1 and literal K_m. Let phi_j(t)=L^(-1/2) exp(2pi i j t/L) on [0,L]. Let v_± be the finite Fourier coefficients of exp(±t/2), b=ones/sqrt(d), and P_m the orthogonal projection onto span{b,v_+,v_-}^perp. P_m depends only on m, not on a zero or moment order. This is a subspace of the same original family, not another production matrix or reindexing.
+
+THEOREM (conditional restricted adverse alternative). If xi(1/2+w)=0 with w=delta+i gamma, delta>0, there are c_w>0 and m_0(w) such that on EVERY original cell m>=m_0(w),
+
+    lambda_min(K_m restricted to ran P_m)
+        <= -c_w m^delta/(log m)^(2delta).                       (1)
+
+Constants may depend on the fixed zero, its multiplicity r and its normalization, but not on m. Thus a subpolynomial lower floor on this restricted space suffices for the RH receiver. Neither restricted nor full floor is proved here.
+
+## Fixed-source filter
+
+Use the accepted separators in NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md, sections Answer10 and Root refinement: M_(H_w)(w)=1, zero at every other distinct zeta zero, and double-exponential tails for every fixed derivative. The partner is wdagger=-conj(w). Mellin convention: M_f(z)=int_R f(t)exp(zt)dt.
+
+Define separately for each partner
+
+    Htilde_w=(partial²-1/4)H_w/(w²-1/4).
+
+The denominator is nonzero because xi(0),xi(1) are nonzero. Integration by parts gives
+
+    M_(Htilde_w)(z)=(z²-1/4)M_(H_w)(z)/(w²-1/4).               (2)
+
+Its value at w stays1; all other zeta-zero values stay0; both moments at ±1/2 vanish. Normalize the partner by its own denominator. An unnormalized filter on the already-combined pair would not justify its sign.
+
+For tau_h f(t)=f(t-h), set
+
+    utilde_h=exp(-i h gamma)tau_h Htilde_w
+              -exp(i h gamma)tau_(-h) Htilde_wdagger.
+
+The two nonzero zero evaluations remain +exp(delta h),-exp(delta h). The accepted FULL signed zero formula, with multiplicity, gives
+
+    W(utilde_h)=-2r exp(2delta h),    ||utilde_h||_2²<=D_w.       (3)
+
+Translations preserve both zero Laplace moments. The filter is fixed on the source profiles, so their fixed derivative and double-exponential tail bounds persist. No fullband multiplier norm m² is spent.
+
+## Cutoff and original Fourier projection
+
+Put a=L/2, h=a-log L and use the SAME compact cutoff chi_a from the accepted refinement, zero near ±a, with uniformly bounded derivatives. Transitions are distance at least log L-1 from the translated profiles. Set f_a=chi_a utilde_h. The accepted weighted integrated-translation E estimate applies to these new fixed profiles:
+
+    ||(1-chi_a)utilde_h||_E <= C_w exp(h)exp(-c_w L²),
+    ||utilde_h||_E <= C_w exp(h).
+
+The accepted form continuity inequality gives cutoff error <=C_w m exp(-c_w L²). Each fixed unweighted derivative L1 norm of f_a is uniformly bounded. Hence the SAME third-derivative Fourier projection estimate from that audit gives
+
+    |W(F_m f_a)-W(f_a)| <= C_w m^(-1)L^(3/2).                 (4)
+
+Only profile-dependent constants change. Both zero-extension jump strips remain paid; E has not been replaced by L2 continuity.
+
+Translate f_a from [-a,a] to [0,L]; translation preserves W and derivative norms. Before cutoff the Laplace moments vanish; cutoff residuals are bounded by m^C exp(-c_w L²), by integration of the same tails with exp(±t/2). Let c be all Fourier coefficients, c_m their |j|<=m truncation. Vanishing near the endpoints allows three integrations by parts:
+
+    |c_j|<=C_w L^(5/2)|j|^(-3) (j!=0),
+    ||c_(|j|>m)||_2<=C_w L^(5/2)m^(-5/2).                    (5)
+
+Since its endpoint value is zero and the Fourier series converges absolutely, sum_j c_j=0. Therefore
+
+    |b*c_m|<=C_w L^(5/2)m^(-5/2).                             (6)
+
+Coefficients use the original [0,L] convention of Q, with the same translated synthesis; no extra phase is dropped.
+
+## Exact finite constraint correction
+
+Set vhat_±=v_±/||v_±||. The explicit coefficients in CCM_CONTINUOUS_RANK_TWO_TEST.md imply
+
+    ||v_+||²=m+O(L),   ||v_-||²=1+O(L/m),
+    |vhat_+*vhat_-|=O(L/sqrt(m)),
+    |b*vhat_±|=O(sqrt(L/m)).                                 (7)
+
+Indeed the full exponential norms squared are m-1,1-1/m, and their Fourier tail norms squared are O(L),O(L/m). The full cross inner product is L; deleting tails changes it by O(L/sqrt(m)). The b overlaps follow by conjugate pairing of denominators: sum_(|j|<=m)(1/2)/(1/4+omega_j²)=O(L). Thus the Gram matrix of b,vhat_+,vhat_- tends to I and has least eigenvalue>=1/2 eventually.
+
+The cutoff Laplace residual and Cauchy-Schwarz against the omitted Fourier tail give
+
+    |vhat_±*c_m|<=C_w L^(5/2)m^(-5/2)+m^C exp(-c_w L²).       (8)
+
+Division by ||v_+||~sqrt(m), respectively ||v_-||~1, cancels the corresponding full exponential norm; it is essential. Equations(6)–(8) and the Gram bound yield
+
+    ||(I-P_m)c_m||<=C_w L^(5/2)m^(-5/2)+m^C exp(-c_w L²).     (9)
+
+The accepted full envelope ||K_m||<=40sqrt(m)L and bounded ||c_m|| imply that replacing c_m by z_m=P_m c_m costs in the quadratic form at most
+
+    C_w m^(-2)L^(7/2)+m^C exp(-c_w L²).                       (10)
+
+This bounds correction of this PARTICULAR witness; it is not a small operator-norm return on all vectors. Combining(3),(4),(10) and cutoff error gives
+
+    z_m*K_m z_m <= -2r m^delta L^(-2delta)+o(m^delta L^(-2delta)),
+    ||z_m||²<=D_w.
+
+Eventually the form is negative, so z_m!=0. Normalize and obtain(1). All errors vanish relative to the fixed-zero negative signal on every sufficiently late cell.
+
+## Exact continuous cancellation on the restricted space
+
+Let A_m=sum_(2<=n<=m) Lambda(n)/sqrt(n) Q(log n) be the FULL prime-power translation matrix, retaining Q(L)=0. The literal source is
+
+    K=B-A_m+G_full-H_full,
+    B=A_arch-c_A I+2H_full.
+
+The continuous-kernel identity G_full+H_full=v_+v_-*+v_-v_+* gives EXACTLY
+
+    P_m K_m P_m=P_m(A_arch-c_A I-A_m)P_m.                     (11)
+
+The continuous terms cancel after this justified restriction; they are not discarded on the full carrier. From ||B||<=50L and ||H_full||<=4,
+
+    ||A_arch-c_A I||<=50L+8.                                 (12)
+
+A sufficient remaining theorem is therefore
+
+    for every eta>0, lambda_max(P_m A_m P_m)
+        <= C_eta m^eta eventually.                           (13)
+
+Equations(11),(12) then give a restricted lower floor, contradicting(1) for any off-critical zero by taking eta<delta. Positive-part moments of P_m A_m P_m with one finite polynomial exponent independent of arbitrarily large fixed even orders suffice for(13). P_m and A_m are independent of moment order; no short arithmetic cutoff is needed for this receiver.
+
+Estimate(13) is OPEN. The deterministic prime shifts and projections are not independent random graph edges. The OpenAI divisor-graph mechanism still requires an exact source map. No graph analogy or low-rank argument proves(13). Full SP, old G1/G3 and RH remain unproved.
+
+
+This is a checked candidate receiver, not a silent activation or closure of the ongoing full-SP consumer. Q6 remains the sole pending question in its existing phase. Compare its terminal result before adopting a changed exact consumer or opening another phase.
+
+## Bounded primary-source alias return
+
+Dictionaries queried: prime dilation/translation adjacency nontrivial spectrum; Weil quadratic form with Mellin zeros at plus/minus one half; Sonine/co-Poisson/de Branges constrained spaces. All three ask.sh queries returned INCOMPLETE due to q3_docs freshness, not absence. Researcher long_positive_alias found no mapped supplier in this bounded pass.
+
+Existing shelf source: Enrico Bombieri, Remarks on Weil's quadratic functional in the theory of prime numbers, I, Rend. Lincei Mat. Appl.11(2000),183–233. PDF docs/routeB_bus/litreview/pdfs/bombieri_weil_quadratic_functional_2000.pdf, SHA25620bd544fc5297766966630092aba4c1e10c6a7e663d14be89bbe1d0c8220b7fd. Primary URL https://www.bdim.eu/item?fmt=pdf&id=RLIN_2000_9_11_3_183_0. Root independently read the rendered printed p191 theorem; local PDF used after web fetch timed out.
+
+Theorem1, section3, p191 begins: “The Riemann Hypothesis holds if and only if”. Its condition is positivity of sum_rho gtilde(rho) conjugate(gtilde(1-rho)) for every nonzero complex smooth compactly supported g on the positive half-line. Section2,p186 defines gtilde(s)=int g(x)x^(s-1)dx. With g(x)=x^(-1/2)f(log x), gtilde(s)=M_f(s-1/2); our Laplace constraints are gtilde(0)=gtilde(1)=0. This maps the zero functional, not a source-only upper bound on A_m. Our inherited form-projection estimate, not that theorem, pays the finite Fourier return.
+
+Disposition: verified discovery evidence for the classical Weil criterion, NOT a supplier for(13). Invoking its positive conclusion would assume an RH-equivalent premise. The source does not estimate the constrained prime spectrum unconditionally. The conditional off-critical witness in(1) is the relevant negative discriminator: killing pole moments alone cannot make its negative signal disappear. No new graph or stochastic hypothesis is imported. Compare this scoped result with terminal Q6 before choosing a next consumer.
+
+
+## File: paper_weil/sections/setup.tex
+
+\section{The Weil form in the logarithmic variable}\label{sec:setup}
+
+Tests are complex-valued. We use
+\[
+ \widehat g(z)=\int_{\R}g(x)e^{-izx}dx,\qquad
+ (U_qg)(x)=g(x-q),\qquad g^*(x)=\overline{g(-x)},
+\]
+\[
+ \xi(s)=\tfrac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),\qquad
+ \Xi(z)=\xi(\tfrac12+iz).
+\]
+The change of variable $x=\log u$ carries $du/u$ to $dx$ and
+multiplicative convolution and involution to the displayed additive
+ones. We write $\Lam$ for the von Mangoldt function,
+$w_n=\Lam(n)/\sqrt n$, and $Z(\Xi)$ for the zero multiset, with
+multiplicity. The constant $\gamma$ below is the Euler--Mascheroni
+constant.
+
+\begin{definition}[source form]\label{def:Q}
+For $g\in C_c^\infty(\R;\C)$ set
+\[
+ H(g)=\|g\|_2^2,\quad
+ C_g(t)=\Re\int_{\R}\overline{g(x)}g(x+t)dx,\quad
+ A_\pm(g)=\int_{\R}g(x)e^{\pm x/2}dx,
+\]
+\[
+ a(t)=\frac{e^{-t/2}}{1-e^{-2t}},\quad
+ c_A=\gamma+\log(8\pi)+\frac\pi2,\quad
+ \D(g)=\int_0^\infty a(t)\|g(\cdot+t)-g\|_2^2dt.
+\]
+Define
+\begin{equation}\label{eq:Q}
+ \Q(g)=\D(g)-c_AH(g)
+ +2\Re\bigl(A_+(g)\overline{A_-(g)}\bigr)
+ -2\sum_{n\ge2}w_nC_g(\log n).
+\end{equation}
+The Hermitian polarisation $\B$ is antilinear in its first argument.
+For use below, put
+\[
+ C_{g,v}(t)=\frac12\int_{\R}
+  \bigl(\overline{g(x)}v(x+t)+\overline{g(x+t)}v(x)\bigr)dx;
+ \qquad C_{g,g}=C_g.
+\]
+\end{definition}
+
+The prime sum is finite on compact tests: if the support of a test has
+diameter at most $L$, its autocorrelation is supported in $[-L,L]$.
+In this convention the polarized explicit formula is
+\begin{equation}\label{eq:EF}
+ \B(g,v)=\sum_{z\in Z(\Xi)}
+          \overline{\widehat g(\bar z)}\widehat v(z),
+ \qquad g,v\in C_c^\infty(\R;\C).
+\end{equation}
+This is Weil's formula, in the compact-test formulation and
+normalisation used in
+\cite{BOMBIERI-WEILQF-2000,CCM-ZST-2025,Suzuki2023Screw}.
+Indeed, $\widehat{g^**v}(z)=
+\overline{\widehat g(\bar z)}\widehat v(z)$.
+For an analytic check of the archimedean constant, let $\psi_{\rm d}$
+denote the digamma function. Its integral representation gives
+\[
+ 2\int_0^\infty a(t)(1-\cos(ut))dt
+   =\Re\psi_{\rm d}(\tfrac14+\tfrac{iu}2)-\psi_{\rm d}(\tfrac14),
+ \qquad
+ \psi_{\rm d}(\tfrac14)=-\gamma-\tfrac\pi2-3\log2.
+\]
+Thus the Fourier multiplier of $\D-c_AH$, with Plancherel factor
+$1/(2\pi)$, is
+$\Re\psi_{\rm d}(1/4+iu/2)-\log\pi$.
+The two pole evaluations and the two prime translations then give
+\eqref{eq:Q}. This checks the normalization without testing a vector
+whose form value vanishes. Smooth compact support gives absolute
+convergence of the zero sum. Under RH it becomes
+$\Q(g)=\sum_z|\widehat g(z)|^2$; that rewriting is not used
+unconditionally. Weil's criterion is
+$\Q(g)\ge0$ for every complex $g\in C_c^\infty(\R)$ if and only if RH.
+
+\paragraph{Control space.}
+Let $\Xf$ be the completion of $C_c^\infty(\R;\C)$ for
+\[
+ \|g\|_{\Xf}^2=\|e^{|x|}g\|_2^2+\D(g).
+\]
+This completion has an injective realization as a space of functions.
+To see this, set
+$Jg(x,t)=a(t)^{1/2}(g(x+t)-g(x))$ for $t>0$.
+If $g_j$ is Cauchy in this norm, then $g_j$ converges in weighted $L^2$
+and $Jg_j$ converges in $L^2(dx\,dt)$. On each strip
+$\delta\le t\le T$, translation continuity in $L^2$ identifies the
+second limit with $Jg$; exhaustion identifies it for all $t>0$.
+In particular a zero weighted-$L^2$ limit has zero second limit.
+We use this realization of the completion, not an unproved claim that
+it equals every function with finite displayed norm.
+
+The mixed translation energy is bounded by
+$\D(g)^{1/2}\D(v)^{1/2}$. Moreover,
+\[
+ |A_\pm(g)|\le\frac2{\sqrt3}\|e^{|x|}g\|_2,
+ \qquad
+ |C_{g,v}(t)|\le e^{-|t|}
+       \|e^{|x|}g\|_2\|e^{|x|}v\|_2.
+\]
+The prime coefficient sum is at most
+$\sum_{n\ge2}(\log n)n^{-3/2}<5$, by comparison with the
+integral of the decreasing function $(\log x)x^{-3/2}$ on $[2,\infty)$.
+Consequently
+\[
+ |\B(g,v)|\le C_{\Xf}\|g\|_{\Xf}\|v\|_{\Xf},
+ \qquad C_{\Xf}=|c_A|+14,
+\]
+since $1+8/3+10<14$ bounds the three other contributions.
+This constructs the continuous extension of $\B$.
+Translations extend boundedly, with
+$\|U_qg\|_{\Xf}\le e^{|q|}\|g\|_{\Xf}$, because $\D$ is
+translation-invariant. Membership of the noncompact functions used
+below is established by their cutoff estimates, not assumed.
+
+\paragraph{Finite windows.}
+Write $L=\log m=2\log\lambda$. On
+$J_L=[-L/2,L/2]$, the translated CCM Fourier basis is
+\[
+ V_n(x)=L^{-1/2}\exp(2\pi in(x+L/2)/L)\mathbf1_{J_L}(x).
+\]
+The full compression on $|n|\le N$ has dimension $2N+1$.
+It is not a prolate eigenfunction expansion; prolate functions enter
+separately as trial functions \cite{CCM-ZST-2025,ConnesMoscovici2021}.
+A cell is one pair $(m,N)$, with $N$ a Fourier cutoff.
+The full-window bottom is the infimum of
+$\Q(g)/\|g\|_2^2$ over nonzero vectors of the window form domain.
+For fixed $m$, the lowest eigenvalues of the full Fourier compressions
+decrease to this infimum, denoted $\mu_\lambda$
+\cite[Proposition 3.4]{CCM-ZST-2025}. A finite compression therefore
+provides an upper bound, not a positivity certificate for $\mu_\lambda$.
+Nonnegativity on every window is equivalent to the full Weil criterion;
+the monotonicity in \cite[Corollary 3.7]{CCM-ZST-2025} also transfers
+cofinal nonnegativity to all smaller windows.
+Classical short-support positivity is discussed in
+\cite{YOSHIDA-HERMITIAN-1992,BOMBIERI-WEILQF-2000,CC-WEILPOS-2020}.
+The recent preprint \cite{XUEFENGZHU-2026} reports a larger certified
+bounded-support range; those certificates are not a dependency of the
+present paper and are not verified here.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_DIVISIBILITY_Q11_CONCLUSION.md
+
+# Q11: точный перенос построен; семейство раздельных бюджетов отсечено
+
+2026-10-22. Исходная полная CCM; bounded PAPER audit, не Lean.
+
+## Получение и воспроизведение
+
+После одного явно разрешённого владельцем повтора Q11 завершился естественно:
+Worked for36m29s, Response complete, 19:35UTC. Stop не нажимался.
+Полный оригинал PROSHKA_CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11_VERDICT_2026-10-22.md
+прочитан и побайтно совпадает с Downloads: 86560bytes,1217LF,
+SHA256 76fab7238da767d1e54f2d254932f0664bb670596f0d9adaa7f99629f04e34b7.
+Запрос:155127bytes,2513LF,
+SHA256 195b50976e9683815d0e98e6f3719efdd91218ef77c951a6f790057a6b34fcda,
+SOURCE_HEAD e008fc963e751c0b9ddb7054066b039597642e0c; все9 тел/хешей совпали.
+
+Root извлёк неизменённые Python/registration/expected JSON и воспроизвёл
+3027 точных контролей в ccm_divisibility_q11_checks. exact_results.json
+семантически совпадает с expected_results.json, включая хеши кода и регистрации.
+Исходное independent_review=NOT_RUN сохранено: это статус авторского запуска.
+Последующий независимый readonly q11_verdict_audit: bounded PAPER PASS §§2–9,
+существенных дефектов не найдено. Проверены целые m, край d=m, uniform fixed
+ epsilon/A, обе диагонали невидимых рёбер, constant144 и исходный P.
+Уточнение §9: поля v_n продолжить нулём вне [0,L]; f там нуль, активная форма
+не меняется. Оригинальный файл не исправлялся. Upstream receiver принят как
+вход, не переаудирован целиком. Lean/Arb/спектр полной CCM: новых запусков0.
+
+## Проверенная математика и точный scope
+
+Для a_d=Lambda(d)/sqrt(d), W=sum_{2<=d<m}a_d и r_f(h)=integral conj(f(t))f(t+h):
+
+ S[f]=2 Re sum a_d r_f(log d).
+
+Whole-function lift (J_v f)_n(u)=v_n f(u+log n), sum||v_n||²=1,
+сохраняет физическую L2-норму точно. Это не старый sampling lift.
+При kappa_d=sum_n <v_n,v_nd> исходный оператор возвращается полностью:
+
+ S[f]=delta_v||f||²-E_v[f]+R_v[f], E_v>=0,
+ |R_v[f]|<=r_m(v)||f||², r_m(v)=2 sum a_d|1-kappa_d|.
+
+Все простые степени и смешанные члены сохранены. При d>=m нет физического
+перекрытия, но обе графовые диагонали остаются в E_v и delta_v.
+Ключевой результат — точная цена всего семейства сертификатов:
+
+ delta_v+r_m(v)-2W
+ = E_{<m}(v)+D_{>=m}(v)
+   +2 sum a_d(|1-kappa_d|+Re(kappa_d)-1) >= 0.
+
+При N=1 достигается равенство. Поэтому inf_{N,v}(delta_v+r_m(v))=2W,
+асимптотически 4sqrt(m) по PNT. Увеличение графа и подбор постоянного профиля
+не улучшают степень этого способа: отбросить E_v и отдельно оплатить |R_v|.
+Это НЕ нижняя граница S, T_{>R} или спектра CCM и НЕ запрет всех переносов.
+
+Совместная делительная обязанность sum Lambda(d)|kappa_d|²<=sum log(n)||v_n||²
+верна и для Hilbert-valued профилей. Полный divisor box действительно даёт
+r_m<=144 при K=ceil(sqrt(m)), но delta_v имеет порядок m^(3/2).
+Следовательно малая ошибка сама по себе ничего не оплачивает.
+На исходном P полный остаток имеет оба знака при N<=m^A: сигнал >=c/log²N.
+Это исключает бесплатное объявление остатка неположительным, но не subpower
+upper bound. Позиционно зависимые поля также сохраняют норму; incoming
+inequality верна a.e. Буквальное восстановление всех рёбер снова дорого;
+aggregate one-sided comparisons этим не исключены.
+
+Полный безусловный возврат остаётся S<=2W P<=12sqrt(m)P.
+T_{>R} получает малоделительный возврат один раз; K получает arch fee.
+Q03 conditional3/8 на ZF78 не улучшен и не стал безусловным.
+eta(epsilon)->0, SP, G1/G3, RH: OPEN. CF22/PySR: PARKED_REOPENABLE.
+
+## Откат и продолжение goal
+
+Откат до раздельной оплаты R_v и отбрасывания E_v, а также до требования
+точного совпадения каждого ребра. Не оптимизировать N,v в исключённом
+семействе и не отправлять автоматический Q12 с переименованным R_v-E_v.
+Условие R_v-E_v<=нужный бюджет само эквивалентно прежней трудности.
+
+Следующий bounded discriminator: прежде чем выбирать новый перенос,
+проверить, может ли зависимость профиля от положения менять именно
+сжатую совместную форму на исходном P без требования kappa_d(t)=1
+порёберно. Вход — полная identity §9; стоимость обеих диагоналей и всего
+остатка обязательна. Успех — количественная оценка совместной формы,
+не новая запись identity; неудача — точное препятствие выбранному классу.
+Сначала проверена полка: ask.sh --defer-external 'CCM divisibility energy
+aggregate projection' вернул INCOMPLETE (q3_docs freshness failure),
+kb.py search divisibility — no hits. Это не отсутствие поставщика во всём
+репозитории; индекс не ремонтировался в этом цикле. Перед выбором класса
+нужна адресная сверка уже имеющихся projected Mellin и rank-two тестов,
+чтобы не повторить projection-only shortcut. Новая оценка не объявлена.
+
+CLOSES: Q11 response intake/reproduction/audit; cap-plus-absolute-return
+certificate family excluded as a source of sub-half-power improvement.
+OPENS: source-aware aggregate comparison on original P; quantitative input absent.
+AUTOPSY: dropped=COUPLING; note=Discarding graph energy and separately bounding the full defect restores the old half-power budget.
+Native goal last observed blocked; API has no resume operation. Owner explicitly
+resumed scoped work; mathematical objective remains unachieved, not complete.
+No Q12 sent. Full original, controls and local sampling discriminator retained.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_Q12_RADIAL_ENERGY_TEST.md
+
+# Post-Q11 test: retaining radial graph energy still loses the original phase
+
+2026-10-22. Root derivation; independent read-only q12_radial_audit bounded PAPER PASS.
+Original integer m, L=log m, M=floor(m^epsilon), fixed epsilon>0,
+f=Fc with c in the original three-constraint ran(P). No new source.
+
+## Proposed repair under test
+
+Do not discard the entire Q11 graph energy. Instead use the reverse-triangle
+lower bound on each graph square, keeping its radial variation exactly, and
+pay the full residual by its pointwise modulus. Allow every measurable
+position-dependent Hilbert-valued field v_n(t), sum_n||v_n(t)||²=1 a.e.
+This is stronger than Q11's constant-profile cap plus error, but still loses
+relative phases. Fields extend by zero outside [0,L]; f is zero-extended too.
+Let N be any finite auxiliary graph size, not necessarily polynomial in m.
+
+Write a_d=Lambda(d)/sqrt(d), h=log d, v_n=0 for n>N, and
+
+ kappa_d(t)=sum_(nd<=N) <v_n(t),v_nd(t+h)>,
+ sigma_d(t)=sum_(nd<=N) ||v_n(t)|| ||v_nd(t+h)||.
+
+Then |kappa_d(t)|<=sigma_d(t)<=1 on active overlaps. Missing graph edges
+have both coefficients zero. D_v[f]=integral sum_n d_N(n)||v_n(t)||² |f(t)|².
+Here d_N(n)=log n+sum_(2<=d<=N/n) Lambda(d)/d.
+The full original Q11 identity remains S[f]=D_v[f]-E_v[f]+R_v[f].
+
+Define the radial energy over ALL graph edges, including d>=m:
+
+ E_rad[v,f]=sum_(nd<=N) Lambda(d) integral_R
+  (||v_nd(u+log(nd))|| |f(u+log(nd))|
+   -||v_n(u+log n)|| |f(u+log n)|/sqrt(d))² du.
+
+Reverse triangle gives E_v>=E_rad. Expand this scalar square, without
+removing either diagonal, to get exactly
+
+ D_v[f]-E_rad[v,f]
+ =2 sum_(2<=d<m) a_d integral_0^(L-h) sigma_d(t)|f(t)||f(t+h)|dt.
+
+The residual is bounded by
+
+ R_v[f]<=R_abs[v,f]
+ =2 sum_(2<=d<m) a_d integral_0^(L-h) |1-kappa_d(t)| |f(t)||f(t+h)|dt.
+
+Thus S[f]<=B_v[f]:=D_v[f]-E_rad[v,f]+R_abs[v,f]. But pointwise
+
+ sigma_d+|1-kappa_d| >= |kappa_d|+|1-kappa_d| >=1,
+
+so for EVERY field, graph size and original admissible f,
+
+ B_v[f]>=S_abs[f]:=2 sum_(2<=d<m) a_d integral |f(t)||f(t+h)|dt. (A)
+
+This is a statement about the derived majorant B_v, not a lower bound on S.
+The modulus function need not belong to ran P; it is only evaluated as a
+nonlinear majorant of an original f. No substitute source is introduced.
+
+## Genuine obstruction on original P, using actual primes
+
+Use exactly the already audited Q03 five-mode unit probe f_e/||f_e||:
+
+ f_e(t)=-3/4+(1+4w²)cos(wt)-(1/4+4w²)cos(2wt), w=2pi/L.
+
+It satisfies endpoint and both exp(+-t/2) constraints. For L>=2pi, the
+existing CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md proves uniformly
+
+ 2 integral f_e(t)f_e(t+log n)dt / ||f_e||² >= kappa L^-9
+
+when exp(-1/2)m<n<=exp(-1/4)m. Absolute products dominate these real products.
+All terms of S_abs are nonnegative. Hence that same fixed-width prime block
+and unconditional PNT imply, for all sufficiently large integers m,
+
+ B_v[f_e/||f_e||]>=S_abs[f_e/||f_e||]>=c sqrt(m)/L^9. (B)
+
+Constants/threshold independent of field and graph N. Fixed epsilon ensures
+M>=2 eventually. Thus no choice of these fields can make THIS radial-energy
+plus pointwise-absolute-defect certificate sub-half-power, even on original P
+or a cofinal subsequence. This does NOT prove a lower bound on full CCM,
+T_gtR, or S. Negative inter-block/phase contributions were lost in B_v.
+
+The PNT input pi(x)~x/log x was freshly checked in NIST DLMF27.12.5:
+https://dlmf.nist.gov/27.12#E5 . No RH assumption or short-interval PNT.
+
+## Exact surviving credit and actual impasse
+
+There is an exact nonnegative phase credit C_v=E_v-E_rad and defect credit
+J_v=R_abs-R_v. Therefore S=B_v-C_v-J_v. Explicitly on each active overlap,
+with z=conj(f(t))*f(t+h),
+
+ C_v=2 sum a_d integral (sigma_d |z|-Re(kappa_d z)),
+ J_v=2 sum a_d integral (|1-kappa_d| |z|-Re((1-kappa_d)z)).
+
+Both integrands are nonnegative. Their sum is
+2 sum a_d integral[(sigma_d+|1-kappa_d|)|z|-Re z], exactly B_v-S.
+Estimating this credit from below by B_v minus the desired budget is the
+original hard inequality, not a new supplier. All mixed mode products remain
+in z until the precisely identified radial/modulus step.
+
+Outcome: reject this particular phase-blind joint repair. One substantive
+post-Q11 attempt; the credit identity is its diagnosis, not a second attempt.
+Rollback before replacing vector squares by radial squares and before taking
+absolute defect. A successful new mechanism must exploit relative phases
+across actual prime powers/blocks on original P; merely optimizing fields or
+requiring the restated lower credit is not progress. No full exponent gain.
+
+## Audit and decision
+
+Independent readonly q12_radial_audit PASS: all edge diagonals, reverse
+triangle, full defect, original-P probe, fixed-ratio PNT, uniformity in
+fields/N and cofinal scope checked. Requested explicit d_N added above.
+No numerical, Lean or Arb run; no new actual source table.
+Shelf q12_shelf_joint identified the prior raw-block and cap no-go and
+projection-only Mellin test; this extends the certificate obstruction to
+position-dependent fields retaining radial energy. It is not a new proof
+of the already known raw-block lower bound. ask.sh phase-credit query
+returned INCOMPLETE (semantic freshness), not global absence.
+Actual impasse: no source-specific lower estimate for combined phase credit.
+Owner scenario permits Pro review at this impasse, without fabricating three
+attempts. Ask for a quantitatively distinct phase-sensitive mechanism or
+a justified rollback, not a renamed credit hypothesis.
+AUTOPSY: dropped=COUPLING; note=Radial graph squares and absolute defect lose relative phases and dominate the actual positive modulus form.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md
+
+# Q03 waiting result: an actual prime block cannot have a subpower upper bound
+
+2026-10-20. Root derivation; independent bounded PAPER review by
+ccm_q01_return_review: PASS (factorization, normalization, PNT transfer, scope).
+Pro Q03 is running; this note has NOT been sent as a second prompt.
+
+## Statement with original source preserved
+
+Let L=log m>=2pi, w=2pi/L and M>=2. Use the original three-constraint
+projector P on the original modes |j|<=M, with N=m. Put
+alpha=exp(-1/2), beta=exp(-1/4), and define the literal uncentered block
+
+    B_m=sum_(alpha*m<n<=beta*m) Lambda(n)/sqrt(n) P Q_M(log n)P.
+
+All prime powers in this interval are included. There is an absolute c>0
+such that for every sufficiently large integer m,
+
+    lambda_max(B_m|ran P) >= c sqrt(m)/(log m)^9.              (1)
+
+Consequently this BLOCK does not admit B_m<=K m^eta P eventually, for any
+fixed finite K and eta<1/2. In particular it cannot be independently paid
+with eta(epsilon)->0 along M=floor(m^epsilon), for small fixed epsilon.
+The statement also excludes a cofinal such block bound, since (1) is eventual.
+
+THIS IS NOT A LOWER BOUND FOR THE COMPLETE A_prime, T_gtR OR V.
+
+## Exact admissible vector and uniform log interval
+
+Take the even real Fourier polynomial from CCM_Q03_ENDPOINT_SIGN_TEST.md:
+
+    f(t)=-3/4+(1+4w^2)cos(wt)-(1/4+4w^2)cos(2wt).
+
+Its endpoint value and both exponential moments vanish exactly, so its
+coefficient vector belongs to the ORIGINAL ran(P). Let Fc=f/||f||_2.
+The exact factorization is
+
+    f(t)=(1-cos wt)[12w^2-(1/2+8w^2)(1-cos wt)].
+
+For |t|<=1/2 and 0<w<=1, elementary cosine bounds give
+
+    w^2 t^2/3 <= 1-cos(wt) <= w^2 t^2/2,
+    (1/2+8w^2)(1-cos wt) <=17w^2/16,
+    f(t)>=(10/3)w^4 t^2.
+
+The lower cosine bound follows, for example, from
+1-cos x>=x^2/2-x^4/24>=x^2/3 for |x|<=1/2.
+For h in [1/4,1/2], periodicity and evenness therefore yield
+
+ q_f(L-h)=2 integral_0^h f(t-h)f(t)dt
+          >=(200/9)w^8 integral_0^h t^2(h-t)^2dt
+          =(20/27)w^8 h^5.
+
+Orthogonality gives
+
+ ||f||_2^2=L[9/16+((1+4w^2)^2+(1/4+4w^2)^2)/2]
+           <=(707/32)L <23L.
+
+Thus for the same UNIT vector c at this cell, uniformly in h in [1/4,1/2],
+
+ c*Q_M(L-h)c >= kappa L^(-9),
+ kappa=20(2pi)^8/(621*4^5)>0.                              (2)
+
+Unlike the earlier Taylor sign test, (2) has a fixed log-width and explicit
+normalization; no unknown L-dependent small neighborhood is used.
+All mixed Fourier terms are retained through the exact overlap formula.
+
+## Actual primes, not a synthetic signed source
+
+Every n in (alpha*m,beta*m] has h=log(m/n) in [1/4,1/2), so (2) applies.
+All Lambda(n) are nonnegative, and every summand has positive quadratic form
+on c. Retaining just primes gives a legitimate lower bound for this block.
+Unconditional PNT pi(x)~x/log x implies, for these fixed alpha,beta,
+
+    pi(beta*m)-pi(alpha*m) >= (beta-alpha)m/(2L)
+
+for every sufficiently large m. Each retained prime has log p>=L/2 and
+p^(-1/2)>=m^(-1/2). Hence
+
+ c*B_m c >= kappa L^(-9) * (L/2)/sqrt(m)
+                     * (beta-alpha)m/(2L)
+          =kappa(beta-alpha)sqrt(m)/(4L^9).
+
+Rayleigh's principle proves (1) with c=kappa(beta-alpha)/4.
+For eta<1/2, m^(1/2-eta)/L^9 diverges, proving the stated exclusion.
+No numerical threshold for eventual PNT is claimed, and no RH-strength
+error term is used.
+
+PNT source live-read by root: NIST DLMF 27.12.5,
+https://dlmf.nist.gov/27.12#E5 (20 October 2026). Its unconditional
+pi(x)-li(x)=O(x exp(-c sqrt(log x))) implies the elementary asymptotic used
+above. Independent reviewer checked the transfer; root checked the source.
+
+## What this forces, and what it does not
+
+A proof that separately upper-bounds EVERY raw prime block by subpower
+cannot work for this partition. Some genuine signed comparison across blocks,
+or centering BEFORE estimating them, is essential for such an approach.
+This is stronger than an arbitrary-coefficient counterexample: the block
+uses the actual von Mangoldt weights and actual original projected modes.
+
+It does not contradict the target full CCM estimate. On this same vector,
+other blocks can be negative; summing them is not a Loewner monotone operation
+because Q_M(s) is not positive semidefinite. In fact the existing full-window
+continuous identities already show cancellation of large smooth pieces.
+Do not infer any lower bound for T_gtR by restricting the global short-divisor
+return: that return was paid globally, not blockwise. No term of the production
+source has been removed and no new source has replaced it.
+
+No new full exponent, SP/RH result, or forbidden actual-cancellation claim.
+Use (1) as a discriminator for the eventual Q03 answer, not a new demand that
+it prove a false independent-block lemma. No additional Pro message sent.
+
+
+## File: docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md
+
+# Post-Q10 own attempt 1: the original projector does not remove slow Mellin modes
+
+2026-10-21. Original sparse CCM carrier, N=m,L=log m,
+M=floor(m^epsilon), all three original constraints. Root derivation and bounded independent
+q11_mellin_probe_review PAPER PASS. This is a control-source obstruction, NOT a result
+about actual Lambda, mu, zeros or the full CCM spectrum.
+
+## Scope and shelf
+
+Q10 paid geometric reconstruction but left the signed source-weight pairing
+unbounded. Test the possible shortcut that original P itself kills the slow
+source term, before another arithmetic assumption is introduced.
+
+Local ask.sh query `CCM Mellin exponential projection` returned INCOMPLETE
+(semantic freshness); kb.py found old normalization warnings, not a supplier.
+No absence claim. Direct reads of CCM_CONTINUOUS_RANK_TWO_TEST.md,
+CCM_SPARSE_BAND_RECEIVER.md, CCM_Q03_ENDPOINT_SIGN_TEST.md and
+CCM_Q03_ACTUAL_PRIME_BLOCK_OBSTRUCTION.md identify an existing exact probe.
+The probe is reused, not claimed as newly discovered. The new calculation is
+its response to a whole fixed-a family of Mellin source modes.
+
+## Same original vector, no additional constraints
+
+Let omega=2pi/L and
+
+    g(t)=(1-cos(omega*t))^2,
+    f(t)=(D^2-1/4)g(t)
+        =-3/8+2(omega^2+1/4)cos(omega*t)
+                    -(4omega^2+1/4)cos(2omega*t)/2.
+
+This is exactly half the Q03 even endpoint probe. It uses only modes |j|<=2,
+so belongs to every fixed-epsilon sparse band eventually. No frequency scale
+or source schedule changed. Its original Fourier coefficients are padded by
+zero outside these modes.
+
+Since g=g'=g''=0 at both endpoints, f(0)=f(L)=0. Integrating twice by parts,
+
+    integral exp(bt) f(t)dt=(b^2-1/4) integral exp(bt)g(t)dt.
+
+Thus both moments at b=+/-1/2 vanish exactly. The endpoint equation b*c=0
+also holds. Consequently f/||f|| is in ran(original P).
+Orthogonality of the real Fourier modes gives
+
+    ||f||^2=L D(omega),
+    D(omega)=35/128+(5/4)omega^2+4omega^4>0.                 (1)
+
+All mixed terms of the eventual translation form remain in f.
+
+## Exact full-weight response, before Cauchy
+
+Fix a in (0,1/2) before m grows. Define G_a as the original finite Fourier
+compression of kernel exp(a|t-u|), equivalently integral_0^L exp(as)Q(s)ds.
+The same algebra as the existing continuous rank-two test gives
+
+    exp(a|t-u|)=exp(at)exp(-au)+exp(-at)exp(au)-exp(-a|t-u|).
+
+The decaying kernel H_a is positive and has norm at most2/a. For example,
+exp(-a|t-u|)=2a integral_{-infinity}^{min(t,u)}
+exp(-a(t-v))exp(-a(u-v))dv is a Gram representation; Schur row mass is<=2/a.
+These facts survive finite Fourier compression.
+
+Put I_-=integral exp(-at)f(t)dt. Direct cosine integration yields
+
+    I_-=(a^2-1/4) 6omega^4(1-exp(-aL))
+                       /[a(a^2+omega^2)(a^2+4omega^2)].     (2)
+
+f(L-t)=f(t), so I_+=exp(aL)I_-. Hence for the original UNIT coefficient
+vector c representing f/||f||, the exact signed identity is
+
+    c*G_a c=2m^a I_-^2/(L D(omega))-c*H_a c,               (3)
+    0<=c*H_a c<=2/a.
+
+For fixed a, I_-/omega^4 tends to6(a^2-1/4)/a^5, a nonzero constant;
+D tends to35/128. Therefore there is c_a>0 and a late threshold such that
+
+    c*P G_a P c >= c_a m^a/L^9-2/a.                       (4)
+
+At a=1/2 the factor in (2) vanishes, recovering the old negative decaying
+kernel exactly. That special cancellation does not extend to (0,1/2).
+The constants/threshold in (4) depend on fixed a; no uniform limit a->0 or
+changing-a-with-m claim is made.
+
+## Consequence and exact limitation
+
+For the CONTROL source E_z(x)=x^z-1, z=a+1/2, and the literal matrix weight
+H_m(x)=x^(-1/2)P Q(log x)P, substitution x=exp(s) gives
+
+    integral_1^m H_m(x)dE_z(x)=z P G_a P.                  (5)
+
+Thus the complete source-weight pairing, retaining the exact original P,
+can have positive size at least a fixed multiple of m^a/L^9. This already
+occurs in five original modes. It excludes an automatic subpower bound
+from the three constraints and narrow mode count alone, even for this
+explicit smooth power-source family.
+It is stronger than merely observing the leading derivative in Q10 §8.3:
+that derivative survives the actual complete projected pairing as well.
+
+This control is NOT actual Lambda or an actual zero contribution (whose
+coefficient and complex phase cannot be changed). It is not a lower bound
+for S_m, T_{>R}, or K_m. It does not exclude arithmetic cancellation or a
+source-specific directed argument. Richardson reconstruction of the same
+model cannot change (5); any separately estimated pieces must sum back to it.
+
+Decision: do not pursue projection-only cancellation as a supplier. This is
+one post-Q10 no-gain discriminator, not an arithmetic improvement. The next
+candidate must identify an actual Lambda/mu relation unavailable to E_z, or
+use a different already-proved source-specific sufficient interface.
+Goal ACTIVE; RH OPEN; no new Pro message.
+
+## Verification
+
+56 rational exact controls check the Fourier normalization, endpoint,
+Laplace coefficient identity and both zero moments at four rational omega
+values and six rational a values. They are local algebra controls, not proof
+of the continuous/asymptotic claims. Script: ccm_projected_mellin_q11_checks.py.
+No SymPy dependency was installed (repository venv lacks it); the executed
+checker uses only Python Fraction. No Lean, Arb or actual CCM spectra.
+Independent readonly q11_mellin_probe_review PAPER PASS on this payload:
+verified all constraints, kernel sign, Jacobian, exact coefficients, asymptotic
+and control-only scope. No material finding. Wording about generic smoothness
+was narrowed to this explicit power-source family, as the reviewer requested.
+Two additional mpmath45 noninterval quadratures of the original5x5 Q matrix
+checked the full growing+decaying identity, at(L,a)=(40,1/4),(80,1/8).
+Relative residuals4.64e-44 and2.82e-44; not interval certificates or actual
+prime sums. They check normalization only, not the asymptotic theorem.

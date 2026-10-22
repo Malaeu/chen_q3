@@ -8827,3 +8827,26 @@ family. Actual full CCM exponent unchanged; no Lean/Arb/source spectrum run.
 Rollback before separate energy/defect bounds; next projected field aggregate
 discriminator requires source-specific quantitative content. Shelf INCOMPLETE,
 not absence. No Q12 sent; RH OPEN. See CCM_DIVISIBILITY_Q11_CONCLUSION.md.
+
+## 2026-10-22 — Q12 Suzuki: complete defect envelope audited
+
+Развилка: corrected Suzuki projected defect versus prior radial certificate.
+Выбрали: keep full signed Gram-minus-Q on original P, both time halves and all
+mixed terms; independent bounded PAPER audit of the new analytical return.
+Почему: original exponential contacts turn the pole part into decaying
+convolution norm<=2; arch difference has logarithmic band cost.
+Что отвергли: claiming projection contractivity improves the CCM exponent;
+repeating September Poisson identity; treating temporal sqrt(m) cutoff as
+removal of original prime terms through m. Anchor-only tuning gives no gain.
+Инсайты: full upper Delta now O_epsilon(sqrt(m)), removing former M² fee;
+full CCM still has its old half-power budget, conditional3/8 unchanged.
+Блокеры: actual xi-dependent spectral/arithmetic joint inequality remains OPEN.
+Иглы Зингера: complementary square, both exponential contacts, both signs of
+Volterra, full arch tail, full prime-power and mixed contributions.
+Следующий ход: source-specific test before Q12(5.3); no automatic Q13.
+Адреса: CCM_SUZUKI_Q12_CONCLUSION.md, full Q12 verdict and q12_reproduction
+in docs/literature/openai_math_2026-10-07; CCM_Q12_ANCHOR_BUDGET_TEST.md.
+Чей вердикт: root plus read-only q12_verdict_audit bounded PAPER PASS §§0–6
+on cited identities.449 exact and6 noninterval diagnostics JSON-identical;
+11 source hashes match; original109957bytes/1693LF preserved. No Lean/Arb.
+Heartbeat ccm-q12 PAUSED; no pending answer; mathematical goal/RH OPEN.

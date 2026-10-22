@@ -377,3 +377,40 @@ Next: source-aware aggregate projected-field discriminator after shelf checks;
 ask returned INCOMPLETE, not absence. Mathematical goal OPEN; native goal last
 observed blocked, API cannot resume; owner authorized continued work.
 
+
+## 22.10 — radial certificate audited; Suzuki steering
+
+Original-P radial-energy plus pointwise-absolute-defect certificate has budget
+>=c sqrt(m)/log^9m; independent bounded PAPER PASS. This is not a source lower
+bound. See CCM_Q12_RADIAL_ENERGY_TEST.md. Before Q12 send, owner supplied Suzuki
+correction. Direct email/PDF and independent audits confirm the signed repair
+already present in September; c_A and direct CCM source unaffected. September
+OPENSGN further Poisson reduction remains open. Its absolute original-P return
+costs sqrt(m)M²log m, no gain. See CCM_SUZUKI_CORRECTION_RETURN_2026-10-22.md.
+Earlier Q12 attachment is HELD UNSENT. Next pack must include the September
+calculation and ask for a quantitative one-sided projected defect mechanism,
+not a repeated identity. No author email sent; no new exponent or RH claim.
+
+## 22.10 — updated Q12 sent
+
+Suzuki projected-defect Q12 sent once22:22Berlin in the same living chat.
+Eleven full sources include both September calculations; live responding
+confirmed after send timeout, no retry. Follow PROSHKA_PENDING.md. Thread
+heartbeat ccm-q12 checks every20minutes and stays quiet while unchanged.
+Receive complete original and audit before next question; full original P
+and signed Gram-minus-arithmetic return remain mandatory.
+
+## 22.10 — Q12 complete, analytic return audited
+
+CCM_SUZUKI_Q12_CONCLUSION.md: full109957byte original read/preserved,
+11 source hashes match;449 exact and6 noninterval controls JSON-identical.
+Independent bounded PAPER PASS new §§0–6 on cited source identities.
+Full corrected defect upper O_epsilon(sqrt(m)) removes M² fee; pole norm<=2,
+arch logarithmic norm. No new full CCM exponent;3/8 conditionalZF78 unchanged.
+Rollback before discarding actual xi-dependent complementary projection.
+Own attempt1 CCM_Q12_ANCHOR_BUDGET_TEST.md: midpoint already minimizes this
+scalar envelope; moving anchor no gain, no actual-source lower bound.
+Next source-specific joint discriminator must add quantitative content,
+not rename Q12(6.1) or repeat September Poisson identity. No Q13 sent.
+Heartbeat ccm-q12 PAUSED; no answer pending. Mathematical goal OPEN;
+old native blocked status does not imply completion or authorize replacement.

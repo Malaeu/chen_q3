@@ -1,0 +1,13 @@
+{
+  "stage": "registered_after_source_read_and_paper_derivation_before_executable_tests",
+  "source_sha256": "d1c7122bd5f912a2c759a14622074f753a62d3af48a11a5c024b9b42fa17f2ec",
+  "predictions": [
+    {"id":"P1","event":"Actual real-axis alpha,beta define an orthogonal rank-one two-channel projection; full complex mixed terms are necessary","expected":"PASS"},
+    {"id":"P2","event":"Both signed Laplace defect formulas match subtraction of the supplied Gram and arithmetic transforms including the diagonal limit","expected":"PASS"},
+    {"id":"P3","event":"Original two exponential contacts turn the complete pole Volterra operator into convolution by sign(t)exp(-abs(t)/2), norm at most two","expected":"PASS"},
+    {"id":"P4","event":"Archimedean Volterra part has an exact difference-of-outward-shifts representation, with no finite gprime(0) substitution","expected":"PASS"},
+    {"id":"P5","event":"A consistent rational nonreal-zero plant has nonzero Poisson and dispersion defects; forced deletion is detected","expected":"DETECT_PLANTED_INVALID_RECONSTRUCTION"},
+    {"id":"P6","event":"Full elementary projection envelope removes the M squared fee but retains the one-half exponent; no new arithmetic power expected","expected":"HALF_POWER_ONLY"}
+  ],
+  "limits": "Exact algebra and local noninterval diagnostics are not a universal CCM spectral certificate; no claim of independent review, Lean, Arb, or proof of target"
+}
