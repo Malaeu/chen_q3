@@ -414,3 +414,15 @@ Next source-specific joint discriminator must add quantitative content,
 not rename Q12(6.1) or repeat September Poisson identity. No Q13 sent.
 Heartbeat ccm-q12 PAUSED; no answer pending. Mathematical goal OPEN;
 old native blocked status does not imply completion or authorize replacement.
+
+## 22.10 — user continuation, Q12 completion rechecked
+
+Live same-chat Q12 still Response complete; full archived original/hash unchanged.
+No new Pro send or redundant rerun of prior449+6 checks. Own attempt2:
+CCM_Q12_VOLTERRA_REGULARITY_TEST.md, independent read-only PAPER PASS.
+Exact original-P m16/M2 input has B_pr center jump>0, hence B_pr not H1 and
+infinite second Fourier moment. Only the isolated-prime derivative shortcut
+is excluded; full B can have additional cancellations, no CCM lower bound.
+Next: explicit seam return or direct joint multiplier estimate retaining both
+halves; September Poisson reconstruction cannot be assumed. Two own attempts
+since Q12, no new exponent, no automatic Q13. Goal remains OPEN.

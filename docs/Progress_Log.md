@@ -8850,3 +8850,19 @@ in docs/literature/openai_math_2026-10-07; CCM_Q12_ANCHOR_BUDGET_TEST.md.
 on cited identities.449 exact and6 noninterval diagnostics JSON-identical;
 11 source hashes match; original109957bytes/1693LF preserved. No Lean/Arb.
 Heartbeat ccm-q12 PAUSED; no pending answer; mathematical goal/RH OPEN.
+
+## 2026-10-22 — post-Q12: exact Volterra regularity discriminator
+
+Развилка: derivative-based Fourier control of the retained xi-dependent square.
+Выбрали: check the domain of the actual B_pr output before using a derivative norm.
+Почему: the outward shift sum is multiplied by sign(r) at the temporal center.
+Что отвергли: automatic H1 or finite second Fourier moment inherited from psi.
+Инсайты: exact original-P m16/M2 five-mode test has a strictly positive complete
+prime jump; n2,n3 positive, n4 retained at zero endpoint. Distributional derivative
+has a delta. No mixed modes, powers, or original constraints were discarded.
+Блокеры: no full-B cancellation or improved CCM/Delta exponent established.
+Иглы Зингера: center seam and both temporal halves must return before Fourier bounds.
+Следующий ход: explicit seam return or direct joint multiplier bound; no Q13 yet.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q12_VOLTERRA_REGULARITY_TEST.md.
+Чей вердикт: root plus read-only q12_complement_shelf bounded PAPER PASS.
+Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.

@@ -10,6 +10,9 @@ M² fee removed, no new full CCM exponent. Q03 3/8 remains conditional ZF78.
 Rollback before Q12(5.3), retaining actual xi-dependent complement and all
 mixed terms. Own attempt1 CCM_Q12_ANCHOR_BUDGET_TEST.md: shifting the temporal
 anchor cannot improve this displayed scalar budget; not a source no-go.
+Own attempt2 independently PAPER PASS: isolated B_pr can have a nonzero
+center jump on original P, so derivative/Fourier-tail shortcut needs explicit
+seam return; CCM_Q12_VOLTERRA_REGULARITY_TEST.md. No asymptotic no-go.
 Next source-specific quantitative discriminator must precede any Q13;
 no automatic renamed joint target. No Q13 or author email sent.
 Heartbeat ccm-q12 PAUSED after processing; no pending answer remains.
