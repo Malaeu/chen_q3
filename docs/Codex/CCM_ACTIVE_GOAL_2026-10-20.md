@@ -316,3 +316,14 @@ and2 noninterval matrix normalization checks PASS. No actual power gain.
 Projection-only shortcut excluded in this explicit family; next candidate
 must use actual source arithmetic before Cauchy. One post-Q10 no-gain attempt.
 No Q11 send; same Pro chat retained; goal ACTIVE.
+
+## 2026-10-22: replay caught; counting-space lift tested
+
+Parity C/U/B split checked independently,3080exact identities, but general-q
+regrouping already exists; NOT counted as a new substantive attempt.
+CCM_Q11_DIVISIBILITY_LIFT_PREFLIGHT.md is attempt2, bounded independent
+PAPER PASS. Natural power sampling changes coefficient or physical norm;
+weight repair loses the original graph log cap. No actual exponent gain.
+Next: same-chat concrete question on source-preserving use of this arithmetic
+energy at the real carrier-map impasse; no fabricated third test required.
+Q11 not sent yet. Goal ACTIVE; original full source and receiver unchanged.

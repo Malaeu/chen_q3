@@ -15,6 +15,13 @@ PAPER PASS; explicit smooth source survives original P with positive power.
 Not an actual source lower bound. See CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md.
 Next: source-specific arithmetic; one no-gain attempt, no Q11 send.
 
+2026-10-22 continuation: parity regrouping was a shelf replay, not attempt2.
+Actual attempt2 is CCM_Q11_DIVISIBILITY_LIFT_PREFLIGHT.md, independently
+PAPER PASS. Counting-space graph cap does not transfer by natural power
+sampling; required alternative carrier map unproved. Next prepare one
+same-chat Q11 on this concrete bridge impasse, preserving original coefficients,
+norm and all returns. Q11 NOT SENT. No live Pro calculation claimed.
+
 --- Historical Q10 sending and observation ---
 
 # Q10 SENT ONCE — responding verified

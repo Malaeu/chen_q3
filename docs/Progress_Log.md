@@ -8802,3 +8802,16 @@ q11_mellin_probe_review bounded PAPER PASS;56exact+2noninterval checks PASS.
 Отсечено автоматическое сокращение только от P; следующий аргумент должен
 использовать фактическую арифметику. Q11 не отправлен; goal ACTIVE.
 Адрес: docs/literature/openai_math_2026-10-07/CCM_Q11_PROJECTED_MELLIN_DISCRIMINATOR.md.
+
+
+## 2026-10-22 — CCM: graph supplier transfer preflight
+
+Caught parity regrouping replay of existing Q08;3080 exact identities do not
+make it a new mechanism. Corrected CCM_Q11_MOBIUS_PAIR_RETURN.md accordingly.
+Actual attempt2: counting-space primeForm_le_log sampling mismatch proved;
+physical L2 normalization yields Lambda/d instead of Lambda/sqrt(d).
+Repairing weights changes both graph diagonals and forfeits the log cap.
+Root and q11_divisibility_lift independent bounded PAPER PASS; no Lean build.
+Supplier preflight INCOMPLETE, not absence. Next same-chat Q11 can address
+this exact carrier-map impasse; no send yet. Goal ACTIVE, RH OPEN.
+Evidence: docs/literature/openai_math_2026-10-07/CCM_Q11_DIVISIBILITY_LIFT_PREFLIGHT.md.
