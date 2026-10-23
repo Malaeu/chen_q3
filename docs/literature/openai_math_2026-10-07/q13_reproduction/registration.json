@@ -1,0 +1,37 @@
+{
+  "stage": "after_complete_source_read_and_paper_derivation_before_new_executable_tests",
+  "source_sha256": "f7a1dfc6954ea989f91bc101578e7b31408a70b37c878a4bfee3b7167a16118c",
+  "predictions": [
+    {
+      "id": "P1",
+      "test": "Source manifest and entire packet extraction",
+      "expected": "eleven byte-exact matches"
+    },
+    {
+      "id": "P2",
+      "test": "Triangular seam derivative and Fourier transform with both time signs",
+      "expected": "delta minus normalized box, exact width cancellation"
+    },
+    {
+      "id": "P3",
+      "test": "Complete seam mixed-square formula",
+      "expected": "kappa_xi*abs(j)^2 plus residual; wrong sign or omitted cross must fail"
+    },
+    {
+      "id": "P4",
+      "test": "Source full finite jump certificate",
+      "expected": "0.23225<j<0.23226 if pinned Arb runtime is available; not an asymptotic conclusion"
+    },
+    {
+      "id": "P5",
+      "test": "High frequency budget and scale substitution",
+      "expected": "seam and tail can be made o(1); no full low-frequency arithmetic improvement claimed"
+    },
+    {
+      "id": "P6",
+      "test": "False pointwise decay of actual beta near every real frequency",
+      "expected": "beta=1 at actual zero of Xprime, so any small global beta cap needs separate proof"
+    }
+  ],
+  "verification_limits": "Exact local algebra, optional inherited Arb reproduction, no Lean, no independent review, no large CCM spectral experiment"
+}

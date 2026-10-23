@@ -1,0 +1,90 @@
+[
+  {
+    "path": "docs/literature/openai_math_2026-10-07/CCM_Q13_FULL_JUMP_RETURN.md",
+    "bytes": 3708,
+    "sha256": "72e8d9469309c3781bbb4c5fd762cbd2e4d8725b800e07901a0d2584ad11a63e",
+    "match": true,
+    "start_line": 92,
+    "end_line": 158
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/q13_seam_checks/full_jump_arb.py",
+    "bytes": 1154,
+    "sha256": "00e9388acdb653e9e2a4f20f1580987f1aa670370870759f7e00b3c8cb59d843",
+    "match": true,
+    "start_line": 163,
+    "end_line": 185
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/q13_seam_checks/result.json",
+    "bytes": 647,
+    "sha256": "c6f924f252048f01c5ddc6c9afd577cde7d014d36c26da31cd42c3973153f1d3",
+    "match": true,
+    "start_line": 190,
+    "end_line": 202
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/CCM_Q12_VOLTERRA_REGULARITY_TEST.md",
+    "bytes": 4032,
+    "sha256": "c309af5143c1ae23428909412e15577f360050e2382270e5f9f39ffed4248d0c",
+    "match": true,
+    "start_line": 207,
+    "end_line": 290
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/CCM_Q12_ANCHOR_BUDGET_TEST.md",
+    "bytes": 3323,
+    "sha256": "ed74f50412f37ae270476d2ba6c0227f5195c383be942cb0ba665fee3d33a254",
+    "match": true,
+    "start_line": 295,
+    "end_line": 357
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_SUZUKI_PROJECTED_DEFECT_Q12_VERDICT_2026-10-22.md",
+    "bytes": 109957,
+    "sha256": "9489bd181f7b644d0274b9330aca8a685e680a6930d7115d0eb72b97a8f224b1",
+    "match": true,
+    "start_line": 362,
+    "end_line": 2054
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/CCM_SUZUKI_Q12_CONCLUSION.md",
+    "bytes": 8042,
+    "sha256": "4698e6c203bd63c92d71df99e4cb1289dcd50a437b73953039dafa0b57614c37",
+    "match": true,
+    "start_line": 2059,
+    "end_line": 2160
+  },
+  {
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md",
+    "bytes": 35618,
+    "sha256": "ffe6d8e38be778f0622eebd7654a55c5312114a49335e6af30a3587e8eadd840",
+    "match": true,
+    "start_line": 2165,
+    "end_line": 2905
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+    "bytes": 6174,
+    "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+    "match": true,
+    "start_line": 2910,
+    "end_line": 2978
+  },
+  {
+    "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+    "bytes": 9606,
+    "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+    "match": true,
+    "start_line": 2983,
+    "end_line": 3111
+  },
+  {
+    "path": "paper_weil/sections/setup.tex",
+    "bytes": 5492,
+    "sha256": "faefd45b3ad905ba4bd69b983f1a52b70479fd72dbdf47aecb5061dfb9c5ad33",
+    "match": true,
+    "start_line": 3116,
+    "end_line": 3255
+  }
+]

@@ -8866,3 +8866,15 @@ has a delta. No mixed modes, powers, or original constraints were discarded.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q12_VOLTERRA_REGULARITY_TEST.md.
 Чей вердикт: root plus read-only q12_complement_shelf bounded PAPER PASS.
 Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.
+
+## 2026-10-23 — Q13: полный шов и высокочастотный возврат оплачены
+- Развилка: считать скачок препятствием либо вернуть совместно все члены.
+- Выбрали: distributional derivative и полный xi-weighted mixed return на исходном P.
+- Почему: bounded root/independent PAPER PASS; край производной и атом j сохранены.
+- Что отвергли: H1 без скачка, zero cross, повторную оптимизацию h как источника арифметического выигрыша.
+- Инсайты: h исчезает в полном U; шов+хвост можно оплатить O(m^-nu/log m), но низкий Gram-Q остаётся открытым.
+- Блокеры: новая полная степень не получена; Q12 sqrt(m), conditional3/8/ZF78 без изменений.
+- Иглы Зингера: обе временные стороны, все prime powers до m, removable origin, endpoint derivative strips.
+- Следующий ход: собственный source-specific low-pairing тест после сверки September полки; без автоматического Q14.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md и q13_reproduction/.
+- Чей вердикт: Q13+root; независимый q13_verdict_audit bounded PAPER PASS.340 exact/12diagnostic JSON-identical, root Arb повторён.
