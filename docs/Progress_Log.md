@@ -8878,3 +8878,15 @@ Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.
 - Следующий ход: собственный source-specific low-pairing тест после сверки September полки; без автоматического Q14.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md и q13_reproduction/.
 - Чей вердикт: Q13+root; независимый q13_verdict_audit bounded PAPER PASS.340 exact/12diagnostic JSON-identical, root Arb повторён.
+
+## 2026-10-23 — Q14: source filters and finite contour, rollback to direct Q
+Развилка: separate Suzuki Gram defect versus original projected Q.
+Выбрали: accept bounded contour/filter return and backtrack to original Q.
+Почему: horizontal signed arithmetic remains unpaid; full power still1/2.
+Что отвергли: generic exponential as actual residue; dropping horizontal edges.
+Инсайты: actual coefficients cancel apparent filter poles; N-Delta cancels I0 jointly.
+Блокеры: eta(epsilon)->0 upper bound on full signed source remains open.
+Иглы Зингера:105 exact controls,9 noninterval diagnostics; one independent bounded PASS.
+Следующий ход: budget a concrete joint Mobius mechanism against known3/8 before a new question.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q14_CONCLUSION.md and q14_reproduction/.
+Чей вердикт: Proshka Q14, root audit and q14_verdict_audit; no RH claim.

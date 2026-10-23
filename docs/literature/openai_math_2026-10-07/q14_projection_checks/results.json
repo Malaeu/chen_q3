@@ -1,0 +1,35 @@
+{
+  "status": "NONINTERVAL_PROJECTION_DIAGNOSTIC_NOT_CCM",
+  "epsilon": 0.025,
+  "z": [
+    0.25,
+    0.75
+  ],
+  "predicted_limit": 1.111111111111111,
+  "rows": [
+    {
+      "L": 128.0,
+      "M": 24,
+      "scaled_projected_norm2": 0.48055877188062257,
+      "constraint_residual": 7.80902912187839e-16
+    },
+    {
+      "L": 192.0,
+      "M": 121,
+      "scaled_projected_norm2": 0.9489066206182839,
+      "constraint_residual": 8.91318907627058e-16
+    },
+    {
+      "L": 256.0,
+      "M": 601,
+      "scaled_projected_norm2": 1.0690733331515119,
+      "constraint_residual": 4.645358370607816e-15
+    },
+    {
+      "L": 384.0,
+      "M": 14764,
+      "scaled_projected_norm2": 1.1085711980825623,
+      "constraint_residual": 2.52054270764874e-14
+    }
+  ]
+}

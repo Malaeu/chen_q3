@@ -1,0 +1,80 @@
+{
+  "request": "PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt",
+  "bytes": 178829,
+  "LF": 3245,
+  "sha256": "37fd32b43e7ced9adeb1e4dbc47636ce627b21acf50de47e1b42b742d7ef56bc",
+  "sources": [
+    {
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q14_PROJECTED_EXPONENTIAL_TEST.md",
+      "bytes": 5631,
+      "sha256": "1c94b50911fd16e648c106c878bf8a3d3a1366b0d7544f67c0403b643db28e55",
+      "match": true,
+      "start_line": 100,
+      "end_line": 196
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/q14_projection_checks/check.py",
+      "bytes": 798,
+      "sha256": "6454316f8d87d6e968f17e3d8c997c25101bd0c6f450f8d30ed9c90c475d90bd",
+      "match": true,
+      "start_line": 201,
+      "end_line": 213
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/q14_projection_checks/results.json",
+      "bytes": 768,
+      "sha256": "907b1facf26a102724e70443a2e08ccffeda143245172e048efdaeaa2887465e",
+      "match": true,
+      "start_line": 218,
+      "end_line": 252
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md",
+      "bytes": 3839,
+      "sha256": "6c2f145f392d4336471adaf7267ab7d4e17a48e966343a45209f4ccebe1ad34c",
+      "match": true,
+      "start_line": 257,
+      "end_line": 322
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_FULL_SEAM_RETURN_Q13_VERDICT_2026-10-23.md",
+      "bytes": 102723,
+      "sha256": "a4ddebeb1ebaa37122a99e29a11d8ba1c5a868d1d3cc9f16af8f96bcb32b209f",
+      "match": true,
+      "start_line": 327,
+      "end_line": 2178
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_OPEN_SIGNED_TIME_KERNEL_IDENTITY_2026-09-06.md",
+      "bytes": 35618,
+      "sha256": "ffe6d8e38be778f0622eebd7654a55c5312114a49335e6af30a3587e8eadd840",
+      "match": true,
+      "start_line": 2183,
+      "end_line": 2923
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q08_ANNIHILATOR_PREFLIGHT.md",
+      "bytes": 5799,
+      "sha256": "aab6f24b1fb8e43866ba916e0d46f3884769c177eafaab0162d5ce002ad4a2de",
+      "match": true,
+      "start_line": 2928,
+      "end_line": 3039
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "match": true,
+      "start_line": 3044,
+      "end_line": 3112
+    },
+    {
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "bytes": 9606,
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "match": true,
+      "start_line": 3117,
+      "end_line": 3245
+    }
+  ]
+}

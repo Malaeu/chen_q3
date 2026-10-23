@@ -1,0 +1,27 @@
+{
+  "stage": "after_complete_packet_read_before_new_symbolic_and_numeric_controls",
+  "source_sha256": "37fd32b43e7ced9adeb1e4dbc47636ce627b21acf50de47e1b42b742d7ef56bc",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "zeros of F+Fprime at nonzeros of F are removable in both complete September transforms",
+      "expected": "exact cancellation; no exponential contribution from these points in the full kernel"
+    },
+    {
+      "id": "P2",
+      "claim": "offdiagonal time quadrants and the arithmetic divided difference are indispensable at coincident true F zeros",
+      "expected": "dropping either gives a detectable coefficient error"
+    },
+    {
+      "id": "P3",
+      "claim": "finite-contour reconstruction must keep continuous boundary integrals and true F-zero residues",
+      "expected": "small rational controls distinguish omitted residues and omitted boundary"
+    },
+    {
+      "id": "P4",
+      "claim": "generic projection norm or a bounded real-axis row alone cannot supply the full small signed estimate",
+      "expected": "no automatic new power; no actual-xi no-go assertion"
+    }
+  ],
+  "notes": "Predictions of algebra checks, not a retroactive prediction of a new RH proof. Any exploratory failure will be retained."
+}
