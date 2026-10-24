@@ -8890,3 +8890,16 @@ Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.
 Следующий ход: budget a concrete joint Mobius mechanism against known3/8 before a new question.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q14_CONCLUSION.md and q14_reproduction/.
 Чей вердикт: Proshka Q14, root audit and q14_verdict_audit; no RH claim.
+
+## 2026-10-24 — Q15: граница оптимального положительного row-cap сертификата
+
+- Развилка: actual Möbius short-inverse energy против полной исходной CCM на P.
+- Выбрали: finite Vaughan; полный ответ Q15 сохранён и воспроизведён, один независимый bounded PAPER аудит.
+- Почему: exact infimum по всем положительным scalar weights позволяет проверить целое семейство, а не отдельный численный fit.
+- Что отвергли: sub-half-power после weighted Cauchy и независимых ||H_a||<=2B_a; цена сертификата >=sqrt(m)/(32log m) на действительных rough-semiprimes. Не отвергнут исходный signed механизм CCM.
+- Инсайты: те же n=pq имеют нулевой полный коэффициент Lambda; положительная цена теряет эту связь. Proper powers восстанавливаются с log p. Межстрочные и внутристочные mixed terms сохранены до явных неравенств.
+- Блокеры: полный показатель1/2 не улучшен; conditional3/8/ZF78 неизменен. Short sectors2epsilon оплачены, исходный знак OPEN.
+- Иглы Зингера: next candidate должен проходить productwise pq/p^k discriminator до положительной оплаты. Само перегруппирование возвращает старый12sqrt(m), не новый выигрыш.
+- Следующий ход: откат до квадрата/row caps; source-specific one-sided сравнение на исходном P. Повторять Abel/PNT с полки или слать Q16 с новым именем долга нельзя. Goal OPEN, ожидающих ответов после обработки Q15 нет.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q15_CONCLUSION.md; полный Q15 original и q15_verdict_checks/. 7801exact+8192replay+3noninterval, JSON byte-identical,12 source hashes match.
+- Чей вердикт: Прошка Q15, root reproduction/PAPER и отдельный q15_verdict_audit; границы приёмки в conclusion.

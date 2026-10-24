@@ -1,0 +1,13 @@
+{
+  "status": "PASS_EXACT_FORMAL_LOG_COEFFICIENTS",
+  "cases": 8192,
+  "n_max": 128,
+  "U_V_range": [
+    1,
+    8
+  ],
+  "omitted_K_detected_cases": 3492,
+  "omitted_II_detected_cases": 2830,
+  "full_CCM_spectrum_computed": false,
+  "new_arithmetic_exponent": null
+}

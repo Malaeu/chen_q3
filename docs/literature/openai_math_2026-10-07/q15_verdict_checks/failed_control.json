@@ -1,0 +1,8 @@
+{
+  "run": 1,
+  "outcome": "STOPPED_AT_BAD_EXTRA_TEST_EXPECTATION",
+  "assertion": "nu(4,2)==1 and nu(9,2)==-1",
+  "actual": "nu(4,2)=mu(4)=0; nu(6,3)=mu(6)=1",
+  "correction": "Use nu(6,3)==1; retain nu(4,2)==0 as squareful control.",
+  "scope": "Mistake in an extra test expectation, not a theorem or source identity; first run not counted as a pass."
+}

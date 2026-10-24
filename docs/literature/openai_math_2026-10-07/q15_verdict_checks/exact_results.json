@@ -1,0 +1,25 @@
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS_NOT_CCM_SIGN",
+  "counts": {
+    "short_inverse_coefficients": 1280,
+    "two_typeII_coefficients": 6144,
+    "totient_diagonalization_and_bounds": 16,
+    "floor_and_harmonic_LCM": 64,
+    "full_noncommutative_weighted_square": 16,
+    "optimal_row_weight_certificate": 16,
+    "actual_rough_semiprime_and_square": 229,
+    "proper_power_multiplicity": 30,
+    "planted_missing_mixed_row": 1,
+    "planted_missing_intermediate_projection": 1,
+    "planted_discarded_Mobius_cross": 1,
+    "planted_wrong_LCM": 1,
+    "planted_rectangular_cutoff": 1,
+    "planted_missing_threshold_and_power": 1
+  },
+  "total_checks": 7801,
+  "source_spectrum_computed": false,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "script_sha256": "324ff678dec441a28d90d5bdd34f46d7b536596f4c05db3956d9f120c9e77bb5",
+  "registration_sha256": "03abcd79725f1b5d36f92c193b1ca17884d186947ef43168fe3b7d99d203840b"
+}

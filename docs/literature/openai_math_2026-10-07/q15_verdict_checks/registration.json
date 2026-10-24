@@ -1,0 +1,13 @@
+{
+  "phase": "Q15",
+  "timing": "After source reading and paper derivation; before new executable checks. Not a prediction of an undiscovered theorem.",
+  "predictions": [
+    {"id":"P1","claim":"Finite Vaughan, two Type-II coefficients and short-inverse identity agree atom by atom, with all proper prime powers and exact cutoffs."},
+    {"id":"P2","claim":"The nu_U coefficient square has the exact floor/LCM and totient-square factorizations; lower and upper rational bounds pass."},
+    {"id":"P3","claim":"Full matrix square includes mixed rows and mixed prime factors; weighted Cauchy holds without commuting projected kernels."},
+    {"id":"P4","claim":"The positive-row-weight optimization gives exactly the absolute row certificate, not an arithmetic power gain."},
+    {"id":"P5","claim":"Deleting a mixed product, a hyperbolic boundary, or proper-power contributions is detected by planted finite tests."},
+    {"id":"P6","claim":"Small actual-kernel diagnostics preserve original P and Vaughan recombination; they are not asymptotic or interval certificates."}
+  ],
+  "no_prediction": "No new full CCM exponent, no sign of actual II, no numerical proof of the cofinal certificate lower bound."
+}

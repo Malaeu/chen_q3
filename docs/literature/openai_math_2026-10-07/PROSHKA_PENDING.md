@@ -1,3 +1,37 @@
+# Q15 COMPLETED AND AUDITED — no pending Pro answer
+
+Natural completion 24.10.2026 10:15 Europe/Berlin; downloaded after 10:30 poll.
+Full original73140bytes/1294LF read; SHA256
+ed8c7e4041c5b2a6f871815455262abb4d33c3fcb812b6451499b3945f55e9d9.
+CCM_Q15_CONCLUSION.md records root and independent bounded PAPER PASS.
+7801 exact+8192 replay+3 noninterval diagnostics reproduced byte-identically;
+12 source hashes match. Optimized scalar row-cap certificate has half-power
+lower price, NOT a spectral lower bound for actual CCM. Full gain NONE.
+Rollback before square/independent row caps; productwise pq/p^k discriminator.
+Recombination alone and old Abel/PNT do not improve the exponent; no Q16 sent.
+Overall goal OPEN. Remove ccm-q15 monitor; no reply remains outstanding.
+
+--- Historical Q15 dispatch ---
+
+# Q15 SENT — actual Vaughan joint upper, responding verified
+
+24.10.2026 09:48 Europe/Berlin, one send in same AI Mathematik Morgenbrief:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d
+PROSHKA_CCM_VAUGHAN_JOINT_Q15_2026-10-24.txt:126176 bytes,2129LF,12 full bodies.
+SHA256 61fea7c4fc6a3438f9d15e46a824349828bd222d4b4c122d5e66b3f9a8b8d4e7.
+Native file chooser used; extension file URL upload unavailable, no settings changed.
+Send click timed out; sent file/message, empty composer, ChatGPT is responding
+and Stop independently observed. NO retry. Screenshot /tmp/ccm-q15-sent-20261024.png.
+Own CCM_Q15_VAUGHAN_JOINT_BUDGET.md: bounded independent PAPER PASS,
+8192 exact formal-log controls; short cost m^(2epsilon), full norm still half-power.
+Concrete impasse before |mu| permits Pro under owner scenario; no source no-go.
+Wait20min without reload/Stop/Answer now/Regenerate. After natural completion:
+full original/read/audit/reproduction, one scoped cycle commit per NEXT.
+No new question until processed. Native historical blocked does not revoke owner
+resume; no new goal or RH claim. Overall goal OPEN. Remove monitor when processed.
+
+--- Historical Q14 completion ---
+
 # Q14 COMPLETED AND AUDITED — no pending Pro answer
 
 Natural completion11:03Berlin23Oct; full original retrieved11:21.

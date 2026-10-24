@@ -5,10 +5,10 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-23 · by: scripts/phase_end.sh · HEAD at update: ec36e77b
+Updated: 2026-10-24 · by: scripts/phase_end.sh · HEAD at update: ff81762f
 
 ## Решение владельца 20.10: возврат к исходной Q3
-23.10 Q14 завершён, полный оригинал прочитан, 9 source bodies/105 exact/9 noninterval проверены; bounded independent PAPER PASS. [Вывод](../literature/openai_math_2026-10-07/CCM_Q14_CONCLUSION.md): actual filters отменяют кажущиеся free-exponential poles; finite signed contour сохраняет горизонтали, вертикальный возврат o(1). Полный показатель всё ещё1/2; eta→0 OPEN. Откат до прямой Q на исходном P, перед отдельным positive Gram. Следующий discriminator — полный бюджет joint Mobius estimate против прежних3/8; не повторять тождества. Q15 не отправлен, ответов не ждём; монитор Q14 удалить, общий goal OPEN.
+24.10 Q15 завершён: [полный вывод и воспроизведение](../literature/openai_math_2026-10-07/CCM_Q15_CONCLUSION.md). 7801exact+8192replay+3неинтервальных проверки совпали. Оптимум положительных row-cap весов имеет цену ≥sqrt(m)/(32log m); это препятствие сертификату, не CCM. Root и независимый bounded PAPER аудит PASS. Полная степень1/2 не улучшена, short2epsilon сохранён. Откат до квадрата и раздельных цен, productwise тест pq/p^k; простая пересборка уже проверена и сама выигрыша не даёт. Q16 не отправлен; goal OPEN.
 23.10 Q13 принят: [вывод](../literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md). Полный скачок0.23225<j<0.23226 на конечном original-P примере; совместный seam/high-frequency return O(m^-nu/log m) оплачен. Это не asymptotic no-go. Q14 уточняет последующий откат; прежние сведения об ожидании заменены строкой выше. Письмо Сузуки не отправляли.
 Q12 дал pole norm<=2/arch log return, убрал M² fee без новой CCM степени. Последующие anchor/isolated-jump/full-jump проверки сохранены в пакете Q13; конечный скачок не асимптотический no-go.
 
@@ -44,7 +44,7 @@ Claim делается, только когда он действительны�
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
 
 <!-- AUTO-STATS:BEGIN (scripts/phase_end.sh — не править руками) -->
-Статистика на 2026-10-23, HEAD ec36e77b:
+Статистика на 2026-10-24, HEAD ff81762f:
 - Goal058 (текстовая метка READY/PROVED): 3/8 (G2, G2b, G5); без метки: G0, G1, G3, G3c, G4
 - Крыша (статусы ledger): 0/3 портов со статусом jointly_bound; hzeros=CONDITIONAL_CANDIDATE_FLOORS_OPEN, hentire=SUPPLIER_PROVED_FAMILY_UNBOUND, hconv=NO_SUPPLIER
 - RouteB Lean (текстовый поиск, не kernel-аудит): sorry=0, строк axiom=0
