@@ -1,6 +1,6 @@
 # Q27 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
-Full1171line original read;99math+1metadata/7planted/9sources replay byte-identical. Independent q27_bounded_review bounded PAPER PASS §§2–8. See CCM_Q27_CONCLUSION.md. Joint contour analytic part and tails paid; signed residue upper debt remains, no new arithmetic exponent. Next own check is extension of explicit Omega,V2 budgets to original all-P schedule, not another sign identity. No Q28. Goal/RH OPEN. Completed monitor removal follows.
+Full1171line original read;99math+1metadata/7planted/9sources replay byte-identical. Independent q27_bounded_review bounded PAPER PASS §§2–8. See CCM_Q27_CONCLUSION.md. Joint contour analytic part and tails paid; signed residue upper debt remains, no new arithmetic exponent. Original-P extension now bounded PAPER PASS: see CCM_POST_Q27_ORIGINAL_P_CONTOUR.md; all paid fees <=C_epsilon m^(2epsilon), complete signed residue lower bound remains OPEN. No Q28. Goal/RH OPEN. Completed monitor deleted.
 
 --- Q27 history ---
 
