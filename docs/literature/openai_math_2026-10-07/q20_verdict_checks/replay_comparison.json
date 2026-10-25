@@ -1,0 +1,10 @@
+{
+  "exact_results.json": {
+    "byte_identical": true,
+    "sha256": "c305828edb75fe7741772b0bf41c6b64c4bd642028f8f973521b2875ccb85062"
+  },
+  "source_verification.json": {
+    "byte_identical": true,
+    "sha256": "525c0f799bcb439c75e185804d2489652056d3b387310b703c91160f07a791a5"
+  }
+}

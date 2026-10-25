@@ -1,0 +1,97 @@
+{
+  "status": "BYTE_AND_HASH_MATCH_NOT_MATHEMATICAL_VERIFICATION",
+  "request_bytes": 245193,
+  "lf": 3554,
+  "sha256": "a1464e6a9ea3b49314fa8c704b42904983e45690aa358a772e1dd25bed355276",
+  "source_count": 11,
+  "sources": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q19_CONCLUSION.md",
+      "bytes": 3904,
+      "sha256": "a4e083fab0eba1d57dda5ce4b1253163e4da0e6715bc8c0b65af510f5f2f36ec",
+      "line_start": 54,
+      "line_end": 118
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_COMPLEX_REFLECTION_PAIR_Q19_VERDICT_2026-10-25.md",
+      "bytes": 87753,
+      "sha256": "fa5ee5620cd88f314b05a628b0e83ec162e4f6c91a15ccdaab0226f13fd67ddf",
+      "line_start": 123,
+      "line_end": 1400
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q20_INTEGER_CELL_RETURN.md",
+      "bytes": 3832,
+      "sha256": "2ad26b8fe362fe5a67b55659706c0bc494e2a1e759c4aab32c78e79220dee71d",
+      "line_start": 1405,
+      "line_end": 1471
+    },
+    {
+      "id": "S4",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "bytes": 10197,
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f",
+      "line_start": 1476,
+      "line_end": 1665
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+      "bytes": 89445,
+      "sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+      "line_start": 1670,
+      "line_end": 2920
+    },
+    {
+      "id": "S6",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_PAIR_AVERAGING_ATTEMPT.md",
+      "bytes": 6850,
+      "sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+      "line_start": 2925,
+      "line_end": 3058
+    },
+    {
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "line_start": 3063,
+      "line_end": 3131
+    },
+    {
+      "id": "S8",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "bytes": 9606,
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "line_start": 3136,
+      "line_end": 3264
+    },
+    {
+      "id": "S9",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q18_CONCLUSION.md",
+      "bytes": 5185,
+      "sha256": "8df18e659be791676d1f539818ee0883930fab11bbfa2f31cc3da4098c7d808a",
+      "line_start": 3269,
+      "line_end": 3354
+    },
+    {
+      "id": "S10",
+      "path": "docs/routeB_bus/source_observability_2026-09-28/PRIME_PREFIX_ENERGY_OWN_2026-10-07.md",
+      "bytes": 5940,
+      "sha256": "6c5c4f4c78e110ede1757574b2c669017dd69d886295f3e0868aaf3674afd07b",
+      "line_start": 3359,
+      "line_end": 3417
+    },
+    {
+      "id": "S11",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q19_COMPLEX_CONTOUR_ATTEMPT.md",
+      "bytes": 7389,
+      "sha256": "5508f4e35a6424955aab3b853493275e8960be85cabffd69fc61d515951ce094",
+      "line_start": 3422,
+      "line_end": 3551
+    }
+  ]
+}

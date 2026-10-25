@@ -1,0 +1,38 @@
+{
+  "phase": "Q20",
+  "registration_stage": "AFTER_PAPER_DERIVATION_BEFORE_EXECUTABLE_MATHEMATICAL_CONTROLS",
+  "mechanism": "Positive actual theta-source ground-state transform; retain finite-cutoff tail; test dropping the complete nonnegative jump energy",
+  "predictions": [
+    {
+      "id": "P1",
+      "statement": "Complex two-point ground-state algebra has both cross orientations and the stated potential signs."
+    },
+    {
+      "id": "P2",
+      "statement": "Pole adjacency enters with negative weighted-square energy; dropping it as if positive is detected."
+    },
+    {
+      "id": "P3",
+      "statement": "A zero-overlap edge beyond the physical cutoff still leaves a positive diagonal energy, which is returned exactly by the tail potential."
+    },
+    {
+      "id": "P4",
+      "statement": "The phase-loss difference between weighted jump energies is independent of the positive gauge."
+    },
+    {
+      "id": "P5",
+      "statement": "The compact derivative-filtered profile has both exponential contacts, but its modulus does not."
+    },
+    {
+      "id": "P6",
+      "statement": "The explicit positive translate mixture gives the claimed half-power pole-potential ceiling."
+    },
+    {
+      "id": "P7",
+      "statement": "Fixed derivative q>1/epsilon+2 pays the original-P projection, including derivative norm and complete prime-form error."
+    }
+  ],
+  "main_power_prediction": "No new favorable arithmetic exponent; the discarded-energy certificate has a uniform half-power price. This is a paper prediction not a numerical spectral claim.",
+  "no_hypothetical_zero_values": true,
+  "planned_checks": "Exact algebra and rational arithmetic only; no source spectrum, Lean, Arb or independent audit."
+}
