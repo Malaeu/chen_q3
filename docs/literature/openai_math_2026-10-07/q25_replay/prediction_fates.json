@@ -1,0 +1,32 @@
+{
+  "timing": "After byte-exact reading and exploratory paper work; before new executable checks. This is not a blind prediction made before mathematical exploration.",
+  "fates": [
+    {
+      "id": "P1",
+      "fate": "CONFIRMED_IN_STATED_SCOPE",
+      "explanation": "PAPER proof and exact exponent checks; complete dyadic tiling supplied explicitly."
+    },
+    {
+      "id": "P2",
+      "fate": "CONFIRMED_IN_STATED_SCOPE",
+      "explanation": "Exact coarsening evaluated. No additional arithmetic relation beyond source additivity was obtained."
+    },
+    {
+      "id": "P3",
+      "fate": "CONFIRMED_IN_STATED_SCOPE",
+      "explanation": "PAPER conditional symbolic-pair control; synthetic positive measures are expressly not von Mangoldt."
+    },
+    {
+      "id": "P4",
+      "fate": "CONFIRMED_IN_STATED_SCOPE",
+      "explanation": "Exact finite transport and BV jump algebra checked; derived remainder remains subject to unknown arithmetic rate."
+    },
+    {
+      "id": "P5",
+      "fate": "CONFIRMED_IN_STATED_SCOPE",
+      "explanation": "Original fixed-profile return retained; no new favorable exponent or margin claimed."
+    }
+  ],
+  "independent_audit": "NOT_RUN",
+  "arithmetic_target": "OPEN"
+}

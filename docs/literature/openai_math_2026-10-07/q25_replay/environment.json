@@ -1,0 +1,11 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "sympy": "1.14.0",
+  "new_dependencies_installed": false,
+  "exact_controls_scope": "Finite algebra only",
+  "external_statement": "Oberwolfach Report 50/2019 p3177 equation(1); text and web PDF screenshot inspected",
+  "new_independent_audit": false,
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "repo_writes": 0
+}

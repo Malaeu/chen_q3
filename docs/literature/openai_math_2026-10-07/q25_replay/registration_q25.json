@@ -1,0 +1,36 @@
+{
+  "task": "Q25_ACTUAL_SIGNED_LOCAL_MOMENT_COUPLING",
+  "timing": "After byte-exact reading and exploratory paper work; before new executable checks. This is not a blind prediction made before mathematical exploration.",
+  "chosen_joint_test": "Exact adjacent-interval moment coarsening before absolute values; audit complete reconstruction and test sufficiency of qualitative moment input.",
+  "executed_rollback_candidate": "Monotone mass-coordinate transport of the ACTUAL finite von Mangoldt measure, before choosing local interval jets; keep its signed first displacement and all endpoints.",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "The corrected S5 complete-block exponents and global o(1) reconstruction hold; no fixed rate follows for its leading epsilon term."
+    },
+    {
+      "id": "P2",
+      "claim": "Exact adjacent-moment identities preserve the full signed linear functional; coarsening alone does not remove its coarse discrepancy."
+    },
+    {
+      "id": "P3",
+      "claim": "A nonnegative synthetic common source satisfying all qualitative moment statements can retain a resonant coefficient on the actual symbolic pair; this is not an actual-prime counterexample."
+    },
+    {
+      "id": "P4",
+      "claim": "Actual mass transport retains a half-jump correction Lambda(n)^2/2. Its first flux contains the original linear E pairing with coefficient one; the higher transport remainder has a quadratic relative-error budget."
+    },
+    {
+      "id": "P5",
+      "claim": "The complete original-P return remains within the inherited fixed-profile bounds; no new CCM exponent or coefficient margin is predicted."
+    }
+  ],
+  "forbidden_inferences": [
+    "qualitative o(1) implies a power",
+    "synthetic source refutes actual Lambda",
+    "small Taylor remainder is a full arithmetic gain",
+    "positive source transport gives positive signed form"
+  ],
+  "repository_writes": false,
+  "hypothetical_zero_numerical_values_assigned": false
+}

@@ -1,0 +1,10 @@
+{
+  "source_results_byte_identical": true,
+  "exact_results_byte_identical": true,
+  "S5_original_byte_identical": true,
+  "checks_from_extracted_scripts": true,
+  "all_ten_original_assets_hash_checked": true,
+  "exact_controls": 72,
+  "planted_errors_detected": 7,
+  "meaning": "Finite executable replay; not independent PAPER review, interval certification, or asymptotic arithmetic proof."
+}
