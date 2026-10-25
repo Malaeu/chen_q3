@@ -52,3 +52,6 @@ only γ→-γ → |B-C| = 3.9e-3; only γ→conj → |A-C| = 1.4e-2. The SECONDE
 Consequence 2 (i → -i in (1.5)): a global factor -1 on 𝔖_t. Every object used downstream is quadratic in 𝔖 or in P̂
 (⟨𝔖_t,𝔖_u⟩, (4.4)–(4.6), (1.9), Lemma 2, c_A, Volterra Gram), hence unchanged. Only a *linear* use of 𝔖_t or P̂_φ would flip sign;
 paper_weil sections grep: see count below at time of writing. Status: no recomputation needed unless a linear use is found.
+
+## 2026-10-25 — Zenodo status note POSTED
+STATUS NOTE inserted as first paragraph of the description of 10.5281/zenodo.17527099, 17541763, 17956251 (metadata edit, no new version). Wording: "by an academic without formal training in mathematics". Verified via public API (updated 2026-10-25 10:23/10:24/10:25 UTC).
