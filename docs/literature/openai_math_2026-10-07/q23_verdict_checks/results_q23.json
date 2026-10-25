@@ -1,0 +1,47 @@
+{
+  "status": "EXACT_LOCAL_CHECKS_PASSED",
+  "meaning": "Finite algebra, support, source integrity and bookkeeping only; no CCM sign or asymptotic certificate",
+  "request_bytes": 318444,
+  "request_LF": 4656,
+  "request_sha256": "7e4d41f5bcadaa03a18589a22760b88c8253b95872391ddd0accd136d53cd31e",
+  "source_bodies_verified": 11,
+  "sympy_version": "1.14.0",
+  "checks": {
+    "phase": 2,
+    "coalescence": 2,
+    "stationary_root": 1,
+    "cubic_coefficient": 1,
+    "allpass_normalization": 3,
+    "joint_derivative": 2,
+    "orientation_phase": 2,
+    "partition": 2,
+    "stieltjes_boundary": 1,
+    "exact_prime_power_partition": 5,
+    "all_exponents_retained": 5,
+    "higher_power_tail": 3,
+    "full_operator_return": 1,
+    "receiver_power_signs": 4,
+    "price_signal_power": 1
+  },
+  "exact_local_check_count": 35,
+  "planted_errors_detected": [
+    "omit_partition_derivative",
+    "omit_cutoff_boundary",
+    "replace_eta_by_one",
+    "omit_reverse_orientation",
+    "omit_prime_square"
+  ],
+  "planted_error_count": 5,
+  "receiver_powers": [
+    "-5/128",
+    "-67/128",
+    "-17/32",
+    "-69/128"
+  ],
+  "registration_sha256": "05b4b5b53150a9821866e21b0a171edad95c62ff1f36be4905b265c9dfa5d53a",
+  "check_script_sha256": "f228a8c753fb78cfcf7fbeacf9fd94f0f71d137825d4f1dd33d7847d461010fc",
+  "numerical_zero_assignments": false,
+  "arb": false,
+  "lean": false,
+  "independent_review": false
+}

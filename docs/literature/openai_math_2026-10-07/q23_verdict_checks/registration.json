@@ -1,0 +1,13 @@
+{
+  "registration_stage": "After full source reading and preliminary PAPER derivation; before new executable algebra checks",
+  "request": "CCM_Q23_JOINT_PHASE_DELAY",
+  "predictions": [
+    {"id": "P1", "claim": "The exact forward and reverse phase kernels recombine into the original two derivatives of C; gamma cancels from the x-derivative outside C.", "expected": "CONFIRMED"},
+    {"id": "P2", "claim": "The coalescing edge has a cubic term with coefficient 2r/(3 delta^3), not a nondegenerate quadratic term; no m-dependent oscillatory parameter is introduced.", "expected": "CONFIRMED"},
+    {"id": "P3", "claim": "A complementary smooth partition has zero total interface derivative; separating these derivative costs would destroy an exact cancellation.", "expected": "CONFIRMED"},
+    {"id": "P4", "claim": "Proper prime powers are an O(log m) correction in the full physical operator norm and an O_w(1) correction to the actual pair's mixed term.", "expected": "PAPER bound; finite arithmetic checker verifies support only, not the asymptotic theorem"},
+    {"id": "P5", "claim": "The completed phase-variation estimate has e^h/T scale and does not provide an exponent or coefficient-margin improvement.", "expected": "CONFIRMED by explicit returned budget; no lower bound for the actual form is predicted"}
+  ],
+  "not_predicted": ["RH", "a favorable signed prime-discrepancy estimate", "a quantitative lower size for the actual CCM spectrum"],
+  "planted_controls": ["replace eta by 1", "omit reverse time orientation", "drop cutoff boundary E(m)F(m)", "omit a prime square from the exact source", "omit derivative of a partition factor"]
+}
