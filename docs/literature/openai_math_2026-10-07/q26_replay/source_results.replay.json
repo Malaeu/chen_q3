@@ -1,0 +1,80 @@
+{
+  "request_bytes": 256003,
+  "request_lf": 3711,
+  "request_sha256": "994af0521c42fbe7c00211959fcb0dd630c107fd559a1edd6e40e9a287b3da10",
+  "sources": [
+    {
+      "bytes": 3581,
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q25_CONCLUSION.md",
+      "sha256": "a179ed21a1989448eb94a8566d6632fd630b1bc69188110933797b2d19b528c7"
+    },
+    {
+      "bytes": 109976,
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ACTUAL_SIGNED_LOCAL_MOMENTS_Q25_VERDICT_2026-10-25.md",
+      "sha256": "7692c247ed3cfb58fc18e54593a914435fdfa04779817b3c99bf7546ed11bfab"
+    },
+    {
+      "bytes": 2526,
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q25_SOURCE_PROPERTY_PREFLIGHT.md",
+      "sha256": "297a7fc170cfcb00a5cb4efde3ae593cc2bf1a6f913646e03f3d9c148e8cc0fc"
+    },
+    {
+      "bytes": 7127,
+      "id": "S4",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q15_VAUGHAN_JOINT_BUDGET.md",
+      "sha256": "1e13f0487d1a3362817e34112c11953a7296c18bd3500b31995aa221d540bf41"
+    },
+    {
+      "bytes": 10197,
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f"
+    },
+    {
+      "bytes": 5958,
+      "id": "S6",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q05_LOG_CORRELATION_PREFLIGHT.md",
+      "sha256": "d0fa55c54b7c6f268d6e2f7f875b982b3b34dc09559cb3e2fc2189607055bfdf"
+    },
+    {
+      "bytes": 2528,
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q06_RECIPROCAL_SUPPLIER_PREFLIGHT.md",
+      "sha256": "be7fd9336d2f4997b32a7cae612f20905f611374272ed028410e8c6e183aaa44"
+    },
+    {
+      "bytes": 4219,
+      "id": "S8",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q23_PAIR_VARIANCE_PREFLIGHT.md",
+      "sha256": "8c257749014387390473880f33b5546f85e3b556b264cb7febbbc8cb4f53f267"
+    },
+    {
+      "bytes": 89445,
+      "id": "S9",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+      "sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b"
+    },
+    {
+      "bytes": 3932,
+      "id": "S10",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md",
+      "sha256": "c2bbf489a2387de46b0598ed70f8e54aaecb91790835bb5df096007cf6d9c7ea"
+    },
+    {
+      "bytes": 6174,
+      "id": "S11",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+    },
+    {
+      "bytes": 3157,
+      "id": "S12",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q24_CONCLUSION.md",
+      "sha256": "babc91feb1c2321e5e6a64514579a2f8d8e01d5c52c73f5d59035bc93a06600a"
+    }
+  ],
+  "sources_verified": 12
+}

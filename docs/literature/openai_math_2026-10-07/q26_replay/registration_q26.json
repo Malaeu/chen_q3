@@ -1,0 +1,15 @@
+{
+  "task": "CCM_Q26_ACTUAL_SOURCE_RIGIDITY_ROLLBACK",
+  "timing": "After complete canonical reading and exploratory paper derivation; before new executable mathematical checks. Not a blind prediction made before ideation.",
+  "mechanism": "Rollback from local discrepancy moments to the genuine squared-xi numerator: finite Lambda convolved with the divisor function, an explicit reflected gamma kernel, then a paid finite-cutoff contour evaluation retaining the selected residue.",
+  "predictions": [
+    {"id":"P1","claim":"The exact all-power identity Lambda*d_2 = (d_2 log)/2 preserves the finite n<=m truncation via an explicit q>m coefficient defect."},
+    {"id":"P2","claim":"On the true translation window the coefficient defect is exponentially small after the explicit gamma-kernel return, not after a free infinite-series interchange."},
+    {"id":"P3","claim":"At the selected actual zero, multiplication by the genuine logarithmic derivative removes exactly one of the 2r numerator zeros; normalization leaves residue r, not zero."},
+    {"id":"P4","claim":"A correctly oriented bilateral inverse contour returns the term -r exp(2 conjugate(w) a); the full phase makes it -r exp(2 delta a). No strict favorable coefficient margin is supplied."},
+    {"id":"P5","claim":"The unchanged whole-pair projection and the complete continuum, reverse-time and finite-index returns preserve this conclusion with explicit small errors; they cannot be counted as a new RH result."}
+  ],
+  "hypothetical_zero_numerical_values_assigned": false,
+  "repository_writes": false,
+  "new_arithmetic_rate_assumed": false
+}
