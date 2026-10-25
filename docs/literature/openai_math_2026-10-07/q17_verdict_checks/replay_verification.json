@@ -1,0 +1,199 @@
+{
+  "status": "PASS",
+  "checks": {
+    "source_verification.json_matches_embedded": true,
+    "source_verification.json_stdout_matches_generated": true,
+    "results.json_matches_embedded": true,
+    "results.json_stdout_matches_generated": true,
+    "S1_matches_repo_attempt": true,
+    "downloaded_verdict_matches_repo_copy": true,
+    "request_manifest_body_hashes_pass": true,
+    "all_seven_body_sources_match_repo_files": true,
+    "exact_control_count_354": true,
+    "sympy_1_14_0": true
+  },
+  "source_verification": {
+    "status": "PASS_BYTE_EXACT_PACKET_AND_SEVEN_BODIES",
+    "request": "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt",
+    "bytes": 126407,
+    "lf": 1919,
+    "sha256": "b26a7672a0aeb4049f4e42e157014a4c318f788ed299d52f0ee728623de51245",
+    "source_count": 7,
+    "sources": [
+      {
+        "id": "S1",
+        "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_PAIR_AVERAGING_ATTEMPT.md",
+        "bytes": 6850,
+        "sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+        "first_raw_line": 53,
+        "last_raw_line": 186
+      },
+      {
+        "id": "S2",
+        "path": "docs/literature/openai_math_2026-10-07/CCM_Q16_CONCLUSION.md",
+        "bytes": 6311,
+        "sha256": "3228069a6235abab48c2ac9678093b6b77eb98ae16c3ac47d008a569b979b770",
+        "first_raw_line": 191,
+        "last_raw_line": 292
+      },
+      {
+        "id": "S3",
+        "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_VERDICT_2026-10-25.md",
+        "bytes": 80028,
+        "sha256": "effc325bd80a4bc53f1ccbc22e961086d05cbf0ff47de955d174218af5d4116a",
+        "first_raw_line": 297,
+        "last_raw_line": 1486
+      },
+      {
+        "id": "S4",
+        "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+        "bytes": 6174,
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "first_raw_line": 1491,
+        "last_raw_line": 1559
+      },
+      {
+        "id": "S5",
+        "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+        "bytes": 9606,
+        "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+        "first_raw_line": 1564,
+        "last_raw_line": 1692
+      },
+      {
+        "id": "S6",
+        "path": "docs/routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md",
+        "bytes": 8620,
+        "sha256": "81c506a64f8f73cbafcf4f15028c0a5cfb5c234443a85d09efbfe20e924ed73a",
+        "first_raw_line": 1697,
+        "last_raw_line": 1860
+      },
+      {
+        "id": "S7",
+        "path": "docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md",
+        "bytes": 3751,
+        "sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+        "first_raw_line": 1865,
+        "last_raw_line": 1917
+      }
+    ]
+  },
+  "algebra_results": {
+    "status": "PASS_EXACT_LOCAL_ALGEBRA_NOT_RH_OR_ASYMPTOTIC_CERTIFICATE",
+    "sympy": "1.14.0",
+    "counts": {
+      "finite_horizon_derivative_and_initial_value": 16,
+      "normalization_and_removable_value": 16,
+      "radical_chain_before_last_division": 36,
+      "last_forcing_zero_but_inverse_value_one": 8,
+      "joint_two_resolvent_beta_factor": 8,
+      "reflected_conditional_quotient_controls": 40,
+      "missing_terminal_polynomial_detected": 7,
+      "reflection_not_conjugation_free": 2,
+      "boundary_pair_and_phase_normalization": 2,
+      "nonzero_homogeneous_solution_controls": 6,
+      "all_cutoff_commutators_and_omission_controls": 10,
+      "zero_forcing_does_not_determine_zero_form": 1,
+      "actual_mu_log_and_divisor_log_identities": 192,
+      "proper_prime_powers_retained": 2,
+      "fixed_order_full_return_power_tests": 6,
+      "source_S1_exact_average_and_ratio": 2
+    },
+    "total_cases": 354,
+    "hypothetical_zero_numerical_values_used": false,
+    "actual_CCM_spectrum_computed": false,
+    "lean_runs": 0,
+    "arb_runs": 0,
+    "registration_sha256": "f1d2f28e2799fa25847960e4e160abf61d95a462c7fa9ebf711d8d2a082bdba8",
+    "script_sha256": "b29e7e6d9c1c206380873e809d237be1af201e04246a6a80565bcbfc1d029306"
+  },
+  "repo_source_matches": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_PAIR_AVERAGING_ATTEMPT.md",
+      "manifest_bytes": 6850,
+      "manifest_sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+      "packet_body_bytes": 6850,
+      "packet_body_sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+      "repo_source_exists": true,
+      "repo_source_bytes": 6850,
+      "repo_source_sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+      "packet_body_matches_repo_source": true
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q16_CONCLUSION.md",
+      "manifest_bytes": 6311,
+      "manifest_sha256": "3228069a6235abab48c2ac9678093b6b77eb98ae16c3ac47d008a569b979b770",
+      "packet_body_bytes": 6311,
+      "packet_body_sha256": "3228069a6235abab48c2ac9678093b6b77eb98ae16c3ac47d008a569b979b770",
+      "repo_source_exists": true,
+      "repo_source_bytes": 6311,
+      "repo_source_sha256": "3228069a6235abab48c2ac9678093b6b77eb98ae16c3ac47d008a569b979b770",
+      "packet_body_matches_repo_source": true
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_VERDICT_2026-10-25.md",
+      "manifest_bytes": 80028,
+      "manifest_sha256": "effc325bd80a4bc53f1ccbc22e961086d05cbf0ff47de955d174218af5d4116a",
+      "packet_body_bytes": 80028,
+      "packet_body_sha256": "effc325bd80a4bc53f1ccbc22e961086d05cbf0ff47de955d174218af5d4116a",
+      "repo_source_exists": true,
+      "repo_source_bytes": 80028,
+      "repo_source_sha256": "effc325bd80a4bc53f1ccbc22e961086d05cbf0ff47de955d174218af5d4116a",
+      "packet_body_matches_repo_source": true
+    },
+    {
+      "id": "S4",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "manifest_bytes": 6174,
+      "manifest_sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "packet_body_bytes": 6174,
+      "packet_body_sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "repo_source_exists": true,
+      "repo_source_bytes": 6174,
+      "repo_source_sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "packet_body_matches_repo_source": true
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "manifest_bytes": 9606,
+      "manifest_sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "packet_body_bytes": 9606,
+      "packet_body_sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "repo_source_exists": true,
+      "repo_source_bytes": 9606,
+      "repo_source_sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "packet_body_matches_repo_source": true
+    },
+    {
+      "id": "S6",
+      "path": "docs/routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md",
+      "manifest_bytes": 8620,
+      "manifest_sha256": "81c506a64f8f73cbafcf4f15028c0a5cfb5c234443a85d09efbfe20e924ed73a",
+      "packet_body_bytes": 8620,
+      "packet_body_sha256": "81c506a64f8f73cbafcf4f15028c0a5cfb5c234443a85d09efbfe20e924ed73a",
+      "repo_source_exists": true,
+      "repo_source_bytes": 8620,
+      "repo_source_sha256": "81c506a64f8f73cbafcf4f15028c0a5cfb5c234443a85d09efbfe20e924ed73a",
+      "packet_body_matches_repo_source": true
+    },
+    {
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md",
+      "manifest_bytes": 3751,
+      "manifest_sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+      "packet_body_bytes": 3751,
+      "packet_body_sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+      "repo_source_exists": true,
+      "repo_source_bytes": 3751,
+      "repo_source_sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+      "packet_body_matches_repo_source": true
+    }
+  ],
+  "limitations": [
+    "These are finite exact local algebra and byte/hash checks; they do not certify the asymptotic analytic claims, a CCM spectral lower bound, or RH."
+  ]
+}

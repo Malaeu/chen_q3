@@ -8916,3 +8916,16 @@ Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.
 Следующий ход: actual source pair сверх двух моментов, без автоматического Q17.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q16_CONCLUSION.md и q16_verdict_checks/.
 Чей вердикт: Прошка; root и q16_verdict_audit bounded PAPER PASS, q16_replay PASS.
+
+## 2026-10-25 — Q17: полный резольвентный возврат и граница радикального переноса
+
+Развилка: actual source pair до модулей и inverse radical shortcut.
+Выбрали: собственное усреднение, Q17 finite-resolvent transfer, полный original-P возврат.
+Почему: проверить реальную дополнительную структуру сепараторов, сохранив обе фазы и все смешанные члены.
+Что отвергли: L2-only перенос радикала через improper inverse; абсолютный infinite-prime interchange. Не сам CCM и не signed cancellation.
+Инсайты: terminal mixed coefficient равен r; малый L2 остаток сохраняет весь conditional adverse signal. Конечный forced kernel законен, но его нормовой бюджет остаётся1/2.
+Блокеры: независимый направленный arithmetic bound до absolute H_m cap отсутствует.
+Иглы Зингера: original-P terminal norm O(L^-delta/2), form=-2r m^delta/L^(2delta)+o(1); нельзя платить форму только L2-нормой.
+Следующий ход: откат до zero-selective division, конечный theta-forcing с terminal polynomial; не переименовывать старый долг в поставщика, Q18 не отправлен.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q17_CONCLUSION.md; полный запрос/оригинал; q17_verdict_checks/.
+Чей вердикт: Прошка, root и q17_verdict_audit bounded PAPER PASS; q17_replay354exact и7 frozen bodies побайтно PASS. Монитор удалить: ожидающих ответов нет. Goal/RH OPEN.

@@ -1,0 +1,66 @@
+{
+  "status": "PASS_BYTE_EXACT_PACKET_AND_SEVEN_BODIES",
+  "request": "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt",
+  "bytes": 126407,
+  "lf": 1919,
+  "sha256": "b26a7672a0aeb4049f4e42e157014a4c318f788ed299d52f0ee728623de51245",
+  "source_count": 7,
+  "sources": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_PAIR_AVERAGING_ATTEMPT.md",
+      "bytes": 6850,
+      "sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+      "first_raw_line": 53,
+      "last_raw_line": 186
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q16_CONCLUSION.md",
+      "bytes": 6311,
+      "sha256": "3228069a6235abab48c2ac9678093b6b77eb98ae16c3ac47d008a569b979b770",
+      "first_raw_line": 191,
+      "last_raw_line": 292
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_VERDICT_2026-10-25.md",
+      "bytes": 80028,
+      "sha256": "effc325bd80a4bc53f1ccbc22e961086d05cbf0ff47de955d174218af5d4116a",
+      "first_raw_line": 297,
+      "last_raw_line": 1486
+    },
+    {
+      "id": "S4",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "first_raw_line": 1491,
+      "last_raw_line": 1559
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "bytes": 9606,
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "first_raw_line": 1564,
+      "last_raw_line": 1692
+    },
+    {
+      "id": "S6",
+      "path": "docs/routeB_bus/source_observability_2026-09-28/NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md",
+      "bytes": 8620,
+      "sha256": "81c506a64f8f73cbafcf4f15028c0a5cfb5c234443a85d09efbfe20e924ed73a",
+      "first_raw_line": 1697,
+      "last_raw_line": 1860
+    },
+    {
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md",
+      "bytes": 3751,
+      "sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+      "first_raw_line": 1865,
+      "last_raw_line": 1917
+    }
+  ]
+}

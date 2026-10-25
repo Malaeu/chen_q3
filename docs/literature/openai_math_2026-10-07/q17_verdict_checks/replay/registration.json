@@ -1,0 +1,14 @@
+{
+  "phase": "Q17",
+  "timing": "After complete source reading and preliminary paper derivation; before new executable controls",
+  "mechanism": "Finite-horizon transfer of both actual differential resolvents through the full signed Weil pairing, with an independent finite-prime forcing calculation",
+  "predictions": [
+    {"id":"P1","claim":"Finite causal and anti-causal inverses retain the full exponential-polynomial terminal data at every order r."},
+    {"id":"P2","claim":"Reflection w_dagger=-conjugate(w) makes the two transferred differential factors resonant, not independent coercive constraints."},
+    {"id":"P3","claim":"The last inverse step exits the radical by removable-value normalization. The terminal mixed pairing retains the inherited adverse signal exactly, conditional on the hypothetical zero."},
+    {"id":"P4","claim":"At a finite prime cutoff the two resolvents collapse to a single 2r-order integral of an explicit fixed theta forcing correlation. Absolute transfer after an infinite-prime limit is not justified for 0<delta<1/2."},
+    {"id":"P5","claim":"The complete proved favorable upper price retains half power, whereas compactification, sparse Fourier and original-P correction are o(1) for one fixed derivative order."},
+    {"id":"P6","claim":"Exact controls detect missing terminal polynomials, wrong reflection/conjugation, missing mixed pairing, and prime-power deletion."}
+  ],
+  "not_claimed": "No numerical off-critical zero, no new arithmetic power, no RH claim, no finite checks as universal proof. The favorable arithmetic inequality is not an assumption."
+}

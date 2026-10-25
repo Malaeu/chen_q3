@@ -5,10 +5,10 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-25 · by: scripts/phase_end.sh · HEAD at update: f93fbfb6
+Updated: 2026-10-25 · by: scripts/phase_end.sh · HEAD at update: 71ce651f
 
 ## Решение владельца 20.10: возврат к исходной Q3
-25.10 Q16 завершён и [ограниченно проверен](../literature/openai_math_2026-10-07/CCM_Q16_CONCLUSION.md): контактная локализация оплачена; pointwise-absolute дальний сертификат имеет цену>=sqrt(m)/5400000000 в указанной области ширин. Это KILLED(shape), не CCM: настоящая знаковая форма на той же семье o(sqrt m).181exact побайтно,2неинтервальных PASS; независимый PAPER PASS. Полная степень1/2 не улучшена. Откат к actual zero-selective паре; знаки/возврат проверены, независимая lower phased-J оценка OPEN. Q17 не отправлен; ожидающих ответов нет, монитор Q16 удалить; goal OPEN.
+25.10 Q17 завершён: [вывод](../literature/openai_math_2026-10-07/CCM_Q17_CONCLUSION.md). Полный резольвентный перенос сохраняет terminal mixed coefficient r и условный adverse signal даже после исходного P при L2-норме→0. Автоматический radical-inverse предел и абсолютный infinite-prime interchange исключены только в этих формах; CCM не опровергнута. Конечный signed forcing сохранён, полный бюджет остаётся1/2; прежний averaged sqrt(m)/log²m сильнее только логарифмами. Root и независимый bounded PAPER PASS;354exact и7 source hashes побайтно воспроизведены. Откат до zero-selective division к конечному H_m; независимая направленная арифметическая оценка OPEN, не новый поставщик. Q18 не отправлен; goal OPEN.
 23.10 Q13 принят: [вывод](../literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md). Полный скачок0.23225<j<0.23226 на конечном original-P примере; совместный seam/high-frequency return O(m^-nu/log m) оплачен. Это не asymptotic no-go. Q14 уточняет последующий откат; прежние сведения об ожидании заменены строкой выше. Письмо Сузуки не отправляли.
 Q12 дал pole norm<=2/arch log return, убрал M² fee без новой CCM степени. Последующие anchor/isolated-jump/full-jump проверки сохранены в пакете Q13; конечный скачок не асимптотический no-go.
 
@@ -44,7 +44,7 @@ Claim делается, только когда он действительны�
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
 
 <!-- AUTO-STATS:BEGIN (scripts/phase_end.sh — не править руками) -->
-Статистика на 2026-10-25, HEAD f93fbfb6:
+Статистика на 2026-10-25, HEAD 71ce651f:
 - Goal058 (текстовая метка READY/PROVED): 3/8 (G2, G2b, G5); без метки: G0, G1, G3, G3c, G4
 - Крыша (статусы ledger): 0/3 портов со статусом jointly_bound; hzeros=CONDITIONAL_CANDIDATE_FLOORS_OPEN, hentire=SUPPLIER_PROVED_FAMILY_UNBOUND, hconv=NO_SUPPLIER
 - RouteB Lean (текстовый поиск, не kernel-аудит): sorry=0, строк axiom=0

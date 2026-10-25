@@ -1,0 +1,53 @@
+{
+  "status": "EXTRACTED_LITERAL_EMBEDDED_ARTIFACTS",
+  "verdict_repo_path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+  "downloaded_original_path": "/Users/emalam/Downloads/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+  "repo_verdict_bytes": 89445,
+  "repo_verdict_sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+  "downloaded_verdict_bytes": 89445,
+  "downloaded_verdict_sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+  "downloaded_original_byte_identical_to_repo_copy": true,
+  "request_path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt",
+  "request_bytes": 126407,
+  "request_sha256": "b26a7672a0aeb4049f4e42e157014a4c318f788ed299d52f0ee728623de51245",
+  "attempt_path": "docs/literature/openai_math_2026-10-07/CCM_Q17_PAIR_AVERAGING_ATTEMPT.md",
+  "attempt_bytes": 6850,
+  "attempt_sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+  "extracted_artifacts": [
+    {
+      "path": "embedded/registration.json",
+      "bytes": 1611,
+      "sha256": "f1d2f28e2799fa25847960e4e160abf61d95a462c7fa9ebf711d8d2a082bdba8"
+    },
+    {
+      "path": "embedded/verify_sources.py",
+      "bytes": 1390,
+      "sha256": "a587f09be833b5c6294fc62eb20e6521bb8625961cc1057ebf1a6318340786bf"
+    },
+    {
+      "path": "embedded/source_verification.json",
+      "bytes": 2284,
+      "sha256": "dcf3419cd758d037509127b707c235db4212aac5abb13bc43f701a0e14d33b2c"
+    },
+    {
+      "path": "embedded/check_q17.py",
+      "bytes": 5705,
+      "sha256": "b29e7e6d9c1c206380873e809d237be1af201e04246a6a80565bcbfc1d029306"
+    },
+    {
+      "path": "embedded/results.json",
+      "bytes": 1209,
+      "sha256": "1bb32fd44d072c13a08a7279592d81e31067e37ae431a25aeb459a44ab7a1406"
+    },
+    {
+      "path": "embedded/source_S1_original.md",
+      "bytes": 6850,
+      "sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06"
+    },
+    {
+      "path": "embedded/markdown_check.json",
+      "bytes": 252,
+      "sha256": "be633beccfd2d0a764a1aef49cef12098fbbc4c9619f9a1c72d7cb0e3879370d"
+    }
+  ]
+}

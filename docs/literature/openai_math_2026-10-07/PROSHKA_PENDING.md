@@ -1,3 +1,48 @@
+# Q17 COMPLETED AND AUDITED — no pending Pro response
+
+25.10.2026 natural completion observed (worked30m58s); original downloaded11:44Berlin.
+89445bytes/1251LF, SHA256 5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b.
+Full original read; unchanged Downloads copy. Root+independent bounded PAPER PASS.
+354 exact controls and7 frozen source hashes reproduced, both JSON byte-identical.
+CCM_Q17_CONCLUSION.md: terminal pairing r survives, including same-P return;
+improper radical-inverse shortcut excluded; infinite-prime absolute interchange
+diverges, not signed arithmetic no-go. Full exponent1/2 unchanged.
+Rollback before zero-selective division to finite H_m; directed arithmetic
+inequality still absent. No automatic Q18. No response pending.
+Monitor ccm-q17 removed at closeout. Overall goal OPEN; native historical
+blocked state not changed and no new goal created. One scoped cycle commit;
+foreign dirty work preserved, push skipped if it remains.
+
+--- Historical Q17 dispatch ---
+
+# Q17 SENT — actual zero-selective pair, responding verified
+
+25.10.2026 около11:02 Europe/Berlin, sent ONCE in the same living chat:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d
+PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt:126407bytes,1919LF,7 full bodies.
+SHA256 b26a7672a0aeb4049f4e42e157014a4c318f788ed299d52f0ee728623de51245.
+Request commit34568853; full source bodies and final LF verified.
+Own CCM_Q17_PAIR_AVERAGING_ATTEMPT.md independently bounded PASS:
+same original-P return o(1) uniformly; averaged absolute budget/signal
+retains exp((1-2delta)h), no full exponent gain. Source-specific differential
+resolvent transfer proposed, its signed/boundary inequality not supplied.
+Browser upload lacked file-URL permission; native picker succeeded without
+settings changes. Send click timed out but sent file/message, empty composer,
+ChatGPT is responding and Stop confirmed; NO repeat. Screenshot:
+/tmp/ccm-q17-sent-20261025.png. Live tab1618257951 marked handoff.
+While thinking: no sends, refresh, Stop/Answer now/Regenerate.
+After natural completion: download full original, read completely, audit
+original P, both time signs, actual separators and normalization, prime powers,
+all mixed/homogeneous/boundary terms and full budget; one bounded independent
+check of status-changing result, replay code if supplied. Then one scoped
+cycle commit request+answer+conclusion per NEXT, preserve foreign changes.
+No Q18 before processing Q17 and own attempts/concrete impasse. Do not count
+old Stieltjes/PNT identity as new mechanism. Native goal historically blocked,
+owner resumed; no new goal/false completion. Monitor ccm-q17 ACTIVE every20min quietly; delete when
+answer fully processed and no pending response. Overall goal OPEN.
+
+--- Historical completed Q16 ---
+
 # Q16 COMPLETED AND AUDITED — no pending Pro answer
 
 Natural completion25.10.2026 10:40 Europe/Berlin; full original downloaded/read.

@@ -1,0 +1,11 @@
+{
+  "status": "PASS_REEXTRACTED_FROM_FINAL_MARKDOWN",
+  "embedded_files": 6,
+  "exact_cases": 354,
+  "source_bodies": 7,
+  "results_byte_identical": true,
+  "source_S1_byte_identical": true,
+  "yaml_header": "PASS",
+  "lean_runs": 0,
+  "arb_runs": 0
+}

@@ -1,0 +1,29 @@
+{
+  "status": "PASS_EXACT_LOCAL_ALGEBRA_NOT_RH_OR_ASYMPTOTIC_CERTIFICATE",
+  "sympy": "1.14.0",
+  "counts": {
+    "finite_horizon_derivative_and_initial_value": 16,
+    "normalization_and_removable_value": 16,
+    "radical_chain_before_last_division": 36,
+    "last_forcing_zero_but_inverse_value_one": 8,
+    "joint_two_resolvent_beta_factor": 8,
+    "reflected_conditional_quotient_controls": 40,
+    "missing_terminal_polynomial_detected": 7,
+    "reflection_not_conjugation_free": 2,
+    "boundary_pair_and_phase_normalization": 2,
+    "nonzero_homogeneous_solution_controls": 6,
+    "all_cutoff_commutators_and_omission_controls": 10,
+    "zero_forcing_does_not_determine_zero_form": 1,
+    "actual_mu_log_and_divisor_log_identities": 192,
+    "proper_prime_powers_retained": 2,
+    "fixed_order_full_return_power_tests": 6,
+    "source_S1_exact_average_and_ratio": 2
+  },
+  "total_cases": 354,
+  "hypothetical_zero_numerical_values_used": false,
+  "actual_CCM_spectrum_computed": false,
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "registration_sha256": "f1d2f28e2799fa25847960e4e160abf61d95a462c7fa9ebf711d8d2a082bdba8",
+  "script_sha256": "b29e7e6d9c1c206380873e809d237be1af201e04246a6a80565bcbfc1d029306"
+}
