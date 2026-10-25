@@ -1,0 +1,14 @@
+{
+  "phase": "Q19",
+  "timing": "After full source reading and preliminary paper derivation, before new executable controls",
+  "selected_mechanism": "Combine the two real numerators and the complex normalization exactly; exploit their common zero factors; then test the strongest pointwise signed completion, the negative part of the whole paired integrand",
+  "predictions": [
+    {"id":"P1", "claim":"The paired identity and four-wave normal form retain the reflection-defect term with its minus Im(kappa) Im(Z) sign."},
+    {"id":"P2", "claim":"Dividing the actual common pair of zeros removes the rational denominator but does not make the shifted real numerator even about gamma."},
+    {"id":"P3", "claim":"For fixed alpha in (0,1/4), the four distinct frequency waves have zero mean and a uniformly positive local second moment, despite the changing phase gamma log(m)."},
+    {"id":"P4", "claim":"The completed joint negative-part price retains exponent 1/2; this is a certificate obstruction, not a CCM spectral lower bound."},
+    {"id":"P5", "claim":"The exact continuous reference has a negligible signed mixed-pair integral but the same half-power pointwise negative-part price; it must be canceled before any local sign cap."},
+    {"id":"P6", "claim":"Planted removal of the reflection defect, replacement of kappa by its modulus, or removal of one temporal direction is detected by finite exact algebra."}
+  ],
+  "not_claimed": ["RH", "new full favorable exponent", "existence of an off-critical zero", "independent review", "Arb or Lean certification"]
+}

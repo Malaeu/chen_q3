@@ -1,0 +1,89 @@
+{
+  "request_file": "PROSHKA_CCM_COMPLEX_REFLECTION_PAIR_Q19_2026-10-25.txt",
+  "bytes": 199462,
+  "lf": 3432,
+  "sha256": "812017cb16df1b0687d8be1854eb57c97e002f47b9f25de0e3c63dfe7223a6f2",
+  "final_lf": true,
+  "sources": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q19_COMPLEX_CONTOUR_ATTEMPT.md",
+      "bytes": 7389,
+      "sha256": "5508f4e35a6424955aab3b853493275e8960be85cabffd69fc61d515951ce094",
+      "first_line": 41,
+      "last_line": 170
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q18_CONCLUSION.md",
+      "bytes": 5185,
+      "sha256": "8df18e659be791676d1f539818ee0883930fab11bbfa2f31cc3da4098c7d808a",
+      "first_line": 175,
+      "last_line": 260
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_FINITE_DIVISOR_THETA_Q18_VERDICT_2026-10-25.md",
+      "bytes": 103812,
+      "sha256": "bb5ec59b33ed5e042a4272a2620aa2776108582b6522bbba500ebc25793f6339",
+      "first_line": 265,
+      "last_line": 1928
+    },
+    {
+      "id": "S4",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_PAIR_AVERAGING_ATTEMPT.md",
+      "bytes": 6850,
+      "sha256": "f2911c38717dd5cf711ea422d232abf9c4dabcd2bc92428946412c3d16f00a06",
+      "first_line": 1933,
+      "last_line": 2066
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "first_line": 2071,
+      "last_line": 2139
+    },
+    {
+      "id": "S6",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "bytes": 9606,
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "first_line": 2144,
+      "last_line": 2272
+    },
+    {
+      "id": "S7",
+      "path": "docs/routeB_bus/proshka/PROSHKA_FULL_THETA_THREE_POINT_CLOSURE_2026-09-17.md",
+      "bytes": 36885,
+      "sha256": "ab1a2fa31d323279712dfd3d1500ddf764af880f4f27e9f4014d804bba87c72d",
+      "first_line": 2277,
+      "last_line": 3121
+    },
+    {
+      "id": "S8",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q18_DYADIC_THETA_TELESCOPE.md",
+      "bytes": 7172,
+      "sha256": "3efacef08770733894f7f650a309037cda7571cc732f86c2711e1c025c782042",
+      "first_line": 3126,
+      "last_line": 3253
+    },
+    {
+      "id": "S9",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q18_PRIME_PAIR_WEIGHT_TEST.md",
+      "bytes": 5691,
+      "sha256": "7940ffc3d5a586a401e456263b53f6e2164662e74474edc6548cf69f3947d662",
+      "first_line": 3258,
+      "last_line": 3358
+    },
+    {
+      "id": "S10",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q14_CONCLUSION.md",
+      "bytes": 3926,
+      "sha256": "e4203844a9143b0bfe05de99cea660449fa2f44aeee7031e13b8ef78f9427e64",
+      "first_line": 3363,
+      "last_line": 3429
+    }
+  ]
+}

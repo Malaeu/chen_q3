@@ -1,3 +1,20 @@
+# Q19 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+25.10.2026: full original87753bytes/1278LF downloaded automatically and fully read; SHA256 fa5ee5620cd88f314b05a628b0e83ec162e4f6c91a15ccdaab0226f13fd67ddf. Root+q19_verdict_check bounded PAPER PASS.210exact and10 source hashes reproduced, both JSON byte-identical. CCM_Q19_CONCLUSION.md accepts only scoped joint pointwise-certificate half-power obstruction and paid continuous rollback. Actual CCM sign/degree unchanged; centered/global signed comparison OPEN. Remove ccm-q19 monitor after closeout. No automatic Q20; next own mechanism must preserve cross-frequency cancellation and pass exact D0 control. Goal/RH OPEN.
+
+--- Historical Q19 dispatch ---
+# Q19 SENT ONCE — RESPONDING VERIFIED
+
+25.10.2026 14:02 Europe/Berlin: exact canonical Q19 TXT uploaded through own IAB browser3/tab1, sent once with companion. Sent filename tile, message, ChatGPT antwortet and Stoppen observed. Hash unchanged812017cb16df1b0687d8be1854eb57c97e002f47b9f25de0e3c63dfe7223a6f2. Same living chat https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d . While thinking: no send, refresh, Stop, Answer now or Regenerate. After natural completion download full original automatically, read all, audit source P, both signs, complex phase, actual numerators, mixed terms and full budget; reproduce code and one bounded independent audit; one scoped cycle commit after answer. Overall goal OPEN.
+
+--- Historical preparation ---
+# Q19 READY, NOT SENT — full complex frequency pairing
+
+25.10.2026: owner requested own full-complex attempt and preparation on impasse. Fixed-line completion retains half-power; original P, phase, both times and all mixed terms retained. CCM_Q19_COMPLEX_CONTOUR_ATTEMPT.md:52 exact checks PASS; bounded independent PAPER audit PASS. Concrete next test: actual numerator sum and reflection defect around gamma before absolute values.
+Canonical PROSHKA_CCM_COMPLEX_REFLECTION_PAIR_Q19_2026-10-25.txt: 199462 bytes; 3432 LF; sha256 812017cb16df1b0687d8be1854eb57c97e002f47b9f25de0e3c63dfe7223a6f2. Ten full source bodies byte-verified; final LF present. Request commit ee2ed490cf9ac6de24d7610edd0eb0267286f6e3.
+Prepared only; NOT uploaded or sent; no response pending and no monitor created. Q18 monitor already deleted. One scoped cycle commit after Pro answer per NEXT; preserve foreign work. Overall goal/RH OPEN.
+
+--- Historical Q18 completion ---
 # Q18 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 25.10.2026: original downloaded automatically through own IAB, saved losslessly, fully read. CCM_Q18_CONCLUSION.md records root+bounded independent PAPER PASS;7538exact+12noninterval and7 source bodies reproduced, output JSON byte-identical. New analytic theta-index return paid: corrected finite sum error O(Psi_m/sqrtK), full J error O_w(m^-nu), all endpoints and original P retained. Raw k>m edge sqrt(m)logm cancels head; not spectral no-go. Arithmetic degree unchanged1/2; inherited averaged/log and conditional3/8 unchanged. Own prime-pair and dyadic telescope preserved, neither improves degree. No automatic Q19. Next: rollback to actual complex pair before independent lobe cap, with a new source-specific mechanism and full budget; increasing K/J alone is not a mechanism. General goal/RH OPEN. Delete ccm-q18-delivery monitor after closeout; no outstanding answer.

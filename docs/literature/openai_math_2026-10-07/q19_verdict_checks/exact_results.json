@@ -1,0 +1,27 @@
+{
+  "status": "PASS_EXACT_LOCAL_ALGEBRA_NOT_CCM_CERTIFICATION",
+  "sympy": "1.14.0",
+  "counts": {
+    "paired_real_identity": 1,
+    "phase_and_reflection_omissions_detected": 2,
+    "whole_sum_and_difference": 2,
+    "common_zero_and_normalization": 18,
+    "four_wave_normal_form": 16,
+    "frequency_nonzero": 20,
+    "frequency_separation": 60,
+    "negative_part_conversion": 1,
+    "continuous_finite_endpoints": 3,
+    "temporal_orientation_omission_detected": 1,
+    "actual_divisor_prime_power_support": 79,
+    "proper_power_omission_detected": 1,
+    "original_P_fixed_order_budget": 3,
+    "frequency_tail_budget": 3
+  },
+  "total_controls": 210,
+  "numerical_offcritical_zero_assigned": false,
+  "CCM_spectra_computed": false,
+  "arb_runs": 0,
+  "lean_runs": 0,
+  "registration_sha256": "92f780ce64e1e7812d4c9f93251c946d4887f8a0c39674846b5fd95ad4fe1825",
+  "script_sha256": "580507d6b6b7472ea1417eb34ddd4b01797336d04badd73e80ef49bd67afa3d5"
+}

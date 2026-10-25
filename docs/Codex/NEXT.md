@@ -5,10 +5,10 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-25 · by: scripts/phase_end.sh · HEAD at update: d257514a
+Updated: 2026-10-25 · by: scripts/phase_end.sh · HEAD at update: ee2ed490
 
 ## Решение владельца 20.10: возврат к исходной Q3
-25.10 Q18 завершён: [вывод](../literature/openai_math_2026-10-07/CCM_Q18_CONCLUSION.md). Weighted Jacobi даёт дробный dual; глобальный theta-return с явным continuum edge оплачен O(Psi_m/sqrtK), через полный J — O_w(m^-nu), исходный P/оба времени/фаза/endpoints сохранены. Raw k>m край порядка sqrt(m)logm компенсирует head; это не CCM lower bound. Полная степень1/2 без улучшения, inherited averaged/log и conditional3/8 сохранены. Root+bounded PAPER PASS;7538exact+12noninterval/7sources воспроизведены. Свои prime-pair и dyadic telescope проверки сохранены: дешёвый хвост не малый main. Откат до полной complex C перед independent lobe cap; не увеличивать K/J как замену арифметике, не запускать автоматически Q19. Ожидающих ответов нет; goal/RH OPEN.
+25.10 Q19 завершён и проверен: [вывод](../literature/openai_math_2026-10-07/CCM_Q19_CONCLUSION.md). Полная отражённая пара сохранена, но класс неположительных поточечных оценок доказанно стоит >=c sqrt(m)/T; это цена сертификата, не CCM lower bound. Точный непрерывный фон имеет малый полный вклад o(1), хотя тот же сертификат начисляет ему половинную цену. Оплаченный откат: вычесть фон до оплаты знаков; нелокальная центрированная оценка OPEN.210exact/10sources byte-identical, bounded PAPER PASS. Старый sqrt(m)/L²+L и conditional3/8 сохранены. Ожидающих ответов нет; Q20 автоматически не отправлять; goal/RH OPEN.
 23.10 Q13 принят: [вывод](../literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md). Полный скачок0.23225<j<0.23226 на конечном original-P примере; совместный seam/high-frequency return O(m^-nu/log m) оплачен. Это не asymptotic no-go. Q14 уточняет последующий откат; прежние сведения об ожидании заменены строкой выше. Письмо Сузуки не отправляли.
 Q12 дал pole norm<=2/arch log return, убрал M² fee без новой CCM степени. Последующие anchor/isolated-jump/full-jump проверки сохранены в пакете Q13; конечный скачок не асимптотический no-go.
 
@@ -44,7 +44,7 @@ Claim делается, только когда он действительны�
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
 
 <!-- AUTO-STATS:BEGIN (scripts/phase_end.sh — не править руками) -->
-Статистика на 2026-10-25, HEAD d257514a:
+Статистика на 2026-10-25, HEAD ee2ed490:
 - Goal058 (текстовая метка READY/PROVED): 3/8 (G2, G2b, G5); без метки: G0, G1, G3, G3c, G4
 - Крыша (статусы ledger): 0/3 портов со статусом jointly_bound; hzeros=CONDITIONAL_CANDIDATE_FLOORS_OPEN, hentire=SUPPLIER_PROVED_FAMILY_UNBOUND, hconv=NO_SUPPLIER
 - RouteB Lean (текстовый поиск, не kernel-аудит): sorry=0, строк axiom=0

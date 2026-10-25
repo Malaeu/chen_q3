@@ -1,0 +1,8 @@
+{
+  "status": "PASS_LOCAL_ALGEBRA_ONLY",
+  "checks": 52,
+  "source_spectral_evaluations": 0,
+  "hypothetical_zeros_assigned": false,
+  "lean": 0,
+  "arb": 0
+}
