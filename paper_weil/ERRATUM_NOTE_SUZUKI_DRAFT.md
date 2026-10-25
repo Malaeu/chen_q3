@@ -55,3 +55,6 @@ paper_weil sections grep: see count below at time of writing. Status: no recompu
 
 ## 2026-10-25 — Zenodo status note POSTED
 STATUS NOTE inserted as first paragraph of the description of 10.5281/zenodo.17527099, 17541763, 17956251 (metadata edit, no new version). Wording: "by an academic without formal training in mathematics". Verified via public API (updated 2026-10-25 10:23/10:24/10:25 UTC).
+
+## 2026-10-25 — REPLY SENT (11:19 UTC, Gmail, thread 1a0757fbffc2d59f, message id 1a172c90ca8628fb, to msuzuki@math.titech.ac.jp)
+Three paragraphs: apology for the six-week silence; the check that his extension, the letter's, and (3.2) for all real t coincide (zero set symmetric under γ→−γ and γ→γ̄), sign of i harmless since everything downstream is quadratic; "not a professor of mathematics, not my field by training", thanks without a request. Endorsement request and "surgeon" removed on the author's decision. Signature: University of Duisburg-Essen + ORCID link. Text: REPLY_TO_SUZUKI_DRAFT_2026-10-22.md. Status: awaiting nothing; thread closed unless he answers.
