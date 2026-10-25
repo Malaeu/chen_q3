@@ -1,0 +1,31 @@
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS_NOT_GLOBAL_SIGN_CERTIFICATION",
+  "sympy_version": "1.14.0",
+  "counts": {
+    "allpass_unitarity": 4,
+    "whole_pair_cross_terms": 1,
+    "full_reflected_congruence": 1,
+    "separate_complex_normalization": 1,
+    "compression_and_leakage": 2,
+    "full_quadratic_return": 1,
+    "source_and_dyadic_powers": 16,
+    "full_return_exponents": 6,
+    "paid_frequency_cutoff": 1
+  },
+  "exact_controls": 33,
+  "planted_failures_detected": 6,
+  "planted_failures": [
+    "modulus_only_source_normalization",
+    "free_P_commutation",
+    "positive_smoothing_implies_positive_signed_form",
+    "omitted_projection_mixed_terms",
+    "free_real_imaginary_axis_rotation",
+    "eta_replaced_by_one"
+  ],
+  "registration_sha256": "18af9b49b6596cc889ed5decb9dbcf20a4a5c682801f866a8e14750a1ef63c75",
+  "script_sha256": "a7a410be33b8dd5338746c425d747c7626d339c9ad1053ec589e9c6dfb7a878f",
+  "numerical_hypothetical_zero_assigned": false,
+  "CCM_spectral_runs": 0,
+  "arb_runs": 0,
+  "lean_runs": 0
+}

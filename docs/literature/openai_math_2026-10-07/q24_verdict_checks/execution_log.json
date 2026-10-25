@@ -1,0 +1,11 @@
+{
+  "events": [
+    {
+      "stage": "first exact-control implementation",
+      "result": "45-second execution timeout",
+      "cause": "expensive redundant expand_complex of rational all-pass substitutions",
+      "repair": "check full cross identity once in formal unit phases; retain four exact all-pass checks",
+      "mathematical_claim_changed": false
+    }
+  ]
+}

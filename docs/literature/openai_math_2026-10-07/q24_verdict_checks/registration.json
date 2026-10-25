@@ -1,0 +1,13 @@
+{
+  "task": "Q24",
+  "timing": "After full canonical reading and paper derivation; before new executable algebra controls. These are registered verification predictions, not claims of prior blind mathematical forecasts.",
+  "mechanism": "Physical reciprocal convolution on the actual pair, with its own complex Mellin normalization; test its L2 source-range contract and full same-P forward return.",
+  "predictions": [
+    {"id":"P1","claim":"The actual all-pass phase and both translated components give a single sine-square factor, not a sum of independent moduli."},
+    {"id":"P2","claim":"Source-specific whole-pair reciprocal preimage is not in L2 for every fixed positive convolution time; a dyadic weighted-mass lower bound supplies the discriminator."},
+    {"id":"P3","claim":"Complex Mellin-normalized forward convolution preserves the two selected evaluations and hence the inherited reflected form; modulus-only normalization does not."},
+    {"id":"P4","claim":"At convolution time m^-1 the forward return to the unchanged P has o(1) full-form cost, with all cross terms; this supplies no favorable sign."},
+    {"id":"P5","claim":"Planted axis-rotation, phase-loss, missing cross-term, and commuting-compression errors are detected by exact finite controls."}
+  ],
+  "not_claimed": ["new CCM exponent", "new coefficient margin", "RH proof", "independent audit", "numerical off-line zero", "PF10 certificate replay"]
+}
