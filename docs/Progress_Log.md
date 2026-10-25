@@ -9040,3 +9040,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: work before scalar residual-norm completion; do not send Q23 with the same missing inequality renamed. Goal remains OPEN.
 Адреса: CCM_Q22_CONCLUSION.md; full Q22 original and q22_verdict_checks/.
 Чей вердикт: root and independent q21_young_defect_audit bounded PAPER PASS;40exact/6planted/11sources byte-identical, no Lean/Arb/spectral claim.
+
+## 2026-10-26 — Original-P zero-density completion tested
+Развилка: full signed Q27 residue versus count-only completion.
+Выбрали: map Guth--Maynard (1.4) to actual original-P residue weights.
+Почему: test a sourced quantitative supplier after all analytic returns were paid.
+Что отвергли: count plus individual norm completion as a vanishing-exponent supplier; not the original CCM or signed cancellation.
+Инсайты: G=m^(5/24+epsilon) pays high tail with power -1/8; low weighted count retains half power.
+Блокеры: actual joint signed lower bound remains OPEN.
+Иглы Зингера: a fixed hypothetical exceptional pair is compatible with counts; no existence or sign claim.
+Следующий ход: return before residue norms; source-dependent signed supplier, not more contour-tail optimization.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q27_DENSITY_BUDGET.md.
+Чей вердикт: root calculation; residue_density_supplier independent bounded PAPER PASS.
