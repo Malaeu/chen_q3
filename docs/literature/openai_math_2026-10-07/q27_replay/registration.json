@@ -1,0 +1,30 @@
+{
+  "task": "Q27_POLYLOG_JOINT_MATRIX_BEFORE_PREFIX",
+  "timing": "After complete request/source reading and initial paper inspection; before new executable mathematical tests. These are test predictions, not blind claims.",
+  "mechanism": "Direct projected causal matrix Mellin inversion; use endpoint contact to obtain quartic vertical decay, shift with signed residues retained, choose a near-axis vertical line by averaging the actual logarithmic-derivative kernel; pay horizontal edges and all n>m inversion tails.",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "S1 polylog witness survives a bounded audit with no material defect, conditional on its explicitly inherited source tails and form continuity."
+    },
+    {
+      "id": "P2",
+      "claim": "P0*ones=0 yields O(V*Omega^2/|t|^4) for the full projected transfer, not only the raw O(V/|t|^2)."
+    },
+    {
+      "id": "P3",
+      "claim": "A vertical line with real part between 1/log(m) and 2/log(m) can be chosen so its complete projected analytic integral has a polylogarithmic operator-norm budget, using local zeta factorization and integrability of its poles, without a zero-free hypothesis; every crossed zero remains in a joint signed residue matrix."
+    },
+    {
+      "id": "P4",
+      "claim": "The resulting finite contour error can be made o(1) with an explicitly paid power height; this does not itself bound the one-sided signed residue matrix."
+    },
+    {
+      "id": "P5",
+      "claim": "A small upper bound only on H0 is a separately sufficient receiver, not an all-P result; complement and coupling blocks remain unpaid for all-P promotion."
+    }
+  ],
+  "no_actual_zero_assigned": true,
+  "no_repository_writes": true,
+  "not_predicted": "A favorable RH sign or new complete arithmetic exponent is not presupposed."
+}

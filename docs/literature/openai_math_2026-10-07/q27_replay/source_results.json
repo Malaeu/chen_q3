@@ -1,0 +1,71 @@
+{
+  "request_bytes": 198487,
+  "request_lf": 2641,
+  "request_sha256": "8c6b5a8e351b2e06efe9846231e9195f72e09709bb4dc0d21e3b8aa40afe46a0",
+  "sources": [
+    {
+      "bytes": 8064,
+      "id": "S1",
+      "lf": 154,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681"
+    },
+    {
+      "bytes": 3108,
+      "id": "S2",
+      "lf": 57,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q26_LOW_HEIGHT_PERRON_TEST.md",
+      "sha256": "6c0757b610790fd16e224c672599176cf3b9fcb4f313d2603ca15f5e8a29271b"
+    },
+    {
+      "bytes": 3744,
+      "id": "S3",
+      "lf": 33,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q26_CONCLUSION.md",
+      "sha256": "b885f17c955010715932d8896ef5fa62607bee10d498060ad3d29134449d8631"
+    },
+    {
+      "bytes": 85663,
+      "id": "S4",
+      "lf": 1221,
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ACTUAL_SOURCE_RIGIDITY_Q26_VERDICT_2026-10-25.md",
+      "sha256": "a2f3b3d287f7dca91a488ee7d12bf0ac5592577457f4b63f6fdf6207d32b34a6"
+    },
+    {
+      "bytes": 9606,
+      "id": "S5",
+      "lf": 129,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd"
+    },
+    {
+      "bytes": 6174,
+      "id": "S6",
+      "lf": 69,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+    },
+    {
+      "bytes": 68836,
+      "id": "S7",
+      "lf": 805,
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_VERDICT_FULL_CCM_JOINT_DIVISOR_Q10.md",
+      "sha256": "56a86d486b05421c5e4f8311f04afe9ef783267ebede4b265a39677233bfd3ff"
+    },
+    {
+      "bytes": 2757,
+      "id": "S8",
+      "lf": 44,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q07_DISPLACEMENT_PREFLIGHT.md",
+      "sha256": "d983a2be3ec1025ce56725bb3a32e021e7e0f4cd3f1625e2f952d9059e83048c"
+    },
+    {
+      "bytes": 3932,
+      "id": "S9",
+      "lf": 68,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md",
+      "sha256": "c2bbf489a2387de46b0598ed70f8e54aaecb91790835bb5df096007cf6d9c7ea"
+    }
+  ],
+  "sources_verified": 9
+}
