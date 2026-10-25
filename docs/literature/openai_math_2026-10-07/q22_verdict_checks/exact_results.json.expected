@@ -1,0 +1,242 @@
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS_NOT_GLOBAL_PROOF",
+  "sympy": "1.14.0",
+  "checks": 40,
+  "planted_failures_detected": 6,
+  "names": [
+    "gram_hermitian",
+    "gram_positive_first_minor",
+    "gram_positive_determinant",
+    "projected_minimizer",
+    "both_interpolation_values",
+    "null_fiber",
+    "orthogonal_fiber",
+    "minimum_norm_identity",
+    "full_pythagoras_including_mixed_terms",
+    "detector_wrong_transpose",
+    "detector_zeroed_interpolation",
+    "chi_factorization",
+    "unprojected_coefficient_is_different",
+    "reflected_partner",
+    "first_pair_evaluation",
+    "second_pair_evaluation",
+    "whole_line_gram_cross_integrand",
+    "complex_kappa_not_modulus",
+    "all_return_powers_negative_eps1/64_p0",
+    "all_return_powers_negative_eps1/64_p1/2",
+    "all_return_powers_negative_eps1/64_p1",
+    "all_return_powers_negative_eps1/64_p2",
+    "all_return_powers_negative_eps1/48_p0",
+    "all_return_powers_negative_eps1/48_p1/2",
+    "all_return_powers_negative_eps1/48_p1",
+    "all_return_powers_negative_eps1/48_p2",
+    "all_return_powers_negative_eps1/100_p0",
+    "all_return_powers_negative_eps1/100_p1/2",
+    "all_return_powers_negative_eps1/100_p1",
+    "all_return_powers_negative_eps1/100_p2",
+    "detector_old_q_on_growing_profile",
+    "price_signal_ratio",
+    "absolute_price_log_factor",
+    "positive_price_exponent_at_delta1/10",
+    "positive_price_exponent_at_delta1/4",
+    "positive_price_exponent_at_delta49/100",
+    "detector_claimed_subpower_ratio",
+    "continuous_reference_has_zero_discrepancy",
+    "signed_reference_return_once",
+    "detector_missing_continuum"
+  ],
+  "planted": [
+    "conjugate transpose replaced by transpose",
+    "nonzero normalized pair values erased",
+    "kappa replaced by its modulus normalization",
+    "polynomial total-variation factor omitted from return",
+    "sqrt(m) completion cost dropped from normalized price",
+    "continuous reference not subtracted"
+  ],
+  "return_exponents": [
+    {
+      "epsilon": "1/64",
+      "p": "0",
+      "q": 67,
+      "powers": {
+        "full_E_cross_0": "-5/128",
+        "full_E_cross_1": "-67/128",
+        "full_E_cross_endpoint": "-17/32",
+        "constraint": "-69/128",
+        "E0_squared": "-69/64",
+        "E1_squared": "-131/64",
+        "Eendpoint_squared": "-33/16",
+        "relative_evaluation_upper": "-117/128"
+      }
+    },
+    {
+      "epsilon": "1/64",
+      "p": "1/2",
+      "q": 131,
+      "powers": {
+        "full_E_cross_0": "-5/128",
+        "full_E_cross_1": "-67/128",
+        "full_E_cross_endpoint": "-17/32",
+        "constraint": "-69/128",
+        "E0_squared": "-133/64",
+        "E1_squared": "-195/64",
+        "Eendpoint_squared": "-49/16",
+        "relative_evaluation_upper": "-181/128"
+      }
+    },
+    {
+      "epsilon": "1/64",
+      "p": "1",
+      "q": 195,
+      "powers": {
+        "full_E_cross_0": "-5/128",
+        "full_E_cross_1": "-67/128",
+        "full_E_cross_endpoint": "-17/32",
+        "constraint": "-69/128",
+        "E0_squared": "-197/64",
+        "E1_squared": "-259/64",
+        "Eendpoint_squared": "-65/16",
+        "relative_evaluation_upper": "-245/128"
+      }
+    },
+    {
+      "epsilon": "1/64",
+      "p": "2",
+      "q": 323,
+      "powers": {
+        "full_E_cross_0": "-5/128",
+        "full_E_cross_1": "-67/128",
+        "full_E_cross_endpoint": "-17/32",
+        "constraint": "-69/128",
+        "E0_squared": "-325/64",
+        "E1_squared": "-387/64",
+        "Eendpoint_squared": "-97/16",
+        "relative_evaluation_upper": "-373/128"
+      }
+    },
+    {
+      "epsilon": "1/48",
+      "p": "0",
+      "q": 51,
+      "powers": {
+        "full_E_cross_0": "-5/96",
+        "full_E_cross_1": "-17/32",
+        "full_E_cross_endpoint": "-13/24",
+        "constraint": "-53/96",
+        "E0_squared": "-53/48",
+        "E1_squared": "-33/16",
+        "Eendpoint_squared": "-25/12",
+        "relative_evaluation_upper": "-89/96"
+      }
+    },
+    {
+      "epsilon": "1/48",
+      "p": "1/2",
+      "q": 99,
+      "powers": {
+        "full_E_cross_0": "-5/96",
+        "full_E_cross_1": "-17/32",
+        "full_E_cross_endpoint": "-13/24",
+        "constraint": "-53/96",
+        "E0_squared": "-101/48",
+        "E1_squared": "-49/16",
+        "Eendpoint_squared": "-37/12",
+        "relative_evaluation_upper": "-137/96"
+      }
+    },
+    {
+      "epsilon": "1/48",
+      "p": "1",
+      "q": 147,
+      "powers": {
+        "full_E_cross_0": "-5/96",
+        "full_E_cross_1": "-17/32",
+        "full_E_cross_endpoint": "-13/24",
+        "constraint": "-53/96",
+        "E0_squared": "-149/48",
+        "E1_squared": "-65/16",
+        "Eendpoint_squared": "-49/12",
+        "relative_evaluation_upper": "-185/96"
+      }
+    },
+    {
+      "epsilon": "1/48",
+      "p": "2",
+      "q": 243,
+      "powers": {
+        "full_E_cross_0": "-5/96",
+        "full_E_cross_1": "-17/32",
+        "full_E_cross_endpoint": "-13/24",
+        "constraint": "-53/96",
+        "E0_squared": "-245/48",
+        "E1_squared": "-97/16",
+        "Eendpoint_squared": "-73/12",
+        "relative_evaluation_upper": "-281/96"
+      }
+    },
+    {
+      "epsilon": "1/100",
+      "p": "0",
+      "q": 103,
+      "powers": {
+        "full_E_cross_0": "-1/40",
+        "full_E_cross_1": "-103/200",
+        "full_E_cross_endpoint": "-13/25",
+        "constraint": "-21/40",
+        "E0_squared": "-21/20",
+        "E1_squared": "-203/100",
+        "Eendpoint_squared": "-51/25",
+        "relative_evaluation_upper": "-9/10"
+      }
+    },
+    {
+      "epsilon": "1/100",
+      "p": "1/2",
+      "q": 203,
+      "powers": {
+        "full_E_cross_0": "-1/40",
+        "full_E_cross_1": "-103/200",
+        "full_E_cross_endpoint": "-13/25",
+        "constraint": "-21/40",
+        "E0_squared": "-41/20",
+        "E1_squared": "-303/100",
+        "Eendpoint_squared": "-76/25",
+        "relative_evaluation_upper": "-7/5"
+      }
+    },
+    {
+      "epsilon": "1/100",
+      "p": "1",
+      "q": 303,
+      "powers": {
+        "full_E_cross_0": "-1/40",
+        "full_E_cross_1": "-103/200",
+        "full_E_cross_endpoint": "-13/25",
+        "constraint": "-21/40",
+        "E0_squared": "-61/20",
+        "E1_squared": "-403/100",
+        "Eendpoint_squared": "-101/25",
+        "relative_evaluation_upper": "-19/10"
+      }
+    },
+    {
+      "epsilon": "1/100",
+      "p": "2",
+      "q": 503,
+      "powers": {
+        "full_E_cross_0": "-1/40",
+        "full_E_cross_1": "-103/200",
+        "full_E_cross_endpoint": "-13/25",
+        "constraint": "-21/40",
+        "E0_squared": "-101/20",
+        "E1_squared": "-603/100",
+        "Eendpoint_squared": "-151/25",
+        "relative_evaluation_upper": "-29/10"
+      }
+    }
+  ],
+  "hypothetical_zero_numerically_assigned": false,
+  "ccm_spectrum_computed": false,
+  "arb_run": false,
+  "lean_run": false
+}

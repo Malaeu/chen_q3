@@ -9013,3 +9013,30 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 
 ## 2026-10-25 — corrected path interior sign test
 Развилка: stop at exterior-detour repair or test remaining interior Young loss. Выбрали: returned contact profile with positive endpoints and negative interior intermediate value. Почему: sign margins survive original-P projection uniformly and eliminate gauge-dependent error transport. Что отвергли: claim boundary-only repair yields subpower certificate. Инсайты: actual fixed-shell n<m mass forces Xi_in>=c sqrt(m) uniformly rho/tau, while Q=o(sqrt(m)); corrected certificate retains half-power. Блокеры: signed interior covariance remains unpaid, no actual CCM exponent gain. Иглы Зингера: both contacts, endpoint, all prime powers, full mixed form/projection paid; no actual eigenvalue lower claim. Следующий ход: rollback before interior Young; no Q22 yet, one own failed completion after Q21. Адреса: CCM_POST_Q21_INTERIOR_SIGN_DEFECT.md. Чей вердикт: root proof and separate q21_young_defect_audit bounded follow-up PASS with inherited source/returns.
+
+## 2026-10-25 — same-shell mean before Young
+Развилка: remove the common variance before positive comparison or repeat pathwise Young. Выбрали: exact same-pi shell mean with fixed broad-plateau actual theta gauge. Почему: variance cancels but mean may retain opposite sign to both endpoints. Что отвергли: call Jensen variance removal an arithmetic exponent gain. Инсайты: fixed-shell PNT and derivative-contact bump give negative mean, robust on original P; optimal mean-Young certificate still sqrt(m) for this gauge. Блокеры: arbitrary gauge and truly signed mean comparison unpaid; no global no-go. Иглы Зингера: all prime powers, n<m witness, both contacts, full mixed return and fixed B/Delta paid. Следующий ход: preserve mean covariance; do not retry this broad-plateau mean-Young completion; Q22 not sent. Адреса: CCM_POST_Q21_SHELL_MEAN_TEST.md. Чей вердикт: root derivation and shell_mean_covariance_preflight bounded independent PAPER PASS; Q21 covariance algebra credited, no numerical/Lean/RH claim.
+
+## 2026-10-25 — shrinking shell on original sparse P
+Развилка: fixed-width Young obstruction versus resolvable shrinking widths.
+Выбрали: Delta=m^-beta, fixed0<beta<epsilon<1/32, normalized contact bump and full Fourier/P return.
+Почему: Q21 explicitly left moving widths outside its theorem.
+Что отвергли: applying fixed-profile constants uniformly or counting this parameter check as a third independent mechanism.
+Инсайты: actual uniform short-interval Lambda PNT plus bounded variation pays signed source o(Delta sqrt(m)); certificate slack remains >=c Delta sqrt(m). Routing threshold4beta logm+C, all smaller shells exact.
+Блокеры: signed covariance after exact exterior correction remains unpaid; no statement for beta>=epsilon or actual CCM spectrum.
+Иглы Зингера: derivative growth Delta^(1/2-k), r/Delta, both time directions, full prime powers and all postprojection mixed terms.
+Следующий ход: stop optimizing this uncorrected certificate; formulate concrete same-chat signed-covariance rollback question, retaining actual zero-selective pair as weaker sufficient interface. Q22 not sent.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q21_SHRINKING_SHELL_CANDIDATE.md; https://ems.press/content/serial-article-files/46829 p3177 eq1.
+Чей вердикт: root plus shrinking_shell_budget bounded independent PASS, inherited source/Gram not re-audited; no favorable CCM exponent.
+
+## 2026-10-25 — Q22 global radical return and two-point norm obstruction
+Развилка: preserve joint covariance or subtract global complex source-null part before norm completion.
+Выбрали: Pro Q22 one bounded global subtraction test, read/replay/audit full result.
+Почему: local Young repairs and fixed-gauge mean completion left concrete signed-covariance impasse.
+Что отвергли: optimize source-null coefficients under the same scalar sqrt(m) floor; this certificate cannot meet pair margin.
+Инсайты: original-P two-point Gram m^-delta G -> chi_w I2; preserved actual pair data force norm² >=(2/chi_w-o(1))m^-delta exp(2delta a). Full polynomial-TV return paid by fixed q>(2p+1)/epsilon+2.
+Блокеры: actual centered arithmetic/phase relation remains absent; no full CCM exponent or coefficient gain.
+Иглы Зингера: full3x3 constraints, complex kappa, both time orientations, prime powers, n>m tail, all self/cross returns; factor1/2 and arch fee once.
+Следующий ход: work before scalar residual-norm completion; do not send Q23 with the same missing inequality renamed. Goal remains OPEN.
+Адреса: CCM_Q22_CONCLUSION.md; full Q22 original and q22_verdict_checks/.
+Чей вердикт: root and independent q21_young_defect_audit bounded PAPER PASS;40exact/6planted/11sources byte-identical, no Lean/Arb/spectral claim.

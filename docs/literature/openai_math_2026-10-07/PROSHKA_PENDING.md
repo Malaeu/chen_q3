@@ -1,8 +1,35 @@
+# Q22 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+Full original88743bytes/1317LF SHA c49afcbf7c5c3340b1d7c02924c44d66a83123cef270d2279061aeab59c6964a saved unchanged and read completely.40exact/6planted/11sources replayed byte-identically. Root and independent q21_young_defect_audit bounded PAPER PASS §§3–6, upstream source chain inherited. CCM_Q22_CONCLUSION.md: full complex radical subtraction is paid, but known-norm completion fails by two-point original-P interpolation price/E_T >=(12/chi_w-o(1))m^(1/2-delta). Not actual CCM spectral lower bound, no favorable arithmetic degree. Stop optimizing that norm-only completion. No Q23; goal/RH OPEN. Remove completed ccm-q22 monitor. Scoped cycle commit after answer includes own shell-mean/shrinking-width follow-ups, preserves foreign edits.
+
+--- Q22 processing history ---
+
+# Q22 RECEIVED — FULL READ/REPLAY COMPLETE, INDEPENDENT AUDIT RUNNING
+
+25.10.2026 around19:08Berlin natural completion verified in same IAB3/tab3. Downloaded original88743bytes/1317LF,SHA256 c49afcbf7c5c3340b1d7c02924c44d66a83123cef270d2279061aeab59c6964a, saved unchanged and read entirely. Four FILE blocks byte/hash-verified;40exact+6planted and11source replay PASS, both JSON byte-identical. Root §§3–6 audit found no material issue; independent q21_young_defect_audit is running on growing-profile return and two-point original-P Gram. No response pending; processing not yet complete; no Q23. Do not redownload/replay or resend. Final scoped commit and monitor removal after audit; CCM_Q22_CONCLUSION.md is draft pending review. Goal/RH remain open.
+
+--- Q22 dispatch history ---
+
+# Q22 SENT ONCE — RESPONDING VERIFIED
+
+25.10.2026 18:28Europe/Berlin. Same living chat https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d via own IAB3/tab3. Exact Q22 TXT tile, sent companion, ChatGPT antwortet and Stoppen observed. Screenshot /tmp/ccm-q22-sent.png. Attachment PROSHKA_CCM_SIGNED_COVARIANCE_ROLLBACK_Q22_2026-10-25.txt:327303bytes/4630LF,sha256 fa9ec5ceece10bb33fa1be0593c6e2b58da70141ffef954f58e9905aaadaacee;11 complete byte-verified sources; base6b8ccb8119ae8e27a96f20d1bd359af068841b57. No duplicate, current Pro selected.
+Concrete impasse after two bounded completions and one parameter-loophole audit: exterior correction and common variance removal do not pay interior signed covariance; asks one actual-source integrated mechanism on genuine pair or a justified earlier centered-source rollback, NOT another identity or certificate no-go as gain. All-vector goal unchanged; pair margin only weaker sufficient exit.
+review-plan byte/hash manifest matched but legacy queue returned HOLD/missing phase fields and obsolete conversation; owner plain-mode NEXT/SESSION_ENTRY explicitly overrides runtime gates. No fabricated receipt or queue modification. Live destination checked directly.
+While responding do not send/reload/Stop/Answer now/Regenerate. After natural completion download full original automatically, read fully, replay, one bounded independent material audit, one scoped cycle commit with foreign work preserved. Check every20min, quiet unchanged. No new question before processing. Goal/RH open.
+
+Live scheduled check 2026-10-25T17:48:13.202653+00:00: same IAB3/tab3 shows Denke nach and Stoppen, no final answer or new verdict attachment. Intermediate text confirms packet hash/11 sources and explores globally centered pairing; this is not accepted mathematics. No send/reload/interruption. Next check around19:08Europe/Berlin; ccm-q22 monitor remains active, tab handoff renewed. This continuation is VERIFIED_WAIT, not research completion.
+
+--- Prior processed state ---
+
 # Q21 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 25.10.2026 около18:03Berlin: original96769bytes/1326LF downloaded automatically, saved unchanged and fully read. SHA2565962633631f7e169be59db06c19153c9c9f955bb1db1cdb066b724655b975fef. Six embedded files extracted;85exact+5planted and11sources replayed; both JSON and S6 byte-identical. Root plus q21_young_defect_audit bounded PAPER PASS: fixed-width forward-shell Young additive excess asymp sqrt(m), uniform over actual gauges and positive balances; not actual CCM spectrum. Exact exterior-slack subtraction paid, remaining interior comparison OPEN. CCM_Q21_CONCLUSION.md. ccm-q21 monitor deleted; no Q22 sent. Goal/RH OPEN.
 
 Own next test CCM_POST_Q21_INTERIOR_SIGN_DEFECT.md independently bounded PAPER PASS: removing all exterior Xi does not suffice. Actual returned three-sign geometry gives positive endpoints and negative INTERNAL intermediate values; all chosen n<m. Uniform gauge/balance lower Xi_in>=c sqrt(m), actual Q=o(sqrt(m)), matching upper inherited. Thus corrected fixed-width/routing Young certificate still costs half-power; not actual CCM, not pair-only no-go. One own failed completion after Q21, no Q22. Rollback before interior Young covariance loss; no more boundary-only repairs.
+
+Own shell-mean completion CCM_POST_Q21_SHELL_MEAN_TEST.md bounded independent PAPER PASS: common actual-shell variance cancels exactly before Young, but for the specified fixed broad-plateau source gauge the full shell mean is negative with positive returned endpoints. Same original P, internal n<m routes, Xi_mean>=c sqrt(m) and Q=o(sqrt(m)); matching upper paid. Uniform all positive balances independent of n, NOT arbitrary gauges. Algebra precursor in Q21 acknowledged; no new arithmetic exponent. Two bounded failed completions after Q21 (interior repair; this fixed-gauge mean completion), not three fabricated methods. No Q22 sent.
+
+Own shrinking-shell check CCM_POST_Q21_SHRINKING_SHELL_CANDIDATE.md now bounded PASS with explicit uniform short-interval PNT supplier (Matomaki OWR50/2019 eq1, Huxley attribution). For fixed0<beta<epsilon<1/32, Delta=m^-beta, full original-P return is o(Delta sqrt(m)); uncorrected forward-shell Young certificate costs >=c m^(1/2-beta). Keep d<4beta L+C exactly; no upper matching claimed. This closes one parameter loophole, NOT a third independent mechanism, NOT exterior-corrected/mean-certificate or actual CCM lower bound. Two own failed completions plus this scoped parameter check; concrete remaining debt is signed covariance before domination. No Q22 prepared/sent.
 
 --- Historical Q21 dispatch and wait ---
 # Q21 SENT ONCE — RESPONDING VERIFIED
