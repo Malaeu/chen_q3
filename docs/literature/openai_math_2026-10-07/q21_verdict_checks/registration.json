@@ -1,0 +1,16 @@
+{
+  "phase": "Q21",
+  "stage": "AFTER_FULL_SOURCE_READING_AND_PRELIMINARY_PAPER_ANALYSIS_BEFORE_EXECUTABLE_MATH_TESTS",
+  "mechanism": "Actual forward-shell probabilities with arbitrary positive Young balances, original support and all retained positive energies",
+  "predictions": [
+    {"id":"P1","statement":"The complete two-edge complex Young defect is |tau*A+B|^2/tau, not zero."},
+    {"id":"P2","statement":"On exterior intermediate vertices with same-sign real endpoint values, its weighted defect is at least 4*K*f(x)*f(y), independently of the positive gauge and balancing parameter."},
+    {"id":"P3","statement":"Changing to actual prime and arch edge measures produces exactly the two source-weight ratios in S6 and unit coordinate Jacobians."},
+    {"id":"P4","statement":"Ordinary fixed-shell PNT puts a positive fraction of inherited routing mass in the outer half-shell; no short-interval hypothesis is needed."},
+    {"id":"P5","statement":"A fixed smooth two-contact test can be returned to original P with uniform pointwise control, while its full signed CCM value is o(sqrt(m))."},
+    {"id":"P6","statement":"The selected Young-completed path certificate retains a half-power additive price even with exact integration and the entire positive energy retained; this is not a spectral obstruction."},
+    {"id":"P7","statement":"Deleting the exact exterior detour defect removes this specific lower-price witness, but does not prove a favorable remaining arithmetic bound."}
+  ],
+  "scope_limit": "fixed positive shell width, fixed late-shell threshold, inherited c_n/C_+(d) routing; not all possible paths, not all narrower source-pair bounds",
+  "planned_tests": "finite exact algebra with planted failures; no numerical zeta zero, no spectral or interval certification"
+}

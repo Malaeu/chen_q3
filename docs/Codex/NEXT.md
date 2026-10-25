@@ -5,10 +5,10 @@
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.
 Режим: простой (owner instruction 2026-09-25, control §1 precedence).
 
-Updated: 2026-10-25 · by: scripts/phase_end.sh · HEAD at update: e882d9ac
+Updated: 2026-10-25 · by: scripts/phase_end.sh · HEAD at update: 16e485c8
 
 ## Решение владельца 20.10: возврат к исходной Q3
-25.10 Q20 завершён и проверен: [вывод](../literature/openai_math_2026-10-07/CCM_Q20_CONCLUSION.md). Полный theta-source перенос сохраняет оба времени, prime powers, смешанные и n>m diagonal return. Если отбросить обе положительные энергии, inf по всем positive compact translate mixtures стоит asymp sqrt(m), включая m-dependent profiles: KILLED(shape), не CCM lower bound.63exact/3planted/11sources byte-identical; bounded independent PAPER PASS при inherited source identity. Старый sqrt(m)/L²+L и conditional3/8 сохранены. Откат до удаления энергий; quantitative signed energy-minus-potential OPEN. Ответ на вопрос владельца после Q20 также проверен: [коэффициентный зазор](../literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md) достаточен даже на cofinal sequence, но арифметический вход отсутствует. Ожидающих ответов нет; Q21 не отправлен; goal/RH OPEN.
+25.10 Q20 завершён и проверен: [вывод](../literature/openai_math_2026-10-07/CCM_Q20_CONCLUSION.md). Полный theta-source перенос сохраняет оба времени, prime powers, смешанные и n>m diagonal return. Если отбросить обе положительные энергии, inf по всем positive compact translate mixtures стоит asymp sqrt(m), включая m-dependent profiles: KILLED(shape), не CCM lower bound.63exact/3planted/11sources byte-identical; bounded independent PAPER PASS при inherited source identity. Старый sqrt(m)/L²+L и conditional3/8 сохранены. Откат до удаления энергий; quantitative signed energy-minus-potential OPEN. Ответ на вопрос владельца после Q20 также проверен: [коэффициентный зазор](../literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md) достаточен даже на cofinal sequence, но арифметический вход отсутствует. Q21 завершён: [вывод](../literature/openai_math_2026-10-07/CCM_Q21_CONCLUSION.md),85exact/5planted/11sources byte-identical, bounded independent PAPER PASS. Полный fixed-width forward-shell Young excess asymp sqrt(m), uniform rho/tau; это цена сертификата, не спектр CCM. Внешняя ошибка возвращена точно; собственный [interior sign test](../literature/openai_math_2026-10-07/CCM_POST_Q21_INTERIOR_SIGN_DEFECT.md) bounded PASS: даже исправленный Young-сертификат стоит sqrt(m). Откат до внутренней covariance; сама CCM OPEN. Ожиданий нет, монитор удалён; Q22 не отправлен; goal/RH OPEN.
 23.10 Q13 принят: [вывод](../literature/openai_math_2026-10-07/CCM_Q13_CONCLUSION.md). Полный скачок0.23225<j<0.23226 на конечном original-P примере; совместный seam/high-frequency return O(m^-nu/log m) оплачен. Это не asymptotic no-go. Q14 уточняет последующий откат; прежние сведения об ожидании заменены строкой выше. Письмо Сузуки не отправляли.
 Q12 дал pole norm<=2/arch log return, убрал M² fee без новой CCM степени. Последующие anchor/isolated-jump/full-jump проверки сохранены в пакете Q13; конечный скачок не асимптотический no-go.
 
@@ -44,7 +44,7 @@ Claim делается, только когда он действительны�
 4. Проверки делаем, когда без них нельзя двигаться (ошибка на бумаге дороже, чем проверка).
 
 <!-- AUTO-STATS:BEGIN (scripts/phase_end.sh — не править руками) -->
-Статистика на 2026-10-25, HEAD e882d9ac:
+Статистика на 2026-10-25, HEAD 16e485c8:
 - Goal058 (текстовая метка READY/PROVED): 3/8 (G2, G2b, G5); без метки: G0, G1, G3, G3c, G4
 - Крыша (статусы ledger): 0/3 портов со статусом jointly_bound; hzeros=CONDITIONAL_CANDIDATE_FLOORS_OPEN, hentire=SUPPLIER_PROVED_FAMILY_UNBOUND, hconv=NO_SUPPLIER
 - RouteB Lean (текстовый поиск, не kernel-аудит): sorry=0, строк axiom=0
