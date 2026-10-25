@@ -1,0 +1,105 @@
+{
+  "output_comparisons": [
+    {
+      "actual": "source_verification.json",
+      "expected": "expected_source_verification.json",
+      "byte_identical": true,
+      "actual_bytes": 2202,
+      "expected_bytes": 2202,
+      "actual_sha256": "3d641440fe2ac9d71bbe064b8324412055935d4cf67033676f77ba6b7107300c",
+      "expected_sha256": "3d641440fe2ac9d71bbe064b8324412055935d4cf67033676f77ba6b7107300c"
+    },
+    {
+      "actual": "exact_results.json",
+      "expected": "expected_exact_results.json",
+      "byte_identical": true,
+      "actual_bytes": 1137,
+      "expected_bytes": 1137,
+      "actual_sha256": "b2a2543f0205f5f4dfc146982e558b3166d7acad7743906faf50f0855ddd4b81",
+      "expected_sha256": "b2a2543f0205f5f4dfc146982e558b3166d7acad7743906faf50f0855ddd4b81"
+    },
+    {
+      "actual": "diagnostic_results.json",
+      "expected": "expected_diagnostic_results.json",
+      "byte_identical": true,
+      "actual_bytes": 2702,
+      "expected_bytes": 2702,
+      "actual_sha256": "ad00e833abf27f569340185e9667ae7755f2af2bcc2483a62da1f9bbd58d1fea",
+      "expected_sha256": "ad00e833abf27f569340185e9667ae7755f2af2bcc2483a62da1f9bbd58d1fea"
+    }
+  ],
+  "source_tree_comparisons": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q18_THETA_FILTER_TRANSFER.md",
+      "manifest_bytes": 9971,
+      "embedded_sha256": "9de8af6401672297d84f6be6b5aad6c7b4832b26ff3722d61e8e650e765b20a3",
+      "body_matches_manifest": true,
+      "repository_bytes": 9971,
+      "repository_sha256": "9de8af6401672297d84f6be6b5aad6c7b4832b26ff3722d61e8e650e765b20a3",
+      "repository_matches_embedded_body": true
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_CONCLUSION.md",
+      "manifest_bytes": 6633,
+      "embedded_sha256": "6ab7272567768d77c001ac4855a194a8133911bbecbe56590ca08b570c480f45",
+      "body_matches_manifest": true,
+      "repository_bytes": 6633,
+      "repository_sha256": "6ab7272567768d77c001ac4855a194a8133911bbecbe56590ca08b570c480f45",
+      "repository_matches_embedded_body": true
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+      "manifest_bytes": 89445,
+      "embedded_sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+      "body_matches_manifest": true,
+      "repository_bytes": 89445,
+      "repository_sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+      "repository_matches_embedded_body": true
+    },
+    {
+      "id": "S4",
+      "path": "docs/routeB_bus/proshka/PROSHKA_FULL_THETA_THREE_POINT_CLOSURE_2026-09-17.md",
+      "manifest_bytes": 36885,
+      "embedded_sha256": "ab1a2fa31d323279712dfd3d1500ddf764af880f4f27e9f4014d804bba87c72d",
+      "body_matches_manifest": true,
+      "repository_bytes": 36885,
+      "repository_sha256": "ab1a2fa31d323279712dfd3d1500ddf764af880f4f27e9f4014d804bba87c72d",
+      "repository_matches_embedded_body": true
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "manifest_bytes": 6174,
+      "embedded_sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "body_matches_manifest": true,
+      "repository_bytes": 6174,
+      "repository_sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "repository_matches_embedded_body": true
+    },
+    {
+      "id": "S6",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "manifest_bytes": 9606,
+      "embedded_sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "body_matches_manifest": true,
+      "repository_bytes": 9606,
+      "repository_sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "repository_matches_embedded_body": true
+    },
+    {
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+      "manifest_bytes": 4828,
+      "embedded_sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+      "body_matches_manifest": true,
+      "repository_bytes": 4828,
+      "repository_sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+      "repository_matches_embedded_body": true
+    }
+  ],
+  "all_outputs_identical": true,
+  "all_sources_identical": true
+}

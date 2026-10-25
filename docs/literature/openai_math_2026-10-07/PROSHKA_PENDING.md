@@ -1,3 +1,50 @@
+# Q18 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+25.10.2026: original downloaded automatically through own IAB, saved losslessly, fully read. CCM_Q18_CONCLUSION.md records root+bounded independent PAPER PASS;7538exact+12noninterval and7 source bodies reproduced, output JSON byte-identical. New analytic theta-index return paid: corrected finite sum error O(Psi_m/sqrtK), full J error O_w(m^-nu), all endpoints and original P retained. Raw k>m edge sqrt(m)logm cancels head; not spectral no-go. Arithmetic degree unchanged1/2; inherited averaged/log and conditional3/8 unchanged. Own prime-pair and dyadic telescope preserved, neither improves degree. No automatic Q19. Next: rollback to actual complex pair before independent lobe cap, with a new source-specific mechanism and full budget; increasing K/J alone is not a mechanism. General goal/RH OPEN. Delete ccm-q18-delivery monitor after closeout; no outstanding answer.
+
+--- Historical Q18 delivery and preparation ---
+# Q18 SENT ONCE — RESPONDING
+
+25.10.2026 12:46 Europe/Berlin: canonical PROSHKA_CCM_FINITE_DIVISOR_THETA_Q18_2026-10-25.txt uploaded automatically via own IAB chooser.setFiles and sent ONCE with companion. Sent exact filename tile, companion, ChatGPT antwortet and Stoppen verified. IAB browser3/tab1 retained. Screenshot /tmp/ccm-q18-sent-20261025.png. No manual picker or owner action needed. Canonical hash remains c9ce19cd77a23dfde169e39393f8d2c5ef3046a43c250a71c1dde894cdc963f4.
+Previous response to PROSHKA_PENDING.md finished naturally: explicitly said canonical Q18 absent and requested exact TXT; no mathematical claim. Full observed DOM saved Q18_PENDING_ONLY_REPLY_DOM.txt (UI transcription, not original Markdown). Delivery mismatch resolved. While responding no refresh/send/Stop. After natural completion retrieve full original, verify all mathematics and code and one bounded independent audit; one scoped cycle commit after mathematical response. Monitor ccm-q18-delivery remains active with updated prompt. Goal OPEN.
+
+Parallel own attempt25.10 (no browser interaction): CCM_Q18_PRIME_PAIR_WEIGHT_TEST.md tests exact coprime prime-pair inclusion-exclusion on actual d_m phi_k. Coefficients cancel for all finite m, weighted defect remains nonzero. 12864 exact controls; complete inherited full-P budget still1/2, no new exponent. No extra question sent.
+
+Own additional attempt25.10: CCM_Q18_DYADIC_THETA_TELESCOPE.md, actual prime-2 odd-index removal and finite full return. 24610 exact algebra checks. Joint tail including cross terms O_w(m^-sigma) after J=ceil((1+2sigma)log_2 m), but main bound still O_w(sqrt m); no new exponent. Original P and both times retained. No browser interaction or new question.
+
+--- Historical mismatch and preparation ---
+# LIVE RESPONSE — Q18 DELIVERY MISMATCH, DO NOT INTERRUPT
+
+25.10.2026 12:24 Europe/Berlin UI: new user message contains PROSHKA_PENDING.md, not canonical Q18 TXT. ChatGPT is responding and Stop observed. During native file selection control was interrupted; no agent Send click occurred. Sender/action attribution unknown. Canonical Q18 delivery NOT VERIFIED. Do not send another message, refresh, or Stop. After natural completion inspect full response, reconcile whether it answered Q18; only then decide the still-authorized canonical Q18 delivery. Screenshot /tmp/ccm-q18-delivery-mismatch.png. Same chat URL below. No arithmetic status change; no cycle commit before response.
+
+Browser repair25.10: owner requests automatic file handling without manual picker/download burden. Verified own Codex in-app browser (iab,id3,tab1) opens SAME authorized chat with existing login. Prefer this live IAB tab for continuation. Supported upload: waitForEvent(filechooser), chooser.setFiles(exact canonical path); download via download event. Transfer roundtrip NOT yet tested because response active. IAB shows Checking Q18 and pending files, Stoppen, and connection-interrupted/wait-full-response status. No reload/Stop/send. Preserve handoff tab. Native Chrome picker is not required.
+
+--- Prior ready state (historical) ---
+# Q18 READY, NOT SENT — finite divisor-weighted theta comparison
+
+25.10.2026. User authorized own finite-theta attempt and Q18 under existing scenario.
+CCM_Q18_THETA_FILTER_TRANSFER.md: exact B² transfer with E1/E2 and upper
+endpoint; retained complex kappa; positive actual R_G does not sign the
+oscillatory kernel. Full budget1/2 unchanged; original-P returns o(1), arch once.
+21 exact local controls PASS and bounded independent PAPER check PASS.
+New exact entrance n^-1/2 phi_j(t+log n)=phi_(nj)(t), finite divisor weight
+d_m(k)=sum_(n|k,n<=m)Lambda(n), both time directions; k>m edge retained.
+Canonical request PROSHKA_CCM_FINITE_DIVISOR_THETA_Q18_2026-10-25.txt:
+169878bytes,2739LF,7 full bodies,final LF and source hashes verified.
+SHA256 c9ce19cd77a23dfde169e39393f8d2c5ef3046a43c250a71c1dde894cdc963f4.
+Request commit7a3cc5be4ea6200e3276b3a2cd707869f4763329.
+Same living chat: https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d
+Live tab1618257951. Prior Q17 finished, no response pending.
+Native file picker opened; before selecting Q18 the user switched Chrome to
+llama-ui. Fresh background DOM shows NO Q18 attachment or sent message.
+No Send clicked. Do not report delivery. No Q18 monitor created.
+Next authorized action: attach this exact TXT and send one short companion
+asking the finite d_m theta/Jacobi test; verify sent tile/message/responding.
+One cycle commit after reply per NEXT; own files/state saved uncommitted.
+Overall goal OPEN. Do not repeat an actually sent question if state changes.
+
+--- Historical completed Q17 ---
+
 # Q17 COMPLETED AND AUDITED — no pending Pro response
 
 25.10.2026 natural completion observed (worked30m58s); original downloaded11:44Berlin.

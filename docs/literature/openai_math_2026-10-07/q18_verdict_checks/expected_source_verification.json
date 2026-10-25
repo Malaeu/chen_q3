@@ -1,0 +1,65 @@
+{
+  "status": "PASS_BYTE_EXACT_Q18_AND_SEVEN_BODIES",
+  "bytes": 169878,
+  "LF": 2739,
+  "sha256": "c9ce19cd77a23dfde169e39393f8d2c5ef3046a43c250a71c1dde894cdc963f4",
+  "final_LF": true,
+  "sources": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q18_THETA_FILTER_TRANSFER.md",
+      "bytes": 9971,
+      "sha256": "9de8af6401672297d84f6be6b5aad6c7b4832b26ff3722d61e8e650e765b20a3",
+      "first_raw_line": 43,
+      "last_raw_line": 216
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q17_CONCLUSION.md",
+      "bytes": 6633,
+      "sha256": "6ab7272567768d77c001ac4855a194a8133911bbecbe56590ca08b570c480f45",
+      "first_raw_line": 221,
+      "last_raw_line": 331
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+      "bytes": 89445,
+      "sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+      "first_raw_line": 336,
+      "last_raw_line": 1586
+    },
+    {
+      "id": "S4",
+      "path": "docs/routeB_bus/proshka/PROSHKA_FULL_THETA_THREE_POINT_CLOSURE_2026-09-17.md",
+      "bytes": 36885,
+      "sha256": "ab1a2fa31d323279712dfd3d1500ddf764af880f4f27e9f4014d804bba87c72d",
+      "first_raw_line": 1591,
+      "last_raw_line": 2435
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "first_raw_line": 2440,
+      "last_raw_line": 2508
+    },
+    {
+      "id": "S6",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "bytes": 9606,
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "first_raw_line": 2513,
+      "last_raw_line": 2641
+    },
+    {
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+      "bytes": 4828,
+      "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+      "first_raw_line": 2646,
+      "last_raw_line": 2736
+    }
+  ]
+}

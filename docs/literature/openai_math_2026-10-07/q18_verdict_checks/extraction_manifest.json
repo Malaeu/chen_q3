@@ -1,0 +1,54 @@
+{
+  "source_verdict": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_FINITE_DIVISOR_THETA_Q18_VERDICT_2026-10-25.md",
+  "source_sha256": "bb5ec59b33ed5e042a4272a2620aa2776108582b6522bbba500ebc25793f6339",
+  "artifacts": [
+    {
+      "embedded_name": "registration.json",
+      "saved_as": "registration.json",
+      "bytes": 1674,
+      "sha256": "85b0e474d93b10c9f803f10104f9b98b5b58f611627c677f92e323cb63c8b7db"
+    },
+    {
+      "embedded_name": "source_verification.json",
+      "saved_as": "expected_source_verification.json",
+      "bytes": 2202,
+      "sha256": "3d641440fe2ac9d71bbe064b8324412055935d4cf67033676f77ba6b7107300c"
+    },
+    {
+      "embedded_name": "failed_control.json",
+      "saved_as": "failed_control.json",
+      "bytes": 449,
+      "sha256": "27879c401e1c8f582ad44e1440d59accb5f82969d53e7fec95d00c9f6ff2d634"
+    },
+    {
+      "embedded_name": "verify_sources.py",
+      "saved_as": "verify_sources.py",
+      "bytes": 1592,
+      "sha256": "f72afd2c6fe0f935393f4ff95ea6d56a94f51cc135c103fb1e1916269a68f436"
+    },
+    {
+      "embedded_name": "check_q18.py",
+      "saved_as": "check_q18.py",
+      "bytes": 6053,
+      "sha256": "21b1d740f9a6a51195f95b3a34326b2bb0435ff85131d6eec7207da967d1621f"
+    },
+    {
+      "embedded_name": "exact_results.json",
+      "saved_as": "expected_exact_results.json",
+      "bytes": 1137,
+      "sha256": "b2a2543f0205f5f4dfc146982e558b3166d7acad7743906faf50f0855ddd4b81"
+    },
+    {
+      "embedded_name": "diagnostic_q18.py",
+      "saved_as": "diagnostic_q18.py",
+      "bytes": 3651,
+      "sha256": "b31f8cccf640b782bab24e8bcc6cbdc5ec47344cb4ece532a3e86dc2fe904dbb"
+    },
+    {
+      "embedded_name": "diagnostic_results.json",
+      "saved_as": "expected_diagnostic_results.json",
+      "bytes": 2702,
+      "sha256": "ad00e833abf27f569340185e9667ae7755f2af2bcc2483a62da1f9bbd58d1fea"
+    }
+  ]
+}

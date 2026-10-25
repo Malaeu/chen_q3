@@ -1,0 +1,14 @@
+{
+  "phase": "Q18",
+  "timing": "After full packet reading and preliminary paper derivation, before new executable tests",
+  "mechanism": "Finite divisor-weighted Jacobi transform with exact reciprocal-lattice dual and global theta-index edge repair, followed by a directed negative-lobe comparison",
+  "predictions": [
+    {"id":"P1","claim":"Weighted Jacobi returns reciprocal rational lattices with coefficients Lambda(n)/n, not the original integer divisor weights; zero modes are killed only by the literal theta differential operator."},
+    {"id":"P2","claim":"The complete two-direction correlation is invariant under reflection of the weighted theta source, so the odd Jacobi defect cancels but no sign for the even resolvent pairing follows."},
+    {"id":"P3","claim":"Unrepaired theta partial sums have a moving boundary layer. A continuum tail counterterm gives a global L2 derivative error O(Psi(m)/sqrt(K)) at finite arithmetic cutoff."},
+    {"id":"P4","claim":"The k<=m log-weighted head has a negative sqrt(m)*log(m) leading layer near t=-log(m); the retained k>m edge compensates it. This is not a CCM spectral obstruction."},
+    {"id":"P5","claim":"The joint endpoint-complete negative-lobe cap still costs W(m), hence half power; no favorable actual arithmetic estimate is assumed."},
+    {"id":"P6","claim":"Planted removal of the reciprocal factor, proper prime powers, index edge, complex phase, or r=1/r=2/finite-U endpoint terms is detected by exact local controls."}
+  ],
+  "not_claimed": ["New RH proof", "Numerical off-critical zero", "Arb or Lean certificate", "Global theta-product Fubini without repair", "New favorable full CCM exponent"]
+}

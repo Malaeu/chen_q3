@@ -1,0 +1,9 @@
+{
+  "status": "PASS_EXACT_FINITE_TELESCOPE",
+  "checks": 24610,
+  "theta_indices_tested": 2048,
+  "layers_tested": 12,
+  "full_CCM_evaluations": 0,
+  "numerical_hypothetical_zeros": 0,
+  "scope": "exact index and shift algebra, not analytic CCM bound validation"
+}

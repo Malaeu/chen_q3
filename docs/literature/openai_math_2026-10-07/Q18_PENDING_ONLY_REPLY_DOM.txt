@@ -1,0 +1,5267 @@
+- link "Zum Inhalt springen":
+  - /url: "#_R_trcuj8aqn75cched5hlb5_"
+- complementary:
+  - navigation "App-Navigation":
+    - button "Startseite":
+      - generic: Startseite
+    - button "Space":
+      - generic: Space
+    - button "Planen":
+      - generic: Planen
+    - button "Plugins":
+      - generic: Plugins
+    - button "Entdecken":
+      - generic: Entdecken
+    - button "Sites":
+      - generic: Sites
+    - button "Nutzung":
+    - button "Profilmenü öffnen"
+  - navigation "Startseite":
+    - link "Startseite":
+      - /url: /
+      - generic: ChatGPT
+    - button "Suche":
+    - button "Seitenleiste ein/aus" [expanded]:
+    - button "Neuer Chat":
+      - generic: Neuer Chat
+    - button "Angeheftet" [expanded]:
+      - generic: Angeheftet
+    - list:
+      - button "Last War Survival":
+        - generic: Last War Survival
+        - button "Projektaktionen für Last War Survival":
+        - button "Neuer Chat in Last War Survival":
+      - button "RH_März_2026":
+        - generic: RH_März_2026
+        - button "Projektaktionen für RH_März_2026":
+        - button "Neuer Chat in RH_März_2026":
+      - button "Patienten Beratung":
+        - generic: Patienten Beratung
+        - button "Projektaktionen für Patienten Beratung":
+        - button "Neuer Chat in Patienten Beratung":
+    - button "Projekte" [expanded]:
+      - generic: Projekte
+    - button "Optionen der Projektseitenleiste":
+    - button "Neues Projekt hinzufügen":
+    - list:
+      - button "Genialogie":
+        - generic: Genialogie
+        - button "Projektaktionen für Genialogie":
+        - button "Neuer Chat in Genialogie":
+      - button "Darmischemie":
+        - generic: Darmischemie
+        - button "Projektaktionen für Darmischemie":
+        - button "Neuer Chat in Darmischemie":
+      - button "Sort_RH_März_2026":
+        - generic: Sort_RH_März_2026
+        - button "Projektaktionen für Sort_RH_März_2026":
+        - button "Neuer Chat in Sort_RH_März_2026":
+      - button "Privat":
+        - generic: Privat
+        - button "Projektaktionen für Privat":
+        - button "Neuer Chat in Privat":
+      - button "Suno":
+        - generic: Suno
+        - button "Projektaktionen für Suno":
+        - button "Neuer Chat in Suno":
+      - button "Mehr anzeigen":
+        - generic: Mehr anzeigen
+    - button "Letzte" [expanded]:
+      - generic: Letzte
+    - button "Optionen für die Chat-Seitenleiste":
+    - button "Chats und Work filtern":
+    - button "Neuer Chat":
+    - list:
+      - group "AI Mathematik Morgenbrief":
+        - link "AI Mathematik Morgenbrief":
+          - /url: /g/g-p-6aafae55d09481919c5971b73d862184/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d
+          - generic: AI Mathematik Morgenbrief
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Объяснение снимка":
+        - link "Объяснение снимка":
+          - /url: /c/6addccf1-b2d4-83eb-b0fa-aeb2e8a97405
+          - generic: Объяснение снимка
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "High_Pitched_Chello — мастерская":
+        - link "High_Pitched_Chello — мастерская":
+          - /url: /c/6adafe22-59ac-83ed-a534-f75043b0bb05
+          - generic: High_Pitched_Chello — мастерская
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Историческое расследование Фортун":
+        - link "Историческое расследование Фортун":
+          - /url: /g/g-p-6addacddce64819190c72b1659e4ab49/c/6addbf2c-6b4c-83eb-bc2a-4f0d8df2db9d
+          - generic: Историческое расследование Фортун
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Генеалогическая связь Авербухов":
+        - link "Генеалогическая связь Авербухов":
+          - /url: /g/g-p-6addacddce64819190c72b1659e4ab49/c/6addacfe-4280-83ed-8bb5-5c74da18613a
+          - generic: Генеалогическая связь Авербухов
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "AI & Math Morning Brief":
+        - link "AI & Math Morning Brief":
+          - /url: /c/6aae4da3-1fdc-83ed-a7d7-3f6c1a004ea4
+          - generic: AI & Math Morning Brief
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Your horoscope for today":
+        - link "Your horoscope for today":
+          - /url: /c/694ccbf4-f610-8333-a176-a4eff6696f03
+          - generic: Your horoscope for today
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Алкоголь и дофамин":
+        - link "Алкоголь и дофамин":
+          - /url: /c/6adc9196-e70c-83ed-a8b2-8cd40ae8e691
+          - generic: Алкоголь и дофамин
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Промпт для портрета дракона":
+        - link "Промпт для портрета дракона":
+          - /url: /c/6adbd431-b17c-83eb-a9e2-486ebbb053ba
+          - generic: Промпт для портрета дракона
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+      - group "Обзор исследований AI-агентов":
+        - link "Обзор исследований AI-агентов":
+          - /url: /c/6ad94c03-4ba4-83eb-bc66-11222a592dd6
+          - generic: Обзор исследований AI-агентов
+        - button "Chat-Aktionen":
+        - button "Chat anpinnen":
+  - separator
+- main:
+  - navigation "Navigationspfad":
+    - link "Sort_RH_März_2026":
+      - /url: /g/g-p-6aafae55d09481919c5971b73d862184/project
+      - generic: Sort_RH_März_2026
+  - button "Mehr":
+  - button "Teilen":
+    - text: Teilen
+  - button "Zusammenfassung ein-/ausblenden":
+  - region "Gespräch":
+    - status:
+      - generic: Ältere Nachrichten werden geladen…
+    - separator "Freitag, 10:20":
+      - time: Freitag, 10:20
+    - heading "Du hast gesagt:" [level=4]
+    - button "PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt"
+    - generic "PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt"
+    - generic: Dokument
+    - generic: "Q14. Q13 полностью проверен и принят в аналитической части. В приложенном TXT — сентябрьская полка и новая независимо проверенная количественная попытка на исходном P: одиночный экспоненциальный вклад сохраняет степенную норму. Нужна настоящая совместная знаковая оценка остатка с его арифметическими коэффициентами и всеми смешанными секторами. Атакуй конкретный ход из начала файла; при тупике укажи содержательный откат. Полный ответ — скачиваемым Markdown."
+    - button "Nachricht kopieren":
+    - button "Prompt teilen":
+    - button "Nachricht bearbeiten":
+    - button "Worked for 43m 40s":
+      - generic: Worked for 43m 40s
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph:
+      - text: Ы.
+      - strong: Q14 выполнен. Выведена конечная знаковая формула настоящего остатка с полной ценой возврата. Нового арифметического показателя для CCM нет.
+    - paragraph:
+      - text: "Существенное отличие от оценки отдельных экспонент:"
+      - strong:
+        - text: настоящий вычет содержит не свободный экспоненциальный атом, а связанный фильтр из того же арифметического
+        - math:
+          - generic: g
+          - generic: ′
+        - text: g
+        - generic: ′
+        - text: .
+      - text: Его коэффициент, отражённые части и граничные интегралы сохранены. Вертикальные хвосты оплачиваются величиной
+      - math:
+        - generic: o
+        - generic: (
+        - generic: "1"
+        - generic: )
+      - generic: o(1)
+      - text: ; верх для оставшейся совместной формы не доказан.
+    - paragraph:
+      - text: "Прочитан весь пакет:"
+      - strong: 178 829 байт, 3245 LF, девять полных исходников
+      - text: . Все размеры и SHA-256 вложенных тел совпали с манифестом.
+    - heading "1. Что меняется после настоящей сборки остатка" [level=2]
+    - paragraph:
+      - text: Сентябрьские формулы задают оба временных сектора через
+      - math:
+        - generic: r
+        - generic: p
+        - generic: ","
+        - generic: h
+        - generic: p
+        - generic: q
+      - text: r
+      - generic: p
+      - text: ","
+      - text: h
+      - generic: pq
+      - text: ". Их нельзя оценивать как независимые положительные вклады: полные числители содержат существенные смешанные члены."
+      - button "Vorschau von PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt öffnen":
+        - generic: PROSHKA_CCM_PROJECTED_SIGNED_RE…
+    - paragraph: Обозначим
+    - math:
+      - generic: F
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: =
+      - generic: ξ
+      - generic: (
+      - generic: "1"
+      - generic: /
+      - generic: "2"
+      - generic: +
+      - generic: z
+      - generic: )
+      - generic: ","
+      - generic: κ
+      - generic: z
+      - generic: =
+      - generic: −
+      - generic: F
+      - generic: ′
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: F
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: ","
+      - generic: Z
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: =
+      - generic: F
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: F
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: +
+      - generic: F
+      - generic: ′
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: .
+    - generic: F(z) =
+    - generic: ξ(1/2 +
+    - text: z),
+    - text: κ
+    - generic: z
+    - text: =
+    - text: −
+    - generic: F(z)
+    - text: F
+    - generic: ′
+    - text: (z)
+    - text: ", Z(z) ="
+    - text: F(z) +
+    - text: F
+    - generic: ′
+    - text: (z)
+    - generic: F(z)
+    - text: .
+    - paragraph:
+      - strong: "Первая точная проверка:"
+      - text: после подстановки
+      - math:
+        - generic: r
+        - generic: ","
+        - generic: h
+      - generic: r, h
+      - text: в полные
+      - strong: L++ и L+-
+      - text: знаменатель
+      - math:
+        - generic: "1"
+        - generic: −
+        - generic: κ
+      - generic: 1 −
+      - generic: κ
+      - text: сокращается. Поэтому нуль
+      - math:
+        - generic: F
+        - generic: +
+        - generic: F
+        - generic: ′
+      - generic: F +
+      - text: F
+      - generic: ′
+      - text: ", в котором"
+      - math:
+        - generic: F
+        - generic: ≠
+        - generic: "0"
+      - text: F
+      - generic: 
+      - text: =
+      - generic: "0"
+      - text: ","
+      - strong: не является автоматически полюсом полного временного Laplace-ядра
+      - text: .
+    - paragraph:
+      - text: Это не опровергает проверенную в пакете оценку
+      - math:
+        - generic: ∥
+        - generic: P
+        - generic: V
+        - generic: z
+        - generic: ∥
+      - text: ∥P
+      - text: V
+      - generic: z
+      - text: ∥
+      - text: . Она относится к отдельной экспоненте и сама не утверждает, что реальный арифметический остаток состоит из таких независимых атомов.
+      - button "Vorschau von PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt öffnen":
+        - generic: PROSHKA_CCM_PROJECTED_SIGNED_RE…
+    - heading "2. Получен буквальный вклад настоящего вычета" [level=2]
+    - paragraph:
+      - text: Для исходного полного
+      - strong: Volterra-оператора
+      - math:
+        - generic: B
+      - generic: B
+      - text: "введены два линейных функционала той же допустимой функции:"
+    - math:
+      - generic: A
+      - generic: z
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: =
+      - generic: ∫
+      - generic: −
+      - generic: T
+      - generic: T
+      - generic: "["
+      - generic: sinh
+      - generic: ⁡
+      - generic: (
+      - generic: z
+      - generic: r
+      - generic: )
+      - generic: ψ
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: −
+      - generic: cosh
+      - generic: ⁡
+      - generic: (
+      - generic: z
+      - generic: r
+      - generic: )
+      - generic: B
+      - generic: ψ
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: "]"
+      - generic: d
+      - generic: r
+      - generic: ","
+    - text: A
+    - generic: z
+    - text: "[ψ] ="
+    - text: ∫
+    - generic: −T
+    - generic: T
+    - generic: "["
+    - text: sinh(zr)ψ(r) −
+    - text: cosh(zr)Bψ(r)
+    - generic: "]"
+    - text: dr,
+    - math:
+      - generic: B
+      - generic: z
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: =
+      - generic: ∫
+      - generic: −
+      - generic: T
+      - generic: T
+      - generic: "["
+      - generic: −
+      - generic: cosh
+      - generic: ⁡
+      - generic: (
+      - generic: z
+      - generic: r
+      - generic: )
+      - generic: ψ
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: +
+      - generic: sinh
+      - generic: ⁡
+      - generic: (
+      - generic: z
+      - generic: r
+      - generic: )
+      - generic: B
+      - generic: ψ
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: "]"
+      - generic: d
+      - generic: r
+      - generic: .
+    - text: B
+    - generic: z
+    - text: "[ψ] ="
+    - text: ∫
+    - generic: −T
+    - generic: T
+    - generic: "["
+    - text: − cosh(zr)ψ(r) +
+    - text: sinh(zr)Bψ(r)
+    - generic: "]"
+    - text: dr.
+    - paragraph:
+      - text: Здесь
+      - strong:
+        - math:
+          - generic: B
+          - generic: z
+          - generic: "["
+          - generic: ψ
+          - generic: "]"
+        - text: B
+        - generic: z
+        - text: "[ψ]"
+      - text: — функционал, а
+      - strong:
+        - math:
+          - generic: B
+          - generic: ψ
+        - generic: Bψ
+      - text: — полный исходный операторный выход. Никаких новых ограничений на
+      - math:
+        - generic: ψ
+      - generic: ψ
+      - text: нет.
+    - paragraph: "Полная аналитическая квадратичная функция:"
+    - math:
+      - generic: Φ
+      - generic: ψ
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: =
+      - generic: "2"
+      - generic: "["
+      - generic: B
+      - generic: z
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: B
+      - generic: z
+      - generic: ˉ
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: ‾
+      - generic: −
+      - generic: A
+      - generic: z
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: A
+      - generic: z
+      - generic: ˉ
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: ‾
+      - generic: "]"
+      - generic: .
+      - generic: (1)
+    - text: Φ
+    - generic: ψ
+    - text: (z) = 2
+    - generic: "["
+    - text: B
+    - generic: z
+    - text: "[ψ]"
+    - text: B
+    - generic: z
+    - text: ˉ
+    - text: "[ψ]"
+    - text: −
+    - text: A
+    - generic: z
+    - text: "[ψ]"
+    - text: A
+    - generic: z
+    - text: ˉ
+    - text: "[ψ]"
+    - generic: "]"
+    - text: .
+    - text: (
+    - generic: "1"
+    - text: )
+    - paragraph: Она сохраняет все смешанные Fourier-коэффициенты, оба временных знака и исходную норму.
+    - paragraph:
+      - text: Если
+      - math:
+        - generic: λ
+      - generic: λ
+      - text: — простой полюс
+      - math:
+        - generic: Z
+      - generic: Z
+      - text: ", его настоящий вклад равен"
+    - math:
+      - generic: Res
+      - generic: ⁡
+      - generic: z
+      - generic: =
+      - generic: λ
+      - generic: (
+      - generic: Z
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: Φ
+      - generic: ψ
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: )
+      - generic: =
+      - generic: F
+      - generic: (
+      - generic: λ
+      - generic: )
+      - generic: F
+      - generic: ′
+      - generic: (
+      - generic: λ
+      - generic: )
+      - generic: +
+      - generic: F
+      - generic: ′
+      - generic: ′
+      - generic: (
+      - generic: λ
+      - generic: )
+      - generic: Φ
+      - generic: ψ
+      - generic: (
+      - generic: λ
+      - generic: )
+      - generic: .
+      - generic: (2)
+    - generic: z=λ
+    - generic: Res
+    - generic: (
+    - text: Z(z)
+    - text: Φ
+    - generic: ψ
+    - text: (z)
+    - generic: )
+    - text: =
+    - text: F
+    - generic: ′
+    - text: (λ) +
+    - text: F
+    - generic: ′′
+    - text: (λ)
+    - generic: F(λ)
+    - text: Φ
+    - generic: ψ
+    - text: (λ).
+    - text: (
+    - generic: "2"
+    - text: )
+    - paragraph:
+      - strong: Коэффициенту в (2) не назначается положительный знак.
+      - text: Сопряжённые полюса собираются вместе. Для кратных полюсов в файле сохранены все производные
+      - math:
+        - generic: Φ
+        - generic: ψ
+      - text: Φ
+      - generic: ψ
+      - text: ", а не предположение о простоте."
+    - heading "Почему отдельная экспонента здесь не описывает реальный вклад" [level=3]
+    - paragraph: Временные фильтры этих функционалов имеют Laplace-образы
+    - math:
+      - generic: a
+      - generic: ~
+      - generic: z
+      - generic: (
+      - generic: p
+      - generic: )
+      - generic: =
+      - generic: κ
+      - generic: p
+      - generic: p
+      - generic: −
+      - generic: z
+      - generic: p
+      - generic: (
+      - generic: p
+      - generic: "2"
+      - generic: −
+      - generic: z
+      - generic: "2"
+      - generic: )
+      - generic: ","
+      - generic: b
+      - generic: ~
+      - generic: z
+      - generic: (
+      - generic: p
+      - generic: )
+      - generic: =
+      - generic: p
+      - generic: −
+      - generic: κ
+      - generic: p
+      - generic: z
+      - generic: p
+      - generic: (
+      - generic: p
+      - generic: "2"
+      - generic: −
+      - generic: z
+      - generic: "2"
+      - generic: )
+      - generic: .
+    - generic: a
+    - generic: z
+    - text: (p) =
+    - text: p(
+    - text: p
+    - generic: "2"
+    - text: −
+    - text: z
+    - generic: "2"
+    - text: )
+    - text: κ
+    - generic: p
+    - text: p − z
+    - text: ","
+    - generic: b
+    - generic: z
+    - text: (p) =
+    - text: p(
+    - text: p
+    - generic: "2"
+    - text: −
+    - text: z
+    - generic: "2"
+    - text: )
+    - text: p −
+    - text: κ
+    - generic: p
+    - text: z
+    - text: .
+    - paragraph:
+      - text: При полюсе
+      - math:
+        - generic: Z
+      - generic: Z
+      - text: ":"
+    - math:
+      - generic: κ
+      - generic: λ
+      - generic: =
+      - generic: "1"
+      - generic: ","
+      - generic: κ
+      - generic: −
+      - generic: λ
+      - generic: =
+      - generic: −
+      - generic: "1."
+    - text: κ
+    - generic: λ
+    - text: =
+    - text: 1,
+    - text: κ
+    - generic: −λ
+    - text: =
+    - generic: −1.
+    - paragraph:
+      - text: Поэтому кажущиеся полюса этих фильтров в
+      - math:
+        - generic: p
+        - generic: =
+        - generic: ±
+        - generic: λ
+      - generic: p =
+      - generic: ±λ
+      - text: сокращаются.
+      - strong:
+        - text: Свободная экспоненциальная часть компенсируется вкладом того же
+        - math:
+          - generic: g
+          - generic: ′
+        - text: g
+        - generic: ′
+        - text: .
+    - paragraph:
+      - text: Это реальная связь коэффициентов. Но она
+      - strong: не делает весь фильтр малым
+      - text: ": остальные арифметические компоненты остаются."
+    - heading "3. Полный остаток возвращён через конечный контур" [level=2]
+    - paragraph: "Выведены два точных равенства:"
+    - math:
+      - generic: I
+      - generic: "0"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: =
+      - generic: "1"
+      - generic: "2"
+      - generic: π
+      - generic: i
+      - generic: ∫
+      - generic: i
+      - generic: R
+      - generic: Z
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: Φ
+      - generic: ψ
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: d
+      - generic: z
+      - generic: =
+      - generic: "2"
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: "2"
+      - generic: −
+      - generic: "N"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: ","
+    - text: I
+    - generic: "0"
+    - text: "[ψ] ="
+    - generic: 2πi
+    - generic: "1"
+    - text: ∫
+    - generic: iR
+    - text: Z(z)
+    - text: Φ
+    - generic: ψ
+    - text: (z) dz =
+    - text: 2∥ψ
+    - text: ∥
+    - generic: "2"
+    - text: −
+    - generic: N[ψ],
+    - math:
+      - generic: I
+      - generic: σ
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: =
+      - generic: "1"
+      - generic: "2"
+      - generic: π
+      - generic: i
+      - generic: ∫
+      - generic: σ
+      - generic: +
+      - generic: i
+      - generic: R
+      - generic: Z
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: Φ
+      - generic: ψ
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: d
+      - generic: z
+      - generic: =
+      - generic: "2"
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: "2"
+      - generic: −
+      - generic: Q
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: ","
+      - generic: σ
+      - generic: ">"
+      - generic: "1"
+      - generic: "2"
+      - generic: .
+    - text: I
+    - generic: σ
+    - text: "[ψ] ="
+    - generic: 2πi
+    - generic: "1"
+    - text: ∫
+    - generic: σ+iR
+    - text: Z(z)
+    - text: Φ
+    - generic: ψ
+    - text: (z) dz =
+    - text: 2∥ψ
+    - text: ∥
+    - generic: "2"
+    - text: −
+    - generic: Q[ψ], σ >
+    - generic: "2"
+    - generic: "1"
+    - text: .
+    - paragraph: Следовательно,
+    - math:
+      - generic: Δ
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: =
+      - generic: I
+      - generic: σ
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: −
+      - generic: I
+      - generic: "0"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: .
+      - generic: (3)
+    - text: Δ[ψ] =
+    - text: I
+    - generic: σ
+    - text: "[ψ] −"
+    - text: I
+    - generic: "0"
+    - text: "[ψ]."
+    - text: (
+    - generic: "3"
+    - text: )
+    - paragraph:
+      - text: Правая линия законна
+      - strong: без RH
+      - text: ": использована только известная монотонность"
+      - math:
+        - generic: ∣
+        - generic: ξ
+        - generic: (
+        - generic: s
+        - generic: )
+        - generic: ∣
+      - generic: ∣ξ(s)∣
+      - text: в полуплоскости
+      - math:
+        - generic: ℜ
+        - generic: s
+        - generic: ">"
+        - generic: "1"
+      - generic: ℜs >
+      - generic: "1"
+      - text: ", дающая"
+      - math:
+        - generic: ∣
+        - generic: Z
+        - generic: (
+        - generic: z
+        - generic: )
+        - generic: ∣
+        - generic: ≤
+        - generic: "1"
+      - generic: ∣Z(z)∣ ≤
+      - generic: "1"
+      - text: при
+      - math:
+        - generic: ℜ
+        - generic: z
+        - generic: ">"
+        - generic: "1"
+        - generic: /
+        - generic: "2"
+      - generic: ℜz >
+      - generic: 1/2
+      - text: . В неизвестную внутреннюю полосу это ограничение не переносится.
+      - 'link "arXiv: https://arxiv.org/pdf/1005.1104, https://arxiv.org/pdf/1005.1104"':
+        - /url: https://arxiv.org/pdf/1005.1104
+        - generic: arXiv
+    - paragraph:
+      - text: На конечной высоте
+      - math:
+        - generic: "Y"
+      - generic: "Y"
+      - text: формула (3) становится
+    - math:
+      - generic: Δ
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: =
+      - generic: ∑
+      - generic: λ
+      - generic: Res
+      - generic: ⁡
+      - generic: λ
+      - generic: (
+      - generic: Z
+      - generic: Φ
+      - generic: ψ
+      - generic: )
+      - generic: +
+      - generic: H
+      - generic: σ
+      - generic: ","
+      - generic: "Y"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: ⏟
+      - generic: A
+      - generic: σ
+      - generic: ","
+      - generic: "Y"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: +
+      - generic: T
+      - generic: σ
+      - generic: ","
+      - generic: "Y"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: .
+      - generic: (4)
+    - text: Δ[ψ] =
+    - text: A
+    - generic: σ,Y
+    - text: "[ψ]"
+    - generic: λ
+    - generic: ∑
+    - generic: λ
+    - generic: Res
+    - text: (Z
+    - text: Φ
+    - generic: ψ
+    - text: ) +
+    - text: H
+    - generic: σ,Y
+    - text: "[ψ]"
+    - text: +
+    - text: T
+    - generic: σ,Y
+    - text: "[ψ]."
+    - text: (
+    - generic: "4"
+    - text: )
+    - paragraph:
+      - text: Сумма содержит
+      - strong: все
+      - text: полюса внутри конечного прямоугольника.
+      - strong:
+        - math:
+          - generic: H
+          - generic: σ
+          - generic: ","
+          - generic: "Y"
+        - text: H
+        - generic: σ,Y
+      - text: — оба горизонтальных интеграла, сохранённые со знаками.
+      - strong:
+        - math:
+          - generic: T
+          - generic: σ
+          - generic: ","
+          - generic: "Y"
+        - text: T
+        - generic: σ,Y
+      - text: — вертикальные хвосты.
+    - paragraph:
+      - strong: Ни исчезновение горизонталей, ни бесконечное разложение исключительно по вычетам не предполагаются.
+    - heading "4. Цена возвращения к полной исходной форме оплачена" [level=2]
+    - paragraph: Использованы принятые Q13-данные
+    - math:
+      - generic: ∂
+      - generic: (
+      - generic: B
+      - generic: ψ
+      - generic: )
+      - generic: =
+      - generic: v
+      - generic: ψ
+      - generic: +
+      - generic: j
+      - generic: (
+      - generic: ψ
+      - generic: )
+      - generic: δ
+      - generic: "0"
+      - generic: ","
+      - generic: ∥
+      - generic: B
+      - generic: ψ
+      - generic: ∥
+      - generic: ≤
+      - generic: b
+      - generic: m
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: ","
+      - generic: ∥
+      - generic: v
+      - generic: ψ
+      - generic: ∥
+      - generic: ≤
+      - generic: d
+      - generic: m
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: ","
+      - generic: ∣
+      - generic: j
+      - generic: ∣
+      - generic: ≤
+      - generic: J
+      - generic: m
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: .
+    - generic: ∂(Bψ) =
+    - text: v
+    - generic: ψ
+    - text: +
+    - text: j(ψ)
+    - text: δ
+    - generic: "0"
+    - text: ", ∥Bψ∥ ≤"
+    - text: b
+    - generic: m
+    - text: ∥ψ∥, ∥
+    - text: v
+    - generic: ψ
+    - text: ∥ ≤
+    - text: d
+    - generic: m
+    - text: ∥ψ∥, ∣j∣ ≤
+    - text: J
+    - generic: m
+    - text: ∥ψ∥.
+    - paragraph:
+      - text: Полный скачок сохранён;
+      - math:
+        - generic: B
+        - generic: ψ
+      - generic: Bψ
+      - text: не объявляется глобально
+      - math:
+        - generic: H
+        - generic: "1"
+      - text: H
+      - generic: "1"
+      - text: "-функцией."
+      - button "Vorschau von PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt öffnen":
+        - generic: PROSHKA_CCM_PROJECTED_SIGNED_RE…
+    - paragraph: "Получена явная ошибка:"
+    - math:
+      - generic: ∣
+      - generic: T
+      - generic: σ
+      - generic: ","
+      - generic: "Y"
+      - generic: "["
+      - generic: ψ
+      - generic: "]"
+      - generic: ∣
+      - generic: ≤
+      - generic: "["
+      - generic: "8"
+      - generic: m
+      - generic: σ
+      - generic: (
+      - generic: (
+      - generic: Ω
+      - generic: +
+      - generic: σ
+      - generic: )
+      - generic: "2"
+      - generic: +
+      - generic: "2"
+      - generic: (
+      - generic: d
+      - generic: m
+      - generic: +
+      - generic: σ
+      - generic: b
+      - generic: m
+      - generic: )
+      - generic: "2"
+      - generic: )
+      - generic: "Y"
+      - generic: "2"
+      - generic: +
+      - generic: "16"
+      - generic: J
+      - generic: m
+      - generic: "2"
+      - generic: π
+      - generic: "Y"
+      - generic: "]"
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: "2"
+      - generic: .
+      - generic: (5)
+    - text: ∣
+    - text: T
+    - generic: σ,Y
+    - text: "[ψ]∣ ≤"
+    - generic: "["
+    - text: "Y"
+    - generic: "2"
+    - text: "8"
+    - text: m
+    - generic: σ
+    - generic: (
+    - text: (Ω + σ
+    - text: )
+    - generic: "2"
+    - text: + 2(
+    - text: d
+    - generic: m
+    - text: + σ
+    - text: b
+    - generic: m
+    - text: )
+    - generic: "2"
+    - generic: )
+    - text: +
+    - generic: πY
+    - text: "16"
+    - text: J
+    - generic: m
+    - generic: "2"
+    - generic: "]"
+    - text: ∥ψ
+    - text: ∥
+    - generic: "2"
+    - text: .
+    - text: (
+    - generic: "5"
+    - text: )
+    - paragraph: При
+    - math:
+      - generic: σ
+      - generic: =
+      - generic: "1"
+      - generic: "2"
+      - generic: +
+      - generic: "1"
+      - generic: log
+      - generic: ⁡
+      - generic: m
+      - generic: ","
+      - generic: "Y"
+      - generic: ≍
+      - generic: m
+      - generic: "1"
+      - generic: /
+      - generic: "2"
+      - generic: +
+      - generic: ϵ
+      - generic: +
+      - generic: ν
+      - generic: ","
+      - generic: ν
+      - generic: ">"
+      - generic: "0"
+    - generic: σ =
+    - generic: "2"
+    - generic: "1"
+    - text: +
+    - generic: log
+    - text: m
+    - generic: "1"
+    - text: ", Y ≍"
+    - text: m
+    - generic: 1/2+ϵ+ν
+    - text: ", ν >"
+    - generic: "0"
+    - paragraph: получается
+    - math:
+      - generic: ∣
+      - generic: Δ
+      - generic: m
+      - generic: "["
+      - generic: c
+      - generic: "]"
+      - generic: −
+      - generic: A
+      - generic: σ
+      - generic: ","
+      - generic: "Y"
+      - generic: "["
+      - generic: c
+      - generic: "]"
+      - generic: ∣
+      - generic: ≤
+      - generic: C
+      - generic: ϵ
+      - generic: ","
+      - generic: ν
+      - generic: m
+      - generic: −
+      - generic: ν
+      - generic: log
+      - generic: ⁡
+      - generic: m
+      - generic: ∥
+      - generic: c
+      - generic: ∥
+      - generic: "2"
+      - generic: .
+      - generic: (6)
+    - text: ∣
+    - text: Δ
+    - generic: m
+    - text: "[c] −"
+    - text: A
+    - generic: σ,Y
+    - text: "[c]∣ ≤"
+    - text: C
+    - generic: ϵ,ν
+    - generic: log
+    - text: m
+    - text: m
+    - generic: −ν
+    - text: ∥c
+    - text: ∥
+    - generic: "2"
+    - text: .
+    - text: (
+    - generic: "6"
+    - text: )
+    - paragraph:
+      - text: Высота выбирается
+      - strong: одна для всех векторов ячейки
+      - text: ", вне ординат полюсов. Малость горизонтальных интегралов этим выбором не предполагается: они остаются внутри"
+      - math:
+        - generic: A
+      - generic: A
+      - text: .
+    - paragraph:
+      - strong:
+        - text: Это законченный аналитический перенос. Он не является верхней оценкой самой
+        - math:
+          - generic: A
+        - generic: A
+        - text: .
+    - heading "5. Первая неоплаченная строка — и полный доступный показатель" [level=2]
+    - paragraph: "Не выведено:"
+    - math:
+      - generic: A
+      - generic: σ
+      - generic: ","
+      - generic: "Y"
+      - generic: "["
+      - generic: c
+      - generic: "]"
+      - generic: ≤
+      - generic: C
+      - generic: ϵ
+      - generic: m
+      - generic: η
+      - generic: (
+      - generic: ϵ
+      - generic: )
+      - generic: ∥
+      - generic: c
+      - generic: ∥
+      - generic: "2"
+      - generic: ","
+      - generic: η
+      - generic: (
+      - generic: ϵ
+      - generic: )
+      - generic: →
+      - generic: "0."
+      - generic: (7 — не доказано)
+    - text: A
+    - generic: σ,Y
+    - text: "[c] ≤"
+    - text: C
+    - generic: ϵ
+    - text: m
+    - generic: η(ϵ)
+    - text: ∥c
+    - text: ∥
+    - generic: "2"
+    - text: ", η(ϵ) → 0."
+    - text: (
+    - generic: 7 — не доказано
+    - text: )
+    - paragraph:
+      - text: Здесь требуется оценить
+      - strong: совместно настоящие вычеты с их фильтрами и горизонтальные интегралы
+      - text: . Ни ограниченность множителя на мнимой оси, ни цена одной экспоненты этой строки не поставляют.
+    - paragraph: "Завершение имеющимися нормами возвращает прежний полный конверт:"
+    - math:
+      - generic: Δ
+      - generic: m
+      - generic: "["
+      - generic: c
+      - generic: "]"
+      - generic: ≤
+      - generic: e
+      - generic: m
+      - generic: ∥
+      - generic: c
+      - generic: ∥
+      - generic: "2"
+      - generic: −
+      - generic: D
+      - generic: a
+      - generic: r
+      - generic: c
+      - generic: h
+      - generic: (
+      - generic: ψ
+      - generic: )
+      - generic: ","
+    - text: Δ
+    - generic: m
+    - text: "[c] ≤"
+    - text: e
+    - generic: m
+    - text: ∥c
+    - text: ∥
+    - generic: "2"
+    - text: −
+    - text: D
+    - generic: arch
+    - text: (ψ),
+    - math:
+      - generic: e
+      - generic: m
+      - generic: =
+      - generic: "2"
+      - generic: (
+      - generic: "1"
+      - generic: +
+      - generic: b
+      - generic: m
+      - generic: "2"
+      - generic: )
+      - generic: +
+      - generic: "2"
+      - generic: W
+      - generic: (
+      - generic: m
+      - generic: )
+      - generic: +
+      - generic: c
+      - generic: A
+      - generic: =
+      - generic: O
+      - generic: ϵ
+      - generic: (
+      - generic: m
+      - generic: )
+      - generic: .
+    - text: e
+    - generic: m
+    - text: =
+    - generic: 2(1 +
+    - text: b
+    - generic: m
+    - generic: "2"
+    - text: ) +
+    - generic: 2W(m) +
+    - text: c
+    - generic: A
+    - text: =
+    - text: O
+    - generic: ϵ
+    - text: (
+    - generic: m
+    - text: ).
+    - paragraph:
+      - strong:
+        - text: Полная степень остаётся
+        - math:
+          - generic: "1"
+          - generic: /
+          - generic: "2"
+        - generic: 1/2
+        - text: .
+      - text: Принятый условный показатель
+      - math:
+        - generic: "3"
+        - generic: /
+        - generic: "8"
+      - generic: 3/8
+      - text: по ZF78 не улучшен и не стал безусловным. Оплаченный Q13-возврат также не превращается в арифметический выигрыш.
+      - button "Vorschau von PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_2026-10-23.txt öffnen":
+        - generic: PROSHKA_CCM_PROJECTED_SIGNED_RE…
+    - paragraph: При непосредственном возврате через
+    - math:
+      - generic: Q
+      - generic: =
+      - generic: "N"
+      - generic: −
+      - generic: Δ
+    - generic: Q =
+    - generic: N −
+    - generic: Δ
+    - paragraph:
+      - text: архимедова цена
+      - strong: не начисляется повторно
+      - text: . Для отдельного перехода к
+      - math:
+        - generic: S
+        - generic: m
+      - text: S
+      - generic: m
+      - text: и
+      - math:
+        - generic: T
+        - generic: ">"
+        - generic: R
+      - text: T
+      - generic: ">R"
+      - text: в файле выписаны прежние точные равенства и однократная малоделительная плата.
+    - heading "6. Отрицательный контроль и обоснованный откат" [level=2]
+    - paragraph:
+      - text: Проверяющий испытан на явно указанной
+      - strong: рациональной модели
+      - text: ", не на подменённой «дзета-функции». В ней настоящий вычет отрицателен, а после полного фильтра дефект имеет оба знака:"
+    - math:
+      - generic: Δ
+      - generic: ∗
+      - generic: =
+      - generic: −
+      - generic: "2"
+      - generic: "33"
+      - generic: ∣
+      - generic: L
+      - generic: e
+      - generic: ∣
+      - generic: "2"
+      - generic: +
+      - generic: "130"
+      - generic: "33"
+      - generic: ∣
+      - generic: L
+      - generic: o
+      - generic: ∣
+      - generic: "2"
+      - generic: .
+    - text: Δ
+    - generic: ∗
+    - text: =
+    - text: −
+    - generic: "33"
+    - generic: "2"
+    - text: ∣
+    - text: L
+    - generic: e
+    - text: ∣
+    - generic: "2"
+    - text: +
+    - generic: "33"
+    - generic: "130"
+    - text: ∣
+    - text: L
+    - generic: o
+    - text: ∣
+    - generic: "2"
+    - text: .
+    - paragraph:
+      - text: При этом её Gram остаётся положительной. Контроль обнаруживает одновременно неверный знак вычета, удаление смешанного временного сектора и незаконное отбрасывание горизонталей.
+      - strong:
+        - text: Он не является контрпримером настоящей
+        - math:
+          - generic: ξ
+        - generic: ξ
+        - text: или CCM.
+    - paragraph:
+      - strong:
+        - text: Выбранный откат — до введения отдельного положительного Suzuki Gram, к направленной оценке самой исходной
+        - math:
+          - generic: Q
+        - generic: Q
+        - text: .
+      - text: При совместной сборке
+    - math:
+      - generic: "N"
+      - generic: −
+      - generic: Δ
+      - generic: =
+      - generic: (
+      - generic: "2"
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: "2"
+      - generic: −
+      - generic: I
+      - generic: "0"
+      - generic: )
+      - generic: −
+      - generic: (
+      - generic: I
+      - generic: σ
+      - generic: −
+      - generic: I
+      - generic: "0"
+      - generic: )
+      - generic: =
+      - generic: "2"
+      - generic: ∥
+      - generic: ψ
+      - generic: ∥
+      - generic: "2"
+      - generic: −
+      - generic: I
+      - generic: σ
+    - generic: N −
+    - generic: Δ =
+    - text: (2∥ψ
+    - text: ∥
+    - generic: "2"
+    - text: −
+    - text: I
+    - generic: "0"
+    - text: ) −
+    - text: (
+    - text: I
+    - generic: σ
+    - text: −
+    - text: I
+    - generic: "0"
+    - text: ) =
+    - text: 2∥ψ
+    - text: ∥
+    - generic: "2"
+    - text: −
+    - text: I
+    - generic: σ
+    - paragraph: вспомогательная мнимая ось сокращается точно. Это позволяет проверять будущий прямой аргумент без обязательства отдельно оплачивать Suzuki-дефект.
+    - paragraph:
+      - text: Но
+      - strong: нового арифметического аргумента для этой более ранней формы я здесь не получил
+      - text: . Поэтому (7) не назначается новым «готовым поставщиком», и автоматического Q15 с тем же долгом не предлагается.
+    - paragraph:
+      - text: Выполнены
+      - strong: 105 точных локальных проверок
+      - text: и
+      - strong: 9 неинтервальных диагностик при 45 десятичных знаках
+      - text: . Скрипты повторно извлечены из окончательного Markdown и исполнены; результаты совпали.
+      - strong: Arb, Lean, независимый аудит нового вывода и полный спектральный расчёт CCM не запускались.
+    - paragraph:
+      - strong: "Итог: получена верная форма совместного вклада и оплаченный возврат; новой полной арифметической степени нет. Индивидуальная степенная норма и неизвестные полюса не превращены в запрет настоящего сокращения."
+    - button "Vorschau von PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_VERDICT_2026-10-23.md öffnen"
+    - generic "PROSHKA_CCM_PROJECTED_SIGNED_REMAINDER_Q14_VERDICT_2026-10-23.md"
+    - generic: Dokument
+    - button "Datei herunterladen":
+    - button "Kopieren":
+    - button "Vorlesen":
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - button "Quellen":
+    - separator "gestern, 9:48":
+      - time: gestern, 9:48
+    - heading "Du hast gesagt:" [level=4]
+    - button "PROSHKA_CCM_VAUGHAN_JOINT_Q15_2026-10-24.txt"
+    - generic "PROSHKA_CCM_VAUGHAN_JOINT_Q15_2026-10-24.txt"
+    - generic: Dokument
+    - generic: "Q15. После проверенного Q14 выполнен новый finite Vaughan тест на исходном P: три коротких вклада оплачены, но совместная большая сумма пока возвращает половинную степень. Прочитай весь приложенный TXT с 12 полными источниками и испытай указанный арифметический механизм до полного бюджета, сохраняя все смешанные члены. При тупике — конкретный откат, не ещё одно переименование цели. Полный ответ верни скачиваемым Markdown; работай до естественного завершения."
+    - button "Nachricht kopieren":
+    - button "Prompt teilen":
+    - button "Nachricht bearbeiten":
+    - button "Worked for 26m 15s":
+      - generic: Worked for 26m 15s
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph:
+      - text: Ы.
+      - strong: Q15 выполнен. Нового полного арифметического показателя нет.
+      - text: "Проверен конкретный механизм:"
+      - strong: энергия короткой обратной свёртки Мёбиуса → взвешенное матричное неравенство Коши → полный возврат билинейной суммы
+      - text: .
+    - paragraph:
+      - text: "Результат — не просто неудачная оценка:"
+      - strong: для выбранного семейства сертификатов найден точный оптимум и доказана его половинная степенная цена даже после оптимизации всех положительных весов.
+      - text: Это препятствие этому способу оценивания,
+      - strong:
+        - text: не нижняя граница настоящей
+        - math:
+          - generic: I
+          - generic: I
+        - generic: II
+        - text: и не запрет сокращения CCM
+      - text: .
+    - paragraph:
+      - text: Прочитаны
+      - strong: 126 176 байт, 2129 LF, все 12 исходников
+      - text: . Размеры и SHA-256 всех вложенных тел совпали с манифестом.
+    - heading "1. Что именно использовано из настоящей арифметики" [level=2]
+    - paragraph: "Исходная большая сумма сохранена:"
+    - math:
+      - generic: I
+      - generic: I
+      - generic: =
+      - generic: ∑
+      - generic: a
+      - generic: ">"
+      - generic: U
+      - generic: ","
+      - generic: b
+      - generic: ">"
+      - generic: V
+      - generic: a
+      - generic: b
+      - generic: ≤
+      - generic: m
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: Λ
+      - generic: (
+      - generic: b
+      - generic: )
+      - generic: a
+      - generic: b
+      - generic: P
+      - generic: Q
+      - generic: M
+      - generic: (
+      - generic: log
+      - generic: ⁡
+      - generic: (
+      - generic: a
+      - generic: b
+      - generic: )
+      - generic: )
+      - generic: P
+      - generic: ","
+    - generic: II
+    - text: =
+    - text: a>U,
+    - text: b>V
+    - generic: ab≤m
+    - generic: ∑
+    - generic: ab
+    - text: ν
+    - generic: U
+    - text: (a)Λ(b)
+    - text: P
+    - text: Q
+    - generic: M
+    - text: (
+    - generic: log
+    - text: (ab))P,
+    - math:
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: =
+      - generic: −
+      - generic: ∑
+      - generic: d
+      - generic: ∣
+      - generic: a
+      - generic: d
+      - generic: ≤
+      - generic: U
+      - generic: μ
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: (
+      - generic: a
+      - generic: ">"
+      - generic: U
+      - generic: )
+      - generic: .
+    - text: ν
+    - generic: U
+    - text: (a) =
+    - text: −
+    - generic: d∣a
+    - generic: d≤U
+    - generic: ∑
+    - text: μ(d) (a >
+    - generic: U).
+    - paragraph:
+      - text: Все суммы работают с
+      - strong: одной исходной функцией
+      - math:
+        - generic: f
+        - generic: =
+        - generic: F
+        - generic: c
+      - generic: f =
+      - generic: Fc
+      - text: ", тем же"
+      - math:
+        - generic: P
+      - generic: P
+      - text: ", той же нормой и настоящей гиперболической границей"
+      - math:
+        - generic: a
+        - generic: b
+        - generic: ≤
+        - generic: m
+      - generic: ab ≤
+      - generic: m
+      - text: . Это объект задания, а не семейство независимо назначенных фаз.
+      - button "Vorschau von PROSHKA_CCM_VAUGHAN_JOINT_Q15_2026-10-24.txt öffnen":
+        - generic: PROSHKA_CCM_VAUGHAN_JOINT_Q15_2…
+    - paragraph: "Для квадрата короткой обратной свёртки получено точное равенство:"
+    - math:
+      - generic: ∑
+      - generic: U
+      - generic: <
+      - generic: a
+      - generic: ≤
+      - generic: X
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: "2"
+      - generic: =
+      - generic: ∑
+      - generic: d
+      - generic: ","
+      - generic: e
+      - generic: ≤
+      - generic: U
+      - generic: μ
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: μ
+      - generic: (
+      - generic: e
+      - generic: )
+      - generic: ⌊
+      - generic: X
+      - generic: "["
+      - generic: d
+      - generic: ","
+      - generic: e
+      - generic: "]"
+      - generic: ⌋
+      - generic: −
+      - generic: "1."
+    - generic: U<a≤X
+    - generic: ∑
+    - text: ν
+    - generic: U
+    - text: (a
+    - text: )
+    - generic: "2"
+    - text: =
+    - generic: d,e≤U
+    - generic: ∑
+    - text: μ(d)μ(e)
+    - generic: ⌊
+    - generic: "[d, e]"
+    - generic: X
+    - generic: ⌋
+    - text: − 1.
+    - paragraph:
+      - text: Здесь
+      - strong:
+        - math:
+          - generic: "["
+          - generic: d
+          - generic: ","
+          - generic: e
+          - generic: "]"
+        - generic: "[d, e]"
+      - text: — наименьшее общее кратное. Все разные
+      - math:
+        - generic: d
+        - generic: ","
+        - generic: e
+      - generic: d, e
+      - text: сохранены.
+    - paragraph:
+      - text: Соответствующий главный коэффициент имеет
+      - strong: положительное разложение
+      - text: ":"
+    - math:
+      - generic: q
+      - generic: U
+      - generic: =
+      - generic: ∑
+      - generic: d
+      - generic: ","
+      - generic: e
+      - generic: ≤
+      - generic: U
+      - generic: μ
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: μ
+      - generic: (
+      - generic: e
+      - generic: )
+      - generic: "["
+      - generic: d
+      - generic: ","
+      - generic: e
+      - generic: "]"
+      - generic: =
+      - generic: ∑
+      - generic: r
+      - generic: ≤
+      - generic: U
+      - generic: φ
+      - generic: (
+      - generic: r
+      - generic: )
+      - generic: (
+      - generic: ∑
+      - generic: d
+      - generic: ≤
+      - generic: U
+      - generic: r
+      - generic: ∣
+      - generic: d
+      - generic: μ
+      - generic: (
+      - generic: d
+      - generic: )
+      - generic: d
+      - generic: )
+      - generic: "2"
+      - generic: .
+    - text: q
+    - generic: U
+    - text: =
+    - generic: d,e≤U
+    - generic: ∑
+    - generic: "[d, e]"
+    - generic: μ(d)μ(e)
+    - text: =
+    - generic: r≤U
+    - generic: ∑
+    - text: φ(r)
+    - generic: d≤U
+    - generic: r∣d
+    - generic: ∑
+    - generic: d
+    - generic: μ(d)
+    - generic: "2"
+    - text: .
+    - paragraph: В архиве доказаны явные границы
+    - math:
+      - generic: "1"
+      - generic: "3"
+      - generic: h
+      - generic: U
+      - generic: ≤
+      - generic: q
+      - generic: U
+      - generic: ≤
+      - generic: h
+      - generic: U
+      - generic: "3"
+      - generic: ","
+      - generic: h
+      - generic: U
+      - generic: =
+      - generic: ∑
+      - generic: j
+      - generic: =
+      - generic: "1"
+      - generic: U
+      - generic: "1"
+      - generic: j
+      - generic: ","
+    - text: "3"
+    - text: h
+    - generic: U
+    - generic: "1"
+    - text: ≤
+    - text: q
+    - generic: U
+    - text: ≤
+    - text: h
+    - generic: U
+    - generic: "3"
+    - text: ","
+    - text: h
+    - generic: U
+    - text: =
+    - generic: j=1
+    - generic: ∑
+    - generic: U
+    - generic: j
+    - generic: "1"
+    - text: ","
+    - paragraph: и гармоническая оценка
+    - math:
+      - generic: ∑
+      - generic: U
+      - generic: <
+      - generic: a
+      - generic: ≤
+      - generic: X
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: "2"
+      - generic: a
+      - generic: ≤
+      - generic: h
+      - generic: X
+      - generic: h
+      - generic: U
+      - generic: "3"
+      - generic: .
+    - generic: U<a≤X
+    - generic: ∑
+    - generic: a
+    - text: ν
+    - generic: U
+    - text: (a
+    - text: )
+    - generic: "2"
+    - text: ≤
+    - text: h
+    - generic: X
+    - text: h
+    - generic: U
+    - generic: "3"
+    - text: .
+    - paragraph:
+      - strong:
+        - text: Квадрат коэффициентов оплачивается логарифмами, без лишней степени
+        - math:
+          - generic: U
+        - generic: U
+        - text: .
+      - text: Но это ещё не оценка всей билинейной формы.
+    - heading "2. Матричный перенос выполнен со всеми смешанными произведениями" [level=2]
+    - paragraph: Положим
+    - math:
+      - generic: H
+      - generic: a
+      - generic: =
+      - generic: ∑
+      - generic: b
+      - generic: ">"
+      - generic: V
+      - generic: a
+      - generic: b
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: b
+      - generic: )
+      - generic: b
+      - generic: P
+      - generic: Q
+      - generic: M
+      - generic: (
+      - generic: log
+      - generic: ⁡
+      - generic: (
+      - generic: a
+      - generic: b
+      - generic: )
+      - generic: )
+      - generic: P
+      - generic: ","
+      - generic: α
+      - generic: a
+      - generic: =
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: a
+      - generic: .
+    - text: H
+    - generic: a
+    - text: =
+    - generic: b>V
+    - generic: ab≤m
+    - generic: ∑
+    - generic: b
+    - generic: Λ(b)
+    - text: P
+    - text: Q
+    - generic: M
+    - text: (
+    - generic: log
+    - text: (ab))P,
+    - text: α
+    - generic: a
+    - text: =
+    - generic: a
+    - text: ν
+    - generic: U
+    - text: (a)
+    - text: .
+    - paragraph: Тогда
+    - math:
+      - generic: I
+      - generic: I
+      - generic: =
+      - generic: ∑
+      - generic: a
+      - generic: α
+      - generic: a
+      - generic: H
+      - generic: a
+      - generic: .
+    - generic: II
+    - text: =
+    - generic: a
+    - generic: ∑
+    - text: α
+    - generic: a
+    - text: H
+    - generic: a
+    - text: .
+    - paragraph:
+      - text: Для любых положительных весов
+      - math:
+        - generic: τ
+        - generic: a
+      - text: τ
+      - generic: a
+      - text: "доказано:"
+    - math:
+      - generic: I
+      - generic: I
+      - generic: "2"
+      - generic: ⪯
+      - generic: (
+      - generic: ∑
+      - generic: a
+      - generic: α
+      - generic: a
+      - generic: "2"
+      - generic: τ
+      - generic: a
+      - generic: )
+      - generic: (
+      - generic: ∑
+      - generic: a
+      - generic: τ
+      - generic: a
+      - generic: H
+      - generic: a
+      - generic: "2"
+      - generic: )
+      - generic: .
+    - generic: II
+    - generic: "2"
+    - text: ⪯
+    - generic: (
+    - generic: a
+    - generic: ∑
+    - text: τ
+    - generic: a
+    - text: α
+    - generic: a
+    - generic: "2"
+    - generic: )
+    - generic: (
+    - generic: a
+    - generic: ∑
+    - text: τ
+    - generic: a
+    - text: H
+    - generic: a
+    - generic: "2"
+    - generic: )
+    - text: .
+    - paragraph:
+      - strong: Смешанные члены не объявлены нулевыми.
+      - text: "Полная потеря этого перехода записана точно:"
+    - math:
+      - generic: (
+      - generic: ∑
+      - generic: a
+      - generic: α
+      - generic: a
+      - generic: "2"
+      - generic: τ
+      - generic: a
+      - generic: )
+      - generic: (
+      - generic: ∑
+      - generic: a
+      - generic: τ
+      - generic: a
+      - generic: H
+      - generic: a
+      - generic: "2"
+      - generic: )
+      - generic: −
+      - generic: I
+      - generic: I
+      - generic: "2"
+      - generic: =
+      - generic: ∑
+      - generic: a
+      - generic: <
+      - generic: a
+      - generic: ′
+      - generic: τ
+      - generic: a
+      - generic: τ
+      - generic: a
+      - generic: ′
+      - generic: (
+      - generic: α
+      - generic: a
+      - generic: τ
+      - generic: a
+      - generic: H
+      - generic: a
+      - generic: ′
+      - generic: −
+      - generic: α
+      - generic: a
+      - generic: ′
+      - generic: τ
+      - generic: a
+      - generic: ′
+      - generic: H
+      - generic: a
+      - generic: )
+      - generic: "2"
+      - generic: .
+    - generic: (
+    - generic: a
+    - generic: ∑
+    - text: τ
+    - generic: a
+    - text: α
+    - generic: a
+    - generic: "2"
+    - generic: )
+    - generic: (
+    - generic: a
+    - generic: ∑
+    - text: τ
+    - generic: a
+    - text: H
+    - generic: a
+    - generic: "2"
+    - generic: )
+    - text: −
+    - generic: II
+    - generic: "2"
+    - text: =
+    - text: a<
+    - text: a
+    - generic: ′
+    - generic: ∑
+    - text: τ
+    - generic: a
+    - text: τ
+    - text: a
+    - generic: ′
+    - generic: (
+    - text: τ
+    - generic: a
+    - text: α
+    - generic: a
+    - text: H
+    - text: a
+    - generic: ′
+    - text: −
+    - text: τ
+    - text: a
+    - generic: ′
+    - text: α
+    - text: a
+    - generic: ′
+    - text: H
+    - generic: a
+    - generic: )
+    - generic: "2"
+    - text: .
+    - paragraph:
+      - text: В каждом
+      - math:
+        - generic: H
+        - generic: a
+        - generic: "2"
+      - text: H
+      - generic: a
+      - generic: "2"
+      - text: остаются все
+      - math:
+        - generic: b
+        - generic: ","
+        - generic: b
+        - generic: ′
+      - text: b,
+      - text: b
+      - generic: ′
+      - text: ", а в исходном квадрате — все"
+      - math:
+        - generic: a
+        - generic: ","
+        - generic: a
+        - generic: ′
+        - generic: ","
+        - generic: b
+        - generic: ","
+        - generic: b
+        - generic: ′
+      - text: a,
+      - text: a
+      - generic: ′
+      - text: ", b,"
+      - text: b
+      - generic: ′
+      - text: ". Промежуточные проекторы сохраняются:"
+    - math:
+      - generic: P
+      - generic: Q
+      - generic: M
+      - generic: (
+      - generic: log
+      - generic: ⁡
+      - generic: (
+      - generic: a
+      - generic: b
+      - generic: )
+      - generic: )
+      - generic: P
+      - generic: Q
+      - generic: M
+      - generic: (
+      - generic: log
+      - generic: ⁡
+      - generic: (
+      - generic: a
+      - generic: ′
+      - generic: b
+      - generic: ′
+      - generic: )
+      - generic: )
+      - generic: P
+      - generic: .
+    - text: P
+    - text: Q
+    - generic: M
+    - text: (
+    - generic: log
+    - text: (ab))P
+    - text: Q
+    - generic: M
+    - text: (
+    - generic: log
+    - text: (
+    - text: a
+    - generic: ′
+    - text: b
+    - generic: ′
+    - text: ))P.
+    - paragraph:
+      - text: Для
+      - strong:
+        - text: того же настоящего
+        - math:
+          - generic: W
+          - generic: =
+          - generic: P
+          - generic: W
+          - generic: P
+          - generic: ⪰
+          - generic: "0"
+        - generic: W =
+        - generic: PWP ⪰
+        - generic: "0"
+      - text: переход выполняется через след доказанного матричного неравенства. Скрытой платы за размерность нет.
+    - heading "3. Найден точный оптимальный бюджет этого способа" [level=2]
+    - paragraph: Для завершения доступными оценками используется
+    - math:
+      - generic: ∥
+      - generic: H
+      - generic: a
+      - generic: ∥
+      - generic: ≤
+      - generic: "2"
+      - generic: B
+      - generic: a
+      - generic: ","
+      - generic: B
+      - generic: a
+      - generic: =
+      - generic: ∑
+      - generic: b
+      - generic: ">"
+      - generic: V
+      - generic: a
+      - generic: b
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: b
+      - generic: )
+      - generic: b
+      - generic: .
+    - text: ∥
+    - text: H
+    - generic: a
+    - text: ∥ ≤
+    - text: "2"
+    - text: B
+    - generic: a
+    - text: ","
+    - text: B
+    - generic: a
+    - text: =
+    - generic: b>V
+    - generic: ab≤m
+    - generic: ∑
+    - generic: b
+    - generic: Λ(b)
+    - text: .
+    - paragraph: После этой замены верх равен
+    - math:
+      - generic: s
+      - generic: m
+      - generic: (
+      - generic: τ
+      - generic: )
+      - generic: =
+      - generic: "2"
+      - generic: (
+      - generic: ∑
+      - generic: a
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: "2"
+      - generic: a
+      - generic: τ
+      - generic: a
+      - generic: )
+      - generic: (
+      - generic: ∑
+      - generic: a
+      - generic: τ
+      - generic: a
+      - generic: B
+      - generic: a
+      - generic: "2"
+      - generic: )
+      - generic: .
+    - text: s
+    - generic: m
+    - text: (τ) =
+    - text: "2"
+    - generic: (
+    - generic: a
+    - generic: ∑
+    - text: a
+    - text: τ
+    - generic: a
+    - text: ν
+    - generic: U
+    - text: (a
+    - text: )
+    - generic: "2"
+    - generic: )
+    - generic: (
+    - generic: a
+    - generic: ∑
+    - text: τ
+    - generic: a
+    - text: B
+    - generic: a
+    - generic: "2"
+    - generic: )
+    - text: .
+    - paragraph:
+      - text: Оптимизация выполнена
+      - strong: по всем положительным скалярным весам
+      - text: ", не по нескольким пробным вариантам:"
+    - math:
+      - generic: s
+      - generic: m
+      - generic: ∗
+      - generic: ":"
+      - generic: =
+      - generic: inf
+      - generic: ⁡
+      - generic: τ
+      - generic: a
+      - generic: ">"
+      - generic: "0"
+      - generic: s
+      - generic: m
+      - generic: (
+      - generic: τ
+      - generic: )
+      - generic: =
+      - generic: "2"
+      - generic: ∑
+      - generic: a
+      - generic: ∣
+      - generic: ν
+      - generic: U
+      - generic: (
+      - generic: a
+      - generic: )
+      - generic: ∣
+      - generic: a
+      - generic: B
+      - generic: a
+      - generic: .
+    - text: s
+    - generic: m
+    - generic: ∗
+    - text: :=
+    - text: τ
+    - generic: a
+    - text: ">0"
+    - generic: inf
+    - text: s
+    - generic: m
+    - text: (τ) = 2
+    - generic: a
+    - generic: ∑
+    - generic: a
+    - text: ∣
+    - text: ν
+    - generic: U
+    - text: (a)∣
+    - text: B
+    - generic: a
+    - text: .
+    - paragraph:
+      - text: Следовательно, поиск более удачных
+      - math:
+        - generic: τ
+        - generic: a
+      - text: τ
+      - generic: a
+      - text: "не восстановит потерянный знак: лучший ответ этого семейства уже вычислен."
+    - paragraph:
+      - text: На исходном расписании
+      - math:
+        - generic: U
+        - generic: =
+        - generic: V
+        - generic: =
+        - generic: ⌊
+        - generic: m
+        - generic: ϵ
+        - generic: ⌋
+      - generic: U =
+      - generic: V =
+      - text: ⌊
+      - text: m
+      - generic: ϵ
+      - text: ⌋
+      - text: "доказано:"
+    - math:
+      - generic: m
+      - generic: "32"
+      - generic: log
+      - generic: ⁡
+      - generic: m
+      - generic: ≤
+      - generic: s
+      - generic: m
+      - generic: ∗
+      - generic: ≤
+      - generic: "12"
+      - generic: m
+      - generic: h
+      - generic: U
+      - generic: h
+      - generic: ⌊
+      - generic: m
+      - generic: /
+      - generic: (
+      - generic: V
+      - generic: +
+      - generic: "1"
+      - generic: )
+      - generic: ⌋
+    - text: "32"
+    - generic: log
+    - text: m
+    - generic: m
+    - text: ≤
+    - text: s
+    - generic: m
+    - generic: ∗
+    - text: ≤ 12
+    - generic: m
+    - text: h
+    - generic: U
+    - text: h
+    - generic: ⌊m/(V+1)⌋
+    - paragraph: для всех достаточно поздних ячеек.
+    - paragraph:
+      - strong:
+        - text: Полная степень сертификата —
+        - math:
+          - generic: "1"
+          - generic: /
+          - generic: "2"
+        - generic: 1/2
+        - text: .
+      - text: Неограниченная подпоследовательность её не обходит.
+    - paragraph: Для нижней границы использованы настоящие простые
+    - math:
+      - generic: m
+      - generic: "4"
+      - generic: <
+      - generic: p
+      - generic: ","
+      - generic: q
+      - generic: ≤
+      - generic: m
+      - generic: "2"
+      - generic: ","
+      - generic: p
+      - generic: ≠
+      - generic: q
+      - generic: .
+    - generic: "4"
+    - generic: m
+    - text: <
+    - generic: p, q ≤
+    - generic: "2"
+    - generic: m
+    - text: ", p"
+    - generic: 
+    - text: =
+    - generic: q.
+    - paragraph:
+      - text: У них
+      - math:
+        - generic: ν
+        - generic: U
+        - generic: (
+        - generic: p
+        - generic: )
+        - generic: =
+        - generic: −
+        - generic: "1"
+      - text: ν
+      - generic: U
+      - text: (p) =
+      - generic: −1
+      - text: ","
+      - math:
+        - generic: Λ
+        - generic: (
+        - generic: q
+        - generic: )
+        - generic: =
+        - generic: log
+        - generic: ⁡
+        - generic: q
+      - generic: Λ(q) =
+      - generic: log
+      - text: q
+      - text: ", а"
+      - math:
+        - generic: p
+        - generic: q
+        - generic: ≤
+        - generic: m
+        - generic: /
+        - generic: "4"
+      - generic: pq ≤
+      - generic: m/4
+      - text: . Их количества достаточно по обычной безусловной
+      - strong: теореме о распределении простых
+      - text: ; никакой RH-сильной ошибки не требуется. Сам расчёт нижней цены дан в §6 Markdown.
+      - 'link "DLMF: https://dlmf.nist.gov/27.12, https://dlmf.nist.gov/27.12"':
+        - /url: https://dlmf.nist.gov/27.12
+        - generic: DLMF
+    - heading "4. Почему это не препятствие настоящей CCM" [level=2]
+    - paragraph:
+      - text: "Самое важное:"
+      - strong:
+        - text: эти же произведения двух различных больших простых имеют нулевой суммарный коэффициент в исходной
+        - math:
+          - generic: Λ
+        - generic: Λ
+      - text: .
+    - paragraph:
+      - text: При
+      - math:
+        - generic: "n"
+        - generic: =
+        - generic: p
+        - generic: q
+      - generic: n =
+      - generic: pq
+      - text: ":"
+    - math:
+      - generic: I
+      - generic: "n"
+      - generic: =
+      - generic: log
+      - generic: ⁡
+      - generic: p
+      - generic: +
+      - generic: log
+      - generic: ⁡
+      - generic: q
+      - generic: ","
+      - generic: (
+      - generic: I
+      - generic: I
+      - generic: )
+      - generic: "n"
+      - generic: =
+      - generic: −
+      - generic: log
+      - generic: ⁡
+      - generic: p
+      - generic: −
+      - generic: log
+      - generic: ⁡
+      - generic: q
+      - generic: ","
+      - generic: J
+      - generic: "n"
+      - generic: =
+      - generic: K
+      - generic: "n"
+      - generic: =
+      - generic: "0"
+      - generic: ","
+    - text: I
+    - generic: "n"
+    - text: =
+    - generic: log
+    - text: p +
+    - generic: log
+    - text: q, (
+    - generic: II
+    - text: )
+    - generic: "n"
+    - text: =
+    - text: −
+    - generic: log
+    - text: p −
+    - generic: log
+    - text: q,
+    - text: J
+    - generic: "n"
+    - text: =
+    - text: K
+    - generic: "n"
+    - text: =
+    - generic: 0,
+    - paragraph: поэтому
+    - math:
+      - generic: I
+      - generic: "n"
+      - generic: +
+      - generic: (
+      - generic: I
+      - generic: I
+      - generic: )
+      - generic: "n"
+      - generic: =
+      - generic: "0"
+      - generic: =
+      - generic: Λ
+      - generic: (
+      - generic: p
+      - generic: q
+      - generic: )
+      - generic: .
+    - text: I
+    - generic: "n"
+    - text: +
+    - text: (
+    - generic: II
+    - text: )
+    - generic: "n"
+    - text: =
+    - generic: 0 =
+    - generic: Λ(pq).
+    - paragraph: "Для высших степеней:"
+    - math:
+      - generic: I
+      - generic: p
+      - generic: k
+      - generic: =
+      - generic: k
+      - generic: log
+      - generic: ⁡
+      - generic: p
+      - generic: ","
+      - generic: (
+      - generic: I
+      - generic: I
+      - generic: )
+      - generic: p
+      - generic: k
+      - generic: =
+      - generic: −
+      - generic: (
+      - generic: k
+      - generic: −
+      - generic: "1"
+      - generic: )
+      - generic: log
+      - generic: ⁡
+      - generic: p
+      - generic: ","
+    - text: I
+    - text: p
+    - generic: k
+    - text: =
+    - text: k
+    - generic: log
+    - text: p, (
+    - generic: II
+    - text: )
+    - text: p
+    - generic: k
+    - text: =
+    - generic: −(k −
+    - text: 1)
+    - generic: log
+    - text: p,
+    - paragraph: и возвращается ровно
+    - math:
+      - generic: Λ
+      - generic: (
+      - generic: p
+      - generic: k
+      - generic: )
+      - generic: =
+      - generic: log
+      - generic: ⁡
+      - generic: p
+      - generic: .
+    - text: Λ(
+    - text: p
+    - generic: k
+    - text: ) =
+    - generic: log
+    - text: p.
+    - paragraph:
+      - strong: Доказанная большая цена появляется в положительном сертификате после потери этой связи. Она не является неизбежным положительным вкладом источника.
+    - paragraph:
+      - text: "Именно поэтому вывод ограничен: исключён подполустепенной результат"
+      - strong: после выбранного мажорирования строк
+      - text: ", но не весь билинейный подход, не недиагональная оценка и не исходная односторонняя форма."
+    - heading "5. Полный возврат и первая неоплаченная строка" [level=2]
+    - paragraph: Сохраняется принятая точная сборка
+    - math:
+      - generic: S
+      - generic: m
+      - generic: =
+      - generic: I
+      - generic: +
+      - generic: J
+      - generic: −
+      - generic: K
+      - generic: +
+      - generic: I
+      - generic: I
+      - generic: ","
+    - text: S
+    - generic: m
+    - text: =
+    - generic: I +
+    - generic: J −
+    - generic: K +
+    - generic: II
+    - text: ","
+    - paragraph: с оплаченной короткой ценой
+    - math:
+      - generic: B
+      - generic: s
+      - generic: h
+      - generic: o
+      - generic: r
+      - generic: t
+      - generic: =
+      - generic: "2"
+      - generic: (
+      - generic: "40"
+      - generic: +
+      - generic: "16"
+      - generic: Ω
+      - generic: )
+      - generic: U
+      - generic: +
+      - generic: "12"
+      - generic: V
+      - generic: +
+      - generic: "12"
+      - generic: (
+      - generic: "12"
+      - generic: +
+      - generic: "4"
+      - generic: Ω
+      - generic: )
+      - generic: U
+      - generic: V
+      - generic: .
+    - text: B
+    - generic: short
+    - text: =
+    - generic: 2(40 +
+    - text: 16Ω)
+    - generic: U
+    - text: +
+    - text: "12"
+    - generic: V
+    - text: +
+    - generic: 12(12 +
+    - text: 4Ω)
+    - generic: UV
+    - text: .
+    - paragraph:
+      - text: Этот вход действительно относится к полным коротким секторам и имеет показатель
+      - math:
+        - generic: "2"
+        - generic: ϵ
+      - generic: 2ϵ
+      - text: на исходном расписании.
+      - button "Vorschau von PROSHKA_CCM_VAUGHAN_JOINT_Q15_2026-10-24.txt öffnen":
+        - generic: PROSHKA_CCM_VAUGHAN_JOINT_Q15_2…
+    - paragraph: "Завершённая попытка даёт:"
+    - math:
+      - generic: S
+      - generic: m
+      - generic: ⪯
+      - generic: (
+      - generic: s
+      - generic: m
+      - generic: ∗
+      - generic: +
+      - generic: B
+      - generic: s
+      - generic: h
+      - generic: o
+      - generic: r
+      - generic: t
+      - generic: )
+      - generic: P
+      - generic: ","
+    - text: S
+    - generic: m
+    - text: ⪯ (
+    - text: s
+    - generic: m
+    - generic: ∗
+    - text: +
+    - text: B
+    - generic: short
+    - text: )P,
+    - math:
+      - generic: P
+      - generic: K
+      - generic: m
+      - generic: P
+      - generic: ⪰
+      - generic: −
+      - generic: "["
+      - generic: s
+      - generic: m
+      - generic: ∗
+      - generic: +
+      - generic: B
+      - generic: s
+      - generic: h
+      - generic: o
+      - generic: r
+      - generic: t
+      - generic: +
+      - generic: "50"
+      - generic: L
+      - generic: +
+      - generic: "8"
+      - generic: "]"
+      - generic: P
+      - generic: .
+    - text: P
+    - text: K
+    - generic: m
+    - text: P ⪰ −[
+    - text: s
+    - generic: m
+    - generic: ∗
+    - text: +
+    - text: B
+    - generic: short
+    - text: + 50L + 8]P.
+    - paragraph:
+      - text: При отдельном переходе к
+      - math:
+        - generic: T
+        - generic: ">"
+        - generic: R
+      - text: T
+      - generic: ">R"
+      - text: прежняя малоделительная плата добавляется
+      - strong: один раз
+      - text: . В прямом возврате к
+      - math:
+        - generic: K
+        - generic: m
+      - text: K
+      - generic: m
+      - text: повторной оплаты нет.
+    - paragraph:
+      - strong:
+        - text: Первая структурная потеря — переход к квадрату. Первая неоплаченная арифметическая строка — меньший контроль настоящей матричной энергии до замены
+        - math:
+          - generic: H
+          - generic: a
+          - generic: "2"
+        - text: H
+        - generic: a
+        - generic: "2"
+        - text: на
+        - math:
+          - generic: "4"
+          - generic: B
+          - generic: a
+          - generic: "2"
+          - generic: P
+        - text: "4"
+        - text: B
+        - generic: a
+        - generic: "2"
+        - text: P
+        - text: ", либо прямой верх до квадрата."
+    - paragraph: Такой контроль не доказан и не принят в предпосылки. Завершённый верх хуже старого
+    - math:
+      - generic: S
+      - generic: m
+      - generic: ⪯
+      - generic: "12"
+      - generic: m
+      - generic: P
+      - generic: .
+    - text: S
+    - generic: m
+    - text: ⪯
+    - text: "12"
+    - generic: m
+    - text: P.
+    - paragraph:
+      - text: Прежние
+      - math:
+        - generic: "3"
+        - generic: /
+        - generic: "8"
+      - generic: 3/8
+      - text: остаются
+      - strong: условными на ZF78
+      - text: ", без улучшения."
+      - button "Vorschau von PROSHKA_CCM_VAUGHAN_JOINT_Q15_2026-10-24.txt öffnen":
+        - generic: PROSHKA_CCM_VAUGHAN_JOINT_Q15_2…
+    - heading "6. Конкретный откат" [level=2]
+    - paragraph:
+      - strong: Прекращаем оптимизацию положительных весов этого энергетического сертификата.
+      - text: Возвращаемся до квадрата и независимой оплаты строк — при необходимости до Vaughan-разделения, к полной линейной форме с коэффициентами, собранными по одному произведению
+      - math:
+        - generic: "n"
+      - generic: "n"
+      - text: .
+    - paragraph:
+      - text: Следующий
+      - strong: различающий тест
+      - text: "уже конкретен: новый предполагаемый перенос должен показать, как он возвращает точную отмену для"
+      - math:
+        - generic: "n"
+        - generic: =
+        - generic: p
+        - generic: q
+      - generic: n =
+      - generic: pq
+      - text: и правильный остаток для
+      - math:
+        - generic: "n"
+        - generic: =
+        - generic: p
+        - generic: k
+      - generic: n =
+      - text: p
+      - generic: k
+      - text: ","
+      - strong:
+        - text: с одним и тем же
+        - math:
+          - generic: A
+          - generic: (
+          - generic: "n"
+          - generic: )
+        - generic: A(n)
+        - text: и
+        - math:
+          - generic: W
+        - generic: W
+      - text: . Если его полный бюджет снова необратимо начисляет
+      - math:
+        - generic: m
+        - generic: /
+        - generic: log
+        - generic: ⁡
+        - generic: m
+      - generic: m
+      - text: /
+      - generic: log
+      - text: m
+      - text: за эти нулевые составные пакеты, степенной цели он не достигает без отдельного возврата этой платы.
+    - paragraph:
+      - text: Это тест следующего механизма,
+      - strong: не новое имя недоказанной оценки
+      - text: . Нового источникового неравенства для ранней формы в Q15 не получено.
+    - paragraph:
+      - text: Воспроизведены
+      - strong: 8192 исходных exact-проверки
+      - text: ", выполнены"
+      - strong: 7801 новая точная локальная проверка
+      - text: и
+      - strong: 3 неинтервальные диагностики исходного ядра при 50 десятичных знаках
+      - text: . Скрипты повторно извлечены из Markdown и исполнены; JSON совпали. Журнал ошибочного ожидания одного дополнительного теста и его исправления сохранён.
+    - paragraph:
+      - strong: Lean, Arb, независимый аудит нового вывода и полный спектральный расчёт CCM не запускались. Репозиторий не изменялся. Новая полная степень и RH не получены.
+    - button "Vorschau von PROSHKA_CCM_VAUGHAN_JOINT_Q15_VERDICT_2026-10-24.md öffnen"
+    - generic "PROSHKA_CCM_VAUGHAN_JOINT_Q15_VERDICT_2026-10-24.md"
+    - generic: Dokument
+    - button "Datei herunterladen":
+    - button "Kopieren":
+    - button "Vorlesen":
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - button "Quellen":
+    - separator "heute, 10:01":
+      - time: heute, 10:01
+    - heading "Du hast gesagt:" [level=4]
+    - button "PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt"
+    - generic "PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt"
+    - generic: Dokument
+    - generic: Q16. Q15 полностью проверен. Новый направленный endpoint-return тоже посчитан до полного бюджета и не улучшает степень; старый Q06 включён, чтобы не повторять его. Прочитай весь TXT с 12 полными источниками и испытай один конкретный совместный механизм для основной части исходной формы до раздельных модулей, с полным возвратом. При тупике — первая неоплаченная строка и содержательный откат. Полный ответ верни скачиваемым Markdown; работай до естественного завершения.
+    - button "Nachricht kopieren":
+    - button "Prompt teilen":
+    - button "Nachricht bearbeiten":
+    - button "Worked for 38m 14s":
+      - generic: Worked for 38m 14s
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph:
+      - text: Ы.
+      - strong: Q16 выполнен. Нового полного арифметического показателя нет.
+      - text: "Испытан один совместный механизм:"
+      - strong: локализация, сохраняющая оба экспоненциальных ограничения
+      - text: ", с точным сравнением дискретных и непрерывных связей между частями."
+    - paragraph:
+      - text: "Получен определённый результат:"
+      - strong:
+        - text: для выбранного способа завершить эту оценку через модули дальних связей доказана неизбежная цена порядка
+        - math:
+          - generic: m
+        - generic: m
+      - text: — на настоящих коэффициентах и после возврата в исходный
+      - math:
+        - generic: P
+      - generic: P
+      - text: .
+      - strong: Это препятствие сертификату, не нижняя оценка спектра CCM.
+    - paragraph:
+      - text: "Прочитан весь пакет:"
+      - strong: 136 836 байт, 2332 LF, двенадцать полных исходников
+      - text: . Размеры и SHA-256 всех вложенных тел совпали с манифестом. Исходный объект и требования Q16 сохранены.
+      - button "Vorschau von PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt öffnen":
+        - generic: PROSHKA_CCM_DIRECT_ONE_SIDED_BU…
+    - heading "1. Какой механизм проверен" [level=2]
+    - paragraph:
+      - text: Разбивать непосредственно
+      - math:
+        - generic: f
+      - generic: f
+      - text: "на локальные части нельзя бесплатно: умножение на отсечку разрушает исходные экспоненциальные ограничения."
+    - paragraph:
+      - text: Поэтому сначала использована
+      - strong: первообразная Грина
+      - text: ":"
+    - math:
+      - generic: B
+      - generic: =
+      - generic: ∂
+      - generic: t
+      - generic: "2"
+      - generic: −
+      - generic: "1"
+      - generic: "4"
+      - generic: ","
+      - generic: u
+      - generic: (
+      - generic: t
+      - generic: )
+      - generic: =
+      - generic: −
+      - generic: ∫
+      - generic: R
+      - generic: e
+      - generic: −
+      - generic: ∣
+      - generic: t
+      - generic: −
+      - generic: v
+      - generic: ∣
+      - generic: /
+      - generic: "2"
+      - generic: f
+      - generic: (
+      - generic: v
+      - generic: )
+      - generic: d
+      - generic: v
+      - generic: ","
+      - generic: B
+      - generic: u
+      - generic: =
+      - generic: f
+      - generic: .
+    - generic: B =
+    - text: ∂
+    - generic: t
+    - generic: "2"
+    - text: −
+    - generic: "4"
+    - generic: "1"
+    - text: ", u(t) ="
+    - text: −
+    - text: ∫
+    - generic: R
+    - text: e
+    - generic: −∣t−v∣/2
+    - text: f(v) dv, Bu =
+    - generic: f.
+    - paragraph:
+      - text: Благодаря исходным ограничениям
+      - math:
+        - generic: u
+      - generic: u
+      - text: компактно поддержана в том же окне. Для явного гладкого разбиения единицы
+      - math:
+        - generic: ∑
+        - generic: j
+        - generic: θ
+        - generic: j
+        - generic: =
+        - generic: "1"
+      - text: ∑
+      - generic: j
+      - text: θ
+      - generic: j
+      - text: =
+      - generic: "1"
+      - text: определены
+    - math:
+      - generic: f
+      - generic: j
+      - generic: =
+      - generic: B
+      - generic: (
+      - generic: θ
+      - generic: j
+      - generic: u
+      - generic: )
+      - generic: =
+      - generic: θ
+      - generic: j
+      - generic: f
+      - generic: +
+      - generic: "2"
+      - generic: θ
+      - generic: j
+      - generic: ′
+      - generic: u
+      - generic: ′
+      - generic: +
+      - generic: θ
+      - generic: j
+      - generic: ′
+      - generic: ′
+      - generic: u
+      - generic: .
+    - text: f
+    - generic: j
+    - text: = B(
+    - text: θ
+    - generic: j
+    - text: u) =
+    - text: θ
+    - generic: j
+    - text: f + 2
+    - text: θ
+    - generic: j
+    - generic: ′
+    - text: u
+    - generic: ′
+    - text: +
+    - text: θ
+    - generic: j
+    - generic: ′′
+    - text: u.
+    - paragraph: "Тогда точно:"
+    - math:
+      - generic: ∑
+      - generic: j
+      - generic: f
+      - generic: j
+      - generic: =
+      - generic: f
+      - generic: ","
+      - generic: ∫
+      - generic: e
+      - generic: t
+      - generic: /
+      - generic: "2"
+      - generic: f
+      - generic: j
+      - generic: (
+      - generic: t
+      - generic: )
+      - generic: d
+      - generic: t
+      - generic: =
+      - generic: ∫
+      - generic: e
+      - generic: −
+      - generic: t
+      - generic: /
+      - generic: "2"
+      - generic: f
+      - generic: j
+      - generic: (
+      - generic: t
+      - generic: )
+      - generic: d
+      - generic: t
+      - generic: =
+      - generic: "0."
+    - generic: j
+    - generic: ∑
+    - text: f
+    - generic: j
+    - text: =
+    - text: f, ∫
+    - text: e
+    - generic: t/2
+    - text: f
+    - generic: j
+    - text: (t) dt =
+    - text: ∫
+    - text: e
+    - generic: −t/2
+    - text: f
+    - generic: j
+    - text: (t) dt =
+    - generic: "0."
+    - paragraph:
+      - strong: Оба смешанных производных члена сохранены.
+      - text: "Каждая часть имеет нужные контакты, но отдельно не объявляется новым разрешённым Fourier-тестом: это вспомогательное представление прежнего"
+      - math:
+        - generic: f
+        - generic: =
+        - generic: F
+        - generic: c
+      - generic: f =
+      - generic: Fc
+      - text: .
+    - paragraph: "Полная цена нормы:"
+    - math:
+      - generic: ∥
+      - generic: ∑
+      - generic: j
+      - generic: ∣
+      - generic: f
+      - generic: j
+      - generic: ∣
+      - generic: ∥
+      - generic: "2"
+      - generic: ≤
+      - generic: C
+      - generic: ℓ
+      - generic: ∥
+      - generic: f
+      - generic: ∥
+      - generic: "2"
+      - generic: ","
+      - generic: C
+      - generic: ℓ
+      - generic: =
+      - generic: "1"
+      - generic: +
+      - generic: "8"
+      - generic: ℓ
+      - generic: +
+      - generic: "48"
+      - generic: ℓ
+      - generic: "2"
+      - generic: .
+    - generic: j
+    - generic: ∑
+    - text: ∣
+    - text: f
+    - generic: j
+    - text: ∣
+    - generic: "2"
+    - text: ≤
+    - text: C
+    - generic: ℓ
+    - text: ∥f
+    - text: ∥
+    - generic: "2"
+    - text: ","
+    - text: C
+    - generic: ℓ
+    - text: = 1 +
+    - generic: ℓ
+    - generic: "8"
+    - text: +
+    - text: ℓ
+    - generic: "2"
+    - generic: "48"
+    - text: .
+    - paragraph:
+      - text: Здесь
+      - strong:
+        - math:
+          - generic: ℓ
+        - generic: ℓ
+      - text: — ширина разбиения. Нет скрытого множителя числа частей, размерности полосы или
+      - math:
+        - generic: m
+        - generic: ϵ
+      - text: m
+      - generic: ϵ
+      - text: .
+    - heading "2. Где оказывается отрицательный непрерывный вклад" [level=2]
+    - paragraph: "Для любых двух частей сохраняется поляризованное сравнение:"
+    - math:
+      - generic: g
+      - generic: (
+      - generic: f
+      - generic: i
+      - generic: ","
+      - generic: f
+      - generic: j
+      - generic: )
+      - generic: =
+      - generic: −
+      - generic: h
+      - generic: (
+      - generic: f
+      - generic: i
+      - generic: ","
+      - generic: f
+      - generic: j
+      - generic: )
+      - generic: ","
+    - text: g(
+    - text: f
+    - generic: i
+    - text: ","
+    - text: f
+    - generic: j
+    - text: ) =
+    - text: −h(
+    - text: f
+    - generic: i
+    - text: ","
+    - text: f
+    - generic: j
+    - text: ),
+    - math:
+      - generic: h
+      - generic: (
+      - generic: f
+      - generic: i
+      - generic: ","
+      - generic: f
+      - generic: j
+      - generic: )
+      - generic: =
+      - generic: ⟨
+      - generic: u
+      - generic: i
+      - generic: ′
+      - generic: ","
+      - generic: u
+      - generic: j
+      - generic: ′
+      - generic: ⟩
+      - generic: +
+      - generic: "1"
+      - generic: "4"
+      - generic: ⟨
+      - generic: u
+      - generic: i
+      - generic: ","
+      - generic: u
+      - generic: j
+      - generic: ⟩
+      - generic: ","
+      - generic: u
+      - generic: j
+      - generic: =
+      - generic: θ
+      - generic: j
+      - generic: u
+      - generic: .
+    - text: h(
+    - text: f
+    - generic: i
+    - text: ","
+    - text: f
+    - generic: j
+    - text: ) =
+    - text: ⟨
+    - text: u
+    - generic: i
+    - generic: ′
+    - text: ","
+    - text: u
+    - generic: j
+    - generic: ′
+    - text: ⟩ +
+    - generic: "4"
+    - generic: "1"
+    - text: ⟨
+    - text: u
+    - generic: i
+    - text: ","
+    - text: u
+    - generic: j
+    - text: ⟩,
+    - text: u
+    - generic: j
+    - text: =
+    - text: θ
+    - generic: j
+    - text: u.
+    - paragraph:
+      - text: Поэтому
+      - strong: между непересекающимися частями оба непрерывных вклада равны нулю точно
+      - text: . Весь непрерывный отрицательный вклад находится в диагональных и соседних связях. Это законное использование исходной формулы, а не предположение о независимости частей. Сам исходный непрерывный оператор удовлетворяет
+      - math:
+        - generic: "0"
+        - generic: ≤
+        - generic: H
+        - generic: ≤
+        - generic: "4"
+        - generic: I
+      - generic: 0 ≤
+      - generic: H ≤
+      - generic: 4I
+      - text: .
+      - button "Vorschau von PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt öffnen":
+        - generic: PROSHKA_CCM_DIRECT_ONE_SIDED_BU…
+    - paragraph: Теперь выбираем
+    - math:
+      - generic: ℓ
+      - generic: =
+      - generic: "2"
+      - generic: "9"
+      - generic: ","
+      - generic: "3"
+      - generic: ℓ
+      - generic: =
+      - generic: "2"
+      - generic: "3"
+      - generic: <
+      - generic: log
+      - generic: ⁡
+      - generic: "2."
+    - generic: ℓ =
+    - generic: "9"
+    - generic: "2"
+    - text: ", 3ℓ ="
+    - generic: "3"
+    - generic: "2"
+    - text: <
+    - generic: log
+    - text: "2."
+    - paragraph:
+      - text: Объединение поддержек двух соседних частей слишком короткое даже для первого простого сдвига
+      - math:
+        - generic: log
+        - generic: ⁡
+        - generic: "2"
+      - generic: log
+      - text: "2"
+      - text: . Поэтому
+      - strong: ближний простой блок равен нулю
+      - text: ", тогда как все простые связи остаются между дальними частями."
+    - paragraph: Точная сборка имеет вид
+    - math:
+      - generic: S
+      - generic: m
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: =
+      - generic: −
+      - generic: h
+      - generic: (
+      - generic: f
+      - generic: ","
+      - generic: f
+      - generic: )
+      - generic: +
+      - generic: h
+      - generic: (
+      - generic: f
+      - generic: ","
+      - generic: f
+      - generic: )
+      - generic: +
+      - generic: X
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: =
+      - generic: X
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: ","
+    - text: S
+    - generic: m
+    - text: "[f] = −h(f, f) + h(f, f) +"
+    - text: X
+    - generic: ℓ
+    - text: "[f] ="
+    - text: X
+    - generic: ℓ
+    - text: "[f],"
+    - paragraph: где
+    - math:
+      - generic: X
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: =
+      - generic: "2"
+      - generic: ℜ
+      - generic: ∑
+      - generic: j
+      - generic: ≥
+      - generic: i
+      - generic: +
+      - generic: "2"
+      - generic: ∑
+      - generic: "n"
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: ∫
+      - generic: f
+      - generic: i
+      - generic: (
+      - generic: t
+      - generic: )
+      - generic: ‾
+      - generic: f
+      - generic: j
+      - generic: (
+      - generic: t
+      - generic: +
+      - generic: log
+      - generic: ⁡
+      - generic: "n"
+      - generic: )
+      - generic: d
+      - generic: t
+      - generic: .
+    - text: X
+    - generic: ℓ
+    - text: "[f] ="
+    - text: 2ℜ
+    - generic: j≥i+2
+    - generic: ∑
+    - generic: n≤m
+    - generic: ∑
+    - generic: "n"
+    - generic: Λ(n)
+    - text: ∫
+    - text: f
+    - generic: i
+    - text: (t)
+    - text: f
+    - generic: j
+    - text: (t +
+    - generic: log
+    - text: n) dt.
+    - paragraph:
+      - strong: "Непрерывный кредит не потерян: его полностью возвращает ближняя часть центрированной разности. Повторно вычесть его из дальних простых связей нельзя."
+    - paragraph:
+      - text: В
+      - math:
+        - generic: X
+        - generic: ℓ
+      - text: X
+      - generic: ℓ
+      - text: сохранены все степени простых, обе временные ориентации и все исходные смешанные Fourier-коэффициенты.
+    - heading "3. Проверена цена завершения через модули" [level=2]
+    - paragraph: "Следующий законный, но теряющий знак переход:"
+    - math:
+      - generic: X
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: ≤
+      - generic: A
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: ","
+    - text: X
+    - generic: ℓ
+    - text: "[f] ≤"
+    - text: A
+    - generic: ℓ
+    - text: "[f],"
+    - math:
+      - generic: A
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: =
+      - generic: "2"
+      - generic: ∑
+      - generic: "n"
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: ∫
+      - generic: ∑
+      - generic: j
+      - generic: ≥
+      - generic: i
+      - generic: +
+      - generic: "2"
+      - generic: ∣
+      - generic: f
+      - generic: i
+      - generic: (
+      - generic: t
+      - generic: )
+      - generic: ∣
+      - generic: ∣
+      - generic: f
+      - generic: j
+      - generic: (
+      - generic: t
+      - generic: +
+      - generic: log
+      - generic: ⁡
+      - generic: "n"
+      - generic: )
+      - generic: ∣
+      - generic: d
+      - generic: t
+      - generic: .
+    - text: A
+    - generic: ℓ
+    - text: "[f] ="
+    - text: "2"
+    - generic: n≤m
+    - generic: ∑
+    - generic: "n"
+    - generic: Λ(n)
+    - text: ∫
+    - generic: j≥i+2
+    - generic: ∑
+    - text: ∣
+    - text: f
+    - generic: i
+    - text: (t)∣ ∣
+    - text: f
+    - generic: j
+    - text: (t +
+    - generic: log
+    - text: n)∣ dt.
+    - paragraph: "Полный верх:"
+    - math:
+      - generic: A
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: "]"
+      - generic: ≤
+      - generic: "2"
+      - generic: W
+      - generic: (
+      - generic: m
+      - generic: )
+      - generic: C
+      - generic: ℓ
+      - generic: "2"
+      - generic: ∥
+      - generic: f
+      - generic: ∥
+      - generic: "2"
+      - generic: ","
+      - generic: W
+      - generic: (
+      - generic: m
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: "n"
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: .
+    - text: A
+    - generic: ℓ
+    - text: "[f] ≤"
+    - text: 2W(m)
+    - text: C
+    - generic: ℓ
+    - generic: "2"
+    - text: ∥f
+    - text: ∥
+    - generic: "2"
+    - text: ", W(m) ="
+    - generic: n≤m
+    - generic: ∑
+    - generic: "n"
+    - generic: Λ(n)
+    - text: .
+    - paragraph:
+      - strong: Для этого положительного сертификата доказана и нижняя степенная цена.
+      - text: Построена единичная семья
+      - math:
+        - generic: f
+        - generic: m
+        - generic: =
+        - generic: F
+        - generic: c
+        - generic: m
+      - text: f
+      - generic: m
+      - text: =
+      - text: F
+      - text: c
+      - generic: m
+      - text: ","
+      - math:
+        - generic: c
+        - generic: m
+        - generic: =
+        - generic: P
+        - generic: c
+        - generic: m
+      - text: c
+      - generic: m
+      - text: =
+      - text: P
+      - text: c
+      - generic: m
+      - text: ", такая, что"
+    - math:
+      - generic: A
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: m
+      - generic: "]"
+      - generic: ≥
+      - generic: "1"
+      - generic: "5"
+      - generic: "400"
+      - generic: "000"
+      - generic: "000"
+      - generic: m
+    - text: A
+    - generic: ℓ
+    - text: "["
+    - text: f
+    - generic: m
+    - text: "] ≥"
+    - generic: 5 400 000 000
+    - generic: "1"
+    - generic: m
+    - paragraph: на каждой достаточно поздней исходной ячейке.
+    - paragraph:
+      - text: Конструкция использует два компактных профиля с обоими контактами. Их полный Fourier- и constraint-return оплачен, включая все атомы, вновь активированные после проекции. Для арифметической массы требуется только обычная безусловная
+      - strong: теорема о распределении простых
+      - text: ", без ошибки RH-силы."
+      - 'link "DLMF: DLMF: §27.12 Asymptotic Formulas: Primes ‣ Multiplicative Number Theory ‣ Chapter 27 Functions of Number Theory, https://dlmf.nist.gov/27.12"':
+        - /url: https://dlmf.nist.gov/27.12
+        - generic: DLMF
+    - paragraph:
+      - text: Кроме фиксированной
+      - math:
+        - generic: ℓ
+        - generic: =
+        - generic: "2"
+        - generic: /
+        - generic: "9"
+      - generic: ℓ =
+      - generic: 2/9
+      - text: ", в архиве доказана нижняя цена всего указанного семейства сертификатов после оптимизации ширины"
+    - math:
+      - generic: "1"
+      - generic: "8"
+      - generic: ≤
+      - generic: ℓ
+      - generic: ≤
+      - generic: log
+      - generic: ⁡
+      - generic: m
+      - generic: .
+    - generic: "8"
+    - generic: "1"
+    - text: ≤
+    - generic: ℓ ≤
+    - generic: log
+    - text: m.
+    - heading "Почему это не контрпример CCM" [level=3]
+    - paragraph:
+      - text: На той же возвращённой семье настоящий
+      - strong: знаковый
+      - text: источник удовлетворяет
+    - math:
+      - generic: S
+      - generic: m
+      - generic: "["
+      - generic: f
+      - generic: m
+      - generic: "]"
+      - generic: m
+      - generic: ⟶
+      - generic: "0."
+    - generic: m
+    - text: S
+    - generic: m
+    - text: "["
+    - text: f
+    - generic: m
+    - text: "]"
+    - text: ⟶ 0.
+    - paragraph:
+      - text: Ведущий непрерывный перекрёстный вклад сокращается благодаря контактам; обычная PNT возвращает лишь качественное
+      - math:
+        - generic: o
+        - generic: (
+        - generic: m
+        - generic: )
+      - text: o(
+      - generic: m
+      - text: )
+      - text: .
+    - paragraph: "Таким образом, проверка непосредственно различает:"
+    - math:
+      - generic: A
+      - generic: ℓ
+      - generic: "["
+      - generic: f
+      - generic: m
+      - generic: "]"
+      - generic: ≥
+      - generic: c
+      - generic: m
+      - generic: ⏟
+      - generic: цена модульного сертификата
+      - generic: ","
+      - generic: S
+      - generic: m
+      - generic: "["
+      - generic: f
+      - generic: m
+      - generic: "]"
+      - generic: =
+      - generic: o
+      - generic: (
+      - generic: m
+      - generic: )
+      - generic: ⏟
+      - generic: настоящая знаковая форма
+      - generic: .
+    - generic: цена модульного сертификата
+    - text: A
+    - generic: ℓ
+    - text: "["
+    - text: f
+    - generic: m
+    - text: "] ≥ c"
+    - generic: m
+    - text: ","
+    - generic: настоящая знаковая форма
+    - text: S
+    - generic: m
+    - text: "["
+    - text: f
+    - generic: m
+    - text: "] = o("
+    - generic: m
+    - text: )
+    - text: .
+    - paragraph:
+      - strong: Никакой нижней полустепенной оценки для исходного спектра из этого не следует.
+      - text: Но дальнейшая оптимизация ширины после того же модульного перехода уже не решает задачу.
+    - heading "4. Первая неоплаченная строка и полный возврат" [level=2]
+    - paragraph:
+      - strong: Первая потеря информации — замена совместной действительной части на сумму модулей произведений.
+      - text: Контактная локализация и её нормы до этого оплачены.
+    - paragraph:
+      - text: Меньший направленный верх для полной
+      - math:
+        - generic: X
+        - generic: ℓ
+      - text: X
+      - generic: ℓ
+      - text: на достижимом образе одной исходной функции
+      - strong: не доказан
+      - text: . При выбранной узкой ширине
+      - math:
+        - generic: X
+        - generic: ℓ
+        - generic: =
+        - generic: S
+        - generic: m
+      - text: X
+      - generic: ℓ
+      - text: =
+      - text: S
+      - generic: m
+      - text: ", поэтому назвать её новым поставщиком означало бы переименовать прежнюю цель."
+    - paragraph:
+      - text: Завершённый локализационный бюджет имеет степень
+      - math:
+        - generic: "1"
+        - generic: /
+        - generic: "2"
+      - generic: 1/2
+      - text: "и хуже старого прямого конверта. Сохраняется:"
+    - math:
+      - generic: S
+      - generic: m
+      - generic: ⪯
+      - generic: "12"
+      - generic: m
+      - generic: P
+      - generic: ","
+      - generic: P
+      - generic: K
+      - generic: m
+      - generic: P
+      - generic: ⪰
+      - generic: −
+      - generic: "["
+      - generic: "12"
+      - generic: m
+      - generic: +
+      - generic: "50"
+      - generic: log
+      - generic: ⁡
+      - generic: m
+      - generic: +
+      - generic: "8"
+      - generic: "]"
+      - generic: P
+      - generic: .
+    - text: S
+    - generic: m
+    - text: ⪯ 12
+    - generic: m
+    - text: P, P
+    - text: K
+    - generic: m
+    - text: P ⪰ −[12
+    - generic: m
+    - text: + 50
+    - generic: log
+    - text: m + 8]P.
+    - paragraph:
+      - text: Для отдельного контракта
+      - math:
+        - generic: T
+        - generic: ">"
+        - generic: R
+      - text: T
+      - generic: ">R"
+      - text: короткая часть возвращается один раз. В прямой нижней оценке
+      - math:
+        - generic: K
+        - generic: m
+      - text: K
+      - generic: m
+      - text: повторной короткой платы нет.
+      - strong:
+        - text: Прежние
+        - math:
+          - generic: "3"
+          - generic: /
+          - generic: "8"
+        - generic: 3/8
+        - text: остаются условными на ZF78; нового выигрыша здесь нет.
+    - heading "5. Обоснованный откат" [level=2]
+    - paragraph:
+      - strong: Останавливаем универсальное мажорирование локальных частей.
+      - text: Более ранняя логическая развилка — проверять новый арифметический аргумент на
+      - strong: конкретной паре разделяющих функций
+      - text: ", которую принятый receiver строит для каждого фиксированного гипотетического внепрямого нуля, вместо обязательной оценки всех абсолютных локальных энергий."
+    - paragraph:
+      - text: В архиве выписана её полная перекрёстная сумма с настоящими
+      - math:
+        - generic: Λ
+        - generic: (
+        - generic: "n"
+        - generic: )
+      - generic: Λ(n)
+      - text: ", обоими временными знаками и возвращённой нормой. Отличающий тест:"
+      - strong: какая строка нового аргумента использует структуру этих конкретных функций сверх двух экспоненциальных контактов?
+      - text: Если такой строки нет и остаётся только старый абсолютный PNT-бюджет, перенос снова недостаточен.
+    - paragraph:
+      - strong: Это более слабая достаточная развилка, а не найденная оценка и не автоматический Q17.
+    - paragraph:
+      - text: Выполнены
+      - strong: 181 точный локальный контроль
+      - text: и
+      - strong: две неинтервальные диагностики
+      - text: исходного ядра. Скрипты повторно извлечены из итогового Markdown; результаты воспроизвелись побайтно. При финальной проверке исправлен пропущенный множитель 2 в нормовой цене локализации; исправление и предыдущий программный отказ сохранены в журнале.
+    - paragraph:
+      - strong: Lean, Arb, независимый аудит нового вывода и полный спектральный расчёт CCM не запускались. Репозиторий не изменялся. Новая полная степень и RH не получены.
+    - button "Vorschau von PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_VERDICT_2026-10-25.md öffnen"
+    - generic "PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_VERDICT_2026-10-25.md"
+    - generic: Dokument
+    - button "Datei herunterladen":
+    - button "Kopieren":
+    - button "Vorlesen":
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - button "Quellen":
+    - heading "Du hast gesagt:" [level=4]
+    - button "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt"
+    - generic "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt"
+    - generic: Dokument
+    - generic: Q17. Полный Q16 проверен; своя попытка усреднить настоящую пару до модулей тоже получила полный бюджет и независимую ограниченную проверку — новой степени нет. Прочитай весь приложенный TXT с семью полными источниками. Испытай указанный перенос двух настоящих дифференциальных резольвент через совместную знаковую форму, сохраняя исходный P, все смешанные члены и граничные вклады. При тупике назови точную неоплаченную строку и содержательный более ранний откат. Полный ответ верни скачиваемым Markdown; работай до естественного завершения.
+    - button "Nachricht kopieren":
+    - button "Prompt teilen":
+    - button "Nachricht bearbeiten":
+    - button "Worked for 30m 58s":
+      - generic: Worked for 30m 58s
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph:
+      - text: Ы.
+      - strong: "Q17 выполнен. Перенос двух резольвент через полную форму не зануляет результат: он оставляет точно вычисленный граничный вклад. Условно на тот же гипотетический внепрямой нуль этот вклад возвращает весь прежний отрицательный сигнал. Нового благоприятного арифметического показателя нет."
+    - paragraph:
+      - text: Прочитаны
+      - strong: 126 407 байт, 1919 LF и все семь исходников
+      - text: ". Размеры и SHA-256 всех вложенных тел совпали с манифестом. Собственный расчёт S1 проверен:"
+      - strong: поправок к его формулам (1)–(8) не потребовалось
+      - text: ; оригинал сохранён в ответе без изменений.
+    - heading "1. Точное место, где нулевой forcing перестаёт давать нулевой ответ" [level=2]
+    - paragraph: Проверял именно предложенный перенос настоящих сепараторов, а не произвольные функции с двумя экспоненциальными контактами. Источник задаёт
+    - math:
+      - generic: (
+      - generic: ∂
+      - generic: +
+      - generic: w
+      - generic: )
+      - generic: r
+      - generic: g
+      - generic: =
+      - generic: F
+      - generic: w
+      - generic: ","
+      - generic: (
+      - generic: ∂
+      - generic: +
+      - generic: w
+      - generic: †
+      - generic: )
+      - generic: r
+      - generic: k
+      - generic: =
+      - generic: F
+      - generic: w
+      - generic: †
+      - generic: ","
+      - generic: w
+      - generic: †
+      - generic: =
+      - generic: −
+      - generic: w
+      - generic: ˉ
+      - generic: ","
+    - generic: (∂ +
+    - text: w
+    - text: )
+    - generic: r
+    - text: g =
+    - text: F
+    - generic: w
+    - text: ", (∂ +"
+    - text: w
+    - generic: †
+    - text: )
+    - generic: r
+    - text: k =
+    - text: F
+    - text: w
+    - generic: †
+    - text: ","
+    - text: w
+    - generic: †
+    - text: =
+    - text: −
+    - generic: w
+    - text: ˉ
+    - text: ","
+    - paragraph:
+      - text: где вынуждающие члены построены из того же
+      - math:
+        - generic: G
+        - generic: =
+        - generic: −
+        - generic: "4"
+        - generic: Φ
+      - generic: G =
+      - generic: −4Φ
+      - text: .
+      - button "Vorschau von PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt öffnen":
+        - generic: PROSHKA_CCM_ZERO_SELECTIVE_PAIR…
+    - paragraph:
+      - strong: Радикал формы
+      - text: "— функции, спаривание которых с любым допустимым тестом равно нулю. Вынуждающие члены действительно лежат в радикале. Но на последнем шаге обращения производной происходит точное сокращение нуля:"
+    - math:
+      - generic: lim
+      - generic: ⁡
+      - generic: z
+      - generic: →
+      - generic: w
+      - generic: M
+      - generic: F
+      - generic: w
+      - generic: (
+      - generic: z
+      - generic: )
+      - generic: (
+      - generic: w
+      - generic: −
+      - generic: z
+      - generic: )
+      - generic: r
+      - generic: =
+      - generic: "1"
+      - generic: ","
+    - generic: z→w
+    - generic: lim
+    - text: (w − z
+    - text: )
+    - generic: r
+    - text: M
+    - text: F
+    - generic: w
+    - text: (z)
+    - text: = 1,
+    - paragraph:
+      - text: а не ноль. Это та самая нормировка настоящего сепаратора, уже закреплённая в источнике.
+      - button "Vorschau von PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt öffnen":
+        - generic: PROSHKA_CCM_ZERO_SELECTIVE_PAIR…
+    - paragraph: Для конечных горизонтов резольвент получено
+    - math:
+      - generic: g
+      - generic: =
+      - generic: R
+      - generic: w
+      - generic: A
+      - generic: +
+      - generic: E
+      - generic: w
+      - generic: A
+      - generic: ","
+      - generic: k
+      - generic: =
+      - generic: R
+      - generic: w
+      - generic: †
+      - generic: B
+      - generic: +
+      - generic: E
+      - generic: w
+      - generic: †
+      - generic: B
+      - generic: .
+    - generic: g =
+    - text: R
+    - generic: w
+    - generic: A
+    - text: +
+    - text: E
+    - generic: w
+    - generic: A
+    - text: ", k ="
+    - text: R
+    - text: w
+    - generic: †
+    - generic: B
+    - text: +
+    - text: E
+    - text: w
+    - generic: †
+    - generic: B
+    - text: .
+    - paragraph:
+      - text: Здесь
+      - math:
+        - generic: R
+      - generic: R
+      - text: — конечные интегралы от вынуждающих членов, а
+      - math:
+        - generic: E
+      - generic: E
+      - text: —
+      - strong: полные терминальные члены
+      - text: ", включая все полиномы по горизонту до степени"
+      - math:
+        - generic: r
+        - generic: −
+        - generic: "1"
+      - generic: r −
+      - generic: "1"
+      - text: .
+    - paragraph: "После раскрытия всех четырёх спариваний:"
+    - math:
+      - generic: W
+      - generic: (
+      - generic: g
+      - generic: ","
+      - generic: k
+      - generic: )
+      - generic: =
+      - generic: W
+      - generic: (
+      - generic: E
+      - generic: w
+      - generic: A
+      - generic: ","
+      - generic: E
+      - generic: w
+      - generic: †
+      - generic: B
+      - generic: )
+      - generic: =
+      - generic: r
+      - generic: .
+    - text: W(g, k) = W(
+    - text: E
+    - generic: w
+    - generic: A
+    - text: ","
+    - text: E
+    - text: w
+    - generic: †
+    - generic: B
+    - text: ) = r.
+    - paragraph:
+      - text: Остальные три члена равны нулю законно — по радикальности.
+      - strong: Последний смешанный член не исчезает ни при каком конечном горизонте.
+    - heading "2. Малость физической нормы не оплачивает эту границу" [level=2]
+    - paragraph: Особенно ясно проблема видна на последнем шаге той же цепи. Его терминальная пара буквально равна
+    - math:
+      - generic: H
+      - generic: a
+      - generic: ","
+      - generic: A
+      - generic: =
+      - generic: e
+      - generic: −
+      - generic: δ
+      - generic: A
+      - generic: f
+      - generic: a
+      - generic: +
+      - generic: A
+      - generic: .
+    - text: H
+    - generic: a,A
+    - text: =
+    - text: e
+    - generic: −δA
+    - text: f
+    - generic: a+A
+    - text: .
+    - paragraph: "Поэтому одновременно:"
+    - math:
+      - generic: ∥
+      - generic: H
+      - generic: a
+      - generic: ","
+      - generic: A
+      - generic: ∥
+      - generic: "2"
+      - generic: "2"
+      - generic: ≤
+      - generic: D
+      - generic: w
+      - generic: e
+      - generic: −
+      - generic: "2"
+      - generic: δ
+      - generic: A
+      - generic: ","
+      - generic: W
+      - generic: (
+      - generic: H
+      - generic: a
+      - generic: ","
+      - generic: A
+      - generic: )
+      - generic: =
+      - generic: −
+      - generic: "2"
+      - generic: r
+      - generic: e
+      - generic: "2"
+      - generic: δ
+      - generic: a
+      - generic: .
+    - text: ∥
+    - text: H
+    - generic: a,A
+    - text: ∥
+    - generic: "2"
+    - generic: "2"
+    - text: ≤
+    - text: D
+    - generic: w
+    - text: e
+    - generic: −2δA
+    - text: ", W("
+    - text: H
+    - generic: a,A
+    - text: ) = −2r
+    - text: e
+    - generic: 2δa
+    - text: .
+    - paragraph:
+      - strong: Норма стремится к нулю, но нужная форма сохраняет весь сигнал.
+      - text: "Это не противоречие: переход через несобственный резольвентный интеграл требовал непрерывности формы в подходящей топологии, а одной"
+      - math:
+        - generic: L
+        - generic: "2"
+      - text: L
+      - generic: "2"
+      - text: "-сходимости недостаточно."
+    - paragraph:
+      - text: Обе перенесённые производные попадают в
+      - strong: один резонанс
+      - text: ":"
+    - math:
+      - generic: −
+      - generic: ∂
+      - generic: +
+      - generic: w
+      - generic: ˉ
+      - generic: =
+      - generic: −
+      - generic: (
+      - generic: ∂
+      - generic: +
+      - generic: w
+      - generic: †
+      - generic: )
+      - generic: .
+    - generic: −∂ +
+    - generic: w
+    - text: ˉ
+    - text: =
+    - generic: −(∂ +
+    - text: w
+    - generic: †
+    - text: ).
+    - paragraph: Они не дают двух независимых ограничений, из которых можно было бы вывести положительность.
+    - paragraph:
+      - text: В Markdown эта проверка возвращена и на
+      - strong:
+        - text: исходный
+        - math:
+          - generic: P
+        - generic: P
+      - text: . При вспомогательном горизонте
+      - math:
+        - generic: A
+        - generic: =
+        - generic: "1"
+        - generic: "4"
+        - generic: log
+        - generic: ⁡
+        - generic: L
+      - generic: A =
+      - generic: "4"
+      - generic: "1"
+      - generic: log
+      - text: L
+      - text: построенный возвращённый остаток удовлетворяет
+    - math:
+      - generic: ∥
+      - generic: "y"
+      - generic: m
+      - generic: ∥
+      - generic: "2"
+      - generic: ≤
+      - generic: C
+      - generic: w
+      - generic: L
+      - generic: −
+      - generic: δ
+      - generic: /
+      - generic: "2"
+      - generic: ","
+    - text: ∥
+    - text: "y"
+    - generic: m
+    - text: ∥
+    - generic: "2"
+    - text: ≤
+    - text: C
+    - generic: w
+    - text: L
+    - generic: −δ/2
+    - text: ","
+    - math:
+      - generic: "y"
+      - generic: m
+      - generic: ∗
+      - generic: K
+      - generic: m
+      - generic: "y"
+      - generic: m
+      - generic: =
+      - generic: −
+      - generic: "2"
+      - generic: r
+      - generic: m
+      - generic: δ
+      - generic: L
+      - generic: "2"
+      - generic: δ
+      - generic: +
+      - generic: o
+      - generic: (
+      - generic: "1"
+      - generic: )
+      - generic: .
+    - text: "y"
+    - generic: m
+    - generic: ∗
+    - text: K
+    - generic: m
+    - text: "y"
+    - generic: m
+    - text: = −2r
+    - text: L
+    - generic: 2δ
+    - text: m
+    - generic: δ
+    - text: + o(1).
+    - paragraph:
+      - text: Все cutoff-, Fourier- и контактные поправки оплачены.
+      - strong: Это условный тест ошибочного переноса, не утверждение существования внепрямого нуля.
+      - text: Использованы те же фиксированные профили и исходный механизм возврата.
+      - button "Vorschau von PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt öffnen":
+        - generic: PROSHKA_CCM_ZERO_SELECTIVE_PAIR…
+    - heading "3. Конечную арифметическую сумму тоже перенёс — без радикального зануления" [level=2]
+    - paragraph:
+      - text: Для
+      - strong: конечного
+      - text: prime-cutoff перенос законен, поскольку соответствующий оператор ограничен в
+      - math:
+        - generic: L
+        - generic: "2"
+      - text: L
+      - generic: "2"
+      - text: .
+    - paragraph: Положим
+    - math:
+      - generic: F
+      - generic: "0"
+      - generic: =
+      - generic: (
+      - generic: ∂
+      - generic: "2"
+      - generic: −
+      - generic: "1"
+      - generic: "4"
+      - generic: )
+      - generic: G
+      - generic: ","
+      - generic: R
+      - generic: "0"
+      - generic: (
+      - generic: "y"
+      - generic: )
+      - generic: =
+      - generic: ∫
+      - generic: F
+      - generic: "0"
+      - generic: (
+      - generic: t
+      - generic: )
+      - generic: ‾
+      - generic: F
+      - generic: "0"
+      - generic: (
+      - generic: t
+      - generic: +
+      - generic: "y"
+      - generic: )
+      - generic: d
+      - generic: t
+      - generic: ","
+    - text: F
+    - generic: "0"
+    - text: =
+    - text: (
+    - text: ∂
+    - generic: "2"
+    - text: −
+    - generic: "4"
+    - generic: "1"
+    - text: )G,
+    - text: R
+    - generic: "0"
+    - text: (y) =
+    - text: ∫
+    - text: F
+    - generic: "0"
+    - text: (t)
+    - text: F
+    - generic: "0"
+    - text: (t +
+    - generic: y) dt,
+    - math:
+      - generic: H
+      - generic: m
+      - generic: (
+      - generic: "y"
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: "n"
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: "["
+      - generic: R
+      - generic: "0"
+      - generic: (
+      - generic: "y"
+      - generic: −
+      - generic: log
+      - generic: ⁡
+      - generic: "n"
+      - generic: )
+      - generic: +
+      - generic: R
+      - generic: "0"
+      - generic: (
+      - generic: "y"
+      - generic: +
+      - generic: log
+      - generic: ⁡
+      - generic: "n"
+      - generic: )
+      - generic: "]"
+      - generic: .
+    - text: H
+    - generic: m
+    - text: (y) =
+    - generic: n≤m
+    - generic: ∑
+    - generic: "n"
+    - generic: Λ(n)
+    - generic: "["
+    - text: R
+    - generic: "0"
+    - text: (y −
+    - generic: log
+    - text: n) +
+    - text: R
+    - generic: "0"
+    - text: (y +
+    - generic: log
+    - text: n)
+    - generic: "]"
+    - text: .
+    - paragraph:
+      - text: Обе настоящие резольвенты складываются в
+      - strong:
+        - text: один интеграл порядка
+        - math:
+          - generic: "2"
+          - generic: r
+        - generic: 2r
+      - text: ":"
+    - math:
+      - generic: J
+      - generic: (
+      - generic: a
+      - generic: ;
+      - generic: m
+      - generic: )
+      - generic: =
+      - generic: (
+      - generic: −
+      - generic: "1"
+      - generic: )
+      - generic: r
+      - generic: c
+      - generic: ˉ
+      - generic: w
+      - generic: c
+      - generic: w
+      - generic: †
+      - generic: ∫
+      - generic: "0"
+      - generic: ∞
+      - generic: u
+      - generic: "2"
+      - generic: r
+      - generic: −
+      - generic: "1"
+      - generic: (
+      - generic: "2"
+      - generic: r
+      - generic: −
+      - generic: "1"
+      - generic: )
+      - generic: "!"
+      - generic: e
+      - generic: −
+      - generic: w
+      - generic: ˉ
+      - generic: u
+      - generic: H
+      - generic: m
+      - generic: (
+      - generic: "2"
+      - generic: a
+      - generic: +
+      - generic: u
+      - generic: )
+      - generic: d
+      - generic: u
+      - generic: .
+    - text: J(a; m) =
+    - generic: c
+    - text: ˉ
+    - generic: w
+    - text: c
+    - text: w
+    - generic: †
+    - text: (−1
+    - text: )
+    - generic: r
+    - text: ∫
+    - generic: "0"
+    - generic: ∞
+    - generic: (2r − 1)!
+    - text: u
+    - generic: 2r−1
+    - text: e
+    - text: −
+    - generic: w
+    - text: ˉ
+    - text: u
+    - text: H
+    - generic: m
+    - text: (2a + u) du.
+    - paragraph:
+      - text: Здесь сохранены
+      - strong:
+        - text: собственная нормировка партнёра, оба временных знака, все
+        - math:
+          - generic: Λ
+          - generic: (
+          - generic: p
+          - generic: k
+          - generic: )
+        - text: Λ(
+        - text: p
+        - generic: k
+        - text: )
+        - text: ", исходный cutoff и вся комплексная фаза"
+      - text: . Хвост этого интеграла можно оплатить величиной
+      - math:
+        - generic: o
+        - generic: (
+        - generic: "1"
+        - generic: )
+      - generic: o(1)
+      - text: .
+    - paragraph: Но завершение имеющимися оценками даёт только
+    - math:
+      - generic: ∣
+      - generic: J
+      - generic: (
+      - generic: a
+      - generic: ;
+      - generic: m
+      - generic: )
+      - generic: ∣
+      - generic: ≤
+      - generic: "12"
+      - generic: ∥
+      - generic: F
+      - generic: "0"
+      - generic: ∥
+      - generic: "2"
+      - generic: "2"
+      - generic: ∣
+      - generic: c
+      - generic: w
+      - generic: c
+      - generic: w
+      - generic: †
+      - generic: ∣
+      - generic: δ
+      - generic: "2"
+      - generic: r
+      - generic: m
+      - generic: .
+    - text: ∣J(a; m)∣ ≤
+    - text: ∣
+    - text: c
+    - generic: w
+    - text: c
+    - text: w
+    - generic: †
+    - text: ∣
+    - text: δ
+    - generic: 2r
+    - text: 12∥
+    - text: F
+    - generic: "0"
+    - text: ∥
+    - generic: "2"
+    - generic: "2"
+    - generic: m
+    - text: .
+    - paragraph:
+      - strong:
+        - text: Полная степень —
+        - math:
+          - generic: "1"
+          - generic: /
+          - generic: "2"
+        - generic: 1/2
+        - text: .
+      - text: Старое профильное усреднение S1 лучше по логарифмам, но его отношение цены к нужному сигналу всё равно сохраняет дефицит
+      - math:
+        - generic: m
+        - generic: "1"
+        - generic: /
+        - generic: "2"
+        - generic: −
+        - generic: δ
+      - text: m
+      - generic: 1/2−δ
+      - text: . Его проверенный бюджет не улучшен.
+      - button "Vorschau von PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_2026-10-25.txt öffnen":
+        - generic: PROSHKA_CCM_ZERO_SELECTIVE_PAIR…
+    - heading "4. Почему нельзя сначала перейти к бесконечной арифметике и занулить forcing" [level=2]
+    - paragraph:
+      - text: Доказан отдельный отрицательный контроль
+      - strong:
+        - text: на настоящем
+        - math:
+          - generic: F
+          - generic: "0"
+        - text: F
+        - generic: "0"
+        - text: и настоящих коэффициентах
+        - math:
+          - generic: Λ
+        - generic: Λ
+      - text: ":"
+    - math:
+      - generic: ∑
+      - generic: "n"
+      - generic: ≥
+      - generic: "2"
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: ∫
+      - generic: "0"
+      - generic: ∞
+      - generic: u
+      - generic: "2"
+      - generic: r
+      - generic: −
+      - generic: "1"
+      - generic: e
+      - generic: −
+      - generic: δ
+      - generic: u
+      - generic: ∣
+      - generic: R
+      - generic: "0"
+      - generic: (
+      - generic: "y"
+      - generic: +
+      - generic: u
+      - generic: −
+      - generic: log
+      - generic: ⁡
+      - generic: "n"
+      - generic: )
+      - generic: +
+      - generic: R
+      - generic: "0"
+      - generic: (
+      - generic: "y"
+      - generic: +
+      - generic: u
+      - generic: +
+      - generic: log
+      - generic: ⁡
+      - generic: "n"
+      - generic: )
+      - generic: ∣
+      - generic: d
+      - generic: u
+      - generic: =
+      - generic: ∞
+    - generic: n≥2
+    - generic: ∑
+    - generic: "n"
+    - generic: Λ(n)
+    - text: ∫
+    - generic: "0"
+    - generic: ∞
+    - text: u
+    - generic: 2r−1
+    - text: e
+    - generic: −δu
+    - text: ∣
+    - text: R
+    - generic: "0"
+    - text: (y + u −
+    - generic: log
+    - text: n) +
+    - text: R
+    - generic: "0"
+    - text: (y + u +
+    - generic: log
+    - text: n)∣
+    - text: du =
+    - generic: ∞
+    - paragraph:
+      - text: при
+      - math:
+        - generic: "0"
+        - generic: <
+        - generic: δ
+        - generic: <
+        - generic: "1"
+        - generic: /
+        - generic: "2"
+      - generic: 0 <
+      - generic: δ <
+      - generic: 1/2
+      - text: .
+    - paragraph:
+      - text: "Причина количественная: возле"
+      - math:
+        - generic: u
+        - generic: =
+        - generic: log
+        - generic: ⁡
+        - generic: "n"
+        - generic: −
+        - generic: "y"
+      - generic: u =
+      - generic: log
+      - text: n −
+      - generic: "y"
+      - text: первый корреляционный член близок к
+    - math:
+      - generic: R
+      - generic: "0"
+      - generic: (
+      - generic: "0"
+      - generic: )
+      - generic: =
+      - generic: ∥
+      - generic: F
+      - generic: "0"
+      - generic: ∥
+      - generic: "2"
+      - generic: ">"
+      - generic: "0"
+      - generic: ","
+    - text: R
+    - generic: "0"
+    - text: (0) =
+    - text: ∥
+    - text: F
+    - generic: "0"
+    - text: ∥
+    - generic: "2"
+    - text: ">"
+    - generic: 0,
+    - paragraph: а второй уже мал. Получается расходящийся положительный ряд с весами
+    - math:
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: "n"
+      - generic: −
+      - generic: "1"
+      - generic: /
+      - generic: "2"
+      - generic: −
+      - generic: δ
+      - generic: .
+    - text: Λ(n)
+    - text: "n"
+    - generic: −1/2−δ
+    - text: .
+    - paragraph:
+      - text: Доказательство использует только делительное тождество для
+      - math:
+        - generic: Λ
+      - generic: Λ
+      - text: ","
+      - strong: без PNT, RH или нового предположения о нулях
+      - text: .
+    - paragraph:
+      - text: Это исключает
+      - strong: автоматическое абсолютное оправдание перестановки
+      - text: бесконечной prime-суммы с резольвентами. Оно
+      - strong: не исключает специального совместного знакового сокращения
+      - text: . Но такое сокращение надо доказать, сохранив вычисленные терминальные члены.
+    - heading "5. Первая неоплаченная строка и откат" [level=2]
+    - paragraph: "Первая недопустимая строка выбранного shortcut:"
+    - math:
+      - generic: W
+      - generic: (
+      - generic: g
+      - generic: ","
+      - generic: k
+      - generic: )
+      - generic: =
+      - text: "?"
+      - generic: lim
+      - generic: ⁡
+      - generic: A
+      - generic: ","
+      - generic: B
+      - generic: →
+      - generic: ∞
+      - generic: W
+      - generic: (
+      - generic: R
+      - generic: w
+      - generic: A
+      - generic: ","
+      - generic: R
+      - generic: w
+      - generic: †
+      - generic: B
+      - generic: )
+      - generic: =
+      - generic: "0."
+    - text: W(g, k)
+    - generic: =
+    - generic: "?"
+    - generic: A,B→∞
+    - generic: lim
+    - text: W(
+    - text: R
+    - generic: w
+    - generic: A
+    - text: ","
+    - text: R
+    - text: w
+    - generic: †
+    - generic: B
+    - text: ) =
+    - generic: "0."
+    - paragraph:
+      - strong:
+        - text: Правильный возврат оставляет
+        - math:
+          - generic: r
+        - generic: r
+        - text: .
+      - text: В законной конечной арифметической версии первая потеря знака происходит при замене совместного
+      - math:
+        - generic: H
+        - generic: m
+      - text: H
+      - generic: m
+      - text: его абсолютным верхом. Меньшая направленная оценка не получена.
+    - paragraph:
+      - strong: "Содержательный откат — до zero-selective деления и до применения полной radical identity:"
+      - text: "сохранять конечный арифметический forcing, а не пытаться извлечь благоприятный знак из нулевой правой части после обращения. Отличающий тест следующего аргумента — полный конечный terminal-return: он должен сохранять коэффициент"
+      - math:
+        - generic: r
+      - generic: r
+      - text: ", пока не предъявлено независимое арифметическое основание для требуемого сравнения. Нормовой вариант этого переноса уже завершён половинной степенью и повторяться не должен."
+    - paragraph:
+      - strong: Нового поставщика под другим названием не назначаю.
+      - text: Общий fallback остаётся
+    - math:
+      - generic: P
+      - generic: K
+      - generic: m
+      - generic: P
+      - generic: ⪰
+      - generic: −
+      - generic: "["
+      - generic: "12"
+      - generic: m
+      - generic: +
+      - generic: "50"
+      - generic: L
+      - generic: +
+      - generic: "8"
+      - generic: "]"
+      - generic: P
+      - generic: .
+    - text: P
+    - text: K
+    - generic: m
+    - text: P ⪰
+    - text: −[12
+    - generic: m
+    - text: +
+    - generic: 50L +
+    - generic: 8]P.
+    - paragraph:
+      - text: Условные
+      - math:
+        - generic: "3"
+        - generic: /
+        - generic: "8"
+      - generic: 3/8
+      - text: по ZF78 не улучшены.
+    - paragraph:
+      - text: Выполнены
+      - strong: 354 точных локальных контроля
+      - text: . Код повторно извлечён из окончательного Markdown и исполнен; результаты совпали побайтно.
+      - strong: Численные значения гипотетических нулей не назначались. Lean, Arb, независимый аудит нового вывода и полный спектральный расчёт CCM не запускались.
+    - paragraph:
+      - strong: "Итог: граница законного резольвентного переноса установлена; весь возврат оплачен. Новая благоприятная арифметическая степень и RH не получены."
+    - button "Vorschau von PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md öffnen"
+    - generic "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md"
+    - generic: Dokument
+    - button "Datei herunterladen":
+    - button "Kopieren":
+    - button "Vorlesen":
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - button "Quellen":
+    - separator "heute, 12:24":
+      - time: heute, 12:24
+    - heading "Du hast gesagt:" [level=4]
+    - button "PROSHKA_PENDING.md"
+    - generic "PROSHKA_PENDING.md"
+    - generic: Dokument
+    - button "Nachricht bearbeiten":
+    - button "Worked for 2m 50s":
+      - generic: Worked for 2m 50s
+    - heading "ChatGPT hat gesagt:" [level=4]
+    - paragraph:
+      - text: Ы.
+      - strong: Прикрепился PROSHKA_PENDING.md — журнал состояния, а не полный математический пакет Q18.
+      - text: "В его актуальной записи указано: Q18 подготовлен, но сам запрос ещё не отправлен; Q17 завершён и проверен."
+      - button "Vorschau von PROSHKA_PENDING.md öffnen":
+        - generic: PROSHKA_PENDING
+    - paragraph: "Для следующего расчёта в журнале закреплён файл:"
+    - generic: Nur Text
+    - button "Zeilenumbruch aktivieren":
+    - button "Code kopieren":
+    - code:
+      - generic: PROSHKA_CCM_FINITE_DIVISOR_THETA_Q18_2026-10-25.txt
+    - paragraph:
+      - text: "Его контрольные данные:"
+      - strong: 169 878 байт
+      - text: ","
+      - strong: 2739 переводов строки
+      - text: ","
+      - strong: семь полных исходников
+      - text: .
+      - strong: SHA-256
+      - text: "— контрольный хеш точного содержимого:"
+    - generic: Nur Text
+    - button "Zeilenumbruch aktivieren":
+    - button "Code kopieren":
+    - code:
+      - generic: c9ce19cd77a23dfde169e39393f8d2c5ef3046a43c250a71c1dde894cdc963f4
+    - paragraph:
+      - text: Эти данные взяты из журнала, а не проверены по самому отсутствующему TXT.
+      - button "Vorschau von PROSHKA_PENDING.md öffnen":
+        - generic: PROSHKA_PENDING
+    - paragraph:
+      - text: "Направление следующей попытки обозначено:"
+      - strong: конечная тета-сумма с делительным весом
+    - math:
+      - generic: d
+      - generic: m
+      - generic: (
+      - generic: k
+      - generic: )
+      - generic: =
+      - generic: ∑
+      - generic: "n"
+      - generic: ∣
+      - generic: k
+      - generic: "n"
+      - generic: ≤
+      - generic: m
+      - generic: Λ
+      - generic: (
+      - generic: "n"
+      - generic: )
+      - generic: ","
+    - text: d
+    - generic: m
+    - text: (k) =
+    - generic: n∣k
+    - generic: n≤m
+    - generic: ∑
+    - text: Λ(n),
+    - paragraph:
+      - text: с сохранением обеих временных ориентаций и вклада
+      - math:
+        - generic: k
+        - generic: ">"
+        - generic: m
+      - generic: k >
+      - generic: m
+      - text: . Но эта краткая запись не заменяет полные определения, ограничения и бюджет возврата.
+      - button "Vorschau von PROSHKA_PENDING.md öffnen":
+        - generic: PROSHKA_PENDING
+    - paragraph:
+      - strong: Прикрепи именно указанный TXT Q18.
+    - button "Kopieren":
+    - button "Vorlesen":
+    - button "Teilen":
+    - button "Zu den Projektquellen hinzufügen":
+    - button "Antwort neu generieren":
+    - button "Weitere Aktionen":
+    - button "Quellen":
+    - generic: ChatGPT kann Fehler machen. Prüfe wichtige Infos.
+    - button:
+    - heading "Neueste Antwort" [level=4]
+    - status
+    - button "Dateien und mehr hinzufügen":
+    - textbox "ChatGPT fragen" [active]:
+      - paragraph: ChatGPT fragen
+    - button "ChatGPT-Modell auswählen":
+      - generic: Denkaufwand
+      - generic: Pro
+    - button "Diktieren":
+    - button "Sprachchat starten":
+- status
+- status: Antwort abgeschlossen
+- status
+- status
+- status
+- status

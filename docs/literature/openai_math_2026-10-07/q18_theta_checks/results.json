@@ -1,0 +1,9 @@
+{
+  "status": "PASS_LOCAL_FILTER_ALGEBRA_ONLY",
+  "sympy": "1.14.0",
+  "checks": 21,
+  "zero_values_assigned": false,
+  "CCM_evaluations": 0,
+  "lean_runs": 0,
+  "arb_runs": 0
+}

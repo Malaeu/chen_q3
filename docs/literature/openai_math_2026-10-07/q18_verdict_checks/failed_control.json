@@ -1,0 +1,7 @@
+{
+  "stage": "First exact-check run",
+  "line": "assert kap==1/conjugate(cw)**2",
+  "failure_type": "SYMPY_STRUCTURAL_EQUALITY_NOT_NORMALIZED",
+  "detail": "The simplified value I/2 and the unsimplified expression (1-I)**(-2) are mathematically equal but structurally different. Repaired by simplifying their difference. No source identity, test range, or registered prediction was changed.",
+  "counts_from_failed_run_not_reported_as_pass": true
+}

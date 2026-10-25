@@ -8929,3 +8929,36 @@ Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.
 Следующий ход: откат до zero-selective division, конечный theta-forcing с terminal polynomial; не переименовывать старый долг в поставщика, Q18 не отправлен.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q17_CONCLUSION.md; полный запрос/оригинал; q17_verdict_checks/.
 Чей вердикт: Прошка, root и q17_verdict_audit bounded PAPER PASS; q17_replay354exact и7 frozen bodies побайтно PASS. Монитор удалить: ожидающих ответов нет. Goal/RH OPEN.
+
+## 2026-10-25 — Q18: конечный theta-фильтр и делительный вход
+
+Развилка: конечный theta-source до модулей, после Q17.
+Выбрали: перенести B² на резольвентный вес с полным Green boundary; затем точный finite divisor-theta map.
+Почему: actual G имеет фиксированный знак; проверить, достаточно ли этого для направленной оценки.
+Что отвергли: automatic positivity из R_G>0, поскольку действительный вес с настоящей фазой осциллирует; не actual cancellation.
+Инсайты: E1/E2 обязательны; kappa=1/conjugate(c_w)^2, не modulus square. Сдвиг theta-индекса даёт d_m(k), не log k на k>m.
+Блокеры: совместная weighted-theta оценка и её moving-index edge не оплачены; полный бюджет1/2.
+Иглы Зингера: обе временные стороны, исходный P и все mixed сохранены;21 exact local controls PASS, ограниченный независимый PAPER PASS.
+Следующий ход: Q18 пакет готов, не отправлен; native upload прерван переключением пользователя, вложения/отправки нет. Продолжить тот же чат один раз; цикл коммитить после ответа.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q18_THETA_FILTER_TRANSFER.md; PROSHKA_CCM_FINITE_DIVISOR_THETA_Q18_2026-10-25.txt; q18_theta_checks/.
+Чей вердикт: root + q18_theta_source bounded PAPER; математический goal/RH OPEN.
+
+
+## 2026-10-25 12:24 — Q18 delivery mismatch
+Развилка: canonical Q18 upload versus observed live message. Выбрали: preserve responding chat. Почему: UI shows PROSHKA_PENDING.md sent, not Q18; native action interrupted and no agent Send click. Что отвергли: blind resend or Stop. Инсайты: responding alone is not delivery proof. Блокеры: canonical Q18 not verified delivered. Иглы Зингера: distinguish actual attachment from intended package. Следующий ход: wait natural completion, retrieve full answer and reconcile before canonical send. Адреса: PROSHKA_PENDING.md; /tmp/ccm-q18-delivery-mismatch.png. Чей вердикт: root UI observation only, no mathematical change.
+
+
+## 2026-10-25 12:46 — Q18 automatic delivery verified
+Развилка: preceding pending-only reply completed and explicitly lacks Q18. Выбрали: exact canonical TXT via own IAB filechooser.setFiles, one Send. Почему: existing authorization and no duplicate Q18. Что отвергли: native picker/manual owner work. Инсайты: IAB automatic upload works. Блокеры: awaiting mathematical response. Иглы Зингера: sent tile and responding verified, not just click. Следующий ход: natural completion then full original/replay/bounded audit/cycle commit. Адреса: PROSHKA_PENDING.md, Q18_PENDING_ONLY_REPLY_DOM.txt, /tmp/ccm-q18-sent-20261025.png. Чей вердикт: root UI; no new mathematical gain.
+
+
+## 2026-10-25 — actual prime-pair weight test while Q18 pending
+Развилка: coprime additive divisor weight versus full theta weight. Выбрали: exact inclusion-exclusion on a,ap,aq,apq with gcd(a,pq)=1. Почему: directly applies to finite d_m, including k>m. Что отвергли: treating distinct theta weights as common or claiming a full-series partition. Инсайты: coefficient cancellation exact; explicit actual weighted defect nonzero. Блокеры: signed weighted reconstruction still absent; full budget1/2 unchanged. Иглы Зингера: local quartet is a discriminator, not a replacement source. Следующий ход: await Q18 without browser interaction. Адреса: CCM_Q18_PRIME_PAIR_WEIGHT_TEST.md; experiments/ccm_prime_pair_2026_10_25/check.py, results.json (12864 exact). Чей вердикт: root derivation; bounded independent audit recorded in note.
+
+
+## 2026-10-25 — actual theta prime-2 telescoping
+Развилка: Abel/correlations already tried; test exact odd-index removal on actual theta weights. Выбрали: finite translation telescope, restore full double sum and all mixed tail terms. Почему: exact source scaling, no new arithmetic premise. Что отвергли: discard even indices or estimate only diagonal layers. Инсайты: joint tail can cost O_w(m^-sigma), retained main still half-power. Блокеры: signed main-layer estimate absent. Иглы Зингера: cheap tail is not full exponent improvement; local theta identity does not authorize global absolute exchange. Следующий ход: await Q18 unchanged; no new send. Адреса: CCM_Q18_DYADIC_THETA_TELESCOPE.md; experiments/ccm_theta_telescoping_2026_10_25/{check.py,results.json},24610exact. Чей вердикт: root derivation and bounded independent audit recorded in note.
+
+
+## 2026-10-25 — Q18 global theta return accepted, full degree unchanged
+Развилка: weighted Jacobi plus global theta-index return versus directed arithmetic comparison. Выбрали: exact reciprocal dual and corrected finite index sum with full floor/continuum edge. Почему: raw global theta-product Fubini diverges; source preserved by L2 repair. Что отвергли: discard k>m, self-dual d_m, optimize cutoff as exponent gain. Инсайты: opposite sqrt(m)logm head/edge cancel; dyadic layers are infinite sets and do not contradict this. Блокеры: independent joint complex endpoint/lobe comparison remains open, full degree1/2. Иглы Зингера: large component norm is not spectral lower bound; all mixed, phase, prime powers and original P retained. Следующий ход: rollback before positive-forcing cap; no automatic Q19; remove monitor since no pending reply. Адреса: CCM_Q18_CONCLUSION.md; original verdict and q18_verdict_checks; own prime-pair and dyadic tests. Чей вердикт: root+q18_verdict_audit bounded PAPER PASS; q18_replay7538exact+12diagnostics+7bodies byte-identical. Goal/RH OPEN.

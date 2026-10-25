@@ -1,0 +1,15 @@
+{
+  "status": "PASS_EXACT_PRIME_LOG_COEFFICIENTS",
+  "checks": 12864,
+  "m_range": [
+    1,
+    64
+  ],
+  "a_range": [
+    1,
+    32
+  ],
+  "source_CCM_evaluations": 0,
+  "interval_runs": 0,
+  "scope": "finite divisor coefficient only; theta weighted defect is retained analytically"
+}

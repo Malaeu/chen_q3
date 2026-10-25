@@ -1,0 +1,31 @@
+{
+  "status": "PASS_EXACT_LOCAL_ALGEBRA_NOT_ASYMPTOTIC_CCM_CERTIFICATE",
+  "sympy": "1.14.0",
+  "counts": {
+    "theta_dilation": 1,
+    "jacobi_differential_and_zero_modes": 3,
+    "continuum_edge_derivatives": 3,
+    "exact_gaussian_norms": 3,
+    "finite_divisor_coefficients_and_index_edge": 2944,
+    "reciprocal_lattice_reduced_coefficients": 1434,
+    "floor_edge_coverage": 1380,
+    "truncated_weighted_theta_reassembly": 1725,
+    "planted_weight_and_edge_omissions_detected": 3,
+    "full_endpoint_and_bulk_controls": 24,
+    "complex_phase_preserved_and_modulus_shortcut_detected": 12,
+    "fixed_order_original_P_return": 3,
+    "global_theta_cutoff_return_exponents": 3
+  },
+  "total_cases": 7538,
+  "exact_norms_squared": {
+    "phi1": "33*sqrt(2)/64",
+    "beta": "3*sqrt(2)/16",
+    "C0": "1203*sqrt(2)/256"
+  },
+  "hypothetical_zero_numerical_values_used": false,
+  "full_CCM_spectrum_computed": false,
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "registration_sha256": "85b0e474d93b10c9f803f10104f9b98b5b58f611627c677f92e323cb63c8b7db",
+  "script_sha256": "21b1d740f9a6a51195f95b3a34326b2bb0435ff85131d6eec7207da967d1621f"
+}
