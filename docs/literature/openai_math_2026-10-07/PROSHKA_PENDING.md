@@ -1,3 +1,42 @@
+# Q16 COMPLETED AND AUDITED — no pending Pro answer
+
+Natural completion25.10.2026 10:40 Europe/Berlin; full original downloaded/read.
+80028bytes/1190LF; SHA256 effc325bd80a4bc53f1ccbc22e961086d05cbf0ff47de955d174218af5d4116a.
+CCM_Q16_CONCLUSION.md: root and independent bounded PAPER PASS.
+181 exact controls byte-identical;2 noninterval cases PASS with SciPy version
+roundoff differences<=4.55e-12. Frozen request and all12 body hashes match.
+Contact-preserving localization paid; absolute distant-packet/local-cap
+certificate costs>=sqrt(m)/5400000000 eventually in its stated width scope.
+Actual signed source on same tests is o(sqrt(m)); not spectral no-go.
+No full power gain. Rollback source-pair sign/rate checked; independent
+arithmetic lower bound for phased J_w remains OPEN. No automatic Q17.
+Remove ccm-q16 monitor: no pending response. Overall goal OPEN.
+
+--- Historical Q16 dispatch ---
+
+# Q16 SENT — direct one-sided bulk, responding verified
+
+25.10.2026 10:01 Europe/Berlin (CET), sent ONCE in AI Mathematik Morgenbrief:
+https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d
+PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt:136836 bytes,2332LF,12 full bodies.
+SHA256 64d89271aafcaae135de591ed2133fb47ce7bca165601787657bb3a54f142f60.
+Own CCM_Q16_ONE_SIDED_ENDPOINT_BUDGET.md: bounded independent PAPER PASS.
+Negative cubic and all mixed terms retained; completed endpoint split still
+costs half-power. Q06 already has paid endpoint credit: no new mechanism claimed.
+Concrete impasse: early bulk norm; ask joint prime/continuous comparison before it.
+Native upload confirmed. Send click timed out, but sent Q16/file, empty composer,
+ChatGPT is responding and Stop verified. NO retry. Screenshot /tmp/ccm-q16-sent-20261025.png.
+While responding: no sends, refresh, Stop, Answer now or Regenerate.
+After natural completion: download/read full original, check original sparse P,
+both time directions, actual Lambda/mu, all mixed terms and complete budget;
+one bounded independent audit of material result, reproduce supplied code,
+then one scoped cycle commit per NEXT. Preserve foreign dirty files.
+No automatic Q17: process Q16 first, then own attempts/justified rollback.
+Native goal historically blocked; owner resumed; no new goal and no completion.
+Monitor every20min quietly; remove monitor after answer processed and no pending reply.
+
+--- Historical completed Q15 ---
+
 # Q15 COMPLETED AND AUDITED — no pending Pro answer
 
 Natural completion 24.10.2026 10:15 Europe/Berlin; downloaded after 10:30 poll.

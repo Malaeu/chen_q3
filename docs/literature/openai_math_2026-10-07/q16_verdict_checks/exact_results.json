@@ -1,0 +1,29 @@
+{
+  "status": "PASS_EXACT_LOCAL_ALGEBRA_NOT_ASYMPTOTIC",
+  "sympy": "1.14.0",
+  "counts": {
+    "partition_derivative_bounds": 2,
+    "dropped_commutator_factor_detected": 1,
+    "partition_sums": 3,
+    "partition_endpoint_jets": 4,
+    "commutator_and_planted_omission": 3,
+    "packet_contact_IBP_boundary_jets": 12,
+    "primitive_energy_controls": 5,
+    "actual_compact_profile_constants": 3,
+    "norm_return_constants": 5,
+    "narrow_support_and_constants": 3,
+    "naive_f_localization_loses_contact": 2,
+    "full_mixed_matrix_reconstruction": 8,
+    "full_actual_arithmetic_coefficients": 128,
+    "obstruction_constant_arithmetic": 2
+  },
+  "total_cases": 181,
+  "profile_norm2": "370411/11898286400",
+  "profile_interval_lower_bound": "46837680063179088455001/4000000000000000000000000",
+  "full_CCM_spectra_computed": false,
+  "PNT_numerically_certified": false,
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "script_sha256": "219483201fd23bcc9603c595d057130bb1f463dfc484adf945276bc9f81161cd",
+  "registration_sha256": "0ef852c64debae7f891994db92472f935a23dba10712871c15e24e40dbbd5327"
+}

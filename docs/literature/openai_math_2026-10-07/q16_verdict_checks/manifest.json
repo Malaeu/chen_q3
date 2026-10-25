@@ -1,0 +1,118 @@
+{
+  "request_file": "PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt",
+  "bytes": 136836,
+  "lf": 2332,
+  "sha256": "64d89271aafcaae135de591ed2133fb47ce7bca165601787657bb3a54f142f60",
+  "source_count": 12,
+  "framing": "Exactly one separating LF excluded after each size-locked source body; no strip or content normalization",
+  "sources": [
+    {
+      "id": "S1",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q16_ONE_SIDED_ENDPOINT_BUDGET.md",
+      "bytes": 5661,
+      "sha256": "5562af18578eedfc23dd6b7a7f65c9e5d8df9b457413ee98483c2014cab75a3c",
+      "start": 52,
+      "end": 153,
+      "file": "S1_CCM_Q16_ONE_SIDED_ENDPOINT_BUDGET.md"
+    },
+    {
+      "id": "S2",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q15_CONCLUSION.md",
+      "bytes": 4689,
+      "sha256": "a4df11bc020fd0011389a7562023e28dfe0b2438b1e8277f1c64d4a62d06ae88",
+      "start": 158,
+      "end": 234,
+      "file": "S2_CCM_Q15_CONCLUSION.md"
+    },
+    {
+      "id": "S3",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_VAUGHAN_JOINT_Q15_VERDICT_2026-10-24.md",
+      "bytes": 73140,
+      "sha256": "ed8c7e4041c5b2a6f871815455262abb4d33c3fcb812b6451499b3945f55e9d9",
+      "start": 239,
+      "end": 1532,
+      "file": "S3_PROSHKA_CCM_VAUGHAN_JOINT_Q15_VERDICT_2026-10-24.md"
+    },
+    {
+      "id": "S4",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q06_ONE_SIDED_EDGE_BUDGET.md",
+      "bytes": 3398,
+      "sha256": "4ffb00e4836506cb6ceac86bd45743a3036afedef94ab8776b33aed504db7f68",
+      "start": 1537,
+      "end": 1601,
+      "file": "S4_CCM_Q06_ONE_SIDED_EDGE_BUDGET.md"
+    },
+    {
+      "id": "S5",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q03_ENDPOINT_SIGN_TEST.md",
+      "bytes": 2235,
+      "sha256": "108ffa6d1143252dc8fbcb00665811764279fee4ec0daa45f5d260408a41f7c8",
+      "start": 1606,
+      "end": 1650,
+      "file": "S5_CCM_Q03_ENDPOINT_SIGN_TEST.md"
+    },
+    {
+      "id": "S6",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q03_ONE_SIDED_PRIMITIVE_CONE_TEST.md",
+      "bytes": 4442,
+      "sha256": "ff85a50910e01c1452987ae753b8c951bc1c5046e4a1cd9e3c86f63a2467e1f9",
+      "start": 1655,
+      "end": 1747,
+      "file": "S6_CCM_Q03_ONE_SIDED_PRIMITIVE_CONE_TEST.md"
+    },
+    {
+      "id": "S7",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_CONTINUOUS_RANK_TWO_TEST.md",
+      "bytes": 3751,
+      "sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+      "start": 1752,
+      "end": 1804,
+      "file": "S7_CCM_CONTINUOUS_RANK_TWO_TEST.md"
+    },
+    {
+      "id": "S8",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_LOG_DENSITY_CANCELLATION.md",
+      "bytes": 3741,
+      "sha256": "76852f4a20d2cd44587d5a5e142d13305448e979fc46e48c298c45c6b622c8ad",
+      "start": 1809,
+      "end": 1863,
+      "file": "S8_CCM_LOG_DENSITY_CANCELLATION.md"
+    },
+    {
+      "id": "S9",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_C5_CANCELLATION_LITERATURE_AUDIT.md",
+      "bytes": 10195,
+      "sha256": "98873e8e4b4cdf08fee021e921ed672653a4af088be6f63958874695042ef312",
+      "start": 1868,
+      "end": 2054,
+      "file": "S9_CCM_C5_CANCELLATION_LITERATURE_AUDIT.md"
+    },
+    {
+      "id": "S10",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_JOINT_Q05_CONCLUSION.md",
+      "bytes": 3560,
+      "sha256": "f2af76e8a803a942aec21d26346411ecbb948e26df10e88f7fc3d6fdd78e5a4d",
+      "start": 2059,
+      "end": 2124,
+      "file": "S10_CCM_JOINT_Q05_CONCLUSION.md"
+    },
+    {
+      "id": "S11",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "start": 2129,
+      "end": 2197,
+      "file": "S11_CCM_SPARSE_BAND_RECEIVER.md"
+    },
+    {
+      "id": "S12",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "bytes": 9606,
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "start": 2202,
+      "end": 2330,
+      "file": "S12_CCM_RESTRICTED_PRIME_RECEIVER.md"
+    }
+  ]
+}

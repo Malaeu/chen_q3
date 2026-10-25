@@ -1,0 +1,42 @@
+{
+  "status": "PASS_REPRODUCED_WITH_ENVIRONMENT_VERSION_DRIFT",
+  "source_packet": {
+    "path": "../PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_2026-10-25.txt",
+    "bytes": 136836,
+    "lf": 2332,
+    "sha256": "64d89271aafcaae135de591ed2133fb47ce7bca165601787657bb3a54f142f60",
+    "manifest_sources": 12,
+    "source_hash_matches": 12,
+    "framing": "body line ranges include body-terminating LF; following separator LF excluded"
+  },
+  "extraction": {
+    "source": "../PROSHKA_CCM_DIRECT_ONE_SIDED_BULK_Q16_VERDICT_2026-10-25.md",
+    "exact_code_bodies": true,
+    "check_q16_sha256": "219483201fd23bcc9603c595d057130bb1f463dfc484adf945276bc9f81161cd",
+    "diagnostic_q16_sha256": "9b7b05252baa9b0ed5d3b72684dfc39910ab7d92552c14c64306a300364da6f8"
+  },
+  "exact_replay": {
+    "command": "/Users/emalam/GitHub/riemannn/riemann_env/bin/python check_q16.py",
+    "status": "PASS_EXACT_LOCAL_ALGEBRA_NOT_ASYMPTOTIC",
+    "sympy": "1.14.0",
+    "cases": 181,
+    "json_byte_equal_to_embedded": true
+  },
+  "diagnostic_replay": {
+    "command": "/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python diagnostic_q16.py",
+    "status": "PASS_NONINTERVAL_IDENTITIES_NOT_SOURCE_SIGN_CERTIFICATES",
+    "numpy": "2.3.5",
+    "scipy_actual": "1.16.3",
+    "scipy_embedded": "1.17.0",
+    "cases": 2,
+    "json_byte_equal_to_embedded": false,
+    "semantic_fields_equal": true,
+    "max_absolute_numeric_delta": 4.547473508864641e-12
+  },
+  "coverage_limits": [
+    "Finite algebraic identities and two noninterval literal-kernel cases only.",
+    "No PNT certification, asymptotic production schedule, interval arithmetic, Lean proof, or full CCM spectrum.",
+    "SciPy version differed from embedded record (1.16.3 versus 1.17.0); only roundoff-level diagnostics changed."
+  ],
+  "dependencies_installed": false
+}

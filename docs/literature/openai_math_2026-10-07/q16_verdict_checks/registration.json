@@ -1,0 +1,13 @@
+{
+  "phase": "Q16",
+  "timing": "After complete source reading and the preliminary paper derivation, before new executable controls.",
+  "selected_mechanism": "Contact-preserving localization of the Green primitive; exact joint continuous/discrete packet comparison; fully paid absolute return of the remaining long couplings.",
+  "predictions": [
+    {"id":"P1","claim":"The quintic partition sums to one, and its first two derivative sums vanish; reconstruction of f contains both commutator terms."},
+    {"id":"P2","claim":"Every packet has both exponential contacts; disjoint-packet growing and decaying continuous pairings vanish; packet physical norm is paid without a factor depending on M or number of packets."},
+    {"id":"P3","claim":"At packet width 2/9, all same/neighbor packet prime contributions vanish by support, but the full sum of mixed packets reproduces the original prime form."},
+    {"id":"P4","claim":"The pointwise-absolute long-coupling certificate retains half power on a genuine original-P family after its full Fourier/constraint return. The signed source is not asserted to have this lower bound."},
+    {"id":"P5","claim":"Omitting commutator terms, a mixed packet, or proper prime powers is detected by exact or explicitly noninterval controls."}
+  ],
+  "not_predicted": "No new full CCM exponent, no source spectral no-go, no finite test as proof of PNT or an eventual inequality."
+}

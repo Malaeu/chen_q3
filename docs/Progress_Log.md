@@ -8903,3 +8903,16 @@ Q12 live rechecked complete, archived bytes unchanged. RH and general goal OPEN.
 - Следующий ход: откат до квадрата/row caps; source-specific one-sided сравнение на исходном P. Повторять Abel/PNT с полки или слать Q16 с новым именем долга нельзя. Goal OPEN, ожидающих ответов после обработки Q15 нет.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q15_CONCLUSION.md; полный Q15 original и q15_verdict_checks/. 7801exact+8192replay+3noninterval, JSON byte-identical,12 source hashes match.
 - Чей вердикт: Прошка Q15, root reproduction/PAPER и отдельный q15_verdict_audit; границы приёмки в conclusion.
+
+## 2026-10-25 — Q16: контактная локализация и цена потери знака
+
+Развилка: совместный prime/continuous bulk до модулей.
+Выбрали: проверить полный Q16, собственный endpoint бюджет и source-pair откат.
+Почему: исходные P, контакты и mixed terms сохраняются; нужен полный показатель.
+Что отвергли: заданный local-cap/pointwise-absolute дальний сертификат ниже1/2; не CCM.
+Инсайты: локализовать Green primitive; непрерывный кредит ближний и не тратится дважды.
+Блокеры: независимая арифметическая lower bound для phased J_w не получена.
+Иглы Зингера: actual signed=o(sqrt m) при positive certificate>=c sqrt m; exact181, finite2.
+Следующий ход: actual source pair сверх двух моментов, без автоматического Q17.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q16_CONCLUSION.md и q16_verdict_checks/.
+Чей вердикт: Прошка; root и q16_verdict_audit bounded PAPER PASS, q16_replay PASS.

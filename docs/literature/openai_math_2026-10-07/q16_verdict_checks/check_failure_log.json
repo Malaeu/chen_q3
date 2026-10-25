@@ -1,0 +1,9 @@
+{
+  "run": 1,
+  "status": "STOPPED_AT_SYMBOLIC_STRUCTURAL_EQUALITY",
+  "line": "assert sp.diff(r,x)==30*x**2*(1-x)**2",
+  "reason": "SymPy == tests expression structure, not polynomial equality; expanded and factored polynomials have different expression trees.",
+  "repair": "Compare sp.expand(left-right)==0.",
+  "mathematical_formula_changed": false,
+  "first_script_sha256": "01a3b882d1f83dc2be6d9a3a6ab7ff5da8ae954b4a4f4666c6863083fae2500f"
+}

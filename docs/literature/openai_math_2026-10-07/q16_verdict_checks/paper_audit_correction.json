@@ -1,0 +1,16 @@
+{
+  "status": "PAPER_DRAFT_CONSTANT_ERROR_FOUND_AND_REPAIRED_BEFORE_DELIVERY",
+  "unpaid_factor": "2 multiplying theta_prime*u_prime in the packet sum",
+  "old_unsafe_pointwise_coefficient": "4/ell",
+  "correct_safe_pointwise_coefficient": "8/ell",
+  "old_C_2_9": 991,
+  "correct_C_2_9": 1009,
+  "old_C_1_8": 3105,
+  "correct_C_1_8": 3137,
+  "new_planted_control": "At partition midpoint 2*sum_j |theta_prime_j|=15/(2ell)>4/ell; safe bound 8/ell",
+  "asymptotic_exponent_changed": false,
+  "registration_changed": false,
+  "old_exact_script_sha256": "7269465c8eb020ef14cd973716220228a29914e6995367e15cb27d2a1df21337",
+  "old_exact_result_sha256": "6bdc5481a71e5310514f14b288bb7bb0a14623d0b1be16ec1a0a22f707b8c765",
+  "diagnostic_note": "The old finite diagnostic passed the unsafe claimed constant; this is not proof of the general estimate."
+}

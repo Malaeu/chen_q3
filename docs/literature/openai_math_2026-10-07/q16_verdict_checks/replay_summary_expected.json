@@ -1,0 +1,9 @@
+{
+  "status": "PASS_REEXTRACTED_FROM_FINAL_MARKDOWN",
+  "embedded_files": 8,
+  "exact_cases": 181,
+  "noninterval_cases": 2,
+  "results_byte_identical": true,
+  "lean_runs": 0,
+  "arb_runs": 0
+}
