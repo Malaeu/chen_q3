@@ -9139,3 +9139,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Roll back before norm separation; own source-specific attempt, no Q32 sent.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_Q31_CONCLUSION.md and q31_replay.
 Чей вердикт · Proshka Q31; root full reading/replay; q30_square_budget_check bounded conditional PAPER PASS, primary E1 checked not full proof.
+
+## 2026-10-26 — Post-Q31 additive-frequency return
+Развилка · Preserve near phase instead of full-torus Holder.
+Выбрали · Exact single-window dyadic partition and second differences of the full matrix weight.
+Почему · Original contact kills both value and first derivative at the top seam.
+Что отвергли · Using arbitrary high derivatives across the seam or applying minor-arc bounds at zero.
+Инсайты · Full far-frequency, model and smooth-base return <=C_epsilon m^(3epsilon), no dimension fee; near signed pairing unchanged/open.
+Блокеры · No source-specific one-sided estimate for the retained near arcs.
+Иглы Зингера · Arithmetic side uses indicator, not a second cutoff; smooth base includes B<n<2B.
+Следующий ход · Test a genuine joint near-frequency supplier, not Q31 Holder again.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_POST_Q31_ADDITIVE_FREQUENCY_RETURN.md.
+Чей вердикт · Root; bounded independent q30_square_budget_check PASS on inherited source inputs; shelf post_q26_operator_rollback INCOMPLETE not absence.
