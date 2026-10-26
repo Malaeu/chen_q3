@@ -9176,3 +9176,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: independent signed source mechanism before that loss; do not optimize the same cutoff as progress.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q32_CONCLUSION.md and q32_replay/.
 Чей вердикт: Proshka Q32; root full read/replay; q32_annulus_audit bounded independent PAPER/source PASS, inherited inputs conditional.
+
+## 2026-10-26 — Post-Q32 raw order-transport hypothesis rejected
+
+Развилка: full centered source via ordered mass pairing rather than separate norms.
+Выбрали: check actual test shape before invoking monotone/convex order.
+Почему: original contacts give g(1)=2,g(m)=gprime(m)=0 and integral g<=0.
+Что отвергли: raw tests assumed monotone or convex/concave; duplicate W1 norm route.
+Инсайты: every unit original-P direction has an interior negative test value and derivative signs of both kinds.
+Блокеры: actual signed source coupling; nonlinear corrections need their own full return.
+Иглы Зингера: shape obstruction applies to raw h only, not CCM or all signed couplings.
+Следующий ход: preserve full nonmonotone source/test relation; no automatic Q33 after this one preflight.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q32_ORDER_TRANSPORT_PREFLIGHT.md.
+Чей вердикт: root proof; q32_annulus_audit bounded independent PAPER PASS conditional on inherited identities.
