@@ -9270,3 +9270,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: rollback before statistical averaging to full signed C0; no Q37 sent.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q36_CONCLUSION.md; q36_replay; q16_precision_recheck/README.md.
 - Чей вердикт: Pro original; root full read/replay; read-only q32_annulus_audit qualified PAPER PASS §§2–6.
+
+## 2026-10-26 — Post-Q36 close-prime return: first moment versus square
+- Развилка: use actual close-prime coherence for the one-sided centered target.
+- Выбрали: exact weighted square expansion before any absolute bound.
+- Почему: need determine whether the correlation appears in the desired linear functional.
+- Что отвергли: interpreting positive ratio-pair contribution as a favorable first-moment sign.
+- Инсайты: full square has +2 discrete, -4 mixed and +2 continuous sectors; ratio pairing is not a linear target term.
+- Блокеры: useful upper second moment still unpaid; same source mechanism, not a new attempt.
+- Иглы Зингера: actual prime powers/original P retained; toy checks are algebra only; no spectral lower bound.
+- Следующий ход: joint centered first moment before square; Q37 not sent.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q36_CLOSE_PRIME_RETURN.md.
+- Чей вердикт: root derivation; q32_annulus_audit bounded algebra/scope PASS.

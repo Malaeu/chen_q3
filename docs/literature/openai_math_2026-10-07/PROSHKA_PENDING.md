@@ -1,3 +1,9 @@
+# POST-Q36 PREFLIGHT — NO RESPONSE PENDING
+
+Post-Q36 close-prime return independently checked: ratio coherence enters the full centered square, not the linear target; no favorable sign from a positive pair. Complete mixed term retained. Duplicate recognized, no new attempt count or Q37. See CCM_POST_Q36_CLOSE_PRIME_RETURN.md.
+
+--- Earlier state ---
+
 # Q36 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Q36 processed: CCM_Q36_CONCLUSION.md;150exact/6planted/12sources byte-identical, bounded independent PAPER PASS §§2–6 with explicit N-1>=m/(8L) clarification. Full centered exceptional sets have infinite measure, but weighted tails are paid; actual close-prime moments reject uniform Haar replacement only. Completed second-moment cost16sqrt(m)+o(1) gives no new exponent; preserve S7 cap. Rollback to joint signed centered C0, no Q37; goal OPEN.
