@@ -9115,3 +9115,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Roll back before path cap; a source-dependent image estimate is not supplied by the isometry alone. No Q31.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_Q30_CONCLUSION.md; canonical Q30 request/verdict; q30_replay.
 Чей вердикт · Root full1171line read and77exact9planted replay; all_p_contour_extension bounded independent PASS §§2–8.
+
+## 2026-10-26 — Q30 surviving-product return
+Развилка · Small normalized double shifts versus actual signed form.
+Выбрали · Retain every ordered prime-power product and full return.
+Почему · Test whether hyperbolic support improves the exponent.
+Что отвергли · Small T² alone as a subpower supplier.
+Инсайты · T²=O(log(m)/sqrt(m)); a sqrt(m) prime-index split gives stronger constant-only cap (2+o(1))sqrt(m).
+Блокеры · Actual-image signed deficit remains unpaid.
+Иглы Зингера · Zero-square contraction can retain real-part eigenvalue1; not a CCM counterexample.
+Следующий ход · Roll back before discarding image deficit; no constant-only iteration or Q31 sent.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_POST_Q30_SURVIVING_PRODUCTS.md.
+Чей вердикт · Root calculation; q30_square_budget_check bounded independent PAPER PASS.
