@@ -9151,3 +9151,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Test a genuine joint near-frequency supplier, not Q31 Holder again.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_POST_Q31_ADDITIVE_FREQUENCY_RETURN.md.
 Чей вердикт · Root; bounded independent q30_square_budget_check PASS on inherited source inputs; shelf post_q26_operator_rollback INCOMPLETE not absence.
+
+## 2026-10-26 — Constant-model near-frequency reduction
+Развилка · Simplify the paid source model without invoking E1.
+Выбрали · Exact b0=Lambda-1 split; near N0 keeps joint phase.
+Почему · The constant discrete model is already paid by original contacts.
+Что отвергли · Classical central-arc prefix completion repeats Q09; not counted as a new arithmetic attempt.
+Инсайты · Full complementary fee improves from m^(3epsilon) to m^(2epsilon); N0 itself remains OPEN.
+Блокеры · PNT norm budget power1/2+2epsilon-o(1) insufficient and weaker than existing Abel.
+Иглы Зингера · Do not apply E1 to Lambda-1 or confuse N0 with the constant model; atom1 and smooth base through2B retained.
+Следующий ход · Independent signed near-frequency mechanism, not another scalar-prefix norm.
+Адреса · CCM_POST_Q31_ADDITIVE_FREQUENCY_RETURN.md follow-up; CCM_Q09_AUTOCORRELATION_PREFLIGHT.md.
+Чей вердикт · Root and q30_square_budget_check bounded PAPER PASS; post_q26_operator_rollback source crosscheck.

@@ -127,3 +127,67 @@ is not global novelty or absence. ask.sh --defer-external returned INCOMPLETE
 for stale semantic indexes. Only second derivatives are used at the top seam.
 The arithmetic side b_j is restricted by an INDICATOR, not chi_j: only
 a_j carries chi_j, so reconstruction contains chi_j once, not chi_j².
+
+## Follow-up: constant model and central-arc preflight
+
+2026-10-26. Own refinement; q30_square_budget_check bounded independent PAPER PASS
+for this section, including primary DLMF map and all endpoints.
+The previous Cramer-Siegel statement is retained as valid. For THIS purely
+elementary localization choose instead b0(n)=Lambda(n)-1, including b0(1)=-1.
+Do not apply E1 to b0. Q31's d=1 Euler/contact lemma gives directly
+||A_one||=||sum_{n<=m}h(n)||<=8+4Omega.
+Use exactly the same smooth partition and arithmetic indicators, with b0 in
+place of b. The smooth base costs <=16sqrt(2B), while the far frequencies
+cost C(1+Omega)^2(L+1)L. With B=ceil(m^(2epsilon)), these and A_one
+are bounded by C_epsilon m^(2epsilon) eventually. Therefore, for the
+complete signed near-frequency matrix
+N0=sum_j integral_{|t|<X_j^-1/2} bhat0_j(t) ahat_j(-t)dt,
+
+||A_prime-N0||<=C_epsilon m^(2epsilon).
+
+No model-character term has been dropped from Q31's E1 application: E1 is
+not used at all, and A_prime=A_one+sum b0 h is an exact independent split.
+All prime powers and atom1 cancellation remain. The original T/K returns
+above hold with 2epsilon instead of3epsilon, and no repeated short/arch fees.
+
+### Test the classical central-arc completion, not a new prime theorem
+
+The inherited Q09_AUTOCORRELATION_PREFLIGHT.md §Explicit centered PNT
+already supplies the classical scalar-prefix mechanism and identifies its
+failed full exponent. Test it against the new near arcs to detect duplication.
+Let X=X_j, Y=min(4X,m), and E_X(v)=sum_{X<=n<=v} b0(n).
+Classical PNT plus the floor error gives, uniformly X<=v<=Y,
+|E_X(v)|<=C X exp(-c sqrt(log X))=:Ebound(X),
+after enlarging constants; including n=X costs O(log X) and is absorbed.
+Root primary check: https://dlmf.nist.gov/27.12#E5 states the error for pi.
+Partial summation with log weights gives theta error of the same form after
+reducing c; proper prime powers cost O(sqrt(x)log²x), also absorbed.
+Subtracting floor(x) instead of x adds only O(1). No RH-size error is used.
+For the actual finite Fourier polynomial, exact Stieltjes Abel yields
+
+bhat0_j(t)=E_X(Y)e(-tY)+2pi i t integral_X^Y E_X(v)e(-tv)dv,
+
+with the lower atom included in E_X. Thus
+|bhat0_j(t)|<=C Ebound(X)(1+X|t|).
+This is the q=1 central-arc approximation AFTER subtracting the discrete
+constant model. It is not a favorable sign claim.
+
+Put K=1+Omega and tau=X^-1/2. The unchanged matrix test satisfies
+||ahat_j(t)||<=C min(sqrt(X),K²X^-3/2 |t|^-2).
+For X>=B=m^(2epsilon), eventually K<=sqrt(X). Splitting its near integral
+at K/X (or at tau if necessary) gives
+
+||N0_j|| <= C Ebound(X) K²/sqrt(X) [1+log X]
+         <= C K² sqrt(X)(1+log X)exp(-c sqrt(log X)).
+
+Summing geometric sqrt(X) over all shells, and using log X>=log B,
+returns C_epsilon K² sqrt(m)(1+L)exp(-c_epsilon sqrt(L)).
+Its displayed upper-certificate power is1/2+2epsilon-o(1), worse than
+Q31's half-power/log cap. The pre-existing direct Q09 Abel transfer has
+only one K and is already stronger than this central-arc completion.
+
+Decision: do not count this duplicate PNT input as a new arithmetic attempt
+or optimize the logarithmic cutoff to claim a power gain. Keep the cheaper
+exact N0 reduction, reject THIS scalar-prefix completion, and retain the
+near signed phase as OPEN. These upper-certificate costs are not lower
+bounds on N0, actual prime error or CCM.
