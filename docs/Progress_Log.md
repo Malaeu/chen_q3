@@ -9210,3 +9210,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 ## 2026-10-26 — Post-Q33: product-index norms cannot supply the signed gain
 
 Развилка: retain product structure rather than repeat ratio/Gram or lattice lifts. Выбрали: exact Helson trace carrier and actual-P lower-price test. Почему: small auxiliary operator norm is not a paid source bound. Что отвергли: direct positive-moment entrance and global separately paid HS/op-trace certificates for the stated coefficientwise carrier. Инсайты: actual rough semiprimes force B norm>=c sqrt(m)/log(m) on a legitimate three-contact sparse-band test; signed trace can still cancel. Блокеры: joint source-dependent comparison remains unpaid, no CCM gain. Иглы Зингера: zero-alpha pruning invalidates the simple even-number argument; positive rough semiprimes repair its narrow scope. Следующий ход: additional joint information or documented rollback, not global norm retuning; no Q34 sent. Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q33_HELSON_RETURN.md; sources/perfekt_pushnitski_1611.03772v2.pdf. Чей вердикт: root derivation, symbolic determinant control, independent q32_annulus_audit bounded PAPER PASS including support-aware refinement; inherited PNT/projection inputs retained. RH OPEN.
+
+## 2026-10-26 — Q34 full square-divisor return
+Развилка: joint product source before absolute norm payment.
+Выбрали: exact square-divisor counting with original matrix weight.
+Почему: actual squarefree divisor support supplies uniform discrepancy.
+Что отвергли: full gain from deleting primes or repaying separate block norms.
+Инсайты: entire nonsquarefree sector paid at m^(5epsilon/4)log^7m; prime coefficient1 remains.
+Блокеры: squarefree composite lower sign; full CCM exponent unchanged.
+Иглы Зингера: rough pq stays, p²q returned, original P and all mixed entries kept.
+Следующий ход: additional signed input for distinct-prime sector, no equivalent-target rename.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q34_CONCLUSION.md; q34_replay.
+Чей вердикт: root replay317exact/10planted; q32_annulus_audit bounded PAPER PASS conditional on inherited inputs.

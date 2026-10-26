@@ -231,3 +231,26 @@ Decision: stop GLOBAL separate HS and operator/trace norm completion for this
 coefficientwise product-index carrier. Localized joint estimates and other
 factorizations remain open. One attempt with a strengthened obstruction,
 not several new failures; no Q34 sent, no full CCM arithmetic gain.
+
+
+### Blockwise HS completion (same attempt; bounded independent PASS)
+
+Let (E_j) partition all ordered index pairs. For any coefficientwise return B',
+mask the transposed matrix B'^T on the same E_j as H. Block Cauchy gives
+
+    sum_j ||H|E_j||_HS ||B'^T|E_j||_HS
+      >= sum_uv |H_uv B'_vu|
+      >= sum_n alpha(n)|rho_g(n)| >= c sqrt(m)/L.       (H6)
+
+The middle inequality groups the exact return sum_{uv=n}B'_vu=rho_g(n).
+The final inequality uses precisely the earlier original-P rough-semiprime
+window: at least c m/L² supported integers, alpha(n)>=cL/sqrt(m), rho_g>=1/4.
+For canonical B the grouped middle inequality is equality. The partition may
+be rectangular or arbitrary and may depend on m; every ordered pair is retained.
+Thus summing separate blockwise HS prices also retains half power. This does
+not address signed coupling between blocks or arbitrary block operator/trace
+schemes. It does not lower-bound the actual signed trace or CCM spectrum.
+Independent read-only q32_annulus_audit checked H6 and scope: bounded PASS.
+The transposed mask is necessary for nonsymmetric redistributions. No new
+arithmetic exponent; this strengthens the same attempt, not its attempt count.
+Rollback: before absolute block payment. Q34 remains unsent.

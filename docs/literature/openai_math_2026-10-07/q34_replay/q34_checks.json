@@ -1,0 +1,38 @@
+{
+  "status": "EXACT_LOCAL_CONTROLS_COMPLETED",
+  "checks": {
+    "squarefree_support_of_actual_coefficients": 4,
+    "complete_mixed_model_mean": 4,
+    "actual_divisor_square_expansion": 60,
+    "squarefree_multiple_floor_identity": 63,
+    "finite_density_error_rational_enclosure": 42,
+    "density_Euler_factor": 7,
+    "divisor_power_injection": 7,
+    "composite_partition_all_terms": 4,
+    "nonsquarefree_full_return": 4,
+    "squarefree_core_to_original_A": 4,
+    "all_complex_coordinates_and_top": 4,
+    "ordered_factor_return": 113,
+    "matrix_Abel_endpoints_and_sign": 1
+  },
+  "total_checks": 317,
+  "planted_errors_detected": [
+    "omit_coprimality_in_multiple_count",
+    "use_density_one_over_ell",
+    "extend_squarefree_ell_formula_to_ell4",
+    "remove_intersections_of_prime_squares",
+    "lcm_replaced_by_product",
+    "delete_all_mixed_divisor_pairs",
+    "nonsquarefree_means_only_prime_powers",
+    "delete_proper_power_return",
+    "wrong_mask_without_transpose",
+    "wrong_Abel_sign"
+  ],
+  "planted_count": 10,
+  "arithmetic": "exact integers, rational fractions and formal prime-log coefficients",
+  "scope": "finite algebra and rational density controls only; no global CCM sign or production spectrum proof",
+  "independent_audit": false,
+  "lean": false,
+  "arb": false,
+  "production_spectrum": false
+}

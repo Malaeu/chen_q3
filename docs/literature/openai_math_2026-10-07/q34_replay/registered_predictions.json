@@ -1,0 +1,9 @@
+{
+  "stage": "after selection and preliminary PAPER derivation; before executable controls",
+  "mechanism": "square-divisor inclusion-exclusion on the actual finite Ramanujan model, keeping its full original-P matrix test",
+  "P1": "For squarefree ell, the coprime double-floor formula counts squarefree multiples exactly, including real cutoffs and square boundaries. Its uniform density error is at most 3*tau(ell)*sqrt(x/ell).",
+  "P2": "The actual normalized divisor-square coefficients vanish off squarefree ell. All mixed d,e terms survive the squarefree and nonsquarefree source maps, including proper prime powers and the cutoff atom.",
+  "P3": "The whole nonsquarefree composite sector has an original-P bound O_epsilon(m^(5*epsilon/4)*log(m)^7), but the remaining squarefree composite form still subtracts the true large-prime operator with coefficient exactly one.",
+  "P4": "Known norm completion of that remaining prime term supplies only the inherited half-power full bound; no vanishing exponent or coefficient margin follows from this trial.",
+  "scope": "Predictions about the displayed derivation and finite algebraic controls, not numerical evidence for the asymptotic CCM sign. No claim that preregistration preceded the preliminary derivation."
+}
