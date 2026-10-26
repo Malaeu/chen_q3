@@ -1,0 +1,64 @@
+{
+  "request_bytes": 130202,
+  "request_lf": 2286,
+  "request_sha256": "285fe8f99a75e0a858cb5e61e72584efe45181c36f8899489a95238b5bfa3ae0",
+  "source_count": 8,
+  "sources": [
+    {
+      "id": "S1",
+      "name": "CCM_POST_Q32_ORDER_TRANSPORT_PREFLIGHT.md",
+      "bytes": 7069,
+      "lf": 133,
+      "sha256": "11a87906708c9aee0cdfb23d53d0a37bfbbd0b2f7843845efaa4bce68339edb1"
+    },
+    {
+      "id": "S2",
+      "name": "CCM_Q32_CONCLUSION.md",
+      "bytes": 3625,
+      "lf": 64,
+      "sha256": "183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245"
+    },
+    {
+      "id": "S3",
+      "name": "PROSHKA_CCM_SIGNED_NEAR_FREQUENCY_Q32_VERDICT_2026-10-26.md",
+      "bytes": 77294,
+      "lf": 1247,
+      "sha256": "1ed7b9b55f29658fa1022f95ef4e89d183be0a1bdac6abaa8ff93cd040fe4f50"
+    },
+    {
+      "id": "S4",
+      "name": "CCM_Q04_CENTERED_SECOND_PRIMITIVE.md",
+      "bytes": 2920,
+      "lf": 55,
+      "sha256": "ca6e4213fdf7a94168fa6cbca3f5f3a60a1c887e5fbc8159a64683de1f4bfc85"
+    },
+    {
+      "id": "S5",
+      "name": "CCM_DENSITY_PAIRING_TEST.md",
+      "bytes": 17206,
+      "lf": 350,
+      "sha256": "c22768413fa17d0282f4f1b5338ee51a80fa035a31ebec4a42d6a755628dbae3"
+    },
+    {
+      "id": "S6",
+      "name": "CCM_POST_Q29_CONTACT_CERTIFICATE_TEST.md",
+      "bytes": 2736,
+      "lf": 56,
+      "sha256": "2b3652b512ce5a4ffe9433262cffce44086c36e24f1320286fcc5b4f5235eef6"
+    },
+    {
+      "id": "S7",
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "bytes": 5633,
+      "lf": 123,
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2"
+    },
+    {
+      "id": "S8",
+      "name": "CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "bytes": 8064,
+      "lf": 154,
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681"
+    }
+  ]
+}

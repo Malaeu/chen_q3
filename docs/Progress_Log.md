@@ -9202,3 +9202,7 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: stop curvature/norm reparameterization; future supplier must control actual signed discrepancy.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q32_ORDER_TRANSPORT_PREFLIGHT.md.
 Чей вердикт: root derivation; q32_annulus_audit bounded independent PAPER PASS and duplicate warning.
+
+## 2026-10-26 — Q33: full square return retains half power
+
+Развилка: source-dependent signed comparison after Q32. Выбрали: audit the full Ramanujan majorant and its square return. Почему: distinguish paid model from unpaid signed source. Что отвергли: dropping the positive energy as a vanishing-exponent completion. Инсайты: all prime powers and the top diagonal return exactly, yet scalar mass leaves (16/epsilon−4)sqrt(m); Q08 already paid the model and weighted-LCM20.10 is stronger. Блокеры: actual signed U_Z/C5 remains open, no full arithmetic gain. Иглы Зингера: n=m square cancels its diagonal; small-base high powers cannot be omitted. Следующий ход: use actual signed information before energy deletion; no automatic Q34. Адреса: docs/literature/openai_math_2026-10-07/CCM_Q33_CONCLUSION.md and q33_replay/. Чей вердикт: root replay211exact/8planted/8sources byte-identical; independent q32_annulus_audit bounded PAPER PASS §§2–6 conditional on inherited inputs. RH OPEN.

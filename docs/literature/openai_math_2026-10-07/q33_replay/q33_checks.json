@@ -1,0 +1,38 @@
+{
+  "status": "EXACT_LOCAL_CONTROLS_COMPLETED",
+  "checks": {
+    "finite_Ramanujan_divisor_map": 72,
+    "actual_prime_power_coefficient_majorant": 72,
+    "exact_model_mean": 3,
+    "period_orthogonality": 3,
+    "coefficient_closed_form": 10,
+    "auxiliary_convolution": 24,
+    "both_time_shift_square": 5,
+    "complex_cross_term": 5,
+    "zero_overlap_keeps_energy_diagonal": 2,
+    "full_signed_return": 1,
+    "mixed_labels_return": 1,
+    "Euler_integrals": 3,
+    "Euler_constants": 1,
+    "log_contact_rank_two_derivative": 1,
+    "actual_contact_sine": 3,
+    "exponent_algebra": 4,
+    "actual_top_atom_cancellation": 1
+  },
+  "total_checks": 211,
+  "planted_errors_detected": [
+    "omit_small_base_high_prime_powers",
+    "rough_prime_square_matches_Lambda",
+    "replace_lcm_by_product",
+    "drop_square_in_nonnegative_model",
+    "forget_negative_actual_mass",
+    "delete_top_square_only",
+    "truncated_shift_is_unitary",
+    "transpose_for_complex_norm"
+  ],
+  "planted_count": 8,
+  "scope": "finite algebra and exponent checks only; no asymptotic sign or original CCM spectrum certification",
+  "independent_audit": false,
+  "lean": false,
+  "arb": false
+}

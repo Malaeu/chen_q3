@@ -1,0 +1,7 @@
+{
+  "stage": "after preliminary PAPER derivation; before new executable checks",
+  "P1": "Finite Ramanujan divisor coefficients and full-period mean agree exactly; majorant fails if small-base prime powers are omitted.",
+  "P2": "Full signed shift-square return agrees for complex vectors, including the no-overlap upper atom; deleting its square term creates a mismatch.",
+  "P3": "The stated elementary Euler and exponent algebra is consistent; the completed certificate at Z=floor(m^(epsilon/4)) retains power one half, not a vanishing power.",
+  "scope": "These predictions concern finite algebra and the displayed proof budget, not a numerical original CCM sign or independent audit."
+}
