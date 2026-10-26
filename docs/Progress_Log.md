@@ -9189,3 +9189,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: preserve full nonmonotone source/test relation; no automatic Q33 after this one preflight.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q32_ORDER_TRANSPORT_PREFLIGHT.md.
 Чей вердикт: root proof; q32_annulus_audit bounded independent PAPER PASS conditional on inherited identities.
+
+## 2026-10-26 — Post-Q32 convex repair returns to Q04
+
+Развилка: repair test curvature while retaining original P and endpoints.
+Выбрали: explicit r_m with zero terminal value and derivative; pay its full correction.
+Почему: kappa r_m P plus/minus h is Loewner-convex from the inherited hsecond bound.
+Что отвергли: calling this a new signed supplier or counting duplicate Q04 as a fresh attempt.
+Инсайты: separate correction allowance has half-power lower price from its continuous integral alone.
+Блокеры: signed Delta2 pairing remains open; positive majorant costs K²sqrt(m).
+Иглы Зингера: certificate lower price is not an actual source lower bound.
+Следующий ход: stop curvature/norm reparameterization; future supplier must control actual signed discrepancy.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q32_ORDER_TRANSPORT_PREFLIGHT.md.
+Чей вердикт: root derivation; q32_annulus_audit bounded independent PAPER PASS and duplicate warning.

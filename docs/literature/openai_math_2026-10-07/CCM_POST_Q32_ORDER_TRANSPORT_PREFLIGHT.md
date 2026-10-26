@@ -82,3 +82,52 @@ The claim holds for nonzero P, eventually M>=2 on the fixed-epsilon schedule.
 The inherited primitive and source identities were not re-proved from scratch.
 Nonlinear contact subtraction can change curvature and these data; it is not
 covered by this obstruction and needs a separate full-source return.
+
+## Endpoint-preserving convex repair: full cost and duplicate recognition
+
+Own follow-up; q32_annulus_audit independently bounded PAPER PASS, including the duplication warning. Set K=1+Omega and use the inherited
+||h''(x)||<=C_h K^2 x^(-5/2). Define
+
+ r_m(x)=x^(-1/2)-m^(-1/2)+(x-m)/(2m^(3/2)),
+ kappa=(4/3) C_h K^2.
+
+Then r(m)=rprime(m)=0, rsecond(x)=(3/4)x^(-5/2), and
+0<=r(x)<=x^(-1/2) on [1,m]. Both matrix functions kappa r P+h
+and kappa r P-h have nonnegative second derivative on ran P and zero
+terminal value/tangent. Integrating twice from m proves exactly
+
+ -kappa r(x)P <= h(x) <= kappa r(x)P.
+
+This retains the entire original h, including its mixed entries. Positivity
+of the actual Lambda weights gives A_prime<=kappa sum_(n<=m)Lambda(n)r(n)P
+<=6 kappa sqrt(m)P. Thus the complete proposed return is
+T_>R <=[6 kappa sqrt(m)+b_div]P and
+P K_m P >=-[6 kappa sqrt(m)+50log(m)+8]P.
+Its price O_epsilon(m^(1/2+2epsilon)/log^2(m)) is worse than12sqrt(m).
+Use the old fallback; do not promote this convexification to a better bound.
+
+For the centered source, returning the correction preserves the actual scalar
+discrepancy D_r=sum Lambda(n)r(n)-integral_1^m r(x)dx. The integral is exactly
+
+ integral_1^m r=(3/4)sqrt(m)-2+3/(2sqrt(m))-1/(4m^(3/2)).
+
+Consequently the certificate that pays the TWO correction terms separately
+is at least kappa integral r~(3/4)kappa sqrt(m). This is a lower price for
+that positive allowance only, NOT a lower bound for |D_r| or actual CCM.
+Endpoint mass balancing is still free for r, but does not assign D_r a sign.
+
+Keeping D_r signed brings us back to the existing Q04 primitive. With
+Delta1(t)=psi(t)-(t-1), Delta2(t)=integral_1^t Delta1(u)du, exact Stieltjes
+integration gives D_r=(3/4)integral_1^m Delta2(t)t^(-5/2)dt and, for the
+full source, C0=integral_1^m Delta2(t)h''(t)dt. Both upper jets vanish;
+Delta1(1)=Delta2(1)=0; all prime powers remain.
+See CCM_Q04_CENTERED_SECOND_PRIMITIVE.md: that latter representation and its
+failed absolute budget were already audited on20October. This follow-up
+is NOT counted as another independent arithmetic attempt.
+
+Concrete limit: shape repair is constructible, but its cheap signed return
+is precisely unpaid arithmetic. Contact-generated matrices CX*+XC* vanish
+after P compression and cannot change this pointwise scalar test; the earlier
+CCM_POST_Q29_CONTACT_CERTIFICATE_TEST.md already records that freedom.
+Nonlinear source-dependent repairs are not ruled out, but must supply an
+independent joint bound instead of assigning it as a favorable premise.
