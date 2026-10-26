@@ -9294,3 +9294,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: concrete actual-source one-sided comparison before moments; Q37 not sent.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q36_SIGN_UNCERTAINTY_ALIAS.md.
 - Чей вердикт: root source map; q32_annulus_audit bounded applicability PASS.
+
+## 2026-10-26 — Q37: arithmetic exponential does not supply a free log-chord sign
+- Развилка: use finite actual Dirichlet exponential to control first Hermitian derivative.
+- Выбрали: full Q37 read, replay, one bounded independent audit.
+- Почему: polynomial forward/inverse orbit norms alone do not imply a logarithmic derivative upper.
+- Что отвергли: zero-slack log-chord domination on original P, cofinally; not paid constant/polylog repair or CCM.
+- Инсайты: actual n=2 packet produces constant defect; original-P return pays all reactivated atoms with m^(3/2)delta=o(1).
+- Блокеры: source-specific upper on initial derivative still missing; legal completion half-power.
+- Иглы Зингера: no compact support after projection; fixed q after fixed epsilon; all mixed terms and inverse norm paid.
+- Следующий ход: rollback before log interpolation to full first signed form; no Q38.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q37_CONCLUSION.md; q37_replay.
+- Чей вердикт: Pro original; root read/replay; q32_annulus_audit qualified PAPER PASS §§2–7 with inherited S11/S10.

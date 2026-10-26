@@ -1,0 +1,43 @@
+{
+  "status": "LOCAL_EXACT_CONTROLS_ONLY",
+  "counts": {
+    "Mangoldt_divisor_identity": 95,
+    "coefficientwise_convolution_envelope": 380,
+    "minimal_product_support": 380,
+    "complete_exponential_inverse": 96,
+    "prime_power_ordered_compositions": 46,
+    "prime_power_exponential_coefficient": 12,
+    "coprime_exponential_multiplicativity": 4,
+    "actual_two_packet_log_curvature_numerator": 1,
+    "initial_first_moment": 1,
+    "complete_time_one_norm": 1,
+    "complex_self_and_mixed_orbit_terms": 9,
+    "log2_bounds_consistent": 1,
+    "actual_support_excludes_n_ge_three": 1,
+    "second_packet_shifts_out": 1,
+    "sqrt2_upper_from_square": 1,
+    "exact_log_chord_margin": 1,
+    "returned_negative_upper_margin": 1,
+    "whole_exponential_projection_return": 3,
+    "first_form_projection_return": 3,
+    "original_short_exponent": 3,
+    "small_time_scalar_constants": 1
+  },
+  "total_controls": 1041,
+  "planted_errors_detected": [
+    "replace_convolution_by_Lambda_product",
+    "delete_proper_prime_power_atom",
+    "forget_ordered_factor_multiplicity",
+    "inverse_has_same_sign",
+    "drop_orbit_mixed_term",
+    "claim_log_convexity",
+    "claim_zero_gap_after_exact_contacts",
+    "drop_exponential_amplification_in_return"
+  ],
+  "planted_count": 8,
+  "scope": "Finite exact log-polynomial arithmetic, complex two-packet algebra, rational support/gap constants and exponent accounting. No production spectrum, no numerical asymptotic sign inference.",
+  "new_independent_audit": false,
+  "lean": false,
+  "arb": false,
+  "production_spectrum": false
+}
