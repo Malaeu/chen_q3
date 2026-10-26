@@ -9432,3 +9432,14 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Иглы Зингера: E(a^-), Peano sign, virtual endpoint and proper prime powers checked.
 Следующий шаг: screen an earlier source-specific fork without repeating Q09/Q28 positivity.
 Проверка: four replay assets byte-identical; bounded independent PAPER PASS §§3–8; primary BHP statement checked. No new CCM exponent or RH claim.
+
+## 2026-10-26 — Q47 alternating channel and complete dyadic return
+Развилка: cheap alternating transfer versus full logarithmic derivative.
+Выбрали: preserve original source and stop separate norm optimization.
+Почему: dyadic correction restores Lambda coefficient one; joint sign remains unpaid.
+Что отвергли: cheap direct transfer implies cheap inverse/log derivative.
+Инсайты: exact two-state supply map available, but its derivative sign is the original debt.
+Блокеры: independent one-sided linked derivative estimate.
+Иглы Зингера: input trace, fixed inverse states, original norm and complete 2^j correction.
+Следующий шаг: source-dependent joint estimate before introducing another filter; no automatic Q48.
+Проверки: full read, byte-identical replay, bounded independent PAPER PASS, primary DLMF identities; no new exponent or RH claim.

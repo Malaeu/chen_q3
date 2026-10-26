@@ -1,0 +1,17 @@
+{
+  "task": "Q47_SOURCE_DERIVED_JOINT_COMPENSATION",
+  "stage": "After reading all ten source bodies and preliminary paper derivation; before executable mathematical checks",
+  "mechanism": "Finite alternating-integer causal state, exact Mobius inverse, and joint logarithmic-derivative/dyadic compensation in the original metric",
+  "predictions": {
+    "P1": "The alternating state has exact coefficients (-1)^(n-1) and its inverse has q(2^j u)=2^(j-1)mu(u) for odd u and j>=1.",
+    "P2": "Its negative logarithmic derivative has coefficient Lambda(n)-2^j log(2) at n=2^j, not Lambda(n).",
+    "P3": "The alternating Abel map retains its upper boundary for a nonzero left input trace.",
+    "P4": "The two explicit linked state energies return the complete original Hermitian first form; no sign follows from their separate nonnegativity.",
+    "P5": "The continuous-source control cancels exactly if both channels and the full continuous output are returned.",
+    "P6": "Inserting the final projector between causal factors can invalidate the exact source map."
+  },
+  "scope": "Finite algebra checks only, not asymptotic original-P spectral certification",
+  "historical_code_execution": false,
+  "production_spectrum": false,
+  "repository_writes": false
+}

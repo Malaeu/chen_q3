@@ -1,0 +1,160 @@
+{
+  "arb": false,
+  "historical_code_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "mathematics": {
+    "asymptotic_signed_inequality_certified": false,
+    "counts": {
+      "alternating_abel_fixtures": 5,
+      "alternating_prefix_indices": 96,
+      "complex_energy_components": 2,
+      "exact_rational_operator_dimension": 9,
+      "formal_coefficient_indices": 96,
+      "full_hermitian_congruence": 1
+    },
+    "first_eta_log_derivative_coefficient": {
+      "log2_coefficient": -1,
+      "n": 2
+    },
+    "passed": true,
+    "planted_errors_detected": {
+      "drop_centering_output": true,
+      "drop_complex_mixed_terms": true,
+      "drop_higher_dyadic_powers": true,
+      "drop_nonzero_upper_trace": true,
+      "insert_intermediate_projector": true,
+      "omit_first_dyadic_return": true,
+      "replace_dyadic_2power_by_1": true,
+      "replace_inverse_by_mu": true,
+      "reverse_abel_integral_sign": true
+    },
+    "returned_coefficient": {
+      "log2_coefficient": 1,
+      "n": 2
+    },
+    "scope": "Exact finite algebra and rational nonproduction fixtures only"
+  },
+  "production_spectrum": false,
+  "provenance": {
+    "all_source_frames_verified": true,
+    "bytes": 129191,
+    "lf": 2357,
+    "packet": "PROSHKA_CCM_SOURCE_DERIVED_JOINT_COMPENSATION_Q47_2026-10-26.txt",
+    "sha256": "072b38a5e63f8411daf467eceb6ad2598b5c462fda7116cfbf9857cb7be9f11b",
+    "single_byte_corruption_detected": true,
+    "source_count": 10,
+    "sources": [
+      {
+        "bytes": 67638,
+        "end_byte": 73446,
+        "end_line": 1372,
+        "id": "S1",
+        "lf": 1347,
+        "name": "PROSHKA_CCM_ORIGINAL_P_STRATEGIC_ROLLBACK_Q46_VERDICT_2026-10-26.md",
+        "sha256": "32b90944bb6195bcfe1842e282f35aaf322555e3e616a3e594a02c3682809de5",
+        "start_byte": 5808,
+        "start_line": 26
+      },
+      {
+        "bytes": 2717,
+        "end_byte": 76306,
+        "end_line": 1423,
+        "id": "S2",
+        "lf": 47,
+        "name": "CCM_Q46_CONCLUSION.md",
+        "sha256": "1e121c3dc8265911c66009090f2126e47fb4e5b78277881e21875658c9095f7c",
+        "start_byte": 73589,
+        "start_line": 1377
+      },
+      {
+        "bytes": 3399,
+        "end_byte": 79867,
+        "end_line": 1493,
+        "id": "S3",
+        "lf": 66,
+        "name": "CCM_POST_Q46_BOCHNER_SOURCE_PREFLIGHT.md",
+        "sha256": "a8d1c0f8de9b4aa72f28f1de74fe57825b62a7f57e3cc914860fe43ca09d80ad",
+        "start_byte": 76468,
+        "start_line": 1428
+      },
+      {
+        "bytes": 4681,
+        "end_byte": 84712,
+        "end_line": 1590,
+        "id": "S4",
+        "lf": 93,
+        "name": "CCM_POST_Q28_EULER_POSITIVITY_PREFLIGHT.md",
+        "sha256": "9ca3dc230902ef9bbd097e21ebc07a32e7494aa76ef5f906f26e8f6a28a3f8a2",
+        "start_byte": 80031,
+        "start_line": 1498
+      },
+      {
+        "bytes": 4828,
+        "end_byte": 89698,
+        "end_line": 1685,
+        "id": "S5",
+        "lf": 91,
+        "name": "CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+        "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+        "start_byte": 84870,
+        "start_line": 1595
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 96021,
+        "end_line": 1758,
+        "id": "S6",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 89847,
+        "start_line": 1690
+      },
+      {
+        "bytes": 3751,
+        "end_byte": 99925,
+        "end_line": 1815,
+        "id": "S7",
+        "lf": 53,
+        "name": "CCM_CONTINUOUS_RANK_TWO_TEST.md",
+        "sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+        "start_byte": 96174,
+        "start_line": 1763
+      },
+      {
+        "bytes": 8129,
+        "end_byte": 108218,
+        "end_line": 1967,
+        "id": "S8",
+        "lf": 148,
+        "name": "CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md",
+        "sha256": "b27227aec0515c8e126a7b6cab23117bc364c67cee167dfc38f23e95c40a29d7",
+        "start_byte": 100089,
+        "start_line": 1820
+      },
+      {
+        "bytes": 16129,
+        "end_byte": 124518,
+        "end_line": 2267,
+        "id": "S9",
+        "lf": 296,
+        "name": "REPORT_2026-09-13_COMPENSATION_COUPLING_HUNT.md",
+        "sha256": "250e638fc458e9f685c8c48944acb2e36c49c4365df146c734e0e7944e89a803",
+        "start_byte": 108389,
+        "start_line": 1972
+      },
+      {
+        "bytes": 4497,
+        "end_byte": 129174,
+        "end_line": 2354,
+        "id": "S10",
+        "lf": 83,
+        "name": "BRIEF_2026-09-13_SOURCE_PASSIVITY.md",
+        "sha256": "2c67b05ca651bc143bb74c9047f726f04df355a1b0e259e4ca00d24c3bf22d3f",
+        "start_byte": 124677,
+        "start_line": 2272
+      }
+    ]
+  }
+}
