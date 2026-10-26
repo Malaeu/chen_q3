@@ -70,3 +70,30 @@ merely for this split. For polynomial y the displayed exp(4sqrt(y)) bound is
 insufficient; this alone is NOT a lower bound on the true certificate/product.
 Rollback remains before separate sieve-remainder payment. Need additional
 joint information involving distinct primes, not another local divisor mask.
+
+## Post-Q34 Euler carrier preflight — no supplier admitted
+
+Bounded shelf return by q32_annulus_audit: three semantic dictionaries
+(multiplicative squarefree Euler product; truncated translation semigroup;
+exterior algebra distinct primes) returned INCOMPLETE due q3_docs freshness.
+Literal sources Q28 Euler positivity, Q20 Selberg, Q30 nilpotent lift and
+CCM_FIXED_PRIME_COMPRESSION_TEST.md already cover local positivity/norm
+completions. This is not evidence of literature absence or a new failed attempt.
+
+For causal uncompressed shifts S_s, S_s S_t=S_(s+t), S_s=0 for s>=L,
+the finite Euler product encodes distinct prime products. Full actual model
+requires all signed g_l channels, not just coefficient-one rough products.
+The product derivative supplies log n; its logarithmic derivative instead
+supplies alternating powers of individual primes. They cannot be interchanged:
+a bound for E^(-1)E' does not bound E' without paying E. Separate local
+resolvent numerical-range bounds return the already known half-power budget.
+No original-P source map with a new joint sign has been supplied here.
+
+A focused external search located Bondarenko--Heap--Seip arXiv1405.6516,
+whose primary abstract was read. Its squarefree coefficient inequality is a
+LOWER bound for a long vertical-mean absolute Lq norm (0<q<2), not a lower
+bound for the finite signed original-P quadratic form. Excluded lead only:
+full PDF/theorem mapping not audited, no candidate admission or proof credit.
+Next genuinely missing input is joint signed control of the full differentiated
+source product, including the actual large-prime deletion and all g_l channels.
+Do not ask for another product identity or local factor positivity as a supplier.

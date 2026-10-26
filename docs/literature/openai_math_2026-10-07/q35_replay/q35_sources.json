@@ -1,0 +1,108 @@
+{
+  "request_bytes": 158021,
+  "request_lf": 2685,
+  "request_sha256": "bb9c58db7abe7f2f77e156b94473c0ac93fe7808fbd931f16ebbc4686d620a56",
+  "source_count": 11,
+  "all_hashes_match": true,
+  "sources": [
+    {
+      "id": "S1",
+      "name": "CCM_Q34_CONCLUSION.md",
+      "bytes": 5747,
+      "lf": 99,
+      "sha256": "acbf977ad791fac2910bea0876969a817ddbd8d57211cf7a4312372c4b6b0e2e",
+      "body_start_line": 33,
+      "body_end_line": 131
+    },
+    {
+      "id": "S2",
+      "name": "PROSHKA_CCM_JOINT_PRODUCT_SOURCE_Q34_VERDICT_2026-10-26.md",
+      "bytes": 79202,
+      "lf": 1307,
+      "sha256": "eb250d9d48c7c31a4ed3154ae6f25fd48aacbdb171a0adfc32770d5c9b707db0",
+      "body_start_line": 139,
+      "body_end_line": 1445
+    },
+    {
+      "id": "S3",
+      "name": "CCM_POST_Q33_HELSON_RETURN.md",
+      "bytes": 13361,
+      "lf": 256,
+      "sha256": "835b134256000276ff1d4bf18564d8ad58956cb5e5707cb712cc1c5ff17775aa",
+      "body_start_line": 1453,
+      "body_end_line": 1708
+    },
+    {
+      "id": "S4",
+      "name": "CCM_LOCAL_BLOCK_Q08_CONCLUSION.md",
+      "bytes": 4468,
+      "lf": 81,
+      "sha256": "9368311f705db6c1052f8b017312886d162f7b7bd9c6597afbc2975188f29817",
+      "body_start_line": 1716,
+      "body_end_line": 1796
+    },
+    {
+      "id": "S5",
+      "name": "CCM_POST_Q28_EULER_POSITIVITY_PREFLIGHT.md",
+      "bytes": 4681,
+      "lf": 93,
+      "sha256": "9ca3dc230902ef9bbd097e21ebc07a32e7494aa76ef5f906f26e8f6a28a3f8a2",
+      "body_start_line": 1804,
+      "body_end_line": 1896
+    },
+    {
+      "id": "S6",
+      "name": "CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "bytes": 10197,
+      "lf": 190,
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f",
+      "body_start_line": 1904,
+      "body_end_line": 2093
+    },
+    {
+      "id": "S7",
+      "name": "CCM_POST_Q30_SURVIVING_PRODUCTS.md",
+      "bytes": 3555,
+      "lf": 80,
+      "sha256": "204a0aa14f8480f691f8430440d8d2e8a860617c6b946b80d7639361814efd0d",
+      "body_start_line": 2101,
+      "body_end_line": 2180
+    },
+    {
+      "id": "S8",
+      "name": "CCM_FIXED_PRIME_COMPRESSION_TEST.md",
+      "bytes": 8318,
+      "lf": 128,
+      "sha256": "833d2d3ff218c16e62a3c0f179f847e264e54536b11e5cff3b9eeec1fb687d09",
+      "body_start_line": 2188,
+      "body_end_line": 2315
+    },
+    {
+      "id": "S9",
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "bytes": 5633,
+      "lf": 123,
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "body_start_line": 2323,
+      "body_end_line": 2445
+    },
+    {
+      "id": "S10",
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "bytes": 6174,
+      "lf": 69,
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "body_start_line": 2453,
+      "body_end_line": 2521
+    },
+    {
+      "id": "S11",
+      "name": "CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "bytes": 8064,
+      "lf": 154,
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681",
+      "body_start_line": 2529,
+      "body_end_line": 2682
+    }
+  ]
+}

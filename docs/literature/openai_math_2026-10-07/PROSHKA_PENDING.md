@@ -1,3 +1,21 @@
+# Q35 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+Q35 processed: CCM_Q35_CONCLUSION.md;121exact/9planted/11sources reproduced byte-identically, bounded independent PAPER PASS §§3–6 conditional on inherited Q34/S7 and ordinary PNT. Actual conditioned squarefree law has positive prime covariance, rejecting only literal CNA/strongly-Rayleigh import; no spectral no-go or new exponent. Full original-P event/complement retained, prior6sqrt(m)+6m^(1/4) cap preserved. Roll back to unconditioned signed C_sf; no Q36. Scoped cycle commit now; remove completed Q35 monitor. Goal OPEN.
+
+--- Earlier state ---
+
+# Q35 RECEIVED — FULL READ AND REPLAY COMPLETE; INDEPENDENT AUDIT RUNNING
+
+2026-10-26: full original 80905bytes/1276LF read completely; SHA256 a820a3f588282cbc55423689f2fa1ce4ea9b3fbaf8cc6608e2a82ed1e0946f61. Five assets extracted to q35_replay;121exact/9planted/11source bodies reproduced, both JSON byte-identical. Three finite actual-law signs use rational outward enclosures, not float. Primary BBL Proposition2.1/Theorems4.1,4.9 and ordinary DLMF PNT statements checked. Read-only q32_annulus_audit checking §§3–6: conditional support, covariance, cofinal constants and full original-P return. No next question; no new CCM exponent claimed. Pending scoped cycle commit after audit, including prior Q34 Euler addendum. Goal OPEN.
+
+--- Earlier state ---
+
+# Q35 DISTINCT_PRIME_ROLLBACK SENT — RESPONSE PENDING
+
+2026-10-26 07:55 Europe/Berlin: sent ONCE in same AI Mathematik Morgenbrief chat https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d through own IAB browser3/tab4. Exact TXT tile, companion, ChatGPT antwortet and Stoppen observed. Request PROSHKA_CCM_DISTINCT_PRIME_ROLLBACK_Q35_2026-10-26.txt:158021bytes/2685LF/SHA256 bb9c58db7abe7f2f77e156b94473c0ac93fe7808fbd931f16ebbc4686d620a56;11fullsourceframes checked. Q34 complete and committed45e731a9; duplicate sieve rejection05e1de47; local Euler-preflight addendum explicitly supplied uncommitted. Concrete impasse, duplicate variants not counted as three attempts. Do not resend/intervene. After natural completion download/read full original, reproduce code and one bounded independent audit, one scoped cycle commit including addendum; preserve foreign work. Goal OPEN.
+
+--- Earlier state ---
+
 # Q34 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Full original read,317exact/10planted/9sources reproduced byte-identically. Independent bounded PAPER PASS §§2–8. CCM_Q34_CONCLUSION.md records nonsquarefree sector price m^(5epsilon/4)log^7m on original P; squarefree prime deletion remains unpaid. No full exponent or Q35. Scoped cycle commit next; preserve foreign changes. Delete completed Q34 monitor. Goal OPEN.

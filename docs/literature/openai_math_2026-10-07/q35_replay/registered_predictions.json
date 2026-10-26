@@ -1,0 +1,9 @@
+{
+  "stage": "After preliminary PAPER derivation and primary-statement inspection; before executable controls. Not claimed to precede mathematical selection.",
+  "trial": "Joint conditional negative dependence / Rayleigh import for the exact finite squarefree-composite source, not individual Euler positivity.",
+  "P1": "The literal source polynomial with all g_Z channels maps to C_sf by uncompressed causal shift evaluation and adjoint, with zero coordinate-return error.",
+  "P2": "Conditioning on one actual prime a and allowing p,q plus mutually incompatible large primes gives G=A x+B y+C xy+sum d_r z_r, with no constant and no omitted supported monomials.",
+  "P3": "For the documented large-m source selection, Delta_pq(G)(1)=A B-C D <=-log(m)/(64 a), and conditional covariance lies between a log(m)/(256m) and 48a log(m)/m.",
+  "P4": "This rejects conditional negative dependence and strongly-Rayleigh applicability to the exact source; it is not a negative CCM eigenvalue or an obstruction to other joint signed estimates.",
+  "P5": "Complete restoration preserves the prior S7 half-power bound. Paying the separately selected event and its complement supplies no eta(epsilon)->0."
+}

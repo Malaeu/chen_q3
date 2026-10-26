@@ -9234,3 +9234,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: different joint arithmetic supplier, no Q35 for this duplicate.
 Адреса: CCM_Q34_CONCLUSION.md addendum; CCM_LOCAL_BLOCK_Q08_CONCLUSION.md.
 Чей вердикт: root112exact; q32_annulus_audit bounded PASS and duplicate identification.
+
+## 2026-10-26 — Q35 conditional prime dependence checked
+Развилка: literal negative-dependence import for squarefree coefficients.
+Выбрали: complete Q35 source read, rational replay and one independent audit.
+Почему: exact conditioned covariance tests the required hypothesis before use.
+Что отвергли: CNA/strongly-Rayleigh for this literal law only; not signed CCM.
+Инсайты: original hyperbolic cutoff permits p,q together but excludes their joint occurrence with large r; covariance is positive.
+Блокеры: full signed C_sf lower bound remains unpaid; full exponent unchanged.
+Иглы Зингера:121exact/9planted/11sources byte-identical; rational outward signs, not float cancellation.
+Следующий ход: return before conditioning to full physical correlation; no automatic Q36.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q35_CONCLUSION.md and q35_replay/.
+Чей вердикт: root replay and q32_annulus_audit qualified bounded PAPER PASS §§3–6, inherited Q34/S7/PNT dependencies retained.
