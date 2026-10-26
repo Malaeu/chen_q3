@@ -1,0 +1,43 @@
+{
+  "status": "LOCAL_EXACT_CONTROLS_ONLY",
+  "counts": {
+    "central_binomial_divides_full_lcm": 32,
+    "central_binomial_maximum_lower_mass": 32,
+    "all_prime_power_binomial_digits_retained": 32,
+    "true_prime_power_frequency_support": 4,
+    "zero_full_frequency_mean": 4,
+    "diagonal_long_mean_square": 4,
+    "all_powers_within_same_prime_coordinate": 4,
+    "full_discrete_continuous_square": 4,
+    "continuous_control_exact_zero": 4,
+    "mixed_cosines_product_and_ratio": 4,
+    "haar_mixed_character_is_zero": 4,
+    "finite_true_prime_gap_pigeonhole": 3,
+    "ratio_log_upper_uses_positive_gap": 3,
+    "original_P_ratio_loss_constant": 1,
+    "cosine_mixed_loss_constant": 1,
+    "long_phase_tail_chernoff_optimization": 1,
+    "prime_power_diagonal_lower": 1,
+    "finite_certificate_saturation_coefficient": 1,
+    "pair_ratio_error_decays_on_original_schedule": 3,
+    "full_frequency_tail_exponent": 3,
+    "short_fee_has_vanishing_exponent": 3,
+    "finite_sinc_certified_lower": 1,
+    "retain_ratio_after_product_support_cut": 1
+  },
+  "total_controls": 150,
+  "planted_errors_detected": [
+    "delete_proper_prime_powers",
+    "give_each_power_an_independent_prime_phase",
+    "omit_discrete_continuous_mixed_sector",
+    "nonzero_continuous_price_is_exact_background",
+    "finite_frequency_sinc_is_kronecker_delta",
+    "discard_ratio_channel_when_product_exceeds_m"
+  ],
+  "planted_count": 6,
+  "scope": "Integer/binomial, rational Laurent-algebra and exponent bookkeeping. No production CCM spectrum, no transcendental sign inference, no cofinal inference from tests.",
+  "new_independent_audit": false,
+  "lean": false,
+  "arb": false,
+  "production_spectrum": false
+}

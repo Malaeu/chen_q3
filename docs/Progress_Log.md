@@ -9258,3 +9258,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: additional actual signed arithmetic information, not another coordinate change or automatic Q36.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q35_FOURIER_CONCENTRATION_PREFLIGHT.md.
 Чей вердикт: independent q32_annulus_audit shelf equivalence; root sufficient-budget preflight, no supplier admission.
+
+## 2026-10-26 — Q36: weighted prime phases resist Haar replacement
+- Развилка: full signed original-P C0 versus independent unweighted prime-phase statistics.
+- Выбрали: checked Q36 full return, exact replay and one bounded independent audit.
+- Почему: actual close primes have uniformly near-one ratio moment on attainable densities.
+- Что отвергли: uniform Haar-moment replacement and finite-measure theorem on the entire centered exceptional set; not CCM or event-specific bounds.
+- Инсайты: infinite Lebesgue measure coexists with paid weighted tails; positive second-moment completion saturates its mass allowance.
+- Блокеры: signed centered bulk still unpaid; trial16sqrt(m)+o(1) does not improve preserved S7 cap.
+- Иглы Зингера: explicit N-1>=m/(8L); retain all prime powers, both times and mixed terms; no finite-to-cofinal inference.
+- Следующий ход: rollback before statistical averaging to full signed C0; no Q37 sent.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q36_CONCLUSION.md; q36_replay; q16_precision_recheck/README.md.
+- Чей вердикт: Pro original; root full read/replay; read-only q32_annulus_audit qualified PAPER PASS §§2–6.

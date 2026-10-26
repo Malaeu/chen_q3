@@ -1,3 +1,15 @@
+# Q36 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+Q36 processed: CCM_Q36_CONCLUSION.md;150exact/6planted/12sources byte-identical, bounded independent PAPER PASS §§2–6 with explicit N-1>=m/(8L) clarification. Full centered exceptional sets have infinite measure, but weighted tails are paid; actual close-prime moments reject uniform Haar replacement only. Completed second-moment cost16sqrt(m)+o(1) gives no new exponent; preserve S7 cap. Rollback to joint signed centered C0, no Q37; goal OPEN.
+
+--- Earlier state ---
+
+# Q36 SENT — RESPONSE PENDING
+
+Q36 SIGNED_DENSITY_ROLLBACK sent ONCE 2026-10-26T08:53+01:00 in the same AI Mathematik Morgenbrief chat https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d through own IAB browser3/tab4. Exact TXT tile/companion and ChatGPT antwortet/Stoppen confirmed. Request140635bytes/2263LF/SHA256 be32d09c682a6993eba01dd8dea28a996c8b1f5a3c4c0879df4a05be17448d9e;12 complete source bodies verified. Base3fc9dc2c. Concrete signed-input impasse, no fake three-attempt count. No resend/reload/Stop/Answer now. After natural completion download/read full original, replay code and one bounded independent audit, one scoped cycle commit. Goal OPEN. Brief helper failed missing PyYAML in system Python; canonical size-locked packet built and independently frame-verified with stdlib, no dependencies installed.
+
+--- Earlier state ---
+
 # POST-Q35 CONCENTRATION PREFLIGHT — NO RESPONSE PENDING
 
 Post-Q35 Fourier concentration preflight: Q09/heat reformulation is a verified duplicate. Generic uncertainty outside-mass lower does not supply required inside mass O(m^(eta-1/2)); actual centered exceptional-set arithmetic remains missing. See CCM_POST_Q35_FOURIER_CONCENTRATION_PREFLIGHT.md. No new exponent/no Q36. Three shelf dictionaries INCOMPLETE due freshness, not absence. Q35 cycle committed987e4a71 and monitor deleted.
