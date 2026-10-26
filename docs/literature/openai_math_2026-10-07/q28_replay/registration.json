@@ -1,0 +1,15 @@
+{
+  "task": "Q28_ORIGINAL_P_SIGNED_RESIDUE_ORBITS",
+  "timing": "After complete intake, source hashes, and initial paper derivation; before new executable mathematical tests. Not a blind pre-paper registration.",
+  "mechanism": "Finite functional-equation orbit completion on the unchanged common contours; exact reflected Mellin form; quantitative joint leakage test on the actual zero-selective whole pair returned inside original P.",
+  "predictions": [
+    {"id":"P1","claim":"S1 all-P extension has no material defect within its inherited contour inputs; all listed fees have exponent at most 2epsilon eventually."},
+    {"id":"P2","claim":"Replacing the right residue by its entire reflected orbit requires the exact correction (2-exp(-L*z))*S_P(z), whose complete original-P norm costs at most 3*C_N*W_M, with W_M<=256*L*(1+Omega)*log(20+Omega)."},
+    {"id":"P3","claim":"The factor exp(L*z)+exp(-L*z)-2 cancels every imaginary-frequency transfer pole, but its values at those modes are not zero; neither left partners nor the constant correction may be deleted."},
+    {"id":"P4","claim":"On the genuine whole source pair, all unselected reflected-orbit samples vanish before return. The supplied polylog return pays their entire finite-height leakage by N_H*d_m^2=o(1), retaining all error products."},
+    {"id":"P5","claim":"The selected contribution to the original right-residue form has coefficient Re(1-exp(-L*w))^(-2)=1+O_w(m^(-delta)); any resulting coefficient shift has only o(1) absolute averaged size and supplies no favorable fixed margin."}
+  ],
+  "not_assumed": "Actual off-critical zero existence, orbitwise positivity, a favorable signed residue bound, RH, ZF78, or a variance theorem.",
+  "no_repository_writes": true,
+  "no_numerical_hypothetical_zero": true
+}

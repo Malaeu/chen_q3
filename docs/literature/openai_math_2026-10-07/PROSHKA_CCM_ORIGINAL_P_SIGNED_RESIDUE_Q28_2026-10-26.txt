@@ -1,0 +1,2681 @@
+Ы. Q28 — ORIGINAL_P_SIGNED_RESIDUE_ORBITS. 2026-10-26. Base 55efd9673b7763c466853d343b13e46dc24a0112. Q27 processed completely, runnable controls replayed and one bounded independent PAPER audit passed. No response pending and no Q28 previously sent. This is the next concrete question after an independently checked own all-P extension and a documented density-completion impasse, not three invented failures.
+
+Read the full TXT and all byte-locked source bodies. Primary consumer is unchanged: T_>R <= C_epsilon m^eta(epsilon) P_(m,epsilon), eta(epsilon)->0, N=m,L=log m,M=R=floor(m^epsilon), each fixed 0<epsilon<1/32. Original three contacts, actual mu/Lambda and all prime powers, both times, mixed/self/boundary terms and quantifiers must remain. CF22/PySR parked; no RH claim or new RH/ZF/Mertens/variance premise.
+
+S1 extends your Q27 directly to the ORIGINAL full P rather than promoting H0. Its common contours have u in [1/L,2/L], H in [Y,Y+1], Y=max(4Omega+10,16,m^(1/4+epsilon)). The exact full A=-H_decay+V-Rsign+E, 0<=H_decay<=4P; analytic/short/arch fees <=C_epsilon m^(2epsilon), e=O_epsilon(m^(-1/4)/L^2). All complement and mixed entries are included by direct derivation. Rsign=He sum_(beta-1/2>u,|gamma|<H) mult(rho)m^(rho-1/2) S_P(rho-1/2), with S_P=P(v+v+^T+v-v-^T)P/L. TRANSPOSE not adjoint. The missing bound is Rsign>=-D_epsilon m^theta(epsilon)P with theta->0 on the SAME common contours. S1 proves this is equivalent up to paid fees to our original upper family: it is not an independent supplier or a solved problem.
+
+S2 tests a concrete supplier, Guth--Maynard density plus quartic transfer tail. G=m^(5/24+epsilon) pays the whole high tail with power -1/8, but weighted low counts have envelope F(sigma)=sigma-1/2+(30kappa/13)(1-sigma) and retain supremum1/2. This is a failure of that norm completion, not a lower bound on actual Rsign or a theorem that density cannot help. A fixed hypothetical exceptional pair is compatible with the count; its existence and the sign of its true contribution are not asserted. Do not re-optimize the already negligible contour error or repeat the density calculation as a new gain.
+
+ONE proposed next mechanism to test: assemble the actual conjugation/functional-equation orbit of residues BEFORE absolute values, with the true compressed analytic matrix numerators. Determine whether the joint orbit structure can supply a source-specific one-sided lower comparison, and compute the full cost. Right-of-u residues are not themselves closed under rho -> 1-rho: if introducing the left partners or a two-sided contour, derive and pay EVERY added term, imaginary-frequency transfer pole, homogeneous/contact contribution and finite-height boundary. Keep m^(rho-1/2), the complex phase and actual multiplicities. Do not replace v v^T by v v*, or silently extend a contour bound to a separately chosen vector-dependent contour.
+
+Start with one actual orbit's exact real quadratic form, retaining the two time orientations and original P; then test the full sum with the genuine relations between zeros and source. An arbitrary synthetic quartet is only a negative control for symmetry-only reasoning, not proof about actual zeta. Q27 already shows pointwise analytic transfer is indefinite; Q19 already shows conjugate denominators do not make true numerators even about gamma (S8). Do not repeat these as a new obstruction. If orbitwise positivity fails, the useful next result must identify and estimate an actual cross-orbit/source interaction, or give a precise rollback to an earlier source representation. Do not simply rename the open residue inequality 'positivity' or return a list of methods.
+
+First check S1 for a material mistake; otherwise use its paid full-P interface. Work through ONE quantitative proposal. A successful answer changes the full exponent or gives an independent positive coefficient margin on the actual whole zero-selective pair with all returns; the latter is an alternative sufficient receiver, not fulfillment of all-P. If a concrete impasse remains, state the exact first unproved line, what new arithmetic property it requires, and a narrowly justified next test. A scoped failure must distinguish actual-source statements from certificate-shape statements. Never infer universal cancellation from a finite numerical panel.
+
+Return complete downloadable Markdown with derivation, full budget, domain/quantifiers, and exact runnable controls for nontrivial algebra if appropriate. No repository writes or automatic Q29. The original goal remains OPEN.
+
+SOURCES: complete UTF-8 byte-locked bodies. The separator LF after each body is outside its stated byte count.
+S1: docs/literature/openai_math_2026-10-07/CCM_POST_Q27_ORIGINAL_P_CONTOUR.md | bytes=5633 | sha256=109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2
+S2: docs/literature/openai_math_2026-10-07/CCM_POST_Q27_DENSITY_BUDGET.md | bytes=4636 | sha256=87c3faa5a652ca4d205e82674553ad0f5f5a1c24735c43a09d98d4560c3dc166
+S3: docs/literature/openai_math_2026-10-07/CCM_Q27_CONCLUSION.md | bytes=3732 | sha256=5fac209c24bbbe0ec6086d37170ca799da22382d86586e12b8ff54e0ba805e8e
+S4: docs/literature/openai_math_2026-10-07/PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_VERDICT_2026-10-25.md | bytes=87400 | sha256=fa0c0d6162c2b6f27997048e8c51a91ca8d2295cb3adefea435e7b51f1b3c052
+S5: docs/literature/openai_math_2026-10-07/PROSHKA_VERDICT_FULL_CCM_JOINT_DIVISOR_Q10.md | bytes=68836 | sha256=56a86d486b05421c5e4f8311f04afe9ef783267ebede4b265a39677233bfd3ff
+S6: docs/literature/openai_math_2026-10-07/CCM_POST_Q26_POLYLOG_WITNESS.md | bytes=8064 | sha256=c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681
+S7: docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md | bytes=6174 | sha256=0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06
+S8: docs/literature/openai_math_2026-10-07/CCM_Q19_CONCLUSION.md | bytes=3904 | sha256=a4e083fab0eba1d57dda5ce4b1253163e4da0e6715bc8c0b65af510f5f2f36ec
+S9: docs/literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md | bytes=3932 | sha256=c2bbf489a2387de46b0598ed70f8e54aaecb91790835bb5df096007cf6d9c7ea
+
+BEGIN_SOURCE S1 docs/literature/openai_math_2026-10-07/CCM_POST_Q27_ORIGINAL_P_CONTOUR.md
+# Direct all-P contour budget after Q27
+
+2026-10-26. BOUNDED PAPER PASS: read-only all_p_contour_extension audited
+the complete payload, original-domain transfer, fees and converse; no
+material defect. Q27 classical/source dependencies remain inherited.
+No Lean, interval arithmetic or numerical spectral run was performed.
+Baseline a9a40a5b. This extends the paid analytic representation to the
+actual requested space; it does not establish its missing arithmetic sign.
+
+## Original domain, no subspace promotion
+
+Fix 0<epsilon<1/32. Keep N=m,L=log m,M=R=floor(m^epsilon) and exactly
+the original three-contact projector P=P_(m,epsilon). Work for all sufficiently
+large m, with onset allowed to depend on epsilon. Define omega_j=2pi j/L,
+Omega=2pi M/L and V2=sum_(|j|<=M)omega_j²/L.
+All operators below act on ran P and retain their original coefficient
+carrier by zero padding. There is no H0/H1 decomposition and no omitted
+off-diagonal block: repeat Q27's calculation DIRECTLY with P in place of Pi0.
+
+The span of original contacts is invariant under conjugation, so P is real
+symmetric, and P1=0. Define v_±(z)_j=(z±i omega_j)^(-1) and
+
+ S_P(z)=P[v_+(z)v_+(z)^T+v_-(z)v_-(z)^T]P/L.
+
+The transpose, both orientations and all mixed entries are retained. The
+causal inverse is still the literal Q_M(log n), since exp(i omega_j L)=1.
+Q27's (2.3)--(2.5) follow for every vector of this full original space,
+including all Lambda(p^k), the atom n=m, and the right-line n>m return.
+Subtracting the growing continuum gives exactly one -H_P, 0<=H_P<=4P.
+
+## Estimates independent of the polylog specialization
+
+Q27's proofs of (3.2)--(3.4) use only contraction, P1=0 and the frequency
+lattice: ||S_P(x+it)||<=8V2/|t|^4 for x>=0,|t|>=2Omega, and
+||S_P(u+it)||<=3L for u>=1/L. Also V2<=Omega³. None requires M=ceil(8L²).
+The pole-integrability/Markov construction therefore supplies one u in
+[1/L,2/L] for the whole space, and one common H in [Y,Y+1], avoiding zeros,
+with the same bounds as Q27(4.6),(6.4):
+
+ B=2^20 Cstar L(1+Omega)log(12L)log(20+Omega),
+ e=V2[32sqrt(m)L/Y³+2^20 Cstar log(12L)log(Y+10)/Y³
+       +2^10 Cstar²sqrt(m)log²(Y+10)/(L Y⁴)].                 (1)
+
+The zeta inputs are precisely Q27's fixed classical local factorization and
+zero-count bounds, not ZF78 or RH. Every crossed actual zero remains in
+
+ Rsign=He sum_(Re rho-1/2>u, |Im rho|<H)
+           mult(rho) m^(rho-1/2) S_P(rho-1/2).               (2)
+
+No contour is selected separately for individual vectors or positive W.
+All finite-height inversion leakage, two vertical tails and both horizontal
+sides are included in (1). Use the fixed choice nu=1/12 and
+
+ Y=max(4Omega+10,16,m^(1/4+epsilon)).                        (3)
+
+Eventually the last term dominates. With V2=O(m^(3epsilon)/L³), the three
+fees in e are respectively
+
+ O_epsilon(m^(-1/4)/L²),
+ O_epsilon(m^(-3/4)log L/L²),
+ O_epsilon(m^(-1/2-epsilon)/L²).
+
+Thus e=O_epsilon(m^(-1/4)/L²)=o(1). Meanwhile
+
+ B=O_epsilon(m^epsilon L log L).                            (4)
+
+All constants are independent of m and vectors, after fixing epsilon.
+There is no requirement of a uniform onset as epsilon tends to zero.
+
+## Exact original goal interface and complete budget
+
+Writing A=P A_prime P, Q27's SAME contour orientation yields
+
+ A=-H_P+V-Rsign+E,  ||V||<=B, ||E||<=e.                    (5)
+
+The original short sector satisfies the inherited two-sided norm bound
+
+ b=(56+32Omega)sqrt(R)+12(1+log R)^2
+   =O_epsilon(m^(3epsilon/2)/L+m^(epsilon/2)+L²).            (6)
+
+Consequently, with every actual Mobius coefficient in the exact split,
+
+ T_>R <= -Rsign-H_P+(B+e+b)P,                              (7)
+ P K_m P >= Rsign+H_P-(B+e+50L+8)P.                        (8)
+
+The second line does not pay the short sector again: it concerns the full
+prime matrix. Proper powers are already in A, so no additional fee is added.
+For every fixed epsilon>0, all analytic/short/archimedean scalar fees in
+(7)--(8) are bounded eventually by C_epsilon m^(2epsilon).
+
+An independently supplied bound
+
+ Rsign >= -D_epsilon m^(theta(epsilon)) P,
+ theta(epsilon)>=0, theta(epsilon)->0,                     (9 OPEN)
+
+would therefore give the actual requested T_>R bound with
+eta(epsilon)=max(theta(epsilon),2epsilon)->0. This statement covers the
+entire original P; there is no unpaid H0 complement in this derivation.
+Condition (9) refers to the SAME common admissible contours u,H in (5).
+The conditional sparse witness and its previously paid return would then
+apply, but (9) has NOT been proved.
+
+Conversely, if the requested T_>R upper with exponent eta(epsilon)->0 were
+supplied, (5), A=T_>R+T_<=R, ||T_<=R||<=b, and H_P<=4P imply
+
+ Rsign >= -[B+e+4+b+C_epsilon m^(eta(epsilon))]P.           (10)
+
+Thus the existence of the desired vanishing-exponent upper family is
+equivalent, up to vanishing-exponent analytic fees, to a lower family for
+the WHOLE signed residue matrix. This is not an independent supplier, nor
+evidence that the new sign problem is easier. It identifies precisely the
+remaining debt after paying the original-space return.
+
+## Stopping boundary
+
+Q27's H0-only comparison needed unpaid complement/cross blocks for an
+all-P promotion. We have avoided that promotion by repeating its algebra
+and estimates on P itself. The larger Omega,V2 costs were explicitly paid.
+No favorable arithmetic exponent has been obtained, and the target remains
+open. Bounding (2) by the sum of individual norms again loses its signs;
+changing Y only reduces an already negligible analytic error. Do not count
+this extension as three new attempts, a new prime law, or an RH result.
+No Q28 has been sent.
+
+END_SOURCE S1
+
+BEGIN_SOURCE S2 docs/literature/openai_math_2026-10-07/CCM_POST_Q27_DENSITY_BUDGET.md
+# Zero-density completion of the original-P residue sum
+
+2026-10-26. Bounded independent PAPER PASS by residue_density_supplier: partial
+summation, full high tail, exponent and scope checked; no material defect.
+Upstream Q27 kernel and contour dependencies remain inherited.
+Baseline f3c16ecf. No new arithmetic exponent or RH claim.
+
+## Exact receiver and supplier
+
+Keep the original P, N=m, L=log m, M=R=floor(m^epsilon), fixed
+0<epsilon<1/32. Use the SAME common u,H from
+CCM_POST_Q27_ORIGINAL_P_CONTOUR.md (1)--(5). Its whole residue is
+
+ Rsign=He sum_(beta-1/2>u, |gamma|<H)
+       mult(rho) m^(rho-1/2) S_P(rho-1/2).
+
+Both time orientations and every mixed entry remain inside S_P. The
+required lower bound is -C_epsilon m^theta(epsilon)P with theta->0.
+Already paid analytic, short and archimedean costs are O_epsilon(m^(2epsilon)).
+Here we test only the completion Rsign >= -sum ||individual terms|| P.
+This is the information-loss step; the following costs are certificates,
+not lower bounds for the actual residue, prime operator or CCM.
+
+Supplier: Guth--Maynard, arXiv:2405.20552v2, Theorem 1.2 and (1.4).
+https://arxiv.org/html/2405.20552v2
+Shelf PDF: docs/routeB_bus/litreview/pdfs/2405.20552.pdf
+SHA256 915392cf7d0ecd108479814a9a1481e23423ef63415776471cec3975ae482cae.
+Exact formula (1.4): N(sigma,T) <= T^{30(1-sigma)/13+o(1)}.
+N counts zeros with Re rho>=sigma and |Im rho|<=T, with multiplicity.
+This combines Theorem 1.2 with Ingham; it is not a zero-free assertion.
+For the budget below use the usual fixed-loss version with T^a for any
+fixed a>0. A finite sigma mesh gives the same exponent calculation if
+uniformity of the displayed o(1) is not invoked; allow an arbitrarily
+small additional m-power loss for the mesh.
+
+Shelf queries signed residue matrix zero density; weighted zero counting
+partial summation; reflection positivity analytic transpose all returned
+ASK_STATUS INCOMPLETE (semantic freshness), not evidence of absence.
+The source itself was read at Theorem 1.2 and (1.4).
+
+## Full low/high return
+
+Choose G=m^kappa with epsilon<kappa<1/4+epsilon; thus eventually
+2Omega<G<H. The inherited local count O(log(t+2)) per unit interval and
+||S_P(x+it)||<=8V2/|t|^4 give
+
+ high norm <= C sqrt(m) V2 log(G+2)/G^3
+           = O_epsilon(m^(1/2+3epsilon-3kappa)/L^2).
+
+This retains every zero above G up to H and bounds them by an infinite
+tail. Taking kappa>1/6+epsilon makes this certificate o(1). For example
+kappa=5/24+epsilon is admissible and gives exponent -1/8 exactly.
+Root rational arithmetic checked these inequalities, including the uniform
+endpoint 9/32<13/30; this is algebra, not a spectral experiment.
+
+For the low part, ||S_P(x+it)||<=3L when x>=u>=1/L. Put sigma0=1/2+u.
+Writing each weight as m^u+L integral_(sigma0)^beta m^(sigma-1/2)d sigma
+gives, without discarding any low zeros,
+
+ low norm <= 3L [m^u N(sigma0,G)
+          + L integral_(sigma0)^1 m^(sigma-1/2) N(sigma,G)d sigma].
+
+Using (1.4), the integral power envelope is
+
+ F_kappa(sigma)=sigma-1/2+(30kappa/13)(1-sigma).
+
+On our allowed kappa interval, kappa<1/4+1/32=9/32<13/30.
+Thus F is increasing and its supremum as sigma approaches 1 is 1/2.
+The initial term has power 15kappa/13, strictly less than 1/2.
+Consequently this completion supplies only m^(1/2+arbitrarily small loss),
+up to logarithms, even when the high tail is o(1). It supplies no theta->0.
+The already available 12sqrt(m) fallback is better and is retained.
+No optimization of G within this calculation repairs the low residue sign.
+
+## Negative control and stopping boundary
+
+A fixed hypothetical off-critical conjugate pair beta0 +/- i gamma0,
+beta0>1/2, is compatible with such counting upper bounds: eventually
+u<beta0-1/2 and H>|gamma0|, so it remains in this residue sum. This is
+not a claim that this pair exists, that its actual compressed contribution
+has a specified size or sign, or that other residues cannot cancel it.
+It tests the missing hypothesis: a counting theorem does not exclude all
+low exceptional zeros or control the joint real quadratic form.
+
+Even the hypothetical density law N(sigma,T)<=T^{2(1-sigma)+o(1)} would
+give F=sigma-1/2+2kappa(1-sigma), still with supremum 1/2 for kappa<1/2.
+This is a diagnostic of this particular absolute completion, not a claim
+that density theory or signed methods can never help the original goal.
+
+Rollback: retain the exact signed Rsign before the norm sum. The next
+supplier must control its actual matrix correlation, or give an independent
+source inequality with a full map back. Lowering the already-paid contour
+error and merely improving a zero count are not that supplier. No Q28 sent.
+
+END_SOURCE S2
+
+BEGIN_SOURCE S3 docs/literature/openai_math_2026-10-07/CCM_Q27_CONCLUSION.md
+# Q27: paid joint matrix contour, signed arithmetic still open
+
+2026-10-26. Bounded independent PAPER PASS §§2--8, inherited receiver
+dependencies explicit. No favorable full arithmetic exponent or margin.
+
+## Evidence
+
+Natural terminal observed 00:07 Europe/Berlin in the same living chat.
+Full original PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_VERDICT_2026-10-25.md
+downloaded and read completely: 87400 bytes,1171LF,SHA256
+fa0c0d6162c2b6f27997048e8c51a91ca8d2295cb3adefea435e7b51f1b3c052.
+Five FILE bodies extracted with sizes/hashes verified into q27_replay/.
+Existing riemann_env Python/SymPy1.14.0 reproduced both JSON byte-for-byte:
+99 mathematical controls plus1metadata,7planted errors,9source bodies.
+No installation, Lean, Arb or production spectrum calculation.
+
+Read-only q27_bounded_review audited §§2--8 against the exact original hash,
+Q10 kernel and primary Tao Propositions16,19: no material findings. Root
+checked contour orientation, constant budgets, normalization and all returns.
+Upstream source tails, full Weil continuity and archimedean receiver remain
+inherited; this is not a new certification of the entire proof chain.
+
+## Accepted result and full cost
+
+On H0, M0=ceil(8L²), the original three-contact projector is unchanged in
+meaning and lies inside original P. Actual witness S1 passes bounded audit;
+its full return is still o(1), not a prime bound.
+The analytic transfer S0(z)=Pi0(v+v+^T+v-v-^T)Pi0/L has
+||S0(x+it)||<=8V2/|t|^4 for x>=0,|t|>=2Omega,
+V2=sum omega_j²/L. Endpoint contact cancels the leading resolvent vector.
+Transpose is not adjoint; the analytic square is not automatically PSD.
+
+A common u in [1/L,2/L], selected by two-dimensional integration of actual
+zeta poles, gives ||V_m||<=2^20 Cstar L(1+Omega)log(12L)log(20+Omega).
+No zero-free premise is used. All crossed actual zeros remain in R_signed.
+The finite right-tail (including n>m inversion leakage), left-tail and both
+horizontal costs are explicitly paid by verdict(6.4). With
+Y=max(4Omega+10,16,m^(1/6+nu)), total error is O_nu(m^(-3nu)L^4)=o(1).
+
+The exact full identity and one-sided comparison are
+
+ A_prime|H0 = -H_decay + V_m - R_signed + E_m,
+ K|H0 >= R_signed+H_decay-[B_m+e_m+50L+8]I.
+
+Only the growing continuum was subtracted, hence ONE negative H_decay
+credit in A_prime, unlike the two-copy convention of Q10. All actual
+Lambda/prime powers, both times, diagonal/mixed entries and contour edges
+remain. Whole-pair averaging uses one common matrix and contour for all a;
+S1 return is charged on complete K, not separately against R_signed.
+Original T_>R additionally pays the unchanged original-R short cost
+(56+32Omega)sqrt(R)+12(1+logR)^2, R=floor(m^epsilon).
+
+Separate modulus completion of R_signed costs O(sqrt(m)L²logL), worse
+than the retained 12sqrt(m) prime fallback. Conditional3/8 is unchanged
+and remains conditional on ZF78. Neither signed residue lower bound nor
+all-P complement/cross estimate is proved. No RH claim or route no-go.
+
+## Decision and next bounded action
+
+Do not optimize an already o(1) contour error as if it supplied arithmetic
+sign. Do not infer a positive Gram from transpose squares or spend the
+adverse zero identity as a favorable supplier. The exact unpaid object is
+the entire common-contour signed residue matrix before separate norms.
+
+Next own check: extend the paid contour constants, which are explicit in
+Omega,V2, to M=R=floor(m^epsilon) on the ORIGINAL P. Determine whether the
+analytic/short-sector fees already have exponents tending to zero and
+state the remaining signed debt without replacing the original goal by H0.
+This is a return-budget check, not a proposed solution of the sign.
+No Q28 sent. Goal/full SP/G1/G3/RH remain OPEN; CF22/PySR parked.
+
+END_SOURCE S3
+
+BEGIN_SOURCE S4 docs/literature/openai_math_2026-10-07/PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_VERDICT_2026-10-25.md
+# STATUS: TRY_CCM_POLYLOG_JOINT_MATRIX_Q27
+```yaml
+OPERATIVE_CLASS: TRY_CCM_POLYLOG_JOINT_MATRIX_Q27
+VERDICT_CODE: PAID_QUARTIC_MATRIX_MELLIN_RETURN_NEAR_AXIS_POLYLOG_ANALYTIC_PART_JOINT_RESIDUE_SIGN_OPEN
+DATE: '2026-10-25'
+REQUEST_FILE: PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_2026-10-25.txt
+REQUEST_BYTES: 198487
+REQUEST_LF: 2641
+REQUEST_SHA256: 8c6b5a8e351b2e06efe9846231e9195f72e09709bb4dc0d21e3b8aa40afe46a0
+BASE_COMMIT_AS_SUPPLIED: 27d44dcb9548c5da6d902eb39c7030cbfedd595b
+READ: COMPLETE_CANONICAL_REQUEST_AND_NINE_FULL_SOURCE_BODIES
+SOURCE_MANIFEST: ALL_NINE_BYTE_COUNTS_HASHES_AND_SEPARATORS_MATCH
+BOOTSTRAP: Malaeu/chen_q3; rh_clean; docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md
+BOOTSTRAP_BLOB: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
+PRODUCTION_SCHEDULE: N=m; L=log(m); M=R=floor(m^epsilon); fixed 0<epsilon<1/32
+ORIGINAL_P: UNCHANGED_THREE_CONTACT_PROJECTOR
+AUXILIARY_H0: support |j|<=ceil(8L^2), all three original contacts corrected in same band; a subspace, not replacement
+  for all-P
+S1_AUDIT: NO_MATERIAL_DEFECT_WITHIN_EXPLICIT_INHERITED_SOURCE_AND_FORM_DEPENDENCIES
+S1_COMPLETE_FORM_RETURN: C_w*m^(1-2*pi)+m^C*exp(-c_w*L^2)=o(1), uniformly over the stated translations
+CHOSEN_MECHANISM: Direct projected causal matrix Mellin inversion before scalar prefixes; endpoint subtraction,
+  averaged near-axis line, all finite signed residues and all contour returns
+NEW_ANALYTIC_OUTPUT:
+  projected_transfer: norm(S0(x+i*t))<=8*V2/abs(t)^4 for abs(t)>=2*Omega, x>=0
+  left_line: one common u in [1/L,2/L] with complete norm budget B_m=2^20*Cstar*L*(1+Omega)*log(12L)*log(20+Omega)
+  finite_contour_return: e_m(Y) explicit in (6.4); Y=max(4Omega+10,16,m^(1/6+nu)) gives O_nu(m^(-3nu)*L^4)=o(1)
+  source_centering: exactly one negative H0 credit after subtracting the growing continuum only
+FULL_SIGNED_MATRIX_IDENTITY: Aprime|H0=-H_decay+V_m-R_signed+E_m
+FIRST_UNPAID_LINE: Independent lower bound on the entire actual signed R matrix, or its sufficient joint/pair comparison,
+  before separate residue norms
+COMPLETE_MODULUS_FINISH: O(sqrt(m)*L^2*log L); worse than inherited 12sqrt(m) prime upper; no new exponent
+NEW_FAVORABLE_CCM_EXPONENT: NONE
+NEW_COEFFICIENT_MARGIN: NONE
+ALL_P_STATUS: OPEN; complement and cross blocks explicitly unpaid; H0 receiver labeled separately
+INHERITED_THREE_EIGHTHS: CONDITIONAL_ON_SAME_ZF78; NOT_USED_IN_NEW_PROOFS
+COMPLEX_PHASE: Whole actual pair and separately normalized g,k retained; no modulus normalization or projection
+  commutation
+MIXED_PRIME_POWER_EDGE_TERMS: All retained; n>m finite-height inversion leakage paid; both vertical tails and horizontals
+  explicit
+PROGRESS_CLASS: REPRESENTATION_PROGRESS
+CONSUMER_PROGRESS: NO_NEW_ARITHMETIC_BOUND
+FAILURE_TYPE: NO_DERIVATION
+EPISTEMIC_STATUS: RESEARCH_DEBT
+ACTUAL_ROUTE_KILL_SCOPE: NONE
+NEGATIVE_CONTROL_SCOPE: Analytic transpose square need not be PSD; no actual-zero or CCM counterexample claimed
+REGISTRATION_TIMING: After full intake and initial paper inspection, before new executable mathematical tests
+EXACT_CONTROL_RECORDS: 100
+MATHEMATICAL_CONTROL_RECORDS: 99
+METADATA_CONTROL_RECORDS: 1
+PLANTED_ERRORS_DETECTED: 7
+SOURCE_BODIES_VERIFIED: 9
+CHECKER_REPLAY: Embedded files re-extracted from final Markdown and outputs compared byte-for-byte
+LEAN_RUNS: 0
+ARB_RUNS: 0
+INDEPENDENT_NEW_AUDIT: NOT_RUN
+NUMERICAL_PRODUCTION_CCM_OR_HYPOTHETICAL_ZERO_RUNS: 0
+REPOSITORY_WRITES: NONE
+RH_SP_G1_G3: OPEN_NOT_CLAIMED
+PX_RH_CLAIM: NOT_MADE
+CF22_PYSR: PARKED
+NO_AUTOMATIC_Q28: true
+```
+
+Ы. **Нового полного арифметического показателя или коэффициентного зазора в Q27 не получено.** S1 выдерживает ограниченный аудит относительно явно принятых источниковых хвостов и нормы формы. Выполнен один матричный перенос **до** скалярных префиксов: полная causal-матрица сжимается исходными контактами, затем весь центрированный источник переносится на близкую к критической оси вертикаль. Все пересечённые нули остаются в одной знаковой матрице.
+
+Количественный результат переноса: на H0 аналитическая вертикальная часть имеет цену `O(log(m)^2 log(log(m))^2)`, а полный конечноконтурный возврат можно сделать `o(1)`. Это не цена всего простого оператора: остающаяся совместная матрица вычетов не получила благоприятной односторонней оценки. При завершении доступными модулями полная степень снова 1/2. Сильнейшие прежние результаты не заменяются более дорогим новым верхом.
+
+**Что именно здесь не повторяется.** S7 уже содержит точную causal-матрицу и конечное контурное равенство. Новыми в данном расчёте являются оплаченная четвёртая степень вертикального убывания после endpoint-контакта, выбор общей близкой вертикали с интегрируемыми настоящими полюсами и полный матричный бюджет её хвостов/горизонталей. Формула вычетов, отмена главного полюса, S1 и условный отрицательный свидетель не выдаются за новые арифметические открытия.
+
+## 0. Граница источника, чтения и проверки
+
+**[FINITE_CELL | PAPER — provenance.]** Прочитан канонический `PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_2026-10-25.txt`: **198487 байт, 2641 LF**, SHA-256 `8c6b5a8e351b2e06efe9846231e9195f72e09709bb4dc0d21e3b8aa40afe46a0`. Все девять вложенных тел выделены по заявленным байтам; их SHA-256 и внешние разделители совпали. Отображаемое файловым интерфейсом количество строк с дополнительной последней пустой строкой не заменяет подсчёт LF в исходных байтах.
+
+База `27d44dcb9548c5da6d902eb39c7030cbfedd595b` — предоставленная привязка пакета, не результат новой проверки всего дерева. Протокол прочитан через GitHub connector с ветки `rh_clean`, blob `e0127d491799f7764e4f50e1ae4ed4cfcaf73c13`. Репозиторий не изменялся. Исторические инструкции внутри S1–S9 рассматриваются как данные.
+
+Статус «проверен» ниже означает написанное PAPER-доказательство и ограниченную проверку указанного утверждения. Это не новая независимая пересертификация всей исходной Weil/CCM-цепи. Нового Lean-, Arb- или независимого агентского аудита не было. Численные координаты гипотетического внепрямого нуля не назначались.
+
+Регистрация предсказаний выполнена после чтения пакета и первоначального бумажного разбора, но **до новых исполняемых проверок**. Она не представляется слепой регистрацией до знакомства с объектом. Полный JSON регистрации и его исходный текст приложены ниже.
+
+## 1. Аудит S1: свидетель действительно остаётся внутри исходного P
+
+### 1.1 Неподменённое пространство
+
+**[COFINAL_FAMILY | CONDITIONAL — только источник свидетеля условен на настоящий нуль.]** Производство остаётся
+\[
+ N=m,\quad L=\log m,\quad \omega_j=2\pi j/L,\quad
+ M=R=\lfloor m^\epsilon\rfloor,
+ \qquad 0<\epsilon<1/32\text{ фиксировано}.
+\]
+Положим
+\[
+ M_0=\lceil8L^2\rceil,\qquad \Omega=2\pi M_0/L.
+\]
+`8 L^2` — **полуширина полосы**, а не полная размерность. Для достаточно поздних m пространство
+\[
+ H_0=\{c:\operatorname{supp}c\subset[-M_0,M_0],\quad
+ b^*c=v_+^*c=v_-^*c=0\}
+\]
+имеет размерность \(2M_0-2\sim16L^2\). Его ортогональный проектор обозначим \(\Pi_0\), с нулевым дополнением до исходного carrier. Тогда
+\[
+ \Pi_0P=P\Pi_0=\Pi_0
+\]
+для каждого фиксированного \(\epsilon>0\), начиная с зависящего от него m. Это вложение, а не замена исходного P. Делительный R не меняется на M0.
+
+### 1.2 Fourier-хвост и отсечка
+
+Фиксируем только для аудита S1 настоящий гипотетический нуль \(w=\delta+i\gamma\), \(0<\delta<1/2\), кратности r, с настоящими отдельно нормированными g,k. При принятой нормировке
+\[
+ \mathcal M_g(z)=\frac{A(z)}{c_w(w-z)^r},\qquad
+ A(z)=-4(z^2-1/4)\xi(1/2+z),
+\]
+и аналогично для партнёра \(-\bar w\) с его собственной константой.
+
+На мнимой оси фиксированные знаменатели отделены от нуля. Определение xi и вертикальная асимптотика Gamma дают экспоненту \(e^{-\pi|t|/4}\), умноженную на полином. Достаточна элементарная оценка \(|\zeta(1/2+it)|\ll1+|t|\); поглощение полинома даёт
+\[
+ |\mathcal M_g(it)|+|\mathcal M_k(it)|\le C_w e^{-|t|/8}.                 \tag{1.1}
+\]
+Внешние нормировки: [R1] и [R2] в §12. Это не предположение о расположении других нулей.
+
+У целой пары
+\[
+ f_a=e^{-i\gamma a}\tau_ag-e^{i\gamma a}\tau_{-a}k,
+ \quad h=L/2-\log L,\quad h-T\le a\le h,\quad0\le T\le h/2
+\]
+Fourier-переводы и исходные фазовые множители имеют модуль один. Для той же гладкой физической отсечки \(F=\chi f_a\) принятые двусторонние оценки
+\( |g^{(j)}(x)|+|k^{(j)}(x)|\le C_{w,j}e^{-c_{w,j}e^{2|x|}} \)
+при j=0,1,2 дают
+\[
+ \|(F-f_a)^{(j)}\|_1\le C_w\rho,
+ \qquad \rho=e^{-c_wL^2}.                                      \tag{1.2}
+\]
+Здесь важен именно \(e^{2|x|}\). Более слабый хвост с \(e^{|x|}\) этого вывода с L² не поставляет. Отсечка не объявляется аналитической.
+
+После перевода на [0,L], для \(|\omega_j|\ge1\),
+\[
+ |c_j|\le C_wL^{-1/2}
+       \big(e^{-|\omega_j|/8}+\rho|\omega_j|^{-2}\big).
+\]
+Обозначив \(t_0=e^{-\Omega/8}\), для хвоста \(e=F-F_{M_0}\) получаем
+\[
+\begin{aligned}
+ \|e\|_2&\le C_w(t_0+\rho\Omega^{-3/2}),\\
+ \|e'\|_2&\le C_w((1+\Omega)t_0+\rho\Omega^{-1/2}),\\
+ \|e\|_\infty&\le C_w(t_0+\rho\Omega^{-1}).
+\end{aligned}                                                    \tag{1.3}
+\]
+Это суммирование геометрического и степенного хвостов; одинаково малая константа для каждого отдельного коэффициента вместо степенного хвоста была бы недостаточна. Так как \(\Omega\ge16\pi L\), \(t_0\le m^{-2\pi}\).
+
+### 1.3 Все контакты и полная форма
+
+Нормированные исходные три контактные колонки в этой полосе имеют Gram-матрицу
+\(I+o(1)\): \(L/M_0=O(L^{-1})\), перекрёстные экспоненциальные перекрытия
+\(O(L/\sqrt m+L/M_0)\), а endpoint-перекрытия \(O(\sqrt{L/M_0})\).
+Она не меньше I/2 на позднем диапазоне. Исправление **всех трёх** условий внутри M0 даёт
+\[
+ \|z_{m,a}-c_{M_0}\|\le C_wt_0+m^{C_w}\rho.                       \tag{1.4}
+\]
+Здесь не требуется дальнейшая проекция в большую полосу, которая могла бы заново добавить моды.
+
+Принятая норма нулевого продолжения содержит оба endpoint-strip:
+\[
+ \|e\|_{\mathcal E}^2\le(m+16)\|e\|_2^2+2\|e'\|_2^2+8\|e\|_\infty^2.
+\]
+Совместно с \(\|F\|_{\mathcal E}\le C_w\sqrt m\) она оплачивает линейный смешанный член и квадрат ошибки величиной
+\(C_wm[(t_0+\rho)+(t_0+\rho)^2]\).
+Коррекция контактов оплачивается полной исходной нормой
+\(\|K_m\|\le40\sqrt mL\), а не нормой отдельных лобов. Поэтому
+\[
+ \boxed{
+ |z_{m,a}^*K_mz_{m,a}+2r e^{2\delta a}|
+ \le C_w m^{1-2\pi}+m^{C_w}e^{-c_wL^2}=:\rho_{0,w}(m)=o(1).
+ }                                                               \tag{1.5}
+\]
+Норма \(\|z_{m,a}\|^2\le D_w\) равномерна; D_w — **верх квадрата нормы**. Константы фиксируются после w и не зависят от m,a,T.
+
+**Вывод аудита.** Существенного дефекта S1 в заявленной области не обнаружено. Унаследованные источниковые хвосты и непрерывность полной формы здесь использованы как принятые входы, а не доказаны заново. Утверждение (1.1) относится к настоящей паре; оно не приписывается каждому вектору H0.
+
+Независимый subpolynomial верх простого оператора на H0 действительно был бы отдельно достаточен: при гипотетическом фиксированном \(\delta>0\) выбирается показатель меньше δ, что противоречит (1.5) при a=h. Это **альтернативный достаточный receiver**, не исполнение all-P цели.
+
+## 2. Буквальный матричный объект перед scalar-prefix переходом
+
+**[FINITE_CELL | PAPER.]** Далее основной матричный перенос не предполагает гипотетического нуля и действует для каждого вектора H0. Сохраняем исходное ядро S7:
+\[
+ Q_M(s)_{jk}=\begin{cases}
+ 2(1-s/L)\cos(\omega_js),&j=k,\\
+ [\sin(\omega_ks)-\sin(\omega_js)]/[\pi(j-k)],&j\ne k,
+ \end{cases}\quad0\le s\le L.                                  \tag{2.1}
+\]
+Для полосы M0 положим
+\[
+ v_\pm(z)_j=(z\pm i\omega_j)^{-1},\qquad
+ \mathsf S_0(z)=\frac1L\Pi_0
+ \{v_+(z)v_+(z)^{\mathsf T}+v_-(z)v_-(z)^{\mathsf T}\}\Pi_0.       \tag{2.2}
+\]
+Span исходных контактов устойчив относительно сопряжения: после удаления ненулевых скалярных множителей это span
+\[
+ \mathbf1,\quad (1/(1/4+\omega_j^2))_j,\quad
+ (\omega_j/(1/4+\omega_j^2))_j.
+\]
+Следовательно, \(\Pi_0\) веществен и симметричен. В (2.2) стоит **транспонирование**, не сопряжённое транспонирование.
+
+Для одного и того же \(W\succeq0,\ \Pi_0W\Pi_0=W\),
+\[
+ \operatorname{Tr}(W\mathsf S_0(z))
+   =L^{-1}\sum_\pm v_\pm(z)^{\mathsf T}Wv_\pm(z).
+\]
+Все диагональные и межмодовые члены остаются. Положительность W не превращает эту аналитическую квадратичную форму в \(v^*Wv\).
+
+Обозначим
+\[
+ \mathcal A_0=\Pi_0\sum_{n\le m}\frac{\Lambda(n)}{\sqrt n}
+                     Q_{M_0}(\log n)\Pi_0,
+ \quad K_0=\Pi_0K_m\Pi_0\big|_{H_0}.
+\]
+Ни \(\Lambda\), ни степени простых не заменяются. Это полная простая часть; для исходного длинного сектора позже используется точное
+\(\mathcal T_{>R}|_{H_0}=\mathcal A_0-\mathcal T_{\le R}|_{H_0}\).
+
+### 2.1 Точная causal-инверсия
+
+На правой прямой \(c=1/2+1/L\) ряд
+\[
+ Z(s):=-\zeta'(s)/\zeta(s)=\sum_{n\ge2}\Lambda(n)n^{-s},\qquad \Re s>1,
+\]
+абсолютно сходится [R3]. Имеем ровно
+\[
+ \boxed{\mathcal A_0=\frac1{2\pi i}\int_{(c)}m^zZ(1/2+z)\mathsf S_0(z)\,dz.}
+                                                                    \tag{2.3}
+\]
+Проверка нормировки проводится до оценки. Обратное преобразование
+\((z+i\omega_j)^{-1}(z+i\omega_k)^{-1}\) есть свёртка двух causal-экспонент. На диагонали оно равно \(t e^{-i\omega_jt}\), вне диагонали —
+\[
+ \frac{e^{-i\omega_jt}-e^{-i\omega_kt}}{i(\omega_k-\omega_j)},\quad t\ge0.
+\]
+Складывая оба знака и подставляя \(t=L-\log n\), получаем (2.1) с исходным \(e^{i\omega_jL}=1\). При n=m значение равно нулю; при n>m causal-образ равен нулю. На правой прямой перестановка суммы и интеграла оправдана абсолютной сходимостью, в том числе высокочастотной оценкой §3. Это не Perron-инверсия каждого резкого префикса.
+
+### 2.2 Непрерывный фон возвращается один раз
+
+Определим
+\[
+ \mathfrak Z(z)=Z(1/2+z)-\frac1{z-1/2}.
+\]
+Полюс при 1/2 устранён точно. Буквальная конечная непрерывная часть равна
+\[
+ \frac1{2\pi i}\int_{(c)}\frac{m^z\mathsf S_0(z)}{z-1/2}\,dz
+ =\Pi_0\int_1^m x^{-1/2}Q_{M_0}(\log x)dx\,\Pi_0=-\mathsf H_0,
+ \quad0\preceq\mathsf H_0\preceq4I_0.                                  \tag{2.4}
+\]
+Здесь \(\mathsf H_0\) — **сжатый затухающий оператор**, отличный от пространства H0; I0 означает единицу этого пространства. Его kernel — \(e^{-|t-u|/2}\).
+
+Доказательство знака: сумма растущего \(e^{|t-u|/2}\) и затухающего kernels равна \(2\cosh((t-u)/2)\), чья форма зануляется двумя экспоненциальными контактами. Норма затухающего свёрточного оператора не больше его L1-нормы 4.
+
+Итак,
+\[
+ \boxed{\mathcal A_0=-\mathsf H_0+
+    \frac1{2\pi i}\int_{(c)}m^z\mathfrak Z(z)\mathsf S_0(z)\,dz.}   \tag{2.5}
+\]
+В S7(22) стоит \(-2H_P\), потому что там центрированная мера дополнительно включает положительную затухающую копию. Здесь вычтена **только** растущая непрерывная мера. Поэтому корректен один \(-\mathsf H_0\); добавлять второй было бы ошибкой.
+
+Контакты также дают \(\mathsf S_0(1/2)=\mathsf S_0'(1/2)=0\). Это не означает, что весь интеграл (2.4) равен нулю: у transfer остаются полюса на мнимой оси. Конечный непрерывный фон не удаляется.
+
+## 3. Первая количественная оценка: четвёртая степень убывания полного transfer
+
+**[FINITE_CELL | PAPER.]** Положим
+\[
+ V_2:=\frac1L\sum_{|j|\le M_0}\omega_j^2
+ =\frac{4\pi^2M_0(M_0+1)(2M_0+1)}{3L^3}.                         \tag{3.1}
+\]
+В частности, \(V_2=O(L^3)\) на H0 и \(V_2\le\Omega^3\) при \(M_0\ge1\).
+
+**Лемма 1.** Для \(x\ge0,\ |t|\ge2\Omega\),
+\[
+ \boxed{\|\mathsf S_0(x+it)\|\le \frac{8V_2}{|t|^4}.}            \tag{3.2}
+\]
+**Доказательство.** Endpoint-контакт \(\Pi_0\mathbf1=0\) даёт точную векторную разность
+\[
+ \Pi_0v_\pm(z)
+ =\Pi_0\left(\frac{\mp i\omega_j}{z(z\pm i\omega_j)}\right)_j.
+\]
+При \(|t|\ge2\Omega\) оба знаменателя имеют модули не меньше \(|t|\) и \(|t|/2\). Поэтому квадрат нормы вектора не больше \(4\sum\omega_j^2/|t|^4\). Норма аналитического внешнего произведения \(vv^{\mathsf T}\) равна \(\|v\|^2\); два знака и деление на L дают (3.2). Никакого коммутирования \(\Pi_0\) с диагональным резольвентом не использовано. □
+
+Это устраняет реальную аналитическую потерю прежнего \(|t|^{-2}\)-конверта. Но старший матричный коэффициент равен
+\[
+ \mathsf S_0(z)=-\frac2{Lz^4}
+       (\Pi_0\omega)(\Pi_0\omega)^{\mathsf T}+O_{m}(z^{-5}),        \tag{3.3}
+\]
+а не положительному Gram. Убывание и знак — разные вопросы.
+
+Дополнительно, для любого \(u\ge1/L\) и реального t,
+\[
+ \boxed{\|\mathsf S_0(u+it)\|\le3L.}                            \tag{3.4}
+\]
+Действительно, для шага \(d=2\pi/L\), после выделения ближайшей точки решётки,
+\[
+ \sum_{j\in\mathbb Z}\frac1{u^2+(t-dj)^2}
+ \le u^{-2}+\frac{\pi^2}{d^2}\le\frac54L^2.
+\]
+Проекция не увеличивает норму; сумма двух векторов, делённая на L, меньше 3L. Эта оценка совместная и размерностного множителя при trace с W не добавляет.
+
+## 4. Выбор близкой вертикали без zero-free гипотезы
+
+### 4.1 Ровно используемый внешний вход
+
+**[ABSTRACT | PAPER — импорт обычной локальной теории zeta.]** Зафиксируем абсолютные \(C_0,C_N\ge1\) так, чтобы на \(1/4\le\Re s\le2\), вне нулей,
+\[
+ -\frac{\zeta'}\zeta(s)
+ =\frac1{s-1}-\sum_{|s-\rho|\le1/8}\frac{r_\rho}{s-\rho}
+       +R(s),\qquad |R(s)|\le C_0\log(3+|\Im s|),                \tag{4.1}
+\]
+а число нулей с кратностями, \(1/4\le\Re\rho\le1\), \(|\Im\rho-t|\le2\), не превышало
+\[
+ C_N\log(5+|t|).                                                \tag{4.2}
+\]
+Это фиксированные версии Propositions 19 и 16 из [R4]. Для (4.2) достаточно конечного покрытия интервалами радиуса 1. Положим \(C_*=1+C_0+C_N\). Не предполагаются простота нулей, расстояние между ними или их отсутствие справа от 1/2. Численные значения C0,CN не сертифицированы; все дальнейшие конверты выражены явно через эти фиксированные классические константы.
+
+### 4.2 Полюсы интегрируются по двум переменным
+
+**[COFINAL_FAMILY | PAPER.]** Пусть \(L\ge16\), \(U_L=[1/L,2/L]\), \(I_k=[k,k+1]\). Из (4.1)–(4.2) следует
+\[
+ \boxed{
+ \int_{U_L}\int_{I_k}|\mathfrak Z(u+it)|dt\,du
+ \le\frac{8C_*}{L}\log(12L)\log(8+|k|).
+ }                                                               \tag{4.3}
+\]
+**Доказательство.** Все локальные нули лежат в фиксированном прямоугольнике \(|\gamma-k-1/2|\le2\), \(\beta\ge1/4\), поэтому их количество ограничено (4.2). Для одного нуля после интегрирования по t возникает не более \(2\log(5/|u-(\beta-1/2)|)\) в опасной области. Интеграл этого логарифма по интервалу длины \(1/L\), даже если его центр совпал с полюсом, не больше \(4L^{-1}\log(12L)\). Вне опасной области оценка дешевле. Остаток R интегрируется непосредственно. Сумма с кратностями даёт (4.3). □
+
+Принципиально: утверждается интегрируемость \(1/|z-\lambda|\) в двумерной полоске, **не** равномерная отделённость вертикали от всех нулей.
+
+Положим \(J=\lceil2\Omega\rceil+4\) и
+\[
+ a_k=\begin{cases}
+ 3L,&|k|\le J,\\
+ 8V_2/(|k|-1)^4,&|k|>J.
+ \end{cases}
+\]
+Это общий верх \(\|\mathsf S_0(u+it)\|\) на U_L×I_k. Обозначим
+\[
+ \mathcal W_m=\sum_{k\in\mathbb Z}a_k\log(8+|k|).
+\]
+Это вспомогательная сумма частотных весов, не арифметическая сумма Мангольдта. Непосредственное суммирование даёт
+\[
+ \mathcal W_m\le256L(1+\Omega)\log(20+\Omega).                     \tag{4.4}
+\]
+Для проверки константы: центральных клеток не больше \(4\Omega+11\), их вклад не больше \(66L(1+\Omega)\log(20+\Omega)\). Для хвоста используется \(V_2\le\Omega^3\) и
+\[
+ \int_A^\infty\frac{\log(2t)}{t^4}dt
+ =\frac{\log(2A)/3+1/9}{A^3},
+\]
+с запасом до коэффициента 256. В частности, при \(Y\ge\max(4\Omega+10,16)\) сумма весов клеток, пересекающих \(|t|>Y\), не больше
+\[
+ 2^{10}V_2\frac{\log(Y+10)}{Y^3}.                              \tag{4.5}
+\]
+
+Применим (4.3) с этими весами сначала ко всей прямой, затем к её хвосту \(|t|>Y\). Неравенство Маркова оставляет подмножество U_L меры не меньше \(|U_L|/2\), на котором **обе** оценки не превосходят четырёх своих средних. Удаление счётного множества действительных частей нулей не меняет эту меру. Поэтому можно выбрать **одну общую** \(u=u_{m,Y}\in U_L\), не зависящую от c или W, со следующими свойствами.
+
+**Лемма 2.** Полный интеграл
+\[
+ \mathcal V_m:=\operatorname{He}\frac1{2\pi i}
+       \int_{(u)}m^z\mathfrak Z(z)\mathsf S_0(z)dz,
+ \quad \operatorname{He}A=(A+A^*)/2,
+\]
+абсолютно сходится и
+\[
+ \boxed{
+ \|\mathcal V_m\|\le\mathfrak B_m,
+ \quad
+ \mathfrak B_m=2^{20}C_*L(1+\Omega)\log(12L)\log(20+\Omega).
+ }                                                               \tag{4.6}
+\]
+Для той же u обе вертикальные хвостовые части выше Y стоят не больше
+\[
+ \boxed{
+ \mathfrak l_m(Y)=2^{20}C_*V_2
+       \frac{\log(12L)\log(Y+10)}{Y^3}.
+ }                                                               \tag{4.7}
+\]
+Действительно, \(m^u\le e^2\), и множитель \(4\cdot8e^2/(2\pi)\) вместе с (4.4)–(4.5) меньше выбранных коэффициентов. На H0 величина (4.6) равна \(O(L^2(\log L)^2)\).
+
+Это законченная оценка аналитической части, не предположение о малости логарифмической производной на всей прямой. Все нули между u и c ещё должны быть возвращены. Без их матрицы (4.6) не является оценкой \(\mathcal A_0\).
+
+## 5. Правый хвост, будущие атомы и обе горизонтали
+
+### 5.1 Элементарный арифметический верх
+
+**[ABSTRACT | PAPER.]** Используется лишь \(\psi(x)\le3x\) и его следствие
+\[
+ \sum_{n\le x}\frac{\Lambda(n)}{\sqrt n}\le6\sqrt x.             \tag{5.1}
+\]
+Короткое доказательство первой оценки: для целого n каждое простое степенное слагаемое из \((n,2n]\) входит в \(\log\binom{2n}{n}\), поэтому \(\psi(2n)-\psi(n)\le2n\log2\). Суммирование на степенях двух и монотонность дают \(\psi(x)\le4\log2\,x<3x\). Частичное суммирование даёт (5.1). Это не PNT-вход.
+
+На \(z=c+it\), \(c=1/2+1/L\),
+\[
+ |Z(1/2+z)|\le3(L+1)\le6L,\qquad
+ |(z-1/2)^{-1}|\le L.
+\]
+По (3.2) два правых вертикальных хвоста выше высоты \(H\ge Y\) удовлетворяют
+\[
+ \boxed{\mathfrak r_m(Y)=32V_2\frac{\sqrt mL}{Y^3}.}            \tag{5.2}
+\]
+Здесь \(m^c=e\sqrt m\), а \(\int_Y^\infty t^{-4}dt=1/(3Y^3)\).
+
+**Что включено в (5.2).** При конечной высоте отдельные n>m больше не зануляются по causal-support. Их полный inversion-tail возвращён именно разностью бесконечного правого интеграла и конечного, которую ограничивает (5.2). Ряд на правой линии содержит все n; нельзя дополнительно обрезать его при m без этого расхода. Верхний атом n=m сохраняет точное нулевое значение только после полного возврата. Ни один near-integer знаменатель scalar-prefix inversion здесь не введён.
+
+### 5.2 Одна общая допустимая высота
+
+По (4.2) можно выбрать \(H\in[Y,Y+1]\), который отстоит от всех относящихся к полосе ординат минимум на
+\[
+ d_Y=[8C_*\log(Y+10)]^{-1}.
+\]
+Действительно, суммарная длина запрещённых интервалов не больше 1/4. Сопряжённость нулей одновременно обеспечивает нижний край −H. Все возможные близкие нули учтены с кратностями; удалять их не требуется.
+
+На обеих горизонталях, для u≤x≤c,
+\[
+ |\mathfrak Z(x\pm iH)|\le10C_*^2\log^2(Y+10).
+\]
+Применяя (3.2) и **интегрируя**, а не максимизируя \(m^x\),
+\[
+ \int_u^c m^x dx\le\frac{e\sqrt m}{L},
+\]
+получаем полный верх обеих горизонталей:
+\[
+ \boxed{
+ \mathfrak h_m(Y)=2^{10}C_*^2V_2
+       \frac{\sqrt m\log^2(Y+10)}{L Y^4}.
+ }                                                               \tag{5.3}
+\]
+Вертикальные линии и высота выбираются для матричного оператора, а не отдельно для его векторов. Causal-полюса \(z=\pm i\omega_j\) лежат левее всего прямоугольника и не пересекаются.
+
+## 6. Полная конечная знаковая матрица
+
+**[FINITE_CELL / COFINAL_FAMILY | PAPER.]** Для выбранных u,H определим
+\[
+ \boxed{
+ \mathcal R_{m,u,H}:=\operatorname{He}
+ \sum_{\substack{\rho:\ \Re\rho-1/2>u\\|\Im\rho|<H}}
+ r_\rho\,m^{\rho-1/2}\mathsf S_0(\rho-1/2).
+ }                                                               \tag{6.1}
+\]
+Это сумма **всех** пересечённых настоящих нулей, не выделение заранее выбранного w. У каждого сохраняются обе temporal-ветви и все внешние произведения. Сопряжённые нули дают эрмитову сумму; He также явно фиксирует нужную вещественную quadratic form. Ни \(v_\pm\), ни коэффициенты вычетов не получают независимых фаз.
+
+Пусть \(I_x^{(H)}\) — направленный снизу вверх конечный интеграл \(m^z\mathfrak Z(z)\mathsf S_0(z)/(2\pi i)\) при \(\Re z=x\). Верхняя горизонталь направлена от c к u, нижняя — от u к c. Поскольку вычет Z в нуле равен \(-r_\rho\), теорема о вычетах даёт
+\[
+ \operatorname{He}I_c^{(H)}
+ =\operatorname{He}I_u^{(H)}-\mathcal R_{m,u,H}
+    -\operatorname{He}\mathcal H_{u,c}^{(H)}.                     \tag{6.2}
+\]
+После **обоих** вертикальных возвратов:
+\[
+ \boxed{
+ \mathcal A_0=-\mathsf H_0+\mathcal V_m-\mathcal R_{m,u,H}
+                   +\mathcal E_m,
+ \qquad \|\mathcal E_m\|\le\mathfrak e_m(Y),
+ }                                                               \tag{6.3}
+\]
+где
+\[
+\boxed{
+\begin{aligned}
+ \mathfrak e_m(Y)=V_2\bigg[&
+ \frac{32\sqrt mL}{Y^3}
+ +\frac{2^{20}C_*\log(12L)\log(Y+10)}{Y^3}\\
+ &+\frac{2^{10}C_*^2\sqrt m\log^2(Y+10)}{L Y^4}
+ \bigg].
+\end{aligned}}                                                   \tag{6.4}
+\]
+Более буквально, \(\mathcal E_m\) есть правая вертикальная ошибка минус левая вертикальная ошибка минус две горизонтали, с последующим He. Их знаки сохранены в равенстве; треугольное неравенство применяется только для уже малого analytic-return.
+
+При любом фиксированном \(\nu>0\) можно выбрать
+\[
+ Y=\max\{4\Omega+10,16,m^{1/6+\nu}\}.
+\]
+На H0 тогда
+\[
+ \boxed{\mathfrak e_m(Y)=O_\nu(m^{-3\nu}L^4)=o(1).}              \tag{6.5}
+\]
+Три степени соответственно равны
+\( -3\nu,\ -1/2-3\nu,\ -1/6-4\nu\), до полилогарифмов. Например, при \(\nu=1/12\), Y=m^{1/4} на позднем диапазоне, это \(-1/4,-3/4,-1/2\).
+
+Данная высота **достаточна для выписанного бюджета**, не доказанно необходима. На высоте порядка L наш хвостовой конверт тоже не становится subpower. Отличие от S2 состоит не в бесплатном объявлении префикса гладким, а в применении инверсии к уже сжатой полной causal-матрице. Ни сглаживание production-cutoff, ни незаплаченная замена формы не вводятся.
+
+### 6.1 Завершённое одностороннее сравнение с сохранённым главным членом
+
+Из (6.3), до раздельных модулей вычетов,
+\[
+ \boxed{
+ \mathcal A_0\preceq
+ (\mathfrak B_m+\mathfrak e_m)I_0-\mathsf H_0-\mathcal R_{m,u,H}.
+ }                                                               \tag{6.6}
+\]
+Это матричное неравенство, однородное по всем настоящим W. Для \(W\succeq0\), \(\Pi_0W\Pi_0=W\),
+\[
+ \operatorname{Tr}(W\mathcal A_0)
+ \le(\mathfrak B_m+\mathfrak e_m)\operatorname{Tr}W
+     -\operatorname{Tr}(W\mathsf H_0)
+     -\operatorname{Tr}(W\mathcal R_{m,u,H}).                      \tag{6.7}
+\]
+Все контуры в (6.7) общие для W; максимум по векторам не заменён оценкой фиксированного удобного направления.
+
+**Это первая полная joint inequality данной попытки.** Она оплачивает контурную реконструкцию, но сохраняет неоплаченную знаковую матрицу. Она не является завершённым верхом с subpolynomial скалярной ценой.
+
+## 7. Проверка знака и реальный полный бюджет
+
+### 7.1 Почему контакты не дают знака аналитического квадрата
+
+**[ABSTRACT | PAPER — только структурный discriminator.]** При вещественном x>0 обозначим
+\(p=\Pi_0v_+(x)=a+ib\). Вектор a чётен по j, b нечётен, поэтому \(a^Tb=0\). Тогда
+\[
+ \mathsf S_0(x)=\frac2L(aa^T-bb^T).                              \tag{7.1}
+\]
+Для M0≥2 и x≠1/2 оба вектора ненулевые. Для нечётной части это следует из невозможности пропорциональности
+\(\omega/(x^2+\omega^2)\) и \(\omega/(1/4+\omega^2)\) на двух различных положительных частотах. Для чётной — из невозможности представить \(x/(x^2+t)\) линейной комбинацией 1 и \(1/(1/4+t)\) на трёх различных \(t=\omega_j^2\): после умножения на знаменатели возникающий полином степени не более двух должен был бы быть тождественно нулевым, что требует x²=1/4.
+
+Следовательно, у аналитического transfer есть оба знака даже после всех контактов. Это **не утверждение о наличии реального дзета-нуля** и не контрпример фактической сумме (6.1). Оно только запрещает подмену vvᵀ положительным vv*. Конечные rational-frequency проверки ниже тестируют эту алгебру, а не production-клетку.
+
+Положительная размерность O(L²), низкий displacement-rank и самосопряжённость результата не решают (6.1). Это согласуется с ограничениями S8; leakage/cross terms нигде не занулялись.
+
+### 7.2 Законное, но недостаточное завершение
+
+Если после (6.6) всё же оплатить каждый вычет нормой, то из (3.2), (3.4), (4.2) получается
+\[
+ \|\mathcal R_{m,u,H}\|
+ \le C_N\sqrt m\,\mathcal W_m
+ \le256C_N\sqrt m L(1+\Omega)\log(20+\Omega).                     \tag{7.2}
+\]
+Нужное постоянное покрытие единичных bins уже включено в определение CN. Здесь использовано только \(\Re\rho\le1\), а не новая zero-free полоса. Ограничение \(\Re\rho-1/2>u\ge1/L\) оправдывает (3.4) при каждом слагаемом.
+
+Таким образом, действительно доказанная скалярная цена завершения (6.6) равна
+\[
+ \mathfrak B_m+\mathfrak e_m+C_N\sqrt m\,\mathcal W_m
+ =O(\sqrt m L^2\log L)+O(L^2(\log L)^2).
+\]
+Она имеет полную степень 1/2 и хуже элементарного
+\[
+ \boxed{\mathcal A_0\preceq12\sqrt m\,I_0.}                     \tag{7.3}
+\]
+Поэтому (7.3) сохраняется как более сильный unconditional fallback. Нижняя граница **самой цены (7.2)** не доказывалась; невозможность более точного signed-суммирования не утверждается.
+
+### 7.3 Первая неоплаченная строка
+
+Для отдельно достаточного H0 receiver не выведено, например,
+\[
+ \boxed{
+ \mathcal R_{m,u,H}\succeq-b_m I_0,
+ \qquad b_m=m^{o(1)}.
+ }\qquad\text{НЕ ДОКАЗАНО}.                                    \tag{7.4}
+\]
+Здесь subpolynomial означает: для каждого фиксированного d>0 существует C_d и начало, после которого \(b_m\le C_dm^d\). Контуры выбираются одним правилом для всей клетки. Возможна более слабая достаточная оценка совместно с \(\mathsf H_0\), либо на настоящей паре, но ни одна не поставлена.
+
+Важно: (7.4) не назначается новой «готовой леммой». По (6.3), с полилогарифмической ценой \(\mathcal V_m\), это та же незакрытая знаковая оценка, а не более лёгкая теорема, доказанная новым именем. Основной матричный перенос S7 стал полностью оплаченным аналитически; его арифметический знак не изменился.
+
+Конкретное первое место потери при неудачном скалярном завершении —
+\[
+ -\operatorname{Tr}(W\mathcal R)
+ \le\sum_\rho r_\rho m^{\Re\rho-1/2}
+             \|\mathsf S_0(\rho-1/2)\|\operatorname{Tr}W.         \tag{7.5}
+\]
+Оно забывает взаимные фазы и направления всех настоящих аналитических внешних произведений. В (6.6) этот шаг ещё не сделан. Локальные модули в доказательстве дешёвого analytic-return не используются для удаления (6.1).
+
+## 8. Полный возврат к CCM и первичному длинному сектору
+
+**[COFINAL_FAMILY | PAPER; использование свидетеля — CONDITIONAL.]** На H0 принята точная связь
+\[
+ K_0=\mathcal D_{\rm arch,0}-\mathcal A_0,
+ \qquad\|\mathcal D_{\rm arch,0}\|\le50L+8.
+\]
+Из (6.6) получаем
+\[
+ \boxed{
+ K_0\succeq\mathcal R+\mathsf H_0
+      -[\mathfrak B_m+\mathfrak e_m+50L+8]I_0.
+ }                                                               \tag{8.1}
+\]
+Архимедова цена начислена один раз. В окончательном unconditional числовом fallback лучше оставить
+\[
+ K_0\succeq-[12\sqrt m+50L+8]I_0.                               \tag{8.2}
+\]
+
+Для **отдельного** исходного \(\mathcal T_{>R}\) на H0 возвращается краткий сектор S7:
+\[
+ \mathfrak b_{\rm short}=(56+32\Omega)\sqrt R
+                        +12(1+\log R)^2,
+\]
+\[
+ \boxed{
+ \mathcal T_{>R}|_{H_0}\preceq
+ [\mathfrak B_m+\mathfrak e_m+\mathfrak b_{\rm short}]I_0
+   -\mathsf H_0-\mathcal R.
+ }                                                               \tag{8.3}
+\]
+Поскольку R остаётся \(\lfloor m^\epsilon\rfloor\), это
+\(O_\epsilon(m^{\epsilon/2}L+L^2)\), не бесплатно исчезающий член. Его нет в прямом (8.1). Proper powers уже целиком находятся в Z и в оригинальной \(\mathcal A_0\); дополнительная pp-плата здесь не добавляется.
+
+При применении (8.1) к целой настоящей паре z_{m,a} из S1:
+\[
+ \overline{z_{m,a}^*K_mz_{m,a}}
+ \ge\overline{z_{m,a}^*(\mathcal R+\mathsf H_0)z_{m,a}}
+       -D_w[\mathfrak B_m+\mathfrak e_m+50L+8].                 \tag{8.4}
+\]
+Черта — исходное положительное среднее по a, а не форма среднего вектора. В (8.4) матрицы R,V и контуры одинаковы для всех a. Фазы \(e^{\pm i\gamma a}\), собственные нормировки g,k и все self/cross остаются внутри z. Делить их на независимые части не нужно.
+
+Если сравнивать с pre-return парой, добавляется только \(\rho_{0,w}(m)\) из (1.5), с полными линейными и квадратичными mixed-errors. Нельзя заново применить к \(\mathcal R\) отдельный приблизительный vector-return и затем считать его бесплатным; мы всегда используем точный z внутри (8.4). Контактные и спектральные хвосты S1 уже оплачены на полном K.
+
+Для фиксированного настоящего условного w полилогарифмические величины в (8.4) — \(o(E_T)\). Но неизвестный signed-член с R может иметь именно масштаб сигнала. Условное равенство \(\overline{z^*Kz}=-2rE_T+o(1)\) из S1 допустимо лишь как discriminator: оно не доказывает нужный благоприятный нижний верх для R. Вычисление выбранного вычета из Q26 не повторялось.
+
+### Полный ledger возвратов
+
+| Компонент | Статус / цена | Где возвращён |
+|---|---|---|
+| Настоящая пара, cutoff, Fourier, три контакта внутри M0 | `CONDITIONAL`, \(\rho_{0,w}=C_wm^{1-2\pi}+m^Ce^{-c_wL^2}\) | (1.1)–(1.5), один раз |
+| Все диагональные и off-diagonal entries | точные | (2.1)–(2.3) |
+| Обе временные ориентации | оба v±, точные | (2.2) |
+| Весь конечный непрерывный фон | \(-\mathsf H_0\), \(0\le\mathsf H_0\le4I_0\) | (2.4)–(2.5), один раз |
+| Все prime powers, включая high powers | точные коэффициенты Z | (2.3); отдельная pp-плата отсутствует |
+| Конечновысотная утечка n>m и атом n=m | \(\mathfrak r_m(Y)\) | (5.2) |
+| Левая полная вертикаль | \(\mathfrak B_m=O(L^2\log^2 L)\) | (4.6) |
+| Оба левых вертикальных хвоста | \(\mathfrak l_m(Y)\) | (4.7) |
+| Обе горизонтали | \(\mathfrak h_m(Y)\) | (5.3) |
+| Все пересечённые нули с кратностями | **неоплаченная знаковая матрица** \(\mathcal R\) | (6.1), не удалена |
+| Архимедова часть | \(50L+8\) | только возврат K в (8.1) |
+| Малые делители | \(\mathfrak b_{\rm short}\) | только отдельный T-контракт (8.3) |
+| Возврат H0→all-P | **не доказан**, дополнение и связи | §9 |
+
+Все доказанные новые оценки в таблице имеют scope `FINITE_CELL` или `COFINAL_FAMILY`, verifier `PAPER`. Они не являются численными сертификатами.
+
+## 9. H0 не равен all-P: конкретно неоплаченные блоки
+
+Пусть \(H=\operatorname{ran}P=H_0\oplus H_1\), \(E=P-\Pi_0\). У исходного простого оператора
+\[
+ P\mathcal A P=
+ \begin{pmatrix}
+ \mathcal A_{00}&\mathcal A_{01}\\
+ \mathcal A_{10}&\mathcal A_{11}
+ \end{pmatrix},
+ \quad\mathcal A_{01}=\Pi_0\mathcal A E,\quad
+ \mathcal A_{11}=E\mathcal A E.
+\]
+Для общей пары x+y:
+\[
+ \langle x+y,\mathcal A(x+y)\rangle
+ =\langle x,\mathcal A_{00}x\rangle
+ +2\Re\langle x,\mathcal A_{01}y\rangle
+ +\langle y,\mathcal A_{11}y\rangle.
+\]
+Ни второй, ни третий член не оценён новым переносом на H0. При \(bI_0-\mathcal A_{00}\succ0\) достаточное и необходимое Schur-условие для общего верха b дополнительно требует
+\[
+ bI_1-\mathcal A_{11}
+ -\mathcal A_{10}(bI_0-\mathcal A_{00})^{-1}\mathcal A_{01}\succeq0.
+\]
+Эта строка не поставлена. Она не принимается как новая PSD-предпосылка.
+
+При этом **для отдельно достаточного H0 receiver такой all-P перенос не требуется**: S1 уже размещает каждый условный настоящий свидетель в H0 на всех поздних клетках. Поэтому не усиливаем альтернативный потребитель без нужды. Оригинальная all-P цель остаётся открытой, и её выполнение не объявляется успехом на меньшем пространстве.
+
+## 10. Содержательный откат и граница полученного результата
+
+Выполненный откат — **от scalar-prefix supremum к исходному целому causal-transfer**, до уничтожения аналитических квадратов и их фаз. Он дал полностью оплаченный контурный механизм (6.3)–(6.6). Его аналитический остаток значительно дешевле резкого префиксного возврата S2.
+
+Но продолжать этот механизм как будто знак уже получен нельзя. При переходе (7.5) исчезает именно та совместная информация, которая нужна потребителю. Улучшение высоты Y, увеличение точности или ещё меньшая ошибка \(\mathcal E_m\) не дают знака (6.1). Утверждать это как невозможность всех знаковых методов тоже нельзя: никакой нижней оценки истинного signed-агрегата, запрещающей (7.4), не доказано.
+
+Две ближайшие **координаты того же открытого вопроса**, не два новых поручения:
+
+| Представление до потери информации | Отличающий тест / сила | Цена ближайшего действия |
+|---|---|---|
+| Весь конечный \(\mathcal R_{m,u,H}\) вместе с \(\mathcal V_m\), один и тот же W | Знак транспонированного квадрата; изменение u через нуль обязано точно перенести его слагаемое между V и R. Высокая сила против пропущенных residues, но сама не даёт favorable sign | Алгебра и возврат уже оплачены; источникозависимая односторонняя оценка не поставлена |
+| Исходное центрированное матричное спаривание с \(d\psi-dx\), до спектрального разбиения | Полный continuum должен дать ровно \(-\mathsf H_0\); сохраняется различие f и \(|f|\), один исходный P | Точный обратный переход без новой ошибки; прежняя arithmetic debt остаётся, новое PNT-имя не помогает |
+
+**Нулесогласованный discriminator.** Если предполагаемое улучшение считает матрицу вычетов нулевой, оно должно предъявить законное основание для отсутствия всех пересечённых нулей или для их **совместной** cancellation. Ни «PSD-вид» внешнего произведения, ни малая размерность это не заменяют. Если residue отсутствует лишь из-за подмены transpose на adjoint или из-за удаления off-diagonal, проверка §7 и planted-controls обнаруживает эту ошибку. Для нового источникового результата нужен реальный односторонний bound полного R, а не его точная запись.
+
+**Не предлагается автоматический Q28.** Единственное следующее действие для этого артефакта — ограниченный независимый read-only PAPER-аудит (1.3)–(1.5), (4.3)–(4.7), полного знака (6.2), всех возвратов (6.4) и границы H0/all-P. После него уже можно решать, есть ли отдельный новый источниковый вход; сам аудит его не создаёт.
+
+## 11. Dependency epistemics и закрытие попытки
+
+### 11.1 Потребитель и классификация
+
+- `DOWNSTREAM_CONSUMER`: исходная sparse CCM; отдельно допустимый H0 receiver S1.
+- `ACTUAL_CONSUMER_REQUIREMENT`: независимо доказанный one-sided subpolynomial верх полной простой формы с полным возвратом; либо прежний достаточный actual-pair коэффициентный зазор.
+- `ORIGINAL_REQUESTED_OBJECT`: совместное матричное Mellin-сравнение до scalar prefixes; оно выполнено с аналитическим бюджетом, но благоприятный sign-input не получен.
+- `ORIGINAL_OBJECT_IS`: `NOT_NECESSARY` для конкретного контурного представления; оно является одним достаточным способом исследования, не обязательной формой RH-доказательства.
+- `KNOWN_WEAKER_INTERFACES`: подполиномиальная нижняя оценка K только на H0 уже достаточна через (1.5); all-P extension для этого не нужна. Actual-pair margin S9 также остаётся достаточной, но не доказанной.
+- `FAILURE_TYPE`: `NO_DERIVATION` для нового арифметического знака.
+- `EPISTEMIC_STATUS`: `RESEARCH_DEBT`, не `MATHEMATICALLY_DEAD`.
+- `NOVELTY_AXIS`: количественный матричный contour-return с quartic tail и близкой вертикалью; не новое тождество explicit formula, не новая теорема о распределении нулей.
+- `REOPEN_TRIGGER`: независимо выведенная оценка коллективного signed-агрегата, учитывающая те же реальные коэффициенты и возвращающая continuum/cross terms; меньший numeric error сам по себе не является trigger.
+- `ACTUAL_ROUTE_KILL_SCOPE`: `NONE`. Никакая область исходной CCM математически не объявлена невозможной.
+
+### 11.2 Проверки гипотез переноса из других представлений
+
+Три логически разные связи проверены без запуска трёх фиктивных исследований: (i) causal Laplace/Fourier identity сохраняет literal Q — `FORM_IDENTITY`; (ii) матричный residue theorem сохраняет все полюса и края — `FORM_IDENTITY`; (iii) условный S1 переводит независимый H0 sign-bound к тому же adverse witness — `ONE_WAY_TRANSFER`. Ни одна связь не предоставляет отсутствующий sign автоматически. Единственная новая количественно испытанная схема — их цельная композиция в §§2–8.
+
+Vanishing identity есть только для главного полюса и endpoint-leading terms. Для всей \(\mathcal R\) vanishing identity не доказана. Объект, который действительно закрыл бы этот вариант одним шагом, — источникозависимое общее one-sided сравнение (6.6) с subpolynomial остатком; его существование не следует из текущей работы.
+
+### 11.3 Судьба зарегистрированных предсказаний
+
+| ID | Результат |
+|---|---|
+| P1 | Подтверждено в ограниченной области: S1 корректен относительно его явно унаследованных хвостов и формы |
+| P2 | Подтверждено PAPER-леммой (3.2) и точными контролями исчезновения порядков 2,3; полный знак не следует |
+| P3 | Подтверждено (4.3)–(4.7): общая вертикаль существует без ZF, все пересечённые нули возвращаются |
+| P4 | Подтверждено (6.4)–(6.5); ошибка o(1), арифметический знак отдельно не доказан |
+| P5 | Подтверждено §9: H0 receiver достаточен отдельно, all-P дополнение и связи не оплачены |
+
+`PROGRESS_CLASS: REPRESENTATION_PROGRESS` только для полностью оплаченного матричного возврата. `CONSUMER_PROGRESS: NO_NEW_ARITHMETIC_BOUND`. Route score 3 в аналитической области, не оценка близости к RH. Сохраняются прежний actual-pair бюджет \(O_w(\sqrt m/(LT)+L+1)\) и условный показатель 3/8 при **той же** ZF78. ZF78 в новых доказательствах не использована и не повышена до безусловного факта.
+
+```yaml
+iteration:
+  target: Q27 joint matrix comparison before sharp scalar prefixes
+  status: OPEN
+  failed_strategy: complete by separate absolute payment of crossed-zero matrices
+  cognitive_operator_used: REPRESENTATION_SHIFT
+  invariant_learned: endpoint compression gives quartic tails but not positivity of analytic squares
+  forbidden_future_move: count a paid contour error or H0 inclusion as a favorable full CCM estimate
+  next_decisive_test: bounded audit of the common-contour and all-return theorem; no automatic successor request
+```
+
+### 11.4 Сильнейшая атака на собственный результат
+
+Самое сильное возражение: «Вы снова перенесли всю RH-трудность в сумму по нулям». Для благоприятного sign это верно: (7.4) не решена и не названа более лёгкой. Конкретная отличительная проверка результата — в том, что у S7(28) хвосты были неоплаченными, а здесь их цена выведена для всех векторов H0 одним общим контуром. Если счесть это только аналитическим результатом, ни одна строка не обещает новой RH-степени.
+
+Вторая атака: «Полилогарифмическая левая линия тайно zero-free». Нет: (4.3) допускает произвольно близкие и кратные полюса; выбор выполняется по интегралу на полоске положительной ширины. Удаление каждого пересечённого нуля из (6.1) немедленно разрушает (6.2). В третьей атаке «малое пространство уже сменило задачу» отвечает точный блоковый разбор §9.
+
+## 12. Внешние первичные входы и границы их использования
+
+Вся арифметическая и проектная нотация выше взята из S1–S9. Внешние источники используются только для следующих стандартных входов; новые матричные оценки доказаны в этом ответе.
+
+**[R1] NIST DLMF, §25.4, формула 25.4.4.** Определение xi через Gamma и zeta. Использовано для Fourier-аудита S1; не как оценка prime discrepancy.
+
+**[R2] NIST DLMF, §5.11, формула 5.11.9.** При фиксированной действительной части \(|\Gamma(x+iy)|\sim\sqrt{2\pi}|y|^{x-1/2}e^{-\pi|y|/2}\), равномерно на компактном диапазоне x. Использовано только для (1.1).
+
+**[R3] NIST DLMF, §27.4.** Dirichlet-серия \(-\zeta'/\zeta=\sum\Lambda(n)n^{-s}\) в \(\Re s>1\), со всеми prime powers. Использовано до законной contour-инверсии.
+
+**[R4] Terence Tao, 254A Notes 2, 9 December 2014, Propositions 16,19.** Проверены оригинальные формулировки локального счёта нулей с кратностями и локального разложения логарифмической производной на фиксированной полосе. В §4 выписаны именно потребляемые фиксированные версии. Это не утверждение об отсутствии нулей и не новая quantitative PNT.
+
+```text
+R1 https://dlmf.nist.gov/25.4
+R2 https://dlmf.nist.gov/5.11
+R3 https://dlmf.nist.gov/27.4
+R4 https://terrytao.wordpress.com/2014/12/09/254a-notes-2-complex-analytic-multiplicative-number-theory/
+```
+
+Никакой новый PDF, текущая новостная статья или неподтверждённый RH-claim не используется. Условный предыдущий результат ZF78 оставлен ровно в статусе пакета.
+
+## 13. Исполненные проверки и воспроизводимость
+
+Использована имеющаяся SymPy 1.14.0. Проверяющий содержит **100 записей PASS: 99 математических локальных контролей и одну проверку метаданных**, а также **7 обнаруженных намеренных ошибок**. Это не 100 доказательств асимптотического знака. Значительная часть арифметических контролей проверяет биномиальную делимость на малых целых n; общий аргумент приведён в §5.
+
+Проверки охватывают partial fractions, полную трёхконтактную проекцию, quartic coefficient, различие transpose/adjoint, оба полюсных контактных возврата, complex mixed-error, единичный continuum-return, ориентацию residue theorem, неоплаченную cross-block связь и все три высотные степени. Нормовые/интегральные оценки и выбор общей вертикали являются PAPER-доказательствами, не результатами конечных чисел.
+
+Ни production-CCM spectrum, ни численные координаты условного w не вычислялись. Нет Lean, Arb, нового независимого аудита, repository write или внешнего сообщения.
+
+Полные исполняемые тексты и результаты ниже сохраняются без сокращений. В `verify_sources_q27.py` аргумент — **путь к исходному каноническому TXT**, не к этому вердикту. Например, если оба файла лежат рядом:
+
+```bash
+python3 verify_sources_q27.py PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_2026-10-25.txt > source_results.replay.json
+python3 check_q27.py > exact_results.replay.json
+cmp source_results.json source_results.replay.json
+cmp exact_results.json exact_results.replay.json
+```
+
+Для побайтного совпадения среды используется указанная версия SymPy; математические утверждения не зависят от сериализации JSON. Пакеты не устанавливались. Файлы проверяющих повторно извлечены из окончательного Markdown; итог воспроизведения указан после вложений.
+
+## 14. Манифест канонических источников
+
+| ID | Исходный путь | Байты / LF | SHA-256 |
+|---|---|---:|---|
+| S1 | `docs/literature/openai_math_2026-10-07/CCM_POST_Q26_POLYLOG_WITNESS.md` | 8064 / 154 | `c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681` |
+| S2 | `docs/literature/openai_math_2026-10-07/CCM_POST_Q26_LOW_HEIGHT_PERRON_TEST.md` | 3108 / 57 | `6c0757b610790fd16e224c672599176cf3b9fcb4f313d2603ca15f5e8a29271b` |
+| S3 | `docs/literature/openai_math_2026-10-07/CCM_Q26_CONCLUSION.md` | 3744 / 33 | `b885f17c955010715932d8896ef5fa62607bee10d498060ad3d29134449d8631` |
+| S4 | `docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ACTUAL_SOURCE_RIGIDITY_Q26_VERDICT_2026-10-25.md` | 85663 / 1221 | `a2f3b3d287f7dca91a488ee7d12bf0ac5592577457f4b63f6fdf6207d32b34a6` |
+| S5 | `docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md` | 9606 / 129 | `2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd` |
+| S6 | `docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md` | 6174 / 69 | `0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06` |
+| S7 | `docs/literature/openai_math_2026-10-07/PROSHKA_VERDICT_FULL_CCM_JOINT_DIVISOR_Q10.md` | 68836 / 805 | `56a86d486b05421c5e4f8311f04afe9ef783267ebede4b265a39677233bfd3ff` |
+| S8 | `docs/literature/openai_math_2026-10-07/CCM_Q07_DISPLACEMENT_PREFLIGHT.md` | 2757 / 44 | `d983a2be3ec1025ce56725bb3a32e021e7e0f4cd3f1625e2f952d9059e83048c` |
+| S9 | `docs/literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md` | 3932 / 68 | `c2bbf489a2387de46b0598ed70f8e54aaecb91790835bb5df096007cf6d9c7ea` |
+
+## Приложение A. Регистрация, проверяющие и полные результаты
+
+Каждый `FILE_BEGIN` содержит размер UTF-8 тела и SHA-256; разделительная пустая строка после тела не входит в его байты. Это именно исполненные файлы, а не обещанный будущий код.
+
+FILE_BEGIN registration.json bytes=1820 sha256=1d55f228c8525e1735ca8de8772b96c5af60bfedbd01e9d2bd63ad2c370d5212
+```json
+{
+  "task": "Q27_POLYLOG_JOINT_MATRIX_BEFORE_PREFIX",
+  "timing": "After complete request/source reading and initial paper inspection; before new executable mathematical tests. These are test predictions, not blind claims.",
+  "mechanism": "Direct projected causal matrix Mellin inversion; use endpoint contact to obtain quartic vertical decay, shift with signed residues retained, choose a near-axis vertical line by averaging the actual logarithmic-derivative kernel; pay horizontal edges and all n>m inversion tails.",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "S1 polylog witness survives a bounded audit with no material defect, conditional on its explicitly inherited source tails and form continuity."
+    },
+    {
+      "id": "P2",
+      "claim": "P0*ones=0 yields O(V*Omega^2/|t|^4) for the full projected transfer, not only the raw O(V/|t|^2)."
+    },
+    {
+      "id": "P3",
+      "claim": "A vertical line with real part between 1/log(m) and 2/log(m) can be chosen so its complete projected analytic integral has a polylogarithmic operator-norm budget, using local zeta factorization and integrability of its poles, without a zero-free hypothesis; every crossed zero remains in a joint signed residue matrix."
+    },
+    {
+      "id": "P4",
+      "claim": "The resulting finite contour error can be made o(1) with an explicitly paid power height; this does not itself bound the one-sided signed residue matrix."
+    },
+    {
+      "id": "P5",
+      "claim": "A small upper bound only on H0 is a separately sufficient receiver, not an all-P result; complement and coupling blocks remain unpaid for all-P promotion."
+    }
+  ],
+  "no_actual_zero_assigned": true,
+  "no_repository_writes": true,
+  "not_predicted": "A favorable RH sign or new complete arithmetic exponent is not presupposed."
+}
+```
+FILE_END registration.json
+
+FILE_BEGIN verify_sources_q27.py bytes=1272 sha256=eaad395ad97405939614a08b5a455070a523cd42419a4f0d10a04e922f5c7b30
+```python
+#!/usr/bin/env python3
+"""Verify the canonical Q27 byte stream and its nine full source bodies."""
+from __future__ import annotations
+import hashlib,json,re,sys
+from pathlib import Path
+name='PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_2026-10-25.txt'
+p=Path(sys.argv[1]) if len(sys.argv)>1 else Path(name)
+b=p.read_bytes(); b.decode('utf-8',errors='strict')
+expected='8c6b5a8e351b2e06efe9846231e9195f72e09709bb4dc0d21e3b8aa40afe46a0'
+assert len(b)==198487 and b.count(b'\n')==2641
+assert hashlib.sha256(b).hexdigest()==expected
+head=b[:b.index(b'BEGIN_SOURCE S1 ')]
+rows=re.findall(rb'^(S\d+): (.+?) \| bytes=(\d+) \| sha256=([a-f0-9]{64})$',head,re.M)
+assert len(rows)==9
+out=[]
+for sid,path,size,sha in rows:
+    marker=b'BEGIN_SOURCE '+sid+b' '+path+b'\n'
+    assert b.count(marker)==1
+    start=b.index(marker)+len(marker); n=int(size); body=b[start:start+n]
+    assert hashlib.sha256(body).hexdigest().encode()==sha
+    assert b[start+n:].startswith(b'\nEND_SOURCE '+sid+b'\n')
+    out.append({'id':sid.decode(),'path':path.decode(),'bytes':n,'lf':body.count(b'\n'),'sha256':sha.decode()})
+print(json.dumps({'request_bytes':len(b),'request_lf':b.count(b'\n'),'request_sha256':expected,'sources_verified':len(out),'sources':out},ensure_ascii=False,indent=2,sort_keys=True))
+```
+FILE_END verify_sources_q27.py
+
+FILE_BEGIN source_results.json bytes=2384 sha256=a587fdd7899e237fa27b2a266db34454e3854ecb80e6b1ad5fd5c9b00ee3d741
+```json
+{
+  "request_bytes": 198487,
+  "request_lf": 2641,
+  "request_sha256": "8c6b5a8e351b2e06efe9846231e9195f72e09709bb4dc0d21e3b8aa40afe46a0",
+  "sources": [
+    {
+      "bytes": 8064,
+      "id": "S1",
+      "lf": 154,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681"
+    },
+    {
+      "bytes": 3108,
+      "id": "S2",
+      "lf": 57,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q26_LOW_HEIGHT_PERRON_TEST.md",
+      "sha256": "6c0757b610790fd16e224c672599176cf3b9fcb4f313d2603ca15f5e8a29271b"
+    },
+    {
+      "bytes": 3744,
+      "id": "S3",
+      "lf": 33,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q26_CONCLUSION.md",
+      "sha256": "b885f17c955010715932d8896ef5fa62607bee10d498060ad3d29134449d8631"
+    },
+    {
+      "bytes": 85663,
+      "id": "S4",
+      "lf": 1221,
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_ACTUAL_SOURCE_RIGIDITY_Q26_VERDICT_2026-10-25.md",
+      "sha256": "a2f3b3d287f7dca91a488ee7d12bf0ac5592577457f4b63f6fdf6207d32b34a6"
+    },
+    {
+      "bytes": 9606,
+      "id": "S5",
+      "lf": 129,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd"
+    },
+    {
+      "bytes": 6174,
+      "id": "S6",
+      "lf": 69,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+    },
+    {
+      "bytes": 68836,
+      "id": "S7",
+      "lf": 805,
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_VERDICT_FULL_CCM_JOINT_DIVISOR_Q10.md",
+      "sha256": "56a86d486b05421c5e4f8311f04afe9ef783267ebede4b265a39677233bfd3ff"
+    },
+    {
+      "bytes": 2757,
+      "id": "S8",
+      "lf": 44,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q07_DISPLACEMENT_PREFLIGHT.md",
+      "sha256": "d983a2be3ec1025ce56725bb3a32e021e7e0f4cd3f1625e2f952d9059e83048c"
+    },
+    {
+      "bytes": 3932,
+      "id": "S9",
+      "lf": 68,
+      "path": "docs/literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md",
+      "sha256": "c2bbf489a2387de46b0598ed70f8e54aaecb91790835bb5df096007cf6d9c7ea"
+    }
+  ],
+  "sources_verified": 9
+}
+```
+FILE_END source_results.json
+
+FILE_BEGIN check_q27.py bytes=6477 sha256=fc010dbdb6261362c11e940a4eabcf03be58a81897f7cd13f07b7dfb28642bd1
+```python
+#!/usr/bin/env python3
+"""Exact local algebra controls for Q27. Not a CCM spectral certificate.
+The rational-frequency controls test identities, not a production integer cell.
+No hypothetical zeta zero is assigned numerical data.
+"""
+from __future__ import annotations
+import json
+from fractions import Fraction
+import sympy as s
+passed=[]; planted=[]
+def check(name, cond):
+    if not bool(cond): raise AssertionError(name)
+    passed.append(name)
+def reject(name, cond):
+    if bool(cond): raise AssertionError('Undetected planted error: '+name)
+    planted.append(name)
+def zero(M): return all(s.cancel(x)==0 for x in M)
+z,a,b,t=s.symbols('z a b t', nonzero=True)
+check('causal_offdiagonal_partial_fraction',s.cancel((1/(z+a)-1/(z+b))/(b-a)-1/((z+a)*(z+b)))==0)
+check('causal_diagonal_double_pole',s.diff(1/(z+a),z)==-1/(z+a)**2)
+# Full exact three-contact projector for a frequency-parameter algebra control.
+om=s.Matrix([-2,-1,0,1,2]); one=s.ones(5,1)
+ve=s.Matrix([1/(s.Rational(1,4)+j*j) for j in om]); vo=s.Matrix([j/(s.Rational(1,4)+j*j) for j in om])
+V=s.Matrix.hstack(one,ve,vo); P=s.eye(5)-V*(V.T*V).inv()*V.T
+check('full_three_contact_projection_idempotent',zero(P*P-P))
+check('projection_real_symmetric',P==P.T)
+check('rank_is_dimension_minus_three',P.rank()==2)
+check('endpoint_contact',zero(P*one))
+vp=lambda z0,sgn:s.Matrix([1/(z0+sgn*s.I*j) for j in om])
+for sign in (-1,1):
+    check('exponential_contact_'+str(sign),zero(P*vp(s.Rational(1,2),sign)))
+    check('reflected_contact_'+str(sign),zero(P*vp(-s.Rational(1,2),sign)))
+    zz=s.Rational(2,3)+s.I/5
+    resid=vp(zz,sign)-one/zz
+    check('resolvent_endpoint_subtraction_'+str(sign),zero(P*vp(zz,sign)-P*resid))
+    identity=s.Matrix([-sign*s.I*j/(zz*(zz+sign*s.I*j)) for j in om])
+    check('resolvent_subtraction_denominators_'+str(sign),zero(resid-identity))
+# Formal series at infinity. No asymptotic numerical fitting.
+y=s.symbols('y')
+ps=[]
+for sign in (-1,1):
+    v=s.Matrix([sum((-sign*s.I*j)**k*y**(k+1) for k in range(4)) for j in om])
+    ps.append(P*v)
+Sseries=sum((v*v.T for v in ps),s.zeros(5))
+for power in (2,3):
+    check('projected_transfer_coefficient_'+str(power)+'_vanishes',zero(Sseries.applyfunc(lambda x:s.expand(x).coeff(y,power))))
+check('leading_quartic_full_matrix',zero(Sseries.applyfunc(lambda x:s.expand(x).coeff(y,4))+2*(P*om)*(P*om).T))
+# Double main-pole cancellation. Both derivatives of vv^T are retained.
+for sign in (-1,1):
+    pv=P*vp(s.Rational(1,2),sign)
+    dp=P*s.Matrix([-1/(s.Rational(1,2)+sign*s.I*j)**2 for j in om])
+    check('double_contact_outer_derivative_'+str(sign),zero(dp*pv.T+pv*dp.T))
+    reject('derivative_vector_itself_vanishes_'+str(sign),zero(dp))
+# Analytic squares are not modulus squares; exact even/odd signature.
+za=s.Rational(1,3)
+p=P*vp(za,1); re=p.applyfunc(s.re); im=p.applyfunc(s.im)
+S0=p*p.T+s.conjugate(p)*s.conjugate(p).T
+check('analytic_square_even_odd_decomposition',zero(S0-2*(re*re.T-im*im.T)))
+check('even_odd_vectors_orthogonal',s.cancel((re.T*im)[0])==0)
+check('actual_contact_algebra_positive_direction',s.cancel((re.T*S0*re)[0])>0)
+check('actual_contact_algebra_negative_direction',s.cancel((im.T*S0*im)[0])<0)
+reject('transpose_can_be_replaced_by_adjoint',zero(p*p.T-p*p.conjugate().T))
+reject('contact_projection_gives_pointwise_psd',s.cancel((im.T*S0*im)[0])>=0)
+# Finite Hermitian aggregation and full complex mixed return.
+A=s.Matrix([[2,1+s.I],[1-s.I,-3]]); x=s.Matrix([1+s.I,2]); e=s.Matrix([s.Rational(1,3),s.I/5])
+quad=lambda v:s.expand((v.conjugate().T*A*v)[0])
+cross=s.expand((x.conjugate().T*A*e)[0]+(e.conjugate().T*A*x)[0])
+check('complete_quadratic_return',s.simplify(quad(x+e)-quad(x)-cross-quad(e))==0)
+reject('drop_linear_mixed_return',s.simplify(quad(x+e)-quad(x)-quad(e))==0)
+# Centering: same kernel identity, not the extra-decaying-copy convention.
+xr,yr=s.symbols('xr yr',real=True)
+check('pole_plus_decay_rank_two',s.simplify(s.exp((xr-yr)/2)+s.exp(-(xr-yr)/2)-2*s.cosh((xr-yr)/2))==0)
+G,H,S=s.symbols('G H S')
+center=S-G
+check('single_continuum_return',s.expand(center.subs(G,-H)-H-S)==0)
+reject('double_charge_H_after_single_centering',s.expand(center.subs(G,-H)-2*H-S)==0)
+# Cauchy contour orientation: right side upwards, top right-to-left.
+verts=[(0,-1),(2,-1),(2,1),(0,1)]
+area=sum(verts[i][0]*verts[(i+1)%4][1]-verts[(i+1)%4][0]*verts[i][1] for i in range(4))/2
+check('right_up_contour_positive',area>0)
+rr=s.symbols('rr',integer=True,positive=True); zz0=s.symbols('zz0'); ell=s.symbols('ell',real=True)
+res=s.residue(-rr*s.exp(ell*z)/(z-zz0),z,zz0)
+check('log_derivative_residue_multiplicity',s.simplify(res+rr*s.exp(ell*zz0))==0)
+reject('residue_sign_flipped',s.simplify(res-rr*s.exp(ell*zz0))==0)
+# No automatic full-space promotion from the low block.
+block=s.Matrix([[0,2],[2,0]])
+check('low_block_does_not_control_cross',block[0,0]==0 and block.det()<0)
+# The integrable logarithmic singularity in the averaged-line proof.
+h,AA=s.symbols('h AA',positive=True)
+primitive=h*(s.log(AA/h)+1)
+check('averaged_log_singularity_primitive',s.simplify(s.diff(primitive,h)-s.log(AA/h))==0)
+Y=s.symbols('Y',positive=True)
+q=(s.log(2*Y)/3+s.Rational(1,9))/Y**3
+check('log_weighted_quartic_tail_integral',s.simplify(s.diff(q,Y)+s.log(2*Y)/Y**4)==0)
+check('quartic_tail_power',s.integrate(t**(-4),(t,Y,s.oo))==1/(3*Y**3))
+# m-powers of complete returned errors, not just one sector.
+nu=Fraction(1,12); kappa=Fraction(1,6)+nu
+powers={'right_tail':Fraction(1,2)-3*kappa,'left_tail':-3*kappa,'horizontal':Fraction(1,2)-4*kappa}
+for key,val in powers.items(): check('paid_height_power_'+key,val<0)
+check('height_vs_old_sharp_prefix',Fraction(1,2)-kappa>0)
+# Elementary binomial divisibility used for psi(x)<=3x.
+def valuation(n,p):
+    q=0
+    while n and n%p==0: q+=1; n//=p
+    return q
+for n in range(1,13):
+    B=int(s.binomial(2*n,n))
+    for p0 in list(s.primerange(2,2*n+1)):
+        p=int(p0); q=p; cnt=0
+        while q<=2*n:
+            cnt+=int(q>n); q*=p
+        check('binomial_prime_power_interval_'+str(n)+'_'+str(p),valuation(B,p)>=cnt)
+check('no_new_zero_assigned',True)
+out={'exact_controls':len(passed),'planted_errors_detected':len(planted),'sympy_version':s.__version__,
+     'passed':passed,'planted':planted,'height_powers':{k:str(v) for k,v in powers.items()},
+     'scope':'Local exact identities and error-exponent controls only; no actual zero or production CCM eigenvalue; no Lean/Arb/independent review.'}
+print(json.dumps(out,ensure_ascii=False,indent=2,sort_keys=True))
+```
+FILE_END check_q27.py
+
+FILE_BEGIN exact_results.json bytes=4678 sha256=564b3163f1611f1dcf51fb38a427103891868b8671cd1c2ad9a3793f2f66608c
+```json
+{
+  "exact_controls": 100,
+  "height_powers": {
+    "horizontal": "-1/2",
+    "left_tail": "-3/4",
+    "right_tail": "-1/4"
+  },
+  "passed": [
+    "causal_offdiagonal_partial_fraction",
+    "causal_diagonal_double_pole",
+    "full_three_contact_projection_idempotent",
+    "projection_real_symmetric",
+    "rank_is_dimension_minus_three",
+    "endpoint_contact",
+    "exponential_contact_-1",
+    "reflected_contact_-1",
+    "resolvent_endpoint_subtraction_-1",
+    "resolvent_subtraction_denominators_-1",
+    "exponential_contact_1",
+    "reflected_contact_1",
+    "resolvent_endpoint_subtraction_1",
+    "resolvent_subtraction_denominators_1",
+    "projected_transfer_coefficient_2_vanishes",
+    "projected_transfer_coefficient_3_vanishes",
+    "leading_quartic_full_matrix",
+    "double_contact_outer_derivative_-1",
+    "double_contact_outer_derivative_1",
+    "analytic_square_even_odd_decomposition",
+    "even_odd_vectors_orthogonal",
+    "actual_contact_algebra_positive_direction",
+    "actual_contact_algebra_negative_direction",
+    "complete_quadratic_return",
+    "pole_plus_decay_rank_two",
+    "single_continuum_return",
+    "right_up_contour_positive",
+    "log_derivative_residue_multiplicity",
+    "low_block_does_not_control_cross",
+    "averaged_log_singularity_primitive",
+    "log_weighted_quartic_tail_integral",
+    "quartic_tail_power",
+    "paid_height_power_right_tail",
+    "paid_height_power_left_tail",
+    "paid_height_power_horizontal",
+    "height_vs_old_sharp_prefix",
+    "binomial_prime_power_interval_1_2",
+    "binomial_prime_power_interval_2_2",
+    "binomial_prime_power_interval_2_3",
+    "binomial_prime_power_interval_3_2",
+    "binomial_prime_power_interval_3_3",
+    "binomial_prime_power_interval_3_5",
+    "binomial_prime_power_interval_4_2",
+    "binomial_prime_power_interval_4_3",
+    "binomial_prime_power_interval_4_5",
+    "binomial_prime_power_interval_4_7",
+    "binomial_prime_power_interval_5_2",
+    "binomial_prime_power_interval_5_3",
+    "binomial_prime_power_interval_5_5",
+    "binomial_prime_power_interval_5_7",
+    "binomial_prime_power_interval_6_2",
+    "binomial_prime_power_interval_6_3",
+    "binomial_prime_power_interval_6_5",
+    "binomial_prime_power_interval_6_7",
+    "binomial_prime_power_interval_6_11",
+    "binomial_prime_power_interval_7_2",
+    "binomial_prime_power_interval_7_3",
+    "binomial_prime_power_interval_7_5",
+    "binomial_prime_power_interval_7_7",
+    "binomial_prime_power_interval_7_11",
+    "binomial_prime_power_interval_7_13",
+    "binomial_prime_power_interval_8_2",
+    "binomial_prime_power_interval_8_3",
+    "binomial_prime_power_interval_8_5",
+    "binomial_prime_power_interval_8_7",
+    "binomial_prime_power_interval_8_11",
+    "binomial_prime_power_interval_8_13",
+    "binomial_prime_power_interval_9_2",
+    "binomial_prime_power_interval_9_3",
+    "binomial_prime_power_interval_9_5",
+    "binomial_prime_power_interval_9_7",
+    "binomial_prime_power_interval_9_11",
+    "binomial_prime_power_interval_9_13",
+    "binomial_prime_power_interval_9_17",
+    "binomial_prime_power_interval_10_2",
+    "binomial_prime_power_interval_10_3",
+    "binomial_prime_power_interval_10_5",
+    "binomial_prime_power_interval_10_7",
+    "binomial_prime_power_interval_10_11",
+    "binomial_prime_power_interval_10_13",
+    "binomial_prime_power_interval_10_17",
+    "binomial_prime_power_interval_10_19",
+    "binomial_prime_power_interval_11_2",
+    "binomial_prime_power_interval_11_3",
+    "binomial_prime_power_interval_11_5",
+    "binomial_prime_power_interval_11_7",
+    "binomial_prime_power_interval_11_11",
+    "binomial_prime_power_interval_11_13",
+    "binomial_prime_power_interval_11_17",
+    "binomial_prime_power_interval_11_19",
+    "binomial_prime_power_interval_12_2",
+    "binomial_prime_power_interval_12_3",
+    "binomial_prime_power_interval_12_5",
+    "binomial_prime_power_interval_12_7",
+    "binomial_prime_power_interval_12_11",
+    "binomial_prime_power_interval_12_13",
+    "binomial_prime_power_interval_12_17",
+    "binomial_prime_power_interval_12_19",
+    "binomial_prime_power_interval_12_23",
+    "no_new_zero_assigned"
+  ],
+  "planted": [
+    "derivative_vector_itself_vanishes_-1",
+    "derivative_vector_itself_vanishes_1",
+    "transpose_can_be_replaced_by_adjoint",
+    "contact_projection_gives_pointwise_psd",
+    "drop_linear_mixed_return",
+    "double_charge_H_after_single_centering",
+    "residue_sign_flipped"
+  ],
+  "planted_errors_detected": 7,
+  "scope": "Local exact identities and error-exponent controls only; no actual zero or production CCM eigenvalue; no Lean/Arb/independent review.",
+  "sympy_version": "1.14.0"
+}
+```
+FILE_END exact_results.json
+
+## Приложение B. Итог локального исполнения
+
+После сборки оригинала все пять FILE-тел повторно выделены по их собственным байтовым размерам. Их SHA-256 совпали. `verify_sources_q27.py` заново проверил канонический TXT и девять тел; `check_q27.py` заново исполнил локальные контроли. Оба JSON сравниваются побайтно с включёнными результатами. Этот replay — повторный запуск тех же проверяющих, не второй независимый аудит.
+
+В бумажном изложении сознательно оставлены внешние фиксированные константы C0,CN и принятые upstream receiver-обязательства. Новых предпосылок о нулях, Mertens, variance или нужном знаке нет. Вердикт не даёт оснований менять состояние RH, SP, G1/G3 либо primary all-P goal.
+
+**Заключение.** S1 принят в заявленной ограниченной области. Совместная матричная causal-инверсия имеет оплаченный полилогарифмический analytic-part и o(1) конечноконтурный return. Сумма настоящих знаковых вычетов сохранена, но её односторонняя малость не доказана. Это граница выполненного Q27.
+
+END_SOURCE S4
+
+BEGIN_SOURCE S5 docs/literature/openai_math_2026-10-07/PROSHKA_VERDICT_FULL_CCM_JOINT_DIVISOR_Q10.md
+# STATUS: TRY_RH_SOURCE_ARITHMETIC
+```yaml
+OPERATIVE_CLASS: TRY_RH_SOURCE_ARITHMETIC
+VERDICT_CODE: FULL_CCM_MOMENT_Q10_ENDPOINT_ENVELOPE_REFINED_PARAMETER_PROPORTIONAL_SIGN_OPEN
+REQUEST_ID: FULL_CCM_MOMENT_Q10
+REQUEST: PROSHKA_CCM_MOMENT_Q10.txt
+REQUEST_BYTES: 119530
+REQUEST_SHA256: c926dcb8f59d047ded0611704a96ceb1005596f259a36598abedd46e34e31199
+REQUEST_READ: COMPLETE
+EMBEDDED_PAYLOAD_HASHES: 9_OF_9_MATCH
+SOURCE_BASELINE_AS_SUPPLIED: d97630afa748e9cadb1905bb01dd423acd42c60b
+BOOTSTRAP_REPO: Malaeu/chen_q3
+BOOTSTRAP_BRANCH: rh_clean
+BOOTSTRAP_PATH: docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md
+BOOTSTRAP_BLOB: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
+ROUTE_ID: RH_SOURCE_ARITHMETIC
+FRONT_ID: FULL_CCM_COUPLED_MOMENT_DRIFT
+SOURCE_OBJECT_FAMILY_ID: CCM_LITERAL_FULL_MATRIX_N_EQUALS_M
+TERMINAL_CONSUMER_ID: SUBPOLYNOMIAL_NEGATIVE_BOTTOM_SP_TO_RH
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: CCM_LITERAL_EQ4_2_TO4_4_ALL_MODES_FULL_PRIME_HISTORY
+ADJUDICATION: INCONCLUSIVE_FOR_REQUESTED_PARAMETER_PROPORTIONAL_ONE_SIDED_BOUND
+REQUESTED_ABSOLUTE_C: NOT_SUPPLIED
+REQUESTED_EVERY_CELL_BOUND: NOT_PROVED
+REQUESTED_UNBOUNDED_SUBSEQUENCE_BOUND: NOT_PROVED
+H_MU: OPEN_RH_EQUIVALENT_NOT_USED_AS_A_PREMISE
+Q09_NF: ACCEPTED_IN_ITS_REPORTED_SCOPE_NOT_REAUDITED
+Q09_SMALL_DIVISOR_MATRIX_LEMMA: NOT_ASSUMED
+SMALL_DIVISOR_RETURN_HERE: REDERIVED_FROM_ACCEPTED_Q10_L1_AND_LITERAL_KERNEL
+COMPLETE_BOUND_OBTAINED: "T_gtR <= (4 B_m + b_small) P - 2 H_P; B_m=C_cl*m^(3/8)*(log m)^2*log(3 log m), b_small=(56+32 Omega_M)*sqrt(R)+12*(1+log R)^2."
+DIAGONAL_FAMILY_BOUND: "lambda_max(T_gtR|ran P) <= C*m^(3/8)*(log m)^2*log(3 log m), for M=R=floor(m^epsilon), 0<epsilon<1/32, eventually."
+BOUND_SCOPE: COFINAL_FAMILY
+BOUND_VERIFIER: CONDITIONAL
+NAMED_DEPENDENCY: REPORTED_ZETA_ONLY_ZF78
+PARTIAL_REFINEMENT: FIXED_ETA_LOSS_REPLACED_BY_EXPLICIT_LOGARITHMIC_PRICE
+REFINEMENT_COMPARISON: "m^(3/8)*(log m)^2*log(3 log m) = o(m^(3/8+eta)) for every fixed eta>0; same object, same diagonal domain, same ZF78 input."
+SMALLER_FIXED_POWER_EXPONENT: NOT_OBTAINED
+POWER_BARRIER: THREE_EIGHTHS_UNCHANGED
+NEW_PARAMETER_PROPORTIONAL_ARITHMETIC_CANCELLATION: NOT_OBTAINED
+FULL_SP: OPEN
+RESTRICTED_ARITHMETIC_SUPPLIER: OPEN
+RH_STATUS: OPEN
+PX_RH_CLAIM: NOT_MADE
+KILL_SCOPE: NONE
+NEW_IMPOSSIBILITY_CLAIM: NONE
+FAILURE_TYPE: NO_DERIVATION
+EPISTEMIC_STATUS: RESEARCH_DEBT
+PROGRESS_CLASS: PROOF_PROGRESS
+PROGRESS_SCOPE: QUANTIFIED_FIXED_STRIP_ENDPOINT_ENVELOPE_ONLY
+CONSUMER_PROGRESS: NO_PROGRESS_ON_FULL_SP_OR_RESTRICTED_RH_RECEIVER
+COGNITIVE_OPERATOR: MINIMAL_LEMMA
+ROUTE_SCORE: 3
+ACTUAL_P_AND_W: RETAINED
+PRIME_POWER_HISTORY_AND_ENDPOINTS: RETAINED
+HEAT_POSITIVE_FREQUENCY_CREDIT: RETAINED_NOT_SPENT_TWICE
+HEAT_RETURN: INHERITED_USED_AT_MOST_ONCE_IN_THE_SEPARATE_HEAT_RETURN
+FULL_SP_COMPLEMENT_AND_CROSS_TERMS: UNPAID
+Q4_RETURN: ONLY_B_ONCE_PER_CELL_NOT_THE_SPARSE_COMPLEMENT
+REPO_EDITS: NONE
+LEAN_RUN: NONE
+COMPARATOR_RUN: NONE
+ARB_INTERVAL_RUN: NONE
+DIAGNOSTICS: EXACT_FINITE_LOG_COEFFICIENT_CHECKS_ONLY
+INDEPENDENT_AUDIT_STATUS: NOT_RUN
+INDEPENDENT_AUDIT_TARGET: "Theorem Q10-E, (24), including the fixed-constant local pole integral (15), complete twisted Perron bound (20), and small-divisor return (9). Acceptance is only the fixed-3/8 endpoint envelope, not (1)."
+```
+
+## 1. Результат и его предел
+
+**Искомая оценка с одним конечным коэффициентом \(c\) в показателе \(c\epsilon\) не доказана.** Не доказан и её вариант на неограниченной исходной подпоследовательности для каждого фиксированного \(\epsilon\). **H\(_\mu\)** не принимается как поставщик: используется ровно установленное в Q10 различие между тождеством \(H_R=D-E_R\), оплаченной ошибкой \(E_R\) и недоказанной малостью \(D\).
+
+Получен более ограниченный, но полный по источнику результат. При сохранённой **ZF78** — сообщённом в пакете исключении дзета-нулей справа от \(7/8\) — для требуемого **целого оператора**, а не одного оплаченного сектора,
+\[
+ \lambda_{\max}(\mathcal T_{>R}|_{\operatorname{ran}P})
+ \le C\,m^{3/8}(\log m)^2\log(3\log m),
+ \qquad M=R=\lfloor m^\epsilon\rfloor,
+ \quad 0<\epsilon<1/32,
+\]
+на каждой достаточно поздней исходной клетке. Константу \(C\) можно выбрать независимо от \(\epsilon\); начало включает условие \(R\ge2\).
+
+Это **уточнение явно записанной в пакете** оболочки \(O_\eta(m^{3/8+\eta})\), не новый меньший степенной показатель и не новый zero-free strip. Действительно, для каждого фиксированного \(\eta>0\)
+\[
+ m^{-\eta}(\log m)^2\log(3\log m)\longrightarrow0.
+\]
+Зависимую от фиксированного отступа константу нельзя было просто подставить при \(\eta=1/\log m\). Ниже такая подстановка **не делается**: зависимость от расстояния до нулей выводится заново, с фиксированными классическими константами. Локальные резольвентные пики интегрируются, а не оплачиваются их максимумом.
+
+**Для главного потребителя прогресса в требуемом знаке нет.** Барьер \(3/8\) остаётся. Полученная оболочка не становится \(m^{c\epsilon}\), когда фиксированные \(\epsilon\) выбираются сколь угодно малыми. Неравенство для действительного оператора этим не опровергается.
+
+Выполненный арифметический расчёт состоит из точного попарного объединения настоящих делителей, прямого мероморфного продолжения их совместного ряда и оценки полного prime–pole выражения. В частности, найдено, **что сокращается точно**: общий логарифм в паре делителей и главный/двойной полюс при \(s=1\) после исходного \(P\). Но возможные полюса в дзета-нулях сохраняют коэффициент \(-\operatorname{mult}(\rho)\). Нового знака их совокупной фактической компрессии не получено.
+
+**Источник.** Прочитаны все 119530 байт Q10; SHA-256 совпал. Все девять помеченных вложенных payload проверены по их SHA-256; разделительный перевод строки не включался в payload. Протокол повторно получен через GitHub, с blob из заголовка. Базовый commit запроса здесь указан как предоставленный, не как результат нового build или проверки дерева. Активен только верхний заголовок Q10. Его требование и точные ограничения см. Q10, строки 6–26. fileciteturn54file0L6-L26
+
+## 2. Исходный объект, кванторы и настоящий вес
+
+**[FINITE_CELL | PAPER: определения источника]** Пусть
+\[
+ L=\log m,\quad \omega_j=2\pi j/L,\quad
+ Fe_j(t)=L^{-1/2}e^{i\omega_jt}\mathbf1_{[0,L]}(t).
+\]
+Производственный carrier содержит все \(-m\le j\le m\). \(M\le m\) — только тестовая полоса; частоты не меняются на \(2\pi j/\log M\). В ней \(P\) — ортогональный проектор на исходные три уравнения
+\[
+ b^*c=v_+^*c=v_-^*c=0,
+\]
+с последующим нулевым дополнением в полный carrier. Положим
+\[
+ Q_M(s)_{jk}=\begin{cases}
+ 2(1-s/L)\cos(\omega_js),&j=k,\\
+ [\sin(\omega_ks)-\sin(\omega_js)]/[\pi(j-k)],&j\ne k,
+ \end{cases}
+ \quad0\le s\le L.
+\]
+В частности, \(Q_M(0)=2I\), \(Q_M(L)=0\). Обе ветви и все межмодовые связи сохраняются.
+
+Обозначим
+\[
+ A(t)=t^{-1/2}P Q_M(\log t)P,\qquad
+ \mathcal A=\sum_{n\le m}\Lambda(n)A(n),
+\]
+\[
+ \mathcal T_{\le R}=\sum_{\substack{d\le R\\dk\le m}}
+                  \mu(d)\log k\,A(dk),\qquad
+ \mathcal T_{>R}=\sum_{\substack{d>R\\dk\le m}}
+                  \mu(d)\log k\,A(dk).
+\]
+Функция **фон Мангольдта** имеет значение \(\Lambda(p^a)=\log p\) для каждой степени простого, а **функция Мёбиуса** \(\mu\) сохраняет свой знак на каждом делителе. Термин \(k=1\) имеет точный вес ноль. При \(dk=m\) сохраняется точное значение \(Q_M(L)=0\).
+
+Требование Q10:
+\[
+ \boxed{
+ \exists c<\infty\ \forall\text{ достаточно малых фиксированных }\epsilon>0\
+ \exists K_\epsilon,m_0(\epsilon)\ \forall m\ge m_0(\epsilon):
+ \quad \mathcal T_{>\lfloor m^\epsilon\rfloor}
+ \preceq K_\epsilon m^{c\epsilon}P,
+ \quad M=R=\lfloor m^\epsilon\rfloor.
+ }\tag{1}
+\]
+Оно эквивалентно соответствующему верхнему trace-неравенству для **каждого** положительного \(W=PWP\). В частности, если вес получен из полного отрицательного спектра, используется его действительное сжатие \(PWP\), а не спектральная функция изолированной малой матрицы.
+
+Ниже \(W\succeq0\), \(PWP=W\), \(\tau=\operatorname{Tr}W\),
+\[
+ \rho_W(s)=\operatorname{Tr}(W P Q_M(s)P).
+\]
+При \(\tau=0\) вес равен нулю и все парные оценки тривиальны. Нормировка \(\tau=1\), когда она удобна, — обычная однородность формы, не замена состояния.
+
+Принимаются только следующие использованные входы пакета: буквальный kernel и его Hilbert-формула; Q10-L1 для scalar short-divisor error; точные непрерывные identity на \(P\); записанный ZF78 transfer как прежняя граница сравнения; Q8-D и heat-return лишь в явно указанном последующем возврате. Q09-NF не переаудируется. Его малоделительная матричная лемма **не предполагается**.
+
+## 3. Совместная арифметика до норм: точное объединение делителей
+
+### 3.1 Что даёт пара \(e,qe\), включая все степени \(q\)
+
+**[FINITE_CELL | PAPER]** Сначала собираем коэффициент каждого произведения:
+\[
+ \ell_R(n)=\sum_{\substack{d\mid n\\d>R}}\mu(d)\log(n/d),
+ \qquad
+ \mathcal T_{>R}=\sum_{n\le m}\ell_R(n)A(n).
+ \tag{2}
+\]
+Это конечная перестановка, не удаление разных произведений или их корреляций.
+
+Фиксируем простое \(q\) и пишем \(n=q^a r\), \((q,r)=1\). При \(a\ge1\) все ненулевые делители по Мёбиусу имеют вид \(e\) или \(qe\), где \(e\mid r\). Поскольку \(\mu(qe)=-\mu(e)\),
+\[
+\begin{aligned}
+ \ell_R(q^a r)
+ ={}&\sum_{\substack{e\mid r\\e>R}}\mu(e)
+                         \log(q^a r/e)\\
+ &-\sum_{\substack{e\mid r\\e>R/q}}\mu(e)
+                         \log(q^{a-1}r/e).
+\end{aligned}
+\]
+Объединение общей области \(e>R\) выполняется **со знаком** и даёт
+\[
+ \boxed{
+ \ell_R(q^a r)
+ =\log q\sum_{\substack{e\mid r\\e>R}}\mu(e)
+ -\sum_{\substack{e\mid r\\R/q<e\le R}}\mu(e)
+                         \log(q^{a-1}r/e),\qquad a\ge1.
+ }\tag{3}
+\]
+Общий \(\log(r/e)\) в первой области сокращён точно. Второй член — точная граница делительного отсечения, с **открытым левым и закрытым правым концом**. При \(a=0\) остаётся (2), без фиктивного \(q\)-делителя.
+
+Например, для настоящей степени \(q^a\) получаем
+\[
+ \ell_R(q^a)=
+ \begin{cases}
+ 0,&q\le R,\\
+ -(a-1)\log q,&q>R.
+ \end{cases}
+\]
+Это не удаляет большие простые: для \(a=1,q>R\) длинный коэффициент действительно ноль, а полный prime-вес находится в малоделительном секторе. Для двух различных простых \(q,r>R\), \(\ell_R(qr)=-\log(qr)\). Ни отрицательность такого коэффициента, ни положительность другого не задаёт знак \(Q_M(\log(qr))\).
+
+Для **настоящего** \(W\) полное парное выражение после (3) равно
+\[
+\begin{aligned}
+ \operatorname{Tr}(W\mathcal T_{>R})
+ ={}&\sum_{\substack{r\le m\\q\nmid r}}\ell_R(r)
+                          \frac{\rho_W(\log r)}{\sqrt r}\\
+ &+\sum_{\substack{a\ge1,\ q\nmid r\\q^a r\le m}}
+ \left[
+ \log q\sum_{\substack{e\mid r\\e>R}}\mu(e)
+ -\sum_{\substack{e\mid r\\R/q<e\le R}}
+                \mu(e)\log(q^{a-1}r/e)
+ \right]\frac{\rho_W(\log(q^a r))}{\sqrt{q^a r}}.
+\end{aligned}\tag{4}
+\]
+Это выполненное сокращение внутри исходных коэффициентов. Оно **не** доказывает (1): знак второй суммы и её взаимодействия с первой не контролируется. Никакое тождество вида \(P T_{\log(qr)}P=(P T_{\log q}P)(P T_{\log r}P)\) не применяется. Подобная замена потеряла бы промежуточное дополнение.
+
+### 3.2 Совместный Dirichlet-ряд и точное устранение его главных полюсов
+
+При \(\Re s>1\) обозначим
+\[
+ U_R(s)=\sum_{d\le R}\mu(d)d^{-s}.
+\]
+Абсолютно сходящиеся Euler/Dirichlet identity дают
+\[
+ \boxed{
+ F_{>R}(s):=\sum_{n\ge1}\ell_R(n)n^{-s}
+ =-\frac{\zeta'}{\zeta}(s)+\zeta'(s)U_R(s).
+ }\tag{5}
+\]
+Это именно совместные коэффициенты \(\mu(d)\log k\), не отдельные модули двух сумм. Обращение Мёбиуса \(\Lambda=\mu*\log\) эквивалентно \(\mathcal A=\mathcal T_{\le R}+\mathcal T_{>R}\). Классическая нормировка ряда \(-\zeta'/\zeta=\sum\Lambda(n)n^{-s}\) сверена с DLMF (27.4.5), (27.4.12)–(27.4.13); для (5) используется только область абсолютной сходимости, затем мероморфное продолжение. citeturn467544view1
+
+Пусть
+\[
+ a_R=\sum_{d\le R}\frac{\mu(d)}d,\qquad
+ b_R^{\log}=\sum_{d\le R}\frac{\mu(d)\log d}{d}.
+\]
+При \(s\to1\) точная главная часть равна
+\[
+ F_{>R}(s)=-\frac{a_R}{(s-1)^2}
+             +\frac{1+b_R^{\log}}{s-1}+O_R(1).
+ \tag{6}
+\]
+Для source-возврата введём исходную causal transfer-матрицу
+\[
+ \mathsf S_M(z)=\frac1L\sum_{\pm}v_\pm(z)v_\pm(z)^{\mathsf T},
+ \qquad v_\pm(z)_j=(z\pm i\omega_j)^{-1},
+ \qquad \mathsf S_P(z)=P\mathsf S_M(z)P.
+\]
+Здесь стоит **транспонирование**, не сопряжённое транспонирование. Условия \(P v_\pm(1/2)=0\) следуют из буквальных исходных \(v_+,v_-\). Их span устойчив относительно комплексного сопряжения, как и \(b\), поэтому \(P\) можно считать вещественной симметричной матрицей в исходных координатах. Прямое дифференцирование даёт
+\[
+ \mathsf S_P(1/2)=\mathsf S_P'(1/2)=0.
+ \tag{7}
+\]
+Следовательно, **оба полюса (6) устранимы** в
+\(m^z F_{>R}(1/2+z)\mathsf S_P(z)\). Конечное значение произведения в этой точке не обязано быть нулём и не удаляется.
+
+Это проверка конкретной совместной арифметики и конкретного \(P\). Она не означает, что \(\zeta'U_R\) исчезает при всех \(z\). У нетривиального дзета-нуля \(\rho\), напротив,
+\[
+ \operatorname*{Res}_{s=\rho}F_{>R}(s)
+             =-\operatorname{mult}(\rho),
+\]
+поскольку \(\zeta'U_R\) там голоморфна. Изменение \(R\) **не** уменьшает эту кратность. Это не утверждение о существовании off-critical нуля и не новое опровержение формы теоремы.
+
+## 4. Полный малоделительный возврат: не предполагаем Q9(27)–(31)
+
+**[COFINAL_FAMILY | PAPER, с принятым Q10-L1]** В этой секции необходимая цена выводится заново из **независимо принятого scalar error**, не из неаудированной матричной леммы Q9.
+
+Пусть
+\[
+ \rho_R(t)=\sum_{d\le\min(R,t)}\frac{\mu(d)}d\log(t/d).
+\]
+Принятый Q10-L1 устанавливает на каждом префиксе
+\[
+ E_R(\omega;y)
+ =\sum_{\substack{d\le R\\dk\le y}}
+       \frac{\mu(d)\log k}{(dk)^{1/2+i\omega}}
+ -\int_1^y\rho_R(t)t^{-1/2-i\omega}dt,
+ \qquad |E_R(\omega;y)|\le(10+8|\omega|)\sqrt R.
+\]
+Его верхний scalar endpoint включён. **H\(_\mu\)** в этой строке не предполагается. fileciteturn54file0L51-L69
+
+Для вещественной signed меры с этим примитивом буквальная Hilbert-формула даёт норму её матрицы не больше \(4\sup_{j,y}|E_R(\omega_j;y)|\). Полный вывод этой нормы дан в §6 ниже; он не требует положительности меры. Поэтому
+\[
+ \left\|\mathcal T_{\le R}-\int_1^m\rho_R(t)A(t)dt\right\|
+ \le(40+32\Omega_M)\sqrt R,
+ \qquad \Omega_M=2\pi M/L.
+ \tag{8}
+\]
+Теперь сохраняем знаки непрерывной части. Обозначим через \(H_P\) компрессию ядра \(e^{-|t-u|/2}\) на настоящий \(P\). Принятые full-window identity дают
+\[
+ \int_1^m A(t)dt=-H_P,\qquad
+ \int_1^m\log t\,A(t)dt=J_P,
+ \quad0\preceq H_P\preceq4P,\quad\|J_P\|\le8.
+\]
+Они применяются с фиксированным \(P\); два исходных экспоненциальных условия используются только в своей доказанной области. fileciteturn59file0L168-L194
+
+Конечная перестановка даёт
+\[
+\begin{aligned}
+ \int_1^m\rho_R(t)A(t)dt
+ ={}&a_RJ_P+b_R^{\log}H_P\\
+ &-\sum_{d\le R}\frac{\mu(d)}d
+                   \int_1^d\log(t/d)A(t)dt.
+\end{aligned}
+\]
+Последний нижний возврат сохранён полностью. Из \(\|A(t)\|\le2/\sqrt t\)
+\[
+ \frac1d\int_1^d\log(d/t)\|A(t)\|dt\le\frac8{\sqrt d}.
+\]
+Используя \(\sum_{d\le R}d^{-1/2}\le2\sqrt R\),
+\(|a_R|\le1+\log R\),
+\(|b_R^{\log}|\le\log R(1+\log R)\), получаем
+\[
+ \boxed{
+ \|\mathcal T_{\le R}\|\le
+ \mathfrak B_{m,M,R}:=
+ (56+32\Omega_M)\sqrt R+12(1+\log R)^2.
+ }\tag{9}
+\]
+Это несколько более крупная, самостоятельно выведенная цена, а **не заявка на улучшение** малоделительной оценки Q9. Она действует для \(m\ge4,1\le M\le m,2\le R<m\). При \(M=R=\lfloor m^\epsilon\rfloor\) её порядок \(O_\epsilon(m^{3\epsilon/2})\). Большие произведения \(dk\le m\) не удалены ни из (8), ни из непрерывного возврата.
+
+## 5. Оценка полного исходного prime–pole примитива с явной ценой границы
+
+### 5.1 Фиксированные классические входы и единственная zero-free зависимость
+
+**[ABSTRACT | PAPER: классические входы]** Используем фиксированные константы \(C_0,C_1\ge1\) со следующими свойствами. Для \(1/4\le\Re s\le2\), вне полюсов,
+\[
+ -\frac{\zeta'}{\zeta}(s)
+ =\frac1{s-1}
+ -\sum_{\rho:\ |s-\rho|\le1/8}\frac{\operatorname{mult}(\rho)}{s-\rho}
+ +\mathcal R(s),
+ \qquad |\mathcal R(s)|\le C_0\log(3+|\Im s|),
+ \tag{10}
+\]
+и
+\[
+ \sum_{\substack{\rho:\ \Re\rho\ge1/2\\|\Im\rho-u|\le2}}
+           \operatorname{mult}(\rho)
+ \le C_1\log(5+|u|),\qquad u\in\mathbb R.
+ \tag{11}
+\]
+Нормировка и fixed-parameter область (10) — Proposition 19 у Tao, *254A, Notes 2*, с его параметром \(\varepsilon=1/4,C=2\). (11) получается из Proposition 16 с его фиксированным \(\varepsilon=1/2\), покрытием отрезка конечным числом единичных окон и увеличением одной абсолютной константы. **Ни один из этих параметров не равен тестовому \(\epsilon\) и не зависит от \(m\).** Эти источники поставляют локальную факторизацию и счёт нулей, не новую prime-discrepancy оценку. citeturn695474view0turn695474view1
+
+**[COFINAL_FAMILY | CONDITIONAL: ZF78]** Единственное дополнительное арифметическое предположение в новом полном bound — предоставленная ZF78:
+\[
+ \Re\rho\le7/8\quad\text{для каждого нетривиального дзета-нуля}.
+ \tag{12}
+\]
+Её сообщённая zeta-only Comparator область не расширяется. Новый запуск Comparator, проверка внешнего доказательства или Hecke/Dirichlet/Siegel импорт не выполнялись. Новые формулы ниже поэтому маркируются **CONDITIONAL** с явно названной ZF78, а не как новое независимое доказательство этой предпосылки.
+
+Пусть \(L\ge16\) и
+\[
+ \Delta=L^{-1},\qquad a=3/8+\Delta,\qquad
+ c=1/2+\Delta,\qquad T=m^2.
+ \tag{13}
+\]
+Имеем \(3/8\le a\le7/16\), \(c-a=1/8\). **\(\Delta(m)\)** — только вспомогательный отступ контура. Физическая \(\epsilon\), полоса \(M=\lfloor m^\epsilon\rfloor\) и исходная последовательность не перенастраиваются.
+
+### 5.2 Интегрируем локальные полюса, не их максимум
+
+Обозначим \(Z(s)=-\zeta'(s)/\zeta(s)\) и
+\(C_*=1+C_0+C_1\). Для \(|\omega|\le2\pi m/L\le m\), \(|t|\le T\), расстояние по горизонтали от \(1/2+a+i(t+\omega)\) до любого нуля не меньше \(\Delta\). Из (10), (12)
+\[
+\begin{aligned}
+ |Z(1/2+a+i(t+\omega))|
+ \le{}&16+C_0\log(3+|t+\omega|)\\
+ &+\sum_{\substack{\rho:\ \Re\rho\ge1/2\\|\gamma-t-\omega|\le1}}
+ \frac{\operatorname{mult}(\rho)}
+      {\sqrt{\Delta^2+(t+\omega-\gamma)^2}}.
+\end{aligned}\tag{14}
+\]
+Число 16 оплачивает \(1/(s-1)\), поскольку \(1/2-a\ge1/16\). Локальные нули в (10) имеют \(\Re\rho\ge3/4\); расширение в (14) до \(\Re\rho\ge1/2\) корректно лишь для этой положительной мажоранты.
+
+Разобьём \([-T,T]\) на части единичных отрезков \(I_n=[n,n+1]\). На каждом
+\[
+ \frac1{|a+it|}\le\frac8{1+|n|}.
+\]
+Все нули, которые встречаются в (14) для \(t\in I_n\), попадают в одно окно радиуса 2 с центром \(n+\omega+1/2\). Их кратностная сумма не больше
+\(C_1\log(T+|\omega|+8)\). При этом **каждый** пик имеет интегральную цену
+\[
+ \int_{-1}^1\frac{du}{\sqrt{\Delta^2+u^2}}
+ =2\operatorname{arsinh}(1/\Delta)
+ \le2\log(3/\Delta).
+\]
+Это логарифм расстояния, не \(1/\Delta\). Подсчёт с кратностями не предполагает разделённости нулей.
+
+С учётом \(\sum_{I_n\cap[-T,T]\ne\varnothing}(1+|n|)^{-1}
+\le4\log(T+3)\) получаем явную верхнюю границу
+\[
+ \boxed{
+ \int_{-T}^T
+ \frac{|Z(1/2+a+i(t+\omega))|}{|a+it|}\,dt
+ \le512C_*\log(T+|\omega|+8)\log(T+3)\log(3/\Delta).
+ }\tag{15}
+\]
+Консервативная константа 512 получается так: интеграл \(|Z|\) на одном \(I_n\) не больше \(16C_*\log(T+|\omega|+8)\log(3/\Delta)\); затем множители 8 и 4. Ни сумма по высоте, ни предел при \(\Delta\downarrow0\) не заменены конечной проверкой.
+
+### 5.3 Twisted Perron с настоящими коэффициентами и возвратом каждого префикса
+
+Фиксируем **произвольный действительный** \(1\le y\le m\), и только для scalar inversion кладём
+\[
+ X=\lfloor y\rfloor+1/2.
+\]
+Между \(y\) и \(X\) нет целого атома. При \(y=m\) имеем \(X=m+1/2\), но это не меняет производственного cutoff: scalar continuous extension возвращается ниже, и ни одного нового целого коэффициента не добавляется.
+
+Для \(u>0,u\ne1\) элементарное inverse Perron identity и интегрирование каждого бесконечного хвоста по частям дают
+\[
+ \left|\mathbf1_{u>1}
+ -\frac1{2\pi i}\int_{c-iT}^{c+iT}\frac{u^z}{z}\,dz\right|
+ \le\frac{2}{\pi}\frac{u^c}{T|\log u|}.
+\]
+На одном хвосте boundary и интеграл производной \((c+it)^{-1}\) стоят по \(1/T\). Это доказывает нужную truncated-форму непосредственно; нельзя использовать зависящую от \(\omega\) сумму ошибок из грубого частичного суммирования \(\psi\).
+
+Применяем её к \(\Lambda(n)n^{-1/2-i\omega}\). Абсолютная сходимость на \(\Re(1/2+z)=1+1/L\) оправдывает перестановку. Получаем
+\[
+ \sum_{n\le y}\Lambda(n)n^{-1/2-i\omega}
+ =\frac1{2\pi i}\int_{c-iT}^{c+iT}
+       Z(1/2+z+i\omega)\frac{X^z}{z}\,dz+\mathcal E_{\rm Pe},
+ \qquad
+ |\mathcal E_{\rm Pe}|\le512\frac{\sqrt m L^2}{T}.
+ \tag{16}
+\]
+
+Полнота цены (16). В зоне \(X/2\le n\le2X\),
+\[
+ |\log(X/n)|\ge\frac{|n-X|}{2X},\qquad
+ \frac{X^c\log n}{n^{1+\Delta}|\log(X/n)|}
+ \le\frac{10\sqrt X\,L}{|n-X|}.
+\]
+Полуцелочисленность \(X\) даёт \(|n-X|\ge1/2\), а вся соответствующая гармоническая сумма не больше \(8L\). Вне зоны \(|\log(X/n)|\ge\log2\),
+\[
+ \sum_{n\ge2}\frac{\log n}{n^{1+\Delta}}
+ \le\int_1^\infty\frac{\log(2t)}{t^{1+\Delta}}dt
+ =\frac{\log2}{\Delta}+\frac1{\Delta^2}\le2L^2.
+\]
+Также \(X^c\le4\sqrt m\), \(\sqrt X\le\sqrt{3m/2}\). Эти неравенства с запасом дают 512 в (16). Они учитывают **все** \(n\) в Dirichlet inversion, включая будущие \(n>m\) в оценке truncation error; их полный causal вклад в исходную конечную сумму равен нулю.
+
+Теперь двигаем прямоугольник с \(\Re z=c\) на \(\Re z=a\). Нетривиальных нулей между сторонами нет по (12); transfer pole \(z=0\) остаётся слева. Единственный пересечённый полюс —
+\[
+ z_0=1/2-i\omega,
+ \qquad \operatorname*{Res}_{z=z_0}
+        Z(1/2+z+i\omega)X^z/z=X^{z_0}/z_0.
+\]
+Он точно сокращает растущую непрерывную часть:
+\[
+ \int_1^X t^{-1/2-i\omega}dt=(X^{z_0}-1)/z_0.
+\]
+Сначала выполнена эта signed отмена, и только потом берутся нормы.
+
+Пусть \(I_a(X,\omega)\) — интеграл по левой стороне с направлением вверх, а \(\mathcal H(X,\omega)\) — сумма верхней и нижней сторон с положительной ориентацией прямоугольника. Тогда точно, с ошибкой из (16),
+\[
+ D(\omega;X)
+ =I_a(X,\omega)-\mathcal H(X,\omega)+\frac1{z_0}
+                                      +\mathcal E_{\rm Pe}.
+ \tag{17}
+\]
+Знак \(-\mathcal H\) фиксируется равенством «правая минус левая плюс горизонтали = residue». Обе горизонтали сохранены.
+
+По (15), \(X^a\le4m^{3/8}\),
+\(\log(T+|\omega|+8),\log(T+3)\le3L\), имеем
+\[
+ |I_a(X,\omega)|
+ \le18432C_*\,m^{3/8}L^2\log(3L).
+ \tag{18}
+\]
+Для горизонталей точечная версия (10) использует расстояние \(\Delta\), то есть \(\Delta^{-1}=L\). Их длина суммарно \(1/4\), \(|z|\ge T\), а \(|\pm T+\omega|\ge T/2\). Следовательно,
+\[
+ |\mathcal H(X,\omega)|
+ \le64C_*\frac{\sqrt m L^2}{T}.
+ \tag{19}
+\]
+Логарифмическая цена \(L\) здесь безвредна из-за \(T=m^2\); она не скрыта в постоянной.
+
+Вернём **обе** исходные непрерывные части:
+\[
+ \Phi(\omega;y)=\sum_{n\le y}\frac{\Lambda(n)}{n^{1/2+i\omega}}
+ -\frac{y^{1/2-i\omega}-1}{1/2-i\omega}
+ +\frac{1-y^{-1/2-i\omega}}{1/2+i\omega}.
+\]
+Добавленный затухающий интеграл имеет модуль не больше 2. Перенос continuous cutoff с \(X\) обратно на \(y\) имеет абсолютную цену не больше 2. Также \(|1/z_0|\le2\). С (16)–(19) это доказывает:
+\[
+ \boxed{
+ \sup_{\substack{1\le y\le m\\|\omega|\le2\pi m/L}}
+          |\Phi(\omega;y)|
+ \le B_m:=C_{\rm cl}\,m^{3/8}L^2\log(3L),
+ \qquad C_{\rm cl}=2^{20}(1+C_0+C_1),\quad L\ge16.
+ }\tag{20}
+\]
+**[COFINAL_FAMILY | CONDITIONAL: ZF78]** Это граница для **полного** исходного примитива. В ней нет неоплаченного арифметического остатка; все константы фиксированы. Она существенно слабее H\(_\mu\), требующей показатели, стремящиеся к нулю вместе с тестовой \(\epsilon\). Никакого такого вывода из (20) не следует.
+
+## 6. Возврат к действительной матрице, включая все off-diagonals
+
+**[FINITE_CELL | PAPER: буквальная Hilbert-формула]** Для произвольной вещественной finite signed source measure \(d\nu\) на \([0,L]\) положим
+\[
+ \Phi_\nu(\omega;y)=\int_{[0,\log y]}e^{-i\omega s}d\nu(s),
+\]
+\[
+ h_j=\Im\Phi_\nu(\omega_j;m),\qquad
+ d_j=\frac2L\Re\int_0^L\Phi_\nu(\omega_j;e^u)du.
+\]
+Непосредственное finite interchange даёт diagonal factor \(2(1-s/L)\). Для off-diagonal \(h_j=-\int\sin(\omega_js)d\nu(s)\), поэтому
+\[
+ \mathsf C_\nu=
+ \operatorname{diag}(d_j)
+ +\pi^{-1}[\operatorname{diag}(h_j),\mathsf H_M],
+ \qquad (\mathsf H_M)_{jk}=\frac1{j-k}\ (j\ne k),
+ \quad (\mathsf H_M)_{jj}=0.
+ \tag{21}
+\]
+Сохраняется исходная \(\|\mathsf H_M\|\le\pi\). Следовательно,
+\[
+ \|\mathsf C_\nu\|
+ \le4\sup_{|j|\le M,\,1\le y\le m}|\Phi_\nu(\omega_j;y)|.
+\]
+Нет множителя \(2M+1\), нет раздельного изменения внедиагональной ветви. Именно эта общая формула использована в (8), а не заново предполагаемая scalar H\(_\mu\).
+
+Для нашей полной \(\Phi\) мера равна
+\[
+ d\nu(s)=\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\delta_{\log n}(ds)
+                       -e^{s/2}ds+e^{-s/2}ds,
+\]
+ограниченной \([0,L]\). Пусть её матрица — \(\mathsf C_m\). Из (20), (21)
+\[
+ \|\mathsf C_m\|\le4B_m
+\]
+**на всех исходных модах \(|j|\le m\)**. Principal-band compression и \(P\) не увеличивают норму.
+
+Принятый continuous rank-two return на \(P\) даёт точно
+\[
+ \boxed{\mathcal A=P\mathsf C_mP-2H_P.}\tag{22}
+\]
+В самом деле, \(\mathsf C_m=A_{\rm prime}-G+H\), а \(PGP=-PHP\). Число 2 в (22) сохраняет обе затухающие копии после совместного возврата. Существующий положительный \(H_P\) не зануляется.
+
+Отсюда для всякого **фактического** \(W=PWP\succeq0\)
+\[
+ \boxed{
+ \operatorname{Tr}(W\mathcal T_{>R})
+ \le (4B_m+\mathfrak B_{m,M,R})\tau
+                     -2\operatorname{Tr}(WH_P).
+ }\tag{23}
+\]
+Не требуется коммутирования \(W\) ни с \(\mathsf C_m\), ни с отдельными сдвигами. Используются только корректные \(|\operatorname{Tr}(WX)|\le\|X\|\operatorname{Tr}W\) для Hermitian \(X\) и положительность \(H_P\).
+
+### Теорема Q10-E: полный one-sided результат этой попытки
+
+**[COFINAL_FAMILY | CONDITIONAL: ZF78 и фиксированные классические (10)–(11)]** Для всех целых \(m\) с \(\log m\ge16\), \(1\le M\le m\), \(2\le R<m\), при исходном \(P\),
+\[
+ \boxed{
+ \mathcal T_{>R}\preceq
+ \left[
+ 4C_{\rm cl}m^{3/8}(\log m)^2\log(3\log m)
+ +(56+32\Omega_M)\sqrt R+12(1+\log R)^2
+ \right]P-2H_P.
+ }\tag{24}
+\]
+Все аргументы \(dk\), все собственные степени простых и обе исходные ветви \(Q_M\) учтены. Это не оценка отдельного атомного/частотного сектора.
+
+При \(M=R=\lfloor m^\epsilon\rfloor\), \(0<\epsilon<1/32\),
+\[
+ \mathfrak B_{m,M,R}
+ \le 300\,m^{3/64}L^2\qquad(L\ge16,R\ge2).
+\]
+Например, \(56\sqrt R\le56m^{1/64}\),
+\(32\Omega_M\sqrt R\le64\pi m^{3/64}/L\),
+\(12(1+\log R)^2\le12(1+L/32)^2\); их сумма укладывается в 300 с указанным запасом. Поэтому один абсолютный \(C\), например \(C=4C_{\rm cl}+300\), даёт
+\[
+ \boxed{
+ \lambda_{\max}(\mathcal T_{>R}|_{\operatorname{ran}P})
+ \le C\,m^{3/8}L^2\log(3L).
+ }\tag{25}
+\]
+При нулевом \(P\) матричная формулировка (24) остаётся тривиально верной; спектральная формулировка понимается только на ненулевом пространстве. На нужном позднем хвосте \(M\ge2\) оно ненулевое.
+
+### Сравнение с унаследованной оценкой на том же объекте
+
+Пакет даёт из ZF78 \(\lambda_{\min}(K_m)\ge-c_A-O_\eta(m^{3/8+\eta})\), а на **том же** \(P\)
+\(PK_mP=P(A_{\rm arch}-c_AI)P-\mathcal A\),
+\(\|A_{\rm arch}-c_AI\|\le50L+8\).
+Вместе с уже явно выведенной (9) это возвращает прежнюю границу
+\[
+ \lambda_{\max}(\mathcal T_{>R})
+ \le C_\eta m^{3/8+\eta}+50L+8+c_A+\mathfrak B_{m,M,R}
+ =O_{\eta,\epsilon}(m^{3/8+\eta}).
+\]
+Именно с ней сравнивается (25), не с худшей \(\sqrt m\)-оценкой и не с другим carrier. Прежний exponent-transfer и его ограничения даны в исходном пакете фазы. fileciteturn54file9L187-L207
+
+Уточнение строгое относительно этой записанной оболочки: \(L^2\log(3L)=o(m^\eta)\) при каждом фиксированном \(\eta>0\). Но **степенной барьер не сдвинут**. Не заявляется историческая новизна стандартного fixed-strip принципа; новый проверяемый вывод здесь — его равномерный endpoint-return к конкретной матрице (24), без скрытой \(m\)-зависимости констант.
+
+Также непосредственно на полном carrier, а не посредством restricted-возврата,
+\[
+ \boxed{K_m\succeq-(c_A+4B_m)I.}\tag{26}
+\]
+Для (26) используются исходные \(K_m=\mathsf B_m-\mathsf C_m\),
+\(\mathsf B_m=A_{\rm arch}-c_AI+2H\succeq-c_AI\) и полная норма из (21). Это та же фиксированно-степенная оболочка с уточнённой логарифмической ценой. **Она не есть полный SP.**
+
+## 7. Где остаётся неоплаченный знак, а не скрытая H_mu
+
+### 7.1 Точный совместный one-sided интеграл
+
+Для \(\Re z>1/2\) исходный causal inverse-transform даёт
+\[
+ \mathcal T_{>R}
+ =\frac1{2\pi i}\int_{\Re z=c}
+                m^zF_{>R}(1/2+z)\mathsf S_P(z)\,dz.
+ \tag{27}
+\]
+Его нормировка проверяется непосредственно: inverse Laplace transform
+\((z\pm i\omega_j)^{-1}(z\pm i\omega_k)^{-1}\)
+есть свёртка двух causal экспонент; в \(L-\log n\), после суммы знаков и деления на \(L\), она равна **буквальному** \(Q_M(\log n)_{jk}\). При \(n=m\) обе ветви дают ноль, при \(n>m\) causal support даёт ноль. На правой линии перестановка с Dirichlet-рядом (5) допустима, а transfer убывает как \(|\Im z|^{-2}\).
+
+Для фактического веса положим
+\[
+ \mathfrak q_W(z)=\operatorname{Tr}(W\mathsf S_P(z))
+ =\frac1L\sum_\pm v_\pm(z)^{\mathsf T}Wv_\pm(z).
+\]
+Тогда (27) буквально возвращает \(\operatorname{Tr}(W\mathcal T_{>R})\). В нём сохранены обе компенсирующие части (5). **Analytic squares** \(v^{\mathsf T}Wv\) не становятся неотрицательными \(v^*Wv\). Подмена транспонирования убрала бы искомый знак искусственно.
+
+Обозначим конечный интеграл по вертикальной стороне через
+\[
+ I_u^{(T)}(W)=\frac1{2\pi i}\int_{u-iT}^{u+iT}
+                  m^zF_{>R}(1/2+z)\mathfrak q_W(z)\,dz.
+\]
+Для \(0<u<a\) и \(T>0\), если на всей границе прямоугольника \([u,a]+i[-T,T]\) нет полюсов, точный residue theorem с обеими горизонталями \(\mathcal H_{u,a}^{(T)}(W)\) даёт
+\[
+ \boxed{
+ I_a^{(T)}(W)=I_u^{(T)}(W)
+ -\sum_{\substack{\rho:\ u<\Re\rho-1/2<a\\|\Im\rho|<T}}
+   \operatorname{mult}(\rho)\,m^{\rho-1/2}
+                         \mathfrak q_W(\rho-1/2)
+ -\mathcal H_{u,a}^{(T)}(W).
+ }\tag{28}
+\]
+Речь идёт о **конечном** тождестве; ни бесконечный хвост, ни горизонтали в нём не зануляются. Связь с исходной правой стороной (27) также требует её двух горизонтальных возвратов и хвостов. Эта диагностическая формула не используется как уже оплаченный перенос на новую левую прямую; доказанная (24) получена полностью отдельной цепочкой (16)–(23). Обе стороны рассматриваются вместе с вещественной частью, когда оценивается реальная quadratic form. Полюс \(s=1\) не вносит слагаемого благодаря (6)–(7). Возможные остальные residues имеют ровно коэффициент из §3.2.
+
+При попытке поставить \(u=\kappa\epsilon\) с фиксированным пробным \(\kappa>0\) вместо \(a\simeq3/8\) пакет **не** даёт ни права удалить эту residue-сумму, ни малого one-sided bound для её совместной комбинации с левой стороной. Положительность \(W\) не даёт нужного знака \(\mathfrak q_W\). Известная ZF78 не запрещает нули между этими линиями; здесь не утверждается, что такие нули существуют.
+
+Это конкретное место остановки аналитической попытки. В (15) их локальные вклады оплачены модулями уже **после** точного prime–pole сокращения. Такая оплата достигает (24), но не использует дополнительное source-dependent one-sided взаимодействие, необходимое для (1).
+
+### 7.2 Первый новый арифметический факт, которого нет
+
+После выполненной finite pairing (3) нужен **коллективный односторонний контроль** всей правой стороны (4) с настоящей \(\rho_W\), равномерно для \(W=PWP\succeq0\), с платой \(K_\epsilon m^{c\epsilon}\operatorname{Tr}W\). Это утверждение не следует из границ отдельно для коэффициентов или \(|\rho_W|\). В комплексной форме тот же недостающий знак проявляется в (28): требуется оценивать signed aggregate с фактическими transfer evaluations, а не исключать его по названию метода.
+
+**Это остаётся исходным непоставленным арифметическим фактом. Новое имя поставщика ему не присваивается.** В частности, здесь не вводится ещё одна абсолютная all-prefix гипотеза вместо него. Установленная в приложении RH-эквивалентность H\(_\mu\) сохраняется полностью; она не является ни используемой леммой о малости, ни невозможностью получить новый результат. fileciteturn54file0L71-L90
+
+Сама полученная оболочка недостаточна: при фиксированных \(c\) и \(\epsilon\) с \(c\epsilon<3/8\)
+\[
+ \frac{m^{3/8}L^2\log(3L)}{m^{c\epsilon}}\longrightarrow\infty.
+\]
+Это сравнение **двух верхних цен**, не lower bound для настоящего \(\mathcal T_{>R}\). Поэтому никакой \(KILL\) для (1), C5 или RH не выносится.
+
+## 8. Все возвраты: heat-credit, restricted receiver и полный SP
+
+### 8.1 Положительная frequency-часть Q9 не удалена
+
+Пусть \(\mathcal D=\mathcal A+C_{\rm comp}\), \(\|\mathcal D\|\le\mathcal F_{m,M,R}\) — принятый Q8-D. Пусть \(\Delta_h=C_h-C_{\rm comp}\), \(\|\Delta_h\|\le r_m\) — принятый полный heat-return. Тогда точно
+\[
+ \boxed{
+ \mathcal T_{>R}
+ =\mathcal C_h^{\ominus}-\mathcal C_h^{\oplus}
+       +\mathcal D-\mathcal T_{\le R}+\Delta_h.
+ }\tag{29}
+\]
+Здесь \(\mathcal C_h^{\ominus}\) — компрессия отрицательной части **полного символа**, не отрицательная спектральная часть \(C_h\). Большой отрицательный член \(-\mathcal C_h^{\oplus}\) сохраняется. Полученная (24) доказана другим, совместным source-расчётом и не требует отдельно считать \(\mathcal C_h^{\ominus}\) малой.
+
+Для отдельного heat-return выгоднее использовать прямую (22), не платить малые делители второй раз:
+\[
+ \boxed{
+ C_h\succeq-[4B_m+\mathcal F_{m,M,R}+r_m]P+2H_P.
+ }\tag{30}
+\]
+В (30) \(r_m=2m^{-1/8}L(1+L)^8\) оплачивается один раз; все Gaussian tails и smoothed atom \(n=m\) остаются в принятом \(\Delta_h\). Малоделительная цена \(\mathfrak B\) для (30) вообще не требуется: это следствие bound для полного \(\mathcal A\), а не цепочка с двумя противоположными short-возвратами. На диагональной семье \(\mathcal F=O_\epsilon(m^{3\epsilon})\), но доминирует прежний барьер \(m^{3/8}\) с логарифмами.
+
+### 8.2 Restricted-результат не получен даже на подпоследовательности
+
+Если **новая** (1) была бы доказана с одним \(c\), то (9) дала бы
+\[
+ \mathcal A\preceq
+ [K_\epsilon m^{c\epsilon}+O_\epsilon(m^{3\epsilon/2})]P.
+\]
+С \(\|A_{\rm arch}-c_AI\|\le50L+8\) это дало бы restricted floor с показателем \(\max(c,3/2)\epsilon\). Для фиксированного гипотетического нуля с \(\delta=\Re\rho-1/2>0\) можно было бы выбрать **один раз**
+\[
+ 0<\epsilon<\min\{1/32,\ \delta/[2\max(c,3/2,1)]\}.
+\]
+Принятый sparse-band witness на **той же** фиксированной полосе имеет значение
+\(-c_{\rho,\epsilon}m^\delta L^{-2\delta}\) на каждой поздней исходной клетке. Поэтому возникло бы условное противоречие. Оно действовало бы и на отдельно доказанной неограниченной исходной подпоследовательности. Сам witness и его область — принятый вход, не новый результат этой работы. fileciteturn59file0L38-L45 fileciteturn59file0L91-L100
+
+**В (25) такого показателя нет.** Поэтому не поставлена ни every-cell restricted-оценка требуемого масштаба, ни её subsequence-вариант. Никакое условное противоречие из предыдущего абзаца не активировано.
+
+### 8.3 Полный SP и удалённое дополнение
+
+Для будущего переноса именно малого restricted bound остаются исходные
+\[
+ S=\Pi_mK_m\Pi_m,\qquad Q_\perp=\Pi_m-P,\qquad
+ S=\begin{pmatrix}A&B\\B^*&D\end{pmatrix}
+\]
+на \(\operatorname{ran}P\oplus\operatorname{ran}Q_\perp\). Даже при \(A\succeq-a_mP\), для \(t_m>a_m\) требовалось бы ещё
+\[
+ D+t_mQ_\perp-B^*(A+t_mP)^{-1}B\succeq0
+\]
+с \(t_m=O_\eta(m^\eta)\) для каждого \(\eta>0\). Все cross terms \(B\) и весь высокий carrier остаются. Такой малый возврат не доказан.
+
+Q4 возвращает только направление \(b_m\), один раз на клетке, с ценой \(300L^{7/2}\). Она не оплачивает \(Q_\perp\). Полная фиксированно-степенная (26) доказана напрямую на всех модах и не использует эту неоплаченную restricted-цепочку. **Ни (26), ни (30) не замыкают SP.** Старые полные moment weights, промежуточные проекции и диагональный companion не объявляются исчезнувшими; нового moment recurrence здесь нет.
+
+## 9. Единственная цель независимой проверки
+
+**Аудировать теорему Q10-E, (24), как endpoint-уточнение полной односторонней оболочки.** Это один новый количественный результат на всём указанном объекте, а не задание повторить Q09-NF или принять незамкнутую signed гипотезу.
+
+Единая проверка должна включать: fixed-parameter map классических (10)–(11); вывод \(\log(3/\Delta)\), а не скрытой \(\Delta\)-зависимой константы, в (15); полную half-integer и горизонтальную цену (16)–(19); точное prime–pole сокращение и оба continuous returns в (20); все diagonal/off-diagonal коэффициенты (21); independently accepted Q10-L1 как вход и заново выведенную (9); знак и коэффициент 2 в (22); trace-return для фактического \(W\) и кванторы (24).
+
+**Допустимая приёмка:** (24), следствие (25) и строгое сравнение с записанной \(O_\eta(m^{3/8+\eta})\)-оболочкой на той же диагональной семье, с именованной ZF78. **Недопустимая приёмка:** поставка \(c\) в (1), smaller fixed power, H\(_\mu\), restricted RH-противоречие, полный SP или RH. Не предполагается независимая приёмка всего старого Q9.
+
+Константы \(C_0,C_1\) — фиксированные классические PAPER-константы, не численно сертифицированные здесь значения. Проверка вправе заменить консервативные 512, 18432 или \(2^{20}\) более крупной явно выведенной абсолютной константой; она не вправе прятать зависимость от \(m,\epsilon\) или расстояния до нулей в этой константе. При дефекте нужен первый неверный шаг и исправленная область, а не автоматический отрицательный вердикт о (1).
+
+## 10. Самая сильная атака и два допустимых следующих представления
+
+**Главное возражение:** «Ты уточнил fixed-strip bound, но не нашёл новой арифметической компенсации, способной понизить барьер \(3/8\)». **Верно.** Ни параметр-пропорциональная цель, ни restricted supplier не закрыты. Уточнение (24) заявлено только потому, что это полная и действительно более сильная по сравнению с явно записанной в пакете оболочка. Оно не выдаётся за движение к новому zero-free strip.
+
+В этом вычислении проверены три структурных перехода: finite prime-factor pairing (3); Euler/meromorphic transfer с реальным устранением двух главных полюсов (5)–(7); dimension-free исходный Hilbert-return (21). Ни один не создаёт отсутствующий знак остатка автоматически.
+
+**Кандидат A — совместные prime-factor блоки с неподвижным \(m,M,P\).** Использовать (3) для всех степеней выбранного простого, затем суммировать boundary-divisor члены и область \(q\nmid n\) вместе, до \(|\mu|\) и до норм. Изменение вспомогательного уровня \(R\) допустимо только при фиксированном физическом carrier, с явным возвращением на \(R=\lfloor m^\epsilon\rfloor\). Возможный успех должен дать настоящий односторонний gain для (4), не ещё одно тождество. **Диагностическая сила / цена:** высокая против потери prime-power prehistory и границ делителей; низкая цена finite coefficient check, высокая цена нужного совместного арифметического неравенства. Пример \(n=12,R=3,q=2\) ниже немедленно обнаруживает ошибочное удаление правой границы.
+
+**Кандидат B — finite-band дуальный residue-расчёт с signed evaluations.** Использовать (28) не как scalar absolute criterion, а с действительным \(\mathfrak q_W\), сохраняя каждый residue и обе горизонтали. Потребовался бы реальный знак совокупной компенсации, не предположение об отсутствии пересекаемых нулей и не замена analytic square на modulus square. **Диагностическая сила / цена:** высокая против скрытого импорта RH через contour shift; умеренная цена finite algebra, высокая цена нового знака. Ошибка обнаруживается проверкой коэффициента \(-\operatorname{mult}(\rho)\) и исходного \(P\), а не численным занулением residue.
+
+Эти два варианта — не новые поставщики, не два задания на аудит и не разрешение на ещё один широкий скан. Из них ближе к неизменённому арифметическому потребителю **A**; имеющийся результат не гарантирует его успеха. Финальное действие этой итерации — только аудит (24), без создания следующего запроса или новой фазы.
+
+## 11. Дискриминаторы, предсказания и численная граница
+
+**Предсказания до проверок.** В рабочем сообщении была зарегистрирована попытка снять фиксированную \(\eta\)-потерю на границе \(3/8\), без прогноза успеха \(m^{c\epsilon}\). Её итог — (20), (24), с явно выведенными константами. До конечного coefficient check было зафиксировано сокращение общей части делителей \(e,qe\) и сохранение полосы \(R/q<e\le R\). Это проверено точным расчётом; спектрального прогноза на выбранный контрольный вектор не было.
+
+Выполнены **1140 точных конечных проверок** коэффициентов (2)–(3): \(R\in\{2,3,5,8\}\), \(q\in\{2,3,5\}\), \(2\le n\le96\). Логарифмы представлены формальными целочисленными коэффициентами при логарифмах простых. Все совпали. Преднамеренное удаление правой границы \(e=R\) при \((n,R,q)=(12,3,2)\) меняет \(\ell_3(12)=\log2\) на ноль. Это тест детектора, не утверждение об отрицательном спектре и не cofinal certificate.
+
+Второй точный контроль: без исходного \(P\), \((\mathsf S_M(1/2))_{00}=8/L\). При \(R=2\), \(a_R=1/2\), коэффициент двойного полюса в нулевой raw-coordinate равен \(-4\sqrt m/L\), не нулю. Настоящая (7) устраняет его. Этот контроль отвергает только испорченную операцию пропуска \(P\) в доказательстве, не отдельную новую теоремную гипотезу.
+
+**DISCRIMINATOR для (1).** При конкретно предложенных \(c,K_\epsilon\) проверять
+\[
+ K_\epsilon m^{c\epsilon}-
+           \lambda_{\max}(\mathcal T_{>R}|_{\operatorname{ran}P})
+\]
+по полному исходному signed coefficient operator, с \(P\) и всеми степенями простых. Неотрицательная нижняя оболочка принимает только данную конечную границу; строго отрицательная верхняя отвергает только её, не существование другого старта. На этом шаге интервального спектрального сертификата нет.
+
+Если фактический отрицательный moment weight численно согласован с нулём, дополнительный различающий функционал — \(\operatorname{Tr}(\Pi_mK_m\Pi_m)_-^p\) с сертифицированным функциональным исчислением; округление к нулю не заменяет такой проверки. Нулевое значение не установлено и не используется.
+
+Приёмка старых Q9-NF и L1–L2 сохраняет ровно предоставленную область. Новая независимая проверка (24) здесь **не запускалась**. Ни finite log checks, ни математическое существование \(C_0,C_1\) не называются Lean/Arb-сертификатом.
+
+## 12. Ledger и закрытие вопроса 10
+
+| Утверждение | Scope | Verifier | Диспозиция |
+|---|---|---|---|
+| Q9-NF и отдельная negative-frequency refutation | COFINAL_FAMILY | PAPER | Принятые входы; не повторены как новый результат |
+| Q10-L1–L2 и RH-эквивалентность H_mu | COFINAL_FAMILY | PAPER | Принятые identity/criterion; H_mu не предполагается |
+| Prime-factor pairing (3)–(4) | FINITE_CELL | PAPER | Точное сокращение коэффициентов; нового малого знака нет |
+| Совместный ряд и устранение главных полюсов (5)–(7) | FINITE_CELL | PAPER | Source-return, не arithmetic sign supplier |
+| Малоделительный возврат (9) | COFINAL_FAMILY | PAPER | Выведен из принятого L1; не заявлен как улучшение easy-sector цены |
+| Fixed-constant local pole integral (15) | COFINAL_FAMILY | CONDITIONAL | ZF78; цена приближения к границе выведена явно |
+| Полный twisted primitive (20) | COFINAL_FAMILY | CONDITIONAL | Полный bound с фиксированным показателем 3/8 и явными логарифмами |
+| Теорема Q10-E (24), whole-object следствие (25) | COFINAL_FAMILY | CONDITIONAL | Новый endpoint-refinement; ожидает один независимый аудит |
+| Полная K_m оболочка (26) | COFINAL_FAMILY | CONDITIONAL | Прямой full-carrier return; не SP |
+| Целевой bound (1) | COFINAL_FAMILY | CONDITIONAL | OPEN obligation; абсолютный c не поставлен |
+| Restricted parameter-proportional receiver | COFINAL_FAMILY | CONDITIONAL | Условный механизм; арифметическая предпосылка не получена |
+| Full-SP complement, cross terms, SP и RH | COFINAL_FAMILY | CONDITIONAL | OPEN; новое закрытие не заявлено |
+
+**Что стало точнее:** на том же полном source объекте фиксированная \(\eta\)-потеря заменена выведенной logarithmic boundary-price; возвращены все малые делители без предположения неаудированной леммы Q9. **Что не улучшено:** меньший степенной барьер, \(c\epsilon\)-цель, полный moment growth и полный SP.
+
+**Что убито в Q10:** ничего. Никакой искусственный theorem-shape kill не добавлен ради статуса. Неудача получить signed gain классифицируется как **NO_DERIVATION / RESEARCH_DEBT**, не как математическая невозможность.
+
+**Что не повторять:** считать (3), (5), smoothing или H_mu-equivalence новым поставщиком; удалять \(-\mathcal C_h^{\oplus}\); подставлять convenient \(Pe_0\) вместо actual \(W\); переносить \(\eta\)-зависимую константу на \(\eta(m)\) без доказательства; называть фиксированный \(3/8\) показателем, пропорциональным \(\epsilon\).
+
+```yaml
+DEPENDENCY_EPISTEMICS:
+  DOWNSTREAM_CONSUMER: SUBPOLYNOMIAL_NEGATIVE_BOTTOM_SP_TO_RH
+  ACTUAL_CONSUMER_REQUIREMENT: Every_eta_eventual_lower_floor_on_the_original_full_K_m
+  ORIGINAL_REQUESTED_OBJECT: Actual_long_divisor_one_sided_bound_with_one_absolute_c_times_fixed_epsilon
+  ORIGINAL_OBJECT_IS: UNKNOWN
+  NECESSITY_NOTE: "The selected sparse-band long-divisor bound is not asserted necessary for every possible full-SP proof. The stronger all-prefix scalar H_mu is RH-equivalent and remains unproved."
+  KNOWN_WEAKER_INTERFACES:
+    - "The exact actual-W one-sided pairing can suffice without an absolute scalar H_mu estimate."
+    - "A bound for the full original prime matrix avoids any need to make a separate composite frequency part small."
+    - "An explicitly proved unbounded subsequence for each fixed epsilon would suffice only for the distinct conditional restricted receiver; none is obtained here."
+    - "A full-carrier negative-moment estimate or direct every-eta floor bypasses the sparse-band route; neither is supplied."
+  FAILURE_TYPE: NO_DERIVATION
+  EPISTEMIC_STATUS: RESEARCH_DEBT
+  REOPEN_TRIGGER: "A new source-dependent one-sided cancellation in (4) or the signed aggregate in (28), strong enough for (1), with every return retained."
+  NOVELTY_AXIS: "Explicit fixed-constant integration near the supplied 7/8 boundary yields a complete no-fixed-eta matrix envelope; not a new arithmetic cancellation below that boundary."
+  MATHEMATICAL_IMPOSSIBILITY_EVIDENCE: NONE
+PREDICTION_FATES:
+  FIXED_ETA_LOSS_CAN_BE_REPLACED_BY_EXPLICIT_LOG_PRICE: CONFIRMED_BY_PAPER_15_TO_25_PENDING_AUDIT
+  COMMON_FACTOR_LOG_CANCELS_WITH_EXACT_CUTOFF_BOUNDARY: CONFIRMED_BY_3_AND_EXACT_COEFFICIENT_DIAGNOSTICS
+  OMITTED_UPPER_DIVISOR_ENDPOINT_IS_DETECTED: CONFIRMED_AT_N12_R3_Q2
+  FULL_PARAMETER_PROPORTIONAL_SUCCESS: NOT_PREDICTED_NOT_OBTAINED
+  Q09_NF_AND_OWN_L1_L2: REPORTED_INDEPENDENT_PASS_IN_THEIR_EXACT_SCOPE_NOT_RERUN
+MEMORY_ENTRY:
+  iteration: FULL_CCM_MOMENT_Q10
+  target: ONE_SIDED_ACTUAL_JOINT_LONG_DIVISOR_PAIRING
+  status: OPEN
+  cognitive_operator_used: MINIMAL_LEMMA
+  consumer_progress: NO_PROGRESS
+  complete_bound_obtained: "O(m^(3/8)*(log m)^2*log(3 log m)) on the actual diagonal family, conditional on reported ZF78."
+  failed_strategy: "Trying to convert fixed-strip local-pole control into a parameter-proportional signed estimate without an additional actual-source cancellation."
+  smallest_unpaid_input: "The original one-sided paired coefficient sum (4); contour version retains all zero residues in (28)."
+  invariant_learned: "Exact cancellation of main poles and divisor-pair bulk terms does not attenuate the remaining zeta-zero multiplicity or supply a sign for actual analytic-square evaluations."
+  forbidden_future_move: "Promote a fixed-boundary logarithmic refinement to a smaller polynomial exponent, SP, H_mu, or RH."
+  next_decisive_test: "One bounded PAPER audit of Q10-E(24), including the complete source return, without expanding the acceptance to (1)."
+```
+
+## 13. Источники и одна директива
+
+Основной источник — единственный Q10 с байтами, SHA-256 и supplied pin из заголовка. Вложенные L1–L2, Q9 conclusion, Q8-D conclusion, sparse-band receiver и continuous returns использованы с их явно различными областями. Старые инструкции внутри вложений не исполнялись.
+
+Внешняя первичная сверка ограничена стандартными аналитическими инструментами: Terence Tao, *254A, Notes 2: Complex-analytic multiplicative number theory*, 9 December 2014, Propositions 16 и 19, с фиксированным source map в §5.1; DLMF §27.4 — нормировка Euler/Dirichlet рядов. Нужная truncated Perron цена выведена в (16), не взята из формулы с неподходящими growing-parameter константами. Никакой вывод этих источников про Dirichlet characters не использован. Нет заявления о полноте поиска или отсутствии других поставщиков.
+
+Адреса для воспроизводимой проверки первоисточников:
+`https://terrytao.wordpress.com/2014/12/09/254a-notes-2-complex-analytic-multiplicative-number-theory/`
+и `https://dlmf.nist.gov/27.4`.
+
+**CODEX DIRECTIVE — ровно один bounded audit.** Независимо проверить **теорему Q10-E, (24)** с \(B_m\) из (20), \(\mathfrak B\) из (9), на буквальном Q10 источнике. Проверить прежде всего фиксированность констант в local-zero map, интегральную \(\log(3/\Delta)\)-цену, полный scalar cutoff/contour return и перенос на все исходные off-diagonals, затем новый short-divisor return из уже принятого L1. Вернуть либо эту условную PAPER-оболочку и её строго ограниченное endpoint-сравнение с прежним bound, либо первый дефект и исправление. **Не** объявлять приёмку доказательством (1), smaller fixed exponent, H_mu, restricted RH-противоречия, full SP или RH; Q09-NF не переаудировать; Lean/Comparator и запись в репозиторий не запускать.
+
+END_SOURCE S5
+
+BEGIN_SOURCE S6 docs/literature/openai_math_2026-10-07/CCM_POST_Q26_POLYLOG_WITNESS.md
+# Actual-source polylogarithmic witness inside the original CCM band
+
+2026-10-25. STATUS: BOUNDED_PAPER_PASS_CONDITIONAL_ON_INHERITED_RECEIVER.
+Read-only independent polylog_contact_check audited the full payload,
+including (3)--(9), actual-profile normalization and the final Q10 budget.
+No material flaw found; upstream source/Weil identities remain inherited,
+not independently recertified. No Lean or interval computation was run.
+Source baseline: 44fc95ed. This is a conditional witness refinement, not an
+upper bound on the prime operator, T_{>R}, or a claim of RH. The original
+all-vector sparse-band goal remains open and is not replaced by this lemma.
+
+## Contract and inherited inputs
+
+Keep the literal K_m, N=m, L=log m, original frequencies 2 pi j/L and the
+three original contacts b*c=v_+*c=v_-*c=0. Fix a hypothetical actual zero
+w=delta+i gamma, 0<delta<1/2, multiplicity r. Use the separately normalized
+actual g,k in Q26 verdict (1.1)--(1.3), and the whole complex pair
+f_a=exp(-i gamma a) tau_a g-exp(i gamma a) tau_{-a} k.
+The inherited receiver supplies its full Weil value -2r exp(2delta a), bounded
+L2 norm, vanishing moments at +/-1/2, and double-exponential physical tails
+for every FIXED derivative. These upstream results are assumed as in
+CCM_RESTRICTED_PRIME_RECEIVER.md; they are not recertified here.
+Precisely the inherited physical bound needed is
+|g^(q)(t)|+|k^(q)(t)|<=C_(w,q) exp(-c_(w,q) exp(2|t|)).
+A weaker exp(-c exp(|t|)) bound would NOT justify the following L^2
+cutoff exponent. The source normalization agrees: if d_w is the unfiltered
+zero normalization, c_w=(w^2-1/4)d_w, so applying (partial^2-1/4)/(w^2-1/4)
+to its separator gives exactly Q26's g (and likewise the partner).
+
+Let h=L/2-log L. The argument is uniform for h-T<=a<=h, 0<=T<=h/2.
+Put M0=ceil(8L^2). Eventually M0<m and M0<=floor(m^epsilon) for every fixed
+epsilon>0. Define H0 as the original coefficient vectors supported on
+|j|<=M0 satisfying all three original contacts. Correction is performed
+INSIDE this band, not by projecting onto the larger band afterwards.
+Thus H0 is a subspace of ran P_(m,epsilon), without altering K_m or P.
+
+## Source-specific Fourier estimate
+
+Q26 gives M_g(z)=A(z)/(c_w(w-z)^r), M_k(z)=A(z)/(c_v(v-z)^r),
+A(z)=-4(z^2-1/4)xi(1/2+z). On the imaginary axis the xi gamma factor gives
+exp(-pi |tau|/4) times a polynomial. A polynomial zeta bound suffices:
+the elementary continuation formula
+zeta(s)=s/(s-1)-s integral_1^infinity {x}x^(-s-1) dx for Re s>0
+gives |zeta(1/2+i tau)|<=C(1+|tau|). The fixed denominators are bounded
+away from zero on this axis and have polynomial behaviour at infinity.
+Absorb all polynomial factors into the weaker exponential to obtain
+
+    |M_g(i tau)|+|M_k(i tau)| <= C_w exp(-|tau|/8).       (1)
+
+Translation and the complex prefactors have modulus one on this line.
+Primary gamma inputs: DLMF 25.4.E4 and 5.11.E9 (fixed real part).
+https://dlmf.nist.gov/25.4.E4 ; https://dlmf.nist.gov/5.11.E9
+No assumption on absence of other zeros is used for this bound.
+
+Use the inherited fixed-width smooth cutoff chi on [-L/2,L/2]. Let
+F=chi f_a and d=F-f_a on the whole line. The transition is at distance
+at least log L-O(1) from either center. For q=0,1,2,
+
+    ||d^(q)||_1 <= C_w rho,  rho=exp(-c_w L^2).          (2)
+
+This follows by integrating the inherited double-exponential tails, with
+only fixed derivative orders. It does NOT assert that chi is analytic.
+After translation to [0,L], Fourier coefficients satisfy for |omega_j|>=1
+
+ |c_j| <= C_w L^(-1/2)[exp(-|omega_j|/8)+rho |omega_j|^(-2)]. (3)
+
+The translation adds only a unit phase. Set Omega=2pi M0/L, t0=exp(-Omega/8).
+Geometric sums with spacing 2pi/L and the elementary power tails give for
+e=F-F_M0, on its interval (including endpoint values),
+
+ a0=||e||_2 <= C_w[t0+rho Omega^(-3/2)],
+ a1=||e'||_2 <= C_w[(1+Omega)t0+rho Omega^(-1/2)],
+ ainf=||e||_infinity <= C_w[t0+rho Omega^(-1)].          (4)
+
+All constants are independent of m,a,T. In particular Omega>=16pi L,
+t0<=m^(-2pi). The rho contribution is summed using its power tail; a
+uniform small bound on individual coefficients alone would not suffice.
+
+## Full form and contacts, including cross terms
+
+Use precisely the inherited zero-extension form estimate
+||e||_E^2<=(m+16)a0^2+2a1^2+8ainf^2. It includes the endpoint jump strips.
+Since Omega=O(L), ||e||_E<=C_w sqrt(m)(t0+rho) eventually. Together with
+||F||_E<=C_w sqrt(m), the full quadratic-form continuity bound gives
+
+ |W(F_M0)-W(F)| <= C_w m[(t0+rho)+(t0+rho)^2].          (5)
+
+This bounds the whole pair, not its lobes separately. All mixed terms are
+retained via the full cross-error term. The inherited cutoff fee is
+C_w m exp(-c_w L^2), absorbable after reducing c_w.
+
+Restrict the original v_+,v_- to M0 and normalize them, and set
+b0=ones/sqrt(2M0+1). The receiver's explicit coefficient calculation gives
+||v_+,M0||^2=m(1+O(L/M0)), ||v_-,M0||^2=1+O(L/M0),
+normalized mutual overlap O(L/sqrt(m)+L/M0), and overlaps with b0
+O(sqrt(L/M0)). Hence their three-column Gram matrix is >=I/2 eventually.
+These calculations require M0/L->infinity, not a power bandwidth.
+
+The full cutoff Fourier series has zero endpoint value and is absolutely
+convergent. Thus
+
+ |b0*c_M0| <= sqrt(L/(2M0+1)) ainf <= C_w(t0+rho).       (6)
+
+Both cutoff Laplace moments are at most m^C rho after translation. For each
+normalized exponential contact, subtract the omitted Fourier tail. Cauchy-
+Schwarz bounds it by a0 times the full/truncated exponential norm ratio,
+which is bounded. Thus each normalized residual is <=C_w t0+m^C rho.
+The Gram bound, with all three constraints corrected simultaneously, gives
+
+ z=projection_H0(c_M0),  ||z-c_M0||<=C_w t0+m^C rho.    (7)
+
+Padding z with zeros gives all original equations exactly; no high modes
+are added. Using the inherited FULL ||K_m||<=40 sqrt(m)L and bounded
+||c_M0||, both linear mixed correction and quadratic correction cost
+
+ C_w sqrt(m)L [t0+t0^2]+m^C rho.                       (8)
+
+Combining (5), (8), and the cutoff fee proves the full return bound
+
+ |z*K_m*z +2r exp(2delta a)|
+       <= C_w m^(1-2pi)+m^C exp(-c_w L^2)=o(1).        (9)
+
+Constants/exponents C may increase finitely between lines. No arithmetic
+term is dropped or replaced: Lambda and every prime power remain in K_m.
+The norm of z is bounded independently of m. At a=h the negative signal
+diverges, so z is nonzero and normalization gives the same conditional
+negative Rayleigh bound -c_w m^delta/L^(2delta), now already on H0.
+
+## What this changes and what it does not
+
+This supplies a smaller sufficient test space if (9) survives independent
+review. It does not prove a prime upper bound on H0 or on original P.
+The exact continuous cancellation and archimedean price 50L+8 still apply.
+An INDEPENDENT subpolynomial upper floor for the full prime form on H0
+would suffice against the same witness; it is currently OPEN.
+The original requested T_{>R} estimate on all ran P remains OPEN.
+No inference from smaller dimension alone to a smaller spectral bound is
+valid. Next test must estimate actual signed prime entries jointly on H0,
+or return to the original all-P supplier; no repetition of the adverse
+zero identity as a favorable estimate is allowed. No Q27 has been sent.
+
+## Immediate budget test against the existing supplier
+
+Keep ORIGINAL R=floor(m^epsilon); do not change the target divisor split.
+The already paid short-divisor bound from CCM_MOMENT_Q10_CONCLUSION.md is
+(56+32Omega)sqrt(R)+12(1+log R)^2. On H0, Omega=O(L), so its cost is
+O_epsilon(m^(epsilon/2)L+L^2), rather than the old power-band cost with
+exponent 3epsilon/2. This is a smaller short-sector fee only.
+The SAME Q10 long-sector supplier still costs
+4 Ccl m^(3/8)L^2 log(3L), conditionally on ZF78. Its bound is uniform in
+frequency but does not decrease with the bandwidth. Consequently the full
+known conditional exponent remains 3/8. The unconditional 12sqrt(m) prime
+upper fallback is also unchanged. Reduced dimension does not yet yield
+eta(epsilon)->0: the joint long-sector estimate remains the precise debt.
+
+END_SOURCE S6
+
+BEGIN_SOURCE S7 docs/literature/openai_math_2026-10-07/CCM_SPARSE_BAND_RECEIVER.md
+# Conditional off-critical witness on a sparse band of the original CCM matrix
+
+2026-10-08. Root derivation, independent read-only sparse_band_receiver audit PASS on the complete payload. The production matrix is still literal K_m with N=m,L=log m. Only a test subspace is restricted. No prime spectral bound or RH is proved; the active full-SP phase is not silently changed.
+
+## Claim and source
+
+Fix any alpha in (0,1), M=floor(m^alpha), and let H_(m,alpha) be the subspace of the ORIGINAL coefficient carrier supported on |j|<=M. Let P_(m,alpha) project onto its subspace satisfying the original three equations b*c=v_+*c=v_-*c=0. Original b has 2m+1 coordinates and v_± are the original Fourier coefficients of exp(±t/2) on [0,L]. Padding by zero identifies the equations with the corresponding truncated vectors, with the constant vector rescaled to unit norm. This does not create a new production matrix or change the m schedule.
+
+Conditional on a fixed zero xi(1/2+w)=0, w=delta+i gamma, delta>0, there are c_(w,alpha)>0 and a starting m such that EVERY later original cell has
+
+    lambda_min(K_m restricted to ran P_(m,alpha))
+            <=-c_(w,alpha) m^delta L^(-2delta).                (1)
+
+All constants may depend on fixed w,alpha and selected fixed derivative order. They do not depend on m. No uniform assertion as alpha tends to zero, nor any polylogarithmic-band assertion, is made.
+
+Use the already checked normalized derivative-filtered source pair in CCM_RESTRICTED_PRIME_RECEIVER.md: its two Laplace moments vanish, its full Weil value is -2r m^delta L^(-2delta), and its L2 norm stays bounded. Cut off inside [-L/2,L/2] with the same fixed-width smooth transition and translations h=L/2-log L. Every FIXED derivative L1 norm stays bounded; cutoff-form error is O(m exp(-cL²)). Both zero-extension strips remain part of the projection estimate below.
+
+## Sparse Fourier projection: actual form norm
+
+The general fixed-q estimate in PROSHKA_NEGATIVE_BOTTOM_NORMING_INLINE_2026-10-06.md equations(2),(3), inherited by NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md, applies with Omega_M=2pi M/L. Let e=f-f_M be the Fourier tail of the cutoff source, q>=2 a FIXED integer. It gives
+
+    ||e||_E <=C_q[sqrt(m)Omega_M^(1/2-q)
+                   +Omega_M^(3/2-q)+Omega_M^(1-q)] =: E_q.    (2)
+
+Indeed the L2, derivative-L2 and endpoint sup bounds are respectively proportional to Omega_M^(1/2-q), Omega_M^(3/2-q), Omega_M^(1-q); insert them into ||e||_E²<=(m+16)a0²+2a1²+8ainfinity². The m factor comes from the original window weight exp(|t|), not from the number of retained modes. Endpoint jumps are paid; no whole-line H1 claim is used.
+
+The cutoff source has ||f||_E<=C sqrt(m). Full Weil continuity therefore gives
+
+    |W(f_M)-W(f)|
+      <=C_q[m Omega_M^(1/2-q)+sqrt(m)Omega_M^(3/2-q)
+                +sqrt(m)Omega_M^(1-q)+E_q²].                 (3)
+
+Choose once and for all an integer q>1/alpha+2. The three displayed powers of m are 1+alpha(1/2-q), 1/2+alpha(3/2-q), and 1/2+alpha(1-q), all strictly negative. Their fixed logarithmic factors do not change convergence. E_q² also tends to zero. Thus (3) is o(1). The exact same centered-window form equals the quadratic form of the padded vector in K_m; translation to [0,L] preserves the full Weil form.
+
+## Sparse-band correction of the three constraints
+
+Let v_(±,M) be the original v_± truncated to |j|<=M and b_M the normalized constant vector on that band. The explicit exponential coefficients give
+
+    ||v_(+,M)||²=m(1+O(L/M)),
+    ||v_(-,M)||²=1+O(L/M),
+    |<vhat_(+,M),vhat_(-,M)>|=O(L/sqrt(m)+L/M),
+    |<b_M,vhat_(±,M)>|=O(sqrt(L/M)).                          (4)
+
+Terms O(1/m) in the norms can be absorbed because M<m. For the cross term, full inner product is L and the omitted tail product is O(sqrt(m)L/M); division by normalized scales gives (4). The b_M estimates follow by pairing conjugate denominators and sum (1/2)/(1/4+omega_j²)=O(L). Since M/L tends to infinity, the normalized three-vector Gram matrix tends to I and is >=I/2 eventually.
+
+With q as above, repeated integration by parts gives full Fourier coefficients |c_j|<=C_q L^(q-1/2)|j|^(-q). The truncated L2 tail has size O(L^(q-1/2)M^(1/2-q)). Endpoint value zero implies sum of all coefficients zero, so the normalized b_M constraint residual has that same order. The zero Laplace moments before cutoff, the super-small cutoff remainder, and Cauchy-Schwarz against the omitted exponential coefficients give the same order for both normalized v constraints; the ratio of full to truncated exponential norms stays bounded by (4).
+
+Therefore, if c_M is the padded Fourier vector and z=P_(m,alpha)c_M,
+
+    ||z-c_M||<=C_q L^(q-1/2)M^(1/2-q)
+                                      +m^C exp(-cL²).        (5)
+
+The full original ||K_m||<=40sqrt(m)L and bounded ||c_M|| pay its quadratic-form correction by
+
+    C_q sqrt(m)L^(q+1/2)M^(1/2-q)
+                                      +m^C exp(-cL²)=o(1).   (6)
+
+The unchanged source pair's negative signal diverges as m^delta/L^(2delta). Combining (3),(6) and cutoff cost leaves that signal intact; ||z||² stays bounded, and its negative form ensures z is nonzero. Normalizing proves (1).
+
+## Exact remaining arithmetic consumer
+
+The two exponential equations still annihilate the original growing rank-two kernel, and the endpoint equation still uses the original b. Consequently
+
+    P_(m,alpha) K_m P_(m,alpha)
+       =P_(m,alpha)(Aarch-cA I-Aprime)P_(m,alpha).             (7)
+
+Here Aprime=sum_(2<=n<=m) Lambda(n)Q(log n)/sqrt(n) retains every prime power and the original Q; Aarch is the original archimedean compression. The inherited bound ||Aarch-cA I||<=50L+8 is equation(12) of CCM_RESTRICTED_PRIME_RECEIVER.md; its equation(11) gives the cancellation used above.
+
+Thus a subpolynomial upper bound for the actual prime matrix on this smaller space would suffice to exclude every fixed off-critical zero. Such a bound is OPEN. Membership in a smaller band supplies neither independent primes nor a sign. Old full SP/G1/G3 are not thereby proved. A fixed alpha is enough for this conditional receiver; alpha cannot be tuned with m inside this theorem.
+
+END_SOURCE S7
+
+BEGIN_SOURCE S8 docs/literature/openai_math_2026-10-07/CCM_Q19_CONCLUSION.md
+# Q19 — full reflected negative-part certificate and paid continuous rollback
+
+2026-10-25. Full original downloaded through own IAB after natural completion,
+87753 bytes/1278 LF, SHA256 fa5ee5620cd88f314b05a628b0e83ec162e4f6c91a15ccdaab0226f13fd67ddf.
+Original retained unchanged, including all embedded code and S1. Root read all.
+Independent bounded audit q19_verdict_check: PASS on §§1–9, including common-zero normalization, uniform four-frequency lower price, finite continuous return and inherited original-P budget. No material defect; not an audit of the entire proof chain.
+
+## Root check of the new scoped result
+
+The actual reflection sum AND defect and complex kappa remain together.
+Common zero division removes the apparent denominator but does not make the
+source even around gamma. Evenness about zero plus gamma would force a
+nonzero decaying source to be periodic. No independent phases assigned.
+
+For the exact paired integrand I_m, the nonnegative pointwise budget is
+C_m=(1/(2pi))integral[-I_m]_+. Every nonpositive pointwise minorant must pay
+at least this amount. Q19 proves c sqrt(m)/T <= C_m <= C sqrt(m)(1+logT)/T
+for fixed T=alpha logm,0<alpha<1/4. This excludes only that certificate class.
+No lower bound on actual B_T or CCM follows.
+
+Root checked the mechanism: ordinary PNT gives uniform compact-frequency
+leading finite prime polynomial; unequal actual envelopes give uniform
+amplitude separation for every changing theta=gamma logm. Four frequencies
+have all relevant sums/differences escaping zero; slowest is2loglogm.
+Integration by parts pays endpoints and mixed waves. Positive L2 mass,
+bounded Linfinity and vanishing mean force both signs to have local mass.
+This square is used for certificate lower price, not an upper on CCM.
+
+## Exact control exposing the lost cancellation
+
+D0_m(z)=integral_1^m x^(-1/2)(x^z+x^-z)dx, with both lower endpoints.
+Its full source-pair contribution B0_T is bounded by
+C_w[exp(-c_w exp(2(h-T)))+sqrt(m)exp(-c_w(logm)^2)]=o(1).
+This follows from actual pair double-exponential tails and contact M_C(-1/2)=0;
+both temporal orientations and the finite continuous tail are retained.
+Yet its negative-part certificate alone costs at least c sqrt(m)/T.
+Thus local sign payment charges a large amount for an already negligible
+whole signed contribution. The continuous cancellation is inherited;
+its role here is a concrete discriminator, not new prime cancellation.
+
+The paid rollback is Dtilde_m=D_m-D0_m, preserving the entire complex pair.
+The leading four-wave lower-price witness vanishes on fixed frequency intervals.
+Do not transfer the uncentered certificate obstruction to Dtilde or declare
+centering itself a new bound. The global signed integral remains unpaid.
+
+## Complete budget and remaining obligation
+
+Full original-P cutoff/Fourier/three-contact returns rho_K,rho_S=o(1)
+remain uniform over the translation interval, with every mixed term.
+Arch paid once, source self terms O_w(1). New completed floor costs
+sqrt(m)loglogm/logm+logm, weaker than inherited sqrt(m)/(logm)^2+logm.
+Keep the stronger inherited budget; conditional3/8 under ZF78 unchanged.
+Independent directed centered pair bound sufficient for -o(E_T) remains OPEN.
+No SP/G1/G3/RH claim. Do not automatically send Q20 or optimize excluded caps.
+Next own attempt must use nonlocal signed information and pass D0 control,
+with quantitative global remainder; otherwise document an earlier rollback.
+
+## Replay
+
+Extracted six complete FILE bodies; hashes match original headers.
+verify_sources_q19.py verifies exact request and all10 full body hashes.
+check_q19.py reproduces210 exact controls on existing SymPy1.14.0.
+source_manifest.json and exact_results.json byte-identical to saved expected
+copies; S1_original.md byte-identical to local source. Comparison saved in
+q19_verdict_checks/replay_comparison.json. No numerical zero, spectra, Lean, Arb.
+
+END_SOURCE S8
+
+BEGIN_SOURCE S9 docs/literature/openai_math_2026-10-07/CCM_AFTER_Q20_MARGIN_CONCLUSION.md
+# After Q20 — sufficient coefficient margin, no new arithmetic estimate
+
+2026-10-25. Observed user-role question in the same living chat:
+«И ? Что теперь? Как мы будем закрывать РХ?»
+This agent did not send it; no canonical Q21 was prepared or dispatched.
+Natural completion was verified at the scheduled check around16:57Berlin.
+Old IAB and Chrome chat tabs were absent from inventory; reopened only the
+same conversation in IAB browser3/tab2, without resending any prompt.
+Full original downloaded automatically and read completely:26351bytes/296LF,
+SHA25644787d73efd41990745a1fce2d29854841d2135eee12f8ae7a92359485ec59cc.
+Source: PROSHKA_CCM_AFTER_Q20_SHARP_PAIR_MARGIN_2026-10-25.md, unchanged.
+
+## Checked mathematical content
+
+On the inherited actual source pair, B_T=-r E_T+e_adverse,
+|e_adverse|<=R_w(m), where
+
+ R_w=(D_w(50L+8)+C_self,w+rho_K+rho_S)/2,
+ E_T=exp(2delta h)(1-exp(-2delta T))/(2delta T).
+
+The signs follow exactly from K=Arch-S and
+average S=A_self-2B_T+e_S, average K=-2r E_T+e_K:
+2(B_T+r E_T)=e_K-Arch+A_self+e_S. Arch paid once; no short-divisor fee.
+Original P, both temporal signs, separately normalized separators, complex
+phase, all prime powers and all mixed return terms are unchanged.
+
+An INDEPENDENT lower bound B_T>=-(r-theta_w)E_T-e_w, theta_w>0,
+e_w=o(E_T), on any unbounded sequence of integer cells would contradict
+this adverse identity, since L/E_T->0 for fixed delta>0. This is a weaker
+sufficient interface than requiring B_T>=-o(E_T). It supplies no such bound.
+More generally a positive margin g_w(m) works if g_w E_T>R_w+e_w eventually
+on that sequence. For g=1/L and e=o(E_T/L), the inequality follows from
+E_T/L >> L. Errors here are nonnegative bounds, not signed unknowns.
+
+Fixed epsilon=1/64, alpha=1/8, q=67 meets q>1/epsilon+2. Exact rational
+arithmetic checked powers -5/128,-67/128,-17/32 and -69/128. Squared E_q
+terms also decay; fixed logs do not alter o(1). No claim that constants or
+finite onset are computationally small. No new Lean/Arb/source experiment.
+Independent postq20_margin_audit: bounded PAPER PASS on these claims and
+Q17 signs/factors. The full upstream receiver was not re-certified.
+The original answer's note that no subsequent Q20 review had been supplied
+is about Proshka's received context; our separate Q20 audit is in the prior
+conclusion and is not invalidated or silently inserted into the original.
+
+## Scope and next action
+
+The full all-vector eta(epsilon)->0 objective remains unproved. The margin
+criterion is an alternative sufficient consumer on the actual pair, not an
+all-vector theorem and not a completed replacement goal. Old half-power/log
+budget divided by E_T still diverges for every fixed delta<1/2; conditional
+3/8 still needs inherited ZF78. No new arithmetic gain or route impossibility.
+
+Own post-Q20 checks exclude duplicate proposals, not mathematical routes:
+Q12 already has radial/phase credits; Q16 already has compact Green
+f=(D²-1/4)h. The latter exactly changes kernel to (D²-1/4)²K and norm to
+||h''||²+||h'||²/2+||h||²/16, with h=h'=0 at endpoints. No sign is supplied.
+Generic scalar prime oscillations likewise do not control the zero-dependent
+phase-locked pairing: adverse identity holds every late cell, so choosing a
+subsequence still needs independent arithmetic. These are duplicate/interface
+checks, not three new attempts. Semantic ask was INCOMPLETE due freshness;
+no global absence conclusion. Finite WeilGramMinusShift Lean algebra has no
+literal CCM source crosswalk and cannot supply the missing positivity.
+
+Next substantive work must exhibit an independent actual-source inequality
+with a quantitative margin or another paid sufficient exit, passing Q19 D0
+and Q20 signed/modulus controls. Do not commission another long Q21 merely
+renaming this condition. No response pending; remove the completed monitor.
+Goal, SP/G1/G3 and RH remain OPEN. No PX_RH_CLAIM.
+
+END_SOURCE S9
+

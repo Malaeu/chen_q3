@@ -1,3 +1,21 @@
+# Q28 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+Full1282line original preserved/read;47exact/10planted/9sources replay byte-identical. Independent all_p_contour_extension bounded PAPER PASS §§2–8; inherited upstream boundaries explicit. See CCM_Q28_CONCLUSION.md. Actual orbit return and simultaneous source leakage paid, selected coefficient survives; no favorable exponent or margin. Rollback to full finite centered source before separate zero payment. No Q29. Goal/RH OPEN.
+
+--- Q28 history ---
+
+# Q28 SENT ONCE — RESPONDING VERIFIED
+
+2026-10-26T00:23:59.206337+01:00: same living chat https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6acdceb1-9264-83ed-b52f-2a69b2e4c28d via own IAB3/tab3. Exact PROSHKA_CCM_ORIGINAL_P_SIGNED_RESIDUE_Q28_2026-10-26.txt tile and companion submitted once; ChatGPT antwortet and Stoppen observed. Request199411bytes/2681LF/SHA256 cb34557c531175821de798478fb433b2834c4e6a6092ed572664fc5855a36423;9 full source bodies byte-verified. Screenshot /tmp/ccm-q28-sent.png. Q27 complete; original-P extension and density completion audit committed55efd967. Q28 asks actual reflection-orbit signed comparison before norms, with every contour partner/pole return. No new arithmetic gain.
+
+While responding do not send/reload/Stop/Answer now/Regenerate. After natural completion download full original through download event, read all and reproduce code; check original P, both time orientations, transpose vs adjoint, actual zero relations, all Lambda/prime powers, added left partners and transfer poles, mixed/self/boundary terms and full budget. One bounded independent audit of status-changing mathematics. One scoped request+answer+conclusion commit after processing; preserve foreign edits. Check every20min quietly; remove monitor when response processed and no wait remains. No automatic resend after Stopped thinking without answer. Goal/RH OPEN, no new goal.
+
+Own while-waiting check: CCM_Q28_LEFT_PARTNER_RETURN.md independently bounded PAPER PASS. Algebraic addition of all actual reflected left partners costs <=(256/e)C_N L(1+Omega)log(20+Omega)=O_epsilon(m^(2epsilon)); original-P mixed terms retained. No contour shift or new sign. Not sent as an extra message; compare with Q28 after completion.
+
+Last live check: 2026-10-26T00:44:29.972708+01:00, same IAB3/tab3: Denke nach / Stoppen and service-checking status present. No final Q28 answer or attachment. Intermediate statements are not admitted mathematics. No send/reload/interruption. Next check not before 2026-10-26T01:04:29.972708+01:00.
+
+--- Q27 processed history ---
+
 # Q27 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Full1171line original read;99math+1metadata/7planted/9sources replay byte-identical. Independent q27_bounded_review bounded PAPER PASS §§2–8. See CCM_Q27_CONCLUSION.md. Joint contour analytic part and tails paid; signed residue upper debt remains, no new arithmetic exponent. Original-P extension now bounded PAPER PASS: see CCM_POST_Q27_ORIGINAL_P_CONTOUR.md; all paid fees <=C_epsilon m^(2epsilon), complete signed residue lower bound remains OPEN. No Q28. Goal/RH OPEN. Completed monitor deleted.

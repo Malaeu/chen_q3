@@ -9052,3 +9052,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: return before residue norms; source-dependent signed supplier, not more contour-tail optimization.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q27_DENSITY_BUDGET.md.
 Чей вердикт: root calculation; residue_density_supplier independent bounded PAPER PASS.
+
+## 2026-10-26 — Q28 actual orbit return and source leakage checked
+Развилка: complete signed residue orbits versus original centered finite prime source.
+Выбрали: full Q28 intake/replay and one bounded independent mathematical audit.
+Почему: common all-P contour fees were paid, but orbit sign was unpaid.
+Что отвергли: automatic favorable credit from symmetry or other orbits on the true selected pair; not the CCM route.
+Инсайты: all other evaluations jointly cost N_H d_m²=o(1); selected coefficient2r survives with complete right-window return.
+Блокеры: independent favorable source comparison remains OPEN.
+Иглы Зингера: transpose is not adjoint; entire transfer retains nonzero lattice values; conditional zero is not existence.
+Следующий ход: rollback before zero decomposition to C0, retain centered source and full mixed terms; no automatic Q29.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q28_CONCLUSION.md and q28_replay/.
+Чей вердикт: Proshka Q28; root full reading/replay; all_p_contour_extension bounded PAPER PASS §§2–8.
