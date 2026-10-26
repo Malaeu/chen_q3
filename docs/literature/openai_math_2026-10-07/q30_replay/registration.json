@@ -1,0 +1,23 @@
+{
+  "task": "Q30_LINKED_HALFGRID_SIGNED_COMPARISON",
+  "request_sha256": "4846514674d4cd3d5c54103c7c39cab1d7a5e970caf2aa74fae39381838a893a",
+  "stage": "After complete source reading and preliminary paper derivation, before new executable checks; not a preregistration of mathematical discovery",
+  "one_mechanism": "Exact periodic/antiperiodic wrap cancellation followed by an explicit norm-preserving nilpotent dilation of the actual positive long-prime shift mixture",
+  "predictions": [
+    "H has the stated positive i convention, and half-grid weights carry one half of the physical norm each.",
+    "The linked channel sum cancels wrap exactly, while the difference retains the wrap with factor minus two.",
+    "All products of q=ceil(1/epsilon) true long shifts vanish before projection because their index products exceed m; inserting P between shifts would invalidate this inference.",
+    "The explicit boundary-plus-pair-variance defect has Gram I-T* T, including all n,nprime cross terms, without assuming positivity of the target CCM matrix.",
+    "The dilation preserves physical norm and intertwines T with a finite path shift; the sine path comparison gives coefficient cos(pi/(q+1)).",
+    "The full source budget still contains that fixed positive coefficient times the actual Mangoldt mass of order sqrt(m); no vanishing-exponent gain follows.",
+    "The continuous source returns as the exact negative Green form, and a=g gives centered zero before any separate estimate.",
+    "No numerical hypothetical zeros, production spectrum, Lean, Arb, or independent audit are part of these checks."
+  ],
+  "discriminators": [
+    "Atom s=L must be exactly zero.",
+    "Deleting source cross terms from the defect fails.",
+    "Dropping the factor one half in linked sampling fails.",
+    "A projection cannot be commuted through the nilpotent construction.",
+    "A finite odd cutoff is not unitary without its tail return."
+  ]
+}

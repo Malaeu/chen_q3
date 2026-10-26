@@ -9102,3 +9102,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Seek source-dependent positivity beyond contact freedom; no Q30 sent.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_POST_Q29_CONTACT_CERTIFICATE_TEST.md.
 Чей вердикт · Root exact derivation/SymPy sign checks; all_p_contour_extension bounded algebra PASS.
+
+## 2026-10-26 — Q30 linked half-grid and paid nilpotent lift
+
+Развилка · Linked source-dependent channels versus independent path spectral cap.
+Выбрали · Verify explicit boundary/variance isometry and complete return before rollback.
+Почему · All ordered prime-power products remain, but whole-path cap only saves a fixed cosine factor.
+Что отвергли · Treating constant factor as power gain or commuting P into nilpotent products.
+Инсайты · Full continuum cancellation survives; actual-image path deficit contains the unpaid source sign.
+Блокеры · eta(epsilon)->0 remains open; no actual spectrum lower bound.
+Иглы Зингера · Distinguish prime-index split from divisor split, continuous qc from discrete q, and optional odd-tail fee.
+Следующий ход · Roll back before path cap; a source-dependent image estimate is not supplied by the isometry alone. No Q31.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_Q30_CONCLUSION.md; canonical Q30 request/verdict; q30_replay.
+Чей вердикт · Root full1171line read and77exact9planted replay; all_p_contour_extension bounded independent PASS §§2–8.

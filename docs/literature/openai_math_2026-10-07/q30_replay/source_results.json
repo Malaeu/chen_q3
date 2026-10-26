@@ -1,0 +1,83 @@
+{
+  "status": "PASS_NINE_SOURCE_BODIES",
+  "request_bytes": 120938,
+  "request_lf": 1923,
+  "request_sha256": "4846514674d4cd3d5c54103c7c39cab1d7a5e970caf2aa74fae39381838a893a",
+  "request_hash_status": "OBSERVED_REFERENCE_HASH_NOT_A_USER_SUPPLIED_TOTAL_HASH",
+  "source_count": 9,
+  "sources": [
+    {
+      "id": "S1",
+      "name": "CCM_POST_Q29_CONTACT_CERTIFICATE_TEST.md",
+      "bytes": 2736,
+      "sha256": "2b3652b512ce5a4ffe9433262cffce44086c36e24f1320286fcc5b4f5235eef6",
+      "source_start_line": 28,
+      "source_end_line": 83
+    },
+    {
+      "id": "S2",
+      "name": "CCM_Q29_CONCLUSION.md",
+      "bytes": 3266,
+      "sha256": "48eba87027d1dc6142d89502e5429848f649b4a61355e1e11ea72d8d0fa5dacb",
+      "source_start_line": 88,
+      "source_end_line": 145
+    },
+    {
+      "id": "S3",
+      "name": "CCM_Q09_ATTAINABLE_DENSITY.md",
+      "bytes": 3462,
+      "sha256": "24c1f65cc44ef0b0db431f21cd30404946fe5f831f71c4d79ecaad1237dcbf23",
+      "source_start_line": 150,
+      "source_end_line": 220
+    },
+    {
+      "id": "S4",
+      "name": "CCM_Q09_HALFGRID_AUDIT_DISCRIMINATOR.md",
+      "bytes": 3455,
+      "sha256": "ad06946f9f248ab2092685f81407d4da8c8cf9fe7fb2c19f3c081dc86f8835d3",
+      "source_start_line": 225,
+      "source_end_line": 300
+    },
+    {
+      "id": "S5",
+      "name": "CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+      "bytes": 4828,
+      "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+      "source_start_line": 305,
+      "source_end_line": 395
+    },
+    {
+      "id": "S6",
+      "name": "CCM_DENSITY_Q09_CONCLUSION.md",
+      "bytes": 5769,
+      "sha256": "8c1e3c965b0f5acf7b62b3c0f9d8eafe2d6e561dd7c115a0c58889c80e1f3837",
+      "source_start_line": 400,
+      "source_end_line": 513
+    },
+    {
+      "id": "S7",
+      "name": "PROSHKA_CCM_CONSTRAINED_DENSITY_Q09_VERDICT_2026-10-21.md",
+      "bytes": 81006,
+      "sha256": "b8062fec47e464d2fc12f60c35a990a0a6c6a749d1ecaabdf09d5afd1362dc96",
+      "source_start_line": 518,
+      "source_end_line": 1713
+    },
+    {
+      "id": "S8",
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "bytes": 5633,
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "source_start_line": 1718,
+      "source_end_line": 1840
+    },
+    {
+      "id": "S9",
+      "name": "CCM_Q28_CONCLUSION.md",
+      "bytes": 4256,
+      "sha256": "6ae132365fe5ba4a5d96642b12591a7d9a743c8ddbd74076fec3f0b9adb12bf7",
+      "source_start_line": 1845,
+      "source_end_line": 1921
+    }
+  ],
+  "script_sha256": "144657230078efa780da1b1eb4cf3bf9beb5c63bc1906cc9f85662ea07ecbd30"
+}
