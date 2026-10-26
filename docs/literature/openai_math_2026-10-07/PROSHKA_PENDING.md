@@ -1,3 +1,29 @@
+# Q43 PROCESSED — NO RESPONSE PENDING
+
+Q43 processed: CCM_Q43_CONCLUSION.md; full original read,4assets/330indices/21floors/6endpoints/5intervals/6planted/10sources replay JSON byte-identical; independent bounded PASS §§2–7 incl receiver. Full Mangoldt-primitive convolution equals psi minus short factorial source; O(m^(3epsilon/2)) error cancels between channels, C0 coefficient1 remains. No new signed upper. Stop primitive-contraction chain; inspect accepted whole source-pair margin as auxiliary earlier fork, without replacing original all-P goal. No Q44; goal OPEN. Scoped cycle committed; Q43 monitor deleted after full processing. Foreign work preserved; push skipped with out-of-scope changes.
+
+--- Earlier state ---
+
+# Q43 ORIGINAL RECEIVED — AUDIT IN PROGRESS
+
+Natural completion observed26Oct16:51Berlin. Full original72089bytes/1314LF/SHA256a44215ffb2da06dfb961a96d26bd872c4a5e55ab2d134b4621e30d7d290f5531 saved unchanged and read completely. Four assets verified; checker replay JSON byte-identical. Independent q32_annulus_audit reviewing joint derivative/factorial/endpoint return and source-pair interface. No new signed upper; no Q44. Monitor retained until processing/commit; goal OPEN.
+
+--- Earlier state ---
+
+# Q43 SENT — RESPONSE PENDING
+
+Live readback26Oct16:31Berlin: intermediate reasoning and Stoppen remain; system-check notice is not terminal. No final answer/attachment; no UI intervention or intermediate mathematical admission. Next scheduled check16:51Berlin; monitor ccm-q43-signed-primitive ACTIVE.
+
+Q43 ORIGINAL_METRIC_SIGNED_PRIMITIVE sent ONCE26Oct16:11Europe/Berlin in same living chat via own IAB browser3/tab4; exact TXT tile/companion/responding/Stop confirmed. Request129190bytes/2240LF/SHA25617b8e7a51d140e0807ed8d12959ccad06d7ba06cbb52b08100293e42612272db;10 full frames verified, base154e8214. One post-Q42 own weighted-contraction attempt bounded PASS incl optimization; concrete source-symbol/metric impasse, no fabricated three-attempt count. S3/S4 uncommitted frozen. Do not resend/reload/Stop while responding. Full download/read/replay/one bounded independent audit and one scoped cycle commit after natural completion. Goal OPEN; next check16:31Berlin.
+
+--- Earlier state ---
+
+# POST-Q42 SCREEN COMPLETE — NO RESPONSE PENDING
+
+Post-Q42 multiscale screen: CCM_POST_Q42_MULTISCALE_SCREEN.md. Selberg/renewal duplicates Q20/Q03; fixed-prime dilation Q39 already tested. Ford Buchstab partition preserves full weights but scalar monotonicity is not supplied for signed matrix classes; no new exponent or failed-attempt count. Two ask dictionaries INCOMPLETE due freshness. Next must supply actual signed information; no Q43, goal OPEN.
+
+--- Earlier state ---
+
 # Q42 PROCESSED — NO RESPONSE PENDING
 
 Q42 processed: CCM_Q42_CONCLUSION.md; full original read,6assets/2checkers/7planted/10sources replayed byte-identically; independent bounded PASS §§3–7. Actual cofinal moments and balanced short inverse remove all artificial higher poles with exact finite return, preserving original P and mixed terms. Full remainder F=C0-e^K Hd retains C0 coefficient1; no new consumer exponent. Roll back before further local-pole optimization to full signed C0/N_star. No Q43; goal OPEN. Scoped cycle committed; Q42 monitor deleted after full processing. Foreign work preserved; push skipped because out-of-scope changes remain.

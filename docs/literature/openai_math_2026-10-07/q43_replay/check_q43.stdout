@@ -1,0 +1,79 @@
+{
+  "manifest": {
+    "all_frames_match": true,
+    "canonical_bytes": 129190,
+    "canonical_lf": 2240,
+    "canonical_sha256": "17b8e7a51d140e0807ed8d12959ccad06d7ba06cbb52b08100293e42612272db",
+    "hashes_certify_mathematics": false,
+    "historical_code_executed": false,
+    "source_count": 10
+  },
+  "mathematics": {
+    "actual_cofinal_predicate_U": 67,
+    "actual_factorial_remainder_panel": [
+      {
+        "verified_bound": "|R_U(x)| <= S_U*(1+log(x))+9/5",
+        "x": "68"
+      },
+      {
+        "verified_bound": "|R_U(x)| <= S_U*(1+log(x))+9/5",
+        "x": "137/2"
+      },
+      {
+        "verified_bound": "|R_U(x)| <= S_U*(1+log(x))+9/5",
+        "x": "136"
+      },
+      {
+        "verified_bound": "|R_U(x)| <= S_U*(1+log(x))+9/5",
+        "x": "409/2"
+      },
+      {
+        "verified_bound": "|R_U(x)| <= S_U*(1+log(x))+9/5",
+        "x": "210"
+      }
+    ],
+    "arb": false,
+    "counts": {
+      "endpoint_pairings": 6,
+      "integer_coefficient_checks": 330,
+      "real_floor_checks": 21,
+      "scalar_error_intervals": 5
+    },
+    "lean": false,
+    "new_arithmetic_gain": false,
+    "planted_failure_count": 6,
+    "planted_failures_detected": {
+      "delete_prime_powers": true,
+      "drop_terminal_primitive_term": true,
+      "omit_balancing_atom": true,
+      "omit_weight_derivative_term": true,
+      "replace_adjoint_by_transpose": true,
+      "wrong_factorial_subtraction_sign": true
+    },
+    "production_spectrum": false,
+    "source_cases": [
+      {
+        "U": 2,
+        "jump_y_at_v": "1/2",
+        "m": 40,
+        "production_sparse_band_cell": false,
+        "tau": "3/2"
+      },
+      {
+        "U": 5,
+        "jump_y_at_v": "4/5",
+        "m": 80,
+        "production_sparse_band_cell": false,
+        "tau": "-1/5"
+      },
+      {
+        "U": 67,
+        "jump_y_at_v": "6763244587410648983528/77042368147845755449795",
+        "m": 210,
+        "production_sparse_band_cell": false,
+        "tau": "6763244587410648983528/77042368147845755449795"
+      }
+    ],
+    "status": "EXACT_DIAGNOSTICS_NOT_PRODUCTION_SIGN_CERTIFICATE"
+  }
+}

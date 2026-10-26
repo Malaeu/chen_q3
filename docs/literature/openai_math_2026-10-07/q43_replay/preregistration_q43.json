@@ -1,0 +1,13 @@
+{
+  "request_id": "Q43_ORIGINAL_METRIC_SIGNED_PRIMITIVE",
+  "stage": "After full source reading and analytic derivation; before new executable mathematical checks. This is not advance registration of the analytic derivation.",
+  "mechanism": "Joint differentiated balanced primitive: retain Mangoldt convolution and both adjoints, evaluate the exact factorial cumulative source, and return its complete signed quadrature error.",
+  "predictions": {
+    "P1": "The actual Mangoldt-primitive convolution equals psi minus the complete finite factorial sum, including the balancing atom and all prime powers.",
+    "P2": "The derivative must contain both the exponential-weight term and every jump. The finite upper-cutoff seam cancels only after its exact return.",
+    "P3": "The two copies of the factorial error cancel jointly; the centered prime discrepancy survives with coefficient one.",
+    "P4": "The paid short correction has a vanishing-epsilon exponent, but no independent favorable upper for the remaining signed discrepancy is supplied by this calculation."
+  },
+  "not_predicted": ["RH", "A new all-P exponent", "An actual-source impossibility theorem"],
+  "checks_scope": "Exact finite arithmetic and algebra; rational logarithm enclosures. No production CCM matrix, Lean or Arb."
+}

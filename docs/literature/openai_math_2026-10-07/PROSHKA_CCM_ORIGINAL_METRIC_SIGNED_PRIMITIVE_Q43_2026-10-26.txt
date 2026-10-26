@@ -1,0 +1,2240 @@
+OPERATIVE_CLASS: TRY_CCM_ORIGINAL_METRIC_SIGNED_PRIMITIVE_Q43
+REQUEST_ID: Q43_ORIGINAL_METRIC_SIGNED_PRIMITIVE
+DATE: 2026-10-26
+LANGUAGE: ru
+SOURCE: ORIGINAL_FULL_CCM_ORIGINAL_THREE_CONTACT_SPARSE_BAND
+SCHEDULE: N=m; L=log(m); M=R=floor(m^epsilon); fixed 0<epsilon<1/32
+RH: OPEN_NOT_CLAIMED
+CF22_PYSR: PARKED_REOPENABLE
+
+Продолжение того же живого чата. Q42 полностью прочитан и проверен: шесть приложений, оба JSON побайтно воспроизведены, независимый bounded audit §§3–7 qualified PASS. Вспомогательная лемма принята в её области; новая степень полной CCM НЕ получена. Следующее поручение отправлено после ОДНОЙ собственной проверенной попытки и установленного конкретного тупика; повторный поиск не считается ещё двумя попытками. S3–S4 пока uncommitted, точные байты ниже.
+
+КОНКРЕТНЫЙ ПРОВЕРЕННЫЙ ТУПИК S3. Для настоящей balanced primitive Q42 положим h(t)=1-G_tilde(exp(t)); h=0 до log(v), v=U+1. Её transform равен Y_tilde(s)/s. Causal convolution H_sigma с kernel exp(-sigma*t)h(t) на [0,L] имеет ||H_1||<=4/5. Это уже full-interval contraction, не только локальный germ. Но D=exp(-t/2) возвращает sigma1 к исходному sigma1/2 с ценой sqrt(m); (I-H_1/2)^(-1) получает лишь5sqrt(m). Оптимизация sigma в этом конкретном constant-envelope Young/similarity certificate не спасает: цена >=8^(-1/epsilon)sqrt(m). Это НЕ нижняя граница actual resolvent или CCM. S3 сохраняет все causal products, nilpotence и distributional jumps; его bounded independent audit PASS.
+
+Кроме того, contraction относится к Y/s, а исходный биномиальный канал есть D_zeta(s)[1-Y(s)^K]. Восстановление Y требует causal derivative с сохранением всех jumps. Нельзя заменить нужную форму резольвентой другого символа, вставить P между множителями или объявить similarity сохранением Loewner-знака. При точном возврате по-прежнему F=C0-e_U^K H_d, C0 с коэффициентом один.
+
+ПОРУЧЕНИЕ: проверь один действительно совместный ход для полной ДИФФЕРЕНЦИРОВАННОЙ actual primitive на ИСХОДНОМ весе и P, до раздельной оплаты derivative/primitive/adjoint. Может ли точное сопряжение этих членов, исходные контакты и actual Mobius floor-coupling дать независимую одностороннюю оценку всей F (или строго достаточного joint pairing), чей полный показатель стремится к нулю с epsilon? Предъяви конкретный количественный арифметический вход и его вывод/проверенный источник. Не подставляй желаемый signed upper как предпосылку. Cofinal U допустимы, но последовательность m общая для всех P-векторов.
+
+Начни с точного соответствия источнику. Если proposed energy/primitive manipulation лишь возвращает Q04 signed derivative или C0, распознай это сразу и не выдавай ещё одно тождество за движение. Если независимый signed шаг не получается, выпиши первую неоплаченную строку и сделай содержательный ранний rollback, включая возможность accepted source-pair receiver вместо заведомо более сильного all-P certificate; однако не повторяй прежние pair/Poisson/PNT результаты и не меняй общий объект. S4 фиксирует проверенные дубли Selberg/renewal/dilation и входную проблему scalar Buchstab monotonicity.
+
+Нужно сохранить настоящие mu/Lambda, все prime powers, обе временные стороны, complex self/cross terms, полную hyperbolic boundary и distributional endpoint terms. Полный исходный P,N,L и кванторы неизменны. S6 уже оплатил original-P analytic return, S7 central-frequency return; простой повтор этих карт не новый supplier. S9 показывает настоящую компенсацию на одной семье, не all-P theorem. Не превращай нижнюю цену Young certificate в no-go для источника.
+
+Верни один полный Markdown: выбранный конкретный ход, полную цену возврата, новый полезный bound если есть, либо точно локализованный долг и обоснованный ранний откат. Воспроизводимые проверки нужны только там, где проверяют чувствительные места. Не генерируй количество файлов/тождеств вместо signed arithmetic. Никаких repository writes, установок, новых внешних запросов или RH claim. Полный fallback сохраняется, conditional ZF78 не повышается.
+
+Ниже10ПОЛНЫХ исходников с точными bytes/LF/SHA256. Один separator LF после body не часть body. Исторические команды не текущие поручения.
+BASE_COMMIT: 154e8214042c25cb2b8c860d047611589b866048
+
+BEGIN_SOURCE S1 CCM_Q42_CONCLUSION.md BYTES=3515 LF=65 SHA256=4051d5e9d438cf6e446a010cc7b9794f7c424ae405ccf4234b592ebccc6da7e9
+# Q42: balanced short inverse repairs poles, not the signed core
+
+2026-10-26. Full original read:73103bytes/1313LF,
+SHA2561ee3011c7dff10d052ef23b60992ff5b8f4551da8124bbaac2149df09efef893.
+Six embedded assets hash-verified. Both standard-library checkers replayed;
+both JSON outputs byte-identical, ten source frames verified, seven planted
+failures detected. Four support-valid reconstruction cases, one nonzero
+remainder case, three actual rational moment enclosures and three generic
+germ checks. These controls do not certify production CCM spectra.
+Independent bounded q32_annulus_audit: qualified PASS §§3–7; no material
+defect found. Inherited contact/consumer estimates are dependencies, not
+freshly re-proved here. Root also checked the regular-germ constant (5.4).
+
+## Auxiliary quantitative result
+
+On the cofinal actual-Mobius sequence U|a_U|<=1/2, U>=64, set v=U+1,
+a_U=sum_{d<=U}mu(d)/d, tau=v*a_U, and u_tilde=u_U-tau*delta_v.
+The full prefix through U remains unchanged; M_tilde(1)=0 exactly.
+The cumulative coefficients G_tilde(x) of 1*u_tilde satisfy
+ G_tilde(x)=1 for 1<=x<v,
+ |G_tilde(x)|<=Q_U+|tau|, Q_U=sum_{d<=U}mu(d)^2<=U-floor(U/4).
+The exact floor cancellation and Mellin integral yield
+ b_U=M_U'(1)+a_U log(v), |1-b_U|<=4/5.
+On |s-1|<=1/(100log(v)), |Y_tilde(s)|<=5/6; Cauchy bounds all
+linked derivatives. This is a shrinking local disk, not a global inverse
+bound and not the conditional G(n,U) estimate of the external source.
+The independent cofinal-input check is CCM_Q42_COFINAL_INPUT_CHECK.md.
+
+## Full source and signed return
+
+Fix epsilon,K=ceil(1/epsilon); choose a common cofinal integer m with
+U<=m^epsilon<U+1. All vectors use the same original P and schedule.
+The full binomial convolution with u_tilde returns actual Lambda through m
+because its remainder is supported at n>=(U+1)^K>m. All correction mixed
+products, prime powers, top index and both time sides remain. There is no
+intermediate projection, replacement of source weights, or vector fee.
+
+The complete repaired series has only a simple pole, with
+ kappa=1-e_U^K, e_U=1-b_U, 1-(4/5)^K<=kappa<=1+(4/5)^K.
+The original contacts return that pole as -kappa H_d<=0, 0<=H_d<=4P.
+The exact finite remainder is
+ F_{m,U}=C0_m-e_U^K H_d, C0_m=A_m+H_d.
+Thus ||F-C0||<=4(4/5)^K, while C0 retains coefficient ONE.
+Zero causal support of the algebraic tail does not delete its residue:
+its principal and regular finite-window returns cancel jointly.
+
+## Budget and decision
+
+No independent upper on F or C0 with exponent tending to zero is supplied.
+Keep the direct inherited bound A_m<=s_keep P,
+ s_keep<=6sqrt(m)+6m^(1/4),
+ T_gtR<=(s_keep+b_div)P,
+ P K_m P>=-(s_keep+50log(m)+8)P,
+ b_div=(56+32Omega)sqrt(R)+12(1+log(R))^2.
+No extra Q32 return is charged to this direct bound. If working through
+N_star, its O_epsilon(m^{2epsilon}) return is charged once, not per channel.
+Unconditional exponent1/2 unchanged; inherited3/8 still conditional on ZF78.
+
+Rollback before further optimization of the artificial pole hierarchy:
+return to full C0 or N_star with its known paid map. A next attempt needs
+actual source-dependent signed information over the full test range; a
+smaller local germ alone is not that input. No route-family impossibility.
+NO_NEW_CONSUMER_POWER; NO_DERIVATION; auxiliary progress only. Goal OPEN,
+RH unclaimed, CF22/PySR parked. No Q43 sent. No Lean/Arb/production spectrum.
+AUTOPSY: dropped=NONE; note=Full source retained; local moment control leaves the original signed core with coefficient one.
+
+END_SOURCE S1
+
+BEGIN_SOURCE S2 PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_VERDICT_2026-10-26.md BYTES=73103 LF=1313 SHA256=1ee3011c7dff10d052ef23b60992ff5b8f4551da8124bbaac2149df09efef893
+# STATUS: TRY_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42
+```yaml
+OPERATIVE_CLASS: TRY_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42
+REQUEST_ID: Q42_COFINAL_SHORT_MOBIUS_JOINT
+DATE: '2026-10-26'
+VERDICT_CODE: COFINAL_JOINT_MOMENT_CONTROL_POLE_HIERARCHY_REPAIRED_FINITE_SIGN_OPEN
+REQUEST_COMPLETION: EXECUTED_PARTIAL_NO_FULL_SIGNED_UPPER
+PROGRESS_CLASS: NO_PROGRESS
+PRIMARY_CONSUMER: OPEN
+AUXILIARY_RESULT: UNIFORM_ACTUAL_MOMENT_BOUND_AND_EXACT_MASS_BALANCED_RETURN
+SOURCE: ORIGINAL_FULL_CCM_ORIGINAL_THREE_CONTACT_SPARSE_BAND
+SCHEDULE: 'N=m; L=log(m); M=R=floor(m^epsilon); fixed 0<epsilon<1/32'
+REQUEST_BYTES: 117726
+REQUEST_LF: 2030
+REQUEST_SHA256: d4ce7e99338317abb4382a00f0baaa5e6808221eb71543360b94b76535d444d6
+BASE_COMMIT: 17621aa1ff8c70187f88401be2174ba0c1259dfd
+BOOTSTRAP_BLOB: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
+SOURCE_BODIES: 10
+MANIFEST: ALL_BYTE_LF_SHA256_FRAMES_MATCH
+EXTERNAL_INPUT: 'E1: unbounded U with U*abs(a_U)<=1/2, primary statement checked'
+EXTERNAL_G_BOUND_14: NOT_ASSUMED
+NEW_RH_ZF_MERTENS_VARIANCE_PREMISE: NONE
+COGNITIVE_OPERATOR: REPRESENTATION_SHIFT
+KILL_SCOPE: NONE
+FAILURE_TYPE: NO_DERIVATION
+EPISTEMIC_STATUS: RESEARCH_DEBT
+CLOSES: []
+OPENS: []
+RH: OPEN_NOT_CLAIMED
+CF22_PYSR: PARKED_REOPENABLE
+REPOSITORY_WRITES: false
+HISTORICAL_CODE_EXECUTED: false
+NEW_INDEPENDENT_AUDIT: false
+LEAN: NOT_RUN
+ARB_INTERVAL: NOT_RUN
+PRODUCTION_SPECTRA: NOT_RUN
+```
+
+# Q42. Cofinal short-Möbius: совместные моменты, полный полюсный ремонт и конечный знаковый остаток
+
+## 0. Результат и точная граница
+
+**Нового верхнего знака для полной CCM не получено.** Есть новый вспомогательный количественный результат для **настоящих коротких моментов**, а не повтор оценки старшего полюса:
+
+при
+\[
+ a_U=\sum_{d\le U}\frac{\mu(d)}d,\qquad U|a_U|\le\tfrac12,
+ \qquad v=U+1,\quad U\ge64,
+\]
+доказано
+\[
+ \boxed{\left|1-M_U'(1)-a_U\log v\right|\le\frac45.}
+ \tag{0.1}
+\]
+Более того, введённая ниже **одна явная коррекция за сохранённым префиксом** даёт контроль всех связанных производных на диске радиуса \((100\log v)^{-1}\), равномерно по растущему \(U\). Полная биномиальная сборка после этой коррекции имеет только простой полюс; его коэффициент \(\kappa_U\) удовлетворяет
+\[
+ \boxed{1-(4/5)^K\le\kappa_U\le1+(4/5)^K,\qquad\kappa_U>0.}
+ \tag{0.2}
+\]
+После обеих временных сторон и исходного \(P\) этот полюс даёт **неположительную** матрицу \(-\kappa_U H_d\), а не большую отдельную цену.
+
+Однако полный конечный остаток равен
+\[
+ \boxed{\mathcal F_{m,U}=C^0_m-(1-\kappa_U)H_d,\qquad
+ \|\mathcal F_{m,U}-C^0_m\|\le4(4/5)^K.}
+ \tag{0.3}
+\]
+**В нём прежняя \(C^0_m\) сохраняется с коэффициентом один.** Независимого малого верхнего знака этой матрицы не доказано. Поэтому (0.1)–(0.2) не объявляются выигрышем исходного CCM-потребителя.
+
+Существенная граница: устранение всей искусственной полюсной иерархии возможно с точным finite return. Значит, сама эта иерархия не должна становиться новой обязательной стеной. Но устранить её — не значит оценить полную арифметическую форму.
+
+Здесь не строится ещё один большой norm certificate ради no-go. Нет утверждения о невозможности CCM, о нижней цене её спектра или об отсутствии иных арифметических поставщиков. Полная безусловная оценка остаётся прежней; \(3/8\) остаётся условным на прежнюю ZF78.
+
+---
+
+## 1. Intake, действующие источники и внешняя предпосылка
+
+Канонический TXT прочитан полностью, включая все десять тел и исторический код в S2. По байтам прикреплённого файла измерено:
+
+```text
+PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_2026-10-26.txt
+117726 bytes
+2030 LF
+SHA256 d4ce7e99338317abb4382a00f0baaa5e6808221eb71543360b94b76535d444d6
+```
+
+Проверены все внутренние размеры, LF, SHA-256, UTF-8 и точные границы тел. Separator LF не включался в body. Краткая пользовательская подпись не задавала общий хеш; указанный выше хеш измерен, а не взят из предыдущего запроса. Таблица всех тел — в §11, машиночитаемый manifest — в приложении.
+
+Bootstrap получен через GitHub connector из `Malaeu/chen_q3`, `rh_clean`, `docs/routeB_bus/proshka/PROSHKA_SYSTEM_PROMPT_v2.md`, blob указан в заголовке. Другие живые файлы для выбора задачи не сканировались. Репозиторий не изменялся. Исторические инструкции и скрипты не исполнялись.
+
+### 1.1. Что используется из пакета
+
+| Вход | Область использования | Чего не предполагаем |
+|---|---|---|
+| S1–S2 | Конечная short-inverse алгебра, исходный \(P\), signed Q32-map | Ни знак биномиальной суммы, ни малость её отдельных каналов |
+| S3 | Нельзя повторно применять дешёвый constrained \(Z\) без возврата гипотез | Не оцениваем произведения как произведения сжатых операторов |
+| S4 | Полная \(B+R=-\zeta'/\zeta\), поддержка \(R\), необходимость всех возвратов | Не удаляем residues из факта нулевой физической поддержки |
+| S5 | Cofinal вход, первичный локатор; старшая-полюсная оценка уже известна | Не импортируем Theorem 3.1(14) |
+| S6 | Область прежнего constrained inverse и условной ZF78 | Не итерируем \(Z\) на вышедших из \(P\) промежуточных векторах |
+| S7–S8 | Уже оплаченные all-\(P\) contour и central returns | Не переносим их аналитические нормы бесплатно на новый бесконечный ряд |
+| S9 | Условный sparse-band receiver на каждой достаточно поздней ячейке | Гипотетический нуль не объявляется найденным |
+| S10 | Лучший приложенный fallback и граница результата на одной семье | Одно семейство не заменяет all-\(P\) квантор |
+
+Хеши устанавливают тождественность текста, а не повторную сертификацию его доказательств.
+
+### 1.2. E1 — проверенный scope первоисточника
+
+**[COFINAL_FAMILY | PAPER, external theorem dependency]** На первичной странице Gallardo–Gutiérrez/Seco проверены Remark 3.2(e) и формула (16): из цитируемого результата С. Сельберга авторы получают неограниченное множество целых \(U\) с \(U|a_U|\le1/2\). Условие на \(G(n,U)\) в Theorem 3.1(14) остаётся **гипотезой**, не нашим входом. Доказательство исходной теоремы Сельберга заново не сертифицировано.
+
+E1: E. A. Gallardo-Gutiérrez, D. Seco, *Zero-Free Regions of the Riemann Zeta Function and Approximation in Weighted Dirichlet Spaces*, Complex Analysis and Operator Theory 19, 38 (2025), DOI `10.1007/s11785-025-01661-2`. Первичная HTML-страница:
+
+```text
+https://link.springer.com/article/10.1007/s11785-025-01661-2
+```
+
+В этой работе проверялись именно HTML-формулы и область E1. Бинарный PDF и его checksum не заявляются проверенными. Никакой новой количественной PNT/Mertens-теоремы далее не требуется. Других внешних оценочных поставщиков не импортировано.
+
+---
+
+## 2. Исходный квантор и выбранный механизм
+
+**[COFINAL_FAMILY | PAPER; inherited domain]** Сначала фиксируется
+\[
+ 0<\epsilon<1/32,\qquad K=\lceil1/\epsilon\rceil.
+\]
+На неизменной производственной ячейке
+\[
+ N=m,\quad L=\log m,\quad M=R=\lfloor m^\epsilon\rfloor,
+ \quad \Omega=2\pi M/L.
+\]
+\(F_M\) — прежний изометрический Fourier-синтез на \([0,L]\); \(P\) — прежний трёхконтактный проектор. Для \(c=Pc\), \(f=F_Mc\):
+\[
+ \|f\|_2=\|c\|_2,\qquad f(0)=f(L)=0,
+ \qquad\int_0^L e^{\pm t/2}f(t)\,dt=0.
+\]
+Все векторы могут быть комплексными.
+
+Сохраняем
+\[
+ A_m=\sum_{n\le m}\frac{\Lambda(n)}{\sqrt n}P Q_M(\log n)P,
+ \qquad C^0_m=A_m+H_d,\qquad0\preceq H_d\preceq4P.
+ \tag{2.1}
+\]
+
+### 2.1. Cofinal расписание общее для всех векторов
+
+Для каждого достаточно большого \(U\) из E1 берём целое
+\[
+ U^{1/\epsilon}\le m<(U+1)^{1/\epsilon}.
+ \tag{2.2}
+\]
+Длина этого интервала стремится к бесконечности, поэтому такое целое существует. Тогда \(R=M=U\), \((U+1)^K>m\), и последовательность \(m\) неограниченна. Она не зависит от \(c\) или \(W\).
+
+Это именно разрешённый cofinal режим. Если бы на нём был независимо доказан требуемый upper, eventual witness из S9 действовал бы и на этой последовательности. Здесь такого upper нет.
+
+### 2.2. Проверяемый ход
+
+Малость одного \(a_U\) не означает малость всех \(M_U^{(r)}(1)\). Поэтому вместо бесплатной итерации \(Z\) или оплаты одного Laurent-коэффициента используем **полное балансирование короткого обратного ряда одним атомом в первом ещё не закреплённом индексе**:
+\[
+ v=U+1,\qquad \tau_U=v a_U,
+\]
+\[
+ u_U(n)=\mu(n)\mathbf1_{n\le U},\qquad
+ \widetilde u_U=u_U-\tau_U\delta_v.
+ \tag{2.3}
+\]
+Это вспомогательный коэффициент, не замена функции Мёбиуса в исходной задаче. Ниже показано, что **после всей биномиальной сборки исходная \(\Lambda\) возвращается точно**, включая \(n=m\). Все члены с коррекцией, в том числе смешанные, обязательны.
+
+На cofinal множестве
+\[
+ |\tau_U|\le\frac{U+1}{2U},\qquad
+ \left\|\tau_U v^{-1/2}V_{\log v}\right\|
+ \le\frac{\sqrt{U+1}}{2U}\le\frac1{\sqrt{2U}}.
+ \tag{2.4}
+\]
+Последнее — только цена одного вспомогательного атома. Мы **не** умножаем её на якобы дешёвые нормы степеней \(Z\). Полная цена изменения конечной source-матрицы будет ровно нулевой по коэффициентам, а не по такой нормовой аргументации.
+
+Использование \(v=U+1\), а не \(v=U\), существенно: сохраняется весь префикс \(1\le n\le U\), от которого зависит строгий гиперболический cutoff.
+
+---
+
+## 3. Новая количественная связь настоящих моментов
+
+### 3.1. Точная примитивная функция, со всеми полами
+
+**[ABSTRACT | PAPER]** Определим для вещественных \(x\ge1\)
+\[
+ \widetilde G_U(x)=
+ \sum_{d\le U}\mu(d)\lfloor x/d\rfloor
+ -\tau_U\lfloor x/v\rfloor,
+ \qquad Q_U=\sum_{d\le U}\mu(d)^2.
+ \tag{3.1}
+\]
+Здесь \(\widetilde G_U\) — накопленная сумма коэффициентов \(\mathbf1*\widetilde u_U\), а не сама последовательность этих коэффициентов. Смешивать эти два объекта нельзя.
+
+Поскольку \(\tau_U/v=a_U\), линейные части полов сокращаются **до модуля**:
+\[
+ \boxed{\widetilde G_U(x)=
+ -\sum_{d\le U}\mu(d)\{x/d\}+\tau_U\{x/v\}.}
+ \tag{3.2}
+\]
+Кроме того, точное делительное свойство настоящей \(\mu\) даёт
+\[
+ \boxed{\widetilde G_U(x)=1\quad(1\le x<v).}
+ \tag{3.3}
+\]
+Это включает нецелые \(x\); в точке \(v\) уже может быть скачок, который не удаляется.
+
+Только после сокращения линейного члена получаем законную равномерную оценку
+\[
+ \boxed{|\widetilde G_U(x)|\le Q_U+|\tau_U|=:S_U.}
+ \tag{3.4}
+\]
+Она не является Theorem 3.1(14). Её размер в общем случае \(O(U)\), не требуемый там более сильный диапазонный выигрыш.
+
+### 3.2. Mellin-формула без неравномерного Laurent-предела
+
+Положим
+\[
+ M_U(s)=\sum_{d\le U}\mu(d)d^{-s},\quad
+ \widetilde M_U(s)=M_U(s)-a_Uv^{1-s},\quad
+ \widetilde Y_U(s)=1-\zeta(s)\widetilde M_U(s).
+ \tag{3.5}
+\]
+\(\widetilde M_U(1)=0\) точно. При \(\Re s>1\) абсолютная сходимость и (3.1) дают
+\[
+ \zeta(s)\widetilde M_U(s)
+ =s\int_1^\infty\widetilde G_U(x)x^{-s-1}\,dx.
+\]
+По (3.4) интеграл аналитичен уже в \(\Re s>0\). Отделяя участок (3.3), получаем точное продолжение
+\[
+ \boxed{\widetilde Y_U(s)=
+ v^{-s}-s\int_v^\infty\widetilde G_U(x)x^{-s-1}\,dx,
+ \qquad\Re s>0.}
+ \tag{3.6}
+\]
+Не предполагается сходимость исходного бесконечного ряда Мёбиуса слева от единицы. Это конечный полином, умноженный на \(\zeta\), и интеграл **его собственной** ограниченной примитивной функции.
+
+Определим
+\[
+ b_U=\widetilde M_U'(1)=M_U'(1)+a_U\log v
+ =\sum_{d\le U}\frac{\mu(d)}d\log(v/d),
+ \qquad e_U=1-b_U=\widetilde Y_U(1).
+ \tag{3.7}
+\]
+Из (3.6), без знакового предположения на хвост:
+\[
+ |e_U|\le\frac{1+Q_U+|\tau_U|}{v}=:\vartheta_U.
+ \tag{3.8}
+\]
+Теперь используется дополнительная структура настоящей \(\mu\), отсутствующая у произвольных коэффициентных меток: \(\mu(d)=0\) для каждого \(4\mid d\). Поэтому
+\[
+ Q_U\le U-\lfloor U/4\rfloor.
+\]
+На cofinal множестве E1:
+\[
+ \vartheta_U\le
+ 1-\frac{\lfloor U/4\rfloor}{U+1}+\frac1{2U}
+ \le\frac34+\frac1{U+1}+\frac1{2U}<\frac45
+ \quad(U\ge64).
+ \tag{3.9}
+\]
+Это доказывает (0.1), в частности \(1/5\le b_U\le9/5\).
+
+**Это направленная количественная информация о настоящей связанной первой производной**, полученная из cofinal малости, точного floor-coupling и квадратсвободной поддержки. Она не получена из независимого назначения нижних моментов. Сильная оценка \(G(n,U)\) не использована.
+
+### 3.3. Полная иерархия производных: равномерная область
+
+**[COFINAL_FAMILY | PAPER]** Берём
+\[
+ r_U=\frac1{100\log v},\qquad |s-1|\le r_U.
+\]
+Здесь \(r_U<1/100\), \(\sigma=\Re s\ge1-r_U>0\). По (3.6)
+\[
+ |\widetilde Y_U(s)|
+ \le v^{-\sigma}\left(1+\frac{|s|}{\sigma}S_U\right).
+\]
+Используем только явные константы:
+\[
+ v^{1-\sigma}\le e^{1/100}\le100/99,
+ \qquad |s|/\sigma\le101/99.
+\]
+Вместе с (3.8)–(3.9):
+\[
+ \boxed{\sup_{|s-1|\le r_U}|\widetilde Y_U(s)|
+ \le\frac{100}{99}\frac{101}{99}\frac45<\frac56.}
+ \tag{3.10}
+\]
+Следовательно, для всех целых \(r\ge0\), с тем же \(U\),
+\[
+ \boxed{\left|\frac{d^r}{ds^r}\widetilde Y_U(s)^K\bigg|_{s=1}\right|
+ \le r!(100\log v)^r(5/6)^K.}
+ \tag{3.11}
+\]
+Это Cauchy на **явно заданном движущемся диске**, не перенос fixed-\(U\) асимптотики на растущий \(U\). Все смешанные произведения моментов входят в \(\widetilde Y_U^K\) до этой оценки.
+
+Можно отдельно выписать контроль самих исходных моментов. Обозначим \(F(s)=(s-1)\zeta(s)\). Из элементарной формулы
+\[
+ \zeta(s)=\frac{s}{s-1}-s\int_1^\infty\{x\}x^{-s-1}\,dx
+ \qquad(\Re s>0)
+\]
+следует на указанном диске \(|F-1|\le2/99\), поэтому \(|F|\ge97/99>9/10\). Тогда
+\[
+ \frac{\widetilde M_U(s)}{s-1}
+ =\frac{1-\widetilde Y_U(s)}{F(s)}
+\]
+аналитична и имеет модуль меньше \(3\). Ещё одна Cauchy-оценка даёт при \(r\ge1\)
+\[
+ \boxed{|M_U^{(r)}(1)-a_U(-\log v)^r|
+ =|\widetilde M_U^{(r)}(1)|
+ \le3r!(100\log v)^{r-1}.}
+ \tag{3.12}
+\]
+Для \(r=1\) более сильна (0.1). Это uniform bound, а не утверждение о сходимости всех производных к производным \(1/\zeta\). В частности, здесь не утверждается \(M_U'(1)=1+O(U^{-c})\) или какой-либо Mertens-rate.
+
+Формула для связи с нижними Laurent-комбинациями полностью явная: если \(N_U(s)=\widetilde M_U(s)/(s-1)\), то
+\[
+ \widetilde Y_U(s)=1-F(s)N_U(s),\qquad
+ N_U^{(r)}(1)=\frac{\widetilde M_U^{(r+1)}(1)}{r+1}.
+\]
+Таким образом, (3.11) контролирует именно связанные комбинации всех нижних моментов, а не только \(a_U^K\).
+
+---
+
+## 4. Вся биномиальная сборка и точный конечный остаток
+
+**[ABSTRACT | PAPER]** Единицу свёртки обозначаем \(\mathbf e=\delta_1\), постоянную арифметическую функцию — \(\mathbf1\). Положим
+\[
+ \widetilde y_U=\mathbf e-\mathbf1*\widetilde u_U.
+\]
+Поскольку (2.3) не меняет ни одного коэффициента до \(U\),
+\[
+ \widetilde y_U(n)=0\ (n\le U),\qquad
+ \operatorname{supp}\widetilde y_U^{*K}\subseteq[v^K,\infty).
+ \tag{4.1}
+\]
+Полная геометрическая формула конечной свёрточной алгебры, с фактическим обратным \(\mu\), даёт
+\[
+ \boxed{\Lambda=
+ \sum_{j=1}^K(-1)^{j-1}\binom Kj
+ \widetilde u_U^{*j}*\mathbf1^{*(j-1)}*\log
+ +\Lambda*\widetilde y_U^{*K}.}
+ \tag{4.2}
+\]
+Введём коэффициенты первой суммы \(\widetilde\lambda_{U,K}(n)\) и остатка \(r_{U,K}(n)\). На (2.2):
+\[
+ \boxed{\widetilde\lambda_{U,K}(n)=\Lambda(n),\quad
+ r_{U,K}(n)=0\quad(1\le n\le m).}
+ \tag{4.3}
+\]
+Ни \(\mu\), ни \(\Lambda\) в конечной цели не заменены. Вспомогательный атом в (2.3) может не совпадать с \(\mu(v)\); все порождённые им произведения в (4.2) сокращаются **совместно**. Отдельно объявлять их маленькими нельзя.
+
+В частности, внутри \(\widetilde u_U^{*j}\) сохранено всё раскрытие
+\[
+ \widetilde u_U^{*j}=
+ \sum_{h=0}^{j}\binom jh(-\tau_U)^h
+ u_U^{*(j-h)}*\delta_{v^h}.
+ \tag{4.4}
+\]
+Все переменные упорядочены, общий cutoff произведения буквальный. Пропуск смешанных \(0<h<j\) меняет источник. Если \(v^K\le m\), остаток (4.2) возвращается полностью, а не считается нулевым.
+
+Для бесконечных Dirichlet-рядов на \(\Re s>1\), где всё абсолютно сходится:
+\[
+ D(s)=-\frac{\zeta'(s)}{\zeta(s)},
+\]
+\[
+ \widetilde B_{U,K}(s)=D(s)[1-\widetilde Y_U(s)^K],\qquad
+ \widetilde R_{U,K}(s)=D(s)\widetilde Y_U(s)^K,
+ \qquad\widetilde B+\widetilde R=D.
+ \tag{4.5}
+\]
+Это не новая гипотеза о контурном хвосте. Их коэффициенты — ровно (4.2).
+
+### 4.1. Контроль исходного \(P\)
+
+На прежнем физическом \(L^2(0,L)\):
+\[
+ (V_sf)(t)=\mathbf1_{s\le t\le L}f(t-s),\quad
+ V_sV_t=V_{s+t},\quad V_s=0\ (s\ge L).
+\]
+Подстановка \(n^{-1/2}V_{\log n}\) в (4.2) законна до сжатия. После неё прибавляется adjoint и только затем применяются \(F_M,P\). Отдельные множители не обязаны сохранять \(P\), и это не используется.
+
+Вся source-матрица после (4.2) равна прежней \(A_m\). **Новый projection-return равен нулю**, поскольку вектор и пространство вообще не меняются. Равенство сохраняет произвольные комплексные self/cross-члены одновременно для всех \(c=Pc\) и \(W=PWP\succeq0\), \(\operatorname{Tr}W=1\).
+
+Индекс \(n=m\) сохраняется в коэффициентном равенстве. Его нулевой физический overlap не используется для удаления sinc-сглаженного верхнего атома в \(N_\star\). Если подставлять (4.2) в Q32, весь прежний \(r_\star\) начисляется **один раз**, не по каждому биномиальному каналу.
+
+---
+
+## 5. Полная искусственная полюсная иерархия оплачена
+
+### 5.1. Почему не только старший полюс
+
+**[ABSTRACT | PAPER]** Поскольку \(\widetilde M_U(1)=0\), \(\widetilde Y_U\) аналитична в единице. В (4.5) остаётся только простой полюс:
+\[
+ \boxed{\operatorname{Res}_{s=1}\widetilde B_{U,K}(s)
+ =\kappa_U:=1-e_U^K,\qquad
+ \operatorname{Res}_{s=1}\widetilde R_{U,K}(s)=e_U^K.}
+ \tag{5.1}
+\]
+Все коэффициенты полюсов порядков \(2,\ldots,K+1\) равны нулю **точно**. Это следует из полной суммы, не из оплаты старшего коэффициента отдельно.
+
+Для явной проверки положим \(t=s-1\), \(F=t\zeta\), \(N=\widetilde M_U/t\). Тогда
+\[
+ \widetilde B_{U,K}(1+t)=
+ \frac{F-tF'}{t}
+ \sum_{j=1}^{K}(-1)^{j-1}\binom Kj N^jF^{j-1}.
+ \tag{5.2}
+\]
+Правая часть — аналитическая функция, делённая только на \(t\). В нуле её числитель равен \(1-(1-b_U)^K\). Не заменяем \(-\zeta'\) производной всего \(\zeta\widetilde M_U\): это добавило бы другую арифметику.
+
+Из (3.9):
+\[
+ 0<1-(4/5)^K\le\kappa_U\le1+(4/5)^K<2.
+ \tag{5.3}
+\]
+Ни паритет \(K\), ни знак \(a_U\) не назначаются удобными. \(e_U\) вещественен, поэтому этот интервал верен для любого целого \(K\ge1\).
+
+### 5.2. Uniform regular germ, но не бесплатная глобальная инверсия
+
+Из той же элементарной интегральной формулы для \(\zeta\) на диске §3.3 следует \(|F'/F|<3\). Поэтому при \(|s-1|\le r_U/2\)
+\[
+ \boxed{
+ \left|\widetilde B_{U,K}(s)-\frac{\kappa_U}{s-1}\right|
+ \le\frac{2(5/6)^K}{r_U}+6.
+ }
+ \tag{5.4}
+\]
+Действительно, пишем \(D=1/(s-1)-F'/F\), а разность \(\widetilde Y_U(s)^K-e_U^K\) оплачиваем Cauchy по (3.10). Аналогичная оценка действует для \(\widetilde R-e_U^K/(s-1)\).
+
+(5.4) **локальна**: диск сжимается как \(1/\log U\). Она не покрывает весь физический Fourier-диапазон, не даёт оценку всей вертикальной линии и не разрешает двигать общий контур с бесплатными горизонталями. В частности, маленькая \((5/6)^K\) при фиксированном \(\epsilon\) — константа, не степень по \(m\).
+
+### 5.3. Возврат простого полюса с настоящим знаком
+
+Обозначим причинный непрерывный оператор
+\[
+ \mathcal C_L=\int_0^L e^{s/2}V_s\,ds.
+\]
+Пара \(\mathcal C_L+\mathcal C_L^*\) имеет ядро \(e^{|t-u|/2}\). Два исходных экспоненциальных контакта и тождество
+\[
+ e^{|t-u|/2}=e^{(t-u)/2}+e^{(u-t)/2}-e^{-|t-u|/2}
+\]
+возвращают ровно
+\[
+ PF_M^*(\mathcal C_L+\mathcal C_L^*)F_MP=-H_d.
+ \tag{5.5}
+\]
+Это известный continuous return из пакета, с проверенным здесь знаком и коэффициентом. Не новая теорема о CCM.
+
+Следовательно, весь principal-part вклад (5.1) на исходном \(P\) равен
+\[
+ \boxed{-\kappa_UH_d\preceq0,\qquad
+ \|\kappa_UH_d\|\le4[1+(4/5)^K].}
+ \tag{5.6}
+\]
+Его верхняя плата — **ноль**. Малость одного \(a_U^K\) не использована как цена всей формы; возвращён весь исправленный полюсный блок.
+
+---
+
+## 6. Конечный остаток возвращён целиком, а не удалён по поддержке
+
+### 6.1. Точное finite-window определение
+
+Определим локально конечную signed-меру на причинной полуоси
+\[
+ d\mathfrak E_U(s)=
+ \sum_{n\ge1}\frac{\widetilde\lambda_{U,K}(n)}{\sqrt n}\,
+ \delta_{\log n}(ds)-\kappa_Ue^{s/2}\,ds.
+ \tag{6.1}
+\]
+Её ограничение на \([0,L]\) определено без контурных пределов. По (4.3) дискретная часть в этом окне — **полная настоящая** \(\Lambda(n)/\sqrt n\). Никакое утверждение о далёком хвосте ряда не требуется для этого конечного определения.
+
+Сжимая обе временные стороны, получаем
+\[
+ \boxed{
+ A_m=-\kappa_UH_d+\mathcal F_{m,U},\qquad
+ \mathcal F_{m,U}=C^0_m-e_U^K H_d.
+ }
+ \tag{6.2}
+\]
+Это точная полная signed-сборка, включая все нижние моменты, края, self/cross и prime powers. Поэтому
+\[
+ \boxed{-4(4/5)^KP\preceq\mathcal F_{m,U}-C^0_m
+ \preceq4(4/5)^KP.}
+ \tag{6.3}
+\]
+Цена изменения оставшейся матрицы — явная константа, но коэффициент самой \(C^0_m\) остаётся **один**.
+
+### 6.2. Нулевая физическая поддержка \(\widetilde R\) не зануляет её полюс
+
+Коэффициенты \(r_{U,K}\) дают нулевой причинный оператор в окне \([0,L]\), потому что \(v^K>m\). Но \(\widetilde R\) имеет residue \(e_U^K\). После вычитания этого простого полюса оставшаяся часть (регулярная лишь в \(s=1\), не объявленная целой всюду) на том же конечном окне равен \(-e_U^K\mathcal C_L\). Поэтому две сжатые части равны
+\[
+ -e_U^KH_d\quad\hbox{и}\quad+e_U^KH_d,
+ \tag{6.4}
+\]
+и сокращаются в ноль **совместно**. Их нельзя удалить по отдельности.
+
+Это можно формулировать вообще без нового контурного перехода: разность signed-мер и непрерывной экспоненты в Re\(s>1\) имеет указанный Laplace-transform, а её finite-window restriction вычислена непосредственно. Никакие неоценённые горизонтальные/вертикальные остатки не называются малыми.
+
+В частности, возврат к \(B+R=D\) даёт
+\[
+ -\kappa_UH_d+\mathcal F_{m,U}
+ =-H_d+C^0_m=A_m,
+\]
+с точным сокращением всей добавленной коррекции. В конечной арифметике не потеряно ни одного веса; небольшой вспомогательный атом не является лицензией на приближённое обращение.
+
+### 6.3. Совместимость с уже оплаченным all-\(P\) контуром
+
+S7 для **исходного** источника даёт
+\[
+ A_m=-H_d+\mathcal V_m-\mathcal R_m^{\rm sign}+\mathcal E_m,
+ \qquad\|\mathcal V_m\|\le\mathfrak B_m,
+ \quad\|\mathcal E_m\|\le\mathfrak e_m.
+\]
+Здесь общий для всего \(P\) контур и все его расходы остаются прежними. Просто подставляя точное (6.2), а не перенося оценки на другой бесконечный ряд, получаем
+\[
+ \boxed{\mathcal F_{m,U}=
+ \mathcal V_m-\mathcal R_m^{\rm sign}+\mathcal E_m-e_U^KH_d.}
+ \tag{6.5}
+\]
+В частности,
+\[
+ \mathcal F_{m,U}\preceq
+ -\mathcal R_m^{\rm sign}
+ +[\mathfrak B_m+\mathfrak e_m+4(4/5)^K]P.
+\]
+Все дополнительные аналитические расходы вписываются в прежние \(O_\epsilon(m^{2\epsilon})\). **Знак всей настоящей матрицы вычетов не изменён и не доказан.** Мы не пересчитываем adverse selected-zero identity и не используем его как благоприятный вход.
+
+---
+
+## 7. Первая неоплаченная строка и полный потребитель
+
+Не доказан независимый upper
+\[
+ \boxed{\mathcal F_{m,U}\preceq
+ D_\epsilon m^{\theta(\epsilon)}P,
+ \qquad\theta(\epsilon)\longrightarrow0,}
+ \tag{7.1 — UNPROVED}
+\]
+на одной общей неограниченной последовательности (2.2). Благодаря (6.3) это тот же signed debt \(C^0_m\), с точностью до полностью оплаченной константы. (7.1) не объявляется новой поставленной леммой и не принимается в предпосылки последующего «доказательства».
+
+### 7.1. Почему проверенный первоисточник не закрывает эту строку
+
+E1 supplies cofinal \(a_U\), а не необходимую количественную оценку всей \(G(n,U)\). В проверенной Theorem 3.1(14) такая оценка — условие. В нашей попытке независимо доказаны только (3.4), (3.8)–(3.12), которые дают локальные связанные моменты и favourable principal part. Ни один из этих результатов не контролирует полный signed pairing (6.1) с достижимой корреляцией для всех \(c=Pc\).
+
+Дешёвая вспомогательная поправка не оправдывает бесплатную оценку \(Z^j\); запрет области из S3 не обходился. Локальная регулярность около \(s=1\) не является глобальной оценкой конечной физической матрицы. Неравномерная fixed-\(U\) асимптотика не использовалась.
+
+### 7.2. Все платы
+
+**[COFINAL_FAMILY | PAPER; new exact maps and inherited consumer estimates]**
+
+| Элемент | Полная цена | Область |
+|---|---|---|
+| Один balancing-атом до сжатия | \(\le1/\sqrt{2U}\); его \(r\)-я \(\sigma\)-производная стоит ещё \((\log v)^r\) | Только этот атом, не произведение с \(Z^j\) |
+| Полная mixed биномиальная смена источника через \(m\) | **0 точно** | (4.2)–(4.3), все коэффициенты |
+| \(\Lambda*\widetilde y_U^{*K}\) в физическом окне | **0 точно** при \(v^K>m\) | Не удаляет его отдельный полюс; (6.4) возвращён |
+| Artificial poles порядка \(\ge2\) | **0 точно** в полной repaired-сумме | Не утверждение о полюсах старых отдельных каналов |
+| Полный простой pole block | \(-\kappa_UH_d\preceq0\); верхняя плата **0** | Все исходные комплексные \(P\)-векторы |
+| \(\mathcal F_{m,U}-C^0_m\) | \(\le4(4/5)^K\) по норме | Полный остаток, не оценка \(C^0_m\) |
+| Новый Fourier/contact-return | **0** | Вектор, окно, норма и \(P\) не меняются |
+| Q32-return при работе через \(N_\star\) | Прежний \(r_\star\le C_\epsilon m^{2\epsilon}\), один раз | Не добавляется в прямой physical route повторно |
+| Upper полной \(\mathcal F_{m,U}\) нужной степени | **Не доказан** | Первая неоплаченная строка (7.1) |
+
+Если бы (7.1) было доказано, (5.6) и (6.2) дали бы \(A_m\preceq D_\epsilon m^{\theta(\epsilon)}P\), а затем
+\[
+ T_{>R}\preceq[D_\epsilon m^{\theta(\epsilon)}+b_{\rm div}]P,
+\qquad
+ PK_mP\succeq-[D_\epsilon m^{\theta(\epsilon)}+50L+8]P,
+\]
+\[
+ b_{\rm div}=(56+32\Omega)\sqrt R+12(1+\log R)^2.
+ \tag{7.2}
+\]
+Это только карта достаточности, не полученный бюджет.
+
+**Полностью законное фактическое завершение.** По исходным оценкам:
+\[
+ A_m\preceq s_{\rm keep}P,
+ \qquad s_{\rm keep}\le6\sqrt m+6m^{1/4}.
+\]
+Следовательно, без нового предположения
+\[
+ \mathcal F_{m,U}\preceq
+ [s_{\rm keep}+4(1+(4/5)^K)]P.
+ \tag{7.3}
+\]
+Это лишь унаследованный fallback, перенесённый в новую запись. Двусторонний безопасный верх \(\|\mathcal F_{m,U}\|\le12\sqrt m+4(1+(4/5)^K)\) также следует из прежнего prime-norm, но не используется как новый механизм.
+
+Нет смысла добавлять цену (7.3) к исходной оценке, которая уже известна непосредственно. Поэтому окончательно сохраняем
+\[
+ \boxed{T_{>R}\preceq[s_{\rm keep}+b_{\rm div}]P,\qquad
+ PK_mP\succeq-[s_{\rm keep}+50L+8]P.}
+ \tag{7.4}
+\]
+Короткая делительная плата возникает один раз только для \(T_{>R}\); нет повторных \(H_d\), prime-power, \(U_{\rm sf}\) или Q32-плат в прямой \(K\)-оценке. Все \(\Lambda(p^j)\) уже находятся в исходном \(A_m\). По (7.4) полная безусловная степень остаётся \(1/2\). Условный \(3/8\) остаётся условным на прежнюю ZF78; она не использована в Q42.
+
+---
+
+## 8. Выполненный rollback и граница полезности
+
+В отличие от оплаты одного старшего полюса, здесь проверена вся cofinal-иерархия, а её полюсный блок действительно перестал быть большим. Но (6.2) показывает, что **продолжать выбор \(U\) только ради меньшего pole coefficient не обосновано**. Полная remaining source-матрица отличается от прежнего центра лишь ограниченной матрицей.
+
+Выполненный ранний возврат:
+\[
+ C^0_m=\mathcal F_{m,U}+e_U^KH_d
+       =N_\star+E_\star+H_d.
+ \tag{8.1}
+\]
+Первая карта точная; у второй сохраняется ровно один ранее оплаченный \(E_\star\). Никакой новой source replacement, промежуточной проекции или произвольного момента нет.
+
+Две документированные записи остаются открытыми, не как новые запросы:
+
+| Представление | Полная цена карты | Что может изменить математический вывод | Решающий эффект / стоимость |
+|---|---|---|---|
+| Прямое \(C^0_m\) на исходном \(P\) | Точная карта; \(0\preceq H_d\preceq4P\) | Независимое неравенство для всей signed-меры и её достижимой корреляции | При успехе непосредственно идёт в consumer; новая аналитическая цена отсутствует, арифметический шаг открыт |
+| Полное \(N_\star\) из Q32 | \(O_\epsilon(m^{2\epsilon})\) один раз | Совместный source/test upper до разделения Fourier-полинома и матрицы | При успехе показатель \(\max(\theta,2\epsilon)\); карта известна, новый signed-вход не найден |
+
+**DISCRIMINATOR.** Для следующего предлагаемого входа требуется проверить весь \(\mathfrak E_U\) / \(C^0_m\), не только его germ у \(s=1\). У нулевого физического remainder может оставаться ненулевой отдельный residue (6.4). А на настоящих больших простых полный конечный коэффициент остаётся \(\log p\). Кандидат обязан сохранить оба факта и произвольные поляризованные complex terms.
+
+Самое сильное возражение: «Получены хорошие моменты, но новая матрица в (6.2) опять содержит исходную цель». **Да.** Поэтому статус основного потребителя `NO_PROGRESS`. Новая вспомогательная лемма не заявляется закрытием RH, SP, G1/G3 или уменьшением полного арифметического показателя.
+
+Никакая theorem-shape не объявлена невозможной. В частности, мы не доказали, что \(a_U\) и остальные настоящие данные никогда не смогут дать сильное совместное сравнение. Доказано только то, что выполненный перенос поставил положительный principal coefficient и полную uniform moment estimate, но не нужный знак finite remainder.
+
+---
+
+## 9. Проверки, регистрация и эпистемические границы
+
+Новые проверки написаны только для чувствительных мест расчёта. Старый код из S2 не запускался.
+
+- Конечная actual-\(\mu\) реконструкция проверяется с рациональным balancing-коэффициентом, полными формальными координатами \(\log p\), всеми powers и верхним индексом. Есть как support-valid, так и nonzero-remainder режим.
+- Проверены полы на целых и нецелых швах, точное равенство полного первого момента нулю и сохранение префикса.
+- Для трёх настоящих \(U\ge64\), выбранных только по точному условию \(U|a_U|\le1/2\), вычислены рациональные внешние интервалы \(b_U\). Логарифмы ограждены сходящимся atanh-рядом с явным хвостом. Это не float-знак и не Arb.
+- Generic rational germ controls проверяют именно алгебру отсутствия higher poles; они не являются моделью actual \(\mu\) или spectrum-тестом.
+- Семь намеренных ошибок обнаружены: неверный знак коррекции; перенос коррекции внутрь сохранённого префикса; потеря mixed powers; замена \(\mu\) на \(|\mu|\); удаление ненулевого конечного остатка; зануление residue по поддержке; неверный знак continuum-return.
+
+В actual moment-панели получены, например,
+\[
+ b_{67}\in[1.00126191,1.00126192],\quad
+ b_{247}\in[1.00051732,1.00051733],\quad
+ b_{430}\in[1.00066867,1.00066868].
+\]
+Эти десятичные интервалы — точные рациональные endpoints из результата, не округлённый float-критерий. Универсальные (3.9)–(3.12) доказываются выше, **не экстраполируются** из этой панели. В этих тестах не вычислялась производственная CCM-матрица при астрономических \(m\) из (2.2).
+
+Пререгистрация создана после чтения и бумажного выбора конструкции, но до новых executable controls. Это не задним числом зарегистрированный прогноз всей аналитической работы.
+
+| Предсказание | Судьба |
+|---|---|
+| P1: balancing сохраняет префикс и полную конечную \(\Lambda\) | Подтверждено доказательством и exact controls |
+| P2: у полной repaired-суммы только простой residue \(1-(1-b_U)^K\) | Подтверждено полной формулой и germ controls |
+| P3: на указанном cofinal множестве \(|1-b_U|\le4/5\) | Доказано uniform оценкой; панель только проверяет чувствительные знаки |
+| P4: finite return не следует из local germ, возвращается \(C^0\) с коэффициентом один | Подтверждено (6.2)–(6.5), не объявлено no-go |
+
+Исполнялись только включённые ниже новые стандартно-библиотечные проверяющие. Результаты после извлечения из окончательного Markdown повторно воспроизводятся побайтно. Не выполнялись новые независимый математический аудит, Lean, Arb, spectrum-расчёт, установки, запись в репозиторий или отправка нового запроса.
+
+---
+
+## 10. Dependency epistemics и closeout
+
+```yaml
+DOWNSTREAM_CONSUMER: ORIGINAL_T_GT_R_UPPER_AND_SPARSE_CCM_RECEIVER
+ACTUAL_CONSUMER_REQUIREMENT: >-
+  For each fixed sufficiently small epsilon, an upper on the same original P
+  with eta(epsilon)->0 and complete returns; a common unbounded m subsequence
+  is admissible under the inherited eventual negative-witness receiver.
+ORIGINAL_REQUESTED_OBJECT: JOINT_COFINAL_SHORT_MOBIUS_SIGNED_BOUND
+ORIGINAL_OBJECT_IS: NOT_NECESSARY
+ORIGINAL_OBJECT_NOTE: >-
+  Short-inverse pole control is a chosen sufficient route component, not a
+  proved necessary condition for RH or for the unchanged CCM consumer.
+KNOWN_WEAKER_INTERFACES: >-
+  The accepted actual-source pair receiver is weaker than an all-P upper,
+  but no independent favorable pair margin is supplied in Q42.
+FAILURE_TYPE: NO_DERIVATION
+EPISTEMIC_STATUS: RESEARCH_DEBT
+NOVELTY_AXIS: >-
+  Uniform actual cofinal lower-moment combinations and a full mass-balanced
+  finite return; no global-novelty claim and no new consumer exponent.
+REOPEN_TRIGGER: >-
+  A source-dependent one-sided estimate for the complete finite remainder,
+  with the actual mixed weights and hyperbolic cutoff. Local germ bounds
+  or the conditional G(n,U) hypothesis alone do not meet this trigger.
+KILL_SCOPE: NONE
+MATHEMATICALLY_DEAD: NONE
+CLOSES: []
+OPENS: []
+```
+
+**Что стало меньше?** Вспомогательный artificial-pole bookkeeping: вся иерархия снята с uniform lower-moment контролем и нулевой finite-map ошибкой. Основной signed arithmetic debt не уменьшился.
+
+**Что не повторять?** Оплату только \(a_U^K\), бесплатное повторение constrained \(Z\), удаление residue по нулевой causal support, перенос локальной \(s=1\)-оценки на всю инверсию, объявление (14) известной теоремой.
+
+**Одно действие для независимого проверяющего, без диспетчеризации нового запроса:** проверить (3.6)–(3.12), сохранение всех mixed terms в (4.2), коэффициент и знак (5.6), и точный finite-window return (6.2)–(6.5). Проверка должна оставить (7.1) открытой; никаких source-state продвижений не предлагается.
+
+```yaml
+iteration: Q42
+status: NO_PROGRESS
+auxiliary_status: PAPER_DERIVATION_WITH_EXACT_LOCAL_CONTROLS
+failed_completion: LOCAL_COFINAL_MOMENTS_DO_NOT_SUPPLY_FULL_FINITE_SIGN
+cognitive_operator_used: REPRESENTATION_SHIFT
+new_gap_name: NONE_ORIGINAL_SIGNED_CORE_RETAINED
+invariant_learned: >-
+  All artificial poles can be removed by an explicit balanced short inverse
+  without changing any finite source coefficient; the remaining form still
+  contains the original centered arithmetic with coefficient one.
+forbidden_future_move: >-
+  Treating a favorable artificial principal part as a bound for the whole source.
+next_decisive_test: READ_ONLY_AUDIT_OF_UNIFORM_MOMENT_AND_FINITE_RETURN_LEMMA
+route_score_primary: 2
+RH_CLAIM: NOT_MADE
+```
+
+## 11. Полный manifest входов
+
+Строки следующей таблицы относятся к каноническому TXT. Размеры — точные UTF-8 bytes; внешний separator LF не входит в body.
+
+| ID | Имя | Bytes | LF | Строки TXT | SHA-256 |
+|---|---|---:|---:|---|---|
+| S1 | `CCM_Q41_CONCLUSION.md` | 3266 | 60 | 30–89 | `97e433130c802dcb798d2630d4c15f7a28dc835d79e785efbf32e01cb1e7901e` |
+| S2 | `PROSHKA_CCM_EARLIER_FORK_SIGNED_SOURCE_Q41_VERDICT_2026-10-26.md` | 67429 | 1214 | 94–1307 | `db0b177c2494f1fa1376f2c058860f8ec38561f92d5bb6c8ccdec5f8c068335c` |
+| S3 | `CCM_POST_Q41_SECOND_INVERSE_PREFLIGHT.md` | 4867 | 89 | 1312–1400 | `b64182ee4982887c85bb76bb24bcf566d8465c3841347b061e5915a0602c9dcc` |
+| S4 | `CCM_POST_Q41_JOINT_MOBIUS_POLE_PREFLIGHT.md` | 3989 | 74 | 1405–1478 | `883e3f982b74794d863558243ed922f0e33880d3c0fffa3e49d4a3d222d1b782` |
+| S5 | `CCM_POST_Q41_COFINAL_MOBIUS_MOMENT.md` | 3719 | 66 | 1483–1548 | `ff75e7c78c8a4448ba21a0d7961bca950ac8aae4db55c7cb928f3df7118fd8aa` |
+| S6 | `CCM_JOINT_Q04_CONCLUSION.md` | 5036 | 92 | 1553–1644 | `617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086` |
+| S7 | `CCM_POST_Q27_ORIGINAL_P_CONTOUR.md` | 5633 | 123 | 1649–1771 | `109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2` |
+| S8 | `CCM_Q32_CONCLUSION.md` | 3625 | 64 | 1776–1839 | `183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245` |
+| S9 | `CCM_SPARSE_BAND_RECEIVER.md` | 6174 | 69 | 1844–1912 | `0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06` |
+| S10 | `CCM_Q40_CONCLUSION.md` | 5988 | 111 | 1917–2027 | `e77ad2f2014b46a54d60f2ad4f9eadff172f8ae6c9a91ba2c03a59a9c2a6ea06` |
+
+## 12. Воспроизведение встроенных приложений
+
+Сохрани этот Markdown рядом с каноническим TXT. Команда ниже извлекает только шесть **новых** приложений Q42, проверяет их хеши, запускает два проверяющих и сравнивает результаты побайтно. Исторические scripts из source bodies не исполняются. Нужен обычный Python 3 со стандартной библиотекой; установки не требуются.
+
+```bash
+python3 - \
+  PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_VERDICT_2026-10-26.md \
+  PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_2026-10-26.txt \
+  q42_replay <<'PY'
+from pathlib import Path
+import hashlib, json, re, subprocess, sys
+md, packet, out = Path(sys.argv[1]), Path(sys.argv[2]).resolve(), Path(sys.argv[3]).resolve()
+data = md.read_bytes(); out.mkdir(parents=True, exist_ok=True)
+pat = re.compile(rb'^BEGIN_Q42_ASSET ([A-Za-z0-9_.-]+) BYTES=(\d+) SHA256=([0-9a-f]{64})\n```[^\n]*\n', re.M)
+assets = {}
+for hit in pat.finditer(data):
+    name = hit[1].decode(); start = hit.end(); size = int(hit[2])
+    body = data[start:start+size]
+    if name in assets or len(body) != size or hashlib.sha256(body).hexdigest() != hit[3].decode():
+        raise ValueError('Asset mismatch: ' + name)
+    if data[start+size:start+size+4] != b'```\n':
+        raise ValueError('Closing fence mismatch: ' + name)
+    assets[name] = body; (out/name).write_bytes(body)
+expected = {'preregistration.json','q42_source_manifest.json','check_q42.py',
+            'q42_math_results.json','verify_q42_sources.py','q42_source_verification.json'}
+if set(assets) != expected: raise ValueError('Unexpected asset set')
+for script,args in [('check_q42.py',[]),('verify_q42_sources.py',[str(packet)])]:
+    run = subprocess.run([sys.executable,str(out/script),*args],cwd=out,
+                         check=True,capture_output=True,text=True)
+    (out/(script+'.stdout')).write_text(run.stdout,encoding='utf-8')
+for name in ('q42_math_results.json','q42_source_verification.json'):
+    if (out/name).read_bytes() != assets[name]: raise ValueError('Replay differs: '+name)
+print(json.dumps({'assets':len(assets),'checkers_run':2,'json_byte_identical':True,
+                  'historical_scripts_run':False},sort_keys=True,indent=2))
+PY
+```
+
+Первые два аргумента — пути к реально сохранённым Markdown и TXT. Третий — новый каталог результата. Например, при сохранении в Downloads замени первый аргумент на `"$HOME/Downloads/PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_VERDICT_2026-10-26.md"`; аналогично замени путь ко второму файлу.
+
+### `preregistration.json`
+
+BEGIN_Q42_ASSET preregistration.json BYTES=1147 SHA256=3003b1d41825be5a1008f31cd313632772333ffb5ecdfcc00cdd52c0ceba84f3
+```json
+{
+  "chosen_mechanism": "Cofinal mass-balanced short inverse at first unused index v=U+1, complete binomial recombination before compression; all artificial poles and finite return retained.",
+  "not_predicted": [
+    "A new all-P CCM upper",
+    "RH",
+    "Theorem3.1(14) of Gallardo-Gutierrez/Seco"
+  ],
+  "predictions": {
+    "P1": "Mass balancing leaves the first U coefficients unchanged and the exact Lambda reconstruction through m when (U+1)^K>m.",
+    "P2": "The complete repaired germ has no pole of order >=2; its simple residue is 1-(1-b_U)^K.",
+    "P3": "Using actual Mobius divisor identity and squarefree support yields |1-b_U|<=4/5 for U>=64 with U|a_U|<=1/2.",
+    "P4": "The finite signed remainder is not controlled by the local pole bound; its exact return restores C0 with coefficient one."
+  },
+  "request_id": "Q42_COFINAL_SHORT_MOBIUS_JOINT",
+  "stage": "After source reading and paper design; before new executable mathematical controls. Not a preregistration of completed derivations.",
+  "tests_scope": "Finite algebra, exact rational arithmetic, and generic germ bookkeeping only; paper proof supplies quantifiers."
+}
+```
+END_Q42_ASSET
+
+### `q42_source_manifest.json`
+
+BEGIN_Q42_ASSET q42_source_manifest.json BYTES=2731 SHA256=883189c24dcd6a64ada872d72d21bdef362303b9c475691d89b924e6485dbddd
+```json
+{
+  "bytes": 117726,
+  "file": "PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_2026-10-26.txt",
+  "lf": 2030,
+  "sha256": "d4ce7e99338317abb4382a00f0baaa5e6808221eb71543360b94b76535d444d6",
+  "sources": [
+    {
+      "bytes": 3266,
+      "end_line": 89,
+      "id": "S1",
+      "lf": 60,
+      "name": "CCM_Q41_CONCLUSION.md",
+      "sha256": "97e433130c802dcb798d2630d4c15f7a28dc835d79e785efbf32e01cb1e7901e",
+      "start_line": 30
+    },
+    {
+      "bytes": 67429,
+      "end_line": 1307,
+      "id": "S2",
+      "lf": 1214,
+      "name": "PROSHKA_CCM_EARLIER_FORK_SIGNED_SOURCE_Q41_VERDICT_2026-10-26.md",
+      "sha256": "db0b177c2494f1fa1376f2c058860f8ec38561f92d5bb6c8ccdec5f8c068335c",
+      "start_line": 94
+    },
+    {
+      "bytes": 4867,
+      "end_line": 1400,
+      "id": "S3",
+      "lf": 89,
+      "name": "CCM_POST_Q41_SECOND_INVERSE_PREFLIGHT.md",
+      "sha256": "b64182ee4982887c85bb76bb24bcf566d8465c3841347b061e5915a0602c9dcc",
+      "start_line": 1312
+    },
+    {
+      "bytes": 3989,
+      "end_line": 1478,
+      "id": "S4",
+      "lf": 74,
+      "name": "CCM_POST_Q41_JOINT_MOBIUS_POLE_PREFLIGHT.md",
+      "sha256": "883e3f982b74794d863558243ed922f0e33880d3c0fffa3e49d4a3d222d1b782",
+      "start_line": 1405
+    },
+    {
+      "bytes": 3719,
+      "end_line": 1548,
+      "id": "S5",
+      "lf": 66,
+      "name": "CCM_POST_Q41_COFINAL_MOBIUS_MOMENT.md",
+      "sha256": "ff75e7c78c8a4448ba21a0d7961bca950ac8aae4db55c7cb928f3df7118fd8aa",
+      "start_line": 1483
+    },
+    {
+      "bytes": 5036,
+      "end_line": 1644,
+      "id": "S6",
+      "lf": 92,
+      "name": "CCM_JOINT_Q04_CONCLUSION.md",
+      "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+      "start_line": 1553
+    },
+    {
+      "bytes": 5633,
+      "end_line": 1771,
+      "id": "S7",
+      "lf": 123,
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "start_line": 1649
+    },
+    {
+      "bytes": 3625,
+      "end_line": 1839,
+      "id": "S8",
+      "lf": 64,
+      "name": "CCM_Q32_CONCLUSION.md",
+      "sha256": "183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245",
+      "start_line": 1776
+    },
+    {
+      "bytes": 6174,
+      "end_line": 1912,
+      "id": "S9",
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "start_line": 1844
+    },
+    {
+      "bytes": 5988,
+      "end_line": 2027,
+      "id": "S10",
+      "lf": 111,
+      "name": "CCM_Q40_CONCLUSION.md",
+      "sha256": "e77ad2f2014b46a54d60f2ad4f9eadff172f8ae6c9a91ba2c03a59a9c2a6ea06",
+      "start_line": 1917
+    }
+  ]
+}
+```
+END_Q42_ASSET
+
+### `check_q42.py`
+
+BEGIN_Q42_ASSET check_q42.py BYTES=8846 SHA256=3ccc85c8bfda755ec5f5288e396750e238a1483f0baa8b5390c0a9142c649374
+```python
+#!/usr/bin/env python3
+"""Exact algebra/interval diagnostics, not a CCM spectral certificate. Stdlib only."""
+from fractions import Fraction as F
+from math import comb, isqrt
+from pathlib import Path
+import json
+
+
+def factors(n):
+    out = {}; d = 2
+    while d*d <= n:
+        while n % d == 0:
+            out[d] = out.get(d, 0)+1; n //= d
+        d += 1
+    if n > 1: out[n] = out.get(n, 0)+1
+    return out
+
+
+def mu(n):
+    d = factors(n)
+    return 0 if any(v>1 for v in d.values()) else (-1)**len(d)
+
+
+def conv(a, b):
+    if len(a) != len(b): raise ValueError('different carriers')
+    m = len(a)-1; c = [F(0) for _ in a]
+    for d in range(1,m+1):
+        if a[d]:
+            for k in range(1,m//d+1):
+                if b[k]: c[d*k] += a[d]*b[k]
+    return c
+
+
+def power(a, j):
+    out = [F(0) for _ in a]; out[1] = F(1)
+    for _ in range(j): out = conv(out,a)
+    return out
+
+
+def make_inverse(m, U, *, sign=-1, place=None, absolute=False):
+    if m < U+1: raise ValueError('need full repair atom')
+    v = U+1 if place is None else place
+    a = sum((F(mu(d),d) for d in range(1,U+1)),F())
+    u = [F(0)]*(m+1)
+    for d in range(1,U+1): u[d] = F(abs(mu(d)) if absolute else mu(d))
+    u[v] += sign*v*a
+    return u,a,v
+
+
+def expansion(u, K, drop_mixed_base=None):
+    m=len(u)-1; one=[F(0)]+[F(1)]*m
+    unit=[F(0)]*(m+1); unit[1]=1
+    y=[unit[n]-z for n,z in enumerate(conv(one,u))]
+    total=[F(0)]*(m+1)
+    for j in range(1,K+1):
+        uj=power(u,j)
+        if drop_mixed_base is not None:
+            d=[x-z for x,z in zip(u,drop_mixed_base)]
+            uj=[x+z for x,z in zip(power(drop_mixed_base,j),power(d,j))]
+        row=conv(uj,power(one,j-1)); c=(-1)**(j-1)*comb(K,j)
+        total=[x+c*z for x,z in zip(total,row)]
+    return total,y,power(y,K)
+
+
+def log_coords(m):
+    fs=[{}]+[factors(n) for n in range(1,m+1)]
+    for p in range(2,m+1):
+        if fs[p] != {p:1}: continue
+        ell=[F(0)]+[F(fs[n].get(p,0)) for n in range(1,m+1)]
+        lam=[F(0)]+[F(int(len(fs[n])==1 and p in fs[n])) for n in range(1,m+1)]
+        yield p,ell,lam
+
+
+def log_unit_interval(q, terms=24):
+    """Rational outward bounds for log(q), 1<=q<=2."""
+    assert F(1)<=q<=F(2)
+    t=(q-1)/(q+1)
+    lo=2*sum((t**(2*j+1)/F(2*j+1) for j in range(terms)),F())
+    rem=2*t**(2*terms+1)/(F(2*terms+1)*(1-t*t))
+    return lo,lo+rem
+
+
+def log_ratio(q):
+    assert q>=1
+    k=0
+    while q>2: q/=2; k+=1
+    a,b=log_unit_interval(q); c,d=log_unit_interval(F(2))
+    return a+k*c,b+k*d
+
+
+def moment_interval(U):
+    lo=hi=F(0); v=U+1
+    for d in range(1,U+1):
+        z=F(mu(d),d)
+        if not z: continue
+        a,b=log_ratio(F(v,d))
+        if z>0: lo+=z*a; hi+=z*b
+        else: lo+=z*b; hi+=z*a
+    return lo,hi
+
+
+def poly_add(a,b):
+    c={k:a.get(k,F())+b.get(k,F()) for k in a.keys()|b.keys()}
+    return {k:v for k,v in c.items() if v}
+
+
+def poly_mul(a,b):
+    c={}
+    for k,v in a.items():
+        for l,w in b.items(): c[k+l]=c.get(k+l,F())+v*w
+    return {k:v for k,v in c.items() if v}
+
+
+def poly_power(a,j):
+    c={0:F(1)}
+    for _ in range(j): c=poly_mul(c,a)
+    return c
+
+
+def scale(a,t): return {k:t*v for k,v in a.items() if t*v}
+
+
+def shift(a,j): return {k+j:v for k,v in a.items()}
+
+
+def run():
+    verified=[]; planted={}
+    for m,U,K in [(32,2,4),(127,5,3),(215,5,3),(300,7,3)]:
+        u,a,v=make_inverse(m,U)
+        total,y,yk=expansion(u,K)
+        assert all(y[n]==0 for n in range(1,U+1))
+        assert sum((u[d]/d for d in range(1,m+1)),F())==0
+        assert v**K>m and not any(yk)
+        assert total==[F(0)]+[F(mu(n)) for n in range(1,m+1)]
+        for p,ell,lam in log_coords(m): assert conv(total,ell)==lam
+        verified.append({'m':m,'U':U,'K':K,'a_U':str(a),'repair':str(-v*a)})
+    # A genuinely nonzero finite remainder, retaining formal prime-power logs.
+    m,U,K=80,2,2
+    u,a,v=make_inverse(m,U); total,y,yk=expansion(u,K)
+    remainder_nonzero=False
+    for p,ell,lam in log_coords(m):
+        remainder=conv(lam,yk); recovered=conv(total,ell)
+        assert [x+z for x,z in zip(recovered,remainder)]==lam
+        remainder_nonzero |= any(remainder)
+        if p==2: assert remainder[18]==F(1,4)
+    assert remainder_nonzero
+    planted['delete_nonzero_hyperbolic_remainder']=remainder_nonzero
+    # Primitive, real-floor seams, not integer samples alone.
+    for U in [2,5,7,11]:
+        m=4*(U+1); u,a,v=make_inverse(m,U)
+        S=sum(abs(z) for z in u)
+        for j in range(3,12*v+1):
+            x=F(j,3)
+            G=sum((u[d]*(x//d) for d in range(1,m+1)),F())
+            frac=-sum((u[d]*(x/d-(x//d)) for d in range(1,m+1)),F())
+            assert G==frac and abs(G)<=S
+            if x<v: assert G==1
+    # Select a small source panel by the exact cofinal predicate only.
+    candidates=[]; a=F()
+    for U in range(1,513):
+        a+=F(mu(U),U)
+        if U>=64 and U*abs(a)<=F(1,2): candidates.append((U,a))
+    assert candidates
+    chosen=[candidates[i] for i in sorted({0,len(candidates)//2,len(candidates)-1})]
+    panel=[]
+    for U,a in chosen:
+        v=U+1; Q=sum(mu(d)**2 for d in range(1,U+1))
+        theta=(1+F(Q)+v*abs(a))/v
+        assert theta<=F(4,5)
+        lo,hi=moment_interval(U)
+        assert lo>=1-theta and hi<=1+theta
+        # Compact decimal-free enclosure for reporting.
+        sc=10**8
+        lo8=F((lo*sc).__floor__(),sc); hi8=F((hi*sc).__ceil__(),sc)
+        panel.append({'U':U,'a_U':str(a),'theta_U':str(theta),
+                      'b_U_lower':str(lo8),'b_U_upper':str(hi8)})
+    assert F(100,99)*F(101,99)*F(4,5)<F(5,6)
+    # Uniform scalar threshold for all U>=64: use decreasing envelope, not a panel extrapolation.
+    assert F(3,4)+F(1,65)+F(1,128)<F(4,5)
+    # Joint local germs: -zeta' * sum binomial M^j zeta^(j-1).
+    germ_cases=[]
+    for K,b in [(2,F(1,3)),(3,F(7,5)),(4,F(9,10))]:
+        Z={-1:F(1),0:F(2,5),1:F(-1,7),2:F(1,11)}
+        MT={1:b,2:F(-2,9),3:F(1,13)}
+        negder={k-1:-k*v for k,v in Z.items() if k}
+        B={}
+        for j in range(1,K+1):
+            row=poly_mul(poly_power(MT,j),poly_power(Z,j-1))
+            B=poly_add(B,scale(poly_mul(negder,row),F((-1)**(j-1)*comb(K,j))))
+        assert min(B)>=-1 and B.get(-1,F())==1-(1-b)**K
+        # Before repair, the highest pole survives.
+        a=F(-1,30); M0=poly_add(MT,{0:a}); old={}
+        for j in range(1,K+1):
+            row=poly_mul(poly_power(M0,j),poly_power(Z,j-1))
+            old=poly_add(old,scale(poly_mul(negder,row),F((-1)**(j-1)*comb(K,j))))
+        assert old[-K-1]==(-1)**(K+1)*a**K
+        germ_cases.append({'K':K,'b':str(b),'simple_residue':str(B[-1])})
+    # Sensitive failures.
+    bad,a,v=make_inverse(80,5,sign=1)
+    planted['wrong_balancing_sign']=sum((bad[d]/d for d in range(1,81)),F())!=0
+    bad,a,v=make_inverse(80,5,place=5)
+    _,y,_=expansion(bad,3)
+    planted['repair_inside_preserved_prefix']=any(y[n] for n in range(1,6))
+    u,a,v=make_inverse(80,5); base=[F(0)]+[F(mu(n) if n<=5 else 0) for n in range(1,81)]
+    wrong,_,_=expansion(u,3,drop_mixed_base=base)
+    planted['drop_repair_mixed_products']=wrong!=[F(0)]+[F(mu(n)) for n in range(1,81)]
+    bad,a,v=make_inverse(80,5,absolute=True)
+    wrong,_,_=expansion(bad,3)
+    planted['replace_actual_mu_by_moduli']=wrong!=[F(0)]+[F(mu(n)) for n in range(1,81)]
+    # A zero-support remainder can still have nonzero simple-pole germ.
+    alo,ahi=moment_interval(chosen[0][0])
+    assert alo>1 or ahi<1  # actual cofinal moment: e_U is rigorously nonzero
+    planted['discard_remainder_residue_from_support']=(alo>1 or ahi<1)
+    # Exact return: E = C0 - e^K H and A = E - (1-e^K)H.
+    C,H,e,K=F(7,3),F(5,7),F(-1,3),3
+    E=C-e**K*H; A=C-H
+    assert E-(1-e**K)*H==A
+    planted['wrong_continuum_return_sign']=E+(1-e**K)*H!=A
+    assert all(planted.values())
+    # Cofinal schedule without floating-point fractional powers.
+    for U in (5,64,100):
+        m=U**33; assert (U+1)**33>m
+        x=U**65; m=isqrt(x)
+        if m*m<x: m+=1
+        assert U**65<=m*m<(U+1)**65 and (U+1)**33>m
+    return {'status':'EXACT_AUXILIARY_ALGEBRA_AND_MOMENT_CONTROLS_ONLY',
+            'finite_reconstruction_cases':verified,'nonzero_remainder_case':{'m':80,'U':2,'K':2,'log2_coefficient_at18':'1/4'},
+            'actual_mobius_moment_intervals':panel,'generic_germ_cases':germ_cases,
+            'primitive_floor_controls':'passed at integer and noninteger seams',
+            'cofinal_schedule_integer_controls':'passed',
+            'planted_failures_detected':planted,'planted_failure_count':len(planted),
+            'source_quantifiers_supplied_by':'paper derivation, not the finite panel',
+            'production_spectrum':False,'lean':False,'arb':False,'rh_claim':False}
+
+
+if __name__=='__main__':
+    obj=run(); text=json.dumps(obj,sort_keys=True,indent=2)+'\n'
+    Path(__file__).with_name('q42_math_results.json').write_text(text)
+    print(text,end='')
+```
+END_Q42_ASSET
+
+### `q42_math_results.json`
+
+BEGIN_Q42_ASSET q42_math_results.json BYTES=3203 SHA256=7c1e5e514f52e2ad34a5a884cdb54d8ab6ceb1f89891e8c448319f853d690d49
+```json
+{
+  "actual_mobius_moment_intervals": [
+    {
+      "U": 67,
+      "a_U": "1690811146852662245882/1309720258513377842646515",
+      "b_U_lower": "100126191/100000000",
+      "b_U_upper": "6257887/6250000",
+      "theta_U": "3319585074944778133324713/5238881034053511370586060"
+    },
+    {
+      "U": 247,
+      "a_U": "46940068675143310336210174628247248858323029323195816342493536373528855191064969130473185757471/85347053011830869684370033503461770665179530666147686738704858805973639266773842168028155037495910",
+      "b_U_lower": "25012933/25000000",
+      "b_U_upper": "100051733/100000000",
+      "theta_U": "210802262061960622623741858860281552088537617793431429572173899908622612321028741355688146303302049/341388212047323478737480134013847082660718122664590746954819435223894557067095368672112620149983640"
+    },
+    {
+      "U": 430,
+      "a_U": "956071782713231570678755370763051340736336440483436467509084334016898598777877639379994355121533650665792717575522020377833502858807365279317708386253821294432539880784/1471313432701246949165642271151785975544176322028704081991120917295380747276377897540670473785277738361782416471893111491492435042998373939636152172429741579163280492944695",
+      "b_U_lower": "100066867/100000000",
+      "b_U_upper": "25016717/25000000",
+      "theta_U": "387367499738777350437526460877718586695975733699397534681161216596646419829760652315769112172585426192585732193382938313045356656040718320559693953663497432297843194333072689/634136089494237435090391818866419755459539994794371459338173115354309102076118873840028974201454705233928221499385931052833239503532299167983181586317218620619373892459163545"
+    }
+  ],
+  "arb": false,
+  "cofinal_schedule_integer_controls": "passed",
+  "finite_reconstruction_cases": [
+    {
+      "K": 4,
+      "U": 2,
+      "a_U": "1/2",
+      "m": 32,
+      "repair": "-3/2"
+    },
+    {
+      "K": 3,
+      "U": 5,
+      "a_U": "-1/30",
+      "m": 127,
+      "repair": "1/5"
+    },
+    {
+      "K": 3,
+      "U": 5,
+      "a_U": "-1/30",
+      "m": 215,
+      "repair": "1/5"
+    },
+    {
+      "K": 3,
+      "U": 7,
+      "a_U": "-1/105",
+      "m": 300,
+      "repair": "8/105"
+    }
+  ],
+  "generic_germ_cases": [
+    {
+      "K": 2,
+      "b": "1/3",
+      "simple_residue": "5/9"
+    },
+    {
+      "K": 3,
+      "b": "7/5",
+      "simple_residue": "133/125"
+    },
+    {
+      "K": 4,
+      "b": "9/10",
+      "simple_residue": "9999/10000"
+    }
+  ],
+  "lean": false,
+  "nonzero_remainder_case": {
+    "K": 2,
+    "U": 2,
+    "log2_coefficient_at18": "1/4",
+    "m": 80
+  },
+  "planted_failure_count": 7,
+  "planted_failures_detected": {
+    "delete_nonzero_hyperbolic_remainder": true,
+    "discard_remainder_residue_from_support": true,
+    "drop_repair_mixed_products": true,
+    "repair_inside_preserved_prefix": true,
+    "replace_actual_mu_by_moduli": true,
+    "wrong_balancing_sign": true,
+    "wrong_continuum_return_sign": true
+  },
+  "primitive_floor_controls": "passed at integer and noninteger seams",
+  "production_spectrum": false,
+  "rh_claim": false,
+  "source_quantifiers_supplied_by": "paper derivation, not the finite panel",
+  "status": "EXACT_AUXILIARY_ALGEBRA_AND_MOMENT_CONTROLS_ONLY"
+}
+```
+END_Q42_ASSET
+
+### `verify_q42_sources.py`
+
+BEGIN_Q42_ASSET verify_q42_sources.py BYTES=2431 SHA256=ae45ab77eb2db47bf0a8134183983948e7ac43b32347db558bb521cfb2acc6d2
+```python
+#!/usr/bin/env python3
+"""Byte-framed Q42 intake verification. Never executes historical source code."""
+import argparse, hashlib, json, re
+from pathlib import Path
+
+HEADER=re.compile(rb'BEGIN_SOURCE (S\d+) (\S+) BYTES=(\d+) LF=(\d+) SHA256=([0-9a-f]{64})\n')
+
+def inspect(data, expected):
+    data.decode('utf-8',errors='strict')
+    sha=hashlib.sha256(data).hexdigest()
+    if (len(data),data.count(b'\n'),sha)!=(expected['bytes'],expected['lf'],expected['sha256']):
+        raise ValueError('Canonical byte/LF/hash mismatch')
+    pos=data.find(b'BEGIN_SOURCE S1 ')
+    if pos<0 or (pos and data[pos-1]!=10): raise ValueError('Missing S1')
+    rows=[]
+    for i,declared in enumerate(expected['sources'],1):
+        h=HEADER.match(data,pos)
+        if h is None or h[1]!=f'S{i}'.encode(): raise ValueError('Invalid frame order')
+        start=h.end(); end=start+int(h[3]); body=data[start:end]
+        body.decode('utf-8',errors='strict')
+        row={'id':h[1].decode(),'name':h[2].decode(),'bytes':len(body),
+             'lf':body.count(b'\n'),'sha256':hashlib.sha256(body).hexdigest(),
+             'start_line':data[:start].count(b'\n')+1,'end_line':data[:end].count(b'\n')}
+        if row!=declared or row['bytes']!=int(h[3]) or row['lf']!=int(h[4]) or row['sha256']!=h[5].decode():
+            raise ValueError(f'Invalid body S{i}')
+        suffix=f'\nEND_SOURCE S{i}\n'.encode()
+        if data[end:end+len(suffix)]!=suffix: raise ValueError(f'Invalid end S{i}')
+        pos=end+len(suffix)
+        while pos<len(data) and data[pos:pos+1] in (b'\n',b'\r',b' ',b'\t'): pos+=1
+        rows.append(row)
+    if pos!=len(data): raise ValueError('Unexpected trailing bytes')
+    return {'canonical_file':expected['file'],'canonical_bytes':len(data),'canonical_lf':data.count(b'\n'),
+            'canonical_sha256':sha,'source_count':len(rows),'all_body_frames_match':True,
+            'historical_code_executed':False,'hashes_certify_mathematics':False}
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('canonical_txt',type=Path)
+    args=p.parse_args(); root=Path(__file__).resolve().parent
+    expected=json.loads((root/'q42_source_manifest.json').read_text())
+    result=inspect(args.canonical_txt.read_bytes(),expected)
+    text=json.dumps(result,sort_keys=True,indent=2)+'\n'
+    (root/'q42_source_verification.json').write_text(text); print(text,end='')
+
+if __name__=='__main__': main()
+```
+END_Q42_ASSET
+
+### `q42_source_verification.json`
+
+BEGIN_Q42_ASSET q42_source_verification.json BYTES=358 SHA256=329eed58231fdaf90aaca52c503b5c0cbafb6cbc4f61250c18d35c5f6443199a
+```json
+{
+  "all_body_frames_match": true,
+  "canonical_bytes": 117726,
+  "canonical_file": "PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_2026-10-26.txt",
+  "canonical_lf": 2030,
+  "canonical_sha256": "d4ce7e99338317abb4382a00f0baaa5e6808221eb71543360b94b76535d444d6",
+  "hashes_certify_mathematics": false,
+  "historical_code_executed": false,
+  "source_count": 10
+}
+```
+END_Q42_ASSET
+
+
+END_SOURCE S2
+
+BEGIN_SOURCE S3 CCM_POST_Q42_WEIGHTED_CONTRACTION.md BYTES=4999 LF=90 SHA256=2c225499191d914fe3d1f82b9c8717480eed8886f38f9cb230a755d2985e02ad
+# Post-Q42: actual balanced primitive contracts in a different weight
+
+2026-10-26. Own bounded continuation of Q42, original source and P unchanged.
+Independent read-only q32_annulus_audit qualified PASS, including weight optimization. This is one attempted transfer, not a source upper.
+
+Use Q42 cofinal U>=64, v=U+1, S=Q_U+|tau_U| and actual G_tilde.
+Set h(t)=1-G_tilde(exp(t)) for t>=0. Q42 gives h(t)=0 for t<log(v),
+|h(t)|<=1+S, and (1+S)/v<=4/5. Its exact transform is
+ Y_tilde(s)/s=integral_0^infinity h(t)exp(-s*t)dt, Re(s)>0.
+Indeed Q42(3.6) divided by s equals the integral of 1-G_tilde over [v,infinity).
+All original mu and the balancing atom remain in this h; no model substituted.
+
+On L2(0,L) let H_sigma f(t)=integral_0^t exp(-sigma*u)h(u)f(t-u)du.
+Young's inequality gives ||H_1||<=integral |h(u)|exp(-u)du
+ <=(1+S)/v<=4/5, uniformly in cofinal U and L.
+Thus ||(I-H_1)^(-1)||<=5. This is a genuine full-interval auxiliary
+contraction, stronger in domain than a small complex disk, but for Y/s.
+
+Return to the original half-line weight sigma=1/2. With
+(Df)(t)=exp(-t/2)f(t), exactly D H_(1/2) D^(-1)=H_1.
+On the uncompressed physical space ||D||=1, ||D^(-1)||=exp(L/2)=sqrt(m).
+Consequently the direct similarity certificate gives
+ ||(I-H_(1/2))^(-1)||<=5sqrt(m).
+This is an upper allowance, NOT a lower bound or a necessary source price.
+D does not preserve the original Fourier/contact subspace; no intermediate
+P is inserted. Compression can only be performed after returning the full
+physical operator. An identity for a similarity is not a Loewner congruence;
+no favorable Hermitian sign is transferred by it.
+
+There is no hidden infinite-tail issue here. H_sigma has causal support
+>=log(v), hence H_sigma^K=0 on [0,L] for K=ceil(1/epsilon), v^K>m.
+The inverse above is exactly sum_{j=0}^{K-1}H_sigma^j, retaining every
+ordered mixed convolution. Nilpotence does not make its norm <=5 in the
+original weight; the latter estimate used sigma=1.
+
+Crucial source map: H_sigma is NOT Y_tilde itself. The exact Laplace symbol
+of H_sigma is Y_tilde(sigma+z)/(sigma+z). Recovering Y_tilde requires the
+causal derivative (d/dt+sigma); in distributional form
+ (d/dt+sigma)H_sigma f = Y_sigma f,
+where Y_sigma is convolution by the actual Dirichlet coefficient measure
+of y_tilde, weighted n^(-sigma). The jump at log(v) and all later jumps
+are retained by this distributional derivative, not discarded.
+On a smooth input, derivatives commute with full causal convolution after
+zero extension, with any endpoint distributions retained. No estimate of
+these derivatives by a bounded operator on arbitrary L2 is assumed.
+
+The actual Q42 channel is D_zeta(s)[1-Y_tilde(s)^K], not 1/(1-Y_tilde(s)/s).
+Thus the contractive inverse supplies no automatic upper for that channel.
+Using the exact finite reconstruction still returns
+ A=-kappa H_d+F, F=C0-e_U^K H_d,
+with C0 coefficient1. This identifies the concrete impasse before pretending
+that a resolvent of a different symbol is the original source.
+
+## Complete decision and budget
+
+Auxiliary half-weight inverse certificate: at most5sqrt(m). No independent
+favorable signed F bound obtained. Preserve the better direct source budget
+ A<=s_keep P, s_keep<=6sqrt(m)+6m^(1/4),
+ T_gtR<=(s_keep+b_div)P, PK_mP>=-(s_keep+50log(m)+8)P.
+No additional similarity fee is added to that already available direct bound.
+Both times and every complex mixed term are kept by the exact source map.
+No RH/zero-free/Mertens premise added; no Lean/Arb/production spectrum.
+Rollback before the weighted resolvent: it is an auxiliary contractive object,
+not a supplied signed estimate for the full CCM. Local or primitive contraction
+alone is not enough; a useful next claim must bound the actual differentiated
+full remainder on the original metric. No impossibility claim. No Q43 sent.
+
+## Optimizing this particular weight certificate
+
+For 1/2<=sigma<=1 the same displayed Young majorant is
+ q_sigma=(1+S)/(sigma*v^sigma).
+Whenever q_sigma<1 it gives the scalar allowance
+ B_sigma=m^(sigma-1/2)/(1-q_sigma).
+This is specifically the bound using the constant envelope 1+S, not the
+actual integral norm and not the true resolvent norm.
+
+An elementary union bound gives Q_U>=U/4: every nonsquarefree integer is
+in some d^2-multiple class, d>=2, and
+ sum_{d>=2}1/d^2 <=1/4+integral_2^infinity x^(-2)dx=3/4.
+Thus q_sigma>=U/(4sigma*v^sigma). The condition q_sigma<1, with sigma<=1,
+forces v^sigma>U/4, and hence
+ 1-sigma<log(4v/U)/log(v)<=log(8)/log(v).
+Since log(m)/log(v)<1/epsilon on the original schedule,
+ B_sigma>=m^(sigma-1/2)>8^(-1/epsilon)*sqrt(m).
+For sigma>=1 the similarity factor alone is >=sqrt(m).
+Therefore optimizing sigma within this constant-envelope Young/similarity
+certificate cannot produce eta(epsilon)->0. The prefactor may depend on
+fixed epsilon; its power in m remains1/2. This lower price belongs ONLY to
+this specified certificate; actual signed primitive/correlation estimates
+and actual resolvent norms are not bounded below by it.
+
+END_SOURCE S3
+
+BEGIN_SOURCE S4 CCM_POST_Q42_MULTISCALE_SCREEN.md BYTES=3118 LF=57 SHA256=4cb686fe44063d054d1a872b730a36270e200a75be16f63b8868dfa833d871bb
+# Post-Q42 multiscale supplier screen — no new attempt count
+
+2026-10-26. Original P, complete signed C0 and consumer unchanged.
+Q42 repairs the entire artificial pole hierarchy but leaves C0 coefficient1.
+This screen checks the earlier dilation/renewal fork before new computation.
+
+## Confirmed duplicate
+
+CCM_Q20_SELBERG_PAIR_ATTEMPT.md already contains the full actual
+Lambda2=Lambda log+Lambda*Lambda identity, weighted pair return, Selberg
+O(x) recurrence, its information-loss discriminator and local pole check.
+CCM_Q03_AFFINE_RETURN_TEST.md already rules out treating that coefficient
+identity as an independent positive credit. No repeated Selberg computation
+is counted as a fresh failed attempt.
+
+## Buchstab entrance and exact signed extension
+
+Primary: Kevin Ford, Sieve Methods Lecture Notes, Spring2023,
+https://ford126.web.illinois.edu/sieve2023.pdf , printed p40 Lemma3.8,
+and p41 proof of Theorem3.9, read through the web PDF text.
+The least-prime partition is exact; its following scalar estimates use
+monotonicity of a nonnegative sieve measure. No such monotonicity is
+imported for the signed CCM weights.
+
+For any finite Hermitian weights B_n, define S_B(z) as the sum over n<=m
+having no prime factor <=z. For 2<=w<z exactly
+ S_B(z)=S_B(w)-sum_{w<p<=z} sum_{n<=m, p|n, Pminus(n)=p} B_n.
+The inner supports are disjoint. This applies to the complete original-P
+matrix weight (with whatever source coefficient the chosen exact fork uses)
+without splitting temporal or mode cross terms. Prime powers are classified
+by their least prime, not deleted. The n=1 convention is Pminus(1)=infinity.
+No hyperbolic or projection error arises from this finite partition.
+
+But dropping a class or inserting scalar upper/lower sieve inequalities
+requires a justified Loewner sign for its weighted contribution. Coefficient
+positivity alone does not supply that sign. Q32 order-transport preflight
+proves every normalized original test g_c(x)=c*h(x)c changes sign on the
+continuous interval. This does NOT by itself prove a negative value at a
+particular integer/prime; no such stronger conclusion is asserted here.
+An actual signed sieve supplier has not been supplied by Lemma3.8.
+
+Taking norms per atom after the disjoint partition gives exactly the same
+sum_n ||B_n|| as before it, so reindexing alone saves no absolute budget.
+This does not exclude cancellation within or across least-prime classes.
+The full current bound remains A<=s_keep P, s_keep<=6sqrt(m)+6m^(1/4),
+T_gtR<=(s_keep+b_div)P, PK_mP>=-(s_keep+50log(m)+8)P.
+No additional fees or favorable sign are invented; exponent unchanged.
+
+## Scope
+
+A source/hypothesis screen, not a new asymptotic counterexample or full
+arithmetic attempt. No numerical source evaluation, no Lean/Arb, no Q43.
+Need a genuinely signed weighted supplier, not a new name for the partition.
+Read-only post_q41_supplier_screen completed: two focused ask dictionaries
+returned INCOMPLETE due q3_docs freshness. Q20/Q03/Q39 are verified
+duplicates or missing signed inputs; no distinct worked supplier found in
+this bounded screen. No global literature-absence claim.
+
+END_SOURCE S4
+
+BEGIN_SOURCE S5 CCM_JOINT_Q04_CONCLUSION.md BYTES=5036 LF=92 SHA256=617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086
+# Q04: cheap constrained inverse accepted; full signed power OPEN
+
+20 October 2026. Original full CCM, N=m,L=log(m), original three-constraint
+P, fixed epsilon, M=R=floor(m^epsilon). Native goal ACTIVE; CF22/PySR parked.
+
+## Result and its exact scope
+
+Q04 does not improve the full exponent. The inherited best full bound remains
+Q03 O_epsilon(m^(3/8) log m), conditional on exactly its ZF78 premise.
+No new zero-free region, cofinal improvement, full SP, G1/G3 or RH claim.
+
+The full critical-line sampling has norm at most
+512 C_z (1+L) log(5+Omega). Exact projected reflected-pair eigenvalues are
+nu m^delta [Re(z) +/- sqrt(||p||²||q||²-Im(z)²)]. For every fixed
+w=delta+i gamma,0<delta<1/2, its negative eigenvalue is asymptotic to
+-nu kappa(w)m^delta, kappa=1/(2delta)-1/((delta+1/2)²+gamma²)>0.
+Adding all critical-line credit changes this only by a polylogarithmic fee.
+This is a kernel/single-pair theorem, conditional on actual w for zero use;
+it is NOT a full-K lower bound or existence assertion for an off-line zero.
+Other off-line pairs cannot be discarded; constants are not uniform in w.
+
+Before compression, the actual finite causal operators obey M_sigma Z_sigma=I
+and M'_sigma Z_sigma=L_sigma, with n=1 retained and all beyond-cutoff
+products zero by physical support. G=M* M is positive, all divisor cross
+terms retained, and the full source is exactly I* Z* G' Z I at sigma=1/2.
+No compressed inverse or adjoint semigroup identity has been assumed.
+
+New paid auxiliary input:
+
+    ||Z_(1/2) f||_2 <= 3||f||_2 +6||f'||_2 <=(3+6Omega)||f||_2.
+
+This uses f(0)=0 and the original negative exponential moment. It is a bound
+on original inputs, NOT on all physical L2. Integer-sum quadrature produces
+an integrable remainder; the moment changes the growing main convolution
+into a decaying backward convolution. No Mobius cancellation is assumed.
+
+The actual sigma=8 damped source has both signs on eventual original
+projected modes, with every n>=3 term paid. It rules out general metric
+monotonicity, NOT a small upper bound for the sigma=1/2 target.
+The moving-state derivative in (25) is indispensable.
+
+The still unpaid input is the joint signed pairing
+
+    2 Re <f,M'_(1/2) Z_(1/2) f>.
+
+Separate norms give 4(3+6Omega)sqrt(m)log(m), exponent1/2+epsilon;
+direct recombination already gives the better elementary4sqrt(m)log(m).
+Similarity from sigma>1/2 costs the product of both norms m^(sigma-1/2).
+There is no half-power saving. Exact short terms cancel on return to K;
+arch cost50L+8 remains. Q02 F2 is spent only when transferring to V.
+
+## Verification
+
+Root read all1255lines of the downloaded original, including appendices.
+Independent bounded PAPER review ccm_q01_return_review: PASS for §§5–9,
+finite inverse/metric, constrained inverse bound, sigma8 sign test, complete
+norm/similarity/source returns; inherited constraint/Gram and Q02/Q03 inputs.
+Independent ccm_next_mechanism §§1–4 bounded PAPER PASS: thin-strip
+critical sampling, exact pair spectrum, all three projected constraints,
+fixed-w asymptotics and scoped pair+critical conclusion. The reused C_z
+notation for a fixed-complex-parameter constant is editorial only; it need
+not equal the absolute zero-count constant. Original remains unmodified.
+
+Root reproduced all620 exact rational/Gaussian-rational controls and all15
+binary64 diagnostics (9 projected pairs,6 damped-sign budgets). Scripts are
+byte-identical to the original code blocks and their stated hashes match.
+See ccm_joint_q04_checks/ for scripts, outputs and runtime metadata.
+Python3.13.0, NumPy2.3.5; max QR/formula discrepancy7.55e-15 and projected
+constraint residual5.89e-15. These are diagnostics, not interval certificates.
+No actual zeros, full prime sums, full CCM spectra, Lean or Arb were computed.
+
+Request98922bytes SHA256
+8710494286ae0910d3c9a524eaf2739bfbbfca1fd13ecc53e4fdc57ca23509e7.
+Sent once20:36UTC in the same AI Mathematik Morgenbrief chat. Natural terminal
+response observed at the scheduled21:16UTC check (UI timestamp23:01Berlin).
+Original84942bytes SHA256
+2c5af92f75c73e798a51bc5e8a13fdb0217addeef6eb3d066fa26a8f6a371eeb.
+Downloaded original preserved without edits. The initial download wait timed
+out because the native Save panel required completion; saved file verified.
+No interruption, duplicate question or Q05 send.
+
+## Decision / next source work
+
+Do not repeat pairwise-critical-credit or positivity-implies-monotonicity.
+Do not turn the metric derivative into a new assumed supplier. Keep the cheap
+inverse lemma available, but reopen this representation only with independent
+arithmetic information on its signed derivative. The primary next branch is
+back before separate norms in actual Mobius correlation, checking an existing
+source-specific cancellation theorem against the whole source and full power
+budget. Reuse local shelves and prior preflights first; an equivalent rewrite,
+unquantified cancellation or log saving alone does not meet eta->0.
+No new broad search or Pro request has been launched by this closeout.
+
+END_SOURCE S5
+
+BEGIN_SOURCE S6 CCM_POST_Q27_ORIGINAL_P_CONTOUR.md BYTES=5633 LF=123 SHA256=109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2
+# Direct all-P contour budget after Q27
+
+2026-10-26. BOUNDED PAPER PASS: read-only all_p_contour_extension audited
+the complete payload, original-domain transfer, fees and converse; no
+material defect. Q27 classical/source dependencies remain inherited.
+No Lean, interval arithmetic or numerical spectral run was performed.
+Baseline a9a40a5b. This extends the paid analytic representation to the
+actual requested space; it does not establish its missing arithmetic sign.
+
+## Original domain, no subspace promotion
+
+Fix 0<epsilon<1/32. Keep N=m,L=log m,M=R=floor(m^epsilon) and exactly
+the original three-contact projector P=P_(m,epsilon). Work for all sufficiently
+large m, with onset allowed to depend on epsilon. Define omega_j=2pi j/L,
+Omega=2pi M/L and V2=sum_(|j|<=M)omega_j²/L.
+All operators below act on ran P and retain their original coefficient
+carrier by zero padding. There is no H0/H1 decomposition and no omitted
+off-diagonal block: repeat Q27's calculation DIRECTLY with P in place of Pi0.
+
+The span of original contacts is invariant under conjugation, so P is real
+symmetric, and P1=0. Define v_±(z)_j=(z±i omega_j)^(-1) and
+
+ S_P(z)=P[v_+(z)v_+(z)^T+v_-(z)v_-(z)^T]P/L.
+
+The transpose, both orientations and all mixed entries are retained. The
+causal inverse is still the literal Q_M(log n), since exp(i omega_j L)=1.
+Q27's (2.3)--(2.5) follow for every vector of this full original space,
+including all Lambda(p^k), the atom n=m, and the right-line n>m return.
+Subtracting the growing continuum gives exactly one -H_P, 0<=H_P<=4P.
+
+## Estimates independent of the polylog specialization
+
+Q27's proofs of (3.2)--(3.4) use only contraction, P1=0 and the frequency
+lattice: ||S_P(x+it)||<=8V2/|t|^4 for x>=0,|t|>=2Omega, and
+||S_P(u+it)||<=3L for u>=1/L. Also V2<=Omega³. None requires M=ceil(8L²).
+The pole-integrability/Markov construction therefore supplies one u in
+[1/L,2/L] for the whole space, and one common H in [Y,Y+1], avoiding zeros,
+with the same bounds as Q27(4.6),(6.4):
+
+ B=2^20 Cstar L(1+Omega)log(12L)log(20+Omega),
+ e=V2[32sqrt(m)L/Y³+2^20 Cstar log(12L)log(Y+10)/Y³
+       +2^10 Cstar²sqrt(m)log²(Y+10)/(L Y⁴)].                 (1)
+
+The zeta inputs are precisely Q27's fixed classical local factorization and
+zero-count bounds, not ZF78 or RH. Every crossed actual zero remains in
+
+ Rsign=He sum_(Re rho-1/2>u, |Im rho|<H)
+           mult(rho) m^(rho-1/2) S_P(rho-1/2).               (2)
+
+No contour is selected separately for individual vectors or positive W.
+All finite-height inversion leakage, two vertical tails and both horizontal
+sides are included in (1). Use the fixed choice nu=1/12 and
+
+ Y=max(4Omega+10,16,m^(1/4+epsilon)).                        (3)
+
+Eventually the last term dominates. With V2=O(m^(3epsilon)/L³), the three
+fees in e are respectively
+
+ O_epsilon(m^(-1/4)/L²),
+ O_epsilon(m^(-3/4)log L/L²),
+ O_epsilon(m^(-1/2-epsilon)/L²).
+
+Thus e=O_epsilon(m^(-1/4)/L²)=o(1). Meanwhile
+
+ B=O_epsilon(m^epsilon L log L).                            (4)
+
+All constants are independent of m and vectors, after fixing epsilon.
+There is no requirement of a uniform onset as epsilon tends to zero.
+
+## Exact original goal interface and complete budget
+
+Writing A=P A_prime P, Q27's SAME contour orientation yields
+
+ A=-H_P+V-Rsign+E,  ||V||<=B, ||E||<=e.                    (5)
+
+The original short sector satisfies the inherited two-sided norm bound
+
+ b=(56+32Omega)sqrt(R)+12(1+log R)^2
+   =O_epsilon(m^(3epsilon/2)/L+m^(epsilon/2)+L²).            (6)
+
+Consequently, with every actual Mobius coefficient in the exact split,
+
+ T_>R <= -Rsign-H_P+(B+e+b)P,                              (7)
+ P K_m P >= Rsign+H_P-(B+e+50L+8)P.                        (8)
+
+The second line does not pay the short sector again: it concerns the full
+prime matrix. Proper powers are already in A, so no additional fee is added.
+For every fixed epsilon>0, all analytic/short/archimedean scalar fees in
+(7)--(8) are bounded eventually by C_epsilon m^(2epsilon).
+
+An independently supplied bound
+
+ Rsign >= -D_epsilon m^(theta(epsilon)) P,
+ theta(epsilon)>=0, theta(epsilon)->0,                     (9 OPEN)
+
+would therefore give the actual requested T_>R bound with
+eta(epsilon)=max(theta(epsilon),2epsilon)->0. This statement covers the
+entire original P; there is no unpaid H0 complement in this derivation.
+Condition (9) refers to the SAME common admissible contours u,H in (5).
+The conditional sparse witness and its previously paid return would then
+apply, but (9) has NOT been proved.
+
+Conversely, if the requested T_>R upper with exponent eta(epsilon)->0 were
+supplied, (5), A=T_>R+T_<=R, ||T_<=R||<=b, and H_P<=4P imply
+
+ Rsign >= -[B+e+4+b+C_epsilon m^(eta(epsilon))]P.           (10)
+
+Thus the existence of the desired vanishing-exponent upper family is
+equivalent, up to vanishing-exponent analytic fees, to a lower family for
+the WHOLE signed residue matrix. This is not an independent supplier, nor
+evidence that the new sign problem is easier. It identifies precisely the
+remaining debt after paying the original-space return.
+
+## Stopping boundary
+
+Q27's H0-only comparison needed unpaid complement/cross blocks for an
+all-P promotion. We have avoided that promotion by repeating its algebra
+and estimates on P itself. The larger Omega,V2 costs were explicitly paid.
+No favorable arithmetic exponent has been obtained, and the target remains
+open. Bounding (2) by the sum of individual norms again loses its signs;
+changing Y only reduces an already negligible analytic error. Do not count
+this extension as three new attempts, a new prime law, or an RH result.
+No Q28 has been sent.
+
+END_SOURCE S6
+
+BEGIN_SOURCE S7 CCM_Q32_CONCLUSION.md BYTES=3625 LF=64 SHA256=183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245
+# Q32 — signed near-frequency audit
+
+Status: bounded independent PAPER PASS, conditional on inherited S1/S7 and external Vaughan theorem. Full CCM/RH OPEN.
+
+Original: `PROSHKA_CCM_SIGNED_NEAR_FREQUENCY_Q32_VERDICT_2026-10-26.md`,
+1247 LF / 77294 bytes, SHA256
+`1ed7b9b55f29658fa1022f95ef4e89d183be0a1bdac6abaa8ff93cd040fe4f50`.
+Read entire original including all five embedded assets. Source request and seven bodies verified.
+
+## Mathematical result and limit
+
+On the original three-contact P, h(x)=x^(-1/2) P Q_M(log x) P,
+with N=m, L=log m, M=R=floor(m^epsilon), retain the exact single-cutoff
+partition and all Lambda prime powers. Both top jets h(m)=h'(m)=0 are used.
+Q32 applies the classical Vaughan exponential-sum bound only where its rational
+approximation hypotheses hold. For 2/X <= |t| <= X^(-1/2),
+q=floor(1/|t|), a=sign(t) satisfies q<=X/2 and approximation error <q^(-2).
+It therefore applies to both literal prefixes, including X-1.
+
+For lambda=X^(-5/8), the annulus lambda<=|t|<X^(-1/2) has complete norm cost
+C K^2 log^4(8m) B^(-1/16), with K=1+Omega, B=ceil(m^(2epsilon)).
+This is O_epsilon,V(m^(15epsilon/8) log^2 m), eventually O(m^(2epsilon)).
+Together with the inherited far/base/constant return:
+A_prime=N_star+E_star, ||E_star||<=C_epsilon,V m^(2epsilon).
+This reduces the unpaid frequency region, not the full spectral exponent.
+
+The central source-test pairing is still signed and exact. Separate absolute
+sizes first enter equation (5.1). Its completed allowance is
+O_epsilon,V(m^(1/2+epsilon/2) log^(7/2)m + m^(2epsilon)),
+worse than the retained 12 sqrt(m) fallback. It does not supply eta(epsilon)->0.
+The explicit five-mode original-P test proves central test coupling is nonzero;
+it does NOT give a lower bound for its pairing with Lambda-1 or actual CCM.
+
+For any genuinely proved N_star<=s P, the complete return is
+T_>R <= (s+r_star+b_div)P and
+P K_m P >= -(s+r_star+50 log m+8)P.
+The short divisor fee occurs once in T, not again in the direct K bound.
+The sinc-smoothed n=m atom is retained even though the unsmoothed h(m)=0.
+Both temporal signs, complex cross entries, all shell overlaps, finite
+hyperbolic boundaries and proper prime powers remain in the exact source.
+
+## Replay
+
+Five embedded assets extracted with length/SHA verification to `q32_replay/`.
+Existing Python3.13.17 / SymPy1.14.0 ran check_q32.py: 70 exact local controls,
+8 planted errors detected. verify_sources_q32.py: exact request and seven bodies.
+Both produced JSON files are byte-identical to the embedded expected results.
+No install, Lean, Arb or production spectral computation. These controls certify
+finite algebra and framing only, not the asymptotic signed estimate.
+
+## Decision
+
+Rollback to the full finite centered source C0=A_prime+H_decay before separate
+source/test norms. The inherited all-P contour map is a paid equivalence, not
+an independent favorable sign. Do not retune the same cutoff/logarithms under
+(5.1) as a new arithmetic attempt. No Q33 prepared or sent.
+Independent read-only q32_annulus_audit returned bounded PASS for §§1–8:
+rational prefix hypotheses, all three annulus powers, central budget, original-P
+five-mode test, and complete returns. S1 derivative/top jets and S7 contour map
+were inherited inputs, not re-proved. Primary arXiv2505.07803v2 printed p2,
+equation1.1 and footnote1 confirm the classical Vaughan statement with conservative
+log^4; the external proof itself was not re-certified. No full CCM admission.
+
+AUTOPSY: dropped=SIGN; note=equation5.1 separates the actual central arithmetic and matrix phases; this completion supplies no vanishing exponent.
+
+END_SOURCE S7
+
+BEGIN_SOURCE S8 CCM_SPARSE_BAND_RECEIVER.md BYTES=6174 LF=69 SHA256=0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06
+# Conditional off-critical witness on a sparse band of the original CCM matrix
+
+2026-10-08. Root derivation, independent read-only sparse_band_receiver audit PASS on the complete payload. The production matrix is still literal K_m with N=m,L=log m. Only a test subspace is restricted. No prime spectral bound or RH is proved; the active full-SP phase is not silently changed.
+
+## Claim and source
+
+Fix any alpha in (0,1), M=floor(m^alpha), and let H_(m,alpha) be the subspace of the ORIGINAL coefficient carrier supported on |j|<=M. Let P_(m,alpha) project onto its subspace satisfying the original three equations b*c=v_+*c=v_-*c=0. Original b has 2m+1 coordinates and v_± are the original Fourier coefficients of exp(±t/2) on [0,L]. Padding by zero identifies the equations with the corresponding truncated vectors, with the constant vector rescaled to unit norm. This does not create a new production matrix or change the m schedule.
+
+Conditional on a fixed zero xi(1/2+w)=0, w=delta+i gamma, delta>0, there are c_(w,alpha)>0 and a starting m such that EVERY later original cell has
+
+    lambda_min(K_m restricted to ran P_(m,alpha))
+            <=-c_(w,alpha) m^delta L^(-2delta).                (1)
+
+All constants may depend on fixed w,alpha and selected fixed derivative order. They do not depend on m. No uniform assertion as alpha tends to zero, nor any polylogarithmic-band assertion, is made.
+
+Use the already checked normalized derivative-filtered source pair in CCM_RESTRICTED_PRIME_RECEIVER.md: its two Laplace moments vanish, its full Weil value is -2r m^delta L^(-2delta), and its L2 norm stays bounded. Cut off inside [-L/2,L/2] with the same fixed-width smooth transition and translations h=L/2-log L. Every FIXED derivative L1 norm stays bounded; cutoff-form error is O(m exp(-cL²)). Both zero-extension strips remain part of the projection estimate below.
+
+## Sparse Fourier projection: actual form norm
+
+The general fixed-q estimate in PROSHKA_NEGATIVE_BOTTOM_NORMING_INLINE_2026-10-06.md equations(2),(3), inherited by NEGATIVE_BOTTOM_GROWTH_AUDIT_2026-10-06.md, applies with Omega_M=2pi M/L. Let e=f-f_M be the Fourier tail of the cutoff source, q>=2 a FIXED integer. It gives
+
+    ||e||_E <=C_q[sqrt(m)Omega_M^(1/2-q)
+                   +Omega_M^(3/2-q)+Omega_M^(1-q)] =: E_q.    (2)
+
+Indeed the L2, derivative-L2 and endpoint sup bounds are respectively proportional to Omega_M^(1/2-q), Omega_M^(3/2-q), Omega_M^(1-q); insert them into ||e||_E²<=(m+16)a0²+2a1²+8ainfinity². The m factor comes from the original window weight exp(|t|), not from the number of retained modes. Endpoint jumps are paid; no whole-line H1 claim is used.
+
+The cutoff source has ||f||_E<=C sqrt(m). Full Weil continuity therefore gives
+
+    |W(f_M)-W(f)|
+      <=C_q[m Omega_M^(1/2-q)+sqrt(m)Omega_M^(3/2-q)
+                +sqrt(m)Omega_M^(1-q)+E_q²].                 (3)
+
+Choose once and for all an integer q>1/alpha+2. The three displayed powers of m are 1+alpha(1/2-q), 1/2+alpha(3/2-q), and 1/2+alpha(1-q), all strictly negative. Their fixed logarithmic factors do not change convergence. E_q² also tends to zero. Thus (3) is o(1). The exact same centered-window form equals the quadratic form of the padded vector in K_m; translation to [0,L] preserves the full Weil form.
+
+## Sparse-band correction of the three constraints
+
+Let v_(±,M) be the original v_± truncated to |j|<=M and b_M the normalized constant vector on that band. The explicit exponential coefficients give
+
+    ||v_(+,M)||²=m(1+O(L/M)),
+    ||v_(-,M)||²=1+O(L/M),
+    |<vhat_(+,M),vhat_(-,M)>|=O(L/sqrt(m)+L/M),
+    |<b_M,vhat_(±,M)>|=O(sqrt(L/M)).                          (4)
+
+Terms O(1/m) in the norms can be absorbed because M<m. For the cross term, full inner product is L and the omitted tail product is O(sqrt(m)L/M); division by normalized scales gives (4). The b_M estimates follow by pairing conjugate denominators and sum (1/2)/(1/4+omega_j²)=O(L). Since M/L tends to infinity, the normalized three-vector Gram matrix tends to I and is >=I/2 eventually.
+
+With q as above, repeated integration by parts gives full Fourier coefficients |c_j|<=C_q L^(q-1/2)|j|^(-q). The truncated L2 tail has size O(L^(q-1/2)M^(1/2-q)). Endpoint value zero implies sum of all coefficients zero, so the normalized b_M constraint residual has that same order. The zero Laplace moments before cutoff, the super-small cutoff remainder, and Cauchy-Schwarz against the omitted exponential coefficients give the same order for both normalized v constraints; the ratio of full to truncated exponential norms stays bounded by (4).
+
+Therefore, if c_M is the padded Fourier vector and z=P_(m,alpha)c_M,
+
+    ||z-c_M||<=C_q L^(q-1/2)M^(1/2-q)
+                                      +m^C exp(-cL²).        (5)
+
+The full original ||K_m||<=40sqrt(m)L and bounded ||c_M|| pay its quadratic-form correction by
+
+    C_q sqrt(m)L^(q+1/2)M^(1/2-q)
+                                      +m^C exp(-cL²)=o(1).   (6)
+
+The unchanged source pair's negative signal diverges as m^delta/L^(2delta). Combining (3),(6) and cutoff cost leaves that signal intact; ||z||² stays bounded, and its negative form ensures z is nonzero. Normalizing proves (1).
+
+## Exact remaining arithmetic consumer
+
+The two exponential equations still annihilate the original growing rank-two kernel, and the endpoint equation still uses the original b. Consequently
+
+    P_(m,alpha) K_m P_(m,alpha)
+       =P_(m,alpha)(Aarch-cA I-Aprime)P_(m,alpha).             (7)
+
+Here Aprime=sum_(2<=n<=m) Lambda(n)Q(log n)/sqrt(n) retains every prime power and the original Q; Aarch is the original archimedean compression. The inherited bound ||Aarch-cA I||<=50L+8 is equation(12) of CCM_RESTRICTED_PRIME_RECEIVER.md; its equation(11) gives the cancellation used above.
+
+Thus a subpolynomial upper bound for the actual prime matrix on this smaller space would suffice to exclude every fixed off-critical zero. Such a bound is OPEN. Membership in a smaller band supplies neither independent primes nor a sign. Old full SP/G1/G3 are not thereby proved. A fixed alpha is enough for this conditional receiver; alpha cannot be tuned with m inside this theorem.
+
+END_SOURCE S8
+
+BEGIN_SOURCE S9 CCM_Q40_CONCLUSION.md BYTES=5988 LF=111 SHA256=e77ad2f2014b46a54d60f2ad4f9eadff172f8ae6c9a91ba2c03a59a9c2a6ea06
+# Q40: signed channel optimum and actual intercomponent cancellation
+
+2026-10-26. Full original read, all1277lines/75840bytes;
+SHA2566f799885ed9578e2bc0e542b68d340ec62d6c7a0419d415e0f694239e75c9b9e.
+Root replay:6assets/hash verified,13groups/2507finite cases/11planted,
+10source bodies; both generated JSON byte-identical. Standard Python only.
+Independent bounded audit qualified PASS §§2–8. No full exponent gain, Lean, Arb or
+production spectrum; RH/goal OPEN, CF22/PySR parked. No Q41 sent.
+
+## What was actually strengthened
+
+On original P let beta_n=c*D_n c real for a fixed unit COMPLEX c, z_n=mu(n)beta_n.
+Allow arbitrary finite REAL signed theta_(p,n), sum_(p|n)theta=1 on each
+active squarefree n. These may depend on m,c. Full prime channel
+ a_p=sum_(n:p|n)theta_(p,n)z_n,
+ sum_p a_p=c*T*c.
+The tested price is sum_p [a_p]_+, AFTER full channel summation, not the
+post-Q39 termwise modulus certificate. Fixed-c scalar optimization only.
+
+Construct the incidence graph from ACTIVE z_n!=0, connecting the prime
+factors of each such n. Zero blocks cannot transfer mass. For each connected
+component C, s_C=sum_(n supported in C)z_n. Exactly
+ inf_theta sum_p[a_p]_+ = sum_C[s_C]_+.
+Component totals give a dual lower bound; transfer leaf channel totals along
+a spanning tree using signed allocations to attain it. All divisions use
+nonzero z_n. This is finite exact optimization, not a new source upper.
+
+## Source-specific isolated primes, with actual original-P sign
+
+Full B_n=0 for n>=m/2: log1=0 and the possible k=2 at equality has h(m)=0.
+For m/4<p<m/2, a prime with beta_p!=0 is an isolated graph vertex: every
+other multiple has zero full block. For m/3<p<m/2, B_p=log2 h(2p) EXACTLY.
+This is full-k support, not dropping inconvenient terms.
+
+Use Q39's flat u=chi''-chi/4 on(0,a),a=1/10, now with opposite packets
+ f_L^-=(u(t)-u(t-(L-a)))/sqrt(2U).
+It is unit, flat at edges and has both exponential contacts. For s>=log2,
+its complete two-time correlation is -r(s-L), r(v)=r0(v+a).
+On |v|<=h*=min(a/4,sqrt(U)/(2||u'||)), r0(v)>=7/8.
+Fixed alpha=.5exp(-a-h*), beta=.5exp(-a+h*) lie in(1/3,1/2).
+
+Inherited corrected Fourier return gives f_m=F_M c_m,c_m=Pc_m,unit,
+ delta<=C_q L^(q-1/2)M^(1/2-q), fixed q>2/epsilon+2.
+Uniform correlation error<=4delta; no post-projection support assumed.
+Thus for all sufficiently large m and primes p in(alpha m,beta m],
+ z_p=-beta_p>=log2/(2sqrt(m)).
+Unconditional PNT gives >=(beta-alpha)m/(2L) such primes eventually.
+Therefore the optimized channel price >=c0 sqrt(m)/L, c0>0, on actual P.
+No signed redistribution inside an incidence component can change these
+isolated channels. Matrix positive parts cannot do better than scalar parts.
+
+## Full signed sum on the SAME family is smaller
+
+The Q39 double contact moment gives integral e^(v/2)r(v)dv=0 and the v-weighted
+moment zero. Set F_m(x)=x^-1/2 r(log(x/m)), supported[me^-2a,m], flat endpoints.
+ A_phys[f_L^-]=-sum Lambda(n)F_m(n), integral F_m=0.
+All prime powers and the actual zero top overlap remain. With E=psi-x,
+ A_phys[f_L^-]=integral E(x)F'_m(x)dx.
+The external unconditional PNT bound in E1 yields
+ |A_phys|<=9.39 C_r sqrt(m)L^1.515 exp(-.8274sqrt(L-2a)).
+Full-k short sector <=C_G R(1+L)/sqrt(m)=o(1), by the inherited G profile.
+Full physical long-divisor norm<=4sqrt(m)L(1+L), so return costs
+ 4sqrt(m)L(1+L)(2delta+delta²)=o(1).
+Consequently |c_m*T*c_m|<=e_m=o(sqrt(m)/L), with e_m the sum of all three
+explicit terms above. First term is NOT o(1) or m^o(1): its exponent stays
+1/2-o(1). No all-P statement or actual-zero-pair margin follows.
+
+T_iso=-sum_(p in interval)D_p, T_rest=T-T_iso. On this SAME family,
+ T_iso[c_m]>=c0sqrt(m)/L,
+ T_rest[c_m]<=-c0sqrt(m)/L+e_m.
+Actual negative component mass compensates the positive isolated channels.
+This is the diagnostic that prohibits confusing a certificate price with T.
+
+## Complete budget and rollback
+
+Let S_m=sup_(unit c in P) inf_theta sum_p[a_p]_+.
+ c0sqrt(m)/L <= S_m <= min(2b sqrt(m),4sqrt(m)L(1+L)), b=40+16Omega.
+Hence log(S_m)/log(m)->1/2, for this exact signed-incidence certificate class.
+Legal completion: T<=s40 P, A<= (s40+2b sqrtR)P,
+ P K_m P>=-[s40+2b sqrtR+50L+8]P.
+Preserve stronger inherited A cap s_keep<=6sqrt(m)+6m^1/4;
+A-to-T uses b_div once instead, not both short fees. Conditional3/8 uses
+ZF78 and was not used for the above discriminator. Q32 near return is only
+charged if reporting near, not again in the direct K floor.
+
+The exact loss is sum_C[-s_C]_+: deleting negative component totals.
+Rollback BEFORE treating prime-incidence components as independently paid
+objects. Their signed sum is T, not a new ready supplier. Source-dependent
+cross-component comparison remains open; merging all components and demanding
+small [T]_+ only restates the debt. Do not re-optimize this entire weight class.
+
+## External source verification
+
+Root opened primary https://arxiv.org/html/2204.01980v2 and read Theorem1.1
+(1.3), Corollary1.3(1.6), definitions including all prime powers. Exact stated
+constants/range x>=2 match Q40. These are unconditional statements; a finite
+verified-RH input in their proof is not an assumed RH hypothesis. External
+proof/computational certificates were not recertified. No NIST input needed.
+Saved HTML q40_replay/johnston_yang_2204.01980v2.html,
+626594bytes/SHA25698864cc58a4b9410f759ea9d11c80a8bb478522255183a25a02a64f40acfab37.
+A short exact statement locator: Theorem1.1: "For all" followed by x>=2;
+formula (1.3) is the 9.39 x(log x)^1.515 exponential bound above.
+The prime-count onset condition in Q40 includes both endpoint errors.
+
+## Independent bounded audit
+
+Read-only q32_annulus_audit confirmed exact attained primal/dual optimum,
+full-block cutoff, isolated actual primes, minuspacket sign/contact return,
+full PNT/short/projection budget on the same family and all consumer fees.
+No material defect found. Upstream receiver remains inherited; external E1
+statement verification was performed by root, not a recertification of its proof.
+
+END_SOURCE S9
+
+BEGIN_SOURCE S10 CCM_Q20_SELBERG_PAIR_ATTEMPT.md BYTES=10197 LF=190 SHA256=4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f
+# Q20 own candidate: Selberg symmetry on the actual full pair
+
+2026-10-25. Primary source verified; bounded read-only selberg_pair_source transfer check PASS.
+Source/consumer unchanged: Q19 centered pair, original sparse P, both times,
+complex phase, all prime powers, finite upper hyperbola. No Pro send.
+Shelf: three ask dictionaries (Selberg symmetry, generalized Mangoldt semiprime,
+renewal/log weights) INCOMPLETE due q3_docs freshness. Literal CCM search found
+no direct symmetry application, not a global absence claim. Existing sieve,
+Abel and weight-one quadrature results are not claimed new.
+
+## Exact arithmetic and attempted use
+
+Write Lambda2(n)=(mu*log²)(n). Exact divisor convolution gives
+ Lambda2(n)=Lambda(n)log n+sum_(uv=n) Lambda(u)Lambda(v).
+In particular both RHS terms nonnegative as SCALAR coefficients. The second
+sum is over all ordered prime-power pairs, not just distinct primes. At p²
+its pair contribution is (logp)²; at pq,p!=q it is2logp logq.
+Let ell(n)=logn and D a(n)=a(n)logn. From ell=1*Lambda and the
+convolution product rule, D ell=ell*Lambda+1*(Lambda log). Convolve
+with mu: mu*ell=Lambda and mu*1=convolution identity give the stated
+formula. No analytic continuation is required.
+
+For the same COMPLEX f_y(x)=x^-1/2[C(y-logx)+C(y+logx)], y=2a,
+define h_y(x)=f_y(x)/logx on x>=2. Then exactly
+ J(a;m)+P2(a;m)=sum_(n=2)^m Lambda2(n)h_y(n),
+ P2=sum_(u,v>=2,uv<=m) Lambda(u)Lambda(v) f_y(uv)/log(uv).
+All terms have the same source weight, both temporal orientations and the
+finite hyperbolic edge. P is applied to the whole original source pair only;
+P2 is a scalar bookkeeping sum, not a product of compressed operators.
+
+External input: A2(x)=sum_(n<=x)Lambda2(n)
+=2xlogx+O(x). If valid with absolute constant, Abel transfer gives
+ J+P2=integral_2^m (2logx+2)h_y(x)dx
+      +H(m)h_y(m)-H(2-)h_y(2)-integral_2^m H(x)h'_y(x)dx,
+ H(x)=A2(x)-2xlogx, H(2-)=-4log2.
+Lower endpoint convention includes the n=2 atom exactly. No modulus yet.
+
+## Price of the supplied O(x) remainder
+
+For a>=2, split x at exp(a); m>=exp(2a) in our original translation range.
+On2<=x<exp(a), y-logx>=a; source double-exponential decay makes the
+whole contribution negligible, even after elementary x powers/log denominators.
+On x>=exp(a), logx>=a. With g=|C|+|C'|, direct differentiation bounds
+ x|h'_y(x)| <=const x^-1/2/a [g(y-logx)+g(y+logx)].
+Substitution logx=s gives integral <=C_w exp(a)/a, using fixed weighted
+integrability of C,C'. The upper endpoint also obeys C_w exp(a)/a:
+sqrt(m)|C(y-L)|=exp(a)exp((L-y)/2)|C(y-L)|<=C_w exp(a),
+and reverse-time term is smaller; logm>=2a. Lower endpoint is negligible.
+Thus the fully returned Selberg remainder costs at most C_w exp(a)/a.
+
+The density term is 2 integral_2^m f_y +2 integral_2^m f_y/logx.
+The first is Q19's paid continuous term minus its negligible [1,2] piece.
+The second, bounded with the same split, costs <=C_w exp(a)/a.
+Hence the external formula would supply
+ |J(a;m)+P2(a;m)|<=C_w exp(a)/a + paid negligible endpoints.
+After actual phase and averaging, with h-T>=h/2,
+ |B_T+B2_T|<=C_w exp(h)/(T(h-T))+o(1).
+This is a logarithmic improvement for a DIFFERENT combination, not a bound
+for B_T alone. Completing independently pays |B2_T|<=C_w exp(h)/T:
+use sum_(n<=x)(Lambda*Lambda)(n)<=A2(x)=O(xlogx), divide by logn,
+and the same unit-log-shell argument. All pairs and prime powers remain.
+Thus B_T >= -C_w exp(h)/T - C_w exp(h)/(T(h-T))-o(1),
+which returns only the inherited sqrt(m)/L²+L full K floor after
+self, arch once and original-P rho_S=o(1). No new full exponent.
+
+## Missing sign and negative-control discrimination
+
+Scalar Lambda(u)Lambda(v)>=0 does not imply Re(exp(2i gamma a)f_y(uv))>=0.
+For unrestricted complex weights even a single negative real value defeats
+that inference; this is OUTSIDE the actual source class and only diagnoses
+the invalid generic positivity inference, not a counterexample to CCM.
+Needed: an upper signed bound for B2_T jointly with the Selberg remainder,
+sufficient to make B_T small below. Neither exact coefficient positivity nor
+the symmetry asymptotic supplies it. Do not discard P2 or the hyperbola.
+This is one candidate arithmetic pairing, not a new interpretation of the
+previous lattice error. Bounded read-only check confirms identity, all-power extension, weighted
+remainder, endpoints and no-gain completion. Target and RH OPEN.
+
+## Primary-source evidence and exact map
+
+Atle Selberg, An elementary proof of the prime-number theorem, Annals of
+Mathematics50(1949),305–313; printed p309 equation(2.8), proof pp307–309.
+Primary scan: https://www.math.lsu.edu/~mahlburg/teaching/handouts/2014-7230/Selberg-ElemPNT1949.pdf
+Local sources/selberg_1949_annals.pdf
+SHA25647de9d3c50d48e57fde27058d37a487b9414a67c8aace831c02ffba29ef8e6e6.
+Short verbatim quote p309: “Now (2.6) yields”. Display(2.8) is the PRIME-ONLY
+sum log²p + sum_(pq<=x) logp logq =2xlogx+O(x).
+Do not falsely attribute the all-prime-power form literally to that display.
+
+Extension: extra first-sum prime powers cost O(sqrt(x)log²x)=O(x).
+Pairs with at least one proper prime power cost at most
+2 sum_(p,k>=2,p^k<=x) logp psi(x/p^k)
+<=C x sum_p logp/[p(p-1)]=O(x), using elementary Chebyshev psi(t)<=Ct.
+The ordered-pair double count only enlarges this positive ERROR bound.
+This supplies exactly the all-power A2 input, keeping the error uniform in x.
+Root read source text around(2.6)–(2.8); researcher inspected printed formula.
+Verified discovery evidence/partial bridge, NOT an exact supplier for CCM.
+
+Search hints, not established mechanisms: (i) UNVERIFIED renewal equation
+for the signed centered prime-pair weight; (ii) UNVERIFIED multiplicative
+convolution comparison of P2 to J on actual source-pair. Neither is admitted
+as a sign estimate. Three dictionaries were arithmetic Lambda2/semiprimes,
+weighted Selberg symmetry, and renewal/log-weight compensation. All ask
+semantic searches incomplete; no claim of literature absence.
+
+## Shelf correction: do not iterate an already tested coarse recurrence
+
+The subsequent literal crosswalk found
+`docs/routeB_bus/source_observability_2026-09-28/PRIME_PREFIX_ENERGY_OWN_2026-10-07.md`,
+already recorded in PAPER_CHAIN under the October 7 ordered Stieltjes test.
+It verifies Selberg's printed (2.12) and tests its O(x) remainder with
+actual prime weights. Thus the present pair-weight transfer is a useful
+specialization, not a newly discovered arithmetic mechanism. Do not count
+repeating that recurrence toward three distinct post-Q19 attempts.
+
+The same information-loss test retains ALL prime powers. For 1/2<sigma<1,
+gamma real, let f(x)=x^sigma cos(gamma log x), x>=1, and use the actual Lambda:
+
+ T_Lambda f(x)=f(x)log x+sum_(n<=x) Lambda(n)f(x/n).
+
+If psi(t)<=C t, partial summation gives
+ sum_(n<=x) Lambda(n)n^-sigma
+ <=C x^(1-sigma)/(1-sigma).
+Also x^sigma log x<=x/[e(1-sigma)]. Therefore
+
+ |T_Lambda f(x)|<= [C+1/e]x/(1-sigma).
+
+Adding a fixed multiple of f to a solution of an O(x)-tolerant LINEAR
+recurrence preserves that remainder class. This does not preserve the exact
+arithmetic definition of the discrepancy, so it is NOT a counterexample to
+the actual pair, primes, CCM, or RH. It only prevents using the approximate
+recurrence alone to exclude these sublinear oscillations. Repeated algebraic
+use of that same supplied information cannot remove this ambiguity.
+
+Decision: keep the exact J+P2 formula and its paid full return; abandon the
+proposed coarse-renewal iteration before further computation. Any renewed
+Selberg approach must use an additional exact source constraint or a sharper
+signed remainder, not silently strengthen O(x). Original P and all mixed
+terms remain as above. No new exponent, no Pro question sent by this check.
+
+Independent bounded crosswalk: selberg_recurrence_crosswalk PASS the all-Lambda bound, historical duplication and narrow information-loss scope.
+
+## Exact local cancellation before any O(x) remainder
+
+This tests the exact arithmetic identity rather than iterating the coarse
+recurrence. It is a local analytic diagnostic, not a contour estimate for
+the finite source. On Re(s)>1 put F(s)=-zeta'(s)/zeta(s). Absolute convergence
+and differentiation of the Euler product give
+
+ DS[Lambda log]=-F', DS[Lambda*Lambda]=F^2,
+ DS[Lambda2]=F^2-F'=zeta''/zeta.
+
+At a hypothetical zero rho of multiplicity r>=1, write z=s-rho,
+zeta(s)=z^r a(z), a(0)!=0, b=a'/a analytic. Exactly,
+
+ -F'=-r/z^2+b',
+ F^2=r^2/z^2+2r b/z+b^2,
+ F^2-F'=r(r-1)/z^2+2r b/z+b^2+b'.
+
+For r=1 the double poles cancel; a simple pole remains unless b(0)=0.
+For r>=2 the double pole survives. No simplicity assumption is admissible.
+The actual coefficient in P2 includes division by log n. Accordingly define
+
+ H(s)=sum_(n>=2) (Lambda*Lambda)(n)/(log n) n^-s
+     =integral_0^infinity F(s+t)^2 dt, Re(s)>1.
+
+Then H'=-F^2. On a slit neighborhood after local continuation, its singular
+part is r^2/z-2r b(0)log z. Thus F+H has singular part
+
+ r(r-1)/z-2r b(0)log z.
+
+For r=1, the simple pole of F is canceled by the opposite pole of H; a
+logarithmic branch can remain. This explicitly explains how the COMBINATION
+can lose a leading term while the original single-prime sum retains it.
+It supplies neither a favorable sign of P2 nor a bound for J alone.
+
+All Dirichlet series identities here start in their absolute convergence
+domain. The finite sums with n<=m (and uv<=m) are entire; they have no such
+poles. Turning this diagnostic into a finite weighted formula would require
+a paid truncation/contour argument, both time orientations and every other
+zero contribution. None is silently supplied here, and no off-line zero is
+asserted to exist. Original P is unchanged; no compressed operators were
+multiplied. The fully justified finite budget remains the earlier
+O_w(sqrt(m)/L^2+L) after P2, self, arch and projection return. This local
+cancellation is not another full-gain attempt or a reason to ignore P2.
+
+Symbolic check (existing SymPy environment): expanding F=-r/z-b(z) reproduces
+all three displayed Laurent identities. This is algebra verification only.
+
+Bounded independent check selberg_pole_budget: PASS signs, /log integration, multiplicity distinction and finite-source limitation.
+
+END_SOURCE S10
+

@@ -1,0 +1,98 @@
+{
+  "bytes": 129190,
+  "file": "PROSHKA_CCM_ORIGINAL_METRIC_SIGNED_PRIMITIVE_Q43_2026-10-26.txt",
+  "lf": 2240,
+  "sha256": "17b8e7a51d140e0807ed8d12959ccad06d7ba06cbb52b08100293e42612272db",
+  "sources": [
+    {
+      "bytes": 3515,
+      "end_line": 92,
+      "id": "S1",
+      "lf": 65,
+      "name": "CCM_Q42_CONCLUSION.md",
+      "sha256": "4051d5e9d438cf6e446a010cc7b9794f7c424ae405ccf4234b592ebccc6da7e9",
+      "start_line": 28
+    },
+    {
+      "bytes": 73103,
+      "end_line": 1409,
+      "id": "S2",
+      "lf": 1313,
+      "name": "PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_VERDICT_2026-10-26.md",
+      "sha256": "1ee3011c7dff10d052ef23b60992ff5b8f4551da8124bbaac2149df09efef893",
+      "start_line": 97
+    },
+    {
+      "bytes": 4999,
+      "end_line": 1503,
+      "id": "S3",
+      "lf": 90,
+      "name": "CCM_POST_Q42_WEIGHTED_CONTRACTION.md",
+      "sha256": "2c225499191d914fe3d1f82b9c8717480eed8886f38f9cb230a755d2985e02ad",
+      "start_line": 1414
+    },
+    {
+      "bytes": 3118,
+      "end_line": 1564,
+      "id": "S4",
+      "lf": 57,
+      "name": "CCM_POST_Q42_MULTISCALE_SCREEN.md",
+      "sha256": "4cb686fe44063d054d1a872b730a36270e200a75be16f63b8868dfa833d871bb",
+      "start_line": 1508
+    },
+    {
+      "bytes": 5036,
+      "end_line": 1660,
+      "id": "S5",
+      "lf": 92,
+      "name": "CCM_JOINT_Q04_CONCLUSION.md",
+      "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+      "start_line": 1569
+    },
+    {
+      "bytes": 5633,
+      "end_line": 1787,
+      "id": "S6",
+      "lf": 123,
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "start_line": 1665
+    },
+    {
+      "bytes": 3625,
+      "end_line": 1855,
+      "id": "S7",
+      "lf": 64,
+      "name": "CCM_Q32_CONCLUSION.md",
+      "sha256": "183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245",
+      "start_line": 1792
+    },
+    {
+      "bytes": 6174,
+      "end_line": 1928,
+      "id": "S8",
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "start_line": 1860
+    },
+    {
+      "bytes": 5988,
+      "end_line": 2043,
+      "id": "S9",
+      "lf": 111,
+      "name": "CCM_Q40_CONCLUSION.md",
+      "sha256": "e77ad2f2014b46a54d60f2ad4f9eadff172f8ae6c9a91ba2c03a59a9c2a6ea06",
+      "start_line": 1933
+    },
+    {
+      "bytes": 10197,
+      "end_line": 2237,
+      "id": "S10",
+      "lf": 190,
+      "name": "CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f",
+      "start_line": 2048
+    }
+  ]
+}

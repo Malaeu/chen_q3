@@ -9382,3 +9382,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: откат к полному C0/N_star, новый source-dependent signed механизм до раздельных норм; Q43 не отправлен.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q42_CONCLUSION.md; полный Q42 request/verdict и q42_replay; три post-Q41 preflight и CCM_Q42_COFINAL_INPUT_CHECK.md.
 - Чей вердикт: Прошка + root full read/replay + независимый bounded q32_annulus_audit qualified PASS §§3–7; RH не заявлена, goal OPEN.
+
+## 2026-10-26 — Q43: совместный factorial return сохраняет C0
+
+- Развилка: full differentiated primitive после Q42; своя weighted contraction проверена, возврат метрики сохраняет half-power.
+- Выбрали: свернуть всю Lambda с actual primitive до производной, adjoint и исходного P.
+- Почему: проверить полный source map с jumps/terminal seam вместо резольвенты чужого символа.
+- Что отвергли: Y/s contraction как оценку полной Y-арифметики; повтор Selberg/renewal/Buchstab без signed supplier.
+- Инсайты: Pi=psi-J_factorial точно; S=-beta Hd+E, V=C0-e Hd-E. Квадратурная ошибка O_epsilon(m^(3epsilon/2)) оплачена и сокращается совместно; C0 остаётся с коэффициентом один.
+- Блокеры: нет независимого signed upper; степень1/2 и conditional3/8 не улучшены.
+- Иглы Зингера: полные right traces, верхний атом, derivative веса, все prime powers/mixed terms;4assets330indices21floors6endpoints5intervals6planted10sources, JSON побайтно.
+- Следующий ход: остановить primitive-contraction chain; сверить более ранний whole actual source-pair margin, не менять исходный all-P goal и не повторять adverse identity/PNT как новый supplier. Q44 не отправлен.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q43_CONCLUSION.md; Q43request/verdict/q43_replay; CCM_POST_Q42_WEIGHTED_CONTRACTION.md; CCM_POST_Q42_MULTISCALE_SCREEN.md.
+- Чей вердикт: Прошка + root full read/replay + independent bounded q32_annulus_audit PASS §§2–7 incl receiver; goal OPEN, RH не заявлена.
