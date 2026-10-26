@@ -9306,3 +9306,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: rollback before log interpolation to full first signed form; no Q38.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q37_CONCLUSION.md; q37_replay.
 - Чей вердикт: Pro original; root read/replay; q32_annulus_audit qualified PAPER PASS §§2–7 with inherited S11/S10.
+
+## 2026-10-26 — Post-Q37 complete curvature repair
+- Развилка: pay the failed logarithmic chord through exact orbit curvature.
+- Выбрали: retain variance and full B*B-BB* before the explicit norm step.
+- Почему: identify whether nonnormality repair has a usable complete price.
+- Что отвергли: generic separate commutator payment as improvement; no source no-go.
+- Инсайты: valid cost G_m+18m; intermediate orbit need not stay in P; reverse shifts keep boundary terms even when product cutoff kills B² terms.
+- Блокеры: integrated signed curvature/variance compensation unpaid.
+- Иглы Зингера: all mu/Lambda return, complex mixed terms and original endpoints retained; toy rational controls algebra only.
+- Следующий ход: source-specific joint curvature or earlier rollback; one attempt, no Q38.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q37_ORBIT_CURVATURE_RETURN.md.
+- Чей вердикт: root derivation; q32_annulus_audit bounded algebra/budget PASS.

@@ -1,3 +1,9 @@
+# POST-Q37 CURVATURE REPAIR CHECKED — NO RESPONSE PENDING
+
+Post-Q37 orbit-curvature repair checked: exact variance+commutator identity; discard variance and global norm costs G_m+18m, worse than fallback. Intermediate orbit leaves P, reverse-shift products have no uv cutoff. One paid attempt, no no-go; CCM_POST_Q37_ORBIT_CURVATURE_RETURN.md. No Q38.
+
+--- Earlier state ---
+
 # Q37 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Q37 processed: CCM_Q37_CONCLUSION.md;1041exact/8planted/12sources byte-identical, bounded independent PAPER PASS §§2–7. Full arithmetic exponential/inverse norms polynomial, but zero-slack log-chord upper fails cofinally on original P with paid margin<=-16/6561. Constant/polylog repair not excluded; arbitrary defect budget equivalent up to O(log m). Legal completion retains half-power, preserve S10 cap. Rollback before log interpolation to first signed derivative/C0; no Q38, goal OPEN.
