@@ -1,0 +1,224 @@
+{
+  "arb": false,
+  "historical_code_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "mathematics": {
+    "alpha_interval": [
+      "693235373815977728/1500190853959904535",
+      "6932353738160839627/14001781303625775660"
+    ],
+    "asymptotic_source_sign_proof": "PAPER in the accompanying Markdown; not a finite computation",
+    "groups": {
+      "actual_log_support_and_margin_checks": 1,
+      "all_finite_grid_reflections": 9,
+      "constrained_rational_triangle_cases": 3,
+      "exact_compact_filter_cases": 4,
+      "exact_constraint_nullity": 5,
+      "exact_jet_correction": 1,
+      "projection_power_fixtures": 3
+    },
+    "log2_interval": [
+      "346617686907988864/500063617986634845",
+      "6932353738160839627/10001272359732696900"
+    ],
+    "log_three_halves_interval": [
+      "323497204730668052476864/797842276096343994140625",
+      "32349720473066805269995687/79784227609634399414062500"
+    ],
+    "packet_signs": [
+      {
+        "A_over_alpha": 1,
+        "global_reflection": -1,
+        "local_parity": -1
+      },
+      {
+        "A_over_alpha": -1,
+        "global_reflection": 1,
+        "local_parity": -1
+      },
+      {
+        "A_over_alpha": -1,
+        "global_reflection": -1,
+        "local_parity": 1
+      },
+      {
+        "A_over_alpha": 1,
+        "global_reflection": 1,
+        "local_parity": 1
+      }
+    ],
+    "passed": true,
+    "planted_errors_detected": {
+      "delete_one_time_orientation": true,
+      "delete_triangle_complement_after_contacts": true,
+      "omit_complex_conjugation": true,
+      "omit_second_jet_correction": true,
+      "reverse_second_jet_correction_sign": true,
+      "use_plus_sign_for_both_reflection_sectors": true,
+      "wrong_h_equals_s_instead_of_L_minus_s": true
+    },
+    "polynomial_filter_cases": [
+      {
+        "parity": 1,
+        "power": 8,
+        "squared_norm_positive": true
+      },
+      {
+        "parity": -1,
+        "power": 8,
+        "squared_norm_positive": true
+      },
+      {
+        "parity": 1,
+        "power": 12,
+        "squared_norm_positive": true
+      },
+      {
+        "parity": -1,
+        "power": 12,
+        "squared_norm_positive": true
+      }
+    ],
+    "projection_exponent_fixtures": [
+      {
+        "epsilon": "1/64",
+        "fixed_q": 70,
+        "power_before_logs": "-35/64"
+      },
+      {
+        "epsilon": "1/100",
+        "fixed_q": 106,
+        "power_before_logs": "-53/100"
+      },
+      {
+        "epsilon": "1/128",
+        "fixed_q": 134,
+        "power_before_logs": "-67/128"
+      }
+    ],
+    "scope": "Exact finite algebra and rational enclosures; not production CCM spectra",
+    "universal_source_sign_certified_by_code": false
+  },
+  "production_spectrum": false,
+  "provenance": {
+    "bytes": 49254,
+    "corrupted_byte_detected": true,
+    "lf": 858,
+    "sha256": "6d24b63f6f150b5fd723bbb99248417685b430a03a9fdd91abcecb2020d70e50",
+    "source_count": 10,
+    "sources": [
+      {
+        "bytes": 4215,
+        "end_byte": 10944,
+        "end_line": 113,
+        "id": "S1",
+        "lf": 81,
+        "name": "CCM_POST_Q49_TRANSLATE_VARIANCE_PREFLIGHT.md",
+        "sha256": "12ce927a7d45caad935fbfe8b4f4537f7c5bc7b5bfe7a98ec73f94793209bd0e",
+        "start_byte": 6729,
+        "start_line": 33
+      },
+      {
+        "bytes": 4004,
+        "end_byte": 15005,
+        "end_line": 189,
+        "id": "S2",
+        "lf": 72,
+        "name": "CCM_POST_Q49_ENERGY_SUPPLIER_SCREEN.md",
+        "sha256": "ae9930d60df3d4ad944e9f991fb486c20365de17287f0f55b8f639dd25194482",
+        "start_byte": 11001,
+        "start_line": 118
+      },
+      {
+        "bytes": 4681,
+        "end_byte": 19747,
+        "end_line": 286,
+        "id": "S3",
+        "lf": 93,
+        "name": "CCM_POST_Q28_EULER_POSITIVITY_PREFLIGHT.md",
+        "sha256": "9ca3dc230902ef9bbd097e21ebc07a32e7494aa76ef5f906f26e8f6a28a3f8a2",
+        "start_byte": 15066,
+        "start_line": 194
+      },
+      {
+        "bytes": 5205,
+        "end_byte": 25015,
+        "end_line": 383,
+        "id": "S4",
+        "lf": 93,
+        "name": "CCM_POST_Q48_FIRST_FORM_DEFICIT_CROSSWALK.md",
+        "sha256": "c7efc8783bb4306ee55df5574649fccf3da8240d37384b8db965183d1dd569e6",
+        "start_byte": 19810,
+        "start_line": 291
+      },
+      {
+        "bytes": 3775,
+        "end_byte": 28830,
+        "end_line": 449,
+        "id": "S5",
+        "lf": 62,
+        "name": "CCM_Q49_CONCLUSION.md",
+        "sha256": "9ae098f310c8a1f82fe425e9f5a5d526614d6458d6918147850bc22e15a0bafe",
+        "start_byte": 25055,
+        "start_line": 388
+      },
+      {
+        "bytes": 2766,
+        "end_byte": 31636,
+        "end_line": 503,
+        "id": "S6",
+        "lf": 50,
+        "name": "CCM_Q48_CONCLUSION.md",
+        "sha256": "4c208387110b1e06fb03d1f75f2b5963b467d036afb7db6c3a07ef6f28faed57",
+        "start_byte": 28870,
+        "start_line": 454
+      },
+      {
+        "bytes": 5661,
+        "end_byte": 37352,
+        "end_line": 609,
+        "id": "S7",
+        "lf": 102,
+        "name": "CCM_Q16_ONE_SIDED_ENDPOINT_BUDGET.md",
+        "sha256": "5562af18578eedfc23dd6b7a7f65c9e5d8df9b457413ee98483c2014cab75a3c",
+        "start_byte": 31691,
+        "start_line": 508
+      },
+      {
+        "bytes": 3398,
+        "end_byte": 40801,
+        "end_line": 678,
+        "id": "S8",
+        "lf": 65,
+        "name": "CCM_Q06_ONE_SIDED_EDGE_BUDGET.md",
+        "sha256": "4ffb00e4836506cb6ceac86bd45743a3036afedef94ab8776b33aed504db7f68",
+        "start_byte": 37403,
+        "start_line": 614
+      },
+      {
+        "bytes": 2717,
+        "end_byte": 43558,
+        "end_line": 729,
+        "id": "S9",
+        "lf": 47,
+        "name": "CCM_Q46_CONCLUSION.md",
+        "sha256": "1e121c3dc8265911c66009090f2126e47fb4e5b78277881e21875658c9095f7c",
+        "start_byte": 40841,
+        "start_line": 683
+      },
+      {
+        "bytes": 5633,
+        "end_byte": 49245,
+        "end_line": 856,
+        "id": "S10",
+        "lf": 123,
+        "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+        "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+        "start_byte": 43612,
+        "start_line": 734
+      }
+    ]
+  },
+  "repository_writes": false
+}

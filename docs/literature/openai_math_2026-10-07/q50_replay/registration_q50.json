@@ -1,0 +1,17 @@
+{
+  "task": "Q50_SUPPORT_AWARE_SIGNED_OVERLAP",
+  "stage": "After full source intake and preliminary PAPER derivation; before executable mathematical checks",
+  "mechanism": "Finite reflected Hankel overlap, exact exponential square completion, and source-specific test of zero-defect reflection order on the original three-contact band",
+  "predictions": {
+    "P1": "The complementary continuous triangle has Schur norm at most 2 and returns exactly the decaying kernel after the two reflected orientations.",
+    "P2": "Reflection preserves the original band and contacts, and the Hermitian first form uses opposite signs on its two parity sectors; mixed parity blocks cancel only after adding both orientations.",
+    "P3": "For compact contact-filtered two-packet prototypes at separation log(2), the complete arithmetic form is precisely plus or minus log(2)/sqrt(2); all other actual prime powers vanish by support before projection.",
+    "P4": "An explicit three-jet correction of a Fourier truncation returns these prototypes to the original P with full form error o(1), for each fixed epsilon.",
+    "P5": "These tests exclude only zero-defect semidefinite/reflection shortcuts, not an upper bound with a constant or vanishing-exponent allowance.",
+    "P6": "The centered source vanishes exactly under discrete-to-continuous replacement; the triangular complement must not be charged twice."
+  },
+  "scope": "PAPER universal derivation plus exact finite algebra checks; no production CCM spectral numerics",
+  "favorable_global_exponent_predicted": false,
+  "historical_code_execution": false,
+  "repository_writes": false
+}
