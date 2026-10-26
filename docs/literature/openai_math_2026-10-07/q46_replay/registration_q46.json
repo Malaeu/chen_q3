@@ -1,0 +1,14 @@
+{
+  "task": "Q46_ORIGINAL_P_STRATEGIC_ROLLBACK",
+  "stage": "After full source reading and preliminary derivation, before new executable mathematical checks",
+  "mechanism": "Exact barycentric interpolation on the actual prime-power mesh using the Baker-Harman-Pintz interval theorem; preserve actual Mangoldt-minus-cell masses jointly",
+  "predictions": {
+    "P1": "The matrix reconstruction error is bounded by a constant times (1+Omega)^2 a^(-9/20), with the original projection and all matrix cross terms unchanged.",
+    "P2": "Full reconstruction retains Lambda(n)-ell_n on each actual prime-power node; the gap theorem supplies no estimate for their signed pairing by itself.",
+    "P3": "A cumulative node calculation retains the actual Chebyshev discrepancy with coefficient one.",
+    "P4": "The continuous control measure gives zero centered form before estimates when its interpolation remainder is also retained.",
+    "P5": "No favorable full exponent is inferred from the small interpolation error; the existing full-source budget is retained if the signed mass comparison remains unpaid."
+  },
+  "not_run": ["Lean", "Arb", "production CCM spectrum", "independent audit", "historical source scripts"],
+  "repository_writes": false
+}

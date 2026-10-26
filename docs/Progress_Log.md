@@ -9421,3 +9421,14 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: исходное достижимое P-ядро до inverse; Q46 не отправлен.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q45_CONCLUSION.md.
 Чей вердикт: Proshka Q45; root replay/E1; q44_bounded_audit qualified PAPER PASS.
+
+## 2026-10-26 — Q46: prime support geometry does not supply signed mass comparison
+Развилка: actual prime-power mesh versus full centered physical form.
+Выбрали: return to the original centered form before scalar mass payment.
+Почему: reconstruction error has vanishing epsilon exponent, but actual E has coefficient one.
+Что отвергли: treating small prime gaps as the missing weighted one-sided estimate.
+Инсайты: exact geometry and exact masses have separate obligations; mixed terms survive.
+Блокеры: independent directed mass/test comparison remains unproved.
+Иглы Зингера: E(a^-), Peano sign, virtual endpoint and proper prime powers checked.
+Следующий шаг: screen an earlier source-specific fork without repeating Q09/Q28 positivity.
+Проверка: four replay assets byte-identical; bounded independent PAPER PASS §§3–8; primary BHP statement checked. No new CCM exponent or RH claim.

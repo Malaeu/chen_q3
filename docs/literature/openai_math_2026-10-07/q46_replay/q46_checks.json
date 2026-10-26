@@ -1,0 +1,226 @@
+{
+  "arb_run": false,
+  "historical_programs_executed": false,
+  "lean_run": false,
+  "mathematics": {
+    "counts": {
+      "continuum_controls": 24,
+      "formal_mangoldt_coefficients": 96,
+      "matrix_entry_returns": 24,
+      "mesh_configurations": 6,
+      "polynomial_peano_controls": 36,
+      "prefix_and_abel_controls": 24
+    },
+    "finite_tests_do_not_prove_asymptotic_sign": true,
+    "negative_control_outside_actual_source": [
+      {
+        "a": 3,
+        "m": 20,
+        "negative_extra": "-8",
+        "nodes": 12,
+        "positive_extra": "8"
+      },
+      {
+        "a": 5,
+        "m": 25,
+        "negative_extra": "-27/2",
+        "nodes": 11,
+        "positive_extra": "27/2"
+      },
+      {
+        "a": 5,
+        "m": 29,
+        "negative_extra": "-33/2",
+        "nodes": 13,
+        "positive_extra": "33/2"
+      },
+      {
+        "a": 7,
+        "m": 30,
+        "negative_extra": "-11",
+        "nodes": 13,
+        "positive_extra": "11"
+      },
+      {
+        "a": 11,
+        "m": 64,
+        "negative_extra": "-255/4",
+        "nodes": 20,
+        "positive_extra": "255/4"
+      },
+      {
+        "a": 17,
+        "m": 97,
+        "negative_extra": "-117",
+        "nodes": 25,
+        "positive_extra": "117"
+      }
+    ],
+    "passed": true,
+    "planted_errors_detected": {
+      "delete_proper_prime_powers": true,
+      "delete_virtual_endpoint_mass": true,
+      "drop_complex_cross_term": true,
+      "omit_continuum_reconstruction": true,
+      "omit_lower_prefix": true,
+      "replace_Lambda_by_cell_mass": true,
+      "reverse_peano_sign": true
+    },
+    "scope": "Exact algebra on finite polynomial fixtures and true arithmetic coefficients; not original-P spectra or BHP asymptotic verification"
+  },
+  "production_spectrum_run": false,
+  "provenance": {
+    "all_source_frames_verified": true,
+    "bytes": 144321,
+    "lf": 2537,
+    "packet": "PROSHKA_CCM_ORIGINAL_P_STRATEGIC_ROLLBACK_Q46_2026-10-26.txt",
+    "sha256": "f12272c56c0d65abc1a93171cad52581bbb841ee91c083523e1b0a4678101a3b",
+    "single_byte_corruption_detected": true,
+    "source_count": 13,
+    "sources": [
+      {
+        "bytes": 81220,
+        "end_byte": 87698,
+        "end_line": 1615,
+        "id": "S1",
+        "lf": 1586,
+        "name": "PROSHKA_CCM_ACTUAL_MOBIUS_FORCING_SEAM_Q45_VERDICT_2026-10-26.md",
+        "sha256": "2f0230ab8ed7f0a38fc7935bc06c69def094ec5a347f9d893ef6d3f6d58fb4f9",
+        "start_byte": 6478,
+        "start_line": 30
+      },
+      {
+        "bytes": 3436,
+        "end_byte": 91277,
+        "end_line": 1674,
+        "id": "S2",
+        "lf": 55,
+        "name": "CCM_Q45_CONCLUSION.md",
+        "sha256": "fe75c23687897d58a6c891d37cf3e2968d4957d228e80bc9f02a852a86f6e070",
+        "start_byte": 87841,
+        "start_line": 1620
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 97600,
+        "end_line": 1747,
+        "id": "S3",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 91426,
+        "start_line": 1679
+      },
+      {
+        "bytes": 3751,
+        "end_byte": 101504,
+        "end_line": 1804,
+        "id": "S4",
+        "lf": 53,
+        "name": "CCM_CONTINUOUS_RANK_TWO_TEST.md",
+        "sha256": "6c917626df5d97fae5df2cc4a5b409465e23753de2c38e7b41d47e66f0eecbe1",
+        "start_byte": 97753,
+        "start_line": 1752
+      },
+      {
+        "bytes": 4828,
+        "end_byte": 106490,
+        "end_line": 1899,
+        "id": "S5",
+        "lf": 91,
+        "name": "CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+        "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+        "start_byte": 101662,
+        "start_line": 1809
+      },
+      {
+        "bytes": 3398,
+        "end_byte": 110042,
+        "end_line": 1968,
+        "id": "S6",
+        "lf": 65,
+        "name": "CCM_Q06_ONE_SIDED_EDGE_BUDGET.md",
+        "sha256": "4ffb00e4836506cb6ceac86bd45743a3036afedef94ab8776b33aed504db7f68",
+        "start_byte": 106644,
+        "start_line": 1904
+      },
+      {
+        "bytes": 2757,
+        "end_byte": 112954,
+        "end_line": 2016,
+        "id": "S7",
+        "lf": 44,
+        "name": "CCM_Q07_DISPLACEMENT_PREFLIGHT.md",
+        "sha256": "d983a2be3ec1025ce56725bb3a32e021e7e0f4cd3f1625e2f952d9059e83048c",
+        "start_byte": 110197,
+        "start_line": 1973
+      },
+      {
+        "bytes": 3925,
+        "end_byte": 117028,
+        "end_line": 2086,
+        "id": "S8",
+        "lf": 66,
+        "name": "CCM_PHASE_Q07_CONCLUSION.md",
+        "sha256": "efc9203f38c258351726fabddd665a16afa0bbdd3ee8914a1891ed9ffdf5fb45",
+        "start_byte": 113103,
+        "start_line": 2021
+      },
+      {
+        "bytes": 5597,
+        "end_byte": 122779,
+        "end_line": 2155,
+        "id": "S9",
+        "lf": 65,
+        "name": "CCM_HIGH_ORDER_Q10_CONCLUSION.md",
+        "sha256": "8166015d037803313da2afea542bebeaa11ba2e85ea5de79f9167c1ba33c5f9d",
+        "start_byte": 117182,
+        "start_line": 2091
+      },
+      {
+        "bytes": 5610,
+        "end_byte": 128552,
+        "end_line": 2256,
+        "id": "S10",
+        "lf": 97,
+        "name": "CCM_Q10_GEOMETRIC_AUDIT_DISCRIMINATOR.md",
+        "sha256": "5b522acfd372f8732b85bc80c1a205f74140fe680e795d2ef817bb9150b73831",
+        "start_byte": 122942,
+        "start_line": 2160
+      },
+      {
+        "bytes": 2562,
+        "end_byte": 131278,
+        "end_line": 2299,
+        "id": "S11",
+        "lf": 39,
+        "name": "CCM_POST_Q45_VARIANCE_SUPPLIER_SCREEN.md",
+        "sha256": "b21dac1a7ca11052cd86369215be07cd34447f824787f16fbb153a200d11f205",
+        "start_byte": 128716,
+        "start_line": 2261
+      },
+      {
+        "bytes": 8129,
+        "end_byte": 139573,
+        "end_line": 2451,
+        "id": "S12",
+        "lf": 148,
+        "name": "CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md",
+        "sha256": "b27227aec0515c8e126a7b6cab23117bc364c67cee167dfc38f23e95c40a29d7",
+        "start_byte": 131444,
+        "start_line": 2304
+      },
+      {
+        "bytes": 4568,
+        "end_byte": 144304,
+        "end_line": 2534,
+        "id": "S13",
+        "lf": 79,
+        "name": "CCM_Q45_MOBIUS_THETA_COLLAPSE_SCREEN.md",
+        "sha256": "b9cebd304507db06b62132e88f43a2f9e90f6644827c00bde751d56da46f10de",
+        "start_byte": 139736,
+        "start_line": 2456
+      }
+    ]
+  }
+}
