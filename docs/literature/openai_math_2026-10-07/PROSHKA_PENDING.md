@@ -1,3 +1,15 @@
+# POST-Q33 HELSON TEST COMPLETE — NO RESPONSE PENDING
+
+CCM_POST_Q33_HELSON_RETURN.md independently bounded PAPER PASS: exact H1 trace on original P, correct auxiliary PSD counterexample, full H2 budget, and actual-P norm obstruction. Support-aware rough semiprimes force every stated coefficientwise B redistribution to have HS norm>=c sqrt(m)/log(m); H has op norm>=c. Thus global separate HS and op/trace certificates retain half power. This is not a bound on the signed trace or CCM spectrum; localized joint estimates remain open. One new bounded attempt, old Gram/lattice/reflection/Selberg repeats not counted. Q33 processed; no monitor or Q34. Next: preserve this scoped result, then seek additional joint arithmetic information before another same-family question. Goal/RH OPEN.
+
+--- Earlier state ---
+
+# POST-Q33 HELSON TEST — INDEPENDENT AUDIT RUNNING
+
+Q33 is fully processed; no external response awaited and no Q34 sent. Own new bounded product-index attempt is CCM_POST_Q33_HELSON_RETURN.md. Exact trace returns actual C_comp through H_uv=alpha(uv) and actual correlation B_uv=rho(uv)/(tau(uv)-2), with hyperbolic boundary and all mixed terms. Separate HS completion costs m^(1/2+epsilon/2) times logs; auxiliary direct PSD entrance fails on actual9,15,25 coefficients. These are pending independent audit, not CCM claims. Read-only q32_annulus_audit is checking H1/H2 and scope. Old ratio/Gram, lattice, reflection and Selberg rewrites were identified as duplicates, not new attempts. Next: finish this audit and scoped note delivery, then choose a genuinely additional joint input or concrete Q34 impasse under owner scenario. Goal/RH OPEN.
+
+--- Earlier state ---
+
 # Q33 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Full1036-line original preserved/read;211exact/8planted/8sources reproduced byte-identically. Independent read-only q32_annulus_audit bounded PAPER PASS §§2–6 and Q08/weighted-LCM shelf comparison. CCM_Q33_CONCLUSION.md: all-prime-power coefficient majorant and exact full shift-square return checked; dropping its energy leaves (16/epsilon−4+o(1))sqrt(m). This is certificate cost only, not actual spectrum. Existing weighted-LCM model return is stronger; no new full exponent. Original-P signed C5/U_Z debt persists. No Q34. Goal/RH OPEN. Next: scoped response-cycle commit and remove completed monitor; next own mechanism must use additional actual signed information, not re-pay the known model.
