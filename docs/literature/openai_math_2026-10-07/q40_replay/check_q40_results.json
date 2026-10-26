@@ -1,0 +1,39 @@
+{
+  "arb": false,
+  "external_pnt_proof_recertified": false,
+  "finite_cases": 2507,
+  "groups": {
+    "actual_integer_incidence_isolation": 1860,
+    "actual_mu_log_full_complex_matrix": 121,
+    "constructive_signed_primal_component_optimum": 80,
+    "dual_lower_bound_for_other_signed_allocations": 80,
+    "exact_full_k_upper_half_support": 201,
+    "fixed_order_projection_and_short_exponents": 9,
+    "full_k_prime_channel_return": 121,
+    "isolated_prime_k2_formula": 20,
+    "pnt_weight_and_normalization_exponents": 4,
+    "signed_allocations_are_genuinely_used": 1,
+    "signed_packet_cross_orientation": 3,
+    "signed_rebalancing_strictly_better_in_control": 4,
+    "two_contact_double_zero_prefactor": 3
+  },
+  "groups_passed": 13,
+  "historical_scripts_executed": false,
+  "lean": false,
+  "planted_count": 11,
+  "planted_failures_detected": [
+    "drop_mu_channel_minus",
+    "omit_coprimality_mask",
+    "replace_full_k_log_by_log_product",
+    "lose_n_equal_m_over_2_seam",
+    "allow_zero_block_to_bridge_isolated_prime",
+    "signed_channels_same_as_termwise_moduli",
+    "permit_transfer_between_distinct_components",
+    "drop_cross_time_orientation",
+    "wrong_packet_relative_sign",
+    "drop_linear_projection_error",
+    "prime_power_deletion"
+  ],
+  "production_spectrum": false,
+  "scope": "Finite exact arithmetic, incidence-flow, generic Hermitian algebra and exponent controls; not a numerical original-P cell or cofinal sign certification."
+}

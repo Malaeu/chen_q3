@@ -1,0 +1,103 @@
+{
+  "all_declared_bytes_lf_sha256_match": true,
+  "body_count": 10,
+  "canonical_bytes": 129772,
+  "canonical_file": "PROSHKA_CCM_SIGNED_BLOCK_COUPLING_Q40_2026-10-26.txt",
+  "canonical_lf": 2209,
+  "canonical_sha256": "771ae3b7ce9b657227cc939bfb2d922658b5985a258ea5ef6241d14865c8987c",
+  "historical_scripts_executed": false,
+  "sources": [
+    {
+      "bytes": 4706,
+      "first_body_line": 28,
+      "id": "S1",
+      "last_body_line": 116,
+      "lf": 89,
+      "name": "CCM_Q39_CONCLUSION.md",
+      "sha256": "bd1f0d1c19b4a461a6e87a11b0a882be0f8641d6c4284c59e697a4c9dcd53f72"
+    },
+    {
+      "bytes": 79517,
+      "first_body_line": 121,
+      "id": "S2",
+      "last_body_line": 1462,
+      "lf": 1342,
+      "name": "PROSHKA_CCM_JOINT_CENTRAL_SOURCE_ROLLBACK_Q39_VERDICT_2026-10-26.md",
+      "sha256": "fa3cff84fb70f7961253fbf6ed26ae5e997d2422cd34793a3beaddc5bcb3c85d"
+    },
+    {
+      "bytes": 5016,
+      "first_body_line": 1467,
+      "id": "S3",
+      "last_body_line": 1574,
+      "lf": 108,
+      "name": "CCM_POST_Q39_MANY_PRIME_VARIANCE.md",
+      "sha256": "c03f7e4c7e8bb94de88149688f08d31503cb562a1697a549d2d2ac16c65dbae0"
+    },
+    {
+      "bytes": 4280,
+      "first_body_line": 1579,
+      "id": "S4",
+      "last_body_line": 1662,
+      "lf": 84,
+      "name": "CCM_POST_Q39_EXACT_PRIME_PARTITION.md",
+      "sha256": "ee07620f2d46cf66c196d319b1848ef9a2b33d9a874e180a4c2674eb70aea8b8"
+    },
+    {
+      "bytes": 4463,
+      "first_body_line": 1667,
+      "id": "S5",
+      "last_body_line": 1765,
+      "lf": 99,
+      "name": "CCM_Q02_DIRECT_ABEL_TEST.md",
+      "sha256": "59a3a857e6f4af54a1bec1cd9f7175bdbb7cc155babb4f389b7223454670b352"
+    },
+    {
+      "bytes": 5958,
+      "first_body_line": 1770,
+      "id": "S6",
+      "last_body_line": 1879,
+      "lf": 110,
+      "name": "CCM_Q05_LOG_CORRELATION_PREFLIGHT.md",
+      "sha256": "d0fa55c54b7c6f268d6e2f7f875b982b3b34dc09559cb3e2fc2189607055bfdf"
+    },
+    {
+      "bytes": 3625,
+      "first_body_line": 1884,
+      "id": "S7",
+      "last_body_line": 1947,
+      "lf": 64,
+      "name": "CCM_Q32_CONCLUSION.md",
+      "sha256": "183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245"
+    },
+    {
+      "bytes": 5747,
+      "first_body_line": 1952,
+      "id": "S8",
+      "last_body_line": 2050,
+      "lf": 99,
+      "name": "CCM_Q34_CONCLUSION.md",
+      "sha256": "acbf977ad791fac2910bea0876969a817ddbd8d57211cf7a4312372c4b6b0e2e"
+    },
+    {
+      "bytes": 6174,
+      "first_body_line": 2055,
+      "id": "S9",
+      "last_body_line": 2123,
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+    },
+    {
+      "bytes": 3555,
+      "first_body_line": 2128,
+      "id": "S10",
+      "last_body_line": 2207,
+      "lf": 80,
+      "name": "CCM_POST_Q30_SURVIVING_PRODUCTS.md",
+      "sha256": "204a0aa14f8480f691f8430440d8d2e8a860617c6b946b80d7639361814efd0d"
+    }
+  ],
+  "strict_source_boundaries_match": true,
+  "whole_file_hash_origin": "Measured here; Q40 caption did not specify a whole-file hash."
+}

@@ -1,3 +1,29 @@
+# Q40 COMPLETE AND CHECKED — NO RESPONSE PENDING
+
+Q40 processed: CCM_Q40_CONCLUSION.md;13groups/2507cases/11planted/10sources replay byte-identical; independent bounded PAPER PASS §§2–8, root E1 statement check. Signed adaptive incidence flow optimum=sum positive component totals. Actual isolated prime channels on minuspacket original-P family cost sqrt(m)/logm, while SAME full signed T=o(sqrt(m)/logm); actual intercomponent compensation retained. Optimized certificate exponent1/2 only, not CCM lower. Roll back before independent component positive parts; prior cap unchanged, no Q41, goal OPEN.
+
+--- Earlier state ---
+
+# Q40 RECEIVED — FULL READ AND REPLAY COMPLETE, AUDIT RUNNING
+
+Natural terminal observed26Oct13:46Berlin. Full original75840bytes/1277LF, SHA2566f799885ed9578e2bc0e542b68d340ec62d6c7a0419d415e0f694239e75c9b9e saved and read completely. Six assets replayed:13groups/2507cases/11planted/10sources, both JSON byte-identical. Primary E1 statements checked and HTML saved. Independent q32_annulus_audit reviewing signed-flow optimum, actual isolated primes, minuspacket P return and complete same-family cancellation. No Q41. Need audit and scoped cycle commit including two own postQ39 attempts; then remove monitor. Goal OPEN.
+
+--- Earlier state ---
+
+# Q40 SENT — RESPONSE PENDING
+
+Live readback26Oct13:26Europe/Berlin: intermediate reasoning and Stoppen remain; no terminal answer or final attachment. Page reports continuing system check; not treated as terminal. Next scheduled check13:46Berlin; monitor ccm-q40-signed-blocks ACTIVE. No resend, refresh or interruption. Intermediate mathematical narratives are not admitted results.
+
+Q40 SIGNED_BLOCK_COUPLING sent ONCE26Oct13:06Europe/Berlin in the same living chat via own IAB browser3/tab4. Exact TXT tile/companion and ChatGPT antwortet/Stoppen confirmed. Request129772bytes/2209LF/SHA256771ae3b7ce9b657227cc939bfb2d922658b5985a258ea5ef6241d14865c8987c;10 full size/hash-locked bodies verified; base9b04ba4e, two own attempts explicitly uncommitted. Both own attempts bounded independent checked; exact nonnegative partition removes incidence residual but termwise absolute price is invariant and >=c sqrt(m) on Q39 original-P family. Certificate obstruction only, not CCM lower. No resend/reload/Stop while responding. Download/read/replay/one independent audit after natural completion; one scoped cycle commit including own attempts. Goal OPEN.
+
+--- Earlier state ---
+
+# POST-Q39 MANY-PRIME VARIANCE CHECKED — NO RESPONSE PENDING
+
+Post-Q39 own many-prime variance return checked: CCM_POST_Q39_MANY_PRIME_VARIANCE.md. Entire incidence residual paid, but explicit allowance retains half-power even with free J; not a source lower bound. One no-gain attempt, Q02 continuous-Abel predecessor not counted anew. No Q40 sent. Goal OPEN. Next: joint signed incidence residual before separate Cauchy; no additional mathematical supplier established.
+
+--- Earlier state ---
+
 # Q39 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Q39 processed: CCM_Q39_CONCLUSION.md; 1211 finite cases/9 planted/12 sources, replay byte-identical; independent bounded PAPER PASS §§2–7. Full-k original-P close-prime correlations stay positive, excluding uniform fixed-prime decorrelation only. Completed two-channel Cauchy costs exponent1/2+epsilon; its sqrt(m) lower allowance is not a source/spectral lower. Outer mu and incidence residual remain jointly unpaid. Preserve previous cap; rollback before Cauchy. No Q40 sent; goal OPEN.

@@ -9344,3 +9344,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: rollback before Cauchy to joint outer-mu/incidence comparison; no Q40 sent.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q39_CONCLUSION.md and q39_replay/.
 - Чей вердикт: Proshka source, root full read/replay, q32_annulus_audit bounded independent qualified PASS §§2–7.
+
+## 2026-10-26 — Q40 signed component price versus full cancellation
+
+- Развилка: retain signed channels and optimize before positive-part payment.
+- Выбрали: exact signed-flow optimum and original-P minuspacket discriminator.
+- Почему: stronger than termwise moduli, so inherited failures alone did not decide it.
+- Что отвергли: vanishing-exponent incidence-preserving channel-positive-part certificate, even adaptive signed weights; not CCM.
+- Инсайты: isolated actual primes cost sqrt(m)/logm, but the same full signed form is smaller; negative component mass genuinely compensates them.
+- Блокеры: no uniform source-specific quantitative cross-component comparison.
+- Иглы Зингера: certificate lower does not transfer to source or spectrum; diagnostic PNT result is one family only.
+- Следующий ход: rollback before component positive parts; no Q41 sent.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q40_CONCLUSION.md, q40_replay/, both CCM_POST_Q39_* attempts.
+- Чей вердикт: Proshka full source; root full read/replay and primary E1 statements; q32_annulus_audit independent bounded qualified PASS §§2–8.
