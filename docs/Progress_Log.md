@@ -9331,3 +9331,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: rollback before parity multiplication, source-preserving sign supplier.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q38_CONCLUSION.md; q38_replay.
 - Чей вердикт: root replay45/10/12 byte-identical; independent q32 qualified PAPER PASS §§3–7. Goal/RH OPEN.
+
+## 2026-10-26 — Q39 full-k dilation return checked
+
+- Развилка: fixed-prime decorrelation versus full joint first moment.
+- Выбрали: full-k original-P discriminator and complete Cauchy return.
+- Почему: projection and long cutoff must be paid before applying a correlation criterion.
+- Что отвергли: automatic uniform fixed-prime vanishing and this two-channel Cauchy route to a vanishing exponent; not Katai/BSZ or CCM.
+- Инсайты: actual close-prime mixed correlation survives; outer mu and incidence residual can still cancel.
+- Блокеры: joint signed first moment remains unpaid; no new exponent.
+- Иглы Зингера: Cauchy allowance lower bound is not a signed-source lower bound.
+- Следующий ход: rollback before Cauchy to joint outer-mu/incidence comparison; no Q40 sent.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q39_CONCLUSION.md and q39_replay/.
+- Чей вердикт: Proshka source, root full read/replay, q32_annulus_audit bounded independent qualified PASS §§2–7.

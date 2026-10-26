@@ -1,0 +1,94 @@
+{
+  "all_declared_body_hashes_match": true,
+  "bodies": [
+    {
+      "bytes": 4070,
+      "id": "S1",
+      "lf": 79,
+      "name": "CCM_Q38_CONCLUSION.md",
+      "sha256": "64998d0f46f81ac6df000dc2be82c32b012ba12e66130d54467b0b2898183b37"
+    },
+    {
+      "bytes": 87290,
+      "id": "S2",
+      "lf": 1393,
+      "name": "PROSHKA_CCM_SQUAREFREE_SIGNED_RETURN_Q38_VERDICT_2026-10-26.md",
+      "sha256": "39dc21f87cafe26e372bdef4f14e29a49ef78b7e6ee35748b7cdd48e68b978ef"
+    },
+    {
+      "bytes": 3230,
+      "id": "S3",
+      "lf": 55,
+      "name": "CCM_POST_Q38_SUPPLIER_PREFLIGHT.md",
+      "sha256": "f338c4f9d50e74a710c466a53b98545e8415e145b0419281c1ef0f17d268a11a"
+    },
+    {
+      "bytes": 3625,
+      "id": "S4",
+      "lf": 64,
+      "name": "CCM_Q32_CONCLUSION.md",
+      "sha256": "183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245"
+    },
+    {
+      "bytes": 77294,
+      "id": "S5",
+      "lf": 1247,
+      "name": "PROSHKA_CCM_SIGNED_NEAR_FREQUENCY_Q32_VERDICT_2026-10-26.md",
+      "sha256": "1ed7b9b55f29658fa1022f95ef4e89d183be0a1bdac6abaa8ff93cd040fe4f50"
+    },
+    {
+      "bytes": 9712,
+      "id": "S6",
+      "lf": 193,
+      "name": "CCM_POST_Q31_ADDITIVE_FREQUENCY_RETURN.md",
+      "sha256": "eb6d4c54601a1018097a55d05d7047515d0cfe592fc0983595779fbf79f38243"
+    },
+    {
+      "bytes": 5747,
+      "id": "S7",
+      "lf": 99,
+      "name": "CCM_Q34_CONCLUSION.md",
+      "sha256": "acbf977ad791fac2910bea0876969a817ddbd8d57211cf7a4312372c4b6b0e2e"
+    },
+    {
+      "bytes": 13361,
+      "id": "S8",
+      "lf": 256,
+      "name": "CCM_POST_Q33_HELSON_RETURN.md",
+      "sha256": "835b134256000276ff1d4bf18564d8ad58956cb5e5707cb712cc1c5ff17775aa"
+    },
+    {
+      "bytes": 10197,
+      "id": "S9",
+      "lf": 190,
+      "name": "CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f"
+    },
+    {
+      "bytes": 7127,
+      "id": "S10",
+      "lf": 139,
+      "name": "CCM_Q15_VAUGHAN_JOINT_BUDGET.md",
+      "sha256": "1e13f0487d1a3362817e34112c11953a7296c18bd3500b31995aa221d540bf41"
+    },
+    {
+      "bytes": 6174,
+      "id": "S11",
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+    },
+    {
+      "bytes": 3555,
+      "id": "S12",
+      "lf": 80,
+      "name": "CCM_POST_Q30_SURVIVING_PRODUCTS.md",
+      "sha256": "204a0aa14f8480f691f8430440d8d2e8a860617c6b946b80d7639361814efd0d"
+    }
+  ],
+  "body_count": 12,
+  "canonical_bytes": 238528,
+  "canonical_lf": 3971,
+  "canonical_sha256": "6712bc969a4cc8c03b15f42bab868148bee9ed68fc39cb9219083e534be7a210",
+  "canonical_sha_origin": "Measured in this response, not supplied in the user Q39 caption."
+}

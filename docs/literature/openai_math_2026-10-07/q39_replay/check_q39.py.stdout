@@ -1,0 +1,33 @@
+{
+  "arb": false,
+  "external_theorem_executed": false,
+  "groups": {
+    "actual_mu_convolution_formal_logs": 128,
+    "actual_prime_dilation_mu_product": 640,
+    "coupled_energy_both_cross_orientations": 3,
+    "double_mellin_zero_prefactor": 4,
+    "euler_weight_derivative_full_log": 1,
+    "finite_prime_incidence_full_complex_matrix": 3,
+    "full_k_complex_hyperbolic_return": 26,
+    "projection_exponent_margins": 3,
+    "scaled_stieltjes_derivative": 1,
+    "squarefree_coprime_floor_identity": 400,
+    "two_contact_integrals_polynomial_control": 2
+  },
+  "groups_passed": 11,
+  "individual_equalities": 1211,
+  "lean": false,
+  "planted_count": 9,
+  "planted_failures_detected": [
+    "omit_prime_divisibility_mask",
+    "replace_joint_mu_product_by_independent_zero",
+    "delete_centered_incidence_residual",
+    "drop_one_cross_orientation",
+    "omit_proper_prime_powers",
+    "replace_log_k_by_log_dk",
+    "replace_coprime_squarefree_by_unrestricted",
+    "use_single_instead_of_double_zero",
+    "forget_projection_linear_cross_terms"
+  ],
+  "scope": "Exact finite algebra and auxiliary controls only; no production spectrum, interval proof, or asymptotic inference."
+}

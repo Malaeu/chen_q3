@@ -1,7 +1,7 @@
 # Бумажная цепь до RH — леджер доказательств (сжатая версия, состояние 2026-09-27 вечер)
 **Решение владельца 20.10:** CF22 и PySR отложены как PARKED_REOPENABLE; [архив](../../experiments/cf22_pysr/ARCHIVE_2026-10-20.md). Основной потребитель — исходная CCM/SP или явно отдельный sparse-band receiver. Исторические «next» внешней source-ветки ниже не выбирают работу; G1/G3/SP остаются OPEN. Текущий следующий шаг и инструменты — в NEXT.md.
+Q39 processed: CCM_Q39_CONCLUSION.md; 1211 finite cases/9 planted/12 sources, replay byte-identical; independent bounded PAPER PASS §§2–7. Full-k original-P close-prime correlations stay positive, excluding uniform fixed-prime decorrelation only. Completed two-channel Cauchy costs exponent1/2+epsilon; its sqrt(m) lower allowance is not a source/spectral lower. Outer mu and incidence residual remain jointly unpaid. Preserve previous cap; rollback before Cauchy. No Q40 sent; goal OPEN.
 Полная версия до сжатия (1859 строк, с происхождением вердиктов): `git show 43e31284:docs/Codex/PAPER_CHAIN.md`.
-
 Крыша: `Q3.RouteB.rh_of_real_zero_family_tendsto_centeredXi` (`Goal058DirectGroundZeroEscape.lean:27`) — одна семья F с hzeros, hentire, hconv ⇒ RH.
 F = selected Ferrers tracked ground transform вдоль одного tail reindex, c = 2πm, m = N = k+2; координата s = −Lz/2π.
 Инвариант: одна и та же F во всех звеньях (`STOP: TWO_DIFFERENT_FAMILIES_USED`).
