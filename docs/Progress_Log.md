@@ -9222,3 +9222,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: additional signed input for distinct-prime sector, no equivalent-target rename.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q34_CONCLUSION.md; q34_replay.
 Чей вердикт: root replay317exact/10planted; q32_annulus_audit bounded PAPER PASS conditional on inherited inputs.
+
+## 2026-10-26 — Reject repeated small-prime sieve after Q34
+Развилка: remove small prime factors from squarefree remainder.
+Выбрали: exact mask preflight and shelf comparison.
+Почему: prevent repeated mechanisms masquerading as new attempts.
+Что отвергли: primorial sieve already in Q08, same polylog cutoff and unpaid sign.
+Инсайты: Q34 variant costs m^(7epsilon/4)log^7m but leaves prime coefficient1.
+Блокеры: distinct-prime joint signed estimate absent.
+Иглы Зингера: shared l/W factors give exact zero; no lost mixed terms.
+Следующий ход: different joint arithmetic supplier, no Q35 for this duplicate.
+Адреса: CCM_Q34_CONCLUSION.md addendum; CCM_LOCAL_BLOCK_Q08_CONCLUSION.md.
+Чей вердикт: root112exact; q32_annulus_audit bounded PASS and duplicate identification.

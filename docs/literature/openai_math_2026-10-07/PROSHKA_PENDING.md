@@ -2,6 +2,8 @@
 
 Full original read,317exact/10planted/9sources reproduced byte-identically. Independent bounded PAPER PASS §§2–8. CCM_Q34_CONCLUSION.md records nonsquarefree sector price m^(5epsilon/4)log^7m on original P; squarefree prime deletion remains unpaid. No full exponent or Q35. Scoped cycle commit next; preserve foreign changes. Delete completed Q34 monitor. Goal OPEN.
 
+Post-Q34 exact small-prime-mask transfer independently checked but rejected as Q08 mechanism repeat; see CCM_Q34_CONCLUSION.md addendum.112exact controls; no additional no-gain count, no Q35. Next requires genuinely different joint information.
+
 --- Earlier state ---
 
 # Q34 RECEIVED — REPLAY COMPLETE, INDEPENDENT AUDIT RUNNING

@@ -49,3 +49,24 @@ of H6, remain the arithmetic target. A new split or equivalent C5 statement
 is not a supplier. No Q35 sent. Goal/RH OPEN; CF22/PySR parked.
 
 AUTOPSY: dropped=SIGN; note=full squarefree model counting does not retain an independent lower bound after actual large-prime deletion; coefficient one survives.
+
+## Post-answer shelf rejection: small-prime sieve is a repeat
+
+Root tested exact squarefree rough mask with W_y=prod_{p<=y}p:
+Q_l,y=sum_{d|W_y}mu(d)Q_lcm(l,d). Shared primes give exact zero;
+otherwise Q34 error is multiplied by V_y=prod(1+2/sqrt(p))<=exp(4sqrt(y)).
+At y=(epsilon L/8)^2, the full original-P rough model costs
+O_epsilon(m^(7epsilon/4)L^7), retaining all g_l and matrix cross terms.
+The complementary squarefree small-prime-factor composite sector n>Z is
+paid after the short block, since eventually y<Z and no prime>Z is removed.
+Large-prime deletion still has coefficient1. Root112exact mask controls PASS;
+independent q32_annulus_audit bounded PASS conditional on Q34 inputs.
+
+Shelf comparison: CCM_LOCAL_BLOCK_Q08_CONCLUSION.md already uses this
+primorial mechanism and exactly this polylog threshold, with a paid auxiliary
+sector and unpaid signed rough correction. The Q34 transfer is a quantitative
+variant, not a new mechanism or extra failed-attempt count. Do not send Q35
+merely for this split. For polynomial y the displayed exp(4sqrt(y)) bound is
+insufficient; this alone is NOT a lower bound on the true certificate/product.
+Rollback remains before separate sieve-remainder payment. Need additional
+joint information involving distinct primes, not another local divisor mask.
