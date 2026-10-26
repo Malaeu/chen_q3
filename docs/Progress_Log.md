@@ -9443,3 +9443,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Иглы Зингера: input trace, fixed inverse states, original norm and complete 2^j correction.
 Следующий шаг: source-dependent joint estimate before introducing another filter; no automatic Q48.
 Проверки: full read, byte-identical replay, bounded independent PAPER PASS, primary DLMF identities; no new exponent or RH claim.
+
+## 2026-10-26 — Q48 complete same-prime deficit; distinct-prime estimate open
+Развилка · Complete centered two-copy source after Q47, original sparse P.
+Выбрали · Full prime-power channels with signed local deficit, joint continuous return.
+Почему · Actual Lambda coefficients give geometric local structure; no independence premise.
+Что отвергли · Treating same-prime O(dL²) as full variance; false product cutoff; actual no-go from one atom.
+Инсайты · Continuous U2 return costs rho+sqrt(2L); actual E_p>=0 retains local signed mean and every power pair. None supplies distinct-prime compensation.
+Блокеры · Joint actual mean and different-prime covariance remain unpaid; trial exponent1/2+epsilon/2, retain earlier fallback.
+Иглы Зингера · Exact tensor coefficient versus Lambda(product); original-P halfperiod kernel; once-paid mixed return.
+Следующий ход · Roll back before square to first one-sided common-W form; no automatic Q49, require a new actual joint input.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_Q48_CONCLUSION.md and q48_replay/; original and request preserved.
+Чей вердикт · Proshka Q48, root full read/replay, q44_bounded_audit qualified PAPER PASS §§3–7; no RH claim.

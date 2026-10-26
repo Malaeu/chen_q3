@@ -1,0 +1,18 @@
+{
+  "task": "Q48_CENTERED_TWO_COPY_SOURCE",
+  "stage": "After full reading, byte verification and preliminary PAPER derivation; before new executable mathematical controls",
+  "chosen_mechanism": "Retain all powers of each actual prime in one centered Hilbert-Schmidt channel, and return the entire continuous channel before bounding the two-copy functional",
+  "predictions": {
+    "P1": "The four centered sectors reassemble as V_A + 2 Tr(A_centered H_decay_centered) + V_H; no mixed sector vanishes for free.",
+    "P2": "The complete continuous return changes U2 by its actual mean plus a quantity of modulus at most sqrt((d-1)/d)*sqrt(V_H), with V_H <= 2(log m-1+1/m).",
+    "P3": "Full same-prime channels include every pair of powers, and their summed squared size is at most 48*d*log(m)*(6+3*log(m)). This does not estimate the distinct-prime sum or the mean.",
+    "P4": "Tensor Mobius-log coefficients at distinct primes remain log(p)*log(q); the two cutoffs cannot be replaced by a single product cutoff.",
+    "P5": "At s=t=L/2 the genuine sparse-P two-copy kernel need not vanish even though the causal forward product has shift L. Its coefficient is small on the stated prime-square subsequence; no full variance lower is inferred.",
+    "P6": "An independent favorable joint bound for the actual mean and distinct-prime contribution is not presumed, and no numerical or toy test will be promoted to an actual spectral obstruction."
+  },
+  "numerical_source_signs_planned": false,
+  "historical_program_execution": false,
+  "independent_review": "NOT_RUN",
+  "repository_writes": false,
+  "installations": false
+}

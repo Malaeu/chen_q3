@@ -1,0 +1,9 @@
+{
+  "new_prediction": "For the complete actual prime-power channel A_p, lower=-2log(p)/(sqrt(p)+1) and upper=2log(p)/(sqrt(p)-1) imply the positive explicit deficit (upper I-A_p)(A_p-lower I), hence A_p^2=(4log(p)/(p-1))A_p+4log(p)^2/(p-1) I-deficit. This controls only same-prime terms, not distinct-prime covariance.",
+  "new_tests_not_yet_run": true,
+  "not_claimed": "A bound on full U2, a favorable sign of the distinct-prime covariance, or an actual large negative spectrum.",
+  "previous_checker_sha256": "0fc0495d2ba66b3cfe57ed48290abb8509e16629080d67352ae1d34312d61c84",
+  "previous_results_sha256": "73bb7c9c24f56834a95e91b2ca22ad533f3df673a4e0e94be029699df42eba25",
+  "stage": "Same mechanism refined after the initial algebra run, before tests of the local Euler interval deficit. The original registration is unchanged.",
+  "task": "Q48_CENTERED_TWO_COPY_SOURCE"
+}
