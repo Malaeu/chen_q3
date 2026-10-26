@@ -9471,3 +9471,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 
 ## 2026-10-27 — Q50 reflected source and complete return
 Развилка: whole-line translate norm versus actual signed overlap. Выбрали: exact finite Hankel reflection with triangle returned. Почему: own original-P lowband family defeats norm completion, not signed source. Что отвергли: zero-defect reflection sign only; constant source witnesses do not forbid subpower. Инсайты: triangle returns Hd exactly; opposite parity orders; both actual constant signs in each originalP sector survive full o(1) Fourier/contact return. Блокеры: independent long signed upper unpaid. Иглы Зингера: complex-linear reflection, all powers, normalized full mixed return, prime-index versus divisor cutoffs. Следующий ход: rollback before free sign, bounded new long-source input or earlier signed-contour fork; no Q51. Адреса: docs/literature/openai_math_2026-10-07/CCM_Q50_CONCLUSION.md; q50_replay/; post-Q49 preflights. Чей вердикт: root complete read/replay plus q44_bounded_audit qualified PAPER PASS §§2–8; no Lean/Arb/source spectra.
+
+## 2026-10-27 — Q51: whole low divisor and exact original-P sign boundary
+Развилка: count/signature and full moment do not supply magnitude; moving atom cannot return to band.
+Выбрали: whole low zero divisor before absolute values, finite entire-factor and boundary-log return.
+Почему: concrete impasse of current completions, same full original-P consumer.
+Что отвергли: pointwise matrix-positive-real completion only; actual five-mode opposite signs.
+Инсайты: deleting low zeros leaves high residues; boundary log requires winding, whose corner costs o(1).
+Блокеры: independent signed whole boundary pairing remains unpaid; no full exponent gain.
+Иглы Зингера: analytic transpose is not adjoint; count is not magnitude; pointwise sign is not integral sign.
+Следующий ход: source-sensitive joint comparison before pointwise domination; no automatic Q52.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q51_CONCLUSION.md and q51_replay/.
+Чей вердикт: root full read/replay, q44_bounded_audit qualified bounded PAPER PASS §§3–8; upstream inherited.

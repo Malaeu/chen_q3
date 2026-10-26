@@ -1,0 +1,174 @@
+{
+  "arb": false,
+  "historical_programs_executed": false,
+  "independent_new_audit": false,
+  "lean": false,
+  "mathematics": {
+    "counts": {
+      "finite_divisor_nodes": 3,
+      "five_mode_parameter_pairs": 9,
+      "monodromy_polynomial_controls": 9,
+      "rational_budget_controls": 4,
+      "reflected_pair_controls": 36,
+      "right_halfplane_exact_controls": 4
+    },
+    "exponent_rows": [
+      {
+        "corner": "-7/24",
+        "epsilon": "1/128",
+        "high": "-1/8",
+        "middle": "-77/384"
+      },
+      {
+        "corner": "-7/24",
+        "epsilon": "1/64",
+        "high": "-1/8",
+        "middle": "-37/192"
+      },
+      {
+        "corner": "-7/24",
+        "epsilon": "1/100",
+        "high": "-1/8",
+        "middle": "-119/600"
+      },
+      {
+        "corner": "-7/24",
+        "epsilon": "1/32",
+        "high": "-1/8",
+        "middle": "-17/96"
+      }
+    ],
+    "five_mode_real_example": {
+      "L_scaled_even": "1088391168/28783225",
+      "L_scaled_odd": "-7558272/28783225",
+      "actual_cell": false
+    },
+    "independent_arithmetic_supplier": false,
+    "negative_control": {
+      "actual_zeta_data": false,
+      "real_logder": "-8131799049600/83108037649",
+      "upper_bound": "-90"
+    },
+    "original_P_cofinal_floor_certified_by_code": false,
+    "passed": true,
+    "planted_errors_detected": {
+      "double_continuous_charge": true,
+      "drop_entire_factor_high_zeros": true,
+      "drop_winding_corner": true,
+      "erase_multiplicity": true,
+      "even_real_implies_positive_real": true,
+      "extend_separated_height_sign_to_pole_neighborhood": true,
+      "omit_one_time_orientation": true,
+      "raw_zero_mode_treated_as_contact_vector": true,
+      "reverse_winding_orientation": true,
+      "transpose_replaced_by_adjoint": true
+    },
+    "scope": "Exact finite algebra and rational surrogate controls; NOT production CCM or numeric zeta zeros"
+  },
+  "numeric_zeta_zeros": false,
+  "production_spectrum": false,
+  "provenance": {
+    "all_frames_verified": true,
+    "bytes": 51031,
+    "lf": 849,
+    "packet": "PROSHKA_CCM_JOINT_LOW_RESIDUE_Q51_2026-10-27.txt",
+    "sha256": "5c34576e47a0b1b23a94cda5c381d29402355613e20e734846104f2eb919d61d",
+    "source_count": 8,
+    "sources": [
+      {
+        "bytes": 6798,
+        "end_byte": 13160,
+        "end_line": 155,
+        "id": "S1",
+        "lf": 124,
+        "name": "CCM_POST_Q50_COUNT_TO_MAGNITUDE_SCREEN.md",
+        "sha256": "c08d09ff440f982fc346724e506e53da20ba9290b78dab07e229b3d73c60a44a",
+        "start_byte": 6362,
+        "start_line": 32
+      },
+      {
+        "bytes": 3881,
+        "end_byte": 17098,
+        "end_line": 230,
+        "id": "S2",
+        "lf": 71,
+        "name": "CCM_POST_Q50_MOVING_ATOM_RESOLUTION.md",
+        "sha256": "e5a55028deb5d2cec7ca5da1d8d031eb2075c88a2ce36a486e8ca77da7e75eb8",
+        "start_byte": 13217,
+        "start_line": 160
+      },
+      {
+        "bytes": 5633,
+        "end_byte": 22784,
+        "end_line": 357,
+        "id": "S3",
+        "lf": 123,
+        "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+        "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+        "start_byte": 17151,
+        "start_line": 235
+      },
+      {
+        "bytes": 4636,
+        "end_byte": 27469,
+        "end_line": 454,
+        "id": "S4",
+        "lf": 93,
+        "name": "CCM_POST_Q27_DENSITY_BUDGET.md",
+        "sha256": "87c3faa5a652ca4d205e82674553ad0f5f5a1c24735c43a09d98d4560c3dc166",
+        "start_byte": 22833,
+        "start_line": 362
+      },
+      {
+        "bytes": 9722,
+        "end_byte": 37249,
+        "end_line": 637,
+        "id": "S5",
+        "lf": 179,
+        "name": "CCM_POST_Q20_TRANSLATED_WITNESS_RANK.md",
+        "sha256": "f9e686ef665bd7aa788933b68fb8c2c6ece133ad4c6f4e9817d0673221227fa2",
+        "start_byte": 27527,
+        "start_line": 459
+      },
+      {
+        "bytes": 3569,
+        "end_byte": 40858,
+        "end_line": 704,
+        "id": "S6",
+        "lf": 63,
+        "name": "CCM_Q50_CONCLUSION.md",
+        "sha256": "76cd92d7f349ce2ba1e7992103bb85f13d1982c17d48b3e2b3ac425c61c9f5e9",
+        "start_byte": 37289,
+        "start_line": 642
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 47078,
+        "end_line": 777,
+        "id": "S7",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 40904,
+        "start_line": 709
+      },
+      {
+        "bytes": 3904,
+        "end_byte": 51022,
+        "end_line": 846,
+        "id": "S8",
+        "lf": 65,
+        "name": "CCM_Q19_CONCLUSION.md",
+        "sha256": "a4e083fab0eba1d57dda5ce4b1253163e4da0e6715bc8c0b65af510f5f2f36ec",
+        "start_byte": 47118,
+        "start_line": 782
+      }
+    ]
+  },
+  "provenance_mutations": {
+    "body_hash_without_outer_guard": true,
+    "extra_separator": true,
+    "one_byte_corruption": true,
+    "truncated_final_frame": true
+  }
+}
