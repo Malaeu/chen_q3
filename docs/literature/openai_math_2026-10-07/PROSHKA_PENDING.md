@@ -1,6 +1,38 @@
+# Q45 PROCESSED — NO RESPONSE PENDING
+
+Full original read,6assets/two checkers byte-identical,13sources and6planted errors; independent bounded PAPER PASS §§3–9. CCM_Q45_CONCLUSION.md records actual positive forcing edge and paid full continuous return, with no pair margin/all-P exponent. Rollback to original full centered C0, no new question. Scoped cycle committed locally; foreign changes preserved, push skipped. Response monitor deleted after full processing.
+
+--- Earlier state ---
+
+# Q45 RECEIVED — AUDIT IN PROGRESS
+
+Natural completion observed26Oct19:12Berlin in same living chat. Full original downloaded automatically and read all1586lines;81220bytes/SHA2562f0230ab8ed7f0a38fc7935bc06c69def094ec5a347f9d893ef6d3f6d58fb4f9. Six assets extracted; both checkers replayed, JSON byte-identical;13source frames and6planted errors checked. Primary E1 statement verified. Independent q44_bounded_audit reviewing §§3–9 now. No next question. No new exponent claimed. Response processing/one scoped cycle commit still due; do not resend or delete monitor until complete.
+
+--- Earlier state ---
+
+# Q45 SENT — RESPONSE PENDING
+
+Sent ONCE 2026-10-26 18:32 Europe/Berlin in the same AI Mathematik Morgenbrief chat via own IAB browser3/tab4. Exact TXT tile, companion and ChatGPT antwortet/Stoppen observed. No reload/interruption/resend while thinking. Request PROSHKA_CCM_ACTUAL_MOBIUS_FORCING_SEAM_Q45_2026-10-26.txt:240029bytes/3714LF/SHA256 99b3a6c85ca12b6c6eca0371cddab0f2e38507072965659846c683cc98effdf7;13 complete source frames verified; base9e0df006. Own S11–S13 uncommitted/frozen for the next response cycle. Screenshot /tmp/ccm-q45-sent.png.
+
+Concrete impasse, not three invented attempts: positive cutoff smoothing and signed enlargement cannot create value gain; bounded primitive screen P1–P3 independently checked, completed price still half-power, weighted-moment flip only alternate Q17 identity. Q45 asks whether Q44 actual interior sign can help the full hyperbolic mu*log forcing before inverse; preserve all long divisors and dk<=m. Original all-P goal OPEN. After natural completion full original/read/replay/one bounded independent audit and scoped cycle commit under NEXT. Next check around18:52Berlin; quiet20-minute monitor. Do not repeat if Stopped thinking without answer.
+
+While Q45 runs: CCM_Q45_PAIR_SHORT_DIVISOR_QUADRATURE.md independently checked S1–S7. On the actual conditional pair, high-order quadrature plus double contacts pays the entire d<=D=floor(m^(1-epsilon)) cross-term by o(1), retaining fractional upper endpoints and both times. Exact complement has k<=R and long d>D. This is a pair-specific auxiliary reduction, NOT an all-P bound or full new exponent; long-mu signed sum remains unpaid. Original-P full return once, all self terms retained. Conditional S8–S9 rate transfer also independently checked: a hypothetical |M(t)|<=K t^beta would need beta-1/2+epsilon(1-beta)<delta; trivial beta1 returns sqrt(m)logm, no gain. No such improved Mertens premise supplied. Note not sent to the thinking chat and uncommitted for the same response cycle.
+
+Live check26Oct18:52Berlin: Q45 still active, Stoppen and system-review notice present; no terminal answer. No intervention. Next planned check19:12Berlin. Own CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md now bounded conditional PAPER PASS A1–A6: actual fixed-strip tails give uniform (q!)² derivative budget; growing even quadrature q~c log²m pays d<=floor(m/log^6m) by o(1), leaving k<log^6m with all mixed terms and original-P return. Full long-mu sign still unpaid, no all-P exponent gain. Trivial Mertens completion remains worse than inherited endpoint. Note uncommitted for Q45 cycle and not sent to live chat. No extra message sent.
+
+While Q45 runs, CCM_Q45_MOBIUS_THETA_COLLAPSE_SCREEN.md independently checked M1–M3: exact infinite mu/theta collapse to phi1 destroys the selected zero moment; its actual g inverse has a nonzero growing negative tail and is not L2. Finite tail must return jointly, no favorable bound. Reconciled as explicit Q17/Q18 boundary diagnostic, not a new separate failed mechanism; not sent to thinking chat.
+
+All-P transfer screen independently checked: the original P preserves double Laplace contacts, but its nonzero compact-support autocorrelations cannot satisfy the full-strip analyticity A1. The pair quadrature does not automatically extend to an all-P operator estimate. Added to CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md; no new arithmetic obstruction or exponent. Q45 remains pending, no extra message.
+
+--- Earlier state ---
+
 # Q44 PROCESSED — NO RESPONSE PENDING
 
 Full original read,5assets/30exact/6planted/11sources replay byte-identical; independent bounded PAPER PASS §§2–6. Root primary formula check complete. CCM_Q44_CONCLUSION.md: bounded source variation O(1), actual forcing interior negative exponential with paid finite cutoff; full seam around log m survives, no new margin/exponent. Original all-P goal OPEN, no Q45. Scoped cycle committed; monitor ccm-q44-source-pair deleted after processing. Foreign work preserved; push skipped with out-of-scope changes.
+
+Post-Q44 own attempt1: CCM_POST_Q44_AUXILIARY_CUTOFF_SMOOTHING.md, bounded independent PAPER PASS. Nonnegative auxiliary-cutoff smoothing returns to original m,P with o(1), but its completed gamma-tail absolute certificate is minimized at no enlargement and retains half-power. Not actual source lower bound; signed smoothing/joint estimate remains untested. No Q45, no external response pending. Own note uncommitted for next response cycle; foreign work untouched.
+
+Post-Q44 signed-cutoff extension: CCM_POST_Q44_SIGNED_CUTOFF_SCREEN.md. Exact mass-one finite-variation return |J_nu-J_0|<=TV(nu) C_w sqrt(m)(1+log m)exp(-c_w log²m); sub-exp(log²m) weights cannot alter the actual pair at signal scale. This does not exclude a stronger joint proof of the same value. Bounded independent check PASS with full-return notation corrected to rho_C=rho_K+rho_S; not counted as a second mechanism. No Q45; original all-P goal OPEN.
 
 --- Earlier state ---
 

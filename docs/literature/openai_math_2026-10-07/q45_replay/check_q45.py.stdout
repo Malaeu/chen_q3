@@ -1,0 +1,52 @@
+{
+  "checks_passed": true,
+  "common_edge_fixture_values": [
+    {
+      "d": "1",
+      "m": "16",
+      "value": {
+        "0": "-256/9",
+        "2": "224/3"
+      }
+    },
+    {
+      "d": "16",
+      "m": "81",
+      "value": {
+        "0": "-28/9",
+        "2": "-12",
+        "3": "12"
+      }
+    },
+    {
+      "d": "16",
+      "m": "256",
+      "value": {
+        "0": "-74/9",
+        "2": "76/3"
+      }
+    },
+    {
+      "d": "81",
+      "m": "81",
+      "value": {}
+    }
+  ],
+  "counts": {
+    "coefficient_indices": 64,
+    "complex_rational_controls": 2,
+    "euler_endpoint_fixtures": 8,
+    "hyperbola_configurations": 4,
+    "two_orientation_common_edge_fixtures": 4,
+    "weighted_joint_fixtures": 12
+  },
+  "planted_errors_detected": {
+    "delete_prime_powers": true,
+    "drop_floor_derivative": true,
+    "drop_forcing_top": true,
+    "drop_lower_kernel_at_d_equals_m": true,
+    "replace_kappa_by_modulus": true,
+    "wrong_euler_sign": true
+  },
+  "scope": "Exact algebra and framing only; no production theta, zero or CCM spectrum"
+}

@@ -1,0 +1,35 @@
+{
+  "mechanism": "Joint Euler summation of the complete logarithmic inner sum with the common upper hyperbola; actual-source common-edge profile and complete signed inverse return",
+  "not_authorized": [
+    "repository writes",
+    "package installation",
+    "numerical assignment of off-line zero",
+    "production spectrum",
+    "new external proof request"
+  ],
+  "predictions": [
+    {
+      "claim": "The forcing-weight upper Euler boundary is nonzero in general and must survive until full joint reconstruction.",
+      "id": "P1"
+    },
+    {
+      "claim": "The actual edge forcing has a positive sqrt(m) leading term with coefficient (||G_prime||^2+||G||^2/4)/2; this leading profile is a continuous-background term, not a lower bound for CCM or the long mu sector.",
+      "id": "P2"
+    },
+    {
+      "claim": "The common-edge smooth profiles have a negligible complete actual-pair inverse return, but their removal leaves the full signed long Mobius main-plus-Euler-defect pairing.",
+      "id": "P3"
+    },
+    {
+      "claim": "Complete finite reassembly gives psi with coefficient one and is the same unresolved centered source, not an additional arithmetic supplier.",
+      "id": "P4"
+    },
+    {
+      "claim": "No positive coefficient margin or vanishing exponent will be claimed from the pointwise forcing sign, exact identities, or local controls.",
+      "id": "P5"
+    }
+  ],
+  "stage": "After complete 13-body reading and preliminary paper derivation; before new executable mathematical controls",
+  "task": "Q45_ACTUAL_MOBIUS_FORCING_SEAM",
+  "tests_not_yet_run": true
+}

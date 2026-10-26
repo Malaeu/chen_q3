@@ -1,0 +1,155 @@
+{
+  "bytes": 240029,
+  "historical_code_executed": false,
+  "lf": 3714,
+  "manifest_verified": true,
+  "packet_name": "PROSHKA_CCM_ACTUAL_MOBIUS_FORCING_SEAM_Q45_2026-10-26.txt",
+  "sha256": "99b3a6c85ca12b6c6eca0371cddab0f2e38507072965659846c683cc98effdf7",
+  "single_byte_corruption_detected": true,
+  "source_count": 13,
+  "sources": [
+    {
+      "bytes": 84279,
+      "end_byte": 92585,
+      "end_line": 1487,
+      "id": "S1",
+      "lf": 1452,
+      "name": "PROSHKA_CCM_SOURCE_PAIR_NONCIRCULAR_MARGIN_Q44_VERDICT_2026-10-26.md",
+      "sha256": "b4eb4588f541c6b36912fe32537a58f14a67791e333472f552747a2e5580096c",
+      "start_byte": 8306,
+      "start_line": 36
+    },
+    {
+      "bytes": 4532,
+      "end_byte": 97260,
+      "end_line": 1571,
+      "id": "S2",
+      "lf": 80,
+      "name": "CCM_Q44_CONCLUSION.md",
+      "sha256": "4b0f6e355cc1e5159df49a4eafafbb81e5326825febdfc42f18f7202eb610993",
+      "start_byte": 92728,
+      "start_line": 1492
+    },
+    {
+      "bytes": 89445,
+      "end_byte": 186887,
+      "end_line": 2826,
+      "id": "S3",
+      "lf": 1251,
+      "name": "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+      "sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b",
+      "start_byte": 97442,
+      "start_line": 1576
+    },
+    {
+      "bytes": 4689,
+      "end_byte": 191719,
+      "end_line": 2907,
+      "id": "S4",
+      "lf": 77,
+      "name": "CCM_Q15_CONCLUSION.md",
+      "sha256": "a4df11bc020fd0011389a7562023e28dfe0b2438b1e8277f1c64d4a62d06ae88",
+      "start_byte": 187030,
+      "start_line": 2831
+    },
+    {
+      "bytes": 7127,
+      "end_byte": 199000,
+      "end_line": 3050,
+      "id": "S5",
+      "lf": 139,
+      "name": "CCM_Q15_VAUGHAN_JOINT_BUDGET.md",
+      "sha256": "1e13f0487d1a3362817e34112c11953a7296c18bd3500b31995aa221d540bf41",
+      "start_byte": 191873,
+      "start_line": 2912
+    },
+    {
+      "bytes": 3946,
+      "end_byte": 203089,
+      "end_line": 3129,
+      "id": "S6",
+      "lf": 75,
+      "name": "CCM_Q43_CONCLUSION.md",
+      "sha256": "c0a8339a58d0ed7be7942dcd657164dc479b470d74a5613b2006c77fa2407ef5",
+      "start_byte": 199143,
+      "start_line": 3055
+    },
+    {
+      "bytes": 9606,
+      "end_byte": 212850,
+      "end_line": 3262,
+      "id": "S7",
+      "lf": 129,
+      "name": "CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "start_byte": 203244,
+      "start_line": 3134
+    },
+    {
+      "bytes": 6174,
+      "end_byte": 219173,
+      "end_line": 3335,
+      "id": "S8",
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "start_byte": 212999,
+      "start_line": 3267
+    },
+    {
+      "bytes": 3904,
+      "end_byte": 223220,
+      "end_line": 3404,
+      "id": "S9",
+      "lf": 65,
+      "name": "CCM_Q19_CONCLUSION.md",
+      "sha256": "a4e083fab0eba1d57dda5ce4b1253163e4da0e6715bc8c0b65af510f5f2f36ec",
+      "start_byte": 219316,
+      "start_line": 3340
+    },
+    {
+      "bytes": 4828,
+      "end_byte": 228207,
+      "end_line": 3499,
+      "id": "S10",
+      "lf": 91,
+      "name": "CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+      "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+      "start_byte": 223379,
+      "start_line": 3409
+    },
+    {
+      "bytes": 4434,
+      "end_byte": 232807,
+      "end_line": 3583,
+      "id": "S11",
+      "lf": 80,
+      "name": "CCM_POST_Q44_AUXILIARY_CUTOFF_SMOOTHING.md",
+      "sha256": "6182a02fd19de14032076e1048ee6e478b357e65a358b0adbf4b85547ec1af93",
+      "start_byte": 228373,
+      "start_line": 3504
+    },
+    {
+      "bytes": 3657,
+      "end_byte": 236624,
+      "end_line": 3652,
+      "id": "S12",
+      "lf": 65,
+      "name": "CCM_POST_Q44_SIGNED_CUTOFF_SCREEN.md",
+      "sha256": "6bdfe802d941704a4d988ed142048781f6259bf9cab14796528a20cfc5e9f165",
+      "start_byte": 232967,
+      "start_line": 3588
+    },
+    {
+      "bytes": 3232,
+      "end_byte": 240012,
+      "end_line": 3711,
+      "id": "S13",
+      "lf": 55,
+      "name": "CCM_POST_Q44_PRIMITIVE_SCREEN.md",
+      "sha256": "c8d86098ba7f13addd606009f3fe668f4903f0d2d9a5a4f474ef1753621f2693",
+      "start_byte": 236780,
+      "start_line": 3657
+    }
+  ]
+}
