@@ -1,0 +1,31 @@
+{
+  "task": "Q31_ACTUAL_IMAGE_DEFICIT",
+  "stage": "prospective supplier selection after primary-source discovery and statement inspection, before proof completion and executable mathematical controls",
+  "preserves_original_registration": true,
+  "change_reason": "A current primary source supplies a quantitative U2 estimate for Lambda minus a Siegel-corrected Cramer model. This is materially different from assuming an effective rate for Lambda-1.",
+  "selected_supplier": "Joni Teravainen, arXiv:2610.03707v2, Theorem 1.1, k=2, external interval parameter 1/16",
+  "selected_mechanism": "Source-dependent U2 dual transfer of the complete matrix weight plus an exact finite inclusion-exclusion/character return of the Cramer-Siegel model on original P. This estimates the actual path-image deficit through its exact identity, not a new nilpotent cap.",
+  "predictions": [
+    {
+      "id": "Q1",
+      "claim": "The model must not be replaced by 1; an exceptional-character term must remain when present."
+    },
+    {
+      "id": "Q2",
+      "claim": "Full finite model transfer should be bounded via original exponential contacts and complete character periods, with all divisor cutoffs included."
+    },
+    {
+      "id": "Q3",
+      "claim": "U2 duality should control the matrix weight without an entrywise dimension factor."
+    },
+    {
+      "id": "Q4",
+      "claim": "The source theorem only supplies log/subpower relative savings over its admitted model cutoff range; a fixed exponent below 1/2 is not licensed by that envelope."
+    }
+  ],
+  "limits": [
+    "No claim the external 52-page proof is independently certified here. Primary hypotheses and application are checked.",
+    "Do not promote a logarithmic gain to the requested eta(epsilon)->0.",
+    "No production zeros or spectral computations."
+  ]
+}

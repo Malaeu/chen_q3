@@ -9127,3 +9127,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Roll back before discarding image deficit; no constant-only iteration or Q31 sent.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_POST_Q30_SURVIVING_PRODUCTS.md.
 Чей вердикт · Root calculation; q30_square_budget_check bounded independent PAPER PASS.
+
+## 2026-10-26 — Q31 finite model return and U2 budget
+Развилка · Actual image before path cap.
+Выбрали · Full Cramer-Siegel model return and quantitative U2 matrix pairing.
+Почему · Actual arithmetic supplier with mapped hypotheses.
+Что отвергли · Same norm completion as a vanishing-exponent supplier; certificate-only exclusion.
+Инсайты · Model including exceptional character costs m^O(epsilon); full residual sqrt(m)/log(m)^(1/8) still too large.
+Блокеры · Signed joint phase lost at Holder, not a missing model/edge fee.
+Иглы Зингера · Preserve n=1 model cancellation, prime powers, integer top tile and all mixed entries.
+Следующий ход · Roll back before norm separation; own source-specific attempt, no Q32 sent.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_Q31_CONCLUSION.md and q31_replay.
+Чей вердикт · Proshka Q31; root full reading/replay; q30_square_budget_check bounded conditional PAPER PASS, primary E1 checked not full proof.

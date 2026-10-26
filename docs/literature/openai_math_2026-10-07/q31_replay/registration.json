@@ -1,0 +1,36 @@
+{
+  "task": "Q31_ACTUAL_IMAGE_DEFICIT",
+  "stage": "after full source reading; before external theorem verification, new mathematical derivation and executable controls",
+  "primary_mechanism": "Compare the source-dependent retained deficit with the exact complete continuous comparator, using matrix Taylor reconstruction with actual shared Mangoldt interval moments; test full original-P regularity and costs.",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "The original endpoint contact permits a second-derivative bound for the full compressed shift kernel without new endpoint conditions."
+    },
+    {
+      "id": "P2",
+      "claim": "Complete-cell affine reconstruction can be made m^{O(epsilon)} on original P; whether interval discrepancy remains the dominant unknown must be computed, not assumed."
+    },
+    {
+      "id": "P3",
+      "claim": "Uniform short-interval PNT should control both zeroth and first actual interval moments only qualitatively; it must not be upgraded to a fixed relative power saving."
+    },
+    {
+      "id": "P4",
+      "claim": "Any deficit conclusion must reassemble the full short sector and exact negative continuous kernel before claiming a smaller complete exponent."
+    }
+  ],
+  "discriminators": [
+    "an affine matrix weight with zero cell mass but nonzero first moment",
+    "two time directions and complex off-diagonal entries",
+    "top atom Q(L)=0 and no uncharged terminal cell",
+    "whole continuous comparator yields -H_decay",
+    "derivative order must be justified for zero extension, not periodic extension"
+  ],
+  "expected_global_status": "not preregistered as success; no independent favorable source rate currently supplied",
+  "prohibited": [
+    "promote qualitative o(1) to a power",
+    "use an arbitrary nilpotent matrix as actual CCM no-go",
+    "change P or insert intermediate P into shift products"
+  ]
+}

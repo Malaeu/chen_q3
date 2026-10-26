@@ -1,0 +1,67 @@
+{
+  "request": {
+    "bytes": 107988,
+    "lf": 1801,
+    "sha256": "f2dd26aa178b15847da95532e15c57f9caa719618ac2fa56da20abacac930ba7",
+    "verified": true
+  },
+  "source_count": 7,
+  "sources": [
+    {
+      "bytes": 3555,
+      "id": "S1",
+      "lf": 80,
+      "name": "CCM_POST_Q30_SURVIVING_PRODUCTS.md",
+      "sha256": "204a0aa14f8480f691f8430440d8d2e8a860617c6b946b80d7639361814efd0d",
+      "verified": true
+    },
+    {
+      "bytes": 3456,
+      "id": "S2",
+      "lf": 64,
+      "name": "CCM_Q30_CONCLUSION.md",
+      "sha256": "f7a9c568428aa0fd0e13153fd073649311a2ad287f3f078241bcc15ef743ced5",
+      "verified": true
+    },
+    {
+      "bytes": 76173,
+      "id": "S3",
+      "lf": 1171,
+      "name": "PROSHKA_CCM_LINKED_HALFGRID_Q30_VERDICT_2026-10-26.md",
+      "sha256": "8b18793e5b295fadb973c83cf32743480fdccbd328bdd0120f92814458a578d3",
+      "verified": true
+    },
+    {
+      "bytes": 5633,
+      "id": "S4",
+      "lf": 123,
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "verified": true
+    },
+    {
+      "bytes": 8064,
+      "id": "S5",
+      "lf": 154,
+      "name": "CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681",
+      "verified": true
+    },
+    {
+      "bytes": 4256,
+      "id": "S6",
+      "lf": 77,
+      "name": "CCM_Q28_CONCLUSION.md",
+      "sha256": "6ae132365fe5ba4a5d96642b12591a7d9a743c8ddbd74076fec3f0b9adb12bf7",
+      "verified": true
+    },
+    {
+      "bytes": 2736,
+      "id": "S7",
+      "lf": 56,
+      "name": "CCM_POST_Q29_CONTACT_CERTIFICATE_TEST.md",
+      "sha256": "2b3652b512ce5a4ffe9433262cffce44086c36e24f1320286fcc5b4f5235eef6",
+      "verified": true
+    }
+  ]
+}

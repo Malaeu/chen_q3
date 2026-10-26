@@ -1,0 +1,17 @@
+{
+  "stage": "registered before executing new mathematical controls",
+  "mechanism": "U2 dual full-matrix transfer plus finite Cramer-Siegel model return",
+  "predictions": [
+    "U2 fourth power equals the complete additive autocorrelation energy, with complex cross terms.",
+    "Finite model reconstruction includes n=1, all divisor boundaries and the exceptional character when present.",
+    "Fourier Abel identity preserves the complete matrix test and its upper endpoint.",
+    "The nonlinear normalization retains half power despite cheap model return.",
+    "Deleting a model term, a complex conjugation, a terminal term, or mixing prime-index and divisor short costs will be detected."
+  ],
+  "not_certified": [
+    "external proof",
+    "asymptotic CCM sign",
+    "production spectrum",
+    "RH"
+  ]
+}
