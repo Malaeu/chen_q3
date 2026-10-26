@@ -1,3 +1,9 @@
+# POST-Q36 ALIAS CHECKED — NO RESPONSE PENDING
+
+Post-Q36 sign-uncertainty alias checked: EP1 direct map fails eventual-sign hypothesis and assumes integral sign; no independent CCM supplier. Saved primary source and bounded applicability audit in CCM_POST_Q36_SIGN_UNCERTAINTY_ALIAS.md. Shelf INCOMPLETE, no general absence claim. No Q37 sent.
+
+--- Earlier state ---
+
 # POST-Q36 PREFLIGHT — NO RESPONSE PENDING
 
 Post-Q36 close-prime return independently checked: ratio coherence enters the full centered square, not the linear target; no favorable sign from a positive pair. Complete mixed term retained. Duplicate recognized, no new attempt count or Q37. See CCM_POST_Q36_CLOSE_PRIME_RETURN.md.

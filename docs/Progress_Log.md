@@ -9282,3 +9282,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: joint centered first moment before square; Q37 not sent.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q36_CLOSE_PRIME_RETURN.md.
 - Чей вердикт: root derivation; q32_annulus_audit bounded algebra/scope PASS.
+
+## 2026-10-26 — Post-Q36 sign-uncertainty source map
+- Развилка: extremal sign/majorant comparison for the full centered source.
+- Выбрали: bounded shelf search and primary EP1 hypothesis map.
+- Почему: distinguish a theorem supplying a sign from an extremal problem assuming it.
+- Что отвергли: direct b_m or shifted-b_m import into EP1; not de Branges methods generally.
+- Инсайты: evenization of rho is free; eventual-sign condition fails by Q36, integral sign remains an input.
+- Блокеры: no independent signed comparison; semantic shelf freshness incomplete.
+- Иглы Зингера: v1 source hash saved; no whole-paper claim or general literature absence.
+- Следующий ход: concrete actual-source one-sided comparison before moments; Q37 not sent.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q36_SIGN_UNCERTAINTY_ALIAS.md.
+- Чей вердикт: root source map; q32_annulus_audit bounded applicability PASS.
