@@ -1,0 +1,40 @@
+{
+  "task": "Q32_SIGNED_NEAR_FREQUENCY",
+  "stage": "After complete canonical packet reading and primary statement inspection; before new exact controls and final proof/budget assembly",
+  "mechanism": "Audit a joint major/minor-arc completion using the genuine Mangoldt exponential sum; keep the central matrix pairing exact. Test the original-P central test coupling, and if the source/test sign remains unavailable, roll back to the documented full centered source with its paid all-P map.",
+  "import": "Classical Vaughan estimate, power 4/5 and q terms, conservative log^4; statement checked in primary research PDF arXiv:2505.07803v2, printed p2 eq1.1 and footnote1. No new Theorem1 of that paper used.",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "The rational choice q=floor(1/abs(t)) is admissible away from abs(t) approximately 1/X, but does not supply power cancellation on the microscopic q=1 central arc."
+    },
+    {
+      "id": "P2",
+      "claim": "Combining the supplier with the original second-difference test estimate can pay an outer portion of the retained near arcs with m^{O(epsilon)}; this is not the missing full signed estimate."
+    },
+    {
+      "id": "P3",
+      "claim": "The complete norm completion still has nonvanishing limiting exponent. Its first phase loss will be made explicit rather than called a joint sign theorem."
+    },
+    {
+      "id": "P4",
+      "claim": "A genuine original-P even five-mode vector has nonzero central additive test coupling; contacts do not erase an open neighborhood of t=0."
+    },
+    {
+      "id": "P5",
+      "claim": "All source/interval/cutoff and mixed returns can be recorded without changing P; no global sign will be inferred from finite algebra."
+    }
+  ],
+  "planted_failure_plan": [
+    "square the shell cutoff",
+    "change Fourier inverse sign",
+    "drop one off-diagonal complex matrix entry",
+    "delete a proper prime power",
+    "drop sinc-smoothed top endpoint",
+    "use q>X on a prefix",
+    "turn fixed logarithm into power saving"
+  ],
+  "success_not_assumed": true,
+  "no_repository_writes": true,
+  "no_auto_Q33": true
+}

@@ -1,0 +1,74 @@
+{
+  "request": {
+    "bytes": 126527,
+    "lf": 2227,
+    "sha256": "cb93c4eca7007eed3dc559c78996a6b3a0c3db3adaff86bc8e0c52eee2bd1b8f",
+    "verified": true
+  },
+  "source_count": 7,
+  "sources": [
+    {
+      "bytes": 9712,
+      "id": "S1",
+      "lf": 193,
+      "name": "CCM_POST_Q31_ADDITIVE_FREQUENCY_RETURN.md",
+      "sha256": "eb6d4c54601a1018097a55d05d7047515d0cfe592fc0983595779fbf79f38243",
+      "start_line": 71,
+      "verified": true
+    },
+    {
+      "bytes": 3988,
+      "id": "S2",
+      "lf": 76,
+      "name": "CCM_Q31_CONCLUSION.md",
+      "sha256": "c1564d3f8a988b605d82ecc468d6c5270c2fcca4e060f352161bb0c6e22526bd",
+      "start_line": 268,
+      "verified": true
+    },
+    {
+      "bytes": 80972,
+      "id": "S3",
+      "lf": 1337,
+      "name": "PROSHKA_CCM_ACTUAL_IMAGE_DEFICIT_Q31_VERDICT_2026-10-26.md",
+      "sha256": "be40350cff27b1435aa5894c09ed4894b53f7540002f462ab1321c543a204525",
+      "start_line": 348,
+      "verified": true
+    },
+    {
+      "bytes": 4828,
+      "id": "S4",
+      "lf": 91,
+      "name": "CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+      "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435",
+      "start_line": 1689,
+      "verified": true
+    },
+    {
+      "bytes": 8007,
+      "id": "S5",
+      "lf": 157,
+      "name": "CCM_Q10_MEAN_SQUARE_RETURN.md",
+      "sha256": "e5aec69d1dd313fb815f549932ebd7bca0c5f0d52469565ed44266d7fc2679ce",
+      "start_line": 1784,
+      "verified": true
+    },
+    {
+      "bytes": 8064,
+      "id": "S6",
+      "lf": 154,
+      "name": "CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681",
+      "start_line": 1945,
+      "verified": true
+    },
+    {
+      "bytes": 5633,
+      "id": "S7",
+      "lf": 123,
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "start_line": 2103,
+      "verified": true
+    }
+  ]
+}

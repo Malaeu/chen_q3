@@ -9163,3 +9163,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Independent signed near-frequency mechanism, not another scalar-prefix norm.
 Адреса · CCM_POST_Q31_ADDITIVE_FREQUENCY_RETURN.md follow-up; CCM_Q09_AUTOCORRELATION_PREFLIGHT.md.
 Чей вердикт · Root and q30_square_budget_check bounded PAPER PASS; post_q26_operator_rollback source crosscheck.
+
+## 2026-10-26 — Q32: outer near annulus paid, central sign remains open
+
+Развилка: actual additive near pairing or separate norm completion.
+Выбрали: finish Q32 with complete original-P return; rollback to full finite centered C0.
+Почему: Vaughan applies on the annulus but not as a power-saving central q=1 supplier.
+Что отвергли: treating the full near arc as minor arcs; deleting the sinc-smoothed top atom.
+Инсайты: annulus X^(-5/8)..X^(-1/2) costs m^(2epsilon); original contacts do not erase central test coupling.
+Блокеры: actual source/test joint sign; full trial power1/2+epsilon/2 is not useful.
+Иглы Зингера: separate absolute sizes at5.1 lose phase; diagnostic test is not a source lower bound.
+Следующий ход: independent signed source mechanism before that loss; do not optimize the same cutoff as progress.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q32_CONCLUSION.md and q32_replay/.
+Чей вердикт: Proshka Q32; root full read/replay; q32_annulus_audit bounded independent PAPER/source PASS, inherited inputs conditional.
