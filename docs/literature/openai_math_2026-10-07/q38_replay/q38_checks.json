@@ -1,0 +1,80 @@
+{
+  "status": "FINITE_EXACT_ALGEBRA_CONTROLS_ONLY",
+  "groups": {
+    "actual_mixed_Ramanujan_model": 4,
+    "squarefree_support_and_constant_term": 4,
+    "complete_mixed_channel_product": 4,
+    "whole_differentiated_product": 4,
+    "exact_cross_return": 4,
+    "full_signed_composite_reconstruction": 4,
+    "odd_large_prime_exponent_cancels": 4,
+    "rough_squarefree_partner_restores_all_composites": 4,
+    "original_A_return_with_all_prime_powers": 4,
+    "actual_model_is_not_multiplicative": 1,
+    "actual_nonrough_atoms_are_retained": 1,
+    "causal_pair_not_adjoint_pair": 1,
+    "binomial_lcm_divisibility_and_count_bound": 1,
+    "eventual_Chebyshev_threshold_constants": 1,
+    "rough_semiprime_price_constant": 1,
+    "finite_squarefree_inverse_is_Liouville": 1,
+    "full_logarithmic_derivative_return": 1,
+    "top_support_is_distinct_from_arithmetic_coefficient": 1
+  },
+  "total_groups": 45,
+  "parameter_cases": [
+    {
+      "Z": 2,
+      "N": 128,
+      "verified_coefficients": 128,
+      "rough_squarefree_count": 51,
+      "rough_composite_count": 21,
+      "rough_odd_composite_count": 1,
+      "odd_large_exponent_count": 109
+    },
+    {
+      "Z": 3,
+      "N": 420,
+      "verified_coefficients": 420,
+      "rough_squarefree_count": 127,
+      "rough_composite_count": 48,
+      "rough_odd_composite_count": 1,
+      "odd_large_exponent_count": 367
+    },
+    {
+      "Z": 5,
+      "N": 512,
+      "verified_coefficients": 512,
+      "rough_squarefree_count": 130,
+      "rough_composite_count": 36,
+      "rough_odd_composite_count": 0,
+      "odd_large_exponent_count": 426
+    },
+    {
+      "Z": 8,
+      "N": 320,
+      "verified_coefficients": 320,
+      "rough_squarefree_count": 70,
+      "rough_composite_count": 8,
+      "rough_odd_composite_count": 0,
+      "odd_large_exponent_count": 232
+    }
+  ],
+  "planted_errors_detected": [
+    "drop_mixed_g_channels",
+    "replace_nonrough_model_by_zero",
+    "make_model_multiplicative",
+    "replace_partner_by_adjoint",
+    "delete_square_term_from_parity_product",
+    "drop_semiprime_mixed_return",
+    "drop_odd_composite_return",
+    "identify_log_derivative_and_full_derivative",
+    "use_Mobius_as_squarefree_inverse",
+    "make_top_arithmetic_coefficient_zero"
+  ],
+  "planted_count": 10,
+  "scope": "Formal prime-log coefficients and exact rational arithmetic. Not a numerical original-P cell or an asymptotic signed-form certification.",
+  "independent_audit": false,
+  "lean": false,
+  "arb": false,
+  "production_spectrum": false
+}

@@ -1,0 +1,10 @@
+{
+  "stage": "After complete packet reading and preliminary PAPER analysis; before new executable checks. Not a preregistration before mathematical reasoning.",
+  "selected_mechanism": "Differentiate the complete coupled parity product of the actual squarefree model and its actual Mobius-signed partner; do not split g_Z channels or delete primes before the coupling.",
+  "P1": "The full mixed (ell,k) product has explicit square-supported bulk and small-prime transition factors; all g_Z(ell)g_Z(k) terms are required.",
+  "P2": "At sigma=1/2 its full differentiated operator has norm at most L(1+L/2)G_Z^2, G_Z=sum |g_Z(ell)|tau(ell)/sqrt(ell). This is an auxiliary bound only.",
+  "P3": "The coupled product and its derivative have zero coefficient at every integer with an odd exponent of a prime greater than Z. In particular they erase rough squarefree composites, not only primes.",
+  "P4": "The exact returned mixed term restores every rough squarefree composite with coefficient one. Its coefficient-modulus completion keeps half-power cost; this is not a spectral lower bound.",
+  "P5": "The original P and all short/arch/prime-power returns remain unchanged; no independent favorable C_sf lower or actual-pair margin follows. Return before the parity multiplication to the full first source form.",
+  "scope": "One mathematical attempt; finite exact controls can falsify the algebra but do not certify the cofinal signed CCM inequality. No repository writes or automatic Q39."
+}

@@ -9318,3 +9318,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: source-specific joint curvature or earlier rollback; one attempt, no Q38.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q37_ORBIT_CURVATURE_RETURN.md.
 - Чей вердикт: root derivation; q32_annulus_audit bounded algebra/budget PASS.
+
+## 2026-10-26 — Q38 coupled parity return
+
+- Развилка: actual squarefree parity product before projection.
+- Выбрали: retain full g_l g_k coupling and pay literal signed return.
+- Почему: auxiliary norm only matters if restored source is affordable.
+- Что отвергли: spending the small product norm as a bound for C_sf.
+- Инсайты: rough squarefree composites cancel in product but return with coefficient1.
+- Блокеры: signed remainder lower remains open; modulus completion exponent1/2.
+- Иглы Зингера: rough pq,pqr,p^2; physical top is not coefficient zero.
+- Следующий ход: rollback before parity multiplication, source-preserving sign supplier.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q38_CONCLUSION.md; q38_replay.
+- Чей вердикт: root replay45/10/12 byte-identical; independent q32 qualified PAPER PASS §§3–7. Goal/RH OPEN.
