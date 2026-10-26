@@ -1,0 +1,17 @@
+{
+  "chosen_mechanism": "Cofinal mass-balanced short inverse at first unused index v=U+1, complete binomial recombination before compression; all artificial poles and finite return retained.",
+  "not_predicted": [
+    "A new all-P CCM upper",
+    "RH",
+    "Theorem3.1(14) of Gallardo-Gutierrez/Seco"
+  ],
+  "predictions": {
+    "P1": "Mass balancing leaves the first U coefficients unchanged and the exact Lambda reconstruction through m when (U+1)^K>m.",
+    "P2": "The complete repaired germ has no pole of order >=2; its simple residue is 1-(1-b_U)^K.",
+    "P3": "Using actual Mobius divisor identity and squarefree support yields |1-b_U|<=4/5 for U>=64 with U|a_U|<=1/2.",
+    "P4": "The finite signed remainder is not controlled by the local pole bound; its exact return restores C0 with coefficient one."
+  },
+  "request_id": "Q42_COFINAL_SHORT_MOBIUS_JOINT",
+  "stage": "After source reading and paper design; before new executable mathematical controls. Not a preregistration of completed derivations.",
+  "tests_scope": "Finite algebra, exact rational arithmetic, and generic germ bookkeeping only; paper proof supplies quantifiers."
+}

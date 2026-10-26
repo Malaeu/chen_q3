@@ -9369,3 +9369,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: source-dependent inequality before separate sizes; no Q42 dispatched.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q41_CONCLUSION.md; q41_replay/; full Q41 request/verdict.
 - Чей вердикт: Proshka partial/no gain; root full read/replay; q32_annulus_audit bounded independent PASS §§3–7.
+
+## 2026-10-26 — Q42: полюсная иерархия устранена, полный signed core сохранён
+
+- Развилка: cofinal короткий обратный Мёбиуса после трёх собственных проверенных preflight.
+- Выбрали: один балансирующий атом за неизменным префиксом; совместная биномиальная сборка до исходного P.
+- Почему: позволяет проверить все нижние моменты и полный возврат, а не только старший полюс.
+- Что отвергли: перенос локального germ на глобальную инверсию, удаление residue по нулевой поддержке, бесплатную итерацию constrained Z.
+- Инсайты: |1-b_U|<=4/5 на cofinal U; все higher poles исчезают, простой блок неположителен; точный остаток F=C0-e_U^K H_d сохраняет C0 с коэффициентом один.
+- Блокеры: независимый signed upper полного остатка не получен; полная безусловная степень1/2, условная3/8 без изменений.
+- Иглы Зингера: 6 assets,2 checkers,7 planted failures,10 frames; оба JSON побайтно воспроизведены; конечная панель не заменяет квантор.
+- Следующий ход: откат к полному C0/N_star, новый source-dependent signed механизм до раздельных норм; Q43 не отправлен.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q42_CONCLUSION.md; полный Q42 request/verdict и q42_replay; три post-Q41 preflight и CCM_Q42_COFINAL_INPUT_CHECK.md.
+- Чей вердикт: Прошка + root full read/replay + независимый bounded q32_annulus_audit qualified PASS §§3–7; RH не заявлена, goal OPEN.

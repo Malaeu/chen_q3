@@ -1,0 +1,98 @@
+{
+  "bytes": 117726,
+  "file": "PROSHKA_CCM_COFINAL_SHORT_MOBIUS_JOINT_Q42_2026-10-26.txt",
+  "lf": 2030,
+  "sha256": "d4ce7e99338317abb4382a00f0baaa5e6808221eb71543360b94b76535d444d6",
+  "sources": [
+    {
+      "bytes": 3266,
+      "end_line": 89,
+      "id": "S1",
+      "lf": 60,
+      "name": "CCM_Q41_CONCLUSION.md",
+      "sha256": "97e433130c802dcb798d2630d4c15f7a28dc835d79e785efbf32e01cb1e7901e",
+      "start_line": 30
+    },
+    {
+      "bytes": 67429,
+      "end_line": 1307,
+      "id": "S2",
+      "lf": 1214,
+      "name": "PROSHKA_CCM_EARLIER_FORK_SIGNED_SOURCE_Q41_VERDICT_2026-10-26.md",
+      "sha256": "db0b177c2494f1fa1376f2c058860f8ec38561f92d5bb6c8ccdec5f8c068335c",
+      "start_line": 94
+    },
+    {
+      "bytes": 4867,
+      "end_line": 1400,
+      "id": "S3",
+      "lf": 89,
+      "name": "CCM_POST_Q41_SECOND_INVERSE_PREFLIGHT.md",
+      "sha256": "b64182ee4982887c85bb76bb24bcf566d8465c3841347b061e5915a0602c9dcc",
+      "start_line": 1312
+    },
+    {
+      "bytes": 3989,
+      "end_line": 1478,
+      "id": "S4",
+      "lf": 74,
+      "name": "CCM_POST_Q41_JOINT_MOBIUS_POLE_PREFLIGHT.md",
+      "sha256": "883e3f982b74794d863558243ed922f0e33880d3c0fffa3e49d4a3d222d1b782",
+      "start_line": 1405
+    },
+    {
+      "bytes": 3719,
+      "end_line": 1548,
+      "id": "S5",
+      "lf": 66,
+      "name": "CCM_POST_Q41_COFINAL_MOBIUS_MOMENT.md",
+      "sha256": "ff75e7c78c8a4448ba21a0d7961bca950ac8aae4db55c7cb928f3df7118fd8aa",
+      "start_line": 1483
+    },
+    {
+      "bytes": 5036,
+      "end_line": 1644,
+      "id": "S6",
+      "lf": 92,
+      "name": "CCM_JOINT_Q04_CONCLUSION.md",
+      "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+      "start_line": 1553
+    },
+    {
+      "bytes": 5633,
+      "end_line": 1771,
+      "id": "S7",
+      "lf": 123,
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+      "start_line": 1649
+    },
+    {
+      "bytes": 3625,
+      "end_line": 1839,
+      "id": "S8",
+      "lf": 64,
+      "name": "CCM_Q32_CONCLUSION.md",
+      "sha256": "183d938014b47b8ac21e83ee13e5e605908f27f1198011a26513b365ed127245",
+      "start_line": 1776
+    },
+    {
+      "bytes": 6174,
+      "end_line": 1912,
+      "id": "S9",
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "start_line": 1844
+    },
+    {
+      "bytes": 5988,
+      "end_line": 2027,
+      "id": "S10",
+      "lf": 111,
+      "name": "CCM_Q40_CONCLUSION.md",
+      "sha256": "e77ad2f2014b46a54d60f2ad4f9eadff172f8ae6c9a91ba2c03a59a9c2a6ea06",
+      "start_line": 1917
+    }
+  ]
+}
