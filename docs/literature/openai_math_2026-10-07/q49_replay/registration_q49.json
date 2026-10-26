@@ -1,0 +1,23 @@
+{
+  "external_read": "MPR arXiv:2608.14777v1 HTML, Theorem1.1 and Lemmas3.2,3.3,3.5,3.7; statement and indicated local proof steps only, no full external proof recertification",
+  "mechanism": "Exact K=5 Heath-Brown factor expansion on one original-P central test, with the small-pair merging rule and a retained long-Mobius sector at q=1",
+  "not_planned": [
+    "new Lean",
+    "new Arb",
+    "production CCM spectrum",
+    "independent mathematical reviewer",
+    "repository writes",
+    "historical source execution"
+  ],
+  "predictions": {
+    "P1": "Inclusive mu cutoff makes (delta-one*mu_z)^5 vanish through z^5; the full finite binomial identity preserves every Mangoldt prime-power coefficient.",
+    "P2": "Every admissible reduced rational approximant in the new-paper square-root denominator regime on the entire Q32 central band has numerator zero and denominator one for all sufficiently large shells. Its B parameter is O(X^(3/8)), below the length lemma threshold X^(4/9).",
+    "P3": "The actual cofinal tuple at m=2*p^5 with four Mobius p factors, one Mobius unit, one log p factor, and four plain units survives the exact product restriction. The small-pair merging algorithm cannot turn its long Mobius factors into the required plain/log factors.",
+    "P4": "All factor-box signs and the constant subtraction restore the exact same central matrix; deleting the inadmissible-length sector is not justified. The stated Type-II height condition is not met.",
+    "P5": "The full coefficient-modulus fallback retains one-half power; a small map expense or factor combinatorics alone is not a new CCM exponent.",
+    "P6": "A zero raw top atom need not be zero after the central sinc gate; no free endpoint or double short/continuous charge is allowed."
+  },
+  "registration_note": "Manifest parser initially guessed an incorrect END_BODY delimiter and was repaired from literal bytes; this was a tooling assumption failure, not a packet hash defect or mathematical test.",
+  "stage": "After full packet reading and preliminary paper audit, before new executable mathematical controls",
+  "task": "Q49_JOINT_CENTRAL_FACTOR_LENGTH"
+}

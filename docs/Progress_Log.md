@@ -9455,3 +9455,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Roll back before square to first one-sided common-W form; no automatic Q49, require a new actual joint input.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_Q48_CONCLUSION.md and q48_replay/; original and request preserved.
 Чей вердикт · Proshka Q48, root full read/replay, q44_bounded_audit qualified PAPER PASS §§3–7; no RH claim.
+
+## 2026-10-26 — Q49: central factor-length import checked and returned
+
+Развилка · New MPR factor-length package on actual original-P central source.
+Выбрали · Exact k5 HB with common test and all factor/product masks retained.
+Почему · Q48 first-form deficits duplicate old energy; additive19/24 term does not govern Q32 bill.
+Что отвергли · Literal natural-height import: central q1 has B~at mostX^(3/8), below X^(4/9); new TypeII needs height aboveX^(5/12).
+Инсайты · Actual m2p5 constituent preserves long mu slots, but proves no source/spectral or remaining-prime barrier. Fixed spectral gap is not vanishing-power supplier.
+Блокеры · Full signed central/all-source pairing remains OPEN; trial half-power log11, old fallback preserved.
+Иглы Зингера · Actual coefficient and low-height hypothesis mismatch; no toy-to-source promotion.
+Следующий ход · Return to full C0 before additive split; seek independent joint sign or fully paid different map, no automatic Q50.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_Q49_CONCLUSION.md; Q49 original/request; q49_replay; postQ48 crosswalk/supplier screen.
+Чей вердикт · Proshka Q49; root complete source read/code replay; q44_bounded_audit qualified PAPER PASS §§3–9. No new exponent/RH claim.
