@@ -9246,3 +9246,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: return before conditioning to full physical correlation; no automatic Q36.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q35_CONCLUSION.md and q35_replay/.
 Чей вердикт: root replay and q32_annulus_audit qualified bounded PAPER PASS §§3–6, inherited Q34/S7/PNT dependencies retained.
+
+## 2026-10-26 — Post-Q35 Fourier concentration supplier preflight
+Развилка: retain full physical correlation in Fourier coordinates.
+Выбрали: shelf equivalence audit and quantitative exceptional-mass entrance.
+Почему: avoid repeating Q09 density and heat smoothing as a new mechanism.
+Что отвергли: automatic import of generic outside-mass uncertainty as vanishing inside-mass control; no source no-go.
+Инсайты: with upper B=16sqrt(m), this certificate needs inside mass O(m^(eta-1/2)); generic nonconcentration does not supply it.
+Блокеры: actual centered arithmetic exceptional-set bound missing; semantic shelf INCOMPLETE.
+Иглы Зингера: upper uncentered zero-frequency obstruction does not kill lower composite envelopes; preserve full frequency tail.
+Следующий ход: additional actual signed arithmetic information, not another coordinate change or automatic Q36.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q35_FOURIER_CONCENTRATION_PREFLIGHT.md.
+Чей вердикт: independent q32_annulus_audit shelf equivalence; root sufficient-budget preflight, no supplier admission.
