@@ -9064,3 +9064,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: rollback before zero decomposition to C0, retain centered source and full mixed terms; no automatic Q29.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q28_CONCLUSION.md and q28_replay/.
 Чей вердикт: Proshka Q28; root full reading/replay; all_p_contour_extension bounded PAPER PASS §§2–8.
+
+## 2026-10-26 — Euler-product positivity supplier crosswalk
+Развилка: full centered C0 after Q28; source positivity before zero decomposition.
+Выбрали: primary compound-Poisson formula and exact original-P finite jump energies.
+Почему: test whether Euler positivity survives the actual weights and centering.
+Что отвергли: free sigma>1 to sigma1/2 transfer and positivity of a difference; Q11 energy-drop completion is duplicate.
+Инсайты: Levy weights Lambda/(n^sigma log n) require a paid change; direct tilt costs sqrt(m)log m.
+Блокеры: joint Ed-Ec comparison remains the exact open arithmetic inequality.
+Иглы Зингера: positive discrete and continuous measures do not order their centered difference; this is not actual-source no-go.
+Следующий ход: seek a genuinely source-dependent joint inequality or a documented earlier rollback; no automatic Q29, no duplicate experiment count.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q28_EULER_POSITIVITY_PREFLIGHT.md and sources/aoyama_nakamura_B34_003.pdf.
+Чей вердикт: root plus residue_density_supplier independent bounded source/budget PASS; post_q26_operator_rollback shelf duplicate check.
