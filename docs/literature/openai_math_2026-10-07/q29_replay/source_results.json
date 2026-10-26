@@ -1,0 +1,72 @@
+{
+  "status": "PASS_BYTE_LOCKS",
+  "request_bytes": 223966,
+  "request_lf": 3385,
+  "request_sha256": "652b6f8fd2c4b90eb06101fc8bfa0b85f96062c2ee06a9208fdde71f98d97f2e",
+  "sources": [
+    {
+      "id": "S1",
+      "name": "CCM_POST_Q28_EULER_POSITIVITY_PREFLIGHT.md",
+      "bytes": 4681,
+      "lf": 93,
+      "sha256": "9ca3dc230902ef9bbd097e21ebc07a32e7494aa76ef5f906f26e8f6a28a3f8a2"
+    },
+    {
+      "id": "S2",
+      "name": "CCM_Q28_CONCLUSION.md",
+      "bytes": 4256,
+      "lf": 77,
+      "sha256": "6ae132365fe5ba4a5d96642b12591a7d9a743c8ddbd74076fec3f0b9adb12bf7"
+    },
+    {
+      "id": "S3",
+      "name": "PROSHKA_CCM_ORIGINAL_P_SIGNED_RESIDUE_Q28_VERDICT_2026-10-26.md",
+      "bytes": 90899,
+      "lf": 1282,
+      "sha256": "770067a2a09efd146f18980a522d4de29bd4d924df0f39bf5273c3fc6f25e2f3"
+    },
+    {
+      "id": "S4",
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "bytes": 5633,
+      "lf": 123,
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2"
+    },
+    {
+      "id": "S5",
+      "name": "CCM_POST_Q25_SOURCE_PROPERTY_PREFLIGHT.md",
+      "bytes": 2526,
+      "lf": 13,
+      "sha256": "297a7fc170cfcb00a5cb4efde3ae593cc2bf1a6f913646e03f3d9c148e8cc0fc"
+    },
+    {
+      "id": "S6",
+      "name": "CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "bytes": 10197,
+      "lf": 190,
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f"
+    },
+    {
+      "id": "S7",
+      "name": "CCM_Q15_VAUGHAN_JOINT_BUDGET.md",
+      "bytes": 7127,
+      "lf": 139,
+      "sha256": "1e13f0487d1a3362817e34112c11953a7296c18bd3500b31995aa221d540bf41"
+    },
+    {
+      "id": "S8",
+      "name": "CCM_DIVISIBILITY_Q11_CONCLUSION.md",
+      "bytes": 7455,
+      "lf": 94,
+      "sha256": "465fdd818039eee8e27c1efc00f9659f2d96bef47fb0399b0e6554e09d5e76e5"
+    },
+    {
+      "id": "S9",
+      "name": "PROSHKA_CCM_HIGH_ORDER_SIGNED_RETURN_Q10_VERDICT_2026-10-21.md",
+      "bytes": 83808,
+      "lf": 1309,
+      "sha256": "13d8f3a7bab5def121d04c3575018c50918e29ce8950aad80c6a82ce6c18db28"
+    }
+  ],
+  "scope": "Provenance only. Does not independently verify mathematical source claims."
+}

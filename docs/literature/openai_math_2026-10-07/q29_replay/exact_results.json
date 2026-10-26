@@ -1,0 +1,38 @@
+{
+  "status": "PASS_EXACT_LOCAL_CONTROLS",
+  "exact_controls": 209,
+  "counts": {
+    "totient_squarefree_identity": 40,
+    "optimal_weights_normalized": 7,
+    "minimax_equalized_coefficients": 7,
+    "dual_l1_extreme_point": 51,
+    "actual_principal_channel_identity": 24,
+    "full_matrix_residue_reassembly": 15,
+    "nonprincipal_zero_sum_before_moduli": 15,
+    "all_noncoprime_prime_powers_retained": 15,
+    "stieltjes_full_both_endpoints": 1,
+    "one_power_per_prime_in_open_closed_dyadic_block": 24,
+    "matrix_variation_price_algebra": 1,
+    "completed_BV_power_not_better_than_half": 3,
+    "short_divisor_fee_not_the_dominant_debt": 3,
+    "summed_noncoprime_return_decays": 3
+  },
+  "planted_errors_detected": 6,
+  "planted_names": [
+    "mu_instead_of_mu_squared",
+    "deleted_noncoprime_power_8",
+    "average_classes_instead_of_sum",
+    "full_continuum_subtracted_in_each_class",
+    "deleted_off_diagonal_mixed_entries",
+    "deleted_lower_Stieltjes_endpoint"
+  ],
+  "scope": "Finite coefficient, matrix, endpoint and minimax algebra. The test matrix is Hermitian with complex off-diagonal entries but is NOT a production CCM cell. Formal log(p) retains actual Mangoldt support. No infinite prime estimate is proved by these controls.",
+  "python": "3.13.17",
+  "sympy": "1.14.0",
+  "lean_runs": 0,
+  "arb_runs": 0,
+  "production_spectral_runs": 0,
+  "new_independent_review": "NOT_RUN",
+  "registration_sha256": "eec752c5f6723e7d414d9bfc169a40a34c0d82c7462a58132227221023c0356b",
+  "script_sha256": "af14abc8d9486c1fb6fe08052ad346d44c3f318aea9c398967ca9c4bfebf6e5f"
+}

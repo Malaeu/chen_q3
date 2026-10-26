@@ -9076,3 +9076,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: seek a genuinely source-dependent joint inequality or a documented earlier rollback; no automatic Q29, no duplicate experiment count.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_POST_Q28_EULER_POSITIVITY_PREFLIGHT.md and sources/aoyama_nakamura_B34_003.pdf.
 Чей вердикт: root plus residue_density_supplier independent bounded source/budget PASS; post_q26_operator_rollback shelf duplicate check.
+
+## 2026-10-26 — Q29: BV reconstruction pays all classes but gives no exponent
+
+Развилка · Import actual BV progressions or return to finite centered C0.
+Выбрали · Verified full progression transfer, then exact rollback before classwise norms.
+Почему · phi(q) classes restore principal source coefficient1; scalar/l1 minimax saves only logQ.
+Что отвергли · Free1/Q saving and repeating the same scalar averaging as a new mechanism.
+Инсайты · All nonprincipal differences cancel in this exact reconstruction; full budget carries1/2+epsilon.
+Блокеры · Actual source-dependent signed comparison remains open; no CCM/RH gain.
+Иглы Зингера · Every noncoprime prime power, endpoint, continuous copy and complex mixed entry retained.
+Следующий ход · Work before artificial AP expansion; require a genuinely surviving source-weight coupling. No Q30 sent.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_Q29_CONCLUSION.md; q29_replay; canonical Q29 request and original verdict.
+Чей вердикт · Root full reading/replay209exact6planted; residue_density_supplier bounded independent PASS §§2–8 and primary BV statement.

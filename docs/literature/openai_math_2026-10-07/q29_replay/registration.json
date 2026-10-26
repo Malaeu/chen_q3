@@ -1,0 +1,31 @@
+{
+  "phase": "Q29",
+  "stage": "All nine input bodies read; primary statement inspected; initial PAPER derivation completed; registration BEFORE new executable mathematical controls, not a blind discovery forecast",
+  "chosen_mechanism": "Bombieri-Vinogradov progression-average transfer of the complete original-P centered matrix, retaining every reduced class and noncoprime prime power",
+  "predictions": [
+    {
+      "id": "P1",
+      "prediction": "Exact reconstruction uses the sum of all phi(q) reduced classes plus the omitted noncoprime prime-power correction; replacing their sum by their average is wrong."
+    },
+    {
+      "id": "P2",
+      "prediction": "For all normalized scalar modulus weights, the best l1-to-sum envelope has factor 1/sum(1/phi(q)), not 1/Q."
+    },
+    {
+      "id": "P3",
+      "prediction": "Before classwise moduli the nonprincipal components sum to zero; the original principal discrepancy survives with coefficient one."
+    },
+    {
+      "id": "P4",
+      "prediction": "The complete returned upper bound obtained this way has no new fixed-power saving and no proof of a source-pair coefficient margin."
+    }
+  ],
+  "not_claimed": [
+    "RH",
+    "new prime theorem",
+    "numerical actual CCM spectrum",
+    "independent audit",
+    "Lean",
+    "Arb"
+  ]
+}
