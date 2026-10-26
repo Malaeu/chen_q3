@@ -1,0 +1,111 @@
+{
+  "all_sources_verified": true,
+  "bytes": 149713,
+  "file": "PROSHKA_CCM_SOURCE_PAIR_NONCIRCULAR_MARGIN_Q44_2026-10-26.txt",
+  "historical_code_executed": false,
+  "lf": 2109,
+  "planted_single_byte_corruption_detected": true,
+  "sha256": "b92fc8dc125a9a363c7ae673ddfdf047045a7f5cbe75328b4a24f4d2d06dd0f9",
+  "source_count": 11,
+  "sources": [
+    {
+      "bytes": 3946,
+      "first_line": 30,
+      "id": "S1",
+      "last_line": 104,
+      "lf": 75,
+      "name": "CCM_Q43_CONCLUSION.md",
+      "sha256": "c0a8339a58d0ed7be7942dcd657164dc479b470d74a5613b2006c77fa2407ef5"
+    },
+    {
+      "bytes": 9606,
+      "first_line": 109,
+      "id": "S2",
+      "last_line": 237,
+      "lf": 129,
+      "name": "CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd"
+    },
+    {
+      "bytes": 6174,
+      "first_line": 242,
+      "id": "S3",
+      "last_line": 310,
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+    },
+    {
+      "bytes": 89445,
+      "first_line": 315,
+      "id": "S4",
+      "last_line": 1565,
+      "lf": 1251,
+      "name": "PROSHKA_CCM_ZERO_SELECTIVE_PAIR_Q17_VERDICT_2026-10-25.md",
+      "sha256": "5d6616bd696887491170b847d09f1afd4d84f8581498264929c505732e73b35b"
+    },
+    {
+      "bytes": 7389,
+      "first_line": 1570,
+      "id": "S5",
+      "last_line": 1699,
+      "lf": 130,
+      "name": "CCM_Q19_COMPLEX_CONTOUR_ATTEMPT.md",
+      "sha256": "5508f4e35a6424955aab3b853493275e8960be85cabffd69fc61d515951ce094"
+    },
+    {
+      "bytes": 3904,
+      "first_line": 1704,
+      "id": "S6",
+      "last_line": 1768,
+      "lf": 65,
+      "name": "CCM_Q19_CONCLUSION.md",
+      "sha256": "a4e083fab0eba1d57dda5ce4b1253163e4da0e6715bc8c0b65af510f5f2f36ec"
+    },
+    {
+      "bytes": 3411,
+      "first_line": 1773,
+      "id": "S7",
+      "last_line": 1827,
+      "lf": 55,
+      "name": "CCM_Q22_CONCLUSION.md",
+      "sha256": "36b8c276a37a1cd4bd47c7b758c0dd71ac70e508e5fb69ddc378779235e08a13"
+    },
+    {
+      "bytes": 2929,
+      "first_line": 1832,
+      "id": "S8",
+      "last_line": 1852,
+      "lf": 21,
+      "name": "CCM_Q23_CONCLUSION.md",
+      "sha256": "1da3f27085ae98117114296f60356f87c64492b5644dacf18f26fb03cfc17230"
+    },
+    {
+      "bytes": 3581,
+      "first_line": 1857,
+      "id": "S9",
+      "last_line": 1884,
+      "lf": 28,
+      "name": "CCM_Q25_CONCLUSION.md",
+      "sha256": "a179ed21a1989448eb94a8566d6632fd630b1bc69188110933797b2d19b528c7"
+    },
+    {
+      "bytes": 4828,
+      "first_line": 1889,
+      "id": "S10",
+      "last_line": 1979,
+      "lf": 91,
+      "name": "CCM_Q09_AUTOCORRELATION_PREFLIGHT.md",
+      "sha256": "8714d49b1458a5075d8c3b0b25146ed693b338b01a28ec41247fe3bfabda3435"
+    },
+    {
+      "bytes": 5633,
+      "first_line": 1984,
+      "id": "S11",
+      "last_line": 2106,
+      "lf": 123,
+      "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+      "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2"
+    }
+  ]
+}

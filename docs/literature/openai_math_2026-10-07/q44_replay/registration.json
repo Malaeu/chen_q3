@@ -1,0 +1,29 @@
+{
+  "phase": "Q44",
+  "registration_stage": "After complete source reading and preliminary derivation, before new executable algebra checks",
+  "chosen_mechanism": "Normalized finite-source radical variation; if it only preserves the target, earlier forcing-kernel interior cancellation with exact finite cutoff seam",
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "Finite even real source multipliers with nonzero separate values preserve both separator interpolations; the differences are radical, not new forcing-free homogeneous solutions."
+    },
+    {
+      "id": "P2",
+      "claim": "After a paid original-P return, bounded fixed source multipliers change the complete centered prime form by O(1), not by a positive fraction of the conditional growing signal."
+    },
+    {
+      "id": "P3",
+      "claim": "The true derivative-filtered theta forcing cancels the first archimedean poles; its infinite signed prime correlation has an exponential interior bound."
+    },
+    {
+      "id": "P4",
+      "claim": "At finite m, interior and far inverse sectors are o(1), but a full signed strip around log m remains; it cannot be removed by substituting the infinite forcing before inversion."
+    },
+    {
+      "id": "P5",
+      "claim": "No new consumer exponent or coefficient margin will be claimed unless the retained strip is independently bounded in the required direction."
+    }
+  ],
+  "computations_claimed": "None yet. No off-line zero assigned, no external audit, Lean, Arb or production spectrum.",
+  "refinement_before_executable_checks": "After the preliminary derivation, before running check_q44.py: shift the known archimedean multiplier to Re z=3, retaining its first uncancelled pole z=5/2. Check the negative inverse-residue orientation; do not infer the sign of the complex separator covariance."
+}
