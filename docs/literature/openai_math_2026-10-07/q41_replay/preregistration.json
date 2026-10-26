@@ -1,0 +1,12 @@
+{
+  "stage": "After the paper preflight, before executing new finite algebra controls; not a preregistration of the earlier reading or the entire derivation.",
+  "request_id": "Q41_EARLIER_FORK_SIGNED_SOURCE",
+  "candidate": "Finite repeated short Mobius inversion inside the unchanged complete central pairing",
+  "predictions": [
+    {"id":"P1","statement":"The finite coefficient identity including the explicit remainder holds for every tested integer n, including n=m."},
+    {"id":"P2","statement":"Under (U+1)^k>m the remainder vanishes by support, without dropping actual prime powers."},
+    {"id":"P3","statement":"At a prime p>U the full alternating coefficient is log(p), not a small multiple of log(p)."},
+    {"id":"P4","statement":"Deleting the remainder outside its support-valid regime is detected by an exact finite control."}
+  ],
+  "not_predicted": "No CCM spectral sign, exponent gain, independent arithmetic supplier, or RH conclusion is predicted from this algebra."
+}

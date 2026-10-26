@@ -1,0 +1,11 @@
+{
+  "all_bytes_lf_sha256_and_frames_match": true,
+  "all_input_text_utf8": true,
+  "canonical_bytes": 208316,
+  "canonical_file": "PROSHKA_CCM_EARLIER_FORK_SIGNED_SOURCE_Q41_2026-10-26.txt",
+  "canonical_lf": 3423,
+  "canonical_sha256": "b311d750de7cca08c919dc77d1665f40a49255914f094b74bf629e9ca6a7b086",
+  "historical_code_executed": false,
+  "source_count": 10,
+  "source_proofs_recertified_by_hashing": false
+}

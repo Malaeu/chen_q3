@@ -9357,3 +9357,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 - Следующий ход: rollback before component positive parts; no Q41 sent.
 - Адреса: docs/literature/openai_math_2026-10-07/CCM_Q40_CONCLUSION.md, q40_replay/, both CCM_POST_Q39_* attempts.
 - Чей вердикт: Proshka full source; root full read/replay and primary E1 statements; q32_annulus_audit independent bounded qualified PASS §§2–8.
+
+## 2026-10-26 — CCM Q41: finite inverse leaves the signed debt open
+- Развилка: Q32 complete central pairing before separate arithmetic/test sizes.
+- Выбрали: audit exact short inversion and retain source return once.
+- Почему: exact remainder elimination alone might be confused with an estimate.
+- Что отвергли: counting identities/replays as exponent gain; no source family killed.
+- Инсайты: large-prime coefficient remains log(p)-1 in the central form; all channels recombine to the same N_star.
+- Блокеры: no independent signed upper on original P; exponent remains 1/2.
+- Иглы Зингера: smoothed top is not raw h(m); no intermediate P in causal products; no binomial multiplication of Q32 fee.
+- Следующий ход: source-dependent inequality before separate sizes; no Q42 dispatched.
+- Адреса: docs/literature/openai_math_2026-10-07/CCM_Q41_CONCLUSION.md; q41_replay/; full Q41 request/verdict.
+- Чей вердикт: Proshka partial/no gain; root full read/replay; q32_annulus_audit bounded independent PASS §§3–7.

@@ -1,3 +1,23 @@
+# Q41 PROCESSED — NO RESPONSE PENDING
+
+Q41 processed: CCM_Q41_CONCLUSION.md. Finite short inversion exact, all prime powers/central -1/top/mixed terms retained; 816 indices,828 Hermitian coordinates,6 planted failures,10 sources reproduced byte-identically; independent bounded PASS §§3–7. No new signed inequality or exponent, no KILL. Roll back to full N_star/C0 before separate sizes. No Q42; goal OPEN. Monitor closeout follows scoped commit.
+
+--- Earlier state ---
+
+# Q41 ORIGINAL RECEIVED — AUDIT IN PROGRESS
+
+Terminal Antwort abgeschlossen observed; full original downloaded and saved unchanged (67429 bytes/1214 LF/SHA256 db0b177c2494f1fa1376f2c058860f8ec38561f92d5bb6c8ccdec5f8c068335c). Full answer read, six assets verified and both checkers replayed with byte-identical JSON. Independent bounded audit §§3–7 requested from q32_annulus_audit, pending. No new signed inequality claimed; no Q42. Monitor remains until closeout; goal OPEN.
+
+Q41 EARLIER_FORK_SIGNED_SOURCE sent ONCE 2026-10-26 14:01 Europe/Berlin in the same living chat through own IAB browser3/tab4. Exact TXT tile/companion and ChatGPT antwortet/Stoppen confirmed. Request208316bytes/3423LF/SHA256b311d750de7cca08c919dc77d1665f40a49255914f094b74bf629e9ca6a7b086;10 complete size/hash-locked sources verified. Base26fa7ca6; own Cotlar preflight explicitly uncommitted. Concrete impasse, one own preflight, no fabricated third attempt. No resend/reload/Stop while responding. After natural completion full download/read/replay/one bounded independent audit and scoped cycle commit incl own preflight. Goal OPEN.
+
+--- Earlier state ---
+
+# POST-Q40 COTLAR PREFLIGHT CHECKED — NO RESPONSE PENDING
+
+Post-Q40 Cotlar preflight bounded PASS: CCM_POST_Q40_COTLAR_PREFLIGHT.md. Any Cotlar decomposition preserving a subset equal to T_iso has price>=c sqrt(m)/logm; full fallback half-power, not source lower. Q09 PNT transfer recognized as duplicate. Next candidate must mix iso/rest before norms or supply actual signed cross-component comparison; no Q41. Goal OPEN.
+
+--- Earlier state ---
+
 # Q40 COMPLETE AND CHECKED — NO RESPONSE PENDING
 
 Q40 processed: CCM_Q40_CONCLUSION.md;13groups/2507cases/11planted/10sources replay byte-identical; independent bounded PAPER PASS §§2–8, root E1 statement check. Signed adaptive incidence flow optimum=sum positive component totals. Actual isolated prime channels on minuspacket original-P family cost sqrt(m)/logm, while SAME full signed T=o(sqrt(m)/logm); actual intercomponent compensation retained. Optimized certificate exponent1/2 only, not CCM lower. Roll back before independent component positive parts; prior cap unchanged, no Q41, goal OPEN.

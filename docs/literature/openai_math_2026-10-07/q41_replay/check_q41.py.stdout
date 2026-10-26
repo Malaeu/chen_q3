@@ -1,0 +1,102 @@
+{
+  "actual_lambda_coefficient_configurations": [
+    {
+      "U": 1,
+      "k": 5,
+      "m": 16,
+      "strict_cutoff": true
+    },
+    {
+      "U": 2,
+      "k": 4,
+      "m": 32,
+      "strict_cutoff": true
+    },
+    {
+      "U": 3,
+      "k": 3,
+      "m": 48,
+      "strict_cutoff": true
+    },
+    {
+      "U": 4,
+      "k": 3,
+      "m": 64,
+      "strict_cutoff": true
+    },
+    {
+      "U": 2,
+      "k": 5,
+      "m": 81,
+      "strict_cutoff": true
+    },
+    {
+      "U": 5,
+      "k": 3,
+      "m": 96,
+      "strict_cutoff": true
+    },
+    {
+      "U": 3,
+      "k": 4,
+      "m": 127,
+      "strict_cutoff": true
+    },
+    {
+      "U": 7,
+      "k": 3,
+      "m": 160,
+      "strict_cutoff": true
+    },
+    {
+      "U": 12,
+      "k": 3,
+      "m": 192,
+      "strict_cutoff": true
+    }
+  ],
+  "explicit_remainder_configurations": [
+    {
+      "U": 2,
+      "k": 1,
+      "m": 64
+    },
+    {
+      "U": 2,
+      "k": 2,
+      "m": 64
+    },
+    {
+      "U": 2,
+      "k": 3,
+      "m": 64
+    },
+    {
+      "U": 3,
+      "k": 2,
+      "m": 96
+    },
+    {
+      "U": 5,
+      "k": 2,
+      "m": 160
+    }
+  ],
+  "formal_log_endpoint_coordinates": 207,
+  "generic_hermitian_linear_coordinate_checks": 828,
+  "historical_scripts_executed": false,
+  "integer_indices_in_these_configurations": 816,
+  "new_signed_inequality_verified": false,
+  "planted_failure_count": 6,
+  "planted_failures_detected": {
+    "delete_smoothed_top_from_raw_zero": true,
+    "drop_nonzero_remainder": true,
+    "erase_prime_power_coefficient": true,
+    "omit_binomial_coefficients": true,
+    "replace_actual_mu_by_absolute_value": true,
+    "wrong_all_positive_outer_signs": true
+  },
+  "production_CCM_spectra": false,
+  "rough_prime_and_product_signatures": "passed",
+  "status": "LOCAL_EXACT_CONTROLS_ONLY"
+}
