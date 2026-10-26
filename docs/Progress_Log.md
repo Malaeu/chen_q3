@@ -9089,3 +9089,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход · Work before artificial AP expansion; require a genuinely surviving source-weight coupling. No Q30 sent.
 Адреса · docs/literature/openai_math_2026-10-07/CCM_Q29_CONCLUSION.md; q29_replay; canonical Q29 request and original verdict.
 Чей вердикт · Root full reading/replay209exact6planted; residue_density_supplier bounded independent PASS §§2–8 and primary BV statement.
+
+## 2026-10-26 — Contact certificate scope after Q29
+
+Развилка · Contact-generated PSD correction or genuine source-dependent estimate.
+Выбрали · Check full mixed contact correction exactly.
+Почему · It can cancel exterior blocks but leaves P(tI-A)P unchanged.
+Что отвергли · Treating arbitrary contact multipliers as an independent arithmetic supplier.
+Инсайты · Explicit corrected matrix is PBP+Q; scalar penalty also needs semidefinite range condition.
+Блокеры · Original signed compression bound remains open.
+Иглы Зингера · Complex adjoints, all source entries and original P retained; synthetic2x2 is not CCM.
+Следующий ход · Seek source-dependent positivity beyond contact freedom; no Q30 sent.
+Адреса · docs/literature/openai_math_2026-10-07/CCM_POST_Q29_CONTACT_CERTIFICATE_TEST.md.
+Чей вердикт · Root exact derivation/SymPy sign checks; all_p_contour_extension bounded algebra PASS.
