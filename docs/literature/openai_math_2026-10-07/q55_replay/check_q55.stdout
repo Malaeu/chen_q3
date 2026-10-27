@@ -1,0 +1,207 @@
+{
+  "actual_zeta_zeros_computed": false,
+  "arb": false,
+  "cofinal_bound_certified_by_computation": false,
+  "diagnostics": {
+    "arithmetic": "binary64, not outward rounded",
+    "cases": [
+      {
+        "M": 2,
+        "contact_max_abs_residual": "3.836000926192466e-17",
+        "continuous_value": "-0.059496073480870125",
+        "directed_cap": "0.74624170485009955",
+        "m": 8,
+        "original_epsilon_schedule": false,
+        "source_matrix_max_abs_error": "2.6367796834847468e-16",
+        "tested_quadratic_value": "-0.25397878825053705"
+      },
+      {
+        "M": 3,
+        "contact_max_abs_residual": "1.2990750993569677e-16",
+        "continuous_value": "-0.038289564761992634",
+        "directed_cap": "0.88337915579635773",
+        "m": 16,
+        "original_epsilon_schedule": false,
+        "source_matrix_max_abs_error": "8.8817841970012523e-16",
+        "tested_quadratic_value": "-0.041469534506280686"
+      },
+      {
+        "M": 2,
+        "contact_max_abs_residual": "4.6426385570184189e-17",
+        "continuous_value": "-0.15098342690038372",
+        "directed_cap": "0.37121434065810549",
+        "m": 27,
+        "original_epsilon_schedule": false,
+        "source_matrix_max_abs_error": "1.7763568394002505e-15",
+        "tested_quadratic_value": "-0.64716621830654686"
+      },
+      {
+        "M": 3,
+        "contact_max_abs_residual": "8.182674270850423e-17",
+        "continuous_value": "-0.087729874491628043",
+        "directed_cap": "0.52002477679431047",
+        "m": 64,
+        "original_epsilon_schedule": false,
+        "source_matrix_max_abs_error": "3.5527136788005009e-15",
+        "tested_quadratic_value": "-0.41114439394297381"
+      },
+      {
+        "M": 4,
+        "contact_max_abs_residual": "7.9872667044382074e-17",
+        "continuous_value": "-0.0459354828009228",
+        "directed_cap": "0.76809092810437984",
+        "m": 81,
+        "original_epsilon_schedule": false,
+        "source_matrix_max_abs_error": "3.3306690738754696e-15",
+        "tested_quadratic_value": "-0.16003912627520428"
+      }
+    ],
+    "interval_certificate": false,
+    "max_contact_residual": "1.2990750993569677e-16",
+    "max_continuous_identity_error": "3.9569959107359041e-16",
+    "max_entry_error": "3.5527136788005009e-15",
+    "max_form_error": "1.0460161626891656e-15",
+    "planted_violations_detected": {
+      "delete_top_derivative": true,
+      "erase_diagonal_derivative": true,
+      "ignore_contacts": true,
+      "independent_complex_vector": true,
+      "reverse_commutator": true
+    },
+    "tolerance": "2e-11"
+  },
+  "exact": {
+    "commutator_constant_shift": true,
+    "exact_complex_pairing": true,
+    "exact_joint_polynomial_case": 1,
+    "matrix_entries": 115
+  },
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "production_spectrum": false,
+  "source": {
+    "bytes": 127670,
+    "frames": [
+      {
+        "bytes": 3590,
+        "end_byte": 5649,
+        "id": "LOCAL_UPDATE",
+        "lf": 77,
+        "sha256": "c09ee0b60057cafdd16128b928990daca8ff50c02f7371c1fca70021245ff8d6",
+        "start_byte": 2059
+      },
+      {
+        "bytes": 121865,
+        "end_byte": 127651,
+        "id": "BASE_REQUEST",
+        "lf": 1945,
+        "sha256": "4df1ce42289cb425c24f65861d330cc34e90c304f37724a5c9c76d69004cc1fe",
+        "start_byte": 5786
+      }
+    ],
+    "lf": 2039,
+    "sha256": "ecf79b6faecccceff894a4d98902de6aac198d3b06355240f0154d2e3d63632e",
+    "sources": [
+      {
+        "bytes": 3624,
+        "end_byte": 16598,
+        "end_line": 199,
+        "id": "S1",
+        "lf": 77,
+        "name": "CCM_POST_Q54_ENDPOINT_SEAM_CANDIDATE.md",
+        "sha256": "0f7124903a297f9a78e33867c6167246625bf5680ba53abdd45e90a24968f493",
+        "start_byte": 12974,
+        "start_line": 123
+      },
+      {
+        "bytes": 1628,
+        "end_byte": 18281,
+        "end_line": 228,
+        "id": "S2",
+        "lf": 25,
+        "name": "CCM_POST_Q54_ENDPOINT_SEAM_REVIEW.md",
+        "sha256": "52a40c19d1bb665b0b25f5b9296678fc37129b641f9b85073d83e829f448f7ba",
+        "start_byte": 16653,
+        "start_line": 204
+      },
+      {
+        "bytes": 3398,
+        "end_byte": 21741,
+        "end_line": 299,
+        "id": "S3",
+        "lf": 67,
+        "name": "CCM_POST_Q54_CURVATURE_SUPPORT_PREFLIGHT.md",
+        "sha256": "bc6079dce73366a97e2ab5e37a499c9d81bb62039d76422ee543f3a0d57d6845",
+        "start_byte": 18343,
+        "start_line": 233
+      },
+      {
+        "bytes": 81134,
+        "end_byte": 102959,
+        "end_line": 1616,
+        "id": "S4",
+        "lf": 1313,
+        "name": "PROSHKA_CCM_SIGNED_DIVISOR_IMAGE_RETURN_Q54_VERDICT_2026-10-27.md",
+        "sha256": "f2f6684f985e6691ca277b29718520a9db815cf2fde624af107eb9cde9ab0da0",
+        "start_byte": 21825,
+        "start_line": 304
+      },
+      {
+        "bytes": 4194,
+        "end_byte": 107193,
+        "end_line": 1697,
+        "id": "S5",
+        "lf": 77,
+        "name": "CCM_Q54_CONCLUSION.md",
+        "sha256": "bdae1b89ddc9a0b38c81590546839dde5adcdbe35f03cf61884416bfa90d8e53",
+        "start_byte": 102999,
+        "start_line": 1621
+      },
+      {
+        "bytes": 5036,
+        "end_byte": 112275,
+        "end_line": 1793,
+        "id": "S6",
+        "lf": 92,
+        "name": "CCM_JOINT_Q04_CONCLUSION.md",
+        "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+        "start_byte": 107239,
+        "start_line": 1702
+      },
+      {
+        "bytes": 3839,
+        "end_byte": 116154,
+        "end_line": 1863,
+        "id": "S7",
+        "lf": 66,
+        "name": "CCM_Q13_CONCLUSION.md",
+        "sha256": "6c2f145f392d4336471adaf7267ab7d4e17a48e966343a45209f4ccebe1ad34c",
+        "start_byte": 112315,
+        "start_line": 1798
+      },
+      {
+        "bytes": 5205,
+        "end_byte": 121422,
+        "end_line": 1960,
+        "id": "S8",
+        "lf": 93,
+        "name": "CCM_POST_Q48_FIRST_FORM_DEFICIT_CROSSWALK.md",
+        "sha256": "c7efc8783bb4306ee55df5574649fccf3da8240d37384b8db965183d1dd569e6",
+        "start_byte": 116217,
+        "start_line": 1868
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 127642,
+        "end_line": 2033,
+        "id": "S9",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 121468,
+        "start_line": 1965
+      }
+    ]
+  }
+}

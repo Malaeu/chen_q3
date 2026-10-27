@@ -1,0 +1,30 @@
+{
+  "task": "Q55_OWNER_AUTHORIZED_FRESH_CHAT_CONTINUATION",
+  "packet_sha256": "ecf79b6faecccceff894a4d98902de6aac198d3b06355240f0154d2e3d63632e",
+  "stage": "After full supplied-source reading, transport checks and preliminary PAPER derivation; before new executable mathematical tests. Not a preregistration of the initial pencil derivation.",
+  "operator": "REPRESENTATION_SHIFT",
+  "rollback": "Original direct first form before the positive-family curvature requirement; Fourier divided differences and a finite Hilbert commutator, with an independently imported zero-free strip.",
+  "predictions": {
+    "P1": "The exact real Hermitian Fourier matrix of A-A_cont has diagonal 2 Re E(omega_j)-2 Im E'(omega_j)/L and offdiagonal -(g_j-g_k)/(pi*(j-k)), with g_j=Im E(omega_j).",
+    "P2": "The finite discrete Hilbert matrix has norm at most pi; the one-sided cap max(diagonal)+max(g)-min(g) is dimension free and preserves all complex coefficients.",
+    "P3": "Both exponential contacts give -4 norm_squared <= A_cont <= 0. The endpoint n=m cancels in the direct form but is retained in E and E'.",
+    "P4": "A zero-free strip of Vinogradov-Korobov width, with a uniformly paid Perron contour and complex-frequency Cauchy derivative, yields O(sqrt(m)*exp(-c*(log(m)/log(log(m)))^(1/3))) on the entire original sparse carrier, not a fixed positive power saving.",
+    "P5": "The independent direct cap bounds the full R_Psi-Psi through the exact source identity for every tau>0, without separately deleting centered-square mixed terms or higher-prime sectors.",
+    "P6": "Finite exact controls and binary64 off-schedule Fourier diagnostics verify only algebra and normalization; they do not certify the asymptotic zero-free import, a production cell, or a cofinal CCM claim."
+  },
+  "planned_falsifiers": [
+    "reverse the Hilbert commutator sign",
+    "erase the diagonal frequency derivative",
+    "drop the endpoint derivative while retaining its F atom",
+    "replace the same complex coefficient vector by independent vectors",
+    "ignore either exponential contact",
+    "treat a real-axis error bound as automatically differentiable",
+    "replace the moving zero-free width by a fixed strip"
+  ],
+  "historical_programs_executed": false,
+  "repository_writes": false,
+  "installations": false,
+  "lean": false,
+  "arb": false,
+  "independent_audit": false
+}
