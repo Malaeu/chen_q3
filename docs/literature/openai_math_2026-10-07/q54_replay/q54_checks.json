@@ -1,0 +1,146 @@
+{
+  "arb": false,
+  "framing_mutations": {
+    "body_hash": true,
+    "extra_separator": true,
+    "outer_hash": true,
+    "truncated_frame": true
+  },
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "mathematics": {
+    "counts": {
+      "complex_quadratic_cases": 8,
+      "exact_Taylor_returns": 9,
+      "linked_formal_translation_cases": 1,
+      "linked_time_rows": 6,
+      "optimization_controls": 9,
+      "positive_deformation_cases": 8,
+      "tangent_entries": 228
+    },
+    "exact_prime_power_weights": true,
+    "passed": true,
+    "planted_errors_detected": {
+      "Lambda_power_replaced_by_log_n": true,
+      "PSD_family_implies_PSD_tangent": true,
+      "double_short_in_direct_K": true,
+      "drop_factor_two_in_source_return": true,
+      "drop_noninteger_ratio_cross_terms": true,
+      "drop_normalization_derivative": true,
+      "drop_top_diagonal_because_top_overlap_is_zero": true,
+      "erase_Taylor_remainder": true,
+      "remove_n1_baseline": true,
+      "replace_Mobius_by_absolute_values": true,
+      "replace_signed_defect_by_its_absolute_value": true
+    },
+    "scope": "Exact finite arithmetic and polynomial identities in formal log(p); rational translation controls only; universal bounds are PAPER arguments",
+    "source_bound_proved_by_finite_tests": false,
+    "tangent_negative_control": {
+      "arithmetic_index_only": true,
+      "original_P_counterexample": false,
+      "value": "-log(2)/4"
+    }
+  },
+  "new_vanishing_exponent_supplier": false,
+  "numeric_actual_zeta_zeros": false,
+  "production_CCM_spectrum": false,
+  "provenance": {
+    "all_frames_verified": true,
+    "bytes": 139662,
+    "lf": 2276,
+    "packet": "PROSHKA_CCM_SIGNED_DIVISOR_IMAGE_RETURN_Q54_2026-10-27.txt",
+    "sha256": "29975f46faee9550eea39e6de9048f0c73f9e483d1522ebfed9a32003651ce6a",
+    "source_count": 8,
+    "sources": [
+      {
+        "bytes": 3927,
+        "end_byte": 11387,
+        "end_line": 103,
+        "id": "S1",
+        "lf": 70,
+        "name": "CCM_POST_Q53_WEIGHTED_CARRIER_PREFLIGHT.md",
+        "sha256": "88f78b706bdf435c06c0ca7545b01173cfe407197fd3e84cd6495d0c548212f3",
+        "start_byte": 7460,
+        "start_line": 34
+      },
+      {
+        "bytes": 2658,
+        "end_byte": 14102,
+        "end_line": 153,
+        "id": "S2",
+        "lf": 46,
+        "name": "CCM_POST_Q53_SIGNED_SLACK_CROSSWALK.md",
+        "sha256": "216c2424559b1fb1acd764997602760143a7de51e76a20c2bc55824b80ab9d70",
+        "start_byte": 11444,
+        "start_line": 108
+      },
+      {
+        "bytes": 100044,
+        "end_byte": 114227,
+        "end_line": 1819,
+        "id": "S3",
+        "lf": 1662,
+        "name": "PROSHKA_CCM_SIGNED_INNER_OBSERVATION_Q53_VERDICT_2026-10-27.md",
+        "sha256": "9e053358e4d653e2787a1f85520589e2077a6d6c8edf4f4f9a281cbea6fe2489",
+        "start_byte": 14183,
+        "start_line": 158
+      },
+      {
+        "bytes": 5205,
+        "end_byte": 119495,
+        "end_line": 1916,
+        "id": "S4",
+        "lf": 93,
+        "name": "CCM_POST_Q48_FIRST_FORM_DEFICIT_CROSSWALK.md",
+        "sha256": "c7efc8783bb4306ee55df5574649fccf3da8240d37384b8db965183d1dd569e6",
+        "start_byte": 114290,
+        "start_line": 1824
+      },
+      {
+        "bytes": 3118,
+        "end_byte": 122665,
+        "end_line": 1977,
+        "id": "S5",
+        "lf": 57,
+        "name": "CCM_POST_Q42_MULTISCALE_SCREEN.md",
+        "sha256": "4cb686fe44063d054d1a872b730a36270e200a75be16f63b8868dfa833d871bb",
+        "start_byte": 119547,
+        "start_line": 1921
+      },
+      {
+        "bytes": 5036,
+        "end_byte": 127747,
+        "end_line": 2073,
+        "id": "S6",
+        "lf": 92,
+        "name": "CCM_JOINT_Q04_CONCLUSION.md",
+        "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+        "start_byte": 122711,
+        "start_line": 1982
+      },
+      {
+        "bytes": 5633,
+        "end_byte": 133433,
+        "end_line": 2200,
+        "id": "S7",
+        "lf": 123,
+        "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+        "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+        "start_byte": 127800,
+        "start_line": 2078
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 139653,
+        "end_line": 2273,
+        "id": "S8",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 133479,
+        "start_line": 2205
+      }
+    ]
+  }
+}

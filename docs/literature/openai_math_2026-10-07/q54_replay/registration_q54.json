@@ -1,0 +1,33 @@
+{
+  "task": "Q54_SIGNED_DIVISOR_IMAGE_RETURN",
+  "stage": "After complete packet reading, byte verification, primary-source screen and preliminary PAPER derivation; before executable mathematical tests",
+  "chosen_operator": "REPRESENTATION_SHIFT",
+  "documented_rollback": "S6 finite first source before carrier graph cap; use a finite normalized GCD deformation and actual Mobius congruence",
+  "predictions": {
+    "P1": "The normalized gcd kernel Q_tau(n,k)=(gcd(n,k)/sqrt(n*k))^tau is positive semidefinite for every tau>=0, by the positive real-parameter Jordan divisor coefficients, including n=1.",
+    "P2": "For the genuine finite Mobius inverse U, V_0=U Q_0 U^T=e1 e1^T and V'_0=diag(Lambda)-(Lambda e1^T+e1 Lambda^T)/2, with every prime power retained.",
+    "P3": "On the full linked image x_n(t)=n^(-1/2) f(t+log(n)), the integrated energy satisfies Phi_0=||f||^2 and Phi'_0=h_m||f||^2-A_m[f]/2. Its positivity does not by itself give the sign of this derivative.",
+    "P4": "The complete second derivative retains all coprime-ratio and Mobius cross terms. The available uniform curvature completion has allowance 4*m*L^2*(1+L)^2, so its optimized full source allowance retains exponent 1/2.",
+    "P5": "All original-P returns are direct: one short-divisor fee only for T, one archimedean fee for K, no contour fee, and no second H_P charge.",
+    "P6": "Finite controls can validate the incidence, multiplicity, sign and endpoint algebra but cannot certify an independent cofinal signed curvature estimate or CCM bound. Whether such a stronger estimate is available is a PAPER question, not fixed by this registration."
+  },
+  "candidate_representations": [
+    {
+      "name": "finite GCD deformation on the whole linked source image",
+      "cost": "finite exact incidence algebra and one uniform Taylor return; no production-sized matrix needs to be constructed",
+      "discriminator": "the full signed curvature must be paid, not removed by positivity of the deformed matrix",
+      "kill_power": "high for a falsely signed tangent inference; none for a consumer-wide impossibility claim"
+    },
+    {
+      "name": "original first causal Mobius-Mangoldt form before lift",
+      "cost": "zero map error by the supplied exact source equation",
+      "discriminator": "independent one-sided source inequality on the same c before separate norms",
+      "kill_power": "detects duplicated graph or jump-energy bookkeeping, not failure of actual cancellation"
+    }
+  ],
+  "historical_programs_executed": false,
+  "repository_writes": false,
+  "installations": false,
+  "numeric_zeta_roots": false,
+  "production_spectrum": false
+}
