@@ -1,0 +1,201 @@
+{
+  "arb": false,
+  "arithmetic": {
+    "actual_asymptotic_bound_verified_by_code": false,
+    "exponent_rows": [
+      {
+        "epsilon": "1/128",
+        "graph_K1_trial_power": "1",
+        "high": "-1/8",
+        "paid_power": "1/64",
+        "retained_direct_power": "1/2",
+        "short_power": "3/256"
+      },
+      {
+        "epsilon": "1/64",
+        "graph_K1_trial_power": "1",
+        "high": "-1/8",
+        "paid_power": "1/32",
+        "retained_direct_power": "1/2",
+        "short_power": "3/128"
+      },
+      {
+        "epsilon": "1/33",
+        "graph_K1_trial_power": "1",
+        "high": "-1/8",
+        "paid_power": "2/33",
+        "retained_direct_power": "1/2",
+        "short_power": "1/22"
+      }
+    ],
+    "formal_divisor_factorial_cases": 120,
+    "multiplicative_box_cases": [
+      {
+        "K": 1,
+        "box_cardinality": 4,
+        "m": 3,
+        "max_integer": 6,
+        "virtual_edges_at_or_beyond_source_end": 2
+      },
+      {
+        "K": 2,
+        "box_cardinality": 27,
+        "m": 5,
+        "max_integer": 900,
+        "virtual_edges_at_or_beyond_source_end": 36
+      },
+      {
+        "K": 1,
+        "box_cardinality": 16,
+        "m": 7,
+        "max_integer": 210,
+        "virtual_edges_at_or_beyond_source_end": 8
+      },
+      {
+        "K": 2,
+        "box_cardinality": 81,
+        "m": 7,
+        "max_integer": 44100,
+        "virtual_edges_at_or_beyond_source_end": 135
+      }
+    ],
+    "planted_errors_detected": {
+      "double_short_in_direct_K": true,
+      "drop_prime_power_multiplicity_in_log_divisor": true,
+      "omit_multiplicative_box_boundary": true,
+      "use_product_as_log_cutoff": true
+    }
+  },
+  "framing_mutations": {
+    "body_hash": true,
+    "extra_separator": true,
+    "outer_hash": true,
+    "truncated_frame": true
+  },
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "independent_signed_supplier": false,
+  "lean": false,
+  "model": {
+    "counts": {
+      "bilinear_pairs": 16,
+      "cauchy_lyapunov_entries": 13,
+      "confluent_jet_cases": 14,
+      "hermitian_model_entries": 20,
+      "model_fixtures": 4,
+      "observation_value_cases": 8
+    },
+    "numeric_zeta_zeros": false,
+    "planted_errors_detected": {
+      "assume_value_span_C_invariant_at_multiple_root": true,
+      "drop_one_orientation": true,
+      "forget_bar_c_on_left": true,
+      "omit_Bprime_weight": true,
+      "replace_multiple_zero_by_simple_value_rule": true,
+      "reverse_Lyapunov_energy_direction": true,
+      "transpose_to_adjoint": true
+    },
+    "production_cells": false,
+    "symbol_control": "tau(z)=(1+z)^2 checks analytic identities; actual exp(Lz) specialization is proved in PAPER"
+  },
+  "numeric_zeta_roots": false,
+  "production_spectrum": false,
+  "provenance": {
+    "all_frames_verified": true,
+    "bytes": 135751,
+    "lf": 2250,
+    "packet": "PROSHKA_CCM_SIGNED_INNER_OBSERVATION_Q53_2026-10-27.txt",
+    "sha256": "9561eb7be86d7f6bb72790d174566a68809cdbe198353c8be6621044155444e0",
+    "source_count": 8,
+    "sources": [
+      {
+        "bytes": 9657,
+        "end_byte": 16563,
+        "end_line": 217,
+        "id": "S1",
+        "lf": 187,
+        "name": "CCM_POST_Q52_INNER_KERNEL_PREFLIGHT.md",
+        "sha256": "262e9a26b34efc7fc9b412be8916fbbaa47e67a847197b4693344d2a21d23e73",
+        "start_byte": 6906,
+        "start_line": 31
+      },
+      {
+        "bytes": 88291,
+        "end_byte": 104931,
+        "end_line": 1694,
+        "id": "S2",
+        "lf": 1473,
+        "name": "PROSHKA_CCM_JOINT_BOUNDARY_PHASE_Q52_VERDICT_2026-10-27.md",
+        "sha256": "1c7947786289c1b82581dbe536e1312d54ab5a56e558fd2dd71973d3ea734362",
+        "start_byte": 16640,
+        "start_line": 222
+      },
+      {
+        "bytes": 5633,
+        "end_byte": 110617,
+        "end_line": 1821,
+        "id": "S3",
+        "lf": 123,
+        "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+        "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+        "start_byte": 104984,
+        "start_line": 1699
+      },
+      {
+        "bytes": 4636,
+        "end_byte": 115302,
+        "end_line": 1918,
+        "id": "S4",
+        "lf": 93,
+        "name": "CCM_POST_Q27_DENSITY_BUDGET.md",
+        "sha256": "87c3faa5a652ca4d205e82674553ad0f5f5a1c24735c43a09d98d4560c3dc166",
+        "start_byte": 110666,
+        "start_line": 1826
+      },
+      {
+        "bytes": 5631,
+        "end_byte": 120989,
+        "end_line": 2019,
+        "id": "S5",
+        "lf": 97,
+        "name": "CCM_Q14_PROJECTED_EXPONENTIAL_TEST.md",
+        "sha256": "1c94b50911fd16e648c106c878bf8a3d3a1366b0d7544f67c0403b643db28e55",
+        "start_byte": 115358,
+        "start_line": 1923
+      },
+      {
+        "bytes": 3411,
+        "end_byte": 124440,
+        "end_line": 2078,
+        "id": "S6",
+        "lf": 55,
+        "name": "CCM_Q22_CONCLUSION.md",
+        "sha256": "36b8c276a37a1cd4bd47c7b758c0dd71ac70e508e5fb69ddc378779235e08a13",
+        "start_byte": 121029,
+        "start_line": 2024
+      },
+      {
+        "bytes": 5036,
+        "end_byte": 129522,
+        "end_line": 2174,
+        "id": "S7",
+        "lf": 92,
+        "name": "CCM_JOINT_Q04_CONCLUSION.md",
+        "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+        "start_byte": 124486,
+        "start_line": 2083
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 135742,
+        "end_line": 2247,
+        "id": "S8",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 129568,
+        "start_line": 2179
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "task": "Q53_SIGNED_INNER_OBSERVATION",
+  "stage": "After full packet reading, verified framing and preliminary PAPER calculations; before executable mathematical controls",
+  "primary_mechanism": "Canonical half-plane model conjugation with full confluent interpolation for the actual weights r_a exp(L w_a), on both linked original-P observation maps",
+  "rollback": "S7 finite causal first prime form; tensor-isometric multiplicative-box lift and the actual von-Mangoldt divisor/factorial inequality",
+  "predictions": {
+    "P1": "The half-plane antiunitary conjugation produces the residue pairing Res(f g/B), including confluent derivatives; simple weights are 1/Bprime, not r exp(Lw).",
+    "P2": "The multiplier h=exp(Lz)Bprime has exactly the Hermite jets needed to recover r exp(Lw) times value products for every multiplicity; no inverse derivative or jet is silently removed.",
+    "P3": "After both actual conjugations and both time orientations the whole original form remains a Hermitian linked observation cross-pairing, not a positive norm; full model multiplier norm equals the already tested core norm.",
+    "P4": "The Cauchy Lyapunov equation controls stable propagation with its actual metric; the growing exponential in the source has the reverse energy direction.",
+    "P5": "The tensor multiplicative-box lift preserves the physical norm exactly and attenuates each prime-power edge by (1-k/(K+1))_+; its whole signed return includes all omitted powers and all virtual edges.",
+    "P6": "The divisor upper costs log(N)+3 with N=product(p<=m) p^K. The explicit complete trial for K=1 has power 1, not a vanishing exponent, so the independent inherited half-power fallback must remain unchanged."
+  },
+  "controls_scope": "Exact rational algebra, formal divisor coefficients and finite combinatorial edge counts only; no actual zeta-root coordinates, CCM production spectra, interval or Lean claims",
+  "historical_source_program_execution": false,
+  "repository_writes": false,
+  "installations": false
+}
