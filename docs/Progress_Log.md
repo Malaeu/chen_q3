@@ -9521,3 +9521,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: joint mu/GCD correlations before absolute curvature, preserving original P and both finite cutoffs.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q54_CONCLUSION.md; q54_replay/.
 Чей вердикт: full Proshka original, root source read, q54_bounded_audit qualified PAPER PASS, q54_replay byte-identical. RH and full goal OPEN.
+
+## 2026-10-27 — Original-P endpoint curvature obstruction
+
+Развилка: Q54 uniformly small curvature versus joint finite-tau credit.
+Выбрали: test the actual cutoff profile before any new supplier search.
+Почему: exact Mobius cancellation leaves a positive prime-shift square.
+Что отвергли: uniform Phi_second upper with exponent tending to zero on an interval containing zero.
+Инсайты: original contacts kill the completed exponential integral, not partial traversal at n=m; curvature >=cm on original P.
+Блокеры: full signed finite-tau compensation remains unpaid; no source lower bound follows.
+Иглы Зингера: all nonsquare and projection terms returned as o(m), no missing mixed terms.
+Следующий ход: targeted Q55 at this concrete obstruction, rollback before requiring small curvature.
+Адреса: CCM_POST_Q54_ENDPOINT_SEAM_CANDIDATE.md and CCM_POST_Q54_ENDPOINT_SEAM_REVIEW.md in docs/literature/openai_math_2026-10-07/.
+Чей вердикт: q54_endpoint_seam_audit qualified PAPER PASS on exact source hash; root 760 formal controls. RH OPEN.
