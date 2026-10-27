@@ -1,0 +1,26 @@
+{
+  "historical_programs_executed": false,
+  "installations": false,
+  "operator": "COUNTEREXAMPLE_HUNT",
+  "packet_sha256": "b3a5f4823019bd3e9464973b3457e7d3e9497241be81e49b0cccbc08099b270a",
+  "planned_controls": [
+    "omitted prime-square correction",
+    "reversed amplified main sign",
+    "mu replaced by abs(mu)",
+    "wrong coefficient at a proper prime power",
+    "removed endpoint or exponential contact",
+    "square before summing linked prime channels"
+  ],
+  "predictions": {
+    "P1": "Exact mu(p*r)=-mu(r)+1_(p|r)*mu(r) produces a nonzero prime-square correction. The finite amplifier returns the original full source.",
+    "P2": "The normalized (d^2/dt^2-1/4) sin^4(pi*t/L) belongs exactly to the original three-contact band when M>=2, with no projection error.",
+    "P3": "For this witness and unweighted auxiliary prime sets containing 2, the joint-Cauchy price alone is bounded below by c*sqrt(m)/log(m)^10 eventually, irrespective of additional primes.",
+    "P4": "For arbitrary nonnegative auxiliary prime weights supported at p<=m/4, absolute payment of the amplifier remainder costs at least c*sqrt(m)/log(m)^10, using the inherited Q55 zero-frequency estimate to count actual primes.",
+    "P5": "These are lower bounds on specified sufficient-certificate prices, not on A, T or K. The retained source exponent is 1/2 and no vanishing-exponent supplier is derived."
+  },
+  "repository_writes": false,
+  "scope": "Exact finite algebra controls only. Cofinal witness estimates are PAPER; no production cell, interval, Lean or independent audit is certified.",
+  "stage": "After complete supplied-source reading and preliminary paper calculations; before new executable mathematical tests. This is not a registration preceding idea selection.",
+  "task": "Q56_ACTUAL_JOINT_ARITHMETIC",
+  "tested_method": "Finite prime-divisor amplification of the complete recombined Mobius-log source, followed by a single joint Cauchy estimate; no scalar Fourier maxima."
+}

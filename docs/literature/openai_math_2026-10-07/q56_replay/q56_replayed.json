@@ -1,0 +1,168 @@
+{
+  "arb": false,
+  "arithmetic": {
+    "cauchy_inequalities": 12,
+    "detected": {
+      "omit_square_correction": true,
+      "replace_mu_by_absolute": true,
+      "reverse_main_sign": true,
+      "square_before_prime_sum": true
+    },
+    "full_amplifier_cases": 12,
+    "lambda_formal_log_cases": 128,
+    "prime_square_cases": 1408,
+    "proper_power_control": true,
+    "scope": "actual mu and formal log(p); arbitrary rational full observables, not physical CCM cells"
+  },
+  "cofinal_claim_certified_by_computation": false,
+  "contacts": {
+    "endpoint_polynomial": {
+      "5": "24/5",
+      "7": "-2/35",
+      "9": "1/10080"
+    },
+    "formal_frequency_cases": [
+      {
+        "formal_angular_step": "1/2",
+        "norm_square_divided_by_L": "107/2048"
+      },
+      {
+        "formal_angular_step": "1/4",
+        "norm_square_divided_by_L": "47/2048"
+      },
+      {
+        "formal_angular_step": "1/8",
+        "norm_square_divided_by_L": "301/16384"
+      },
+      {
+        "formal_angular_step": "1/16",
+        "norm_square_divided_by_L": "4561/262144"
+      },
+      {
+        "formal_angular_step": "1/32",
+        "norm_square_divided_by_L": "72001/4194304"
+      }
+    ],
+    "limiting_norm_square_divided_by_L": "35/2048",
+    "mutations_detected": {
+      "endpoint": true,
+      "exponential": true
+    },
+    "scope": "formal rational frequencies only; no m=e^(2*pi/a) is asserted to be an integer production cell"
+  },
+  "endpoints": {
+    "integer_interval_points": 28,
+    "scope": "integer endpoint arithmetic only, not a sparse-band production test",
+    "squarefree_count_cases": 8
+  },
+  "floating_point_mathematics": false,
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "packet": {
+    "bytes": 160453,
+    "lf": 2597,
+    "sha256": "b3a5f4823019bd3e9464973b3457e7d3e9497241be81e49b0cccbc08099b270a",
+    "sources": [
+      {
+        "bytes": 4060,
+        "id": "S1",
+        "lf": 70,
+        "name": "CCM_Q55_CONCLUSION.md",
+        "sha256": "e8448afbfa7451e4c25bd621d60e3bf8d412b4c158801033427bf9dd1407a5ee"
+      },
+      {
+        "bytes": 1931,
+        "id": "S2",
+        "lf": 16,
+        "name": "CCM_Q55_REVIEW.md",
+        "sha256": "77b48b68f858e932ae4b4e406840bb893d5d95c4d7a464783460cf8dfba95d46"
+      },
+      {
+        "bytes": 2415,
+        "id": "S3",
+        "lf": 38,
+        "name": "CCM_POST_Q55_AFFINE_SYMBOL_RETURN.md",
+        "sha256": "1a7a2f1edeba63265788df4d66abe5549c331a3096536237a9f45a9694c602c4"
+      },
+      {
+        "bytes": 4273,
+        "id": "S4",
+        "lf": 74,
+        "name": "CCM_POST_Q55_BMO_SUPPLIER_TEST.md",
+        "sha256": "a137fe3aaae89edc1f9b1291e8c74244fa375210a3a84ea6f10abaad332a4906"
+      },
+      {
+        "bytes": 2660,
+        "id": "S5",
+        "lf": 44,
+        "name": "CCM_POST_Q55_EXTREMAL_MAP_SCREEN.md",
+        "sha256": "4e4a2c79b5589ccf54997699e50b081d315aa3ab8fb04459d2ed4a5685c16bfc"
+      },
+      {
+        "bytes": 2757,
+        "id": "S6",
+        "lf": 44,
+        "name": "CCM_Q07_DISPLACEMENT_PREFLIGHT.md",
+        "sha256": "d983a2be3ec1025ce56725bb3a32e021e7e0f4cd3f1625e2f952d9059e83048c"
+      },
+      {
+        "bytes": 9657,
+        "id": "S7",
+        "lf": 187,
+        "name": "CCM_POST_Q52_INNER_KERNEL_PREFLIGHT.md",
+        "sha256": "262e9a26b34efc7fc9b412be8916fbbaa47e67a847197b4693344d2a21d23e73"
+      },
+      {
+        "bytes": 7127,
+        "id": "S8",
+        "lf": 139,
+        "name": "CCM_Q15_VAUGHAN_JOINT_BUDGET.md",
+        "sha256": "1e13f0487d1a3362817e34112c11953a7296c18bd3500b31995aa221d540bf41"
+      },
+      {
+        "bytes": 10197,
+        "id": "S9",
+        "lf": 190,
+        "name": "CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+        "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f"
+      },
+      {
+        "bytes": 3927,
+        "id": "S10",
+        "lf": 70,
+        "name": "CCM_POST_Q53_WEIGHTED_CARRIER_PREFLIGHT.md",
+        "sha256": "88f78b706bdf435c06c0ca7545b01173cfe407197fd3e84cd6495d0c548212f3"
+      },
+      {
+        "bytes": 3462,
+        "id": "S11",
+        "lf": 71,
+        "name": "CCM_Q09_ATTAINABLE_DENSITY.md",
+        "sha256": "24c1f65cc44ef0b0db431f21cd30404946fe5f831f71c4d79ecaad1237dcbf23"
+      },
+      {
+        "bytes": 3796,
+        "id": "S12",
+        "lf": 66,
+        "name": "CCM_POST_Q35_FOURIER_CONCENTRATION_PREFLIGHT.md",
+        "sha256": "4756f3d41d128e0ba6dcc784ebfb35ca3cf919c0a62296cb673d4d0e726d85ae"
+      },
+      {
+        "bytes": 6174,
+        "id": "S13",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06"
+      },
+      {
+        "bytes": 88239,
+        "id": "S14",
+        "lf": 1377,
+        "name": "PROSHKA_CCM_Q55_DIRECT_HILBERT_PERRON_VERDICT_2026-10-27.md",
+        "sha256": "03808c77aeb5a79d1a2ad46d479d0e016527e6061c2439601a752e5179d5586a"
+      }
+    ]
+  },
+  "production_spectrum": false
+}

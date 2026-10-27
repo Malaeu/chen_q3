@@ -9547,3 +9547,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: source-specific joint bound, one own affine no-gain follow-up recorded; no Q56 sent.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q55_CONCLUSION.md; CCM_Q55_REVIEW.md; CCM_POST_Q55_AFFINE_SYMBOL_RETURN.md.
 Чей вердикт: q55_audit bounded PAPER PASS; q55_replay finite checks; root integration.
+
+## 2026-10-27 — Q56 prime dilation and signed-residual follow-up
+
+Развилка: actual prime-dilation amplification versus earlier scalar identities.
+Выбрали: preserve full b_f and actual mu, audit two precise certificate classes, then test signed residual repair for singleton2.
+Почему: Q56 supplied a source-admissible witness and paid finite return, not a new exponent.
+Что отвергли: independent nonnegative payments in the two stated classes; no CCM/source lower inferred.
+Инсайты: the large-prime remainder credit is negative before absolute payment; main Cauchy loss requires its own signed test.
+Блокеры: original full signed eta(epsilon)->0 remains OPEN; retained Q55 power1/2.
+Иглы Зингера: exact five-mode original-P witness, prime-square correction, all mixed channels and single short/arch fees.
+Следующий ход: rollback before Cauchy; retain actual arithmetic signs, no Q57 until substantive attempts or concrete impasse.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q56_CONCLUSION.md; CCM_Q56_REVIEW.md; CCM_POST_Q56_SIGNED_RESIDUAL_TEST.md; q56_replay/.
+Чей вердикт: Proshka own derivation; root full read; q55_audit bounded independent PAPER PASS for Q56; q55_replay exact JSON byte-identical. Follow-up audit recorded in its note.
