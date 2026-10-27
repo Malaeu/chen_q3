@@ -1,0 +1,22 @@
+{
+  "task": "Q52_JOINT_BOUNDARY_PHASE",
+  "stage": "After full byte-locked packet reading and preliminary PAPER derivation; before executable mathematical checks",
+  "selected_mechanism": "Full matrix Green pairing of modulus and boundary argument, followed by one rollback to the original Laplace kernel and finite Blaschke phase with exact positive-time support return",
+  "predictions": {
+    "P1": "The full Green weight is He K, not a positive square; the boundary branch corner and the logarithmic singular masses have their stated signs.",
+    "P2": "The finite Blaschke product of the selected actual right roots is contractive to the right of u and has negative boundary argument derivative; no absence of roots is assumed.",
+    "P3": "Poisson continuation of K differs from analytic continuation by exactly the finite interval integral of (exp(w s)-exp((2u-conj(w))s)) H(s). Negative-time support cancels, rather than being discarded.",
+    "P4": "At the original contact exponent 1/2, the full defect is minus the sum of two positive decaying kernels, not zero; its all-P absolute norm is at most 12 for u<=1/8.",
+    "P5": "The complete stable Poisson part has an independent O_epsilon(m^epsilon log m) upper norm budget; the remaining finite growth defect has no new supplied one-sided bound.",
+    "P6": "The original full consumer remains open; exact controls do not certify its asymptotic sign."
+  },
+  "candidate_representations_before_checks": [
+    {"name": "Matrix Green/Riesz pairing", "map_cost": "zero", "discriminator": "derive the actual matrix area weight and all boundary terms", "cost": "low exact algebra; high strength for detecting a false positive-energy inference"},
+    {"name": "Finite-inner phase and original finite-time Laplace return", "map_cost": "exact map; stable boundary part has explicit parameter-proportional upper", "discriminator": "contact exponent 1/2 detects omitted exponential-type correction on all original P", "cost": "moderate PAPER derivation; finite algebra tests only"}
+  ],
+  "source_code_executed": false,
+  "numeric_zeta_zeros": false,
+  "production_spectrum": false,
+  "repository_writes": false,
+  "installations": false
+}

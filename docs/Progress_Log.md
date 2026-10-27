@@ -9483,3 +9483,15 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: source-sensitive joint comparison before pointwise domination; no automatic Q52.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q51_CONCLUSION.md and q51_replay/.
 Чей вердикт: root full read/replay, q44_bounded_audit qualified bounded PAPER PASS §§3–8; upstream inherited.
+
+## 2026-10-27 — Q52: whole phase and finite-support return
+Развилка: Green harmonic coupling after the completed repeated-primitive impasse.
+Выбрали: complete boundary/area weight, then original Laplace support and finite Blaschke phase.
+Почему: positive scalar zero measure does not order the analytic matrix weight.
+Что отвергли: free Poisson reproduction only, via integrated original-P contact defect.
+Инсайты: stable phase costs Oepsilon(m^epsilon L); positive-time growth correction survives exactly with all mixed terms. Contact defect costs at most12, not a source no-go.
+Блокеры: independent lower of whole actual finite-time correction remains OPEN; full half-power unchanged.
+Иглы Зингера: reflected poles auxiliary, negative time cancels jointly, transpose retained, no duplicate return fees.
+Следующий ход: independent source-sensitive signed comparison or justified earlier fork; no automatic Q53.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q52_CONCLUSION.md; Q52 request/original; q52_replay/; postQ51 primitive preflight.
+Чей вердикт: root full read/replay plus q44_bounded_audit qualified bounded PAPER PASS §§3–8; upstream inherited, no Lean/Arb/new exponent.

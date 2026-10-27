@@ -1,0 +1,162 @@
+{
+  "arb": false,
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "mathematics": {
+    "cofinal_signed_supplier_certified_by_code": false,
+    "counts": {
+      "budget_exponent_rows": 3,
+      "circle_branch_cases": 20,
+      "contact_directions": 2,
+      "decaying_kernel_Jensen_cases": 3,
+      "finite_Laplace_matrix_entries": 50,
+      "finite_blaschke_cases": 6,
+      "green_polynomial_cases": 15,
+      "time_support_cases": 6
+    },
+    "exponents": [
+      {
+        "epsilon": "1/128",
+        "high": "-1/8",
+        "horizontal": "-155/192",
+        "lefttail": "-403/384",
+        "righttail": "-211/384"
+      },
+      {
+        "epsilon": "1/64",
+        "high": "-1/8",
+        "horizontal": "-79/96",
+        "lefttail": "-203/192",
+        "righttail": "-107/192"
+      },
+      {
+        "epsilon": "1/33",
+        "high": "-1/8",
+        "horizontal": "-75/88",
+        "lefttail": "-283/264",
+        "righttail": "-151/264"
+      }
+    ],
+    "passed": true,
+    "planted_errors_detected": {
+      "double_Hd_return": true,
+      "drop_U_normal_derivative_of_X": true,
+      "drop_finite_Laplace_diagonal": true,
+      "drop_reflected_exponential": true,
+      "drop_second_contact_kernel": true,
+      "drop_winding_corner": true,
+      "reflect_at_zero_instead_of_u": true,
+      "replace_Poisson_by_analytic_continuation": true,
+      "reverse_boundary_phase_speed": true,
+      "use_log_modulus_squared_without_half": true
+    },
+    "scope": "Exact finite algebra and formal/rational controls; not actual zeta coordinates or CCM spectra"
+  },
+  "numeric_zeta_zeros": false,
+  "production_spectrum": false,
+  "provenance": {
+    "all_frames_verified": true,
+    "bytes": 129443,
+    "lf": 2162,
+    "packet": "PROSHKA_CCM_JOINT_BOUNDARY_PHASE_Q52_2026-10-27.txt",
+    "sha256": "2832d7259a0c5fbac9e4d6882775457f76ce8673ce3862ff6672d23f54286b13",
+    "source_count": 8,
+    "sources": [
+      {
+        "bytes": 8546,
+        "end_byte": 16369,
+        "end_line": 195,
+        "id": "S1",
+        "lf": 166,
+        "name": "CCM_POST_Q51_REPEATED_PRIMITIVE_PREFLIGHT.md",
+        "sha256": "02ce0e7a85863c6da6df148b6a560f8349f411811ce5d77b3637fff7ce19f409",
+        "start_byte": 7823,
+        "start_line": 30
+      },
+      {
+        "bytes": 84366,
+        "end_byte": 100809,
+        "end_line": 1640,
+        "id": "S2",
+        "lf": 1441,
+        "name": "PROSHKA_CCM_JOINT_LOW_RESIDUE_Q51_VERDICT_2026-10-27.md",
+        "sha256": "953aef7fdb188a62264d48571165be1f936df8bd021acf57823b4c0f3f1c86e3",
+        "start_byte": 16443,
+        "start_line": 200
+      },
+      {
+        "bytes": 5633,
+        "end_byte": 106495,
+        "end_line": 1767,
+        "id": "S3",
+        "lf": 123,
+        "name": "CCM_POST_Q27_ORIGINAL_P_CONTOUR.md",
+        "sha256": "109c8ce6d357281eacca4697f1373f165befcbc62926b9c7254545e63d66d3b2",
+        "start_byte": 100862,
+        "start_line": 1645
+      },
+      {
+        "bytes": 4636,
+        "end_byte": 111180,
+        "end_line": 1864,
+        "id": "S4",
+        "lf": 93,
+        "name": "CCM_POST_Q27_DENSITY_BUDGET.md",
+        "sha256": "87c3faa5a652ca4d205e82674553ad0f5f5a1c24735c43a09d98d4560c3dc166",
+        "start_byte": 106544,
+        "start_line": 1772
+      },
+      {
+        "bytes": 3946,
+        "end_byte": 115166,
+        "end_line": 1943,
+        "id": "S5",
+        "lf": 75,
+        "name": "CCM_Q43_CONCLUSION.md",
+        "sha256": "c0a8339a58d0ed7be7942dcd657164dc479b470d74a5613b2006c77fa2407ef5",
+        "start_byte": 111220,
+        "start_line": 1869
+      },
+      {
+        "bytes": 4532,
+        "end_byte": 119738,
+        "end_line": 2027,
+        "id": "S6",
+        "lf": 80,
+        "name": "CCM_Q44_CONCLUSION.md",
+        "sha256": "4b0f6e355cc1e5159df49a4eafafbb81e5326825febdfc42f18f7202eb610993",
+        "start_byte": 115206,
+        "start_line": 1948
+      },
+      {
+        "bytes": 3436,
+        "end_byte": 123214,
+        "end_line": 2086,
+        "id": "S7",
+        "lf": 55,
+        "name": "CCM_Q45_CONCLUSION.md",
+        "sha256": "fe75c23687897d58a6c891d37cf3e2968d4957d228e80bc9f02a852a86f6e070",
+        "start_byte": 119778,
+        "start_line": 2032
+      },
+      {
+        "bytes": 6174,
+        "end_byte": 129434,
+        "end_line": 2159,
+        "id": "S8",
+        "lf": 69,
+        "name": "CCM_SPARSE_BAND_RECEIVER.md",
+        "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+        "start_byte": 123260,
+        "start_line": 2091
+      }
+    ]
+  },
+  "provenance_mutations": {
+    "body_hash": true,
+    "extra_separator": true,
+    "outer_hash": true,
+    "truncated_frame": true
+  }
+}
