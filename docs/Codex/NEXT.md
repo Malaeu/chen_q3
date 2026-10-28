@@ -1,6 +1,6 @@
 # Q3 — где мы и что дальше
 
-Q56 processed: full original/read/replay byte-identical; bounded independent PAPER PASS. Two precisely scoped prime-dilation certificate classes cost >=c sqrt(m)/log^10(m), not a source lower. Full signed bound OPEN, retained Q55 power1/2. Rollback before nonnegative payments; own signed-residual singleton2 test independently PASS: Cauchy slack still costs >=c sqrt(m)/log^9(m). One follow-up, no full gain. No pending response/Q57; original P, actual mu/Lambda, all powers/mixed terms and fees retained; RH unclaimed, CF22/PySR parked.
+Q57 processed: full701-line original read; bounded PAPER/source WEAK_TRIAL_VALID; transport JSON byte-identical (not mathematical replay). Actual maximal short-interval mu cancellation returns2(40+16Omega)R+C_epsilon,B sqrt(m)/log^B(m), each fixed B, weaker than Q55. No full gain or new exclusion. Rollback before independent window moduli; no pending response/Q58. Original P/all powers/mixed terms retained; eta->0 and RH OPEN, CF22/PySR parked.
 Единственная точка продолжения на любой машине: `git pull` → прочитать этот файл → работать.
 Обновлять в каждом рабочем коммите (заменой, не дописыванием). Максимум ~80 строк.
 При закрытии ворот, фазы или вилки — сразу обновить «Дорожную карту» в том же коммите.

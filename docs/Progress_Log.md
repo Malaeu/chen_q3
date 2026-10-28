@@ -9560,3 +9560,16 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: rollback before Cauchy; retain actual arithmetic signs, no Q57 until substantive attempts or concrete impasse.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q56_CONCLUSION.md; CCM_Q56_REVIEW.md; CCM_POST_Q56_SIGNED_RESIDUAL_TEST.md; q56_replay/.
 Чей вердикт: Proshka own derivation; root full read; q55_audit bounded independent PAPER PASS for Q56; q55_replay exact JSON byte-identical. Follow-up audit recorded in its note.
+
+## 2026-10-28 — Q57 actual short-interval arithmetic return
+
+Развилка: actual short-interval Möbius cancellation before arithmetic Cauchy.
+Выбрали: audit maximal theorem import and full common-grid weighted transfer.
+Почему: this is a real arithmetic input; complete return still must improve retained budget.
+Что отвергли: fixed log-power improvement as a new full exponent; no new certificate exclusion.
+Инсайты: exceptional-start grid can be common to all original tests; full weight has no jump at m/k.
+Блокеры: full tail signed bound remains unpaid; Q55 dominates this weak trial.
+Иглы Зингера: actual mu/Lambda, all powers and mixed entries, both partial edge windows, fixed B, single fees.
+Следующий ход: source-specific signed cancellation before independent window moduli; no Q58 automatically.
+Адреса: docs/literature/openai_math_2026-10-07/CCM_Q57_CONCLUSION.md; CCM_Q57_REVIEW.md; q57_replay/.
+Чей вердикт: q55_audit bounded PAPER/source WEAK_TRIAL_VALID; q55_replay transport-only JSON byte-identical; root full read. No full gain/RH claim.

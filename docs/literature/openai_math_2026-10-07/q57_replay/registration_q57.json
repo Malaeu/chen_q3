@@ -1,0 +1,17 @@
+{
+  "candidate": "Actual Mobius short-interval maximal cancellation, shifted-partition selection independent of the source test, full inner log-sum weight retained",
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "mathematical_computation_planned": false,
+  "operator": "LITERATURE_BRIDGE",
+  "packet_sha256": "9325fefed57bfae1b3431c6cce374044d487e14c269176571017185dcffbb047",
+  "predictions": {
+    "P1": "A single arithmetic-dependent shifted partition controls all original source tests; no eigenvector-dependent exceptional-set selection is needed.",
+    "P2": "The moving hyperbolic edge contributes no jump to the full inner weight because the physical top overlap is zero; its derivative still carries the chain-rule factor k.",
+    "P3": "The complete imported fixed-log-power input returns at best the derived allowance 2*(40+16*Omega)*R + C_epsilon_B*sqrt(m)/(log m)^B for every fixed B>0, not a new power saving.",
+    "P4": "That allowance does not improve the inherited Q55 envelope; no useful partial result or source/certificate impossibility is to be claimed."
+  },
+  "repository_writes": false,
+  "stage": "After complete packet reading, external statement verification and preliminary PAPER estimates; before validation of the weighted-block transfer. Not preregistration of idea discovery.",
+  "task": "Q57_CONSTRUCTIVE_SIGNED_ARITHMETIC_BEFORE_CAUCHY"
+}

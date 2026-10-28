@@ -1,0 +1,142 @@
+{
+  "all_frames_verified": true,
+  "arb_interval": false,
+  "bytes": 151894,
+  "historical_programs_executed": false,
+  "independent_audit": false,
+  "lean": false,
+  "lf": 2493,
+  "mathematical_computation": false,
+  "packet": "PROSHKA_CCM_CONSTRUCTIVE_SIGNED_ARITHMETIC_Q57_2026-10-28.txt",
+  "production_spectrum": false,
+  "sha256": "9325fefed57bfae1b3431c6cce374044d487e14c269176571017185dcffbb047",
+  "source_count": 14,
+  "sources": [
+    {
+      "bytes": 3616,
+      "end_line": 111,
+      "id": "S1",
+      "lf": 57,
+      "name": "CCM_POST_Q56_CONSTRUCTIVE_PREFLIGHT.md",
+      "sha256": "d67aa589d8c36971c7e6fe4fd65c028d01ac36c581575c3174e4d552c98be35a",
+      "start_line": 55
+    },
+    {
+      "bytes": 3777,
+      "end_line": 174,
+      "id": "S2",
+      "lf": 59,
+      "name": "CCM_Q56_CONCLUSION.md",
+      "sha256": "d0ff17dde15453377584efb502f462e803d8f631a0b8b46f3a7054be9015770c",
+      "start_line": 116
+    },
+    {
+      "bytes": 1463,
+      "end_line": 193,
+      "id": "S3",
+      "lf": 15,
+      "name": "CCM_Q56_REVIEW.md",
+      "sha256": "55754cd6c7ee738f33b2b72699f213b3b421044eeea8af484dc1c57ceeda7d12",
+      "start_line": 179
+    },
+    {
+      "bytes": 4017,
+      "end_line": 270,
+      "id": "S4",
+      "lf": 73,
+      "name": "CCM_POST_Q56_SIGNED_RESIDUAL_TEST.md",
+      "sha256": "7d77c6f1d377bd54a31a3fe3cf4898096a3db510a71db1205adca184dd94f9f0",
+      "start_line": 198
+    },
+    {
+      "bytes": 4706,
+      "end_line": 363,
+      "id": "S5",
+      "lf": 89,
+      "name": "CCM_Q39_CONCLUSION.md",
+      "sha256": "bd1f0d1c19b4a461a6e87a11b0a882be0f8641d6c4284c59e697a4c9dcd53f72",
+      "start_line": 275
+    },
+    {
+      "bytes": 7127,
+      "end_line": 506,
+      "id": "S6",
+      "lf": 139,
+      "name": "CCM_Q15_VAUGHAN_JOINT_BUDGET.md",
+      "sha256": "1e13f0487d1a3362817e34112c11953a7296c18bd3500b31995aa221d540bf41",
+      "start_line": 368
+    },
+    {
+      "bytes": 10197,
+      "end_line": 700,
+      "id": "S7",
+      "lf": 190,
+      "name": "CCM_Q20_SELBERG_PAIR_ATTEMPT.md",
+      "sha256": "4e4ea8dd3107c7ce9bd1e3d829bc46dfc3406b2f61153bf06a33bd69e3cd977f",
+      "start_line": 511
+    },
+    {
+      "bytes": 3118,
+      "end_line": 761,
+      "id": "S8",
+      "lf": 57,
+      "name": "CCM_POST_Q42_MULTISCALE_SCREEN.md",
+      "sha256": "4cb686fe44063d054d1a872b730a36270e200a75be16f63b8868dfa833d871bb",
+      "start_line": 705
+    },
+    {
+      "bytes": 3775,
+      "end_line": 827,
+      "id": "S9",
+      "lf": 62,
+      "name": "CCM_Q49_CONCLUSION.md",
+      "sha256": "9ae098f310c8a1f82fe425e9f5a5d526614d6458d6918147850bc22e15a0bafe",
+      "start_line": 766
+    },
+    {
+      "bytes": 5138,
+      "end_line": 944,
+      "id": "S10",
+      "lf": 113,
+      "name": "CCM_COFINAL_MOMENT_BUDGET_2026-10-20.md",
+      "sha256": "7a5589467f088ddfdf7ba2f3fdbf4ce24da1d5108233f68f6d6e991819e824e7",
+      "start_line": 832
+    },
+    {
+      "bytes": 9657,
+      "end_line": 1135,
+      "id": "S11",
+      "lf": 187,
+      "name": "CCM_POST_Q52_INNER_KERNEL_PREFLIGHT.md",
+      "sha256": "262e9a26b34efc7fc9b412be8916fbbaa47e67a847197b4693344d2a21d23e73",
+      "start_line": 949
+    },
+    {
+      "bytes": 4060,
+      "end_line": 1209,
+      "id": "S12",
+      "lf": 70,
+      "name": "CCM_Q55_CONCLUSION.md",
+      "sha256": "e8448afbfa7451e4c25bd621d60e3bf8d412b4c158801033427bf9dd1407a5ee",
+      "start_line": 1140
+    },
+    {
+      "bytes": 6174,
+      "end_line": 1282,
+      "id": "S13",
+      "lf": 69,
+      "name": "CCM_SPARSE_BAND_RECEIVER.md",
+      "sha256": "0effe9636da2d4898f78ab97c4932016c484ef60e6ed0e1be296e0a7d2b18d06",
+      "start_line": 1214
+    },
+    {
+      "bytes": 77096,
+      "end_line": 2491,
+      "id": "S14",
+      "lf": 1205,
+      "name": "PROSHKA_CCM_Q56_PRIME_DILATION_VERDICT_2026-10-27.md",
+      "sha256": "31013fd008dca72c607b7d8c6c8cf803f5656ada048555eecdcbbfb2b265b4b1",
+      "start_line": 1287
+    }
+  ]
+}
