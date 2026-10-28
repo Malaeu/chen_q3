@@ -2,7 +2,11 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-28-PARITYSPLIT · OPEN · prepared, NOT SENT
+## REQ-2026-10-28-PARITYSPLIT · ANSWERED AND CHECKED
+
+- [verdict](proshka/PROSHKA_VERDICT_PARITYSPLIT_2026-10-28.md), [audit with numeric checks](proshka/PARITYSPLIT_AUDIT_2026-10-28.md). G1b KILL_PARTIAL and not needed by the roof; G1a ⟺ strict parity ordering ⟺ odd-resolvent sign f_m(t)<0; R_m<0 on m=2..16. Do not resend.
+
+### (original entry)
 
 - Request: [`proshka/PROSHKA_REQUEST_PARITYSPLIT_2026-10-28.txt`](proshka/PROSHKA_REQUEST_PARITYSPLIT_2026-10-28.txt), base `a3174303`, 186 lines, 10645 bytes, SHA-256 `32cd804506c560d5612692f8e5a58dad4beca01c47fe54b65429239019521aad`.
 - Q1 (main): kill G1b as a theorem shape, a_m > lambda_min(K_m|odd) eventually. Q2: G1a simple even ground state; Theta-graded or not; the cos^2(xi,eta)/lambda_1 symptom.
