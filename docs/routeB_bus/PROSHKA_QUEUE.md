@@ -2,13 +2,10 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-28-THETAGRADE · ANSWERED (header only; attachment missing)
+## REQ-2026-10-28-THETAGRADE · ANSWERED AND CHECKED
 
-- Header: [`proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28_HEADER.md`](proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28_HEADER.md). Q1a/Q1b/Q1iii CONFIRMED_CONDITIONAL; Q1c GAP upper side and endpoint; Q2 UNDECIDED_FIRST_FACT; Q3 SOURCE_VERIFICATION_INCOMPLETE. Do not resend; the full attachment is needed for the audit.
-
-- Request: [`proshka/PROSHKA_REQUEST_THETAGRADE_2026-10-28.txt`](proshka/PROSHKA_REQUEST_THETAGRADE_2026-10-28.txt), base `4a847548`, 214 lines, 12375 bytes, SHA-256 `1ce427d2bbd1d664818fb4b22db1b291acac49e5275672401d7c519b3d0cf72e`.
-- Q1: G3 witness via Hurwitz and SP floor exponent, both Theta-graded given G1 (verification). Q2: is G1 itself Theta-graded (main). Q3: what holds 7/8 in OpenAI qrh78, degree 6 forced or object choice (bounded reading).
-- Delivery: owner-directed new chat, GitHub locators. Not bound through `bind_request.py`: the binder needs an active Codex phase record (`REVIEW_DISPATCH_READY`); October requests used the same owner route.
+- [verdict](proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28.md), [audit and own Q3 extraction](proshka/THETAGRADE_AUDIT_2026-10-28.md). Q1a/b/iii CONFIRMED_CONDITIONAL (Rouché); Q1c GAP; Q2 parity twin KILLED, G1 UNDECIDED, first fact signed D_m vs ||r_m||, delta_m; Q3 done by observer from the pinned source: DEGREE_FROM_OBJECT, 2/3 cap geometry-specific. Do not resend.
+- Candidates for the next batch (Proshka's line): A transform-dual E_m = F_m - T_m directly; B parity-block Schur with D_m, ||r_m||, delta_m and q_m overlap. Proshka asks for the exact parity block decomposition of the literal CCM matrix.
 
 - **Execute Multilinear Source Test 10/10 ANSWERED AND CHECKED; exhausted**: [ответ10](source_observability_2026-09-28/PROSHKA_JOINT_LATTICE_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/JOINT_LATTICE_AUDIT_2026-10-07.md). Exact joint floor pairing returns original prime discrepancy with coefficient one; terminal signed margin unchanged. Q9 proper-power tail retained; scalar sign/SP/RH OPEN. No new chat selected.
 

@@ -1,7 +1,7 @@
 # THETAGRADE verdict — header only (2026-10-28)
 
-The owner pasted the result header into the Linux chat. The full attachment
-PROSHKA_VERDICT_THETAGRADE_2026-10-28.md is NOT yet on disk; the content below is the header verbatim.
+The owner pasted the result header first. The full verdict arrived minutes later: `PROSHKA_VERDICT_THETAGRADE_2026-10-28.md`.
+Final scoring and the Q3 extraction: `THETAGRADE_AUDIT_2026-10-28.md`. The table below is the provisional header-only score.
 
 ```
 OPERATIVE_CLASS: RUN_THETAGRADE_DISCRIMINATOR

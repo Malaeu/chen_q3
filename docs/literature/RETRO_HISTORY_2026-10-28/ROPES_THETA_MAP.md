@@ -16,7 +16,7 @@ A rope is **Θ-graded** when its required strength is a function of Θ, so that 
 | hmode, hχ/hθ, G3c | Ferrers mode rate C_n/m; projection tail O(m^-1/4) | PAPER_OWN rev | no (classical analysis) | PAPER_CHAIN:21–23 |
 | G1 | simple, even ground state; cellwise gap δ_j; ‖r_j‖/δ_j → 0; odd-sector floor | OPEN (constant β KILLED) | parity/simplicity: no witness known; the ratio ‖r_j‖/δ_j feeds G3 | PAPER_CHAIN:14–16, 43–62 |
 | G3 tracking | α_m = O(m^-a (log m)^A) | OPEN, "главная стена" | **yes: a > (Θ−1/2)/2** | below |
-| SP floor (active CCM branch) | λ_min(K_m) ≥ −C_η m^η ∀η | OPEN | **yes: exponent = Θ − 1/2** | CHAT_DIGESTS 2026-10-28, answer3 check |
+| SP floor (active CCM branch) | λ_min(K_m) ≥ −C_η m^η ∀η | OPEN | **yes, one side: necessary η ≥ Θ − 1/2 (witness); the upper side is proved only for the MTY and ZF78 abscissas, not for arbitrary Θ, and no endpoint (THETAGRADE Q1c)** | CHAT_DIGESTS 2026-10-28, answer3 check, THETAGRADE |
 | G0, Assembly | same family F, normalization, one theorem | OPEN | no (bookkeeping on graded inputs) | PAPER_CHAIN:13, 26 |
 
 ## Why G3 is Θ-graded (both sides)
@@ -26,7 +26,10 @@ sup_K |F_m − T_m| ≤ C m^{H/2} √log m (α_m + 4 t_m) on compacts K ⊂ {|Im
 Off-real centered zeros sit at |Im z| ≤ Θ − 1/2, so α_m = O(m^-a) with a > (Θ−1/2)/2 gives hconv on a strip that contains them.
 Unconditionally that is a > 1/4; with ZF78 it is a > 3/16 (`DIRECT_Q3_THEOREM_TRANSFER.md` §3).
 
-Left side (witness), observer's derivation from the same inequality, NOT checked by Proshka:
+Left side (witness): CONFIRMED_CONDITIONAL by Proshka, THETAGRADE Q1a/Q1b/Q1iii (`../../routeB_bus/proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28.md`),
+with a Rouché disc instead of plain Hurwitz and the extra hypotheses: cofinal G1 instance, matched-port center floor, same-family crosswalk.
+Any proved rate a > 0 gives the zero-free strip 1/2 < Re s < 1/2 + 2a; any route to tracking on an open strip of width H gives a zero-free strip of width H.
+Observer's original derivation:
 suppose Ξ has a zero z0 with |Im z0| = δ' > 0. The F_m have only real zeros (G2) and T_m → Ξ (G4).
 By Hurwitz, F_m cannot converge to Ξ uniformly on a small disc around z0, so sup_K |F_m − T_m| does not tend to 0 for K ∋ z0.
 For every H > δ' this forces m^{H/2} √log m (α_m + 4 t_m) ≥ c > 0 along a subsequence, i.e. α_m ≳ m^{−H/2}/√log m infinitely often.
@@ -34,8 +37,10 @@ So the achievable tracking exponent is at most (Θ − 1/2)/2 whenever RH fails.
 
 ## Consequence
 
-Every open rope that carries load is Θ-graded: SP floor (Θ − 1/2) and G3 tracking ((Θ − 1/2)/2).
-Proving either at its RH value is proving Θ = 1/2. This is why many routes ended in "if this is proved, it is RH"
+Every open rope that carries load is Θ-graded: SP floor (necessary exponent ≥ Θ − 1/2) and G3 tracking (any rate a > 0 is a zero-free strip of width 2a, given G1).
+Proving either at its RH value is proving Θ = 1/2.
+THETAGRADE (2026-10-28) killed the observer's "parity twin" witness for G1: ⟨v,Kv⟩ = ⟨v+,Kv+⟩ + ⟨v−,Kv−⟩, so one negative witness makes only one sector negative.
+G1 stays UNDECIDED; first fact: the signed sector gap D_m = λ_min(K_m|odd) − λ_min(K_m|even) against ‖r_m‖ and δ_m on the original schedule. This is why many routes ended in "if this is proved, it is RH"
 (28 RH_EQUIVALENT_FOUND rows in `RESULT.md`).
 External input can tighten these ropes only by moving Θ. ZF78 moved them by exactly its gain: floor 1/2 → 3/8, tracking 1/4 → 3/16.
 G1 is the open rope that is not known to be Θ-graded. External mathematics (total positivity, oscillation theory, prolate asymptotics) can serve it,
