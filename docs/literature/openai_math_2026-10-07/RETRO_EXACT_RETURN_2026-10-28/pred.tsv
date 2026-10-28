@@ -1,0 +1,73 @@
+key	A	B	PRED	PREDICTED_OUTCOME	evidence_quote
+ACTUAL_JOINT_DISPERSION_Q10	YES	NO	P0	SHAPE_KILL	Desired one-sided full CF21 is R09<=H U^(-eta+epsilon)(1+T1)^A
+ACTUAL_PRIME_LAYER_Q02	UNCLEAR	NO	P0	REMAINDER_ONLY	Return quantitatively through SB38 to original MB34 and compare with CF22.
+CCM_ACTUAL_MOBIUS_JOINT_Q01	YES	NO	P0	SHAPE_KILL	Требуется верхняя оценка полной
+CCM_CONSTRAINED_DENSITY_Q09	YES	NO	P0	SHAPE_KILL	использовать действительные Lambda=mu*log для верхней оценки int b_m rho
+CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11	YES	NO	P0	SHAPE_KILL	исследуй количественный перенос именно MangoldtDivisibilityEnergy.primeForm_le_log
+CCM_FIXED_CELL_BACKTRACK_Q07	YES	NO	P0	REMAINDER_ONLY	попробуй получить новую одностороннюю оценку полной формы в фиксированной ячейке
+CCM_HIGH_ORDER_SIGNED_RETURN_Q10	YES	NO	P0	REMAINDER_ONLY	довести до исходной полной односторонней CCM-оценки
+CCM_JOINT_CORRELATION_Q05	YES	NO	P0	SHAPE_KILL	Попробуй получить количественную одностороннюю оценку СОВМЕСТНОГО агрегата настоящих корреляций Мёбиуса
+CCM_JOINT_POSITIVE_CREDIT_Q04	YES	NO	P0	EXACT_RETURN	Требуется независимо контролировать отрицательную часть относительно двух положительных частей
+CCM_JOINT_SIGNED_ARITHMETIC_Q03	YES	NO	P0	SHAPE_KILL	получить новый количественный one-sided bound для совместного
+CCM_LOCAL_BLOCK_Q08	YES	NO	P0	SHAPE_KILL	СОВМЕСТНОГО верхнего контроля полного Kloc в этих локальных координатах
+CCM_MOMENT_Q01	YES	YES	P1	EXACT_RETURN	Candidate external mechanism is Ramanujan early.tex high-moment lemma.
+CCM_MOMENT_Q02	YES	NO	P0	EXACT_RETURN	execute a source-specific signed estimate on your Q1 correlation (28)/(30)
+CCM_MOMENT_Q03	YES	NO	P0	EXACT_RETURN	execute a source-specific signed estimate for Q2(23), or its weaker full-credit variant
+CCM_MOMENT_Q04	YES	NO	P0	EXACT_RETURN	obtain a source-specific relative-form estimate for the full positive/negative residue increments
+CCM_MOMENT_Q05	YES	NO	P0	REMAINDER_ONLY	execute a source-specific higher-moment calculation for the original full source
+CCM_MOMENT_Q06	YES	NO	P0	EXACT_RETURN	execute a source-specific one-sided estimate for the ACTUAL long arithmetic source
+CCM_MOMENT_Q07	YES	NO	P0	EXACT_RETURN	obtain a genuinely new bound on the actual one-sided long moment or the equivalent negative-density pairing
+CCM_MOMENT_Q08	YES	UNCLEAR	P0	REMAINDER_ONLY	execute a source-specific signed spectral estimate using the attached exact Ramanujan decomposition BEFORE taking norms
+CCM_MOMENT_Q09	YES	NO	P0	REMAINDER_ONLY	obtain an actual quantitative source-specific signed lower estimate for the ORIGINAL finite-band composite operator
+CCM_MOMENT_Q10	YES	NO	P0	SHAPE_KILL	execute a source-specific ONE-SIDED estimate of the actual joint long-divisor matrix
+CCM_RECIPROCAL_ERROR_Q02	YES	NO	P0	REMAINDER_ONLY	ПОЛНУЮ цену возврата в one-sided T_{>R}
+CCM_SPARSE_SIGNED_DRIFT_Q06	YES	NO	P0	SHAPE_KILL	Выведи совместный signed drift для полной исходной формы
+CENTERED_GAUSS_Q09	YES	NO	P0	REMAINDER_ONLY	attempt the exact remaining small-gcd top-scale signed correlation Q8(24)/(32) by a JOINT, centered Gauss second-moment return
+COEFFICIENT_JOINT_REFLECTION_Q09	YES	NO	P0	EXACT_RETURN	obtain a new quantitative estimate for the ACTUAL complete signed QC18=JP20
+DIRECT_SHIFT_Q01	YES	YES	P1	EXACT_RETURN	use the externally stated zero-free half-plane Re(s)>7/8 as an explicitly CONDITIONAL premise
+EULER_MELLIN_Q10	YES	NO	P0	EXACT_RETURN	actually attempt a coefficient-sensitive JOINT estimate of the full real Mellin integral
+FULL_COMPLETED_PAIRING_Q06	YES	NO	P0	EXACT_RETURN	Derive and estimate a genuinely joint signed correlation for the exact FULL completed pairing
+FULL_CUSP_PAIR_Q07	YES	NO	P0	EXACT_RETURN	Obtain a genuine complete exponent improvement over CF22 with all returns paid
+GROWTH_ANSWER1	YES	NO	P0	SHAPE_KILL	Look for a source-specific cancellation or a factorization/semiboundedness mechanism
+GROWTH_ANSWER10	YES	NO	P0	REMAINDER_ONLY	remaining source pairing that can actually improve the full Schur/bottom bound
+GROWTH_ANSWER2	YES	NO	P0	SHAPE_KILL	derive a quantitative UPPER FORM estimate for this actual source-defined D against D_arch
+GROWTH_ANSWER3	YES	NO	P0	SHAPE_KILL	advance the FULL source-specific joint inequality
+GROWTH_ANSWER4	UNCLEAR	UNCLEAR	P0	SHAPE_KILL	Bolotnikov–Kheifets, Boundary Nevanlinna–Pick interpolation problems for generalized Schur functions
+GROWTH_ANSWER5	YES	NO	P0	SHAPE_KILL	estimate the ACTUAL exceptional Schur form (34) from its source rows
+GROWTH_ANSWER7	YES	NO	P0	SHAPE_KILL	pay the surviving neighbor/cross-band contribution against the actual diagonal slack and regular Schur correction
+GROWTH_ANSWER8	YES	NO	P0	SHAPE_KILL	We need a SIGNED ESTIMATE now
+GROWTH_ANSWER9	YES	NO	P0	SHAPE_KILL	The result should be a new proved source-specific estimate that advances the signed pairing
+GROWTH_ROLLOVER_Q1	YES	NO	P0	SHAPE_KILL	Execute the multilinear source test with the actual J_r, compensator, all Möbius-weighted sectors and full Schur transfer retained.
+GROWTH_ROLLOVER_Q10	YES	NO	P0	EXACT_RETURN	genuinely new source-specific ONE-SIDED estimate of F(t) sufficient for late Psi=B-F>=0
+GROWTH_ROLLOVER_Q2	YES	NO	P0	EXACT_RETURN	Work on the entire signed product with the original a-flux and continuous compensator before any norm.
+GROWTH_ROLLOVER_Q3	NO	NO	P0	EXACT_RETURN	Execute your selected next test on the COMPLETE Eq8 together with Theta in Eq7.
+GROWTH_ROLLOVER_Q4	NO	NO	P0	EXACT_RETURN	Execute your selected second transform on the COMPLETE first-transform result
+GROWTH_ROLLOVER_Q5	NO	NO	P0	EXACT_RETURN	Execute the selected COMPLETE hyperbolic aspect-integral test
+GROWTH_ROLLOVER_Q6	UNCLEAR	NO	P0	SHAPE_KILL	Your proposed actual-source moment test is now selected.
+GROWTH_ROLLOVER_Q7	UNCLEAR	NO	P0	SHAPE_KILL	Execute your selected displacement test now.
+GROWTH_ROLLOVER_Q8	YES	NO	P0	SHAPE_KILL	can actual prime-power structure, an explicit-formula cancellation, or a source-verified theorem control the signed aggregate
+GROWTH_ROLLOVER_Q9	YES	NO	P0	SHAPE_KILL	give a source-specific lower estimate for the actual Q8 drift
+JOINT_CONTRACTION_Q05	UNCLEAR	NO	P0	REMAINDER_ONLY	perform a genuinely joint signed contraction of this actual long-divisor expression
+JOINT_LOW_PROBE_Q01	UNCLEAR	NO	P0	REMAINDER_ONLY	work on the ACTUAL A_m B_m joint sum in eq:low-separated
+JOINT_PRODUCT_PAIR_Q07	YES	NO	P0	SHAPE_KILL	attempt a genuinely coefficient-sensitive JOINT upper estimate for the actual product-regrouped MB29
+JOINT_REMAINDER_Q02	YES	NO	P0	SHAPE_KILL	execute a source-specific joint c,s transformation/estimate of N_eta
+MIXED_BOUNDARY_ROLLOVER_Q01	YES	NO	P0	REMAINDER_ONLY	attempt the actual signed short-prefix estimate Q10(18)
+MIXED_CORRECTOR_OWNER_FOLLOWUP_DOM	UNCLEAR	NO	P0	SHAPE_KILL	Ок строим смешанный корректор, у которого остаток действительно положителен в нужном бюджете
+MIXED_PRIME_CORRECTOR_Q06	YES	NO	P0	SHAPE_KILL	attempt a proved quantitative one-sided bound on the full family
+MOBIUS_FOURTH_ROLLOVER_Q02	UNCLEAR	NO	P0	REMAINDER_ONLY	attempt a quantitative fourth-moment estimate for the ACTUAL inverse Mobius polynomial M_v
+MOBIUS_JOINT_Q04	YES	NO	P0	EXACT_RETURN	execute a source-specific joint estimate for the ORIGINAL Mobius moment E_M
+OWNER_EULER_INTERLUDE_Q06_DOM	NO	NO	P0	EXACT_RETURN	И его можно вывести именно из наблюдений Эйлера, Рахмаджуна
+OWNER_OPERATOR_Q07	UNCLEAR	NO	P0	EXACT_RETURN	искать нужно оператор, который заставляет настоящие коэффициенты сокращаться совместно
+PERTURBED_SOURCE_Q07	NO	NO	P0	SHAPE_KILL	adversarially check the attached COMPLETE conditional parameter perturbation
+POOR_FREQUENCY_JOINT_Q08	YES	NO	P0	SHAPE_KILL	derive a genuinely joint quantitative upper estimate for the ACTUAL signed poor-frequency term JP.20
+QUADRATIC_LABELS_Q05	YES	NO	P0	EXACT_RETURN	execute a joint coefficient-sensitive estimate for the original MB34
+RATIONAL_HIGH_VALUES_Q05	UNCLEAR	NO	P0	REMAINDER_ONLY	attempt a genuine quantitative upper bound for the actual rational high-value functional below
+SHORT_BOX_ROLLOVER_Q01	YES	NO	P0	EXACT_RETURN	obtain a coefficient-sensitive full joint second-moment gain for the actual short-box sums below
+SIGNED_CORRELATION_Q03	UNCLEAR	NO	P0	EXACT_RETURN	exploit the actual signed Mobius-weighted joint correlation in Q2(9) before separating its two character polynomials
+SIGNED_CUBIC_PAIR_Q08	YES	NO	P0	SHAPE_KILL	Execute a source-coefficient-sensitive estimate of the full original one-sided high-poor CP34=QL49/SG27
+SIGNED_DUAL_Q04	UNCLEAR	YES	P0	EXACT_RETURN	Its Theorem1.1 is an unconditional LOWER bound for a cubic large-sieve operator
+SIGNED_INCIDENCE_Q03	YES	NO	P0	REMAINDER_ONLY	execute a coefficient-sensitive bound for the FULL signed PLQ24 functional C_Y
+SIGNED_REFLECTED_GCD_Q06	YES	NO	P0	EXACT_RETURN	execute an actual coefficient-sensitive joint estimate for the remaining original high-poor CF20 QL48–49
+SPARSE_HIGH_VALUES_ROLLOVER_Q03	UNCLEAR	NO	P0	REMAINDER_ONLY	attempt the actual sparse high-value excess MF38
+SPARSE_INVERSE_Q08	UNCLEAR	NO	P0	REMAINDER_ONLY	attack your Q7(44) actual inverse second-moment improvement near critical r=1.1234
+UNIT_INVARIANT_HIGH_VALUES_Q04	UNCLEAR	NO	P0	REMAINDER_ONLY	derive a quantitative bound for the actual remaining joint high values

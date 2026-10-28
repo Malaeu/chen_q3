@@ -1,0 +1,73 @@
+key	OUTCOME	GAIN_TARGET	evidence_quote	source_file
+ACTUAL_JOINT_DISPERSION_Q10	REMAINDER_ONLY		Q10: complete translation mean paid; actual shifted correlation open	ACTUAL_JOINT_DISPERSION_Q10.md
+ACTUAL_PRIME_LAYER_Q02	REMAINDER_ONLY		Actual prime-layer Q2: paid projection and trace, full covariance open	ACTUAL_PRIME_LAYER_Q02.md
+CCM_ACTUAL_MOBIUS_JOINT_Q01	REMAINDER_ONLY		NEW_STRICTLY_BETTER_COMPLETE_EXPONENT: NOT_OBTAINED	CCM_ACTUAL_MOBIUS_JOINT_Q01.md
+CCM_CONSTRAINED_DENSITY_Q09	SHAPE_KILL		SCOPED_KILL_SCOPE: THEOREM_SHAPE	CCM_CONSTRAINED_DENSITY_Q09.md
+CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11	SHAPE_KILL		SCOPED_OBSTRUCTION: Constant-profile translation-orbit lifts with the specified diagonal-cap and absolute coefficient-return budget	CCM_DIVISIBILITY_ENERGY_TRANSFER_Q11.md
+CCM_FIXED_CELL_BACKTRACK_Q07	SHAPE_KILL		SCOPED_KILL_SCOPE: THEOREM_SHAPE	CCM_FIXED_CELL_BACKTRACK_Q07.md
+CCM_HIGH_ORDER_SIGNED_RETURN_Q10	REMAINDER_ONLY		COMPLETE_GEOMETRIC_ENDPOINT_RETURN_PAID_STRONG_INCREMENT_ARITHMETIC_NOT_SUPPLIED	CCM_HIGH_ORDER_SIGNED_RETURN_Q10.md
+CCM_JOINT_CORRELATION_Q05	SHAPE_KILL		Only the claimed automatic logarithmic-to-power transfer; new variation lemma is auxiliary	CCM_JOINT_CORRELATION_Q05.md
+CCM_JOINT_POSITIVE_CREDIT_Q04	SHAPE_KILL		PROGRESS_CLASS: FALSIFICATION_PROGRESS	CCM_JOINT_POSITIVE_CREDIT_Q04.md
+CCM_JOINT_SIGNED_ARITHMETIC_Q03	MAIN_GAIN	BORDERLINE: conditional (ZF78) restricted floor P K_m P >= -E_a, E_a=O(m^(3/8) log(5+2piM/log m)); log-factor refinement only, power 3/8 unchanged	NEW_QUANTITATIVE_SCOPE: COMPLETE_FIXED_STRIP_LOGARITHMIC_PRICE_ONLY	CCM_JOINT_SIGNED_ARITHMETIC_Q03.md
+CCM_LOCAL_BLOCK_Q08	SHAPE_KILL		This falsifies only free coefficient-order -> Loewner-order transfer.	CCM_LOCAL_BLOCK_Q08.md
+CCM_MOMENT_Q01	REMAINDER_ONLY		This pays only background drift; Omega is not bounded at the target scale.	CCM_MOMENT_Q01.md
+CCM_MOMENT_Q02	REMAINDER_ONLY		Acceptance pays only a summable	CCM_MOMENT_Q02.md
+CCM_MOMENT_Q03	REMAINDER_ONLY		Acceptance pays only the omitted-zero tail.	CCM_MOMENT_Q03.md
+CCM_MOMENT_Q04	REMAINDER_ONLY		RH/SP and the full signed drift remain OPEN.	CCM_MOMENT_Q04.md
+CCM_MOMENT_Q05	REMAINDER_ONLY		The paid exponent3/2 is NOT a full moment exponent.	CCM_MOMENT_Q05.md
+CCM_MOMENT_Q06	SHAPE_KILL		This rejects ONLY that unsigned theorem shape.	CCM_MOMENT_Q06.md
+CCM_MOMENT_Q07	SHAPE_KILL		CCM moment Q7 — actual projected atomic budget rejected	CCM_MOMENT_Q07.md
+CCM_MOMENT_Q08	REMAINDER_ONLY		This improves the previous alpha+4beta price for the JOINT return, not a separate spectral floor.	CCM_MOMENT_Q08.md
+CCM_MOMENT_Q09	SHAPE_KILL		This rejects ONLY separate negative-frequency payment.	CCM_MOMENT_Q09.md
+CCM_MOMENT_Q10	MAIN_GAIN	BORDERLINE: conditional (zeta zeros Re<=7/8) endpoint bound T_gtR<=(4B_m+bsmall)P-2H_P, B_m=O(m^(3/8) L^2 log 3L): replaces O_eta(m^(3/8+eta)) by explicit log fee; no smaller power	The result improves the explicitly recorded O_eta(m^(3/8+eta)) on the SAME object and domain to an explicit logarithmic endpoint fee.	CCM_MOMENT_Q10.md
+CCM_RECIPROCAL_ERROR_Q02	REMAINDER_ONLY		NEW_COMPLETE_FIXED_EXPONENT_IMPROVEMENT: NONE	CCM_RECIPROCAL_ERROR_Q02.md
+CCM_SPARSE_SIGNED_DRIFT_Q06	SHAPE_KILL		SCOPED_KILL_SCOPE: THEOREM_SHAPE	CCM_SPARSE_SIGNED_DRIFT_Q06.md
+CENTERED_GAUSS_Q09	EXACT_RETURN		EXACT_JOINT_RETURN_HAS_AN_IDENTITY_BRANCH_NOT_A_CONTRACTION	CENTERED_GAUSS_Q09.md
+COEFFICIENT_JOINT_REFLECTION_Q09	SHAPE_KILL		SCALAR_COMPLETED_REFLECTION_ENTRANCE: STILL_NOT_VALID_AFTER_FUSION	COEFFICIENT_JOINT_REFLECTION_Q09.md
+DIRECT_SHIFT_Q01	EXACT_RETURN		Exact recombination retains the same integrated arithmetic discrepancy with coefficient1	DIRECT_SHIFT_Q01.md
+EULER_MELLIN_Q10	REMAINDER_ONLY		JOINT_TWO_COLUMN_EULER_TAIL_PAID_BUT_SHORT_SIGNED_PREFIX_UNPAID	EULER_MELLIN_Q10.md
+FULL_COMPLETED_PAIRING_Q06	REMAINDER_ONLY		selfdual branch остаётся, full gain OPEN	GROWTH_SUMMARY_NEXT.md
+FULL_CUSP_PAIR_Q07	EXACT_RETURN		Full completion inversion still returns the original pair with coefficient1.	FULL_CUSP_PAIR_Q07.md
+GROWTH_ANSWER1	SHAPE_KILL		carrier-wide subpolynomial inverse comparison KILLED при eta<1	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ANSWER10	REMAINDER_ONLY		wheel/powers-of-two оплачены; weighted even-shift aggregate STALLED	GROWTH_SUMMARY_NEXT.md
+GROWTH_ANSWER2	SHAPE_KILL		перенос D_F≤D_Z+a0 D_arch+C m^eta KILLED при eta<1/2 на каждой поздней ячейке	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ANSWER3	MAIN_GAIN	full floor improved by any power of log: -cA-C sqrt(m)L^3 exp(-.001(L/log L)^(1/3)); exponent 1/2-o(1) unchanged, not SP	Это выигрыш любой степени log, но exponent 1/2−o(1), не SP.	GROWTH_SUMMARY_NEXT.md
+GROWTH_ANSWER4	REMAINDER_ONLY		Это spectral count, не bottom floor.	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ANSWER5	REMAINDER_ONLY		полный high-zero tail при T=mL² имеет norm≤3e6/sqrtL; старый jet-majorant убит	GROWTH_SUMMARY_NEXT.md
+GROWTH_ANSWER7	SHAPE_KILL		blind packet gluing убит; доказана отрицательная дальняя корреляция actual arithmetic packets	GROWTH_SUMMARY_NEXT.md
+GROWTH_ANSWER8	REMAINDER_ONLY		Type-I часть оплачена; остаток O(m^1/4 polylog) — не floor	GROWTH_SUMMARY_NEXT.md
+GROWTH_ANSWER9	REMAINDER_ONLY		centered long-alpha component оплачена O(m^5/12 polylog); short-alpha/long-prime OPEN	GROWTH_SUMMARY_NEXT.md
+GROWTH_ROLLOVER_Q1	REMAINDER_ONLY		exact long-free collapse и whole-carrier quadrature оплачены	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q10	EXACT_RETURN		Q10 joint recombination точно возвращает исходную prime discrepancy; нового знака нет.	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q2	EXACT_RETURN		finite inversion/Euler возвращает исходный prime-power остаток с coefficient1	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q3	REMAINDER_ONLY		endpoint-resummed infinite alias tail paid O(h_U L/sqrt m) в carrier norm	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q4	REMAINDER_ONLY		второй analytic tail paid 2^24/m^5	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q5	REMAINDER_ONLY		continuous top-block o(1), не full sign	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q6	REMAINDER_ONLY		Norm-envelope moment route STALLED на прежнем1/2-o(1) exponent	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q7	REMAINDER_ONLY		Displacement STALLED, не новый exponent.	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+GROWTH_ROLLOVER_Q8	REMAINDER_ONLY		весь convexity-loss tail ≤(18logQ+24)/sqrtQ; signed prime drift OPEN	GROWTH_SUMMARY_NEXT.md
+GROWTH_ROLLOVER_Q9	SHAPE_KILL		Q9 local restoring-force attempt STALLED	GROWTH_SUMMARY_PAPER_CHAIN_KILLED.md
+JOINT_CONTRACTION_Q05	REMAINDER_ONLY		Q05 — full joint Fourier transfer, no arithmetic power gain	JOINT_CONTRACTION_Q05.md
+JOINT_LOW_PROBE_Q01	REMAINDER_ONLY		This is NOT the Poisson u=1 row and does not improve the full low exponent.	JOINT_LOW_PROBE_Q01.md
+JOINT_PRODUCT_PAIR_Q07	REMAINDER_ONLY		No full inverse/high exponent is gained.	JOINT_PRODUCT_PAIR_Q07.md
+JOINT_REMAINDER_Q02	REMAINDER_ONLY		No such bound proved; the source full low bound does not automatically bound this cut block.	JOINT_REMAINDER_Q02.md
+MIXED_BOUNDARY_ROLLOVER_Q01	REMAINDER_ONLY		ACTUAL_AGU_MIXED_BOUNDARY_RETURNS_MINUS_SPARSE_ENERGY_WITH_PAID_ERROR	MIXED_BOUNDARY_ROLLOVER_Q01.md
+MIXED_CORRECTOR_OWNER_FOLLOWUP_DOM	SHAPE_KILL		Thus this entire two-scalar class fails as a universal profile-family	MIXED_CORRECTOR_OWNER_FOLLOWUP_DOM.md
+MIXED_PRIME_CORRECTOR_Q06	SHAPE_KILL		KILL_SCOPE: THEOREM_SHAPE	MIXED_PRIME_CORRECTOR_Q06.md
+MOBIUS_FOURTH_ROLLOVER_Q02	SHAPE_KILL		ACTUAL_CENTERED_DIAGONAL_POWER_SAVING: REFUTED_THEOREM_SHAPE_ONLY	MOBIUS_FOURTH_ROLLOVER_Q02.md
+MOBIUS_JOINT_Q04	SHAPE_KILL		Automatic pole erasure by centering/diagonal subtraction is rejected in the precise MQ29–34 form.	MOBIUS_JOINT_Q04.md
+OWNER_EULER_INTERLUDE_Q06_DOM	EXACT_RETURN		The new two-channel notation returns the old short/long equivalence	OWNER_EULER_INTERLUDE_Q06_DOM.md
+OWNER_OPERATOR_Q07	EXACT_RETURN		Owner operator follow-up: exact annihilation, unchanged energy	OWNER_OPERATOR_Q07.md
+PERTURBED_SOURCE_Q07	MAIN_GAIN	BORDERLINE: conditional on unverified analytic premises, beta_* <= 349999/400000 = 0.8749975 (just below 7/8, margin ~2.5e-6); not unconditional	CONDITIONAL_ENDPOINT: 349999/400000	PERTURBED_SOURCE_Q07.md
+POOR_FREQUENCY_JOINT_Q08	EXACT_RETURN		FIRST_UNPAID_SIGNED_TERM: QC_18_EQUALS_ORIGINAL_JP20	POOR_FREQUENCY_JOINT_Q08.md
+QUADRATIC_LABELS_Q05	REMAINDER_ONLY		cube relabelling alone has no full gain	QUADRATIC_LABELS_Q05.md
+RATIONAL_HIGH_VALUES_Q05	SHAPE_KILL		THEOREM_SHAPE: SCALAR_COMPLETE_MONOTONICITY_AUTOMATICALLY_GIVES_ARITHMETIC_CONVOLUTION_POSITIVITY	RATIONAL_HIGH_VALUES_Q05.md
+SHORT_BOX_ROLLOVER_Q01	REMAINDER_ONLY		Short-box rollover Q1: Type-I and cross paid, distinct cores open	SHORT_BOX_ROLLOVER_Q01.md
+SIGNED_CORRELATION_Q03	SHAPE_KILL		Signed incidence Q3: complete logarithmic attempt does not improve CF22	SIGNED_CORRELATION_Q03.md
+SIGNED_CUBIC_PAIR_Q08	SHAPE_KILL		SC28–29 rule out a power saving from the optional-cube product alone	SIGNED_CUBIC_PAIR_Q08.md
+SIGNED_DUAL_Q04	REMAINDER_ONLY		Fullsource-reportedlow3/16 unchanged	SIGNED_DUAL_Q04.md
+SIGNED_INCIDENCE_Q03	SHAPE_KILL		Signed incidence Q3: complete logarithmic attempt does not improve CF22	SIGNED_INCIDENCE_Q03.md
+SIGNED_REFLECTED_GCD_Q06	SHAPE_KILL		the exact kernel is−1; free product would be0. This is a coefficient-level counterexample only.	SIGNED_REFLECTED_GCD_Q06.md
+SPARSE_HIGH_VALUES_ROLLOVER_Q03	REMAINDER_ONLY		FULL_CONSUMER_PROGRESS: NO_NEW_POWER_GAIN	SPARSE_HIGH_VALUES_ROLLOVER_Q03.md
+SPARSE_INVERSE_Q08	REMAINDER_ONLY		LARGE_COLUMN_GCD_AND_SMALL_SCALE_RETURNS_PAID_CONDITIONALLY	SPARSE_INVERSE_Q08.md
+UNIT_INVARIANT_HIGH_VALUES_Q04	SHAPE_KILL		THEOREM_SHAPE: UNIT_INVARIANCE_ALONE_ALLOWS_FREE_RADIAL_UPPER_REPLACEMENT	UNIT_INVARIANT_HIGH_VALUES_Q04.md
