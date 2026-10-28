@@ -1,0 +1,214 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-28-THETAGRADE
+BOUNDARY_ID: GOAL058_ROPES_THETA_GRADING
+DATE: 2026-10-28
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 4a847548e3ee45b2f8a548349110ceb437abe3a4
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: owner-directed new chat; GitHub locators pinned to SOURCE_BASE_COMMIT
+
+Proshka, this is a new isolated batch of three linked questions. It is not a
+continuation of any earlier chat. Read the shelf files at the pinned commit.
+
+0. WHY THIS BATCH
+
+A retrospective over 557 rounds (January to 22.10) found one repeated ending:
+"if this step is proved, it is RH". The observer's map
+(ROPES_THETA_MAP.md) explains it by one quantity.
+
+  Theta := sup Re rho over nontrivial zeros of zeta.  RH <=> Theta = 1/2.
+
+Coordinates: centered z with s = 1/2 - i z, so a zero beta + i gamma sits at
+Im z = beta - 1/2.  The Goal058 roof (Hurwitz, LEAN) consumes one family F_m
+with real zeros (G2), entire (hentire) and F_m -> Xi locally uniformly (hconv).
+
+Map at the base commit (PAPER_CHAIN.md:11-26, ROPES_THETA_MAP.md:10-20):
+  closed and not Theta-dependent: G5 roof, hentire, G2/G2b, G4, hmode, G3c;
+  open and Theta-graded (observer's claim): SP floor (exponent Theta - 1/2)
+  and G3 tracking (rate a > (Theta - 1/2)/2);
+  open and not known to be Theta-graded: G1 (simple ground state, parity,
+  cellwise gap, odd-sector floor).
+
+The three questions test this map. Q1 checks that both open load-bearing
+ropes are Theta-graded, given G1. Q2 asks whether G1 itself is Theta-graded.
+Q3 checks the only external Theta-mover found (OpenAI zeta 7/8).
+
+1. SHELF (sha256 prefix 16 at SOURCE_BASE_COMMIT)
+
+Base URL: https://github.com/Malaeu/chen_q3/blob/4a847548e3ee45b2f8a548349110ceb437abe3a4/
+  110f90977d229fac docs/literature/RETRO_HISTORY_2026-10-28/ROPES_THETA_MAP.md
+  6957bf30c06b988b docs/Codex/PAPER_CHAIN.md
+  7a8863d75bac4ea0 docs/Codex/NEXT.md                         (lines 55-63)
+  b01d145b3ad3e83c docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md
+  4d0e59a0606bb415 docs/routeB_bus/source_observability_2026-09-28/CRITICAL_STRIP_PROJECTION_SOURCE_AUDIT_2026-10-06.md (lines 206-242)
+  b817beaa843bbe6e docs/routeB_bus/source_observability_2026-09-28/PROSHKA_JOINT_HILBERT_INLINE_2026-10-06.md (section 2, lines 157-307)
+  d0f87a7527f50ec0 docs/literature/openai_math_2026-10-07/DIRECT_Q3_THEOREM_TRANSFER.md
+  08753f55fafaa044 docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_INDEPENDENT_COMPLEMENT_FLOOR_2026-09-25.md
+  a03d96d34a2c8483 docs/routeB_bus/proshka/PROSHKA_GOAL058_FLOOR_KILL_INDEPENDENT_AUDIT_2026-09-25.md
+  a79c30cdc11cc936 q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean (lines 120-175)
+  9635c0a403fd366d q3.lean.aristotle/Q3/Proofs/RouteB/Goal058DirectGroundZeroEscape.lean (line 27)
+External:
+  CCM, Zeta Spectral Triples, arXiv:2511.22755 (shelf copy docs/routeB_bus/litreview/pdfs/2511.22755.pdf);
+    Thm 5.10 (real zeros from a simple even ground state), Lemma 7.3 (trial -> Xi), section 8 p.32.
+  OpenAI, The Quasi-Riemann Hypothesis, paper.tex, commit adc7f1241b42e322a6451854ab7e4b4c146bf78a,
+    sha256 42a5ee0febca59fd1def55cfd6c6808c322ef4237d7726303ea52f711deac6a3:
+    https://github.com/openai/math/blob/adc7f1241b42e322a6451854ab7e4b4c146bf78a/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026/build/paper.tex
+    The manuscript itself is NOT verified by us. Treat it as a source to read, not as a theorem.
+
+Key displayed facts (copied; check them against the shelf):
+  (T3)  sup_K |F_m - T_m| <= C m^(H/2) sqrt(log m) (alpha_m + 4 t_m),
+        K compact in |Im z| <= H, alpha_m = ||(I - P0) qhat_m||, P0 = projector
+        onto a SIMPLE ground state of the same K_m, t_m = E_m/Z_m superpolynomially
+        small under (T5).  Source: SOURCE_TRANSFER.md (T1)-(T6), audit 206-242.
+  G2 in Lean: ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized
+        needs a bottom eigenvector xi, a simple eigenspace, and eta . xi = 1.
+        Evenness follows from simplicity plus eta . xi != 0 (reflection gives c = 1).
+  SP lower witness (NEXT.md:60-61): a zero 1/2 + delta + i gamma, delta > 0, gives
+        lambda_min(K_m) <= -c m^delta / (log m)^(2 delta) on every late cell.
+  SP upper side (answer3, JOINT_HILBERT section 2): contour shift inside the MTY
+        zero-free region gives the floor; with ZF78 the exponent is 3/8.
+
+2. KILLED - do not propose again without a new invariant
+
+  K1 constant-beta complement floor (25.09): the Weil form vanishes on the plane
+     {G, G''}, Ghat(z) = -4 xi(1/2 - i z); compression gives unit y_j orthogonal
+     to q_j with quotient <= U_j -> 0.  No zero input was used.
+  K2 odd-sector floor on the current source shelf (30.08).
+  K3 positive-definiteness "rank 2 -> 3 nodes -> all dimensions": 4-point PD of
+     K_sigma holds without zeros; the lift to all dimensions is killed by Hudson.
+  K4 change of representation H_mu (Q9/Q10): returns the prime discrepancy with
+     coefficient one; the joint lattice pairing (10/10) likewise.
+  K5 large-sieve swap in qrh78: the sieves of order 2, 3 and higher exist and
+     are cited by the manuscript (lines 131-141); the order 6 is not a sieve choice.
+
+3. Q1 - BOTH OPEN LOAD-BEARING ROPES ARE THETA-GRADED, GIVEN G1 (verification)
+
+Claim Q1a (observer, not checked).  Assume on every late cell: G1 (simple
+bottom eigenspace with eta . xi != 0), hence G2 real zeros by CCM Thm 5.10 /
+the Lean theorem above; G4; G3c; hmode/hchi; (T5).  Suppose zeta has a zero
+with Re = 1/2 + delta', delta' > 0.  Then F_m cannot converge to Xi uniformly
+on any small disc around the centered zero z0 (Hurwitz, F_m real-rooted).
+Since T_m -> Xi there, sup_K |F_m - T_m| stays >= c > 0 for all large m, for
+every compact K containing that disc.  By (T3), for every H > delta',
+  alpha_m >= c' m^(-H/2) (log m)^(-1/2) - 4 t_m  for all large m.
+So no rate alpha_m = O(m^(-a)) with a > delta'/2 holds.
+
+Claim Q1b (corollary).  Under the same hypotheses, ANY proved rate
+alpha_m = O(m^(-a) (log m)^A) with a > 0 gives a zero-free strip
+1/2 < Re s < 1/2 + 2a.  With ZF78 (Theta <= 7/8), a > 3/16 gives RH.
+So every positive tracking rate is a quasi-RH strip next to the line.
+
+Claim Q1c.  The SP floor exponent is exactly Theta - 1/2 from both sides for
+an arbitrary zero-free abscissa Theta (upper side: answer3 contour shift;
+lower side: NEXT.md:60-61).  Answer3 was proved for the MTY region; the
+observer generalized it without a check.
+
+Tasks:
+  (i)  Check Q1a, Q1b, Q1c.  List every hypothesis each one spends.
+  (ii) The only places Q1a can break are the hypotheses of (T3)/(T5), G2 and
+       G4.  Name the first one that fails, if any, on the literal family.
+  (iii) Q1a does not use the vector norm in an essential way: Hurwitz acts on
+       F_m directly.  Confirm or refute: tracking on |Im z| < H by ANY route
+       (transform cancellations included) gives a zero-free strip of width H.
+Result codes: WITNESS_CONFIRMED_CONDITIONAL | WITNESS_GAP(first failing
+hypothesis, exact) | WITNESS_REFUTED(explicit family or counterexample).
+
+4. Q2 - IS G1 ITSELF THETA-GRADED? (the main question)
+
+Object: the literal carrier of PAPER_CHAIN.md G1 block: K_j =
+sourceCCMFiniteMatrix i_j, q_j = selected Ferrers row, a_j = Re(q_j* K_j q_j),
+r_j = (K_j - a_j) q_j.  G1 needs, on every late cell: simple bottom
+eigenspace; eta . xi != 0 (even ground state); cellwise gap delta_j > 0 on the
+complement; ||r_j|| / delta_j -> 0; odd-sector floor (hoddEv).
+
+Known: K1 kills a constant floor with no zero input.  So part of G1 already
+fails for a structural reason, not because of Theta.
+
+Observer's candidate witness (probability 0.35): "parity twin".  An off-line
+zero pair at +-z0 makes both the even and the odd sector reach
+lambda <= -c m^delta (NEXT.md:60-61 witness, symmetrized).  If both sector
+minima carry the same leading term, then the even/odd gap closes relative to
+||r_j||, or the ground state flips to odd infinitely often.  Then G1 fails
+whenever RH fails, and G1 is Theta-graded.
+
+Task: decide one of three.
+  (A) THETA_WITNESS: an off-critical zero forces, on infinitely many late
+      cells, one of: a degenerate bottom eigenspace, eta . xi = 0, or
+      ||r_j|| / delta_j not -> 0.  Give the mechanism with exact orders.
+  (B) NOT_GRADED: a named obstruction to every such witness, for example a
+      mechanism that keeps the ground state simple and even for any Theta.
+      Say which part of G1 then remains provable without zero input.
+  (C) UNDECIDED: the first exact fact needed to decide, with objects and orders.
+"This is RH" is not an answer.  G1 is NOT equivalent to RH by itself; do not
+treat the question as RH.
+Result codes: G1_THETA_WITNESS | G1_NOT_GRADED_OBSTRUCTION | G1_UNDECIDED_FIRST_FACT.
+
+5. Q3 - WHAT HOLDS THE 7/8 IN THE OPENAI MANUSCRIPT (bounded reading task)
+
+Observer's reading of paper.tex (line numbers at the pinned commit):
+  continuation criterion, Prop. "Continuation from a common signal", 400-501;
+  normalization C(s) = s + l_x/2 - 1 + h/6, lines 6150, 8641;
+  probe bound Z^(l_x/2 + losses), line 8570 (l_x/2 + b/12);
+  hence sigma0 = 1 - h/6 + losses.  Part I: h = 1/2 gives 11/12 (514, 5563).
+  Part II: h = 13/16, b = 1/8 gives 1 - 13/96 + 1/96 = 7/8 (6860-6866, 8794);
+  geometry h = 1 - l_x + ell (5586), M + ell = 1, l_x > 0, so h < 2 and
+  sigma0 > 2/3 even with no losses.
+  The 6 comes from the cubic theta: indices c n^3, variable character of
+  order 6, frequencies u a^6 (3756-3760), signal when M(1/6) > 0 (3788).
+
+Tasks:
+  (i)  Verify or correct sigma0 = 1 - h/6 + losses and h < 2 from the lines above.
+  (ii) Is the degree 6 forced by the continuation criterion itself, or only by
+       the choice of the cubic theta object?
+  (iii) If only by the object: name the lowest-degree theta object that the
+       criterion admits, and the first loss term that appears for it.
+       Do not construct the new object.  Naming and the first loss suffice.
+Result codes: DEGREE_FORCED_BY_CRITERION | DEGREE_FROM_OBJECT(lowest object,
+first loss) | SOURCE_DISAGREES(line, correct statement).
+
+6. ONE INPUT YOU MAY CHANGE
+
+You may replace the vector-norm route (T3) by any transform-level tracking
+statement.  If you do, say where the difficulty moves.
+
+7. PROHIBITIONS
+
+  No RH-equivalent premise anywhere in a chain.  Equivalence to RH is not
+  circularity; using it as a premise is.
+  "This is RH" is not a result for any question.
+  No unverified relay as a premise; mark RELAY.
+  No Lean, no repository edits, no broad numeric scan, no new chat.
+  Q3 is read-and-verify; no new theta construction.
+
+8. PRE-REGISTERED PREDICTIONS (observer, frozen at this commit)
+
+  P1  Q1a and Q1b confirmed with hypotheses exactly {G1, G2, G4, G3c,
+      hmode/hchi, T5}: 0.80.
+  P1c Q1c confirmed for arbitrary Theta: 0.75.
+  P1t Q1(iii) confirmed (any route): 0.85.
+  P2  Q2 outcome: NOT_GRADED 0.50 · THETA_WITNESS 0.35 · UNDECIDED 0.15.
+  P3  Q3 outcome: DEGREE_FROM_OBJECT 0.70 · DEGREE_FORCED_BY_CRITERION 0.20 ·
+      SOURCE_DISAGREES 0.10.  A lower-degree object with losses smaller than
+      its gain (sigma0 < 2/3 reachable): 0.10.
+
+Directive: per question, the result code, the exact statement proved or
+refuted, the hypotheses spent, and the first unpaid term.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
+
+Return the verdict as an attachment PROSHKA_VERDICT_THETAGRADE_2026-10-28.md.
+RH remains OPEN unless a complete valid chain is supplied; the final claim
+remains with the owner.

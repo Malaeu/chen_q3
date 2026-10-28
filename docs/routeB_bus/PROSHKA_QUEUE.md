@@ -2,6 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-10-28-THETAGRADE · OPEN · prepared, NOT SENT (waits for the owner's word)
+
+- Request: [`proshka/PROSHKA_REQUEST_THETAGRADE_2026-10-28.txt`](proshka/PROSHKA_REQUEST_THETAGRADE_2026-10-28.txt), base `4a847548`, 214 lines, 12375 bytes, SHA-256 `1ce427d2bbd1d664818fb4b22db1b291acac49e5275672401d7c519b3d0cf72e`.
+- Q1: G3 witness via Hurwitz and SP floor exponent, both Theta-graded given G1 (verification). Q2: is G1 itself Theta-graded (main). Q3: what holds 7/8 in OpenAI qrh78, degree 6 forced or object choice (bounded reading).
+- Delivery: owner-directed new chat, GitHub locators. Not bound through `bind_request.py`: the binder needs an active Codex phase record (`REVIEW_DISPATCH_READY`); October requests used the same owner route.
+
 - **Execute Multilinear Source Test 10/10 ANSWERED AND CHECKED; exhausted**: [ответ10](source_observability_2026-09-28/PROSHKA_JOINT_LATTICE_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/JOINT_LATTICE_AUDIT_2026-10-07.md). Exact joint floor pairing returns original prime discrepancy with coefficient one; terminal signed margin unchanged. Q9 proper-power tail retained; scalar sign/SP/RH OPEN. No new chat selected.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.
