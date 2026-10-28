@@ -37,7 +37,9 @@ The 4 rows YES_UNCOND with Z=YES: P02_MarApr-41 (explicit formula), P08_Sep1-25 
 ## Suzuki
 Defect in arXiv 2301.00421v3 p.3 ("For negative t, we set S_t(z) := S_{−t}(z)") makes P̂_{Dψ} ≡ 0 for even ψ, against Thm 1.4 (1.9).
 Found 06.09 (Progress_Log.md:5613, :5632), letter sent 06.09 (Progress_Log.md:5658, paper_weil/ERRATUM_NOTE_SUZUKI_DRAFT.md).
-The reply with thanks is NOT in the repo (SESSION_PROTOKOLL_2026-09-08_LINUX_CLAUDE.md:33: "still unanswered"); owner's word only.
+Reply 2026-09-06 09:37 UTC confirmed the defect ("You are right that a correction is needed") and gave the corrected extension
+P_t(z) := conj(P_{-t}(conj z)) plus a sign fix in (1.5). Full thread (4 messages, to 2026-10-25): paper_weil/SUZUKI_CORRESPONDENCE_2026.md.
+It was in Gmail, not in the repo, until 2026-10-28; SESSION_PROTOKOLL_2026-09-08 "still unanswered" was a mailbox miss.
 
 ## Limits
 Classification is agent judgement; only quote verbatimness is machine-checked. Coverage is sampled (e.g. June: ~466 Step33 rows collapsed to ~38).
