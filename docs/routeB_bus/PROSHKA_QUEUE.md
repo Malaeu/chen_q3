@@ -2,6 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-10-28-PARITYSPLIT · OPEN · prepared, NOT SENT
+
+- Request: [`proshka/PROSHKA_REQUEST_PARITYSPLIT_2026-10-28.txt`](proshka/PROSHKA_REQUEST_PARITYSPLIT_2026-10-28.txt), base `a3174303`, 186 lines, 10645 bytes, SHA-256 `32cd804506c560d5612692f8e5a58dad4beca01c47fe54b65429239019521aad`.
+- Q1 (main): kill G1b as a theorem shape, a_m > lambda_min(K_m|odd) eventually. Q2: G1a simple even ground state; Theta-graded or not; the cos^2(xi,eta)/lambda_1 symptom.
+- Data inline: 15-cell parity table from `thetagrade_2026-10-28/`. Delivery: owner-directed new chat, GitHub locators.
+
 ## REQ-2026-10-28-THETAGRADE · ANSWERED AND CHECKED
 
 - [verdict](proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28.md), [audit and own Q3 extraction](proshka/THETAGRADE_AUDIT_2026-10-28.md). Q1a/b/iii CONFIRMED_CONDITIONAL (Rouché); Q1c GAP; Q2 parity twin KILLED, G1 UNDECIDED, first fact signed D_m vs ||r_m||, delta_m; Q3 done by observer from the pinned source: DEGREE_FROM_OBJECT, 2/3 cap geometry-specific. Do not resend.
