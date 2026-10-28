@@ -2,7 +2,9 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-28-THETAGRADE · OPEN · prepared, NOT SENT (waits for the owner's word)
+## REQ-2026-10-28-THETAGRADE · ANSWERED (header only; attachment missing)
+
+- Header: [`proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28_HEADER.md`](proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28_HEADER.md). Q1a/Q1b/Q1iii CONFIRMED_CONDITIONAL; Q1c GAP upper side and endpoint; Q2 UNDECIDED_FIRST_FACT; Q3 SOURCE_VERIFICATION_INCOMPLETE. Do not resend; the full attachment is needed for the audit.
 
 - Request: [`proshka/PROSHKA_REQUEST_THETAGRADE_2026-10-28.txt`](proshka/PROSHKA_REQUEST_THETAGRADE_2026-10-28.txt), base `4a847548`, 214 lines, 12375 bytes, SHA-256 `1ce427d2bbd1d664818fb4b22db1b291acac49e5275672401d7c519b3d0cf72e`.
 - Q1: G3 witness via Hurwitz and SP floor exponent, both Theta-graded given G1 (verification). Q2: is G1 itself Theta-graded (main). Q3: what holds 7/8 in OpenAI qrh78, degree 6 forced or object choice (bounded reading).
