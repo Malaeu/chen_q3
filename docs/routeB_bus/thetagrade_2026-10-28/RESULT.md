@@ -68,3 +68,21 @@ Reading: the STIELTJES sign pattern is not a feature of the diagonal schedule; i
 two-parameter (lambda, N) family on this grid. w_0 shrinks fast with N and lambda, so a proof
 needs a lower bound for w_0 that is relative (e.g. against the parity gap), not absolute.
 DIAGNOSTIC_NEVER_A_PROOF. Observer prediction "w_0 <= 0 somewhere off-diagonal" (0.15) did not occur.
+
+## After STIELTJES: three cheap bracket probes (2026-10-29), all negative
+
+Goal: a source-defined tau with lambda_min(E) <= tau < mu = lambda_min(O) (Proshka (4.6)-(4.7)), using mu/lambda >= 41.
+
+1. w0 against the parity gap (`residue_dps170.jsonl`, `offdiag_dps100.jsonl`). w0/(mu - lambda) grows only because
+   the energy scale shrinks (dimensional). Scale-free w0/((mu - lambda)/mu): 0.14 (m=2) -> 8.3e-19 (m=16);
+   off-diagonal min 2.9e-24. w0 is not bounded by a relative gap. Observer prediction 0.4 failed.
+2. Theta-Gaussian trial plane span{bs, ds} from `full_center_probe.gaussian_plane` (`trial_vector_probe.py`,
+   `trial_vector_dps80.jsonl`): U/lambda = 1.12, 15.4, 19.3, 110, 1071 on m = 2..6; U < mu holds for m <= 5 and
+   fails at m = 6 (mu/U = 0.34). Observer prediction 0.35 (U within x5) failed.
+3. Previous-cell bottom at fixed lambda^2 (E_N is a principal submatrix of E_N'; Cauchy interlacing, 0 violations):
+   tau = lambda_min(E_N) < mu(N') in only 30/63 pairs; worst tau/lambda(N') = 1.4e9 (N 12 -> 16, lambda^2 = 50).
+
+Reading: lambda_min(E) falls by ~10^2.4 per added mode; cheap explicit even vectors overshoot it by more than the
+mu/lambda margin from m = 6 on. An upper bracket for lambda needs a trial vector close to the true ground state
+(candidate: prolate/PSWF coefficients at bandwidth c = 2 pi m), or Proshka's direct route (12.1).
+DIAGNOSTIC_NEVER_A_PROOF.
