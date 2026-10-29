@@ -2,7 +2,9 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-29-STIELTJES · READY, NOT SENT
+## REQ-2026-10-29-STIELTJES · SENT, AWAITING VERDICT
+
+- Sent by the owner 2026-10-29 ~12:44 CET into a new chat of the Proshka project (manual paste). Delivery line pins the request at commit `87fb6133560e9521876e37fb4cb460b5c09acdd3` (blob `7aadb387`, SHA-256 `fa686400…`), sources at `bac12438`; verdict requested as downloadable `PROSHKA_VERDICT_STIELTJES_2026-10-29.md`. Observer watches `~/Downloads`. Do not resend.
 
 - Follows PARITYSPLIT directive §11. Three questions: Q1 G1a as a sign of positive terms (w_0 > 0 necessary; Abel partial sums W_k > 0 sufficient), Q2 parity alternation of the bottom spectrum, Q3 Theta.
 - Observer facts N1–N5 checked on m=2..16 at dps 120/170 (`thetagrade_2026-10-28/RESULT.md`, last section): residue closed form, f = 1/⟨η,(K−t)⁻¹e₀⟩, weights w_i.
