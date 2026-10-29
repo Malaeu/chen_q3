@@ -97,3 +97,9 @@ mass sin^2 to be below ~mu/||K|| ~ 1e-28, i.e. a trial vector correct to ~14 dig
 Kill reason (with number): an upper bracket for lambda from any source trial vector requires exponentially accurate
 agreement with the ground state; no cheap vector can supply it. Trial-vector route for (4.6)-(4.7) closed.
 Observer prediction 0.3 failed. DIAGNOSTIC_NEVER_A_PROOF.
+
+Follow-up the same day: the E, O, E, O alternation suggested a Gantmacher-Krein mechanism (a centrosymmetric
+oscillation matrix has a simple top eigenvalue with a symmetric vector and alternating parities). Test: all minors of
+K^{-1} and of D K^{-1} D, D = diag((-1)^n), on m = 2, 3, 4 (dps 80). Negative minors: 108/251 and 116/251 (m=2),
+1672/3431 and 1696/3431 (m=3), 24218/48619 and 23530/48619 (m=4). K^{-1} is far from totally positive in mode
+coordinates in either gauge; the theorem does not apply here. Any oscillation mechanism must live in another basis.
