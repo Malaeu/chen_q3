@@ -47,3 +47,24 @@ Tool: `parity_residue_probe.py` (extended), outputs `residue_dps120.jsonl`, `res
 5. Parity pattern of the full spectrum: strict alternation E,O,E,... on m = 2..8, 11, 16; on m = 9, 10, 12..15 the first break is at level ≥ 14 of 2m+1 (top third).
    Eigenvector sign changes (m ≤ 8): over the lower half of the spectrum each level has one sign change fewer than the level below it.
 Status: DIAGNOSTIC_NEVER_A_PROOF. Batch: `../proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt`.
+
+## Off-diagonal probe (2026-10-29, after STIELTJES was sent)
+
+Question: are G1a, w_0 > 0 and all Abel sums W_k > 0 an artefact of our diagonal N = lambda^2 = m?
+`offdiag_w0_probe.py` builds the literal CCM matrix with N (modes -N..N) and lambda^2
+(prime cutoff, L = log lambda^2) independent; on N = lambda^2 = m it equals
+`full_center_probe.matrix_K` exactly (max |diff| = 0.0 on m = 3, 7).
+
+Grid: N in {2,3,4,6,8,10,12,16} x lambda^2 in {1.5,2,3,5,8,13,20,30,50} = 72 cells, dps 60 and 100
+(`offdiag_dps60.jsonl`, `offdiag_dps100.jsonl`).
+
+- All 72 cells: G1a (lambda_min(E) < lambda_min(O)), w_0 > 0, every W_k > 0. Failures: 0.
+- Minimum of W_k is always W_0 = w_0 (argmin 0 in every cell), as on the diagonal.
+- Negative individual weights occur in 15 cells, never enough to make a partial sum negative.
+- Smallest w_0 = 2.88e-24 at N = 16, lambda^2 = 50 (lambda_min(E) = 5.2e-49, mu = 8.9e-46).
+- dps 60 vs 100: w_0, lambda_min(E), min W_k identical to 10 printed digits in all cells.
+
+Reading: the STIELTJES sign pattern is not a feature of the diagonal schedule; it holds on the
+two-parameter (lambda, N) family on this grid. w_0 shrinks fast with N and lambda, so a proof
+needs a lower bound for w_0 that is relative (e.g. against the parity gap), not absolute.
+DIAGNOSTIC_NEVER_A_PROOF. Observer prediction "w_0 <= 0 somewhere off-diagonal" (0.15) did not occur.
