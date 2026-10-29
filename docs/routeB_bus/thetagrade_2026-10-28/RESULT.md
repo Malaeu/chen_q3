@@ -127,3 +127,27 @@ even block (lifts the one negative level to the tiny positive bottom of K) and -
 So window positivity and G1a for K become rank-two secular questions over a PF bulk.
 Not repeated: the 10.09 kill (Progress_Log 2026-09-10) is the ODD half-line semigroup (reflected +log2/sqrt2);
 this probe is the full window without the pole term. DIAGNOSTIC_NEVER_A_PROOF.
+
+### Two secular scalars and the limit of the PF picture (same day)
+
+`pf_secular_probe.py`, `pf_secular_dps120.jsonl`. Split K = G + kappa(u u^T - v v^T) reproduces matrix_K's W02 to 1.8e-62.
+On m = 2..12 (8 cells): G_E has exactly ONE negative eigenvalue (about -2.2 log m), the rest positive; G_O has none.
+Then window positivity is exactly: K_E >= 0 <=> s_E = 1 + kappa u^T G^-1 u <= 0, K_O >= 0 <=> s_O = 1 - kappa v^T G^-1 v >= 0.
+
+| m | s_E | lam0(K_E) | s_E / lam0(K_E) | s_O | lam0(G_O) |
+|---|---|---|---|---|---|
+| 2 | -2.79e-3 | 3.06e-3 | -0.913 | 0.927 | 0.135 |
+| 4 | -1.18e-9 | 1.70e-9 | -0.693 | 1.02e-5 | 4.5e-4 |
+| 6 | -5.13e-15 | 8.00e-15 | -0.642 | 7.76e-11 | 1.7e-8 |
+| 8 | -6.39e-20 | 1.02e-19 | -0.624 | 8.23e-16 | 3.7e-13 |
+| 10 | -8.24e-25 | 1.34e-24 | -0.613 | 2.00e-20 | 3.4e-17 |
+| 12 | -4.12e-29 | 6.79e-29 | -0.607 | 9.41e-25 | 1.6e-21 |
+
+LIMIT (observer, after advisor): Perron-Frobenius for G, if proved, gives unconditionally only: simple even strictly
+positive bottom of G, nonzero overlap <u, ground>. The resolvent (G - t)^-1 is a positive kernel only for t BELOW
+the bottom of G. The signs s_E <= 0 and s_O >= 0 live at t = 0, above the negative bottom, where PF says nothing.
+So PF does not give the sign of s_E or s_O, and these two scalars are still the whole of window positivity (RH-hard).
+"Exactly one negative even level of G" and "G_O >= 0" are also not given by PF.
+Novelty check: Suzuki 2606.09096 Thm 1.4 (§5, Dirichlet form + irreducibility, Fukushima-Oshima-Takeda) proves the
+PF mechanism only for small windows a < log(2)/2 (no primes) via the a -> 0 limit; he does not split off the pole term.
+Extension to all windows with primes as positive jumps plus bounded potential: observer derivation, unverified.
