@@ -2,6 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-10-29-MARKOV · READY, NOT SENT
+
+- Follows STIELTJES 12.1/8.2. Q1 Perron-Frobenius for the pole-free bulk G = K - W02 on every window (Dirichlet form + bounded potential); Q2 window positivity = two secular scalars s_E <= 0, s_O >= 0 plus index facts; Q3 exact sign representation for s_E, s_O.
+- Observer facts on m = 2..12: G bottom even, simple, function without sign change; G_E one negative level, G_O none (`thetagrade_2026-10-28/pf_*`).
+- Request: [`proshka/PROSHKA_REQUEST_MARKOV_2026-10-29.txt`](proshka/PROSHKA_REQUEST_MARKOV_2026-10-29.txt), base `ab639432`, 171 lines, 10530 bytes, SHA-256 `f59076d74630a2656be28e0f8e2898636faa44f1a906e1a5cc9cb1825bb26548`.
+
 ## REQ-2026-10-29-STIELTJES · ANSWERED AND CHECKED
 
 - [verdict](proshka/PROSHKA_VERDICT_STIELTJES_2026-10-29.md) (TRY_STIELTJES_UNREDUCED_COFACTOR_POSITIVITY, score 4), [audit](proshka/STIELTJES_AUDIT_2026-10-29.md). G1a <=> positive coefficient cone of det(O - lambda I + x I); Abel sufficient not necessary; four structured plants verified. Next: endpoint cofactor supplier (12.1) or two one-sided bounds using mu/lambda >= 41. Do not resend.
