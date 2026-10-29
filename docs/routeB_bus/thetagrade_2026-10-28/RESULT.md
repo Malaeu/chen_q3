@@ -86,3 +86,14 @@ Reading: lambda_min(E) falls by ~10^2.4 per added mode; cheap explicit even vect
 mu/lambda margin from m = 6 on. An upper bracket for lambda needs a trial vector close to the true ground state
 (candidate: prolate/PSWF coefficients at bandwidth c = 2 pi m), or Proshka's direct route (12.1).
 DIAGNOSTIC_NEVER_A_PROOF.
+
+## CCM prolate packet k1 as trial vector (2026-10-29): negative, and why every trial vector fails
+
+`k1_packet_rayleigh_probe.py` on the cached diagonal cell m = 13 (`k1_packet_m13.json`): overlap with the true even
+ground |cos| = 0.99817, yet Rayleigh U = 4.2e-16 against lambda = 7.9e-31 and mu = 6.4e-28 (U/lambda = 5.3e14, U > mu).
+Spectrum at m = 13: even 7.9e-31, 2.8e-25, 1.4e-20, 3.1e-16, 1.3e-12, ..., 3.3; odd 6.4e-28, 8.0e-23, 2.1e-18, ..., 3.1.
+Levels span 31 orders and alternate E, O, E, O over the whole low spectrum. A Rayleigh bound U < mu needs the leaked
+mass sin^2 to be below ~mu/||K|| ~ 1e-28, i.e. a trial vector correct to ~14 digits. k1 has sin^2 = 3.7e-3.
+Kill reason (with number): an upper bracket for lambda from any source trial vector requires exponentially accurate
+agreement with the ground state; no cheap vector can supply it. Trial-vector route for (4.6)-(4.7) closed.
+Observer prediction 0.3 failed. DIAGNOSTIC_NEVER_A_PROOF.
