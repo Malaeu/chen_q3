@@ -151,3 +151,18 @@ So PF does not give the sign of s_E or s_O, and these two scalars are still the 
 Novelty check: Suzuki 2606.09096 Thm 1.4 (§5, Dirichlet form + irreducibility, Fukushima-Oshima-Takeda) proves the
 PF mechanism only for small windows a < log(2)/2 (no primes) via the a -> 0 limit; he does not split off the pole term.
 Extension to all windows with primes as positive jumps plus bounded potential: observer derivation, unverified.
+
+## "Entropy" probe: is alpha/T ~ 0.35 a smooth law? (2026-10-29, owner's Perelman question)
+
+`alpha_over_T_scan.py` (flint arb via r2_second_jet.ground_full, dps = max(400, 9m), same as 04.09; m = 83
+reproduces 0.348). All diagonal cells m = N = 40..120: `alpha_over_T_m40_120.jsonl`, 81 rows.
+- alpha/T is NOT a smooth constant: 0.328 (m = 44) .. 0.351 (m = 119), slow rise, and a step-to-step jitter of
+  about 1e-3 at EVERY m (mean |jump| 1.03e-3 at prime-power m, 1.04e-3 at other m).
+- Prime-power steps (a new prime enters the matrix): 16/21 jumps positive, mean +3.9e-4; other even m 22/39
+  positive, mean +2.4e-4; other odd m 9/20, mean +1.5e-4. Against the drifting baseline this is weak evidence
+  (fair-coin tail 0.013, baseline-corrected about 0.04).
+- Reading: strict reading A (one smooth zero-free constant) is refuted at the 1e-3 level. Reading B (a clean prime
+  signature) is not confirmed either: composite steps jitter as much as prime steps. On the diagonal each step changes
+  three things at once (one more mode N, L = log m, and possibly one more prime), so this design cannot separate
+  arithmetic from mode truncation. A clean test needs fixed N and lambda^2 moved across a single prime
+  (CCMArbBuilder L_override; check its z = 1/m^2 term first). DIAGNOSTIC_NEVER_A_PROOF.
