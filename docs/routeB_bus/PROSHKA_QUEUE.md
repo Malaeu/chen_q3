@@ -2,7 +2,11 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-29-STIELTJES · SENT, AWAITING VERDICT
+## REQ-2026-10-29-STIELTJES · ANSWERED AND CHECKED
+
+- [verdict](proshka/PROSHKA_VERDICT_STIELTJES_2026-10-29.md) (TRY_STIELTJES_UNREDUCED_COFACTOR_POSITIVITY, score 4), [audit](proshka/STIELTJES_AUDIT_2026-10-29.md). G1a <=> positive coefficient cone of det(O - lambda I + x I); Abel sufficient not necessary; four structured plants verified. Next: endpoint cofactor supplier (12.1) or two one-sided bounds using mu/lambda >= 41. Do not resend.
+
+### (send record)
 
 - Sent by the owner 2026-10-29 ~12:44 CET into a new chat of the Proshka project (manual paste). Delivery line pins the request at commit `87fb6133560e9521876e37fb4cb460b5c09acdd3` (blob `7aadb387`, SHA-256 `fa686400…`), sources at `bac12438`; verdict requested as downloadable `PROSHKA_VERDICT_STIELTJES_2026-10-29.md`. Observer watches `~/Downloads`. Do not resend.
 
