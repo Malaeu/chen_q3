@@ -5,6 +5,7 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 ## REQ-2026-10-29-MARKOV · SENT, AWAITING VERDICT
 
 - Sent by the owner 2026-10-29 into a new chat of the Proshka project (manual paste). Delivery line pins the request at commit `cfe490d950758d0a8b1e53d7a76a29d9ab671f0d` (blob `9f299b2a`, SHA-256 `f59076d7…`), sources at `ab639432`; verdict requested as `PROSHKA_VERDICT_MARKOV_2026-10-29.md`. Observer watches `~/Downloads`. Do not resend.
+- 2026-10-29 23:20 CET: no verdict file after 8 h of watching `~/Downloads` (15:19-23:20) and no `[Proshka]` commit on origin. STIELTJES took 38 min. Owner to check the chat for an undownloaded or broken answer before any resend.
 
 - Follows STIELTJES 12.1/8.2. Q1 Perron-Frobenius for the pole-free bulk G = K - W02 on every window (Dirichlet form + bounded potential); Q2 window positivity = two secular scalars s_E <= 0, s_O >= 0 plus index facts; Q3 exact sign representation for s_E, s_O.
 - Observer facts on m = 2..12: G bottom even, simple, function without sign change; G_E one negative level, G_O none (`thetagrade_2026-10-28/pf_*`).
