@@ -103,3 +103,27 @@ oscillation matrix has a simple top eigenvalue with a symmetric vector and alter
 K^{-1} and of D K^{-1} D, D = diag((-1)^n), on m = 2, 3, 4 (dps 80). Negative minors: 108/251 and 116/251 (m=2),
 1672/3431 and 1696/3431 (m=3), 24218/48619 and 23530/48619 (m=4). K^{-1} is far from totally positive in mode
 coordinates in either gauge; the theorem does not apply here. Any oscillation mechanism must live in another basis.
+
+## Perron-Frobenius probe (2026-10-29): the bulk G = K - W02 behaves like a positivity-improving operator
+
+Hypothesis (literature agent 29.10, own derivation, not from a source): archimedean part = Levy-Khintchine generator
+with positive jump measure, prime part = negative shifts by log n; both give nonpositive cross pairing of disjoint
+nonnegative functions (Beurling-Deny), so exp(-tG) would be positivity improving on the window. Only the rank-2 pole
+term W02 = kappa(u u^T - v v^T) (u even, v odd) breaks it.
+`pf_probe.py`, `pf_probe_dps120.jsonl`, m = 2, 3, 4, 5, 6, 8, 10, 12 (interior grid, 2% margin):
+
+| m | bottom of G | sector | sign changes | min/max | lam_O(G) | bottom of K | K sign changes |
+|---|---|---|---|---|---|---|---|
+| 2 | -1.279 | E | 0 | 0.59 | 0.135 | 3.1e-3 | 0 |
+| 4 | -2.831 | E | 0 | 0.78 | 4.5e-4 | 1.7e-9 | 0 |
+| 6 | -3.797 | E | 0 | 0.90 | 1.7e-8 | 8.0e-15 | 0 |
+| 8 | -4.510 | E | 0 | 0.83 | 3.7e-13 | 1.0e-19 | 0 |
+| 10 | -5.116 | E | 0 | 0.84 | 3.4e-17 | 1.3e-24 | 0 |
+| 12 | -5.622 | E | 0 | 0.85 | 1.6e-21 | 6.8e-29 | 0 |
+
+Reading: the bottom of G is even, simple, strongly negative (about -2.2 log m) and its function is strictly positive
+and flat (min/max 0.59-0.90): the PF picture. The odd block of G is positive. The pole term adds +kappa u u^T to the
+even block (lifts the one negative level to the tiny positive bottom of K) and -kappa v v^T to the odd block.
+So window positivity and G1a for K become rank-two secular questions over a PF bulk.
+Not repeated: the 10.09 kill (Progress_Log 2026-09-10) is the ODD half-line semigroup (reflected +log2/sqrt2);
+this probe is the full window without the pole term. DIAGNOSTIC_NEVER_A_PROOF.
