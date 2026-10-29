@@ -34,5 +34,5 @@ H2a → G1, H2b → G2/G2b, C3-A → G4, C3-B → G3 (until 31.07); Mythos canva
 
 ## Gaps found
 - `PAPER_CHAIN.md` "Главное наблюдение" says itself that the G1/G3 ↔ CCM match is the reader's inference; no matrix crosswalk is written.
-- No verbatim card for CCM Lemmas 5.1, 5.2, 5.4 and Prop 5.9 (only source locks and a Codex PDF check).
+- No verbatim card for CCM Lemmas 5.1, 5.2, 5.4 and Prop 5.9 (only source locks and a Codex PDF check). **Closed 2026-10-29:** `docs/routeB_bus/litreview/CCM_LEMMAS_5_1_TO_5_9_VERBATIM_2026-10-29.md` (Lemma 5.1 quote re-checked against PDF p.16 by the observer). Crosswalk: matrix, η/h/e₀ and parity split MATCH; our cells are the diagonal N=m, L=log m of CCM's two-parameter (λ, N) family — a regime restriction, not a conflict, since N1–N5 are finite linear algebra valid for any (λ, N); N3–N5 are our own algebra, not in CCM.
 - Davis–Kahan locator for hratioEv not recorded. SP link to CCM Cor 3.8 not recorded. Mythos source of the 07.08 digest not on disk.
