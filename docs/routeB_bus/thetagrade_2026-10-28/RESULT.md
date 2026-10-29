@@ -33,3 +33,17 @@ All 15 cells are in the jsonl files; the rows shown follow the same trend.
 G1a — simple and even ground state: holds on all cells with a growing relative gap. Candidate for proof without zero input (Proshka's candidate B, parity-block Schur).
 G1b — cellwise floor δ_m > 0 and ‖r_m‖/δ_m → 0 for the selected row, and hoddEv with a = a_m: false on cells 5..16.
 Theorem shape to test: a_m > λ_min(K_m|odd) eventually. If proved, G1b and literal hoddEv are killed cofinally.
+
+## Residue closed form and Stieltjes weights (observer, 2026-10-29)
+Tool: `parity_residue_probe.py` (extended), outputs `residue_dps120.jsonl`, `residue_dps170.jsonl`; all fields agree between the two precisions on m = 2..16.
+1. Closed form of Proshka's residue (4.13): R_m = ∏_i(λ_i(E) − μ) / ∏_{j≥2}(μ_j − μ), relative error ≤ 8.6e-88. So sign R_m = (−1)^{#even levels below μ}.
+   The residue test counts levels; it is not a cheaper object. Count is 1 on every cell.
+2. v0·y = (A0 − μ)(d·y) − (B^{-2}β_o)·y is a difference of two terms equal to 6+ digits from m = 6 (rule 18: not a usable sign representation).
+   The bracket (4.16) holds on every cell but ε_m/(μ − λ_min(E)) falls from 0.17 (m=2) to 1.9e-46 (m=16): C_m carries 1/g_o.
+3. f_m(t) = 1/g_m(t), g_m(t) = ⟨η,(K_m − t)^{-1}e_0⟩ = h^T(E − t)^{-1}e_0 = det(O − t)/det(E − t); |f g − 1| ≤ 3.8e-87.
+   g_m = Σ_i w_i/(λ_i − t), w_i = (η·ξ_i)ξ_i(0), Σ w_i = 1 exactly. Poles = even levels, zeros = odd levels.
+4. G1a ⟺ w_0 > 0 and g_m has no zero below λ_0(E). Sufficient (Abel): all bottom-up partial sums W_k > 0. On every cell min_k W_k = W_0 = w_0 > 0.
+   Negative w_i occur only at even levels ≥ 8 (m = 9, 10, 12..15), total negative mass ≤ 0.048.
+5. Parity pattern of the full spectrum: strict alternation E,O,E,... on m = 2..8, 11, 16; on m = 9, 10, 12..15 the first break is at level ≥ 14 of 2m+1 (top third).
+   Eigenvector sign changes (m ≤ 8): over the lower half of the spectrum each level has one sign change fewer than the level below it.
+Status: DIAGNOSTIC_NEVER_A_PROOF. Batch: `../proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt`.
