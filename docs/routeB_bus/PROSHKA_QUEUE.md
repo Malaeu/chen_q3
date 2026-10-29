@@ -6,7 +6,7 @@ This worktree record is a candidate dispatch ledger, not canonical admission or 
 
 - Follows PARITYSPLIT directive §11. Three questions: Q1 G1a as a sign of positive terms (w_0 > 0 necessary; Abel partial sums W_k > 0 sufficient), Q2 parity alternation of the bottom spectrum, Q3 Theta.
 - Observer facts N1–N5 checked on m=2..16 at dps 120/170 (`thetagrade_2026-10-28/RESULT.md`, last section): residue closed form, f = 1/⟨η,(K−t)⁻¹e₀⟩, weights w_i.
-- Request: [`proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt`](proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt), base `bac12438`, 211 lines, 12878 bytes, SHA-256 `23c5ac28fd6620ecaced06f263047176d31a929dd9e586cd46d96ebeb2084c46`.
+- Request: [`proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt`](proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt), base `bac12438`, 217 lines, 13365 bytes, SHA-256 `fa686400c06b49b14feb798bd99563da440c21ffae8c4045b0279e657eeec2a6`.
 
 ## REQ-2026-10-28-PARITYSPLIT · ANSWERED AND CHECKED
 

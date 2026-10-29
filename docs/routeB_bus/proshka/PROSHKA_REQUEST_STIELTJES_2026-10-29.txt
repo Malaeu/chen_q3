@@ -52,6 +52,7 @@ N3  f_m is the reciprocal of one resolvent element (observer, by Cramer from (4.
 
 N4  Consequences (observer argument; please check):
     (a) G1a <=> w_0 > 0 and g_m has no zero on (-inf, lambda_0(E)).
+        (Argument written for a simple odd bottom mu and a simple lambda_0(E).)
         Reason: g_m -> 0+ at -inf (mass 1). A zero below lambda_0(E) is an odd
         eigenvalue below the even bottom. If w_0 = 0, lambda_0(E) is also an odd
         eigenvalue. If w_0 < 0, g_m -> -inf at lambda_0(E)- and crosses zero below it.
@@ -73,6 +74,11 @@ N5  Parity pattern of the full spectrum, left to right (E even, O odd):
     Eigenvector sign changes (full coordinates n = -m..m, m <= 8): the k-th level from
     the bottom has one sign change fewer than the (k-1)-th, over the lower half of
     the spectrum (m = 8: 12, 11, 10, 9, 8, 7, 6, 5, then irregular).
+    Orientation: the ground state is the MOST oscillatory level; the top level is
+    nodeless at m = 2, 4, 6. Off-diagonal entries of K_m are mostly positive
+    (72 of 72 at m = 4, 214 of 272 at m = 8): Perron-Frobenius orientation, with the
+    sign-free vector at the top. A Sturm-type ladder would have to be read from the
+    top of the spectrum, or after the sign flip x_n -> (-1)^n x_n.
 
 Table (dps 120 and dps 170 agree in all printed digits):
 
@@ -113,8 +119,8 @@ Base URL: https://github.com/Malaeu/chen_q3/blob/bac124388928b9e16fae3754ab80f29
   11bda2399db43c77 q3.lean.aristotle/Q3/Proofs/RouteB/ProlateSourceCommutation.lean
 External: CCM, Zeta Spectral Triples, arXiv:2511.22755 (shelf copy
 docs/routeB_bus/litreview/pdfs/2511.22755.pdf), Lemmas 5.1-5.4, Thm 5.10, section 8 p.32.
-Connes, arXiv:2602.04022, section 6.6 p.30 and Fact 6.3 (our card
-docs/routeB_bus/litreview/CONNES_RH2026_USAGE_CARDS.md:9-43): the simple-even
+Connes, arXiv:2602.04022, section 6.6 p.30 and Fact 6.3 p.28 (our card
+docs/routeB_bus/litreview/CONNES_RH2026_USAGE_CARDS.md:9-24, 57-67): the simple-even
 property is recorded there as known for the prolate wave operator. RELAY until you read it.
 
 2. KILLED - do not propose again without a new invariant
