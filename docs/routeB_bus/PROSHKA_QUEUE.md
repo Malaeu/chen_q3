@@ -2,7 +2,9 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-30-CONFINE · READY, NOT SENT
+## REQ-2026-10-30-CONFINE · SENT, AWAITING VERDICT
+
+- Sent by the owner 2026-10-30 about 10:53 CET (manual paste of the delivery line, request commit `339fcb4c`, blob `f7c13308`, SHA-256 `7db16902…`). Observer watches `~/Downloads`. Do not resend.
 
 - Four questions after MARKOV: Q1 selection of the plateau element of the xi-radical family (heat time s ~ 0.0031); Q2 translation mode (odd bottom = derivative of even bottom) and a lower bound for the parity gap via [K, D]; Q3 geometry vs arithmetic (radical proximity breaks with the sign under a Beurling shift); Q4 threshold a*, decay e^{-4.6 m}, heat time vs 2025 heat-RKHS prime cap.
 - Request: [`proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt`](proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt), base `f89683ae`. Verdict file name: `PROSHKA_VERDICT_CONFINE_2026-10-30.md`.
