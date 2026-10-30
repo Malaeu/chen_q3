@@ -366,7 +366,8 @@ Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial
   convergent. Levels below delta_m = ||K u||: 4, 5, 7, 8. Single-gap bound dead: delta/lam_1 = 7e7, 3.9e13, 2.5e21, 4.7e27.
 - Strange on sight: |<v_i, K u>| = sqrt(w_i) lam_i is 1.9e-33 (i = 1, m = 16) while ||K u|| = 1.2e-10. The residual
   avoids the low ladder by 20-30 orders. Readings: (A) structural (the leakage of a radical vector is orthogonal to
-  low levels up to lam_i); (B) tautology a_i lam_i = <v_i, K u> with nothing behind it. Discriminator: a perturbed
-  non-radical trial (h + small generic smooth bump) must show |<v_1, K u>| >> lam_1 if (A). Not run yet.
+  low levels up to lam_i); (B) tautology a_i lam_i = <v_i, K u> with nothing behind it. Discriminator: none needed.
+  RETRACTED (observer, same day): reading (B) holds for every vector, |<v_i, K u>| = lam_i |a_i| <= lam_i. Non-trivial
+  form: lam_i a_i = -k(e_m, v_i) with the explicit tail e_m = h - P_m h; the question is why low levels are blind to it.
 - `jet_cluster_probe.py` (dps 80): m = 8, J_k = span{P_m h, ..., P_m h^(2k)} vs lowest k+1 levels: cos_min = 0.99984,
   0.99965, 0.99959, 0.99974 for k = 0..3; delta_k / lam_{k+1} = 7.0e7, 2.2e5, 1.6e3, 26.6. m >= 12 still running.
