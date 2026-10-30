@@ -294,3 +294,22 @@ theta function h (heat kernel on the circle, modular symmetry); what is missing 
   versus 2e-6 .. 2e-4 for the radical-family fit. Rejected. The Fourier-side smoothing xi e^{-s z^2} (s ~ 0.003) stays the
   first-order description (heatsmooth_check.py).
 Recorded as strange: the decay rate of lam0 per unit m tends to about 4.6 and is not the tail rate. DIAGNOSTIC_NEVER_A_PROOF.
+
+### Translation-mode Rayleigh quotient is within a factor 2..6 of the odd bottom (2026-10-30, after CONFINE was sent)
+
+`commutator_probe.py` (dps 100), output `commutator_probe_dps100.txt`. g = diag(2 pi n/L) f_E (the translation mode of the even
+bottom). Identity R(g) - lam_E = <g,[K,N]f_E>/||g||^2 checked to 1e-102.
+| m | lam0(K_E) | lam0(K_O) | R(g) | R / lam0(K_O) | weight off level 0 | level-1 lam, weight |
+|---|---|---|---|---|---|---|
+| 4 | 1.7e-9 | 3.03e-7 | 5.84e-7 | 1.93 | 1.9e-4 | 1.16e-3, 1.9e-4 |
+| 6 | 8.0e-15 | 2.90e-12 | 8.02e-12 | 2.77 | 5.2e-5 | 4.55e-8, 5.2e-5 |
+| 8 | 1.0e-19 | 3.34e-17 | 1.53e-16 | 4.57 | 3.9e-5 | 9.65e-13, 3.9e-5 |
+| 12 | 6.8e-29 | 4.15e-26 | 2.28e-25 | 5.49 | 9.1e-6 | 4.24e-21, 9.1e-6 |
+| 16 | 5.5e-38 | 6.85e-35 | 4.31e-34 | 6.29 | 3.0e-6 | 2.03e-29, 3.0e-6 |
+Observer prediction (0.15 for "within a factor 10") was the minority branch; it happened. Mechanism, recorded when seen: a
+self-similar ladder: the weight of g on odd level i times lam_i is O(lam0(K_O)) for i = 1, 2 (m = 16: 3.0e-6 x 2.03e-29 = 6.0e-35,
+2.7e-11 x 2.13e-24 = 5.8e-35), so every level adds about one lam0 to R. R / lam0 grows slowly with m (1.9 .. 6.3).
+Consequence: the commutator term <g,[K,N]f_E> (window boundary + pole only) carries the parity gap up to a factor ~6:
+lam0(K_O) is between R/C_m and R, C_m = 1.9 .. 6.3 on these cells. A zero-free bound on C_m would turn the translation
+mode into a two-sided estimate. Not sent with CONFINE (batch already out); give it to the audit of the verdict.
+DIAGNOSTIC_NEVER_A_PROOF.
