@@ -1,0 +1,10 @@
+{
+  "status": "INTERVAL_COMPACT_LOWER_BOUND_PENDING_ANALYTIC_REVIEW",
+  "cells": 2000,
+  "dps": 50,
+  "theta_h_tail_upper_ball": "[2.529694846206735530895809930336560809875227634752e-29 +/- 6.40e-78]",
+  "truncated_numerator_integral_enclosure": "[2e+5 +/- 2.13e+4]",
+  "lower_endpoint_ball": "[178767.61277372201753314584493637084960937499999987 +/- 4.56e-45]",
+  "certified_compact_lower_gt_100000": true,
+  "limitations": "Full M3 lower follows with analytic tail and monotonicity argument; sharp LSI obstruction additionally needs domain bridge. No RH claim."
+}

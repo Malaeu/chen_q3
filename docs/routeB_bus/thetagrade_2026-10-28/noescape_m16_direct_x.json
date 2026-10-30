@@ -1,0 +1,75 @@
+{
+  "status": "INCOMPLETE_TIMEOUT_OR_ERROR",
+  "route_status": "CHALLENGER_NOT_RH",
+  "claim_boundary": "PX_RH_CLAIM: NOT_MADE",
+  "scope": "m=16, selected even-sector index i=1 only",
+  "input_path": "/Users/emalam/GitHub/rh_lean_01_2026/docs/routeB_bus/thetagrade_2026-10-28/noescape_m16_eigenpair.json",
+  "input_sha256": "41b9048af2cd698c521d062dc412d94c70acaacc9fa7efd5cb4896db3bbc2f29",
+  "last_completed_stage": "direct physical k(h_out,v)",
+  "input": {
+    "selected_index_zero_based": 1,
+    "normalization": "full -16..16 Arb interval vector divided by sqrt(sum c_n^2)",
+    "input_norm_squared": {
+      "ball": "[1.0000000000000000000000000000000000000000000000000 +/- 3e-55]",
+      "lower": "[1.0000000000000000000000000000000000000000000000000 +/- 1.34e-51]",
+      "upper": "[1.0000000000000000000000000000000000000000000000000 +/- 2.68e-51]"
+    },
+    "normalization_factor": {
+      "ball": "[1.0000000000000000000000000000000000000000000000000 +/- 3e-55]",
+      "lower": "[1.0000000000000000000000000000000000000000000000000 +/- 1.34e-51]",
+      "upper": "[1.0000000000000000000000000000000000000000000000000 +/- 2.68e-51]"
+    },
+    "selected_eigenvalue": {
+      "ball": "[4.7334184764486027537768445192089944547765449428985e-32 +/- 8.51e-83]",
+      "lower": "[4.7334184764486027537768445192089944547765449428985e-32 +/- 2.35e-83]",
+      "upper": "[4.7334184764486027537768445192089944547765449428985e-32 +/- 8.94e-83]"
+    },
+    "physical_overlap_h_v": {
+      "ball": "[0.089301070400722718849620 +/- 7.54e-25]",
+      "lower": "[0.089301070400722718849620060097505835661460338142278 +/- 4.09e-52]",
+      "upper": "[0.089301070400722718849620753663935898405286411805570 +/- 4.58e-52]"
+    },
+    "B_abs_lambda_times_overlap": {
+      "ball": "[4.2269933660141834725273e-33 +/- 2.42e-56]",
+      "lower": "[4.2269933660141834725272913001163898318231671583955e-33 +/- 3.74e-84]",
+      "upper": "[4.2269933660141834725273241295180980490297701225261e-33 +/- 1.72e-83]"
+    },
+    "overlap_arb_integral_before_theta_tail_radius": {
+      "ball": "[0.089301070400722718849620 +/- 7.54e-25]",
+      "lower": "[0.089301070400722718849620060097506220847449215589449 +/- 1.93e-53]",
+      "upper": "[0.089301070400722718849620753663935513219297534358399 +/- 6.83e-53]"
+    },
+    "overlap_method": "python-flint Arb quadrature on 2*integral_0^(log(16)/2) h(x)v(x) dx",
+    "theta_terms": 12,
+    "theta_tail_radius_added": "1e-210 (coarse absolute radius for the omitted n>=13 theta terms)"
+  },
+  "k_hout": {
+    "value_mpmath_midpoint": "1.7516911107923667209789712153553964078562614426073e-35",
+    "components": {
+      "archimedean_minus_integral_0_to_S": "9.0819637173149405300026395557878444877972056195157e-20",
+      "all_prime_powers_2_to_cutoff_with_Lambda_over_sqrt_n": "3.1035407583138619582930103378984217849354450312811e-19",
+      "p_pole_product": "-4.0117371300453558361241632142405341358180440576931e-19",
+      "q_pole_product": "0 by even/odd parity",
+      "diagonal_inner_product": "0 by disjoint supports"
+    },
+    "quadrature_settings": {
+      "method": "nested mpmath midpoint quadrature at 50 dps; no rigorous enclosure",
+      "arch_upper_limit": "S=L+0.3",
+      "prime_power_upper_limit": 64,
+      "p_pole_integral_interval": "both tails integrated from b to b+1; further tail not propagated"
+    }
+  },
+  "error": "wall-time cap 80s reached",
+  "last_active_stage": "direct physical k(W,v)",
+  "runtime_seconds": 80.005,
+  "formula": "X(v)=k(h_out,v)-k(beta,v), beta=W-P_mW; k(beta,v)=k(W,v)-<P_mW,A_m v>",
+  "uncomputed": {
+    "k_W_v": "not completed; nested direct physical arch quadrature exceeded the bounded run window",
+    "projection_correction_<P_mW,A_m_v>": "not completed",
+    "k_beta_v": "not completed",
+    "X_v": "not computed",
+    "F_m1": "not computed",
+    "full_F_X_relative_error_budget": "not certified"
+  },
+  "cancellation_note": "The computed k(h_out,v) is about 1.75e-35 while its displayed terms are about 1e-19; this is a signed cancellation diagnostic and does not justify dropping any term."
+}

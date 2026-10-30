@@ -1,0 +1,231 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-30-ENTROPY
+BOUNDARY_ID: GOAL058_FIXED_JET_NO_ESCAPE_ON_LITERAL_CCM_BOTTOMS
+DATE: 2026-10-30
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: 173a7a9ecb10b86f2c35a294a6ca2ba8ed54fea4
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: same living Generate Verdict File chat, continuation after NOESCAPE
+
+Proshka, the owner's explicit objective is a proved RH. An implication to RH
+is the intended entrance, not an objection to proving its hypothesis. Seek
+the shortest sufficient source argument. Do not require a full limiting
+ladder or full tightness when one persistent compact component suffices.
+The owner asks whether a real entropy, possibly with a compensating term,
+can do the job suggested by Perelman. This batch tests that idea against the
+literal source, not against a metaphor. No Lean or repository writes this batch.
+
+0. WHAT HAS BEEN PROCESSED
+
+Your complete NOESCAPE verdict was read. A bounded independent PAPER reader
+checked L1-L3, L5-L6, L10-L13 and L16-L18; no algebraic defect found in those
+implications. Root independently replayed L12 and the exact L14 example.
+This is not a proof of T or a fresh full audit of every inherited premise.
+The old handoff's X=T-F is a closure calculation, not your independent test.
+There is no certified F/X result. We have recovered the missing finite
+eigenpair input; its rigorous relative quadrature/tail budget remains open.
+
+Source locators at the pinned commit (same files as in this chat):
+- docs/routeB_bus/proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md,
+  SHA256 fdfd384345b69d7565100b93ef57348eb6944bdbaf014a01c001df007129aded.
+- docs/routeB_bus/proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md.
+- docs/routeB_bus/proshka/PROSHKA_VERDICT_MARKOV_2026-10-29.md, section 6.2.
+New Mac findings are supplied below, not assumed available on GitHub.
+Plain-mode owner rule: one commit per question after reply; this attachment
+is authoritative. Do not require the superseded review-plan machinery.
+
+1. EXACT CONSUMER
+
+H_E=L2_even(R), m=N, L=log m,b=L/2,
+psi_n=L^(-1/2) exp(2 pi i n(x+b)/L) 1_[-b,b], |n|<=m.
+A_m is the raw literal even CCM matrix; f_m is a normalized bottom vector.
+Do not assume simplicity cofinally. T means a single fixed finite even jet
+J=span(h,h'',...,h^(2r-2)) retains ||P_J f_m||>=epsilon>0 on an unbounded set.
+NOESCAPE L6: T implies RH; the converse has not been proved.
+L16/L18: one fixed nonzero weak fingerprint / fixed compact observable is
+enough. Separately, a vanishing lower floor on an unbounded original sequence
+is RH-equivalent via the negative witnesses. Preserve this distinction.
+PAPER_CHAIN link: the open literal lower-floor / ground-selection entrance,
+not a claim to have completed the old selected-Ferrers G1/G3 chain.
+
+2. OWN ENTROPY ATTEMPTS AND THEIR EXACT LIMIT
+
+A. Fixed jet ONB e_j, p_m,j=|<f_m,e_j>|^2, q_j=2^(-j-1).
+Bounded-test Gibbs inequality, g_N(j)=t min(j,N), t=log(2)/2, gives
+  D(p_m||q)>=E_p g_N-log E_q exp(g_N).
+Thus D<=C implies E_p j<=(C+0.5347999967395702)/0.34657359027997264
+and sum_{j>R}p_m,j<=E_p j/(R+1), hence T. No finite Shannon entropy
+assumption is needed. But f_m=(e_0+e_m)/sqrt(2) has T while D=m log(2)/2
+diverges. Full anchored KL is strictly stronger than the target; its actual
+source bound is missing. Shannon entropy(delta_m)=0 despite total escape;
+a moving reference can follow escape. Do not reuse either shortcut.
+
+B. MARKOV gives the exact form identity, with every prime power and poles:
+ dmu=(1/2)cosh(x/2)h(x)dx, tau=tanh(x/2),
+ k[hF]=E_h(F)-8 Var_mu(F)-8|int tau F dmu|^2,
+ E_h=E_arch+E_prime, both positive jump forms.
+Conditional on conservative reversible realization and domain control,
+ d/dt Ent_mu(rho_t)=-E_h(rho_t,log rho_t)
+                  =-I_arch(rho_t)-I_prime(rho_t)<=0.
+Both pieces dissipate in the SAME direction. No automatic prime anti-entropy.
+This auxiliary t is not m and its density is not the literal bottom f_m.
+No semigroup construction or flow-to-bottom transfer has been proved here.
+
+C. Hypothetical Ent_mu(F^2)<=E_h(F)/4 linearizes at 1+epsilon g to
+ E_h(g)>=8 Var_mu(g). It requires the exact unpaid constant8 in the even
+sector and still misses the odd tau covariance. A weaker constant is not
+enough. The bounded independent entropy reviewer checked A-C algebraically.
+
+D. Saved w0 is the weight of projected h in a changing eigenbasis, not p_m,j.
+At m=8,16,22,28,36, w0 is respectively .999688977707,.998437510548,
+.998274961122,.998340827133,.998522137951 (diagnostic). Neither w0 nor its
+binary Shannon entropy is monotone in these samples. No cofinal claim follows.
+
+3. ALIAS RETURN: A REAL WORKED MECHANISM, NOT AN IMPORT
+
+Lions, Concentration-compactness, locally compact case I (1984),
+https://www.numdam.org/article/AIHPC_1984__1_2_109_0.pdf,
+SHA256 fa36a7a16bdee61fe3a34138c583bdf38607d54f44c513ad20b37de55a9eac07.
+Theorem III.1 p133, proof pp134-138: nonlinear Choquard-Pekar mass scaling
+excludes splitting, and strict I_lambda<I_lambda^infinity anchors position.
+We checked the primary source. This is PARTIAL ANALOGUE only: for our
+quadratic fixed-m problem I_m(a)=a lambda_min(A_m), hence strict same-problem
+mass subadditivity is impossible. A distinct source-faithful energy-at-infinity
+comparison remains conceivable but has no paid prime/pole split or margin.
+The local shelf queries returned INCOMPLETE (freshness), not global absence.
+Do not import this theorem or assume a fixed H1-coercive operator as m changes.
+
+4. THE INDEPENDENT F/X TEST: INPUT RECOVERED, BUDGET NOT YET PAID
+
+Keep exactly your (4.7)-(4.14):
+ F=sum_{|n|>m}(-1)^n H(omega_n)/sqrt(L) k(psi_n,v1),
+ W(x)=sum_{ell!=0}h(x+ell L) on the window, beta=(I-P_m)W,
+ X=k(h_out,v1)-k(beta,v1).
+K_L(n,j) uses the SAME L and finite window prime cutoff. The h_out pairing
+uses ALL prime powers, including n>m. Do not compute X as total-F.
+The check is F+X+Z lambda1 a1=0 with a1=<P_mh/Z,v1> and Z=||P_mh||.
+Current finite coefficients are appended below. m16 only, no range scan.
+An Arb source builder was compared entrywise with the independent mpmath
+raw matrix: 289/289 differences<1e-50, max2.057e-119. That source agreement
+is diagnostic; the analytic source map is still an obligation.
+The Arb eig routine isolates the full 17-level spectrum; first three levels
+are separated. Independent reviewer checked serialized enclosures and hashes.
+For unit-vector use, interval-normalize the real-coordinate boxes using
+sqrt(sum X_j^2)>0; norm containing1 alone is not exact normalization.
+Otherwise retain the common scaling explicitly in the ratio. Endpoint
+strings in the JSON are themselves balls. No certified Z or nonzero a1 yet.
+
+4A. NEW OWN DISCRIMINATOR: THE SHARP ENTROPY INEQUALITY MAY BE FALSE
+
+Set q=h''/h and g=q-1/4. Twice integrating by parts against cosh(x/2)
+gives E_mu q=1/4 exactly. g is even and centered. If MARKOV (6.8) extends
+to F=q (not yet proved here), global radicality k[h'']=0 would give
+ E_h(g)=8 M2, M2=E_mu[g^2].
+For centered g in L3(mu), the entropy expansion is
+ Ent_mu((1+epsilon g)^2)=2 epsilon^2 M2+(2/3)epsilon^3 M3+o(|epsilon|^3),
+ M3=E_mu[g^3].
+The cubic remainder is controlled by C|epsilon g|^3, so unboundedness of g
+alone need not invalidate the expansion. The sharp LSI RHS E_h(1+eps g)/4
+would be exactly 2 eps^2 M2. Any nonzero M3 disproves this LSI for the
+appropriate sign of eps, provided this path belongs to its domain.
+
+Fresh mpmath 35/50-dps diagnostic, NOT a certificate:
+ M2=1152.4939052970623617381289032555099,
+ M3=188584.25068263567839208714665563312 >0 numerically.
+The worker integrated the even half-line with density cosh(x/2)h(x),
+using the theta series to x=1.5 and the first theta summand beyond it.
+Mass=1 and E_mu q=.25 agree. This computation is a candidate sign only;
+there is no rigorous quadrature/tail enclosure yet. Existing hder silently
+returns zero at large x via its precision cutoff: do NOT use that as a tail.
+
+Exact unpaid pieces: extension of (6.8) to h'', e.g. cutoff convergence of
+chi_R q in jump-energy and L2/L3(mu), with all prime shifts; and a certified
+M3>0 (analytic or interval). Theta asymptotics suggest q=O(exp(4|x|)) and
+all its mu moments finite, but spell out the bridge. A proof would kill only
+Ent_mu(F²)<=E_h(F)/4, not the sharp Poincare inequality or NOESCAPE.
+This is the first new entropy question: close this bounded discriminator
+before investing in that sharp LSI. Then select a weaker corrected functional
+only if its actual source variation supplies new information.
+
+5. REQUEST: ONE SOURCE MECHANISM, WITH FULL PROOFS
+
+In parallel with auditing 4A, finish the analytic source attribution needed by your section11:
+derive an independent, implementable representation of X and full remainder
+budget for m16 using the supplied vector. A finite P_mW subtraction may be
+handled using k(P_mW,v1)=lambda1<P_mW,v1>, but do not use the radical identity
+to define X or its total. Include theta, periodization, archimedean singularity,
+all exterior prime powers, Fourier-tail and input-vector errors. If you cannot
+certify D_ext<1/4 or >=1, name the exact unpaid bound; do not label it passed.
+Do not proceed to a low-cluster estimate as if that discriminator had passed.
+
+Then address the owner's entropy idea at the source: can a corrected entropy
+or a weaker localized balance actually control the fixed component? Derive
+the evolution/variation and all correction terms, rather than presupposing
+monotonicity or calling the missing overlap itself entropy. Specify whether
+the parameter is auxiliary time, window size, or a fixed variational path;
+prove its link back to the literal bottoms. A finite data fit is not that link.
+If the sharp log-Sobolev route is too strong or false, isolate its exact
+failure and repair to the weakest source inequality capable of feeding T.
+Do not require the whole sequence to be tight or all jets to converge.
+
+What would change the plan: a proved source identity with a quantitatively
+useful signed remainder; a certified F/X discriminator; a rigorous rejection
+of the proposed sharp entropy functional; or an actual cofinal supplier for
+T/lower-floor. Restating an RH-equivalent inequality is not a gain, but the
+fact it implies RH is not a reason to stop trying to prove it.
+
+8. OUTPUT AND HONESTY
+
+Return PROSHKA_VERDICT_ENTROPY_2026-10-30.md as an attachment.
+For each lemma give statement, proof, domain, hypotheses spent and exact
+remaining inequality; use PROVED HERE / IMPLIES RH / EQUIVALENT TO RH only
+as justified. If only an implication is known, do not claim equivalence.
+Result: PROOF_CANDIDATE_COMPLETE / PARTIAL_WITH_PRECISE_REMAINDER /
+ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE. The main volume is mathematics.
+No fabricated numerical enclosures or source reads. Preserve zero modes.
+General machinery must fail on a planted negative/escaping abstract family.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20-40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to verdict):
+List every source actually read with version/theorem locator and exact use;
+label relay vs read. List abandoned branches and the exact failed inequality.
+Retain reusable intermediate identities, even when the attempt fails.
+
+APPENDIX: finite eigenpair and additional own-test findings follow.
+
+FINITE M16 INPUT (RELAY; independently reviewed locally, not your own run)
+lambda1=[4.733418476448602753776844519208994454776544942898508507977067140721888139299495593e-32 +/- 8.29e-114]
+norm_squared=[1.000000000000000000000000000000000000000000000000000000000000000000000000000000 +/- 9.99e-81]
+Even basis: e0,(e_j+e_-j)/sqrt(2), j=1..16. Full c0=x0, c_+j=c_-j=xj/sqrt(2).
+0 [-0.39259675168538576960175584942793715823769027773522391799354569393999760642819047 +/- 3.24e-81]
+1 [0.21422239544460409523525711000811675533317979300818664726217235741078388357674562 +/- 4.65e-81]
+2 [0.40017651421316541675982566615159326866095638306783132152565683291690132771901482 +/- 5.98e-81]
+3 [-0.64628271843935179033271673649224428856712807939223530891809372992871016082903756 +/- 4.00e-81]
+4 [0.44476235134745349888854591764102310099479220982997267656436159506643846896090209 +/- 4.01e-81]
+5 [-0.15508932250853731948450644442809175250355120463187619998730384749022702258214021 +/- 5.79e-81]
+6 [0.01247353547794315894781090829566011673602184052994520812371272840418955235434044 +/- 2.04e-81]
+7 [0.01084675148276804171526973569696984102954553275717308626695327746343196986652624 +/- 2.79e-81]
+8 [-0.00379695191453776409207712905781563078680230672116299909525379135788813858997394 +/- 4.55e-81]
+9 [0.00022499390504086902168736588267545354641606396087313620852374647133933995593660 +/- 6.19e-81]
+10 [7.390688065067300205348335604922793325914427215736580538095973757991650874767e-5 +/- 3.61e-81]
+11 [-9.1439921176453055158740783882276221891337118795228371589198112073434274542e-7 +/- 3.55e-81]
+12 [-2.89643322292388767205800681356600063212476486521822222875183149132299011858e-6 +/- 3.22e-81]
+13 [1.6904825718538707688239919918360083212536373124159267852901197114803124121e-7 +/- 2.10e-81]
+14 [1.014317180072735124259789495283469575234289551182490734591876199233144430e-8 +/- 2.80e-81]
+15 [1.20271171129850402823213735770623011338992708602315388208891747615086768e-9 +/- 3.74e-81]
+16 [-6.235850527345496964250664232798556250795414394691704057549889611825947e-11 +/- 1.81e-81]
+
+Independent physical simplification: k(beta,v)=k(W,v)-<PW,A_m v>.
+The finite subtraction uses the same raw matrix; it avoids an algebraic
+high-mode truncation of beta and is not total-F. In k(W,v), retain the
+arch tail 2<W,v> int_L^infinity j(s)ds. Near zero, use the paired difference
+2<W,v>-Q_W,v(s)=O(s), including the boundary strip; do not quadrature
+separately divergent diagonal/correlation terms. These are proposed
+implementation rewrites to audit, not a completed certificate.

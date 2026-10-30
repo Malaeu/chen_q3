@@ -9584,3 +9584,32 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 **Следующий ход:** зонд F/X утечки на v₁ (`thetagrade_2026-10-28/leakage_split_probe.py`); затем выбор между счётом уровней (L12–L13 ⇒ RH) и слепым хвостом (4.6).
 **Адреса:** `docs/NOESCAPE_STORY_2026-10-30.md` (веха, слово Ылши: «с него, вроде, всё началось»); `docs/routeB_bus/proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md` (sha256 fdfd3843…).
 **Чей вердикт и аргумент:** Прошка, NOESCAPE: «T implies RH. That is the intended conclusion, not a reason to stop.» L5 помечен «THIS STEP IS RH».
+
+## 2026-10-30 — Mac: NOESCAPE audit and sharp entropy obstruction
+
+- Развилка: literal fixed-jet retention T ⇒ RH; entropy supplier versus direct compact component.
+- Выбрали: bounded NOESCAPE audit, source-resolved m16 X, one same-chat ENTROPY batch.
+- Почему: uniform anchored KL is stronger than T; a fixed component is sufficient.
+- Что отвергли: global sharp LSI Ent_mu(F²)<=E_h(F)/4 on even compact tests, bounded PAPER conditional on inherited MARKOV/CONFINE identities.
+- Инсайты: g=h''/h−1/4 saturates quadratic energy but has positive cubic entropy term. Arb cell integration proves M3>100000; independent sign and domain reviews passed. Both prime and arch jump terms have the same entropy-dissipation sign.
+- Блокеры: actual cofinal retention/lower-floor and complete independent relative F/X enclosure remain OPEN. Finite eigenpair is input only.
+- Иглы Зингера: a cubic perturbation distinguishes sharp entropy from sharp Poincare; no global form positivity assumed.
+- Следующий ход: receive/read/audit ENTROPY; finish bounded independent direct-space X on m16. Do not interrupt the thinking chat.
+- Адреса: docs/routeB_bus/proshka/ENTROPY_CUBIC_TEST_2026-10-30.md, NOESCAPE_AUDIT_2026-10-30.md, NOESCAPE_ALIAS_RETURN_2026-10-30.md; exact request PROSHKA_REQUEST_ENTROPY_2026-10-30.txt.
+- Чей вердикт: root proof with independent read-only reviewer; Proshka ENTROPY PENDING (sent18:16UTC). RH/NOESCAPE remain OPEN.
+
+30.10 follow-up before ENTROPY response: translated radical family gives delta Ent/E→5/16 as a→log(2)/2; sequential compact identity/cutoff argument independently checked. Every finite global LSI constant and finite CE+D||F||² defect excluded, not localized/bottom-specific entropy or NOESCAPE. Direct-X escalation after Luna timeout completes finite diagnostic X/B≈9.47626e−5 in7.2s; complete relative certification still OPEN. Both results in bus/NEXT.
+
+30.10 18:43UTC: finite F_96 Arb sum, unconditional analytic omitted tail<4.258e−37, literal builder source map and overlap tail independently checked. Exact NOESCAPE identity implies |X_16,1|/B<0.000195481. This is an identity-derived finite bound, not independently enclosed physical X; direct-X quadrature certificate and cofinal retention remain OPEN. See NOESCAPE_AUDIT follow-up. ENTROPY still thinking at18:36; next check18:56.
+
+## 2026-10-30 — ENTROPY processed; variational source descent remains unpaid
+
+Full ENTROPY original read; Appendix A extracted with matching SHA and both
+interval modes reproduced. Independent bounded review accepted decisive
+lemmas. All-global-LSI translate obstruction remains stronger than sharp kill.
+Finite m16 identity-derived |X|/B<.0002 accepted; independent direct-X
+quadrature still OPEN, exact gap and gamma reduction retained.
+Owner variational attempt: full-source modulus gain and same-carrier return
+identity derived and independently checked. Smooth bump counterexample kills
+universal modulus contraction; exact carrier cosine has jet escape but fixed
+return loss1−8/pi². Actual-bottom source margin remains OPEN; no T/RH claim.

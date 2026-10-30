@@ -1,0 +1,85 @@
+{
+  "status": "FINITE_M16_FOURIER_TAIL_DIAGNOSTIC_NOT_A_CERTIFICATE",
+  "route_status": "CHALLENGER_NOT_RH",
+  "claim_boundary": "PX_RH_CLAIM: NOT_MADE",
+  "scope": "m=N=16; retained zero-based eigenvector i=1; leakage only; no new eigenproblem or cell scan",
+  "formula": "F_M = sum_{16<|n|<=M} (-1)^n H(2*pi*n/L)/sqrt(L) * sum_{|j|<=16} K_L(n,j) c_j",
+  "source_normalization": "H(t)=4*xi(1/2-i*t); c_j are the retained normalized full-mode coordinates",
+  "kernel_mapping": {
+    "archimedean_moment": "mom_n = integral_0^L exp(x/2)*sin(2*pi*n*x/L)/(2*sinh(x)) dx",
+    "builder_alpha": "alpha_n = mom_n/pi; alpha_-n=-alpha_n",
+    "offdiagonal_wr": "(alpha_j-alpha_n)/(n-j) = (mom_j-mom_n)/(pi*(n-j))",
+    "K_L": "w02 - wr - sum_{k=p^a<=16} (log p)/sqrt(k) * (sin(2*pi*j*log(k)/L)-sin(2*pi*n*log(k)/L))/(pi*(n-j))",
+    "closed_alpha_source": "edge_ledger_build.CCMArbBuilder._alpha; mpmath hyp2f1/digamma translation, no nested high-mode quadrature",
+    "prime_cutoff": "all prime powers k<=16, unchanged from the eigenproblem"
+  },
+  "orders": [
+    64,
+    96
+  ],
+  "mpmath_dps": 80,
+  "inputs_sha256": {
+    "eigenpair_json": "41b9048af2cd698c521d062dc412d94c70acaacc9fa7efd5cb4896db3bbc2f29",
+    "direct_x_json": "35b062292f79b07e4cdd9650b2a9294bbcc001f750f311b057c79256125aa8a9",
+    "direct_x_fast_json": "1bcffb407f53198e036a8d409dde92e14894f13074fa5757976829580a6d87f9"
+  },
+  "results": [
+    {
+      "order": 64,
+      "F_signed": "-4.22739392689743226255647467002999840815303774e-33",
+      "first_positive_mode_term": "-1.250181026260670950445078e-30",
+      "last_mode_term": "3.578406353663202670686115e-63",
+      "largest_abs_mode_term": "8.195446148638951774250291e-30",
+      "largest_term_n": 19,
+      "modes_in_pair_sum": 48
+    },
+    {
+      "order": 96,
+      "F_signed": "-4.22739392689743226255647467002937614179618974e-33",
+      "first_positive_mode_term": "-1.250181026260670950445078e-30",
+      "last_mode_term": "-7.695008625880177672804622e-87",
+      "largest_abs_mode_term": "8.195446148638951774250291e-30",
+      "largest_term_n": 19,
+      "modes_in_pair_sum": 80
+    }
+  ],
+  "retained_vector": {
+    "selected_index_zero_based": 1,
+    "normalization": "midpoints of the stored real-coordinate Arb balls, divided by sqrt(sum_j c_j^2)",
+    "raw_norm_midpoint": "1.0",
+    "normalized_norm_midpoint": "1.0",
+    "max_even_pair_midpoint_defect": "0.0",
+    "eigenvalue_midpoint": "4.733418476448602753776844519208994454777e-32"
+  },
+  "in_window_offdiagonal_source_control": {
+    "reference": "full_center_probe.matrix_K(16), independent direct moment quadrature",
+    "entries_compared": 1056,
+    "max_abs_difference": "2.10843958864610464486971e-81",
+    "max_difference_over_max_reference_entry": "2.66629248964337697e-81",
+    "quadrature_is_diagnostic": true
+  },
+  "closure_check_using_independent_X_and_direct_overlap": {
+    "X_signed_from_direct_x_fast_order96": "4.00560883248790010680875628966427401023642954e-37",
+    "lambda_times_physical_overlap": "4.22699336601418347252728845545002531300326183e-33",
+    "F64_plus_X_plus_lambda_overlap": "-1.8505338951006667748752272124380395644401108e-53",
+    "F96_plus_X_plus_lambda_overlap": "-1.85053389503844013919042719786016918492701731e-53",
+    "F96_minus_F64": "6.2226635684800014577870379513093489e-64",
+    "abs_F96_minus_F64_over_abs_lambda_overlap": "1.47212522700210019919703e-31",
+    "abs_closure_residual96_over_abs_lambda_overlap": "4.377896378823488226616704e-21",
+    "interpretation": "signed finite-cell closure diagnostic; not an error enclosure or cofinal estimate"
+  },
+  "symmetry_and_tail_diagnostics": {
+    "max_abs_kpsi_plus_minus_defect_n17_to96": "0.0",
+    "max_abs_kpsi_plus_or_minus": "9.04706431317758049183982e-17",
+    "max_abs_imaginary_residue_in_4xi": "1.8478841053756152626081e-90",
+    "F_tail_after_96": "not bounded in this run; F64-to-F96 difference is convergence data only"
+  },
+  "remaining_error": [
+    "No analytic bound for the omitted |n|>96 Fourier tail was established; convergence alone is not certification.",
+    "The full-center source control uses mpmath direct moment quadrature and is diagnostic.",
+    "The retained Arb vector balls were reduced to midpoints and renormalized; eigenvector and eigenvalue enclosure errors were not propagated through F.",
+    "The independently computed direct-X and overlap inputs retain their own quadrature/tail limitations recorded in noescape_m16_direct_x_fast.json and noescape_m16_direct_x.json.",
+    "This finite cell cannot establish the cofinal NOESCAPE target."
+  ],
+  "runtime_seconds": 5.728
+}

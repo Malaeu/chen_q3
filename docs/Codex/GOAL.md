@@ -72,6 +72,33 @@ lines. Commit with a descriptive message and push without force.
 
 ## 5. Current task — continue here
 
+Owner renewed the goal on 2026-10-30 in this Mac chat: obtain a proved RH,
+using the new geometric object, the local shelf, alias-hunt, primary papers,
+own attempts and Proshka. An implication to RH is the intended entrance, not
+a reason to abandon proving its premise. Do not downgrade the goal to a report,
+a finite numerical test, a sufficient reformulation or a prepared request.
+
+Active entrance: literal normalized even CCM bottoms f_m; persistent overlap
+with one fixed finite theta derivative jet (NOESCAPE T) implies RH through the
+CONFINE PAPER argument. Seek the weakest sufficient source mechanism; anchored
+entropy is a candidate and must not become an unnecessary mandatory strengthening.
+First continuation: audit NOESCAPE, resolve the source F/X test, search exact
+compactness/entropy suppliers, then return a substantive new mechanism or precise
+blocker to the same living Proshka phase. Awaited results remain unfinished work.
+RH/NOESCAPE remain OPEN. Final claim and proof-check conditions above persist.
+
+Owner addition 2026-10-30, 18:46 UTC: after processing the running ENTROPY
+answer and F/X result, test variational NOESCAPE by contradiction on this same
+literal CCM family. Assume for every fixed J_r=span(h,h'',...,h^(2r-2)) that
+||P_Jr f_m||->0. Seek an admissible unit even g_m in the SAME finite carrier
+with k[g_m]<k[f_m] on some sufficiently large cell. First identify an actual
+source property supplying strict descent; a simple jet mixture or near-zero
+trial energy is insufficient. Preserve every prime power, pole and mixed term,
+normalization, and the return to the original carrier. Deliver either the
+explicit competitor with a proved strict gain, or the exact missing inequality
+and why it differs from T. Do not rename T or use finite data as a cofinal proof.
+Do not interrupt Proshka or skip processing the present answer to start this.
+
 Read [NEXT.md](NEXT.md) and continue its first unfinished step.
 History: [GOAL_HISTORY.md](GOAL_HISTORY.md), reports and session protocols, only when needed.
 

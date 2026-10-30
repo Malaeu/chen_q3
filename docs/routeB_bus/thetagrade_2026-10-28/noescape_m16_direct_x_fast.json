@@ -1,0 +1,108 @@
+{
+  "status": "FINITE_M16_DIRECT_X_NUMERICAL_DIAGNOSTIC_NOT_A_CERTIFICATE",
+  "route_status": "CHALLENGER_NOT_RH",
+  "claim_boundary": "PX_RH_CLAIM: NOT_MADE",
+  "scope": "literal m=N=16 selected even eigenvector i=1; no range scan",
+  "formula": "X=k(h_out,v)-k(W,v)+<P_m W,A_m v>",
+  "source_partial_sha256": "35b062292f79b07e4cdd9650b2a9294bbcc001f750f311b057c79256125aa8a9",
+  "eigenpair_sha256": "41b9048af2cd698c521d062dc412d94c70acaacc9fa7efd5cb4896db3bbc2f29",
+  "orders": [
+    64,
+    96
+  ],
+  "mpmath_dps": 60,
+  "W_theta_terms": 2,
+  "W_images": "ell=+/-1",
+  "h_out_input": "preserved 50-dps physical diagnostic; theta=12, prime powers<=64, arch S=L+0.3, pole tail b+1",
+  "results": [
+    {
+      "order": 64,
+      "inner_W_v": "-1.1982021477038673867831573270748828969963993916073e-31",
+      "k_W_components": {
+        "diagonal_minus_cstar_inner": "6.4369617107752982827457109122372853968780691087051e-31",
+        "arch_paired_difference_0_to_L": "9.2297582389973344167074700659861735405057702753813e-20",
+        "arch_s_gt_L_exact_tail": "-1.1991402800990394677790190604828761063059355252013e-31",
+        "prime_powers_2_to_16": {
+          "2": "2.77253970632591315975118630633235968498342531e-20",
+          "3": "1.33983891449372268701848707905623519728973463e-19",
+          "4": "-7.96565602731414872557638667346407287240830945e-20",
+          "5": "9.2676850611803555311162099666203864354628246e-20",
+          "7": "1.17884795445683239249328144375062448120011121e-19",
+          "8": "1.094682003934455910758436163398762966079191e-20",
+          "9": "2.86274327888040557213945892926936355333001372e-21",
+          "11": "5.30061861768653231500516508261884291544971851e-23",
+          "13": "8.47208286782010310427860196890036134934553086e-26",
+          "16": "0.0"
+        },
+        "prime_sum": "3.0647702852220721580799186327567557097625390299421e-19",
+        "p_pole_product": "-3.9877461091270432500178396514215677689556288063306e-19",
+        "q_pole_product": "0 by parity"
+      },
+      "k_W_v": "1.7116350224674877198670924166044019730839385165356e-35",
+      "projection_correction_lambda_inner_W_v": "-5.6715921844618836482945194073970613502338794380658e-63",
+      "k_beta_v": "1.711635022467487719867092417171561191530126881365e-35",
+      "k_hout_v_reused": "1.7516911107923667209789712153553964078562614426073e-35",
+      "X_signed": "4.0056088324879001111878798183835216326134561242263e-37",
+      "abs_X_over_B_midpoint": "0.00009476260040277667858997999925011806603364",
+      "B_midpoint_reused": "4.2269933660141834725273e-33"
+    },
+    {
+      "order": 96,
+      "inner_W_v": "-1.1982021477038673867831573283852420910658600361761e-31",
+      "k_W_components": {
+        "diagonal_minus_cstar_inner": "6.4369617107752982827457109192767753324879316881948e-31",
+        "arch_paired_difference_0_to_L": "9.2297582389973344167074700659861735429931743135858e-20",
+        "arch_s_gt_L_exact_tail": "-1.1991402800990394677790190617942612461322318158566e-31",
+        "prime_powers_2_to_16": {
+          "2": "2.77253970632591315975118630633235969862641967e-20",
+          "3": "1.33983891449372268701848707905623519968182985e-19",
+          "4": "-7.96565602731414872557638667346407286946119036e-20",
+          "5": "9.2676850611803555311162099666203864354631228e-20",
+          "7": "1.17884795445683239249328144375062448120011121e-19",
+          "8": "1.094682003934455910758436163398762966079191e-20",
+          "9": "2.86274327888040557213945892926936355333001372e-21",
+          "11": "5.30061861768653231500516508261884291544971851e-23",
+          "13": "8.47208286782010310427860196890036134934553086e-26",
+          "16": "0.0"
+        },
+        "prime_sum": "3.0647702852220721580799186327567557138136754181697e-19",
+        "p_pole_product": "-3.9877461091270432500178396514215677688821101744551e-19",
+        "q_pole_product": "0 by parity"
+      },
+      "k_W_v": "1.7116350224674877199108836518915944493077087823543e-35",
+      "projection_correction_lambda_inner_W_v": "-5.6715921844618836482945194135995397702265648233191e-63",
+      "k_beta_v": "1.7116350224674877199108836524587536677538971471837e-35",
+      "k_hout_v_reused": "1.7516911107923667209789712153553964078562614426073e-35",
+      "X_signed": "4.0056088324879001068087562896642740102364295423598e-37",
+      "abs_X_over_B_midpoint": "0.00009476260040277667848638098336501592498569",
+      "B_midpoint_reused": "4.2269933660141834725273e-33"
+    }
+  ],
+  "W_theta_truncation_diagnostic": {
+    "minimum_theta_argument": "b=log(16)/2",
+    "h_n1_at_b": "1.1601407920900780227e-17",
+    "h_n2_at_b": "6.1442782391718618874e-82",
+    "first_omitted_h_n3_at_b": "2.2107384243814296724e-190",
+    "abs_n3_over_n1_at_b": "1.9055777018224000186e-173",
+    "interpretation": "terms decay much faster for x>b; no propagated error certificate"
+  },
+  "last_order_seconds": 4.961,
+  "order_difference_X": "-4.3791235287192476223770265818665e-55",
+  "order_difference_k_W": "4.37912352871924762237702658187e-55",
+  "quarter_B_context_diagnostic": {
+    "B_over_4": "1.056748341503545868131825e-33",
+    "reused_hout_arch_tail_coarse_envelope": "4.733251410195735582367867e-34",
+    "abs_X_plus_that_envelope": "4.737257019028223482474675e-34",
+    "ratio_to_B": "0.1120715508360305253635198",
+    "unspent_B_over_4_margin_before_other_errors": "5.830226396007235198843575e-34",
+    "interpretation": "one coarse omitted-tail envelope fits the quarter-B budget; other source, quadrature, and vector errors are not certified"
+  },
+  "limitations": [
+    "Fixed quadrature order difference is a convergence diagnostic, not an error bound.",
+    "The reused k(h_out,v) has large signed cancellation and no propagated quadrature/tail certificate.",
+    "The previous coarse h_out arch-tail envelope at S=L+0.3 is 4.7333e-34, larger than this X; the displayed sign is not certified.",
+    "W uses theta n<=2 and images |ell|=1; omitted tails are not rigorously propagated.",
+    "The full relative F/X error budget and cofinal source estimate remain open."
+  ],
+  "runtime_seconds": 7.242
+}
