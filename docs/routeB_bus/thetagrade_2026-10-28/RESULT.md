@@ -381,3 +381,27 @@ Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial
   Steps shrink (k = 3: -0.023, -0.013, -0.0035): reading (A) favoured - the alignment settles at a fixed angle; the limit
   ladder exists but its higher levels are corrected derivatives, not plain h^(2k). Not a proof. delta_k / lam_{k+1}
   grows with m for every k (k = 3: 26.6, 1.4e6, 6.1e12, 4.0e18): the fixed-k norm route stays dead.
+
+## w0(m) monotonicity (2026-10-30, owner's Perelman question): NOT monotone, turning point near m = 22
+
+`overlap_gap_probe.py` (dps 100), w0 = |<f_{m,E}, P_m h/||P_m h||>|^2, file `w0_monotone_dps100.jsonl`:
+| m | w0 | 1 - w0 | step of 1 - w0 |
+|---|---|---|---|
+| 4 | 0.997268196 | 2.73e-3 | — |
+| 6 | 0.999996419 | 3.58e-6 | -2.73e-3 |
+| 8 | 0.999688978 | 3.11e-4 | +3.07e-4 |
+| 10 | 0.999153303 | 8.47e-4 | +5.36e-4 |
+| 12 | 0.998761975 | 1.238e-3 | +3.91e-4 |
+| 14 | 0.998479356 | 1.521e-3 | +2.83e-4 |
+| 16 | 0.998437511 | 1.562e-3 | +4.19e-5 |
+| 18 | 0.998312883 | 1.687e-3 | +1.25e-4 |
+| 20 | 0.998285622 | 1.714e-3 | +2.73e-5 |
+| 22 | 0.998274961 | 1.725e-3 | +1.07e-5 |
+| 24 | 0.998291252 | 1.709e-3 | -1.63e-5 |
+| 26 | 0.998317116 | 1.683e-3 | -2.59e-5 |
+| 28 | 0.998340827 | 1.659e-3 | -2.37e-5 |
+Minimum 0.998275 at m = 22 on m = 6..28. Steps are irregular at m = 16, 18 (same wobble as the residual delta_m, which
+follows |Xi(2 pi m / log m)|). Observer predictions: "monotone decreasing" 0.6 MISSED; "not monotone" 0.35 hit (signed:
+observer). Readings of the turn: (A) slow return of the bottom towards h (w0 -> 1 as m -> infinity); (B) oscillation
+around a fixed limit ~0.9983 (plateau mixture h + s h'' + ...). Discriminator: m = 30..36. w0 itself is not a Perelman-type
+monotone functional; what the proof needs is a lower bound, and on m = 6..28 the whole range lies in [0.99827, 1].

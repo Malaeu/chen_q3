@@ -23,6 +23,6 @@ for m in [int(a) for a in sys.argv[2:]]:
     w = [a[i]**2 for i in range(len(ev))]
     below = sum(1 for x in ev if abs(x) < delta)
     print(json.dumps({"m": m, "delta": mp.nstr(delta, 4), "levels_below_delta": below, "dim_E": len(ev),
-                      "lam": [mp.nstr(x, 3) for x in ev[:8]], "w": [mp.nstr(x, 3) for x in w[:8]],
+                      "lam": [mp.nstr(x, 3) for x in list(ev)[:8]], "w": [mp.nstr(x, 3) for x in w[:8]], "w0": mp.nstr(w[0], 12), "one_minus_w0": mp.nstr(1 - w[0], 8),
                       "mass_below_delta": mp.nstr(sum(w[i] for i in range(len(ev)) if abs(ev[i]) < delta), 6),
                       "bound_1_minus_d2_over_lam1sq": mp.nstr(1 - delta**2 / ev[1]**2, 4)}), flush=True)
