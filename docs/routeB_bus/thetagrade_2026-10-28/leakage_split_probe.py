@@ -63,6 +63,8 @@ for m in [int(a) for a in sys.argv[3:]]:
     out = {"m": m, "M": M, "dps": mp.mp.dps, "Z": mp.nstr(Z, 12), "entry_ctrl": mp.nstr(ctrl, 3), "levels": []}
     tail = [n for n in range(-M, M + 1) if abs(n) > m]
     rows = {n: [KL(n, v) for v in range(-m, m + 1)] for n in tail}
+    H = {n: 4 * Xi(2 * mp.pi * n / L) for n in tail}
+    print(f'# m={m}: setup done', file=sys.stderr, flush=True)
     for i in range(4):
         vi = W[:, i]; a = mp.fsum(u[j] * vi[j] for j in range(2 * m + 1))
         T = -Z * ev[i] * a
@@ -70,12 +72,12 @@ for m in [int(a) for a in sys.argv[3:]]:
         Fp, Gp, F, G = [], [], mp.mpf(0), mp.mpf(0)
         for k in range(m + 1, M + 1):
             for n in (k, -k):
-                F += (-1) ** n / mp.sqrt(L) * 4 * Xi(2 * mp.pi * n / L) * kpsi[n]
+                F += (-1) ** n / mp.sqrt(L) * H[n] * kpsi[n]
                 G += coef[n] * kpsi[n]
             if k in (m + EXTRA // 3, m + 2 * EXTRA // 3, M):
                 Fp.append(mp.nstr(F, 6)); Gp.append(mp.nstr(G, 6))
         X = T - F
-        maxterm = max(abs(4 * Xi(2 * mp.pi * n / L) * kpsi[n]) / mp.sqrt(L) for n in tail)
+        maxterm = max(abs(H[n] * kpsi[n]) / mp.sqrt(L) for n in tail)
         out["levels"].append({"i": i, "lam": mp.nstr(ev[i], 6), "a": mp.nstr(a, 6), "T": mp.nstr(T, 8),
                               "F": mp.nstr(F, 8), "F_partial": Fp, "G": mp.nstr(G, 8), "G_partial": Gp,
                               "X_closure": mp.nstr(X, 6), "k_hout_closure": mp.nstr(T - G, 6),
