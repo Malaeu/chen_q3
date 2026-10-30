@@ -44,8 +44,8 @@ BOUNDARY получен и прочитан полностью; независи
 §§3–7 и SymPy replay пройдены. См. BOUNDARY_VERDICT_AUDIT_2026-10-30.md.
 DIAGONAL получен GitHub-коммитом f7a8ff0a,615строк прочитаны; Appendix replay PASS.
 Независимые bounded PAPER checks PASS; DIAGONAL_VERDICT_AUDIT фиксирует границы.
-Нет pending response; пользовательский черновик в живом чате не трогать.
-Browser:id3 Chrome Nod, tab1618258119; native cua AX работает.
+GREEN получен GitHub bf8612ad;744строки прочитаны, exact replay+bounded PAPER PASS.
+Нет pending response. Черновик был восстановлен точно; дальнейшие изменения владельца сохранять.
 
 ## Следующий шаг
 
@@ -75,13 +75,13 @@ Browser:id3 Chrome Nod, tab1618258119; native cua AX работает.
    Adaptive resolvent attempt проверен: single-shift incomplete; full kernel
    при full support лишь congruence. Source diagonal/Loewner identity checked;
    DIAGONAL: mixed coordinate/resolvent competitor; strict source sign OPEN.
-   JUMP_RANK_ONE_ATTEMPT: явный конкурент
+   JUMP_RANK_ONE_ATTEMPT: явный конкурент; POLE_DIRECTION_PROFILE: сам pole vector weak→0,
    с нулевым pole moment, но source gap/moment separation из escape OPEN.
    Jet mixing: cross term=0; near-zero jet не дешевле bottom. Центральные узлы
    без доказательства не использовать. Другие конкуренты/moment bounds OPEN.
 5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
    THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
-   Threshold/Gamma-selection + GRIDNEV_GARCIA_BRIDGE: partial; RH goal ACTIVE.
+   GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
    Чужие CLAUDE/Progress dirt и untracked сохранить, без git add -A.
 
 ## Адреса

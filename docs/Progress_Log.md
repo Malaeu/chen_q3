@@ -9685,3 +9685,19 @@ centering, compactness and full-source return gaps; two selected PDFs preserved.
 NOESCAPE_THRESHOLD_ALIAS_HUNT and DIAGONAL_VERDICT_AUDIT give exact continuation.
 No new Proshka question pending; RH goal ACTIVE, no RH proof claim.
 Gridnev–Garcia owner follow-up processed at Theorems2–3,(45)–(47),AppendixA: positive Green kernel plus compact forcing gives common L2 majorant and local compactness; direct CCM compression/forcing bridge absent.
+
+## 2026-10-30 — GREEN processed: literal jump-ground escape
+
+Proshka delivered bf8612ad via GitHub, sole authorized GREEN verdict path.
+All744 lines read; exact Appendix replay ALL_EXACT_CHECKS_PASSED. Independent
+bounded PAPER reviews of Lemmas2–3 and5–11 pass with the open-gap trial guard.
+New literal theorem: entire lowest J eigenspace has fixed theta-jet overlap
+O_r(log(m)m^(-1/4)), without simplicity or RH. It uses the elementary
+prime-mass lower bound and full theta return. No claim about A-bottom escape.
+Own positive-complement and pole-profile attempts/data preserved; pole weak
+escape was independently proved while GREEN ran. Theta substitution retains
+full leakage and filtered error; source local mass/log-frequency bounds remain
+OPEN. Source/control families and endpoint alternatives remain distinguished.
+GREEN_VERDICT_AUDIT records exact continuation. No pending Proshka response.
+User authorized temporary draft preservation; original1642-character draft
+was restored exactly after GREEN dispatch. No RH claim; app goal ACTIVE.

@@ -1,0 +1,121 @@
+REQUEST_ID: REQ-2026-10-30-GREEN
+BOUNDARY: GOAL058_FIXED_JET_NO_ESCAPE_ON_LITERAL_CCM_BOTTOMS
+SOURCE_BASE_COMMIT: 1a4966a43be3ebcfc39b5622cdcb11f0203c0ae1
+
+Same RH goal and literal CCM family. DIAGONAL has been received by your
+successful GitHub push f7a8ff0a, all615 lines read, Appendix hash and exact
+SymPy replay passed; independent bounded PAPER reviews of Lemmas2,4–9 pass.
+Your strict source moment disk is accepted at its stated scope. It does
+NOT yet control signed eigenvector-weighted response. Your reciprocal-jump
+counterexample is nonliteral and breaks theta radicality. No new T/RH claim.
+
+The active PAPER_CHAIN consumer remains: normalized original even bottoms
+f_m, m=N, L=log m, cannot escape every fixed finite theta jet. T implies RH.
+The preferred contradiction is a normalized even same-cell g with
+k[g]<k[f_m], full prime powers, arch terms, poles, mixed terms, normalization
+and return costs paid. A genuinely source-derived compactness mechanism
+is also relevant. Do not make network, resolvent, modulus or a uniform gap
+mandatory. No jet-mixing gain, no mandatory central nodes without proof.
+
+NEW ALIAS HUNT AND OWN ATTEMPT
+
+The owner specifically supplied Gridnev–Garcia, math-ph/0610038v2,
+Theorems2–3, equations45–47, AppendixA. We fetched/read those, independently
+checked the map, and recorded it at the pinned commit in
+docs/routeB_bus/proshka/NOESCAPE_GRIDNEV_GARCIA_BRIDGE_2026-10-30.md.
+Also read NOESCAPE_THRESHOLD_ALIAS_HUNT_2026-10-30.md and
+NOESCAPE_JUMP_RANK_ONE_ATTEMPT_2026-10-30.md at that commit.
+Selected primary PDFs are under docs/literature, hashes in these notes.
+Do not repeat broad search or merely list names.
+
+Gridnev–Garcia factors an exact negative-energy Schrodinger eigen-equation
+as phi=lambda(-Delta+k²+lambda W_+)^-1 W_- phi. Positive Green comparison
+and attraction W_- supported in a FIXED ball give a common L² majorant
+uniformly as k->0. Theorem3's A/r² exterior with A>3/4 is a 3D Laplacian
+condition, not a CCM constant. AppendixA additionally uses local compactness
+to prevent weak-zero oscillation. This works for exact bound eigenstates,
+not specifically exact minima, and is not a competitor theorem.
+The typo after45 reverses the support inequality; W_- vanishes OUTSIDE R0.
+Bellazzini–Frank–Lieb–Seiringer1301.5370 instead proves a uniform exterior
+c/r barrier beating IMS cost C/l². An ambient energy E cannot replace the
+carrier bottom lambda_m: its excess lambda_m-E must remain in any transfer.
+
+Exact original real-even source rewrite (not a new form):
+ J_m[f]=integral_0^infinity j(s)||f-T_s f||² ds
+        +sum_(2<=n<=m) Lambda(n)/sqrt(n)||f-T_logn f||²,
+ C_m=gamma+log(8pi)+pi/2+2sum_(2<=n<=m)Lambda(n)/sqrt(n),
+ u=P_m^E(sqrt2 cosh(x/2)), A=J+uu^T-C_m I.
+Odd pole vanishes by parity, not deletion. Infinite arch tail and n=m
+jump/scalar cancellation are retained. u_i=4sqrt2 d_i L^(3/2)sinh(L/4)
+/(L²+16pi²i²), d0=1,di=sqrt2. For an exact bottom set beta=lambda+C_m.
+Rank-one minmax gives mu1(J)<=beta<=mu2(J), and
+ (J-beta)f=-u<u,f>.
+Thus this inverse is not supplied positive. Replacing it by J+tau leaves
+global forcing (beta+tau)f-u<u,f>; its naive norm absorption coefficient
+(beta+tau)/(mu1+tau)>=1. Finite Fourier compression does not inherit a
+pointwise positive Green kernel just from the unrestricted jump form.
+The growing-window pole is not fixed compact attraction.
+
+NEW OWN CALCULATION after the pinned commit (included here in full):
+Assume ONLY FOR THIS CALCULATION mu1 simple and mu1<beta<mu2.
+Let e1 be its unit J mode, u=b e1+u+, f=a e1+v, R=(J_+-beta)^-1,
+S=<u+,R u+>, T=||R u+||². Direct block algebra yields
+ v=-ab R u+/(1+S), beta-mu1=b²/(1+S),
+ |a|²=[1+b²T/(1+S)²]^-1,
+ ||v||²/|a|² <= [(beta-mu1)/(mu2-beta)] S/(1+S).
+Independent PAPER check passes. Endpoints/degeneracies are NOT silently
+excluded for the actual cofinal family; they need separate treatment.
+For an approximate unit q with rho=<q,(J+uu^T)q> and residual r,
+ v=R r+-R u+ t, t=[ab+<u+,R r+>]/(1+S), with R at rho.
+The e1 equation also has r1. Costs can be amplified by 1/(mu2-rho).
+Small absolute residual is not sufficient.
+
+Finite floating 90dps diagnostics (NOT certificates or cofinal premises):
+ m=4: mu2-beta=1.71800934e-5, |a|²=.5173917223, S=.0146177039;
+ m=8: mu2-beta=4.12837224e-15, |a|²=.3584310211, S=.0081070886;
+ m=16: mu2-beta=3.05179305e-32, |a|²=.2564569045, S=.0038314725.
+Direct overlap agrees with block formula to better than1e-60 in these cells.
+Squared h-overlap for m16 is about.9984375 (separate160dps diagnostic), so
+do NOT equate e1(J) with h. Small S does not bound the inverse-square T.
+No finite continuation/extrapolation is a proof.
+
+THE BOUNDED QUESTION
+
+Can exact theta radicality together with the literal prime/cosine data
+control the JOINT weighted response R u+ and its physical localization or
+fixed-jet pairing, without spending the crude inverse norm 1/(mu2-beta)?
+Alternatively construct a different full-source Green/barrier comparison
+or signed same-carrier variation that rejects escape of exact bottoms.
+The output must derive a new estimate from the actual coefficients/theta
+identity, not rename the desired overlap or full shifted PSD.
+
+Important anti-tautology test: for s=P_m h, radicality gives A s=e_m
+with the FULL leakage e_m. Pairing with a bottom already gives
+<e_m,f>=lambda<f,s>; CONFINE (5.1) and NOESCAPE (4.9) already contain
+leakage and inverse-spectral conditions. Re-deriving those conditions
+under another resolvent name is not a new supplier. Identify the first
+source-specific bound that improves them, or show precisely why this
+attempt collapses back to them. Keep pole/prime/mixed leakage jointly.
+
+Use the actual escaping radical trials as a negative control. A proposed
+common L² envelope for all small-residual trials is false on those packets.
+If an exact-bottom premise is decisive, name the exact line. Any residual
+correction after an inverse or localization must be compared to the signed
+margin at its actual scale. Fixed spatial mass also needs local compactness
+before fixed-jet density can supply T. No automatic anti-phase penalty.
+
+Return a complete proof of an actual strict competitor/retention mechanism,
+or a worked failed source estimate with its exact limitation and one concrete
+next supplier. Keep the RH implication explicit but do not claim RH proved.
+Expected plan-changing evidence: a new source-weighted bound defeating the
+escaping controls, or a rigorous obstruction distinguishing which positivity,
+compact-support, leakage or compactness ingredient this mechanism lacks.
+
+DELIVERY: write only docs/routeB_bus/proshka/PROSHKA_VERDICT_GREEN_2026-10-30.md
+to Malaeu/chen_q3 branch rh_clean using an ordinary non-force commit/push
+tagged [Proshka][GREEN], preserving current history and every other path.
+Return the ACTUAL commit SHA and a downloadable full verdict. If that write
+capability fails, provide the attachment and observed limitation; do not infer
+capability loss from unrelated transport errors. Do not change settings or
+overwrite earlier answers. Current request+own attempt will be committed on
+Mac after this response is fully processed, according to the owner's rule.
