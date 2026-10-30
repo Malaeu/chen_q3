@@ -358,3 +358,15 @@ Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial
   abs(Xi(t_m)); consistent with the verdict's (3.9). Not a proof of (3.9).
 - `radical_rayleigh.py` got a `__main__` guard (import ran its loop).
 - Audit: `docs/routeB_bus/proshka/CONFINE_AUDIT_2026-10-30.md`.
+
+## NOESCAPE preparation (2026-10-30): the bottom stays on h; the residual avoids the low ladder
+
+- `overlap_gap_probe.py` (dps 80, m = 8, 12, 16, 20): weights of u_m = P_m h on the even levels
+  w_0 = 1.000, 0.999, 0.998, 0.998; w_1 = 3.1e-4, 1.24e-3, 1.56e-3, 1.71e-3; w_2 = 9.6e-7 ... 4.08e-6; profile looks
+  convergent. Levels below delta_m = ||K u||: 4, 5, 7, 8. Single-gap bound dead: delta/lam_1 = 7e7, 3.9e13, 2.5e21, 4.7e27.
+- Strange on sight: |<v_i, K u>| = sqrt(w_i) lam_i is 1.9e-33 (i = 1, m = 16) while ||K u|| = 1.2e-10. The residual
+  avoids the low ladder by 20-30 orders. Readings: (A) structural (the leakage of a radical vector is orthogonal to
+  low levels up to lam_i); (B) tautology a_i lam_i = <v_i, K u> with nothing behind it. Discriminator: a perturbed
+  non-radical trial (h + small generic smooth bump) must show |<v_1, K u>| >> lam_1 if (A). Not run yet.
+- `jet_cluster_probe.py` (dps 80): m = 8, J_k = span{P_m h, ..., P_m h^(2k)} vs lowest k+1 levels: cos_min = 0.99984,
+  0.99965, 0.99959, 0.99974 for k = 0..3; delta_k / lam_{k+1} = 7.0e7, 2.2e5, 1.6e3, 26.6. m >= 12 still running.
