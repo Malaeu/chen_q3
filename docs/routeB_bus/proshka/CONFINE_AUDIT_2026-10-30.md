@@ -110,3 +110,12 @@ eps0² (1e-20 at m = 16) is far above lambda0(K_E) (5e-38): the bottom is h corr
 2. IF_A (confirmed): fixed-jet overlap becomes a legitimate rule-15 coordinate. Next question: replace f_m by source
    inputs (rule 11) in ||P_J f_m||.
 3. IF_B (first unpaid term found): repair or bury this proof only. The geometry family stays alive.
+
+## 7. Codex audit (2026-10-30 14:11)
+
+Codex (gpt-6.1-sol, high, read-only, session `01a18ce8-7bd0-71a0-b7a4-2c6902262512`) audited §§1-4:
+`FIXED_JET_ESCAPE_CONFIRMED_PAPER`, all eight steps OK, no findings. File:
+[`CODEX_AUDIT_CONFINE_2026-10-30.md`](CODEX_AUDIT_CONFINE_2026-10-30.md). Codex ran no numeric checks.
+Observer re-checked three of its constants: J_1 = sum (2l+1/2)^-2 = 4.29933 < 5; int_0^inf (e^{s/2}-1)/sinh s ds =
+log 2 + pi/2 to 30 digits; 4 sinh(log m / 2) <= 2 sqrt(m). The theorem is now PAPER with two independent readers.
+It is conditional: it proves "persistent fixed-jet overlap => RH", not the overlap itself.
