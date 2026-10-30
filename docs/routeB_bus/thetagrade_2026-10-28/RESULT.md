@@ -333,3 +333,14 @@ flat at about 1700 for m = 18..24); the new content is the structure (C_m ~ numb
 Risk: if C_m keeps growing ~ m/2 while the gap ratio stays ~1700, a C_m-based bound of the form lam0(K_O) >= R/C_m stays usable,
 but any second factor ~ m (e.g. an upper bound for lam0(K_E) by a crude trial vector) meets the gap ratio near m ~ 80.
 DIAGNOSTIC_NEVER_A_PROOF.
+
+### Crude geometric trial vectors do NOT share the equipartition (2026-10-30)
+
+`radical_rayleigh.py` (dps 120 for K, coefficients at dps 60 with exact derivatives of h; 14.5 min), output
+`radical_rayleigh_dps120.jsonl`. Rayleigh quotient of the window projection of h and of the plateau vector
+F = h + s h'' + c2 h'''' (s = 0.0030819, c2 = 3.825e-6) against lam0(K_E):
+R/lam0 = 2.5e6 / 2.2e6 (m = 8), 1.7e10 / 1.3e11 (12), 3.2e17 / 8.0e18 (16); shares on even levels 2..8 reach 1e3 .. 7e14.
+So the "one lam0 per level" law belongs to the exact translation mode D f_E only. Reason (exact algebra): (K_O - lam_E) g = [K, N] f_E
+on the odd sector, so a_i = b_i / (lam_i - lam_E) with b = [K, N] f_E, and w_i lam_i ~ |b_i|^2 / lam_i. Equipartition
+w_i lam_i ~ lam0 means |b_i|^2 ~ lam0 lam_i: the commutator vector b has spectral weights proportional to lam_i.
+Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial-vector kills of 29.10). DIAGNOSTIC_NEVER_A_PROOF.
