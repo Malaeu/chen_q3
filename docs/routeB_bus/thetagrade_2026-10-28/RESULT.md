@@ -415,3 +415,13 @@ Extension (dps 120, `w0_monotone_dps120_m28_36.jsonl`; m = 28 reproduces the dps
 After the minimum at m = 22 the weight rises with a wobble (dip at m = 32). Reading (A) "slow return towards h" favoured
 over (B) "constant ~0.9983"; average slope of 1 - w0 about -1.8e-5 per unit m on m = 22..36. Levels below delta_m: 12 at
 m = 30, 32. Range of w0 on m = 6..36: [0.998275, 1]. No sign of escape. Not a proof.
+
+## NOESCAPE verdict follow-up: F/X leakage split (30.10 evening)
+
+- Verdict NOESCAPE received 17:04 (sha256 fdfd3843...). Observer checks (`noescape_verdict_checks.txt`): L14 exact at m = 2..6
+  (count 1, Delta/mu -> 1, overlap -> 0); hat h = 4 Xi to 15 digits at t = 0, 3; ||h_out|| = 1.18e-18 (m = 16), 6.1e-24 (m = 20),
+  against the total v_1 leakage Z|lam_1 a_1| ~ 4e-33 (m = 16), 3e-41 (m = 20). STRANGE: the exterior piece is 1e15..1e17 times the
+  total, so either it is nearly blind to v_1 or F and X cancel. Readings separated by D_ext = |X_1|/|T_1| (verdict (4.17)).
+- First probe run INVALID: `entry_ctrl = 0.585` (extended K_L(n,j) did not reproduce in-window entries). Root: my mang() returned
+  at the first prime p = 2, so Lambda(3) = Lambda(5) = ... = 0. Fixed with a regression assert; buggy output kept as
+  `leakage_split_m8_dps50_BUGGY_mang.jsonl`. Note: X here is a closure T - F, not the independent check asked in verdict §11.

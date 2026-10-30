@@ -30,7 +30,8 @@ def mang(k):
         a = p
         while a < k:
             a *= p
-        return mp.log(p) if a == k else mp.mpf(0)
+        if a == k:
+            return mp.log(p)
     return mp.mpf(0)
 
 
@@ -58,6 +59,7 @@ for m in [int(a) for a in sys.argv[3:]]:
         pr = mp.fsum(c * (mp.sin(2 * mp.pi * v * x / L) - mp.sin(2 * mp.pi * n * x / L)) / (mp.pi * (n - v)) for _, c, x in lam_k)
         return w02 - wr - pr
 
+    assert [mang(k) for k in (3, 4, 6, 9)] == [mp.log(3), mp.log(2), 0, mp.log(3)]  # regression: early return bug 30.10
     # control: extended formula reproduces the literal in-window entries
     ctrl = max(abs(KL(n, v) - K[m + n, m + v]) for n in range(-m, m + 1) for v in range(-m, m + 1) if n != v)
     out = {"m": m, "M": M, "dps": mp.mp.dps, "Z": mp.nstr(Z, 12), "entry_ctrl": mp.nstr(ctrl, 3), "levels": []}
