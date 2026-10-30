@@ -1,0 +1,36 @@
+{
+  "status": "FINITE_SOURCE_MAJORANT_NOT_COFINAL_PROOF",
+  "m": 16,
+  "N": 16,
+  "w": 4,
+  "edge_even_indices": [
+    13,
+    14,
+    15,
+    16
+  ],
+  "input_index": 0,
+  "input_normalization": "interval-normalized ground block",
+  "cutoff": "even C-infinity, plateau |x|<=1/4, support |x|<=1/2; u=4|x|-1, chi=theta(1-u)/(theta(1-u)+theta(u)), theta(t)=exp(-1/t)",
+  "kappa": "chi squared",
+  "kappa_derivative_upper_bound": 64,
+  "edge_norm": "[2.10559410031508283013554829999771867621384605823363986863048447027775605e-9 +/- 6.20e-81]",
+  "interior_derivative_norm_squared": "[9.156473748014010037708039575231055276808767419344896138392571739691023143071773 +/- 7.74e-79]",
+  "endpoint_sum": "[1.827077577712477244261672270975300839923890720317627156276899e-18 +/- 1.49e-79]",
+  "input_norm_squared": "[1.0000000000000000000000000000000000000000000000000000000000000000000000000000000 +/- 2.45e-80]",
+  "full_form_majorant_f": "[13.011469573234311097557116322998958411521506297344509104044748752421555830795774 +/- 2.23e-79]",
+  "full_form_majorant_return_upper": "[9.1034945655501719648996225421239426223350421427293488975168616068420107e-7 +/- 4.39e-78]",
+  "absolute_E_bound_ball": "[1.18449842549759966329468367326465178460090276438065213176802077547284044e-5 +/- 7.55e-77]",
+  "certified_symmetric_E_enclosure": "[-0.00001185, 0.00001185]",
+  "derivation": "LOCALIZE L2: ||r||<=delta; ||r_prime||<= (64+2 Omega)delta; J(r)<=2 sqrt((2m+1)/L)delta; E=k(f,r)",
+  "full_source_terms": "arch tail, all supported prime powers, both pole operator costs, scalar and endpoint jumps",
+  "not_used": "bottom stationarity, local energy identity, numerical quadrature",
+  "limitations": [
+    "Does not determine the sign of E.",
+    "Does not bound the off-edge term or F_far.",
+    "Input eigenpair provenance inherited; residual containment alone is not an eigenpair existence proof.",
+    "No cofinal statement or RH claim."
+  ],
+  "source_sha256": "922dde3153bec0c3dd3bab58d1152fff778dcbf34e74766a3c9a8441ae9fe1c8",
+  "script_sha256": "341b73059d7ad0324bcb1aea2705db2af4aee2ee5ec81b715a51f06a0604c73c"
+}

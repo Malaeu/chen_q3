@@ -2,8 +2,7 @@
 
 Цель владельца: доказанная RH вместе с Прошкой. App goal ACTIVE; контракт GOAL.md §5.
 Canonical checkout: /Users/emalam/GitHub/rh_lean_01_2026, rh_clean.
-Простой режим: git pull → этот файл → работа. История сохранена без потерь в
-[NEXT_HISTORY_2026-10-30_MAC.md](NEXT_HISTORY_2026-10-30_MAC.md).
+Простой режим: git pull → NEXT → работа. История: [NEXT_HISTORY_2026-10-30_MAC.md](NEXT_HISTORY_2026-10-30_MAC.md).
 
 ## Текущий вход
 
@@ -83,7 +82,8 @@ LOCALIZE GitHub e8fb5854 прочитан; PAPER+replay PASS. UI ещёThinking2
    THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
    GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
    LOCALIZE: tight oscillatory quasimodes ломают regularity даже при tiny edge/return.
-   Далее: прямые E/F_far на m16; новый ground_eigenpair.json=index0, старый index1 сохранён.
+   m16 cached index0: |E|<1.185e-5, F_far∈[-3.6014e-5,-1.4079e-5]; sum<−2.229e-6.
+   LOCALIZE_M16_CHANNEL_TEST: finite conditional input; далее near/offedge+full return, не descent.
 
 ## Адреса
 Bus: ../routeB_bus/proshka/NOESCAPE_AUDIT_2026-10-30.md,
