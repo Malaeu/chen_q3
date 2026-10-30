@@ -371,3 +371,8 @@ Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial
   form: lam_i a_i = -k(e_m, v_i) with the explicit tail e_m = h - P_m h; the question is why low levels are blind to it.
 - `jet_cluster_probe.py` (dps 80): m = 8, J_k = span{P_m h, ..., P_m h^(2k)} vs lowest k+1 levels: cos_min = 0.99984,
   0.99965, 0.99959, 0.99974 for k = 0..3; delta_k / lam_{k+1} = 7.0e7, 2.2e5, 1.6e3, 26.6. m >= 12 still running.
+- Strange on sight (jet_cluster_probe, m = 12): cos_min = 0.99938, 0.99753, 0.99443, 0.97735 for k = 0..3 (m = 8: 0.99984,
+  0.99965, 0.99959, 0.99974). The bottom stays on h, but the higher jet-to-level alignment degrades with m (k = 3: angle
+  ~12 deg). delta_k / lam_{k+1} = 3.9e13, 5.7e10, 1.3e8, 1.4e6. Readings: (A) the limit ladder phi_i differs from the plain
+  derivatives h^(2k) for i >= 1 (heat-type corrections grow with level); (B) the higher levels drift and have no fixed limit.
+  Discriminator: m = 16, 20 rows (running) and a fit of the level-i vectors in a larger fixed jet.
