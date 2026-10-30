@@ -265,3 +265,20 @@ The window bottom is BROADER than h; "most concentrated radical vector" is refut
   object at the centre; the odd bottom is the translation (Goldstone-type) mode of the even bottom. G1a then reads: moving the
   confined object off-centre costs energy. Caveat: a Rayleigh quotient of f_E' only gives an UPPER bound for lam0(K_O)
   (spectrum spans ~30 orders), so this picture does not yet bound the parity gap from below. DIAGNOSTIC_NEVER_A_PROOF.
+
+### Geometry breaks together with the sign (2026-10-30)
+
+`break_sign_keep_shape.py` (dps 80, m = 12): shift log 2 and its powers by eps (Beurling-style), even sector.
+| eps | lam0_E | 1-|cos| old vs new bottom | radical-family residual (span h, h'', h'''') |
+|---|---|---|---|
+| 0 | +6.79e-29 | 0 | 1.95e-6 |
+| -1e-26 | -6.67e-27 | 3.0e-7 | — |
+| -1e-20 | -1.15e-20 | 6.4e-2 | 9.45e-4 |
+| -1e-12 | -7.19e-12 | 0.978 | 0.392 |
+| -1e-6 | -1.09e-5 | 0.996 | — |
+Observer prediction REFUTED (I expected: sign flips, shape stays). The clean xi-geometry of the bottom (heat-smoothed h, odd = its
+derivative) exists only for the exact primes; perturbing log 2 destroys the sign and the geometry together, at the same scale.
+Reading: the radical family is defined by xi, i.e. by the exact arithmetic (theta function, Poisson summation, Euler product inside
+zeta); the window positivity and the window geometry are one phenomenon: "the bottom is a confined xi-radical vector".
+Owner's reading 30.10: «геометрия не ломается, физика тоже, а у арифметики нет модели». Observer: the model exists, it is the
+theta function h (heat kernel on the circle, modular symmetry); what is missing is a proof that the confined object stays the bottom.
