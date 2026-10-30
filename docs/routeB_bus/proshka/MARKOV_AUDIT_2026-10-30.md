@@ -108,3 +108,18 @@ the pole-free odd bottom is as close to zero as the full K. The pole is not wher
 ## Update 2026-10-30: literature pass on (6.9)
 `docs/literature/POINCARE_JUMP_PASS_2026-10-30.md`: no sharp foreign tool; agent's A_abs / Barta candidate killed by
 `crossing_prime_probe.py` (crossing prime couplings exceed the odd margin by 3e3 .. 2e25 on m = 3..12).
+
+## Proshka review ONO_MARKOV_SYNERGY (2026-10-30, owner-requested literature note, score 3)
+File `PROSHKA_REVIEW_ONO_MARKOV_SYNERGY_2026-10-30.md`, 491 lines, SHA-256 `962bbd985bf18f96374a0d01b4588e0740a398b42afa954accb5c3de48a81005`.
+Claim: Ono et al. (AxiomMath/RiemannJensen, commit c1e023fa) almost-all-real Jensen roots share our theta kernel, but the
+controlled counting window leaves every fixed compact (|dX| >= T_d / c0 -> inf), so it supplies no fixed-zero control and no sign.
+Observer checks:
+- (S1) h = 4 thetaPhi: `RiemannJensen/Theta.lean` lines 34-42 at the pinned commit read via `gh api`: thetaTerm =
+  (4 pi^2 n^4 e^{9t/2} - 6 pi n^2 e^{5t/2}) exp(-pi n^2 e^{2t}). Ours is 16 / 24. PASS.
+- (S3) gamma_j = j!/(4(2j)!) int h x^{2j}: j = 0: 0.497120778188 = xi(1/2); j = 1: 0.0114859721576 = xi''(1/2)/2. PASS (12 digits).
+- (S6) compact bound R^2 A''(R)/(2d): algebra re-derived (C(d,j)/d^j = r_{d,j}/j!, gamma_j > 0). PASS.
+- (S8)-(S9) scale of the counting window: NOT checked (Counting files not read). Relay.
+Observer note (from memory, not checked here): thetaPhi is the classical Polya kernel of Xi rescaled x = 2u
+(Xi(t) = 2 int_0^inf Phi_P(u) cos(tu) du), the kernel of the de Bruijn-Newman heat flow. PINGEOM found the even window bottom
+~ h = 4 thetaPhi (cosine 0.999). Candidate test: does the drift of the bottom with m look like the heat-flow deformation
+e^{t x^2} h with t = t(m)?
