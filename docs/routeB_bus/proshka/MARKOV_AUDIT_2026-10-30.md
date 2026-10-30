@@ -104,3 +104,7 @@ the pole-free odd bottom is as close to zero as the full K. The pole is not wher
    chat. Owner decision.
 2. (6.9) Poincare inequality: literature pass on sharp spectral-gap bounds for symmetric jump processes (Williams method).
 3. pf_probe.py fix and the two new scripts are diagnostics only. DIAGNOSTIC_NEVER_A_PROOF.
+
+## Update 2026-10-30: literature pass on (6.9)
+`docs/literature/POINCARE_JUMP_PASS_2026-10-30.md`: no sharp foreign tool; agent's A_abs / Barta candidate killed by
+`crossing_prime_probe.py` (crossing prime couplings exceed the odd margin by 3e3 .. 2e25 on m = 3..12).
