@@ -218,3 +218,24 @@ prime positions without the control at non-prime positions (rule 12, table befor
 Recorded as strange, unexplained: the threshold a* ~ 0.56 does not move with m. Readings: (A) it is a property of the
 limiting near-null (prolate-type) functions and has a closed form; (B) grid artefact. Discriminator: finer grid in a and
 more m. Note: shake_probe.py now has a __main__ guard (importing it ran its main loop).
+
+## PINGEOM (2026-10-30): the pin threshold a* is fixed by the odd bottom, and the odd bottom looks like h'
+
+Owner's word: «это геометрия, это уже Перельман, добить». `pingeom_probe.py` (dps 60, 200-point grid in a, m = 4..16),
+`pingeom_limit.py` (dps 30). Output `pingeom_dps60.jsonl`.
+- Even speed never changes sign on (0, L) for any m: the even sector is pinned from the left for an atom at ANY shift.
+- Odd speed changes sign exactly once, at a*(m) = 0.542 (6), 0.556 (8), 0.570 (10), 0.578 (12), 0.574 (14), 0.575 (16).
+  So the threshold of the two-sided pin is a property of the odd bottom alone.
+- Shape: even bottom vs h (MARKOV (4.3), h-hat = 4 Xi): cosine 0.99999821 (m=6) .. 0.99921845 (m=16).
+  Odd bottom vs h': 0.99996806 (6) .. 0.99799026 (16); best of {h', x h, tanh(x/2) h, sinh(x/2) h}.
+  h and h' are exact null vectors of the global Weil form (their transforms carry the factor xi, which vanishes at every zero).
+- If the odd bottom were exactly h', the threshold would be the minimum of the autocorrelation of h':
+  R(a) ~ int_0^inf t^2 Xi(t)^2 cos(t a) dt (Riemann Xi). Two independent routes (x-space quadrature of h', and the Xi integral)
+  give the same root a*_h' = 0.547636729746 (12 digits). (Route-2 normalisation is off by a factor 2: R(0) 26.11 vs 52.22; the root
+  does not depend on it.)
+- Strange, recorded when seen: measured a*(m) sits at 0.574-0.578 for m = 12..16, 0.027 above a*_h', more than the grid step
+  (0.012). And the cosines with h and h' DECREASE as m grows. Readings: (A) the window bottoms are not converging to h, h' but to
+  other members of the radical (even: h, h'', h''''...; odd: h', h''', ...), selected by the window; then a*(m) has a different
+  limit. (B) finite-m transient, a*(m) -> 0.5476 for larger m. Discriminator: least-squares fit of the bottoms in
+  span{h', h''', h^(5)} (odd) and span{h, h'', h''''} (even) for m = 6..24, plus a*(m) for m up to 24.
+  Link: the even part is the G3 question (does the ground track a fixed trial vector?). DIAGNOSTIC_NEVER_A_PROOF.
