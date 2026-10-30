@@ -2,6 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-10-30-NOESCAPE · READY, NOT SENT
+
+- Proof batch after CONFINE + Codex confirmation: prove T = persistent fixed-jet overlap of the even bottom (implies RH by CONFINE (4.9)). Owner's word built in: honesty clause "if this is RH, say it is RH and keep proving".
+- Q1 proof of T; Q2 blind tail: sum_i |k(e_m, v_i)|^2 / lam_i^2 <= c < 1 with the explicit tail e_m = h - P_m h; Q3 threshold counting vs MARKOV (4.19); Q4 limit ladder.
+- Request: [`proshka/PROSHKA_REQUEST_NOESCAPE_2026-10-30.txt`](proshka/PROSHKA_REQUEST_NOESCAPE_2026-10-30.txt), commit `1a23edcd44d6e95bafa2929396188f47312a270b`, blob `96d3527d0248d4f5022893d5a301f4987f1e3672`, SHA-256 `b3e364b55c6ac82d4af228b35f986f6ba23892ee3ef3d99cea3ee8a0b0071978`, base `bdea6ec1`. Verdict file name: `PROSHKA_VERDICT_NOESCAPE_2026-10-30.md`.
+
 ## REQ-2026-10-30-CONFINE · ANSWERED, PARTIALLY CHECKED
 
 - Verdict 2026-10-30 13:37: [`proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md`](proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md), SHA-256 `57088a91…`, score 5, `TRY_CONFINE_FIXED_JET_OVERLAP_AUDIT`. Audit: [`proshka/CONFINE_AUDIT_2026-10-30.md`](proshka/CONFINE_AUDIT_2026-10-30.md).
