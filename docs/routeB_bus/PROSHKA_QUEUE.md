@@ -2,12 +2,16 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-30-CONFINE · SENT, AWAITING VERDICT
+## REQ-2026-10-30-CONFINE · ANSWERED, PARTIALLY CHECKED
 
-- Sent by the owner 2026-10-30 about 10:53 CET (manual paste of the delivery line, request commit `339fcb4c`, blob `f7c13308`, SHA-256 `7db16902…`). Observer watches `~/Downloads`. Do not resend.
+- Verdict 2026-10-30 13:37: [`proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md`](proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md), SHA-256 `57088a91…`, score 5, `TRY_CONFINE_FIXED_JET_OVERLAP_AUDIT`. Audit: [`proshka/CONFINE_AUDIT_2026-10-30.md`](proshka/CONFINE_AUDIT_2026-10-30.md).
+- Q1 SELECTION_RH_GRADED (new: off-critical zero => sector bottoms converge weakly to 0; persistent fixed-jet overlap => RH). Q2 COMMUTATOR_EXACT + GAP_REDUCED. Q3 fixed jet RH-graded; unrestricted L² closure dense, so vacuous. Q4 implicit equation for a*, 4.6 = fit, no heat-time crosswalk to Paper I.
+- Checked by observer: (6.3) and (6.6) to 1e-101; Paper I Jacobian error (7.6) at main.tex:532; pole difference kernel (6.1); Schur margin (9.2) = gap (identity), a/gap = ladder C_m; crude (6.12) fails by 47 ... 9e26; quasimode decay (3.9) consistent with the Xi tail up to m = 20.
+- NOT checked: §§2-4 analytic proofs (3.5)-(3.8), (4.1)-(4.5), density (2.1), Gram step (4.9). Stay PAPER.
+- Next candidate: Codex read-only PAPER audit of §§1-4 per verdict §14 (channel = owner decision). Equipartition batch postponed (equals a gap lower bound, needs xi).
 
-- Four questions after MARKOV: Q1 selection of the plateau element of the xi-radical family (heat time s ~ 0.0031); Q2 translation mode (odd bottom = derivative of even bottom) and a lower bound for the parity gap via [K, D]; Q3 geometry vs arithmetic (radical proximity breaks with the sign under a Beurling shift); Q4 threshold a*, decay e^{-4.6 m}, heat time vs 2025 heat-RKHS prime cap.
-- Request: [`proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt`](proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt), base `f89683ae`. Verdict file name: `PROSHKA_VERDICT_CONFINE_2026-10-30.md`.
+- Sent by the owner 2026-10-30 about 10:53 CET (manual paste of the delivery line, request commit `339fcb4c`, blob `f7c13308`, SHA-256 `7db16902…`). Do not resend.
+- Request: [`proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt`](proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt), base `f89683ae`.
 
 ## REQ-2026-10-29-MARKOV · ANSWERED, PARTIALLY CHECKED
 

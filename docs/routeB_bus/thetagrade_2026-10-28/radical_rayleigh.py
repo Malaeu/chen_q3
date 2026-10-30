@@ -29,18 +29,23 @@ def hder(x, k):
     return sgn * tot
 def h(x): return hder(x, 0)
 
-mp.mp.dps = int(sys.argv[1]); S1, S2 = mp.mpf("0.0030819"), mp.mpf("3.82498e-6")
-for m in [int(a) for a in sys.argv[2:]]:
-    K = t.fc.matrix_K(m); L = mp.log(m); E, O = t.parity_bases(m)
-    evE, VE = mp.eigsy(E.T * K * E); lamE = evE[0]
-    out = {"m": m, "lam0_E": mp.nstr(lamE, 4)}
-    for name, F in (("h", lambda x: h(x)), ("F_plateau", lambda x: hder(x, 0) + S1 * hder(x, 2) + S2 * hder(x, 4))):
-        # cosine coefficients (even): c_n = L^{-1/2} int F(x) cos(2 pi n (x + L/2)/L) dx  (real part of <psi_n, F>)
-        with mp.workdps(60):
-            cl = [mp.quad(lambda x: F(x) * mp.cos(2 * mp.pi * n * (x + L / 2) / L), [-L / 2, -L / 4, 0, L / 4, L / 2]) / mp.sqrt(L) for n in range(-m, m + 1)]
-        c = mp.matrix(cl)
-        R = (c.T * K * c)[0] / (c.T * c)[0]
-        a = (E * VE).T * c; cc = (c.T * c)[0]
-        shares = [a[i]**2 / cc * evE[i] / lamE for i in range(len(evE))]
-        out[name] = {"R_over_lam0E": mp.nstr(R / lamE, 5), "shares": [mp.nstr(x, 3) for x in shares[:8]]}
-    print(json.dumps(out), flush=True)
+def main():
+    mp.mp.dps = int(sys.argv[1]); S1, S2 = mp.mpf("0.0030819"), mp.mpf("3.82498e-6")
+    for m in [int(a) for a in sys.argv[2:]]:
+        K = t.fc.matrix_K(m); L = mp.log(m); E, O = t.parity_bases(m)
+        evE, VE = mp.eigsy(E.T * K * E); lamE = evE[0]
+        out = {"m": m, "lam0_E": mp.nstr(lamE, 4)}
+        for name, F in (("h", lambda x: h(x)), ("F_plateau", lambda x: hder(x, 0) + S1 * hder(x, 2) + S2 * hder(x, 4))):
+            # cosine coefficients (even): c_n = L^{-1/2} int F(x) cos(2 pi n (x + L/2)/L) dx  (real part of <psi_n, F>)
+            with mp.workdps(60):
+                cl = [mp.quad(lambda x: F(x) * mp.cos(2 * mp.pi * n * (x + L / 2) / L), [-L / 2, -L / 4, 0, L / 4, L / 2]) / mp.sqrt(L) for n in range(-m, m + 1)]
+            c = mp.matrix(cl)
+            R = (c.T * K * c)[0] / (c.T * c)[0]
+            a = (E * VE).T * c; cc = (c.T * c)[0]
+            shares = [a[i]**2 / cc * evE[i] / lamE for i in range(len(evE))]
+            out[name] = {"R_over_lam0E": mp.nstr(R / lamE, 5), "shares": [mp.nstr(x, 3) for x in shares[:8]]}
+        print(json.dumps(out), flush=True)
+
+
+if __name__ == "__main__":
+    main()

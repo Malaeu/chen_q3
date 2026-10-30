@@ -1,0 +1,5 @@
+m=8 t_m=24.173 eps0_pred=2.027e-6 measured=4.4859e-07 ratio=0.2213
+m=12 t_m=30.342 eps0_pred=5.209e-9 measured=6.3503e-10 ratio=0.1219
+m=16 t_m=36.259 eps0_pred=2.411e-10 measured=1.1878e-10 ratio=0.4927
+m=20 t_m=41.948 eps0_pred=4.327e-12 measured=1.7273e-12 ratio=0.3992
+m=24 t_m=47.449 eps0_pred=2.862e-14 measured=None ratio=-

@@ -344,3 +344,17 @@ So the "one lam0 per level" law belongs to the exact translation mode D f_E only
 on the odd sector, so a_i = b_i / (lam_i - lam_E) with b = [K, N] f_E, and w_i lam_i ~ |b_i|^2 / lam_i. Equipartition
 w_i lam_i ~ lam0 means |b_i|^2 ~ lam0 lam_i: the commutator vector b has spectral weights proportional to lam_i.
 Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial-vector kills of 29.10). DIAGNOSTIC_NEVER_A_PROOF.
+
+## After CONFINE verdict (2026-10-30): Schur margin = gap; quasimode decay follows the Xi tail
+
+- `confine_schur_probe.py` (dps 100, m = 4, 8, 12, 16): displacement identity (6.3) of the verdict holds to 2e-101;
+  derivative-trial residual (6.6) to 8e-101. Schur margin Delta = a - r*C^-1 r equals 1/(v*A^-1 v) exactly and
+  equals the gap lambda0(K_O) - lambda0(K_E) to 1.000003 (m = 16). a/gap = 1.9304, 4.5831, 5.4956, 6.2926 = the
+  ladder constant C_m. So the ladder and the Schur response are one object; the Schur form is not cheaper than the
+  gap. Crude criterion (6.12) fails by 47, 2.1e10, 2.8e18, 8.9e26.
+- `quasimode_norm_probe.py` (dps 50): ||K_m P_m h|| / ||P_m h|| = 4.49e-7, 6.35e-10, 1.19e-10, 1.73e-12 for
+  m = 8, 12, 16, 20. Strange on sight: step 12 -> 16 only 5.3x. `quasimode_xi_tail.py`: ratio to the predicted Xi
+  Fourier tail beyond t_m = 2 pi m / log m is 0.22, 0.12, 0.49, 0.40. Decay ~ exp(-pi² m / (2 log m)) modulated by
+  abs(Xi(t_m)); consistent with the verdict's (3.9). Not a proof of (3.9).
+- `radical_rayleigh.py` got a `__main__` guard (import ran its loop).
+- Audit: `docs/routeB_bus/proshka/CONFINE_AUDIT_2026-10-30.md`.
