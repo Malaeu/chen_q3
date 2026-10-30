@@ -1,0 +1,9 @@
+L14 m=2: count=1  Delta2<mu2=True  Delta/mu=0.975995  t2=4.762e-02
+L14 m=3: count=1  Delta2<mu2=True  Delta/mu=0.994100  t2=1.176e-02
+L14 m=4: count=1  Delta2<mu2=True  Delta/mu=0.998533  t2=2.933e-03
+L14 m=5: count=1  Delta2<mu2=True  Delta/mu=0.999634  t2=7.326e-04
+L14 m=6: count=1  Delta2<mu2=True  Delta/mu=0.999908  t2=1.831e-04
+hat h(0) = 1.98848311275326   4 Xi(0) = 1.98848311275326
+hat h(3) = 1.6126608290283   4 Xi(3) = 1.6126608290283
+m=16: h(b)=1.16e-17  ||h_out||=1.179e-18  e^(-pi m)=1.479e-22  hat h_out(om_17)=-2.064e-19  H(om_17)=2.837e-10
+m=20: h(b)=6.725e-23  ||h_out||=6.101e-24  e^(-pi m)=5.158e-28  hat h_out(om_21)=-9.728e-25  H(om_21)=4.783e-12
