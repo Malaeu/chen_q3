@@ -282,3 +282,15 @@ Reading: the radical family is defined by xi, i.e. by the exact arithmetic (thet
 zeta); the window positivity and the window geometry are one phenomenon: "the bottom is a confined xi-radical vector".
 Owner's reading 30.10: «геометрия не ломается, физика тоже, а у арифметики нет модели». Observer: the model exists, it is the
 theta function h (heat kernel on the circle, modular symmetry); what is missing is a proof that the confined object stays the bottom.
+
+### CONFINE probes (2026-10-30): no confinement law, no de Bruijn-Newman deformation
+
+`confine_probe.py` (dps 100, m = 4..24), output `confine_probe_dps100.jsonl`.
+- lam0_E / T1 (T1 = tail energy of the plateau radical vector beyond L/2): 2.1e-4 (m=4), 7.8e-6 (6), 1.4e-6 (8), 4.3e-7 (10),
+  7.7e-7 (12), 1.6e-6 (14), 1.8e-6 (16), 5.0e-5 (20), 5.1e-3 (24). Flat-ish only on m = 10..16; lam0 decays like e^{-4.6 m}
+  (log-slope -5.38 on 12..16, -4.65 on 16..20, -4.58 on 20..24) while the tail decays much faster. Confinement law refuted.
+  lam0 values: E 5.46e-38 (16), 2.58e-46 (20), 2.69e-54 (24); O 6.85e-35, 4.30e-43, 4.55e-51.
+- Heat-flow (de Bruijn-Newman) fit e^{t x^2} h of the even bottom: best t runs to the search edge 0.5, residual 1.3e-3 .. 2.5e-2
+  versus 2e-6 .. 2e-4 for the radical-family fit. Rejected. The Fourier-side smoothing xi e^{-s z^2} (s ~ 0.003) stays the
+  first-order description (heatsmooth_check.py).
+Recorded as strange: the decay rate of lam0 per unit m tends to about 4.6 and is not the tail rate. DIAGNOSTIC_NEVER_A_PROOF.
