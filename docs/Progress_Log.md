@@ -9701,3 +9701,14 @@ OPEN. Source/control families and endpoint alternatives remain distinguished.
 GREEN_VERDICT_AUDIT records exact continuation. No pending Proshka response.
 User authorized temporary draft preservation; original1642-character draft
 was restored exactly after GREEN dispatch. No RH claim; app goal ACTIVE.
+
+## 2026-10-31 — LOCALIZE: tight oscillatory controls, exact-bottom estimate open
+
+LOCALIZE received via e8fb5854; all691 lines read, exact SymPy replay PASS,
+independent L1-L4/L10 and L5-L9 PAPER reviews PASS. Literal spatially tight
+radical quasimodes have superpoly residual/edge/return but divergent local
+energy and far compensated coupling. This kills only a larger-class regularity
+supplier, not exact bottoms or RH. Narrow-edge return and bounded near costs
+leave selected E+F_far unpaid. See LOCALIZE_VERDICT_AUDIT_2026-10-31.md.
+Shelf refresh and three deep searches completed; nonzero cutoff normalization
+is paid. Old m16 coordinate cache is second eigenvector, not bottom; retain it.

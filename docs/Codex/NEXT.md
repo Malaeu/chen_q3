@@ -45,7 +45,7 @@ BOUNDARY получен и прочитан полностью; независи
 DIAGONAL получен GitHub-коммитом f7a8ff0a,615строк прочитаны; Appendix replay PASS.
 Независимые bounded PAPER checks PASS; DIAGONAL_VERDICT_AUDIT фиксирует границы.
 GREEN получен GitHub bf8612ad;744строки прочитаны, exact replay+bounded PAPER PASS.
-Нет pending response. Черновик был восстановлен точно; дальнейшие изменения владельца сохранять.
+LOCALIZE GitHub e8fb5854 прочитан; PAPER+replay PASS. UI ещёThinking23:24; проверить23:44UTC.
 
 ## Следующий шаг
 
@@ -82,8 +82,8 @@ GREEN получен GitHub bf8612ad;744строки прочитаны, exact r
 5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
    THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
    GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
-   LOCAL_LOG_REGULARITY_ATTEMPT: L8 pole cancellation независимо проверен; L9 OPEN.
-   Следующий тест: joint discrepancy/projection в L9; L7 — полный критерий выигрыша.
+   LOCALIZE: tight oscillatory quasimodes ломают regularity даже при tiny edge/return.
+   Далее: прямые E/F_far на m16; новый ground_eigenpair.json=index0, старый index1 сохранён.
 
 ## Адреса
 Bus: ../routeB_bus/proshka/NOESCAPE_AUDIT_2026-10-30.md,

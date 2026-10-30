@@ -1,0 +1,98 @@
+LOCALIZE — source-specific localization after GREEN
+Repository Malaeu/chen_q3, branch rh_clean.
+Mathematical source pin: 5575dc7b (full hash obtainable from branch history).
+Same living phase, literal CCM N=m, L=log m, original even finite carrier.
+Consumer: PAPER_CHAIN current NOESCAPE front; T => RH. T/RH OPEN.
+
+GREEN is fully processed: complete verdict read, exact replay and independent
+bounded checks passed. Your J-ground escape theorem is accepted at PAPER scope,
+not as escape of A-bottoms. Singular/multiple branches remain material.
+
+OWN ATTEMPT, now source-pinned:
+docs/routeB_bus/proshka/NOESCAPE_LOCAL_LOG_REGULARITY_ATTEMPT_2026-10-30.md
+L1-L5 and L8-L9 have independent bounded algebra checks. L7 is the exact
+same-carrier competitor ledger. Please use the actual file, not only this summary.
+
+Fix real even smooth 0<=chi<=1 with support [-R,R], R fixed, and a normalized
+real even exact bottom f in V_m,E; lambda=k[f], P=P_m,E, b=L/2.
+Let z=chi f, e=(I-P)z, s=(I-P)(chi²f).
+Arch energy H[z]=int_0^infinity j(a)||z-T_a z||² da controls the log Fourier norm:
+log(2+|t|)<=exp(1/2)*a(t)+2+log3,
+a(t)=2 int j(s)(1-cos(ts)) ds.
+Because z has fixed support,
+H[z]<=k[z]+(c_*+2 sum_{n<=exp(2R)} Lambda(n)/sqrt(n))||z||².
+All prime powers remain. Parity removes the odd pole by actual cancellation.
+
+Exact projected stationarity gives
+k[z]=lambda||z||²+Re k(f,s)+M_chi(f).
+This uses stationarity only, not minimality. For a trial q with residual
+r=(A-rho)q, rho=k[q], add Re<r,P(chi²q)>; its magnitude is at most ||r||.
+
+Own physical version of your BOUNDARY pole cancellation:
+C(s)=int_{-b}^{b-s}(chi(x)-chi(x+s))² f(x)f(x+s) dx,
+D(s)=sum_{2<=n<=exp(s)} Lambda(n)/sqrt(n)-2(exp(s/2)-1),
+j_+(s)=j(s)-exp(-s/2)>0.
+Then exactly M_chi(f)=int_0^L j_+(s)C(s)ds-int_0^L D(s)C'(s)ds.
+Proof uses p(x)p(y)=cosh((x+y)/2)+cosh((x-y)/2) and both evennesses.
+C(0)=C(L)=0; C is absolutely continuous for finite Fourier f and vanishes
+for s>b+R. Its derivative RETAINS the moving endpoint term
+-(chi(b-s)-chi(b))² f(b-s)f(b).
+No reciprocal symmetry C(L-s)=-C(s) has been shown or may be imported.
+The reference integral is bounded uniformly by int j_+(s)min(||chi'||²s²,1)ds.
+No PNT approximation or discarded prime/pole is involved.
+
+Thus one concrete regularity debt is a joint upper bound
+Re k(f,(I-P)chi²f)-int_0^L D(s)C'(s)ds <= constant_chi.                 (*)
+This has NOT been proved. Separate absolute budgets before cancellation grow
+like m^(1/4)log m plus a projection price. Minimality by itself gives a lower
+bound on returned local energy, not the upper bound needed in (*).
+
+There is also a fully admissible descent test. If v=Pz !=0, g=v/||v||,
+k[g]-lambda=N_chi/||v||², where
+N_chi=Re k(f,s)+M_chi(f)-2Re k(z,e)+k[e]+lambda||e||².
+Every term is the original full source. Exact minimality says N_chi>=0.
+Escape-to-negative-source-upper-bound for N_chi would contradict it.
+No denominator lower bound or negative sign is assumed.
+
+NEGATIVE CONTROLS / SCOPE:
+- On the nonnegative escaping radical trials C>=0, so the j_+ reference is
+  nonnegative; cancellation alone does not discriminate bottoms from trials.
+- Uniform carrier-wide projection repair was already killed on the shelf:
+  docs/routeB_bus/source_observability_2026-09-28/DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md.
+  Those controls are not exact bottoms; do not kill selected estimates with them.
+- Local log regularity is only half a compactness mechanism. Positive local mass
+  remains unpaid. Weak J-ground escape does not let one silently transfer
+  regularity between f and the normalized complementary response from GREEN.
+- Jet mixing, nearzero trial energy, forced central nodes and positive reduced
+  Green kernels are not available. No finite numerical example is a cofinal proof.
+
+SHELF RETURN:
+The three current ask queries (signed nonlocal IMS localization Caccioppoli;
+spectral projection commutator localization error; prime discrepancy compensated
+quadratic form) returned INCOMPLETE: semantic-index freshness failed.
+No literature-absence claim. Earlier verified threshold/IMS/Gridnev analyses
+remain in NOESCAPE_THRESHOLD_ALIAS_HUNT and NOESCAPE_GRIDNEV_GARCIA_BRIDGE.
+Those sources do not pay the signed discrepancy plus carrier return here.
+
+MAIN TASK: determine whether the original CCM coefficients together with exact
+minimality provide a usable one-sided estimate of the JOINT expression (*),
+or a strictly negative N_chi under full fixed-jet escape. A modified/adaptive
+competitor is allowed if normalized, even and returned to the SAME carrier;
+do not make this fixed cutoff the only path. Seek an actual source estimate
+(e.g. a justified selected spectral-edge or exterior coupling estimate) that
+changes the quantitative budget, not a renamed sufficient hypothesis.
+Locate exactly where minimality beyond stationarity enters. Test that step
+on literal escaping radical trials, retaining their actual energy excess and
+residual on the scale of the proposed gain. If (*) is attainable, say explicitly
+what additional source estimate still supplies mass; do not declare T from it.
+If no source estimate is obtained, identify the smallest uncontrolled signed
+quantity after all justified cancellations, and a concrete next discriminating
+test. Do not spend the answer only reproducing our already-checked identities.
+
+DELIVERY AUTHORIZATION: write only
+ docs/routeB_bus/proshka/PROSHKA_VERDICT_LOCALIZE_2026-10-31.md
+in Malaeu/chen_q3 rh_clean. Read current head and preserve concurrent commits;
+one scoped non-force commit with only this new file, then verify remote bytes.
+Do not change Lean, other files, policies, branch settings or make an RH claim.
+Also return the complete verdict as an attachment in this same chat. If GitHub
+write is unavailable, report that exact limitation and still return attachment.

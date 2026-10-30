@@ -215,3 +215,44 @@ introduced a discriminator between bottoms and small-residual trials.
 Independent read-only audit of L8-L9 confirmed pole factors, moving endpoint,
 absolute continuity, full prime measure, conditional bound and negative control.
 No discrepancy estimate, strict descent or NOESCAPE conclusion was accepted.
+
+## Nonzero returned competitor: a small correction to the scope guard
+
+For this specific cutoff one can settle v!=0 without an escape estimate.
+Choose chi nonzero as well as smooth and nonnegative. Since the finite
+Fourier synthesis f is nonzero and real analytic on I, it cannot vanish on
+the open interval where chi>0. Therefore
+
+ <f,P(chi f)>=<f,chi f>=integral_I chi(x)|f(x)|² dx>0,
+ ||P(chi f)||>=integral_I chi(x)|f(x)|² dx>0.
+
+Thus g=P(chi f)/||P(chi f)|| in L7 is always defined for these finite cells.
+This refines the earlier generic zero-denominator guard: that guard matters
+for zero or sign-changing cutoffs, but nonzero nonnegative chi excludes it.
+No uniform lower bound is obtained; the displayed integral can tend to zero
+under escape. The strict sign of N_chi remains the decisive unpaid step.
+This repeats the nonvanishing mechanism already present for fixed-sign G
+in DIRECT_THETA_LOCALIZATION_AUDIT_2026-10-06.md, rather than a new supplier.
+
+## Focused shelf return while LOCALIZE runs
+
+Semantic refresh completed with 3752 indexed files and 26481 vectors, PASS.
+Three deep queries then completed with ASK_STATUS:HITS: signed nonlocal IMS
+localization Caccioppoli; spectral projection commutator localization error;
+prime discrepancy compensated quadratic form. Concurrent qmd calls failed
+for two queries; sequential repeats succeeded. Logs are
+/tmp/rh_localize_ims_ask_retry.txt, /tmp/rh_localize_projection_ask.txt,
+/tmp/rh_localize_compensation_ask_retry.txt. Hits are not supplier acceptance.
+
+The direct-theta localization audit supplies the nonvanishing observation
+above and excludes carrier-uniform repair; its selected-bottom bound is OPEN.
+The regional-energy verdict of 2026-09-07, Theorem U1 and sections 7–8,
+works on a special three-lobe, two-total-pole-null class. It explicitly leaves
+universal signed localization unpaid. chi f here need not have that support
+or pole-nullity, so its positive local floor cannot be used in L9.
+The first-omitted-compression verdict of 2026-09-26 gives form continuity for
+fixed G/G'' projection errors, not for the adaptive error (I-P)chi²f_m;
+its section 1 uses a different N=6m-1 source schedule. No automatic transfer
+of that selected compression estimate to literal N=m is admitted.
+This bounded return found useful scope controls, not a new joint source bound.
+The pending LOCALIZE request is unchanged and has not been resent.

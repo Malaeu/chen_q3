@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cache the literal m=N=16 even-sector second eigenpair.
+"""Cache the literal m=N=16 even-sector ground and second eigenpairs.
 
 This is finite numerical input only: DIAGNOSTIC_NEVER_A_PROOF and
 CHALLENGER_NOT_RH.  The Arb matrix/eigenpair follows the existing
@@ -10,6 +10,7 @@ that comparison is diagnostic and is not used to certify the Arb result.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import platform
@@ -101,7 +102,7 @@ def vector_records(values: list[arb]) -> list[dict[str, str]]:
     return [arb_ball(value) for value in values]
 
 
-def main() -> int:
+def main(output: Path = OUTPUT) -> int:
     started = time.perf_counter()
     ctx.dps = BASE_DPS
     ctx.threads = 1
@@ -152,12 +153,30 @@ def main() -> int:
     residual1 = residual(vec1, lam1)
     norm2_0 = sum((entry * entry for entry in vec0), arb(0))
     norm2_1 = sum((entry * entry for entry in vec1), arb(0))
+    ground_residuals_contain_zero = all(0 in item for item in residual0)
+    ground_norm2_strictly_positive = norm2_0.lower() > 0
+    ground_norm2_encloses_one = 1 in norm2_0
     residuals_contain_zero = all(0 in item for item in residual1)
     normalization_encloses_one = 1 in norm2_1
+    if not ground_residuals_contain_zero:
+        raise RuntimeError("ground eigenpair residual interval failed to contain zero componentwise")
+    if not ground_norm2_strictly_positive:
+        raise RuntimeError("ground eigenvector norm-squared interval is not strictly positive")
+    if not ground_norm2_encloses_one:
+        raise RuntimeError("ground eigenvector norm-squared interval failed to enclose 1")
     if not residuals_contain_zero:
         raise RuntimeError("second eigenpair residual interval failed to contain zero componentwise")
     if not normalization_encloses_one:
         raise RuntimeError("second eigenvector norm-squared interval failed to enclose 1")
+
+    ground_norm = norm2_0.sqrt()
+    normalized_ground_vec = [entry / ground_norm for entry in vec0]
+    normalized_ground_norm2 = sum(
+        (entry * entry for entry in normalized_ground_vec), arb(0)
+    )
+    normalized_ground_norm2_encloses_one = 1 in normalized_ground_norm2
+    if not normalized_ground_norm2_encloses_one:
+        raise RuntimeError("interval-normalized ground vector norm-squared failed to enclose 1")
 
     print("running entrywise diagnostic comparison against full_center_probe.matrix_K(16)", flush=True)
     crosscheck = entrywise_source_crosscheck(matrix, actual_dps)
@@ -170,6 +189,12 @@ def main() -> int:
 
     even_vector = vector_records(vec1)
     full_vector = vector_records(edge.even_to_pm_row(vec1, N))
+    ground_even_vector = vector_records(vec0)
+    ground_full_vector = vector_records(edge.even_to_pm_row(vec0, N))
+    normalized_ground_even_vector = vector_records(normalized_ground_vec)
+    normalized_ground_full_vector = vector_records(
+        edge.even_to_pm_row(normalized_ground_vec, N)
+    )
     source_paths = {
         "this_script": Path(__file__).resolve(),
         "edge_ledger_build.py": PHASE5 / "edge_ledger_build.py",
@@ -202,12 +227,15 @@ def main() -> int:
             "first_second_strictly_separated": True,
             "second_third_strictly_separated": True,
             "ground_eigenvalue": arb_ball(lam0),
+            "ground_residual_componentwise_contains_zero": ground_residuals_contain_zero,
+            "ground_residual_components": vector_records(residual0),
             "selected_eigenvalue_i1": arb_ball(lam1),
             "selected_index_zero_based": 1,
             "residual_enclosure_componentwise_contains_zero": residuals_contain_zero,
             "selected_residual_components": vector_records(residual1),
-            "ground_residual_componentwise_contains_zero": all(0 in item for item in residual0),
             "ground_norm_squared_ball": arb_ball(norm2_0),
+            "ground_norm_squared_strictly_positive": ground_norm2_strictly_positive,
+            "ground_norm_squared_encloses_one": ground_norm2_encloses_one,
             "selected_norm_squared_ball": arb_ball(norm2_1),
             "selected_norm_squared_encloses_one": normalization_encloses_one,
             "normalization_note": "No post-hoc rescaling; stores the eigensolver vector and its Arb norm-squared enclosure.",
@@ -217,6 +245,37 @@ def main() -> int:
             "fourier_modes_minus16_to_plus16": full_vector,
             "mode_order": list(range(-N, N + 1)),
             "map": "c_0=xi_0 and c_{+/-j}=xi_j/sqrt(2)",
+        },
+        "ground_eigenvector": {
+            "selected_index_zero_based": 0,
+            "eigenvalue": arb_ball(lam0),
+            "raw": {
+                "even_basis_coordinates": ground_even_vector,
+                "fourier_modes_minus16_to_plus16": ground_full_vector,
+                "mode_order": list(range(-N, N + 1)),
+                "map": "c_0=xi_0 and c_{+/-j}=xi_j/sqrt(2)",
+            },
+            "normalization": {
+                "method": "divide each coordinate by the square root of its Arb norm-squared enclosure",
+                "raw_norm_squared": arb_ball(norm2_0),
+                "raw_norm_squared_strictly_positive": ground_norm2_strictly_positive,
+                "factor": arb_ball(ground_norm),
+            },
+            "interval_normalized": {
+                "even_basis_coordinates": normalized_ground_even_vector,
+                "fourier_modes_minus16_to_plus16": normalized_ground_full_vector,
+                "mode_order": list(range(-N, N + 1)),
+                "map": "c_0=xi_0 and c_{+/-j}=xi_j/sqrt(2)",
+                "norm_squared": arb_ball(normalized_ground_norm2),
+                "norm_squared_encloses_one": normalized_ground_norm2_encloses_one,
+            },
+            "validation": {
+                "raw_residual_componentwise_contains_zero": ground_residuals_contain_zero,
+                "raw_residual_components": vector_records(residual0),
+                "raw_norm_squared_encloses_one": ground_norm2_encloses_one,
+                "normalized_norm_squared_encloses_one": normalized_ground_norm2_encloses_one,
+                "residual_note": "Componentwise interval containment of zero is a residual enclosure check only; by itself it does not prove a common exact eigenpair.",
+            },
         },
         "runtime": {
             "python": platform.python_version(),
@@ -232,10 +291,17 @@ def main() -> int:
             "The selected vector is an Arb enclosure returned by python-flint; its norm-squared ball is recorded without rescaling.",
         ],
     }
-    OUTPUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    output.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(json.dumps(payload, indent=2, ensure_ascii=False), flush=True)
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=OUTPUT,
+        help=f"write the JSON payload here (default: {OUTPUT})",
+    )
+    raise SystemExit(main(parser.parse_args().output))
