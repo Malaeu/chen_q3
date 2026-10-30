@@ -1,6 +1,9 @@
 # m16 direct-X interval certificate: bounded gap
 
-Status: **OPEN**. This is a physical-source diagnostic and certificate plan,
+Historical gap, resolved at finite scope by
+[M16_DIRECT_X_INTERVAL_AUDIT_2026-10-30.md](M16_DIRECT_X_INTERVAL_AUDIT_2026-10-30.md):
+independent direct |X|/B<0.000336<1/4. The derivation below is preserved as
+the pre-certificate state. This was a physical-source diagnostic and certificate plan,
 not an independent interval-X result, an identity check, or an RH claim.
 `CHALLENGER_NOT_RH`; `PX_RH_CLAIM: NOT_MADE`.
 

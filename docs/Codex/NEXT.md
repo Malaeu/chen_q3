@@ -28,8 +28,9 @@ NOESCAPE T: одно фиксированное конечное theta-jet пр�
   entropy, even Poincare, NOESCAPE и RH остаются OPEN.
 - Arb m16 second even eigenpair сохранён и независимо проверен. Для unit-vector
   использования интервально нормировать real coordinates. Source mp-сверка diagnostic.
-- Полный независимый F/X с относительным остатком ещё OPEN. Старый X=T−F не годится.
-  Прямой X=k(h_out,v)−k(W,v)+<PW,A_m v> избегает high-mode truncation.
+- Independent direct m16 X завершён: |X|/B<0.000336<1/4, full budgets и
+  bounded review PASS. M16_DIRECT_X_INTERVAL_AUDIT. Знак X не установлен;
+  finite F/X consistency проверена отдельно, не cofinal.
 
 ## Прошка — один живой чат
 
@@ -40,17 +41,19 @@ ENTROPY и VARIATIONAL получены, прочитаны целиком, alge
 Его сильный результат: nonnegative unit even escaping source trials с
 superpolynomial residual/jet decay; НЕ exact bottoms. Cut gain−4C_q точен,
 но положительный source sign C_q>0 при escape не получен. T/RH OPEN.
-Ожидаемого ответа сейчас нет. Новый запрос только после собственного source-return.
+BOUNDARY получен и прочитан полностью; независимые bounded PAPER проверки
+§§3–7 и SymPy replay пройдены. См. BOUNDARY_VERDICT_AUDIT_2026-10-30.md.
+Ответа в ожидании нет; новый вопрос только после собственной следующей попытки.
 Browser после reset:id3 Chrome Nod, tab1618258119; DOM debugger unattached,
 native cua Chrome AX работает. Не повторять уже обработанные запросы.
 
 ## Следующий шаг
 
-1. Finite m16: независимый direct-X diagnostic≈4.00561e−37, X/B≈9.47626e−5.
-   Interval F+проверенный хвост+точное NOESCAPE тождество дают ПРОВЕРЕННОЕ
-   identity-derived |X|/B<0.000195481<0.0002. Source map и B проверены.
-   Это не independent interval-X/identity check: direct quadrature всё ещё
-   без полного сертификата. Не объявлять §11 полностью выполненным; не cofinal.
+1. Finite m16 закрыт в заявленном объёме: direct physical Arb X,42pieces,
+   |X|/B<0.000336<1/4. Theta/images, zero strip, far arch, all prime powers,
+   poles и interval normalization оплачены; независимый review PASS.
+   F+X+lambda<h,v> interval contains0: consistency, не numerical proof.
+   Отдельный identity-derived |X|/B<0.0002 сохранён. Не переносить на m→∞.
 2. Owner variational scope: любой unit even same-carrier конкурент; выигрыш
    может→0, нужен строгий знак всех членов. Конкуренту не нужен jet-overlap.
    Modulus gain/return и два препятствия проверены; universal contraction FALSE.
@@ -62,13 +65,20 @@ native cua Chrome AX работает. Не повторять уже обраб
    Для trials нужна margin>||residual||; actual escaping trials не дают её.
    Escape=>overload OPEN. Single-edge criterion sufficient, not necessary:
    collective-negative path control исключает превращение его в новый T.
-   Следующий own step: source-specific edge/positive-energy estimates под
-   exact eigenrelation; лишь затем один точный вопрос в прежнем Pro-чате.
-4. Самая сильная проверенная trial obstruction: VARIATIONAL Lemmas3-6,
-   explicit a_m=logm/8, positive zero-mode repair. Small residual не minimum.
-   Слабая прежняя diagonal construction сохранена как история, не переделывать.
-5. VARIATIONAL request+answer+выводы и semantic return сохранены текущим
-   scoped commit; delivery non-force push. ENTROPY pushed805ed247. RH goal ACTIVE.
+   Own source attempt записан: NOESCAPE_RESISTANCE_SOURCE_ATTEMPT. Cheap
+   endpoint envelope свёлся к2x2 minor; same-parity derivative даёт точный
+   boundary determinant, знак OPEN. m4/8/16 diagnostic: даже first excited
+   не запускает single-edge/i² tests; это не cofinal kill. BOUNDARY обработан: source sign остаётся OPEN.
+4. BOUNDARY: endpoint-flat escaping trials обходят любой fixed-degree drift;
+   finite linear observations тоже могут зануляться у quasimodes. Exact bottom
+   + exact flatness даёт multiplicity, но escape=>flatness не доказано.
+   Следующая своя попытка: adaptive amplitude и независимые signed estimates
+   reciprocal prime discrepancy/ref kernel; точное переписывание Q<0 не supplier.
+   Jet mixing: cross term=0; near-zero jet не дешевле bottom. Центральные узлы
+   без отдельного доказательства не использовать.
+5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
+   Own source attempt/probe + BOUNDARY request/answer/audit + finite X сохранены
+   одним scoped commit после ответа. RH goal ACTIVE.
    Чужие CLAUDE/Progress dirt и untracked сохранить, без git add -A.
 
 ## Адреса

@@ -1,0 +1,108 @@
+REQUEST_ID: REQ-2026-10-30-BOUNDARY
+BOUNDARY: GOAL058_FIXED_JET_NO_ESCAPE_ON_LITERAL_CCM_BOTTOMS
+SOURCE_BASE_COMMIT: b659c795f445effe157fdda2fa07256f1d430163
+
+Continue the same RH goal and original even CCM family. VARIATIONAL was read
+completely and processed, its Appendix A replayed, and Lemmas3-6 and7-10
+independently checked. Your explicit nonnegative escaping source trials with
+superpolynomial residual and fixed-jet decay are accepted at bounded PAPER
+scope, not as exact bottoms. ENTROPY and F/X boundaries are unchanged; no
+independent interval-X or cofinal inference is claimed. No need repeat them.
+
+We completed our own source attempt after your reply, including shelf/primary
+semantic return. The active PAPER_CHAIN node is still strict same-carrier
+source descent under complete jet escape of exact selected bottoms. Do NOT
+make the following restricted tests mandatory strengthenings of T. A better
+competitor is welcome if its source gain is proved, all errors included.
+
+OWN ATTEMPT 1: signed network, then a precise limitation.
+For a real exact unit bottom c, w_ij=-A_ij c_i c_j. With y_i=a_i c_i,
+y^T(A-lambda)y=sum_{i<j} w_ij(a_i-a_j)^2. Positive weights define L+.
+For a negative edge pq of magnitude alpha, Dirichlet voltage a_p=1,a_q=0
+on its positive component, 0<=a<=1, has positive energy 1/Rpq. Hence
+Q(y)<=1/Rpq-alpha; all other negative edges only lower the value. Normalizing
+y is a same-carrier competitor if alpha>1/Rpq. Crossing positive components
+uses a component indicator and positive energy0. No return error.
+Primary: Zelazo-Buerger arXiv:1408.4471, Theorem IV.7, PDFp8. Their iff theorem
+has ONE negative edge; our many-edge SUFFICIENT implication above is direct,
+not an illicit import. Saved primary hash d5c5a5fd842b2f1f04f46b8f57ca8b761ccf084b01ac249bf4f98d2a95582884.
+For trials rho=c^TAc,r=(A-rho)c, correction=sum ai^2 ci ri, bounded by||r||.
+Thus a vanishing margin must still exceed this residual; our escaping trials
+do not verify or refute its unknown sign/scale. Descent on them would not proveT.
+
+This is strictly more powerful than sign cuts: w12=w23=1,w13=-3/4 passes all
+cuts, yet R13=2 and a=(1,1/2,0) has energy-1/4. c=ones/sqrt3,A=3L realizes it
+and gives normalized gain-3/5. But even full single-edge tests are incomplete:
+positive path1-2-3-4 of unit weights, negative13 and24 each-2/5, has every
+alpha R=4/5, yet a=(3,2,1,0) has energy-1/5. These are exact controls, notCCM.
+
+Cheap source-envelope attempt: D_i=sum(wij)+,N_i=sum(-wij)+,
+d_i=D_i-N_i=(Aii-lambda)ci^2. Taking all other voltages equal gives
+positive energy E0=DpDq/(Dp+Dq). But bottom's2x2 principal minor implies
+alpha^2<=dpdq<=(Dp-alpha)(Dq-alpha), hence alpha<=E0. This bound adds no
+new information. The full R can be stronger, but no escape-derived bound exists.
+
+OWN ATTEMPT 2: literal-source finite diagnostic (NOT proof).
+Full matrix_K(m), orthonormal even compression,70dps mpmath eigenvectors and
+grounded positive-network solves; all prime powers/poles/arch terms retained.
+For m=4,8,16 max alpha R of bottom: .995831714,.991495755,.972539817.
+For first excited: .816339502,.961868760,.808184938. No edge overload in either.
+Atm16 first excited has an actual lower bottom by4.7334130203e-32 but maxalphaR<.809.
+Residuals<3e-71, source quadrature NOT certified. No claim the excited family
+escapes or that these finite cells refute a cofinal mechanism. They do rule
+out treating a one-edge test as an automatic detector of all nonminimum states.
+
+OWN ATTEMPT 3: same-parity derivative/displacement specialization.
+Use your exact Aij=di dj(Fi-Fj)/(xi-xj), xi=i^2, Fi=i beta_i,
+X=diag(xi), v_i=di,u_i=di Fi. Then [X,A]=uv^T-vu^T.
+This is inherited displacement structure (CONFINE6.2, VARIATIONAL6.2), NOT a
+new globally positive commutator or the old odd-gap Schur inference.
+Define S0=v^Tc,SF=u^Tc,Sx=v^TXc,SFx=u^TXc. Exact eigenrelation gives
+(A-lambda)Xc=v SF-u S0,
+Delta=<Xc,(A-lambda)Xc>=Sx SF-S0 SFx.
+Delta<0 gives the explicit even same-carrier competitor Xc/||Xc||.
+Bottom stability gives Delta>=0; at equality PSD additionally gives
+v SF-u S0=0. Stationarity alone does not give this equality consequence.
+For arbitrary trials the correction is sum i^4 ci ri, at most m^4||r||.
+Using X/m^2 rescales both gain and error, not the normalized competitor.
+Actual m16 Qx is positive:5.1722181138e-29 bottom,2.9774013190e-23 firstexcited.
+Thus this single derivative choice also fails as a universal instability detector.
+
+FULL SOURCE BOUNDARY REWRITE, independently checked:
+L=logm,b=L/2, f(x)=L^(-1/2)sum di ci cos(2pi i(x+b)/L),
+P1=kappa sum di i^2 ci/(L^2+16pi^2 i^2),
+P3=kappa sum di i^4 ci/(L^2+16pi^2 i^2), kappa=32L sinh^2(L/4),
+B_k=integral_0^L j(s) f^(k)(s-b)ds
+    +sum_{2<=n<=m}Lambda(n)/sqrt(n) f^(k)(logn-b), k=1,3.
+Then S0=sqrtL f(-b),Sx=-L^2 sqrtL f''(-b)/(4pi^2),
+SF=P1-L sqrtL B1/(2pi^2), SFx=P3+L^3 sqrtL B3/(8pi^4), and exactly
+Delta=Sx P1-S0 P3+L^4/(8pi^4)[f''(-b)B1-f(-b)B3].
+These are INTERIOR trig derivatives, not derivatives of the zero extension.
+Their odd endpoint values vanish; O(s) at0 pays the j singularity, and n=m
+is retained with contribution0. No supported prime power or pole term omitted.
+This is actual boundary/shift correlation, not fixed theta-jet data.
+
+SINGLE RESEARCH QUESTION:
+Can the original source supply an independently proved comparison in this
+boundary/shift-correlation balance, or a controlled combination of same-carrier
+amplitude directions, that is incompatible with COMPLETE fixed-jet escape of
+exact selected bottoms? We need the step USING escape and the concrete source,
+not another multiplier identity, name for shifted PSD, or assumed positive
+margin. One selected late cell suffices; a uniform positive constant is not needed.
+
+Start by determining whether a source feature can actually discriminate the
+exact bottoms from the accepted escaping radical trials. If the boundary
+specialization is too weak, establish that limitation at its exact scope and
+identify one specifically source-checkable missing estimate that changes the
+plan. Do not declare every stronger conditional property equivalent toT.
+Do not insist on one-edge overload, the i^2 multiplier, modulus, or a competitor
+with large jet projection. Preserve the original finite even carrier, normalization,
+all source signs and mixed terms. H(t)=4xi(1/2-it) may express moments, but
+moment vanishing does not prove oscillation or an antiphase penalty: E(-f)=E(f).
+
+Desired output: a rigorous source-derived strict competitor if obtainable;
+otherwise the first precise unpaid source estimate, why it is not a restatement
+of retention/minimality, and a checked negative control at the claimed scope.
+No finite diagnostic as proof of a cofinal fact. Return one downloadable
+PROSHKA_VERDICT_BOUNDARY_2026-10-30.md with proofs and exact validation code
+if useful. RH is the objective; no final RH claim without completed proof.

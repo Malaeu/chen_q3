@@ -123,3 +123,12 @@ pairings but does not prove a phase penalty: k[-f]=k[f]. Finite moment
 cancellation does not imply high frequencies or rapid oscillation. The main
 unpaid question is a checkable property of the literal CCM source making
 escape plus exact minimality inconsistent. Do not interrupt pending Proshka.
+
+### Owner refinement: orthogonal jet mixing
+
+For an exact bottom f and admissible z perpendicular to f,
+k(f,z)=lambda_min <f,z>=0. Mixing with an orthogonalized jet supplies no
+independent gain; near-zero jet energy is not a comparison with lambda_min.
+Continue seeking a concrete negative variation from escape in the literal
+source. Do not use mandatory nodes on a central frequency interval without
+a separate proof.

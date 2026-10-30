@@ -9631,3 +9631,27 @@ Missing: literal CCM escape forcing a strict overload or another signed gain.
 No asymptotic source sign, NOESCAPE or RH proof. See VARIATIONAL_VERDICT_AUDIT
 and SIGNED_CUT_ALIAS_RETURN in docs/routeB_bus/proshka/. No pending Pro reply;
 next own source estimate before any new same-chat question. RH goal ACTIVE.
+
+## 2026-10-30 — Independent direct m16 X interval certificate
+
+Root gamma-integral implementation completes42 Arb pieces in224s, no F+X
+identity inversion. Full theta/images, near-zero, arch and infinite-prime
+tails, poles, diagonal and projection correction paid. Separate tail review
+and independent final source/interval review PASS under inherited eigenpair/B.
+Conservative direct |X|/B<0.000336<1/4; X sign unresolved. Earlier sharper
+identity-derived bound remains logically separate. Root F+X+lambda<h,v>
+interval consistency contains0; no cofinal inference or RH/NOESCAPE closure.
+Files: M16_DIRECT_X_INTERVAL_AUDIT and noescape_m16_direct_x_arb.{py,json}.
+Proshka BOUNDARY remains pending; no interruption or followup sent.
+
+## 2026-10-30 — BOUNDARY received and independently audited
+
+Full995-line verdict and Appendix A algebra replay processed; bounded independent
+reviews of flat escaping trials, finite-observation obstruction, source pole/main
+term cancellation and reciprocal discrepancy budget pass with scoped qualifications.
+No negative source direction follows yet from escape plus exact bottom minimality.
+Owner jet-mixing correction persisted: exact cross term zero; near-zero trial
+energy is not lower-than-bottom; no mandatory central-frequency nodes assumed.
+Original response preserved; BOUNDARY_VERDICT_AUDIT records exact missing sign,
+review limits and GitHub history (current write capability untested, not lost).
+No Proshka response pending. T/RH remain OPEN.
