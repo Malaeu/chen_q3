@@ -239,3 +239,16 @@ Owner's word: «это геометрия, это уже Перельман, д�
   limit. (B) finite-m transient, a*(m) -> 0.5476 for larger m. Discriminator: least-squares fit of the bottoms in
   span{h', h''', h^(5)} (odd) and span{h, h'', h''''} (even) for m = 6..24, plus a*(m) for m up to 24.
   Link: the even part is the G3 question (does the ground track a fixed trial vector?). DIAGNOSTIC_NEVER_A_PROOF.
+
+### PINGEOM fit (same day): the window selects a FIXED element of the xi-radical family, not h
+
+`pingeom_fit.py` (dps 100, m = 6..24): least squares of the sector bottoms in span{h, h'', h''''} (even) and
+span{h', h''', h^(5)} (odd), weights normalised as c_i ||D_i||. Relative residual 2e-6 .. 2.4e-4 at every m: the bottoms
+lie in the radical family to 4-6 digits. Weights converge to a plateau:
+even (h, h'', h'''') = (0.99999, -0.0045, -0.0025) m=6; (0.9990, 0.044, 0.0017) m=12; (0.9986, 0.0532, 0.0035) m=20;
+(0.9986, 0.0533, 0.0036) m=24. Odd (h', h''', h^(5)) = (0.9997, -0.022, -0.007) m=6; (0.996, 0.089, 0.004) m=12;
+(0.9938, 0.1106, 0.0087) m=20; (0.9938, 0.1108, 0.0090) m=24. Threshold a*(m) = 0.547, 0.558, 0.576, 0.578, 0.574, 0.577.
+Reading A of the previous entry holds: the limit is not h, h' but a fixed radical vector; the plateau a* ~ 0.576 belongs to it.
+Selection rule: `pingeom_select.py` tested minimisers of int w f^2 / int f^2 in the same 3-dim spans for w = x^2, x^4, cosh x,
+e^{2|x|}: all give the h'' weight about -0.19 (even) and -0.24 .. -0.30 (odd), opposite sign to the window (+0.053, +0.111).
+The window bottom is BROADER than h; "most concentrated radical vector" is refuted. Rule unknown: question for Proshka (CONFINE Q1).
