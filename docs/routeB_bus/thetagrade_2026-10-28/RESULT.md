@@ -252,3 +252,16 @@ Reading A of the previous entry holds: the limit is not h, h' but a fixed radica
 Selection rule: `pingeom_select.py` tested minimisers of int w f^2 / int f^2 in the same 3-dim spans for w = x^2, x^4, cosh x,
 e^{2|x|}: all give the h'' weight about -0.19 (even) and -0.24 .. -0.30 (odd), opposite sign to the window (+0.053, +0.111).
 The window bottom is BROADER than h; "most concentrated radical vector" is refuted. Rule unknown: question for Proshka (CONFINE Q1).
+
+### Odd bottom = derivative of even bottom (translation mode); one smoothing parameter for both sectors (2026-10-30)
+
+- `odd_is_derivative.py` (dps 60, model-free): cosine between the odd bottom f_O and the x-derivative of the even bottom f_E,
+  both synthesized from the literal K_m: 1 - cos = 9.3e-5 (m=4), 2.6e-5 (6), 1.9e-5 (8), 4.6e-6 (12), 1.5e-6 (16). Monotone to 0.
+- `heatsmooth_check.py`: plateau weights read as f = h + s h'' + c2 h'''' (Fourier 4 xi (1 - s z^2 + ...)) give the SAME s in both
+  sectors: even s = 0.003082 (m=24), 0.003079 (m=20); odd s = 0.003007 (24), 0.003001 (20). Second order: c2 / (s^2/2) = 0.75 .. 0.81,
+  so a pure Gaussian smoothing xi e^{-s z^2} is only a first-order match (c2 still drifts 4% between m = 20 and 24).
+- Geometric reading (observer, to be checked by Proshka): the radical of the global Weil form is translation invariant
+  (a shift multiplies the transform by e^{-i delta z}; the factor xi stays). The window breaks translation and pins the radical
+  object at the centre; the odd bottom is the translation (Goldstone-type) mode of the even bottom. G1a then reads: moving the
+  confined object off-centre costs energy. Caveat: a Rayleigh quotient of f_E' only gives an UPPER bound for lam0(K_O)
+  (spectrum spans ~30 orders), so this picture does not yet bound the parity gap from below. DIAGNOSTIC_NEVER_A_PROOF.
