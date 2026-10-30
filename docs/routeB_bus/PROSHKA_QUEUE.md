@@ -2,7 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-29-MARKOV · SENT, AWAITING VERDICT
+## REQ-2026-10-29-MARKOV · ANSWERED, PARTIALLY CHECKED
+
+- Verdict 2026-10-30 07:27: [`proshka/PROSHKA_VERDICT_MARKOV_2026-10-29.md`](proshka/PROSHKA_VERDICT_MARKOV_2026-10-29.md), SHA-256 `64a67ac8…`, score 5, `TRY_MARKOV_BULK_WITH_INDEX_GUARD`. Audit: [`proshka/MARKOV_AUDIT_2026-10-30.md`](proshka/MARKOV_AUDIT_2026-10-30.md).
+- Checked by observer: (3.1), theta h, pole annihilation (4.9), quartet algebra, identity (6.8) with constant 8, plants (7.1), (2.9). pf_probe.py odd-phase defect fixed.
+- NOT checked: §4 analytic part (H_0 decay, f_E/f_O in S_exp, return (4.12)-(4.17)), so (4.19) "index bounds <=> RH" stays PAPER.
+- Next candidates: independent §4 audit (Proshka's directive, channel = owner decision); Poincare inequality (6.9) literature pass.
 
 - Sent by the owner 2026-10-29 into a new chat of the Proshka project (manual paste). Delivery line pins the request at commit `cfe490d950758d0a8b1e53d7a76a29d9ab671f0d` (blob `9f299b2a`, SHA-256 `f59076d7…`), sources at `ab639432`; verdict requested as `PROSHKA_VERDICT_MARKOV_2026-10-29.md`. Observer watches `~/Downloads`. Do not resend.
 - 2026-10-29 23:20 CET: no verdict file after 8 h of watching `~/Downloads` (15:19-23:20) and no `[Proshka]` commit on origin. STIELTJES took 38 min. Owner to check the chat for an undownloaded or broken answer before any resend.

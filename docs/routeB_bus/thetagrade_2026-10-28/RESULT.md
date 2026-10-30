@@ -166,3 +166,18 @@ reproduces 0.348). All diagonal cells m = N = 40..120: `alpha_over_T_m40_120.jso
   three things at once (one more mode N, L = log m, and possibly one more prime), so this design cannot separate
   arithmetic from mode truncation. A clean test needs fixed N and lambda^2 moved across a single prime
   (CCMArbBuilder L_override; check its z = 1/m^2 term first). DIAGNOSTIC_NEVER_A_PROOF.
+
+## After MARKOV verdict (2026-10-30): pf_probe fix, bracket (5.4), identity (6.8)
+
+Audit: `docs/routeB_bus/proshka/MARKOV_AUDIT_2026-10-30.md`.
+- pf_probe.py defect (verdict §2.5): `mp.re` erased an odd (imaginary) bottom function. Fixed with a common phase and an
+  assert; planted odd bottom now reads sector O. Rerun `pf_probe_dps120_fixed.jsonl` (m = 2..12): old rows identical,
+  m = 7, 9, 11 added, all even, no sign change.
+- `bracket_probe.py` (dps 120, m = 2..12): bracket (5.4) exists on every cell (automatic between the two roots), but
+  Phi_E(tau) ~ 0.6 tau and Phi_O(tau) ~ 500 tau, e.g. 9.8e-28 and 9.0e-25 at m = 12. Same cancellation as s_E, s_O.
+  Phi_E root = lam0(K_E) at m = 12 (no untouched level).
+- Pole-free odd block: lam0(G_O) = 0.135 (m = 2) -> 1.6e-21 (m = 12). By verdict (4.19) G_O >= 0 cofinally <=> RH.
+  Removing the pole leaves the margin as small as for K.
+- `theta_jump_identity_check.py` (float64): identity (6.8) k[hF] = E_h[F] - 8(Var_mu F + (int tanh(x/2) F dmu)^2)
+  holds to 9.7e-10 and 1.9e-10 on two smooth F; Weil-form code ties to matrix K to 1.4e-9 (m = 3, 5).
+  Second F: E_h = 0.01960 vs 8(...) = 0.01958, inequality (6.9) within 0.1% of saturation. DIAGNOSTIC_NEVER_A_PROOF.

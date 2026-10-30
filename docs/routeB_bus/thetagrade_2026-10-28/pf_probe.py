@@ -23,7 +23,12 @@ def parts(m):
 def bottom_function(M, m, L, grid=400, margin=0.02):
     ev, V = mp.eigsy(M); c = V[:, 0]
     xs = [L * (margin + (1 - 2 * margin) * k / grid) for k in range(grid + 1)]
-    f = [mp.re(sum(c[j] * mp.exp(2j * mp.pi * (j - m) * x / L) for j in range(2 * m + 1))) for x in xs]
+    fc = [sum(c[j] * mp.exp(2j * mp.pi * (j - m) * x / L) for j in range(2 * m + 1)) for x in xs]
+    # Real odd coefficients synthesize an imaginary odd function (MARKOV verdict 2.5): remove a common phase, never mp.re alone.
+    k = max(range(len(fc)), key=lambda i: abs(fc[i])); ph = fc[k] / abs(fc[k])
+    f = [y / ph for y in fc]
+    assert max(abs(mp.im(y)) for y in f) < mp.mpf(10)**(-mp.mp.dps // 2) * max(abs(y) for y in f), "phase not common"
+    f = [mp.re(y) for y in f]
     if sum(f) < 0: f = [-y for y in f]
     changes = sum(1 for a, b in zip(f, f[1:]) if a * b < 0)
     E, O = t.parity_bases(m)
