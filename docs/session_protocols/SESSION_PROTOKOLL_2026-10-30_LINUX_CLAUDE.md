@@ -54,3 +54,11 @@
 - Geprüft: (6.3), (6.6) bis 1e-101; Paper-I-Jacobian (7.6) bei main.tex:532; Schur-Rand = Lücke (Δ/gap = 1.000003), a/gap = Leiter-C_m; grobes (6.12) scheitert; Quasimoden-Abfall folgt dem Xi-Fourier-Schwanz (m ≤ 20).
 - Nicht geprüft: §§2–4 analytisch. Nächster Kandidat: Codex read-only PAPER-Audit §§1–4 (Owner-Entscheidung).
 - Audit: `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/routeB_bus/proshka/CONFINE_AUDIT_2026-10-30.md`.
+
+## Nachtrag 30.10 Abend — NOESCAPE-Verdikt, Übergabe an Mac
+
+- Verdict 17:04, kopiert nach `docs/routeB_bus/proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md` (SHA-256 `fdfd3843…`). L5 = RH (verschwindender unterer Boden), T ⇒ RH, Sättigungssatz L12–L13 ⇒ RH; offen (4.6)/(4.9), (5.9).
+- Geprüft: L14 exakt, ĥ = 4Ξ (15 Stellen), ‖h_out‖ vs. Gesamtleckage (Faktor 1e15). F/X-Sonde geschrieben; erster Lauf ungültig (Λ(k)-Fehler, durch entry_ctrl gefangen, behoben + Regression-Assert). Korrigierter Lauf vor Abschaltung gestoppt.
+- NOESCAPE_STORY als Meilenstein markiert (Owner-Wort), Progress_Log-Eintrag; alle Downloads-Verdikte per Hash im Repo bestätigt.
+- Owner fährt 3 Wochen weg, arbeitet vom Mac. Übergabe: `/mnt/hdd01/Soft/GitHub/chen_q3_rh_clean/docs/session_protocols/HANDOFF_MAC_2026-10-30.md`.
+- Offen: F/X-Sonde m = 8 → 16 (Mac), NOESCAPE_AUDIT, Codex-PAPER-Audit, WALL §7 Zeilen.

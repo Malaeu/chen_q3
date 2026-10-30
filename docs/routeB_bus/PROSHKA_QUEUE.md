@@ -2,7 +2,12 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-30-NOESCAPE · SENT, AWAITING VERDICT
+## REQ-2026-10-30-NOESCAPE · ANSWERED, NOT INDEPENDENTLY CHECKED
+
+- Verdict 2026-10-30 17:04: [`proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md`](proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md), SHA-256 `fdfd3843…`, score 4, `TRY_NOESCAPE_SIGNED_LEAKAGE_WITH_SPECTRAL_COUNT_GUARD`. Q1–Q4 PARTIAL_WITH_PRECISE_REMAINDER. Honesty clause kept: L5 "THIS STEP IS RH" (vanishing lower floor), L6/L8/L13 "IMPLIES RH".
+- New PAPER: L3 unbounded level count in every |lam| < m^-B band; L12-L13 saturated one-sided count + vanishing residual => RH; L10-L11 exact F (Xi tail) + X (exterior) split. Open: (4.6)/(4.9), (5.9), (6.2).
+- Next: F/X discriminator `thetagrade_2026-10-28/leakage_split_probe.py` (handoff to Mac: `docs/session_protocols/HANDOFF_MAC_2026-10-30.md`). Audit file not yet written.
+
 
 - Sent by the owner 2026-10-30 (manual paste of the delivery line, request commit `1a23edcd`). Observer watches `~/Downloads` (8 h). Do not resend.
 
