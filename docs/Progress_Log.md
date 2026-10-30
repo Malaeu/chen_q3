@@ -9668,3 +9668,20 @@ Finite two-shift diagnostic detects first-excited m4 descent but not tested
 m8/16 pairs; no cofinal assertion. Network/resolvent tests are not exclusive;
 other competitors and quantitative moment bounds remain open. Strict source
 sign from escape remains unpaid. RH goal ACTIVE; no Proshka response pending.
+
+## 2026-10-30 — DIAGONAL delivered via GitHub; threshold alias hunt
+
+Proshka successfully pushed f7a8ff0a, authorized verdict path only; fast-forwarded.
+All615 lines read; exact Appendix hash and SymPy replay PASS. Independent bounded
+PAPER reviews of strict source disk, enlarged-source escaping-bottom control,
+Hermite/centered Laplace identities and normalized mixed competitor PASS.
+Literal escape-to-negative-sign remains OPEN; positive source measure does not
+automatically control signed eigenvector moments. Original verdict preserved.
+Own jump/rank-one competitor and actual-bottom h-overlap diagnostics saved;
+m8/16/24/32 overlaps about99.97/99.84/99.83/99.84percent are finite floating evidence only.
+Semantic index refreshed successfully; three new deep asks completed. Primary
+threshold binding and higher-order selection proofs mapped with explicit
+centering, compactness and full-source return gaps; two selected PDFs preserved.
+NOESCAPE_THRESHOLD_ALIAS_HUNT and DIAGONAL_VERDICT_AUDIT give exact continuation.
+No new Proshka question pending; RH goal ACTIVE, no RH proof claim.
+Gridnev–Garcia owner follow-up processed at Theorems2–3,(45)–(47),AppendixA: positive Green kernel plus compact forcing gives common L2 majorant and local compactness; direct CCM compression/forcing bridge absent.

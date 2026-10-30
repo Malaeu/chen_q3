@@ -1,0 +1,109 @@
+REQUEST_ID: REQ-2026-10-30-DIAGONAL
+BOUNDARY: GOAL058_FIXED_JET_NO_ESCAPE_ON_LITERAL_CCM_BOTTOMS
+SOURCE_BASE_COMMIT: 4c32496c04bd591d22974cf52dd0c74d4cca10c3
+
+Continue the same RH goal, source and living phase. BOUNDARY was read fully,
+Appendix A replayed and §§3–7 independently checked. No source strict sign
+was proved. Please do not repeat the fixed-degree/finite-observation quasimode
+controls as if they exclude other competitors or quantitative moment bounds.
+They do not. We need an implication using escape AND exact minimality.
+
+The exact active PAPER_CHAIN node: on literal m=N even cells, selected unit
+bottoms f_m have all fixed finite theta-jet projections tending to zero.
+Derive a normalized admissible even g in the SAME finite cell with strictly
+lower FULL source energy, or isolate a new source-checkable estimate that
+would produce it and establish its exact current limits. The gain may vanish
+with m but its sign must dominate every error. No mandatory large jet overlap.
+Network, modulus and rational multipliers are candidates, not exclusive routes.
+Orthogonal jet mixing has zero mixed term; near-zero jet energy is not below
+lambda_min. No central-frequency mandatory nodes without a separate proof.
+
+NEW OWN ATTEMPT (independently checked, now on GitHub):
+Read docs/routeB_bus/proshka/NOESCAPE_ADAPTIVE_RESOLVENT_ATTEMPT_2026-10-30.md
+at the pinned commit. It contains two exact limitations and a literal-source
+identity that the synthetic counterexamples do not impose.
+
+1. Resolvent directions and their exact scope.
+X=diag(i²), d0=1,di=sqrt2, v_i=d_i,u_i=d_i F_i,
+[X,A]=uv^T-vu^T. For exact stationary unit c and real z off nodes,
+R_z=(X-zI)^-1, U(z)=u^TR_zc,V(z)=v^TR_zc. Then
+ K(s,t)=c^TR_s(A-lambda I)R_tc
+       =[U(s)V(t)-V(s)U(t)]/(s-t),
+ K(s,s)=VU'-UV'.
+If alpha^TK alpha<0, y=sum alpha_j R_zj c, g=y/||y|| is a same-cell strict
+competitor. The negative numerator ensures y!=0. For a trial r=(A-rho)c,
+add c^TR_sR_t r, hence total correction sum a_i² c_i r_i bounded by
+||a||_infinity²||r||. Near-node poles can amplify this cost.
+All c_i nonzero + m+1 distinct external shifts gives a Cauchy basis: full K
+is just a congruence of A-lambda I. Thus asking for its negative eigenvalue
+without a source estimate only renames the task. If c has zeros, these
+multipliers see only its coordinate support; off-support coupling/Schur
+terms must not be dropped. Existing G2 real-zero/Pick-like machinery on the
+shelf already requires full PSD and other premises; importing it is not a
+new source supplier. Three ask.sh dictionaries returned INCOMPLETE, not absence.
+
+2. Exact stationary negative control, not literal CCM.
+Take x=(0,1,4,9), P(z)=prod(z-x_i), H(z)=z+z/(z²+1),
+c_i=-(x_i²+1)/(d_i P'(x_i)), F_i=H(x_i),
+Aij=di dj(Fi-Fj)/(xi-xj) for i!=j, diagonal completed so Ac=0.
+Then U=z(z²+2)/P,V=(z²+1)/P. H'(z)>=7/8 on the entire real axis, so EVERY
+single real resolvent has positive energy. Yet the normalized-by-V directions
+at -2,+2 have energy Gram [[22/25,6/5],[6/5,22/25]], eigenvalue -8/25.
+Their difference has energy -16/25 and Rayleigh quotient -21600/349201.
+SymPy replay and independent algebra pass. The example freely sets diagonal
+entries; it is not the actual CCM diagonal. Finite literal 80-dps controls:
+two resolvents detect first-excited m4 descent, not the tested m8/16 pairs.
+No finite or sampled result proves a cofinal claim or all-shift exclusion.
+
+3. THE ADDITIONAL SOURCE RELATION TO EXAMINE.
+For L=log m and j(s)=exp(-s/2)/(1-exp(-2s)), extend the full sine source to t:
+ beta(t)=kappa t/(L²+16pi²t²)
+ +(1/pi) integral_0^L j(s) sin(2pi t s/L) ds
+ +(1/pi) sum_(2<=n<=m) Lambda(n)/sqrt(n) sin(2pi t log n/L),
+ kappa=32L sinh²(L/4).
+Put F(x)=sqrt(x) beta(sqrt(x)), analytically extended at zero.
+If Loewner(F) has divided differences off diagonal and F'(i²) on diagonal,
+ A = D Loewner(F) D + diag(delta_i), D=diag(d_i),
+ delta_i=K_m(i,i)-beta'(i)
+  =-C_L-integral_0^L[2j(s)cos(2pi i s/L)-1/sinh(s)]ds
+    -2 sum_(2<=n<=m) Lambda(n)/sqrt(n)cos(2pi i log n/L),
+ C_L=gamma+log(4pi tanh(L/2)).
+K_m here is the FULL signed-mode matrix, A its even compression.
+For i>0 Aii=K_m(i,i)+beta(i)/i, 2F'(i²)=beta'(i)+beta(i)/i;
+at i0 F'(0)=beta'(0). The integrand tends to1/2 at zero.
+The pole cancels in delta but remains in F. All prime powers remain;
+the endpoint n=m cosine term generally does NOT vanish, unlike sine moments.
+Verified directly against CCMFiniteWeilSourceMatrixN1.lean:40–101 and parity
+compression; independent source-factor review passed. This is only an identity.
+
+MAIN QUESTION:
+Can the correlated actual diagonal/off-diagonal relation, together with escape
+and exact bottom minimality, force a quantitative moment restriction or a
+strictly decreasing admissible variation that generic rank-two stationary
+matrices and escaping radical quasimodes do not satisfy? Work on the full
+source relation, not arbitrary diagonal completion or standalone PSD of the
+Loewner part. Use your reciprocal prime-discrepancy representation if it helps,
+but don't assume its signed separation. Alternative competitors are welcome.
+
+For every proposed mechanism: (a) give the actual construction and normalize;
+(b) preserve evenness, carrier and every pole/prime/mixed term;
+(c) identify the exact step using minimality, not small residual;
+(d) test the claim on the BOUNDARY flat escaping trials, with residual costs;
+(e) prove a strictly signed source budget, or identify the first unpaid
+estimate and why it is genuinely additional rather than retention rewritten.
+If this source relation adds no exploitable restriction, prove the precise
+limitation and name what source information must be used next. Do not infer
+impossibility of other competitors or quantitative moments from these controls.
+RH is the objective. No final RH claim without a completed proof.
+
+DELIVERY (restoring the previously used scoped GitHub option):
+Return PROSHKA_VERDICT_DIAGONAL_2026-10-30.md with proofs and exact validation
+code if useful. If your actual GitHub connector supports writes, you are
+authorized to create ONLY docs/routeB_bus/proshka/PROSHKA_VERDICT_DIAGONAL_2026-10-30.md
+in Malaeu/chen_q3 on rh_clean and perform an ordinary non-force commit/push,
+with [Proshka][DIAGONAL] in the message. Preserve intervening history and all
+other paths. Report the real commit SHA and exact path. Do not overwrite an
+existing verdict or change settings/permissions. If write capability is absent
+or fails, return the complete file as a downloadable attachment and state the
+observed limitation. Successful reads alone are not proof of write capability.
+Codex will independently verify mathematics and remote delivery either way.

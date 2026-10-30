@@ -37,15 +37,15 @@ NOESCAPE T: одно фиксированное конечное theta-jet пр�
 [Generate Verdict File](https://chatgpt.com/g/g-p-6aafae55d09481919c5971b73d862184-sort-rh-marz-2026/c/6ae1f6d5-8024-83ed-a7e1-cf8ebdbc9a93).
 ENTROPY и VARIATIONAL получены, прочитаны целиком, algebra/interval replay
 и bounded independent reviews пройдены. Оба оригинала и audit notes в bus.
-Последний VARIATIONAL:909строк, Response complete подтверждён20:08UTC.
 Его сильный результат: nonnegative unit even escaping source trials с
 superpolynomial residual/jet decay; НЕ exact bottoms. Cut gain−4C_q точен,
 но положительный source sign C_q>0 при escape не получен. T/RH OPEN.
 BOUNDARY получен и прочитан полностью; независимые bounded PAPER проверки
 §§3–7 и SymPy replay пройдены. См. BOUNDARY_VERDICT_AUDIT_2026-10-30.md.
-Ответа в ожидании нет; новый вопрос только после собственной следующей попытки.
-Browser после reset:id3 Chrome Nod, tab1618258119; DOM debugger unattached,
-native cua Chrome AX работает. Не повторять уже обработанные запросы.
+DIAGONAL получен GitHub-коммитом f7a8ff0a,615строк прочитаны; Appendix replay PASS.
+Независимые bounded PAPER checks PASS; DIAGONAL_VERDICT_AUDIT фиксирует границы.
+Нет pending response; пользовательский черновик в живом чате не трогать.
+Browser:id3 Chrome Nod, tab1618258119; native cua AX работает.
 
 ## Следующий шаг
 
@@ -74,12 +74,14 @@ native cua Chrome AX работает. Не повторять уже обраб
    + exact flatness даёт multiplicity, но escape=>flatness не доказано.
    Adaptive resolvent attempt проверен: single-shift incomplete; full kernel
    при full support лишь congruence. Source diagonal/Loewner identity checked;
-   next: совместная signed оценка из escape (ADAPTIVE_RESOLVENT_ATTEMPT).
+   DIAGONAL: mixed coordinate/resolvent competitor; strict source sign OPEN.
+   JUMP_RANK_ONE_ATTEMPT: явный конкурент
+   с нулевым pole moment, но source gap/moment separation из escape OPEN.
    Jet mixing: cross term=0; near-zero jet не дешевле bottom. Центральные узлы
    без доказательства не использовать. Другие конкуренты/moment bounds OPEN.
 5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
-   Own source attempt/probe + BOUNDARY request/answer/audit + finite X сохранены
-   одним scoped commit после ответа. RH goal ACTIVE.
+   THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
+   Threshold/Gamma-selection + GRIDNEV_GARCIA_BRIDGE: partial; RH goal ACTIVE.
    Чужие CLAUDE/Progress dirt и untracked сохранить, без git add -A.
 
 ## Адреса
