@@ -2,7 +2,9 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
-## REQ-2026-10-30-NOESCAPE · READY, NOT SENT
+## REQ-2026-10-30-NOESCAPE · SENT, AWAITING VERDICT
+
+- Sent by the owner 2026-10-30 (manual paste of the delivery line, request commit `1a23edcd`). Observer watches `~/Downloads` (8 h). Do not resend.
 
 - Proof batch after CONFINE + Codex confirmation: prove T = persistent fixed-jet overlap of the even bottom (implies RH by CONFINE (4.9)). Owner's word built in: honesty clause "if this is RH, say it is RH and keep proving".
 - Q1 proof of T; Q2 blind tail: sum_i |k(e_m, v_i)|^2 / lam_i^2 <= c < 1 with the explicit tail e_m = h - P_m h; Q3 threshold counting vs MARKOV (4.19); Q4 limit ladder.
