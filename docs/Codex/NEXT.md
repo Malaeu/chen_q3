@@ -1,7 +1,6 @@
 # Q3 — продолжение на Mac, 30.10.2026
 
-Цель владельца: доказанная RH вместе с Прошкой. App goal ACTIVE; контракт GOAL.md §5.
-Canonical checkout: /Users/emalam/GitHub/rh_lean_01_2026, rh_clean.
+Цель: доказанная RH с Прошкой; App goal ACTIVE, GOAL.md §5. Checkout /Users/emalam/GitHub/rh_lean_01_2026, rh_clean.
 Простой режим: git pull → NEXT → работа. История: [NEXT_HISTORY_2026-10-30_MAC.md](NEXT_HISTORY_2026-10-30_MAC.md).
 
 ## Текущий вход
@@ -44,7 +43,7 @@ BOUNDARY получен и прочитан полностью; независи
 DIAGONAL получен GitHub-коммитом f7a8ff0a,615строк прочитаны; Appendix replay PASS.
 Независимые bounded PAPER checks PASS; DIAGONAL_VERDICT_AUDIT фиксирует границы.
 GREEN получен GitHub bf8612ad;744строки прочитаны, exact replay+bounded PAPER PASS.
-LOCALIZE GitHub e8fb5854 прочитан; PAPER+replay PASS. UI ещёThinking23:24; проверить23:44UTC.
+LOCALIZE GitHub e8fb5854: PAPER+replay PASS; финальный UI ответ прочитан23:44UTC, поправок нет.
 
 ## Следующий шаг
 
@@ -83,7 +82,8 @@ LOCALIZE GitHub e8fb5854 прочитан; PAPER+replay PASS. UI ещёThinking2
    GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
    LOCALIZE: tight oscillatory quasimodes ломают regularity даже при tiny edge/return.
    m16 cached index0: |E|<1.185e-5, F_far∈[-3.6014e-5,-1.4079e-5]; sum<−2.229e-6.
-   LOCALIZE_M16_CHANNEL_TEST: finite conditional input; далее near/offedge+full return, не descent.
+   Full returned cutoff: gap∈[.007005,.008070]>0, bounded review PASS, finite conditional input.
+   Далее semantic return: negative spectral pollution при strong-resolvent→0; source supplier OPEN.
 
 ## Адреса
 Bus: ../routeB_bus/proshka/NOESCAPE_AUDIT_2026-10-30.md,

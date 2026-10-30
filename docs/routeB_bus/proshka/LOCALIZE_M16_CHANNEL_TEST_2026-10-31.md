@@ -106,3 +106,45 @@ not to expect an unconditional descending competitor for the m16 bottom.
 For a trial with rho=k[f], the additional residual pairing is retained and
 minimality yields only N_rho>=-(rho-lambda_min)||Pz||². Small residual does
 not bound rho-lambda_min. This is the exact trial-control distinction.
+
+## Full returned competitor: direct finite comparison
+
+The full matrix calculation now independently evaluates v=P_16(chi f),
+g=v/||v|| and k[g]-lambda using CCMArbBuilder(16,16).even_block().
+All original source terms and prime powers are retained by that builder;
+there is no inference of a source channel from the localization identity.
+The 17 coefficient integrals are direct Arb interval Riemann sums, with the
+same even phased basis, cutoff, coordinate input and exact factor two.
+Both 8192 and32768 half-window cells separate the positive sign. At32768,
+outward decimal bounds verified from the detailed Arb endpoints are
+
+ ||v||² in [0.963892, 0.964126],
+ k[v]-lambda||v||² in [0.006792, 0.007740],
+ k[g]-lambda in [0.007005, 0.008070].
+
+Both energy comparisons exceed the checked rational bound 1/1000.
+This particular cutoff competitor INCREASES energy on the finite input.
+Its positive denominator, evenness and original finite-carrier membership
+are explicit. The eigenpair identification retains the conditional premise
+above; the comparison itself uses direct coefficient and matrix enclosures.
+The source/code review independently checked phase, factors, normalization,
+full builder and hashes. The run took1.307s; root checked the three outward
+bounds and matching script hash. Script/data:
+../thetagrade_2026-10-28/localize_m16_cutoff_return.{py,json}.
+No standalone near-term integral was computed. The finite full comparison
+closes this candidate test without separating that remaining contribution.
+
+The existing unsigned short-shift allowance is
+K_log3=log(2)/sqrt(2)+log(3)/sqrt(3)+2(sqrt(3)-1)
+=2.58851478746959216..., over a million times the proven 2.229e-6
+negative partial margin. That allowance cannot certify descent here.
+The full comparison proves that the aggregate remainder actually overwhelms
+the partial gain, conditional on the same exact-bottom input; this is an
+identity consequence, NOT an independent near-channel measurement.
+
+The finite cutoff test is complete, but no cofinal cutoff mechanism is killed.
+The requested escape-specific source inequality remains OPEN. Before choosing
+another mechanism, the next semantic return tests the spectral-pollution
+literature against NOESCAPE L4 strong-resolvent convergence to zero and the
+fixed-negative-energy branch forced by an off-critical zero. Near-zero radical
+trials must not be confused with that branch. No new supplier is assumed.

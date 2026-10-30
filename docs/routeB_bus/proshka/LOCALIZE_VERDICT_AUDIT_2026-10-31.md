@@ -88,6 +88,10 @@ At the23:24UTC check the verdict was on GitHub, while the live chat still
 showed Thinking/Stop. No interruption or second question was sent. Await the
 final accompanying message at the next scheduled check before treating the
 transport lifecycle as complete; this does not prevent auditing saved bytes.
+At the23:44UTC check the final UI response was read completely: Worked for
+21m5s, PARTIAL_WITH_PRECISE_REMAINDER, empty composer and normal voice button.
+Its substantive summary agrees with the saved verdict; no extra correction.
+No pending LOCALIZE response remains and no next question has been sent.
 
 The ground-input correction is now implemented by extending the existing cache
 script with --output and a separately labelled ground block. One original
@@ -101,4 +105,5 @@ Command: uv run --with python-flint --with mpmath python
  docs/routeB_bus/thetagrade_2026-10-28/noescape_m16_ground_eigenpair.json.
 New artifact SHA256: 922dde3153bec0c3dd3bab58d1152fff778dcbf34e74766a3c9a8441ae9fe1c8.
 Componentwise residual containment is only a consistency check, not a
-standalone existence proof. Direct localized channel enclosures are NOT yet run.
+standalone existence proof. Direct E/F_far enclosures subsequently ran and were
+reviewed; see LOCALIZE_M16_CHANNEL_TEST_2026-10-31.md. Full descent is unproved.
