@@ -181,3 +181,26 @@ Audit: `docs/routeB_bus/proshka/MARKOV_AUDIT_2026-10-30.md`.
 - `theta_jump_identity_check.py` (float64): identity (6.8) k[hF] = E_h[F] - 8(Var_mu F + (int tanh(x/2) F dmu)^2)
   holds to 9.7e-10 and 1.9e-10 on two smooth F; Weil-form code ties to matrix K to 1.4e-9 (m = 3, 5).
   Second F: E_h = 0.01960 vs 8(...) = 0.01958, inequality (6.9) within 0.1% of saturation. DIAGNOSTIC_NEVER_A_PROOF.
+
+## SHAKE (2026-10-30): how sharply does the window sign depend on where the primes sit?
+
+`shake_probe.py` (dps 80, m = 3..12), Hellmann-Feynman on literal K_m, control by finite difference (agrees to 6 digits,
+m = 12 E to 1.5e-4 relative because the step 1e-26 is near the margin). Shift log p -> log p + eps (powers by j eps,
+Beurling-style generalized prime) and c_{p^j} -> (1 + delta) c_{p^j}.
+
+| m | lam0(K_E) | d lam0_E / d eps (p=2) | lam0(K_O) | d lam0_O / d eps (p=2) | allowed eps window for log 2 |
+|---|---|---|---|---|---|
+| 3 | 1.0e-6 | +0.269 | 1.2e-4 | -1.559 | (-3.7e-6, +7.5e-5) |
+| 6 | 8.0e-15 | +0.576 | 2.9e-12 | -1.288 | (-1.4e-14, +2.2e-12) |
+| 8 | 1.0e-19 | +0.627 | 3.3e-17 | -1.188 | (-1.6e-19, +2.8e-17) |
+| 12 | 6.8e-29 | +0.673 | 4.1e-26 | -1.082 | (-1.0e-28, +3.8e-26) |
+
+- Branch A of the prediction (0.85) holds: the derivative is O(1) while the margin is 1e-29; ratio up to 1e28.
+- Strange, recorded when seen: the pin is TWO-SIDED. Moving log 2 left breaks the even sector, moving it right breaks the
+  odd sector; the weight c_2 is pinned the same way (d/d delta: E -0.097, O +0.382 at m = 12). No first-order direction of
+  moving the prime 2 keeps both sectors positive. Window width shrinks like lam0 (about e^{-6.5 m}).
+- Other primes: p = 3 O-sector -0.37 at m = 12; even p = 11 (log 11 near L) has 1.1e-20, still 1.6e8 times lam0_E.
+- Reading: on this object the Weil sign at m = 12 requires log 2 to about 28 digits. Any argument that sees primes only up to an
+  error (sieve bounds, averages, density theorems, Beurling-type generalized primes) cannot give the sign. This is the
+  Beurling / DMV barrier made quantitative on our matrix. Limit: any generic perturbation of K of the same size would also break
+  the sign (the margin is tiny); the arithmetic content is the two-sided pin, not the size alone. DIAGNOSTIC_NEVER_A_PROOF.
