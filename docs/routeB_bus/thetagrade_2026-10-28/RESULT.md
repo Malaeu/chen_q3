@@ -204,3 +204,17 @@ Beurling-style generalized prime) and c_{p^j} -> (1 + delta) c_{p^j}.
   error (sieve bounds, averages, density theorems, Beurling-type generalized primes) cannot give the sign. This is the
   Beurling / DMV barrier made quantitative on our matrix. Limit: any generic perturbation of K of the same size would also break
   the sign (the margin is tiny); the arithmetic content is the two-sided pin, not the size alone. DIAGNOSTIC_NEVER_A_PROOF.
+
+### SHAKE control (same day): the two-sided pin is NOT arithmetic — retraction
+
+`shake_fake_atom.py` (dps 60, m = 6, 8, 12): a fake atom at any shift a in (0, L), speed of each sector bottom when it moves.
+Two-sided pin (E speed > 0, O speed < 0) holds for every grid point with a above a threshold a* in (0.54, 0.59) (absolute
+shift, the same for m = 6, 8, 12); below a* it fails. log 2 = 0.693 > a*, so every prime position is in the pinned zone
+automatically. The pin is a shape property of the bottom vectors (positive even bump: autocorrelation decreasing; odd bottom:
+autocorrelation increasing for a > a*), not a property of the primes.
+Retraction (observer): "the arithmetic content is the two-sided pin" above is wrong. Error: I read a sign pattern on the
+prime positions without the control at non-prime positions (rule 12, table before claim). What stands: the size statement
+(O(1) speed vs 1e-29 margin) and its limit (any perturbation of that size breaks the sign).
+Recorded as strange, unexplained: the threshold a* ~ 0.56 does not move with m. Readings: (A) it is a property of the
+limiting near-null (prolate-type) functions and has a closed form; (B) grid artefact. Discriminator: finer grid in a and
+more m. Note: shake_probe.py now has a __main__ guard (importing it ran its main loop).

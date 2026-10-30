@@ -32,27 +32,28 @@ def form(vec, fn, m, L):
             s += vec[a] * vec[b] * fn(n, v)
     return s
 
-mp.mp.dps = int(sys.argv[1])
-for m in [int(a) for a in sys.argv[2:]]:
-    K = t.fc.matrix_K(m); L = mp.log(m); E, O = t.parity_bases(m)
-    row = {"m": m}
-    for name, B in (("E", E), ("O", O)):
-        ev, V = mp.eigsy(B.T * K * B); f = B * V[:, 0]; lam = ev[0]
-        sens = {}
-        for p in [k for k in range(2, m + 1) if all(k % d for d in range(2, k))]:
-            pw = prime_powers(p, m)
-            d_eps = form(f, lambda n, v: -sum(j * mp.mangoldt(k) / mp.sqrt(k) * dq(mp.log(k), n, v, L) for j, k in pw), m, L)
-            d_del = form(f, lambda n, v: -sum(mp.mangoldt(k) / mp.sqrt(k) * q(mp.log(k), n, v, L) for j, k in pw), m, L)
-            sens[p] = (d_eps, d_del)
-        # finite-difference control: shift log 2 by h (powers too), recompute sector bottom
-        h = mp.mpf(10)**(-mp.mp.dps // 3)
-        dK = mp.matrix(K.rows)
-        for a, n in enumerate(range(-m, m + 1)):
-            for b, v in enumerate(range(-m, m + 1)):
-                dK[a, b] = -sum(mp.mangoldt(k) / mp.sqrt(k) * (q(mp.log(k) + j * h, n, v, L) - q(mp.log(k), n, v, L)) for j, k in prime_powers(2, m))
-        fd = (mp.eigsy(B.T * (K + dK) * B, eigvals_only=True)[0] - lam) / h
-        row[name] = {"lam0": mp.nstr(lam, 5), "fd_check_p2": mp.nstr(fd, 6), "hf_p2": mp.nstr(sens[2][0], 6),
-                     "d_lam_d_eps": {p: mp.nstr(s[0], 4) for p, s in sens.items()},
-                     "d_lam_d_delta": {p: mp.nstr(s[1], 4) for p, s in sens.items()},
-                     "max_ratio_eps_over_lam": mp.nstr(max(abs(s[0]) for s in sens.values()) / lam, 4)}
-    print(json.dumps(row), flush=True)
+if __name__ == "__main__":
+    mp.mp.dps = int(sys.argv[1])
+    for m in [int(a) for a in sys.argv[2:]]:
+        K = t.fc.matrix_K(m); L = mp.log(m); E, O = t.parity_bases(m)
+        row = {"m": m}
+        for name, B in (("E", E), ("O", O)):
+            ev, V = mp.eigsy(B.T * K * B); f = B * V[:, 0]; lam = ev[0]
+            sens = {}
+            for p in [k for k in range(2, m + 1) if all(k % d for d in range(2, k))]:
+                pw = prime_powers(p, m)
+                d_eps = form(f, lambda n, v: -sum(j * mp.mangoldt(k) / mp.sqrt(k) * dq(mp.log(k), n, v, L) for j, k in pw), m, L)
+                d_del = form(f, lambda n, v: -sum(mp.mangoldt(k) / mp.sqrt(k) * q(mp.log(k), n, v, L) for j, k in pw), m, L)
+                sens[p] = (d_eps, d_del)
+            # finite-difference control: shift log 2 by h (powers too), recompute sector bottom
+            h = mp.mpf(10)**(-mp.mp.dps // 3)
+            dK = mp.matrix(K.rows)
+            for a, n in enumerate(range(-m, m + 1)):
+                for b, v in enumerate(range(-m, m + 1)):
+                    dK[a, b] = -sum(mp.mangoldt(k) / mp.sqrt(k) * (q(mp.log(k) + j * h, n, v, L) - q(mp.log(k), n, v, L)) for j, k in prime_powers(2, m))
+            fd = (mp.eigsy(B.T * (K + dK) * B, eigvals_only=True)[0] - lam) / h
+            row[name] = {"lam0": mp.nstr(lam, 5), "fd_check_p2": mp.nstr(fd, 6), "hf_p2": mp.nstr(sens[2][0], 6),
+                         "d_lam_d_eps": {p: mp.nstr(s[0], 4) for p, s in sens.items()},
+                         "d_lam_d_delta": {p: mp.nstr(s[1], 4) for p, s in sens.items()},
+                         "max_ratio_eps_over_lam": mp.nstr(max(abs(s[0]) for s in sens.values()) / lam, 4)}
+        print(json.dumps(row), flush=True)
