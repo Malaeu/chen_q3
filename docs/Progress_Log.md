@@ -9613,3 +9613,21 @@ Owner variational attempt: full-source modulus gain and same-carrier return
 identity derived and independently checked. Smooth bump counterexample kills
 universal modulus contraction; exact carrier cosine has jet escape but fixed
 return loss1−8/pi². Actual-bottom source margin remains OPEN; no T/RH claim.
+
+## 2026-10-30 — VARIATIONAL processed; exact minimality and resistance return
+
+Full909-line Proshka answer processed; Appendix A exact SymPy controls pass.
+Independent bounded reviews accept explicit nonnegative escaping carrier trials
+with superpolynomial residual/jet decay, and full-source cut/multiplier identities.
+Neither makes the trials exact bottoms. Modulus gain vanishes on these trials.
+Alias return rereads Zelazo–Bürger IV.7: signed weights -A_ij c_i c_j and
+positive-network Dirichlet voltage give a normalized same-carrier competitor
+if one negative edge satisfies alpha>1/R. All source entries retained;
+independent algebra audit accepted normalization and residual correction.
+For arbitrary trials the correction is bounded by ||r||, requiring a relative
+margin, not mere smallness. Exact triangle passes all cuts yet has normalized
+gain -3/5; another exact path control shows one-edge overload not necessary.
+Missing: literal CCM escape forcing a strict overload or another signed gain.
+No asymptotic source sign, NOESCAPE or RH proof. See VARIATIONAL_VERDICT_AUDIT
+and SIGNED_CUT_ALIAS_RETURN in docs/routeB_bus/proshka/. No pending Pro reply;
+next own source estimate before any new same-chat question. RH goal ACTIVE.

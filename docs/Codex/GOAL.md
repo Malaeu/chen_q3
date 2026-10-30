@@ -109,3 +109,17 @@ relayed by the observer. Keep a path watch on them like the Proshka verdict watc
 On each: three own attempts, at most one Proshka request per three; answer only
 with a victory at PAPER scope; otherwise write the failure with everything gained,
 commit and push at once, and ask. Full rule: [ADVICE_PROTOCOL.md](ADVICE_PROTOCOL.md).
+
+### Owner refinement 2026-10-30: exact minimality discriminator
+
+The variational search is not restricted to modulus repair. Under complete
+jet escape of selected exact bottoms, seek any normalized even competitor
+in the SAME finite carrier with strictly lower full source energy. The gain
+may tend to zero; its sign must include every error. The competitor need not
+have a large jet projection. Test each proposed mechanism on the constructed
+escaping radical trials and identify exactly where bottom minimality, rather
+than small residual or small energy, is used. H(t)=4xi(1/2-it) can express jet
+pairings but does not prove a phase penalty: k[-f]=k[f]. Finite moment
+cancellation does not imply high frequencies or rapid oscillation. The main
+unpaid question is a checkable property of the literal CCM source making
+escape plus exact minimality inconsistent. Do not interrupt pending Proshka.
