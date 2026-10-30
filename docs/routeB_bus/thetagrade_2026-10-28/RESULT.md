@@ -313,3 +313,23 @@ Consequence: the commutator term <g,[K,N]f_E> (window boundary + pole only) carr
 lam0(K_O) is between R/C_m and R, C_m = 1.9 .. 6.3 on these cells. A zero-free bound on C_m would turn the translation
 mode into a two-sided estimate. Not sent with CONFINE (batch already out); give it to the audit of the verdict.
 DIAGNOSTIC_NEVER_A_PROOF.
+
+### Ladder to m = 24: equipartition of the translation mode (2026-10-30)
+
+`ladder_probe.py` (dps 150), output `ladder_probe_dps150.jsonl`. share_i = w_i lam_i / lam0(K_O), w_i = |<g, v_i>|^2 / ||g||^2,
+g = translation mode of the even bottom; C_m = sum share_i = R(g) / lam0(K_O).
+| m | C_m | slack R/lam0(K_E) | lam0(K_O)/lam0(K_E) | first shares |
+|---|---|---|---|---|
+| 4 | 1.93 | 344 | 179 | 1.0, 0.71, 0.19, 0.03 |
+| 8 | 4.57 | 1491 | 326 | 1.0, 1.11, 0.88, 0.83, 0.69, 0.04 |
+| 12 | 5.49 | 3351 | 611 | 1.0, 0.94, 0.81, 0.74, 0.70, 0.40, 0.41, 0.47 |
+| 16 | 6.29 | 7898 | 1256 | 1.0, 0.88, 0.85, 0.61, 0.67, 0.52, 0.52, 0.43 |
+| 20 | 8.55 | 14220 | 1664 | 1.0, 1.06, 0.74, 1.05, 0.81, 0.62, 0.71, 0.57 |
+| 24 | 10.98 | 18559 | 1690 | 1.0, 0.93, 0.93, 0.95, 0.99, 0.94, 0.85, 0.91 |
+Strange, recorded when seen: EQUIPARTITION. Each odd level carries about one lam0(K_O) of the translation-mode energy
+(w_i ~ lam0 / lam_i), as a sample of a Gaussian field with covariance K_O^{-1} would. C_m grows roughly like m/2 (count of
+levels on the ladder). Note: slack / C_m = lam0(K_O)/lam0(K_E) identically, so the G1a margin is the known gap ratio (179 .. 1904,
+flat at about 1700 for m = 18..24); the new content is the structure (C_m ~ number of levels), not a new margin.
+Risk: if C_m keeps growing ~ m/2 while the gap ratio stays ~1700, a C_m-based bound of the form lam0(K_O) >= R/C_m stays usable,
+but any second factor ~ m (e.g. an upper bound for lam0(K_E) by a crude trial vector) meets the gap ratio near m ~ 80.
+DIAGNOSTIC_NEVER_A_PROOF.
