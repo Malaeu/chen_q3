@@ -376,3 +376,8 @@ Upper bounds for lam0(K_E) by geometric trial vectors stay dead (as in the trial
   ~12 deg). delta_k / lam_{k+1} = 3.9e13, 5.7e10, 1.3e8, 1.4e6. Readings: (A) the limit ladder phi_i differs from the plain
   derivatives h^(2k) for i >= 1 (heat-type corrections grow with level); (B) the higher levels drift and have no fixed limit.
   Discriminator: m = 16, 20 rows (running) and a fit of the level-i vectors in a larger fixed jet.
+- jet_cluster_probe finished (m = 8, 12, 16, 20). cos_min: k = 0: 0.99984, 0.99938, 0.99921, 0.99914; k = 1: 0.99964,
+  0.99752, 0.99661, 0.99619; k = 2: 0.99959, 0.99443, 0.99201, 0.99127; k = 3: 0.99974, 0.97735, 0.96428, 0.96078.
+  Steps shrink (k = 3: -0.023, -0.013, -0.0035): reading (A) favoured - the alignment settles at a fixed angle; the limit
+  ladder exists but its higher levels are corrected derivatives, not plain h^(2k). Not a proof. delta_k / lam_{k+1}
+  grows with m for every k (k = 3: 26.6, 1.4e6, 6.1e12, 4.0e18): the fixed-k norm route stays dead.
