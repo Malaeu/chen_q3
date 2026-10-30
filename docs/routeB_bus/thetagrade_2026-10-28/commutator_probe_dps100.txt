@@ -1,0 +1,5 @@
+m=4: lam_E=1.7e-9 lam0_O=3.034e-7 R(g)=5.841e-7 R/lam0_O=1.925 check R-lam_E-comm=-1.73e-102 1-w0=0.000185 top excess: level 0 (lam 3.03e-7) weight 1.0, level 1 (lam 0.00116) weight 0.000185, level 2 (lam 0.336) weight 1.7e-7
+m=6: lam_E=7.999e-15 lam0_O=2.896e-12 R(g)=8.02e-12 R/lam0_O=2.769 check R-lam_E-comm=-4.52e-103 1-w0=5.23e-5 top excess: level 0 (lam 2.9e-12) weight 1.0, level 1 (lam 4.55e-8) weight 5.23e-5, level 2 (lam 9.1e-5) weight 1.68e-8
+m=8: lam_E=1.024e-19 lam0_O=3.339e-17 R(g)=1.527e-16 R/lam0_O=4.572 check R-lam_E-comm=2.67e-102 1-w0=3.85e-5 top excess: level 1 (lam 9.65e-13) weight 3.85e-5, level 0 (lam 3.34e-17) weight 1.0, level 2 (lam 7.88e-9) weight 3.73e-9
+m=12: lam_E=6.79e-29 lam0_O=4.147e-26 R(g)=2.276e-25 R/lam0_O=5.488 check R-lam_E-comm=-1.4e-102 1-w0=9.14e-6 top excess: level 0 (lam 4.15e-26) weight 1.0, level 1 (lam 4.24e-21) weight 9.14e-6, level 2 (lam 1.58e-16) weight 2.13e-10
+m=16: lam_E=5.456e-38 lam0_O=6.853e-35 R(g)=4.309e-34 R/lam0_O=6.288 check R-lam_E-comm=5.49e-103 1-w0=2.97e-6 top excess: level 0 (lam 6.85e-35) weight 1.0, level 1 (lam 2.03e-29) weight 2.97e-6, level 2 (lam 2.13e-24) weight 2.72e-11

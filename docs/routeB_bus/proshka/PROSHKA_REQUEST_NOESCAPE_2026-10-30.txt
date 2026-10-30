@@ -1,0 +1,148 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-30-NOESCAPE
+BOUNDARY_ID: GOAL058_FIXED_JET_NO_ESCAPE_ON_LITERAL_CCM_BOTTOMS
+DATE: 2026-10-30
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: bdea6ec1e117c04da9e72528695caa1cfd0dc0ca
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+FORM: PROOF BATCH (WEILPROOF pattern, docs/BATCH_PATTERNS.md rules 1-10)
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: owner-directed new chat; GitHub locators pinned to SOURCE_BASE_COMMIT; key data inline
+
+Proshka, this is a proof batch. It follows your CONFINE verdict
+(docs/routeB_bus/proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md). Codex audited its §§1-4
+read-only and returned FIXED_JET_ESCAPE_CONFIRMED_PAPER, 8/8 steps OK, no findings
+(docs/routeB_bus/proshka/CODEX_AUDIT_CONFINE_2026-10-30.md). We now take your theorem as the
+bridge and ask you to cross it.
+
+0. THE OWNER'S WORD (verbatim intent, translated)
+
+  "If this is RH, then admit that it is RH and do not wriggle out. RH is what everything
+  was heading for. If the geometry is exact - and it looks exact - do not be afraid to
+  prove RH."
+
+  Concretely:
+  - The target T below implies RH (your (4.7)-(4.9)). That is the point of the batch, not an
+    objection to it. Equivalence is not circularity (rule 1).
+  - HONESTY CLAUSE. For every lemma in your chain, state on its first line one of:
+      THIS STEP IS RH (equivalent to RH, both directions known)
+      THIS STEP IMPLIES RH (one direction only)
+      THIS STEP IS STRICTLY WEAKER THAN RH (with the reason)
+      THIS STEP IS PROVED HERE
+    Do not replace "this is RH" by RH_GRADED, FIRST_UNPAID_TERM, RESEARCH_DEBT or a route
+    label. After writing "this is RH", continue: give the proof attempt, the exact first
+    inequality that fails, and a repair (rule 6). "It is RH" is never a stopping reason.
+
+1. TARGET T (no escape)
+
+  There exist a fixed even jet J = span{h, h'', ..., h^(2k)} (or an odd one), eps > 0 and an
+  unbounded set M of original m (N = m, L = log m) with ||P_J f_{m,E}|| >= eps for m in M.
+  f_{m,E} = unit bottom of the even sector of K_m, zero-extended (your (1.7)).
+  By your (4.9), T implies RH. Prove T, or prove the strongest piece of it you can.
+
+2. WHAT WE MEASURED (DIAGNOSTIC_NEVER_A_PROOF; literal K_m, dps 80-100)
+
+(a) The bottom stays on h. Weights w_i = |<v_i, u_m>|^2 of u_m = P_m h / ||P_m h|| on the even
+    eigenvectors v_i (overlap_gap_probe.py, overlap_gap_probe_dps80.jsonl):
+      m    w_0     w_1       w_2       w_3
+      8    1.000   3.1e-4    9.6e-7    2.4e-9
+      12   0.999   1.24e-3   2.84e-6   9.9e-9
+      16   0.998   1.56e-3   3.71e-6   1.18e-8
+      20   0.998   1.71e-3   4.08e-6   1.09e-8
+    The profile w(m) looks convergent. This is the measured form of T with k = 0.
+(b) The norm route is dead and gets worse. delta_m = ||K_m u_m|| = 4.5e-7, 6.4e-10, 1.2e-10,
+    1.7e-12 (m = 8, 12, 16, 20). It is 0.12-0.49 times the Fourier tail of 4 Xi beyond
+    t_m = 2 pi m / log m (quasimode_xi_tail.py), i.e. ~ exp(-pi^2 m / (2 log m)), modulated by
+    |Xi(t_m)|. Levels below delta_m: 4, 5, 7, 8 (dimension of the sector 9, 13, 17, 21).
+    The single-gap bound w_0 >= 1 - delta^2/lam_1^2 fails: delta/lam_1 = 7e7, 3.9e13,
+    2.5e21, 4.7e27. The levels fall like e^{-c m} (lam_0 ~ e^{-4.6 m}), faster than delta_m.
+    So Davis-Kahan with a fixed jet and the residual NORM cannot give T.
+(c) Where the escape would have to happen. For any vector, a_i lam_i = <v_i, K_m u_m> (a
+    tautology; the observer first misread it as structure and retracted it). Through the
+    radical identity it becomes non-trivial:
+      lam_i a_i = - k(e_m, v_i),   e_m = (h - P_m h)/norm(P_m h)  (Fourier tail of 4 Xi beyond t_m plus the
+                                                     exterior piece, both explicit),
+    so w_i small <=> the low eigenvectors are nearly blind to the explicit tail of h:
+      m = 16:  |k(e_m, v_1)| = sqrt(w_1) lam_1 = 1.9e-33,  sup over unit v of |k(e_m, v)| = 1.2e-10
+      m = 20:  |k(e_m, v_1)| = 1.5e-41,                     sup = 1.7e-12
+    T with k = 0 is exactly: sum_{i>=1} |k(e_m, v_i)|^2 / lam_i^2 <= 1 - eps^2 cofinally.
+(d) Whole ladder = whole jet. Principal angles between J_k = span{P_m h, ..., P_m h^(2k)} and
+    the span of the lowest k+1 even levels (jet_cluster_probe.py), m = 8:
+      k = 0, 1, 2, 3:  cos_min = 0.99984, 0.99965, 0.99959, 0.99974
+      delta_k / lam_{k+1} = 7.0e7, 2.2e5, 1.6e3, 26.6   (delta_k = max ||K u|| on unit J_k)
+    m = 12, 16, 20 are still running and are not part of this batch.
+(e) Your CONFINE items we re-checked: (6.3) and (6.6) to 1e-101; Schur margin (9.2) equals
+    the gap (Delta/gap = 1.000003 at m = 16), a/gap = ladder constant C_m = 1.93, 4.58,
+    5.50, 6.29; crude (6.12) fails by 47 ... 9e26; Paper I Jacobian (7.6) at main.tex:532.
+
+3. QUESTIONS
+
+Q1 PROOF OF T. Give the chain. Allowed inputs: CCM Lemmas (pinned PDF
+   docs/routeB_bus/litreview/pdfs/2511.22755.pdf, v1), your CONFINE (3.8), (4.5), (5.1),
+   explicit formula (1.4), the theta function h, finite prime data. Each lemma with the
+   honesty line of §0. If the chain stops, give the first inequality that fails with its
+   objects, domain and budget, and the repaired statement.
+
+Q2 BLIND TAIL. Prove or refute, cofinally and with c < 1 independent of m,
+     sum_{i>=1} |k(e_m, v_i)|^2 / lam_i(K_{m,E})^2 <= c,      e_m = (h - P_m h)/norm(P_m h).
+   Your uniform bound (3.5) gives |k(e_m, v)| <= ~ sqrt(m) L eps_0 for every unit v, which is
+   far above lam_1. What representation of k(e_m, v_i) (leakage (5.1), Fourier tail of Xi
+   times the transform of v_i near t_m, window edge, exterior primes) shows the extra
+   smallness on low levels? Which piece carries the v_1 component?
+
+Q3 COUNTING. A form of T would follow from: "K_{m,E} has at most n(m) levels below mu_m"
+   together with a jet J of dimension n(m) whose residual is below mu_m. Is such a threshold
+   index statement (positive threshold, full K, not G = K - W02) weaker than, equal to, or
+   stronger than MARKOV (4.19)? Is a growing jet with an explicit order/conditioning budget
+   non-vacuous here (your (2.3) warning)?
+
+Q4 LIMIT LADDER. Do the low eigenvectors f_{m,i} converge (weakly or strongly) to fixed
+   functions phi_i, with phi_0 near h? If T holds, what is the limiting object of w(m)
+   (a fixed fingerprint of h on a limiting ladder)? Which exact limit would be enough for T
+   and is the cheapest to prove?
+
+4. PROHIBITIONS
+
+  No RH-equivalent premise. Equivalence is not circularity.
+  No finite sample as a cofinal quantifier; section 2 is cell data.
+  No Lean, no repository edits, no broad numeric scan.
+  No relay as a premise; mark RELAY.
+  No hiding of "this is RH" behind a label (owner's word, §0).
+
+5. PRE-REGISTERED PREDICTIONS (observer, frozen at this commit)
+
+  P1 Q1: PROOF_CANDIDATE_COMPLETE 0.03 · PARTIAL_WITH_PRECISE_REMAINDER 0.85 ·
+     ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE 0.12.
+  P2 Q2: the v_1 component of k(e_m, .) is carried by the Fourier tail of Xi near t_m,
+     not by the exterior primes: 0.55. A proved cofinal bound with c < 1: 0.08.
+  P3 Q3: threshold index statement equivalent to RH: 0.6; strictly weaker: 0.15;
+     strictly stronger: 0.25.
+  P4 Q4: limiting ladder (phi_i) exists in L^2 with phi_0 != h: 0.5 (no proof expected).
+
+Directive: per question, the result code (PROOF_CANDIDATE_COMPLETE /
+PARTIAL_WITH_PRECISE_REMAINDER / ATTEMPT_REFUTED_WITH_EXACT_COUNTEREXAMPLE), the honesty
+line for each lemma, the exact statement proved or refuted, the hypotheses spent, and the
+first unpaid inequality. Main volume of the answer = lemmas with full proofs (rule 3).
+For every representation, a falsifier: a random symmetric matrix with a negative eigenvalue
+must not pass your positivity or no-escape machine (rule 8).
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20-40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation),
+       one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first
+       inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another
+       question, with their exact statement.
+
+Return the verdict as an attachment PROSHKA_VERDICT_NOESCAPE_2026-10-30.md.
+RH remains OPEN unless a complete valid chain is supplied; the final claim
+remains with the owner.

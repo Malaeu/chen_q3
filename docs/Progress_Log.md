@@ -9573,3 +9573,14 @@ Close-pair refinement of the same translated-witness test: parameter divided dif
 Следующий ход: source-specific signed cancellation before independent window moduli; no Q58 automatically.
 Адреса: docs/literature/openai_math_2026-10-07/CCM_Q57_CONCLUSION.md; CCM_Q57_REVIEW.md; q57_replay/.
 Чей вердикт: q55_audit bounded PAPER/source WEAK_TRIAL_VALID; q55_replay transport-only JSON byte-identical; root full read. No full gain/RH claim.
+
+## 2026-10-30 — Геометрия дна как вход в RH: веха NOESCAPE_STORY
+
+**Развилка:** считать знак λ₀ точнее или смотреть на форму нижнего вектора f_m.
+**Выбрали:** форму. f_m ≈ h (тета-функция, ĥ = 4Ξ), вес w₀ ∈ [0.99827, 1] на m = 6…36.
+**Почему:** CONFINE (Codex 8/8 PAPER): устойчивое перекрытие дна с фиксированной струёй {h, h'', …} влечёт RH.
+**Что отвергли и почему:** норма остатка (δ/λ₁ = 7e7 … 4.7e27); w₀ как монотонная «энтропия» (не монотонен, минимум при m = 22).
+**Техника:** радикальное тождество λ_i a_i = −k(e_m, v_i); батч NOESCAPE с пунктом честности («это RH» — не причина стоять).
+**Следующий ход:** зонд F/X утечки на v₁ (`thetagrade_2026-10-28/leakage_split_probe.py`); затем выбор между счётом уровней (L12–L13 ⇒ RH) и слепым хвостом (4.6).
+**Адреса:** `docs/NOESCAPE_STORY_2026-10-30.md` (веха, слово Ылши: «с него, вроде, всё началось»); `docs/routeB_bus/proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md` (sha256 fdfd3843…).
+**Чей вердикт и аргумент:** Прошка, NOESCAPE: «T implies RH. That is the intended conclusion, not a reason to stop.» L5 помечен «THIS STEP IS RH».

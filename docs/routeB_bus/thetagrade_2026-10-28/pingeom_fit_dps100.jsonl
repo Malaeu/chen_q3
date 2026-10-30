@@ -1,0 +1,6 @@
+{"m": 6, "E": {"weights_normalised": ["0.99999", "-0.0045016", "-0.0025265"], "rel_residual": "5.89e-5"}, "O": {"weights_normalised": ["0.99974", "-0.021762", "-0.00707"], "rel_residual": "0.0002368"}, "a_star": [0.5465]}
+{"m": 8, "E": {"weights_normalised": ["0.99979", "0.020377", "-0.0011383"], "rel_residual": "2.065e-5"}, "O": {"weights_normalised": ["0.99943", "0.033452", "-0.0036824"], "rel_residual": "4.773e-5"}, "a_star": [0.558]}
+{"m": 12, "E": {"weights_normalised": ["0.99902", "0.04421", "0.0017225"], "rel_residual": "1.947e-6"}, "O": {"weights_normalised": ["0.996", "0.089231", "0.0040145"], "rel_residual": "1.453e-5"}, "a_star": [0.5757]}
+{"m": 16, "E": {"weights_normalised": ["0.99872", "0.050463", "0.0028828"], "rel_residual": "3.379e-5"}, "O": {"weights_normalised": ["0.99451", "0.10436", "0.0072118"], "rel_residual": "9.639e-5"}, "a_star": [0.5776]}
+{"m": 20, "E": {"weights_normalised": ["0.99858", "0.053222", "0.0034541"], "rel_residual": "5.551e-5"}, "O": {"weights_normalised": ["-0.99383", "-0.11056", "-0.0086986"], "rel_residual": "0.0001627"}, "a_star": [0.5742]}
+{"m": 24, "E": {"weights_normalised": ["0.99857", "0.053274", "0.0035853"], "rel_residual": "6.359e-5"}, "O": {"weights_normalised": ["0.9938", "0.11081", "0.0090408"], "rel_residual": "0.000187"}, "a_star": [0.5773]}

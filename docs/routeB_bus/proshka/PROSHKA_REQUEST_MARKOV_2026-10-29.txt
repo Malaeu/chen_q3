@@ -1,0 +1,171 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-29-MARKOV
+BOUNDARY_ID: GOAL058_G1A_PF_BULK_AND_TWO_SECULAR_SCALARS
+DATE: 2026-10-29
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: ab6394323c40ed2c1b0a720778f0fb09662dc0bb
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: owner-directed new chat; GitHub locators pinned to SOURCE_BASE_COMMIT; key data inline
+
+Proshka, this is a new isolated batch of three linked questions. It follows your
+STIELTJES verdict (your directive 12.1: a source supplier for the endpoint cofactor;
+your 8.2: E = H_E + kappa u_E u_E^T with Woodbury, "exact algebra, unpaid sign").
+We took one step back from the cofactor and looked at the operator itself. Splitting
+off the pole term leaves a bulk G whose bottom behaves exactly as Perron-Frobenius
+predicts for a positivity-improving semigroup. We ask whether that is a theorem, and
+what it does and does not buy. The observer's own reading of the limit is in 0(d).
+
+0. WHAT WE FOUND (DIAGNOSTIC_NEVER_A_PROOF)
+
+Object: literal full CCM matrix K_m, modes -m..m, m = N, L = log m
+(full_center_probe.py: matrix_K, K = w02 - wr - prime). Even block E (dim m+1),
+odd block O (dim m), as in your PARITYSPLIT (4.3).
+
+(a) Pole split. The w02 entries are exactly
+      W02 = kappa (u u^T - v v^T),  kappa = 32 L sinh^2(L/4),
+      u_n = L/(L^2+16 pi^2 n^2) (even in n),  v_n = 4 pi n/(L^2+16 pi^2 n^2) (odd in n);
+    rebuilt to 1.8e-62 against matrix_K (m = 5, dps 60). This is your 8.2 decomposition.
+    Put G := K - W02 = -wr - prime (archimedean and prime-power parts only).
+
+(b) PF symptom (pf_probe.py, pf_probe_dps120.jsonl; m = 2,3,4,5,6,8,10,12; dps 120).
+    The bottom eigenvector of G, synthesized as a function on the window
+    (basis exp(2 pi i n x/L) on [0, L], interior grid, 2% margin), has NO sign change
+    on all 8 cells, min/max = 0.59 .. 0.90. It is even and simple. Its eigenvalue is
+    about -2.2 log m (-1.28, -2.16, -2.83, -3.33, -3.80, -4.51, -5.12, -5.62).
+    The bottom of K itself also has no sign change on the same grid.
+
+(c) Index pattern (pf_secular_probe.py, pf_secular_dps120.jsonl, same cells):
+    G_E has exactly ONE negative eigenvalue (the bottom above); lambda_1(G_E) > 0
+    (0.606, 5.4e-3, 1.7e-5, 9.0e-8, 3.1e-10, 4.1e-15, 2.3e-19, 1.1e-23).
+    G_O has no negative eigenvalue (lambda_0(G_O) = 0.135 .. 1.6e-21).
+    With these two facts, window positivity is equivalent to two scalars:
+      K_E >= 0  <=>  s_E := 1 + kappa u^T G^{-1} u <= 0,
+      K_O >= 0  <=>  s_O := 1 - kappa v^T G^{-1} v >= 0.
+    Measured: s_E = -2.8e-3, -7.6e-7, -1.2e-9, -2.3e-12, -5.1e-15, -6.4e-20, -8.2e-25,
+    -4.1e-29; s_E / lambda_0(K_E) = -0.913, -0.758, -0.693, -0.660, -0.642, -0.624,
+    -0.613, -0.607. s_O = 0.927, 5.1e-3, 1.0e-5, 3.0e-8, 7.8e-11, 8.2e-16, 2.0e-20, 9.4e-25.
+
+(d) Observer's reading of the limit (please confirm or correct). PF, if proved, gives
+    only: simple, even, strictly positive bottom of G, and <u, ground> != 0. The
+    resolvent (G - t)^{-1} is a positive kernel only for t below the bottom of G.
+    s_E and s_O live at t = 0, above that negative bottom, where PF is silent. So PF
+    alone does not give their signs; they remain the whole of window positivity.
+
+(e) Why we think PF may hold for every window (observer derivation, unverified):
+    the archimedean part is a Levy-Khintchine form (Gauss representation of
+    Re psi(1/4 + i xi/2) with a positive jump measure); the prime part
+    -sum Lambda(n) n^{-1/2} <f, tau_{log n} f> is a positive jump kernel of length log n
+    plus a bounded potential on the window. Beurling-Deny: Dirichlet form + bounded
+    potential, irreducible, gives a positivity-improving semigroup. The pole term
+    W02 has positive cross pairing (u > 0) and is the only obstruction.
+
+1. SHELF (sha256 prefix 16 at SOURCE_BASE_COMMIT)
+
+  ead3b1e533a0d301  docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py
+  1052f0fd9bf6bf52  docs/routeB_bus/thetagrade_2026-10-28/pf_probe.py
+  c8166f3a928dd056  docs/routeB_bus/thetagrade_2026-10-28/pf_probe_dps120.jsonl
+  d5be0ddb09d0a0b5  docs/routeB_bus/thetagrade_2026-10-28/pf_secular_probe.py
+  aefe1c98f2cec5d7  docs/routeB_bus/thetagrade_2026-10-28/pf_secular_dps120.jsonl
+  3e8e48ce27f7e7ca  docs/routeB_bus/thetagrade_2026-10-28/RESULT.md (last two sections)
+  0055688df2c9e182  docs/routeB_bus/proshka/PROSHKA_VERDICT_STIELTJES_2026-10-29.md
+  84f71b88a55b09b4  docs/routeB_bus/proshka/STIELTJES_AUDIT_2026-10-29.md
+  e8dcafe98551e551  docs/WALL_ONE_FORMULA_2026-10-29.md (synthesis of ~65 batches)
+  28118e3c2dc3ccda  docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_WINDOW_WEIL_IDENTITY_AND_LEAKAGE_MECHANISM_2026-09-04.md
+  d3865192de724c85  docs/routeB_bus/CONTACT_INDEPENDENT_CHECK_2026-09-10.md (appendix: odd half-line kill)
+  Primary: Suzuki, arXiv:2606.09096, Theorem 1.4 and Section 5 ("5.2 Positivity improving
+  property": Markov property via Beurling-Deny representation (4.4), irreducibility,
+  Fukushima-Oshima-Takeda; small windows a < (1/2) log 2, via the a -> 0 limit form L).
+  The observer READ this section; it does not split off the pole term and has no primes.
+
+2. KILLED - do not propose again without a new invariant
+
+  Odd half-line positivity-preserving semigroup: fails for every a > log(2)/2; the
+  reflected n = 2 term contributes +log(2)/sqrt(2) to the odd cross pairing
+  (Progress_Log 2026-09-10; CONTACT_INDEPENDENT_CHECK appendix). This batch asks about
+  the FULL window without the pole term, not the odd reduction.
+  Total positivity of K^{-1} in mode coordinates (RESULT.md: about half of all minors
+  negative, m = 2..4, both gauges). Trial-vector Rayleigh brackets for lambda_min(E)
+  (spectrum spans 31 orders at m = 13; RESULT.md).
+  Your STIELTJES section 5 plants (w_0 alone, Abel necessity, hidden degenerate bottom,
+  Jacobi commutation).
+
+3. Q1 - MARKOV (main)
+
+Prove or refute, for every window (all m with N = m; say if your proof needs N = infinity):
+  (a) the quadratic form of G on functions supported in the window is closed and equals
+      a Dirichlet form (positive jump kernel: archimedean Levy measure plus prime jumps
+      of length log n with weight Lambda(n)/sqrt(n)) plus a bounded potential;
+  (b) hence exp(-tG) is positivity improving, the bottom of G is simple with a strictly
+      positive eigenfunction, and by reflection symmetry it is even;
+  (c) which of these survives the finite-mode compression P_N G P_N we actually compute
+      (a compression need not preserve positivity), and what the right finite object is.
+Result codes: MARKOV_PROVED(scope) | MARKOV_PARTIAL(first unpaid term) |
+MARKOV_REFUTED(witness: a window and two disjoint nonnegative functions with positive
+cross pairing, or a failed irreducibility).
+
+4. Q2 - THE TWO-SCALAR REDUCTION
+
+  (a) Confirm or correct: window positivity of K <=> [G_E has exactly one negative
+      eigenvalue] and [G_O >= 0] and [s_E <= 0] and [s_O >= 0]. State the exact
+      hypotheses, including the degenerate cases (u orthogonal to an eigenvector, ties).
+  (b) Is "exactly one negative eigenvalue of G_E" provable without zeros (for example
+      from the Markov structure plus the rank-one lift by kappa u u^T), or is it already
+      RH-graded? Same question for G_O >= 0.
+  (c) G1a for K in this picture: the even bottom is lifted by +kappa u u^T, the odd bottom
+      lowered by -kappa v v^T. Is there a clean secular statement of G1a in terms of
+      Green's functions of G, and does PF give any of its signs?
+Result codes: REDUCTION_CONFIRMED(statement) | REDUCTION_CORRECTED(statement) |
+plus for (b): INDEX_UNCONDITIONAL(proof) | INDEX_RH_GRADED(why) | INDEX_UNDECIDED.
+
+5. Q3 - A SIGN REPRESENTATION FOR s_E AND s_O
+
+Our rule: a hard sign is not estimated as a difference of close numbers; we look for
+s = B_0 + sum C_n with all C_n of known sign. Here the margin is about 1e-29 at m = 12,
+so any lossy estimate dies. Is there an exact representation of s_E or s_O as a sum of
+terms of known sign? Candidates we can name: a random-walk (Feynman-Kac) expectation
+for the Green's function u^T G^{-1} u continued above the bottom; a sieve-type square
+(Selberg Lambda^2 style) for the prime jumps; a cancellation between prime jumps that a
+term-by-term bound cannot see (Zhu, arXiv:2608.24827, RELAY: "requires cancellation in
+the prime comb"). Say which, if any, can carry the sign, or name the first unpaid term.
+Result codes: SIGN_REPRESENTATION(statement) | REDUCED_TO_FIRST_UNPAID(term) |
+NO_REPRESENTATION_IN_THIS_PICTURE(why).
+
+6. PROHIBITIONS
+
+  No RH-equivalent premise in any chain; equivalence is not circularity.
+  No finite sample as a cofinal quantifier. Section 0 facts are cell facts.
+  No Lean, no repository edits, no broad numeric scan, no new chat.
+  No unverified relay as a premise; mark RELAY.
+
+7. PRE-REGISTERED PREDICTIONS (observer, frozen at this commit)
+
+  P1  Q1: MARKOV_PROVED 0.55 · MARKOV_PARTIAL 0.30 · MARKOV_REFUTED 0.15.
+  P1c The finite compression P_N G P_N needs its own argument (not inherited): 0.65.
+  P2  Q2(a) REDUCTION_CONFIRMED or CORRECTED with the same two scalars: 0.85.
+  P2b Q2(b) index of G_E: UNCONDITIONAL 0.25 · RH_GRADED 0.20 · UNDECIDED 0.55.
+  P3  Q3: SIGN_REPRESENTATION 0.07 · REDUCED_TO_FIRST_UNPAID 0.63 · NO_REPRESENTATION 0.30.
+
+Directive: per question, the result code, the exact statement proved or refuted,
+the hypotheses spent, and the first unpaid term.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20-40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation),
+       one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first
+       inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another
+       question, with their exact statement.
+
+Return the verdict as an attachment PROSHKA_VERDICT_MARKOV_2026-10-29.md.
+RH remains OPEN unless a complete valid chain is supplied; the final claim
+remains with the owner.

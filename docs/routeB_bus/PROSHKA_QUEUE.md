@@ -2,6 +2,71 @@
 
 This worktree record is a candidate dispatch ledger, not canonical admission or writer takeover.
 
+## REQ-2026-10-30-NOESCAPE · ANSWERED, NOT INDEPENDENTLY CHECKED
+
+- Verdict 2026-10-30 17:04: [`proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md`](proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md), SHA-256 `fdfd3843…`, score 4, `TRY_NOESCAPE_SIGNED_LEAKAGE_WITH_SPECTRAL_COUNT_GUARD`. Q1–Q4 PARTIAL_WITH_PRECISE_REMAINDER. Honesty clause kept: L5 "THIS STEP IS RH" (vanishing lower floor), L6/L8/L13 "IMPLIES RH".
+- New PAPER: L3 unbounded level count in every |lam| < m^-B band; L12-L13 saturated one-sided count + vanishing residual => RH; L10-L11 exact F (Xi tail) + X (exterior) split. Open: (4.6)/(4.9), (5.9), (6.2).
+- Next: F/X discriminator `thetagrade_2026-10-28/leakage_split_probe.py` (handoff to Mac: `docs/session_protocols/HANDOFF_MAC_2026-10-30.md`). Audit file not yet written.
+
+
+- Sent by the owner 2026-10-30 (manual paste of the delivery line, request commit `1a23edcd`). Observer watches `~/Downloads` (8 h). Do not resend.
+
+- Proof batch after CONFINE + Codex confirmation: prove T = persistent fixed-jet overlap of the even bottom (implies RH by CONFINE (4.9)). Owner's word built in: honesty clause "if this is RH, say it is RH and keep proving".
+- Q1 proof of T; Q2 blind tail: sum_i |k(e_m, v_i)|^2 / lam_i^2 <= c < 1 with the explicit tail e_m = h - P_m h; Q3 threshold counting vs MARKOV (4.19); Q4 limit ladder.
+- Request: [`proshka/PROSHKA_REQUEST_NOESCAPE_2026-10-30.txt`](proshka/PROSHKA_REQUEST_NOESCAPE_2026-10-30.txt), commit `1a23edcd44d6e95bafa2929396188f47312a270b`, blob `96d3527d0248d4f5022893d5a301f4987f1e3672`, SHA-256 `b3e364b55c6ac82d4af228b35f986f6ba23892ee3ef3d99cea3ee8a0b0071978`, base `bdea6ec1`. Verdict file name: `PROSHKA_VERDICT_NOESCAPE_2026-10-30.md`.
+
+## REQ-2026-10-30-CONFINE · ANSWERED, PARTIALLY CHECKED
+
+- Verdict 2026-10-30 13:37: [`proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md`](proshka/PROSHKA_VERDICT_CONFINE_2026-10-30.md), SHA-256 `57088a91…`, score 5, `TRY_CONFINE_FIXED_JET_OVERLAP_AUDIT`. Audit: [`proshka/CONFINE_AUDIT_2026-10-30.md`](proshka/CONFINE_AUDIT_2026-10-30.md).
+- Q1 SELECTION_RH_GRADED (new: off-critical zero => sector bottoms converge weakly to 0; persistent fixed-jet overlap => RH). Q2 COMMUTATOR_EXACT + GAP_REDUCED. Q3 fixed jet RH-graded; unrestricted L² closure dense, so vacuous. Q4 implicit equation for a*, 4.6 = fit, no heat-time crosswalk to Paper I.
+- Checked by observer: (6.3) and (6.6) to 1e-101; Paper I Jacobian error (7.6) at main.tex:532; pole difference kernel (6.1); Schur margin (9.2) = gap (identity), a/gap = ladder C_m; crude (6.12) fails by 47 ... 9e26; quasimode decay (3.9) consistent with the Xi tail up to m = 20.
+- NOT checked: §§2-4 analytic proofs (3.5)-(3.8), (4.1)-(4.5), density (2.1), Gram step (4.9). Stay PAPER.
+- 2026-10-30: owner chose the Codex read-only PAPER audit of §§1-4 (verdict §14). Dispatched by observer as one `codex exec --sandbox read-only` (gpt-6.1-sol, high, role methodology-reviewer), session `01a18ce8-7bd0-71a0-b7a4-2c6902262512`. Result 14:11: `FIXED_JET_ESCAPE_CONFIRMED_PAPER`, 8/8 steps OK, zero findings ([`proshka/CODEX_AUDIT_CONFINE_2026-10-30.md`](proshka/CODEX_AUDIT_CONFINE_2026-10-30.md)). Observer re-checked J_1 = 4.2993 < 5, int (e^{s/2}-1)/sinh s = log 2 + pi/2 (30 digits), 4 sinh(b) <= 2 sqrt(m). Status of the theorem: PAPER, two independent readers (Proshka, Codex), no Lean. Equipartition batch postponed (equals a gap lower bound, needs xi).
+
+- Sent by the owner 2026-10-30 about 10:53 CET (manual paste of the delivery line, request commit `339fcb4c`, blob `f7c13308`, SHA-256 `7db16902…`). Do not resend.
+- Request: [`proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt`](proshka/PROSHKA_REQUEST_CONFINE_2026-10-30.txt), base `f89683ae`.
+
+## REQ-2026-10-29-MARKOV · ANSWERED, PARTIALLY CHECKED
+
+- Verdict 2026-10-30 07:27: [`proshka/PROSHKA_VERDICT_MARKOV_2026-10-29.md`](proshka/PROSHKA_VERDICT_MARKOV_2026-10-29.md), SHA-256 `64a67ac8…`, score 5, `TRY_MARKOV_BULK_WITH_INDEX_GUARD`. Audit: [`proshka/MARKOV_AUDIT_2026-10-30.md`](proshka/MARKOV_AUDIT_2026-10-30.md).
+- Checked by observer: (3.1), theta h, pole annihilation (4.9), quartet algebra, identity (6.8) with constant 8, plants (7.1), (2.9). pf_probe.py odd-phase defect fixed.
+- NOT checked: §4 analytic part (H_0 decay, f_E/f_O in S_exp, return (4.12)-(4.17)), so (4.19) "index bounds <=> RH" stays PAPER.
+- Next candidates: independent §4 audit (Proshka's directive, channel = owner decision); Poincare inequality (6.9) literature pass.
+
+- Sent by the owner 2026-10-29 into a new chat of the Proshka project (manual paste). Delivery line pins the request at commit `cfe490d950758d0a8b1e53d7a76a29d9ab671f0d` (blob `9f299b2a`, SHA-256 `f59076d7…`), sources at `ab639432`; verdict requested as `PROSHKA_VERDICT_MARKOV_2026-10-29.md`. Observer watches `~/Downloads`. Do not resend.
+- 2026-10-29 23:20 CET: no verdict file after 8 h of watching `~/Downloads` (15:19-23:20) and no `[Proshka]` commit on origin. STIELTJES took 38 min. Owner to check the chat for an undownloaded or broken answer before any resend.
+
+- Follows STIELTJES 12.1/8.2. Q1 Perron-Frobenius for the pole-free bulk G = K - W02 on every window (Dirichlet form + bounded potential); Q2 window positivity = two secular scalars s_E <= 0, s_O >= 0 plus index facts; Q3 exact sign representation for s_E, s_O.
+- Observer facts on m = 2..12: G bottom even, simple, function without sign change; G_E one negative level, G_O none (`thetagrade_2026-10-28/pf_*`).
+- Request: [`proshka/PROSHKA_REQUEST_MARKOV_2026-10-29.txt`](proshka/PROSHKA_REQUEST_MARKOV_2026-10-29.txt), base `ab639432`, 171 lines, 10530 bytes, SHA-256 `f59076d74630a2656be28e0f8e2898636faa44f1a906e1a5cc9cb1825bb26548`.
+
+## REQ-2026-10-29-STIELTJES · ANSWERED AND CHECKED
+
+- [verdict](proshka/PROSHKA_VERDICT_STIELTJES_2026-10-29.md) (TRY_STIELTJES_UNREDUCED_COFACTOR_POSITIVITY, score 4), [audit](proshka/STIELTJES_AUDIT_2026-10-29.md). G1a <=> positive coefficient cone of det(O - lambda I + x I); Abel sufficient not necessary; four structured plants verified. Next: endpoint cofactor supplier (12.1) or two one-sided bounds using mu/lambda >= 41. Do not resend.
+
+### (send record)
+
+- Sent by the owner 2026-10-29 ~12:44 CET into a new chat of the Proshka project (manual paste). Delivery line pins the request at commit `87fb6133560e9521876e37fb4cb460b5c09acdd3` (blob `7aadb387`, SHA-256 `fa686400…`), sources at `bac12438`; verdict requested as downloadable `PROSHKA_VERDICT_STIELTJES_2026-10-29.md`. Observer watches `~/Downloads`. Do not resend.
+
+- Follows PARITYSPLIT directive §11. Three questions: Q1 G1a as a sign of positive terms (w_0 > 0 necessary; Abel partial sums W_k > 0 sufficient), Q2 parity alternation of the bottom spectrum, Q3 Theta.
+- Observer facts N1–N5 checked on m=2..16 at dps 120/170 (`thetagrade_2026-10-28/RESULT.md`, last section): residue closed form, f = 1/⟨η,(K−t)⁻¹e₀⟩, weights w_i.
+- Request: [`proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt`](proshka/PROSHKA_REQUEST_STIELTJES_2026-10-29.txt), base `bac12438`, 217 lines, 13365 bytes, SHA-256 `fa686400c06b49b14feb798bd99563da440c21ffae8c4045b0279e657eeec2a6`.
+
+## REQ-2026-10-28-PARITYSPLIT · ANSWERED AND CHECKED
+
+- [verdict](proshka/PROSHKA_VERDICT_PARITYSPLIT_2026-10-28.md), [audit with numeric checks](proshka/PARITYSPLIT_AUDIT_2026-10-28.md). G1b KILL_PARTIAL and not needed by the roof; G1a ⟺ strict parity ordering ⟺ odd-resolvent sign f_m(t)<0; R_m<0 on m=2..16. Do not resend.
+
+### (original entry)
+
+- Request: [`proshka/PROSHKA_REQUEST_PARITYSPLIT_2026-10-28.txt`](proshka/PROSHKA_REQUEST_PARITYSPLIT_2026-10-28.txt), base `a3174303`, 186 lines, 10645 bytes, SHA-256 `32cd804506c560d5612692f8e5a58dad4beca01c47fe54b65429239019521aad`.
+- Q1 (main): kill G1b as a theorem shape, a_m > lambda_min(K_m|odd) eventually. Q2: G1a simple even ground state; Theta-graded or not; the cos^2(xi,eta)/lambda_1 symptom.
+- Data inline: 15-cell parity table from `thetagrade_2026-10-28/`. Delivery: owner-directed new chat, GitHub locators.
+
+## REQ-2026-10-28-THETAGRADE · ANSWERED AND CHECKED
+
+- [verdict](proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28.md), [audit and own Q3 extraction](proshka/THETAGRADE_AUDIT_2026-10-28.md). Q1a/b/iii CONFIRMED_CONDITIONAL (Rouché); Q1c GAP; Q2 parity twin KILLED, G1 UNDECIDED, first fact signed D_m vs ||r_m||, delta_m; Q3 done by observer from the pinned source: DEGREE_FROM_OBJECT, 2/3 cap geometry-specific. Do not resend.
+- Candidates for the next batch (Proshka's line): A transform-dual E_m = F_m - T_m directly; B parity-block Schur with D_m, ||r_m||, delta_m and q_m overlap. Proshka asks for the exact parity block decomposition of the literal CCM matrix.
+
 - **Execute Multilinear Source Test 10/10 ANSWERED AND CHECKED; exhausted**: [ответ10](source_observability_2026-09-28/PROSHKA_JOINT_LATTICE_INLINE_2026-10-07.md), [аудит](source_observability_2026-09-28/JOINT_LATTICE_AUDIT_2026-10-07.md). Exact joint floor pairing returns original prime discrepancy with coefficient one; terminal signed margin unchanged. Q9 proper-power tail retained; scalar sign/SP/RH OPEN. No new chat selected.
 
 - **Proof of CCM Growth 10/10 ANSWERED AND CHECKED; exhausted**: [answer10](source_observability_2026-09-28/PROSHKA_PARITY_PRIME_INLINE_2026-10-06.md), [audit and own finite-convolution attempt](source_observability_2026-09-28/PARITY_PRIME_AUDIT_2026-10-06.md). Parity return paid; weighted even-shift aggregate STALLED, SP OPEN. Forced same-phase rollover; no more sends to this chat.

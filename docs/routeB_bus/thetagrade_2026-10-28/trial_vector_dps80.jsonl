@@ -1,0 +1,5 @@
+{"m": 2, "dps": 80, "lam": "0.0030602385", "mu": "0.12564092", "U_plane": "0.0034325645", "U_over_lam": "1.1216657", "U_below_mu": true, "mu_over_U": "36.602641", "plane_dim": 2, "plane_odd_leak": "8.4337584e-81"}
+{"m": 3, "dps": 80, "lam": "1.0045504e-6", "mu": "0.00011648004", "U_plane": "1.5430864e-5", "U_over_lam": "15.360965", "U_below_mu": true, "mu_over_U": "7.5485107", "plane_dim": 2, "plane_odd_leak": "4.7439891e-81"}
+{"m": 4, "dps": 80, "lam": "1.6995356e-9", "mu": "3.0340075e-7", "U_plane": "3.2850217e-8", "U_over_lam": "19.328937", "U_below_mu": true, "mu_over_U": "9.2358827", "plane_dim": 2, "plane_odd_leak": "1.1859973e-81"}
+{"m": 5, "dps": 80, "lam": "3.5538058e-12", "mu": "1.0250779e-9", "U_plane": "3.8951962e-10", "U_over_lam": "109.60633", "U_below_mu": true, "mu_over_U": "2.6316464", "plane_dim": 2, "plane_odd_leak": "2.3390502e-81"}
+{"m": 6, "dps": 80, "lam": "7.9989928e-15", "mu": "2.8961707e-12", "U_plane": "8.5696285e-12", "U_over_lam": "1071.3384", "U_below_mu": false, "mu_over_U": "0.33795755", "plane_dim": 2, "plane_odd_leak": "2.6355495e-81"}

@@ -1,0 +1,186 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-28-PARITYSPLIT
+BOUNDARY_ID: GOAL058_G1_PARITY_SPLIT
+DATE: 2026-10-28
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: a3174303e451541aad6538991602079ff9d9206f
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: owner-directed new chat; GitHub locators pinned to SOURCE_BASE_COMMIT; key data inline
+
+Proshka, this is a new isolated batch of two linked questions. It follows your
+THETAGRADE verdict (Q2: G1_UNDECIDED_FIRST_FACT). We computed the first fact you
+named. The data split G1 into two parts. Q1 asks you to kill one part as a
+theorem shape. Q2 asks for the other part.
+
+0. WHAT WE COMPUTED (DIAGNOSTIC_NEVER_A_PROOF)
+
+Object: literal full CCM matrix K_m, modes -m..m, m = N, L = log m
+(full_center_probe.py: matrix_K, from CCMFiniteWeilSourceMatrixN1.lean:40-101).
+Selected reference row q_m = z(c0,c4)/||z|| (rectangle_probe.py, as in
+SOURCE_TRANSFER.md (T4)); the exact row differs by E_m, superpolynomially small (T5).
+a_m = q_m* K_m q_m, r_m = (K_m - a_m) q_m, delta_m = lambda_min(K_m on q_m-perp) - a_m,
+alpha_m = ||(I - P0) q_m||, eta = all-ones vector (CCMFiniteWeilSourceMatrix.lean:51).
+
+Parity block decomposition (you asked for it). R: mode n -> -n
+(ccmReflectionEndFinite, CCMFiniteWeilParity.lean:24). K_m commutes with R:
+every entry depends on (n, v) only through v*n, n^2, v^2, the even diagonal
+and odd sine moments. Orthonormal bases:
+  even: e_0 and (e_n + e_-n)/sqrt2, n = 1..m      (dimension m+1)
+  odd:  (e_n - e_-n)/sqrt2, n = 1..m              (dimension m)
+K_m = K_even (+) K_odd in these bases.
+
+Table, dps 120 and dps 170 agree in all 20 printed digits on every cell.
+Cross-check: alpha_4, alpha_8, alpha_13 = 0.03089 / 0.05534 / 0.06052 equal the
+older PAPER_CHAIN G3 diagnostics.
+
+   m    lam_even    lam_odd       a_m      ||r_m||     delta_m    alpha_m  cos^2(xi,eta)/lam_1
+   2     0.00306      0.1256    0.003449     0.0199       0.122  0.02044    1.5
+   3    1.005e-6   0.0001165    1.419e-6   0.000168    0.000115  0.006886   1.43
+   4      1.7e-9    3.034e-7    7.994e-8    5.29e-5     2.23e-7  0.03089   1.59
+   5   3.554e-12    1.025e-9     8.84e-9    3.11e-5    -7.81e-9   0.0434   1.61
+   6   7.999e-15   2.896e-12   2.842e-10    9.95e-6   -2.81e-10  0.05038   1.85
+   7   2.774e-17    1.05e-14   8.684e-11    3.98e-6   -8.68e-11  0.05354   1.34
+   8   1.024e-19   3.339e-17    1.14e-11    2.97e-6   -1.14e-11  0.05534   1.31
+   9   4.479e-22   2.544e-19   2.288e-12    1.44e-6   -2.29e-12  0.05855   1.41
+  10   1.344e-24   8.599e-22   4.841e-14    9.27e-8   -4.84e-14  0.05873   1.46
+  11   1.946e-26   1.254e-23   1.279e-14    5.43e-8   -1.28e-14  0.06039   1.26
+  12    6.79e-29   4.147e-26   6.318e-17    4.98e-9   -6.32e-17  0.05959   1.17
+  13   7.921e-31   6.417e-28   4.226e-16    1.93e-8   -4.23e-16  0.06052   1.24
+  14   2.953e-33   2.918e-30   2.997e-17    6.52e-9    -3.0e-17  0.05974   1.39
+  15   1.967e-35   2.189e-32   3.655e-18    1.17e-9   -3.65e-18  0.05946   1.33
+  16   5.456e-38   6.853e-35   7.352e-19    7.7e-10   -7.35e-19  0.05758   1.29
+
+Observed on all 15 cells: the ground state xi is simple and even; lambda_2 = lam_odd;
+lam_odd/lam_even grows from 41 to 1256. From m = 5: a_m > lam_odd and delta_m < 0.
+alpha_m does not decay (0.055-0.061 for m >= 8). cos^2(xi, eta)/lam_1 stays in [1.17, 1.85].
+Finite cells test a claim; they do not supply a cofinal quantifier.
+
+Observer's exact mechanism for delta_m < 0: q_m is even (parity defect 0 on every
+cell), so every odd y is orthogonal to q_m, and delta_m <= lam_odd - a_m.
+Hence a_m > lam_odd implies delta_m < 0. With a = a_m, the literal odd floor
+hoddEv (beta_0 ||x||^2 <= <x,(K - a)x> on odd x) needs lam_odd - a_m >= beta_0 > 0
+and fails on the same cells.
+
+Proposed split of G1 (observer):
+  G1a: bottom eigenspace of K_m simple, ground state even, eta . xi != 0.
+       This is all that G2 consumes: the Lean theorem
+       ccmSourceLagrangePolynomial_complex_zerosRealOn_of_bottomRayleigh_simple_normalized
+       (CCMFiniteWeilParity.lean, around 161) needs a bottom eigenvector, a simple
+       eigenspace and eta . xi = 1, and no complement gap.
+  G1b: cellwise floor delta_j > 0, ||r_j||/delta_j -> 0, and hoddEv with a = a_j,
+       all relative to the selected row q_j (PAPER_CHAIN.md G1 block).
+
+1. SHELF (sha256 prefix 16 at SOURCE_BASE_COMMIT)
+
+Base URL: https://github.com/Malaeu/chen_q3/blob/a3174303e451541aad6538991602079ff9d9206f/
+  6074cb290d3767b0 docs/routeB_bus/thetagrade_2026-10-28/RESULT.md
+  0a7d0bec0a5f7dfa docs/routeB_bus/thetagrade_2026-10-28/parity_gap_table.py
+  a8d61094913a69d3 docs/routeB_bus/thetagrade_2026-10-28/table_dps170.jsonl
+  ead3b1e533a0d301 docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py
+  0e23ecd7252c0a52 docs/routeB_bus/fokas_k_sign_2026-09-25/rectangle_probe.py
+  b01d145b3ad3e83c docs/routeB_bus/fokas_k_sign_2026-09-25/SOURCE_TRANSFER.md
+  6957bf30c06b988b docs/Codex/PAPER_CHAIN.md
+  af92a83a56847880 docs/routeB_bus/proshka/PROSHKA_VERDICT_THETAGRADE_2026-10-28.md
+  aaac808554ca9646 docs/routeB_bus/proshka/THETAGRADE_AUDIT_2026-10-28.md
+  a79c30cdc11cc936 q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilParity.lean
+  282dc31c9bc558ae q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrix.lean
+  f2f9d248a6f2ad70 q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean
+  ab1b32b468d6fc25 docs/routeB_bus/proshka/PROSHKA_VERDICT_GOAL058_SELECTED_FERRERS_ODD_SECTOR_FLOOR_DISCRIMINATOR_2026-08-30.md
+External: CCM, Zeta Spectral Triples, arXiv:2511.22755 (shelf copy
+docs/routeB_bus/litreview/pdfs/2511.22755.pdf): Thm 5.10, section 8 p.32
+("prove that its smallest eigenvalue ... is simple and that its corresponding
+eigenvector is even").
+
+2. KILLED - do not propose again without a new invariant
+
+  K1 constant-beta complement floor (25.09), Weil null plane {G, G''}.
+  K2 odd-sector floor on the source shelf of 30.08.
+  K3 parity twin (THETAGRADE Q2): one negative witness gives one negative sector,
+     by <v,Kv> = <v+,Kv+> + <v-,Kv->.
+  K4 "SP floor exponent exactly Theta - 1/2": only the necessary threshold holds.
+  K5 H_mu change of representation and joint lattice pairing: coefficient-one return.
+
+3. Q1 - KILL G1b AS A THEOREM SHAPE (main)
+
+Target statement: for the literal family, a_m > lambda_min(K_m|odd) for all
+sufficiently large m.  Consequence: delta_m < 0 and literal hoddEv with a = a_m
+fail cofinally, so G1b is false as stated.
+
+Suggested route (yours to change): two one-sided bounds, each with explicit
+losses, no difference of close numbers.
+  (i)  lower bound for a_m - lambda_1: a_m - lambda_1 = sum_{i>=2}(lambda_i - lambda_1)|c_i|^2,
+       with alpha_m^2 = sum_{i>=2}|c_i|^2; the data say the weight sits on high
+       eigenvalues.  Any lower bound must come from the row itself (Ferrers
+       structure, energies E0, E4) and not from the unknown ground state.
+  (ii) upper bound for lambda_min(K_m|odd): an explicit odd trial vector with
+       small Rayleigh quotient.
+Also answer: which consumers in PAPER_CHAIN use G1b (hratioEv, hoddEv, the
+cellwise consumer)?  Does any link of the roof chain need G1b once G1a holds
+and G3 is attacked at transform level (your candidate A)?
+
+Result codes: G1B_KILLED_COFINAL(statement, constants) |
+G1B_KILL_PARTIAL(first unpaid bound) | G1B_SURVIVES(mechanism showing
+a_m < lambda_odd eventually, against the table).
+
+4. Q2 - G1a: SIMPLE EVEN GROUND STATE
+
+Target: for all sufficiently large m, lambda_min(K_m|odd) > lambda_min(K_m|even),
+the even bottom eigenvalue is simple, and eta . xi != 0.
+This is the first open step that CCM name in section 8.
+Your candidate B: parity-block Schur.  Use the explicit blocks above.
+
+Three sub-questions, answer each:
+  (a) Prove G1a, or reduce it to one exact sign lemma with objects, orders and the
+      first unpaid term.
+  (b) Is G1a Theta-graded?  Does an off-critical zero force, on infinitely many
+      late cells, lambda_odd <= lambda_even, a degenerate bottom space or
+      eta . xi = 0?  K3 forbids the parity-twin argument; a new mechanism is needed.
+  (c) Symptom: cos^2(xi, eta)/lambda_1 in [1.17, 1.85] on all 15 cells.  Is there an
+      exact identity behind it (for example, lambda_min equal to a pole-term energy
+      of a near-null vector of the remaining form)?  If yes, does it give
+      eta . xi != 0 from lambda_1 != 0?
+"This is RH" is not an answer.  G1a is not equivalent to RH by itself.
+Result codes: G1A_PROVED | G1A_REDUCED_TO_SIGN_LEMMA(statement) |
+G1A_THETA_WITNESS(mechanism) | G1A_UNDECIDED_FIRST_FACT.
+
+5. ONE INPUT YOU MAY CHANGE
+
+You may replace the selected row q_m in G1b by any noncircular reference row.
+If you do, say whether the kill in Q1 survives and where the difficulty moves.
+
+6. PROHIBITIONS
+
+  No RH-equivalent premise in any chain; equivalence is not circularity.
+  No finite sample as a cofinal quantifier.
+  No Lean, no repository edits, no broad numeric scan, no new chat.
+  No unverified relay as a premise; mark RELAY.
+
+7. PRE-REGISTERED PREDICTIONS (observer, frozen at this commit)
+
+  P1  Q1: G1B_KILLED_COFINAL 0.45 · G1B_KILL_PARTIAL 0.45 · G1B_SURVIVES 0.10.
+  P1c No roof link needs G1b once G1a holds and G3 is transform-level: 0.75.
+  P2  Q2(a): G1A_PROVED 0.10 · G1A_REDUCED_TO_SIGN_LEMMA 0.55 · UNDECIDED 0.35.
+  P2b Q2(b): a Theta-witness for G1a found: 0.15.
+  P2c Q2(c): an exact identity behind cos^2/lambda_1 found: 0.40.
+
+Directive: per question, the result code, the exact statement proved or
+refuted, the hypotheses spent, and the first unpaid term.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20–40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation), one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another question, with their exact statement.
+
+Return the verdict as an attachment PROSHKA_VERDICT_PARITYSPLIT_2026-10-28.md.
+RH remains OPEN unless a complete valid chain is supplied; the final claim
+remains with the owner.

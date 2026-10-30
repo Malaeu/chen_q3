@@ -1,0 +1,172 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-30-CONFINE
+BOUNDARY_ID: GOAL058_WINDOW_BOTTOM_AS_CONFINED_XI_RADICAL_VECTOR
+DATE: 2026-10-30
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: f89683aee0e7137e1e1f4e0567418c838ded29d3
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: owner-directed new chat; GitHub locators pinned to SOURCE_BASE_COMMIT; key data inline
+
+Proshka, this is a new isolated batch of four linked questions. It follows your MARKOV verdict
+(theta radical vector h, (4.3)-(4.5); identity (6.8)) and your ONO_MARKOV_SYNERGY review
+(h = 4 thetaPhi). After MARKOV we stopped looking for a sign of a scalar and looked at the
+SHAPE of the window bottoms. They turned out to be elements of the xi-radical family of the
+global Weil form, confined to the window. The owner reads this as geometry; we ask whether
+the geometry can carry G1a or G3, and where it meets the arithmetic.
+
+0. WHAT WE FOUND (DIAGNOSTIC_NEVER_A_PROOF; literal K_m, modes -m..m, N = m, L = log m)
+
+(a) Radical family. h of MARKOV (4.3) has h-hat(z) = 4 xi(1/2 - iz); every derivative h^(k)
+    has transform (iz)^k 4 xi(1/2 - iz), so h, h', h'', ... are exact null vectors of the
+    global Weil form (k(h^(k), .) = 0). Any translate of them is null too (factor e^{-i delta z}).
+(b) The window bottoms lie in this family. Least squares of the sector bottoms on a window
+    grid (pingeom_fit.py, dps 100): relative residual 2e-6 .. 2.4e-4 at m = 6..24 in
+    span{h, h'', h''''} (even) and span{h', h''', h^(5)} (odd). Weights (c_i ||D_i||) reach a
+    plateau: even (0.99857, 0.05327, 0.00359) at m = 24, (0.99858, 0.05322, 0.00345) at m = 20;
+    odd (0.99380, 0.11081, 0.00904) at m = 24, (0.99383, 0.11056, 0.00870) at m = 20.
+    So the bottoms do NOT converge to h, h' but to a fixed mixture.
+(c) One heat time for both sectors. Raw ratio s = c_1/c_0: even 0.003082 (m=24), 0.003079 (20);
+    odd 0.003007 (24), 0.003001 (20). First order f = h + s h'' = Fourier 4 xi (1 - s z^2), i.e.
+    h run through the heat equation for time s. Second order c_2/(s^2/2) = 0.75 .. 0.81
+    (heatsmooth_check.py), so exp(s d^2/dx^2) h is a first-order match only.
+    Selection by concentration is refuted: minimisers of int w f^2 / int f^2 in the same spans
+    (w = x^2, x^4, cosh x, e^{2|x|}) give the h'' weight about -0.19 (even), the window +0.053.
+    The bottom is broader than h (pingeom_select.py).
+(d) The odd bottom is the derivative of the even bottom (odd_is_derivative.py, model-free,
+    both synthesized from K_m): 1 - cos(f_O, f_E') = 9.3e-5 (m=4), 2.6e-5 (6), 1.9e-5 (8),
+    4.6e-6 (12), 1.5e-6 (16), monotone. Observer reading: the window breaks the translation
+    symmetry of the radical family; the odd bottom is the translation mode of the even bottom.
+(e) Two-sided pin (shake_probe.py, shake_fake_atom.py). Hellmann-Feynman speeds of the sector
+    bottoms when an atom at shift a moves right: even speed > 0 for every a in (0, L), m = 4..16;
+    odd speed changes sign once, at a*(m) = 0.547 (6), 0.558 (8), 0.576 (12), 0.578 (16),
+    0.574 (20), 0.577 (24). For pure h' the threshold (minimum of its autocorrelation,
+    R(a) ~ int t^2 Xi(t)^2 cos(ta) dt) is 0.547636729746 (two independent quadratures agree to
+    12 digits, pingeom_limit.py). All prime shifts log n >= log 2 = 0.693 lie beyond a*.
+    The pin itself is shape, not arithmetic (a fake atom anywhere beyond a* is pinned the same way).
+(f) Geometry breaks with the sign (break_sign_keep_shape.py, m = 12): shifting log 2 and its
+    powers by eps gives lam0(K_E) = -6.7e-27, -1.2e-20, -7.2e-12 for eps = -1e-26, -1e-20, -1e-12,
+    and the radical-family residual of the bottom grows 1.95e-6 -> 9.45e-4 -> 0.392.
+    The clean xi-geometry exists only for the exact primes.
+(g) No confinement law (confine_probe.py). lam0_E / (tail energy of the plateau vector beyond
+    L/2) = 7.8e-6 (6), 4.3e-7 (10), 1.8e-6 (16), 5.0e-5 (20), 5.1e-3 (24). lam0_E decays like
+    e^{-4.6 m} (log-slope -4.58 on m = 20..24), much slower than the tail. lam0_E = 6.79e-29 (12),
+    5.46e-38 (16), 2.58e-46 (20), 2.69e-54 (24). Heat-flow deformation e^{t x^2} h (de Bruijn-Newman)
+    fits 100-1000 times worse than the radical family; rejected.
+
+1. SHELF (sha256 prefix 16 at SOURCE_BASE_COMMIT)
+
+  ead3b1e533a0d301  docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py
+  6d5b8fa426aefdd6  docs/routeB_bus/thetagrade_2026-10-28/shake_probe.py
+  bbc5974e80300e9d  docs/routeB_bus/thetagrade_2026-10-28/shake_fake_atom.py
+  58e317c0201a846a  docs/routeB_bus/thetagrade_2026-10-28/pingeom_probe.py
+  2950666121f08073  docs/routeB_bus/thetagrade_2026-10-28/pingeom_limit.py
+  7c36a3870bb6903a  docs/routeB_bus/thetagrade_2026-10-28/pingeom_fit.py
+  968980344a60c400  docs/routeB_bus/thetagrade_2026-10-28/pingeom_fit_dps100.jsonl
+  4197d035d4589700  docs/routeB_bus/thetagrade_2026-10-28/pingeom_select.py
+  2e114ae0d80884a1  docs/routeB_bus/thetagrade_2026-10-28/heatsmooth_check.py
+  1dd790fffdf6c88b  docs/routeB_bus/thetagrade_2026-10-28/odd_is_derivative.py
+  5c3ef7639ed308fc  docs/routeB_bus/thetagrade_2026-10-28/break_sign_keep_shape.py
+  0b281cba666a8855  docs/routeB_bus/thetagrade_2026-10-28/confine_probe.py
+  e1b964ffd0ba865a  docs/routeB_bus/thetagrade_2026-10-28/confine_probe_dps100.jsonl
+  895284862af119cb  docs/routeB_bus/thetagrade_2026-10-28/RESULT.md (last eight sections)
+  64a67ac8ccfdcf35  docs/routeB_bus/proshka/PROSHKA_VERDICT_MARKOV_2026-10-29.md
+  ba2f20fabd3e025c  docs/routeB_bus/proshka/MARKOV_AUDIT_2026-10-30.md
+  962bbd985bf18f96  docs/routeB_bus/proshka/PROSHKA_REVIEW_ONO_MARKOV_SYNERGY_2026-10-30.md
+  af88e6620ac099d6  docs/WALL_ONE_FORMULA_2026-10-29.md (section 7: closed classes)
+  8bf6701ec2bb6f06  full/archive_latex_2026_01_29/paper1_fejer_heat/main.tex (our 2025 paper;
+                    RELAY for its Part II claim ||T_P|| <= rho(t) < c*/4 in the heat RKHS)
+
+2. KILLED - do not propose again without a new invariant
+
+  Everything in WALL_ONE_FORMULA section 7: PF bulk -> secular signs; index bounds (RH-graded,
+  your (4.19)); secular bracket (5.4) (margins 0.6 tau, 500 tau); pole removal; prime partial
+  sums with the -2 S_L ||f||^2 term; A_abs + Barta comparison (crossing primes exceed the odd
+  margin by 3e3 .. 2e25); any approximate-prime tool (SHAKE: O(1) speed vs 1e-29 margin).
+  Here also: confinement law lam0 ~ tail (0(g)); x-space heat-flow deformation (0(g));
+  selection by concentration (0(c)).
+
+3. Q1 - SELECTION (main)
+
+  Which principle selects the plateau element of the radical family in 0(b)-(c)?
+  (a) Prove or refute: the sector bottoms of K_m converge, as m -> infinity, to a fixed element
+      F_E (even) and F_E' (odd) of the closed span of the xi-radical family, with a rate.
+  (b) Identify F_E: is it exp(s d^2/dx^2) h for a definite s (we measure s ~ 0.0031), or a
+      different element (minimiser of which functional)? What fixes s?
+  (c) Relation to G3 (ground transform tracks Xi on compacts): is "bottom -> F_E in L^2" the same
+      statement as G3, weaker, or stronger? Does it need zeros?
+  Result codes: SELECTION_IDENTIFIED(F_E, rate) | SELECTION_REDUCED(first unpaid term) |
+  NO_FIXED_LIMIT(why the plateau is transient) | SELECTION_RH_GRADED(why).
+
+4. Q2 - TRANSLATION MODE AND G1a
+
+  Exact identity (observer): if K f_E = lam_E f_E and D = d/dx in the mode basis, then
+      <Df_E, K Df_E> - lam_E ||Df_E||^2 = <Df_E, [K, D] f_E>.
+  The archimedean and prime parts are convolution kernels on the line; the commutator [K, D]
+  comes only from the window and from the pole term W02 (cosh is not translation invariant).
+  (a) Give [K, D] explicitly in our basis (boundary terms and the rank-two pole commutator).
+  (b) Given 0(d) (odd bottom = Df_E up to 1.5e-6 in angle), can the commutator form give a LOWER
+      bound for lam0(K_O) - lam0(K_E)? A Rayleigh quotient of Df_E alone only bounds lam0(K_O)
+      from above, and the spectrum spans about 30 orders, so we need a different argument
+      (e.g. a positive commutator / Mourre-type estimate, or a ground-state transform with the
+      even bottom). Name the first unpaid term if not.
+  Result codes: COMMUTATOR_EXACT(formula) plus GAP_LOWER_BOUND(statement) |
+  GAP_REDUCED(first unpaid) | GAP_RH_GRADED(why).
+
+5. Q3 - GEOMETRY VERSUS ARITHMETIC
+
+  0(f): the radical-family proximity of the bottom and the sign of lam0 break together under a
+  Beurling-style shift of log 2. Is "the window bottom stays within epsilon_m of the xi-radical
+  family" (with epsilon_m -> 0) an RH-equivalent statement, a consequence of RH that is weaker,
+  or provable without zeros? If it is weaker and zero-free, which consumer does it feed
+  (G1a, G3, neither)?
+  Result codes: PROXIMITY_ZERO_FREE(proof sketch, consumer) | PROXIMITY_RH_GRADED(why) |
+  PROXIMITY_UNDECIDED(first unpaid).
+
+6. Q4 - THRESHOLD, DECAY RATE, HEAT TIME (short answers suffice)
+
+  (a) Does a* of 0(e) follow from F_E (closed form through Xi)? Does "every prime shift lies beyond
+      a*" mean anything for Beurling systems with log p_1 < a*?
+  (b) lam0_E ~ e^{-4.6 m}: what sets this rate, if not the tail of F_E?
+  (c) Our 2025 paper (RELAY, shelf) bounds the prime sampling operator in a heat RKHS by rho(t),
+      decreasing in the heat time t. Is the window heat time s of 0(c) a balance point of this kind
+      ("heating damps the prime part exactly enough"), or unrelated?
+
+7. PROHIBITIONS
+
+  No RH-equivalent premise in any chain; equivalence is not circularity.
+  No finite sample as a cofinal quantifier. Section 0 facts are cell facts.
+  No Lean, no repository edits, no broad numeric scan, no new chat.
+  No unverified relay as a premise; mark RELAY (including our 2025 Part II claim).
+
+8. PRE-REGISTERED PREDICTIONS (observer, frozen at this commit)
+
+  P1  Q1: SELECTION_IDENTIFIED 0.25 · SELECTION_REDUCED 0.45 · NO_FIXED_LIMIT 0.10 · SELECTION_RH_GRADED 0.20.
+  P1b F_E is exactly a heat evolution exp(s d^2/dx^2) h: 0.30.
+  P2  Q2: COMMUTATOR_EXACT 0.70; a zero-free GAP_LOWER_BOUND 0.12.
+  P3  Q3: PROXIMITY_RH_GRADED 0.55 · PROXIMITY_ZERO_FREE 0.20 · PROXIMITY_UNDECIDED 0.25.
+  P4  a* has a closed form through F_E: 0.45.
+
+Directive: per question, the result code, the exact statement proved or refuted,
+the hypotheses spent, and the first unpaid term.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20-40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation),
+       one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first
+       inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another
+       question, with their exact statement.
+
+Return the verdict as an attachment PROSHKA_VERDICT_CONFINE_2026-10-30.md.
+RH remains OPEN unless a complete valid chain is supplied; the final claim
+remains with the owner.

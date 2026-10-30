@@ -1,0 +1,217 @@
+STATUS: REQUEST
+REQUEST_ID: REQ-2026-10-29-STIELTJES
+BOUNDARY_ID: GOAL058_G1A_ODD_RESOLVENT_SIGN
+DATE: 2026-10-29
+REPO: Malaeu/chen_q3
+BRANCH: rh_clean
+SOURCE_BASE_COMMIT: bac124388928b9e16fae3754ab80f294f5a993ed
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+SOURCE_OBJECT_FAMILY_ID: PROPOSITION59_CCM_FINITE_SELECTED_FERRERS_FAMILY
+HONESTY_STATE: CHALLENGER_NOT_RH
+PX_RH_CLAIM: NOT_MADE
+DELIVERY: owner-directed new chat; GitHub locators pinned to SOURCE_BASE_COMMIT; key data inline
+
+Proshka, this is a new isolated batch of three linked questions. It follows your
+PARITYSPLIT verdict (G1A_UNDECIDED_FIRST_FACT, directive section 11: a cofinal
+odd-resolvent bracket (4.11), first via the lowest odd pole (4.13)).
+Before writing it we computed your residue and found three exact facts that change
+the shape of the sign question. They are checked on the literal cells only. Please
+verify or refute each one before you use it.
+
+0. WHAT WE FOUND (DIAGNOSTIC_NEVER_A_PROOF)
+
+Object: literal full CCM matrix K_m, modes -m..m, m = N (full_center_probe.py:
+matrix_K). Even block E (dim m+1), odd block O (dim m), your (4.3). Your notation:
+A0, b_n, beta_o, d, B, h = (1, sqrt2, ..., sqrt2), mu = lambda_min(O), y = odd
+ground vector, v0 = (A0 - mu) d - B^-2 beta_o, R_m = (v0.y)(y.beta_o).
+Tool: docs/routeB_bus/thetagrade_2026-10-28/parity_residue_probe.py.
+
+N1  Closed form of your residue. From (4.8) at a simple odd bottom:
+      R_m = prod_i (lambda_i(E) - mu) / prod_{j>=2} (mu_j - mu),
+    hence sign R_m = (-1)^(number of even eigenvalues below mu).
+    Checked: relative error <= 6e-95 at dps 120 on m = 2..16.
+    Consequence: the residue test is a counting statement ("an odd number of even
+    levels below the odd bottom"), not a cheaper object. G1a is "at least one".
+
+N2  The residue sign hides in a cancellation. v0.y = (A0 - mu)(d.y) - (B^-2 beta_o).y.
+    The two terms agree to 6 or more digits from m = 6 (m = 6: 0.026021 and
+    0.026021; m = 10: 0.0174844 and 0.0174844), and v0.y is 1e-12 .. 1e-26.
+    Our rule: a sign is never estimated as a difference of two close numbers.
+    Also, your bracket (4.16) is valid on every cell but very lossy:
+    eps_m / (mu - lambda_min(E)) falls from 0.17 (m = 2) to 1.9e-46 (m = 16),
+    because C_m in (4.15) carries the factor 1/g_o and g_o -> 0.
+
+N3  f_m is the reciprocal of one resolvent element (observer, by Cramer from (4.9)):
+      f_m(t) = 1 / g_m(t),
+      g_m(t) = <eta, (K_m - tI)^-1 e_0> = h^T (E - tI)^-1 e_0 = det(O - tI) / det(E - tI).
+    Spectral form over the even eigenpairs (lambda_i, xi_i), full coordinates:
+      g_m(t) = sum_i w_i / (lambda_i - t),   w_i = (eta.xi_i) * xi_i(0),   sum_i w_i = eta.e_0 = 1.
+    Checked: |f g - 1| <= 3e-96 at dps 120, and sum w_i = 1, on m = 2..16.
+    So g_m is the Stieltjes transform of a signed measure with total mass 1.
+    Its poles are the even eigenvalues; its zeros are the odd eigenvalues.
+
+N4  Consequences (observer argument; please check):
+    (a) G1a <=> w_0 > 0 and g_m has no zero on (-inf, lambda_0(E)).
+        (Argument written for a simple odd bottom mu and a simple lambda_0(E).)
+        Reason: g_m -> 0+ at -inf (mass 1). A zero below lambda_0(E) is an odd
+        eigenvalue below the even bottom. If w_0 = 0, lambda_0(E) is also an odd
+        eigenvalue. If w_0 < 0, g_m -> -inf at lambda_0(E)- and crosses zero below it.
+    (b) Necessary for G1a: w_0 = (eta.xi_0) xi_0(0) > 0. The ground endpoint value
+        and the ground central coefficient have the same sign.
+    (c) Sufficient for G1a (Abel summation, signs only, no difference):
+        W_k := sum_{i<=k} w_i > 0 for every k. For t < lambda_0, x_i = 1/(lambda_i - t)
+        is positive and decreasing, and g_m(t) = sum_k W_k (x_k - x_{k+1}) + W_top x_top > 0.
+        W_k = <eta, P_{<=k} e_0>, with P_{<=k} the spectral projector on the k+1
+        lowest even levels, and 1 - W_k = <eta, P_{>k} e_0>.
+    (d) If every w_i > 0, g_m is increasing between its poles, and the even and odd
+        spectra strictly interlace: lambda_0(E) < mu_1 < lambda_1(E) < mu_2 < ...
+
+N5  Parity pattern of the full spectrum, left to right (E even, O odd):
+    m = 2..8, 11, 16: E O E O ... E, strict alternation on the whole spectrum.
+    m = 9, 10, 12..15: alternation breaks only in the top third of the spectrum;
+    the first break is at level >= 14 of 2m+1 (m = 9: ...E O E E O O E).
+    Negative w_i appear only at even levels >= 8; total negative mass <= 0.048.
+    Eigenvector sign changes (full coordinates n = -m..m, m <= 8): the k-th level from
+    the bottom has one sign change fewer than the (k-1)-th, over the lower half of
+    the spectrum (m = 8: 12, 11, 10, 9, 8, 7, 6, 5, then irregular).
+    Orientation: the ground state is the MOST oscillatory level; the top level is
+    nodeless at m = 2, 4, 6. Off-diagonal entries of K_m are mostly positive
+    (72 of 72 at m = 4, 214 of 272 at m = 8): Perron-Frobenius orientation, with the
+    sign-free vector at the top. A Sturm-type ladder would have to be read from the
+    top of the spectrum, or after the sign flip x_n -> (-1)^n x_n.
+
+Table (dps 120 and dps 170 agree in all printed digits):
+
+   m      lam_E        mu        R_m        w_0   min W_k (k)  neg mass  parity      eps/gap
+   2    0.00306    0.1256   -0.09503    0.1345    0.1345 (0)      0.0  alt             0.17
+   3   1.005e-6 0.0001165  -5.382e-6  0.002444  0.002444 (0)      0.0  alt           0.0031
+   4     1.7e-9  3.034e-7 -8.035e-10  0.000112  0.000112 (0)      0.0  alt           1.0e-6
+   5  3.554e-12  1.025e-9 -1.916e-13  5.407e-6  5.407e-6 (0)      0.0  alt          4.8e-10
+   6  7.999e-15 2.896e-12 -2.887e-17  2.872e-7  2.872e-7 (0)      0.0  alt          2.1e-13
+   7  2.774e-17  1.05e-14 -7.279e-21    1.5e-8    1.5e-8 (0)      0.0  alt          4.9e-17
+   8  1.024e-19 3.339e-17 -1.183e-24 9.318e-10 9.318e-10 (0)      0.0  alt          8.0e-21
+   9  4.479e-22 2.544e-19 -9.724e-28 6.613e-11 6.613e-11 (0)   -0.024  break@14/19  1.3e-23
+  10  1.344e-24 8.599e-22 -1.935e-31 3.801e-12 3.801e-12 (0)   -0.015  break@18/21  4.6e-27
+  11  1.946e-26 1.254e-23 -3.581e-34 4.365e-13 4.365e-13 (0)      0.0  alt          4.4e-30
+  12   6.79e-29 4.147e-26 -6.716e-38 2.545e-14 2.545e-14 (0)   -0.043  break@20/25  1.3e-33
+  13  7.921e-31 6.417e-28 -1.413e-40 2.901e-15 2.901e-15 (0)  -0.0073  break@20/27  2.2e-36
+  14  2.953e-33 2.918e-30 -4.409e-44 1.923e-16 1.923e-16 (0)   -0.048  break@18/29  1.4e-39
+  15  1.967e-35 2.189e-32 -3.044e-47 1.568e-17 1.568e-17 (0)  -0.0083  break@20/31  7.9e-43
+  16  5.456e-38 6.853e-35 -5.665e-51 8.264e-19 8.264e-19 (0)      0.0  alt          1.9e-46
+
+Columns: lam_E = lambda_min(E), mu = lambda_min(O), R_m (N1), w_0, min_k W_k and its
+index, total negative weight, parity pattern, eps_m / gap from (4.16).
+
+1. SHELF (sha256 prefix 16 at SOURCE_BASE_COMMIT)
+
+Base URL: https://github.com/Malaeu/chen_q3/blob/bac124388928b9e16fae3754ab80f294f5a993ed/
+  ac8644b237444f2a docs/routeB_bus/thetagrade_2026-10-28/parity_residue_probe.py
+  4d1a7d1548a9b9cc docs/routeB_bus/thetagrade_2026-10-28/residue_dps170.jsonl
+  c1f9d91ab2c893e6 docs/routeB_bus/thetagrade_2026-10-28/RESULT.md
+  0a7d0bec0a5f7dfa docs/routeB_bus/thetagrade_2026-10-28/parity_gap_table.py
+  ead3b1e533a0d301 docs/routeB_bus/fokas_k_sign_2026-09-25/full_center_probe.py
+  055dd4ed51e2c36c docs/routeB_bus/proshka/PROSHKA_VERDICT_PARITYSPLIT_2026-10-28.md
+  15e4ef11ff11355a docs/routeB_bus/proshka/PARITYSPLIT_AUDIT_2026-10-28.md
+  6957bf30c06b988b docs/Codex/PAPER_CHAIN.md
+  0112735e73eec38e docs/routeB_bus/litreview/CCM_ZST_USAGE_CARDS.md
+  f1aae03540035d01 docs/routeB_bus/litreview/CONNES_RH2026_USAGE_CARDS.md
+  f2f9d248a6f2ad70 q3.lean.aristotle/Q3/Proofs/RouteB/CCMFiniteWeilSourceMatrixN1.lean
+  11bda2399db43c77 q3.lean.aristotle/Q3/Proofs/RouteB/ProlateSourceCommutation.lean
+External: CCM, Zeta Spectral Triples, arXiv:2511.22755 (shelf copy
+docs/routeB_bus/litreview/pdfs/2511.22755.pdf), Lemmas 5.1-5.4, Thm 5.10, section 8 p.32.
+Connes, arXiv:2602.04022, section 6.6 p.30 and Fact 6.3 p.28 (our card
+docs/routeB_bus/litreview/CONNES_RH2026_USAGE_CARDS.md:9-24, 57-67): the simple-even
+property is recorded there as known for the prolate wave operator. RELAY until you read it.
+
+2. KILLED - do not propose again without a new invariant
+
+  K1 constant-beta complement floor (25.09), Weil null plane {G, G''}.
+  K2 odd-sector floor on the source shelf of 30.08.
+  K3 parity twin (THETAGRADE): <v,Kv> = <v+,Kv+> + <v-,Kv->.
+  K4 "SP floor exponent exactly Theta - 1/2".
+  K5 H_mu change of representation and joint lattice pairing.
+  K6 (PARITYSPLIT) negative bottom => parity failure; nonzero eigenvalue =>
+     eta-normalization; nonnegative lowest-pole residue => G1a false.
+  K7 (this request, N2) the lowest-pole residue as a difference of two terms;
+     its sign is the count in N1.
+
+3. Q1 - G1a AS A SIGN OF POSITIVE TERMS (main)
+
+Target: for all sufficiently large m on the original schedule, G1a, through N4.
+Answer each:
+  (a) Verify or refute N1, N3, N4(a)-(d). Correct any statement that is wrong.
+  (b) Prove eventually w_0 > 0, or reduce it to one exact source sign with the first
+      unpaid term. Note: w_0 > 0 is necessary, not sufficient.
+  (c) Prove eventually W_k > 0 for all k (N4c), or the weaker statement "g_m > 0 on
+      (-inf, lambda_0(E))" by another positive representation, from source entries.
+      A route that avoids the even eigensolve is preferred. Candidates (yours to
+      change): the moments h^T E^j e_0, computable from (4.3) without eigenvectors;
+      a continued-fraction (Lanczos/Jacobi) form of g_m started at e_0 or at h; a
+      bound that puts all negative mass at the top of the spectrum, where
+      1/(lambda_i - t) is small for t < lambda_0.
+  (d) Is the Abel condition (N4c) the right shape, or is there a sharper exact
+      positive representation of g_m on (-inf, lambda_0(E))?
+Result codes: G1A_PROVED | G1A_REDUCED_TO_POSITIVE_SIGN(statement, first unpaid term) |
+G1A_IDENTITY_REFUTED(which of N1..N4, counterexample) | G1A_UNDECIDED_FIRST_FACT.
+
+4. Q2 - THE ALTERNATION SYMPTOM
+
+N5: the bottom of the spectrum alternates parity, and the eigenvectors follow a
+sign-change ladder there. Is there a mechanism that gives alternation on the
+bottom part of the spectrum, with G1a as its first rung? For example an operator
+of Sturm-Liouville or Jacobi type (a discrete prolate operator) that commutes with
+K_m up to a controlled error, as the finite Fourier kernel commutes with the prolate
+operator (our Lean: q3.lean.aristotle/Q3/Proofs/RouteB/ProlateSourceCommutation.lean:519,
+finiteFourierAction_intertwines_prolateWaveExpression, continuous setting only).
+Is the failure at the top a window-edge effect that a bottom statement can ignore?
+Result codes: ALTERNATION_MECHANISM(statement) | ALTERNATION_PARTIAL(first unpaid
+term) | ALTERNATION_NO_MECHANISM(why).
+
+5. Q3 - THETA
+
+Is G1a in the form N4 Theta-graded? Does an off-critical zero force, on infinitely
+many late cells, w_0 <= 0 or a zero of g_m below lambda_0(E)? g_m(t) is a resolvent
+element of the Weil form between the endpoint functional eta and the central mode
+e_0. If you see a link to zeros (for example through the pole vector u of your (6.1)
+or the null plane {G, G''}), give it with the first unpaid step.
+"This is RH" is not an answer.
+Result codes: G1A_THETA_WITNESS(mechanism) | G1A_NOT_THETA_GRADED(proof) |
+THETA_UNDECIDED(first unpaid step).
+
+6. PROHIBITIONS
+
+  No RH-equivalent premise in any chain; equivalence is not circularity.
+  No finite sample as a cofinal quantifier. N1..N5 are cell facts.
+  No Lean, no repository edits, no broad numeric scan, no new chat.
+  No unverified relay as a premise; mark RELAY.
+
+7. PRE-REGISTERED PREDICTIONS (observer, frozen at this commit)
+
+  P1a N1, N3 and N4(a)-(c) all survive your check: 0.80.
+  P1  Q1: G1A_PROVED 0.08 · G1A_REDUCED_TO_POSITIVE_SIGN 0.55 ·
+      G1A_IDENTITY_REFUTED 0.07 · UNDECIDED 0.30.
+  P1b The first unpaid term involves only the bottom even level (w_0 or the
+      ground endpoint value), not the top levels: 0.50.
+  P2  Q2: ALTERNATION_MECHANISM 0.15 · PARTIAL 0.45 · NO_MECHANISM 0.40.
+  P3  Q3: G1A_THETA_WITNESS 0.10 · NOT_THETA_GRADED 0.10 · UNDECIDED 0.80.
+
+Directive: per question, the result code, the exact statement proved or refuted,
+the hypotheses spent, and the first unpaid term.
+
+9. PROSHKA'S OWN LINE (free form, no codes, no scoring; 20-40 lines):
+   (a) why this route and not the two nearest alternatives you considered;
+   (b) the two moves you see beyond this batch, and what would kill each;
+   (c) what you would ask us for, if you could ask (data, a probe, a definition);
+   (d) what surprised you in the shelf, and what you distrust in it.
+
+10. RESEARCH LOG (append to the verdict; no scoring):
+   (a) every source consulted this batch: locator (arXiv/DOI/URL + theorem/equation),
+       one line: what was taken or why rejected; mark READ vs RELAY;
+   (b) every branch you tried and abandoned, one line each: the candidate, the first
+       inequality or fact that killed it;
+   (c) intermediate identities or computations that failed but might serve another
+       question, with their exact statement.
+
+Return the verdict as an attachment PROSHKA_VERDICT_STIELTJES_2026-10-29.md.
+RH remains OPEN unless a complete valid chain is supplied; the final claim
+remains with the owner.
