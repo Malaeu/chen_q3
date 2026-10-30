@@ -405,3 +405,13 @@ follows |Xi(2 pi m / log m)|). Observer predictions: "monotone decreasing" 0.6 M
 observer). Readings of the turn: (A) slow return of the bottom towards h (w0 -> 1 as m -> infinity); (B) oscillation
 around a fixed limit ~0.9983 (plateau mixture h + s h'' + ...). Discriminator: m = 30..36. w0 itself is not a Perelman-type
 monotone functional; what the proof needs is a lower bound, and on m = 6..28 the whole range lies in [0.99827, 1].
+Extension (dps 120, `w0_monotone_dps120_m28_36.jsonl`; m = 28 reproduces the dps-100 value 0.998340827133 to 12 digits):
+| m | w0 | 1 - w0 |
+|---|---|---|
+| 30 | 0.998421795 | 1.578e-3 |
+| 32 | 0.998411214 | 1.589e-3 |
+| 34 | 0.998451529 | 1.548e-3 |
+| 36 | 0.998522138 | 1.478e-3 |
+After the minimum at m = 22 the weight rises with a wobble (dip at m = 32). Reading (A) "slow return towards h" favoured
+over (B) "constant ~0.9983"; average slope of 1 - w0 about -1.8e-5 per unit m on m = 22..36. Levels below delta_m: 12 at
+m = 30, 32. Range of w0 on m = 6..36: [0.998275, 1]. No sign of escape. Not a proof.
