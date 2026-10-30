@@ -30,7 +30,7 @@
     "source_module": "docs/routeB_bus/phase5_scripts/edge_ledger_build.py",
     "matrix_dimension": 17,
     "basis": "e_0,(e_i+e_-i)/sqrt(2), i=1..16, with phased Fourier cos basis",
-    "entry_formula": "CCMArbBuilder.tau_entry = w02 - wr - prime; wr uses gamma/beta diagonal pole terms; prime sums every builder.prime_powers entry",
+    "entry_formula": "CCMArbBuilder.tau_entry = w02 - wr - prime; w02 is the two source pole integrals; wr is the archimedean term including diagonal gamma/beta; prime sums every builder.prime_powers entry",
     "prime_powers": [
       {
         "n": 2,
@@ -133,7 +133,7 @@
       {
         "base_subdivisions_on_half_interval": 8192,
         "actual_interval_cells": 8192,
-        "coefficient_integral_seconds": 0.254,
+        "coefficient_integral_seconds": 0.257,
         "projection_coefficients_v": [
           {
             "ball": "[-0.4855 +/- 7.40e-5]",
@@ -369,7 +369,7 @@
       {
         "base_subdivisions_on_half_interval": 32768,
         "actual_interval_cells": 32768,
-        "coefficient_integral_seconds": 1.035,
+        "coefficient_integral_seconds": 1.048,
         "projection_coefficients_v": [
           {
             "ball": "[-0.4855 +/- 3.07e-5]",
@@ -616,12 +616,12 @@
     "ground_eigenpair_source": "02ab68dbd9e1dfd7e0fb8ea3fad56b338d0b5a9b56668161a3aeec1e16444f37",
     "literal_builder_source": "e8733df70b30433c71e403734ade5238ce7bdeb7ce72348edacae60d23465787",
     "localize_verdict": "356ab75dd0e8bdd4ff03220e8058e6f62ccc42f46e2642afa21531c7f366f414",
-    "script": "4fc0c7518a02b458fb265c55a528cf72a7522c51879f605f39be94c58d68d24b"
+    "script": "f024f1c36739d442021f9a09fb3d665868f2a59019caebb0c23c1ae25b542c31"
   },
   "limitations": [
     "Coefficient and matrix interval arithmetic is conditional on the cached coordinate balls and literal builder outputs; the input labels its eigenpair diagnostic, not a proof certificate.",
     "This evaluates one finite same-carrier cutoff competitor only; it is not a cofinal NOESCAPE argument and proves neither T nor RH.",
     "The result is a direct Rayleigh comparison; no energy-identity subtraction is used as an independent computation."
   ],
-  "runtime_seconds_total": 1.307
+  "runtime_seconds_total": 1.324
 }

@@ -81,9 +81,9 @@ LOCALIZE GitHub e8fb5854: PAPER+replay PASS; финальный UI ответ п
    THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
    GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
    LOCALIZE: tight oscillatory quasimodes ломают regularity даже при tiny edge/return.
-   m16 cached index0: |E|<1.185e-5, F_far∈[-3.6014e-5,-1.4079e-5]; sum<−2.229e-6.
-   Full returned cutoff: gap∈[.007005,.008070]>0, bounded review PASS, finite conditional input.
-   Далее semantic return: negative spectral pollution при strong-resolvent→0; source supplier OPEN.
+   m16 E+F_far<−2.229e-6, но full returned cutoff gap∈[.007005,.008070]>0; finite reviewed.
+   CONSTANT_FLOOR_REDUCTION: ¬RH⇒lambda_min→−∞, bounded PAPER PASS; cofinal floor−C⇒RH.
+   Далее constant-slack prime/pole source bound OPEN; Yoshida fixed-window не переносится (SEMIBOUND_ALIAS_RETURN).
 
 ## Адреса
 Bus: ../routeB_bus/proshka/NOESCAPE_AUDIT_2026-10-30.md,

@@ -9712,3 +9712,11 @@ supplier, not exact bottoms or RH. Narrow-edge return and bounded near costs
 leave selected E+F_far unpaid. See LOCALIZE_VERDICT_AUDIT_2026-10-31.md.
 Shelf refresh and three deep searches completed; nonzero cutoff normalization
 is paid. Old m16 coordinate cache is second eigenvector, not bottom; retain it.
+
+## 2026-10-31 Mac: constant-floor reduction after LOCALIZE
+
+- Full m16 returned cutoff raises energy by >1/1000 (direct Arb, independent bounded review); finite input only.
+- CONSTANT_FLOOR_REDUCTION bounded PAPER PASS: off-critical zero implies lambda_min(A_m)→−infinity on all late original cells, by subtracting one fixed accurate finite jet before normalization.
+- Consequently any cofinal constant lower floor suffices for RH; that bound is not proved. Original primes, poles, normalization and carrier preserved.
+- SEMIBOUND_ALIAS_RETURN: Yoshida fixed-window high-tail absorption verified; a=log(m)/2 violates its uniform-window premise. C1(a)=8sinh(a), visually checked; source supplier OPEN.
+- LOCALIZE final UI response read23:44UTC, no amendments. RH/T OPEN; PX_RH_CLAIM NOT_MADE.

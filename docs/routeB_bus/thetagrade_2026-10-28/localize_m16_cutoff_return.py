@@ -299,7 +299,7 @@ def main() -> None:
             "source_module": str(BUILDER_SOURCE.relative_to(ROOT)),
             "matrix_dimension": M + 1,
             "basis": "e_0,(e_i+e_-i)/sqrt(2), i=1..16, with phased Fourier cos basis",
-            "entry_formula": "CCMArbBuilder.tau_entry = w02 - wr - prime; wr uses gamma/beta diagonal pole terms; prime sums every builder.prime_powers entry",
+            "entry_formula": "CCMArbBuilder.tau_entry = w02 - wr - prime; w02 is the two source pole integrals; wr is the archimedean term including diagonal gamma/beta; prime sums every builder.prime_powers entry",
             "prime_powers": [
                 {"n": int(n), "prime": int(p), "coefficient": ball_record(builder.log_prime[p] / arb(n).sqrt())}
                 for n, p in builder.prime_powers
