@@ -143,3 +143,75 @@ L5 implication, including parity, support and projection sign. L7 is an
 own algebraic continuation of the existing exact return formula, not a new
 accepted source bound. Next unpaid step: joint signed control of L5 or L7;
 separate absolute estimates and stationarity alone do not pay it.
+
+## Joint physical pole cancellation (continuation 2026-10-31)
+
+The shelf already contains the corresponding coordinate-amplitude cancellation
+in BOUNDARY Lemma 8, equations (6.2)-(6.7). Its physical-cutoff counterpart
+can be derived directly, without assuming its reciprocal-cutoff symmetry.
+For real even f define, with b=L/2,
+
+ C(s)=integral_{-b}^{b-s} (chi(x)-chi(x+s))² f(x)f(x+s) dx,
+ D(s)=sum_{2<=n<=exp(s)} Lambda(n)/sqrt(n)-2(exp(s/2)-1).
+
+Then C(0)=C(L)=0 and C(s)=0 for s>b+R. The original finite Fourier f is
+smooth on the closed window. Differentiating this moving-endpoint integral
+shows that C is absolutely continuous, despite the zero extension of f.
+In particular its derivative includes the boundary term
+
+ -(chi(b-s)-chi(b))² f(b-s)f(b),
+
+as well as the integral of the differentiated integrand. It is not legitimate
+to replace this by a whole-line derivative that drops the endpoint term.
+
+The even pole part of L4 equals
+
+ -1/2 integral_I integral_I p(x)p(y)(chi(x)-chi(y))² f(x)f(y) dxdy
+ =-integral_I integral_I cosh((x-y)/2)(chi(x)-chi(y))² f(x)f(y) dxdy
+ =-2 integral_0^L cosh(s/2) C(s) ds.
+
+For the middle equality use p(x)p(y)=cosh((x+y)/2)+cosh((x-y)/2)
+and y->-y, with actual evenness of BOTH chi and f. Therefore exactly
+
+ M_chi(f)=integral_0^L j_+(s) C(s) ds - integral_0^L D(s) C'(s) ds, (L8)
+ j_+(s)=j(s)-exp(-s/2)=exp(-5s/2)/(1-exp(-2s)).
+
+Indeed add and subtract exp(s/2) ds in the complete prime measure, then
+integrate C dD by parts. The endpoint atom at n=m is retained with C(L)=0.
+All other prime powers remain in D. No PNT approximation is used. Near zero
+C(s)=O(s²), so the j_+ singularity is integrable. C need not have either
+sign or the symmetry C(L-s)=-C(s); the paired discrepancy from BOUNDARY
+cannot be imported here without an additional identity.
+
+Now the reference integral has the m-independent absolute bound
+integral_0^infinity j_+(s) min(||chi'||² s²,1) ds. Thus L8 removes the
+separate growing pole/prime main terms BEFORE taking any inequality.
+The remaining local regularity debt is the joint upper bound
+
+ Re k(f,(I-P)chi²f) - integral_0^L D(s) C'(s) ds <= constant_chi. (L9)
+
+Together with the known upper bound on lambda, L9 suffices for L5.
+L9 is UNPROVED: escape supplies no variation bound for this adaptive C,
+and the endpoint term and finite-carrier projection remain material.
+For strict descent use L8 in L7 and keep its other three return terms;
+no negative numerator has been established. This refines the actual signed
+object to estimate, rather than asserting that algebraic cancellation pays it.
+
+Exact finite algebra check: L=2, unit f=1/sqrt(2), chi=x² on I gives
+C(s)=s²(2-s)³/6. SymPy returns exactly zero for the difference between
+the direct pole expression and -2 integral_0^2 cosh(s/2)C(s)ds
+(both approximately -0.39472409212258470105). This checks factors only;
+this cutoff is not the fixed compact cutoff used for the cofinal bounds.
+
+Negative control: for the nonnegative escaping radical trials, C(s)>=0,
+so the deterministic j_+ integral is NONNEGATIVE. It cannot supply a
+negative localization gain on that class by itself. L8 holds for these
+trials too: no stationarity or minimality was used to derive it. Exact
+minimality first enters through N_chi>=0 in L7, while a source proof of
+N_chi<0 would still need the discrepancy and every return term. For signed
+bottoms no positivity of C is asserted. Thus cancellation has not silently
+introduced a discriminator between bottoms and small-residual trials.
+
+Independent read-only audit of L8-L9 confirmed pole factors, moving endpoint,
+absolute continuity, full prime measure, conditional bound and negative control.
+No discrepancy estimate, strict descent or NOESCAPE conclusion was accepted.

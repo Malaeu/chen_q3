@@ -82,8 +82,8 @@ GREEN получен GitHub bf8612ad;744строки прочитаны, exact r
 5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
    THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
    GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
-   LOCAL_LOG_REGULARITY_ATTEMPT: L1–L5 проверены; joint signed L5/L7 OPEN.
-   L7 сохраняет нормировку/return; минимальность даёт нижнюю, не нужную верхнюю оценку.
+   LOCAL_LOG_REGULARITY_ATTEMPT: L8 pole cancellation независимо проверен; L9 OPEN.
+   Следующий тест: joint discrepancy/projection в L9; L7 — полный критерий выигрыша.
 
 ## Адреса
 Bus: ../routeB_bus/proshka/NOESCAPE_AUDIT_2026-10-30.md,
