@@ -75,17 +75,17 @@ GREEN получен GitHub bf8612ad;744строки прочитаны, exact r
    Adaptive resolvent attempt проверен: single-shift incomplete; full kernel
    при full support лишь congruence. Source diagonal/Loewner identity checked;
    DIAGONAL: mixed coordinate/resolvent competitor; strict source sign OPEN.
-   JUMP_RANK_ONE_ATTEMPT: явный конкурент; POLE_DIRECTION_PROFILE: сам pole vector weak→0,
-   с нулевым pole moment, но source gap/moment separation из escape OPEN.
+   JUMP_RANK_ONE_ATTEMPT: явный конкурент с нулевым pole moment; source gap OPEN.
+   POLE_DIRECTION_PROFILE: нормированный pole vector weak→0.
    Jet mixing: cross term=0; near-zero jet не дешевле bottom. Центральные узлы
    без доказательства не использовать. Другие конкуренты/moment bounds OPEN.
 5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
    THRESHOLD_ALIAS_HUNT: semantic index refreshed;3 fresh deep asks completed.
    GREEN: весь J-ground jet-escape O_r(log(m)m^-1/4); полный A-bottom не затронут.
-   Чужие CLAUDE/Progress dirt и untracked сохранить, без git add -A.
+   LOCAL_LOG_REGULARITY_ATTEMPT: L1–L5 проверены; joint signed L5/L7 OPEN.
+   L7 сохраняет нормировку/return; минимальность даёт нижнюю, не нужную верхнюю оценку.
 
 ## Адреса
-
 Bus: ../routeB_bus/proshka/NOESCAPE_AUDIT_2026-10-30.md,
 ENTROPY_NOESCAPE_FIRST_PASS_2026-10-30.md, ENTROPY_CUBIC_TEST_2026-10-30.md,
 ENTROPY_TRANSLATE_TEST_2026-10-30.md,
