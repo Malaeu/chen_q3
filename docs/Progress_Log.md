@@ -9655,3 +9655,16 @@ energy is not lower-than-bottom; no mandatory central-frequency nodes assumed.
 Original response preserved; BOUNDARY_VERDICT_AUDIT records exact missing sign,
 review limits and GitHub history (current write capability untested, not lost).
 No Proshka response pending. T/RH remain OPEN.
+
+## 2026-10-30 — Adaptive BOUNDARY variation, source diagonal retained
+
+Exact resolvent kernel, residual correction, support/Schur blind spots and
+synthetic all-real-single-shift-positive/two-shift-negative control independently
+checked; SymPy replay passed. Full Cauchy-span test is a congruence, not a new
+source estimate. Shelf return found existing conditional G2 real-zero bridge;
+ask.sh incomplete, no absence claim. Actual CCM diagonal-minus-beta-derivative
+identity independently checked with every prime power and endpoint retained.
+Finite two-shift diagnostic detects first-excited m4 descent but not tested
+m8/16 pairs; no cofinal assertion. Network/resolvent tests are not exclusive;
+other competitors and quantitative moment bounds remain open. Strict source
+sign from escape remains unpaid. RH goal ACTIVE; no Proshka response pending.

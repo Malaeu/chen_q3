@@ -132,3 +132,9 @@ independent gain; near-zero jet energy is not a comparison with lambda_min.
 Continue seeking a concrete negative variation from escape in the literal
 source. Do not use mandatory nodes on a central frequency interval without
 a separate proof.
+
+Owner continuation: treat BOUNDARY as a concrete variational test; network
+mechanisms are not the sole route. Other competitors and quantitative moment
+estimates remain open. For each candidate retain normalization, admissibility,
+and the exact use of minimality. Derive the strict negative sign from escape
+and original CCM coefficients rather than assume it.

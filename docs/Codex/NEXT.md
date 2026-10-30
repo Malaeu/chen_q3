@@ -72,10 +72,11 @@ native cua Chrome AX работает. Не повторять уже обраб
 4. BOUNDARY: endpoint-flat escaping trials обходят любой fixed-degree drift;
    finite linear observations тоже могут зануляться у quasimodes. Exact bottom
    + exact flatness даёт multiplicity, но escape=>flatness не доказано.
-   Следующая своя попытка: adaptive amplitude и независимые signed estimates
-   reciprocal prime discrepancy/ref kernel; точное переписывание Q<0 не supplier.
+   Adaptive resolvent attempt проверен: single-shift incomplete; full kernel
+   при full support лишь congruence. Source diagonal/Loewner identity checked;
+   next: совместная signed оценка из escape (ADAPTIVE_RESOLVENT_ATTEMPT).
    Jet mixing: cross term=0; near-zero jet не дешевле bottom. Центральные узлы
-   без отдельного доказательства не использовать.
+   без доказательства не использовать. Другие конкуренты/moment bounds OPEN.
 5. VARIATIONAL + semantic return pushed b659c795; ENTROPY pushed805ed247.
    Own source attempt/probe + BOUNDARY request/answer/audit + finite X сохранены
    одним scoped commit после ответа. RH goal ACTIVE.
