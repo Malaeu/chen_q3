@@ -1,0 +1,21 @@
+{
+  "F_ONLY": {
+    "sha256": "f4e35bcefe9b4cdf1a9fffbc35a1c7d1e430ae64b7bd652815fd3fe6163fe5e6",
+    "git_blob": "c2633b50199981b80da01610c64e2239c0494e82",
+    "bytes": 31299
+  },
+  "NOESCAPE": {
+    "sha256": "fdfd384345b69d7565100b93ef57348eb6944bdbaf014a01c001df007129aded",
+    "git_blob": "453d2f7dfd14810b32ac89e24bb0f85c26ed7fcc",
+    "bytes": 64077
+  },
+  "full_center_probe": {
+    "sha256": "04c7bf6bbdd664f2a373f6b6174331232d55634c8d65ca87055e8f065effbfb4",
+    "git_blob": "6819cdc726430b27582fa44f9bdd5b0536617b5e",
+    "bytes": 5951,
+    "local_difference_from_pinned": "One additional trailing LF; executable code identical.",
+    "pinned_git_blob": "5cbd156db9be84caa938cdbabd4e9ec0b5a6d2f3",
+    "pinned_sha256": "ead3b1e533a0d30164200602107dd70ac8ffcccadb43f42c963fe5d6f5a612c9",
+    "pinned_commit": "2181dbe4f3b81f2e63d3ce7a1b348c579f6140a6"
+  }
+}
