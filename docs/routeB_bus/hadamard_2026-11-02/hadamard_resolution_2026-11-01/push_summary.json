@@ -1,0 +1,12 @@
+{
+  "m": 8,
+  "dps": 100,
+  "order": 128,
+  "panels": 8,
+  "validation_dps": 140,
+  "validation_order": 160,
+  "max_relative_validation_difference": "5.468366742751347569405336127197294801741e-68",
+  "converged_requested_N": [],
+  "criterion": "abs(lambda_N/lambda_(N+4)-1)<=0.001",
+  "interval_certificate": false
+}

@@ -1,0 +1,32 @@
+{
+  "status": "NO_RELATIVE_CONVERGENCE_IN_REQUESTED_N_RANGE",
+  "dps": 100,
+  "quadrature_order": 96,
+  "quadrature_panels": 8,
+  "validation_dps": 140,
+  "validation_order": 128,
+  "validation_max_relative_eigenvalue_discrepancy": "1.070335500767133881867592264723761860138e-37",
+  "converged_N": {
+    "8": null,
+    "12": null,
+    "16": null
+  },
+  "requested_N": [
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    40
+  ],
+  "auxiliary_N": [
+    36,
+    44
+  ],
+  "minmax_in_N_violations": 0,
+  "precision_floor_reached": false,
+  "converged_N_scan_status": "UNAVAILABLE_NO_VALIDATED_CONVERGED_N",
+  "interval_certificate": false
+}
