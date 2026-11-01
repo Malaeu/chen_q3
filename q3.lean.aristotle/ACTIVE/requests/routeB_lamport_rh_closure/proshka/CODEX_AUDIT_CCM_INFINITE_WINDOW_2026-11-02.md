@@ -1,6 +1,6 @@
 # Independent PAPER audit: infinite-window CCM
 
-STATUS: LISTED_CLAIMS_PAPER_CONFIRMED_POHOZAEV_APPLICATION_GAP
+STATUS: LISTED_CLAIMS_PAPER_CONFIRMED_POHOZAEV_IMPORT_WITHDRAWN_AND_APPLICATION_GAP
 VERIFIER: PAPER
 RH_PROVED: false
 LEAN_EXECUTED: false
@@ -130,7 +130,16 @@ locally uniform Lipschitz estimate.
 
 ## Literature check: arXiv:2411.15985, Theorem 2.3
 
-Verdict: GAP -- the theorem does not apply to the current CCM package solely
+Correction (2026-11-02): the earlier audit read v1 but missed the current
+arXiv withdrawal notice. Version 2, dated 26 April 2025, withdraws the paper
+because of a crucial error in the Pohozaev proof. Verified at
+https://arxiv.org/abs/2411.15985 . Theorem 2.3 v1 is therefore NOT an accepted
+theorem supplier, even if its stated hypotheses were established. The
+hypothesis comparison below describes the withdrawn statement only. The
+independent form and boundary-theorem checks above are unaffected.
+
+Verdict: INVALID_IMPORT (withdrawn) and GAP -- the v1 statement does not apply
+to the current CCM package solely
 from bounded shifts/pole and the boundary upper estimate.
 
 Theorem 2.3 of Arora--Giacomoni--Vaishnavi is stated for N>=1, a bounded
