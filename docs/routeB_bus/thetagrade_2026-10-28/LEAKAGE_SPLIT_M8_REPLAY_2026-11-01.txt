@@ -1,0 +1,10 @@
+DIAGNOSTIC_NEVER_A_PROOF
+m=8, dps=50, extra modes=30. Same source formulas and carrier as the handoff. Shared composite Gauss-Legendre quadrature (8 panels, orders 64 and 80) replaces repeated adaptive integrations for Fourier coefficients and arch moments. Both orders agree at all emitted digits. Literal matrix_K is unchanged.
+entry_ctrl=8.02e-51 PASS
+i=0: D_ext=0.212618
+i=1 (handoff discriminator): T=-2.5381487e-16, F=-3.0262728e-16, X_closure=4.88124e-17, D_ext=0.192315 < 1/4.
+F_partial stable at all three cutoffs for all four emitted levels. X is computed as T-F, not independently. No interval or omitted-tail certificate. The slower original adaptive run was stopped after the two shared-quadrature runs agreed. No m16 escalation performed; the requested Task A was the m8 cell.
+
+Committed JSONL uses the order-80 output; order-64 output is byte-identical.
+Replay: FX_GL_ORDER=80 UV_CACHE_DIR=/tmp/rh-uv-cache uv run --with mpmath python3 docs/routeB_bus/thetagrade_2026-10-28/leakage_split_shared_gl.py 50 30 8
+Branch per HANDOFF_MAC section 1: A (D_ext at i=1 < 1/4).
