@@ -1,0 +1,45 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "source_commit": "167dff63a632f170fed2d01d88af61268ad0af7f",
+  "comparison_significant_digits": 80,
+  "zero_difference_meaning": "agreement at saved precision, not exact equality",
+  "precision_and_quadrature": "100dps GL40 panels width4 T256 to140dps GL56 width4 T320, m8 andm24; higherprecision source matrices/eigenvectors",
+  "max_w_plus_residual_minus_one": "4.6077699999999999999927376469163872181807076230160887410682852755699638448488155e-81",
+  "comparisons": [
+    {
+      "m": 8,
+      "family": "heat",
+      "s_absolute_change": "0.0",
+      "residual_squared_absolute_change": "0.0",
+      "energy_relative_change": "0.0",
+      "vector_relative_change": "0.0"
+    },
+    {
+      "m": 8,
+      "family": "quadratic",
+      "s_absolute_change": "0.0",
+      "residual_squared_absolute_change": "0.0",
+      "energy_relative_change": "0.0",
+      "vector_relative_change": "0.0"
+    },
+    {
+      "m": 24,
+      "family": "heat",
+      "s_absolute_change": "2.8644283876594986221605110769999999999999999999999789061416083141731186663699995e-54",
+      "residual_squared_absolute_change": "3.5958576033758743640994805213000000000000000000000319440917197542487072912114673e-59",
+      "energy_relative_change": "1.5936603248492934856169201570377440456959915200872843336237784911151578706412729e-50",
+      "vector_relative_change": "4.4457476978753612154759702871110691341632580375859212861435312135106355625935088e-53"
+    },
+    {
+      "m": 24,
+      "family": "quadratic",
+      "s_absolute_change": "2.9143376938678488185164629178000000000000000000000046055786250639335234177102196e-54",
+      "residual_squared_absolute_change": "8.867992634842122613072659053300000000000000000000008548519890866864457109171557e-58",
+      "energy_relative_change": "4.2287583272761401843691024473859734442369642580991446795119357905109251800823185e-51",
+      "vector_relative_change": "4.4576871145490962766738496456250370004052646869238386387447218074384248350461999e-53"
+    }
+  ],
+  "fitted_s_monotone_increasing": false,
+  "fitted_s_monotone_decreasing": false,
+  "observation": "Both families increase through m20 and slightly decrease at m24; no measured decay to zero."
+}
