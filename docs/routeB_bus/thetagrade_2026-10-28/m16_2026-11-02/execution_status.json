@@ -1,0 +1,17 @@
+{
+  "literal_command": "uv run --with mpmath python3 leakage_split_probe.py 80 60 16",
+  "literal_launched": true,
+  "literal_completed": false,
+  "literal_terminated_after_elapsed": "03:00",
+  "termination_reason": "Stopped task-owned adaptive run after completed independent shared-Gauss replays and adaptive spotchecks; no literal completion claimed.",
+  "literal_stdout_bytes": 0,
+  "completed_main_method": "8-panel shared Gauss-Legendre order96 at80dps, unchanged source matrix_K",
+  "completed_validation_method": "8-panel shared Gauss-Legendre order128 at100dps, unchanged source matrix_K",
+  "adaptive_spotcheck_modes": [
+    16,
+    36,
+    76
+  ],
+  "adaptive_spotcheck_seconds": 84.618,
+  "status": "DIAGNOSTIC_NEVER_A_PROOF"
+}

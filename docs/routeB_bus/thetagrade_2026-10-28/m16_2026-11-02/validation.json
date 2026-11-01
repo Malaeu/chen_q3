@@ -1,0 +1,29 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "m": 16,
+  "extra_modes": 60,
+  "M": 76,
+  "base_dps": 80,
+  "base_GL_order": 96,
+  "validation_dps": 100,
+  "validation_GL_order": 128,
+  "entry_ctrl_base": "8.43e-81",
+  "entry_ctrl_validation": "3.57e-101",
+  "emitted_Z_equal": true,
+  "all_emitted_level_fields_equal": true,
+  "F_partial_cutoffs": [
+    36,
+    56,
+    76
+  ],
+  "i1_F_partial": [
+    "4.22739e-33",
+    "4.22739e-33",
+    "4.22739e-33"
+  ],
+  "i1_D_ext": "9.47626e-5",
+  "handoff_branch": "A",
+  "X_independently_computed": false,
+  "G_partial_stable": false,
+  "interval_certificate": false
+}
