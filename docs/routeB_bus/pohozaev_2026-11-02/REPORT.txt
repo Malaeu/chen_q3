@@ -1,0 +1,45 @@
+Finite N44 Pohozaev dilation diagnostic at L=log8
+Source: PROSHKA_VERDICT_CCM_POHOZAEV_2026-11-02.md, equations3.7–3.9.
+No infinite-dimensional convergence, boundary-flux identity, RH or interval certificate.
+
+The normalized finite even ground state is used with modes−44..44.
+Its eigenvalue is6.291153827677153e−33; this carrier is resolution-limited.
+Dilation U_tau acts by L -> L exp(tau), with coefficient vector frozen.
+Both one-sided derivatives at the prime-power threshold log8 are retained.
+
+D_reg =0.3369487425510696114472318428223701.
+The zero-step atomic derivatives cancel D_reg to
+L lambda'_left =−1.0939151807643191133e−30,
+L lambda'_right=−1.2628818364070183445e−30.
+At100digits the direct regular/atomic identity residual is about1e−100.
+
+At tau=−1e−6:
+D_reg+P_tau =+7.164197575639129e−7;
+frozen energy difference quotient=−6.384540041863064e−9;
+measured E_tau=−7.228042976057759e−7.
+At tau=+1e−6:
+D_reg+P_tau =−7.164205035279930e−7;
+frozen energy difference quotient=+6.384382679623024e−9;
+measured E_tau=+7.228048862076161e−7.
+Thus E_tau/tau≈0.7228043/0.7228049, consistent with an O(tau) remainder.
+It overwhelms the microscopic slope. Omitting E_tau is invalid at these steps.
+The frozen-vector quotient also differs substantially from the eigenvalue quotient,
+because the minimizing vector changes with L. This is not a failure of3.8.
+
+Fourth-order one-sided eigenvalue differences in tau agree with L lambda' HF
+with relative errors1.10e−13(left),2.45e−14(right).
+No common derivative is asserted at the finite-N threshold kink.
+
+Full unnormalized theta background h has Fourier transform H=4xi(1/2−it).
+Set e=f−(<f,P_Nh>/||P_Nh||²)P_Nh and D=x d/dx+1/2.
+Computed ||e||²=0.0014440926328541627,
+|<e,Dh>|=0.0629231065889271691.
+The latter pairing is integrated on the window; e=0 outside, so it is also
+its global pairing. Orthogonality <e,P_Nh> is numerically about8e−102.
+
+Primary100dps/GL96, independent replay140dps/GL128,8panels each.
+Full validation discrepancies are recorded in validation.json.
+Code dependency: ../hadamard_2026-11-02/hadamard_convergence_2026-11-01/convergence.py.
+Replay: uv run --with mpmath probe.py 96 100
+        uv run --with mpmath probe.py 128 140
+        uv run --with mpmath finalize.py
