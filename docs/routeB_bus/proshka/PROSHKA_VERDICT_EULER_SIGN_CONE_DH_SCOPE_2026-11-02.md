@@ -9,34 +9,42 @@ SOURCE_KERNEL_BLOB: 98380adf97aab19a900e332b6583c8f731b6d3f6
 SOURCE_DH_NORMALIZATION_BLOB: eaebfaf7d208a02be8411259e1401a99c61f9bb4
 SOURCE_DH_RESULT_BLOB: c8f4bd8b672325d2405f0d27ac7e39b5e5968c32
 PROTOCOL_BLOB: e0127d491799f7764e4f50e1ae4ed4cfcaf73c13
-OLD_DH_BEURLING_VERDICT: NOT_RECOVERED_NOT_RECONSTRUCTED
-OLD_D1_D2_DEFINITIONS: NOT_AVAILABLE
-OLD_VERDICT_BYTE_EXACT_DELIVERY: NOT_PERFORMED
+OLD_DH_BEURLING_VERDICT: RECOVERED_FROM_CONCURRENT_OWNER_RELAY
+OLD_VERDICT_COMMIT: 4a8ca65f47f276a17e5215d4507db189c77a5f41
+OLD_VERDICT_BLOB: b947112504dd70461d143be5ce1471eb4ca93322
+OLD_VERDICT_WRITTEN_BY_THIS_RESPONSE: false
+OLD_VERDICT_PRESENT_ON_TARGET_BRANCH: VERIFIED
+OLD_WITNESS_USED: SECTION_7_NORMALIZED_PROJECTION_OF_DH_BOTTOM
+REVISION_REASON: ORIGINAL_SOURCE_BECAME_AVAILABLE_DURING_READBACK
 E_CONE_FLOOR: PROVED
 LITERAL_CONE_DIMENSION: CHARACTERIZED_NOT_NUMERICALLY_DETERMINED
 MAXIMALITY_SCOPE_1: ALL_NONNEGATIVE_ATOMIC_WEIGHTS_WITH_NO_SIZE_BOUND
 MAXIMALITY_SCOPE_2: INDEPENDENT_ATOM_DELETION_BOX_WITH_FIXED_WEIGHT_UPPERS
 MAXIMALITY_SCOPE_3: PRIME_BLOCK_DELETION_PRESERVING_FIRST_SECOND_POWER_RATIO
 UNRESTRICTED_ZETA_COMPLEMENT_BOUND: NOT_PROVED
-D2_MEMBERSHIP: NOT_ADJUDICATED_MISSING_EXACT_WITNESS
+D2_SIGN_ADAPTED_CONE: EVENTUALLY_OUTSIDE_USING_INHERITED_DH_C
+D2_LITERAL_Q_NONPOSITIVE_CONE: NOT_DETERMINED
 DH_SIGN_TRANSFER: REFUTED_BY_EXACT_LITERAL_CARRIER_PRIME_BLOCK_TEST
 DH_TEST_IS_D2: false
 BEURLING_TRANSFER: CONDITIONAL_ON_SEPARATELY_SUPPLIED_FORM_AND_DOMAIN
 VERIFIER: PAPER
-EXACT_ALGEBRA_CONTROLS_PASSED: 7
+EXACT_ALGEBRA_CONTROLS_PASSED: 8
 INDEPENDENT_ANALYTIC_AUDIT: false
 LEAN_EXECUTED: false
 ARB_INTERVAL_EXECUTED: false
 RH_PROVED: false
 ```
 
-## 0. Источники и незавершённая доставка
+## 0. Источники, параллельная доставка и классификация
 
-Этот файл — НОВЫЙ разбор, не восстановленный прежний DH/Beurling-вердикт. В доступных локальных вложениях, поиске файлов разговора/Library и найденных исходниках репозитория прежний файл с E/F/Z, D1, D2 не получен. Его текста, имени и контрольной суммы нет. Поэтому нельзя честно записать новый текст под видом побайтной доставки старого либо присвоить новому свидетелю имя D2.
+Во время работы исходный DH/Beurling-вердикт был добавлен в запрошенную ветку отдельным owner-relay коммитом `4a8ca65f47f276a17e5215d4507db189c77a5f41` (Mythos). Его путь: `docs/routeB_bus/proshka/PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_2026-11-02.md`, blob `b947112504dd70461d143be5ce1471eb4ca93322`. Коммит содержит сообщение о verbatim-доставке; побайтного сравнения с первоначальным отсутствовавшим вложением эта сессия не выполняла. Файл прочитан из ветки; повторно создавать либо менять его не требуется. Его появление разрешило первоначальный source-gap. Собственный коммит `3646052237f8d5b3c7b33b8e0280593fe293f171` содержал предварительный разбор до обнаружения relay; настоящая редакция исправляет его устаревшие пометки об отсутствии источника.
 
-Прочитаны на SOURCE_BASE: `docs/routeB_bus/fake_worlds_2026-11-02/NORMALIZATION_DH.md` и `RESULT.md`. Они задают DH-форму и диагностические спектры, но не определяют запрошенный D2. Дополнительно прочитан связанный поиском `docs/WHY_NOT_YET.md`; определения D2 для этого запроса оттуда не импортируются. Источник (12): `docs/routeB_bus/proshka/PROSHKA_VERDICT_KERNEL_ORTHOGONALITY_2026-11-02.md` на SOURCE_KERNEL_COMMIT, §§1–3.
+Прочитаны:
+- S1: `docs/routeB_bus/fake_worlds_2026-11-02/NORMALIZATION_DH.md` и `RESULT.md` на SOURCE_BASE d268313. Первый задаёт DH-форму, второй — численные диагностики, не сертификаты.
+- S2: `PROSHKA_VERDICT_KERNEL_ORTHOGONALITY_2026-11-02.md` на c31645a, §§1–3 и (12).
+- S3: восстановленный `PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_2026-11-02.md` на 4a8ca65, §§1,3–8. Его кофинальные DH-Q/DH-N/DH-C здесь используются как унаследованные PAPER-выводы, не как независимо проверенные этой сессией теоремы. Конкретный complement-witness — нормированная проекция bottom в §7, (7.1); именно он проверяется ниже. Глобальная quartet-функция §6.1 — другой промежуточный свидетель.
 
-Рабочая классификация ЭТОГО разбора: E — знак/опора/величины эйлеровых коэффициентов; F — фиксированная аналитическая форма, архимедов член и полюс; LA — линейная алгебра и геометрия квадратичных неравенств. Это явно объявленная классификация, не выдуманная цитата из отсутствующего E/F/Z-файла. Нулевая сторона Z не используется для нового знака; определение W=J_m^perp наследуется.
+Классификация теперь сохраняет легенду S3: **E** — Euler product и точные коэффициенты/prime-power support; **F** — конкретное функциональное уравнение с gamma/pole-данными; **Z** — счёт нулей/кратностей, НЕ их расположение; **LA** — линейная алгебра и Fourier-геометрия окна. В S3 дополнительно нужны **A** (аналитическое продолжение и фактические узлы) и **I** (обычная целочисленная структура). Их нельзя скрывать внутри E/F/LA. Новые конусные знаки ниже не используют нулевую явную формулу; исходное W и сам DH-witness наследуют свои A/F/Z-поставщики. Нижняя оценка из E всегда применяется к уже определённой F-форме.
 
 ## 1. Нормировки и ответ (a)
 
@@ -101,7 +109,9 @@ RH_PROVED: false
 
 Препятствие универсальному размеру из одного знака весов: на R^q одна форма -I даёт весь R^q, I даёт только {0}, а diag(I_j,0) даёт подпространство размерности q-j. Это ABSTRACT/LA-контроли, не другие CCM. Они исключают вывод о размере без фактических correlation matrices, но не предсказывают eta_m литерального источника.
 
-## 3. Ответ (b): два строго определённых понятия максимальности
+Отдельно: «наибольшее подпространство» вообще может не существовать по включению. Для q(x,y)=x²-y² все прямые x=t y, |t|<=1, — максимальные неположительные подпространства размерности 1, но никакое одно не содержит остальные. Для настоящего W можно искать максимальную РАЗМЕРНОСТЬ по критерию (10), не приписывая ему канонический максимизатор. Это LA-препятствие единственному неоговорённому максимальному подпространству, не вычисление размерности буквального C_m.
+
+## 3. Ответ (b): строго определённые понятия максимальности
 
 ### 3.1 Только неотрицательность, без upper на веса
 
@@ -188,32 +198,70 @@ RH_PROVED: false
 
 Для фиксированных настоящих коэффициентов формально наибольший класс есть {P12<=B0+beta||f||²}. Это ровно искомое неравенство, не дополнительный E-сертификат. Называть его решением пункта (b) было бы кругом. Результаты максимальности выше относятся только к явно названным классам информации.
 
-## 4. Ответ (c): какой DH-конус допустим
+## 4. Ответ (c): восстановленный DH-свидетель и два разных конуса
 
-[FINITE_CELL | PAPER; F.] Из NORMALIZATION_DH на SOURCE_BASE:
+### 4.1. Согласование констант
 
-    K_D[f]=c_D||f||²+A_D[f]-sum_(2<=n<=m)b(n)n^(-1/2)Q_f(log n),
-    A_D>=0,  c_D=-gamma-log(8pi/5)+pi/2,  pole=0.
+[FINITE_CELL | PAPER; F+LA.] S1 пишет знаковую константу c_D^arch=log(5/pi)+psi(3/4)<0, а S3 §3.2 обозначает через c_D её положительную противоположность. Во избежание путаницы здесь
 
-Коэффициенты периодического ряда D имеют a(1..5)=(1,tau,-tau,-1,0), tau>0. Логарифмическая производная даёт
+    beta_D=gamma+log(8pi/5)-pi/2>0,
+    K_D[f]=A_D[f]-beta_D||f||²-P_D[f],
+    P_D[f]=sum_(2<=n<=m)b(n)n^(-1/2)Q_f(log n),   A_D>=0. (12a)
+
+Это одна и та же форма обоих источников; полюса нет. Коэффициенты периодического ряда D имеют a(1..5)=(1,tau,-tau,-1,0), tau>0. Логарифмическая производная даёт
 
     b(2)=tau log2>0,
     b(3)=-tau log3<0,
-    b(6)=(1+tau²)log6>0.                                 (12)
+    b(6)=(1+tau²)log6>0.                                  (12b)
 
 Суммируются все целые n, но не утверждается, что каждый коэффициент ненулевой. Это не положительная Mangoldt-мера.
 
-[FINITE_CELL | PAPER; E.] Для правильного signed аналога
+### 4.2. Выход фактического projected witness из sign-adapted конуса
 
-    C_D^sgn={f in W_D: b(n)Q_f(log n)<=0 for every retained n}
+[COFINAL_FAMILY | PAPER on S3 suppliers; F + LA; actual signed coefficients, inherited witness uses A/F/Z, no Euler product for DH.] Положим
 
-доказан floor K_D[f]>=c_D||f||². Следовательно, любой ТОЧНЫЙ свидетель со значением K_D[f]<c_D||f||² находится вне C_D^sgn. Просто K_D[f]<0 недостаточно: c_D<0. Смена baseline с c_D на -c_* также недопустима.
+    C_D^sgn={f in W_D: b(n)Q_f(log n)<=0 for every retained n}.
 
-Для наивного аналога C_D^naive={Q_f(log n)<=0} это рассуждение неверно. У b(n)<0 неположительная корреляция делает b(n)Q_f(log n)>=0 — именно опасный знак в вычитаемой арифметической части.
+На этом конусе P_D<=0 и K_D[f]>=-beta_D||f||². Теперь используем РОВНО свидетель §7 S3. Пусть v_m — единичный bottom A_m^D с eigenvalue -R_m, Pi_m — проекция на J_m^D и delta_m=||A_m^D Pi_m||. S3 доказывает R_m->infinity и delta_m->0. Для R_m>delta_m определено
 
-### Точный контроль с настоящими DH-коэффициентами, НЕ D2
+    y_m=(I-Pi_m)v_m/||(I-Pi_m)v_m||,
+    y_m in W_D,
+    K_D[y_m] <= U_m := -R_m+delta_m²/(R_m-delta_m).         (12c)
 
-[FINITE_CELL | PAPER; E+F+LA.] Возьмём L=log4, исходные два фазированных ортонормированных режима phi_0,phi_1 и единичный f=(phi_0-phi_1)/sqrt2. Это вектор полного чётного carrier V_4; его принадлежность W_D не утверждается.
+Точно ||Pi_m v_m||<=delta_m/R_m, поэтому знаменатель не нулевой. Как только
+
+    R_m-delta_m²/(R_m-delta_m)>beta_D,                     (12d)
+
+имеем K_D[y_m]<-beta_D. Следовательно
+
+    y_m NOT IN C_D^sgn,
+    P_D[y_m]>A_D[y_m]>=0,
+    exists n<=m: b(n)Q_(y_m)(log n)>0.                    (12e)
+
+Условие (12d) выполняется на всех достаточно поздних m по унаследованным R_m->infinity, delta_m->0. Новых нулевых оценок или знака из явной формулы в этом выводе нет. Полная кофинальная конструкция y_m НЕ выводится из одной E: она является входом S3. Простая отрицательность K_D<0 недостаточна — сравнивать нужно с -beta_D.
+
+### 4.3. Буквальный Q<=0-конус — это не C_D^sgn
+
+[FINITE_CELL | PAPER; F+LA, obstruction to transferring E.] Буквальная замена опоры в пользовательском C_m даёт
+
+    C_D^naive={f in W_D: Q_f(log n)<=0 at every active DH atom}.
+
+Если проверять только prime-power n, этот класс ещё шире. Ни один из них не является sign-adapted конусом. Из (12e) возможны две альтернативы:
+
+    b(n)>0 and Q_n>0;  OR  b(n)<0 and Q_n<0.
+
+Только первая исключает C_D^naive. Источник S3 не содержит покоординатных знаков корреляций y_m, поэтому утверждение y_m outside C_D^naive НЕ ДОКАЗАНО. Не доказано и обратное включение. Подмена конуса в (c) явно не производится.
+
+Точный остаток этой проверки: если y_m принадлежал бы C_D^naive, то из (12c) при (12d) обязательно
+
+    sum_(b(n)<0)|b(n)|n^(-1/2)[-Q_n]
+      > A_D[y_m]+sum_(b(n)>0)b(n)n^(-1/2)[-Q_n].           (12f)
+
+Это совместимо со знаками DH. В S3 не дана оценка, запрещающая (12f). Поэтому расположение именно y_m относительно буквального Q<=0-конуса требует дополнительного источникового знака. Это НЕ доказательство математической невозможности такой классификации и НЕ новое опровержение zeta E-floor.
+
+### 4.4. Точный контроль с настоящими DH-коэффициентами, НЕ свидетель §7
+
+[FINITE_CELL | PAPER; F+LA and actual signed coefficient data.] Возьмём L=log4, исходные два фазированных ортонормированных режима phi_0,phi_1 и единичный f=(phi_0-phi_1)/sqrt2. Это вектор полного чётного carrier V_4; его принадлежность W_D не утверждается.
 
 Из буквальной q_even-формулы:
 
@@ -221,22 +269,20 @@ RH_PROVED: false
     Q_f(log3)=[u(1+cos u)-(2sqrt2-1)sin u]/(2pi)<0,
     u=2pi(1-log3/log4),  pi/3<u<pi/2.                    (13)
 
-Последний интервал следует из 3^4>4^3 и 3^6<4^5. Функция u*cot(u/2) убывает: её производная (sin u-u)/(2sin²(u/2))<0. Поэтому u*cot(u/2)<pi/sqrt3<2sqrt2-1, что доказывает знак. Последнее числовое сравнение, например, следует из pi<22/7, sqrt3>173/100, sqrt2>707/500 и 2200/1211<457/250.
+Последний интервал следует из 3^4>4^3 и 3^6<4^5. Функция u*cot(u/2) убывает: её производная (sin u-u)/(2sin²(u/2))<0. Поэтому u*cot(u/2)<pi/sqrt3<2sqrt2-1, что доказывает знак. Последнее числовое сравнение следует, например, из pi<22/7, sqrt3>173/100, sqrt2>707/500 и 2200/1211<457/250.
 
-Тем не менее, для настоящих b(n) из (12),
+Тем не менее, для настоящих b(n) из (12b),
 
-    sum_(2<=n<=4)b(n)n^(-1/2)Q_f(log n)
-       =b(3)Q_f(log3)/sqrt3 >0.                           (14)
+    P_D[f]=sum_(2<=n<=4)b(n)n^(-1/2)Q_f(log n)
+          =b(3)Q_f(log3)/sqrt3 >0.                        (14)
 
-Таким образом, ключевой E-переход «все Q<=0 => арифметическая сумма<=0» ложен для фактической DH-меры уже на полном конечном carrier. (14) НЕ утверждает K_D[f]<c_D||f||² и НЕ является найденным D2. Это строго ограниченное опровержение переноса знакового аргумента.
-
-[FINITE_CELL | CONDITIONAL; D2.] Конкретный D2 отсутствует среди полученных источников. Поэтому НЕ доказано ни D2 in C_D^naive, ни D2 outside C_D^naive, ни его принадлежность W_D. Численную строку m=51 из RESULT.md нельзя назвать D2 без определения. Кроме того, её отрицательная энергия порядка 1e-47 не пересекает отрицательный baseline c_D; одной этой строки недостаточно даже для signed-конуса. Для классификации нужен сам вектор/точная конструкция D2 и соглашение, какой из двух конусов сравнивается. Это дефект входа, не доказательство невозможности классификации данного свидетеля.
+Таким образом, ключевой E-переход «все Q<=0 => арифметическая сумма<=0» ложен для фактической DH-меры уже на полном конечном carrier. (14) НЕ утверждает K_D[f]<-beta_D, НЕ проверяет y_m и НЕ является контрпримером к искомому zeta bound. Он строго опровергает только перенос аргумента о знаке меры на DH.
 
 ## 5. Граница переноса к Бёрлингу
 
 [ABSTRACT | PAPER; E.] Для положительных обобщённых простых r_j>1 там, где логарифмическая производная Euler-произведения абсолютно сходится, её атомы имеют веса log(r_j) r_j^(-k/2)>=0 в точках k log r_j. Тот же sign-cone аргумент переносится буквально на эту опору.
 
-[ABSTRACT | CONDITIONAL; F.] Для переноса ЧИСЛЕННОГО floor требуется отдельно заданная форма A_B-c_B I-P_B+O_B с A_B>=0, O_B>=0 и её область определения. Положительное Euler-произведение само не определяет архимедов H_m от zeta, её полюсный член, функциональное уравнение или константу c_*. Поэтому ни zeta-floor с тем же c_*, ни zeta-матрица (12), ни её RH-consumer не переносятся на Beurling-систему одной положительностью атомов. Никакой отсутствующий Beurling-контрпример или старое D1 здесь не реконструируется.
+[ABSTRACT | CONDITIONAL; F/A/source contract.] Восстановленный S3 §8 относится к конкретной системе Diamond–Montgomery–Vorhauer. У неё есть положительное Euler-произведение и определённое продолжение с off-line zeros, но цитируемая теорема не задаёт весь требуемый completion/gamma/reflection/theta-radical/finite-return пакет. Для переноса ЧИСЛЕННОГО floor требуется отдельно заданная форма A_B-c_B I-P_B+O_B с A_B>=0, O_B>=0 и её область определения. Положительное Euler-произведение само не задаёт H_m от zeta и её pole/constant. Поэтому S3 верно оставляет SOURCE_TRANSFER_GAP, а не сертификат отрицательного Beurling-eigenvalue той же матрицы. Здесь этот статус не повышается. Системно-зависимая сумма высших степеней может быть конечна при гипотезах S3, но константу C3<28 нельзя переносить без обычной целочисленной опоры.
 
 ## 6. Леджер, дискриминатор, проверки и доставка
 
@@ -247,21 +293,22 @@ RH_PROVED: false
 | Sign-only максимальность | E+LA | ABSTRACT / PAPER | Только класс произвольных положительных весов |
 | (8)–(11b), совместный бюджет | E+F+LA | FINITE_CELL / PAPER | Максимальные atom/prime-block deletion-robust конусы |
 | (11), оставшийся знак | E+F | COFINAL_FAMILY / CONDITIONAL | Не доказан |
-| (13)–(14), DH-контроль | E+F+LA | FINITE_CELL / PAPER | Ошибка переноса знака доказана |
-| Участие именно D2 | не назначается без источника | FINITE_CELL / CONDITIONAL | Не проверено |
-| Beurling | E / отдельно F | ABSTRACT / PAPER и CONDITIONAL | Перенос знака, не формы |
+| (12c)–(12e), projected DH witness | F+LA; witness inherits A/F/Z; E отсутствует у DH | COFINAL_FAMILY / PAPER on S3 | Вне sign-adapted конуса при всех достаточно больших m |
+| (12f), принадлежность того же witness буквальному Q<=0 | дополнительные знаки actual correlations | COFINAL_FAMILY / CONDITIONAL | Не решена; не выдана за невозможность |
+| (13)–(14), DH-контроль | F+LA + точные signed coefficients, не E самой DH | FINITE_CELL / PAPER | Ошибка переноса знака доказана |
+| Beurling | E / отдельно F,A | ABSTRACT / PAPER и CONDITIONAL | Перенос знака, не формы |
 
-Семь групп exact-algebra self-checks выполнены: нормировка floor/(12), максимумы по удалению атомов и prime-блоков, остаток (11), три типа конуса, DH recurrence, свидетель (13), signed baseline. Два первых запуска остановились на несокращённых символьных log/trig-выражениях; нормализация проверок исправлена, математические формулы не менялись. Финальный запуск прошёл. Это не независимый аудит, не interval/Lean-сертификат и не расчёт размерности C_m настоящей семьи.
+Восемь групп exact-algebra self-checks выполнены: нормировка floor/(12), максимумы по удалению атомов и prime-блоков, остаток (11), три типа конуса, DH recurrence, свидетель (13), signed baseline и projected upper/threshold (12c)–(12e). Первые два промежуточных запуска остановились на несокращённых символьных log/trig-выражениях; нормализация проверок исправлена, математические формулы не менялись. Финальный запуск прошёл. Это не независимый аудит, не interval/Lean-сертификат и не расчёт размерности C_m настоящей семьи. Унаследованный DH-Q/DH-N/DH-C заново полностью не аудирован.
 
-Два допустимых следующих представления: (i) строгая cone-feasibility (5) или положительная комбинация M_n — высокая сила для определения размера, умеренная finite-cell цена; (ii) prime-block бюджет (11a) и точный signed остаток (11) — высокая сила для покрытия дополнения, кофинальная цена пока неоплачена. DISCRIMINATOR: сертифицированный знак eta_m, либо конкретный допустимый вектор с проверенными всеми корреляциями; для D2 — тот же полный список с правильными b(n), не только eigenvalue.
+Два следующих представления: (i) строгая cone-feasibility (5) или положительная комбинация M_n — высокая сила для определения размера, умеренная finite-cell цена; (ii) prime-block бюджет (11a) и точный signed остаток (11) — высокая сила для покрытия дополнения, кофинальная цена пока неоплачена. DISCRIMINATOR: сертифицированный знак eta_m, либо конкретный допустимый вектор с проверенными всеми корреляциями. Для буквального DH-конуса нужен полный список Q_(y_m)(log n), а не только eigenvalue. Для sign-adapted исключения достаточно строгого upper (12d).
 
 DOWNSTREAM_CONSUMER: constant lower floor on literal CCM.
 ACTUAL_CONSUMER_REQUIREMENT: all of W on an unbounded family, not merely a nonempty cone.
-ORIGINAL_OBJECT_IS: exact old verdict unavailable; cone restrictions are sufficient only on their covered sets.
-FAILURE_TYPE: NO_SOURCE for old D1/D2; NO_DERIVATION for cofinal full coverage.
+ORIGINAL_OBJECT_IS: requested unrestricted maximal E/F cone unspecified as an information class; covered cones are sufficient only on their sets.
+FAILURE_TYPE: NO_DERIVATION for cofinal full coverage, actual cone dimension and literal-Q D2 membership.
 EPISTEMIC_STATUS: RESEARCH_DEBT, not death of the CCM inequality.
-REOPEN_TRIGGER: recover exact D1/D2; or prove uniform coverage/signed remainder.
+REOPEN_TRIGGER: signed estimate (11), certified eta_m, or source-controlled correlation signs in (12f).
 
-CODEX DIRECTIVE: audit (2),(3),(9),(11a),(11b),(13),(14); recover and identify the original D2 before any membership claim. Do not promote a cone floor to a floor on W. Never identify the new V_4 test with D2.
+CODEX DIRECTIVE: audit (2),(3),(9),(11a),(11b),(12c)–(12f),(13),(14) using S3 §7 witness; distinguish sign-adapted from literal-Q cones. Do not promote a cone floor to a floor on W. Never identify the V_4 control with the projected DH witness.
 
-Source base d268313 and inbox c31645a have diverged (common ancestor d142486). This report is to be added to the EXISTING inbox branch, preserving its history; no rebase, force push or rh_clean write is performed. Thus d268313 is the mathematical source pin, not falsely reported as the parent of this delivery. Only this new Markdown is delivered. The missing original DH/Beurling verdict is NOT delivered by this operation. Commit SHA and blob are reported after readback. No Lean files or route state are changed.
+Source base d268313 and inbox c31645a have diverged (common ancestor d142486). Source base is the mathematical pin, NOT the delivery parent. Original DH verdict was concurrently relayed at 4a8ca65 and is preserved unchanged. The present revised report follows the existing branch; no rebase, force push or rh_clean write is performed. Only this report is changed by its correction commit. Commit SHA and blob are reported after readback. No Lean files or route state are changed; no Lean axiom profile is claimed.
