@@ -1,0 +1,25 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "dps": 100,
+  "order": 128,
+  "m_range": [
+    8,
+    40
+  ],
+  "B": [
+    2,
+    4,
+    8
+  ],
+  "zero_count_available": 138,
+  "zero_source_sha256": "2146cd77491321192794e8d985800f93c3fde401d98899e741d7229704a6641e",
+  "zero_cutoff_covered": true,
+  "definitions": {
+    "absolute": "abs(lambda)<mu",
+    "signed": "lambda<mu",
+    "negative_outside": "lambda<=-mu",
+    "Nzeros": "number of stored positive ordinates < cutoff"
+  },
+  "minimum_relative_threshold_margin": "0.0160969821554512415366159225446160157293074793113821334320916518576998870315430493712677941",
+  "negative_cells": []
+}
