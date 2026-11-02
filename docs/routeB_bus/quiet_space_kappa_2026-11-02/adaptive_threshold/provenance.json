@@ -1,0 +1,28 @@
+{
+  "source_commit": "77c22cb60e70634d1c75ac75538e06cdf7db5f3b",
+  "decimal_precision": 200,
+  "threshold_multiplier": "1.000001",
+  "new_eigenproblems": 0,
+  "source_files": {
+    "cell_m16.json": {
+      "git_blob": "4aa869b9a0436bfa88fc9156fbf1776b11c5cc29",
+      "sha256": "21826ef9dfd71844539b45f1213cac95b02a67d395ed1848feb5fc019209e7cc"
+    },
+    "cell_m24.json": {
+      "git_blob": "2031a2a55f3e22020a33f997fb856ac9e2a207b8",
+      "sha256": "6c3e5da1205842df617d64480e82cd98e964b811227fe726a887e130c3b3d550"
+    },
+    "cell_m32.json": {
+      "git_blob": "b20b1b426289b9ea21e6b2838b13fc957d66bff6",
+      "sha256": "0fb57ee3f8b9a365de1457028fd7337cad9c44b3e23723fd303ccc3017ecb30d"
+    },
+    "cell_m40.json": {
+      "git_blob": "9716570ef352f70dfe58af671b3284386cc89841",
+      "sha256": "94df93ea5901ad3f75d21d2784d30a894bd6ea46088af3be20f4fc86058803f6"
+    }
+  },
+  "points": 84,
+  "saturated_points": 21,
+  "minimum_relative_threshold_distance": "0.044450450453338894140368393466384762323682993404917655991104202428701683570972811429641491979894872435352277666276753127440040895475550195881729323601167148202140200779134215549757916015860318723491509",
+  "inflation_changes_no_count": true
+}
