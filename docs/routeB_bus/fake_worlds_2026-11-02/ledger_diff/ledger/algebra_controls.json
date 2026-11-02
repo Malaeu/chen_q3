@@ -1,0 +1,9 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "control": "m=5 explicit rational modal trial, no eigenproblem",
+  "dps": 70,
+  "q_coefficient_vs_literal_q_even_max_error": "3.169487678e-71",
+  "DH_Abel_atom_minus_continuum_identity_residual": "-6.395573349e-71",
+  "tolerance": "1e-60",
+  "result": "PASS"
+}

@@ -1,0 +1,66 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "task": "ROUTE_B_DH_LEDGER_AND_CERT_v1",
+  "base": "d26831357b6cb3b2b7d4a569d2031e454952b246",
+  "inbox": "4a8ca65f47f276a17e5215d4507db189c77a5f41",
+  "reused_AB_commit": "8acecc1574740c5163c2a4e8ef75049f6df84313",
+  "D_delivery_commit": "b7f710f3d0163055834812644219542e72c087d1",
+  "source_dh_matrix_sha256": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00",
+  "matrix_archive_hashes_verified": 208,
+  "imports": [
+    {
+      "name": "PROSHKA_VERDICT_KERNEL_ORTHOGONALITY_2026-11-02.md",
+      "sha256": "70c92c3075055b1fca061df15decb56d966e4495a0461c0c86e63809594c3346",
+      "blob": "98380adf97aab19a900e332b6583c8f731b6d3f6",
+      "bytes": 26631
+    },
+    {
+      "name": "PROSHKA_VERDICT_PRIME_COMPLEMENT_FLOOR_2026-11-02.md",
+      "sha256": "3a827900de98c45d02ce617f606c4a0ab1fa7b337ed846ea12f7eb9db301b3fa",
+      "blob": "88de1569443ba35acdeefdeb64ace9bbb43c47e8",
+      "bytes": 24246
+    },
+    {
+      "name": "PROSHKA_VERDICT_QUIET_SPACE_INDEX_2026-11-02.md",
+      "sha256": "f1e6e3634a5829744c98faeb9e3e01535fd29c0ac976c50fefb19bdc0ea97e34",
+      "blob": "84b6d256ed2cb30b71949bfcc465c148dbb15a82",
+      "bytes": 36536
+    },
+    {
+      "name": "PROSHKA_VERDICT_SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_2026-11-02.md",
+      "sha256": "fb0176935d103209bea3feff8362605024da7635c568768dc5355f441e5ddd14",
+      "blob": "ebf7f8cab61a795118bda5dc7e65a0b3386247b7",
+      "bytes": 32225
+    },
+    {
+      "name": "PROSHKA_VERDICT_PENALIZED_ENTROPY_2026-11-02.md",
+      "sha256": "4fd05675bb93b06c2ebb7846e7840dd12cec1c11f75bbfaf5a87d69d9ecfc46f",
+      "blob": "b7dfb4a9b923203564d6e80485388540652e2730",
+      "bytes": 20827
+    },
+    {
+      "name": "PROSHKA_VERDICT_RADICAL_CONCENTRATION_2026-11-02.md",
+      "sha256": "dbd68ab3eec34c6c3f67180d051340bb17b29f3337831137606d34517dca14b6",
+      "blob": "9b295e1b4ae2d0c5dab438c8514fd9329a65c34a",
+      "bytes": 37749
+    },
+    {
+      "name": "PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_2026-11-02.md",
+      "sha256": "f742f99354279feda6888a10d71b22dea3b9e27a2dc36da2d442b1356bd501d3",
+      "blob": "b947112504dd70461d143be5ce1471eb4ca93322",
+      "bytes": 59861
+    },
+    {
+      "name": "PROSHKA_NEXT_STEP_BACKGROUND_SECOND_MOMENT_2026-11-01.md",
+      "sha256": "812106f5b16f2c2d0a4d65c1d86a32a749dcef127d2243e92e6dded2129a3006",
+      "blob": "e7f2b07e9922bcc6680ebbaa3b4a14a6b22ba266",
+      "bytes": 13804
+    }
+  ],
+  "ladder_path": "docs/routeB_bus/cluster_count_2026-11-02/level_zero_ladder/LADDER_REANALYSIS.md",
+  "ladder_sha256": "72a02753926f6939d7c8351eb6c08798fb5a3bdebdd951487f7965606d29b14c",
+  "route_state_exports_changed": false,
+  "RH_exports_changed": false,
+  "new_large_source_eigenproblem_series": false,
+  "sequence_note": "A/B files appeared remotely at8acecc1 while preparation was in progress; reused and independently checked. Two isolated C(i) witness solves/certificates and Ciii checks were then executed; no new large series was run."
+}

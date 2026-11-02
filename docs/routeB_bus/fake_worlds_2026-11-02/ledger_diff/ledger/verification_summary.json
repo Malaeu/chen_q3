@@ -1,0 +1,20 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "source_commit": "8acecc1574740c5163c2a4e8ef75049f6df84313",
+  "native_vectors": 6,
+  "working_dps": 120,
+  "GL_order": 128,
+  "new_source_eigensystems": 0,
+  "max_absolute_discrepancies": {
+    "independent_direct_sum_minus_rayleigh": "6.93193952758027970834427483358256980715069235e-119",
+    "H_plus_difference": "1.51031084679123412639903194698167722055238548e-119",
+    "transformed_rayleigh_difference": "2.00348544849350857689032056688061897635363977e-119",
+    "canonical_Abel_identity": "5.88633971057096377468340656259525480830673317e-119",
+    "pole_continuum_identity": "9.36002440356646750510217364978878986595341064e-123",
+    "reference_Abel_identity": "1.70213651055773995721167742336076279161127633e-118",
+    "max_component_difference": "1.1695227582844941183910452512524782579662062e-118",
+    "remote_same_vector_Rayleigh_difference": "2.90444393613698870461352297496476388567766439e-120"
+  },
+  "naming": "I in source3.4 is derivative Bulk; remote I_ref is halfQ+Bulk, all three pieces separately retained",
+  "double_counting_found": false
+}

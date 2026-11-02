@@ -1,3 +1,80 @@
+# ROUTE_B_DH_LEDGER_AND_CERT_v1 — completed diagnostic packet
+
+DIAGNOSTIC_NEVER_A_PROOF. Route B remains CHALLENGER / NOT_RH. No route-state or RH exports changed.
+
+Pinned source base: `d26831357b6cb3b2b7d4a569d2031e454952b246`; inbox: `4a8ca65f47f276a17e5215d4507db189c77a5f41`.
+
+The A/B dataset arrived in concurrent remote commit `8acecc1` while this task was preparing. It is preserved and independently replayed here. No duplicate large eigenproblem series was run. The two isolated C(i) witness solves/certificates and the C(iii) checks are recorded separately. This ordering does not retroactively claim the pre-existing A/B series ran after our preflight.
+
+## Completion and verification
+
+- **A: complete with an explicit impossible case.** Density-matched rows for m20,40,60,80 have q=8,18,29,41. At m120 the requested q=64 is unattainable for a height cutoff: a DH reflected pair at gamma=114.16334273075698 raises q from63 to65. Both adjacent DH densities and matching zeta controls are saved. Do not split the pair or call either bracket an exact q64 match.
+- **B: complete at native kappa=1.1, m55,80,120, both worlds.** All requested signed sectors plus boundary, derivative interior, and the half-Q term are retained on each selected complement-bottom vector. The original source ledger and compensated/Abel identities remain separate. The independent implementation agrees on components within1.17e-118; its raw sum-to-Rayleigh residual is at most6.94e-119, Abel residual1.71e-118.
+- **C(i): strict Arb negative source Rayleigh upper bounds at m51 and55.** See below. These establish a negative trial quotient for a frozen approximate-bottom witness, not interval eigenpair isolation or an interval-certified first onset.
+- **C(ii): numerical full-bottom projection envelopes and C_viol at m55,80,120.** The R and delta inputs are independently replayed; the norms/spectrum and zero census are not interval-certified. No C=2 search is run.
+- **C(iii): coefficient/functional-equation/three mixed source-zero checks complete with an explicit omitted-zero-tail budget.** The finite zero census remains numerical. The tail budget arithmetic itself is outward rounded with Arb.
+- **D: published separately in `b7f710f`.** Eight exact inbox originals imported into canon+mirror with SHA-256 verification; LADDER_REANALYSIS.md saved under cluster_count_2026-11-02/level_zero_ladder/. The NEXT_STEP file retains its actual2026-11-01 date from290c5de. TASK_COMPLETION.json records all eight hashes.
+
+A independent replay: all15 saved cells pass cutoff/orbit, saved-source, rank/nullity, full-AQ residual, raw singular-value and strict threshold-count checks. Float64 SVD replay is used only as a cross-check of the archived120dps values: relative differences at most6.31e-14 for delta and1.21e-8 for sigma. The tiny full-spectrum signs are not certified. Details: density/RESULT.md and density/verification.json.
+
+B independent replay: ledger/VERIFICATION.md and ledger/verification_summary.json. Native delta was also recomputed at120dps from saved A,Q, agreeing within8e-121. Source interior derivative means Bulk; the separate label I_ref=halfQ+Bulk is explicit, so the source Q/2 term is not lost. Signed arithmetic groups refer to sign of b(n), not sign of the evaluated contribution.
+
+## C(i): Arb source Rayleigh certificates
+
+python-flint0.9.0,600bits. The source script SHA-256 is checked unchanged. A165-digit decimal trial vector is frozen from each saved120dps source matrix. Its norm, scalar, every arithmetic atom, and full archimedean integral with exact infinite tail are then enclosed in Arb. The integrand uses entire sinc expressions to remove the apparent singularity at0; acb.integral supplies rigorous complex-ball integration on16 subintervals. The source archive quadrature error is not a certificate premise: the witness is tested against the source formula itself.
+
+|m|Arb-checked coarse Rayleigh enclosure|Strict certified upper|
+|---:|---|---:|
+|51|[-1.326858e-47, -1.326857e-47]|-1.326857e-47|
+|55|[-0.663921, -0.663920]|-0.663920|
+
+Full tighter intervals, vectors, source hashes, norm intervals and integration tolerances are in cert/rayleigh_m51.json and cert/rayleigh_m55.json. Reproduction and callback review: cert/README.md, cert/REVIEW_PREFLIGHT.md. This is a finite certificate; it is not a proof export or a route-state update.
+
+## C(ii): envelope (7.1) and violation budget
+
+Use R=-lambda_min(A) of the **full source matrix**, not the compressed minimum. Let loss=delta²/(R-delta), envelope=-R+loss, C_viol=R-loss-c_D. Here c_D=gamma+log(8pi/5)-pi/2=0.621152853201771969..., the positive floor constant; the signed scalar in dh_matrix.py is its negative. All three inputs satisfy R>delta.
+
+|m|R|delta|projection loss|envelope|C_viol|
+|---:|---:|---:|---:|---:|---:|
+| 55 | 0.663920646081 | 3.44079009709e-08 | 1.7832006243e-15 | -0.663920646081 | 0.0427677928793 |
+| 80 | 1.24068701235 | 1.07855923001e-11 | 9.37617627232e-23 | -1.24068701235 | 0.619534159148 |
+| 120 | 1.58825368804 | 6.853166574e-14 | 2.95707747728e-27 | -1.58825368804 | 0.967100834834 |
+
+These are diagnostic numerical envelope values, not interval upper bounds on delta or interval certification of the exact zero-defined complement. They identify the corresponding numerical C budgets. C=2 is not tested: already R_120<2+c_D. Exact precision inputs and results: ledger/envelope_inputs.json, envelopes.json, envelopes.csv; script envelopes.py.
+
+## C(iii): source checks and explicit zero-tail estimate
+
+b_D(3)=-tau log3=-0.3120927285161636217... and b_D(6)=(1+tau²)log6=1.9363560766210387863... match the unchanged coefficient recurrence. Three completion functional-equation checks have relative discrepancies at most8.66e-109 at110dps. The physical Gram is evaluated explicitly for each mixed pair.
+
+The mixed tests use the m20 carrier and unit profiles f_K(x) proportional to (1+cos(2pi x/L))^K on the original window, zero outside. Pairs(K,H)=(8,9),(9,10),(8,10) are distinct functions; no eigenproblem is involved. The zero side retains all146 real critical-line zeros and four reflected off-line upper pairs below230, with factors2 for critical pairs and4Re(FG) for off-line quartets. No absolute-square substitution is made.
+
+|profiles|source-vs-finite-zero difference|Arb-checked omitted-tail upper|
+|---|---:|---:|
+| (8, 9) | 3.498851e-54 | 2e-37 |
+| (9, 10) | 1.68456e-58 | 2e-36 |
+| (8, 10) | 2.699193e-56 | 5e-37 |
+
+Tail budget: all completed DH zeros lie in -1<Re rho<2 by the source comparison at Re s=2 and functional reflection. With theta(u)=sum n*a(n)*exp(-pi*n²*u/5), the completed theta integral on[1,infinity) bounds |Lambda(s)|<512 on disks of radius4 centered at2+it. At the center, the exact gamma modulus at3/2+it/2 and |D(2+it)|>=2-zeta(2) give |Lambda|>0.5*exp(-pi|t|/4). Jensen with inner radius3.5 covers a unit-height strip slab (maximum distance sqrt(9.25)), and gives the safe bound100+7(j+1) for the number of upper zeros in[j,j+1], counting multiplicity.
+
+Each K>=8 profile vanishes to order at least16 at both endpoints. Integration by parts16 times therefore gives |fhat(z)|<=exp(3L/4)*sqrt(L)*||f^(16)||_2/|z|^16 on this zero strip. Its derivative norm is an exact finite binomial modal moment. Multiply the two factors, sum the count-weighted gamma^-32 tail above230, and include the separate factor2 for negative heights. The decreasing tail is bounded by its first term plus its integral. tail_budget_arb.py encloses all numerical constants and derivative moments outward at600bits and verifies the displayed coarse uppers. Source/profiles and finite zero sums are in preflight.py/preflight.json; the independent tail/pairing review is in cert/REVIEW_PREFLIGHT.md.
+
+The finite DH zero list is still a numerical winding-count/root dataset, not interval-isolated completeness evidence. Thus these three checks are numerical source-consistency checks with a controlled omitted-height tail; only the two C(i) source Rayleigh enclosures are claimed as strict interval negative certificates. No finite result is promoted to a cofinal bound, RH statement or route status.
+
+## Reproduction of this completion
+
+Restore the original fake-world matrix ZIPs as described in the parent RESULT, and run unpack_cells.py to restore the saved A/B cells from the preserved split archive. Dependencies: mpmath, numpy, scipy, python-flint0.9.0. Set DH_INPUTS to the parent fake_worlds directory if needed.
+
+- python density/verify.py (saved-cell replay; no eigensystem)
+- python ledger/verify_remote.py dh_m55_q50_native.json (and the other five native filenames listed in ledger/verification_summary.json; independent component replay)
+- python preflight.py
+- python tail_budget_arb.py
+- python cert/rayleigh.py 51 and python cert/rayleigh.py 55
+- python envelopes.py
+
+SHA256SUMS covers every committed file in this packet except itself. Original A/B source data and scripts are preserved below. Diagnostics remain CHALLENGER / NOT_RH.
+
+---
+
 # Equal-density and signed-ledger comparison: zeta versus DH
 
 DIAGNOSTIC_NEVER_A_PROOF
@@ -32,7 +109,7 @@ The equal-density DH kernels are not quiet: residuals are roughly6–11, while t
 
 All components are evaluated on the **same unit vector f** within each case: f minimizes U^T A U and is lifted by orthonormal U. This is the complement bottom, not necessarily the full-carrier bottom. Different worlds/cutoffs have different minimizing vectors, so subtracting their entries is descriptive rather than a common-vector operator comparison.
 
-Because B did not separately specify its cutoff, both density-matched complements and native kappa1.1 complements are included. At m120 the extra zeta bracket complements are included as well:12 ledgers total. The native comparison is shown first below. Every arithmetic entry is the signed form contribution **minus P**; plus/minus labels refer to the sign of b(n), not the sign of the evaluated summand. Scalar H has positive kernel coefficient, c is the signed negative constant, and the pole coefficient is positive for zeta and absent for DH. Empty bins are exact zeros.
+The current task B specifies native kappa1.1; those are the primary six ledgers below. Additional density-matched complements are retained as labeled controls. At m120 the extra zeta bracket complements are included as well:12 ledgers total. The native comparison is shown first below. Every arithmetic entry is the signed form contribution **minus P**; plus/minus labels refer to the sign of b(n), not the sign of the evaluated summand. Scalar H has positive kernel coefficient, c is the signed negative constant, and the pole coefficient is positive for zeta and absent for DH. Empty bins are exact zeros.
 
 The original ledger is lambda=H_original+c+pole−sum P. It uses j_zeta=exp(−s/2)/(1−exp(−2s)), c_zeta=−gamma−log(8pi)−pi/2; DH uses j_D=exp(−3s/2)/(1−exp(−2s)), c_D=−gamma−log(8pi/5)+pi/2, and no pole.
 
