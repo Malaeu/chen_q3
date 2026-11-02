@@ -1,0 +1,65 @@
+{
+  "repository": "Malaeu/chen_q3",
+  "source_base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+  "inputs": [
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/dh_matrix.py",
+      "local_name": "dh_matrix.py",
+      "git_blob": "9f08128be988c06447169468b680baa12040087f",
+      "ref": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+      "bytes": 7832,
+      "sha256": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00"
+    },
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/matched.py",
+      "local_name": "matched.py",
+      "git_blob": "0a5f0ff75803ee370bd45e5fa53f3913b5f05f46",
+      "ref": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+      "bytes": 9920,
+      "sha256": "02af30fb4f23bcf70b808b4635210bb17191a0e123b8e45a697144a9a71c9977"
+    },
+    {
+      "path": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "local_name": "zeros.csv",
+      "git_blob": "e84d0cee1f5726e6f874433b7e42bdbdcd1a92af",
+      "ref": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+      "bytes": 36465,
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+    },
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/dh_zeros_extended.json",
+      "local_name": "dh_zeros_extended.json",
+      "git_blob": "0539b85d8d1ff32b949ebbf80ac738d58d50806a",
+      "ref": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+      "bytes": 100142,
+      "sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36"
+    }
+  ],
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/html/2206.03682",
+      "observed_version": "v4",
+      "equations": [
+        "1.1",
+        "1.4",
+        "1.8",
+        "1.9"
+      ],
+      "theorem": "1.2"
+    },
+    {
+      "url": "https://arxiv.org/html/2209.04658",
+      "observed_version": "v3",
+      "equations": [
+        "1.2",
+        "1.10"
+      ]
+    },
+    {
+      "url": "https://arxiv.org/html/2106.07391",
+      "observed_version": "v3",
+      "section": "2.1 Lemma2.1"
+    }
+  ],
+  "primary_read_scope": "relevant definitions, kernel/derivative bridge, canonical-radius contract; no full-paper recertification"
+}

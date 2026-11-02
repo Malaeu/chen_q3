@@ -1,0 +1,9 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "rows": 442,
+  "dps": 85,
+  "value_jumps": 0,
+  "formula": "gprime=-c/2-integral_L^infinity j + pole_gprime + sum_(n<=expL)b(n)/sqrt(n)",
+  "finite_impedance_identified": false,
+  "section_passivity_proved": false
+}

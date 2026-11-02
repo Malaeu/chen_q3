@@ -73,3 +73,14 @@ This variable meets the finite discrimination goal on both tested meshes. Its fa
 The source form is unchanged; its faster analytic archimedean evaluation is checked against pinned source matrices and saved compressed energies, not just against full-matrix norms. The zero census is pinned numerical input. Midpoint Arb/FLINT arithmetic, LDL pivots and finite differences here are numerical diagnostics, not interval eigenvalue certificates; increasing working precision does not certify the input zeros.
 
 Raw CSVs and per-cell numeric records are losslessly archived to keep the commit compact. Run `python verify_packet.py`, then `python restore_data.py`, then `python verify_packet.py` to validate committed bytes and every restored member. DATA_MANIFEST.json pins member hashes. Recompute kernels with `PYTHONPATH=/path/to/python-flint python kernels/screw_kernels.py --input-root source_inputs`; python-flint 0.9.0 and mpmath are used. Subdirectory reports document derivative, coefficient and geometry reproduction. No source eigensystem or zero search is needed.
+
+
+## Independent passivity check
+
+See [passivity_check/RESULT.md](passivity_check/RESULT.md) for an independent
+442-cell native recomputation (all inertias and1768 overlapping kernels agree),
+source-preserving nested Schur tests, endpoint-aligned sparse/dense controls,
+exact DH support labels, and a precise unpaid passive-section lemma.
+Positive tested zeta extensions and negative DH extensions are finite diagnostics;
+no finite-end impedance identification or passive factorization is claimed.
+The original canonical packet and archives above are preserved.

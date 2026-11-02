@@ -1,0 +1,119 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "grids": [
+    {
+      "file": "curve_zeta.json",
+      "world": "zeta",
+      "precision": 85,
+      "nodes": 240,
+      "negative_innovations": 0,
+      "energy_decreases": 0,
+      "first_negative": null,
+      "final_negative_inertia": 0
+    },
+    {
+      "file": "curve_dh.json",
+      "world": "dh",
+      "precision": 85,
+      "nodes": 240,
+      "negative_innovations": 2,
+      "energy_decreases": 2,
+      "first_negative": {
+        "n": 236,
+        "L": "5.38929494128629144860385083838172928953384090870675005362789455870049363932",
+        "effective_m": "219.04888876794803896692344362908025209648360154267",
+        "negative_inertia": 1,
+        "Schur_pivot": "-0.0431784566393634247280799186525973971030086361880604042724523458327869455245",
+        "projection_energy": "0.510561963564283923271858812123708196157413429184508295699758438683969026667",
+        "increment": "-0.0868546829166118878374429944562474462754176433736187418817353676702795490357",
+        "target_residual": "0.0437806548118002223801583288196876461147760674156922669848601919255234317414",
+        "pivot_over_max_diagonal": "0.069798764651091738908252675710035921677745013867108"
+      },
+      "final_negative_inertia": 2
+    },
+    {
+      "file": "curve_refined_dh.json",
+      "world": "dh",
+      "precision": 85,
+      "nodes": 480,
+      "negative_innovations": 2,
+      "energy_decreases": 2,
+      "first_negative": {
+        "n": 341,
+        "L": "3.89353723512420632197862952518680018587084692768856306840489839940014476909",
+        "effective_m": "49.084202177898560738150786220333082163507104418194",
+        "negative_inertia": 1,
+        "Schur_pivot": "-0.00144190840404584084413448777956856760035078568796297917687066252163654738259",
+        "projection_energy": "0.421352688609506971637983926971167616325433356833424902547785421570102069275",
+        "increment": "-0.139654559993327667145479393081820019087070246586079239154422075210763983307",
+        "target_residual": "0.132989929766577174014033213972228225946756139766775660136833209039390389133",
+        "pivot_over_max_diagonal": "0.0023058823016643860994790555450504322052675153735607"
+      },
+      "final_negative_inertia": 2
+    },
+    {
+      "file": "aligned_zeta.json",
+      "world": "zeta",
+      "precision": "float64",
+      "nodes": 239,
+      "negative_innovations": 0,
+      "energy_decreases": 0,
+      "first_negative": null,
+      "final_negative_inertia": 0
+    },
+    {
+      "file": "aligned_dh.json",
+      "world": "dh",
+      "precision": "float64",
+      "nodes": 239,
+      "negative_innovations": 0,
+      "energy_decreases": 0,
+      "first_negative": null,
+      "final_negative_inertia": 0
+    },
+    {
+      "file": "aligned_mesh_zeta.json",
+      "world": "zeta",
+      "precision": "float64",
+      "nodes": 478,
+      "negative_innovations": 0,
+      "energy_decreases": 0,
+      "first_negative": null,
+      "final_negative_inertia": 0
+    },
+    {
+      "file": "aligned_mesh_dh.json",
+      "world": "dh",
+      "precision": "float64",
+      "nodes": 478,
+      "negative_innovations": 2,
+      "energy_decreases": 2,
+      "first_negative": {
+        "m": 0,
+        "prefix_dimension": 288,
+        "L": 4.521527111757143,
+        "negative_inertia": 1,
+        "Schur_pivot": -0.0004614679854975101,
+        "projection_energy": -20.463404337692403,
+        "increment": -21.469036969264423,
+        "target_residual": 21.017746956068525,
+        "b_m": 0.0,
+        "b_sign": 0,
+        "zeta_prime_power": false,
+        "atom_born": false,
+        "section_status": "NEGATIVE_SAMPLED_INNOVATION"
+      },
+      "final_negative_inertia": 2
+    }
+  ],
+  "DH_float_first_negative_margin": {
+    "prefix": 288,
+    "negative_min_eigenvalue_float": -3.713212350357097e-07,
+    "observed_source_quad_difference": 1.4654943925052066e-14,
+    "heuristic_margin_over_4n_observed_difference": 21994.452016803116,
+    "scope": "OBSERVED_REFINEMENT_MARGIN_NOT_AN_INTERVAL_ERROR_BOUND"
+  },
+  "sparse_DH_endpoints_false_negative_control": true,
+  "first_sampled_index_not_intrinsic": true,
+  "source_passive_section_proof": false
+}

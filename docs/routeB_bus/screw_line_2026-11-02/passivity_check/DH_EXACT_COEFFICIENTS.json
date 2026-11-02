@@ -1,0 +1,2853 @@
+{
+  "status": "EXACT_FINITE_DIRICHLET_LOG_SUPPORT",
+  "max_n": 300,
+  "tau_minimal_polynomial": "t**4 + 2*t**3 - 6*t**2 - 2*t + 1",
+  "tau_definition": "(sqrt(10-2sqrt(5))-2)/(sqrt(5)-1)",
+  "identity": "b_n = log(n)*[n^-s]log(D(s)); exact rational-polynomial Dirichlet convolution",
+  "zero_indices": [
+    5,
+    10,
+    15,
+    20,
+    22,
+    25,
+    30,
+    33,
+    35,
+    38,
+    40,
+    44,
+    45,
+    50,
+    55,
+    57,
+    58,
+    60,
+    62,
+    65,
+    66,
+    70,
+    75,
+    76,
+    77,
+    80,
+    82,
+    85,
+    87,
+    88,
+    90,
+    93,
+    95,
+    99,
+    100,
+    105,
+    110,
+    114,
+    115,
+    116,
+    118,
+    120,
+    122,
+    123,
+    124,
+    125,
+    130,
+    132,
+    133,
+    135,
+    140,
+    142,
+    143,
+    145,
+    150,
+    152,
+    154,
+    155,
+    158,
+    160,
+    164,
+    165,
+    170,
+    171,
+    174,
+    175,
+    176,
+    177,
+    178,
+    180,
+    183,
+    185,
+    186,
+    187,
+    190,
+    195,
+    198,
+    200,
+    202,
+    203,
+    205,
+    209,
+    210,
+    213,
+    215,
+    217,
+    218,
+    220,
+    225,
+    228,
+    230,
+    231,
+    232,
+    235,
+    236,
+    237,
+    240,
+    242,
+    244,
+    245,
+    246,
+    247,
+    248,
+    250,
+    253,
+    255,
+    260,
+    261,
+    262,
+    264,
+    265,
+    266,
+    267,
+    270,
+    275,
+    278,
+    279,
+    280,
+    284,
+    285,
+    286,
+    287,
+    290,
+    295,
+    297,
+    298,
+    300
+  ],
+  "rows": [
+    {
+      "n": 2,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 3,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 4,
+      "c_n_polynomial": "-t**2/2 - 1",
+      "coefficients_high_to_low": [
+        "-1/2",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 5,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 6,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 7,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 8,
+      "c_n_polynomial": "t**3/3",
+      "coefficients_high_to_low": [
+        "1/3",
+        "0",
+        "0",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 9,
+      "c_n_polynomial": "-t**2/2 - 1",
+      "coefficients_high_to_low": [
+        "-1/2",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 10,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 11,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 12,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 13,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 14,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 15,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 16,
+      "c_n_polynomial": "t**3/2 - 3*t**2/2 - t/2 + 3/4",
+      "coefficients_high_to_low": [
+        "1/2",
+        "-3/2",
+        "-1/2",
+        "3/4"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 17,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 18,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 19,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 20,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 21,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 22,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 23,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 24,
+      "c_n_polynomial": "-2*t**3 + 7*t**2 + 2*t - 1",
+      "coefficients_high_to_low": [
+        "-2",
+        "7",
+        "2",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 25,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 26,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 27,
+      "c_n_polynomial": "-t**3/3",
+      "coefficients_high_to_low": [
+        "-1/3",
+        "0",
+        "0",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 28,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 29,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 30,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 31,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 32,
+      "c_n_polynomial": "2*t**3 - 2*t**2 - t + 2/5",
+      "coefficients_high_to_low": [
+        "2",
+        "-2",
+        "-1",
+        "2/5"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 33,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 34,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 35,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 36,
+      "c_n_polynomial": "3*t**3 - 11*t**2 - 3*t + 1",
+      "coefficients_high_to_low": [
+        "3",
+        "-11",
+        "-3",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 37,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 38,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 39,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 40,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 41,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 42,
+      "c_n_polynomial": "-2*t**3 - 2*t",
+      "coefficients_high_to_low": [
+        "-2",
+        "0",
+        "-2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 43,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 44,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 45,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 46,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 47,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 48,
+      "c_n_polynomial": "-11*t**3 + 10*t**2 + 5*t - 2",
+      "coefficients_high_to_low": [
+        "-11",
+        "10",
+        "5",
+        "-2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 49,
+      "c_n_polynomial": "-t**2/2 - 1",
+      "coefficients_high_to_low": [
+        "-1/2",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 50,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 51,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 52,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 53,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 54,
+      "c_n_polynomial": "-2*t**3 + 7*t**2 + 2*t - 1",
+      "coefficients_high_to_low": [
+        "-2",
+        "7",
+        "2",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 55,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 56,
+      "c_n_polynomial": "2*t**3 - 7*t**2 - 2*t + 1",
+      "coefficients_high_to_low": [
+        "2",
+        "-7",
+        "-2",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 57,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 58,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 59,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 60,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 61,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 62,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 63,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 64,
+      "c_n_polynomial": "5*t**3 - 55*t**2/6 - 11*t/3 + 4/3",
+      "coefficients_high_to_low": [
+        "5",
+        "-55/6",
+        "-11/3",
+        "4/3"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 65,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 66,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 67,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 68,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 69,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 70,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 71,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 72,
+      "c_n_polynomial": "23*t**3 - 20*t**2 - 9*t + 4",
+      "coefficients_high_to_low": [
+        "23",
+        "-20",
+        "-9",
+        "4"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 73,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 74,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 75,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 76,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 77,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 78,
+      "c_n_polynomial": "2*t**3 + 2*t",
+      "coefficients_high_to_low": [
+        "2",
+        "0",
+        "2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 79,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 80,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 81,
+      "c_n_polynomial": "t**3/2 - 3*t**2/2 - t/2 + 3/4",
+      "coefficients_high_to_low": [
+        "1/2",
+        "-3/2",
+        "-1/2",
+        "3/4"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 82,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 83,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 84,
+      "c_n_polynomial": "-6*t**3 + 22*t**2 + 6*t - 2",
+      "coefficients_high_to_low": [
+        "-6",
+        "22",
+        "6",
+        "-2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 85,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 86,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 87,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 88,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 89,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 90,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 91,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 92,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 93,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 94,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 95,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 96,
+      "c_n_polynomial": "-32*t**3 + 61*t**2 + 24*t - 11",
+      "coefficients_high_to_low": [
+        "-32",
+        "61",
+        "24",
+        "-11"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 97,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 98,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 99,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 100,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 101,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 102,
+      "c_n_polynomial": "-2*t**3 - 2*t",
+      "coefficients_high_to_low": [
+        "-2",
+        "0",
+        "-2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 103,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 104,
+      "c_n_polynomial": "-2*t**3 + 7*t**2 + 2*t - 1",
+      "coefficients_high_to_low": [
+        "-2",
+        "7",
+        "2",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 105,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 106,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 107,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 108,
+      "c_n_polynomial": "-23*t**3 + 20*t**2 + 9*t - 4",
+      "coefficients_high_to_low": [
+        "-23",
+        "20",
+        "9",
+        "-4"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 109,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 110,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 111,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 112,
+      "c_n_polynomial": "11*t**3 - 10*t**2 - 5*t + 2",
+      "coefficients_high_to_low": [
+        "11",
+        "-10",
+        "-5",
+        "2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 113,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 114,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 115,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 116,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 117,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 118,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 119,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 120,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 121,
+      "c_n_polynomial": "1/2",
+      "coefficients_high_to_low": [
+        "1/2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 122,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 123,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 124,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 125,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 126,
+      "c_n_polynomial": "6*t**3 - 22*t**2 - 6*t + 2",
+      "coefficients_high_to_low": [
+        "6",
+        "-22",
+        "-6",
+        "2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 127,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 128,
+      "c_n_polynomial": "115*t**3/7 - 158*t**2/7 - 10*t + 30/7",
+      "coefficients_high_to_low": [
+        "115/7",
+        "-158/7",
+        "-10",
+        "30/7"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 129,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 130,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 131,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 132,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 133,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 134,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 135,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 136,
+      "c_n_polynomial": "2*t**3 - 7*t**2 - 2*t + 1",
+      "coefficients_high_to_low": [
+        "2",
+        "-7",
+        "-2",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 137,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 138,
+      "c_n_polynomial": "2*t**3 + 2*t",
+      "coefficients_high_to_low": [
+        "2",
+        "0",
+        "2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 139,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 140,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 141,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 142,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 143,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 144,
+      "c_n_polynomial": "83*t**3 - 163*t**2 - 63*t + 29",
+      "coefficients_high_to_low": [
+        "83",
+        "-163",
+        "-63",
+        "29"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 145,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 146,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 147,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 148,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 149,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 150,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 151,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 152,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 153,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 154,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 155,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 156,
+      "c_n_polynomial": "6*t**3 - 22*t**2 - 6*t + 2",
+      "coefficients_high_to_low": [
+        "6",
+        "-22",
+        "-6",
+        "2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 157,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 158,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 159,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 160,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 161,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 162,
+      "c_n_polynomial": "11*t**3 - 10*t**2 - 5*t + 2",
+      "coefficients_high_to_low": [
+        "11",
+        "-10",
+        "-5",
+        "2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 163,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 164,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 165,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 166,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 167,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 168,
+      "c_n_polynomial": "-46*t**3 + 40*t**2 + 18*t - 8",
+      "coefficients_high_to_low": [
+        "-46",
+        "40",
+        "18",
+        "-8"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 169,
+      "c_n_polynomial": "-t**2/2 - 1",
+      "coefficients_high_to_low": [
+        "-1/2",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 170,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 171,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 172,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 173,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 174,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 175,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 176,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 177,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 178,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 179,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 180,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 181,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 182,
+      "c_n_polynomial": "-2*t**3 - 2*t",
+      "coefficients_high_to_low": [
+        "-2",
+        "0",
+        "-2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 183,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 184,
+      "c_n_polynomial": "-2*t**3 + 7*t**2 + 2*t - 1",
+      "coefficients_high_to_low": [
+        "-2",
+        "7",
+        "2",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 185,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 186,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 187,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 188,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 189,
+      "c_n_polynomial": "-2*t**3 + 7*t**2 + 2*t - 1",
+      "coefficients_high_to_low": [
+        "-2",
+        "7",
+        "2",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 190,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 191,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 192,
+      "c_n_polynomial": "-125*t**3 + 168*t**2 + 75*t - 32",
+      "coefficients_high_to_low": [
+        "-125",
+        "168",
+        "75",
+        "-32"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 193,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 194,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 195,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 196,
+      "c_n_polynomial": "3*t**3 - 11*t**2 - 3*t + 1",
+      "coefficients_high_to_low": [
+        "3",
+        "-11",
+        "-3",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 197,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 198,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 199,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 200,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 201,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 202,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 203,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 204,
+      "c_n_polynomial": "-6*t**3 + 22*t**2 + 6*t - 2",
+      "coefficients_high_to_low": [
+        "-6",
+        "22",
+        "6",
+        "-2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 205,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 206,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 207,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 208,
+      "c_n_polynomial": "-11*t**3 + 10*t**2 + 5*t - 2",
+      "coefficients_high_to_low": [
+        "-11",
+        "10",
+        "5",
+        "-2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 209,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 210,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 211,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 212,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 213,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 214,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 215,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 216,
+      "c_n_polynomial": "-112*t**3 + 667*t**2/3 + 256*t/3 - 39",
+      "coefficients_high_to_low": [
+        "-112",
+        "667/3",
+        "256/3",
+        "-39"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 217,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 218,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 219,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 220,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 221,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 222,
+      "c_n_polynomial": "-2*t**3 - 2*t",
+      "coefficients_high_to_low": [
+        "-2",
+        "0",
+        "-2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 223,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 224,
+      "c_n_polynomial": "32*t**3 - 61*t**2 - 24*t + 11",
+      "coefficients_high_to_low": [
+        "32",
+        "-61",
+        "-24",
+        "11"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 225,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 226,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 227,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 228,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 229,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 230,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 231,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 232,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 233,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 234,
+      "c_n_polynomial": "-6*t**3 + 22*t**2 + 6*t - 2",
+      "coefficients_high_to_low": [
+        "-6",
+        "22",
+        "6",
+        "-2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 235,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 236,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 237,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 238,
+      "c_n_polynomial": "2*t**3 + 2*t",
+      "coefficients_high_to_low": [
+        "2",
+        "0",
+        "2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 239,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 240,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 241,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 242,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 243,
+      "c_n_polynomial": "-2*t**3 + 2*t**2 + t - 2/5",
+      "coefficients_high_to_low": [
+        "-2",
+        "2",
+        "1",
+        "-2/5"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 244,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 245,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 246,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 247,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 248,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 249,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 250,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 251,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 252,
+      "c_n_polynomial": "70*t**3 - 60*t**2 - 26*t + 12",
+      "coefficients_high_to_low": [
+        "70",
+        "-60",
+        "-26",
+        "12"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 253,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 254,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 255,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 256,
+      "c_n_polynomial": "97*t**3/2 - 155*t**2/2 - 65*t/2 + 117/8",
+      "coefficients_high_to_low": [
+        "97/2",
+        "-155/2",
+        "-65/2",
+        "117/8"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 257,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 258,
+      "c_n_polynomial": "2*t**3 + 2*t",
+      "coefficients_high_to_low": [
+        "2",
+        "0",
+        "2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 259,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 260,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 261,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 262,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 263,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 264,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 265,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 266,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 267,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 268,
+      "c_n_polynomial": "t**3 + t",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 269,
+      "c_n_polynomial": "-1",
+      "coefficients_high_to_low": [
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 270,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 271,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 272,
+      "c_n_polynomial": "11*t**3 - 10*t**2 - 5*t + 2",
+      "coefficients_high_to_low": [
+        "11",
+        "-10",
+        "-5",
+        "2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 273,
+      "c_n_polynomial": "2*t**3 + 2*t",
+      "coefficients_high_to_low": [
+        "2",
+        "0",
+        "2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 274,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 275,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 276,
+      "c_n_polynomial": "6*t**3 - 22*t**2 - 6*t + 2",
+      "coefficients_high_to_low": [
+        "6",
+        "-22",
+        "-6",
+        "2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 277,
+      "c_n_polynomial": "t",
+      "coefficients_high_to_low": [
+        "1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 278,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 279,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 280,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 281,
+      "c_n_polynomial": "1",
+      "coefficients_high_to_low": [
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 282,
+      "c_n_polynomial": "-2*t**3 - 2*t",
+      "coefficients_high_to_low": [
+        "-2",
+        "0",
+        "-2",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 283,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 284,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 285,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 286,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 287,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 288,
+      "c_n_polynomial": "397*t**3 - 524*t**2 - 235*t + 100",
+      "coefficients_high_to_low": [
+        "397",
+        "-524",
+        "-235",
+        "100"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 289,
+      "c_n_polynomial": "-t**2/2 - 1",
+      "coefficients_high_to_low": [
+        "-1/2",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 290,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 291,
+      "c_n_polynomial": "t**2 + 1",
+      "coefficients_high_to_low": [
+        "1",
+        "0",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 292,
+      "c_n_polynomial": "-t**3 - t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 293,
+      "c_n_polynomial": "-t",
+      "coefficients_high_to_low": [
+        "-1",
+        "0"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 294,
+      "c_n_polynomial": "-6*t**3 + 22*t**2 + 6*t - 2",
+      "coefficients_high_to_low": [
+        "-6",
+        "22",
+        "6",
+        "-2"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 295,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 296,
+      "c_n_polynomial": "2*t**3 - 7*t**2 - 2*t + 1",
+      "coefficients_high_to_low": [
+        "2",
+        "-7",
+        "-2",
+        "1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 297,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 298,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    },
+    {
+      "n": 299,
+      "c_n_polynomial": "-t**2 - 1",
+      "coefficients_high_to_low": [
+        "-1",
+        "0",
+        "-1"
+      ],
+      "exact_zero": false
+    },
+    {
+      "n": 300,
+      "c_n_polynomial": "0",
+      "coefficients_high_to_low": [
+        "0"
+      ],
+      "exact_zero": true
+    }
+  ],
+  "no_numerical_zero_threshold": true
+}

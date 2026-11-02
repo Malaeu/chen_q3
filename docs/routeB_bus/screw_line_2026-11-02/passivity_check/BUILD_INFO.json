@@ -1,0 +1,15 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "mpmath": "1.3.0",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "matplotlib": "3.10.8",
+  "mpmath_backend": "python",
+  "gmp": "6.3.0",
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "native": "GMP mpf floating arithmetic, 768/1024 bits, not outward-rounded intervals",
+  "source_quadrature": "8 panels, high-precision Newton Legendre256/320",
+  "interval_certification": false,
+  "remote_delivery": "GitHub connector; CLI proxy unavailable",
+  "source_audit": "bounded read-only source worker plus root; no provider-verified admission receipt"
+}

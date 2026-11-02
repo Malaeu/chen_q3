@@ -1,0 +1,31 @@
+{
+  "status": "INDEPENDENT_OVERLAP_PASS",
+  "canonical_commit": "05d2604ae7a1d8d96d59306d559ac6a72e070701",
+  "source_base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+  "canonical_method": "1024-bit Arb midpoint analytic-arch raw EAE* congruence and LU",
+  "independent_method": "220-dps quadrature plus 768-bit GMP reorthogonalized MGS and LDL",
+  "native_inertias_compared": 442,
+  "native_queries_compared": 1768,
+  "endpoint_cross_queries_compared": 1768,
+  "max_relative_K_error": "4.8725159647298884662203677467078520336364220213589774906131763500025587050032773256185328000349090076758720248e-65",
+  "max_relative_cross_error": "4.7759542622764989610541761943787981661233932690722490665074558676791007877713598727634287135707267998718234783e-65",
+  "worst_K_location": [
+    "dh",
+    103,
+    "fourier",
+    "2"
+  ],
+  "worst_cross_location": [
+    "dh",
+    44,
+    "endpoint",
+    "0"
+  ],
+  "foreign_CSV_sha256": {
+    "kernels.csv": "9bff6e9d7f2d76b0e6e390380602fdec244007eae6a5cda9270d38b2f57bb34c",
+    "inertia.csv": "a65cbc3173ec097308a49f151476614d64c9865c9c49437483284b76c1326ecb"
+  },
+  "archive_readback": "all30 parts and the two CSV members verified against canonical DATA_MANIFEST",
+  "physical_cosine_gauge_not_recomputed_here": true,
+  "scope": "independent numerical agreement, not an interval or RH certificate"
+}
