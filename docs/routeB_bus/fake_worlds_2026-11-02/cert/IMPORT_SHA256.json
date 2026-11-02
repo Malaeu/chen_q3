@@ -1,0 +1,91 @@
+{
+  "inbox_commit": "0dbf384877d6d20af0bdb4369f43f93422b79547",
+  "files": [
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_COUNTING_INERTIA_REVIEW_2026-11-02.md",
+      "git_blob": "90b168999f5bb008e399f147d7ae09be7d53be4c",
+      "sha256": "902b370f948cc54cb03827546c963a54e15ac66e0505b3f8859edda88a4de591",
+      "bytes": 35799
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_HADAMARD_CHECKS_2026-11-02.py",
+      "git_blob": "9317e74daff4cabd6b96d8a3c290fbef9170b893",
+      "sha256": "3ffdfe2712c5a7ced4f0fca08133e911357d94ba90dd567b2571d7d071736b26",
+      "bytes": 8436
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_INFINITE_WINDOW_CHECKS_2026-11-02.py",
+      "git_blob": "c39e5a3ad412cc623281b15b613a841ec87e06f8",
+      "sha256": "1f9f1e57a0fca8692cc4a2f7544e4ab069d475cd05cfb3bc360ad2068819a422",
+      "bytes": 2058
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_NEXT_PROOF_TARGET_AFTER_EFZ_2026-11-02.md",
+      "git_blob": "d9eaf6cd36c111b00bed9f3cec52e481288566de",
+      "sha256": "d30f4b3e942b88c19ee097f9000a5195463886982458f3d1637f98a408295441",
+      "bytes": 21095
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_PHASE_SPACE_V_CHECKS_2026-11-02.py",
+      "git_blob": "80189e17e28096b0b8c930cbe9d93ff0cde0c5a7",
+      "sha256": "f2a17caa8e21bd084036e804079db9def8ba6404504795e104aac3242e3e540c",
+      "bytes": 6868
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_PHASE_SPACE_V_RESULTS_2026-11-02.json",
+      "git_blob": "07bc2b78a0a80c54a99c7be2634490752a8df681",
+      "sha256": "0afd9257ad5136b0b439d1dcb93ca80f70973e51c2bde9c6ccac90546b19e704",
+      "bytes": 47320
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_CLUSTER_CAPACITY_RANK_AND_EDGE_2026-11-02.md",
+      "git_blob": "656f052f30a9e8ed497a7bd029300e62e2ba928c",
+      "sha256": "bea76440a3a3b3e57d2fb2c7853a2b87509dd9a7f61c517917d9caf794e444ea",
+      "bytes": 63409
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_DIVISOR_GRAM_PULLBACK_PREFLIGHT_2026-11-02.md",
+      "git_blob": "b780faf8aa71d25d4101009acd0fd5a7688e81e6",
+      "sha256": "cb8ce23a8981da52522e3c57c32bb996100e54efd54f303eb0b85091a14c354b",
+      "bytes": 45689
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_EULER_SIGN_CONE_DH_SCOPE_2026-11-02.md",
+      "git_blob": "b40a7b01de09cccad7803047a45ee16433f440d4",
+      "sha256": "dd843e60cc6dfe0a71dfb45cde9e5273c2bffdec272a856c3c615029b0a9a084",
+      "bytes": 32649
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_BEURLING_2026-11-02.md",
+      "git_blob": "a3912756efbfac0825d96f29f35c0e834d38f560",
+      "sha256": "bfc69c8f2a6949d16844a19326b0a1b037a58c5724ab010c2a92c144f8be4f3b",
+      "bytes": 57343
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_FIXED_KAPPA_INTERPOLATION_RESIDUAL_2026-11-02.md",
+      "git_blob": "98a6653eb459142a63b204cf598d92cc4797668e",
+      "sha256": "2a6b0ff510d721b34736902eb41ec35be86db830497bd45c593f3a88f2bf088a",
+      "bytes": 50077
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_PAIR_INDEX_INERTIA_REPAIR_2026-11-02.md",
+      "git_blob": "e4476ad9abf8562b33c7fb62e4c18a0e00f1ab9e",
+      "sha256": "46a0c95a7ebb528b37c44a45d52d42c6d164937c7f5fd101c4d3cf96fbba33db",
+      "bytes": 52599
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_PHASE_SPACE_V_2026-11-02.md",
+      "git_blob": "5a6ddc3b7de2bc46199bea691983e90a589f92eb",
+      "sha256": "4491558db031348336e78a81229fefe941de817240dc61636906fb7fa4dffb26",
+      "bytes": 34563
+    },
+    {
+      "path": "docs/routeB_bus/proshka/euler_sign_cone_checks.py",
+      "git_blob": "9d32ffbd453541012fb09520e6aa11fb4f18d7a6",
+      "sha256": "3e5e5475fdbbe7a9bb968001c583e56b99e4fe8d7b6c2db9204df94659ec8d89",
+      "bytes": 3586
+    }
+  ],
+  "ladder_sha256": "72a02753926f6939d7c8351eb6c08798fb5a3bdebdd951487f7965606d29b14c",
+  "ladder_existing_commit": "b7f710f3d0163055834812644219542e72c087d1"
+}
