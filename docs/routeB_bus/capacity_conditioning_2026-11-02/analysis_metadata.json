@@ -1,0 +1,145 @@
+{
+  "context_commit": "e724ae65ed39a8ba8b8f07c928d790ea9820342a",
+  "m_values": [
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    60,
+    80
+  ],
+  "unique_passing_sectors": 59,
+  "source_files": [
+    {
+      "path": "cell_m16_dps100_gl128.json",
+      "sha256": "b7f2123d4569629135330d27139db97540811ecac8f7310809173736249c7515"
+    },
+    {
+      "path": "cell_m17_dps100_gl128.json",
+      "sha256": "c9479610a88126c41fb36906d140a6415e6039e2b650aede9c234114be4b148c"
+    },
+    {
+      "path": "cell_m18_dps100_gl128.json",
+      "sha256": "82f03c13484ed2c75aeaa16458e353e1e72dc6d9e9eba9277397502362129637"
+    },
+    {
+      "path": "cell_m19_dps100_gl128.json",
+      "sha256": "d9136e3e12b50cb89ccb588acce3d00034694476557d16ba3acaca16c8241eeb"
+    },
+    {
+      "path": "cell_m20_dps100_gl128.json",
+      "sha256": "263f73cce63cf7fb4db550b428b908f882b760a34eacbaa8f10d71f87600ba05"
+    },
+    {
+      "path": "cell_m21_dps100_gl128.json",
+      "sha256": "e3ba14199d982cf095e8b88806f05f94afa1adc801c7a80ab3aea78b12bb2d89"
+    },
+    {
+      "path": "cell_m22_dps100_gl128.json",
+      "sha256": "f940382382a2a97f8aad874fda81173323b244cbfa3ebcb8f2cae64293152443"
+    },
+    {
+      "path": "cell_m23_dps100_gl128.json",
+      "sha256": "d809fed7654587b75760965ef01c92ef3039e97c74f1eb758e13c33ce12f6882"
+    },
+    {
+      "path": "cell_m24_dps100_gl128.json",
+      "sha256": "6e19979267bd7ccaef1d8742962b3a304ad3ba120d088b854f716ee77d8241f0"
+    },
+    {
+      "path": "cell_m25_dps100_gl128.json",
+      "sha256": "74e0b616d166a64d21a49bd668e5f4dadd8647bd1b0840faba48001c1b3659e3"
+    },
+    {
+      "path": "cell_m26_dps100_gl128.json",
+      "sha256": "f653487f255c4d2929ee15371c75184ff49f46dd0aa6d5e6415a94ce4ddaec0f"
+    },
+    {
+      "path": "cell_m27_dps100_gl128.json",
+      "sha256": "7cedaae913304be090ae96b58930910d5f4083fb0e33107e74dd54fdbcd34750"
+    },
+    {
+      "path": "cell_m28_dps100_gl128.json",
+      "sha256": "ed0b3dc7e72bc85d2d84ae5c5685834b3001878810c276dd6a123310666abf2d"
+    },
+    {
+      "path": "cell_m29_dps100_gl128.json",
+      "sha256": "7e9a82ecef1b48f5e72f8b71344ad4fc52bc9172e8a4ad171fb44b60db41b213"
+    },
+    {
+      "path": "cell_m30_dps100_gl128.json",
+      "sha256": "34ddfc00097fbaa1cbd8aea5970068df776c0b6fd4b4e8aca0c8c681134c6831"
+    },
+    {
+      "path": "cell_m31_dps100_gl128.json",
+      "sha256": "22a538875fa580b6dea0726b24bb75df130f50852dea7231e2f6113ab4ad37c1"
+    },
+    {
+      "path": "cell_m32_dps100_gl128.json",
+      "sha256": "c92335d1e915f48bc087341fd66530a935a9191bf6be6235431ed66a33789172"
+    },
+    {
+      "path": "cell_m33_dps100_gl128.json",
+      "sha256": "d43d430bd00204ba4db997d4413275796019e10721008a484cc92ee8faaec730"
+    },
+    {
+      "path": "cell_m34_dps100_gl128.json",
+      "sha256": "e86b98fc44562bac8363d1f2648d2b6fb7d30c370600f4016229ff99c19eeeb8"
+    },
+    {
+      "path": "cell_m35_dps100_gl128.json",
+      "sha256": "d571a592ce96b4e3f9ee588b5cedb54643c0fed7f2cb7fb7f273c2a77031be6c"
+    },
+    {
+      "path": "cell_m36_dps100_gl128.json",
+      "sha256": "b689e9ca83555a6736a30dd063a73a68eb532c2f93f30403a8824cf3d52f7936"
+    },
+    {
+      "path": "cell_m37_dps100_gl128.json",
+      "sha256": "8c66fe21462de2dc7a64e773ca1fade132c86838525ecde8262dd8516c59ebb4"
+    },
+    {
+      "path": "cell_m38_dps100_gl128.json",
+      "sha256": "8c0df83bafadabacb156aa6623f3f9aaf924a8e5c226663554b557783fe9d982"
+    },
+    {
+      "path": "cell_m39_dps100_gl128.json",
+      "sha256": "5610498af3e0e6f62b0d6df928687a50de4764df55605647a7ab60cefc1837c6"
+    },
+    {
+      "path": "cell_m40_dps100_gl128.json",
+      "sha256": "8711340564cb353ea226a96c886c69c0953cd15834d4df96965eb550aed1a521"
+    },
+    {
+      "path": "cell_m60_dps120_gl128.json",
+      "sha256": "7fd990d1d22e914ca7e3bf52199126fa1cb46e7ab8a8c66609418bcf028acce9"
+    },
+    {
+      "path": "cell_m80_dps120_gl128.json",
+      "sha256": "83dfded9450b8c70dc733571b59ca9f80a97afaebb28cb89d7661c026209b04c"
+    }
+  ],
+  "local_gap_convention": "nearest positive zero, includes neighbor outside cutoff; first positive zero usesnext; strict normalized gap<0.3",
+  "zero_table_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+}
