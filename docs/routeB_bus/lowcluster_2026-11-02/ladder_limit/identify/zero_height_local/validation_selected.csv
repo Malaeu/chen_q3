@@ -1,0 +1,214 @@
+m,i,k,reasons
+16,0,1,first zero
+16,0,7,first 1e-6 crossing and neighbor
+16,0,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,0,9,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,0,10,first 1e-2 crossing and neighbor
+16,0,130,largest rho in profile
+16,0,138,last zero
+16,1,1,first zero
+16,1,6,first 1e-6 crossing and neighbor
+16,1,7,first 1e-6 crossing and neighbor
+16,1,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,1,9,first 1e-2 crossing and neighbor
+16,1,10,first 1e-2 crossing and neighbor
+16,1,130,largest rho in profile
+16,1,138,last zero
+16,2,1,first zero
+16,2,6,first 1e-6 crossing and neighbor
+16,2,7,first 1e-6 crossing and neighbor
+16,2,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,2,9,first 1e-2 crossing and neighbor
+16,2,10,first 1e-2 crossing and neighbor
+16,2,130,largest rho in profile
+16,2,138,last zero
+16,3,1,first zero
+16,3,6,first 1e-6 crossing and neighbor
+16,3,7,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,3,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,3,9,first 1e-2 crossing and neighbor
+16,3,130,largest rho in profile
+16,3,138,last zero
+16,4,1,first zero
+16,4,6,first 1e-6 crossing and neighbor
+16,4,7,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,4,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,4,9,first 1e-2 crossing and neighbor
+16,4,137,largest rho in profile
+16,4,138,last zero
+16,5,1,first zero
+16,5,6,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,5,7,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,5,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,5,107,largest rho in profile
+16,5,138,last zero
+16,6,1,first zero
+16,6,5,first 1e-6 crossing and neighbor
+16,6,6,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,6,7,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,6,8,first 1e-2 crossing and neighbor
+16,6,85,largest rho in profile
+16,6,138,last zero
+16,7,1,first zero
+16,7,5,first 1e-6 crossing and neighbor
+16,7,6,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,7,7,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,7,8,first 1e-2 crossing and neighbor
+16,7,130,largest rho in profile
+16,7,138,last zero
+16,8,1,first zero
+16,8,2,first 1e-6 crossing and neighbor
+16,8,3,first 1e-6 crossing and neighbor
+16,8,4,first 1e-6 crossing and neighbor
+16,8,6,first 1e-2 crossing and neighbor
+16,8,7,first 1e-2 crossing and neighbor
+16,8,8,first 1e-2 crossing and neighbor
+16,8,130,largest rho in profile
+16,8,138,last zero
+16,14,1,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor; first zero
+16,14,2,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+16,14,130,largest rho in profile
+16,14,138,last zero
+20,0,1,first zero
+20,0,9,first 1e-6 crossing and neighbor
+20,0,10,first 1e-6 crossing and neighbor
+20,0,11,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,0,12,first 1e-2 crossing and neighbor
+20,0,13,first 1e-2 crossing and neighbor
+20,0,22,largest rho in profile
+20,0,138,last zero
+20,1,1,first zero
+20,1,8,first 1e-6 crossing and neighbor
+20,1,9,first 1e-6 crossing and neighbor
+20,1,10,first 1e-6 crossing and neighbor
+20,1,11,first 1e-2 crossing and neighbor
+20,1,12,first 1e-2 crossing and neighbor
+20,1,13,first 1e-2 crossing and neighbor
+20,1,36,largest rho in profile
+20,1,138,last zero
+20,2,1,first zero
+20,2,8,first 1e-6 crossing and neighbor
+20,2,9,first 1e-6 crossing and neighbor
+20,2,10,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,2,11,first 1e-2 crossing and neighbor
+20,2,12,first 1e-2 crossing and neighbor
+20,2,72,largest rho in profile
+20,2,138,last zero
+20,3,1,first zero
+20,3,8,first 1e-6 crossing and neighbor
+20,3,9,first 1e-6 crossing and neighbor
+20,3,10,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,3,11,first 1e-2 crossing and neighbor
+20,3,12,first 1e-2 crossing and neighbor
+20,3,44,largest rho in profile
+20,3,138,last zero
+20,4,1,first zero
+20,4,8,first 1e-6 crossing and neighbor
+20,4,9,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,4,10,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,4,11,first 1e-2 crossing and neighbor
+20,4,36,largest rho in profile
+20,4,138,last zero
+20,5,1,first zero
+20,5,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,5,9,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,5,10,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,5,24,largest rho in profile
+20,5,138,last zero
+20,6,1,first zero
+20,6,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,6,9,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,6,10,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,6,40,largest rho in profile
+20,6,138,last zero
+20,7,1,first zero
+20,7,7,first 1e-6 crossing and neighbor
+20,7,8,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,7,9,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,7,10,first 1e-2 crossing and neighbor
+20,7,44,largest rho in profile
+20,7,138,last zero
+20,10,1,first zero
+20,10,3,first 1e-6 crossing and neighbor
+20,10,4,first 1e-6 crossing and neighbor
+20,10,5,first 1e-6 crossing and neighbor
+20,10,8,first 1e-2 crossing and neighbor
+20,10,9,first 1e-2 crossing and neighbor
+20,10,10,first 1e-2 crossing and neighbor
+20,10,53,largest rho in profile
+20,10,138,last zero
+20,18,1,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor; first zero
+20,18,2,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+20,18,44,largest rho in profile
+20,18,138,last zero
+24,0,1,first zero
+24,0,12,first 1e-6 crossing and neighbor
+24,0,13,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,0,14,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,0,15,first 1e-2 crossing and neighbor
+24,0,42,largest rho in profile
+24,0,138,last zero
+24,1,1,first zero
+24,1,11,first 1e-6 crossing and neighbor
+24,1,12,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,1,13,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,1,14,first 1e-2 crossing and neighbor
+24,1,134,largest rho in profile
+24,1,138,last zero
+24,2,1,first zero
+24,2,11,first 1e-6 crossing and neighbor
+24,2,12,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,2,13,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,2,14,first 1e-2 crossing and neighbor
+24,2,71,largest rho in profile
+24,2,138,last zero
+24,3,1,first zero
+24,3,11,first 1e-6 crossing and neighbor
+24,3,12,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,3,13,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,3,14,first 1e-2 crossing and neighbor
+24,3,120,largest rho in profile
+24,3,138,last zero
+24,4,1,first zero
+24,4,10,first 1e-6 crossing and neighbor
+24,4,11,first 1e-6 crossing and neighbor
+24,4,12,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,4,13,first 1e-2 crossing and neighbor
+24,4,14,first 1e-2 crossing and neighbor
+24,4,136,largest rho in profile
+24,4,138,last zero
+24,5,1,first zero
+24,5,10,first 1e-6 crossing and neighbor
+24,5,11,first 1e-6 crossing and neighbor
+24,5,12,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,5,13,first 1e-2 crossing and neighbor
+24,5,14,first 1e-2 crossing and neighbor
+24,5,136,largest rho in profile
+24,5,138,last zero
+24,6,1,first zero
+24,6,10,first 1e-6 crossing and neighbor
+24,6,11,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,6,12,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,6,13,first 1e-2 crossing and neighbor
+24,6,136,largest rho in profile
+24,6,138,last zero
+24,7,1,first zero
+24,7,9,first 1e-6 crossing and neighbor
+24,7,10,first 1e-6 crossing and neighbor
+24,7,11,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,7,12,first 1e-2 crossing and neighbor
+24,7,13,first 1e-2 crossing and neighbor
+24,7,136,largest rho in profile
+24,7,138,last zero
+24,12,1,first zero
+24,12,7,first 1e-6 crossing and neighbor
+24,12,8,first 1e-6 crossing and neighbor
+24,12,9,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,12,10,first 1e-2 crossing and neighbor
+24,12,11,first 1e-2 crossing and neighbor
+24,12,71,largest rho in profile
+24,12,138,last zero
+24,22,1,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor; first zero
+24,22,2,first 1e-2 crossing and neighbor; first 1e-6 crossing and neighbor
+24,22,42,largest rho in profile
+24,22,138,last zero
