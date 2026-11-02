@@ -1,0 +1,38 @@
+{
+  "source_commit": "167dff63a632f170fed2d01d88af61268ad0af7f",
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "inputs": [
+    {
+      "path": "core_m16_dps100_gl128.json",
+      "sha256": "6a9993e00ffa8fc87e803dded42c3f5fb8508154ebdf5a0baecb8ed7c21bd6f2"
+    },
+    {
+      "path": "core_m20_dps100_gl128.json",
+      "sha256": "80ef7c4fa126860fd1d6c0941f6a7ac4c0cbe23225c8572710e6fdd8e4e196b7"
+    },
+    {
+      "path": "core_m24_dps100_gl128.json",
+      "sha256": "c4b960861f6f7f6efb8420f21a73c78e068196eda6d83a599be656fd02e88ee4"
+    },
+    {
+      "path": "core_m24_dps140_gl160.json",
+      "sha256": "54d930090cd1c1666328347fdc826c7c1bed697fa7fa0f94a24477e9c9b0f4cb"
+    },
+    {
+      "path": "ladder_limit/identify/identify.py",
+      "sha256": "d19f5d4b6df8e1864e9a1f49797184b6168ef245c73d2a605ed63ac803e34d5b"
+    },
+    {
+      "path": "ladder_limit/identify/fourier_maxima.csv",
+      "sha256": "593dbce70c396f73f6ae09b4d181c24b0893ae849c5aed59dc53fa884ec86786"
+    },
+    {
+      "path": "ladder_limit/shape.py",
+      "sha256": "2d389f2eeed7ca61efa43a6fef36636d1a23d5a3f66eeda0c36b16efe0e579bb"
+    },
+    {
+      "path": "ladder_limit/shape_results.json",
+      "sha256": "af09ceb4c5b9428bca3377b4197d2ef17a5add3cff03c9e84a43437ac6dcba9e"
+    }
+  ]
+}

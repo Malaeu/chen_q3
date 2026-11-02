@@ -1,0 +1,14 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "evaluation_dps": 100,
+  "validation_dps": 140,
+  "zero_count": 138,
+  "first_zero_above_300": "301.64932546219418362347010020841798208110561009352329461729227406968079227042320860904220791423",
+  "seconds": 29.87664750100521,
+  "limitations": [
+    "Finite-vector scan only; no limiting-function conclusion.",
+    "First exceedance is not persistent exceedance.",
+    "Stationary-point grid search is diagnostic, not interval certification; explicit tail bound excludes larger peaks beyond80.",
+    "Three m values do not establish a height law, especially with censoring."
+  ]
+}
