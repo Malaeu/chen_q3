@@ -1,0 +1,8 @@
+{
+  "center": {
+    "real": 85.6993484853776,
+    "imag": 0.3085171824566374
+  },
+  "status": "finite float W, 40dps target evaluations at float coordinates; center zero residual limited by coordinate rounding",
+  "gauge": "constant anchor i/4; theta0 andpi; not an optimized arbitrary analytic gauge"
+}

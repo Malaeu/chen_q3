@@ -1,0 +1,47 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "world": "dh",
+  "h": ".025",
+  "dps_low": 80,
+  "dps_high": 120,
+  "max_g_difference": "2.127052458871025175390940045227760174172e-80",
+  "matrix_operator_difference_bound_from_entrywise": "1.531477770387138126281476832563987325404e-77",
+  "all_prefix_inertias_equal": true,
+  "max_schur_absolute_difference": "3.688384705571114023111803005262523921042e-76",
+  "max_schur_relative_difference": "9.9477361564514597856294789178223149746e-76",
+  "spectral_checks": [
+    {
+      "prefix": 217,
+      "t": "5.425",
+      "float_min": 0.0002558001270329333,
+      "float_max": 46.53267560155709,
+      "orthogonality_Frobenius": "2.83673300659566149948939019612e-14",
+      "eigen_residual_Frobenius": "6.03208358680536852196476755202e-14",
+      "all_eigenvalue_absolute_error_diagnostic_bound": "1.3984589166006480518797388897e-12",
+      "minimum_absolute_float_eigenvalue": 0.0002558001270329333,
+      "all_signs_resolved": true
+    },
+    {
+      "prefix": 218,
+      "t": "5.45",
+      "float_min": -0.00012247979486576865,
+      "float_max": 46.959809887360024,
+      "orthogonality_Frobenius": "2.73306607593111792657192362672e-14",
+      "eigen_residual_Frobenius": "5.46257066187783455485089253816e-14",
+      "all_eigenvalue_absolute_error_diagnostic_bound": "1.35545377095833238086952738249e-12",
+      "minimum_absolute_float_eigenvalue": 0.00012247979486576865,
+      "all_signs_resolved": true
+    },
+    {
+      "prefix": 240,
+      "t": "6.0",
+      "float_min": -0.006935457914905095,
+      "float_max": 52.74209885024487,
+      "orthogonality_Frobenius": "3.021844923690083004108214302e-14",
+      "eigen_residual_Frobenius": "5.76643128260168739693635239451e-14",
+      "all_eigenvalue_absolute_error_diagnostic_bound": "1.67280405818670724635894991758e-12",
+      "minimum_absolute_float_eigenvalue": 0.005976157227059373,
+      "all_signs_resolved": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source_ref": "ab8d123",
+  "source_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_SCREW_LINE_INVARIANT_v1_2026-11-02.md",
+  "connector_git_blob": "b56a16a0540ed3f81858c113bc48de68c909b8c8",
+  "local_git_blob": "b56a16a0540ed3f81858c113bc48de68c909b8c8",
+  "local_source_sha256": "2a2132da991839a38a7fcf08512d4dd743ee52704fd3da4bb3f69b53c96ad2d2",
+  "source_url": "https://github.com/Malaeu/chen_q3/blob/ab8d123/docs/routeB_bus/proshka/PROSHKA_VERDICT_SCREW_LINE_INVARIANT_v1_2026-11-02.md",
+  "DH_recurrence_source": "docs/routeB_bus/fake_worlds_2026-11-02/dh_matrix.py",
+  "DH_source_sha256": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00",
+  "git_blob_verified": true
+}

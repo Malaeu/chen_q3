@@ -1,0 +1,8 @@
+{
+  "status": "NUMERICAL_CHECK_OF_EXACT_ABSTRACT_FLAT_METRIC_IDENTITY",
+  "dps": 80,
+  "a": "1.5",
+  "maximum_formula_error": "1.8858456986657535056362585112639285671120505315963e-80",
+  "maximum_analytic_lattice_root_residual": "1.1898194667831582623937153272995936825684991086059e-79",
+  "scope": "T=I baseline, not a zeta/DH source or continuum limit claim"
+}

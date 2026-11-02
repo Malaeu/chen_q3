@@ -1,0 +1,82 @@
+{
+  "status": "SOURCE_AND_DEFINITION_AUDIT_NOT_A_LIMIT_PROOF",
+  "date": "2026-11-02",
+  "primary": [
+    {
+      "version": "v1",
+      "html": "https://arxiv.org/html/2606.09096v1",
+      "pdf": "https://arxiv.org/pdf/2606.09096v1",
+      "corollary_html_lines": [
+        214,
+        218
+      ],
+      "corollary_pdf_page": 6,
+      "corollary_pdf_text_lines": [
+        465,
+        473
+      ],
+      "target": "z^2 xi(s)/xi_prime_s(s)",
+      "domain": "C (historical ordinary compact-uniform wording)"
+    },
+    {
+      "version": "v2",
+      "html": "https://arxiv.org/html/2606.09096v2",
+      "corollary_html_lines": [
+        219,
+        223
+      ],
+      "target": "xi(s)/(xi(s)+xi_prime_s(s))",
+      "domain": "C (historical wording)"
+    },
+    {
+      "version": "v3",
+      "html": "https://arxiv.org/html/2606.09096v3",
+      "pdf": "https://arxiv.org/pdf/2606.09096v3",
+      "theorem_html_lines": [
+        203,
+        208
+      ],
+      "metric_html_lines": [
+        196,
+        202
+      ],
+      "resolvent_html_lines": [
+        717,
+        733
+      ],
+      "generalized_metric_html_lines": [
+        1081,
+        1091
+      ],
+      "corollary_html_lines": [
+        220,
+        224
+      ],
+      "corollary_pdf_page": 7,
+      "corollary_pdf_text_lines": [
+        472,
+        479
+      ],
+      "target": "xi(s)/(xi(s)+xi_prime_s(s))",
+      "domain": "Im(z)>0; phi holomorphic there"
+    }
+  ],
+  "repository_refs": [
+    "1c91c4c86ef6987782c08c84e22707d1b7324646",
+    "fcb70c5dd82a434dd77f4ea5c001cb6715a917d5"
+  ],
+  "summary_found": false,
+  "K6_exact_source_found": false,
+  "direct_404_paths": [
+    "claude/SUZUKI_EXTRACTION_2026-11-02.md",
+    "docs/claude/SUZUKI_EXTRACTION_2026-11-02.md",
+    "docs/routeB_bus/claude/SUZUKI_EXTRACTION_2026-11-02.md",
+    "q3.lean.aristotle/ACTIVE/requests/routeB_lamport_rh_closure/claude/SUZUKI_EXTRACTION_2026-11-02.md"
+  ],
+  "bounded_search": [
+    "root listing66 entries atfcb70c5",
+    "routeB_bus listing807 entries atfcb70c5",
+    "proshka subtree934 entries atfcb70c5",
+    "default-branch GitHubcode search SUZUKI_EXTRACTION returnednohits"
+  ]
+}

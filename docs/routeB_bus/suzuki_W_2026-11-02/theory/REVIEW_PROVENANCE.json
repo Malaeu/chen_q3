@@ -1,0 +1,53 @@
+{
+  "status": "FINAL_FINITE_IMPLEMENTATION_AND_SCOPE_REVIEW_PASS",
+  "files": [
+    {
+      "path": "W/prototype.py",
+      "sha256": "b68cc41885954395f2bf4e6009e62eb5fd96a12e07c3a9c750268ba019eba56b"
+    },
+    {
+      "path": "W/diagnostics.py",
+      "sha256": "7d002c9ae0d97e54c7506814362b0199674ab580c991f164908f69edad18cacc"
+    },
+    {
+      "path": "W/circle.py",
+      "sha256": "1d8d3865e3a0f2ccca8c77dec84fd7b8e11789e79e0e4a0e222e0cb11596a513"
+    },
+    {
+      "path": "W/weak.py",
+      "sha256": "b1d918e266bc922ea51666cc2265f02bb3c9740c45ecb798c82dd341e7359c39"
+    },
+    {
+      "path": "W/RESULT.md",
+      "sha256": "addb6296db5aabd7483c529222d9531631c58b644485b179ccca2917d4e34733"
+    },
+    {
+      "path": "W/validation_audit.py",
+      "sha256": "274259c5b2cea954ad975c73456981958abcf710accb98415d3d2d2da63bda0c"
+    },
+    {
+      "path": "W/validation_audit_m20.json",
+      "sha256": "df12c2f997ba5ccbc14aece50b21d92c377a936ed2477458ec31b98dd0389833"
+    },
+    {
+      "path": "theory/xi_prime_zeros.py",
+      "sha256": "908d4dc5cde80ee0428729f76c528d3c03ba279e267de650f19781f46050cb45"
+    },
+    {
+      "path": "theory/xi_prime_zeros.csv",
+      "sha256": "a050e497e583714881c705c3e8836dc51a25c9608ad22b03ec11d0b9bfebef55"
+    },
+    {
+      "path": "root_comparison.py",
+      "sha256": "8c0ed2efaf44eeefaea44dace120745a7e6a1dd40aa463c6b8681d2bc4648e63"
+    }
+  ],
+  "independent_tests": [
+    "physical m20 overlap-source/pole/load quadrature",
+    "80dps m20 both-parity source solves",
+    "saved442finitecell norm/gap consistency",
+    "exactT=I flat-control identity/lattice",
+    "50dps xi_prime_s bracket references"
+  ],
+  "scope": "No continuum admissibility, interval certification, complete zero census or existential-gauge limit proved."
+}

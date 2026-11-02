@@ -1,0 +1,33 @@
+{
+  "status": "LOSSLESS_PUBLICATION_ARCHIVE",
+  "archive_sha256": "58fc05d4e3d56075820397d2318d78dc1c405465e05e0c34e7f201105b4399b8",
+  "files": {
+    "W/real_W_roots.csv": "ae9d3369b71310d786c7bcafa8153c0f213ed932d688dac62d82aedbe54b69d2",
+    "prediction/dh_h.025_dps120.json": "ce8f859ad13b2f70b9cb4cb215913bb4af93c9cf780df6c9e1a4a6658b9ae556",
+    "prediction/dh_h.025_dps80.json": "b31dc952421598479ade821bff4f325e6aaa1664cf9eb84c58cac3325285668a",
+    "prediction/plant_h.025_dps80.json": "5156288adf53a04806c36c6180b650042a97b6366d6f30862653355d5d821845",
+    "prediction/zeta_h.025_dps80.json": "2c53f624974998fe5f5c3627986e87fdf1f3a04d64ea63ddf788fd5ae6af7b22"
+  },
+  "parts": [
+    {
+      "file": "data.tar.xz.part00",
+      "sha256": "52e6b1ac35230c9f513e70d887cf3b6cee5a29a97902ed530926a40ea3f680bf",
+      "bytes": 400000
+    },
+    {
+      "file": "data.tar.xz.part01",
+      "sha256": "3fc93817fcce08a61a1c357eb852d91f5ac29f289050d2a3a135d08ee107c16c",
+      "bytes": 400000
+    },
+    {
+      "file": "data.tar.xz.part02",
+      "sha256": "80f8a1fbcfd171c5613f65171f612cef9d5f602a409c9aab865dcab80435cb55",
+      "bytes": 400000
+    },
+    {
+      "file": "data.tar.xz.part03",
+      "sha256": "f4a8d10c38b49f9c3910600b90cf5d21ace2861cba8be48ab7974c2aa8e8526d",
+      "bytes": 156092
+    }
+  ]
+}

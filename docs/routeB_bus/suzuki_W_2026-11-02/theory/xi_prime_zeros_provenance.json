@@ -1,0 +1,12 @@
+{
+  "status": "NUMERICAL_CRITICAL_LINE_BRACKET_ROOTS_NOT_COMPLETENESS",
+  "dps": 50,
+  "max_height": 220,
+  "positive_roots": 90,
+  "includes_origin": true,
+  "zero_table_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+  "code_sha256": "908d4dc5cde80ee0428729f76c528d3c03ba279e267de650f19781f46050cb45",
+  "definition": "xi_prime_s(1/2\u2212it)=0 iff Xi_prime_t(t)=0; positive amplitude factored out using HardyZ",
+  "scope": "One numerical derivative root per consecutive known positive zeta-zero bracket, through220. Does not exclude additional roots within a bracket, roots outside these brackets, multiplicities, or off-critical-line xi_prime roots.",
+  "seconds": 37.090875156995025
+}
