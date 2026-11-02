@@ -1,0 +1,14 @@
+[
+  {
+    "m": 16,
+    "prefixes": 50,
+    "minimum_sorted_eigenvalue_increment": "-4.934617149933022757293672839758260493525e-181",
+    "all_best_carrier_indices_preserved": true
+  },
+  {
+    "m": 24,
+    "prefixes": 50,
+    "minimum_sorted_eigenvalue_increment": "-7.227170245466501969267268334537627902051e-181",
+    "all_best_carrier_indices_preserved": true
+  }
+]
