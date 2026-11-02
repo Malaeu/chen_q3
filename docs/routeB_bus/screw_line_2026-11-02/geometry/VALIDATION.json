@@ -1,0 +1,107 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "integral_source_checks": [
+    {
+      "world": "zeta",
+      "length": "0.0078125",
+      "absolute_difference": "8.48310954467313463363276852257870243343214449282545881370601e-102"
+    },
+    {
+      "world": "zeta",
+      "length": "2.995732273553990993435223576142540775677",
+      "absolute_difference": "0.0"
+    },
+    {
+      "world": "zeta",
+      "length": "4.007333185232470918662702911191316939347",
+      "absolute_difference": "0.0"
+    },
+    {
+      "world": "zeta",
+      "length": "4.7874917427820459942477009345232430484",
+      "absolute_difference": "0.0"
+    },
+    {
+      "world": "zeta",
+      "length": "5.480638923341991303664933055981419616475",
+      "absolute_difference": "0.0"
+    },
+    {
+      "world": "dh",
+      "length": "0.0078125",
+      "absolute_difference": "2.45563697345801265710422246706225596757246287950210649870437e-102"
+    },
+    {
+      "world": "dh",
+      "length": "2.995732273553990993435223576142540775677",
+      "absolute_difference": "7.14367119551421863884864717690838099657443746764249163259454e-102"
+    },
+    {
+      "world": "dh",
+      "length": "4.007333185232470918662702911191316939347",
+      "absolute_difference": "7.14367119551421863884864717690838099657443746764249163259454e-102"
+    },
+    {
+      "world": "dh",
+      "length": "4.7874917427820459942477009345232430484",
+      "absolute_difference": "0.0"
+    },
+    {
+      "world": "dh",
+      "length": "5.480638923341991303664933055981419616475",
+      "absolute_difference": "0.0"
+    }
+  ],
+  "precision_checks": [
+    {
+      "world": "zeta",
+      "mesh": 64,
+      "rows": 350,
+      "maximum_relative_change": "0.0",
+      "all_signs_match": true
+    },
+    {
+      "world": "zeta",
+      "mesh": 128,
+      "rows": 701,
+      "maximum_relative_change": "0.0",
+      "all_signs_match": true
+    },
+    {
+      "world": "dh",
+      "mesh": 64,
+      "rows": 350,
+      "maximum_relative_change": "0.0",
+      "all_signs_match": true
+    },
+    {
+      "world": "dh",
+      "mesh": 128,
+      "rows": 701,
+      "maximum_relative_change": "0.0",
+      "all_signs_match": true
+    }
+  ],
+  "negative_witness_checks": [
+    {
+      "mesh": 64,
+      "increments": 275,
+      "length": "4.296875",
+      "direct_quadratic": "-0.01572807006051780174564412221126071437578075391544703172307822294294782",
+      "normalized_rayleigh": "-0.000007946530615436575058554719198368623271673464631214781871112399851277895",
+      "recursion_innovation": "-0.01572807006051780174564412221126071437578075391544703172307822294294782",
+      "relative_witness_replay_error": "2.97073070648957549798236142842673701774674879039850861297969e-70",
+      "negative": true
+    },
+    {
+      "mesh": 128,
+      "increments": 484,
+      "length": "3.78125",
+      "direct_quadratic": "-0.01082218605654178070581182945349051187154371819276289002280510089371596",
+      "normalized_rayleigh": "-0.00001925290742665024130121186171360087878713300810840178044829109125349989",
+      "recursion_innovation": "-0.01082218605654178070581182945349051187154371819276289002280510089371596",
+      "relative_witness_replay_error": "3.49337282809496265108119854422550203533961796036824722810113e-70",
+      "negative": true
+    }
+  ]
+}

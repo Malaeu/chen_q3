@@ -1,0 +1,11 @@
+{
+  "status": "EXPLORATORY_PREREGISTERED_BEFORE_THIS_ALTERNATIVE_NUMERICS",
+  "task": "SCREW_LINE_v1",
+  "scope": "DIAGNOSTIC_NEVER_A_PROOF",
+  "variable": "Levinson innovation variance of nested equally spaced increments of the actual source g=-k[chi]/2",
+  "meshes": [64,128],
+  "maximum_length": "log(240)",
+  "precision_digits": [100,160],
+  "criteria": "zeta innovations positive and nonincreasing; DH loses positivity, with onset reported separately from the nonnested finite A_m complement onset",
+  "caveat": "Monotonicity is a general Schur-complement property of positive stationary increment kernels, not a new RH argument. No equality of this variable with a Weyl radius or original K is asserted. Mesh refinement and precision checks are numerical."
+}

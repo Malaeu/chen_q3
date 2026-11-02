@@ -1,0 +1,210 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "requested_m": [
+    20,
+    240
+  ],
+  "integers_per_world": 221,
+  "worlds": [
+    "zeta",
+    "dh"
+  ],
+  "cells": 442,
+  "endpoint_rows": 442,
+  "nonreal_point_rows": 2652,
+  "all_kernel_rows": 3094,
+  "source_full_eigenproblems": 0,
+  "new_radius_definition": "formal inverse proxy only; no Weyl-circle normalization identified",
+  "first_complement_indefinite": {
+    "zeta": null,
+    "dh": 52
+  },
+  "S1_probability": 0.6,
+  "S1_first_DH_complement_in_50_56": true,
+  "scalar_sign_stats": [
+    {
+      "world": "zeta",
+      "gauge": "endpoint",
+      "eta": "0",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "zeta",
+      "gauge": "physical",
+      "eta": "0.5",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "zeta",
+      "gauge": "physical",
+      "eta": "1",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "zeta",
+      "gauge": "physical",
+      "eta": "2",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "zeta",
+      "gauge": "fourier",
+      "eta": "0.5",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "zeta",
+      "gauge": "fourier",
+      "eta": "1",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "zeta",
+      "gauge": "fourier",
+      "eta": "2",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "endpoint",
+      "eta": "0",
+      "cells": 221,
+      "negative_K_count": 0,
+      "negative_K_m": [],
+      "first_negative_K": null,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "physical",
+      "eta": "0.5",
+      "cells": 221,
+      "negative_K_count": 5,
+      "negative_K_m": [
+        52,
+        54,
+        79,
+        135,
+        192
+      ],
+      "first_negative_K": 52,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "physical",
+      "eta": "1",
+      "cells": 221,
+      "negative_K_count": 5,
+      "negative_K_m": [
+        52,
+        54,
+        79,
+        128,
+        135
+      ],
+      "first_negative_K": 52,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "physical",
+      "eta": "2",
+      "cells": 221,
+      "negative_K_count": 4,
+      "negative_K_m": [
+        52,
+        54,
+        79,
+        128
+      ],
+      "first_negative_K": 52,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "fourier",
+      "eta": "0.5",
+      "cells": 221,
+      "negative_K_count": 1,
+      "negative_K_m": [
+        52
+      ],
+      "first_negative_K": 52,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "fourier",
+      "eta": "1",
+      "cells": 221,
+      "negative_K_count": 1,
+      "negative_K_m": [
+        52
+      ],
+      "first_negative_K": 52,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    },
+    {
+      "world": "dh",
+      "gauge": "fourier",
+      "eta": "2",
+      "cells": 221,
+      "negative_K_count": 1,
+      "negative_K_m": [
+        52
+      ],
+      "first_negative_K": 52,
+      "zero_K_count": 0,
+      "negative_r_proxy_squared_count": 0
+    }
+  ],
+  "max_solve_backward_relative_residual": "5.1694870271770825847131644006503686197886736931634991121839944846e-309",
+  "max_kernel_symmetry_relative": "1.5588507053843206836586629053577018419222509351829088176201381617e-139",
+  "source_validation_flags": {
+    "pass_all_source": true,
+    "pass_all_QR_anchors": true,
+    "pass_all_precision": true
+  }
+}

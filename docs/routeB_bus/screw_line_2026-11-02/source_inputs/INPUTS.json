@@ -1,0 +1,30 @@
+[
+  {
+    "file": "zeta_zeros_capacity.csv",
+    "base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+    "canonical_path": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+    "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+    "git_blob_sha": "e84d0cee1f5726e6f874433b7e42bdbdcd1a92af"
+  },
+  {
+    "file": "edge_law/dh/dh_zeros_extended.json",
+    "base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+    "canonical_path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/dh_zeros_extended.json",
+    "sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+    "git_blob_sha": "0539b85d8d1ff32b949ebbf80ac738d58d50806a"
+  },
+  {
+    "file": "dh_matrix.py",
+    "base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+    "canonical_path": "docs/routeB_bus/fake_worlds_2026-11-02/dh_matrix.py",
+    "sha256": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00",
+    "git_blob_sha": "9f08128be988c06447169468b680baa12040087f"
+  },
+  {
+    "file": "zeta_edge.py",
+    "base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+    "canonical_path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/zeta/edge.py",
+    "sha256": "4e2f1aa5c62558267805e3d0813d4ef2094d25a1d6d5b4693183992eed98646c",
+    "git_blob_sha": "5831c11a69b6aa99ff96cb22e3c892248be9d141"
+  }
+]

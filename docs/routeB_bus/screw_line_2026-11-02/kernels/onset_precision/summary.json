@@ -1,0 +1,133 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "cells": 4,
+  "source_matrices_rebuilt": true,
+  "full_source_eigenproblems": 0,
+  "kernel_is_Weyl_radius": false,
+  "records": [
+    {
+      "status": "DIAGNOSTIC_NEVER_A_PROOF",
+      "world": "dh",
+      "m": 51,
+      "q": 47,
+      "rank_method": "distinct complete census node rows; no numerical singular-value truncation",
+      "dim_J": 5,
+      "T": "89.649625557921808457654740673259264999054938903029663060993131779",
+      "arithmetic_bits": 1536,
+      "source_method": "unchanged source form; analytic digamma/trigamma arch moments with explicit finite geometric tails",
+      "source_metadata": {
+        "analytic_arch_tail_terms": 145,
+        "tail_decay_power": "6.3774774489342867273728728291043198392380094867565359016973065417e-496",
+        "arch_entry_tail_bound_upper": "1.0905677201568006762311101810081593583549998761974914512853478734e-501",
+        "arch_tail_bound_definition": "4*(m+1)/L * m^(-alpha-2R)/((2R+alpha)^2*(1-m^-2)); finite geometric tail only, excludes rounding/zero-table error",
+        "kernel_alpha": "1.5000000000000000000000000000000000000000000000000000000000000000",
+        "source_constant": "-0.62115285320177196916955478094405176529176849797993030028131014721"
+      },
+      "B_symmetry_relative": "1.2233540178101106255317558355958684944079649283363200391082260540e-463",
+      "kernel_symmetry_relative": "2.0436066560015301947408025739201427289300069140824910187220064663e-427",
+      "solve_method": "compiled Arb approximate LU; midpoint diagnostics, not interval inverse or source enclosure",
+      "inertia": {
+        "negative": 0,
+        "positive": 47,
+        "zero": 0,
+        "minimum_absolute_pivot": "1.0607386261422953118045255956938400351664383611073515602142986804e-42",
+        "method": "unpivoted symmetric LDL midpoint arithmetic; no tolerance cutoff; numerical inertia, not interval-certified"
+      },
+      "seconds": 0.5585956479990273
+    },
+    {
+      "status": "DIAGNOSTIC_NEVER_A_PROOF",
+      "world": "dh",
+      "m": 52,
+      "q": 48,
+      "rank_method": "distinct complete census node rows; no numerical singular-value truncation",
+      "dim_J": 5,
+      "T": "90.958246356846655515674364756278546762713228097543157020835923876",
+      "arithmetic_bits": 1536,
+      "source_method": "unchanged source form; analytic digamma/trigamma arch moments with explicit finite geometric tails",
+      "source_metadata": {
+        "analytic_arch_tail_terms": 144,
+        "tail_decay_power": "6.1806910190657654036273898226673712519944490549231223801422487371e-495",
+        "arch_entry_tail_bound_upper": "1.0555955863006804303999636276773617156869499316242849092996406872e-500",
+        "arch_tail_bound_definition": "4*(m+1)/L * m^(-alpha-2R)/((2R+alpha)^2*(1-m^-2)); finite geometric tail only, excludes rounding/zero-table error",
+        "kernel_alpha": "1.5000000000000000000000000000000000000000000000000000000000000000",
+        "source_constant": "-0.62115285320177196916955478094405176529176849797993030028131014721"
+      },
+      "B_symmetry_relative": "6.0194703920490898517200954812355069256573894905413487967517784314e-464",
+      "kernel_symmetry_relative": "1.2119669721182981386848786646335198700254206449793461626885421006e-424",
+      "solve_method": "compiled Arb approximate LU; midpoint diagnostics, not interval inverse or source enclosure",
+      "inertia": {
+        "negative": 1,
+        "positive": 47,
+        "zero": 0,
+        "minimum_absolute_pivot": "1.4057915430052795851932044632390585605602751218722041359717883295e-44",
+        "method": "unpivoted symmetric LDL midpoint arithmetic; no tolerance cutoff; numerical inertia, not interval-certified"
+      },
+      "seconds": 0.4929527339991182
+    },
+    {
+      "status": "DIAGNOSTIC_NEVER_A_PROOF",
+      "world": "dh",
+      "m": 53,
+      "q": 49,
+      "rank_method": "distinct complete census node rows; no numerical singular-value truncation",
+      "dim_J": 5,
+      "T": "92.262662641559187812806591397673469664325879968114606298540499901",
+      "arithmetic_bits": 1536,
+      "source_method": "unchanged source form; analytic digamma/trigamma arch moments with explicit finite geometric tails",
+      "source_metadata": {
+        "analytic_arch_tail_terms": 143,
+        "tail_decay_power": "7.1961680074297227007639891499549392070636119763828031691465989728e-494",
+        "arch_entry_tail_bound_upper": "1.2279982260064579463861362145298380725469317751558916909882903943e-499",
+        "arch_tail_bound_definition": "4*(m+1)/L * m^(-alpha-2R)/((2R+alpha)^2*(1-m^-2)); finite geometric tail only, excludes rounding/zero-table error",
+        "kernel_alpha": "1.5000000000000000000000000000000000000000000000000000000000000000",
+        "source_constant": "-0.62115285320177196916955478094405176529176849797993030028131014721"
+      },
+      "B_symmetry_relative": "5.9409484943223782582953000454795935954147269684673739811870840052e-464",
+      "kernel_symmetry_relative": "8.6509072830317824968386920834339970083617998455398639471497795806e-423",
+      "solve_method": "compiled Arb approximate LU; midpoint diagnostics, not interval inverse or source enclosure",
+      "inertia": {
+        "negative": 0,
+        "positive": 49,
+        "zero": 0,
+        "minimum_absolute_pivot": "4.2259931038120518715666015554503029676042918540653656023580861322e-45",
+        "method": "unpivoted symmetric LDL midpoint arithmetic; no tolerance cutoff; numerical inertia, not interval-certified"
+      },
+      "seconds": 0.41393557200353825
+    },
+    {
+      "status": "DIAGNOSTIC_NEVER_A_PROOF",
+      "world": "dh",
+      "m": 54,
+      "q": 49,
+      "rank_method": "distinct complete census node rows; no numerical singular-value truncation",
+      "dim_J": 6,
+      "T": "93.562973150500348661159428576564113784177553514140961570204115143",
+      "arithmetic_bits": 1536,
+      "source_method": "unchanged source form; analytic digamma/trigamma arch moments with explicit finite geometric tails",
+      "source_metadata": {
+        "analytic_arch_tail_terms": 143,
+        "tail_decay_power": "3.4307153890414786576033323415712495717970487379815914054939127252e-496",
+        "arch_entry_tail_bound_upper": "5.7706893364836931298450235113648337262138864040711375442421035670e-502",
+        "arch_tail_bound_definition": "4*(m+1)/L * m^(-alpha-2R)/((2R+alpha)^2*(1-m^-2)); finite geometric tail only, excludes rounding/zero-table error",
+        "kernel_alpha": "1.5000000000000000000000000000000000000000000000000000000000000000",
+        "source_constant": "-0.62115285320177196916955478094405176529176849797993030028131014721"
+      },
+      "B_symmetry_relative": "3.8591344614788726946297482036282047745664385275621919831939926852e-464",
+      "kernel_symmetry_relative": "2.8937051473640501730547132267400939923245953900351230947649123778e-431",
+      "solve_method": "compiled Arb approximate LU; midpoint diagnostics, not interval inverse or source enclosure",
+      "inertia": {
+        "negative": 1,
+        "positive": 48,
+        "zero": 0,
+        "minimum_absolute_pivot": "7.5311775580857049358443629692424212712104686921324963117493343604e-35",
+        "method": "unpivoted symmetric LDL midpoint arithmetic; no tolerance cutoff; numerical inertia, not interval-certified"
+      },
+      "seconds": 0.5378840449993731
+    }
+  ],
+  "sha256": {
+    "/workspace/edge_inputs/zeta_zeros_capacity.csv": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+    "/workspace/edge_inputs/edge_law/dh/dh_zeros_extended.json": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36"
+  }
+}

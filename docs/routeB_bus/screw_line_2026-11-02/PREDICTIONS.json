@@ -1,0 +1,32 @@
+{
+  "task": "SCREW_LINE_v1",
+  "status": "PREREGISTERED_BEFORE_NEW_NUMERICS",
+  "base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+  "scope": "DIAGNOSTIC_NEVER_A_PROOF",
+  "schedule": "literal N=m,L=logm, native kappa1.1",
+  "requested_range": [
+    20,
+    240
+  ],
+  "requested_points": [
+    "i/2",
+    "i",
+    "2i"
+  ],
+  "predictions": [
+    {
+      "id": "S1",
+      "probability": 0.6,
+      "criterion": "DH native-complement form first indefinite m in [50,56]; distinguish from full-carrier onset and scalar K signs"
+    },
+    {
+      "id": "S2",
+      "probability": 0.4,
+      "criterion": "zeta prime-power jump signs homogeneous; distinguish finite discrete increments from fixed-N one-sided atom-derivative jumps"
+    }
+  ],
+  "source_gate": "Read Suzuki primary papers and verify actual source/kernel map and Weyl normalization before labeling 1/(Imz*K) an actual Weyl radius. Undefined/indefinite forms reported rather than treated as Hilbert RKHS.",
+  "point_evaluation_gate": "Resolve whether e(z) is physical cosine evaluation or Fourier evaluation; both can be shown as labeled formal alternatives if source does not identify one.",
+  "monotonicity_gate": "Do not conflate nonnested m-dependent finite carriers/moving complements with nested restrictions of one fixed positive kernel. No posthoc fitted or absolute-value radius.",
+  "no_route_state_or_RH_exports": true
+}

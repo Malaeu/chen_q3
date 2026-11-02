@@ -1,0 +1,33 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "kernel_cells_available": 442,
+  "expected_kernel_cells": 442,
+  "missing_cells": [],
+  "joined_rows": 3094,
+  "prime_power_point_rows": 648,
+  "DH_non_prime_power_nonzero_point_rows": 450,
+  "actual_Weyl_radius_claim": false,
+  "source_g_gate": "RESOLVED by source_audit/SOURCE_AUDIT.md: g=-q[chi]/2, hence jump g_prime=+b(n)/sqrt(n)",
+  "comparison": {
+    "zeta_physical": {
+      "prime_power_discrete_observations": 162,
+      "matching_fixedN_kick_sign": 136,
+      "different_sign": 26
+    },
+    "zeta_fourier": {
+      "prime_power_discrete_observations": 162,
+      "matching_fixedN_kick_sign": 102,
+      "different_sign": 60
+    },
+    "dh_physical": {
+      "prime_power_discrete_observations": 162,
+      "matching_fixedN_kick_sign": 83,
+      "different_sign": 79
+    },
+    "dh_fourier": {
+      "prime_power_discrete_observations": 162,
+      "matching_fixedN_kick_sign": 90,
+      "different_sign": 72
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "range": [
+    20,
+    240
+  ],
+  "all_integer_count": 221,
+  "prime_power_count": 54,
+  "DH_non_prime_power_count": 167,
+  "DH_non_prime_power_nonzero": 75,
+  "zeta_atom_sign_counts": {
+    "-1": 0,
+    "0": 167,
+    "1": 54
+  },
+  "DH_atom_sign_counts": {
+    "-1": 63,
+    "0": 94,
+    "1": 64
+  },
+  "DH_prime_power_sign_counts": {
+    "-1": 27,
+    "0": 2,
+    "1": 25
+  },
+  "coefficient_recurrence_max_error": "5.314891369462578667303393499619835461451381475926013774650335171008492e-99",
+  "tau": "0.2840790438404122960282918323931261690910880884457375827591626661550459",
+  "exact_zero_test": "polynomial remainder modulo tau^4+2tau^3-6tau^2-2tau+1",
+  "numerical_sign_evaluation": "100 dps; exact-zero coefficients removed first",
+  "matrix_jump": "dotA_plus-dotA_minus=-2*(b(n)/sqrt(n))*L*d_b*d_b^T, tau=dlogL",
+  "source_g_normalization": "Suzuki g(t)=-q_source[1_[0,t]]/2; arithmetic hinge +(b(n)/sqrt(n))*(t-log(n))_+",
+  "source_g_audit": "source_audit/SOURCE_AUDIT.md; Suzuki arXiv:2206.03682v4 (1.1),(1.8), arXiv:2209.04658v3 (1.1)",
+  "derivative_variable_guard": "g is continuous; jump g_prime=+b(n)/sqrt(n). Matrix dot=d/dtau=L*d/dL. Do not call these discrete N=m increments."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "world": "zeta",
+  "mesh": 128,
+  "dps": 100,
+  "increments": 701,
+  "max_length": "5.4765625",
+  "all_positive": true,
+  "all_nonincreasing": true,
+  "first_nonpositive": null,
+  "first_innovation": "0.026957889482933670119286790296281221951678062889930929843585663177182",
+  "last_innovation": "0.005514929289511668035848637349859475528570960527112634652912647338525294",
+  "minimum_innovation": "0.005514929289511668035848637349859475528570960527112634652912647338525294",
+  "seconds": 5.617966934005381
+}
