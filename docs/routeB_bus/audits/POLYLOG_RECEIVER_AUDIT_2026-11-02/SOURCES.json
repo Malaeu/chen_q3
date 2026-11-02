@@ -1,0 +1,70 @@
+{
+  "repository": "Malaeu/chen_q3",
+  "base": "d7951a2bfdbdbc6b1dd6cc3ec4f96454c39fb573",
+  "sources": [
+    {
+      "local_name": "CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_RESTRICTED_PRIME_RECEIVER.md",
+      "ref": "a8f0df144461e9cd10c5149721fedb0448800acb",
+      "git_blob": "897a92716a746ce8b9a36adb77e66c83b19bdf59",
+      "sha256": "2b7b3040a510f5133049b358e81a922a83bc1439ab77222b9520a7ca5e349acd",
+      "bytes": 9606
+    },
+    {
+      "local_name": "CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_POST_Q26_POLYLOG_WITNESS.md",
+      "ref": "a8f0df144461e9cd10c5149721fedb0448800acb",
+      "git_blob": "718f9f9160182ef117bda274896a86bc057b6412",
+      "sha256": "c7db024c1a5b17bcc5af53c427ccd3dd586c12229e4f9306ad045df9f6ba4681",
+      "bytes": 8064
+    },
+    {
+      "local_name": "CCM_JOINT_Q04_CONCLUSION.md",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_JOINT_Q04_CONCLUSION.md",
+      "ref": "a8f0df144461e9cd10c5149721fedb0448800acb",
+      "git_blob": "e11e483f065759bd35ea19373c57b831273756e8",
+      "sha256": "617876f6f9a83d8fb4c32b53864968534aaa950b670fa3e83f06da6fd2e61086",
+      "bytes": 5036
+    },
+    {
+      "local_name": "PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_VERDICT_2026-10-25.md",
+      "path": "docs/literature/openai_math_2026-10-07/PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_VERDICT_2026-10-25.md",
+      "ref": "d7951a2bfdbdbc6b1dd6cc3ec4f96454c39fb573",
+      "git_blob": "c69adf0478def2618ae19622741141e38b4db66a",
+      "sha256": "fa0c0d6162c2b6f27997048e8c51a91ca8d2295cb3adefea435e7b51f1b3c052",
+      "bytes": 87400
+    },
+    {
+      "local_name": "CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md",
+      "path": "docs/literature/openai_math_2026-10-07/CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md",
+      "ref": "d7951a2bfdbdbc6b1dd6cc3ec4f96454c39fb573",
+      "git_blob": "0f9771e5949456e1c00cfd336e88f84ce103f643",
+      "sha256": "b27227aec0515c8e126a7b6cab23117bc364c67cee167dfc38f23e95c40a29d7",
+      "bytes": 8129
+    },
+    {
+      "local_name": "PROSHKA_VERDICT_PRIME_COMPLEMENT_FLOOR_2026-11-02.md",
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_PRIME_COMPLEMENT_FLOOR_2026-11-02.md",
+      "ref": "a4ab9e92bf080ee3bcfd729af067ade6fc6392fc",
+      "git_blob": "88de1569443ba35acdeefdeb64ace9bbb43c47e8",
+      "sha256": "3a827900de98c45d02ce617f606c4a0ab1fa7b337ed846ea12f7eb9db301b3fa",
+      "bytes": 24246
+    },
+    {
+      "local_name": "PROSHKA_VERDICT_NOESCAPE_2026-10-30.md",
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_NOESCAPE_2026-10-30.md",
+      "ref": "a4ab9e92bf080ee3bcfd729af067ade6fc6392fc",
+      "git_blob": "453d2f7dfd14810b32ac89e24bb0f85c26ed7fcc",
+      "sha256": "fdfd384345b69d7565100b93ef57348eb6944bdbaf014a01c001df007129aded",
+      "bytes": 64077
+    },
+    {
+      "local_name": "TARGET.md",
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_POLYLOG_EVEN_SIGNED_PRIME_FLOOR_2026-11-02.md",
+      "ref": "8ef60134f17e398f0d7699a3aec8d74dff8b6d79",
+      "git_blob": "c99beb74a7180e465f4f212e2bc6395ce3b30f74",
+      "sha256": "dad2cf2f9c2bdfe61a722ebf4f0ac0e3fc9fb6b0afed07c528a4d0de1fc929e1",
+      "bytes": 33111
+    }
+  ]
+}

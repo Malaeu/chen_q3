@@ -1,0 +1,36 @@
+{
+  "status": "BOUNDED_EXACT_CONTROLS_PASS",
+  "target_sha256": "dad2cf2f9c2bdfe61a722ebf4f0ac0e3fc9fb6b0afed07c528a4d0de1fc929e1",
+  "source_files_verified": [
+    "CCM_RESTRICTED_PRIME_RECEIVER.md",
+    "CCM_POST_Q26_POLYLOG_WITNESS.md",
+    "CCM_JOINT_Q04_CONCLUSION.md",
+    "PROSHKA_CCM_POLYLOG_JOINT_MATRIX_Q27_VERDICT_2026-10-25.md",
+    "CCM_Q45_PAIR_POLYLOG_DIVISOR_REDUCTION.md",
+    "PROSHKA_VERDICT_PRIME_COMPLEMENT_FLOOR_2026-11-02.md",
+    "PROSHKA_VERDICT_NOESCAPE_2026-10-30.md",
+    "TARGET.md"
+  ],
+  "exact_controls": [
+    "quartet_sign_and_four_multiplicities",
+    "two_translation_normalization",
+    "planted_positive_quartet_rejected",
+    "real_polynomial_separator_interpolation",
+    "two_contact_gram_inverse",
+    "two_contact_characteristic_polynomial",
+    "physical_pole_norm",
+    "arch_constant_margin",
+    "multiplier_constant_margin",
+    "Euler_Maclaurin_abs_s_bound",
+    "32_binomial_prime_power_increment_controls",
+    "complete_q_to_K_return",
+    "pole_free_K_equals_B_minus_all_powers",
+    "planted_auxiliary_budget_implies_source_lower_rejected"
+  ],
+  "sympy_version": "1.14.0",
+  "new_spectral_scans": 0,
+  "interval_certification": false,
+  "universal_bounds_verifier": "PAPER, not finite controls",
+  "RH_proved": false,
+  "route_state_changed": false
+}
