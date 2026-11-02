@@ -1,0 +1,64 @@
+{
+  "archive_sha256": "b9fb1ec81382b7ea15c373d0bc6454378fb84a4064916feefb746fdf52b9797f",
+  "archive_bytes": 12643372,
+  "parts": [
+    {
+      "file": "matched_cells.tar.xz.part00",
+      "sha256": "e1df3907c9d4ab313865ee36ea327f007139a16694b1bea27c7d38c4041ccc85",
+      "bytes": 3145728
+    },
+    {
+      "file": "matched_cells.tar.xz.part01",
+      "sha256": "b09a781837d4673025ce4c2460e785ce083bc719ffd51d7bc1738443b4127cc1",
+      "bytes": 3145728
+    },
+    {
+      "file": "matched_cells.tar.xz.part02",
+      "sha256": "7d16bed6342d19bab568d5efcb51aa77db4e8420789160bf8a316e181130a04d",
+      "bytes": 3145728
+    },
+    {
+      "file": "matched_cells.tar.xz.part03",
+      "sha256": "601435eb775d04b6c528ece11b1e174db2fc330226831bf1c6820b054849f3a1",
+      "bytes": 3145728
+    },
+    {
+      "file": "matched_cells.tar.xz.part04",
+      "sha256": "3da707e92af7dc4980c090142cdc8df291aa72784eaf35d3810f9c13b7b9df6a",
+      "bytes": 60460
+    }
+  ],
+  "files": {
+    "matched_cells/dh_m120_q108_native.json": "ff02cc75d9f4313081909cd484a7db943fdff6a3ad4636824f2916538bc3500b",
+    "matched_cells/dh_m120_q63.json": "5ca6218abbf14033d4f5cf2c5a6d1c23686ef0fe5978c1520a7fcf38d9f23f4b",
+    "matched_cells/dh_m120_q65.json": "56119b2fd6e13e8c40e35482e3f2cd220be61410c94c5fb21a8623d4d1088f43",
+    "matched_cells/dh_m20_q8.json": "e528bfc086f2b7219e72e967f43052fcd7004cb46cf45a60c15f21e8baff3470",
+    "matched_cells/dh_m40_q18.json": "a97c949dcf67a583a0daaefc6593b35ca9b5071cb9cda03fe0ba38f8d62ea44a",
+    "matched_cells/dh_m55_q27.json": "749acb0c2566e8b8cbc55a41f7557e9418acea6f5e85924d49ca80cb5552da8b",
+    "matched_cells/dh_m55_q50_native.json": "b83b494f62ebc3c6b4a2e9d65976c32b04e81a13e812ddb56c33793afbd2c832",
+    "matched_cells/dh_m60_q29.json": "302b09578141a8cae56f42fff0f2980f077b81d6ba6b66e2f64004f966f8cb14",
+    "matched_cells/dh_m80_q41.json": "9402d069b2fe374e653b2a08793b040fae2312993b3c2d5553e9d1ac9aaaeba6",
+    "matched_cells/dh_m80_q73_native.json": "c3346b7a6cf0cd544f335df8de110b7cef6fa9e8a5dd3ea7c6b755d8baf58129",
+    "matched_cells/source_dh_m120.json": "07fb738c0abd054175b8fe48e5e4f735cb3e0fa2966111d73c64375a6f7c6964",
+    "matched_cells/source_dh_m20.json": "fe520f4275e9c3f9662fd94dc4ce298b46e7cb09fee67951842e38e185f52d1c",
+    "matched_cells/source_dh_m40.json": "786b89ecab81789f18d022f29583ec943b6cb648cba9c1f2a0204622c112a08b",
+    "matched_cells/source_dh_m55.json": "3f500c6f2fdc4a2ea0712ffd329bae7e9471d82adbb1c452bb3ce1bc17f3b8e4",
+    "matched_cells/source_dh_m60.json": "4913b460549b2bd00e90bd52200b224b60406dbf7e7f18230ef898c859ef4e63",
+    "matched_cells/source_dh_m80.json": "ba02503ceb5af2427475dd2fc8fa4a89a5f7b88556d4178fd46b4f3804e61366",
+    "matched_cells/source_zeta_m120.json": "a605c548946afa0590835a3fe7a60da94967f8f771bb33cbfad68d9a0c51b51b",
+    "matched_cells/source_zeta_m20.json": "75a0390fcfab0847afd06a41c1de28f41e05659cc6c288cda772d39d6c2732fe",
+    "matched_cells/source_zeta_m40.json": "cf82c4981dcee5423f65ac24c4568b0e2798bd3ca758f739a2cb78a4e7dedb71",
+    "matched_cells/source_zeta_m55.json": "3568d1ebcbc2ba97c2c2ba8c9f13a02d4cef066f43fce79765d87019ed8d31db",
+    "matched_cells/source_zeta_m60.json": "5942478fbd2fd6cff3fd2bface08097f6c512fd350980426207537112f0adb2b",
+    "matched_cells/source_zeta_m80.json": "1bdc2e6540b4de5c85f5eb57b5a04807e807395831951dfd18ecf41f89671876",
+    "matched_cells/zeta_builder_validation.json": "cacdc562b127382c6e57b5edb52d8f8a9fd9d1a6241f16456d2d287ea59e6e4c",
+    "matched_cells/zeta_m120_q63.json": "72507ba18e6bf52c648bab88aa5badd4108efdb5346c041212844e72c0d749a7",
+    "matched_cells/zeta_m120_q64.json": "0dfa8753d1cd37cd920ff3fac538256837bc391283dc1e463193dea97865eeb8",
+    "matched_cells/zeta_m120_q65.json": "9d519d97802b27323b9c3097d5494804a492e44e433e6e5bb50a94f4ccfaf609",
+    "matched_cells/zeta_m20_q8.json": "c3207bc01dd4529bebc2b85402436f0a4eadc251b6ed0f8794fc299a54f02eeb",
+    "matched_cells/zeta_m40_q18.json": "75f05160c17bcf66dc199ee81850091b38fe5de1d76977fcac8b1186a735ee0c",
+    "matched_cells/zeta_m55_q27.json": "6e7c84334843825585fbcaf2cba1334e7e140562f1bea22214012ceaffc14d97",
+    "matched_cells/zeta_m60_q29.json": "50fdade30ad46918f28c56e56a9e4117c9b5d7791f80ca86443737bc87647506",
+    "matched_cells/zeta_m80_q41.json": "2833c88297234ebe76c47e14f94384b8101e2e86bfb8cd88f832e19d615866de"
+  }
+}

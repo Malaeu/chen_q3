@@ -1,0 +1,22 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "matched_cells": 15,
+  "ledger_cells": 12,
+  "groups": 132,
+  "maximum_absolute_errors": {
+    "direct_ledger_minus_Rayleigh": "1.520865099801224284824736246077977996167e-119",
+    "Abel_closure_error": "8.05620298837146971406182201487390519054e-139",
+    "derivative_identity_coefficient_error": "3.22444932311447668115748006539944983807e-139",
+    "independent_correlation_error": "3.883772124687223184629151981111850059283e-139",
+    "reference_Abel_closure_error": "1.230243864327654607597266427800675139133e-138"
+  },
+  "checks": [
+    "unit physical vector",
+    "source and implementation hashes",
+    "all endpoint atoms exactly zero",
+    "sum of signed groups equals same-vector Rayleigh",
+    "independent physical correlation and moving-boundary derivative identity",
+    "segmented Abel closure"
+  ],
+  "interval_certificate": false
+}
