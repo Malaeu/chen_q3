@@ -1,0 +1,21 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "control_kind": "exact symbolic/rational sign and parity checks; no numerical source W",
+  "checks": {
+    "plus_rhs_has_deficiency_plus_i": true,
+    "minus_rhs_has_deficiency_minus_i": true,
+    "swapped_plus_rhs_rejected": true,
+    "theta_pi_two_parity_identity": true,
+    "theta_zero_two_parity_identity": true,
+    "cosine_only_omits_nonzero_polynomial": true,
+    "cosine_only_is_not_general_W": true,
+    "same_shift_parity_reconstruction_plus": true,
+    "same_shift_parity_reconstruction_minus": true,
+    "reflection_interchanges_pair": true,
+    "T_norms_equal_without_separate_normalization": true,
+    "odd_solution_nonzero": true
+  },
+  "passed": 12,
+  "source_W_computed": false,
+  "continuum_shift_certified": false
+}

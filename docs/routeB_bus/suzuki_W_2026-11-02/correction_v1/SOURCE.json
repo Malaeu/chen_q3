@@ -1,0 +1,28 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "artifact": "SUZUKI_W_v1_CORRECTION",
+  "source_commit": "dd4cd91fc525c349a2f4a14c187c39addaf9eafc",
+  "source_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_SUZUKI_BRIDGE_v1_2026-11-02.md",
+  "source_equations": [
+    "4.1",
+    "4.2",
+    "4.3"
+  ],
+  "sha256": "9e2b8b5db59914a8e056d459e7459e6be7e358decde43f58094735426c995d38",
+  "git_blob": "7a25cb07cd1e90faca06df13b7809d59151378af",
+  "bytes": 61555,
+  "lines": 821,
+  "original_brief_modified": false,
+  "existing_session_W_computation": false,
+  "prior_session_packet": "05d2604ae7a1d8d96d59306d559ac6a72e070701",
+  "scope_note": "Session SCREW_LINE did not compute W; no assertion about unrelated external work.",
+  "concurrent_published_W_commit": "a8b5d995b86522cfcda5ab1f5be3500a1ed7e008",
+  "published_W_already_correct": true,
+  "bounded_real_source_replay_worlds": [
+    "zeta",
+    "dh"
+  ],
+  "bounded_real_source_replay_m": [
+    20
+  ]
+}

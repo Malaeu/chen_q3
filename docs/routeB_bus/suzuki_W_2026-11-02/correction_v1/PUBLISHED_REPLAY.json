@@ -1,0 +1,98 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "published_commit": "a8b5d995b86522cfcda5ab1f5be3500a1ed7e008",
+  "scalar_rows_checked": 442,
+  "all_m_reflection_conventions_match": true,
+  "real_source_replays": [
+    {
+      "world": "zeta",
+      "m": 20,
+      "normalized_even_RHS_residual": 8.187291524649368e-17,
+      "normalized_odd_RHS_residual": 1.5253734342982472e-16,
+      "odd_solution_norm": 0.5816099692781955,
+      "maximum_omitted_odd_contribution": 15.192744425822173,
+      "point_checks": [
+        {
+          "z": "0",
+          "direct_FT_relative_error": 6.593350193852165e-16,
+          "theta_pi_relative_error": 6.621722338216535e-16
+        },
+        {
+          "z": "0.5j",
+          "direct_FT_relative_error": 1.4757727010758726e-15,
+          "theta_pi_relative_error": 9.047722155631837e-16
+        },
+        {
+          "z": "1j",
+          "direct_FT_relative_error": 2.6177096025994467e-15,
+          "theta_pi_relative_error": 2.014002768315854e-15
+        },
+        {
+          "z": "2j",
+          "direct_FT_relative_error": 4.396724297341999e-15,
+          "theta_pi_relative_error": 3.1824470850890052e-15
+        },
+        {
+          "z": "(1+0.25j)",
+          "direct_FT_relative_error": 3.2304258858024028e-15,
+          "theta_pi_relative_error": 5.784103530417667e-15
+        },
+        {
+          "z": "(-2+0.5j)",
+          "direct_FT_relative_error": 2.830524433501838e-15,
+          "theta_pi_relative_error": 3.1559272614499998e-15
+        }
+      ]
+    },
+    {
+      "world": "dh",
+      "m": 20,
+      "normalized_even_RHS_residual": 8.58816107160197e-17,
+      "normalized_odd_RHS_residual": 1.7309028770377018e-16,
+      "odd_solution_norm": 0.5667636859349043,
+      "maximum_omitted_odd_contribution": 14.182824345766157,
+      "point_checks": [
+        {
+          "z": "0",
+          "direct_FT_relative_error": 6.651174899123796e-16,
+          "theta_pi_relative_error": 6.679301421885369e-16
+        },
+        {
+          "z": "0.5j",
+          "direct_FT_relative_error": 1.5023838804507915e-15,
+          "theta_pi_relative_error": 1.1853233780914537e-15
+        },
+        {
+          "z": "1j",
+          "direct_FT_relative_error": 2.7256775339034362e-15,
+          "theta_pi_relative_error": 2.2550110264158698e-15
+        },
+        {
+          "z": "2j",
+          "direct_FT_relative_error": 4.461075655481228e-15,
+          "theta_pi_relative_error": 3.7435871239832446e-15
+        },
+        {
+          "z": "(1+0.25j)",
+          "direct_FT_relative_error": 3.0131103129227495e-15,
+          "theta_pi_relative_error": 5.785477990204425e-15
+        },
+        {
+          "z": "(-2+0.5j)",
+          "direct_FT_relative_error": 2.6691571797624175e-15,
+          "theta_pi_relative_error": 3.5184109739696003e-15
+        }
+      ]
+    }
+  ],
+  "scope": "Code inspection and bounded m20 two-world numerical replay; not a full independent 442-cell rerun",
+  "recalculation_for_old_formula_required": false,
+  "reason": "Published solver already uses both parity blocks, same lambda, same-sign exponential loads and complete W assembly",
+  "input_sha256": {
+    "prototype.py": "b68cc41885954395f2bf4e6009e62eb5fd96a12e07c3a9c750268ba019eba56b",
+    "diagnostics.py": "7d002c9ae0d97e54c7506814362b0199674ab580c991f164908f69edad18cacc",
+    "all_m_scalars.csv": "9f20c10881e5480bdfd9a45ef8502361b2ef2970b934c308e1e57e8000cd4dea",
+    "profile_zeta_m20.json": "8a7fa5c037fe3791eaf71a0f4512ee1aa2c891262693118aa2eca82b2da5e3f2",
+    "profile_dh_m20.json": "f28e5ea1e7cebfa2ff31646dfbd6e7ebbcf517c6d4ce016767c352a2d889a2f2"
+  }
+}

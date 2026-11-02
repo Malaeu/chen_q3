@@ -1,0 +1,47 @@
+{
+  "commit": "a8b5d995b86522cfcda5ab1f5be3500a1ed7e008",
+  "files": [
+    {
+      "name": "all_m_scalars.csv",
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/all_m_scalars.csv",
+      "git_blob": "acd7c8354882e2c921826573f5eb0c33fc8856a3",
+      "sha256": "9f20c10881e5480bdfd9a45ef8502361b2ef2970b934c308e1e57e8000cd4dea",
+      "bytes": 184880
+    },
+    {
+      "name": "diagnostics.py",
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/diagnostics.py",
+      "git_blob": "13c57bce52cf0abbcfc68a864457754b975c08eb",
+      "sha256": "7d002c9ae0d97e54c7506814362b0199674ab580c991f164908f69edad18cacc",
+      "bytes": 3785
+    },
+    {
+      "name": "profile_dh_m20.json",
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/profile_dh_m20.json",
+      "git_blob": "ba4a8527b7d0e4336e1bcb2fa0da0ba452fe41f4",
+      "sha256": "f28e5ea1e7cebfa2ff31646dfbd6e7ebbcf517c6d4ce016767c352a2d889a2f2",
+      "bytes": 2429
+    },
+    {
+      "name": "profile_zeta_m20.json",
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/profile_zeta_m20.json",
+      "git_blob": "794715fe94e05178ab54850a9c309e9ece44475f",
+      "sha256": "8a7fa5c037fe3791eaf71a0f4512ee1aa2c891262693118aa2eca82b2da5e3f2",
+      "bytes": 2345
+    },
+    {
+      "name": "prototype.py",
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/prototype.py",
+      "git_blob": "a2940d909df069efe3de37a892e360f3dde52ac7",
+      "sha256": "b68cc41885954395f2bf4e6009e62eb5fd96a12e07c3a9c750268ba019eba56b",
+      "bytes": 4200
+    },
+    {
+      "name": "validation_audit.py",
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/validation_audit.py",
+      "git_blob": "d7466ccd19b757951bcd496b36b47d496d17d8bc",
+      "sha256": "274259c5b2cea954ad975c73456981958abcf710accb98415d3d2d2da63bda0c",
+      "bytes": 3458
+    }
+  ]
+}
