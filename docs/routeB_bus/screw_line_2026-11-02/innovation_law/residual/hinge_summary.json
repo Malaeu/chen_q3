@@ -1,0 +1,68 @@
+[
+  {
+    "world": "zeta",
+    "mesh": 32,
+    "rows": 98,
+    "positive_jump": 88,
+    "negative_jump": 10,
+    "zero_jump": 0,
+    "max_jump_error": "0.0000000030274327589236514631841429590031576798275721810342147945519221476",
+    "max_linear_residual": 1.9027748127120603e-16,
+    "minimizer_rows": 98
+  },
+  {
+    "world": "dh",
+    "mesh": 32,
+    "rows": 98,
+    "positive_jump": 72,
+    "negative_jump": 23,
+    "zero_jump": 3,
+    "max_jump_error": "0.0000000012750077115075668201348475801438710264291799750449526995324821947",
+    "max_linear_residual": 1.2845627339608257e-15,
+    "minimizer_rows": 93
+  },
+  {
+    "world": "plant",
+    "mesh": 32,
+    "rows": 98,
+    "positive_jump": 88,
+    "negative_jump": 10,
+    "zero_jump": 0,
+    "max_jump_error": "0.000000003374599595660476591589123422678781946829473707560541995191233916",
+    "max_linear_residual": 4.172964057636008e-14,
+    "minimizer_rows": 3
+  },
+  {
+    "world": "zeta",
+    "mesh": 64,
+    "rows": 9,
+    "positive_jump": 9,
+    "negative_jump": 0,
+    "zero_jump": 0,
+    "max_jump_error": "0.00000000035428112918304272347480802953530546736728005821105961805561869969",
+    "max_linear_residual": 1.535772377325717e-16,
+    "minimizer_rows": 9
+  },
+  {
+    "world": "dh",
+    "mesh": 64,
+    "rows": 9,
+    "positive_jump": 4,
+    "negative_jump": 4,
+    "zero_jump": 1,
+    "max_jump_error": "0.000000000061107187039755857246000023379420356054009376954894156064792167165",
+    "max_linear_residual": 3.484192101499417e-15,
+    "minimizer_rows": 6
+  },
+  {
+    "world": "plant",
+    "mesh": 64,
+    "rows": 9,
+    "positive_jump": 8,
+    "negative_jump": 1,
+    "zero_jump": 0,
+    "max_jump_error": "0.00000000035799358162491832466107974527585684590727972693063055808698396639",
+    "max_linear_residual": 7.965443625870816e-15,
+    "minimizer_rows": 2
+  }
+]

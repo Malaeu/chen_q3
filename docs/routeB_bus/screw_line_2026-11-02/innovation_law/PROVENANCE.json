@@ -1,0 +1,42 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "user_base": "dd4cd91fc525c349a2f4a14c187c39addaf9eafc",
+  "observed_branch_head_at_start": "a8b5d995b86522cfcda5ab1f5be3500a1ed7e008",
+  "source_inbox": "bfd66b5aaf1756477f5cae2066c630cc8ba599b2",
+  "source_prediction_original_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_SCREW_LINE_PREDICTION_v1_2026-11-03.md",
+  "source_invariant_original_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_SCREW_LINE_INVARIANT_v1_2026-11-02.md",
+  "source_files": [
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/SOURCE_PREDICTION.md",
+      "bytes": 46487,
+      "sha256": "f71eb8801b4487b29f438a17e36c5a8aff1079c29ffe8cabe3f005486e88359d",
+      "git_blob": "074e32bee014784c1867fd78c2a3342b07c4250f"
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/SOURCE_INVARIANT.md",
+      "bytes": 34303,
+      "sha256": "2a2132da991839a38a7fcf08512d4dd743ee52704fd3da4bb3f69b53c96ad2d2",
+      "git_blob": "b56a16a0540ed3f81858c113bc48de68c909b8c8"
+    },
+    {
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/prediction/scan.py",
+      "bytes": 6414,
+      "sha256": "16de4be2e0fdf2117f7642e19559622c6cde3e0502bd5879ac1e8e1bcb3a5c53",
+      "git_blob": "28b01d7250b77c58254556551d644f4715755857"
+    },
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/dh_matrix.py",
+      "bytes": 7832,
+      "sha256": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00",
+      "git_blob": "9f08128be988c06447169468b680baa12040087f"
+    }
+  ],
+  "numbering": {
+    "arithmetic_source": "(9)",
+    "coefficient_derivative": "(11)",
+    "fixed_history_local_law": "(17)",
+    "even_sector_rank_one": "(29)"
+  },
+  "route_state_changed": false,
+  "interval_certificate": false
+}

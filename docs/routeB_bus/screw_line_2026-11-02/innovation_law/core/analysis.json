@@ -1,0 +1,111 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "exponential_law_tests": [
+    {
+      "lo": 1,
+      "hi": 3,
+      "slope_range_over_median_absolute_slope": 0.3642433725022739,
+      "across_mesh_pass": false,
+      "all_within_mesh_pass": false
+    },
+    {
+      "lo": 3,
+      "hi": 6,
+      "slope_range_over_median_absolute_slope": 0.5883317023118195,
+      "across_mesh_pass": false,
+      "all_within_mesh_pass": false
+    },
+    {
+      "lo": 1,
+      "hi": 6,
+      "slope_range_over_median_absolute_slope": 0.5052964042204113,
+      "across_mesh_pass": false,
+      "all_within_mesh_pass": false
+    }
+  ],
+  "source_integral_checks": [
+    {
+      "world": "zeta",
+      "t": "0.00390625",
+      "error": "4.68803422205620598174442470985e-102"
+    },
+    {
+      "world": "zeta",
+      "t": "0.693147180559945309417232121458",
+      "error": "2.42884820647483433720854004015e-100"
+    },
+    {
+      "world": "zeta",
+      "t": "2.07944154167983592825169636437",
+      "error": "5.71493695641137491107891774153e-101"
+    },
+    {
+      "world": "zeta",
+      "t": "6.0",
+      "error": "0.0"
+    },
+    {
+      "world": "dh",
+      "t": "0.00390625",
+      "error": "1.31711437667293406153771932324e-101"
+    },
+    {
+      "world": "dh",
+      "t": "0.693147180559945309417232121458",
+      "error": "7.14367119551421863884864717691e-102"
+    },
+    {
+      "world": "dh",
+      "t": "2.07944154167983592825169636437",
+      "error": "1.78591779887855465971216179423e-102"
+    },
+    {
+      "world": "dh",
+      "t": "6.0",
+      "error": "0.0"
+    },
+    {
+      "world": "plant",
+      "t": "0.00390625",
+      "error": "4.68803422205620598174442470985e-102"
+    },
+    {
+      "world": "plant",
+      "t": "0.693147180559945309417232121458",
+      "error": "2.42884820647483433720854004015e-100"
+    },
+    {
+      "world": "plant",
+      "t": "2.07944154167983592825169636437",
+      "error": "5.71493695641137491107891774153e-101"
+    },
+    {
+      "world": "plant",
+      "t": "6.0",
+      "error": "0.0"
+    }
+  ],
+  "precision_checks": [
+    {
+      "world": "zeta",
+      "mesh": 256,
+      "rows": 1536,
+      "max_relative_sigma_change": "2.10963843296675825376518829017e-97",
+      "all_negative_inertia_match": true
+    },
+    {
+      "world": "dh",
+      "mesh": 256,
+      "rows": 1536,
+      "max_relative_sigma_change": "5.83829169587304103326705267557e-94",
+      "all_negative_inertia_match": true
+    },
+    {
+      "world": "plant",
+      "mesh": 256,
+      "rows": 1536,
+      "max_relative_sigma_change": "4.92163630481352183773039472397e-95",
+      "all_negative_inertia_match": true
+    }
+  ]
+}

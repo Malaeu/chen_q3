@@ -1,0 +1,11 @@
+{
+  "world": "true_zeta",
+  "mesh": 32,
+  "dps": 100,
+  "first_negative_n": null,
+  "first_negative_t": null,
+  "last_sigma2": "0.01264925250538888236150701488086830752152277402341945047942490541729795847974347092948854738806265625",
+  "negative_pivots": 0,
+  "witness": null,
+  "seconds": 0.7327904849953484
+}

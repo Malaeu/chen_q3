@@ -1,0 +1,13 @@
+{
+  "status": "READ_ONLY_DIAGNOSTIC_REVIEW",
+  "scope_excludes_pending_hinges": true,
+  "input_sha256": {
+    "RESULT.md": "0ea5f97663e8409fa2fed638c7ed8f20141db8f8febca590be96c83f84e0872b",
+    "CARDS.md": "84d412f23a93e07a53c6aeed072c65823f3f44038ee3d9b7c4007c0ea7c7e221",
+    "core/scan.py": "d341c021ee57f44e7e750f77a2fd41c5ec65f9dd69bf96fa17f30618e4f0b45e",
+    "core/analyze.py": "e909bd5cd55eda1aa352ab9237375df082f8b58679f01329a46ce4311e7c072a",
+    "control_worlds.py": "afd1d21af79544e32a9511e0caa90157e7279488a11ef0f2386ec6cd0981f6c5",
+    "validate_controls.py": "dabff4296b1e907c93fc797a286f0a7aa19291093c6c54fe5f51ee103cc647d2",
+    "SOURCE_PREDICTION.md": "f71eb8801b4487b29f438a17e36c5a8aff1079c29ffe8cabe3f005486e88359d"
+  }
+}

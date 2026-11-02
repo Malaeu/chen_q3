@@ -1,0 +1,37 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "mesh": 256,
+  "n": 1536,
+  "first_theta_crossing": 264,
+  "first_negative_core": 264,
+  "crossing_checks": [
+    {
+      "prefix": 263,
+      "t": 1.02734375,
+      "signed_kernel_eigen_min_float": 6.883813608919936e-08,
+      "theta_max": 0.9782750834928697
+    },
+    {
+      "prefix": 264,
+      "t": 1.03125,
+      "signed_kernel_eigen_min_float": -1.8315057605248216e-07,
+      "theta_max": 1.0635713164647003
+    }
+  ],
+  "all_negative_inertias_match": true,
+  "max_relative_pivot_error": 1.856913698320511e-11,
+  "quartet_matrix_reconstruction_max_abs": 3.469446951953614e-18,
+  "cholesky_relative_residual": 1.0850234396703575e-16,
+  "whitening_relative_residual": 2.113395812644436e-15,
+  "minimum_C_pivot": 0.0034954260819669678,
+  "final_theta_eigenvalues": [
+    1997.838309862483,
+    2191.3826175574595
+  ],
+  "min_step_theta_max": 3.6843135152506466e-09,
+  "source_input_hashes": {
+    "zeta_mesh256_dps100.json": "82d02dcddefecfd74e9fbdba1c5ffe499fdb5ae5f386eacd5532b90e9dfa1afe",
+    "plant_mesh256_dps100.json": "5157e38a45f6fdcb6e6c0e02775eaf0750eb56cfb6a8cbbd18eb5490ee7950fd"
+  },
+  "arithmetic_precision": "source entries 100 decimal digits; low-rank hazard and factorization IEEE float64; no interval certificate"
+}

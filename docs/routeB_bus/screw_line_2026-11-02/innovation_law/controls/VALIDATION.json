@@ -1,0 +1,43 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "precision": [
+    {
+      "world": "true_zeta",
+      "rows": 384,
+      "max_relative_change": "5.417069892278819416e-98",
+      "all_negative_indices_match": true,
+      "first_negative_t": null,
+      "direct_witness_relative_error": null
+    },
+    {
+      "world": "half_atoms",
+      "rows": 384,
+      "max_relative_change": "1.0426431052281496208e-95",
+      "all_negative_indices_match": true,
+      "first_negative_t": "0.78125",
+      "direct_witness_relative_error": "3.9712734073120969571e-159"
+    },
+    {
+      "world": "three_halves_atoms",
+      "rows": 384,
+      "max_relative_change": "1.0463098034535790748e-93",
+      "all_negative_indices_match": true,
+      "first_negative_t": "0.78125",
+      "direct_witness_relative_error": "2.6181268075870065781e-159"
+    },
+    {
+      "world": "smooth_atoms",
+      "rows": 384,
+      "max_relative_change": "1.2298279681337983813e-94",
+      "all_negative_indices_match": true,
+      "first_negative_t": "0.75",
+      "direct_witness_relative_error": "1.1352007551892224429e-159"
+    }
+  ],
+  "smooth_integral_absolute_errors": [
+    "1.6132266701689257677e-171",
+    "3.8814476274741071104e-172",
+    "1.6560843210556190338e-170",
+    "0.0"
+  ]
+}
