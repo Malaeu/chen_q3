@@ -1,0 +1,283 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "source_equations": "3fef776: (5.4)\u2013(5.7)",
+  "cases": 21,
+  "zeta_cases": 8,
+  "DH_cases": 13,
+  "new_source_matrix_rebuilds": 9,
+  "new_eigensystems": 0,
+  "new_zero_searches": 0,
+  "finite_source_C_not_independent_infinite_zero_tail": true,
+  "max_absolute_energy_identity_residual": "3.2660504415756509300361470984535229692322145732105324019083449369529109467797499e-201",
+  "max_edge_scaled_energy_identity_residual": "1.0745885020456999129299562073339733800472315349519201498067757826647102584286516e-196",
+  "max_raw_arithmetic_precision_change": "5.95333161834735602512318293767393276184859272567353637400446e-161",
+  "max_scaled_arithmetic_precision_change": "6.6823940152401952792710907475738120085082529901745585263018e-151",
+  "max_relative_saved_source_replay": "5.4427449139041806765945613511191379646201971126620437089356097483693533534768081e-97",
+  "max_edge_scaled_saved_source_replay": "2.4631030496108210231474328298441773688389435632293828152013303159734224035829135e-96",
+  "inputs_and_outputs": [
+    {
+      "output": "energy_dh_cell_m160_matched_dps120_gl192.json",
+      "output_sha256": "bcd176a177714376e4987830778baba48e7ee07ffc35e0e521cc3e6828a0f20d",
+      "serialized_input_file": "dh_cell_m160_matched_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "191d043db595f66ded6843ed5cf921c8026e3ad6e861fe5dee266e835b4bd699",
+      "materialization": {
+        "source_vector_file": "cell_m160_matched_dps120_gl192.json",
+        "source_vector_sha256": "5279a4096ec822ce2c482ed00b9bb0298d042281795c00ce57456a1b4d4d6b45",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "dh_zeros_extended.json",
+        "zero_table_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_dh_cell_m160_native_dps120_gl192.json",
+      "output_sha256": "d10fcb50c0afb331f34c9ac109750e224cbcc6e6a865d9fe1a0dd48e5f973556",
+      "serialized_input_file": "dh_cell_m160_native_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "c2f414d2b198f97ad3d48783f4db5e54fbc4c026f605d04399a94bbf0172b0d6",
+      "materialization": {
+        "source_vector_file": "cell_m160_native_dps120_gl192.json",
+        "source_vector_sha256": "7e1126eb8ebfa71136b0b634d55b49e6d19a455a62049120fce921f1e0a084bc",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "dh_zeros_extended.json",
+        "zero_table_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_dh_cell_m200_matched_dps120_gl192.json",
+      "output_sha256": "6a5141e2fb629b347b6fafcbd8a6e0ae0ae2f485411aea4e1beb05b9a7b28b01",
+      "serialized_input_file": "dh_cell_m200_matched_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "758fdb731ff84febefda13b65f6bd23fe63ce8a0cb3093fc47a250e4b4b114ea",
+      "materialization": {
+        "source_vector_file": "cell_m200_matched_dps120_gl192.json",
+        "source_vector_sha256": "b0f3d8924185cbcf849d29a0f7bbee855b713b9735d9509cebf3a649f1fb0573",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "dh_zeros_extended.json",
+        "zero_table_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_dh_cell_m200_native_dps120_gl192.json",
+      "output_sha256": "3128956eaa3604386fda7a59dc2337dc729a5355c76bdca4b4a389a64237cdb7",
+      "serialized_input_file": "dh_cell_m200_native_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "4241bfa6408471b1e493d102a56f4e6c43bb26571d74b262a0eae4f99cbafa33",
+      "materialization": {
+        "source_vector_file": "cell_m200_native_dps120_gl192.json",
+        "source_vector_sha256": "f5b797a1ba087d7498d43a41fbc16543bac8d1f307afad709db6b874a335a5b5",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "dh_zeros_extended.json",
+        "zero_table_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_dh_cell_m240_matched_dps120_gl192.json",
+      "output_sha256": "38a18045b5419eaa3f5328d59cd0eafbb15a94883dd1d88cad987eee4fa77678",
+      "serialized_input_file": "dh_cell_m240_matched_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "e891ea95ac8f7fb84f71f87d05d3e433db4d9bfeca6c169f8af4839bff6da279",
+      "materialization": {
+        "source_vector_file": "cell_m240_matched_dps120_gl192.json",
+        "source_vector_sha256": "b5772ffbf23c94964b769bb33fa676396ffe7b9f82b1b10c2f34dd387ce005ac",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "dh_zeros_extended.json",
+        "zero_table_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_dh_cell_m240_native_dps120_gl192.json",
+      "output_sha256": "8080dca1fbe1f45dd07121e4d35b9ce6ba16b1534ac7f960d006f35160375bb7",
+      "serialized_input_file": "dh_cell_m240_native_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "1cc0dfefd1aeae2490964a85102cc7f75cdbbee98e1f4322c5e75fb661a351d4",
+      "materialization": {
+        "source_vector_file": "cell_m240_native_dps120_gl192.json",
+        "source_vector_sha256": "add2f5952ff042b3fd8663c04b877c105e70d74bc14323ce0e131cc857d4c668",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "dh_zeros_extended.json",
+        "zero_table_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_dh_m120_q108_native.json",
+      "output_sha256": "72a490ad500f661d880c90b41c608688f63dde712f0f4dde605012c9f4c487e7",
+      "serialized_input_file": "dh_m120_q108_native.json",
+      "serialized_input_sha256": "ff02cc75d9f4313081909cd484a7db943fdff6a3ad4636824f2916538bc3500b",
+      "materialization": null
+    },
+    {
+      "output": "energy_dh_m120_q63.json",
+      "output_sha256": "69b350cabdf76f9394888704de6b2ad0885db773611688f50d88a0ebe265f25d",
+      "serialized_input_file": "dh_m120_q63.json",
+      "serialized_input_sha256": "5ca6218abbf14033d4f5cf2c5a6d1c23686ef0fe5978c1520a7fcf38d9f23f4b",
+      "materialization": null
+    },
+    {
+      "output": "energy_dh_m120_q65.json",
+      "output_sha256": "057e2f00f5693eae0af55d8a76ca8c263368c95b0d524b5d2e7c46c671e66053",
+      "serialized_input_file": "dh_m120_q65.json",
+      "serialized_input_sha256": "56119b2fd6e13e8c40e35482e3f2cd220be61410c94c5fb21a8623d4d1088f43",
+      "materialization": null
+    },
+    {
+      "output": "energy_dh_m55_q27.json",
+      "output_sha256": "f31ff95ddcac13006242faa0bc82a09ca19ef1cfdd44bf0982678f9e2c2c9c3e",
+      "serialized_input_file": "dh_m55_q27.json",
+      "serialized_input_sha256": "749acb0c2566e8b8cbc55a41f7557e9418acea6f5e85924d49ca80cb5552da8b",
+      "materialization": null
+    },
+    {
+      "output": "energy_dh_m55_q50_native.json",
+      "output_sha256": "a06e85f86bdb6444b277a840ee4744ad5cb38b7c1cfd44f6d72e80eab7461f4e",
+      "serialized_input_file": "dh_m55_q50_native.json",
+      "serialized_input_sha256": "b83b494f62ebc3c6b4a2e9d65976c32b04e81a13e812ddb56c33793afbd2c832",
+      "materialization": null
+    },
+    {
+      "output": "energy_dh_m80_q41.json",
+      "output_sha256": "91fda85c2d11e58a508c5a374ecf1741ea658ceadb80a50ab7499063aa35d58b",
+      "serialized_input_file": "dh_m80_q41.json",
+      "serialized_input_sha256": "9402d069b2fe374e653b2a08793b040fae2312993b3c2d5553e9d1ac9aaaeba6",
+      "materialization": null
+    },
+    {
+      "output": "energy_dh_m80_q73_native.json",
+      "output_sha256": "4e4fdd8f21f8226f63d716aa863a1a3a314e03a7973ef10b302cfd225d4ca1f8",
+      "serialized_input_file": "dh_m80_q73_native.json",
+      "serialized_input_sha256": "c3346b7a6cf0cd544f335df8de110b7cef6fa9e8a5dd3ea7c6b755d8baf58129",
+      "materialization": null
+    },
+    {
+      "output": "energy_zeta_cell_m160_dps120_gl192.json",
+      "output_sha256": "e6cdce4cdbd64dbe0cc02789cc62a990e314b9682f84a6cf67ca8c392f4c3193",
+      "serialized_input_file": "zeta_cell_m160_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "6d4a11bcf53cf6ce95089146e219422033417aebd7ba1d31eb42b345f0401506",
+      "materialization": {
+        "source_vector_file": "cell_m160_dps120_gl192.json",
+        "source_vector_sha256": "faf84a141b5a77045dc563cb4a6bfaa6f329425f15c68df52652e1c8e9914628",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "zeros.csv",
+        "zero_table_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_zeta_cell_m200_dps120_gl192.json",
+      "output_sha256": "f754a371ee20d5bfe8788905081a5e7cbf81ddd42445d697cffd2c0e9992ec63",
+      "serialized_input_file": "zeta_cell_m200_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "5120076d9c9889e86f0f5cf9c90aaff31bcdd62d3c76aac178cab898f81233c3",
+      "materialization": {
+        "source_vector_file": "cell_m200_dps120_gl192.json",
+        "source_vector_sha256": "fe5a3513c6361b00b9d158089283f0f2bcbe758d7563ed83992ca8b6b45fae4a",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "zeros.csv",
+        "zero_table_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_zeta_cell_m240_dps120_gl192.json",
+      "output_sha256": "618185b585199cb90201e911c0e7e8d2876a632057461587fe698418bdd13a12",
+      "serialized_input_file": "zeta_cell_m240_dps120_gl192_A_gl192.json",
+      "serialized_input_sha256": "b59d60b57bb7e18b67f56f1943a704529e63f76e0f15ae59c65cc6bf828849a7",
+      "materialization": {
+        "source_vector_file": "cell_m240_dps120_gl192.json",
+        "source_vector_sha256": "566e7c60340ea5f4477925ff5e09d2c7c462ee4603bccd09d32b0e39d41dec8c",
+        "source_vector_dps": 120,
+        "source_helper_file": "rellich.py",
+        "source_helper_sha256": "ebbbff386e5d4fdd0e5c7946a57b6d41327b826c198e500ad0773f0afea6f61c",
+        "zero_table_file": "zeros.csv",
+        "zero_table_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+        "quadrature_order": 192,
+        "build_dps": 150,
+        "new_eigensystems": 0,
+        "new_zero_searches": 0,
+        "source_head_includes_signed_DH_complex_pairing": true
+      }
+    },
+    {
+      "output": "energy_zeta_m120_q63.json",
+      "output_sha256": "ac43cbbb439426eea2417dc2704e2185e70bc5e50836e4533cd5a8287772a630",
+      "serialized_input_file": "zeta_m120_q63.json",
+      "serialized_input_sha256": "72507ba18e6bf52c648bab88aa5badd4108efdb5346c041212844e72c0d749a7",
+      "materialization": null
+    },
+    {
+      "output": "energy_zeta_m120_q64.json",
+      "output_sha256": "744f3988d548ac42151b836aeffaf07e3584f33f6874caa3e2e1efc92e8a73df",
+      "serialized_input_file": "zeta_m120_q64.json",
+      "serialized_input_sha256": "0dfa8753d1cd37cd920ff3fac538256837bc391283dc1e463193dea97865eeb8",
+      "materialization": null
+    },
+    {
+      "output": "energy_zeta_m120_q65.json",
+      "output_sha256": "af5cead5913a33c57be84d9eb0ad71b6b6f5ac224d896dd66a6cb2fdbf14b039",
+      "serialized_input_file": "zeta_m120_q65.json",
+      "serialized_input_sha256": "9d519d97802b27323b9c3097d5494804a492e44e433e6e5bb50a94f4ccfaf609",
+      "materialization": null
+    },
+    {
+      "output": "energy_zeta_m55_q27.json",
+      "output_sha256": "5caa45e6251a1fc48ea45c78bfe26a5209c6298d9044e89c41a901e18c754a89",
+      "serialized_input_file": "zeta_m55_q27.json",
+      "serialized_input_sha256": "6e7c84334843825585fbcaf2cba1334e7e140562f1bea22214012ceaffc14d97",
+      "materialization": null
+    },
+    {
+      "output": "energy_zeta_m80_q41.json",
+      "output_sha256": "dae26d1126ac3125e440bbef8c76c724368ba0b6b94b7d4eabe3b943bcfc01fb",
+      "serialized_input_file": "zeta_m80_q41.json",
+      "serialized_input_sha256": "2833c88297234ebe76c47e14f94384b8101e2e86bfb8cd88f832e19d615866de",
+      "materialization": null
+    }
+  ]
+}

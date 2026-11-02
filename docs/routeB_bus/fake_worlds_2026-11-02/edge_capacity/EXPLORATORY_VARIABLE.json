@@ -1,0 +1,14 @@
+{
+  "task": "EDGE_CAPACITY_v1",
+  "status": "EXPLORATORY_NOT_PREREGISTERED_PRIMARY_PREDICTION",
+  "definition": "R_V = pi*T*V_T/(e^2*logT), endpoint-subtracted full-source remainder energy, with no fitted coefficient",
+  "motivation": "three upper-zeta energy splits already observed R_V around4.3 while capacity mismatches R; exact source split suggests checking whether V alone explains R",
+  "registered_before_all_case_variable_comparison": true,
+  "data_already_seen": "upperzeta m160/200/240 V values and lowercapacityfailures; primarypreflightP1/P2/P3 unaffected",
+  "tests": [
+    "R_V in [3,5] all8zeta",
+    "abs(R_V-R)/abs(R)<0.1 all8zeta",
+    "same variable on13DHcontrols includingnative/matched; no sign or absolute-value edits"
+  ],
+  "interpretation": "If tests fail, reject this proposed alternative as an explanation and close diagnostic line per kill-switch. If it passes finitely, still no cofinal law/RH claim."
+}

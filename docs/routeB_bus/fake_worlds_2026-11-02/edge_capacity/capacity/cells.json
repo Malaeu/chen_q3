@@ -1,0 +1,89 @@
+{
+  "scope": "DIAGNOSTIC_NEVER_A_PROOF",
+  "cells": [
+    {
+      "path": "matched_cells/zeta_m55_q27.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/zeta_m80_q41.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/zeta_m120_q63.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/zeta_m120_q64.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/zeta_m120_q65.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m55_q27.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m55_q50_native.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m80_q41.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m80_q73_native.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m120_q63.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m120_q65.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "matched_cells/dh_m120_q108_native.json",
+      "input_kind": "archived_lower_cell"
+    },
+    {
+      "path": "dense/dh_m160_q144_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/dh_m160_q89_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/dh_m200_q115_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/dh_m200_q180_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/dh_m240_q139_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/dh_m240_q216_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/zeta_m160_q89_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/zeta_m200_q115_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    },
+    {
+      "path": "dense/zeta_m240_q139_rebuild.json",
+      "input_kind": "reconstructed_high_cell"
+    }
+  ]
+}

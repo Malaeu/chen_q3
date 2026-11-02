@@ -1,0 +1,62 @@
+{
+  "task": "EDGE_CAPACITY_v1",
+  "status": "PREREGISTERED_BEFORE_NUMERICAL_EXECUTION",
+  "scope": "DIAGNOSTIC_NEVER_A_PROOF",
+  "base": "1c91c4c86ef6987782c08c84e22707d1b7324646",
+  "inbox": "3fef776b3bd0ebeb9d87e665432ae3e423f2dfb1",
+  "zeta_cells": [
+    {
+      "m": 55,
+      "q": 27
+    },
+    {
+      "m": 80,
+      "q": 41
+    },
+    {
+      "m": 120,
+      "q": 63
+    },
+    {
+      "m": 120,
+      "q": 64
+    },
+    {
+      "m": 120,
+      "q": 65
+    },
+    {
+      "m": 160
+    },
+    {
+      "m": 200
+    },
+    {
+      "m": 240
+    }
+  ],
+  "predictions": [
+    {
+      "id": "P1",
+      "probability": 0.5,
+      "criterion": "pi*T*C_T/log(T) in [1,3] in all8 zeta cells"
+    },
+    {
+      "id": "P2",
+      "probability": 0.7,
+      "criterion": "abs(cap_T*pi*T/log(T)-R) < .01*abs(R) in all8 zeta cells",
+      "interpretation": "one percent relative error, absolute error also retained"
+    },
+    {
+      "id": "P3",
+      "probability": 0.4,
+      "criterion": "lambda_min(G restricted to physical endpoint-zero slice) >=1000*lambda_min(G) in all8 zeta cells"
+    }
+  ],
+  "endpoint": "physical e=f(b), d_b=(1,sqrt2,...)/sqrt(L), no rescaling",
+  "R": "lambda_min*pi*T/(e^2*log(T))",
+  "capacity": "1/(t^T G^-1 t), t=U^T d_b; positive variational capacity only when G positive definite",
+  "DH_controls": "same native and equal-density controls as edge_law, all selected files enumerated in INPUTS.json before computations",
+  "kill_switch": "Evaluate stability over all8 zeta cells, retain DH negative controls. If (i)-(iii) provide no stable discriminating structure, close the diagnostic edge-law line with exact failures; do not fit away head/cross/volume or invent RH/route consequences. Optional alternative variable requires independently stated definition and DH falsification check.",
+  "no_route_state_or_RH_exports": true
+}

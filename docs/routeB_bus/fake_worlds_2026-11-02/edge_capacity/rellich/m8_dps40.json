@@ -1,0 +1,37 @@
+{
+  "exact": {
+    "projector_derivative": true,
+    "nonstationary_moving_subspace": "2*b",
+    "rational_edge_split": true,
+    "edge_cross_square": true,
+    "negative_cross_plant": true,
+    "phase_averaged_coefficient": 2,
+    "endpoint_atom_right_kick": "-2*w (unit constant trial)"
+  },
+  "numerical": {
+    "saved_base_gap": "0.392691259916285792690401",
+    "leibniz_max_error": "1.83670992315982423120115e-39",
+    "m": 8,
+    "N_fixed": 8,
+    "dps": 40,
+    "GL_per_panel": 32,
+    "panels": 4,
+    "lambda": "1.50788342085888561034695",
+    "edge": "-0.717515385122683245004087",
+    "source_left_virial": "-6.41350285101287147390715",
+    "projector_correction": "-0.819394427141790169431397",
+    "prime8_kick": "-0.524710330246889024504087",
+    "fd_left": "-7.23289595361991034664184",
+    "pred_left": "-7.23289727815466164333854",
+    "fd_right": "-7.7576091173350576714844",
+    "pred_right": "-7.75760760840155066784263",
+    "abs_error_left": "0.00000132453475129669669935089",
+    "abs_error_right": "0.00000150893350700364176867429",
+    "projector_rank": 3,
+    "orthogonality_error": "1.1779594614039039778478e-41",
+    "FD_h": "1.0e-8",
+    "passed": true
+  },
+  "scope": "DIAGNOSTIC_NOT_INTERVAL",
+  "elapsed_seconds": 3.131748141000571
+}

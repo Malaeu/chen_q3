@@ -1,0 +1,40 @@
+{
+  "source": "/workspace/edge_inputs/dense/zeta_m240_q139_rebuild.json",
+  "comparisons": [
+    {
+      "field": "capacity_algebraic",
+      "low_dps": 80,
+      "high_dps": 110,
+      "relative_difference": "5.937238824657409908375038420126168332261753492077906181752783060778246193897054447947144341086955087e-59",
+      "pass_relative_1e_40": true
+    },
+    {
+      "field": "capacity_scaled",
+      "low_dps": 80,
+      "high_dps": 110,
+      "relative_difference": "5.93723882465904040397606838810639171321610450604362313160892060037698189090857339262474543055071802e-59",
+      "pass_relative_1e_40": true
+    },
+    {
+      "field": "lambda_over_endpoint_squared",
+      "low_dps": 80,
+      "high_dps": 110,
+      "relative_difference": "2.138937892517101200191470079782536133936978581902144694100768128968328797943018276079996426901608759e-70",
+      "pass_relative_1e_40": true
+    },
+    {
+      "field": "R_scaled",
+      "low_dps": 80,
+      "high_dps": 110,
+      "relative_difference": "3.493548135621148908229708214356832705404427863172024295494108073952596577317233732789648143811859848e-70",
+      "pass_relative_1e_40": true
+    },
+    {
+      "field": "endpoint_zero_minimum",
+      "low_dps": 80,
+      "high_dps": 110,
+      "relative_difference": "2.504776834189157323411093234913617491486446440697144444929022946296110768962037618306443146935536154e-56",
+      "pass_relative_1e_40": true
+    }
+  ]
+}
