@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 294 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 295 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -419,3 +419,4 @@ write set for `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED`.
 | `041_goal040_postclose_requirements_audit.md` | Goal 040 post-close reviewer guards (non-normative) | `7ca84c88c6528a872613d97e57e6160c0e448d59cabce1982e92ea8d20a223f7` |
 | `proshka/PROSHKA_VERDICT_NOESCAPE_F_ONLY_2026-11-02.md` | Proshka verdict/source review | `f4e35bcefe9b4cdf1a9fffbc35a1c7d1e430ae64b7bd652815fd3fe6163fe5e6` |
 | `proshka/PROSHKA_VERDICT_NOESCAPE_COMPLEMENT_2026-11-02.md` | Proshka verdict/source review | `ff83ab955d08ba5e2eec6586e53568304f4f3d32161915389e48fc3ee8e5106d` |
+| `proshka/SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_PAPER_AUDIT_2026-11-02.md` | Independent PAPER audit — moving-kappa rank and full residual CONFIRMED; signed upper count open | `a52f2fd910bf298ae54b0a96fa4a3d31045aa278f6224c4ff3f3b1040ec30081` |
