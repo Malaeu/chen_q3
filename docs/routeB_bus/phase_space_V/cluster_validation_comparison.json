@@ -1,0 +1,56 @@
+{
+  "main_dps": 180,
+  "validation_dps": 220,
+  "main_independent_matrix_difference": "1.78334070017613424712815502568725661295894366633732449915442198309751485111659316773200438229460715838905943552332125922e-179",
+  "validation_independent_matrix_difference": "2.03610891591704804174819334103760176864881244239355147565529492329874298225072495088985350132967824366223274164720710085e-219",
+  "levels": [
+    {
+      "i": 0,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 1,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 2,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 3,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 4,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 5,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 6,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    },
+    {
+      "i": 7,
+      "V_absolute_difference": "0.0",
+      "arch_absolute_difference": "0.0",
+      "spatial_absolute_difference": "0.0"
+    }
+  ]
+}

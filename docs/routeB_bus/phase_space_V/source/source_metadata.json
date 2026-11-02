@@ -1,0 +1,20 @@
+[
+  {
+    "path": "PROSHKA_VERDICT_PHASE_SPACE_V_2026-11-02.md",
+    "git_blob": "5a6ddc3b7de2bc46199bea691983e90a589f92eb",
+    "sha256": "4491558db031348336e78a81229fefe941de817240dc61636906fb7fa4dffb26",
+    "source_ref": "f73901c"
+  },
+  {
+    "path": "break_sign_keep_shape.py",
+    "git_blob": "d9940cc1c31691dbf333aa617076e7ef27f3dca6",
+    "sha256": "5c3ef7639ed308fc2b03a0fadc1eb610d5a861a92113ba98ede8d22910cde756",
+    "source_ref": "ee423768fac7fc7ed721c6cdbf64940252f0c565"
+  },
+  {
+    "path": "shake_probe.py",
+    "git_blob": "36c9af1fc61eabbf18a2a94660ca7dfacfffbd52",
+    "sha256": "6d5b8fa426aefdd67092b1c7cf7ed130f13d76e6e5b63076754b240ccfcc7b38",
+    "source_ref": "ee423768fac7fc7ed721c6cdbf64940252f0c565"
+  }
+]
