@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "scope": "Independent finite spatial normalization controls only",
+  "dps": 80,
+  "D_projection_error": "2.10843958864610464486971481025e-81",
+  "Fourier_weak_identity_errors": [
+    "2.63554948580763080608714351282e-82",
+    "1.91870898753163179682061960473e-81",
+    "2.10843958864610464486971481025e-81"
+  ],
+  "mixed_correlation_errors": [
+    "1.58132969148457848365228610769e-81",
+    "1.05421979432305232243485740513e-81",
+    "1.05421979432305232243485740513e-81"
+  ],
+  "alternative_projection_error": "1.58132969148457848365228610769e-81",
+  "green_matrix_error": "2.10843958864610464486971481025e-80",
+  "alternative_skew_error": "1.90125829991048827969626735808e-80",
+  "new_eigenproblems": 0
+}

@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "dps": 80,
+  "scope": "Independent small-carrier projection and shifted-atom control; endpoint kernel limit control, not a new CCM scan",
+  "prolate_projection_error": "6.74700668366753486358308739281e-80",
+  "W_symmetry_error": "5.34230496540476383233211832182e-80",
+  "generic_real_symmetric_matrix_commutator": "-1.72101408756775346133641142823e-81",
+  "prime_regular_volume": "-0.755718746546471134216874910043",
+  "prime_shifted_jump": "0.755718746546471134216874910043",
+  "regular_formula_error": "0.0",
+  "total_shifted_atom": "0.0",
+  "arch_endpoint_kernel_flux_controls": [
+    {
+      "alpha": "0.5",
+      "h": "0.0001",
+      "relative_kernel_flux_error": "0.000128804503208145613531916231398"
+    },
+    {
+      "alpha": "0.5",
+      "h": "0.00000001",
+      "relative_kernel_flux_error": "0.0000000128801419019573463445977065655"
+    },
+    {
+      "alpha": "0.5",
+      "h": "0.000000000001",
+      "relative_kernel_flux_error": "1.28801418711145682897393260052e-12"
+    },
+    {
+      "alpha": "1.5",
+      "h": "0.0001",
+      "relative_kernel_flux_error": "0.000148800660589237966512497941119"
+    },
+    {
+      "alpha": "1.5",
+      "h": "0.00000001",
+      "relative_kernel_flux_error": "0.0000000148801418635303960118314783823"
+    },
+    {
+      "alpha": "1.5",
+      "h": "0.000000000001",
+      "relative_kernel_flux_error": "1.4880141871110725594698437803e-12"
+    }
+  ],
+  "new_CCM_eigenproblems": 0
+}

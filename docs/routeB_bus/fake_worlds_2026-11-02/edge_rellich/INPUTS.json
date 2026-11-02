@@ -1,0 +1,190 @@
+{
+  "repository": "Malaeu/chen_q3",
+  "base": "05c177921c8c3f88eef958875f949f0dab691d94",
+  "inputs": [
+    {
+      "local_name": "ledger_dh_m120_q108_native.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m120_q108_native.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "7eed81a80fc22118a1f51caef1b38dde07c551f4",
+      "bytes": 99227,
+      "sha256": "b17311b1bb5d0e322e1a4671e338aac7fb294bc59387ee29647d916dfdc56779"
+    },
+    {
+      "local_name": "ledger_dh_m120_q63.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m120_q63.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "02e1e6c23756584c82e17535fc3e38d488f9896b",
+      "bytes": 99160,
+      "sha256": "2987eb59ae550ed9e1223d2698825e3cae1e80b0a898ac313e03adb62965f004"
+    },
+    {
+      "local_name": "ledger_dh_m120_q65.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m120_q65.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "fa2de6b8618a4b110e8ae24ee7729114de3d9711",
+      "bytes": 99170,
+      "sha256": "aa0b61083c6816a1a0bcd5cdc2b49474383ab7f1a701cd148b0f51ac04028ed1"
+    },
+    {
+      "local_name": "ledger_dh_m55_q27.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m55_q27.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "b97161abbec086b37d8fe49fe1ca10d0fad2f911",
+      "bytes": 51764,
+      "sha256": "fddbaccae1184b044b975843ae8ae8f17041ab1fc4d1c89ae26a7dd9ce256eca"
+    },
+    {
+      "local_name": "ledger_dh_m55_q50_native.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m55_q50_native.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "b7cada473146c5ac76d696a06fd25371f09543fa",
+      "bytes": 51751,
+      "sha256": "6fe90d61efe3e6ee810fd4e8f0b877f12d941d3685c83511fd55064a712570d6"
+    },
+    {
+      "local_name": "ledger_dh_m80_q41.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m80_q41.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "ac2665197a1f464efcdca83e0033bc59bb0de412",
+      "bytes": 69686,
+      "sha256": "bf07e338dfb2320ca80ffe7a20c95b23b887693f82ca2b57d3cda7ee337b7a2e"
+    },
+    {
+      "local_name": "ledger_dh_m80_q73_native.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/dh_m80_q73_native.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "ccaef06827d9e88f516a67597b3df6e35c8fdec9",
+      "bytes": 69650,
+      "sha256": "5fe03e8015491aaa6c60555fe784cb75a7dd3916c0f4bd0257be91ec59a0316c"
+    },
+    {
+      "local_name": "ledger_zeta_m120_q63.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/zeta_m120_q63.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "2c998cf03577869fcc14483de6eb91449d770a66",
+      "bytes": 83419,
+      "sha256": "854582aee62980617f7f33dfd82c6548ee732a916f9ffeb1d97639be286205ca"
+    },
+    {
+      "local_name": "ledger_zeta_m120_q64.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/zeta_m120_q64.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "266b5661e63fde7c788b265e49f7d5212a0654c8",
+      "bytes": 83411,
+      "sha256": "009a83494afad204ee98a6eb9219c7c3dc80a61808cbe4ecd5b40ac6b8537919"
+    },
+    {
+      "local_name": "ledger_zeta_m120_q65.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/zeta_m120_q65.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "2f1dc9426df38f138bfc762544a17a7399f6f8f1",
+      "bytes": 83452,
+      "sha256": "10260e0c1af422335a5efd25f2fb4c12ee68123b4b15a607022c3c45e2c619eb"
+    },
+    {
+      "local_name": "ledger_zeta_m55_q27.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/zeta_m55_q27.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "048bc04bd79aaded5901a3004ff27986f34e63e9",
+      "bytes": 45455,
+      "sha256": "11da26beeab4b1e67f4cbc0eeaea0aff4d2d975944923c7a180d14fb4e58e898"
+    },
+    {
+      "local_name": "ledger_zeta_m80_q41.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/ledger_diff/ledger_cells/zeta_m80_q41.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "0bc3c1e117910b24e50d5d59619b955d6ff3fc9e",
+      "bytes": 60364,
+      "sha256": "d86cc4d34c4df6518881e8c3204468e6e34eda40bd3e1dadc21b13c5970e292a"
+    },
+    {
+      "local_name": "zeta_cell_m160_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/zeta/cell_m160_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "de4a8644bf725dd1eb1a8daaa3c857cf571aeab3",
+      "bytes": 25239,
+      "sha256": "faf84a141b5a77045dc563cb4a6bfaa6f329425f15c68df52652e1c8e9914628"
+    },
+    {
+      "local_name": "zeta_cell_m200_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/zeta/cell_m200_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "f8adbece11d4c0957d534147ede1db020aaca89b",
+      "bytes": 30636,
+      "sha256": "fe5a3513c6361b00b9d158089283f0f2bcbe758d7563ed83992ca8b6b45fae4a"
+    },
+    {
+      "local_name": "zeta_cell_m240_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/zeta/cell_m240_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "79c036b826fad759defd6a983e421b4d4a6f2d25",
+      "bytes": 35977,
+      "sha256": "566e7c60340ea5f4477925ff5e09d2c7c462ee4603bccd09d32b0e39d41dec8c"
+    },
+    {
+      "local_name": "dh_cell_m160_matched_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/cell_m160_matched_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "778969d2ea1f865aeb76e05f1444c883522d6b23",
+      "bytes": 35622,
+      "sha256": "5279a4096ec822ce2c482ed00b9bb0298d042281795c00ce57456a1b4d4d6b45"
+    },
+    {
+      "local_name": "dh_cell_m160_native_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/cell_m160_native_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "c45daa93014a6010d6e28281cc48cb2484604049",
+      "bytes": 39278,
+      "sha256": "7e1126eb8ebfa71136b0b634d55b49e6d19a455a62049120fce921f1e0a084bc"
+    },
+    {
+      "local_name": "dh_cell_m200_matched_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/cell_m200_matched_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "e48bc50884b5cf1ab3634149f5eb26f00b190675",
+      "bytes": 43455,
+      "sha256": "b0f3d8924185cbcf849d29a0f7bbee855b713b9735d9509cebf3a649f1fb0573"
+    },
+    {
+      "local_name": "dh_cell_m200_native_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/cell_m200_native_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "1ea36cc08f833f3c87da2e975721fdf328bbc0cc",
+      "bytes": 47357,
+      "sha256": "f5b797a1ba087d7498d43a41fbc16543bac8d1f307afad709db6b874a335a5b5"
+    },
+    {
+      "local_name": "dh_cell_m240_matched_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/cell_m240_matched_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "d02490958a60464c4c25de475df4105064ee61fe",
+      "bytes": 49232,
+      "sha256": "b5772ffbf23c94964b769bb33fa676396ffe7b9f82b1b10c2f34dd387ce005ac"
+    },
+    {
+      "local_name": "dh_cell_m240_native_dps120_gl192.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/cell_m240_native_dps120_gl192.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "25a76e8908e6a6ec7f4e6339b9a7e3e590a6ece9",
+      "bytes": 53362,
+      "sha256": "add2f5952ff042b3fd8663c04b877c105e70d74bc14323ce0e131cc857d4c668"
+    },
+    {
+      "local_name": "dh_zeros_extended.json",
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/edge_law/dh/dh_zeros_extended.json",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "0539b85d8d1ff32b949ebbf80ac738d58d50806a",
+      "bytes": 100142,
+      "sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36"
+    },
+    {
+      "local_name": "zeros.csv",
+      "path": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "ref": "05c177921c8c3f88eef958875f949f0dab691d94",
+      "git_blob": "e84d0cee1f5726e6f874433b7e42bdbdcd1a92af",
+      "bytes": 36465,
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+    }
+  ]
+}

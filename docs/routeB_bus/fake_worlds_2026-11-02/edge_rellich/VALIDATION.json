@@ -1,0 +1,69 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "baseline_cells": 21,
+  "zeta_cells": 8,
+  "dh_cells": 13,
+  "max_source_Rayleigh_relative_error": "1.7397758245450481171917226694105900033704327776874410300114793030158604445462721e-84",
+  "identity_max_absolute_errors": {
+    "green_matrix_error": "6.2481030781092723949171555660806623254826965746079243051216520652428319218524933e-109",
+    "alternative_skew_error": "3.9994242775155753502061806985081242277034453977524212821284082374587183394613954e-108",
+    "commutator_direct_error": "2.2819885888831181344897537158818482561230423198047011752095888543109346174448816e-108",
+    "commutator_leakage_error": "1.4636736950028018099690809649600124165847676274192968003179859690722030348812835e-109",
+    "finite_zero_split_head_error": "1.8841472292036066935601987694394341653491190549324766084093346656420359067199068e-107"
+  },
+  "fixed_vector_refinements": [
+    {
+      "input": "dh_cell_m240_native_dps120_gl192.json",
+      "low_dps": 110,
+      "high_dps": 140,
+      "low_order": 192,
+      "high_order": 256,
+      "lambda_absolute_difference": "0.0",
+      "lambda_relative_difference": "0.0",
+      "commutator_absolute_difference": "7.934279303153906411918957863304612480775759479930155988471892958384065096483056e-105",
+      "commutator_relative_difference": "1.1186315778245637448822895294001296989170844794934343825064894431310827292169025e-78",
+      "finite_boundary_absolute_difference": "0.0",
+      "finite_boundary_relative_difference": "0.0",
+      "weak_total_absolute_difference": "0.0",
+      "weak_total_relative_difference": "0.0",
+      "weak_boundary_absolute_difference": "0.0",
+      "weak_boundary_relative_difference": "0.0"
+    },
+    {
+      "input": "ledger_zeta_m55_q27.json",
+      "low_dps": 110,
+      "high_dps": 140,
+      "low_order": 192,
+      "high_order": 256,
+      "lambda_absolute_difference": "0.0",
+      "lambda_relative_difference": "0.0",
+      "commutator_absolute_difference": "0.0",
+      "commutator_relative_difference": "0.0",
+      "finite_boundary_absolute_difference": "0.0",
+      "finite_boundary_relative_difference": "0.0",
+      "weak_total_absolute_difference": "0.0",
+      "weak_total_relative_difference": "0.0",
+      "weak_boundary_absolute_difference": "0.0",
+      "weak_boundary_relative_difference": "0.0"
+    },
+    {
+      "input": "zeta_cell_m240_dps120_gl192.json",
+      "low_dps": 110,
+      "high_dps": 140,
+      "low_order": 192,
+      "high_order": 256,
+      "lambda_absolute_difference": "4.0782557769875420037892164735012829550599830627472318812312252187821586455095611e-109",
+      "lambda_relative_difference": "1.7397758245453227756578641470864782632114066361337350904907827227131873204861093e-84",
+      "commutator_absolute_difference": "2.4638216148830267099581539470949008265917805838018674065196009080470847700517901e-105",
+      "commutator_relative_difference": "8.1170448516317368402357781275116036546397157519312110354295372854607557962116106e-83",
+      "finite_boundary_absolute_difference": "2.6869142179994001701400827306527339694527666799539196222293975652115089707221384e-119",
+      "finite_boundary_relative_difference": "1.1635225420038883525490542281121749951501250519730570241838793630205822356487168e-79",
+      "weak_total_absolute_difference": "1.5617669873217900500137406448987039111320875008191175716952863932493843894143957e-105",
+      "weak_total_relative_difference": "1.0605936965608946140402880211613639939662916536744604512655266075265474380621296e-82",
+      "weak_boundary_absolute_difference": "8.7170001816115558000950938171934007989198516905241225402571571747174212401120344e-119",
+      "weak_boundary_relative_difference": "5.9492894469269994385692644069190103499950084257053480587528173970109873510111369e-96"
+    }
+  ],
+  "interval_certification": false,
+  "new_eigenproblems": 0
+}
