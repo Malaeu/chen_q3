@@ -1,0 +1,16 @@
+{
+  "canonical_report": {
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_POLYLOG_REENTRY_CENTERED_BUDGET_2026-11-02.md",
+    "ref": "174263d1a095e5cc680cf9e5c5e2ee543106f2bd",
+    "branch": "proshka_inbox_2026-10-31",
+    "git_blob": "4ac14fcd2520657505cc6f41083a881887e97bea",
+    "sha256": "c90a952158413c500a413a799cbc8ba4f8766f56ea870648ff17e7bbd05dc0b6",
+    "companion_directory": "docs/routeB_bus/proshka/polylog_reentry_2026-11-02/"
+  },
+  "audited_unformatted_report": {
+    "ref": "8ef60134f17e398f0d7699a3aec8d74dff8b6d79",
+    "sha256": "dad2cf2f9c2bdfe61a722ebf4f0ac0e3fc9fb6b0afed07c528a4d0de1fc929e1"
+  },
+  "owner_clarification": "The canonical and unformatted reports are the same work; the audit of the 8ef6013 report is accepted.",
+  "scope": "Provenance clarification only. Original source pins and audit evidence remain unchanged; no new mathematical audit or companion-script replay is claimed."
+}
