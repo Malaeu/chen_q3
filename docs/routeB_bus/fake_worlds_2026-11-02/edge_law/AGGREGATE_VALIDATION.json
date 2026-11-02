@@ -1,0 +1,59 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "checks": [
+    {
+      "path": "zeta/cell_m160_dps120_gl192.json",
+      "sha256": "faf84a141b5a77045dc563cb4a6bfaa6f329425f15c68df52652e1c8e9914628",
+      "norm_error": "0.0",
+      "R_relative_error": "2.377305184016368099206440267112352969998544540560981397029145288322208e-96"
+    },
+    {
+      "path": "zeta/cell_m200_dps120_gl192.json",
+      "sha256": "fe5a3513c6361b00b9d158089283f0f2bcbe758d7563ed83992ca8b6b45fae4a",
+      "norm_error": "7.143671195514218638848647176908380996574437467642491632594536520172704e-102",
+      "R_relative_error": "8.119485324948827300720601373993409988858524833103280986748493895452663e-92"
+    },
+    {
+      "path": "zeta/cell_m240_dps120_gl192.json",
+      "sha256": "566e7c60340ea5f4477925ff5e09d2c7c462ee4603bccd09d32b0e39d41dec8c",
+      "norm_error": "7.143671195514218638848647176908380996574437467642491632594536520172704e-102",
+      "R_relative_error": "2.71689919038232145368719534418488665843011576669661014516482949994478e-90"
+    },
+    {
+      "path": "dh/cell_m160_matched_dps120_gl192.json",
+      "sha256": "5279a4096ec822ce2c482ed00b9bb0298d042281795c00ce57456a1b4d4d6b45",
+      "norm_error": "0.0",
+      "R_relative_error": "0.0"
+    },
+    {
+      "path": "dh/cell_m160_native_dps120_gl192.json",
+      "sha256": "7e1126eb8ebfa71136b0b634d55b49e6d19a455a62049120fce921f1e0a084bc",
+      "norm_error": "0.0",
+      "R_relative_error": "9.00445344875625804307624625235475562192515382013565973942917873286844e-102"
+    },
+    {
+      "path": "dh/cell_m200_matched_dps120_gl192.json",
+      "sha256": "b0f3d8924185cbcf849d29a0f7bbee855b713b9735d9509cebf3a649f1fb0573",
+      "norm_error": "0.0",
+      "R_relative_error": "1.176559156709282407025564327441194031900985252598727250175607442603909e-101"
+    },
+    {
+      "path": "dh/cell_m200_native_dps120_gl192.json",
+      "sha256": "f5b797a1ba087d7498d43a41fbc16543bac8d1f307afad709db6b874a335a5b5",
+      "norm_error": "0.0",
+      "R_relative_error": "2.263148916356671939387344585200867389840585147477672089044195815598234e-101"
+    },
+    {
+      "path": "dh/cell_m240_matched_dps120_gl192.json",
+      "sha256": "b5772ffbf23c94964b769bb33fa676396ffe7b9f82b1b10c2f34dd387ce005ac",
+      "norm_error": "0.0",
+      "R_relative_error": "2.430814410222467399267736365027368553656997524342968261447588857394396e-101"
+    },
+    {
+      "path": "dh/cell_m240_native_dps120_gl192.json",
+      "sha256": "add2f5952ff042b3fd8663c04b877c105e70d74bc14323ce0e131cc857d4c668",
+      "norm_error": "0.0",
+      "R_relative_error": "9.431945077803369392673772972863036679464042189335755220322360826111656e-102"
+    }
+  ]
+}

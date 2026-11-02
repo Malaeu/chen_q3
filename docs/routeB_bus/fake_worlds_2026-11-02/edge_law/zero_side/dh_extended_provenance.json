@@ -1,0 +1,33 @@
+{
+  "status": "NUMERICAL_PREFIX_NOT_CERTIFIED",
+  "dps": 120,
+  "missing_cells": [],
+  "zero_census_sha256": "542e2a0a1c8c001d837c0723d1010708182ea90f2dfe38ba7de725c998830e36",
+  "source_files": [
+    {
+      "file": "cell_m160_matched_dps120_gl192.json",
+      "sha256": "5279a4096ec822ce2c482ed00b9bb0298d042281795c00ce57456a1b4d4d6b45"
+    },
+    {
+      "file": "cell_m160_native_dps120_gl192.json",
+      "sha256": "7e1126eb8ebfa71136b0b634d55b49e6d19a455a62049120fce921f1e0a084bc"
+    },
+    {
+      "file": "cell_m200_matched_dps120_gl192.json",
+      "sha256": "b0f3d8924185cbcf849d29a0f7bbee855b713b9735d9509cebf3a649f1fb0573"
+    },
+    {
+      "file": "cell_m200_native_dps120_gl192.json",
+      "sha256": "f5b797a1ba087d7498d43a41fbc16543bac8d1f307afad709db6b874a335a5b5"
+    },
+    {
+      "file": "cell_m240_matched_dps120_gl192.json",
+      "sha256": "b5772ffbf23c94964b769bb33fa676396ffe7b9f82b1b10c2f34dd387ce005ac"
+    },
+    {
+      "file": "cell_m240_native_dps120_gl192.json",
+      "sha256": "add2f5952ff042b3fd8663c04b877c105e70d74bc14323ce0e131cc857d4c668"
+    }
+  ],
+  "code_sha256": "245f9a9c3112f15aadc80e40921f3d306f11d1e5e5c772967114fdb504f3c211"
+}

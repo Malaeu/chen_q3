@@ -1,0 +1,22 @@
+"""Summarize EDGE_LAW_v1 and compare the selected precision/quadrature rebuild."""
+from pathlib import Path
+import json,csv,gzip,hashlib
+import mpmath as mp
+P=Path(__file__).resolve().parent;mp.mp.dps=200
+cells=[json.loads((P/f'cell_m{m}_dps120_gl192.json').read_text()) for m in [160,200,240]];a=cells[-1];b=json.loads((P/'cell_m240_dps160_gl256.json').read_text());v=dict(m=240,main_dps=120,main_order=192,validation_dps=160,validation_order=256)
+for key in ['complement_minimum','complement_rayleigh','endpoint_f_b','endpoint_squared','edge_scale','R','complement_gap']:
+ x=mp.mpf(a[key]);y=mp.mpf(b[key]);v[key+'_relative_difference']=mp.nstr(abs(x/y-1),120);v[key+'_absolute_difference']=mp.nstr(abs(x-y),120)
+f=mp.matrix(a['complement_f']);g=mp.matrix(b['complement_f']);v['physical_vector_difference_up_to_sign']=mp.nstr(min(mp.norm(f-g),mp.norm(f+g)),120)
+with gzip.open(a['dense_cache_local'],'rt') as z:low=json.load(z)
+with gzip.open(b['dense_cache_local'],'rt') as z:high=json.load(z)
+AA=mp.matrix(low['A']);AB=mp.matrix(high['A']);UU=mp.matrix(low['U']);UV=mp.matrix(high['U']);diff=AA-AB
+v['matrix_max_entry_difference']=mp.nstr(max(abs(x) for x in diff),120);v['matrix_Frobenius_difference']=mp.nstr(mp.norm(diff),120);v['matrix_Frobenius_difference_over_complement_minimum']=mp.nstr(mp.norm(diff)/abs(mp.mpf(b['complement_minimum'])),120);v['same_QR_gauge_U_difference']=mp.nstr(mp.norm(UU-UV),120);v['scope']='Numerical work-precision and quadrature comparison, not an interval certificate;180-digit zero ordinates retained.'
+(P/'validation.json').write_text(json.dumps(v,indent=2)+'\n')
+keys=['m','q','L','Omega','T','complement_minimum','complement_rayleigh','complement_gap','endpoint_f_b','endpoint_squared','edge_scale','R','finite_prediction_pass','QR_reconstruction_residual','U_orthogonality_residual','scaled_E_sigma_lower_bound','scaled_E_condition_upper_bound','rank_margin_lower_bound_over_QR_residual','compressed_eigenpair_residual','Rayleigh_minus_eigenvalue','seconds']
+with (P/'results.csv').open('w',newline='') as z:
+ w=csv.DictWriter(z,fieldnames=keys);w.writeheader();w.writerows({k:d[k] for k in keys} for d in cells)
+passed=all(d['finite_prediction_pass'] for d in cells)
+lines=['# EDGE_LAW_v1: new zeta cells','','**DIAGNOSTIC_NEVER_A_PROOF.** The preregistered finite prediction R∈[3,5] '+('passes all three cells.' if passed else 'fails in at least one cell; the prediction is withdrawn.'),'','Literal N=m,L=log m and T=1.1*2πm/L are retained. U spans the physical row space of the positive-zero sampling matrix; f is the unit minimum eigenvector of UᵀAU lifted into the full even cosine carrier. The endpoint is f(L/2)=sum(d_n f_n)/sqrt(L). We use R=(fᵀAf)/[|f(L/2)|² log(T)/(πT)], and retain the compressed eigenvalue separately as a consistency check.','','|m|q|lambda|endpoint squared|R|','|---:|---:|---:|---:|---:|']
+for d in cells:lines.append(f"|{d['m']}|{d['q']}|{float(d['complement_minimum']):.12g}|{float(d['endpoint_squared']):.12g}|{float(d['R']):.12g}|")
+lines+=['','Main matrices use120dps and eight-panel GL192. J-perp is formed by a row-scaled skinny Householder QR, preserving the raw row space. QR reconstruction is evaluated with30 additional digits, and a triangular inverse gives the reported singular-value lower bound/condition upper bound. These are numerical controls, not interval rank certificates. All Mangoldt powers and the original pole are retained.','',f"At m240,160dps/GL256 changes lambda relatively by {float(v['complement_minimum_relative_difference']):.4g}, endpoint squared by {float(v['endpoint_squared_relative_difference']):.4g}, and R by {float(v['R_relative_difference']):.4g}. The source matrix Frobenius difference divided by lambda is {float(v['matrix_Frobenius_difference_over_complement_minimum']):.4g}.",'','The full physical vectors are retained for the independent zero-side audit. Dense A/U/E caches are local/tmp artifacts and excluded from publication. Compact cells, predictions, run notes, code, CSV and validation constitute the publication subset. The initial reporting failure and restart are documented in RUN_NOTES.md; the prediction was not changed.','','This establishes only the stated finite diagnostic. It does not prove an asymptotic endpoint law, a uniform bound, or RH.','','Replay:','```bash','for m in 160 200 240; do uv run --with mpmath edge.py "$m" 120 192; done','uv run --with mpmath edge.py 240 160 256','uv run --with mpmath finalize.py','```']
+(P/'RESULT.md').write_text('\n'.join(lines)+'\n');print(json.dumps(v,indent=2))
