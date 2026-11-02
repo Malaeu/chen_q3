@@ -1,6 +1,6 @@
 # Route B bus mirror manifest
 
-Proshka mirror from `rh_lean_01_2026`; 295 mirrored source files plus `CHANNEL_RULE.md`.
+Proshka mirror from `rh_lean_01_2026`; 303 mirrored source files plus `CHANNEL_RULE.md`.
 
 | File | Description | SHA-256 |
 |---|---|---|
@@ -420,3 +420,11 @@ write set for `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED`.
 | `proshka/PROSHKA_VERDICT_NOESCAPE_F_ONLY_2026-11-02.md` | Proshka verdict/source review | `f4e35bcefe9b4cdf1a9fffbc35a1c7d1e430ae64b7bd652815fd3fe6163fe5e6` |
 | `proshka/PROSHKA_VERDICT_NOESCAPE_COMPLEMENT_2026-11-02.md` | Proshka verdict/source review | `ff83ab955d08ba5e2eec6586e53568304f4f3d32161915389e48fc3ee8e5106d` |
 | `proshka/SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_PAPER_AUDIT_2026-11-02.md` | Independent PAPER audit — moving-kappa rank and full residual CONFIRMED; signed upper count open | `a52f2fd910bf298ae54b0a96fa4a3d31045aa278f6224c4ff3f3b1040ec30081` |
+| `proshka/PROSHKA_VERDICT_KERNEL_ORTHOGONALITY_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `70c92c3075055b1fca061df15decb56d966e4495a0461c0c86e63809594c3346` |
+| `proshka/PROSHKA_VERDICT_PRIME_COMPLEMENT_FLOOR_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `3a827900de98c45d02ce617f606c4a0ab1fa7b337ed846ea12f7eb9db301b3fa` |
+| `proshka/PROSHKA_VERDICT_QUIET_SPACE_INDEX_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `f1e6e3634a5829744c98faeb9e3e01535fd29c0ac976c50fefb19bdc0ea97e34` |
+| `proshka/PROSHKA_VERDICT_SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `fb0176935d103209bea3feff8362605024da7635c568768dc5355f441e5ddd14` |
+| `proshka/PROSHKA_VERDICT_PENALIZED_ENTROPY_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `4fd05675bb93b06c2ebb7846e7840dd12cec1c11f75bbfaf5a87d69d9ecfc46f` |
+| `proshka/PROSHKA_VERDICT_RADICAL_CONCENTRATION_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `dbd68ab3eec34c6c3f67180d051340bb17b29f3337831137606d34517dca14b6` |
+| `proshka/PROSHKA_NEXT_STEP_BACKGROUND_SECOND_MOMENT_2026-11-01.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `812106f5b16f2c2d0a4d65c1d86a32a749dcef127d2243e92e6dded2129a3006` |
+| `proshka/PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `f742f99354279feda6888a10d71b22dea3b9e27a2dc36da2d442b1356bd501d3` |
