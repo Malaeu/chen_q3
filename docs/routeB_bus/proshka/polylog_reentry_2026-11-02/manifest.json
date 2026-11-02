@@ -1,0 +1,18 @@
+{
+  "PROSHKA_VERDICT_POLYLOG_REENTRY_CENTERED_BUDGET_2026-11-02.md": {
+    "bytes": 33062,
+    "sha256": "6e6623d14b7f6a0e05ebca37787cb7e6454018174c60b5df8bfae59fc0f67a6f"
+  },
+  "rh_polylog_reentry/checks.py": {
+    "bytes": 4242,
+    "sha256": "8410f847144f8a36d095a3d0d1eb22997fa580f335f6e56e1fd5aeefbdb7ea07"
+  },
+  "rh_polylog_reentry/registration.json": {
+    "bytes": 783,
+    "sha256": "03021d69cc3bbbbfe7e181de639a95c7af04db7eca8adc69a17aff5f801f2720"
+  },
+  "rh_polylog_reentry/results.json": {
+    "bytes": 1413,
+    "sha256": "53bf1c20b477c4ffec212e0d339aa398d837e647f1b9e6dd8d168d8390e4c19c"
+  }
+}

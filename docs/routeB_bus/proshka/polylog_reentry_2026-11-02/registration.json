@@ -1,0 +1,12 @@
+{
+  "task": "POLYLOG_EVEN_RECEIVER_AND_CENTERED_DIVISOR_BUDGET",
+  "scope": "new proofs plus finite normalization controls, not RH closure",
+  "predictions_registered_before_execution": [
+    "P1: the phase-locked translated quartet gives exactly -16*nu*cosh(eta*t)^2",
+    "P2: two exact even contacts can be imposed inside the low band with Gram lower bound at least 1/2 for L>=16",
+    "P3: centered multiplier |sum(k^-1/2+it)-N^(1/2+it)/(1/2+it)| <= 8*sqrt(1+|t|), uniformly in N",
+    "P4: the low-band centered Gram has a positive upper budget O(log(m)^2), not a source lower bound",
+    "P5: centering retains the full output-space norm and the exact floor compensation",
+    "P6: a bounded positive auxiliary form alone cannot imply a subpolynomial source lower floor"
+  ]
+}
