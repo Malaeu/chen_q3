@@ -1,0 +1,29 @@
+[
+  {
+    "case": "even",
+    "cwd": "/tmp/q1_empty_run",
+    "python_isolated": true,
+    "timeout_seconds": 150,
+    "exit_code": 124,
+    "result": "TIMEOUT_NOT_REPRODUCED",
+    "note": "Original completed -I replay retained separately; only cwd differs."
+  },
+  {
+    "case": "odd",
+    "cwd": "/tmp/q1_empty_run",
+    "python_isolated": true,
+    "timeout_seconds": 150,
+    "exit_code": 124,
+    "result": "TIMEOUT_NOT_REPRODUCED",
+    "note": "Original completed -I replay retained separately; only cwd differs."
+  },
+  {
+    "case": "polyP2",
+    "cwd": "/tmp/q1_empty_run",
+    "python_isolated": true,
+    "timeout_seconds": 120,
+    "exit_code": 124,
+    "result": "TIMEOUT_NOT_REPRODUCED",
+    "note": "Original completed -I replay retained separately; only cwd differs."
+  }
+]

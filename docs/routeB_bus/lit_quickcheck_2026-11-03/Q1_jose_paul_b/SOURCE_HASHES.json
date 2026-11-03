@@ -1,0 +1,162 @@
+[
+  {
+    "path": "source/README.md",
+    "bytes": 7631,
+    "sha256": "a2fdae48f22af35c57c27cc301f4889cf58305abdfe9aa7de587ffb6d9f8f790",
+    "git_blob": "38af3675717715772737185eaa0591696df8df60",
+    "expected_git_blob": "38af3675717715772737185eaa0591696df8df60",
+    "matches": true
+  },
+  {
+    "path": "source/requirements.txt",
+    "bytes": 61,
+    "sha256": "c8efa43a25067de5577d2c3b9ce547536cc7def2522ebe7638216787d028a131",
+    "git_blob": "4d9e07c94312954e31183b923f1f48e08e3f3b11",
+    "expected_git_blob": "4d9e07c94312954e31183b923f1f48e08e3f3b11",
+    "matches": true
+  },
+  {
+    "path": "source/docs/AUDIT.md",
+    "bytes": 20390,
+    "sha256": "cc44f6669b7d4e0f242656ea90f501dfbf794475547d7b82b06ec202635e1514",
+    "git_blob": "1e989e47bd7b73c5ed43c85448826aebb5753375",
+    "expected_git_blob": "1e989e47bd7b73c5ed43c85448826aebb5753375",
+    "matches": true
+  },
+  {
+    "path": "source/semilocal/poly_upper.py",
+    "bytes": 9740,
+    "sha256": "81cabc3b36864d9a2f82b12680b129f30035fb526529314655bc9637f3e9f6de",
+    "git_blob": "9511af4c04f366b4ccbc3d35ff0c68fdfca53d29",
+    "expected_git_blob": "9511af4c04f366b4ccbc3d35ff0c68fdfca53d29",
+    "matches": true
+  },
+  {
+    "path": "source/semilocal/collate.py",
+    "bytes": 4319,
+    "sha256": "742ad5715cf8776248fddc0be17458aea6bf855b350d81ecb366d40871be44a5",
+    "git_blob": "a5f051452fd053f44696a8068199d2ed991602fa",
+    "expected_git_blob": "a5f051452fd053f44696a8068199d2ed991602fa",
+    "matches": true
+  },
+  {
+    "path": "source/semilocal/cert_semilocal.py",
+    "bytes": 16474,
+    "sha256": "508ece9fb281b7e13a902babf241e356116b69a9ae7d6ca5923b06d02fb44043",
+    "git_blob": "3805431882a334705a08a77b0a7537604a11bff1",
+    "expected_git_blob": "3805431882a334705a08a77b0a7537604a11bff1",
+    "matches": true
+  },
+  {
+    "path": "source/weil_certificate/cert_weil.py",
+    "bytes": 13476,
+    "sha256": "a5ed5ce0af6cb6c8e6a9246463ace0011f51189e5be116f2b0fa1a30393de97e",
+    "git_blob": "8eef17ab746e87bb18860d8e4017140689851e98",
+    "expected_git_blob": "8eef17ab746e87bb18860d8e4017140689851e98",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/cert_P2_L559_1000_T600_N270_p0.json",
+    "bytes": 1666,
+    "sha256": "279f1e4ce6906392e1a27d880ffc1d309b6c1d766a1e3b06726b0e5635899772",
+    "git_blob": "7ac189f387277dfd60b9fee7d5f96258ee2a6431",
+    "expected_git_blob": "7ac189f387277dfd60b9fee7d5f96258ee2a6431",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/cert_P3_L323_400_T300_N240_p0.json",
+    "bytes": 1674,
+    "sha256": "4bcf7539d27eaeda40b969dd1fbea2e4188f3460b9b83b5b3151ccbd17525179",
+    "git_blob": "999a2559434625e9522855aa1d90e5c5add6ed54",
+    "expected_git_blob": "999a2559434625e9522855aa1d90e5c5add6ed54",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/cert_P5_L973_1000_T1200_N860_p1.json",
+    "bytes": 2077,
+    "sha256": "c4da5aa2df3ca649a94b754b8157a676debba8c0fe662ecd19ca8325d3326953",
+    "git_blob": "dcd56d7b929521f9cac53ba4d8ef8278f64dcbc3",
+    "expected_git_blob": "dcd56d7b929521f9cac53ba4d8ef8278f64dcbc3",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/polyupper_P5_L1949_1000_D81_p1.json",
+    "bytes": 4427,
+    "sha256": "508e216231caccfea15e79757c5f617213d71d2f3ed48c391a9004a44e68bb9b",
+    "git_blob": "7bd64f31df0bb99e5adf705b5eaa6bf19dd16a56",
+    "expected_git_blob": "7bd64f31df0bb99e5adf705b5eaa6bf19dd16a56",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/polyupper_P2_L11147_10000_D61_p1.json",
+    "bytes": 3192,
+    "sha256": "81fc9e3f45db063ba3cdb7a37d1596e61c114be6e7c1a00f3a7f9da150c9d6e7",
+    "git_blob": "b117a59124a7f6f7ee865f9a75ad748f1501590c",
+    "expected_git_blob": "b117a59124a7f6f7ee865f9a75ad748f1501590c",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/cert_P5_L973_1000_T600_N460_p0.json",
+    "bytes": 2072,
+    "sha256": "152c1afa18ce88be10936fb20108a501020d2e891b1be788a1d57fc029b66453",
+    "git_blob": "7df14c583ab03027e3c8889c4272760fb8fd2713",
+    "expected_git_blob": "7df14c583ab03027e3c8889c4272760fb8fd2713",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/cert_P2_L557_1000_T1200_N520_p1.json",
+    "bytes": 1675,
+    "sha256": "d53fa2ff3fdc4e4a50cd32d576a1f395e49950134600e090f2b1b773ea3d051d",
+    "git_blob": "27877c774a08c0e66d46d17555d72f3a47555723",
+    "expected_git_blob": "27877c774a08c0e66d46d17555d72f3a47555723",
+    "matches": true
+  },
+  {
+    "path": "published/semilocal/results/polyupper_P3_L8073_5000_D71_p1.json",
+    "bytes": 3798,
+    "sha256": "938b6eb0e4183d4bda6cc08b827bc39d0d65fbbde0e806d49b63040a4819fb08",
+    "git_blob": "72219af35efc085fe873f8989bbc088b6af3f5c9",
+    "expected_git_blob": "72219af35efc085fe873f8989bbc088b6af3f5c9",
+    "matches": true
+  },
+  {
+    "path": "published/weil_certificate/results/cert_L31_32_T600_N460_p0.json",
+    "bytes": 1447,
+    "sha256": "980816339589c27165e76389da3ef051c9e0b15043d44c216a65529160565d09",
+    "git_blob": "6aa9e7fb78f530a24c0e6036eb7e94e6cf33f60a",
+    "expected_git_blob": "6aa9e7fb78f530a24c0e6036eb7e94e6cf33f60a",
+    "matches": true
+  },
+  {
+    "path": "published/weil_certificate/results/cert_L31_32_T600_N460_p1.json",
+    "bytes": 1444,
+    "sha256": "f0b2dfea9ce720ccd53e32bc155bbfa6203d45b3703a30dd1ce46bfb144326f0",
+    "git_blob": "4abf3f740615e06cc13cce19b750b30d4291b967",
+    "expected_git_blob": "4abf3f740615e06cc13cce19b750b30d4291b967",
+    "matches": true
+  },
+  {
+    "path": "published/weil_certificate/results/cert_L4_5_T200_N200_p1.json",
+    "bytes": 1435,
+    "sha256": "ef2f18bde1149071410cff73d2fd30bfe9b7737a738dce92d49a72134aab0d71",
+    "git_blob": "3c252df5d1ff6043a74f14721eaa9bc419f1c0a9",
+    "expected_git_blob": "3c252df5d1ff6043a74f14721eaa9bc419f1c0a9",
+    "matches": true
+  },
+  {
+    "path": "published/weil_certificate/results/cert_L4_5_T200_N200_p0.json",
+    "bytes": 1438,
+    "sha256": "8769a92bf91fbd1d52a462d9a4f104871ec21c1bc77fc86c83f83c30b649f963",
+    "git_blob": "30bd817755cc636d89955557ca03f3eb70990fdc",
+    "expected_git_blob": "30bd817755cc636d89955557ca03f3eb70990fdc",
+    "matches": true
+  },
+  {
+    "path": "source/LICENSE",
+    "bytes": 1068,
+    "sha256": "cb5140fc99767b8c155f91f78ec8bdb55a19fa390152248adc25d6febc25d74d",
+    "git_blob": "28f268fa25e5ef62c12ede3c44d96cbafd27cf99",
+    "expected_git_blob": "28f268fa25e5ef62c12ede3c44d96cbafd27cf99",
+    "matches": true
+  }
+]

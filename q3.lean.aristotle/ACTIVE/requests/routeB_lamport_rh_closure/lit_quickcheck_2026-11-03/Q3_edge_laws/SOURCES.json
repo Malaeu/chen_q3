@@ -1,0 +1,26 @@
+[
+  {
+    "record": 23832560,
+    "title": "Edge law, Hadamard formula, and echo and tail laws for eigenfunctions of the localized Weil quadratic form: research notes",
+    "url": "https://zenodo.org/api/records/23832560/files/AlexGenusCore/weil-edge-laws-v0.1.2.zip/content",
+    "bytes": 375921,
+    "sha256": "6eb20c41cfbd7eba050f3bdc880116cd541390d8fac3ad5be02204089a24405c",
+    "local_path": "/tmp/lit_external_archives/weil-edge-laws-v0.1.2.zip",
+    "published_source": "External full sources retained under /tmp/lit_external_sources or /tmp/lit_external_archives; URL, hashes, pages and extracted formulas published.",
+    "accessed_utc": "2026-11-03T04:06:11.742898+00:00",
+    "github_repository": "AlexGenusCore/weil-edge-laws",
+    "github_commit": "84f0fbf22485106a53c30c858407a126c669153c"
+  },
+  {
+    "record": 23834265,
+    "title": "Edge laws, a Hadamard formula and kink singularities for eigenfunctions of the localized Weil quadratic form",
+    "url": "https://zenodo.org/api/records/23834265/files/AlexGenusCore/weil-edge-laws-v0.2.0.zip/content",
+    "bytes": 17776027,
+    "sha256": "5cbf77e2aaaefbf1aafc6c4f5cb0dc5e701af7049c7938752bf3039722f9f2b1",
+    "local_path": "/tmp/lit_external_archives/weil-edge-laws-v0.2.0.zip",
+    "published_source": "External full sources retained under /tmp/lit_external_sources or /tmp/lit_external_archives; URL, hashes, pages and extracted formulas published.",
+    "accessed_utc": "2026-11-03T04:06:11.742931+00:00",
+    "github_repository": "AlexGenusCore/weil-edge-laws",
+    "github_commit": "9505fdd5512bc8269afee3ebb004448b93e4bb18"
+  }
+]

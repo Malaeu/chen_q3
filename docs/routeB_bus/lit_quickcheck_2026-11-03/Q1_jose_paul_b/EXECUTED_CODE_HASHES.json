@@ -1,0 +1,16 @@
+[
+  {
+    "path": "weil_certificate/cert_weil.py",
+    "executed_sha256": "4e412fdf0414520839eb0123bcf0c2fdd08ef970fe98c345f637ea9845c39e2c",
+    "pinned_sha256": "a5ed5ce0af6cb6c8e6a9246463ace0011f51189e5be116f2b0fa1a30393de97e",
+    "exact_match": false,
+    "only_extra_terminal_newline": true
+  },
+  {
+    "path": "semilocal/poly_upper.py",
+    "executed_sha256": "6c1883d44f05d2692615a3d6b857bc1755c040974c6a62d69249f62f083df573",
+    "pinned_sha256": "81cabc3b36864d9a2f82b12680b129f30035fb526529314655bc9637f3e9f6de",
+    "exact_match": false,
+    "only_extra_terminal_newline": true
+  }
+]

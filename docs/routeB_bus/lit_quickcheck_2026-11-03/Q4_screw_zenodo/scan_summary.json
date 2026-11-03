@@ -1,0 +1,16 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "N": 10000000,
+  "t_max": "16.118095650958319788",
+  "events": 665134,
+  "interior_stationary_minima": 10341,
+  "minimum_event": "0.027770009380587101777",
+  "minimum_interior": "0.027520573353620736423",
+  "endpoint": "0.037977290891838322295",
+  "all_sampled_candidates_positive": true,
+  "alpha": "2.6860917096128327911164787487248711445072696258117769215844513154955472828573397",
+  "C0": "-3.7006677113732223151821702201661939946232763996264580748636664167014627548426892",
+  "seconds": 100.37163338400023,
+  "warning": "Long-double scan and MP replay, not outward intervals. Continuous infimum including origin is zero; between-event candidate completeness uses source convexity for x>=2.",
+  "mp_replay_max_absolute_difference": 6.405967064033353e-13
+}

@@ -1,0 +1,14 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "seconds": 110.13813069000025,
+  "orders": [
+    128,
+    160
+  ],
+  "ms": [
+    47,
+    55
+  ],
+  "dps": 160,
+  "rows": 24
+}

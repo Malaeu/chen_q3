@@ -1,0 +1,15 @@
+{
+  "local_source_root": "/tmp/lit_external_sources/Q4_screw_zenodo",
+  "files": [
+    {
+      "file": "paper.txt",
+      "bytes": 56639,
+      "sha256": "1fc70c09d57f3753f69418b4c4acde201217b1e21e12c7dc1cf073e42a39afa0"
+    },
+    {
+      "file": "261019_Mittermeier_RH_Zero_Side_Certificate_Companion_v1.pdf",
+      "bytes": 577098,
+      "sha256": "01b6d1b9f591e6401bebc4ce787286ff5027fd81a40a22bd1765060aea4e84fc"
+    }
+  ]
+}

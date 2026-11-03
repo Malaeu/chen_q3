@@ -1,0 +1,25 @@
+{
+  "local_source_root": "/tmp/lit_external_sources/Q3_edge_laws",
+  "files": [
+    {
+      "file": "extracted/AlexGenusCore-weil-edge-laws-9505fdd/paper/main.pdf",
+      "bytes": 648230,
+      "sha256": "33e6bb81fc30f1b2883bd58660425b90d307499de2664f867dab0bf164f90550"
+    },
+    {
+      "file": "extracted/AlexGenusCore-weil-edge-laws-9505fdd/paper/numerics/fig_kink_split.pdf",
+      "bytes": 28276,
+      "sha256": "2142a5aa6eb1ecc5abd13785de66777f024182e28190a4a6227dab689a55b7d8"
+    },
+    {
+      "file": "extracted/AlexGenusCore-weil-edge-laws-9505fdd/paper/supplement/numerics/fig_kink_split.pdf",
+      "bytes": 28276,
+      "sha256": "2142a5aa6eb1ecc5abd13785de66777f024182e28190a4a6227dab689a55b7d8"
+    },
+    {
+      "file": "paper.txt",
+      "bytes": 280355,
+      "sha256": "ee0ed404815019b5776ab636e37c501a518c27c365a751156b1456b815d67a58"
+    }
+  ]
+}

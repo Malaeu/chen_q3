@@ -1,0 +1,343 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "base": "a1d2a97350e61f1697744056e26f95a1c8baf3de",
+  "brief_commit": "4c634cadb162663d2456aefc70ebceac376db5de",
+  "components": {
+    "Q1_jose_paul_b": [
+      {
+        "path": "Q1_jose_paul_b/SOURCE_HASHES.json",
+        "metadata": [
+          {
+            "path": "source/README.md",
+            "bytes": 7631,
+            "sha256": "a2fdae48f22af35c57c27cc301f4889cf58305abdfe9aa7de587ffb6d9f8f790",
+            "git_blob": "38af3675717715772737185eaa0591696df8df60",
+            "expected_git_blob": "38af3675717715772737185eaa0591696df8df60",
+            "matches": true
+          },
+          {
+            "path": "source/requirements.txt",
+            "bytes": 61,
+            "sha256": "c8efa43a25067de5577d2c3b9ce547536cc7def2522ebe7638216787d028a131",
+            "git_blob": "4d9e07c94312954e31183b923f1f48e08e3f3b11",
+            "expected_git_blob": "4d9e07c94312954e31183b923f1f48e08e3f3b11",
+            "matches": true
+          },
+          {
+            "path": "source/docs/AUDIT.md",
+            "bytes": 20390,
+            "sha256": "cc44f6669b7d4e0f242656ea90f501dfbf794475547d7b82b06ec202635e1514",
+            "git_blob": "1e989e47bd7b73c5ed43c85448826aebb5753375",
+            "expected_git_blob": "1e989e47bd7b73c5ed43c85448826aebb5753375",
+            "matches": true
+          },
+          {
+            "path": "source/semilocal/poly_upper.py",
+            "bytes": 9740,
+            "sha256": "81cabc3b36864d9a2f82b12680b129f30035fb526529314655bc9637f3e9f6de",
+            "git_blob": "9511af4c04f366b4ccbc3d35ff0c68fdfca53d29",
+            "expected_git_blob": "9511af4c04f366b4ccbc3d35ff0c68fdfca53d29",
+            "matches": true
+          },
+          {
+            "path": "source/semilocal/collate.py",
+            "bytes": 4319,
+            "sha256": "742ad5715cf8776248fddc0be17458aea6bf855b350d81ecb366d40871be44a5",
+            "git_blob": "a5f051452fd053f44696a8068199d2ed991602fa",
+            "expected_git_blob": "a5f051452fd053f44696a8068199d2ed991602fa",
+            "matches": true
+          },
+          {
+            "path": "source/semilocal/cert_semilocal.py",
+            "bytes": 16474,
+            "sha256": "508ece9fb281b7e13a902babf241e356116b69a9ae7d6ca5923b06d02fb44043",
+            "git_blob": "3805431882a334705a08a77b0a7537604a11bff1",
+            "expected_git_blob": "3805431882a334705a08a77b0a7537604a11bff1",
+            "matches": true
+          },
+          {
+            "path": "source/weil_certificate/cert_weil.py",
+            "bytes": 13476,
+            "sha256": "a5ed5ce0af6cb6c8e6a9246463ace0011f51189e5be116f2b0fa1a30393de97e",
+            "git_blob": "8eef17ab746e87bb18860d8e4017140689851e98",
+            "expected_git_blob": "8eef17ab746e87bb18860d8e4017140689851e98",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/cert_P2_L559_1000_T600_N270_p0.json",
+            "bytes": 1666,
+            "sha256": "279f1e4ce6906392e1a27d880ffc1d309b6c1d766a1e3b06726b0e5635899772",
+            "git_blob": "7ac189f387277dfd60b9fee7d5f96258ee2a6431",
+            "expected_git_blob": "7ac189f387277dfd60b9fee7d5f96258ee2a6431",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/cert_P3_L323_400_T300_N240_p0.json",
+            "bytes": 1674,
+            "sha256": "4bcf7539d27eaeda40b969dd1fbea2e4188f3460b9b83b5b3151ccbd17525179",
+            "git_blob": "999a2559434625e9522855aa1d90e5c5add6ed54",
+            "expected_git_blob": "999a2559434625e9522855aa1d90e5c5add6ed54",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/cert_P5_L973_1000_T1200_N860_p1.json",
+            "bytes": 2077,
+            "sha256": "c4da5aa2df3ca649a94b754b8157a676debba8c0fe662ecd19ca8325d3326953",
+            "git_blob": "dcd56d7b929521f9cac53ba4d8ef8278f64dcbc3",
+            "expected_git_blob": "dcd56d7b929521f9cac53ba4d8ef8278f64dcbc3",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/polyupper_P5_L1949_1000_D81_p1.json",
+            "bytes": 4427,
+            "sha256": "508e216231caccfea15e79757c5f617213d71d2f3ed48c391a9004a44e68bb9b",
+            "git_blob": "7bd64f31df0bb99e5adf705b5eaa6bf19dd16a56",
+            "expected_git_blob": "7bd64f31df0bb99e5adf705b5eaa6bf19dd16a56",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/polyupper_P2_L11147_10000_D61_p1.json",
+            "bytes": 3192,
+            "sha256": "81fc9e3f45db063ba3cdb7a37d1596e61c114be6e7c1a00f3a7f9da150c9d6e7",
+            "git_blob": "b117a59124a7f6f7ee865f9a75ad748f1501590c",
+            "expected_git_blob": "b117a59124a7f6f7ee865f9a75ad748f1501590c",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/cert_P5_L973_1000_T600_N460_p0.json",
+            "bytes": 2072,
+            "sha256": "152c1afa18ce88be10936fb20108a501020d2e891b1be788a1d57fc029b66453",
+            "git_blob": "7df14c583ab03027e3c8889c4272760fb8fd2713",
+            "expected_git_blob": "7df14c583ab03027e3c8889c4272760fb8fd2713",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/cert_P2_L557_1000_T1200_N520_p1.json",
+            "bytes": 1675,
+            "sha256": "d53fa2ff3fdc4e4a50cd32d576a1f395e49950134600e090f2b1b773ea3d051d",
+            "git_blob": "27877c774a08c0e66d46d17555d72f3a47555723",
+            "expected_git_blob": "27877c774a08c0e66d46d17555d72f3a47555723",
+            "matches": true
+          },
+          {
+            "path": "published/semilocal/results/polyupper_P3_L8073_5000_D71_p1.json",
+            "bytes": 3798,
+            "sha256": "938b6eb0e4183d4bda6cc08b827bc39d0d65fbbde0e806d49b63040a4819fb08",
+            "git_blob": "72219af35efc085fe873f8989bbc088b6af3f5c9",
+            "expected_git_blob": "72219af35efc085fe873f8989bbc088b6af3f5c9",
+            "matches": true
+          },
+          {
+            "path": "published/weil_certificate/results/cert_L31_32_T600_N460_p0.json",
+            "bytes": 1447,
+            "sha256": "980816339589c27165e76389da3ef051c9e0b15043d44c216a65529160565d09",
+            "git_blob": "6aa9e7fb78f530a24c0e6036eb7e94e6cf33f60a",
+            "expected_git_blob": "6aa9e7fb78f530a24c0e6036eb7e94e6cf33f60a",
+            "matches": true
+          },
+          {
+            "path": "published/weil_certificate/results/cert_L31_32_T600_N460_p1.json",
+            "bytes": 1444,
+            "sha256": "f0b2dfea9ce720ccd53e32bc155bbfa6203d45b3703a30dd1ce46bfb144326f0",
+            "git_blob": "4abf3f740615e06cc13cce19b750b30d4291b967",
+            "expected_git_blob": "4abf3f740615e06cc13cce19b750b30d4291b967",
+            "matches": true
+          },
+          {
+            "path": "published/weil_certificate/results/cert_L4_5_T200_N200_p1.json",
+            "bytes": 1435,
+            "sha256": "ef2f18bde1149071410cff73d2fd30bfe9b7737a738dce92d49a72134aab0d71",
+            "git_blob": "3c252df5d1ff6043a74f14721eaa9bc419f1c0a9",
+            "expected_git_blob": "3c252df5d1ff6043a74f14721eaa9bc419f1c0a9",
+            "matches": true
+          },
+          {
+            "path": "published/weil_certificate/results/cert_L4_5_T200_N200_p0.json",
+            "bytes": 1438,
+            "sha256": "8769a92bf91fbd1d52a462d9a4f104871ec21c1bc77fc86c83f83c30b649f963",
+            "git_blob": "30bd817755cc636d89955557ca03f3eb70990fdc",
+            "expected_git_blob": "30bd817755cc636d89955557ca03f3eb70990fdc",
+            "matches": true
+          },
+          {
+            "path": "source/LICENSE",
+            "bytes": 1068,
+            "sha256": "cb5140fc99767b8c155f91f78ec8bdb55a19fa390152248adc25d6febc25d74d",
+            "git_blob": "28f268fa25e5ef62c12ede3c44d96cbafd27cf99",
+            "expected_git_blob": "28f268fa25e5ef62c12ede3c44d96cbafd27cf99",
+            "matches": true
+          }
+        ]
+      }
+    ],
+    "Q2_simple_even": [
+      {
+        "path": "Q2_simple_even/EXTERNAL_SOURCE_CACHE.json",
+        "metadata": [
+          {
+            "name": "EXTERNAL_MAIN.pdf",
+            "sha256": "84b38ef0729094a4607a8343a0e6740d964f7f8435d582a67bfefb717a519b48",
+            "local_cache": "/tmp/lit_external_sources/Q2_simple_even/EXTERNAL_MAIN.pdf"
+          },
+          {
+            "name": "EXTERNAL_MAIN.tex",
+            "sha256": "768b7d6c14175a92e499d1edace324aecb823e708bf6745e4c0f75455b096ff7",
+            "local_cache": "/tmp/lit_external_sources/Q2_simple_even/EXTERNAL_MAIN.tex"
+          },
+          {
+            "name": "EXTERNAL_README.md",
+            "sha256": "cb3ccb3960e3fd56106130f61b205e3d110e3332d31ceff10ba270801646164a",
+            "local_cache": "/tmp/lit_external_sources/Q2_simple_even/EXTERNAL_README.md"
+          },
+          {
+            "name": "zenodo_landing.html",
+            "sha256": "ba1b2f3c18b95df83d96e71128e5e3b25e8fec5e362ab4eca3c1352c7587c279",
+            "local_cache": "/tmp/lit_external_sources/Q2_simple_even/zenodo_landing.html"
+          }
+        ]
+      },
+      {
+        "path": "Q2_simple_even/SOURCES.json",
+        "metadata": {
+          "status": "ZERO_TRUST_UNREFEREED_SOURCE",
+          "repository": "AlexGenusCore/weil-ground-state-simple-even",
+          "commit": "bbb4424afbba51496a74389a5fe0716c6409bd15",
+          "doi_url": "https://doi.org/10.5281/zenodo.23852617",
+          "doi_resolved": "https://zenodo.org/records/23852617",
+          "files": [
+            {
+              "path": "EXTERNAL_README.md",
+              "sha256": "cb3ccb3960e3fd56106130f61b205e3d110e3332d31ceff10ba270801646164a",
+              "bytes": 42777
+            },
+            {
+              "path": "EXTERNAL_MAIN.tex",
+              "sha256": "768b7d6c14175a92e499d1edace324aecb823e708bf6745e4c0f75455b096ff7",
+              "bytes": 132209
+            },
+            {
+              "path": "EXTERNAL_MAIN.pdf",
+              "url": "https://raw.githubusercontent.com/AlexGenusCore/weil-ground-state-simple-even/bbb4424afbba51496a74389a5fe0716c6409bd15/paper/main.pdf",
+              "sha256": "84b38ef0729094a4607a8343a0e6740d964f7f8435d582a67bfefb717a519b48",
+              "bytes": 384489
+            },
+            {
+              "path": "zenodo_landing.html",
+              "url": "https://zenodo.org/records/23852617",
+              "sha256": "ba1b2f3c18b95df83d96e71128e5e3b25e8fec5e362ab4eca3c1352c7587c279",
+              "bytes": 78562
+            }
+          ],
+          "external_code_executed": false,
+          "accessed_utc": "2026-11-03T04:05:05.247102+00:00"
+        }
+      }
+    ],
+    "Q3_edge_laws": [
+      {
+        "path": "Q3_edge_laws/SOURCES.json",
+        "metadata": [
+          {
+            "record": 23832560,
+            "title": "Edge law, Hadamard formula, and echo and tail laws for eigenfunctions of the localized Weil quadratic form: research notes",
+            "url": "https://zenodo.org/api/records/23832560/files/AlexGenusCore/weil-edge-laws-v0.1.2.zip/content",
+            "bytes": 375921,
+            "sha256": "6eb20c41cfbd7eba050f3bdc880116cd541390d8fac3ad5be02204089a24405c",
+            "local_path": "/tmp/lit_external_archives/weil-edge-laws-v0.1.2.zip",
+            "published_source": "External full sources retained under /tmp/lit_external_sources or /tmp/lit_external_archives; URL, hashes, pages and extracted formulas published.",
+            "accessed_utc": "2026-11-03T04:06:11.742898+00:00",
+            "github_repository": "AlexGenusCore/weil-edge-laws",
+            "github_commit": "84f0fbf22485106a53c30c858407a126c669153c"
+          },
+          {
+            "record": 23834265,
+            "title": "Edge laws, a Hadamard formula and kink singularities for eigenfunctions of the localized Weil quadratic form",
+            "url": "https://zenodo.org/api/records/23834265/files/AlexGenusCore/weil-edge-laws-v0.2.0.zip/content",
+            "bytes": 17776027,
+            "sha256": "5cbf77e2aaaefbf1aafc6c4f5cb0dc5e701af7049c7938752bf3039722f9f2b1",
+            "local_path": "/tmp/lit_external_archives/weil-edge-laws-v0.2.0.zip",
+            "published_source": "External full sources retained under /tmp/lit_external_sources or /tmp/lit_external_archives; URL, hashes, pages and extracted formulas published.",
+            "accessed_utc": "2026-11-03T04:06:11.742931+00:00",
+            "github_repository": "AlexGenusCore/weil-edge-laws",
+            "github_commit": "9505fdd5512bc8269afee3ebb004448b93e4bb18"
+          }
+        ]
+      },
+      {
+        "path": "Q3_edge_laws/SOURCE_FILE_HASHES.json",
+        "metadata": {
+          "local_source_root": "/tmp/lit_external_sources/Q3_edge_laws",
+          "files": [
+            {
+              "file": "extracted/AlexGenusCore-weil-edge-laws-9505fdd/paper/main.pdf",
+              "bytes": 648230,
+              "sha256": "33e6bb81fc30f1b2883bd58660425b90d307499de2664f867dab0bf164f90550"
+            },
+            {
+              "file": "extracted/AlexGenusCore-weil-edge-laws-9505fdd/paper/numerics/fig_kink_split.pdf",
+              "bytes": 28276,
+              "sha256": "2142a5aa6eb1ecc5abd13785de66777f024182e28190a4a6227dab689a55b7d8"
+            },
+            {
+              "file": "extracted/AlexGenusCore-weil-edge-laws-9505fdd/paper/supplement/numerics/fig_kink_split.pdf",
+              "bytes": 28276,
+              "sha256": "2142a5aa6eb1ecc5abd13785de66777f024182e28190a4a6227dab689a55b7d8"
+            },
+            {
+              "file": "paper.txt",
+              "bytes": 280355,
+              "sha256": "ee0ed404815019b5776ab636e37c501a518c27c365a751156b1456b815d67a58"
+            }
+          ]
+        }
+      }
+    ],
+    "Q4_screw_zenodo": [
+      {
+        "path": "Q4_screw_zenodo/SOURCES.json",
+        "metadata": [
+          {
+            "record": 23481975,
+            "title": "A Zero-Side Positivity Certificate for Suzuki's Screw Function through 4\u00b710\u00b2\u2070: Window Means and One-Sided Criteria \u2014 Companion to Part 5",
+            "url": "https://zenodo.org/api/records/23481975/files/261019_Mittermeier_RH_Zero_Side_Certificate_Companion_v1.pdf/content",
+            "bytes": 577098,
+            "sha256": "01b6d1b9f591e6401bebc4ce787286ff5027fd81a40a22bd1765060aea4e84fc",
+            "local_path": "/tmp/lit_external_sources/Q4_screw_zenodo/261019_Mittermeier_RH_Zero_Side_Certificate_Companion_v1.pdf",
+            "published_source": "External full sources retained under /tmp/lit_external_sources or /tmp/lit_external_archives; URL, hashes, pages and extracted formulas published.",
+            "accessed_utc": "2026-11-03T04:06:11.750084+00:00"
+          },
+          {
+            "record": 23481975,
+            "title": "A Zero-Side Positivity Certificate for Suzuki's Screw Function through 4\u00b710\u00b2\u2070: Window Means and One-Sided Criteria \u2014 Companion to Part 5",
+            "url": "https://zenodo.org/api/records/23481975/files/261019_Mittermeier_RH_Zero_Side_Certificate_Companion_v1_repro.zip/content",
+            "bytes": 45136,
+            "sha256": "fd986dda91fb88b60fcd3dd09af59717c6876dad6b4a164b1e38406319add8a6",
+            "local_path": "/tmp/lit_external_archives/261019_Mittermeier_RH_Zero_Side_Certificate_Companion_v1_repro.zip",
+            "published_source": "External full sources retained under /tmp/lit_external_sources or /tmp/lit_external_archives; URL, hashes, pages and extracted formulas published.",
+            "accessed_utc": "2026-11-03T04:06:11.750099+00:00"
+          }
+        ]
+      },
+      {
+        "path": "Q4_screw_zenodo/SOURCE_FILE_HASHES.json",
+        "metadata": {
+          "local_source_root": "/tmp/lit_external_sources/Q4_screw_zenodo",
+          "files": [
+            {
+              "file": "paper.txt",
+              "bytes": 56639,
+              "sha256": "1fc70c09d57f3753f69418b4c4acde201217b1e21e12c7dc1cf073e42a39afa0"
+            },
+            {
+              "file": "261019_Mittermeier_RH_Zero_Side_Certificate_Companion_v1.pdf",
+              "bytes": 577098,
+              "sha256": "01b6d1b9f591e6401bebc4ce787286ff5027fd81a40a22bd1765060aea4e84fc"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "external_full_text_policy": "Full external papers/archives retained locally under /tmp, not redistributed; extracted formulas/pages and hashes are published.",
+  "gate": "LIT_QUICKCHECK_COMPLETED_WITH_LIMITATIONS"
+}

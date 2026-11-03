@@ -1,0 +1,22 @@
+[
+  {
+    "name": "EXTERNAL_MAIN.pdf",
+    "sha256": "84b38ef0729094a4607a8343a0e6740d964f7f8435d582a67bfefb717a519b48",
+    "local_cache": "/tmp/lit_external_sources/Q2_simple_even/EXTERNAL_MAIN.pdf"
+  },
+  {
+    "name": "EXTERNAL_MAIN.tex",
+    "sha256": "768b7d6c14175a92e499d1edace324aecb823e708bf6745e4c0f75455b096ff7",
+    "local_cache": "/tmp/lit_external_sources/Q2_simple_even/EXTERNAL_MAIN.tex"
+  },
+  {
+    "name": "EXTERNAL_README.md",
+    "sha256": "cb3ccb3960e3fd56106130f61b205e3d110e3332d31ceff10ba270801646164a",
+    "local_cache": "/tmp/lit_external_sources/Q2_simple_even/EXTERNAL_README.md"
+  },
+  {
+    "name": "zenodo_landing.html",
+    "sha256": "ba1b2f3c18b95df83d96e71128e5e3b25e8fec5e362ab4eca3c1352c7587c279",
+    "local_cache": "/tmp/lit_external_sources/Q2_simple_even/zenodo_landing.html"
+  }
+]

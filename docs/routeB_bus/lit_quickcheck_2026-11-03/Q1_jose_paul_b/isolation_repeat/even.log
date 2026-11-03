@@ -1,0 +1,4 @@
+=== supp f ⊆ [−4/5, 4/5] (= ±0.800000; autocorrelation support 1.600000), EVEN sector, T = 200/1, N = 200 modes (orders 0..398)
+prime powers in comb: [2, 4, 3];  A_L = [2.94197352522 +/- 3.63e-12];  β = [0.513466774915 +/- 7.08e-14];  e·L·T/2 = 217.5
+quadrature: 400 panels × 59 nodes, ρ = [3.48680 +/- 3.78e-6], sup|ψ| on strip ≤ [8.12472e+5 +/- 0.478], per-entry error ≤ [3.60e-56 +/- 4.50e-59]
+quadrature done in 138s

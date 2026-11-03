@@ -1,0 +1,33 @@
+{
+  "status": "ZERO_TRUST_UNREFEREED_SOURCE",
+  "repository": "AlexGenusCore/weil-ground-state-simple-even",
+  "commit": "bbb4424afbba51496a74389a5fe0716c6409bd15",
+  "doi_url": "https://doi.org/10.5281/zenodo.23852617",
+  "doi_resolved": "https://zenodo.org/records/23852617",
+  "files": [
+    {
+      "path": "EXTERNAL_README.md",
+      "sha256": "cb3ccb3960e3fd56106130f61b205e3d110e3332d31ceff10ba270801646164a",
+      "bytes": 42777
+    },
+    {
+      "path": "EXTERNAL_MAIN.tex",
+      "sha256": "768b7d6c14175a92e499d1edace324aecb823e708bf6745e4c0f75455b096ff7",
+      "bytes": 132209
+    },
+    {
+      "path": "EXTERNAL_MAIN.pdf",
+      "url": "https://raw.githubusercontent.com/AlexGenusCore/weil-ground-state-simple-even/bbb4424afbba51496a74389a5fe0716c6409bd15/paper/main.pdf",
+      "sha256": "84b38ef0729094a4607a8343a0e6740d964f7f8435d582a67bfefb717a519b48",
+      "bytes": 384489
+    },
+    {
+      "path": "zenodo_landing.html",
+      "url": "https://zenodo.org/records/23852617",
+      "sha256": "ba1b2f3c18b95df83d96e71128e5e3b25e8fec5e362ab4eca3c1352c7587c279",
+      "bytes": 78562
+    }
+  ],
+  "external_code_executed": false,
+  "accessed_utc": "2026-11-03T04:05:05.247102+00:00"
+}

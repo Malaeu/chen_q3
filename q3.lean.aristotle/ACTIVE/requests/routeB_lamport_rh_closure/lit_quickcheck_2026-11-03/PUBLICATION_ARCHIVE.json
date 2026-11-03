@@ -1,0 +1,144 @@
+{
+  "format": "tar.xz split into ordered parts; lossless",
+  "archive_bytes": 9082908,
+  "archive_sha256": "9c12b75df7d56c7b5a9d37f0ef00c1529bb0554b28078c813cfec583a8632655",
+  "parts": [
+    {
+      "path": "data.tar.xz.part00",
+      "bytes": 350000,
+      "sha256": "ca495533274ee6ee75b1b57272f20edf649af42093b41ca32d31abef56befaa1"
+    },
+    {
+      "path": "data.tar.xz.part01",
+      "bytes": 350000,
+      "sha256": "61b27be7afc249a1a74b83fea26517de9370f8abcb37195943005a7f8b244663"
+    },
+    {
+      "path": "data.tar.xz.part02",
+      "bytes": 350000,
+      "sha256": "280f1b0ba3785ca79bb326a04b26ef9769bb7665ea731e2293f7bfbaea57351c"
+    },
+    {
+      "path": "data.tar.xz.part03",
+      "bytes": 350000,
+      "sha256": "61d46efb4d7686ffb60864b8bfd74066864453ea10af4db832c5ce8874f4805f"
+    },
+    {
+      "path": "data.tar.xz.part04",
+      "bytes": 350000,
+      "sha256": "f8b17f2098f8b822fda84e149663677adda7b33fb49dc6428f30676168398dbf"
+    },
+    {
+      "path": "data.tar.xz.part05",
+      "bytes": 350000,
+      "sha256": "2ac5a9598b398f44917fd6033541f93ff7bf16bc067a54da0a8b2c32ede1e355"
+    },
+    {
+      "path": "data.tar.xz.part06",
+      "bytes": 350000,
+      "sha256": "9e1d966d2cc28911b91a0c58453e84945e4f8b900c9103d410de3f377318faf0"
+    },
+    {
+      "path": "data.tar.xz.part07",
+      "bytes": 350000,
+      "sha256": "02ef69deb40c044e1bb302b201a6d03bee67fbc2bd845cf8724c49614ee5947a"
+    },
+    {
+      "path": "data.tar.xz.part08",
+      "bytes": 350000,
+      "sha256": "4256fa8835a382e5b8b3bddabb6ad6ac5c25f9afe559dd811e60b817fa33beeb"
+    },
+    {
+      "path": "data.tar.xz.part09",
+      "bytes": 350000,
+      "sha256": "c48bd3363350584384a272dd8d4eb03013137adafc8894cb59e9c78611bb32a6"
+    },
+    {
+      "path": "data.tar.xz.part10",
+      "bytes": 350000,
+      "sha256": "30dce666246b9659d23f0020cc00475d4793c2f9def8db80799b2bcb931b9523"
+    },
+    {
+      "path": "data.tar.xz.part11",
+      "bytes": 350000,
+      "sha256": "bc217536e82b891a8b06b0996126ef7fe8a6c6a2cedac7126705eb2e297f05fd"
+    },
+    {
+      "path": "data.tar.xz.part12",
+      "bytes": 350000,
+      "sha256": "5aeb31273cd619754ce5c882ea15cf5a7e464dd34ee572ded3295bba0519d932"
+    },
+    {
+      "path": "data.tar.xz.part13",
+      "bytes": 350000,
+      "sha256": "1d51323751119ada6993195d1d692b6c54828b6cdf7fb100b7aa504db0cd0c59"
+    },
+    {
+      "path": "data.tar.xz.part14",
+      "bytes": 350000,
+      "sha256": "f9faa598435bdd23a06d372e8da27c1847cf5ebb4fe86aadd571d7170ad9c2a2"
+    },
+    {
+      "path": "data.tar.xz.part15",
+      "bytes": 350000,
+      "sha256": "dbd9b0d7df003443ab4fb9f0f1f533efc20af1e90b502178de36d62e7b9ea217"
+    },
+    {
+      "path": "data.tar.xz.part16",
+      "bytes": 350000,
+      "sha256": "2edd89f60701571d4e5a1c03891cf13ee1ea614a4267afe13ed2075d5f1e2c8b"
+    },
+    {
+      "path": "data.tar.xz.part17",
+      "bytes": 350000,
+      "sha256": "ea016850d0c135974bb47c1cae57f0abd5f4f65f3bd1c3f7d4d14b4c4909ee7c"
+    },
+    {
+      "path": "data.tar.xz.part18",
+      "bytes": 350000,
+      "sha256": "a91028c1bafa5e05532d58a09dc68e3f536c012ea10d90c19cd20629eb86da0f"
+    },
+    {
+      "path": "data.tar.xz.part19",
+      "bytes": 350000,
+      "sha256": "e5d0a9f0e662e183fa430ae4dec1ef0d8887c3540cb6cc84bc07ce9f765857e0"
+    },
+    {
+      "path": "data.tar.xz.part20",
+      "bytes": 350000,
+      "sha256": "e8f05c2977ba452eafc4d88a99bd61cabf8b2dcda7c5b22f0b50d2aba8c81158"
+    },
+    {
+      "path": "data.tar.xz.part21",
+      "bytes": 350000,
+      "sha256": "9937f90d88f2862d33cbb8f3f262af0e7369f58ef9fe51b3b28dfffd363bb4fa"
+    },
+    {
+      "path": "data.tar.xz.part22",
+      "bytes": 350000,
+      "sha256": "61ddc7546bde69b0aeb3c660d5af0b37a60696fa4061b49be74b3501f580c9f8"
+    },
+    {
+      "path": "data.tar.xz.part23",
+      "bytes": 350000,
+      "sha256": "a9ee3a516e7a356299d4533ee48ab8699e9d915f668074accc1141feb373900e"
+    },
+    {
+      "path": "data.tar.xz.part24",
+      "bytes": 350000,
+      "sha256": "57c0556f67e7c9cf8d68383e3761785c7afc5be46628dd41c3d8a5ea04779cc6"
+    },
+    {
+      "path": "data.tar.xz.part25",
+      "bytes": 332908,
+      "sha256": "029a37da96fb51c1ca1fb2d55d492e4bfe4bd8d80a76d134db8823e29412e377"
+    }
+  ],
+  "members": [
+    {
+      "path": "Q4_screw_zenodo/all_checkpoints.npz",
+      "bytes": 9414326,
+      "sha256": "c3de721bb40c41a5f0ba44309f1efc317e1684bcd89ae2431bdd858ec400ffba"
+    }
+  ]
+}

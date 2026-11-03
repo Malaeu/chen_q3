@@ -1,0 +1,75 @@
+[
+  {
+    "file": "cert_L4_5_T200_N200_p1.json",
+    "verdict": "REPRODUCED",
+    "fields": {
+      "lam_lower": {
+        "published": "[1.1399115396618374143e-14 +/- 3.12e-35]",
+        "replay": "[1.1399115396618374143e-14 +/- 3.12e-35]",
+        "exact_text_match": true
+      },
+      "lamA": {
+        "published": "[1.1399115396618374143e-14 +/- 3.12e-35]",
+        "replay": "[1.1399115396618374143e-14 +/- 3.12e-35]",
+        "exact_text_match": true
+      },
+      "eq": {
+        "published": "[3.5955e-56 +/- 9.10e-62]",
+        "replay": "[3.5955e-56 +/- 9.10e-62]",
+        "exact_text_match": true
+      },
+      "coupling": {
+        "published": "[6.0483e-106 +/- 9.70e-112]",
+        "replay": "[6.0483e-106 +/- 9.70e-112]",
+        "exact_text_match": true
+      }
+    }
+  },
+  {
+    "file": "polyupper_P2_L11147_10000_D61_p1.json",
+    "verdict": "REPRODUCED",
+    "fields": {
+      "Q_ball": {
+        "published": "[-3.60762498685477970398068025664e-8 +/- 3.61e-39]",
+        "replay": "[-3.60762498685477970398068025664e-8 +/- 3.61e-39]",
+        "exact_text_match": true
+      },
+      "Q_upper": {
+        "published": "[-3.6076249868547797040e-8 +/- 1.94e-28]",
+        "replay": "[-3.6076249868547797040e-8 +/- 1.94e-28]",
+        "exact_text_match": true
+      },
+      "certified_negative": {
+        "published": true,
+        "replay": true,
+        "exact_text_match": true
+      }
+    }
+  },
+  {
+    "file": "cert_L4_5_T200_N200_p0.json",
+    "verdict": "REPRODUCED",
+    "fields": {
+      "lam_lower": {
+        "published": "[1.0266618704919108500e-17 +/- 5.98e-38]",
+        "replay": "[1.0266618704919108500e-17 +/- 5.98e-38]",
+        "exact_text_match": true
+      },
+      "lamA": {
+        "published": "[1.0266618704919108500e-17 +/- 5.98e-38]",
+        "replay": "[1.0266618704919108500e-17 +/- 5.98e-38]",
+        "exact_text_match": true
+      },
+      "eq": {
+        "published": "[3.5955e-56 +/- 9.10e-62]",
+        "replay": "[3.5955e-56 +/- 9.10e-62]",
+        "exact_text_match": true
+      },
+      "coupling": {
+        "published": "[3.0317e-105 +/- 3.66e-110]",
+        "replay": "[3.0317e-105 +/- 3.66e-110]",
+        "exact_text_match": true
+      }
+    }
+  }
+]
