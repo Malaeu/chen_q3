@@ -1,0 +1,11 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "expected": 60,
+  "completed": 60,
+  "missing": [],
+  "max_Q_orthogonality": 5.867665934564432e-15,
+  "DH_source_sha256": "74fb75cf6a9ec06c0b89be9b17dcd0e2cc6daea5e091c68c90abb346891d834a",
+  "zeta_source_sha256": "3d55cd7aa3f74e22c8284753eab922439607c925514e5c36a372ff5bb2363c75",
+  "maximality": "nested quiet spaces imply delta(kappa)>=delta(kappa_next); maximum over kappa>=1 attained at1",
+  "no_fit_performed": true
+}

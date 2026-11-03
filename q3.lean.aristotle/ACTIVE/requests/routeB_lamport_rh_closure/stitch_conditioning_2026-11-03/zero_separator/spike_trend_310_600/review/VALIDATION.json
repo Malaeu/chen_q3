@@ -1,0 +1,45 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "cells": 90,
+  "checks_failed": [],
+  "counts": {
+    "zeta": {
+      "YES_NUMERIC": 14,
+      "NO_NUMERIC": 0,
+      "UNRESOLVED": 16
+    },
+    "plant": {
+      "YES_NUMERIC": 0,
+      "NO_NUMERIC": 30,
+      "UNRESOLVED": 0
+    },
+    "dh": {
+      "YES_NUMERIC": 0,
+      "NO_NUMERIC": 30,
+      "UNRESOLVED": 0
+    }
+  },
+  "totals": {
+    "sectors": 15073,
+    "evaluated": 371,
+    "bounded": 14702
+  },
+  "max_bracket_width_over_guard": 3.5522962470511197,
+  "max_median_replay_difference": 0.0,
+  "zeta_block_medians": [
+    0.616327825783449,
+    0.012314266810501628,
+    0.0,
+    0.0,
+    0.06347546291896866,
+    0.0
+  ],
+  "independent_fit": {
+    "intercept": 5.003384008195404,
+    "slope": -0.8011086771892768,
+    "R_squared": 0.46914146626438646,
+    "Theil_Sen_slope": -0.05265345963409321,
+    "leave_one_out_min": -1.0385089900779558,
+    "leave_one_out_max": 0.03802400978777323
+  }
+}

@@ -1,0 +1,9 @@
+{
+ "source_tip":"1d3818cd227bf5f27786adf0c82e5b5d5d9ab11b",
+ "baseline":"/workspace/zero_extension/dh_census/dh_zeros_600_200dps.json",
+ "baseline_sha256":"74fb75cf6a9ec06c0b89be9b17dcd0e2cc6daea5e091c68c90abb346891d834a",
+ "function":"D(s)=5^-s[zeta(s,1/5)+c*zeta(s,2/5)-c*zeta(s,3/5)-zeta(s,4/5)]",
+ "coefficient":"c=(sqrt(10-2sqrt5)-2)/(sqrt5-1)",
+ "completion":"F(s)=(5/pi)^(s/2)Gamma((s+1)/2)D(s)=F(1-s)",
+ "scope":"DIAGNOSTIC_NEVER_A_PROOF; original baseline read-only; incremental600..900 extension"
+}

@@ -1,0 +1,286 @@
+{
+  "m": 248,
+  "q": 127,
+  "r": 122,
+  "lambda_r": 2.1538377730010456,
+  "delta": 2.105038491662235,
+  "sigma2": 0.7118485595938211,
+  "gap": 0.04879928133881073,
+  "top_two_squared_ratio": 0.8973801030658527,
+  "top_squared_fraction_frobenius": 0.8969416706758472,
+  "D_norm_squared": 2.1063492116127605,
+  "B_norm_squared": 2.3248378397668517,
+  "residual_squared_decomposition_error": 4.440892098500626e-15,
+  "D_Rayleigh": 1.444795270377827,
+  "new_row_height": 283.2111857332339,
+  "next_constraint_mode_mass": 0.8593675733082208,
+  "cutoff_left": 282.4651147650521,
+  "cutoff_right": 283.2111857332339,
+  "kappa_left": 0.9994361084879524,
+  "kappa_right": 1.0020759044348455,
+  "intersects_kappa_ge1": true,
+  "omega": 282.6244843128529,
+  "L": 5.5134287461649825,
+  "f_endpoint": 5.291875805215774,
+  "endpoint_carrier_cosine_squared": 0.31065951788333007,
+  "endpoint_quiet_functional_cosine_squared": 0.490070044142413,
+  "top_D_mode_overlaps": [
+    {
+      "index": 121,
+      "lambda_D": 1.4632706902839012,
+      "squared_overlap": 0.9822602853291322,
+      "residual_D_energy": 2.103177525834168
+    },
+    {
+      "index": 120,
+      "lambda_D": 0.4239952158406557,
+      "squared_overlap": 0.017642541347201397,
+      "residual_D_energy": 0.0031716339384280554
+    },
+    {
+      "index": 119,
+      "lambda_D": 0.023246559513672833,
+      "squared_overlap": 9.592510712310923e-05,
+      "residual_D_energy": 5.183817050528982e-08
+    },
+    {
+      "index": 118,
+      "lambda_D": 0.0012685535118753893,
+      "squared_overlap": 1.2375990691555586e-06,
+      "residual_D_energy": 1.9915790903183855e-12
+    },
+    {
+      "index": 117,
+      "lambda_D": 6.12914271238366e-05,
+      "squared_overlap": 1.0587274186332047e-08,
+      "residual_D_energy": 3.977256752366517e-17
+    },
+    {
+      "index": 116,
+      "lambda_D": 2.5364595866140035e-06,
+      "squared_overlap": 3.0028166801364364e-11,
+      "residual_D_energy": 1.931900317361497e-22
+    },
+    {
+      "index": 115,
+      "lambda_D": 8.418454705625139e-08,
+      "squared_overlap": 1.6891884423192307e-13,
+      "residual_D_energy": 1.1971342617489056e-27
+    },
+    {
+      "index": 114,
+      "lambda_D": 2.7095233312184847e-09,
+      "squared_overlap": 1.8336421114532088e-15,
+      "residual_D_energy": 1.346171415081664e-32
+    },
+    {
+      "index": 113,
+      "lambda_D": 8.382064411525826e-11,
+      "squared_overlap": 1.7150161429010388e-17,
+      "residual_D_energy": 1.2049532569937517e-37
+    },
+    {
+      "index": 112,
+      "lambda_D": 1.9626480755814595e-12,
+      "squared_overlap": 1.1047841575261142e-19,
+      "residual_D_energy": 4.255614730280289e-43
+    },
+    {
+      "index": 111,
+      "lambda_D": 4.938650215995738e-14,
+      "squared_overlap": 1.0823167670150954e-21,
+      "residual_D_energy": 2.639799379608729e-48
+    },
+    {
+      "index": 110,
+      "lambda_D": 1.2629798426814205e-15,
+      "squared_overlap": 7.46551295929735e-24,
+      "residual_D_energy": 1.1908374720392263e-53
+    }
+  ],
+  "full_A_resolved_mode_overlaps": [
+    {
+      "index": 236,
+      "lambda_A": 7.514605595555103,
+      "squared_overlap": 0.026860681089830574,
+      "A_energy": 1.5168037849803544
+    },
+    {
+      "index": 121,
+      "lambda_A": 1.0673596131887892,
+      "squared_overlap": 0.8772482277743409,
+      "A_energy": 0.9994107840872269
+    },
+    {
+      "index": 237,
+      "lambda_A": 7.571952514768803,
+      "squared_overlap": 0.007650560256521111,
+      "A_energy": 0.4386407783850758
+    },
+    {
+      "index": 240,
+      "lambda_A": 7.772156893181704,
+      "squared_overlap": 0.0038035687466686442,
+      "A_energy": 0.2297599817545143
+    },
+    {
+      "index": 238,
+      "lambda_A": 7.625369812901206,
+      "squared_overlap": 0.0033624060479295593,
+      "A_energy": 0.19551135237257067
+    },
+    {
+      "index": 229,
+      "lambda_A": 7.208684812791127,
+      "squared_overlap": 0.0027148039821702006,
+      "A_energy": 0.1410751601290721
+    },
+    {
+      "index": 231,
+      "lambda_A": 7.273313225196741,
+      "squared_overlap": 0.0011958758556533011,
+      "A_energy": 0.06326313061442816
+    },
+    {
+      "index": 211,
+      "lambda_A": 6.4941492966464756,
+      "squared_overlap": 0.0010529710914384417,
+      "A_energy": 0.04440797657779704
+    },
+    {
+      "index": 191,
+      "lambda_A": 5.741586947813651,
+      "squared_overlap": 0.0013117982143786328,
+      "A_energy": 0.0432445047026373
+    },
+    {
+      "index": 233,
+      "lambda_A": 7.383416121119443,
+      "squared_overlap": 0.0007337832573051368,
+      "A_energy": 0.04000207218337486
+    },
+    {
+      "index": 241,
+      "lambda_A": 7.8133272475332,
+      "squared_overlap": 0.000649030940600291,
+      "A_energy": 0.03962209452172667
+    },
+    {
+      "index": 194,
+      "lambda_A": 5.854059756963025,
+      "squared_overlap": 0.0009977079737426549,
+      "A_energy": 0.03419146786241185
+    }
+  ],
+  "D_eigen_residual_check": 2.540472792450271e-15,
+  "carrier_top_coefficients": [
+    {
+      "n": 247,
+      "coefficient": 0.6175021596845278,
+      "mass": 0.3813089172150561
+    },
+    {
+      "n": 246,
+      "coefficient": 0.3919519857346764,
+      "mass": 0.15362635912135594
+    },
+    {
+      "n": 241,
+      "coefficient": 0.23026429459757036,
+      "mass": 0.05302164536651667
+    },
+    {
+      "n": 239,
+      "coefficient": 0.19729296218347486,
+      "mass": 0.03892451292713004
+    },
+    {
+      "n": 248,
+      "coefficient": 0.16131124651384218,
+      "mass": 0.02602131825184956
+    },
+    {
+      "n": 236,
+      "coefficient": 0.15378083608665236,
+      "mass": 0.02364854554750984
+    },
+    {
+      "n": 232,
+      "coefficient": 0.12746444195430018,
+      "mass": 0.016247183962721158
+    },
+    {
+      "n": 226,
+      "coefficient": 0.0997219349238622,
+      "mass": 0.009944464304959006
+    },
+    {
+      "n": 215,
+      "coefficient": 0.09765990802886572,
+      "mass": 0.00953745763620651
+    },
+    {
+      "n": 216,
+      "coefficient": 0.09633104829628844,
+      "mass": 0.009279670865861856
+    },
+    {
+      "n": 223,
+      "coefficient": 0.09521355714258381,
+      "mass": 0.009065621463744072
+    },
+    {
+      "n": 221,
+      "coefficient": 0.09315100935705599,
+      "mass": 0.008677110544238333
+    },
+    {
+      "n": 202,
+      "coefficient": 0.09251090723633491,
+      "mass": 0.008558267957689764
+    },
+    {
+      "n": 172,
+      "coefficient": 0.07967830435694132,
+      "mass": 0.006348632185197373
+    },
+    {
+      "n": 212,
+      "coefficient": 0.07771673171918494,
+      "mass": 0.006039890389111767
+    },
+    {
+      "n": 230,
+      "coefficient": 0.07652285994901006,
+      "mass": 0.005855748094775809
+    },
+    {
+      "n": 189,
+      "coefficient": 0.07570758467154964,
+      "mass": 0.0057316383767998585
+    },
+    {
+      "n": 154,
+      "coefficient": 0.07107658071292308,
+      "mass": 0.0050518803258406695
+    },
+    {
+      "n": 183,
+      "coefficient": 0.06880736255878574,
+      "mass": 0.004734453142296189
+    },
+    {
+      "n": 193,
+      "coefficient": 0.06729237123261232,
+      "mass": 0.00452826322610771
+    }
+  ],
+  "full_A_overlap_unresolved_scope": "Float resolved modes only; near-zero eigenvector decomposition is basis-dependent and not interpreted",
+  "source_sha256": "076ae78298b6f857a31fa2c89693a81306536046bbc652aa9dbda01438c393d1",
+  "precision_frame_check": {
+    "delta768": 2.105038491662235,
+    "delta1024": 2.105038491662235,
+    "projector_difference": 0.0,
+    "mode_squared_overlap": 0.9999999999999971
+  }
+}

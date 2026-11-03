@@ -1,0 +1,17 @@
+Route B = CHALLENGER / NOT_RH. DIAGNOSTIC_NEVER_A_PROOF.
+
+This extends the numerical DH census only from600 to900. The original600-height table is read-only; all of its coordinate strings and root rows are preserved exactly. The new table dh_zeros_900_200dps.json has798 positive-height roots:746 critical-line roots and26 off-line quartets (52 upper roots). The extension adds282 critical roots and11 quartets, hence304 upper roots.
+
+New quartet heights are611.7750976388,646.9868231962,657.1083708212,692.8924905623,737.7669967546,783.6530069799,811.7657922956,847.4657315571,857.2958867548,864.1180911874,892.1490347734. Precise200-digit right/left coordinates and residuals are in the table and new_off_line_pairs.csv.
+
+Critical-line detection uses a.0625 grid, followed by200dps root refinement. Every contour band with an off-line count deficit is independently rescanned on the critical line at.01 spacing. The same critical counts are recovered. Bounded complex Newton searches, first seeded in large gaps between critical roots, locate all required distinct off-line roots. Both reflected positive-height roots are retained. The listed multiplicity is1, supported by numerical nonzero derivative checks, not an interval simplicity certificate.
+
+Fifteen adjacent20-height contour bands cover600–900. Three independent strip boundary grids use steps.25,.125,.0625. Their counts and every band match the304 new listed roots; CHECKS.json records independent source/function checks. The inherited count494 below600 plus the new strip count304 gives798. Shared height600 boundaries cancel when adding winding numbers. The old global_argument_count records explicitly remain the0–600 diagnostics, rather than being relabeled as fresh0–900 runs.
+
+The boundary evaluator multiplies the completed function by the positive real factor exp(pi*abs(t)/4), preserving each point's argument and the winding while avoiding extremely small values near900. This is discrete winding consistency, not an interval argument-principle certificate or a rigorous boundary-zero exclusion. The analytic exterior exclusion is unchanged: for real part>=2, |D(s)-1|<=zeta(2)-1<1; functional reflection excludes completed zeros at real part<=−1.
+
+Reproduce with `python extend_900.py`, followed by `python checks.py`. python-flint0.9.0 and mpmath are needed. FLINT_DEPS selects a trusted dependency directory; DH_ZERO_INPUT selects the preserved600-height baseline. Session defaults point to /workspace/python_deps and /workspace/zero_extension/dh_census/dh_zeros_600_200dps.json. The driver resumes already saved critical refinements, avoiding recomputation after interruption. In this run the environment stopped after201 new critical roots, and resumption refined only the remaining81.
+
+No matrix, source operator, original zero table, route state or RH export was changed. The completed census covers upper-root count601 needed for the parent's carrier dimensions through m600; rank remains a separate matrix diagnostic.
+
+Final validation: maximum new saved |D(s)| residual8.766e−197; selected200→260dps coordinate differences<=3.919e−198. Independent mpmath Dirichlet and functional-equation checks have relative discrepancies<=3.102e−83. The smallest centered-difference |Dprime| among new upper roots is.55887957. At m600, Omega=589.3313491783848 and the kappa1.1 cutoff has541 listed upper roots. Upper-root index601 occurs at706.9807109128724451517.

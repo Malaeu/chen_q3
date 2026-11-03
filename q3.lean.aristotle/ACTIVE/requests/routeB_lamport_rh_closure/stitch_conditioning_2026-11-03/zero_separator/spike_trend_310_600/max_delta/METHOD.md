@@ -1,0 +1,9 @@
+# Maximum δ over κ≥1: control-world checkpoints
+
+DIAGNOSTIC_NEVER_A_PROOF. With the source A_m fixed and strict zero-height inclusion γ<T, increasing κ adds evaluation constraints, hence J_m(κ) shrinks. Therefore ‖A_m|J_m(κ)‖ cannot increase, and its maximum over κ≥1 equals its value at κ=1. This computation evaluates that value directly for plant and DH; it does not scan or fit another statistic.
+
+Physical even N=m,L=logm source matrices are reused unchanged from ../matrices. The threshold is T=2πm/L. DH events come ONLY from the completed height600 numerical census table (not a certified zero census) `/workspace/zero_extension/dh_census/dh_zeros_600_200dps.json`, not from the partial900 extension. Plant events use ../zeta_zeros.csv and the quartet at2π/log2+i/4. Each quartet contributes two real conditions in this even carrier.
+
+Plant uses768bit physical row evaluation (nonzero common scalars on line-zero rows are omitted without changing their kernels), ordered native MPFR row-frame construction, and a float complete QR complement. DH uses the exact Cauchy rational-null polynomial identity implemented in ../scan_extended.py:last_null, followed by768bit native MPFR orthogonalization. Validation at310 and600 repeats DH at1024bits; float projectors and δ agree exactly. At310 the DH null projector differs from the independent physical-row-frame complement by5.53e−15 in spectral norm. All are finite numerical checks, not interval certification.
+
+Each checkpoint records δ, the top two singular values of AQ, λ_r (0-based sorted indexr, corresponding to the first eigenvalue afterr quiet dimensions), gapλ_r−δ, q,r,T, Q orthogonality, precision, method, event provenance, and source hash. The numerical guard combines the source float radius with1000 eps (m+1) max(1,‖A‖). It is a conservative heuristic, not a proved enclosure. No MP inertia, eigenproblem, or fit is added.

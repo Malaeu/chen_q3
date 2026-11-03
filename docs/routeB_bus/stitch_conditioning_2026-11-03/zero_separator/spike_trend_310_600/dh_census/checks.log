@@ -1,0 +1,21 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "old600_rows_exactly_unchanged": true,
+  "new_upper_count": 304,
+  "new_critical_count": 282,
+  "new_quartet_count": 11,
+  "extension_winding_counts": [
+    304,
+    304,
+    304
+  ],
+  "all_new_bands_match": true,
+  "fine_critical_counts_agree": true,
+  "maximum_new_saved_D_residual": "8.76510162581543043671352248699283043447993315150770986680648631300538165737910077337429632e-197",
+  "smallest_new_numerical_abs_Dprime": {
+    "value": "0.55887957033106238003291019320699607753976925979199483885009662884371695051852064",
+    "sigma": "0.5",
+    "gamma": "671.84621837319672309329921060521424075293379810513238601201758642102928222654681806070027106582843367398477828299766452885668416095293015591522583833524685904475751713636349816747847142642666947096125"
+  },
+  "simplicity_scope": "Nonzero numerical centered-difference derivatives at every new listed upper root; no interval multiplicity certificate."
+}

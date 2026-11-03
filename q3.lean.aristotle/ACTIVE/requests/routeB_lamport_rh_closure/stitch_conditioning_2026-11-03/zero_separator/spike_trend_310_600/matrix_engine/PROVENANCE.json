@@ -1,0 +1,53 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "requested_source_ref": "1d3818c",
+  "source_builder_origin": "/workspace/zero_extension/matrix_engine/engine.py",
+  "source_builder_sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7",
+  "bits": 400,
+  "GL_order": 256,
+  "panels": 8,
+  "paired_order": 320,
+  "paired_m": [
+    310,
+    600
+  ],
+  "worlds": [
+    "zeta",
+    "plant",
+    "dh"
+  ],
+  "m": [
+    310,
+    320,
+    330,
+    340,
+    350,
+    360,
+    370,
+    380,
+    390,
+    400,
+    410,
+    420,
+    430,
+    440,
+    450,
+    460,
+    470,
+    480,
+    490,
+    500,
+    510,
+    520,
+    530,
+    540,
+    550,
+    560,
+    570,
+    580,
+    590,
+    600
+  ],
+  "MP_inertia_computed": false,
+  "float_count_status": "heuristic seeding only; unresolved modes retained"
+}

@@ -448,7 +448,7 @@ Literal even CCM, m16..120, zeta/plant/DH. Complete21153 nontrivial cutoff secto
 | `stitch_conditioning_2026-11-03/zero_separator/RESULT.md` | `07982414ecf514217b0e89f61e645ab06fb70c4650460832942b57258c7b9dc3` |
 | `stitch_conditioning_2026-11-03/zero_separator/counts.csv` | `d77624a24845304e60de7ddf80df5d78defbdc3c158c7de4e357c0c409aba683` |
 | `stitch_conditioning_2026-11-03/zero_separator/separator_summary.csv` | `1a3717b9d0604dda11c6049d6b0572609812fbea251e330c28d154d32b36cb9b` |
-| `stitch_conditioning_2026-11-03/zero_separator/SHA256SUMS` | `04a58363ef7681885a8404f24954a28062d3189e0851e1a1317a85941e3e4786` |
+| `stitch_conditioning_2026-11-03/zero_separator/SHA256SUMS` | `5a14763a4cc2deba437c9ef41a2d7cfc09beb3265765ac897e33cf2fdb9804f5` |
 
 ## DH census audit and zero-separator extension m121..300 — 2026-11-03
 
@@ -461,3 +461,14 @@ All four requested original DH quartets present; no old B/C redo. Expanded numer
 | `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/SOURCES.json` | `6a19e38cb1ae134320fe21790cfd36828f7d53949640c06df350d4a86031d3de` |
 | `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/SUMMARY.csv` | `42db3fa8375fbd35e6cda56377c2df931d5bb226b8051c3049807ae4f5b0916b` |
 | `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/SHA256SUMS` | `a19dd7edaca82f82e143dc5e0d964613904a604a1f011aff61c3a996d0fcbf56` |
+
+## m248 residual spike and m310..600 trend — 2026-11-03
+
+Pinned literal source1d3818c. Mode/leakage/cutoff diagnosis,90cell grid, literal max residuals, descriptive median-gap fits, full numerical gap brackets and DH900 census.16zeta cells remain unresolved; no exact closure/asymptotic/RH claim. Canon+mirror identical.
+
+| Bus-relative path | SHA-256 |
+|---|---|
+| `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/FITS.csv` | `75af8d28414561e1f7cafbe773eaf61039196e53b8c41c4a2b2353288fac93f5` |
+| `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/RESULT.md` | `a87d602f8b25607d568718b568a2d1694acf31a840c083c561f4d2d157293702` |
+| `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/SUMMARY.csv` | `fad2e67464bbd1aeb1fb32d51b7feb1c4876adb2260f1e3f9926b46f3398db02` |
+| `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/SHA256SUMS` | `a9a35bf5c20fc2ec922edbe4c1814f4697144e1dc99d809345f0b817ab8410ee` |

@@ -1,0 +1,8 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "requested_cells": 90,
+  "completed": 90,
+  "missing": [],
+  "checked": "finite symmetric matrices,dimensions,sorted eigenvalues,ordered heuristic count ranges",
+  "MP_inertia_computed": false
+}

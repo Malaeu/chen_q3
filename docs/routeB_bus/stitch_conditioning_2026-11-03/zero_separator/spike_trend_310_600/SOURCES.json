@@ -1,0 +1,16 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "repository": "Malaeu/chen_q3",
+  "base": "1d3818cd227bf5f27786adf0c82e5b5d5d9ab11b",
+  "input_packet": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/extension_121_300/",
+  "source_m248_sha256": "076ae78298b6f857a31fa2c89693a81306536046bbc652aa9dbda01438c393d1",
+  "DH900_sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846",
+  "DH600_control_input_sha256": "74fb75cf6a9ec06c0b89be9b17dcd0e2cc6daea5e091c68c90abb346891d834a",
+  "zeta601_sha256": "3d55cd7aa3f74e22c8284753eab922439607c925514e5c36a372ff5bb2363c75",
+  "source_regression": "matrix_engine/REGRESSION.json",
+  "source_check": "GL256/320 pilots310/600;400bit MPFR",
+  "frame_check": "768/1024 at248/zeta600 andDH310/600; DHnullvsrow310",
+  "gap_scope": "Heuristic numerical brackets;16\u03b6cells remainunresolved; noexactclosure",
+  "code_input_selectors": "spike248 LITERAL_BASE and max_delta DH_BASELINE_TABLE made configurable for replay; numerical logic unchanged",
+  "review": "review/REVIEW.md"
+}
