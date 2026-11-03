@@ -1,0 +1,16 @@
+{
+  "base": "435b7bb94c776851a7133757ba9bf59a2fbc0343",
+  "repository": "Malaeu/chen_q3",
+  "input_packet": "docs/routeB_bus/stitch_conditioning_2026-11-03/",
+  "original_archive_sha256": "3c9f87f458d671605e3a5df9e48851031e4b8917043c8ec5b0e5df43346de84c",
+  "spectrum_receipts": "counts.csv has all315 source filenames and SHA256",
+  "matrix_receipts": "full sector CSV has each frozen source matrix SHA256",
+  "DH53_source": "source_inputs/dh_matrix.py, pinned9554c275; original cache path unavailable; reconstructed recipe only",
+  "root_uncertainty": "Original fixed decimal zeros; no rerooting or interval completeness",
+  "precision": "768/1024-bit row frames; original MP spectra retained; baseline AQ float64",
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "mpmath": "1.3.0"
+  }
+}

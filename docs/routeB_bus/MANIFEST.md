@@ -438,3 +438,14 @@ Additive supplement to 81b657e. Route B CHALLENGER / NOT_RH. Canon and mirror ca
 | `lit_quickcheck_2026-11-03/RESULT.md` | `5d3d29adb191bfd363e24fa49b5405d76784af6506b6725d8cea1f28832a7e58` |
 | `lit_quickcheck_2026-11-03/SHA256SUMS` | `bee61624d3c1330c878c24b9d1620bc0609318e7d8e0b9ab60a3df235f5c3562` |
 | `lit_quickcheck_2026-11-03/independent_replay/SHA256SUMS` | `0904b2ff7cabe8ba70f67f6d2d0ee9539abb58a108022bd7f7d38460c4ac07a6` |
+
+## Zero-threshold inertia and adaptive separators — 2026-11-03
+
+Literal even CCM, m16..120, zeta/plant/DH. Complete21153 nontrivial cutoff sectors; zero signs and positive levels below2 separated. Diagnostic only, no route-state/RH change. Canon and mirror identical.
+
+| Bus-relative path | SHA-256 |
+|---|---|
+| `stitch_conditioning_2026-11-03/zero_separator/RESULT.md` | `07982414ecf514217b0e89f61e645ab06fb70c4650460832942b57258c7b9dc3` |
+| `stitch_conditioning_2026-11-03/zero_separator/counts.csv` | `d77624a24845304e60de7ddf80df5d78defbdc3c158c7de4e357c0c409aba683` |
+| `stitch_conditioning_2026-11-03/zero_separator/separator_summary.csv` | `1a3717b9d0604dda11c6049d6b0572609812fbea251e330c28d154d32b36cb9b` |
+| `stitch_conditioning_2026-11-03/zero_separator/SHA256SUMS` | `e55fdaffa0d789d1fc19b957c6198309e4bb2f056227a78fed834d927c5bfdba` |

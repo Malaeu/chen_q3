@@ -1,0 +1,21 @@
+# Reproduction, scope and cutoff conventions
+
+Input: Malaeu/chen_q3 rh_clean@435b7bb94c776851a7133757ba9bf59a2fbc0343, docs/routeB_bus/stitch_conditioning_2026-11-03. Source spectrum selection follows refine_lambda.py: highest GL, then mp_cell filename preference, inherited MP cache fallback. The MP spectra supply scalar λ_r; the frozen float matrices supply baseline ||AQ||. Their original assembly, order, cached-source and numerical-radius limitations are retained. A roundoff heuristic is not a quadrature or input-uncertainty enclosure. Thus NO_NUMERIC is a complete finite-sector diagnostic, not an exact operator nonexistence proof.
+
+Let d=m+1, Ω=2πm/log m. Rows are the same raw physical Fourier evaluations as the input: e0=1/sqrt L, en=sqrt(2/L)(−1)^n cos(2πnx/L). Critical-line row scalars can be cancelled, leaving d_j/(γ²−ω_j²). Off-line quartets retain the actual complex scalar 2t sin(tL/2)/sqrt L and contribute real and imaginary rows together. Multiplicity does not create derivative conditions. Supplied zero censuses are fixed inputs, not interval-complete zero certifications.
+
+For ordered distinct heights γ_j, all cutoffs T in (γ_j,γ_(j+1)] have the same E/J, because inclusion is strict γ<T. A quartet is one height event adding two real rows; its intermediate rank is not attainable. We enumerate every event up to full column rank, not a uniform sampled κ mesh. After full rank J=0 at all larger cutoffs. Both κ>0 and the extra domain κ≥1 are reported. An intersecting sector whose midpoint is below1 may use κ=1 when its left endpoint is below1. Scalar CSVs show sector endpoints to float precision; exact mathematical endpoint conventions follow the frozen decimal input heights.
+
+Row MGS uses gmpy2 at768 bits and two reorthogonalization passes. An MP-orthogonal row frame is converted to float and completed once with ordered QR. Every prefix gives its own Q as the trailing columns. No singular raw Gram inverse is formed. δ is the largest singular value of A Q, not ||Q*AQ||. The numerical guard is max(inherited matrix radius,1000 eps64 d max(1,||A||))+MP scalar roundoff guard. Classification: PASS if λ_r−δ exceeds the guard; FAIL if below minus the guard; otherwise unresolved. A robust singular-minmax exclusion can classify an unresolved residual sector as failed without needing its tiny δ: λ_r+g<−λ_0−g or λ_r+g<0. Indeed a separator needs λ_r>max(−λ_0,λ_(r−1),0). This is necessary, not sufficient. Those scalar guards remain heuristics for fixed source data.
+
+Every row of separator_summary.csv includes the maximal observed gap and its κ/r/δ/λ_r, separately for unrestricted, κ≥1 and spectrally admissible sectors. A largest raw gap at the floating floor may be unresolved even when a spectral necessary test excludes that sector; best_admissible fields show the informative competing gaps. The full21153-row CSV is the authority for all sectors. counts.csv records zero-threshold counts independently of the C=2 classification. All unresolved near-zero signs remain explicit.
+
+Install numpy,scipy,mpmath,gmpy2. Run prepare_inputs.py --output INPUT to retrieve and SHA-check the frozen lossless source archive and required decimal zeros; or unpack the existing source packet using its own unpack_data.py. Then:
+
+    python extract_counts.py --input INPUT
+    python scan_separator.py --input INPUT --workers 3
+    python aggregate.py
+
+The scan writes per-cell checkpoints. aggregate.py produces the complete CSV and summary; published per-cell numerical fields are retained in that CSV and315-row summary, without duplicating the input matrices. Reconstruct the published sector CSV with python unpack_scan.py; it checks each part and combined hash before gzip decompression. Optional same-recipe DH53 check: python refine_dh53.py --input INPUT. Its source implementation is included verbatim and hash-pinned. It computes small AQ-Gram eigenvalues only, no new full-A eigenproblem. The original DH53 MP-cache path returns404, so this check is explicitly secondary. VALIDATION.json retains the12 precision comparisons and829 saved-prefix comparisons; finish_report.py builds ancillary tables from checkpoints.
+
+All output is DIAGNOSTIC_NEVER_A_PROOF. The full finite sign of the real analytical source at zero is not certified by these rounded MP point spectra.

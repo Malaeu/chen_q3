@@ -1,0 +1,79 @@
+{
+  "base_projector_matches": 829,
+  "max_base_delta_difference": 7.105427357601002e-15,
+  "all_base_differences_within_inherited_radius": true,
+  "precision_replays": [
+    {
+      "world": "plant",
+      "m": 120,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "dh",
+      "m": 80,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "plant",
+      "m": 16,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "dh",
+      "m": 16,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "plant",
+      "m": 80,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "zeta",
+      "m": 16,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "zeta",
+      "m": 24,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "zeta",
+      "m": 120,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "dh",
+      "m": 120,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "plant",
+      "m": 24,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "dh",
+      "m": 24,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    },
+    {
+      "world": "zeta",
+      "m": 80,
+      "delta_max_difference_768_to1024_bits": 0.0,
+      "sector_statuses_identical": true
+    }
+  ]
+}
