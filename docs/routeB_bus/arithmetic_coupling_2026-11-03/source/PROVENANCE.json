@@ -1,0 +1,26 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "source_builder": "/workspace/zero_extension/matrix_engine/engine.py",
+  "source_builder_sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7",
+  "split_builder_sha256": "b709685c92ac2ee6b39361b927e16031d00920d2e00c00342982b596dc610d5e",
+  "bits": 400,
+  "GL_order": 192,
+  "panels": 8,
+  "paired_GL_order": 256,
+  "paired_m": [
+    16,
+    300
+  ],
+  "worlds": [
+    "zeta",
+    "dh",
+    "double2"
+  ],
+  "m": [
+    16,
+    300
+  ],
+  "coupling": "A(u)=C+uB; all signed arithmetic terms scaled jointly",
+  "double2": "Bdouble2=Bzeta+atom_at_integer2; powers4,8,... unchanged",
+  "support": "all nonzero atoms2<=n<m; n=m boundary autocorrelation is identically zero"
+}

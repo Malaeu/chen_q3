@@ -1,0 +1,18 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "repository": "Malaeu/chen_q3",
+  "mathematical_source": "1d3818cd227bf5f27786adf0c82e5b5d5d9ab11b",
+  "delivery_parent": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+  "control_inbox": "70662bc531e7b90158cf7d0fd3dc415f3bd927eb",
+  "control_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_PASSIVE_SECTION_KINK_BUDGET_2026-11-03.md",
+  "control_sha256": "f079197e61b57b2e3cf8c36f6cfed35b95912f7efc6691d938eb7f64ae7759a9",
+  "control_blob": "d00a55c75448d0bf4d4da4aceb24a3b37f8fef2f",
+  "control_scope": "integer2 weight doubled only; allotherverdictclaims unadjudicated",
+  "zeta_nodes_sha256": "3d55cd7aa3f74e22c8284753eab922439607c925514e5c36a372ff5bb2363c75",
+  "DH_nodes_sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846",
+  "primary_epsilon": "100rho commonperworld,m; relativebinary64floor, notI0",
+  "smallest_quiet_eigenvalues": "binary64\u03b6285unresolved; MP16/24/40 resolvedasnumericpilots",
+  "code_selectors": "Deliveredzero-inputdefaults configurable/relative; executednumericalcode unchanged, rawmetadata keeps executed hashes",
+  "review": "review/FINAL_REVIEW.md",
+  "source_regression": "source/COMPLETION.json andsource/SUMMARY.csv"
+}

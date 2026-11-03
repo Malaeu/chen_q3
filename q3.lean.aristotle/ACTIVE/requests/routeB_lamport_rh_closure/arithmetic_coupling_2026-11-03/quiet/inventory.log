@@ -1,0 +1,37 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "cells": 570,
+  "m_range": [
+    16,
+    300
+  ],
+  "worlds": [
+    "zeta",
+    "dh"
+  ],
+  "double2": {
+    "frame_world": "zeta",
+    "label": "REFERENCE_J\u03b6",
+    "matching_altered_zero_census": false
+  },
+  "max_orth_U": 2.8939912812377366e-15,
+  "max_orth_Q": 3.2237499134738204e-15,
+  "max_cross": 1.2881858549406801e-15,
+  "max_MP_frame_float_orthogonality": 1.5544527080752864e-15,
+  "pilot_dual_row_projector_max_difference": 2.359404471530728e-15,
+  "pilot_count": 8,
+  "pilot_normalized_E_Q_relative_norm_max": 7.807442210312624e-16,
+  "source_code_sha256": {
+    "build.py": "637346bdf7452c502d657196517c067320ceef71026627848c2cff01b2795f5c",
+    "native_frame.py": "3159228ad8ddb4fc0dff2f17d36b487d63a2fc60bd668f02a76598c42f4bc70d",
+    "frame.c": "c22e465c370da7404f1d5a2c4fbf923e497bdc079d4409313b3014eaf8e51c44",
+    "inventory.py": "859be162ca2de67473f7628bdfd7a714e856c44dbff36eb5dda6832615d016c4",
+    "pilot_checks.py": "2419a2cc52e53799f8710256ac87c7c8811fd37089819b8659a7116eeba68db9"
+  },
+  "zero_input_sha256": {
+    "zeta": "3d55cd7aa3f74e22c8284753eab922439607c925514e5c36a372ff5bb2363c75",
+    "dh": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846"
+  },
+  "total_frame_bytes": 141137827,
+  "rank_scope": "Distinct-node complete-orbit constraint count; numerical frames, not interval-certified rank."
+}

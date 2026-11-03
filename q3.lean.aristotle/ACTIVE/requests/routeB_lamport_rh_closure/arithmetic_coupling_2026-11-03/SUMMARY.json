@@ -1,0 +1,28 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "primary_cells": 855,
+  "sensitivity_cells": 48,
+  "epsilon_rule": "epsilon=100 rho_m; rho_m=1000 eps64 (m+1) max_world(||C||2+||B||2,1)",
+  "statuses": {
+    "zeta": {
+      "NONEMPTY_NUMERIC": 285
+    },
+    "double2": {
+      "EMPTY_NUMERIC": 285
+    },
+    "dh": {
+      "NONEMPTY_NUMERIC": 39,
+      "EMPTY_NUMERIC": 246
+    }
+  },
+  "epsilon_range": [
+    3.0189355382195366e-09,
+    2.650793788069835e-07
+  ],
+  "zeta_quiet_minima_unresolved": 285,
+  "all_endpoints_quiet_mass_min": 0.99999999807888,
+  "max_endpoint_shifted_residual": 2.9964894692885125e-15,
+  "min_empty_dual_margin_in_guards": 4846324.5331510175,
+  "smallest_quiet_relation": "All285binary64\u03b6minima unresolved; relationship only numerically resolved in independent MP16/24/40 pilots",
+  "exact_I0_claim": false
+}

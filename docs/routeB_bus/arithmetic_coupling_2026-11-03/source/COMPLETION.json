@@ -1,0 +1,11 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "expected": 855,
+  "completed": 855,
+  "missing": [],
+  "float_C_B_A1_max_reconstruction": 3.552713678800501e-15,
+  "double2_control_max_float_reconstruction": 3.219646771412954e-15,
+  "sign_groups_max_MP_entry_residual": 5.266725004195073e-119,
+  "source_operator_fixed": true,
+  "no_inertia_or_interval_claim": true
+}

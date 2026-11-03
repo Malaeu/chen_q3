@@ -1,0 +1,14 @@
+[
+  {
+    "world": "zeta",
+    "m": 16,
+    "reference": "fresh evaluation of frozen original builder, not a saved matrix checkpoint",
+    "max_abs_float_difference": 0.0
+  },
+  {
+    "world": "dh",
+    "m": 16,
+    "reference": "fresh evaluation of frozen original builder, not a saved matrix checkpoint",
+    "max_abs_float_difference": 0.0
+  }
+]

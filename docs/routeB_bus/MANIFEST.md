@@ -472,3 +472,15 @@ Pinned literal source1d3818c. Mode/leakage/cutoff diagnosis,90cell grid, literal
 | `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/RESULT.md` | `a87d602f8b25607d568718b568a2d1694acf31a840c083c561f4d2d157293702` |
 | `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/SUMMARY.csv` | `fad2e67464bbd1aeb1fb32d51b7feb1c4876adb2260f1e3f9926b46f3398db02` |
 | `stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/SHA256SUMS` | `a9a35bf5c20fc2ec922edbe4c1814f4697144e1dc99d809345f0b817ab8410ee` |
+
+## Arithmetic-coupling PSD intervals — 2026-11-03
+
+Literal even m16..300;855primary ε-relaxed pencils,48sensitivitycells,three MP plateau pilots, quiet boundary carriers and global empty-control witnesses. The ε tube is not identified with I0. Controlsource70662bc snapshot hashverified; no route-state/RH change. Canon+mirror identical.
+
+| Bus-relative path | SHA-256 |
+|---|---|
+| `arithmetic_coupling_2026-11-03/ENDPOINTS.csv` | `b930bb0c395c7c97da8754dfc40a893809903a6af918c15ab096b478168cdca0` |
+| `arithmetic_coupling_2026-11-03/INPUT_VERDICT.md` | `f079197e61b57b2e3cf8c36f6cfed35b95912f7efc6691d938eb7f64ae7759a9` |
+| `arithmetic_coupling_2026-11-03/RESULT.md` | `8cb1d3102a562ef45524c4ba957779c599294ee77e4da51b9100514aea219794` |
+| `arithmetic_coupling_2026-11-03/SUMMARY.csv` | `7bc70aa021b8777015b2c371fcc81f6a5a782e8bbe2ef4cfc3e23baf0419abee` |
+| `arithmetic_coupling_2026-11-03/SHA256SUMS` | `086c0ff53f7be8bdefb29c4cfc86db23dfe656eb8bb185941362c51031400226` |
