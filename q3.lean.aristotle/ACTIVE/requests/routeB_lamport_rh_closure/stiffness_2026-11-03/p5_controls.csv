@@ -1,0 +1,25 @@
+m,epsilon,world,a0_gate,tolerance,gate_pass,a0_minimum,negative_detected,gamma,beta,scope
+120,6.770907528438063e-08,dh,2.5135449277513544e-13,4.23919394109764e-11,True,-3.176507376071001,True,,,
+120,6.770907528438063e-08,double2,2.5310309403892006e-13,4.451513287190508e-11,True,-1.8112787184043468,True,,,
+120,6.770907528438063e-08,pinned_low_quartet_plant,,,,-2.5064092341408184,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+16,3.0189355382195366e-09,dh,6.661338147750939e-14,2.4008229039321136e-12,True,2.862832767132487e-13,False,,,
+16,3.0189355382195366e-09,double2,9.381384558082573e-14,2.074831382061766e-12,True,-1.5860349224684507,True,,,
+16,3.0189355382195366e-09,pinned_low_quartet_plant,,,,-0.4336912574009062,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+200,1.4514636739015585e-07,dh,4.0323300254385686e-13,8.070245397719259e-11,True,-4.612089060561624,True,,,
+200,1.4514636739015585e-07,double2,3.312905505481467e-13,9.485651841160122e-11,True,-1.8420221602894666,True,,,
+200,1.4514636739015585e-07,pinned_low_quartet_plant,,,,-3.4886196425637173,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+24,5.7667147879243415e-09,dh,7.993605777301127e-14,4.7551421016422535e-12,True,-6.466334481406398e-16,False,,,
+24,5.7667147879243415e-09,double2,1.1723955140041653e-13,3.913716463085091e-12,True,-1.6970491531045775,True,,,
+24,5.7667147879243415e-09,pinned_low_quartet_plant,,,,-0.6558870933491991,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+248,1.9978864772382735e-07,dh,4.927169783286445e-13,1.1918034391598178e-10,True,-7.539610602540184,True,,,
+248,1.9978864772382735e-07,double2,5.346834086594754e-13,1.3026991747652094e-10,True,-1.8422713694517594,True,,,
+248,1.9978864772382735e-07,pinned_low_quartet_plant,,,,-3.8878972680245827,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+300,2.650793788069835e-07,dh,7.673861546209082e-13,1.5161763143011794e-10,True,-8.458884718800121,True,,,
+300,2.650793788069835e-07,double2,6.252776074688882e-13,1.7261684513853226e-10,True,-1.863842947910141,True,,,
+300,2.650793788069835e-07,pinned_low_quartet_plant,,,,-3.9918760095848063,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+40,1.2775863197592334e-08,dh,1.3677947663381929e-13,8.643176525595452e-12,True,-4.058550978786992e-15,False,,,
+40,1.2775863197592334e-08,double2,1.6564527527407336e-13,8.554396346983471e-12,True,-1.7626095327940652,True,,,
+40,1.2775863197592334e-08,pinned_low_quartet_plant,,,,-0.9279270379075999,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)
+80,3.677653701785183e-08,dh,2.2470914018413168e-13,2.5831851563459757e-11,True,-2.4813740246993126,True,,,
+80,3.677653701785183e-08,double2,2.220446049250313e-13,2.4310777188743517e-11,True,-1.8101348520617409,True,,,
+80,3.677653701785183e-08,pinned_low_quartet_plant,,,,-1.6880595169809953,True,9.064720283654388,0.25,algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)

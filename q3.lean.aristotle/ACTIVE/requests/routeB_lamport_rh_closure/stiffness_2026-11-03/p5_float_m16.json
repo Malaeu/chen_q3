@@ -1,0 +1,166 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "precision": "binary64_calibration",
+  "m": 16,
+  "epsilon": 3.0189355382195366e-09,
+  "source_gate_max_entry": 9.348077867343818e-14,
+  "source_gate_tolerance": 1.7894061068592413e-12,
+  "source_hash": "4a5f8d20aaaed2fa680e2cab65b55d0df67d63a449d73cad6448c366fdf3c6d6",
+  "a0_equals_2A_exact_by_preserved_baseline": true,
+  "curvature_definition": "A_a=2A+a^2 H+O(a^4)",
+  "quiet_basis_diagonal": [
+    -0.2856250475478261,
+    -0.746608168415016,
+    -1.961734553571684,
+    -0.4884744242453526,
+    -0.773600759147386,
+    -3.379907625418423,
+    -0.09749783625391618,
+    -1.1941012815704601,
+    -1.8066775782569664,
+    -1.660385549185893,
+    -2.3226373271967042,
+    -1.9132952121020055
+  ],
+  "quiet_curvature_eigenvalues": [
+    -6.008258316916023,
+    -3.984779515408845,
+    -3.073845073191539,
+    -1.847927771949787,
+    -1.420923534840523,
+    -0.29471969518846375,
+    -0.0001250937295112035,
+    -1.9706098565335084e-15,
+    -1.0653818249125657e-16,
+    2.1370979007022552e-16,
+    3.2091689669638297e-10,
+    3.363799214285028e-05
+  ],
+  "quiet_basis_all_negative": true,
+  "lowpart_diagonal": [
+    -0.28236741959459444,
+    -0.745888329259973,
+    -1.9497853140449979,
+    -0.4819410280658935,
+    -0.7723425286997448,
+    -3.353241530820002,
+    -0.09444577395246649,
+    -1.17830760953766,
+    -1.7904518936058675,
+    -1.6439102567295327,
+    -2.3064675293477612,
+    -0.1211082937350235
+  ],
+  "source_minus_lowpart_diagonal": [
+    -0.0032576279532316454,
+    -0.0007198391550430339,
+    -0.011949239526686029,
+    -0.006533396179459083,
+    -0.0012582304476411732,
+    -0.026666094598421175,
+    -0.003052062301449693,
+    -0.015793672032800243,
+    -0.01622568465109886,
+    -0.016475292456360258,
+    -0.016169797848943013,
+    -1.792186918366982
+  ],
+  "lowpart_compression_eigenvalues": [
+    -5.942154346034325,
+    -3.9554886851389215,
+    -3.073432776769067,
+    -1.4646487882663566,
+    -0.2845329111848475,
+    -6.1868256058605015e-16,
+    -4.723857084691793e-16,
+    -1.71540373060211e-16,
+    -3.518300180985017e-17,
+    6.929085343999648e-17,
+    1.6497785670858628e-16,
+    3.706365421479443e-16
+  ],
+  "source_minus_lowpart_eigenvalues": [
+    -1.8877461200948142,
+    -0.09115151682945138,
+    -4.37322244995784e-07,
+    -3.4371672829372584e-12,
+    -1.228604030770619e-14,
+    -2.209459161243631e-15,
+    -9.883200707720941e-16,
+    1.020524599553975e-15,
+    3.4410203292036646e-15,
+    1.8642292002504697e-10,
+    0.0007072645727538245,
+    0.06790295397266509
+  ],
+  "source_minus_lowpart_frobenius_norm": 1.8911650706204661,
+  "lowpart_known_positive_zero_count": 5,
+  "quiet_minimum": -1.7019262357381123e-17,
+  "qmin_curvature": -0.2515881218415877,
+  "registered_prediction": null,
+  "corrected_threshold_prediction": 0.00010954229889732382,
+  "full_root": {
+    "status": "FIRST_SAMPLED_CROSSING_BISECTED_NOT_GLOBAL_MONOTONICITY_CERTIFICATE",
+    "a_star": 3.08801689004312e-05,
+    "lower_a": 3.088016890042809e-05,
+    "value_lower": 8.780373061585945e-17,
+    "value_upper": -3.5628547923420316e-16,
+    "coarse_lower_a": 2.779215201038808e-05,
+    "coarse_upper_a": 3.3968185790474325e-05,
+    "coarse_lower_value": 5.782158061364853e-10,
+    "coarse_upper_value": -6.392408425045354e-10,
+    "precision_note": "binary point estimate only; fine bisection signs may be at roundoff",
+    "samples": [
+      [
+        0.00010954229951486902,
+        -3.5407675842823955e-08
+      ]
+    ]
+  },
+  "quiet_trial_root": {
+    "status": "FIRST_SAMPLED_CROSSING_BISECTED_NOT_GLOBAL_MONOTONICITY_CERTIFICATE",
+    "a_star": 0.00010954229949048503,
+    "lower_a": 0.00010954229949048191,
+    "value_lower": 4.7309916846868124e-18,
+    "value_upper": -5.055751892161869e-18,
+    "coarse_lower_a": 9.858806954143653e-05,
+    "coarse_upper_a": 0.00012049652943953353,
+    "coarse_lower_value": 5.735977394717712e-10,
+    "coarse_upper_value": -6.339764946103811e-10,
+    "precision_note": "binary point estimate only; fine bisection signs may be at roundoff",
+    "samples": [
+      [
+        0.00010954229951486902,
+        -9.858556502498392e-18
+      ]
+    ]
+  },
+  "controls": [
+    {
+      "world": "dh",
+      "a0_gate": 6.661338147750939e-14,
+      "tolerance": 2.4008229039321136e-12,
+      "gate_pass": true,
+      "a0_minimum": 2.862832767132487e-13,
+      "negative_detected": false
+    },
+    {
+      "world": "double2",
+      "a0_gate": 9.381384558082573e-14,
+      "tolerance": 2.074831382061766e-12,
+      "gate_pass": true,
+      "a0_minimum": -1.5860349224684507,
+      "negative_detected": true
+    },
+    {
+      "world": "pinned_low_quartet_plant",
+      "gamma": 9.064720283654388,
+      "beta": 0.25,
+      "a0_minimum": -0.4336912574009062,
+      "negative_detected": true,
+      "scope": "algebraic planted control; quartet contribution at deformation a is 4 Re(E(gamma+i(beta+a))E(gamma+i(beta+a))^T + E(gamma+i(beta-a))E(gamma+i(beta-a))^T)"
+    }
+  ],
+  "source_floor_note": "tiny baseline quiet eigenvalues unresolved in binary64; roots use pinned epsilon only",
+  "seconds": 0.08191293299751123
+}

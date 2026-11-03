@@ -1,0 +1,2372 @@
+[
+  {
+    "path": "source/zeta_m16.npz",
+    "sha256": "4a5f8d20aaaed2fa680e2cab65b55d0df67d63a449d73cad6448c366fdf3c6d6",
+    "bytes": 9395,
+    "arrays": {
+      "C": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "2a9f8a3b81927a23cbdb363ad25679b8dd39c56fc6fe7ad27e2fd2bdc924fae0"
+      },
+      "B": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "1cce287978668deee2fa067aaea42bc5c0dcd12135afbff06f1f1dc409115ae2"
+      },
+      "A1": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "475f02d19e91d5b575db293dd3d8650d641d0c24a5d68747af918dcde271db56"
+      },
+      "A": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "475f02d19e91d5b575db293dd3d8650d641d0c24a5d68747af918dcde271db56"
+      },
+      "atom2": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "3bc1d7bd88d004bb7cceaa2ba853fff2f1f8a4eb9cf523540f84fe4171e44bb5"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "e80b4b72403f57d43a90be3616b6908adaad5dd2275ad71cf33ed50f359d848a"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "d0ccc39d31d7bba40e1e7f075ac9af9e23a59085b6dc027db1505f9453118b79"
+      },
+      "eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "7621c8c347373ef2ef3a4fe3036b627aebe987d51e3a3144fddd6b73167b7889"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "5eb6da0e0e522104c6d50b0748e6893762f7f2c00a7163a46ccbb535bfd61a0d"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "40bbcbb10c4963b1117d5856accb199c6330301656fad2827ffb9311951fb064"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m16.npz",
+    "sha256": "1bde41a4cf625ec3e375ee19d95f5c084dfe6a3db294335de33578a800842ce4",
+    "bytes": 9379,
+    "arrays": {
+      "C": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "9b7c0ef916c9dffab7693c2989817d5d0fb6a30a937b06fc0ae6a0f0f9099f6e"
+      },
+      "B": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "c95be103981cd4f21424b52ad7befa2efbd149b6c3a36417c1fc23eeabc425c3"
+      },
+      "A1": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "8fdf78767e234d15beebc0f268e250d256c20bd9365783b8bd6e27b61c1e69f9"
+      },
+      "A": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "8fdf78767e234d15beebc0f268e250d256c20bd9365783b8bd6e27b61c1e69f9"
+      },
+      "atom2": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "3bc1d7bd88d004bb7cceaa2ba853fff2f1f8a4eb9cf523540f84fe4171e44bb5"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "23cf5be2c9ad30f795f810bce16750810277b2c6a7368199c4e2a5e83b3f2691"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "6908aa489ef1d125d46c5efa12434b7fd9e361bc6e873b8e5d9a3daff7938543"
+      },
+      "eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "a50dd64b2a5c0460d726a516c50ff20e035c3775b42acb0b4438d7aafa9a212c"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "5eb6da0e0e522104c6d50b0748e6893762f7f2c00a7163a46ccbb535bfd61a0d"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "9d643814f51e43f8f288d6a541156a6f7b6fb710a7fae034c2c70d1752e4458c"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m16.npz",
+    "sha256": "15706104496310ed46739f1f07e481ee09ac08ab59455551660abcbd6e679f80",
+    "bytes": 9402,
+    "arrays": {
+      "C": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "2a9f8a3b81927a23cbdb363ad25679b8dd39c56fc6fe7ad27e2fd2bdc924fae0"
+      },
+      "B": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "a9ed92e7915ba91ed83f74bd7f5f70b186c495f6810d7c0fd752bff2a8dabca2"
+      },
+      "A1": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "0276ee6f013363415109b6e983e3aeb708e360a7a124cefc09aa4c89ef22eb26"
+      },
+      "A": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "0276ee6f013363415109b6e983e3aeb708e360a7a124cefc09aa4c89ef22eb26"
+      },
+      "atom2": {
+        "shape": [
+          17,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "3bc1d7bd88d004bb7cceaa2ba853fff2f1f8a4eb9cf523540f84fe4171e44bb5"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "e80b4b72403f57d43a90be3616b6908adaad5dd2275ad71cf33ed50f359d848a"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "cb86f5a50f03fe764cc3eec7f176fb2e548d4467099a85e6570feae272579dea"
+      },
+      "eigenvalues": {
+        "shape": [
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "eb7ef573897018e220d7235762de6c47319c050f60d813a0dfbe2bda259ab8a5"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "5eb6da0e0e522104c6d50b0748e6893762f7f2c00a7163a46ccbb535bfd61a0d"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "c3aa4e5e45c16a2f6d59c68b1469ef8150ee434637a1b9bf53658a6022beac06"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m24.npz",
+    "sha256": "af7b764c6590a92c69f8edb3f1109f9ec9b6e3e310964766a26f30474481a5fd",
+    "bytes": 18250,
+    "arrays": {
+      "C": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "b5f1cd94b622a95b8546478997e6298a59beafaab019a62617a4790562f36684"
+      },
+      "B": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "69828f2b2761ba1bf0aca30a336be525efecb182b87a9d033048e4b5cd5fb1d3"
+      },
+      "A1": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "b36e85afa152d9a0d6951a30ef56e28c00c48ea37ca220c437ccb8d309e6d08b"
+      },
+      "A": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "b36e85afa152d9a0d6951a30ef56e28c00c48ea37ca220c437ccb8d309e6d08b"
+      },
+      "atom2": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "149e3e4dbd53e31617acba1ab3c05adcd1ba10b9264677907a479f8852fe45ca"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "22fe3d1d0d7475437419e771c0572695d656a482a88a3f504b2ed0a3c482ba98"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "a393890a018520bb972c553e28fb5511e06c31632b7f2d6d7df078b553224011"
+      },
+      "eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "9bb6bb9a1ec022e3ab794b2b0a64c1f46e94fd83bc62fa360af547676d7e8675"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "cbb032642036ec7043fa4529f06c9c9d8b12fa70ea6799a19ca8321a808d86fa"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "693485f717768d473d04e7f3d8df0db69e0a4cc349565e46bebd95a7b5c2a274"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m24.npz",
+    "sha256": "57c53bc11685dfc7982c83f917a7883ed0a9b1a9af716d9611baa2b5938a3afb",
+    "bytes": 18162,
+    "arrays": {
+      "C": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "d922ba14f77366a379e8b4d090f45b1e27f38350f208da6f0c00a8b77da0a84d"
+      },
+      "B": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "1879e7a95b5ddb04bd8651b1bb9c4ae2ad60dd052871dc88c01ecdfdb586158e"
+      },
+      "A1": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "f8407690785582ccff51a0ff5fba543ce8139069f08ce56229205779f047b81a"
+      },
+      "A": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "f8407690785582ccff51a0ff5fba543ce8139069f08ce56229205779f047b81a"
+      },
+      "atom2": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "149e3e4dbd53e31617acba1ab3c05adcd1ba10b9264677907a479f8852fe45ca"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "3ba550500056db17b6eacbcc4b78e710e83c74ac5baab094fa8344d3d2ee16e8"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "b3fbf3dadb42abe2084397139b012c6eaa311eee7769c9cddbb586bfb65d484c"
+      },
+      "eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "94647219c8bee99f5fb1f72c396acdb5e7005e5828fd63941220c176c4535a85"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "cbb032642036ec7043fa4529f06c9c9d8b12fa70ea6799a19ca8321a808d86fa"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "ad5b48cde1a89d6eeb839ba18aee6135b59cf9faffe0818d3d5173c83d841672"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m24.npz",
+    "sha256": "61857a02e9e97b3238364632ef6cf2bd77f36ecfd91617db75a48949bca18280",
+    "bytes": 18248,
+    "arrays": {
+      "C": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "b5f1cd94b622a95b8546478997e6298a59beafaab019a62617a4790562f36684"
+      },
+      "B": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "f76fbc27c080d689c3ea4e1cea3f2dc0cc0fd11a1c471cd50d758a75dd44a0c8"
+      },
+      "A1": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "56a4c85f24f09dc8f5fdf638418aedb44cd51ec4fe2a9df8c326e95aaa2730c9"
+      },
+      "A": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "56a4c85f24f09dc8f5fdf638418aedb44cd51ec4fe2a9df8c326e95aaa2730c9"
+      },
+      "atom2": {
+        "shape": [
+          25,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "149e3e4dbd53e31617acba1ab3c05adcd1ba10b9264677907a479f8852fe45ca"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "22fe3d1d0d7475437419e771c0572695d656a482a88a3f504b2ed0a3c482ba98"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "a40f4c8a30a50d23a755a5347a5122f3bf1b694761d5c643902d6fb711aab28e"
+      },
+      "eigenvalues": {
+        "shape": [
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "afc950a64c0d985e38952306dfa9cf1bf8205762ca70e9273796c21b2a31c3e8"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "cbb032642036ec7043fa4529f06c9c9d8b12fa70ea6799a19ca8321a808d86fa"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "66f7ccfdde2096f283600dcf356a60bd7cca9f05004bb2b8551774cec3636b47"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m40.npz",
+    "sha256": "7e81334700963c7e7acf04f41d026454b9d96a389108ec4548da477449b1353e",
+    "bytes": 44939,
+    "arrays": {
+      "C": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "57008ceb7485d16f92926e128b50c150b37bf893edc425ca7bb51216d52d97d2"
+      },
+      "B": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "4c9b42358ef83b912f04c12d769bd99bb94b5cd3dc73d6c6d11be63ccd7d9a70"
+      },
+      "A1": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "cce7b631ab0b62b8418afc44aadb928dfa401b3d3536a65f408bcb4213e1751c"
+      },
+      "A": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "cce7b631ab0b62b8418afc44aadb928dfa401b3d3536a65f408bcb4213e1751c"
+      },
+      "atom2": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "ff59df71bb97ea3a6d6db8c947dfddd87205442290c4d0e44de1a6e37fed64f0"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "d0faa785c477e2c4858e8b1dc94cae2a37bef13d0e2feacf71b3e341b643f13b"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "d711f93c65c804b78b6e7bb833e65eb64f6235c8ea5a25146f94987d230b1090"
+      },
+      "eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "3c13db0abb2a9004e93c884cf55fad894eed53cc595636e89acbf614e88983b4"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "552a4a6608d384327b0410f4da0f5da26e1e983f02e8d6ca1e115cd89bef0829"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "d98120cb626cae541a44caf25d6c741cfa3034bd10e317ad14bc8c5953f23400"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m40.npz",
+    "sha256": "631a250895b88a120d091c0d3fa34a9ab9f75263adeeb7294d9f7ed2779f9ce1",
+    "bytes": 44635,
+    "arrays": {
+      "C": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "ec2790f9805574e71dafbeb45f1426a4352af61ea8719c2841e4098044402000"
+      },
+      "B": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "087f69a9911efd370fd42db7bfbfa748e746bdd44b39eaf199af3c21efccbe1e"
+      },
+      "A1": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "3a988e1cda9f8ec6326b5ed876f70283cb52c50fa3ca3fed1ebddff29c15be15"
+      },
+      "A": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "3a988e1cda9f8ec6326b5ed876f70283cb52c50fa3ca3fed1ebddff29c15be15"
+      },
+      "atom2": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "ff59df71bb97ea3a6d6db8c947dfddd87205442290c4d0e44de1a6e37fed64f0"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "1cffbdc083b6a2fe2321af91d806831934a09088208c418862716838db9c3772"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "3f9fd9c48f37272640469204b20e3090fc4cf9330b9c0b236a43c774263ddb56"
+      },
+      "eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "9728d86124de13f913d9cabd05cf6cf9e567d1a620408bf4226ffd7d5908686a"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "552a4a6608d384327b0410f4da0f5da26e1e983f02e8d6ca1e115cd89bef0829"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "27bbfb1b68937ebfbaa2c4bf23dcc5face69fb6c4acc61a5357e090585b7fb57"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m40.npz",
+    "sha256": "b0b0771f7609174dbbdaeb11af77ca0d5889e6e2041234f2e12dec4745c55078",
+    "bytes": 44946,
+    "arrays": {
+      "C": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "57008ceb7485d16f92926e128b50c150b37bf893edc425ca7bb51216d52d97d2"
+      },
+      "B": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "2156032ce961b9e6fe2c6ab7aba5256a9cd3b6441510f7a4d405063fb634292d"
+      },
+      "A1": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "cee0ca02fcc402a31f18db7a8aa7efa54e4542120c9a3dfb40f36c0d09f58da3"
+      },
+      "A": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "cee0ca02fcc402a31f18db7a8aa7efa54e4542120c9a3dfb40f36c0d09f58da3"
+      },
+      "atom2": {
+        "shape": [
+          41,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "ff59df71bb97ea3a6d6db8c947dfddd87205442290c4d0e44de1a6e37fed64f0"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "d0faa785c477e2c4858e8b1dc94cae2a37bef13d0e2feacf71b3e341b643f13b"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "9a1a5147bab9ad3492097ca456e4d57e7d145300ad20ac0a13b90719b1b18127"
+      },
+      "eigenvalues": {
+        "shape": [
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "f2a4259288e95353a20560156cfb83d91ab5b0371131e87f18de6118e39132c7"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "552a4a6608d384327b0410f4da0f5da26e1e983f02e8d6ca1e115cd89bef0829"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "45945f692995b5aa75df01acdd38e02246d9f7bb7e20732aae65911e08289ff5"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m80.npz",
+    "sha256": "3ab787721e3fd3b8eabe9e281a8c6a283c1227a06e929befccfe2be5c34a245a",
+    "bytes": 180308,
+    "arrays": {
+      "C": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "6ca0ca580e0e0e65d1fb89f5e8fd7602abc42536147518f7de517fa14b28efb5"
+      },
+      "B": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "70209e15287d555663222c11c826ab716b0f7cce4d7ab7218f31271b7bf92018"
+      },
+      "A1": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "36eaf465e4e53b50567ce2dfbafd042a3917607c8083c5d992807b0127bf9e5b"
+      },
+      "A": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "36eaf465e4e53b50567ce2dfbafd042a3917607c8083c5d992807b0127bf9e5b"
+      },
+      "atom2": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "78dad3fcbe35ca01a0068ab55172788b75580c1b587c850289b15edbbbddcb02"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "43766733097d0f4f6666573b4e712b51d417dbded06269ef1df167c0a222c84c"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "33a238d7cca904edab931229ebac1d416b25f2e10cdeba56011da3937f5bf041"
+      },
+      "eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "1cfa037c1301cbefb4355efe97234455f246d8b76943b3bd7145ca57166a576b"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "3478af7d895d85fb71e1c84813ac8dce11a4fcd1be230cf3cba471ea702c8bd3"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "752700a1cfc794ac38a23e71e16215a23a6a4ba1a9c6fa4e2d4330569e625737"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m80.npz",
+    "sha256": "5535a8f6929b7f8737317358cbdc6b3a46356080c217192a3c5a564c679fac96",
+    "bytes": 178417,
+    "arrays": {
+      "C": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "fb40908f736f80c03a32fa36a3e9c82cb9a302aed6ceb695a54f29cb56402fcf"
+      },
+      "B": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "9662386e56217d42672c76d78b4f71419997190b9ba2b0fd0655f78b7fadfef1"
+      },
+      "A1": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "8a316dad2a1f89d10044c0a0286579f7e1b6e8f7fb8300eb960a47baf05cbae6"
+      },
+      "A": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "8a316dad2a1f89d10044c0a0286579f7e1b6e8f7fb8300eb960a47baf05cbae6"
+      },
+      "atom2": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "78dad3fcbe35ca01a0068ab55172788b75580c1b587c850289b15edbbbddcb02"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "be1613ecbbc8d6a4cad8352faa5ec0a7b48381cac89cb35abff98b32fc742504"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "5507173ae4d85d71e5370a33fea399c4032b1080a9ce54472fed895cda2973fd"
+      },
+      "eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "1963c69cd44fc07d503553a94135a3d81132f20bb1a10c58f7fc173efd14d5d1"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "3478af7d895d85fb71e1c84813ac8dce11a4fcd1be230cf3cba471ea702c8bd3"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "9bdb81d240bceb8d6d13a9cc82166b3561fac3e9bb253a2a02544ebc2031c69a"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m80.npz",
+    "sha256": "7367931daf30bc912258cb7d07f95e08e96e59723a50347b8610a013405add24",
+    "bytes": 180375,
+    "arrays": {
+      "C": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "6ca0ca580e0e0e65d1fb89f5e8fd7602abc42536147518f7de517fa14b28efb5"
+      },
+      "B": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "e66bc380f2a7b8dd9d7ae9dc05e0921ecd02a279df883b7c31fe5f90205aacce"
+      },
+      "A1": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "2323f376c72fb168bb79836244ce632c0af3ef16bb9598d0b70f108883de911c"
+      },
+      "A": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "2323f376c72fb168bb79836244ce632c0af3ef16bb9598d0b70f108883de911c"
+      },
+      "atom2": {
+        "shape": [
+          81,
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "78dad3fcbe35ca01a0068ab55172788b75580c1b587c850289b15edbbbddcb02"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "43766733097d0f4f6666573b4e712b51d417dbded06269ef1df167c0a222c84c"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "f0c0eb13206321e1530f3a203243403e1e1febda314e9ec5d7240ce52d147db1"
+      },
+      "eigenvalues": {
+        "shape": [
+          81
+        ],
+        "dtype": "float64",
+        "sha256": "dc929f3b4881cdd0576d73ea0903486d259c83d2e675d35917c0ad282758ef91"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "3478af7d895d85fb71e1c84813ac8dce11a4fcd1be230cf3cba471ea702c8bd3"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "348413c8cb92de4f5174e72a7d3a31ca50c1aaefbe69655640d8df7cc88a89d9"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m120.npz",
+    "sha256": "f9d348fef4f559cf3ed7efac97cb892d41a04e7b85597371acff8179dfc0f990",
+    "bytes": 468591,
+    "arrays": {
+      "C": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "46535321cd1f04aa9a070a2a1be3f12ca6dd556f3306c6054eb2b2235fb7bf73"
+      },
+      "B": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "9bde56ec8af172072a13cc933c30619fbb36ab01f2cd248363e95e067f3aeae3"
+      },
+      "A1": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "0b06f65e62d3f9549ffb0aa4724cd8b68847d9b89d79fb302d334b7f7343f286"
+      },
+      "A": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "0b06f65e62d3f9549ffb0aa4724cd8b68847d9b89d79fb302d334b7f7343f286"
+      },
+      "atom2": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "87f8b6e621bf5b369f9f6e6feca92bbb7063fd5a2ec6539839bed489a7bdd8ac"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "04fe9f8d6fc8da7df486fa17061a8322b3289a7618a89eebf8948952fc5cdd3d"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "11c2012fb0d747732e5321b760c312c17bb2c8e943783179625d44754dc28fb9"
+      },
+      "eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "55bdfa405692ed343a2669dc52e9d3d4bf99cc15603b8d9f9e3d77c83281479a"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "71565cd53b740546f7d236f21aba165cf52b249891958cdb7edb072614d0c3a4"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "c702bef6c8d72c42ccff238c7a0e780ab50ac2b82e102b880ea6164bf97e6cb6"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m120.npz",
+    "sha256": "7800598f4a5aab29f2ce4bdfba1d96f176cf6547068707d1f2e15a2c672a453a",
+    "bytes": 462100,
+    "arrays": {
+      "C": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "d56ba4bcc58af59f106fc78ebaf74e65e404052637ff612c8d948fcbb48c44cc"
+      },
+      "B": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "33ebf1eb401755c8464ccb2c9d4eff694bd22c1a176c08f3e09ea86a0d6e47ef"
+      },
+      "A1": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "56edff15259788d6abd809cf988c59e52ca0f47736f20cd45e40e445ceaf4589"
+      },
+      "A": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "56edff15259788d6abd809cf988c59e52ca0f47736f20cd45e40e445ceaf4589"
+      },
+      "atom2": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "87f8b6e621bf5b369f9f6e6feca92bbb7063fd5a2ec6539839bed489a7bdd8ac"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "5de7f2ded73bb0ef3c06eed29b127b467e02bfd0adf4c99037788ca92c57a849"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "28a6b7f6aac48864b568cfedb9d6ab9ef1a1fb8c16755a5f223848bff9c44504"
+      },
+      "eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "c39208e3759bda61982695dbc9fc92375aaf74c3f2d897e6948922de98bb9b75"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "71565cd53b740546f7d236f21aba165cf52b249891958cdb7edb072614d0c3a4"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "7dcade92c894bfdf336a257e930ef20976098db100e228af9acefca7e76ac8db"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m120.npz",
+    "sha256": "dcbe45aac062ddbdd28cc0d752eebe8ae8f5b6aef967b2f74b6a78d30086a3fa",
+    "bytes": 468809,
+    "arrays": {
+      "C": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "46535321cd1f04aa9a070a2a1be3f12ca6dd556f3306c6054eb2b2235fb7bf73"
+      },
+      "B": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "4b2148f1b9a715ac7b940b557cca41f4db8e9adbba0bf0a206ab7b1b11f263f6"
+      },
+      "A1": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "e031e7e5d380ea5cec7f3e5d4521321cfa6de78155fe79a98bee3c0d47245bd9"
+      },
+      "A": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "e031e7e5d380ea5cec7f3e5d4521321cfa6de78155fe79a98bee3c0d47245bd9"
+      },
+      "atom2": {
+        "shape": [
+          121,
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "87f8b6e621bf5b369f9f6e6feca92bbb7063fd5a2ec6539839bed489a7bdd8ac"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "04fe9f8d6fc8da7df486fa17061a8322b3289a7618a89eebf8948952fc5cdd3d"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "a2686704ed90d3a67a5c8c3bd05f9f7fee2bda5137c32b5e6bca3ae308eac63c"
+      },
+      "eigenvalues": {
+        "shape": [
+          121
+        ],
+        "dtype": "float64",
+        "sha256": "2ecf6da7d4c798a6e32440a32ebbba3826c61e8f31e2c13ec5b949e3de001ded"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "71565cd53b740546f7d236f21aba165cf52b249891958cdb7edb072614d0c3a4"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "0948f39cf753eda452d07e6acd6032b77b71aee3c27b7d858b8a961aa90a46e7"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m200.npz",
+    "sha256": "06355364038ddb26a66a775f7740e1ca72ba93e9a5f364a0fe34dee41bcc9f5c",
+    "bytes": 1419155,
+    "arrays": {
+      "C": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "007138557836c8523ec5ee3affbc86b93a8497d480e6e1edd6e1417c00880449"
+      },
+      "B": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "a77c5f242a0613d3b6f75f17a894643f3c8dfe345f54d4a7b94e5fa0bad5f219"
+      },
+      "A1": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "a5a230560d074dc3a623a8881d201aed3a9fea0d7985aa12f0065afb8ee2f87f"
+      },
+      "A": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "a5a230560d074dc3a623a8881d201aed3a9fea0d7985aa12f0065afb8ee2f87f"
+      },
+      "atom2": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "8eb1d4c8e5c38fe8924fc660600e6e465d2a7c6519c3e4b10f4139415522e531"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "784d56f583c4d2814ecfb17c446ca08dd24b4a45394a73e6abc090bb28622ab7"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "e00b9a46da26ff042617e3041493408160d5f9ae2bb4f41e253e79feca200eb4"
+      },
+      "eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "8113b9637069e9e608ca6a1de127ef347f1954ddf6be3b3ca6103a092537521d"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "ca8923d6c4447d6fa6d0540cafff01f647f2bbfe8f19939686ce6fa7b0daee28"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "221ced984b4b443a3ac978e947e7f1801224f3cc64c0929351de42b07544cf3d"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m200.npz",
+    "sha256": "4a3110d733ba5b420536313e263843adaba17fa0a1a2e3ee0433566ddb232bc3",
+    "bytes": 1393886,
+    "arrays": {
+      "C": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "dc1ab31d7ef8d2e4c6d9dc6a774e0d89e090964c637baa5b565de0289edf860e"
+      },
+      "B": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "266fe501da0e05757ba3da1818dc9cf24d4f3e475a6ff6e759e21d392c1f8888"
+      },
+      "A1": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "ed1d0e438d50a4d999cd9146070c483017ba0e48561a6374f8c6ff438310b5ab"
+      },
+      "A": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "ed1d0e438d50a4d999cd9146070c483017ba0e48561a6374f8c6ff438310b5ab"
+      },
+      "atom2": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "8eb1d4c8e5c38fe8924fc660600e6e465d2a7c6519c3e4b10f4139415522e531"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "231703341b26db9352cbfc4fb0246409f4aa549453973e301fd57a0e10dcbc65"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "916e9428b4431b6aaa75eb91a82c8d45c3494a6ffd4677d0cd03708bdd414e37"
+      },
+      "eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "5665dfdeb037a15be72c59f747e589b6202c08f716c89e79651feee490518184"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "ca8923d6c4447d6fa6d0540cafff01f647f2bbfe8f19939686ce6fa7b0daee28"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "b1ab5343011e92079fa96d6da4897a77ac2aad6560f48d1c4a9b4571a5ae7d91"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m200.npz",
+    "sha256": "98816afc55eeb2362f67acaf5da3babc902cf0aa9ac51caa1bd39060c12a124a",
+    "bytes": 1419034,
+    "arrays": {
+      "C": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "007138557836c8523ec5ee3affbc86b93a8497d480e6e1edd6e1417c00880449"
+      },
+      "B": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "a8481d5bcc5a7b8f822abc79d562216d2178d17428f246e74f9704500356e9a4"
+      },
+      "A1": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "5c1bd7656c3b9b3983de9c11647b02384c7fef9477ef663fd75b094ee4041b2a"
+      },
+      "A": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "5c1bd7656c3b9b3983de9c11647b02384c7fef9477ef663fd75b094ee4041b2a"
+      },
+      "atom2": {
+        "shape": [
+          201,
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "8eb1d4c8e5c38fe8924fc660600e6e465d2a7c6519c3e4b10f4139415522e531"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "784d56f583c4d2814ecfb17c446ca08dd24b4a45394a73e6abc090bb28622ab7"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "bf8c8dcdb917b8135c80dbbbf19908fb4a2866227839a6a36960d1581b2c72ea"
+      },
+      "eigenvalues": {
+        "shape": [
+          201
+        ],
+        "dtype": "float64",
+        "sha256": "bac6aa5c8ae4fc9c9205d5cd1be80bf80fbb72780b7e12a97213c066d72a5235"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "ca8923d6c4447d6fa6d0540cafff01f647f2bbfe8f19939686ce6fa7b0daee28"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "cd280ce3ebdaba812957e71c5e9a979518d4291caf34537a10fe71b017a0cb26"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m248.npz",
+    "sha256": "77d7398e91b9fd2c786973f9a61bb459c1a586f2cf3f2ef381c6c8b955e7f85c",
+    "bytes": 2215527,
+    "arrays": {
+      "C": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "056a3df5ce80237a9174362040b2a176d4829c90ca012d8f6b06bc2913eb4d57"
+      },
+      "B": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "b77a71d076b3e965d16d2feaa2ae24061ab20c36d4bcd484a66de8e25b15b8a9"
+      },
+      "A1": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "b73ba4900e41648b2319c1aaab7e7da6745f792e9522ca9f3997394a9ee30f90"
+      },
+      "A": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "b73ba4900e41648b2319c1aaab7e7da6745f792e9522ca9f3997394a9ee30f90"
+      },
+      "atom2": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "3890501b0ef14174b6aa46e120cfd7bc964418d6397c966bb3546eb7e9ce11bb"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "82619c0022e155c162bbd7bbd94d7154b52051253ac97944167bad7e035fa238"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "5b311a640983d3f66216f3a99252b8b7b680ec530522dd3b79f563005fd894ae"
+      },
+      "eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "567f2f6af065f15d2d7d6cfcd4d5b25a905bc7efac3fd2bbecc8b06ebd25da88"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "0a5dc74ea1e2fb5029007bc6d6289c205cef91f17c5c03d6ef7ccb20e8c1ba57"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "f4c8bf6c7f1d0fdd18b72cff9884481431b556220fedf03b79194926ce32f42d"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m248.npz",
+    "sha256": "2c350958ce88a4f9f4b504e6efe5230b5517668ee5e8c53300120a1a2a9eebf8",
+    "bytes": 2174066,
+    "arrays": {
+      "C": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "061080e524ac1076773ef8e047d9c96db0cbf4f2ba76ea13f155d3dabff7f566"
+      },
+      "B": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "b890ecb2f7933af7bf5f68f5c309c75c7e6459537316cc60dc24f5926dcfd0d4"
+      },
+      "A1": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "dc5312a73230fa5bbfe31d93904c0c226fe5a6bbd8bf4fd44222edd4b2a4a452"
+      },
+      "A": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "dc5312a73230fa5bbfe31d93904c0c226fe5a6bbd8bf4fd44222edd4b2a4a452"
+      },
+      "atom2": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "3890501b0ef14174b6aa46e120cfd7bc964418d6397c966bb3546eb7e9ce11bb"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "5b0abb54e0a98920454b682aba798e6cb9a03db52f501404526b10594f99ffd9"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "1a481dc20a579ebc1f18385808a10981f7ef173d7abe4bf721679b1d36f0aa62"
+      },
+      "eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "7ff20952ed1f56d8c4111b72d285f9d792057075d97da49ce940de58428b17e0"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "0a5dc74ea1e2fb5029007bc6d6289c205cef91f17c5c03d6ef7ccb20e8c1ba57"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "519b9cc1441e08f52bdc736bc3d4ed7f474e1bc4b586a883081f96c3ac3138cc"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m248.npz",
+    "sha256": "70b7c5e9123e60c2c5e39726493fa6fcc435560a3da54dceffcd98f25cf94341",
+    "bytes": 2215496,
+    "arrays": {
+      "C": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "056a3df5ce80237a9174362040b2a176d4829c90ca012d8f6b06bc2913eb4d57"
+      },
+      "B": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "48203afb5f5c67631e637bf22ac4d950259d21a8dfb777c4ef5297b4911e3071"
+      },
+      "A1": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "60dd8988d3dc22416d635c9ba15cc27a55ba9a849e249770d915c514963a8443"
+      },
+      "A": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "60dd8988d3dc22416d635c9ba15cc27a55ba9a849e249770d915c514963a8443"
+      },
+      "atom2": {
+        "shape": [
+          249,
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "3890501b0ef14174b6aa46e120cfd7bc964418d6397c966bb3546eb7e9ce11bb"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "82619c0022e155c162bbd7bbd94d7154b52051253ac97944167bad7e035fa238"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "93d95ededb280c76dcf83c3a586cca54c48e0620123fa7b0da2d05c0867fe956"
+      },
+      "eigenvalues": {
+        "shape": [
+          249
+        ],
+        "dtype": "float64",
+        "sha256": "651a98909508dd957e77ee4c1558c6bdaf5cf3ac4110b5c0dcc3032181d99208"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "0a5dc74ea1e2fb5029007bc6d6289c205cef91f17c5c03d6ef7ccb20e8c1ba57"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "280a5aa0dceb4e26a48ba18207e47f64143bb676cef7be96304d724f86d8d306"
+      }
+    }
+  },
+  {
+    "path": "source/zeta_m300.npz",
+    "sha256": "1cb64a8178180360467e11b93e20cbb78af1a4638da9f9a873e4ee4a733ce880",
+    "bytes": 3276225,
+    "arrays": {
+      "C": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "680c1f2c2a8b1b1c3f63090e5d567bd1c0ffc086c33fe6f4cfda6a8296666b22"
+      },
+      "B": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "443e590a819dcaf720a22dacabf24e8e3b6a4e5e47e66f82f3898f502d0b3bae"
+      },
+      "A1": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "9c708c6813324ad39f5d8e71ef9f09beac95dfbc1e1745ae61788627a35c0098"
+      },
+      "A": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "9c708c6813324ad39f5d8e71ef9f09beac95dfbc1e1745ae61788627a35c0098"
+      },
+      "atom2": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "9264501fb0581c351399af0d61d4dadcd84752fe39c9a59e73a217320facb708"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "30ec3a5c4ddbfd925c40d62f50cf514f675930ffd0a2cbe12fb4e1b5482ceeea"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "478b30c320da05d00b04df1dc84a7716538a589a82599cc8997c930277343b90"
+      },
+      "eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "c2aee9b07dc4d66f477f083d92ac39ab9a1853a9e6597270a5a86510532b7894"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "5fbbc50a5e0bc4e1bb5ea4bbacda5ae6709eff8e286fb002fee73a4913820fe9"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "9ce4eb6b522c53ec7374d285e563dfd3e0b732d0f0ef556341262cb3fe130131"
+      }
+    }
+  },
+  {
+    "path": "source/dh_m300.npz",
+    "sha256": "6096359c76aba2ba24377845e54eae9904fe763560e83ffe330384c1a5f856c9",
+    "bytes": 3213684,
+    "arrays": {
+      "C": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "5328b7287b1601b7909d3c6d5c939376e9773c86dab59ab4ab0fda3a4ce2f7f3"
+      },
+      "B": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "7cf8168387ef594118579bde5620681f517b2199c13bacc32ef32947ebb55203"
+      },
+      "A1": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "d5fcfa83c24043dc480963ae5619904129757c06f3cd8dd078d4e31679c7280a"
+      },
+      "A": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "d5fcfa83c24043dc480963ae5619904129757c06f3cd8dd078d4e31679c7280a"
+      },
+      "atom2": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "9264501fb0581c351399af0d61d4dadcd84752fe39c9a59e73a217320facb708"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "58d98174e1cecdcdca9e5f2e4f8d9637a5dee0384252325c4a0c1010a9a4a733"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "ba31766734cb4d9547aefa7c83f899263bf157e92ddb1ab581bb6ffe4fb41253"
+      },
+      "eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "991b0df96ea090beb46785433d4694f5dfc8a6c57c0f6a94aac505f15cff68fa"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "5fbbc50a5e0bc4e1bb5ea4bbacda5ae6709eff8e286fb002fee73a4913820fe9"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "180c95bf1fa2e4aa85e5eaddfde29ab72e69c82b5dbb5dc350d6afca3f294eab"
+      }
+    }
+  },
+  {
+    "path": "source/double2_m300.npz",
+    "sha256": "0572eac2dbb2739317c1fe68e18889cd330ea89b9d1ec6d135c22c4137973aaa",
+    "bytes": 3276513,
+    "arrays": {
+      "C": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "680c1f2c2a8b1b1c3f63090e5d567bd1c0ffc086c33fe6f4cfda6a8296666b22"
+      },
+      "B": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "596be45cbb851b18487aa83f9b4ced0d9e3d704f33ce53e85740c2c16eab0548"
+      },
+      "A1": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "1d1edfa5d0d7c22c89780cda4f08e739b1ebc400544d0bc910a3230e2672bc8f"
+      },
+      "A": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "1d1edfa5d0d7c22c89780cda4f08e739b1ebc400544d0bc910a3230e2672bc8f"
+      },
+      "atom2": {
+        "shape": [
+          301,
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "9264501fb0581c351399af0d61d4dadcd84752fe39c9a59e73a217320facb708"
+      },
+      "C_eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "30ec3a5c4ddbfd925c40d62f50cf514f675930ffd0a2cbe12fb4e1b5482ceeea"
+      },
+      "B_eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "2fab9174f93a12328ad97acbbd60d0986a6afadb3190fd6ccc4338ea921f4f60"
+      },
+      "eigenvalues": {
+        "shape": [
+          301
+        ],
+        "dtype": "float64",
+        "sha256": "5ace981d736d11dcd949cc9138d21b6244c1cf61fb05afe47d3c351dbd0e83c1"
+      },
+      "m": {
+        "shape": [],
+        "dtype": "int64",
+        "sha256": "5fbbc50a5e0bc4e1bb5ea4bbacda5ae6709eff8e286fb002fee73a4913820fe9"
+      },
+      "numeric_radius": {
+        "shape": [],
+        "dtype": "float64",
+        "sha256": "b57642d5427c6bb9ecc5f2fc8bad97e98e14332677f8e281cfab8b82be64a42f"
+      }
+    }
+  },
+  {
+    "path": "quiet/frames/zeta_m16.npz",
+    "sha256": "bcd429fc6deb5ada3e256607fb20131b7ca489e3e58375a6468f279ec3d29515",
+    "bytes": 2699,
+    "arrays": {
+      "Q": {
+        "shape": [
+          17,
+          12
+        ],
+        "dtype": "float64",
+        "sha256": "fd46beb6653f18df450ea740e4a627339e028e924816d324a4e982e179e7b1d5"
+      },
+      "U": {
+        "shape": [
+          17,
+          5
+        ],
+        "dtype": "float64",
+        "sha256": "8b4380db258c636e120582911b6ec4546b33108fc7ba7468a681ac0f9013b778"
+      }
+    },
+    "original_npz_sha256": "c1dda75ed0d3a37e99cc3be882b57aff75a2d08bb8ae3262595987a25aa0fc5f",
+    "exact_file_hash_match": false,
+    "q": 5,
+    "r": 12,
+    "Q_orth": 3.3235156132566047e-16,
+    "U_orth": 2.4446932519830955e-16,
+    "cross": 4.531489067643435e-16
+  },
+  {
+    "path": "quiet/frames/dh_m16.npz",
+    "sha256": "5e2f80c7acde0b11d2f32a1b19db6b97d05bf8f1cc5ed997c45d6abcfade0e6b",
+    "bytes": 2690,
+    "arrays": {
+      "Q": {
+        "shape": [
+          17,
+          3
+        ],
+        "dtype": "float64",
+        "sha256": "f81e489afa59b6366b64da67e5a17dc68456cfccf223bed8c546c7c9f7620cd4"
+      },
+      "U": {
+        "shape": [
+          17,
+          14
+        ],
+        "dtype": "float64",
+        "sha256": "6ca559a2081968beb7362354e86d0fb0b2e4f3e54c19e9096b81b90242f6412d"
+      }
+    },
+    "original_npz_sha256": "8facf5906fe8dcb099873e73b819e5a392fe8788715e6dfcdca8d3c8b54240db",
+    "exact_file_hash_match": false,
+    "q": 14,
+    "r": 3,
+    "Q_orth": 4.611260542810618e-16,
+    "U_orth": 3.217992213004207e-16,
+    "cross": 3.9179402568969125e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m24.npz",
+    "sha256": "9477ab06ac34e7629e891ab6333965036d870f46b6eb821efc8a0c91c516aa97",
+    "bytes": 5259,
+    "arrays": {
+      "Q": {
+        "shape": [
+          25,
+          17
+        ],
+        "dtype": "float64",
+        "sha256": "d8235e9f9813a66bf79826153da1b896a11aaaba00f03b21d49368f6bbf3ec1c"
+      },
+      "U": {
+        "shape": [
+          25,
+          8
+        ],
+        "dtype": "float64",
+        "sha256": "50982e7e318dd5e16cb404a7b01086c7199378a46ed3275ddfdb2103ea58c0d9"
+      }
+    },
+    "original_npz_sha256": "88a165cf3c5ff771636d9549b88aeb83c05d9f84f05900205e23cfc8d1b3b1e6",
+    "exact_file_hash_match": false,
+    "q": 8,
+    "r": 17,
+    "Q_orth": 1.0059445378403094e-15,
+    "U_orth": 6.727899174289965e-16,
+    "cross": 6.74689272070975e-16
+  },
+  {
+    "path": "quiet/frames/dh_m24.npz",
+    "sha256": "f83b4251bddc7d81dfaea8ba90958d2ed90a175437803e73506da70e9d11f30c",
+    "bytes": 5275,
+    "arrays": {
+      "Q": {
+        "shape": [
+          25,
+          5
+        ],
+        "dtype": "float64",
+        "sha256": "823094138326d5642743f13c691393f7938aaaf0303169d48f2a540e28ba9187"
+      },
+      "U": {
+        "shape": [
+          25,
+          20
+        ],
+        "dtype": "float64",
+        "sha256": "5814327b2feaa539662add93b58a1bd70a8e2add1674ac947d2679406fd03042"
+      }
+    },
+    "original_npz_sha256": "23d2dc7cd8a8e6ed8577ff49d34487e379635bf64b1c33bbcb3874935f49a818",
+    "exact_file_hash_match": false,
+    "q": 20,
+    "r": 5,
+    "Q_orth": 3.777624377760799e-16,
+    "U_orth": 3.3673969670484116e-16,
+    "cross": 1.4462094499510948e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m40.npz",
+    "sha256": "904c60172cf3c27e5133854153321e487af7bf3232c6b3bf669094a0ea1aafa3",
+    "bytes": 13321,
+    "arrays": {
+      "Q": {
+        "shape": [
+          41,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "639b4ffa062437b98267a27d1a2d1bd267a87f8a798cb9c68e196b1b8f868bd5"
+      },
+      "U": {
+        "shape": [
+          41,
+          16
+        ],
+        "dtype": "float64",
+        "sha256": "71d9d497285c0e7bb924a0727c85fe38aa7eb66380faf197148835d8a4b6a320"
+      }
+    },
+    "original_npz_sha256": "5f016c4259644aa2e439c18bacb6591efe0effa8dd8ebd4d6f19294581a4afb5",
+    "exact_file_hash_match": false,
+    "q": 16,
+    "r": 25,
+    "Q_orth": 7.038333472677669e-16,
+    "U_orth": 8.907169673604063e-16,
+    "cross": 5.490339112020368e-16
+  },
+  {
+    "path": "quiet/frames/dh_m40.npz",
+    "sha256": "10f1f09662f50a0444be60308a65e182aba261093c33e1acf0ecd4afb1976ea1",
+    "bytes": 13376,
+    "arrays": {
+      "Q": {
+        "shape": [
+          41,
+          9
+        ],
+        "dtype": "float64",
+        "sha256": "6a822d294a14e907ac84c0eef81d15901fe89a351171876fc96f97d0928d22f5"
+      },
+      "U": {
+        "shape": [
+          41,
+          32
+        ],
+        "dtype": "float64",
+        "sha256": "652918c5229955a05e395d88f2e375ed5c8de37ac6d9ad6da094636339a321f1"
+      }
+    },
+    "original_npz_sha256": "412afb3e969ccc154d55cc37c02d0fcbb4cc2951ea4f2ecbfb2896c48be5324d",
+    "exact_file_hash_match": false,
+    "q": 32,
+    "r": 9,
+    "Q_orth": 1.0033593180586385e-15,
+    "U_orth": 5.474156031797955e-16,
+    "cross": 5.682970476893635e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m80.npz",
+    "sha256": "a36e385392dfc53467e8d6a83c848bab2a67f8acf323f11a3a49c12be3dc950c",
+    "bytes": 50694,
+    "arrays": {
+      "Q": {
+        "shape": [
+          81,
+          45
+        ],
+        "dtype": "float64",
+        "sha256": "a550dbcf653f97572bec6252ee800683fb07a8d11ba12e309e5f33eab3da57f9"
+      },
+      "U": {
+        "shape": [
+          81,
+          36
+        ],
+        "dtype": "float64",
+        "sha256": "67bbd7563b74890deff2a3b0ac43575c7139fdecd7685803d0372bd42eeac4cf"
+      }
+    },
+    "original_npz_sha256": "c280db60c65947de0e4f86a002902484747456f35a7ba3ed5c8a3e93c50b480b",
+    "exact_file_hash_match": false,
+    "q": 36,
+    "r": 45,
+    "Q_orth": 1.3080154942729678e-15,
+    "U_orth": 1.077324003701195e-15,
+    "cross": 6.467356916837879e-16
+  },
+  {
+    "path": "quiet/frames/dh_m80.npz",
+    "sha256": "5823dd93e3b276581fc366ba39b7eec8368a8ac7fbd63721e928ed9ed64b719c",
+    "bytes": 50985,
+    "arrays": {
+      "Q": {
+        "shape": [
+          81,
+          16
+        ],
+        "dtype": "float64",
+        "sha256": "fa5071d60d50a915927bc962575ebe76c3b7f53795e5c03a902555b8b68dac16"
+      },
+      "U": {
+        "shape": [
+          81,
+          65
+        ],
+        "dtype": "float64",
+        "sha256": "5ce95ec2a93b8b7191987bf8722a87b7fc92c5021e2efbb32541d3f14973ab17"
+      }
+    },
+    "original_npz_sha256": "670d48d009c89112e0607d9c58229aaaf197ccc537caf8a01a4915abfd735024",
+    "exact_file_hash_match": false,
+    "q": 65,
+    "r": 16,
+    "Q_orth": 8.28311431641108e-16,
+    "U_orth": 1.0120903673348551e-15,
+    "cross": 5.412557120424433e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m120.npz",
+    "sha256": "67647d4963ac91f6a6d66f7be91615a29958d3492b92c6eba16d453aeb1461fa",
+    "bytes": 112750,
+    "arrays": {
+      "Q": {
+        "shape": [
+          121,
+          65
+        ],
+        "dtype": "float64",
+        "sha256": "fa7e1bfc24372ed488c4102c629ac6716df0704e9052c2fc32332d049c36abdd"
+      },
+      "U": {
+        "shape": [
+          121,
+          56
+        ],
+        "dtype": "float64",
+        "sha256": "5ab57bffc8254d6b7275237a2861df41a54514d3dd169876b8d4299d94d0e2cc"
+      }
+    },
+    "original_npz_sha256": "9eca0b85faf2d953ac64f5f89b42be78d586e41327172fef88c378604d0e8599",
+    "exact_file_hash_match": false,
+    "q": 56,
+    "r": 65,
+    "Q_orth": 1.52739404635645e-15,
+    "U_orth": 1.5947512010767057e-15,
+    "cross": 7.791529057503614e-16
+  },
+  {
+    "path": "quiet/frames/dh_m120.npz",
+    "sha256": "07af5d59619c20cea972360a55bad6ce6cc9239967354ed62932c2e6faaaa456",
+    "bytes": 113370,
+    "arrays": {
+      "Q": {
+        "shape": [
+          121,
+          25
+        ],
+        "dtype": "float64",
+        "sha256": "c9caafc7ccf44a432213d398219a50346fd4fe5d741e053fc0af65f00e0717ad"
+      },
+      "U": {
+        "shape": [
+          121,
+          96
+        ],
+        "dtype": "float64",
+        "sha256": "46a025eaab49e9e680d783094bfa55e966d9a5f7e793212d55316498209a9e7a"
+      }
+    },
+    "original_npz_sha256": "ff09b3bba7a6c27b9aff0c81324bd0c3851e22f6cb21b5fb897c8e4e7b61be5e",
+    "exact_file_hash_match": false,
+    "q": 96,
+    "r": 25,
+    "Q_orth": 9.116530419865008e-16,
+    "U_orth": 9.796094130901512e-16,
+    "cross": 6.749305841531701e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m200.npz",
+    "sha256": "aa520e4c69f5ee38246add3ad5a7ecf2a76b9d0c3ec6dbdca1895ffbf0621012",
+    "bytes": 310067,
+    "arrays": {
+      "Q": {
+        "shape": [
+          201,
+          101
+        ],
+        "dtype": "float64",
+        "sha256": "907a8560510bf8a5a748350449e3b674eafe456e27d6dbeef8c7cb50c430e23f"
+      },
+      "U": {
+        "shape": [
+          201,
+          100
+        ],
+        "dtype": "float64",
+        "sha256": "ea76d7dacd7b55697f0a352c45697ebe838a009f3f2fd1f43480bb7054161bd8"
+      }
+    },
+    "original_npz_sha256": "aa32597cec9d891aeddd089394ddfe271d2212798524e5113cd9cdb2d11d7772",
+    "exact_file_hash_match": false,
+    "q": 100,
+    "r": 101,
+    "Q_orth": 2.733636938513993e-15,
+    "U_orth": 1.3589818120984786e-15,
+    "cross": 9.703672663730715e-16
+  },
+  {
+    "path": "quiet/frames/dh_m200.npz",
+    "sha256": "02bc4fe9782eb34891c4c0e05d5736022ec6c5a8e67d9d27cb30d7d95b8601f3",
+    "bytes": 311860,
+    "arrays": {
+      "Q": {
+        "shape": [
+          201,
+          41
+        ],
+        "dtype": "float64",
+        "sha256": "98701c648c9faa22873c6cfd15ec8e5363ecd03cc9a3e591a81b5df73586ace3"
+      },
+      "U": {
+        "shape": [
+          201,
+          160
+        ],
+        "dtype": "float64",
+        "sha256": "20fb921957da0160bff6e34b8f3e66b597053b61cc32e5bcf8d02704ff536afa"
+      }
+    },
+    "original_npz_sha256": "3f28c84e33692e5a424cd76c525b451ebddb35ea5036f80ac3f885f66bddfb4d",
+    "exact_file_hash_match": false,
+    "q": 160,
+    "r": 41,
+    "Q_orth": 1.2494141797337975e-15,
+    "U_orth": 1.2135621013257032e-15,
+    "cross": 7.993614403998826e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m248.npz",
+    "sha256": "63ff0c722bb09ea99b21c94942796c690e0a2b1fa17ade042bc9c297847cfca8",
+    "bytes": 479844,
+    "arrays": {
+      "Q": {
+        "shape": [
+          249,
+          122
+        ],
+        "dtype": "float64",
+        "sha256": "11ce251c9f4920c9a4ffd0f33f66eca68229386165ddb3e371a83b983ca2a50b"
+      },
+      "U": {
+        "shape": [
+          249,
+          127
+        ],
+        "dtype": "float64",
+        "sha256": "1a34290e4004c6b5e3cbcd8f63e1c5b3eee7392876af6b3f3358d42299fd38c3"
+      }
+    },
+    "original_npz_sha256": "6487ea9c243e7bf4350047a9d439dbb905844b7ae3b1a00f513bba8e4e71992b",
+    "exact_file_hash_match": false,
+    "q": 127,
+    "r": 122,
+    "Q_orth": 1.8320745674560172e-15,
+    "U_orth": 2.0188495690921088e-15,
+    "cross": 1.072539773676033e-15
+  },
+  {
+    "path": "quiet/frames/dh_m248.npz",
+    "sha256": "ad6919889817e37ce9601b9a38abeaabf1424ffaf710215079799ce3ca074f92",
+    "bytes": 478742,
+    "arrays": {
+      "Q": {
+        "shape": [
+          249,
+          50
+        ],
+        "dtype": "float64",
+        "sha256": "45ce86767464ffaf695efc3f873b68ed1e9436dababad62393d4ad1b96ef16f4"
+      },
+      "U": {
+        "shape": [
+          249,
+          199
+        ],
+        "dtype": "float64",
+        "sha256": "6d8df2cdf80c9b7d7f498c26195856f8de6197cc99788dcca6aa52832d316315"
+      }
+    },
+    "original_npz_sha256": "81ceeb01b9e64ac1c6cfc7dc9f6cb7b0623b8db844669ee456a63a8fcaf23aa1",
+    "exact_file_hash_match": false,
+    "q": 199,
+    "r": 50,
+    "Q_orth": 1.22106437359663e-15,
+    "U_orth": 1.3711291617194815e-15,
+    "cross": 9.412710952312808e-16
+  },
+  {
+    "path": "quiet/frames/zeta_m300.npz",
+    "sha256": "c190ff167f2a6ec024e27be9ca185b76c9ee63ca48a5ec73902cc14ded433679",
+    "bytes": 701109,
+    "arrays": {
+      "Q": {
+        "shape": [
+          301,
+          144
+        ],
+        "dtype": "float64",
+        "sha256": "35081ef8aad6cc9b81b81bf15fa203e95d88b66e57cf16adeff48176e204bda4"
+      },
+      "U": {
+        "shape": [
+          301,
+          157
+        ],
+        "dtype": "float64",
+        "sha256": "b9ed5c4739b2cf3bdbcef12f64fe4bbbe299fdee9b1f150c63628d7cf4620184"
+      }
+    },
+    "original_npz_sha256": "b785536eb09277797b1be17d3168d4547e498c1c98f526916a735ccfa1755a4b",
+    "exact_file_hash_match": false,
+    "q": 157,
+    "r": 144,
+    "Q_orth": 1.6802283559197085e-15,
+    "U_orth": 2.0321198877436996e-15,
+    "cross": 1.137013455480628e-15
+  },
+  {
+    "path": "quiet/frames/dh_m300.npz",
+    "sha256": "01b36ac9acde913b1ef0f936a2e3c868c3ff204ed8456e01c84aec2a2b02f65a",
+    "bytes": 699679,
+    "arrays": {
+      "Q": {
+        "shape": [
+          301,
+          61
+        ],
+        "dtype": "float64",
+        "sha256": "ff3b02f53ec4a72b61231f921bd941d99f5157cae85a7da0c1642256b39b1c23"
+      },
+      "U": {
+        "shape": [
+          301,
+          240
+        ],
+        "dtype": "float64",
+        "sha256": "afc43f2d08732baa4d4fc8780ff4fe958b6958b269e7c26c929fbf79a084d620"
+      }
+    },
+    "original_npz_sha256": "8948a3eb6186d698013adc943541a5a542419653bdb7753f9feffb9c669ecba6",
+    "exact_file_hash_match": false,
+    "q": 240,
+    "r": 61,
+    "Q_orth": 1.3299409519237644e-15,
+    "U_orth": 1.7250932101424212e-15,
+    "cross": 9.86405154231586e-16
+  },
+  {
+    "path": "local/mp/m16.pkl",
+    "sha256": "429fdb4fd063feca90a0e95bc158f33c2dbeb7ea2021edc38745e60c405f8032",
+    "bytes": 224784,
+    "scope": "LOCAL_ONLY_PICKLE_CACHE; portable scientific values in scalar receipts"
+  },
+  {
+    "path": "local/mp/m24.pkl",
+    "sha256": "04a459922848a8b77d7f9bda4dc40c12ab73d07d410bd75722be1d5951164c25",
+    "bytes": 474087,
+    "scope": "LOCAL_ONLY_PICKLE_CACHE; portable scientific values in scalar receipts"
+  },
+  {
+    "path": "local/mp/m40.pkl",
+    "sha256": "92c268b0bdf49ea87a4fc10617e9286d9597fa33c11f178510577a58aa71d179",
+    "bytes": 1217150,
+    "scope": "LOCAL_ONLY_PICKLE_CACHE; portable scientific values in scalar receipts"
+  }
+]

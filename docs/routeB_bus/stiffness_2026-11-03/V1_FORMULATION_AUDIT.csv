@@ -1,0 +1,6 @@
+part,prediction,status,reason,evidence_kind
+P2,S1,REGISTERED_SANITY_FALSE,All-ones image equals nonzero quiet compression at MP pilots,pinned MP scalar report
+P3,S2,IMPOSSIBLE_AS_STATED,Zero parameter vector is feasible and gives objective zero,exact finite algebra
+P4,S3_POLE,IMPOSSIBLE_FOR_FULL_INTERVAL,PSD pole increments leave every coefficient u>=1 feasible,exact rank-one congruence
+P5,S4,NOT_EVALUATED,Curvature matrices and saved quiet frames unavailable,input availability
+P5,S5,NOT_EVALUATED,Requires missing matrices; baseline2A adds sqrt2 and epsilon normalization,input availability and exact normalization

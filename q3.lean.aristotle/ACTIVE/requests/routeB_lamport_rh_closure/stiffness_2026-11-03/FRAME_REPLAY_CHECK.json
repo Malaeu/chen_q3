@@ -1,0 +1,114 @@
+[
+  {
+    "world": "zeta",
+    "m": 16,
+    "q": 5,
+    "quiet_dimension": 12,
+    "normalized_constraint_residual": 1.4921053714973663e-16
+  },
+  {
+    "world": "dh",
+    "m": 16,
+    "q": 14,
+    "quiet_dimension": 3,
+    "normalized_constraint_residual": 3.3395813714580355e-17
+  },
+  {
+    "world": "zeta",
+    "m": 24,
+    "q": 8,
+    "quiet_dimension": 17,
+    "normalized_constraint_residual": 1.32804859249477e-16
+  },
+  {
+    "world": "dh",
+    "m": 24,
+    "q": 20,
+    "quiet_dimension": 5,
+    "normalized_constraint_residual": 1.5032537227261076e-16
+  },
+  {
+    "world": "zeta",
+    "m": 40,
+    "q": 16,
+    "quiet_dimension": 25,
+    "normalized_constraint_residual": 1.0304739211978633e-16
+  },
+  {
+    "world": "dh",
+    "m": 40,
+    "q": 32,
+    "quiet_dimension": 9,
+    "normalized_constraint_residual": 7.400896310817858e-17
+  },
+  {
+    "world": "zeta",
+    "m": 80,
+    "q": 36,
+    "quiet_dimension": 45,
+    "normalized_constraint_residual": 1.5101680494492794e-16
+  },
+  {
+    "world": "dh",
+    "m": 80,
+    "q": 65,
+    "quiet_dimension": 16,
+    "normalized_constraint_residual": 7.926509527666879e-17
+  },
+  {
+    "world": "zeta",
+    "m": 120,
+    "q": 56,
+    "quiet_dimension": 65,
+    "normalized_constraint_residual": 3.325725569552283e-16
+  },
+  {
+    "world": "dh",
+    "m": 120,
+    "q": 96,
+    "quiet_dimension": 25,
+    "normalized_constraint_residual": 4.004746065579928e-17
+  },
+  {
+    "world": "zeta",
+    "m": 200,
+    "q": 100,
+    "quiet_dimension": 101,
+    "normalized_constraint_residual": 4.00632447185841e-16
+  },
+  {
+    "world": "dh",
+    "m": 200,
+    "q": 160,
+    "quiet_dimension": 41,
+    "normalized_constraint_residual": 1.7481598220162293e-16
+  },
+  {
+    "world": "zeta",
+    "m": 248,
+    "q": 127,
+    "quiet_dimension": 122,
+    "normalized_constraint_residual": 3.074588598402639e-16
+  },
+  {
+    "world": "dh",
+    "m": 248,
+    "q": 199,
+    "quiet_dimension": 50,
+    "normalized_constraint_residual": 1.6751674293050164e-16
+  },
+  {
+    "world": "zeta",
+    "m": 300,
+    "q": 157,
+    "quiet_dimension": 144,
+    "normalized_constraint_residual": 1.9672192302886805e-16
+  },
+  {
+    "world": "dh",
+    "m": 300,
+    "q": 240,
+    "quiet_dimension": 61,
+    "normalized_constraint_residual": 1.8650613217156013e-16
+  }
+]

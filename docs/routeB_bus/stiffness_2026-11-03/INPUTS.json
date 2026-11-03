@@ -1,0 +1,104 @@
+{
+  "ref": "cdb84497649c7399448737732b7dd3d632e141f0",
+  "files": [
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/RESULT.md",
+      "sha256": "8cb1d3102a562ef45524c4ba957779c599294ee77e4da51b9100514aea219794",
+      "git_blob": "b0900f4c5533c4604aebfb418f13ced031c3d552"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/quiet/RESULT.md",
+      "sha256": "1cf6541e3d799ac628a5eb316c2d43a9d3af6bc13635fe99270c7b1e86f762c9",
+      "git_blob": "c2e9f8d197ec98274765074be7161eb8c0bfa6c6"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/quiet/INDEX.csv",
+      "sha256": "899ef4048c9c13639e88ddee460b51e5d97f2b5130646377bb3c2264f3d572a4",
+      "git_blob": "e422174f01996423bb114c43e6e7fb0402dac006"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/DATA_ARCHIVE.json",
+      "sha256": "a8175cb052447627b83ae7ee68a418294e2176980ee8bb6361f8345ecaa84cab",
+      "git_blob": "c394454a8f6bf989a011f1623878eb37243fe808"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/mp_pilots/QUIET.csv",
+      "sha256": "72ef8e7929860a68d91db632eda686d82583ac809aef2c6dbb3b12f163c62f84",
+      "git_blob": "ce99dca3770a03869eb8fef76d6c15eb2b7edc14"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source/split.py",
+      "sha256": "b709685c92ac2ee6b39361b927e16031d00920d2e00c00342982b596dc610d5e",
+      "git_blob": "1ba67a018d5599931e03920e0dbb9b8110aa7212"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source/run.py",
+      "sha256": "e1038992bba0a87e687d9d1382778055f09573350c53d58a40bea613dac1f51b",
+      "git_blob": "d8172415249994e5432046cb5f9db2ae536d7928"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/quiet/build.py",
+      "sha256": "a95104a786497f304d4782c7744d038fee89fabed6e38f2c316177f930231b5e",
+      "git_blob": "1c8fdfac73dfd01ee87d6e8a92ac6c1c6f40c2cc"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/quiet/native_frame.py",
+      "sha256": "3159228ad8ddb4fc0dff2f17d36b487d63a2fc60bd668f02a76598c42f4bc70d",
+      "git_blob": "63ed1a7ffca7a0ad5063c06df8c3a95444708dd1"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/quiet/frame.c",
+      "sha256": "c22e465c370da7404f1d5a2c4fbf923e497bdc079d4409313b3014eaf8e51c44",
+      "git_blob": "5c20a9754bdfab80f7b56ab105f03480e70a7cbb"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/quiet/DEFINITION.md",
+      "sha256": "d00283d791731b2cf5bde766798382967445e7ffbff12a9a53df2824c9363a90",
+      "git_blob": "a73813c58362c91386377b03e62e6134be2667ec"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/mp_pilots/audit.py",
+      "sha256": "88a85f99eb9f8c48cfd9cbcfc5bffa858f00b3d65394de96620a230884ef00ec",
+      "git_blob": "c248906d67825b5d8eb001da49f1cf072b116b88"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/mp_pilots/ENDPOINTS_m16.json",
+      "sha256": "e11e059b739f0b9c61652029333136a9a222978b17f9bb20d405853869a1395d",
+      "git_blob": "938bf4de58eddcaa03b0eb120ab356782e5eff29"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/mp_pilots/ENDPOINTS_m24.json",
+      "sha256": "e55340ecf9ca5197edd68accd8f06c7a64577a053604d0ff0e4b52a0b926e90f",
+      "git_blob": "77dceb096f3760384614fefc0db292591d7d01dc"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/mp_pilots/ENDPOINTS_m40.json",
+      "sha256": "c719dcb3e4fa1702accc87020121ebeb360ad143fb533a790004ff313f092c3d",
+      "git_blob": "929e3833850359dcd7e332bdfcee1b9959b43c5e"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/SUMMARY.csv",
+      "sha256": "7bc70aa021b8777015b2c371fcc81f6a5a782e8bbe2ef4cfc3e23baf0419abee",
+      "git_blob": "19bf8db92cfceafa7bfb2dbb34d297d56c82a6dd"
+    }
+  ],
+  "authorized_scope": {
+    "binary_m": [
+      16,
+      24,
+      40,
+      80,
+      120,
+      200,
+      248,
+      300
+    ],
+    "MP_m": [
+      16,
+      24,
+      40
+    ],
+    "source_builder_unchanged": true,
+    "quiet_builder_unchanged": true
+  }
+}

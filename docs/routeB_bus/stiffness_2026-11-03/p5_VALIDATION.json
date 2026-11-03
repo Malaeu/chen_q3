@@ -1,0 +1,110 @@
+{
+  "status": "FINITE_NUMERICAL_GATES_PASS",
+  "cells": [
+    {
+      "file": "p5_float_m120.json",
+      "sha256": "036e349de36b0f7b1a12326a7d0bd1c89bcf5eec89d261c675abfae7353d7db2",
+      "m": 120,
+      "a0_reconstruction_maxentry": "5.087041898832467e-13",
+      "a0_reconstruction_allowed": "8.430496698420426e-11",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m16.json",
+      "sha256": "28eb6ed9bdb5415015e9531511a407b0ba6f601705d8f17368506c0812cab009",
+      "m": 16,
+      "a0_reconstruction_maxentry": "1.8696155734687636e-13",
+      "a0_reconstruction_allowed": "3.5788122137184825e-12",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m200.json",
+      "sha256": "7fdac6c373d0a9677556a5e81771ab7ef36e54eb8c58339aa247c36da93be7d1",
+      "m": 200,
+      "a0_reconstruction_maxentry": "6.785683126508957e-13",
+      "a0_reconstruction_allowed": "1.8186166369559646e-10",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m24.json",
+      "sha256": "7248c97a27cbc9e0a158c7072157c1a66c6fe754ca884bf8ca84f124ec595a4b",
+      "m": 24,
+      "a0_reconstruction_maxentry": "2.353672812205332e-13",
+      "a0_reconstruction_allowed": "6.935356930916131e-12",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m248.json",
+      "sha256": "a01bf8404ab75e7b32a9a2e94d0d69dd2878330c723dd6047d7f47ab6f604fd6",
+      "m": 248,
+      "a0_reconstruction_maxentry": "1.0533796057643485e-12",
+      "a0_reconstruction_allowed": "2.509191032199561e-10",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m300.json",
+      "sha256": "64cef6462e0846d07ac4165df70d0fa19f66f8d22072a3e1ee8f460fae173144",
+      "m": 300,
+      "a0_reconstruction_maxentry": "1.2426726314629377e-12",
+      "a0_reconstruction_allowed": "3.333695194688133e-10",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m40.json",
+      "sha256": "172d393c7d1b5f11db9a53d2475c0f5104dd8d2c021b8cf0351ce2d9f96ac8f0",
+      "m": 40,
+      "a0_reconstruction_maxentry": "3.312905505481467e-13",
+      "a0_reconstruction_allowed": "1.559741709186944e-11",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_float_m80.json",
+      "sha256": "893b07c558de502776a4a33d553307d424ef8b793392eb422cf1544ebd39aebf",
+      "m": 80,
+      "a0_reconstruction_maxentry": "4.39648317751562e-13",
+      "a0_reconstruction_allowed": "4.552638038821364e-11",
+      "baseline_exact_2A": true,
+      "coarse_10percent_bracket_pass": true
+    },
+    {
+      "file": "p5_mp_m16.json",
+      "sha256": "92781e6e74a11453578f898ae0407c5a97d3f3fcb599e0f6bad3b4fa940f352f",
+      "m": 16,
+      "a0_reconstruction_maxentry": "8.054991182886582e-119",
+      "a0_reconstruction_allowed": "2e-110",
+      "baseline_exact_2A": true,
+      "full_and_trial_bracket_signs_above_empirical_source_floor": true
+    },
+    {
+      "file": "p5_mp_m24.json",
+      "sha256": "732a62e44d6bc6422b9143ae9129ccd15c64225d45c10debfa59db25e532968d",
+      "m": 24,
+      "a0_reconstruction_maxentry": "1.19275830977359e-118",
+      "a0_reconstruction_allowed": "2e-110",
+      "baseline_exact_2A": true,
+      "full_and_trial_bracket_signs_above_empirical_source_floor": true
+    },
+    {
+      "file": "p5_mp_m40.json",
+      "sha256": "03355507488e2aa7fdf056eadb006ef5cebebab1833cdf884567b9168eb98146",
+      "m": 40,
+      "a0_reconstruction_maxentry": "1.9208055897652619e-118",
+      "a0_reconstruction_allowed": "2e-110",
+      "baseline_exact_2A": true,
+      "full_and_trial_bracket_signs_above_empirical_source_floor": true
+    }
+  ],
+  "mp_precision": "120dps,400bit source,GL2568panels unchanged",
+  "interval_certificate": false,
+  "code_sha256": "22ece8ca5bc82d4b99fae19387632fe60c0d08a147ae5d4aa5af6e8d140dce42",
+  "no_source_or_frame_replaced": true,
+  "executed_code_sha256": "11096307d55b27b9bde88c9bdd8a3ee5ff572415517db6283895de473bc291e7",
+  "postrun_change": "Only STIFFNESS_BASE/STIFFNESS_LOCAL path parameterization; numerical kernel unchanged"
+}

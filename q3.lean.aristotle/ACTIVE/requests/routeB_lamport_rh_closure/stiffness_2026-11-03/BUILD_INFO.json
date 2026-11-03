@@ -1,0 +1,19 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "mpmath": "1.3.0",
+  "gmpy2": "2.3.2",
+  "cvxpy": "1.9.3",
+  "solvers": [
+    "CLARABEL",
+    "SCS",
+    "SCIPY",
+    "HIGHS",
+    "OSQP"
+  ],
+  "source": "400bit unchanged builder; GL1928panels binary with256paired16/300; GL256MP",
+  "frames": "768bit nativeMPFR, float64stored; MPquiet120digit inherited audit",
+  "status": "DIAGNOSTIC_NEVER_A_PROOF"
+}

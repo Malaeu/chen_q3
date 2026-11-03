@@ -1,0 +1,132 @@
+{
+  "sha256": "0b56b34b0a95c9e1a4f676efe71af635336f63ac0be6abebab72c7397c159d83",
+  "members": [
+    {
+      "path": "binary_receipts/dh_m120.json",
+      "bytes": 13867,
+      "sha256": "58f36c378d4af170eae58cec2a0dc176202c88aeacc03f4487a79a8d9e9d97a4"
+    },
+    {
+      "path": "binary_receipts/dh_m16.json",
+      "bytes": 5090,
+      "sha256": "7bb30623094149e9f5eefd5fa35657398934bd078540ee89678740208f4413fc"
+    },
+    {
+      "path": "binary_receipts/dh_m200.json",
+      "bytes": 18586,
+      "sha256": "f0c39c4a589d35c2be04f8a399e257e765032c7382e6fde8219457baba9fdda8"
+    },
+    {
+      "path": "binary_receipts/dh_m24.json",
+      "bytes": 12594,
+      "sha256": "c11a94c39c3eee0d58e690d06e49018bfb85073ff3aa214a83026ea9b7df8094"
+    },
+    {
+      "path": "binary_receipts/dh_m248.json",
+      "bytes": 20754,
+      "sha256": "de2709c96dabfac8280e59c12938a052752ee0bff345a53e395ced461cd18506"
+    },
+    {
+      "path": "binary_receipts/dh_m300.json",
+      "bytes": 23347,
+      "sha256": "2d79efabe34e4d8024544d5971d757677bc80ec5231be289ba2bf44c1a1a85b8"
+    },
+    {
+      "path": "binary_receipts/dh_m40.json",
+      "bytes": 13049,
+      "sha256": "07fc64191f398c7d6e37f940962e284f85befaadf3ebbcccff5d16951fe7ab0e"
+    },
+    {
+      "path": "binary_receipts/dh_m80.json",
+      "bytes": 11532,
+      "sha256": "b89fd0d053a79e915d77afcd4186498c95f2b9721884cf1ad48997bb037e056c"
+    },
+    {
+      "path": "binary_receipts/double2_m120.json",
+      "bytes": 14064,
+      "sha256": "c9823ce7af41fdf1a0d3d22f8676a57ebfc43da18c8dda2b160ece2ef8013149"
+    },
+    {
+      "path": "binary_receipts/double2_m16.json",
+      "bytes": 7408,
+      "sha256": "7c00d34b62fc10a4624852b23b8f6e2929d4fda51e502d49e2cd2cc51e7b20d4"
+    },
+    {
+      "path": "binary_receipts/double2_m200.json",
+      "bytes": 18723,
+      "sha256": "2125cb28e927879f9e5ac56dba59172abe86d81921b1ef75905aaae9eb7f227a"
+    },
+    {
+      "path": "binary_receipts/double2_m24.json",
+      "bytes": 8160,
+      "sha256": "c2d8a7aa838e5485c50648022b595c91faec2870fb8305e162ec4e822f1940d5"
+    },
+    {
+      "path": "binary_receipts/double2_m248.json",
+      "bytes": 20834,
+      "sha256": "9e9aad1d85ec5e9862c750e3da665759dbe31bbe86ca76186ab93759ad6d72f1"
+    },
+    {
+      "path": "binary_receipts/double2_m300.json",
+      "bytes": 23415,
+      "sha256": "d2b31d18014907108a34930537e70435846ccfab9d50187c8a916d6cb2039962"
+    },
+    {
+      "path": "binary_receipts/double2_m40.json",
+      "bytes": 9040,
+      "sha256": "06e318d9532c80f1767ef3e36b43532344e807517a725760c662373a0ca0cc00"
+    },
+    {
+      "path": "binary_receipts/double2_m80.json",
+      "bytes": 11803,
+      "sha256": "ccfb0e3fade746905cbeff0ccdcd76886dc79b980d13f6a162bbd425568491f1"
+    },
+    {
+      "path": "binary_receipts/zeta_m120.json",
+      "bytes": 17218,
+      "sha256": "521f4ccf08c05393c8ee07e7ffb695c0fcc4ad6703abe430d420845603d841e4"
+    },
+    {
+      "path": "binary_receipts/zeta_m16.json",
+      "bytes": 7169,
+      "sha256": "c34ff8d431bfaa1fba05c64a9e89df480286ef28818bbe7cb73d65eef7455381"
+    },
+    {
+      "path": "binary_receipts/zeta_m200.json",
+      "bytes": 26971,
+      "sha256": "b06dbdaae3692c79a7dd060bc3f69ded680691f042b24295fbcdc9dead0052ff"
+    },
+    {
+      "path": "binary_receipts/zeta_m24.json",
+      "bytes": 8610,
+      "sha256": "4953a82f066dedcad0c15f4eff15a686b46d5d3ed764bf69b5a5949897c76a1d"
+    },
+    {
+      "path": "binary_receipts/zeta_m248.json",
+      "bytes": 26891,
+      "sha256": "819b397a3b73a9b513a67422a6c7084df60847976e5ac35d827b8be62178dbb4"
+    },
+    {
+      "path": "binary_receipts/zeta_m300.json",
+      "bytes": 30742,
+      "sha256": "af2a80c86504dad77a07d23a942009d94c7b3c88e9b45fb55f90d8208fcdea55"
+    },
+    {
+      "path": "binary_receipts/zeta_m40.json",
+      "bytes": 9847,
+      "sha256": "beda97cb5d57685b6e07c3e31cbb61f3a4f547d3364681b3a30d7191a4e472b6"
+    },
+    {
+      "path": "binary_receipts/zeta_m80.json",
+      "bytes": 14649,
+      "sha256": "321f8c539b966fe7c850651c4b0c3e74bf68c4d66adcec19bdcdd3c36c8259f4"
+    }
+  ],
+  "parts": [
+    {
+      "path": "binary_receipts.tar.gz.part00",
+      "bytes": 62383,
+      "sha256": "0b56b34b0a95c9e1a4f676efe71af635336f63ac0be6abebab72c7397c159d83"
+    }
+  ]
+}
