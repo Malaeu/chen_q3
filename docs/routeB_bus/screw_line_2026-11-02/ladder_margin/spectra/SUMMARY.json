@@ -1,0 +1,51 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "calibration": [
+    {
+      "mesh": 32,
+      "absolute_surrogate_source_difference": 0.0020529606895118846,
+      "pass_point02": true
+    },
+    {
+      "mesh": 64,
+      "absolute_surrogate_source_difference": 0.003517827170394283,
+      "pass_point02": true
+    },
+    {
+      "mesh": 128,
+      "absolute_surrogate_source_difference": 0.020377981504204945,
+      "pass_point02": false
+    },
+    {
+      "mesh": 256,
+      "absolute_surrogate_source_difference": 0.033220581550421735,
+      "pass_point02": false
+    }
+  ],
+  "actual_zeta_calibration_pass": false,
+  "primary_ordering": [
+    {
+      "mesh": 32,
+      "primary_ordering_pass": false
+    },
+    {
+      "mesh": 64,
+      "primary_ordering_pass": false
+    },
+    {
+      "mesh": 128,
+      "primary_ordering_pass": false
+    },
+    {
+      "mesh": 256,
+      "primary_ordering_pass": false
+    }
+  ],
+  "all_mesh_primary_ordering_pass": false,
+  "tail_resolution_pass": true,
+  "unresolved_model_cells": 0,
+  "note": "Model comparison only if arithmetic-zeta calibration fails; no actual-zeta law or proof.",
+  "frequency_bin_max_metric_change": 2.6628426657571147e-06,
+  "frequency_bin_max_block_change": 7.959132199086838e-06,
+  "frequency_bin_resolution_pass": true
+}

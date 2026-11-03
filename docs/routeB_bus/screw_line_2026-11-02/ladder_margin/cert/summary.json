@@ -1,0 +1,64 @@
+{
+  "status": "FINITE_NODE_CERTIFICATES_COMPLETE_CONTINUUM_GAP_RETAINED",
+  "diagnostic": "DIAGNOSTIC_NEVER_A_PROOF / CHALLENGER / NOT_RH",
+  "certificates": [
+    {
+      "window_integer": 3,
+      "mesh_denominator": 32,
+      "dimension": 49,
+      "eigenvalue_strict_lower_endpoint": "[0.000648474599968570677586680112124879624172109726901571703070539031029793147075156373494535363, 0.000648474599968570677586680112124879624172109726901571703070539031029793147075156373494535364]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 11.627669353999408
+    },
+    {
+      "window_integer": 3,
+      "mesh_denominator": 64,
+      "dimension": 97,
+      "eigenvalue_strict_lower_endpoint": "[0.000494194401203473666558002638992365273300001700529804806048402665630845072762385709270004902, 0.000494194401203473666558002638992365273300001700529804806048402665630845072762385709270004903]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 15.043952287999673
+    },
+    {
+      "window_integer": 3,
+      "mesh_denominator": 64,
+      "dimension": 97,
+      "eigenvalue_strict_lower_endpoint": "[0.000814016375821422203518130916698312954668832893199626960083858930576349953423625587928663866, 0.000814016375821422203518130916698312954668832893199626960083858930576349953423625587928663867]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 10.902496125000653
+    },
+    {
+      "window_integer": 5,
+      "mesh_denominator": 32,
+      "dimension": 107,
+      "eigenvalue_strict_lower_endpoint": "[0.0000981496803932470261451164246236286920312532801460841668091953358930001870995857256853185642, 0.0000981496803932470261451164246236286920312532801460841668091953358930001870995857256853185643]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 32.64144749099978
+    },
+    {
+      "window_integer": 5,
+      "mesh_denominator": 64,
+      "dimension": 211,
+      "eigenvalue_strict_lower_endpoint": "[0.000178381177763317001646697417643104651752046248560212759349272240855706313048723885103810382, 0.000178381177763317001646697417643104651752046248560212759349272240855706313048723885103810383]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 33.66958137100028
+    },
+    {
+      "window_integer": 7,
+      "mesh_denominator": 32,
+      "dimension": 166,
+      "eigenvalue_strict_lower_endpoint": "[0.0000611372481967361260929570146721596917184687400175493871207489528147885773363070430924990335, 0.0000611372481967361260929570146721596917184687400175493871207489528147885773363070430924990336]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 53.70057225100027
+    },
+    {
+      "window_integer": 7,
+      "mesh_denominator": 64,
+      "dimension": 329,
+      "eigenvalue_strict_lower_endpoint": "[0.000117255405719058916781820363081077854110836611875948383081442315238277620856741927056222851, 0.000117255405719058916781820363081077854110836611875948383081442315238277620856741927056222852]",
+      "arithmetic_backend": "mpmath.iv directed intervals + bounded Li2 series",
+      "seconds": 66.29524730599951
+    }
+  ],
+  "distinct_windows_and_meshes": 6,
+  "largest_dyadic_witness_replayed_without_numpy_scipy": true
+}

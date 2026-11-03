@@ -1,0 +1,32 @@
+[
+  {
+    "cut": 400,
+    "power": 22,
+    "period": 16,
+    "frequency_bin": 0.39269908169872414,
+    "highest_frequency": 823549.271883561,
+    "tail_pointnoise_mass": 2.4704739483458226e-06,
+    "represented_mass": 0.0020480768315755448,
+    "total_mass": 0.0020505473055242394
+  },
+  {
+    "cut": 800,
+    "power": 22,
+    "period": 16,
+    "frequency_bin": 0.39269908169872414,
+    "highest_frequency": 823549.271883561,
+    "tail_pointnoise_mass": 2.4704739483458226e-06,
+    "represented_mass": 0.0011607004289087334,
+    "total_mass": 0.0011631709028575269
+  },
+  {
+    "cut": 1600,
+    "power": 22,
+    "period": 16,
+    "frequency_bin": 0.39269908169872414,
+    "highest_frequency": 823549.271883561,
+    "tail_pointnoise_mass": 2.4704739483458226e-06,
+    "represented_mass": 0.0006480636025277882,
+    "total_mass": 0.0006505340764764671
+  }
+]

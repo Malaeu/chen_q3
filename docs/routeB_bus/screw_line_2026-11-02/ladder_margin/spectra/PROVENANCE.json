@@ -1,0 +1,13 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "zero_table": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+  "zero_table_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+  "discrete_actual_zero_cutoff": 400,
+  "random_seed_base": 20261103,
+  "replicates": 20,
+  "gue_size": 4096,
+  "gue_semicircle_radius": "2*sqrt(size)",
+  "positive_tail_density": "log(gamma/(2*pi))/(2*pi)",
+  "initial_wrong_density_metrics": "initial_density_error_metrics.csv",
+  "numpy_version": "2.3.5"
+}

@@ -1,0 +1,43 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "route": "CHALLENGER / NOT_RH",
+  "base": "a1d2a97350e61f1697744056e26f95a1c8baf3de",
+  "inputs": [
+    {
+      "path": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "bytes": 36465,
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+      "git_blob": "e84d0cee1f5726e6f874433b7e42bdbdcd1a92af"
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/core/scan.py",
+      "bytes": 5591,
+      "sha256": "d341c021ee57f44e7e750f77a2fd41c5ec65f9dd69bf96fa17f30618e4f0b45e",
+      "git_blob": "ea6d5ffe026ad2c6d09705efc6c335e4f24b4a5a"
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/extension_margin/uniform/future_refinement.csv",
+      "bytes": 68268,
+      "sha256": "17fc86c99b4b4aad45f30c49438469de4eaae574573f83b283a95809be626bf0",
+      "git_blob": "a60b3daa9d56be4300f000652a8d1726ef52d501"
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/extension_margin/uniform/single_endpoint.csv",
+      "bytes": 643041,
+      "sha256": "5e5546ac564d129652fdba633731288094241357198391272a793b0956d5313b",
+      "git_blob": "812e65e4c17eab15c052da293e9d8e49f1872206"
+    }
+  ],
+  "interval_backend": "mpmath.iv directed intervals + explicit dilogarithm remainder",
+  "native_arb_executed": false,
+  "full_continuum_certificate": false,
+  "route_state_changed": false,
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "packages": {
+    "mpmath": "1.3.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "matplotlib": "3.10.8"
+  }
+}

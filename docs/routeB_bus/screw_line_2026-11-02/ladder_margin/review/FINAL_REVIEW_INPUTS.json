@@ -1,0 +1,19 @@
+{
+  "status": "READ_ONLY_FINAL_DIAGNOSTIC_REVIEW",
+  "reviewer_authored_cert_or_spectral_implementations": false,
+  "new_large_runs": false,
+  "input_sha256": {
+    "cert/interval_backend.py": "1c811a16761d7a5d9a95c06350970be76486242d7f7b1df300a3a80c533de58a",
+    "cert/certify.py": "96de2ed5d7f8a2afbb240584f3736de6f61d3ccd8bb051d4ffac8804764c296c",
+    "cert/certify_residual.py": "54a207dd929477ddfc5bd4962e3b23ac89a00139dc1e856ab058538cd8fa9bdd",
+    "cert/modulus_intervals.py": "6dee9c03fe681006234b2fdc6e878886972eadad0957b9c609587217944ea4f9",
+    "cert/RESULT.md": "884e5e25f8d09ff2c84cb4cd0843d753589e743d8c14913da01d6d4e53febcf1",
+    "cert/VALIDATION.json": "ce61fa9a8e82f4297dac8c8d120b446ca50bedcafefd04d5aa9495fd9651a74f",
+    "cert/INTERSTITIAL_BUDGET.json": "ba09348a74185a72c42d4eba08757690292661fdc6c3f7c5be5698e0cc26df42",
+    "spectra/RESULT.md": "1f8f7eb89a59dae3dd8c39dbfe8c848f86ef01fcf136ee7e88dcbdf025824699",
+    "spectra/spectra.py": "5c418ecb2dba24efea3fc869b7559ce0cc7a0509c84c9a06ec4d0071d4d73a43",
+    "spectra/controls.py": "10f77ca274ca7ba0c3cc139381bab5475df5338534f282992490c4e3adfaa385",
+    "spectra/SUMMARY.json": "613bebd60dc6339b62d36b0e839e938586500cb986e99f301bbc76c19659da87",
+    "spectra/generated_spectra.json": "8d60b4b1ceb521aed607c28fd11764d61aa588dd1ba6467e8cdec5708aab4d75"
+  }
+}

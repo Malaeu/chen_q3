@@ -1,0 +1,8 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "seconds": 60.60532166299981,
+  "zeta_count": 202,
+  "maximum_zeta": 399.9851198761949,
+  "synthetic_replicates": 20,
+  "source_table": "/workspace/chen_q3/docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv"
+}

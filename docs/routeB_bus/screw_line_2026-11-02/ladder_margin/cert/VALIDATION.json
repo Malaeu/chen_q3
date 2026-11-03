@@ -1,0 +1,255 @@
+{
+  "status": "SOURCE_CONTROLS_AND_INTERVAL_REPLAY_PASSED",
+  "diagnostic": "DIAGNOSTIC_NEVER_A_PROOF / CHALLENGER / NOT_RH",
+  "backend": "mpmath.iv directed intervals + bounded Li2 series",
+  "source_controls": [
+    {
+      "k": 1,
+      "ratio": "1",
+      "source_interval": "[-0.0328959200567231756256259287682391847525673471712368261101914868792896806307264942471298482, -0.0328959200567231756256259287682391847525673471712065838078314731970180401362804695453696197]",
+      "mp80_reference": "-0.032895920056723175625625928768239184752567347171225960996301492841532388345864088",
+      "reference_contained": true
+    },
+    {
+      "k": 0,
+      "ratio": "2",
+      "source_interval": "[-0.0635555860375704142387122834387257006927250152645832666896518695848122080314331331069178584, -0.0635555860375704142387122834387257006927250152645227203840635965174507347351065054740232800]",
+      "mp80_reference": "-0.063555586037570414238712283438725700692725015264562009806933938191696112327085162",
+      "reference_contained": true
+    },
+    {
+      "k": 0,
+      "ratio": "3",
+      "source_interval": "[-0.0671958679908468336505855894312386897618904973995884119000059146398844049611112999018932348, -0.0671958679908468336505855894312386897618904973995312766222079231235043643086071389765475967]",
+      "mp80_reference": "-0.067195867990846833650585589431238689761890497399577560510059104067028921999498242",
+      "reference_contained": true
+    },
+    {
+      "k": 32,
+      "ratio": "1",
+      "source_interval": "[-0.0440073052368525268602186064080837729226872417449589542493577580994855020260710767197343490, -0.0440073052368525268602186064080837729226872417448815467884384452774064205581319513093401950]",
+      "mp80_reference": "-0.044007305236852526860218606408083772922687241744930873163422724816625908153756083",
+      "reference_contained": true
+    },
+    {
+      "k": 0,
+      "ratio": "5",
+      "source_interval": "[-0.0671632098727870610687785640857719922838274878928650136647610904093262422661905079151200914, -0.0671632098727870610687785640857719922838274878928063374829300673508171699646115353284465546]",
+      "mp80_reference": "-0.067163209872787061068778564085771992283827487892828818374087182136689277343772229",
+      "reference_contained": true
+    },
+    {
+      "k": 0,
+      "ratio": "7",
+      "source_interval": "[-0.0666311249697996586165706406479332429778010029755783634159758294326240849799315663383644953, -0.0666311249697996586165706406479332429778010029755409631753912588047972722896558565543114275]",
+      "mp80_reference": "-0.06663112496979965861657064064793324297780100297555604079162437102698191638840386",
+      "reference_contained": true
+    },
+    {
+      "k": -1,
+      "ratio": "2/3",
+      "source_interval": "[-0.0399291929817869854727899747024448261145672953648143614112451750382960247592241330773605807, -0.0399291929817869854727899747024448261145672953647591618651472943042867998905764894631856241]",
+      "mp80_reference": "-0.039929192981786985472789974702444826114567295364789551945900752672521012081958442",
+      "reference_contained": true
+    }
+  ],
+  "pivot_replay": [
+    {
+      "index": 0,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 1,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 2,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 3,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 4,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 5,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 6,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 7,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 8,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 9,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 10,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 11,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 12,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 13,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 14,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 15,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 16,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 17,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 18,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 19,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 20,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 21,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 22,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 23,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 24,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 25,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 26,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 27,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 28,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 29,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 30,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 31,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 32,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 33,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 34,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 35,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 36,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 37,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 38,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 39,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 40,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 41,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 42,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 43,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 44,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 45,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 46,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 47,
+      "higher_precision_interval_contained": true
+    },
+    {
+      "index": 48,
+      "higher_precision_interval_contained": true
+    }
+  ],
+  "warning": "MP80 references validate normalization but do not provide certification. Higher-accuracy directed intervals are included in the512-bit pivot intervals."
+}
