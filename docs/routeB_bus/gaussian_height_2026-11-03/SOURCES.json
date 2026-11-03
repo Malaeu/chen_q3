@@ -1,0 +1,38 @@
+[
+  {
+    "path": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/zeta_zeros.csv",
+    "ref": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+    "git_blob": "09bddbf8d23962dc0aa7e5fd09bc74b8e4965cf6",
+    "sha256": "3d55cd7aa3f74e22c8284753eab922439607c925514e5c36a372ff5bb2363c75"
+  },
+  {
+    "path": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/dh_census/dh_zeros_900_200dps.json",
+    "ref": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+    "git_blob": "35396541cbc976d0dc8a1c76bf45802c8602bb84",
+    "sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846"
+  },
+  {
+    "path": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/SUMMARY.csv",
+    "ref": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+    "git_blob": "1bc5f2e3f8af40a59d6a298a0b06f7cd6838bb00",
+    "sha256": "fad2e67464bbd1aeb1fb32d51b7feb1c4876adb2260f1e3f9926b46f3398db02"
+  },
+  {
+    "path": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/frame.c",
+    "ref": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+    "git_blob": "5c20a9754bdfab80f7b56ab105f03480e70a7cbb",
+    "sha256": "c22e465c370da7404f1d5a2c4fbf923e497bdc079d4409313b3014eaf8e51c44"
+  },
+  {
+    "path": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/native_frame.py",
+    "ref": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+    "git_blob": "63ed1a7ffca7a0ad5063c06df8c3a95444708dd1",
+    "sha256": "3159228ad8ddb4fc0dff2f17d36b487d63a2fc60bd668f02a76598c42f4bc70d"
+  },
+  {
+    "path": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/spike_trend_310_600/matrix_engine/source.py",
+    "ref": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+    "git_blob": "f8b558f8fd7e2cda65158856ae6bfa9011f5cd0a",
+    "sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7"
+  }
+]
