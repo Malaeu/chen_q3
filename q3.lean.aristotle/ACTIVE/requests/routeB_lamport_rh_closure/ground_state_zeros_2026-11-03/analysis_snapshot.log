@@ -1,0 +1,12 @@
+{
+  "status": "SNAPSHOT_NOT_COMPLETE",
+  "spectral_cells": 612,
+  "expected_spectral_cells": 855,
+  "even_root_cells": 690,
+  "global_root_cells": 612,
+  "scaling_candidate_preregistered": "m_over_log_m_squared",
+  "scaling_scope": "Finite held-out empirical comparison, not an asymptotic bound; error floors excluded.",
+  "source_CSV_sha256": "8465e6952ee1c3aa02a10517fd2cbab84a2c3ae7ea63dc584801a22628b8c521",
+  "root_CSV_sha256": "bfb79962029b0b86632d52b94d1cf6d4730cd0c653e57605e739321db8700d27",
+  "route_state_changed": false
+}

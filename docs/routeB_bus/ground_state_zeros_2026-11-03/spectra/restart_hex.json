@@ -1,0 +1,12 @@
+{
+  "time": 1793720893.0381234,
+  "parents": [
+    1567,
+    2150
+  ],
+  "children": [
+    3704
+  ],
+  "reason": "validated exact-base16 source input avoids decimal serialization overhead; same numerical source and algorithm",
+  "completed_world_cells": 405
+}

@@ -1,0 +1,3 @@
+model,scope,training,new_tail,tail_cells,slope,edge_phase_coefficient,intercept,baseline_tail_RMSE_decades,edge_tail_RMSE_decades
+m_over_log_m_squared plus edge_phase,Exploratory after early held-out peek; new untouched tail261..299 excludes pilot300,40..160,261..299,39,3.390072909853227,1.5374627971415857,-1.7806308888757818,1.53357132819855,1.4043672351002805
+sqrt_m plus edge_phase,Exploratory after early held-out peek; new untouched tail261..299 excludes pilot300,40..160,261..299,39,1.7704616635416779,1.5313981410898643,-3.3586711286695663,1.5217701478559278,1.2914006232759832

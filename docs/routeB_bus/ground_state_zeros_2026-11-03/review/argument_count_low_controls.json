@@ -1,0 +1,163 @@
+{
+  "status": "BOUNDED_ARGUMENT_COUNT_INCOMPLETE",
+  "error": "CPU budget exhausted",
+  "total_cpu_seconds": 57.26336311,
+  "budget_cpu_seconds": 55.0,
+  "rows": [
+    {
+      "world": "dh",
+      "parity": "even",
+      "level": "low",
+      "m": 300,
+      "bits": 2048,
+      "degree": 300,
+      "left": "1e-6",
+      "right": "370.17962509312907712492449151228407996098633395151",
+      "imaginary_bounds": [
+        "-.5",
+        ".5"
+      ],
+      "polynomial_count": 299,
+      "sine_count": 336,
+      "denominator_count": 300,
+      "physical_count": 335,
+      "high_complete_polynomial_count_in_same_rectangle": 299,
+      "high_complete_physical_count": 335,
+      "agrees_high_complete_polynomial_count": true,
+      "low_newton_measured_strip_count": 299,
+      "high_min_positive_real_in_strip": 0.5545029544481571,
+      "high_roots_in_excluded_tiny_axis_strip": 0,
+      "contour": {
+        "fine": {
+          "winding": 299.0,
+          "nearest_integer": 299,
+          "integer_residual": 0.0,
+          "max_phase_increment": 1.0134818348523331
+        },
+        "coarse": {
+          "winding": 299.0,
+          "nearest_integer": 299,
+          "integer_residual": 0.0,
+          "max_phase_increment": 1.9840612560353246
+        },
+        "fine_max_step": 0.25,
+        "coarse_max_step": 0.5,
+        "samples": 2973,
+        "step_halving_agrees": true,
+        "phase_guard_pass": false,
+        "max_argument_radius_float": 0.0,
+        "argument_radius_note": "The float-converted sampled argument radii underflowed to zero; this does not mean exact zero phase error. Every sampled polynomial ball excluded zero and every argument-radius float passed 1e-12.",
+        "fine_pi_over_2_guard_pass": true,
+        "both_pi_guard_pass": true
+      },
+      "polynomial_build_cpu_seconds": 0.44475351700000004,
+      "cpu_seconds": 8.508487269000002,
+      "vector_sha256": "34ba85a88e92a4ed7c1848377b8eb0d118876679b1be6594556796314cc34299",
+      "high_census_sha256": "c632bc5bdc45270722f3299c506ab196e443ba21731b63832418a3100bcdb4d1"
+    },
+    {
+      "world": "plant",
+      "parity": "even",
+      "level": "low",
+      "m": 300,
+      "bits": 2048,
+      "degree": 300,
+      "left": "1e-6",
+      "right": "370.17962509312907712492449151228407996098633395151",
+      "imaginary_bounds": [
+        "-.5",
+        ".5"
+      ],
+      "polynomial_count": 299,
+      "sine_count": 336,
+      "denominator_count": 300,
+      "physical_count": 335,
+      "high_complete_polynomial_count_in_same_rectangle": 299,
+      "high_complete_physical_count": 335,
+      "agrees_high_complete_polynomial_count": true,
+      "low_newton_measured_strip_count": 299,
+      "high_min_positive_real_in_strip": 0.5722741685084048,
+      "high_roots_in_excluded_tiny_axis_strip": 0,
+      "contour": {
+        "fine": {
+          "winding": 299.0,
+          "nearest_integer": 299,
+          "integer_residual": 0.0,
+          "max_phase_increment": 0.9147732057228422
+        },
+        "coarse": {
+          "winding": 299.0,
+          "nearest_integer": 299,
+          "integer_residual": 0.0,
+          "max_phase_increment": 1.8260370579575005
+        },
+        "fine_max_step": 0.25,
+        "coarse_max_step": 0.5,
+        "samples": 2973,
+        "step_halving_agrees": true,
+        "phase_guard_pass": false,
+        "max_argument_radius_float": 0.0,
+        "argument_radius_note": "The float-converted sampled argument radii underflowed to zero; this does not mean exact zero phase error. Every sampled polynomial ball excluded zero and every argument-radius float passed 1e-12.",
+        "fine_pi_over_2_guard_pass": true,
+        "both_pi_guard_pass": true
+      },
+      "polynomial_build_cpu_seconds": 0.299450199999999,
+      "cpu_seconds": 10.231773121,
+      "vector_sha256": "fced645146de9eb029fa5dbf9cfe2612cb3b2404eb5b90d5db9b5b0af732b924",
+      "high_census_sha256": "15e04bf9c202763f47a19a459f2b73965aa55735f0ce90e95aaa5a0b251517a5"
+    },
+    {
+      "world": "dh",
+      "parity": "odd",
+      "level": "low",
+      "m": 300,
+      "bits": 2048,
+      "degree": 299,
+      "left": "1e-6",
+      "right": "370.17962509312907712492449151228407996098633395151",
+      "imaginary_bounds": [
+        "-.5",
+        ".5"
+      ],
+      "polynomial_count": 299,
+      "sine_count": 336,
+      "denominator_count": 300,
+      "physical_count": 335,
+      "high_complete_polynomial_count_in_same_rectangle": 299,
+      "high_complete_physical_count": 335,
+      "agrees_high_complete_polynomial_count": true,
+      "low_newton_measured_strip_count": 299,
+      "high_min_positive_real_in_strip": 1.1003802215595415,
+      "high_roots_in_excluded_tiny_axis_strip": 0,
+      "contour": {
+        "fine": {
+          "winding": 299.0,
+          "nearest_integer": 299,
+          "integer_residual": 0.0,
+          "max_phase_increment": 1.0462742794324507
+        },
+        "coarse": {
+          "winding": 299.0,
+          "nearest_integer": 299,
+          "integer_residual": 0.0,
+          "max_phase_increment": 2.072349841185158
+        },
+        "fine_max_step": 0.25,
+        "coarse_max_step": 0.5,
+        "samples": 2973,
+        "step_halving_agrees": true,
+        "phase_guard_pass": false,
+        "max_argument_radius_float": 0.0,
+        "argument_radius_note": "The float-converted sampled argument radii underflowed to zero; this does not mean exact zero phase error. Every sampled polynomial ball excluded zero and every argument-radius float passed 1e-12.",
+        "fine_pi_over_2_guard_pass": true,
+        "both_pi_guard_pass": true
+      },
+      "polynomial_build_cpu_seconds": 0.27230375699999954,
+      "cpu_seconds": 8.311982048,
+      "vector_sha256": "34ba85a88e92a4ed7c1848377b8eb0d118876679b1be6594556796314cc34299",
+      "high_census_sha256": "8ef1f9d909863865c2078be56efdd4f4e9b0e0af52d9e89e7d18fe11fae82a61"
+    }
+  ],
+  "scope": "Numerical sampled argument principle at step and halfstep with sampled nonzero balls and phase guards; no between-node contour enclosure, no certified count. Counts exclude 0<Re(z)<=1e-6; complete HIGH roots checked separately there. LOW tiny-axis strip not certified. No roots/eigenvectors recomputed.",
+  "correction": "physical F count = numerator P count + sin(zL/2) count - denominator D count; origin and 1/z outside rectangle; sine/denominator roots cancel at internal harmonics. Odd origin also outside rectangle."
+}

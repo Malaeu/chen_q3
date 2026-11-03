@@ -1,0 +1,31 @@
+{
+  "status": "EXACT_BYTE_REBINDING_ONLY",
+  "source_commit": "50777d478c72298ff65c7ffaa2b3783aec183dd6",
+  "context": "Initial apply_patch imports added one extra final blank line. This was removed before bulk reference binding; some pilot source metadata retains the earlier hash. Analytic supplier/numerical values unchanged.",
+  "aliases": [
+    {
+      "current_path": "inputs/source_50777d4.py",
+      "current_sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7",
+      "historical_path": "inputs/history/source_50777d4_extra_terminal_LF.py",
+      "historical_sha256": "babb96a09e85073c364e7b2785dd10811d77b2d1fe63e9bceb1b7cb632956549",
+      "old_bytes": 5785,
+      "new_bytes": 5784,
+      "transformation": "Remove exactly one extra terminal LF from workspace import to match pinned GitHub bytes.",
+      "semantic_payload_unchanged": true,
+      "semantic_check": "Python AST equality without location attributes",
+      "historical_copy_scope": "Reconstructed and SHA-verified preimage from the recorded one-LF normalization; not a different upstream revision."
+    },
+    {
+      "current_path": "inputs/dh_zeros_900_200dps.json",
+      "current_sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846",
+      "historical_path": "inputs/history/dh_zeros_900_200dps_extra_terminal_LF.json",
+      "historical_sha256": "6b18c821adb22aee8e3ed07db7af80a7e62bee4760eb3680bda4954de4f3702e",
+      "old_bytes": 707071,
+      "new_bytes": 707070,
+      "transformation": "Remove exactly one extra terminal LF from workspace import to match pinned GitHub bytes.",
+      "semantic_payload_unchanged": true,
+      "semantic_check": "Parsed JSON equality",
+      "historical_copy_scope": "Reconstructed and SHA-verified preimage from the recorded one-LF normalization; not a different upstream revision."
+    }
+  ]
+}

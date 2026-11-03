@@ -1,0 +1,63 @@
+{
+  "status": "PASS_READ_ONLY_LOW_BRACKET_METHOD_AND_REPRODUCER_REVIEW",
+  "hashes": {
+    "reproduce_low_brackets_m300.py": "346a3fbc781676b13ee77b77fd2f5a94f37887146b6957426bac8bd9390d2a1b",
+    "validate_low_brackets.py": "02adb61444873eab6736943a5b277cbe1c8fa5cadea8303fc9e2b7192f18520a",
+    "validate_dh_low_imaginary.py": "42a7edf567a7412a7939f02b2ef25c78ee4ea865d8e3c3d908d177465472b95a",
+    "exact_bracket_metadata.py": "9f98438f1fd5a51a9fc863935b8e796c739ad939062a981426aedde630ad0f21"
+  },
+  "rows": [
+    {
+      "world": "plant",
+      "parity": "odd",
+      "m": 300,
+      "degree": 299,
+      "passed": 299,
+      "complete_rounded_low_polynomial_real_root_census": true,
+      "source_input_sha256": "fced645146de9eb029fa5dbf9cfe2612cb3b2404eb5b90d5db9b5b0af732b924",
+      "exact_rational_bracket_disjointness": true
+    },
+    {
+      "world": "dh",
+      "parity": "odd",
+      "m": 300,
+      "degree": 299,
+      "passed": 299,
+      "complete_rounded_low_polynomial_real_root_census": true,
+      "source_input_sha256": "34ba85a88e92a4ed7c1848377b8eb0d118876679b1be6594556796314cc34299",
+      "exact_rational_bracket_disjointness": true
+    },
+    {
+      "world": "dh",
+      "parity": "even",
+      "m": 300,
+      "degree": 300,
+      "passed": 300,
+      "complete_rounded_low_polynomial_real_root_census": true,
+      "source_input_sha256": "34ba85a88e92a4ed7c1848377b8eb0d118876679b1be6594556796314cc34299",
+      "exact_rational_bracket_disjointness": true
+    },
+    {
+      "world": "plant",
+      "parity": "even",
+      "m": 300,
+      "degree": 300,
+      "passed": 300,
+      "complete_rounded_low_polynomial_real_root_census": true,
+      "source_input_sha256": "fced645146de9eb029fa5dbf9cfe2612cb3b2404eb5b90d5db9b5b0af732b924",
+      "exact_rational_bracket_disjointness": true
+    },
+    {
+      "world": "zeta",
+      "parity": "even",
+      "m": 300,
+      "degree": 300,
+      "passed": 300,
+      "complete_rounded_low_polynomial_real_root_census": true,
+      "source_input_sha256": "edb0522804bb9e1dbf0aeb52a85c6a0fa0f7d13432a4858ab2f32be9b00ce2fc",
+      "exact_rational_bracket_disjointness": true
+    }
+  ],
+  "scope": "Read-only formula, exact-endpoint metadata, degree/sign-bracket logic and canonical staging/publication review. Endpoint numerical sign calculations were not rerun in this review. Completeness applies only to frozen LOW decimal-vector numerators, not source/eigenvector error.",
+  "canonical_reproducer_atomicity": "base -> DH pure-imaginary supplement -> exact Fraction metadata in isolated staging; final artifact published only after all five degree/sign/exact gates pass"
+}

@@ -1,0 +1,49 @@
+{
+  "status": "PREPUBLICATION_STATIC_PREFLIGHT_PASS_FINAL_DATA_AUDIT_PENDING",
+  "file_sha256": {
+    "analyze.py": "de7a249e5bd0bfe541de360782fe97122ff3c305b4bd6bdc9b888ba6c6d984f2",
+    "make_result.py": "1ecaf50757dfbb26b933d4aeed190b331efda7eb71d1b252526ec9b50263f50f",
+    "package_data.py": "e47ce9480bae70f3528318213d2f6d9b2323568cbb4b6374f524d535a12cbcd5",
+    "unpack_data.py": "8964b60a26efcfcf65faf77f5f70673ec791f7b004c8cedfa3c6356a1ccc24b3",
+    "publication_manifest.py": "1ea4dd43e010c8dedac0b84aab750ac3dc64a8c7d6128b8aa3951931993d60cf",
+    "REPRODUCE.md": "9d9ea864fccf1b8f0f4ace076fd2e3119adf3d0a6bf926c16e976696d89d20b7",
+    "roots/PRECISION_SCOPE_ERRATUM.md": "0efeaa4d5a58aa3a5c3ada71fa8cdc147a7fe3d0010581ca77daf437408ba8a0",
+    "roots/precision_scope_inventory.py": "1f7eff1400bc4b5d6409fd3ade71f43063d605ca1e03e16a712f9eb168a0ec89",
+    "roots/aggregate.py": "24fefa7648509bd25825f4d3c4699f4b4a30b2adfb4e6e1a4b5dbcd9665d583a",
+    "review/audit_payload.py": "319dd0703b68f1bcdef493a6363e1df16b380bb4c29260942e64deef385052f4",
+    "review/transform_replay.py": "125e71d856fa05ac392ee1a25dd4f85e4ad5fdd62f966f16bc4d0096587e669d"
+  },
+  "issues": [
+    {
+      "id": "abs_vector_paths",
+      "status": "RESOLVED",
+      "resolution": "Review audit/transform replay now fall back to packet spectra/vectors basename only when original path is unavailable; stored SHA remains exact. Root aggregate and precision inventory received analogous fallback."
+    },
+    {
+      "id": "unknown_replay_as_zero",
+      "status": "RESOLVED",
+      "resolution": "Fit qualification requires an actual finite nonnegative replay value and successful status; --complete validates all cutoff rows."
+    },
+    {
+      "id": "duplicate_root_rows",
+      "status": "RESOLVED",
+      "resolution": "Complete integration rejects repeated world/m/parity/cutoff keys."
+    },
+    {
+      "id": "stale_archive_members",
+      "status": "RESOLVED",
+      "resolution": "Publication inventory checks current raw member size and streamed SHA against archive manifest before omission from direct Git."
+    },
+    {
+      "id": "off_axis_Cauchy_scope",
+      "status": "RESOLVED_BY_AUTHORITATIVE_ERRATUM",
+      "resolution": "sqrt(L) bound limited to real-axis fixed-carrier coefficient differences. Correct off-axis sinh growth factor and first-order limitation are explicit; authoritative inventory binds raw files."
+    },
+    {
+      "id": "hardcoded_pilot_claims",
+      "status": "FINAL_DATA_CROSSCHECK_PENDING",
+      "resolution": "make_result retains fixed pilot scalars/transition examples. Verify them against final frozen tables during final review; full coverage is not asserted by this preflight."
+    }
+  ],
+  "scope": "Read-only root-owned code/docs review and review-only portability fixes. AST parsing only; no eigensolve, root search, source build, numeric rerun, archive packing or publication."
+}

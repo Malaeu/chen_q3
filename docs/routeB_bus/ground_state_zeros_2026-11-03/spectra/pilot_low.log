@@ -1,0 +1,3 @@
+{"m": 16, "seconds": 0.25081345800003874, "dps_low": 102, "dps_high": 142, "worlds": [{"world": "zeta", "status": "RESOLVED_NUMERICAL_GROUND"}, {"world": "dh", "status": "RESOLVED_NUMERICAL_GROUND"}, {"world": "plant", "status": "RESOLVED_NUMERICAL_GROUND"}]}
+{"m": 24, "seconds": 0.3929019580000386, "dps_low": 118, "dps_high": 158, "worlds": [{"world": "zeta", "status": "RESOLVED_NUMERICAL_GROUND"}, {"world": "dh", "status": "RESOLVED_NUMERICAL_GROUND"}, {"world": "plant", "status": "RESOLVED_NUMERICAL_GROUND"}]}
+{"m": 40, "seconds": 0.8971684170001026, "dps_low": 150, "dps_high": 190, "worlds": [{"world": "zeta", "status": "RESOLVED_NUMERICAL_GROUND"}, {"world": "dh", "status": "RESOLVED_NUMERICAL_GROUND"}, {"world": "plant", "status": "RESOLVED_NUMERICAL_GROUND"}]}

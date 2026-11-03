@@ -1,0 +1,8 @@
+{
+  "status": "PASS_ROOT_FREEZE_BYTES",
+  "freeze_sha256": "26286ef7e1966da1aa0ccf49460aa50f3758a990b5609334ea5f05a356e364ef",
+  "inventory_sha256": "3957c85dc26c52720135fa574d5c762541f8271de90cfb8c242abe10aba65c5d",
+  "files_checked": 1268,
+  "issues": [],
+  "CPU_seconds": 1.865881513
+}

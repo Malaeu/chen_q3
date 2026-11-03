@@ -1,0 +1,15 @@
+import run as r,resource,subprocess,json,time,hashlib
+resource.setrlimit(resource.RLIMIT_CPU,(25,90))
+m=206;bits=6*m+256;A,meta=r.build(m,bits);A=A['zeta'][0];n=len(A);data=f'{n} {bits}\n'+'\n'.join(r.hexadecimal(x) for x in A.flat)+'\n';result=[]
+def limit(cap):resource.setrlimit(resource.RLIMIT_CPU,(cap,cap))
+for exe in ['loweig','loweig_unfused']:
+ start=time.monotonic();proc=subprocess.run([str(r.P/exe)],input=data,text=True,capture_output=True,preexec_fn=lambda cap=(25 if exe=='loweig' else 10):limit(cap));elapsed=time.monotonic()-start
+ if proc.returncode:raise RuntimeError((exe,proc.returncode,'bounded kernel probe failed'))
+ ans=json.loads(proc.stdout);vals=list(map(r.F,ans['lambda']));vecs=[r.normalized(v) for v in ans['v']];res=[max(abs(sum((a*x for a,x in zip(row,v)),r.F(0))-la*y) for row,y in zip(A,v)) for la,v in zip(vals,vecs)];orth=abs(sum((x*y for x,y in zip(*vecs)),r.F(0)))
+ result.append(dict(exe=exe,end_to_end_seconds=elapsed,native_seconds=ans['seconds'],native_tridiagonal_seconds=ans['tridiagonal_seconds'],values=vals,vectors=vecs,residual_infinity=res,orthogonality=orth,bisection_width=ans['bisection_width']))
+ print(exe,elapsed,ans['seconds'],ans['tridiagonal_seconds'],flush=True)
+baseline,fast=result;floor=r.F(2)**(-bits+24)*max(r.F(1),max(abs(x) for x in A.flat));dlam=[abs(x-y) for x,y in zip(baseline['values'],fast['values'])];vd=[min(max(abs(x-y) for x,y in zip(a,b)),max(abs(x+y) for x,y in zip(a,b))) for a,b in zip(baseline['vectors'],fast['vectors'])];overlap=[abs(sum((x*y for x,y in zip(a,b)),r.F(0))) for a,b in zip(baseline['vectors'],fast['vectors'])];gap=fast['values'][1]-fast['values'][0]
+checks=dict(ordering=bool(gap>1000*floor and fast['values'][0]>1000*floor),residuals=bool(max(fast['residual_infinity'])<floor),orthogonality=bool(fast['orthogonality']<r.F('1e-30')),overlaps=bool(min(overlap)>r.F('.999999999999999999999999999999')),eigenvalue_changes=bool(max(dlam)<floor))
+out=dict(m=m,world='zeta',parity='even',source_bits=bits,source_meta=meta,source_sha256=hashlib.sha256((r.P.parent/'inputs/analytic_source.py').read_bytes()).hexdigest(),rounding_floor=str(floor),source_identical=True,results=[dict(exe=z['exe'],end_to_end_seconds=z['end_to_end_seconds'],native_seconds=z['native_seconds'],native_tridiagonal_seconds=z['native_tridiagonal_seconds'],values=[str(x) for x in z['values']],residual_infinity=[str(x) for x in z['residual_infinity']],orthogonality=str(z['orthogonality'])) for z in result],lambda_change=[str(x) for x in dlam],vector_infinity_change=[str(x) for x in vd],vector_overlaps=[str(x) for x in overlap],checks=checks,speedup=baseline['end_to_end_seconds']/fast['end_to_end_seconds'],adoptable=all(checks.values()) and baseline['end_to_end_seconds']/fast['end_to_end_seconds']>=1.5)
+r.atomic(r.P/'unfused_probe.json',out);r.atomic(r.P/'unfused_probe_vectors.json',dict(m=m,bits=bits,L=str(r.g.log(m)),old=[str(x) for x in baseline['vectors'][0]],new=[str(x) for x in fast['vectors'][0]],ground_gap=str(gap)))
+print(json.dumps(out),flush=True)

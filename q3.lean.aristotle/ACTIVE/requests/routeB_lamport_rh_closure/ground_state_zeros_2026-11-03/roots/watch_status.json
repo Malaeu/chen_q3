@@ -1,0 +1,12 @@
+{
+  "sweep": 1,
+  "source_cells": 855,
+  "resolved_even_cells": 855,
+  "unresolved_even_cells": [],
+  "pending_root_cells": [],
+  "pending_root_count": 0,
+  "expected_source_cells": 855,
+  "last_batch_exit": 0,
+  "sweep_seconds": 861.5404832730001,
+  "status": "FINISHED_ALL_SOURCE_CELLS"
+}

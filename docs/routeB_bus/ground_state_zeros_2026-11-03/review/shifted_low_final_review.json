@@ -1,0 +1,10 @@
+{
+  "status": "PASS_LOW_REFINEMENT_HELPER_AND_FINAL_NATIVE_FALLBACK_DRIVER",
+  "helper_sha256": "0270354e1c1aac059408728f38748387446b318cef87c3f939996af3707e6bdb",
+  "driver_sha256": "b9986ea5e1dc66e5dc4c7b49daa330814a52205c2f08d8df8cd83872a8d8665f",
+  "numeric_controls": "shifted_low_review.json",
+  "wrapper_review": "Read-only static review: broad Exception triggers existing native LOW solve with actual LOW bits and explicit failure metadata; native second pair is computed in fallback, null in refinement. BaseException propagates. HIGH preferred full native ordering/source construction unchanged.",
+  "scope": "Accepts LOW zeta point-ground validation method only; source/ground uncertainty remains empirical; does not authorize publication or promote mathematical status.",
+  "numeric_budget_overrun_disclosed": true,
+  "further_numerical_tests_run_for_wrapper": false
+}

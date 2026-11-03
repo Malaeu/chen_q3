@@ -1,0 +1,96 @@
+{
+  "status": "PASS_FROZEN_ZETA_ONLY_CONTINUATION_REVIEW",
+  "frozen_hashes": {
+    "real_continuation_v1.py": "6cb9dfbb1f1ad1a2747799004ada512d49af296175221f85ccef50780d9ebbe2",
+    "census_continuation_candidate.py": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854",
+    "continuation_integration.diff": "0a6ed7755e102fcc8c1c7c51516b96f206d87bc612814d059bc8f033692ff7a4",
+    "pilot_real_continuation.json": "b62797ede591f179c7c78f737c9b8732e9dff7da34a1c1a2553f174dac9bc502",
+    "pilot_real_continuation_initial.json": "6dcf9d7e8e9b1c7f384dfaa87241d12abc50a91160d2fdb78a0eff43820846c5",
+    "pilot_real_continuation_first_repair.json": "f6e9311d3b2c69836a9cf8197254be8250cade0829ca621152fd0277c80d3445",
+    "pilot_guarded_continuation.json": "7ee8b8a3f934e28cb7c56cc39d2ffedd961eef92eee16e939067b730f0574618"
+  },
+  "pilots": [
+    {
+      "m": 190,
+      "world": "zeta",
+      "parity": "even",
+      "status": "PASS",
+      "degree": 190,
+      "continued_cpu_seconds": 4.064730973,
+      "independent_endpoint_recheck": true,
+      "exact_disjoint_pole_free_brackets": 190,
+      "raw_real_positive_u_roots": 190,
+      "max_midpoint_difference_from_stored_full_census": "4.265223523678742256429424545585655317995e-176",
+      "max_output_u_radius": "1.000000003520171643897866e-167",
+      "source_sha256": "3509a865a7a88bae2968d2e14f6afd1d55168b671401af9e6cad495022a7425e",
+      "stored_full_census_sha256": "e595270b02ebebd7ba56dc0f6d21fddf3ab2978ac91c3781378f207330782735",
+      "previous_result_sha256": "ffb2575ccd30a941cc1ef571c20ec4cb4bbf9c229b9d29a86c9e72e3a55e2143",
+      "missing_seed_count": 0
+    },
+    {
+      "m": 206,
+      "world": "zeta",
+      "parity": "even",
+      "status": "PASS",
+      "degree": 206,
+      "continued_cpu_seconds": 3.3712117459999993,
+      "independent_endpoint_recheck": true,
+      "exact_disjoint_pole_free_brackets": 206,
+      "raw_real_positive_u_roots": 206,
+      "max_midpoint_difference_from_stored_full_census": "2.450857163660694782414502673026591009776e-176",
+      "max_output_u_radius": "1.000000003520171643897866e-167",
+      "source_sha256": "2cc7fdd337545346ca6fe9df4b4a8865e3177b82973cda0c3df4f13661521031",
+      "stored_full_census_sha256": "c7a6da221f3609ff76243776707ded43b4273a8a7fdf84a59df75c05c65b9779",
+      "previous_result_sha256": "7c8e83318c3b337b8d4b831938109b90bb5a7ab94d47ab3b85a74fcceb86bcb3",
+      "missing_seed_count": 0
+    }
+  ],
+  "negative_guards": [
+    {
+      "guard": "wrong_parity",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Fast path restricted to even parity"
+    },
+    {
+      "guard": "nonadjacent_previous_dimension",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Previous dimension/parity mismatch"
+    },
+    {
+      "guard": "current_snapshot_sha_mismatch",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Current source changed after caller snapshot"
+    },
+    {
+      "guard": "current_coefficients_mismatch",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Current coefficients differ from frozen input"
+    },
+    {
+      "guard": "stale_previous_source_sha",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Stale previous source receipt"
+    },
+    {
+      "guard": "previous_source_world_mismatch",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Previous source metadata mismatch"
+    },
+    {
+      "guard": "non_zeta_world",
+      "status": "REJECTED",
+      "type": "ContinuationUnavailable",
+      "message": "Fast path restricted to zeta world"
+    }
+  ],
+  "broad_exception_falls_back_to_flint": true,
+  "non_zeta_caller_skips_fast_path": true,
+  "total_cpu_seconds": 10.126164656,
+  "scope": "Frozen decimal-vector finite polynomial software review only. No new eigenproblem, source-zero seed, continuum/RH claim, or 180-digit accuracy claim. Output has 180 rendering digits with the actual enclosure radius retained."
+}

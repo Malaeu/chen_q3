@@ -1,0 +1,69 @@
+{
+  "status": "PASS_FINAL_SCIENTIFIC_PAYLOAD_AND_REPORT",
+  "spectral_cells": 855,
+  "integer_range": [
+    16,
+    300
+  ],
+  "physical_root_artifacts": 1107,
+  "synthetic_root_artifacts": 2,
+  "required_root_cases": 1095,
+  "scalar_audit_issues": 0,
+  "selected_root_samples": 90,
+  "harmonic_continuation_samples": 120,
+  "max_selected_newton_position_correction": "5.661452247265106669457612889869490588243e-149",
+  "spectra_freeze_sha256": "c2250bdaebca0c9a0d8a538aa9d3a4a461e669917294be5fddff366f08184114",
+  "roots_freeze_sha256": "26286ef7e1966da1aa0ccf49460aa50f3758a990b5609334ea5f05a356e364ef",
+  "final_file_sha256": {
+    "RESULT.md": "d289e693f2c69afb00fc3720bd9cbdc4d5628d6bf67177ef4098e445b05530cd",
+    "OVERVIEW.json": "106c74e84d183faf25cad94be5b81e64706a97910d4135421a8559e2bac64882",
+    "GAPS.csv": "e198b15256c72dceb82a98d3af0daf726cf5e7f0151efab86056f6288fb86f2d",
+    "ZERO_SUMMARY.csv": "ef8e0c5d5d51400384fa9aaa39a3e3435feb2289ebb4a568a6960f83c0e1d1a0",
+    "CONTROL_SCALING.csv": "499b12ab1f10e36c77dcc387788846c0a7cb3341aadb70c9eadd8004c911b6dc",
+    "NEAREST_SOURCE.csv": "d8db06a44c045786eb1269b7d8de5070dbefcefb4b51d5ce05bdc6b07553ebc3",
+    "NEAREST_SOURCE.json": "429311372c496e37b99b7aaee67e9a9bb6e4f7a57d20d75aa137a30f3136107d",
+    "CARD_AXIS_PARITY_RESULT.json": "ca585b80a402ed0a6fa18b999c3023dabbd7c386f0aab4c21c03811ae6f1b900",
+    "SCALING.csv": "f359758fc9164d27cea9fa11713fa146f63e81fabc9c1c7449412d9e8cc01419",
+    "SCALING_EDGE.csv": "ba609fafe554157b5908812ce2ee6f15e7009aa6649681464945167a285de1e2",
+    "BOUNDARY_ROOTS.csv": "e50c5e6da3ab5e7257fc57124e31f46bf90fc5fbe47c2c6b57689770a025d264",
+    "CARRIER_CONTROL.csv": "158cb980212e1fb38cb1fae0ba62a0197551486ad25d00d0ea61785972f6ceca",
+    "analyze.py": "7eb5c06a942f8b8bb2b0994ec881cd3342c4e2fa5f69e1f04ee8d6ee728bfed8",
+    "make_result.py": "b9a432bde04dd2839f5ed85d2af0ae6da29fe3c7d319fe677cb221747a3e2217",
+    "nearest_source.py": "4406980362c3c6bbcbce3fb16a97060c5d6be6339d8ad3c1b3c8c2acdca052b9",
+    "package_data.py": "8dd63d302f9de304afe4802bd882c52a78c4455cbfda7cb5f52b429413c43f38",
+    "unpack_data.py": "8964b60a26efcfcf65faf77f5f70673ec791f7b004c8cedfa3c6356a1ccc24b3",
+    "publication_manifest.py": "1ea4dd43e010c8dedac0b84aab750ac3dc64a8c7d6128b8aa3951931993d60cf",
+    "REPRODUCE.md": "9d9ea864fccf1b8f0f4ace076fd2e3119adf3d0a6bf926c16e976696d89d20b7"
+  },
+  "review_evidence_sha256": {
+    "payload_audit.json": "b93fe19cfeeeb24f3d7322a0bab2e748d76c5f67ccd31777863b42fe8ff41736",
+    "transform_replay.json": "6f2e89088ac8768c927c58382f0cf19be654d15570a6e0ee67a28cf0f84c2aa5",
+    "spectra_freeze_review.json": "baa680bd874dcb3b44a7f16b109fbc7557753be2968c38e2a797ba9e2b206a19",
+    "roots_freeze_review.json": "a0284df626a3852589c4f406bd97933318707d2edcd493337e9d6f01231631f3",
+    "root_scope_review.json": "6422239201df0cad1637bdd2d194af0879999fa13b876636ce39230e15997480",
+    "final_pilot_facts.json": "ecfaf7afdd2a42ffac2ee5ef4a5d131767d5b7d0734e73b7853fc42c455b58ba",
+    "source_ground_scale_review.json": "012d03e772a2741241e0179aca117d8284a0d314d95d448e58fc17cb3f1ad56a",
+    "continuation_review.json": "bfe7241cf85f55394b4a50675a278a2afd53731383bf21227b0d3e3ecae4bd75",
+    "shifted_low_final_review.json": "7f44623479ca7a436417a6c6020a374d826f0e729fd0f7f96f5af4db2872b3c8"
+  },
+  "scope": "Finite numerical diagnostic. Exact supplied-decimal polynomial certificates do not enclose source or exact eigenvector error. No D0/cofinal/RH status change. Partial sampled argument counts are not a source or contour certificate.",
+  "post_review_release_checks": "Parent will package the immutable raw payload, verify a fresh SHA-exact restore, generate final publication inventory and publish only within previously authorized scope. Archive/restore has not been rerun by this reviewer.",
+  "constant_carrier_tests": 54,
+  "constant_carrier_matches_1e_6": 0,
+  "boundary_cases": 1107,
+  "boundary_max_Vieta_relative_replay_error": "3.29767935480858E-171",
+  "early_zeta_source_close_1e_6_failures": [
+    16,
+    17,
+    20,
+    21,
+    25,
+    27,
+    32
+  ],
+  "worst_zeta_primary_deviation": {
+    "m": 32,
+    "deviation": "0.03056010832383276381931742012726517804669"
+  },
+  "all_m33_through_300_source_points_matched_under_1e_6": true
+}

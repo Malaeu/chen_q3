@@ -1,0 +1,35 @@
+{
+  "adopted_utc": "2026-11-03T16:48:55.350743+00:00",
+  "scope": "Zeta EVEN only. All strict coefficient/degree/real-root interval gates required; every Exception falls back to complete Flint complex isolation. No source/eigenvector precision change, no original-source mathematical status promotion.",
+  "files": {
+    "old_module": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/census_flint_producer_before_continuation.py",
+      "sha256": "4de0ebf537cae79120e741097e5cd58e5ff042b75f8f4f6390add6b0f75ee6e1"
+    },
+    "new_module": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/census.py",
+      "sha256": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854"
+    },
+    "frozen_candidate": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/census_continuation_candidate.py",
+      "sha256": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854"
+    },
+    "frozen_helper": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/real_continuation_v1.py",
+      "sha256": "6cb9dfbb1f1ad1a2747799004ada512d49af296175221f85ccef50780d9ebbe2"
+    },
+    "integration_diff": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/continuation_integration.diff",
+      "sha256": "0a6ed7755e102fcc8c1c7c51516b96f206d87bc612814d059bc8f033692ff7a4"
+    },
+    "frozen_manifest": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/continuation_frozen_manifest.json",
+      "sha256": "c18ff68e76aeb0fa244fc20d6bb0614aa9cbb426b4cf351630a004fe0fcb357d"
+    }
+  },
+  "independent_review": {
+    "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/review/continuation_review.json",
+    "sha256": "bfe7241cf85f55394b4a50675a278a2afd53731383bf21227b0d3e3ecae4bd75"
+  },
+  "legacy_scope": "Archived old_module is the module immediately preceding adoption. Older already completed files remain byte-immutable and may predate metadata-only producer changes; their existing source receipts and method diagnostics are retained. No retroactive producer-hash claim is made."
+}

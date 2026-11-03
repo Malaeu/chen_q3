@@ -1,0 +1,58 @@
+{
+  "zeta": {
+    "first_negative_even": null,
+    "first_global_odd": null,
+    "global_odd_count": 0,
+    "first_nonreal_source_below_T": null,
+    "axis_parity_mismatches": [],
+    "m300": {
+      "parity": "even",
+      "source_count": "183",
+      "source_nonreal_count": "0",
+      "fourier_strip_count": "219",
+      "polynomial_strip_count": "183",
+      "forced_external_count": "36",
+      "source_unrecovered_at_1e_6": "0",
+      "polynomial_only_max_abs_deviation": "3.46267806703879266141923299941541542019e-29",
+      "observed_low_high_max_root_shift": "5.061009907844935149269722677509582569181e-147",
+      "next_state_odd": true,
+      "lambda_even0": "2.45253756200425854392895338484134990835274045088529021214960557158485447500447125982112269263716982201923296168812213024927623986758882053066167406161028319303964661748672631856210921692428276867563270523853493129791997072294688021254977196615352769751700312333574792814533169193464910469739234846398727668308616698277067878742250036148402247063931427897179817277645604490859249773753378437722018584844772129061216810523453637780270624428512497673563943491801317576702123246604903268062207388750243180311086197155220127717358912542372863336002961176694627289491502568873374995706682872984484770926925275766556468666924062288365677323852191019641251936772817945e-505"
+    }
+  },
+  "dh": {
+    "first_negative_even": 51,
+    "first_global_odd": 54,
+    "global_odd_count": 101,
+    "first_nonreal_source_below_T": 46,
+    "axis_parity_mismatches": [],
+    "m300": {
+      "parity": "odd",
+      "source_count": "276",
+      "source_nonreal_count": "16",
+      "fourier_strip_count": "335",
+      "polynomial_strip_count": "299",
+      "forced_external_count": "36",
+      "source_unrecovered_at_1e_6": "276",
+      "polynomial_only_max_abs_deviation": "270.1043388100232675891063567520180960992",
+      "observed_low_high_max_root_shift": "2.898186157756766499573036297921766610851e-151"
+    }
+  },
+  "plant": {
+    "first_negative_even": 16,
+    "first_global_odd": 18,
+    "global_odd_count": 139,
+    "first_nonreal_source_below_T": 16,
+    "axis_parity_mismatches": [],
+    "m300": {
+      "parity": "odd",
+      "source_count": "185",
+      "source_nonreal_count": "2",
+      "fourier_strip_count": "335",
+      "polynomial_strip_count": "299",
+      "forced_external_count": "36",
+      "source_unrecovered_at_1e_6": "185",
+      "polynomial_only_max_abs_deviation": "124.6738773246441240850423983302462384765",
+      "observed_low_high_max_root_shift": "3.599358676301689342463480113745132358111e-153"
+    }
+  }
+}

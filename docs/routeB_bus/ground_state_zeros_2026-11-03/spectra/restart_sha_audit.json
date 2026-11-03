@@ -1,0 +1,12 @@
+{
+  "complete_m_count": 139,
+  "partial_m": [],
+  "stale_root_receipts": [
+    "plant_odd_m24.json",
+    "zeta_odd_m24.json",
+    "zeta_odd_m40.json",
+    "dh_odd_m40.json",
+    "dh_odd_m24.json"
+  ],
+  "note": "Read-only audit following exact-base16 restart; no preexisting spectral vector files intentionally overwritten"
+}

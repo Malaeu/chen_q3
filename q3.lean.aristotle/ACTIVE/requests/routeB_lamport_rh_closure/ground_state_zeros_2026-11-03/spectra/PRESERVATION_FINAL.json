@@ -1,0 +1,17 @@
+{
+  "checks": [
+    {
+      "snapshot": "pre_shifted_adoption_snapshot.json",
+      "preexisting_world_files": 690,
+      "changed_files": [],
+      "all_raw_SHA_unchanged": true
+    },
+    {
+      "snapshot": "pre_tail_schedule_snapshot.json",
+      "preexisting_world_files": 792,
+      "changed_files": [],
+      "all_raw_SHA_unchanged": true
+    }
+  ],
+  "all_pass": true
+}

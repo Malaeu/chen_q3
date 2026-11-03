@@ -1,0 +1,36 @@
+{
+  "rows": [
+    {
+      "world": "zeta",
+      "parity": "even",
+      "m": 190,
+      "status": "FALLBACK_REQUIRED",
+      "error": "ContinuationUnavailable('Duplicate continued roots')",
+      "seconds": 0.7751983950001886
+    },
+    {
+      "world": "dh",
+      "parity": "even",
+      "m": 190,
+      "status": "FALLBACK_REQUIRED",
+      "error": "ContinuationUnavailable('Newton did not converge')",
+      "seconds": 0.11982985999929952
+    },
+    {
+      "world": "plant",
+      "parity": "even",
+      "m": 190,
+      "status": "FALLBACK_REQUIRED",
+      "error": "ContinuationUnavailable('Newton did not converge')",
+      "seconds": 0.24477452700011781
+    }
+  ],
+  "scope": "Bounded 30 CPU pilot against stored complete full-isolation root sets. No bulk adoption yet.",
+  "fresh_full_timing_control": {
+    "world": "zeta",
+    "parity": "even",
+    "m": 190,
+    "cpu_seconds": 7.918566444,
+    "seconds": 10.406503385000178
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "FINITE_VIETA_REPLAY_PASS",
+  "scope": "All tested frozen-vector numerator polynomials; one-sided interior derivatives at b=L/2. Universal finite algebra, not an arithmetic inequality.",
+  "rows": 1107,
+  "max_relative_error": 3.29767935480858e-171,
+  "full_grid": true
+}

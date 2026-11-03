@@ -1,0 +1,39 @@
+--- census.py
++++ census_continuation_candidate.py
+@@ -11,6 +11,7 @@
+ import numpy as np
+ from scipy.optimize import linear_sum_assignment
+ BASE=Path(__file__).resolve().parents[1]; OUT=Path(__file__).resolve().parent
++ROOT_PRODUCER_SHA256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+ 
+ def decimal(x,digits=180):
+     return x.mid().str(digits, radius=False)
+@@ -165,7 +166,18 @@
+     if not c:raise ValueError('Missing vector')
+     if len(c)!=(m+1 if parity=='even' else m):raise ValueError('Coefficient count inconsistent with carrier/parity')
+     L=mp.mpf(data['L']);om=2*mp.pi/L;Om=m*om;kap=1+(1+mp.log(mp.log(m)))/(4*mp.log(m));Ts={'fixed_c1_4':kap*Om,'Omega':Om,'0.8Omega':mp.mpf('.8')*Om};maxT=max(Ts.values())
+-    rr,info=isolate(c,m,parity);roots=[];cv=list(map(mp.mpf,c));block=next((q for q in data.get('blocks',[]) if q['parity']==parity),{});vdelta=mp.mpf(block.get('vector_replay_infinity',['0'])[0]);replay_l2=mp.sqrt(len(c))*vdelta;transform_floor=mp.sqrt(L)*replay_l2;maxres=mp.mpf(0);max_sinc_res=mp.mpf(0);max_sinc_difference=mp.mpf(0);sinc_checks=0
++    continuation_failure=None
++    if world=='zeta' and parity=='even':
++        try:
++            from real_continuation_v1 import isolate_real
++            rr,info=isolate_real(c,m,parity,OUT/'results'/f'{world}_{parity}_m{m-1}.json',path,expected_source_sha256=hashlib.sha256(source_blob).hexdigest())
++        except Exception as exc:
++            continuation_failure=dict(type=type(exc).__name__,message=str(exc))
++            rr,info=isolate(c,m,parity)
++    else:rr,info=isolate(c,m,parity)
++    info.setdefault('method','Flint complete complex polynomial isolation')
++    if continuation_failure is not None:info['continuation_fallback']=continuation_failure
++    roots=[];cv=list(map(mp.mpf,c));block=next((q for q in data.get('blocks',[]) if q['parity']==parity),{});vdelta=mp.mpf(block.get('vector_replay_infinity',['0'])[0]);replay_l2=mp.sqrt(len(c))*vdelta;transform_floor=mp.sqrt(L)*replay_l2;maxres=mp.mpf(0);max_sinc_res=mp.mpf(0);max_sinc_difference=mp.mpf(0);sinc_checks=0
+     for i,u in enumerate(rr):
+         # For a real input polynomial, an isolated disk invariant under conjugation encloses a real root.
+         real_u=u.imag.contains(0)
+@@ -195,7 +207,7 @@
+         pairs,sm=match(roots,src,T);poly_pairs,poly_sm=match([r for r in roots if r['kind']!='forced_external'],src,T);sm['polynomial_only']=poly_sm;replay_shifts=[mp.mpf(r['replay_rootshift_diagnostic']) for r in roots if r['kind']!='forced_external' and 0<r['z_re_mp']<T and abs(r['z_im_mp'])<mp.mpf('.5')];sm['max_replay_rootshift_diagnostic']=mp.nstr(max(replay_shifts),35) if replay_shifts else None;sm.update(T=mp.nstr(T,50),T_over_Omega=mp.nstr(T/Om,40));sm['observed_precision_replay']=precision_replay.get('cutoffs',{}).get(key);sm['polynomial_nonreal_outside_strip_below_T']=sum(r['kind']=='polynomial_complex' and 0<r['z_re_mp']<T and abs(r['z_im_mp'])>=mp.mpf('.5') for r in roots);sm['pure_imaginary_positive_below_abs_T']=sum(r['kind']=='polynomial_pure_imaginary' and abs(r['z_im_mp'])<T for r in roots);sm['source_nonreal_quartet_count']=sm['source_nonreal_count']//2;sm['fourier_nonreal_quartet_count']=sm['fourier_nonreal_count']//2;results[key]=sm
+         for pair in pairs:pair['cutoff']=key;pair['matching_scope']='all_fourier';allmatches.append(pair)
+         for pair in poly_pairs:pair['cutoff']=key;pair['matching_scope']='polynomial_only';allmatches.append(pair)
+-    result=dict(census_schema_version=4,m=m,world=world,parity=parity,L=mp.nstr(L,180),Omega=mp.nstr(Om,180),kappa=mp.nstr(kap,45),source_vector_path=str(path),source_vector_sha256=hashlib.sha256(source_blob).hexdigest(),vector_coefficient_sha256=hashlib.sha256(json.dumps(c,separators=(',',':')).encode()).hexdigest(),source_coefficient_l2_norm=mp.nstr(mp.sqrt(mp.fsum(v*v for v in cv)),50),source_precision_dps=digits,vector_precision_dps=digits,matrix_source_precision_dps=data.get('source_precision_dps',digits),source_precision_field_scope='legacy source_precision_dps denotes supplied-vector solver precision; matrix source precision recorded separately',source_reference=reference_binding(world),root_output_digits=180,root_isolation_absolute_u_tolerance='1e-165',ground_resolved=data.get('ground_resolved'),solver_status=data.get('status'),global_parity=data.get('global_ground_parity',data.get('global_parity')),parity_ground_resolved=data.get(parity+'_ground_resolved'),lambda_even0=data.get('lambda_even0'),lambda_odd0=data.get('lambda_odd0'),parity_gap=data.get('parity_gap'),checks=checks,precision_replay=precision_replay,cutoffs=results,roots=[{k:v for k,v in r.items() if not k.endswith('_mp')} for r in roots],matches=allmatches,status='NUMERICAL_ROUNDED_VECTOR_POLYNOMIAL_CENSUS',scope='Complete isolated roots of the supplied decimal-vector numerator, plus exact external-carrier zeros; eigenvector error and source reference error are not enclosed. 160-digit zeta input is a reference floor; no RH/positivity/proof claim.')
++    result=dict(census_producer_sha256=ROOT_PRODUCER_SHA256,census_schema_version=4,m=m,world=world,parity=parity,L=mp.nstr(L,180),Omega=mp.nstr(Om,180),kappa=mp.nstr(kap,45),source_vector_path=str(path),source_vector_sha256=hashlib.sha256(source_blob).hexdigest(),vector_coefficient_sha256=hashlib.sha256(json.dumps(c,separators=(',',':')).encode()).hexdigest(),source_coefficient_l2_norm=mp.nstr(mp.sqrt(mp.fsum(v*v for v in cv)),50),source_precision_dps=digits,vector_precision_dps=digits,matrix_source_precision_dps=data.get('source_precision_dps',digits),source_precision_field_scope='legacy source_precision_dps denotes supplied-vector solver precision; matrix source precision recorded separately',source_reference=reference_binding(world),root_output_digits=180,root_isolation_absolute_u_tolerance='1e-165',ground_resolved=data.get('ground_resolved'),solver_status=data.get('status'),global_parity=data.get('global_ground_parity',data.get('global_parity')),parity_ground_resolved=data.get(parity+'_ground_resolved'),lambda_even0=data.get('lambda_even0'),lambda_odd0=data.get('lambda_odd0'),parity_gap=data.get('parity_gap'),checks=checks,precision_replay=precision_replay,cutoffs=results,roots=[{k:v for k,v in r.items() if not k.endswith('_mp')} for r in roots],matches=allmatches,status='NUMERICAL_ROUNDED_VECTOR_POLYNOMIAL_CENSUS',scope='Complete isolated roots of the supplied decimal-vector numerator, plus exact external-carrier zeros; eigenvector error and source reference error are not enclosed. 160-digit zeta input is a reference floor; no RH/positivity/proof claim.')
+     target=OUT/'results'/f'{world}_{parity}_m{m}.json';target.parent.mkdir(exist_ok=True);tmp=target.with_suffix('.tmp');tmp.write_text(json.dumps(result,indent=2)+'\n');tmp.replace(target)
+     print(json.dumps(dict(file=str(target),m=m,world=world,parity=parity,degree=checks['degree'],seconds=checks['seconds'],source=results['fixed_c1_4']['source_count'],fourier=results['fixed_c1_4']['fourier_strip_count'],nonreal=results['fixed_c1_4']['fourier_nonreal_count'],external=results['fixed_c1_4']['structural_external_count'],max_error=results['fixed_c1_4']['max_abs_deviation'])),flush=True)
+     return result

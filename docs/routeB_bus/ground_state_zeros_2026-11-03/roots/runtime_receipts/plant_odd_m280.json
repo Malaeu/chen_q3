@@ -1,0 +1,11 @@
+{
+  "world": "plant",
+  "m": 280,
+  "parity": "odd",
+  "cpu_seconds": 59.97068405,
+  "wall_seconds": 72.78999301099975,
+  "source_vector_sha256": "328207b5036f6aa35c98918329ddd8e45254ef5551033030c77b0055375569fd",
+  "census_producer_sha256": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854",
+  "batch_wrapper_sha256": "b7b030170e96f7a447c07667adc597d98b45ae1c3e22d083d3b30d4a09923571",
+  "scope": "Observed runtime for an ordinary authorized cell, not a benchmark or numerical method change."
+}

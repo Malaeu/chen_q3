@@ -1,0 +1,19 @@
+{
+  "status": "BOUNDED_REVIEW_CHECKS_PASS_NUMERICAL_NOT_CERTIFICATE",
+  "direct_rational_identity_max_error": "1.04689817193497576372124100443327807385687285708056898707555724562390488305386696376389001e-90",
+  "internal_harmonic_continuation_max_error": "3.06818341581107909568485747186642227685950969531215597819471819824194078420107241028756118e-91",
+  "exterior_harmonic_max_residual": "7.50526075565599773265671127854495035919244534306878399947126769146733251333489754153769132e-92",
+  "e0_internal_harmonics_are_zeros_max_residual": "8.54940507037718476329023051084539885056129264279525434679193199213017213692318710855093787e-92",
+  "all_generic_internal_harmonics_nonzero": true,
+  "dh_line_count": 746,
+  "dh_quartet_count": 26,
+  "dh_positive_height_offline_count": 52,
+  "dh_total_count": 798,
+  "dh_all_saved_coordinates_distinct": true,
+  "dh_pair_symmetry_max_error": "0.0",
+  "dh_all_listed_pairs_inside_open_critical_strip": true,
+  "dps": 90,
+  "original_checked_dh_file_sha256": "6b18c821adb22aee8e3ed07db7af80a7e62bee4760eb3680bda4954de4f3702e",
+  "dh_file_sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846",
+  "provenance_rebinding_note": "Parent normalized one extra terminal LF in the copied input to match remote50777d4 bytes. Numerical values unchanged; checks retained without arithmetic recomputation."
+}

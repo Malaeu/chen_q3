@@ -1,0 +1,65 @@
+{
+  "status": "ANALYTIC_SOURCE_NUMERIC_REGRESSION_PASS",
+  "m": 40,
+  "mode": "q2",
+  "rows": [
+    {
+      "world": "zeta",
+      "parity": "even",
+      "max_entry_difference": "4.0274955914432910037307518586178059e-119",
+      "reference_dps": 120,
+      "reference_order": 160
+    },
+    {
+      "world": "zeta",
+      "parity": "odd",
+      "max_entry_difference": "4.104947429740277369187112471283533e-119",
+      "reference_dps": 120,
+      "reference_order": 160
+    },
+    {
+      "world": "dh",
+      "parity": "even",
+      "max_entry_difference": "2.8657180169884955218853426686319004e-119",
+      "reference_dps": 120,
+      "reference_order": 160
+    },
+    {
+      "world": "dh",
+      "parity": "odd",
+      "max_entry_difference": "2.8657180169884955218853426686319004e-119",
+      "reference_dps": 120,
+      "reference_order": 160
+    },
+    {
+      "world": "plant",
+      "parity": "even",
+      "max_entry_difference": "4.0274955914432910037307518586178059e-119",
+      "reference_dps": 120,
+      "reference_order": 160
+    },
+    {
+      "world": "plant",
+      "parity": "odd",
+      "max_entry_difference": "4.104947429740277369187112471283533e-119",
+      "reference_dps": 120,
+      "reference_order": 160
+    }
+  ],
+  "analytic_metadata": {
+    "bits": 448,
+    "working_bits": 488,
+    "special_function_bits": 520,
+    "tail_lengths": [
+      47,
+      46
+    ],
+    "tail_cut": "4.887898181599367491283167029141788319663044384915722662229782254850066602439552732322971576172824365211000244309744747448508565484486854351576212983e-150",
+    "seconds": 0.11679147900008502,
+    "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+    "interval_certificate": false
+  },
+  "seconds": 7.1650395010001375,
+  "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+  "interval_bound": false
+}

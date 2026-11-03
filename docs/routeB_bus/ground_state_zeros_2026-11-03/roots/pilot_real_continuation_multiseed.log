@@ -1,0 +1,3 @@
+{'world': 'zeta', 'parity': 'even', 'm': 190, 'status': 'PASS', 'seconds': 2.9824105810002948, 'cpu_seconds': 2.403115556, 'stored_full_isolation_seconds': 9.406053638999765, 'max_u_distance': '0.0', 'degree': 190, 'newton_max_steps': 16}
+{'world': 'dh', 'parity': 'even', 'm': 190, 'status': 'FALLBACK_REQUIRED', 'error': "ContinuationUnavailable('More than four missing continued roots')", 'seconds': 3.286101943999711}
+{'world': 'plant', 'parity': 'even', 'm': 190, 'status': 'FALLBACK_REQUIRED', 'error': "ContinuationUnavailable('More than four missing continued roots')", 'seconds': 3.090758532000109}

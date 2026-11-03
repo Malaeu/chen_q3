@@ -1,0 +1,5 @@
+plant odd 299 299 True
+dh odd 299 299 True
+dh even 299 300 False
+plant even 300 300 True
+zeta even 300 300 True

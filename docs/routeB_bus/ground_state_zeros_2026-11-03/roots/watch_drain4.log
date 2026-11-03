@@ -1,0 +1,185 @@
+{"jobs": 71, "workers": 4}
+{"event": "isolation_start", "m": 284, "parity": "even", "bits": 1920, "attempt": 0}
+{"event": "isolation_start", "m": 283, "parity": "even", "bits": 1915, "attempt": 0}
+{"event": "isolation_start", "m": 283, "parity": "odd", "bits": 1915, "attempt": 0}
+{"event": "isolation_start", "m": 284, "parity": "odd", "bits": 1920, "attempt": 0}
+{"event": "isolation_finished", "m": 283, "parity": "even", "bits": 1915, "seconds": 26.93546361100016}
+{"event": "isolation_finished", "m": 284, "parity": "even", "bits": 1920, "seconds": 29.161615837998397}
+{"event": "isolation_finished", "m": 284, "parity": "odd", "bits": 1920, "seconds": 69.253466002001}
+{"event": "isolation_finished", "m": 283, "parity": "odd", "bits": 1915, "seconds": 71.04608963200008}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m284.json", "m": 284, "world": "plant", "parity": "even", "degree": 284, "seconds": 29.162212966999505, "source": 174, "fourier": 317, "nonreal": 0, "external": 34, "max_error": "1.625642991879044569622860764072828832002"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m283.json", "m": 283, "world": "plant", "parity": "even", "degree": 283, "seconds": 26.936142525000832, "source": 173, "fourier": 316, "nonreal": 0, "external": 34, "max_error": "1.626130407241591308003606076064018981707"}
+{"event": "isolation_start", "m": 285, "parity": "even", "bits": 1925, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m284.json", "m": 284, "world": "plant", "parity": "odd", "degree": 283, "seconds": 69.25377800100068, "source": 174, "fourier": 317, "nonreal": 0, "external": 34, "max_error": "1.57590566872537995189938567488136124837"}
+{"event": "isolation_start", "m": 285, "parity": "odd", "bits": 1925, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m283.json", "m": 283, "world": "plant", "parity": "odd", "degree": 282, "seconds": 71.04619832500066, "source": 173, "fourier": 316, "nonreal": 0, "external": 34, "max_error": "1.577482897665140617234851550802197030306"}
+{"event": "isolation_start", "m": 285, "parity": "even", "bits": 1925, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m284.json", "m": 284, "world": "zeta", "parity": "even", "degree": 284, "seconds": 5.876665286999923, "source": 172, "fourier": 206, "nonreal": 0, "external": 34, "max_error": "1.508333128823103946233193301061683944403e-29"}
+{"event": "isolation_start", "m": 285, "parity": "odd", "bits": 1925, "attempt": 0}
+{"event": "isolation_finished", "m": 285, "parity": "odd", "bits": 1925, "seconds": 22.04143219300022}
+{"event": "isolation_finished", "m": 285, "parity": "even", "bits": 1925, "seconds": 23.301438602000417}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m285.json", "m": 285, "world": "dh", "parity": "odd", "degree": 284, "seconds": 22.041924683000616, "source": 263, "fourier": 318, "nonreal": 0, "external": 34, "max_error": "1.829843006479029348504740566302056757807"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m285.json", "m": 285, "world": "plant", "parity": "even", "degree": 285, "seconds": 23.301621018001242, "source": 174, "fourier": 318, "nonreal": 0, "external": 34, "max_error": "1.62513531521503294291561804147918313319"}
+{"event": "isolation_start", "m": 286, "parity": "even", "bits": 1930, "attempt": 0}
+{"event": "isolation_finished", "m": 285, "parity": "even", "bits": 1925, "seconds": 37.66411734400026}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m285.json", "m": 285, "world": "zeta", "parity": "even", "degree": 285, "seconds": 5.067129343000488, "source": 172, "fourier": 206, "nonreal": 0, "external": 34, "max_error": "4.378421924337651929061595886426947771969e-28"}
+{"event": "isolation_start", "m": 286, "parity": "odd", "bits": 1930, "attempt": 0}
+{"event": "isolation_finished", "m": 285, "parity": "odd", "bits": 1925, "seconds": 38.40967481900043}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m285.json", "m": 285, "world": "dh", "parity": "even", "degree": 285, "seconds": 37.66475273799915, "source": 263, "fourier": 318, "nonreal": 0, "external": 34, "max_error": "1.83066539603409860724101695577174790793"}
+{"event": "isolation_start", "m": 286, "parity": "even", "bits": 1930, "attempt": 0}
+{"event": "isolation_finished", "m": 286, "parity": "even", "bits": 1930, "seconds": 19.873626994000006}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m286.json", "m": 286, "world": "dh", "parity": "even", "degree": 286, "seconds": 19.87389318500027, "source": 263, "fourier": 319, "nonreal": 0, "external": 34, "max_error": "1.829134674555733397527662214740942721463"}
+{"event": "isolation_start", "m": 286, "parity": "odd", "bits": 1930, "attempt": 0}
+{"event": "isolation_finished", "m": 286, "parity": "odd", "bits": 1930, "seconds": 27.82110399299927}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m285.json", "m": 285, "world": "plant", "parity": "odd", "degree": 284, "seconds": 38.41080073699959, "source": 174, "fourier": 318, "nonreal": 0, "external": 34, "max_error": "1.574433337708947997924776742590473337213"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m286.json", "m": 286, "world": "dh", "parity": "odd", "degree": 285, "seconds": 27.821257356999922, "source": 263, "fourier": 319, "nonreal": 0, "external": 34, "max_error": "1.827546160095288817377907191061866972687"}
+{"event": "isolation_start", "m": 287, "parity": "even", "bits": 1935, "attempt": 0}
+{"event": "isolation_finished", "m": 286, "parity": "odd", "bits": 1930, "seconds": 21.569826994000323}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m286.json", "m": 286, "world": "zeta", "parity": "even", "degree": 286, "seconds": 8.544369948000167, "source": 173, "fourier": 207, "nonreal": 0, "external": 34, "max_error": "3.927892231698507071892283869038011419544e-29"}
+{"event": "isolation_start", "m": 287, "parity": "odd", "bits": 1935, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m286.json", "m": 286, "world": "plant", "parity": "odd", "degree": 285, "seconds": 21.570057867000287, "source": 175, "fourier": 319, "nonreal": 0, "external": 34, "max_error": "1.573067095420473463392171302138237081446"}
+{"event": "isolation_start", "m": 287, "parity": "even", "bits": 1935, "attempt": 0}
+{"event": "isolation_finished", "m": 287, "parity": "even", "bits": 1935, "seconds": 22.221642939999583}
+{"event": "isolation_finished", "m": 286, "parity": "even", "bits": 1930, "seconds": 49.675689789999524}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m287.json", "m": 287, "world": "dh", "parity": "even", "degree": 287, "seconds": 22.222049940999568, "source": 264, "fourier": 320, "nonreal": 0, "external": 34, "max_error": "1.827345002443179529828764056288838917909"}
+{"event": "isolation_start", "m": 287, "parity": "odd", "bits": 1935, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m286.json", "m": 286, "world": "plant", "parity": "even", "degree": 286, "seconds": 49.675934568998855, "source": 175, "fourier": 319, "nonreal": 0, "external": 34, "max_error": "1.624603088954927437545480978621289627689"}
+{"event": "isolation_finished", "m": 287, "parity": "even", "bits": 1935, "seconds": 25.415254020999782}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m287.json", "m": 287, "world": "plant", "parity": "even", "degree": 287, "seconds": 25.415377548000833, "source": 175, "fourier": 320, "nonreal": 0, "external": 34, "max_error": "1.624048393242883329302977662323883436911"}
+{"event": "isolation_start", "m": 288, "parity": "even", "bits": 1940, "attempt": 0}
+{"event": "isolation_finished", "m": 287, "parity": "odd", "bits": 1935, "seconds": 23.59479149300023}
+{"event": "isolation_finished", "m": 287, "parity": "odd", "bits": 1935, "seconds": 40.82436005099953}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m287.json", "m": 287, "world": "zeta", "parity": "even", "degree": 287, "seconds": 8.738163314999838, "source": 173, "fourier": 207, "nonreal": 0, "external": 34, "max_error": "3.716066156178904305106652337656031917197e-30"}
+{"event": "isolation_start", "m": 288, "parity": "even", "bits": 1940, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m287.json", "m": 287, "world": "plant", "parity": "odd", "degree": 286, "seconds": 23.594938311000078, "source": 175, "fourier": 320, "nonreal": 0, "external": 34, "max_error": "1.571762014170138438921183500499327931092"}
+{"event": "isolation_start", "m": 288, "parity": "odd", "bits": 1940, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m287.json", "m": 287, "world": "dh", "parity": "odd", "degree": 286, "seconds": 40.82493031299964, "source": 264, "fourier": 320, "nonreal": 0, "external": 34, "max_error": "1.826787697538196062335046446808947864372"}
+{"event": "isolation_finished", "m": 288, "parity": "even", "bits": 1940, "seconds": 27.72869225300019}
+{"event": "isolation_finished", "m": 288, "parity": "even", "bits": 1940, "seconds": 54.16226176999953}
+{"event": "isolation_finished", "m": 288, "parity": "odd", "bits": 1940, "seconds": 48.721265545998904}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m288.json", "m": 288, "world": "zeta", "parity": "even", "degree": 288, "seconds": 7.940579309999521, "source": 175, "fourier": 209, "nonreal": 0, "external": 34, "max_error": "3.094950117104240642663229784944389409325e-29"}
+{"event": "isolation_start", "m": 289, "parity": "even", "bits": 1945, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m288.json", "m": 288, "world": "plant", "parity": "odd", "degree": 287, "seconds": 48.72156749900023, "source": 177, "fourier": 321, "nonreal": 0, "external": 34, "max_error": "1.570442000337817477173871004451264691753"}
+{"event": "isolation_start", "m": 289, "parity": "even", "bits": 1945, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m288.json", "m": 288, "world": "plant", "parity": "even", "degree": 288, "seconds": 27.729100047999964, "source": 177, "fourier": 321, "nonreal": 0, "external": 34, "max_error": "1.62348080535783894612894791454603951281"}
+{"event": "isolation_start", "m": 289, "parity": "odd", "bits": 1945, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m288.json", "m": 288, "world": "dh", "parity": "even", "degree": 288, "seconds": 54.16269699099939, "source": 265, "fourier": 322, "nonreal": 0, "external": 34, "max_error": "1.825700606502808280852730863877356861282"}
+{"event": "isolation_finished", "m": 289, "parity": "even", "bits": 1945, "seconds": 66.95997053499923}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m289.json", "m": 289, "world": "zeta", "parity": "even", "degree": 289, "seconds": 8.931257836999066, "source": 175, "fourier": 209, "nonreal": 0, "external": 34, "max_error": "1.220699330658370867401316161581458218469e-29"}
+{"event": "isolation_start", "m": 290, "parity": "even", "bits": 1950, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m289.json", "m": 289, "world": "dh", "parity": "even", "degree": 289, "seconds": 66.96028439700058, "source": 266, "fourier": 323, "nonreal": 0, "external": 34, "max_error": "1.824657999236609951703715783729198796276"}
+{"event": "isolation_start", "m": 290, "parity": "even", "bits": 1950, "attempt": 0}
+{"event": "isolation_finished", "m": 289, "parity": "odd", "bits": 1945, "seconds": 29.108224611998594}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m289.json", "m": 289, "world": "plant", "parity": "odd", "degree": 288, "seconds": 29.10831709299964, "source": 177, "fourier": 322, "nonreal": 0, "external": 34, "max_error": "1.569086460197261854759780768394009127033"}
+{"event": "isolation_start", "m": 290, "parity": "odd", "bits": 1950, "attempt": 0}
+{"event": "isolation_finished", "m": 289, "parity": "even", "bits": 1945, "seconds": 40.70596689499871}
+{"event": "isolation_finished", "m": 290, "parity": "even", "bits": 1950, "seconds": 24.833516429000156}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m289.json", "m": 289, "world": "plant", "parity": "even", "degree": 289, "seconds": 40.7060344499987, "source": 177, "fourier": 322, "nonreal": 0, "external": 34, "max_error": "1.622910803592575985845800778273161748438"}
+{"event": "isolation_finished", "m": 290, "parity": "odd", "bits": 1950, "seconds": 21.835707285999888}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m290.json", "m": 290, "world": "plant", "parity": "even", "degree": 290, "seconds": 24.833604389001266, "source": 178, "fourier": 323, "nonreal": 0, "external": 34, "max_error": "1.622297490857954911258220565721008992831"}
+{"event": "isolation_start", "m": 291, "parity": "even", "bits": 1955, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m290.json", "m": 290, "world": "plant", "parity": "odd", "degree": 289, "seconds": 21.835815495000134, "source": 178, "fourier": 323, "nonreal": 0, "external": 34, "max_error": "1.567720349507205625481689991652315247946"}
+{"event": "isolation_start", "m": 291, "parity": "even", "bits": 1955, "attempt": 0}
+{"event": "isolation_finished", "m": 290, "parity": "even", "bits": 1950, "seconds": 54.26782101699973}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m290.json", "m": 290, "world": "zeta", "parity": "even", "degree": 290, "seconds": 9.20877370800008, "source": 176, "fourier": 210, "nonreal": 0, "external": 34, "max_error": "5.122505907552041371645803777053087966412e-29"}
+{"event": "isolation_start", "m": 291, "parity": "odd", "bits": 1955, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m290.json", "m": 290, "world": "dh", "parity": "even", "degree": 290, "seconds": 54.26801532799982, "source": 267, "fourier": 324, "nonreal": 0, "external": 34, "max_error": "1.823904515901753754596652565899263916964"}
+{"event": "isolation_finished", "m": 291, "parity": "odd", "bits": 1955, "seconds": 30.94825915600086}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m291.json", "m": 291, "world": "zeta", "parity": "even", "degree": 291, "seconds": 6.557153613000992, "source": 176, "fourier": 211, "nonreal": 0, "external": 35, "max_error": "7.776174958067124623610350076231088784469e-31"}
+{"event": "isolation_start", "m": 292, "parity": "even", "bits": 1960, "attempt": 0}
+{"event": "isolation_finished", "m": 291, "parity": "even", "bits": 1955, "seconds": 76.0237558910012}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m291.json", "m": 291, "world": "plant", "parity": "odd", "degree": 290, "seconds": 30.949299014000644, "source": 178, "fourier": 325, "nonreal": 0, "external": 35, "max_error": "1.566425849498485135326467363390097700871"}
+{"event": "isolation_start", "m": 292, "parity": "odd", "bits": 1960, "attempt": 0}
+{"event": "isolation_finished", "m": 291, "parity": "even", "bits": 1955, "seconds": 74.8469948689999}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m291.json", "m": 291, "world": "dh", "parity": "even", "degree": 291, "seconds": 76.02512844100056, "source": 268, "fourier": 325, "nonreal": 0, "external": 35, "max_error": "1.823569828230946110404283779611459328369"}
+{"event": "isolation_start", "m": 292, "parity": "even", "bits": 1960, "attempt": 0}
+{"event": "isolation_finished", "m": 292, "parity": "even", "bits": 1960, "seconds": 28.108944756999335}
+{"event": "isolation_finished", "m": 292, "parity": "odd", "bits": 1960, "seconds": 24.945917087001362}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m292.json", "m": 292, "world": "dh", "parity": "even", "degree": 292, "seconds": 28.10903671199958, "source": 269, "fourier": 326, "nonreal": 0, "external": 35, "max_error": "1.823105243577189796542029476180379600474"}
+{"event": "isolation_start", "m": 292, "parity": "odd", "bits": 1960, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m292.json", "m": 292, "world": "dh", "parity": "odd", "degree": 291, "seconds": 24.946428394001487, "source": 269, "fourier": 326, "nonreal": 0, "external": 35, "max_error": "1.822975898789202000258049244671335916825"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m291.json", "m": 291, "world": "plant", "parity": "even", "degree": 291, "seconds": 74.84726383400084, "source": 178, "fourier": 325, "nonreal": 0, "external": 35, "max_error": "1.621667800632974110572447476878736194994"}
+{"event": "isolation_start", "m": 293, "parity": "even", "bits": 1965, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m292.json", "m": 292, "world": "zeta", "parity": "even", "degree": 292, "seconds": 5.23516603600001, "source": 177, "fourier": 212, "nonreal": 0, "external": 35, "max_error": "2.361999770886275580522396303123729690433e-30"}
+{"event": "isolation_start", "m": 293, "parity": "odd", "bits": 1965, "attempt": 0}
+{"event": "isolation_finished", "m": 292, "parity": "odd", "bits": 1960, "seconds": 20.961688392000724}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m292.json", "m": 292, "world": "plant", "parity": "odd", "degree": 291, "seconds": 20.962260061000052, "source": 179, "fourier": 326, "nonreal": 0, "external": 35, "max_error": "1.565223649087208396891535356175447748162"}
+{"event": "isolation_start", "m": 293, "parity": "even", "bits": 1965, "attempt": 0}
+{"event": "isolation_finished", "m": 292, "parity": "even", "bits": 1960, "seconds": 45.16920158600078}
+{"event": "isolation_finished", "m": 293, "parity": "odd", "bits": 1965, "seconds": 24.546769353000855}
+{"event": "isolation_finished", "m": 293, "parity": "even", "bits": 1965, "seconds": 42.397948980000365}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m293.json", "m": 293, "world": "dh", "parity": "odd", "degree": 292, "seconds": 24.547063997000805, "source": 270, "fourier": 327, "nonreal": 0, "external": 35, "max_error": "1.820636794608087083292146861747376499558"}
+{"event": "isolation_start", "m": 293, "parity": "odd", "bits": 1965, "attempt": 0}
+{"event": "isolation_finished", "m": 293, "parity": "even", "bits": 1965, "seconds": 21.69228904800002}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m292.json", "m": 292, "world": "plant", "parity": "even", "degree": 292, "seconds": 45.169999953001025, "source": 179, "fourier": 326, "nonreal": 0, "external": 35, "max_error": "1.621018334205573760228744559710447139747"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m293.json", "m": 293, "world": "plant", "parity": "even", "degree": 293, "seconds": 21.692410546000247, "source": 179, "fourier": 327, "nonreal": 0, "external": 35, "max_error": "1.620360452727682676408100771629470346721"}
+{"event": "isolation_start", "m": 294, "parity": "even", "bits": 1970, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m293.json", "m": 293, "world": "dh", "parity": "even", "degree": 293, "seconds": 42.39850126000056, "source": 270, "fourier": 327, "nonreal": 0, "external": 35, "max_error": "1.822012690795890933313481171521721201765"}
+{"event": "isolation_start", "m": 294, "parity": "odd", "bits": 1970, "attempt": 0}
+{"event": "isolation_finished", "m": 293, "parity": "odd", "bits": 1965, "seconds": 22.009680592000223}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m293.json", "m": 293, "world": "plant", "parity": "odd", "degree": 292, "seconds": 22.009794042000067, "source": 179, "fourier": 327, "nonreal": 0, "external": 35, "max_error": "1.564053487206216688864381009036020037097"}
+{"event": "isolation_start", "m": 294, "parity": "even", "bits": 1970, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m293.json", "m": 293, "world": "zeta", "parity": "even", "degree": 293, "seconds": 9.08447658699879, "source": 177, "fourier": 212, "nonreal": 0, "external": 35, "max_error": "5.972639954775181758663888996137094521445e-32"}
+{"event": "isolation_start", "m": 294, "parity": "odd", "bits": 1970, "attempt": 0}
+{"event": "isolation_finished", "m": 294, "parity": "even", "bits": 1970, "seconds": 24.399254539999674}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m294.json", "m": 294, "world": "dh", "parity": "even", "degree": 294, "seconds": 24.399670110000443, "source": 271, "fourier": 328, "nonreal": 0, "external": 35, "max_error": "1.820584880206897683549047704724009192129"}
+{"event": "isolation_finished", "m": 294, "parity": "even", "bits": 1970, "seconds": 25.98679230199923}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m294.json", "m": 294, "world": "zeta", "parity": "even", "degree": 294, "seconds": 5.493563754000206, "source": 178, "fourier": 213, "nonreal": 0, "external": 35, "max_error": "1.486914655518145980161687976278527470858e-30"}
+{"event": "isolation_start", "m": 295, "parity": "even", "bits": 1975, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m294.json", "m": 294, "world": "plant", "parity": "even", "degree": 294, "seconds": 25.987294978000136, "source": 180, "fourier": 328, "nonreal": 0, "external": 35, "max_error": "1.619622535797794253417247893862307202971"}
+{"event": "isolation_start", "m": 295, "parity": "even", "bits": 1975, "attempt": 0}
+{"event": "isolation_finished", "m": 294, "parity": "odd", "bits": 1970, "seconds": 49.058597756999006}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m294.json", "m": 294, "world": "dh", "parity": "odd", "degree": 293, "seconds": 49.05888610999864, "source": 271, "fourier": 328, "nonreal": 0, "external": 35, "max_error": "1.819451245509986554190235904372638178723"}
+{"event": "isolation_start", "m": 295, "parity": "odd", "bits": 1975, "attempt": 0}
+{"event": "isolation_finished", "m": 294, "parity": "odd", "bits": 1970, "seconds": 48.867802982000285}
+{"event": "isolation_finished", "m": 295, "parity": "even", "bits": 1975, "seconds": 27.123222396001438}
+{"event": "isolation_finished", "m": 295, "parity": "even", "bits": 1975, "seconds": 27.41664648799997}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m294.json", "m": 294, "world": "plant", "parity": "odd", "degree": 293, "seconds": 48.868184623999696, "source": 180, "fourier": 328, "nonreal": 0, "external": 35, "max_error": "1.562853528274826833242851558633679207607"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m295.json", "m": 295, "world": "plant", "parity": "even", "degree": 295, "seconds": 27.4172744589996, "source": 181, "fourier": 329, "nonreal": 0, "external": 35, "max_error": "1.618881265560158833325365110297505346096"}
+{"event": "isolation_start", "m": 296, "parity": "even", "bits": 1980, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m295.json", "m": 295, "world": "dh", "parity": "even", "degree": 295, "seconds": 27.123858794000625, "source": 271, "fourier": 330, "nonreal": 0, "external": 35, "max_error": "1.818914741842922269764908001560413540629"}
+{"event": "isolation_start", "m": 296, "parity": "even", "bits": 1980, "attempt": 0}
+{"event": "isolation_finished", "m": 296, "parity": "even", "bits": 1980, "seconds": 22.612243981000574}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m295.json", "m": 295, "world": "zeta", "parity": "even", "degree": 295, "seconds": 9.360090247000699, "source": 179, "fourier": 214, "nonreal": 0, "external": 35, "max_error": "2.020126736295211340388078279128944439375e-29"}
+{"event": "isolation_start", "m": 296, "parity": "odd", "bits": 1980, "attempt": 0}
+{"event": "isolation_finished", "m": 296, "parity": "even", "bits": 1980, "seconds": 23.373212907999914}
+{"event": "isolation_finished", "m": 295, "parity": "odd", "bits": 1975, "seconds": 48.310184596999534}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m296.json", "m": 296, "world": "dh", "parity": "even", "degree": 296, "seconds": 22.61275753799964, "source": 272, "fourier": 331, "nonreal": 0, "external": 35, "max_error": "1.817534387686466622155638964677730574721"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m296.json", "m": 296, "world": "plant", "parity": "even", "degree": 296, "seconds": 23.373362497000926, "source": 181, "fourier": 330, "nonreal": 0, "external": 35, "max_error": "1.618123681980691783814564368676554849738"}
+{"event": "isolation_start", "m": 297, "parity": "even", "bits": 1985, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m295.json", "m": 295, "world": "plant", "parity": "odd", "degree": 294, "seconds": 48.31037712899888, "source": 181, "fourier": 329, "nonreal": 0, "external": 35, "max_error": "1.561710063852696334410717825974234425751"}
+{"event": "isolation_start", "m": 297, "parity": "even", "bits": 1985, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m296.json", "m": 296, "world": "zeta", "parity": "even", "degree": 296, "seconds": 5.3851540710002155, "source": 179, "fourier": 214, "nonreal": 0, "external": 35, "max_error": "1.476581126147083507018212295215326971498e-31"}
+{"event": "isolation_start", "m": 297, "parity": "odd", "bits": 1985, "attempt": 0}
+{"event": "isolation_finished", "m": 297, "parity": "even", "bits": 1985, "seconds": 22.580376817000797}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m297.json", "m": 297, "world": "dh", "parity": "even", "degree": 297, "seconds": 22.581329018999895, "source": 274, "fourier": 332, "nonreal": 0, "external": 35, "max_error": "2.480435303058304887094843269610982784471"}
+{"event": "isolation_finished", "m": 297, "parity": "odd", "bits": 1985, "seconds": 21.879222380999636}
+{"event": "isolation_finished", "m": 296, "parity": "odd", "bits": 1980, "seconds": 44.933609540999896}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m297.json", "m": 297, "world": "plant", "parity": "odd", "degree": 296, "seconds": 21.879321346001234, "source": 182, "fourier": 331, "nonreal": 0, "external": 35, "max_error": "1.559630222333739394596456905367968499736"}
+{"event": "isolation_start", "m": 298, "parity": "even", "bits": 1990, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m297.json", "m": 297, "world": "zeta", "parity": "even", "degree": 297, "seconds": 6.838531163999505, "source": 180, "fourier": 215, "nonreal": 0, "external": 35, "max_error": "2.757979438090590044889554540300315755698e-30"}
+{"event": "isolation_start", "m": 298, "parity": "even", "bits": 1990, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m296.json", "m": 296, "world": "plant", "parity": "odd", "degree": 295, "seconds": 44.93438558900016, "source": 181, "fourier": 330, "nonreal": 0, "external": 35, "max_error": "1.560640048366944775534159042432513507653"}
+{"event": "isolation_start", "m": 298, "parity": "odd", "bits": 1990, "attempt": 0}
+{"event": "isolation_finished", "m": 297, "parity": "even", "bits": 1985, "seconds": 51.722685232}
+{"event": "isolation_finished", "m": 298, "parity": "even", "bits": 1990, "seconds": 28.201562943999306}
+{"event": "isolation_finished", "m": 298, "parity": "even", "bits": 1990, "seconds": 28.296504640999046}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m298.json", "m": 298, "world": "dh", "parity": "even", "degree": 298, "seconds": 28.20165844099938, "source": 274, "fourier": 333, "nonreal": 0, "external": 35, "max_error": "1.816452396036408887859399125782511600081"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m297.json", "m": 297, "world": "plant", "parity": "even", "degree": 297, "seconds": 51.72280546500042, "source": 182, "fourier": 331, "nonreal": 0, "external": 35, "max_error": "1.617342480006777240996381111477567398694"}
+{"event": "isolation_start", "m": 299, "parity": "even", "bits": 1995, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m298.json", "m": 298, "world": "plant", "parity": "even", "degree": 298, "seconds": 28.296590988999014, "source": 183, "fourier": 332, "nonreal": 0, "external": 35, "max_error": "1.616541148575815246810666249354323632903"}
+{"event": "isolation_start", "m": 299, "parity": "even", "bits": 1995, "attempt": 0}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m298.json", "m": 298, "world": "zeta", "parity": "even", "degree": 298, "seconds": 5.422354742000607, "source": 181, "fourier": 216, "nonreal": 0, "external": 35, "max_error": "3.152736481328122272462470814818370940735e-29"}
+{"event": "isolation_start", "m": 299, "parity": "odd", "bits": 1995, "attempt": 0}
+{"event": "isolation_finished", "m": 298, "parity": "odd", "bits": 1990, "seconds": 44.47268824800085}
+{"event": "isolation_finished", "m": 299, "parity": "even", "bits": 1995, "seconds": 25.58727916999851}
+{"event": "isolation_finished", "m": 299, "parity": "odd", "bits": 1995, "seconds": 22.045257382000273}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m298.json", "m": 298, "world": "plant", "parity": "odd", "degree": 297, "seconds": 44.47293210099997, "source": 183, "fourier": 332, "nonreal": 0, "external": 35, "max_error": "1.558648616666174528346635494451053006447"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m299.json", "m": 299, "world": "plant", "parity": "even", "degree": 299, "seconds": 25.58748605799883, "source": 184, "fourier": 333, "nonreal": 0, "external": 35, "max_error": "1.615730808294681940996670139621522432227"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m299.json", "m": 299, "world": "plant", "parity": "odd", "degree": 298, "seconds": 22.04533165600151, "source": 184, "fourier": 333, "nonreal": 0, "external": 35, "max_error": "1.557668209555378689825206381139404675329"}
+{"event": "isolation_finished", "m": 299, "parity": "even", "bits": 1995, "seconds": 46.17451990600057}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m299.json", "m": 299, "world": "dh", "parity": "even", "degree": 299, "seconds": 46.17554977799955, "source": 275, "fourier": 333, "nonreal": 0, "external": 35, "max_error": "1.816180779883382562442969268369991212464"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_even_m299.json", "m": 299, "world": "zeta", "parity": "even", "degree": 299, "seconds": 10.511419462000049, "source": 182, "fourier": 217, "nonreal": 0, "external": 35, "max_error": "2.754770712473358204927459748102961749491e-29"}
+{"status": "BATCH_FINISHED", "jobs": 71}
+{"summary_rows": 3321, "matching_rows": 622932, "replay_rows": 159614, "coverage": {"dh": {"even": 285, "odd": 105}, "plant": {"even": 285, "odd": 141}, "zeta": {"even": 285, "odd": 6}}}
+{"sweep": 1, "source_cells": 855, "resolved_even_cells": 855, "unresolved_even_cells": [], "pending_root_cells": [], "pending_root_count": 0, "expected_source_cells": 855, "last_batch_exit": 0, "sweep_seconds": 861.5404832730001, "status": "FINISHED_ALL_SOURCE_CELLS"}

@@ -1,0 +1,12 @@
+{
+  "status": "PASS_FRESH_LOSSLESS_ARCHIVE_RESTORE",
+  "archive_sha256": "cf4dbb63271aa27b079b650b64d30a2e9c59150ef334411dcc3fcb963b6e8755",
+  "archive_manifest_sha256": "151472fd400a4962801f928cc79f98967f35f68bf29771fc91b5d75867bcafea",
+  "unpack_script_sha256": "8964b60a26efcfcf65faf77f5f70673ec791f7b004c8cedfa3c6356a1ccc24b3",
+  "parts": 244,
+  "members": 1977,
+  "raw_bytes": 2001624958,
+  "fresh_destination": "/tmp/ground_fresh_restore",
+  "wall_seconds": 38.107909903999825,
+  "checks": "Every part, whole compressed stream and every restored file checked by size/SHA256; archive path/member guards active"
+}

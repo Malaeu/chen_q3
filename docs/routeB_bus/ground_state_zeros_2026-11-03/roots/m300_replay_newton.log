@@ -1,0 +1,14 @@
+{"jobs": 5, "workers": 1}
+{"event": "isolation_start", "m": 300, "parity": "even", "bits": 2000, "attempt": 0}
+{"event": "isolation_finished", "m": 300, "parity": "even", "bits": 2000, "seconds": 31.320304300000316}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_even_m300.json", "m": 300, "world": "dh", "parity": "even", "degree": 300, "seconds": 31.32042910400014, "source": 276, "fourier": 335, "nonreal": 0, "external": 36, "max_error": "1.815481789469524954529163008597394809489"}
+{"event": "isolation_start", "m": 300, "parity": "odd", "bits": 2000, "attempt": 0}
+{"event": "isolation_finished", "m": 300, "parity": "odd", "bits": 2000, "seconds": 34.53545904800012}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m300.json", "m": 300, "world": "dh", "parity": "odd", "degree": 299, "seconds": 34.53565073400023, "source": 276, "fourier": 335, "nonreal": 0, "external": 36, "max_error": "1.814906686465312367196341731943163009098"}
+{"event": "isolation_start", "m": 300, "parity": "even", "bits": 2000, "attempt": 0}
+{"event": "isolation_finished", "m": 300, "parity": "even", "bits": 2000, "seconds": 37.876878271999885}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_even_m300.json", "m": 300, "world": "plant", "parity": "even", "degree": 300, "seconds": 37.877077327999814, "source": 185, "fourier": 335, "nonreal": 0, "external": 36, "max_error": "1.614920491047075681980535161465336824471"}
+{"event": "isolation_start", "m": 300, "parity": "odd", "bits": 2000, "attempt": 0}
+{"event": "isolation_finished", "m": 300, "parity": "odd", "bits": 2000, "seconds": 33.673807662999934}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m300.json", "m": 300, "world": "plant", "parity": "odd", "degree": 299, "seconds": 33.67397046999986, "source": 185, "fourier": 335, "nonreal": 0, "external": 36, "max_error": "1.556665407992922175381925446289461312468"}
+{"status": "BATCH_FINISHED", "jobs": 5}

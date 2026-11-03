@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "control": "even_single_mode_m16",
+      "expected_degree": 16,
+      "observed_count": 16,
+      "max_u_error": "6.91606943260400948693631880505e-1678",
+      "bits": 700,
+      "degree": 16,
+      "isolated_count": 16,
+      "seconds": 0.01494939499980319,
+      "prior_failures": []
+    },
+    {
+      "control": "odd_single_mode_m16",
+      "expected_degree": 15,
+      "observed_count": 15,
+      "max_u_error": "2.34966606199242515481764424085e-1682",
+      "bits": 700,
+      "degree": 15,
+      "isolated_count": 15,
+      "seconds": 0.03160997699978907,
+      "prior_failures": []
+    },
+    {
+      "control": "even_single_mode_m64",
+      "expected_degree": 64,
+      "observed_count": 64,
+      "max_u_error": "6.79439925963028274319211531355e-1277",
+      "bits": 820,
+      "degree": 64,
+      "isolated_count": 64,
+      "seconds": 0.25879721899991637,
+      "prior_failures": []
+    },
+    {
+      "control": "manufactured_mixed_m16",
+      "expected_degree": 16,
+      "observed_count": 16,
+      "real_positive": 13,
+      "pure_imaginary": 1,
+      "nonreal": 2,
+      "max_u_error": "2.04128152598478183127259193653e-202",
+      "max_direct_F_at_expected": "5.22568070652104148805783535753e-200",
+      "bits": 700,
+      "degree": 16,
+      "isolated_count": 16,
+      "seconds": 0.009252988000298501,
+      "prior_failures": []
+    }
+  ],
+  "scope": "Manufactured finite coefficients and known polynomial roots; validates indexing, parity, real/imaginary/complex separation and complete degree accounting. Does not validate spectral ground-vector accuracy."
+}

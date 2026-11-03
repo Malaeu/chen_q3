@@ -1,0 +1,47 @@
+{
+  "events": [
+    {
+      "at_utc": "2026-11-03T17:36:52.082814+00:00",
+      "event": "root_pool_reduced_and_ACK_sent",
+      "root_workers": 1,
+      "source_workers": "third source worker authorized after root ACK; exact source scheduling receipt owned by spectra",
+      "command": "watch.py --workers 1 --defer-aggregate",
+      "log": "watch_tail.log",
+      "scope": "Scheduling and I/O only; frozen numerical producer and helper unchanged. Completed current-SHA artifacts preserved; at most two in-flight cells restarted.",
+      "producer_sha256": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854",
+      "helper_sha256": "6cb9dfbb1f1ad1a2747799004ada512d49af296175221f85ccef50780d9ebbe2"
+    },
+    {
+      "at_utc": "2026-11-03T17:38:52.032978+00:00",
+      "event": "spectra_confirms_three_source_lanes",
+      "root_workers": 1,
+      "source_workers": 3,
+      "source_partition": "early parity owners through m291; late owner m292..299; m300 pilot preserved",
+      "source_snapshot_cells": 792,
+      "source_logs": [
+        "spectra/tail_even.log",
+        "spectra/tail_odd.log",
+        "spectra/tail_late.log"
+      ],
+      "scope": "Pure scheduling; exclusive source role/cell claims. Producer/helper scientific code unchanged."
+    },
+    {
+      "at_utc": "2026-11-03T17:58:33.163731+00:00",
+      "event": "source_even_and_odd_complete_root_pool_raised",
+      "root_workers": 3,
+      "source_workers": 1,
+      "source_owner_pid_reported_by_spectra": 7411,
+      "log": "watch_drain3.log",
+      "scope": "Pure scheduling; source agent verified both early owners exited, only late owner remains. Frozen numerical code unchanged; current-SHA completed artifacts preserved."
+    },
+    {
+      "at_utc": "2026-11-03T18:03:27.707763+00:00",
+      "event": "all_source_owners_exited_root_pool_raised",
+      "root_workers": 4,
+      "source_workers": 0,
+      "source_cells": 855,
+      "log": "watch_drain4.log",
+      "scope": "Source agent verified late marker and PID7411 exit; all855 source cells resolved and FINAL_CHECKS complete. Only scheduling changed; completed roots immutable."
+    }
+  ]
+}

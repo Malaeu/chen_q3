@@ -1,0 +1,11 @@
+{
+  "world": "dh",
+  "m": 295,
+  "parity": "even",
+  "cpu_seconds": 41.75321644300004,
+  "wall_seconds": 43.06432903700079,
+  "source_vector_sha256": "6e4639114be3b7324cb8249a19df6903463b4cb4637a43365ff94d4ee3df7d7c",
+  "census_producer_sha256": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854",
+  "batch_wrapper_sha256": "b7b030170e96f7a447c07667adc597d98b45ae1c3e22d083d3b30d4a09923571",
+  "scope": "Observed runtime for an ordinary authorized cell, not a benchmark or numerical method change."
+}

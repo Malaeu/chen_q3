@@ -1,0 +1,38 @@
+{
+  "m": 40,
+  "source_bits": 624,
+  "solver_bits": 600,
+  "rows": [
+    {
+      "world": "zeta",
+      "parity": "even",
+      "bitwise_equal_eigenpairs": true
+    },
+    {
+      "world": "zeta",
+      "parity": "odd",
+      "bitwise_equal_eigenpairs": true
+    },
+    {
+      "world": "dh",
+      "parity": "even",
+      "bitwise_equal_eigenpairs": true
+    },
+    {
+      "world": "dh",
+      "parity": "odd",
+      "bitwise_equal_eigenpairs": true
+    },
+    {
+      "world": "plant",
+      "parity": "even",
+      "bitwise_equal_eigenpairs": true
+    },
+    {
+      "world": "plant",
+      "parity": "odd",
+      "bitwise_equal_eigenpairs": true
+    }
+  ],
+  "scope": "Exact binary base16 source serialization matches decimal roundtrip eigenvalues/eigenvectors/bisection widths bit-for-bit for all world/parity blocks"
+}

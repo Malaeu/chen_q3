@@ -1,0 +1,14 @@
+{
+  "binary_omissions": [
+    {
+      "path": "spectra/loweig",
+      "reason": "Compiled executable; exact C sources and producer hashes retained"
+    },
+    {
+      "path": "spectra/loweig_unfused",
+      "reason": "Compiled executable; exact C sources and producer hashes retained"
+    }
+  ],
+  "generated_cache_policy": "Python caches and transient .tmp files omitted",
+  "raw_scientific_data": "All raw archive members retained losslessly; archive manifest enumerates them"
+}

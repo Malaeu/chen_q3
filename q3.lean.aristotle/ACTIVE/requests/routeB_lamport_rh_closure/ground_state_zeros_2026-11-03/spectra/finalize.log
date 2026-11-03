@@ -1,0 +1,24 @@
+{
+  "expected_world_cells": 855,
+  "completed_world_cells": 855,
+  "completed_integer_m": 285,
+  "status_counts": {
+    "RESOLVED_NUMERICAL_GROUND": 855
+  },
+  "global_parity_counts": {
+    "zeta": {
+      "even": 285
+    },
+    "dh": {
+      "even": 184,
+      "odd": 101
+    },
+    "plant": {
+      "even": 146,
+      "odd": 139
+    }
+  },
+  "unresolved": [],
+  "certificate": false
+}
+FINAL COMPLETE

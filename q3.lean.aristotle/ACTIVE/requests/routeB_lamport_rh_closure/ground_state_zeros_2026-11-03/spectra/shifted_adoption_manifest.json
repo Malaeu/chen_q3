@@ -1,0 +1,29 @@
+{
+  "status": "ADOPTED_LOW_ZETA_VALIDATION_ONLY",
+  "scope": "LOW zeta ground only; HIGH full native ordering unchanged; LOW lambda1/vector1 not computed in refinement mode; explicit native fallback on any refinement rejection",
+  "work_bits": "ACTUAL_LOW_SOLVER_BITS+72",
+  "hashes": {
+    "run.py": "d345ada2796940643aa5bdec87faa60b40cb41d632458e6e7271ce8924e1b0fa",
+    "run_shifted_candidate.py": "b9986ea5e1dc66e5dc4c7b49daa330814a52205c2f08d8df8cd83872a8d8665f",
+    "shifted_low_candidate.py": "0270354e1c1aac059408728f38748387446b318cef87c3f939996af3707e6bdb",
+    "loweig.c": "c0658c6064c64481e11c2b1eb6982edb8ddbdfcc6773772e8501624be34eed66",
+    "analytic_source.py": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63"
+  },
+  "independent_control_receipt": "../review/shifted_low_review.json",
+  "source_unchanged": true,
+  "prior_driver_sha256": "d345ada2796940643aa5bdec87faa60b40cb41d632458e6e7271ce8924e1b0fa",
+  "production_driver_sha256": "b9986ea5e1dc66e5dc4c7b49daa330814a52205c2f08d8df8cd83872a8d8665f",
+  "completed_world_cells_preserved": 690,
+  "terminated_inflight_parents": [
+    3716,
+    3726
+  ],
+  "terminated_inflight_children": [
+    6094,
+    6095
+  ],
+  "review_receipt": "../review/shifted_low_final_review.json",
+  "HIGH_unchanged": true,
+  "native_executable_unchanged": true,
+  "time": 1793725305.4596262
+}

@@ -1,0 +1,11 @@
+{
+  "status": "NO_MISMATCHES_ON_TESTED_GRID",
+  "scope": "Exploratory finite check seeded by first transitions; not independent preregistration, arithmetic discriminator or proof",
+  "mismatches": {
+    "zeta": [],
+    "dh": [],
+    "plant": []
+  },
+  "source_CSV_sha256": "85f01e3a6d711f305360bf9ef94a360c1322a2e75668b7d3963c834723c50345",
+  "root_CSV_sha256": "5348fa39e0d68a5a1c7a3809e3ff59d718f9ec201cfd0dd8498d654937f81e96"
+}

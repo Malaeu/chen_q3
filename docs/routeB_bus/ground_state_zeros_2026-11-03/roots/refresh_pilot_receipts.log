@@ -1,0 +1,9 @@
+{"jobs": 5, "workers": 1}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m24.json", "m": 24, "world": "dh", "parity": "odd", "degree": 23, "seconds": 0.018248460999984673, "source": 25, "fourier": 25, "nonreal": 0, "external": 4, "max_error": "0.8137264622687798418542951375718629006248"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/plant_odd_m24.json", "m": 24, "world": "plant", "parity": "odd", "degree": 23, "seconds": 0.02020934300026056, "source": 13, "fourier": 27, "nonreal": 0, "external": 4, "max_error": "2.900151562523324199393907960429434900335"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_odd_m24.json", "m": 24, "world": "zeta", "parity": "odd", "degree": 23, "seconds": 0.41047853300005954, "source": 11, "fourier": 15, "nonreal": 0, "external": 4, "max_error": "0.000000007649404730705311270287386630349329638178"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/dh_odd_m40.json", "m": 40, "world": "dh", "parity": "odd", "degree": 39, "seconds": 2.493249350000042, "source": 40, "fourier": 41, "nonreal": 0, "external": 6, "max_error": "0.9262691689581259153217504736247048999272"}
+{"event": "isolation_retry", "m": 40, "parity": "odd", "bits": 700, "error": "roots() failed to converge: insufficient precision, or squareful input"}
+{"event": "isolation_retry", "m": 40, "parity": "odd", "bits": 700, "error": "roots() failed to converge: insufficient precision, or squareful input"}
+{"file": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/roots/results/zeta_odd_m40.json", "m": 40, "world": "zeta", "parity": "odd", "degree": 39, "seconds": 13.778270233000057, "source": 20, "fourier": 26, "nonreal": 0, "external": 6, "max_error": "0.000000001202053169458059500575772477129810782347"}
+{"status": "BATCH_FINISHED", "jobs": 5}

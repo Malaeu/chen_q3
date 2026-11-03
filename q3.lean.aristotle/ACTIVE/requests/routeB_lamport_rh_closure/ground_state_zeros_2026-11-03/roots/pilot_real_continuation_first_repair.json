@@ -1,0 +1,38 @@
+{
+  "rows": [
+    {
+      "world": "zeta",
+      "parity": "even",
+      "m": 190,
+      "status": "FALLBACK_REQUIRED",
+      "error": "ContinuationUnavailable('More than four missing continued roots')",
+      "seconds": 0.9349813970002288
+    },
+    {
+      "world": "dh",
+      "parity": "even",
+      "m": 190,
+      "status": "FALLBACK_REQUIRED",
+      "error": "ContinuationUnavailable('More than four missing continued roots')",
+      "seconds": 2.087855175000186
+    },
+    {
+      "world": "plant",
+      "parity": "even",
+      "m": 190,
+      "status": "FALLBACK_REQUIRED",
+      "error": "ContinuationUnavailable('More than four missing continued roots')",
+      "seconds": 1.998675576000096
+    }
+  ],
+  "scope": "Bounded 30 CPU pilot against stored complete full-isolation root sets. No bulk adoption yet.",
+  "fresh_full_timing_control": {
+    "world": "zeta",
+    "parity": "even",
+    "m": 190,
+    "cpu_seconds": 7.918566444,
+    "seconds": 10.406503385000178
+  },
+  "repair_budget_cpu_seconds": 20,
+  "total_initial_plus_repair_cpu_budget": 30
+}

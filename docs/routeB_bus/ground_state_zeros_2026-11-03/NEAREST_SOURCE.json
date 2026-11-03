@@ -1,0 +1,93 @@
+{
+  "status": "COMPLETE_TIE_INDEPENDENT_NEAREST_SOURCE_DIAGNOSTIC",
+  "physical_cases": 1107,
+  "global_cases": 855,
+  "precision_dps": 200,
+  "CPU_seconds": 24.419416387,
+  "method": "MP sorted-real-root neighbor search, one source at a time; many-to-one, not injective; source and candidate positive heights below primary T, abs(Im)<1/2",
+  "references": {
+    "zeta": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/zeta_zeros.csv",
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+      "decimal_reference_floor": 160,
+      "plant_pair": null
+    },
+    "dh": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/dh_zeros_900_200dps.json",
+      "sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846",
+      "decimal_reference_floor": 200,
+      "plant_pair": null
+    },
+    "plant": {
+      "path": "/workspace/chen_q3/docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/zeta_zeros.csv",
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+      "decimal_reference_floor": 160,
+      "plant_pair": "2*pi/log(2) +/- i/4"
+    }
+  },
+  "script_sha256": "4406980362c3c6bbcbce3fb16a97060c5d6be6339d8ad3c1b3c8c2acdca052b9",
+  "csv_sha256": "d8db06a44c045786eb1269b7d8de5070dbefcefb4b51d5ce05bdc6b07553ebc3",
+  "m300_global": [
+    {
+      "world": "dh",
+      "m": 300,
+      "parity": "odd",
+      "is_global": true,
+      "source_count": 276,
+      "T": "370.179625093129077124924491512",
+      "numerator_candidate_count": 299,
+      "numerator_max_nearest_distance": "38.59179070539569194822581476493327621416",
+      "numerator_max_nearest_over_T": "0.10425152571724292921122724932",
+      "numerator_source_close_1e_2": 7,
+      "numerator_source_close_1e_6": 0,
+      "numerator_source_close_1e_12": 0,
+      "full_transform_candidate_count": 335,
+      "full_transform_max_nearest_distance": "0.5305636096844175169729492802196097726749",
+      "full_transform_max_nearest_over_T": "0.00143325989254794708352678926293",
+      "full_transform_source_close_1e_2": 8,
+      "full_transform_source_close_1e_6": 0,
+      "full_transform_source_close_1e_12": 0
+    },
+    {
+      "world": "plant",
+      "m": 300,
+      "parity": "odd",
+      "is_global": true,
+      "source_count": 185,
+      "T": "370.179625093129077124924491512",
+      "numerator_candidate_count": 299,
+      "numerator_max_nearest_distance": "39.93684815188092656422148865894154516385",
+      "numerator_max_nearest_over_T": "0.107885052133362799812299353123",
+      "numerator_source_close_1e_2": 12,
+      "numerator_source_close_1e_6": 0,
+      "numerator_source_close_1e_12": 0,
+      "full_transform_candidate_count": 335,
+      "full_transform_max_nearest_distance": "0.5371899843972809639529686661406665505076",
+      "full_transform_max_nearest_over_T": "0.00145116032321372561305006254892",
+      "full_transform_source_close_1e_2": 12,
+      "full_transform_source_close_1e_6": 0,
+      "full_transform_source_close_1e_12": 0
+    },
+    {
+      "world": "zeta",
+      "m": 300,
+      "parity": "even",
+      "is_global": true,
+      "source_count": 183,
+      "T": "370.179625093129077124924491512",
+      "numerator_candidate_count": 183,
+      "numerator_max_nearest_distance": "3.46267806703879266141923299941541542019e-29",
+      "numerator_max_nearest_over_T": "9.35404823041694631988043573365e-32",
+      "numerator_source_close_1e_2": 183,
+      "numerator_source_close_1e_6": 183,
+      "numerator_source_close_1e_12": 183,
+      "full_transform_candidate_count": 219,
+      "full_transform_max_nearest_distance": "3.46267806703879266141923299941541542019e-29",
+      "full_transform_max_nearest_over_T": "9.35404823041694631988043573365e-32",
+      "full_transform_source_close_1e_2": 183,
+      "full_transform_source_close_1e_6": 183,
+      "full_transform_source_close_1e_12": 183
+    }
+  ],
+  "scope": "Frozen decimal polynomial roots and supplied numerical source census, not an exact-source eigenvector certificate"
+}

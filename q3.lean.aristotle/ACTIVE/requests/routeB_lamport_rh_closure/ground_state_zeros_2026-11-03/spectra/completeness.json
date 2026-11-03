@@ -1,0 +1,33 @@
+{
+  "expected_world_cells": 855,
+  "completed_world_cells": 855,
+  "completed_integer_m": 285,
+  "missing": [],
+  "status_counts": {
+    "RESOLVED_NUMERICAL_GROUND": 855
+  },
+  "global_parity_counts": {
+    "zeta": {
+      "even": 285
+    },
+    "dh": {
+      "even": 184,
+      "odd": 101
+    },
+    "plant": {
+      "even": 146,
+      "odd": 139
+    }
+  },
+  "unresolved": [],
+  "source_hashes": {
+    "source_50777d4.py": [
+      "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7",
+      "babb96a09e85073c364e7b2785dd10811d77b2d1fe63e9bceb1b7cb632956549"
+    ],
+    "analytic_source.py": [
+      "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63"
+    ]
+  },
+  "certificate": false
+}

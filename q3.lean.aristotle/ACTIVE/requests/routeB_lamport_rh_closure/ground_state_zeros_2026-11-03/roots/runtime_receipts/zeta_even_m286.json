@@ -1,0 +1,11 @@
+{
+  "world": "zeta",
+  "m": 286,
+  "parity": "even",
+  "cpu_seconds": 22.602796791000003,
+  "wall_seconds": 22.715694782000355,
+  "source_vector_sha256": "42572c1e983cc8684e44237d811361688de0a41d81b053b0a9f1fb55848f533d",
+  "census_producer_sha256": "8764b3b41577105a4c5779eb0d818fbd3cb8666c80c390ed704e84c2733c6854",
+  "batch_wrapper_sha256": "b7b030170e96f7a447c07667adc597d98b45ae1c3e22d083d3b30d4a09923571",
+  "scope": "Observed runtime for an ordinary authorized cell, not a benchmark or numerical method change."
+}

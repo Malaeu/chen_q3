@@ -1,0 +1,52 @@
+{
+  "status": "COMPLETE_855_NUMERICAL_GROUND_CELLS",
+  "world_cells": 855,
+  "integer_m_count": 285,
+  "worlds": [
+    "zeta",
+    "dh",
+    "plant"
+  ],
+  "integer_range": [
+    16,
+    300
+  ],
+  "source_hashes": {
+    "source_50777d4.py": [
+      "babb96a09e85073c364e7b2785dd10811d77b2d1fe63e9bceb1b7cb632956549",
+      "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7"
+    ],
+    "analytic_source.py": [
+      "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63"
+    ]
+  },
+  "producer_hashes": [
+    "3dd1c137049f94a12cee66cd94fb38168a2fcb7cf4e86f095993828ec102cb0f",
+    "c0658c6064c64481e11c2b1eb6982edb8ddbdfcc6773772e8501624be34eed66"
+  ],
+  "python_producer_hashes": {
+    "shifted_low_candidate.py": [
+      "0270354e1c1aac059408728f38748387446b318cef87c3f939996af3707e6bdb"
+    ],
+    "run.py": [
+      "b9986ea5e1dc66e5dc4c7b49daa330814a52205c2f08d8df8cd83872a8d8665f"
+    ]
+  },
+  "pinned_source_EOF_newline_normalization": {
+    "babb96a09e85073c364e7b2785dd10811d77b2d1fe63e9bceb1b7cb632956549": {
+      "terminal_LF_count": 2,
+      "canonical_one_LF_sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7"
+    },
+    "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7": {
+      "terminal_LF_count": 1,
+      "canonical_one_LF_sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7"
+    }
+  },
+  "max_unit_norm_square_error": "4.6716702130733380348127766513062618305147765010243524314985819200551169258512520152510810170229338237570344591511212886329425404226663376891787075283548741598692830822388e-118",
+  "minimum_absolute_low_high_ground_inner_product": "0.99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999998679976391000619272148344788744676966174671808787428",
+  "minimum_empirical_global_gap_error_ratio": "410829331255189829544204525775188986949402901691743531328973.6103519957106799371049213328408786503157596576841294685585343282978338293238006151809249544221946744696226146591556145522332093880917049111232050907751837130006428217",
+  "all_stored_ground_vectors_and_gaps_checked": true,
+  "all_cells_resolved": true,
+  "certificate": false,
+  "checks_scope": "coverage, dimensions, source hash uniformity, producer archives, unit norms, projectors, stored gaps, and reported gap/error dominance; no redundant source/eigenvalue rerun"
+}
