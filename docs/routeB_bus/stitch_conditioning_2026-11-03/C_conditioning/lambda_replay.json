@@ -1,0 +1,1652 @@
+[
+  {
+    "world": "plant",
+    "m": 120,
+    "source": "matrices/mp_escalation/mp_cell_plant_m120_dps100_GL128.json",
+    "sha256": "3b5a49569bf25a2c12ea773ecd123919331122ff3f60631f65339f03bda1f32a"
+  },
+  {
+    "world": "zeta",
+    "m": 50,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m50_dps100_GL128.json",
+    "sha256": "9839928c510d9b40c3ee79a651259d01b8af584f8fb18505df13ce01a73a38ca"
+  },
+  {
+    "world": "plant",
+    "m": 40,
+    "source": "matrices/mp_escalation/mp_cell_plant_m40_dps100_GL128.json",
+    "sha256": "520708f4ab042ed8d814d0422bf09987edb8d67e1a74d3e740bf793f70ab2221"
+  },
+  {
+    "world": "plant",
+    "m": 37,
+    "source": "matrices/mp_escalation/mp_cell_plant_m37_dps100_GL128.json",
+    "sha256": "c602b97ba53fc494b9a74e6ace6fa6b889e9409c0c9f465aee408528dda26f44"
+  },
+  {
+    "world": "plant",
+    "m": 119,
+    "source": "matrices/mp_escalation/mp_cell_plant_m119_dps100_GL128.json",
+    "sha256": "9c570c6cd96e22fffc0c9be30dddb6dfa812294d533ef80cf9b2d0a2682a263b"
+  },
+  {
+    "world": "zeta",
+    "m": 48,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m48_dps100_GL128.json",
+    "sha256": "164782db27a18c6b4f6641e5ed8e2991f8bdb4eb8cca6168464a572b40670280"
+  },
+  {
+    "world": "plant",
+    "m": 27,
+    "source": "matrices/mp_escalation/mp_cell_plant_m27_dps100_GL128.json",
+    "sha256": "a61ddfc4bbfb76c04fe65741e1b7ae74820918aa8ecb08e4ddfe85690ee7998e"
+  },
+  {
+    "world": "zeta",
+    "m": 117,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m117_dps100_GL128.json",
+    "sha256": "6e58de0c56eced6a418792cd81fbd69f05a8d8ca836ca96359e43bf041b423ff"
+  },
+  {
+    "world": "plant",
+    "m": 117,
+    "source": "matrices/mp_escalation/mp_cell_plant_m117_dps100_GL128.json",
+    "sha256": "8906c29b6a20f70608360976d2ed1979665b705cfb54b39541811c443fd51b98"
+  },
+  {
+    "world": "plant",
+    "m": 84,
+    "source": "matrices/mp_escalation/mp_cell_plant_m84_dps100_GL128.json",
+    "sha256": "4a039fb1acd2a903e724ef998e6d56b08a43360e7d662ee153c4ee0d03bee8ee"
+  },
+  {
+    "world": "zeta",
+    "m": 100,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m100_dps100_GL128.json",
+    "sha256": "8db68015853b813cb5387c4bfcd0978652fe94e208ae87fcc6078549c9e93691"
+  },
+  {
+    "world": "zeta",
+    "m": 111,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m111_dps100_GL128.json",
+    "sha256": "798ccf0b73e8b182040090988835a6d0ef67a61e4a30bb7ebbea2002f29aea29"
+  },
+  {
+    "world": "zeta",
+    "m": 57,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m57_dps100_GL128.json",
+    "sha256": "6d8f303037416c80a7d8027d5047bd18a7550a51bc0e4014b3ae2f20850f5101"
+  },
+  {
+    "world": "plant",
+    "m": 16,
+    "source": "matrices/mp_escalation/mp_cell_plant_m16_dps100_GL128.json",
+    "sha256": "c70b130754255e5176e9d47691173272b1cbfe1219d56db56c0262840ae15153"
+  },
+  {
+    "world": "plant",
+    "m": 118,
+    "source": "matrices/mp_escalation/mp_cell_plant_m118_dps100_GL128.json",
+    "sha256": "2e56863a445e2aedca8eaa1cea568daec15da6d8a15556df4923ca5001c8e41c"
+  },
+  {
+    "world": "zeta",
+    "m": 84,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m84_dps100_GL128.json",
+    "sha256": "01423e8704519ce8acd9e5e34ff30029700b69db1ec6ff18c25a898716a4fbfa"
+  },
+  {
+    "world": "plant",
+    "m": 73,
+    "source": "matrices/mp_escalation/mp_cell_plant_m73_dps100_GL128.json",
+    "sha256": "a629eeed80f9e28a8e8cfc673f76a40c91e63b89f0ea1f0a4245b921a4020542"
+  },
+  {
+    "world": "plant",
+    "m": 85,
+    "source": "matrices/mp_escalation/mp_cell_plant_m85_dps100_GL128.json",
+    "sha256": "c49ff39e3ab19c16e034e7f338aabb89c5ea4afe8814e2e912727af6e43b09fb"
+  },
+  {
+    "world": "plant",
+    "m": 116,
+    "source": "matrices/mp_escalation/mp_cell_plant_m116_dps100_GL128.json",
+    "sha256": "a24c1ad62ee15dac2430e58c79d0ba85b895f3acc3123135837be7e30a15288c"
+  },
+  {
+    "world": "plant",
+    "m": 93,
+    "source": "matrices/mp_escalation/mp_cell_plant_m93_dps100_GL128.json",
+    "sha256": "5b88a90a4624926832e74186b33c044dcdd8d94c1aa1361e317d1b40fd9ff9ea"
+  },
+  {
+    "world": "plant",
+    "m": 41,
+    "source": "matrices/mp_escalation/mp_cell_plant_m41_dps100_GL128.json",
+    "sha256": "dc4036b7864f22d035f5dd2466e7eaa9021cf4ce7a248f18a6df22d4bb621ef8"
+  },
+  {
+    "world": "zeta",
+    "m": 22,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m22_dps100_GL128.json",
+    "sha256": "045cafc8eb9784b1a48e550e421ec69311504d2b6b8bf16eaddf789853c1a08b"
+  },
+  {
+    "world": "plant",
+    "m": 47,
+    "source": "matrices/mp_escalation/mp_cell_plant_m47_dps100_GL128.json",
+    "sha256": "6000251da7ac615545bf642c6666a4313bade254ce95143f5171fa09ebaadcee"
+  },
+  {
+    "world": "zeta",
+    "m": 70,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m70_dps100_GL128.json",
+    "sha256": "b5ad277c5e4e60d1757fcc06961ddc873c437d9fd384792ea50bca543bfbca58"
+  },
+  {
+    "world": "zeta",
+    "m": 52,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m52_dps100_GL128.json",
+    "sha256": "863069c842ef2c4796ad88755c9f5e8b0cd20f462c4f4255eb958edc9f0a676d"
+  },
+  {
+    "world": "plant",
+    "m": 59,
+    "source": "matrices/mp_escalation/mp_cell_plant_m59_dps100_GL128.json",
+    "sha256": "0b0682a168f14f1859355d27116737e262af0c08fd59106be17688223fc4bd5f"
+  },
+  {
+    "world": "plant",
+    "m": 35,
+    "source": "matrices/mp_escalation/mp_cell_plant_m35_dps100_GL128.json",
+    "sha256": "62cf3c8c7b164656cda8d9dac17f057472a029b5c8682b72e37a718459101ac3"
+  },
+  {
+    "world": "plant",
+    "m": 17,
+    "source": "matrices/mp_escalation/mp_cell_plant_m17_dps100_GL128.json",
+    "sha256": "8ab72d1dab1656b5d871abda8b1e311abbf26fd74d621e7c368c0c8adf5d65ec"
+  },
+  {
+    "world": "plant",
+    "m": 32,
+    "source": "matrices/mp_escalation/mp_cell_plant_m32_dps100_GL128.json",
+    "sha256": "ed650063be8e7ceb8828b33e4eb6f92695d8cfd889833ba447aacb7b3cbc166a"
+  },
+  {
+    "world": "zeta",
+    "m": 32,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m32_dps100_GL128.json",
+    "sha256": "bc8fd25fb531d9763e57037e85a0ff35ae3a3698aebb515db45c7285fddaa302"
+  },
+  {
+    "world": "zeta",
+    "m": 36,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m36_dps100_GL128.json",
+    "sha256": "cad2d22bc89685d7a5f755982ba695f069136a619ac75aae5cda7a663961a837"
+  },
+  {
+    "world": "zeta",
+    "m": 119,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m119_dps100_GL128.json",
+    "sha256": "da7e82292253a0ed0a5024032800af8bb5c4dacf8a31efbc8ce7b47f3848d0a2"
+  },
+  {
+    "world": "zeta",
+    "m": 28,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m28_dps100_GL128.json",
+    "sha256": "c495fdc37d3415fe1f6082a57cd2cf059766b1ec982d3d3500c5c6926a62e1bd"
+  },
+  {
+    "world": "plant",
+    "m": 46,
+    "source": "matrices/mp_escalation/mp_cell_plant_m46_dps100_GL128.json",
+    "sha256": "ddd9a6cb956d83d18b302bc31710ec01c3dff32b3154aa7341e1e5614b19abf5"
+  },
+  {
+    "world": "zeta",
+    "m": 61,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m61_dps100_GL128.json",
+    "sha256": "981ffed6b3866cc5381cd935e5d9f0e18eefa5bc19f254f68de2f48e7e8e9fe1"
+  },
+  {
+    "world": "plant",
+    "m": 76,
+    "source": "matrices/mp_escalation/mp_cell_plant_m76_dps100_GL160.json",
+    "sha256": "2af935dfadecee00d86db00eb2cef2afcc608145aad0401547ec7ee4d6d5af6d"
+  },
+  {
+    "world": "plant",
+    "m": 36,
+    "source": "matrices/mp_escalation/mp_cell_plant_m36_dps100_GL128.json",
+    "sha256": "103ab5263305f9e8664427d7780364304b47aad42020d8a7621b3ddc0e26df42"
+  },
+  {
+    "world": "plant",
+    "m": 80,
+    "source": "matrices/mp_escalation/mp_cell_plant_m80_dps100_GL128.json",
+    "sha256": "17678c2318c1925cf387aaa2109ac412bab1a1ae32cd6015120c55ed8881df28"
+  },
+  {
+    "world": "zeta",
+    "m": 37,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m37_dps100_GL128.json",
+    "sha256": "db0a4e7410f233544eb26b3bd16343325882997c69ae7ef2d1c28eb26dee85df"
+  },
+  {
+    "world": "plant",
+    "m": 19,
+    "source": "matrices/mp_escalation/mp_cell_plant_m19_dps100_GL128.json",
+    "sha256": "42c25aabc6d21749861cd24320d9ef98e98c729986273df330d36c0089d22515"
+  },
+  {
+    "world": "zeta",
+    "m": 59,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m59_dps100_GL128.json",
+    "sha256": "9f3d1f90f304a0d1e5da62caa022dab7f0d345615bbeab279796b0b40c7c3cfc"
+  },
+  {
+    "world": "plant",
+    "m": 33,
+    "source": "matrices/mp_escalation/mp_cell_plant_m33_dps100_GL128.json",
+    "sha256": "e3695caf7cb7714afc0ff39340c4fdcaab8820786c53191e68427e397391dfb2"
+  },
+  {
+    "world": "plant",
+    "m": 71,
+    "source": "matrices/mp_escalation/mp_cell_plant_m71_dps100_GL128.json",
+    "sha256": "bdab7ca85febf9a92e7630067256c581340f5991d2c9fa2af8bbc234c5de4cad"
+  },
+  {
+    "world": "plant",
+    "m": 79,
+    "source": "matrices/mp_escalation/mp_cell_plant_m79_dps100_GL160.json",
+    "sha256": "99156fc361f45926aca6180679388988c8ca772aac3bd5c6f8b9dc5293994a68"
+  },
+  {
+    "world": "zeta",
+    "m": 16,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m16_dps100_GL128.json",
+    "sha256": "6951c89cd1efaacfc04729e28014a758f86f672f72bb01bf13ab39c0fa768901"
+  },
+  {
+    "world": "zeta",
+    "m": 80,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m80_dps100_GL128.json",
+    "sha256": "22a2a5c0083b334cc3a7c430587ad189f2c52f8a51955376b6807e6e301008a0"
+  },
+  {
+    "world": "zeta",
+    "m": 104,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m104_dps100_GL128.json",
+    "sha256": "e3a278db5e5cbcac20677950f1652d383d66bce1b6da963b8ca037d3cbf3cc61"
+  },
+  {
+    "world": "zeta",
+    "m": 54,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m54_dps100_GL160.json",
+    "sha256": "9f44d2a0366c49965997b068638b59b90a19812ccab13823ddae6e7cfca91ba5"
+  },
+  {
+    "world": "zeta",
+    "m": 106,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m106_dps100_GL128.json",
+    "sha256": "3894f6a8c405f749972aafb5a5bc7075f176e6843c75cb2dad211c9883110fa2"
+  },
+  {
+    "world": "plant",
+    "m": 67,
+    "source": "matrices/mp_escalation/mp_cell_plant_m67_dps100_GL128.json",
+    "sha256": "b8c376a73e0700e3e30c2785af57c60970ae9220c230b5688e382569eaffa8eb"
+  },
+  {
+    "world": "plant",
+    "m": 87,
+    "source": "matrices/mp_escalation/mp_cell_plant_m87_dps100_GL128.json",
+    "sha256": "55bc3586cb9448ef8df633680c526da3a90ff5557a268b7b9c21f308fc09e221"
+  },
+  {
+    "world": "zeta",
+    "m": 34,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m34_dps100_GL128.json",
+    "sha256": "28e54f92685af28e8d0a607f3d9e17afed2f36b961d9f2df59640d450812ac63"
+  },
+  {
+    "world": "zeta",
+    "m": 115,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m115_dps100_GL128.json",
+    "sha256": "0b3f43c0f03b4708b43cf7ba6546ec79fb2faa1ec23b6c2543aad098ad36102d"
+  },
+  {
+    "world": "zeta",
+    "m": 109,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m109_dps100_GL128.json",
+    "sha256": "e880ba5d467eb0f8f9f2af29e19225a2be8e2a33f3e74a227029c397f801b6c8"
+  },
+  {
+    "world": "zeta",
+    "m": 105,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m105_dps100_GL128.json",
+    "sha256": "eefd01153142487836510323e385864e08a08e48733ea39115ad7c75d6b79255"
+  },
+  {
+    "world": "plant",
+    "m": 72,
+    "source": "matrices/mp_escalation/mp_cell_plant_m72_dps100_GL128.json",
+    "sha256": "b7528081d4a59f5ee9fcfa77879b4929fb8424158110b2aad684491a2d004e8b"
+  },
+  {
+    "world": "plant",
+    "m": 97,
+    "source": "matrices/mp_escalation/mp_cell_plant_m97_dps100_GL128.json",
+    "sha256": "e59e2e158fb5410af50fd1e30be5da085d3e58db291844c8aff915b79b7fbbd0"
+  },
+  {
+    "world": "zeta",
+    "m": 56,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m56_dps100_GL160.json",
+    "sha256": "0c586de934463d5d9249002aed40ebee48744a44d5dce83d2eeaa89afb8a7451"
+  },
+  {
+    "world": "plant",
+    "m": 30,
+    "source": "matrices/mp_escalation/mp_cell_plant_m30_dps100_GL128.json",
+    "sha256": "60bfc21ff8740375a8c57e545854ec777718155763ee6f688a35fbbd7db294f5"
+  },
+  {
+    "world": "plant",
+    "m": 48,
+    "source": "matrices/mp_escalation/mp_cell_plant_m48_dps100_GL128.json",
+    "sha256": "44b3a3c1f6672f6cc94c63094306263c05ef297f2275130625a1100645cd66de"
+  },
+  {
+    "world": "plant",
+    "m": 115,
+    "source": "matrices/mp_escalation/mp_cell_plant_m115_dps100_GL128.json",
+    "sha256": "216a592894c467941541b8e76a5eed4daf52777ec8e7547cdd65edfc7b16910e"
+  },
+  {
+    "world": "zeta",
+    "m": 27,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m27_dps100_GL128.json",
+    "sha256": "fb48bd5d81cc55953e82e626b185f1e4ab9100cd2dacc4f8b9d7549fda25b6ae"
+  },
+  {
+    "world": "zeta",
+    "m": 81,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m81_dps100_GL128.json",
+    "sha256": "1324ae1174de905f6d40fa09c68470ec459f247be196948ea791590c39cef958"
+  },
+  {
+    "world": "plant",
+    "m": 52,
+    "source": "matrices/mp_escalation/mp_cell_plant_m52_dps100_GL128.json",
+    "sha256": "69fe968846e74e51b72fbd1b5d2871f9aad476e1cbbea9ef472cf6c8e20e88cd"
+  },
+  {
+    "world": "plant",
+    "m": 53,
+    "source": "matrices/mp_escalation/mp_cell_plant_m53_dps100_GL128.json",
+    "sha256": "0e471fff39fc61882be28d567518675d79e99b5bccd524db6559709136bb1b4b"
+  },
+  {
+    "world": "plant",
+    "m": 63,
+    "source": "matrices/mp_escalation/mp_cell_plant_m63_dps100_GL128.json",
+    "sha256": "f75cee5fa1464fa8c7a374426fcd07d84e0ee28dbe7e890b1e0f5fa04f060fee"
+  },
+  {
+    "world": "plant",
+    "m": 99,
+    "source": "matrices/mp_escalation/mp_cell_plant_m99_dps100_GL128.json",
+    "sha256": "3ea6f8d2b4e58863f5c90a74ca3d753c4e0d3380d374ca8ac9033f36ac93c6ba"
+  },
+  {
+    "world": "zeta",
+    "m": 113,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m113_dps100_GL128.json",
+    "sha256": "1f8af6a5a999180a8c011467ba456001ddba3a946768fcd7213d1849ac906297"
+  },
+  {
+    "world": "zeta",
+    "m": 58,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m58_dps100_GL128.json",
+    "sha256": "17fa8918bf70c42efe9d97c417579e4da28eacb0cd07d283c5c56ce43cc37ea4"
+  },
+  {
+    "world": "plant",
+    "m": 89,
+    "source": "matrices/mp_escalation/mp_cell_plant_m89_dps100_GL128.json",
+    "sha256": "b086055286340bfdc35166ce12905194d81063c0b69cc4bdbd30071e28a75493"
+  },
+  {
+    "world": "plant",
+    "m": 45,
+    "source": "matrices/mp_escalation/mp_cell_plant_m45_dps100_GL128.json",
+    "sha256": "14db4738dd646427b433b89b2ac6313f7f543604d70c64e324cea0b101eca1b6"
+  },
+  {
+    "world": "plant",
+    "m": 39,
+    "source": "matrices/mp_escalation/mp_cell_plant_m39_dps100_GL128.json",
+    "sha256": "e5cdf67f4cb5eb67a1201715068264dd6f3adfc96517b53b81085b98516b7054"
+  },
+  {
+    "world": "zeta",
+    "m": 96,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m96_dps100_GL128.json",
+    "sha256": "bc3d23b41605f7d6c0aba19d00c57c05a23943fa16c668ae75ecf0d2da3e60c0"
+  },
+  {
+    "world": "plant",
+    "m": 112,
+    "source": "matrices/mp_escalation/mp_cell_plant_m112_dps100_GL128.json",
+    "sha256": "5edde6e223e6abe382d599800cdfb5f1ff19efcb147cc9661afa3bfab07fcb9b"
+  },
+  {
+    "world": "zeta",
+    "m": 118,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m118_dps100_GL128.json",
+    "sha256": "94ff39317c910d677f356cead8a5c087450aabafa7974cc4d334e856d9c2c1c9"
+  },
+  {
+    "world": "zeta",
+    "m": 91,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m91_dps100_GL128.json",
+    "sha256": "3d6ca6c93dca754f35a001376006214a8aa741c9f1055bfee4dca265258c3777"
+  },
+  {
+    "world": "zeta",
+    "m": 74,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m74_dps100_GL128.json",
+    "sha256": "818d82acf4cb52f80fa81730d3a6bb155c612af0cc990facfad87dfa07016596"
+  },
+  {
+    "world": "plant",
+    "m": 42,
+    "source": "matrices/mp_escalation/mp_cell_plant_m42_dps100_GL128.json",
+    "sha256": "d49bc2a5a1a58087b1a151bb0c16d57b0f46ff00f1e7b885e09ab40e5eb9c077"
+  },
+  {
+    "world": "zeta",
+    "m": 18,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m18_dps100_GL128.json",
+    "sha256": "27d22372e4c0a78bf91529777f73c2d67ed15c97cc9d34d797a1bdd9ad0781c8"
+  },
+  {
+    "world": "zeta",
+    "m": 73,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m73_dps100_GL128.json",
+    "sha256": "42594c68c4ef9b83bd2ed3c68693c2b9c82c0a5f2cd21db0d084f2a34c885396"
+  },
+  {
+    "world": "zeta",
+    "m": 23,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m23_dps100_GL128.json",
+    "sha256": "df087c9b6700b0bdbc79bc2503fea5de4702315bb7fc7efe3c0003a86f0d6def"
+  },
+  {
+    "world": "zeta",
+    "m": 99,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m99_dps100_GL128.json",
+    "sha256": "f375c8e45f5976e2054265d5b01007ff18b26977a059c561b4de32d2957f13e1"
+  },
+  {
+    "world": "zeta",
+    "m": 45,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m45_dps100_GL128.json",
+    "sha256": "62d63abb1bbe27faf255f7efc3aeb0d98f749fa1a1d36a9684c485c546a5dbbe"
+  },
+  {
+    "world": "zeta",
+    "m": 40,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m40_dps100_GL128.json",
+    "sha256": "5e99e8e9a08bd415b79e9ef9eb835d93f2f373c11cfd5e2e7d2351e4e797ca06"
+  },
+  {
+    "world": "plant",
+    "m": 101,
+    "source": "matrices/mp_escalation/mp_cell_plant_m101_dps100_GL128.json",
+    "sha256": "b7a0120218a600e4e88e8e8609a9191bf2a926f67706e8fb8aaf6aa377021778"
+  },
+  {
+    "world": "zeta",
+    "m": 65,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m65_dps100_GL160.json",
+    "sha256": "9c8477607150f5de397b28f028345078c1ce1c5563c00b39fc84e8475b020943"
+  },
+  {
+    "world": "zeta",
+    "m": 98,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m98_dps100_GL128.json",
+    "sha256": "e2d62bda7bed2e45701976170e17d89a5141faf975bd9278c02d1e3cc4c077d3"
+  },
+  {
+    "world": "zeta",
+    "m": 93,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m93_dps100_GL128.json",
+    "sha256": "765096a9f33cb51032e99939736c5f246808b06b9a4b35d0584af0f3ced417ef"
+  },
+  {
+    "world": "zeta",
+    "m": 69,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m69_dps100_GL128.json",
+    "sha256": "c0091339ed574c211147cf2b15d40e72473298a9803a9c0453ce83c4274d5fa3"
+  },
+  {
+    "world": "plant",
+    "m": 105,
+    "source": "matrices/mp_escalation/mp_cell_plant_m105_dps100_GL128.json",
+    "sha256": "110ed6c9b1c4306350f7b6a5d73d34b06918662185c3cfe73130a0713c6e6b9e"
+  },
+  {
+    "world": "plant",
+    "m": 49,
+    "source": "matrices/mp_escalation/mp_cell_plant_m49_dps100_GL128.json",
+    "sha256": "ceb9320ea034046965846a8238f382c983862ce0e484fbd89bb64130f08d15dc"
+  },
+  {
+    "world": "plant",
+    "m": 94,
+    "source": "matrices/mp_escalation/mp_cell_plant_m94_dps100_GL128.json",
+    "sha256": "2fc54429749a97dd42844115e79fc31067cb57855bb8880b506872d44ba6b9f7"
+  },
+  {
+    "world": "plant",
+    "m": 102,
+    "source": "matrices/mp_escalation/mp_cell_plant_m102_dps100_GL128.json",
+    "sha256": "acb8932e59af9a2987a753c5adac0292afc4c35ef3e0a880ddd5be192c479f6b"
+  },
+  {
+    "world": "zeta",
+    "m": 66,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m66_dps100_GL160.json",
+    "sha256": "bdc7cddf3bb47cfe7a29b35ef02bdd8fa06ef68e8bf90b42ebba93f813688fe3"
+  },
+  {
+    "world": "zeta",
+    "m": 102,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m102_dps100_GL128.json",
+    "sha256": "cb72b0ffd4e52ac78379fd57c2c10999e41b8d56874fe89eceadbec780ae6b3d"
+  },
+  {
+    "world": "plant",
+    "m": 103,
+    "source": "matrices/mp_escalation/mp_cell_plant_m103_dps100_GL128.json",
+    "sha256": "8b9fd3f262c01f313398ff05b826ae093d86e8a59c83110dee5a6f506eaedbbd"
+  },
+  {
+    "world": "zeta",
+    "m": 72,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m72_dps100_GL128.json",
+    "sha256": "4110692f3e98dc4ed9cbd97352a27b714d0493c8e49b74557ba01a715a12d444"
+  },
+  {
+    "world": "plant",
+    "m": 106,
+    "source": "matrices/mp_escalation/mp_cell_plant_m106_dps100_GL128.json",
+    "sha256": "6b2d66186318248151ec082462a8bc5756b55ecad494d2c0176c2d94001f9b59"
+  },
+  {
+    "world": "zeta",
+    "m": 63,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m63_dps100_GL128.json",
+    "sha256": "5ca56b6d1769bc26a095dc89c9d9c6e113bce028ae4a98e63f5339671fc8113e"
+  },
+  {
+    "world": "plant",
+    "m": 70,
+    "source": "matrices/mp_escalation/mp_cell_plant_m70_dps100_GL128.json",
+    "sha256": "e98af920baa90dc16acf7e3c6de23a8e761a623e85fca15201fb9da3b40b7186"
+  },
+  {
+    "world": "zeta",
+    "m": 71,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m71_dps100_GL128.json",
+    "sha256": "ad70aa993dfa148f448dc631103b90dd6a4e285519d77b77190aa29ca4680cf6"
+  },
+  {
+    "world": "plant",
+    "m": 55,
+    "source": "matrices/mp_escalation/mp_cell_plant_m55_dps100_GL160.json",
+    "sha256": "b4aee1dfd6bca01bc5c896c3809e5d7c173e73bf2d577d5dd8315f797971f283"
+  },
+  {
+    "world": "plant",
+    "m": 20,
+    "source": "matrices/mp_escalation/mp_cell_plant_m20_dps100_GL128.json",
+    "sha256": "a41a8e535c3659934b3a6e3ba70c03b7eb68865aa2451d810cf0f3cd0026164c"
+  },
+  {
+    "world": "plant",
+    "m": 65,
+    "source": "matrices/mp_escalation/mp_cell_plant_m65_dps100_GL160.json",
+    "sha256": "d9c5fd8b4e1a8f5108198f6f888ae602aca41fcc4bb65a2dcd479183996905fe"
+  },
+  {
+    "world": "zeta",
+    "m": 120,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m120_dps100_GL128.json",
+    "sha256": "e44dee6d23e4bcc9d6b9dad00c8af6c00129b60bcbab05158adf89ba119ec27a"
+  },
+  {
+    "world": "zeta",
+    "m": 103,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m103_dps100_GL128.json",
+    "sha256": "4f7ddae0720b984578048f8c59e7a49882cea35ff11c1d147a4da2baff750dc7"
+  },
+  {
+    "world": "zeta",
+    "m": 114,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m114_dps100_GL128.json",
+    "sha256": "eff768b02aac4f7982640bde23e8aa90665843fbf5ced94e235bbd798113e472"
+  },
+  {
+    "world": "plant",
+    "m": 24,
+    "source": "matrices/mp_escalation/mp_cell_plant_m24_dps100_GL128.json",
+    "sha256": "cf174ab99504045dbbf9838d719af8a8f723c6aafabc6a092ee72432b9aa1545"
+  },
+  {
+    "world": "plant",
+    "m": 26,
+    "source": "matrices/mp_escalation/mp_cell_plant_m26_dps100_GL128.json",
+    "sha256": "98b80ca8c27d0300b95aa500973c7928e35119f65a065f474efe9061251cbfd9"
+  },
+  {
+    "world": "zeta",
+    "m": 62,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m62_dps100_GL128.json",
+    "sha256": "05ad6c5cf99f3d9528d7c05cfe1a07c448d33397e759805fc77c53d1969183ae"
+  },
+  {
+    "world": "plant",
+    "m": 96,
+    "source": "matrices/mp_escalation/mp_cell_plant_m96_dps100_GL128.json",
+    "sha256": "c9c7dd5cae4d21e41136b570bb0b17011c5134dee7e8e3c2e442f010578d464a"
+  },
+  {
+    "world": "plant",
+    "m": 23,
+    "source": "matrices/mp_escalation/mp_cell_plant_m23_dps100_GL128.json",
+    "sha256": "65a4a4ea32d9efd0abb0beb52f7dfb25e3506781b64da2b236d35947acffbeb6"
+  },
+  {
+    "world": "zeta",
+    "m": 39,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m39_dps100_GL128.json",
+    "sha256": "72b96dd5ac7db20081e319e5d95caf85cd75638674f5d439b0960c9b6d22ab10"
+  },
+  {
+    "world": "zeta",
+    "m": 107,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m107_dps100_GL128.json",
+    "sha256": "dff0bc4cf0b738e5dc14f5ee6db40f68b740ea67e1279932ec16560bc63dda5d"
+  },
+  {
+    "world": "plant",
+    "m": 111,
+    "source": "matrices/mp_escalation/mp_cell_plant_m111_dps100_GL128.json",
+    "sha256": "7a58ff6c2cb8d17481ec77a83cc57ab9471fd2f81d7effa62cc370c2acd89d05"
+  },
+  {
+    "world": "plant",
+    "m": 104,
+    "source": "matrices/mp_escalation/mp_cell_plant_m104_dps100_GL128.json",
+    "sha256": "a712ef4fb969976afc10ddddb0af6083008defa110e76a78dfc428ebf8d1e8f2"
+  },
+  {
+    "world": "plant",
+    "m": 81,
+    "source": "matrices/mp_escalation/mp_cell_plant_m81_dps100_GL128.json",
+    "sha256": "a9eae32bc5c5406a7bb72f231a92946414718fa754bc403164d0f5ac87441d83"
+  },
+  {
+    "world": "plant",
+    "m": 69,
+    "source": "matrices/mp_escalation/mp_cell_plant_m69_dps100_GL128.json",
+    "sha256": "3326a4f22e2007845cc205c98688b2e9e5b38a43670fc0023a85d76483733339"
+  },
+  {
+    "world": "zeta",
+    "m": 79,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m79_dps100_GL160.json",
+    "sha256": "bc0b2818ccb0f651082b355cec0d118e828ba3514817552f72c46c8fb3e7e7d9"
+  },
+  {
+    "world": "plant",
+    "m": 44,
+    "source": "matrices/mp_escalation/mp_cell_plant_m44_dps100_GL128.json",
+    "sha256": "106a8ba35b6cc364d9abd243c3647857927cd70fdae105cb29b9473eb245f020"
+  },
+  {
+    "world": "plant",
+    "m": 62,
+    "source": "matrices/mp_escalation/mp_cell_plant_m62_dps100_GL128.json",
+    "sha256": "c94ea0be5c73580a1506acd957c5be926f4e80988016fa698e107314aa5b737d"
+  },
+  {
+    "world": "zeta",
+    "m": 41,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m41_dps100_GL128.json",
+    "sha256": "1dbe745a77abb671a72bf0978d6568be2a322e87cd9b1e609b9cafd1eee4b790"
+  },
+  {
+    "world": "zeta",
+    "m": 88,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m88_dps100_GL128.json",
+    "sha256": "8a482d8c50972279e223d23c04be98650b3c385b21c54feb21aeebbfbef3de6b"
+  },
+  {
+    "world": "plant",
+    "m": 58,
+    "source": "matrices/mp_escalation/mp_cell_plant_m58_dps100_GL128.json",
+    "sha256": "2fc33fe6cba286d90386fc99657622540d46ce3399fb4d90bc0d939cc8e89f49"
+  },
+  {
+    "world": "zeta",
+    "m": 78,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m78_dps100_GL160.json",
+    "sha256": "e1e6614713fde54ac4c868c23924d6c2016774c0b2e9070bbee1e3af65ae6928"
+  },
+  {
+    "world": "zeta",
+    "m": 64,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m64_dps100_GL160.json",
+    "sha256": "74de07ea5d7b5ec25a61f0893b424d5d8f41d4705bb0f6d15c8590bbfe59affc"
+  },
+  {
+    "world": "zeta",
+    "m": 85,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m85_dps100_GL128.json",
+    "sha256": "83a26d36c69795e9d3419b3ceea605a8adc60dc44fa3f366b63a09fa7705ebd7"
+  },
+  {
+    "world": "plant",
+    "m": 90,
+    "source": "matrices/mp_escalation/mp_cell_plant_m90_dps100_GL128.json",
+    "sha256": "e46e249c8ce9fe9a656bfab5d01dbad9429094d095577300fd10d53cc66595e2"
+  },
+  {
+    "world": "zeta",
+    "m": 33,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m33_dps100_GL128.json",
+    "sha256": "f28e607cc4c016bb493aa6da20031a23b044c4cf806d2c87b57ba65f738d2dac"
+  },
+  {
+    "world": "zeta",
+    "m": 112,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m112_dps100_GL128.json",
+    "sha256": "6ca9bcd8ccc2545558648acd8d60afe9cf8c6450fa07b03c1f515e9acaaf37f7"
+  },
+  {
+    "world": "plant",
+    "m": 28,
+    "source": "matrices/mp_escalation/mp_cell_plant_m28_dps100_GL128.json",
+    "sha256": "d4ef2cb33689225093acdd8fadca1603f4579a5c3226e1fd3cdffd118cc8b41e"
+  },
+  {
+    "world": "plant",
+    "m": 109,
+    "source": "matrices/mp_escalation/mp_cell_plant_m109_dps100_GL128.json",
+    "sha256": "599c29149f8ce92274a167e9a86e6d7d9adfc09354b484f094904e04e75270f3"
+  },
+  {
+    "world": "plant",
+    "m": 88,
+    "source": "matrices/mp_escalation/mp_cell_plant_m88_dps100_GL128.json",
+    "sha256": "c273b170c6e66134e7a604890638f417717a332b4dbfbb11adc4aad1b923f0d5"
+  },
+  {
+    "world": "plant",
+    "m": 60,
+    "source": "matrices/mp_escalation/mp_cell_plant_m60_dps100_GL128.json",
+    "sha256": "267d7fcca31650f9312955fed4c1da935237a256f276419cc229d67034d88852"
+  },
+  {
+    "world": "plant",
+    "m": 98,
+    "source": "matrices/mp_escalation/mp_cell_plant_m98_dps100_GL128.json",
+    "sha256": "fad12b265df9558ab0035cdf13915530edc056f45be170ce74188bc600e2628d"
+  },
+  {
+    "world": "plant",
+    "m": 107,
+    "source": "matrices/mp_escalation/mp_cell_plant_m107_dps100_GL128.json",
+    "sha256": "33556c574c21f9b2ba878a63e319542fe22f98c412d24c91ac68babc2db80631"
+  },
+  {
+    "world": "zeta",
+    "m": 110,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m110_dps100_GL128.json",
+    "sha256": "b2a125bb51d36688651b5b65959c30e0e5a36188588524eef178829fe321441e"
+  },
+  {
+    "world": "plant",
+    "m": 74,
+    "source": "matrices/mp_escalation/mp_cell_plant_m74_dps100_GL128.json",
+    "sha256": "c77108718720c19806cecdf104d84ec9e7ef53654892b06da553a36d3b06d7fb"
+  },
+  {
+    "world": "zeta",
+    "m": 49,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m49_dps100_GL128.json",
+    "sha256": "f38acb57b75951952e0d075b2e4f92cb6e76f3a5a8cae8f50eee068a77b8dfc2"
+  },
+  {
+    "world": "plant",
+    "m": 91,
+    "source": "matrices/mp_escalation/mp_cell_plant_m91_dps100_GL128.json",
+    "sha256": "edc6dad2c8b20bfce7f53cf5477cc93a3b03c0a24d606e6cf78bb2ee5a3d658f"
+  },
+  {
+    "world": "zeta",
+    "m": 82,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m82_dps100_GL128.json",
+    "sha256": "d995145739bc06ecb03d2d94b3b6d266c71856b369e267bd2504219c35136b02"
+  },
+  {
+    "world": "plant",
+    "m": 86,
+    "source": "matrices/mp_escalation/mp_cell_plant_m86_dps100_GL128.json",
+    "sha256": "f4dd9c5e81ab9ec1535f57c33038ba1d58d61d3f8f0225b1a334f46d8a341e12"
+  },
+  {
+    "world": "zeta",
+    "m": 92,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m92_dps100_GL128.json",
+    "sha256": "a52e77f7b01d2a661a1bf36ccf12c419fea612e796700b424d7344d782b04436"
+  },
+  {
+    "world": "zeta",
+    "m": 17,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m17_dps100_GL128.json",
+    "sha256": "683fd0424cf20c1dda6151c3abdf97ecd4fcbe91e97286c5bdc051c81588e0d4"
+  },
+  {
+    "world": "zeta",
+    "m": 87,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m87_dps100_GL128.json",
+    "sha256": "74da91b85eb983c8d0c632151d9dfa4fb663223ac6511ea1b434369322b0dea8"
+  },
+  {
+    "world": "zeta",
+    "m": 108,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m108_dps100_GL128.json",
+    "sha256": "e17d0426a1973bad24df56e42a1650dde6a7fde5a6995a5d0a8c732dd934376b"
+  },
+  {
+    "world": "plant",
+    "m": 50,
+    "source": "matrices/mp_escalation/mp_cell_plant_m50_dps100_GL128.json",
+    "sha256": "828f2bc50fc3c8e8c5369147f3fe2c276f22f5e81f997c71abe6620794144688"
+  },
+  {
+    "world": "zeta",
+    "m": 94,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m94_dps100_GL128.json",
+    "sha256": "34e2c27166b8055cd159a0319cdef9b1481692df0482e2a210f9475a3171fb40"
+  },
+  {
+    "world": "zeta",
+    "m": 116,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m116_dps100_GL128.json",
+    "sha256": "15a4079f5a025f8a9a872251c93c6e1bfd15b3117e3a73f91d123f6437430fda"
+  },
+  {
+    "world": "zeta",
+    "m": 20,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m20_dps100_GL128.json",
+    "sha256": "b181cdb0a2fa64155ac02d351b8736a2c88d77e7f309a4f1a50f8bdd1ef37ee4"
+  },
+  {
+    "world": "zeta",
+    "m": 89,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m89_dps100_GL128.json",
+    "sha256": "b67d0d63949a505f53f5a68025bb8d146e55c8b0d32649fbc6066af5447d0eeb"
+  },
+  {
+    "world": "plant",
+    "m": 57,
+    "source": "matrices/mp_escalation/mp_cell_plant_m57_dps100_GL128.json",
+    "sha256": "a9b1c506444e4bb7118289c8ed515627ee703a13b7e9f95877a12ae9fe8d6877"
+  },
+  {
+    "world": "zeta",
+    "m": 76,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m76_dps100_GL160.json",
+    "sha256": "652fdc6d1111f8ebef3fe6c4ebf7c376b629148b216cf4076d0965cada04699e"
+  },
+  {
+    "world": "zeta",
+    "m": 35,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m35_dps100_GL128.json",
+    "sha256": "060361b7a9950489e0ea1c536e91f92ba8fd2e5390aeb8c63ce4fc3c7726fc47"
+  },
+  {
+    "world": "zeta",
+    "m": 42,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m42_dps100_GL128.json",
+    "sha256": "f26ea2466b76909aa642dfa91b120173706ec298169b4a4d653eab92ec3d7615"
+  },
+  {
+    "world": "zeta",
+    "m": 68,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m68_dps100_GL128.json",
+    "sha256": "e7d0a749ffdc1fc0f4f0364a0b3c905338ecd035cdb1252c567d330e7934b986"
+  },
+  {
+    "world": "plant",
+    "m": 54,
+    "source": "matrices/mp_escalation/mp_cell_plant_m54_dps100_GL160.json",
+    "sha256": "9741efbb0e837e20f01b63f232be210e2ef7dec5df9b96aa393ab4aeece28dc0"
+  },
+  {
+    "world": "plant",
+    "m": 92,
+    "source": "matrices/mp_escalation/mp_cell_plant_m92_dps100_GL128.json",
+    "sha256": "e39f65deb22058ce83110ecd826ee2c06a94344758721e360603ed2bb39e0063"
+  },
+  {
+    "world": "zeta",
+    "m": 60,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m60_dps100_GL128.json",
+    "sha256": "7c3bfedac4a1e10e56b6f99d04f0c00d6582043c879bd30a5639cc4a8b90c60b"
+  },
+  {
+    "world": "zeta",
+    "m": 77,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m77_dps100_GL160.json",
+    "sha256": "5fb7ee97615911f4adcf1bc72b7edb03816ce0ce3dcde18af597b9627cd4a574"
+  },
+  {
+    "world": "zeta",
+    "m": 38,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m38_dps100_GL128.json",
+    "sha256": "016c35afd171838b4475391dde50f630b9710043a8d4332e1311441a0e20deac"
+  },
+  {
+    "world": "zeta",
+    "m": 30,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m30_dps100_GL128.json",
+    "sha256": "4ae640709f81c87c1501f68df7586211b3131985994e1d33a3b2e696a094b8c5"
+  },
+  {
+    "world": "plant",
+    "m": 77,
+    "source": "matrices/mp_escalation/mp_cell_plant_m77_dps100_GL160.json",
+    "sha256": "257f0da5dcb82f39b9a73ef5ba0b1f4aead5a4e3fe3f6436b6df077308f87a5f"
+  },
+  {
+    "world": "plant",
+    "m": 61,
+    "source": "matrices/mp_escalation/mp_cell_plant_m61_dps100_GL128.json",
+    "sha256": "4882bcbb88d5b7de73f96456a7e82526b05962d06ed5b599dc6e75a4314a0a07"
+  },
+  {
+    "world": "zeta",
+    "m": 46,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m46_dps100_GL128.json",
+    "sha256": "c2f949d9c9a9c7d7b97c400568bf22e58e886533385b1d02cd7ab37616aaa04c"
+  },
+  {
+    "world": "plant",
+    "m": 18,
+    "source": "matrices/mp_escalation/mp_cell_plant_m18_dps100_GL128.json",
+    "sha256": "147df50c6e20902828ddb225543068d32da85b36c9b9b903b5918ab0eefb7030"
+  },
+  {
+    "world": "zeta",
+    "m": 101,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m101_dps100_GL128.json",
+    "sha256": "f6a35a6ca9d0480967d75d0342ae75dd4d83442cc603b1ccd7fbbbcab4cbc1f6"
+  },
+  {
+    "world": "plant",
+    "m": 43,
+    "source": "matrices/mp_escalation/mp_cell_plant_m43_dps100_GL128.json",
+    "sha256": "629f4343537e5d6899f4981a28fda229003d77a7802479ed77c48cf2dddc15ce"
+  },
+  {
+    "world": "zeta",
+    "m": 25,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m25_dps100_GL128.json",
+    "sha256": "b30601959bebe50c37f621581cd6df0c9bddf91328afc87c0e06d824cbb34de3"
+  },
+  {
+    "world": "plant",
+    "m": 83,
+    "source": "matrices/mp_escalation/mp_cell_plant_m83_dps100_GL128.json",
+    "sha256": "ce8f3234d2bfb5d784d0bcb0c34e93c37e15e1c4e2b7f5ed98caaed16f794325"
+  },
+  {
+    "world": "plant",
+    "m": 21,
+    "source": "matrices/mp_escalation/mp_cell_plant_m21_dps100_GL128.json",
+    "sha256": "bfa793737f862e590374479ccce0f5f874b898a44aecbf1f9784a7a7ecdfd244"
+  },
+  {
+    "world": "zeta",
+    "m": 24,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m24_dps100_GL128.json",
+    "sha256": "87dc0515212192f6c3e9f0138b127699469ee4b1b7e6d40a68e42eb2e692d206"
+  },
+  {
+    "world": "zeta",
+    "m": 97,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m97_dps100_GL128.json",
+    "sha256": "9a8caf15795154233d76cdd6063a3469b1344535eb36ca72303e570cd91d06a5"
+  },
+  {
+    "world": "plant",
+    "m": 110,
+    "source": "matrices/mp_escalation/mp_cell_plant_m110_dps100_GL128.json",
+    "sha256": "aee5b06958942cad73240c4cb508f42502e78b304aa33a2cc895d3896ed35b3f"
+  },
+  {
+    "world": "plant",
+    "m": 64,
+    "source": "matrices/mp_escalation/mp_cell_plant_m64_dps100_GL160.json",
+    "sha256": "f7c2013e81b0cbe657a763b03598e27c6903423d3c77a80827c907a20478a377"
+  },
+  {
+    "world": "zeta",
+    "m": 83,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m83_dps100_GL128.json",
+    "sha256": "1890b162d06e25775302c717303f7642485ece2619ee4f0e3db3d54aedd8a3dd"
+  },
+  {
+    "world": "zeta",
+    "m": 31,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m31_dps100_GL128.json",
+    "sha256": "27279e39af74e6d9c46a37f8fb44653492dad6f13f3e79f07dba0edef0dcb0ca"
+  },
+  {
+    "world": "zeta",
+    "m": 44,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m44_dps100_GL128.json",
+    "sha256": "2f03a6dcd1c46fa28f31e0c471c892b9651bf9086334464f8408ad1106389198"
+  },
+  {
+    "world": "plant",
+    "m": 75,
+    "source": "matrices/mp_escalation/mp_cell_plant_m75_dps100_GL128.json",
+    "sha256": "7c82f4b0fef2fc71531242105049d8f09a8c70b6840da8f7311901142749a137"
+  },
+  {
+    "world": "plant",
+    "m": 108,
+    "source": "matrices/mp_escalation/mp_cell_plant_m108_dps100_GL128.json",
+    "sha256": "711c10290faeb11d96f2b83714f6bc0833a16e147463155310e3c76b9bbf675b"
+  },
+  {
+    "world": "plant",
+    "m": 38,
+    "source": "matrices/mp_escalation/mp_cell_plant_m38_dps100_GL128.json",
+    "sha256": "a3628d6ada1105098a7dd406415a712f982f025c5bc27c335e6f093bb0ad4320"
+  },
+  {
+    "world": "zeta",
+    "m": 90,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m90_dps100_GL128.json",
+    "sha256": "6750d1c95e3c65cf923bbf3baa6c9ea571d5f4918272bc05b15a0e3cfe5a76e7"
+  },
+  {
+    "world": "plant",
+    "m": 25,
+    "source": "matrices/mp_escalation/mp_cell_plant_m25_dps100_GL128.json",
+    "sha256": "623051f19e041119fbf4970f574fb25bb90ae784fab5ce0cddb7612b5da414ff"
+  },
+  {
+    "world": "zeta",
+    "m": 51,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m51_dps100_GL128.json",
+    "sha256": "f515172f81e10369456301be7df381b3a60a60304c034304faf4b75157d3af92"
+  },
+  {
+    "world": "plant",
+    "m": 113,
+    "source": "matrices/mp_escalation/mp_cell_plant_m113_dps100_GL128.json",
+    "sha256": "6b008d18553323a1eaaa24609983629f43668f8a6b20fe1eb567f0ef6d187b97"
+  },
+  {
+    "world": "zeta",
+    "m": 67,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m67_dps100_GL128.json",
+    "sha256": "ad9b6f1f70898178117c9db5c76dab2b6ce429dbf23b0998bf223f3e74785fb6"
+  },
+  {
+    "world": "plant",
+    "m": 22,
+    "source": "matrices/mp_escalation/mp_cell_plant_m22_dps100_GL128.json",
+    "sha256": "aaae7cacc905e86a794ed96b5169b4a4237cfb0ed050320fa52950f82f359faf"
+  },
+  {
+    "world": "zeta",
+    "m": 86,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m86_dps100_GL128.json",
+    "sha256": "e9bed72da50674da9112cbe8339bfee0204eaa4f585476a618977991c10ab508"
+  },
+  {
+    "world": "plant",
+    "m": 34,
+    "source": "matrices/mp_escalation/mp_cell_plant_m34_dps100_GL128.json",
+    "sha256": "878cddf0777a14ae41c5d0cf8562b3aea964cc7d8eae871585630f14e47093a4"
+  },
+  {
+    "world": "plant",
+    "m": 82,
+    "source": "matrices/mp_escalation/mp_cell_plant_m82_dps100_GL128.json",
+    "sha256": "abd7a4fbc3f4bfb8038ff35b0abc8d9f73eebba238be9580cf9bab67967ddcd3"
+  },
+  {
+    "world": "zeta",
+    "m": 55,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m55_dps100_GL160.json",
+    "sha256": "e1e6057177ea8a693f65e07e60db6ccd2fd59784e66abefd1e7b0fd887363da5"
+  },
+  {
+    "world": "zeta",
+    "m": 95,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m95_dps100_GL128.json",
+    "sha256": "366965282b5b8feee09122a267a64e7067eedb8368a9809efc03af1f344f06d2"
+  },
+  {
+    "world": "zeta",
+    "m": 75,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m75_dps100_GL128.json",
+    "sha256": "13cf93f5abfc74341e64a0f8c91db020b83b431380047698db5e3c85d41ae99d"
+  },
+  {
+    "world": "zeta",
+    "m": 29,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m29_dps100_GL128.json",
+    "sha256": "707a0e67a7a4fe864ad460d4fbc646983498d3e94d57ebbcc22e76066d0443e3"
+  },
+  {
+    "world": "plant",
+    "m": 31,
+    "source": "matrices/mp_escalation/mp_cell_plant_m31_dps100_GL128.json",
+    "sha256": "73dacba6396d46b8dcc245868e7f93d46b3d66d6bb86d1a4853ff18062fa2686"
+  },
+  {
+    "world": "zeta",
+    "m": 19,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m19_dps100_GL128.json",
+    "sha256": "80f1679ee577de14a84807c8a8cc495dc126e8e79e8f5cc463c92de64b8cb29d"
+  },
+  {
+    "world": "plant",
+    "m": 78,
+    "source": "matrices/mp_escalation/mp_cell_plant_m78_dps100_GL160.json",
+    "sha256": "f7e3323549c80ede84fc3c17dbcc8686800aa87bf278fcec1d2a2ed8f35e2d73"
+  },
+  {
+    "world": "zeta",
+    "m": 21,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m21_dps100_GL128.json",
+    "sha256": "a5402d177b2dcddc4bb26403c1933451a0db987285d79983a7250a3154168c85"
+  },
+  {
+    "world": "plant",
+    "m": 114,
+    "source": "matrices/mp_escalation/mp_cell_plant_m114_dps100_GL128.json",
+    "sha256": "2b21ee027cb1d5442c3c1762fd1c26201928be85a3fae58f4ba4e7526f80f1c0"
+  },
+  {
+    "world": "plant",
+    "m": 66,
+    "source": "matrices/mp_escalation/mp_cell_plant_m66_dps100_GL160.json",
+    "sha256": "bdb1dcf69b77e446fdf4d60a6319ee0f97383d7fa9596cbb77308442bba98cf1"
+  },
+  {
+    "world": "zeta",
+    "m": 43,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m43_dps100_GL128.json",
+    "sha256": "01c55fb24fcd479772d6fbc5313c65a074b7f20a43ce966011f02f0a93464f30"
+  },
+  {
+    "world": "plant",
+    "m": 95,
+    "source": "matrices/mp_escalation/mp_cell_plant_m95_dps100_GL128.json",
+    "sha256": "3d7c3a2c362ed6b305eb7f78ae430406273dccebdbf88072e31b2e18b0185ab0"
+  },
+  {
+    "world": "plant",
+    "m": 56,
+    "source": "matrices/mp_escalation/mp_cell_plant_m56_dps100_GL160.json",
+    "sha256": "902aaa975b35eadb2ae3d7797ffa38d97b1ffc5cee63dc2bdb4c111433a52af5"
+  },
+  {
+    "world": "zeta",
+    "m": 47,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m47_dps100_GL128.json",
+    "sha256": "657a4aa1ffb5e2ee3512c25c6d4e1e91575074016d8e954eceff9cdcd20feb6b"
+  },
+  {
+    "world": "plant",
+    "m": 68,
+    "source": "matrices/mp_escalation/mp_cell_plant_m68_dps100_GL128.json",
+    "sha256": "089393d5abf7d0de0a6e4eba6891daf17f304a3372854d1ecc2f785c9d9e85fb"
+  },
+  {
+    "world": "zeta",
+    "m": 26,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m26_dps100_GL128.json",
+    "sha256": "9085dce17871ae050b5ed7e7901cc273b53f8bb5c1c0a8c598dcb256cbff0cd8"
+  },
+  {
+    "world": "plant",
+    "m": 100,
+    "source": "matrices/mp_escalation/mp_cell_plant_m100_dps100_GL128.json",
+    "sha256": "5e416c538d693ec81a06de45d67b169bc852731624b889d59188b4a815cdac53"
+  },
+  {
+    "world": "plant",
+    "m": 29,
+    "source": "matrices/mp_escalation/mp_cell_plant_m29_dps100_GL128.json",
+    "sha256": "4edd8b268495d669d1bba1dadc729a5200301766202556268e5ba30e63e8431e"
+  },
+  {
+    "world": "zeta",
+    "m": 53,
+    "source": "matrices/mp_escalation/mp_cell_zeta_m53_dps100_GL128.json",
+    "sha256": "5a723d513083c7d348e4ccb543282117986900333c0cff0e38c014123ecafb6e"
+  },
+  {
+    "world": "plant",
+    "m": 51,
+    "source": "matrices/mp_escalation/mp_cell_plant_m51_dps100_GL128.json",
+    "sha256": "92d9f3566c69c47a9bd1906de78c2ae78b501365d9d568487dbd219344ebe949"
+  },
+  {
+    "world": "dh",
+    "m": 68,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m68_dps100_GL160.json",
+    "sha256": "75ca54c31295f18a882d9fa6b5699c1b26cb7df08d310145cd0ac3dcc271dc6a"
+  },
+  {
+    "world": "dh",
+    "m": 84,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m84_dps100_GL160.json",
+    "sha256": "d43d08321592f341f7c9cc003dcba78a793871de9b020083efbd92364e0fb5dd"
+  },
+  {
+    "world": "dh",
+    "m": 106,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m106_dps100_GL160.json",
+    "sha256": "326ada0a3a481afd1ca70c11b38edf4d277a9f3490b7238a8675f78df73920a6"
+  },
+  {
+    "world": "dh",
+    "m": 67,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m67_dps100_GL160.json",
+    "sha256": "d781473d45a3b101761727a3d386e9a07a7fd9265e53e1985f74839155ef7d15"
+  },
+  {
+    "world": "dh",
+    "m": 18,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m18_dps100_GL160.json",
+    "sha256": "5f4b39ad7183d889af4aa5de382df4ca8b2012742ef9482faa15d2bbac29e396"
+  },
+  {
+    "world": "dh",
+    "m": 102,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m102_dps100_GL160.json",
+    "sha256": "80feb3c3c5ac9c75cb2fc66b25db91eaf28c3ef743c9747c873d5fdbc9d6c679"
+  },
+  {
+    "world": "dh",
+    "m": 89,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m89_dps100_GL160.json",
+    "sha256": "7eadbc59366ed8218cdeb9f25216641c08a1ea0aff8a2cf8a7b7315f52a7f466"
+  },
+  {
+    "world": "dh",
+    "m": 70,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m70_dps100_GL160.json",
+    "sha256": "0be60eec59eab71848b2bbadfc6afe11732b1ec5bf37254c51fc429b1670f4c7"
+  },
+  {
+    "world": "dh",
+    "m": 108,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m108_dps100_GL160.json",
+    "sha256": "f2d85a9935cd4da00a279740cc116553b4a187107da5e008753ae5868be64dac"
+  },
+  {
+    "world": "dh",
+    "m": 71,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m71_dps100_GL160.json",
+    "sha256": "4c43f2ffd9fcfb8020885847214975c2ba317490dc8f77cb835959767de6e29c"
+  },
+  {
+    "world": "dh",
+    "m": 115,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m115_dps100_GL160.json",
+    "sha256": "5142bac0215ae4567b942e5f97e03baebdb0efaa5aa64d432fbaea66dc7c6c0a"
+  },
+  {
+    "world": "dh",
+    "m": 92,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m92_dps100_GL160.json",
+    "sha256": "fe96ce8854afdecc7b0eab51fada1c4171a726554d3c2e43e097f588a7baea03"
+  },
+  {
+    "world": "dh",
+    "m": 73,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m73_dps100_GL160.json",
+    "sha256": "95f10987a80356e66476183b3b835839f1cf55ecec91cf8900f051def8e2992e"
+  },
+  {
+    "world": "dh",
+    "m": 95,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m95_dps100_GL160.json",
+    "sha256": "2e81ff16d501269b826eeb456576e8951328cbb6fef7c45907963d9cd1858c6a"
+  },
+  {
+    "world": "dh",
+    "m": 86,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m86_dps100_GL160.json",
+    "sha256": "ed1dfceb96627dcb18d2f51c8bbab60f9edd4c89026d24082762437ac99dfe6d"
+  },
+  {
+    "world": "dh",
+    "m": 61,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m61_dps100_GL160.json",
+    "sha256": "dd954f49650af76dea4ea4f49018112fffa72c5c5b89238cbdcdee06a3fd2031"
+  },
+  {
+    "world": "dh",
+    "m": 101,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m101_dps100_GL160.json",
+    "sha256": "68b0d9019dea83e76e28ff187e403bc6c88482a6b4428d1496be68987a271871"
+  },
+  {
+    "world": "dh",
+    "m": 19,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m19_dps100_GL160.json",
+    "sha256": "a1f05d1401848b3c240b6ef055a5841370f0c31b7aa6247b13647ab6fd1d2cea"
+  },
+  {
+    "world": "dh",
+    "m": 90,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m90_dps100_GL160.json",
+    "sha256": "ae140cd9fe6fb93a5de3793b360122c944f44287565b9b2868ba3631f25fa2db"
+  },
+  {
+    "world": "dh",
+    "m": 97,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m97_dps100_GL160.json",
+    "sha256": "7ddbbebb5c371463bb48acdf6be02eb9b3238977cab16bc2301113299291693d"
+  },
+  {
+    "world": "dh",
+    "m": 117,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m117_dps100_GL160.json",
+    "sha256": "b288a8fffb859ff82d4eb17ebb0cb389a42aba5516add6afc5d1140086990dde"
+  },
+  {
+    "world": "dh",
+    "m": 57,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m57_dps100_GL160.json",
+    "sha256": "fd7ef4a716584b8944e86852b0cafabfbd3965ec4768878b1d29ed83606f1117"
+  },
+  {
+    "world": "dh",
+    "m": 93,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m93_dps100_GL160.json",
+    "sha256": "8ce4eafbdb7e68f3dd85ede292210d1f9823b18b1d2fd0236274389cbe4b9845"
+  },
+  {
+    "world": "dh",
+    "m": 88,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m88_dps100_GL160.json",
+    "sha256": "1d389b0fdf805910f80e6597e9ca072f2297d922bce6db09315b53d0d77ddb68"
+  },
+  {
+    "world": "dh",
+    "m": 83,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m83_dps100_GL160.json",
+    "sha256": "ec4dd02449ed809ce71d01ca4f912c447fa33b97c20a7f35c6244e06fedf104f"
+  },
+  {
+    "world": "dh",
+    "m": 72,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m72_dps100_GL160.json",
+    "sha256": "99983c128c6b629779598f9ae25ec60e355c1b98320604d62c542218c612f928"
+  },
+  {
+    "world": "dh",
+    "m": 17,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m17_dps100_GL160.json",
+    "sha256": "7742912f399c5688ca5672ac1ddfca2d34e88367f3bdfdea98ca0b6794d83759"
+  },
+  {
+    "world": "dh",
+    "m": 109,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m109_dps100_GL160.json",
+    "sha256": "8f37d9487b3d178472de6d9cf61d52f193d4a2c0f710c9fce8434775c9d3fd42"
+  },
+  {
+    "world": "dh",
+    "m": 111,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m111_dps100_GL160.json",
+    "sha256": "41a785865beb69d6af6582e333c3eebe9cc5030b5c6caa1aaa8766a9fe9f2b01"
+  },
+  {
+    "world": "dh",
+    "m": 94,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m94_dps100_GL160.json",
+    "sha256": "b446fcec7a97beae488281a580729dd8f14fa7e8ece8f82a9f43d514fc146c88"
+  },
+  {
+    "world": "dh",
+    "m": 62,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m62_dps100_GL160.json",
+    "sha256": "164e583614e04401f77ef49992793adbf5e5bb391cd89869ef93b437ca6c97d9"
+  },
+  {
+    "world": "dh",
+    "m": 110,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m110_dps100_GL160.json",
+    "sha256": "983fbd1cb0cd8c21b54cea99fe63552f3039d4e9617a81eab7b5b0e251da865f"
+  },
+  {
+    "world": "dh",
+    "m": 59,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m59_dps100_GL160.json",
+    "sha256": "72fc2dd7885aab80b64dc123c25129ec0b432dec6db6c841a3da574dd1ecd11e"
+  },
+  {
+    "world": "dh",
+    "m": 113,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m113_dps100_GL160.json",
+    "sha256": "e7484700c921f467f8757e6c85dab43806d56d555c71cc51cc3a2d255c20c5f5"
+  },
+  {
+    "world": "dh",
+    "m": 96,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m96_dps100_GL160.json",
+    "sha256": "8dac47b3aedba0a8f4f0105dfc580f9272a8ec716a4912418980c6240cee4bd1"
+  },
+  {
+    "world": "dh",
+    "m": 69,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m69_dps100_GL160.json",
+    "sha256": "db52c36a8d2ea1cf7bcfa88b6f98a787ab80edb0d869f5980307c4bad180588d"
+  },
+  {
+    "world": "dh",
+    "m": 98,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m98_dps100_GL160.json",
+    "sha256": "12189c859b9d4163a7056e44b1bfb59e9f0ad40d8f7bbcad4dd53c090f24cca8"
+  },
+  {
+    "world": "dh",
+    "m": 79,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m79_dps100_GL160.json",
+    "sha256": "511b445f323310832bcdec32fcf64b62f8c22d51169d4e646c0f04b8fcf3617c"
+  },
+  {
+    "world": "dh",
+    "m": 77,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m77_dps100_GL160.json",
+    "sha256": "592f4d5ca2b14920628f869f251e07f3e32ec6141a32ec3a4b5913d368eac10e"
+  },
+  {
+    "world": "dh",
+    "m": 119,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m119_dps100_GL160.json",
+    "sha256": "5c66ff54ebe50543f9a5b0c6ba581bec2e113d8d6ae03743a2576b3da4971e67"
+  },
+  {
+    "world": "dh",
+    "m": 107,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m107_dps100_GL160.json",
+    "sha256": "e65cfca40144e7cba3b9c76c75dcd340d17d257f4a6385756ca78a3b7c095b0f"
+  },
+  {
+    "world": "dh",
+    "m": 99,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m99_dps100_GL160.json",
+    "sha256": "4bdd5d91811576362090a67f1c9de2e3810b13eae2c7fb2e95494688deedd80b"
+  },
+  {
+    "world": "dh",
+    "m": 87,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m87_dps100_GL160.json",
+    "sha256": "2669b10069e70052d724a75057dd78797bae290c096d87a917966e32ce974dc5"
+  },
+  {
+    "world": "dh",
+    "m": 104,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m104_dps100_GL160.json",
+    "sha256": "91f8a8e1fb07bc339c95ee625b7ba90c9d7507074f38de0ea4663a96b1a3c8f0"
+  },
+  {
+    "world": "dh",
+    "m": 16,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m16_dps100_GL160.json",
+    "sha256": "34142b0b27bf8435eadfa4a10b1acc18a2b929868c71f524a9cf47a0f0c4eed2"
+  },
+  {
+    "world": "dh",
+    "m": 58,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m58_dps100_GL160.json",
+    "sha256": "4988c37fa1e0bca6980d90b86e0100d9992e85a623258dcf94bd30a529d54378"
+  },
+  {
+    "world": "dh",
+    "m": 118,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m118_dps100_GL160.json",
+    "sha256": "70fc0b27352fef355640f776bd7d268d757c770a1ca4c93104a7b19975faf76e"
+  },
+  {
+    "world": "dh",
+    "m": 65,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m65_dps100_GL160.json",
+    "sha256": "b0a784383e9d04b82ec4757c35645dd734ea6d23b0db1976c22aa1250a0e036c"
+  },
+  {
+    "world": "dh",
+    "m": 112,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m112_dps100_GL160.json",
+    "sha256": "9d785c986cbf24816be6796dcf883624ef282cc64ed7fe76ff3109907407d0e4"
+  },
+  {
+    "world": "dh",
+    "m": 74,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m74_dps100_GL160.json",
+    "sha256": "dd17ebefad14277accf21e0f71870e4853af276521cce71f2a21a2a3a76ec626"
+  },
+  {
+    "world": "dh",
+    "m": 82,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m82_dps100_GL160.json",
+    "sha256": "bf4726187a10dd84ac11ee37fa40b70398f36d9432db52492fc7b9099a4162e1"
+  },
+  {
+    "world": "dh",
+    "m": 81,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m81_dps100_GL160.json",
+    "sha256": "65fc40932f55be5d0be5916cf306e39b05a362a29fdde03d105b1367d06a6040"
+  },
+  {
+    "world": "dh",
+    "m": 114,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m114_dps100_GL160.json",
+    "sha256": "d2d52dd92b8e9a2b15a3f6af4ec7db8848fceac9c0bd25a06219fcdb99291b95"
+  },
+  {
+    "world": "dh",
+    "m": 76,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m76_dps100_GL160.json",
+    "sha256": "08fe951eac89def3d0d41781f26821489b582d939d09a1d3a010fe1ade590a94"
+  },
+  {
+    "world": "dh",
+    "m": 116,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m116_dps100_GL160.json",
+    "sha256": "29e66aacf5d2b94c1f8e97583734934281db428bd98e7cd247517e7beb3463fe"
+  },
+  {
+    "world": "dh",
+    "m": 56,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m56_dps100_GL160.json",
+    "sha256": "680581bf5f78011c3d70479b2d694c5f4b702f445a5571bd40a5bb689cc0cfdd"
+  },
+  {
+    "world": "dh",
+    "m": 78,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m78_dps100_GL160.json",
+    "sha256": "fdb39e09d61e6fe7e9434b7604d6af52cbf7e50be9f5885785981bfd4fbb88ff"
+  },
+  {
+    "world": "dh",
+    "m": 105,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m105_dps100_GL160.json",
+    "sha256": "215d4972f3ae743179f1fcd1afd424752e12a9fe0ff978c41c0df8d484745522"
+  },
+  {
+    "world": "dh",
+    "m": 66,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m66_dps100_GL160.json",
+    "sha256": "a5d2eed0dd0bba852ce81a68cfd779e300a7b26fa7117a50b57b612f4ead2e03"
+  },
+  {
+    "world": "dh",
+    "m": 103,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m103_dps100_GL160.json",
+    "sha256": "c89565c5ecac7325086bcf82313e8169279e6422162ca987c55ac1f4c9bdace8"
+  },
+  {
+    "world": "dh",
+    "m": 85,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m85_dps100_GL160.json",
+    "sha256": "98812f4686e008e236c54cebbe406b0a175b9e5b16db9d62680ebb2b612953b7"
+  },
+  {
+    "world": "dh",
+    "m": 75,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m75_dps100_GL160.json",
+    "sha256": "7131368b052d091c970d5fac6baaf2e795cff9267e121353aefc0c95f5e87486"
+  },
+  {
+    "world": "dh",
+    "m": 64,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m64_dps100_GL160.json",
+    "sha256": "49500dde7c495048180cdc73e3bec7851c49bb4fb13ef95800c60b87d0d0f604"
+  },
+  {
+    "world": "dh",
+    "m": 63,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m63_dps100_GL160.json",
+    "sha256": "afdc820076529d61731ecddde8abe54a6792668d773d35a58eda16ffee3a9198"
+  },
+  {
+    "world": "dh",
+    "m": 91,
+    "source": "matrices/mp_escalation/DH/mp_cell_dh_m91_dps100_GL160.json",
+    "sha256": "465ae3554bb15ac751e6f9354ca2c8f04cbe8b13a0bc13f3224a065d1144c587"
+  }
+]

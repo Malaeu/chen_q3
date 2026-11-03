@@ -1,0 +1,284 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "records": [
+    {
+      "metrics": {
+        "world": "dh",
+        "m": 40,
+        "ambient": "uniform256_plus_exact_section_nodes",
+        "dimension": 949,
+        "old_dimension": 938,
+        "fresh_dimension": 11,
+        "cutoff": "kappa1",
+        "kappa": 1.0,
+        "T": 68.13109927105275,
+        "rank": 64,
+        "quiet_dimension": 885,
+        "complex_evaluation_points": 0,
+        "rank_smallest_singular": 0.35158537470179035,
+        "old_minimum": 8.720466545423394e-06,
+        "old_negative": 0,
+        "old_unresolved": 0,
+        "full_minimum": -0.0015149992507297984,
+        "full_negative": 1,
+        "full_unresolved": 0,
+        "section_S0_min": -0.06106305735290363,
+        "section_S0_negative": 1,
+        "section_S0_unresolved": 0,
+        "angle_f_J_degrees": 0.12902349876846436,
+        "delta_full_AQ": 9.657135057259415,
+        "quiet_compression_norm": 9.656632326976696,
+        "lambda_r": 8.317762972899555,
+        "ratio": -3.436132258430906,
+        "quiet_D0_negative": 1,
+        "quiet_S0_negative": 0,
+        "quiet_S0_min": 0.47186231280311125,
+        "quiet_D2_negative": 30,
+        "quiet_S2_negative": 7,
+        "quiet_D_below2": false,
+        "precision": "float64, MP100 old uniform source and witness",
+        "numeric_floor": 1e-07,
+        "constraint_residual": 5.631084970112721e-15,
+        "section_energy_replay_error": 7.16093850883226e-15
+      },
+      "quiet_indices": {
+        "0": {
+          "guard": "NUMERICALLY_RESOLVED",
+          "D": {
+            "negative": 1,
+            "positive": 884,
+            "unresolved": 0,
+            "raw_negative": 1,
+            "minimum": -0.0013492076472606989
+          },
+          "S": {
+            "negative": 0,
+            "positive": 64,
+            "unresolved": 0,
+            "raw_negative": 0,
+            "minimum": 0.47186231280311125
+          },
+          "full": {
+            "negative": 1,
+            "positive": 948,
+            "unresolved": 0,
+            "raw_negative": 1,
+            "minimum": -0.0015149992507297984
+          },
+          "raw_inertia_identity": true
+        },
+        "2": {
+          "guard": "NUMERICALLY_RESOLVED",
+          "D": {
+            "negative": 30,
+            "positive": 855,
+            "unresolved": 0,
+            "raw_negative": 30,
+            "minimum": -2.0013492076472654
+          },
+          "S": {
+            "negative": 7,
+            "positive": 57,
+            "unresolved": 0,
+            "raw_negative": 7,
+            "minimum": -181.77879031014245
+          },
+          "full": {
+            "negative": 37,
+            "positive": 912,
+            "unresolved": 0,
+            "raw_negative": 37,
+            "minimum": -2.00151499925073
+          },
+          "raw_inertia_identity": true
+        }
+      }
+    },
+    {
+      "metrics": {
+        "world": "dh",
+        "m": 40,
+        "ambient": "uniform256_plus_exact_section_nodes",
+        "dimension": 949,
+        "old_dimension": 938,
+        "fresh_dimension": 11,
+        "cutoff": "cquarter",
+        "kappa": 1.1562346214913772,
+        "T": 78.77553577745711,
+        "rank": 80,
+        "quiet_dimension": 869,
+        "complex_evaluation_points": 0,
+        "rank_smallest_singular": 0.21788363073637526,
+        "old_minimum": 8.720466545423394e-06,
+        "old_negative": 0,
+        "old_unresolved": 0,
+        "full_minimum": -0.0015149992507297984,
+        "full_negative": 1,
+        "full_unresolved": 0,
+        "section_S0_min": -0.06106305735290363,
+        "section_S0_negative": 1,
+        "section_S0_unresolved": 0,
+        "angle_f_J_degrees": 2.6289377669434972,
+        "delta_full_AQ": 9.656132899301653,
+        "quiet_compression_norm": 9.65565015591867,
+        "lambda_r": 8.16918226560462,
+        "ratio": -0.008432937975015839,
+        "quiet_D0_negative": 0,
+        "quiet_S0_negative": 1,
+        "quiet_S0_min": -0.07846495481344068,
+        "quiet_D2_negative": 27,
+        "quiet_S2_negative": 10,
+        "quiet_D_below2": false,
+        "precision": "float64, MP100 old uniform source and witness",
+        "numeric_floor": 1e-07,
+        "constraint_residual": 6.331547783294519e-15,
+        "section_energy_replay_error": 7.16093850883226e-15
+      },
+      "quiet_indices": {
+        "0": {
+          "guard": "NUMERICALLY_RESOLVED",
+          "D": {
+            "negative": 0,
+            "positive": 869,
+            "unresolved": 0,
+            "raw_negative": 0,
+            "minimum": 8.65388194939508e-06
+          },
+          "S": {
+            "negative": 1,
+            "positive": 79,
+            "unresolved": 0,
+            "raw_negative": 1,
+            "minimum": -0.07846495481344068
+          },
+          "full": {
+            "negative": 1,
+            "positive": 948,
+            "unresolved": 0,
+            "raw_negative": 1,
+            "minimum": -0.0015149992507297984
+          },
+          "raw_inertia_identity": true
+        },
+        "2": {
+          "guard": "NUMERICALLY_RESOLVED",
+          "D": {
+            "negative": 27,
+            "positive": 842,
+            "unresolved": 0,
+            "raw_negative": 27,
+            "minimum": -1.9999913461180632
+          },
+          "S": {
+            "negative": 10,
+            "positive": 70,
+            "unresolved": 0,
+            "raw_negative": 10,
+            "minimum": -2.8200401229730963
+          },
+          "full": {
+            "negative": 37,
+            "positive": 912,
+            "unresolved": 0,
+            "raw_negative": 37,
+            "minimum": -2.00151499925073
+          },
+          "raw_inertia_identity": true
+        }
+      }
+    },
+    {
+      "metrics": {
+        "world": "dh",
+        "m": 40,
+        "ambient": "uniform256_plus_exact_section_nodes",
+        "dimension": 949,
+        "old_dimension": 938,
+        "fresh_dimension": 11,
+        "cutoff": "chalf",
+        "kappa": 1.3124692429827545,
+        "T": 89.4199722838615,
+        "rank": 92,
+        "quiet_dimension": 857,
+        "complex_evaluation_points": 2,
+        "rank_smallest_singular": 0.06970311077512321,
+        "old_minimum": 8.720466545423394e-06,
+        "old_negative": 0,
+        "old_unresolved": 0,
+        "full_minimum": -0.0015149992507297984,
+        "full_negative": 1,
+        "full_unresolved": 0,
+        "section_S0_min": -0.06106305735290363,
+        "section_S0_negative": 1,
+        "section_S0_unresolved": 0,
+        "angle_f_J_degrees": 8.0845580221013,
+        "delta_full_AQ": 9.650206270128617,
+        "quiet_compression_norm": 9.64853235459179,
+        "lambda_r": 8.011059104266877,
+        "ratio": -0.0009147342981954698,
+        "quiet_D0_negative": 0,
+        "quiet_S0_negative": 1,
+        "quiet_S0_min": -0.008242088807064184,
+        "quiet_D2_negative": 25,
+        "quiet_S2_negative": 12,
+        "quiet_D_below2": false,
+        "precision": "float64, MP100 old uniform source and witness",
+        "numeric_floor": 1e-07,
+        "constraint_residual": 6.927167574616893e-15,
+        "section_energy_replay_error": 7.16093850883226e-15
+      },
+      "quiet_indices": {
+        "0": {
+          "guard": "NUMERICALLY_RESOLVED",
+          "D": {
+            "negative": 0,
+            "positive": 857,
+            "unresolved": 0,
+            "raw_negative": 0,
+            "minimum": 8.664673381182756e-06
+          },
+          "S": {
+            "negative": 1,
+            "positive": 91,
+            "unresolved": 0,
+            "raw_negative": 1,
+            "minimum": -0.008242088807064184
+          },
+          "full": {
+            "negative": 1,
+            "positive": 948,
+            "unresolved": 0,
+            "raw_negative": 1,
+            "minimum": -0.0015149992507297984
+          },
+          "raw_inertia_identity": true
+        },
+        "2": {
+          "guard": "NUMERICALLY_RESOLVED",
+          "D": {
+            "negative": 25,
+            "positive": 832,
+            "unresolved": 0,
+            "raw_negative": 25,
+            "minimum": -1.9999913353266257
+          },
+          "S": {
+            "negative": 12,
+            "positive": 80,
+            "unresolved": 0,
+            "raw_negative": 12,
+            "minimum": -2.031842792392816
+          },
+          "full": {
+            "negative": 37,
+            "positive": 912,
+            "unresolved": 0,
+            "raw_negative": 37,
+            "minimum": -2.00151499925073
+          },
+          "raw_inertia_identity": true
+        }
+      }
+    }
+  ]
+}

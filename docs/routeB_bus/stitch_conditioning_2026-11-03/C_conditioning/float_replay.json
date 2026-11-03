@@ -1,0 +1,3122 @@
+[
+  {
+    "world": "dh",
+    "m": 120,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.154451154560727351409779e-29",
+    "new_relative_triplet_residual": "4.805103858525281348031131e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 17,
+    "cut": "c_half",
+    "relative_sigma_change": "3.77492002635880287509779e-15",
+    "new_relative_triplet_residual": "8.68898155868548756598259e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 17,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.305298379148004686595231e-30",
+    "new_relative_triplet_residual": "2.286182700598491328311308e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 18,
+    "cut": "c_half",
+    "relative_sigma_change": "1.478124652160150668639868e-13",
+    "new_relative_triplet_residual": "0.0000005437140152985719010879719",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 18,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.028572539363872630776478e-30",
+    "new_relative_triplet_residual": "5.731814911898906225106724e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 19,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.535722273093277411483462e-30",
+    "new_relative_triplet_residual": "1.752553721341104802530207e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 20,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.892809860160686855312124e-30",
+    "new_relative_triplet_residual": "3.712899099130135762357181e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 21,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.824611471576166856050854e-30",
+    "new_relative_triplet_residual": "3.413095800465075388725598e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 22,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.309458352455378195458288e-29",
+    "new_relative_triplet_residual": "6.796261255212866219790461e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 23,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.650304341711792681843996e-30",
+    "new_relative_triplet_residual": "4.114857264318721804116561e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 25,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.676668415191870236233855e-30",
+    "new_relative_triplet_residual": "3.862991963196419112551823e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 26,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.531250079616357373732642e-30",
+    "new_relative_triplet_residual": "1.901117893012316626189432e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 27,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.289796200735093400992422e-30",
+    "new_relative_triplet_residual": "4.45439665539167817019295e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 28,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.013561597657608948471488e-30",
+    "new_relative_triplet_residual": "3.973734075895873901052608e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 29,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.683246905231157222363258e-30",
+    "new_relative_triplet_residual": "3.920011965601930971320925e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 30,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.417197607734708871563699e-30",
+    "new_relative_triplet_residual": "3.582512416652511442224354e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 31,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.162827298986238537688174e-30",
+    "new_relative_triplet_residual": "4.040501775519035343092623e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 32,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.015981007395489197905428e-30",
+    "new_relative_triplet_residual": "2.456005296165091415133414e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 33,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.916240591812138469484682e-31",
+    "new_relative_triplet_residual": "1.879729530287810726378862e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 34,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.601344242736438717010679e-30",
+    "new_relative_triplet_residual": "1.789605678766380489052633e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 35,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.63721842979178008033159e-30",
+    "new_relative_triplet_residual": "3.643410059214246633557049e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 36,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.017724475234686742704367e-28",
+    "new_relative_triplet_residual": "2.008842689328702384594907e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 37,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.595167919810039285800635e-30",
+    "new_relative_triplet_residual": "2.681480158349130610176862e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 38,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.456299264302674227876804e-30",
+    "new_relative_triplet_residual": "2.216438252829378609520979e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 39,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.284673589505720829672176e-30",
+    "new_relative_triplet_residual": "4.03246120022554519805567e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 40,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.26333633840710273470932e-30",
+    "new_relative_triplet_residual": "2.398847539587963894827168e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 41,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.894361920596368815372744e-30",
+    "new_relative_triplet_residual": "2.405976691739289819911007e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 42,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.330667360212406118143905e-30",
+    "new_relative_triplet_residual": "2.959188130884079393228332e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 43,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.265851673056284053764033e-30",
+    "new_relative_triplet_residual": "2.998798934917597493415967e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 44,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.867136687180396343742393e-30",
+    "new_relative_triplet_residual": "2.467041349955351896051797e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 45,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.079825876892282224507692e-30",
+    "new_relative_triplet_residual": "2.481864572007216603480194e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 46,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.349974872018107101794295e-30",
+    "new_relative_triplet_residual": "2.861398446754185561759038e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 47,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.919307645075274841080365e-31",
+    "new_relative_triplet_residual": "1.738913565189461384816866e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 48,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.772034153231029492445723e-30",
+    "new_relative_triplet_residual": "2.354584529479045690625525e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 49,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.959822619683692376315712e-30",
+    "new_relative_triplet_residual": "3.164647254477508011777413e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 50,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.843737102873289706165237e-30",
+    "new_relative_triplet_residual": "3.659108033866553252722217e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 51,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.131064090035877213227121e-30",
+    "new_relative_triplet_residual": "2.502424460412692342825791e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 52,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.634484230639919649287271e-30",
+    "new_relative_triplet_residual": "3.044498063931038090909718e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 53,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.739765382324676993790848e-30",
+    "new_relative_triplet_residual": "3.425718425002697226944926e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 54,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.283155046970599221557187e-30",
+    "new_relative_triplet_residual": "3.743745185737599037428647e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 56,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.828411223375538976157836e-30",
+    "new_relative_triplet_residual": "4.214651432777401431885784e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 57,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.441373032541717647651248e-30",
+    "new_relative_triplet_residual": "2.980393609086463481323185e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 58,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.533193226759179911444193e-30",
+    "new_relative_triplet_residual": "2.872299658213146992379762e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 59,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.269226608982604098840436e-30",
+    "new_relative_triplet_residual": "4.023954707705252483015362e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 60,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.202229354380961995033787e-30",
+    "new_relative_triplet_residual": "2.870894669893637656265849e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 61,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.657109966144414391600783e-30",
+    "new_relative_triplet_residual": "3.648865567856512411692797e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 62,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.382925345518440778253059e-30",
+    "new_relative_triplet_residual": "3.986956408646522150171705e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 63,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.862848222196420987214177e-30",
+    "new_relative_triplet_residual": "3.704820703406960013317376e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 64,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.410293145960761996855144e-30",
+    "new_relative_triplet_residual": "1.731395698991758223931528e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 65,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.915886088655833506404679e-30",
+    "new_relative_triplet_residual": "2.414906246070780076321925e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 66,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.290886995168258423332924e-30",
+    "new_relative_triplet_residual": "4.640669497746230607509456e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 67,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.581829560054048234682282e-30",
+    "new_relative_triplet_residual": "3.027153633383693406719365e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 68,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.470193458104288998814684e-30",
+    "new_relative_triplet_residual": "3.060225742623450611896314e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 69,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.577975022271208330523626e-30",
+    "new_relative_triplet_residual": "2.675060755299291639071143e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 70,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.904020842527450413486355e-30",
+    "new_relative_triplet_residual": "2.691469594118667429054505e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 71,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.657304137821917451367273e-30",
+    "new_relative_triplet_residual": "2.30534341815787499880194e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 72,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.18436487320589532236256e-30",
+    "new_relative_triplet_residual": "2.546919408136175530376093e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 73,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.972064738193360078460338e-30",
+    "new_relative_triplet_residual": "1.985983251789077942555627e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 74,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.5663287721317411345707e-30",
+    "new_relative_triplet_residual": "2.269238961528176374897079e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 75,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.433410948731976104446723e-30",
+    "new_relative_triplet_residual": "2.324203120165976984432408e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 77,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.275631626404301711270898e-29",
+    "new_relative_triplet_residual": "5.051003120973697658740496e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 100,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.973925039124184158932465e-30",
+    "new_relative_triplet_residual": "2.71069845479949804040837e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 101,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.22755593972570846019584e-30",
+    "new_relative_triplet_residual": "4.420878593197326639819771e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 102,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.533640699477697554958211e-30",
+    "new_relative_triplet_residual": "3.467583000032089937792202e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 103,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.382328213962425317141329e-30",
+    "new_relative_triplet_residual": "3.532072425598980755262351e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 104,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.956392048548869445626319e-29",
+    "new_relative_triplet_residual": "6.255225093549982627397666e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 105,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.707496644890292008212683e-30",
+    "new_relative_triplet_residual": "2.723048528723016353071511e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 120,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.636205861316771656185331e-30",
+    "new_relative_triplet_residual": "3.188512568043109854968032e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 17,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.700431749311989361646253e-29",
+    "new_relative_triplet_residual": "8.60282715078245584257222e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 17,
+    "cut": "c_half",
+    "relative_sigma_change": "8.832841511505772567538795e-23",
+    "new_relative_triplet_residual": "1.329123132859087105546652e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 17,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.784802213055891082184043e-30",
+    "new_relative_triplet_residual": "2.360000937735360766262978e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 18,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.697480639387133424755661e-28",
+    "new_relative_triplet_residual": "3.065120108376548895970626e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 18,
+    "cut": "c_half",
+    "relative_sigma_change": "1.612043684191745862957054e-20",
+    "new_relative_triplet_residual": "1.795574383973967179850175e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 18,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.300913957968108939669261e-30",
+    "new_relative_triplet_residual": "2.007954265312214127017138e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 19,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.886718416017496322394049e-30",
+    "new_relative_triplet_residual": "2.402797709345294145539921e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 19,
+    "cut": "c_half",
+    "relative_sigma_change": "5.477156377752770676977106e-22",
+    "new_relative_triplet_residual": "3.309730012479196369225416e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 19,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.865446077058923850368037e-30",
+    "new_relative_triplet_residual": "3.119437794558155266170462e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 20,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.227294199309797542272461e-29",
+    "new_relative_triplet_residual": "8.034045306456514553369685e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 20,
+    "cut": "c_half",
+    "relative_sigma_change": "8.390687885266379167029647e-21",
+    "new_relative_triplet_residual": "1.295429495207390989034119e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 20,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.569167034594575685758455e-30",
+    "new_relative_triplet_residual": "2.536985188780467152602361e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 21,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.056141243468157568145154e-27",
+    "new_relative_triplet_residual": "6.412708076106626527411234e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 21,
+    "cut": "c_half",
+    "relative_sigma_change": "2.372212864592285736270325e-22",
+    "new_relative_triplet_residual": "2.178170270934889854058177e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 21,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.162948613150720573990435e-30",
+    "new_relative_triplet_residual": "4.478687946934921985337098e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 22,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.497075647778558224840494e-29",
+    "new_relative_triplet_residual": "1.048529985053222807912959e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 22,
+    "cut": "c_half",
+    "relative_sigma_change": "8.393624649409483565073622e-20",
+    "new_relative_triplet_residual": "4.097224584864608948113409e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 22,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.458495870967329687234067e-31",
+    "new_relative_triplet_residual": "3.751648750256323957971463e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 23,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.452162170258623026552638e-27",
+    "new_relative_triplet_residual": "7.003088133471722953956307e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 23,
+    "cut": "c_half",
+    "relative_sigma_change": "3.214085306370103916492909e-18",
+    "new_relative_triplet_residual": "2.535383721005601129079904e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 23,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.834911345267462975333604e-30",
+    "new_relative_triplet_residual": "2.466706994848082972267896e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 25,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.713803029433538341088939e-27",
+    "new_relative_triplet_residual": "8.618356025871219879548881e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 25,
+    "cut": "c_half",
+    "relative_sigma_change": "5.796919806421633708566788e-18",
+    "new_relative_triplet_residual": "3.404972777107515659725765e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 25,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.768758117843907763478409e-30",
+    "new_relative_triplet_residual": "2.087283157035288168204352e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 26,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.188490346767012414308047e-28",
+    "new_relative_triplet_residual": "2.092123489073726935630867e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 26,
+    "cut": "c_half",
+    "relative_sigma_change": "1.72847048388695022811513e-19",
+    "new_relative_triplet_residual": "5.879575637555741536925872e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 26,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.071562721658807670801087e-30",
+    "new_relative_triplet_residual": "2.981163833353095646002594e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 27,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.107498669721529062212157e-26",
+    "new_relative_triplet_residual": "1.728972269290777297782719e-13",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 27,
+    "cut": "c_half",
+    "relative_sigma_change": "2.184285621381611425641935e-17",
+    "new_relative_triplet_residual": "6.609516807424899040202203e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 27,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.15382411822844151957519e-30",
+    "new_relative_triplet_residual": "2.511503182649164599531247e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 28,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.709687541112516722019705e-25",
+    "new_relative_triplet_residual": "1.134621104921270409441229e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 28,
+    "cut": "c_half",
+    "relative_sigma_change": "1.016958209435693332114371e-16",
+    "new_relative_triplet_residual": "1.426154416208633059565695e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 28,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.433753822249215718706614e-30",
+    "new_relative_triplet_residual": "2.206242879761526037730796e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 29,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.478322529820268993782479e-26",
+    "new_relative_triplet_residual": "1.719489767239263912556832e-13",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 29,
+    "cut": "c_half",
+    "relative_sigma_change": "8.578247555752583330389379e-17",
+    "new_relative_triplet_residual": "1.309828046405526043634745e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 29,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.821367566665207374752595e-30",
+    "new_relative_triplet_residual": "2.901028694789151280931464e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 30,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.258588643761145793747193e-26",
+    "new_relative_triplet_residual": "1.586561466670072504787971e-13",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 30,
+    "cut": "c_half",
+    "relative_sigma_change": "1.153142972935518769837566e-14",
+    "new_relative_triplet_residual": "0.0000001518646089736208892411209",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 30,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.35495767928663119822187e-30",
+    "new_relative_triplet_residual": "2.806560693412587700273734e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 31,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.442058425290074611618169e-27",
+    "new_relative_triplet_residual": "1.461495113775700660288878e-13",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 31,
+    "cut": "c_half",
+    "relative_sigma_change": "2.29078597685121169255417e-15",
+    "new_relative_triplet_residual": "6.768731013788654852140538e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 31,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.563189570101589111106161e-30",
+    "new_relative_triplet_residual": "2.914042280028232207955652e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 32,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.454741647877409189906571e-20",
+    "new_relative_triplet_residual": "1.705720755503320473058117e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 32,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.079260583293798211364207e-30",
+    "new_relative_triplet_residual": "1.545330248580964433548193e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 33,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.194364175153406490966719e-26",
+    "new_relative_triplet_residual": "2.292809729483804664158572e-13",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 33,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.772848294529326456034273e-31",
+    "new_relative_triplet_residual": "3.559406337472078885124442e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 34,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.003718000324000038097528e-23",
+    "new_relative_triplet_residual": "4.480441943210513330705439e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 34,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.854169255171634178124273e-31",
+    "new_relative_triplet_residual": "2.262598056428155745381016e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 35,
+    "cut": "c_quarter",
+    "relative_sigma_change": "7.558639412485471758580613e-25",
+    "new_relative_triplet_residual": "1.229523437148350723425094e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 35,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.193251389859249201458593e-30",
+    "new_relative_triplet_residual": "1.544830987428235918643506e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 36,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.501429945561942192141992e-24",
+    "new_relative_triplet_residual": "2.646291724493708268128996e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 36,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.717241463175013542185547e-30",
+    "new_relative_triplet_residual": "3.118093706879432576584043e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 37,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.368643365533206239679363e-24",
+    "new_relative_triplet_residual": "2.497277737047124691292883e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 37,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.929648419921605400219626e-30",
+    "new_relative_triplet_residual": "2.913304500080730046834267e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 38,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.205430579694811421868077e-24",
+    "new_relative_triplet_residual": "3.95507983575240279814085e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 38,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.670435165128131686704817e-30",
+    "new_relative_triplet_residual": "3.113573408540454422261806e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 39,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.732427283069138410429535e-21",
+    "new_relative_triplet_residual": "5.886301526543026848365521e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 39,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.355314222995323307572608e-31",
+    "new_relative_triplet_residual": "3.507463603792409292993195e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 40,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.967288149976309714025763e-25",
+    "new_relative_triplet_residual": "2.556723885582299683614229e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 40,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.774723957305997584305772e-31",
+    "new_relative_triplet_residual": "2.26479129621676764602195e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 41,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.64586989183050954777973e-22",
+    "new_relative_triplet_residual": "2.98542093351986328564014e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 41,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.318578056557296396258517e-30",
+    "new_relative_triplet_residual": "4.855031343429035799851862e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 42,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.325241552124789993372796e-22",
+    "new_relative_triplet_residual": "3.230363833161530126180745e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 42,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.952110676068275161550826e-30",
+    "new_relative_triplet_residual": "2.429860356509515614905165e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 43,
+    "cut": "c_quarter",
+    "relative_sigma_change": "9.000317678482304785420774e-23",
+    "new_relative_triplet_residual": "2.586186543467746245568286e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 43,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.517048750646431555301073e-30",
+    "new_relative_triplet_residual": "1.972454450401642753827386e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 44,
+    "cut": "c_quarter",
+    "relative_sigma_change": "7.685540821157854645703782e-24",
+    "new_relative_triplet_residual": "6.436626895794648865136366e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 44,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.98421266436776669079623e-31",
+    "new_relative_triplet_residual": "2.477069503932227321545709e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 45,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.374789874810108053324419e-22",
+    "new_relative_triplet_residual": "1.866999761776731251581401e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 45,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.06920915278630711075524e-30",
+    "new_relative_triplet_residual": "1.116035198250494331293262e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 46,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.073037170666200771342211e-23",
+    "new_relative_triplet_residual": "7.839690262588440772157944e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 46,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.278327296079776709566783e-30",
+    "new_relative_triplet_residual": "2.56059653052946891224078e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 47,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.462018938250173148180397e-21",
+    "new_relative_triplet_residual": "5.407437356549168842499899e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 47,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.222181577698674809209305e-30",
+    "new_relative_triplet_residual": "2.108165827300440238880778e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 48,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.297069587149332683206926e-20",
+    "new_relative_triplet_residual": "3.363577199274665940730855e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 48,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.300846143859975082501913e-30",
+    "new_relative_triplet_residual": "2.381650434200065239583921e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 49,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.101692811667661959418976e-20",
+    "new_relative_triplet_residual": "2.864155307125527353312428e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 49,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.481007563019320977046671e-31",
+    "new_relative_triplet_residual": "2.897356304846882778098287e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 50,
+    "cut": "c_quarter",
+    "relative_sigma_change": "8.42230248859354233292626e-24",
+    "new_relative_triplet_residual": "1.222377037209739882296127e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 50,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.062147135584450813446647e-30",
+    "new_relative_triplet_residual": "1.457495890618186829504932e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 51,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.540320872410832623178836e-22",
+    "new_relative_triplet_residual": "6.277005081458037419048568e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 51,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.088041572016571690695294e-30",
+    "new_relative_triplet_residual": "2.859385098938781170165642e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 52,
+    "cut": "c_quarter",
+    "relative_sigma_change": "8.719856342243409607204551e-20",
+    "new_relative_triplet_residual": "7.420866140443250006428878e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 52,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.728167558443272066749549e-30",
+    "new_relative_triplet_residual": "2.380018449394644145412425e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 53,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.074932680590865461045357e-18",
+    "new_relative_triplet_residual": "1.466241917686754352312492e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 53,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.495471803119917457403922e-30",
+    "new_relative_triplet_residual": "2.148904836056529825697423e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 54,
+    "cut": "c_quarter",
+    "relative_sigma_change": "6.684251521673877058661977e-20",
+    "new_relative_triplet_residual": "3.656296356061383889454688e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 54,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.641012360367921421979679e-30",
+    "new_relative_triplet_residual": "3.046641547792559538073418e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 56,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.351339926135865376627327e-20",
+    "new_relative_triplet_residual": "2.289149901059524179180842e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 56,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.823936530829260217724104e-30",
+    "new_relative_triplet_residual": "2.059733950920677356753333e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 57,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.92278568227025370307907e-19",
+    "new_relative_triplet_residual": "1.455462936046861035894033e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 57,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.086321221779346653198568e-30",
+    "new_relative_triplet_residual": "3.462560699864309816559114e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 58,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.684499988851246307612305e-19",
+    "new_relative_triplet_residual": "7.327346025473679387117612e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 58,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.794470036692527315920295e-30",
+    "new_relative_triplet_residual": "1.894449807565524981079842e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 59,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.562876074743128411925204e-19",
+    "new_relative_triplet_residual": "8.986375216155613258163498e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 59,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.303735025618603286631205e-30",
+    "new_relative_triplet_residual": "4.075226380366765167672464e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 60,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.848153661076714930495258e-16",
+    "new_relative_triplet_residual": "2.386693805697210145290966e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 60,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.503586513983862834025899e-30",
+    "new_relative_triplet_residual": "3.001195266550932981471035e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 61,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.573796272384743080749279e-17",
+    "new_relative_triplet_residual": "5.610340938632416335482609e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 61,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.845276604467493980244837e-30",
+    "new_relative_triplet_residual": "3.14938575753185001410795e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 62,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.121631044790047846663211e-17",
+    "new_relative_triplet_residual": "1.012090020184968352909824e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 62,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.877089809554248797231885e-30",
+    "new_relative_triplet_residual": "2.398787114170096085991155e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 63,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.833351085766996364851128e-19",
+    "new_relative_triplet_residual": "1.196320295795292324636924e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 63,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.408190743701247346894601e-30",
+    "new_relative_triplet_residual": "3.20227116974721474116934e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 64,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.8563705237317569930147e-20",
+    "new_relative_triplet_residual": "3.422388208176201916575103e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 64,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.27279434513054361339076e-29",
+    "new_relative_triplet_residual": "9.351824992531273062416779e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 66,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.22687162412351120994998e-16",
+    "new_relative_triplet_residual": "1.566442864660892402337687e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 66,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.181107215311478270291161e-30",
+    "new_relative_triplet_residual": "3.731442200210234176468175e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 67,
+    "cut": "c_quarter",
+    "relative_sigma_change": "9.187496789489156506235625e-16",
+    "new_relative_triplet_residual": "4.286606300907320125792424e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 67,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.358714757007537003189916e-30",
+    "new_relative_triplet_residual": "2.538776551875053414456438e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 68,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.145409020638744010039565e-17",
+    "new_relative_triplet_residual": "2.425518243485702374259506e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 68,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.528585485591563569501546e-30",
+    "new_relative_triplet_residual": "2.656533638255523226869412e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 69,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.44563390203578402314572e-15",
+    "new_relative_triplet_residual": "9.429351941714566916981486e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 69,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.866423687770499583693053e-30",
+    "new_relative_triplet_residual": "2.772880067838323513044956e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 70,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.578351042240270716972297e-17",
+    "new_relative_triplet_residual": "1.87110469252379748508184e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 70,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.987079552719072370440489e-30",
+    "new_relative_triplet_residual": "2.823855361989729236153575e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 71,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.512673729423480765195756e-15",
+    "new_relative_triplet_residual": "5.500315862609136009014751e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 71,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.730451554411877568752107e-30",
+    "new_relative_triplet_residual": "3.121392867393653814960961e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 72,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.280008722765243680499206e-17",
+    "new_relative_triplet_residual": "8.568695479781066206146752e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 72,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.505277256926322252310199e-30",
+    "new_relative_triplet_residual": "2.647745175399748416019793e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 73,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.757970068725680216344962e-16",
+    "new_relative_triplet_residual": "3.839897038127852402464176e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 73,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.45405740586293094185518e-30",
+    "new_relative_triplet_residual": "3.302743527996968444549224e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 74,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.31563460391488267035185e-15",
+    "new_relative_triplet_residual": "8.592822305238359989928818e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 74,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.021082138386957632628751e-29",
+    "new_relative_triplet_residual": "4.519031175787477641925639e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 75,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.027059453213578315134308e-30",
+    "new_relative_triplet_residual": "4.242432370882261331937592e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 76,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.722268117735831258571531e-15",
+    "new_relative_triplet_residual": "0.0000001801379675670919010007867",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 76,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.334441260283084363635973e-30",
+    "new_relative_triplet_residual": "4.1414919689651078589611e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 79,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.083656573572562204856564e-30",
+    "new_relative_triplet_residual": "3.030530003818988974797793e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 81,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.346708704596958659329242e-30",
+    "new_relative_triplet_residual": "2.948460175955225161341382e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 82,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.521810678508077317053943e-15",
+    "new_relative_triplet_residual": "0.0000001188034382158907728655059",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 82,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.436980015542610645103825e-30",
+    "new_relative_triplet_residual": "3.27030284631303416154481e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 83,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.432207130001724695048027e-30",
+    "new_relative_triplet_residual": "3.605720793267730035998464e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 84,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.549700704521331273789731e-29",
+    "new_relative_triplet_residual": "5.567226786329673625737395e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 85,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.775305118203552436742205e-30",
+    "new_relative_triplet_residual": "3.428773207753787260685143e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 86,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.286238890262910854895426e-30",
+    "new_relative_triplet_residual": "4.982738782574505681271451e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 87,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.800129187967137680915443e-30",
+    "new_relative_triplet_residual": "2.92112019392595433402152e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 88,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.479411786190638678656436e-30",
+    "new_relative_triplet_residual": "3.310411390202323080043526e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 89,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.759010168179058837149308e-30",
+    "new_relative_triplet_residual": "4.031826863069378456275463e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 90,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.508946348111888119238161e-30",
+    "new_relative_triplet_residual": "4.627599363229421382974256e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 91,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.234915069000213137332955e-30",
+    "new_relative_triplet_residual": "3.23571168956698400630348e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 92,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.496123168053544468961439e-30",
+    "new_relative_triplet_residual": "2.998707444234446978927751e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 93,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.421747204041121505878505e-30",
+    "new_relative_triplet_residual": "3.064292048511539781026272e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 94,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.816953059952326161169548e-30",
+    "new_relative_triplet_residual": "3.235096124482567518799546e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 95,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.121148308663039672927838e-30",
+    "new_relative_triplet_residual": "3.590101850523706124158001e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 96,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.45213241277491586963721e-30",
+    "new_relative_triplet_residual": "6.5139252040357861943835e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 97,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.896825642740109766493496e-30",
+    "new_relative_triplet_residual": "4.837071867534205742187764e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 98,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.801502871393693120697774e-30",
+    "new_relative_triplet_residual": "4.082573983532625320284582e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 99,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.050168393072559053668288e-29",
+    "new_relative_triplet_residual": "4.582943144034320340388297e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 100,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.800516268579511817056238e-30",
+    "new_relative_triplet_residual": "2.637950519503161662089615e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 101,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.546681668562864804759273e-31",
+    "new_relative_triplet_residual": "1.823018581857134250571727e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 102,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.98145010158523029580465e-30",
+    "new_relative_triplet_residual": "2.479287794301538984482483e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 103,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.743859754187630867142286e-30",
+    "new_relative_triplet_residual": "2.342588207170705820780953e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 104,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.998115456931061903693195e-30",
+    "new_relative_triplet_residual": "1.999057506391980662519455e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 105,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.555748027427830363558628e-30",
+    "new_relative_triplet_residual": "1.763943325295815938992753e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 106,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.307178771715177765932783e-30",
+    "new_relative_triplet_residual": "2.283500690036346226150486e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 107,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.883600490791500114801235e-30",
+    "new_relative_triplet_residual": "1.940927866146240950919781e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 108,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.703963278850557498129678e-30",
+    "new_relative_triplet_residual": "2.110354269908348638521514e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 109,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.838433348294207712989767e-30",
+    "new_relative_triplet_residual": "2.382617614429225910565123e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 110,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.604175287244519030790838e-30",
+    "new_relative_triplet_residual": "2.774175715797830768409261e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 120,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.935097242510929876400405e-31",
+    "new_relative_triplet_residual": "1.259769601356607578655532e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 40,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.018285122426920259701733e-24",
+    "new_relative_triplet_residual": "4.548374812037818283488335e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 40,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.35682079281954305268499e-31",
+    "new_relative_triplet_residual": "1.12754785200625015892317e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 41,
+    "cut": "c_quarter",
+    "relative_sigma_change": "9.643709959523708003351225e-23",
+    "new_relative_triplet_residual": "4.178719045067386596314807e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 41,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.788689337547028041976572e-31",
+    "new_relative_triplet_residual": "1.053458483417550740414159e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 42,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.236692388947307544957473e-22",
+    "new_relative_triplet_residual": "1.572699837189097915217641e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 42,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.926110635181115849070986e-31",
+    "new_relative_triplet_residual": "1.702105823110932408250236e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 43,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.443675002398583735466009e-22",
+    "new_relative_triplet_residual": "2.069885904663650651163831e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 43,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.930950714261850370693811e-31",
+    "new_relative_triplet_residual": "1.259440408615020607533386e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 44,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.223058857260738801483323e-24",
+    "new_relative_triplet_residual": "4.344834219909989186269418e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 44,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.494502350505140921213303e-30",
+    "new_relative_triplet_residual": "2.998166890119741456822684e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 45,
+    "cut": "c_quarter",
+    "relative_sigma_change": "6.862841675752948997700162e-23",
+    "new_relative_triplet_residual": "1.354551715671018453355955e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 45,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.351561114265861700138855e-30",
+    "new_relative_triplet_residual": "1.817665297191842461806995e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 46,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.672971808533568295224797e-23",
+    "new_relative_triplet_residual": "5.784413208845938411371282e-12",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 46,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.215502999444702783895254e-30",
+    "new_relative_triplet_residual": "1.984670607572343102029547e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 47,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.517259867337554478404638e-22",
+    "new_relative_triplet_residual": "3.219440127435700603994694e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 47,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.175128122009938830770172e-30",
+    "new_relative_triplet_residual": "1.533054546981247390194783e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 48,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.097436840330523006309126e-20",
+    "new_relative_triplet_residual": "1.481510607677530607513003e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 48,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.779994815605329770902204e-31",
+    "new_relative_triplet_residual": "1.247396874743986984541266e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 49,
+    "cut": "c_quarter",
+    "relative_sigma_change": "8.585251453620315978004307e-20",
+    "new_relative_triplet_residual": "4.143730554372548963047395e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 49,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.219086831978194603128046e-31",
+    "new_relative_triplet_residual": "1.201589516596927921377306e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 50,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.5232070708619505840592e-23",
+    "new_relative_triplet_residual": "1.191870424269786931903546e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 50,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.730709215967033128722943e-31",
+    "new_relative_triplet_residual": "1.118891100251765143344091e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 51,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.882537378768614428884724e-22",
+    "new_relative_triplet_residual": "3.567739428007297010492854e-11",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 51,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.468264862259848106386491e-31",
+    "new_relative_triplet_residual": "2.194176773935216589607857e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 52,
+    "cut": "c_quarter",
+    "relative_sigma_change": "9.549652232085967924129772e-20",
+    "new_relative_triplet_residual": "4.370275101658010710612522e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 52,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.392157834291120820875021e-30",
+    "new_relative_triplet_residual": "1.668626881175729363885024e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 53,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.888204384044997458084035e-19",
+    "new_relative_triplet_residual": "9.869167532962129048998156e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 53,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.86394367293330586943745e-30",
+    "new_relative_triplet_residual": "2.130368319070735040426878e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 54,
+    "cut": "c_quarter",
+    "relative_sigma_change": "8.445033772334312142343753e-20",
+    "new_relative_triplet_residual": "4.302860568522262891309604e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 54,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.486531863499653392508914e-31",
+    "new_relative_triplet_residual": "1.063972929185493390817524e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 55,
+    "cut": "c_quarter",
+    "relative_sigma_change": "6.276724456528428174559162e-18",
+    "new_relative_triplet_residual": "3.54308466072388065189305e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 55,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.406550552218598816883178e-31",
+    "new_relative_triplet_residual": "1.77427204986968024207446e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 56,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.248063145902677433488056e-20",
+    "new_relative_triplet_residual": "2.276436495966918677263435e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 56,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.216754150468731586917854e-30",
+    "new_relative_triplet_residual": "2.066421468666733405923759e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 57,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.4872831583898570006836e-19",
+    "new_relative_triplet_residual": "1.064331116316407148543742e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 57,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.552746989557720996677071e-31",
+    "new_relative_triplet_residual": "9.542271207168365738869167e-16",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 58,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.951961706309623412952437e-19",
+    "new_relative_triplet_residual": "6.248138452866779125409808e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 58,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.747668219825800860928402e-31",
+    "new_relative_triplet_residual": "1.396257012145385851127437e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 59,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.650860746278114724911952e-19",
+    "new_relative_triplet_residual": "6.42618304432829648084127e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 59,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.743547262735543602549999e-31",
+    "new_relative_triplet_residual": "9.961755944105683326686306e-16",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 60,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.855694444327676797538482e-16",
+    "new_relative_triplet_residual": "1.926496532219914126507538e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 60,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.795605553389969822857157e-31",
+    "new_relative_triplet_residual": "1.399686075760559234324376e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 61,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.014896084073565785415479e-17",
+    "new_relative_triplet_residual": "4.505321484807861745994457e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 61,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.686277553859267243155974e-29",
+    "new_relative_triplet_residual": "9.681195746248773419804458e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 62,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.029992078361454630555688e-17",
+    "new_relative_triplet_residual": "5.213302402929531954645751e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 62,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.92054182718554853799772e-31",
+    "new_relative_triplet_residual": "1.176481349379202741808935e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 63,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.001851884786591111037653e-19",
+    "new_relative_triplet_residual": "1.378911796233626932824952e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 63,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.314109022362678888487335e-31",
+    "new_relative_triplet_residual": "1.123753444698851981097498e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 64,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.773807433373785473714364e-20",
+    "new_relative_triplet_residual": "4.864934703539597967055788e-10",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 64,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.276604359007617339858558e-31",
+    "new_relative_triplet_residual": "1.407083802505592576870691e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 65,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.704186510038167711221516e-16",
+    "new_relative_triplet_residual": "3.377628312895950542790723e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 65,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.303041188069965523632979e-31",
+    "new_relative_triplet_residual": "1.288645893026471839974232e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 66,
+    "cut": "c_quarter",
+    "relative_sigma_change": "7.171740561977458889190991e-17",
+    "new_relative_triplet_residual": "1.197642731533695708146437e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 66,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.082848660968251030152497e-31",
+    "new_relative_triplet_residual": "1.429700106838466576483423e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 67,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.8011074992428436689476e-16",
+    "new_relative_triplet_residual": "2.637655475701308936566186e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 67,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.310847445201397625782475e-31",
+    "new_relative_triplet_residual": "1.289251522799286642423539e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 68,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.093179301089278985650368e-17",
+    "new_relative_triplet_residual": "1.460878969145100146421604e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 68,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.194921298836091073711573e-31",
+    "new_relative_triplet_residual": "1.490109153063876574664297e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 69,
+    "cut": "c_quarter",
+    "relative_sigma_change": "2.345470258881718041072152e-15",
+    "new_relative_triplet_residual": "6.849044106854220416786684e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 69,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.708950816968585584710492e-31",
+    "new_relative_triplet_residual": "1.608189022494606907120927e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 70,
+    "cut": "c_quarter",
+    "relative_sigma_change": "4.857133851809086133927178e-17",
+    "new_relative_triplet_residual": "1.918001192583288383164922e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 70,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.075968042385517809355709e-30",
+    "new_relative_triplet_residual": "1.466947880727545009363965e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 71,
+    "cut": "c_quarter",
+    "relative_sigma_change": "5.500251892195869315450589e-16",
+    "new_relative_triplet_residual": "3.316700737840504612735881e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 71,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.392200652805235325152748e-30",
+    "new_relative_triplet_residual": "1.753233835421343169687806e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 72,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.144103530105469025603417e-17",
+    "new_relative_triplet_residual": "4.783520732902636945020087e-9",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 72,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.337652381937761189018725e-30",
+    "new_relative_triplet_residual": "2.113417621932474940927804e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 73,
+    "cut": "c_quarter",
+    "relative_sigma_change": "3.192603070776616709509608e-16",
+    "new_relative_triplet_residual": "3.390792097127827404777947e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 73,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.7852296285633256009013e-31",
+    "new_relative_triplet_residual": "1.117060217796487883438375e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 74,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.247500268951385012317352e-15",
+    "new_relative_triplet_residual": "9.84018018469332050831354e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 74,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.398123257081050572737323e-31",
+    "new_relative_triplet_residual": "1.370994037702648112631343e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 75,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.336735062399138701198829e-30",
+    "new_relative_triplet_residual": "2.187918898003842954321569e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 76,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.847190188202863001420354e-15",
+    "new_relative_triplet_residual": "0.000000135219041733571692751956",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 76,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.134695454468787281820745e-31",
+    "new_relative_triplet_residual": "1.535843388046202160909007e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 77,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.438848287616642104723683e-30",
+    "new_relative_triplet_residual": "1.696377486066495816911279e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 78,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.25635618456650409794167e-30",
+    "new_relative_triplet_residual": "1.585153736750163988927e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 79,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.414961152982506877746659e-30",
+    "new_relative_triplet_residual": "1.682237291812606844605072e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 81,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.537492155790767884480261e-30",
+    "new_relative_triplet_residual": "2.252772583191995385253599e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 82,
+    "cut": "c_quarter",
+    "relative_sigma_change": "1.745990900680732032192316e-15",
+    "new_relative_triplet_residual": "9.487987131315573549285131e-8",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 82,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.077333946032572462360425e-30",
+    "new_relative_triplet_residual": "2.038300245809028234961116e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 83,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.7011015768226735187854e-31",
+    "new_relative_triplet_residual": "2.314986798518703010206488e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 84,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.855966573472527188069025e-31",
+    "new_relative_triplet_residual": "1.479966054040223474832079e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 85,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.321787882136114683711682e-30",
+    "new_relative_triplet_residual": "1.625907673969290719831617e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 86,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.903784544503724173613472e-31",
+    "new_relative_triplet_residual": "1.599015192944466524310219e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 87,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.332851647741977951739993e-30",
+    "new_relative_triplet_residual": "2.28212330778955253347874e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 88,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.9729154031700064313629e-31",
+    "new_relative_triplet_residual": "2.351061748824223968513304e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 89,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.571187134558725583530386e-30",
+    "new_relative_triplet_residual": "2.534596984752992208878577e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 90,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.23648425980997979602585e-30",
+    "new_relative_triplet_residual": "2.910836395199833210999096e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 91,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.08914143764118521500774e-29",
+    "new_relative_triplet_residual": "1.190725949800472368541954e-14",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 92,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.179371930535846849347036e-30",
+    "new_relative_triplet_residual": "1.535820256759134460236532e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 93,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.330477464847822672846e-31",
+    "new_relative_triplet_residual": "2.086644705602389365364897e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 94,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.106701416283936438977787e-30",
+    "new_relative_triplet_residual": "2.052657504935461189603428e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 95,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.334109162509657157922605e-30",
+    "new_relative_triplet_residual": "1.633468189166631526246834e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 96,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.757785419013306648489098e-30",
+    "new_relative_triplet_residual": "2.741454146621207541545416e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 97,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.447940070333707332462727e-31",
+    "new_relative_triplet_residual": "1.658188042840808630802354e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 98,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.683591297929264470224572e-30",
+    "new_relative_triplet_residual": "2.109536031095849325389675e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 99,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.314969260565027195730935e-30",
+    "new_relative_triplet_residual": "2.151729193260632970459945e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 76,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.435459325629657980645154e-30",
+    "new_relative_triplet_residual": "2.36046554010425633261034e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 78,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.349227621044949385534086e-30",
+    "new_relative_triplet_residual": "3.362669453841993756631305e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 79,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.076852532125118884828962e-30",
+    "new_relative_triplet_residual": "3.694306159403019805985104e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 80,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.125421314392848968649726e-29",
+    "new_relative_triplet_residual": "7.011298836280837986476224e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 81,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.66057204722294963035108e-30",
+    "new_relative_triplet_residual": "8.564039883255836869953227e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 82,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.54992342715570864726286e-30",
+    "new_relative_triplet_residual": "5.246491252513152722466471e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 83,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.422660498260779629220954e-30",
+    "new_relative_triplet_residual": "6.085194544180145387002149e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 84,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.16027483856245427300235e-30",
+    "new_relative_triplet_residual": "4.500154960971154962165168e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 85,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.073069900735858431014951e-29",
+    "new_relative_triplet_residual": "7.83973201166450386851479e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 86,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.111418084885168454323653e-29",
+    "new_relative_triplet_residual": "4.714696352651289152422692e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 87,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.410274555547053942602131e-29",
+    "new_relative_triplet_residual": "6.943017435592472920002943e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 88,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.646275443062760860547102e-30",
+    "new_relative_triplet_residual": "7.167494424491661944149258e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 89,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.910572476832553167672955e-30",
+    "new_relative_triplet_residual": "3.717680049932364248954309e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 90,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.401860926414931196207591e-30",
+    "new_relative_triplet_residual": "7.04030902790791820103618e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 91,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.743990885609341389873908e-29",
+    "new_relative_triplet_residual": "9.740627172425132287020739e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 92,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.161394819969447741536156e-29",
+    "new_relative_triplet_residual": "4.819532798870545587888463e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 93,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.845128080914288464589634e-30",
+    "new_relative_triplet_residual": "4.07503729308329279810692e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 94,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.061372781552704881548294e-30",
+    "new_relative_triplet_residual": "4.01531388101919247245222e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 106,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.446060774720600565220547e-30",
+    "new_relative_triplet_residual": "3.529398443242844735290821e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 107,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.51496802152861945817229e-30",
+    "new_relative_triplet_residual": "4.231578581058029836025098e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 108,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.556078304656704963789571e-30",
+    "new_relative_triplet_residual": "2.263889398476338097577091e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 109,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.972842957649107773265125e-30",
+    "new_relative_triplet_residual": "4.236234874897544623457611e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 110,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.887810455001508883670739e-30",
+    "new_relative_triplet_residual": "3.711552358515641062536183e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 111,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.289722470577345721436558e-30",
+    "new_relative_triplet_residual": "3.052260005820900919208317e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 112,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.655166039242862769534497e-30",
+    "new_relative_triplet_residual": "3.051283677157160938078898e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 113,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.07968223385640123941175e-30",
+    "new_relative_triplet_residual": "3.56948653546500954052947e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 114,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.792763442352326449327192e-30",
+    "new_relative_triplet_residual": "4.193510091165234444123707e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 115,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.006611001535916750523961e-30",
+    "new_relative_triplet_residual": "2.452187187608611884831106e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 116,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.78560616067946273131411e-29",
+    "new_relative_triplet_residual": "5.975962116144082001929933e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 117,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.289073262240340063427866e-30",
+    "new_relative_triplet_residual": "3.361639958017254370502721e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 118,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.318483665902381789377994e-30",
+    "new_relative_triplet_residual": "3.825828973151408865622214e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "plant",
+    "m": 119,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.486008948561566288387558e-30",
+    "new_relative_triplet_residual": "3.312403643447327899460201e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 111,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.177454247627073925594061e-30",
+    "new_relative_triplet_residual": "1.534571111175414982824263e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 112,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.374455775779042812112563e-30",
+    "new_relative_triplet_residual": "2.597866730907897366121019e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 113,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.746771099285720167792845e-30",
+    "new_relative_triplet_residual": "2.737433505780814456710615e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 114,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.891466387467353772507145e-30",
+    "new_relative_triplet_residual": "3.179403807526506520957743e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 115,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.37506365733319214306873e-30",
+    "new_relative_triplet_residual": "1.6583507815496648675668e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 116,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.089617399955960203818268e-30",
+    "new_relative_triplet_residual": "2.247063778269564279054182e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 117,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.869363164894869133678331e-29",
+    "new_relative_triplet_residual": "8.7970030861593644591306e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 118,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.747613528121841750663404e-31",
+    "new_relative_triplet_residual": "1.537067480563904970280183e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "zeta",
+    "m": 119,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.28883641377349387127519e-30",
+    "new_relative_triplet_residual": "2.178952934082806642341314e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 100,
+    "cut": "kappa_one",
+    "relative_sigma_change": "3.951554819751387777525716e-30",
+    "new_relative_triplet_residual": "3.54616078654890782512889e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 101,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.327929159586139863341189e-29",
+    "new_relative_triplet_residual": "5.471466289110463956210082e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 102,
+    "cut": "kappa_one",
+    "relative_sigma_change": "9.218230089775079804358894e-30",
+    "new_relative_triplet_residual": "5.516530201656225294381435e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 103,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.188170001158356674047849e-29",
+    "new_relative_triplet_residual": "4.874771791906482003470597e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 104,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.622612905093333002485107e-30",
+    "new_relative_triplet_residual": "3.964765658793176481753402e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 105,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.880664674093947607063861e-30",
+    "new_relative_triplet_residual": "4.013323170002016834632123e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 106,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.692549986831744827699875e-30",
+    "new_relative_triplet_residual": "5.25745658691086543428581e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 107,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.468796737732589576026581e-30",
+    "new_relative_triplet_residual": "3.596886636448969203466938e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 108,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.904875717939151789377139e-30",
+    "new_relative_triplet_residual": "4.991422152871044247483454e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 109,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.216594401397665540006507e-29",
+    "new_relative_triplet_residual": "4.932736363110571795332527e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 110,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.590973458826809896381437e-30",
+    "new_relative_triplet_residual": "4.159851765985813530574677e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 111,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.198640835932985063764504e-30",
+    "new_relative_triplet_residual": "4.050516685279792120095826e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 112,
+    "cut": "kappa_one",
+    "relative_sigma_change": "8.915802211659921491630952e-30",
+    "new_relative_triplet_residual": "5.511429296885189521486602e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 113,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.013994544582586845856576e-65",
+    "new_relative_triplet_residual": "5.884177879587456107584127e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 114,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.714765859179889463408832e-65",
+    "new_relative_triplet_residual": "4.244005554964962485634669e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 115,
+    "cut": "kappa_one",
+    "relative_sigma_change": "2.34091581033930175736372e-66",
+    "new_relative_triplet_residual": "3.843241851902696492387054e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 116,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.38487160879537572458533e-65",
+    "new_relative_triplet_residual": "4.909663868766734850686721e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 117,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.473030791037007440022083e-65",
+    "new_relative_triplet_residual": "4.217356283050667973364617e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 118,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.279351924073311024532484e-65",
+    "new_relative_triplet_residual": "5.768278211013163376528891e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 119,
+    "cut": "kappa_one",
+    "relative_sigma_change": "7.637139477005093300980955e-66",
+    "new_relative_triplet_residual": "4.794120631637454490840837e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 95,
+    "cut": "kappa_one",
+    "relative_sigma_change": "5.258412201077705707131302e-30",
+    "new_relative_triplet_residual": "3.242965371716974010011492e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 96,
+    "cut": "kappa_one",
+    "relative_sigma_change": "6.348710262350124370496045e-30",
+    "new_relative_triplet_residual": "4.163609709407443392579403e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 97,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.412815182242257514901752e-29",
+    "new_relative_triplet_residual": "5.315665870316262673403795e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 98,
+    "cut": "kappa_one",
+    "relative_sigma_change": "1.226170850226045039776587e-29",
+    "new_relative_triplet_residual": "5.024002136441499748951072e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  },
+  {
+    "world": "dh",
+    "m": 99,
+    "cut": "kappa_one",
+    "relative_sigma_change": "4.011311831758983856512904e-30",
+    "new_relative_triplet_residual": "4.233548031526586319995362e-15",
+    "method": "FLOAT_SVD_MP_RAYLEIGH"
+  }
+]

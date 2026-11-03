@@ -1,0 +1,50 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "repository_dependencies": [
+    {
+      "path": "docs/routeB_bus/capacity_matrix_2026-11-02/capacity.py",
+      "sha256": "631738bf36bb1b496360cd58e6e3aff7922b6d2da15d59f62c1b0cea9adb7a5b",
+      "bytes": 5195
+    },
+    {
+      "path": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+      "bytes": 36465
+    },
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/dh_matrix.py",
+      "sha256": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00",
+      "bytes": 7832
+    },
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/dh_zeros.json",
+      "sha256": "e2f5f86d960aff5b45a318723072a1a2c67df3f00b6d213535274831c9afdee1",
+      "bytes": 69981
+    },
+    {
+      "path": "docs/routeB_bus/suzuki_W_2026-11-02/W/prototype.py",
+      "sha256": "b68cc41885954395f2bf4e6009e62eb5fd96a12e07c3a9c750268ba019eba56b",
+      "bytes": 4200
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/core/scan.py",
+      "sha256": "d341c021ee57f44e7e750f77a2fd41c5ec65f9dd69bf96fa17f30618e4f0b45e",
+      "bytes": 5591
+    },
+    {
+      "path": "docs/routeB_bus/lit_quickcheck_2026-11-03/Q2_simple_even/check.py",
+      "sha256": "e037087173559ce912925d82dd5f30ae2e313a15aef9d1d166833da7ea338cdc",
+      "bytes": 4542
+    }
+  ],
+  "python_packages": [
+    "mpmath",
+    "numpy",
+    "scipy"
+  ],
+  "input_remote_byte_comparison": "All four pinned source markdown texts compared exactly with raw.githubusercontent.com at their specified commits before publication.",
+  "environment_recovery": "Completed checkpoints preserved; interrupted scans resumed only missing cells. See B_stitch/RESUME100.json and C checkpoint provenance.",
+  "optional_python_packages": [
+    "python-flint (400-bit approximate ACB eigenvalue backend for fourteen final scalar spectra; not interval certification)"
+  ]
+}

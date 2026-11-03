@@ -1,0 +1,23 @@
+[
+  {
+    "world": "zeta",
+    "m": 24,
+    "c": ".25",
+    "projector_norm_difference": 9.729479683886186e-16,
+    "kernel_residual": 7.091524902220484e-16
+  },
+  {
+    "world": "zeta",
+    "m": 80,
+    "c": ".25",
+    "projector_norm_difference": 1.6662092363935514e-15,
+    "kernel_residual": 9.345557710765643e-16
+  },
+  {
+    "world": "plant",
+    "m": 80,
+    "c": ".5",
+    "projector_norm_difference": 1.423194939944219e-15,
+    "kernel_residual": 1.080053875857864e-15
+  }
+]

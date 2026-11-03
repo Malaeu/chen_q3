@@ -1,0 +1,38 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "repo": "Malaeu/chen_q3",
+  "sources": [
+    {
+      "name": "PROSHKA_VERDICT_PASSIVE_SECTION_P_2026-11-03.md",
+      "commit": "11f6368323d8aaac3d3c0a6a95873b86294cc540",
+      "sha256": "a8bcbdcbdedc9d339c75b74046e80ade1da673786088c2662edb390255b0ec75",
+      "git_blob": "755c8535d18a9ea68d366934f4158981a50c0728",
+      "bytes": 37850
+    },
+    {
+      "name": "PROSHKA_VERDICT_QUIET_SPACE_INDEX_2026-11-02.md",
+      "commit": "f6c9cd89cc104ae3fdfc23bcc8a26b102d195fbf",
+      "sha256": "f1e6e3634a5829744c98faeb9e3e01535fd29c0ac976c50fefb19bdc0ea97e34",
+      "git_blob": "84b6d256ed2cb30b71949bfcc465c148dbb15a82",
+      "bytes": 36536
+    },
+    {
+      "name": "PROSHKA_VERDICT_SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_2026-11-02.md",
+      "commit": "2176dab16bf77dd015f7efcb5a6f704587f732c8",
+      "sha256": "fb0176935d103209bea3feff8362605024da7635c568768dc5355f441e5ddd14",
+      "git_blob": "ebf7f8cab61a795118bda5dc7e65a0b3386247b7",
+      "bytes": 32225
+    },
+    {
+      "name": "SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_PAPER_AUDIT_2026-11-02.md",
+      "commit": "e724ae65ed39a8ba8b8f07c928d790ea9820342a",
+      "sha256": "a52f2fd910bf298ae54b0a96fa4a3d31045aa278f6224c4ff3f3b1040ec30081",
+      "git_blob": "4e6165039aaa6e5d52774413ca39de596be409bd",
+      "bytes": 11947
+    }
+  ],
+  "literature_dependency": "81b657eaa00ee873ca94fc853f8a4dd2cd622c2c",
+  "SOS_audit_dependency": "4fe4292088d983bf5bbd5e2c75fa0fad06ef9ca9",
+  "starting_commit": "5fa6258d760f78e3761bc44f88e0f5b53b4fc75c",
+  "concurrent_literature_commit_preserved": "8bc588da3097d44e72ac1a80d873777bae8c202a"
+}

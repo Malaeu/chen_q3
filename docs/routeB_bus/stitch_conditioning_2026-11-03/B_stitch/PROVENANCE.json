@@ -1,0 +1,39 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "sources": [
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/core/scan.py",
+      "sha256": "d341c021ee57f44e7e750f77a2fd41c5ec65f9dd69bf96fa17f30618e4f0b45e",
+      "bytes": 5591
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/core/dh_mesh256_dps100.json",
+      "sha256": "e4df2ec4ab1f719096796ea3d05f5054a42f58047369095b89aedc8606561384",
+      "bytes": 747569
+    },
+    {
+      "path": "docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf",
+      "bytes": 36465
+    },
+    {
+      "path": "docs/routeB_bus/fake_worlds_2026-11-02/dh_zeros.json",
+      "sha256": "e2f5f86d960aff5b45a318723072a1a2c67df3f00b6d213535274831c9afdee1",
+      "bytes": 69981
+    },
+    {
+      "path": "docs/routeB_bus/screw_line_2026-11-02/extension_margin/uniform/margins.py",
+      "sha256": "aa51149d2ea1225634d6eadaebbeaad1e676b461ad3808c7c2ea8fbc7f0e50c5",
+      "bytes": 4723
+    }
+  ],
+  "zero_census": "Numerical input data, not a formal completeness certificate.",
+  "baseline_dimensions": "2m+5 physical real bins; all old and fresh coordinates shared by both Schurs.",
+  "resolution_control_dimensions": "949 bins,938old and11fresh at m40.",
+  "thresholds": [
+    0,
+    2
+  ],
+  "interval_arithmetic": false,
+  "route_state_changed": false
+}

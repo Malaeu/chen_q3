@@ -1,0 +1,18 @@
+{
+  "status": "SAVED_DATA_CONSISTENCY_REVIEW_PASS",
+  "scope": "No new eigensolve; not an interval certificate or independent proof of source analysis.",
+  "B_cells": 36,
+  "B_max_relative_projection_partition_error": "1.09647808659773236624038032396e-99",
+  "C_cells": 315,
+  "C_resolved_base_sigma": 945,
+  "C_lambda_r_resolved_rows": 2659,
+  "C_all_cutoff_rows": 2659,
+  "C_Schur_status": {
+    "NUMERIC_IDENTITY_PASS": 2659
+  },
+  "paired_planted_index_difference_counts": {
+    "(1, -1, -2)": 859
+  },
+  "source_hashes_checked": 4,
+  "route_state_changed": false
+}

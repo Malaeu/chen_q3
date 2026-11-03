@@ -1,0 +1,66 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "reason": "Execution-environment outage terminated primary100-digit process; no live PID observed.",
+  "existing_count": 32,
+  "existing_sha256": {
+    "cell_zeta_m16_kappa1_dps100.json": "91eb42664e39f3163a64e40d43f475673c78849e05abc74b6b3fa787acf1e5f3",
+    "cell_zeta_m16_cquarter_dps100.json": "b74c14f900064aa9f39eb20f3a0941e3ca5f1dbfc961a917d2725ee481e33731",
+    "cell_zeta_m16_chalf_dps100.json": "e18f6b021c77466f0ed6a0227e5d75ff983504a977a112b61b764b8f166e36fe",
+    "cell_dh_m16_kappa1_dps100.json": "a4511301554bef2cffd7a8da6ef3c28cb506dbe31e676a0d09c114835b57f0a4",
+    "cell_dh_m16_cquarter_dps100.json": "c26930fcc4cd0cf198f79641ff34618d547d402effbcda9637bc510c4d1c4ade",
+    "cell_dh_m16_chalf_dps100.json": "4fc3c2d92513b715f67f979b54478493886ca6fef1f85a4eec41aefdfcc4cb12",
+    "cell_plant_m16_kappa1_dps100.json": "f9feb7ed86ea7fa7a8af80d4625e88184586c200bc2a08b07d74f58dded7028e",
+    "cell_plant_m16_cquarter_dps100.json": "7a60034ff5cf2be62c9ada55cc1f0034072bdb4838e68471abf268c34e896417",
+    "cell_plant_m16_chalf_dps100.json": "9268b00e6e71de6e0c8ee9174934b9d3bf00a67f4986b80fbddff385ad2a0310",
+    "cell_zeta_m24_kappa1_dps100.json": "c60f4728f73b22942eafbf54d57e19d67f1438fa7001672e9d77fd132f584faa",
+    "cell_zeta_m24_cquarter_dps100.json": "e1ca86a10def37f571761e1f8f7613249bbe27b6acc988eab5263a0c1a6bc453",
+    "cell_zeta_m24_chalf_dps100.json": "5c7e8b376e6ee9475151c0eab2f7b05e0043f93033673d1eaadb0309da3ad17f",
+    "cell_dh_m24_kappa1_dps100.json": "c067aaa8fd2679d28a9c79bdffc7c791f0fd7fd7f047fdabd0c008c9284ad96a",
+    "cell_dh_m24_cquarter_dps100.json": "62881dd683b9917a76636668d54d5b69c886eac0062a74ff26d39b15962e330a",
+    "cell_dh_m24_chalf_dps100.json": "5e2526c3b2ce44dda12045fbaad26afe86d7bdb44002ff7658c1402722fb88e6",
+    "cell_plant_m24_kappa1_dps100.json": "36d9e57c08d34bc2fa5943688535cab86c750064afd56badb1c707786bf208a5",
+    "cell_plant_m24_cquarter_dps100.json": "b69061b5cd05785ac302ca84158f756454299dad67d7ab0ac12d3b5ef2711152",
+    "cell_plant_m24_chalf_dps100.json": "f583106d3b6540b76ffd33b59cf7735f75b0817cceb4eace64141033b8264322",
+    "cell_zeta_m32_kappa1_dps100.json": "838bfaf026b78b6a3ff83f0418b4c175dc8ed0001b2f2fe335144b0716f0d9fc",
+    "cell_zeta_m32_cquarter_dps100.json": "4df81e1e429c629ab5474da375f9c92ea92eea072b1476ff03d91faf82574c79",
+    "cell_zeta_m32_chalf_dps100.json": "f97841ded9405417445830fe476599afd756d2fd27c058c120ee8654ba20634c",
+    "cell_dh_m32_kappa1_dps100.json": "76b544f344a7d0e43a7c0b28c713395e7b66d8451f6ac72ca93192c904857e26",
+    "cell_dh_m32_cquarter_dps100.json": "964c366e298027b972dfdfc3dbec37f717b973dd42fe14fdad195976f9dd06fb",
+    "cell_dh_m32_chalf_dps100.json": "378b91715153823deff93b811330f45d7e76724af51371aeb8902c75d8abcadd",
+    "cell_plant_m32_kappa1_dps100.json": "041ce0772d2947104a0c1de6e4f5c11999674757e59e8c88b395be7e4838771f",
+    "cell_plant_m32_cquarter_dps100.json": "df3da26baa3c1d4d64da11f453fab9095a7541b729556f18dc6c9eff0422e9b9",
+    "cell_plant_m32_chalf_dps100.json": "88a564109696a67ad625e04e3666519208155cba0c90670f8246a5ce1c388954",
+    "cell_zeta_m40_kappa1_dps100.json": "87661cf47a914bc4fca3659682ead23302ce35f8220aba1081097523085e3f51",
+    "cell_zeta_m40_cquarter_dps100.json": "56e2e11b6e4fd02c1f700af316868f1cacf5ff9600e7a3ec4f1183e9e12e0523",
+    "cell_zeta_m40_chalf_dps100.json": "259b75bad9720f2d8abd14e580b1434fd88e20441605defa6cf37accbb157d21",
+    "cell_dh_m40_kappa1_dps100.json": "98eb99e41b39094a9323d51aa826dfa0037832d1324d1c7e3c13d5c64deb0464",
+    "cell_dh_m40_cquarter_dps100.json": "551fa457ae6e24e1e6ec856d1c9a56f5d627b080c11b47bdf5bfd29fcc945f19"
+  },
+  "missing_cells": [
+    [
+      40,
+      "dh",
+      "chalf"
+    ],
+    [
+      40,
+      "plant",
+      "kappa1"
+    ],
+    [
+      40,
+      "plant",
+      "cquarter"
+    ],
+    [
+      40,
+      "plant",
+      "chalf"
+    ]
+  ],
+  "method": "Resume only absent cell files; assemble completed metrics from immutable existing and resumed checkpoints.",
+  "completed": true,
+  "resume_seconds": 298.2567751890001,
+  "total_rows": 36,
+  "existing_files_unchanged": true
+}

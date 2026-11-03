@@ -1,0 +1,34 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "files": {
+    "capacity_matrix_2026-11-02/capacity.py": {
+      "bytes": 5195,
+      "sha256": "631738bf36bb1b496360cd58e6e3aff7922b6d2da15d59f62c1b0cea9adb7a5b"
+    },
+    "capacity_matrix_2026-11-02/zeros.csv": {
+      "bytes": 36465,
+      "sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+    },
+    "fake_worlds_2026-11-02/dh_zeros.json": {
+      "bytes": 69981,
+      "sha256": "e2f5f86d960aff5b45a318723072a1a2c67df3f00b6d213535274831c9afdee1"
+    },
+    "stitch_conditioning_2026-11-03/inputs/PROSHKA_VERDICT_PASSIVE_SECTION_P_2026-11-03.md": {
+      "bytes": 37850,
+      "sha256": "a8bcbdcbdedc9d339c75b74046e80ade1da673786088c2662edb390255b0ec75"
+    },
+    "stitch_conditioning_2026-11-03/inputs/PROSHKA_VERDICT_QUIET_SPACE_INDEX_2026-11-02.md": {
+      "bytes": 36536,
+      "sha256": "f1e6e3634a5829744c98faeb9e3e01535fd29c0ac976c50fefb19bdc0ea97e34"
+    },
+    "stitch_conditioning_2026-11-03/inputs/PROSHKA_VERDICT_SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_2026-11-02.md": {
+      "bytes": 32225,
+      "sha256": "fb0176935d103209bea3feff8362605024da7635c568768dc5355f441e5ddd14"
+    },
+    "stitch_conditioning_2026-11-03/inputs/SHRINKING_KAPPA_INTERPOLATION_RESIDUAL_PAPER_AUDIT_2026-11-02.md": {
+      "bytes": 11947,
+      "sha256": "a52f2fd910bf298ae54b0a96fa4a3d31045aa278f6224c4ff3f3b1040ec30081"
+    }
+  },
+  "normalization": "RAW critical row and unscaled Re/Im quartet rows; original literal even CCM"
+}

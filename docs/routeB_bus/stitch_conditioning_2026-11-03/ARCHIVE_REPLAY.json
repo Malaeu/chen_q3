@@ -1,0 +1,8 @@
+{
+  "status": "LOSSLESS_ARCHIVE_RESTORE_PASS",
+  "members": 1399,
+  "parts": 56,
+  "archive_sha256": "3c9f87f458d671605e3a5df9e48851031e4b8917043c8ec5b0e5df43346de84c",
+  "raw_bytes": 65032078,
+  "verification": "All members extracted into a fresh scratch directory and their SHA256 rechecked."
+}

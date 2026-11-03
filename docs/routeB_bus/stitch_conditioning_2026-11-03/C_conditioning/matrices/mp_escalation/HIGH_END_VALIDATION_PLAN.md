@@ -1,0 +1,5 @@
+# Before high-end refinement
+
+DIAGNOSTIC_NEVER_A_PROOF. The existing pilot validates m65 but not the largest new source matrices. After the full sweep, budget permitting, independently evaluateζ/plant m119 at120dps and160-point Gauss quadrature, and compare all C-selected r indices against the100dps/128-point spectra. Prediction0.9: selected positive λ_r values agree to relative1e−20;0.95: all selected |λ_r| exceed the maximum full-spectrum refinement change by at least10^10. This check is numerical, not an interval tail proof. A failure keeps that value UNRESOLVED and triggers a bounded targeted check rather than a positivity claim. Existingζm120 source spectrum is reused and need not be recomputed.
+
+Closeout: no paired high-end source-quadrature validation was executed. The parent authorized only exact missing cells after the original budget stop and prohibited further experiments. The independently validated approximate solver completed the missing tail; this validates solver use, not a new high-end source quadrature bound.

@@ -1,0 +1,18 @@
+{
+  "stitch_conditioning_2026-11-03/C_conditioning/tall_sweep.py": {
+    "sha256": "0b9eee81c46c4de914ef19394702e3065c146d04bfdd2c135be006fa78fa6f0b",
+    "mtime_ns": 1793682740516241725
+  },
+  "stitch_conditioning_2026-11-03/C_conditioning/core.py": {
+    "sha256": "ce13c360a16c3f0fec7f9e2e8a29f7f2204d8eef4e5cba7061db0ba85749cda3",
+    "mtime_ns": 1793679870004067746
+  },
+  "capacity_matrix_2026-11-02/capacity.py": {
+    "sha256": "631738bf36bb1b496360cd58e6e3aff7922b6d2da15d59f62c1b0cea9adb7a5b",
+    "mtime_ns": 1793609473297676906
+  },
+  "fake_worlds_2026-11-02/dh_zeros.json": {
+    "sha256": "e2f5f86d960aff5b45a318723072a1a2c67df3f00b6d213535274831c9afdee1",
+    "mtime_ns": 1793622226425593245
+  }
+}

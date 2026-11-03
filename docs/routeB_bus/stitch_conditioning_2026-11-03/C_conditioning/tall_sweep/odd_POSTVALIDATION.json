@@ -1,0 +1,17 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "complete": true,
+  "cells": 20,
+  "CPU_seconds": 166.825652057,
+  "CPU_cap": 300,
+  "all_stored_gates_pass": true,
+  "full_weak_left_ledgers_present": true,
+  "left_mass_sum_and_coordinate_square_checks_pass": true,
+  "max_relative_200_240": "4.55076766222460998219767630197543814375070887458828742133816e-114",
+  "max_relative_residual": "0.0000000000000000000000000000009211702947725169363211337641448165531252",
+  "max_iterations": 5,
+  "localized_count": 1,
+  "diffuse_count": 19,
+  "input_scope": "fixed approximately80-digit DH zero table; no root uncertainty propagated; no source eigensolve",
+  "receipts_csv_sha256": "7705a8d72382873cb51cc80aca4eeb8bb084616c9f4f73ebd312d6bc27d338bf"
+}
