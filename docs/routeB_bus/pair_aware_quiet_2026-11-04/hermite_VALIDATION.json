@@ -1,0 +1,151 @@
+{
+  "status": "BOUNDED_NUMERICAL_COORDINATE_CHECKS_PASS",
+  "prefix_pilots": 10,
+  "distinct_nonidentity_transforms": 8,
+  "theta_receipts": 30,
+  "active_theta_receipts": 13,
+  "max_relative_delta_difference": 1.112616431531423e-15,
+  "max_projector_difference": 5.925604789394859e-15,
+  "all_active_lambda_r_reused_identically": true,
+  "all_active_events_whole_and_included": true,
+  "all_active_pairs_in_frozen_T1_map": true,
+  "all_census_hashes_and_regions_checked": true,
+  "fullgrid_numerical_claim": false,
+  "unexecuted_requested_m": [
+    24,
+    40,
+    400
+  ],
+  "cells": [
+    {
+      "path": "hermite_dh_m310_q249.json",
+      "sha256": "69af33420106aa02da79c6eb2850dcc21f39cf98000d26a9b82fb6103a31369f",
+      "world": "dh",
+      "m": 310,
+      "q": 249,
+      "active": true
+    },
+    {
+      "path": "hermite_plant_m310_q167.json",
+      "sha256": "883c3da71153a770cdfd5d6b47a757c520e2b405aa265b18eb6d175e52b7ea5f",
+      "world": "plant",
+      "m": 310,
+      "q": 167,
+      "active": true
+    },
+    {
+      "path": "hermite_zeta_m120_q58.json",
+      "sha256": "7d77d1337112a1d45ca691a2f9fc29733a43f238caa87021cbd812bb24b844db",
+      "world": "zeta",
+      "m": 120,
+      "q": 58,
+      "active": true
+    },
+    {
+      "path": "hermite_zeta_m16_q5.json",
+      "sha256": "753d9ddf82909a93694de32685250d0bc48cabe859bdf87c7c7ceb4531300cf4",
+      "world": "zeta",
+      "m": 16,
+      "q": 5,
+      "active": true
+    },
+    {
+      "path": "hermite_zeta_m200_q101.json",
+      "sha256": "c8ba26c4305e67dfc2759b5dd8a33f459138c6a00eed5655bd94ee96852d8af4",
+      "world": "zeta",
+      "m": 200,
+      "q": 101,
+      "active": true
+    },
+    {
+      "path": "hermite_zeta_m248_q128.json",
+      "sha256": "49d366d3e8210784ead623155900c61052b55ffb763ef2f08fa6c76b57aff0c2",
+      "world": "zeta",
+      "m": 248,
+      "q": 128,
+      "active": true
+    },
+    {
+      "path": "hermite_zeta_m300_q157.json",
+      "sha256": "55923830deefb798ace316f2ee859bfd5fee1fedbc38b529fa3d91073f004ef2",
+      "world": "zeta",
+      "m": 300,
+      "q": 157,
+      "active": true
+    },
+    {
+      "path": "hermite_zeta_m310_q163.json",
+      "sha256": "5acede4aec645a806807338023fbdac782a88e166ec0bdd8eefb3937fa266a6e",
+      "world": "zeta",
+      "m": 310,
+      "q": 163,
+      "active": false
+    },
+    {
+      "path": "hermite_zeta_m600_q333.json",
+      "sha256": "0e76233ba9305596be611827842951d6159c02c464bfbda75eac12bfeeb7c087",
+      "world": "zeta",
+      "m": 600,
+      "q": 333,
+      "active": false
+    },
+    {
+      "path": "hermite_zeta_m80_q36.json",
+      "sha256": "8d67bc59d7d26aab570827457283db8669050b27147ee67951a7a1c3b5a52702",
+      "world": "zeta",
+      "m": 80,
+      "q": 36,
+      "active": true
+    }
+  ],
+  "regional_prefix_checks": [
+    {
+      "world": "zeta",
+      "m": 120,
+      "consumed_line_count": 58,
+      "regional_gamma_strings_equal_high_prefix": true,
+      "regional_file": "/workspace/stiffness/repo/docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "regional_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+    },
+    {
+      "world": "zeta",
+      "m": 16,
+      "consumed_line_count": 5,
+      "regional_gamma_strings_equal_high_prefix": true,
+      "regional_file": "/workspace/stiffness/repo/docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "regional_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+    },
+    {
+      "world": "zeta",
+      "m": 200,
+      "consumed_line_count": 101,
+      "regional_gamma_strings_equal_high_prefix": true,
+      "regional_file": "/workspace/stiffness/repo/docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/extension_121_300/zeta_zeros.csv",
+      "regional_sha256": "db0b258254d8eb7dfdc5844f0b73204013cd0fec725e53884445576923c99b19"
+    },
+    {
+      "world": "zeta",
+      "m": 248,
+      "consumed_line_count": 128,
+      "regional_gamma_strings_equal_high_prefix": true,
+      "regional_file": "/workspace/stiffness/repo/docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/extension_121_300/zeta_zeros.csv",
+      "regional_sha256": "db0b258254d8eb7dfdc5844f0b73204013cd0fec725e53884445576923c99b19"
+    },
+    {
+      "world": "zeta",
+      "m": 300,
+      "consumed_line_count": 157,
+      "regional_gamma_strings_equal_high_prefix": true,
+      "regional_file": "/workspace/stiffness/repo/docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/extension_121_300/zeta_zeros.csv",
+      "regional_sha256": "db0b258254d8eb7dfdc5844f0b73204013cd0fec725e53884445576923c99b19"
+    },
+    {
+      "world": "zeta",
+      "m": 80,
+      "consumed_line_count": 36,
+      "regional_gamma_strings_equal_high_prefix": true,
+      "regional_file": "/workspace/stiffness/repo/docs/routeB_bus/capacity_matrix_2026-11-02/zeros.csv",
+      "regional_sha256": "57d2f3da8324551f21c312b5d5ca97a13fca2be61d9039c5da754e04c4a5fecf"
+    }
+  ]
+}

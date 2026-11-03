@@ -1,0 +1,52 @@
+{
+  "status": "METADATA_ONLY_REPAIR",
+  "source_call": false,
+  "precision_change": false,
+  "records": [
+    {
+      "path": "/workspace/pair_aware/output/envelope_complete.json",
+      "old_sha256": "6bbe51bfc726577019233c590b35f9ae8168d980801e74d3e54c331369ec9161",
+      "new_sha256": "17803254a1afc4181ea5bbf107b43ccd1c84d8a1a3ede092fc88fc5d83f2173c",
+      "changed_fields": "source_GL_order:192->256 for plant248/300 only",
+      "changed_records": 2,
+      "numerical_fingerprint_before": "177c98b3561c28ef7af2300ba92925192f798f9e660eed41e2b052f706305932",
+      "numerical_fingerprint_after": "177c98b3561c28ef7af2300ba92925192f798f9e660eed41e2b052f706305932",
+      "numerical_data_unchanged": true
+    },
+    {
+      "path": "/workspace/pair_aware/output/envelope_complete.csv",
+      "old_sha256": "64ea153c5ed4b6c1c6cfb7c4ff70c4ef5c384d87cdf173f5e930ab90aea94583",
+      "new_sha256": "e83fd5e6c0b7f36fd0f1d712575d0a5acf02a9f884c3ae4d55e4a223d6d3f6a0",
+      "changed_fields": "source_GL_order:192->256 for plant248/300 only",
+      "changed_records": 2,
+      "numerical_fingerprint_before": "bd3e000679fd60e1a229e0cf71b8166dd85c7e7aa05670fa9591e84ca40f0bd5",
+      "numerical_fingerprint_after": "bd3e000679fd60e1a229e0cf71b8166dd85c7e7aa05670fa9591e84ca40f0bd5",
+      "numerical_data_unchanged": true
+    },
+    {
+      "path": "/workspace/pair_aware/local/envelope_complete/plant_m248.json",
+      "old_sha256": "48e970d0b56996399961e049f004db524e27ed6f5dcca52bc008e52240f3f0f6",
+      "new_sha256": "a3f186597f3a2375f68b7a0959bdba139a67043d87336bf7836de481ac7a5242",
+      "changed_fields": "source_GL_order:192->256 for plant248/300 only",
+      "changed_records": 1,
+      "numerical_fingerprint_before": "35748b2d2500e794bcbac26bfd615417d0de57c040569222354ae9eace395b3f",
+      "numerical_fingerprint_after": "35748b2d2500e794bcbac26bfd615417d0de57c040569222354ae9eace395b3f",
+      "numerical_data_unchanged": true
+    },
+    {
+      "path": "/workspace/pair_aware/local/envelope_complete/plant_m300.json",
+      "old_sha256": "afe8c5d92fe54024b27d6d1eaccb9b82a393cd1cc82f9a2c58b75eb81e359c12",
+      "new_sha256": "817d3397a7b05747bbdcab35b22dc5544e21c2d641ad988727d43920a9499e0d",
+      "changed_fields": "source_GL_order:192->256 for plant248/300 only",
+      "changed_records": 1,
+      "numerical_fingerprint_before": "8019a539a6fa06286599751180ffc9bfb48843905d5e0efb1e6b0ba1992c3b66",
+      "numerical_fingerprint_after": "8019a539a6fa06286599751180ffc9bfb48843905d5e0efb1e6b0ba1992c3b66",
+      "numerical_data_unchanged": true
+    }
+  ],
+  "producer_path": "/workspace/pair_aware/output/envelope_complete.py",
+  "producer_new_sha256": "862989e38c57ce17026cca0717e7bd9ee7e85a91bce04e0dc633b6ea21e4f52b",
+  "producer_recipe_lookup": "sidecar.regeneration_recipe.GL_order preferred, then sidecar.GL_order, otherwise regional192/256",
+  "frozen_request_replay": "--requests envelope_complete_requests.csv (or ENVELOPE_REQUESTS.csv); existing own frozen requests preferred by default",
+  "validation": "py_compile only; no numerical execution"
+}

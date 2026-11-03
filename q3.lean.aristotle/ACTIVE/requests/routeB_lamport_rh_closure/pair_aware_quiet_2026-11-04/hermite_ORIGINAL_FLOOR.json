@@ -1,0 +1,11 @@
+{
+  "world": "zeta",
+  "m": 600,
+  "q": 600,
+  "r": 1,
+  "delta": 1.3473883852949458e-16,
+  "original_guard": 1.6256579765380883e-09,
+  "status": "ORIGINAL_OPTIMUM_NOT_NUMERICALLY_REFRAMED_RELATIVE_UNRESOLVED",
+  "relative_delta_difference": null,
+  "explanation": "original optimumq600 delta is at original float floor; T1 nearby pair600/601 needsq601=d and would makeJzero. kappa1q333 is a separate identity/no-admissible-pair control, not an active Hermite test"
+}

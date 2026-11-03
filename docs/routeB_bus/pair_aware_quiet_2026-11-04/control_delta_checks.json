@@ -1,0 +1,15 @@
+{
+  "status": "PASS_FINITE_RECEIPT_CHECKS",
+  "rows": 300,
+  "DH": 180,
+  "plant": 120,
+  "all_baseline_minima_match_original_guard": true,
+  "all_baseline_minima_negative_beyond_100_float_guards": true,
+  "delta_alias_exact": true,
+  "duplicate_cells": false,
+  "minimum_row_relative_MGS_pivot": 0.25800265440743403,
+  "dualspan_status": "ALL_SIX_DUAL_SPAN_CHECKS_PASS",
+  "maximum_dualspan_projector_difference": 4.869530239567397e-15,
+  "maximum_dualspan_delta_difference": 1.7763568394002505e-15,
+  "scope": "fixed numerical inputs and finite binary diagnostics; no interval or cofinal certificate"
+}

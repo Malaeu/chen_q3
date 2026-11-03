@@ -1,0 +1,34 @@
+{
+  "primary_L2": {
+    "world": "zeta",
+    "theta": 0.6,
+    "grid": "all",
+    "cells": 315,
+    "outcome": "owner_spike_or_unresolved",
+    "exposure": "pair_straddles_original_optimum",
+    "outcome_and_pair": 9,
+    "outcome_without_pair": 38,
+    "not_outcome_and_pair": 21,
+    "neither": 247,
+    "outcome_n": 47,
+    "coverage_given_outcome": 0.19148936170212766,
+    "phi": 0.13731420947769377
+  },
+  "blind_L2": {
+    "world": "zeta",
+    "theta": 0.6,
+    "grid": "all",
+    "cells": 315,
+    "outcome": "blind_spike_or_unresolved",
+    "exposure": "pair_straddles_original_optimum",
+    "outcome_and_pair": 8,
+    "outcome_without_pair": 38,
+    "not_outcome_and_pair": 22,
+    "neither": 247,
+    "outcome_n": 46,
+    "coverage_given_outcome": 0.17391304347826086,
+    "phi": 0.1108324001130599
+  },
+  "L2_pass": false,
+  "spike_definition": "local logmedian/MAD predeclared; anchor248 separateflag; descriptive postselection"
+}

@@ -1,0 +1,101 @@
+{
+  "scope": "local owner-authorized unchanged source regeneration; not a full-grid baseline replay",
+  "arrays": [
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m16.npz",
+      "sha256": "2a966618765b0d1a4c12a7475cfdf3863a1cc3aa7fa377ba5ce114d8decb0ff1"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m16.npz",
+      "sha256": "4d587c9ac9e0867cc5f2f4faab389f9535524be62c348f8286304a547d698fab"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m16.npz",
+      "sha256": "bb46752b081522bea945a2ea2222ad1effe240576d91e687388e6dcf893f2441"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m80.npz",
+      "sha256": "387505167b199a1bfa9a4fc8fff37f8495b422bd2580832e65a57a22daf65d4e"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m80.npz",
+      "sha256": "cc8a7a65e49283fd11fcde6356615dec6820bf3387178828e4f12c83bc3a864e"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m80.npz",
+      "sha256": "4d0484fb9a6df2e459c3e74272d05fd8ff6a6d2de56a1b8107e01f3fef2006a7"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m120.npz",
+      "sha256": "1437099a6050bdd5cabf7e64daeca417ce9671bbc1bff09cd5241dc6a68961ab"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m120.npz",
+      "sha256": "ec04d9e11fcbc4be74c5203a4d64f5e3bebc2084bf6fbe3a6a3a0ef148502113"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m120.npz",
+      "sha256": "1e65ed7e9e876a03dea9dbb7cd57309bf81156d60ab87f42dd7dfb2763321c94"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m200.npz",
+      "sha256": "67690d67bce00a24dc7b3accab3317e2560da4d7675f00537dd83e7211add9d5"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m200.npz",
+      "sha256": "3b35b9d8884353c4258bab461817f07671998a5d3387aa5a4d4b8783225da3b0"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m200.npz",
+      "sha256": "aee5a0d3355997e63d00dc75b44709bb54e313162d50c943364322c55a65a3ba"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m248.npz",
+      "sha256": "076ae78298b6f857a31fa2c89693a81306536046bbc652aa9dbda01438c393d1"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m248.npz",
+      "sha256": "bbb829e7fd3e0f7e2ad5637a2a433e3567ed261df63215f2980c60b4826f8302"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m248.npz",
+      "sha256": "a5de884dbaf9354f50a869c1b573c3593ecf09683e96fa2a7ea33622cc0f9db1"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m300.npz",
+      "sha256": "b1adb8d1d306c1a2c734e682540069cc7427880db6b483864efa147f92e08a59"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m300.npz",
+      "sha256": "4b8899db92e59cc9b2746f1eebda978bf5a8e762dfcd2883a71150d7d0ed829d"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m300.npz",
+      "sha256": "c4da80b11f9c284f5d337f5e338441a97f4481ea7302020970fe57fc1221a875"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m310.npz",
+      "sha256": "6a680758cd9b6d22f7cddc7a0632ccfe63781e29e3bbef792e9a929e73691ae4"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m310.npz",
+      "sha256": "5ecc7115311ceb35c2aef78446da84ef52a135513494856406dee9066b3952a0"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m310.npz",
+      "sha256": "59f23d2176f5a764157c878e40d69f469331e849689f4caf19078e32a79b6b7f"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m600.npz",
+      "sha256": "5d8765dffec0e365798172570df394c83cf8d1d226e3738c72b5fda6cbeb6634"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m600.npz",
+      "sha256": "e590268b4f673ab3444bb307233ba0b15f6d11af5136fa89fc856af58e334210"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m600.npz",
+      "sha256": "1b838166fca8ec10507b1cb10eed87bee8a20341b8c2b5d50540a1796a5dfc18"
+    }
+  ]
+}

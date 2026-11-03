@@ -1,0 +1,11 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1",
+  "gmpy2": "2.3.2",
+  "mpmath": "1.3.0",
+  "source": "pinned400bit,midGL1928panels; highGL2568panels; same768bitframes",
+  "large_arrays_local_only": true,
+  "DIAGNOSTIC_NEVER_A_PROOF": true
+}

@@ -1,0 +1,177 @@
+{
+  "status": "SEVEN_BASELINE_GATES_PASS",
+  "recipe": "pinned highmatrix source.build(m,256),400bits,8panels; native_frame768bits; no increasedprecision",
+  "tasks": [
+    {
+      "world": "dh",
+      "m": 310,
+      "status": "BASELINE_GATE_PASS",
+      "q": 302,
+      "r": 9,
+      "original_guard": 1.2343617253102905e-09,
+      "original_delta": 2.820532777620613e-16,
+      "replay_delta": 2.820532777620613e-16,
+      "delta_difference": 0.0,
+      "original_lambda_r": -3.9456822095858956e-15,
+      "replay_lambda_r": -3.9456822095858956e-15,
+      "lambda_r_difference": 0.0,
+      "original_gstar": -4.227735487347957e-15,
+      "replay_gstar": -4.227735487347957e-15,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "UNRESOLVED_AT_ORIGINAL_FLOOR",
+      "matrix_path": "/workspace/pair_aware/local/matrices/dh_m310.npz"
+    },
+    {
+      "world": "dh",
+      "m": 600,
+      "status": "BASELINE_GATE_PASS",
+      "q": 585,
+      "r": 16,
+      "original_guard": 2.954005148290607e-09,
+      "original_delta": 3.4514059216524043e-16,
+      "replay_delta": 3.451405921652405e-16,
+      "delta_difference": 4.930380657631324e-32,
+      "original_lambda_r": -6.651921790329644e-15,
+      "replay_lambda_r": -6.651921790329644e-15,
+      "lambda_r_difference": 0.0,
+      "original_gstar": -6.997062382494885e-15,
+      "replay_gstar": -6.997062382494885e-15,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "UNRESOLVED_AT_ORIGINAL_FLOOR",
+      "matrix_path": "/workspace/pair_aware/local/matrices/dh_m600.npz"
+    },
+    {
+      "world": "plant",
+      "m": 310,
+      "status": "BASELINE_GATE_PASS",
+      "q": 310,
+      "r": 1,
+      "original_guard": 9.709743966652315e-10,
+      "original_delta": 1.0050678526147069e-16,
+      "replay_delta": 1.0050678526147069e-16,
+      "delta_difference": 0.0,
+      "original_lambda_r": -4.956767980764288e-15,
+      "replay_lambda_r": -4.956767980764288e-15,
+      "lambda_r_difference": 0.0,
+      "original_gstar": -5.057274766025758e-15,
+      "replay_gstar": -5.057274766025758e-15,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "UNRESOLVED_AT_ORIGINAL_FLOOR",
+      "matrix_path": "/workspace/pair_aware/local/matrices/plant_m310.npz"
+    },
+    {
+      "world": "plant",
+      "m": 600,
+      "status": "BASELINE_GATE_PASS",
+      "q": 600,
+      "r": 1,
+      "original_guard": 2.182232775970728e-09,
+      "original_delta": 1.635859765413914e-16,
+      "replay_delta": 1.635859765413914e-16,
+      "delta_difference": 0.0,
+      "original_lambda_r": -1.3742756008108795e-14,
+      "replay_lambda_r": -1.3742756008108795e-14,
+      "lambda_r_difference": 0.0,
+      "original_gstar": -1.3906341984650187e-14,
+      "replay_gstar": -1.3906341984650187e-14,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "UNRESOLVED_AT_ORIGINAL_FLOOR",
+      "matrix_path": "/workspace/pair_aware/local/matrices/plant_m600.npz"
+    },
+    {
+      "world": "zeta",
+      "m": 248,
+      "status": "BASELINE_GATE_PASS",
+      "q": 127,
+      "r": 122,
+      "original_guard": 4.6628277585486e-10,
+      "original_delta": 2.105038491662235,
+      "replay_delta": 2.105038491662235,
+      "delta_difference": 0.0,
+      "original_lambda_r": 2.1538377730010456,
+      "replay_lambda_r": 2.1538377730010456,
+      "lambda_r_difference": 0.0,
+      "original_gstar": 0.04879928133881073,
+      "replay_gstar": 0.04879928133881073,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "RESOLVED",
+      "matrix_path": "/workspace/pair_aware/local/matrices/zeta_m248.npz"
+    },
+    {
+      "world": "zeta",
+      "m": 310,
+      "status": "BASELINE_GATE_PASS",
+      "q": 163,
+      "r": 148,
+      "original_guard": 6.692246587522417e-10,
+      "original_delta": 1.2478561563326602,
+      "replay_delta": 1.2478561563326604,
+      "delta_difference": 2.220446049250313e-16,
+      "original_lambda_r": 1.8641839821161093,
+      "replay_lambda_r": 1.8641839821161093,
+      "lambda_r_difference": 0.0,
+      "original_gstar": 0.616327825783449,
+      "replay_gstar": 0.616327825783449,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "RESOLVED",
+      "matrix_path": "/workspace/pair_aware/local/matrices/zeta_m310.npz"
+    },
+    {
+      "world": "zeta",
+      "m": 600,
+      "status": "BASELINE_GATE_PASS",
+      "q": 600,
+      "r": 1,
+      "original_guard": 1.6256579765380883e-09,
+      "original_delta": 1.3473883852949458e-16,
+      "replay_delta": 1.3473883852949458e-16,
+      "delta_difference": 0.0,
+      "original_lambda_r": -5.776722472928526e-15,
+      "replay_lambda_r": -5.776722472928526e-15,
+      "lambda_r_difference": 0.0,
+      "original_gstar": -5.911461311458021e-15,
+      "replay_gstar": -5.911461311458021e-15,
+      "gstar_difference": 0.0,
+      "relative_delta_scoring": "UNRESOLVED_AT_ORIGINAL_FLOOR",
+      "matrix_path": "/workspace/pair_aware/local/matrices/zeta_m600.npz"
+    }
+  ],
+  "local_arrays": [
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m248.npz",
+      "sha256": "bbb829e7fd3e0f7e2ad5637a2a433e3567ed261df63215f2980c60b4826f8302"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m310.npz",
+      "sha256": "5ecc7115311ceb35c2aef78446da84ef52a135513494856406dee9066b3952a0"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/dh_m600.npz",
+      "sha256": "e590268b4f673ab3444bb307233ba0b15f6d11af5136fa89fc856af58e334210"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m248.npz",
+      "sha256": "a5de884dbaf9354f50a869c1b573c3593ecf09683e96fa2a7ea33622cc0f9db1"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m310.npz",
+      "sha256": "59f23d2176f5a764157c878e40d69f469331e849689f4caf19078e32a79b6b7f"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/plant_m600.npz",
+      "sha256": "1b838166fca8ec10507b1cb10eed87bee8a20341b8c2b5d50540a1796a5dfc18"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m248.npz",
+      "sha256": "076ae78298b6f857a31fa2c89693a81306536046bbc652aa9dbda01438c393d1"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m310.npz",
+      "sha256": "6a680758cd9b6d22f7cddc7a0632ccfe63781e29e3bbef792e9a929e73691ae4"
+    },
+    {
+      "path": "/workspace/pair_aware/local/matrices/zeta_m600.npz",
+      "sha256": "5d8765dffec0e365798172570df394c83cf8d1d226e3738c72b5fda6cbeb6634"
+    }
+  ]
+}
