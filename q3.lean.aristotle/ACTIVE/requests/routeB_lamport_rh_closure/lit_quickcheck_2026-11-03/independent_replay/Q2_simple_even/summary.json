@@ -1,0 +1,39 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "rows": 60,
+  "comparison_rows": 30,
+  "worlds": {
+    "zeta": {
+      "resolved_odd_cases": [],
+      "unresolved_cases": [
+        30,
+        40,
+        47,
+        55
+      ]
+    },
+    "dh": {
+      "resolved_odd_cases": [
+        55
+      ],
+      "unresolved_cases": []
+    },
+    "plant": {
+      "resolved_odd_cases": [
+        5,
+        10,
+        20,
+        40
+      ],
+      "unresolved_cases": []
+    }
+  },
+  "guard_scope": "heuristic arithmetic precision guard only; no interval quadrature or continuum spectral bound",
+  "source_sha256": "72ff09852e84d6b17e6a224b2b4cc3b8851baba94bff835b9519f5a97f46511a",
+  "external_readme": {
+    "url": "https://github.com/AlexGenusCore/weil-ground-state-simple-even/blob/main/README.md",
+    "git_blob": "f18fa5e422e0488e82ef636e88480edd339dd2a4",
+    "sha256": "cb3ccb3960e3fd56106130f61b205e3d110e3332d31ceff10ba270801646164a",
+    "access_date": "2026-11-03"
+  }
+}

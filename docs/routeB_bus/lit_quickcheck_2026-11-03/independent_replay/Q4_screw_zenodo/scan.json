@@ -1,0 +1,22 @@
+{
+  "status": "FINITE_NUMERICAL_DIAGNOSTIC",
+  "N": 100000,
+  "atom_count": 9700,
+  "stationary_count": 1232,
+  "minimum_candidate": {
+    "Psi_float": 0.027520573353399413,
+    "x": 3099.709757559458,
+    "t": 8.03906375949627,
+    "kind": "interior_stationary",
+    "Psi_mp80": "0.027520573353620804820414575074887567171993638035447568317922512831616904199461464"
+  },
+  "minimum_stationary": [
+    0.027520573353399413,
+    3099.709757559458,
+    3089,
+    3109
+  ],
+  "origin_note": "Psi(0)=0; infimum on open (0,log N] is at most 0. Reported minimum is among nonzero event/stationary candidates, not a positive global minimum.",
+  "external_P6": "NOT_TESTED_SOURCE_UNREACHABLE",
+  "proof_status": "DIAGNOSTIC_NEVER_A_PROOF"
+}

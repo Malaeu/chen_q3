@@ -1,0 +1,38 @@
+{
+  "repository": "jose-paul-b/weil-positivity-certificates",
+  "commit": "0f7a85b392c4017cadc0a3bc7adcba19951a530f",
+  "method": "GitHub connector pinned source snapshot, not shell git clone",
+  "sources": [
+    {
+      "path": "weil_certificate/cert_weil.py",
+      "git_blob_sha1": "8eef17ab746e87bb18860d8e4017140689851e98",
+      "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/weil_certificate/cert_weil.py"
+    },
+    {
+      "path": "semilocal/cert_semilocal.py",
+      "git_blob_sha1": "3805431882a334705a08a77b0a7537604a11bff1",
+      "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/cert_semilocal.py"
+    },
+    {
+      "path": "semilocal/poly_upper.py",
+      "git_blob_sha1": "9511af4c04f366b4ccbc3d35ff0c68fdfca53d29",
+      "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/poly_upper.py"
+    },
+    {
+      "path": "semilocal/collate.py",
+      "git_blob_sha1": "a5f051452fd053f44696a8068199d2ed991602fa",
+      "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/collate.py"
+    }
+  ],
+  "our_formula_reference": {
+    "path": "/workspace/suzuki_w_inputs/validation_audit.py",
+    "sha256": "274259c5b2cea954ad975c73456981958abcf710accb98415d3d2d2da63bda0c",
+    "note": "Generalized physical cosine/sine formulas, with variable window and prime-base cutoff. No external Python imported by our_mp.py or independent_vector.py."
+  },
+  "primary_paper": {
+    "abstract_url": "https://arxiv.org/abs/2608.24827",
+    "pdf_url": "https://arxiv.org/pdf/2608.24827v2",
+    "observed_author_both": "Xuefeng Zhu",
+    "observed_on": "2026-11-03 UTC"
+  }
+}

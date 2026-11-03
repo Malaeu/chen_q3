@@ -1,0 +1,77 @@
+{
+  "route": "CHALLENGER / NOT_RH",
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "external_certificates": [
+    {
+      "name": "cert_L4_5_T200_N200_p0.json",
+      "status": "REPRODUCED",
+      "lam_lower": "[1.0266618704919108500e-17 +/- 5.98e-38]",
+      "relative_difference": "0",
+      "relative_tolerance": "1e-12",
+      "exact_lower_string_match": true
+    },
+    {
+      "name": "cert_L4_5_T200_N200_p1.json",
+      "status": "REPRODUCED",
+      "lam_lower": "[1.1399115396618374143e-14 +/- 3.12e-35]",
+      "relative_difference": "0",
+      "relative_tolerance": "1e-12",
+      "exact_lower_string_match": true
+    },
+    {
+      "name": "cert_L31_32_T600_N460_p0.json",
+      "status": "REPRODUCED",
+      "lam_lower": "[1.0073585468444951163e-27 +/- 2.98e-47]",
+      "relative_difference": "0",
+      "relative_tolerance": "1e-12",
+      "exact_lower_string_match": true
+    },
+    {
+      "name": "cert_L31_32_T600_N460_p1.json",
+      "status": "REPRODUCED",
+      "lam_lower": "[2.1193782393913236324e-24 +/- 1.73e-44]",
+      "relative_difference": "0",
+      "relative_tolerance": "1e-12",
+      "exact_lower_string_match": true
+    }
+  ],
+  "our_fixed_basis_validation": [
+    {
+      "label": "m3",
+      "relative_even_difference": "0",
+      "relative_odd_difference": "0"
+    },
+    {
+      "label": "exp1.6",
+      "relative_even_difference": "0",
+      "relative_odd_difference": "0"
+    },
+    {
+      "label": "m5",
+      "relative_even_difference": "0",
+      "relative_odd_difference": "0"
+    },
+    {
+      "label": "m7",
+      "relative_even_difference": "0",
+      "relative_odd_difference": "0"
+    },
+    {
+      "label": "P2_low",
+      "relative_even_difference": "0",
+      "relative_odd_difference": "0"
+    },
+    {
+      "label": "P2_up",
+      "relative_even_difference": "0",
+      "relative_odd_difference": "0"
+    }
+  ],
+  "validation_note": "Differences compare saved80-significant-digit strings, not exact underlying arithmetic; zeros mean agreement at printed precision.",
+  "P2": {
+    "negative_witness_arb": "REPRODUCED",
+    "positive_continuum_lower_certificate": "UPSTREAM_SOURCE_ONLY_NOT_RERUN",
+    "independent_scalar_sign_flip": "W=1.114 positive; W=1.1147 negative; not a positivity proof at low endpoint"
+  },
+  "caveat": "Our cosine/sine bases N16 and32 do not resolve P2 negative ground state; the independent polynomial witness does. Finite-basis positive minima and ratios do not establish full-space positivity or exact continuum ratios."
+}

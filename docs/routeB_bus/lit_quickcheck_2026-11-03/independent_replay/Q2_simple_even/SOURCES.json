@@ -1,0 +1,23 @@
+{
+  "access_date": "2026-11-03",
+  "base": "a1d2a97350e61f1697744056e26f95a1c8baf3de",
+  "sources": [
+    {
+      "url": "https://github.com/Malaeu/chen_q3/blob/a1d2a97350e61f1697744056e26f95a1c8baf3de/docs/routeB_bus/screw_line_2026-11-02/innovation_law/core/scan.py",
+      "git_blob": "ea6d5ffe026ad2c6d09705efc6c335e4f24b4a5a",
+      "used_for": "exact planted screw profile only"
+    },
+    {
+      "url": "https://github.com/AlexGenusCore/weil-ground-state-simple-even/blob/main/README.md",
+      "git_blob": "f18fa5e422e0488e82ef636e88480edd339dd2a4",
+      "local_file": "BOTHA_README.md",
+      "sha256": "cb3ccb3960e3fd56106130f61b205e3d110e3332d31ceff10ba270801646164a",
+      "trust": "zero; source claims read, no external code executed"
+    }
+  ],
+  "independent_formula_antecedent": {
+    "local_file": "/workspace/suzuki_w_inputs/validation_audit.py",
+    "sha256": "274259c5b2cea954ad975c73456981958abcf710accb98415d3d2d2da63bda0c",
+    "note": "full parity physical moment formulas reimplemented in parity.py; not a runtime dependency"
+  }
+}

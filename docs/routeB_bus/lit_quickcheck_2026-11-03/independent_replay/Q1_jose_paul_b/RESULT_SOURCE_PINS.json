@@ -1,0 +1,47 @@
+[
+  {
+    "path": "weil_certificate/results/cert_L4_5_T200_N200_p0.json",
+    "git_blob_sha1": "30bd817755cc636d89955557ca03f3eb70990fdc",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/weil_certificate/results/cert_L4_5_T200_N200_p0.json"
+  },
+  {
+    "path": "weil_certificate/results/cert_L4_5_T200_N200_p1.json",
+    "git_blob_sha1": "3c252df5d1ff6043a74f14721eaa9bc419f1c0a9",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/weil_certificate/results/cert_L4_5_T200_N200_p1.json"
+  },
+  {
+    "path": "weil_certificate/results/cert_L31_32_T600_N460_p0.json",
+    "git_blob_sha1": "6aa9e7fb78f530a24c0e6036eb7e94e6cf33f60a",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/weil_certificate/results/cert_L31_32_T600_N460_p0.json"
+  },
+  {
+    "path": "weil_certificate/results/cert_L31_32_T600_N460_p1.json",
+    "git_blob_sha1": "4abf3f740615e06cc13cce19b750b30d4291b967",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/weil_certificate/results/cert_L31_32_T600_N460_p1.json"
+  },
+  {
+    "path": "semilocal/results/polyupper_P2_L11147_10000_D61_p1.json",
+    "git_blob_sha1": "b117a59124a7f6f7ee865f9a75ad748f1501590c",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/results/polyupper_P2_L11147_10000_D61_p1.json"
+  },
+  {
+    "path": "semilocal/results/cert_P2_L557_1000_T1200_N520_p1.json",
+    "git_blob_sha1": "27877c774a08c0e66d46d17555d72f3a47555723",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/results/cert_P2_L557_1000_T1200_N520_p1.json"
+  },
+  {
+    "path": "semilocal/results/cert_P2_L559_1000_T600_N270_p0.json",
+    "git_blob_sha1": "7ac189f387277dfd60b9fee7d5f96258ee2a6431",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/results/cert_P2_L559_1000_T600_N270_p0.json"
+  },
+  {
+    "path": "semilocal/results/polyupper_P3_L8073_5000_D71_p1.json",
+    "git_blob_sha1": "72219af35efc085fe873f8989bbc088b6af3f5c9",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/results/polyupper_P3_L8073_5000_D71_p1.json"
+  },
+  {
+    "path": "semilocal/results/polyupper_P5_L1949_1000_D81_p1.json",
+    "git_blob_sha1": "7bd64f31df0bb99e5adf705b5eaa6bf19dd16a56",
+    "url": "https://github.com/jose-paul-b/weil-positivity-certificates/blob/0f7a85b392c4017cadc0a3bc7adcba19951a530f/semilocal/results/polyupper_P5_L1949_1000_D81_p1.json"
+  }
+]

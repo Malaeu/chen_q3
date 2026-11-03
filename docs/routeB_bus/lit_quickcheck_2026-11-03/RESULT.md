@@ -61,3 +61,9 @@ NORMALIZATION.md and component reports give the crosswalks, source hashes,
 pages, code and data. Larger unrun certificates remain explicit research
 debt; they do not block the requested diagnostic A–C after this preflight.
 Canon and mirror carry identical bytes in the delivery commit.
+
+## Independent replay supplement
+
+A separate replay is retained in [independent_replay/RESULT.md](independent_replay/RESULT.md). It reproduces all four advertised Arb lower bounds, including support ±31/32: even 1.0073585468444951163e-27 and odd 2.1193782393913236324e-24. Exact printed values agree with the pinned source. Code, logs, independent normalization/witness calculations and hashes are included. This closes the two larger general-support certificate reruns marked unrun above; semilocal P3/P5 bracket and full positive-endpoint replays remain open.
+
+The replay's Q2 uses different finite carrier resolutions; its Q4 access failure and smaller 10^5 scan are historical run limits, superseded for source access/P6/range by the parent packet above. Both evidence sets are preserved. This supplement is diagnostic only and adds no RH or route-state claim.

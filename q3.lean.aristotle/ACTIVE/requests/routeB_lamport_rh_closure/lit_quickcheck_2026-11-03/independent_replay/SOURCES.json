@@ -1,0 +1,18 @@
+{
+  "status": "UNTRUSTED_SOURCES_INDEPENDENT_CHECKS_ONLY",
+  "access_date": "2026-11-03",
+  "brief_commit": "4c634cadb162663d2456aefc70ebceac376db5de",
+  "brief_sha256": "e04041e4006ba4a398326dd416e6a0bbb26f46ba590a27aeaf801ae245d82863",
+  "Q1_details": "Q1_jose_paul_b/SOURCES.json",
+  "Q2_details": "Q2_simple_even/summary.json",
+  "Q3": {
+    "url": "https://github.com/AlexGenusCore/weil-edge-laws/blob/1c250f83343bb175311c0a7c46614bf7deb429a9/paper/main.pdf",
+    "commit": "1c250f83343bb175311c0a7c46614bf7deb429a9",
+    "sha256": "33e6bb81fc30f1b2883bd58660425b90d307499de2664f867dab0bf164f90550",
+    "bytes": 648230,
+    "pages": 52,
+    "direct_DOI_tool_access": "unavailable; GitHub fallback PDF retrieved"
+  },
+  "Q4_details": "Q4_screw_zenodo/RESULT.md",
+  "delivery": "Independent replay supplement to 81b657e; identical bytes in canonical closure directory and docs/routeB_bus mirror. Parent packet source access and longer Q4 scan supersede replay limitations."
+}

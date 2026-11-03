@@ -428,3 +428,13 @@ write set for `D0_7E_5A_TERMINAL_CLOSEOUT_AND_H2B_REPOINT_MATERIALIZED`.
 | `proshka/PROSHKA_VERDICT_RADICAL_CONCENTRATION_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `dbd68ab3eec34c6c3f67180d051340bb17b29f3337831137606d34517dca14b6` |
 | `proshka/PROSHKA_NEXT_STEP_BACKGROUND_SECOND_MOMENT_2026-11-01.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `812106f5b16f2c2d0a4d65c1d86a32a749dcef127d2243e92e6dded2129a3006` |
 | `proshka/PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_2026-11-02.md` | Proshka source verdict — inbox 4a8ca65, unadjudicated import | `f742f99354279feda6888a10d71b22dea3b9e27a2dc36da2d442b1356bd501d3` |
+
+## LIT_QUICKCHECK independent replay supplement — 2026-11-03
+
+Additive supplement to 81b657e. Route B CHALLENGER / NOT_RH. Canon and mirror carry identical packet bytes; existing source extraction and longer Q4 scan are preserved.
+
+| Bus-relative path | SHA-256 |
+|---|---|
+| `lit_quickcheck_2026-11-03/RESULT.md` | `5d3d29adb191bfd363e24fa49b5405d76784af6506b6725d8cea1f28832a7e58` |
+| `lit_quickcheck_2026-11-03/SHA256SUMS` | `bee61624d3c1330c878c24b9d1620bc0609318e7d8e0b9ab60a3df235f5c3562` |
+| `lit_quickcheck_2026-11-03/independent_replay/SHA256SUMS` | `0904b2ff7cabe8ba70f67f6d2d0ee9539abb58a108022bd7f7d38460c4ac07a6` |
