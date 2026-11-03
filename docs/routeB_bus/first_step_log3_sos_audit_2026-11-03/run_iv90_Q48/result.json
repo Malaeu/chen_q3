@@ -1,0 +1,74 @@
+{
+  "parameters": {
+    "L": "log(3)",
+    "T": 40,
+    "beta": "4/5",
+    "degree": 60,
+    "Gauss": 48,
+    "panels": 80,
+    "iv_dps": 90
+  },
+  "engine": "elementary interval arithmetic + explicit analytic remainders + exact integer Bareiss",
+  "Arb": false,
+  "Lean": false,
+  "RH_assumed": false,
+  "certificate_sha256": "8b7fb1900093eb47e663ae352e0b52a2ad18043bd5d654e0f1a71aacec5ddcc0",
+  "tail_symbol_lower": [
+    "0.8707181997201305010775639",
+    "0.8707181997201305010775639"
+  ],
+  "parity_blocks": [
+    {
+      "parity": "even",
+      "dimension": 31,
+      "exact_leading_minors_positive": true,
+      "min_LDL_pivot": "0.00309751051730317091009157",
+      "determinant_digits": 734,
+      "determinant_sha256": "d1fd3e6a268b545d0c672d6bc64ac84c9be08ec6b6368c4a74d848319f998967"
+    },
+    {
+      "parity": "odd",
+      "dimension": 30,
+      "exact_leading_minors_positive": true,
+      "min_LDL_pivot": "0.01940871944159910099675748",
+      "determinant_digits": 714,
+      "determinant_sha256": "5895d0a4661b117dadfbd979a6bfd4e474d8c21d1b29b368486e47d53c84362d"
+    }
+  ],
+  "bounds": {
+    "Legendre_tail": [
+      "6.623208667225596664194863e-41",
+      "6.623208667225596664194863e-41"
+    ],
+    "band_tail_error": [
+      "1.737746996402343123645033e-18",
+      "1.737746996402343123645033e-18"
+    ],
+    "pole_error": [
+      "9.727551569657239720417055e-136",
+      "9.727551569657239720417055e-136"
+    ],
+    "quadrature_error": [
+      "6.58249416587981221018265e-25",
+      "6.58249416587981221018265e-25"
+    ],
+    "scalar_quantization_error": [
+      "3.102735090640800096856524e-21",
+      "3.102735090640800096856524e-21"
+    ],
+    "matrix_rounding_error": [
+      "5.045801736573468816715593e-23",
+      "5.045801736573468816715593e-23"
+    ],
+    "total_error": [
+      "1.740900847759766246411278e-18",
+      "1.740900847759766246411278e-18"
+    ]
+  },
+  "negative_control": [
+    "-0.2399107181322211385648193",
+    "-0.2394552573782343686037948"
+  ],
+  "lower_bound": "2^-30",
+  "elapsed_seconds": 67.09142161700038
+}
