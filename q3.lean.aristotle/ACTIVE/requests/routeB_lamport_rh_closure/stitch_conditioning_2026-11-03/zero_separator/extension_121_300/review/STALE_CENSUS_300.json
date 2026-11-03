@@ -1,0 +1,29 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "m": 300,
+  "kappa": 1,
+  "dimension": 301,
+  "omega": "330.47466317822591615629272709990873626915875528844135096726363214164224630619033836284340894224390798494190859189625235673648096759360527413502702240006725342736797690814928467937597888407322799560473732748264867158854888500385288441",
+  "old_census_sha256": "e2f5f86d960aff5b45a318723072a1a2c67df3f00b6d213535274831c9afdee1",
+  "source_sha256": "4b8899db92e59cc9b2746f1eebda978bf5a8e762dfcd2883a71150d7d0ed829d",
+  "old": {
+    "q": 154,
+    "r": 147,
+    "delta": 17.57727900537717,
+    "lambda_r": 4.755027874579398,
+    "gap": -12.822251130797774,
+    "numeric_guard": 1.1845127455477962e-09,
+    "pass_numeric": false,
+    "frame_float_orthogonality": 1.4436057639271409e-15,
+    "minimum_MGS_relative_pivot": 0.547551764521475
+  },
+  "new": {
+    "q": 240,
+    "r": 61,
+    "lambda_r": 6.492971715843509e-10,
+    "negative_ground_magnitude": 4.2294423594000605,
+    "necessary_rejection": true,
+    "delta_not_computed": true
+  },
+  "scope": "Old incomplete zero census tested as supplied; new census scalar necessary exclusion only. Numerical diagnostic, not interval bound."
+}

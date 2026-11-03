@@ -1,0 +1,10 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "requested_world_m_cells": 540,
+  "completed": 540,
+  "missing": [],
+  "all_guard_ranges_ordered": true,
+  "all_zeta_guard_lower_zero": true,
+  "all_plant_guard_lower_at_least_one": true,
+  "exact_inertia_claim": false
+}

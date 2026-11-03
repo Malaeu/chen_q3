@@ -1,0 +1,29 @@
+[
+  {
+    "world": "zeta",
+    "m": 40,
+    "q": 40,
+    "r": 1,
+    "projector_operator_difference": 7.86600646499615e-16,
+    "null_orthogonality": 0.0,
+    "row_frame_residual": 1.2859204536785036e-16
+  },
+  {
+    "world": "plant",
+    "m": 55,
+    "q": 55,
+    "r": 1,
+    "projector_operator_difference": 9.480846791739557e-16,
+    "null_orthogonality": 1.1102230246251565e-16,
+    "row_frame_residual": 1.2817544570098604e-16
+  },
+  {
+    "world": "dh",
+    "m": 60,
+    "q": 60,
+    "r": 1,
+    "projector_operator_difference": 1.3296697524515048e-15,
+    "null_orthogonality": 0.0,
+    "row_frame_residual": 9.75647022970638e-17
+  }
+]

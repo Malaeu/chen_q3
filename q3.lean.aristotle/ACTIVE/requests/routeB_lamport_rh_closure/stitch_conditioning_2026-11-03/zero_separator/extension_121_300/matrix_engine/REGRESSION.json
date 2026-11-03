@@ -1,0 +1,22 @@
+[
+  {
+    "m": 80,
+    "source": "/workspace/dh_inputs/matrix_cells/dh_m80_dps120_gl128.json",
+    "max_entry_float_difference": 0.0,
+    "saved_negative_count": 2,
+    "new_meta": [
+      2,
+      3
+    ]
+  },
+  {
+    "m": 120,
+    "source": "/workspace/dh_inputs/matrix_cells/dh_m120_dps120_gl128.json",
+    "max_entry_float_difference": 0.0,
+    "saved_negative_count": 2,
+    "new_meta": [
+      2,
+      8
+    ]
+  }
+]

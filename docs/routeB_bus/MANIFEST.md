@@ -448,4 +448,16 @@ Literal even CCM, m16..120, zeta/plant/DH. Complete21153 nontrivial cutoff secto
 | `stitch_conditioning_2026-11-03/zero_separator/RESULT.md` | `07982414ecf514217b0e89f61e645ab06fb70c4650460832942b57258c7b9dc3` |
 | `stitch_conditioning_2026-11-03/zero_separator/counts.csv` | `d77624a24845304e60de7ddf80df5d78defbdc3c158c7de4e357c0c409aba683` |
 | `stitch_conditioning_2026-11-03/zero_separator/separator_summary.csv` | `1a3717b9d0604dda11c6049d6b0572609812fbea251e330c28d154d32b36cb9b` |
-| `stitch_conditioning_2026-11-03/zero_separator/SHA256SUMS` | `e55fdaffa0d789d1fc19b957c6198309e4bb2f056227a78fed834d927c5bfdba` |
+| `stitch_conditioning_2026-11-03/zero_separator/SHA256SUMS` | `04a58363ef7681885a8404f24954a28062d3189e0851e1a1317a85941e3e4786` |
+
+## DH census audit and zero-separator extension m121..300 — 2026-11-03
+
+All four requested original DH quartets present; no old B/C redo. Expanded numerical census to600 and all540 new cells. Guarded zero-index ranges and global numerical best-gap brackets; exact tiny signs remain unpaid. Canon+mirror identical. DIAGNOSTIC_NEVER_A_PROOF.
+
+| Bus-relative path | SHA-256 |
+|---|---|
+| `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/COUNTS_ZERO.csv` | `552f1b179cf30075579b853d09c5c06987d193c15368ed5262c4763039712e20` |
+| `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/RESULT.md` | `2f9d27d642299f66bfb71fae43242abeb21f6c144f55234d805d66ef842ccc9f` |
+| `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/SOURCES.json` | `6a19e38cb1ae134320fe21790cfd36828f7d53949640c06df350d4a86031d3de` |
+| `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/SUMMARY.csv` | `42db3fa8375fbd35e6cda56377c2df931d5bb226b8051c3049807ae4f5b0916b` |
+| `stitch_conditioning_2026-11-03/zero_separator/extension_121_300/SHA256SUMS` | `a19dd7edaca82f82e143dc5e0d964613904a604a1f011aff61c3a996d0fcbf56` |

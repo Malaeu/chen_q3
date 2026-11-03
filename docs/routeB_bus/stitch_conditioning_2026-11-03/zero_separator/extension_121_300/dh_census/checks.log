@@ -1,0 +1,52 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "old_four_pairs_present": true,
+  "fine_line_check_all_counts_match": true,
+  "old_critical_prefix_coordinate_max_difference": "4.956599999999999999999659600555726905917529372624751229212946743117486229763529080393e-78",
+  "independent_mpmath_spot_checks": [
+    {
+      "sigma": "0.73",
+      "gamma": "85.8",
+      "relative_mp_dirichlet_difference": "5.668053964314403369224595478811765259706367884739011608025135038297035406058414800142e-74",
+      "relative_functional_equation_difference": "2.607007982933826830830333056196713444138720747117177818697633753084955984354973057943e-74"
+    },
+    {
+      "sigma": "0.81",
+      "gamma": "331.1",
+      "relative_mp_dirichlet_difference": "2.101694802803986493016369390761923626256203986522105474576211605058284071427418606173e-73",
+      "relative_functional_equation_difference": "7.781532275617951771161149654115035640388237659541819259225759954209702947895189910885e-74"
+    },
+    {
+      "sigma": "1.1",
+      "gamma": "595.1",
+      "relative_mp_dirichlet_difference": "7.955597122331339223632763813829088139099405717620660504692196968683723767378967339939e-74",
+      "relative_functional_equation_difference": "4.731744565379984795417133667782677140565601667449647052281459203819034863183514493623e-73"
+    }
+  ],
+  "smallest_numerical_Dprime": {
+    "value": "0.1691780465411213402260924184323809745733850105206203987745060800465913283688722113555",
+    "sigma": "0.5159183143809814043454710741076770364357513703707182407791930945028375063477415455268",
+    "gamma": "520.9438010350892435610363640671306503871427070902280990787417662716780861230977218712"
+  },
+  "max_refined_residual": "4.172365295605037570810140129937277276938797936606403207304505343343156348809861720658e-87",
+  "all_30_bands_match": true,
+  "global_counts": [
+    494,
+    494,
+    494
+  ],
+  "exterior_reason": "For sigma>=2, |D(s)-1|<=zeta(2)-1<1 because |a(n)|<=1. Functional equation excludes completed zeros for sigma<=-1. Positive-height contour therefore includes all nontrivial upper-half-plane zeros if the numerical count is correct.",
+  "not_a_rigorous_contour_certificate": true,
+  "low_height_winding": {
+    "low": -0.001,
+    "high": 0.001,
+    "left": -1,
+    "right": 2,
+    "step": 0.025,
+    "samples": 242,
+    "winding": 1.3615757532239074e-20,
+    "count": 0,
+    "max_phase_increment": 0.0005664852435981677,
+    "min_boundary_modulus": 1.1360418176330835
+  }
+}

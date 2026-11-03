@@ -1,0 +1,43 @@
+BRACKETS 464
+LINE 50 96.29174541897521824
+LINE 100 169.3302879487892193
+LINE 150 234.0649826429388343
+LINE 200 294.9569494422868890
+LINE 250 356.2264712458463002
+LINE 300 415.4905450320740265
+LINE 350 471.3731955714891032
+LINE 400 525.6722721686077224
+LINE 450 583.3962771172936334
+BAND {'low': 0.001, 'high': 20, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 6.0, 'count': 6, 'max_phase_increment': 0.173464964277354, 'min_boundary_modulus': 1.4772407188074027e-06, 'line_count': 6, 'off_line_upper_count_needed': 0}
+BAND {'low': 20, 'high': 40, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 9.0, 'count': 9, 'max_phase_increment': 0.908474617323599, 'min_boundary_modulus': 3.812494918937217e-14, 'line_count': 9, 'off_line_upper_count_needed': 0}
+BAND {'low': 40, 'high': 60, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 13.000000000000002, 'count': 13, 'max_phase_increment': 0.908474617323599, 'min_boundary_modulus': 1.9813023454220586e-20, 'line_count': 13, 'off_line_upper_count_needed': 0}
+BAND {'low': 60, 'high': 80, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 12.0, 'count': 12, 'max_phase_increment': 0.4064786911809979, 'min_boundary_modulus': 5.072116247921681e-27, 'line_count': 12, 'off_line_upper_count_needed': 0}
+BAND {'low': 80, 'high': 100, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 14.0, 'count': 14, 'max_phase_increment': 0.4064786911809979, 'min_boundary_modulus': 5.066430810031068e-34, 'line_count': 12, 'off_line_upper_count_needed': 2}
+BAND {'low': 100, 'high': 120, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 14.0, 'count': 14, 'max_phase_increment': 0.3129242295695399, 'min_boundary_modulus': 2.658655307616858e-40, 'line_count': 12, 'off_line_upper_count_needed': 2}
+BAND {'low': 120, 'high': 140, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 15.000000000000002, 'count': 15, 'max_phase_increment': 0.3207637852111951, 'min_boundary_modulus': 1.0030005068765008e-47, 'line_count': 15, 'off_line_upper_count_needed': 0}
+BAND {'low': 140, 'high': 160, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 15.000000000000002, 'count': 15, 'max_phase_increment': 1.1475769725809026, 'min_boundary_modulus': 2.6491355140602985e-55, 'line_count': 15, 'off_line_upper_count_needed': 0}
+BAND {'low': 160, 'high': 180, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 16.0, 'count': 16, 'max_phase_increment': 1.1475769725809026, 'min_boundary_modulus': 7.496408491584034e-62, 'line_count': 12, 'off_line_upper_count_needed': 4}
+BAND {'low': 180, 'high': 200, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 16.0, 'count': 16, 'max_phase_increment': 1.0692569289986769, 'min_boundary_modulus': 2.939789136437877e-68, 'line_count': 16, 'off_line_upper_count_needed': 0}
+BAND {'low': 200, 'high': 220, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 16.0, 'count': 16, 'max_phase_increment': 0.6128046353916202, 'min_boundary_modulus': 2.818540824105248e-74, 'line_count': 16, 'off_line_upper_count_needed': 0}
+BAND {'low': 220, 'high': 240, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 16.0, 'count': 16, 'max_phase_increment': 0.3666588375540503, 'min_boundary_modulus': 1.488598743253946e-81, 'line_count': 16, 'off_line_upper_count_needed': 0}
+BAND {'low': 240, 'high': 260, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 17.0, 'count': 17, 'max_phase_increment': 1.161058615573497, 'min_boundary_modulus': 8.279228937487553e-89, 'line_count': 15, 'off_line_upper_count_needed': 2}
+BAND {'low': 260, 'high': 280, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 18.0, 'count': 18, 'max_phase_increment': 1.440137080473296, 'min_boundary_modulus': 9.205257279595043e-97, 'line_count': 18, 'off_line_upper_count_needed': 0}
+BAND {'low': 280, 'high': 300, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 17.0, 'count': 17, 'max_phase_increment': 1.440137080473296, 'min_boundary_modulus': 2.6860624100953102e-102, 'line_count': 17, 'off_line_upper_count_needed': 0}
+BAND {'low': 300, 'high': 320, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 17.0, 'count': 17, 'max_phase_increment': 0.3707657749982405, 'min_boundary_modulus': 2.741593702479938e-108, 'line_count': 17, 'off_line_upper_count_needed': 0}
+BAND {'low': 320, 'high': 340, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 18.0, 'count': 18, 'max_phase_increment': 0.3834666055695697, 'min_boundary_modulus': 1.4264827909209582e-115, 'line_count': 14, 'off_line_upper_count_needed': 4}
+BAND {'low': 340, 'high': 360, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 18.0, 'count': 18, 'max_phase_increment': 0.3787412788999823, 'min_boundary_modulus': 9.775210505921822e-123, 'line_count': 18, 'off_line_upper_count_needed': 0}
+BAND {'low': 360, 'high': 380, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 18.0, 'count': 18, 'max_phase_increment': 0.38384479762984797, 'min_boundary_modulus': 4.95501252721484e-129, 'line_count': 16, 'off_line_upper_count_needed': 2}
+BAND {'low': 380, 'high': 400, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 18.0, 'count': 18, 'max_phase_increment': 1.464275194507267, 'min_boundary_modulus': 3.496569341936769e-137, 'line_count': 18, 'off_line_upper_count_needed': 0}
+BAND {'low': 400, 'high': 420, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 1.464275194507267, 'min_boundary_modulus': 3.8708371267272164e-143, 'line_count': 17, 'off_line_upper_count_needed': 2}
+BAND {'low': 420, 'high': 440, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 18.0, 'count': 18, 'max_phase_increment': 0.6628374396320872, 'min_boundary_modulus': 9.452256175707774e-150, 'line_count': 18, 'off_line_upper_count_needed': 0}
+BAND {'low': 440, 'high': 460, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 0.40373691457533534, 'min_boundary_modulus': 4.2088213392541115e-156, 'line_count': 17, 'off_line_upper_count_needed': 2}
+BAND {'low': 460, 'high': 480, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 0.3990431142417721, 'min_boundary_modulus': 2.4282798107893266e-163, 'line_count': 19, 'off_line_upper_count_needed': 0}
+BAND {'low': 480, 'high': 500, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 0.40079443249756913, 'min_boundary_modulus': 5.773639867653331e-170, 'line_count': 19, 'off_line_upper_count_needed': 0}
+BAND {'low': 500, 'high': 520, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 0.40081654640479897, 'min_boundary_modulus': 3.6771789331328704e-177, 'line_count': 19, 'off_line_upper_count_needed': 0}
+BAND {'low': 520, 'high': 540, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 0.4782960179617569, 'min_boundary_modulus': 1.0649028784069816e-183, 'line_count': 15, 'off_line_upper_count_needed': 4}
+BAND {'low': 540, 'high': 560, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 20.0, 'count': 20, 'max_phase_increment': 0.4782960179617569, 'min_boundary_modulus': 1.790123080822238e-190, 'line_count': 18, 'off_line_upper_count_needed': 2}
+BAND {'low': 560, 'high': 580, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 19.0, 'count': 19, 'max_phase_increment': 0.41738494227548784, 'min_boundary_modulus': 2.4898941337242636e-197, 'line_count': 17, 'off_line_upper_count_needed': 2}
+BAND {'low': 580, 'high': 600, 'left': -1, 'right': 2, 'step': 0.125, 'samples': 368, 'winding': 20.0, 'count': 20, 'max_phase_increment': 0.40423231259919695, 'min_boundary_modulus': 4.3194988473412734e-204, 'line_count': 18, 'off_line_upper_count_needed': 2}
+OFF_NEW 0.8695305796406430730404454578172362713390190791390005662030547728655269894590514460619 240.4046723514406937785025955839778629144035912747817648913419636730466086643904195311
+OFF_BAND 240 1 target 1
+OFF_NEW 0.8195495920988108350007649276024767307088455088761319665243046477119839571056894965488 320.87648966877486960291174459267752564981172422773986690498062184831072730919607071

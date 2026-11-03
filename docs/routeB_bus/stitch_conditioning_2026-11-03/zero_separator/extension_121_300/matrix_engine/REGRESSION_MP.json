@@ -1,0 +1,23 @@
+[
+  {
+    "m": 80,
+    "world": "dh",
+    "source": "/workspace/dh_inputs/matrix_cells/dh_m80_dps120_gl128.json",
+    "max_entry_mp_difference": "1.9565883390584695641585817971615964074663775445907310968790373484848529157128748568872215720461188549418269927765168191796e-116",
+    "saved_negative_count": 2
+  },
+  {
+    "m": 120,
+    "world": "dh",
+    "source": "/workspace/dh_inputs/matrix_cells/dh_m120_dps120_gl128.json",
+    "max_entry_mp_difference": "3.4205829865481058440147100977691688599218232079528559956680312508306960719477240590439099638922014531569490661460727100882e-116",
+    "saved_negative_count": 2
+  },
+  {
+    "m": 120,
+    "world": "zeta",
+    "source": "/workspace/dh_existing/matched_cells/source_zeta_m120.json",
+    "max_entry_mp_difference": "4.6472652014957759001125494811689536711581658392262309902199350401309533943711470652738131884217885968735453733107656632259e-116",
+    "saved_negative_count": null
+  }
+]

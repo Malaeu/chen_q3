@@ -1,0 +1,15 @@
+{
+  "repository": "Malaeu/chen_q3",
+  "base": "3691f8e6d5cf691182309f88009add2edf703a12",
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "source_packet": "docs/routeB_bus/stitch_conditioning_2026-11-03/zero_separator/",
+  "original_DH_table_sha256": "e2f5f86d960aff5b45a318723072a1a2c67df3f00b6d213535274831c9afdee1",
+  "expanded_DH_table_sha256": "74fb75cf6a9ec06c0b89be9b17dcd0e2cc6daea5e091c68c90abb346891d834a",
+  "old_census_audit": "audit/evidence.json",
+  "new_census_checks": "dh_census/CHECKS.json",
+  "source_regression": "matrix_engine/REGRESSION_MP.json",
+  "count_precision": "400bit MPFR; empirical1e-70 shifted LDL guard; not interval",
+  "best_precision": "768bit row/null frames; float AQ and spectra plus explicit guards; maxgap brackets, not exactargmax",
+  "numerical_review": "review/REVIEW_FINAL.md",
+  "dense_matrices": "Reproducible source engine, generated locally; about185MB excluded from transfer"
+}

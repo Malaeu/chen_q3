@@ -1,0 +1,38 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "cells": 540,
+  "sectors": 44990,
+  "evaluated": 1483,
+  "bounded": 43507,
+  "worlds": {
+    "zeta": {
+      "separator_status_counts": {
+        "YES_NUMERIC": 180
+      },
+      "negative_lower_range": [
+        0,
+        0
+      ]
+    },
+    "plant": {
+      "separator_status_counts": {
+        "NO_NUMERIC": 180
+      },
+      "negative_lower_range": [
+        1,
+        1
+      ]
+    },
+    "dh": {
+      "separator_status_counts": {
+        "NO_NUMERIC": 180
+      },
+      "negative_lower_range": [
+        2,
+        7
+      ]
+    }
+  },
+  "all_best_gap_brackets_within4guards": true,
+  "max_frame_orthogonality": 1.776687785444217e-15
+}

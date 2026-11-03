@@ -1,0 +1,50 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "source_paths": [
+    "/workspace/suzuki_w_inputs/prototype.py",
+    "/workspace/dh_inputs/dh_matrix.py",
+    "/workspace/lit_quickcheck_2026-11-03/Q2_simple_even/parity.py"
+  ],
+  "carrier": "literal physical even cosine, N=m",
+  "bits": 400,
+  "quadrature": {
+    "order": 192,
+    "panels": 8,
+    "paired_pilot_order": 256,
+    "pilot_m": [
+      80,
+      120,
+      121,
+      300
+    ]
+  },
+  "zero_threshold_guard": "1e-70 empirical numerical guard, not source certificate",
+  "worlds": [
+    "zeta",
+    "plant",
+    "dh"
+  ],
+  "requested_m": [
+    121,
+    300
+  ],
+  "source_sha256": {
+    "/workspace/suzuki_w_inputs/prototype.py": "b68cc41885954395f2bf4e6009e62eb5fd96a12e07c3a9c750268ba019eba56b",
+    "/workspace/dh_inputs/dh_matrix.py": "9554c27549fc0970391c06026d8bfb402ab1cfa3b2f1db3c0db6deeb92a39f00",
+    "/workspace/lit_quickcheck_2026-11-03/Q2_simple_even/parity.py": "72ff09852e84d6b17e6a224b2b4cc3b8851baba94bff835b9519f5a97f46511a"
+  },
+  "preexisting_DH_source_sha256_matches_REPLAY_DEPENDENCIES": true,
+  "native_ldl_helper": {
+    "paths": [
+      "/workspace/zero_extension/native_frame.py",
+      "/workspace/zero_extension/frame.c"
+    ],
+    "validation_m": 121,
+    "all_three_worlds_and_shifts_match_python": true,
+    "minimum_nonzero_pivot_reporting": "not available in native helper; explicitly flagged in metadata",
+    "sha256": {
+      "/workspace/zero_extension/native_frame.py": "3159228ad8ddb4fc0dff2f17d36b487d63a2fc60bd668f02a76598c42f4bc70d",
+      "/workspace/zero_extension/frame.c": "c22e465c370da7404f1d5a2c4fbf923e497bdc079d4409313b3014eaf8e51c44"
+    }
+  }
+}
