@@ -1,0 +1,8 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "seconds": 14.391462640999976,
+  "single_rows": 8628,
+  "multi_rows": 480,
+  "nested_rows": 90,
+  "max_float_source_error": 1.1254885912137524e-13
+}

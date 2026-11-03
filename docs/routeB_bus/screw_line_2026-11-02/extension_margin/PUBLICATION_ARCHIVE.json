@@ -1,0 +1,29 @@
+{
+  "format": "tar.xz split into ordered parts; lossless",
+  "archive_bytes": 237552,
+  "archive_sha256": "9a5834a19e1911f91f6378ce12d70c8b5f3d24c0ea0acaf2dc76bb4fa3103e60",
+  "parts": [
+    {
+      "path": "data.tar.xz.part00",
+      "bytes": 237552,
+      "sha256": "9a5834a19e1911f91f6378ce12d70c8b5f3d24c0ea0acaf2dc76bb4fa3103e60"
+    }
+  ],
+  "members": [
+    {
+      "path": "sections/all_sections_q1.csv",
+      "bytes": 544331,
+      "sha256": "87e02faec840d7524fd590b61c1e4089599037a8fee24f42f4373447eaec174b"
+    },
+    {
+      "path": "sections/zeta_all_sections_q4_q8.csv",
+      "bytes": 428227,
+      "sha256": "fe6c2880f38f2fe287e8165ff3fcc3fd44c6fd4808d842199d17fba84998816a"
+    },
+    {
+      "path": "uniform/single_endpoint.csv",
+      "bytes": 643041,
+      "sha256": "5e5546ac564d129652fdba633731288094241357198391272a793b0956d5313b"
+    }
+  ]
+}

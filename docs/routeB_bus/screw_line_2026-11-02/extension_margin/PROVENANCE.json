@@ -1,0 +1,19 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "route": "CHALLENGER / NOT_RH",
+  "route_state_changed": false,
+  "user_base": "01b3d757fb9faf16c425002c0090222115348aa1",
+  "source_inbox": "11f6368323d8aaac3d3c0a6a95873b86294cc540",
+  "source_path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_PASSIVE_SECTION_P_2026-11-03.md",
+  "source_git_blob": "755c8535d18a9ea68d366934f4158981a50c0728",
+  "source_sha256": "a8bcbdcbdedc9d339c75b74046e80ade1da673786088c2662edb390255b0ec75",
+  "actual_equation_numbers": {
+    "schur": "(3)",
+    "coarse_bound": "(10)",
+    "all_node_comparison": "(17)"
+  },
+  "old_data": "docs/routeB_bus/screw_line_2026-11-02/innovation_law/core/",
+  "fresh_nodes": "dyadic nested equally spaced nodes in each tested fresh interval",
+  "finite_margin_warning": "Where the full fresh form is positive, mu_q >= mu_full; finite positive results do not certify the infinite-dimensional margin",
+  "interval_certificate": false
+}

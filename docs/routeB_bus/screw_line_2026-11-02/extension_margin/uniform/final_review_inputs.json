@@ -1,0 +1,18 @@
+[
+  {
+    "path": "RESULT.md",
+    "sha256": "0474018b969231d22d3c9e21b2e96f35e5ff25c1636b7e5b3c7f40b9de4c06d3"
+  },
+  {
+    "path": "CARDS.md",
+    "sha256": "fa50971d1a9a099ae2347cc512aef41c9acd38a05a1eab0396f57c799ea171ed"
+  },
+  {
+    "path": "sections/sections.py",
+    "sha256": "e98fbe0b1e0a8eed9e19807941db1e54a91619f3f747a6d3c6b81ca2fb55d48a"
+  },
+  {
+    "path": "sections/validate_fine_scalar.py",
+    "sha256": "86337635ac3f3446182aa20ce57f352eabf14f496052b97a7435f28840b7d3b1"
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "complete": true,
+  "stopped_at_budget": false,
+  "expected_rows": 1912,
+  "rows": 1912,
+  "seconds": 30.135758871999997,
+  "all_valid": true,
+  "all_positive": true,
+  "nested_monotonicity_checked": true,
+  "summary": [
+    {
+      "mesh": 32,
+      "q": 4,
+      "count": 239,
+      "argmin_n": 7,
+      "min_mu": 0.059209526784801736,
+      "positive_count": 239
+    },
+    {
+      "mesh": 32,
+      "q": 8,
+      "count": 239,
+      "argmin_n": 6,
+      "min_mu": 0.03034178202508131,
+      "positive_count": 239
+    },
+    {
+      "mesh": 64,
+      "q": 4,
+      "count": 239,
+      "argmin_n": 10,
+      "min_mu": 0.04649327330945774,
+      "positive_count": 239
+    },
+    {
+      "mesh": 64,
+      "q": 8,
+      "count": 239,
+      "argmin_n": 6,
+      "min_mu": 0.020509190850847903,
+      "positive_count": 239
+    },
+    {
+      "mesh": 128,
+      "q": 4,
+      "count": 239,
+      "argmin_n": 13,
+      "min_mu": 0.036359157329716396,
+      "positive_count": 239
+    },
+    {
+      "mesh": 128,
+      "q": 8,
+      "count": 239,
+      "argmin_n": 9,
+      "min_mu": 0.015816307967109977,
+      "positive_count": 239
+    },
+    {
+      "mesh": 256,
+      "q": 4,
+      "count": 239,
+      "argmin_n": 20,
+      "min_mu": 0.029424125366279363,
+      "positive_count": 239
+    },
+    {
+      "mesh": 256,
+      "q": 8,
+      "count": 239,
+      "argmin_n": 13,
+      "min_mu": 0.01217051549413728,
+      "positive_count": 239
+    }
+  ]
+}
