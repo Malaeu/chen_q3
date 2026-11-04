@@ -60,3 +60,22 @@ Conventions fixed before B+ runs:
 - K2 operational power check uses RAW positive C*_eff, no posthoc baseline subtraction: log-log fit on tested m>=512, with slope in [.20,.47] and a positive growth ratio, scored separately for gamma14 and50. Auxiliary C*_eff−C*_zeta may be shown but cannot replace this score. Nonpositive fitted inputs or dominance not reached are reported explicitly.
 - K4 operational 'clearly growing' means a factor>=2 from m512 to3000 AND a positive log-log tail slope>=.1; any observed C*_DH>16 is separately flagged. If reference/tail values are nonpositive, no shifted-log fit or synthetic ratio is allowed. A negative result is a finite-budget failure of this prediction, not a cofinal theorem.
 - No RH claim, route promotion, source clipping, or reinterpretation of the original D predictions. All B+ results join the same final results commit; this append-only preregistration is committed first.
+
+## Addendum B++ address preregistration (before address calculations)
+
+AD1: ≥ 90% of DH events sit within 1 grid step of an off-line zero. P = 0.80
+
+AD2: events are NOT explained by on-line zeros better than by off-line ones. P = 0.85
+
+AD3: larger β ⇒ earlier first detection (rank correlation of β vs first m < 0). P = 0.65
+
+Fixed address-test contract:
+
+- Use the saved dense DH screen at rh_clean@2820569c for all integer m=2..2000. Reconstruct only row0 and diagonal entries with its original selected-entry source, not new eigenproblems. An event is a unique (m,j), j=1..m, with Ajj<0 OR det(A[{0,j},{0,j}])<0; retain both flags separately. Record the constant diagonal too; flag any A00<0 separately. Do not double-count overlap.
+- Reproduce saved negative diagonal and determinant counts at every m before scoring. Strict signs remain the original screen's numerical signs; inherited selected MP confirmations are provenance, not interval certification for every event. Preserve margins.
+- Zero input is the pinned numerical census blob35396541cbc976d0dc8a1c76bf45802c8602bb84 through height900. Distance is abs(omega-gamma)/(2pi/log m). beta denotes sigma_right; also report displacement beta-.5. Compare to nearest off-line pair by height and to nearest critical-line zero. Record their identities and distances.
+- Do not silently claim census completeness above900. Score the owner-requested all-events census statistic and report a separate omega<=900 subgroup; flag upper-edge events where a missing zero above900 could change the nearest neighbor. This numerical census is not independently certified here.
+- AD1 uses the fraction of all unique events with off-line distance<=1. AD2 is operationally supported only if off-line one-step hit rate>=on-line hit rate AND median off-line distance<=median on-line distance; give both constituent metrics and paired win fraction rather than retuning the criterion. Report both tests again within the census range.
+- Null control: fixed NumPy PCG64 seed20261104;1000 independent uniform frequencies on [0,Omega_m] per distinct event m, reweighted by that m's event count. Also compute exactly the20 smallest original-zeta physical diagonals (including j=0), at every event m; present equal-m and event-count-weighted statistics. No zeta zeros are used as the null target; both controls use the same DH zero census.
+- For every off-line pair below900, first detection is the earliest saved integer m at which ANY event mode is within one frequency step of its height (not necessarily that pair's nearest-neighbor assignment). Distinguish diagonal/minor firsts, observation/censoring, and record q=2pi*m/log m. Plot observed first m against beta and gamma. AD3 primary Spearman rank correlation uses observed pairs only, with censored pairs listed separately; also report sensitivity assigning censored firsts2001 and a height-adjusted partial-rank diagnostic if defined. A negative correlation is a finite observation, not a detection theorem.
+- Existing main/B+ review is historical at its bound hashes. This append-only preregistration precedes address calculations and does not alter previous predictions/scores. Address results join the packet; no RH/D0/route-state change.
