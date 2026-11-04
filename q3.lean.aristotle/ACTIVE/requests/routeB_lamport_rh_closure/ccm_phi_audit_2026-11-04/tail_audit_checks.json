@@ -1,0 +1,45 @@
+{
+  "status": "TAIL_PAPER_AUDIT_NO_COUNTEREXAMPLE_FOUND",
+  "exact_algebra": {
+    "complex_denominator_slack": true,
+    "mode_derivative": true,
+    "geometric_tail": true,
+    "Rosser_ratio_derivative": true
+  },
+  "zero_free_error": "0.35766971628007473289339020210908240826499808673103",
+  "T": "370.17962509312907712492449151228407996098633395151",
+  "Rosser_R_over_log_T": "0.53864992148027706135234904504861064348099465728461",
+  "safe_score": "383.69377706274332155676917009389821618898618174149",
+  "simple_real_lower": "13.693777062743321556769170093898216188986181741488",
+  "distinct_real_lower": "99.346888531371660778384585046949108094493090870744",
+  "EM_point_diagnostics": [
+    {
+      "imag": 0,
+      "psi_error_over_bound": 0.014367751898818087,
+      "trigamma_error_over_bound": 0.015545041527925733
+    },
+    {
+      "imag": 1,
+      "psi_error_over_bound": 0.014190042199158827,
+      "trigamma_error_over_bound": 0.015345449097941099
+    },
+    {
+      "imag": 10,
+      "psi_error_over_bound": 0.004373930626327229,
+      "trigamma_error_over_bound": 0.004521406091103374
+    },
+    {
+      "imag": 100,
+      "psi_error_over_bound": 6.736631221769739e-16,
+      "trigamma_error_over_bound": 2.2402296330967046e-16
+    },
+    {
+      "imag": 400,
+      "psi_error_over_bound": 4.970624912588301e-31,
+      "trigamma_error_over_bound": 4.3275240867629885e-32
+    }
+  ],
+  "interval_certificate": false,
+  "external_Rosser_theorem_reproved": false,
+  "input_sha256": "8eab38983c7aa4c12efca4f3f95f57d5e83a4b9a9851ff09f73ccb6d33f63a6a"
+}

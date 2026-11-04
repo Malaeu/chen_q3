@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://personal.science.psu.edu/rcv4/personal/Publications/s2-8-1-73.pdf",
+    "pdf_sha256": "0dbcddf24bc41c65d1920c59aafe7fe85f13a7519b0edf9be9164c84d1cc6db4",
+    "verified_statement": "Theorem1(1.3),p73: circular cosecant,constant3/2,local gaps",
+    "pdf_retained_local_only": true
+  },
+  {
+    "url": "https://arxiv.org/pdf/2204.01980v2",
+    "pdf_sha256": "565993a6def48b237a68a92acba604f2c42f99165e0e71e390f8e21a313b74b2",
+    "verified_statement": "Corollary1.2: theta error implies classical O_A(x/log^A x); proof uses finite-height RH verification internally",
+    "pdf_retained_local_only": true
+  },
+  {
+    "url": "https://www.cs.uleth.ca/~kadiri/articles/New-Bounds-for-Psi-Math-Comp-Faber-Sept2013.pdf",
+    "pdf_sha256": "a1d3f37e458d43a87bc33d5fe9c0d0d8d52ec34e8f610053dbdcbc0f72a7c5be",
+    "verified_statement": "Theorem1.5,p3: Rosser count, T>=2, .137/.443/1.588",
+    "pdf_retained_local_only": true
+  }
+]

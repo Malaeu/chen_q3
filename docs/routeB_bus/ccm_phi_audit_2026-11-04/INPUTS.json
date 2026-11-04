@@ -1,0 +1,23 @@
+{
+  "base": "c539c1953ee18ac09d48091c4218590d30962318",
+  "inputs": [
+    {
+      "file": "INPUT_VERDICT.md",
+      "ref": "proshka_inbox_2026-10-31@4adc9312",
+      "git_blob": "cc9e5b9e915ca8d1a2edeb32bf579f7db450d560",
+      "sha256": "8eab38983c7aa4c12efca4f3f95f57d5e83a4b9a9851ff09f73ccb6d33f63a6a"
+    },
+    {
+      "file": "INPUT_RANK_TRACE.md",
+      "ref": "proshka_inbox_2026-10-31@eada41db",
+      "git_blob": "b0337bb10193b2498e6c35997a49237174c84a2c",
+      "sha256": "27121b62e43bc1269b0ce67c3bee600e2bf1da79d9f2f9ca2700f02a2b4d1192"
+    },
+    {
+      "file": "INPUT_INHERITED_DENSITY.md",
+      "ref": "proshka_inbox_2026-10-31@07a242c1",
+      "git_blob": "29647418b82ade2eca870a6d68592c1bf9c51859",
+      "sha256": "8fc159e474162bb0298d201d409d324a0a1f9ba0a811073430afc4fd1f93a5a4"
+    }
+  ]
+}

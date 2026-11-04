@@ -1,0 +1,40 @@
+{
+  "base": "c539c1953ee18ac09d48091c4218590d30962318",
+  "scope": "diagnostic comparison only; no source matrices or zero lists read by Arb engine",
+  "source_inputs": [
+    {
+      "path": "docs/routeB_bus/second_moment_2026-11-04/DECOMPOSITION.csv",
+      "git_blob": "8c1a4df3bc2cea3377601731b2ad6d9cb766b2e8",
+      "sha256": "9231ab17dc550947fec1f2ce7f2aacc35cf2e1d8b50555b2361e45df143812bc"
+    },
+    {
+      "path": "docs/routeB_bus/second_moment_2026-11-04/SOURCE_MOMENTS.csv",
+      "git_blob": "0baabca239ff7f095f065d9ebd4797cd5f0777a7",
+      "sha256": "d7d822461fa54816d98d4d8f591d4ddedf265da3b32ef327971cb348e8f92eb8"
+    },
+    {
+      "path": "docs/routeB_bus/second_moment_2026-11-04/SOURCE_MOMENTS_mp_m300.json",
+      "git_blob": "3f5f50174c47b87844ee1318ab81d7ab13145d9a",
+      "sha256": "17325ca2e6c3fa55f287d9d9008abe5d8e080d2027393f8ba0f0aaf1aab3375b"
+    }
+  ],
+  "prior_binary64_components": {
+    "H2": 2954.8162144599773,
+    "P2": 527.4626715774993,
+    "B2": 2936.598450855468,
+    "HP": -162.72592851336478,
+    "HB": 114.69091543421064,
+    "PB": -890.8824596949767
+  },
+  "Arb_midpoint_minus_prior_binary64": {
+    "H2": -7.275957614183426e-12,
+    "P2": 7.275957614183426e-12,
+    "B2": 0.0,
+    "HP": -4.547473508864641e-13,
+    "HB": 3.979039320256561e-13,
+    "PB": -1.1368683772161603e-12
+  },
+  "max_abs_component_difference": 7.275957614183426e-12,
+  "MP_source_Frob2_point_inside_Arb": true,
+  "MP_source_Frob2_point": "5479.9598641188123929632168652553495765468493729947516351910085243987857499706982582591714260532522832356776556431959652109"
+}
