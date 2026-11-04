@@ -1,0 +1,20 @@
+[
+  {
+    "local_path": "/workspace/corner_thermometer/primes.bin",
+    "bytes": 23045820,
+    "sha256": "0feea6e7805b8bae663ecadd180f8ea94061ff0b16d6f9da2472fbe2e6d5cbb5",
+    "committed": false
+  },
+  {
+    "local_path": "/workspace/corner_thermometer/Psi_all_m.float64",
+    "bytes": 799999992,
+    "sha256": "6180c07b2f528a59eb63227344cb74bfb235b03acf777c2df0c065da31861013",
+    "committed": false
+  },
+  {
+    "local_path": "/workspace/corner_thermometer/RECORD_MINIMA.csv",
+    "bytes": 36784947,
+    "sha256": "c889ea9acaff0fdf7fb8f3fec6f0c25f5320e3b4d6f68ffbe95358660f34ddde",
+    "committed": false
+  }
+]

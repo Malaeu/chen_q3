@@ -1,0 +1,69 @@
+{
+  "format": "gzip-compressed CSV shards, original strict native record minima",
+  "columns": [
+    "m",
+    "log_m",
+    "Psi"
+  ],
+  "total_rows": 605239,
+  "full_uncompressed_sha256": "c889ea9acaff0fdf7fb8f3fec6f0c25f5320e3b4d6f68ffbe95358660f34ddde",
+  "combine": "Write first header once, then all data rows in lexicographic shard order.",
+  "parts": [
+    {
+      "file": "records/part_000.csv.gz",
+      "rows": 100000,
+      "m_first": 2,
+      "m_last": 33678448,
+      "uncompressed_sha256": "9d774ffe55aa50e1bebc2ea56ffff5693949906347c1825286208cc45f8e3500",
+      "compressed_bytes": 2247502
+    },
+    {
+      "file": "records/part_001.csv.gz",
+      "rows": 100000,
+      "m_first": 33678449,
+      "m_last": 33778448,
+      "uncompressed_sha256": "d9a0783751d555b5d5b8dc50f7bc1109e05e03bc0d518a3ea4c260a417f91fa2",
+      "compressed_bytes": 2248820
+    },
+    {
+      "file": "records/part_002.csv.gz",
+      "rows": 100000,
+      "m_first": 33778449,
+      "m_last": 33878448,
+      "uncompressed_sha256": "c6753748960e90964ea4c0743f886676ca08b1c792275b8b3dad7d889b4e7d4b",
+      "compressed_bytes": 2252949
+    },
+    {
+      "file": "records/part_003.csv.gz",
+      "rows": 100000,
+      "m_first": 33878449,
+      "m_last": 33978448,
+      "uncompressed_sha256": "2f2253f9241899f2e95c84eba5a8c09660abce06f01dc176e45992bbba42a4cf",
+      "compressed_bytes": 2251731
+    },
+    {
+      "file": "records/part_004.csv.gz",
+      "rows": 100000,
+      "m_first": 33978449,
+      "m_last": 34078448,
+      "uncompressed_sha256": "388f9c6df72569a50376cb512c7f9d1393890758baab767b37266222f37ea575",
+      "compressed_bytes": 2240393
+    },
+    {
+      "file": "records/part_005.csv.gz",
+      "rows": 100000,
+      "m_first": 34078449,
+      "m_last": 34178448,
+      "uncompressed_sha256": "fe3269ef52bb228aa55d0a9f498e1bd71037c186cc4d3e28ff47aecf3da49834",
+      "compressed_bytes": 2223456
+    },
+    {
+      "file": "records/part_006.csv.gz",
+      "rows": 5239,
+      "m_first": 34178449,
+      "m_last": 34186454,
+      "uncompressed_sha256": "6ec70661056eb7055293fa613114300c09767f6b58c13bd968d2c05b40a22901",
+      "compressed_bytes": 115317
+    }
+  ]
+}

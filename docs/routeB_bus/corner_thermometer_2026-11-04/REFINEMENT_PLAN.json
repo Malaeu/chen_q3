@@ -1,0 +1,9 @@
+{
+  "native_minimum_m": 34186454,
+  "threshold": "0.021498581823835804",
+  "candidate_count": 40,
+  "m_first": 34186435,
+  "m_last": 34186474,
+  "native_maximum_m": 319439,
+  "candidate_rule": "all stored Psi <= native minimum +1e-9, across every integer; diagnostic guard band, not uniform error certificate"
+}

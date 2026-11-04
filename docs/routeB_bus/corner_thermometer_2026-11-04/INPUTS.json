@@ -1,0 +1,23 @@
+{
+  "base": "2ad7342c2d0b236f627aa23ccc955e2190ffcade",
+  "inputs": [
+    {
+      "name": "gate",
+      "path": "docs/routeB_bus/exact_commutant_2026-11-04/GATE0.json",
+      "ref": "2ad7342c2d0b236f627aa23ccc955e2190ffcade",
+      "git_blob": "35a2d6e50a39c27bfe0da92522648164469cc99e"
+    },
+    {
+      "name": "result",
+      "path": "docs/routeB_bus/exact_commutant_2026-11-04/RESULT.md",
+      "ref": "2ad7342c2d0b236f627aa23ccc955e2190ffcade",
+      "git_blob": "6a5ae476efc3eca458a3c6e19998199ab33ec73b"
+    },
+    {
+      "name": "plan",
+      "path": "docs/routeB_bus/proshka/PROSHKA_PLAN_RH_2026-11-04.md",
+      "ref": "44aaf90d",
+      "git_blob": "ca1fc4d948cc553655d58b8c6ca4033ace79aa95"
+    }
+  ]
+}

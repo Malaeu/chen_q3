@@ -1,0 +1,37 @@
+{
+  "diagnostic": "DIAGNOSTIC_NEVER_A_PROOF_POINT_ARITHMETIC",
+  "G1": "PASS",
+  "G2": "PASS",
+  "G2_max_abs_difference": "1.88943818094149090212980048761683196251e-14",
+  "G3": "NOT_RUN_OPTIONAL; supplied kernel denominator differs from Suzuki and no complete >=10000 zero table with paid tail used",
+  "T1": {
+    "probability": 0.97,
+    "score": "PASS_DIAGNOSTIC",
+    "nonpositive_native_count": 0
+  },
+  "T2": {
+    "probability": 0.85,
+    "score": "PASS_DIAGNOSTIC",
+    "primary_uniform_t_mean": "0.0461840547753115281097482500942592089351524",
+    "interval": "log2..log1e8",
+    "target_center": "0.0462",
+    "half_width": "0.003"
+  },
+  "T3": {
+    "probability": 0.6,
+    "score": "PASS_DIAGNOSTIC",
+    "minimum_ge_1000_refined": "0.0214985808238387377857117979405989103550459",
+    "m": 34186454
+  },
+  "T4": {
+    "probability": 0.95,
+    "score": "PASS_DIAGNOSTIC",
+    "maximum_refined": "0.0689080386747095466212694526625572166579201",
+    "m": 319439
+  },
+  "evaluated_integers": 99999999,
+  "no_global_rounding_certificate": true,
+  "no_cofinal_inference": true,
+  "route_state_changed": false,
+  "RH_export": false
+}
