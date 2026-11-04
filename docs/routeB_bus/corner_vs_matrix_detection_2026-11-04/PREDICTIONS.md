@@ -33,3 +33,30 @@ D3: the negative eigenvector peaks at frequency ω ≈ γ (within 2π/L). P = 0.
 - Matrix builder Git blob prefix:27bbaab (verify full blob/SHA256 before execution).
 
 This file is committed before any numerical experiment in this packet. Read-only source inspection and experiment design precede it; no matrix, gate, detector or control has been run.
+
+## Addendum B+ preregistration (before any B+ numerical run)
+
+Owner predictions (verbatim):
+
+K1: C*(m) ≤ 16 for zeta at every m (implied by Γ envelope if A ⪰ 0). P = 0.97
+
+K2: for the planted quartet with a = 1/3, C*(m) grows roughly like m^{1/3}. P = 0.70
+
+K3: at u = 0.9 the corner never fires, while the p⊥ detector does fire. P = 0.85
+
+K4: for DH the p⊥ core breaks (C*(m) clearly growing) at some m ≤ 3000. P = 0.60
+
+Source: e586ebbadf0729f37f70d4fea99d780b23f7932f, PROSHKA_VERDICT_TWO_CORES_2026-11-04.md, blob4663cd8ef05f3a54c48def00824442d640e0b4eb, §2/§4.1/§9. No theorem is imported as a proved arithmetic supplier.
+
+Conventions fixed before B+ runs:
+
+- W=I+X, S=W^{-1/2}. For B+1 use the stated generalized quotient on physical z⊥p. In normalized coordinates y=W^{1/2}z this means y⊥S p, so compute (S B S)|_(S p)⊥. Never project onto p and then silently treat the Euclidean mass as W.
+- The planted physical A+Q is H+pp*−B_eff with B_eff=B−Q. Report C* of B_eff (K2) and explicitly distinguish the unchanged original-prime B, whose C* is identical to unplanted zeta. H/p remain unchanged by this added quartet.
+- B+2 primary is the physical pole-null generalized minimum of A(0.9)+Q relative to W, therefore normalized constraint S p. Also report the literal as-written (S(A(0.9)+Q)S)|_p⊥ as a separate convention. Do not merge their values or call the latter exactly pole-null in physical coordinates.
+- DH uses its own signed Dirichlet coefficients, conductor5 odd gamma, and NO zeta pole. The source-native p_D=0, so p_D⊥ is the full carrier, as §9 states. Do not insert the zeta pole into DH.
+- B+1 core grid: m in {16,32,50,51,54,64,80,128,208,256,512,750,1000,1500,2000,3000}, plus observed main-task first thresholds. All a in {.05,.1,1/3}, gamma14/50 plants; original zeta and DH. Scope K1 support only to actual tested cells, never every integer outside that grid or a cofinal quantifier.
+- B+2 exhaustive corner scans use every integer16..3000 with the same admissibility rule, u=9/10 exact at high precision, unplanted and all6 plants. Test Sobolev/pole-null detectors first at admitted integer and then consecutively until trigger, or explicitly censor at a measured feasible bound; add common checkpoints to3000. Unplanted u=.9 is a changed form and is not required to be positive; record its behavior separately instead of mislabelling it an original-zeta control failure.
+- B+3 DH main detectors: scalar corner every integer16..3000; raw even matrix consecutively from16 until first lambda<−1e−6 (or documented cap), then common checkpoints. C* from B+1. Confirm negative witnesses at >=50dps with DH's own source.
+- K2 operational power check uses RAW positive C*_eff, no posthoc baseline subtraction: log-log fit on tested m>=512, with slope in [.20,.47] and a positive growth ratio, scored separately for gamma14 and50. Auxiliary C*_eff−C*_zeta may be shown but cannot replace this score. Nonpositive fitted inputs or dominance not reached are reported explicitly.
+- K4 operational 'clearly growing' means a factor>=2 from m512 to3000 AND a positive log-log tail slope>=.1; any observed C*_DH>16 is separately flagged. If reference/tail values are nonpositive, no shifted-log fit or synthetic ratio is allowed. A negative result is a finite-budget failure of this prediction, not a cofinal theorem.
+- No RH claim, route promotion, source clipping, or reinterpretation of the original D predictions. All B+ results join the same final results commit; this append-only preregistration is committed first.
