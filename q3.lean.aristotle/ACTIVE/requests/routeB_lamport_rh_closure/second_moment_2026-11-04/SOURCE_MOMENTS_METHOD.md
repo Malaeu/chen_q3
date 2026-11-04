@@ -1,0 +1,11 @@
+# Source second-moment diagnostic
+
+DIAGNOSTIC_NEVER_A_PROOF. Literal even source only; no interpretation as a zero count, route-state change or RH export.
+
+`source_moments.py` imports unchanged `arithmetic_coupling_2026-11-03/source/split.py`, calls its 400-bit MPFR `build(m,192)` with eight panels once per integer m, and converts its C, B and A1 to binary64 for Frobenius arithmetic. No eigensystem is computed. Local NPZ files retain C/B/A and the additional pieces for each world. Source and array hashes are in the receipts. `SECOND_BASE` selects the pinned arithmetic packet; `SECOND_LOCAL` selects scratch storage. Reproduce with `PYTHONPATH=<dependencies> python source_moments.py --workers 2`; `--aggregate-only` rereads completed receipts.
+
+Write A=G+P+B+W. P is the pinned rank-one pole term for zeta and plant, zero for DH; G=C−P. For plant only W=4 Re(eeᵀ), e_j=2 d_j z sin(zL/2)/(sqrt(L)(z²−(2πj/L)²)), z=2π/log2+i/4. W is separate from the pole and arithmetic terms. The decomposition records G²,P²,2〈G,P〉,2〈G,B〉,2〈P,B〉, arithmetic diagonal sum_n||B_n||² and arithmetic off-diagonal ||B||²−sum_n||B_n||², plus W²,2〈G,W〉,2〈P,W〉,2〈B,W〉. Squares mean Frobenius squares. Signed shares divide by ||A||²; `absolute_contribution_over_Frob2` is abs(term)/||A||². `share_of_sum_abs_terms` instead divides by the sum of absolute decomposition terms and is not the V3 score. GP, GB, PB, GW, PW and BW all include the displayed factor2.
+
+Individual B_n use the exact analytic atom formula from the prior component split, evaluated vectorially in binary64. Zeta/plant retain prime powers only; DH retains all signed logarithmic-derivative coefficients, including non-prime-powers. The n=m atom is assigned its exact zero rather than retaining trigonometric roundoff. Atom counts include nonzero coefficients at that endpoint, while its norm contribution is zero. Arithmetic reconstruction residuals explicitly measure binary64 atom aggregation against the unchanged MPFR-built B. Source precision is unchanged. Frobenius identities are finite numerical conservation checks, not interval certificates.
+
+The GL256 paired-order pilots use the same unchanged 400-bit source at m=16,40,300. Their difference from GL192 measures sensitivity at these three points only; it is not a uniform quadrature error bound. Local dense arrays are not intended for commit.

@@ -1,0 +1,11 @@
+{
+  "status": "SCALAR_DIAGNOSTIC_NOT_INTERVAL",
+  "rows": 285,
+  "gamma_star": "14.1347251417346937904572519835624702707842571156992431756855674601499634298092567649490104",
+  "formula": "sup_{gamma>=gamma_star} [L+sin(L gamma)/gamma]",
+  "algorithm": "boundary or next positive stationary peak; subsequent peak heights strictly decrease",
+  "zero_scan": false,
+  "source_moment_input": false,
+  "min_improvement": 6.3439889948660855e-06,
+  "max_improvement": 0.008536906328589633
+}

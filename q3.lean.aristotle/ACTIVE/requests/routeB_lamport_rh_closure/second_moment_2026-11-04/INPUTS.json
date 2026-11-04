@@ -1,0 +1,48 @@
+{
+  "base": "b785505e569457b79b4887764b450559010c8b16",
+  "arithmetic_builder_origin": "89e8c969",
+  "status": "DIAGNOSTIC_NEVER_A_PROOF",
+  "inputs": [
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source/split.py",
+      "git_blob": "1ba67a018d5599931e03920e0dbb9b8110aa7212",
+      "sha256": "b709685c92ac2ee6b39361b927e16031d00920d2e00c00342982b596dc610d5e"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/RESULT.md",
+      "git_blob": "b0900f4c5533c4604aebfb418f13ced031c3d552",
+      "sha256": "8cb1d3102a562ef45524c4ba957779c599294ee77e4da51b9100514aea219794"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source_inputs/zeta_zeros.csv",
+      "git_blob": "09bddbf8d23962dc0aa7e5fd09bc74b8e4965cf6",
+      "sha256": "3d55cd7aa3f74e22c8284753eab922439607c925514e5c36a372ff5bb2363c75"
+    },
+    {
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source_inputs/dh_zeros_900_200dps.json",
+      "git_blob": "35396541cbc976d0dc8a1c76bf45802c8602bb84",
+      "sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846"
+    },
+    {
+      "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/RESULT.md",
+      "git_blob": "d1d53702bb047d96fd8b45e4a7752f92e1742c50",
+      "sha256": "d289e693f2c69afb00fc3720bd9cbdc4d5628d6bf67177ef4098e445b05530cd"
+    },
+    {
+      "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/ZERO_SUMMARY.csv",
+      "git_blob": "3d5580e59bc01219a808279bcfbe88554fa95371",
+      "sha256": "ef8e0c5d5d51400384fa9aaa39a3e3435feb2289ebb4a568a6960f83c0e1d1a0"
+    },
+    {
+      "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/analytic_source.py",
+      "git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63"
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ZERO_DENSITY_TAIL_Q3_DIAGNOSIS_2026-11-04.md",
+      "ref": "07a242c1",
+      "git_blob": "29647418b82ade2eca870a6d68592c1bf9c51859",
+      "sha256": "8fc159e474162bb0298d201d409d324a0a1f9ba0a811073430afc4fd1f93a5a4"
+    }
+  ]
+}

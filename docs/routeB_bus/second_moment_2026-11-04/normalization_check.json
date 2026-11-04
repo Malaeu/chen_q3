@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "scope": "independent analytic versus arithmetic even physical matrix m16 only; not eigenpair validation",
+  "source_bits": 400,
+  "analytic_metadata": {
+    "bits": 400,
+    "working_bits": 440,
+    "special_function_bits": 472,
+    "tail_lengths": [
+      56,
+      56
+    ],
+    "tail_cut": "1.3758210268297397763667897526170065161360224664295482687804518709187165186228035782046256351936415984866562007864681289743809729483077e-135",
+    "seconds": 0.02412336000003279,
+    "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+    "interval_certificate": false
+  },
+  "analytic_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+  "normalization_sha256": "7125fd5599848b6c48a77ebb73340177161c5aa175d3a721335e66a263dd8b17",
+  "arithmetic_cache_sha256": "ec901c470c07108a8b6caf0bdb0b2e806127dfd32679a6c58f6cf6221a46e393",
+  "rows": [
+    {
+      "world": "zeta",
+      "m": 16,
+      "dimension": 17,
+      "analytic_trace": 15.49337149425534,
+      "arithmetic_trace": 15.49337149425534,
+      "analytic_F2": 42.21229509663543,
+      "arithmetic_F2": 42.21229509663543,
+      "max_entry_error": 0.0,
+      "trace_error": 0.0,
+      "F2_error": 0.0,
+      "gate_allowance": 1e-11,
+      "pass_gate": true
+    },
+    {
+      "world": "dh",
+      "m": 16,
+      "dimension": 17,
+      "analytic_trace": 41.45762189699145,
+      "arithmetic_trace": 41.45762189699145,
+      "analytic_F2": 137.39096478830294,
+      "arithmetic_F2": 137.39096478830294,
+      "max_entry_error": 0.0,
+      "trace_error": 0.0,
+      "F2_error": 0.0,
+      "gate_allowance": 1e-11,
+      "pass_gate": true
+    },
+    {
+      "world": "plant",
+      "m": 16,
+      "dimension": 17,
+      "analytic_trace": 21.043466742595754,
+      "arithmetic_trace": 21.043466742595754,
+      "analytic_F2": 76.81655397330147,
+      "arithmetic_F2": 76.81655397330147,
+      "max_entry_error": 1.1102230246251565e-16,
+      "trace_error": 0.0,
+      "F2_error": 0.0,
+      "gate_allowance": 1e-11,
+      "pass_gate": true
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "V1_pass": false,
+  "V1_range": [
+    0.8455392766652428,
+    0.909349506183429
+  ],
+  "V2_pass": true,
+  "V2_median_200_300": 0.8995754875163593,
+  "V3_pass": false,
+  "V3_signed_share_m300": 0.012119249333189258,
+  "V4_pass": false,
+  "stopped_conventions": {
+    "L_plus_inv_gamma": true,
+    "2L": true,
+    "L": true
+  },
+  "scope": "raw measured diagnostics; interpretation stops retained"
+}
