@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "world": "zeta",
+      "m": 16,
+      "bits": 320,
+      "max_row_diagonal_error": "2.8242334135272263056e-68",
+      "pass_gate": true,
+      "printed_row_digits": 68
+    },
+    {
+      "world": "dh",
+      "m": 16,
+      "bits": 320,
+      "max_row_diagonal_error": "4.9511622743981274008e-68",
+      "pass_gate": true,
+      "printed_row_digits": 68
+    }
+  ],
+  "pinned_metadata": {
+    "bits": 320,
+    "working_bits": 360,
+    "special_function_bits": 392,
+    "tail_lengths": [
+      46,
+      46
+    ],
+    "tail_cut": "1.6632655625031838749648647329091050188463268493401100003613476921275034487287313032363425327059987898234729864e-111",
+    "seconds": 0.028227677001268603,
+    "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+    "interval_certificate": false
+  },
+  "scope": "m16 only, unchanged pinned analytic full matrix versus independent row/diagonal formulas; printed68digit rounding limits comparison"
+}

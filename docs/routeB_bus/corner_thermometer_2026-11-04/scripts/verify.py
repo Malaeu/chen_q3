@@ -10,7 +10,7 @@ def rows(n):return list(csv.DictReader((P/n).open()))
 s=read('NATIVE_SUMMARY.json');r=read('REFINED_EXTREMA.json');reg=read('PREREGISTRATION.json');g=read('GATES.json')
 assert s['max_m']==100000000 and s['evaluated_integers']==99999999 and s['nonpositive_count']==0
 assert s['long_double_mantissa_bits']==64 and s['prime_count']==5761455 and s['higher_prime_power_count']==1404
-pred=(P/'PREDICTIONS.md').read_bytes();assert hashlib.sha1(b'blob '+str(len(pred)).encode()+b'\0'+pred).hexdigest()==reg['predictions_blob']=='efaaf570e175e7c213afa07a6aa657d378ea531e'
+pred=(P/'PREDICTIONS.md').read_bytes().split(b'\n## Addendum pre-registration',1)[0];assert hashlib.sha1(b'blob '+str(len(pred)).encode()+b'\0'+pred).hexdigest()==reg['predictions_blob']=='efaaf570e175e7c213afa07a6aa657d378ea531e'
 assert len(rows('G1_NATIVE.csv'))==3
 for x in rows('G1_NATIVE.csv'):assert mp.mpf(x['abs_error'])<=mp.mpf('1e-10')and x['pass']=='1'
 c=rows('CHECKPOINT_COMPARISON.csv');assert [int(x['m'])for x in c]==[10**k for k in range(1,9)]

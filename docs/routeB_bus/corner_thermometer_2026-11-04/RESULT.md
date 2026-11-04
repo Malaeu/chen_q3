@@ -97,3 +97,11 @@ The native run used long double with64 mantissa bits, Kahan compensation for S1,
 The full scan completed in about17.8seconds. Independent40dps checkpoints took157seconds, and bounded local refinement took42seconds. Dense raw values and prime integers remain local with hashes in LOCAL_DATA.json. No large source matrices, eigensystems, changed source, or zero-side positivity assumption are involved. INDEPENDENT_REVIEW.md records a bounded read-only derivation/implementation review; it is not a second exhaustive run.
 
 Checkpoint agreement and the margins in this finite sample do not supply a rigorous uniform roundoff bound, prove positivity on a real interval, or extend beyond10⁸. No cofinal claim, route-state change or RH export is made.
+
+## Addendum: second rung and own-source DH
+
+The addendum is complete in [ADDENDUM_RESULT.md](ADDENDUM_RESULT.md). ζ passes all requested corner-sharing minors; the maximum at m2000,j1 is0.99999932954867157…, confirmed at320bits. The maximizing index isj1 in all7cells, so S2 fails.
+
+DH's own-conductor5, odd-Gamma, no-pole corner is positive at every sampled integer through10⁷: H1 fails, minimum≈0.05291509594595865 at m9,356,256. Nevertheless its first raw corner-minor ratio above1 is at m463,j234, s≈2.399479153445726 with both diagonals positive. An earlier PSD-minor failure at m75,j58 has a negative diagonal and negative raw ratio; it is not the same event. Every m2…2000/all j was screened, with every near-one/exceeding candidate independently confirmed at≥256bits.
+
+The original Task A results/data remain retained. The appended prediction registration preceded all addendum runs; delivery is a follow-up commit because the original Task A SHA had already been published. No RH or route-state export is made.

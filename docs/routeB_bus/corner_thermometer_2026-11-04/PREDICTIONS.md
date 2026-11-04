@@ -16,3 +16,13 @@ Primary uniform-t mean: integral of the same explicit Psi(t) over [log2,log(1000
 Evaluate every integer, retaining global and m>=1000 extrema, the20 smallest values and every strict record minimum. Use compensated extended-precision sums and stable elementary/special-function tails; compare independent40dps checkpoints without source alteration. A measured violation is reported, not repaired away. Numerical observations and checkpoint agreement are not certified positivity or an RH proof.
 
 Registration is an immutable Git commit object created before numerical work, without moving rh_clean; final delivery is one scoped branch commit carrying this identical prediction blob and the registration receipt.
+
+## Addendum pre-registration (before any addendum numerical run)
+
+- S1 (P=0.97): s_mj<=1 for every zeta cell on m={16,40,80,160,300,1000,2000}, all1<=j<=m.
+- S2 (P=0.45): the maximizing j is within2*pi/log(m) of omega=14.13 on that grid. Record every cell and the per-cell outcome; no aggregate success is assumed.
+- H1 (P=0.40): the own-source DH corner Psi_DH(log m)<0 for at least one integer2<=m<=10000000.
+
+Use the exact DH Dirichlet-convolution log-derivative coefficients, own Gamma parity and conductor5, no pole. For second-rung ratios report A00,Ajj, determinant and denominator sign: a nonpositive diagonal is a separate positivity failure and cannot be hidden by a ratio sign. Scan DH consecutive integer m starting at2 to find the first failure, while also reporting the same seven comparison cells up to2000. Confirm any ratio above1-1e-6 or other indicated positivity failure at>=50dps. No RH claim or route-state/export change.
+
+Task A was already published when this addendum arrived. This immutable registration object precedes all addendum numerical runs; final delivery will add one scoped follow-up commit in the same output directory without rewriting the published history.

@@ -1,0 +1,20 @@
+[
+  {
+    "local_path": "/workspace/corner_thermometer/addendum/ADD_DH_RECORD_MINIMA.csv",
+    "bytes": 3290440,
+    "sha256": "2ad896212e93b6cfda4ebd6d0e11b138223210cfe9dacd92a20b48c152d2ebe3",
+    "committed": false
+  },
+  {
+    "local_path": "/workspace/corner_thermometer/addendum/DH_Psi_n2_N.float64",
+    "bytes": 79999992,
+    "sha256": "397b174ead28b0d3e51de4c8886d90dd1e516bec34178f0501948135689af573",
+    "committed": false
+  },
+  {
+    "local_path": "/workspace/corner_thermometer/addendum/DH_coeff_n2_N.float64",
+    "bytes": 79999992,
+    "sha256": "e3359f625c8a51f9b2eb8b3926803db5131c92d02fe74327a8f9963787ea89b2",
+    "committed": false
+  }
+]

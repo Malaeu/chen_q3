@@ -1,0 +1,19 @@
+{
+  "original_taskA_commit": "a33870cbc9ee019c653f8f31e5beab5e05e00480",
+  "registration_commit": "bb91ed2018ff4b92f7cfc4fe60b6b0bf2ff76a73",
+  "registered_UTC": "2026-11-04T15:16:38Z",
+  "prediction_blob": "0e7307bf6b1345b61e6ada0d2476a2bf264f8f5e",
+  "source_inputs": [
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_TWO_CORES_2026-11-04.md",
+      "ref": "e586ebba",
+      "git_blob": "4663cd8ef05f3a54c48def00824442d640e0b4eb"
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_FAKE_WORLD_EFZ_DH_BEURLING_2026-11-02.md",
+      "ref": "a8f0df14",
+      "git_blob": "a3912756efbfac0825d96f29f35c0e834d38f560"
+    }
+  ],
+  "delivery": "Same output directory; original Task A already published, so one follow-up commit without force/history rewrite."
+}

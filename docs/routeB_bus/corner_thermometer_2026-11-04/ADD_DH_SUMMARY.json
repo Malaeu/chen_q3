@@ -1,0 +1,15 @@
+{
+"world":"DH own conductor5 oddGamma no pole",
+"max_m":10000000,
+"evaluated_integers":9999999,
+"coefficient_bits":192,
+"long_double_mantissa_bits":64,
+"first_negative_m":0,
+"negative_count":0,
+"minimum_m":9356256,
+"minimum_native":"0.052915095945958620995975",
+"maximum_m":111384,
+"maximum_native":"0.32197353670323447484211",
+"record_count":55052,
+"seconds":27.951645423999998740783
+}
