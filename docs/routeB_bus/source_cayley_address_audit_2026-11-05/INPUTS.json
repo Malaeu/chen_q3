@@ -1,0 +1,59 @@
+{
+  "inputs": [
+    {
+      "name": "verdict",
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_FROBENIUS_GLUING_Q_2026-11-04.md",
+      "ref": "f96a9072071c13011cc0fb4a6408e2214ed64181",
+      "file_commit": "d558268a4244c9fc7686d3bbaf7dd8cbf5c86026",
+      "git_blob": "7cf72ea5ae3f3370eee05b9cc688887e10c37852",
+      "bytes": 75643,
+      "sha256": "9c31d9f713255ff90a2e813fee1f55a3e3f3ffca612ca55d4bfe1d2e57a9d9f2",
+      "local_input": "INPUT_VERDICT.md"
+    },
+    {
+      "name": "census",
+      "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source_inputs/dh_zeros_900_200dps.json",
+      "ref": "34af3956b5bb33620695a579e871aed909eacbe8",
+      "git_blob": "35396541cbc976d0dc8a1c76bf45802c8602bb84",
+      "bytes": 707070,
+      "sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846",
+      "local_input": "INPUT_census.txt"
+    },
+    {
+      "name": "address_result",
+      "path": "docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/address/RESULT.md",
+      "ref": "34af3956b5bb33620695a579e871aed909eacbe8",
+      "git_blob": "95191e53f9166e1805cf35fc663b0e10b0ec5807",
+      "bytes": 8222,
+      "sha256": "eae0a9ac4140d12f56d9af6fb2ac7eeef1a2e1a328c7a140dfe75ad5b61e7507",
+      "local_input": "INPUT_address_result.txt"
+    },
+    {
+      "name": "events",
+      "path": "docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/address/events.csv",
+      "ref": "34af3956b5bb33620695a579e871aed909eacbe8",
+      "git_blob": "364281a907e0da23aafeab6d442407ba68c2a01a",
+      "bytes": 4395248,
+      "sha256": "7d237baddec74fe978faf9fb08c40dfed9bbf44c18216ff654bc00d0ed9f9631",
+      "local_input": "INPUT_events.csv"
+    },
+    {
+      "name": "screen_summary",
+      "path": "docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/address/SUMMARY.json",
+      "ref": "34af3956b5bb33620695a579e871aed909eacbe8",
+      "git_blob": "7d7a5a62f310cc087ae31bda49e80c9052418083",
+      "bytes": 3414,
+      "sha256": "91753cd569bb24005635b2d61bc2b334de029bc359f400f5c21a56f1f34e7bbf",
+      "local_input": "INPUT_screen_summary.txt"
+    },
+    {
+      "name": "analytic_source",
+      "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/analytic_source.py",
+      "ref": "34af3956b5bb33620695a579e871aed909eacbe8",
+      "git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "usage": "pin-only reference, not imported or executed"
+    }
+  ],
+  "raw_inputs_kept_local": true,
+  "upstream_registration_hashes": "declared identifiers copied verbatim from pinned verdict YAML; upstream preimage not independently reconstructed"
+}

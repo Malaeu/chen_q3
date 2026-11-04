@@ -1,0 +1,34 @@
+# Independent source/Cayley formula review
+
+DIAGNOSTIC_NEVER_A_PROOF. Registration supplied by the parent:a1919fbf165da30b9cc4cbd2575a6f43be5fb6ed. Read-only analytic review of verdict §§6.5,7.1–7.3,9.1–9.3 and its appendix. No numerical replay, matrix assembly or eigensystem was performed for this review. **No formula or normalization failure found in those expressions.** The independent implementation `independent.py` was subsequently inspected read-only; its formulas and gate directions agree with this review. Runtime pass/fail remains the independently saved producer result, not a result of this paper review.
+
+For any entire source J, the convention here is M=−J′/J and S=(M−i)/(M+i). With J(z)=F(s), s=1/2−iz, the chain rule gives M=iF′(s)/F(s). For ζ completion, differentiating s(s−1)π^(−s/2)Γ(s/2)ζ(s)/2 gives exactly the two rational pole terms, −logπ/2, ψ(s/2)/2 and ζ′/ζ in(7.1). In Re s>1, ζ′/ζ=−ΣΛ(n)n^(−s); elsewhere the full meromorphic continuation is required. A truncated Euler product is not an independent evaluation of this source and is not accepted by this audit.
+
+The DH Dirichlet function is exactly the Hurwitz combination
+
+    D(s)=5^(−s)[ζ(s,1/5)+cζ(s,2/5)−cζ(s,3/5)−ζ(s,4/5)].
+
+The coefficient sum1+c−c−1=0 cancels the common Hurwitz pole at s=1. These are all ordinary Dirichlet coefficients with period5, not a finite arithmetic cutoff. Its odd completion is F_D(s)=(5/π)^(s/2)Γ((s+1)/2)D(s). Using the alternative exponent(s+1)/2 would only multiply by a constant and would not alter M or the self-dual functional-equation check. Differentiation gives precisely(9.2), with log(5/π)/2, ψ((s+1)/2)/2 and D′/D. There are no ζ rational pole terms1/s+1/(s−1), and substituting ζ evenGamma would change the source.
+
+**Sign of the zero address.** Solving s=1/2−iz gives z=i(s−1/2). Thus a specific positive-height zeroρ=β+iγ maps directly to z=−γ+i(β−1/2). The appendix uses w=+γ+i(β−1/2), which maps to the conjugate zeroρbar=β−iγ, rather thanρ itself. DH has real coefficients, so D(ρbar)=conj(D(ρ)) and this is a valid zero of the same source. Hence the positive-address construction is consistent, but the conjugation must be stated explicitly in interpreting the root record. It is not a sign error requiring a repaired formula.
+
+For M=u+iv, direct subtraction gives
+
+    |S|²−1=[|M−i|²−|M+i|²]/|M+i|²=−4v/|M+i|².
+
+At a source zero w of multiplicityν, M=−ν/(z−w)+r(z). Factoring out the source zero gives S(w)=1 and S(z)=1+2i(z−w)/ν+O((z−w)²). At z=w−iε, the singular part is−iν/ε; Im M<0 for smallε>0, and |S|²−1=4ε/ν+O(ε²)>0. The downward direction is essential; the upward direction would reverse the leading defect sign. The constraint0<ε<Imw keeps the sampled point in the upper half-plane. The printed bounded-r condition is sufficient: ν/ε>2(R+1) implies ImM≤−ν/ε+R<−1, so M+i cannot vanish. A finite multiplicity correction is not omitted: the registered ratio to4ε assumes simple numerical roots, whereas the general local theorem has factor1/ν.
+
+The planted source Jplant=Xi∏_{v∈{w,−w,wbar,−wbar}}(z−v) is real-type and even. Its logarithmic derivative gives Mplant=MXi−Σ_v1/(z−v), exactly the appendix's minus sign. Its factor at w=7+i/3 is simple and is not an implicit replacement of the ζ arithmetic source. For the positive curve control, J_E=2cos(hz), h=log3, gives M_E=h tan(hz). For Imz>0, Im tan(hz)=sinh(2h Imz)/[cos(2h Rez)+cosh(2h Imz)]>0. Thus the Cayley sign is contractive there. The denominator is strictly positive for Imz>0; this analytic control does not rely on a plotted grid.
+
+Real-type J has real M on real points away from its zeros, so |S|=1 there even for a source with off-line zeros. Real-axis unitarity is consequently an implementation control, not a positivity discriminator. Meromorphic M may diverge at a real zero while its Cayley expression has a removable limit; comparisons should avoid evaluation exactly at an unresolved pole.
+
+The audit retains the registered thresholds without alteration: precisions45/70dps, ε=.001/.0001,2ε<defect<6ε; real-axis/functional-equation tolerances10^(−30)/10^(−50); smaller ε must reduce the error of defect/(4ε) from1; ζ and curve controls must be nonpositive within the registered tolerance; and direct/identity defects must agree. These are finite numerical gates. Success does not establish a root enclosure, the global Schur property, RH, a positive source realization, or a relation between a finite m threshold andβ. A failed formula/gate must retain the label `DIAG_FORMULA_OR_NORMALIZATION_FAILURE` with its point and both evaluated sides, rather than a shifted threshold.
+
+
+## Independent implementation inspection
+
+Reviewed the frozen `/workspace/source_cayley/output/independent.py` without executing it. The implementation defines H(s)=Σ a_kζ(s,k/5) and the analytic derivative H′(s)=Σ a_k∂sζ(s,k/5); hence D′/D=H′/H−log5. Its `MD` contains exactly this subtraction and the conductor5/oddGamma terms. Newton refinement on H has the same zeros as D because5^(−s) never vanishes. It then uses the conjugated positive-address mapping discussed above. The full completion `F` evaluates exp[s log(5/π)/2+logΓ((s+1)/2)−s log5]H(s), which is precisely F_D. Exponentiating logGamma removes branch-log differences from the completion value. The functional-equation check is relative to the maximum of the two nonzero completion magnitudes, as specified.
+
+`MX` uses the full mpmath ζ and its derivative, with the two rational ζ completion terms retained. `MP` subtracts all four planted simple rational poles. `ME` is log3·tan(log3·z). The direct defect and exact identity are independently calculated from the same computed M, so their agreement checks Cayley evaluation/signs; it does not independently certify the analytic source evaluation. The root residual is reported; the code neither labels Newton approximations as interval root boxes nor uses a zero Gram matrix.
+
+Unlike the appendix, the independent implementation explicitly enforces the registered2ε/6ε bounds, real-axis tolerance, functional-equation tolerance, defect identity, nonpositive ζ/curve controls, and error-to-one decrease, at both45 and70dps. It additionally checks ζ/curve controls at planted sample points. These extra controls do not replace or relax the registered ones. Samples are rendered at40/65 significant digits before some comparisons; for the tested order10^(−4) defects this introduces rounding far below the registered10^(−30)/10^(−50) tolerances. This is point arithmetic, not outward-rounded interval logic. No threshold was silently adjusted. The code writes the required `DIAG_FORMULA_OR_NORMALIZATION_FAILURE` marker and details on any failed checked inequality. Its successful process exit, when accompanied by an empty failure list, means the finite diagnostic gates passed; it does not supply a global passivity proof.

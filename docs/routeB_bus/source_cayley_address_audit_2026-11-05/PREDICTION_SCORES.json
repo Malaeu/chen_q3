@@ -1,0 +1,19 @@
+{
+  "C1": {
+    "probability": 0.95,
+    "pass_gate": true
+  },
+  "C2": {
+    "probability": 0.9,
+    "pass_gate": true
+  },
+  "C3": {
+    "probability": 0.95,
+    "pass_gate": true
+  },
+  "C4": {
+    "probability": 0.85,
+    "pass_gate": true,
+    "observed": 3
+  }
+}

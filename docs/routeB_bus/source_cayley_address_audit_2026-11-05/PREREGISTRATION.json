@@ -1,0 +1,8 @@
+{
+  "base": "34af3956b5bb33620695a579e871aed909eacbe8",
+  "registration_commit": "a1919fbf165da30b9cc4cbd2575a6f43be5fb6ed",
+  "registered_UTC": "2026-11-04T17:57:08Z",
+  "predictions_blob": "4fcdbb980d1b2d55005bf26e681bc820c59e94ee",
+  "upstream_registration_sha256": "6f752df6628611336678d62edfad645127bff1d2f080e01ea975a7bd07fcca71",
+  "upstream_numerical_design_sha256": "c06f31487f38c7667b5c56a25efaa0a100b055d34b89d45373657dd01f5d7103"
+}
