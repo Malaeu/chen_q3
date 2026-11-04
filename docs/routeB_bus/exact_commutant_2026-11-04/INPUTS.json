@@ -1,0 +1,32 @@
+{
+  "base": "5bc0c57099ce7da2fd51126b67b7e01d044c7434",
+  "inputs": [
+    {
+      "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/source_50777d4.py",
+      "ref": "5bc0c57099ce7da2fd51126b67b7e01d044c7434",
+      "git_blob": "f8b558f8fd7e2cda65158856ae6bfa9011f5cd0a",
+      "sha256": "74337cc3dde94b8bf2700d4e343bd08354ee7b25988522f1bd43c5bc29c05fa7"
+    },
+    {
+      "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/analytic_source.py",
+      "ref": "5bc0c57099ce7da2fd51126b67b7e01d044c7434",
+      "git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63"
+    },
+    {
+      "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_CCM_HIGHER_MOMENTS_2026-11-04.md",
+      "ref": "c8ef1314",
+      "git_blob": "e8aa6c6cfc21dff22b06260f66ff5185af3d0f46",
+      "sha256": "079ed09b355c6350047d0cd218c084256ad06c5c8ab159b37e4c25bcf52afaa2"
+    },
+    {
+      "path": "docs/routeB_bus/litreview/pdfs/survey_2026-09-03_sources/suzuki_aspects_2206.03682.pdf",
+      "ref": "5bc0c57099ce7da2fd51126b67b7e01d044c7434",
+      "git_blob_of_LFS_pointer": "cdbf63880b5b0c575be8a94ff766db3d18ad0762",
+      "LFS_sha256": "eabccec3c2bfee2eb12077181b564e508270f80698f4a8c64ccf105b30119f41",
+      "actual_download_sha256": "eabccec3c2bfee2eb12077181b564e508270f80698f4a8c64ccf105b30119f41",
+      "size_bytes": 433447,
+      "equation": "arXiv2206.03682v4,Theorem1.1(1.1),page1"
+    }
+  ]
+}

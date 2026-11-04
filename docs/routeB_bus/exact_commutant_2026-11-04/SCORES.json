@@ -1,0 +1,16 @@
+{
+  "route": "CHALLENGER_NOT_RH",
+  "diagnostic": "DIAGNOSTIC_NEVER_A_PROOF",
+  "verdict": "COMMUTANT_SIGN_BLIND",
+  "qualification": "SCALAR_IDENTITY_ONLY; SCAN_VOID_CONTROLS; no non-scalar claim",
+  "G0": {"probability": 0.90, "score": "PASS", "basis": "80dps source identity in all three registered cells"},
+  "R1": {"probability": 0.85, "score": "FALSE_UNDER_LITERAL_METRIC", "basis": "I/sqrt(m+1) gives exact zero whenever X is nonzero"},
+  "R2": {"probability": 0.35, "score": "TRUE_TAUTOLOGICAL", "Gamma_specific_evidence": false},
+  "R6": {"probability": 0.70, "chosen_scalar_minimizer": "PASS_UNINFORMATIVE", "universal_or_non_scalar_version": "NOT_TESTED"},
+  "CCM_scan_run": false,
+  "repaired_metric_run": false,
+  "positive_prescribed_control_pass": false,
+  "negative_discrimination_pass": false,
+  "route_state_changed": false,
+  "RH_export": false
+}

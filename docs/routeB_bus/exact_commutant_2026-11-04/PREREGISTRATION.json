@@ -1,0 +1,9 @@
+{
+  "commit": "76ddfb77a7d9b1f9e5e1bfa6cb5747f14ab48ec3",
+  "parent": "5bc0c57099ce7da2fd51126b67b7e01d044c7434",
+  "predictions_blob": "4bbcdb94bfdc2b3165d7dc4db6d4f0c80a9f376b",
+  "branch_updated": false,
+  "procedure": "Immutable pre-registration Git commit object created before all numerical runs; one final branch commit will carry the identical predictions blob.",
+  "committed_UTC": "2026-11-04T09:45:22Z",
+  "registration_tree": "22bfe21aa127748456b411c9239c0465dd383bd9"
+}
