@@ -1,0 +1,66 @@
+{
+  "corner_comparisons": [
+    {
+      "m": 16,
+      "corner": 0.033140472845685665,
+      "A00": 0.033140472845685665,
+      "difference": 0.0
+    },
+    {
+      "m": 80,
+      "corner": 0.0205339326958498,
+      "A00": 0.0205339326958498,
+      "difference": 0.0
+    },
+    {
+      "m": 160,
+      "corner": 0.019726235840195727,
+      "A00": 0.019726235840195727,
+      "difference": 0.0
+    },
+    {
+      "m": 300,
+      "corner": 0.012107986020311046,
+      "A00": 0.012107986020311046,
+      "difference": 0.0
+    }
+  ],
+  "unplanted_rayleigh_helper_check": {
+    "m": 80,
+    "bits": 256,
+    "working_bits": 296,
+    "source_rayleigh": "0.02053393269584560386131171840380843599023458754710363059125321859587908004666752641527",
+    "plant_rayleigh": "0.0",
+    "total_rayleigh": "0.02053393269584560386131171840380843599023458754710363059125321859587908004666752641527",
+    "vector_squared_norm": "1.0",
+    "total_negative": false,
+    "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+    "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+    "source_meta": {
+      "bits": 256,
+      "working_bits": 296,
+      "special_function_bits": 328,
+      "tail_lengths": [
+        24,
+        24
+      ],
+      "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+      "seconds": 0.19684277800001837,
+      "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+      "interval_certificate": false
+    },
+    "wall_seconds": 0.19990211599997565,
+    "cpu_seconds": 0.19990737300000005,
+    "interval_certificate": false,
+    "kind": "fixed-vector Rayleigh witness only",
+    "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+  },
+  "corner_all_integer_scan": {
+    "first": 16,
+    "last": 3000,
+    "cells": 2985,
+    "cpu_seconds": 5.214656338999999
+  },
+  "cpu_seconds": 5.492698134,
+  "planted_runs": 0
+}

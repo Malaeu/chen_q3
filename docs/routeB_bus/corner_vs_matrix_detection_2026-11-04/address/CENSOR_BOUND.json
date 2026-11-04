@@ -1,0 +1,10 @@
+{
+  "status": "POSTHOC_DETERMINISTIC_CENSOR_BOUND",
+  "events": 18811,
+  "within_census": 15116,
+  "known_within_one_hits": 12829,
+  "above_census": 3695,
+  "ambiguous_within_census": 0,
+  "optimistic_total_hit_fraction": 0.8784221997767264,
+  "meaning": "Conditional on supplied census below900: even every above-census event becoming a one-step hit cannot reach90%. This is arithmetic from saved rows, not a new fitted prediction or a proof of census completeness."
+}

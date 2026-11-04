@@ -1,0 +1,1122 @@
+{
+  "m": 837,
+  "dimension": 838,
+  "L": 6.729824070489475,
+  "T": 865.826100246776,
+  "Omega": 781.4507551795203,
+  "unplanted_lambda_min": -7.735059155119785e-15,
+  "source_meta": {
+    "m": 837,
+    "dimension": 838,
+    "dtype": "float64",
+    "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+    "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+    "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "tail_terms": 16,
+    "tail_cut": "2^-304",
+    "prime_power_count": 168,
+    "wall_seconds": 0.21436168200011707,
+    "cpu_seconds": 0.29501815900005113,
+    "basis": "d_j*(-1)^j/sqrt(log(m))*cos(2*pi*j*x/log(m)); j=0..m",
+    "unplanted": true,
+    "interval_certificate": false,
+    "prime_moment_intermediate_dtype": "float128",
+    "prime_moment_mantissa_bits": 64,
+    "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+  },
+  "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e",
+  "cases": [
+    {
+      "a": "0",
+      "gamma": 14,
+      "lambda_min": -1.2493635184674584e-14,
+      "detected": false,
+      "corner_float": 0.013950489997700398,
+      "peak_mode": 2,
+      "peak_frequency": 1.867265842722868,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 12.132734157277131,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 33.40905726968318,
+      "top_modes": [
+        {
+          "mode": 2,
+          "frequency": 1.867265842722868,
+          "energy": 0.5238490957766474
+        },
+        {
+          "mode": 1,
+          "frequency": 0.933632921361434,
+          "energy": 0.1901791568924356
+        },
+        {
+          "mode": 33,
+          "frequency": 30.809886404927322,
+          "energy": 0.021889603302233388
+        },
+        {
+          "mode": 0,
+          "frequency": 0.0,
+          "energy": 0.01833872785368467
+        },
+        {
+          "mode": 32,
+          "frequency": 29.87625348356589,
+          "energy": 0.017025795060833643
+        },
+        {
+          "mode": 234,
+          "frequency": 218.47010359857558,
+          "energy": 0.016443362147750107
+        },
+        {
+          "mode": 46,
+          "frequency": 42.94711438262596,
+          "energy": 0.01368033259099632
+        },
+        {
+          "mode": 47,
+          "frequency": 43.880747303987405,
+          "energy": 0.00814757495161783
+        },
+        {
+          "mode": 16,
+          "frequency": 14.938126741782945,
+          "energy": 0.005539439254647542
+        },
+        {
+          "mode": 35,
+          "frequency": 32.67715224765019,
+          "energy": 0.005435180997558931
+        }
+      ],
+      "residual_l2": 1.499033960173568e-14,
+      "vector_squared_norm": 1.0
+    },
+    {
+      "a": "1/20",
+      "gamma": 14,
+      "lambda_min": -0.0037158447917786464,
+      "detected": true,
+      "corner_float": 0.013603602112198136,
+      "peak_mode": 14,
+      "peak_frequency": 13.070860899060076,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.9291391009399241,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 16.167135876872084,
+      "top_modes": [
+        {
+          "mode": 14,
+          "frequency": 13.070860899060076,
+          "energy": 0.5312617500679764
+        },
+        {
+          "mode": 16,
+          "frequency": 14.938126741782945,
+          "energy": 0.35210488022074926
+        },
+        {
+          "mode": 13,
+          "frequency": 12.137227977698643,
+          "energy": 0.04921491769509365
+        },
+        {
+          "mode": 12,
+          "frequency": 11.203595056337209,
+          "energy": 0.012482094731705081
+        },
+        {
+          "mode": 22,
+          "frequency": 20.539924269951545,
+          "energy": 0.00790498696565518
+        },
+        {
+          "mode": 17,
+          "frequency": 15.87175966314438,
+          "energy": 0.007167635996108806
+        },
+        {
+          "mode": 11,
+          "frequency": 10.269962134975772,
+          "energy": 0.004761009683611671
+        },
+        {
+          "mode": 23,
+          "frequency": 21.47355719131298,
+          "energy": 0.0026692624098959205
+        },
+        {
+          "mode": 10,
+          "frequency": 9.33632921361434,
+          "energy": 0.0022653158706627515
+        },
+        {
+          "mode": 32,
+          "frequency": 29.87625348356589,
+          "energy": 0.0020172063487199445
+        }
+      ],
+      "residual_l2": 6.7716386014676836e-15,
+      "vector_squared_norm": 1.0000000000000009
+    },
+    {
+      "a": "1/10",
+      "gamma": 14,
+      "lambda_min": -0.22865447614456275,
+      "detected": true,
+      "corner_float": 0.012523402048903601,
+      "peak_mode": 14,
+      "peak_frequency": 13.070860899060076,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.9291391009399241,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 13.181191316475868,
+      "top_modes": [
+        {
+          "mode": 14,
+          "frequency": 13.070860899060076,
+          "energy": 0.48157179273087924
+        },
+        {
+          "mode": 16,
+          "frequency": 14.938126741782945,
+          "energy": 0.12382138125777792
+        },
+        {
+          "mode": 13,
+          "frequency": 12.137227977698643,
+          "energy": 0.10620009609430064
+        },
+        {
+          "mode": 17,
+          "frequency": 15.87175966314438,
+          "energy": 0.048001187526922486
+        },
+        {
+          "mode": 12,
+          "frequency": 11.203595056337209,
+          "energy": 0.04665891465653948
+        },
+        {
+          "mode": 11,
+          "frequency": 10.269962134975772,
+          "energy": 0.026963461943990175
+        },
+        {
+          "mode": 18,
+          "frequency": 16.805392584505814,
+          "energy": 0.023295523599358242
+        },
+        {
+          "mode": 10,
+          "frequency": 9.33632921361434,
+          "energy": 0.01807282487419645
+        },
+        {
+          "mode": 19,
+          "frequency": 17.739025505867247,
+          "energy": 0.013502669531744012
+        },
+        {
+          "mode": 9,
+          "frequency": 8.402696292252907,
+          "energy": 0.013305684460005796
+        }
+      ],
+      "residual_l2": 6.66625270711644e-15,
+      "vector_squared_norm": 1.0000000000000007
+    },
+    {
+      "a": "1/3",
+      "gamma": 14,
+      "lambda_min": -6.891322547822595,
+      "detected": true,
+      "corner_float": -0.008876391275070655,
+      "peak_mode": 14,
+      "peak_frequency": 13.070860899060076,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.9291391009399241,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 13.283612493240405,
+      "top_modes": [
+        {
+          "mode": 14,
+          "frequency": 13.070860899060076,
+          "energy": 0.3234249552638742
+        },
+        {
+          "mode": 16,
+          "frequency": 14.938126741782945,
+          "energy": 0.23419837075541944
+        },
+        {
+          "mode": 13,
+          "frequency": 12.137227977698643,
+          "energy": 0.09967441617469662
+        },
+        {
+          "mode": 17,
+          "frequency": 15.87175966314438,
+          "energy": 0.06982159187241728
+        },
+        {
+          "mode": 12,
+          "frequency": 11.203595056337209,
+          "energy": 0.04858602330959513
+        },
+        {
+          "mode": 18,
+          "frequency": 16.805392584505814,
+          "energy": 0.030861399433269876
+        },
+        {
+          "mode": 11,
+          "frequency": 10.269962134975772,
+          "energy": 0.02959402085240316
+        },
+        {
+          "mode": 10,
+          "frequency": 9.33632921361434,
+          "energy": 0.02049660748670162
+        },
+        {
+          "mode": 19,
+          "frequency": 17.739025505867247,
+          "energy": 0.016778326596941243
+        },
+        {
+          "mode": 9,
+          "frequency": 8.402696292252907,
+          "energy": 0.015437162595977752
+        }
+      ],
+      "residual_l2": 1.621398427433969e-14,
+      "vector_squared_norm": 1.0000000000000002
+    },
+    {
+      "a": "0",
+      "gamma": 50,
+      "lambda_min": -8.70620138202151e-15,
+      "detected": false,
+      "corner_float": 0.014871362087940553,
+      "peak_mode": 131,
+      "peak_frequency": 122.30591269834787,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 72.30591269834787,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 153.43820179607377,
+      "top_modes": [
+        {
+          "mode": 131,
+          "frequency": 122.30591269834787,
+          "energy": 0.06746146174396478
+        },
+        {
+          "mode": 109,
+          "frequency": 101.7659884283963,
+          "energy": 0.05146953266034305
+        },
+        {
+          "mode": 136,
+          "frequency": 126.97407730515503,
+          "energy": 0.038076667874598055
+        },
+        {
+          "mode": 134,
+          "frequency": 125.10681146243216,
+          "energy": 0.036323900150324995
+        },
+        {
+          "mode": 110,
+          "frequency": 102.69962134975775,
+          "energy": 0.036251993206000865
+        },
+        {
+          "mode": 132,
+          "frequency": 123.23954561970929,
+          "energy": 0.032935035024099175
+        },
+        {
+          "mode": 90,
+          "frequency": 84.02696292252907,
+          "energy": 0.028575267192507796
+        },
+        {
+          "mode": 108,
+          "frequency": 100.83235550703488,
+          "energy": 0.028190303446189394
+        },
+        {
+          "mode": 284,
+          "frequency": 265.1517496666473,
+          "energy": 0.020506733749339416
+        },
+        {
+          "mode": 137,
+          "frequency": 127.90771022651647,
+          "energy": 0.01681950165575284
+        }
+      ],
+      "residual_l2": 1.0827134816709385e-14,
+      "vector_squared_norm": 0.9999999999999994
+    },
+    {
+      "a": "1/20",
+      "gamma": 50,
+      "lambda_min": -0.005790077954276907,
+      "detected": true,
+      "corner_float": 0.014896861748426912,
+      "peak_mode": 52,
+      "peak_frequency": 48.54891191079457,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 1.4510880892054274,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 49.74380283433139,
+      "top_modes": [
+        {
+          "mode": 52,
+          "frequency": 48.54891191079457,
+          "energy": 0.3188846379167636
+        },
+        {
+          "mode": 55,
+          "frequency": 51.349810674878874,
+          "energy": 0.16724134365577975
+        },
+        {
+          "mode": 54,
+          "frequency": 50.41617775351744,
+          "energy": 0.14758847225088711
+        },
+        {
+          "mode": 56,
+          "frequency": 52.2834435962403,
+          "energy": 0.10427448288350702
+        },
+        {
+          "mode": 53,
+          "frequency": 49.482544832156,
+          "energy": 0.03542198547417861
+        },
+        {
+          "mode": 50,
+          "frequency": 46.6816460680717,
+          "energy": 0.028999236423811105
+        },
+        {
+          "mode": 51,
+          "frequency": 47.615278989433136,
+          "energy": 0.024013925167459878
+        },
+        {
+          "mode": 49,
+          "frequency": 45.748013146710264,
+          "energy": 0.01980971894137
+        },
+        {
+          "mode": 48,
+          "frequency": 44.814380225348835,
+          "energy": 0.014085347883303486
+        },
+        {
+          "mode": 58,
+          "frequency": 54.150709438963176,
+          "energy": 0.012907061426262566
+        }
+      ],
+      "residual_l2": 4.848793552335634e-15,
+      "vector_squared_norm": 0.9999999999999997
+    },
+    {
+      "a": "1/10",
+      "gamma": 50,
+      "lambda_min": -0.05477813619977076,
+      "detected": true,
+      "corner_float": 0.014976262222948383,
+      "peak_mode": 54,
+      "peak_frequency": 50.41617775351744,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.416177753517438,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 50.20554321629384,
+      "top_modes": [
+        {
+          "mode": 54,
+          "frequency": 50.41617775351744,
+          "energy": 0.29643985343813534
+        },
+        {
+          "mode": 52,
+          "frequency": 48.54891191079457,
+          "energy": 0.24631981839558945
+        },
+        {
+          "mode": 55,
+          "frequency": 51.349810674878874,
+          "energy": 0.13539302501880776
+        },
+        {
+          "mode": 56,
+          "frequency": 52.2834435962403,
+          "energy": 0.09676802313697255
+        },
+        {
+          "mode": 51,
+          "frequency": 47.615278989433136,
+          "energy": 0.0378042589315223
+        },
+        {
+          "mode": 50,
+          "frequency": 46.6816460680717,
+          "energy": 0.028598090269297816
+        },
+        {
+          "mode": 49,
+          "frequency": 45.748013146710264,
+          "energy": 0.017893336628941704
+        },
+        {
+          "mode": 60,
+          "frequency": 56.017975281686034,
+          "energy": 0.013471375478225434
+        },
+        {
+          "mode": 48,
+          "frequency": 44.814380225348835,
+          "energy": 0.011814547036398145
+        },
+        {
+          "mode": 58,
+          "frequency": 54.150709438963176,
+          "energy": 0.011007984741063868
+        }
+      ],
+      "residual_l2": 8.551721247345568e-15,
+      "vector_squared_norm": 0.9999999999999996
+    },
+    {
+      "a": "1/3",
+      "gamma": 50,
+      "lambda_min": -6.022454738308159,
+      "detected": true,
+      "corner_float": 0.016548484085329624,
+      "peak_mode": 54,
+      "peak_frequency": 50.41617775351744,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.416177753517438,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 50.11180587095344,
+      "top_modes": [
+        {
+          "mode": 54,
+          "frequency": 50.41617775351744,
+          "energy": 0.5351686557728467
+        },
+        {
+          "mode": 53,
+          "frequency": 49.482544832156,
+          "energy": 0.4003816368077607
+        },
+        {
+          "mode": 51,
+          "frequency": 47.615278989433136,
+          "energy": 0.026355485527876202
+        },
+        {
+          "mode": 52,
+          "frequency": 48.54891191079457,
+          "energy": 0.01138917002828767
+        },
+        {
+          "mode": 50,
+          "frequency": 46.6816460680717,
+          "energy": 0.004842706122541264
+        },
+        {
+          "mode": 60,
+          "frequency": 56.017975281686034,
+          "energy": 0.002828486735878248
+        },
+        {
+          "mode": 57,
+          "frequency": 53.21707651760174,
+          "energy": 0.0026279730793196203
+        },
+        {
+          "mode": 56,
+          "frequency": 52.2834435962403,
+          "energy": 0.0024181471068779907
+        },
+        {
+          "mode": 46,
+          "frequency": 42.94711438262596,
+          "energy": 0.002400543597552797
+        },
+        {
+          "mode": 49,
+          "frequency": 45.748013146710264,
+          "energy": 0.0018161802139311212
+        }
+      ],
+      "residual_l2": 1.2270961193097576e-14,
+      "vector_squared_norm": 1.0000000000000002
+    },
+    {
+      "a": "0",
+      "gamma": 200,
+      "lambda_min": -1.1240507548679507e-14,
+      "detected": false,
+      "corner_float": 0.013971308662591254,
+      "peak_mode": 3,
+      "peak_frequency": 2.800898764084302,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 197.1991012359157,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 31.874475493495897,
+      "top_modes": [
+        {
+          "mode": 3,
+          "frequency": 2.800898764084302,
+          "energy": 0.4582376625417255
+        },
+        {
+          "mode": 2,
+          "frequency": 1.867265842722868,
+          "energy": 0.26844359243618005
+        },
+        {
+          "mode": 6,
+          "frequency": 5.601797528168604,
+          "energy": 0.03536072549745621
+        },
+        {
+          "mode": 1,
+          "frequency": 0.933632921361434,
+          "energy": 0.03010212428033334
+        },
+        {
+          "mode": 4,
+          "frequency": 3.734531685445736,
+          "energy": 0.01523696444187057
+        },
+        {
+          "mode": 233,
+          "frequency": 217.53647067721414,
+          "energy": 0.013552345654412865
+        },
+        {
+          "mode": 215,
+          "frequency": 200.73107809270832,
+          "energy": 0.013187631539319802
+        },
+        {
+          "mode": 5,
+          "frequency": 4.66816460680717,
+          "energy": 0.013057657634043445
+        },
+        {
+          "mode": 11,
+          "frequency": 10.269962134975772,
+          "energy": 0.01253365143652903
+        },
+        {
+          "mode": 204,
+          "frequency": 190.46111595773255,
+          "energy": 0.009724781017466306
+        }
+      ],
+      "residual_l2": 1.6879492948600044e-14,
+      "vector_squared_norm": 1.000000000000001
+    },
+    {
+      "a": "1/20",
+      "gamma": 200,
+      "lambda_min": -0.11163687652522433,
+      "detected": true,
+      "corner_float": 0.013970963521798267,
+      "peak_mode": 215,
+      "peak_frequency": 200.73107809270832,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.7310780927083158,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 199.5526336692052,
+      "top_modes": [
+        {
+          "mode": 215,
+          "frequency": 200.73107809270832,
+          "energy": 0.45014404829113325
+        },
+        {
+          "mode": 216,
+          "frequency": 201.66471101406975,
+          "energy": 0.17267079184914777
+        },
+        {
+          "mode": 214,
+          "frequency": 199.79744517134688,
+          "energy": 0.12349950980764833
+        },
+        {
+          "mode": 213,
+          "frequency": 198.86381224998544,
+          "energy": 0.12198632560635439
+        },
+        {
+          "mode": 210,
+          "frequency": 196.06291348590116,
+          "energy": 0.01991898385500021
+        },
+        {
+          "mode": 218,
+          "frequency": 203.5319768567926,
+          "energy": 0.012768010987501816
+        },
+        {
+          "mode": 219,
+          "frequency": 204.46560977815406,
+          "energy": 0.011932772615285967
+        },
+        {
+          "mode": 206,
+          "frequency": 192.3283818004554,
+          "energy": 0.005909404861923527
+        },
+        {
+          "mode": 211,
+          "frequency": 196.9965464072626,
+          "energy": 0.00557561262335285
+        },
+        {
+          "mode": 208,
+          "frequency": 194.1956476431783,
+          "energy": 0.004532077801157343
+        }
+      ],
+      "residual_l2": 5.909876846410923e-15,
+      "vector_squared_norm": 0.9999999999999996
+    },
+    {
+      "a": "1/10",
+      "gamma": 200,
+      "lambda_min": -0.4579015955891106,
+      "detected": true,
+      "corner_float": 0.013969889221407362,
+      "peak_mode": 215,
+      "peak_frequency": 200.73107809270832,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.7310780927083158,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 199.7009669075025,
+      "top_modes": [
+        {
+          "mode": 215,
+          "frequency": 200.73107809270832,
+          "energy": 0.4612659738172005
+        },
+        {
+          "mode": 216,
+          "frequency": 201.66471101406975,
+          "energy": 0.16644006080868184
+        },
+        {
+          "mode": 214,
+          "frequency": 199.79744517134688,
+          "energy": 0.12514214260639844
+        },
+        {
+          "mode": 213,
+          "frequency": 198.86381224998544,
+          "energy": 0.11782349837917903
+        },
+        {
+          "mode": 210,
+          "frequency": 196.06291348590116,
+          "energy": 0.01920336173913567
+        },
+        {
+          "mode": 218,
+          "frequency": 203.5319768567926,
+          "energy": 0.013218368907907938
+        },
+        {
+          "mode": 219,
+          "frequency": 204.46560977815406,
+          "energy": 0.011711567169394126
+        },
+        {
+          "mode": 211,
+          "frequency": 196.9965464072626,
+          "energy": 0.006023460683926248
+        },
+        {
+          "mode": 206,
+          "frequency": 192.3283818004554,
+          "energy": 0.005703383912263502
+        },
+        {
+          "mode": 217,
+          "frequency": 202.59834393543116,
+          "energy": 0.004758455083414092
+        }
+      ],
+      "residual_l2": 4.325227336216808e-15,
+      "vector_squared_norm": 1.0
+    },
+    {
+      "a": "1/3",
+      "gamma": 200,
+      "lambda_min": -6.796843788412115,
+      "detected": true,
+      "corner_float": 0.013948693467345157,
+      "peak_mode": 215,
+      "peak_frequency": 200.73107809270832,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 0.7310780927083158,
+      "peak_within_one_bin": true,
+      "gamma_above_Omega": false,
+      "centroid_frequency": 199.995685749028,
+      "top_modes": [
+        {
+          "mode": 215,
+          "frequency": 200.73107809270832,
+          "energy": 0.5151099692652168
+        },
+        {
+          "mode": 214,
+          "frequency": 199.79744517134688,
+          "energy": 0.13466570229404473
+        },
+        {
+          "mode": 216,
+          "frequency": 201.66471101406975,
+          "energy": 0.12385177090071009
+        },
+        {
+          "mode": 213,
+          "frequency": 198.86381224998544,
+          "energy": 0.07989651514681373
+        },
+        {
+          "mode": 218,
+          "frequency": 203.5319768567926,
+          "energy": 0.01699965571502883
+        },
+        {
+          "mode": 217,
+          "frequency": 202.59834393543116,
+          "energy": 0.015717738039737632
+        },
+        {
+          "mode": 210,
+          "frequency": 196.06291348590116,
+          "energy": 0.014641039269925323
+        },
+        {
+          "mode": 219,
+          "frequency": 204.46560977815406,
+          "energy": 0.010797618039383013
+        },
+        {
+          "mode": 211,
+          "frequency": 196.9965464072626,
+          "energy": 0.010766313651150713
+        },
+        {
+          "mode": 208,
+          "frequency": 194.1956476431783,
+          "energy": 0.004908930911762744
+        }
+      ],
+      "residual_l2": 1.7285423690111536e-14,
+      "vector_squared_norm": 0.9999999999999992
+    },
+    {
+      "a": "0",
+      "gamma": 800,
+      "lambda_min": -8.89250984650915e-15,
+      "detected": false,
+      "corner_float": 0.013948321283108581,
+      "peak_mode": 243,
+      "peak_frequency": 226.87279989082847,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 573.1272001091716,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": true,
+      "centroid_frequency": 201.2123583515566,
+      "top_modes": [
+        {
+          "mode": 243,
+          "frequency": 226.87279989082847,
+          "energy": 0.12509292541851572
+        },
+        {
+          "mode": 138,
+          "frequency": 128.8413431478779,
+          "energy": 0.06037860779416277
+        },
+        {
+          "mode": 238,
+          "frequency": 222.2046352840213,
+          "energy": 0.05552282086674628
+        },
+        {
+          "mode": 244,
+          "frequency": 227.8064328121899,
+          "energy": 0.053424455794172356
+        },
+        {
+          "mode": 264,
+          "frequency": 246.47909123941858,
+          "energy": 0.039142395584994494
+        },
+        {
+          "mode": 267,
+          "frequency": 249.2799900035029,
+          "energy": 0.028701142280213966
+        },
+        {
+          "mode": 266,
+          "frequency": 248.34635708214145,
+          "energy": 0.026452086735542963
+        },
+        {
+          "mode": 328,
+          "frequency": 306.23159820655036,
+          "energy": 0.019390720231659508
+        },
+        {
+          "mode": 265,
+          "frequency": 247.41272416078002,
+          "energy": 0.016629369908372663
+        },
+        {
+          "mode": 19,
+          "frequency": 17.739025505867247,
+          "energy": 0.015118511402639428
+        }
+      ],
+      "residual_l2": 1.0132096956756715e-14,
+      "vector_squared_norm": 0.9999999999999998
+    },
+    {
+      "a": "1/20",
+      "gamma": 800,
+      "lambda_min": -8.144299927272503e-15,
+      "detected": false,
+      "corner_float": 0.013948249629887765,
+      "peak_mode": 251,
+      "peak_frequency": 234.34186326171996,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 565.6581367382801,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": true,
+      "centroid_frequency": 221.09434350415353,
+      "top_modes": [
+        {
+          "mode": 251,
+          "frequency": 234.34186326171996,
+          "energy": 0.3359559578953839
+        },
+        {
+          "mode": 250,
+          "frequency": 233.4082303403585,
+          "energy": 0.14392065297017675
+        },
+        {
+          "mode": 249,
+          "frequency": 232.47459741899706,
+          "energy": 0.12470752398753294
+        },
+        {
+          "mode": 246,
+          "frequency": 229.67369865491276,
+          "energy": 0.025049799816726125
+        },
+        {
+          "mode": 136,
+          "frequency": 126.97407730515503,
+          "energy": 0.0157276992134123
+        },
+        {
+          "mode": 138,
+          "frequency": 128.8413431478779,
+          "energy": 0.014160840849729857
+        },
+        {
+          "mode": 247,
+          "frequency": 230.6073315762742,
+          "energy": 0.012188679668211048
+        },
+        {
+          "mode": 245,
+          "frequency": 228.74006573355135,
+          "energy": 0.009920061098841144
+        },
+        {
+          "mode": 232,
+          "frequency": 216.6028377558527,
+          "energy": 0.008973021720425266
+        },
+        {
+          "mode": 243,
+          "frequency": 226.87279989082847,
+          "energy": 0.007317077784153008
+        }
+      ],
+      "residual_l2": 1.0080583525986686e-14,
+      "vector_squared_norm": 1.0
+    },
+    {
+      "a": "1/10",
+      "gamma": 800,
+      "lambda_min": -7.167615494323748e-15,
+      "detected": false,
+      "corner_float": 0.013948026473647158,
+      "peak_mode": 23,
+      "peak_frequency": 21.47355719131298,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 778.526442808687,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": true,
+      "centroid_frequency": 145.928134747562,
+      "top_modes": [
+        {
+          "mode": 23,
+          "frequency": 21.47355719131298,
+          "energy": 0.0594671494528702
+        },
+        {
+          "mode": 22,
+          "frequency": 20.539924269951545,
+          "energy": 0.05878193425986884
+        },
+        {
+          "mode": 42,
+          "frequency": 39.21258269718023,
+          "energy": 0.049814632081107285
+        },
+        {
+          "mode": 112,
+          "frequency": 104.5668871924806,
+          "energy": 0.046077553207690455
+        },
+        {
+          "mode": 349,
+          "frequency": 325.83788955514046,
+          "energy": 0.03420026306303969
+        },
+        {
+          "mode": 107,
+          "frequency": 99.89872258567344,
+          "energy": 0.027091022868178175
+        },
+        {
+          "mode": 126,
+          "frequency": 117.6377480915407,
+          "energy": 0.024243938382846796
+        },
+        {
+          "mode": 21,
+          "frequency": 19.606291348590116,
+          "energy": 0.023347075180761564
+        },
+        {
+          "mode": 110,
+          "frequency": 102.69962134975775,
+          "energy": 0.01745895239709919
+        },
+        {
+          "mode": 259,
+          "frequency": 241.8109266326114,
+          "energy": 0.016653475842932683
+        }
+      ],
+      "residual_l2": 8.908701159547631e-15,
+      "vector_squared_norm": 1.0000000000000007
+    },
+    {
+      "a": "1/3",
+      "gamma": 800,
+      "lambda_min": -7.065675372806703e-15,
+      "detected": false,
+      "corner_float": 0.013943599161061778,
+      "peak_mode": 123,
+      "peak_frequency": 114.83684932745638,
+      "frequency_bin": 0.933632921361434,
+      "peak_deviation": 685.1631506725437,
+      "peak_within_one_bin": false,
+      "gamma_above_Omega": true,
+      "centroid_frequency": 148.12276613026296,
+      "top_modes": [
+        {
+          "mode": 123,
+          "frequency": 114.83684932745638,
+          "energy": 0.1703089794536439
+        },
+        {
+          "mode": 122,
+          "frequency": 113.90321640609496,
+          "energy": 0.08993459490655935
+        },
+        {
+          "mode": 131,
+          "frequency": 122.30591269834787,
+          "energy": 0.054134468330727874
+        },
+        {
+          "mode": 138,
+          "frequency": 128.8413431478779,
+          "energy": 0.03469008087606768
+        },
+        {
+          "mode": 184,
+          "frequency": 171.78845753050385,
+          "energy": 0.02183543960773713
+        },
+        {
+          "mode": 18,
+          "frequency": 16.805392584505814,
+          "energy": 0.01949776924602579
+        },
+        {
+          "mode": 105,
+          "frequency": 98.03145674295058,
+          "energy": 0.01792043024081142
+        },
+        {
+          "mode": 121,
+          "frequency": 112.96958348473352,
+          "energy": 0.01754281193062444
+        },
+        {
+          "mode": 38,
+          "frequency": 35.47805101173449,
+          "energy": 0.017197692779217722
+        },
+        {
+          "mode": 110,
+          "frequency": 102.69962134975775,
+          "energy": 0.016134051418167657
+        }
+      ],
+      "residual_l2": 8.748861135467797e-15,
+      "vector_squared_norm": 1.0000000000000004
+    }
+  ],
+  "wall_seconds_latest_update": 3.390606395000077
+}

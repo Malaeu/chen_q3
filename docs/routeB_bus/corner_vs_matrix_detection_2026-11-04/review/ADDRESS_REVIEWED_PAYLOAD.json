@@ -1,0 +1,136 @@
+{
+  "schema": "corner_address_independent_review_payload.v1",
+  "scope": "B++ address payload, preregistration, historical prediction resolver, root index. Excludes review artifacts, SHA256SUMS, interpreter caches. Main/B+ review remains historical at original hashes.",
+  "files": [
+    {
+      "path": "ADDRESS_PRE_RUN_RECEIPT.json",
+      "bytes": 288,
+      "sha256": "1ec028a29e064947c56bab91869cc7f9c8c81a43716df08ea712f4cf4ff5b023"
+    },
+    {
+      "path": "PREDICTIONS.md",
+      "bytes": 10762,
+      "sha256": "2a326cdf471e022ce1f5d0f7fa5987ff1380b93b34dcc293ad18d4b00f5cea49"
+    },
+    {
+      "path": "README.md",
+      "bytes": 858,
+      "sha256": "36147d6e3a3f078b4fcc4c8532b52a5e9034f478929c282d4ef2a37b7624405c"
+    },
+    {
+      "path": "address/CENSOR_BOUND.json",
+      "bytes": 470,
+      "sha256": "6036a0fc48be2037e8eb41f72cf5419c49d1c6410fc3329313ce8a15e330eb0a"
+    },
+    {
+      "path": "address/CONTROL_VALIDATION.json",
+      "bytes": 3731,
+      "sha256": "8a11cd116fc15e41f5e357e6ba3394885e0e0912d81dd1b852d0e2735ac5187b"
+    },
+    {
+      "path": "address/RESULT.md",
+      "bytes": 8222,
+      "sha256": "eae0a9ac4140d12f56d9af6fb2ac7eeef1a2e1a328c7a140dfe75ad5b61e7507"
+    },
+    {
+      "path": "address/SUMMARY.json",
+      "bytes": 3414,
+      "sha256": "91753cd569bb24005635b2d61bc2b334de029bc359f400f5c21a56f1f34e7bbf"
+    },
+    {
+      "path": "address/address_probe.py",
+      "bytes": 11094,
+      "sha256": "b41779f63e72ec4328c6875b636eb180a875ff5a43bd504de4f7855d29a04b41"
+    },
+    {
+      "path": "address/dense_reconstruction_gate.csv",
+      "bytes": 270633,
+      "sha256": "02ba12afec51cbf01582d44b279c1ad3ef1d0fdecc2064bc8190b38cd2f040e9"
+    },
+    {
+      "path": "address/events.csv",
+      "bytes": 4395248,
+      "sha256": "7d237baddec74fe978faf9fb08c40dfed9bbf44c18216ff654bc00d0ed9f9631"
+    },
+    {
+      "path": "address/first_detection_by_beta_height.png",
+      "bytes": 70950,
+      "sha256": "eb8ba9cb2e29067877f7f513cf97e1dc1c03a83a9e0736154531325cc3c309cb"
+    },
+    {
+      "path": "address/inputs/ADD_DH_DENSE.csv",
+      "bytes": 199007,
+      "sha256": "f568edd3ad571c1646f2b9b1cafa4813b149510d4ec016aa6fed7f4817506984"
+    },
+    {
+      "path": "address/inputs/ADD_DH_DENSE.json",
+      "bytes": 8645,
+      "sha256": "0820bfc1ed4f6bf6fe56deb253ec2f089383bde7d3779b3f57b47fc04f5c0ca7"
+    },
+    {
+      "path": "address/inputs/ADD_SECOND_RUNG_RAW.json",
+      "bytes": 3093,
+      "sha256": "50244674fd9e8f97a086be2d1c37f36cf41780419aa38c88100230496f68d5ae"
+    },
+    {
+      "path": "address/inputs/SOURCE_PINS.json",
+      "bytes": 2364,
+      "sha256": "4da05e6c385944d5cdc865179a23c2921fd68899a019b2913fba9fce9997a6f1"
+    },
+    {
+      "path": "address/inputs/add_dh_dense.py",
+      "bytes": 4430,
+      "sha256": "c2505ec518bf5d7e52b9b6b20018608154602416f3e747d4a1531c51b9426236"
+    },
+    {
+      "path": "address/inputs/add_second_rung.py",
+      "bytes": 5336,
+      "sha256": "5f78c6330620fea559a94b91d38339bc926beca44b329e120705abd354281b9b"
+    },
+    {
+      "path": "address/inputs/add_second_rung_raw.py",
+      "bytes": 4479,
+      "sha256": "24feca9b9d20d70b7058f29572d32a3f7af00c2bd0fa6b515c8fd0f950db98d1"
+    },
+    {
+      "path": "address/inputs/dh_thermometer.cpp",
+      "bytes": 4898,
+      "sha256": "b30558e43a8fb4df81c5fa6ccfc4bdcd12be014eae632c7dcb0c2f4c3a2a6f03"
+    },
+    {
+      "path": "address/inputs/dh_zeros_900_200dps.json",
+      "bytes": 707070,
+      "sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846"
+    },
+    {
+      "path": "address/pair_first_detections.csv",
+      "bytes": 2633,
+      "sha256": "71f0fe246c0461fe8658ce88f2582dc8abadb67528f59a250c8c9e3eb1ecc895"
+    },
+    {
+      "path": "address/summarize_saved.py",
+      "bytes": 1041,
+      "sha256": "ebd3f2e803da752a59119eda92bb49bdc7b37df906151debe32bb6798c96bf4a"
+    },
+    {
+      "path": "address/uniform_control_by_m.csv",
+      "bytes": 156624,
+      "sha256": "27f3c1382180b68af02a08c91719a0cc9360bf3cf0d8cdfb3e55877c3e36eff2"
+    },
+    {
+      "path": "address/verify_controls.py",
+      "bytes": 2503,
+      "sha256": "67ccc30f5e25ad725f6dac51ed88ad07b8d944e87e61afbed6d5813c4e105fce"
+    },
+    {
+      "path": "address/zeta_small_diagonal_controls.csv",
+      "bytes": 3527761,
+      "sha256": "2257531cb0a8056b0d8667fbdc653369feeb0017f2905eec80af73aee89d6750"
+    },
+    {
+      "path": "producer_history/PREDICTIONS_before_address.md",
+      "bytes": 7523,
+      "sha256": "3469417703b775a3b758173a7521511ef8cea480e030b76eb04bf622a65333e1"
+    }
+  ]
+}

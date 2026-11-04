@@ -1,0 +1,7 @@
+{
+  "prediction_commit": "44e89c1277dde897816b35c637fa7c926ed5d2c6",
+  "prediction_blob": "096bce77f41820748833491de5ebbbdf48cce449",
+  "prediction_sha256": "3469417703b775a3b758173a7521511ef8cea480e030b76eb04bf622a65333e1",
+  "confirmed_remote": true,
+  "scope": "K1-K4 preregistered before B+ computations; D1-D3 initial snapshot remains at bc920492 and producer_history/PREDICTIONS_before_addendum.md"
+}

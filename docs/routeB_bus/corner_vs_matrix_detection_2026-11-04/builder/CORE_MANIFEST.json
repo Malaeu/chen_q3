@@ -1,0 +1,46 @@
+{
+  "core_components.py": {
+    "sha256": "0747a4a43d92677e47ef14cc57c79c9c2794132503b21b5831afde31042a654e",
+    "bytes": 6797
+  },
+  "validate_core_components.py": {
+    "sha256": "bde74de7ee89ca44f72c63e9e13c3cd1c8f076c5dd18b5206c582823ee3e0d7d",
+    "bytes": 6603
+  },
+  "CORE_NOTES.md": {
+    "sha256": "750e64cfcadafb04693765a049decba90f6925949442b794f321cc9c9d4f528d",
+    "bytes": 5191
+  },
+  "core_component_comparisons.json": {
+    "sha256": "d634cf3c0a59b93b76b88fca75472b24a9a8ca5bbb376b7ba5d4b00999088aa3",
+    "bytes": 8973
+  },
+  "core_component_validation.json": {
+    "sha256": "235ec0f53172da39fd3098f85b363b8023eebe584df1064564b71f070f06d114",
+    "bytes": 12661
+  },
+  "core_component_stdout.jsonl": {
+    "sha256": "df0012211ea9b785c59d539c188be53b984b921ff43d7f86ce4c527151a19c98",
+    "bytes": 9430
+  },
+  "core_coefficients_3000.json": {
+    "sha256": "3b88d83e0b10dac91f3184482180368665ae8365fe0288f740101492ce78615d",
+    "bytes": 791
+  },
+  "core_components_initial_rounding.py": {
+    "sha256": "89701a850c8de2a4bf24b9d86cc69f3682787122640a75dd38687ea1ba51f007",
+    "bytes": 6806
+  },
+  "core_initial_rounding_validation.json": {
+    "sha256": "2f471126869a5d35196fdb5ce020244a3b47578cdbb57431ef9fae72aedbca2a",
+    "bytes": 12903
+  },
+  "core_initial_rounding_stdout.jsonl": {
+    "sha256": "429f319f99687cc4fcff77bf249dda5721a1769d8616e840b8938eab03ac18eb",
+    "bytes": 9671
+  },
+  "core_initial_rounding_comparisons.json": {
+    "sha256": "79ec2a3f4ff1efe950e6e0f8bfd1a86f2708d38759b5592b8b5e40b65e450309",
+    "bytes": 9206
+  }
+}

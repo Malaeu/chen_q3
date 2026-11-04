@@ -1,0 +1,37 @@
+{
+  "m": 862,
+  "bits": 256,
+  "working_bits": 296,
+  "source_rayleigh": "5.574520587459673920163234546426385541882795169305383082948260820036983159696810615181e-06",
+  "plant_rayleigh": "-9.194018878419910833974396166992003993544686861848971708247180029481178563776541639683e-06",
+  "total_rayleigh": "-3.619498290960236913811161620565618451661891692543588625298919209444195404079731024502e-06",
+  "vector_squared_norm": "0.9999999999999996598033000998907740636703132354480281080526101852726583746344977087623",
+  "total_negative": true,
+  "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+  "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+  "source_meta": {
+    "bits": 256,
+    "working_bits": 296,
+    "special_function_bits": 328,
+    "tail_lengths": [
+      16,
+      15
+    ],
+    "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+    "seconds": 10.888984075999815,
+    "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+    "interval_certificate": false
+  },
+  "wall_seconds": 11.364726583999982,
+  "cpu_seconds": 11.358578398999999,
+  "interval_certificate": false,
+  "kind": "fixed-vector Rayleigh witness only",
+  "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH",
+  "a": "1/20",
+  "gamma": 800,
+  "lambda_float": -3.619498291234708e-06,
+  "vector_path": "vectors/g800_a1_20_m862.json",
+  "vector_file_sha256": "c488a9dccb5fe6918c677eac3b5b277e2878f67bf81e0711c011e5efacb1b44b",
+  "helper_sha256": "53fb9fea7f6d4fbdea51495bba71d60bb451f37acdc0c0f7173e6dd13adfb326",
+  "status": "PASS_HIGH_PRECISION_NEGATIVE_WITNESS"
+}

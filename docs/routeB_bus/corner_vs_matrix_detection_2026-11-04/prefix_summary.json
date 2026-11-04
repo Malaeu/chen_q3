@@ -1,0 +1,51 @@
+{
+  "status": "COMPLETE_INTEGER_FIRST_DETECTIONS",
+  "groups": [
+    {
+      "gamma": 14,
+      "m_admit": 16,
+      "consecutive_through": 16,
+      "first": {
+        "1/20": 16,
+        "1/10": 16,
+        "1/3": 16
+      },
+      "status": "COMPLETE_FIRSTS"
+    },
+    {
+      "gamma": 50,
+      "m_admit": 21,
+      "consecutive_through": 31,
+      "first": {
+        "1/20": 31,
+        "1/10": 29,
+        "1/3": 23
+      },
+      "status": "COMPLETE_FIRSTS"
+    },
+    {
+      "gamma": 200,
+      "m_admit": 139,
+      "consecutive_through": 162,
+      "first": {
+        "1/20": 162,
+        "1/10": 162,
+        "1/3": 157
+      },
+      "status": "COMPLETE_FIRSTS"
+    },
+    {
+      "gamma": 800,
+      "m_admit": 762,
+      "consecutive_through": 862,
+      "first": {
+        "1/20": 862,
+        "1/10": 861,
+        "1/3": 857
+      },
+      "status": "COMPLETE_FIRSTS"
+    }
+  ],
+  "CPU_seconds": 676.3711846769999,
+  "source": "Each group starts exactly at first admissible integer, visits every integer until all three detections or explicitcap; float detection threshold -1e-6, MP confirmation pending"
+}

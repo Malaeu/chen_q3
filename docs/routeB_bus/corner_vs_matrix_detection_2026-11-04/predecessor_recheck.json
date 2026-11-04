@@ -1,0 +1,98 @@
+{
+  "status": "ALL_9_LATER_THRESHOLDS_PREDECESSORS_RECHECKED",
+  "rows": [
+    {
+      "a": "1/20",
+      "gamma": 50,
+      "first": 31,
+      "predecessor": 30,
+      "fresh_lambda": -5.950313793900286e-07,
+      "saved_lambda": -5.950313793900286e-07,
+      "difference": 0.0,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/10",
+      "gamma": 50,
+      "first": 29,
+      "predecessor": 28,
+      "fresh_lambda": -4.478560641510557e-07,
+      "saved_lambda": -4.478560641510557e-07,
+      "difference": 0.0,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/3",
+      "gamma": 50,
+      "first": 23,
+      "predecessor": 22,
+      "fresh_lambda": -2.2815309868544665e-15,
+      "saved_lambda": -2.2815309868544665e-15,
+      "difference": 0.0,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/20",
+      "gamma": 200,
+      "first": 162,
+      "predecessor": 161,
+      "fresh_lambda": -2.3094228253659668e-14,
+      "saved_lambda": -2.4729847164676546e-14,
+      "difference": 1.6356189110168777e-15,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/10",
+      "gamma": 200,
+      "first": 162,
+      "predecessor": 161,
+      "fresh_lambda": -6.544522706200158e-10,
+      "saved_lambda": -6.544496402036433e-10,
+      "difference": -2.630416372560134e-15,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/3",
+      "gamma": 200,
+      "first": 157,
+      "predecessor": 156,
+      "fresh_lambda": -4.443338700236855e-15,
+      "saved_lambda": -4.443338700236855e-15,
+      "difference": 0.0,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/20",
+      "gamma": 800,
+      "first": 862,
+      "predecessor": 861,
+      "fresh_lambda": -1.8072321762334676e-07,
+      "saved_lambda": -1.807232213810795e-07,
+      "difference": 3.7577327361972636e-15,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/10",
+      "gamma": 800,
+      "first": 861,
+      "predecessor": 860,
+      "fresh_lambda": -2.6468725530918893e-08,
+      "saved_lambda": -2.646872419407164e-08,
+      "difference": -1.3368472521458611e-15,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    },
+    {
+      "a": "1/3",
+      "gamma": 800,
+      "first": 857,
+      "predecessor": 856,
+      "fresh_lambda": -8.675155455292036e-15,
+      "saved_lambda": -8.379498568795809e-15,
+      "difference": -2.956568864962273e-16,
+      "builder_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e"
+    }
+  ],
+  "precision": "float64 eigenvalue; longdouble arithmetic source moments",
+  "scope": "Fresh independent assembly, no MP predecessor ordering or interval enclosure.",
+  "wall_seconds": 0.5976389850002306
+}

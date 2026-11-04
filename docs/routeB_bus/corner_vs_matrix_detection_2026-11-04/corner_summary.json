@@ -1,0 +1,175 @@
+{
+  "status": "COMPLETE_EXHAUSTIVE_SCALAR_CORNER_SCAN",
+  "m_min": 16,
+  "m_max": 3000,
+  "bits": 256,
+  "working_bits": 296,
+  "controls_a0_pass": true,
+  "unplanted_A00_positive": true,
+  "cases": [
+    {
+      "a": "0",
+      "gamma": 14,
+      "m_admit": 16,
+      "m_corner": null,
+      "tested_count": 2985,
+      "negative_count": 0,
+      "minimum": "0.009649815071680058333189360836063881483729641635159980398607559933062882455686756812648057327",
+      "minimum_m": 533
+    },
+    {
+      "a": "0",
+      "gamma": 50,
+      "m_admit": 21,
+      "m_corner": null,
+      "tested_count": 2980,
+      "negative_count": 0,
+      "minimum": "0.008069022241221344465027100139363786085257966710958233298436289872124279125082767372425142746",
+      "minimum_m": 3000
+    },
+    {
+      "a": "0",
+      "gamma": 200,
+      "m_admit": 139,
+      "m_corner": null,
+      "tested_count": 2862,
+      "negative_count": 0,
+      "minimum": "0.007586621441773123228589850913711819952672109277397087140332988596266864780389154851634085735",
+      "minimum_m": 3000
+    },
+    {
+      "a": "0",
+      "gamma": 800,
+      "m_admit": 762,
+      "m_corner": null,
+      "tested_count": 2239,
+      "negative_count": 0,
+      "minimum": "0.007574898493099828946544323749465793868597653665762564913784193315213838949602670269052149754",
+      "minimum_m": 2995
+    },
+    {
+      "a": "1/20",
+      "gamma": 14,
+      "m_admit": 16,
+      "m_corner": null,
+      "tested_count": 2985,
+      "negative_count": 0,
+      "minimum": "0.009326576185615228026248347774431214515617549878377486666783913200797366082427141357362239398",
+      "minimum_m": 533
+    },
+    {
+      "a": "1/20",
+      "gamma": 50,
+      "m_admit": 21,
+      "m_corner": null,
+      "tested_count": 2980,
+      "negative_count": 0,
+      "minimum": "0.008076248212745067970709602201032543991048420709343603132634439188766649639252126281863873903",
+      "minimum_m": 3000
+    },
+    {
+      "a": "1/20",
+      "gamma": 200,
+      "m_admit": 139,
+      "m_corner": null,
+      "tested_count": 2862,
+      "negative_count": 0,
+      "minimum": "0.007585418869359638927612851632349897992276215242033386460091662858278982622342576812148883804",
+      "minimum_m": 3000
+    },
+    {
+      "a": "1/20",
+      "gamma": 800,
+      "m_admit": 762,
+      "m_corner": null,
+      "tested_count": 2239,
+      "negative_count": 0,
+      "minimum": "0.007574851904246409095319575816512524116702573173152024119544685152217447377282344804259938461",
+      "minimum_m": 2995
+    },
+    {
+      "a": "1/10",
+      "gamma": 14,
+      "m_admit": 16,
+      "m_corner": null,
+      "tested_count": 2985,
+      "negative_count": 0,
+      "minimum": "0.008311682371816668864986684682317255510018056050994644497143855005676877475586418357572191053",
+      "minimum_m": 1344
+    },
+    {
+      "a": "1/10",
+      "gamma": 50,
+      "m_admit": 21,
+      "m_corner": null,
+      "tested_count": 2980,
+      "negative_count": 0,
+      "minimum": "0.008099047730763355142617820527016817846082071367480360950420461136357765004542978540027200158",
+      "minimum_m": 3000
+    },
+    {
+      "a": "1/10",
+      "gamma": 200,
+      "m_admit": 139,
+      "m_corner": null,
+      "tested_count": 2862,
+      "negative_count": 0,
+      "minimum": "0.007581615176985230370712981199568072509431953272966787843569127412341937185083191622252351493",
+      "minimum_m": 3000
+    },
+    {
+      "a": "1/10",
+      "gamma": 800,
+      "m_admit": 762,
+      "m_corner": null,
+      "tested_count": 2239,
+      "negative_count": 0,
+      "minimum": "0.00757470458667042106631598102852601877354825940683109658513040159440410256419223892034385392",
+      "minimum_m": 2995
+    },
+    {
+      "a": "1/3",
+      "gamma": 14,
+      "m_admit": 16,
+      "m_corner": 208,
+      "tested_count": 2985,
+      "negative_count": 753,
+      "minimum": "-0.0169003882137884945614281811143456812942817706587773027525010082806368940779212628743498321",
+      "minimum_m": 2046
+    },
+    {
+      "a": "1/3",
+      "gamma": 50,
+      "m_admit": 21,
+      "m_corner": null,
+      "tested_count": 2980,
+      "negative_count": 0,
+      "minimum": "0.007416713022623341049918345204161131055780517857895681517992123759039517671078955471345304948",
+      "minimum_m": 1892
+    },
+    {
+      "a": "1/3",
+      "gamma": 200,
+      "m_admit": 139,
+      "m_corner": null,
+      "tested_count": 2862,
+      "negative_count": 0,
+      "minimum": "0.007493960370932425720852291820429906742424626423416944275531231799104595172688345030742162514",
+      "minimum_m": 3000
+    },
+    {
+      "a": "1/3",
+      "gamma": 800,
+      "m_admit": 762,
+      "m_corner": null,
+      "tested_count": 2239,
+      "negative_count": 0,
+      "minimum": "0.007570325727982069246202252209003887215565390901380505883878519028997726226557532882431736835",
+      "minimum_m": 2994
+    }
+  ],
+  "CPU_seconds": 6.501864785,
+  "preregistration": "bc9204929faccc66f952ff9df9273e0b94afed4e",
+  "script_sha256": "ba0a3d2068ec724a54ce48ad31051d4df3d8a3f9b678f073de9c9b840b6f0e91",
+  "scope": "Finite MPFR diagnostic. A00 computed from exact pinned formulas; no cofinal sign statement or interval-source certificate."
+}

@@ -1,0 +1,9 @@
+{
+  "prediction_commit": "bc9204929faccc66f952ff9df9273e0b94afed4e",
+  "prediction_blob": "76c8b9103464c8802294079dcc3e9e19996c75b3",
+  "prediction_sha256": "f9ee9a322f70e477825075916d481152c4bd52340450a5ce0af57ec370db498a",
+  "confirmed_remote_prediction_commit": true,
+  "first_runs_after_commit": true,
+  "scope": "Prerequisite committed before gate/source/detector runs; no route-state mutation",
+  "main_prediction_snapshot": "producer_history/PREDICTIONS_before_addendum.md"
+}

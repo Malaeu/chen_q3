@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/workspace/chen_q3/docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/core/core_diagnostic.py", line 261, in <module>
+    run(parser.parse_args())
+  File "/workspace/chen_q3/docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/core/core_diagnostic.py", line 180, in run
+    small_gate(builder)
+  File "/workspace/chen_q3/docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/core/core_diagnostic.py", line 165, in small_gate
+    save_json(HERE/"normalization_gate.json",out)
+  File "/workspace/chen_q3/docs/routeB_bus/corner_vs_matrix_detection_2026-11-04/core/core_diagnostic.py", line 31, in save_json
+    p.write_text(json.dumps(obj, indent=2, allow_nan=False)+"\n")
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 202, in encode
+    chunks = list(chunks)
+             ^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable

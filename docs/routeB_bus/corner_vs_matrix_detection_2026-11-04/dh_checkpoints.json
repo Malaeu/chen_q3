@@ -1,0 +1,53 @@
+{
+  "cells": [
+    {
+      "m": 80,
+      "lambda_min": -1.2406870123496567,
+      "peak_mode": 59,
+      "peak_frequency": 84.5973710406679
+    },
+    {
+      "m": 128,
+      "lambda_min": -1.6628282176087026,
+      "peak_mode": 67,
+      "peak_frequency": 86.76232271497771
+    },
+    {
+      "m": 256,
+      "lambda_min": -3.8287385596234405,
+      "peak_mode": 213,
+      "peak_frequency": 241.34817755229807
+    },
+    {
+      "m": 512,
+      "lambda_min": -6.2963822728773895,
+      "peak_mode": 238,
+      "peak_frequency": 239.71149194552711
+    },
+    {
+      "m": 1000,
+      "lambda_min": -9.810245293671516,
+      "peak_mode": 265,
+      "peak_frequency": 241.03982251205863
+    },
+    {
+      "m": 1500,
+      "lambda_min": -12.225839686091042,
+      "peak_mode": 279,
+      "peak_frequency": 239.7040712457691
+    },
+    {
+      "m": 2000,
+      "lambda_min": -14.10332505135516,
+      "peak_mode": 290,
+      "peak_frequency": 239.7246575365018
+    },
+    {
+      "m": 3000,
+      "lambda_min": -16.88824767929238,
+      "peak_mode": 307,
+      "peak_frequency": 240.92547250740932
+    }
+  ],
+  "native_pole": "absent"
+}

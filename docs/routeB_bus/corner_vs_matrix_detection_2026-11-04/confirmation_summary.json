@@ -1,0 +1,21 @@
+{
+  "status": "ALL_12_FIRST_DETECTIONS_CONFIRMED_AT_HIGH_PRECISION",
+  "cases": 12,
+  "bits": 256,
+  "working_bits": 296,
+  "scope": "Fresh full pinned source and fixed binary64 vector. Negative Rayleigh witness proves numerical detection sign; not a complete high-precision eigenvalue ordering/interval certificate.",
+  "files": [
+    "confirmation/g14_a1_10_m16.json",
+    "confirmation/g14_a1_20_m16.json",
+    "confirmation/g14_a1_3_m16.json",
+    "confirmation/g200_a1_10_m162.json",
+    "confirmation/g200_a1_20_m162.json",
+    "confirmation/g200_a1_3_m157.json",
+    "confirmation/g50_a1_10_m29.json",
+    "confirmation/g50_a1_20_m31.json",
+    "confirmation/g50_a1_3_m23.json",
+    "confirmation/g800_a1_10_m861.json",
+    "confirmation/g800_a1_20_m862.json",
+    "confirmation/g800_a1_3_m857.json"
+  ]
+}

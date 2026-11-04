@@ -1,0 +1,94 @@
+{
+  "status": "FLOAT64_EXHAUSTIVE_SCREEN_WITH_320BIT_NEAR_ONE_POINT_CONFIRMATIONS_NOT_INTERVAL",
+  "scope": "literal first max_j raw A0j\u00b2/(A00 Ajj)>1; separate from firstPSDfailure",
+  "first_raw_crossing_screen": {
+    "m": 463,
+    "max_rawratio": 2.3994791534857147,
+    "argj": 234,
+    "min_det": -0.02852387720326299,
+    "argmin_det": 83,
+    "A00": 0.035255059810754275
+  },
+  "first_positive_diagonal_negative_determinant_screen": {
+    "m": 463,
+    "j": [
+      234
+    ]
+  },
+  "integer_m_covered": [
+    2,
+    463
+  ],
+  "every_j_covered": true,
+  "screen_guard_band": ".999999",
+  "near_one_count": 1,
+  "critical_confirmations": [
+    {
+      "world": "dh",
+      "m": 463,
+      "j": 234,
+      "omega": "239.54557589868450423650433776935415349690537637772819858958885629923",
+      "A00": "0.035255059810754918699267926776542834292889101172142437123134175940315",
+      "A0j": "-0.019349191490564698973064836825635526219642392246831924844776829475186",
+      "Ajj": "0.0044257533663313183983008307443408926342968166654037550096679808420686",
+      "determinant": "-0.00021836101170088080284555396739399179325579501814570044416648333731402",
+      "raw_ratio": "2.3994791534457259136875408666710410594685083064361263358515771958128",
+      "denominator_positive": true,
+      "A00_positive": true,
+      "Ajj_positive": true,
+      "PSD_minor_pass": false,
+      "bits": 320
+    }
+  ],
+  "disagreements": [],
+  "screen_rows": 462,
+  "seconds": 2.4540223730000434,
+  "frozen_rung_files_unchanged": true,
+  "float_source_validation": [
+    {
+      "m": 16,
+      "max_all_j_rawratio_error": 4.9960036108132044e-15,
+      "max_all_j_det_error": 2.1094237467877974e-15,
+      "max_all_j_Ajj_error": 6.217248937900877e-15,
+      "exact_bits": 320
+    },
+    {
+      "m": 40,
+      "max_all_j_rawratio_error": 4.773959005888173e-15,
+      "max_all_j_det_error": 3.4416913763379853e-15,
+      "max_all_j_Ajj_error": 3.197442310920451e-14,
+      "exact_bits": 320
+    },
+    {
+      "m": 75,
+      "max_all_j_rawratio_error": 8.992806499463768e-15,
+      "max_all_j_det_error": 6.716849298982197e-15,
+      "max_all_j_Ajj_error": 5.861977570020827e-14,
+      "exact_bits": 320
+    },
+    {
+      "m": 462,
+      "max_all_j_rawratio_error": 7.627232179174825e-14,
+      "max_all_j_det_error": 3.344546861683284e-14,
+      "max_all_j_Ajj_error": 8.01136934569513e-13,
+      "exact_bits": 320
+    },
+    {
+      "m": 463,
+      "max_all_j_rawratio_error": 3.998890107936859e-11,
+      "max_all_j_det_error": 3.191891195797325e-14,
+      "max_all_j_Ajj_error": 8.57980353430321e-13,
+      "exact_bits": 320
+    }
+  ],
+  "closest_prior_screen_maximum": {
+    "m": "139",
+    "max_rawratio": "0.9999822531040007",
+    "argj": "1",
+    "min_det": "8.59408040166515e-08",
+    "argmin_det": "1",
+    "A00": "0.04897237548063671"
+  },
+  "closest_prior_margin_to_one": 1.774689599931545e-05,
+  "interpretation": "First literal raw crossing in exhaustive float64 screen with all near-one candidates independently320bit confirmed; numerical point result, not interval-certified firstness."
+}

@@ -1,0 +1,35 @@
+{
+  "repo": "Malaeu/chen_q3",
+  "base": "2ad7342c2d0b236f627aa23ccc955e2190ffcade",
+  "pins": {
+    "2ad7342c": "2ad7342c2d0b236f627aa23ccc955e2190ffcade",
+    "c8ef1314": "c8ef1314c1fbc9e8292f3bc92d18d6fc2716eaa0",
+    "5e61a39d": "5e61a39dc564fe76487146823f0b5d711014f981",
+    "e586ebba": "e586ebbadf0729f37f70d4fea99d780b23f7932f"
+  },
+  "matrix_source": {
+    "path": "docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/analytic_source.py",
+    "git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+    "sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63"
+  },
+  "verdicts": [
+    {
+      "commit": "c8ef1314c1fbc9e8292f3bc92d18d6fc2716eaa0",
+      "name": "PROSHKA_VERDICT_CCM_HIGHER_MOMENTS_2026-11-04.md",
+      "sha256": "079ed09b355c6350047d0cd218c084256ad06c5c8ab159b37e4c25bcf52afaa2",
+      "git_blob": "e8aa6c6cfc21dff22b06260f66ff5185af3d0f46"
+    },
+    {
+      "commit": "5e61a39dc564fe76487146823f0b5d711014f981",
+      "name": "PROSHKA_VERDICT_EXACT_MECHANISM_E1_E3_2026-11-04.md",
+      "sha256": "0a9393b1f01a4904503b1fa50bf55f32a31c75467ec4cdc25666527dac1b5d9e",
+      "git_blob": "60bc4a0ab782539d6a36fa2ed48a0357b831dbe6"
+    },
+    {
+      "commit": "e586ebbadf0729f37f70d4fea99d780b23f7932f",
+      "name": "PROSHKA_VERDICT_TWO_CORES_2026-11-04.md",
+      "sha256": "59065eb225dfc11d33cce072a4c1d7852b86e83cff6a03128c9d1ad80498e223",
+      "git_blob": "4663cd8ef05f3a54c48def00824442d640e0b4eb"
+    }
+  ]
+}

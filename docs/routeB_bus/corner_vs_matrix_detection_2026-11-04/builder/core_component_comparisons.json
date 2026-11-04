@@ -1,0 +1,272 @@
+[
+  {
+    "m": 80,
+    "world": "zeta",
+    "bits": 256,
+    "source_meta": {
+      "bits": 256,
+      "working_bits": 296,
+      "special_function_bits": 328,
+      "tail_lengths": [
+        24,
+        24
+      ],
+      "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+      "seconds": 0.6225477990001309,
+      "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+      "interval_certificate": false
+    },
+    "reference_cpu_seconds": 1.2917096279999998,
+    "core_meta": {
+      "m": 80,
+      "world": "zeta",
+      "dimension": 81,
+      "dtype": "float64",
+      "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+      "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "source_float_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e",
+      "core_builder_sha256": "0747a4a43d92677e47ef14cc57c79c9c2794132503b21b5831afde31042a654e",
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "signed_arithmetic_atoms": 31,
+      "tail_terms": 24,
+      "tail_cut": "2^-304",
+      "coefficient_intermediate_dtype": "float128",
+      "mantissa_bits": 64,
+      "decomposition": "A=H+outer(p,p)-B",
+      "pole_present": true,
+      "wall_seconds": 0.012516958999640337,
+      "cpu_seconds": 0.012520703999999938,
+      "interval_certificate": false,
+      "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+    },
+    "max_component_errors": {
+      "H": 2.6645352591003757e-15,
+      "B": 6.661338147750939e-16,
+      "p": 4.440892098500626e-16,
+      "A": 2.4424906541753444e-15,
+      "coefficients": 3.3523531173251797e-16
+    },
+    "reconstruction_error": 8.881784197001252e-16,
+    "symmetry_errors": {
+      "H": 0.0,
+      "B": 0.0,
+      "A": 0.0
+    },
+    "pole_squared_norm": 13.21449490240028,
+    "mp_pole_squared_norm": 13.214494902400283,
+    "corner_component_errors": {
+      "H00": 0.0,
+      "B00": 0.0,
+      "p0": 0.0,
+      "A00": 0.0
+    },
+    "W_error": 0.0,
+    "unchanged_source_float_A_error": 5.329070518200751e-15
+  },
+  {
+    "m": 80,
+    "world": "dh",
+    "bits": 256,
+    "source_meta": {
+      "bits": 256,
+      "working_bits": 296,
+      "special_function_bits": 328,
+      "tail_lengths": [
+        24,
+        24
+      ],
+      "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+      "seconds": 0.6225477990001309,
+      "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+      "interval_certificate": false
+    },
+    "reference_cpu_seconds": 1.2917096279999998,
+    "core_meta": {
+      "m": 80,
+      "world": "dh",
+      "dimension": 81,
+      "dtype": "float64",
+      "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+      "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "source_float_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e",
+      "core_builder_sha256": "0747a4a43d92677e47ef14cc57c79c9c2794132503b21b5831afde31042a654e",
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "signed_arithmetic_atoms": 59,
+      "tail_terms": 24,
+      "tail_cut": "2^-304",
+      "coefficient_intermediate_dtype": "float128",
+      "mantissa_bits": 64,
+      "decomposition": "A=H+outer(p,p)-B",
+      "pole_present": false,
+      "wall_seconds": 0.01906285699988075,
+      "cpu_seconds": 0.018195718999999944,
+      "interval_certificate": false,
+      "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+    },
+    "max_component_errors": {
+      "H": 1.7763568394002505e-15,
+      "B": 6.661338147750939e-16,
+      "p": 0.0,
+      "A": 1.7763568394002505e-15,
+      "coefficients": 2.736526283353413e-16
+    },
+    "reconstruction_error": 0.0,
+    "symmetry_errors": {
+      "H": 0.0,
+      "B": 0.0,
+      "A": 0.0
+    },
+    "pole_squared_norm": 0.0,
+    "mp_pole_squared_norm": 0.0,
+    "corner_component_errors": {
+      "H00": 1.1102230246251565e-15,
+      "B00": 0.0,
+      "p0": 0.0,
+      "A00": 1.1102230246251565e-15
+    },
+    "W_error": 0.0,
+    "dh_b6": "1.9363560766210387864",
+    "dh_b6_expected_mp": "1.93635607662103878633595278878216546942068138700184002255061041362665109807318583958357103",
+    "dh_b6_error": 6.404721121783453e-20,
+    "dh_p_identically_zero": true
+  },
+  {
+    "m": 160,
+    "world": "zeta",
+    "bits": 256,
+    "source_meta": {
+      "bits": 256,
+      "working_bits": 296,
+      "special_function_bits": 328,
+      "tail_lengths": [
+        21,
+        21
+      ],
+      "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+      "seconds": 1.2131100860001425,
+      "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+      "interval_certificate": false
+    },
+    "reference_cpu_seconds": 2.838867175,
+    "core_meta": {
+      "m": 160,
+      "world": "zeta",
+      "dimension": 161,
+      "dtype": "float64",
+      "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+      "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "source_float_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e",
+      "core_builder_sha256": "0747a4a43d92677e47ef14cc57c79c9c2794132503b21b5831afde31042a654e",
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "signed_arithmetic_atoms": 50,
+      "tail_terms": 21,
+      "tail_cut": "2^-304",
+      "coefficient_intermediate_dtype": "float128",
+      "mantissa_bits": 64,
+      "decomposition": "A=H+outer(p,p)-B",
+      "pole_present": true,
+      "wall_seconds": 0.005647323000175675,
+      "cpu_seconds": 0.005649137999999887,
+      "interval_certificate": false,
+      "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+    },
+    "max_component_errors": {
+      "H": 3.1086244689504383e-15,
+      "B": 6.661338147750939e-16,
+      "p": 1.1102230246251565e-16,
+      "A": 2.942091015256665e-15,
+      "coefficients": 3.950832716537178e-16
+    },
+    "reconstruction_error": 8.881784197001252e-16,
+    "symmetry_errors": {
+      "H": 0.0,
+      "B": 0.0,
+      "A": 0.0
+    },
+    "pole_squared_norm": 17.64522744185926,
+    "mp_pole_squared_norm": 17.645227441859262,
+    "corner_component_errors": {
+      "H00": 0.0,
+      "B00": 0.0,
+      "p0": 0.0,
+      "A00": 0.0
+    },
+    "W_error": 0.0,
+    "unchanged_source_float_A_error": 6.661338147750939e-16
+  },
+  {
+    "m": 160,
+    "world": "dh",
+    "bits": 256,
+    "source_meta": {
+      "bits": 256,
+      "working_bits": 296,
+      "special_function_bits": 328,
+      "tail_lengths": [
+        21,
+        21
+      ],
+      "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+      "seconds": 1.2131100860001425,
+      "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+      "interval_certificate": false
+    },
+    "reference_cpu_seconds": 2.838867175,
+    "core_meta": {
+      "m": 160,
+      "world": "dh",
+      "dimension": 161,
+      "dtype": "float64",
+      "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+      "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+      "source_float_sha256": "627579485355b2907fbb34c3ab91ca09ac067b84cc65aa163f5d36207bbe313e",
+      "core_builder_sha256": "0747a4a43d92677e47ef14cc57c79c9c2794132503b21b5831afde31042a654e",
+      "python": "3.12.14",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "signed_arithmetic_atoms": 117,
+      "tail_terms": 21,
+      "tail_cut": "2^-304",
+      "coefficient_intermediate_dtype": "float128",
+      "mantissa_bits": 64,
+      "decomposition": "A=H+outer(p,p)-B",
+      "pole_present": false,
+      "wall_seconds": 0.02149294699984239,
+      "cpu_seconds": 0.02147401800000015,
+      "interval_certificate": false,
+      "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+    },
+    "max_component_errors": {
+      "H": 2.6645352591003757e-15,
+      "B": 8.881784197001252e-16,
+      "p": 0.0,
+      "A": 2.6645352591003757e-15,
+      "coefficients": 4.34114549863196e-16
+    },
+    "reconstruction_error": 0.0,
+    "symmetry_errors": {
+      "H": 0.0,
+      "B": 0.0,
+      "A": 0.0
+    },
+    "pole_squared_norm": 0.0,
+    "mp_pole_squared_norm": 0.0,
+    "corner_component_errors": {
+      "H00": 1.1102230246251565e-15,
+      "B00": 0.0,
+      "p0": 0.0,
+      "A00": 1.1102230246251565e-15
+    },
+    "W_error": 0.0,
+    "dh_b6": "1.9363560766210387864",
+    "dh_b6_expected_mp": "1.93635607662103878633595278878216546942068138700184002255061041362665109807318583958357103",
+    "dh_b6_error": 6.404721121783453e-20,
+    "dh_p_identically_zero": true
+  }
+]

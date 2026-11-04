@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "rows": 23865,
+  "cases": 8,
+  "complete_integer_admission_domains": true,
+  "raw_MPFR_signs_match_CSV": true,
+  "driver_source_hashes_match": true,
+  "csv_sha256": "31ddbb61bb425180a83e4637ecc281c6b396c42458530ba8577c0ca91a022094",
+  "fresh_source80_max_difference": "7.54036756269730798555510572285891938760993102719915453201133944399939367125255555552271035e-88"
+}

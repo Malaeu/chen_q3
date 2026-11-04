@@ -1,0 +1,22 @@
+{
+  "comparisons": [
+    {
+      "world": "zeta",
+      "last_index": 3000,
+      "max_absolute_error": "4.676431540789223548486559344142625228558186030075336945086106343316341095966017578835928666e-19",
+      "max_error_n": 769,
+      "mp_bits": 256,
+      "source": "unchanged pinned coefficients() only; no full m3000 MP matrix"
+    },
+    {
+      "world": "dh",
+      "last_index": 3000,
+      "max_absolute_error": "1.045116567545506013602306434627674174557094339134447848541808667384819296323638556669867783e-17",
+      "max_error_n": 2184,
+      "mp_bits": 256,
+      "source": "unchanged pinned coefficients() only; no full m3000 MP matrix"
+    }
+  ],
+  "cpu_seconds": 0.6963030969999999,
+  "core_builder_sha256": "0747a4a43d92677e47ef14cc57c79c9c2794132503b21b5831afde31042a654e"
+}

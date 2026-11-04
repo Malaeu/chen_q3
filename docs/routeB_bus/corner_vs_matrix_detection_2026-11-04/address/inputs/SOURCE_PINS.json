@@ -1,0 +1,50 @@
+[
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/ADD_DH_DENSE.csv",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "5ed8d4aba9f88826e8f7309258f478b98d35f597",
+    "sha256": "f568edd3ad571c1646f2b9b1cafa4813b149510d4ec016aa6fed7f4817506984"
+  },
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/ADD_DH_DENSE.json",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "03d99164a0d92272455992011010de6ef2d5270d",
+    "sha256": "0820bfc1ed4f6bf6fe56deb253ec2f089383bde7d3779b3f57b47fc04f5c0ca7"
+  },
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/ADD_SECOND_RUNG_RAW.json",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "9fc56039c7e2a8fa6573f99f1e6326a429715ac7",
+    "sha256": "50244674fd9e8f97a086be2d1c37f36cf41780419aa38c88100230496f68d5ae"
+  },
+  {
+    "path": "docs/routeB_bus/arithmetic_coupling_2026-11-03/source_inputs/dh_zeros_900_200dps.json",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "35396541cbc976d0dc8a1c76bf45802c8602bb84",
+    "sha256": "ca5909ce3442ade92b4477737ba4bb79e5122365ef91cfe6fd9891efcc785846"
+  },
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/scripts/add_dh_dense.py",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "e558f1dbef849b9bd46a92b47b0cfd30b7b398fe",
+    "sha256": "c2505ec518bf5d7e52b9b6b20018608154602416f3e747d4a1531c51b9426236"
+  },
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/scripts/add_second_rung_raw.py",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "db1bc1b84284297428d865263710a2d328c3c3e8",
+    "sha256": "24feca9b9d20d70b7058f29572d32a3f7af00c2bd0fa6b515c8fd0f950db98d1"
+  },
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/scripts/add_second_rung.py",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "de1e558511e6693dac4e8b9e0ce017fb9c03cc00",
+    "sha256": "5f78c6330620fea559a94b91d38339bc926beca44b329e120705abd354281b9b"
+  },
+  {
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/scripts/dh_thermometer.cpp",
+    "commit": "2820569c797d7d3d6eb5e3e31518198e3d765e09",
+    "git_blob": "f776826cc17fdc9990fc5a27e8c0d4c2e4239ed9",
+    "sha256": "b30558e43a8fb4df81c5fa6ccfc4bdcd12be014eae632c7dcb0c2f4c3a2a6f03"
+  }
+]

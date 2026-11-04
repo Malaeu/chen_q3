@@ -1,0 +1,21 @@
+{
+  "status": "PASS_PINNED_SOURCE_CORNER",
+  "m": 80,
+  "bits": 256,
+  "decimal_working_precision": 89.10488000000001,
+  "absolute_difference": "7.54036756269730798555510572285891938760993102719915453201133944399939367125255555552271035e-88",
+  "source_meta": {
+    "bits": 256,
+    "working_bits": 296,
+    "special_function_bits": 328,
+    "tail_lengths": [
+      24,
+      24
+    ],
+    "tail_cut": "3.068183415811079095684857471866422276859509695312155978194718198241940784201072410287561178e-92",
+    "seconds": 1.0073238740001216,
+    "source": "literal analytic digamma arch+geometric endpoint correction+all signed atoms+tail+poles",
+    "interval_certificate": false
+  },
+  "formula": "c+trigamma(1/4)/(2L)-endpoint_corrections+tail-2(S0-S1/L)+32sinh(L/4)^2/L"
+}

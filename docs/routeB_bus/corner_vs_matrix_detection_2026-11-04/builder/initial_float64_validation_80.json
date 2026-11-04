@@ -1,0 +1,32 @@
+{
+  "m": 80,
+  "bits": 256,
+  "source_seconds": 0.23788725399992927,
+  "source_cpu_seconds": 0.3540913080000001,
+  "meta": {
+    "m": 80,
+    "dimension": 81,
+    "dtype": "float64",
+    "source_sha256": "4e26ed90c8ef7305699802c02490bb0cea0da26be49891c98d387b5210eb8f63",
+    "source_git_blob": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+    "builder_sha256": "1104aa18a1d3e6896cba2bdbc806d422ee2d5dec95d077aa3589117ab902e06e",
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "tail_terms": 24,
+    "tail_cut": "2^-304",
+    "prime_power_count": 31,
+    "wall_seconds": 0.005210218000001987,
+    "cpu_seconds": 0.005212019000000012,
+    "basis": "d_j*(-1)^j/sqrt(log(m))*cos(2*pi*j*x/log(m)); j=0..m",
+    "unplanted": true,
+    "interval_certificate": false,
+    "honesty": "DIAGNOSTIC_NEVER_A_PROOF; CHALLENGER_NOT_RH"
+  },
+  "max_entry_error": 7.105427357601002e-14,
+  "frobenius_error": 3.28191105822455e-13,
+  "operator_error": 9.450247363674496e-14,
+  "float_lambda_min": -3.652814828633721e-14,
+  "source_rounded_lambda_min": -2.5411504113746672e-15,
+  "trigamma_max_complex_error": 3.552713678800501e-15
+}
