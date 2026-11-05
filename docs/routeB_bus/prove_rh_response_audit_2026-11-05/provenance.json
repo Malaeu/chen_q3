@@ -1,0 +1,11 @@
+{
+  "base": "5a409f1e88439d12c5d84126e09d421781d24e26",
+  "preregistration_commit": "8e0e8da16bd0489777f3221455b854647f65b71f",
+  "verdict_commit": "62f782316d2ba4f83d27db82d0b64e1e8361cad2",
+  "verified_blobs": {
+    "docs/routeB_bus/ground_state_zeros_2026-11-03/inputs/analytic_source.py": "27bbaabbc5938b3157b5bc20f5e6db2f882122c0",
+    "docs/routeB_bus/arithmetic_coupling_2026-11-03/source_inputs/dh_zeros_900_200dps.json": "35396541cbc976d0dc8a1c76bf45802c8602bb84",
+    "docs/routeB_bus/prove_rh_response_audit_2026-11-05/SOURCE_VERDICT.md": "2b5e02a0aa816da34c204f2a56a9033e6ac6b542"
+  },
+  "verification": "All source pins, 32 baseline and32 perturbed gate failures, ten component telescopes,27 threshold rows, and script syntax checked. Independent mathematical review retained in REVIEW.md."
+}

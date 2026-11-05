@@ -1,0 +1,385 @@
+{
+  "rows": [
+    {
+      "m": 16,
+      "L": "2.772588722239781",
+      "world": "zeta",
+      "q": 0.7744904988854829,
+      "target": "4.5789290075731981443303399142028946756563914042565460335911660953e-34",
+      "return_error": 0.7744904988854829,
+      "chi_component": 0.025798460719507896,
+      "cosine_projection_component": -0.00023738757301955057,
+      "e0_component": 0.1356113924805211,
+      "e1_component": 0.6133180332584736,
+      "cutoff_form": 0.025798460719507896,
+      "v0": 2.1811522470704072,
+      "e1_correction": 1.9122714217991552,
+      "pole_residual": -3.5207252120809285e-17,
+      "fft_coefficient_repeat_max": 1.3877787807814457e-17,
+      "cutoff_quadrature_repeat_difference": -2.1601331834375515e-12,
+      "cutoff_quad_error_estimate": 3.3189319359381534e-11,
+      "form_quad_error_estimates": [
+        2.4558762773630826e-09,
+        1.3807681136491135e-12,
+        1.5418449216289863e-09
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "3.42532673013185e+58"
+    },
+    {
+      "m": 16,
+      "L": "2.772588722239781",
+      "world": "plant",
+      "q": 3.580771466987698,
+      "target": "0.0001672343685137806801824601695842786752422721654744481710220952558",
+      "return_error": 3.5806042326191845,
+      "chi_component": 2.1232121631920275,
+      "cosine_projection_component": -0.0001793689461253578,
+      "e0_component": 0.49010267908985794,
+      "e1_component": 0.9674687592834244,
+      "cutoff_form": 2.1233793975605413,
+      "v0": 2.1811522470704072,
+      "e1_correction": 1.9122714217991552,
+      "pole_residual": -3.5207252120809285e-17,
+      "fft_coefficient_repeat_max": 1.3877787807814457e-17,
+      "cutoff_quadrature_repeat_difference": -2.405714516484636e-12,
+      "cutoff_quad_error_estimate": 3.3189319359381534e-11,
+      "form_quad_error_estimates": [
+        2.4558762773630826e-09,
+        1.3807681136491135e-12,
+        1.5418449216289863e-09
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "4.05964649497108e+58"
+    },
+    {
+      "m": 64,
+      "L": "4.1588830833596715",
+      "world": "zeta",
+      "q": 0.17057095676522177,
+      "target": "1.4846914851939661781736097085187211831362373274053404502720519056e-34",
+      "return_error": 0.17057095676522177,
+      "chi_component": 0.12426448332183461,
+      "cosine_projection_component": -4.951066254477166e-07,
+      "e0_component": -0.04046421829888487,
+      "e1_component": 0.08677118684889748,
+      "cutoff_form": 0.12426448332183461,
+      "v0": 1.737471482217655,
+      "e1_correction": 1.1649640500224032,
+      "pole_residual": 6.744911416102153e-17,
+      "fft_coefficient_repeat_max": 1.1102230246251565e-16,
+      "cutoff_quadrature_repeat_difference": -3.1496194541347222e-12,
+      "cutoff_quad_error_estimate": 6.742778527720411e-10,
+      "form_quad_error_estimates": [
+        5.161750338357392e-10,
+        3.4394755987075547e-09,
+        8.195870281870387e-10
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "3.44877498156387e+59"
+    },
+    {
+      "m": 64,
+      "L": "4.1588830833596715",
+      "world": "plant",
+      "q": 6.293609511619281,
+      "target": "-0.00093213775238747163623082116322204084689001045693040839381286661404",
+      "return_error": 6.294541649371669,
+      "chi_component": 0.7387407800903986,
+      "cosine_projection_component": 1.7043555728957216e-06,
+      "e0_component": 2.454006187093442,
+      "e1_component": 3.101792977832255,
+      "cutoff_form": 0.7378086423380111,
+      "v0": 1.737471482217655,
+      "e1_correction": 1.1649640500224032,
+      "pole_residual": 6.744911416102153e-17,
+      "fft_coefficient_repeat_max": 1.1102230246251565e-16,
+      "cutoff_quadrature_repeat_difference": -3.149397409529797e-12,
+      "cutoff_quad_error_estimate": 6.742778527720411e-10,
+      "form_quad_error_estimates": [
+        5.161750338357392e-10,
+        3.4394755987075547e-09,
+        8.195870281870387e-10
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "4.08743701518681e+59"
+    },
+    {
+      "m": 300,
+      "L": "5.703782474656201",
+      "world": "zeta",
+      "q": 0.00732100598879247,
+      "target": "3.6210955263462260607262179562170880024892300364046226055590617587e-35",
+      "return_error": 0.00732100598879247,
+      "chi_component": 0.005398804774138274,
+      "cosine_projection_component": 8.715667076941713e-13,
+      "e0_component": 0.0015556936108964952,
+      "e1_component": 0.00036650760288613367,
+      "cutoff_form": 0.005398804774138274,
+      "v0": 0.5601936554860554,
+      "e1_correction": -0.5819536765643144,
+      "pole_residual": 4.1918034248818393e-16,
+      "fft_coefficient_repeat_max": 3.3306690738754696e-16,
+      "cutoff_quadrature_repeat_difference": -1.0933198790752385e-12,
+      "cutoff_quad_error_estimate": 1.7179752901037067e-09,
+      "form_quad_error_estimates": [
+        1.7179734196313425e-09,
+        3.92501153150934e-09,
+        1.18959320060259e-09
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "4.92717849942704e+60"
+    },
+    {
+      "m": 300,
+      "L": "5.703782474656201",
+      "world": "plant",
+      "q": 9.29566182207902,
+      "target": "-0.001746323078488101124815332233079156586892208560699133959224634563",
+      "return_error": 9.297408145157508,
+      "chi_component": 8.745693230687346,
+      "cosine_projection_component": 1.2594369991347776e-12,
+      "e0_component": -1.037108843550981,
+      "e1_component": 1.5888237580198838,
+      "cutoff_form": 8.743946907608859,
+      "v0": 0.5601936554860554,
+      "e1_correction": -0.5819536765643144,
+      "pole_residual": 4.1918034248818393e-16,
+      "fft_coefficient_repeat_max": 3.3306690738754696e-16,
+      "cutoff_quadrature_repeat_difference": -2.4469037906982294e-12,
+      "cutoff_quad_error_estimate": 1.7179752901037067e-09,
+      "form_quad_error_estimates": [
+        1.7179734196313425e-09,
+        3.92501153150934e-09,
+        1.18959320060259e-09
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "5.83961896228389e+60"
+    },
+    {
+      "m": 1000,
+      "L": "6.907755278982137",
+      "world": "zeta",
+      "q": 0.03648329881053769,
+      "target": "2.9682282009812947720196218627783653256605373329809159382316149535e-34",
+      "return_error": 0.03648329881053769,
+      "chi_component": 0.0015151706292547626,
+      "cosine_projection_component": 7.517389488675974e-13,
+      "e0_component": -0.00015968617864281498,
+      "e1_component": 0.035127814359174,
+      "cutoff_form": 0.0015151706292547626,
+      "v0": -0.03734877915791891,
+      "e1_correction": -1.1229713504793901,
+      "pole_residual": -4.440892478141802e-16,
+      "fft_coefficient_repeat_max": 1.7763568394002505e-15,
+      "cutoff_quadrature_repeat_difference": -8.540633478215653e-13,
+      "cutoff_quad_error_estimate": 2.884042188221661e-10,
+      "form_quad_error_estimates": [
+        2.8840328842995364e-10,
+        3.0615319330054387e-10,
+        3.824014434556211e-10
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "3.68202771988563e+61"
+    },
+    {
+      "m": 1000,
+      "L": "6.907755278982137",
+      "world": "plant",
+      "q": 6.376904462444478,
+      "target": "0.00037493588659578654716477699882341077884015986925260877663266790664",
+      "return_error": 6.376529526557882,
+      "chi_component": 4.134849030824771,
+      "cosine_projection_component": 1.212363542890671e-12,
+      "e0_component": 0.046606904068046795,
+      "e1_component": 2.195073591663852,
+      "cutoff_form": 4.135223966711367,
+      "v0": -0.03734877915791891,
+      "e1_correction": -1.1229713504793901,
+      "pole_residual": -4.440892478141802e-16,
+      "fft_coefficient_repeat_max": 1.7763568394002505e-15,
+      "cutoff_quadrature_repeat_difference": -2.1543565542625487e-12,
+      "cutoff_quad_error_estimate": 2.884042188221661e-10,
+      "form_quad_error_estimates": [
+        2.8840328842995364e-10,
+        3.0615319330054387e-10,
+        3.824014434556211e-10
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "4.36388470504964e+61"
+    },
+    {
+      "m": 3000,
+      "L": "8.006367567650246",
+      "world": "zeta",
+      "q": 0.02776511581133434,
+      "target": "5.2770874354029284277263556232865336826992802651935332368348883162e-34",
+      "return_error": 0.02776511581133434,
+      "chi_component": 1.5134828929525695e-05,
+      "cosine_projection_component": 1.8315730876405922e-12,
+      "e0_component": 0.0006917079791630698,
+      "e1_component": 0.02705827300141017,
+      "cutoff_form": 1.5134828929525695e-05,
+      "v0": -0.28244831657525427,
+      "e1_correction": -1.1388360960485322,
+      "pole_residual": -2.220446203824626e-16,
+      "fft_coefficient_repeat_max": 4.440892098500626e-16,
+      "cutoff_quadrature_repeat_difference": -2.3501756096777626e-12,
+      "cutoff_quad_error_estimate": 1.8619082773467814e-10,
+      "form_quad_error_estimates": [
+        1.8616835997568805e-10,
+        4.644841984949663e-09,
+        5.986731620074416e-10
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "2.18143606701224e+62"
+    },
+    {
+      "m": 3000,
+      "L": "8.006367567650246",
+      "world": "plant",
+      "q": 1.8151222695340932,
+      "target": "-0.000054425737208137486056214938432821918726994124294181796528464612136",
+      "return_error": 1.8151766952713013,
+      "chi_component": 1.1115795881507862,
+      "cosine_projection_component": 1.84519066692701e-12,
+      "e0_component": 0.15369099207886028,
+      "e1_component": 0.5499061150398097,
+      "cutoff_form": 1.111525162413578,
+      "v0": -0.28244831657525427,
+      "e1_correction": -1.1388360960485322,
+      "pole_residual": -2.220446203824626e-16,
+      "fft_coefficient_repeat_max": 4.440892098500626e-16,
+      "cutoff_quadrature_repeat_difference": -2.5255908475685374e-12,
+      "cutoff_quad_error_estimate": 1.8619082773467814e-10,
+      "form_quad_error_estimates": [
+        1.8616835997568805e-10,
+        4.644841984949663e-09,
+        5.986731620074416e-10
+      ],
+      "integration_warnings": [
+        [],
+        [],
+        []
+      ],
+      "bound_applies_to": "same world, including finite-rank quartet when plant",
+      "interval_certificate": false,
+      "global_return_bound": "2.58540570905155e+62"
+    }
+  ],
+  "crosschecks": [
+    {
+      "m": 16,
+      "function_values": [
+        0.025561073146491253,
+        0.1611724656270353,
+        0.7744904988854753
+      ],
+      "matrix_values": [
+        0.025561073146488346,
+        0.16117246562700943,
+        0.7744904988854829
+      ],
+      "max_abs_difference": 2.5868196473766147e-14,
+      "source_bits": 256
+    },
+    {
+      "m": 64,
+      "function_values": [
+        0.12426398822269391,
+        0.08379976832691549,
+        0.17057095366081398
+      ],
+      "matrix_values": [
+        0.12426398821520916,
+        0.08379976991632429,
+        0.17057095676522177
+      ],
+      "max_abs_difference": 3.1044077863917607e-09,
+      "source_bits": 256
+    },
+    {
+      "m": 300,
+      "function_values": [
+        0.005398804775019528,
+        0.006954498382997665,
+        0.007321005990235108
+      ],
+      "matrix_values": [
+        0.005398804775009841,
+        0.006954498385906336,
+        0.00732100598879247
+      ],
+      "max_abs_difference": 2.9086715674919716e-12,
+      "source_bits": 256
+    }
+  ],
+  "seconds": 6.269538640975952,
+  "global_bound": {
+    "domain": "L>=1",
+    "E": "1e27*(1+L)*exp(3*L/4-L^2/256)+1e27*(1+L)^4*exp(-5*L/4)",
+    "B_zeta": "27*E*(4e5*exp(L/4)+E)",
+    "B_plant": "32*E*(4e5*exp(L/4)+E)",
+    "real_L_infimum_for_strict_bound_below_1e_minus_30": {
+      "zeta": "363.8803637220105739696838156654838455496796911793438726940441812",
+      "plant": "363.97267829718303202572071782351746285024415007064505712144180621"
+    },
+    "first_integer_L_below_1e_minus_30": 364,
+    "kind": "explicit conservative paper continuity bound; not empirical fit, not a machine interval certificate",
+    "proof": "task_b_notes.md"
+  }
+}
