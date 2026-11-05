@@ -10,7 +10,15 @@ If the control is missing, unreadable, non-`ACTIVE`, or duplicated, stop with:
 `CODEX_CONTROL_UNAVAILABLE_OR_AMBIGUOUS`
 
 This file is a thin bootstrap pointer. It contains no independent executor
-policy; machine-local configuration cannot override the control, the Owner's explicit instruction can.
+policy except the owner rule «Сохранность результатов» below; machine-local configuration cannot override the control, the Owner's explicit instruction can.
+
+## Сохранность результатов (владелец, 2026-11-05)
+
+Любой результат — код, данные, вердикт, лог счёта — коммитится и пушится в
+https://github.com/Malaeu/chen_q3: в ветку `rh_clean` или в ветку `codex/<имя>`.
+Ничего не оставлять только в облачном воркспейсе. Задача не выполнена, пока в ответе
+нет hash запушенного коммита. Если у среды нет доступа на запись в chen_q3 — сказать
+об этом первой строкой ответа, а не работать в другом репо.
 
 # Codex project instructions
 
