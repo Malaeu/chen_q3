@@ -59,6 +59,15 @@ Later literature extends Theorem 1.2: Garunkštis (Lith. Math. J. 42, 2002) to �
 
 4. **Ladder.** Literature has σ ≥ 10 (Lagarias), then σ ≥ 1 (Garunkštis), then near the strip (Broughan). These are exactly the "proved top rungs" of the σ-flow. Every step below σ = 1 that is uniform in t is a zero-free-region statement.
 
+## Follow-up literature (found via Consensus MCP, 2026-11-05)
+
+- **Garunkštis**, "On a positivity property of the Riemann ξ-function", Lith. Math. J. 42 (2002), DOI 10.1023/A:1016158125685. Proves that the infimum is attained at t = 0 for σ ≥ 1.
+- **Broughan**, "Extension of the Riemann ξ-function's logarithmic derivative positivity region to near the critical strip", Canad. Math. Bull. 52 (2009) 186–194, DOI 10.4153/CMB-2009-021-3.
+  - Number fields: the constant 9 is improved to 8.
+  - For ℚ: the inequality is extended to σ ≥ 1 for t sufficiently large or small, and to σ ≥ 1 + 1/(log t − 5) for all t ≠ 0.
+- **Goldštein et al.**, J. Math. Inequal. 18 (2024) 829–845, DOI 10.7153/jmi-2024-18-45. Gives explicit bounds for Re Σ 1/(s−ρ) and studies positivity in 1/2 < σ < 1 under hypothetical off-line zeros.
+- Full texts are available through the owner's institutional access (uni-due digibib / LibKey links in the Consensus results).
+
 ## Status labels
 
 - Lemma 3.1 correction: Mythos algebra plus sympy check. FACT for the algebra; the content of the Correction itself is NOT READ.
