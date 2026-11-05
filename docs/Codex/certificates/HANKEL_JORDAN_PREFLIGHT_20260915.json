@@ -1,0 +1,42 @@
+{
+  "status": "ACCEPT_SCOPED_POSITIVE_NORMALIZED_KERNEL_AND_NONPOSITIVE_BACKWARD_LYAPUNOV_MAP_ONLY",
+  "base": "50b9eab917502a5cec4d8c96ad20c2fec0dc7c1b",
+  "brief_path": "docs/Codex/BRIEF_2026-09-15_HANKEL_JORDAN_PREFLIGHT.md",
+  "brief_sha256": "76c1995a566295a45c5187a26cc766ddcf1bbdcd1476acaca730d6740d5360d8",
+  "reviewed_candidate_sha256": "e991120a01bb97ffefa123c94481fec3950a486736ee9b5b75fa7fef9567e25b",
+  "report_path": "docs/Codex/REPORT_2026-09-15_HANKEL_JORDAN_PREFLIGHT.md",
+  "report_sha256": "c39016a5ba57aaa9e60f56682d11a9eebde9ee3202e4b2294c4e5beb156bc2c3",
+  "publication_change": "Only the initial status line was updated after independent acceptance. All mathematics, source quotes and scope remained byte-for-byte unchanged.",
+  "independent_review": {
+    "reviewer": "/root/sibling5_check",
+    "sha256": "eb1f0e084510f231a35a820c48cf742bd0cce78a886cf002407c58b4bd247f83",
+    "text": "# Independent review: Hankel/Jordan sibling\n\nReviewed candidate SHA256:\n`e991120a01bb97ffefa123c94481fec3950a486736ee9b5b75fa7fef9567e25b`\n\n## Verdict\n\n**ACCEPT_SCOPED_POSITIVE_NORMALIZED_KERNEL_AND_NONPOSITIVE_BACKWARD_LYAPUNOV_MAP_ONLY.**\n\nH1 has the correct anticommutator normalization and Hilbert--Schmidt domains;\nthe reflected interval and compression qualification preserve the original\nfinite-complex-row scope.  H2--H3 give a valid common feature Gram\nrepresentation of `L_f=V/(x+y)` for every finite complex row.\n\nH4 has the correct Lyapunov direction: `K>=0` implies `L>=0`, but the reverse\nfails, as the displayed two-by-two control proves.  The Tao--Gowda Theorem 2\nis used only as a classification of Lyapunov-like maps; its cone-orthogonality\ndefinition is not cone preservation.  H5's noncommutation identity and its\nlimited conclusion are correct.\n\nThis supplies no sign result for the original theta `V`, no theta negative\nwitness, and no all-rank positivity upgrade.\n"
+  },
+  "primary": {
+    "url": "https://userpages.umbc.edu/~gowda/papers/trGOW12-01.pdf",
+    "sha256": "64f8fc0d4c240e9cb4f35f3e390313fa84ff58dcc13bbd4e165895226b9f62ab",
+    "bytes": 200724,
+    "title": "A Representation Theorem for Lyapunov-like Transformations on Euclidean Jordan Algebras",
+    "authors": "Jiyuan Tao and M. Seetharama Gowda",
+    "doi": "10.1142/S0219198913400343",
+    "locators_read": "Introduction pp1-2; Theorem1/Proposition2 p3; Theorem2 p7",
+    "quote": "if and only if there exists an",
+    "quote_locator": "Theorem 2, printed p1340034-7",
+    "strength": "DIAGNOSTIC_NAME_AND_CONE_MAP_NOT_A_SOURCE_SIGN_THEOREM"
+  },
+  "ask": {
+    "query": "Hankel Jordan product positive anticommutator Lyapunov inverse Cauchy Schur multiplier",
+    "exit_code": 2,
+    "stdout_sha256": "0172a80299cb92307cb0c2b7f992c3483ea8b362914e95274588912182083f62",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "shelf_status": "INCOMPLETE; semantic-index freshness failed, not absence",
+  "source_sign_progress": false,
+  "actual_negative_theta_V": false,
+  "canonical_admission": false,
+  "new_Proshka_send": false,
+  "new_goal": false,
+  "Lean_verified": false,
+  "historical_counters_changed": false,
+  "PX_RH_CLAIM": "NOT_MADE"
+}

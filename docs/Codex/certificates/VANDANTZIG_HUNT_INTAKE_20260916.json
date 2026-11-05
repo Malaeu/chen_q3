@@ -1,0 +1,95 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "55c475d55de2c8921c1d9cd142d58a3b69cae2b1",
+  "candidate_sha256": "5481cb4320ef269a2355a55e6a28391458cd1a9946f5f7772ef01d7cb77d50e5",
+  "report_path": "docs/Codex/REPORT_2026-09-16_VANDANTZIG_HUNT_INTAKE.md",
+  "report_sha256": "71ff393cd1bd030ff0050390736292acd11bf405b66b853507f2fae561ac89c8",
+  "review_sha256": "5e9a11022f4096a29c784a9a4ca3d92a915791309f6526a2e1812dbd394b0311",
+  "review_text": "# Independent review — van Dantzig hunt intake\n\nReviewed candidate: \\`VANDANTZIG_HUNT_INTAKE.md\\`  \nSHA256: \\`5481cb4320ef269a2355a55e6a28391458cd1a9946f5f7772ef01d7cb77d50e5\\`.\n\n## Verdict\n\n**ACCEPT_SCOPED_REJECTED_SOURCE_CLAIMS_AND_RH_STRENGTH_FILTER_ONLY.**\n\nThe intake faithfully retains the earlier accepted dual and equation-(38)\naudits. It makes no claim of a full-\\(V\\) sign result, a negative actual-\\(V\\)\nwitness, or RH.\n\n## New source check\n\nI byte-verified source 1804.10043v8:\nPDF \\`aba173364e7df5f849789caf674fd14f17ac91306df79d7cab8200955d3f52df\\`;\ntext \\`295ba14216d62c1f99d411383587fd08ddedc5f7196f35c389c178e0e90da1dd\\`.\nI visually inspected printed pp. 5 and 12.\n\nThe Theorem 14(ii) counterexample is decisive.  For\n\\(f(w)=1+w^2,\\alpha=0\\), the stated hypotheses hold, yet\n\\(f(it)/f(0)=1-t^2\\), whose modulus exceeds one at \\(t=2\\). It cannot be a\ncharacteristic function. The intake therefore correctly refuses to import\nthe theorem's paired/infinitely-divisible conclusion wholesale, while keeping\nthe separately justified zero/GGC interface distinct.\n\nPrinted equation (30) is also false:\nwith \\(y=\\sqrt{1+\\sigma}>1\\), its right-hand side equals\n\\[\n e^{-\\sigma t}e^{-2t(y-1)/(y+1)},\n\\]\nrather than \\(e^{-\\sigma t}\\). Thus it cannot prove Theorem 23 as written.\n\nH4 is correct as a conditional logical filter. If the shifted GGC identity\nwere independently valid, the holomorphic slit-plane Laplace transform and\nthe entire denominator \\(D(z)=E(1+z)/E(1)\\) would imply \\(D L=1\\) throughout\nthe slit plane. Together with \\(E(u)>0\\) for \\(u\\ge0\\), this forces every\n\\(E\\)-zero onto the negative real axis and hence RH. Under RH the displayed\nHadamard product supplies the converse GGC transform. It is therefore\nRH-equivalent, rather than a lower-cost source supplier.\n\nThe corrections in H5 are accurate: the asserted Lemma 24 circularity and\nthe quoted negative-increment domain objection should not be retained.\n\n",
+  "verdict": "ACCEPT_SCOPED_REJECTED_SOURCE_CLAIMS_AND_RH_STRENGTH_FILTER_ONLY",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-16_VANDANTZIG_DUAL_FILTER.md": "4bfa4044261ebe67b95e44e04a3a1a445a572e8d5c9299c67579e6688e94a7b0",
+    "docs/Codex/REPORT_2026-09-16_POLSON_GGC_CONTINUATION_AUDIT.md": "811e21b8cb0347200f633273611446e7a6e1b6ff9538924bf8e5fd9ef62d4a6b",
+    "docs/Codex/certificates/VANDANTZIG_FILTERS_20260916.json": "94c3af44584357e90cf258eb529adbcc9e1577ac9915e9028fa57cf1efba8d84"
+  },
+  "retrieval_manifest": {
+    "brief": {
+      "path": "VANDANTZIG_THORIN_BRIEF.md",
+      "sha256": "61a6ee0c846cba824e3acd7f06730fe96cdec787f71ad9b27a9a81d111f627dd"
+    },
+    "card": {
+      "path": "VANDANTZIG_THORIN_CARD.md",
+      "sha256": "23e0c8fc62406f6463bb004fbc8191f8a4dd53b4006f32904d3fb42583db6259"
+    },
+    "independent_review": {
+      "path": "VANDANTZIG_POLSON_CONTINUATION_REVIEW.md",
+      "sha256": "659e33508100fb7b2ba3899f63364ad691a238086b69770412ab31d9ec242d62"
+    },
+    "sources": [
+      {
+        "title": "Polson, Riemann, Thorin, van Dantzig Pairs, Wald Couples and Hadamard Factorisation",
+        "url": "https://arxiv.org/pdf/1804.10043",
+        "pdf": "VANDANTZIG_SOURCE_POLSON_WALD_1804.10043.pdf",
+        "pdf_sha256": "aba173364e7df5f849789caf674fd14f17ac91306df79d7cab8200955d3f52df",
+        "text": "VANDANTZIG_SOURCE_POLSON_WALD_1804.10043.txt",
+        "text_sha256": "295ba14216d62c1f99d411383587fd08ddedc5f7196f35c389c178e0e90da1dd",
+        "locators": [
+          "Theorem 14, printed pp. 4-5",
+          "Theorem 21, printed pp. 10-11",
+          "Theorem 23 and Eq. (30), printed p. 12",
+          "Lemma 24, printed p. 13"
+        ]
+      },
+      {
+        "title": "Polson, Riemann Hypothesis: a GGC factorisation",
+        "url": "https://arxiv.org/pdf/1806.07964",
+        "pdf": "VANDANTZIG_SOURCE_POLSON_GGC_1806.07964.pdf",
+        "pdf_sha256": "e4350036340ec9d6fdd5bb2d4e8ee23514a2764f30f5bd658f21dcf4def13214",
+        "text": "VANDANTZIG_SOURCE_POLSON_GGC_1806.07964.txt",
+        "text_sha256": "883c5a338f90f552735ba98debd855aa9e045b90a8a465aa5a117563d6a11e0c",
+        "locators": [
+          "Theorem 1 and Eq. (13), printed pp. 3-5",
+          "Eq. (38), printed p. 5",
+          "Theorem 2 and Eq. (42), printed p. 6"
+        ]
+      }
+    ],
+    "shelf_stdout_sha256": {
+      "VANDANTZIG_ask-1.stdout": "6e2be3490fb110311abe418218246be4417745a8a080d8bf36d6baf344b9c524",
+      "VANDANTZIG_ask-2.stdout": "910ef95af520ebb38143e6078996b2e7fcb5ba9b56388bd8394a3715277f9e37",
+      "VANDANTZIG_ask-3.stdout": "4e88a5ac662ddba4eb8ddfc66de5ee3223b6b4b192545f5e9976c94d5b3c84f6",
+      "VANDANTZIG_kb-1.stdout": "2c9b69e73f3622aba69c28b9f44e0a5944275d69392a4a8800c837bac3a2ae6b",
+      "VANDANTZIG_kb-2.stdout": "02cf97202d907288b6d5ba069288565def7770ceee49980c79bbb63b9b63286b",
+      "VANDANTZIG_kb-3.stdout": "2766e82a35661cce5cf43d1ba790f1242c9f9cc67d89f0c59fda04a5c8ca7130"
+    }
+  },
+  "pinned_primary_urls": [
+    "https://arxiv.org/pdf/1804.10043v8",
+    "https://arxiv.org/pdf/1806.07964v7"
+  ],
+  "raw_card_accepted": false,
+  "raw_card_corrections": [
+    "Theorem14(ii) is false as stated.",
+    "Lemma24 holomorphy inference is not inherently circular.",
+    "A negative zeta increment does not leave absolute convergence here."
+  ],
+  "source1_read_scope": "Theorem14 printed pp4-5, Theorem23 and Lemma24 pp12-13; p12 visually checked.",
+  "new_accepted_results": [
+    "Theorem14(ii) polynomial counterexample.",
+    "Equation30 algebraic contradiction.",
+    "Shifted auxiliary GGC already RH-equivalent."
+  ],
+  "not_claimed": [
+    "Theorem23 conclusion false.",
+    "Exhaustive literature search.",
+    "Any V sign gain.",
+    "RH proof or disproof."
+  ],
+  "incomplete_search_not_absence": true,
+  "new_proshka_request": false,
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0
+}

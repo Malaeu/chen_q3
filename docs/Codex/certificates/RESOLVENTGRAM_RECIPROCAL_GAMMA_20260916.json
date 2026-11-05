@@ -1,0 +1,19 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "2e38b141f063d869745454308c283c64b56940df",
+  "source_path": "docs/Codex/REPORT_2026-09-16_RESOLVENTGRAM_MELLIN_PREFLIGHT.md",
+  "source_sha256": "ded92e32d79596b0292c6dac13c3ffb8dc26972f8cda81ecf88613867703deba",
+  "candidate_sha256": "1ca682ca6d49948ef13037022b5202cc705be24b99a41299f2687ec3f9322115",
+  "report_sha256": "26013672622466181a73cc5e567befd702b5264e61f65510194a9b7d60e9dd27",
+  "review_sha256": "e2a3f1c4686b00653c3b6ba93fdd7155cd70dbf82e920283fdd94d0424a81bbe",
+  "review_text": "# Independent review — reciprocal Gamma check\n\nReviewed candidate: \\`RESOLVENTGRAM_RECIPROCAL_GAMMA_CHECK.md\\`  \nSHA256: \\`1ca682ca6d49948ef13037022b5202cc705be24b99a41299f2687ec3f9322115\\`.\n\n## Verdict\n\n**ACCEPT_SPECIFIED_RECIPROCAL_AVERAGE_GAMMA_NONCANCELLATION_ONLY.**\n\nThis calculation rejects only the stated unweighted reflection-and-average\ncancellation. It leaves other weighted maps and the joint \\(K_C+K_D\\)\ncompensation open.\n\n## Checks\n\nThe common Mellin-integral domain is exactly\n\\(-3/2<\\Re a<2\\), and reflection of \\(H\\) gives\n\\[\n J(a)=\\frac{\\Gamma(2-a)}{\\Gamma(3/2+a)}J(1/2-a).\n\\]\nLogarithmic differentiation has the correct minus sign from the reflected\nargument, yielding both equal expressions for \\(R_2\\) and hence\n\\[\n C(u)=\\frac14[\\psi(2-a_u)-\\psi(3/2+a_u)].\n\\]\n\nWriting \\(x=u/2\\), the recurrence from \\(3/4-ix\\) to \\(11/4-ix\\) gives\n\\[\n \\Re C(u)=-\\frac14\\left[\n \\frac{3/4}{(3/4)^2+x^2}+\n \\frac{7/4}{(7/4)^2+x^2}\\right]<0.\n\\]\nThus \\(C(0)=-10/21\\) and\n\\[\n K_C(0,0)=\\Re C(0)/2=-5/21.\n\\]\nThe modulus calculation\n\\[\n \\left|\\Gamma(2-a_u)/\\Gamma(3/2+a_u)\\right|\n =\\big[((3/4)^2+x^2)((7/4)^2+x^2)\\big]^{-1/2}\n\\]\nis also correct. No total-\\(K_2\\), \\(V\\), or RH conclusion follows.\n\n",
+  "verdict": "ACCEPT_SPECIFIED_RECIPROCAL_AVERAGE_GAMMA_NONCANCELLATION_ONLY",
+  "claim": "The specified exact reciprocal average has gamma component with negative diagonal for every real consumer parameter; at zero -5/21. Its raw reflection multiplier is not modulus one.",
+  "decision_effect": "Do not erase the Mellin gamma correction by this exact symmetry. Retain K_C+K_D or prove a different source-specific map.",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proshka_message": false
+}

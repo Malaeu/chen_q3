@@ -1,0 +1,44 @@
+{
+  "request_id": "REQ-2026-09-15-SIZEBIASCOMP",
+  "status": "ACCEPT_FULL_FIELD_TRANSPORT_CONVERGENCE_AND_CUTOFF_RATE_OBSTRUCTION_ONLY",
+  "request_commit": "bea1abcd6baf5a171ceefa98b79548e528a2bf79",
+  "raw_commit": "f6cb4ba3279e61de944b954bff524875fed97932",
+  "raw_path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_SIZEBIASCOMP_2026-09-15.md",
+  "raw_sha256": "784e16445c64c1b480cfb0fdc5740182ad59253a775bfc8ab7dc0c44a654eafd",
+  "raw_bytes": 55408,
+  "raw_LF": 754,
+  "intake_path": "docs/Codex/REPORT_2026-09-15_SIZEBIASCOMP_INTAKE.md",
+  "intake_sha256": "c12dd164e105e165ffd8e9a1963c8f2acd6c9207d80a437a97c9887e064c20d7",
+  "parent_full_read": true,
+  "independent_review": {
+    "reviewer": "/root/sibling5_check",
+    "sha256": "7d47422e564ac355dc6940517b4abddd3298e0498d021b0cb61547d19519d411",
+    "text": "# Independent review: SIZEBIASCOMP response\n\nReviewed raw SHA256:\n`784e16445c64c1b480cfb0fdc5740182ad59253a775bfc8ab7dc0c44a654eafd`\n\n## Verdict\n\n**ACCEPT_FULL_FIELD_TRANSPORT_CONVERGENCE_AND_CUTOFF_RATE_OBSTRUCTION_ONLY.**\n\nThe half-density construction retains the physical weight, changing\nconditional projection, cutoff, nonlinear likelihoods, and arbitrary finite\ncomplex rows.  Equations (9)--(10) correctly recover the original `V` at the\nterminal size-biased law.  The endpoint estimates give finite field and\nfirst-derivative source constants for each fixed row; the projection\nvariation and score are not discarded.\n\nThe first-innovation calculation is correct.  Tilting the first `m` H\nfactors yields the `6^{-m}` crossing term, while the Lipschitz remainder is\n`15^{-m}`; the constant in (28) follows from these two contributions.\nThe positive leading coefficient follows from the stated Markov bound and\nstrict positivity of `r`.  Equations (31)--(36) correctly retain the jump at\n`t=1`, so the literal cutoff field cannot have a uniform `15^{-m}` MSE rate,\nalthough its full MSE errors are summable.\n\nThe signed telescopes (37)--(44) are absolutely convergent and preserve the\nmicro/loss/projection identity at every level.  Equation (47) correctly\nexcludes only almost-sure nonnegative increments of this particular\ncoupling.  It does not establish a sign for the mean increment or for `V`.\nThe remaining bulk/trace balance (43) is genuinely unpaid.\n\nAppendix A was independently replayed from an ephemeral copy: all 16 exact\nrational checks passed.\n"
+  },
+  "intake_fit": {
+    "reviewer": "/root/sibling5_check",
+    "verdict": "CLEAN_INTAKE",
+    "exact_sha256": "c12dd164e105e165ffd8e9a1963c8f2acd6c9207d80a437a97c9887e064c20d7"
+  },
+  "accepted_scope": [
+    "exact terminal original V identity for every finite complex row",
+    "bounded full weighted fields and moving projection derivatives",
+    "strictly positive leading cutoff crossing coefficient at rate 6^(-m), error O(15^(-m))",
+    "full MSE error sums and signed quadratic telescopes absolutely converge",
+    "literal cutoff field cannot retain the scalar 15^(-m) MSE rate for nonzero jump",
+    "pathwise nonnegative increments of this exact coupling are false"
+  ],
+  "open": [
+    "sign of expected full increments",
+    "full integrated bulk/trace sign",
+    "V nonnegativity on every finite row",
+    "full C6",
+    "RH"
+  ],
+  "source_sign_progress": false,
+  "actual_negative_V_witness": false,
+  "Lean_verified": false,
+  "canonical_admission": false,
+  "PX_RH_CLAIM": "NOT_MADE",
+  "counting": "One bounded construction/repair package; no canonical counter reset or reconstruction, no Barvinok restart."
+}

@@ -1,0 +1,173 @@
+{
+  "scope": "ISOLATED_ANALYTIC_PAPER_NOT_CANONICAL_ADMISSION",
+  "source_base": "1c792b3e2474ee642362c8826e3dcb2eec80c988",
+  "report": "docs/Codex/REPORT_2026-09-15_STRUCTURED_ZERO_HUNT.md",
+  "sha256": "00ebb01836baa0efa244d01f7ba5c8a64490db5f44673109027ac4e20ff23120",
+  "brief": {
+    "path": "gamma-reciprocity-worktree/docs/Codex/BRIEF_2026-09-15_STRUCTURED_ZERO_HUNT.md",
+    "sha256": "41cb6124c7540e33295f90c50593536ee3b5bfb16028c7b7423100ff994797ed",
+    "bytes": 3735
+  },
+  "review": {
+    "class": "ADVERSARIAL_READ_ONLY",
+    "reviewer": "/root/sibling5_check",
+    "verdict": "CLEAN",
+    "exact_payload_sha256": "00ebb01836baa0efa244d01f7ba5c8a64490db5f44673109027ac4e20ff23120",
+    "text": "Z2-Z3 complex-compatible null integral; Z4 weighted defect; Z5-Z6 weighted restoration and all corrections correct. Z7 changing-law derivative and positive I as balancing term correct. Poisson L/2 and Gamma normalization correct. Z8 remains an unproved source-to-energy identification, with no V sign implication."
+  },
+  "local_source_pins": [
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-13_NULL_AND_GROUND_STATE_TEST.md",
+      "sha256": "19ce3481523bfb3f3f9ba8be24f2c86dc2f1916d80f9535a451d010bceef0d95",
+      "bytes": 12961
+    },
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-13_RESIDUAL_COMPENSATION_HUNT.md",
+      "sha256": "7aaf8e43faa5bfd37954d6076db3acb1801325777bd9d989b25d75c9a9466c14",
+      "bytes": 15070
+    },
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-15_INTEGRATED_SIGN_HUNT.md",
+      "sha256": "8560b8c70e35fd76dbb2820471440aa802cefe21f9928e957c9f2e0be7dbe8eb",
+      "bytes": 13629
+    },
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-14_FIRST_ORDER_COMPENSATION_PREFLIGHT.md",
+      "sha256": "758eb21c80cb405fa242bc5e6a6ce38053cbe9edc997752ac01480aa5c6c55e7",
+      "bytes": 12744
+    },
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md",
+      "sha256": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f",
+      "bytes": 13154
+    }
+  ],
+  "shelf_searches": [
+    {
+      "query": "null Lagrangian differential constraint translation method compensated integral",
+      "exit": 2,
+      "raw": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/structured-zero-hunt-20260915/ask_1.txt",
+      "sha256": "e2a592b760dda4d492742cc9b9d50e297fdc52e80c6122bd5571eb892403f94a",
+      "bytes": 12966,
+      "status_lines": [
+        "  · q3_docs: semantic-index freshness validation failed",
+        "ASK_STATUS: INCOMPLETE"
+      ]
+    },
+    {
+      "query": "carre du champ quadratic variation zero mean energy defect",
+      "exit": 2,
+      "raw": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/structured-zero-hunt-20260915/ask_2.txt",
+      "sha256": "c74edec7d8422fa351c0e5c9c8d2aefcc527adfdf7ce76239cdbde76957707f0",
+      "bytes": 12178,
+      "status_lines": [
+        "  · q3_docs: semantic-index freshness validation failed",
+        "ASK_STATUS: INCOMPLETE"
+      ]
+    },
+    {
+      "query": "score mean zero Fisher information derivative normalization identity",
+      "exit": 2,
+      "raw": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/structured-zero-hunt-20260915/ask_3.txt",
+      "sha256": "19a8a9cb5e28badf88fd7a43affad5c5ecf44a83aa4330dde0c1d23d40a32ece",
+      "bytes": 12920,
+      "status_lines": [
+        "  · q3_docs: semantic-index freshness validation failed",
+        "ASK_STATUS: INCOMPLETE"
+      ]
+    }
+  ],
+  "shelf_interpretation": "Three new dictionaries, all INCOMPLETE freshness. Existing exact covariance/null sources reconciled; no absence claim or refresh.",
+  "primary_sources": [
+    {
+      "title": "Ball-Currie-Olver, Null Lagrangians, weak continuity, and variational problems of arbitrary order (1981)",
+      "url": "https://people.maths.ox.ac.uk/~ball/Papers/Ball%2C%20Currie%20%26%20Olver%201981.pdf",
+      "doi": "10.1016/0022-1236(81)90085-9",
+      "locator": "Definition3.1 p139; Theorem3.1 p140; Theorem3.4(ii) p143; equation4.2 p150",
+      "quote": "each Jacobian determinant is a divergence",
+      "files": [
+        {
+          "path": "structured-zero-hunt-20260915/ball_currie_olver.pdf",
+          "sha256": "0a9af1c9c082c9baf98af0bf5e90fa20c72a8aae303716f6540faa89ac08f3e7",
+          "bytes": 1899716
+        },
+        {
+          "path": "structured-zero-hunt-20260915/ball_currie_olver.txt",
+          "sha256": "334adce6240677b226604ce308d7db36fc54d0caa3011fc9cb0dde481c0d4e19",
+          "bytes": 88129
+        }
+      ],
+      "visual_check": "PDF pages15-16 rendered and viewed; printed149-150",
+      "fit": "Verified null mechanism; Z2-Z6 directly derived weighted sibling; identification with V unverified"
+    },
+    {
+      "title": "Scott Linderman, STATS305B Basics of Probability and Statistics",
+      "url": "https://slinderman.github.io/stats305b/lectures/01_distributions.html#fisher-information-matrix",
+      "locator": "Fisher Information Matrix section, zero-mean and negative-Hessian identities",
+      "quote": "The expected value of the score is zero",
+      "files": [
+        {
+          "path": "structured-zero-hunt-20260915/fisher_linderman.html",
+          "sha256": "c5f63559e04cc3d90b22f9ec05b66398789f005e9a7a40a8931ce153df9cf2e5",
+          "bytes": 58986
+        },
+        {
+          "path": "structured-zero-hunt-20260915/fisher_linderman.txt",
+          "sha256": "9c0da0406c32358f305c33f6ac7ed97b2f7bcb58a2e9ad1157cb2548b9b6a849",
+          "bytes": 28116
+        }
+      ],
+      "fit": "Actual density mapped at fixed finite X; local endpoint domination checked; no full-energy sign"
+    },
+    {
+      "title": "Ané-Ledoux, On logarithmic Sobolev inequalities for continuous time random walks on graphs (2000)",
+      "url": "https://pages.stat.wisc.edu/~ane/publis/aneLedoux00.pdf",
+      "doi": "10.1007/s004409900042",
+      "locator": "Section3 proof of Proposition3.1 pp582-583 (3.3), sharpness p585",
+      "quote": "(3.3) is sharp on the function f(x) = x",
+      "files": [
+        {
+          "path": "structured-zero-hunt-20260915/ane_ledoux.pdf",
+          "sha256": "3efee45e54827478d569a11ccbc712a0921e5d26ccfe578ecc3261c5eff1105d",
+          "bytes": 228355
+        },
+        {
+          "path": "structured-zero-hunt-20260915/ane_ledoux.txt",
+          "sha256": "2151af80bef28d073138741de77151fa26ddc0aa137eb9f3ab6edb33e1853093",
+          "bytes": 100441
+        }
+      ],
+      "visual_check": "PDF page11, printed583, rendered and viewed",
+      "fit": "Poisson product-defect example only; theta conditional family not identified with its semigroup"
+    }
+  ],
+  "research_card": {
+    "path": "structured-zero-hunt-20260915/carre_card.md",
+    "sha256": "ccc7066022079531dd6bb258cebea5b0197dd70abd0de17dcdf832591db2f9ad",
+    "bytes": 2511
+  },
+  "parent_checks": [
+    "Z2 direct divergence and compact boundary, complex version by real parts",
+    "Z3 pointwise square and interior rotation with smooth cutoff",
+    "Z4 weighted integration by parts sign",
+    "Z5 conjugation v=f u, derivative plus q, complex square identity",
+    "Z6 direct expansion retains all three correction terms",
+    "Z7 second derivative of normalization; source endpoint remainder pays local dominated derivatives; rho endpoint implies I>0",
+    "CD generator L/2 and Gamma=delta squared/2, Poisson variance tau/2",
+    "Z5 also applies to f0; missing exact V identification and boundary interface explicitly unpaid"
+  ],
+  "outcome": "Exact weighted null-integral sibling; actual-theta information identity; three verified structural dictionaries; no full V sign transfer",
+  "source_sign_progress": false,
+  "actual_theta_negative_V_witness": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "new_proshka_request": false,
+  "next_requirement": "Construct one common source-defined field lift and prove target equality with all q corrections and boundary terms, plus its failure premise on f0.",
+  "scope_limits": [
+    "No numerical theta evaluation, quadrature or finite-rank campaign",
+    "No Lean or canonical proof admission",
+    "No new goal, policy changes, index repair or coauthor request",
+    "Existing theta-layer, null-boundary and local-storage exclusions retained"
+  ],
+  "counter_note": "One bounded owner-requested structured-zero hunt; review and algebra checks are not extra attempts; no source-sign counter reset."
+}

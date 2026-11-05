@@ -1,0 +1,18 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "509270e47ca4b381461abaad8991fa087380a8bd",
+  "candidate_sha256": "44e620868aa41f065310a1744fb10824af2d235024cf32620c4e42b35b0d591a",
+  "report": "docs/Codex/REPORT_2026-09-15_DYADIC_SOURCE_PREFLIGHT.md",
+  "report_sha256": "73d5cc2e7d38a2d5f9134730c728518bef12fe97440ec19a31af822512ba3e4c",
+  "reviewer": "/root/sibling5_check",
+  "verdict": "ACCEPT_SCOPED_DYADIC_SOURCE_IDENTITY_AND_ODD_BLOCK_ZERO_OBSTRUCTION_ONLY",
+  "review_sha256": "6a2aa5668fb03fc2425d78394e487372b00406cd7b7ee82dd9b15898f7f382c8",
+  "review_text": "# Independent review: dyadic source preflight\n\nReviewed candidate SHA256:\n`44e620868aa41f065310a1744fb10824af2d235024cf32620c4e42b35b0d591a`\n\n## Verdict\n\n**ACCEPT_SCOPED_DYADIC_SOURCE_IDENTITY_AND_ODD_BLOCK_ZERO_OBSTRUCTION_ONLY.**\n\nD1 follows from the even/odd gamma-rate split and the duplication identity.\nThe density formula D3 has the correct factor and total mass, and the\nuniform `[1/4,1]` size-biased representation D4 follows directly by\nconditioning.  The all-complex Mellin identity D5, its removable value at\n`p=-1`, and the zero lattice D6 are correct.\n\nAt the original xi centre the zero map in D7--D8 has imaginary part `1/2`.\nThe only real nuisance-zero tilt is `b=-1`, where the xi factor instead\nsamples `xi(i w)`.  Thus no real power tilt can satisfy both requirements.\nThis is a scoped obstruction to treating the odd block as a pre-existing\nreal-zero source; it supplies neither a theta V witness nor a general\nsource-rebuild impossibility or RH claim.\n",
+  "publication_difference": "Only the STATUS line changed after exact-payload independent review.",
+  "parent_check": "D1-D8 derived directly; first two U moments independently reproduced from odd-rate sums.",
+  "source_sign_progress": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "counter_effect": "One dyadic source preflight; old counters unchanged.",
+  "new_proshka_request": false
+}

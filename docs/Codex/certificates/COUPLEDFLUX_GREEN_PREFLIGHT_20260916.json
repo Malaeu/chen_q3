@@ -1,0 +1,21 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "c29f1198f0c4e4613b0eebbe1c401efd459fa8d1",
+  "source_path": "docs/Codex/REPORT_2026-09-15_HYPERBOLIC_SOURCE_COMPENSATION.md",
+  "source_sha256": "feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21",
+  "verdict": "ACCEPT_NATURAL_GREEN_PAIRING_IDENTITY_AND_ITS_LIMITED_FAILURE_ONLY",
+  "candidate_sha256": "f597188296a896887a68e531741281f7683a5dd93e0bc5f15aaec95a75145076",
+  "report_path": "docs/Codex/REPORT_2026-09-16_COUPLEDFLUX_GREEN_PREFLIGHT.md",
+  "report_sha256": "97b0d0e1a37bfac9ecf15f906ecdd4de3e3c0d9a22dde37539a6659de6dd89bd",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "46ec4e0bbb5437f3b7097b6000e9840dcdfb6e5858f23e20f73c473689896728",
+  "review_text": "# Independent review — COUPLEDFLUX Green preflight\n\n- **Reviewed preflight SHA-256:** `f597188296a896887a68e531741281f7683a5dd93e0bc5f15aaec95a75145076`\n- **Reviewed source report SHA-256:** `feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21`\n\n**VERDICT: ACCEPT_NATURAL_GREEN_PAIRING_IDENTITY_AND_ITS_LIMITED_FAILURE_ONLY.**\n\n`G1` follows by rearranging L11. Differentiation gives `G2` with exactly `partial_k L=4(D+a)` and `partial_k B=2`; hence its `2b Z` and `-4(D+a)U` terms have the stated signs. The weighted Lagrange identity `G3` is correct for `w'=2aw`.\n\nAfter integration, `Re int w conj(U)(D+a)U=-|U(0)|^2/2`; substituting it yields `G6` with the displayed right-hand trace and `-2|U(0)|^2`. At `alpha=2,4`, the respective coefficients are `(6,2pi,4pi)` and `(20,8pi,16pi)`. The target relation `G7` has the correct factor and remains absent from the resulting Green balance.\n\nFull-source endpoint decay pays the weighted integrations and parameter differentiation for every fixed finite complex row; no artificial zero trace is introduced. The calculation establishes only that this particular Green pairing retains cross-channel terms and physical traces, rather than a nonnegative bulk norm controlling the target. It neither excludes different coupled pairings nor gives a sign statement for `V` or RH.\n",
+  "parent_check": "Re-derived G1-G7, exact parameter derivatives and X=0 traces. Weighted differentiated tails also follow directly by r2 derivative convolution and its finite exponential moments for lambda<pi.",
+  "scope": "One natural weighted Green pairing at symbolic even alpha and real k; explicit alpha=2,4 at k=0. No impossibility theorem for other coupled fields.",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "numerical_source_checks": 0
+}

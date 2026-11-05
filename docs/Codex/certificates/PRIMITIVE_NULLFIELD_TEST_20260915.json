@@ -1,0 +1,90 @@
+{
+  "scope": "ISOLATED_OWNER_REQUESTED_ANALYTIC_TEST_NOT_CANONICAL_ADMISSION",
+  "source_base": "448b21ae183e73c03a242e604c6b4767bc1f10d1",
+  "report": "docs/Codex/REPORT_2026-09-15_PRIMITIVE_NULLFIELD_TEST.md",
+  "sha256": "32b3f4f061fc3215730a4ad09710252a2c800ed342fc2432c7b59f3d554fb81e",
+  "bytes": 14978,
+  "LF": 305,
+  "input_pins": [
+    {
+      "path": "docs/Codex/REPORT_2026-09-15_STRUCTURED_ZERO_HUNT.md",
+      "sha256": "00ebb01836baa0efa244d01f7ba5c8a64490db5f44673109027ac4e20ff23120"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-09-14_FIRST_ORDER_COMPENSATION_PREFLIGHT.md",
+      "sha256": "758eb21c80cb405fa242bc5e6a6ce38053cbe9edc997752ac01480aa5c6c55e7"
+    },
+    {
+      "path": "docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md",
+      "sha256": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f"
+    }
+  ],
+  "review": {
+    "class": "ADVERSARIAL_READ_ONLY",
+    "reviewer": "/root/sibling5_check",
+    "verdict": "CLEAN",
+    "exact_sha256": "32b3f4f061fc3215730a4ad09710252a2c800ed342fc2432c7b59f3d554fb81e",
+    "draft_sha256": "a62be25ad55cb285143ae6ce7fdc28b625c1471e9c668d90ae2d41ff7a47fc2a",
+    "text": "P1-P12: source domain, complete q corrections and boundary signs correct; V=E+B-D, indefinite B and zero-trace strict defect; excludes only this lift. Final source map distinguishes weighted divergence-square from the classical Dirichlet gradient energy.",
+    "clarification": "Replaced generic finite-energy wording with finite weighted divergence-square energy E_lambda; no mathematical formula changed."
+  },
+  "primary_source": {
+    "author": "Thomas Schmidt",
+    "title": "Calculus of Variations",
+    "version": "2020-03-09",
+    "url": "https://www.math.uni-hamburg.de/en/forschung/bereiche/am/geom-part-differentialgleichungen/dokumente/calcvar.pdf",
+    "sha256": "2a4053647b4d4fcd5318d77bfae9e644e4806429d703e16dca7da08fabd2d4ed",
+    "locator": "Chapter 1, printed pp.4-5, PDF pp.6-7, Theorem (Dirichlet principle) and proof",
+    "quote": "u is weakly harmonic on",
+    "observed": "Full relevant PDF text read; downloaded hash verified; both-page screenshot not established",
+    "fit": "Verified sibling only. Full-gradient energy differs from our weighted divergence-square; source-specific splitting and boundary balance OPEN."
+  },
+  "shelf_queries": [
+    {
+      "query": "tail primitive derivative null Lagrangian boundary energy harmonic extension",
+      "query_sha256": "617f834a2290ce281856509d932ac35c045dbf57ce73efcf5f3dc5d8a6796c18",
+      "status": "INCOMPLETE",
+      "exit_code": 2
+    },
+    {
+      "query": "harmonic replacement Dirichlet principle orthogonal energy decomposition zero trace",
+      "query_sha256": "da3681e8f13025b833b61515609e78f9a3da619d8757cfe3c36b12f04dd4b96f",
+      "status": "INCOMPLETE",
+      "exit_code": 2
+    },
+    {
+      "query": "boundary observability unobservable subspace internal energy port Hamiltonian",
+      "query_sha256": "9ee54630fd690c12cf395119eb3f092bddbba7aad985f0ee7f33ec96bb270eeb",
+      "status": "INCOMPLETE",
+      "exit_code": 2
+    }
+  ],
+  "shelf_note": "All failed q3_docs semantic-index freshness validation; not absence. First call visible tool record only; remaining raw outputs saved externally. No refresh or supplier consumption.",
+  "raw_return_queries_sha256": "b43c4978a329d7a0a25fc1629d75b46916963fcd8efb73d725289ae9e9e27a87",
+  "parent_checks": [
+    "P1 primitive and evenness",
+    "P2 common complex linear map on periodic cylinder",
+    "full theta tail gives all weighted integrability and vanishing far boundary",
+    "P4 cross-product normalization",
+    "P5 lower boundary sign",
+    "P6 independent integration by parts",
+    "P7 all three q terms retained",
+    "P8 full complex pairwise identity",
+    "P9 boundary determinant and analytic non-Gaussian contradiction",
+    "P10-P12 dimension and source translate independence",
+    "Gaussian and f0 controls",
+    "Dirichlet source hypothesis and norm mismatch"
+  ],
+  "outcome": "Explicit primitive field identity plus exclusion of THIS energy-plus-positive-boundary representation. Actual full V sign remains OPEN.",
+  "counter_effect": "One bounded local construction test; source reading, algebra, reviewer clarification and publication are not extra attempts and do not reset source-sign counters.",
+  "source_sign_progress": false,
+  "actual_theta_negative_V_witness": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "proshka": "REQ-2026-09-15-NULLFIELD remains active, exact notice now visible in app summary. Read-only Git fetch still at 448b21ae; no committed response observed. No resend or interrupt.",
+  "validation": {
+    "Lean": "NOT_RUN_ANALYTIC_ONLY",
+    "numerical_sign_sweep": "NOT_RUN",
+    "git_diff_check": "PASS"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "b6951fed83ac2065e7f36ff53f668ef64d36d6fb",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-15_HYPERBOLIC_SOURCE_COMPENSATION.md": "feeb23e50223e5d85b16b8f6f1e83f849a9029f6f9aa8d4f47ad70cd4f5dad21",
+    "docs/Codex/REPORT_2026-09-12_THETA_TN_INFINITY_INTAKE.md": "ae39ab4cbbfae7ad8c04b61dfb9828c6e9efa0247a538da72e4bd3e748de3790",
+    "docs/Codex/REPORT_2026-09-14_GAMMA_RECIPROCITY_BRIDGE.md": "7c641d8a055bffc80fa2ed8d1ff437c1a47d6d0dfe3b82f9fa2533db02bda621"
+  },
+  "candidate_sha256": "a64fa0afdea7a7f1ce20c8f2b6284fc76eff32b114ea4618716b0c158df345a1",
+  "report_sha256": "52fecee7e98bf9fa1fbd00a90ec4b606c7cc2a8688fc5d327a53f4d179dbd535",
+  "review_sha256": "5f8b69d32909897ed70678d1127e79bf9e3d37b2d4749209d13d09e21f84f513",
+  "review_text": "# Independent review — convolution reciprocity rigidity\n\nReviewed candidate: \\`CONVOLUTION_RECIPROCITY_RIGIDITY.md\\`  \nSHA256: \\`a64fa0afdea7a7f1ce20c8f2b6284fc76eff32b114ea4618716b0c158df345a1\\`.\n\n## Verdict\n\n**ACCEPT_SCOPED_INTEGER_SHAPE_AND_SCALE_RECIPROCITY_CLASSIFICATION_ONLY.**\n\nThe result classifies the stated integer convolution-power family. It does\nnot supply an all-family \\(V\\) representation, a \\(V\\)-sign result, or RH.\n\n## Checks\n\nFor the large-\\(t\\) split \\(T_m=G+W\\), exponential tilting at \\(\\pi\\) gives\n\\[\n \\mathbb E e^{\\pi W}=2^m,\\qquad\n \\mathbb E_{\\rm tilt}W=\\frac m\\pi\\sum_{n\\ge2}(n^2-1)^{-1}\n =\\frac{3m}{4\\pi}.\n\\]\nExpansion of the finite polynomial \\((t-W)^{m-1}\\), with the exponentially\ncontrolled omitted tail, gives the stated correction\n\\(-3m(m-1)/(4\\pi t)\\).\n\nThe inverse-Laplace expansion is also correct:\n\\[\n g_m=(-\\partial_a)^m\\ell_a,\\qquad\n g_m(a,t)\\sim\\frac{a^{m+1}}{2^{m+1}\\sqrt\\pi}\n t^{-m-3/2}e^{-a^2/(4t)}\n \\left(1-\\frac{m(m+1)t}{a^2}+O(t^2)\\right).\n\\]\nThe \\(j=0\\) term therefore yields\n\\[\n r_m(t)=C_m t^{-m-3/2}e^{-m^2\\pi/(4t)}\n \\left(1-\\frac{m+1}{m\\pi}t+O(t^2)\\right),\n\\]\nand the displayed gap bounds all \\(j\\ge1\\) terms. The termwise inversion\nargument is sufficient for each fixed integer \\(m\\); it does not silently\nrequire uniformity in \\(m\\).\n\nAfter scaling, equality of exponential rates gives \\(c=2/m\\), equality of\npowers gives \\(\\kappa=5/2\\), and equality of the \\(t^{-1}\\) corrections gives\n\\[\n -(m+1)/(2\\pi)=-3(m-1)/(2\\pi),\n\\]\nhence \\(m=2\\), so \\(c=1\\). At that parameter the leading constants agree,\nand the known exact theta reciprocity supplies the converse.\n\n",
+  "verdict": "ACCEPT_SCOPED_INTEGER_SHAPE_AND_SCALE_RECIPROCITY_CLASSIFICATION_ONLY",
+  "claim": "For m positive integer, c positive and kappa real, q(t)=r_m(t/c)/c obeys q(1/t)=t^kappa q(t) iff m=2,c=1,kappa=5/2.",
+  "proof_scope": "Full square-rate product, complete endpoint tails, every fixed integer shape and positive scale.",
+  "decision_effect": "Changing integer convolution shape or scaling cannot furnish a different TN-infinity source with the exact reciprocal symmetry; higher ladder sources do not inherit it after scaling.",
+  "excluded_generalizations": [
+    "Not a classification of all reciprocal PF densities.",
+    "No claim that joint TN and reciprocity imply V positivity.",
+    "No new negative control with both properties."
+  ],
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "external_search_run": false,
+  "new_proshka_request": false
+}

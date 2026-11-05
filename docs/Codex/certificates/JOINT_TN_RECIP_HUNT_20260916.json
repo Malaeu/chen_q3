@@ -1,0 +1,130 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "a7a67d3853b80dadf20c1a15fa759b35f98e9c74",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-15_RH_ROUTE_AUDIT.md": "0978708a88fb2c4802ed3405b37b427ab6890b46a8ffa688edfe757c4a4fe4e3",
+    "docs/Codex/REPORT_2026-09-16_CRITICAL_TILT_TN4.md": "05a4177547a018e2832107440c9adeeb3fd3f846990be192e0b322ee7f1dc7ce",
+    "docs/routeB_bus/litreview/pdfs/2007.12889.pdf": "e610f7a0de324a610fd24ee9fafa4356e5005a9af811245f016d6c0d791ed3a2"
+  },
+  "candidate_sha256": "ca20cc547fe71adf9e4554c5a6ebfe1a1517b74456256b34f3ea0863f74adc23",
+  "report_path": "docs/Codex/REPORT_2026-09-16_JOINT_TN_RECIP_HUNT.md",
+  "report_sha256": "19d36616dfd4d8996e2e9358410adedeb91605a94bdb5432109a0bf344879db2",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "fb5f9a550485b1efc1df76cb2a46aa562b7c21490f827167e1e2a5c061ae6285",
+  "review_text": "# Independent review — joint TN-infinity and reciprocity hunt\n\nReviewed candidate: `JOINT_TN_RECIP_HUNT_INTAKE.md`  \nSHA256: `ca20cc547fe71adf9e4554c5a6ebfe1a1517b74456256b34f3ea0863f74adc23`.\n\n## Verdict\n\n**ACCEPT_SCOPED_SOURCE_CLASSIFICATION_AND_OPEN_JOINT_IMPLICATION_ONLY.**\n\nThe intake accurately classifies the result as a source-mapping filter.  It\ndoes not provide a new supplier for the original all-finite-complex (V)\nsign, a negative (V) row, or an RH conclusion.\n\n## Primary-source check\n\nI byte-verified the BGKP PDF and text extract:\n\n- PDF `5269524e7ad674f1484655c860f360caad5819c4dfa8658c5e0f4c28cc656259`;\n- text `5488fef6d2a80eeba6703143df362f56f2175a3acd675e5313493679dcdce867`.\n\nI visually inspected printed pp. 38 and 41 (with the adjacent pp. 37--40\ntext).  Theorem 8.2 has exactly the stated scope: for a Pólya-frequency\nfunction it describes, up to an exponential factor, the reciprocal of the\nbilateral Laplace transform as the restriction of an entire genus-zero-or-one\nfunction with real zeros.  It therefore applies to the additive one-sided\n(Lambda_0=r1_{(0,infty)}), whose reciprocal transform has zeros\n(-pi n^2), and does not locate zeros of the Mellin transform (M).\n\nThe page-41 proof of BGKP Theorem 8.5 first makes\n((s+b)^{b+1}) entire only when (b) is integral.  That fact alone leaves\ninteger (b>1); Lemma 8.4 is indeed the required additional input that\nexcludes those powers.  The intake states this accurately.\n\nI also byte-verified and visually inspected Groechenig Theorem 1(i), PDF\n`e610f7a0de324a610fd24ee9fafa4356e5005a9af811245f016d6c0d791ed3a2`.\nIts Laguerre--Pólya product supports the Gaussian conclusion from a\nzero-free (Psi); the attribution is correctly to Groechenig rather than\nsolely BGKP.\n\n## Mathematical mapping and limits\n\nThe substitutions are correct:\n[\n mathcal B{Lambda_5}(z)\n =int_{mathbb R}e^{-zu}e^{5u/4}r(e^u),du\n =M(5/4-z),\n]\nand (r(1/t)=t^{5/2}r(t)) makes (Lambda_5) even.  This remains a nonlinear\nlogarithmic pullback/weight, whereas the proved TN-infinity statement is for\nthe difference kernel (r(u-v)).  No cited theorem bridges it to\n(Lambda_5(u-v)).\n\nThe Gaussian contradiction for the hypothetical log-space PF-infinity\nproperty is correctly presented as an already established obstruction, not\nas a statement about zero locations.  The cited critical-tilt TN4 result\nlikewise concerns multiplication of one fixed density, not BGKP's universal\npost-composition operation.  The intake keeps the reciprocal-Laplace zeros,\nMellin zeros, and the original (V) consumer distinct.\n\nThe V2 card checksum matches\n`75c6ec640b856077c5ca4cf019537ba84fa8597c0026b81649d60a4650982a6b`\nand is used only as provenance.  No correction required.\n\n",
+  "verdict": "ACCEPT_SCOPED_SOURCE_CLASSIFICATION_AND_OPEN_JOINT_IMPLICATION_ONLY",
+  "brief_sha256": "b39a458e19614210c9d811462e0b730e0450b39ed4535c5604f69f92082c9765",
+  "brief_text": "# Bounded joint-source mechanism hunt\n\nBase: 6269c6c024441e254983c8ea83136798cbf7fe9e.\nOwner: current full-V goal in isolated gamma-reciprocity worktree only.\nSTATUS: SOURCE_PINNED_EXPLORATORY_BRIEF.\nCONSUMPTION: INCOMPLETE_NO_CONSUMABLE_TARGET (canonical exact edge unbound).\n\nQuestion: does a published mechanism use additive total positivity together\nwith weighted reciprocal symmetry to control a Mellin transform's zeros,\nor a quadratic form after the logarithmic change of variable? The current\nraw finite approximants have off-edge zeros. Exact Euler-product recovery\npays only Re(s)>3/2. Rephrasing zero-freeness on Re(s)>5/4 is not a mechanism.\n\nFull source, without finite truncation:\nT=sum_(n>=1) Gamma(2,1)/(pi*n^2), r=density(T),\nLaplace(r)(q)=[sqrt(pi*q)/sinh(sqrt(pi*q))]^2,\nr(1/t)=t^(5/2)r(t),\nPhi(X)=exp(5X/2)r(exp(2X)), f=Phi/||Phi||_2,\nM(s)=integral t^(s-1)r(t)dt=2*xi(2s-2).\nr extended by zero on t<=0 is additive TN-infinity (translation kernel).\nDesired original V(x,y)=integral_0^infinity(2X+x+y)f(X+x)f(X+y)dX\nis PSD for every finite complex row with nodes in I=(-log(2)/2,0).\nA proved independent zero-free mechanism for M on Re(s)>5/4 also suffices.\n\nExisting report serving as detailed source brief:\ndocs/Codex/REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md R2-R7,\nSHA256 3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a.\nAdditional bounds/interface:\ndocs/Codex/REPORT_2026-09-16_EULER_HALFPLANE_RETURN.md S1-S4,\nSHA256 07adf2436da864e5be5257ebf928734ea7a4c5ae84066b20ae0219819da3755c.\nFull sign consumer:\ndocs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md,\nSHA256 1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282.\n\nNegative control: g0(X)=exp(-X^2)-exp(-2X^2)/4 has negative four-node V.\nr0(t)=t^(-5/4)g0(log(t)/2), normalized to mass 1, is positive and reciprocal,\nbut is NOT additive TN2: its log is eventually strictly convex in t.\nThus reciprocity alone fails. Finite raw r_N are additive TN-infinity but\nnot reciprocal, and all sufficiently large raw M_N have off-edge zeros.\nThe joint premise remains open; neither separate control refutes it.\n\nTwo search rewrites, UNVERIFIED as sign mechanisms:\n1. Additive variation-diminishing convolution plus an involution conjugated\n   by an Esscher weight, asking whether its Mellin image has a common Gram\n   or a non-cancellation representation.\n2. Positive spectral determinant / generalized gamma convolution with a\n   size-biased reciprocal law; seek a proved zero theorem beyond its ordinary\n   Laplace domain, not merely infinite divisibility in the wrong variable.\n\nNew dictionaries (bounded):\n- Polya frequency Mellin transform weighted inversion;\n- self reciprocal generalized gamma convolution size bias zeros;\n- Schoenberg variation diminution logarithmic change theta.\n\nReconcile GAMMA_RECIPROCITY_RECEIPTS_2026-09-14.json and\nSPACE_SIBLING_HUNT_20260915.json before retrieval. Existing Brownian/Pitman-Yor,\nBessel geometric N=1, full-source scalar ladder, Gram, Krein and Schur\nconstructions are not new leads. Prior searches reported index freshness\nfailure and mgrep auth/credit errors, not absence; preserve those statuses.\nRun one new registered ask.sh query per dictionary, saving exact receipts.\nInspect named local primary sources first. Then at most three external\nqueries and at most two promising primary bodies if the shelf is insufficient.\nReturn source hashes, short quotes with locators, exact hypothesis maps,\nand either a concrete bounded new test or precise reason no supplier emerged.\nNo paid calls, shared writes, index refresh, descendants, numerical zero\nscans, Proshka dispatch or canonical admission. Local evidence may be written\nonly as JOINT_TN_RECIP_HUNT_* under this staging directory.\n",
+  "retrieval_evidence": {
+    "JOINT_TN_RECIP_HUNT_CARD.md": {
+      "sha256": "21201c27b50c79227ab1a8e14a2c7834cadd28857c27514f7840a4f77e080d16",
+      "bytes": 6016
+    },
+    "JOINT_TN_RECIP_HUNT_CARD_V2.md": {
+      "sha256": "75c6ec640b856077c5ca4cf019537ba84fa8597c0026b81649d60a4650982a6b",
+      "bytes": 7752
+    },
+    "JOINT_TN_RECIP_HUNT_SOURCE_BELTON_2021_ARXIV.pdf": {
+      "sha256": "5269524e7ad674f1484655c860f360caad5819c4dfa8658c5e0f4c28cc656259",
+      "bytes": 654697
+    },
+    "JOINT_TN_RECIP_HUNT_SOURCE_BELTON_2021_ARXIV.txt": {
+      "sha256": "5488fef6d2a80eeba6703143df362f56f2175a3acd675e5313493679dcdce867",
+      "bytes": 204172
+    },
+    "JOINT_TN_RECIP_HUNT_SOURCE_BELTON_2022.pdf": {
+      "sha256": "604a519160ffe7eccd49e4542135398ed6359b32285125809159e58feeef21d8",
+      "bytes": 27172
+    },
+    "JOINT_TN_RECIP_HUNT_SOURCE_SCHOENBERG_1947.pdf": {
+      "sha256": "08d0388c9569ad6b83b7a3b8ed2b9b8cc95b0c89bd7dc7efa54f70f1f106a229",
+      "bytes": 1817
+    },
+    "JOINT_TN_RECIP_HUNT_ask-1.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "JOINT_TN_RECIP_HUNT_ask-1.stdout": {
+      "sha256": "81b18f839476d6cf9774280e7a8341f7a1c18f4f5f512416a7db9822a248fef3",
+      "bytes": 10530
+    },
+    "JOINT_TN_RECIP_HUNT_ask-2.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "JOINT_TN_RECIP_HUNT_ask-2.stdout": {
+      "sha256": "957ecb20fd9cc71a830e680eb02efc97cc4f00c2da5e4505fd04daba2c6df3bc",
+      "bytes": 12933
+    },
+    "JOINT_TN_RECIP_HUNT_ask-3.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "JOINT_TN_RECIP_HUNT_ask-3.stdout": {
+      "sha256": "c79b9354976019e5fc5f99f626fe081fe96ed1f435c80e56b1fd73bcf78cae2d",
+      "bytes": 9633
+    },
+    "JOINT_TN_RECIP_HUNT_kb-1.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "JOINT_TN_RECIP_HUNT_kb-1.stdout": {
+      "sha256": "eee106b408e69198100033c78bbf0ef887ca6601dad0adb9e396ab8486b0eaf9",
+      "bytes": 79
+    },
+    "JOINT_TN_RECIP_HUNT_kb-2.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "JOINT_TN_RECIP_HUNT_kb-2.stdout": {
+      "sha256": "88ea47a3ce30816d21a2276ec6407b7a0d54192010d9faa5cae94091d4b678d0",
+      "bytes": 89
+    },
+    "JOINT_TN_RECIP_HUNT_kb-3.stderr": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "JOINT_TN_RECIP_HUNT_kb-3.stdout": {
+      "sha256": "d799ba4c6f9da1e7e5e55eadedb5593fe4d549e0daafdf94fefa5baa03c86967",
+      "bytes": 84
+    },
+    "JOINT_TN_RECIP_HUNT_mgrep-1.stderr": {
+      "sha256": "0576b456def685b289bea48d69d7e3729f816f25cc166b6f115f73f3483d10fb",
+      "bytes": 92
+    },
+    "JOINT_TN_RECIP_HUNT_mgrep-1.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "shelf_status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+  "mgrep_status": "FAILED_403_DEPLETED_CREDITS_NOT_ABSENCE",
+  "verified_new_primary": {
+    "url": "https://arxiv.org/pdf/2006.16213v5",
+    "sha256": "5269524e7ad674f1484655c860f360caad5819c4dfa8658c5e0f4c28cc656259",
+    "read_scope": "Printed pp37-38 Definition8.1/Theorem8.2; pp40-41 end Lemma8.4 and Theorem8.5 proof; p41 visually checked."
+  },
+  "reused_primary": {
+    "url": "https://arxiv.org/pdf/2007.12889v1",
+    "sha256": "e610f7a0de324a610fd24ee9fafa4356e5005a9af811245f016d6c0d791ed3a2",
+    "read_scope": "Printed pp1-3; Theorem1(i) and Laguerre-Polya product p2 visually checked."
+  },
+  "parent_corrections": [
+    "Known false log-PF premise is not an unpaid potential supplier.",
+    "Precisely attribute Gaussian LP product to Groechenig Theorem1 and its displayed product.",
+    "Fractional-pole test excludes noninteger exponents; Lemma8.4 additionally excludes larger integers.",
+    "Distinguish known joint premises from their unresolved implication to the target."
+  ],
+  "new_applicable_sign_supplier": false,
+  "log_PF_intermediary": "ALREADY_REFUTED",
+  "critical_tilt_TN_infinity_intermediary": "REFUTED_BY_ACCEPTED_TN4_REPORT",
+  "unweighted_TN_and_reciprocity": "BOTH_KNOWN",
+  "joint_implication_to_target": "OPEN",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proshka_request": false,
+  "global_absence_claim": false
+}

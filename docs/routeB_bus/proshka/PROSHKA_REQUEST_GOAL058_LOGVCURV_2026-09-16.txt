@@ -1,0 +1,1729 @@
+REQUEST_ID: REQ-2026-09-16-LOGVCURV
+BOUNDARY_ID: GOAL058_FULL_INTEGRATED_V_LOG_CURVATURE_ENTRANCE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+SOURCE_BASE: 15c6ef56f190975eb945ccec50e53a9b44d2a74b
+DELIVERY_CHAT: 6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+1. One unresolved source-specific entrance, not a replacement target
+
+Decide analytically whether the mixed logarithmic curvature of the WHOLE
+original V is a positive semidefinite kernel on every finite complex row:
+
+ C(x,y)=partial_x partial_y log V(x,y)
+       =[V V_xy-V_x V_y]/V^2, x,y in I=(-log(2)/2,0).     (C1)
+
+This exact candidate was left unpaid in SCHUR_REPEATABILITY, sections 6,8.
+It was not rejected by the later layer-Gram obstruction. Test it on the
+actual full theta source, not on a deformation. A proof of all-row C>=0
+would supply the already proved common Gram construction of V, so there
+is a complete downstream implication to the original full sign.
+C>=0 is a STRONGER sufficient entrance, not claimed necessary for V>=0.
+A negative C row rejects only this entrance; it is not a negative V row.
+The full goal remains original V>=0 for all finite complex families.
+
+Why this bounded test now: the just-accepted RESOLVENTGRAM positive image
+cannot preserve V's reciprocal diagonal cancellation. C1 is formed AFTER
+the full integral and its cancellation; it does not replace V by that
+image or by individual positive layers. This avoids that object mismatch,
+but no sign of C follows automatically. No new mathematical novelty is
+claimed for C1, its conditional implication, or its Gaussian sibling.
+
+2. Exact full source and consumer
+
+Use the complete positive density
+ r(t)=sum_(n>=1)(4*pi^2*n^4*t-6*pi*n^2)*exp(-pi*n^2*t),
+ L(s)=[sqrt(pi*s)/sinh(sqrt(pi*s))]^2,
+ r(1/t)=t^(5/2)r(t),
+ Phi(x)=exp(5*x/2)r(exp(2*x)), A=||Phi||_2, f=Phi/A.
+The entire summand series, reciprocal identity, positivity and evenness of
+f, and differentiated double-exponential tails are the pinned inputs.
+The additive TN-infinity law of r and exact square rates are available
+source facts, not automatic sign-preserving rules under a logarithm.
+
+ V(x,y)=integral_0^infinity (2t+x+y)f(t+x)f(t+y)dt.        (C2)
+
+V is strictly positive as a scalar at every real pair, real analytic,
+and simultaneously reflection invariant. Its diagonal is exactly
+ D(x)=2 integral_|x|^infinity u f(u)^2du,
+ D'(x)=-2x f(x)^2.                                      (C3)
+The full-source derivative formulas for V_x,V_y,V_xy are S14 in the
+embedded SCHUR_REPEATABILITY report. Preserve their weight terms.
+Repeated nodes combine; all coefficients may be complex.
+
+The actual terminal statement is V[c]>=0 for every finite family. The
+pinned FULL_SIGN_TRANSFER_AUDIT gives its equivalence to the all-test Weil
+criterion; ANALYTIC_POSITIVITY_PROPAGATION gives the all-rank passage
+from the original open I to the global real node domain. No finite-rank
+check or local scalar derivative sign can replace these quantifiers.
+
+3. The complete sufficient bridge is already proved
+
+For an anchor a in I define
+ H_a(x,y)=log[V(x,y)V(a,a)/(V(x,a)V(a,y))],
+ w_a(x)=V(x,a)/sqrt(V(a,a)).
+Then H_a=int_a^x int_a^y C(u,v)du dv, with oriented integrals.
+IF C is PSD for every finite complex row, it defines a common Hilbert
+feature e_u and h_x=int_a^x e_u du. The exponential tensor feature gives
+
+ V(x,y)=w_a(x)w_a(y)exp(<h_x,h_y>)=<Psi_x,Psi_y>.         (C4)
+
+All Schur steps are then actual orthogonal projections. The proof covers
+complex coefficients and zero pivots, and requires no additional property
+after C>=0 is supplied. SCHUR_REPEATABILITY S5-S11 proves this bridge and
+the equivalence of C>=0 with infinite divisibility of the KERNEL V.
+That is distinct from infinite divisibility of the positive source law.
+Do not repropose C4 as though it had proved C1.
+
+4. One bounded analytic attempt and discriminators
+
+Seek a source-defined positive feature, measure, or full-row inequality
+for the exact C1. Exploit the full theta identities jointly if useful.
+It must be independent of RH, V positivity or a presumed square root of C.
+A theorem imported from another field must have its primary statement
+read, hypotheses mapped, and normalization/quantifiers checked.
+
+Start with the cheapest necessary analytic conditions before constructing
+a large field. The ordinary diagonal is already known nonnegative from
+RAW2; that is not new sign progress. A negative determinant or derivative
+quadratic form of C must involve the COMPLETE integrated V and controlled
+tails. If using derivatives at a limit point or nodes outside I, prove the
+exact finite-difference or analytic-propagation step back to finite rows
+in I; do not silently transfer the same rank or a complex product domain.
+A purely analytic existence witness is acceptable with a strict margin;
+do not invent numerical node values or rank bounds.
+
+Keep analysis first: no numerical quadrature, matrix/rank sweep, numerical
+zero search or finite scan is assigned. A positive finite condition does
+not justify an all-rank conclusion. If the first cheap conditions pass,
+work on a genuinely all-rank mechanism, not an endless ladder of sizes.
+If an actual-source obstruction is obtained, stop this strengthened
+entrance and state exactly what remains possible for the full V.
+
+Explicit outside-class control: f0(u)=exp(-u^2)-exp(-2u^2)/4 is even,
+positive and squared-coordinate log-concave, yet its V has a rigorously
+negative four-node family. Hence its C cannot be PSD on I. Any proposed
+general theorem based only on those generic source properties is false.
+The complete proof and finite-difference conversion are embedded in RAW2.
+This control does not satisfy all actual theta arithmetic assumptions.
+
+5. Reconciled exclusions and search state
+
+- RESOLVENTGRAM 9051998d is independently accepted in intake15c6ef56:
+  the named normalized Mellin/Cauchy Gram, every fixed positive scalar
+  multiple and any PSD correction cannot give exact K2. Not every map.
+- Stationary positive half-line tail Grams have nonincreasing diagonal;
+  original V has strictly increasing diagonal on negative I. No such
+  exact identity works there. This filter does NOT reject C4's general
+  node-dependent feature map.
+- LAYER_GRAM_TEST excludes PSD of every small fixed cancellation layer.
+  Its C_q=partial_x partial_y[(q(x)+q(y))/(x+y)], q=f'/f,
+  is NOT the present C=partial_x partial_y log V. Do not import that KILL.
+- The exp(xy) sibling's DIVIDED SCHUR RESIDUAL loses infinite divisibility;
+  that excludes demanding the stronger property after every step, not
+  C>=0 once at entrance. C4's Gram invariant survives every projection.
+- MELLINEDGE, log-PF, fractional additive-PF tilts, and the sinc-squared
+  source average remain excluded in their published scopes. None decides C1.
+- The earlier mixed logarithmic curvature of the odd-sector K_- and
+  scalar IC/ODD2 statements are different objects/quantifiers.
+- Linux's decision to defer a numerical C_V determinant scan is preserved:
+  this is a source-specific analytic test, with no numerical campaign.
+
+The primary Horn kernel-divisibility theorem and its real-interval direct
+proof are already in SCHUR_REPEATABILITY. Reuse that verified mechanism;
+a new hunt for its name or a generic covariance theorem is unnecessary.
+Read the attached complete pinned context before deciding the theorem.
+
+6. Required response and scoped publication
+
+Return one operative TRY_* or KILL_* with exact scope:
+- If successful: a complete analytic proof of all finite C rows, followed
+  by C4 and the pinned transfer, with every dependency explicit and
+  independent verification still pending. No self-certified RH claim.
+- If false: a strict actual-source negative C quadratic form (or a proved
+  finite-row existence argument), specifying domain, coefficients/limits,
+  full-source bounds and why it does not refute V or RH.
+- If unresolved: name the exact attempted mechanism and first unpaid
+  implication. A formula for C, another residual or a restatement of C>=0
+  is NO SIGN DELTA. Do not weaken the goal or invent an automatic next task.
+
+Include source pins, proof status PAPER_CANDIDATE_PENDING_INDEPENDENT_REVIEW,
+ACTUAL_C_SIGN, ORIGINAL_V_SIGN, negative_original_V_witness, all finite
+complex quantifiers, and a parent-review checklist. Treat the worktree's
+canonical HOLD as unchanged: isolated research only, no canonical control,
+Lean axioms, goal counters or PX_RH_CLAIM edits.
+
+Publish only
+ docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_LOGVCURV_2026-09-16.md
+on the existing codex_mac/gamma-reciprocity-20260914 branch, after fresh
+HEAD and preimage checks. Do not force, overwrite others, or change the
+request. Return one short line: full commit | exact response path | scoped
+verdict. Verify response bytes and Git blob after publication. If publication
+fails, retain the full response and report the exact delivery blocker.
+
+CONTEXT_SHA256: a448e6ba5920b4e98f823718f2f4185f39b78c464273f4f1b830dc70e7276463
+CONTEXT_BYTES: 73998
+
+BEGIN_PINNED_CONTEXT
+# PROSHKA EVIDENCE PACK
+Generated: 2026-09-16 22:45:54
+Repo: /Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/gamma-reciprocity-worktree
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## codex_mac/gamma-reciprocity-20260914
+
+
+## Git log
+
+15c6ef56 [CODEX_MAC][gamma-reciprocity] Accept resolvent map obstruction and diagonal filter
+
+
+## File: docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md
+
+# Repeatable compensation: the invariant is a proved Gram representation
+
+STATUS: ACCEPTED_PAPER_CONDITIONAL_BRIDGE_AND_PRESERVATION_COUNTEREXAMPLE.
+SOURCE_BASE: 8ec0ed1cfaf2de5e394ebd94679fe300c3e24015.
+OWNER_REQUEST: repeat positive-square extraction while preserving the residual property.
+SCOPE: isolated paper; INCOMPLETE_NO_CONSUMABLE_TARGET (canonical edge unbound).
+ACTUAL_THETA_NEW_SIGN_RESULT: NONE. ACTUAL_THETA_NEGATIVE_WITNESS: NONE.
+FULL_V / IC / ODD2 / RH: OPEN. PX_RH_CLAIM: NOT_MADE.
+
+## 1. Pinned input and the exact obligation
+
+Input: REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md, SHA256
+51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f,
+R1--R7 (all raw pairs), R9--R13 (non-theta control), R15 (Schur residual).
+Discovery brief: BRIEF_2026-09-14_SCHUR_REPEATABILITY.md, SHA256
+d0716c67a6afe646ca7abe8ff2f007ed55cff2e5e962629fba3aa8266f9c7253.
+
+Keep f=Phi/||Phi||_2, the FULL theta source, and I=(-log(2)/2,0).
+
+    V(x,y)=int_0^infinity (2t+x+y) f(t+x)f(t+y) dt,
+    S_a(x,y)=V(x,y)-V(x,a)V(a,y)/V(a,a).                    (S1)
+
+All finite complex rows are required. R7 pays positive pivots of size one
+and positive diagonal S_a(x,x) for x!=a; it does not pay PSD of S_a.
+The first three-node obligation is
+
+    S_a(x,x) S_a(y,y)-|S_a(x,y)|^2 >= 0.                   (S2)
+
+The determinant of the original three-node matrix is V(a,a) times S2.
+No new proof of S2 for theta is claimed here.
+
+## 2. Literal repetition of the old source formula is not the invariant
+
+S_a(a,y)=S_a(x,a)=0 exactly. Every kernel made by the original V formula
+from a strictly positive even rapidly decreasing source is strictly positive
+at EVERY real pair by the exact cancellation R2 in the pinned report.
+Thus S_a on the whole interval cannot literally be another kernel of that
+same positive-source form. This excludes only literal preservation, not a
+gauge factor, division by anchor zeros, a different feature space, or PSD.
+
+For any C2 kernel S with S(a,y)=S(x,a)=0, the fundamental theorem of calculus
+with oriented integrals gives
+
+    S(x,y)=(x-a)(y-a) T_a(x,y),
+    T_a(x,y)=int_0^1 int_0^1 S_xy(a+s(x-a),a+t(y-a)) ds dt. (S3)
+
+T_a extends continuously over the anchor. S is PSD iff T_a is PSD on I:
+away from a use diagonal congruence by x-a; include a by continuity and
+limits of nodes. This is a useful exact division but supplies no sign by
+itself. It is the divided-kernel/Christoffel dictionary, not a claim of an
+orthogonal-polynomial realization for our source.
+
+The useful repeatable invariant is instead a PROVED common Hilbert-space
+Gram representation. Once it is constructed independently, finite orthogonal
+projection preserves it. Sections 3--5 give one precise sufficient entrance.
+
+## 3. A source-readable logarithmic entrance (conditional theorem)
+
+Let J be a real open interval and K:JxJ->(0,infinity) be symmetric and C2.
+Define, WITHOUT assuming K is PSD,
+
+    C_K(x,y)=partial_x partial_y log K(x,y),
+    H_a(x,y)=log[K(x,y)K(a,a)/(K(x,a)K(a,y))],
+    w_a(x)=K(x,a)/sqrt(K(a,a)).                             (S4)
+
+Theorem: if C_K is a PSD kernel for all finite complex rows on J, then K
+is PSD, its Schur residuals have explicit Gram representations, and every
+finite family admits repeated square extraction, including zero pivots.
+
+Proof. The double fundamental theorem gives
+
+    H_a(x,y)=int_a^x int_a^y C_K(u,v) du dv.                (S5)
+
+Build the real pre-Hilbert space from formal symbols e_u with bilinear
+form <e_u,e_v>=C_K(u,v), quotient its zero-norm subspace, and complete.
+This construction uses the assumed PSD of C_K, NEVER an assumed PSD of K.
+Continuity of C_K implies u -> e_u is norm-continuous, so h_x=int_a^x e_u du
+exists on each compact segment. Oriented integrals cover both sides of a.
+Then H_a(x,y)=<h_x,h_y>, hence H_a is PSD.
+
+In the Hilbert direct sum of tensor powers, set
+
+    E(h)=(1,h,h^(tensor 2)/sqrt(2!),h^(tensor 3)/sqrt(3!),...),
+    Psi_a(x)=w_a(x) E(h_x).                                (S6)
+
+The norm series is sum ||h||^(2n)/n!=exp(||h||^2), hence converges.
+The inner product series is exp(<h_x,h_y>). Consequently
+
+    <Psi_a(x),Psi_a(y)>=w_a(x)w_a(y) exp H_a(x,y)=K(x,y).   (S7)
+
+At the anchor h_a=0 and Psi_a(a)=sqrt(K(a,a))(1,0,0,...).
+Removing precisely that constant component gives
+
+    S_a(x,y)=w_a(x)w_a(y) [exp H_a(x,y)-1]
+            =<w_a(x) E_+(h_x),w_a(y) E_+(h_y)>,            (S8)
+
+where E_+ omits degree zero. This is an exact compensation of the whole
+mixed contribution, not a deletion of a signed term. Complexify the real
+Hilbert space for arbitrary complex coefficients. QED for the first step.
+
+## 4. Why the rest of the finite family is then paid
+
+More generally suppose an independently constructed map Psi already satisfies
+K(x,y)=<Psi(x),Psi(y)>. After anchors A, let P_A be the orthogonal projection
+onto the span of their feature vectors and R_A(x)=(1-P_A)Psi(x). Then
+
+    K_A(x,y)=<R_A(x),R_A(y)>.                              (S9)
+
+For the next node b put p=||R_A(b)||^2. If p>0, subtract its orthogonal
+component from each R_A(x). For coefficients z at b and c_i at the other nodes,
+
+    ||z R_A(b)+sum_i c_i R_A(x_i)||^2
+      =p |z+sum_i c_i K_A(b,x_i)/p|^2
+        +||sum_i c_i [R_A(x_i)-R_A(b)K_A(b,x_i)/p]||^2.    (S10)
+
+The inner product is conjugate-linear in its first argument. The new kernel
+is exactly K_A(x,y)-K_A(x,b)K_A(b,y)/p. If p=0 then R_A(b)=0, so the entire
+row and column vanish and that node contributes nothing; skip it. After at
+most N positive-pivot eliminations a family of N nodes is exhausted.
+
+For a pre-existing UNKNOWN-sign kernel, a zero diagonal alone does NOT allow
+this skip. It is legal here only because S9 has already been proved.
+The post-projection vectors need not retain the exponential form S6.
+What survives is their common positive Hilbert inner product.
+
+## 5. The logarithmic entrance is stronger than the original target
+
+For positive C2 K, the following are equivalent on J:
+
+    C_K PSD;
+    log K conditionally PSD (rows whose coefficients sum to zero);
+    K(x,y)^tau PSD for EVERY real tau>0.                   (S11)
+
+Proof of the needed equivalences is independent of complex-domain analytic
+continuation: C_K PSD implies H_a PSD by S5, and exp(tau H_a) is Gram by S6
+with sqrt(tau)h, so K^tau is PSD after positive rank-one scaling.
+Conversely K^tau PSD implies log K conditionally PSD by tau->0 on each
+fixed finite zero-sum row. Conditional PSD implies H_a PSD by adjoining a
+with coefficient minus the sum of the other coefficients. Applying paired
+finite differences to the PSD kernel H_a and taking their C2 limit gives
+partial_x partial_y H_a=C_K PSD.
+
+S11 is called infinite divisibility of a KERNEL. It is not the previously
+known infinite divisibility of the positive-variable source law, and is not
+transported through its logarithm, tilt, convolution or truncation for free.
+It implies PSD of K, but PSD of K alone does not imply S11. Therefore a
+failure of this entrance would not refute positivity of V or the user's
+broader compensation idea.
+
+A fully worked sibling: K(x,y)=exp(xy), a=0. Then C_K=1, h_x=x, and S6 is
+(explicitly) (1,x,x^2/sqrt(2!),...). All finite families and all their projected
+remainders are PSD. This is a KERNEL sibling, not the V produced by a Gaussian
+source f (that different V has rank one in the prior report).
+
+But even for this sibling, demanding the logarithmic entrance after every
+step is too strong. Its divided residual is
+
+    R(x,y)=(exp(xy)-1)/(xy), with R=1 at xy=0,
+    R(x,y)=int_0^1 exp(txy) dt.                             (S12)
+
+It is a positive-valued PSD kernel. Put z=xy. Elementary series division,
+or exp(z/2)*sinh(z/2)/(z/2), gives
+
+    log R=z/2+z^2/24-z^4/2880+O(z^6),
+    C_R=1/2+xy/6-(xy)^3/180+O((xy)^5).                    (S13)
+
+Hence partial_x^3 partial_y^3 C_R(0,0)=-1/5<0. A PSD smooth kernel has
+nonnegative diagonal derivative forms, obtained as limits of finite
+quadratic forms of third differences. Thus C_R is not PSD on ANY neighborhood
+of 0, and R is not infinitely divisible there. K is infinitely divisible,
+yet its divided Schur residual need not be. The point 0 can be translated
+into I for this kernel-only control. No actual theta counterexample is used.
+
+## 6. Exact preflight on the unchanged theta source
+
+All values V(x,y)>0 by pinned R2, so log V is well-defined. On compact
+node intervals, the pinned full-source bounds justify differentiation under
+the integral. With u=t+x, v=t+y, w=2t+x+y, the proposed supplier is exactly
+
+    V_x=int_0^infinity [f(u)f(v)+w f'(u)f(v)] dt,
+    V_y=int_0^infinity [f(u)f(v)+w f(u)f'(v)] dt,
+    V_xy=int_0^infinity [f'(u)f(v)+f(u)f'(v)+w f'(u)f'(v)] dt,
+    C_V=(V V_xy-V_x V_y)/V^2.                              (S14)
+
+Normalization f->c f scales V by c^2 but leaves C_V and H_a unchanged;
+the weights w_a in S4 retain the correct normalization in the Gram formula.
+There is no discarded endpoint or infinite-tail term in S14.
+
+What is already paid? For y=x+h, the RAW2 result gives
+
+    log[V(x,x)V(y,y)/V(x,y)^2]=C_V(x,x)h^2+o(h^2)>=0,
+    hence C_V(x,x)>=0.                                    (S15)
+
+Strict RAW2 does not by itself make this limit strictly positive. Nor does
+S15 imply PSD of C_V. The first unproved necessary comparison for the new
+entrance is
+
+    C_V(x,x)C_V(y,y)-C_V(x,y)^2>=0  for all x,y in I.        (S16)
+
+Even S16 for all pairs would not pay the all-rank supplier C_V PSD.
+No new numerical sign search or symbolic evaluation of the full theta
+series is claimed in this report.
+
+The existing f0/f_delta controls in pinned R9--R13 explicitly discriminate
+the needed hypothesis: because their V has a negative finite row in I,
+S11 and the proved implication force C_(V0), respectively C_(Vdelta), NOT
+to be PSD on I. These controls nevertheless satisfy squared-coordinate
+strict log-concavity and have all RAW2 forms positive. Thus the new supplier
+cannot be inferred from those generic hypotheses. This is a logical
+consequence of an already proved control, not a located negative row of C_V.
+
+## 7. Semantic return: what the source literature actually supplies
+
+The three dictionaries were (i) innovations/conditional covariance/Schur,
+(ii) divided residual/Christoffel, (iii) logarithmic curvature/infinite
+divisibility. Read local SL20_ALIAS_HUNT_USAGE_CARDS.md and the Toeplitz
+CARD 6 in CF_TOEPLITZ_FORMULA_CARDS.md first. The latter starts from an
+already positive measure/Toeplitz form; it supplies no such representation
+for V. The former distinguishes infinite divisibility of the source law
+from kernels, and reciprocal-xi PF statements from the actual theta source.
+No previously rejected source-PF route is reopened.
+
+Registered ask.sh query, once:
+"Schur complement innovations Christoffel divided kernel Schoenberg infinite divisibility".
+Query SHA256 1dbbd9b138bfe7910a6fdd4b822bd093847d2fe85321e372b6bc5365d1a37e77.
+Exit 2: ASK_STATUS INCOMPLETE, q3_docs semantic-index freshness validation
+failed. Local Schur hits are generic algebra/other consumers. Tool display
+was truncated; no byte-exact full raw-output receipt is claimed. No rerun,
+index repair or absence inference. mgrep's previously observed expired-token
+failure was not retried. Available web search was used for primary sources.
+External stopping condition: verify this exact mechanism and its hypotheses;
+no claim of exhaustive search. Source bytes/hashes/read locators are in the
+companion receipt JSON; cited PDF pages were also rendered and read.
+
+A. Roger A. Horn, Schlicht mappings and infinitely divisible kernels,
+Pacific J. Math. 38 (1971), 423--430.
+https://msp.org/pjm/1971/38-2/pjm-v38-n2-p13-p.pdf
+Read printed p423 and Lemmas 8--9, pp426--427.
+Short quote, Lemma 8: "conditionally positive definite".
+Mapping: Horn's centered kernel is H_a of S4 after replacing his H by
+log K. His integral-test convention matches finite-row PSD for continuous
+kernels: Riemann sums give one direction and compactly supported bump
+approximations to finitely many point masses give the other. His logarithm
+criterion on p423 matches S11; only positive real K is used here, so there
+is no branch choice. Lemma 9 is the divided-kernel mechanism behind S3.
+FIT: source-verified conditional mechanism, not a theta sign supplier.
+The f0 control fails conditional PSD of log V0, as explained above.
+
+B. Shibananda Biswas, Dinesh Kumar Keshari, Gadadhar Misra,
+Infinitely divisible metrics and curvature inequalities for operators in the
+Cowen-Douglas class, author-hosted manuscript, Theorem 3.3, PDF pp10--12.
+https://math.iisc.ac.in/~gm/gmhomefiles/papers/cuin.pdf
+Read statement and proof on pp10--11; p12 not used as a premise.
+Short quote, p10: "positive definiteness of the curvature function".
+Mapping: their polarized complex curvature corresponds to the role of C_K;
+their theorem is LOCAL and uses analytic/polarization hypotheses. It is not
+quoted as a global theorem for our real interval. S5--S11 prove the needed
+real-interval statement directly instead. FIT: partial analogue with an
+explicit domain distinction. Their curvature hypothesis, not scalar
+curvature sign, is exactly the missing strength revealed by the control.
+
+C. C. E. Rasmussen and C. K. I. Williams, Gaussian Processes for Machine
+Learning, MIT Press (2006), chapter 2, printed p16, eq(2.19); see also p12.
+https://gaussianprocess.org/gpml/chapters/RW2.pdf
+Short quote, p16: "conditioning the joint Gaussian prior distribution".
+Mapping: one noiseless training node a; prior covariance K, posterior S_a.
+This requires a genuine prior covariance (PSD). Our V has not been shown
+to be such a covariance, so the formula cannot establish its initial sign.
+FIT: conditional repeatability/interpretation, not initial positivity.
+The negative V0 control cannot be a prior covariance on all of I.
+
+## 8. Decision and next bounded mathematical test
+
+The user's loop is mathematically valid once its invariant is a proved Gram
+representation; its full induction, complex coefficients and zero pivots
+are now explicitly specified. Requiring the old positive-source formula or
+infinite divisibility of every residual would be an unjustified extra demand.
+
+Selected entrance for a further test: S14, the mixed logarithmic interaction
+kernel C_V. The cheapest necessary test is S16 on the exact full source;
+a rigorous negative row stops only this stronger entrance. A positive finite
+check does not pay it. A successful supplier must derive a positive measure,
+feature representation or another full-quantifier inequality directly from
+the actual theta source, then use S5--S10. It may not define a square root
+of V or C_V before proving its positivity.
+
+This report establishes a conditional route and a concrete preservation
+counterexample, NOT an actual-source sign advance beyond RAW2. The universal
+sign obligation has not been discharged by writing it in logarithmic form.
+No all-rank V or RH result, Lean certificate, canonical node close, supplier
+admission, or new Proshka delivery is claimed.
+
+AUTOPSY: dropped=COUPLING; note=Conditional log-curvature Gram entrance still requires full PSD of C_V; only its diagonal follows from RAW2.
+
+## 9. Review
+
+Independent read-only checker /root/sibling5_check returned CLEAN on exact
+full draft SHA256
+5f64bbbe4030d134eeabb9ca79f1212f348cbddc8c5c9d7900d2fd986ae4f78e.
+The checker confirmed S1--S16, integral orientations, tensor convergence,
+complex projection convention, zero-pivot handling, S11's stronger scope,
+S13's exact -1/5 and the unpaid theta S16. Parent independently checked the
+same mathematics and the quoted primary-source statements. Only acceptance
+metadata and the AUTOPSY taxonomy label changed after that mathematical review.
+This is accepted isolated paper, not a Lean or canonical acceptance receipt.
+
+
+## File: docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md
+
+# Full theta sign to Weil sign — direct audit of the terminal transfer
+
+STATUS: PAPER_AUDIT_PENDING_INDEPENDENT_CHECK.
+SOURCE_BASE: 7653a3503d20be4dba91a333ff96e5eea30c738c.
+PX_RH_CLAIM: NOT_MADE. No Lean certification or canonical admission.
+
+This audits the previously inherited SLACK arrow. The result is an equivalence
+between two all-test signs, not a proof of either sign. It reduces a named
+audit dependency of GOAL_MAT and does not reset the open ODD2 sign counter.
+The argument below needs no radical theorem, central/far allocation,
+finite-field analogy, or bounded inverse multiplier on a function space.
+
+## 1. Statement and exact objects
+
+Let theta(t)=sum_(n>=1) exp(-pi n^2 t), t>0, and define
+
+    r(t)=4t theta''(t)+6 theta'(t),
+    Phi(x)=exp(5x/2) r(exp(2x)), A=||Phi||_2, f=Phi/A.
+
+Thus Phi is exactly the full source
+
+    sum_(n>=1) (4pi^2 n^4 exp(9x/2)-6pi n^2 exp(5x/2))
+                   exp(-pi n^2 exp(2x)).
+
+Define alpha(t)=exp(-t/2)/(1-exp(-2t)), c_A=gamma+log(8pi)+pi/2,
+w_n=Lambda(n)/sqrt(n), and M_+/-(g)=integral g(x)exp(+/-x/2)dx.
+For complex compact smooth g, let
+
+    D(g)=integral_0^infinity alpha(t)||g(.+t)-g||_2^2 dt,
+    Q(g)=D(g)-c_A||g||_2^2 +2Re(M_+(g)conj(M_-(g)))
+         -2 sum_(n>=2) w_n Re integral conj(g(x))g(x+log n)dx.
+
+Set
+
+    V(x,y)=integral_0^infinity (x+y+2t) f(x+t)f(y+t)dt.
+
+**Theorem T.** The following assertions are equivalent:
+
+1. Q(g)>=0 for every g in C_c^infinity(R;C).
+2. For every N>=1, real x_1,...,x_N, and c in C^N,
+   sum conj(c_i)V(x_i,x_j)c_j>=0.
+
+Together with the classical Weil criterion, these are equivalent to classical
+RH. The theorem is an exact transfer; assertion2 is still unproved. The ODD2
+subspace is necessary for assertion2 and is not substituted for it.
+
+## 2. Source normalization and decay without a critical-strip premise
+
+Use the Jacobi identity
+
+    1+2theta(t)=t^(-1/2)(1+2theta(1/t)).
+
+It is DLMF20.7.32 at z=0, tau=it with the positive square root. Differentiating
+twice gives `r(1/t)=t^(5/2)r(t)`, hence Phi(-x)=Phi(x).
+For t>=1 every term of r is positive: 2pi n^2 t-3>0. Reciprocity then gives
+r>0 everywhere. The series and its fixed derivatives converge locally
+uniformly for t>0. For x>=0, each fixed x-derivative of Phi is bounded by a
+finite sum of terms C n^M t^M exp(-pi n^2 t), t=exp(2x)>=1.
+The sum of n^M exp(-pi(n^2-1)) is finite; absorbing t^M into exp(pi t/2)
+gives a bound C_k exp(-(pi/2)exp(2x)). Evenness gives the same bound at the
+other end. This proves every exponential-weighted fixed derivative moment
+needed below, and 0<A<infinity.
+
+For Re(s)>1 put a=s/2. Two integrations by parts give
+
+    integral_0^infinity t^a r(t)dt
+      =(4a(a+1)-6a) integral_0^infinity t^(a-1)theta(t)dt
+      =s(s-1) pi^(-s/2) Gamma(s/2) zeta(s)=2xi(s).
+
+All boundary terms vanish: near zero theta=O(t^-1/2), theta'=O(t^-3/2)
+by Jacobi; the factors in both integration-by-parts boundaries are
+O(t^((Re(s)-1)/2)). At infinity the series decays exponentially. Absolute
+Fubini for the last equality follows from Re(s)>1 and the gamma integral.
+With the Fourier convention F(z)=integral f(x)exp(-izx)dx, t=exp(2x) gives
+
+    F(z)=(1/(2A)) integral t^(1/4-iz/2)r(t)dt
+         =xi(1/2-iz)/A
+
+whenever Re(1/2-iz)>1, in particular in an open neighborhood of Im(z)=2.
+F and its derivatives exist everywhere by the proved envelopes, but no
+critical-strip zero location is used in this calculation.
+
+## 3. The control space and the unchanged full pairing
+
+Let X be the space of measurable functions with
+
+    ||g||_X^2=||exp(|x|)g||_2^2+D(g)<infinity.
+
+Its inner product is the weighted L2 inner product plus the L2 pairing of
+translation differences with measure alpha(t)dt dx. It is complete: the map
+g -> (exp(|x|)g, (g(x+t)-g(x))) has a closed graph in the product L2 space,
+as follows by distributional testing (or subsequences and Fubini) from a
+convergent sequence in both coordinates.
+
+Polarization of Q defines an antilinear-first Hermitian B on X. Write
+W_g=||exp(|x|)g||_2. Then
+
+    |integral conj(g(x))k(x+t)dx| <= exp(-|t|)W_g W_k,
+    |M_+/-(g)| <= sqrt(4/3)W_g,
+    |B(g,k)| <= (|c_A|+14)||g||_X||k||_X.                 (T1)
+
+The first bound uses |x|+|x+t|>=|t| and Cauchy-Schwarz. The pole norm follows
+from integral exp(+/-x-2|x|)dx=4/3. The two prime correlations cost at most
+2 sum_(n>=2)(log n)n^-3/2 W_gW_k <10 W_gW_k by the integral test; the D
+pairing is bounded by sqrt(D(g)D(k)). Thus every prime is present with an
+absolutely convergent bound on X. For original compact tests the sum is in
+fact finite. The constant14 is a harmless explicit upper bound.
+
+Translation tau_b g(x)=g(x-b) has norm at most exp(|b|) on X and leaves B
+unchanged. Its D-part is translation invariant, as are the correlations;
+the two pole moments acquire opposite factors exp(+/-b/2).
+Translations are strongly continuous: in the D-part apply ordinary L2
+translation continuity to each difference g(.+t)-g, dominated by its
+fourfold squared norm. Weighted L2 translation continuity follows by
+compact L2 approximation and the displayed locally uniform operator bound.
+This argument precedes and does not presuppose smooth density.
+
+For a smooth cutoff chi_R tending to1, with bounded derivative O(1/R),
+expand the translated difference of (chi_R-1)g. One term is bounded by
+4|g(x+t)-g(x)|^2 and converges to0; the commutator term is bounded by
+min(C^2t^2,4)|g(x)|^2 and converges to0. Both are integrable against
+alpha(t)dt dx. Weighted L2 convergence is dominated convergence. Thus
+chi_R g -> g in X. Mollifying each compactly supported chi_R g converges in
+X by strong translation continuity and Minkowski's inequality. Consequently
+C_c^infinity(R;C) is dense in X. This licenses later discontinuous atoms;
+it is not an assumption that X=L2 or that derivatives must lie in L2.
+
+## 4. Exact atoms with both poles and the grouped archimedean constant
+
+Fix h=2 (the formulas below also hold for fixed h>1), sigma=h+1/2, and set
+
+    q_(h,u)(x)=1_[0,infinity)(x) exp(-hx+iux), u in R,
+    R_h(u)=1/(sigma-iu)+1/(sigma-1-iu)-log(pi)/2
+           +psi((sigma-iu)/2)/2
+           -sum_(n>=2) Lambda(n)n^(-sigma+iu),
+    K_h(u,v)=(conj(R_h(u))+R_h(v))/(2h+i(u-v)).
+
+The q atoms belong to X. Direct integration gives
+
+    ||exp(|x|)q_(h,u)||_2^2=1/(2(h-1)),
+    D(q_(h,u))=(1/h) integral alpha(t)(1-exp(-ht)cos(ut))dt,
+    ||q_(2,u)||_X <= sqrt(6)*sqrt(1+u^2).                 (T2)
+
+Indeed 1-exp(-ht)cos(ut)<=ht+u^2t^2/2,
+integral t alpha(t)dt<5, integral t^2 alpha(t)dt<18, by the positive
+geometric expansion and decreasing-tail integral tests.
+
+Let d=2h+i(u-v). The atom mixed L2 product is1/d. The two translated
+correlations are exp(-(h-iv)t)/d and exp(-(h+iu)t)/d. The D numerator is
+integral alpha(t)(2-exp(-(h-iv)t)-exp(-(h+iu)t))dt.
+Each pole product has denominators a,b with a+b=d. Multiplying it by d
+therefore gives1/a+1/b. This produces all four reciprocals in
+conj(R_h(u))+R_h(v); neither pole is discarded.
+
+For the archimedean terms use DLMF5.9.16:
+
+    psi(z)+gamma=integral_0^1 (1-t^(z-1))/(1-t)dt, Re(z)>0.
+
+At z=1/4 substitute t=v^4. The resulting rational integral gives
+psi(1/4)=-gamma-3log2-pi/2. Subtracting this value in the same convergent
+integral yields, for Re(s)>0,
+
+    (psi(s/2)-psi(1/4))/2
+       =integral_0^infinity (exp(-t/2)-exp(-st))/(1-exp(-2t))dt.
+
+Apply this to s=sigma-iv and its u conjugate. Their sum, minus log(pi),
+is exactly the D numerator minus c_A. The small-t differences remain
+grouped throughout. The prime part equals the original two translated
+correlations term by term, with absolute convergence. Hence
+
+    B(q_(h,u),q_(h,v))=K_h(u,v).                           (T3)
+
+This is a pairing for a form whose sign is unknown; no positive Gram
+representation was assumed.
+
+## 5. Every original complex test is reached in the correct norm
+
+For an original g choose b so g_b=tau_b g is supported strictly in (0,infinity).
+Let G(u)=F_(g_b)(u+ih), the Fourier transform of exp(hx)g_b(x). It is Schwartz.
+By T2 the Bochner integral
+
+    g_b=(1/(2pi)) integral G(u)q_(h,u)du                   (T4)
+
+converges absolutely in X. Evaluation in weighted L2 and ordinary Fourier
+inversion identify this integral with g_b: on x>0 multiply the inversion
+of exp(hx)g_b by exp(-hx); both sides vanish for x<0. The endpoint is null.
+
+T1–T3 now give, with absolute convergence,
+
+    Q(g)=(1/(4pi^2)) integral integral conj(G(u))K_h(u,v)G(v)du dv. (T5)
+
+For completeness, this is also a finite-coefficient limit. Tail truncation
+at |u|<=M has X error at most
+sqrt(6)/(2pi) integral_(|u|>M)|G(u)|sqrt(1+u^2)du.
+The map u->q_(2,u) is continuously differentiable in X with derivative ixq:
+xq has weighted norm squared1/4, and its weak x-derivative has L2 norm
+squared(4+u^2)/32. Its value is0 at the jump point, so no delta derivative is
+present. The bound on integral t^2 alpha gives
+
+    ||xq_(2,u)||_X^2 <= 5/2+9u^2/16.
+
+Dominated difference quotients give the asserted X derivative. Riemann
+sums on [-M,M] therefore converge in X; for mesh delta their extra error is
+
+    (2M delta)/(2pi) sup_(|u|<=M)
+       (|G'(u)|sqrt(6(1+u^2))+|G(u)|sqrt(5/2+9u^2/16)).
+
+If the total X error is e, T1 bounds the quadratic error by
+(|c_A|+14)e(2||g_b||_X+e). All estimates are for each fixed arbitrary complex
+test and retain every source term. A test-dependent support shift is valid
+because B is translation invariant; no uniform inverse bound is asserted.
+It follows that Q is nonnegative on all original tests iff every finite K_h
+matrix is PSD: use T4 for one direction, and X-density to approximate any
+finite sum of q atoms for the other.
+
+## 6. The only division is on finite coefficient spaces
+
+The Euler product on Re(s)>1 is absolutely convergent with a nonzero value;
+its logarithmic derivative is -sum Lambda(n)n^-s. Gamma has no zeros there
+(and its reciprocal entire product proves this classical fact). Thus the
+nonzero F_h(u)=F(u+ih)=xi(sigma-iu)/A obeys
+
+    R_h(u)F_h(u)=iF'(u+ih)=integral x f(x)exp(hx-iux)dx.   (T6)
+
+Differentiation is justified by section2. For every finite node set the
+diagonal matrix diag(F_h(u_i)) is invertible. Therefore the finite K_h
+matrices are PSD iff the finite matrices of
+
+    W_h(u,v)=conj(F_h(u))K_h(u,v)F_h(v)
+
+are PSD. The inverse is allowed to depend on the chosen finite nodes. There
+is no map sending a general Fourier coefficient G to G/F_h in this proof.
+
+## 7. The exact physical kernel and its sign transfer
+
+Expand T6 in the numerator of W_h and insert
+
+    1/(2h+i(u-v))=integral_0^infinity exp(-2ht-iut+ivt)dt.
+
+Absolute Fubini is bounded by
+
+    (1/(2h)) integral integral |X+Y| |f(X)f(Y)|exp(h(X+Y))dX dY <infinity.
+
+Substitute X=x+t, Y=y+t. The result is
+
+    H_h(x,y)=exp(h(x+y))V(x,y),
+    W_h(u,v)=integral integral H_h(x,y)exp(iux-ivy)dx dy.  (T7)
+
+The same estimate proves H_h in L1(R^2); compact-local tail domination
+proves its continuity. These two facts suffice for all following limits;
+a global L2 realization of Q or an inverse function-space multiplier is
+unnecessary.
+
+Finite H_h matrices are PSD iff its quadratic form is nonnegative on all
+complex compact smooth spatial tests. Forward: compact rectangle Riemann
+sums. Reverse: smooth approximate point masses at a finite set, combining
+coefficients if nodes repeat; continuity controls the limit.
+
+A nonnegative H_h form gives finite W_h PSD: use spatial tests
+chi_R(x)sum_j c_j exp(-iu_j x). Dominated convergence with H_h in L1 gives
+exactly sum conj(c_i)W_h(u_i,u_j)c_j.
+Conversely, finite W_h PSD gives nonnegative frequency integrals against
+compact smooth coefficients by Riemann sums. W_h is bounded by ||H_h||_1,
+so L1-tail truncation extends this to Schwartz coefficients. For a compact
+smooth spatial a choose
+
+    eta(v)=(1/(2pi)) integral a(y)exp(ivy)dy.
+
+It is Schwartz and a(y)=integral eta(v)exp(-ivy)dv. T7 and absolute Fubini
+identify its nonnegative frequency form with integral conj(a(x))H_h(x,y)a(y).
+No sign assumption was used to justify a limit.
+Finally, finite H_h matrices are congruent to finite V matrices by the
+positive diagonal exp(hx_i). Combining sections5–7 proves Theorem T.
+
+## 8. Connection to the published final consumer
+
+For C_g(t)=integral g(x)conj(g(x-t))dx, C_g(-t)=conj(C_g(t)). Substituting this
+into Suzuki's explicit formula(3.3) gives precisely Q above. The constant
+conversion uses
+
+    2 integral_0^infinity (1-exp(-t/2))alpha(t)dt=log2+pi/2.
+
+The pole integrals give 2Re(M_+ conj(M_-)); both prime-power sums give the
+stated real correlation sum. The introduction states the classical Weil
+criterion for all complex compact smooth tests. Thus its scope matches T1,
+not only the odd or even sector. The published explicit formula and Weil
+criterion remain named primary theorem dependencies; their entire classical
+proofs are not reconstructed here.
+
+## 9. Evidence, delta, and limits
+
+Full SLACK producer49446bytes/657LF was read and rehashed:
+1d658eb3d6d828d3bc651967087dabf8e2f9774d179b02c7607f25c7ffe54588.
+Current full SLACK check37796bytes/467LF was rehashed:
+14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc.
+Its earlier acceptance is context; the transfer proof is rederived above.
+
+Primary formulas read directly on 2026-09-12:
+- [Jacobi modular identity, DLMF20.7.32](https://dlmf.nist.gov/20.7#E32).
+- [Digamma integral, DLMF5.9.16](https://dlmf.nist.gov/5.9#E16).
+- [Euler product, DLMF25.2.11](https://dlmf.nist.gov/25.2#E11).
+- [Suzuki, introduction and(3.3)](https://arxiv.org/html/2301.00421).
+
+Classical background used: Fourier inversion/uniqueness, elementary Lebesgue
+convergence theorems, completeness of L2, the gamma integral and nonvanishing
+of Gamma on Re(s)>0. No RH-equivalent spectral theorem is hidden among these.
+
+Before this audit GOAL_MAT inherited V=>Q only by the SLACK receipt. This note
+rederives the source normalization, complete arithmetic pairing, all-test X
+limit, finite congruence, and spatial/frequency transfer in one proof.
+This is an audit completion at PAPER scope if independently accepted.
+It supplies no new proof of V>=0, no result of the pending ODD2 request, and
+no reset of the same-obstacle mathematical counter. No new Proshka send.
+
+## 10. Independent audit acceptance
+
+This receipt supersedes the initial pending status, preserving the preceding
+14110bytes unchanged. ACCEPTED_PAPER_TRANSFER_AUDIT for Theorem T and its
+source normalization/domain proof. The sole read-only checker
+`/root/sibling5_check` checked exact SHA256
+`8c0ff365de0838fb922a05c21ada76665935998bd6ecae5117f3fd7910703b60`
+and returned ACCEPT: Mellin IBP coefficient/boundaries, noncircular X density,
+atom jumps, both poles and digamma constant, X limits, finite nonzero
+congruence, exact Fourier signs, H in L1 and both PSD transfer directions.
+It retained the named DLMF/Suzuki formulas as published dependencies; their
+historical full proofs were not reconstructed. Parent also checked the
+Jacobi differentiation and all constant factors directly.
+
+The parent additionally read [DLMF5.2(i)](https://dlmf.nist.gov/5.2#i),
+including Euler's gamma integral and the explicit nonvanishing statement,
+on 2026-09-12. This makes the gamma background source locator explicit; it
+does not add a zero-location premise for zeta.
+
+No sign premise was proved. No ODD2 result or no-progress counter reset is
+claimed. The active all-test RH goal remains incomplete.
+
+
+## File: docs/Codex/REPORT_2026-09-13_ANALYTIC_POSITIVITY_PROPAGATION.md
+
+# Any open interval already carries the full all-rank sign question
+
+STATUS: ACCEPTED_CONDITIONAL_CONSUMER_BRIDGE_PAPER.
+GLOBAL_IC: OPEN. GLOBAL_ODD2: OPEN. ALL_ORDER_SOURCE_SIGN: OPEN.
+RH: OPEN. PX_RH_CLAIM: NOT_MADE. No Lean or canonical admission.
+
+This is a conditional consumer bridge for the pending TWOCHANNEL request,
+not a new source-sign attempt. The sent request and its input report remain
+unchanged at de2271bebae87c24ca0dfd3d02ae885de8db1b11.
+
+## A1. Analytic propagation lemma, with the all-rank hypothesis exposed
+
+Let J be a nonempty open real interval, Omega a complex open set containing
+J, and K holomorphic on Omega x Omega. Suppose K(x,y)=conjugate(K(y,x))
+for real x,y in J. If the restriction of K to I x I is positive semidefinite
+for EVERY finite family of nodes and complex coefficients on one nonempty
+open subinterval I of J, then K is positive semidefinite on all of J.
+
+Here holomorphic refers to both unbarred complex variables. Equivalently
+K(conjugate(z),w) is a sesquiholomorphic kernel on conjugation-stable pieces;
+the proof below only forms Gram matrices at real nodes.
+
+Proof. Assume K is PSD on an open interval B contained in J. Fix a in B
+and eta>0 such that the complex disk |z-a|<eta is contained in Omega.
+For each integer n>=0, forward differences at a give functionals
+
+    ell_(n,h)(g)=sum_(k=0)^n (-1)^(n-k) binom(n,k) g(a+kh)/(n! h^n)
+                  -> g^(n)(a)/n! as h->0 through real positive h. (A1)
+
+For any fixed maximum order M and any fixed collection of old nodes in B,
+all nodes a+kh lie in B for sufficiently small h. Applying these functionals
+and the old evaluations to BOTH variables of the PSD kernel, then taking
+h->0, gives a PSD block matrix of old evaluations and derivative evaluations.
+In particular its derivative block is
+
+    B_mn=partial_x^m partial_y^n K(a,a)/(m! n!), 0<=m,n<=M.     (A2)
+
+This uses only finite congruences and a finite-dimensional matrix limit.
+The coefficients of ell are real; arbitrary complex vectors remain allowed.
+
+For finitely many new real nodes y_j with |y_j-a|<eta and y_j in J,
+replace each new evaluation by the finite Taylor functional
+
+    L_(M,y_j)(g)=sum_(n=0)^M (y_j-a)^n g^(n)(a)/n!.
+
+Together with any old evaluations this again gives a PSD matrix. Its
+new/new entries are the double Taylor partial sums using (A2). They tend
+to K(y_i,y_j) by absolute convergence on the polydisk at (a,a).
+Its old/new entries tend to K(x_i,y_j) by the one-variable Taylor series
+in the SECOND variable, with old x_i fixed in B. The radius eta is valid
+for every such old x_i because the domain is the product Omega x Omega.
+Taking M->infinity thus proves positivity on
+
+    B union ((a-eta,a+eta) intersection J).                    (A3)
+
+This includes all mixed old/new matrices, not just positivity separately
+on two overlapping intervals. The order of limits is fixed: first h->0
+for each finite M, then M->infinity. No bounded inverse, uniform bound on
+Taylor coefficients in M, or exchange of those limits is assumed.
+
+Finally fix any desired finite node family in J. The real segment joining
+it to an interior point of I is compact in J and in Omega. A sufficiently
+small uniform disk radius therefore works at every point on that segment.
+Repeated applications of (A3) with overlapping intervals, in finitely many
+steps, include the entire family. This proves the lemma.
+
+## A2. The actual full theta kernel has the required analytic extension
+
+The exact source and consumer are those of
+REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md, sections1--2 and10,
+at 667c22a589336a584ee31a84ab42a9ad9d1bcbf3, 15303bytes/335LF,
+SHA2561e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282.
+That independently accepted report fixes f=Phi/A, A=||Phi||_2, and
+
+    Phi(z)=sum_(n>=1) [4pi^2 n^4 exp(9z/2)-6pi n^2 exp(5z/2)]
+                       exp(-pi n^2 exp(2z)),
+    V(z,w)=integral_0^infinity (z+w+2t) f(z+t)f(w+t)dt.         (A4)
+
+Let S={z:|Im z|<pi/4}. On each compact subset of S, Re(exp(2z)) has
+a strictly positive lower bound. The full series in (A4) converges normally
+there and defines a holomorphic Phi; it is not a finite theta approximation.
+
+More explicitly, for z in a fixed compact subset of S and t>=0, let
+m<=Re z<=M and |Im z|<=theta<pi/4. With c=pi exp(2m)cos(2theta)>0,
+the absolute sum for Phi(z+t) is bounded by
+
+    C exp(9t/2) sum_(n>=1)(n^4+n^2) exp(-c n^2 exp(2t))
+      <= C' exp(9t/2) exp(-(c/2) exp(2t)).                    (A5)
+
+Indeed split the exponent in half and use exp(2t)>=1 in the summable
+n-dependent half. For any compact pair (z,w), the product of two bounds
+(A5), times a constant multiple of 1+t, is integrable in t. The integrals
+over finite t-intervals are holomorphic in both variables; their tails
+converge uniformly on compact subsets of S x S. Thus V is jointly
+holomorphic on S x S. On real nodes V is real symmetric.
+
+Applying A1 to Omega=S, J=R proves, for EVERY nonempty open interval I,
+
+    [all finite V matrices on I are PSD]
+       iff [all finite V matrices on R are PSD].              (A6)
+
+By the already accepted full-sign transfer and its named classical Weil
+criterion dependency, either side of (A6) is equivalent to RH. This is an
+equivalence only: neither side's positive sign is supplied here.
+
+In particular an all-rank theorem on x>R, on |x|>R, or on any fixed open
+window suffices for the full consumer. Conversely, if there is a negative
+V witness somewhere, every nonempty open interval contains some finite
+complex negative witness. A1 gives no useful bound on its rank, coefficient
+size or conditioning. This does not contradict positive fixed-rank regions.
+
+## A3. Application to the exact pending relative comparison
+
+The independently accepted global W is T12--T14 in
+REPORT_2026-09-13_TWOCHANNEL_LAPLACE_BRIDGE.md at de2271bebae87c24ca0dfd3d02ae885de8db1b11,
+11996bytes/245LF, SHA256
+e4e86c2ddfcee8a9146fd2dac9340a970d2fa569f09a082315262b8d2a1b8908.
+It is PSD on all real nodes. Consequently, if some delta>0 satisfies
+V>=delta W as forms for ALL finite complex families on an exterior interval,
+V is PSD there and A2 already supplies the full consumer bridge.
+
+The same delta in fact propagates, provided this particular W is retained.
+To verify the extra analytic hypothesis, fix a compact real interval [-L,L].
+The analytic D(z)=V(z,z) is strictly positive for real z: by evenness
+D(x)=D(|x|)=integral_(|x|)^infinity 2u f(u)^2 du>0.
+Hence D has a holomorphic square root on a sufficiently thin rectangle
+around [-L-1,L+1]; shrink the rectangle until Re D>0 there.
+
+Every real square-root argument in T12--T13 is strictly positive there:
+r_x=sqrt(x^2+4)>=2, cosh x>=1, 1-1/r_x>=1/2, and N_x^2>=1.
+By compactness and continuity, shrink the same rectangle so all their
+chosen positive branches extend holomorphically. Also choose it so
+|Im(r_z-r_w)|<pi/2 for every z,w in it. Then C=sech and
+T(d)=d/sinh(d) (with the removable value at zero) are holomorphic at every
+required difference. Formula T13 therefore extends W holomorphically on
+the product of that rectangle with itself.
+
+For fixed delta, K=V-delta W now satisfies A1 on that rectangle. Starting
+from any smaller source interval where the presumed inequality holds,
+choose L large enough to include it and any desired finite target family.
+Propagation proves V>=delta W for that family, with the SAME delta.
+The rectangle may depend on L; delta does not. This pays the exterior-to-
+global relative-bound bridge without assuming the relative bound itself.
+
+## Evidence and boundaries
+
+Registered shelf query `analytic kernel positivity continuation` returned
+INCOMPLETE due semantic-index freshness, receipt SHA256
+1943b29a213ff8c9b8475fcdf971ae1d6c898f351251a4e292b40b022c912be2.
+The existing ALL_ODD_TO_RH report's section4 proves a local Loewner/Hankel
+continuation for a different kernel; it was not silently applied to V.
+
+A neighbouring primary source was checked to avoid reversing a theorem's
+premise: Buescu--Paixao--Oliveira, arXiv:1802.07092v1,
+https://arxiv.org/pdf/1802.07092, 261826bytes, SHA256
+d1ab51b841e276613fc48205d38547aaf7e81c3b16c39f6480efe59049e08282.
+Read scope: introduction pp1--2, Theorems3.20--3.22 and Remark3.23,
+printed/PDF pp18--20. Theorem3.20 already requires a positive definite
+kernel on its whole domain and propagates regularity. It is not a source
+for our converse-direction A1. A1--A3 above are direct root proofs with no
+novelty claim; no unverified literature theorem supplies the missing sign.
+
+No numerical evaluation, finite-matrix scan, or Lean run was needed.
+No full-source sign, relative bound, or original negative witness is proved.
+The source-sign counter stays5; TWOCHANNEL is still the one pending third
+construction since owner resumption. No new Pro request is sent.
+
+## Independent acceptance receipt
+
+The complete draft SHA256
+cc0faac5bdcdaf301574ddd3f7297eac7ff3d7a5ce402094c965130ac2ff48e8
+was independently CLEAN as ACCEPTED_CONDITIONAL_CONSUMER_BRIDGE.
+Review SHA256
+e1277e4153f97bf703f076e4fdca927b4578920858a057d90c1e939551b26da7.
+The sole checker verified the mixed old/new blocks, ordered limits and
+finite continuation chain; full theta holomorphy; and the thin-rectangle
+square-root branches for propagation of the same assumed delta.
+Only the acceptance status and this receipt were added afterward.
+
+
+## File: docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md
+
+# Full V: independent intake of the two-shift sign proof
+
+STATUS: ACCEPTED_PAPER_FULL_V_RAW_TWO_SHIFT_POSITIVITY_AND_CONTROL.
+SOURCE_BASE: 7214ab0ae955ad7b84e0fb1760a525b3e538ac77.
+CONSUMPTION: ISOLATED_PAPER_ONLY; canonical theorem/consumer remains unbound.
+CLAIM: all actual full-theta two-node V matrices are positive definite for
+distinct real nodes, positive semidefinite when nodes coincide.
+FULL_ARBITRARY_RANK_V / GLOBAL_IC / GLOBAL_ODD2 / RH: OPEN.
+ACTUAL_THETA_NEGATIVE_WITNESS: NONE. PX_RH_CLAIM: NOT_MADE.
+
+## 1. Provenance and source verification
+
+Input: the owner's pasted Proshka argument, sections 1--7, in this conversation.
+The linked sandbox artifact PROSHKA_FULL_V_RANK_TWO_EXCLUSION_2026-09-14.md
+was not accessed. No byte-exact intake of that unseen file is claimed.
+The authorized GitHub branch was checked at SOURCE_BASE and had no newer
+commit at intake. This is our independent derivation and audit of the visible
+argument, not a claim that Proshka published the unseen artifact to GitHub.
+
+Full source and V definitions were rechecked against:
+
+- docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_NULLVAR_2026-09-13.md,
+  equation (1), SHA256 4fa7909725d2fa10ccc52d3413580289692d3a1489ecae7bed88956f80980730;
+- docs/Codex/REPORT_2026-09-13_NULL_AND_GROUND_STATE_TEST.md, T1 and G1,
+  SHA256 19ce3481523bfb3f3f9ba8be24f2c86dc2f1916d80f9535a451d010bceef0d95.
+The existing local CSORDAS_PLANAT_LOGCONCAVITY_USAGE_CARDS.md was read; it
+already documented the relevant 2015 restatement and the variable scaling.
+
+Original published input verified directly:
+G. Csordas and R. S. Varga, "Moment Inequalities and the Riemann Hypothesis",
+Constructive Approximation 4 (1988), 175--198, Theorem 2.1, printed p178;
+source definition (1.2), printed p175.
+DOI: https://doi.org/10.1007/BF02075457
+Author-hosted PDF: https://www.math.kent.edu/~varga/pub/paper_161.pdf
+PDF: 2132541 bytes, 24 pages, SHA256
+fd43597072010242ef5b8a75480e263a1538df0aba47755c47e137b140cf01ce.
+
+Printed pp175--178 were rendered and visually read. This scanned PDF yielded
+no useful pdftotext text. The theorem statement and source formula were
+checked on the rendered pages; no full independent reproving of section 3
+of that article is claimed. We use an explicitly named published theorem.
+
+Short quote, Theorem 2.1: "is strictly concave".
+The interval in the statement is (0,infinity).
+
+The article defines
+
+    Phi_C(r)=sum_(n>=1) [2pi^2 n^4 exp(9r)-3pi n^2 exp(5r)]
+                              exp(-pi n^2 exp(4r)).
+
+Termwise substitution gives EXACTLY
+
+    Phi_ours(u)=2 Phi_C(u/2), f=Phi_ours/A, A=||Phi_ours||_2,
+    ell(s)=log f(sqrt(s))=log(2/A)+log Phi_C(sqrt(s/4)).      (R1)
+
+Theorem 2.1 proves strict concavity of the last source function for s>0.
+Only strict concavity, not a generic inference that every strictly concave
+C2 function has a strictly negative second derivative everywhere, is needed
+in the proof below. Positivity and even smoothness of the actual f extend
+ell continuously to s=0.
+
+Registered shelf query:
+"Csordas Varga squared coordinate log concavity full V two shifts".
+It returned exit 2, INCOMPLETE / q3_docs semantic-index freshness failure.
+The retained exact receipt is in the accompanying JSON. No absence verdict,
+index repair or canonical admission is inferred.
+
+## 2. Exact integration change and the two-node theorem
+
+For the positive even full source, retain
+
+    V(x,y)=int_0^infinity (2t+x+y) f(t+x) f(t+y) dt,
+    D(x)=V(x,x).
+
+These integrals are absolutely convergent by the full-source derivative/tail
+bounds in the pinned reports. Fix any real x,y, and put m=(x+y)/2, d=(x-y)/2.
+The function u f(u+d)f(u-d) is odd and integrable on R. Therefore
+
+    V(x,y)=2 int_m^infinity u f(u+d)f(u-d) du
+          =2 int_|m|^infinity u f(u+d)f(u-d) du > 0.        (R2)
+
+There is no discarded boundary term: the interval [m,-m] cancels when m<0.
+Let s=u^2-m^2 in the final positive half-line integral. Then
+
+    V(x,y)=int_0^infinity f(sqrt(s+m^2)+d)
+                           f(sqrt(s+m^2)-d) ds,
+    D(x)=int_0^infinity f(sqrt(s+x^2))^2 ds > 0.             (R3)
+
+Write rho(s)=f(sqrt(s)). The two squared arguments in the first integrand
+have sum 2(s+m^2+d^2) and half-separation 2|d|sqrt(s+m^2).
+The comparison pair s+x^2, s+y^2 has the same sum and half-separation
+2|d||m|. Thus the first pair is more separated.
+
+For a concave function ell, ell(z+r)+ell(z-r) is nonincreasing in r>=0
+when both arguments are in its domain. This follows directly by expressing
+the less separated pair as strict convex combinations of the more separated
+pair. Strict concavity makes the inequality strict when the separations
+differ and the arguments are positive. Continuity covers zero endpoints.
+
+Apply this with ell=log rho. By evenness of f,
+
+    f(sqrt(s+m^2)+d) f(sqrt(s+m^2)-d)
+      <= rho(s+x^2) rho(s+y^2).                            (R4)
+
+If x!=y, then d!=0, and for s>0 the separations differ strictly. In particular,
+on any positive-length interval with s>max(0,d^2-m^2), all four squared
+arguments are positive, so R4 is strict there. Integration followed by
+Cauchy--Schwarz gives
+
+    0 < V(x,y) < G(x,y) <= sqrt(D(x)D(y)),                  (R5)
+    G(x,y)=int_0^infinity rho(s+x^2)rho(s+y^2) ds.
+
+No equality analysis for Cauchy--Schwarz is needed: the first strict inequality
+already provides the strict determinant. Hence
+
+    D(x)D(y)-V(x,y)^2>0  whenever x!=y.                     (R6)
+
+All-real-node theorem: for x!=y and (c1,c2)!=(0,0),
+
+    V[c1,c2]
+      =D(x)|c1+V(x,y)c2/D(x)|^2
+        +[D(y)-V(x,y)^2/D(x)]|c2|^2 > 0.                  (R7)
+
+This includes every complex phase. At x=y the form is
+D(x)|c1+c2|^2>=0. Repeated nodes in any family can be combined first.
+Therefore any actual negative finite V row must involve at least THREE
+distinct nodes with nonzero combined coefficients.
+
+This is an actual-source sign-family result. It is not a new proof of the
+published input R1, and no priority/novelty claim about R2--R7 is made.
+
+## 3. Exactly why the Gram comparison stops at this point
+
+G is a genuine Gram kernel in L2([0,infinity),ds), via x -> rho(s+x^2).
+But E=G-V has E(x,x)=0 and E(x,y)>0 for x!=y. On any two distinct nodes its
+matrix is [[0,e],[e,0]], with eigenvalues e,-e. Thus E is indefinite.
+
+Consequently entrywise V<=G does not give a Loewner-order comparison of
+the full forms. Neither E>=0 nor V>=G nor a positive-residual transfer is
+established. One must retain
+
+    V[c]=||sum_i c_i rho(s+x_i^2)||_2^2 - E[c].              (R8)
+
+This does not conflict with R7: R7 bounds one mixed coefficient relative to
+its two diagonal coefficients. The signs of all mixed coefficients in an
+arbitrary row need a joint bound.
+
+## 4. Exact audit of the non-theta counterexample
+
+Let f0(u)=exp(-u^2)-(1/4)exp(-2u^2). It is positive, even, entire and rapidly
+decreasing; f0'(u)=-2u exp(-u^2)[1-(1/2)exp(-u^2)]<0 for u>0.
+
+For s>=0,
+
+    log f0(sqrt(s))=-s+log(1-(1/4)exp(-s)),
+    its second derivative
+      =-[(1/4)exp(-s)]/[1-(1/4)exp(-s)]^2<0.               (R9)
+
+The general argument R2--R7 therefore proves all its two-node matrices
+positive definite for distinct nodes. It is explicitly NOT the theta source.
+
+For its kernel V0 define J_mn=partial_x^m partial_y^n V0(0,0).
+Differentiation under the integral is valid locally with Gaussian polynomial
+domination, and the product rule gives
+
+    J_mn=int_0^infinity [
+       2t f0^(m)(t) f0^(n)(t)
+       +m f0^(m-1)(t) f0^(n)(t)
+       +n f0^(m)(t) f0^(n-1)(t)] dt.                       (R10)
+
+Every term reduces to odd powers times exp(-a t^2). The companion script
+RANK_TWO_CONTROL_JETS_20260914.py uses ONLY exact Fraction arithmetic,
+the polynomial derivative rule (p exp(-a t^2))'=(p'-2atp)exp(-a t^2), and
+
+    int_0^infinity t^(2k+1)exp(-a t^2)dt=k!/(2a^(k+1)).
+
+Its executed exact result, independently matching the pasted values, is
+
+    [J11 J13; J31 J33]=[1/18 -25/54; -25/54 100/27],
+    det J=-25/2916,
+    (25/3,1) J (25/3,1)^T=-25/162<0.                      (R11)
+
+No numerical quadrature, theta samples or floating point is involved.
+
+To convert jets to allowed finite rows, define on smooth functions
+
+    L_h g=(g(-h)-3g(-2h)+3g(-3h)-g(-4h))/h^3
+                +(25/3)(g(-h)-g(-2h))/h.
+
+Taylor expansion gives L_h -> partial^3+(25/3)partial as h->0+.
+The script verifies the exact zeroth through third cancellation moments.
+The locally analytic kernel V0 has continuous mixed derivatives of sufficient
+order, so applying the finite-difference limit in both arguments is legitimate:
+
+    L_h^(x) L_h^(y) V0(x,y) -> -25/162.                     (R12)
+
+These are exactly the four nodes and coefficients in the pasted argument.
+For sufficiently small h>0 this is a negative FINITE row; moreover
+h<(log 2)/8 places all four nodes in I=(-(log 2)/2,0).
+No explicit certified numeric h is claimed. The witness is an analytic
+existence result for f0, never a negative witness for theta.
+
+## 5. Independent check of the added double-exponential-tail claim
+
+The unseen producer file is not a premise for this section. An explicit
+construction of our own verifies the claim stated in the pasted summary:
+
+    f_delta(u)=f0(u) exp[-delta cosh(2u)], delta>0.           (R13)
+
+It is positive, even, entire, decreasing for u>0, and has double-exponential
+decay on the real axis. Since
+
+    cosh(2sqrt(s))=sum_(k>=0) 4^k s^k/(2k)!,
+
+its second s derivative is positive on s>=0. Thus R9 minus
+delta cosh(2sqrt(s)) is still strictly concave.
+
+For derivative orders j<=3 and 0<delta<=1, differentiating the extra factor
+produces finite sums bounded by C_j exp(2j|u|), since
+exp[-delta cosh(2u)]<=1 and delta<=1. With f0 and its Gaussian derivatives,
+all terms in R10 have an integrable common bound
+C(1+t)^M exp(12t-2t^2) on t>=0.
+Dominated convergence gives J_delta -> J0 as delta->0+.
+The fixed vector in R11 therefore still has negative jet energy for all
+sufficiently small positive delta. Fix such a delta and apply R12 to its
+smooth kernel to obtain a negative four-node finite row inside I.
+
+Thus strict squared-coordinate log-concavity, positivity, evenness and
+double-exponential decay together STILL do not imply all-rank V positivity.
+This is a control on hypotheses, not a deformation theorem about actual theta.
+
+## 6. Updated mathematical frontier and connection to the prior test
+
+Raw two shifts here must not be confused with ODD2. The latter uses TWO odd
+profiles, each a difference of +x and -x translates: normally FOUR raw nodes.
+This distinction is verified in REPORT_2026-09-12_ODD2_COMPACT_LOCALIZATION.md,
+especially the four-node interpretation following (9). Full ODD2 remains open.
+
+The earlier FIRST_ORDER_COMPENSATION_PREFLIGHT report excludes a particular
+POINTWISE local storage using (P,P'). R2--R7 perform a full integrated
+comparison instead. They do not contradict that scoped obstruction.
+
+The next unknown raw size is three. Its normalized determinant is precisely
+
+    1+2 r12 r13 r23-r12^2-r13^2-r23^2,                      (R14)
+    rij=V(xi,xj)/sqrt(D(xi)D(xj)) in (0,1).
+
+R14 is not proved here for theta. Even all triples would not prove all ranks.
+
+For a fixed pivot a, completing one square leaves the kernel
+
+    S_a(x,y)=V(x,y)-V(x,a)V(a,y)/D(a).                      (R15)
+
+R6 pays S_a(x,x)>0 for x!=a. All-rank closure would require the full S_a
+to be positive semidefinite, not merely its diagonal. R2--R7 do not show
+that S_a retains the source representation or concavity comparison needed
+to repeat this argument. That preservation, or an independent whole-kernel
+bound, is the exact missing interface. It is not asserted to exist.
+
+## 7. Verification, evidence and decision
+
+Parent: original published theorem and source normalization checked visually;
+all transformations, strictness, complex coefficients, Gram-order obstruction,
+exact rational jets, finite-difference limit and R13 domain proof checked.
+
+Artifacts:
+
+- this intake;
+- docs/Codex/certificates/RANK_TWO_CONTROL_JETS_20260914.py, SHA256
+  a7a45f81c969ac8e0e786c71dc73d53f2cd9849a631f7adb18997b92ba91b95f;
+- same prefix .json, SHA256
+  fed9520a4b0c5e155a99937572f1de9e5c858991db786e7dc59f0e9f924d020e.
+The JSON retains exact output, named-source evidence and the incomplete shelf
+receipt. Raw PDF/renders/shelf output are retained in the owned external
+rank-two-intake evidence directory, not added to the source repository.
+
+The independent read-only checker /root/sibling5_check returned CLEAN on
+the exact full draft SHA256
+ccefc3df9652a95085ceb9d89fe3976358f0eed2cbfa964023cabe2caa7c625d.
+The checker confirmed source normalization, strictness and all complex rows,
+the Gram-order boundary, executed exact jets, finite differences, R13 dominated
+convergence, and RAW2 versus ODD2. Only acceptance metadata and formatting
+were added afterward; all mathematical formulas and proofs are unchanged.
+No Lean certification or canonical node close is claimed.
+The actual two-shift negative-witness search is excluded by R7.
+This is new accepted family progress relative to the preceding local
+obstruction, not an all-rank sign theorem. Historical failed attempts are not
+deleted and no progress percentage for RH is inferred.
+
+
+## File: docs/Codex/REPORT_2026-09-15_LAYER_GRAM_TEST.md
+
+# Exact cancellation layers: a working quartic Gram map and the theta obstruction
+
+STATUS: ANALYTIC_PAPER; exact-payload independent review belongs to the adjacent certificate.
+SOURCE_BASE: 9579d415dc05cbc54b0300b2eb8de6238da2bee4.
+CONSUMPTION: INCOMPLETE_NO_CONSUMABLE_TARGET; isolated research, not canonical admission.
+FULL_THETA_V / IC / ODD2 / RH: OPEN. ACTUAL_NEGATIVE_V_WITNESS: NONE.
+PX_RH_CLAIM: NOT_MADE.
+
+AUTOPSY: dropped=OBJECT_IDENTITY; note=An independent Gram representation of each fixed cancellation layer cannot exist for all sufficiently small positive layers of the full theta source; positivity after integrating the layers remains open.
+
+## 1. Exact question and reconciled inputs
+
+The owner asked to continue the search for a source-built common Gram map.
+Test ONE proposed construction: first use the exact cancellation change of
+variables already proved in RAW2, then make EACH resulting integrand a Gram
+kernel. If that works, a direct integral supplies the whole common space.
+The mechanism is stronger than positivity of the integrated kernel.
+
+Keep f=Phi/||Phi||_2, the complete theta source, and I=(-log(2)/2,0).
+The unchanged consumer requires every finite node family and every complex
+coefficient row. Set m=(x+y)/2, d=(x-y)/2. RAW2 gives exactly
+
+    V(x,y)=integral_0^infinity K_s(x,y) ds,
+    K_s(x,y)=f(sqrt(s+m^2)+d) f(sqrt(s+m^2)-d).             (L1)
+
+There is no discarded boundary: the odd integral on [m,-m] cancels when
+m<0 before s=u^2-m^2 is substituted. Every K_s is positive-valued; that
+alone says nothing about its arbitrary finite quadratic forms.
+
+Pinned local inputs under docs/Codex:
+
+| File | SHA256 | Used part |
+| --- | --- | --- |
+| REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md | 51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f | R2-R5, exact L1 and all two-node comparisons |
+| REPORT_2026-09-13_ANALYTIC_POSITIVITY_PROPAGATION.md | fb83c216aef4687425074732904f9d2f52aac77527a926e7556fb0067335e2bd | A1, all-rank analytic propagation |
+| REPORT_2026-09-14_FIRST_ORDER_COMPENSATION_PREFLIGHT.md | 758eb21c80cb405fa242bc5e6a6ce38053cbe9edc997752ac01480aa5c6c55e7 | F8-F10, differentiated complete-source tail |
+| REPORT_2026-09-14_SCHUR_REPEATABILITY.md | fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190 | S6, exponential/tensor Gram identity |
+
+The prior passivity/finite local-state tests and the quartic Lee-Yang sibling
+were reconciled first. This is not a new discovery of that sibling and does
+not repeat its spin-limit construction. The new test concerns the explicit
+K_s in L1; the derivations below are self-contained except for the pinned
+full-source bounds and the re-explained propagation lemma. No new external
+theorem, semantic-shelf absence, numerical scan, or canonical supplier is
+claimed. Existing incomplete semantic-index receipts remain incomplete.
+
+## 2. A sibling for which this exact construction succeeds at every rank
+
+Take, separately from theta,
+
+    f_(a,b)(u)=C exp(-a u^4-b u^2), C>0, a>0, b real.
+
+This is positive, even and integrable with every required polynomial weight.
+The same identities also cover a=0,b>0 as the Gaussian limit. Direct expansion
+of the TWO shifted arguments in L1 gives
+
+    (sqrt(s+m^2)+d)^2+(sqrt(s+m^2)-d)^2=2s+x^2+y^2,
+    (sqrt(s+m^2)+d)^4+(sqrt(s+m^2)-d)^4
+      =2s^2+4s(x^2-xy+y^2)+x^4+y^4.                       (L2)
+
+Define the real positive weight
+
+    w_s(x)=C exp[-a s^2-b s-(4as+b)x^2-a x^4].
+
+Then the full integrand, including every mixed term, is
+
+    K_s(x,y)=w_s(x) w_s(y) exp(4as xy).                    (L3)
+
+An explicit common feature map, indexed by s>=0 and integer n>=0, is
+
+    psi_x(s,n)=w_s(x) (4as)^(n/2) x^n / sqrt(n!).          (L4)
+
+The n=0 factor is 1, including when as=0; higher factors vanish when as=0.
+Use H=L2([0,infinity),ds; ell2(N_0)). The exponential series proves
+
+    sum_n conjugate(psi_x(s,n)) psi_y(s,n)=K_s(x,y).
+
+Each psi_x belongs to H: its squared norm is
+integral_0^infinity K_s(x,x) ds=V_(a,b)(x,x)<infinity.
+Cauchy--Schwarz therefore justifies the inner product over s and n; for a
+finite complex row all mixed terms are absolutely integrable. Consequently
+
+    V_(a,b)[c]=integral_0^infinity sum_(n>=0)
+                  |sum_i c_i psi_(x_i)(s,n)|^2 ds >=0.    (L5)
+
+This is an independent construction from the source, not a square root of
+an unknown-sign matrix. It covers all real nodes, arbitrary N and complex c.
+For a>0 and distinct nodes it is strictly positive for nonzero c: at each
+s>0, the first N monomial coordinates give an invertible Vandermonde matrix
+after nonzero column scalings. For a=0,b>0 only n=0 remains, recovering the
+known rank-one Gaussian identity V(x,y)=f(x)f(y)/(2b).
+
+## 3. A necessary condition for transferring the same construction to theta
+
+Simultaneous reflection preserves K_s because f is even. Work on any open
+positive interval J; reflection will return to I. At s=0 and x,y>0,
+
+    K_0(x,y)=f(x)f(y).
+
+Normalize by this known positive rank-one factor, not by an unknown matrix:
+
+    W_s(x,y)=K_s(x,y)/(f(x)f(y)), W_0=1,
+    q(u)=f'(u)/f(u).
+
+For fixed positive x,y, differentiation of the square root in L1 at s=0
+is legitimate (m>0), and gives the EXACT tangent kernel
+
+    J_q(x,y)=partial_s W_s(x,y)|_(s=0)
+            =(q(x)+q(y))/(x+y).                          (L6)
+
+Suppose K_s were PSD on J for every sufficiently small s>0. Then W_s is
+PSD by diagonal congruence. For any finite row z with sum z_i=0,
+
+    0 <= z^*W_s z=s z^*J_q z+o(s),
+    hence z^*J_q z>=0.                                   (L7)
+
+This is conditional PSD of J_q, on zero-sum rows. Apply first finite
+differences in BOTH arguments. Each difference is a zero-sum functional;
+arbitrary linear combinations still have total coefficient zero. Taking
+their finite-dimensional limit in L7 proves that the kernel
+
+    C_q(x,y)=partial_x partial_y J_q(x,y)
+      =[2(q(x)+q(y))-(x+y)(q'(x)+q'(y))]/(x+y)^3          (L8)
+
+must be PSD on J for all finite rows. On its diagonal,
+
+    C_q(x,x)=[q(x)-x q'(x)]/(2x^3).                       (L9)
+
+Notice the distinctions: C_q is NOT the earlier C_V=partial_x partial_y
+log V, and PSD of K_s is NOT inferred from positivity of K_s(x,y).
+
+## 4. Full theta violates this necessary condition on every positive interval
+
+The complete-source estimates F8-F10 give, as x->infinity,
+
+    q(x)=-2pi exp(2x)+9/2+O(exp(-2x)),
+    q'(x)=-4pi exp(2x)+O(exp(-2x)).                       (L10)
+
+These estimates include controlled derivatives of all n>=2 theta modes;
+the source has not been replaced by its first mode. Fix any y0>0. Inserting
+L10 in the exact formulas L8-L9 gives
+
+    C_q(x,x) ~ 2pi exp(2x)/x^2,
+    C_q(x,y0) ~ 4pi exp(2x)/x^2,
+    C_q(y0,y0) is finite.                                (L11)
+
+Therefore the actual two-node determinant of C_q obeys
+
+    C_q(x,x) C_q(y0,y0)-C_q(x,y0)^2
+       ~ -16pi^2 exp(4x)/x^4 < 0.                        (L12)
+
+This proves C_q is not PSD on the positive half-line. To bring that failure
+into the prescribed small interval, ALL-RANK analytic propagation is needed;
+moving these two nodes into J without it would be invalid.
+
+Here its hypotheses are satisfied. The full f is holomorphic on
+|Im z|<pi/4 and is nonzero on the positive real axis. Choose a connected
+complex open neighborhood Omega of that axis, contained in Re z>0 and in
+the strip, thin enough to avoid zeros of f. Such a neighborhood is the
+union of sufficiently small zero-free disks centered at positive real
+points. Then q=f'/f is holomorphic on Omega, and z+w never vanishes on
+Omega x Omega. Formula L8 is jointly holomorphic on that PRODUCT domain.
+
+For completeness, the propagation fact used here is: a Hermitian kernel
+holomorphic on Omega x Omega and PSD for every finite row on an open real
+subinterval is PSD on the whole connected real interval in Omega. At an
+interior point, limits of finite differences give PSD of every finite
+derivative/evaluation block. Finite Taylor sums then extend the evaluation
+set to a complex-disk-sized real neighborhood while retaining its mixed
+entries with all old nodes. First take the difference limit at each fixed
+Taylor degree, then the Taylor limit. Along a compact segment a uniform
+positive disk radius and a finite chain of overlapping neighborhoods carry
+any desired finite family. This is pinned A1; a mere pairwise hypothesis
+would not suffice for its derivative blocks.
+
+If C_q were PSD on ANY open J contained in (0,infinity), propagation would
+contradict L12. Thus C_q is not PSD on any such J. In particular L7 cannot
+hold on any J: otherwise first differences would make C_q PSD there.
+
+Negating L7 yields a FIXED finite row z and nodes x_i in J with
+
+    sum_i z_i=0,  z^*J_q z<0.
+
+Set c_i=z_i/f(x_i). Taylor expansion in s for this fixed finite family gives
+
+    sum_(i,j) conjugate(c_i) K_s(x_i,x_j)c_j
+       =s z^*J_q z+o(s)<0                                (L13)
+
+for EVERY sufficiently small s>0. Reflection puts all the nodes in I when
+J=(0,log(2)/2). This is an analytic existence result: no explicit numeric
+node set, rank bound, or value of the small-s threshold is claimed.
+
+THEOREM: on the required interval there is a fixed finite complex family
+whose full-theta K_s form is negative for all sufficiently small s>0.
+Consequently there cannot be independent positive Gram realizations of
+each K_s for almost every s in any full neighborhood of zero.
+
+## 5. What was learned, and the precise next requirement
+
+The quartic sibling has an explicit all-rank representation L4-L5 using
+the same exact cancellation coordinates. For actual theta, the necessary
+tangent condition L7 fails; L13 excludes this layer-by-layer transfer.
+The tail test is a discriminator for this CONSTRUCTION. It also applies
+to many other rapidly decaying sources and does not distinguish RH truth
+from falsity. Additive TN-infinity or reciprocity cannot repair the specific
+claim that these fixed K_s are PSD: L13 already uses the actual theta source.
+
+L13 is NOT an actual negative witness for V. For that same row the identity
+remains V[c]=integral_0^infinity K_s[c] ds; the rest of the integral can
+compensate the negative contribution near zero. We prove neither sign of
+that total. This does not alter the all-two-node V theorem, and does not
+exclude a different common Gram representation of the whole integral.
+
+The next allowed mechanism must therefore account for cancellation between
+integration levels, or use another exact representation of the full form.
+A change to the positive state must explicitly pay the terms generated by
+mixing levels, weights and boundaries. Reasserting K_s>=0 as matrices,
+changing it to another positive comparison kernel without proving equality,
+or relabelling abstract Gram existence would repeat the failed step.
+
+No all-rank theta sign delta, Lean proof, canonical CLOSES/OPENS, new Proshka
+request or RH claim results from this bounded test.
+
+
+## File: docs/Codex/REPORT_2026-09-16_RESOLVENTGRAM_INTAKE.md
+
+# RESOLVENTGRAM — exact map obstruction and an early diagonal filter
+
+STATUS: INDEPENDENTLY_ACCEPTED_PAPER; NAMED_MAP_AND_STATIONARY_TAIL_FILTER_ONLY.
+SCOPE: the named normalized Mellin/Cauchy map, plus the separately reviewed
+stationary positive tail-Gram identity filter; no full-V sign conclusion.
+
+## 1. Exact received object
+
+Request: `REQ-2026-09-16-RESOLVENTGRAM`, boundary
+`GOAL058_FULL_SOURCE_RESOLVENT_GRAM_TO_WEIL_KERNEL`.
+Request commit: `5fb0c0693427a870409446cf24416790f06e69f2`.
+Request SHA256: `f8014d60f15d8ab17d8ae2bc7a2fa4e25d680e94d20988fb5ce7d8a2867ef514`.
+
+Raw response, retained unchanged:
+`docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_RESOLVENTGRAM_2026-09-16.md`
+at commit `9051998df0dc748d2f9e647d012350661d068d5e`.
+SHA256: `d3fc01e09bde88074d657f031c9701bdbf1e6d985c8d50e7ba3a3fc1381ccfb9`;
+44665 bytes, 481 LF, final LF; blob
+`412d8e273c4e1d43f30f1134708c48b3a96e4d4b`.
+
+The parent read the full response and reproduced the source normalization,
+conjugate-first Fourier transport, full-mode bounds, diagonal defect, and
+finite-frequency-row passage. An independent reviewer accepted the raw
+response as `ACCEPT_NORMALIZED_MELLIN_CAUCHY_MAP_OBSTRUCTION_ONLY`.
+Raw-review SHA256:
+`79517b65b7af3bc1bdd8b3f700b52b10af5acd6b9527172c09fd4daed121c586`.
+
+Source pins at that commit:
+
+- `docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md`, SHA256
+  `1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282`.
+- `docs/Codex/REPORT_2026-09-16_RESOLVENTGRAM_MELLIN_PREFLIGHT.md`, SHA256
+  `ded92e32d79596b0292c6dac13c3ffb8dc26972f8cda81ecf88613867703deba`.
+- `docs/Codex/REPORT_2026-09-16_RESOLVENTGRAM_RECIPROCAL_GAMMA.md`, SHA256
+  `26013672622466181a73cc5e567befd702b5264e61f65510194a9b7d60e9dd27`.
+
+## 2. What the proposed positive object actually represents
+
+Keep the full source r, its Laplace transform L, lambda_n=pi*n^2,
+A=||Phi||_2, and original f=Phi/A. The consumer is exactly
+
+  K_2(u,v)=[conj(R_2(u))+R_2(v)]/[4+i(u-v)],
+  R_2(u)=xi'(5/2-iu)/xi(5/2-iu).
+
+With q_u=3/4-iu/2, reciprocity gives the convergent Mellin identity
+
+  B(q)=integral_0^infinity v^(q-1)L(v)dv
+      =2 Gamma(q) xi(1+2q),
+  F_2(u)=B(q_u)/(2 A Gamma(q_u)),
+  R_2(u)=1/2 [B'(q_u)/B(q_u)-psi(q_u)].             (I1)
+
+The actual Gram uses
+
+  b_n(u)=[integral_0^infinity v^(q_u-1)L(v)/(lambda_n+v)dv]/B(q_u),
+  G(u,v)=2 sum_n conj(b_n(u))b_n(v)/[4+i(u-v)].       (I2)
+
+It is PSD on every finite complex frequency row: its explicit features are
+sqrt(2)*b_n(u)*exp(-2 tau+i u tau), tau>=0. Complex normalized Mellin weights
+are not called positive measures. The Gamma correction in I1 is retained,
+as are all terms of the signed defect Delta_eta=K_2-eta G (raw RG10).
+
+Its exact physical image is
+
+  v_n(t)=integral_0^t r(t-y)exp(-lambda_n*y)dy,
+  phi_n(x)=A^(-1)exp(-5x/2)v_n(exp(-2x)),
+  V_G(x,y)=2 sum_n integral_0^infinity phi_n(x+X)phi_n(y+X)dX. (I3)
+
+The matched Fourier identity is
+
+  conj(F_2(u)) Delta_eta(u,v) F_2(v)
+    =integral_R^2 exp(2(x+y)) [V(x,y)-eta V_G(x,y)]
+                    exp(i u x-i v y) dx dy.          (I4)
+
+The source estimate r(t)<=4*pi^2*t*exp(-pi*t), its reciprocal counterpart,
+and the summable lambda_n^(-2) budget justify the full sums and integrals.
+The factor 4 comes from the complete product over n>=2, not a truncation.
+The parent checked the factors 2 and A and both Fourier phases in I1-I4.
+
+## 3. Exact obstruction: positive energy survives where V cancels it
+
+For R>0, evenness of the full source gives
+
+  V(-R,-R)=2 integral_R^infinity y f(y)^2dy -> 0+,    (I5)
+
+whereas the positive image accumulates a nonzero full norm:
+
+  V_G(-R,-R) -> 2 sum_n ||phi_n||_2^2 > 0.           (I6)
+
+This is not a negative V witness: the V in I5 is strictly positive.
+The raw proof strengthens the mismatch to an explicit strict bound. With
+
+  d_*=2 integral_0^1 exp(-5y)v_1(exp(-2y))^2dy > 0,
+  C_V=8*pi^3*(9/(2*pi*e))^(9/2),
+
+any R>=1 satisfying C_V*exp(-pi*exp(2R))<=eta*d_*/2 gives
+
+  V(-R,-R)-eta V_G(-R,-R)<=-eta*d_*/(2*A^2)<0.      (I7)
+
+For every fixed eta>0 such an R exists. No numerical evaluation is needed.
+The continuous integrable kernel in I4 then has a negative compact smooth
+bump test. Fourier inversion, Schwartz-tail control and finite Riemann
+approximation produce a finite frequency row beta with a strict negative
+quadratic value. Setting a_j=F_2(u_j) beta_j returns precisely
+
+  sum_ij conj(a_i)[K_2(u_i,u_j)-eta G(u_i,u_j)]a_j<0. (I8)
+
+Every F_2(u_j) is nonzero by Euler in Re s=5/2 and Gamma nonvanishing;
+no bounded inverse multiplier on a whole function space is assumed.
+The frequency row is proved to exist analytically; its rank, nodes and
+numerical coefficients are not claimed to have been computed.
+
+Conclusion: no fixed eta>0 and no PSD kernel B, of any rank, can give
+K_2=eta G+B for this named map. This includes a PSD boundary repair.
+It does not exclude a different map or prove negativity of K_2 itself.
+
+## 4. Parent addition: reject stationary positive tail identities locally
+
+This smaller necessary test already works on the original negative interval
+I=(-log(2)/2,0), without taking a node outside I.
+
+Let Psi:R->H be strongly measurable into a Hilbert space, with finite tails
+on an open negative interval, and define
+
+  T_Psi(x,y)=integral_0^infinity <Psi(x+t),Psi(y+t)>dt.
+
+For x1<x2 in I, with the first argument conjugate-linear,
+
+  T_Psi(x1,x1)-T_Psi(x2,x2)
+      =integral_x1^x2 ||Psi(u)||^2du >= 0.           (I9)
+
+Every such stationary positive tail Gram has a nonincreasing diagonal.
+No differentiability of Psi is used. For the original continuous positive
+even f, however,
+
+  D(x)=V(x,x)=2 integral_|x|^infinity u f(u)^2du,
+  D'(x)=-2x f(x)^2>0 for x<0.                       (I10)
+
+Thus T_Psi cannot equal V on any open negative interval. Constant positive
+multiples and Hilbert direct sums remain in the excluded class.
+
+This DOES NOT exclude arbitrary Gram representations <Psi_x,Psi_y>,
+nonstationary fields Psi(x,t), node-dependent weights, signed interference,
+or T_Psi plus an independent PSD boundary kernel on bounded I. In particular,
+I9-I10 alone do not prove the stronger arbitrary-positive-addition result
+I8. That result needs the named map and its exact global Fourier transport.
+No alternative listed here is asserted to work.
+
+The candidate for this section was separately independently accepted as
+`ACCEPT_STATIONARY_POSITIVE_TAIL_GRAM_EXACT_IDENTITY_FILTER_ONLY`.
+Candidate SHA256:
+`f3bddf93615da4eb36596f1d6211fbf7045c898b8cc41b35d227048a9f8368cd`.
+Review SHA256:
+`1021ca7ae23bce94d7d29d26acfb906d73c4785a07f813f4d7176e969f165792`.
+
+## 5. Decision and remaining obligation
+
+The request is answered. The tested positive source-to-consumer map is
+rejected analytically, including its constant rescalings and PSD additions.
+The early filter I9-I10 prevents repeating stationary positive half-line
+lifts that cannot even preserve the target diagonal. Reopening this exact
+map requires an error in the identities or the strict defect proof, not a
+new positive coefficient.
+
+The next construction must account for the original reciprocal cancellation
+before claiming an exact positive representation. Matching the diagonal
+is a cheap necessary condition, not a sufficient sign theorem. Matching
+all mixed entries and every finite complex row remains mandatory.
+The existing exact signed identities are retained; their total sign is
+still unpaid. No automatic new Proshka proof request is issued by this intake.
+
+Full-V sign progress: NONE. Negative original-V witness: NONE.
+RH proved or refuted: NO. Joint additive TN and reciprocity refuted: NO.
+Other Gram maps excluded: NO. Lean runs: 0. Canonical admission: NO.
+PX_RH_CLAIM: NOT_MADE. This is independently reviewed analytic research,
+not formal kernel certification or canonical proof-node closure.
+
+AUTOPSY: dropped=OBJECT_IDENTITY; note=The named positive tail image retains a nonzero norm while the exact reciprocal V diagonal cancels to zero; a PSD correction cannot repair that map, and full V sign remains open.
+
+## Independent intake acceptance
+
+Reviewer `/root/sibling5_check` checked the full raw response, the separate
+stationary-tail filter, and this complete intake. Intake verdict: CLEAN_INTAKE.
+Candidate SHA256: `4f0c4d754de200bb0bcb4a5f29f1bffd6e84cddc83a2c9d14bed713e0e8210c5`.
+Intake review SHA256: `7434c47a1327115a06233fafdd984cfbadefd27a0f3cffe6c5f0db192721a083`.
+Only the status line and this receipt were added after intake review.
+The companion certificate preserves all three full independent reviews.
+No source-sign counter was reset and no canonical node was closed.
+END_PINNED_CONTEXT

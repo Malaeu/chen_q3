@@ -1,0 +1,160 @@
+{
+  "scope": "ISOLATED_ANALYTIC_PAPER_NOT_CANONICAL_ADMISSION",
+  "source_base": "12db0efd95e911bd558bfd4a80558e9a199eb8fa",
+  "report": "docs/Codex/REPORT_2026-09-15_INTEGRATED_SIGN_HUNT.md",
+  "sha256": "8560b8c70e35fd76dbb2820471440aa802cefe21f9928e957c9f2e0be7dbe8eb",
+  "brief": {
+    "path": "gamma-reciprocity-worktree/docs/Codex/BRIEF_2026-09-15_INTEGRATED_SIGN_HUNT.md",
+    "sha256": "cdd5eb4d911e3712531bfd93d03544329cbf10e3f352d84f335ca15d4912f5cb",
+    "bytes": 3707
+  },
+  "review": {
+    "class": "ADVERSARIAL_READ_ONLY",
+    "reviewer": "/root/sibling5_check",
+    "verdict": "CLEAN",
+    "exact_payload_sha256": "8560b8c70e35fd76dbb2820471440aa802cefe21f9928e957c9f2e0be7dbe8eb",
+    "text": "H2 fixed-layer two-node PSD and H4 finite negative layer distinguished; H5-H6 prefix obstruction scoped; H7 p2 normalization and complex algebra correct with theta hypotheses unpaid; H9 factor 1/pi, H10 cutoff/derivative and H11 a.e. common multiplier obstruction correct, including Gaussian endpoint. No circular sign or integrated negative-witness overclaim."
+  },
+  "source_pins": [
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-15_LAYER_GRAM_TEST.md",
+      "sha256": "a402aa67f81824945d3324881e2a822a8e897a07316b3dc780e671228715e1eb",
+      "bytes": 10901
+    },
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md",
+      "sha256": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f",
+      "bytes": 13154
+    },
+    {
+      "path": "gamma-reciprocity-worktree/docs/Codex/REPORT_2026-09-13_NULL_AND_GROUND_STATE_TEST.md",
+      "sha256": "19ce3481523bfb3f3f9ba8be24f2c86dc2f1916d80f9535a451d010bceef0d95",
+      "bytes": 12961
+    }
+  ],
+  "shelf_searches": [
+    {
+      "query": "Abel integration cumulative integral positivity Steffensen signed integral",
+      "exit": 2,
+      "raw": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/integral-sign-hunt-20260915/ask_1.txt",
+      "sha256": "31b283e0c1282f395533a12c40b1e1386da0436ee670b113752817422bca4c91",
+      "bytes": 12329,
+      "status_lines": [
+        "  · q3_docs: semantic-index freshness validation failed",
+        "ASK_STATUS: INCOMPLETE"
+      ]
+    },
+    {
+      "query": "nonlocal ground state representation Picone positive interaction kernel",
+      "exit": 2,
+      "raw": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/integral-sign-hunt-20260915/ask_2.txt",
+      "sha256": "0e82277cecaf5ed03540322edf57f5db6244c0966ffd0cdfb928d35851734d0c",
+      "bytes": 10964,
+      "status_lines": [
+        "  · q3_docs: semantic-index freshness validation failed",
+        "ASK_STATUS: INCOMPLETE"
+      ]
+    },
+    {
+      "query": "Plancherel spectral factorization positive type integral kernel",
+      "exit": 2,
+      "raw": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/integral-sign-hunt-20260915/ask_3.txt",
+      "sha256": "0d3cd633ca5c665b3aa38447680b5854b1f8d67af0d2696aed26a733ea5d6623",
+      "bytes": 10984,
+      "status_lines": [
+        "  · q3_docs: semantic-index freshness validation failed",
+        "ASK_STATUS: INCOMPLETE"
+      ]
+    }
+  ],
+  "shelf_interpretation": "All INCOMPLETE freshness; no absence or semantic admission claim; no index repair performed",
+  "primary_sources": [
+    {
+      "mechanism": "Abel-Steffensen cumulative integral",
+      "url": "https://arxiv.org/pdf/1707.03236",
+      "version": "1707.03236v1",
+      "locator": "Introduction p1; section3 Theorem2 and proof pp5-6",
+      "files": [
+        {
+          "path": "integral-sign-hunt-20260915/abel.pdf",
+          "sha256": "1e7d66eecede5738f6476fcafc71a8f3372bbf89fa23b195880130ddbfc444c4",
+          "bytes": 162978
+        },
+        {
+          "path": "integral-sign-hunt-20260915/abel.txt",
+          "sha256": "a340599b8acd8949e2f6f3b718d44f9e98d1bc3867ad12fe01ad502784a68889",
+          "bytes": 34450
+        }
+      ],
+      "visual_check": "Rendered and viewed PDF pages1 and5",
+      "theta_fit": "Direct universal prefix-positive premise false by H6; regrouped variant unverified"
+    },
+    {
+      "mechanism": "Nonlocal ground-state pair energy",
+      "url": "https://arxiv.org/html/0803.0503v2",
+      "version": "0803.0503v2",
+      "locator": "Section2.1 Assumption2.1, Proposition2.3 (2.5), proof (2.17)-(2.19)",
+      "files": [
+        {
+          "path": "residual-compensation-hunt/ground_state.html",
+          "sha256": "7bb71219df750fc62cccc14fa784ae0e5ea736799de1b85807a8f25c9af8d9d1",
+          "bytes": 607722
+        },
+        {
+          "path": "residual-compensation-hunt/ground_state.source.txt",
+          "sha256": "5f2c9615e6497f61d64f4ed460e48daf9fec9e5de2d3ddccdb3429aeff67ba12",
+          "bytes": 62949
+        }
+      ],
+      "theta_fit": "UNVERIFIED: positive pair kernel, source equation and whole-form/domain identification missing",
+      "display_caveat": "Repeated omega(x) in displayed E_omega; report derives distinct weights by exact p2 algebra"
+    },
+    {
+      "mechanism": "Fourier positive spectral energy",
+      "url": "https://terrytao.wordpress.com/2009/04/06/the-fourier-transform/",
+      "version": "Lecture notes dated 2009-04-06; fetched current HTML",
+      "locator": "Exercise14 equation5; Exercise29; Theorem43 and preceding Parseval identity",
+      "files": [
+        {
+          "path": "integral-sign-hunt-20260915/tao_fourier.html",
+          "sha256": "1ee4827784ca788bfe5bd43925abb3994466f594a54811e8f9a3b19904bfb5cd",
+          "bytes": 789327
+        },
+        {
+          "path": "integral-sign-hunt-20260915/tao_fourier_text.txt",
+          "sha256": "6382c499fc57089023f7033d63c3d94471d805c3fda82eea0e3277e3373b09eb",
+          "bytes": 145776
+        }
+      ],
+      "theta_fit": "Exact cross-product and cutoff H9-H10; common scalar multiplier impossible by H11; augmented transform unbuilt"
+    }
+  ],
+  "parent_checks": [
+    "H2 determinant and H3 real-pair expansion checked for complex coefficients",
+    "H4 integrated using fixed-row o(s) bound to prove H6",
+    "H7 symmetric double integral expanded with factor2 potential equation",
+    "H9 checked from V=2 Re inner(P,Q) and angular Parseval",
+    "H10 shift and oriented cutoff retained; derivative and Gaussian endpoint signs checked",
+    "H11 strict derivative and continuity on common nonzero-frequency neighborhood checked",
+    "Primary source locators read; fetched source hashes and local report pins checked"
+  ],
+  "tool_notes": [
+    "Initial author-hosted Abel fetch failed TLS certificate validation; no verification disabled. Official arXiv PDF fetched with normal TLS instead.",
+    "Abel HTML endpoint returned404; no claim based on it.",
+    "An unused guessed lecture PDF endpoint failed; not a verified source.",
+    "No numerical theta evaluation, quadrature, finite-rank sweep, package installation or Lean run."
+  ],
+  "result_scope": [
+    "All two-node new s-layers and a restricted phase cone have nonnegative forms",
+    "Universal initial partial-integral positivity fails for some actual-theta finite row",
+    "Common scalar Fourier multiplier fails even for Gaussian; general spectral compensation not excluded",
+    "Nonlocal pair-energy transfer to actual theta remains unverified"
+  ],
+  "source_sign_progress": false,
+  "actual_theta_negative_V_witness": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "new_proshka_request": false,
+  "next_requirement": "Construct an exact source-defined pair kernel or augmented transform for the complete V, paying all cutoff, weight and boundary terms. Check proposed hypotheses against f0 before all-rank use.",
+  "counter_note": "One owner-requested bounded hunt; checks/review are not additional attempts. No source-sign counter reset or aggregation of historical counters."
+}

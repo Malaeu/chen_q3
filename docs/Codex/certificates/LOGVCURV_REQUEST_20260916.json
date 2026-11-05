@@ -1,0 +1,62 @@
+{
+  "schema": "q3_isolated_proshka_dispatch_review.v1",
+  "status": "CLEAN_DISPATCH_NOT_SENT",
+  "request_id": "REQ-2026-09-16-LOGVCURV",
+  "boundary_id": "GOAL058_FULL_INTEGRATED_V_LOG_CURVATURE_ENTRANCE",
+  "call_class": "DELEGATED_STRATEGIC_REVIEW",
+  "source_base": "15c6ef56f190975eb945ccec50e53a9b44d2a74b",
+  "request_path": "docs/routeB_bus/proshka/PROSHKA_REQUEST_GOAL058_LOGVCURV_2026-09-16.txt",
+  "request_sha256": "4646b45b430b95242e914196c9be4715f4693f984852daeae0113f4b7bc0a734",
+  "request_bytes": 83412,
+  "request_LF": 1729,
+  "manifest": {
+    "source_base": "15c6ef56f190975eb945ccec50e53a9b44d2a74b",
+    "context_sha256": "a448e6ba5920b4e98f823718f2f4185f39b78c464273f4f1b830dc70e7276463",
+    "context_bytes": 73998,
+    "sources": [
+      {
+        "path": "docs/Codex/REPORT_2026-09-14_SCHUR_REPEATABILITY.md",
+        "sha256": "fe737941236b24c67bee7803a38014660698e852b2e61bc54f58672efb494190",
+        "bytes": 15750
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-12_FULL_SIGN_TRANSFER_AUDIT.md",
+        "sha256": "1e296a504631b58beb7863f4c7f36174bd08876cfc7093febfe00cc8306a5282",
+        "bytes": 15303
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-13_ANALYTIC_POSITIVITY_PROPAGATION.md",
+        "sha256": "fb83c216aef4687425074732904f9d2f52aac77527a926e7556fb0067335e2bd",
+        "bytes": 9318
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-14_FULL_V_RANK_TWO_INTAKE.md",
+        "sha256": "51168fb802d7facfb74291d0a3fc0009b121f540711df2fe10ae01cd84c1d14f",
+        "bytes": 13154
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-15_LAYER_GRAM_TEST.md",
+        "sha256": "a402aa67f81824945d3324881e2a822a8e897a07316b3dc780e671228715e1eb",
+        "bytes": 10901
+      },
+      {
+        "path": "docs/Codex/REPORT_2026-09-16_RESOLVENTGRAM_INTAKE.md",
+        "sha256": "bb32029105c9184e6201e5b38eda94c1eb9e01f38f29248e74ef31d6dd8eddc7",
+        "bytes": 8567
+      }
+    ]
+  },
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "ef881c1d9fc97b4c5bbd0511b065aa2d1dd68e4d2218ed46e19d236137835ae2",
+  "review_text": "# LOGVCURV dispatch review\n\nVERDICT: CLEAN_DISPATCH.\n\nReviewed request: `PROSHKA_REQUEST_GOAL058_LOGVCURV_2026-09-16.txt`.\n\n- Request: 83412 bytes, 1729 LF, 0 CR, final LF; SHA-256 `4646b45b430b95242e914196c9be4715f4693f984852daeae0113f4b7bc0a734`.\n- Manifest: SHA-256 `a3a0ade32b22632273fbfe4751d3b5e481986632886ba8f7ca736b9a82a8ad5b`.\n- `SOURCE_BASE` is `15c6ef56f190975eb945ccec50e53a9b44d2a74b`. All six manifest source paths were read from that commit; their bytes and SHA-256 agree with the manifest, and each complete source body occurs byte-exactly in the framed context. The context has 73998 bytes and SHA-256 `a448e6ba5920b4e98f823718f2f4185f39b78c464273f4f1b830dc70e7276463`, matching both request and manifest.\n\nThe target is precisely the stronger sufficient entrance `C=partial_x partial_y log V` on every finite complex row. It keeps this separate from the earlier cancellation-layer `C_q`, odd-sector curvature, named Mellin/Cauchy-map obstruction, and stationary-tail filter. The already pinned Schur bridge correctly makes all-row PSD of this *actual integrated* `C` sufficient for a common Gram representation of `V`; it does not assume that implication in advance. A negative `C` row is explicitly only a rejection of this entrance, not a negative `V` row or an RH conclusion.\n\nThe response contract preserves full-source/all-complex quantifiers, requires a genuine all-rank mechanism or an exact actual-source obstruction, forbids numerical scans, retains the foreign canonical HOLD, and assigns one response path on the existing phase/chat. No prior KILL is misrepresented as deciding this object.\n",
+  "verdict": "CLEAN_DISPATCH",
+  "parent_check": "Verified the existing C-log-kernel sufficient bridge S5-S11, full integrated definition S14 and narrower prior exclusions. Six complete source bodies byte-matched. Actual all-row C positivity is unproved and stronger than V positivity; no finite scan assigned.",
+  "source_log_curvature_positive": "OPEN",
+  "consumer_kernel_positive": "OPEN",
+  "stronger_sufficient_entrance_not_necessary": true,
+  "full_V_proved": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+  "transport": "One canonical UTF8 request attachment containing all context; short nonauthoritative same-chat notice; no Answer now."
+}

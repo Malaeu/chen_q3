@@ -1,0 +1,27 @@
+{
+  "schema": "q3_isolated_analytic_receipt.v1",
+  "status": "ACCEPT_SCOPED_RATE_MINIMUM_CURVATURE_COMPARISON_ONLY",
+  "source_base": "aa692d341c853bfcd69fae6dec7683eca2a3d4d7",
+  "report_sha256": "930d5d134cc5631c2df91afa5ffb9b4ac87a7e48260561be10f65e604454310f",
+  "reviewer": "/root/sibling5_check",
+  "review": {
+    "sha256": "5a939320cf325f5da73b8ea7ce1b702a61ae7400e0286c9d617c986b20537780",
+    "text": "# Independent review: source route comparison\n\nReviewed candidate: `REPORT_2026-09-15_SOURCE_ROUTE_COMPARISON.md`  \nSHA256: `930d5d134cc5631c2df91afa5ffb9b4ac87a7e48260561be10f65e604454310f`\n\n## Verdict\n\n**ACCEPT_SCOPED_RATE_MINIMUM_CURVATURE_COMPARISON_ONLY.**\n\nR1--R2 correctly generalize the Prékopa factorization to arbitrary finite\npositive shape-two Gamma rates.  Equal minimal rates leave zero coefficients\nin the concave logarithmic integrand and cause no failure; their polynomial\nmultiplicity is paid in the endpoint tails used for integration by parts.\nThus the curvature and tilted-variance/modulus bounds depend only on the\nminimum rate for this proof.\n\nR3 is correctly normalized: equal rates give a constant multiple of\n`exp(-lambda cosh(2x))`, so its normalized transform is the same Bessel\nmodel for every N.  This is not an xi approximation.  The report correctly\ndistinguishes dependence of this particular proof from a claim that every\npossible proof must use square rate spacing.  It adds no C6-all-R, V, or RH\nclaim.\n"
+  },
+  "result": [
+    "Prékopa gamma curvature proof extends to arbitrary finite positive shape-two gamma rates, including tied minima; depends only on minimal rate",
+    "Equal-rate geometric symmetrization yields the same normalized Bessel source for every N",
+    "Exact square rate spacing and full reciprocity have not supplied the remaining zero-cancellation proof"
+  ],
+  "limits": {
+    "exact_square_spacing_necessary_for_any_proof": false,
+    "new_RH_route_selected": false,
+    "C6_all_R_proved": false,
+    "V_sign_proved": false,
+    "RH_proved": false,
+    "canonical_admission": false,
+    "new_request_sent": false
+  },
+  "retained_route_status": "Direct Barvinok implementations parked after two bounded preflights; geometric central slab retained; arithmetic reconstruction retained as alternative",
+  "evidence_directory": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/route-comparison-20260915"
+}

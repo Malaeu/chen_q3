@@ -1,0 +1,28 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "6269c6c024441e254983c8ea83136798cbf7fe9e",
+  "source_pins": {
+    "docs/Codex/REPORT_2026-09-14_EXACT_RECIPROCAL_PAIRING.md": "3eaccc08a8ee5ced8d828340ba866a16f39d33c7e088c9b324b0bb62c4d7357a",
+    "docs/Codex/REPORT_2026-09-16_MELLIN_EDGE_PREFLIGHT.md": "a7dfba76bd7018100d312f198987a35e4a08ed163d8f5ade43d0f9244b14c1ff",
+    "docs/routeB_bus/litreview/pdfs/2007.12889.pdf": "e610f7a0de324a610fd24ee9fafa4356e5005a9af811245f016d6c0d791ed3a2"
+  },
+  "candidate_sha256": "17eaddaaeea3cef60f85311d7ea9184a707489eba754d9e4da3da9612fa0a4b1",
+  "report_path": "docs/Codex/REPORT_2026-09-16_CRITICAL_TILT_TN4.md",
+  "report_sha256": "05a4177547a018e2832107440c9adeeb3fd3f846990be192e0b322ee7f1dc7ce",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "8022cd266a4431547c568e36840cac6da090679077c4feaf390d4c5dff506e30",
+  "review_text": "# Independent review — critical power-tilt TN4 obstruction\n\n- **Reviewed candidate SHA-256:** `17eaddaaeea3cef60f85311d7ea9184a707489eba754d9e4da3da9612fa0a4b1`\n\n**VERDICT: ACCEPT_ACTUAL_POWER_TILT_ADDITIVE_TN4_OBSTRUCTION_ONLY.**\n\nThe normalization and inversion law are correct: inversion sends `k_beta` to `k_(1/2-beta)`, and the `beta=1/4` logarithmic pushforward has characteristic transform `xi(1/2-iz)/xi(1/2)`.\n\nAfter extracting the first source mode, the full-tail derivative bounds justify T4. The exponential conjugation in T5 is determinant-preserving apart from `exp(-4 pi T)`. Factoring the confluent matrix yields\n`Delta_p=12 p^3 (p-1)^2 (p-2)`, negative for `p=beta+1 in (1,2)`; the listed critical values are correct. The divided-difference limit T7 has the stated normalization, so a genuine finite ordered negative TN4 minor follows after fixing large `T` and then choosing small `h`.\n\nThe Schoenberg check is consistent: the fractional boundary pole order `beta+2` cannot be the zero order of an entire Laguerre--Polya reciprocal. It is an independent PF-infinity obstruction, while T6--T7 specifically locate TN4 failure.\n\nThis applies to the additive kernels of the tilted source laws only. It neither gives a negative original-`V` row nor excludes unrelated transferred properties or RH.\n",
+  "verdict": "ACCEPT_ACTUAL_POWER_TILT_ADDITIVE_TN4_OBSTRUCTION_ONLY",
+  "statement": "For every fixed beta in (0,1), the exact density k_beta(t)=t^beta r(t)/E T^beta has a negative ordered additive 4-by-4 minor. Includes critical beta=1/4 and reciprocal beta=1/2.",
+  "parent_check": "T1-T3 exact normalization and reciprocal law; T4 all-mode differentiated tail; T5 unit-triangular exponential conjugation; T6 Vandermonde sign; T7 actual finite minors; T8 independent Schoenberg necessary condition.",
+  "primary_read_scope": "Groechenig arXiv:2007.12889v1 printed pp1-3; Theorem1(i) p2 visually checked. Existing shelf source reused.",
+  "critical_tilt_xi_map_exact": true,
+  "source_TN4_failure": true,
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "joint_TN_reciprocity_premise_refuted": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "new_proshka_request": false
+}

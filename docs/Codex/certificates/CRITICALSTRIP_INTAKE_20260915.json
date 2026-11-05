@@ -1,0 +1,39 @@
+{
+  "schema": "q3_isolated_analytic_receipt.v1",
+  "status": "ACCEPTED_SCOPED_ANALYTIC_PAPER",
+  "date": "2026-09-15",
+  "source_commit": "08b6b69c5ff269297b04a87df128d8459ee3471b",
+  "raw_path": "docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_CRITICALSTRIP_2026-09-15.md",
+  "raw_sha256": "c84d367a7d3a30fed8671c482380c9c754f67d356846e9f6806e2a4c327f706c",
+  "intake_path": "docs/Codex/REPORT_2026-09-15_CRITICALSTRIP_INTAKE.md",
+  "intake_sha256": "f28495620937793b270bf28208019c0d3c6915cd4de00932fe48f351c37b6e21",
+  "independent_reviews": {
+    "CRITICALSTRIP_REVIEW.md": {
+      "sha256": "ae771026cb2f53c4e838e56e7fbfa28db28df4406b06cb59f6ea2bcaf7f8cdea",
+      "text": "# Independent review: uniform gamma central slab\n\nReviewed raw response:\n`PROSHKA_RESPONSE_GOAL058_CRITICALSTRIP_2026-09-15.md`  \nSHA256: `c84d367a7d3a30fed8671c482380c9c754f67d356846e9f6806e2a4c327f706c`\n\n## Verdict\n\n**ACCEPT_UNIFORM_GAMMA_ZERO_FREE_SLAB_ONLY.**\n\nThe exact simplex extraction retains the full rate product; after the\nlogarithmic substitution it includes the required `2 y_n` Jacobian-plus-shape\nterm.  The integrand is jointly log-concave on its convex support, and the\nlocalized Prékopa marginal argument proves concavity of `L_N` without a\nmoving-boundary differentiation.  This yields\n`-(log G_N)'' >= 4 pi cosh(2x)`.\n\nThe endpoint expansions pay both integrations by parts.  Under every real\nexponential tilt, the resulting variance estimate\n`Var(X) <= 1/(4 pi)` is correct.  The centered characteristic-function bound\nthen gives\n`|M_N(u+i v)| >= 1-u^2/(8 pi)` for `|u|<sqrt(8 pi)`, uniformly in every\nfinite `N` and every real `v`.  The rational calculation gives the stated\n`1/256` bound for `|u|<=5`; hence C6 holds there with `N0=1`.\n\nThe Gaussian control correctly establishes only that scalar curvature and a\nqualitative tail cannot prove the remaining range.  The answer retains the\nactual source-rate dependence as the unpaid part `(30)--(32)`, and does not\nclaim C6 for arbitrary `R`, a theta negative witness, or RH.\n\n## Primary-source readback\n\nPrékopa 1973, Theorem 6, was read from local `prekopa1973.pdf`\n(SHA256 `2bb16932ce23fa31a0f9a44fc60bee6439883ad837f500277ef95dda250b3fc3`).\nIts displayed marginal integral inequality and proof give precisely the\nlog-concavity preservation used above.  The extracted conclusion omits the\nword `concave` after `logarithmic`; the proof itself resolves that typographic\nomission.\n"
+    },
+    "CRITICALSTRIP_INTAKE_REVIEW.md": {
+      "sha256": "51758d4b0208e4d124e0b91586bb7f9ee05842f742b0cf2f20952d9f619efc28",
+      "text": "# Independent review: CRITICALSTRIP intake\n\nReviewed intake: `REPORT_2026-09-15_CRITICALSTRIP_INTAKE.md`  \nSHA256: `f28495620937793b270bf28208019c0d3c6915cd4de00932fe48f351c37b6e21`\n\n## Verdict\n\n**ACCEPT_UNIFORM_GAMMA_ZERO_FREE_SLAB_INTAKE_ONLY.**\n\nThe intake faithfully records the accepted exact-gamma slab theorem:\n`|M_N(u+i v)| >= 1/256` for every finite `N`, `|u|<=5`, and real `v`,\nwith C6 only for `R<=5`.  It does not promote the result to arbitrary-R C6,\nV positivity, or RH.\n\nThe new arithmetic comparison is correct.  Its small-`t` expansion gives\n`log H_N(x)=const-(4N+1/2)x+O_N(e^{-2x})` with the stated derivative control,\nso `-(log H_N)'' -> 0` for each fixed N.  This identifies a lost curvature\nmechanism only; it neither kills the arithmetic route nor asserts a Fourier\nzero.\n\nReadback hashes for continuity-only updates:\n\n* `REPORT_2026-09-15_SPACE_SIBLING_HUNT.md`:\n  `cf4636f825869ef9bf4ea03486e3bfdd6433ace9155d7c8f96bc2ad3e87bb1e7`.\n  The accepted mechanism text is unchanged; the update records the completed\n  CRITICALSTRIP response and retains arbitrary-R C6 as open.\n* `REPORT_2026-09-15_ARITHMETIC_RECIPROCITY.md`:\n  `b128c925d794693fdbc5b1e8257e5587060c92d60770a650f2f8d26ee6838f53`.\n  Its mathematical body is unchanged from the accepted arithmetic candidate;\n  status and continuity wording were updated for the completed request.\n"
+    }
+  },
+  "result": "All N>=1, |u|<=5, all real v: |M_N(u+iv)|>=1/256. C6 only R<=5. Arithmetic H_N has curvature tending to zero at fixed N.",
+  "primary_source": {
+    "url": "https://rutcor.rutgers.edu/Prekopa/pdf/SCIENT2.pdf",
+    "sha256": "2bb16932ce23fa31a0f9a44fc60bee6439883ad837f500277ef95dda250b3fc3",
+    "locator": "Theorem6 PDFpage8"
+  },
+  "natural_completion": {
+    "chat_id": "6aa52001-4094-83eb-9520-01a09f54eff2",
+    "chat_status_observed": "idle",
+    "message_id": "61d4c2b0-ab8c-46fc-ab21-b9243333cb2f",
+    "published_sha_matches": true
+  },
+  "limits": {
+    "C6_all_R_proved": false,
+    "RH_proved": false,
+    "full_V_sign_proved": false,
+    "canonical_admission": false,
+    "new_request_sent": false
+  }
+}

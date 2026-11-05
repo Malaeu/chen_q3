@@ -1,0 +1,844 @@
+REQUEST_ID: REQ-2026-09-17-KPSQUOTIENT
+BOUNDARY_ID: GOAL058_FORCED_FULL_THETA_KPS_QUOTIENT
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+SOURCE_BASE: 3178cd4b617031ff14246c6a29249ed6f0b27720
+DELIVERY_CHAT: 6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+One bounded analytic attempt: test the now FORCED quotient, not arbitrary interpolation.
+
+Keep the original full theta source, original V and every complex finite
+family. In the attached current preflight, the previously constructed Abel
+radius law I_*=R^2/4 forces EVERY possible Bernstein interpolation of our
+KPS integer data to agree, for every real u>0, with the single function
+
+ rho(s)=q(sqrt(s)), q=Phi/integral Phi,
+ D(u)=int_0^infinity s^(u-1/2)rho(s)ds,
+ N(u)=int_0^infinity s^(u-1/2)[-rho'(s)]ds,
+ phi_*(u)=4 N(u)/D(u).                                  (T1)
+
+D and N are holomorphic for Re(u)>-1/2. The quotient is meromorphic there.
+The entire full source is retained. q uses L1 probability normalization;
+the physical V still uses f=Phi/||Phi||_2. The required values are
+ phi_*(n)=2(2n-1)mu_(2n-2)/mu_(2n), n>=1.
+These are not adjustable. Positivity and strict increase of phi_* on the
+whole positive real axis are already proved. Do not return these as a new
+answer. The new preflight and its review certificate will be in this same
+request commit as docs/Codex/REPORT_2026-09-17_KPS_FORCED_QUOTIENT.md and
+ docs/Codex/certificates/KPS_FORCED_QUOTIENT_20260917.json.
+
+The complete sufficient endpoint is phi_* in B_P1, exactly as in KPS,
+Ann. Inst. Fourier74(1)(2024), definition4.14 and Theorem4.4, p396:
+- phi_* is a Bernstein function and a Pick function;
+- its analytic continuation has the specified 1-separation: for meromorphic
+  zeros z_k and poles rho_k, rho_k=z_k-1>z_(k+1); the stated entire case is
+  z_(k+1)<z_k-1.
+All hypotheses and versions must be read in the primary source. The
+coefficient telescope then gives F=J_(u phi_*), all F zeros real, and the
+already pinned RH/full-V transfer. This is a closed conditional route;
+class membership has not been proved or assumed. This stronger sufficient
+condition is not claimed necessary for RH.
+
+Start with a CHEAP NECESSARY ANALYTIC obstruction, on this actual theta:
+1. A violation of any Bernstein derivative sign on u>0 suffices to reject
+   this strengthened entrance.
+2. A nonreal zero u0 of D with Re(u0)>-1/2 and Im(u0)>0, whose numerator
+   does not cancel it, suffices to reject Pick membership. More generally
+   a rigorously established non-Pick continuation or failure of the exact
+   separation condition suffices. Check zero/pole multiplicities.
+3. If these gates genuinely survive, attempt a source-built Pick/complete-
+   Bernstein representation of phi_* itself (equivalently a Stieltjes
+   representation of phi_*(u)/u), plus the required zero/pole structure.
+   Neither finite region zero-freeness nor a few good derivative signs
+   licenses the full hypothesis.
+
+Use full additive PF, exact rates pi*n^2 and weighted reciprocity jointly
+where useful, and name the property that actually pays each implication.
+The preflight shows that weighted reciprocity ALONE is just evenness after
+this logarithmic change: an even control pulls back to exact exponent5/2
+reciprocity while failing additive PF2. Do not count that symmetry twice.
+
+The available negative control is q0 proportional to exp(-x^2)-exp(-2x^2)/4.
+Its unique BF interpolation is 4(1-2a2^(-u))/(1-a2^(-u)), a=2^(-5/2).
+It has nonreal poles and nonreal Fourier zeros. It also has the positive
+Abel law, and a reciprocal pullback, but lacks actual additive PF. Therefore
+ordinary Bernstein positivity, a positive radial law, or a positive
+exponential functional cannot substitute for the full theorem hypothesis.
+This control is a discriminator, not evidence against the actual phi_*.
+
+Work analytically. No numerical root hunt, quadrature campaign, finite-rank
+sweep or truncated-source replacement is assigned. An analytic existence
+obstruction with a strict margin is acceptable; do not invent coordinates.
+If no decisive mechanism is found, state the FIRST unpaid implication and
+the exact scope of any new lemma. Do not keep generating higher finite
+checks or describe a tautological rewriting as a new estimate. A failure
+of this strengthened route does not prove a negative original V or refute RH.
+
+Return an operative TRY_* or KILL_* with full proof, complete source bounds,
+normalizations and scope. If the forced-quotient preflight is wrong, identify
+the exact first error before using it. Do not assume the KPS paper's xi
+interpolation subsection solves its open question; equations4.15--4.18 are
+not inputs to our coefficient derivation. The primary PDF SHA is in the
+preflight; its published Theorem4.4 is an external theorem, not re-proved here.
+
+Authorized publication: write ONLY
+ docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_KPSQUOTIENT_2026-09-17.md
+in branch codex_mac/gamma-reciprocity-20260914. Inspect fresh branch state,
+preserve unrelated work, make a scoped normal commit and push, and verify
+remote bytes. Do not change canonical rh_clean, controls, phase, goal,
+source-sign counter, or any other author's files. Independent review awaits
+any returned mathematical claim. If publication fails, report exact status;
+do not mark it PUBLISHED before remote verification.
+
+In this chat return one short receipt: commit | response path | operative
+verdict and its precise scope. Full mathematics belongs in the GitHub file.
+The historical evidence pack below is context; this request is the current
+controlling instruction. An embedded source candidate retains its reviewed
+original status line; the current acceptance, if any, is in the same-commit
+report and certificate named above.
+
+BEGIN_CURRENT_PREFLIGHT_CANDIDATE
+# The existing Abel lift forces a single KPS quotient
+
+STATUS: PAPER_CANDIDATE; independent review pending.
+Base: 3178cd4b617031ff14246c6a29249ed6f0b27720. Isolated analytic research.
+FULL_V_SIGN: OPEN. RH: OPEN. Canonical production remains HOLD.
+
+## Source, old construction, and exact question
+
+Use the unchanged complete source r, Phi, q=Phi/Z and original V from
+REPORT_2026-09-17_KPS_MOMENT_INTERFACE.md. In particular
+
+    r(1/t)=t^(5/2)r(t), Phi(x)=exp(5x/2)r(exp(2x)),
+    Z=xi(1/2), F(z)=int exp(izx)q(x)dx=xi(1/2+iz)/xi(1/2),
+    mu_(2n)=int x^(2n)q(x)dx,
+    b_n=2(2n-1)mu_(2n-2)/mu_(2n), n>=1.                  (1)
+
+The published KPS sufficient class is B_P1: Bernstein--Pick with the
+specified 1-separation of zeros/poles. Membership for an interpolant of
+ALL values b_n would imply real zeros of F by KPS Theorem 4.4. It is not
+known for theta. The previous report proved only b_(n+1)>b_n, and supplied
+an explicit ordinary-Bernstein control with nonreal poles and nonreal zeros.
+
+An older accepted construction is available in
+REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md: q is the coordinate marginal of
+a positive rotational law. The question now is whether its exact radius
+removes the apparent freedom to choose a different Bernstein interpolant.
+It does. This does not prove that any Bernstein interpolant exists.
+
+## Q1. Reuse the actual positive Abel lift
+
+The source is positive, even, strictly decreasing for x>0 and has
+super-Gaussian decay with its fixed derivatives. Let
+
+    g(a)=-(1/pi)int_a^infinity q'(x)/sqrt(x^2-a^2)dx,
+    P(R in da)=2pi a g(a)da, a>=0,
+    U uniform on [0,2pi), independent of R.
+
+The pinned Abel report proves g>=0, total planar mass 1, and R cos U has
+exactly density q. We reuse this construction, not the unproved finite
+Villain realization. Put
+
+    I_*=R^2/4,  w_*(v)=4pi g(2sqrt(v)), v>0.              (2)
+
+It is a positive probability law. For each n>=0, the elementary angular
+integral E cos(U)^(2n)=(2n)!/[4^n(n!)^2] gives
+
+    m_*(n):=E I_*^n = (n!)^2 mu_(2n)/(2n)!.              (3)
+
+This identity keeps all source modes. In particular the KPS values are
+
+    b_n=n m_*(n-1)/m_*(n).                              (4)
+
+All exponential moments of I_* exist. Indeed Tonelli and q'<0 give, for
+c>0,
+
+    E exp(c I_*)
+     =-2 int_0^infinity q'(x)
+          int_0^x a exp(ca^2/4)/sqrt(x^2-a^2) da dx
+     <=-2 int_0^infinity x q'(x)exp(cx^2/4)dx<infinity.  (5)
+
+The last inequality is paid by the full differentiated theta tail. Thus
+I_* is moment determinate; alternatively its moment generating function
+is entire by dominated convergence on bounded complex sets.
+At the origin, g is continuous and finite. To see this, set
+x=sqrt(a^2+y^2) in its defining integral:
+
+    g(a)=-(1/pi)int_0^infinity q'(sqrt(a^2+y^2))
+                                   /sqrt(a^2+y^2) dy.
+
+The quotient extends continuously at zero, and full derivative decay pays
+a common majorant for bounded a. Hence w_* is bounded near zero. As a
+consequence, m_*(u) exists for every real u>-1, including the negative
+fractional moments used below.
+
+## Q2. Every hypothetical BF interpolant must produce this same radial law
+
+Let phi be any Bernstein function with phi(n)=b_n for all n>=1. Its
+standard Levy--Khintchine representation constructs a possibly killed
+subordinator S_t with
+
+    E[exp(-u S_t); t<zeta]=exp(-t phi(u)), u>0.
+
+Define J_phi=int_0^zeta exp(-S_t)dt. The nonzero data b_1>0 imply
+phi(u)>0 for every u>0. Its standard integer moment formula is
+
+    E J_phi^n=n!/product_(k=1)^n phi(k).                 (6)
+
+For completeness, the more general identity is derived in Q3, so the
+moment formula is not used as an unexplained sign-transfer theorem.
+Equations (4),(6) telescope to E J_phi^n=m_*(n) for every integer n>=0.
+Moreover phi(k)>=phi(1)>0, so these moments are at most
+n!/phi(1)^n. By Tonelli J_phi has a finite exponential moment for any
+0<c<phi(1). The identical moments give the same moment generating function
+near zero as I_*. Uniqueness of the Laplace transform therefore proves
+
+    J_phi has exactly the law of I_*.                  (7)
+
+This is conditional on existence of phi, not an assertion that the old
+positive Abel law automatically is a subordinator exponential functional.
+
+Published orientation: KPS, AIF74(1)(2024), equations (5.17)--(5.18),
+pp409--410, state this exponential-functional construction and its integer
+moments. DOI https://doi.org/10.5802/aif.3600 ; PDF
+https://aif.centre-mersenne.org/item/10.5802/aif.3600.pdf , SHA256
+05f75d661af5d94d64c5c66b6a9c1ee22a73d53e13c5afd8ceb7a76a5cf14a19.
+The standard existence of a killed subordinator for a Bernstein exponent
+is the only stochastic construction imported here. No assertion about
+xi in that article is imported as a proved source property.
+
+## Q3. The real-parameter identity fixes the entire positive axis
+
+First Tonelli gives E J_phi=int_0^infinity exp(-t phi(1))dt
+=1/phi(1)<infinity, so J_phi is finite almost surely. It is strictly
+positive almost surely by right continuity at time zero and positive
+lifetime. Write A_t=int_t^zeta exp(-S_s)ds, zero after killing. Before
+killing it decreases absolutely continuously, and for any real u>0,
+
+    J_phi^u=u int_0^zeta exp(-S_t) A_t^(u-1)dt.          (8)
+
+Integrate first up to a time where A_t>0 and then take a monotone limit;
+this handles u<1. At a deterministic t on survival, independent stationary
+increments and the memoryless killing law give A_t=exp(-S_t)J_phi', with
+J_phi' independent and distributed like J_phi. Tonelli gives
+
+    E J_phi^u=[u/phi(u)] E J_phi^(u-1).                 (9)
+
+Finiteness follows recursively for integer u starting at E J^0=1.
+For general u>0, positive moments follow by interpolation between integer
+moments.
+Tonelli in (9), whose other factor is finite and positive, then also
+establishes the required negative fractional moment when 0<u<1.
+Thus no unproved inverse-moment assumption is used in (9).
+
+Together with (7), this forces, for every real u>0,
+
+    phi(u)=u m_*(u-1)/m_*(u).                          (10)
+
+Now set rho(s)=q(sqrt(s)), and define
+
+    D(u)=int_0^infinity s^(u-1/2)rho(s)ds,
+    N(u)=int_0^infinity s^(u-1/2)[-rho'(s)]ds,
+    phi_*(u)=4N(u)/D(u).                               (11)
+
+For real u>0 these are finite and strictly positive. A direct Abel
+calculation identifies (10) with (11). Specifically, from (2),
+
+    w_*(v)=-4 int_(4v)^infinity rho'(s)/sqrt(s-4v)ds,
+    m_*(u)=-4^(-u)B(u+1,1/2)
+                          int_0^infinity s^(u+1/2)rho'(s)ds, u>-1.
+
+Tonelli licenses this because -rho'>0. Dividing the formulas for u-1
+and u, and using B(u,1/2)/B(u+1,1/2)=(u+1/2)/u, gives (10)=(11) after
+
+    int s^(u+1/2)[-rho'(s)]ds=(u+1/2)D(u).
+
+Both boundary terms vanish for u>0. Hence any BF interpolation of the
+integer data MUST be this explicit function phi_* on all of (0,infinity).
+Conversely, if phi_* is Bernstein it interpolates those data by (3),(4).
+In particular,
+
+    exists phi in B_P1 with phi(n)=b_n for all n>=1
+                 iff phi_* belongs to B_P1.             (12)
+
+This removes interpolation freedom, not the unproved class membership.
+The route's remaining sufficient hypothesis is now a specified quotient
+of full-source integrals. If (12)'s right side were proved independently,
+KPS Theorem 4.4 and the pinned coefficient identity would give real zeros
+of F, hence RH and the pinned full-V conclusion. No extra unnamed property
+is added after that hypothesis. It is a stronger sufficient route, not
+asserted to be necessary for RH.
+
+## Q4. Known domain and a precise analytic failure test
+
+D and N are holomorphic on Re(u)>-1/2: near zero rho and rho' are bounded,
+and at infinity their full-source tails dominate fixed powers and logs.
+Thus their quotient is meromorphic on that half-plane, with positive
+finite real values for u>0. The earlier covariance argument now gives
+
+    phi_*'(u)=4 Cov_u(-rho'/rho, log s)>0, u>0,
+    dP_u=s^(u-1/2)rho(s)ds/D(u).
+
+The source's strict squared-coordinate log-concavity supplies this sign;
+it supplies neither higher BF derivative signs nor Pick membership.
+Any independently certified nonreal u0 with Re(u0)>-1/2, Im(u0)>0,
+D(u0)=0 and N(u0)!=0 would produce a nonremovable upper-half-plane pole
+and exclude B_P1 for this source and every alternative BF interpolant.
+Zeros shared by numerator and denominator require their orders to be
+checked; they cannot be declared poles automatically. Absence of such a
+pole in a finite region would not establish the global class property.
+No u0, pole, BF failure or Pick failure of actual theta is claimed here.
+
+## Q5. Reciprocity alone has already become evenness at this interface
+
+Let q0 be ANY positive even probability density with the necessary
+exponential moments. Define
+
+    C=[2 int_R exp(-x/2)q0(x)dx]^(-1),
+    r0(t)=C t^(-5/4)q0((log t)/2), t>0.
+
+Substitution t=exp(2x) proves int r0=1, and evenness proves EXACTLY
+
+    r0(1/t)=t^(5/2)r0(t),
+    exp(5x/2)r0(exp(2x))=C q0(x).                       (13)
+
+Thus a weighted reciprocal identity of this exponent, by itself, adds no
+restriction beyond evenness to this class of normalized logarithmic sources.
+It cannot be spent a second time as an independent moment-sign theorem.
+This does not address its joint action with additive PF or fixed square rates.
+
+For q0 proportional to exp(-x^2)-exp(-2x^2)/4, (13) gives a positive
+probability density with the exact exponent 5/2 reciprocity, while the
+logarithmic source retains the known negative full-V row and the unique
+non-Pick BF interpolation. It fails even additive PF2: as t->infinity,
+
+    (log r0)''(t)=[(log t)/2+3/4+o(1)]/t^2>0.
+
+The omitted correction is O((log t)^2 exp(-(log t)^2/4))/t^2, from
+differentiating log[1-(1/4)exp(-(log t)^2/4)]. For sufficiently large t
+and small h>0, r0(t)^2<r0(t-h)r0(t+h), which is a negative 2-by-2
+translation minor. Hence this control does not refute a joint PF plus
+reciprocity theorem. It identifies precisely the input still absent.
+
+## Scope and next bounded test
+
+The old Abel law and the KPS moment data are the same object after the
+explicit radius change I_*=R^2/4. Every possible BF interpolant is forced
+to (11); no choice of another field or another continuation on the positive
+axis avoids that quotient. The fixed candidate can now be tested
+analytically for the first genuinely missing BF/Pick/1-separation property,
+using the COMPLETE source and all corrections. An actual-source failure
+rejects this strengthened entrance only, not original V positivity or RH.
+A successful proof of all B_P1 requirements has a closed conditional
+consumer. Real-axis monotonicity, positive Abel mass, finite checks and
+mere reciprocity are not that proof. No numerical campaign was run.
+CONSUMPTION: INCOMPLETE_NO_CONSUMABLE_TARGET; isolated PAPER only.
+
+END_CURRENT_PREFLIGHT_CANDIDATE
+BEGIN_PINNED_CONTEXT
+# PROSHKA EVIDENCE PACK
+Generated: 2026-09-17 02:52:00
+Repo: /Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/gamma-reciprocity-worktree
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## codex_mac/gamma-reciprocity-20260914
+
+
+## Git log
+
+3178cd4b [CODEX_MAC][gamma-reciprocity] Audit KPS theta moment interface and Bernstein control
+
+
+## File: docs/Codex/REPORT_2026-09-17_KPS_MOMENT_INTERFACE.md
+
+# KPS moment interface: what the full theta source actually supplies
+
+STATUS: ACCEPTED_LIMITED_PAPER; independently reviewed K1--K4.
+Date: 2026-09-17. Isolated analytic research, base 76df4f76795069453bf6a12bddef48f4bcad0d8d.
+Canonical production remains HOLD. FULL_V_SIGN and RH remain OPEN.
+No positive mechanism has been selected for a new Proshka proof request.
+
+## 1. Exact source and consumer
+
+Keep the full density and the same logarithmic source:
+
+    r(t)=sum_(k>=1)(4 pi^2 k^4 t-6 pi k^2) exp(-pi k^2 t), t>0,
+    r(1/t)=t^(5/2)r(t),  M_r(s)=2xi(2s-2),
+    Phi(x)=exp(5x/2)r(exp(2x)),
+    q(x)=Phi(x)/Z,  Z=integral_R Phi(x)dx=xi(1/2)>0.
+
+The change t=exp(2x) gives, for every complex z,
+
+    F(z)=integral_R exp(izx)q(x)dx=xi(1/2+iz)/xi(1/2).       (1)
+
+Evenness follows from the exact reciprocity. The full source bounds justify
+all complex Fourier moments and differentiation. The target is still the
+original V formed with f=Phi/||Phi||_2:
+
+    V(x,y)=integral_0^infinity (2X+x+y)f(X+x)f(X+y)dX,
+    sum_ij conjugate(c_i)V(x_i,x_j)c_j >=0
+
+for every finite admissible family and all complex coefficients. Normalizing
+q by its L1 integral in (1) does not redefine V. The previously accepted
+full-sign transfer, not the paper below, identifies the full V question with RH.
+
+## 2. Published input and its boundary
+
+Primary: Konstantopoulos--Patie--Sarkar, *A new class of solutions to the van
+Dantzig problem, the Lee--Yang property, and the Riemann hypothesis*, AIF
+74(1) (2024), 377--421, https://doi.org/10.5802/aif.3600 .
+PDF: https://aif.centre-mersenne.org/item/10.5802/aif.3600.pdf ; SHA256
+05f75d661af5d94d64c5c66b6a9c1ee22a73d53e13c5afd8ceb7a76a5cf14a19.
+Relevant pp396--397,416--417 were read; p397 was also visually inspected.
+
+Theorem 4.4, using definition (4.14), supplies real zeros for
+
+    J_Psi(z)=sum_(n>=0) (-1)^n z^(2n)/product_(k=1)^n Psi(k), (2)
+    Psi(u)=u phi(u),  phi in B_P1.
+
+Here B_P1 requires Bernstein--Pick structure and 1-separation: successive
+entire-function zeros satisfy z_(k+1)<z_k-1; meromorphic zeros/poles satisfy
+rho_k=z_k-1>z_(k+1). Ordinary real-axis positivity is insufficient.
+This published theorem is an external input; its proof cites working
+paper [25]. Section 4.1 leaves xi membership unresolved: "Since this question
+does not seem straightforward". Theorem 4.1's weaker van Dantzig conclusion
+and Proposition 4.7's growth comparison are not substitutes. We derive
+coefficients from (1), without importing equations (4.15)--(4.18).
+
+## 3. K1: the exact, fully fixed coefficient interface
+
+Let mu_(2n)=integral_R x^(2n)q(x)dx, so mu_0=1 and every mu_(2n)>0.
+Absolute convergence and evenness give
+
+    F(z)=sum_(n>=0) (-1)^n a_n z^(2n),
+    a_n=mu_(2n)/(2n)! >0.
+
+If F=J_Psi, comparing neighboring coefficients NECESSARILY gives
+
+    Psi(n)=a_(n-1)/a_n
+          =(2n)(2n-1)mu_(2n-2)/mu_(2n), n>=1.             (3)
+
+Conversely these values telescope in (2), giving precisely F, since its
+power series is entire. For the sufficient subclass Psi(u)=u phi(u), the
+required data are therefore
+
+    phi(n)=b_n:=2(2n-1)mu_(2n-2)/mu_(2n), n>=1.           (4)
+
+There is no free correction constant or independently adjustable sequence.
+An independently constructed phi in B_P1 taking ALL values (4), together
+with Theorem 4.4, would establish real zeros of F and hence RH. This is a
+closed conditional implication. Existence of such a phi for actual q is
+not established. No claim that this stronger sufficient condition is
+necessary for RH is made.
+
+## 4. K2: a genuine source property pays the first required inequality
+
+The pinned Csordas--Varga input proves strict concavity of
+ell(s)=log Phi(sqrt(s)) for s>0. Strict concavity, not an unproved assertion
+ell''<0 everywhere, is used here. Write
+
+    rho(s)=Phi(sqrt(s)),
+    M(p)=integral_0^infinity s^(p-1)rho(s)ds, p>0,
+    h(s)=-rho'(s)/rho(s).
+
+Evenness, smoothness and positivity of Phi imply rho(0)>0 and bounded
+rho' near zero. The full theta bounds control rho and rho' at infinity.
+Since ell is differentiable and strictly concave, h is strictly increasing.
+Also mu_(2n)=M(n+1/2)/Z, where Z=M(1/2). For u>1/2 set
+
+    b(u)=4(u-1/2)M(u-1/2)/M(u+1/2).                     (5)
+
+This agrees with b_n at u=n. Integration by parts, with both endpoints
+zero, gives for p=u-1/2>0
+
+    p M(p)=-integral s^p rho'(s)ds,
+    b(u)=4 E_u h(S),
+    dP_u(s)=s^(u-1/2)rho(s)ds/M(u+1/2).                  (6)
+
+There is no discarded boundary: s^p rho(s) tends to zero at both endpoints.
+Differentiation of this probability tilt is justified locally uniformly in
+u>1/2 by the same bounds, including the additional |log s| factors. Thus
+
+    b'(u)=4 Cov_u(h(S),log S)>0.                         (7)
+
+For strictness use an independent copy S': twice the covariance equals
+E[(h(S)-h(S'))(log S-log S')]. The integrand is strictly positive when
+S!=S'; P_u has a positive density on (0,infinity). Consequently
+
+    0<b_1<b_2<... .                                     (8)
+
+Equivalently, for every n>=1,
+
+    mu_(2n)^2 > [(2n-1)/(2n+1)]mu_(2n-2)mu_(2n+2).        (9)
+
+This is a moment/Turan consequence of the already proved source concavity;
+no novelty claim is made. It demonstrates exactly where that known property
+works in this interface. It does NOT establish concavity of b, all higher
+Bernstein signs, a Pick continuation, or 1-separation. The additive PF
+property of r has not supplied any of those missing facts in this audit.
+The probability integral (6) is an expectation of an increasing function;
+it is not automatically a positive Levy measure for a Bernstein function.
+
+## 5. K3: even a full Bernstein interpolation can fail the desired zero claim
+
+Use the existing explicit non-theta control
+
+    g0(x)=exp(-x^2)-(1/4)exp(-2x^2),
+    a=1/(4 sqrt(2))=2^(-5/2),  Z0=sqrt(pi)(1-a).
+
+The pinned two-shift intake already proves a negative four-node row of
+its original full V. It is positive, even, rapidly decreasing, and strictly
+log-concave after x=sqrt(s). Gaussian integration gives its normalized
+moments and the exact values required by (4):
+
+    mu^0_(2n)=(2n)!/[4^n n!] * (1-a 2^(-n))/(1-a),
+    b^0_n=4(1-a 2^(1-n))/(1-a 2^(-n)).                   (10)
+
+These interpolate by the explicit Bernstein function, for real u>=0,
+
+    phi0(u)=4(1-2a 2^(-u))/(1-a 2^(-u))
+           =phi0(0)+4 sum_(k>=1) a^k(1-exp(-k log(2)u)),
+    phi0(0)=4(1-2a)/(1-a)>0.                             (11)
+
+The total mass 4sum a^k is finite. Hence (11) is a genuine positive
+Levy--Khintchine representation, with positive atoms at k log2, and all
+Bernstein derivative signs hold. Nevertheless phi0 is NOT Pick: its
+meromorphic continuation has genuine simple poles at
+
+    u=-5/2+2pi i j/log2, j in Z,                         (12)
+
+including poles in the upper half-plane. The numerator equals -1 at every
+zero of the denominator, so none is removable. A Pick extension agreeing
+on the positive axis would, by uniqueness of analytic continuation from a
+neighborhood of that axis, encounter these nonreal poles.
+
+The actual control Fourier function is
+
+    F0(z)=[exp(-z^2/4)-a exp(-z^2/8)]/(1-a).
+
+Its zeros satisfy z^2=-8log(a)-16pi i j. For j!=0 these are nonreal.
+Thus replacing B_P1 by ordinary Bernstein interpolation in K1 is false,
+even while K2 and every Bernstein derivative sign hold. This control does
+not possess all theta hypotheses; it does not refute a theorem which
+additionally uses the actual PF source and weighted reciprocity.
+
+There is also no hidden application of Theorem 4.1 here. For
+Psi0(u)=u phi0(u), direct twice differentiation yields
+
+    Psi0''(u)=4 sum_(k>=1)a^k exp(-k log2 u)
+                       [2k log2-u(k log2)^2]<0
+
+whenever u>2/log2. A spectrally negative Levy exponent must be convex;
+hence Psi0 is not in N_D. Passing an ordinary Bernstein test is weaker
+than either of the relevant published hypotheses.
+
+## 6. K4: one cannot fix this control merely by choosing another BF interpolant
+
+If two Bernstein functions take the same values at every positive integer,
+they coincide on (0,infinity). Here is a proof sufficient for this use.
+Write phi(u)=A+B u+integral(1-exp(-ur))nu(dr), with the usual positive
+Levy measure. For integer n>=1,
+
+    phi(n+1)-phi(n)=B+integral exp(-nr)(1-exp(-r))nu(dr).
+
+On t=exp(-r) in (0,1), let sigma be the finite measure obtained by pushing
+forward exp(-r)(1-exp(-r))nu(dr), and put B mass at t=1. The above increments
+are precisely its moments of orders n-1. Equality of every increment makes
+the two finite measures equal: polynomials are dense in C([0,1]), so a
+finite measure on [0,1] is determined by all its moments. Neither measure
+has mass at t=0. Its atom at 1 determines B, and division by the strictly
+positive weight t(1-t) on (0,1) recovers nu. Finally phi(1) determines A.
+Thus the unique Bernstein interpolation of (10) is phi0. Since phi0 is not
+Pick, that control admits no different Bernstein--Pick interpolation of
+these SAME values. This argument is not a uniqueness claim for arbitrary
+analytic interpolations.
+
+## 7. Search receipt, diagnostic limit, and stopping condition
+
+Three registered shelf queries preceded this external pass:
+"van Dantzig self reciprocal Polya frequency";
+"inversion invariant gamma convolution Mellin zeros";
+"self reciprocal totally positive density characterization".
+All returned INCOMPLETE because semantic-index freshness validation failed;
+this does not assert no shelf hits. Existing joint-PF, dual, convolution,
+reflection and sibling reports were read before selecting this primary.
+Consensus was discovery only; journal formulas and the above own derivations
+are the evidence. No new shared paper registration or index repair was run.
+
+A finite diagnostic used 10 theta modes, x in [0,4], 65-digit arithmetic,
+and the first 20 required b_n. It showed no violation of the tested finite
+Bernstein difference signs. It has no certified tail/integration error and
+is NOT a universal Bernstein theorem, a source-sign result, or evidence for
+Pick membership. It is excluded from K1--K4 proofs.
+
+Outcome: a closed conditional bridge (K1), an actual-source first property
+(K2), and an exact obstruction to weakening the bridge (K3--K4).
+The unpaid requirement remains a source-built B_P1 interpolation of (4),
+or a different independently proved sufficient mechanism. The published
+paper does not construct it for xi. Do not send Proshka a generic request
+to prove 'the interpolation is positive' or treat Proposition 4.7's growth
+match as payment. Before choosing this route, identify a concrete source
+identity that can control the missing higher/complex conditions. No such
+identity is supplied here; no new proof dispatch is justified by this audit.
+CONSUMPTION: INCOMPLETE_NO_CONSUMABLE_TARGET.
+No canonical admission, Lean proof, RH claim, or source-sign counter reset.
+
+## Independent acceptance
+
+Candidate SHA256: `5ece10af57e06d233cb501ae2ea6aff4ba4dacf4409ea0a76b1a75a49b1b4231`.
+Review SHA256: `eab2271902100f359b5abe419c48e1d8a9380088e7a077ff2c9d7142b4477a0b`.
+Verdict: `ACCEPT_LIMITED_KPS_INTERFACE_AND_BF_CONTROL`.
+Reviewer `/root/pairzero_geometry_review` read the exact source pins and
+audited K1--K4. Parent checks independently verified normalization,
+endpoint control, covariance strictness, the explicit Bernstein control
+and uniqueness of BF interpolation. Full checks are embedded in the paired
+certificate. This accepts only the conditional interface, the stated source
+moment inequality and the scoped obstruction to weakening the hypothesis.
+It does not prove actual Bernstein--Pick membership, full V positivity or RH.
+No canonical or Lean admission is claimed.
+
+
+## File: docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md
+
+# Villain sibling: exact planar lift, finite-model realization open
+
+STATUS: ACCEPTED_PAPER_EXACT_PLANAR_LIFT_AND_CONDITIONAL_TRANSFER.
+INCOMPLETE_NO_CONSUMABLE_TARGET: canonical theorem/consumer edge unbound.
+GLOBAL_IC: OPEN. GLOBAL_ODD2: OPEN. ALL_ORDER_SOURCE_SIGN: OPEN. RH: OPEN.
+PX_RH_CLAIM: NOT_MADE. No Lean or canonical admission.
+
+The owner resumed the mathematical search on 2026-09-13 after the joint
+brainstorm. This report proves one geometric representation of the actual
+source and identifies the remaining Villain construction. It does not reset
+the historical source-sign no-delta count of 3.
+
+## Source pins and published transfer
+
+Repository source commit: fb57d13a506b1fa763fd601c1c639a4ef6a85121.
+
+- `docs/routeB_bus/SLACK_INDEPENDENT_CHECK_2026-09-11.md`, section 4 and BP1:
+  SHA256 14e98d5544783927c54b41769714675ff2027a15e0a822bb5dabf4b069d379dc.
+- `docs/Codex/REPORT_2026-09-12_LYGSPHI_INTAKE.md`, source normalization,
+  positive gammaPhi, and exact scope of the spin-lift exclusion:
+  SHA256 2e4ace719a20964deab21d7be0d5457ac651080d8f317eefab52138343a5702f.
+- `docs/Codex/REPORT_2026-09-12_ALL_ODD_TO_RH.md`, Fourier identity:
+  SHA256 760fd70fd1e6c3f5b07f8c6eced03bf3f2dfb69698cfb67f597ead219ff8940a.
+
+Keep p=Phi/Z, Z=integral_R Phi=xi(1/2)>0, and
+M(h)=integral_R exp(hx)p(x)dx=xi(1/2+h)/xi(1/2), h in C.
+Z is not the physical L2 normalization A. Previously accepted source facts
+are used only at their stated scope, without a new recursive archive audit.
+
+New primary source: C. M. Newman and W. Wu, *Lee--Yang Property and Gaussian
+Multiplicative Chaos*, CMP 369 (2019), 153--170.
+https://link.springer.com/article/10.1007/s00220-019-03453-0
+PDF: https://link.springer.com/content/pdf/10.1007/s00220-019-03453-0.pdf
+Fetched PDF: 362966 bytes, SHA256
+1dd55b77b6ff1437cbf46c91926bfa1f57ada1d21357c28e96b2e5942b717002.
+Locators: equations (3)--(5), Theorem 3, printed p.155; Definition 6,
+Theorem 7 and Remark 9, p.157; proof of Theorem 7, pp.158--159.
+Short quote, Remark 9: "it suffices to show weak convergence".
+
+The imported theorem preserves Lee--Yang type under weak convergence.
+Its input laws are symmetric, each has some finite Gaussian exponential
+moment, and each field transform has only imaginary zeros. The Gaussian
+moment parameter need not be uniform. Finite free-boundary Villain models
+have the required zero property for nonnegative observable weights.
+
+Our application uses J_e>0 and lambda_v>=0 on each finite graph, with
+
+    V_J(a)=sum_(m in Z) exp(-J(a+2pi m)^2/2),
+    dP_G(theta)=Z_G^-1 product_e V_Je(theta_u-theta_v) product_v dtheta_v,
+    Y_G=sum_v lambda_v exp(i theta_v), X_G=Re Y_G.
+
+Angles lie in (-pi,pi]. Global rotation gives symmetry, and finite bounded
+X_G supplies the individual Gaussian moment. Therefore weak convergence of
+THESE SAME X_G to p is sufficient. This weakens the older sufficient
+interface; it does not construct the approximants. J=0 is avoided because
+the displayed unnormalized Gaussian sum then degenerates.
+
+## Exact theta-to-circle dictionary
+
+Let vartheta(t)=sum_(n in Z) exp(-pi n^2 t), t>0. Termwise differentiation
+of the locally convergent source series gives
+
+    r(t)=2t vartheta''(t)+3 vartheta'(t),
+    Phi(x)=exp(5x/2)r(exp(2x)).
+
+For K_J(a)=sqrt(J/(2pi))V_J(a), the Fourier series is
+
+    K_J(a)=(1/(2pi))sum_(n in Z) exp(-n^2/(2J)) exp(i n a).
+
+Thus vartheta(t)=2pi K_(1/(2pi t))(0). This is an identity of heat kernels.
+The source variable x is logarithmic heat time; the complex field h couples
+to X_G. Differentiating in t or changing x cannot silently replace that
+observable. No graph or couplings have been extracted from this identity.
+
+## Exact positive planar lift of the actual source
+
+The accepted source gives v(s)=-log p(sqrt(s)) with v''(s)>0 for s>0 and
+gammaPhi=-(log Phi)''(0)>0. Even analyticity implies v'(0)=gammaPhi/2>0.
+Consequently p'(x)=-2x p(x)v'(x^2)<0 for x>0. The full source decay applies
+to fixed derivatives, and p'(x)=O(x) at zero.
+
+Define a density per unit planar area, using a new radius variable a,
+
+    g(a)=-(1/pi) integral_a^infty p'(u)/sqrt(u^2-a^2) du, a>=0.
+
+It is nonnegative. The lower singularity is integrable for a>0; at a=0,
+p'(u)=O(u) pays the endpoint. The full source derivative decay pays infinity.
+For x>=0, Tonelli and the change r^2=x^2+(u^2-x^2)s give
+
+    integral_x^u r dr/(sqrt(r^2-x^2)sqrt(u^2-r^2))=pi/2,
+    2 integral_x^infty g(r)r/sqrt(r^2-x^2) dr
+      =-integral_x^infty p'(u)du=p(x).
+
+At x=0 the same identity follows directly or by Tonelli. Reflection covers
+x<0. The left side is the first-coordinate marginal of g(|y|)d^2y.
+Integrating over x proves its total mass is 1. In particular
+
+    rho(da)=2pi a g(a)da
+
+is a probability law, and R cos U has density p when R has law rho and U
+is an independent uniform angle. This is an exact source representation,
+not an approximation or a claim that g is a Villain Gibbs density.
+
+Every finite Y_G above is rotationally invariant. Conversely, tightness of
+Re Y_G implies tightness of |Y_G|: for R>2L a uniform angle has probability
+at least 2/3 that |R cos U|>L. Thus the planar-lift requirement is necessary
+for this route, and the displayed Abel construction pays that requirement.
+
+## Negative control and the exact remaining task
+
+The already accepted control f_c(x)=exp(-x^2)(1+3x^2/10+x^4/25) is decreasing
+on x>0, since
+
+    f_c'(x)=-2x exp(-x^2)(7/10+11x^2/50+x^4/25)<0.
+
+Its normalized density therefore has the same positive Abel lift. Yet its
+known transform is exp(h^2/4)(h^4+42h^2+472)/472, whose h^2 roots are
+-21 +/- i sqrt(31). Planar positivity alone cannot provide Lee--Yang.
+The extra hypothesis required here is realization by the finite Villain laws,
+not a positive radial mixture or a formal Hamiltonian -log g.
+
+The previous entropy-corrected binary-spin joint law remains excluded.
+That exclusion does not forbid a different microscopic realization of p.
+One next bounded test is to construct source-derived G_N,J_e,N,lambda_v,N
+whose radial magnetizations |Y_N| converge weakly to this rho. Their common
+uniform angle then gives X_N=>p. Direct X_N=>p is also sufficient.
+No unknown xi zeros, presumed Lee--Yang property, or assumed all-order sign
+may define or justify the construction.
+
+No source evaluations, quadratures, finite Hankel campaign or Lean run were
+needed for the displayed proof. No new actual full-sign supplier is obtained.
+
+## Discovery and independent receipts
+
+The existing source-pinned physics-brother brief and prior shelf receipts
+were reconciled. Lee.Yang, Griffiths.Simon, reflection positivity, Herglotz,
+Asano, random-cluster and stability-preserving queries remain INCOMPLETE:
+semantic-index freshness failed; the last three also encountered the recorded
+ask.sh unbound-array error. These are not no-hit or literature-absence claims.
+The dictionaries were spin probability, complex zero preservation, and
+circle heat kernels. No index repair or source registration is performed.
+
+Sole independent checker sibling5_check verified the published transfer,
+theta dictionary and necessary rotational fit, receipt SHA256
+7d61af1a6271a5b6411e56b8a766a318f7a18a453138aa30c39d6fcb4b7b3489.
+The exact Abel proof and control limitation were independently checked,
+receipt SHA256 886b454ee4523a4bd1218feca78e00431ac55c140f9112a7a4f2eca71600b4b9.
+These receipts concern the displayed mathematical mechanisms; the complete
+assembled file is separately reviewed before dispatch.
+
+Complete-file independent review: CLEAN_DISPATCH_CANDIDATE on 7422 bytes /
+149 LF, SHA256 13fbbd203d40a9c2a6f89062f757265d0e65e612d4d996262c1db52ef948aec8.
+Review receipt SHA256
+03d4e27b9cedc28c9ccf4b1a6d3620472cd3e47ec947fecf1df2e714c4f09eee.
+The status and this receipt are the only post-review additions. Acceptance
+is restricted to the stated PAPER lemmas and conditional transfer.
+
+## Subsequent independently reviewed construction constraints
+
+The original dispatched report remains pinned at b1c9fdc6. The following
+59-line proof is reproduced byte-for-byte from the reviewed local candidate;
+it is an intake constraint, not an additional message to the busy Pro chat.
+
+# Parent candidate: observable support must grow
+
+Scope: finite free-boundary Villain laws from the published VILLAINPHI request;
+J_e>0, observable weights lambda_v>=0. Hidden vertices have lambda_v=0.
+This is an intake discriminator, not a new full-source construction attempt.
+
+For each fixed graph orient the edges. The normalized edge heat kernel has
+Fourier coefficients (2pi)^-1 exp(-k^2/(2J_e))>0. All edge series converge
+absolutely and the graph is finite, so termwise integration is justified.
+The partition function is a positive sum over integer currents of divergence
+zero. Inserting exp(i(theta_u-theta_v)) changes only the current-divergence
+constraint. Its unnormalized integral is a sum of nonnegative real weights
+(or zero if the constraint is impossible). Hence
+
+  c_uv = E cos(theta_u-theta_v) >= 0; c_uu=1.
+
+Global angular invariance gives E X=0 and
+
+  Var X = (1/2) sum_(u,v) lambda_u lambda_v c_uv
+        >= (1/2) sum_v lambda_v^2.
+
+Suppose a sequence of these X_N converges weakly to any probability law.
+Each finite X_N belongs to the Newman--Wu class L. The proof of Theorem 7
+on printed p.159 establishes sup_N Var X_N = C < infinity from weak
+convergence and class L alone. Thus sum_v lambda_v,N^2 <= 2C.
+Let m_N count strictly positive observable weights, ignoring hidden vertices.
+Cauchy--Schwarz gives
+
+  |X_N| <= sum_v lambda_v,N <= sqrt(2 C m_N).
+
+If m_N were bounded along an infinite subsequence by m_*, that subsequence
+would be supported on the fixed compact interval [-sqrt(2Cm_*),sqrt(2Cm_*)].
+Its weak limit would be supported there. The actual p=Phi/Z is strictly
+positive on all of R, contradiction. Therefore a valid VILLAINPHI sequence
+necessarily has m_N -> infinity. This excludes a uniformly bounded number
+of observed spins even with arbitrarily many hidden vertices, arbitrary
+positive couplings, and arbitrary varying nonnegative observed weights.
+It does not exclude constructions with growing observed support.
+
+For C=0 every X_N is zero, already incompatible with the actual p.
+The variance conclusion is imported from the cited proof; no unproved
+uniform moment assumption is added. Positivity of the current coefficients
+and the support implication above are the parent's displayed derivation.
+
+Additional exact fit fact: the radial-law condition in the request is also
+necessary. For rotational Y_N, its characteristic function at t in R^2 is
+hat(p_N)(|t|), where p_N is law(Re Y_N). If p_N=>p, this converges pointwise
+to hat(p)(|t|), the characteristic function of the already constructed Abel
+planar lift g(|y|)d^2y, continuous at zero. The multivariate Levy continuity
+theorem gives Y_N=>Y, and continuity of norm gives |Y_N|=>rho. The reverse
+follows by adjoining a common independent uniform angle and taking the
+coordinate. Thus there is no extra source restriction in the radial target.
+
+Source: Newman--Wu CMP369(2019), Definition6, Theorem3, Theorem7 proof p.159;
+PDF SHA256 1dd55b77b6ff1437cbf46c91926bfa1f57ada1d21357c28e96b2e5942b717002.
+Exact p and Abel lift: published report at b1c9fdc62d564fc6fd0249bead46f58a0e13b1ad,
+docs/Codex/REPORT_2026-09-13_VILLAIN_RADIAL_BRIDGE.md,
+SHA256 fcddee94441c3db18aaf4d47bee12d3a16d8300dc838cdea69512bb3bce292b6.
+No numeric experiment, source-sign counter reset, canonical admission or RH claim.
+
+Independent verdict: ACCEPTED_PAPER_DISCRIMINATOR on the 3304-byte proof,
+SHA256 dde8e8c010beb931f996d3a54724725f76fe47a803998b40e0a6b18bcbe7cb3b.
+Review receipt SHA256
+34909ab7ad99804e77185a071d28032df37129bc2f6a33eca88cc0a4e26083e7.
+Parent checked the current expansion, variance bound and both convergence
+directions; the inserted proof bytes exactly match the reviewed candidate.
+
+END_PINNED_CONTEXT

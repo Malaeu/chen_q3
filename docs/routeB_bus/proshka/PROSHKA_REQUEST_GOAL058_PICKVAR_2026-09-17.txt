@@ -1,0 +1,759 @@
+REQUEST_ID: REQ-2026-09-17-PICKVAR
+BOUNDARY_ID: GOAL058_FULL_THETA_COUPLED_LOG_VARIANCE
+CALL_CLASS: DELEGATED_STRATEGIC_REVIEW
+PHASE_ID: PHASE_GOAL058_G1_G3_COFINAL_GROUND_TRACKING_2026_08_13
+ROUTE_ID: RouteB_TwoLevelSpectralLadder
+FRONT_ID: GOAL058_SECOND_EXPRESSION
+SOURCE_OBJECT_FAMILY_ID: CANONICAL_TEST_SIGNED_DIRICHLET_FORM
+TERMINAL_CONSUMER_ID: published_Weil_criterion_on_all_complex_compact_smooth_tests
+HONESTY_STATE: CHALLENGER_NOT_RH
+CONVENTION_LOCK_ID: GOAL058_COORD_MINUS_LZ_OVER_2PI_ETA_NORMALIZED
+SOURCE_BASE: 6de89d8894e358f6c9469edae75eae9d2040f178
+DELIVERY_CHAT: 6aa52001-4094-83eb-9520-01a09f54eff2
+PX_RH_CLAIM: NOT_MADE
+
+One bounded ANALYTIC attempt on a concrete necessary condition for the
+CURRENT direct Pick entrance. Keep original full V and its all-finite
+complex quantifier as the final objective. This test does not replace it.
+
+The direct conditional bridge is now the accepted
+ REPORT_2026-09-17_DIRECT_PICK_BRIDGE.md:
+global Pick of the exact phi_*=4N/D=4H(u-1)/H(u) implies RH via the
+proved entire H growth, your accepted KQ14 filter and the named external
+Laguerre theorem. There is NO additional KPS unit-gap requirement here.
+This is sufficient, not known necessary. Actual Pick and original V are OPEN.
+
+The newly accepted mechanism report at 6de89d88 was read by you in this
+living chat. It supplies the exact NECESSARY variance test below, an
+explicit string/phase control, and an analytic counterexample to deriving
+the test from strict log concavity alone. Do not repeat those as new results.
+
+Keep the full source, with a_n=pi*n^2:
+ q(x)=Z^(-1)exp(x/2)sum_(n>=1)(4[a_n exp(2x)]^2-6a_n exp(2x))
+                                   exp[-a_n exp(2x)],
+ Z=xi(1/2), rho(s)=q(sqrt(s)),
+ D(u)=integral_0^infinity s^(u-1/2)rho(s)ds,
+ N(u)=integral_0^infinity s^(u-1/2)(-rho'(s))ds,
+ h(s)=-rho'(s)/rho(s), phi_*(u)=4N(u)/D(u).
+For real u>0 the two EXACT positive probability laws are
+ dP_D,u=s^(u-1/2)rho(s)ds/D(u),
+ dP_N,u=s^(u-1/2)(-rho'(s))ds/N(u)
+       =h(s)dP_D,u/E_D,u h.
+
+Let L(u)=log(phi_*(u)/phi_*(1)). Full source bounds give
+ L''(u)=Var_N,u(log s)-Var_D,u(log s).
+The bounded-phase representation forced by Pick requires
+
+ 0 <= Delta(u):=Var_D,u(log s)-Var_N,u(log s) <= 1/u^2
+ for EVERY real u>0.                                    (VAR)
+
+ACTUAL BOUNDED TASK: prove (VAR) analytically for this full source, or
+give a strict ANALYTIC violation for the actual source at a parameter or
+parameter interval. An analytic existence interval with a controlled
+remainder is acceptable; numerical samples or an unsupported asymptotic
+sign are not. Work with the TWO COUPLED LAWS together, preserving their
+normalizations. Separate upper bounds on their variances do not establish
+their ordered difference.
+
+The new endpoint preflight will be independently accepted in this same
+request commit as REPORT_2026-09-17_THETA_ENDPOINT_CANCELLATION.md and
+certificates/THETA_ENDPOINT_CANCELLATION_20260917.json. It identifies a
+specific source interaction and an approximation trap:
+- q'(0)=0 is paid by full reciprocity. With P(y)=8y^2-30y+15,
+  b_n=a_n P(a_n)exp(-a_n)/Z has b_1<0, b_n>0 for n>=2,
+  and sum b_n=0. The full series cancels the endpoint slope exactly.
+- Every RAW THETA-MODE partial sum q^[m] has q^[m]'(0)>0 and produces a
+  spurious negative pole in 4N^[m]/D^[m] at u=0. Its H^[m] also has a
+  pole at -1. Those are not obstructions for the complete source.
+- A common profile correction p_n(x)-b_n R(x), p_n=-q'_n, cannot make
+  every mode nonnegative on a fixed interval next to x=0. The whole
+  derivative is nevertheless negative. Do not demand modewise signs.
+This uses the actual full theta series; it is NOT the gamma-prefix M_N
+of MELLINEDGE. It is a domain/compensation input, not a proof of VAR.
+
+Use the full additive PF structure and reciprocity jointly if they help.
+Identify the SOURCE property that supplies any contraction/variance order;
+monotone likelihood ratio h, positive individual laws and strict concavity
+alone are insufficient. The control rho_e=exp(-s-epsilon s^3) has all
+those elementary shape properties but Delta_e(1)=-6epsilon+O(epsilon^2)<0.
+Its normalized q_e is even; it does not have the joint theta structure.
+
+Do not replace the task by a construction of a positive abstract string,
+bounded phase density, inverse positive square root or arbitrary correction.
+Those are conditional criteria until their response equals actual phi_*.
+Do not run a root scan, quadrature campaign or hierarchy of higher derivative
+tests. A proved large-u region, finite list or formal identity must be
+labelled with that limited scope. If the full comparison is not settled,
+stop this ONE attempt at the first unpaid implication; preserve the joint
+object instead of splitting it into another chain of unpaid estimates.
+
+A proof of VAR is a NECESSARY FILTER ONLY, not Pick/RH/full-V closure.
+A strict actual-source failure rejects this sufficient Pick entrance only,
+not RH or the sign of original V. Neither outcome licenses changing V.
+
+Return TRY_* or KILL_* with exact hypotheses, complete analytic proof,
+full-series/endpoint justifications and scope. Any preflight error should
+be identified first. No invented negative witness or novelty claim.
+
+Authorized publication: write ONLY
+ docs/routeB_bus/proshka/PROSHKA_RESPONSE_GOAL058_PICKVAR_2026-09-17.md
+in branch codex_mac/gamma-reciprocity-20260914. Inspect fresh remote state,
+preserve unrelated work, scoped normal commit/push and verify remote bytes.
+Do not edit canonical rh_clean, controls, phase, goal, counters or others'
+files. Independent review awaits every returned mathematical claim.
+In this living chat return one short receipt: commit | response path |
+operative verdict and exact scope. Full proof belongs in the GitHub file.
+
+The following source candidate and generated context are evidence. This
+header is the current task. Same-commit report/certificate give the endpoint
+preflight's final acceptance; the embedded original status line is historical.
+
+BEGIN_ENDPOINT_PREFLIGHT
+# Full theta endpoint cancellation in the forced quotient
+
+Status: PAPER_CANDIDATE; independent review pending.
+Base: 6de89d8894e358f6c9469edae75eae9d2040f178.
+This is an actual-source approximation/domain audit. It does not prove VAR,
+global Pick, positivity of original V, or RH. Canonical production is HOLD.
+No numerical source test or external theorem is used.
+
+## 1. Return to a paid source identity
+
+Use exactly q=Phi/Z, Z=xi(1/2)>0, and the full source
+
+  q(x)=sum_(n>=1) q_n(x),
+  q_n(x)=Z^(-1) exp(x/2)(4y_n^2-6y_n)exp(-y_n),
+  y_n=pi n^2 exp(2x).
+
+On x>=0 these modes are positive. The complete theta identity makes q
+even, hence q'(0)=0. This parity and the derivative-polynomial recurrence
+are already present in REPORT_2026-09-12_ODD2_ORIGIN_CORNER.md, equations
+(3)--(5); the identity q'(0)=0 is NOT a new discovery. Here we determine
+its exact effect on the new fixed Mellin quotient and a proposed common
+compensation. The existing full-series tails justify the differentiations.
+
+Put a_n=pi n^2 and P(y)=8y^2-30y+15. Then
+
+  p_n(x):=-q'_n(x)
+    =Z^(-1) a_n exp(5x/2)P(a_n exp(2x))exp[-a_n exp(2x)],
+  b_n=p_n(0)=Z^(-1)a_n P(a_n)exp(-a_n).                (C1)
+
+The sums of b_n and their absolute values converge. Normal convergence of
+the differentiated series near zero and parity give
+
+  sum_(n>=1) b_n=0.                                     (C2)
+
+The signs in this equality are strict. P increases on [3,infinity), and
+3<pi<22/7 gives P(pi)<P(22/7)=-13/49<0. Thus b_1<0.
+For n>=2, a_n>12 and P(a_n)>P(12)=807>0, so b_n>0. Hence
+
+  -b_1=sum_(n>=2)b_n>0.                                 (C3)
+
+This is a full-series balance with fixed square rates and fixed weights.
+It is not an independently adjustable constant or a prime positivity law.
+
+## 2. Every raw finite theta cutoff produces a spurious pole
+
+Use an integer m>=1 and define only for this diagnostic
+
+  q^[m](x)=sum_(n=1)^m q_n(x), x>=0,
+  rho^[m](s)=q^[m](sqrt(s)),
+  D^[m](u)=2 integral_0^infinity x^(2u)q^[m](x)dx,
+  N^[m](u)=integral_0^infinity x^(2u-1)(-q^[m]'(x))dx.
+
+D^[m] converges for Re u>-1/2; N^[m] initially for Re u>0.
+These are RAW THETA-MODE cutoffs. They are not the finite gamma-law Mellin
+M_N of the earlier MELLINEDGE request. No assertion about that M_N is made.
+The fixed factor 1/Z need not normalize the cutoff; it cancels in N/D.
+
+By (C2)--(C3),
+
+  a_m^*=q^[m]'(0)=sum_(n>m)b_n>0                       (C4)
+
+for every finite m. In particular the positive finite source has positive
+slope near zero even though the complete q has zero slope and decreases
+for x>0. There is no contradiction: q^[m]'(0) tends to zero as m grows.
+
+Taylor expansion at zero and the finite-mode tails imply, as u decreases
+to zero through positive reals,
+
+  N^[m](u)=-a_m^*/(2u)+O_m(1),
+  D^[m](u)=D^[m](0)+O_m(u),  D^[m](0)>0,
+  phi^[m](u):=4N^[m](u)/D^[m](u)
+       =-2a_m^*/[D^[m](0)u]+O_m(1).                    (C5)
+
+Indeed subtract q^[m]'(0) on 0<x<1. The residual is O_m(x), whose
+log-weighted integral stays bounded for u near zero. The integral from
+1 to infinity is analytic there. D^[m] is analytic and positive at zero.
+Thus every raw finite cutoff has phi^[m](u)<0 for all sufficiently small
+positive u and fails even nonnegative real-axis Bernstein membership.
+
+For the FULL source q'(x)=q''(0)x+O(x^3) near zero, and its full derivative
+tails give
+
+  N(0)=integral_0^infinity [-q'(x)]/x dx in (0,infinity),
+  D(0)=1,
+  phi(0)=4N(0)>0.                                      (C6)
+
+Strict positivity uses the already proved strict decrease of actual q.
+Hence (C5) is an approximation artifact, not an actual-source obstruction.
+The convergence of N^[m] to N holds on compact subsets of Re u>0 by the
+normally convergent full derivative series and a common endpoint/tail
+majorant. It cannot be uniform down to u=0, where each approximation has
+a pole and the limit is finite. Compact subsets with Re u>0 stay a positive
+distance from this endpoint; no contradiction with local convergence arises.
+
+There is also a precise downstream domain loss. Local Taylor subtraction
+continues D^[m] near u=-1, where its residue is q^[m]'(0)=a_m^*>0:
+the term 2a_m^* integral_0^1 x^(2u+1)dx equals a_m^*/(u+1).
+Gamma(u+1/2) is finite and nonzero at u=-1. Consequently
+
+  H^[m](u)=D^[m](u)/Gamma(u+1/2)
+
+has a genuine pole at -1, unlike the already proved entire FULL H.
+Every odd Taylor coefficient of q would similarly produce an integer
+Mellin pole; full evenness removes these coefficients. Only the first
+one needs to be nonzero to establish the cutoff defect above.
+
+## 3. One common boundary compensation cannot make every mode positive
+
+The obvious null correction using (C2) would choose a finite real function
+R(x), independent of n, and write
+
+  -q'(x)=sum_(n>=1) J_n(x),
+  J_n(x)=p_n(x)-b_n R(x).                              (C7)
+
+For each fixed x the series is absolutely convergent, and its sum is
+unchanged because sum b_n=0. A condition R(0)=1 would make each J_n vanish
+at the endpoint; the following obstruction does not even require it.
+
+Let beta=(15+sqrt(105))/8 be the larger root of P and
+x_0=(1/2)log(beta/pi)>0. Fix 0<x<x_0. Then p_1(x)<0.
+For n>=2, b_n>0, and putting t=exp(2x)>1 gives
+
+  p_n(x)/b_n
+    =t^(5/4) [P(a_n t)/P(a_n)] exp[-a_n(t-1)]
+       ->0 as n tends to infinity.                     (C8)
+
+The polynomial ratio tends to t^2 and the exponential tends to zero.
+If J_n(x)>=0 for all n>=2, then R(x)<=p_n(x)/b_n for every such n,
+hence R(x)<=0. But b_1<0 and p_1(x)<0 imply
+
+  J_1(x)=p_1(x)+|b_1|R(x)<0.                            (C9)
+
+Thus no common R, even signed and without endpoint restrictions, can
+turn all compensated individual modes nonnegative on (0,x_0). This
+excludes ONLY the common-profile ansatz (C7). Grouped/nonlocal corrections
+or the positivity of the complete sum are not excluded; the complete
+-q' already has a positive sign. In particular it is not a V witness.
+
+## 4. What this supplies, and what it does not
+
+The known source reciprocity performs a concrete cancellation: it removes
+an artificial numerator pole and the corresponding failure of entire H
+created by every raw finite theta cutoff. This is a source-domain fact.
+It supplies no sign of the logarithmic variance comparison
+
+  0<=Var_D,u(log s)-Var_N,u(log s)<=1/u^2, u>0,          (VAR)
+
+where the two laws have densities proportional to s^(u-1/2)rho(s) and
+s^(u-1/2)(-rho'(s)). The recently reviewed rho_e=exp(-s-epsilon s^3)
+control proves strict log concavity alone cannot supply VAR.
+
+A bounded actual-source VAR attempt must retain the paired full laws and
+(C2), and cannot use phi^[m] as an admissible Pick approximation or claim
+a modewise positive correction from (C7). The full additive PF property
+of r remains available, but no implication from it to VAR is proved here.
+A VAR proof would remain only a necessary filter for the sufficient Pick
+entrance. A strict actual-source VAR failure would reject that entrance,
+not RH or V positivity. The original all-finite complex V remains OPEN.
+END_ENDPOINT_PREFLIGHT
+
+BEGIN_PINNED_CONTEXT
+# PROSHKA EVIDENCE PACK
+Generated: 2026-09-17 04:30:24
+Repo: /Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/gamma-reciprocity-worktree
+
+EVIDENCE PACK ONLY. This is not the authoritative Proshka request, not a dispatch payload, and not a transport/front door. The exact request must be a separately source-locked UTF-8 .txt validated by workflow_runtime.py review-plan in the existing living phase chat.
+
+
+## Git status
+
+## codex_mac/gamma-reciprocity-20260914
+
+
+## Git log
+
+6de89d88 [CODEX_MAC][gamma-reciprocity] Audit Pick mechanisms and analytic variance obstruction
+
+
+## File: docs/Codex/REPORT_2026-09-17_DIRECT_PICK_BRIDGE.md
+
+# A direct Pick consumer for the same full theta quotient
+
+STATUS: ACCEPTED_LIMITED_PAPER; growth proved, Pick-to-RH transfer conditional.
+Date: 2026-09-17. Base: 8d3a63ae28c1ac92f06f433cd7e1b8d4ec266679.
+Isolated analytic research. No actual Pick membership or original V sign
+is asserted. This checks a weaker sufficient entrance for the SAME forced
+quotient; it does not construct another source or send another proof job.
+
+## Inputs and the exact claim
+
+Keep q=Phi/int_R Phi, rho(s)=q(sqrt(s)),
+D(u)=int_0^infinity s^(u-1/2)rho(s)ds initially Re u>-1/2,
+H(u)=D(u)/Gamma(u+1/2), phi_*(u)=4H(u-1)/H(u), and
+F(z)=int_R exp(izx)q(x)dx=xi(1/2+iz)/xi(1/2).
+The physical V still uses its original L2 normalization and all finite
+admissible complex families. Its accepted transfer is not reproved here.
+
+Pinned project inputs:
+- REPORT_2026-09-17_KPS_MELLIN_DIVISOR_AUDIT.md, SHA256
+  00cb5a4b3739314a8a584469179ee5cc8e72238a48f186f12d28cba2f4383528.
+  S1 supplies entire real H and H(v)>0 for real v>-3/2; S3 is the
+  independent control where Pick holds but KPS unit separation fails.
+- REPORT_2026-09-17_KPS_MOMENT_INTERFACE.md, SHA256
+  8db1503625708a8271f63ea9b1ff33ed5d38ecbe131718ab152688b322e528a0.
+  Full source, Fourier normalization, and moments.
+- PROSHKA_RESPONSE_GOAL058_KPSQUOTIENT_2026-09-17.md, SHA256
+  14dcccc1270d83595d03dfcdb784c0b419e946b8fe2a966bfdaa153d5cd6647d.
+  KQ14 is a REQUIRED independently accepted dependency:
+  any nonreal D zero would prevent Pick membership, including initial
+  numerator/denominator cancellation. Review SHA256
+  fde1b165acc3fb4adc9ef436b69296af1301e25c60cb0884e53c2cf56ddf8a0e,
+  verdict ACCEPT_KPSQUOTIENT_DENOMINATOR_FILTER_ONLY. Its full review and
+  the independent parent check were read; no class membership is imported.
+
+Claim R1 (unconditional from accepted source inputs): H has entire
+order at most one, with max_(|u|<=r)|H(u)| <= exp(C(r+1)log(r+2)).
+Claim R2 (conditional): if all zeros of this exact H are real, all zeros
+of F are real. Their multiplicities are unrestricted.
+Claim R3 (conditional on KQ14 and R1-R2): if this exact phi_* is a Pick
+function, RH follows. No separate unit-separation assumption is needed
+for this sufficient implication. Actual Pick membership remains OPEN.
+Pick here means that the meromorphic source quotient extends holomorphically
+to the entire open upper half-plane with nonnegative imaginary part.
+Real-axis positivity alone, a truncated region, or discrete samples do not
+satisfy this premise. This is not a necessary condition for RH.
+
+## R1. The existing entire H has growth order at most one
+
+The full source bound can be obtained directly, without any sign premise.
+For x>=0, t=exp(2x)>=1, the defining series gives
+
+ |q(x)| <= C t^(9/4) exp(-pi t)
+                 sum_(k>=1) k^4 exp[-pi(k^2-1)]
+          <= C' exp(-pi exp(2x)/2).
+
+The k^2 terms are bounded by k^4 and t>=1; polynomial powers of t are
+absorbed into half the exponential. Hence, for a finite C_0,
+
+ |rho(s)| <= C_0 exp(-s), s>=0.                         (R1)
+
+Indeed s-(pi/2)exp(2sqrt(s)) is bounded above on [0,infinity).
+The full series near t=1 and evenness give local analyticity of rho,
+already proved in the Mellin divisor audit. Choose 0<R<1 inside its
+analytic disk, B bounding |rho| on |s|<=R, epsilon=R/2, and write
+rho(s)=sum_(k>=0) a_k s^k. Cauchy gives |a_k|<=B R^(-k), and
+
+ |rho(s)-sum_(k=0)^(M-1) a_k s^k| <= 2B(s/R)^M,
+                  0<=s<=epsilon.                     (R2)
+
+For an integer n>=1 and |u|=n choose M=n+1 in the already accepted
+Taylor-subtracted continuation of D. Put sigma=Re u, so -n<=sigma<=n.
+Every explicit simple fraction has denominator bounded away from zero:
+
+ |u+k+1/2| >= ||u|-(k+1/2)| >= 1/2.
+
+Its finite sum has modulus at most
+
+ 2B epsilon^(-n+1/2) sum_(k=0)^n (epsilon/R)^k
+ <= 4B epsilon^(-n+1/2).                               (R3)
+
+The remainder integral has modulus at most
+
+ 2B R^(-M) epsilon^(sigma+M+1/2)/(sigma+M+1/2)
+ <= (4B/3) R^(-n-1),                                  (R4)
+
+since sigma+M+1/2>=3/2 and epsilon<1. The tail integral from epsilon
+to infinity is bounded, using (R1), by
+
+ C_0 epsilon^(-n) int_epsilon^1 s^(-1/2)ds
+       + C_0 int_1^infinity s^(n-1/2)exp(-s)ds
+ <= C_1 epsilon^(-n)+C_0 n!.                           (R5)
+
+Consequently |D(u)|<=exp(C_2(n+1)log(n+2)) on these integer circles.
+They contain none of the possible real half-integer poles.
+
+The standard reciprocal-Gamma product (DLMF 5.8.2) gives
+|1/Gamma(u+1/2)|<=exp(C_3(n+1)log(n+2)) there: split the product
+at k=ceil(2(n+1)); the finite logarithms are O(n log(n+2)), while
+log|(1+w/k)exp(-w/k)|=O(|w|^2/k^2) for the tail, w=u+1/2.
+Thus the same form of bound holds for H on each circle. H is already
+entire, so maximum modulus extends it to the disk; taking n=ceil(r)
+proves R1. In particular its order is at most one, hence strictly less
+than two. No location of complex zeros has been used.
+
+## R2. Direct classical transfer, with coefficients fixed exactly
+
+For every integer n>=0, changing s=x^2 yields D(n)=mu_(2n).
+Since mu_0=1 and Gamma(n+1/2)=(2n)!sqrt(pi)/(4^n n!),
+
+ H(0)=1/sqrt(pi),
+ H(n)/H(0)=4^n n! mu_(2n)/(2n)!.
+
+Define the entire function
+
+ G(w)=sum_(n>=0) H(n)w^n/[H(0)n!].                      (R6)
+
+It is entire by the known full Fourier moment bounds, or immediately by
+its exact coefficient relation to the even entire F:
+
+ F(z)=G(-z^2/4).                                       (R7)
+
+External classical input, not a newly proved theorem here: the Laguerre
+coefficient-transform theorem says that a real entire function of order
+less than two having only negative real zeros gives an exponential
+coefficient transform sum A(n)w^n/n! with only negative real zeros.
+The statement is reproduced as Lemma 1, printed p2, of Baricz--Singh,
+*Zeros of some special entire functions*, arXiv:1702.00626v2; it is used
+there for their special-function theorems. Lemma 4, p3, also states
+Runckel's related canonical-product multiplier theorem. The original
+1898 proof and Runckel's 1969 proof have not been independently audited.
+
+Under the conditional real-zero premise for H, its previously proved
+positivity on real u>-3/2 puts all its zeros strictly on the negative
+axis. R1 pays the growth condition; H is real entire and H(0)>0.
+Applying the named Laguerre theorem to H/H(0) gives negative real zeros
+of G. If F(z)=0, then -z^2/4 is such a zero, so z^2 is strictly positive
+real and z itself is real. F(0)=1 excludes a zero at zero.
+This proves R2 as a closed CONDITIONAL transfer.
+
+## R3. How the new zero-propagation result reduces the entrance
+
+Use the independently accepted KQ14 and suppose the actual phi_*
+is Pick. KQ14 excludes every nonreal zero of the continued D. At every
+nonreal point Gamma(u+1/2) is finite and nonzero, so H and D have exactly
+the same zeros with the same multiplicities. Therefore H has only real
+zeros. R1 and R2 imply that F has only real zeros, which puts every xi
+zero on Re s=1/2 through the exact Fourier identity.
+
+Thus the sufficient chain is
+
+ actual phi_* Pick -> H has only negative real zeros
+                   -> G has only negative real zeros
+                   -> F has only real zeros -> RH.    (R8)
+
+This chain uses no claim that the surviving zeros/poles of phi_* are a
+unit distance apart. It does not infer Pick from the formal unit shift,
+from H's finite order, from the parabolic zero-free region, or from
+positivity of rho. Ordinary Bernstein membership is also not substituted
+for Pick. The older ordinary-BF control remains a counterexample to that
+substitution; the polynomial H_c control illustrates why requiring unit
+separation would discard some valid real-zero examples.
+
+## Scope and dependency outcome
+
+The KPS paper provides Theorem 4.4 as an external sufficient theorem;
+its sketch on pp416-417 refers to a 2022 working paper [25] for details.
+The bounded primary search did not locate that working paper. This does
+not establish that it is unavailable or refute the published theorem.
+R2 instead uses the explicitly stated classical coefficient-transform
+input, with every actual-source growth and normalization condition paid
+here. It does NOT independently reprove the classical theorem.
+
+The newly isolated sign premise is global Pick membership of the very
+same phi_*. No independent theta argument pays it here. Finite order is
+a genuine additional source fact, but R8 is only a sufficient conditional
+interface, not a source-sign improvement or proof of RH. The additive
+PF property and the arithmetic placement of the square rates have not
+been used to obtain that missing Pick sign. Do not reset any source-sign
+stall counter, launch another same-premise proof job, or promote this
+note to a canonical or Lean result.
+
+Sources read:
+- Baricz--Singh authors' PDF https://arxiv.org/pdf/1702.00626,
+  version 2, Lemma 1 p2 and Lemma 4 p3, text and both rendered pages read.
+  PDF SHA256 992a42316a41b39027377cbb2690b908ee14f3c1e2464b23c9727316d882abc7.
+  Published paper: Proc. AMS 146(5) (2018), 2207-2216,
+  DOI https://doi.org/10.1090/proc/13927.
+- https://dlmf.nist.gov/5.8.E2, reciprocal-Gamma product.
+- KPS journal PDF SHA256
+  05f75d661af5d94d64c5c66b6a9c1ee22a73d53e13c5afd8ceb7a76a5cf14a19,
+  Theorem 4.4 and its proof sketch, printed pp396,416-417.
+
+CONSUMPTION: INCOMPLETE_NO_CONSUMABLE_TARGET.
+FULL_V_SIGN: OPEN. RH: OPEN. ACTUAL_PICK_MEMBERSHIP: OPEN.
+
+## Independent acceptance
+
+Candidate SHA256: `2bf161414992d7a50d3bba60c0aa99c18e34a9862bc3c0ecff157411dd4a1239`.
+Review SHA256: `0114844dd53e95aadecf58d080d138939452832d6e186702f41ac1367b62db24`.
+Verdict: `ACCEPT_ENTIRE_H_GROWTH_AND_DIRECT_CONDITIONAL_PICK_BRIDGE_ONLY`.
+Reviewer `/root/pairzero_geometry_review` independently checked every R1--R3
+step and the exact external Laguerre statement. The full review and parent
+check are embedded in the paired certificate. The producer KQ14 dependency
+was separately accepted in REPORT_2026-09-17_KPSQUOTIENT_INTAKE.md.
+Actual global Pick membership remains unproved, and no full-V sign delta,
+canonical/Lean admission, source-sign counter reset or RH claim is made.
+
+
+## File: docs/Codex/REPORT_2026-09-17_GLOBAL_PICK_MECHANISM_HUNT.md
+
+# Global Pick mechanism hunt: exact phase and string controls
+
+Status: ACCEPTED_LIMITED_PAPER; independent review and parent check complete. Isolated analytic research only.
+Source base: da556b66de0b840bcd5131fe32b74b35ad1652ec.
+Exploratory intake: INCOMPLETE_NO_CONSUMABLE_TARGET; no canonical exact
+Lean theorem/consumer edge is bound. No admission or RH/V sign claim.
+
+## Return point and result
+
+The exact full-source quotient is phi(u)=4N(u)/D(u)=4H(u-1)/H(u),
+with the normalization and source pins in
+BRIEF_2026-09-17_GLOBAL_PICK_MECHANISM_HUNT.md. Its global Pick property
+would suffice for the already published conditional RH bridge. It is OPEN.
+
+This bounded hunt found two concrete mechanisms and one false transfer.
+Neither mechanism has yet been constructed from the actual theta source.
+The new calculations below realize BOTH mechanisms exactly for the same
+positive control, including its boundary energy. This is a mechanism check,
+not progress on the sign of the theta quotient or of V.
+
+## Search reconciliation and primary evidence
+
+The four registered ask-shelf queries and receipts PICK_HUNT_ASK_1--4 are
+retained in private staging. All report INCOMPLETE due to semantic-index
+freshness; no absence theorem or index repair follows. Earlier PF/inversion
+queries used different inputs. The existing hyperbolic-source and Gaussian
+latent-source reports were reread; their scalar/latent positivity does not
+identify this Mellin quotient. Three bounded external dictionaries led to:
+
+1. Deng--Schilling, arXiv:1606.04610v2, printed p.2, Theorem and Remark 2;
+   proofs pp.3--4. https://arxiv.org/pdf/1606.04610
+   PDF SHA256 75ab07ee2f2dd43226cf7fab3deae0451d6ad951d78d534974cc1c4946b7b651.
+   Quote, Remark 2: "all complete Bernstein functions have a representation
+   of the form (1)". For measurable 0<=alpha<=1 on [0,1],
+   P_alpha(u)=exp integral_0^1 (u-1)alpha(x)/(1+(u-1)x) dx
+   is complete Bernstein; conversely phi(u)/phi(1) has this form if phi is
+   complete Bernstein. Map u to the actual Mellin parameter, without shift;
+   phi(1)>0 is proved. Existence of the exact source alpha is OPEN.
+   Strength: verified mechanism, conditional application. The negative
+   Gaussian control has upper-half-plane poles and cannot admit this alpha.
+   We do not use the p.3 assertion of a zero limit for every step function:
+   alpha=0 gives the constant 1. The representation theorem and direct
+   phase argument below do not require that assertion.
+
+2. Kwasnicki--Mucha, arXiv:1707.02475v1, Theorem 3.1 p.6 and (3.3) p.7.
+   https://arxiv.org/pdf/1707.02475
+   PDF SHA256 7456075b35759379459ddf4319b0ac8fe21a07d1f11846218246824389ed17a6.
+   Quote, Theorem 3.1: "can be obtained in the above manner in a unique way."
+   A fixed nonnegative string measure A, its equation v''=u v A and the
+   prescribed terminal condition produce psi(u)=-v'(0). The response is
+   complete Bernstein; the real-parameter solution minimizes the energy.
+   Map the spectral parameter to our u and require psi(u)=4N(u)/D(u)
+   identically. Both an independently constructed A and exact matching
+   are OPEN for theta. The converse cannot construct a positive source
+   device before its complete-Bernstein hypothesis is paid. The Gaussian
+   control fails this response class. Strength: verified conditional mechanism.
+
+3. Patie--Vaidyanathan, arXiv:1806.02644v2, (1.2) p.2 and Definition 2.1 p.3.
+   https://arxiv.org/pdf/1806.02644
+   PDF SHA256 4eb40f415abb402d0585916b2eaef5390fb67f10a96fe02e9c475e8453217355.
+   Quote, p.2: "We call these the Berg-Urbanik semigroups". The explicit
+   hypothesis in Definition 2.1 is ordinary Bernstein membership. It
+   supplies a multiplicative semigroup with time-one moments
+   product_(k=1)^n phi(k). Our old Abel law instead has moments
+   n!/product_(k=1)^n phi(k); it is the complementary exponential-functional
+   law, not automatically this semigroup. Neither positive old Abel mass nor
+   its moment determinacy supplies the missing BF premise; even that premise
+   would not supply Pick. The Gaussian control IS ordinary BF and so is not
+   excluded. Strength: verified source, INAPPLICABLE as the needed upgrade.
+
+The quoted source statements were checked against rendered PDF pages. This
+is bounded source verification, not a claim to have surveyed all literature.
+
+## M1. Why the upper bound on phase density matters
+
+Write z=a+ib, b>0. The integrand in log P_alpha has imaginary part
+
+  b alpha(x)/|1+(z-1)x|^2.
+
+The integral with alpha=1 is log z, with the branch real at z=1.
+Consequently 0<=Im log P_alpha(z)<=arg z<pi. Exponentiation stays in the
+closed upper half-plane. Bounded alpha also gives local uniform analyticity
+on the slit plane. This controls the whole phase before exponentiation.
+Positivity of alpha alone is insufficient: alpha=2 gives P_alpha(z)=z^2,
+whose imaginary part is negative at z=-1+i.
+
+For the already pinned positive control
+
+  H_c(u) proportional to (u+2)(u+3),
+  phi_c(u)=4(u+1)/(u+3), phi_c(1)=2,
+
+take alpha_c=1_(1/4,1/2). Direct integration gives
+
+  integral_(1/4)^(1/2) (u-1)/(1+(u-1)x) dx
+    = log[2(u+1)/(u+3)].
+
+Thus the exact control has the required bounded density. Equivalently the
+half-line phase density eta(t)=alpha(1/(1+t)) is 1_(1,3). No unit-gap
+assumption on the surviving zero -1 and pole -3 was inserted.
+
+## M2. An explicit positive string with the SAME control response
+
+This is a new elementary calculation for the control, not an assertion
+about the actual theta source. Put R=3/4, a=1/4, A=2 delta_a.
+Let v_z be continuous and linear on [0,a] and [a,R], with v_z(0)=1,
+v_z(R)=0, and derivative jump
+
+  v'_z(a+)-v'_z(a-)=2z v_z(a).
+
+Writing w=v_z(a), the left and right slopes are 4(w-1) and -2w.
+The jump equation is 4-6w=2zw, hence w=2/(z+3). The input response is
+
+  -v'_z(0)=4(1-w)=4(z+1)/(z+3)=phi_c(z).
+
+For real u>=0 and any absolutely continuous complex v with the same two
+boundary values, define
+
+  E_u[v]=integral_0^R |v'|^2 ds+2u|v(a)|^2.
+
+Set g=v-v_u. Piecewise integration by parts and the derivative jump give
+
+  integral v'_u conjugate(g') ds = -2u v_u(a)conjugate(g(a)),
+
+since g vanishes at both endpoints. The ENTIRE mixed term cancels and
+
+  E_u[v]=E_u[v_u]+E_u[g],    E_u[v_u]=phi_c(u).
+
+The endpoint at R and jump at a are essential parts of this identity.
+For complex z off the pole, the same integration by parts with v_z gives
+
+  phi_c(z)=integral_0^R |v'_z|^2 ds+2z|v_z(a)|^2,
+  Im phi_c(z)=2 Im z |v_z(a)|^2=8 Im z/|z+3|^2.
+
+This exhibits exactly how one fixed positive device controls every upper
+half-plane parameter. It does not identify its energy with our physical V.
+For theta, matching the quotient would feed the separately accepted Pick
+consumer; direct equality E=V is not asserted.
+
+## M3. A source-level diagnostic that does not assume unknown zeros
+
+Let L(u)=log(phi(u)/phi(1)), real u>0. Under the M1 representation,
+differentiation on compact positive u intervals yields, for every n>=1,
+
+  (-1)^(n-1) L^(n)(u)/n!
+    = integral_0^1 x^(n-1)alpha(x)/(1+(u-1)x)^(n+1) dx,
+  0 <= (-1)^(n-1) L^(n)(u)/n! <= 1/(n u^n).
+
+The upper bound follows by alpha<=1 and differentiating log u. These are
+necessary conditions only; a finite list cannot prove the representation.
+Use the ACTUAL full source and the two normalized positive densities
+
+  dP_D,u(s)=s^(u-1/2)rho(s) ds/D(u),
+  dP_N,u(s)=s^(u-1/2)(-rho'(s)) ds/N(u).
+
+Full-source endpoint and tail bounds justify two logarithmic derivatives
+for every real u>0. Therefore
+
+  L'(u)=E_N,u log s-E_D,u log s,
+  L''(u)=Var_N,u(log s)-Var_D,u(log s).
+
+In particular the n=2 condition becomes the concrete source comparison
+
+  0 <= Var_D,u(log s)-Var_N,u(log s) <= 1/u^2.             (VAR)
+
+The published strict increase pays L'>0; it does NOT pay either bound in
+(VAR). No variance ordering for the actual theta source is proved here.
+This is not the previous unsigned formula for phi''; it is an exact
+necessary condition on log phi, with a stated source-level failure test.
+
+## Hypotheses, decision and bounded next action
+
+PROVED: exact source/quotient, normalization, old Abel law, H continuation
+and growth, direct conditional Pick consumer. PROVED FOR CONTROL ONLY:
+alpha_c, A=2 delta_(1/4), exact response, full boundary compensation.
+OPEN FOR THETA: bounded phase density; positive string with exact response;
+global Pick; (VAR). FALSE AS A GENERAL RULE: positive phase weights alone
+or ordinary BF/positive radial law force Pick. INAPPLICABLE: reversing the
+Berg--Urbanik construction without its premises.
+
+No proof request should merely ask Proshka to construct the guaranteed
+string or choose alpha: those existence assertions encode the unpaid sign.
+The next bounded mathematical test is (VAR) on the full theta source,
+using the two explicit measures together. A strict violation excludes this
+sufficient Pick route, not RH or V positivity. A proof is only a necessary
+filter. If the source identities give neither ordering nor a violation,
+stop this diagnostic and preserve the exact comparison; do not automatically
+generate an infinite queue of higher derivative tests or split its terms.
+
+This hunt changes the description and supplies worked mechanisms. It does
+not change the mathematical sign frontier or reset any no-delta counter.
+Canonical production, goal status, phase/chat and previous verdicts remain
+unchanged. No new Proshka proof job was sent during the hunt.
+
+## M4. Completed bounded variance-transfer test: strict log concavity does not suffice
+
+Status: ACCEPTED_LIMITED_PAPER. Companion to the fixed-hash
+GLOBAL_PICK_MECHANISM_CANDIDATE.md, M3. This is NOT the full theta source.
+
+For epsilon>0 take
+
+  rho_e(s)=exp(-s-epsilon*s^3), s>=0,
+  q_e(x)=C_e exp(-x^2-epsilon*x^6), x real, C_e>0 normalized.
+
+The constant cancels from the quotient. These profiles are positive, even
+in x, strictly decreasing for x>0, smooth, rapidly decreasing, and
+(log rho_e)''(s)=-6 epsilon s<0 for s>0. We make no claim that this source
+has the actual theta additive-PF and reciprocal structure jointly.
+
+Put p=u+1/2 and
+
+  D_e(u)=integral_0^infinity s^(p-1)rho_e(s) ds,
+  N_e(u)=integral_0^infinity s^(p-1)(1+3 epsilon s^2)rho_e(s) ds,
+  phi_e=4N_e/D_e,    L_e(u)=log(phi_e(u)/phi_e(1)).
+
+On a fixed compact interval around u=1, the two u derivatives and two
+one-sided epsilon derivatives at epsilon>=0 are dominated by finite sums
+of s^(p-1+j)|log s|^k exp(-s), j<=8, k<=2. Use a compact interval p bounded
+strictly above zero and the larger/smaller endpoint powers for s>=1/s<=1.
+Consequently the following first-order expansions have O(epsilon^2)
+remainders in C^2 as functions of u on a smaller fixed interval:
+
+  D_e(u)=Gamma(p)-epsilon Gamma(p+3)+O_C2(epsilon^2),
+  N_e(u)=Gamma(p)+epsilon[3Gamma(p+2)-Gamma(p+3)]
+           +O_C2(epsilon^2).
+
+Denominators stay uniformly away from zero there for sufficiently small
+epsilon. Division and the smooth logarithm preserve the C^2 expansions:
+
+  phi_e(u)=4[1+3 epsilon p(p+1)+O_C2(epsilon^2)],
+  L_e''(1)=6 epsilon+O(epsilon^2)>0
+
+for every sufficiently small positive epsilon. The variance identity from
+M3 therefore gives
+
+  Var_D,e,1(log s)-Var_N,e,1(log s)
+       =-6 epsilon+O(epsilon^2)<0.
+
+This violates (VAR), hence excludes global Pick / complete Bernstein for
+these controls. Also phi_e''(1)=24 epsilon+O(epsilon^2)>0, independently
+excluding ordinary Bernstein. No finite numerical sample is used.
+
+The test invalidates the generic transfer from squared-coordinate strict
+log concavity to the necessary variance ordering. It does not decide (VAR)
+for theta, does not give a negative theta V, and does not refute RH. The
+remaining source-specific input must use additional structure; neither
+the exact string for the rational control nor the phase theorem supplies it.
+Do not proceed automatically to an infinite hierarchy of derivative tests.
+
+## Independent acceptance
+
+Verdict: `ACCEPT_GLOBAL_PICK_MECHANISM_CONTROLS_AND_VARIANCE_OBSTRUCTION_ONLY`.
+Review SHA256: `fa0dabcffe4bbab4135856f083fc7b0a3a592992eeb4be6c337550df981a0525`. Main and companion candidate hashes,
+full independent review and parent check are embedded in the paired
+certificate. M4 executes the generic concavity-to-variance test and rejects
+that transfer analytically. The actual theta variance comparison remains
+OPEN. These are mechanism and control results only; no actual-source Pick,
+full-V sign, RH conclusion, Lean admission or counter reset follows.
+END_PINNED_CONTEXT

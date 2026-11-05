@@ -1,0 +1,36 @@
+{
+  "scope": "ISOLATED_ANALYTIC_PAPER_NOT_CANONICAL_ADMISSION",
+  "source_base": "9579d415dc05cbc54b0300b2eb8de6238da2bee4",
+  "report": "docs/Codex/REPORT_2026-09-15_LAYER_GRAM_TEST.md",
+  "sha256": "a402aa67f81824945d3324881e2a822a8e897a07316b3dc780e671228715e1eb",
+  "review": {
+    "class": "ADVERSARIAL_READ_ONLY",
+    "reviewer": "/root/sibling5_check",
+    "verdict": "CLEAN",
+    "exact_payload_sha256": "a402aa67f81824945d3324881e2a822a8e897a07316b3dc780e671228715e1eb",
+    "text": "Quartic identities and Fock feature map have correct factors and yield an all-rank complex Gram representation, including the Gaussian limit. Theta tangent, conditional PSD finite differences, C_q, tail determinant and analytic propagation imply a fixed finite row with K_s[c]<0 for every sufficiently small s>0. Excludes this construction only, not positivity of V, IC, ODD2, or RH."
+  },
+  "parent_checks": [
+    "Full report read and source hash pins checked",
+    "Quartic feature weights and diagonal norm integrability checked",
+    "Mixed derivative computed directly; exact full-source tail checked",
+    "Analytic product domain and mixed old/new propagation blocks checked",
+    "Fixed-row negative tangent converted to small positive s and reflected into required I",
+    "Sparse Fraction polynomial expansion of L2: zero coefficient residual"
+  ],
+  "tool_notes": [
+    "Optional SymPy import unavailable; no package installed. Exact quartic check completed using standard-library Fraction arithmetic."
+  ],
+  "scope_limits": [
+    "No numerical theta evaluation, quadrature, explicit finite node set or rank bound",
+    "No new external theorem or semantic-shelf absence claim",
+    "No Lean run or source-sign improvement",
+    "No pending or new Proshka request"
+  ],
+  "actual_theta_layer_obstruction": true,
+  "actual_theta_negative_V_witness": false,
+  "source_sign_progress": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "next_requirement": "Any certificate in these cancellation coordinates must pay compensation across integration levels, or use another exact full-form representation; isolated K_s positivity is false."
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "q3_isolated_analytic_receipt.v1",
+  "status": "ACCEPT_SCOPED_THEOREM_MAPPING_AND_DIRECT_AFFINE_FILTERS_ONLY",
+  "source_base": "4353bf4d7304457e3731cf6112149619f0116282",
+  "brief_sha256": "6648d9fc85388490e1ef1dada802d7c8617cbed431972c698b33426fba6a13d8",
+  "report_sha256": "4d7b06b1a7e17eeb2822f282358772a929f362527209c5b98306cb8fe6840565",
+  "reviewer": "/root/sibling5_check",
+  "review": {
+    "sha256": "314562ce373d2e23e6f74b0ae1e21a2af3587765c6e861f83080bd0b00b5d35c",
+    "text": "# Independent review: oscillatory marginal hunt\n\nReviewed candidate: `REPORT_2026-09-15_OSCILLATORY_MARGINAL_HUNT.md`  \nSHA256: `4d7b06b1a7e17eeb2822f282358772a929f362527209c5b98306cb8fe6840565`\n\n## Verdict\n\n**ACCEPT_SCOPED_THEOREM_MAPPING_AND_DIRECT_AFFINE_FILTERS_ONLY.**\n\nBerndtsson's theorems concern Bergman-kernel diagonals or real positive\nweighted integrals under plurisubharmonic/pseudoconvex hypotheses.  The\nreport correctly identifies that taking the modulus of the target Fourier\nweight erases the unbounded oscillatory real spectral parameter; no\nBergman-diagonal identity or zero-free conclusion is supplied.\n\nBarvinok's Gaussian and symmetric-exponential non-cancellation theorems have\nthe reported global Lipschitz and dependency budgets.  For both exact scalar\naffine reweightings, the logarithmic derivative is unbounded in the Gaussian\ncase.  In the exponential case the reference-measure cusp gives a derivative\njump of two, hence Lipschitz constant at least one, contradicting the\n`<=1/72` scalar budget.  The finite-splitting and `1/8` Gaussian argument is\nalso correct.\n\nThese results exclude only direct affine one-coordinate reweightings and\nfinite decompositions thereof.  Nonlinear transports, coupled\nhigher-dimensional lifts, other reference measures, and C6 beyond the\naccepted central slab remain open; the report does not promote any of them.\n"
+  },
+  "primary_sources": [
+    {
+      "id": "Berndtsson math/0505469v1",
+      "url": "https://arxiv.org/pdf/math/0505469",
+      "sha256": "d882ff3951d4a1a506ed0a8c1e0a89dc2e9a35657831eec7605f43a8e354055b",
+      "read": "Theorems1.1-1.2 PDFpp1-2"
+    },
+    {
+      "id": "Barvinok 2606.23556v3",
+      "url": "https://arxiv.org/pdf/2606.23556",
+      "sha256": "75a3325bf68a259647094f40cf9ff8d1d7c3ffb21ce632d8e612b7b7e0e07f52",
+      "read": "Theorem1.2 PDFp4, Theorem1.3 PDFp6, Lemma5.2 proof pp22-23"
+    }
+  ],
+  "shelf_receipts": {
+    "ask-1.tool-result.json": {
+      "sha256": "555f5904560fff0453eada71cd0eb6c34b6790679c558217b9dfe754f7d39140",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+      "truncated_tool_output": true,
+      "full_stdout_retained": false
+    },
+    "ask-2.tool-result.json": {
+      "sha256": "a5e350a5ba01ccb5cc3c39f34884333d7898df2585ab22d6f3165fa3f8dcb10e",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+      "truncated_tool_output": true,
+      "full_stdout_retained": false
+    },
+    "ask-3.tool-result.json": {
+      "sha256": "aaa548a98d00b3016c9d74be694439a8560452f758a451a18b91f2b61ab626f6",
+      "status": "INCOMPLETE_SEMANTIC_INDEX_FRESHNESS",
+      "truncated_tool_output": true,
+      "full_stdout_retained": false
+    }
+  },
+  "source_fetch_observation": "Version-suffixed urllib request returned HTTP406; distinct unversioned primary URL fetched successfully by curl, frontmatter version checked and bytes hashed. No source absence inferred.",
+  "scope": [
+    "Berndtsson supplies a positive weighted Bergman statement, not nonvanishing of our complex marginal",
+    "Barvinok supplies genuine non-cancellation under explicit Lipschitz/dependency budgets",
+    "Direct affine scalar Gaussian and symmetric-exponential reweightings fail on both actual source assemblies; finite same-coordinate splitting does not repair them"
+  ],
+  "limits": {
+    "nonlinear_transport_excluded": false,
+    "higher_dimensional_lift_excluded": false,
+    "C6_enlargement_proved": false,
+    "RH_proved": false,
+    "canonical_admission": false,
+    "new_Proshka_request_sent": false
+  },
+  "evidence_directory": "/Users/emalam/.codex/visualizations/2026/09/12/01a092ef-bf89-7693-aca8-42c3b691138a/oscillatory-marginal-hunt-20260915"
+}

@@ -1,0 +1,18 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "105062d6f55bd75b96d4c2485749e2f07022c891",
+  "candidate_sha256": "2e6fc20cfc9827f3c1eeb64a04897a19b227d64e0c4f0819c1fbf1901a69fa71",
+  "report": "docs/Codex/REPORT_2026-09-16_POINCARE_TRANSFER_PREFLIGHT.md",
+  "report_sha256": "9727f980f66467217c8173b5ba5fe29cb0019509695df047c69eae80499bd964",
+  "reviewer": "/root/sibling5_check",
+  "verdict": "ACCEPT_CONDITIONAL_PRIMITIVE_GAP_AND_TRANSFER_SCOPE_ONLY",
+  "review_sha256": "f1e073626a9f5811cff5f8feece00642027c70951d0373a2abe48fab8d37fc8f",
+  "review_text": "# Independent review: conditional primitive Poincare preflight\n\nReviewed candidate SHA256:\n`2e6fc20cfc9827f3c1eeb64a04897a19b227d64e0c4f0819c1fbf1901a69fa71`\n\n## Verdict\n\n**ACCEPT_CONDITIONAL_PRIMITIVE_GAP_AND_TRANSFER_SCOPE_ONLY.**\n\nQuantile flattening exactly turns the fibre law into Lebesgue measure, and\ncentering gives `u_g,u_b` in complex `H_0^1`.  Fibre reflection makes the\nprimitives antisymmetric about one half, so only even sine modes occur and\nthe sharp ambient gap is `4 pi^2`.\n\nThe micro/loss decomposition retains the mixed covariance.  In the terminal\nidentity, fluctuation energies cancel and the unresolved sign remains in the\nmean sector.  The `x->0` dominated limit correctly rejects only the stated\nfluctuation-only exact identification; it neither proves nor rules out a\ncomparison retaining the means or another map.\n\nAll three cited source hashes match the stated disk files.\n",
+  "publication_difference": "Only STATUS changed after exact-payload independent review.",
+  "parent_check": "Reproduced quantile isometry, reflection parity, even-sine 4pi² gap, full covariance cancellation and dominated zero-shift limit.",
+  "source_sign_progress": false,
+  "canonical_admission": false,
+  "RH_proved": false,
+  "counter_effect": "One conditional-primitive compatibility preflight; no old counter reset or new route-family selection.",
+  "new_proshka_request": false
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "q3_isolated_analytic_review.v1",
+  "source_base": "42f19c6077972f36fcb7a7b6b9e9bde989388a36",
+  "verdict": "ACCEPT_FIXED_K2_WHOLE_LINE_LEADING_NEGATIVE_DEFINITE_KERNEL_ONLY",
+  "candidate_sha256": "c6138f666fb5e1a33831c21190c56d765b42cf5e89cc3054baf47bd6a3ae50e1",
+  "report_path": "docs/Codex/REPORT_2026-09-16_K2_LEADING_COMPENSATION.md",
+  "report_sha256": "7c7a8bef3ba1a2f8a18d8482fab6075c915d907e5145593e9102a51c76a3a4ef",
+  "reviewer": "/root/sibling5_check",
+  "review_sha256": "01931fa74b3598aedcbfad0ba9548d4416fcd47d7fe84730ed4e1ab27404358f",
+  "review_text": "# Independent review — fixed-K2 whole-line leading kernel\n\n- **Reviewed SHA-256:** `c6138f666fb5e1a33831c21190c56d765b42cf5e89cc3054baf47bd6a3ae50e1`\n\n**VERDICT: ACCEPT_FIXED_K2_WHOLE_LINE_LEADING_NEGATIVE_DEFINITE_KERNEL_ONLY.**\n\nThe fixed-offset substitution and domination in §1 give the stated entrywise leading kernel. The change `t=e^(2Y)` supplies the factor `2 mu`; with the stated Fourier convention, Plancherel supplies the outer factor `-2 mu/pi`. The identity `ghat(omega)=fhat(omega-i)=xi(-1/2-i omega)/A` is consistent with the convention.\n\nPairing the even order-one Hadamard product removes the nonconstant exponential term. Since every completed-xi zero has imaginary coordinate in `(-1/2,1/2)` in the `fhat` coordinate, each paired logarithmic-derivative summand on `omega-i` has strictly positive imaginary part. Hence the leading Gram is strictly negative definite for every fixed finite family of distinct real offsets and every nonzero complex row.\n\nThe renewal convergence extension is correctly limited to each fixed real pair, with a lambda strictly below `pi`; it justifies identifying the later aggregate for those shifted pairs. The terminal full-line oddness and superexponential tail give the opposite aggregate leading form, without a termwise later-block sign or a terminal sign theorem.\n\nNo conclusion here covers full `V`, a uniform family of offsets, general prefix depth, a fixed-rank in-interval witness, or RH.\n",
+  "parent_check": "Full independent algebra and domain reproduction; added and checked dominated renewal convergence outside original I before identifying aggregate tail. No complex zero division on critical strip and no RH premise.",
+  "primary_sources_read": [
+    "https://dlmf.nist.gov/25.2.E12",
+    "https://dlmf.nist.gov/25.4",
+    "https://dlmf.nist.gov/25.10"
+  ],
+  "source_read_method": "web.open full text; optional local HTML retrieval returned HTTP403, no local raw-source hash claimed. This is direct analytic proof with classical published dependencies, not an alias-hunt exact-fit card.",
+  "scope": "Fixed K2, fixed finite distinct offsets as common negative shift tends to infinity. Negative definite leading kernel and opposite aggregate leading form. Fixed-real-pair renewal convergence proved, no uniform-in-family or full-V sign.",
+  "full_V_sign_progress": false,
+  "negative_original_V_witness": false,
+  "RH_proved": false,
+  "canonical_admission": false,
+  "Lean_runs": 0,
+  "numerical_source_checks": 0
+}
