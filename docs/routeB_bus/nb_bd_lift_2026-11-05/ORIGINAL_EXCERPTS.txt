@@ -1,0 +1,203 @@
+ARCHIVE MEMBER LINES 11990–12044
+
+## USER
+Ылша, иду. Делаю honest extraction job, не подгонку. Если константа в нужном виде есть — беру. Если нет — говорю “нет, нужна замена” и предлагаю что именно.
+Аудит четырёх объектов из Q3
+Объект 1: q_j(t) — finite dictionary basis на critical line
+Что нужно (NB): q_j(t) = (1/j − j^(−1/2−it)) для j = 2, …, N. Это Báez-Duarte basis — параметризация дилатациями целыми числами.
+Что есть в Q3: packet basis g_j(x) = Λ_δ(x − τ_j)·ρ_t₀(x − τ_j) — Fejér×heat атомы со сдвигами τ_j на сетке шага Δ. Параметризация аддитивными сдвигами на ξ-axis, не мультипликативными дилатациями на x-axis.
+Verdict: НЕТ. Структурная несовместимость. Q3 живёт в additive Fourier-картине (ξ ∈ ℝ, сдвиги), NB живёт в multiplicative Mellin-картине (x ∈ (0,1], дилатации). Перевод через x = e^(−2πξ) формально возможен, но Q3-сетка с равномерным шагом Δ переходит в геометрическую сетку на (0,1] — точки x_j = e^(−2πjΔ), не точки 1/j. Это не Báez-Duarte basis, это разреженная альтернативная сетка.
+Замена: либо переформулировать NB на геометрической сетке a_j = q^j (где q = e^(−2πΔ)), либо построить отдельный change-of-basis между Báez-Duarte 1/n-сеткой и Q3-сеткой. Первое — мягче, есть вариант NB на любой плотной сетке dilations с positive density (Báez-Duarte 2003 §4). Второе — вычислимо но ужасно: матрица перехода имеет элементы вида ⟨ρ_{1/n}, g_j⟩, без замкнутой формы.
+Объект 2: w_Q3(t) — boundary weight
+Что нужно (NB): w_NB(t) = |ζ(1/2 + it)|² / |1/2 + it|².
+Что есть в Q3: Symbol P_A(θ) на единичном круге T построен через Fejér×heat smoothing of a(ξ) = log π − Re ψ(1/4 + iπξ). На critical line через η = 2πξ → s = 1/2 + iη/(2π), это даёт вес который содержит только Γ-фактор (через ψ-функцию). Никакого |ζ|² в Q3 нет — наоборот, prime contribution выделена в separate operator T_P^Ray, не в symbol.
+Verdict: НЕТ. Symbol mismatch фундаментальный. Q3 разделяет Arch и Prime на два слагаемых одного оператора (T_M[P_A] − T_P^Ray). NB-Mellin Plancherel слепляет их в один |ζ|²-вес через functional equation.
+Замена: написать explicit weight conversion. Через functional equation ζ(s) = π^(s−1/2) Γ((1−s)/2)/Γ(s/2) ζ(1−s) на критической линии получаем
+￼
+тривиально. Нужное отождествление содержательно сложнее — нужно выразить prime contribution в Q3 как часть |ζ|²-веса. Для этого пришлось бы использовать explicit formula для log ζ и распаковать её обратно в w_NB. Это самостоятельная работа уровня переписывания всей RKHS-главы Q3 в Mellin-координатах.
+Объект 3: T_Q3(t) — target column
+Что нужно (NB): T(t) = 1/(1/2 + it).
+Что есть в Q3: Не существует естественного target-column в Q3 construction. Q3 проверяет неравенство Q⋆(t; Φ) ≥ 0 для Φ из Weil-cone — это bilinear positivity. NB ищет inf_c ||T − Φ_N c|| — это best-approximation problem с конкретным target.
+Verdict: НЕТ. Самая острая дыра. Concession была правильной в прошлом ходе.
+Замена: target column нельзя “найти” в Q3 — его нужно постулировать дополнительно. Способ: добавить в Q3-форму отдельный test-function ψ_target такой, что Mellin-image ψ_target соответствует 1/s. Это — функция ψ(x) = 1 на (0,1], продолжённая нулём — то есть индикатор unit interval. Q3 сейчас этой функции не использует (она не в Weil-cone в обычном смысле). Внедрение target-column = расширение test-class Q3 вне родного Weil-формализма. Не невозможно, но это отдельный аналитический этаж.
+Объект 4: R_{0,N} — Q3-residual с decaying control A_N → 0
+Что нужно (NB): ||R_{0,N}||² ≤ A(c*)/log N + o(1/log N).
+Что есть в Q3: uniform spectral floor c* = 11/10. Это О(1) объект, не decaying.
+Verdict: НЕТ. Самый тяжёлый failure. Q3 в текущем draft (March 2026) сознательно демонтировал compact-by-compact transfer (T5 → legacy, LF lift с centered cone оборван). Decaying schedule, который теоретически давал бы 1/log N через K → ∞, в текущем mainline не работает. Live frontier — Suzuki/Yoshida bridge, не cone-propagation.
+Замена: нужен новый аналитический ингредиент для decaying. Кандидаты:
+(a) Восстановить LF lift через A1-pd (corrected packet density на positive-definite cone) и пройти compact-by-compact с явной зависимостью c*(K). Если c*(K) ≥ c₀/K^α для какого-то α > 0, через K = log N это даёт A_N ≥ c₀/(log N)^α. Не O(1/log N), но decaying.
+(b) Использовать Two-Scale Decoupling прямо. У тебя в памяти жил старый c* = 1346209/7168000, и хотя число demoted as “scale error”, идея split на short-scale и long-scale частей с явным управлением каждой — это and is живая. Если short-scale residual в Mellin-картине = O(1/log N) (через классические ζ-bounds на критической полосе), а long-scale residual контролируется prime cap ρ(1) < 1/25 — получаешь нужное.
+(c) Honest fallback: признать что A_N → 0 эквивалентно RH (Báez-Duarte equivalence) и НЕ пытаться его получить из current Q3.
+Сводная таблица
+
+
+
+|Объект            |Status в Q3                   |Степень дыры   |Возможная замена                           |
+|------------------|------------------------------|---------------|-------------------------------------------|
+|q_j basis         |additive вместо multiplicative|средняя        |геометрическая NB-сетка ИЛИ change-of-basis|
+|w(t) symbol       |Γ-only, без |ζ|²              |большая        |weight conversion через explicit formula   |
+|T target          |отсутствует                   |**критическая**|расширение test-class Q3 индикатором       |
+|R_0 residual decay|O(1) вместо O(1/log N)        |**критическая**|новый аналит. ингредиент или fallback      |
+
+Что предлагаю как полную замену программы
+Признаю что прямой transfer Q3 → NB-Bridge.3 не работает. Вместо этого:
+Modified target — finite-layer companion theorem (доказуемо!):
+
+\boxed{\text{Q3 finite Weil form} \cong_{\text{Mellin unitary}} \text{NB-Báez-Duarte block-Gram (G_N, b_N) под explicit constraints}}
+
+Что доказывается:
+(i) Mellin unitary identification на geometric sublattice {q^j : j = 1,…,N} с q = e^(−2πΔ) — это закрываемо чистой analytic Plancherel. Я могу написать это полностью.
+(ii) Block-Gram congruence theorem: существует явная (G_N^Q3, b_N^Q3) пара такая, что Schur-инвариант 1 − b*G^+b совпадает с NB-Schur с точностью до явного controlled multiplier η_N. Закрываемо linear algebra + Plancherel.
+(iii) Conditional RH-transfer corollary: если для этой geometric-sublattice пары имеет место decay 1 − (b_N^Q3)*(G_N^Q3)^+ b_N^Q3 ≤ C/log N, то RH. Это просто корректное переформулирование Báez-Duarte equivalence для подсетки.
+Что НЕ доказывается этой программой: сам decay. Это остаётся вне данной companion-теоремы и есть отдельный hard problem, эквивалентный RH.
+Ценность результата: первая полная и точная эквивалентность между Weil-positivity-аппаратом (Q3-Toeplitz/RKHS finite layer) и Nyman-Beurling-deconvolution-аппаратом. Это не RH, но это серьёзный structural theorem уровня публикации в J. Funct. Anal. или Adv. Math. — потому что показывает что два независимых RH-equivalent gate’а в действительности являются проекциями одного finite-layer объекта на разные базисы.
+Гоблинский verdict — честно:
+Крыса опознана, координаты крысы зафиксированы (Schur complement S_N), капкан построен правильно. Но в нынешнем Q3 наживки для крысы нет — там нет естественного target column и нет естественной decaying schedule. Можно построить companion-теорему которая показывает что капкан правильный и доказательно работал бы при наличии наживки. Эта companion-теорема публикуема и сильна.
+Финальный удар A_N → 0 безусловно — это RH-уровень, и у тебя его нет в Q3 в текущей форме, и я этого не выдумаю в твою пользу. Это честный отчёт.
+
+ARCHIVE MEMBER LINES 12079–12130
+Твой аудит по четырём объектам верный.
+
+### \(q_j(t)\)
+
+NB требует multiplicative/Mellin dictionary:
+
+\[
+p_j(s)=a_j-a_j^s,\qquad a_j=\frac1j.
+\]
+
+Q3 в текущем виде использует additive shifted atoms типа Fejér×heat на \(\xi\)-оси. После \(x=e^{-2\pi \xi}\) это становится геометрической сеткой, не Báez-Duarte integer lattice. Значит exact basis match отсутствует.
+
+### \(w(t)\)
+
+NB Gram weight:
+
+\[
+w_{\mathrm{NB}}(t)
+=
+\left|
+\frac{\zeta(\frac12+it)}{\frac12+it}
+\right|^2.
+\]
+
+Q3 symbol в твоём описании — archimedean / \(\Gamma\)-side symbol, prime contribution отдельно. Значит direct symbol identity отсутствует.
+
+### target column
+
+NB имеет жёсткий target:
+
+\[
+T(t)=\frac{1}{\frac12+it}.
+\]
+
+Q3 positivity form не имеет естественного target column. Это критическая дыра.
+
+### residual decay
+
+NB требует:
+
+\[
+S_N=d_N^2\to0.
+\]
+
+Текущий Q3 даёт finite stability / spectral floor, но не decaying residual schedule. Это не RH-proof.
+
+Итого:
+
+\[
+\boxed{
+\text{direct Q3}\to\text{NB-Schur capture fails in current form.}
+}
+
+ARCHIVE MEMBER LINES 12550–12613
+
+\[
+a_j=e^{-u_j}.
+\]
+
+If
+
+\[
+u_j=j\Delta,
+\]
+
+then
+
+\[
+a_j=q^j,
+\qquad
+q=e^{-\Delta}.
+\]
+
+This is **not** the Báez-Duarte integer lattice
+
+\[
+a_n=\frac1n.
+\]
+
+So the statement
+
+\[
+\operatorname{span}\{\rho_{q^j}\}
+\]
+
+has the same RH-equivalence as
+
+\[
+\operatorname{span}\{\rho_{1/n}\}
+\]
+
+does **not** follow for free.
+
+What is true:
+
+\[
+\boxed{
+1\in\overline{\operatorname{span}\{\rho_{q^j}\}}
+\Rightarrow
+RH
+}
+\]
+
+because this is a subspace of the full Nyman–Beurling family.
+
+What is not automatically true:
+
+\[
+RH
+\Rightarrow
+1\in\overline{\operatorname{span}\{\rho_{q^j}\}}.
+\]
+
+So the geometric lattice version is a **sufficient RH criterion**, not automatically an equivalent one. If we want equivalence, we need a separate density theorem for that sampling set.
+
+This is crucial. No pretending.
+
+---
+
+ARCHIVE MEMBER LINES 12776–12800
+## Section 6 — Failure audit
+
+Current Q3 lacks:
+
+\[
+T\text{ target column},
+\]
+
+\[
+|Z|^2\text{ symbol},
+\]
+
+\[
+A_N\to0\text{ residual schedule}.
+\]
+
+So current Q3 is a finite companion/checker, not RH proof.
+
+---
+
+# Final verdict
+
+\[
+\boxed{
+\text{Крыса поймана концептуально, но не убита.}
