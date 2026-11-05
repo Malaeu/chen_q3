@@ -122,7 +122,7 @@ FINAL_COMMIT: REPORTED_AFTER_WRITE_AND_READBACK
 Все внутренние пути ниже лежат в `docs/routeB_bus/proshka/`, если явно не написано иначе.
 
 | Ref | Файл; commit; blob | Использование |
-|---|---|---|---|
+|---|---|---|
 | R0 | `PROSHKA_VERDICT_SPEC_FIRST_BACKWARD_RH_2026-11-05.md`; `3d3ba2e60785408063c9aee70657ee0a0cf0e1dc`; `0fdb54e77c89357dd7595636e1d81e8061bfc5cf` | §5: фазовая асимптотика; §7: точный scope прежнего positive-envelope запрета. |
 | RP | `PROSHKA_PLAN_SIGNED_THETA_TRACE_DEFECT_2026-11-04.md`; `f96a9072071c13011cc0fb4a6408e2214ed64181`; `25e58f845f4767908db41478210c1ac28dedf847` | (3.2)–(3.4): буквальная фаза, весь Gamma-хвост и полный source-return. |
 | RG | `PROSHKA_VERDICT_PROVE_RH_2026-11-05.md`; `62f782316d2ba4f83d27db82d0b64e1e8361cad2`; `2b5e02a0aa816da34c204f2a56a9033e6ac6b542` | §6 (6.6)–(6.9): движущийся Gaussian и показатель; §8: собственные false-world источники. |
@@ -248,7 +248,7 @@ S1–S2 доказаны. p^k>=m в фазе не удалены. Их зану�
 
 ### 5.2. Новый dual-свидетель для конечного порядка
 
-Зафиксируем один ненулевой eta>=0 из C_c^infinity((1,2)). Например eta(t)=exp(-1/((t-1)(2-t))) внутри (1,2), нуль снаружи. Положим
+Зафиксируем один ненулевой eta>=0 из C_c^infinity((1,2)). Например eta(t)=exp(-1/((t-5/4)(7/4-t))) внутри (5/4,7/4), нуль снаружи. Положим
 
     a(t)=1/(2*(1/4+t^2)),
     A_eta=(1/(2*pi))*integral eta(t)*a(t)dt >0,
