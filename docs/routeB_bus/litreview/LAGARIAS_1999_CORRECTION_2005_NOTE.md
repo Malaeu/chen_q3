@@ -68,6 +68,10 @@ Later literature extends Theorem 1.2: Garunkštis (Lith. Math. J. 42, 2002) to �
 - **Goldštein et al.**, J. Math. Inequal. 18 (2024) 829–845, DOI 10.7153/jmi-2024-18-45. Gives explicit bounds for Re Σ 1/(s−ρ) and studies positivity in 1/2 < σ < 1 under hypothetical off-line zeros.
 - Full texts are available through the owner's institutional access (uni-due digibib / LibKey links in the Consensus results).
 
+## Confirmation from Proshka (2026-11-05)
+
+Proshka read the Correction itself (proshka_inbox dd22692d, `PROSHKA_VERDICT_ROUND4_DAMPING_TRANSPORT_2026-11-05.md`, T4) and checked its first page visually. The Correction fixes **Lemma 3.1 and a sign in (3.8)**. The sign error in (3.8) was not detected in the reconstruction above. Theorem 1.1, the RH criterion, is unaffected.
+
 ## Status labels
 
 - Lemma 3.1 correction: Mythos algebra plus sympy check. FACT for the algebra; the content of the Correction itself is NOT READ.
