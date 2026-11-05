@@ -1,0 +1,38 @@
+[
+  {
+    "name": "task",
+    "commit": "572d6f727f287fdfd5ba284fd7f70b2a673dd223",
+    "path": "docs/routeB_bus/mythos/CODEX_TASK_NB_RATE_THERMOMETER_2026-11-06.md",
+    "blob": "1a4f4638f1e757b4f2d26b5ee8cac71935e4c8a5"
+  },
+  {
+    "name": "R6_C",
+    "commit": "0005623ec3a2b476019899562b50c0854a602dfb",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND6_FORWARD_ARROW_2026-11-05_C.md",
+    "blob": "83004738a32926d80030b52bbae4655ee221dba0"
+  },
+  {
+    "name": "R7_B",
+    "commit": "8a994500ffc9648f2f3e22561ee74a9d0c2e9eca",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND7_NB_WINDOW_COUPLING_2026-11-06_B.md",
+    "blob": "91cf942a527100c8a0b006377ff963adb23e7b6f"
+  },
+  {
+    "name": "R6_LIMIT9_C",
+    "commit": "c09713ede9913599b75e18d94ba36d41f10d5d24",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND6_LIMIT9_2026-11-06_C.md",
+    "blob": "5ccfaab6030cd9652aa5f061a2c33654afec4994"
+  },
+  {
+    "name": "old_sieve",
+    "commit": "a33870cbc9ee019c653f8f31e5beab5e05e00480",
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/scripts/sieve.cpp",
+    "blob": "84e5eefffffb64f1c3313cbb7f6b428390c70278"
+  },
+  {
+    "name": "old_Kahan",
+    "commit": "a33870cbc9ee019c653f8f31e5beab5e05e00480",
+    "path": "docs/routeB_bus/corner_thermometer_2026-11-04/scripts/thermometer.cpp",
+    "blob": "38640459a54d23768711c8599c6d26304c314687"
+  }
+]

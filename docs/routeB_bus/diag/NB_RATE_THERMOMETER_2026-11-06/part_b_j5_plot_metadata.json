@@ -1,0 +1,28 @@
+{
+  "artifact": "part_b_j5_preflight.svg",
+  "plot_type": "log-log line plot",
+  "x_range": [
+    1000000,
+    100000000
+  ],
+  "sample_count": 201,
+  "series": [
+    {
+      "name": "literal |sqrt(N) gamma_plant|",
+      "color": "#b43c3c",
+      "slope": 0.4997859246943703
+    },
+    {
+      "name": "centered |sqrt(N)(gamma_plant-C)|",
+      "color": "#246b8e",
+      "slope": 0.3093413230209191
+    },
+    {
+      "name": "centered N^0.3 amplitude envelope",
+      "color": "#568b51",
+      "slope": 0.3
+    }
+  ],
+  "input_data": "part_b_j5_centered.csv",
+  "tail_bounds_in_csv": true
+}

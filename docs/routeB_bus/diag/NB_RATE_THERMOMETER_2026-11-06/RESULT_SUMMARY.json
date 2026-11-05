@@ -1,0 +1,23 @@
+{
+  "overall": "NO_VALIDATED_J1_J5_RUN",
+  "part_A": "COMPLETED_FINITE_DIAGNOSTIC_N5000",
+  "part_B": "INCONCLUSIVE_PREFLIGHT_J5_FAIL",
+  "B_scientific_sweep_executed": false,
+  "B_head_N1e5_executed": false,
+  "J1": "PASS_A_GRID",
+  "J2": "PASS_A_GRID",
+  "J3": "PASS_A_GRID",
+  "J4": "SMALL_PREFLIGHT_PASS_FULL_NOT_RUN",
+  "J5": "FAIL_LITERAL_SLOPE",
+  "RH_PROVED": false,
+  "route_state_changed": false,
+  "sources": "SOURCE_PINS.json",
+  "scores": {
+    "A1": "HIT",
+    "A2": "HIT",
+    "A3": "MISS",
+    "B1": "MISS_EXACT_WITNESS",
+    "B2": "NOT_RUN",
+    "B3": "SPLIT_VISIBLE_HIT_SLOPE_MISS"
+  }
+}

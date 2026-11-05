@@ -1,0 +1,17 @@
+{
+  "J1": true,
+  "J2": true,
+  "J3_BCF": true,
+  "mp30_crosschecks": true,
+  "max_n": 5000,
+  "seconds": 25.647136004998174,
+  "preregistered_scores": {
+    "A1": "HIT",
+    "A2": "HIT",
+    "A3": "MISS"
+  },
+  "A3_monotonic": true,
+  "A3_endpoint_in_band": false,
+  "arithmetic_scope": "point arithmetic, truncation-only analytic bounds; not outward-rounded intervals",
+  "method": "Vasyunin full Gram + periodic-tail aggregated finite-K normal equations"
+}

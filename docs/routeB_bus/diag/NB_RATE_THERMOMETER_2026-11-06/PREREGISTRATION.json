@@ -1,0 +1,45 @@
+{
+  "task_commit": "572d6f727f287fdfd5ba284fd7f70b2a673dd223",
+  "task_blob": "1a4f4638f1e757b4f2d26b5ee8cac71935e4c8a5",
+  "registered_before_A_grid_and_B_scientific_run": true,
+  "A_grid": [
+    10,
+    20,
+    50,
+    100,
+    200,
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "predictions": {
+    "A1": {
+      "p": 0.85,
+      "predicate": "all grid N>=50: e_N logN <=0.5"
+    },
+    "A2": {
+      "p": 0.6,
+      "predicate": "N1000: 0.03<= e_N logN <=0.15"
+    },
+    "A3": {
+      "p": 0.55,
+      "predicate": "E(V_N) logN nonincreasing on whole grid and last value in [0.04,0.10]",
+      "note": "report monotonicity and endpoint band separately too"
+    },
+    "B1": {
+      "p": 0.75,
+      "predicate": "max_N<=1e8 sqrtN abs(gammaN)<=0.6"
+    },
+    "B2": {
+      "p": 0.6,
+      "predicate": "max head-error grid N<=1e5 <=3"
+    },
+    "B3": {
+      "p": 0.9,
+      "predicate": "J5 planted growth visible; original expected exponent approximately0.3"
+    }
+  },
+  "preflight_J5_observation": "literal prefix plant has nonzero limiting gamma offset, hence exponent0.5; user clarification pending; PartB scientific run paused",
+  "arithmetic": "diagnostic float64 with long-double Gram assembly and mp30 crosscheck N<=200; not interval proof"
+}

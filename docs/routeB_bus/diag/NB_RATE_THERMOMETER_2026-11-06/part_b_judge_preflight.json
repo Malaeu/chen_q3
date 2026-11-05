@@ -1,0 +1,188 @@
+{
+  "run_status": "PREFLIGHT_ONLY_NO_1E8_SCIENTIFIC_RUN",
+  "overall_part_b_status": "INCONCLUSIVE",
+  "overall_reason": "The literal J5 plant has a nonzero limiting offset and slope 1/2, not its required approximately 0.3; the scientific run is void under the preregistered judge gate.",
+  "J3_head": {
+    "status": "PASS",
+    "identity": "H_N(k)=1 for 1<=k<N; L6 coefficients",
+    "checked_N": [
+      2,
+      3,
+      5,
+      10,
+      20,
+      50,
+      100,
+      200,
+      500
+    ],
+    "rows": [
+      {
+        "N": 2,
+        "max_abs_H_minus_1": 0.0,
+        "worst_k": null,
+        "pass_1e-12": true
+      },
+      {
+        "N": 3,
+        "max_abs_H_minus_1": 0.0,
+        "worst_k": null,
+        "pass_1e-12": true
+      },
+      {
+        "N": 5,
+        "max_abs_H_minus_1": 2.220446049250313e-16,
+        "worst_k": 4,
+        "pass_1e-12": true
+      },
+      {
+        "N": 10,
+        "max_abs_H_minus_1": 0.0,
+        "worst_k": null,
+        "pass_1e-12": true
+      },
+      {
+        "N": 20,
+        "max_abs_H_minus_1": 4.440892098500626e-16,
+        "worst_k": 19,
+        "pass_1e-12": true
+      },
+      {
+        "N": 50,
+        "max_abs_H_minus_1": 4.440892098500626e-16,
+        "worst_k": 26,
+        "pass_1e-12": true
+      },
+      {
+        "N": 100,
+        "max_abs_H_minus_1": 8.881784197001252e-16,
+        "worst_k": 67,
+        "pass_1e-12": true
+      },
+      {
+        "N": 200,
+        "max_abs_H_minus_1": 1.7763568394002505e-15,
+        "worst_k": 144,
+        "pass_1e-12": true
+      },
+      {
+        "N": 500,
+        "max_abs_H_minus_1": 5.329070518200751e-15,
+        "worst_k": 484,
+        "pass_1e-12": true
+      }
+    ]
+  },
+  "J4_reference": {
+    "status": "PASS",
+    "source": "OEIS A084237, a(j)=M(10^j)",
+    "scope": "preflight exponents j=1,2,3 only; full J4 awaits scientific run",
+    "checks": [
+      {
+        "x": 10,
+        "computed": -1,
+        "published": -1,
+        "pass": true
+      },
+      {
+        "x": 100,
+        "computed": 1,
+        "published": 1,
+        "pass": true
+      },
+      {
+        "x": 1000,
+        "computed": 2,
+        "published": 2,
+        "pass": true
+      }
+    ]
+  },
+  "B1_prediction": {
+    "prediction": "max_{N<=1e8} sqrt(N)*|gamma(N)| <= 0.6",
+    "score": "MISS",
+    "status": "EXACT_COUNTEREXAMPLE",
+    "witnesses": [
+      {
+        "N": 2,
+        "M_values_used": [
+          1
+        ],
+        "gamma_exact": "1/2",
+        "sqrtN_abs_gamma_exact": "sqrt(2)/2",
+        "value": 0.7071067811865476
+      },
+      {
+        "N": 3,
+        "M_values_used": [
+          1,
+          0
+        ],
+        "gamma_exact": "1/2",
+        "sqrtN_abs_gamma_exact": "sqrt(3)/2",
+        "value": 0.8660254037844386
+      }
+    ],
+    "reason": "Either exact witness exceeds 0.6; no claim about the actual maximum is made."
+  },
+  "B2_prediction": {
+    "score": "NOT_RUN",
+    "reason": "Full E_N^h grid and exact tail were not computed."
+  },
+  "B3_prediction": {
+    "score": "SPLIT",
+    "visible_growth_component": "HIT: literal plant-only root statistic has clear N^0.5 growth",
+    "registered_approximately_0_3_slope_component": "MISS: literal measured slope is 0.4997859",
+    "registered_J5_validation": "INCONCLUSIVE: scientific run void under failed J5 judge",
+    "centered_companion": "diagnostic only; its envelope has slope 0.3 and does not repair the literal control"
+  },
+  "J5": {
+    "literal_J5": {
+      "status": "FAIL",
+      "plant_limit_C_before_factor_0.01": "0.1096036273049255821169210092495875878046",
+      "plant_limit_after_factor_0.01": "0.001096036273049255821169210092495875878046",
+      "series_truncation_terms": 64,
+      "unscaled_series_remainder_bound": "2.35963202997e-20",
+      "log_log_regression_slope_1e6_to_1e8": 0.4997859246943703,
+      "interpretation": "nonzero constant offset makes the literal root statistic grow with exponent 1/2"
+    },
+    "centered_companion": {
+      "status": "DIAGNOSTIC_ONLY_NOT_J5",
+      "log_log_slope_of_actual_absolute_samples": 0.3093413230209191,
+      "log_log_slope_of_N_0_3_amplitude_envelope": 0.3,
+      "expected_envelope_slope": 0.3,
+      "tail_method": "Euler trapezoid plus geometric integral expansion; explicit pointwise remainder bounds in CSV",
+      "point_count": 201
+    },
+    "source_formula": "literal delta_gamma(N)=0.01 sum_{k<N} k^0.8 cos(14 log k)/[k(k+1)]",
+    "score_rule": "A centered companion cannot change literal J5; judge failure means official Part B run is void/inconclusive.",
+    "plot_metadata": {
+      "artifact": "part_b_j5_preflight.svg",
+      "plot_type": "log-log line plot",
+      "x_range": [
+        1000000,
+        100000000
+      ],
+      "sample_count": 201,
+      "series": [
+        {
+          "name": "literal |sqrt(N) gamma_plant|",
+          "color": "#b43c3c",
+          "slope": 0.4997859246943703
+        },
+        {
+          "name": "centered |sqrt(N)(gamma_plant-C)|",
+          "color": "#246b8e",
+          "slope": 0.3093413230209191
+        },
+        {
+          "name": "centered N^0.3 amplitude envelope",
+          "color": "#568b51",
+          "slope": 0.3
+        }
+      ],
+      "input_data": "part_b_j5_centered.csv",
+      "tail_bounds_in_csv": true
+    }
+  }
+}

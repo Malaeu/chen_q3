@@ -1,0 +1,10 @@
+COMMAND: uv run --with mpmath python docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_b_judge_preflight.py
+SCOPE: preflight only; no 1e8 scientific run
+OVERALL_PART_B: INCONCLUSIVE
+J3_HEAD: PASS (max checked error 5.329e-15)
+J4_SMALL_REFERENCE: PASS (10, 100, 1000)
+B1: MISS (N=2 value sqrt(2)/2=0.707106781187)
+B2: NOT_RUN (full E_N^h grid/tail absent)
+J5_LITERAL: FAIL (slope 0.499785924694, expected about 0.3)
+J5_CENTERED_ENVELOPE_SLOPE: 0.300000000000
+B3: visible-growth HIT; requested 0.3-slope MISS; registered control validation INCONCLUSIVE

@@ -1,0 +1,12 @@
+{
+  "r2_exact_gram_abs_error": 0.0,
+  "r2_exact_e_abs_error": 0.0,
+  "periodic_digamma_pairs": {
+    "2,3": 0.0,
+    "3,4": 0.0,
+    "6,10": 0.0,
+    "5,17": 0.0
+  },
+  "J3_BCF_head_max_abs_error": 4.7029437635903726e-15,
+  "PASS": true
+}
