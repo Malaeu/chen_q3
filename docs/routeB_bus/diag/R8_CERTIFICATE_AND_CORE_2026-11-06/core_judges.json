@@ -1,0 +1,83 @@
+{
+  "J3_finite_identity": {
+    "max_abs_difference": 2.456368441983159e-15,
+    "scope": "clarified finite subjudge only; infinite tail not independently summed",
+    "status": "PASS"
+  },
+  "P3": {
+    "decade_counts": [
+      {
+        "count": 0,
+        "end": 9,
+        "start": 3
+      },
+      {
+        "count": 0,
+        "end": 99,
+        "start": 10
+      },
+      {
+        "count": 0,
+        "end": 999,
+        "start": 100
+      },
+      {
+        "count": 0,
+        "end": 9999,
+        "start": 1000
+      },
+      {
+        "count": 5,
+        "end": 99999,
+        "start": 10000
+      },
+      {
+        "count": 10,
+        "end": 999999,
+        "start": 100000
+      },
+      {
+        "count": 12,
+        "end": 10000000,
+        "start": 1000000
+      }
+    ],
+    "every_decade_3_to_1e7_nonempty": false,
+    "observed_S_3_to_10000": 0,
+    "p": 0.7,
+    "required_minimum": 10,
+    "score": "MISS"
+  },
+  "P4": {
+    "S_intersection_1000_to_10000": 0,
+    "max_full_H": null,
+    "p": 0.75,
+    "score": "MISS",
+    "status": "NOT_TESTABLE_EMPTY_SET"
+  },
+  "P5": {
+    "interpretation": "finite scan range only; no asymptotic equivalence inferred",
+    "max_head_logN": 0.16464505628531603,
+    "min_head_logN": 0.12544110329761177,
+    "number_of_S_values_N_ge_10000": 27,
+    "p": 0.45,
+    "required_interval": [
+      0.02,
+      0.3
+    ],
+    "score": "HIT"
+  },
+  "P6": {
+    "abs_raw_slope_difference": 0.0024245455989130305,
+    "discrete_self_term_is_reference": true,
+    "gate": 0.05,
+    "judge": "J4",
+    "p": 0.9,
+    "score": "HIT"
+  },
+  "honesty": {
+    "PX_RH_CLAIM": "NOT_MADE",
+    "RH_PROVED": false,
+    "route": "CHALLENGER_NOT_RH"
+  }
+}

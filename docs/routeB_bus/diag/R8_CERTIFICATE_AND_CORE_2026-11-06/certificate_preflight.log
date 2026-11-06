@@ -1,0 +1,74 @@
+[#####.........................]  16.7% ETA 0.0s exact rational Gram N=3
+[###############...............]  50.0% ETA 0.0s exact rational Gram N=3
+[##############################] 100.0% ETA 0.0s exact rational Gram N=3
+[..............................]   1.8% ETA 0.0s exact rational Gram N=10
+[#.............................]   5.5% ETA 0.0s exact rational Gram N=10
+[###...........................]  10.9% ETA 0.0s exact rational Gram N=10
+[#####.........................]  18.2% ETA 0.0s exact rational Gram N=10
+[########......................]  27.3% ETA 0.0s exact rational Gram N=10
+[###########...................]  38.2% ETA 0.0s exact rational Gram N=10
+[###############...............]  50.9% ETA 0.0s exact rational Gram N=10
+[###################...........]  65.5% ETA 0.0s exact rational Gram N=10
+[########################......]  81.8% ETA 0.0s exact rational Gram N=10
+[##############################] 100.0% ETA 0.0s exact rational Gram N=10
+[###...........................] 11.1% ETA 0.0s segmented candidate Gram
+[####################..........] 66.7% ETA 0.0s segmented candidate Gram
+[##########################....] 88.9% ETA 0.0s segmented candidate Gram
+[#############.................] 44.4% ETA 0.0s segmented candidate Gram
+[################..............] 55.6% ETA 0.0s segmented candidate Gram
+[#######################.......] 77.8% ETA 0.0s segmented candidate Gram
+[######........................] 22.2% ETA 0.0s segmented candidate Gram
+[##############################] 100.0% ETA 0.0s segmented candidate Gram
+[##########....................] 33.3% ETA 0.0s segmented candidate Gram
+GRAM N=10 K=32 threads=12 long_double_mantissa=53
+[..............................] 3.2% ETA 0.0s direct candidate rows
+[####..........................] 16.1% ETA 0.0s direct candidate rows
+[#.............................] 6.5% ETA 0.0s direct candidate rows
+[########......................] 29.0% ETA 0.0s direct candidate rows
+[###########...................] 38.7% ETA 0.0s direct candidate rows
+[############..................] 41.9% ETA 0.0s direct candidate rows
+[##############................] 48.4% ETA 0.0s direct candidate rows
+[################..............] 54.8% ETA 0.0s direct candidate rows
+[#######.......................] 25.8% ETA 0.0s direct candidate rows
+[##################............] 61.3% ETA 0.0s direct candidate rows
+[###...........................] 12.9% ETA 0.0s direct candidate rows
+[####################..........] 67.7% ETA 0.0s direct candidate rows
+[#####################.........] 71.0% ETA 0.0s direct candidate rows
+[##............................] 9.7% ETA 0.0s direct candidate rows
+[######################........] 74.2% ETA 0.0s direct candidate rows
+[###############...............] 51.6% ETA 0.0s direct candidate rows
+[#################.............] 58.1% ETA 0.0s direct candidate rows
+[#########.....................] 32.3% ETA 0.0s direct candidate rows
+[#######################.......] 77.4% ETA 0.0s direct candidate rows
+[###################...........] 64.5% ETA 0.0s direct candidate rows
+[#####.........................] 19.4% ETA 0.0s direct candidate rows
+[########################......] 80.6% ETA 0.0s direct candidate rows
+[#############.................] 45.2% ETA 0.0s direct candidate rows
+[#########################.....] 83.9% ETA 0.0s direct candidate rows
+[##########################....] 87.1% ETA 0.0s direct candidate rows
+[##########....................] 35.5% ETA 0.0s direct candidate rows
+[###########################...] 90.3% ETA 0.0s direct candidate rows
+[############################..] 93.5% ETA 0.0s direct candidate rows
+[######........................] 22.6% ETA 0.0s direct candidate rows
+[#############################.] 96.8% ETA 0.0s direct candidate rows
+[##############################] 100.0% ETA 0.0s direct candidate rows
+EVAL N=10 K=32 threads=12
+[..............................]   1.0% ETA 0.0s Arb Vasyunin intervals N=10
+[#.............................]   3.4% ETA 0.0s Arb Vasyunin intervals N=10
+[##............................]   7.6% ETA 0.0s Arb Vasyunin intervals N=10
+[####..........................]  14.1% ETA 0.0s Arb Vasyunin intervals N=10
+[#######.......................]  23.4% ETA 0.0s Arb Vasyunin intervals N=10
+[##########....................]  36.2% ETA 0.0s Arb Vasyunin intervals N=10
+[###############...............]  52.9% ETA 0.0s Arb Vasyunin intervals N=10
+[######################........]  74.0% ETA 0.0s Arb Vasyunin intervals N=10
+[##############################] 100.0% ETA 0.0s Arb Vasyunin intervals N=10
+{
+  "PASS": true,
+  "exact_ehat_3": "2080069/11531604",
+  "floor_block_matches_direct_N5": true,
+  "trace_inverse_covariance_matches_exact_inverse_N20": true,
+  "native_segmented_matrix_max_error_N10": 4.163336342344337e-16,
+  "native_direct_eval_interval_contains_exact_H_and_gradient_N10": true,
+  "arb_vasyunin_N10_finite": true,
+  "pre_registration_commit": "94ec9ac25"
+}

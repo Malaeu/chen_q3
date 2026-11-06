@@ -1,5 +1,5 @@
 # Q3 — продолжение на Mac, 30.10.2026
-
+R8 (06.11): finite certificates + scan completed; J3 finite-only; RH OPEN. [Report](../routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/REPORT.md).
 Цель: доказанная RH с Прошкой; App goal ACTIVE, GOAL.md §5. Checkout /Users/emalam/GitHub/rh_lean_01_2026, rh_clean.
 Простой режим: git pull → NEXT → работа. История: [NEXT_HISTORY_2026-10-30_MAC.md](NEXT_HISTORY_2026-10-30_MAC.md).
 

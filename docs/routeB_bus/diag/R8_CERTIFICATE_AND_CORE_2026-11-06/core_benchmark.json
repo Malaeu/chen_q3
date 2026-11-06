@@ -1,0 +1,16 @@
+{
+  "grid_unique_points": 92,
+  "source_grid_points": 100,
+  "total_shoulder_terms": 8519108,
+  "exact_total_floor_quotient_groups": 7576920786,
+  "exact_group_count_method": "closed quotient-count formula per k, independent of the floor-block evaluation loop",
+  "group_count_prepass_seconds": 0.026914458,
+  "throughput_sample_N": 10000,
+  "throughput_sample_rows": 20000,
+  "throughput_sample_groups": 25898850,
+  "throughput_sample_seconds": 0.12516233,
+  "groups_per_second": 2.0692208e+08,
+  "estimated_seconds_all_grid_shoulders": 36.617266,
+  "checksum": 1096639830.52244281769,
+  "estimate_scope": "92 unique rounded log-grid points only; all S<=10000 are empty in the completed certified scan"
+}

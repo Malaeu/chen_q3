@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "task",
+    "commit": "9d8a6d48a0efdeaea7987748d242a3844e91a6dc",
+    "path": "docs/routeB_bus/mythos/CODEX_TASK_R8_CERTIFICATE_AND_CORE_ON_S_2026-11-06.md",
+    "blob": "190e2c60c9699a0ff3c76f4fdba768fd938b97b4",
+    "sha256": "385eda9c5f5c5da13e1d503e9aa17c08731da7893899b5415510cb397b4bead3"
+  },
+  {
+    "kind": "source",
+    "commit": "70c4e6b097bc714689fb9226aeaea12a46127c95",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND8_NEW_MATH_2026-11-06_B.md",
+    "blob": "e0c22e09de31ce8c3ee37e8c53343477168b2063",
+    "sha256": "28f666b27379087ee02e801f2780e21569dd7f49af39b293ba305e2477fd56f0"
+  },
+  {
+    "kind": "freeze",
+    "commit": "6d50c6f9e40f5eb91fa24037adb872f8a0bf2593",
+    "path": "docs/routeB_bus/proshka/PROSHKA_FREEZE_ROUND8_NEW_MATH_2026-11-06_B.md",
+    "blob": "9bf7acf8e4576919d3c6b02a85138d9d0d688753",
+    "sha256": "ae319e21af17345c247ef20a5252915026be2f74fbb628ff98b811e29709278f"
+  },
+  {
+    "kind": "reuse",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a.py",
+    "blob": "5dcd1bacd86a089fa41331882d8b68128ffe0fe5",
+    "sha256": "517ff95ec2f28e7e8a9379dc49bff2b0728ef35bff7dc8ab3ddfa078b4e69c32"
+  },
+  {
+    "kind": "reuse",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_native.cpp",
+    "blob": "335b1c1e72ae265a9b6faea3821d903e4cf2f097",
+    "sha256": "24dc5a3f66e503fc1a58e333b7a8183efffc30e61668bb2e9056320353abdcde"
+  },
+  {
+    "kind": "reuse",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_results.csv",
+    "blob": "419143642b1a0f9c499bcfb663d3232d9cb4624e",
+    "sha256": "baae712d3c796f43745278c02268be5bf90d1576c8d4013677a79332de64254c"
+  },
+  {
+    "kind": "reuse",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_coefficients.csv",
+    "blob": "7baa38bc0f5a9437e985f739aecb823ec2dedf1a",
+    "sha256": "c8ea199747cd7b63d0371239d33e5ef75a1602c17efc1eef8fd33a1331cbb0a7"
+  },
+  {
+    "kind": "reuse",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_mp30.csv",
+    "blob": "eebf07d7c1f4957cab320a00d2c97830fa5b35d2",
+    "sha256": "e8872f9d7ed6fc8436851e0bf12b5827f759477e7540b81228e05e30eb0cbed7"
+  }
+]

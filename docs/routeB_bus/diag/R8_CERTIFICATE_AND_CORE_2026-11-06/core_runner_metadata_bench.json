@@ -1,0 +1,36 @@
+{
+  "build_command": [
+    "clang++",
+    "-std=c++17",
+    "-O3",
+    "-DNDEBUG",
+    "/private/tmp/q3-r8-certificate/docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/core_scan.cpp",
+    "-o",
+    "/tmp/q3_r8_core_scan",
+    "-I/opt/homebrew/include",
+    "-L/opt/homebrew/lib",
+    "-lmpfr",
+    "-lgmp",
+    "-lz"
+  ],
+  "command": [
+    "/tmp/q3_r8_core_scan",
+    "bench",
+    "docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06",
+    "10000",
+    "20000"
+  ],
+  "compiler": [
+    "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+    "Target: arm64-apple-darwin25.6.0"
+  ],
+  "elapsed_seconds": 0.5742339169373736,
+  "exit_code": 0,
+  "log": "docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/core_benchmark_run.log",
+  "mode": "bench",
+  "native_source_sha256": "9c0728bc997e0dd03e398a7ee69d97a4d6f196902a856451372f1ed96a536f92",
+  "note": "Head/full-core values use long double; only b_N sign classifications use directed MPFR intervals.",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "uv": "uv 0.13.6 (329bf9448 2026-10-26 aarch64-apple-darwin)"
+}

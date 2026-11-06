@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "head_rows": 9999998,
+  "sign_rows": 9999999,
+  "crossings": 27,
+  "full_core_rows": 92,
+  "all_requested_crossings_through_10000_present": true,
+  "min_stored_head": 0.007727079305047456,
+  "direct_head_checks": [
+    {
+      "N": 10,
+      "direct_positive_head": 0.22480017668812147,
+      "production_head": 0.22480017668812127,
+      "absolute_difference": 1.942890293094024e-16,
+      "tolerance": 1e-08
+    },
+    {
+      "N": 100,
+      "direct_positive_head": 0.06960773934535602,
+      "production_head": 0.06960773934535466,
+      "absolute_difference": 1.3600232051658168e-15,
+      "tolerance": 1e-08
+    },
+    {
+      "N": 1000,
+      "direct_positive_head": 0.03317734419776801,
+      "production_head": 0.033177344197763504,
+      "absolute_difference": 4.503342143635791e-15,
+      "tolerance": 1e-08
+    },
+    {
+      "N": 10000,
+      "direct_positive_head": 0.019900472974938046,
+      "production_head": 0.01990047297495009,
+      "absolute_difference": 1.2042450370230995e-14,
+      "tolerance": 1e-08
+    },
+    {
+      "N": 100000,
+      "direct_positive_head": 0.013550531685594978,
+      "production_head": 0.013550531685589945,
+      "absolute_difference": 5.032432803808717e-15,
+      "tolerance": 1e-08
+    },
+    {
+      "N": 1000000,
+      "direct_positive_head": 0.009958144008070652,
+      "production_head": 0.009958144007832551,
+      "absolute_difference": 2.3810120541867263e-13,
+      "tolerance": 1e-08
+    },
+    {
+      "N": 10000000,
+      "direct_positive_head": 0.007727079310467428,
+      "production_head": 0.007727079305047456,
+      "absolute_difference": 5.41997263042715e-12,
+      "tolerance": 1e-08
+    }
+  ],
+  "arithmetic_scope": "Independent float64 diagnostic check; certified signs are supplied by the MPFR production pass, not inferred here.",
+  "seconds": 19.96669725002721
+}

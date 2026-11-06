@@ -1,0 +1,12 @@
+{
+  "judge": "J3_finite_identity",
+  "finite_identity_status": "PASS",
+  "checked_N": "every integer 3..200",
+  "comparison": "independent literal residue norm versus A/B/C prefix head plus floor-block shoulder through K_N-1",
+  "max_abs_difference": 2.45636844198315884569e-15,
+  "maxdiff_at_N": 165,
+  "tolerance": 1e-10,
+  "original_J3_scope": "CLARIFIED_SUBJUDGE_ONLY; the infinite tail was not independently summed",
+  "infinite_tail_identity": "E=H+exact_tail; 5/log^2 N is only a bound and was not subtracted as equality",
+  "arithmetic": "long double with compensated norm sums; finite diagnostic"
+}

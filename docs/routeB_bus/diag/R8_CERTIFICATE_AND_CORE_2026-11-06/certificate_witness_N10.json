@@ -1,0 +1,17 @@
+{
+  "N": 10,
+  "K": 32,
+  "ehat_exact": {
+    "numerator": "138988195820942340451766922155867941528180637253467614619880887",
+    "denominator": "2669426480043442145603953798763681049490737809294404556275837320"
+  },
+  "eN_arb_interval": "[0.0238525533188829994157068120705 +/- 4.60e-32]",
+  "ehat_minus_eN_arb_interval": "[0.0282141347356538881513132351490 +/- 1.70e-32]",
+  "ehat_over_eN_arb_interval": "[2.18285595501920626014575304012 +/- 4.04e-30]",
+  "J1_pass": true,
+  "J2_applicable": true,
+  "J2_rhs_arb_interval": "[0.0594149046669200831218095686603 +/- 4.36e-32]",
+  "J2_rhs_minus_gap_arb_interval": "[0.0312007699312661949704963335112 +/- 3.96e-32]",
+  "preregistration_commit": "94ec9ac25",
+  "method": "exact rational G_up Schur complement; Arb Vasyunin Gram minimizer"
+}

@@ -1,0 +1,44 @@
+COMMAND: /tmp/q3_r8_core_scan scan docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06 10000000 192
+[################################] 100.0% ETA 0.0s linear Mobius sieve complete
+[................................] 2.5% ETA 83.6s certified b_N + head + planted prefix scan
+[#...............................] 5.0% ETA 83.8s certified b_N + head + planted prefix scan
+[##..............................] 7.5% ETA 82.6s certified b_N + head + planted prefix scan
+[###.............................] 10.0% ETA 80.0s certified b_N + head + planted prefix scan
+[###.............................] 12.5% ETA 78.4s certified b_N + head + planted prefix scan
+[####............................] 15.0% ETA 76.8s certified b_N + head + planted prefix scan
+[#####...........................] 17.5% ETA 74.9s certified b_N + head + planted prefix scan
+[######..........................] 20.0% ETA 73.2s certified b_N + head + planted prefix scan
+[#######.........................] 22.5% ETA 71.1s certified b_N + head + planted prefix scan
+[#######.........................] 25.0% ETA 68.6s certified b_N + head + planted prefix scan
+[########........................] 27.5% ETA 66.0s certified b_N + head + planted prefix scan
+[#########.......................] 30.0% ETA 63.4s certified b_N + head + planted prefix scan
+[##########......................] 32.5% ETA 60.9s certified b_N + head + planted prefix scan
+[###########.....................] 35.0% ETA 58.4s certified b_N + head + planted prefix scan
+[###########.....................] 37.5% ETA 56.0s certified b_N + head + planted prefix scan
+[############....................] 40.0% ETA 53.5s certified b_N + head + planted prefix scan
+[#############...................] 42.5% ETA 51.2s certified b_N + head + planted prefix scan
+[##############..................] 45.0% ETA 48.8s certified b_N + head + planted prefix scan
+[###############.................] 47.5% ETA 46.6s certified b_N + head + planted prefix scan
+[###############.................] 50.0% ETA 44.3s certified b_N + head + planted prefix scan
+[################................] 52.5% ETA 42.0s certified b_N + head + planted prefix scan
+[#################...............] 55.0% ETA 39.7s certified b_N + head + planted prefix scan
+[##################..............] 57.5% ETA 37.5s certified b_N + head + planted prefix scan
+[###################.............] 60.0% ETA 35.2s certified b_N + head + planted prefix scan
+[###################.............] 62.5% ETA 33.0s certified b_N + head + planted prefix scan
+[####################............] 65.0% ETA 30.7s certified b_N + head + planted prefix scan
+[#####################...........] 67.5% ETA 28.5s certified b_N + head + planted prefix scan
+[######################..........] 70.0% ETA 26.3s certified b_N + head + planted prefix scan
+[#######################.........] 72.5% ETA 24.1s certified b_N + head + planted prefix scan
+[#######################.........] 75.0% ETA 21.9s certified b_N + head + planted prefix scan
+[########################........] 77.5% ETA 19.7s certified b_N + head + planted prefix scan
+[#########################.......] 80.0% ETA 17.5s certified b_N + head + planted prefix scan
+[##########################......] 82.5% ETA 15.3s certified b_N + head + planted prefix scan
+[###########################.....] 85.0% ETA 13.1s certified b_N + head + planted prefix scan
+[###########################.....] 87.5% ETA 10.9s certified b_N + head + planted prefix scan
+[############################....] 90.0% ETA 8.7s certified b_N + head + planted prefix scan
+[#############################...] 92.5% ETA 6.5s certified b_N + head + planted prefix scan
+[##############################..] 95.0% ETA 4.4s certified b_N + head + planted prefix scan
+[###############################.] 97.5% ETA 2.2s certified b_N + head + planted prefix scan
+[###############################.] 100.0% ETA 0.0s certified b_N + head + planted prefix scan
+[################################] 100.0% ETA 0.0s certified b_N + head + planted prefix scan
+crossings=27 ambiguous_initial=0 unresolved=0 mpfr_bits=192

@@ -1,0 +1,12 @@
+judge,N,status,evidence
+J1,10,PASS_ANALYTIC_AND_NUMERIC,G_inf<=G_up from source (10)-(13); Arb true-minimum enclosure
+J2,10,PASS_SOURCE_OPTIMUM_APPLIES,Arb true minimizer enclosure: ehat-e_N interval is contained below RHS (11) interval
+J1,20,PASS_ANALYTIC_AND_NUMERIC,G_inf<=G_up from source (10)-(13); Arb true-minimum enclosure
+J2,20,PASS_SOURCE_OPTIMUM_APPLIES,Arb true minimizer enclosure: ehat-e_N interval is contained below RHS (11) interval
+J1,50,PASS_ANALYTIC_AND_NUMERIC,G_inf<=G_up from source (10)-(13); Arb true-minimum enclosure
+J2,50,PASS_SOURCE_OPTIMUM_APPLIES,Arb true minimizer enclosure: ehat-e_N interval is contained below RHS (11) interval
+J1,100,PASS_ANALYTIC_AND_NUMERIC,G_inf<=G_up from source (10)-(13); Arb true-minimum enclosure
+J1,200,PASS_ANALYTIC_AND_NUMERIC,G_inf<=G_up from source (10)-(13); Arb true-minimum enclosure
+J1,500,PASS_ANALYTIC_AND_NUMERIC,certified ehat lower endpoint exceeds candidate E(c) upper bound from Young slack
+J1,1000,PASS_ANALYTIC_AND_NUMERIC,certified ehat lower endpoint exceeds candidate E(c) upper bound from Young slack
+J1,2000,PASS_ANALYTIC_AND_NUMERIC,certified ehat lower endpoint exceeds candidate E(c) upper bound from Young slack

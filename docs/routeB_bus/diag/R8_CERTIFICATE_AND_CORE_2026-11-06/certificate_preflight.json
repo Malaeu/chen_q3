@@ -1,0 +1,10 @@
+{
+  "PASS": true,
+  "exact_ehat_3": "2080069/11531604",
+  "floor_block_matches_direct_N5": true,
+  "trace_inverse_covariance_matches_exact_inverse_N20": true,
+  "native_segmented_matrix_max_error_N10": 4.163336342344337e-16,
+  "native_direct_eval_interval_contains_exact_H_and_gradient_N10": true,
+  "arb_vasyunin_N10_finite": true,
+  "pre_registration_commit": "94ec9ac25"
+}

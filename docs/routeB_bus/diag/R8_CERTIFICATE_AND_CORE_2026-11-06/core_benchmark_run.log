@@ -1,0 +1,2 @@
+COMMAND: /tmp/q3_r8_core_scan bench docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06 10000 20000
+estimated_full_shoulder_seconds=36.6173 groups=7576920786 sampled_rate=2.06922e+08 groups_per_second

@@ -1,0 +1,25 @@
+{
+  "N_window": [
+    100000,
+    10000000
+  ],
+  "abs_slope_difference": 0.0024245455989130305,
+  "analytic_power_exponent": "2/3",
+  "f1_exact": "60/1789",
+  "f1_formula_float": 0.03353828954723309,
+  "grid_points": 101,
+  "log_squared_corrected_discrete_self_slope": 0.667217456838718,
+  "log_squared_corrected_planted_head_slope": 0.6647929112398049,
+  "no_offset_check_abs_diff": 0.0,
+  "nonoscillatory_local_log_slope": "2/3-2/log(N)",
+  "plant": "f(k)=2 Re(k^rho/rho), inserted literally with unchanged s_N",
+  "planted_prefix": "exact discrete prefix sum over every k from 1 through N; includes f(1), no centering/subtraction",
+  "preregistered_gate": 0.05,
+  "raw_discrete_self_term_log_slope": 0.5216222853522573,
+  "raw_gate": "PASS",
+  "raw_planted_head_log_slope": 0.5191977397533443,
+  "rho": "5/6+7i",
+  "scope": "finite planted-control diagnostic; no asymptotic conclusion about original H_N",
+  "self_energy_leading_formula": "(108/1789) N^(2/3)/log(N)^2 * [1+cos(14 log N-2 atan(42/5)-atan(21))/sqrt(442)] + O(log(N)^-2)",
+  "status": "HIT"
+}

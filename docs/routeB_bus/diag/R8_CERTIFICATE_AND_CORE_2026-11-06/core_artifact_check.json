@@ -1,0 +1,16 @@
+{
+  "J3_finite_identity_rows": 198,
+  "J3_finite_identity_status": "PASS",
+  "chunk_limit_bytes": 41943040,
+  "endpoint_sign_certified": "-1",
+  "full_H_grid_rows": 92,
+  "full_H_unique_N": 92,
+  "max_compressed_scan_chunk_bytes": 8158051,
+  "scan_contiguous": true,
+  "scan_full_source_hash_match": true,
+  "scan_rows_3_to_10000000": 9999998,
+  "sign_file_bytes": 22313951,
+  "sign_rows_3_to_10000001": 9999999,
+  "signs_contiguous": true,
+  "unresolved_signs": 0
+}

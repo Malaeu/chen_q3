@@ -1,0 +1,20 @@
+{
+  "S_count": 27,
+  "compressed_scan_chunks": 40,
+  "display_decimation": "1500 rounded logarithmic head plot targets; source CSV remains un-decimated",
+  "full_H_S_rows": 0,
+  "full_H_grid_rows": 92,
+  "full_grid_points_in_summary": 92,
+  "max_scan_chunk_bytes": 8158051,
+  "native_long_double_mantissa_bits": 53,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.15.2 (main, Oct 25 2026, 16:57:51) [Clang 21.0.0 (clang-2100.3.34.2)]",
+  "rounding": "100 source log-grid points rounded to integers then deduplicated to 92 unique N values",
+  "scan_points_read_for_plot": 1301,
+  "scan_rows_expected": 9999998,
+  "scan_rows_verified_contiguous": 9999998,
+  "sign_file_bytes": 22313951,
+  "sign_rows_verified_contiguous": 9999999,
+  "source_hash_match_scan_full": true,
+  "unresolved_b_signs": 0
+}

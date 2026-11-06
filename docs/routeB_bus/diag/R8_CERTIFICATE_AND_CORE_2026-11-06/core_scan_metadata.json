@@ -1,0 +1,14 @@
+{
+  "endpoint_b_computed": 10000001,
+  "endpoint_b_sign_certified": "-1",
+  "endpoint_membership_use": "b_10000001 sign used to classify S at N=10000000",
+  "head_and_plant_arithmetic": "platform C++ long double (53-bit mantissa) with Kahan prefix sums; diagnostic, not certified",
+  "initially_ambiguous_sign_count": 0,
+  "mpfr_initial_precision_bits": 192,
+  "mpfr_last_precision_bits": 192,
+  "native_long_double_mantissa_bits": 53,
+  "scan_max": 10000000,
+  "sign_interval_rounding": "all MPFR operations used RNDD/RNDU; log uses MPFR directed correctly-rounded endpoints; signs listed only when interval excludes zero",
+  "sign_method": "directed MPFR interval evaluation of X=log(N)*(2+sum q_n)-sum(q_n log n)=2 log(N)b_N; q_n=mu(n)(n-1)/n",
+  "unresolved_sign_count": 0
+}
