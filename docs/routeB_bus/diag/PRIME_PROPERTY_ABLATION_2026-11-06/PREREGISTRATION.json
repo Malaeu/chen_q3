@@ -1,0 +1,106 @@
+{
+  "task_commit": "089f59e5498eecb6c2b122f411c6c78e75110da8",
+  "task_blob": "fab2698cc9cf804986dc7ec9747c89fe8b9740f1",
+  "dictionary_blob": "8462d827e01dd83fef22f750936f3d84ad238e1d",
+  "status": "PRE_RUN",
+  "limits": {
+    "S0": 100000000,
+    "S1": 10000000,
+    "S2": 10000000,
+    "S3": 10000000,
+    "S4": 100000000,
+    "S5": 100000000
+  },
+  "seeds": {
+    "S1": [
+      1101,
+      1102,
+      1103,
+      1104,
+      1105
+    ],
+    "S2": [
+      2201,
+      2202,
+      2203
+    ],
+    "S3": [
+      3301,
+      3302,
+      3303
+    ],
+    "S4": [
+      4401,
+      4402,
+      4403,
+      4404,
+      4405
+    ]
+  },
+  "hybrid_y": [
+    100,
+    1000,
+    10000
+  ],
+  "grid": "100 log-spaced points per decade from 10 to limit, including exact powers of ten",
+  "samples": "1000 log-uniform midpoint samples per decade [1,10),...; M is right-continuous; retain samples CSV",
+  "W": "Exact step integral sum M(t)^2*(1/t-1/next_t), split at grid X; Kahan accumulation; floating point diagnostic not interval certificate",
+  "sign_changes": "Ignore zero plateaus; count transitions between successive nonzero M values, assign transition to decade of new nonzero value; count all events, not only samples",
+  "variance": "Population variance of M(x)/sqrt(x) on 1000 log midpoint samples per decade",
+  "generalised_integers": "Free commutative prime-index monoid with multiplicities; equal numerical products aggregate N and mu contributions; repeated generator => mu=0",
+  "S3": "Generate perturbed true primes far enough above X_max to include any q_p <= X_max; sort real generators; binary64 products; disclose boundary sensitivity",
+  "rho": "Finite-range estimate rho_hat=N(X_max)/X_max; report N(x)-rho_hat*x and N(x)/x, plus adjacent-decade density drift. No claim of proven asymptotic rho or RH-quality from fit.",
+  "judges": {
+    "J1": {
+      "source": "https://oeis.org/A084237/b084237.txt",
+      "M10k": [
+        1,
+        -1,
+        1,
+        2,
+        -23,
+        -48,
+        212,
+        1037,
+        1928
+      ]
+    },
+    "J2": {
+      "source": "https://oeis.org/A090410/b090410.txt",
+      "L10k": [
+        1,
+        0,
+        -2,
+        -14,
+        -94,
+        -288,
+        -530,
+        -842,
+        -3884
+      ],
+      "first_positive_906150258": "outside requested range; not run"
+    },
+    "J3": "Small-X independent brute force multiplicity comparison; finite density stabilization report separately from enumeration correctness; convergence cannot be proved numerically",
+    "J4": {
+      "plant": "P(x)=0.05*(x^0.8*cos(7 log x)-1), P(1)=0; this is integral from 1 of derivative of 0.05*x^0.8*cos(7 log x)",
+      "analytic": "P^2/x^2 leading term =0.0025*x^-0.4*cos^2(7 log x). Integral leading =0.00125*x^0.6*[1/0.6+(0.6*cos(14log x)+14*sin(14log x))/(0.6^2+14^2)] plus constant/lower-order terms. Hence W ~ oscillatory positive factor * X^0.6/log X; envelope slope 0.6-1/log X (~0.513 to 0.538 on 1e5..1e7); bounded oscillatory modulation and baseline/cross terms remain.",
+      "test": "OLS slope log W_planted versus log X on [1e5,1e7] >=0.4; compute via analytic antiderivatives per integer interval or converged quadrature"
+    }
+  },
+  "prediction_operationalization": {
+    "common": "OLS log W vs log X on common [1e3,1e7]; finite-grid bounded := max W <= 1, not asymptotic boundedness; arithmetic mean across seeds, then grid points",
+    "A1": "HIT iff all S0 W in [0.01,1] on [1e3,1e8] and OLS slope <=0",
+    "A2": "HIT iff every S4 max W<=1 on [1e3,1e8] and mean S4 W < mean S0 W on identical grid",
+    "A3": "HIT iff every S1 max W<=1 on [1e3,1e7]",
+    "A4": "HIT iff mean S5 L/sqrt(x) on log samples [1e3,1e8] lies within 0.15 of 1/zeta(0.5), approximately -0.684765",
+    "A5": "HIT iff some non-S0 system/seed slope differs from S0 by >0.1 on common [1e3,1e7]"
+  },
+  "predictions": {
+    "A1": 0.8,
+    "A2": 0.55,
+    "A3": 0.6,
+    "A4": 0.7,
+    "A5": 0.35
+  },
+  "honesty": "FINITE_DIAGNOSTIC_NOT_RH; no paid calls; any truncation explicit; preregistration committed before production or pilot numerical runs"
+}
