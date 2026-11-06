@@ -1,0 +1,25 @@
+{
+  "source_blobs_verified": 7,
+  "certificate_role": "R8 upper-envelope witnesses are not substituted for full-Gram optimal vectors",
+  "vectors": [
+    {
+      "N": 500,
+      "free_coefficients": 499,
+      "max_abs_difference_R8_candidate_vs_full_Gram_optimum": 0.3687016820359828
+    },
+    {
+      "N": 1000,
+      "free_coefficients": 999,
+      "max_abs_difference_R8_candidate_vs_full_Gram_optimum": 1.014306747456585
+    },
+    {
+      "N": 2000,
+      "free_coefficients": 1999,
+      "max_abs_difference_R8_candidate_vs_full_Gram_optimum": 0.681856378693981
+    },
+    {
+      "N": 5000,
+      "free_coefficients": 4999
+    }
+  ]
+}

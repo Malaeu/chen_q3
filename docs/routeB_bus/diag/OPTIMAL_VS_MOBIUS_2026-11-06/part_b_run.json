@@ -1,0 +1,49 @@
+{
+  "D1_max_termwise_centering_residual": 0.0,
+  "archived_coefficients_blob": "7baa38bc0f5a9437e985f739aecb823ec2dedf1a",
+  "archived_coefficients_commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+  "archived_coefficients_path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_coefficients.csv",
+  "archived_coefficients_sha256": "c8ea199747cd7b63d0371239d33e5ef75a1602c17efc1eef8fd33a1331cbb0a7",
+  "base_fine_simpson_subdivisions_per_half_cell": 32,
+  "cell_convention": "mpmath 20 dps; all positive critical-line zeros <=1000, plus next neighbor. First cell left boundary 0 and first local min gap uses only next gap; internal cell midpoint boundaries; final cell clipped at1000. Report boundary conventions.",
+  "centering": "D(s)=sum_{n=2}^N c_n*(n**(-s)-1/n); D(1)=0",
+  "convergence_observed": {
+    "compared_intervals": [
+      64,
+      128
+    ],
+    "converged": true,
+    "head_scaled_abs_max": 1.8897521629132608e-09,
+    "local_spearman_abs_max": 0.0,
+    "local_w_max_difference": {
+      "N": 5000,
+      "scaled_abs": 7.458728023580774e-07,
+      "zero_index": 2
+    },
+    "local_w_scaled_abs_max": 7.458728023580774e-07,
+    "max_refinement_reached": false
+  },
+  "convergence_thresholds": {
+    "local_W_scaled_abs_max": 1e-06,
+    "local_spearman_abs_max": 0.001,
+    "weighted_head_scaled_abs_max": 1e-06
+  },
+  "deltaI_max_abs_at_zero_ordinates": 0.0,
+  "final_simpson_subdivisions_per_segment": 128,
+  "grid_unique_points": 167937,
+  "initial_simpson_subdivisions_per_half_cell": 16,
+  "j3_tail_bound": "not computed by part_b.py; report remains truncated at T=1000",
+  "j4_p_value": "(1 + count(abs(null)>=abs(observed)))/(1001), two-sided",
+  "j4_permutations": 1000,
+  "j4_seed": 20261106,
+  "method": "direct mpmath zeta on an adaptive zero-cell grid; complex128 coefficient polynomial; nested Simpson",
+  "mobius_taper": "mu(n)*log(N/n)/log(N), for n=2..N",
+  "mpmath_dps": 20,
+  "next_neighbor_gamma": 1001.3494826377828,
+  "physical_c_opt": "negative of archived stored c, for n=2..N",
+  "rigor": "numerical quadrature only; not interval-certified",
+  "secondary_inverse_gap": "descriptive Spearman rho only; no additional permutation claim test",
+  "t_zero_split": "first left half-cell split at t=1 and thereafter into pieces of width <=1 to resolve the broad first cell and weight",
+  "weight": "one-sided full-line head = (1/pi)*integral_0^1000 I_D(t)/(1/4+t^2) dt",
+  "zero_count_le_1000": 649
+}

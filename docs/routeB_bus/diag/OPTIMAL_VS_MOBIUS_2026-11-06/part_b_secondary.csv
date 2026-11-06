@@ -1,0 +1,5 @@
+N,variable,rho,interpretation
+500,inverse_local_min_gap_secondary,-0.011284538692773152,strictly decreasing transform of positive raw gap; descriptive only
+1000,inverse_local_min_gap_secondary,-0.08423548605749752,strictly decreasing transform of positive raw gap; descriptive only
+2000,inverse_local_min_gap_secondary,-0.04588486761309086,strictly decreasing transform of positive raw gap; descriptive only
+5000,inverse_local_min_gap_secondary,-0.04039793297519405,strictly decreasing transform of positive raw gap; descriptive only

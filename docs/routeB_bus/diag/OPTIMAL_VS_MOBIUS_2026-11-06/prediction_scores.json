@@ -1,0 +1,39 @@
+{
+  "scores": {
+    "Q1": {
+      "p": 0.55,
+      "observed": 0.8753099522772436,
+      "hit": true
+    },
+    "Q2": {
+      "p": 0.6,
+      "observed": 0.0826089730549369,
+      "hit": false
+    },
+    "Q3": {
+      "p": 0.5,
+      "observed": 0.9950129444150193,
+      "hit": true
+    },
+    "Q4": {
+      "p": 0.5,
+      "observed": 0.04874315885913141,
+      "hit": false
+    },
+    "Q5": {
+      "p": 0.45,
+      "observed": -0.06399044771926128,
+      "permutation_p": 0.10589410589410589,
+      "hit": false
+    },
+    "Q6": {
+      "p": 0.45,
+      "observed": 0.04039793297519405,
+      "permutation_p": 0.2987012987012987,
+      "hit": false
+    }
+  },
+  "mean_Brier": 0.24458333333333335,
+  "primary_N_for_Q3_Q4": 5000,
+  "Q6_primary_variable": "raw minimum gap, as frozen"
+}

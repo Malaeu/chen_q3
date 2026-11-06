@@ -1,0 +1,305 @@
+{
+  "excludes": "BLOBS.json itself; temporary Python caches are not deliverables",
+  "files": [
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/INDEPENDENT_REVIEW.md",
+      "bytes": 1499,
+      "sha256": "90550385a4c0771da2c4c6d809b4fa6842a9c2a08273d30d30f60acf02ed6efe",
+      "git_blob": "740e8c5f106a5c2db74662290c1c1c7903fd3e1c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/OUTPUT_VALIDATION.json",
+      "bytes": 4062,
+      "sha256": "515b5aaba247e1e9bf55e2487061c69f498896e78032f4f680c9ea0ede9570c9",
+      "git_blob": "d2913c5a7b8e888e7ae120462cf2910d1671a100"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/PART_A.md",
+      "bytes": 3919,
+      "sha256": "df8d44fe9b2a51c4e29be1e95d0cbb81169a3f89cd8001d827f2ce5269baa61d",
+      "git_blob": "c0855ca23d78857843b3ecd608449e6afa29c1b4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/PART_B.md",
+      "bytes": 15689,
+      "sha256": "b29c00b8c40ba5cd98ca3ce44f8221e8656bbafd11d2ac8f73b38e80634f1368",
+      "git_blob": "563fab520e5b55b3e25139610940311514a2e0ec"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/PREREGISTRATION.json",
+      "bytes": 2945,
+      "sha256": "fb4453a7da84ad17cbb735b551cf0a7e8829c296de82e2bab4c966ae45d92b6e",
+      "git_blob": "d1d79204c5f7f318069f7f12686854505f7f17cd"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/REPORT.md",
+      "bytes": 26163,
+      "sha256": "ef191f88cf8c2763d4b2db9279bb56dc0982fab32855ed729806c84840f2d0d8",
+      "git_blob": "fac83dc6aeab3895ae8015345467b8b3b5c2cc60"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/SOURCES.json",
+      "bytes": 1647,
+      "sha256": "f347a904d7e1de095cd0f6e96ad68dd9496bca004da34db6053304bf20c9f6fe",
+      "git_blob": "54a6a6f5b56f664c347651b44c4c3ffd89a4bef3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/TAIL_BOUND.md",
+      "bytes": 3375,
+      "sha256": "7c45a1535b62c5c2461aaba4635ecff5d150c22209ea50d73eaae4ecc80e9edb",
+      "git_blob": "6c6aa586661f6c7bbfad86fad595c957fa6a98c0"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/build_manifest.py",
+      "bytes": 865,
+      "sha256": "560613aa594f49c3558c0261be528156020d87ba4fed9a3edc1c70a977ea1272",
+      "git_blob": "0d4e3e89ad87e5ad87423cbd73455fffe5451074"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/build_report.py",
+      "bytes": 9353,
+      "sha256": "f9ba85ff69599a3deab6599d1ea5478ff352829d88dc13df1610c0883f068b06",
+      "git_blob": "69bcfb0a074b1909fa6cffbfd04c1ae068c451e7"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/gram_native.cpp",
+      "bytes": 6519,
+      "sha256": "bc111941aa1fc67284014a23e21692f17dec51567f270b7fb05c806dae65ac05",
+      "git_blob": "089945cb25c66f4ba39727f9ba05cb5320feab21"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/input_audit.json",
+      "bytes": 644,
+      "sha256": "b458536bf03e1b98af4f5dc13ca1aa399c355150f04bd975271c0915230607b0",
+      "git_blob": "1248a688042f16f4b0fdf8e5993a059039b42b99"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/input_audit.py",
+      "bytes": 1805,
+      "sha256": "a19b6b930f018d4c63478baa0c43f0ce7f0841401ef22084c69bf7d2a76cea46",
+      "git_blob": "9c4a59fda1440d2e48af666d68d025fc3598a039"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/j3_comparison.json",
+      "bytes": 2433,
+      "sha256": "61e4e55bfcd2e3f78ad56f92b954d04717fea4eeaf28d14a38cdb0c0b8ae502b",
+      "git_blob": "1bd8bfa30a99c56295cb079a5892c05e5ef5ea84"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a.py",
+      "bytes": 20012,
+      "sha256": "c7af5e16db3f9f4fe8834c58a5bece4eaaac88d77cdfde43cf42e93c614e5c74",
+      "git_blob": "33d0ed283a80bd162db76ec4e5387ca338ab154b"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_allpairprofiles.csv",
+      "bytes": 1832308,
+      "sha256": "0b3b36212c02c27d35f839105220afd176ef6677c1e03ba35fd2a4fc44fc3cdd",
+      "git_blob": "d845b1c6e8427312cfca7e821d4c526cb01fa2c2"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coeff_profile_N1000.png",
+      "bytes": 401693,
+      "sha256": "1d810c1e59d276314ff757787d04f1cc3df9f8a147b5f12bd264f5758f7975a0",
+      "git_blob": "ebbff2d0db939dd100d1dd67d1fbe397791e850a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coeff_profile_N2000.png",
+      "bytes": 369545,
+      "sha256": "3d5e069e3c7254a64045f22b848496b1c6538d83d22efefe483c3d7647fd00d8",
+      "git_blob": "51b489c2dbf13b6adaef97fac374d4d6e1000c0a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coeff_profile_N500.png",
+      "bytes": 421888,
+      "sha256": "964d073f2888d1dac3a0983e036c53eb808e1981b523f737f308cef94333f12a",
+      "git_blob": "be5ce7fc812774f5fa1ca00cd71e8d1b9cd23050"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coeff_profile_N5000.png",
+      "bytes": 223809,
+      "sha256": "64f53d456fd5487e7541ce969a1f36a89031a7a547960e74a33f8149b42b3ea4",
+      "git_blob": "a6f15240192a37e8fbcefb989b8e3a394e145323"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coefficients.csv",
+      "bytes": 546256,
+      "sha256": "b555b17ffb453fe2d3bda872811619968fb60f3d68fa6b9fba3f7b341e9b9b81",
+      "git_blob": "8f40a66e373d3626347e9d045a43230c949447b6"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_energy_splits.csv",
+      "bytes": 2184,
+      "sha256": "aac492f9f6117eb3876f5bbe217b22cb8d4bb9eff378b779107b88daf3cb27e6",
+      "git_blob": "338c70b754aa191459af0aea607a9a9e69e7c682"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_features.csv",
+      "bytes": 589655,
+      "sha256": "21c494daeaa5f6f10dc8a5044eb5129dffa43126a3f53c0d9426162a98afd300",
+      "git_blob": "58f611bbf0322ec43304b86fe5f5992adb6c20f0"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_judges.csv",
+      "bytes": 1027,
+      "sha256": "bf983b7029c3966c7f53f09f11a9c476cbe407f89dae81da7c90135e4062e388",
+      "git_blob": "e6463f68208e45eacc622850f84f082d631d5f09"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_profile_correlations.csv",
+      "bytes": 357,
+      "sha256": "013a1669a22373f0ea4590a9f46838887d94f2b598071d1d502237936f531cb7",
+      "git_blob": "1ac2ecaec1153e3a8eca448e7bef32e73e986c5c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_regression.csv",
+      "bytes": 1095,
+      "sha256": "9cf739f10e34f247127eee785acb52ede5bf2db47145090493ca4246e8e18786",
+      "git_blob": "2fc2ee52321f66340d00f30939af0991f1de2d69"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_results.json",
+      "bytes": 2327,
+      "sha256": "4a1a9cd936ab068ca5b6a652d5483c98081f41989882aca03802a93415536080",
+      "git_blob": "6b97c1694ae5662fb189d39cc2e4fa021e22b812"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_run.log",
+      "bytes": 3783,
+      "sha256": "46bf41de00cb46575d4ac7cac83119b31aa6863455fdccb90f9305028cd01601",
+      "git_blob": "97606996e1419ae7bca205d15d1c155df518bcd4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b.py",
+      "bytes": 46149,
+      "sha256": "7758230e2621b032de6d4870cf56b6237c210d402481e8c643670b0f6c2df9ef",
+      "git_blob": "5c409eed351afa524d8b547fd264980f2114fb43"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N1000_W_vs_inv_deriv.png",
+      "bytes": 127853,
+      "sha256": "50cc5bdd1133e0baf9e911f903d2cdc87610c471d36ca2fde2761805c344d195",
+      "git_blob": "aa42b6b258e4fe6eb6ab2a184c25503499db81b2"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N1000_top5_delta.png",
+      "bytes": 232167,
+      "sha256": "ca81d49f9422a5f0e9f0c17e7bc0955103690474f3e31cc928718e430008c7af",
+      "git_blob": "562d6d544fd50cf60a4d59db0c7e7b958f830d0a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N2000_W_vs_inv_deriv.png",
+      "bytes": 134785,
+      "sha256": "d54c0836c90338c602571528e98b4465c0032ad5325c4037f1f55bf8ab60e7db",
+      "git_blob": "7746cc6bebdc2c4cbee8d7cecb7e6870ca6f415b"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N2000_top5_delta.png",
+      "bytes": 241150,
+      "sha256": "9404f797ac8a27c769810183b5c21352b7b195a29abe6afacb3f9713f5654f3b",
+      "git_blob": "226728ff2e7772a0de2af1ceb524ee58fbe0496d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N5000_W_vs_inv_deriv.png",
+      "bytes": 130885,
+      "sha256": "d5a6b7806a9f300b6645ede2eb8d58cfbc53539ce5cf74acd04eab14879da06e",
+      "git_blob": "0ebdb4ac824cd2703f236474a69a98b00b991935"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N5000_top5_delta.png",
+      "bytes": 237432,
+      "sha256": "f8439058a987734fb02fd2e6149a772382346a6d0a25c9cadb71145e140625cc",
+      "git_blob": "c64d4b706569897fce7c01f02e8922f92e8a0bdb"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N500_W_vs_inv_deriv.png",
+      "bytes": 130980,
+      "sha256": "b240582496893aa94f5db7d343d6d6d76d5845b023ea663a287371beb3879950",
+      "git_blob": "46cd3fe76b5f23625b0f5f78d9908baa4f831ac8"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_N500_top5_delta.png",
+      "bytes": 230182,
+      "sha256": "32821bfab5de5c1a1479d0432fd7ffc1ee001b8e5254dacd2c1ba58d708d9303",
+      "git_blob": "6703131f610a5facdf7daef360c65b03ddb50519"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_j4.csv",
+      "bytes": 1227,
+      "sha256": "98a2d54fb51903d676dfa10e94ff456669966058b57f7e5185867b081d4de649",
+      "git_blob": "a8c36271134695f8d1835085c611c6f89351c9d3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_run.json",
+      "bytes": 2449,
+      "sha256": "d26c54184348f5b20bea0a60cc9f253d1b4cabba6fdacd39209ae297ac598215",
+      "git_blob": "7dfc08681328b0e2e6a5b7744a726f94c2c6f948"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_run.log",
+      "bytes": 38921,
+      "sha256": "bececa66c8aab70a39543e9c82dff8a174d28329f5bca1593156f55218db2499",
+      "git_blob": "0d56faf14767e9933520ab40ad1bca31ea9f884d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_secondary.csv",
+      "bytes": 534,
+      "sha256": "beea761bb5e48bde98c069df49cce4f86c5ba453cd7402762144f54afef01b76",
+      "git_blob": "13f7f4a1b84585fe8d04888521c6e7bcb3a67bc5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_top20.csv",
+      "bytes": 23248,
+      "sha256": "5f82375742bd6321aeefb39409872693c0ddc88757d93f50d0faa7dfc30e09cb",
+      "git_blob": "6a4afc4bf33ec5f27119c5d89b7a48f1a9d644c6"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_b_weighted_head.csv",
+      "bytes": 781,
+      "sha256": "b31739cb00d9b7ea8470dc9f3e1a92f20d58ff47c98d24c8f9f6d44125f5c0fa",
+      "git_blob": "72ed4eb1910091081e8410ae8ce53000c52b32d4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/per_zero.csv",
+      "bytes": 758136,
+      "sha256": "9e099e09f696372322177e8b07e60005bcbde7eec5e7a728309363becdff2a18",
+      "git_blob": "8f976bf446b05fcfb9d95d348ff24fe2e52f418a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/prediction_scores.json",
+      "bytes": 788,
+      "sha256": "c62184054b9661509f485658f5a4f5745a64966c52d15ba2c06ae11d4868055e",
+      "git_blob": "71134adfa0dda9f8cfe997333e3bd7ed40bea50d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/t_grid.csv.gz",
+      "bytes": 23694695,
+      "sha256": "ca87eeb7f2a17ae3959cf16f92e2f58052dee3efe3f65629471a8a4975170312",
+      "git_blob": "738fa1112decbf8ba17574d7a90e8dd0d8ce6772"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/tail_bound.json",
+      "bytes": 16570,
+      "sha256": "05c834d195c319ad6629e966462599612d65ca29fc1cd43cb496f31a6bbc4ae6",
+      "git_blob": "fc45965115d87deb31ad9181a972387bae6bb045"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/tail_bound.log",
+      "bytes": 438,
+      "sha256": "20b21fd00ec4973ef40432dac7de9a9e482c1233ec625d904cd5c304f7720e0d",
+      "git_blob": "9eee2b4ab2cb1e1acba3f7ce3867ec462334035c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/tail_bound.py",
+      "bytes": 3313,
+      "sha256": "1e4cdc63e9478e338f60b0c6d16a7e9d4f4c1d9de496e7d08d8fc880e9f26cb1",
+      "git_blob": "28e12ee80e9d6826c87dbbb03fc259ea65a79b16"
+    },
+    {
+      "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/validate_outputs.py",
+      "bytes": 3386,
+      "sha256": "c6a9b640dcffff24e0e3195da2b7c8169f7efd4fd7e3559452269344d14aacf9",
+      "git_blob": "67585f80f37b48278f27c934aded5d975c38ac15"
+    }
+  ]
+}

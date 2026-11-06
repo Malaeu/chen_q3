@@ -1,0 +1,62 @@
+{
+  "part": "A coefficient space and J1/J2 only",
+  "preregistration": "PREREGISTRATION.json was committed at 42eeaebd0 before this run",
+  "source": {
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "coefficients_path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_coefficients.csv",
+    "coefficients_blob": "7baa38bc0f5a9437e985f739aecb823ec2dedf1a",
+    "coefficients_sha256": "c8ea199747cd7b63d0371239d33e5ef75a1602c17efc1eef8fd33a1331cbb0a7",
+    "results_path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_results.csv",
+    "results_blob": "419143642b1a0f9c499bcfb663d3232d9cb4624e",
+    "results_sha256": "baae712d3c796f43745278c02268be5bf90d1576c8d4013677a79332de64254c",
+    "archived_c_sign": "archived c is x=G^-1 b; use c_opt=-x under residual 1+sum c_n r_n"
+  },
+  "N": [
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "convention": "free n=2..N; c_opt=-archived c; a=mu(n)*log(N/n)/logN; residual 1+sum c_n*r_n",
+  "full_gram": {
+    "N": 5000,
+    "seconds": 2.7768430419964716,
+    "bytes": 199960020
+  },
+  "full_gram_platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "compiler": "clang++",
+  "j1_all_pass": true,
+  "j2_all_pass": true,
+  "max_j1_abs_difference": 2.3081536681957004e-13,
+  "max_j2_abs_difference": 2.986499936241671e-14,
+  "max_normal_residual_inf": 5.5844218138645374e-14,
+  "r8_certificate_role": "R8 certificate_witness_N*.json are upper-envelope optimizer candidates; they are not substituted for these NB full-Gram optima",
+  "Q1_Q4": {
+    "Q1": {
+      "p": 0.55,
+      "observed": 0.8753099522772436,
+      "hit": true
+    },
+    "Q2": {
+      "p": 0.6,
+      "observed": 0.0826089730549369,
+      "hit": false
+    },
+    "Q3": {
+      "p": 0.5,
+      "observed": 0.9950129444150193,
+      "hit": true
+    },
+    "Q4": {
+      "p": 0.5,
+      "observed": 0.04874315885913141,
+      "hit": false
+    }
+  },
+  "partial_brier_Q1_Q4_only": 0.265625,
+  "elapsed_seconds_including_plots": 4.366684917011298,
+  "limitations": [
+    "Full-Gram calculations use platform long double for Vasyunin moments and float64 stored Gram/linear algebra; they are diagnostics, not outward-rounded interval certificates.",
+    "Part B zero-localization work, J3 continuous-integral/tail comparison, and J4 permutation nulls are outside this Part A run."
+  ]
+}

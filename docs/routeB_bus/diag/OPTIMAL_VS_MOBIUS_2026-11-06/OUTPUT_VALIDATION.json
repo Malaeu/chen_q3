@@ -1,0 +1,171 @@
+{
+  "coefficient_rows": 8496,
+  "per_zero_rows": 2596,
+  "permutation_replay": [
+    {
+      "N": 500,
+      "variable": "inverse_derivative_squared",
+      "rho": 0.16612171256239056,
+      "p": 0.000999000999000999
+    },
+    {
+      "N": 500,
+      "variable": "raw_local_min_gap",
+      "rho": 0.011284538692773152,
+      "p": 0.7772227772227772
+    },
+    {
+      "N": 1000,
+      "variable": "inverse_derivative_squared",
+      "rho": 0.034010904349887405,
+      "p": 0.4125874125874126
+    },
+    {
+      "N": 1000,
+      "variable": "raw_local_min_gap",
+      "rho": 0.08423548605749752,
+      "p": 0.03296703296703297
+    },
+    {
+      "N": 2000,
+      "variable": "inverse_derivative_squared",
+      "rho": -0.04154346595024561,
+      "p": 0.3226773226773227
+    },
+    {
+      "N": 2000,
+      "variable": "raw_local_min_gap",
+      "rho": 0.04588486761309086,
+      "p": 0.23476523476523475
+    },
+    {
+      "N": 5000,
+      "variable": "inverse_derivative_squared",
+      "rho": -0.06399044771926128,
+      "p": 0.10589410589410589
+    },
+    {
+      "N": 5000,
+      "variable": "raw_local_min_gap",
+      "rho": 0.04039793297519405,
+      "p": 0.2987012987012987
+    }
+  ],
+  "spot_checks": [
+    {
+      "N": 500,
+      "kind": "opt",
+      "t": 0.0,
+      "mp40_intensity": 1.4625917651485056e-05,
+      "saved_intensity": 1.4625917651513508e-05,
+      "abs_difference": 2.845183669827195e-17
+    },
+    {
+      "N": 500,
+      "kind": "taper",
+      "t": 0.0,
+      "mp40_intensity": 0.03787373241009247,
+      "saved_intensity": 0.037873732410092016,
+      "abs_difference": 4.510281037539698e-16
+    },
+    {
+      "N": 500,
+      "kind": "opt",
+      "t": 499.9985305840648,
+      "mp40_intensity": 1.0215786852435564,
+      "saved_intensity": 1.0215786852437032,
+      "abs_difference": 1.467714838554457e-13
+    },
+    {
+      "N": 500,
+      "kind": "taper",
+      "t": 499.9985305840648,
+      "mp40_intensity": 0.7155723008066206,
+      "saved_intensity": 0.7155723008065842,
+      "abs_difference": 3.6415315207705135e-14
+    },
+    {
+      "N": 500,
+      "kind": "opt",
+      "t": 1000.0,
+      "mp40_intensity": 0.9717694396077786,
+      "saved_intensity": 0.9717694396078946,
+      "abs_difference": 1.1601830607332886e-13
+    },
+    {
+      "N": 500,
+      "kind": "taper",
+      "t": 1000.0,
+      "mp40_intensity": 0.8560161763749814,
+      "saved_intensity": 0.8560161763751538,
+      "abs_difference": 1.724176357242868e-13
+    },
+    {
+      "N": 5000,
+      "kind": "opt",
+      "t": 0.0,
+      "mp40_intensity": 5.670839300454011e-06,
+      "saved_intensity": 5.67083930046493e-06,
+      "abs_difference": 1.0919101723055186e-17
+    },
+    {
+      "N": 5000,
+      "kind": "taper",
+      "t": 0.0,
+      "mp40_intensity": 0.02063616333123315,
+      "saved_intensity": 0.020636163331232506,
+      "abs_difference": 6.453171330633722e-16
+    },
+    {
+      "N": 5000,
+      "kind": "opt",
+      "t": 499.9985305840648,
+      "mp40_intensity": 0.6743025786053313,
+      "saved_intensity": 0.6743025786056989,
+      "abs_difference": 3.6759484345338933e-13
+    },
+    {
+      "N": 5000,
+      "kind": "taper",
+      "t": 499.9985305840648,
+      "mp40_intensity": 0.5004544050261174,
+      "saved_intensity": 0.5004544050263103,
+      "abs_difference": 1.929567616798522e-13
+    },
+    {
+      "N": 5000,
+      "kind": "opt",
+      "t": 1000.0,
+      "mp40_intensity": 0.9325894204444296,
+      "saved_intensity": 0.9325894204447658,
+      "abs_difference": 3.361755318564974e-13
+    },
+    {
+      "N": 5000,
+      "kind": "taper",
+      "t": 1000.0,
+      "mp40_intensity": 0.7532833681809932,
+      "saved_intensity": 0.7532833681812436,
+      "abs_difference": 2.504663143554353e-13
+    }
+  ],
+  "grid_rows": 167937,
+  "grid_columns": [
+    "grid_index",
+    "t",
+    "zeta_re",
+    "zeta_im",
+    "I_opt_500",
+    "I_taper_500",
+    "Delta_500",
+    "I_opt_1000",
+    "I_taper_1000",
+    "Delta_1000",
+    "I_opt_2000",
+    "I_taper_2000",
+    "Delta_2000",
+    "I_opt_5000",
+    "I_taper_5000",
+    "Delta_5000"
+  ]
+}

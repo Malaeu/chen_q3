@@ -1,0 +1,44 @@
+[
+  {
+    "role": "task",
+    "commit": "b9bfe4a204f6c15881f11e6088c0fc50cfd0478e",
+    "path": "docs/routeB_bus/mythos/CODEX_TASK_OPTIMAL_VS_MOBIUS_COEFFICIENTS_2026-11-06.md",
+    "blob": "7da31c2964639e79356ebe177d2ff5f05860d0eb"
+  },
+  {
+    "role": "coefficients",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_coefficients.csv",
+    "blob": "7baa38bc0f5a9437e985f739aecb823ec2dedf1a"
+  },
+  {
+    "role": "gram",
+    "commit": "ba5654b46adf84159702748b006699bafa0ed89b",
+    "path": "docs/routeB_bus/diag/NB_RATE_THERMOMETER_2026-11-06/part_a_native.cpp",
+    "blob": "335b1c1e72ae265a9b6faea3821d903e4cf2f097"
+  },
+  {
+    "role": "R7",
+    "commit": "8a994500ffc9648f2f3e22561ee74a9d0c2e9eca",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND7_NB_WINDOW_COUPLING_2026-11-06_B.md",
+    "blob": "91cf942a527100c8a0b006377ff963adb23e7b6f"
+  },
+  {
+    "role": "reciprocity",
+    "commit": "aabf1a70584f4151a27f8d99a23d47e33da34b9a",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_MOBIUS_RECIPROCITY_2026-11-06_B.md",
+    "blob": "f568cd803251872ae9f7a5c7f1058abf03d62170"
+  },
+  {
+    "role": "R8",
+    "commit": "70c4e6b097bc714689fb9226aeaea12a46127c95",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND8_NEW_MATH_2026-11-06_B.md",
+    "blob": "e0c22e09de31ce8c3ee37e8c53343477168b2063"
+  },
+  {
+    "role": "certificate_report",
+    "commit": "a180142f5b60d1424df53512b666915b7d22117e",
+    "path": "docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/REPORT.md",
+    "blob": "f834905a729ba6fceed39b7c1b1988913d09b14c"
+  }
+]

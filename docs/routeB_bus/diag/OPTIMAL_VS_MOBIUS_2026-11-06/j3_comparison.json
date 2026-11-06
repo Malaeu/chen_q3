@@ -1,0 +1,85 @@
+{
+  "status": "analytic identity; broad diagnostic consistency, not interval quadrature",
+  "rows": [
+    {
+      "N": 500,
+      "kind": "opt",
+      "discrete_E": 0.00742678807183994,
+      "head": 0.007117377677464621,
+      "diagnostic_E_minus_head": 0.0003094103943753193,
+      "independent_tail_upper": 4.343302244487715,
+      "K": 16384,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 500,
+      "kind": "taper",
+      "discrete_E": 0.04090652137838324,
+      "head": 0.04065967986387857,
+      "diagnostic_E_minus_head": 0.0002468415145046726,
+      "independent_tail_upper": 1.7381324898812778,
+      "K": 4096,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 1000,
+      "kind": "opt",
+      "discrete_E": 0.006561374298162503,
+      "head": 0.006285972560394951,
+      "diagnostic_E_minus_head": 0.00027540173776755255,
+      "independent_tail_upper": 7.603246266251664,
+      "K": 16384,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 1000,
+      "kind": "taper",
+      "discrete_E": 0.03408267538909171,
+      "head": 0.03385471168268343,
+      "diagnostic_E_minus_head": 0.0002279637064082768,
+      "independent_tail_upper": 3.0032621964501955,
+      "K": 16384,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 2000,
+      "kind": "opt",
+      "discrete_E": 0.006118802780197052,
+      "head": 0.005876101040085456,
+      "diagnostic_E_minus_head": 0.0002427017401115967,
+      "independent_tail_upper": 13.273145660946986,
+      "K": 65536,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 2000,
+      "kind": "taper",
+      "discrete_E": 0.02853848542120252,
+      "head": 0.02832729374535565,
+      "diagnostic_E_minus_head": 0.00021119167584687099,
+      "independent_tail_upper": 4.903314491194288,
+      "K": 16384,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 5000,
+      "kind": "opt",
+      "discrete_E": 0.005307020683004815,
+      "head": 0.005096237187819305,
+      "diagnostic_E_minus_head": 0.00021078349518550976,
+      "independent_tail_upper": 31.105038659172095,
+      "K": 65536,
+      "diagnostic_consistent": true
+    },
+    {
+      "N": 5000,
+      "kind": "taper",
+      "discrete_E": 0.023336379992267897,
+      "head": 0.023144407012498175,
+      "diagnostic_E_minus_head": 0.00019197297976972227,
+      "independent_tail_upper": 10.17673819275788,
+      "K": 65536,
+      "diagnostic_consistent": true
+    }
+  ]
+}
