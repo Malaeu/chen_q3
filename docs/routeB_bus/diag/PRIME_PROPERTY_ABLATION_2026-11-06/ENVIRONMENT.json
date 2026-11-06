@@ -1,0 +1,18 @@
+{
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python": "3.13.0 (main, Oct 16 2024, 08:05:40) [Clang 18.1.8 ]",
+  "numpy": "2.3.5",
+  "matplotlib": "3.10.7",
+  "scipy": "1.16.3",
+  "compiler": "Apple clang version 17.0.0 (clang-1700.6.4.2)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+  "uv": "uv 0.13.6 (329bf9448 2026-10-26 aarch64-apple-darwin)",
+  "preregistration_commit": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+  "task_source_commit": "089f59e5498eecb6c2b122f411c6c78e75110da8",
+  "integration_base_commit": "caeaac024b05054e6a625bdea8b3f929ee665ac8",
+  "plot_environment": "existing repository .venv; no project dependency changes",
+  "floating_point_mantissa_bits": {
+    "double": 53,
+    "long_double": 53
+  }
+}

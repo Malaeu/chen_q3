@@ -1,0 +1,33 @@
+PHASE compile start flags=-O3,-std=c++17,no-fast-math
+COMMAND_DONE exit=0 elapsed_s=0.525
+PHASE small_brute_checks start
+SELF_TEST_PASS brute_n=50000 checks=Mobius,Liouville,S4_5_seeds,exact_step_W,J4_analytic_vs_Simpson,grid cross_abs_error=3.1086245e-15 p2_abs_error=7.8062556e-18
+COMMAND_DONE exit=0 elapsed_s=0.462
+PHASE production start limits=S0,S4x5,S5:100000000
+PHASE prime_sieve start limit=100000000
+PHASE prime_sieve done prime_count=5761455 elapsed_s=0.187182
+PHASE segmented_stream start systems=S0,S4x5,S5 max=100000000 block=1048576
+PROGRESS systems=S0,S4x5,S5 n=5000000/100000000 pct=5.0 elapsed_s=0.2 eta_s=3.1
+PROGRESS systems=S0,S4x5,S5 n=10000000/100000000 pct=10.0 elapsed_s=0.3 eta_s=2.7
+PROGRESS systems=S0,S4x5,S5 n=15000000/100000000 pct=15.0 elapsed_s=0.4 eta_s=2.1
+PROGRESS systems=S0,S4x5,S5 n=20000000/100000000 pct=20.0 elapsed_s=0.5 eta_s=1.8
+PROGRESS systems=S0,S4x5,S5 n=25000000/100000000 pct=25.0 elapsed_s=0.5 eta_s=1.6
+PROGRESS systems=S0,S4x5,S5 n=30000000/100000000 pct=30.0 elapsed_s=0.6 eta_s=1.4
+PROGRESS systems=S0,S4x5,S5 n=35000000/100000000 pct=35.0 elapsed_s=0.7 eta_s=1.3
+PROGRESS systems=S0,S4x5,S5 n=40000000/100000000 pct=40.0 elapsed_s=0.8 eta_s=1.1
+PROGRESS systems=S0,S4x5,S5 n=45000000/100000000 pct=45.0 elapsed_s=0.8 eta_s=1.0
+PROGRESS systems=S0,S4x5,S5 n=50000000/100000000 pct=50.0 elapsed_s=0.9 eta_s=0.9
+PROGRESS systems=S0,S4x5,S5 n=55000000/100000000 pct=55.0 elapsed_s=1.0 eta_s=0.8
+PROGRESS systems=S0,S4x5,S5 n=60000000/100000000 pct=60.0 elapsed_s=1.1 eta_s=0.7
+PROGRESS systems=S0,S4x5,S5 n=65000000/100000000 pct=65.0 elapsed_s=1.1 eta_s=0.6
+PROGRESS systems=S0,S4x5,S5 n=70000000/100000000 pct=70.0 elapsed_s=1.2 eta_s=0.5
+PROGRESS systems=S0,S4x5,S5 n=75000000/100000000 pct=75.0 elapsed_s=1.3 eta_s=0.4
+PROGRESS systems=S0,S4x5,S5 n=80000000/100000000 pct=80.0 elapsed_s=1.4 eta_s=0.3
+PROGRESS systems=S0,S4x5,S5 n=85000000/100000000 pct=85.0 elapsed_s=1.5 eta_s=0.3
+PROGRESS systems=S0,S4x5,S5 n=90000000/100000000 pct=90.0 elapsed_s=1.5 eta_s=0.2
+PROGRESS systems=S0,S4x5,S5 n=95000000/100000000 pct=95.0 elapsed_s=1.6 eta_s=0.1
+PROGRESS systems=S0,S4x5,S5 n=100000000/100000000 pct=100.0 elapsed_s=1.7 eta_s=0.0
+JUDGES J1=PASS J2=PASS J4=PASS slope=0.420080336635 expected_envelope=[0.513141103619,0.537957931157]
+PHASE segmented_stream done elapsed_s=1.703080917 total_s=1.890984333
+COMMAND_DONE exit=0 elapsed_s=1.897
+RUN_JSON /private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/true_systems_run.json

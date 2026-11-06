@@ -1,0 +1,150 @@
+{
+  "status": "PASS",
+  "systems": {
+    "S0": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    },
+    "S5": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    },
+    "S1_seed1101": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S1_seed1102": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S1_seed1103": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S1_seed1104": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S1_seed1105": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y100_seed2201": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y100_seed2202": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y100_seed2203": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y1000_seed2201": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y1000_seed2202": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y1000_seed2203": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y10000_seed2201": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y10000_seed2202": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S2_y10000_seed2203": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S3_seed3301": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S3_seed3302": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S3_seed3303": {
+      "grid_rows": 601,
+      "sample_rows": 7000,
+      "X_max": 10000000.0,
+      "integral_monotone": true
+    },
+    "S4_seed4401": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    },
+    "S4_seed4402": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    },
+    "S4_seed4403": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    },
+    "S4_seed4404": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    },
+    "S4_seed4405": {
+      "grid_rows": 701,
+      "sample_rows": 8000,
+      "X_max": 100000000.0,
+      "integral_monotone": true
+    }
+  },
+  "limits": "Internal consistency and published checkpoints only; independent enumerator judges in FAKE_CHECKS.json and true checks."
+}

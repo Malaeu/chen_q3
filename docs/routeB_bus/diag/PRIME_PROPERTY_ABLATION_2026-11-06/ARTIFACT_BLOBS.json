@@ -1,0 +1,594 @@
+{
+  "scope": "All files in result folder except this self-referential manifest; Git blobs use repository SHA-1 object format",
+  "preregistration_commit": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+  "files": [
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/ANALYSIS.json",
+      "bytes": 8268,
+      "git_blob": "e43ffd9e84cc4a51f5a09a6582ff8321f2828fe7",
+      "sha256": "4f26814d678269972513f70da4b1bda189e42d22e75cab1cbbf07c59388e84ba"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/COUNTING_DIAGNOSTICS.png",
+      "bytes": 488498,
+      "git_blob": "90a0fe746fcf81a8de7dfb8bde3990069c9853d8",
+      "sha256": "404560a6a98380656a319a2aec0ed28e3dd36bb593c5f7d8d81d4f09904112f4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/ENVIRONMENT.json",
+      "bytes": 876,
+      "git_blob": "05bd259b55d739eaf379cd326154fe349ce512d3",
+      "sha256": "94abbfbf9b0dcd52652e96f092d549b51f98d92ed8c9f8e32879466107039b41"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/FAKE_CHECKS.json",
+      "bytes": 31118,
+      "git_blob": "c98e7f91724f5cb2df48c54304c7b358e02fa4ec",
+      "sha256": "c3542adc2ec1f726b55a4196afa0063875ebba65f75069f5a28b24751b0070bf"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/M_NORMALIZED_HISTOGRAMS.png",
+      "bytes": 85606,
+      "git_blob": "1bce37217d7579c30f75f3c7d042059acf8b3c25",
+      "sha256": "420c7eea6e21e8a400e1771b58376694dcdc555582d734dbecdd8fa8ee37aa1e"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/M_NORMALIZED_HISTOGRAMS.svg",
+      "bytes": 210868,
+      "git_blob": "6d0fdfbfc28db156eb7f9c1000d3a3efe6000cf2",
+      "sha256": "74b1a9fe51d82320f47382a07939a925122e79d59ca7767cb0e4e3f76bc1ceda"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/OUTPUT_CHECKS.json",
+      "bytes": 3532,
+      "git_blob": "3ba623cf8259c26dffddd930d7c2a097eee5e08f",
+      "sha256": "484e7ffd7e93b6b8fea7b9261c6773de1a9e9a2575858208feac1c3b15d1d93a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/PLANTED_CONTROL.png",
+      "bytes": 73400,
+      "git_blob": "d62c580e3d636820096ea3b508990df3bc281a6d",
+      "sha256": "a31cb129e325da2d3dc9472a966b4624bce3d4367c23a2140838cc883ebec033"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/PREREGISTRATION.json",
+      "bytes": 4100,
+      "git_blob": "2bdd79d99c2474303ee2f5a5a5bb4c08a763f40d",
+      "sha256": "0bc13b1c9997132e0c24e7552c4afcb54f15d651c04163ed41292a7fb482fd58"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/QUANTILES_COMMON.json",
+      "bytes": 5926,
+      "git_blob": "8f5b2b6b5d9d65c59557ed8d577aee4bbdd587aa",
+      "sha256": "1bf13e34c9efdd1c330feb6f5dc09f96910ab49cc984caeaf406f33ef8dd5ab3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/REPORT.md",
+      "bytes": 18834,
+      "git_blob": "f7c62f78f6c08f67525752ffd721b66ed5199b78",
+      "sha256": "8a693a9309931e8ab8076076a328703633c91529386a55a057de87cea86c8b46"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/REVIEW.md",
+      "bytes": 2229,
+      "git_blob": "6e2fb8f9009404b5a85f76fa9dfdd1a8d8de1189",
+      "sha256": "73e362ec4fabc89ec9962172328519f1b5d096ca325f2ae09659ad1347ba9805"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S0.csv",
+      "bytes": 35159,
+      "git_blob": "664115f312124dd21ba8d7e6e91701b846fb3de8",
+      "sha256": "57ad84b0063e75c88ac46bbac58d982b203d3cd99971fe875af34a1d272f0ad3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S0_decades.csv",
+      "bytes": 2481,
+      "git_blob": "77938a5744fe2694d5a4e76e80171e2624847d17",
+      "sha256": "c5c04a9bb6ecc81c425cb06eb7e8df8fe02d722e4d189dc4822bb062d341b364"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S0_planted.csv",
+      "bytes": 42111,
+      "git_blob": "68851f75eb7cb41fa9061f1005a64fc72dc0dc7d",
+      "sha256": "cf969c5514c40b7fbfea4909853866b5459b48007169e921b6b121d25c7bab82"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S0_samples.csv",
+      "bytes": 373388,
+      "git_blob": "6b4d671e95d09a554798e71cfd2de6faf1c85b60",
+      "sha256": "d2fb51a97878efc3e074e92663593b17a25161ea02b5bf522b931a13627a1d88"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1101.csv",
+      "bytes": 59713,
+      "git_blob": "069a3a86e52bebbbdf5f0ab40aae9d713df295b7",
+      "sha256": "f817093bfc7f2eb6532f09a5f9f4310e4dcc95681994aa4083785e954712ba52"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1101_decades.csv",
+      "bytes": 591,
+      "git_blob": "e0cbee0ab837b54031258af897f9f3fa06fa2ad0",
+      "sha256": "da37ad506d14a6627c9fdcaebed83fe6b044c90bfe9d4e8d398a7c041b60ebfe"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1101_samples.csv",
+      "bytes": 340472,
+      "git_blob": "031268987baa615dd3891a3b944bdd6555c6d768",
+      "sha256": "e9141b68ef59d9e1ed0ebc0c6d742e8e0e0297e23c20a55462434d2b52caf3d4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1102.csv",
+      "bytes": 59353,
+      "git_blob": "7a8007b2975c534eb8f6d77f0cb60847688dd5d3",
+      "sha256": "fa93193d858ddaaaf4284c6c806f65e29c9cdb1c97da316e0cb0afda6cad160f"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1102_decades.csv",
+      "bytes": 586,
+      "git_blob": "dc56a873acdc5a8403979e24ff0674e0981307dc",
+      "sha256": "7c03e9390572680572eb8f128c9575f4cbf9b936a01d991479e7e6fbc37b02f5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1102_samples.csv",
+      "bytes": 337130,
+      "git_blob": "059b4f5d85629fd66ee6f1a2287dc0e9bccbee81",
+      "sha256": "00500cade5a222fba7f415b99425f66944b61012fc4ff3dd852b88989787c558"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1103.csv",
+      "bytes": 59654,
+      "git_blob": "43dbb13f0bb149ebef95bc65a4462bd8ee73d6f7",
+      "sha256": "f82d91902110fb5e2876301429f5bcfd0df90bc4d446b2c3697344ac1257267a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1103_decades.csv",
+      "bytes": 596,
+      "git_blob": "071f41dd6d221faa795a3049b11dbb62cde70646",
+      "sha256": "064a9b4ece6a005df150803bff0c0f82d662496444778997cc420aebdb772b42"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1103_samples.csv",
+      "bytes": 340827,
+      "git_blob": "6e705435c99df42fb9c9a8b25643756ed5df513c",
+      "sha256": "01c1162769f568f993c234cbd4c9b945a5645015a4109ec2384976b1fb565119"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1104.csv",
+      "bytes": 59346,
+      "git_blob": "194b2bc82cc242185e7de9716bbd4aa6dcaef18e",
+      "sha256": "2b0f527c661329eacb12f6ee135dc38074da689afe5a25cd03d4e4eea661e096"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1104_decades.csv",
+      "bytes": 580,
+      "git_blob": "2d83b74c357fbbd3fd00f36b18b57e521a719182",
+      "sha256": "52f2fda5f622e3e260bbd2152268536b4d6fb147dff21fc8558041da4e9b677d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1104_samples.csv",
+      "bytes": 334711,
+      "git_blob": "65584b6c291fae0eb1bd7e9337a069cf9ceedd7a",
+      "sha256": "9e5fa273c46c7f7c8dd70dedad6883e30230054498a0b0282c06c5edef618d53"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1105.csv",
+      "bytes": 59551,
+      "git_blob": "7917ad9661f7d8c952e4c06500b03e74cad4f4a9",
+      "sha256": "1f949e8c1adb28742e43f2f11ac2a10034464b9b4b969be634938d0b20830738"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1105_decades.csv",
+      "bytes": 586,
+      "git_blob": "6eca43ba7614f512dae9a33b55d831f39b27e08c",
+      "sha256": "e58ce0b39358e6b58c46fdf4d7215efcadf50d82165f2212e523294c27658da4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S1_seed1105_samples.csv",
+      "bytes": 331432,
+      "git_blob": "91ad3f62c48082beef178d79b00816675a9cd712",
+      "sha256": "bbfbd8752c7ae48ccb33205f7834a4ca1ee10ab9b46fc6caf1385adef721f36e"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2201.csv",
+      "bytes": 59374,
+      "git_blob": "332bf7ea9e4adc8834c58d365752cce7b929b73e",
+      "sha256": "66bf68f418089ab004821eb94dd2ad4f8c39a72066d263956f897cdff01128c4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2201_decades.csv",
+      "bytes": 603,
+      "git_blob": "3716ccd8d24b8c20d63c6b335775786ecfcefebb",
+      "sha256": "4ed6c0d9b452cef362e4c4e7a72faecbe14f599313202b4b5ec82497e1b942c8"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2201_samples.csv",
+      "bytes": 333176,
+      "git_blob": "36db611aae8933fa596f7debb0ecb9d46b0a97a7",
+      "sha256": "3cda76da7c6133da26a7247d9f0db7b8fa048cc1109f1882779828dfb5907352"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2202.csv",
+      "bytes": 59436,
+      "git_blob": "6a0cbefdb08f662b59012527c0dd84d95f4e5605",
+      "sha256": "e6217eea585885d7a7f9ab45ddafb43ce88f7dea7b8c869ce8ea4bd0f87b106f"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2202_decades.csv",
+      "bytes": 603,
+      "git_blob": "2b769fb7483231b2e45c446d66a0923eb34da66e",
+      "sha256": "eccb048c168e2a93f5350f9d1b2c13f13cca1345c63da6418b56fcdcde3dbde0"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2202_samples.csv",
+      "bytes": 334030,
+      "git_blob": "0aaa6b028f6188dc599559eb9dc30ea6aa601a82",
+      "sha256": "42f28a22a338925b606354d6758730d64117c6a55df2b6b05b0d0e278b723db0"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2203.csv",
+      "bytes": 59313,
+      "git_blob": "9276c6b7c7458d6ddffb257159a8b0f498d1fb18",
+      "sha256": "11baf17a213fca43acc9fbd00a150db3f228f160db38097bda84c8a41b734027"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2203_decades.csv",
+      "bytes": 602,
+      "git_blob": "2003a8dd76821ad78d48738c19f50e28f9f3bde7",
+      "sha256": "ead1b97c0a4f33cce8f8a66299b6681a9359396e358d276e5837817c0d92bab5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y10000_seed2203_samples.csv",
+      "bytes": 333607,
+      "git_blob": "8f3aa059dc9fac306ac4e4dfd252851228fb5e4b",
+      "sha256": "414d304e755c500daffed6a442f0c2b18a4d1fe40c17c447ff7c6a468ee09b2d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2201.csv",
+      "bytes": 59316,
+      "git_blob": "f211b32758c2be2ab4e38fdf6a4524b972931857",
+      "sha256": "9a423f0b44f752f27e043246e60378e04d632746993fe04c973c0ff07f94bc51"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2201_decades.csv",
+      "bytes": 599,
+      "git_blob": "663663e43ab9f66c83feb3ec3d47af4874745206",
+      "sha256": "f098da15d9eb6dca632a05c7a67121a97b5f6047955866c2cde91f7c3b9fd379"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2201_samples.csv",
+      "bytes": 333202,
+      "git_blob": "26a517eab4b30357d9e504afb198ed323342fd7c",
+      "sha256": "36cb78cd3aa1ca99b6e686a3039c59b1dba47954b2f790427d8d435ce2ae7786"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2202.csv",
+      "bytes": 59329,
+      "git_blob": "73690d6276c39963414506d7680bb85573d357ff",
+      "sha256": "f3d6f14280972973191536cb5c8043f2a2ce2a7969d8404492c4237481b54316"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2202_decades.csv",
+      "bytes": 599,
+      "git_blob": "28367072005228c42f0f66e5ebe90c1afd5a3e4e",
+      "sha256": "f36afc254eeeba74a60ed80f5190f3d808dccce55f9bed1ca0a24e9f11a5ff08"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2202_samples.csv",
+      "bytes": 333369,
+      "git_blob": "a8fbe2bdb540fec1e562e67d9a136c710ec4d922",
+      "sha256": "a0ac59c63d17e68865096ee8286f518368f697f9fb9e813cc03b4f26f017df58"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2203.csv",
+      "bytes": 59190,
+      "git_blob": "5ba00ebc239d41e5b4ead400d418683b793e40d2",
+      "sha256": "c9a1165756e9ad9a55ff3a4b5038109821f047c23bf425a53e10782316e1e6a2"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2203_decades.csv",
+      "bytes": 602,
+      "git_blob": "b12ef0ac19aa27c73725102c9b1a691e5cb7188f",
+      "sha256": "09c841afcfd847b9d2bac477be1110fb3bceae5c1cf4e39b14525a2446a5ef90"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y1000_seed2203_samples.csv",
+      "bytes": 333281,
+      "git_blob": "b4a5103b22160204348f7a3f6d304b1c299aa9ba",
+      "sha256": "41e6b7b7d764fe142cba7e9ff5e6108e5d2107249381a30a9b0726f717f83fd5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2201.csv",
+      "bytes": 59359,
+      "git_blob": "6e56aef0d3c6901bce0034254141debdfba6c89f",
+      "sha256": "93696b8a0a2ec112ce875713516d8799d95090c4962258b192dd21ffffbb47c6"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2201_decades.csv",
+      "bytes": 593,
+      "git_blob": "0374a29ba1ab94b488cda02362b922cd689679c0",
+      "sha256": "a0cb46f072ce9a2db40b8ba1bdaa9a05be1f12da54f3d2789437d2b9475b7811"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2201_samples.csv",
+      "bytes": 333042,
+      "git_blob": "181d6e545309f21d72d16d2cd4525c584ce3afa6",
+      "sha256": "f02a68277ae226034591970874439ae0be97a2b8b26b2be77726ee39fd09ff77"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2202.csv",
+      "bytes": 59294,
+      "git_blob": "2de8b5a156ff400a5a4748aba8d42352ef5c469a",
+      "sha256": "44b95bf188b6f4a09a70f2f527b09805af981a1298c7b6531287a7bbd2298394"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2202_decades.csv",
+      "bytes": 600,
+      "git_blob": "187fde7b54686801dd9c4488ca8cf97f347fbc47",
+      "sha256": "0d152470b9c85e2518ae8f55b10015897c23fa848df8fcb414605d099ce06d83"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2202_samples.csv",
+      "bytes": 335694,
+      "git_blob": "fccb02274aaa61fd9c33533dc06fd0e32a7dfd8c",
+      "sha256": "383794717835dce6302c528db339b195352cb36c9c5692f8d2ab89c4f3235aca"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2203.csv",
+      "bytes": 59183,
+      "git_blob": "12ad0fef0b2b6846901f453c3c7f61ba33f44304",
+      "sha256": "f4cb5bbaf932b6056bf9492d54f3949f09a375a944d03aa8f43f02e074921138"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2203_decades.csv",
+      "bytes": 597,
+      "git_blob": "10f42040d64994b04613c88a63747dc0445248d3",
+      "sha256": "cf0c097a803d0a9f642ed47858460d698e261c1ea631d9c4ade244204ead41bb"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S2_y100_seed2203_samples.csv",
+      "bytes": 334913,
+      "git_blob": "d897729e015c7bf469a6ed965d4f8c3b1c903be9",
+      "sha256": "7758123b7ef32aeec48fe723433eda7678eac4e5fab0dccd13a7b5b5308434e4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3301.csv",
+      "bytes": 59485,
+      "git_blob": "4b1f5de644e97f68161bdb61c41df2e723a7aba9",
+      "sha256": "c6d7e912b2ae0620d9fd5d8687ddc601bee84f29ca3ed5e75839940bc42abb5d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3301_decades.csv",
+      "bytes": 617,
+      "git_blob": "4d9223f2869281dde1ecd665504e617c0becabd5",
+      "sha256": "20f12ac3e632626c1199aadcd2d1611b8adf3c77ed0d530bde17ea8341087b4a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3301_samples.csv",
+      "bytes": 337830,
+      "git_blob": "5aa9a950020a817bd25a20ed823080ab4a878fbd",
+      "sha256": "87d55a8d422b03f882abdc2869dd8e97dd9e9c6cd5f1eafc7185990684725dc3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3302.csv",
+      "bytes": 59586,
+      "git_blob": "6dcd71140ed1f93ffb7f1a42c4cefb6095ef39b3",
+      "sha256": "38cd3f1158bfc740bed0b3b5fa9c497a74a4b6e3bd36402a875b96f60ccfd93c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3302_decades.csv",
+      "bytes": 610,
+      "git_blob": "f9375003383a0e1dc181c9f017fcde34d5700b4a",
+      "sha256": "b94d077a7c142f2c4576f5021c482ed2b03dd07e7d1cb0fc2631e25763d45dd5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3302_samples.csv",
+      "bytes": 334763,
+      "git_blob": "9b495a430f2d650d8acdd1f41b4faece38e45e88",
+      "sha256": "5522a05007af7a462d2cfab41c9e1a3392eb3e5b7241dca8f4c99e73731e4d79"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3303.csv",
+      "bytes": 59051,
+      "git_blob": "901e972d9e31fb3fe1d554997f101d1bd6d85d2a",
+      "sha256": "84a5d4be94d1e0f8bf03dde132554f55d9bdfbacc125880c47ebd24f439575b4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3303_decades.csv",
+      "bytes": 612,
+      "git_blob": "b2caf098850130ca74e809931aa9c4b419c47c37",
+      "sha256": "17ef60e43e1f61d799d59abe11f801b1497b07c50c80ea2794ee76acde9db560"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S3_seed3303_samples.csv",
+      "bytes": 332073,
+      "git_blob": "b2ad68a5a6bde7701cbe5de301083466df903c69",
+      "sha256": "c59ec530903eb748e4dab0c3772c3cf01093b297ee8ec7dad9251e31480048e8"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4401.csv",
+      "bytes": 35355,
+      "git_blob": "bc7fe3842f21da6d298966fc8e80973b11262d58",
+      "sha256": "a1562166d1c4eda66b405a68bfc0dac7b03124337a1c2b7050b3c5b695922695"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4401_decades.csv",
+      "bytes": 2444,
+      "git_blob": "c587869d279ca77d38356ea34c3d0e372020263a",
+      "sha256": "d592df50ac91ae5326b0ae8699c099bd207881dcaa68422798fd0b2c172363fc"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4401_samples.csv",
+      "bytes": 372655,
+      "git_blob": "a54c21ad3517515f424fc6a609444e44a691b645",
+      "sha256": "ddcdeef6c12d852560cb76c9845ab31f5f2ba0c072630cf9d8eb17ef68a68988"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4402.csv",
+      "bytes": 35291,
+      "git_blob": "ba8073e7c34985d4d99edbec1696db116935dc3e",
+      "sha256": "87ad846ce15265dc6e473fcc2b4d4aea3f5134b94809c0ffb1983c2e09a37aeb"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4402_decades.csv",
+      "bytes": 2479,
+      "git_blob": "6d50e9c0498ef8616c4adceaf786d90048b6b3cf",
+      "sha256": "d297dc937994f5fc09ecbe16b86dbcea0f474c0df2a57288e1af3da255b4ba8b"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4402_samples.csv",
+      "bytes": 372090,
+      "git_blob": "bd4bf3009ad6a279994454d40e917632caf02871",
+      "sha256": "aee5e8f5ff16695b474fb4979cc00396eed1500b4dde74644602eb6470c52f4d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4403.csv",
+      "bytes": 35413,
+      "git_blob": "1a35c1bc2ef245c230ea48ef42f67f0978696247",
+      "sha256": "0e58271680b52bdce0eaa0c74b238b3cc81fe4f270e6f6005d3fd8c4380f0643"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4403_decades.csv",
+      "bytes": 2429,
+      "git_blob": "cf3628585ee747eb02e7f96bff97dcfe84a09a44",
+      "sha256": "472d30deb08bd66902308031911fb4b156f522e8ca3dfe367544b457255f4d70"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4403_samples.csv",
+      "bytes": 374107,
+      "git_blob": "fa31ce9e3a8d910863e81f95969556c86e9b1e2e",
+      "sha256": "5e64647868ae2a3d667f95d2020fca6e8b014b652a9e08f2c636f8f9ababdf5a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4404.csv",
+      "bytes": 34986,
+      "git_blob": "94eaf33a16740d73c222f64c4abcc3b2d47e600f",
+      "sha256": "cca8663884aed3b1ebca6d14c943431d51c58a8c7cc4a3370ff81659f0d66d18"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4404_decades.csv",
+      "bytes": 2433,
+      "git_blob": "dc6253f7267dc6a62cd279f04226b4d6ade0f8fa",
+      "sha256": "31d2810442b113fe62ab41d17802ac228bb7b631cc0124ddd0ec162c7e0c9f23"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4404_samples.csv",
+      "bytes": 372159,
+      "git_blob": "0012bbee7ad475bbdc14c64c7cfa321dc0912fab",
+      "sha256": "0209b77aff9b7f0ed755f214911261de9496d542578f1bc23cf32f167479896d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4405.csv",
+      "bytes": 35182,
+      "git_blob": "25d2787fcbab1ee9329ab458da4c5989b1cd25b0",
+      "sha256": "6dc5a1bb14b7781a83515463bc6abaf01b836aef26903925f2595dde4230b4fe"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4405_decades.csv",
+      "bytes": 2468,
+      "git_blob": "f9b71d4301faa91a58d8b97c5754929f3db95d00",
+      "sha256": "268048664be9487477996cce0bfe28d44b797e0b87f151a6c895098dcbff40c6"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S4_seed4405_samples.csv",
+      "bytes": 365139,
+      "git_blob": "f999af14d647be9eb32ca4d80ad1658a9308b7a1",
+      "sha256": "9aaeac8d277886b6ea70463444870571f64aef4966cb046ceee8cb785a616929"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S5.csv",
+      "bytes": 35842,
+      "git_blob": "d6177eba36b08f69d5312fde6e05e4d288c48ff9",
+      "sha256": "b00b93536cfe14955b3ce06c6e18f91ae2947732084f32bc73541a2b9428caaa"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S5_decades.csv",
+      "bytes": 2456,
+      "git_blob": "e7206a01b75e473acf4a3d1814e795eb1bd446a4",
+      "sha256": "a320357083e824eed95cf5d135516285a1021671b251bf050438568c3300f158"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S5_samples.csv",
+      "bytes": 371098,
+      "git_blob": "df6e1d4a1877a35744f3394c5ea451b1dd36d559",
+      "sha256": "7abd76df1811dee48034e0881cd7613b75371a9700d5886f867c28703456e3b4"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/SOURCES.json",
+      "bytes": 841,
+      "git_blob": "92937d9379e25cf4904d2fe8e178f98d159aa1d0",
+      "sha256": "e796ee77d149a7b8b93c5cd0770c0d33238019529dea0497214a5bda02c45789"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/SYSTEM_SUMMARY.csv",
+      "bytes": 3732,
+      "git_blob": "444b329618cf68f102bb58b39c09d224875d9a6c",
+      "sha256": "ff1f733d1c3bb731e7d389d119b91a79042598871a6fc364c3d07e34ae0ca177"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/W_ALL.png",
+      "bytes": 392709,
+      "git_blob": "ad6fdeeb52d0aa7f2f12e775a1857380e24f42e2",
+      "sha256": "48f8e400475da92b53566a53c7354edf61ca5b84ddd6131cbc1cdb9cf0646a3e"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/W_ALL.svg",
+      "bytes": 172809,
+      "git_blob": "2a891fa7db64842298eb5646e8f3eb311e40ae58",
+      "sha256": "5e4494fe8b6c235281e28e0784edb8b9f6574c2b0c3c9d5ef54feeff0e0d6a63"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/analyze.py",
+      "bytes": 6231,
+      "git_blob": "c659e01ccb12a2cb49a5d16d672d0e474e396231",
+      "sha256": "f02a09efaad62ce432e4e0db60d0120ec86c290061a24dcd1bc0e21588848b25"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/fake_systems.cpp",
+      "bytes": 23981,
+      "git_blob": "d686e677df84d8d69b9d60b505acb5b9692f2d97",
+      "sha256": "c163f89e7662c32d313badb5a28dde0af1d5f2361b28faa30e7b9961aa10404b"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/run_fake.py",
+      "bytes": 19572,
+      "git_blob": "12e0a1aa59b242a5046f5e1abba58c80f8e51ecb",
+      "sha256": "04b1cd6703813d49aa49cfbcfba3c2fb8fcfb75a85a3142dba9f40109445c4b9"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/run_true.py",
+      "bytes": 12351,
+      "git_blob": "f4ffa01dd4b8f6b671f695e3573d79457b80edf0",
+      "sha256": "4797b0d230b85fb17231c1d8c1e72ba5282b0c84c809b9f4e296aa732d88be40"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/true_systems.cpp",
+      "bytes": 32222,
+      "git_blob": "9d315361a911ab9d6cc8916cd160627cbb65bfa4",
+      "sha256": "1e1ef07c49e80d59e918c6df550eea6df5a80d7bf49eff414c078da1a00d30bc"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/verify_outputs.py",
+      "bytes": 2931,
+      "git_blob": "8f86f907bacbfe5595be440e851ad793a8edb31c",
+      "sha256": "ae487e4853ab8dd622a25a545243efdcadce84d1487393d97503d7c6d7838798"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/true_systems.log",
+      "bytes": 2513,
+      "git_blob": "32b8a819f09e234b2215898c80a3bfe77c5097e9",
+      "sha256": "1cb59759112dc584c659303e3a1a2fb7f87b2e3b8fc78edde9ce6ba247a7f543"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/true_systems_checks.json",
+      "bytes": 1728,
+      "git_blob": "4cdc795b9f4380a37cd6cdac5203fdd65b318fee",
+      "sha256": "fcdf4e725e31f56b0bb9217bf53fc3788ca2f0fac921043403d032540193a990"
+    },
+    {
+      "path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/true_systems_run.json",
+      "bytes": 5979,
+      "git_blob": "e0a6095b9240f76404a956570c5f700b7442bb79",
+      "sha256": "7619103f270eefc801f3b0824b25cfe5a32e2fdda806f899d57b49bebd30a26d"
+    }
+  ]
+}

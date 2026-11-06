@@ -1,0 +1,58 @@
+{
+  "retrieved_utc": "2026-11-06",
+  "transport": "web.run open; urllib download 403, no raw download claimed",
+  "sources": [
+    {
+      "url": "https://oeis.org/A084237/b084237.txt",
+      "sequence": "M(10^k)",
+      "k": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "values": [
+        1,
+        -1,
+        1,
+        2,
+        -23,
+        -48,
+        212,
+        1037,
+        1928
+      ]
+    },
+    {
+      "url": "https://oeis.org/A090410/b090410.txt",
+      "sequence": "L(10^k)",
+      "k": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "values": [
+        1,
+        0,
+        -2,
+        -14,
+        -94,
+        -288,
+        -530,
+        -842,
+        -3884
+      ]
+    }
+  ]
+}

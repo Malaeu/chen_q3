@@ -1,0 +1,35 @@
+{
+  "classification": "FINITE_DIAGNOSTIC_NOT_RH",
+  "J1": {
+    "status": "PASS",
+    "source": "OEIS A084237, values pinned in PREREGISTRATION.json",
+    "max_x": 100000000,
+    "expected_M_10k": [1,-1,1,2,-23,-48,212,1037,1928],
+    "observed_M_10k": [1,-1,1,2,-23,-48,212,1037,1928]
+  },
+  "J2": {
+    "status": "PASS",
+    "source": "OEIS A090410, values pinned in PREREGISTRATION.json",
+    "max_x": 100000000,
+    "expected_L_10k": [1,0,-2,-14,-94,-288,-530,-842,-3884],
+    "observed_L_10k": [1,0,-2,-14,-94,-288,-530,-842,-3884],
+    "first_positive_906150258": "outside requested range; not run"
+  },
+  "J4": {
+    "status": "PASS",
+    "plant": "P(x)=0.05*(x^0.8*cos(7*log(x))-1)",
+    "analytic_prefix": "P(x) is the integral from 1 of the registered derivative; exact analytic P^2 and M0 cross integrals per integer step",
+    "plant_limit": 10000000,
+    "ols_range": [100000,10000000],
+    "plant_grid_points": 601,
+    "ols_points": 201,
+    "ols_logW_vs_logX_slope": 0.420080336635328122075,
+    "required_slope": 0.4,
+    "expected_leading_envelope": "0.6-1/log(X), about 0.513 to 0.538 on the tested endpoints"
+  },
+  "full_limits": {"S0": 100000000, "S4_each_seed": 100000000, "S5": 100000000},
+  "S4_seeds": [4401,4402,4403,4404,4405],
+  "sampling": {"grid_points": 701, "samples_per_decade": 1000, "sample_count": 8000, "sample_statistic": "population variance; linearly interpolated quantiles (type 7)"},
+  "numeric_status": "long-double floating-point diagnostic; not an interval certificate",
+  "truncations": ["Liouville first positive at 906150258 not run; above registered maximum", "J4 planted series ends at 10000000, the full registered slope-check endpoint; baseline S0 continues to 100000000"]
+}

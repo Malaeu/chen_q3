@@ -1,0 +1,1087 @@
+{
+  "code_sha256": {
+    "fake_systems.cpp": "c163f89e7662c32d313badb5a28dde0af1d5f2361b28faa30e7b9961aa10404b",
+    "run_fake.py": "04b1cd6703813d49aa49cfbcfba3c2fb8fcfb75a85a3142dba9f40109445c4b9"
+  },
+  "density_scope": "power_density and adjacent_density_drift are finite-range observations; rho_hat remains a fit over [1, 1e7], not a proved limit.",
+  "pre_run_grid_validation": {
+    "grid_first": 10.0,
+    "grid_last": 10000000.0,
+    "grid_rows": 601,
+    "grid_strictly_increasing": true,
+    "sample_rows": 7000,
+    "samples_per_decade": {
+      "0": 1000,
+      "1": 1000,
+      "2": 1000,
+      "3": 1000,
+      "4": 1000,
+      "5": 1000,
+      "6": 1000,
+      "7": 0
+    },
+    "status": "PASS"
+  },
+  "preregistration_pin_validation": {
+    "current_prereg_matches_pinned_git_show": true,
+    "head_at_run": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+    "pinned_commit_is_ancestor": true,
+    "pinned_prereg_commit": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+    "prereg_path": "docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/PREREGISTRATION.json",
+    "repo_root": "/private/tmp/q3-ablation-fake"
+  },
+  "preregistration_sha256": "0bc13b1c9997132e0c24e7552c4afcb54f15d651c04163ed41292a7fb482fd58",
+  "production_limit": 10000000,
+  "production_runs": [
+    {
+      "adjacent_density_drift": {
+        "1": -0.04999999999999993,
+        "2": 0.01100000000000001,
+        "3": 0.0020999999999999908,
+        "4": 0.0030599999999999516,
+        "5": -0.0005570000000000297,
+        "6": -3.1200000000009e-05
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 2,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 2474510,
+      "files": [
+        "S1_seed1101.csv",
+        "S1_seed1101_samples.csv",
+        "S1_seed1101_decades.csv"
+      ],
+      "generator_count": 664447,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.33962237497325987,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.6,
+        "100": 0.55,
+        "1000": 0.561,
+        "10000": 0.5631,
+        "100000": 0.56616,
+        "1000000": 0.565603,
+        "10000000": 0.5655718
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 0.5655718,
+      "seed": 1101,
+      "semigroup_objects": 5655718,
+      "system": "S1",
+      "wall_seconds": 0.320578208,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0.28,
+        "2": -0.0010000000000000009,
+        "3": 0.030200000000000005,
+        "4": 0.008579999999999921,
+        "5": 0.0006810000000000427,
+        "6": 0.00132270000000001
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 5,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 2680321,
+      "files": [
+        "S1_seed1102.csv",
+        "S1_seed1102_samples.csv",
+        "S1_seed1102_decades.csv"
+      ],
+      "generator_count": 665305,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.40542779210954905,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.4,
+        "100": 0.68,
+        "1000": 0.679,
+        "10000": 0.7092,
+        "100000": 0.71778,
+        "1000000": 0.718461,
+        "10000000": 0.7197837
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 0.7197837,
+      "seed": 1102,
+      "semigroup_objects": 7197837,
+      "system": "S1",
+      "wall_seconds": 0.385156666,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": -0.10999999999999999,
+        "2": -0.039999999999999925,
+        "3": 0.01089999999999991,
+        "4": -0.0008699999999999264,
+        "5": 0.0008139999999999814,
+        "6": -0.00039690000000003334
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 5,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 2710097,
+      "files": [
+        "S1_seed1103.csv",
+        "S1_seed1103_samples.csv",
+        "S1_seed1103_decades.csv"
+      ],
+      "generator_count": 664612,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.32434154197108,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.7,
+        "100": 0.59,
+        "1000": 0.55,
+        "10000": 0.5609,
+        "100000": 0.56003,
+        "1000000": 0.560844,
+        "10000000": 0.5604471
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 0.5604471,
+      "seed": 1103,
+      "semigroup_objects": 5604471,
+      "system": "S1",
+      "wall_seconds": 0.304784667,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": -0.07999999999999996,
+        "2": 0.028000000000000025,
+        "3": 0.0038999999999999035,
+        "4": 0.0023500000000000743,
+        "5": 0.0012440000000000229,
+        "6": 5.289999999991135e-05
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 48,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 2412245,
+      "files": [
+        "S1_seed1104.csv",
+        "S1_seed1104_samples.csv",
+        "S1_seed1104_decades.csv"
+      ],
+      "generator_count": 665951,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.32369962497614324,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.6,
+        "100": 0.52,
+        "1000": 0.548,
+        "10000": 0.5519,
+        "100000": 0.55425,
+        "1000000": 0.555494,
+        "10000000": 0.5555469
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 0.5555469,
+      "seed": 1104,
+      "semigroup_objects": 5555469,
+      "system": "S1",
+      "wall_seconds": 0.304867583,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": -0.12,
+        "2": -0.015000000000000013,
+        "3": 0.028100000000000014,
+        "4": 0.0024399999999999977,
+        "5": 0.001064000000000065,
+        "6": 0.00033399999999994545
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 3,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 2418981,
+      "files": [
+        "S1_seed1105.csv",
+        "S1_seed1105_samples.csv",
+        "S1_seed1105_decades.csv"
+      ],
+      "generator_count": 665377,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.3386216249782592,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.7,
+        "100": 0.58,
+        "1000": 0.565,
+        "10000": 0.5931,
+        "100000": 0.59554,
+        "1000000": 0.596604,
+        "10000000": 0.596938
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 0.596938,
+      "seed": 1105,
+      "semigroup_objects": 5969380,
+      "system": "S1",
+      "wall_seconds": 0.319763792,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": -0.0010000000000000009,
+        "3": 0.01319999999999999,
+        "4": -0.00038000000000004697,
+        "5": 0.0014000000000000679,
+        "6": 0.00023599999999990295
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 12,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 3883871,
+      "files": [
+        "S2_y100_seed2201.csv",
+        "S2_y100_seed2201_samples.csv",
+        "S2_y100_seed2201_decades.csv"
+      ],
+      "generator_count": 665045,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.5819533340400085,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 0.999,
+        "10000": 1.0122,
+        "100000": 1.01182,
+        "1000000": 1.01322,
+        "10000000": 1.013456
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.013456,
+      "seed": 2201,
+      "semigroup_objects": 10134560,
+      "system": "S2",
+      "wall_seconds": 0.556371875,
+      "y": 100
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0.08400000000000007,
+        "3": 0.02729999999999988,
+        "4": 0.007120000000000015,
+        "5": 0.003978999999999955,
+        "6": 0.0010320999999999803
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 21,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 3894161,
+      "files": [
+        "S2_y100_seed2202.csv",
+        "S2_y100_seed2202_samples.csv",
+        "S2_y100_seed2202_decades.csv"
+      ],
+      "generator_count": 665061,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6390767500270158,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1.084,
+        "10000": 1.1113,
+        "100000": 1.11842,
+        "1000000": 1.122399,
+        "10000000": 1.1234311
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.1234311,
+      "seed": 2202,
+      "semigroup_objects": 11234311,
+      "system": "S2",
+      "wall_seconds": 0.612998208,
+      "y": 100
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0.04600000000000004,
+        "3": 0.0045999999999999375,
+        "4": 0.00499000000000005,
+        "5": 0.0007660000000000444,
+        "6": -0.00016020000000005474
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 12,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 3887801,
+      "files": [
+        "S2_y100_seed2203.csv",
+        "S2_y100_seed2203_samples.csv",
+        "S2_y100_seed2203_decades.csv"
+      ],
+      "generator_count": 663914,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6025842500384897,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1.046,
+        "10000": 1.0506,
+        "100000": 1.05559,
+        "1000000": 1.056356,
+        "10000000": 1.0561958
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0561958,
+      "seed": 2203,
+      "semigroup_objects": 10561958,
+      "system": "S2",
+      "wall_seconds": 0.576616917,
+      "y": 100
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0,
+        "3": 0.008899999999999908,
+        "4": 0.0023300000000001653,
+        "5": 0.0010349999999998971,
+        "6": 5.389999999994011e-05
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 5,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 4683105,
+      "files": [
+        "S2_y1000_seed2201.csv",
+        "S2_y1000_seed2201_samples.csv",
+        "S2_y1000_seed2201_decades.csv"
+      ],
+      "generator_count": 665055,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6083207500632852,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1,
+        "10000": 1.0089,
+        "100000": 1.01123,
+        "1000000": 1.012265,
+        "10000000": 1.0123189
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0123189,
+      "seed": 2201,
+      "semigroup_objects": 10123189,
+      "system": "S2",
+      "wall_seconds": 0.578723791,
+      "y": 1000
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0,
+        "3": 0.01869999999999994,
+        "4": 0.0023699999999999832,
+        "5": 0.0019340000000001023,
+        "6": 0.0004846000000000572
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 6,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 4694473,
+      "files": [
+        "S2_y1000_seed2202.csv",
+        "S2_y1000_seed2202_samples.csv",
+        "S2_y1000_seed2202_decades.csv"
+      ],
+      "generator_count": 665051,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6168268750188872,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1,
+        "10000": 1.0187,
+        "100000": 1.02107,
+        "1000000": 1.023004,
+        "10000000": 1.0234886
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0234886,
+      "seed": 2202,
+      "semigroup_objects": 10234886,
+      "system": "S2",
+      "wall_seconds": 0.588861083,
+      "y": 1000
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0,
+        "3": 0.008299999999999974,
+        "4": 0.0024699999999999722,
+        "5": 0.001116000000000117,
+        "6": -0.00010940000000014827
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 6,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 4702097,
+      "files": [
+        "S2_y1000_seed2203.csv",
+        "S2_y1000_seed2203_samples.csv",
+        "S2_y1000_seed2203_decades.csv"
+      ],
+      "generator_count": 663944,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6037289999658242,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1,
+        "10000": 1.0083,
+        "100000": 1.01077,
+        "1000000": 1.011886,
+        "10000000": 1.0117766
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0117766,
+      "seed": 2203,
+      "semigroup_objects": 10117766,
+      "system": "S2",
+      "wall_seconds": 0.574826458,
+      "y": 1000
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0.004010000000000069,
+        "5": 0.00024299999999999322,
+        "6": 2.1399999999838215e-05
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 4,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 6074402,
+      "files": [
+        "S2_y10000_seed2201.csv",
+        "S2_y10000_seed2201_samples.csv",
+        "S2_y10000_seed2201_decades.csv"
+      ],
+      "generator_count": 665065,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6028695409186184,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1,
+        "10000": 1,
+        "100000": 1.00401,
+        "1000000": 1.004253,
+        "10000000": 1.0042744
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0042744,
+      "seed": 2201,
+      "semigroup_objects": 10042744,
+      "system": "S2",
+      "wall_seconds": 0.569631792,
+      "y": 10000
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0.0029600000000000737,
+        "5": 0.0012889999999998736,
+        "6": 0.0003531000000001061
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 3,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 6068762,
+      "files": [
+        "S2_y10000_seed2202.csv",
+        "S2_y10000_seed2202_samples.csv",
+        "S2_y10000_seed2202_decades.csv"
+      ],
+      "generator_count": 664984,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6080747919622809,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1,
+        "10000": 1,
+        "100000": 1.00296,
+        "1000000": 1.004249,
+        "10000000": 1.0046021
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0046021,
+      "seed": 2202,
+      "semigroup_objects": 10046021,
+      "system": "S2",
+      "wall_seconds": 0.574469625,
+      "y": 10000
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0.003069999999999906,
+        "5": 0.0011410000000000586,
+        "6": -0.00012860000000003424
+      },
+      "boundary_groups_within_32_ulp": 1,
+      "boundary_objects_within_32_ulp": 3,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 6086804,
+      "files": [
+        "S2_y10000_seed2203.csv",
+        "S2_y10000_seed2203_samples.csv",
+        "S2_y10000_seed2203_decades.csv"
+      ],
+      "generator_count": 663959,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0,
+      "observed_wall_seconds_including_python_validation": 0.6220500828931108,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1,
+        "100": 1,
+        "1000": 1,
+        "10000": 1,
+        "100000": 1.00307,
+        "1000000": 1.004211,
+        "10000000": 1.0040824
+      },
+      "prime_scan_limit": 0,
+      "rho_hat_finite_only": 1.0040824,
+      "seed": 2203,
+      "semigroup_objects": 10040824,
+      "system": "S2",
+      "wall_seconds": 0.589528166,
+      "y": 10000
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0.1399999999999999,
+        "2": -0.006999999999999895,
+        "3": -0.0023000000000000798,
+        "4": 0.00021000000000004349,
+        "5": -0.00016899999999997473,
+        "6": 1.2299999999965117e-05
+      },
+      "boundary_groups_within_32_ulp": 0,
+      "boundary_objects_within_32_ulp": 0,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 9307533,
+      "files": [
+        "S3_seed3301.csv",
+        "S3_seed3301_samples.csv",
+        "S3_seed3301_decades.csv"
+      ],
+      "generator_count": 664631,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0.8986164536327124,
+      "observed_wall_seconds_including_python_validation": 0.5471727909753099,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.8,
+        "100": 0.94,
+        "1000": 0.933,
+        "10000": 0.9307,
+        "100000": 0.93091,
+        "1000000": 0.930741,
+        "10000000": 0.9307533
+      },
+      "prime_scan_limit": 10062432,
+      "rho_hat_finite_only": 0.9307533,
+      "seed": 3301,
+      "semigroup_objects": 9307533,
+      "system": "S3",
+      "wall_seconds": 0.504389208,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0.08999999999999997,
+        "2": 0.0050000000000000044,
+        "3": 0.0016000000000000458,
+        "4": 0.0009199999999999209,
+        "5": 0.0001220000000000665,
+        "6": 1.7900000000015126e-05
+      },
+      "boundary_groups_within_32_ulp": 0,
+      "boundary_objects_within_32_ulp": 0,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 9976599,
+      "files": [
+        "S3_seed3302.csv",
+        "S3_seed3302_samples.csv",
+        "S3_seed3302_decades.csv"
+      ],
+      "generator_count": 664636,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 0.23818936757743359,
+      "observed_wall_seconds_including_python_validation": 0.5861567499814555,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 0.9,
+        "100": 0.99,
+        "1000": 0.995,
+        "10000": 0.9966,
+        "100000": 0.99752,
+        "1000000": 0.997642,
+        "10000000": 0.9976599
+      },
+      "prime_scan_limit": 10062432,
+      "rho_hat_finite_only": 0.9976599,
+      "seed": 3302,
+      "semigroup_objects": 9976599,
+      "system": "S3",
+      "wall_seconds": 0.54139625,
+      "y": 0
+    },
+    {
+      "adjacent_density_drift": {
+        "1": 0.010000000000000009,
+        "2": 0.008999999999999897,
+        "3": 0.007100000000000106,
+        "4": -0.0012700000000001044,
+        "5": 0.0005250000000001087,
+        "6": -0.00010020000000010576
+      },
+      "boundary_groups_within_32_ulp": 0,
+      "boundary_objects_within_32_ulp": 0,
+      "boundary_ulps_at_limit": 1.862645149230957e-09,
+      "distinct_products": 11252548,
+      "files": [
+        "S3_seed3303.csv",
+        "S3_seed3303_samples.csv",
+        "S3_seed3303_decades.csv"
+      ],
+      "generator_count": 664607,
+      "limit": 10000000,
+      "minimum_product_gap_to_limit": 1.5390344187617302,
+      "observed_wall_seconds_including_python_validation": 0.6621585419634357,
+      "output_validation": {
+        "N_limit_matches_semigroup_objects": true,
+        "decade_rows": 7,
+        "grid_max_is_limit": true,
+        "grid_rows": 601,
+        "grid_strictly_increasing": true,
+        "sample_rows": 7000,
+        "samples_per_decade": {
+          "0": 1000,
+          "1": 1000,
+          "2": 1000,
+          "3": 1000,
+          "4": 1000,
+          "5": 1000,
+          "6": 1000
+        }
+      },
+      "power_density": {
+        "10": 1.1,
+        "100": 1.11,
+        "1000": 1.119,
+        "10000": 1.1261,
+        "100000": 1.12483,
+        "1000000": 1.125355,
+        "10000000": 1.1252548
+      },
+      "prime_scan_limit": 10062432,
+      "rho_hat_finite_only": 1.1252548,
+      "seed": 3303,
+      "semigroup_objects": 11252548,
+      "system": "S3",
+      "wall_seconds": 0.611890583,
+      "y": 0
+    }
+  ],
+  "rho_hat_note": "rho_hat=N(1e7)/1e7 is a finite-range fit used only for count_error; it is not an asymptotic density or RH-quality claim.",
+  "schema": "prime_property_fake_checks.v1",
+  "small_case_judges": {
+    "actual_S1_small_case": {
+      "cxx_summary": {
+        "distinct_products": 188,
+        "generator_count": 91,
+        "objects": 283
+      },
+      "distinct_numeric_products": 188,
+      "generator_count": 91,
+      "generator_draw": {
+        "generator_count": 91,
+        "limit": 500,
+        "prime_scan_limit": 0,
+        "seed": 1101,
+        "system": "S1"
+      },
+      "independent_nested_exponent_vectors": "PASS",
+      "label": "actual_S1_seed1101",
+      "limit": 500,
+      "seed": 1101,
+      "semigroup_objects_with_multiplicity": 283
+    },
+    "adversarial_collisions": {
+      "generators_2_3_6": {
+        "cxx_summary": {
+          "distinct_products": 22,
+          "generator_count": 3,
+          "objects": 35
+        },
+        "distinct_numeric_products": 22,
+        "generator_count": 3,
+        "independent_nested_exponent_vectors": "PASS",
+        "label": "collision_2_3_6",
+        "limit": 128,
+        "product_6_N_mu": {
+          "N": 2,
+          "mu": 0
+        },
+        "semigroup_objects_with_multiplicity": 35
+      },
+      "generators_2_4": {
+        "cxx_summary": {
+          "distinct_products": 7,
+          "generator_count": 2,
+          "objects": 16
+        },
+        "distinct_numeric_products": 7,
+        "generator_count": 2,
+        "independent_nested_exponent_vectors": "PASS",
+        "label": "collision_2_4",
+        "limit": 64,
+        "product_4_N_mu": {
+          "N": 2,
+          "mu": -1
+        },
+        "semigroup_objects_with_multiplicity": 16
+      }
+    },
+    "contract": "each generator-index exponent vector contributes one N object; mu is zero if any exponent >=2, otherwise (-1)^total_degree; equal numeric products aggregate",
+    "finite_density_diagnostic_only": {
+      "N_over_x": {
+        "10": {
+          "N": 6,
+          "N_over_x": 0.6
+        },
+        "100": {
+          "N": 55,
+          "N_over_x": 0.55
+        },
+        "500": {
+          "N": 283,
+          "N_over_x": 0.566
+        }
+      },
+      "asymptotic_convergence_claimed": false,
+      "interpretation": "These small finite-X values check neither asymptotic convergence nor RH-quality counting.",
+      "system": "actual S1 seed 1101"
+    },
+    "status": "PASS"
+  },
+  "status": "ALL_17_RUNS_PASS",
+  "task_commit": "089f59e5498eecb6c2b122f411c6c78e75110da8",
+  "toolchain": {
+    "command": [
+      "c++",
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "/private/tmp/q3-ablation-fake/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/fake_systems.cpp",
+      "-o",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3-ablation-fake-t40q52ig/fake_systems"
+    ],
+    "compiler_version": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+    "source_sha256": "c163f89e7662c32d313badb5a28dde0af1d5f2361b28faa30e7b9961aa10404b"
+  },
+  "updated_utc": "2026-11-06T06:44:47.433217+00:00"
+}

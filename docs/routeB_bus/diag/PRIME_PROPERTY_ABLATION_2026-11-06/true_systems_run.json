@@ -1,0 +1,200 @@
+{
+  "S4_seeds": [
+    4401,
+    4402,
+    4403,
+    4404,
+    4405
+  ],
+  "checks_file": "/private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/true_systems_checks.json",
+  "classification": "FINITE_DIAGNOSTIC_NOT_RH",
+  "commands": [
+    [
+      "/usr/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "/private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/true_systems.cpp",
+      "-o",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_true_systems_55774"
+    ],
+    [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_true_systems_55774",
+      "--self-test"
+    ],
+    [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_true_systems_55774",
+      "run",
+      "/private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06"
+    ]
+  ],
+  "compiler": "/usr/bin/g++",
+  "compiler_version": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+  "completed_utc": "2026-11-06T06:38:13.041794+00:00",
+  "elapsed_seconds": {
+    "compile": 0.5247697910526767,
+    "production": 1.8968278339598328,
+    "self_test": 0.4621760410955176,
+    "wall_clock": 2.931918
+  },
+  "head": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+  "judges": {
+    "J1": "PASS",
+    "J2": "PASS",
+    "J4": "PASS"
+  },
+  "limits": {
+    "S0": 100000000,
+    "S4_each_seed": 100000000,
+    "S5": 100000000
+  },
+  "output_directory": "/private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06",
+  "postflight": {
+    "checks_file_valid_json": true,
+    "csv": {
+      "S0": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      },
+      "S0_planted": {
+        "checks": {
+          "header": true,
+          "rows": true
+        },
+        "header": [
+          "X",
+          "M",
+          "W"
+        ],
+        "rows": 601
+      },
+      "S4_seed4401": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      },
+      "S4_seed4402": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      },
+      "S4_seed4403": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      },
+      "S4_seed4404": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      },
+      "S4_seed4405": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      },
+      "S5": {
+        "checks": {
+          "decade_metrics": true,
+          "decade_rows": true,
+          "grid_header": true,
+          "grid_rows": true,
+          "sample_header": true,
+          "sample_rows": true
+        },
+        "decade_rows": 9,
+        "grid_rows": 701,
+        "sample_rows": 8000
+      }
+    }
+  },
+  "pre_run_commit": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+  "preregistration_blob": "2bdd79d99c2474303ee2f5a5a5bb4c08a763f40d",
+  "preregistration_commit": "8e2e29a866600c16cf38127ff5325ac97dc2880e",
+  "preregistration_sha256": "0bc13b1c9997132e0c24e7552c4afcb54f15d651c04163ed41292a7fb482fd58",
+  "production_completed_utc": "2026-11-06T06:38:13.027324+00:00",
+  "production_started_utc": "2026-11-06T06:38:11.130384+00:00",
+  "repo": "/private/tmp/q3-ablation-true",
+  "self_tests": {
+    "command": [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_true_systems_55774",
+      "--self-test"
+    ],
+    "coverage": [
+      "segmented Mobius through n=50000 against trial-factor brute force",
+      "segmented Liouville through n=50000 against trial-factor brute force",
+      "five seeded squarefree sign streams through n=50000 against brute force",
+      "exact integer-step W against independent prefix accumulation",
+      "J4 analytic cross and P-squared integrals against 20000-panel Simpson quadrature",
+      "registered log grid and midpoint sample counts"
+    ],
+    "status": "PASS"
+  },
+  "source_sha256": "1e1ef07c49e80d59e918c6df550eea6df5a80d7bf49eff414c078da1a00d30bc",
+  "started_utc": "2026-11-06T06:38:10.109876+00:00",
+  "status": "PASS",
+  "truncations": [
+    "Liouville first positive at 906150258 is above the registered 100000000 limit and was not run.",
+    "J4 planted output ends at 10000000, the full registered slope-check endpoint; baseline S0 continues to 100000000."
+  ],
+  "wrapper_command": [
+    "uv",
+    "run",
+    "--script",
+    "/private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/run_true.py",
+    "--full",
+    "--output-directory",
+    "/private/tmp/q3-ablation-true/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06"
+  ]
+}
