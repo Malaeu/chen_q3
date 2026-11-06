@@ -1,0 +1,65 @@
+{
+  "checkpoints": [
+    {
+      "M_exact_string_match": true,
+      "M_printed": "-1",
+      "power": 1
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "1",
+      "power": 2
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "2",
+      "power": 3
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "-23",
+      "power": 4
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "-48",
+      "power": 5
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "212",
+      "power": 6
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "1037",
+      "W_exact_string_match": true,
+      "W_printed": "0.107270521494129758566",
+      "power": 7
+    },
+    {
+      "M_exact_string_match": true,
+      "M_printed": "1928",
+      "power": 8
+    }
+  ],
+  "elapsed_seconds": 0.007131458027288318,
+  "judge": "J2_T0_replay",
+  "old_true_runner_output_sha256": "57ad84b0063e75c88ac46bbac58d982b203d3cd99971fe875af34a1d272f0ad3",
+  "predecessor_s0_sha256": "57ad84b0063e75c88ac46bbac58d982b203d3cd99971fe875af34a1d272f0ad3",
+  "rerun_checks_sha256": "fcdf4e725e31f56b0bb9217bf53fc3788ca2f0fac921043403d032540193a990",
+  "rerun_power_checkpoints_M_10k": [
+    1,
+    -1,
+    1,
+    2,
+    -23,
+    -48,
+    212,
+    1037,
+    1928
+  ],
+  "source_csv_reuse": true,
+  "status": "PASS",
+  "t0_csv_sha256": "57ad84b0063e75c88ac46bbac58d982b203d3cd99971fe875af34a1d272f0ad3"
+}

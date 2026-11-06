@@ -1,0 +1,25 @@
+{
+  "F1": {
+    "coefficient_precision_threshold": "1e-12 relative to max(1,abs(reference))",
+    "cpp_source_sha256": "4ef195d9aaf0a96cd1b09149ab74c020cfa8ab8da520f36445b6cb40d4be2b88",
+    "cpp_vs_mpmath_max_scaled_coefficient_error": "2.9616518774135522054e-16",
+    "max_abs_convolution_residual": "3.1626593829691569673e-81",
+    "n_max": 500,
+    "zero_support_convention": "production counts b(n) nonzero iff abs(b(n))>64*long_double_epsilon*sum_abs_recurrence_terms; zero term scale yields exact-zero cutoff"
+  },
+  "T1": {
+    "integer_convolution_max_abs_residual": 0,
+    "n_max": 500
+  },
+  "T2": {
+    "inverse_local_factors": "b(p)=-tau(p)/p^(11/2), b(p^2)=1, b(p^e)=0 for e>=3",
+    "max_abs_convolution_residual": "4.2168791772922092897e-81",
+    "n_max": 200,
+    "normalization": "tau(n)/n^(11/2)",
+    "tau_source": "exact fmpz_series Euler pentagonal product power 24 times q"
+  },
+  "classification": "FINITE_INVERSION_AND_SMALL_PRECISION_CHECK",
+  "elapsed_seconds": 0.01746583404019475,
+  "judge": "J4_integer_inverse_convolutions",
+  "status": "PASS"
+}

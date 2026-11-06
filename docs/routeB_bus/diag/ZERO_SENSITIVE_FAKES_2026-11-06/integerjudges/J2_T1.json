@@ -1,0 +1,9 @@
+{
+  "elapsed_seconds": 0.10485054098535329,
+  "independent_method": "per-n trial factorization with square-factor detection, then chi_4 residue",
+  "input_sha256": "75bf002eb0c46e345c39b6e091bc9b12798b1df83dc8a8af5cafcb47c85cffe2",
+  "judge": "J2_T1_trial_factor",
+  "n_max": 50000,
+  "rows_checked": 50000,
+  "status": "PASS"
+}

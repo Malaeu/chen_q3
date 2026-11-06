@@ -1,0 +1,243 @@
+{
+  "T2_tau_generation": {
+    "classification": "EXACT_TAU_SERIES_WITH_BINARY64_NORMALIZED_PRIME_WEIGHTS",
+    "coefficient_indices_used": "prime p only; exact tau(p) converted to binary64 before division by p^5.5",
+    "elapsed_seconds": 3.317375082988292,
+    "limit": 10000000,
+    "normalization": "b(p)=-tau(p)/p^(11/2), b(p^2)=1, b(p^e)=0 for e>=3",
+    "output_bytes": 80000008,
+    "output_lifecycle": "temporary binary consumed by the integer C++ run and removed with its temporary directory",
+    "output_path": "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin",
+    "output_sha256": "e8b9a7e702ad05767f1638231576a3e154a91ff0b978f1ece1a19b72fd9e7d91",
+    "prime_count": 664579,
+    "ru_maxrss_platform_units_after": 3870883840,
+    "ru_maxrss_platform_units_before": 24657920,
+    "series": "fmpz_series Euler pentagonal product raised exactly to 24, then multiplied by q",
+    "series_cap": 10000001,
+    "status": "PASS"
+  },
+  "classification": "FINITE_DIAGNOSTIC_NOT_RH",
+  "commands": [
+    [
+      "/usr/bin/g++",
+      "-O3",
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-pedantic",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_systems.cpp",
+      "-o",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893"
+    ],
+    [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893",
+      "--self-test"
+    ],
+    [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893",
+      "f1-prefix",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/F1_small_inverse.csv",
+      "500"
+    ],
+    [
+      "/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py",
+      "--phase",
+      "preproduction",
+      "--output-directory",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06",
+      "--f1-small-csv",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/F1_small_inverse.csv"
+    ],
+    [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893",
+      "trial-prefix",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/T1_trial_prefix_50000.csv",
+      "50000"
+    ],
+    [
+      "/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py",
+      "--phase",
+      "j2-t1",
+      "--output-directory",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06",
+      "--t1-trial-csv",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/T1_trial_prefix_50000.csv"
+    ],
+    [
+      "uv",
+      "run",
+      "--script",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/run_true.py",
+      "--full",
+      "--output-directory",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output"
+    ],
+    [
+      "/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py",
+      "--phase",
+      "j2-t0",
+      "--output-directory",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06",
+      "--t0-csv",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/T0.csv",
+      "--predecessor-s0-csv",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S0.csv",
+      "--rerun-s0-csv",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output/S0.csv",
+      "--rerun-checks-json",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output/true_systems_checks.json"
+    ],
+    [
+      "/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py",
+      "--phase",
+      "finalize",
+      "--output-directory",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06"
+    ],
+    [
+      "/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_tau.py",
+      "--limit",
+      "10000000",
+      "--output",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin",
+      "--receipt",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/T2_tau_generation.json"
+    ],
+    [
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893",
+      "run",
+      "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06",
+      "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin"
+    ]
+  ],
+  "compiler": "/usr/bin/g++",
+  "compiler_version": "Apple clang version 17.0.0 (clang-1700.6.4.2)",
+  "completed_utc": "2026-11-06T10:44:52.012516+00:00",
+  "elapsed_seconds": {
+    "F1_small_precision_input": 0.0031871250830590725,
+    "J1_and_J4_preproduction": 0.4098246250068769,
+    "J2_T0_exact_printed_replay": 0.029170708963647485,
+    "J2_T0_predecessor_true_runner_replay": 3.0237284579779953,
+    "J2_T1_independent_trial_factor": 0.12764341698493809,
+    "T1_trial_factor_input": 0.005715499981306493,
+    "T2_exact_tau_series_prime_weights": 3.4580214999150485,
+    "compile": 0.9931676660198718,
+    "judge_freeze": 0.020383500028401613,
+    "monotonic_wall_clock": 11.469238833989948,
+    "production": 2.5747080830624327,
+    "static_self_test": 0.6439092920627445,
+    "wall_clock": 11.469307
+  },
+  "head": "497a9105ae3cfe240dfe0bdf50404c4346cd4ab0",
+  "judges": {
+    "classification": "PRE_PRODUCTION_JUDGES_PASS",
+    "judges": {
+      "J1": {
+        "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J1.json",
+        "status": "PASS"
+      },
+      "J2_T0_replay": {
+        "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J2_T0.json",
+        "status": "PASS"
+      },
+      "J2_T1_trial_factor": {
+        "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J2_T1.json",
+        "status": "PASS"
+      },
+      "J4_integer_inverse_convolutions": {
+        "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J4.json",
+        "status": "PASS"
+      }
+    },
+    "status": "PASS"
+  },
+  "limits": {
+    "F1": 10000000,
+    "T0": 100000000,
+    "T1": 100000000,
+    "T2": 10000000
+  },
+  "normalization": {
+    "F1": "Dirichlet inverse of periodic Davenport-Heilbronn coefficients modulo 5",
+    "F1_zero_support": "abs(b(n))>64*long_double_epsilon*sum_abs_recurrence_terms; zero term scale yields exact-zero cutoff",
+    "T0": "mu(n)",
+    "T1": "mu(n)*chi4(n)",
+    "T2": "Dirichlet inverse of tau(n)/n^(11/2); b(p)=-tau(p)/p^(11/2), b(p^2)=1, b(p^e)=0 for e>=3",
+    "T2_zero_support": "computed long-double Euler product is nonzero; no additive cancellation, prime factors originate as binary64 normalized tau values",
+    "W": "raw M_b; exact integer-step integral with Kahan accumulation; no fitted bias subtraction",
+    "samples": "M/sqrt(x) and M/x are both retained"
+  },
+  "output_directory": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06",
+  "postflight": {
+    "F1": {
+      "grid_rows": 601,
+      "grid_sha256": "3cde85164aaee0ddba2db5baf82662ea9e25be3b7802bdcee963bc1ae62ad68d",
+      "probe_rows": 601,
+      "probe_sha256": "7f6cb97398a8ffecfeb2c0b0c4e692680e990414171ab85d8de3ba6d05dead28",
+      "sample_rows": 7000,
+      "sample_sha256": "0a2485c5b1608e673195706b3f89d84f5c73fe2a4c490b57b37f88173bbd7cee"
+    },
+    "F1_p5": {
+      "residue_pair_rows": 4,
+      "residue_pair_sha256": "54b2e9755594892778ece8938e9a1b142b85ad83175ea6afb1ed08e5ab979026",
+      "rows": 601,
+      "sha256": "03c3811535e329fc41acc451fa8c3f934377afab4b2227b77a122491065485e8"
+    },
+    "T0": {
+      "grid_rows": 701,
+      "grid_sha256": "57ad84b0063e75c88ac46bbac58d982b203d3cd99971fe875af34a1d272f0ad3",
+      "probe_rows": 701,
+      "probe_sha256": "ea998e761d71db634fdf96abe7d105661e18db7ae6734605cd9f53eff25d7dc5",
+      "sample_rows": 8000,
+      "sample_sha256": "350731011eb64a7b58cdc97d63a7eeda4de28bd70fab4f3ed04f354fdb44b542"
+    },
+    "T0_prime_p2": {
+      "rows": 12618,
+      "sha256": "b543250c06ef2c51d57ab1ec66ed3b1d482f44fb07877207560433d97e0716d2"
+    },
+    "T1": {
+      "grid_rows": 701,
+      "grid_sha256": "4db14bcafd1e6c06b89cd687f6ff227e7137a30fea21473b5ed254ccb533e25f",
+      "probe_rows": 701,
+      "probe_sha256": "922b33b57949b3db445a45b280e5452cfbe520b3c04a083b1389b13db8dc0826",
+      "sample_rows": 8000,
+      "sample_sha256": "1ed84ef13c0169db10dcadb98352edd5a917016b17c42da0510e54f42deea8de"
+    },
+    "T2": {
+      "grid_rows": 601,
+      "grid_sha256": "80fac4c1227dd047556f8e8818fbc6a3286c5b9af7da6b9cf85efaf8a2d95a2b",
+      "probe_rows": 601,
+      "probe_sha256": "87f8d4387c010294da5c55c2cd275ae479b75cba86894e59892eacb32cd5446a",
+      "sample_rows": 7000,
+      "sample_sha256": "75fbe92c622804174c697497cef122c8dd636a112574ab6ffb2fc405268ccc06"
+    }
+  },
+  "pre_run_commit": "497a9105ae3cfe240dfe0bdf50404c4346cd4ab0",
+  "preregistration_blob": "2168e7305e41cf32dcfaf5d6f1006512e7524baa",
+  "preregistration_sha256": "b4d81d7b484604f889c3a1ee3d61266341089fe334468ef0ccdb1e6595aadec8",
+  "production_completed_utc": "2026-11-06T10:44:51.987719+00:00",
+  "production_started_utc": "2026-11-06T10:44:49.412815+00:00",
+  "repo": "/private/tmp/q3-zero-integer",
+  "resource_plan": {
+    "F1": "SPF about 40 MiB plus long-double coefficient array (80-160 MiB by ABI)",
+    "P5": "Mertens residue and total prefixes about 80 MiB packed; temporary pre-pack copies can raise this near 160 MiB",
+    "T0_T1": "segmented Mobius and prime flags, approximately 6 MiB working arrays at 1 Mi-element blocks",
+    "T2": "SPF uint32 table about 40 MiB plus binary64 prime weights about 80 MiB",
+    "measure": "ru_maxrss is recorded as returned by the host runtime; units remain platform-defined"
+  },
+  "ru_maxrss_children_platform_units": 3951017984,
+  "source_sha256": {
+    "integer_judges.py": "16ff084b49472d52a9a5e9ff3865fa9efd23e46b53300a4a9d8e8f876c0bc8d8",
+    "integer_systems.cpp": "dbabaae0bc7e42ce1f50ad9d684e2c6348b90f7dd45474c125fc1faeefe64478",
+    "integer_tau.py": "00102922e8e7dcbc0f0aa7a3e938c792bddec3dc67d4de17dc117573bd5bb6ad",
+    "run_integer.py": "db3c6cee7d74de772dcb36717d60175e26fb6ac5559b74253893ee4ec5a4b168"
+  },
+  "started_utc": "2026-11-06T10:44:40.543209+00:00",
+  "status": "PASS",
+  "truncations": []
+}

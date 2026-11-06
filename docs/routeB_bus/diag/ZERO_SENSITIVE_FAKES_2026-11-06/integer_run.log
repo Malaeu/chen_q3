@@ -1,0 +1,228 @@
+PHASE compile command=["/usr/bin/g++", "-O3", "-std=c++17", "-Wall", "-Wextra", "-pedantic", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_systems.cpp", "-o", "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893"]
+COMMAND_DONE phase=compile exit=0 elapsed_s=0.993
+PHASE static_self_test command=["/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893", "--self-test"]
+SELF_TEST_PASS grids=701,601 kappa_formula=finite P5_small_pairs=PASS
+COMMAND_DONE phase=static_self_test exit=0 elapsed_s=0.644
+PHASE F1_small_precision_input command=["/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893", "f1-prefix", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/F1_small_inverse.csv", "500"]
+COMMAND_DONE phase=F1_small_precision_input exit=0 elapsed_s=0.003
+PHASE J1_and_J4_preproduction command=["/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py", "--phase", "preproduction", "--output-directory", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06", "--f1-small-csv", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/F1_small_inverse.csv"]
+JUDGE_PHASE_PASS phase=preproduction
+COMMAND_DONE phase=J1_and_J4_preproduction exit=0 elapsed_s=0.410
+PHASE T1_trial_factor_input command=["/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893", "trial-prefix", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/T1_trial_prefix_50000.csv", "50000"]
+COMMAND_DONE phase=T1_trial_factor_input exit=0 elapsed_s=0.006
+PHASE J2_T1_independent_trial_factor command=["/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py", "--phase", "j2-t1", "--output-directory", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06", "--t1-trial-csv", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/T1_trial_prefix_50000.csv"]
+JUDGE_PHASE_PASS phase=j2-t1
+COMMAND_DONE phase=J2_T1_independent_trial_factor exit=0 elapsed_s=0.128
+PHASE J2_T0_predecessor_true_runner_replay command=["uv", "run", "--script", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/scripts/run_true.py", "--full", "--output-directory", "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output"]
+PHASE compile start flags=-O3,-std=c++17,no-fast-math
+COMMAND_DONE exit=0 elapsed_s=0.523
+PHASE small_brute_checks start
+SELF_TEST_PASS brute_n=50000 checks=Mobius,Liouville,S4_5_seeds,exact_step_W,J4_analytic_vs_Simpson,grid cross_abs_error=3.1086245e-15 p2_abs_error=7.8062556e-18
+COMMAND_DONE exit=0 elapsed_s=0.499
+PHASE production start limits=S0,S4x5,S5:100000000
+PHASE prime_sieve start limit=100000000
+PHASE prime_sieve done prime_count=5761455 elapsed_s=0.189511
+PHASE segmented_stream start systems=S0,S4x5,S5 max=100000000 block=1048576
+PROGRESS systems=S0,S4x5,S5 n=5000000/100000000 pct=5.0 elapsed_s=0.2 eta_s=3.1
+PROGRESS systems=S0,S4x5,S5 n=10000000/100000000 pct=10.0 elapsed_s=0.3 eta_s=2.7
+PROGRESS systems=S0,S4x5,S5 n=15000000/100000000 pct=15.0 elapsed_s=0.4 eta_s=2.1
+PROGRESS systems=S0,S4x5,S5 n=20000000/100000000 pct=20.0 elapsed_s=0.5 eta_s=1.8
+PROGRESS systems=S0,S4x5,S5 n=25000000/100000000 pct=25.0 elapsed_s=0.5 eta_s=1.6
+PROGRESS systems=S0,S4x5,S5 n=30000000/100000000 pct=30.0 elapsed_s=0.6 eta_s=1.4
+PROGRESS systems=S0,S4x5,S5 n=35000000/100000000 pct=35.0 elapsed_s=0.7 eta_s=1.3
+PROGRESS systems=S0,S4x5,S5 n=40000000/100000000 pct=40.0 elapsed_s=0.8 eta_s=1.1
+PROGRESS systems=S0,S4x5,S5 n=45000000/100000000 pct=45.0 elapsed_s=0.8 eta_s=1.0
+PROGRESS systems=S0,S4x5,S5 n=50000000/100000000 pct=50.0 elapsed_s=0.9 eta_s=0.9
+PROGRESS systems=S0,S4x5,S5 n=55000000/100000000 pct=55.0 elapsed_s=1.0 eta_s=0.8
+PROGRESS systems=S0,S4x5,S5 n=60000000/100000000 pct=60.0 elapsed_s=1.1 eta_s=0.7
+PROGRESS systems=S0,S4x5,S5 n=65000000/100000000 pct=65.0 elapsed_s=1.1 eta_s=0.6
+PROGRESS systems=S0,S4x5,S5 n=70000000/100000000 pct=70.0 elapsed_s=1.2 eta_s=0.5
+PROGRESS systems=S0,S4x5,S5 n=75000000/100000000 pct=75.0 elapsed_s=1.3 eta_s=0.4
+PROGRESS systems=S0,S4x5,S5 n=80000000/100000000 pct=80.0 elapsed_s=1.4 eta_s=0.3
+PROGRESS systems=S0,S4x5,S5 n=85000000/100000000 pct=85.0 elapsed_s=1.5 eta_s=0.3
+PROGRESS systems=S0,S4x5,S5 n=90000000/100000000 pct=90.0 elapsed_s=1.5 eta_s=0.2
+PROGRESS systems=S0,S4x5,S5 n=95000000/100000000 pct=95.0 elapsed_s=1.6 eta_s=0.1
+PROGRESS systems=S0,S4x5,S5 n=100000000/100000000 pct=100.0 elapsed_s=1.7 eta_s=0.0
+JUDGES J1=PASS J2=PASS J4=PASS slope=0.420080336635 expected_envelope=[0.513141103619,0.537957931157]
+PHASE segmented_stream done elapsed_s=1.707072625 total_s=1.897359333
+COMMAND_DONE exit=0 elapsed_s=1.903
+RUN_COMPLETE status=PASS json=/private/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output/true_systems_run.json
+COMMAND_DONE phase=J2_T0_predecessor_true_runner_replay exit=0 elapsed_s=3.024
+PHASE J2_T0_exact_printed_replay command=["/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py", "--phase", "j2-t0", "--output-directory", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06", "--t0-csv", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/T0.csv", "--predecessor-s0-csv", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/PRIME_PROPERTY_ABLATION_2026-11-06/S0.csv", "--rerun-s0-csv", "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output/S0.csv", "--rerun-checks-json", "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_j2_6hpwmax7/old_true_runner_output/true_systems_checks.json"]
+JUDGE_PHASE_PASS phase=j2-t0
+COMMAND_DONE phase=J2_T0_exact_printed_replay exit=0 elapsed_s=0.029
+PHASE judge_freeze command=["/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_judges.py", "--phase", "finalize", "--output-directory", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06"]
+JUDGE_PHASE_PASS phase=finalize
+COMMAND_DONE phase=judge_freeze exit=0 elapsed_s=0.020
+PHASE T2_exact_tau_series_prime_weights command=["/Users/emalam/GitHub/rh_lean_01_2026/.venv/bin/python", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/scripts/integer_tau.py", "--limit", "10000000", "--output", "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin", "--receipt", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/T2_tau_generation.json"]
+PHASE tau_exact start limit=10000000 method=fmpz_series_euler_pentagonal_power24 series_cap=10000001 expected_weight_bytes=80000008
+PROGRESS tau_prime_index p=1000003/10000000 pct=10.0 elapsed_s=0.0 eta_s=0.3
+PROGRESS tau_prime_index p=2000003/10000000 pct=20.0 elapsed_s=0.1 eta_s=0.3
+PROGRESS tau_prime_index p=3000017/10000000 pct=30.0 elapsed_s=0.1 eta_s=0.3
+PROGRESS tau_prime_index p=4000037/10000000 pct=40.0 elapsed_s=0.1 eta_s=0.2
+PROGRESS tau_prime_index p=5000011/10000000 pct=50.0 elapsed_s=0.2 eta_s=0.2
+PROGRESS tau_prime_index p=6000011/10000000 pct=60.0 elapsed_s=0.2 eta_s=0.1
+PROGRESS tau_prime_index p=7000003/10000000 pct=70.0 elapsed_s=0.3 eta_s=0.1
+PROGRESS tau_prime_index p=8000009/10000000 pct=80.0 elapsed_s=0.3 eta_s=0.1
+PROGRESS tau_prime_index p=9000011/10000000 pct=90.0 elapsed_s=0.3 eta_s=0.0
+TAU_GENERATION_RECEIPT {"classification": "EXACT_TAU_SERIES_WITH_BINARY64_NORMALIZED_PRIME_WEIGHTS", "coefficient_indices_used": "prime p only; exact tau(p) converted to binary64 before division by p^5.5", "elapsed_seconds": 3.317375082988292, "limit": 10000000, "normalization": "b(p)=-tau(p)/p^(11/2), b(p^2)=1, b(p^e)=0 for e>=3", "output_bytes": 80000008, "output_lifecycle": "temporary binary consumed by the integer C++ run and removed with its temporary directory", "output_path": "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin", "output_sha256": "e8b9a7e702ad05767f1638231576a3e154a91ff0b978f1ece1a19b72fd9e7d91", "prime_count": 664579, "ru_maxrss_platform_units_after": 3870883840, "ru_maxrss_platform_units_before": 24657920, "series": "fmpz_series Euler pentagonal product raised exactly to 24, then multiplied by q", "series_cap": 10000001, "status": "PASS"}
+COMMAND_DONE phase=T2_exact_tau_series_prime_weights exit=0 elapsed_s=3.458
+PHASE integer_systems_full_limits command=["/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_integer_systems_10893", "run", "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06", "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin"]
+PHASE integer_true start systems=T0,T1,P2-prime-reference max=100000000
+PROGRESS system=T1+T0+P2 n=5000000/100000000 pct=5.0 elapsed_s=0.1 eta_s=2.1
+PROGRESS system=T1+T0+P2 n=10000000/100000000 pct=10.0 elapsed_s=0.2 eta_s=1.8
+PROGRESS system=T1+T0+P2 n=15000000/100000000 pct=15.0 elapsed_s=0.3 eta_s=1.6
+PROGRESS system=T1+T0+P2 n=20000000/100000000 pct=20.0 elapsed_s=0.4 eta_s=1.5
+PROGRESS system=T1+T0+P2 n=25000000/100000000 pct=25.0 elapsed_s=0.4 eta_s=1.3
+PROGRESS system=T1+T0+P2 n=30000000/100000000 pct=30.0 elapsed_s=0.5 eta_s=1.2
+PROGRESS system=T1+T0+P2 n=35000000/100000000 pct=35.0 elapsed_s=0.6 eta_s=1.1
+PROGRESS system=T1+T0+P2 n=40000000/100000000 pct=40.0 elapsed_s=0.7 eta_s=1.0
+PROGRESS system=T1+T0+P2 n=45000000/100000000 pct=45.0 elapsed_s=0.8 eta_s=0.9
+PROGRESS system=T1+T0+P2 n=50000000/100000000 pct=50.0 elapsed_s=0.9 eta_s=0.9
+PROGRESS system=T1+T0+P2 n=55000000/100000000 pct=55.0 elapsed_s=0.9 eta_s=0.8
+PROGRESS system=T1+T0+P2 n=60000000/100000000 pct=60.0 elapsed_s=1.0 eta_s=0.7
+PROGRESS system=T1+T0+P2 n=65000000/100000000 pct=65.0 elapsed_s=1.1 eta_s=0.6
+PROGRESS system=T1+T0+P2 n=70000000/100000000 pct=70.0 elapsed_s=1.2 eta_s=0.5
+PROGRESS system=T1+T0+P2 n=75000000/100000000 pct=75.0 elapsed_s=1.3 eta_s=0.4
+PROGRESS system=T1+T0+P2 n=80000000/100000000 pct=80.0 elapsed_s=1.3 eta_s=0.3
+PROGRESS system=T1+T0+P2 n=85000000/100000000 pct=85.0 elapsed_s=1.4 eta_s=0.3
+PROGRESS system=T1+T0+P2 n=90000000/100000000 pct=90.0 elapsed_s=1.5 eta_s=0.2
+PROGRESS system=T1+T0+P2 n=95000000/100000000 pct=95.0 elapsed_s=1.6 eta_s=0.1
+PROGRESS system=T1+T0+P2 n=100000000/100000000 pct=100.0 elapsed_s=1.7 eta_s=0.0
+PHASE integer_true done elapsed_s=2
+PHASE SPF start limit=10000000 expected_bytes=40000004
+PHASE SPF done entries=10000001 note=SPF_ready
+PHASE T2_stream start limit=10000000
+PROGRESS system=T2 n=500000/10000000 pct=5.0 elapsed_s=0.0 eta_s=0.3
+PROGRESS system=T2 n=1000000/10000000 pct=10.0 elapsed_s=0.0 eta_s=0.2
+PROGRESS system=T2 n=1500000/10000000 pct=15.0 elapsed_s=0.0 eta_s=0.2
+PROGRESS system=T2 n=2000000/10000000 pct=20.0 elapsed_s=0.0 eta_s=0.2
+PROGRESS system=T2 n=2500000/10000000 pct=25.0 elapsed_s=0.0 eta_s=0.1
+PROGRESS system=T2 n=3000000/10000000 pct=30.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=3500000/10000000 pct=35.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=4000000/10000000 pct=40.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=4500000/10000000 pct=45.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=5000000/10000000 pct=50.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=5500000/10000000 pct=55.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=6000000/10000000 pct=60.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=6500000/10000000 pct=65.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=7000000/10000000 pct=70.0 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=T2 n=7500000/10000000 pct=75.0 elapsed_s=0.1 eta_s=0.0
+PROGRESS system=T2 n=8000000/10000000 pct=80.0 elapsed_s=0.1 eta_s=0.0
+PROGRESS system=T2 n=8500000/10000000 pct=85.0 elapsed_s=0.1 eta_s=0.0
+PROGRESS system=T2 n=9000000/10000000 pct=90.0 elapsed_s=0.2 eta_s=0.0
+PROGRESS system=T2 n=9500000/10000000 pct=95.0 elapsed_s=0.2 eta_s=0.0
+PROGRESS system=T2 n=10000000/10000000 pct=100.0 elapsed_s=0.2 eta_s=0.0
+PHASE T2_stream done elapsed_s=0.2
+PHASE F1_divisor_inverse start limit=10000000 coefficient_type=long_double zero_tol=64*epsilon*sum_abs_terms epsilon=2.22044604925031308085e-16
+PROGRESS system=F1 n=100000/10000000 pct=1.0 elapsed_s=0.0 eta_s=1.2
+PROGRESS system=F1 n=200000/10000000 pct=2.0 elapsed_s=0.0 eta_s=0.8
+PROGRESS system=F1 n=300000/10000000 pct=3.0 elapsed_s=0.0 eta_s=0.7
+PROGRESS system=F1 n=400000/10000000 pct=4.0 elapsed_s=0.0 eta_s=0.7
+PROGRESS system=F1 n=500000/10000000 pct=5.0 elapsed_s=0.0 eta_s=0.6
+PROGRESS system=F1 n=600000/10000000 pct=6.0 elapsed_s=0.0 eta_s=0.6
+PROGRESS system=F1 n=700000/10000000 pct=7.0 elapsed_s=0.0 eta_s=0.6
+PROGRESS system=F1 n=800000/10000000 pct=8.0 elapsed_s=0.0 eta_s=0.6
+PROGRESS system=F1 n=900000/10000000 pct=9.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1000000/10000000 pct=10.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1100000/10000000 pct=11.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1200000/10000000 pct=12.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1300000/10000000 pct=13.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1400000/10000000 pct=14.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1500000/10000000 pct=15.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1600000/10000000 pct=16.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1700000/10000000 pct=17.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1800000/10000000 pct=18.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=1900000/10000000 pct=19.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=2000000/10000000 pct=20.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=2100000/10000000 pct=21.0 elapsed_s=0.1 eta_s=0.5
+PROGRESS system=F1 n=2200000/10000000 pct=22.0 elapsed_s=0.1 eta_s=0.4
+PROGRESS system=F1 n=2300000/10000000 pct=23.0 elapsed_s=0.1 eta_s=0.4
+PROGRESS system=F1 n=2400000/10000000 pct=24.0 elapsed_s=0.1 eta_s=0.4
+PROGRESS system=F1 n=2500000/10000000 pct=25.0 elapsed_s=0.1 eta_s=0.4
+PROGRESS system=F1 n=2600000/10000000 pct=26.0 elapsed_s=0.1 eta_s=0.4
+PROGRESS system=F1 n=2700000/10000000 pct=27.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=2800000/10000000 pct=28.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=2900000/10000000 pct=29.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3000000/10000000 pct=30.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3100000/10000000 pct=31.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3200000/10000000 pct=32.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3300000/10000000 pct=33.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3400000/10000000 pct=34.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3500000/10000000 pct=35.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3600000/10000000 pct=36.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3700000/10000000 pct=37.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3800000/10000000 pct=38.0 elapsed_s=0.2 eta_s=0.4
+PROGRESS system=F1 n=3900000/10000000 pct=39.0 elapsed_s=0.2 eta_s=0.3
+PROGRESS system=F1 n=4000000/10000000 pct=40.0 elapsed_s=0.2 eta_s=0.3
+PROGRESS system=F1 n=4100000/10000000 pct=41.0 elapsed_s=0.2 eta_s=0.3
+PROGRESS system=F1 n=4200000/10000000 pct=42.0 elapsed_s=0.2 eta_s=0.3
+PROGRESS system=F1 n=4300000/10000000 pct=43.0 elapsed_s=0.2 eta_s=0.3
+PROGRESS system=F1 n=4400000/10000000 pct=44.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=4500000/10000000 pct=45.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=4600000/10000000 pct=46.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=4700000/10000000 pct=47.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=4800000/10000000 pct=48.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=4900000/10000000 pct=49.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5000000/10000000 pct=50.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5100000/10000000 pct=51.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5200000/10000000 pct=52.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5300000/10000000 pct=53.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5400000/10000000 pct=54.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5500000/10000000 pct=55.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5600000/10000000 pct=56.0 elapsed_s=0.3 eta_s=0.3
+PROGRESS system=F1 n=5700000/10000000 pct=57.0 elapsed_s=0.3 eta_s=0.2
+PROGRESS system=F1 n=5800000/10000000 pct=58.0 elapsed_s=0.3 eta_s=0.2
+PROGRESS system=F1 n=5900000/10000000 pct=59.0 elapsed_s=0.3 eta_s=0.2
+PROGRESS system=F1 n=6000000/10000000 pct=60.0 elapsed_s=0.3 eta_s=0.2
+PROGRESS system=F1 n=6100000/10000000 pct=61.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6200000/10000000 pct=62.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6300000/10000000 pct=63.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6400000/10000000 pct=64.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6500000/10000000 pct=65.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6600000/10000000 pct=66.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6700000/10000000 pct=67.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6800000/10000000 pct=68.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=6900000/10000000 pct=69.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=7000000/10000000 pct=70.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=7100000/10000000 pct=71.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=7200000/10000000 pct=72.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=7300000/10000000 pct=73.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=7400000/10000000 pct=74.0 elapsed_s=0.4 eta_s=0.2
+PROGRESS system=F1 n=7500000/10000000 pct=75.0 elapsed_s=0.4 eta_s=0.1
+PROGRESS system=F1 n=7600000/10000000 pct=76.0 elapsed_s=0.4 eta_s=0.1
+PROGRESS system=F1 n=7700000/10000000 pct=77.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=7800000/10000000 pct=78.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=7900000/10000000 pct=79.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8000000/10000000 pct=80.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8100000/10000000 pct=81.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8200000/10000000 pct=82.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8300000/10000000 pct=83.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8400000/10000000 pct=84.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8500000/10000000 pct=85.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8600000/10000000 pct=86.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8700000/10000000 pct=87.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8800000/10000000 pct=88.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=8900000/10000000 pct=89.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=9000000/10000000 pct=90.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=9100000/10000000 pct=91.0 elapsed_s=0.5 eta_s=0.1
+PROGRESS system=F1 n=9200000/10000000 pct=92.0 elapsed_s=0.5 eta_s=0.0
+PROGRESS system=F1 n=9300000/10000000 pct=93.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=9400000/10000000 pct=94.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=9500000/10000000 pct=95.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=9600000/10000000 pct=96.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=9700000/10000000 pct=97.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=9800000/10000000 pct=98.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=9900000/10000000 pct=99.0 elapsed_s=0.6 eta_s=0.0
+PROGRESS system=F1 n=10000000/10000000 pct=100.0 elapsed_s=0.6 eta_s=0.0
+PHASE F1_divisor_inverse done elapsed_s=0.6
+PHASE F1_P5_mu_residue_summation start grid_rows=601 prefix_int32_bytes=80000004
+PROGRESS system=F1_P5 grid_rows=100/601 pct=16.6 elapsed_s=0.1 eta_s=0.4
+PROGRESS system=F1_P5 grid_rows=200/601 pct=33.3 elapsed_s=0.1 eta_s=0.2
+PROGRESS system=F1_P5 grid_rows=300/601 pct=49.9 elapsed_s=0.1 eta_s=0.1
+PROGRESS system=F1_P5 grid_rows=400/601 pct=66.6 elapsed_s=0.1 eta_s=0.0
+PROGRESS system=F1_P5 grid_rows=500/601 pct=83.2 elapsed_s=0.1 eta_s=0.0
+PROGRESS system=F1_P5 grid_rows=600/601 pct=99.8 elapsed_s=0.1 eta_s=0.0
+PHASE F1_P5_mu_residue_summation done elapsed_s=0.09
+COMMAND_DONE phase=integer_systems_full_limits exit=0 elapsed_s=2.575
+RUN_JSON /private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integer_run.json

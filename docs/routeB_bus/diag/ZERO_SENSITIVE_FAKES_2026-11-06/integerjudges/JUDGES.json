@@ -1,0 +1,22 @@
+{
+  "classification": "PRE_PRODUCTION_JUDGES_PASS",
+  "judges": {
+    "J1": {
+      "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J1.json",
+      "status": "PASS"
+    },
+    "J2_T0_replay": {
+      "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J2_T0.json",
+      "status": "PASS"
+    },
+    "J2_T1_trial_factor": {
+      "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J2_T1.json",
+      "status": "PASS"
+    },
+    "J4_integer_inverse_convolutions": {
+      "path": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06/integerjudges/J4.json",
+      "status": "PASS"
+    }
+  },
+  "status": "PASS"
+}

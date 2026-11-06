@@ -1,0 +1,65 @@
+{
+  "checks": {
+    "F1": {
+      "grid_rows": 601,
+      "grid_sha256": "3cde85164aaee0ddba2db5baf82662ea9e25be3b7802bdcee963bc1ae62ad68d",
+      "probe_rows": 601,
+      "sample_rows": 7000,
+      "status": "PASS"
+    },
+    "P2": {
+      "T1_even_support_identity": true,
+      "X_modulus_vectors_checked": 2804,
+      "direct_X10": true,
+      "prime_count_at_1e8": 5761455,
+      "status": "PASS"
+    },
+    "P5": {
+      "direct_ordered_pairs_X10": {
+        "denominator": 63,
+        "numerator": 10.80700903149283
+      },
+      "grid_rows_checked": 601,
+      "max_pair_matrix_sums_to_numerator": true,
+      "status": "PASS"
+    },
+    "T0": {
+      "grid_rows": 701,
+      "grid_sha256": "57ad84b0063e75c88ac46bbac58d982b203d3cd99971fe875af34a1d272f0ad3",
+      "probe_rows": 701,
+      "sample_rows": 8000,
+      "status": "PASS"
+    },
+    "T1": {
+      "grid_rows": 701,
+      "grid_sha256": "4db14bcafd1e6c06b89cd687f6ff227e7137a30fea21473b5ed254ccb533e25f",
+      "probe_rows": 701,
+      "sample_rows": 8000,
+      "status": "PASS"
+    },
+    "T2": {
+      "grid_rows": 601,
+      "grid_sha256": "80fac4c1227dd047556f8e8818fbc6a3286c5b9af7da6b9cf85efaf8a2d95a2b",
+      "probe_rows": 601,
+      "sample_rows": 7000,
+      "status": "PASS"
+    },
+    "direct_X10": {
+      "independent_prefix": true,
+      "status": "PASS",
+      "systems": [
+        "T0",
+        "T1",
+        "T2",
+        "F1"
+      ]
+    },
+    "preproduction_judges": {
+      "receipt_sha256": "13964dbf8f6f1029d9008a10fc0d5ecd8f3476e3862c2de0641c177754a9cd4e",
+      "status": "PASS"
+    }
+  },
+  "classification": "FINITE_OUTPUT_INVARIANTS_NOT_RH",
+  "output_directory": "/private/tmp/q3-zero-integer/docs/routeB_bus/diag/ZERO_SENSITIVE_FAKES_2026-11-06",
+  "status": "PASS"
+}

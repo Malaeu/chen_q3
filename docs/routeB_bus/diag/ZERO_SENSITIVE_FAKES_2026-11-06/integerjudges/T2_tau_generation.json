@@ -1,0 +1,17 @@
+{
+  "classification": "EXACT_TAU_SERIES_WITH_BINARY64_NORMALIZED_PRIME_WEIGHTS",
+  "coefficient_indices_used": "prime p only; exact tau(p) converted to binary64 before division by p^5.5",
+  "elapsed_seconds": 3.317375082988292,
+  "limit": 10000000,
+  "normalization": "b(p)=-tau(p)/p^(11/2), b(p^2)=1, b(p^e)=0 for e>=3",
+  "output_bytes": 80000008,
+  "output_lifecycle": "temporary binary consumed by the integer C++ run and removed with its temporary directory",
+  "output_path": "/var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_zero_integer_tau_c1drnmqu/tau_prime_weights.bin",
+  "output_sha256": "e8b9a7e702ad05767f1638231576a3e154a91ff0b978f1ece1a19b72fd9e7d91",
+  "prime_count": 664579,
+  "ru_maxrss_platform_units_after": 3870883840,
+  "ru_maxrss_platform_units_before": 24657920,
+  "series": "fmpz_series Euler pentagonal product raised exactly to 24, then multiplied by q",
+  "series_cap": 10000001,
+  "status": "PASS"
+}
