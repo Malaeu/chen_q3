@@ -1,0 +1,61 @@
+{
+  "task_commit": "45af4a837e9a183d2405d91bf7df0f002f56acde",
+  "task_blob": "6bc455bf4859c160b08b69fe483661edbdb649bc",
+  "sources": {
+    "Gram_and_optimum": "ec1e2e96",
+    "core": "a180142f",
+    "R8": "70c4e6b0",
+    "reciprocity": "aabf1a70"
+  },
+  "state": "Committed before new numerical experiments; source definitions inspected; algebraic issue in task B.2 identified before run.",
+  "main_N": [
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "core_grid": "Exact 92 N values from pinned a180142f core_full_H.csv: unique rounded geomspace(3,10000,100). Refit best at every N, including10000; no frozen5000 transfer.",
+  "family": {
+    "polynomials": "P(x)=sum_{j=1}^d p_j*x^j, d=1,2,3,4. Fit both P(1) free and sum p_j=1. No positivity/monotonicity constraints.",
+    "splines": "P(0)=0, P(1) free; cubic on[0,x0] and linear on[x0,1], C1 atx0; x0=.05,.1,.2,.35,.5. This endpoint convention is an explicit assumption because task does not specify it. No positivity/monotonicity constraints.",
+    "spline_basis": "Linear x plus the two functions (x0-x)_+^2-x0^2 and (x0-x)_+^3-x0^3; three parameters.",
+    "best": "Smallest full Gram E among degree<=3 polynomial variants and five splines, independently per N. Degree4 reported separately and excluded from PartB andR3/R5. Deterministic family-name tie break within numerical comparisons; report near ties and rank deficiency."
+  },
+  "convention": "Physical free a_n=mu(n)P(log(N/n)/logN), n>=2. Raw a_1=1 for all profiles, because task only varies free indices2..N. s=sum raw a/n; S=sum raw a; b=1+(S-s)/2; u=sum raw a*logn/n; q1=1-s, qn=a_n. The induced Dirichlet coefficient q1 enforces sumq/n=0. P(1) may differ from raw a1; disclose distinction.",
+  "head_identity": {
+    "Lambda_j": "Lambda_j(r)=sum_{n|r}mu(n)*log(r/n)^j, with Lambda_0(r)=indicator(r=1).",
+    "corrected": "A_P(r)=1-P(1)+sum_j p_j/log(N)^j * sum_{k=0}^j binomial(j,k)*log(N/r)^(j-k)*Lambda_k(r), r<=N; polynomial j>=1. For splines use direct divisor sum, no polynomial-convolution claim.",
+    "literal_task": "Also test A=sum_j p_j*Lambda_j/log(N)^j exactly as written. It omits shift and normalization terms; do not silently score the corrected formula as literal R4."
+  },
+  "judges": {
+    "J1": "P=x fullGram norm matches ec1e2e96 E(a) within1e-10 at four mainN.",
+    "J2": "Logtaper N50,200,1000: direct midpoint rational F values in functional(14), E=B-piL within1e-9. Do not infer L from E/B.",
+    "J3": "Every fit at four mainN E>=archived eopt allowing1e-10 floating tolerance; disclose diagnostics, no intervalcertificate.",
+    "J4": "Fourier norm from exact finite gcd-Gram/Parseval vs independent direct quadrature on intervals between rational breakpoints, at mainN<=1000 plus J2Ns. Compare norms within1e-6; report squarednorm errors too."
+  },
+  "core": "K=ceil(N*sqrtN); head k1..N, shoulder kN+1..K-1, H=sum R(k)^2/[k(k+1)]; R=1+sum freea*(k mod n)/n. Full core for each of92gridN, log and freshlyselectedbest.",
+  "splits": "Same disjoint delta-energy classes as ec1e2e96, free indices2..N; energy maps and profileplots for four mainN.",
+  "predictions": {
+    "R1": {
+      "p": 0.55,
+      "rule": "best degree<=3 polynomial (both endpoint variants) gap closure>=.5 at5000"
+    },
+    "R2": {
+      "p": 0.5,
+      "rule": "choose smallestE degree3 variant separately at2000 and5000; compare ordinary monomialp1,p2,p3 using abs(new-old)/max(abs(old),1e-12)<.2 for everycoefficient. Report variantchanges and nearzero denominators."
+    },
+    "R3": {
+      "p": 0.6,
+      "rule": "selectedbest at5000 derivative at0 <.8 or >1.25"
+    },
+    "R4": {
+      "p": 0.9,
+      "rule": "literal B.2 identity at requestedpolynomial fits and explicit P=x,x^2 checks has maxabs error<=1e-10; correctedidentity reportedseparately. Analyticalmissingterms already identified."
+    },
+    "R5": {
+      "p": 0.5,
+      "rule": "freshlyrefittedselectedbest at10000 head <=.5*logtaperhead"
+    }
+  },
+  "scoring": "HIT/MISS and meanBrier; finite numerical diagnostics only; no RH claim."
+}
