@@ -1,0 +1,50 @@
+{
+  "task_commit": "b9bfe4a204f6c15881f11e6088c0fc50cfd0478e",
+  "task_blob": "7da31c2964639e79356ebe177d2ff5f05860d0eb",
+  "sources": {
+    "coefficients": "ba5654b4",
+    "certificates": "a180142f",
+    "R8": "70c4e6b0",
+    "R7": "8a994500",
+    "reciprocity": "aabf1a70"
+  },
+  "N": [
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "status": "Frozen before new numerical experiments; archived inputs already inspected.",
+  "convention": "Compare free coefficients n=2..N. c_opt=-archived c; residual 1+sum c*r. D(s)=sum c_n*(n**(-s)-1/n), so D(1)=0; induced coefficient at n=1 excluded from coefficient statistics. Verify sign by J1/J2 before interpreting.",
+  "profiles": "Pearson correlation of raw delta linearly interpolated onto 4096 equally spaced u=n/N points on common support [max(2/N1,2/N2),1]; no smoothing or arithmetic demodulation.",
+  "regression": "OLS with intercept and six requested features; omega counts distinct prime factors; disjoint energy classes primes, proper prime powers exponent>=2, other.",
+  "zeros": "mpmath 20 dps; all positive critical-line zeros <=1000, plus next neighbor. First cell left boundary 0 and first local min gap uses only next gap; internal cell midpoint boundaries; final cell clipped at1000. Report boundary conventions.",
+  "quadrature": "Nested Simpson grids per half-cell, initially 16 and32 subdivisions per half-cell; additional refinement if material discrepancy. Also split near t=0 to resolve weight. Direct mpmath zeta at every grid point; complex128 polynomial evaluation. Record actual convergence; not a rigorous interval quadrature.",
+  "J3": "R7 exact Parseval identity; report truncated head and independently justified explicit tail upper bound. A broad enclosure is only consistency, not high-precision numerical equality. Never use discrete-minus-head as an independent tail bound.",
+  "null": "1000 permutations using numpy default_rng seed20261106. Two-sided p=(1+count(abs(r_perm)>=abs(r_obs)))/1001; central95% null band. Same permutation label map for each variable; report all N.",
+  "Q1": {
+    "p": 0.55,
+    "rule": "cosine>=0.8 at5000"
+  },
+  "Q2": {
+    "p": 0.6,
+    "rule": "raw interpolated profile Pearson>=0.7 for2000,5000"
+  },
+  "Q3": {
+    "p": 0.5,
+    "rule": "primary N5000 delta energy fraction n>sqrtN >0.5; report each N"
+  },
+  "Q4": {
+    "p": 0.5,
+    "rule": "primary N5000 nonsquarefree optimal free coefficient energy fraction>=0.1; report each N"
+  },
+  "Q5": {
+    "p": 0.45,
+    "rule": "N5000 Spearman W vs inverse derivative squared>=0.3 and two-sided permutation p<0.01"
+  },
+  "Q6": {
+    "p": 0.45,
+    "rule": "N5000 Spearman W vs RAW minimum gap has same nonzero sign as observed Q5 correlation and two-sided p<0.01. This follows Part B literal raw-gap variable. Inverse-gap correlation is separately labelled secondary; no sign flipping after observing."
+  },
+  "scoring": "HIT/MISS and mean Brier score; no causal or RH claim."
+}
