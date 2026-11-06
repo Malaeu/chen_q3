@@ -1,0 +1,57 @@
+{
+  "status": "PRE_RUN",
+  "task_blob": "f5a21baa8b62c9da40570f2181c438b9c8242da5",
+  "head_source": "3a872ae77ddc02462d698422a6342d34ea9daab1",
+  "reciprocity_commit": "2cb305016f3f935fa5d9332ba8f9b3c1b0a25d95",
+  "reciprocity_blob": "f568cd803251872ae9f7a5c7f1058abf03d62170",
+  "smooth_source_commit": "b227cf63",
+  "primary_source": "https://arxiv.org/pdf/1111.0931v2",
+  "S": [
+    43297,
+    46449,
+    62254,
+    69100,
+    99481,
+    114758
+  ],
+  "nonS": [
+    43298,
+    46450,
+    62255,
+    69101,
+    99482,
+    114759
+  ],
+  "selection": "First6 certified crossings in predecessor R8 core_crossings.csv; nonS=N+1, verify exact membership from existing certificate; no result-dependent selection.",
+  "formula": "B(z)=i psi0(z)/2. c0(h/k)=B(h/k)+1/(pi*h)-(k/h)c0((k mod h)/h). Euclid r0=k,r1=h,r[j+1]=r[j-1]modr[j]; c0=sum_j(-1)^(j-1)*k/r[j-1]*(B(r[j]/r[j-1])+1/(pi*r[j])). Terminal c0(integer)=0. V(a/b)=-c0(inverse(a) mod b / b). Preserve inversion, gcd and sign.",
+  "pole_origin": "lim_{a->0} a*zeta(1-a)=-1 in source reciprocity lhs; solving for c0 gives positive1/(pi*h) in chain.",
+  "T_split": "Apply chain separately through exact verdict(8) with all gcd weights and centering; equivalently compute full q_h*q_k*gcd/(h*k)*V and independently compare small cases to(8). No absolute weights or replacing inverse residues with original Mobius weights.",
+  "J1": "Before N production check every coprime1<=h<k<=2000: chain with independently evaluated primary-source analytic period function vs direct cot sum, absolute error<=1e-12. Period function defined back from same cot sums cannot be called independent. If fails STOP pole task and preserve result; no largeN runs. Increase precision to resolve numerical error only, not change formula or tolerance.",
+  "J2": "For every N reported require E from split versus independently evaluated direct R8 norm formula within1e-9. Do not derive both values from identical T and call it independent. Explicitly report any computationally unavailable validation.",
+  "J_layer": "J_N=pi^2 integral_(1/N)^(1/logN) F_N(x)^2/sin^2(pi*x) dx from exact smooth source; record numerical quadrature/truncation precision and convergence evidence.",
+  "Dedekind": "Use strict classical s(h,k) reciprocity with its exact polynomial correction and terminal0; retain same chain and bilinear weights, report correction share with zero denominators marked undefined. Do not call its correction an Eisenstein pole at a0.",
+  "runtime_rule": "Target6+6. After prereg and J1, time bounded pilot and extrapolate pair count. If projected wall time>2hours, use first3 S and paired3 nonS as task permits, record reduction. Do not force six-value C1/C2 HIT from three samples; original six-value predictions then NOT_EVALUATED unless logically falsified by observed subset. No silent truncation.",
+  "predictions_verbatim": {
+    "C1": "on S, |T_N^pole| ≥ 0.5·|T_N^ψ| for at least 4 of 6 values of N — 0.35",
+    "C2": "the sign of T_N^pole is the same for all 6 S-values — 0.55",
+    "C3": "on S, the pole part differs from the non-S mean by more than 3 standard deviations of the non-S values — 0.30"
+  },
+  "prediction_rules": {
+    "C1": "count abs(Tpole)>=.5abs(Tpsi)>=4 of original6",
+    "C2": "all6 nonzero signs identical; exact/numerically unresolved zero reported separately",
+    "C3": "abs(mean(Tpole onS)-mean(Tpole nonS))>3*sample_std(Tpole nonS), ddof1; six paired values primary, reduced3+3 secondary labelled reduced rather than original-six HIT"
+  },
+  "files": [
+    "PREREGISTRATION.json",
+    "source pins",
+    "scripts/",
+    "J1/J2 receipts",
+    "parts CSV",
+    "Dedekind CSV",
+    "ANALYSIS.json",
+    "REPORT.md",
+    "REVIEW.md",
+    "ARTIFACT_BLOBS.json"
+  ],
+  "honesty": "FINITE_DIAGNOSTIC_NOT_RH; no reuse of circular period checks as analytic validation; failedJ1 mandatesSTOP. No newRH claim."
+}

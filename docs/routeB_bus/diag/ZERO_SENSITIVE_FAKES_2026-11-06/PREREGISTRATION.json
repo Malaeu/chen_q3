@@ -1,0 +1,83 @@
+{
+  "status": "PRE_RUN",
+  "task_commit": "d665cb6951be32061201366640578d6560cb0420",
+  "task_blob": "8899e141993c21ae2c4d4864937bc2cd06fd521f",
+  "head_source": "3a872ae77ddc02462d698422a6342d34ea9daab1",
+  "limits": {
+    "T0": 100000000,
+    "T1": 100000000,
+    "T2": 10000000,
+    "F1": 10000000,
+    "F2_each_amplitude": 10000000,
+    "F3_each_amplitude": 10000000
+  },
+  "amplitudes": [
+    0,
+    0.05,
+    0.2
+  ],
+  "rho0": {
+    "real": 0.75,
+    "imag": 10
+  },
+  "grid": "100 log steps per decade from10 tolimit, exact powers10 included; OLS logW/logX on [1e3,Xmax] unless specified",
+  "F2_convention": "Li(x)=Ei(log x) for x>1, Re Li(x^rho) means Re Ei(rho log x) by continuation along positive real log x, NOT resetting principal log(x^rho). No arbitrary constant subtraction. Positive generators are the unique roots Pi_a(x)=k, k=1,2,...",
+  "F2_density_proof": "Pi_a derivative=(1-2a*x^(-1/4)*cos(10 log x))/log x >=(1-2a)/log x>0 for x>1; Pi_a -> -infinity at1+ because1-2a>0, ->infinity asx->infinity. Thus unique quantiles exist. Check numerical positivity too after prereg.",
+  "F2_analytic_caveat": "Continuous log Euler factor has a*log(s-rho0)+a*log(s-conj(rho0))-log(s-1). Quantile error O1 and higher prime powers are analytic for Re s>1/2 locally. For noninteger a=.05,.2 this is a fractional branch singularity, NOT an ordinary meromorphic zero of integral order. The source definitions remain unchanged; do not label an observed conventional zero.",
+  "F2_leading_W_before_run": "If inverse zeta local factor is C*(s-rho0)^(-a), its Mellin inversion gives C*x^rho0*(log x)^(a-1)/(rho0*Gamma(a)) plus conjugate. Squaring/dividing byx^2 and integrating gives leading oscillatory envelope K*X^(2*.75-1)*(log X)^(2*a-3). For a=.2 log slope is .5-2.6/logX (~.274 to.339 on1e5..1e7). Constants, baseline and cross terms can dominate finite range; this is asymptotic leading analysis, not a guaranteed finite lower bound.",
+  "J3_band": {
+    "system": "F2(a=.2)",
+    "window": [
+      100000,
+      10000000
+    ],
+    "slope_band": [
+      0.2,
+      0.4
+    ],
+    "rule": "PASS iff measured OLS logW/logX lies in closed band; report a0 slope and difference; a failed empirical band is a failed judge and is never repaired by changing band after data."
+  },
+  "F3": "Round F2 generators to nearest integer (half upward); preserve generator identities and all multiplicities even when generators coincide. Reject generator<=1 as undefined infinite-semigroup case, report model failure rather than silently drop it.",
+  "W": "Exact step integration with Kahan; report numerical precision, not interval claims. T0 baseline reuse allowed, independently reproduce requested checkpoints. T2 uses normalized tau(n)/n^(11/2) before inversion. F1 periodic a(1)=1. Raw W drives all predictions; no fitted linear-bias subtraction. Report M/x; secondary normalization only if a nonzero analytic residue at s=1 is established, otherwise natural sqrt(x) normalization already present in samples.",
+  "P1": "Separate rho_hat for each F2/F3 system, least-squares zero-intercept fit N~rho*x on fixed log-grid [1e4,1e5]: sum x*N/sum x^2. Freeze before evaluating higher x. Report residual/sqrtx and residual/x^.75. Not asymptotic rho proof.",
+  "P2": "For moduli3,4,5,6 report every generator residue count and (C_r-C/m)/sqrt(C), with multiplicities of rounded generator labels. Scalar detection probe =sqrt(sum_r(C_r-C/m)^2/C), one scalar per modulus. T0 true-prime reference also recorded.",
+  "P3": "For each integer-supported system sum_{n=1}^{floorX-1} b(n)b(n+1)/X (both arguments inside X); coefficient-support adjacent fraction counts b(n)!=0 andb(n+1)!=0 divided byfloorX-1. Record numerical-zero convention for real coefficients. For F3 also report generalized-integer membership support (N_delta>0), distinct from nonzero aggregated b.",
+  "P4": "F3 missing fraction=sum1_{N_delta(n)=0}/floorX, multiplicity-excess fraction=sum max(N_delta(n)-1,0)/floorX for1<=n<=floorX. Unit counted.",
+  "P5": "F1 mean absolute a(mn)-a(m)a(n) over ALL ORDERED coprime pairs1<=m,n<=floorX. Exact finite pair counts via Mobius residue-class summation or equivalent; no convenience random pair sampling. a is original DH a, not inverse b.",
+  "noise_rule": "For each scalar probe independently and each X>=1e3 use preceding100 baseline-a0 log-grid values (exclude current point; one decade); subtract their OLS affine fit versus logX; sigma=sqrt(sum residual^2/(100-2)). Noise=max(sigma,64*binary64_epsilon*max(1,maxabs baseline window)). This is deterministic shifted-window fluctuation, not stochastic standard error. Compare pointwise abs(probe_a005(X)-probe_a0(X)) >5*noise.",
+  "X_det": "Smallest grid X>=1e3 satisfying strict5-noise rule; no persistence filter. Return NOT_DETECTED_UP_TO_XMAX or NOT_APPLICABLE rather than infinity as a measured value. All declared scalar components are reported; B3 uses earliest eligible blockB component for F3.",
+  "predictions_verbatim": {
+    "B1": "T1 and T2 have max W ≤ 1 on the grid and slope ≤ 0.1 — 0.75",
+    "B2": "F2(0.2) W slope ≥ 0.3 — 0.85",
+    "B3": "some block-B probe detects F3(0.05) vs F3(0) at X_det at least 10× smaller than W does — 0.35",
+    "B4": "F1 W slope ≥ 0.3 — 0.8",
+    "B5": "T2 W within a factor 5 of T0 W at common X — 0.5"
+  },
+  "prediction_rules": {
+    "B1": "both T1,T2 maxW over entire grid10..limit<=1 AND each slope[1e3,limit]<=.1",
+    "B2": "F2a.2 slope[1e3,1e7]>=.3",
+    "B3": "HIT if a defined F3 blockB detector D exists and W detected at>=10D; also HIT if W undetected throughXmax and Xmax>=10D. Otherwise MISS within tested horizon, not asymptotic disproof.",
+    "B4": "F1 slope[1e3,1e7]>=.3",
+    "B5": "at every common gridX10..1e7, .2<=W_T2/W_T0<=5"
+  },
+  "judges_before_production": [
+    "J1: mpmath refine both given DH zeros to residual<1e-20; tau1..30 vsOEIS A000594",
+    "J2: T0 M powers and W1e7 exactly reproduce predecessor printed value with same kernel; independently trial-factor T1 to50000",
+    "J4: F3 independently enumerate exponent vectors to500, preserve duplicate generators; also verify inversion convolution on small true systems"
+  ],
+  "files": [
+    "PREREGISTRATION.json",
+    "scripts/",
+    "system CSVs",
+    "probe CSVs",
+    "judge receipts",
+    "run logs",
+    "ANALYSIS.json",
+    "REPORT.md",
+    "W_ALL.png",
+    "probe plots",
+    "REVIEW.md",
+    "ARTIFACT_BLOBS.json"
+  ],
+  "honesty": "FINITE_DIAGNOSTIC_NOT_RH; any unavailable/failed judge or truncation explicit; no paid calls or new theorem claims"
+}
