@@ -1,0 +1,54 @@
+{
+  "scores": {
+    "R1": {
+      "p": 0.55,
+      "hit": true,
+      "rule": "best degree<=3 polynomial gap closure >= 0.5 at N=5000",
+      "family": "poly_d3_free",
+      "gap_closure": 0.9443677295550421
+    },
+    "R2": {
+      "p": 0.5,
+      "hit": false,
+      "rule": "each degree-3 winner coefficient changes by <20% from N=2000 to N=5000",
+      "winner_2000": "poly_d3_free",
+      "winner_5000": "poly_d3_free",
+      "coefficients_2000": [
+        1.38121925109923,
+        0.153969894097027,
+        -0.46832453628679926
+      ],
+      "coefficients_5000": [
+        1.397107408346974,
+        -0.010733544550018528,
+        -0.31505755235736754
+      ],
+      "relative_changes": [
+        0.011502994354516419,
+        1.0697119694273127,
+        0.3272666111936785
+      ],
+      "near_zero_old_coefficients": []
+    },
+    "R3": {
+      "p": 0.6,
+      "hit": true,
+      "rule": "selected best Pprime(0) outside [0.8,1.25] at N=5000",
+      "selected_family": "spline_x0_0.05",
+      "Pprime_0": 5.405964095819963
+    },
+    "R4": {
+      "p": 0.9,
+      "hit": false,
+      "literal_max_abs_error": 1.0,
+      "corrected_max_abs_error": 5.10702591327572e-15,
+      "note": "Literal task formula is false algebraically; corrected formula is a separately validated identity."
+    },
+    "R5": {
+      "p": 0.5,
+      "hit": true,
+      "head_best_over_log": 0.23331779593089796
+    }
+  },
+  "mean_Brier": 0.3345
+}

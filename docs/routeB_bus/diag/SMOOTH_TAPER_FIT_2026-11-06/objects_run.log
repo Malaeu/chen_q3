@@ -1,0 +1,85 @@
+COMMAND: /var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_smooth_objects_native /private/tmp/q3-smooth-taper-fit/docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/selected_vectors.csv /var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_smooth_objects_6dl_r9di/j2_refs.csv /var/folders/mh/bb28qxcn33s73kfdbflbhy7m0000gn/T/q3_smooth_objects_6dl_r9di/core_targets.txt /private/tmp/q3-smooth-taper-fit/docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06
+[#.............................] 4.6% ETA 0.0s boundary and Jordan-2 Parseval
+[##............................] 9.2% ETA 0.0s boundary and Jordan-2 Parseval
+[####..........................] 13.8% ETA 0.0s boundary and Jordan-2 Parseval
+[#####.........................] 18.4% ETA 0.0s boundary and Jordan-2 Parseval
+[######........................] 23.0% ETA 0.0s boundary and Jordan-2 Parseval
+[########......................] 27.6% ETA 0.0s boundary and Jordan-2 Parseval
+[#########.....................] 32.1% ETA 0.0s boundary and Jordan-2 Parseval
+[###########...................] 36.7% ETA 0.0s boundary and Jordan-2 Parseval
+[############..................] 41.3% ETA 0.0s boundary and Jordan-2 Parseval
+[#############.................] 45.9% ETA 0.0s boundary and Jordan-2 Parseval
+[###############...............] 50.5% ETA 0.0s boundary and Jordan-2 Parseval
+[################..............] 55.1% ETA 0.0s boundary and Jordan-2 Parseval
+[#################.............] 59.7% ETA 0.0s boundary and Jordan-2 Parseval
+[###################...........] 64.3% ETA 0.0s boundary and Jordan-2 Parseval
+[####################..........] 68.9% ETA 0.0s boundary and Jordan-2 Parseval
+[######################........] 73.5% ETA 0.0s boundary and Jordan-2 Parseval
+[#######################.......] 78.1% ETA 0.0s boundary and Jordan-2 Parseval
+[########################......] 82.7% ETA 0.0s boundary and Jordan-2 Parseval
+[##########################....] 87.2% ETA 0.0s boundary and Jordan-2 Parseval
+[###########################...] 91.8% ETA 0.0s boundary and Jordan-2 Parseval
+[############################..] 96.4% ETA 0.0s boundary and Jordan-2 Parseval
+[##############################] 100.0% ETA 0.0s boundary and Jordan-2 Parseval
+[##............................] 8.2% ETA 0.0s direct J2 rational sums N=50
+[#####.........................] 18.4% ETA 0.0s direct J2 rational sums N=50
+[########......................] 28.6% ETA 0.0s direct J2 rational sums N=50
+[###########...................] 38.8% ETA 0.0s direct J2 rational sums N=50
+[##############................] 49.0% ETA 0.0s direct J2 rational sums N=50
+[#################.............] 59.2% ETA 0.0s direct J2 rational sums N=50
+[####################..........] 69.4% ETA 0.0s direct J2 rational sums N=50
+[#######################.......] 79.6% ETA 0.0s direct J2 rational sums N=50
+[##########################....] 89.8% ETA 0.0s direct J2 rational sums N=50
+[##############################] 100.0% ETA 0.0s direct J2 rational sums N=50
+[##########....................] 33.3% ETA 0.0s direct J2 reciprocity sum
+[##............................] 9.5% ETA 0.0s direct J2 rational sums N=200
+[#####.........................] 19.6% ETA 0.0s direct J2 rational sums N=200
+[########......................] 29.6% ETA 0.0s direct J2 rational sums N=200
+[###########...................] 39.7% ETA 0.0s direct J2 rational sums N=200
+[##############................] 49.7% ETA 0.0s direct J2 rational sums N=200
+[#################.............] 59.8% ETA 0.0s direct J2 rational sums N=200
+[####################..........] 69.8% ETA 0.0s direct J2 rational sums N=200
+[#######################.......] 79.9% ETA 0.0s direct J2 rational sums N=200
+[##########################....] 89.9% ETA 0.0s direct J2 rational sums N=200
+[##############################] 100.0% ETA 0.0s direct J2 rational sums N=200
+[####################..........] 66.7% ETA 0.0s direct J2 reciprocity sum
+[##............................] 9.9% ETA 0.0s direct J2 rational sums N=1000
+[#####.........................] 19.9% ETA 0.1s direct J2 rational sums N=1000
+[########......................] 29.9% ETA 0.1s direct J2 rational sums N=1000
+[###########...................] 39.9% ETA 0.1s direct J2 rational sums N=1000
+[##############................] 49.9% ETA 0.2s direct J2 rational sums N=1000
+[#################.............] 60.0% ETA 0.1s direct J2 rational sums N=1000
+[####################..........] 70.0% ETA 0.1s direct J2 rational sums N=1000
+[#######################.......] 80.0% ETA 0.1s direct J2 rational sums N=1000
+[##########################....] 90.0% ETA 0.1s direct J2 rational sums N=1000
+[##############################] 100.0% ETA 0.0s direct J2 rational sums N=1000
+[##############################] 100.0% ETA 0.0s direct J2 reciprocity sum
+[#######.......................] 25.0% ETA 0.0s event-swept J4 quadrature
+[###############...............] 50.0% ETA 0.0s event-swept J4 quadrature
+[######################........] 75.0% ETA 0.0s event-swept J4 quadrature
+[##############################] 100.0% ETA 0.0s event-swept J4 quadrature
+[#.............................] 4.2% ETA 0.0s divisor-sieve full core
+[##............................] 8.3% ETA 0.0s divisor-sieve full core
+[###...........................] 12.5% ETA 0.0s divisor-sieve full core
+[#####.........................] 16.7% ETA 0.0s divisor-sieve full core
+[######........................] 20.8% ETA 0.0s divisor-sieve full core
+[#######.......................] 25.0% ETA 0.0s divisor-sieve full core
+[########......................] 29.2% ETA 0.0s divisor-sieve full core
+[##########....................] 33.3% ETA 0.0s divisor-sieve full core
+[###########...................] 37.5% ETA 0.0s divisor-sieve full core
+[############..................] 41.7% ETA 0.0s divisor-sieve full core
+[#############.................] 45.8% ETA 0.0s divisor-sieve full core
+[###############...............] 50.0% ETA 0.0s divisor-sieve full core
+[################..............] 54.2% ETA 0.0s divisor-sieve full core
+[#################.............] 58.3% ETA 0.0s divisor-sieve full core
+[##################............] 62.5% ETA 0.0s divisor-sieve full core
+[####################..........] 66.7% ETA 0.0s divisor-sieve full core
+[#####################.........] 70.8% ETA 0.0s divisor-sieve full core
+[######################........] 75.0% ETA 0.0s divisor-sieve full core
+[#######################.......] 79.2% ETA 0.0s divisor-sieve full core
+[#########################.....] 83.3% ETA 0.0s divisor-sieve full core
+[##########################....] 87.5% ETA 0.0s divisor-sieve full core
+[###########################...] 91.7% ETA 0.0s divisor-sieve full core
+[############################..] 95.8% ETA 0.0s divisor-sieve full core
+[##############################] 100.0% ETA 0.0s divisor-sieve full core
+OBJECTS_NATIVE_PASS vectors=196 core_N=96 J2=3 J4=8 raw_a1=1

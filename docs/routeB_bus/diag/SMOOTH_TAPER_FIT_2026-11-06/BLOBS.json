@@ -1,0 +1,293 @@
+{
+  "excludes": "BLOBS.json itself; temporary Python caches are not deliverables",
+  "files": [
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/CONVENTIONS.md",
+      "bytes": 3611,
+      "sha256": "3b63efe59a78a331d5996825384349f9c2b65dc039fe067c289e9e4215197987",
+      "git_blob": "e8570ccb71f957792c3ebef02eb7f4f4e7a633f2"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/INDEPENDENT_REVIEW.md",
+      "bytes": 1935,
+      "sha256": "b09df110050b2cce41673d91df7aa81c6378d3279be36a7ec119b1f19c8840ba",
+      "git_blob": "8412035ea8418f7c0ab0411a5c6dea5016f40c9f"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/OUTPUT_VALIDATION.json",
+      "bytes": 290,
+      "sha256": "a9308f2e7347daf792bf9765e358bf10682ef3ecfae3177e65f8d1670fd8a1ad",
+      "git_blob": "fcb75857e9a3e9bf8ec2ca33964b012d25d88ebd"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/PART_A.md",
+      "bytes": 3260,
+      "sha256": "17d857e0441daf7e7ce098076debcfa270c894e56f3020c8110f61607b46d5c8",
+      "git_blob": "a39b43e9640262a5388c6a9e8876f361a58787c1"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/PART_B.md",
+      "bytes": 6563,
+      "sha256": "fb0d08d0be0da8e0a409062039901870c2e04838ab1b891be9cc5c00fc60a229",
+      "git_blob": "191c721e808f5fe910f2195ed2540cbbcc836dea"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/PREREGISTRATION.json",
+      "bytes": 4035,
+      "sha256": "b5001e9fb345dd5218713c160b07a65c76f569aed89e36549e0f6b52a66e1f78",
+      "git_blob": "712c14b9fe5d68b8e8f124326afc1e7391af2482"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/REPORT.md",
+      "bytes": 18939,
+      "sha256": "f2553255ee52e0a596e34c213c0b3e2a9fc25634fad81a2ffa7b1f90e2da8b7f",
+      "git_blob": "e32f725326ec74c4269af613dc4f8ee81a9a564d"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/SOURCES.json",
+      "bytes": 1614,
+      "sha256": "71b7cba47e8e4bdda92d0313edfcf0a5b2426bdda62a9229c6a44c804ca0a74a",
+      "git_blob": "6b4d094b1a0fd280c666dad859a62927e35945ea"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/build_manifest.py",
+      "bytes": 865,
+      "sha256": "560613aa594f49c3558c0261be528156020d87ba4fed9a3edc1c70a977ea1272",
+      "git_blob": "0d4e3e89ad87e5ad87423cbd73455fffe5451074"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/build_report.py",
+      "bytes": 10621,
+      "sha256": "eb3ea2551e9ed946026dfa842271fc456c562e8a4cbeab0067847d46cd009818",
+      "git_blob": "5d3eea490d0577e4535b6849044dcfb725112506"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit.py",
+      "bytes": 43775,
+      "sha256": "479aed71d4c106de0ebfdd8f8f79567f80de7fa2f4ee464f40565d11559acef7",
+      "git_blob": "7dcd4121555f0521f19bc1a17d2a2cacef0db9bf"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_all.csv",
+      "bytes": 421182,
+      "sha256": "0747ac93dca4177c7ecb109d812232b52fb19af51bc96e59f68cc41c2a33cd27",
+      "git_blob": "1b80cb4a76428cc996ff6d8319d4e1d9f30310ca"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_baselines.csv",
+      "bytes": 4288,
+      "sha256": "4ec5d6add4a2cae5e9534ea4ac4b989da88e729acfbd32258ac2634d813fc80a",
+      "git_blob": "c98dc1a5e6db87ebd15c230884e454885ff0a3d2"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_coefficients.csv",
+      "bytes": 203362,
+      "sha256": "a055e117b2477490df0b2cc851354c7f0fe1c4f204514905d795f077bbeab28b",
+      "git_blob": "e3a9d51eff950d9e501daa265e26685688a25871"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_delta_energy_N1000.png",
+      "bytes": 106160,
+      "sha256": "eb7447411108edc9d738ef323d9b80f4f00dc843f5188fcf08796b3bcd3940c6",
+      "git_blob": "c083093d98d972e43878015d0f8d2689dfe0943b"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_delta_energy_N2000.png",
+      "bytes": 114911,
+      "sha256": "5d2c7ce6032a17494095e32b2bd88cada79a65d7b497f6fbcac46e03fcd7c991",
+      "git_blob": "e2f05c22eb31e9db3babba18136b42b851b5609e"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_delta_energy_N500.png",
+      "bytes": 157837,
+      "sha256": "1bb42a30bb5c494869487d4a0ba972b36acd8940f20001e9ce84fffab7f181e0",
+      "git_blob": "77c3d46931846acf6250ce99087bcac60be7afe3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_delta_energy_N5000.png",
+      "bytes": 111297,
+      "sha256": "c3aed2daef424d6269a66734601509e0e53f0dcbd1e8b72a36f8fec6fb6dabc1",
+      "git_blob": "ee09181df451271688d7318cdd9ea41ec970b404"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_energy_splits.csv",
+      "bytes": 1690,
+      "sha256": "a4671076dd22c727b712feed6f3ef959a222715e5a1ad3b3d7f202598fa9558c",
+      "git_blob": "efd8eb583b0a97aacafb4aa7d3b023e0f048a8d9"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_judges.csv",
+      "bytes": 5299,
+      "sha256": "fbac6b7ff37bcf7fd4794e3e84ac77cb6d2f68b96c90dd583a5b472ac4527bea",
+      "git_blob": "29227e597885e571d11dc020d970930e145c9e7a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_predictions.json",
+      "bytes": 954,
+      "sha256": "1525ea4b257bda4166437f44da1cb92766b4a38fce08f592b0a7e8f268879eae",
+      "git_blob": "b9b9b79f1a1578c968f710e1c881348383e430e6"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_profile_N1000.png",
+      "bytes": 81260,
+      "sha256": "4f0640a3910a65c09a5018f7bd84e36bb88942d78ba3cbb0b2c546487d97f2e8",
+      "git_blob": "f8be33d412fba12a2780c4bd62cc1786194b2b7a"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_profile_N2000.png",
+      "bytes": 81818,
+      "sha256": "14df076646e0ed82477108f314639b875e8b35bc080363657435df1a0c45002f",
+      "git_blob": "3b9bd73fda91653a143f384394ebe6705b4a15ef"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_profile_N500.png",
+      "bytes": 81805,
+      "sha256": "31477e964653a3644ae744cda60f176cf1c840345049b4d3622a3eae4adfdef3",
+      "git_blob": "2babd6495be40b9ee91e2c5060af513cf7d0dfc6"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_profile_N5000.png",
+      "bytes": 81479,
+      "sha256": "107bfb59def23199b8bfa7bd1b8997f7b591576318f879a7d35b1ffd0dfb4670",
+      "git_blob": "b93c4d9ac73fe6a9ba34afe250886916f49126b5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_results.csv",
+      "bytes": 196425,
+      "sha256": "966bb24fd7193661152d0e661a7c1eb33eb576bafc153e50d228dd60f2426476",
+      "git_blob": "ece5d0b7c33166926a866470dbdc9a32e6988cf7"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_run.json",
+      "bytes": 4704,
+      "sha256": "9aaad80ea6e850079fe80ab01e01e808260d52bd68684e89e22271f17a5fba98",
+      "git_blob": "5a42f8ff75f4fb423fa0fdf8eb6c9d5df4315703"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_run.log",
+      "bytes": 8525,
+      "sha256": "3db42b28bb8607c2b404e69e632673267b8b0de1642a0d836936a5fd3c7a1970",
+      "git_blob": "6596f8583c582dfb546af72437a3b6020297f901"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/fit_selected.csv",
+      "bytes": 1669,
+      "sha256": "dc7db675b9d5d48dbb26cf287748099736342a12f09c03bcb21cdb98aa95b33d",
+      "git_blob": "04e993ac3e3bf4769dae0db9340c6d445a677e24"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/gram_native.cpp",
+      "bytes": 6520,
+      "sha256": "700eb4ce3eabedc9a505d10737ce12bd22c652e4f6e06b8ad1a98027a550d4a5",
+      "git_blob": "d7abadc1c6fd1b08c0fed0f48cafd6cb7d6731bb"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/input_audit.json",
+      "bytes": 992,
+      "sha256": "d7db77a9f7709da4483849902bf53e097316428211565c33edacfbc4694d340f",
+      "git_blob": "10d40dca79e59e844586b1870ed5ea31bea59827"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/input_audit.py",
+      "bytes": 1404,
+      "sha256": "1b7498c2a55af85f738c4a4a211ed52d2e9884cd3ebff808ff2f059002b4fb09",
+      "git_blob": "b894d7b90500b9ab35a32cf39947bef1bfb7e69e"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects.py",
+      "bytes": 22944,
+      "sha256": "b63a828250f4c1452137b8529c2c46710abbacc2ea548d138f84ba899dc363be",
+      "git_blob": "9787346e7d8c5f1a35c1e1090ff6ebe195bb0ca3"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_boundary.csv",
+      "bytes": 60729,
+      "sha256": "1f5617f8ad0483797eb35aa6be712b68d8d94a3eba55bef067f8df2ac5ee2c4e",
+      "git_blob": "0baa49ad4b156ff9a3b121d810f019e3c454a439"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_core.csv",
+      "bytes": 22992,
+      "sha256": "60fcac72d9211f8747ab59abb2092c64de4da87f255f69f5e540c9332ddb311d",
+      "git_blob": "3816a5369b361b19bf5a034d9413ea3030a51c54"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_core_archive_compare.csv",
+      "bytes": 20827,
+      "sha256": "103eed8d279d3c2428cf23fc44284a1c505a8b4906c0b16cd1a2aed21a3a1a91",
+      "git_blob": "850d9876ce80b3cba7ba7819fa8661c90961f212"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_core_ratios.csv",
+      "bytes": 7276,
+      "sha256": "0b8120a8b6b9d06e2134725653208091aa57ada9152561659d785243f7f440b6",
+      "git_blob": "2a285121e1d67dcd035fbbf179411288cbba9fb2"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_head_checks.csv",
+      "bytes": 19056478,
+      "sha256": "2e06816c08aafe69463a2f216902bf453092b8308b683512ceca91f42a24e7b4",
+      "git_blob": "3f0f319b7e4f1d125217cd61584c9c34d532072c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_head_polynomials.csv",
+      "bytes": 3031,
+      "sha256": "9e4dd038dbe89f41745b86b9dbb8dc8e240511405b2a3130c7ea91ebc1bd57f7",
+      "git_blob": "e8c6ecfa452d6a6e08d3a5fda4c9789881f33bdc"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_j2.csv",
+      "bytes": 538,
+      "sha256": "664522a361235755ed2177aa3391d1ceb38d906ff86a9d873ec0850f2a18209b",
+      "git_blob": "35ea33da9efa7e290d939419eca70454cb7f54b5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_j4.csv",
+      "bytes": 2390,
+      "sha256": "07f0541de931983e63b80fcf460425a363d9b99c22f4ae6adaaa5f9e6a7d445e",
+      "git_blob": "43a19782b7055c0f939388ff381930a7aec5a5cd"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_native.cpp",
+      "bytes": 25835,
+      "sha256": "f5c16f356c9c502f647ff6bc517502e874bcf14c02add28efc77a3ecd5621601",
+      "git_blob": "cd54841bca9ddab7249ed8737ef8a88ced55162e"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_run.json",
+      "bytes": 2045,
+      "sha256": "417528d5d0badaf4adff01776314fbc06747ad5f4f0c82c1cef8371877dcbecd",
+      "git_blob": "74bca7d3a02bc54965105a44f893abe0809483b9"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/objects_run.log",
+      "bytes": 6834,
+      "sha256": "739a74d7f6331d06bd090cbbd04864bf4623d5395451d259a0e8f2f6ef921f1a",
+      "git_blob": "08bfb1277735d1bd598a30c4f085c777535b5773"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/prediction_scores.json",
+      "bytes": 1433,
+      "sha256": "9a49701a8df1d2dbfc92ef651932f4458ecf9b8357500f789f3aa8eafbb80102",
+      "git_blob": "b2306df272ac02b29fd6c3adf0bfe2df8934bb3c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/selected_profiles.json",
+      "bytes": 121854,
+      "sha256": "3371305883241b9dda8a7c6f2074cc55f70967a21b958dd184f7b6be4260f4a3",
+      "git_blob": "a3fe58754e5ad996b138a349ad00895cca0c787c"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/selected_vectors.csv",
+      "bytes": 4963857,
+      "sha256": "f89c5251e8aafeb04c519be6efea012af92c4c5fdc0cba3cdfad53c9a6636fea",
+      "git_blob": "78aa312549baf1919ec8cf816789dbfba92f2cf5"
+    },
+    {
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/validate_outputs.py",
+      "bytes": 2723,
+      "sha256": "4ce02c7c2a1bbc92f0e343e23118cf636c8f8bccf54859938529f3333d013050",
+      "git_blob": "ea852bfa45313feb8432038b8425efa03e992803"
+    }
+  ]
+}

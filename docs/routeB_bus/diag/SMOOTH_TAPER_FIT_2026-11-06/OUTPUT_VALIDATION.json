@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "N_count": 98,
+  "vector_rows": 135780,
+  "max_abs_profile_vector_difference": 0.0,
+  "max_abs_log_vector_difference": 0.0,
+  "nested_minima_and_selected_family_checks": "PASS at all target N",
+  "raw_a1": "exactly1; all non-squarefree free coefficients exactly0"
+}

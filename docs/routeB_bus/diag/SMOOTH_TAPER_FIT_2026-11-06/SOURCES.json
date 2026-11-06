@@ -1,0 +1,44 @@
+[
+  {
+    "role": "task",
+    "commit": "45af4a837e9a183d2405d91bf7df0f002f56acde",
+    "path": "docs/routeB_bus/mythos/CODEX_TASK_SMOOTH_TAPER_FIT_2026-11-06.md",
+    "blob": "6bc455bf4859c160b08b69fe483661edbdb649bc"
+  },
+  {
+    "role": "Gram",
+    "commit": "ec1e2e961e07899824890db7f5fe39a89f2aa795",
+    "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/gram_native.cpp",
+    "blob": "089945cb25c66f4ba39727f9ba05cb5320feab21"
+  },
+  {
+    "role": "optimum",
+    "commit": "ec1e2e961e07899824890db7f5fe39a89f2aa795",
+    "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coefficients.csv",
+    "blob": "8f40a66e373d3626347e9d045a43230c949447b6"
+  },
+  {
+    "role": "core_code",
+    "commit": "a180142f5b60d1424df53512b666915b7d22117e",
+    "path": "docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/core_scan.cpp",
+    "blob": "e0a45953a525d6bd41eb5526a01ed581fc5c7d27"
+  },
+  {
+    "role": "core_grid",
+    "commit": "a180142f5b60d1424df53512b666915b7d22117e",
+    "path": "docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/core_full_H.csv",
+    "blob": "8d62edae64a79dd1eca0c6979b73b03ba7132687"
+  },
+  {
+    "role": "R8",
+    "commit": "70c4e6b097bc714689fb9226aeaea12a46127c95",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_ROUND8_NEW_MATH_2026-11-06_B.md",
+    "blob": "e0c22e09de31ce8c3ee37e8c53343477168b2063"
+  },
+  {
+    "role": "reciprocity",
+    "commit": "aabf1a70584f4151a27f8d99a23d47e33da34b9a",
+    "path": "docs/routeB_bus/proshka/PROSHKA_VERDICT_MOBIUS_RECIPROCITY_2026-11-06_B.md",
+    "blob": "f568cd803251872ae9f7a5c7f1058abf03d62170"
+  }
+]

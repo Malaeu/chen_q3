@@ -1,0 +1,4023 @@
+{
+  "3": {
+    "bestprofile": {
+      "family": "poly_d1_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 5.419022582702909
+      },
+      "monomialcoeffs": [
+        5.419022582702909
+      ],
+      "degree": 1,
+      "x0": null,
+      "E": 0.3068528194400548,
+      "E_log": 0.7677838869381539,
+      "E_log_times_logN": 0.8434968132316225,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 5.419022582702909,
+      "Pprime_0": 5.419022582702909,
+      "Pprime_0_over_log_slope": 5.419022582702909,
+      "solver_rank": 1,
+      "effective_dimension": 1,
+      "rank_deficient": false,
+      "condition_number_hessian": 1.0,
+      "condition_number_basis": 1.0,
+      "scaled_hessian_singular_values": [
+        1.0000000000000002
+      ],
+      "scaled_hessian_rcond": 2.220446049250313e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d1_free",
+        "poly_d2_fixed1",
+        "poly_d2_free",
+        "poly_d3_fixed1",
+        "poly_d3_free",
+        "spline_x0_0.05",
+        "spline_x0_0.10",
+        "spline_x0_0.20",
+        "spline_x0_0.35",
+        "spline_x0_0.50"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "4": {
+    "bestprofile": {
+      "family": "poly_d2_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 9.68151331522754,
+        "x^2": -14.735981213847525
+      },
+      "monomialcoeffs": [
+        9.68151331522754,
+        -14.735981213847525
+      ],
+      "degree": 2,
+      "x0": null,
+      "E": 0.09574778392775296,
+      "E_log": 0.5744413091425717,
+      "E_log_times_logN": 0.796344747658675,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": -5.0544678986199845,
+      "Pprime_0": 9.68151331522754,
+      "Pprime_0_over_log_slope": 9.68151331522754,
+      "solver_rank": 2,
+      "effective_dimension": 2,
+      "rank_deficient": false,
+      "condition_number_hessian": 218.20006281515936,
+      "condition_number_basis": 8.938685123508291,
+      "scaled_hessian_singular_values": [
+        1.9908759150234072,
+        0.00912408497659283
+      ],
+      "scaled_hessian_rcond": 4.440892098500626e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d2_free",
+        "poly_d3_fixed1",
+        "poly_d3_free",
+        "spline_x0_0.05",
+        "spline_x0_0.10",
+        "spline_x0_0.20",
+        "spline_x0_0.35",
+        "spline_x0_0.50"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "5": {
+    "bestprofile": {
+      "family": "poly_d2_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 7.226717449880925,
+        "x^2": -9.124689990301196
+      },
+      "monomialcoeffs": [
+        7.226717449880925,
+        -9.124689990301196
+      ],
+      "degree": 2,
+      "x0": null,
+      "E": 0.0957477839277534,
+      "E_log": 0.48532710589929023,
+      "E_log_times_logN": 0.7811038441662372,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": -1.8979725404202705,
+      "Pprime_0": 7.226717449880925,
+      "Pprime_0_over_log_slope": 7.226717449880925,
+      "solver_rank": 2,
+      "effective_dimension": 2,
+      "rank_deficient": false,
+      "condition_number_hessian": 299.9175766153202,
+      "condition_number_basis": 9.615901831510259,
+      "scaled_hessian_singular_values": [
+        1.9933536617485232,
+        0.006646338251476456
+      ],
+      "scaled_hessian_rcond": 4.440892098500626e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d2_free",
+        "poly_d3_fixed1",
+        "poly_d3_free",
+        "spline_x0_0.05",
+        "spline_x0_0.10",
+        "spline_x0_0.20",
+        "spline_x0_0.35",
+        "spline_x0_0.50"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "6": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 12.500804818625276,
+        "x^2": -40.19677515639869,
+        "x^3": 36.45143605185335
+      },
+      "monomialcoeffs": [
+        12.500804818625276,
+        -40.19677515639869,
+        36.45143605185335
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.040238606912603725,
+      "E_log": 0.3899799381458777,
+      "E_log_times_logN": 0.6987502469818476,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 8.75546571407994,
+      "Pprime_0": 12.500804818625276,
+      "Pprime_0_over_log_slope": 12.500804818625276,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 19297.15009968352,
+      "condition_number_basis": 63.42880432750799,
+      "scaled_hessian_singular_values": [
+        2.9783623415557163,
+        0.02148331636132574,
+        0.0001543420829589009
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free",
+        "spline_x0_0.20",
+        "spline_x0_0.35",
+        "spline_x0_0.50"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "7": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.11609611901279854,
+        "(x0-x)_+^2-x0^2": -2537.8873286215576,
+        "(x0-x)_+^3-x0^3": 24495.80992984455
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.040230430482914414,
+      "E_log": 0.3575585882530767,
+      "E_log_times_logN": 0.6957768857635518,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 0.9991594753838235,
+      "Pprime_0": -227.1807360520122,
+      "Pprime_0_over_log_slope": -227.1807360520122,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 68086.04772981345,
+      "condition_number_basis": 206.8470559622525,
+      "scaled_hessian_singular_values": [
+        2.9651397213024984,
+        0.0348167288099674,
+        4.354988753450769e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "8": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.856931242455015,
+        "(x0-x)_+^2-x0^2": 400.42440216585237,
+        "(x0-x)_+^3-x0^3": -4494.940405267585
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.02888679035184394,
+      "E_log": 0.31317295003529905,
+      "E_log_times_logN": 0.6512248420338245,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3476276260640767,
+      "Pprime_0": 55.62026296731213,
+      "Pprime_0_over_log_slope": 55.62026296731213,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 32852.54890304511,
+      "condition_number_basis": 81.05392030869692,
+      "scaled_hessian_singular_values": [
+        2.963015729540714,
+        0.036894079109498296,
+        9.019134978796337e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "9": {
+    "bestprofile": {
+      "family": "spline_x0_0.20",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9079300472367688,
+        "(x0-x)_+^2-x0^2": 81.47780381815335,
+        "(x0-x)_+^3-x0^3": -463.13583980832215
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.2,
+      "E": 0.02918530469339453,
+      "E_log": 0.28077359232744276,
+      "E_log_times_logN": 0.6169226377288374,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3539046129772125,
+      "Pprime_0": 23.893109296974096,
+      "Pprime_0_over_log_slope": 23.893109296974096,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 20297.64642562823,
+      "condition_number_basis": 63.807273652778996,
+      "scaled_hessian_singular_values": [
+        2.9722625808008587,
+        0.027590985345753886,
+        0.0001464338533874557
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.20"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "10": {
+    "bestprofile": {
+      "family": "spline_x0_0.20",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.948887989901036,
+        "(x0-x)_+^2-x0^2": 197.66105481729346,
+        "(x0-x)_+^3-x0^3": -1038.1477286068987
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.2,
+      "E": 0.02888679035182129,
+      "E_log": 0.25605627928233415,
+      "E_log_times_logN": 0.5895913716430228,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3476276260644875,
+      "Pprime_0": 46.46219349581152,
+      "Pprime_0_over_log_slope": 46.46219349581152,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 160223.97155796297,
+      "condition_number_basis": 177.89893583654666,
+      "scaled_hessian_singular_values": [
+        2.9745674118973793,
+        0.025414023044078023,
+        1.856505854257453e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.20"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "11": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.7220364361679901,
+        "(x0-x)_+^2-x0^2": -8749.67188027464,
+        "(x0-x)_+^3-x0^3": 170644.94352382908
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.030229442808547446,
+      "E_log": 0.24572410803564715,
+      "E_log_times_logN": 0.5892206770712745,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2655981963759544,
+      "Pprime_0": -404.14785196508626,
+      "Pprime_0_over_log_slope": -404.14785196508626,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 104255.60434948477,
+      "condition_number_basis": 235.04968454574447,
+      "scaled_hessian_singular_values": [
+        2.9650944627023175,
+        0.03487709667349538,
+        2.844062418709648e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05",
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "12": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9051446372903038,
+        "(x0-x)_+^2-x0^2": 2044.5232924400325,
+        "(x0-x)_+^3-x0^3": -44269.752564766255
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.024684896121879518,
+      "E_log": 0.22938902859221277,
+      "E_log_times_logN": 0.5700103225371993,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3275554767860047,
+      "Pprime_0": 128.47595962903404,
+      "Pprime_0_over_log_slope": 128.47595962903404,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 48274.689864463806,
+      "condition_number_basis": 119.77527484154066,
+      "scaled_hessian_singular_values": [
+        2.972373762691254,
+        0.027564665214320376,
+        6.157209442539147e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "13": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.934300753722437,
+        "(x0-x)_+^2-x0^2": 412.63167456134425,
+        "(x0-x)_+^3-x0^3": -4519.571468676956
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.02468489612187641,
+      "E_log": 0.2158590536515983,
+      "E_log_times_logN": 0.5536675409659224,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3275554767859505,
+      "Pprime_0": 53.99510990176229,
+      "Pprime_0_over_log_slope": 53.99510990176229,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 29176.913354741086,
+      "condition_number_basis": 94.40336774105221,
+      "scaled_hessian_singular_values": [
+        2.9759011275611167,
+        0.023996877375478464,
+        0.00010199506340438679
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "14": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.8943094065524234,
+        "(x0-x)_+^2-x0^2": 44.41245322561441,
+        "(x0-x)_+^3-x0^3": -848.446657174252
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.023459066983866017,
+      "E_log": 0.19918169976755784,
+      "E_log_times_logN": 0.5256519246967993,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2986315314705315,
+      "Pprime_0": 17.465218476657107,
+      "Pprime_0_over_log_slope": 17.465218476657107,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 18611.969672666313,
+      "condition_number_basis": 47.25746994352001,
+      "scaled_hessian_singular_values": [
+        2.9652201550083235,
+        0.03462052707921656,
+        0.00015931791245947865
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "15": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.7835414091382402,
+        "(x0-x)_+^2-x0^2": -497.6750850189606,
+        "(x0-x)_+^3-x0^3": 6119.871265228565
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.022350149751668602,
+      "E_log": 0.18935366985947666,
+      "E_log_times_logN": 0.5127792437423973,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2627452135320711,
+      "Pprime_0": 4.652015421820053,
+      "Pprime_0_over_log_slope": 4.652015421820053,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 14056.03412052175,
+      "condition_number_basis": 62.608727760863395,
+      "scaled_hessian_singular_values": [
+        2.972396249437019,
+        0.02739228293107717,
+        0.00021146763190460195
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "17": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.817783365549212,
+        "(x0-x)_+^2-x0^2": -295.11693268941434,
+        "(x0-x)_+^3-x0^3": 2507.0046748015443
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.022363298775632146,
+      "E_log": 0.18028908414827077,
+      "E_log_times_logN": 0.5107974389965548,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.261948017641811,
+      "Pprime_0": -15.368970340614261,
+      "Pprime_0_over_log_slope": -15.368970340614261,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 3669.7918353675286,
+      "condition_number_basis": 56.121918187619514,
+      "scaled_hessian_singular_values": [
+        2.9704514169007115,
+        0.02873914988068723,
+        0.0008094332186019542
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "18": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.005242725324893,
+        "(x0-x)_+^2-x0^2": 1044.1643541544552,
+        "(x0-x)_+^3-x0^3": -23503.399375596757
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.02111470443981478,
+      "E_log": 0.17357285991244192,
+      "E_log_times_logN": 0.5016900922281895,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3327567618883496,
+      "Pprime_0": 72.86430262685508,
+      "Pprime_0_over_log_slope": 72.86430262685508,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 7378.871802619497,
+      "condition_number_basis": 55.84408804875404,
+      "scaled_hessian_singular_values": [
+        2.9727794778633765,
+        0.026817644900456756,
+        0.00040287723616610886
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "20": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0151186856860992,
+        "(x0-x)_+^2-x0^2": 101.17774035142287,
+        "(x0-x)_+^3-x0^3": -1315.301451498096
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.02029208733412413,
+      "E_log": 0.15995737558166812,
+      "E_log_times_logN": 0.47918947242300025,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3186427336699666,
+      "Pprime_0": 20.23861416034441,
+      "Pprime_0_over_log_slope": 20.23861416034441,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 5371.234926605387,
+      "condition_number_basis": 51.86962677671171,
+      "scaled_hessian_singular_values": [
+        2.9712608164479724,
+        0.028186003351004414,
+        0.0005531802010242373
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "21": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.026073030533166,
+        "(x0-x)_+^2-x0^2": 56.23360742378547,
+        "(x0-x)_+^3-x0^3": -853.8552138740686
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.020309868762069416,
+      "E_log": 0.15312407265811978,
+      "E_log_times_logN": 0.4661896749632374,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.31759217016938,
+      "Pprime_0": 15.395007961998132,
+      "Pprime_0_over_log_slope": 15.395007961998132,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 9441.431691807398,
+      "condition_number_basis": 54.27388535291461,
+      "scaled_hessian_singular_values": [
+        2.966446826937702,
+        0.03323897846514766,
+        0.00031419459715116864
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "23": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.97481297293243,
+        "(x0-x)_+^2-x0^2": -684.1875187021911,
+        "(x0-x)_+^3-x0^3": 11076.828885719722
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.020149355286045223,
+      "E_log": 0.1462221347559386,
+      "E_log_times_logN": 0.45847865776805813,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3006781589729424,
+      "Pprime_0": -13.682651799746395,
+      "Pprime_0_over_log_slope": -13.682651799746395,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 3063.8885982342567,
+      "condition_number_basis": 52.297943463449506,
+      "scaled_hessian_singular_values": [
+        2.970347002079682,
+        0.028683528271913672,
+        0.0009694696484041608
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "25": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.061170682027574,
+        "(x0-x)_+^2-x0^2": 1229.6863545351348,
+        "(x0-x)_+^3-x0^3": -26718.858523966035
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.019767322533815967,
+      "E_log": 0.13907285965703975,
+      "E_log_times_logN": 0.4476582658453333,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3268121111854914,
+      "Pprime_0": 78.4839741582594,
+      "Pprime_0_over_log_slope": 78.4839741582594,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 24838.94721098243,
+      "condition_number_basis": 78.65187626109216,
+      "scaled_hessian_singular_values": [
+        2.9726613614042328,
+        0.027218961165956495,
+        0.00011967742981030547
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "27": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0584206169276038,
+        "(x0-x)_+^2-x0^2": -1097.5381187494072,
+        "(x0-x)_+^3-x0^3": 19846.35026779724
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.020245102476911025,
+      "E_log": 0.1340810612796271,
+      "E_log_times_logN": 0.4419093047983806,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3214721303264665,
+      "Pprime_0": -38.03539451661099,
+      "Pprime_0_over_log_slope": -38.03539451661099,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 10767.364303115344,
+      "condition_number_basis": 68.33248822850156,
+      "scaled_hessian_singular_values": [
+        2.9727304854833974,
+        0.026993427407278288,
+        0.0002760871093238009
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "30": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0588137633930863,
+        "(x0-x)_+^2-x0^2": 1621.6281494077286,
+        "(x0-x)_+^3-x0^3": -34451.905250633456
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.018463848612539913,
+      "E_log": 0.1284047280583535,
+      "E_log_times_logN": 0.4367298248651131,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.3112315462029471,
+      "Pprime_0": 97.28528820237116,
+      "Pprime_0_over_log_slope": 97.28528820237116,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 17040.37925105179,
+      "condition_number_basis": 74.73538341017817,
+      "scaled_hessian_singular_values": [
+        2.973801164321838,
+        0.026024320714586126,
+        0.00017451496357619417
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "32": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.035730248005787,
+        "(x0-x)_+^2-x0^2": 28.80420512934105,
+        "(x0-x)_+^3-x0^3": -2634.9391669466813
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.017931836600934448,
+      "E_log": 0.12169461163712625,
+      "E_log_times_logN": 0.42176138472805785,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2930871310507697,
+      "Pprime_0": 17.917353487171795,
+      "Pprime_0_over_log_slope": 17.917353487171795,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 4658.6874554857395,
+      "condition_number_basis": 49.053847602198594,
+      "scaled_hessian_singular_values": [
+        2.9626654439254043,
+        0.03669861183660288,
+        0.0006359442379927805
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "35": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9379725939771566,
+        "(x0-x)_+^2-x0^2": 239.7034751748833,
+        "(x0-x)_+^3-x0^3": -7406.529212009449
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.016618312159127346,
+      "E_log": 0.11392300272390404,
+      "E_log_times_logN": 0.40503592689348544,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2645300575411296,
+      "Pprime_0": 32.5165941665597,
+      "Pprime_0_over_log_slope": 32.5165941665597,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 14405.200071624859,
+      "condition_number_basis": 55.314210339749785,
+      "scaled_hessian_singular_values": [
+        2.9639888331037305,
+        0.035805408641030455,
+        0.0002057582552388252
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "38": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9445840790034138,
+        "(x0-x)_+^2-x0^2": -669.3441513131278,
+        "(x0-x)_+^3-x0^3": 10835.636784012711
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.01677284901647491,
+      "E_log": 0.1100532220844298,
+      "E_log_times_logN": 0.40032807748761606,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2634898592846442,
+      "Pprime_0": -13.38827666977916,
+      "Pprime_0_over_log_slope": -13.38827666977916,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 8741.060292173524,
+      "condition_number_basis": 59.485474677482095,
+      "scaled_hessian_singular_values": [
+        2.974474879193129,
+        0.025184833155285528,
+        0.00034028765158574433
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "41": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9511143008826403,
+        "(x0-x)_+^2-x0^2": -121.80728515048715,
+        "(x0-x)_+^3-x0^3": 910.8739485362362
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.01670521922128254,
+      "E_log": 0.10799837016669483,
+      "E_log_times_logN": 0.40105973070062984,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2583132038512757,
+      "Pprime_0": -2.0136471251070205,
+      "Pprime_0_over_log_slope": -2.0136471251070205,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2014.0549192909948,
+      "condition_number_basis": 41.71144936554756,
+      "scaled_hessian_singular_values": [
+        2.972040492331153,
+        0.02648385749473076,
+        0.0014756501741161044
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "45": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9776922363265569,
+        "(x0-x)_+^2-x0^2": 245.55725981088065,
+        "(x0-x)_+^3-x0^3": -7178.022757393219
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.014900163249041865,
+      "E_log": 0.10279320899258915,
+      "E_log_times_logN": 0.3912990528752102,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2610519314735078,
+      "Pprime_0": 30.257136935687644,
+      "Pprime_0_over_log_slope": 30.257136935687644,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2528.7158280246795,
+      "condition_number_basis": 52.73344512766228,
+      "scaled_hessian_singular_values": [
+        2.9743727271148535,
+        0.0244510344584514,
+        0.0011762384266951426
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "49": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9910507753578587,
+        "(x0-x)_+^2-x0^2": 202.35293696803794,
+        "(x0-x)_+^3-x0^3": -6185.834871919616
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.01473540944826257,
+      "E_log": 0.09769940081537176,
+      "E_log_times_logN": 0.3802285112065097,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2583977919277158,
+      "Pprime_0": 27.14951861795119,
+      "Pprime_0_over_log_slope": 27.14951861795119,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 48686.712592746735,
+      "condition_number_basis": 61.214000227843385,
+      "scaled_hessian_singular_values": [
+        2.9690997774250625,
+        0.03083923879477851,
+        6.098378015909405e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "50": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 0.9911856536720278,
+        "(x0-x)_+^2-x0^2": 119.9240487529214,
+        "(x0-x)_+^3-x0^3": -4530.199833945436
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.01475156913075959,
+      "E_log": 0.09647854987830495,
+      "E_log_times_logN": 0.37742630665427584,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.257650511032904,
+      "Pprime_0": 22.97527953297066,
+      "Pprime_0_over_log_slope": 22.97527953297066,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 108524.37147590047,
+      "condition_number_basis": 63.28972538182804,
+      "scaled_hessian_singular_values": [
+        2.9679309045085946,
+        0.03204174743249341,
+        2.7348058911980616e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "53": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0126074714666353,
+        "(x0-x)_+^2-x0^2": 62.750187206420996,
+        "(x0-x)_+^3-x0^3": -875.357110210514
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.014701722548289609,
+      "E_log": 0.09355535102496204,
+      "E_log_times_logN": 0.371442053643937,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2604627096129395,
+      "Pprime_0": 14.72328333649786,
+      "Pprime_0_over_log_slope": 14.72328333649786,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 12065.14507627231,
+      "condition_number_basis": 49.78470090699229,
+      "scaled_hessian_singular_values": [
+        2.9751798236195137,
+        0.024573583421611728,
+        0.0002465929588754465
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "57": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0198127419876453,
+        "(x0-x)_+^2-x0^2": 108.5765112493499,
+        "(x0-x)_+^3-x0^3": -1325.3931288826811
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.014571264949628793,
+      "E_log": 0.0899510490497556,
+      "E_log_times_logN": 0.36367670290366216,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2594407583768275,
+      "Pprime_0": 19.066304358598103,
+      "Pprime_0_over_log_slope": 19.066304358598103,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 52620.4135552987,
+      "condition_number_basis": 50.909623947960796,
+      "scaled_hessian_singular_values": [
+        2.9748119527431465,
+        0.02513151383661272,
+        5.6533420240358275e-05
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "62": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 2.2347110798688727,
+        "x^2": -1.0327814757654854,
+        "x^3": -0.18698733940037374
+      },
+      "monomialcoeffs": [
+        2.2347110798688727,
+        -1.0327814757654854,
+        -0.18698733940037374
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.01464558129542104,
+      "E_log": 0.0873969712758137,
+      "E_log_times_logN": 0.3606990453012089,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0149422647030135,
+      "Pprime_0": 2.2347110798688727,
+      "Pprime_0_over_log_slope": 2.2347110798688727,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 26303.797888129036,
+      "condition_number_basis": 29.748920262903603,
+      "scaled_hessian_singular_values": [
+        2.9908162742264897,
+        0.009070022942955606,
+        0.0001137028305549843
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "68": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.9893583268149673,
+        "x^2": -0.3228299368316662,
+        "x^3": -0.690267880090623
+      },
+      "monomialcoeffs": [
+        1.9893583268149673,
+        -0.3228299368316662,
+        -0.690267880090623
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.014578526908727185,
+      "E_log": 0.08476651704050231,
+      "E_log_times_logN": 0.3576729717933413,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 0.976260509892678,
+      "Pprime_0": 1.9893583268149673,
+      "Pprime_0_over_log_slope": 1.9893583268149673,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 25562.714761452098,
+      "condition_number_basis": 29.28080422101811,
+      "scaled_hessian_singular_values": [
+        2.9911756904078595,
+        0.008707296367280667,
+        0.00011701322485976621
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "73": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.035062288708238,
+        "(x0-x)_+^2-x0^2": 486.48827515438427,
+        "(x0-x)_+^3-x0^3": -11457.583327071243
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.01385104310823071,
+      "E_log": 0.08211325123573743,
+      "E_log_times_logN": 0.3523035740077594,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2510395167061827,
+      "Pprime_0": 38.31810972630415,
+      "Pprime_0_over_log_slope": 38.31810972630415,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 8524.98096099027,
+      "condition_number_basis": 50.63057447600375,
+      "scaled_hessian_singular_values": [
+        2.977909154235445,
+        0.021741530127620978,
+        0.00034931563693363707
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "80": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0538003443516017,
+        "(x0-x)_+^2-x0^2": 114.45805159861041,
+        "(x0-x)_+^3-x0^3": -3857.3422996592776
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.01380152450067984,
+      "E_log": 0.07817390356051745,
+      "E_log_times_logN": 0.34256012753861487,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2498230028124855,
+      "Pprime_0": 18.538062431935145,
+      "Pprime_0_over_log_slope": 18.538062431935145,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 20152.837050942842,
+      "condition_number_basis": 55.075278964735894,
+      "scaled_hessian_singular_values": [
+        2.9722923085826296,
+        0.02756020387995447,
+        0.0001474875374156599
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "86": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.868822002160036,
+        "x^2": -0.2449334452990162,
+        "x^3": -0.6129532720810419
+      },
+      "monomialcoeffs": [
+        1.868822002160036,
+        -0.2449334452990162,
+        -0.6129532720810419
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.013519320839905813,
+      "E_log": 0.07500057631908741,
+      "E_log_times_logN": 0.33407861434438185,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0109352847799777,
+      "Pprime_0": 1.868822002160036,
+      "Pprime_0_over_log_slope": 1.868822002160036,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 25406.599212260673,
+      "condition_number_basis": 27.967464431556568,
+      "scaled_hessian_singular_values": [
+        2.9914823851643466,
+        0.008399870529925028,
+        0.00011774430572828189
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "94": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.7810490318034917,
+        "x^2": -0.029249909214332067,
+        "x^3": -0.7463552137567658
+      },
+      "monomialcoeffs": [
+        1.7810490318034917,
+        -0.029249909214332067,
+        -0.7463552137567658
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.013341786030579561,
+      "E_log": 0.07266408954183068,
+      "E_log_times_logN": 0.33013437887379965,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0054439088323939,
+      "Pprime_0": 1.7810490318034917,
+      "Pprime_0_over_log_slope": 1.7810490318034917,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 26245.220223741497,
+      "condition_number_basis": 27.45378026699897,
+      "scaled_hessian_singular_values": [
+        2.9917495732319574,
+        0.008136434599269627,
+        0.00011399216877310151
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "102": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.565997188655982,
+        "x^2": 0.6132605429213686,
+        "x^3": -1.2083941791459654
+      },
+      "monomialcoeffs": [
+        1.565997188655982,
+        0.6132605429213686,
+        -1.2083941791459654
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.013413988234258989,
+      "E_log": 0.07178532141228433,
+      "E_log_times_logN": 0.33200515992468826,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 0.9708635524313851,
+      "Pprime_0": 1.565997188655982,
+      "Pprime_0_over_log_slope": 1.565997188655982,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 26010.228551513967,
+      "condition_number_basis": 26.98939459040982,
+      "scaled_hessian_singular_values": [
+        2.9921339012465267,
+        0.0077510619365039925,
+        0.00011503681697069766
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "110": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0527012986042665,
+        "(x0-x)_+^2-x0^2": 298.913918309843,
+        "(x0-x)_+^3-x0^3": -7454.597922856746
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.012493441154958207,
+      "E_log": 0.06951140670340517,
+      "E_log_times_logN": 0.3267370024079673,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2372412431867523,
+      "Pprime_0": 27.070793889045568,
+      "Pprime_0_over_log_slope": 27.070793889045568,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2783.900326710065,
+      "condition_number_basis": 53.12424475142936,
+      "scaled_hessian_singular_values": [
+        2.973937013469094,
+        0.024994723782798833,
+        0.0010682627481076554
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "120": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0552655592121432,
+        "(x0-x)_+^2-x0^2": -76.60457999100396,
+        "(x0-x)_+^3-x0^3": 118.43406838734346
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.012396363666781651,
+      "E_log": 0.06611390592607846,
+      "E_log_times_logN": 0.31651977870416964,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2319727506412352,
+      "Pprime_0": 7.827468045407464,
+      "Pprime_0_over_log_slope": 7.827468045407464,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 5015.274506802531,
+      "condition_number_basis": 48.96954204882335,
+      "scaled_hessian_singular_values": [
+        2.9617741027051587,
+        0.03763534654857859,
+        0.0005905507462628255
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "130": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0340830854788408,
+        "(x0-x)_+^2-x0^2": -73.41607491266508,
+        "(x0-x)_+^3-x0^3": -67.79977271954479
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.012091791909245253,
+      "E_log": 0.06417175449843959,
+      "E_log_times_logN": 0.3123582257673327,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2260982443504465,
+      "Pprime_0": 8.884188872141936,
+      "Pprime_0_over_log_slope": 8.884188872141936,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 5992.064276821752,
+      "condition_number_basis": 56.796439162966756,
+      "scaled_hessian_singular_values": [
+        2.972125133764605,
+        0.02737885601313164,
+        0.0004960102222636785
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "141": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.7886213931716244,
+        "x^2": -0.26109961376928176,
+        "x^3": -0.4855424880878704
+      },
+      "monomialcoeffs": [
+        1.7886213931716244,
+        -0.26109961376928176,
+        -0.4855424880878704
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.01196621791425767,
+      "E_log": 0.06211220672128226,
+      "E_log_times_logN": 0.3073783973251589,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.041979291314472,
+      "Pprime_0": 1.7886213931716244,
+      "Pprime_0_over_log_slope": 1.7886213931716244,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 28868.14402608153,
+      "condition_number_basis": 25.311439492394562,
+      "scaled_hessian_singular_values": [
+        2.9927190767443603,
+        0.0071772546902471555,
+        0.00010366856539306876
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "153": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.720862285869188,
+        "x^2": -0.08099024598133887,
+        "x^3": -0.6052028934731697
+      },
+      "monomialcoeffs": [
+        1.720862285869188,
+        -0.08099024598133887,
+        -0.6052028934731697
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.01181515523583787,
+      "E_log": 0.06066470116541689,
+      "E_log_times_logN": 0.30517001323245296,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0346691464146793,
+      "Pprime_0": 1.720862285869188,
+      "Pprime_0_over_log_slope": 1.720862285869188,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 28854.529637751333,
+      "condition_number_basis": 24.937848825019696,
+      "scaled_hessian_singular_values": [
+        2.992939662368754,
+        0.006956612507324196,
+        0.00010372512392137532
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "166": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.6103344432253743,
+        "x^2": 0.2119606349407082,
+        "x^3": -0.7986466015576983
+      },
+      "monomialcoeffs": [
+        1.6103344432253743,
+        0.2119606349407082,
+        -0.7986466015576983
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.011713903401638581,
+      "E_log": 0.05929049914182105,
+      "E_log_times_logN": 0.3030923075785533,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0236484766083842,
+      "Pprime_0": 1.6103344432253743,
+      "Pprime_0_over_log_slope": 1.6103344432253743,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 28230.398104414708,
+      "condition_number_basis": 24.585171876205795,
+      "scaled_hessian_singular_values": [
+        2.993129438014966,
+        0.006764536932644391,
+        0.00010602505239013601
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "180": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0718847059915473,
+        "(x0-x)_+^2-x0^2": 358.94769144434747,
+        "(x0-x)_+^3-x0^3": -8368.978808579861
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.011435751774966474,
+      "E_log": 0.05758372208167373,
+      "E_log_times_logN": 0.29902978408378544,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2206378284531612,
+      "Pprime_0": 27.944456625905772,
+      "Pprime_0_over_log_slope": 27.944456625905772,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 8501.174877174646,
+      "condition_number_basis": 52.26411908522713,
+      "scaled_hessian_singular_values": [
+        2.9757175995174823,
+        0.023932364441322226,
+        0.0003500360411955739
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "196": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.5767763154030843,
+        "x^2": 0.19706568519141202,
+        "x^3": -0.7379073998149147
+      },
+      "monomialcoeffs": [
+        1.5767763154030843,
+        0.19706568519141202,
+        -0.7379073998149147
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.011258120488743195,
+      "E_log": 0.055434250324038925,
+      "E_log_times_logN": 0.2925883292587639,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0359346007795818,
+      "Pprime_0": 1.5767763154030843,
+      "Pprime_0_over_log_slope": 1.5767763154030843,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 28431.307105782893,
+      "condition_number_basis": 23.919525701851743,
+      "scaled_hessian_singular_values": [
+        2.993328033026268,
+        0.006566684159196192,
+        0.00010528281453572103
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "200": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.575850335846761,
+        "x^2": 0.1759602319661051,
+        "x^3": -0.7126311818141761
+      },
+      "monomialcoeffs": [
+        1.575850335846761,
+        0.1759602319661051,
+        -0.7126311818141761
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.011182195020373653,
+      "E_log": 0.05480401649910749,
+      "E_log_times_logN": 0.2903690723738063,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0391793859986902,
+      "Pprime_0": 1.575850335846761,
+      "Pprime_0_over_log_slope": 1.575850335846761,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 28258.740753803308,
+      "condition_number_basis": 23.840593613470862,
+      "scaled_hessian_singular_values": [
+        2.993318601571705,
+        0.00657547302179312,
+        0.00010592540650166225
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "213": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.5599537954264433,
+        "x^2": 0.17455889406703254,
+        "x^3": -0.6908627843261635
+      },
+      "monomialcoeffs": [
+        1.5599537954264433,
+        0.17455889406703254,
+        -0.6908627843261635
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.01100635915088577,
+      "E_log": 0.053324312092428494,
+      "E_log_times_logN": 0.2858872166629813,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0436499051673125,
+      "Pprime_0": 1.5599537954264433,
+      "Pprime_0_over_log_slope": 1.5599537954264433,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 28189.209723454216,
+      "condition_number_basis": 23.594018311444245,
+      "scaled_hessian_singular_values": [
+        2.993367448879984,
+        0.006526362706852075,
+        0.00010618841316397097
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "231": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.026232248887925,
+        "(x0-x)_+^2-x0^2": -179.99402587087394,
+        "(x0-x)_+^3-x0^3": 2182.983459740286
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.010826007236054203,
+      "E_log": 0.05259113315948638,
+      "E_log_times_logN": 0.2862229145235986,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2033443810975741,
+      "Pprime_0": 2.6532588879231724,
+      "Pprime_0_over_log_slope": 2.6532588879231724,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 1228.0122061710056,
+      "condition_number_basis": 47.37517354190738,
+      "scaled_hessian_singular_values": [
+        2.9670750881917236,
+        0.030508750899385036,
+        0.002416160908891281
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "250": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.5966807756498487,
+        "x^2": 0.07336604625322168,
+        "x^3": -0.6234952714436522
+      },
+      "monomialcoeffs": [
+        1.5966807756498487,
+        0.07336604625322168,
+        -0.6234952714436522
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.010650733531738621,
+      "E_log": 0.051349323524268575,
+      "E_log_times_logN": 0.2835232829979134,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.046551550459418,
+      "Pprime_0": 1.5966807756498487,
+      "Pprime_0_over_log_slope": 1.5966807756498487,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 30395.618414375247,
+      "condition_number_basis": 22.947209473242573,
+      "scaled_hessian_singular_values": [
+        2.9938156439004167,
+        0.0060858611256329135,
+        9.849497394942053e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "272": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0435185510874216,
+        "(x0-x)_+^2-x0^2": 321.030881544758,
+        "(x0-x)_+^3-x0^3": -7678.466783600005
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.0100921367579494,
+      "E_log": 0.050001888131564476,
+      "E_log_times_logN": 0.2803006878066255,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.2007496951755274,
+      "Pprime_0": 26.52893127361167,
+      "Pprime_0_over_log_slope": 26.52893127361167,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 6801.011493107003,
+      "condition_number_basis": 50.27680638439906,
+      "scaled_hessian_singular_values": [
+        2.972868921914087,
+        0.026693956501141175,
+        0.00043712158477120125
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "295": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0433917827574302,
+        "(x0-x)_+^2-x0^2": -54.76697788505438,
+        "(x0-x)_+^3-x0^3": -136.97674612046558
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.010034923182774547,
+      "E_log": 0.04826425038594495,
+      "E_log_times_logN": 0.2744776025370836,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1974313207351244,
+      "Pprime_0": 7.547415167166361,
+      "Pprime_0_over_log_slope": 7.547415167166361,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 3730.6074579245674,
+      "condition_number_basis": 48.71382156854416,
+      "scaled_hessian_singular_values": [
+        2.968731578209171,
+        0.030472644799630605,
+        0.0007957769911983055
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "320": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0661971145362175,
+        "(x0-x)_+^2-x0^2": 72.35863487901639,
+        "(x0-x)_+^3-x0^3": -2494.0560737388823
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.009841863534009065,
+      "E_log": 0.04680975802402343,
+      "E_log_times_logN": 0.27001371001800034,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.197057536556037,
+      "Pprime_0": 12.535754179676198,
+      "Pprime_0_over_log_slope": 12.535754179676198,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 26699.086660346242,
+      "condition_number_basis": 48.84370114011124,
+      "scaled_hessian_singular_values": [
+        2.9691188089531417,
+        0.0307699842911075,
+        0.00011120675574879898
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "348": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0331730157270986,
+        "(x0-x)_+^2-x0^2": -123.93771738096126,
+        "(x0-x)_+^3-x0^3": 1214.2926153220353
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.009685689973830125,
+      "E_log": 0.04579312908790745,
+      "E_log_times_logN": 0.2679906636048846,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1912307322642475,
+      "Pprime_0": 4.31975013890796,
+      "Pprime_0_over_log_slope": 4.31975013890796,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2451.209872321163,
+      "condition_number_basis": 47.69848508222581,
+      "scaled_hessian_singular_values": [
+        2.9745528004724613,
+        0.024233695602778008,
+        0.0012135039247601108
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "377": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.6555952394532278,
+        "x^2": -0.20666489150763162,
+        "x^3": -0.3857168446051394
+      },
+      "monomialcoeffs": [
+        1.6555952394532278,
+        -0.20666489150763162,
+        -0.3857168446051394
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.009582591658544137,
+      "E_log": 0.044809237319868744,
+      "E_log_times_logN": 0.26581938244400716,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0632135033404568,
+      "Pprime_0": 1.6555952394532278,
+      "Pprime_0_over_log_slope": 1.6555952394532278,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31741.78098843133,
+      "condition_number_basis": 21.44486724572527,
+      "scaled_hessian_singular_values": [
+        2.9944204481650845,
+        0.005485214959198242,
+        9.433687571773105e-05
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "409": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.5978750068188836,
+        "x^2": -0.06501795094105332,
+        "x^3": -0.47404173182256043
+      },
+      "monomialcoeffs": [
+        1.5978750068188836,
+        -0.06501795094105332,
+        -0.47404173182256043
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.00946561555888692,
+      "E_log": 0.04382333163249008,
+      "E_log_times_logN": 0.26354103362659553,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0588153240552698,
+      "Pprime_0": 1.5978750068188836,
+      "Pprime_0_over_log_slope": 1.5978750068188836,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31246.300463983174,
+      "condition_number_basis": 21.18976772008705,
+      "scaled_hessian_singular_values": [
+        2.99453155452029,
+        0.00537260912436412,
+        9.583635534619566e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "444": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0586152937368258,
+        "(x0-x)_+^2-x0^2": 271.1543882739155,
+        "(x0-x)_+^3-x0^3": -6456.226218131016
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.00927890752207905,
+      "E_log": 0.0427575571863692,
+      "E_log_times_logN": 0.26064256732626984,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.187757600318414,
+      "Pprime_0": 22.3648731023279,
+      "Pprime_0_over_log_slope": 22.3648731023279,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 9708.246513794871,
+      "condition_number_basis": 46.00871739590242,
+      "scaled_hessian_singular_values": [
+        2.9758988152459707,
+        0.023794651662701068,
+        0.0003065330913278094
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "482": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.5693760941050257,
+        "x^2": -0.05253844952337452,
+        "x^3": -0.4543726248556707
+      },
+      "monomialcoeffs": [
+        1.5693760941050257,
+        -0.05253844952337452,
+        -0.4543726248556707
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.00913415076873636,
+      "E_log": 0.04143174212514311,
+      "E_log_times_logN": 0.2559629873968902,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0624650197259804,
+      "Pprime_0": 1.5693760941050257,
+      "Pprime_0_over_log_slope": 1.5693760941050257,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31369.15450226106,
+      "condition_number_basis": 20.688106994132852,
+      "scaled_hessian_singular_values": [
+        2.9946760593181585,
+        0.005228475053046804,
+        9.546562879475458e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "500": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.5534048901378992,
+        "x^2": -0.025560396313076054,
+        "x^3": -0.4652224410754002
+      },
+      "monomialcoeffs": [
+        1.5534048901378992,
+        -0.025560396313076054,
+        -0.4652224410754002
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.00907061289795208,
+      "E_log": 0.040906521378383354,
+      "E_log_times_logN": 0.2542179990363817,
+      "gap_closure": 0.9509008984312712,
+      "E_opt": 0.007426788071840162,
+      "P_at_1": 1.0626220527494228,
+      "Pprime_0": 1.5534048901378992,
+      "Pprime_0_over_log_slope": 1.5534048901378992,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31274.044400420236,
+      "condition_number_basis": 20.575889234322776,
+      "scaled_hessian_singular_values": [
+        2.9947001986815316,
+        0.005204044589332062,
+        9.575672913738305e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "524": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.52795591175849,
+        "x^2": 0.0249651196101034,
+        "x^3": -0.49079130638556207
+      },
+      "monomialcoeffs": [
+        1.52795591175849,
+        0.0249651196101034,
+        -0.49079130638556207
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.009000966275431121,
+      "E_log": 0.04028983183226664,
+      "E_log_times_logN": 0.2522744469804308,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0621297249830315,
+      "Pprime_0": 1.52795591175849,
+      "Pprime_0_over_log_slope": 1.52795591175849,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31169.908898149144,
+      "condition_number_basis": 20.433001467342738,
+      "scaled_hessian_singular_values": [
+        2.9947357421962373,
+        0.005168180020797055,
+        9.607778296631671e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "568": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4908656873654866,
+        "x^2": 0.11789319002820978,
+        "x^3": -0.5495889843645729
+      },
+      "monomialcoeffs": [
+        1.4908656873654866,
+        0.11789319002820978,
+        -0.5495889843645729
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.008912257105658794,
+      "E_log": 0.039583723990963327,
+      "E_log_times_logN": 0.25104478375583483,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0591698930291236,
+      "Pprime_0": 1.4908656873654866,
+      "Pprime_0_over_log_slope": 1.4908656873654866,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31530.60883495339,
+      "condition_number_basis": 20.19152635638772,
+      "scaled_hessian_singular_values": [
+        2.994857571828043,
+        0.005047445623808918,
+        9.4982548148835e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "617": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4054757482982005,
+        "x^2": 0.343961274975077,
+        "x^3": -0.6975322108404794
+      },
+      "monomialcoeffs": [
+        1.4054757482982005,
+        0.343961274975077,
+        -0.6975322108404794
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.008871300053755471,
+      "E_log": 0.039017576471778614,
+      "E_log_times_logN": 0.2506828184613901,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0519048124327979,
+      "Pprime_0": 1.4054757482982005,
+      "Pprime_0_over_log_slope": 1.4054757482982005,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 31074.002545053394,
+      "condition_number_basis": 19.95193800440282,
+      "scaled_hessian_singular_values": [
+        2.994981482288715,
+        0.004922135487013328,
+        9.6382224270799e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "669": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.03515539307002,
+        "(x0-x)_+^2-x0^2": 109.7565203815721,
+        "(x0-x)_+^3-x0^3": -3300.2512032918257
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.008509834556383322,
+      "E_log": 0.03797567871307783,
+      "E_log_times_logN": 0.24706156524409265,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.173295492527568,
+      "Pprime_0": 14.81138737960151,
+      "Pprime_0_over_log_slope": 14.81138737960151,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2872.13587770364,
+      "condition_number_basis": 45.90986225125321,
+      "scaled_hessian_singular_values": [
+        2.9784348218002936,
+        0.02052816778354783,
+        0.001037010416158181
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "727": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0282295096660545,
+        "(x0-x)_+^2-x0^2": -40.781439476259315,
+        "(x0-x)_+^3-x0^3": -310.97939388407013
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.008357768064525817,
+      "E_log": 0.03686624827999285,
+      "E_log_times_logN": 0.24290899941936947,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1690555325922116,
+      "Pprime_0": 7.438718911422512,
+      "Pprime_0_over_log_slope": 7.438718911422512,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2825.761521072246,
+      "condition_number_basis": 45.28197723536796,
+      "scaled_hessian_singular_values": [
+        2.973526784270453,
+        0.025420923537832606,
+        0.0010522921917140895
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "789": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0334115866656692,
+        "(x0-x)_+^2-x0^2": 171.83400989269506,
+        "(x0-x)_+^3-x0^3": -4514.302304270662
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.00810885374411452,
+      "E_log": 0.0360144470263406,
+      "E_log_times_logN": 0.24024396028720071,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1681143499677642,
+      "Pprime_0": 17.707277879426133,
+      "Pprime_0_over_log_slope": 17.707277879426133,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 23355.8371526051,
+      "condition_number_basis": 45.587445502682876,
+      "scaled_hessian_singular_values": [
+        2.975680328537668,
+        0.024192265182305512,
+        0.0001274062800273362
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "856": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0219942450824129,
+        "(x0-x)_+^2-x0^2": -67.05101921954967,
+        "(x0-x)_+^3-x0^3": 194.6628820810449
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.008100725473611625,
+      "E_log": 0.035282953568989694,
+      "E_log_times_logN": 0.23824004216667366,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1652889328711564,
+      "Pprime_0": 6.267124551429544,
+      "Pprime_0_over_log_slope": 6.267124551429544,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 5688.758020434843,
+      "condition_number_basis": 45.087425387093745,
+      "scaled_hessian_singular_values": [
+        2.9778120292339487,
+        0.021664515203599813,
+        0.000523455562450928
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "929": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.535395103566708,
+        "x^2": -0.0977207676528042,
+        "x^3": -0.3688803772157258
+      },
+      "monomialcoeffs": [
+        1.535395103566708,
+        -0.0977207676528042,
+        -0.3688803772157258
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.008086753206344222,
+      "E_log": 0.034595354721028926,
+      "E_log_times_logN": 0.23642841602134834,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0687939586981778,
+      "Pprime_0": 1.535395103566708,
+      "Pprime_0_over_log_slope": 1.535395103566708,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 35437.9681567123,
+      "condition_number_basis": 18.865264252515384,
+      "scaled_hessian_singular_values": [
+        2.995401337971555,
+        0.004514136828672539,
+        8.452519977232941e-05
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1000": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4813133137853454,
+        "x^2": 0.03912481800564646,
+        "x^3": -0.455626335797436
+      },
+      "monomialcoeffs": [
+        1.4813133137853454,
+        0.03912481800564646,
+        -0.455626335797436
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.008033246031892816,
+      "E_log": 0.034082675389091155,
+      "E_log_times_logN": 0.23543478084082897,
+      "gap_closure": 0.9465188172292562,
+      "E_opt": 0.006561374298160061,
+      "P_at_1": 1.064811795993556,
+      "Pprime_0": 1.4813133137853454,
+      "Pprime_0_over_log_slope": 1.4813133137853454,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 35057.234423476664,
+      "condition_number_basis": 18.687652729705693,
+      "scaled_hessian_singular_values": [
+        2.9954796699622013,
+        0.004434884630617157,
+        8.544540718124154e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1008": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.475683984790167,
+        "x^2": 0.0528207413686354,
+        "x^3": -0.46404413347344836
+      },
+      "monomialcoeffs": [
+        1.475683984790167,
+        0.0528207413686354,
+        -0.46404413347344836
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.008027107989414528,
+      "E_log": 0.03402319371622409,
+      "E_log_times_logN": 0.2352949985806165,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.064460592685354,
+      "Pprime_0": 1.475683984790167,
+      "Pprime_0_over_log_slope": 1.475683984790167,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 35016.84814626946,
+      "condition_number_basis": 18.66873919450501,
+      "scaled_hessian_singular_values": [
+        2.9954870271922043,
+        0.004427428643035633,
+        8.554416475976665e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1094": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.03736345111646,
+        "(x0-x)_+^2-x0^2": 127.418935803229,
+        "(x0-x)_+^3-x0^3": -3543.8749562533417
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.00785375519764342,
+      "E_log": 0.03322414439630628,
+      "E_log_times_logN": 0.23248913936560428,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1618004811400553,
+      "Pprime_0": 14.874532042693625,
+      "Pprime_0_over_log_slope": 14.874532042693625,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 6845.122830086374,
+      "condition_number_basis": 44.5275477556486,
+      "scaled_hessian_singular_values": [
+        2.979666051671451,
+        0.019898650653746443,
+        0.000435297674802112
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1188": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4916762374990327,
+        "x^2": -0.041345673587769007,
+        "x^3": -0.38090501814874556
+      },
+      "monomialcoeffs": [
+        1.4916762374990327,
+        -0.041345673587769007,
+        -0.38090501814874556
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007764783326806746,
+      "E_log": 0.03234356886099099,
+      "E_log_times_logN": 0.22899332463788732,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0694255457625181,
+      "Pprime_0": 1.4916762374990327,
+      "Pprime_0_over_log_slope": 1.4916762374990327,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 36079.246397041155,
+      "condition_number_basis": 18.29084883054473,
+      "scaled_hessian_singular_values": [
+        2.9955896963825515,
+        0.004327275561280378,
+        8.302805616882892e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1289": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0445185009369822,
+        "(x0-x)_+^2-x0^2": 145.9818125126079,
+        "(x0-x)_+^3-x0^3": -3834.3532000954865
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.007642754027851861,
+      "E_log": 0.031685356357012195,
+      "E_log_times_logN": 0.2269185452573476,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1588581196673984,
+      "Pprime_0": 15.203986250392346,
+      "Pprime_0_over_log_slope": 15.203986250392346,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 24505.3788425336,
+      "condition_number_basis": 43.952501496181384,
+      "scaled_hessian_singular_values": [
+        2.9781388079773405,
+        0.02173966201787491,
+        0.00012153000478442847
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1399": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4532072013901989,
+        "x^2": 0.0360463335130886,
+        "x^3": -0.4214978849791213
+      },
+      "monomialcoeffs": [
+        1.4532072013901989,
+        0.0360463335130886,
+        -0.4214978849791213
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007593015303530293,
+      "E_log": 0.03114816051404079,
+      "E_log_times_logN": 0.2256221048204175,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.067755649924166,
+      "Pprime_0": 1.4532072013901989,
+      "Pprime_0_over_log_slope": 1.4532072013901989,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 36746.860741385164,
+      "condition_number_basis": 17.933007060177562,
+      "scaled_hessian_singular_values": [
+        2.9957359274143482,
+        0.004182548997867885,
+        8.152358778339074e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1519": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4034629860441574,
+        "x^2": 0.16001747998993518,
+        "x^3": -0.4990804080336941
+      },
+      "monomialcoeffs": [
+        1.4034629860441574,
+        0.16001747998993518,
+        -0.4990804080336941
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.0075381410232262525,
+      "E_log": 0.030671241602368893,
+      "E_log_times_logN": 0.22469161184456163,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0644000580003985,
+      "Pprime_0": 1.4034629860441574,
+      "Pprime_0_over_log_slope": 1.4034629860441574,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 36441.71578075425,
+      "condition_number_basis": 17.757477443423994,
+      "scaled_hessian_singular_values": [
+        2.9958125445562103,
+        0.004105247115220047,
+        8.220832856992894e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1649": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4125864639328811,
+        "x^2": 0.11685858699280464,
+        "x^3": -0.46321433509314475
+      },
+      "monomialcoeffs": [
+        1.4125864639328811,
+        0.11685858699280464,
+        -0.46321433509314475
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.00742853344092298,
+      "E_log": 0.0300002920549991,
+      "E_log_times_logN": 0.22223989319811932,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.066230715832541,
+      "Pprime_0": 1.4125864639328811,
+      "Pprime_0_over_log_slope": 1.4125864639328811,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37108.862532853964,
+      "condition_number_basis": 17.58585429332346,
+      "scaled_hessian_singular_values": [
+        2.995867866368669,
+        0.004051401761317325,
+        8.073187001397057e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1789": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.4132036061744817,
+        "x^2": 0.09096152795768886,
+        "x^3": -0.4362994462868597
+      },
+      "monomialcoeffs": [
+        1.4132036061744817,
+        0.09096152795768886,
+        -0.4362994462868597
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007320249925885536,
+      "E_log": 0.02929087259944796,
+      "E_log_times_logN": 0.21937141518281997,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.067865687845311,
+      "Pprime_0": 1.4132036061744817,
+      "Pprime_0_over_log_slope": 1.4132036061744817,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37424.94595773721,
+      "condition_number_basis": 17.419932997789402,
+      "scaled_hessian_singular_values": [
+        2.9959066789597277,
+        0.004013269978011418,
+        8.005106226052829e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "1942": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3887317049609684,
+        "x^2": 0.1373609100755166,
+        "x^3": -0.4588187367764135
+      },
+      "monomialcoeffs": [
+        1.3887317049609684,
+        0.1373609100755166,
+        -0.4588187367764135
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007241527477922727,
+      "E_log": 0.02870544395952379,
+      "E_log_times_logN": 0.21734251251811126,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0672738782600715,
+      "Pprime_0": 1.3887317049609684,
+      "Pprime_0_over_log_slope": 1.3887317049609684,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37430.527220378724,
+      "condition_number_basis": 17.259130616426404,
+      "scaled_hessian_singular_values": [
+        2.995955434489613,
+        0.003964525081972649,
+        8.004042841423006e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "2000": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.38121925109923,
+        "x^2": 0.153969894097027,
+        "x^3": -0.46832453628679926
+      },
+      "monomialcoeffs": [
+        1.38121925109923,
+        0.153969894097027,
+        -0.46832453628679926
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007216876499468672,
+      "E_log": 0.0285384854212013,
+      "E_log_times_logN": 0.2169182440296148,
+      "gap_closure": 0.951021888362433,
+      "E_opt": 0.006118802780198829,
+      "P_at_1": 1.0668646089094578,
+      "Pprime_0": 1.38121925109923,
+      "Pprime_0_over_log_slope": 1.38121925109923,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37541.493313879866,
+      "condition_number_basis": 17.203095101719036,
+      "scaled_hessian_singular_values": [
+        2.995980251639441,
+        0.003939943856604235,
+        7.980450395487505e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "2108": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3582298814793226,
+        "x^2": 0.2076222720057889,
+        "x^3": -0.5002167891884599
+      },
+      "monomialcoeffs": [
+        1.3582298814793226,
+        0.2076222720057889,
+        -0.5002167891884599
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007179971143712827,
+      "E_log": 0.028246050478336837,
+      "E_log_times_logN": 0.21618100355398578,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0656353642966516,
+      "Pprime_0": 1.3582298814793226,
+      "Pprime_0_over_log_slope": 1.3582298814793226,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37517.36576112477,
+      "condition_number_basis": 17.104695896184086,
+      "scaled_hessian_singular_values": [
+        2.996020324577267,
+        0.0038998185280988105,
+        7.985689463522308e-05
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "2288": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3047864952228378,
+        "x^2": 0.33529922431337583,
+        "x^3": -0.5772359612328358
+      },
+      "monomialcoeffs": [
+        1.3047864952228378,
+        0.33529922431337583,
+        -0.5772359612328358
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.007136419807828975,
+      "E_log": 0.02781061907294402,
+      "E_log_times_logN": 0.21512719033051514,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0628497583033778,
+      "Pprime_0": 1.3047864952228378,
+      "Pprime_0_over_log_slope": 1.3047864952228378,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37073.575891656554,
+      "condition_number_basis": 16.95534626393453,
+      "scaled_hessian_singular_values": [
+        2.996074985692545,
+        0.0038442000101116132,
+        8.081429734342984e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "2483": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.2866158881821954,
+        "x^2": 0.36297519444959087,
+        "x^3": -0.5865581042209883
+      },
+      "monomialcoeffs": [
+        1.2866158881821954,
+        0.36297519444959087,
+        -0.5865581042209883
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.0070636932385299556,
+      "E_log": 0.027263084288725148,
+      "E_log_times_logN": 0.21312160370505193,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.063032978410798,
+      "Pprime_0": 1.2866158881821954,
+      "Pprime_0_over_log_slope": 1.2866158881821954,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37287.55334759472,
+      "condition_number_basis": 16.81031319214859,
+      "scaled_hessian_singular_values": [
+        2.996116207336315,
+        0.0038034410198159252,
+        8.035164386910848e-05
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "2696": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.24190162083958,
+        "x^2": 0.465359454382548,
+        "x^3": -0.6461499445000434
+      },
+      "monomialcoeffs": [
+        1.24190162083958,
+        0.465359454382548,
+        -0.6461499445000434
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.0070161994817299345,
+      "E_log": 0.026827542603641064,
+      "E_log_times_logN": 0.21192482932194898,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0611111307220846,
+      "Pprime_0": 1.24190162083958,
+      "Pprime_0_over_log_slope": 1.24190162083958,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 36976.47863180647,
+      "condition_number_basis": 16.66774301174589,
+      "scaled_hessian_singular_values": [
+        2.9961645479223984,
+        0.003754423146270093,
+        8.102893133109636e-05
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "2926": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.261078084207549,
+        "x^2": 0.3920283785433616,
+        "x^3": -0.5893426429399127
+      },
+      "monomialcoeffs": [
+        1.261078084207549,
+        0.3920283785433616,
+        -0.5893426429399127
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006911384711101642,
+      "E_log": 0.026195867952834018,
+      "E_log_times_logN": 0.20907947995093257,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.063763819810998,
+      "Pprime_0": 1.261078084207549,
+      "Pprime_0_over_log_slope": 1.261078084207549,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 37660.60913249416,
+      "condition_number_basis": 16.529613471998896,
+      "scaled_hessian_singular_values": [
+        2.996197140256861,
+        0.0037233018918646143,
+        7.955785127414987e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "3176": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0771749451895163,
+        "(x0-x)_+^2-x0^2": 128.4038557086627,
+        "(x0-x)_+^3-x0^3": -3115.81724074721
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.006791071061651777,
+      "E_log": 0.025694348956539104,
+      "E_log_times_logN": 0.20718324353631676,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1456424610112608,
+      "Pprime_0": 11.605418679927325,
+      "Pprime_0_over_log_slope": 11.605418679927325,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 11291.875104735349,
+      "condition_number_basis": 42.23504117821396,
+      "scaled_hessian_singular_values": [
+        2.9743277530759715,
+        0.025408842686424536,
+        0.0002634042376034305
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "3447": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0372211695424434,
+        "(x0-x)_+^2-x0^2": -74.39507211106712,
+        "(x0-x)_+^3-x0^3": 662.6100001567382
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.006729854456893669,
+      "E_log": 0.025354143435948218,
+      "E_log_times_logN": 0.206516079372498,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.140382599800519,
+      "Pprime_0": 3.5071533794736185,
+      "Pprime_0_over_log_slope": 3.5071533794736185,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 1993.4857361611025,
+      "condition_number_basis": 41.9027945668876,
+      "scaled_hessian_singular_values": [
+        2.973134719134305,
+        0.025373855737738035,
+        0.0014914251279568888
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "3741": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3239571502306664,
+        "x^2": 0.21084888380719857,
+        "x^3": -0.4676124077947127
+      },
+      "monomialcoeffs": [
+        1.3239571502306664,
+        0.21084888380719857,
+        -0.4676124077947127
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006640846489350594,
+      "E_log": 0.024929158214886726,
+      "E_log_times_logN": 0.2050948828250623,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0671936262431525,
+      "Pprime_0": 1.3239571502306664,
+      "Pprime_0_over_log_slope": 1.3239571502306664,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 40486.14141176251,
+      "condition_number_basis": 16.136331023767987,
+      "scaled_hessian_singular_values": [
+        2.996397806583906,
+        0.0035281829596244285,
+        7.40104564697627e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "4060": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0328082479008802,
+        "(x0-x)_+^2-x0^2": 53.501905380577,
+        "(x0-x)_+^3-x0^3": -1902.9249953344106
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.0063948559986769515,
+      "E_log": 0.024428746359503317,
+      "E_log_times_logN": 0.20297694508943698,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.136919108866239,
+      "Pprime_0": 9.954555174851263,
+      "Pprime_0_over_log_slope": 9.954555174851263,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 6979.276264112711,
+      "condition_number_basis": 41.81161581722626,
+      "scaled_hessian_singular_values": [
+        2.9770993482359573,
+        0.02247408900372504,
+        0.0004265627603171604
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "4407": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0377786706391408,
+        "(x0-x)_+^2-x0^2": -46.959013407544305,
+        "(x0-x)_+^3-x0^3": 154.04997574310974
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.006381529094800054,
+      "E_log": 0.023936925120571773,
+      "E_log_times_logN": 0.20085352903042442,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1359199571901129,
+      "Pprime_0": 4.578305193320249,
+      "Pprime_0_over_log_slope": 4.578305193320249,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 2862.24955335439,
+      "condition_number_basis": 41.6279578806773,
+      "scaled_hessian_singular_values": [
+        2.972489768895277,
+        0.02647171586924654,
+        0.001038515235476827
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "4783": {
+    "bestprofile": {
+      "family": "spline_x0_0.10",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0412199851787,
+        "(x0-x)_+^2-x0^2": 3.1489688665607662,
+        "(x0-x)_+^3-x0^3": -125.1703269792762
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.1,
+      "E": 0.006344463515339793,
+      "E_log": 0.023516732046551136,
+      "E_log_times_logN": 0.1992531138994198,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.1349006234923684,
+      "Pprime_0": 4.166536021244833,
+      "Pprime_0_over_log_slope": 4.166536021244833,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 8478.253014683205,
+      "condition_number_basis": 33.58280566893981,
+      "scaled_hessian_singular_values": [
+        2.980099193791463,
+        0.019549307003614957,
+        0.00035149920492232636
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.10"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "5000": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0444585303949525,
+        "(x0-x)_+^2-x0^2": -21.582950956497314,
+        "(x0-x)_+^3-x0^3": -293.7613959700371
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.006309024877847902,
+      "E_log": 0.023336379992268674,
+      "E_log_times_logN": 0.19876045678245288,
+      "gap_closure": 0.9444237491942239,
+      "E_opt": 0.005307020683009034,
+      "P_at_1": 1.1351360822824506,
+      "Pprime_0": 5.405964095819963,
+      "Pprime_0_over_log_slope": 5.405964095819963,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 8561.519206268997,
+      "condition_number_basis": 41.28402587163603,
+      "scaled_hessian_singular_values": [
+        2.9759433234889845,
+        0.023709081270990483,
+        0.0003475952400258486
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "5192": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.396444858111087,
+        "x^2": -0.012788708277555816,
+        "x^3": -0.31241724785729225
+      },
+      "monomialcoeffs": [
+        1.396444858111087,
+        -0.012788708277555816,
+        -0.31241724785729225
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006275745008323064,
+      "E_log": 0.023153368790280515,
+      "E_log_times_logN": 0.19807415865884057,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0712389019762392,
+      "Pprime_0": 1.396444858111087,
+      "Pprime_0_over_log_slope": 1.396444858111087,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 43028.53576273902,
+      "condition_number_basis": 15.660997619202549,
+      "scaled_hessian_singular_values": [
+        2.996594693851775,
+        0.0033356641155427354,
+        6.964203268210455e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "5635": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3764934643890852,
+        "x^2": 0.03208231499222207,
+        "x^3": -0.3385842790190915
+      },
+      "monomialcoeffs": [
+        1.3764934643890852,
+        0.03208231499222207,
+        -0.3385842790190915
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006217550400526073,
+      "E_log": 0.02280309659359947,
+      "E_log_times_logN": 0.19694469983588841,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0699915003622156,
+      "Pprime_0": 1.3764934643890852,
+      "Pprime_0_over_log_slope": 1.3764934643890852,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 42878.87982391088,
+      "condition_number_basis": 15.550930992133626,
+      "scaled_hessian_singular_values": [
+        2.996640382142077,
+        0.0032897316949810178,
+        6.988616294194881e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "6116": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3498740310550927,
+        "x^2": 0.09154098408576126,
+        "x^3": -0.3727672695268176
+      },
+      "monomialcoeffs": [
+        1.3498740310550927,
+        0.09154098408576126,
+        -0.3727672695268176
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006164875752195265,
+      "E_log": 0.022451492391765027,
+      "E_log_times_logN": 0.1957470087419585,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0686477456140364,
+      "Pprime_0": 1.3498740310550927,
+      "Pprime_0_over_log_slope": 1.3498740310550927,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 42593.86997131938,
+      "condition_number_basis": 15.44436595221991,
+      "scaled_hessian_singular_values": [
+        2.996679913459553,
+        0.003249731817678798,
+        7.03547227682615e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "6639": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.3441714898100874,
+        "x^2": 0.09270345765271604,
+        "x^3": -0.3681205007223561
+      },
+      "monomialcoeffs": [
+        1.3441714898100874,
+        0.09270345765271604,
+        -0.3681205007223561
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006096550164816583,
+      "E_log": 0.02204334807560082,
+      "E_log_times_logN": 0.19399725996158465,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0687544467404473,
+      "Pprime_0": 1.3441714898100874,
+      "Pprime_0_over_log_slope": 1.3441714898100874,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 42797.116820477815,
+      "condition_number_basis": 15.34069711386064,
+      "scaled_hessian_singular_values": [
+        2.996712630102888,
+        0.00321734852995665,
+        7.002136715595298e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "7205": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.316617075113503,
+        "x^2": 0.14747365144163185,
+        "x^3": -0.3961568584439876
+      },
+      "monomialcoeffs": [
+        1.316617075113503,
+        0.14747365144163185,
+        -0.3961568584439876
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.006042690878323431,
+      "E_log": 0.02164618174833366,
+      "E_log_times_logN": 0.1922728697706728,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0679338681111472,
+      "Pprime_0": 1.316617075113503,
+      "Pprime_0_over_log_slope": 1.316617075113503,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 42430.93269525756,
+      "condition_number_basis": 15.240165588234976,
+      "scaled_hessian_singular_values": [
+        2.996736497597009,
+        0.003192876180392293,
+        7.062622259849476e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "7821": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0538959751841044,
+        "(x0-x)_+^2-x0^2": 157.81202614145423,
+        "(x0-x)_+^3-x0^3": -3758.62260062493
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.005975766840414787,
+      "E_log": 0.021318256480542974,
+      "E_log_times_logN": 0.19110895352125304,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.129193734908585,
+      "Pprime_0": 13.46236286572566,
+      "Pprime_0_over_log_slope": 13.46236286572566,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 21267.221213575627,
+      "condition_number_basis": 40.56398884953889,
+      "scaled_hessian_singular_values": [
+        2.9789922490469687,
+        0.02086767660015114,
+        0.00014007435287997905
+      ],
+      "scaled_hessian_rcond": 6.66133814775094e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "8488": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.2919372571977035,
+        "x^2": 0.19596431142418938,
+        "x^3": -0.4212045021481116
+      },
+      "monomialcoeffs": [
+        1.2919372571977035,
+        0.19596431142418938,
+        -0.4212045021481116
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.005934708139279987,
+      "E_log": 0.021020461410641955,
+      "E_log_times_logN": 0.19015968456901264,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0666970664737812,
+      "Pprime_0": 1.2919372571977035,
+      "Pprime_0_over_log_slope": 1.2919372571977035,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 42874.281296100016,
+      "condition_number_basis": 15.047226780740928,
+      "scaled_hessian_singular_values": [
+        2.996819338608327,
+        0.0031107635590326894,
+        6.989783264030894e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750939e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "9213": {
+    "bestprofile": {
+      "family": "poly_d3_free",
+      "kind": "polynomial",
+      "basis": "monomial",
+      "basiscoeffs": {
+        "x^1": 1.2662997544462329,
+        "x^2": 0.2545343993672385,
+        "x^3": -0.45540393971874105
+      },
+      "monomialcoeffs": [
+        1.2662997544462329,
+        0.2545343993672385,
+        -0.45540393971874105
+      ],
+      "degree": 3,
+      "x0": null,
+      "E": 0.0058914010288309004,
+      "E_log": 0.020738739610078105,
+      "E_log_times_logN": 0.1893109052743481,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.0654302140947303,
+      "Pprime_0": 1.2662997544462329,
+      "Pprime_0_over_log_slope": 1.2662997544462329,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 42722.03344165538,
+      "condition_number_basis": 14.954584621586347,
+      "scaled_hessian_singular_values": [
+        2.996857952237465,
+        0.003071899932227978,
+        7.014783030705253e-05
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "poly_d3_free"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  },
+  "10000": {
+    "bestprofile": {
+      "family": "spline_x0_0.05",
+      "kind": "spline",
+      "basis": "linear_plus_edge_hinges",
+      "basiscoeffs": {
+        "x": 1.0399172169727278,
+        "(x0-x)_+^2-x0^2": 51.00164982610569,
+        "(x0-x)_+^3-x0^3": -1694.9425838464192
+      },
+      "monomialcoeffs": null,
+      "degree": 3,
+      "x0": 0.05,
+      "E": 0.0057809563980294465,
+      "E_log": 0.020367782217849184,
+      "E_log_times_logN": 0.18759420684867495,
+      "gap_closure": null,
+      "E_opt": null,
+      "P_at_1": 1.124280915388266,
+      "Pprime_0": 8.651821613210306,
+      "Pprime_0_over_log_slope": 8.651821613210306,
+      "solver_rank": 3,
+      "effective_dimension": 3,
+      "rank_deficient": false,
+      "condition_number_hessian": 6425.872717092826,
+      "condition_number_basis": 40.14087901348255,
+      "scaled_hessian_singular_values": [
+        2.9803736071758413,
+        0.019162584445376326,
+        0.0004638083787822385
+      ],
+      "scaled_hessian_rcond": 6.661338147750938e-16,
+      "constraint_residual": 0.0,
+      "best_tie_families": [
+        "spline_x0_0.05"
+      ],
+      "vector_contract": "raw a_1=1; for n=2..N, a_n=mu(n)*P(log(N/n)/logN)"
+    }
+  }
+}

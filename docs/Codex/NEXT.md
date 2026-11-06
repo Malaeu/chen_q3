@@ -2,7 +2,7 @@
 R8 (06.11): finite certificates + scan completed; J3 finite-only; RH OPEN. [Report](../routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/REPORT.md).
 Цель: доказанная RH с Прошкой; App goal ACTIVE, GOAL.md §5. Checkout /Users/emalam/GitHub/rh_lean_01_2026, rh_clean.
 Простой режим: git pull → NEXT → работа. История: [NEXT_HISTORY_2026-10-30_MAC.md](NEXT_HISTORY_2026-10-30_MAC.md).
-Optimal/Mobius (06.11): Q1/Q3 HIT; Q2/Q4/Q5/Q6 MISS; J3 broad tail only. [Report](../routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/REPORT.md).
+Smooth taper (06.11): cubic closes 94.44% at5000; J1-J4 PASS; R4 literal formula corrected. [Report](../routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/REPORT.md). Optimal/Mobius (06.11): Q1/Q3 HIT; Q2/Q4/Q5/Q6 MISS; J3 broad tail only. [Report](../routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/REPORT.md).
 ## Текущий вход
 
 Literal CCM m=N, L=log m; нормированные чётные нижние векторы f_m.

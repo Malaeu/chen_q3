@@ -1,0 +1,200 @@
+{
+  "task": "SMOOTH_TAPER_FIT_2026-11-06 Part A and J1/J3",
+  "source_info": {
+    "preregistration": {
+      "commit": "60ea7f7d3",
+      "path": "docs/routeB_bus/diag/SMOOTH_TAPER_FIT_2026-11-06/PREREGISTRATION.json",
+      "blob": "712c14b9fe5d68b8e8f124326afc1e7391af2482"
+    },
+    "sources": {
+      "coefficients": {
+        "commit": "ec1e2e961e07899824890db7f5fe39a89f2aa795",
+        "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_coefficients.csv",
+        "blob": "8f40a66e373d3626347e9d045a43230c949447b6",
+        "sha256": "b555b17ffb453fe2d3bda872811619968fb60f3d68fa6b9fba3f7b341e9b9b81"
+      },
+      "judges": {
+        "commit": "ec1e2e961e07899824890db7f5fe39a89f2aa795",
+        "path": "docs/routeB_bus/diag/OPTIMAL_VS_MOBIUS_2026-11-06/part_a_judges.csv",
+        "blob": "e6463f68208e45eacc622850f84f082d631d5f09",
+        "sha256": "bf983b7029c3966c7f53f09f11a9c476cbe407f89dae81da7c90135e4062e388"
+      },
+      "core_grid": {
+        "commit": "a180142f5b60d1424df53512b666915b7d22117e",
+        "path": "docs/routeB_bus/diag/R8_CERTIFICATE_AND_CORE_2026-11-06/core_full_H.csv",
+        "blob": "8d62edae64a79dd1eca0c6979b73b03ba7132687",
+        "sha256": "258185105c2b93eae5aada37a74b7321b08c74f9c522dd4f2734471125a151bb"
+      }
+    },
+    "grid_N_count": 92,
+    "requested_N_count_after_union": 98,
+    "targets": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      17,
+      18,
+      20,
+      21,
+      23,
+      25,
+      27,
+      30,
+      32,
+      35,
+      38,
+      41,
+      45,
+      49,
+      50,
+      53,
+      57,
+      62,
+      68,
+      73,
+      80,
+      86,
+      94,
+      102,
+      110,
+      120,
+      130,
+      141,
+      153,
+      166,
+      180,
+      196,
+      200,
+      213,
+      231,
+      250,
+      272,
+      295,
+      320,
+      348,
+      377,
+      409,
+      444,
+      482,
+      500,
+      524,
+      568,
+      617,
+      669,
+      727,
+      789,
+      856,
+      929,
+      1000,
+      1008,
+      1094,
+      1188,
+      1289,
+      1399,
+      1519,
+      1649,
+      1789,
+      1942,
+      2000,
+      2108,
+      2288,
+      2483,
+      2696,
+      2926,
+      3176,
+      3447,
+      3741,
+      4060,
+      4407,
+      4783,
+      5000,
+      5192,
+      5635,
+      6116,
+      6639,
+      7205,
+      7821,
+      8488,
+      9213,
+      10000
+    ]
+  },
+  "convention": {
+    "free_coefficients": "n=2..N",
+    "optimum_sign": "archived physical c_opt=-stored c; validated against pinned full-Gram E_opt",
+    "raw_n1": 1,
+    "profile": "a_n=mu(n)*P(log(N/n)/logN), n>=2",
+    "selected_family": "minimum E among degree<=3 polynomials and five splines, independently for each N",
+    "tie_tolerance": 1e-12
+  },
+  "gram": {
+    "N": 10000,
+    "seconds": 5.968152582994662,
+    "bytes": 799920020,
+    "format": "uint32 d, row-major float64 dxd, float64 q1[0..N]",
+    "compiler": "clang++",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "method": "single N=10000 full-Gram build; all requested Ns use leading principal prefixes"
+  },
+  "judge_pass": {
+    "J1": true,
+    "J3": true
+  },
+  "max_J1_abs_difference": 3.064215547965432e-14,
+  "min_J3_Ebest_minus_Eopt": 0.0007802098585758532,
+  "predictions": {
+    "R1": {
+      "p": 0.55,
+      "hit": true,
+      "rule": "best degree<=3 polynomial gap closure >= 0.5 at N=5000",
+      "family": "poly_d3_free",
+      "gap_closure": 0.9443677295550421
+    },
+    "R2": {
+      "p": 0.5,
+      "hit": false,
+      "rule": "each degree-3 winner coefficient changes by <20% from N=2000 to N=5000",
+      "winner_2000": "poly_d3_free",
+      "winner_5000": "poly_d3_free",
+      "coefficients_2000": [
+        1.38121925109923,
+        0.153969894097027,
+        -0.46832453628679926
+      ],
+      "coefficients_5000": [
+        1.397107408346974,
+        -0.010733544550018528,
+        -0.31505755235736754
+      ],
+      "relative_changes": [
+        0.011502994354516419,
+        1.0697119694273127,
+        0.3272666111936785
+      ],
+      "near_zero_old_coefficients": []
+    },
+    "R3": {
+      "p": 0.6,
+      "hit": true,
+      "rule": "selected best Pprime(0) outside [0.8,1.25] at N=5000",
+      "selected_family": "spline_x0_0.05",
+      "Pprime_0": 5.405964095819963
+    }
+  },
+  "elapsed_seconds_including_outputs": 7.980790958972648,
+  "limitations": [
+    "Float64 stored Gram and SVD least-squares are diagnostics, not interval certificates.",
+    "J3 is checked at the four main N against the pinned archived full-Gram optimum.",
+    "Selected vectors intentionally export raw n=1=1; the free Gram coordinates are n=2..N."
+  ]
+}
