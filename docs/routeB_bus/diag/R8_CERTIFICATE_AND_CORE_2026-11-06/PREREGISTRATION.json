@@ -1,0 +1,56 @@
+{
+  "task_commit": "9d8a6d48a0efdeaea7987748d242a3844e91a6dc",
+  "task_blob": "190e2c60c9699a0ff3c76f4fdba768fd938b97b4",
+  "source_commit": "70c4e6b0",
+  "freeze": "6d50c6f9",
+  "reuse_commit": "ba5654b4",
+  "status": "PREREGISTERED_BEFORE_NEW_NUMERICAL_RUNS",
+  "certificate_exact_grid": [
+    10,
+    20,
+    50,
+    100,
+    200
+  ],
+  "certificate_interval_grid": [
+    500,
+    1000,
+    2000
+  ],
+  "crossing_scan_max": 10000000,
+  "crossing_scan_requires_b_at": 10000001,
+  "full_core_max": 10000,
+  "full_core_grid": "100 rounded log-spaced integers from 3 to 10000, union all S <=10000",
+  "head_output": "Every N=3..10^7 computed; compressed CSV preserves all b_N and head values. Summary and crossings plain CSV.",
+  "J1": "All-input analytical domination plus rigorous enclosures; old e_N decimal estimates remain labeled diagnostic.",
+  "J2": "For N=10,20,50, inequality (11) applies to optimal true-Gram coefficients; ehat-e <= U(c_opt)-E(c_opt) <= RHS(11). Report both gap and RHS.",
+  "J3": "Independent direct residue finite sum through K-1 vs head+floor-block shoulder, absolute error <=1e-10 at N=3..200. Full norm minus exact tail is identity; 5/log\u00b2 is a bound and must not be subtracted as equality.",
+  "J4": "Literal psi replacement with unchanged s_N; derive planted prefix before run; no additive offset. Leading power 2 Re(rho)-1=2/3, with log^-2 and oscillatory modulation. Compare finite-grid slope to analytic plant-only discrete prefix, tolerance 0.05; also report raw and log-corrected slopes.",
+  "predictions": {
+    "P1": {
+      "p": 0.6,
+      "rule": "ehat/e <=1.5 at every certificate grid N<=1000"
+    },
+    "P2": {
+      "p": 0.85,
+      "rule": "ehat*log(N)<=1/2 certified at all certificate grid points"
+    },
+    "P3": {
+      "p": 0.7,
+      "rule": "at least 10 crossings in [3,10^4] and nonempty in each decade [3,10),[10,100),...,[10^6,10^7]"
+    },
+    "P4": {
+      "p": 0.75,
+      "rule": "max full H over S intersect [1000,10000] <=1; empty set is not HIT"
+    },
+    "P5": {
+      "p": 0.45,
+      "rule": "finite-range operational score: all head*log(N) on S with N>=10000 lie in [0.02,0.3]; additionally report fits and range, never infer asymptotic equivalence"
+    },
+    "P6": {
+      "p": 0.9,
+      "rule": "J4 passes analytically derived finite-window slope gate"
+    }
+  },
+  "honesty": "Finite experiment only; CHALLENGER_NOT_RH; PX_RH_CLAIM NOT_MADE. Each failed judge voids only its guarded part."
+}
